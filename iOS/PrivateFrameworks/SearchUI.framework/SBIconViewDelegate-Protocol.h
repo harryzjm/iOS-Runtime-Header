@@ -9,18 +9,20 @@
 #import <SearchUI/SBIconViewBehaviorDelegate-Protocol.h>
 #import <SearchUI/SBIconViewConfigurationUIDelegate-Protocol.h>
 #import <SearchUI/SBIconViewDragDelegate-Protocol.h>
+#import <SearchUI/SBIconViewDropDelegate-Protocol.h>
 #import <SearchUI/SBIconViewReuseDelegate-Protocol.h>
 #import <SearchUI/SBIconViewShortcutsDelegate-Protocol.h>
 
 @class SBIconView;
-@protocol SBIconViewActionDelegate, SBIconViewBehaviorDelegate, SBIconViewConfigurationUIDelegate, SBIconViewDragDelegate, SBIconViewReuseDelegate, SBIconViewShortcutsDelegate;
+@protocol SBIconViewActionDelegate, SBIconViewBehaviorDelegate, SBIconViewConfigurationUIDelegate, SBIconViewDragDelegate, SBIconViewDropDelegate, SBIconViewReuseDelegate, SBIconViewShortcutsDelegate;
 
-@protocol SBIconViewDelegate <SBIconViewActionDelegate, SBIconViewBehaviorDelegate, SBIconViewReuseDelegate, SBIconViewDragDelegate, SBIconViewShortcutsDelegate, SBIconViewConfigurationUIDelegate, NSObject>
+@protocol SBIconViewDelegate <SBIconViewActionDelegate, SBIconViewBehaviorDelegate, SBIconViewReuseDelegate, SBIconViewDragDelegate, SBIconViewDropDelegate, SBIconViewShortcutsDelegate, SBIconViewConfigurationUIDelegate, NSObject>
 
 @optional
 - (id <SBIconViewConfigurationUIDelegate>)configurationUIDelegateForIconView:(SBIconView *)arg1;
 - (id <SBIconViewShortcutsDelegate>)shortcutsDelegateForIconView:(SBIconView *)arg1;
 - (id <SBIconViewReuseDelegate>)reuseDelegateForIconView:(SBIconView *)arg1;
+- (id <SBIconViewDropDelegate>)droppingDelegateForIconView:(SBIconView *)arg1;
 - (id <SBIconViewDragDelegate>)draggingDelegateForIconView:(SBIconView *)arg1;
 - (id <SBIconViewBehaviorDelegate>)behaviorDelegateForIconView:(SBIconView *)arg1;
 - (id <SBIconViewActionDelegate>)actionDelegateForIconView:(SBIconView *)arg1;

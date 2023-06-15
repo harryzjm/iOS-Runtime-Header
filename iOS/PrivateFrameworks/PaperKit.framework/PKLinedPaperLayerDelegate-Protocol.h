@@ -9,9 +9,9 @@
 @class PKLinedPaper, PKLinedPaperLayer, UITraitCollection, UIView;
 
 @protocol PKLinedPaperLayerDelegate <NSObject>
+@property(readonly, nonatomic) struct CGAffineTransform drawingTransform;
 - (UIView *)linedPaperLayerAttachmentContainerView:(PKLinedPaperLayer *)arg1;
 - (PKLinedPaper *)linedPaperLayerLinedPaper:(PKLinedPaperLayer *)arg1;
-@property(nonatomic, readonly) struct CGAffineTransform drawingTransform;
 - (UITraitCollection *)linedPaperLayerTraitCollection:(PKLinedPaperLayer *)arg1;
 @end
 

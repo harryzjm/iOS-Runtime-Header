@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIImage.h>
+#import <UIKitCore/UIImage.h>
 
 @interface UIImage (PKUIUtilities)
 + (id)pkui_imageWithColor:(id)arg1 scale:(double)arg2;

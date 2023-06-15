@@ -82,5 +82,8 @@
 @property(readonly, nonatomic) UIFont *annotationTextFont;
 @property(readonly, nonatomic) UIFont *supplementalLexiconCandidateFont;
 @property(readonly, nonatomic) UIFont *candidateFont;
+
+@optional
+@property(readonly, nonatomic) _Bool shouldJustifyRow;
 @end
 

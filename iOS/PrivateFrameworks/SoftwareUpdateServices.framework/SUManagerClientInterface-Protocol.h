@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSError, NSUUID, SUDescriptor, SUDownload, SUInstallPolicy, SURollbackDescriptor, SURollbackOptions, SUScanOptions, SUScanResults;
+@class NSError, NSUUID, SUDescriptor, SUDownload, SUInstallPolicy, SURollbackDescriptor, SURollbackOptions, SURollbackSuggestionInfo, SUScanOptions, SUScanResults;
 
 @protocol SUManagerClientInterface
 - (void)scanDidCompleteWithNewUpdateAvailable:(SUDescriptor *)arg1 error:(NSError *)arg2;
 - (void)scanRequestDidFinishForOptions:(SUScanOptions *)arg1 update:(SUDescriptor *)arg2 error:(NSError *)arg3;
+- (void)inUserInteraction:(void (^)(_Bool, NSError *))arg1;
+- (void)presentingRecommendedUpdate:(SUDescriptor *)arg1 shouldPresent:(_Bool)arg2;
 - (void)installTonightScheduled:(_Bool)arg1 operationID:(NSUUID *)arg2;
 - (void)autoInstallOperationPasscodePolicyChanged:(NSUUID *)arg1 passcodePolicyType:(unsigned long long)arg2;
 - (void)autoInstallOperationIsReadyToInstall:(NSUUID *)arg1 withResult:(void (^)(_Bool, NSError *))arg2;
@@ -16,7 +18,8 @@
 - (void)autoInstallOperationDidExpire:(NSUUID *)arg1 withError:(NSError *)arg2;
 - (void)autoInstallOperationWasCancelled:(NSUUID *)arg1;
 - (void)managedInstallationRequested:(SUInstallPolicy *)arg1;
-- (void)deviceBootedAfterRollback;
+- (void)rollbackSuggested:(SUDescriptor *)arg1 info:(SURollbackSuggestionInfo *)arg2;
+- (void)deviceBootedAfterRollback:(SURollbackDescriptor *)arg1;
 - (void)rollbackReadyForReboot:(SURollbackDescriptor *)arg1;
 - (void)rollbackDidFinish:(SURollbackDescriptor *)arg1;
 - (void)rollbackDidFail:(SURollbackDescriptor *)arg1 withError:(NSError *)arg2;
@@ -27,10 +30,11 @@
 - (void)installDidFinish:(SUDescriptor *)arg1;
 - (void)installDidFail:(SUDescriptor *)arg1 withError:(NSError *)arg2;
 - (void)installDidStart:(SUDescriptor *)arg1;
+- (void)installWantsToStart:(SUDescriptor *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
+- (void)userWantsToDeferInstall;
 - (void)clearingSpaceForDownload:(SUDownload *)arg1 clearing:(_Bool)arg2;
 - (void)automaticDownloadDidFailToStartForNewUpdateAvailable:(SUDescriptor *)arg1 withError:(NSError *)arg2;
 - (void)downloadDidFinish:(SUDownload *)arg1 withInstallPolicy:(SUInstallPolicy *)arg2;
-- (void)downloadDidFinish:(SUDownload *)arg1;
 - (void)downloadDidFail:(SUDownload *)arg1 withError:(NSError *)arg2;
 - (void)downloadProgressDidChange:(SUDownload *)arg1;
 - (void)downloadDidStart:(SUDownload *)arg1;

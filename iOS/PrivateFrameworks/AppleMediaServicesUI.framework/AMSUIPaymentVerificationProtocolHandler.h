@@ -15,6 +15,10 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_accountParameters;
 }
 
++ (id)_accountToUseFromGivenAccount:(id)arg1 accountParameters:(id)arg2 accountStore:(id)arg3;
++ (id)_promiseToFetchURLResponseForAccount:(id)arg1 accountParameters:(id)arg2 url:(id)arg3 bag:(id)arg4 requestBody:(id)arg5 bodyEncoding:(long long)arg6 contentType:(id)arg7;
++ (id)_sessionWithBag:(id)arg1 account:(id)arg2 accountParameters:(id)arg3;
++ (id)_encoderWithBag:(id)arg1 account:(id)arg2;
 + (void)_setHeaders:(id)arg1 on:(id)arg2;
 + (id)_headersFromAccountParameters:(id)arg1;
 + (id)_headersFromAccount:(id)arg1;

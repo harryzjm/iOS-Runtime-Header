@@ -14,6 +14,7 @@
 - (id)ic_objectsOfClass:(Class)arg1;
 - (id)ic_objectsConformingToProtocol:(id)arg1;
 - (id)ic_objectsPassingTest:(CDUnknownBlockType)arg1;
+- (_Bool)ic_containsObjectMatchingPredicate:(id)arg1;
 - (_Bool)ic_containsObjectPassingTest:(CDUnknownBlockType)arg1;
 - (id)ic_objectPassingTest:(CDUnknownBlockType)arg1;
 @end

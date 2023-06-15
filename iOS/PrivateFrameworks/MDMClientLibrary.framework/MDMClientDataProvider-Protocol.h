@@ -7,7 +7,6 @@
 @class NSDictionary;
 
 @protocol MDMClientDataProvider
-- (_Bool)isMDMProfileInstalled;
 - (NSDictionary *)mdmDictionary;
 @end
 

@@ -18,6 +18,8 @@ __attribute__((visibility("hidden")))
     MRUTimeControls *_timeControls;
     MRUVisualStylingProvider *_stylingProvider;
     long long _layout;
+    double _sliderHeight;
+    double _sliderExpansionFactor;
     MRUSlider *_slider;
     UILabel *_elapsedTimeLabel;
     UILabel *_remainingTimeLabel;
@@ -40,6 +42,8 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UILabel *remainingTimeLabel; // @synthesize remainingTimeLabel=_remainingTimeLabel;
 @property(retain, nonatomic) UILabel *elapsedTimeLabel; // @synthesize elapsedTimeLabel=_elapsedTimeLabel;
 @property(retain, nonatomic) MRUSlider *slider; // @synthesize slider=_slider;
+@property(nonatomic) double sliderExpansionFactor; // @synthesize sliderExpansionFactor=_sliderExpansionFactor;
+@property(nonatomic) double sliderHeight; // @synthesize sliderHeight=_sliderHeight;
 @property(nonatomic) _Bool leftAlignLive; // @synthesize leftAlignLive=_leftAlignLive;
 @property(nonatomic, getter=isDimmed) _Bool dimmed; // @synthesize dimmed=_dimmed;
 @property(nonatomic, getter=isOnScreen) _Bool onScreen; // @synthesize onScreen=_onScreen;
@@ -55,15 +59,21 @@ __attribute__((visibility("hidden")))
 - (void)updateElapsedTimeOnDisplayLinkTick:(id)arg1;
 - (void)updateDisplayLinkPaused;
 - (void)updateDisplayLink;
+- (double)timeLabelsAlpha;
+- (long long)labelStyle;
 - (void)updateVisualStyling;
+- (_Bool)acuis_wantsPriorityOverTargetOfGestureRecognizer:(id)arg1;
 - (double)accessibilityElapsedDuration;
 - (double)accessibilityTotalDuration;
 - (void)visualStylingProviderDidChange:(id)arg1;
 - (void)sliderTouchCancel:(id)arg1;
 - (void)sliderValueChanged:(id)arg1;
+- (void)sliderTounchUp:(id)arg1;
 - (void)sliderTouchDown:(id)arg1;
 - (void)setTimeControls:(id)arg1 forPresentationInterval:(id)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (struct CGSize)intrinsicContentSize;
+- (void)layoutSubviewsLive;
 - (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1;
 

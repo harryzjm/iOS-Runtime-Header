@@ -6,10 +6,11 @@
 
 #import <FrontBoard/NSObject-Protocol.h>
 
-@class FBSceneClientHandshake, NSString;
+@class FBSceneClientHandshake, FBWorkspaceSceneRequest, NSString, RBSProcessHandle;
 
 @protocol FBWorkspaceEventDispatcherTarget <NSObject>
 @property(readonly, copy, nonatomic) NSString *workspaceIdentifier;
+- (void)didReceiveSceneRequest:(FBWorkspaceSceneRequest *)arg1 fromHandle:(RBSProcessHandle *)arg2;
 - (void)didReceiveHandshake:(FBSceneClientHandshake *)arg1;
 @end
 

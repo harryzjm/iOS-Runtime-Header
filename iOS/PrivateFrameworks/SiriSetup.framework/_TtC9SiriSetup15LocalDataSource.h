@@ -12,7 +12,7 @@
 {
     MISSING_TYPE *siriEnabled;
     MISSING_TYPE *voiceTriggerEnabled;
-    MISSING_TYPE *voiceTriggerDuringPhoneCallEnabled;
+    MISSING_TYPE *siriInCallEnabled;
     MISSING_TYPE *siriVoice;
 }
 

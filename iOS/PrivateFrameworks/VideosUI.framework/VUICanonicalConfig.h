@@ -6,13 +6,20 @@
 
 #import <objc/NSObject.h>
 
+@class NSString;
+
 __attribute__((visibility("hidden")))
 @interface VUICanonicalConfig : NSObject
 {
     float _videoViewOffscreenThresholdToStopPlayback;
     double _playbackDelayInterval;
+    NSString *_storeTabIdentifier;
+    NSString *_tvShowsTabIdentifier;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSString *tvShowsTabIdentifier; // @synthesize tvShowsTabIdentifier=_tvShowsTabIdentifier;
+@property(retain, nonatomic) NSString *storeTabIdentifier; // @synthesize storeTabIdentifier=_storeTabIdentifier;
 @property(nonatomic) double playbackDelayInterval; // @synthesize playbackDelayInterval=_playbackDelayInterval;
 @property(nonatomic) float videoViewOffscreenThresholdToStopPlayback; // @synthesize videoViewOffscreenThresholdToStopPlayback=_videoViewOffscreenThresholdToStopPlayback;
 - (id)init;

@@ -6,7 +6,9 @@
 
 #import <JetEngine/AMSURLBagContract-Protocol.h>
 
+@class AMSBagValue;
+
 @protocol AMSFamilyInfoLookupBagContract <AMSURLBagContract>
-@property(nonatomic, readonly) id familyInfoURL;
+@property(readonly, nonatomic) AMSBagValue *familyInfoURL;
 @end
 

@@ -17,7 +17,7 @@
     MISSING_TYPE *storefrontLocalizer;
     MISSING_TYPE *subscriptionToken;
     MISSING_TYPE *title;
-    MISSING_TYPE *rootProperty;
+    MISSING_TYPE *filterRoot;
     MISSING_TYPE *rootFilterResult;
     MISSING_TYPE *rootModality;
     MISSING_TYPE *filterOptions;
@@ -33,7 +33,7 @@
     MISSING_TYPE *skillLevelProperty;
     MISSING_TYPE *themeProperty;
     MISSING_TYPE *trainerProperty;
-    MISSING_TYPE *options;
+    MISSING_TYPE *optionCategories;
 }
 
 @end

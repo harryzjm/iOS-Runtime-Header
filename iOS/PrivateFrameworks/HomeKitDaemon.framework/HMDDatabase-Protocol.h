@@ -17,6 +17,7 @@
 - (NAFuture *)removeLocalAndCloudDataForLocalZone:(HMBLocalZone *)arg1;
 - (NAFuture *)removeSharedZonesWithName:(NSString *)arg1;
 - (NAFuture *)removePrivateZonesWithName:(NSString *)arg1;
+- (NAFuture *)synchronizeSharedZones;
 - (HMDDatabaseFetchZonesResult *)sharedZonesWithID:(HMBCloudZoneID *)arg1 configuration:(HMBCloudZoneConfiguration *)arg2 delegate:(id <HMBLocalZoneDelegate><HMBCloudZoneDelegate>)arg3 error:(id *)arg4;
 - (HMBCloudZoneID *)existingSharedZoneIDWithName:(NSString *)arg1;
 - (HMDDatabaseFetchZonesResult *)privateZonesWithName:(NSString *)arg1 configuration:(HMBCloudZoneConfiguration *)arg2 delegate:(id <HMBLocalZoneDelegate><HMBCloudZoneDelegate>)arg3 error:(id *)arg4;

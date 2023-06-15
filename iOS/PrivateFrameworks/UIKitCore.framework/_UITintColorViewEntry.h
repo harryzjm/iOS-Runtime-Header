@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_UIVisualEffectViewEntry.h"
+
 @class UIColor;
 
 __attribute__((visibility("hidden")))
-@interface _UITintColorViewEntry
+@interface _UITintColorViewEntry : _UIVisualEffectViewEntry
 {
     UIColor *_tintColor;
 }

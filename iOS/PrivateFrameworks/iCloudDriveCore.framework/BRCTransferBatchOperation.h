@@ -51,12 +51,12 @@ __attribute__((visibility("hidden")))
 - (id)createActivity;
 - (id)initWithName:(id)arg1 syncContext:(id)arg2 group:(id)arg3;
 @property(readonly) unsigned long long itemsCount;
+@property(readonly, copy) NSString *description;
 - (id)fetchOperationForTransfers:(id)arg1 traceCode:(int)arg2;
 - (id)initWithName:(id)arg1 syncContext:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

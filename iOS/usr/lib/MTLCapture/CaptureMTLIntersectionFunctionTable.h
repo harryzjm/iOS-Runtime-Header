@@ -6,10 +6,9 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray, NSString;
+@class NSArray, NSMutableArray, NSString;
 @protocol MTLBuffer, MTLComputePipelineState, MTLDevice, MTLHeap, MTLIntersectionFunctionTable, MTLIntersectionFunctionTableSPI><MTLResourceSPI, MTLRenderPipelineState;
 
-__attribute__((visibility("hidden")))
 @interface CaptureMTLIntersectionFunctionTable : NSObject
 {
     id <MTLIntersectionFunctionTableSPI><MTLResourceSPI> _baseObject;
@@ -25,6 +24,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+@property(readonly) NSArray *functionArray; // @synthesize functionArray=_functions;
 - (void)waitUntilComplete;
 - (unsigned long long)setPurgeableState:(unsigned long long)arg1;
 - (void)makeAliasable;
@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)doesAliasAnyResources:(const id *)arg1 count:(unsigned long long)arg2;
 - (_Bool)doesAliasAllResources:(const id *)arg1 count:(unsigned long long)arg2;
 - (void)dealloc;
+- (unsigned long long)bufferAddressAtIndex:(unsigned long long)arg1;
 - (unsigned long long)uniqueIdentifier;
 @property(readonly) unsigned long long unfilteredResourceOptions;
 @property(readonly) unsigned long long storageMode;

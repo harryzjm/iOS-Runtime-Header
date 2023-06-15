@@ -7,7 +7,7 @@
 #import <PhotosUICore/NSObject-Protocol.h>
 
 @class PXFeedViewModel, PXGLayout, PXGView, PXSectionedDataSource;
-@protocol PXStoryItemPlacementController, PXTapToRadarDiagnosticContainer;
+@protocol PXGItemPlacementController, PXTapToRadarDiagnosticContainer;
 
 @protocol PXFeedItemLayoutFactory <NSObject>
 - (PXGLayout *)createLayoutForFeedItemAtIndexPath:(struct PXSimpleIndexPath)arg1 inDataSource:(PXSectionedDataSource *)arg2 viewModel:(PXFeedViewModel *)arg3 initialReferenceSize:(struct CGSize)arg4 thumbnailAsset:(out id *)arg5;
@@ -15,7 +15,8 @@
 @optional
 - (void)presentMenuForItemLayout:(PXGLayout *)arg1 atLocation:(struct CGPoint)arg2 inView:(PXGView *)arg3;
 - (void)collectTapToRadarDiagnosticsForItemLayout:(PXGLayout *)arg1 indexPath:(struct PXSimpleIndexPath)arg2 intoContainer:(id <PXTapToRadarDiagnosticContainer>)arg3;
-- (id <PXStoryItemPlacementController>)itemPlacementControllerForItemReference:(id)arg1 itemLayout:(PXGLayout *)arg2;
+- (id <PXGItemPlacementController>)itemPlacementControllerForItemReference:(id)arg1 itemLayout:(PXGLayout *)arg2;
+- (unsigned int)decorationOverlayAnchorSpriteIndexForItemLayout:(PXGLayout *)arg1;
 - (void)configureItemLayout:(PXGLayout *)arg1 forChangedItemFromIndexPath:(struct PXSimpleIndexPath)arg2 inDataSource:(PXSectionedDataSource *)arg3 toIndexPath:(struct PXSimpleIndexPath)arg4 inDataSource:(PXSectionedDataSource *)arg5;
 - (_Bool)shouldReloadItemLayout:(PXGLayout *)arg1 forChangedItemFromIndexPath:(struct PXSimpleIndexPath)arg2 inDataSource:(PXSectionedDataSource *)arg3 toIndexPath:(struct PXSimpleIndexPath)arg4 inDataSource:(PXSectionedDataSource *)arg5;
 - (void)setItemLayout:(PXGLayout *)arg1 isHovered:(_Bool)arg2;

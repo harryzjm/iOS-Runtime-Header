@@ -11,6 +11,7 @@
 @interface _TtCO28SiriPrivateLearningAnalytics15BiomePublishers9ScanTurns : BPSPublisher
 {
     MISSING_TYPE *upstream;
+    MISSING_TYPE *turnsStartDateTime;
     MISSING_TYPE *inner;
 }
 

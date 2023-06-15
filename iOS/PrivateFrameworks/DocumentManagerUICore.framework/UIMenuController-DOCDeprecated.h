@@ -7,9 +7,6 @@
 #import <UIKit/UIMenuController.h>
 
 @interface UIMenuController (DOCDeprecated)
-- (void)removeActionIfPresent:(SEL)arg1;
-- (void)appendActionIfMissing:(SEL)arg1 title:(id)arg2;
-- (void)replaceMenuItemsWithCommands:(id)arg1;
 - (void)hideMenuIfActive;
 @end
 

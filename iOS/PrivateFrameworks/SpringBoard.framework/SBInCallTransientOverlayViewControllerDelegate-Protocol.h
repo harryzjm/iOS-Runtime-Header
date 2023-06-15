@@ -9,6 +9,7 @@
 @class BSAnimationSettings, SBInCallTransientOverlayViewController;
 
 @protocol SBInCallTransientOverlayViewControllerDelegate <NSObject>
+- (void)inCallTransientOverlayViewControllerDidUpdateAmbientPresentationIsAmbientPresented:(_Bool)arg1 ambientDisplayStyle:(long long)arg2;
 - (_Bool)inCallTransientOverlayViewControllerShouldPreventBannerPresentations:(SBInCallTransientOverlayViewController *)arg1;
 - (_Bool)inCallTransientOverlayViewControllerShouldSupportAlwaysOnDisplay:(SBInCallTransientOverlayViewController *)arg1;
 - (void)inCallTransientOverlayViewController:(SBInCallTransientOverlayViewController *)arg1 viewWillTransitionSizeWithAnimationSettings:(BSAnimationSettings *)arg2;

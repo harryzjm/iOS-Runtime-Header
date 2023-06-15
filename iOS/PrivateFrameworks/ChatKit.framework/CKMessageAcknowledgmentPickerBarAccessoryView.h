@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/_UIContextMenuAccessoryView.h>
+#import <UIKitCore/_UIContextMenuAccessoryView.h>
 
 @class CKMessageAcknowledgmentPickerBarViewController, CKMessagePartChatItem;
 

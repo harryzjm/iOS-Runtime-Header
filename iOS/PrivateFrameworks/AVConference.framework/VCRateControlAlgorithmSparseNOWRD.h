@@ -44,30 +44,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property(readonly, nonatomic) _Bool basebandAdaptationEnabled; // @synthesize basebandAdaptationEnabled=_basebandAdaptationEnabled;
-- (void)printRateControlInfoToLogDump;
-- (void)resetRampingStatus;
-- (void)resetOscillationDetection;
-- (int)countDeviationChangeInTierWindow;
-- (_Bool)updateRecentTierWindow;
-- (void)checkTargetBitrateOscillation;
-- (void)checkActualBitrates;
-- (void)updateLastEmergencyBasebandRampDownTimeWithTierIndex:(int)arg1;
-- (int)rampDownTierDueToBaseband;
-- (int)rampDownTier;
-- (int)rampUpTier;
-- (_Bool)shouldRampUpDueToBaseband;
-- (_Bool)shouldUnblockRampUpAfterTimeOut;
-- (_Bool)shouldRampDownDueToBaseband;
-- (_Bool)shouldRampDown;
-- (_Bool)shouldRampUp;
-- (_Bool)shouldBlockRampUpDueToRecentLossEvent;
-- (_Bool)shouldBlockRampUpDueToNetworkUnstable;
-- (void)checkCongestionStatus;
-- (_Bool)noServerStatsActivityDetected;
-- (_Bool)doRateControlWithBasebandStatistics:(CDStruct_7df19fcb)arg1;
-- (_Bool)doRateControlWithVCRCStatistics:(CDStruct_7df19fcb)arg1;
-- (_Bool)doRateControlWithStatistics:(CDStruct_7df19fcb)arg1;
-- (void)configure:(struct VCRateControlAlgorithmConfig)arg1 restartRequired:(_Bool)arg2;
+- (_Bool)setUpVTable;
 - (id)init;
 
 @end

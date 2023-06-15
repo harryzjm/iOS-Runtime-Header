@@ -9,8 +9,8 @@
 
 @protocol EMPKeyboardViewControllerProtocol
 @property(nonatomic) _Bool shouldUpdateLayoutAutomatically;
-@property(nonatomic, readonly) UIView *inputAssistantView;
-@property(nonatomic, readonly) UIView *pathEffectView;
-@property(nonatomic, retain) UIView<UIKeyInput> *textInputView;
+@property(readonly, nonatomic) UIView *inputAssistantView;
+@property(readonly, nonatomic) __weak UIView *pathEffectView;
+@property(retain, nonatomic) UIView<UIKeyInput> *textInputView;
 @end
 

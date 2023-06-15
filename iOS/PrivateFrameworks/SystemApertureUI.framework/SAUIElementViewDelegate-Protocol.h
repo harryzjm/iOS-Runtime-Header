@@ -6,10 +6,16 @@
 
 #import <SystemApertureUI/SAUILayoutHosting-Protocol.h>
 
-@class SAUIElementView;
+@class SAUIElementView, UIView;
 
 @protocol SAUIElementViewDelegate <SAUILayoutHosting>
-- (double)fixedHeightForElementView:(SAUIElementView *)arg1;
+- (void)elementView:(SAUIElementView *)arg1 didConfigureTrailingTransformView:(UIView *)arg2;
+- (void)elementView:(SAUIElementView *)arg1 didConfigureLeadingTransformView:(UIView *)arg2;
+- (void)elementView:(SAUIElementView *)arg1 didConfigureMinimalTransformView:(UIView *)arg2;
+- (_Bool)isMinimalViewIsolatedForElementView:(SAUIElementView *)arg1;
+- (struct CGSize)maximumSizeOfTrailingViewForElementView:(SAUIElementView *)arg1;
+- (struct CGSize)maximumSizeOfLeadingViewForElementView:(SAUIElementView *)arg1;
+- (struct CGSize)maximumSizeOfMinimalViewForElementView:(SAUIElementView *)arg1;
 - (_Bool)elementViewShouldCenterProvidedContent:(SAUIElementView *)arg1;
 - (long long)layoutModeForElementView:(SAUIElementView *)arg1;
 @end

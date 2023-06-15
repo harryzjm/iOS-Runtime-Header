@@ -23,7 +23,7 @@
 @property(retain, nonatomic) CKFullScreenEffectManager *fullscreenEffectManager;
 @property(retain, nonatomic) CKImpactEffectManager *impactEffectManager;
 @property(nonatomic) _Bool shouldLoadDefaultConversationViewingMessageCountOnAppear;
-@property(nonatomic, getter=isInitialLoad) _Bool initialLoad;
+@property(nonatomic) _Bool shouldScrollToBottomOnInitialLoad;
 @property(copy, nonatomic) NSIndexSet *poppedBalloonsHiddenUntilNextChatItemUpdate;
 @property(copy, nonatomic) NSIndexSet *hiddenBalloonViews;
 @property(copy, nonatomic) NSIndexSet *hiddenAssociatedItemsForMessageEditing;
@@ -40,6 +40,8 @@
 @property(readonly, nonatomic) IMChat *chat;
 @property(readonly, nonatomic) CKConversation *conversation;
 @property(readonly, nonatomic) NSString *transcriptIdentifier;
+- (void)endPresentingChatItemForKeyboardPresentation:(CKMessagePartChatItem *)arg1 completion:(void (^)(void))arg2;
+- (void)beginPresentingChatItemForKeyboardPresentation:(CKMessagePartChatItem *)arg1 layoutAreaContentInsets:(struct UIEdgeInsets)arg2 completion:(void (^)(void))arg3;
 - (NSArray *)selectedChatItems;
 - (void)copyChatItemsToPasteboard:(NSArray *)arg1;
 - (void)copySelectedChatItemsToPasteboard;
@@ -50,6 +52,7 @@
 - (void)balloonViewTextViewDidChangeSelection:(CKBalloonView *)arg1 selectedText:(NSString *)arg2 textView:(CKBalloonTextView *)arg3;
 - (void)deselectAllBalloons;
 - (void)selectChatItem:(CKChatItem *)arg1;
+- (CKChatItem *)chatItemAtIndexPath:(NSIndexPath *)arg1;
 - (UICollectionViewCell<CKTranscriptCellProtocol> *)cellForAssociatedChatItem:(CKAssociatedMessageChatItem *)arg1;
 - (CKChatItem *)associatedChatItemForGUID:(NSString *)arg1;
 - (CKChatItem *)chatItemForGUID:(NSString *)arg1;
@@ -68,7 +71,7 @@
 - (void)addContentAnimationPauseReasons:(long long)arg1;
 - (void)verticallyScrollTranscriptByAmount:(double)arg1 animated:(_Bool)arg2 completion:(void (^)(void))arg3;
 - (void)highlightItemAtIndexPathWhenDisplayed:(NSIndexPath *)arg1 autoDismiss:(_Bool)arg2;
-- (void)configureCell:(UICollectionViewCell<CKTranscriptCellProtocol> *)arg1 forItemAtIndexPath:(NSIndexPath *)arg2;
+- (void)configureCell:(UICollectionViewCell<CKTranscriptCellProtocol> *)arg1 forCKChatItem:(CKChatItem *)arg2 atIndexPath:(NSIndexPath *)arg3;
 - (void)raiseGestureRecognized:(CKRaiseGesture *)arg1;
 - (_Bool)canRaiseToTalk;
 - (_Bool)canRaiseToListen;
@@ -86,5 +89,8 @@
 - (id)initWithConversation:(CKConversation *)arg1 delegate:(id <CKTranscriptCollectionViewControllerDelegate>)arg2 notifications:(NSArray *)arg3 balloonMaxWidth:(double)arg4 marginInsets:(struct UIEdgeInsets)arg5;
 - (id)initWithConversation:(CKConversation *)arg1 delegate:(id <CKTranscriptCollectionViewControllerDelegate>)arg2 balloonMaxWidth:(double)arg3 marginInsets:(struct UIEdgeInsets)arg4 collectionViewSize:(struct CGSize)arg5;
 - (id)initWithConversation:(CKConversation *)arg1 delegate:(id <CKTranscriptCollectionViewControllerDelegate>)arg2 balloonMaxWidth:(double)arg3 marginInsets:(struct UIEdgeInsets)arg4;
+
+@optional
+- (UIView *)quickReplySnapshotInView:(UIView *)arg1;
 @end
 

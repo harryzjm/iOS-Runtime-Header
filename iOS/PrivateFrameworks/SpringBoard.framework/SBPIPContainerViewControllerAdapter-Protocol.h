@@ -6,7 +6,7 @@
 
 #import <SpringBoard/BSInvalidatable-Protocol.h>
 
-@class NSString, SBDeviceApplicationSceneHandle, SBLayoutStateTransitionContext, SBPIPContainerViewController, UIGestureRecognizer, UIView, UIViewController;
+@class NSNumber, NSString, SBDeviceApplicationSceneHandle, SBLayoutStateTransitionContext, SBPIPContainerViewController, SBWindowScene, UIGestureRecognizer, UIView, UIViewController;
 @protocol SBPIPContainerViewControllerAdapterContextProviding, UIViewSpringAnimationBehaviorDescribing;
 
 @protocol SBPIPContainerViewControllerAdapter <BSInvalidatable>
@@ -18,6 +18,7 @@
 
 @optional
 @property(readonly, nonatomic) _Bool shouldSuppressAssociatedElementsInSystemAperture;
+@property(retain, nonatomic) NSNumber *overrideResourcesUsageReductionTimeout;
 - (void)containerViewController:(SBPIPContainerViewController *)arg1 didUpdateContentViewFrame:(struct CGRect)arg2 reason:(NSString *)arg3;
 - (_Bool)containerViewController:(SBPIPContainerViewController *)arg1 shouldHandleStashingForTransitionContext:(SBLayoutStateTransitionContext *)arg2;
 - (void)containerViewController:(SBPIPContainerViewController *)arg1 didUpdateStashProgress:(double)arg2;
@@ -35,8 +36,10 @@
 - (void)transitionAnimationWillBeginForContainerViewController:(SBPIPContainerViewController *)arg1;
 - (void)containerViewControllerDidEndSizeChange:(SBPIPContainerViewController *)arg1;
 - (void)containerViewControllerWillBeginSizeChange:(SBPIPContainerViewController *)arg1 behavior:(int)arg2;
+- (void)containerViewControllerDidEndEdgeResize:(SBPIPContainerViewController *)arg1;
+- (void)containerViewControllerDidBeginEdgeResize:(SBPIPContainerViewController *)arg1;
 - (void)containerViewControllerPanGestureDidEnd:(SBPIPContainerViewController *)arg1;
-- (void)containerViewControllerDidEndInteraction:(SBPIPContainerViewController *)arg1;
+- (void)containerViewControllerDidEndInteraction:(SBPIPContainerViewController *)arg1 targetWindowScene:(SBWindowScene *)arg2;
 - (void)containerViewController:(SBPIPContainerViewController *)arg1 willBeginInteractionWithGestureRecognizer:(UIGestureRecognizer *)arg2;
 - (void)layoutSubviewsForContainerViewController:(SBPIPContainerViewController *)arg1;
 - (void)loadSubviewsForContainerViewController:(SBPIPContainerViewController *)arg1;

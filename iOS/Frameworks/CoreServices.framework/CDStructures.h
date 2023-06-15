@@ -155,6 +155,7 @@ struct LSBundleData {
     unsigned int deviceFamilies;
     unsigned int identifier;
     unsigned int counterpartIdentifiers;
+    unsigned int equivalentBundleIdentifiers;
     unsigned int filename;
     unsigned int bundleVersion;
     unsigned int shortVersionString;
@@ -196,8 +197,6 @@ struct LSBundleData {
     unsigned char _reserved4;
     unsigned int sandboxEnvironmentVariables;
     unsigned int localizedNameWithContext[1];
-    unsigned int managedPersonas;
-    unsigned int managedPersonaTypes;
     struct LSAppClipFields appClipFields;
     int recordModificationTime;
     unsigned int supportedGameControllers;
@@ -220,6 +219,11 @@ struct LSBundleMoreFlags {
     unsigned int isPlaygroundsApp:1;
     unsigned int supportsAlwaysOnDisplay:1;
     unsigned int defaultsToPrivateAlwaysOnDisplayTreatment:1;
+    unsigned int supportsLiveActivities:1;
+    unsigned int supportsLiveActivitiesFrequentUpdates:1;
+    unsigned int requiresPostprocessing:1;
+    unsigned int hasShellRole:1;
+    unsigned int isSecuredSystemContent:1;
     unsigned int _reserved:1;
 };
 
@@ -311,6 +315,12 @@ struct Rect {
     short _field4;
 };
 
+struct StagingDirectoryInfo {
+    id _field1;
+    id _field2;
+    int _field3;
+};
+
 struct _CSMapHeader;
 
 struct _LSSchemaCache;
@@ -325,6 +335,14 @@ struct optional<LSBinding> {
     union {
         char _field1;
         struct LSBinding _field2;
+    } _field1;
+    _Bool _field2;
+};
+
+struct optional<LaunchServices::StagingDirectoryInfo> {
+    union {
+        char _field1;
+        struct StagingDirectoryInfo _field2;
     } _field1;
     _Bool _field2;
 };
@@ -353,12 +371,48 @@ struct optional<unsigned int> {
     _Bool __engaged_;
 };
 
+struct optional<unsigned long long> {
+    union {
+        char __null_state_;
+        unsigned long long __val_;
+    } ;
+    _Bool __engaged_;
+};
+
 struct os_unfair_lock_s {
     unsigned int _os_unfair_lock_opaque;
 };
 
 struct unfair_lock_mutex {
     unsigned int _os_unfair_lock_opaque;
+};
+
+struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<unsigned long long, LaunchServices::StagingDirectoryInfo>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<unsigned long long, LaunchServices::StagingDirectoryInfo>, void *>*>*>>> {
+    struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<unsigned long long, LaunchServices::StagingDirectoryInfo>, void *>*>**, std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<unsigned long long, LaunchServices::StagingDirectoryInfo>, void *>*>*>>> {
+        void **__value_;
+        struct __bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<unsigned long long, LaunchServices::StagingDirectoryInfo>, void *>*>*>> {
+            struct __compressed_pair<unsigned long, std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<unsigned long long, LaunchServices::StagingDirectoryInfo>, void *>*>*>> {
+                unsigned long long __value_;
+            } __data_;
+        } __value_;
+    } __ptr_;
+};
+
+struct unordered_map<unsigned long long, LaunchServices::StagingDirectoryInfo, std::hash<unsigned long long>, std::equal_to<unsigned long long>, std::allocator<std::pair<const unsigned long long, LaunchServices::StagingDirectoryInfo>>> {
+    struct __hash_table<std::__hash_value_type<unsigned long long, LaunchServices::StagingDirectoryInfo>, std::__unordered_map_hasher<unsigned long long, std::__hash_value_type<unsigned long long, LaunchServices::StagingDirectoryInfo>, std::hash<unsigned long long>, std::equal_to<unsigned long long>>, std::__unordered_map_equal<unsigned long long, std::__hash_value_type<unsigned long long, LaunchServices::StagingDirectoryInfo>, std::equal_to<unsigned long long>, std::hash<unsigned long long>>, std::allocator<std::__hash_value_type<unsigned long long, LaunchServices::StagingDirectoryInfo>>> {
+        struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<unsigned long long, LaunchServices::StagingDirectoryInfo>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<unsigned long long, LaunchServices::StagingDirectoryInfo>, void *>*>*>>> __bucket_list_;
+        struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<unsigned long long, LaunchServices::StagingDirectoryInfo>, void *>*>, std::allocator<std::__hash_node<std::__hash_value_type<unsigned long long, LaunchServices::StagingDirectoryInfo>, void *>>> {
+            struct __hash_node_base<std::__hash_node<std::__hash_value_type<unsigned long long, LaunchServices::StagingDirectoryInfo>, void *>*> {
+                void *__next_;
+            } __value_;
+        } __p1_;
+        struct __compressed_pair<unsigned long, std::__unordered_map_hasher<unsigned long long, std::__hash_value_type<unsigned long long, LaunchServices::StagingDirectoryInfo>, std::hash<unsigned long long>, std::equal_to<unsigned long long>>> {
+            unsigned long long __value_;
+        } __p2_;
+        struct __compressed_pair<float, std::__unordered_map_equal<unsigned long long, std::__hash_value_type<unsigned long long, LaunchServices::StagingDirectoryInfo>, std::equal_to<unsigned long long>, std::hash<unsigned long long>>> {
+            float __value_;
+        } __p3_;
+    } __table_;
 };
 
 struct vector<LSBundleClass, std::allocator<LSBundleClass>> {
@@ -417,6 +471,22 @@ typedef struct optional<LSBinding> {
     } _field1;
     _Bool _field2;
 } optional_430a8fae;
+
+typedef struct optional<LaunchServices::StagingDirectoryInfo> {
+    union {
+        char _field1;
+        struct StagingDirectoryInfo _field2;
+    } _field1;
+    _Bool _field2;
+} optional_c7a1edd4;
+
+typedef struct optional<unsigned long long> {
+    union {
+        char __null_state_;
+        unsigned long long __val_;
+    } ;
+    _Bool __engaged_;
+} optional_78373086;
 
 #pragma mark Typedef'd Unions
 

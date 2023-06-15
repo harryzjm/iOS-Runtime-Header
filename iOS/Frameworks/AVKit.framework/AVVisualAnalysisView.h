@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class NSString, VKCImageAnalysis, VKImageAnalysisInteraction;
 @protocol AVVisualAnalysisViewDelegate;
@@ -12,32 +12,41 @@
 __attribute__((visibility("hidden")))
 @interface AVVisualAnalysisView : UIView
 {
-    _Bool _showsAnalysisButtonIfAvailable;
-    _Bool _analysisButtonVisibleOnlyWhenSelected;
+    _Bool _subjectLiftGestureEnabled;
+    _Bool _wantsAnalysisButtonVisible;
     _Bool _interactionInProgress;
+    _Bool _hasVisualLookupResults;
     id <AVVisualAnalysisViewDelegate> _delegate;
     VKCImageAnalysis *_analysis;
     double _analysisButtonBottomInset;
+    unsigned long long _analysisTypes;
     VKImageAnalysisInteraction *_imageAnalysisInteraction;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) VKImageAnalysisInteraction *imageAnalysisInteraction; // @synthesize imageAnalysisInteraction=_imageAnalysisInteraction;
+@property(nonatomic) unsigned long long analysisTypes; // @synthesize analysisTypes=_analysisTypes;
+@property(nonatomic) _Bool hasVisualLookupResults; // @synthesize hasVisualLookupResults=_hasVisualLookupResults;
 @property(nonatomic, getter=isInteractionInProgress) _Bool interactionInProgress; // @synthesize interactionInProgress=_interactionInProgress;
 @property(nonatomic) double analysisButtonBottomInset; // @synthesize analysisButtonBottomInset=_analysisButtonBottomInset;
-@property(nonatomic) _Bool analysisButtonVisibleOnlyWhenSelected; // @synthesize analysisButtonVisibleOnlyWhenSelected=_analysisButtonVisibleOnlyWhenSelected;
-@property(nonatomic) _Bool showsAnalysisButtonIfAvailable; // @synthesize showsAnalysisButtonIfAvailable=_showsAnalysisButtonIfAvailable;
+@property(nonatomic) _Bool wantsAnalysisButtonVisible; // @synthesize wantsAnalysisButtonVisible=_wantsAnalysisButtonVisible;
 @property(copy, nonatomic) VKCImageAnalysis *analysis; // @synthesize analysis=_analysis;
 @property(nonatomic) __weak id <AVVisualAnalysisViewDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)copySubject;
 - (void)resetSelection;
 - (_Bool)hasActiveTextSelection;
 - (_Bool)highlightsSelectableItems;
 - (id)analysisButton;
-- (void)_updateActionInfoViewHiddenStateIfNeeded;
+@property(readonly, nonatomic) _Bool hasSubjectToCopy;
 @property(readonly, nonatomic) _Bool hasProminentText;
 @property(nonatomic) _Bool highlightsInteractableAreas;
 - (void)_removeInteractionIfNeeded;
 - (void)_addInteractionIfNeeded;
+- (id)initWithFrame:(struct CGRect)arg1;
+- (void)imageAnalysisInteraction:(id)arg1 didTapVisualSearchIndicatorWithNormalizedBoundingBox:(struct CGRect)arg2;
+- (void)imageAnalysisInteractionSubjectInteractionInProgressDidChange:(id)arg1;
+- (void)imageAnalysisInteractionDidCompleteSubjectAnalysis:(id)arg1;
+- (void)imageAnalysisInteraction:(id)arg1 highlightSelectedItemsValueDidChange:(_Bool)arg2;
 - (void)imageAnalysisInteraction:(id)arg1 didRequestLiveTextButtonSelectedState:(_Bool)arg2;
 - (void)imageAnalysisInteraction:(id)arg1 liveTextButtonDidChangeToVisible:(_Bool)arg2;
 - (void)imageAnalysisInteraction:(id)arg1 prepareForCalloutAction:(SEL)arg2 competion:(CDUnknownBlockType)arg3;

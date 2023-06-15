@@ -14,13 +14,13 @@ __attribute__((visibility("hidden")))
 {
     NSURL *_url;
     NSDictionary *_headers;
-    id <VUIImageDecrypter> _decrypter;
     NSString *_identifier;
+    id <VUIImageDecrypter> _decrypter;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(retain, nonatomic) id <VUIImageDecrypter> decrypter; // @synthesize decrypter=_decrypter;
+@property(retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(retain, nonatomic) NSDictionary *headers; // @synthesize headers=_headers;
 @property(retain, nonatomic) NSURL *url; // @synthesize url=_url;
 - (id)initWithURL:(id)arg1 headers:(id)arg2 decrypter:(id)arg3;

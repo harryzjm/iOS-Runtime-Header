@@ -23,7 +23,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)_prepareDiffResultsFromCollectionDifference:(id)arg1;
 - (void)_performFoundationDiffWithOptions:(long long)arg1;
-- (void)_performHeckelDiffWithOptions:(long long)arg1;
 - (void)_performDiffWithOptions:(long long)arg1;
 @property(readonly, nonatomic) NSOrderedCollectionDifference *collectionDifference;
 @property(readonly, nonatomic) _Bool hasChanges;

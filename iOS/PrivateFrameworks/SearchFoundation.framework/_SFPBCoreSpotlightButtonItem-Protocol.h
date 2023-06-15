@@ -10,6 +10,7 @@
 
 @protocol _SFPBCoreSpotlightButtonItem <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
+@property(nonatomic) unsigned long long uniqueId;
 @property(copy, nonatomic) NSString *coreSpotlightIdentifier;
 @property(copy, nonatomic) NSString *applicationBundleIdentifier;
 @property(copy, nonatomic) NSArray *actionItemTypes;

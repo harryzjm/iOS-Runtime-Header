@@ -7,6 +7,7 @@
 #import <LinkMetadata/LNActionConfigurationSwitch.h>
 
 @interface LNActionConfigurationSwitch (LinkServices)
+- (id)actionConfigurationByEvaluatingAction:(id)arg1 context:(id)arg2;
 - (id)actionConfigurationByEvaluatingAction:(id)arg1;
 @end
 

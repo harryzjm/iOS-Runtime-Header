@@ -9,6 +9,7 @@
 @class CKEntity, CKMediaObject, CKMessageEntryContentView, IMPluginPayload, NSArray, NSString;
 
 @protocol CKMessageEntryContentViewDelegate <UIScrollViewDelegate>
+- (_Bool)messageEntryContentViewShouldResignFirstResponder:(CKMessageEntryContentView *)arg1;
 - (void)messageEntryContentViewCancelShowMentionSuggestions:(CKMessageEntryContentView *)arg1;
 - (void)messageEntryContentView:(CKMessageEntryContentView *)arg1 showMentionSuggestionsForEntities:(NSArray *)arg2 replacementRange:(struct _NSRange)arg3 completionHandler:(void (^)(CKEntity *))arg4;
 - (void)messageEntryContentView:(CKMessageEntryContentView *)arg1 insertMention:(NSString *)arg2 entity:(CKEntity *)arg3 replacementRange:(struct _NSRange)arg4;
@@ -31,7 +32,7 @@
 - (_Bool)messageEntryContentViewShouldBeginEditing:(CKMessageEntryContentView *)arg1;
 - (void)messageEntryContentViewShelfDidChange:(CKMessageEntryContentView *)arg1;
 - (void)messageEntryContentViewDidChangeSelection:(CKMessageEntryContentView *)arg1;
-- (void)messageEntryContentViewDidChange:(CKMessageEntryContentView *)arg1;
+- (void)messageEntryContentViewDidChange:(CKMessageEntryContentView *)arg1 isTextChange:(_Bool)arg2;
 - (void)messageEntryContentViewDidReturn:(CKMessageEntryContentView *)arg1;
 @end
 

@@ -10,6 +10,7 @@
 
 @protocol _SFPBSportsTeam <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
+@property(nonatomic) _Bool isWinner;
 @property(retain, nonatomic) _SFPBButtonItem *button;
 @property(copy, nonatomic) NSString *name;
 @property(copy, nonatomic) NSString *accessibilityDescription;

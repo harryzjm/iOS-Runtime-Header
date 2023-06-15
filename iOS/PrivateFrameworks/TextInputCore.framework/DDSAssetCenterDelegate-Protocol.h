@@ -4,9 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
+#import <TextInputCore/NSObject-Protocol.h>
 
-@protocol DDSAssetCenterDelegate
+@class DDSTrialAsset, DDSTrialQuery, NSString;
+
+@protocol DDSAssetCenterDelegate <NSObject>
 - (void)didUpdateAssetsWithType:(NSString *)arg1;
+
+@optional
+- (void)trialDidStopForQuery:(DDSTrialQuery *)arg1;
+- (void)trialDidReceiveAsset:(DDSTrialAsset *)arg1 forQuery:(DDSTrialQuery *)arg2;
 @end
 

@@ -11,7 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface WebQueuedVideoOutputDelegate : NSObject
 {
-    struct WeakPtr<WebCore::QueuedVideoOutput, WTF::EmptyCounter> _parent;
+    struct WeakPtr<WebCore::QueuedVideoOutput, WTF::DefaultWeakPtrImpl> _parent;
 }
 
 - (id).cxx_construct;

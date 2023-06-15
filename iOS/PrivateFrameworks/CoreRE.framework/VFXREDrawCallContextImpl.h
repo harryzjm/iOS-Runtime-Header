@@ -26,7 +26,10 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) void *_samplerTable; // @synthesize _samplerTable=__samplerTable;
 @property(nonatomic) void *_bufferTable; // @synthesize _bufferTable=__bufferTable;
 @property(nonatomic) void *_textureTable; // @synthesize _textureTable=__textureTable;
+@property(readonly, nonatomic) _Bool isDrawingDepthOnly;
+@property(readonly, nonatomic) _Bool isDrawingBlur;
 @property(readonly, nonatomic) id <VFXRERenderTargetInfo> renderTargetInfo;
+- (void)setLateLatchingPatchHandler:(CDUnknownBlockType)arg1;
 - (void)viewports:(const void **)arg1:(long long *)arg2;
 - (_Bool)constantOffsetAndSize:(int)arg1:(id)arg2:(long long *)arg3:(long long *)arg4;
 - (const char *)constantData:(int)arg1;

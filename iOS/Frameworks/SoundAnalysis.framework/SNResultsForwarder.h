@@ -6,26 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
 @interface SNResultsForwarder : NSObject
 {
-    CDUnknownBlockType _completionHandler;
-    CDUnknownBlockType _resultsHandler;
+    MISSING_TYPE *completionHandler;
+    MISSING_TYPE *resultsHandler;
 }
 
 - (void).cxx_destruct;
 - (void)requestDidComplete:(id)arg1;
 - (void)request:(id)arg1 didFailWithError:(id)arg2;
 - (void)request:(id)arg1 didProduceResult:(id)arg2;
+- (id)initWithCompletionHandler:(CDUnknownBlockType)arg1 resultsHandler:(CDUnknownBlockType)arg2;
 - (id)init;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

@@ -9,7 +9,7 @@
 @class NSUUID;
 
 @protocol HFHomeKitObject <NSObject>
-@property(nonatomic, readonly) NSUUID *uniqueIdentifier;
+@property(readonly, copy, nonatomic) NSUUID *uniqueIdentifier;
 
 @optional
 - (_Bool)hf_isValidObject;

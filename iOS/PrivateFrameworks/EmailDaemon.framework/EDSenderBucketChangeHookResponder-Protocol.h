@@ -15,8 +15,8 @@
 - (void)persistenceWillRemoveAddresses:(NSArray *)arg1 fromSender:(EMSender *)arg2;
 - (void)persistenceDidAddAddresses:(NSArray *)arg1 toSender:(EMSender *)arg2 generation:(long long)arg3;
 - (void)persistenceWillAddAddresses:(NSArray *)arg1 toSender:(EMSender *)arg2;
-- (void)persistenceDidChangeSenderBucketForSender:(EMSender *)arg1 toBucket:(long long)arg2 generation:(long long)arg3;
-- (void)persistenceWillChangeSenderBucketForSender:(EMSender *)arg1 toBucket:(long long)arg2;
-- (void)persistenceWillChangeSenderBucketForAddresses:(NSArray *)arg1 toBucket:(long long)arg2;
+- (void)persistenceDidChangeSenders:(NSArray *)arg1 generation:(long long)arg2;
+- (void)persistenceWillChangeSenders:(NSArray *)arg1;
+- (void)persistenceWillChangeSendersForAddresses:(NSArray *)arg1;
 @end
 

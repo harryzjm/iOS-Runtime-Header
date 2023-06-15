@@ -28,7 +28,7 @@
 - (unsigned long long)highQualityShadowsSize;
 - (_Bool)useHighQualityShadows;
 - (float)rotationTrackerSpeed;
-- (float)normalizedLabelPickingSlackForViewScale:(double)arg1 viewport:(const void *)arg2;
+- (float)normalizedLabelPickingSlackForViewScale:(double)arg1 viewport:(void *)arg2;
 - (float)p_labelPickingSlack;
 - (int)p_labelPickingSlackMethod;
 - (_Bool)useLayoutInwardForInsertionIcons;

@@ -4,14 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIPasteboard.h>
+#import <UIKitCore/UIPasteboard.h>
 
 @interface UIPasteboard (PhotosUICore)
 + (id)px_newPasteboardItemProviderForAsset:(id)arg1 fileURL:(id)arg2 utiType:(id)arg3;
 + (id)px_newPasteboardRepresentationForAsset:(id)arg1 data:(id)arg2 utiType:(id)arg3;
 @property(readonly, nonatomic) _Bool px_containsAssets;
 - (id)px_assets;
-- (void)px_setAssetRepresentations:(id)arg1;
-- (void)px_setAssetRepresentation:(id)arg1;
 @end
 

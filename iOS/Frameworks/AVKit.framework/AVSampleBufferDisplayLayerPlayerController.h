@@ -6,25 +6,28 @@
 
 #import "AVPlayerController.h"
 
-@class AVObservationController, AVPictureInPictureController, AVPictureInPicturePlaybackState, AVSampleBufferDisplayLayerPlaybackDelegateAdapter;
+@class AVObservationController, AVPictureInPictureController, AVPictureInPicturePlaybackState, AVSampleBufferDisplayLayerPlaybackDelegateAdapter, AVValueTiming;
 @protocol AVPictureInPictureSampleBufferPlaybackDelegate;
 
 __attribute__((visibility("hidden")))
 @interface AVSampleBufferDisplayLayerPlayerController : AVPlayerController
 {
+    AVValueTiming *_timing;
     _Bool _pictureInPictureAvailable;
     _Bool _paused;
     long long _status;
     long long _timeControlStatus;
+    AVPictureInPicturePlaybackState *_playbackState;
     AVPictureInPictureController *_pictureInPictureController;
     id <AVPictureInPictureSampleBufferPlaybackDelegate> _playbackDelegate;
-    AVPictureInPicturePlaybackState *_playbackState;
     AVObservationController *_sbdlObservationController;
     AVSampleBufferDisplayLayerPlaybackDelegateAdapter *_playbackDelegateAdapter;
     struct CGSize _enqueuedBufferDimensions;
     CDStruct_e83c9415 _contentTimeRange;
 }
 
++ (id)keyPathsForValuesAffectingMaxTiming;
++ (id)keyPathsForValuesAffectingTiming;
 + (id)keyPathsForValuesAffectingHasLiveStreamingContent;
 + (id)keyPathsForValuesAffectingContentDuration;
 + (id)keyPathsForValuesAffectingContentDurationWithinEndTimes;
@@ -33,22 +36,28 @@ __attribute__((visibility("hidden")))
 + (id)keyPathsForValuesAffectingContentDimensions;
 + (id)keyPathsForValuesAffectingPictureInPicturePossible;
 + (id)keyPathsForValuesAffectingPlaying;
++ (id)keyPathsForValuesAffectingTimeControlStatus;
++ (id)keyPathsForValuesAffectingPaused;
 - (void).cxx_destruct;
 @property(retain, nonatomic) AVSampleBufferDisplayLayerPlaybackDelegateAdapter *playbackDelegateAdapter; // @synthesize playbackDelegateAdapter=_playbackDelegateAdapter;
 @property(nonatomic) CDStruct_e83c9415 contentTimeRange; // @synthesize contentTimeRange=_contentTimeRange;
 @property(nonatomic, getter=isPaused) _Bool paused; // @synthesize paused=_paused;
 @property(retain, nonatomic) AVObservationController *sbdlObservationController; // @synthesize sbdlObservationController=_sbdlObservationController;
-@property(copy, nonatomic) AVPictureInPicturePlaybackState *playbackState; // @synthesize playbackState=_playbackState;
 @property(nonatomic) struct CGSize enqueuedBufferDimensions; // @synthesize enqueuedBufferDimensions=_enqueuedBufferDimensions;
 @property(nonatomic) __weak id <AVPictureInPictureSampleBufferPlaybackDelegate> playbackDelegate; // @synthesize playbackDelegate=_playbackDelegate;
 @property(nonatomic) __weak AVPictureInPictureController *pictureInPictureController; // @synthesize pictureInPictureController=_pictureInPictureController;
+@property(copy, nonatomic) AVPictureInPicturePlaybackState *playbackState; // @synthesize playbackState=_playbackState;
 @property(nonatomic) long long timeControlStatus; // @synthesize timeControlStatus=_timeControlStatus;
 @property(nonatomic, getter=isPictureInPictureAvailable) _Bool pictureInPictureAvailable; // @synthesize pictureInPictureAvailable=_pictureInPictureAvailable;
 @property(nonatomic) long long status; // @synthesize status=_status;
 - (void)_startObservation;
 - (void)_updateBackgroundAudioPlaybackPolicy;
 - (void)_updateStatus;
+- (void)_updatePlaybackStateTiming;
 - (_Bool)hasSeekableLiveStreamingContent;
+- (id)maxTiming;
+- (id)minTiming;
+- (id)timing;
 - (_Bool)hasLiveStreamingContent;
 - (double)contentDuration;
 - (double)contentDurationWithinEndTimes;

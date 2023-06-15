@@ -13,6 +13,7 @@
 - (void)photosGlobalFooterView:(PXPhotosGlobalFooterView *)arg1 presentViewController:(NSObject<PXAnonymousViewController> *)arg2;
 
 @optional
+- (void)photosGlobalFooterViewDidMoveToWindow:(PXPhotosGlobalFooterView *)arg1;
 - (void)photosGlobalFooterViewDidChangeHeight:(PXPhotosGlobalFooterView *)arg1;
 @end
 

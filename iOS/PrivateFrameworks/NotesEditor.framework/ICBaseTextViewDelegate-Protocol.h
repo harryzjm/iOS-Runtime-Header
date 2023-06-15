@@ -6,7 +6,7 @@
 
 #import <NotesEditor/UITextViewDelegate-Protocol.h>
 
-@class ICBaseTextView, UIEvent, UITapGestureRecognizer;
+@class ICBaseTextView, NSAttributedString, UIEvent, UITapGestureRecognizer;
 
 @protocol ICBaseTextViewDelegate <UITextViewDelegate>
 - (_Bool)allowsNewTextLength:(unsigned long long)arg1;
@@ -22,6 +22,7 @@
 - (_Bool)shouldStartEditingForTapGesture:(UITapGestureRecognizer *)arg1;
 - (void)stopBlockingMerge;
 - (void)startBlockingMerge;
+- (void)didInvokePasteWithAttributedString:(NSAttributedString *)arg1;
 - (void)didInvokeAnalyticsChecklistActionChecked:(_Bool)arg1;
 - (void)didInvokeAnalyticsCalloutBarButtonActionOfType:(long long)arg1;
 @end

@@ -4,15 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, NSURL;
+#import <PhotosUICore/NSObject-Protocol.h>
 
-@protocol PLDiagnosticsAgent
+@class NSString, NSURL, PLAssetsdClient;
+
+@protocol PLDiagnosticsAgent <NSObject>
+- (void)stopTungstenRecordingWithResultHandler:(void (^)(NSString *))arg1;
+- (void)startTungstenRecordingToDirectoryURL:(NSURL *)arg1 resultHandler:(void (^)(_Bool, NSString *))arg2;
 - (void)setContentPrivacyState:(long long)arg1 resultHandler:(void (^)(NSString *))arg2;
+- (void)timelineForAlbum:(NSString *)arg1 widgetSize:(NSString *)arg2 jsonFormat:(_Bool)arg3 resultHandler:(void (^)(NSString *))arg4;
 - (void)timelineForWidgetSize:(NSString *)arg1 jsonFormat:(_Bool)arg2 resultHandler:(void (^)(NSString *))arg3;
 - (void)captureDescriptionOfPhotoAnalysisWithResultHandler:(void (^)(NSString *))arg1;
 - (void)captureDescriptionOfCloudPhotoLibraryWithResultHandler:(void (^)(NSString *))arg1;
 - (void)captureDescriptionOfStatisticsWithResultHandler:(void (^)(NSString *))arg1;
 - (void)dumpState:(long long)arg1 toDirectoryURL:(NSURL *)arg2 resultHandler:(void (^)(NSString *))arg3;
 - (void)captureDescriptionOfUIState:(long long)arg1 resultHandler:(void (^)(NSString *))arg2;
+
+@optional
+- (PLAssetsdClient *)assetsdClient;
+- (void)setSystemAuthenticationType:(long long)arg1 resultHandler:(void (^)(NSString *))arg2;
 @end
 

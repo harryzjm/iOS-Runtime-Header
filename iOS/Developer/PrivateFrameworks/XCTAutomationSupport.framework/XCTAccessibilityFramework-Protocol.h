@@ -11,11 +11,11 @@
 @protocol XCTAccessibilityFramework <NSObject>
 @property(readonly) _Bool allowsRemoteAccess;
 - (void)performWithAXTimeout:(double)arg1 block:(void (^)(void))arg2;
-- (NSArray *)attributes:(NSArray *)arg1 forElement:(const struct __AXUIElement *)arg2 error:(id *)arg3;
-- (long long)appOrientationForElement:(const struct __AXUIElement *)arg1 error:(id *)arg2;
-- (struct CGRect)frameForElement:(const struct __AXUIElement *)arg1 error:(id *)arg2;
-- (const struct __AXUIElement *)mainWindowForElement:(const struct __AXUIElement *)arg1 error:(id *)arg2;
-- (NSDictionary *)userTestingSnapshotForElement:(const struct __AXUIElement *)arg1 options:(NSDictionary *)arg2 error:(id *)arg3;
+- (NSArray *)attributes:(NSArray *)arg1 forElement:(struct __AXUIElement *)arg2 error:(id *)arg3;
+- (long long)appOrientationForElement:(struct __AXUIElement *)arg1 error:(id *)arg2;
+- (struct CGRect)frameForElement:(struct __AXUIElement *)arg1 error:(id *)arg2;
+- (struct __AXUIElement *)mainWindowForElement:(struct __AXUIElement *)arg1 error:(id *)arg2;
+- (NSDictionary *)userTestingSnapshotForElement:(struct __AXUIElement *)arg1 options:(NSDictionary *)arg2 error:(id *)arg3;
 - (NSDictionary *)attributesForElement:(XCAccessibilityElement *)arg1 attributes:(NSArray *)arg2 error:(id *)arg3;
 @end
 

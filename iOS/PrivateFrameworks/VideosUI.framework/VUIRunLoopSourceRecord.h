@@ -6,16 +6,21 @@
 
 #import <objc/NSObject.h>
 
+@protocol OS_dispatch_queue;
+
 __attribute__((visibility("hidden")))
 @interface VUIRunLoopSourceRecord : NSObject
 {
     CDUnknownBlockType _evaluateBlock;
     CDUnknownBlockType _completionBlock;
+    NSObject<OS_dispatch_queue> *_completionQueue;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *completionQueue; // @synthesize completionQueue=_completionQueue;
 @property(copy, nonatomic) CDUnknownBlockType completionBlock; // @synthesize completionBlock=_completionBlock;
 @property(copy, nonatomic) CDUnknownBlockType evaluateBlock; // @synthesize evaluateBlock=_evaluateBlock;
+- (id)initWithEvaluateBlock:(CDUnknownBlockType)arg1 completionBlock:(CDUnknownBlockType)arg2 completionQueue:(id)arg3;
 - (id)initWithEvaluateBlock:(CDUnknownBlockType)arg1 completionBlock:(CDUnknownBlockType)arg2;
 
 @end

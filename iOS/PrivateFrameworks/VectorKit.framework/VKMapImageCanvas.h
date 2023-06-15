@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
+@class NSArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface VKMapImageCanvas
 {
     void *_mapEngine;
     struct _retain_ptr<VKManifestTileGroupObserverProxy *, geo::_retain_objc_arc, geo::_release_objc_arc, geo::_hash_objc, geo::_equal_objc> _manifestTileGroupObserverProxy;
+    struct shared_ptr<md::OverlayContainer> _overlayContainer;
 }
 
 - (id).cxx_construct;
@@ -18,10 +19,13 @@ __attribute__((visibility("hidden")))
 - (void)tileGroupDidChange;
 - (void)cancelTileRequests;
 - (void)clearScene;
+- (void)addOverlay:(id)arg1;
+- (void)updateOverlays;
 - (void)setMapType:(int)arg1;
 - (void)resetCameraController;
 - (void)updateWithTimestamp:(double)arg1 withContext:(void *)arg2;
 - (void)dealloc;
+@property(readonly, nonatomic) NSArray *overlays;
 - (id)initWithMapEngine:(void *)arg1;
 
 // Remaining properties

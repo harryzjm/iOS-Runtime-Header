@@ -54,6 +54,7 @@ __attribute__((visibility("hidden")))
     CDUnknownFunctionPointerType _rtcpPacketsCallback;
 }
 
+- (void)setJitterBufferMode:(int)arg1;
 - (void)handleActiveConnectionChange:(id)arg1;
 - (void)reportingVideoStreamEvent:(unsigned short)arg1;
 - (void)gatherRealtimeStats:(struct __CFDictionary *)arg1;

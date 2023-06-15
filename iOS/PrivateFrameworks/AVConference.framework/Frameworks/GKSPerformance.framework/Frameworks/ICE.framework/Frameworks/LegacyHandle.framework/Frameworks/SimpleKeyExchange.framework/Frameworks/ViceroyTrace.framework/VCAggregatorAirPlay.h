@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableDictionary, NSString, VCHistogram;
+@class NSMutableDictionary, NSString, VCReportingHistogram;
 
 __attribute__((visibility("hidden")))
 @interface VCAggregatorAirPlay
@@ -69,17 +69,17 @@ __attribute__((visibility("hidden")))
     unsigned int _maxVideoFrameErasureCount;
     unsigned int _maxVideoStallCount;
     unsigned int _minVideoFrameRate;
-    VCHistogram *_RBR;
-    VCHistogram *_TBR;
-    VCHistogram *_SBR;
-    VCHistogram *_VST;
-    VCHistogram *_PLR;
-    VCHistogram *_BPL;
-    VCHistogram *_EXT;
-    VCHistogram *_BWE;
-    VCHistogram *_VJS;
-    VCHistogram *_RTT;
-    VCHistogram *_HEL;
+    VCReportingHistogram *_RBR;
+    VCReportingHistogram *_TBR;
+    VCReportingHistogram *_SBR;
+    VCReportingHistogram *_VST;
+    VCReportingHistogram *_PLR;
+    VCReportingHistogram *_BPL;
+    VCReportingHistogram *_EXT;
+    VCReportingHistogram *_BWE;
+    VCReportingHistogram *_VJS;
+    VCReportingHistogram *_RTT;
+    VCReportingHistogram *_HEL;
     NSMutableDictionary *_fecStatsDict;
     int _twoPtFourGhzChannelCount;
     int _fiveGhzChannelCount;

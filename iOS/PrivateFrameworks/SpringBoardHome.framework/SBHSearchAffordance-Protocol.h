@@ -12,6 +12,7 @@
 @property(nonatomic) double searchAffordanceCornerRadius;
 @property(nonatomic) _Bool appliesSearchAffordanceCornerRadius;
 @property(readonly, nonatomic) struct CGRect searchAffordanceReferenceFrame;
+@property(readonly, nonatomic) __weak UIView *searchAffordanceReferenceContainerView;
 @property(readonly, nonatomic) UIView *searchAffordanceReferenceView;
 @property(nonatomic) long long searchAffordanceContentAlignment;
 @property(readonly, nonatomic) UIView *searchAffordanceContentView;

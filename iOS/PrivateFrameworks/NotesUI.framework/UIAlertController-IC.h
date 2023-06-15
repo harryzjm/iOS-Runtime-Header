@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIAlertController.h>
+#import <UIKitCore/UIAlertController.h>
 
 @interface UIAlertController (IC)
 + (void)ic_showAlertWithTitle:(id)arg1 message:(id)arg2 viewController:(id)arg3;

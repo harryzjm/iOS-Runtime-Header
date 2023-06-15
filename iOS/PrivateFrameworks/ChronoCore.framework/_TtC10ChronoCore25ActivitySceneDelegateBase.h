@@ -13,9 +13,18 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *window;
     MISSING_TYPE *logger;
+    MISSING_TYPE *clientLogger;
     MISSING_TYPE *viewLogger;
     MISSING_TYPE *logIdentifier;
-    MISSING_TYPE *viewModel;
+    MISSING_TYPE *metricsDefinition;
+    MISSING_TYPE *activityService;
+    MISSING_TYPE *descriptorService;
+    MISSING_TYPE *descriptor;
+    MISSING_TYPE *scene;
+    MISSING_TYPE *_validated;
+    MISSING_TYPE *_isForeground;
+    MISSING_TYPE *_viewModels;
+    MISSING_TYPE *_hasUI;
 }
 
 - (void).cxx_destruct;

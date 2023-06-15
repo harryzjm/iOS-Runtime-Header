@@ -7,7 +7,7 @@
 #import <PhotosUICore/PXActivity.h>
 
 @class NSObject, NSString, PUPhotoStreamComposeServiceViewController, PXVideoTrimQueueController, UIViewController;
-@protocol PLUserEditableAlbumProtocol, PUAlbumStreamActivityDelegate, PXActivityItemSourceController;
+@protocol OS_dispatch_queue, PLUserEditableAlbumProtocol, PXActivityItemSourceController;
 
 __attribute__((visibility("hidden")))
 @interface PUAlbumStreamActivity : PXActivity
@@ -18,21 +18,19 @@ __attribute__((visibility("hidden")))
     UIViewController *_presenterViewController;
     UIViewController *_activityController;
     PXVideoTrimQueueController *_trimController;
+    NSObject<OS_dispatch_queue> *_serialQueue;
     _Bool _isPresentedFromActivityViewController;
     _Bool _destinationAlbumWasCreated;
     id <PXActivityItemSourceController> _itemSourceController;
     NSObject<PLUserEditableAlbumProtocol> *_destinationStreamingAlbum;
     UIViewController *_referenceViewController;
-    id <PUAlbumStreamActivityDelegate> _albumStreamDelegate;
 }
 
 + (id)customExportsOutputDirectoryForAsset:(id)arg1;
 + (id)customExportsOutputDirectoryParent;
-+ (void)_recordRecentInvitationRecipient:(id)arg1 displayName:(id)arg2 date:(id)arg3;
 + (long long)activityCategory;
 + (_Bool)canPerformWithAssets:(id)arg1;
 - (void).cxx_destruct;
-@property(nonatomic) __weak id <PUAlbumStreamActivityDelegate> albumStreamDelegate; // @synthesize albumStreamDelegate=_albumStreamDelegate;
 @property(nonatomic) __weak UIViewController *referenceViewController; // @synthesize referenceViewController=_referenceViewController;
 @property _Bool destinationAlbumWasCreated; // @synthesize destinationAlbumWasCreated=_destinationAlbumWasCreated;
 @property(retain, nonatomic) NSObject<PLUserEditableAlbumProtocol> *destinationStreamingAlbum; // @synthesize destinationStreamingAlbum=_destinationStreamingAlbum;
@@ -46,6 +44,8 @@ __attribute__((visibility("hidden")))
 - (void)controller:(id)arg1 dismissViewControllerWithCompletion:(CDUnknownBlockType)arg2;
 - (void)controller:(id)arg1 presentViewController:(id)arg2;
 - (void)_publishAssets:(id)arg1 withSharingInfos:(id)arg2 customExportsInfo:(id)arg3 andTrimmedVideoPathInfo:(id)arg4 toAlbum:(id)arg5 orCreateWithName:(id)arg6 comment:(id)arg7 invitationRecipients:(id)arg8 wantsPublicWebsite:(_Bool)arg9 completion:(CDUnknownBlockType)arg10;
+- (void)_trimAssetsToPost:(id)arg1 albumName:(id)arg2 recipients:(id)arg3 comments:(id)arg4 assets:(id)arg5 assetsSharingInfo:(id)arg6 customExportsInfo:(id)arg7;
+- (void)_prepareToPostAsync:(id)arg1 albumName:(id)arg2 recipients:(id)arg3 comments:(id)arg4 assets:(id)arg5;
 - (void)_prepareToPost:(id)arg1 albumName:(id)arg2 recipients:(id)arg3 comments:(id)arg4 assets:(id)arg5;
 - (void)presentActivityOnViewController:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (_Bool)_presentActivityOnViewController:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
@@ -56,7 +56,6 @@ __attribute__((visibility("hidden")))
 - (id)activityViewController;
 - (void)prepareWithAssets:(id)arg1;
 - (void)prepareWithActivityItems:(id)arg1;
-- (id)_selectedVideo;
 - (_Bool)canPerformWithActivityItems:(id)arg1;
 - (id)_activityBundleImageConfiguration;
 - (id)activityImage;

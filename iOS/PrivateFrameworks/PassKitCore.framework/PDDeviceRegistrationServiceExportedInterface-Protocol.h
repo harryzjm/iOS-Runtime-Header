@@ -9,6 +9,6 @@
 @class NSString, NSURL;
 
 @protocol PDDeviceRegistrationServiceExportedInterface <PDXPCServiceExportedInterface>
-- (void)performDeviceRegistrationForReason:(NSString *)arg1 brokerURL:(NSURL *)arg2 actionType:(long long)arg3 completion:(void (^)(unsigned long long, NSError *))arg4;
+- (void)performDeviceRegistrationReturningContextForReason:(NSString *)arg1 brokerURL:(NSURL *)arg2 actionType:(long long)arg3 completion:(void (^)(unsigned long long, PKPaymentWebServiceContext *, NSError *))arg4;
 @end
 

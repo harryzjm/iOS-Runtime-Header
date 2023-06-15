@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSDate, NSNumber, NSPredicate, NSString, _CDInteractionAdvisorSettings, _PSCNAutocompleteFeedback, _PSMapsPredictionContext, _PSMessagesPinningFeedback, _PSPredictionContext, _PSSiriHandleRankerPredictionContext;
+@class NSArray, NSDate, NSDictionary, NSNumber, NSPredicate, NSString, _CDInteractionAdvisorSettings, _PSCNAutocompleteFeedback, _PSMapsPredictionContext, _PSMessagesPinningFeedback, _PSPredictionContext, _PSSiriHandleRankerPredictionContext;
 @protocol _CDInteractionXPCHeartBeatProtocol;
 
 @protocol _CDInteractionXPCProtocol
@@ -22,10 +22,14 @@
 - (void)rankedAutocompleteSuggestionsFromContext:(_PSPredictionContext *)arg1 candidates:(NSArray *)arg2 reply:(void (^)(NSArray *))arg3;
 - (void)rankedNameSuggestionsFromContext:(_PSPredictionContext *)arg1 name:(NSString *)arg2 reply:(void (^)(NSArray *))arg3;
 - (void)rankedSiriNLContactSuggestionsFromContext:(_PSPredictionContext *)arg1 maxSuggestions:(NSNumber *)arg2 interactionId:(NSString *)arg3 reply:(void (^)(NSArray *))arg4;
+- (void)rankedGlobalSuggestionsFromContext:(_PSPredictionContext *)arg1 contactsOnly:(_Bool)arg2 maxSuggestions:(NSNumber *)arg3 excludeBackfillSuggestions:(_Bool)arg4 reply:(void (^)(NSArray *))arg5;
 - (void)rankedGlobalSuggestionsFromContext:(_PSPredictionContext *)arg1 contactsOnly:(_Bool)arg2 maxSuggestions:(NSNumber *)arg3 reply:(void (^)(NSArray *))arg4;
 - (void)provideFeedbackForContactsAutocompleteSuggestions:(_PSCNAutocompleteFeedback *)arg1;
 - (void)zkwSuggestionsFromContext:(_PSPredictionContext *)arg1 maxSuggestions:(NSNumber *)arg2 reply:(void (^)(NSArray *))arg3;
 - (void)mapsSuggestionsFromContext:(_PSMapsPredictionContext *)arg1 maxSuggestions:(NSNumber *)arg2 reply:(void (^)(NSArray *))arg3;
+- (void)computeShareSheetEphemeralFeaturesWithPredictionContext:(_PSPredictionContext *)arg1 reply:(void (^)(NSDictionary *))arg2;
+- (void)validateCoreMLScoringModelWithRawInput:(NSDictionary *)arg1 predictionContext:(_PSPredictionContext *)arg2 reply:(void (^)(_PSPredictionContext *))arg3;
+- (void)candidatesForShareSheetRanking:(void (^)(NSSet *))arg1;
 - (void)shareExtensionSuggestionsFromContext:(_PSPredictionContext *)arg1 reply:(void (^)(NSArray *))arg2;
 - (void)suggestInteractionsFromContext:(_PSPredictionContext *)arg1 maxSuggestions:(NSNumber *)arg2 reply:(void (^)(NSArray *, _PSPredictionContext *))arg3;
 - (void)tuneSocialAdvisorUsingSettings:(_CDInteractionAdvisorSettings *)arg1 heartBeatHandler:(id <_CDInteractionXPCHeartBeatProtocol>)arg2 reply:(void (^)(void))arg3;
@@ -34,6 +38,7 @@
 - (void)adviseInteractionsForDate:(NSDate *)arg1 usingSettings:(_CDInteractionAdvisorSettings *)arg2 reply:(void (^)(NSArray *))arg3;
 - (void)adviseInteractionsUsingSettings:(_CDInteractionAdvisorSettings *)arg1 reply:(void (^)(NSArray *))arg2;
 - (void)rankCandidateContacts:(NSArray *)arg1 usingSettings:(_CDInteractionAdvisorSettings *)arg2 reply:(void (^)(NSArray *))arg3;
+- (void)deleteInteractionsWithBundleId:(NSString *)arg1 domainIdentifiers:(NSArray *)arg2 reply:(void (^)(unsigned long long, NSError *))arg3;
 - (void)deleteInteractionsWithBundleId:(NSString *)arg1 domainIdentifier:(NSString *)arg2 reply:(void (^)(unsigned long long, NSError *))arg3;
 - (void)deleteInteractionsWithBundleId:(NSString *)arg1 account:(NSString *)arg2 reply:(void (^)(unsigned long long, NSError *))arg3;
 - (void)deleteInteractionsWithBundleId:(NSString *)arg1 reply:(void (^)(unsigned long long, NSError *))arg2;

@@ -20,6 +20,7 @@
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 @property(readonly, nonatomic) NSString *hashedDescription;
+- (_Bool)ams_shouldReplaceCookie:(id)arg1;
 - (_Bool)ams_matchesURL:(id)arg1;
 - (_Bool)ams_isEquivalent:(id)arg1;
 - (_Bool)ams_isEqualToCookie:(id)arg1;

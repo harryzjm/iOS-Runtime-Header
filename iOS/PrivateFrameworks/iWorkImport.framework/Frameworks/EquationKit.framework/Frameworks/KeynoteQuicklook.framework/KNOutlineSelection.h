@@ -17,6 +17,7 @@
 @property(readonly, nonatomic) NSDictionary *selectedParagraphIndexesForSlideNodes; // @synthesize selectedParagraphIndexesForSlideNodes=_selectedParagraphIndexesForSlideNodes;
 - (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
 - (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2;
+- (id)updatedOutlineSelectionWithTextSelection:(id)arg1;
 - (id)estimatedTextSelection;
 - (struct _NSRange)absoluteRangeInStorage:(id)arg1;
 - (unsigned long long)hash;

@@ -11,6 +11,6 @@
 
 @protocol WBSURLCompletionDataSource <NSObject>
 - (id <WBSURLCompletionMatchData>)fakeBookmarkMatchDataWithURLString:(NSString *)arg1 title:(NSString *)arg2 shouldPreload:(_Bool)arg3;
-- (void)enumerateMatchDataForTypedStringHint:(WBSURLCompletionUserTypedString *)arg1 options:(unsigned long long)arg2 withBlock:(void (^)(id <WBSURLCompletionMatchData>))arg3;
+- (void)enumerateMatchDataForTypedStringHint:(WBSURLCompletionUserTypedString *)arg1 filterResultsUsingProfileUUIDString:(NSString *)arg2 options:(unsigned long long)arg3 withBlock:(void (^)(id <WBSURLCompletionMatchData>))arg4;
 @end
 

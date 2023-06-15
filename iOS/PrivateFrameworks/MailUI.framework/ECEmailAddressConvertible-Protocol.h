@@ -10,7 +10,7 @@
 @class ECEmailAddress, NSString;
 
 @protocol ECEmailAddressConvertible <NSObject, NSCopying>
-@property(nonatomic, readonly) NSString *stringValue;
-@property(nonatomic, readonly) ECEmailAddress *emailAddressValue;
+@property(readonly, nonatomic) NSString *stringValue;
+@property(readonly, nonatomic) ECEmailAddress *emailAddressValue;
 @end
 

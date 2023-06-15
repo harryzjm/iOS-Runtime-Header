@@ -14,13 +14,9 @@
 - (id)_ui_constraintWithPriority:(float)arg1;
 - (id)_ola_dimensionItem;
 - (id)_ola_dimensionRefItem;
-- (id)_uiSecondRefView;
-- (id)_uiFirstRefView;
 @property(getter=_encodedConstant, setter=_setEncodedConstant:) _NSLayoutConstraintConstant *encodedConstant;
 - (id)_debuggableEquationDescriptionWithoutLegend;
 - (id)_debuggableEquationLegendDescription;
 - (id)_debuggableEquationBaseDescription;
-- (id)_baselineLoweringInfoForFirstItem:(_Bool)arg1;
-- (void)_setBaselineLoweringInfo:(id)arg1 forFirstItem:(_Bool)arg2;
 @end
 

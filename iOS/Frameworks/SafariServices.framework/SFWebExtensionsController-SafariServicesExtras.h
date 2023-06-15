@@ -10,11 +10,13 @@
 - (void)dismissDialogView:(id)arg1 withAdditionalAnimations:(CDUnknownBlockType)arg2 forDialogController:(id)arg3;
 - (void)presentDialogView:(id)arg1 withAdditionalAnimations:(CDUnknownBlockType)arg2 forDialogController:(id)arg3;
 - (int)webProcessIDForDialogController:(id)arg1;
+- (long long)dialogController:(id)arg1 presentationPolicyForDialog:(id)arg2;
 - (void)dialogController:(id)arg1 dismissViewController:(id)arg2 withAdditionalAnimations:(CDUnknownBlockType)arg3;
 - (void)dialogController:(id)arg1 presentViewController:(id)arg2 withAdditionalAnimations:(CDUnknownBlockType)arg3;
 - (void)createNewTabFromBackgroundPageWithURL:(id)arg1;
-- (id)_presentingViewController;
 - (id)_dialogController;
+- (void)cancelPresentedDialogIfNecessaryAndUnqueuePendingWebExtensionDialogs;
+- (void)_showPromptForExtensionDisabledBecauseItHasRequestedAdditionalPermissions:(id)arg1 extensionIdentifier:(id)arg2;
 - (void)showPromptForExpiredExtension:(id)arg1 extensionName:(id)arg2;
 - (void)showPromptForBlocklistedExtension:(id)arg1 extensionName:(id)arg2;
 - (void)showPromptForExtensionDisabledBecauseItDoesNotSupportThisVersionOfSafariWithMessage:(id)arg1 extensionIdentifier:(id)arg2;

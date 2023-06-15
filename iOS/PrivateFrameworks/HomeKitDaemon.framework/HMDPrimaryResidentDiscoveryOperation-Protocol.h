@@ -6,11 +6,12 @@
 
 #import <HomeKitDaemon/NSObject-Protocol.h>
 
-@class HMDResidentDevice, HMFFuture, NSError;
+@class HMDResidentDevice, HMFFuture, NSError, NSUUID;
 
 @protocol HMDPrimaryResidentDiscoveryOperation <NSObject>
 @property(readonly, getter=isCancelled) _Bool cancelled;
 @property(readonly) NSError *error;
+@property(readonly) NSUUID *currentPrimaryResidentGenerationID;
 @property(readonly) HMDResidentDevice *currentPrimaryResident;
 @property(readonly) HMFFuture *completionFuture;
 - (void)cancel;

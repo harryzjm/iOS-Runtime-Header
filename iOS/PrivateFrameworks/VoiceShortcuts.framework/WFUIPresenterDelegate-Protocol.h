@@ -6,14 +6,15 @@
 
 #import <VoiceShortcuts/NSObject-Protocol.h>
 
-@class NSNumber, WFDialogRequest, WFWorkflowRunningContext;
+@class WFDialogRequest, WFWorkflowRunViewSource, WFWorkflowRunningContext;
 
 @protocol WFUIPresenterDelegate <NSObject>
 
 @optional
 - (void)presenterWillDismissPresentedContent;
+- (void)presenterRequestedUpdatedRunViewSource:(WFWorkflowRunViewSource *)arg1 completionHandler:(void (^)(WFWorkflowRunViewSource *, NSError *))arg2;
 - (void)presenterRequestedWorkflowPauseForContext:(WFWorkflowRunningContext *)arg1 dialogRequest:(WFDialogRequest *)arg2;
-- (void)presenterDidResumeDialogPresentationWithQueuedDialogs:(NSNumber *)arg1;
+- (void)presenterRequestedWorkflowStopForContext:(WFWorkflowRunningContext *)arg1;
 - (void)presenterDidReceiveSuspendedResponseForRequest:(WFDialogRequest *)arg1 runningContext:(WFWorkflowRunningContext *)arg2 withCompletionHandler:(void (^)(WFDialogResponse *, NSError *))arg3;
 - (_Bool)presenterWillShowRequest:(WFDialogRequest *)arg1 runningContext:(WFWorkflowRunningContext *)arg2 withCompletionHandler:(void (^)(WFDialogResponse *, NSError *))arg3;
 @end

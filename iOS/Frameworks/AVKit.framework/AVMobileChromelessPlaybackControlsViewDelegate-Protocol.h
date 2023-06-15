@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <AVKit/NSObject-Protocol.h>
+
 @class AVMobileChromelessPlaybackControlsView;
 
-@protocol AVMobileChromelessPlaybackControlsViewDelegate
-- (void)playbackControlsViewRightSecondaryControlWasPressed:(AVMobileChromelessPlaybackControlsView *)arg1;
-- (void)playbackControlsViewLeftSecondaryControlWasPressed:(AVMobileChromelessPlaybackControlsView *)arg1;
+@protocol AVMobileChromelessPlaybackControlsViewDelegate <NSObject>
+- (void)playbackControlsViewForwardSecondaryControlWasPressed:(AVMobileChromelessPlaybackControlsView *)arg1;
+- (void)playbackControlsViewBackwardSecondaryControlWasPressed:(AVMobileChromelessPlaybackControlsView *)arg1;
 - (void)playbackControlsViewPlayPauseButtonWasPressed:(AVMobileChromelessPlaybackControlsView *)arg1;
 @end
 

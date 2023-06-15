@@ -6,9 +6,12 @@
 
 #import <Photos/PHPhotoLibrary.h>
 
-@class PHFetchOptions, PXPhotoLibraryLocalDefaults, PXSharedLibrarySharingSuggestionsCountsManager;
+@class PHFetchOptions, PXPhotoKitVirtualCollections, PXPhotoLibraryLocalDefaults, PXSharedLibrarySharingSuggestionsCountsManager;
 
 @interface PHPhotoLibrary (CountsManager)
++ (id)px_transientIdentifierForWellKnownAssetCollectionName:(id)arg1;
++ (void)px_setAppPhotoLibraryForTesting:(id)arg1;
++ (id)px_appPhotoLibraryForTesting;
 + (id)px_systemPhotoLibrary;
 + (id)px_appPhotoLibrary;
 + (id)px_deprecated_appPhotoLibrary;
@@ -21,7 +24,9 @@
 - (id)px_assetCollectionForSmartAlbumWithSubtype:(long long)arg1;
 - (id)px_objectWithLocalIdentifier:(id)arg1;
 - (_Bool)px_fetchHasNoVisibleAssets;
+@property(readonly, nonatomic) unsigned long long px_peoplePetsHomeVisibility;
 @property(readonly) PXPhotoLibraryLocalDefaults *px_localDefaults;
+@property(readonly, nonatomic) PXPhotoKitVirtualCollections *px_virtualCollections;
 @property(readonly, nonatomic, getter=px_areChangesPaused) _Bool px_changesPaused;
 - (void)px_endPausingChanges:(id)arg1;
 - (id)px_beginPausingChangesWithTimeout:(double)arg1 identifier:(id)arg2;

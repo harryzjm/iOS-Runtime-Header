@@ -10,6 +10,6 @@
 
 @protocol _HKObjectPickerPresentationController <NSObject>
 - (void)cancelPresentation;
-- (void)presentWithSession:(HKObjectAuthorizationPromptSession *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
+- (void)presentWithSession:(HKObjectAuthorizationPromptSession *)arg1 authorizationViewControllerPresenter:(id)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 @end
 

@@ -9,6 +9,11 @@
 @class NSDictionary, NSString;
 
 @protocol MFComposeBodyFieldController <MSComposeBodyFieldController>
+- (void)addTextDescriptionToLink:(NSString *)arg1;
+- (void)removeLink;
+- (void)setEditLinkFlag;
+- (void)updateLinkFromExistingLink:(NSString *)arg1 isEditing:(_Bool)arg2;
+- (void)addLink:(NSString *)arg1;
 - (void)setDirty:(_Bool)arg1 completionHandler:(void (^)(void))arg2;
 - (void)placeCaretAtStartOfBody;
 - (void)htmlStringsAttachmentURLsAndPlainTextAlternativeRemovingSignature:(_Bool)arg1 attachmentInfoByIdentifier:(NSDictionary *)arg2 completion:(void (^)(ECHTMLStringAndMIMECharset *, NSArray *, NSArray *, NSArray *))arg3;
@@ -22,8 +27,7 @@
 - (void)replaceFilenamePlaceholderWithAttachment:(NSString *)arg1 identifier:(NSString *)arg2;
 - (void)replaceFilenamePlaceholderWithImage:(NSString *)arg1 completionHandler:(void (^)(NSString *))arg2;
 - (void)countDuplicatedAttachments:(NSString *)arg1 completionHandler:(void (^)(NSNumber *))arg2;
-- (void)insertAttachmentAsImage:(_Bool)arg1 isSinglePagePDF:(_Bool)arg2 completionHandler:(void (^)(NSString *))arg3;
-- (void)setFileName:(NSString *)arg1 forImageWithContentID:(NSString *)arg2;
+- (void)insertAttachmentAsImage:(_Bool)arg1 isSinglePagePDF:(_Bool)arg2 contentType:(NSString *)arg3 completionHandler:(void (^)(NSString *))arg4;
 - (void)replaceImagesIfNecessary;
 - (void)setReplacementFilenamesByContentID:(NSDictionary *)arg1;
 - (void)addMailAttributesBeforeDisplayHidingTrailingEmptyQuotes:(_Bool)arg1 shouldQuote:(_Bool)arg2;

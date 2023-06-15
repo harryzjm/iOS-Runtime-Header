@@ -6,28 +6,24 @@
 
 #import "MPAsyncOperation.h"
 
-@class MPModelLibraryRequest, NSOperationQueue;
+@class MPModelLibraryRequest;
 
 __attribute__((visibility("hidden")))
 @interface MPModelLibraryRequestOperation : MPAsyncOperation
 {
     MPModelLibraryRequest *_request;
     CDUnknownBlockType _responseHandler;
-    NSOperationQueue *_operationQueue;
-    NSOperationQueue *_serialAccessQueue;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSOperationQueue *serialAccessQueue; // @synthesize serialAccessQueue=_serialAccessQueue;
-@property(retain, nonatomic) NSOperationQueue *operationQueue; // @synthesize operationQueue=_operationQueue;
 @property(copy, nonatomic) CDUnknownBlockType responseHandler; // @synthesize responseHandler=_responseHandler;
 @property(copy, nonatomic) MPModelLibraryRequest *request; // @synthesize request=_request;
+- (void)_executeNewRequest;
 - (id)_sectionProperties;
 - (void)_sanityCheckRequest;
 - (id)_libraryView;
 - (id)_itemProperties;
 - (void)_insertPropertyCacheForEntityPID:(long long)arg1 entityClass:(void *)arg2 entityTranslator:(id)arg3 translationContext:(id)arg4 propertyCachesVector:(const void *)arg5;
-- (void)_executeRequest;
 - (void)_executeLegacyRequest;
 - (void)execute;
 

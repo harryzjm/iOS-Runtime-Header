@@ -12,6 +12,7 @@
 __attribute__((visibility("hidden")))
 @interface _UIWebGeolocationChallengeData : NSObject
 {
+    NSString *_userVisibleDomain;
     NSString *_token;
     NSURL *_requestingURL;
     UIView *_view;
@@ -22,6 +23,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIView *view; // @synthesize view=_view;
 @property(retain, nonatomic) NSURL *requestingURL; // @synthesize requestingURL=_requestingURL;
 @property(retain, nonatomic) NSString *token; // @synthesize token=_token;
+@property(retain, nonatomic) NSString *userVisibleDomain; // @synthesize userVisibleDomain=_userVisibleDomain;
 - (void)dealloc;
 
 @end

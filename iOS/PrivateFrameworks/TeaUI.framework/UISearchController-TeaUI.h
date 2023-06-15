@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UISearchController.h>
+#import <UIKitCore/UISearchController.h>
 
 @interface UISearchController (TeaUI)
 - (void)presenterDidAppear:(id)arg1;

@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) unsigned long long pixelFormat; // @synthesize pixelFormat=_pixelFormat;
 @property(readonly) unsigned long long dataType; // @synthesize dataType=_dataType;
 @property(readonly) NSString *airMDType; // @synthesize airMDType=_airMDType;
+- (_Bool)isEqual:(id)arg1;
 - (id)description;
 - (id)formattedDescription:(unsigned long long)arg1;
 - (void)dealloc;

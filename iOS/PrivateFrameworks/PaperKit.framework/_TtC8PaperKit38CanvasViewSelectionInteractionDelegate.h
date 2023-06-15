@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)init;
+- (_Bool)selectionInteraction:(id)arg1 handleDoubleTapOnCanvasAtLocation:(struct CGPoint)arg2;
 - (void)selectionInteraction:(id)arg1 contextMenuInteraction:(id)arg2 willEndForConfiguration:(id)arg3 animator:(id)arg4 forElement:(id)arg5 inAttachment:(id)arg6;
 - (void)selectionInteraction:(id)arg1 contextMenuInteraction:(id)arg2 willDisplayMenuForConfiguration:(id)arg3 animator:(id)arg4 forElement:(id)arg5 inAttachment:(id)arg6;
 - (id)selectionInteraction:(id)arg1 contextMenuInteraction:(id)arg2 previewForHighlightingMenuWithConfiguration:(id)arg3 forElement:(id)arg4 inAttachment:(id)arg5;
@@ -36,6 +37,9 @@ __attribute__((visibility("hidden")))
 - (id)selectionInteraction:(id)arg1 pasteboardRepresentationsForElements:(id)arg2 strokes:(id)arg3 inAttachment:(id)arg4;
 - (_Bool)selectionInteraction:(id)arg1 canPerformAction:(SEL)arg2 withSender:(id)arg3 inAttachment:(id)arg4;
 - (void)selectionInteraction:(id)arg1 didClearSelectionForElements:(id)arg2 inAttachment:(id)arg3;
+- (void)selectionInteraction:(id)arg1 didEndInsertSpaceInAttachment:(id)arg2;
+- (void)selectionInteraction:(id)arg1 insertSpaceDidMove:(double)arg2 inAttachment:(id)arg3;
+- (void)selectionInteraction:(id)arg1 willBeginInsertSpaceInAttachment:(id)arg2;
 - (void)selectionInteraction:(id)arg1 didEndDraggingElements:(id)arg2 inAttachment:(id)arg3;
 - (void)selectionInteraction:(id)arg1 didDragElements:(id)arg2 withTransform:(struct CGAffineTransform)arg3 inAttachment:(id)arg4;
 - (void)selectionInteraction:(id)arg1 didSelectElements:(id)arg2 inAttachment:(id)arg3;

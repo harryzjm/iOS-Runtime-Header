@@ -10,6 +10,7 @@
 @protocol GEOTransitDeparture;
 
 @protocol GEOTransitTripStop <NSObject>
+@property(readonly, nonatomic, getter=isHidden) _Bool hidden;
 @property(readonly, nonatomic) GEOStyleAttributes *styleAttributes;
 @property(readonly, nonatomic) GEOLatLng *location;
 @property(readonly, nonatomic) unsigned long long stationIdentifier;

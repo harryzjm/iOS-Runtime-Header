@@ -16,7 +16,6 @@ __attribute__((visibility("hidden")))
     BRCItemGlobalID *_prevZoneGlobalID;
 }
 
-+ (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(retain, nonatomic) BRCItemGlobalID *prevZoneGlobalID; // @synthesize prevZoneGlobalID=_prevZoneGlobalID;
 @property(retain, nonatomic) NSError *uploadError; // @synthesize uploadError=_uploadError;
@@ -27,8 +26,6 @@ __attribute__((visibility("hidden")))
 - (_Bool)isMissingUploadsWithDiffs:(unsigned long long)arg1 isDocumentSyncPaused:(_Bool)arg2 isDocumentResumingSync:(_Bool)arg3;
 - (_Bool)shouldRecreateUploadJobGivenDiffs:(unsigned long long)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
 - (id)initWithLocalVersion:(id)arg1;
 - (id)initWithServerVersion:(id)arg1;
 - (id)initWithVersion:(id)arg1;

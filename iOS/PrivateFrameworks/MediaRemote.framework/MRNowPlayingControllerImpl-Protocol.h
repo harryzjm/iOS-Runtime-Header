@@ -13,7 +13,6 @@
 @property(readonly, copy, nonatomic) MRNowPlayingControllerDestination *destination;
 @property(retain, nonatomic) MRNowPlayingControllerHelper *helper;
 - (void)destinationWithCompletion:(void (^)(MRPlayerPath *, NSError *))arg1;
-- (void)endLoadingUpdates;
 - (void)beginLoadingUpdates;
 - (id)initWithConfiguration:(MRNowPlayingControllerConfiguration *)arg1;
 @end

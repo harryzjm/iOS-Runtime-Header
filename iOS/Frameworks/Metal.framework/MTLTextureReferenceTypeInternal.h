@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)textureType;
 - (unsigned long long)textureDataType;
 - (unsigned long long)dataType;
+- (_Bool)isEqual:(id)arg1;
 - (id)formattedDescription:(unsigned long long)arg1;
 - (void)dealloc;
 - (id)initWithDataType:(unsigned long long)arg1 textureType:(unsigned long long)arg2 access:(unsigned long long)arg3 isDepthTexture:(_Bool)arg4;

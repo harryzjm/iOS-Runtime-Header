@@ -11,14 +11,15 @@
 __attribute__((visibility("hidden")))
 @interface WKAnimationDelegate : NSObject
 {
-    unsigned long long _layerID;
+    ProcessQualified_5c39c5eb _layerID;
     void *_layerTreeHost;
 }
 
+- (id).cxx_construct;
 - (void)animationDidStop:(id)arg1 finished:(_Bool)arg2;
 - (void)animationDidStart:(id)arg1;
 - (void)invalidate;
-- (id)initWithLayerID:(unsigned long long)arg1 layerTreeHost:(void *)arg2;
+- (id)initWithLayerID:(ProcessQualified_5c39c5eb)arg1 layerTreeHost:(void *)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -7,7 +7,7 @@
 #import <EventKit/NSObject-Protocol.h>
 
 @class CADGenerationStampedObjectID, EKChangeSet, EKEventStore, EKObject, EKObjectID, EKPersistentObject, NSSet, NSString;
-@protocol EKFrozenMeltedPair, EKProtocolObject;
+@protocol EKFrozenMeltedPair;
 
 @protocol EKFrozenMeltedPair <NSObject>
 + (Class)meltedClass;
@@ -30,6 +30,5 @@
 - (Class)frozenClass;
 - (EKObject *)existingMeltedObject;
 - (EKChangeSet *)changeSet;
-- (id)initWithObject:(id <EKProtocolObject>)arg1;
 @end
 

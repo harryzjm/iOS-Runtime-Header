@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MISSING_TYPE, NSMutableArray, NSMutableDictionary, NSString;
+@class MISSING_TYPE, NSString;
 
 @interface RSPointCloud : NSObject
 {
@@ -16,9 +16,6 @@
     struct vector<float __attribute__((ext_vector_type(3))), std::allocator<float __attribute__((ext_vector_type(3)))>> _colors;
     struct vector<float __attribute__((ext_vector_type(3))), std::allocator<float __attribute__((ext_vector_type(3)))>> _cameraPositions;
     struct unordered_map<std::string, unsigned int __attribute__((ext_vector_type(2))), std::hash<std::string>, std::equal_to<std::string>, std::allocator<std::pair<const std::string, unsigned int __attribute__((ext_vector_type(2)))>>> _mappingInterval;
-    unsigned long long _updateCursor;
-    NSMutableDictionary *_keyframeHeights;
-    NSMutableArray *_updateKeyframeIds;
     struct unordered_set<unsigned long long, std::hash<unsigned long long>, std::equal_to<unsigned long long>, std::allocator<unsigned long long>> _voxelSet;
     struct unordered_map<std::string, std::unordered_set<unsigned long long>, std::hash<std::string>, std::equal_to<std::string>, std::allocator<std::pair<const std::string, std::unordered_set<unsigned long long>>>> _keyframeVoxelSet;
     struct vector<float __attribute__((ext_vector_type(3))), std::allocator<float __attribute__((ext_vector_type(3)))>> _rawPoints;
@@ -33,21 +30,15 @@
 - (unsigned long long)rawUpdateCursor;
 - (unsigned long long)rawCount;
 - (const MISSING_TYPE **)rawPoints;
-- (id)keyframeHeights;
-- (id)updateKeyframeIds;
 - (_Bool)isEqual:(id)arg1;
-- (_Bool)isEqualToRSPointCloud:(id)arg1;
 - (void)reset;
-- (unsigned long long)updateCursor;
 - (MISSING_TYPE *)mappingIntervalOfKeyframe:(id)arg1;
 - (void)select:(unsigned long long)arg1 indices:(const unsigned long long *)arg2;
 - (void)processWithVoxelize:(_Bool)arg1 asPythonApproach:(_Bool)arg2 resample:(_Bool)arg3;
 - (void)accumulateWithKeyframesInWorld:(id)arg1 voxelize:(_Bool)arg2;
-- (void)updateKeyframeHeights;
 - (void)append:(unsigned long long)arg1 points:(const MISSING_TYPE **)arg2 semanticLabels:(const MISSING_TYPE **)arg3 semanticVotes:(const MISSING_TYPE **)arg4 colors:(MISSING_TYPE **)arg5;
 - (id)initWithCount:(unsigned long long)arg1 points:(const MISSING_TYPE **)arg2 semanticLabels:(const MISSING_TYPE **)arg3 semanticVotes:(const MISSING_TYPE **)arg4 colors:(MISSING_TYPE **)arg5;
 - (id)initWithKeyframes:(id)arg1 enableCameraPosition:(_Bool)arg2;
-- (id)sortKeyframesBySizeInDescendingOrder:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly, nonatomic) MISSING_TYPE **colors;

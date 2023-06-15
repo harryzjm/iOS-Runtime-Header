@@ -12,9 +12,8 @@
 __attribute__((visibility("hidden")))
 @interface _UIDatePickerCalendarTimeView : UIView
 {
-    struct {
-        unsigned int showsTimeLabel:1;
-    } _flags;
+    _Bool _showsTimeLabel;
+    NSString *_timeLocaleIdentifier;
     NSArray *_clockLayoutConstraints;
     _UIDatePickerOverlayPresentation *_presentation;
     _Bool _roundsToMinuteInterval;
@@ -36,7 +35,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _UIDatePickerCalendarTime *selectedTime; // @synthesize selectedTime=_selectedTime;
 @property(nonatomic) _Bool roundsToMinuteInterval; // @synthesize roundsToMinuteInterval=_roundsToMinuteInterval;
 @property(nonatomic) long long minuteInterval; // @synthesize minuteInterval=_minuteInterval;
-@property(retain, nonatomic) NSString *customFontDesign; // @synthesize customFontDesign=_customFontDesign;
+@property(copy, nonatomic) NSString *customFontDesign; // @synthesize customFontDesign=_customFontDesign;
 @property(readonly, nonatomic) NSLocale *locale; // @synthesize locale=_locale;
 @property(readonly, nonatomic) NSCalendar *calendar; // @synthesize calendar=_calendar;
 @property(nonatomic) __weak id <_UIDatePickerCalendarTimeViewDelegate> delegate; // @synthesize delegate=_delegate;
@@ -47,8 +46,8 @@ __attribute__((visibility("hidden")))
 - (void)compactTimeLabelWillBecomeFirstResponder:(id)arg1;
 - (void)compactTimeLabel:(id)arg1 didSelectTime:(id)arg2;
 - (void)_updateFonts;
-- (void)traitCollectionDidChange:(id)arg1;
 - (void)setSelectedDate:(id)arg1;
+- (void)_updateTimeLabelTitleIfNeeded;
 - (void)_updateTextFieldsFromSelectedDateComponents;
 - (void)reloadWithCalendar:(id)arg1 locale:(id)arg2 selectedDate:(id)arg3;
 - (void)_reload;

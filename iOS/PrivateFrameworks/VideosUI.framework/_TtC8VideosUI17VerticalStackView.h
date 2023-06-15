@@ -25,7 +25,6 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *scrollDraggedOffset;
     MISSING_TYPE *isScrollable;
     MISSING_TYPE *isPartiallyExpanded;
-    MISSING_TYPE *impressionsTracker;
 }
 
 - (void).cxx_destruct;

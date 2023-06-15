@@ -6,10 +6,11 @@
 
 #import <Intents/NSObject-Protocol.h>
 
-@class NSArray, NSString, _INPBContact, _INPBCurrencyAmountValue, _INPBDataString, _INPBDateTime, _INPBFile, _INPBInteger, _INPBMessage, _INPBMessageLinkMetadata;
+@class NSArray, NSString, _INPBContact, _INPBCurrencyAmountValue, _INPBDataString, _INPBDateTime, _INPBFile, _INPBInteger, _INPBLocation, _INPBMessage, _INPBMessageLinkMetadata, _INPBMessageReaction;
 
 @protocol _INPBMessage <NSObject>
 + (Class)recipientType;
++ (Class)attachmentFileType;
 @property(nonatomic) _Bool hasType;
 @property(nonatomic) int type;
 @property(readonly, nonatomic) _Bool hasSpeakableGroupName;
@@ -22,12 +23,16 @@
 @property(retain, nonatomic) _INPBMessage *referencedMessage;
 @property(readonly, nonatomic) unsigned long long recipientsCount;
 @property(copy, nonatomic) NSArray *recipients;
+@property(readonly, nonatomic) _Bool hasReaction;
+@property(retain, nonatomic) _INPBMessageReaction *reaction;
 @property(readonly, nonatomic) _Bool hasPaymentAmount;
 @property(retain, nonatomic) _INPBCurrencyAmountValue *paymentAmount;
 @property(readonly, nonatomic) _Bool hasNumberOfAttachments;
 @property(retain, nonatomic) _INPBInteger *numberOfAttachments;
 @property(readonly, nonatomic) _Bool hasLocationName;
 @property(copy, nonatomic) NSString *locationName;
+@property(readonly, nonatomic) _Bool hasLocation;
+@property(retain, nonatomic) _INPBLocation *location;
 @property(readonly, nonatomic) _Bool hasLinkMetadata;
 @property(retain, nonatomic) _INPBMessageLinkMetadata *linkMetadata;
 @property(readonly, nonatomic) _Bool hasIdentifier;
@@ -50,6 +55,8 @@
 @property(retain, nonatomic) _INPBFile *audioMessageFile;
 @property(readonly, nonatomic) unsigned long long attributesCount;
 @property(readonly, nonatomic) int *attributes;
+@property(readonly, nonatomic) unsigned long long attachmentFilesCount;
+@property(copy, nonatomic) NSArray *attachmentFiles;
 - (int)StringAsType:(NSString *)arg1;
 - (NSString *)typeAsString:(int)arg1;
 - (_INPBContact *)recipientAtIndex:(unsigned long long)arg1;
@@ -63,5 +70,8 @@
 - (int)attributeAtIndex:(unsigned long long)arg1;
 - (void)addAttribute:(int)arg1;
 - (void)clearAttributes;
+- (_INPBFile *)attachmentFileAtIndex:(unsigned long long)arg1;
+- (void)addAttachmentFile:(_INPBFile *)arg1;
+- (void)clearAttachmentFiles;
 @end
 

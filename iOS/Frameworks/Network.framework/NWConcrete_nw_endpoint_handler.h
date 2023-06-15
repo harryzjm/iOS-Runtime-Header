@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     NSObject<OS_nw_endpoint> *endpoint;
     NSObject<OS_nw_parameters> *parameters;
     NSObject<OS_nw_context> *context;
+    CDUnknownBlockType migration_callback;
     NSObject<OS_nw_association> *association;
     NSObject<OS_nw_path> *current_path;
     NWConcrete_nw_endpoint_handler *parent_handler;

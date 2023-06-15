@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 @class NSMutableIndexSet;
 
 __attribute__((visibility("hidden")))
-@interface _UITreeDataSourceSnapshotter : NSObject <NSCopying>
+@interface _UITreeDataSourceSnapshotter : NSObject
 {
     vector_a91a301d _nodes;
     long long _count;

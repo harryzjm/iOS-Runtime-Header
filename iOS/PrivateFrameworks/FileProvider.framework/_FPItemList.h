@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (id)formerIDs;
 - (id)objectAtIndex:(unsigned long long)arg1;
 - (unsigned long long)count;
+- (id)itemIDsDifferenceWithList:(id)arg1;
 - (id)redactedDescription;
 - (id)description;
 - (id)mutableCopy;

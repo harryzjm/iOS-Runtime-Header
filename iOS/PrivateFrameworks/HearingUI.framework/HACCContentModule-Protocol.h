@@ -15,5 +15,8 @@
 - (_Bool)enabled;
 - (NSNumber *)contentValue;
 - (void)updateValue;
+
+@optional
+@property(nonatomic) _Bool providesOwnSeparator;
 @end
 

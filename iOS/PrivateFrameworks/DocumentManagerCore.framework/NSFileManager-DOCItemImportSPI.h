@@ -7,6 +7,7 @@
 #import <Foundation/NSFileManager.h>
 
 @interface NSFileManager (DOCItemImportSPI)
+- (_Bool)_doc_destinationLocationExists:(long long)arg1;
 - (id)_doc_importItemAtURL:(id)arg1 toDestination:(long long)arg2 error:(id *)arg3;
 @end
 

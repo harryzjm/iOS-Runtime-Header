@@ -137,7 +137,7 @@ __attribute__((visibility("hidden")))
 - (id)nextResponder;
 - (void)willTransitionFromTabView:(id)arg1 toTabView:(id)arg2;
 - (void)viewDidDisappear:(_Bool)arg1;
-- (void)viewDidAppear:(_Bool)arg1;
+- (void)viewIsAppearing:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (void)loadView;

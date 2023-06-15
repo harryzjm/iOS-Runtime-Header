@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+- (id)dragPreviewParameters;
 - (void)_invokeColorPicker:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (struct CGSize)intrinsicSizeWithinSize:(struct CGSize)arg1;

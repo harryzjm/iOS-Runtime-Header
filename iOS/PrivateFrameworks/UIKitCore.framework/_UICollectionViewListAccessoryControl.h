@@ -16,15 +16,15 @@ __attribute__((visibility("hidden")))
     _Bool _needsImageViewUpdate;
     long long _type;
     id <UITableConstants> _constants;
+    CDUnknownBlockType _actionHandler;
     UIColor *_accessoryTintColor;
     UIColor *_accessoryBackgroundColor;
-    CDUnknownBlockType _actionHandler;
 }
 
 - (void).cxx_destruct;
-@property(copy, nonatomic) CDUnknownBlockType actionHandler; // @synthesize actionHandler=_actionHandler;
 @property(retain, nonatomic) UIColor *accessoryBackgroundColor; // @synthesize accessoryBackgroundColor=_accessoryBackgroundColor;
 @property(retain, nonatomic) UIColor *accessoryTintColor; // @synthesize accessoryTintColor=_accessoryTintColor;
+@property(copy, nonatomic) CDUnknownBlockType actionHandler; // @synthesize actionHandler=_actionHandler;
 @property(retain, nonatomic) id <UITableConstants> constants; // @synthesize constants=_constants;
 @property(nonatomic) long long type; // @synthesize type=_type;
 - (id)_renderedImage;
@@ -34,7 +34,6 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)_updateImageViewIfNeeded;
 - (void)_setNeedsImageViewUpdate;
-- (void)traitCollectionDidChange:(id)arg1;
 - (void)setSelected:(_Bool)arg1;
 - (void)setHighlighted:(_Bool)arg1;
 - (void)_executeActionHandler;

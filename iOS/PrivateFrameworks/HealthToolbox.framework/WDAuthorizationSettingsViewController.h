@@ -6,7 +6,7 @@
 
 #import <HealthUI/HKAuthorizationSettingsViewController.h>
 
-@class WDProfile;
+@class NSString, WDProfile;
 
 __attribute__((visibility("hidden")))
 @interface WDAuthorizationSettingsViewController : HKAuthorizationSettingsViewController
@@ -18,11 +18,22 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) WDProfile *profile; // @synthesize profile=_profile;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (id)specialCellWithIdentifier:(id)arg1 textLabelText:(id)arg2;
+- (_Bool)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
+- (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
+- (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (id)sectionsForAuthController:(id)arg1;
 - (void)_applicationWillEnterForeground;
+- (void)viewWillAppear:(_Bool)arg1;
+- (void)viewDidLoad;
 - (id)initWithProfile:(id)arg1 style:(long long)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UITableViewCell.h>
+#import <UIKitCore/UITableViewCell.h>
 
 @class AKASAuthorizationProvider, ASCAuthorizationPresentationContext, NSString, UIImage, UIImageView, UILabel, UIStackView;
 @protocol ASCLoginChoiceProtocol;
@@ -31,7 +31,6 @@ __attribute__((visibility("hidden")))
 - (id)_emptyRadioButtonImage;
 - (void)_updateAccessoryImageView;
 - (void)_setUpAccessoryImageView;
-- (id)_defaultSecurityKeyIcon;
 - (id)_defaultPasskeyIcon;
 - (id)_cableIcon;
 - (id)_detailTextForExternalPasswordLoginChoice:(id)arg1;
@@ -43,6 +42,8 @@ __attribute__((visibility("hidden")))
 - (id)_titleForPublicKeyCredentialAssertionWithName:(id)arg1 identifier:(id)arg2;
 - (id)_publicKeyCredentialImageForPresentationContext:(id)arg1;
 - (void)_setUpContent;
+- (void)_configureIconImageStyle;
+- (_Bool)_shouldUseAppIconImageViewStyle;
 - (void)_configureImageViewForAppIcon;
 - (void)_configureImageViewForSymbolImage;
 @property(retain, nonatomic) UIImage *iconImage;

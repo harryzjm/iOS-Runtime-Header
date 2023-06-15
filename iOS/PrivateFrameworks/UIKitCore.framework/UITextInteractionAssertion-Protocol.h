@@ -6,9 +6,10 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class NSString;
+@class NSDictionary, NSString;
 
 @protocol UITextInteractionAssertion <NSObject>
+@property(retain, nonatomic) NSDictionary *userInfo;
 @property(readonly, nonatomic) NSString *reason;
 - (void)invalidate;
 @end

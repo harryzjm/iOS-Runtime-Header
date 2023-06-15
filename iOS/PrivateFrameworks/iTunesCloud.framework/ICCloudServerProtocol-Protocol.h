@@ -4,14 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class ICCloudAddReferral, ICCloudItemIDList, ICConnectionConfiguration, NSArray, NSDictionary, NSString;
+@class ICCloudAddReferral, ICCloudItemIDList, ICConnectionConfiguration, NSArray, NSDate, NSDictionary, NSString;
 
 @protocol ICCloudServerProtocol
 - (void)listCloudServerOperations;
+- (void)endCollaborationForCloudLibraryID:(unsigned long long)arg1 configuration:(ICConnectionConfiguration *)arg2 completion:(void (^)(NSError *, unsigned long long))arg3;
+- (void)beginCollaborationUsingPlaylistWithCloudLibraryID:(unsigned long long)arg1 collaborationMode:(unsigned long long)arg2 collaboratorPersmissions:(unsigned long long)arg3 configuration:(ICConnectionConfiguration *)arg4 completion:(void (^)(NSError *, unsigned long long))arg5;
+- (void)favoriteArtistWithPersistentID:(long long)arg1 cloudLibraryID:(NSString *)arg2 time:(NSDate *)arg3 configuration:(ICConnectionConfiguration *)arg4 completionHandler:(void (^)(NSError *))arg5;
+- (void)favoriteAlbumWithPersistentID:(long long)arg1 cloudLibraryID:(NSString *)arg2 time:(NSDate *)arg3 configuration:(ICConnectionConfiguration *)arg4 completionHandler:(void (^)(NSError *))arg5;
+- (void)favoriteEntityWithPersistentID:(long long)arg1 sagaID:(long long)arg2 entityType:(long long)arg3 time:(NSDate *)arg4 configuration:(ICConnectionConfiguration *)arg5 completionHandler:(void (^)(NSError *))arg6;
+- (void)favoritePlaylistWithPersistentID:(long long)arg1 globalID:(NSString *)arg2 time:(NSDate *)arg3 configuration:(ICConnectionConfiguration *)arg4 completionHandler:(void (^)(NSError *))arg5;
+- (void)favoriteEntityWithPersistentID:(long long)arg1 storeID:(long long)arg2 entityType:(long long)arg3 time:(NSDate *)arg4 configuration:(ICConnectionConfiguration *)arg5 completionHandler:(void (^)(NSError *))arg6;
+- (void)processPendingKeyInvalidations;
 - (void)fetchEnhancedAudioOfflineKeys;
 - (void)refreshEnhancedAudioSharedKeys;
 - (void)loadBooksForStoreIDs:(NSArray *)arg1 configuration:(ICConnectionConfiguration *)arg2 completion:(void (^)(NSArray *, NSError *))arg3;
 - (void)updateArtistHeroImagesForConfiguration:(ICConnectionConfiguration *)arg1;
+- (void)setAlbumArtistProperties:(NSDictionary *)arg1 forAlbumArtistPersistentID:(long long)arg2 configuration:(ICConnectionConfiguration *)arg3 completion:(void (^)(NSError *))arg4;
+- (void)setAlbumProperties:(NSDictionary *)arg1 forAlbumPersistentID:(long long)arg2 cloudLibraryID:(NSString *)arg3 configuration:(ICConnectionConfiguration *)arg4 completion:(void (^)(NSError *))arg5;
 - (void)setAlbumProperties:(NSDictionary *)arg1 forAlbumPersistentID:(long long)arg2 configuration:(ICConnectionConfiguration *)arg3 completion:(void (^)(NSError *))arg4;
 - (void)uploadCloudPlaylistPropertiesForConfiguration:(ICConnectionConfiguration *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)uploadCloudItemPropertiesForConfiguration:(ICConnectionConfiguration *)arg1 completion:(void (^)(NSError *))arg2;

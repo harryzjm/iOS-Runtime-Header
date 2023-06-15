@@ -18,6 +18,7 @@
 + (id)fileURLWithPath:(id)arg1;
 + (id)absoluteURLWithDataRepresentation:(id)arg1 relativeToURL:(id)arg2;
 + (id)URLWithDataRepresentation:(id)arg1 relativeToURL:(id)arg2;
++ (id)URLWithString:(id)arg1 encodingInvalidCharacters:(_Bool)arg2;
 + (id)URLWithString:(id)arg1 relativeToURL:(id)arg2;
 + (id)URLWithString:(id)arg1;
 + (id)allocWithZone:(struct _NSZone *)arg1;
@@ -43,6 +44,7 @@
 - (_Bool)isFileURL;
 - (id)fragment;
 - (id)query;
+- (id)_parameterString;
 - (id)parameterString;
 - (id)path;
 - (id)relativePath;
@@ -72,6 +74,7 @@
 - (id)initAbsoluteURLWithDataRepresentation:(id)arg1 relativeToURL:(id)arg2;
 - (id)initWithDataRepresentation:(id)arg1 relativeToURL:(id)arg2;
 - (id)initWithScheme:(id)arg1 host:(id)arg2 path:(id)arg3;
+- (id)initWithString:(id)arg1 encodingInvalidCharacters:(_Bool)arg2;
 - (id)initWithString:(id)arg1;
 - (id)init;
 - (id)resourceSpecifier;
@@ -83,6 +86,7 @@
 - (void)_freeClients;
 - (struct __CFDictionary *)_clientsCreatingIfNecessary:(_Bool)arg1;
 - (struct __CFURL *)_cfurl;
+- (id)initWithString:(id)arg1 relativeToURL:(id)arg2 encodingInvalidCharacters:(_Bool)arg3;
 - (id)initWithString:(id)arg1 relativeToURL:(id)arg2;
 - (unsigned long long)_cfTypeID;
 - (_Bool)isMemberOfClass:(Class)arg1;

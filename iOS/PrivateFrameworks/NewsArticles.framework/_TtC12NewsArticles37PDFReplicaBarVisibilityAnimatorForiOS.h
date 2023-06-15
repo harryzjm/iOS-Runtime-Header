@@ -12,7 +12,6 @@ __attribute__((visibility("hidden")))
 @interface _TtC12NewsArticles37PDFReplicaBarVisibilityAnimatorForiOS : NSObject
 {
     MISSING_TYPE *delegate;
-    MISSING_TYPE *navigationController;
     MISSING_TYPE *tapGestureRecognizer;
     MISSING_TYPE *barHider;
 }

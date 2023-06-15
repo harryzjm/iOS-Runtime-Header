@@ -37,6 +37,7 @@
 - (id)as_simpleHiddenFromString;
 - (id)as_simpleSharingDurationString;
 - (id)as_detailedSharingDurationString;
+- (id)as_friendListNameStringWithDotPrefix:(id)arg1 keyColor:(id)arg2 showAwaitingCompetitionResponse:(_Bool)arg3;
 - (id)as_friendListNameStringWithDotPrefix:(id)arg1 keyColor:(id)arg2;
 @end
 

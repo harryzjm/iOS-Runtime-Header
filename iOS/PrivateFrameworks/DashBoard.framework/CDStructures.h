@@ -41,7 +41,7 @@ struct UIEdgeInsets {
 #pragma mark Typedef'd Structures
 
 typedef struct {
-    _Bool _field1[45];
+    _Bool _field1[46];
     char _field2[64];
     char _field3[64];
     char _field4[256];
@@ -94,9 +94,10 @@ typedef struct {
     double _field31;
     unsigned int :1;
     unsigned int :1;
+    unsigned int :1;
     char _field32[100];
     char _field33[100];
     char _field34[256];
     char _field35[256];
-} CDStruct_d53647a2;
+} CDStruct_741028b1;
 

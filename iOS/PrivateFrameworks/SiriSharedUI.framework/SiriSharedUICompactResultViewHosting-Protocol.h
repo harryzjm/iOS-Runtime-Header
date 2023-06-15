@@ -15,6 +15,8 @@
 @property(retain, nonatomic) SiriSharedUIPanDismissalGestureRecognizer *dismissalGestureRecognizer;
 @property(readonly, nonatomic) SiriSharedUIContentPlatterView *snippetView;
 @property(nonatomic) __weak id <SiriSharedUICompactResultViewDelegate> delegate;
+- (void)setIsInAmbientInteractivity:(_Bool)arg1;
+- (void)setIsInAmbient:(_Bool)arg1;
 - (SiriSharedUIStandardView<SiriSharedUIStackableContent><SiriSharedUIStackableContentActionOffering> *)hostingView;
 - (void)snippetContentDidUpdate;
 - (void)setSnippetView:(SiriSharedUIContentPlatterView *)arg1 completion:(void (^)(void))arg2;

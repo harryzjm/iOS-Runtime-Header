@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray;
+@class NSArray, NSString, PKDiscoveryItem;
 
 @protocol PKDiscoveryServiceExportedInterface
 - (void)discoveryEngagementMessagesUpdated;
+- (void)dialogRequestsChangedForPlacement:(NSString *)arg1;
+- (void)completedCTAForItem:(PKDiscoveryItem *)arg1;
 - (void)discoveryArticleLayoutsUpdated:(NSArray *)arg1;
 @end
 

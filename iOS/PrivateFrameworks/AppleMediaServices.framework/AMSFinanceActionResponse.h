@@ -23,9 +23,11 @@ __attribute__((visibility("hidden")))
 + (id)_URLForCommerceUIFromURL:(id)arg1 taskInfo:(id)arg2 tidContinue:(_Bool)arg3;
 + (_Bool)_isModernURL:(id)arg1 taskInfo:(id)arg2;
 + (id)_deepLinkForURL:(id)arg1 taskInfo:(id)arg2 gotoType:(long long)arg3 isAccountURL:(_Bool)arg4 tidContinue:(_Bool)arg5;
++ (_Bool)_stashTIDContinueHeadersForTaskInfo:(id)arg1;
 + (id)_presentEngagementForURL:(id)arg1 taskInfo:(id)arg2;
 + (id)_bodyObjectFromRequest:(id)arg1;
 + (id)handleGotoURL:(id)arg1 taskInfo:(id)arg2 gotoType:(long long)arg3 accountURL:(_Bool)arg4 tidContinue:(_Bool)arg5 retryOnSuccess:(_Bool)arg6;
++ (void)handleExternalGotoURL:(id)arg1 taskInfo:(id)arg2;
 + (void)handleExternalGotoURL:(id)arg1;
 + (id)actionWithUpdatedCreditString:(id)arg1 account:(id)arg2 taskInfo:(id)arg3;
 + (id)actionWithActionDictionary:(id)arg1 taskInfo:(id)arg2;

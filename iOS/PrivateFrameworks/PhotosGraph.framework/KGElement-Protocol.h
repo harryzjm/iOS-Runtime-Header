@@ -10,9 +10,9 @@
 @class NSDictionary, NSSet;
 
 @protocol KGElement <NSObject, NSCopying>
+@property(readonly, copy, nonatomic) NSDictionary *properties;
+@property(readonly, copy, nonatomic) NSSet *labels;
+@property(readonly, nonatomic) unsigned long long identifier;
 - (void)resolveIdentifier:(unsigned long long)arg1;
-@property(nonatomic, readonly) NSDictionary *properties;
-@property(nonatomic, readonly) NSSet *labels;
-@property(nonatomic, readonly) unsigned long long identifier;
 @end
 

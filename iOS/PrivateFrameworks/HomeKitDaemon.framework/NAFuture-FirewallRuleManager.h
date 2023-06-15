@@ -6,8 +6,14 @@
 
 #import <NetAppsUtilities/NAFuture.h>
 
+@class HMFFuture;
+
 @interface NAFuture (FirewallRuleManager)
++ (id)combineAllFuturesIgnoringEmptyResults:(id)arg1;
++ (id)combineAllFuturesFlatteningArrayResults:(id)arg1;
++ (id)futureWithRetryIntervals:(id)arg1 workQueue:(id)arg2 block:(CDUnknownBlockType)arg3;
 + (id)futureWithRetries:(long long)arg1 timeInterval:(double)arg2 workQueue:(id)arg3 block:(CDUnknownBlockType)arg4;
 - (id)blockAndWaitForCompletionWithError:(id *)arg1;
+@property(readonly) HMFFuture *hmfFuture;
 @end
 

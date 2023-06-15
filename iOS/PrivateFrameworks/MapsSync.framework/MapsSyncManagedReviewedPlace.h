@@ -6,7 +6,7 @@
 
 #import <CoreData/NSManagedObject.h>
 
-@class MapsSyncManagedAnonymousCredential, NSData, NSDate, NSNumber, NSUUID;
+@class MapsSyncManagedAnonymousCredential, MapsSyncManagedCommunityID, NSData, NSDate, NSNumber, NSUUID;
 
 __attribute__((visibility("hidden")))
 @interface MapsSyncManagedReviewedPlace : NSManagedObject
@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 
 // Remaining properties
 @property(nonatomic, retain) MapsSyncManagedAnonymousCredential *anonymousCredential; // @dynamic anonymousCredential;
+@property(nonatomic, retain) MapsSyncManagedCommunityID *communityID; // @dynamic communityID;
 @property(nonatomic, copy) NSDate *createTime; // @dynamic createTime;
 @property(nonatomic) _Bool hasUserReviewed; // @dynamic hasUserReviewed;
 @property(nonatomic, copy) NSUUID *identifier; // @dynamic identifier;

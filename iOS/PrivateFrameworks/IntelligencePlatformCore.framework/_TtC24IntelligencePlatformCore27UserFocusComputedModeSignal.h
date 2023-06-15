@@ -10,7 +10,8 @@
 
 @interface _TtC24IntelligencePlatformCore27UserFocusComputedModeSignal : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *userFocusComputerModeStream;
+    MISSING_TYPE *includeLastOngoingEventInSessions;
+    MISSING_TYPE *userFocusComputedModeStream;
 }
 
 - (id)featureValueForName:(id)arg1;

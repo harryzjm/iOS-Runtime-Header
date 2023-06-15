@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, VCPCNNModelEspresso;
+@class NSArray, NSData, VCPCNNModelEspresso;
 
 __attribute__((visibility("hidden")))
 @interface VCPVideoCaptionEncoder : NSObject
@@ -14,14 +14,18 @@ __attribute__((visibility("hidden")))
     VCPCNNModelEspresso *_modelEspresso;
     NSArray *_outputNames;
     _Bool _forceNNGraph;
+    _Bool _defaultModel;
     int _embeddingHeight;
     int _embeddingWidth;
     int _embeddingChannels;
     int _embeddingSequenceLength;
     float *_videoEmbedding;
+    NSData *_embedding;
 }
 
++ (id)videoLanguageBackboneTestURL;
 - (void).cxx_destruct;
+@property(readonly) NSData *embedding; // @synthesize embedding=_embedding;
 @property(readonly) float *videoEmbedding; // @synthesize videoEmbedding=_videoEmbedding;
 @property(readonly) int embeddingSequenceLength; // @synthesize embeddingSequenceLength=_embeddingSequenceLength;
 @property(readonly) int embeddingChannels; // @synthesize embeddingChannels=_embeddingChannels;
@@ -29,6 +33,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) int embeddingHeight; // @synthesize embeddingHeight=_embeddingHeight;
 - (int)inference:(float *)arg1;
 - (id)initWithModelPath:(id)arg1;
+- (id)initWithConfig:(id)arg1;
 
 @end
 

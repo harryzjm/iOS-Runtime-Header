@@ -6,13 +6,16 @@
 
 #import <MarkupUI/PDFViewDelegate-Protocol.h>
 
-@class NSArray, PDFPage, PDFView;
+@class NSArray, PDFPage, PDFSelection, PDFView;
 
 @protocol PDFViewDelegatePrivate <PDFViewDelegate>
 
 @optional
+- (void)PDFView:(PDFView *)arg1 allowsFormFillingMode:(_Bool)arg2 withRecognitionConfidence:(unsigned long long)arg3 forPage:(PDFPage *)arg4;
+- (void)PDFView:(PDFView *)arg1 allowsFormFillingMode:(_Bool)arg2 withAutofill:(_Bool)arg3 forPage:(PDFPage *)arg4;
 - (void)PDFView:(PDFView *)arg1 allowsFormFillingMode:(_Bool)arg2 forPage:(PDFPage *)arg3;
 - (struct UIEdgeInsets)pdfViewContentInset;
+- (NSArray *)additionalEditMenuElementsForSelection:(PDFSelection *)arg1;
 - (NSArray *)menuItems:(NSArray *)arg1 forPage:(PDFPage *)arg2;
 @end
 

@@ -28,7 +28,7 @@ __attribute__((visibility("hidden")))
 - (id)roadForKey:(struct GEOPathMatcherRoadKey)arg1;
 - (struct GEOPathMatcherRoadKey)keyForRoad:(id)arg1;
 - (void)dealloc;
-- (id)init;
+- (id)initWithAuditToken:(id)arg1;
 
 @end
 

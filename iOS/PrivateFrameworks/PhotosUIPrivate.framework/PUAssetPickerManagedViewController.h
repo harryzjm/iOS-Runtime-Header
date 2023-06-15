@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
-@class NSString, PUAssetPickerContainerController, PUPickerConfiguration, PUSidebarViewController, UINavigationController, UISplitViewController;
+@class NSString, PUAssetPickerContainerController, PUPickerConfiguration, PUSidebarViewController, UINavigationController, UISplitViewController, UIView;
 
 __attribute__((visibility("hidden")))
 @interface PUAssetPickerManagedViewController : UIViewController
 {
+    UIView *_onboardingOverlayView;
     PUPickerConfiguration *_configuration;
     PUAssetPickerContainerController *_contentViewController;
     UISplitViewController *_splitViewController;
@@ -26,11 +27,21 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) UISplitViewController *splitViewController; // @synthesize splitViewController=_splitViewController;
 @property(readonly, nonatomic) PUAssetPickerContainerController *contentViewController; // @synthesize contentViewController=_contentViewController;
 @property(readonly, nonatomic) PUPickerConfiguration *configuration; // @synthesize configuration=_configuration;
+@property(retain, nonatomic) UIView *onboardingOverlayView; // @synthesize onboardingOverlayView=_onboardingOverlayView;
+- (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
+- (void)navigationController:(id)arg1 didShowViewController:(id)arg2 animated:(_Bool)arg3;
 - (void)navigationController:(id)arg1 willShowViewController:(id)arg2 animated:(_Bool)arg3;
 - (void)splitViewController:(id)arg1 willChangeToDisplayMode:(long long)arg2;
 - (void)splitViewControllerDidCollapse:(id)arg1;
 - (void)splitViewControllerDidExpand:(id)arg1;
+- (void)assetPickerOnboardingViewDidDismissBadge:(id)arg1;
+- (void)assetPickerOnboardingViewDidTransitionToBadge:(id)arg1;
+- (void)assetPickerOnboardingViewWantsToLearnMoreAboutDataAccess:(id)arg1;
+- (void)_updateBackgroundColor;
 - (void)_updatePreferredDisplayMode;
+- (void)_updateOnboardingOverlayBadgeContainer;
+- (void)_updateOnboardingOverlayView;
+- (void)presentDataAccessEducationViewController:(id)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
 - (void)viewDidLoad;

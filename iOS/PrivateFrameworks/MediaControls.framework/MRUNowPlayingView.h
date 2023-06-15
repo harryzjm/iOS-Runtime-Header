@@ -58,7 +58,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) MRUArtworkView *artworkView; // @synthesize artworkView=_artworkView;
 - (struct CGRect)suggestionsFrame;
 - (void)updateVisibility;
-- (void)updateDimmed;
 - (void)updateOnScreen;
 - (void)updateTextAlignment;
 - (void)updateArtworkStyle;
@@ -66,6 +65,7 @@ __attribute__((visibility("hidden")))
 - (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
 @property(retain, nonatomic) UIView *contentView;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)layoutVisibleSubviewsSmallInBounds:(struct CGRect)arg1;
 - (void)layoutSubviewsHorizontal;
 - (void)layoutSubviewsVertical;
 - (void)layoutSubviews;

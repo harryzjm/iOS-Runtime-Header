@@ -33,6 +33,7 @@
 - (void)_onqueue_suspend;
 - (void)_onqueue_didFinishWithError:(id)arg1;
 - (void)_onqueue_didReceiveResponse:(id)arg1;
+- (void)_onqueue_didReceiveInformationalResponse:(id)arg1;
 - (void)_onqueue_willSendRequestForEstablishedConnection:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)removeSecKeyProxy:(id)arg1;
 - (void)addSecKeyProxy:(id)arg1;

@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
-@class MKCollectionsCarouselView, MUPagingScrollContainerView, NSArray;
+@class MKCollectionsCarouselView, MUPagingScrollContainerView;
 @protocol MKPlaceCollectionsDelegate;
 
 __attribute__((visibility("hidden")))
@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
 {
     MUPagingScrollContainerView *_pagingContainerView;
     _Bool _isSingleCollection;
-    NSArray *_visibleFocusItems;
     id <MKPlaceCollectionsDelegate> _collectionsDelegate;
     MKCollectionsCarouselView *_carouselView;
 }
@@ -22,7 +21,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) MKCollectionsCarouselView *carouselView; // @synthesize carouselView=_carouselView;
 @property(nonatomic) __weak id <MKPlaceCollectionsDelegate> collectionsDelegate; // @synthesize collectionsDelegate=_collectionsDelegate;
-@property(copy, nonatomic) NSArray *visibleFocusItems; // @synthesize visibleFocusItems=_visibleFocusItems;
 @property(readonly, nonatomic, getter=isShowingExploreGuides) _Bool showingExploreGuides;
 - (void)refreshCollections;
 - (void)displayCollectionsIfNeeded;

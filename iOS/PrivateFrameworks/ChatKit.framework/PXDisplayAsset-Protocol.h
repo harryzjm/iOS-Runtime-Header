@@ -38,13 +38,14 @@
 @property(readonly, nonatomic) NSString *uuid;
 @property(readonly, nonatomic) unsigned long long thumbnailVersion;
 @property(readonly, nonatomic) double aspectRatio;
-@property(readonly, nonatomic) long long playbackVariation;
+@property(readonly, nonatomic) unsigned short playbackVariation;
 @property(readonly, nonatomic) long long playbackStyle;
 @property(readonly, nonatomic) CDStruct_1b6d18a9 livePhotoVideoDuration;
 @property(readonly, nonatomic) double duration;
 @property(readonly, nonatomic) long long originalFileSize;
 - (id <PXAssetdestinationAssetCopyProperties>)destinationAssetCopyProperties;
 - (NSString *)localizedDetailedGeoDescriptionForRTL:(_Bool)arg1;
+- (void)enumerateCropVariantsForTargetSize:(struct CGSize)arg1 UsingBlock:(void (^)(long long, struct CGRect, double, _Bool *))arg2;
 - (struct CGRect)suggestedCropForTargetSize:(struct CGSize)arg1 withOcclusionRegion:(struct CGRect)arg2 andOutputCropScore:(double *)arg3;
 - (struct CGRect)suggestedCropForTargetSize:(struct CGSize)arg1 withFocusRegion:(struct CGRect)arg2;
 - (struct CGRect)bestCropRectForAspectRatioV2:(double)arg1 verticalContentMode:(long long)arg2 cropMode:(long long)arg3;

@@ -6,20 +6,22 @@
 
 #import <SpringBoard/SBChainableModifierQuery-Protocol.h>
 
-@class CAMeshTransform, NSArray, NSOrderedSet, NSSet, NSString, SBAppLayout, SBFFluidBehaviorSettings, SBSwitcherDropRegionContext, SBSwitcherResizeGrabberLayoutAttributes, SBSwitcherShelf;
+@class CAMeshTransform, NSArray, NSSet, NSString, SBAppLayout, SBFFluidBehaviorSettings, SBSwitcherDropRegionContext, SBSwitcherResizeGrabberLayoutAttributes, SBSwitcherShelf;
 @protocol SBSwitcherLayoutElementProviding;
 
 @protocol SBSwitcherQueryDefaultImplementationProviding <SBChainableModifierQuery>
 - (_Bool)clipsToBoundsAtIndex:(unsigned long long)arg1;
+- (struct CGRect)clippingFrameForLayoutRole:(long long)arg1 inAppLayout:(SBAppLayout *)arg2 atIndex:(unsigned long long)arg3 withBounds:(struct CGRect)arg4;
 - (struct CGRect)clippingFrameForIndex:(unsigned long long)arg1 withBounds:(struct CGRect)arg2;
 - (double)rootContentViewBlurRadius;
 - (struct CGRect)rootContentViewMaskRect;
 - (struct CGPoint)expandedSourcePositionForSystemApertureTransition;
 - (_Bool)systemApertureRequiresHeavyShadowForTransition;
 - (NSSet *)systemApertureTransitioningAppLayouts;
-- (NSOrderedSet *)adjustedContinuousExposeIdentifiersForIdentifiers:(NSOrderedSet *)arg1;
+- (unsigned long long)footerViewIconAlignmentForAppLayout:(SBAppLayout *)arg1;
 - (struct SBSwitcherGradientWallpaperAttributes)wallpaperGradientAttributesForIndex:(unsigned long long)arg1;
 - (_Bool)shouldUseWallpaperGradientTreatment;
+- (double)adjustedSpaceAccessoryViewScale:(double)arg1 forAppLayout:(SBAppLayout *)arg2;
 - (struct CGPoint)adjustedSpaceAccessoryViewAnchorPoint:(struct CGPoint)arg1 forAppLayout:(SBAppLayout *)arg2;
 - (struct CGRect)adjustedSpaceAccessoryViewFrame:(struct CGRect)arg1 forAppLayout:(SBAppLayout *)arg2;
 - (SBSwitcherResizeGrabberLayoutAttributes *)resizeGrabberLayoutAttributesForAppLayout:(SBAppLayout *)arg1;
@@ -27,6 +29,10 @@
 - (struct CGPoint)contentViewOffsetForAccessoriesOfAppLayout:(SBAppLayout *)arg1;
 - (struct CGPoint)contentViewOffsetForLayoutRole:(long long)arg1 inAppLayout:(SBAppLayout *)arg2;
 - (_Bool)shouldTetherItemsAndAccessoriesInAppLayout:(SBAppLayout *)arg1;
+- (SBAppLayout *)proposedAppLayoutForWindowDrag;
+- (_Bool)isContinuousExposeStripVisible;
+- (_Bool)wantsContinuousExposeHoverGesture;
+- (struct SBSwitcherContinuousExposeStripTongueAttributes)continuousExposeStripTongueAttributes;
 - (CAMeshTransform *)identityMeshTransformForIndex:(unsigned long long)arg1;
 - (CAMeshTransform *)meshTransformForIndex:(unsigned long long)arg1;
 - (double)perspectiveAngleForAppLayout:(SBAppLayout *)arg1;
@@ -47,6 +53,7 @@
 - (NSSet *)ignoredDisplayItemsForShelf:(SBSwitcherShelf *)arg1;
 - (SBAppLayout *)focusedAppLayoutForShelf:(SBSwitcherShelf *)arg1;
 - (struct SBSwitcherShelfPresentationAttributes)presentationAttributesForShelf:(SBSwitcherShelf *)arg1;
+- (double)spaceAccessoryViewIconHitTestOutsetForAppLayout:(SBAppLayout *)arg1;
 - (_Bool)wantsSpaceAccessoryViewPointerInteractionsForAppLayout:(SBAppLayout *)arg1;
 - (unsigned long long)multipleWindowsIndicatorLayoutRoleMaskForAppLayout:(SBAppLayout *)arg1;
 - (_Bool)shouldUseAnchorPointToPinLayoutRolesToSpace:(unsigned long long)arg1;

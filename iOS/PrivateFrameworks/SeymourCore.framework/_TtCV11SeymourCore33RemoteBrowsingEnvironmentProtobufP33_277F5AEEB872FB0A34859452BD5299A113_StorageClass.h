@@ -12,7 +12,7 @@
 {
     MISSING_TYPE *_allowedContentRatings;
     MISSING_TYPE *_capabilities;
-    MISSING_TYPE *_completedCounts;
+    MISSING_TYPE *_completedWorkoutCounts;
     MISSING_TYPE *_metricIdentifiers;
     MISSING_TYPE *_programProgression;
     MISSING_TYPE *_recommendations;
@@ -31,6 +31,16 @@
     MISSING_TYPE *_progressPreferences;
     MISSING_TYPE *_completedMarketingVideoIdentifiers;
     MISSING_TYPE *_activityRings;
+    MISSING_TYPE *_alternateMetric;
+    MISSING_TYPE *_playlists;
+    MISSING_TYPE *_upNextQueueItems;
+    MISSING_TYPE *_activeWorkoutPlan;
+    MISSING_TYPE *_diagnosticsPrivacyPreference;
+    MISSING_TYPE *_workoutPlanSummaries;
+    MISSING_TYPE *_workoutPlanSummariesViewed;
+    MISSING_TYPE *_activeWorkoutPlanItemMetrics;
+    MISSING_TYPE *_workoutPlanTemplateMetadata;
+    MISSING_TYPE *_completedTipCounts;
 }
 
 @end

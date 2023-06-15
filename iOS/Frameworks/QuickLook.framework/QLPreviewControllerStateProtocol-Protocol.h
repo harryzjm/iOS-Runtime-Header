@@ -13,13 +13,14 @@
 - (void)updateTitle:(NSString *)arg1;
 - (void)updatePreferredContentSize:(struct CGSize)arg1;
 - (void)updatePreviewItemAtIndex:(unsigned long long)arg1 editedCopy:(QLPreviewItemEditedCopy *)arg2 completionHandler:(void (^)(void))arg3;
+- (void)createTemporaryEditDirectoryForItemAtIndex:(unsigned long long)arg1 completionHandler:(void (^)(FPSandboxingURLWrapper *, NSError *))arg2;
 - (void)presentAlertControllerForScenario:(long long)arg1;
 - (void)expandContentOfItemAtIndex:(unsigned long long)arg1 withUUID:(NSUUID *)arg2 unarchivedItemsURLWrapper:(FPSandboxingURLWrapper *)arg3;
 - (void)beginInteractiveTransition;
 - (id)previewItemDisplayStateForItem:(id <QLPreviewItem>)arg1;
 - (void)setPreviewItemDisplayState:(id)arg1 onItemAtIndex:(unsigned long long)arg2;
 - (void)forwardMessage:(NSDictionary *)arg1 toItemAtIndex:(unsigned long long)arg2 withUUID:(NSUUID *)arg3 completionHandler:(void (^)(NSDictionary *, NSError *))arg4;
-- (void)currentPreviewItemViewControllerHasUnsavedEdits:(_Bool)arg1;
+- (void)currentPreviewItemViewControllerHasUnsavedEdits:(_Bool)arg1 forItemUUID:(NSUUID *)arg2;
 - (void)setCanChangeCurrentPage:(_Bool)arg1;
 - (void)updateStateRestorationWithUserInfo:(NSDictionary *)arg1;
 - (void)getStateRestorationUserInfo:(void (^)(NSDictionary *))arg1;
@@ -29,6 +30,7 @@
 - (void)openURLIfAllowed:(NSURL *)arg1;
 - (void)setPrinter:(id <QLPrintingProtocol>)arg1;
 - (void)setAccessoryViewVisible:(_Bool)arg1;
+- (void)handleKeyPressWithInput:(NSString *)arg1 modifierFlags:(long long)arg2;
 - (void)updateKeyCommands;
 - (void)updateOverlayButtons:(_Bool)arg1;
 - (void)setNavBarCanBeVisible:(_Bool)arg1;

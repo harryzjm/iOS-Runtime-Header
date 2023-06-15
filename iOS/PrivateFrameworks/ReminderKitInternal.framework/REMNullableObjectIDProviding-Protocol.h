@@ -7,9 +7,9 @@
 @class NSString, NSUUID, REMObjectID;
 
 @protocol REMNullableObjectIDProviding
++ (NSString *)cdEntityName;
 + (REMObjectID *)objectIDWithUUID:(NSUUID *)arg1;
 + (REMObjectID *)newObjectID;
-+ (NSString *)cdEntityName;
-@property(nonatomic, readonly) REMObjectID *remObjectID;
+@property(readonly, nonatomic) REMObjectID *remObjectID;
 @end
 

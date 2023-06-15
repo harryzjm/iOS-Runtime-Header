@@ -20,12 +20,8 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) PLAssetsdClient *assetsdClient; // @synthesize assetsdClient=_assetsdClient;
 @property(copy, nonatomic) CDUnknownBlockType finishedPickingBlock; // @synthesize finishedPickingBlock=_finishedPickingBlock;
 @property(copy, nonatomic) CDUnknownBlockType dismissalBlock; // @synthesize dismissalBlock=_dismissalBlock;
+- (void)picker:(id)arg1 didFinishPicking:(id)arg2;
 - (void)presentationControllerDidDismiss:(id)arg1;
-- (void)imagePickerControllerDidCancel:(id)arg1;
-- (void)imagePickerController:(id)arg1 didFinishPickingMultipleMediaWithInfo:(id)arg2;
-- (void)imagePickerController:(id)arg1 didFinishPickingMediaWithInfo:(id)arg2;
-- (void)dismissImagePickerController:(id)arg1;
-- (void)_dismissImagePickerController:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

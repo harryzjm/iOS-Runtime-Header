@@ -11,6 +11,7 @@
 
 @protocol STStatusDomainDataDiff <NSObject, NSSecureCoding>
 @property(readonly, nonatomic, getter=isEmpty) _Bool empty;
+- (_Bool)isOrthogonalToDiff:(id <STStatusDomainDataDiff>)arg1;
 - (id <STStatusDomainDataDiff>)diffByApplyingDiff:(id <STStatusDomainDataDiff>)arg1;
 @end
 

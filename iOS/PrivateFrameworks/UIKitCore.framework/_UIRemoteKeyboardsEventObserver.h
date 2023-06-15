@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (void)_cancelTrackingForTouch:(id)arg1;
 - (void)_endTrackingForTouch:(id)arg1;
 - (void)_updateTrackingForTouch:(id)arg1;
+- (_Bool)_hasTextAlternativesForTouch:(id)arg1;
 - (long long)_preferredEventSourceForTouch:(id)arg1 tracking:(id)arg2 shouldUpdateOut:(_Bool *)arg3;
 - (void)_startTrackingForTouch:(id)arg1;
 - (void)textInputResponderDidChange:(id)arg1;

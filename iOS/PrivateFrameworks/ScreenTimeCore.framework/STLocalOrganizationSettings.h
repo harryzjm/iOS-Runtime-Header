@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (void)setPasscode:(id)arg1;
+- (void)didChangeValueForKey:(id)arg1;
 - (id)dictionaryRepresentation;
 - (_Bool)updateWithDictionaryRepresentation:(id)arg1;
 

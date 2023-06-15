@@ -8,6 +8,5 @@
 
 @interface NSNotificationCenter (UIKitAdditions)
 + (id)uikitCenter;
-+ (id)uikitInternalCenter;
 @end
 

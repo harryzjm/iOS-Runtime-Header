@@ -32,7 +32,6 @@ __attribute__((visibility("hidden")))
 - (id)resolveClass:(Class)arg1 name:(id)arg2;
 - (id)resolveOptionalClass:(Class)arg1;
 - (id)resolveClass:(Class)arg1;
-- (id)currentObjectGraphResolver:(unsigned long long)arg1;
 
 @end
 

@@ -6,13 +6,13 @@
 
 #import <UserNotificationsUIKit/NSObject-Protocol.h>
 
-@class NCNotificationListCell;
+@class NCNotificationListCell, PLSwipeInteraction;
 
 @protocol NCNotificationListCellActionHandling <NSObject>
 - (void)notificationListCellDidSignificantUserInteraction:(NCNotificationListCell *)arg1;
 - (void)notificationListCell:(NCNotificationListCell *)arg1 didMoveToNewXPosition:(double)arg2;
-- (void)notificationListCellDidBeginHidingActions:(NCNotificationListCell *)arg1;
-- (void)notificationListCellDidBeginRevealingActions:(NCNotificationListCell *)arg1;
+- (void)notificationListCell:(NCNotificationListCell *)arg1 didBeginHidingActionsForSwipeInteraction:(PLSwipeInteraction *)arg2;
+- (void)notificationListCell:(NCNotificationListCell *)arg1 didBeginRevealingActionsForSwipeInteraction:(PLSwipeInteraction *)arg2;
 - (_Bool)shouldPerformClippingForNotificationListCell:(NCNotificationListCell *)arg1;
 @end
 

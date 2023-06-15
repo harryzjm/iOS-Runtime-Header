@@ -9,12 +9,15 @@
 __attribute__((visibility("hidden")))
 @interface _TtC12GameCenterUI25DashboardSidebarPresenter
 {
+    MISSING_TYPE *pageMetricsPresenter;
     MISSING_TYPE *launchContext;
     MISSING_TYPE *request;
     MISSING_TYPE *onSelectedItem;
     MISSING_TYPE *onRequiredDataChanged;
+    MISSING_TYPE *game;
     MISSING_TYPE *selectedItem;
     MISSING_TYPE *intentOnFirstLoad;
+    MISSING_TYPE *achievementIdToPresentOnFirstLoad;
     MISSING_TYPE *sections;
     MISSING_TYPE *requiredData;
     MISSING_TYPE *requiredDataPresenter;

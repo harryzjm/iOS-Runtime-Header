@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     NSDictionary *_policies;
     double _expectedProcessEndTime;
     unsigned int _packetCountInNetworkQueue;
+    int _packetCountBytesInNetworkQueue;
     unsigned int _networkQueueDelay;
     unsigned int _networkQueueDelayMean;
     unsigned int _networkQueueDelayStdDev;
@@ -23,6 +24,7 @@ __attribute__((visibility("hidden")))
     double _lastNetworkQueueDelayDistributionLoadTime;
 }
 
+@property int packetCountBytesInNetworkQueue; // @synthesize packetCountBytesInNetworkQueue=_packetCountBytesInNetworkQueue;
 @property unsigned int packetCountInNetworkQueue; // @synthesize packetCountInNetworkQueue=_packetCountInNetworkQueue;
 @property(readonly, nonatomic) double expectedProcessEndTime; // @synthesize expectedProcessEndTime=_expectedProcessEndTime;
 - (void)process:(id)arg1;

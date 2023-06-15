@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UICollectionViewCell.h>
+#import <UIKitCore/UICollectionViewCell.h>
 
-@class PHAsset, PHPerson, PXSuggestLessPeopleHelper, UIButton, UIGraphicsImageRenderer, UIImageView, UIView;
-@protocol PUPeopleTileDelegate;
+@class NSString, PHAsset, PHPerson, PXPhotoKitAssetCollectionActionManager, PXSuggestLessPeopleHelper, UIButton, UIGraphicsImageRenderer, UIImageView, UIView;
+@protocol PUPeopleTileDelegate, PXMemoryAssetsActionFactory;
 
 __attribute__((visibility("hidden")))
 @interface PUPeopleTileCollectionViewCell : UICollectionViewCell
@@ -21,11 +21,15 @@ __attribute__((visibility("hidden")))
     PHPerson *_person;
     PHAsset *_asset;
     PXSuggestLessPeopleHelper *_suggestLessPeopleHelper;
+    PXPhotoKitAssetCollectionActionManager *_personActionManager;
     struct CGSize _previousContentViewSize;
 }
 
++ (void)_fetchContactInfoForPerson:(id)arg1 completion:(CDUnknownBlockType)arg2;
++ (id)sharedContactFetchQueue;
 + (struct CGSize)itemSizeForTraitCollection:(id)arg1;
 - (void).cxx_destruct;
+@property(retain, nonatomic) PXPhotoKitAssetCollectionActionManager *personActionManager; // @synthesize personActionManager=_personActionManager;
 @property(retain, nonatomic) PXSuggestLessPeopleHelper *suggestLessPeopleHelper; // @synthesize suggestLessPeopleHelper=_suggestLessPeopleHelper;
 @property(retain, nonatomic) PHAsset *asset; // @synthesize asset=_asset;
 @property(retain, nonatomic) PHPerson *person; // @synthesize person=_person;
@@ -36,21 +40,32 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) UIButton *menuButton; // @synthesize menuButton=_menuButton;
 @property(retain, nonatomic) UIView *questionView; // @synthesize questionView=_questionView;
 @property(nonatomic) __weak id <PUPeopleTileDelegate> peopleDelegate; // @synthesize peopleDelegate=_peopleDelegate;
+- (_Bool)actionPerformer:(id)arg1 transitionToViewController:(id)arg2 transitionType:(long long)arg3;
+- (id)undoManagerForActionPerformer:(id)arg1;
 - (_Bool)suggestLessPeopleHelper:(id)arg1 presentViewController:(id)arg2;
 - (_Bool)suggestLessPeopleHelper:(id)arg1 dismissViewController:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_nameActionTapped:(id)arg1;
-- (void)_untagActionTapped:(id)arg1 asset:(id)arg2;
-- (void)_manageTagsActionTapped:(id)arg1;
+- (void)_unnameActionTapped:(id)arg1 asset:(id)arg2;
+- (void)_reviewPhotosActionTapped:(id)arg1;
 - (void)_showAlbumActionTapped:(id)arg1;
 - (void)_featureLessActionTapped:(id)arg1;
 - (void)_setupActionsForPerson:(id)arg1 asset:(id)arg2;
-- (void)_displayAvatarImageRequestResult:(id)arg1 faceRect:(struct CGRect)arg2 error:(id)arg3;
+- (void)_displayAvatarImageRequestResult:(id)arg1 faceRect:(struct CGRect)arg2 person:(id)arg3 error:(id)arg4;
+- (void)_fetchAvatarImageForPerson:(id)arg1;
+- (void)_fetchContactImageForPerson:(id)arg1 contact:(id)arg2;
 - (void)_reloadAvatarImageViewForPerson:(id)arg1;
 - (void)setPerson:(id)arg1 asset:(id)arg2;
 - (void)accessibilityInvertColorsStatusDidChange:(id)arg1;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) id <PXMemoryAssetsActionFactory> memoryAssetsActionFactory;
+@property(readonly) Class superclass;
 
 @end
 

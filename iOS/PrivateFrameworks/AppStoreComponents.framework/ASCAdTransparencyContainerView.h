@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class ASCAdTransparencyButtonView, NSString, UILabel, UIVisualEffectView;
 
@@ -25,7 +25,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property(readonly, nonatomic) ASCAdTransparencyButtonView *adTransparencyButton; // @synthesize adTransparencyButton=_adTransparencyButton;
 @property(copy, nonatomic) NSString *developerName; // @synthesize developerName=_developerName;
-- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateFont;
 - (void)addAdTransparencyTarget:(id)arg1 action:(SEL)arg2;
 - (void)layoutSubviews;

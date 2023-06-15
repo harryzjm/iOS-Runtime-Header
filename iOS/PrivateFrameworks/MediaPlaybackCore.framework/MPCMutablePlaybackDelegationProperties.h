@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MPCPrivateListeningStateSource, NSString, NSTimeZone;
+@class NSString, NSTimeZone;
 
 __attribute__((visibility("hidden")))
 @interface MPCMutablePlaybackDelegationProperties
@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSTimeZone *timeZone; // @dynamic timeZone;
 @property(nonatomic) long long systemReleaseType; // @dynamic systemReleaseType;
 @property(copy, nonatomic) NSString *requestUserAgent; // @dynamic requestUserAgent;
-@property(copy, nonatomic) MPCPrivateListeningStateSource *privateListeningStateSource; // @dynamic privateListeningStateSource;
 @property(copy, nonatomic) NSString *deviceName; // @dynamic deviceName;
 @property(copy, nonatomic) NSString *deviceGUID; // @dynamic deviceGUID;
 @property(nonatomic) unsigned long long storeAccountID; // @dynamic storeAccountID;

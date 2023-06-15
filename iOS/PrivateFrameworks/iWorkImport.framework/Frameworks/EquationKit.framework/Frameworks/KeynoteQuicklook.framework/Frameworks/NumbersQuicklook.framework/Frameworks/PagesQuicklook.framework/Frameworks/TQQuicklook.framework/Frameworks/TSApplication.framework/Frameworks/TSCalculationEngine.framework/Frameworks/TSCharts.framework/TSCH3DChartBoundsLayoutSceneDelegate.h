@@ -30,7 +30,7 @@
 - (_Bool)willProcessElement:(id)arg1 sceneObject:(id)arg2;
 - (void)didProcessElements:(id)arg1 sceneObject:(id)arg2 pipeline:(id)arg3;
 - (_Bool)willProcessElements:(id)arg1 sceneObject:(id)arg2 pipeline:(id)arg3;
-- (void)didGenerateShaderEffectsForSeriesAtIndex:(const void *)arg1 effects:(id)arg2 sceneObject:(id)arg3 pipeline:(id)arg4;
+- (void)didGenerateShaderEffectsForSeriesAtIndex:(void *)arg1 effects:(id)arg2 sceneObject:(id)arg3 pipeline:(id)arg4;
 - (_Bool)willProcessSeries:(id)arg1 sceneObject:(id)arg2 pipeline:(id)arg3;
 - (struct ElementRenderPass)renderPassForSceneObject:(id)arg1;
 - (_Bool)renderPassDelayDisallowedForSceneObject:(id)arg1 pipeline:(id)arg2;
@@ -39,7 +39,7 @@
 - (void)updateExternalLabelAttribute:(id)arg1 sceneObject:(id)arg2 labelRenderInfo:(id)arg3;
 - (_Bool)willSubmitLabelForSceneObject:(id)arg1 labelRenderInfo:(id)arg2;
 - (_Bool)willSubmitLabelType:(int)arg1 boundsIndex:(long long)arg2 alignment:(unsigned long long)arg3 elementIndex:(unsigned long long)arg4 forSceneObject:(id)arg5;
-- (void)setOffset:(const void *)arg1 labelType:(int)arg2 boundsIndex:(long long)arg3 forSceneObject:(id)arg4;
+- (void)setOffset:(void *)arg1 labelType:(int)arg2 boundsIndex:(long long)arg3 forSceneObject:(id)arg4;
 - (void)labelsResourcesSessionWillEndForSceneObject:(id)arg1 pipeline:(id)arg2;
 - (void)labelsResourcesSessionWillBeginForSceneObject:(id)arg1 pipeline:(id)arg2;
 - (void)didSubmitSceneObject:(id)arg1 pipeline:(id)arg2;
@@ -48,7 +48,7 @@
 - (void)didRunForScene:(id)arg1 pipeline:(id)arg2;
 - (void)p_addAllActiveLabelsBounds;
 - (void)willRunForScene:(id)arg1 pipeline:(id)arg2;
-- (void)p_extendProjectedBoundsForCachedLabelBounds:(id)arg1 offset:(const void *)arg2;
+- (void)p_extendProjectedBoundsForCachedLabelBounds:(id)arg1 offset:(void *)arg2;
 - (void)invalidateLabelsBoundsForSceneObjectClass:(Class)arg1 boundsIndex:(long long)arg2;
 - (id)makeDelegateWithSceneObject:(id)arg1 scene:(id)arg2;
 - (id)makeDelegateWithScene:(id)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/_UIStackedImageConfiguration.h>
+#import <UIKitCore/_UIStackedImageConfiguration.h>
 
 @interface _UIStackedImageConfiguration (SMUTVStackedImageView)
 + (id)smu_newImageConfiguration;

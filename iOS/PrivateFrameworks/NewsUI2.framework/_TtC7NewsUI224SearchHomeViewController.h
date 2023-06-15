@@ -11,15 +11,11 @@
 __attribute__((visibility("hidden")))
 @interface _TtC7NewsUI224SearchHomeViewController : TUViewController
 {
+    MISSING_TYPE *delegate;
     MISSING_TYPE *styler;
     MISSING_TYPE *eventHandler;
-    MISSING_TYPE *featureAvailability;
-    MISSING_TYPE *lazySearchViewController;
-    MISSING_TYPE *lazySearchResultsViewController;
     MISSING_TYPE *blueprintViewController;
     MISSING_TYPE *recentSearchManager;
-    MISSING_TYPE *preservedSearchText;
-    MISSING_TYPE *afterLoad;
 }
 
 - (void).cxx_destruct;

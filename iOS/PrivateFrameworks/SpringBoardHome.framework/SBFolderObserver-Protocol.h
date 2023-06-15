@@ -11,6 +11,7 @@
 @protocol SBFolderObserver <NSObject>
 
 @optional
+- (void)folderDisplayNameDidChange:(SBFolder *)arg1;
 - (void)folder:(SBFolder *)arg1 list:(SBIconListModel *)arg2 didInvalidateLayoutWithGridCellInfoOptions:(unsigned long long)arg3;
 - (void)folderIconStateDidDirty:(SBFolder *)arg1;
 - (void)folder:(SBFolder *)arg1 listHiddenDidChange:(SBIconListModel *)arg2;

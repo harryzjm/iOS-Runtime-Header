@@ -26,14 +26,14 @@
 + (id)resizerWithLayout:(id)arg1 chartType:(id)arg2;
 + (float)perspectiveness;
 + (float)minimumSize;
-+ (tvec2_84d5962d)adjustLabelWrapSize:(const void *)arg1;
-+ (tvec2_84d5962d)adjustLabelWrapSize:(const void *)arg1 forScene:(id)arg2;
++ (tvec2_84d5962d)adjustLabelWrapSize:(void *)arg1;
++ (tvec2_84d5962d)adjustLabelWrapSize:(void *)arg1 forScene:(id)arg2;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(nonatomic) float precision; // @synthesize precision=_precision;
 @property(nonatomic) float minStep; // @synthesize minStep=_minStep;
-- (tvec2_84d5962d)resize:(const void *)arg1 startingSize:(void *)arg2;
-- (tvec2_84d5962d)updateResizerFromRequestedSize:(const void *)arg1 startingSize:(void *)arg2;
+- (tvec2_84d5962d)resize:(void *)arg1 startingSize:(void *)arg2;
+- (tvec2_84d5962d)updateResizerFromRequestedSize:(void *)arg1 startingSize:(void *)arg2;
 - (float)containingViewportThreshold;
 - (void)readjustContainingViewport;
 - (void)adjustContainingViewport;

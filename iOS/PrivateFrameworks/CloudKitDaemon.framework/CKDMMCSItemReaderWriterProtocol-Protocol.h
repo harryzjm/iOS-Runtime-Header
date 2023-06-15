@@ -6,7 +6,7 @@
 
 #import <CloudKitDaemon/NSObject-Protocol.h>
 
-@class CKDMMCSItem, CKDMMCSItemGroupContext, CKFileMetadata;
+@class C3DownloadChunkContext, CKDMMCSItem, CKDMMCSItemGroupContext, CKFileMetadata;
 
 @protocol CKDMMCSItemReaderWriterProtocol <NSObject>
 @property(readonly, nonatomic) CKDMMCSItem *MMCSItem;
@@ -16,5 +16,8 @@
 - (CKFileMetadata *)getFileMetadataWithError:(id *)arg1;
 - (_Bool)closeWithError:(id *)arg1;
 - (_Bool)openWithError:(id *)arg1;
+
+@optional
+@property(readonly, nonatomic) C3DownloadChunkContext *downloadChunkContext;
 @end
 

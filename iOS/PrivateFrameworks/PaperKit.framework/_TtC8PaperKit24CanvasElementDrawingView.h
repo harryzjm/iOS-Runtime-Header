@@ -13,6 +13,8 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *canvasElementView;
     MISSING_TYPE *liveStreamingDisplayLink;
+    MISSING_TYPE *liveStreamingStartTimeInterval;
+    MISSING_TYPE *liveErasingDrawing;
 }
 
 - (void).cxx_destruct;
@@ -21,14 +23,17 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, readonly) UIView *attachmentContainerView;
 - (void)updateDrawingHeight:(double)arg1;
 - (double)heightFromDrawing:(id)arg1 delta:(double)arg2;
+@property(nonatomic, readonly) _Bool updateHeightAfterDrawing;
 - (_Bool)hitByTouchLocation:(struct CGPoint)arg1 bounds:(struct CGRect)arg2;
 @property(nonatomic, readonly) _Bool isAtEndOfDocument;
 - (void)updateFrameForTextContainer;
-- (void)didEndDrawing;
-- (void)drawingDidEraseStrokes;
-- (void)updateLiveDrawing;
+- (void)selectionDidChange;
+- (void)endedStroke:(id)arg1;
+- (void)drawingDidEraseStrokes:(id)arg1;
+- (void)displayLinkUpdateLiveDrawing;
+- (void)cancelledStroke:(id)arg1;
+- (void)beganStroke:(id)arg1;
 - (void)didBeginDrawing;
-- (void)updateTileContainerViewFrame;
 @property(nonatomic, readonly) struct CGAffineTransform drawingTransform;
 - (void)drawingDidChangeVisibleStrokes:(_Bool)arg1;
 @property(nonatomic, readonly) PKTiledView *tiledView;

@@ -7,6 +7,7 @@
 #import <Foundation/NSNull.h>
 
 @interface NSNull (NSKeyValueCoding)
++ (_Bool)automaticallyNotifiesObserversForKey:(id)arg1;
 - (id)valueForKey:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

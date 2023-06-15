@@ -4,10 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import "VCHistogram.h"
-
 __attribute__((visibility("hidden")))
-@interface VCHistogram2D : VCHistogram
+@interface VCHistogram2D
 {
     unsigned int **_buckets2D;
 }
@@ -16,7 +14,7 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (void)reset;
 - (void)dealloc;
-- (id)initWithType:(int)arg1 bucketValues:(id)arg2;
+- (id)initWithRanges:(const unsigned int *)arg1 bucketValues:(id)arg2;
 
 @end
 

@@ -13,7 +13,7 @@
     long long _radiusLimit;
 }
 
-- (void)mapFromVertexArray:(const void *)arg1 normalArray:(const void *)arg2 normalMatrix:(const void *)arg3 numVertices:(long long)arg4 destination:(void *)arg5;
+- (void)mapFromVertexArray:(const void *)arg1 normalArray:(const void *)arg2 normalMatrix:(void *)arg3 numVertices:(long long)arg4 destination:(void *)arg5;
 - (id)initWithTopMeshOffset:(long long)arg1 angleSteps:(long long)arg2 radiusSteps:(long long)arg3 angleLimit:(long long)arg4 radiusLimit:(long long)arg5;
 
 @end

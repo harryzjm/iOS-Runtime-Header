@@ -10,8 +10,8 @@
 @class NSArray, NSString;
 
 @protocol SAClientBoundCommand <SAAceCommand, SAAceReferable>
+@property(copy, nonatomic) NSArray *callbacks;
+@property(copy, nonatomic) NSString *appId;
 - (_Bool)requiresResponse;
-@property(nonatomic, copy) NSArray *callbacks;
-@property(nonatomic, copy) NSString *appId;
 @end
 

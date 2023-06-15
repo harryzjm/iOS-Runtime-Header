@@ -11,8 +11,8 @@
 __attribute__((visibility("hidden")))
 @interface WKCustomProtocolLoader : NSObject
 {
-    struct WeakPtr<WebKit::LegacyCustomProtocolManagerProxy, WTF::EmptyCounter> _customProtocolManagerProxy;
-    ObjectIdentifier_93c10595 _customProtocolID;
+    struct WeakPtr<WebKit::LegacyCustomProtocolManagerProxy, WTF::DefaultWeakPtrImpl> _customProtocolManagerProxy;
+    ObjectIdentifierGeneric_de52d110 _customProtocolID;
     unsigned long long _storagePolicy;
     struct RetainPtr<NSURLConnection> _urlConnection;
 }
@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
 - (void)connection:(id)arg1 didFailWithError:(id)arg2;
 - (void)cancel;
 - (void)dealloc;
-- (id)initWithLegacyCustomProtocolManagerProxy:(void *)arg1 customProtocolID:(ObjectIdentifier_93c10595)arg2 request:(id)arg3;
+- (id)initWithLegacyCustomProtocolManagerProxy:(void *)arg1 customProtocolID:(ObjectIdentifierGeneric_de52d110)arg2 request:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

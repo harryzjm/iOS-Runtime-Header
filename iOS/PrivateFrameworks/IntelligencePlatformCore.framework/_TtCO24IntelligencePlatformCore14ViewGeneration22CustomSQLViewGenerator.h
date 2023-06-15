@@ -12,7 +12,6 @@
 {
     MISSING_TYPE *dependencyTableNames;
     MISSING_TYPE *updateTemplate;
-    MISSING_TYPE *deleteTemplate;
     MISSING_TYPE *inputStore;
     MISSING_TYPE *outputArtifact;
 }

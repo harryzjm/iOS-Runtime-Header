@@ -10,7 +10,7 @@
 
 @interface _TtC24IntelligencePlatformCore31ViewGenerationFullPipelinePhase : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *shouldContinue;
+    MISSING_TYPE *phaseName;
 }
 
 @end

@@ -7,13 +7,13 @@
 #import <CalendarWidget/NSObject-Protocol.h>
 
 @protocol CUIKSingleDayTimelineGeometryDelegate <NSObject>
+@property(readonly, nonatomic) _Bool originIsUpperLeft;
+@property(readonly, nonatomic) double timeWidth;
+@property(readonly, nonatomic) double topPadding;
+@property(readonly, nonatomic) double hourHeight;
+@property(readonly, nonatomic) struct CGRect displayedRect;
 - (struct CGPoint)pointForDate:(double)arg1;
 - (double)dateForPoint:(struct CGPoint)arg1;
-@property(nonatomic, readonly) _Bool originIsUpperLeft;
-@property(nonatomic, readonly) double timeWidth;
-@property(nonatomic, readonly) double topPadding;
-@property(nonatomic, readonly) double hourHeight;
-@property(nonatomic, readonly) struct CGRect displayedRect;
 
 @optional
 - (_Bool)shouldReverseLayoutDirection;

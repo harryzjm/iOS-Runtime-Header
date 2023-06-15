@@ -5,6 +5,9 @@
 //
 
 @protocol ADAppTracking_XPC
+- (void)deviceRegionEnabledPerStorefront:(void (^)(_Bool))arg1;
+- (void)localAdServicesEnabled:(void (^)(_Bool))arg1;
+- (void)iTunesAccountStorefront:(void (^)(NSString *))arg1;
 - (void)latestPersonalizedAdsConsentVersion:(void (^)(long long))arg1;
 - (void)shouldAppStoreDisplayAdvertisingScreen:(void (^)(_Bool))arg1;
 - (void)shouldDisplayPersonalizedAdsUI:(void (^)(_Bool))arg1;

@@ -11,7 +11,6 @@
 @interface _TtC7SwiftUI16RootViewDelegate : _TtCs12_SwiftObject
 {
     MISSING_TYPE *colorSchemeSeed;
-    MISSING_TYPE *navigationV3Authority;
     MISSING_TYPE *nextDelegate;
 }
 

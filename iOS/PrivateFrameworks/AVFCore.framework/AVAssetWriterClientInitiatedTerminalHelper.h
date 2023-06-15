@@ -10,6 +10,7 @@ __attribute__((visibility("hidden")))
     long long _terminalStatus;
 }
 
+- (_Bool)_isDefunct;
 - (long long)status;
 - (id)initWithConfigurationState:(id)arg1 terminalStatus:(long long)arg2;
 - (id)initWithConfigurationState:(id)arg1;

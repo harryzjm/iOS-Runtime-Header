@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
 @class MISSING_TYPE;
 
@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *headerView;
     MISSING_TYPE *disabledViewProvider;
     MISSING_TYPE *followingNotificationsPrewarm;
+    MISSING_TYPE *initialContext;
 }
 
 - (void).cxx_destruct;

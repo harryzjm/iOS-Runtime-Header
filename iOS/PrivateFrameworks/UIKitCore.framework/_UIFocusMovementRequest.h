@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface _UIFocusMovementRequest : NSObject
 {
     _Bool _shouldPerformHapticFeedback;
+    _Bool _overridesDeferredFocusUpdate;
     UIFocusSystem *_focusSystem;
     _UIFocusInputDeviceInfo *_inputDeviceInfo;
     UIWindow *_window;
@@ -21,6 +22,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool overridesDeferredFocusUpdate; // @synthesize overridesDeferredFocusUpdate=_overridesDeferredFocusUpdate;
 @property(retain, nonatomic) _UIFocusSearchInfo *searchInfo; // @synthesize searchInfo=_searchInfo;
 @property(retain, nonatomic) _UIFocusMovementInfo *movementInfo; // @synthesize movementInfo=_movementInfo;
 @property(retain, nonatomic) _UIFocusItemInfo *focusedItemInfo; // @synthesize focusedItemInfo=_focusedItemInfo;

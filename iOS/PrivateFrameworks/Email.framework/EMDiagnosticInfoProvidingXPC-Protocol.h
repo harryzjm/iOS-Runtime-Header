@@ -9,6 +9,6 @@
 @class EFSandboxedURLWrapper;
 
 @protocol EMDiagnosticInfoProvidingXPC <NSObject>
-- (void)provideDiagnosticsAt:(EFSandboxedURLWrapper *)arg1 options:(unsigned long long)arg2 completion:(void (^)(NSError *))arg3;
+- (void)provideDiagnosticsAt:(EFSandboxedURLWrapper *)arg1 options:(unsigned long long)arg2 completion:(void (^)(NSSet *, NSError *))arg3;
 @end
 

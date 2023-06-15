@@ -6,7 +6,7 @@
 
 #import <UIKit/UITableViewCell.h>
 
-@class NSString, UILabel, UIView, WBSSavedAccount;
+@class NSString, SFAccountIconSharingBadgeImageCoordinator, UILabel, UIView, WBSSavedAccount;
 @protocol SFAccountTableViewCellDelegate;
 
 __attribute__((visibility("hidden")))
@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 {
     UILabel *_monogramLabel;
     UIView *_monogramBackgroundView;
+    SFAccountIconSharingBadgeImageCoordinator *_badgeImageCoordinator;
     WBSSavedAccount *_savedAccount;
     NSString *_searchPattern;
     id <SFAccountTableViewCellDelegate> _delegate;
@@ -23,6 +24,9 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak id <SFAccountTableViewCellDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) NSString *searchPattern; // @synthesize searchPattern=_searchPattern;
 @property(readonly, nonatomic) WBSSavedAccount *savedAccount; // @synthesize savedAccount=_savedAccount;
+- (void)_updateSharedAccountBadgeImageViewIfNecessary;
+- (void)safari_copyWebsite;
+@property(readonly, nonatomic) _Bool safari_hasWebsite;
 - (void)_updateAccessibilityIdentifiers;
 @property(readonly, nonatomic) _Bool isIconMonogram;
 - (void)safari_copyOneTimeCode;
@@ -33,6 +37,7 @@ __attribute__((visibility("hidden")))
 - (void)setSavedAccount:(id)arg1 searchPattern:(id)arg2 emphasizeUserName:(_Bool)arg3;
 - (void)showPlaceholderImageForDomain:(id)arg1 backgroundColor:(id)arg2;
 - (void)setIcon:(id)arg1;
+- (void)layoutSubviews;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 
 // Remaining properties

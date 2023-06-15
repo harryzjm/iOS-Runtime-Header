@@ -12,6 +12,8 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)supportedImageSizeSetForOptions:(id)arg1 error:(id *)arg2;
++ (id)supportedComputeStageDevicesForOptions:(id)arg1 error:(id *)arg2;
++ (id)computeStagesToBindForConfigurationOptions:(id)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)internalProcessUsingQualityOfServiceClass:(unsigned int)arg1 options:(id)arg2 regionOfInterest:(struct CGRect)arg3 warningRecorder:(id)arg4 error:(id *)arg5 progressHandler:(CDUnknownBlockType)arg6;

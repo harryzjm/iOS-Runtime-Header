@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
     _Bool _lock_didFailToRender;
     _Bool _lock_timedOut;
     _Bool _lock_invalidated;
+    _Bool _lock_didDisableFlipbookPowerSavings;
     BLSHBacklightEnvironmentPresentation *_presentation;
 }
 

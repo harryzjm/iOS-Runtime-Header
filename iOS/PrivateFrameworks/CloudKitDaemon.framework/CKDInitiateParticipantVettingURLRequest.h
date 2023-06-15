@@ -27,6 +27,8 @@
 - (id)requestDidParseProtobufObject:(id)arg1;
 - (id)generateRequestOperations;
 - (id)requestOperationClasses;
+- (void)fillOutRequestProperties:(id)arg1;
+- (id)equivalencyProperties;
 - (id)initWithOperation:(id)arg1 shareRecordID:(id)arg2 encryptedKey:(id)arg3 participantID:(id)arg4 baseToken:(id)arg5;
 
 @end

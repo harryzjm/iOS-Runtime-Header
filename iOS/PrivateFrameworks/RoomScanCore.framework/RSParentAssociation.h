@@ -13,8 +13,6 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)reset;
-- (id)runWithFloorplan:(id)arg1 needMerge:(_Bool)arg2 replaceOpendoorByOpening:(_Bool)arg3 replaceOpeningByOpendoor:(_Bool)arg4 replaceOpeningByDoor:(_Bool)arg5;
 - (id)init;
 
 @end

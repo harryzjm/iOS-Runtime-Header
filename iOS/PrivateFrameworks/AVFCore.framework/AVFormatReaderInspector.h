@@ -38,7 +38,8 @@ __attribute__((visibility("hidden")))
 - (float)preferredRate;
 - (CDStruct_1b6d18a9)duration;
 - (void *)_valueAsCFTypeForProperty:(struct __CFString *)arg1;
-@property(retain, nonatomic, getter=_formatReader, setter=_setFormatReader:) struct OpaqueFigFormatReader *formatReader;
+- (struct OpaqueFigFormatReader *)_copyFormatReader;
+- (void)_setFormatReader:(struct OpaqueFigFormatReader *)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (void)dealloc;

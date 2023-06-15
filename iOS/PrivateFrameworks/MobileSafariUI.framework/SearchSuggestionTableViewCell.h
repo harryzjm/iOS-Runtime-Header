@@ -14,12 +14,16 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _accessoryActionHandler;
 }
 
++ (id)_suggestedTextAttributes;
++ (id)_matchedTextAttributes;
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType accessoryActionHandler; // @synthesize accessoryActionHandler=_accessoryActionHandler;
 @property(nonatomic) _Bool hidesAccessoryView; // @synthesize hidesAccessoryView=_hidesAccessoryView;
 - (void)_accessoryButtonTapped:(id)arg1;
 - (void)layoutSubviews;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)setSearchSuggestion:(id)arg1 withQuery:(id)arg2;
+@property(nonatomic) _Bool usesDownBackwardCompletionArrow;
 - (void)prepareForReuse;
 @property(nonatomic) _Bool hidesImage;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;

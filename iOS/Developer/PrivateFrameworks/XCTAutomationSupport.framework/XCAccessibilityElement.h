@@ -14,7 +14,7 @@
 @interface XCAccessibilityElement : NSObject <NSCopying, NSSecureCoding>
 {
     int _processIdentifier;
-    const struct __AXUIElement *_AXUIElement;
+    struct __AXUIElement *_AXUIElement;
     unsigned long long _elementType;
     unsigned long long _originPlatform;
     NSData *_token;
@@ -38,7 +38,7 @@
 @property(readonly) unsigned long long originPlatform; // @synthesize originPlatform=_originPlatform;
 @property(readonly) unsigned long long elementType; // @synthesize elementType=_elementType;
 @property(readonly) int processIdentifier; // @synthesize processIdentifier=_processIdentifier;
-@property(readonly) const struct __AXUIElement *AXUIElement; // @synthesize AXUIElement=_AXUIElement;
+@property(readonly) struct __AXUIElement *AXUIElement; // @synthesize AXUIElement=_AXUIElement;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

@@ -10,6 +10,7 @@
 - (void)performCleanup;
 - (void)invalidate;
 - (void)getActivitiesWithRequests:(NSArray *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)getAppIntentsXPCListenerEndpointWithCompletion:(void (^)(NSXPCListenerEndpoint *, NSData *, NSError *))arg1;
 - (void)getTimelinesWithRequests:(NSArray *)arg1 isPreview:(_Bool)arg2 completion:(void (^)(NSError *))arg3;
 - (void)getPlaceholdersWithRequests:(NSArray *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)attachPreviewAgentWithFrameworkPath:(NSString *)arg1 endpoint:(id)arg2 handler:(void (^)(BSAuditToken *))arg3;

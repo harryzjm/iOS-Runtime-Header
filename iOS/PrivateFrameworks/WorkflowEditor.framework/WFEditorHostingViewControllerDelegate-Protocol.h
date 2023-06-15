@@ -10,6 +10,6 @@
 - (void)actionsDidChangeInEditorHostingViewController:(WFEditorHostingViewController *)arg1;
 - (void)editorHostingViewController:(WFEditorHostingViewController *)arg1 didChangeVariablePickingState:(_Bool)arg2;
 - (void)editorHostingViewControllerDidFinishRunning:(WFEditorHostingViewController *)arg1 cancelled:(_Bool)arg2;
-- (void)editorHostingViewController:(WFEditorHostingViewController *)arg1 didChangeRunningState:(_Bool)arg2 isWaiting:(_Bool)arg3;
+- (void)editorHostingViewController:(WFEditorHostingViewController *)arg1 didChangeRunningState:(_Bool)arg2 fractionCompleted:(double)arg3 isWaiting:(_Bool)arg4;
 @end
 

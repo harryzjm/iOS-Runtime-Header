@@ -12,6 +12,6 @@
 @protocol _UIPointerInteractionDriverSink <NSObject>
 - (void)driverDidExit:(id <_UIPointerInteractionDriver>)arg1;
 - (void)driver:(id <_UIPointerInteractionDriver>)arg1 willAttachHoverGestureRecognizer:(UIHoverGestureRecognizer *)arg2 toView:(UIView *)arg3;
-- (void)driver:(id <_UIPointerInteractionDriver>)arg1 didIssueUpdate:(CDStruct_f8445847)arg2;
+- (void)driver:(id <_UIPointerInteractionDriver>)arg1 didIssueUpdate:(CDStruct_7f9d6131)arg2;
 @end
 

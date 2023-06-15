@@ -13,10 +13,14 @@ __attribute__((visibility("hidden")))
 {
     _Bool _hasAppLostConnectivity;
     NSString *_lastTabIdentifier;
+    unsigned long long _firstPromptLaunchNumberAfterGDPR;
+    unsigned long long _lastPromptLaunchNumberAfterGDPR;
 }
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long lastPromptLaunchNumberAfterGDPR; // @synthesize lastPromptLaunchNumberAfterGDPR=_lastPromptLaunchNumberAfterGDPR;
+@property(nonatomic) unsigned long long firstPromptLaunchNumberAfterGDPR; // @synthesize firstPromptLaunchNumberAfterGDPR=_firstPromptLaunchNumberAfterGDPR;
 @property(retain, nonatomic) NSString *lastTabIdentifier; // @synthesize lastTabIdentifier=_lastTabIdentifier;
 @property(nonatomic) _Bool hasAppLostConnectivity; // @synthesize hasAppLostConnectivity=_hasAppLostConnectivity;
 - (void)handleEngagementRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -25,8 +29,7 @@ __attribute__((visibility("hidden")))
 - (void)_deleteKeysUsedForSheetPresentation;
 - (void)_showNotificationAuthorizationSheet;
 - (void)_handleTabBarChange:(id)arg1;
-- (void)handleAMSEngagementPresentationSheet:(_Bool)arg1;
-- (void)handleAppEnteredBackgroundForUserEngagementSheet;
+- (void)handleAMSEngagementPresentationSheet:(_Bool)arg1 isRepromptSupported:(_Bool)arg2;
 - (void)_handleNetworkReachabilityDidChangeNotification:(id)arg1;
 - (void)dealloc;
 - (id)_init;

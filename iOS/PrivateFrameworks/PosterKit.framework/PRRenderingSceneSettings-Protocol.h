@@ -6,12 +6,19 @@
 
 #import <PosterKit/PRSceneSettings-Protocol.h>
 
+@class NSArray;
+
 @protocol PRRenderingSceneSettings <PRSceneSettings>
+@property(readonly, nonatomic) NSArray *pr_sceneAttachments;
+@property(readonly, nonatomic) unsigned long long pr_titleAlignment;
+@property(readonly, nonatomic) unsigned long long pr_userTapEventsCounter;
+@property(readonly, nonatomic) struct CGPoint pr_userTapLocation;
 @property(readonly, nonatomic) unsigned long long pr_significantEventsCounter;
 @property(readonly, nonatomic) _Bool pr_wakeSourceIsSwipeToUnlock;
 @property(readonly, nonatomic) double pr_unlockProgress;
 @property(readonly, nonatomic, getter=pr_isFloatingLayerSnapshot) _Bool pr_floatingLayerSnapshot;
 @property(readonly, nonatomic, getter=pr_isSnapshot) _Bool pr_snapshot;
+@property(readonly, nonatomic) unsigned long long pr_previewContent;
 @property(readonly, nonatomic) long long pr_content;
 @property(readonly, nonatomic) long long pr_mode;
 - (long long)pr_adjustedLuminance;

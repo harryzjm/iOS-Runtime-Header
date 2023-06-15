@@ -11,11 +11,13 @@
 @interface _TtC7Message25InProgressMessageDownload : _TtCs12_SwiftObject
 {
     MISSING_TYPE *uid;
-    MISSING_TYPE *kind;
-    MISSING_TYPE *existingHeaders;
-    MISSING_TYPE *newMessageHeaders;
-    MISSING_TYPE *concatenators;
+    MISSING_TYPE *bodyStructure;
+    MISSING_TYPE *existingData;
+    MISSING_TYPE *downloadedHeader;
     MISSING_TYPE *sections;
+    MISSING_TYPE *passAndActionID;
+    MISSING_TYPE *cleanedUpFullMessageData;
+    MISSING_TYPE *_cachedAttachmentFilenames;
 }
 
 @end

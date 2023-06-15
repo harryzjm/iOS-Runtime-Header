@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *ivarAccessQueue;
     id <AVOutputDeviceDiscoverySessionImpl> impl;
     long long discoveryMode;
+    _Bool onlyDiscoversBluetoothDevices;
 }
 
 @end

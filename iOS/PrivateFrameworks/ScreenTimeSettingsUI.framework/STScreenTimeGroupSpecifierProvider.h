@@ -10,14 +10,21 @@ __attribute__((visibility("hidden")))
 @interface STScreenTimeGroupSpecifierProvider
 {
     PSSpecifier *_usageSummarySpecifier;
+    PSSpecifier *_screenTimeReportSpecifier;
     PSSpecifier *_seeAllActivitySpecifier;
 }
 
 - (void).cxx_destruct;
 @property(readonly) PSSpecifier *seeAllActivitySpecifier; // @synthesize seeAllActivitySpecifier=_seeAllActivitySpecifier;
+@property(readonly) PSSpecifier *screenTimeReportSpecifier; // @synthesize screenTimeReportSpecifier=_screenTimeReportSpecifier;
 @property(readonly) PSSpecifier *usageSummarySpecifier; // @synthesize usageSummarySpecifier=_usageSummarySpecifier;
+- (id)_createScreenTimeReportControllerWithSpecifier:(id)arg1;
+- (void)_showScreenTimeReportViewController:(id)arg1;
+- (id)_createUsageDetailListControllerWithSpecifier:(id)arg1;
 - (void)_showUsageDetailListController:(id)arg1;
+- (id)_rootViewModelCoordinator:(id)arg1;
 - (id)_usageDetailsCoordinator:(id)arg1;
+- (void)_hasDeviceActivityDataDidChange:(_Bool)arg1;
 - (void)_hasWatchOSDevicesOnlyDidChange:(_Bool)arg1;
 - (void)_refreshingDidChange:(_Bool)arg1;
 - (void)_displayNameDidChangeFrom:(id)arg1 to:(id)arg2;

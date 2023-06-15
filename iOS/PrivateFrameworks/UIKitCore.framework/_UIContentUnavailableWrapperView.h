@@ -6,52 +6,35 @@
 
 #import "UIView.h"
 
-@class NSString, _UIContentUnavailableWrapperScrollView, _UIContentUnavailableWrapperSeparatorView;
+@class NSMutableDictionary, UIScrollView, UIViewController;
 @protocol UIContentConfiguration, _UIContentViewInternal;
 
 __attribute__((visibility("hidden")))
 @interface _UIContentUnavailableWrapperView : UIView
 {
     UIView *_contentView;
+    UIView *_backgroundView;
     id <_UIContentViewInternal> _viewForConfiguration;
-    struct CGRect _keyboardFrame;
-    _Bool _trackingKeyboardFrame;
-    _UIContentUnavailableWrapperScrollView *_scrollView;
-    _UIContentUnavailableWrapperSeparatorView *_topSeparator;
-    _UIContentUnavailableWrapperSeparatorView *_bottomSeparator;
+    NSMutableDictionary *_parentScrollViews;
+    UIScrollView *_contentScrollView;
+    _Bool _isConfiguringContentScrollView;
+    UIViewController *_viewController;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) __weak UIViewController *viewController; // @synthesize viewController=_viewController;
 @property(readonly, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
-- (void)didMoveToSuperview;
+- (struct UIEdgeInsets)_concreteDefaultLayoutMargins;
+- (void)removeFromSuperview;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
-- (struct NSDirectionalEdgeInsets)_effectiveDirectionalLayoutMargins;
-- (void)layoutSubviews;
-- (unsigned long long)_edgesPropagatingSafeAreaInsetsToSubviews;
-- (void)_layoutMarginsDidChangeFromOldMargins:(struct UIEdgeInsets)arg1;
-- (void)setContentView:(id)arg1;
-- (void)_reparentScrollViewPanGesture;
-- (void)_updateSeparatorVisibility;
-- (void)scrollViewDidScroll:(id)arg1;
-- (struct CGRect)_effectiveKeyboardFrame;
-- (_Bool)_adjustsLayoutForKeyboard;
-- (void)_keyboardAboutToHide:(id)arg1;
-- (void)_keyboardAboutToChangeFrame:(id)arg1;
-- (void)_keyboardAboutToShow:(id)arg1;
-- (void)_handleKeyboardNotification:(id)arg1 aboutToHide:(_Bool)arg2;
+- (id)_contentScrollViewForView:(id)arg1;
+- (void)reconfigureContentScrollView;
+- (_Bool)_canApplyConfigurationToExistingContentView:(id)arg1;
 @property(copy, nonatomic) id <UIContentConfiguration> configuration;
-- (void)_applyConfiguration:(id)arg1;
-- (id)_encodableSubviews;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
-- (void)_commonInit;
-- (id)initWithConfiguration:(id)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (void)_updateBackgroundView;
+- (void)_updateBackgroundViewHandlersForPreviousContentView:(id)arg1 newContentView:(id)arg2;
+- (void)_updateContentView:(id)arg1;
+- (id)initWithViewController:(id)arg1;
 
 @end
 

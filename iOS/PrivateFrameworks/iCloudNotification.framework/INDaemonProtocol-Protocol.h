@@ -6,15 +6,21 @@
 
 #import <iCloudNotification/NSObject-Protocol.h>
 
-@class ICQInlineTip, ICQRemoteContext, NSDictionary, NSError, NSString, NSURLRequest;
+@class ACAccount, CERuleConfiguration, ICQInlineTip, ICQRemoteContext, NSArray, NSDictionary, NSError, NSNumber, NSString, NSURLRequest;
 
 @protocol INDaemonProtocol <NSObject>
+- (void)sendStatusForRecommendationsWithAltDSID:(NSString *)arg1 configuration:(CERuleConfiguration *)arg2 status:(NSString *)arg3 recommendationIdentifiers:(NSArray *)arg4 storageRecovered:(NSNumber *)arg5 completion:(void (^)(NSError *))arg6;
+- (void)fetchCompletedAndDismissedRecommendationsForAltDSID:(NSString *)arg1 configuration:(CERuleConfiguration *)arg2 completion:(void (^)(CEServerRecommendations *, NSError *))arg3;
+- (void)fetchRecommendationsRulesetForAltDSID:(NSString *)arg1 completion:(void (^)(CERuleConfiguration *, NSError *))arg2;
+- (void)fetchRecommendationsForAltDSID:(NSString *)arg1 completion:(void (^)(CEServerRecommendations *, NSError *))arg2;
 - (void)calculateExtraQuotaNeededToSyncForAccountWithID:(NSString *)arg1 isAccountFull:(_Bool)arg2 completion:(void (^)(NSNumber *, NSError *))arg3;
 - (void)displayDelayedOfferWithContext:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)fetchAppsSyncingToiCloudDriveForAltDSID:(NSString *)arg1 completion:(void (^)(ICQAppsSyncingToDrive *, NSError *))arg2;
 - (void)sendTipDismissedNetworkRequestForAltDSID:(NSString *)arg1 tip:(ICQInlineTip *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)sendTipDisplayedNetworkRequestForAltDSID:(NSString *)arg1 tip:(ICQInlineTip *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)fetchBackupInfoForAltDSID:(NSString *)arg1 completion:(void (^)(ICQBackupInfo *, NSError *))arg2;
 - (void)fetchStorageByApp:(NSString *)arg1 forAltDSID:(NSString *)arg2 completion:(void (^)(ICQAppCloudStorage *, NSError *))arg3;
+- (void)fetchStorageAppsForAltDSID:(NSString *)arg1 completion:(void (^)(ICQCloudStorageApps *, NSError *))arg2;
 - (void)fetchStorageSummaryForAltDSID:(NSString *)arg1 completion:(void (^)(ICQCloudStorageSummary *, NSError *))arg2;
 - (void)stopDelayedOfferFailsafeActivityWithCompletion:(void (^)(NSError *))arg1;
 - (void)startDelayedOfferFailsafeActivityWithDelaySecs:(long long)arg1 completion:(void (^)(NSError *))arg2;
@@ -27,6 +33,7 @@
 - (void)iCloudServerOfferForAccountWithID:(NSString *)arg1 options:(NSDictionary *)arg2 completion:(void (^)(NSDictionary *, NSError *))arg3;
 - (void)diagnosticReportWithCompletion:(void (^)(INDiagnosticReport *, NSError *))arg1;
 - (void)clearAllRegistrationDigestsWithCompletion:(void (^)(_Bool, NSError *))arg1;
+- (void)teardownOffersForAccount:(ACAccount *)arg1 withCompletion:(void (^)(void))arg2;
 - (void)unregisterAccountWithID:(NSString *)arg1 fromiCloudNotificationsWithCompletion:(void (^)(_Bool, NSError *))arg2;
 - (void)registerAccountWithID:(NSString *)arg1 foriCloudNotificationsWithReason:(unsigned long long)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 @end

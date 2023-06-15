@@ -42,6 +42,7 @@ __attribute__((visibility("hidden")))
 - (id)additionAnimationForDisplayItemWithIdentifier:(id)arg1 itemAnimation:(id)arg2;
 - (id)willUpdateWithData:(id)arg1;
 - (id)styleAttributesForStyle:(long long)arg1;
+- (double)animatedTypeDisplayItemSpacingFactorForCellularType:(long long)arg1;
 - (id)condensedFontForCellularType:(long long)arg1 defaultFont:(id)arg2 baselineOffset:(double *)arg3;
 - (id)stringForCellularType:(long long)arg1 condensed:(_Bool)arg2;
 - (void)itemCreated:(id)arg1;

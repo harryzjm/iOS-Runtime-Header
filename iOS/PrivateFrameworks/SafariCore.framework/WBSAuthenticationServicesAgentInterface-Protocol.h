@@ -4,11 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class LAContext, NSString, WBSAutoFillPasskey, WBSGlobalFrameIdentifier, WBSPasskeyAutoFillFromNearbyDeviceOptions;
+@class LAContext, NSData, NSString, WBSAutoFillPasskey, WBSGlobalFrameIdentifier, WBSPasskeyAutoFillFromNearbyDeviceOptions, WBSSavedAccountContext;
 
 @protocol WBSAuthenticationServicesAgentInterface
+- (void)completeAssertionWithExternalPasskeyForApplicationIdentifier:(NSString *)arg1 relyingPartyIdentifier:(NSString *)arg2 authenticatorData:(NSData *)arg3 signature:(NSData *)arg4 userHandle:(NSData *)arg5 credentialID:(NSData *)arg6;
+- (void)completeAssertionWithExternalPasskeyForWebFrameIdentifier:(WBSGlobalFrameIdentifier *)arg1 relyingPartyIdentifier:(NSString *)arg2 authenticatorData:(NSData *)arg3 signature:(NSData *)arg4 userHandle:(NSData *)arg5 credentialID:(NSData *)arg6;
+- (void)getExternalLoginChoiceForApplicationidentifier:(NSString *)arg1 relyingPartyIdentifier:(NSString *)arg2 credentialID:(NSString *)arg3 completionHandler:(void (^)(ASCPlatformPublicKeyCredentialLoginChoice *))arg4;
+- (void)getExternalLoginChoiceForWebFrameIdentifier:(WBSGlobalFrameIdentifier *)arg1 relyingPartyIdentifier:(NSString *)arg2 credentialID:(NSString *)arg3 completionHandler:(void (^)(ASCPlatformPublicKeyCredentialLoginChoice *))arg4;
+- (void)test_createPasskeyWithUserName:(NSString *)arg1 displayName:(NSString *)arg2 relyingPartyIdentifier:(NSString *)arg3 userHandle:(NSData *)arg4 completionHandler:(void (^)(_Bool))arg5;
 - (void)userSelectedAutoFillNearbyDevice:(WBSPasskeyAutoFillFromNearbyDeviceOptions *)arg1 completionHandler:(void (^)(_Bool))arg2;
-- (void)userSelectedAutoFillPasskey:(WBSAutoFillPasskey *)arg1 authenticatedLAContext:(LAContext *)arg2 completionHandler:(void (^)(void))arg3;
+- (void)userSelectedAutoFillPasskey:(WBSAutoFillPasskey *)arg1 authenticatedLAContext:(LAContext *)arg2 savedAccountContext:(WBSSavedAccountContext *)arg3 completionHandler:(void (^)(void))arg4;
 - (void)getPasskeysForRunningAssertionWithWebFrameIdentifier:(WBSGlobalFrameIdentifier *)arg1 completionHandler:(void (^)(NSArray *, WBSPasskeyAutoFillFromNearbyDeviceOptions *))arg2;
 - (void)getPasskeysForRunningAssertionWithApplicationIdentifier:(NSString *)arg1 withCompletionHandler:(void (^)(NSArray *, WBSPasskeyAutoFillFromNearbyDeviceOptions *))arg2;
 @end

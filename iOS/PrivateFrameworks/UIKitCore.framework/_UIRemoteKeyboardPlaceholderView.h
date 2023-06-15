@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIView *associatedView; // @synthesize associatedView=_associatedView;
 @property(retain, nonatomic) UIView *fallbackView; // @synthesize fallbackView=_fallbackView;
+- (void)_configureDebugOverlayIfNecessary;
 @property(readonly, nonatomic) _Bool isLocalMinimumHeightPlaceholder;
 - (void)_isPlaceholderViewSelector;
 - (_Bool)isEqual:(id)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDictionary, NSError, NSNumber, NSObject, NSString, NSURL, VUIStoreDownloadMonitor, VUIStoreFPSKeyLoader;
+@class NSDictionary, NSError, NSNumber, NSObject, NSString, NSURL, VUIStoreDownloadMonitor, VUIStoreFPSKeyLoader, VUIVideoManagedObject;
 
 __attribute__((visibility("hidden")))
 @interface VUIStoreMediaItem_iOS
@@ -12,7 +12,8 @@ __attribute__((visibility("hidden")))
     _Bool _isBingeWatched;
     _Bool _needsRentalCheckin;
     _Bool _needsRentalCheckoutPriorToPlayback;
-    NSNumber *_startTime;
+    _Bool _isForStartingDownload;
+    _Bool _useSidebandLibraryForPlaybackKeys;
     NSURL *_fpsCertificateURL;
     NSURL *_fpsKeyServerURL;
     NSDictionary *_fpsAdditionalServerParams;
@@ -27,10 +28,14 @@ __attribute__((visibility("hidden")))
     VUIStoreDownloadMonitor *_downloadMonitor;
     NSObject *_parentReportingToken;
     NSError *_fpsKeyError;
+    VUIVideoManagedObject *_videoManagedObject;
 }
 
 + (void)initialize;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool useSidebandLibraryForPlaybackKeys; // @synthesize useSidebandLibraryForPlaybackKeys=_useSidebandLibraryForPlaybackKeys;
+@property(nonatomic) _Bool isForStartingDownload; // @synthesize isForStartingDownload=_isForStartingDownload;
+@property(retain, nonatomic) VUIVideoManagedObject *videoManagedObject; // @synthesize videoManagedObject=_videoManagedObject;
 @property(nonatomic) _Bool needsRentalCheckoutPriorToPlayback; // @synthesize needsRentalCheckoutPriorToPlayback=_needsRentalCheckoutPriorToPlayback;
 @property(retain, nonatomic) NSError *fpsKeyError; // @synthesize fpsKeyError=_fpsKeyError;
 @property(retain, nonatomic) NSObject *parentReportingToken; // @synthesize parentReportingToken=_parentReportingToken;
@@ -48,7 +53,6 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSDictionary *fpsAdditionalServerParams; // @synthesize fpsAdditionalServerParams=_fpsAdditionalServerParams;
 @property(copy, nonatomic) NSURL *fpsKeyServerURL; // @synthesize fpsKeyServerURL=_fpsKeyServerURL;
 @property(copy, nonatomic) NSURL *fpsCertificateURL; // @synthesize fpsCertificateURL=_fpsCertificateURL;
-@property(nonatomic) NSNumber *startTime; // @synthesize startTime=_startTime;
 - (id)_hlsURLEnsuringDsidQueryParamIsPresentFromURL:(id)arg1;
 - (id)_rentalExpirationDate;
 - (id)_rentalPlaybackEndDate;
@@ -66,7 +70,8 @@ __attribute__((visibility("hidden")))
 - (id)_iTunesStoreContentPurchasedMediaKind;
 - (id)_adamIDString;
 - (_Bool)_loadingCancelled:(unsigned long long)arg1;
-- (void)_performStreamingRedownloadWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_performRedownloadWithType:(long long)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_configureForDownloadingWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_configureForStreamingPlaybackWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_configureForPlaybackFromExistingDownload:(id)arg1 downloadManager:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_configureForLocalPlaybackWithURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -78,16 +83,20 @@ __attribute__((visibility("hidden")))
 - (void)mediaItemAllInitialLoadingComplete:(id)arg1 totalTime:(double)arg2 player:(id)arg3;
 - (id)reportingDelegate;
 - (void)cleanUpMediaItem;
+- (void)processFinishedDownloadWithCompletion:(CDUnknownBlockType)arg1;
+- (void)updateBookmarkWithSuggestedTime:(double)arg1 forElapsedTime:(double)arg2 duration:(double)arg3 playbackOfMediaItemIsEnding:(_Bool)arg4;
 - (id)replacementErrorForPlaybackError:(id)arg1;
 - (_Bool)shouldRetryPlaybackForError:(id)arg1;
 - (void)prepareForPlaybackInitiationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)prepareForLoadingWithCompletion:(CDUnknownBlockType)arg1;
+- (void)setMediaItemMetadata:(id)arg1 forProperty:(id)arg2;
 - (id)mediaItemMetadataForProperty:(id)arg1;
 - (_Bool)hasTrait:(id)arg1;
 - (id)mediaItemURL;
+- (void)resetReportingEventCollection;
 - (void)dealloc;
-- (id)initWithMPMediaItem:(id)arg1;
-- (id)initWithAdamID:(long long)arg1;
+- (id)initWithMPMediaItem:(id)arg1 videoManagedObject:(id)arg2 isForStartingDownload:(_Bool)arg3;
+- (id)initWithAdamID:(long long)arg1 videoManagedObject:(id)arg2 isForStartingDownload:(_Bool)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

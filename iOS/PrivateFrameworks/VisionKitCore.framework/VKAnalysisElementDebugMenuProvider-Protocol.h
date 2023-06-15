@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <VisionKitCore/NSObject-Protocol.h>
+
 @class UIMenu;
 
-@protocol VKAnalysisElementDebugMenuProvider
+@protocol VKAnalysisElementDebugMenuProvider <NSObject>
 @property(readonly, nonatomic) UIMenu *debugMenu;
 @end
 

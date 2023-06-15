@@ -7,6 +7,7 @@
 #import <Foundation/NSURL.h>
 
 @interface NSURL (MobileInstallationAdditions)
+- (id)MI_allAccessURLs;
 - (id)MI_URLByAppendingPathComponents:(id)arg1 lastIsDirectory:(_Bool)arg2;
 @end
 

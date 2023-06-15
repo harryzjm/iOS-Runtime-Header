@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
 @class NSArray, NSString, PUWallpaperPosterController, PUWallpaperPosterDateView, UIButton, UIView, _PUWallpaperDebugMutablePreferences, _PUWallpaperDebugRenderingEnvironment;
 
@@ -48,6 +48,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
 - (void)presentPlaygroundWithPresentingViewController:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (id)pu_extendRenderSessionForReason:(id)arg1;
+- (void)pu_noteContentSignificantlyChanged;
 - (void)pu_updatePreferences:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) double pu_shuffleSleepFadeInAnimationDuration;
 @property(readonly, nonatomic) double pu_shuffleSleepFadeOutAnimationDuration;
@@ -69,6 +71,8 @@ __attribute__((visibility("hidden")))
 - (long long)preferredStatusBarStyle;
 - (id)_renderingEnvironmentForAssets:(id)arg1;
 - (void)dealloc;
+- (void)_commonInit;
+- (id)initWithConfiguration:(id)arg1 assetDirectory:(id)arg2;
 - (id)initWithAssets:(id)arg1;
 
 // Remaining properties

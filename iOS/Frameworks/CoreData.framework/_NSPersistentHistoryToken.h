@@ -24,6 +24,8 @@ __attribute__((visibility("hidden")))
 - (id)storeTokens;
 - (id)description;
 - (void)dealloc;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithTransactionNumber:(id)arg1 andStoreID:(id)arg2;
 
 @end
 

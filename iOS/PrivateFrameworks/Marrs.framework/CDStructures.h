@@ -12,7 +12,7 @@ struct MentionResolverRequest;
 
 struct QRHypothesis {
     struct Uuid _field1;
-    basic_string_05660eb3 _field2;
+    basic_string_b963e3c0 _field2;
     double _field3;
     int _field4;
 };
@@ -21,7 +21,7 @@ struct QRInteraction {
     struct vector<marrs::qr::orchestration::QRUtterance, std::allocator<marrs::qr::orchestration::QRUtterance>> _field1;
     struct vector<marrs::qr::orchestration::QRUtterance, std::allocator<marrs::qr::orchestration::QRUtterance>> _field2;
     struct vector<marrs::qr::orchestration::QRToken, std::allocator<marrs::qr::orchestration::QRToken>> _field3;
-    basic_string_05660eb3 _field4;
+    basic_string_b963e3c0 _field4;
     _Bool _field5;
     unsigned long long _field6;
 };
@@ -41,21 +41,22 @@ struct QRResponse {
 };
 
 struct QRToken {
-    basic_string_05660eb3 _field1;
-    basic_string_05660eb3 _field2;
+    basic_string_b963e3c0 _field1;
+    basic_string_b963e3c0 _field2;
     vector_74824a0a _field3;
     _Bool _field4;
     _Bool _field5;
     unsigned long long _field6;
     unsigned long long _field7;
     double _field8;
-    basic_string_05660eb3 _field9;
+    basic_string_b963e3c0 _field9;
     _Bool _field10;
+    basic_string_b963e3c0 _field11;
 };
 
 struct QRUtterance {
     struct Uuid _field1;
-    basic_string_05660eb3 _field2;
+    basic_string_b963e3c0 _field2;
     struct vector<marrs::qr::orchestration::QRToken, std::allocator<marrs::qr::orchestration::QRToken>> _field3;
     struct vector<marrs::qr::orchestration::QRToken, std::allocator<marrs::qr::orchestration::QRToken>> _field4;
     double _field5;
@@ -80,13 +81,14 @@ struct basic_string<char, std::char_traits<char>, std::allocator<char>> {
                 struct __long {
                     char *_field1;
                     unsigned long long _field2;
-                    unsigned long long _field3;
+                    unsigned int :63;
+                    unsigned int :1;
                 } _field1;
                 struct __short {
                     char _field1[23];
-                    struct {
-                        unsigned char _field1;
-                    } _field2;
+                    unsigned char _field2[0];
+                    unsigned int :7;
+                    unsigned int :1;
                 } _field2;
                 struct __raw {
                     unsigned long long _field1[3];
@@ -168,13 +170,14 @@ typedef struct basic_string<char, std::char_traits<char>, std::allocator<char>> 
                 struct __long {
                     char *_field1;
                     unsigned long long _field2;
-                    unsigned long long _field3;
+                    unsigned int :63;
+                    unsigned int :1;
                 } _field1;
                 struct __short {
                     char _field1[23];
-                    struct {
-                        unsigned char _field1;
-                    } _field2;
+                    unsigned char _field2[0];
+                    unsigned int :7;
+                    unsigned int :1;
                 } _field2;
                 struct __raw {
                     unsigned long long _field1[3];
@@ -182,7 +185,7 @@ typedef struct basic_string<char, std::char_traits<char>, std::allocator<char>> 
             } _field1;
         } _field1;
     } _field1;
-} basic_string_05660eb3;
+} basic_string_b963e3c0;
 
 typedef struct unique_ptr<marrs::qr::orchestration::QRRequest, std::default_delete<marrs::qr::orchestration::QRRequest>> {
     struct __compressed_pair<marrs::qr::orchestration::QRRequest *, std::default_delete<marrs::qr::orchestration::QRRequest>> {

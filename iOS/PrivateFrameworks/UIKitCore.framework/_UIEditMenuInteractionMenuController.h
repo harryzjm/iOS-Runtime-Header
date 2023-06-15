@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+- (id)_editMenuInteraction:(id)arg1 firstResponderTargetForConfiguration:(id)arg2;
 - (id)editMenuInteraction:(id)arg1 menuForConfiguration:(id)arg2 suggestedActions:(id)arg3;
 - (void)editMenuInteraction:(id)arg1 willDismissMenuForConfiguration:(id)arg2 animator:(id)arg3;
 - (void)editMenuInteraction:(id)arg1 willPresentMenuForConfiguration:(id)arg2 animator:(id)arg3;
@@ -28,7 +29,6 @@ __attribute__((visibility("hidden")))
 - (_Bool)_shouldPassthroughInView;
 - (void)_presentEditMenu;
 - (void)_dismissEditMenu;
-- (id)_calloutBarFirstResponderTarget;
 - (void)_prepareEditMenuInteractionIfNeeded;
 - (void)_setTargetRect:(struct CGRect)arg1 inView:(id)arg2 animated:(_Bool)arg3;
 - (struct CGRect)_targetRect;

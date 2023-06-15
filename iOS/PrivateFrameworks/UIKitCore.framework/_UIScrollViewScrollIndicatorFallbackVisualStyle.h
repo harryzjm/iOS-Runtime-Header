@@ -6,21 +6,30 @@
 
 #import <objc/NSObject.h>
 
+@class NSString;
+
 __attribute__((visibility("hidden")))
 @interface _UIScrollViewScrollIndicatorFallbackVisualStyle : NSObject
 {
 }
 
+- (id)feedbackGeneratorWithView:(id)arg1;
 - (CDStruct_f413d7fe)valuesForLayoutSizeAnimationWhenExpanding:(_Bool)arg1;
 - (id)colorForIndicatorStyle:(long long)arg1 expanded:(_Bool)arg2;
+@property(readonly, nonatomic) _Bool doesExpand;
 @property(readonly, nonatomic) _Bool clipsToBounds;
 @property(readonly, nonatomic) struct UIEdgeInsets cursorHitTestingInsets;
 - (struct CGRect)hitTestingRectForIndicatorRect:(struct CGRect)arg1;
 - (double)fillViewCornerRadiusForStaticDimensionSize:(double)arg1;
-- (id)fillViewRoundedCornerCurve;
 @property(readonly, nonatomic) double staticDimensionExpandedSize;
 @property(readonly, nonatomic) double staticDimensionSize;
 - (id)fillView;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

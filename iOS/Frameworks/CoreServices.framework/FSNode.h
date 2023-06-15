@@ -83,6 +83,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic, getter=isSymbolicLink) _Bool symbolicLink;
 @property(readonly, nonatomic, getter=isResolvable) _Bool resolvable;
 @property(readonly, nonatomic, getter=isExecutable) _Bool executable;
+@property(readonly, nonatomic, getter=isExecutableModeFile) _Bool executableModeFile;
 @property(readonly, nonatomic, getter=isBusyDirectory) _Bool busyDirectory;
 @property(readonly, nonatomic, getter=isDirectory) _Bool directory;
 - (_Bool)getIsDirectory_NoIO:(_Bool *)arg1;
@@ -94,6 +95,7 @@ __attribute__((visibility("hidden")))
 - (id)canonical:(_Bool)arg1 pathWithError:(id *)arg2;
 @property(readonly, nonatomic, getter=isOnLocalVolume) _Bool onLocalVolume;
 @property(readonly, nonatomic, getter=isOnDiskImage) _Bool onDiskImage;
+@property(readonly, nonatomic, getter=isSecuredSystemContent) _Bool securedSystemContent;
 - (_Bool)getVolumeIdentifier:(unsigned long long *)arg1 error:(id *)arg2;
 @property(readonly, nonatomic, getter=isMountTrigger) _Bool mountTrigger;
 @property(readonly, nonatomic, getter=isVolume) _Bool volume;

@@ -20,7 +20,6 @@ __attribute__((visibility("hidden")))
 - (_Bool)textFieldShouldClear:(id)arg1;
 - (_Bool)textFieldShouldReturn:(id)arg1;
 - (void)textFieldDidChange:(id)arg1;
-- (_Bool)textField:(id)arg1 shouldChangeCharactersInRange:(struct _NSRange)arg2 replacementString:(id)arg3;
 - (void)textFieldDidEndEditing:(id)arg1;
 - (void)textFieldDidBeginEditing:(id)arg1;
 - (_Bool)editor:(id)arg1 canSelectSubitem:(unsigned long long)arg2;
@@ -34,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (void)_contentSizeCategoryChanged:(id)arg1;
 - (unsigned long long)numberOfSubitems;
 - (void)reset;
+- (void)refreshFromCalendarItemAndStore;
 - (_Bool)isInline;
 - (double)defaultCellHeightForSubitemAtIndex:(unsigned long long)arg1 forWidth:(double)arg2;
 - (void)dealloc;

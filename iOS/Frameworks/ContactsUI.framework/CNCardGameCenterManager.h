@@ -34,8 +34,6 @@ __attribute__((visibility("hidden")))
 - (void)handleResults:(id)arg1 forContact:(id)arg2 error:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)refreshGameCenterRelationshipsForContact:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getGameCenterRelationshipsForContact:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (_Bool)hasAuthenticatedLocalPlayer;
-- (void)getHasAuthenticatedLocalPlayerHandler:(CDUnknownBlockType)arg1;
 - (_Bool)shouldActionDisplayDropdownMenu;
 - (id)handles;
 - (id)init;

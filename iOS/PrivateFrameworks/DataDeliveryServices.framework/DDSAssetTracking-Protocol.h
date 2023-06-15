@@ -11,7 +11,10 @@
 
 @protocol DDSAssetTracking <NSObject>
 @property(retain, nonatomic) id <DDSAssetTrackingDelegate> delegate;
-- (void)resetAssertionDueDates;
+- (long long)updateStatusForAssertion:(DDSAssertion *)arg1;
+- (void)modifyUpdateStatusForAssertion:(DDSAssertion *)arg1 toStatus:(long long)arg2;
+- (DDSAssertion *)assertionForQuery:(DDSAssetQuery *)arg1;
+- (void)resetAssertionDueDatesForAssetType:(NSString *)arg1;
 - (NSSet *)assertionIDsForClientID:(NSString *)arg1;
 - (NSSet *)trackedAssetTypes;
 - (NSArray *)allAssertions;

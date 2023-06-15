@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMutableArray, NSString;
+@class FPItemID, NSArray, NSDictionary, NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface BRWatchingConfiguration : NSObject
@@ -15,6 +15,9 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_appLibraryIDs;
     NSMutableArray *_urls;
     NSString *_gatherPrefix;
+    NSDictionary *_appLibraryIDToURLMapOfSuppliedAppIDs;
+    NSDictionary *_appLibraryIDToURLMapOfSuppliedURLs;
+    FPItemID *_trashItemID;
 }
 
 - (void).cxx_destruct;
@@ -22,6 +25,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSArray *urls; // @synthesize urls=_urls;
 @property(readonly, nonatomic) NSArray *appLibraryIDs; // @synthesize appLibraryIDs=_appLibraryIDs;
 @property(readonly, nonatomic) unsigned long long watchTypes; // @synthesize watchTypes=_watchTypes;
+- (id)appLibraryIDToURLMapOfSuppliedURLs;
+- (id)appLibraryIDToURLMapOfSuppliedAppIDs;
 - (id)initWithScopes:(id)arg1 predicate:(id)arg2;
 
 @end

@@ -23,9 +23,11 @@ __attribute__((visibility("hidden")))
     GEOCollectionResult *_collectionResult;
     GEOPublisherResult *_publisherResult;
     NSArray *_resultRefinements;
+    _Bool _supportsOfflineDownload;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool supportsOfflineDownload; // @synthesize supportsOfflineDownload=_supportsOfflineDownload;
 @property(readonly, nonatomic) GEOPDAutocompleteEntry *entry; // @synthesize entry=_entry;
 @property(readonly, nonatomic) NSArray *displayLines; // @synthesize displayLines=_displayLines;
 @property(readonly, nonatomic) GEOStyleAttributes *iconStyleAttributes;

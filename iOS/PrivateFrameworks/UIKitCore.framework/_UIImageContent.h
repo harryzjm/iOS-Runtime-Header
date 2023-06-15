@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CIImage, CUINamedVectorGlyph, UIBezierPath, UIImageSymbolConfiguration;
+@class CIImage, CUINamedVectorGlyph, NSString, UIBezierPath, UIImageSymbolConfiguration;
 
 __attribute__((visibility("hidden")))
 @interface _UIImageContent : NSObject
@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (void)_prepareForDrawingWithSize:(struct CGSize)arg1 scale:(double)arg2 inContext:(struct CGContext *)arg3;
 - (id)renditionWithSize:(struct CGSize)arg1 scale:(double)arg2 applyingEffect:(id)arg3;
 - (id)renditionApplyingEffect:(id)arg1;
+- (_Bool)_isSameSymbolImageContentExceptVariableValue:(id)arg1;
 - (id)contentWithVariableValue:(double)arg1;
 - (id)contentWithCGImage:(struct CGImage *)arg1;
 - (unsigned long long)hash;
@@ -63,12 +64,15 @@ __attribute__((visibility("hidden")))
 - (id)contentPreparedForDisplay;
 @property(readonly, nonatomic) struct CGImage *CGImage;
 - (_Bool)_canProvideCGImageDirectly;
-- (_Bool)canEmitDrawingCommands;
+- (_Bool)canEmitVectorDrawingCommands;
 - (_Bool)canScaleImageToTargetResolution;
-- (_Bool)canDrawImage;
+- (_Bool)prefersProvidingContentsDirectly;
 - (_Bool)hasCGImage;
+- (_Bool)hasExtendedDynamicRange;
+- (_Bool)isPreparedCGImage;
 - (_Bool)isCGImage;
 - (_Bool)isCGImageOnly;
+@property(readonly, nonatomic) NSString *typeName;
 - (id)initWithScale:(double)arg1;
 - (id)init;
 

@@ -18,8 +18,9 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)sizeInPixels;
 - (struct CGSVGDocument *)CGSVGDocument;
 - (_Bool)isCGSVGDocument;
-- (_Bool)canEmitDrawingCommands;
+- (_Bool)canEmitVectorDrawingCommands;
 - (_Bool)canScaleImageToTargetResolution;
+- (id)typeName;
 - (void)dealloc;
 - (id)initWithScale:(double)arg1;
 - (id)initWithCGSVGDocument:(struct CGSVGDocument *)arg1 scale:(double)arg2;

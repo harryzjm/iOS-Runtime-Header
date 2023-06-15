@@ -11,6 +11,8 @@
 + (long long)editDistance:(id)arg1 string:(id)arg2 threshold:(long long)arg3;
 + (long long)editDistance:(id)arg1 string:(id)arg2;
 - (id)combinedTokenSequenceString;
+- (id)_crReplacedUkrainianApostrophes;
+- (id)_crArrayOfComposedCharacters;
 - (id)_crStringByPreparingForLanguageRecognition;
 - (id)_crPredictedLocaleUsingRecognizer:(id)arg1 resetContext:(_Bool)arg2;
 - (id)_crStringByReplacingCharactersInSet:(id)arg1 withString:(id)arg2;
@@ -30,7 +32,6 @@
 - (long long)editDistanceFromString:(id)arg1 threshold:(long long)arg2;
 - (long long)editDistanceFromString:(id)arg1;
 - (id)safeSubstringWithRange:(struct _NSRange)arg1;
-- (id)_crArrayOfComposedCharacters;
 - (_Bool)_crIsSentencePunctuatedIncludingWhitespace:(_Bool)arg1;
 - (_Bool)_crIsProgrammingStatement;
 - (_Bool)_crIsAllAscii;

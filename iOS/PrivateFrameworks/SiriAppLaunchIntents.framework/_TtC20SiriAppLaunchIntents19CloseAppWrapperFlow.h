@@ -19,7 +19,6 @@
     MISSING_TYPE *responseGenerator;
     MISSING_TYPE *dialogResponseUtil;
     MISSING_TYPE *input;
-    MISSING_TYPE *state;
 }
 
 @end

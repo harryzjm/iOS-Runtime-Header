@@ -18,12 +18,14 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property(nonatomic) long long locations; // @synthesize locations=_locations;
+- (void)modalRemoteViewController:(id)arg1 didDismissWithResponse:(id)arg2;
 - (void)wallpaperPreviewViewControllerSetButtonPressed:(id)arg1;
 - (void)wallpaperPreviewViewControllerCancelButtonPressed:(id)arg1;
 - (_Bool)isiPad;
 - (void)finishWithError:(id)arg1;
 - (void)cancelPresentationWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)showPreviewWithInput:(id)arg1 key:(id)arg2 wallpaperLocation:(long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)showPreviewForConfiguration:(id)arg1 selectedPoster:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

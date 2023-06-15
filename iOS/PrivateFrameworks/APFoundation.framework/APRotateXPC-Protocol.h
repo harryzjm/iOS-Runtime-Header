@@ -7,6 +7,6 @@
 #import <APFoundation/NSObject-Protocol.h>
 
 @protocol APRotateXPC <NSObject>
-- (void)rotate;
+- (void)rotate:(void (^)(NSError *))arg1;
 @end
 

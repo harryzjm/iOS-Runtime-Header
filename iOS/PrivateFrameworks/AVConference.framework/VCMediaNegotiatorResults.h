@@ -19,9 +19,13 @@ __attribute__((visibility("hidden")))
     unsigned int _remoteBlobVersion;
     int _controlChannelVersion;
     NSMutableSet *_bandwidthConfigurations;
+    int _accessNetworkType;
+    union tagNTP _remoteBlobCreationTime;
 }
 
+@property(nonatomic) int accessNetworkType; // @synthesize accessNetworkType=_accessNetworkType;
 @property(nonatomic) int controlChannelVersion; // @synthesize controlChannelVersion=_controlChannelVersion;
+@property(nonatomic) union tagNTP remoteBlobCreationTime; // @synthesize remoteBlobCreationTime=_remoteBlobCreationTime;
 @property(nonatomic) unsigned int remoteBlobVersion; // @synthesize remoteBlobVersion=_remoteBlobVersion;
 @property(nonatomic) unsigned char mediaControlInfoVersion; // @synthesize mediaControlInfoVersion=_mediaControlInfoVersion;
 @property(readonly, nonatomic) NSSet *bandwidthConfigurations; // @synthesize bandwidthConfigurations=_bandwidthConfigurations;

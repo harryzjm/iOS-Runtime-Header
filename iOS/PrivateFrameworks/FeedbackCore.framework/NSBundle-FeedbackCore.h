@@ -7,7 +7,7 @@
 #import <Foundation/NSBundle.h>
 
 @interface NSBundle (FeedbackCore)
-+ (id)feedbackCore;
++ (id)FeedbackCore;
 + (id)feedbackCoreFramework;
 @end
 

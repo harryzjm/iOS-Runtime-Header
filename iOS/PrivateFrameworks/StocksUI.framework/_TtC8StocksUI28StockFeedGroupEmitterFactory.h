@@ -11,6 +11,7 @@
 @interface _TtC8StocksUI28StockFeedGroupEmitterFactory : _TtCs12_SwiftObject
 {
     MISSING_TYPE *formatService;
+    MISSING_TYPE *featureAvailability;
 }
 
 @end

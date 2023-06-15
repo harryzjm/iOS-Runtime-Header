@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 @class NSMutableSet, UIColor;
 
 __attribute__((visibility("hidden")))
-@interface _UIFocusRegionMapEntry : NSObject <NSCopying>
+@interface _UIFocusRegionMapEntry : NSObject
 {
     _UIFocusRegionMapEntry *_originalEntry;
     _UIFocusRegionMapEntry *_parentEntry;

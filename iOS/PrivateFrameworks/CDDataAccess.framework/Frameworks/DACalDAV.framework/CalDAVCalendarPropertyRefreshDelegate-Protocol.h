@@ -19,6 +19,7 @@
 - (void)calendarRefreshFoundDeletedContainerURL:(NSURL *)arg1;
 - (void)calendarRefreshFoundUpdatedSpecialContainer:(CalDAVContainer *)arg1;
 - (void)calendarRefreshFoundUpdatedContainerWithIgnoredEntityType:(CalDAVContainer *)arg1;
+- (void)calendarRefreshMkCalendarSucceededForPrincipal:(id <CalDAVPrincipal>)arg1 calendar:(id <CalDAVCalendar>)arg2;
 - (_Bool)calendarRefreshShouldRetryMkCalendarForPrincipal:(id <CalDAVPrincipal>)arg1 calendar:(id <CalDAVCalendar>)arg2 error:(NSError *)arg3;
 @end
 

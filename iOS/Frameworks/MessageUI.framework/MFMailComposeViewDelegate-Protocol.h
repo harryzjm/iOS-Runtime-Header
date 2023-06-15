@@ -8,15 +8,20 @@
 #import <MessageUI/UIPickerViewDelegate-Protocol.h>
 #import <MessageUI/UIPopoverPresentationControllerDelegate-Protocol.h>
 
-@class MFAttachment, MFComposeWebView, MFMailAccountProxy, MFMailComposeView, MFMailPopoverManager, NSArray, NSDictionary, NSString, UIBarButtonItem, UIViewController, _MFMailCompositionContext;
+@class EFPair, MFAttachment, MFComposeWebView, MFMailAccountProxy, MFMailComposeView, MFMailPopoverManager, NSArray, NSDictionary, NSString, UIViewController, _MFMailCompositionContext;
 
 @protocol MFMailComposeViewDelegate <UIPickerViewDelegate, UIDocumentPickerDelegate, UIPopoverPresentationControllerDelegate>
+- (void)composeWebView:(MFComposeWebView *)arg1 didChangeHeight:(double)arg2;
+- (void)editTextDescription:(NSString *)arg1 completion:(void (^)(NSString *))arg2;
+- (void)editLink:(NSString *)arg1 completion:(void (^)(NSString *))arg2;
+- (void)addLink:(void (^)(NSString *))arg1;
 - (void)markupAttachment:(MFAttachment *)arg1;
 - (UIViewController *)presentationViewController;
 - (void)changeQuoteLevel:(long long)arg1;
 - (void)didInsertBodyText:(NSString *)arg1;
 - (void)didRemoveAttachment:(MFAttachment *)arg1;
 - (void)didInsertAttachment:(MFAttachment *)arg1;
+- (void)didCreateAttachment:(MFAttachment *)arg1;
 - (_MFMailCompositionContext *)compositionContext;
 - (MFMailPopoverManager *)popoverManager;
 - (void)scanDocument;
@@ -27,11 +32,13 @@
 - (long long)compositionType;
 - (NSString *)currentScaleImageSize;
 - (_Bool)hasAttachments;
+- (EFPair *)allRecipientNamesAndAddresses;
 - (_Bool)bccAddressesDirtied;
 - (_Bool)sendingEmailDirtied;
 - (_Bool)canShowAttachmentPicker;
 - (_Bool)canShowImageSizeField;
 - (_Bool)canShowFromField;
+- (void)setIsQuickReply:(_Bool)arg1;
 - (MFMailAccountProxy *)sendingAccountProxy;
 - (void)updateSignature;
 - (_Bool)isHideMyEmailMessage;
@@ -44,12 +51,13 @@
 - (NSArray *)emailAddresses;
 
 @optional
+- (void)takeSnapshotWithCompletionHandler:(void (^)(UIImage *, NSError *))arg1;
 - (void)takeFocusFromComposeWebView:(MFComposeWebView *)arg1 inDirection:(unsigned long long)arg2;
 - (void)showMissingAttachmentDataAlert;
 - (struct UIEdgeInsets)additionalContentInsetForComposeWebView:(MFComposeWebView *)arg1;
 - (_Bool)canShowContentVariationPicker;
 - (NSString *)contentVariationName;
-- (void)showStyleSelector:(UIBarButtonItem *)arg1;
+- (void)showStyleSelector:(id)arg1;
 - (void)composeViewBodyTextChanged:(MFMailComposeView *)arg1;
 - (void)composeWebViewDidResignFirstResponder;
 - (void)composeWebViewDidChangeFontAttributes:(NSDictionary *)arg1;

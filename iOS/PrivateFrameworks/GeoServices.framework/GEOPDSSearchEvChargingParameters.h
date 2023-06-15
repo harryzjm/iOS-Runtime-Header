@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
     PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
+    CDStruct_62a50c50 _preferredBrands;
     NSMutableArray *_networks;
     NSMutableArray *_ports;
     unsigned int _readerMarkPos;
@@ -20,6 +21,7 @@ __attribute__((visibility("hidden")))
     struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
+        unsigned int read_preferredBrands:1;
         unsigned int read_networks:1;
         unsigned int read_ports:1;
         unsigned int wrote_anyField:1;
@@ -35,6 +37,7 @@ __attribute__((visibility("hidden")))
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (void)dealloc;
 - (id)initWithData:(id)arg1;
 - (id)init;
 

@@ -6,24 +6,34 @@
 
 #import <MobileSafariUI/NSObject-Protocol.h>
 
-@class NSURL, SFBrowserDocumentTrackerInfo, WBSTranslationContext, _SFReloadOptionsController, _SFWebView;
+@class NSURL, SFBrowserDocumentTrackerInfo, SFContentBlockerManager, SFWebExtensionsController, WBSTranslationContext, _SFReloadOptionsController, _SFWebView;
 @protocol SFReaderContext;
 
 @protocol _SFBrowserDocument <NSObject>
 @property(readonly, nonatomic) _Bool isSecure;
 @property(readonly, nonatomic) WBSTranslationContext *translationContext;
+@property(readonly, nonatomic) _Bool supportsProfiles;
+@property(readonly, nonatomic) SFContentBlockerManager *contentBlockerManager;
+@property(readonly, nonatomic) SFWebExtensionsController *webExtensionsController;
 @property(readonly, nonatomic) unsigned long long mediaStateIcon;
-@property(readonly, nonatomic) _Bool canChangeSearchFieldPosition;
 @property(readonly, nonatomic) _Bool canHideToolbar;
+@property(readonly, nonatomic) _Bool privacyReportShouldSeparateBlockedTrackers;
+@property(readonly, nonatomic) _Bool wasLoadedWithAdvancedPrivateBrowsingPrivacyProtections;
+@property(readonly, nonatomic, getter=isPrivateBrowsingEnabled) _Bool privateBrowsingEnabled;
+@property(nonatomic) _Bool isNavigatingViaReloadWithoutPrivateRelay;
+@property(readonly, nonatomic) _Bool wasLoadedWithPrivateRelay;
 @property(readonly, nonatomic) _Bool wasLoadedWithContentBlockersEnabled;
 @property(readonly, nonatomic) NSURL *URLForPerSitePreferences;
 @property(readonly, nonatomic) id <SFReaderContext> readerContext;
 @property(readonly, nonatomic) _SFReloadOptionsController *reloadOptionsController;
 @property(readonly, nonatomic) _SFWebView *activeWebView;
 @property(readonly, nonatomic) _SFWebView *webView;
+- (void)reloadDisablingAdvancedPrivateBrowsingPrivacyProtections:(_Bool)arg1;
+- (void)reloadEnablingDowngradedPrivateRelay:(_Bool)arg1;
 - (void)toggleMediaStateMuted;
 - (void)perSiteSettingsUIPresentSettings;
-- (void)reloadEnablingContentBlockers:(_Bool)arg1;
+- (void)reloadDisablingContentBlockers:(_Bool)arg1;
+- (void)reload;
 
 @optional
 @property(readonly, nonatomic) SFBrowserDocumentTrackerInfo *trackerInfo;

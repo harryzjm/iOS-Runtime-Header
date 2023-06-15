@@ -6,7 +6,7 @@
 
 #import <CoreData/NSManagedObject.h>
 
-@class NSData, NSDate, NSDictionary, NSNumber, NSSet, NSString, NSURL;
+@class NSArray, NSData, NSDate, NSDictionary, NSNumber, NSSet, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
 @interface VUIVideoManagedObject : NSManagedObject
@@ -15,8 +15,9 @@ __attribute__((visibility("hidden")))
 
 + (id)keyPathsForValuesAffectingExpirationDate;
 + (id)keyPathsForValuesAffectingLocalPlaybackURL;
-+ (id)fetchRequest;
+@property(retain, nonatomic) NSDictionary *redownloadProductResponseDictionary;
 @property(readonly, nonatomic) NSDate *expirationDate;
+@property(readonly, nonatomic) NSArray *playbackModes;
 @property(readonly, nonatomic) NSDictionary *mediaMetrics;
 @property(readonly, nonatomic) NSDictionary *additionalFPSRequestParams;
 @property(copy, nonatomic) NSURL *localPlaybackURL; // @dynamic localPlaybackURL;
@@ -35,12 +36,14 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSString *contentRatingDomain; // @dynamic contentRatingDomain;
 @property(copy, nonatomic) NSNumber *contentRatingRank; // @dynamic contentRatingRank;
 @property(copy, nonatomic) NSDate *dateAdded; // @dynamic dateAdded;
+@property(nonatomic) _Bool downloadFailedDueToError; // @dynamic downloadFailedDueToError;
 @property(retain, nonatomic) NSData *downloadQOSMetricsJSONData; // @dynamic downloadQOSMetricsJSONData;
 @property(nonatomic) long long downloadState; // @dynamic downloadState;
 @property(copy, nonatomic) NSNumber *downloadTaskIdentifier; // @dynamic downloadTaskIdentifier;
 @property(copy, nonatomic) NSURL *downloadURL; // @dynamic downloadURL;
 @property(copy, nonatomic) NSNumber *dsid; // @dynamic dsid;
 @property(copy, nonatomic) NSNumber *duration; // @dynamic duration;
+@property(copy, nonatomic) NSNumber *entitlementType; // @dynamic entitlementType;
 @property(copy, nonatomic) NSString *externalID; // @dynamic externalID;
 @property(copy, nonatomic) NSURL *fpsCertificateURL; // @dynamic fpsCertificateURL;
 @property(retain, nonatomic) NSSet *fpsKeyInfo; // @dynamic fpsKeyInfo;
@@ -58,7 +61,9 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSString *mediaDescription; // @dynamic mediaDescription;
 @property(retain, nonatomic) NSData *mediaMetricsJSONData; // @dynamic mediaMetricsJSONData;
 @property(copy, nonatomic) NSNumber *offlineKeyRenewalPolicy; // @dynamic offlineKeyRenewalPolicy;
+@property(retain, nonatomic) NSData *playbackModesJSONData; // @dynamic playbackModesJSONData;
 @property(copy, nonatomic) NSURL *playbackURL; // @dynamic playbackURL;
+@property(retain, nonatomic) NSData *redownloadProductResponse; // @dynamic redownloadProductResponse;
 @property(copy, nonatomic) NSString *referenceID; // @dynamic referenceID;
 @property(copy, nonatomic) NSDate *releaseDate; // @dynamic releaseDate;
 @property(copy, nonatomic) NSNumber *requiredAgeForPlayback; // @dynamic requiredAgeForPlayback;

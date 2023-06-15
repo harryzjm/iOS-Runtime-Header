@@ -4,12 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Photos/NSCopying-Protocol.h>
-#import <Photos/NSObject-Protocol.h>
+#import <Photos/PHBatchFetchedObject-Protocol.h>
 
 @class NSArray, NSKnownKeysDictionary, NSManagedObjectID, NSString, PHPhotoLibrary;
 
-@protocol PHBatchFetchedPropertySet <NSCopying, NSObject>
+@protocol PHBatchFetchedPropertySet <PHBatchFetchedObject>
 + (NSArray *)propertiesToSortBy;
 + (_Bool)useObjectFetchingContext;
 + (_Bool)useNoIndexSelf;
@@ -18,7 +17,6 @@
 + (NSString *)fetchType;
 + (NSArray *)propertiesToFetch;
 + (NSString *)entityName;
-@property(readonly, nonatomic) NSManagedObjectID *objectID;
 - (id)initWithObjectID:(NSManagedObjectID *)arg1 knownKeysDictionary:(NSKnownKeysDictionary *)arg2 photoLibrary:(PHPhotoLibrary *)arg3;
 @end
 

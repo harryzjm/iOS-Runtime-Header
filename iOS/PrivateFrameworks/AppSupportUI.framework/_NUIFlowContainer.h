@@ -17,12 +17,13 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (_Bool)shouldCancelMeasurementForCompressionInAxis:(long long)arg1;
+- (_Bool)canCancelMeasurementForCompression;
 - (void)populateGridArrangementDimension:(void *)arg1 withCells:(const void *)arg2 axis:(long long)arg3;
 - (void)populateGridArrangementCells:(void *)arg1;
 - (struct CGRect)layoutFrameForArrangedSubview:(id)arg1 withProposedContentFrame:(struct CGRect)arg2;
 - (struct CGSize)contentLayoutSizeFittingSize:(struct CGSize)arg1 forArrangedSubview:(id)arg2;
 - (void)dealloc;
-- (id)initWithFlowArrangement:(const void *)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

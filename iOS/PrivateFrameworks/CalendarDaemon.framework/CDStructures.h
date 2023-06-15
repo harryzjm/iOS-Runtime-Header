@@ -21,54 +21,52 @@ struct CalDatabase {
     struct CPRecordStore *_field3;
     struct CalEventOccurrenceCache *_field4;
     struct CalScheduledTaskCache *_field5;
-    struct __CFDictionary *_field6;
-    struct __CFDictionary *_field7;
-    struct os_unfair_lock_s _field8;
-    unsigned int _field9;
-    unsigned int _field10;
-    struct __CFArray *_field11;
-    struct __CFString *_field12;
+    void *_field6;
+    void *_field7;
+    struct __CFDictionary *_field8;
+    struct __CFDictionary *_field9;
+    struct os_unfair_lock_s _field10;
+    unsigned int _field11;
+    unsigned int _field12;
     struct __CFArray *_field13;
-    int _field14;
-    int _field15;
-    struct __CFString *_field16;
-    struct __CFURL *_field17;
+    struct __CFString *_field14;
+    struct __CFArray *_field15;
+    int _field16;
+    int _field17;
     struct __CFString *_field18;
-    struct __CFString *_field19;
-    unsigned long long _field20;
-    int _field21;
-    int _field22;
+    struct __CFURL *_field19;
+    struct __CFString *_field20;
+    struct __CFString *_field21;
+    unsigned long long _field22;
     int _field23;
-    CDUnknownBlockType _field24;
+    int _field24;
+    int _field25;
+    CDUnknownBlockType _field26;
     struct _opaque_pthread_mutex_t {
         long long _field1;
         char _field2[56];
-    } _field25;
-    _Bool _field26;
-    struct __CFArray *_field27;
-    struct __CFArray *_field28;
+    } _field27;
+    _Bool _field28;
     struct __CFArray *_field29;
-    struct __CFArray *_field30;
-    id _field31;
-    _Bool _field32;
-    _Bool _field33;
-    struct __CFSet *_field34;
-    id _field35;
+    _Bool _field30;
+    struct __CFSet *_field31;
+    id _field32;
+    id _field33;
+    id _field34;
+    int _field35;
     id _field36;
     id _field37;
-    int _field38;
-    id _field39;
-    id _field40;
-    id _field41;
-    char *_field42;
-    unsigned int _field43;
-    unsigned int _field44;
+    id _field38;
+    char *_field39;
+    unsigned int _field40;
+    unsigned int _field41;
+    int _field42;
+    _Bool _field43;
+    _Bool _field44;
     _Bool _field45;
     _Bool _field46;
     _Bool _field47;
     _Bool _field48;
-    _Bool _field49;
-    _Bool _field50;
 };
 
 struct CalEventOccurrenceCache;
@@ -112,10 +110,4 @@ struct __sbuf {
 struct os_unfair_lock_s {
     unsigned int _os_unfair_lock_opaque;
 };
-
-#pragma mark Typedef'd Structures
-
-typedef struct {
-    unsigned int val[8];
-} CDStruct_4c969caf;
 

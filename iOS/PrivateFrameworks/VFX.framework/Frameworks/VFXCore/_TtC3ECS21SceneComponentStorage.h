@@ -11,8 +11,10 @@
 @interface _TtC3ECS21SceneComponentStorage : _TtCs12_SwiftObject
 {
     MISSING_TYPE *data;
+    MISSING_TYPE *componentLocks;
     MISSING_TYPE *layout;
     MISSING_TYPE *isInitializedBitset;
+    MISSING_TYPE *storageLock;
 }
 
 @end

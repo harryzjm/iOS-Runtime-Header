@@ -6,8 +6,11 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
+@class MISSING_TYPE;
+
 @interface _TtC7NewsUI230SportsFavoritesSyncDataManager : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *routeModel;
 }
 
 @end

@@ -9,9 +9,9 @@
 @class NSString;
 
 @protocol CDBRecordIDMap <NSObject>
-- (const struct CalRecordID *)recordIDForExternalIdentifier:(NSString *)arg1;
-- (void)setExternalIdentifier:(NSString *)arg1 forRecordID:(const struct CalRecordID *)arg2;
-- (const struct CalRecordID *)recordIDForUniqueIdentifier:(NSString *)arg1;
-- (void)setUniqueIdentifier:(NSString *)arg1 forRecordID:(const struct CalRecordID *)arg2;
+- (struct CalRecordID *)recordIDForExternalIdentifier:(NSString *)arg1;
+- (void)setExternalIdentifier:(NSString *)arg1 forRecordID:(struct CalRecordID *)arg2;
+- (struct CalRecordID *)recordIDForUniqueIdentifier:(NSString *)arg1;
+- (void)setUniqueIdentifier:(NSString *)arg1 forRecordID:(struct CalRecordID *)arg2;
 @end
 

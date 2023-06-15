@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSString, NSURL, SFAccountPickerViewController, _ASIncomingCallObserver, _ASPasswordCredentialAuthenticationViewController, _SFAuthenticationContext;
+@class NSArray, NSString, NSURL, RTIDocumentTraits, SFAccountPickerViewController, WBSAuthenticationServicesAgentProxy, WBSGlobalFrameIdentifier, _ASCredentialAuthenticationViewController, _ASIncomingCallObserver, _SFAuthenticationContext;
 
 __attribute__((visibility("hidden")))
 @interface SFPasswordPickerServiceViewController
 {
-    _ASPasswordCredentialAuthenticationViewController *_externalCredentialViewController;
+    _ASCredentialAuthenticationViewController *_externalCredentialViewController;
+    WBSAuthenticationServicesAgentProxy *_authenticationServicesAgentProxy;
     SFAccountPickerViewController *_accountPickerViewController;
     _Bool _presentInPopover;
     _Bool _hasAuthenticationForOtherPasswords;
@@ -20,27 +21,40 @@ __attribute__((visibility("hidden")))
     NSString *_remoteUnlocalizedAppName;
     NSArray *_externallyVerifiedAssociatedDomains;
     double _authenticationGracePeriod;
+    WBSGlobalFrameIdentifier *_webFrameIdentifier;
+    NSString *_credentialType;
     CDUnknownBlockType _presentCredentialsHandler;
     _ASIncomingCallObserver *_callObserver;
+    RTIDocumentTraits *_systemAutoFillDocumentTraits;
 }
 
 + (id)_exportedInterface;
 + (id)_remoteViewControllerInterface;
 - (void).cxx_destruct;
-- (void)passwordCredentialAuthenticationViewController:(id)arg1 didFinishWithCredential:(id)arg2 error:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)accountPickerViewController:(id)arg1 fillVerificationCode:(id)arg2;
+- (void)accountPickerViewController:(id)arg1 fillVerificationCodeForSavedAccount:(id)arg2;
+- (void)accountPickerViewController:(id)arg1 fillPasswordForSavedAccount:(id)arg2;
+- (void)accountPickerViewController:(id)arg1 fillUsernameForSavedAccount:(id)arg2;
+- (void)credentialAuthenticationViewController:(id)arg1 didFinishWithPasskeyRegistrationCredential:(id)arg2 error:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)credentialAuthenticationViewController:(id)arg1 didFinishWithPasskeyAssertionCredential:(id)arg2 error:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)credentialAuthenticationViewController:(id)arg1 didFinishWithCredential:(id)arg2 error:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)presentUIForPasswordCredentialAuthenticationViewController:(id)arg1;
 - (void)credentialListViewController:(id)arg1 didFinishWithCredential:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)credentialProviderExtensionManagerExtensionListDidChange:(id)arg1;
+- (_Bool)_isConfiguredForSystemAutoFill;
+- (void)setSystemAutoFillDocumentTraits:(id)arg1;
+- (void)setPageID:(id)arg1 frameID:(id)arg2 credentialType:(id)arg3;
 - (void)setAuthenticationGracePeriod:(double)arg1;
 - (void)setExternallyVerifiedAndApprovedSharedWebCredentialsDomains:(id)arg1;
 - (void)setRemoteUnlocalizedAppName:(id)arg1;
 - (void)setRemoteLocalizedAppName:(id)arg1;
 - (void)setRemoteAppID:(id)arg1;
 - (void)setWebViewURL:(id)arg1;
+- (_Bool)_isClientEntitledToDirectlyReceiveCredentials;
 - (void)_sendCredentialToClientAndDismiss:(id)arg1;
-- (void)_authenticateAndSetPresentCredentialsHandlerWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_authenticateAndSetPresentCredentialsHandlerWithSavedAccountContext:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_fillCredential:(id)arg1 needsAuthentication:(_Bool)arg2;
-- (void)authenticateToPresentInPopover:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)authenticateToPresentInPopover:(_Bool)arg1 savedAccountContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)presentationControllerDidDismiss:(id)arg1;
 - (void)_presentCredentialListForExtension:(id)arg1;
 - (id)_actionForPresentingPasswordManagerExtension:(id)arg1;

@@ -4,10 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSSet, NSString, PKAccount, PKPayLaterCardMagnitudes, PKPayLaterFinancingPlan;
+@class NSArray, NSDate, NSSet, NSString, PKAccount, PKAppleBalanceInStoreTopUpToken, PKAppleBalancePromotionConfiguration, PKPayLaterCardMagnitudes, PKPayLaterFinancingPlan;
 
 @protocol PKAccountServiceExportedInterface
-- (void)didUpdateAccountEnhancedMerchants:(NSArray *)arg1 accountIdentifier:(NSString *)arg2;
+- (void)didUpdateInStoreTopUpToken:(PKAppleBalanceInStoreTopUpToken *)arg1 forAccountIdentifier:(NSString *)arg2;
+- (void)didRemoveAppleBalancePromotionWithUniqueIdentifier:(NSString *)arg1 forAccountIdentifier:(NSString *)arg2;
+- (void)didUpdateAppleBalancePromotion:(PKAppleBalancePromotionConfiguration *)arg1 forAccountIdentifier:(NSString *)arg2;
+- (void)didUpdateAccountEnhancedMerchants:(NSArray *)arg1 accountIdentifier:(NSString *)arg2 lastUpdate:(NSDate *)arg3;
 - (void)didUpdateAccountPromotions:(NSArray *)arg1 accountIdentifier:(NSString *)arg2;
 - (void)payLaterCardMagnitudesChanged:(PKPayLaterCardMagnitudes *)arg1 forAccountIdentifier:(NSString *)arg2;
 - (void)accountFinancingPlanRemoved:(PKPayLaterFinancingPlan *)arg1 accountIdentifier:(NSString *)arg2;

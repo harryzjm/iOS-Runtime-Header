@@ -4,12 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSString, NSUUID;
+@class CSVoiceTriggerRTModelRequestOptions, NSArray, NSString;
 
 @protocol CoreSpeechXPCProtocol
 - (void)voiceTriggerJarvisLanguageList:(NSArray *)arg1 jarvisSelectedLanguage:(NSString *)arg2 completion:(void (^)(NSString *, NSError *))arg3;
-- (void)voiceTriggerRTModelForVersion:(unsigned long long)arg1 minorVersion:(unsigned long long)arg2 locale:(NSString *)arg3 downloadedModels:(NSArray *)arg4 preinstalledModels:(NSArray *)arg5 completion:(void (^)(CSVoiceTriggerRTModel *, CSVoiceTriggerRTModel *, NSError *))arg6;
-- (void)voiceTriggerRTModelForVersion:(unsigned long long)arg1 minorVersion:(unsigned long long)arg2 accessoryRTModelType:(long long)arg3 locale:(NSString *)arg4 endpointId:(NSUUID *)arg5 downloadedModels:(NSArray *)arg6 preinstalledModels:(NSArray *)arg7 completion:(void (^)(CSVoiceTriggerRTModel *, CSVoiceTriggerRTModel *, NSError *))arg8;
+- (void)voiceTriggerRTModelWithRequestOptions:(CSVoiceTriggerRTModelRequestOptions *)arg1 downloadedModels:(NSArray *)arg2 preinstalledModels:(NSArray *)arg3 completion:(void (^)(CSVoiceTriggerRTModel *, CSVoiceTriggerRTModel *, NSError *))arg4;
 - (void)fetchRemoteVoiceTriggerAssetForLanguageCode:(NSString *)arg1 completion:(void (^)(NSString *, NSString *, NSError *))arg2;
 - (void)installedVoiceTriggerAssetForLanguageCode:(NSString *)arg1 completion:(void (^)(NSString *, NSString *, NSError *))arg2;
 @end

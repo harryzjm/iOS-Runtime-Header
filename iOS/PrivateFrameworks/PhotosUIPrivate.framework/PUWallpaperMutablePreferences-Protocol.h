@@ -9,6 +9,8 @@
 @class UIColor, UIFont;
 
 @protocol PUWallpaperMutablePreferences <NSObject>
+@property(nonatomic) _Bool userTapEventsRequested;
+@property(nonatomic) _Bool hideChrome;
 @property(nonatomic) unsigned long long significantEventOptions;
 @property(nonatomic) unsigned long long significantEventTime;
 @property(retain, nonatomic) UIColor *statusBarTintColor;

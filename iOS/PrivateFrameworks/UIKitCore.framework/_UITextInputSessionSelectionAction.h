@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property(nonatomic) struct _NSRange rangeAfter; // @synthesize rangeAfter=_rangeAfter;
+- (long long)textInputActionsType;
 - (id)description;
 - (long long)mergeActionIfPossible:(id)arg1;
 

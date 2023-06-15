@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 + (void)recordPageEventWithPageId:(id)arg1 andPageType:(id)arg2;
 + (void)recordPageEventWithPageType:(id)arg1;
 + (void)recordClickOnMediaEntity:(id)arg1;
++ (void)recordPlayOfTVPMediaItem:(id)arg1;
 + (void)recordPlayOfMediaItem:(id)arg1;
 + (void)recordPlayOfMediaEntity:(id)arg1 isLaunchingExtras:(_Bool)arg2;
 

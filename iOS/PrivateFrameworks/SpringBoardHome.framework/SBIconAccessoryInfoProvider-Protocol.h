@@ -6,10 +6,12 @@
 
 #import <SpringBoardHome/NSObject-Protocol.h>
 
-@class NSString;
+@class NSString, SBIconContinuityItem;
+@protocol NSCopying;
 
 @protocol SBIconAccessoryInfoProvider <NSObject>
-@property(readonly, nonatomic) long long continuityBadgeType;
+@property(readonly, copy, nonatomic) id <NSCopying> overrideBadgeNumberOrString;
+@property(readonly, nonatomic) SBIconContinuityItem *continuityItem;
 @property(readonly, nonatomic, getter=isHighlighted) _Bool highlighted;
 @property(readonly, copy, nonatomic) NSString *location;
 @end

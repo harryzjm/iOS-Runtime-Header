@@ -9,6 +9,7 @@
 @class NSDate, NSString;
 
 @protocol PGGraphIngestMoment <NSObject>
+@property(readonly, nonatomic) NSString *encodedCLIPFeatureVector;
 @property(readonly, nonatomic) _Bool happensAtSensitiveLocation;
 @property(readonly, nonatomic) unsigned short sharingComposition;
 @property(readonly, nonatomic) unsigned long long numberOfAssetsInExtendedCuration;

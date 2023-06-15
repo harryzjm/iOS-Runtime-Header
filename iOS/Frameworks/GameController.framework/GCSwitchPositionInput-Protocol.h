@@ -6,7 +6,10 @@
 
 #import <GameController/NSObject-Protocol.h>
 
+@class NSSet;
+
 @protocol GCSwitchPositionInput <NSObject>
+@property(readonly, copy) NSSet *sources;
 @property(readonly) double lastPositionLatency;
 @property(readonly) double lastPositionTimestamp;
 @property(readonly) _Bool canWrap;

@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     _Bool _hasLockScreenControlsAssertion;
     _Bool _hasQuickControlsAssertion;
     _Bool _hasScreenMirroringQuickControlsAssertion;
+    _Bool _hasRouteRecommendationAssertion;
     _Bool _shouldRestoreState;
     struct os_unfair_lock_s _lock;
     NSXPCConnection *_xpcConnection;
@@ -22,11 +23,14 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool shouldRestoreState; // @synthesize shouldRestoreState=_shouldRestoreState;
+@property(nonatomic) _Bool hasRouteRecommendationAssertion; // @synthesize hasRouteRecommendationAssertion=_hasRouteRecommendationAssertion;
 @property(nonatomic) _Bool hasScreenMirroringQuickControlsAssertion; // @synthesize hasScreenMirroringQuickControlsAssertion=_hasScreenMirroringQuickControlsAssertion;
 @property(nonatomic) _Bool hasQuickControlsAssertion; // @synthesize hasQuickControlsAssertion=_hasQuickControlsAssertion;
 @property(nonatomic) _Bool hasLockScreenControlsAssertion; // @synthesize hasLockScreenControlsAssertion=_hasLockScreenControlsAssertion;
 @property(readonly, nonatomic) struct os_unfair_lock_s lock; // @synthesize lock=_lock;
-- (id)contextForSessionIdentifier:(id)arg1;
+- (void)releaseRouteRecommendationAssertion;
+- (void)acquireRouteRecommendationAssertion;
+- (id)contextForActivityIdentifier:(id)arg1;
 - (void)releaseScreenMirroringQuickControlsAssertion;
 - (void)acquireScreenMirroringQuickControlsAssertion;
 - (void)releaseQuickControlsAssertion;

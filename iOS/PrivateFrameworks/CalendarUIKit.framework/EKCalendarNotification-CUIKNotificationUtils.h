@@ -9,6 +9,7 @@
 @interface EKCalendarNotification (CUIKNotificationUtils)
 - (_Bool)cuik_isTimeSensitive;
 - (_Bool)cuik_shouldShowNotificationWithUnselectedCalendarsForFocus:(id)arg1;
+- (id)timeSensitiveDescriptionString;
 - (id)_identityStringForIdentity:(id)arg1 withOptions:(unsigned long long)arg2;
 - (id)_identityStringWithOptions:(unsigned long long)arg1;
 - (id)descriptionStrings:(unsigned long long)arg1;

@@ -10,7 +10,6 @@
 @protocol DVTDiskStock;
 
 @interface NSURL (DVTDeviceSupportDiskStockAdditions)
-+ (id)dvt_xcodeHelpURLWithAnchor:(id)arg1;
 + (id)dvt_URLWithScheme:(id)arg1 path:(id)arg2 documentParameters:(id)arg3 locationParameters:(id)arg4;
 + (id)dvt_fileURLWithAbsoluteOrRelativePath:(id)arg1;
 + (id)dvt_emptyURL;
@@ -24,9 +23,7 @@
 - (_Bool)_markedAsKept;
 - (void)_markAsKept:(_Bool)arg1;
 - (id)_deviceSupportInfo;
-- (id)dvt_extractingLocationParametersWithNames:(id)arg1 updatedURL:(id *)arg2;
 - (id)dvt_locationParameters;
-- (id)dvt_extractingDocumentParametersWithNames:(id)arg1 updatedURL:(id *)arg2;
 - (id)dvt_documentParameters;
 - (id)dvt_sanitizedFilePath;
 - (_Bool)dvt_isGeneneratedInterface;

@@ -4,3 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#pragma mark Named Structures
+
+struct kcdata_item;
+
+struct kcdata_iter {
+    struct kcdata_item *_field1;
+    void *_field2;
+};
+

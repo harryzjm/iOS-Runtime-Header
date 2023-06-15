@@ -13,19 +13,21 @@
     MISSING_TYPE *id;
     MISSING_TYPE *segue;
     MISSING_TYPE *isEnabled;
+    MISSING_TYPE *isHighlighted;
     MISSING_TYPE *timestamp;
     MISSING_TYPE *title;
+    MISSING_TYPE *compactTitle;
     MISSING_TYPE *brickType;
     MISSING_TYPE *layoutType;
+    MISSING_TYPE *activityIdentifier;
     MISSING_TYPE *playerSubArtwork;
     MISSING_TYPE *attributedTitle;
     MISSING_TYPE *cachedCalculatedHeight;
     MISSING_TYPE *relationships;
     MISSING_TYPE *impressionMetrics;
-    MISSING_TYPE *index;
-    MISSING_TYPE *shelfId;
-    MISSING_TYPE *instrumentationKey;
     MISSING_TYPE *displayedInPlayerProfile;
+    MISSING_TYPE *cellMetrics;
+    MISSING_TYPE *mainActionLink;
 }
 
 @end

@@ -7,7 +7,7 @@
 @class NSSet;
 
 @protocol CNKDestinationVendingProtocol
-@property(nonatomic, readonly) NSSet *idsDestinations;
-@property(nonatomic, readonly) _Bool isGroup;
+@property(readonly, copy, nonatomic) NSSet *idsDestinations;
+@property(readonly, nonatomic) _Bool isGroup;
 @end
 

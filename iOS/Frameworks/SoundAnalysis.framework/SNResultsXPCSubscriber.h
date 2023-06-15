@@ -6,29 +6,22 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
-@protocol SNResultsObserving;
+@class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
 @interface SNResultsXPCSubscriber : NSObject
 {
-    id <SNResultsObserving> _receiver;
+    MISSING_TYPE *receiver;
 }
 
 - (void).cxx_destruct;
+- (id)init;
 - (void)xpcRequestDidComplete:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)xpcRequest:(id)arg1 didFailWithError:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)xpcRequest:(id)arg1 didProduceResult:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)requestDidComplete:(id)arg1;
 - (void)request:(id)arg1 didFailWithError:(id)arg2;
 - (void)request:(id)arg1 didProduceResult:(id)arg2;
-- (id)init;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

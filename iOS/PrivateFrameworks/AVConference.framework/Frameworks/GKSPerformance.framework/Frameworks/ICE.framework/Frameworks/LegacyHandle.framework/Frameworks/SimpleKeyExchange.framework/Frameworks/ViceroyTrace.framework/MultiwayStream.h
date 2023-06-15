@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
-@class NSString, VCHistogram;
+@class NSString, VCReportingHistogram;
 
 __attribute__((visibility("hidden")))
-@interface MultiwayStream : NSObject
+@interface MultiwayStream
 {
     NSString *_streamID;
     int _interval;
@@ -26,6 +24,8 @@ __attribute__((visibility("hidden")))
     unsigned short _maxAudioErasureCount;
     double _averageFramerateSum;
     unsigned short _averageFramerateReportCounter;
+    double _averageReceiveBitrateSum;
+    unsigned short _averageReceiveBitrateReportCounter;
     double _averageVideoJitterLengthSum;
     unsigned short _averageVideoJitterReportCounter;
     double _averageJitterBufferDelay;
@@ -47,7 +47,7 @@ __attribute__((visibility("hidden")))
     unsigned int _lateFramesScheduledCount;
     double _evictedFramesAverageLatePacketDelay;
     double _evictedFramesMaxLatePacketDelay;
-    VCHistogram *_evictedFramesLatePacketDelayHist;
+    VCReportingHistogram *_evictedFramesLatePacketDelayHist;
     unsigned int _decodeNoShowFrameCount;
     int _maxAVSyncOffset;
     int _minAVSyncOffset;
@@ -61,16 +61,20 @@ __attribute__((visibility("hidden")))
     unsigned long long _lateFramesScheduledWithRTXCount;
     unsigned long long _assembledFramesWithRTXPacketsCount;
     unsigned long long _failedToAssembleFramesWithRTXPacketsCount;
-    VCHistogram *_nacksRTXResponseTime;
-    VCHistogram *_nacksRTXLateTime;
-    VCHistogram *_nacksRTXMediaBitRate;
-    VCHistogram *_nacksRTXRetransmittedMediaBitRate;
-    VCHistogram *_nacksPLRWithRTX;
-    VCHistogram *_nacksPLRWithoutRTX;
+    VCReportingHistogram *_nacksRTXResponseTime;
+    VCReportingHistogram *_nacksRTXLateTime;
+    VCReportingHistogram *_nacksRTXMediaBitRate;
+    VCReportingHistogram *_nacksRTXRetransmittedMediaBitRate;
+    VCReportingHistogram *_nacksPLRWithRTX;
+    VCReportingHistogram *_nacksPLRWithoutRTX;
+    VCReportingHistogram *_JBTarget;
+    VCReportingHistogram *_JBUnclippedTarget;
 }
 
 @property(readonly) double totalAudioErasureTime; // @synthesize totalAudioErasureTime=_totalAudioErasureTime;
 @property(readonly) double currentStallTime; // @synthesize currentStallTime=_currentStallTime;
+- (id)JBUnclippedTarget;
+- (id)JBTarget;
 - (id)nacksPLRWithoutRTX;
 - (id)nacksPLRWithRTX;
 - (unsigned long long)failedToAssembleFramesWithRTXPacketsCount;
@@ -102,6 +106,8 @@ __attribute__((visibility("hidden")))
 - (unsigned int)oooPacketCount;
 - (unsigned short)averageVideoJitterReportCounter;
 - (double)averageVideoJitterLengthSum;
+- (unsigned short)averageReceiveBitrateReportCounter;
+- (double)averageReceiveBitrateSum;
 - (unsigned short)averageFramerateReportCounter;
 - (double)averageFramerateSum;
 - (unsigned short)minVideoFrameRate;

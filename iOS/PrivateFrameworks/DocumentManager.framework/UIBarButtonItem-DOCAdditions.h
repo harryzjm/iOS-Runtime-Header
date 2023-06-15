@@ -6,7 +6,13 @@
 
 #import <UIKitCore/UIBarButtonItem.h>
 
+@class UIView;
+
 @interface UIBarButtonItem (DOCAdditions)
-- (_Bool)_doc_isMatchingUUID:(id)arg1;
+- (_Bool)_doc_isRemoteBarItemForUUID:(id)arg1;
+@property(retain, nonatomic) UIView *_doc_ipi_view;
+@property(readonly, nonatomic) struct CGRect _doc_ipi_rectForPresenting;
+@property(readonly, nonatomic) UIView *_doc_ipi_viewForPresenting;
+- (void)_doc_ipi_triggerActionForEvent:(id)arg1;
 @end
 

@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_observers;
     SNAudioConfiguration *_audioConfiguration;
     AVAudioSession *_audioSession;
+    _Bool _allowSuppressionOfMicrophoneUsageIndicator;
 }
 
 - (void).cxx_destruct;
@@ -34,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)addRequest:(id)arg1 withObserver:(id)arg2 error:(id *)arg3;
 - (void)setAudioConfiguration:(id)arg1;
 - (id)init;
+- (id)initAllowingSuppresionOfMicrophoneUsageIndicator:(_Bool)arg1;
 
 @end
 

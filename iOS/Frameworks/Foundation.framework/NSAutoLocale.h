@@ -9,26 +9,12 @@
 __attribute__((visibility("hidden")))
 @interface NSAutoLocale : NSLocale
 {
-    NSLocale *loc;
-    struct _opaque_pthread_mutex_t _lock;
 }
 
 + (_Bool)supportsSecureCoding;
 - (Class)classForCoder;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
-- (void)_setDoesNotRequireSpecialCaseHandling;
-- (unsigned char)_doesNotRequireSpecialCaseHandling;
-- (id)_prefForKey:(id)arg1;
-- (id)displayNameForKey:(id)arg1 value:(id)arg2;
-- (id)objectForKey:(id)arg1;
-- (void)finalize;
-- (void)dealloc;
-- (id)initWithLocaleIdentifier:(id)arg1;
-- (id)_init;
-- (void)_update:(id)arg1;
 
 @end
 

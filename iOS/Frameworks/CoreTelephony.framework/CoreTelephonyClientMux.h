@@ -33,7 +33,7 @@ __attribute__((visibility("hidden")))
 - (struct __CTAssertionType *)createCTAssertionForConnectionType:(int)arg1 allocator:(struct __CFAllocator *)arg2 proxy:(id)arg3;
 - (unsigned long long)_getAssertionTypeId;
 - (void)removeAssertionForInvalidationNotification:(struct __CTAssertionType *)arg1;
-- (void)_sendConnectionInvalidatedNotification:(id)arg1;
+- (void)_sendConnectionInvalidatedNotification_sync:(id)arg1;
 - (id)_connection;
 - (void)_ensureConnectionSetup_sync:(_Bool)arg1;
 - (void)_ensureConnectionSetup_sync;

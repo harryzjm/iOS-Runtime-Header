@@ -12,7 +12,7 @@
 - (id)diffuseTextureTiling;
 - (void)affect:(id)arg1 states:(id)arg2 scene:(id)arg3 texturePool:(id)arg4 percentage:(id)arg5;
 - (id)p_lightenDiffuseMaterial:(id)arg1 percentage:(id)arg2;
-- (tvec4_ac57c72d)p_lightenedColorForColor:(const void *)arg1 percentage:(id)arg2;
+- (tvec4_ac57c72d)p_lightenedColorForColor:(void *)arg1 percentage:(id)arg2;
 - (id)phongMaterials;
 - (id)init;
 - (void)saveToPhongMaterialPackageArchive:(void *)arg1 environmentPackageArchive:(void *)arg2 archiver:(id)arg3;

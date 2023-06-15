@@ -9,7 +9,7 @@
 @class NSString;
 
 @protocol SXComponentTypeDescribing <NSObject>
-@property(nonatomic, readonly) int role;
-@property(nonatomic, readonly) NSString *type;
+@property(readonly, nonatomic) int role;
+@property(readonly, nonatomic) NSString *type;
 @end
 

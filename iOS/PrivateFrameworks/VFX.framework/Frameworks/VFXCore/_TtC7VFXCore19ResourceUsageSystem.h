@@ -17,8 +17,10 @@
     MISSING_TYPE *initScriptQuery;
     MISSING_TYPE *updateScriptQuery;
     MISSING_TYPE *graphScriptQuery;
+    MISSING_TYPE *allTexturesQuery;
     MISSING_TYPE *animatedTextureQuery;
     MISSING_TYPE *allEmitterQuery;
+    MISSING_TYPE *allNonDirtyMaterialsQuery;
     MISSING_TYPE *meshParticleRendererQuery;
     MISSING_TYPE *preCreateDefaultMaterialDone;
 }

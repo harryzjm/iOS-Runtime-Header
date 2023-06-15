@@ -7,6 +7,8 @@
 #import <Foundation/NSMutableDictionary.h>
 
 @interface NSMutableDictionary (BaseBoard)
+- (void)bs_removeObject:(id)arg1 fromCollectionForKey:(id)arg2;
+- (void)bs_addObject:(id)arg1 toCollectionClass:(Class)arg2 forKey:(id)arg3;
 - (id)bs_takeObjectForKey:(id)arg1;
 - (void)bs_setSafeObject:(id)arg1 forKey:(id)arg2;
 @end

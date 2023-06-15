@@ -6,13 +6,13 @@
 
 #import <MobileSafari/NSObject-Protocol.h>
 
-@class SFSectionModel;
+@class WBSStartPageSection;
 
 @protocol SFStartPageDataSourceObserving <NSObject>
 - (void)reloadNavigationItemAnimated:(_Bool)arg1;
 - (void)reloadDataAnimatingDifferences:(_Bool)arg1;
 
 @optional
-- (void)reloadSection:(SFSectionModel *)arg1 animated:(_Bool)arg2;
+- (void)reloadSection:(WBSStartPageSection *)arg1 animated:(_Bool)arg2;
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIControl.h>
+#import <UIKitCore/UIControl.h>
 
 @class ASCArtworkView, ASCLockupDisplayContext, ASCOfferButton, ASCOfferTheme, ASCSkeletonLabel, NSString, UIColor, UILabel;
 @protocol ASCLockupTheme;
@@ -58,7 +58,7 @@ __attribute__((visibility("hidden")))
 - (void)setIconImage:(id)arg1 withDecoration:(id)arg2;
 - (void)removeOfferTarget:(id)arg1 action:(SEL)arg2;
 - (void)addOfferTarget:(id)arg1 action:(SEL)arg2;
-- (void)traitCollectionDidChange:(id)arg1;
+- (void)onPreferredContentSizeCategoryChange;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)intrinsicContentSize;

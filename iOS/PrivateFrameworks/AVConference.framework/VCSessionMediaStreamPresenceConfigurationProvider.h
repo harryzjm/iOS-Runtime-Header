@@ -16,14 +16,23 @@ __attribute__((visibility("hidden")))
     NSSet *_streamGroupConfigurations;
 }
 
++ (unsigned int)remainingBitrateSplitQualityIndexForStreamGroup:(unsigned int)arg1 splitType:(unsigned int)arg2;
++ (id)oneToOneTierTableForStreamGroupID:(unsigned int)arg1 splitType:(unsigned int)arg2;
++ (unsigned int)foregroundCameraRemainingBitrateSplit:(unsigned int)arg1;
++ (unsigned int)defaultRemainingBitrateSplit:(unsigned int)arg1;
++ (id)foregroundCameraOneToOneTierTable:(unsigned int)arg1;
++ (id)defaultOneToOneTierTable:(unsigned int)arg1;
 + (unsigned int)readUint32WithPList:(id)arg1 key:(id)arg2 defaultValue:(unsigned int)arg3;
 + (unsigned int)streamSSRCForStreamGroupID:(unsigned int)arg1 streamIndex:(int)arg2;
 + (id)publicSessionConfigurationForType:(unsigned int)arg1;
 + (id)loadSessionConfigurationWithResourceName:(id)arg1;
 + (id)replaceTag:(id)arg1;
++ (id)sysaGroupDisabled;
++ (id)siriGroupDisabled;
++ (id)fdatGroupDisabled;
 + (id)ftxtGroupDisabled;
-+ (id)moCapGroupDisabled;
-+ (id)dataGroupDisabled;
++ (id)bdatGroupDisabled;
++ (id)screenGroupDisabled;
 + (id)screenStreamBaseTierFramerate;
 + (id)sessionConfigurationForType:(unsigned int)arg1;
 + (id)resourceNameForConfigurationType:(unsigned int)arg1;
@@ -40,7 +49,6 @@ __attribute__((visibility("hidden")))
 - (_Bool)addPayload:(int)arg1 audioStreamConfig:(id)arg2 supportedAudioRules:(id)arg3;
 - (_Bool)setupVideoStreamGroupStreams:(id)arg1 streamGroupConfig:(id)arg2 streamIDGenerator:(id)arg3;
 - (unsigned short)setParentStreamID:(unsigned short)arg1 videoConfig:(id)arg2;
-- (struct CGSize)computeEncoderResolution:(unsigned long long)arg1;
 - (id)newVideoStreamGroupStreamConfigWithPList:(id)arg1 streamIDGenerator:(id)arg2 ssrc:(unsigned int)arg3 groupID:(unsigned int)arg4 shouldSkip:(_Bool *)arg5;
 - (long long)getVideoCodecFromStreamCodecPList:(id)arg1;
 - (id)getVideoCodecConfigFromStreamConfigPList:(id)arg1;

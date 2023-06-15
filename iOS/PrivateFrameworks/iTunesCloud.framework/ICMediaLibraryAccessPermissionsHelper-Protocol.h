@@ -6,9 +6,10 @@
 
 #import <iTunesCloud/NSObject-Protocol.h>
 
-@class NSString;
+@class ICUserIdentity, NSString;
 
 @protocol ICMediaLibraryAccessPermissionsHelper <NSObject>
+- (void)revokeMusicKitUserTokensForUserIdentity:(ICUserIdentity *)arg1 withCompletion:(void (^)(NSError *))arg2;
 - (void)validateExpirationForBundleIdentifier:(NSString *)arg1 withReplyBlock:(void (^)(_Bool, NSError *))arg2;
 @end
 

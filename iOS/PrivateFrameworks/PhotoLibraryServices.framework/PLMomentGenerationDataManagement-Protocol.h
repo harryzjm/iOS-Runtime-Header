@@ -26,7 +26,7 @@
 - (PLLocationOfInterestVisit *)lastLocationOfInterestVisit;
 - (void)logRoutineInformation;
 - (void)fetchLocationsOfInterestIfNeeded;
-- (NSArray *)locationsOfInterest;
+- (NSSet *)locationsOfInterest;
 - (_Bool)cameraIsActive;
 - (_Bool)routineIsAvailable;
 - (NSDictionary *)homeAddressDictionary;
@@ -63,7 +63,8 @@
 - (NSArray *)allInvalidMomentIDsWithError:(id *)arg1;
 - (NSArray *)allMomentIDsWithError:(id *)arg1;
 - (NSArray *)momentsRequiringLocationProcessingWhenFrequentLocationsChangedWithError:(id *)arg1;
-- (NSArray *)momentsWithLocationTypeUnprocessedWithError:(id *)arg1;
+- (NSArray *)momentsRequiringLocationProcessingWhenFrequentLocationsAreAvailable:(id *)arg1;
+- (NSArray *)momentsRequiringLocationProcessingWhenCoreRoutineIsAvailable:(id *)arg1;
 - (NSArray *)allInvalidMomentsWithError:(id *)arg1;
 - (NSArray *)allMomentsWithError:(id *)arg1;
 - (NSArray *)momentsBetweenDate:(NSDate *)arg1 andDate:(NSDate *)arg2 sorted:(_Bool)arg3;

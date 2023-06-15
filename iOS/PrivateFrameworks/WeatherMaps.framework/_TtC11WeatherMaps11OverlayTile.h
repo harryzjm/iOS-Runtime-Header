@@ -13,7 +13,6 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *path;
     MISSING_TYPE *resourceProviders;
-    MISSING_TYPE *hasLoaded;
 }
 
 - (void).cxx_destruct;

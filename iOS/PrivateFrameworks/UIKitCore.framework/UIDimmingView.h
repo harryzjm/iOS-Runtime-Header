@@ -6,7 +6,7 @@
 
 #import "UIView.h"
 
-@class NSArray, NSMutableSet, NSString, UIBarButtonItem, UIColor, UIEvent, UIImageView, UITapGestureRecognizer;
+@class NSArray, NSMutableSet, NSString, UIBarButtonItem, UIBlurEffect, UIColor, UIEvent, UIImageView, UITapGestureRecognizer;
 @protocol UIDimmingViewDelegate;
 
 __attribute__((visibility("hidden")))
@@ -26,12 +26,14 @@ __attribute__((visibility("hidden")))
     id <UIDimmingViewDelegate> _delegate;
     double _percentDisplayed;
     double _percentLightened;
+    UIBlurEffect *_blurEffect;
     NSArray *_lowerWindowDismissalGestureViews;
 }
 
 + (id)defaultDimmingColor;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSArray *lowerWindowDismissalGestureViews; // @synthesize lowerWindowDismissalGestureViews=_lowerWindowDismissalGestureViews;
+@property(retain, nonatomic) UIBlurEffect *blurEffect; // @synthesize blurEffect=_blurEffect;
 @property(nonatomic) double percentLightened; // @synthesize percentLightened=_percentLightened;
 @property(nonatomic) double percentDisplayed; // @synthesize percentDisplayed=_percentDisplayed;
 @property(nonatomic) _Bool suppressesBackdrops; // @synthesize suppressesBackdrops=_suppressesBackdrops;
@@ -52,9 +54,11 @@ __attribute__((visibility("hidden")))
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)mouseUp:(struct __GSEvent *)arg1;
 - (void)updateBackgroundColor;
+- (void)updateBackground;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)display:(_Bool)arg1 withAnimationDuration:(double)arg2 afterDelay:(double)arg3;
 - (void)display:(_Bool)arg1;
+@property(nonatomic) _Bool hitTestsAsOpaque;
 @property(readonly, nonatomic) _Bool displayed;
 - (id)_backdropViewsToAnimate;
 @property(retain, nonatomic) UIBarButtonItem *highlightedBarButtonItem;

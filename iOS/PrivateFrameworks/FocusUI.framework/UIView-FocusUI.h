@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @interface UIView (FocusUI)
 + (void)fcui_animateWithSelectionParameters:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;

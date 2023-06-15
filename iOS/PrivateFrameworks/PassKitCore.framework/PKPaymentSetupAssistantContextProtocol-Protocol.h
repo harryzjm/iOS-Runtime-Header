@@ -10,6 +10,7 @@
 
 @protocol PKPaymentSetupAssistantContextProtocol <NSObject>
 @property(retain, nonatomic) NSData *externalizedContext;
+@property(readonly, nonatomic) _Bool isFollowupAction;
 @property(readonly, nonatomic) unsigned long long setupAssistant;
 @end
 

@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
     long long _backgroundStyle;
     _Bool _popoverBackgroundColorIsOpaque;
     _Bool _arrowVisible;
-    _Bool _shapeLayerPathNeedsUpdate;
     _UIPopoverShapeLayerMaskView *_shapeLayerMaskView;
 }
 
@@ -43,12 +42,12 @@ __attribute__((visibility("hidden")))
 - (void)setArrowOffset:(double)arg1;
 - (void)setArrowDirection:(unsigned long long)arg1;
 - (void)layoutSubviews;
-- (void)_updateShapeLayerPathIfNeeded;
 - (id)_shadowPath;
 - (struct CGSize)_shadowOffset;
 - (double)_shadowRadius;
 - (double)_shadowOpacity;
 - (struct UIEdgeInsets)_shadowInsets;
+- (_Bool)usesImagesForShapeMasking;
 - (double)maxNonPinnedOffset;
 - (double)minNonPinnedOffset;
 - (id)initWithFrame:(struct CGRect)arg1;

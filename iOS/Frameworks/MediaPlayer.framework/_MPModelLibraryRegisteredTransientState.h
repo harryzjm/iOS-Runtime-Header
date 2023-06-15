@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
     long long _addState;
     long long _keepLocalState;
+    long long _favoriteState;
     MPSectionedCollection *_modelObjects;
     MPSectionedCollection *_relatedModelObjects;
     NSUUID *_token;
@@ -22,6 +23,7 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSUUID *token; // @synthesize token=_token;
 @property(copy, nonatomic) MPSectionedCollection *relatedModelObjects; // @synthesize relatedModelObjects=_relatedModelObjects;
 @property(copy, nonatomic) MPSectionedCollection *modelObjects; // @synthesize modelObjects=_modelObjects;
+@property(nonatomic) long long favoriteState; // @synthesize favoriteState=_favoriteState;
 @property(nonatomic) long long keepLocalState; // @synthesize keepLocalState=_keepLocalState;
 @property(nonatomic) long long addState; // @synthesize addState=_addState;
 

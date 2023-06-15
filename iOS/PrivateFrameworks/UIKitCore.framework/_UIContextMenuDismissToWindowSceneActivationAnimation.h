@@ -6,17 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class _UIContextMenuPresentationController;
+@class _UIContextMenuUIController;
 
 __attribute__((visibility("hidden")))
 @interface _UIContextMenuDismissToWindowSceneActivationAnimation : NSObject
 {
-    _UIContextMenuPresentationController *_controller;
+    _UIContextMenuUIController *_menuUIController;
 }
 
-+ (id)animationWithPresentationController:(id)arg1;
++ (id)animationWithUIController:(id)arg1;
 - (void).cxx_destruct;
-@property(retain, nonatomic) _UIContextMenuPresentationController *controller; // @synthesize controller=_controller;
+@property(retain, nonatomic) _UIContextMenuUIController *menuUIController; // @synthesize menuUIController=_menuUIController;
 - (void)completeAnimation;
 - (void)animateAlongsideScenePlatter:(id)arg1;
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UICollectionViewCell.h>
+#import <UIKitCore/UICollectionViewCell.h>
 
 @class MISSING_TYPE;
 
@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *localizer;
     MISSING_TYPE *titleLabel;
     MISSING_TYPE *filterButton;
-    MISSING_TYPE *isFilterButtonEnabled;
+    MISSING_TYPE *filterButtonState;
 }
 
 - (void).cxx_destruct;

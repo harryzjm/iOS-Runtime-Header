@@ -6,16 +6,14 @@
 
 #import <Foundation/NSData.h>
 
-@class NSString;
-
 @interface NSData (BRCSignatureAdditions)
 + (id)brc_pendingPlaceholderForPackage:(_Bool)arg1;
 @property(readonly, nonatomic) NSData *brc_signature;
-@property(readonly, nonatomic) NSString *brc_hexadecimalString;
 @property(readonly, nonatomic) _Bool brc_signatureIsValid;
 @property(readonly, nonatomic) _Bool brc_signatureIsPackage;
 @property(readonly, nonatomic) _Bool brc_signatureIsPendingPlaceHolder;
 - (id)brc_SHA256WithSalt:(id)arg1;
+- (id)brc_hexadecimalString;
 @property(readonly, nonatomic) unsigned int br_qtnFlags;
 @end
 

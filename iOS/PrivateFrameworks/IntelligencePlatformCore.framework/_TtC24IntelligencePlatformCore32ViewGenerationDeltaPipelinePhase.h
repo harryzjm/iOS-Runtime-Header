@@ -10,9 +10,10 @@
 
 @interface _TtC24IntelligencePlatformCore32ViewGenerationDeltaPipelinePhase : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *phaseName;
     MISSING_TYPE *config;
-    MISSING_TYPE *shouldContinue;
-    MISSING_TYPE *viewUpdateManager;
+    MISSING_TYPE *coordinationXPC;
+    MISSING_TYPE *source;
 }
 
 @end

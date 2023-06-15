@@ -11,6 +11,7 @@
 @protocol CKXWriterProtocol <CKXReaderWriterProtocol>
 - (_Bool)flushWithError:(id *)arg1;
 - (void)commitStruct:(CDStruct_14f26992)arg1;
+- (void)assignStruct:(CDStruct_14f26992)arg1 toReference:(unsigned long long)arg2 inStruct:(CDStruct_14f26992)arg3;
 - (void)setData:(void *)arg1 withLength:(unsigned long long)arg2 forList:(CDStruct_33dcf794)arg3;
 - (void)setData:(void *)arg1 withEncoding:(const char *)arg2 forField:(unsigned long long)arg3 inStruct:(CDStruct_14f26992)arg4;
 - (CDStruct_14f26992)beginAppendedListStructInList:(CDStruct_33dcf794)arg1;

@@ -22,13 +22,12 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) double pendingVolumeChange; // @synthesize pendingVolumeChange=_pendingVolumeChange;
 @property(readonly, nonatomic) id <MPVolumeControllerDataSource> volumeDataSource; // @synthesize volumeDataSource=_volumeDataSource;
 - (double)calculateButtonRepeatDelay;
-- (void)commitVolumeChange;
 - (void)changeVolumeBy:(double)arg1;
 - (void)cancelVolumeEvent;
 - (void)decreaseVolume;
 - (void)increaseVolume;
 - (void)handleIncreaseDown;
-- (void)handleDescreaseDown;
+- (void)handleDecreaseDown;
 - (void)consumeSinglePressUpForButtonKind:(long long)arg1;
 - (void)consumeSinglePressDownForButtonKind:(long long)arg1;
 - (id)initWithVolumeDataSource:(id)arg1;

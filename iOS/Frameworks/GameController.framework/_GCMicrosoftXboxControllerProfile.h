@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 + (id)physicalDeviceGetHapticCapabilityGraph:(id)arg1;
 + (id)physicalDeviceGetHapticCapabilities:(id)arg1;
 + (void)physicalDevice:(id)arg1 getBatteryWithReply:(CDUnknownBlockType)arg2;
++ (id)logicalDevice:(id)arg1 makeControllerInputDescriptionWithIdentifier:(id)arg2 bindings:(id)arg3;
 + (long long)logicalDeviceDeterminePhysicalInputType:(id)arg1;
 + (id)logicalDevice:(id)arg1 makeControllerPhysicalInputProfileWithIdentifier:(id)arg2;
 + (id)logicalDeviceControllerDetailedProductCategory:(id)arg1;

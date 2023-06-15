@@ -9,6 +9,7 @@
 @class MUPlaceUnifiedActionRowSectionController;
 
 @protocol MUPlaceUnifiedActionRowSectionControllerDelegate <NSObject>
+- (void)sectionControllerDidSelectViewContactButton:(MUPlaceUnifiedActionRowSectionController *)arg1;
 - (void)sectionController:(MUPlaceUnifiedActionRowSectionController *)arg1 didSelectPrimaryButtonType:(unsigned long long)arg2;
 @end
 

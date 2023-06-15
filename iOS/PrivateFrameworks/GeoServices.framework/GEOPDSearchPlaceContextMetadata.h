@@ -6,7 +6,7 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-@class NSMutableArray, NSString, PBDataReader, PBUnknownFields;
+@class GEOPDContextualPhotoMetadata, GEOPDNearbyPlacesMetadata, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDSearchPlaceContextMetadata : PBCodable
@@ -14,22 +14,28 @@ __attribute__((visibility("hidden")))
     PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_alternateSearchableNames;
+    GEOPDContextualPhotoMetadata *_contextualPhotoMetadata;
     NSString *_interpretedCategory;
     NSString *_matchedDisplayNameLanguageCode;
     NSString *_matchedDisplayName;
+    GEOPDNearbyPlacesMetadata *_nearbyPlacesMetadata;
     NSString *_normalizedQuery;
     NSString *_secondaryNameOverrideLanguage;
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
+    int _taxonomyTypeForClientization;
     _Bool _isDefaultName;
     struct {
+        unsigned int has_taxonomyTypeForClientization:1;
         unsigned int has_isDefaultName:1;
         unsigned int read_unknownFields:1;
         unsigned int read_alternateSearchableNames:1;
+        unsigned int read_contextualPhotoMetadata:1;
         unsigned int read_interpretedCategory:1;
         unsigned int read_matchedDisplayNameLanguageCode:1;
         unsigned int read_matchedDisplayName:1;
+        unsigned int read_nearbyPlacesMetadata:1;
         unsigned int read_normalizedQuery:1;
         unsigned int read_secondaryNameOverrideLanguage:1;
         unsigned int wrote_anyField:1;

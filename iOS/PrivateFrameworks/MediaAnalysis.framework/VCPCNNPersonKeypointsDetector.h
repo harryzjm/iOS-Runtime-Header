@@ -16,8 +16,10 @@ __attribute__((visibility("hidden")))
     VCPCNNModelEspresso *_modelEspresso;
     int _inputWidth;
     int _inputHeight;
+    struct Scaler _scaler;
 }
 
+- (id).cxx_construct;
 - (void).cxx_destruct;
 - (int)parseKeypoints:(id)arg1;
 - (int)analyzeFrame:(struct __CVBuffer *)arg1 withBox:(id)arg2 keypoints:(id)arg3;

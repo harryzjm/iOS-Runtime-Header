@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     char url_hash[9];
     unsigned int inferred_port:1;
     unsigned int __pad_bits:7;
+    struct os_unfair_lock_s endpoint_lock;
 }
 
 - (unsigned long long)getHash;

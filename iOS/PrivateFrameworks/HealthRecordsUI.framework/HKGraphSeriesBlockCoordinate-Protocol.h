@@ -9,9 +9,9 @@
 @protocol HKGraphSeriesBlockCoordinateInfo;
 
 @protocol HKGraphSeriesBlockCoordinate <NSObject>
+@property(readonly, nonatomic) id <HKGraphSeriesBlockCoordinateInfo> userInfo;
+@property(readonly, nonatomic) double endXValue;
+@property(readonly, nonatomic) double startXValue;
 - (id)copyWithTransform:(struct CGAffineTransform)arg1 roundToViewScale:(_Bool)arg2;
-@property(nonatomic, readonly) id <HKGraphSeriesBlockCoordinateInfo> userInfo;
-@property(nonatomic, readonly) double endXValue;
-@property(nonatomic, readonly) double startXValue;
 @end
 

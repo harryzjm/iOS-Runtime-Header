@@ -46,6 +46,7 @@
 @property(copy, nonatomic) NSDictionary *launchEnvironment; // @synthesize launchEnvironment=_launchEnvironment;
 @property(copy, nonatomic) NSArray *launchArguments; // @synthesize launchArguments=_launchArguments;
 @property(retain) XCUIApplicationOpenRequest *lastLaunchRequest; // @synthesize lastLaunchRequest=_lastLaunchRequest;
+- (_Bool)performAccessibilityAuditWithAuditTypes:(unsigned long long)arg1 issueHandler:(CDUnknownBlockType)arg2 error:(id *)arg3;
 - (id)diagnosticAttachmentsForError:(id)arg1;
 - (void)dismissKeyboard;
 @property(readonly) XCUIElement *keyboard; // @synthesize keyboard=_keyboard;
@@ -63,9 +64,10 @@
 - (void)terminate;
 - (void)resetAuthorizationStatusForResource:(long long)arg1;
 - (void)activate;
-- (void)_launchUsingXcode:(_Bool)arg1 withoutAccessibility:(_Bool)arg2;
+- (void)_launchUsingXcode:(_Bool)arg1 withoutAccessibility:(_Bool)arg2 launchURL:(id)arg3;
 - (void)_launchUsingXcode:(_Bool)arg1;
 - (void)launchWithoutAccessibility:(_Bool)arg1;
+- (void)openURL:(id)arg1;
 - (void)launch;
 - (id)_combinedLaunchEnvironment;
 - (id)_combinedLaunchArguments;

@@ -7,7 +7,7 @@
 @class FCBundleSubscription;
 
 @protocol FCBundleSubscriptionProviderType
+@property(readonly, copy, nonatomic) FCBundleSubscription *bundleSubscription;
 - (void)prepareForUseWithCompletion:(void (^)(void))arg1;
-@property(nonatomic, readonly) FCBundleSubscription *bundleSubscription;
 @end
 

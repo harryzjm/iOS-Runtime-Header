@@ -9,9 +9,9 @@
 __attribute__((visibility("hidden")))
 @interface _TtC12CoreAudioKit33AUGenericViewIntegerParameterCell
 {
+    MISSING_TYPE *indexPath;
     MISSING_TYPE *editButton;
     MISSING_TYPE *valueButton;
-    MISSING_TYPE *indexPath;
 }
 
 - (void).cxx_destruct;

@@ -11,7 +11,7 @@
     unsigned short _internalOwnerID;
     unsigned short _tileColumnBegin;
     unsigned int _tileRowBegin;
-    struct TSCECellRecordTile *_tile;
+    void *_tile;
     void *_unarchivedCellRecords;
 }
 
@@ -19,7 +19,7 @@
 - (void)unpackAfterUnarchiveForCellDependencies:(void *)arg1;
 - (id)description;
 @property(readonly, nonatomic) unsigned long long numCellRecords;
-- (struct TSCECellRecordTile *)cppTile;
+- (void *)cppTile;
 - (void)loadFromUnarchiver:(id)arg1;
 - (void)saveToArchiver:(id)arg1;
 - (void)dealloc;

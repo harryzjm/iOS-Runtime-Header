@@ -15,6 +15,9 @@
     MISSING_TYPE *tagService;
     MISSING_TYPE *configManager;
     MISSING_TYPE *appConfigManager;
+    MISSING_TYPE *sportsEventController;
+    MISSING_TYPE *eventRosterCache;
+    MISSING_TYPE *visualizationCache;
 }
 
 @end

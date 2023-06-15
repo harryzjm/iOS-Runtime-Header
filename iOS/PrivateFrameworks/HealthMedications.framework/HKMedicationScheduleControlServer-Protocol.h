@@ -15,6 +15,7 @@
 - (void)remote_saveScheduleItems:(NSArray *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (void)remote_deleteSchedule:(HKMedicationSchedule *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (void)remote_fetchAllSchedulesWithCompletion:(void (^)(NSArray *, NSError *))arg1;
+- (void)remote_fetchSchedulesWithMedicationIdentifiers:(NSArray *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)remote_fetchScheduleWithMedicationIdentifier:(NSString *)arg1 completion:(void (^)(HKMedicationSchedule *, NSError *))arg2;
 - (void)remote_updateSchedulesToLocalTimeZoneAndMaintainCalendarDatesAndTimes:(_Bool)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (void)remote_saveSchedule:(HKMedicationSchedule *)arg1 completion:(void (^)(_Bool, NSError *))arg2;

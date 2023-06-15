@@ -13,19 +13,24 @@ __attribute__((visibility("hidden")))
 {
     double _expectedProcessEndTime;
     unsigned int _packetCountInNetworkQueue;
+    int _packetCountBytesInNetworkQueue;
     double _networkQueueLossRate;
     unsigned int _networkQueueLossPattern;
     long long _packetTypeForNetworkQueueLossPattern;
     unsigned int _networkQueueMaxSize;
+    unsigned int _networkQueueMaxSizeBytes;
     int _currentIndexForLossRate;
     int _currentIndexForLossPattern;
     int _currentLossPatternShift;
     int _currentIndexForQueueSize;
+    int _currentIndexForQueueSizeBytes;
     double _lastNetworkQueueLossRateLoadTime;
     double _lastNetworkQueueLossPatternLoadTime;
     double _lastNetworkQueueSizeLoadTime;
+    double _lastNetworkQueueSizeBytesLoadTime;
 }
 
+@property int packetCountBytesInNetworkQueue; // @synthesize packetCountBytesInNetworkQueue=_packetCountBytesInNetworkQueue;
 @property unsigned int packetCountInNetworkQueue; // @synthesize packetCountInNetworkQueue=_packetCountInNetworkQueue;
 @property(readonly, nonatomic) double expectedProcessEndTime; // @synthesize expectedProcessEndTime=_expectedProcessEndTime;
 - (void)process:(id)arg1;

@@ -11,7 +11,7 @@
 - (void)cancel;
 - (void)activate;
 - (void)close;
-- (_Bool)openSeize:(out id *)arg1;
+- (_Bool)openWithOptions:(long long)arg1 error:(out id *)arg2;
 - (void)open;
 - (void)setDispatchQueue:(id)arg1;
 - (void)setCancelHandler:(CDUnknownBlockType)arg1;

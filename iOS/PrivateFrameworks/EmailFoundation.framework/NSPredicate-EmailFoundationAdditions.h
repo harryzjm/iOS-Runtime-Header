@@ -9,7 +9,12 @@
 @class NSString;
 
 @interface NSPredicate (EmailFoundationAdditions)
++ (id)_ef_compoundPredicateWithSubpredicates:(id)arg1 isAnd:(_Bool)arg2;
++ (id)ef_andCompoundPredicateWithSubpredicates:(id)arg1;
++ (id)ef_orCompoundPredicateWithSubpredicates:(id)arg1;
++ (id)_ef_compoundPredicateForOptionalPredicate:(id)arg1 second:(id)arg2 isAnd:(_Bool)arg3;
 + (id)ef_andCompoundPredicateForOptionalPredicate:(id)arg1 second:(id)arg2;
++ (id)ef_orCompoundPredicateForOptionalPredicate:(id)arg1 second:(id)arg2;
 + (id)ef_matchNothingPredicate;
 + (id)ef_matchEverythingPredicate;
 @property(readonly, nonatomic) _Bool ef_matchesNothing;
@@ -19,7 +24,7 @@
 - (_Bool)ef_containsKeyPath:(id)arg1;
 @property(readonly, copy, nonatomic) NSString *ef_publicDescription;
 - (id)_ef_parenthesizedPublicDescription;
-- (id)predicateNodeFromPropertyMapper:(id)arg1;
+- (id)predicateNodeFromPropertyMapper:(id)arg1 addingTablesUsed:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

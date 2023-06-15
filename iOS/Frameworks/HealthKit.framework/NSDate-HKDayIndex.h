@@ -11,6 +11,7 @@
 + (id)hk_earliestPossibleDateWithDayIndex:(long long)arg1;
 + (id)hk_noonWithDayIndex:(long long)arg1 calendar:(id)arg2;
 + (id)hk_dateOnDayIndex:(long long)arg1 atHour:(long long)arg2 calendar:(id)arg3;
++ (id)hk_sleepMonthStartForMorningIndex:(long long)arg1 calendar:(id)arg2;
 + (id)hk_sleepWeekStartForMorningIndex:(long long)arg1 calendar:(id)arg2;
 + (id)hk_sleepDayStartForMorningIndex:(long long)arg1 calendar:(id)arg2;
 + (id)hk_dateWithNanosecondsSince1970:(long long)arg1;

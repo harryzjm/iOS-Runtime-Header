@@ -14,9 +14,11 @@ __attribute__((visibility("hidden")))
     VCPCNNModelEspresso *_model;
     PHFetchResult *_phFaces;
     float *_inputData;
+    struct Scaler _scaler;
 }
 
 + (id)sharedModel:(id)arg1 outputNames:(id)arg2 properties:(id)arg3;
+- (id).cxx_construct;
 - (void).cxx_destruct;
 - (int)analyzePixelBuffer:(struct __CVBuffer *)arg1 flags:(unsigned long long *)arg2 results:(id *)arg3 cancel:(CDUnknownBlockType)arg4;
 - (struct CGRect)rectFromPHFace:(id)arg1;

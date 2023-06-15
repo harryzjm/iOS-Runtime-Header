@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak AMSUIDynamicViewController *dynamicViewController; // @synthesize dynamicViewController=_dynamicViewController;
 @property(nonatomic) __weak id <AMSUIDynamicViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (_Bool)dynamicViewControllerShouldDismiss:(id)arg1;
+- (_Bool)dynamicViewController:(id)arg1 handleDelegateAction:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)dynamicViewController:(id)arg1 didResolveWithResult:(id)arg2 error:(id)arg3;
 - (void)dynamicViewController:(id)arg1 didFinishWithPurchaseResult:(id)arg2 error:(id)arg3;
 - (void)dynamicViewController:(id)arg1 didFinishPurchaseWithResult:(id)arg2 error:(id)arg3;

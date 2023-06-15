@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class MISSING_TYPE;
 
@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *errorButton;
     MISSING_TYPE *statusLabel;
     MISSING_TYPE *editor;
-    MISSING_TYPE *activityIndicatorView;
+    MISSING_TYPE *progressView;
 }
 
 - (void).cxx_destruct;

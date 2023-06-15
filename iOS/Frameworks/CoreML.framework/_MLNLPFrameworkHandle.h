@@ -58,10 +58,10 @@ __attribute__((visibility("hidden")))
 - (id)predictLabelForWordString:(void *)arg1 inputString:(id)arg2 error:(id *)arg3;
 - (id)predictLabelsForSentenceString:(void *)arg1 inputString:(id)arg2 error:(id *)arg3;
 - (id)predictTokensLabelsLocationsLengthsForString:(void *)arg1 inputString:(id)arg2 error:(id *)arg3;
-- (const void *)initializeEmbeddingModelWithData:(id)arg1 error:(id *)arg2;
-- (const void *)initializeGazetteerModelWithData:(id)arg1 error:(id *)arg2;
-- (const void *)initializeSentenceClassifierModelWithData:(id)arg1 error:(id *)arg2;
-- (const void *)initializeWordTaggingModelWithData:(id)arg1 error:(id *)arg2;
+- (void *)initializeEmbeddingModelWithData:(id)arg1 error:(id *)arg2;
+- (void *)initializeGazetteerModelWithData:(id)arg1 error:(id *)arg2;
+- (void *)initializeSentenceClassifierModelWithData:(id)arg1 error:(id *)arg2;
+- (void *)initializeWordTaggingModelWithData:(id)arg1 error:(id *)arg2;
 - (id)init;
 
 @end

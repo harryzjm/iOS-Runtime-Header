@@ -6,9 +6,9 @@
 
 #import <PhotoAnalysis/NSObject-Protocol.h>
 
-@class NSXPCConnection;
+@class NSXPCInterface;
 
 @protocol PHAWorkerConfiguration <NSObject>
-+ (void)configureXPCConnection:(NSXPCConnection *)arg1;
++ (void)configureInterface:(NSXPCInterface *)arg1;
 @end
 

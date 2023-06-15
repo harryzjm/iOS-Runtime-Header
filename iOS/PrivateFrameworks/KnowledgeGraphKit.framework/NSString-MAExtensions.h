@@ -8,7 +8,7 @@
 
 @interface NSString (MAExtensions)
 - (id)ma_normalizedString;
-@property(readonly) long long matissePropertyType;
+@property(readonly) long long kgPropertyType;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

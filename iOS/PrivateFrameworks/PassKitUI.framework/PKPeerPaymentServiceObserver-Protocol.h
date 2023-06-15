@@ -9,6 +9,7 @@
 @protocol PKPeerPaymentServiceObserver <NSObject>
 
 @optional
-- (void)peerPaymentPendingRequestsChanged;
+- (void)recurringPaymentsChanged;
+- (void)pendingRequestsChanged;
 @end
 

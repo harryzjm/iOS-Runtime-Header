@@ -12,6 +12,18 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 struct AutodiffOpData;
 
+struct MPSGraphVersion {
+    long long _field1;
+    long long _field2;
+    long long _field3;
+};
+
+struct ModuleOp {
+    struct Operation *_field1;
+};
+
+struct Operation;
+
 struct Value {
     struct ValueImpl *impl;
 };

@@ -11,7 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface WebSpeechRecognizerTaskImpl : NSObject
 {
-    ObjectIdentifier_0a27c126 _identifier;
+    ObjectIdentifierGeneric_137971da _identifier;
     struct BlockPtr<void (const WebCore::SpeechRecognitionUpdate &)> _delegateCallback;
     _Bool _doMultipleRecognitions;
     unsigned long long _maxAlternatives;
@@ -37,7 +37,7 @@ __attribute__((visibility("hidden")))
 - (void)abort;
 - (void)audioSamplesAvailable:(struct opaqueCMSampleBuffer *)arg1;
 - (void)callbackWithTranscriptions:(id)arg1 isFinal:(_Bool)arg2;
-- (id)initWithIdentifier:(ObjectIdentifier_0a27c126)arg1 locale:(id)arg2 doMultipleRecognitions:(_Bool)arg3 reportInterimResults:(_Bool)arg4 maxAlternatives:(unsigned long long)arg5 delegateCallback:(CDUnknownBlockType)arg6;
+- (id)initWithIdentifier:(ObjectIdentifierGeneric_137971da)arg1 locale:(id)arg2 doMultipleRecognitions:(_Bool)arg3 reportInterimResults:(_Bool)arg4 maxAlternatives:(unsigned long long)arg5 delegateCallback:(CDUnknownBlockType)arg6;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

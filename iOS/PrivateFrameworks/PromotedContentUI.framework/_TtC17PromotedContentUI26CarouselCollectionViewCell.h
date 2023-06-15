@@ -4,26 +4,28 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UICollectionViewCell.h>
+#import <UIKitCore/UICollectionViewCell.h>
 
 @class MISSING_TYPE;
 
 @interface _TtC17PromotedContentUI26CarouselCollectionViewCell : UICollectionViewCell
 {
-    MISSING_TYPE *$__lazy_storage_$_captionLabel;
+    MISSING_TYPE *assetToken;
+    MISSING_TYPE *touchPoint;
+    MISSING_TYPE *captionLabel;
     MISSING_TYPE *$__lazy_storage_$_assetImageView;
     MISSING_TYPE *$__lazy_storage_$_blurImageView;
     MISSING_TYPE *$__lazy_storage_$_captionView;
     MISSING_TYPE *$__lazy_storage_$_ctaButton;
-    MISSING_TYPE *element;
+    MISSING_TYPE *dynamicConstraints;
+    MISSING_TYPE *isActionButtonDisplayed;
     MISSING_TYPE *delegate;
-    MISSING_TYPE *index;
-    MISSING_TYPE *touchPoint;
 }
 
 - (void).cxx_destruct;
-- (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)didTapCTAButtonWithSender:(id)arg1;
+- (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
+- (void)prepareForReuse;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 

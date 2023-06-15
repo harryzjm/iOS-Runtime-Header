@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class MUCuratedCollectionSummaryView, MUPullQuoteView, UITapGestureRecognizer;
 @protocol MUPlaceCollectionPullQuotePlatterViewDelegate, MUPlaceCollectionPullQuoteViewModel;
@@ -23,7 +23,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) id <MUPlaceCollectionPullQuoteViewModel> viewModel; // @synthesize viewModel=_viewModel;
 @property(nonatomic) __weak id <MUPlaceCollectionPullQuotePlatterViewDelegate> delegate; // @synthesize delegate=_delegate;
 - (struct CGSize)intrinsicContentSize;
-- (void)traitCollectionDidChange:(id)arg1;
 - (void)_contentSizeDidChange;
 - (void)_didSelectCollection;
 - (void)_updateAppearance;

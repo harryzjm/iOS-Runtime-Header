@@ -12,12 +12,14 @@
 {
     MISSING_TYPE *snippetIdentifiers;
     MISSING_TYPE *itemIdentifiers;
-    MISSING_TYPE *supplmentaryIdentifiers;
+    MISSING_TYPE *supplementaryIdentifiers;
     MISSING_TYPE *stringIdentifiers;
     MISSING_TYPE *properties;
     MISSING_TYPE *abstractProperties;
     MISSING_TYPE *slotPropertiesBySlot;
     MISSING_TYPE *slotItemPropertiesBySlot;
+    MISSING_TYPE *slotItemAuxiliaryPropertiesBySlot;
+    MISSING_TYPE *slotItemAuxiliaryItemPropertiesBySlot;
 }
 
 @end

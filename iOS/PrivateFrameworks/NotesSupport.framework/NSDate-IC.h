@@ -9,6 +9,7 @@
 @class NSString;
 
 @interface NSDate (IC)
+- (unsigned long long)ic_numberOfDaysFromDate:(id)arg1;
 - (_Bool)ic_isWithinSameYear:(id)arg1;
 - (_Bool)ic_isWithinSameMonth:(id)arg1;
 - (_Bool)ic_isWithinInclusiveDayIntervalBeginning:(id)arg1 ending:(id)arg2;

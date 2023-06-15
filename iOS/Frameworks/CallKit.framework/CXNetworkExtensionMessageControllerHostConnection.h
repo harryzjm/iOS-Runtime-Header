@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) struct os_unfair_lock_s accessorLock; // @synthesize accessorLock=_accessorLock;
 @property(readonly, copy, nonatomic) NSString *applicationIdentifier; // @synthesize applicationIdentifier=_applicationIdentifier;
 @property(readonly, copy) NSString *description;
+- (void)sendNetworkExtensionPushToTalkMessage:(id)arg1 forBundleIdentifier:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)sendNetworkExtensionMessage:(id)arg1 forBundleIdentifier:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)invalidate;
 @property(nonatomic) __weak id <CXNetworkExtensionMessageControllerHostConnectionDelegate> delegate; // @synthesize delegate=_delegate;

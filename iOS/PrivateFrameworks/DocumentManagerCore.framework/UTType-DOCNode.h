@@ -9,7 +9,8 @@
 @interface UTType (DOCNode)
 + (id)doc_identifiersForContentTypes:(id)arg1;
 + (id)doc_contentTypesForIdentifiers:(id)arg1;
-@property(readonly, nonatomic) _Bool doc_conformsToFolder;
+- (_Bool)doc_conformsToFolder;
+- (long long)_doc_fileTypeCompare:(id)arg1;
 - (_Bool)doc_conformsToAnyInContentTypes:(id)arg1;
 @end
 

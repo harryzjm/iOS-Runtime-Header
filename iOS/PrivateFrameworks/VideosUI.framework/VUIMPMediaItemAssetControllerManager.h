@@ -18,8 +18,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *serialProcessingDispatchQueue; // @synthesize serialProcessingDispatchQueue=_serialProcessingDispatchQueue;
 - (id)mediaItemDownloadControllerWithMediaItem:(id)arg1;
-- (id)mediaItemCollectionAssetControllerWithMediaItemCollection:(id)arg1 mediaEntityIdentifier:(id)arg2;
-- (id)mediaItemAssetControllerWithMediaItem:(id)arg1 mediaEntityIdentifier:(id)arg2;
+- (id)mediaItemCollectionAssetControllerWithMediaItemCollection:(id)arg1;
+- (id)mediaItemAssetControllerWithMediaItem:(id)arg1;
 - (id)init;
 
 @end

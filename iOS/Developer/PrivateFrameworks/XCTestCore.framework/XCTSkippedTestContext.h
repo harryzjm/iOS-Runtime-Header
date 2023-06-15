@@ -10,6 +10,7 @@
 
 @interface XCTSkippedTestContext : NSObject
 {
+    _Bool _isFromXCTSkip;
     NSString *_summary;
     NSString *_explanation;
     NSString *_evaluatedExpression;
@@ -19,16 +20,19 @@
 
 + (id)skippedTestContextWithExceptionPointer:(id)arg1 evaluatedExpression:(id)arg2 message:(id)arg3 sourceCodeContext:(id)arg4;
 - (void).cxx_destruct;
+@property(readonly) _Bool isFromXCTSkip; // @synthesize isFromXCTSkip=_isFromXCTSkip;
 @property(readonly) XCTSourceCodeContext *sourceCodeContext; // @synthesize sourceCodeContext=_sourceCodeContext;
 @property(readonly, copy) NSString *message; // @synthesize message=_message;
 @property(readonly, copy) NSString *evaluatedExpression; // @synthesize evaluatedExpression=_evaluatedExpression;
 @property(readonly, copy) NSString *explanation; // @synthesize explanation=_explanation;
 @property(readonly, copy) NSString *summary; // @synthesize summary=_summary;
+- (id)initWithNonSkipError:(id)arg1;
 - (id)initWithError:(id)arg1 evaluatedExpression:(id)arg2 message:(id)arg3 sourceCodeContext:(id)arg4;
 - (id)initWithCurrentExceptionAndEvaluatedExpression:(id)arg1 message:(id)arg2 sourceCodeContext:(id)arg3;
 - (id)initWithException:(id)arg1 evaluatedExpression:(id)arg2 message:(id)arg3 sourceCodeContext:(id)arg4;
 - (id)initWithExpectedValue:(_Bool)arg1 evaluatedExpression:(id)arg2 message:(id)arg3 sourceCodeContext:(id)arg4;
 - (id)initWithExplanation:(id)arg1 evaluatedExpression:(id)arg2 message:(id)arg3 sourceCodeContext:(id)arg4;
+- (id)initWithExplanation:(id)arg1 evaluatedExpression:(id)arg2 message:(id)arg3 sourceCodeContext:(id)arg4 isFromXCTSkip:(_Bool)arg5;
 
 @end
 

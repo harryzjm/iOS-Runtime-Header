@@ -11,7 +11,7 @@
 
 @interface NoteAccountObject (ICLegacyAccount)
 - (long long)compare:(id)arg1;
-@property(readonly, nonatomic) _Bool *hasAnyCustomFolders;
+@property(readonly, nonatomic) _Bool hasAnyCustomFolders;
 @property(readonly, copy, nonatomic) NSString *localizedAttachmentsNotSupportedReason;
 @property(readonly, nonatomic) _Bool isManaged;
 @property(readonly, nonatomic) _Bool isLocalAccount;

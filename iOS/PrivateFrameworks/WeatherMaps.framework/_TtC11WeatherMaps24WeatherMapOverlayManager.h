@@ -17,9 +17,9 @@
     MISSING_TYPE *overlayAnimationProvider;
     MISSING_TYPE *overlayProgressReporter;
     MISSING_TYPE *renderSettingsProvider;
+    MISSING_TYPE *overlayRendererFactory;
     MISSING_TYPE *activeAnimation;
     MISSING_TYPE *activeOverlayContainer;
-    MISSING_TYPE *overlayRendererFactory;
     MISSING_TYPE *dataSource;
     MISSING_TYPE *delegate;
     MISSING_TYPE *gestureInteractionState;

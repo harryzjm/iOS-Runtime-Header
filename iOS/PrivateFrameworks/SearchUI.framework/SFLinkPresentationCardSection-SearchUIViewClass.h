@@ -8,7 +8,7 @@
 
 @interface SFLinkPresentationCardSection (SearchUIViewClass)
 - (Class)_searchUIViewClass;
-- (double)searchUIGridSectionModel_interItemSpacing;
+- (struct NSDirectionalEdgeInsets)searchUIGridSectionModel_groupInset;
 - (_Bool)searchUIGridSectionModel_useBackground;
 - (id)searchUIGridSectionModel_heightDimensionWithColumnCount:(unsigned long long)arg1;
 - (_Bool)searchUIHorizontallyScrollingSectionModel_useBackground;

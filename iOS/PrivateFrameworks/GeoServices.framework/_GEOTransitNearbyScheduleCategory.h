@@ -7,18 +7,21 @@
 #import <objc/NSObject.h>
 
 @class NSArray, NSString;
+@protocol GEOTransitArtworkDataSource;
 
 __attribute__((visibility("hidden")))
 @interface _GEOTransitNearbyScheduleCategory : NSObject
 {
     NSString *_displayName;
     NSArray *_groups;
+    id <GEOTransitArtworkDataSource> _artwork;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) id <GEOTransitArtworkDataSource> artwork; // @synthesize artwork=_artwork;
 @property(readonly, nonatomic) NSArray *groups; // @synthesize groups=_groups;
 @property(readonly, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
-- (id)initWithTransitScheduleCategory:(id)arg1 nearbyScheduleGroups:(id)arg2;
+- (id)initWithTransitScheduleCategory:(id)arg1 nearbyScheduleGroups:(id)arg2 categoryArtwork:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

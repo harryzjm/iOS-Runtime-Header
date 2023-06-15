@@ -34,6 +34,7 @@
 - (void)objectModel:(RUIObjectModel *)arg1 pressedLink:(NSURL *)arg2 httpMethod:(NSString *)arg3 completion:(void (^)(_Bool, NSError *))arg4;
 - (void)objectModel:(RUIObjectModel *)arg1 elementDidChange:(RUIElement *)arg2;
 - (void)objectModel:(RUIObjectModel *)arg1 didNavigateBackFromController:(UIViewController *)arg2 withGesture:(_Bool)arg3;
+- (RUIElement *)visibleElementWithIdentifier:(NSString *)arg1;
 - (UIViewController *)viewControllerForAlertPresentation;
 @end
 

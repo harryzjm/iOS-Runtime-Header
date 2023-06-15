@@ -6,9 +6,12 @@
 
 #import <Home/NSObject-Protocol.h>
 
-@class NSSet;
+@class NSArray, NSSet;
 
 @protocol HFAccessoryVendor <NSObject>
 - (NSSet *)accessories;
+
+@optional
+- (NSArray *)mediaProfileContainers;
 @end
 

@@ -12,6 +12,9 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)tableViewSectionClasses;
+- (void)viewControllerDidLeaveAdaptiveModal;
+- (void)viewControllerDidEnterAdaptiveModal;
+- (void)viewDidLoad;
 - (id)initWithProfile:(id)arg1 usingInsetStyling:(_Bool)arg2;
 
 @end

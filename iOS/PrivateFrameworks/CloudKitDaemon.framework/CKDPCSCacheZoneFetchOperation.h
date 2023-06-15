@@ -9,11 +9,14 @@
 @interface CKDPCSCacheZoneFetchOperation
 {
     _Bool _shouldCreateZoneishPCS;
+    _Bool _rolledPCSForZone;
 }
 
+@property(nonatomic) _Bool rolledPCSForZone; // @synthesize rolledPCSForZone=_rolledPCSForZone;
 @property(nonatomic) _Bool shouldCreateZoneishPCS; // @synthesize shouldCreateZoneishPCS=_shouldCreateZoneishPCS;
 - (_Bool)_savePCSDataToCache;
 - (_Bool)_saveUpdatedPCSToServer;
+- (_Bool)_checkAndUpdateZonePCSIfNeeded;
 - (void)_handleDecryptedZonePCSData:(id)arg1 withError:(id)arg2;
 - (void)_decryptZonePCSUsingServiceIdentities;
 - (void)_decryptZonePCSInSharedDatabase;
@@ -33,6 +36,7 @@
 - (id)itemTypeName;
 @property(retain, nonatomic) CKDZonePCSData *zonePCSData;
 @property(readonly, nonatomic) CKRecordZoneID *zoneID;
+- (int)operationType;
 
 @end
 

@@ -11,6 +11,7 @@
 @protocol DIPFeaturesProtocol <NSObject>
 - (void)createRadarDraftForContext:(NSString *)arg1 title:(NSString *)arg2 error:(NSError *)arg3 attachmentFilePaths:(NSArray *)arg4 deleteOnAttach:(_Bool)arg5 description:(NSString *)arg6 component:(long long)arg7;
 - (void)triggerTapToRadarForContext:(NSString *)arg1 title:(NSString *)arg2 error:(NSError *)arg3 attachmentFilePaths:(NSArray *)arg4 deleteOnAttach:(_Bool)arg5 description:(NSString *)arg6;
+- (NSData *)getReplacementProofingImage:(NSString *)arg1;
 - (void)saveProofingImage:(NSData *)arg1 withName:(NSString *)arg2;
 - (NSString *)getStaticAssessmentURL;
 - (_Bool)isEnvNonQA;

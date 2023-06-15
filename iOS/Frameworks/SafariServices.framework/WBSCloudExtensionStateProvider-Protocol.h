@@ -9,6 +9,7 @@
 @class NSDictionary, NSString, WBSCloudExtensionStateManager;
 
 @protocol WBSCloudExtensionStateProvider <NSObject>
+- (NSString *)profileServerIDForStateManager:(WBSCloudExtensionStateManager *)arg1;
 - (void)setExtensionWithComposedIdentifier:(NSString *)arg1 isEnabledInCloud:(_Bool)arg2;
 - (_Bool)hasExtensionWithComposedIdentifier:(NSString *)arg1;
 - (NSDictionary *)cloudExtensionStateForStateManager:(WBSCloudExtensionStateManager *)arg1;

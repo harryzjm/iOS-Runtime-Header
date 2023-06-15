@@ -6,30 +6,45 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMutableArray, NSOperationQueue;
+@class NSArray, NSMutableArray, NSMutableDictionary, NSOperationQueue;
 
 __attribute__((visibility("hidden")))
 @interface VUIMediaInfoFetchController : NSObject
 {
+    _Bool _preloadPlaybackEnabled;
     NSArray *_mediaInfos;
+    unsigned long long _index;
+    unsigned long long _playerPreloadOffset;
     NSOperationQueue *_imageQueue;
     NSMutableArray *_imageOperations;
-    NSMutableArray *_players;
+    NSMutableDictionary *_prewarmedPlayers;
 }
 
++ (void)initialize;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSMutableArray *players; // @synthesize players=_players;
+@property(retain, nonatomic) NSMutableDictionary *prewarmedPlayers; // @synthesize prewarmedPlayers=_prewarmedPlayers;
 @property(retain, nonatomic) NSMutableArray *imageOperations; // @synthesize imageOperations=_imageOperations;
 @property(retain, nonatomic) NSOperationQueue *imageQueue; // @synthesize imageQueue=_imageQueue;
+@property(nonatomic, getter=isPreloadPlaybackEnabled) _Bool preloadPlaybackEnabled; // @synthesize preloadPlaybackEnabled=_preloadPlaybackEnabled;
+@property(nonatomic) unsigned long long playerPreloadOffset; // @synthesize playerPreloadOffset=_playerPreloadOffset;
+@property(nonatomic) unsigned long long index; // @synthesize index=_index;
 @property(copy, nonatomic) NSArray *mediaInfos; // @synthesize mediaInfos=_mediaInfos;
 - (id)loadPlayerAtIndex:(unsigned long long)arg1;
 - (void)loadImageAtIndex:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)_createPlayerFromMediaInfo:(id)arg1;
+- (id)_createPlayerWithPlaylist:(id)arg1 isForPrewarming:(_Bool)arg2;
 - (void)removeMediaInfoAtIndex:(unsigned long long)arg1;
 - (void)appendMediaInfos:(id)arg1;
 - (void)setMediaInfo:(id)arg1 atIndex:(unsigned long long)arg2;
+- (id)_identifierForPlaylist:(id)arg1 isForPrewarming:(_Bool)arg2;
+- (void)_removePrewarmedPlayerForIdentifier:(id)arg1;
+- (id)_prewarmIndices;
+- (void)_updatePrewarmedPlayers;
+- (long long)queuePriorityForIndex:(long long)arg1 itemCount:(long long)arg2 selectedIndex:(long long)arg3;
+- (void)_updateImageOperationPriorities;
 - (void)_populateQueueWithMediaInfos:(id)arg1;
 - (void)dealloc;
+- (void)preloadPlayback;
+- (void)clearPreloadedPlayback;
 - (id)initWithMediaInfos:(id)arg1;
 - (id)init;
 

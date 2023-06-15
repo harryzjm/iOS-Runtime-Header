@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIToolbar.h>
+#import <UIKitCore/UIToolbar.h>
 
 @class MISSING_TYPE;
 
@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 - (id)initInView:(id)arg1 withFrame:(struct CGRect)arg2 withItemList:(id)arg3;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)init;
 
 @end
 

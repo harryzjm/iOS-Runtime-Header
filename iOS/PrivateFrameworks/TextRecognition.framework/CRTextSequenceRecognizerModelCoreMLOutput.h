@@ -13,9 +13,11 @@ __attribute__((visibility("hidden")))
 {
     NSArray *_textFeatureInfo;
     MLMultiArray *_output_label_prob_map;
+    unsigned long long _batchSize;
 }
 
 - (void).cxx_destruct;
+@property unsigned long long batchSize; // @synthesize batchSize=_batchSize;
 @property(retain, nonatomic) MLMultiArray *output_label_prob_map; // @synthesize output_label_prob_map=_output_label_prob_map;
 @property(retain) NSArray *textFeatureInfo; // @synthesize textFeatureInfo=_textFeatureInfo;
 - (id)featureValueForName:(id)arg1;

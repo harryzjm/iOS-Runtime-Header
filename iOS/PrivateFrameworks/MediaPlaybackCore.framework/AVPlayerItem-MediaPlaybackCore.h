@@ -6,7 +6,23 @@
 
 #import <AVFoundation/AVPlayerItem.h>
 
+@class NSString, NSURL;
+
 @interface AVPlayerItem (MediaPlaybackCore)
++ (double)HLSDownloadedDurationThreshold;
++ (double)DownloadedDurationThreshold;
+@property(nonatomic, readonly) NSString *description;
+@property(nonatomic, readonly) double time;
+@property(nonatomic) _Bool prefersSeekOverSkip;
+@property(nonatomic, readonly) _Bool isFullyDownloaded;
+@property(nonatomic, readonly) _Bool isAssetLoaded;
+@property(nonatomic, readonly) _Bool hasLoadableAsset;
+@property(nonatomic) _Bool isVideoContent;
+@property(nonatomic, copy) NSString *title;
+@property(nonatomic, copy) NSString *contentItemID;
+@property(nonatomic, readonly) NSURL *url;
+@property(nonatomic, readonly) AVPlayerItem *avPlayerItem;
+- (id)initWithUrl:(id)arg1 contentItemID:(id)arg2 isVideoContent:(_Bool)arg3 prefersSeekOverSkip:(_Bool)arg4;
 - (id)mpc_setupDescription;
 - (void)mpc_updatePreferredForwardBufferDurationForPlayerAudioFormat:(id)arg1;
 - (void)mpc_updatePrefersOfflinePlayableVariantForPlayerAudioFormat:(id)arg1 isDownloadedAsset:(_Bool)arg2;

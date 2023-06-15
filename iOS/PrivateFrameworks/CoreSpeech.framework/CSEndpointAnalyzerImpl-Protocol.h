@@ -6,7 +6,7 @@
 
 #import <CoreSpeech/CSEndpointAnalyzer-Protocol.h>
 
-@class CSAudioChunk, CSAudioRecordContext, CSServerEndpointFeatures, NSDate, NSDictionary, NSString, OSDFeatures;
+@class CSAudioChunk, CSAudioRecordContext, CSEndpointerMetrics, CSServerEndpointFeatures, NSDate, NSDictionary, NSString, OSDFeatures;
 @protocol CSEndpointAnalyzerDelegate, CSEndpointAnalyzerImplDelegate;
 
 @protocol CSEndpointAnalyzerImpl <CSEndpointAnalyzer>
@@ -20,8 +20,10 @@
 - (void)resetForNewRequestWithSampleRate:(unsigned long long)arg1 recordContext:(CSAudioRecordContext *)arg2;
 
 @optional
-@property(readonly, nonatomic) double elapsedTimeWithNoSpeech;
+@property(readonly, nonatomic) double postVoiceTriggerSilence;
 @property(readonly, nonatomic) NSString *endpointerModelVersion;
+- (_Bool)shouldAcceptEagerResultForDurationSync:(double)arg1 withEndpointerMetrics:(CSEndpointerMetrics *)arg2;
+- (void)shouldAcceptEagerResultForDuration:(double)arg1 withEndpointerMetrics:(CSEndpointerMetrics *)arg2 resultsCompletionHandler:(void (^)(_Bool, NSArray *))arg3;
 - (void)processTaskString:(NSString *)arg1;
 - (void)processASRFeatures:(CSServerEndpointFeatures *)arg1 fromServer:(_Bool)arg2;
 - (void)logAnchorMachAbsTime:(unsigned long long)arg1 numSamplesProcessedBeforeAnchorTime:(unsigned long long)arg2 isAnchorTimeBuffered:(_Bool)arg3;
@@ -34,6 +36,7 @@
 - (void)shouldAcceptEagerResultForDuration:(double)arg1 resultsCompletionHandler:(void (^)(_Bool, NSArray *))arg2;
 - (void)updateEndpointerDelayedTrigger:(_Bool)arg1;
 - (void)updateEndpointerThreshold:(float)arg1;
+- (void)processRCFeatures:(CSServerEndpointFeatures *)arg1;
 - (void)processServerEndpointFeatures:(CSServerEndpointFeatures *)arg1;
 @end
 

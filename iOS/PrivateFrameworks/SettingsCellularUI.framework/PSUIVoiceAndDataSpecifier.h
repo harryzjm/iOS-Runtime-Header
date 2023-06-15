@@ -6,7 +6,7 @@
 
 #import <Preferences/PSSpecifier.h>
 
-@class CTServiceDescriptor, CTXPCServiceSubscriptionContext, CoreTelephonyClient, NSArray, PSConfirmationSpecifier, PSListController, PSSimStatusCache, PSUICoreTelephonyCallCache, PSUICoreTelephonyCarrierBundleCache, PSUICoreTelephonyRegistrationCache, PSUIDeviceWiFiState;
+@class CTServiceDescriptor, CTXPCServiceSubscriptionContext, CoreTelephonyClient, NSArray, PSListController, PSSimStatusCache, PSUICoreTelephonyCallCache, PSUICoreTelephonyCarrierBundleCache, PSUICoreTelephonyRegistrationCache, PSUIDeviceWiFiState;
 
 __attribute__((visibility("hidden")))
 @interface PSUIVoiceAndDataSpecifier : PSSpecifier
@@ -25,7 +25,6 @@ __attribute__((visibility("hidden")))
     NSArray *_supportedDataRates;
     _Bool _3GOverrideTo4G;
     _Bool _LTEOverrideTo4G;
-    PSConfirmationSpecifier *_warningFor5G;
     _Bool _showLegacyRAT;
 }
 
@@ -45,19 +44,12 @@ __attribute__((visibility("hidden")))
 - (void)acceptedRATSelectionDuringCall:(id)arg1;
 - (id)createCallMayEndConfirmationSpecifierForTargetRATMode:(int)arg1 currentRATMode:(int)arg2;
 - (void)showCallMayEndWarningForTargetRATMode:(int)arg1 currentRATMode:(int)arg2;
-- (void)rejected5GWarning;
-- (void)accepted5GWarning:(id)arg1;
-- (void)update5GWarningSpecifierTargetRATModeWithUserInput:(id)arg1;
-- (void)setUp5GWarningSpecifier:(id)arg1;
-- (void)show5GUnsupportedWarning:(id)arg1;
 - (_Bool)shouldShowCallEndWarningForTargetRATMode:(int)arg1 currentRATMode:(int)arg2;
-- (_Bool)shouldShow5GUnsupportedWarningForTargetRATMode:(int)arg1 currentRATMode:(int)arg2;
 - (void)setMaxDataRateForRATMode:(int)arg1;
 - (void)setRATMode:(id)arg1 specifier:(id)arg2;
 - (id)getRATMode;
 - (void)populateSpecifiers:(id)arg1 values:(id)arg2;
 - (void)setUpRATSpecifers;
-- (_Bool)shouldOverrideRATModeForCBKey:(id)arg1;
 - (void)setUpInternalState;
 - (void)startObservingNotifications;
 - (id)initWithHostController:(id)arg1 subscriptionContext:(id)arg2 groupSpecifierToUpdateFooterFor:(id)arg3;

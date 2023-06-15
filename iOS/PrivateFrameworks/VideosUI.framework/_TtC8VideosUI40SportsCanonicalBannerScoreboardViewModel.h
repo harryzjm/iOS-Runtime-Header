@@ -11,6 +11,7 @@
 @interface _TtC8VideosUI40SportsCanonicalBannerScoreboardViewModel : _$s8VideosUI9ViewModelCN
 {
     MISSING_TYPE *onBannerUpdated;
+    MISSING_TYPE *viewContainerRef;
     MISSING_TYPE *badgeViewModel;
     MISSING_TYPE *gameStartViewModel;
     MISSING_TYPE *logos;
@@ -20,9 +21,21 @@
     MISSING_TYPE *_clockPublisher;
     MISSING_TYPE *_winnerPublisher;
     MISSING_TYPE *_displayErrors;
+    MISSING_TYPE *_eventDateText;
+    MISSING_TYPE *_scoresVisible;
+    MISSING_TYPE *_timeBadgeVisible;
+    MISSING_TYPE *irregularGameStateTextEnabled;
+    MISSING_TYPE *bannerPresenter;
+    MISSING_TYPE *_eventName;
+    MISSING_TYPE *_allowSportsSpoilers;
+    MISSING_TYPE *eventDateTextEnabled;
     MISSING_TYPE *isLiveUpdatesSupported;
+    MISSING_TYPE *isLiveStatsSupported;
     MISSING_TYPE *cancellables;
-    MISSING_TYPE *subscribeToEventTask;
+    MISSING_TYPE *sport;
+    MISSING_TYPE *progressStatus;
+    MISSING_TYPE *$__lazy_storage_$_followStateViewModel;
+    MISSING_TYPE *$__lazy_storage_$_liveUpdateProvider;
 }
 
 @end

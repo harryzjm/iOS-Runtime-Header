@@ -9,6 +9,7 @@
 @class NSData, NSDate, NSDictionary, NSNumber, NSSet, NSString;
 
 @protocol HKKeyValueDomainServerInterface <HKUnitTestingTaskServerInterface>
+- (void)remote_observeChanges:(_Bool)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (void)remote_allValuesWithCompletion:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)remote_stringForKey:(NSString *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 - (void)remote_dateForKey:(NSString *)arg1 completion:(void (^)(NSDate *, NSError *))arg2;

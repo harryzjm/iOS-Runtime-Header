@@ -6,20 +6,20 @@
 
 #import <objc/NSObject.h>
 
-@class NSNumber;
+@class NSNumber, NSString;
 
 __attribute__((visibility("hidden")))
 @interface VUIDropOnTabConfig : NSObject
 {
-    unsigned long long _dropOnTabIndex;
     NSNumber *_daysWithoutOpeningThreshold;
     NSNumber *_daysWithoutPlaybackThreshold;
+    NSString *_dropOnTabIdentifier;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *dropOnTabIdentifier; // @synthesize dropOnTabIdentifier=_dropOnTabIdentifier;
 @property(retain, nonatomic) NSNumber *daysWithoutPlaybackThreshold; // @synthesize daysWithoutPlaybackThreshold=_daysWithoutPlaybackThreshold;
 @property(retain, nonatomic) NSNumber *daysWithoutOpeningThreshold; // @synthesize daysWithoutOpeningThreshold=_daysWithoutOpeningThreshold;
-@property(nonatomic) unsigned long long dropOnTabIndex; // @synthesize dropOnTabIndex=_dropOnTabIndex;
 - (id)init;
 
 @end

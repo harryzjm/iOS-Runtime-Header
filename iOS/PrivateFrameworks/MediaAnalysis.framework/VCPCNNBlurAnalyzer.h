@@ -8,11 +8,14 @@ __attribute__((visibility("hidden")))
 @interface VCPCNNBlurAnalyzer
 {
     unsigned long long _revision;
+    struct Scaler _scaler;
     _Bool _sdof;
 }
 
 + (id)analyzer;
 + (id)analyzerWithRevision:(unsigned long long)arg1;
+- (id).cxx_construct;
+- (void).cxx_destruct;
 @property _Bool sdof; // @synthesize sdof=_sdof;
 - (int)computeCNNBasedSharpness:(struct __CVBuffer *)arg1 sharpnessScore:(float *)arg2 textureScore:(float *)arg3 contrast:(float)arg4 cancel:(CDUnknownBlockType)arg5;
 - (float)calculateScoreFromNetworkOutput:(float *)arg1 outChannel:(int)arg2 outHeight:(int)arg3 outWidth:(int)arg4 textureness:(char *)arg5 contrast:(float)arg6 imgWidth:(int)arg7;

@@ -13,6 +13,7 @@
     MISSING_TYPE *_isWatchListed;
     MISSING_TYPE *canonicalId;
     MISSING_TYPE *dismissOnSelect;
+    MISSING_TYPE *tapped;
     MISSING_TYPE *confirmationShouldWaitCompletion;
     MISSING_TYPE *requestObserver;
 }

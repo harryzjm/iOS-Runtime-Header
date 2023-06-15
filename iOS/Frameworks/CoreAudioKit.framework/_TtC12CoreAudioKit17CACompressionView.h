@@ -5,7 +5,6 @@
 //
 
 @class MISSING_TYPE, NSArray;
-@protocol _TtP12CoreAudioKit32AUCompressionParameterDataSource_><_TtP12CoreAudioKit27CAAUViewParameterDataSource_;
 
 __attribute__((visibility("hidden")))
 @interface _TtC12CoreAudioKit17CACompressionView
@@ -32,14 +31,7 @@ __attribute__((visibility("hidden")))
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)tintColorDidChange;
-- (float)valueForYWithLocation:(double)arg1;
-- (float)valueForXWithLocation:(double)arg1;
-- (struct CGRect)graphFrame;
-- (void)updateGraph;
-- (void)updateCompressionTriangle;
-- (void)updateCompressionExpansionPaths;
 @property(nonatomic, copy) NSArray *accessibilityElements;
-@property(nonatomic, retain) id <_TtP12CoreAudioKit32AUCompressionParameterDataSource_><_TtP12CoreAudioKit27CAAUViewParameterDataSource_> dataSource; // @synthesize dataSource;
 
 @end
 

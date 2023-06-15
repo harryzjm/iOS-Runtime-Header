@@ -17,10 +17,12 @@ __attribute__((visibility("hidden")))
     NSURL *_sharedWatchUrl;
     UIView *_sourceView;
     NSDictionary *_groupActivityMetadata;
+    struct CGRect _sourceRect;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSDictionary *groupActivityMetadata; // @synthesize groupActivityMetadata=_groupActivityMetadata;
+@property(nonatomic) struct CGRect sourceRect; // @synthesize sourceRect=_sourceRect;
 @property(retain, nonatomic) UIView *sourceView; // @synthesize sourceView=_sourceView;
 @property(retain, nonatomic) NSURL *sharedWatchUrl; // @synthesize sharedWatchUrl=_sharedWatchUrl;
 @property(retain, nonatomic) NSString *sharedWatchId; // @synthesize sharedWatchId=_sharedWatchId;
@@ -29,6 +31,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSString *title; // @synthesize title=_title;
 @property(retain, nonatomic) NSString *urlString; // @synthesize urlString=_urlString;
 - (void)performWithTargetResponder:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)initWithContextData:(id)arg1 sourceRect:(struct CGRect)arg2;
 - (id)initWithContextData:(id)arg1 sourceView:(id)arg2;
 
 @end

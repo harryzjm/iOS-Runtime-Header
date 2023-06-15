@@ -42,6 +42,7 @@
     NSSet *_disclosedChildRowAXElements;
     NSValue *_activationPoint;
     long long _interfaceOrientation;
+    NSDictionary *_systemAutomationProperties;
     XCAccessibilityElement *_accessibilityElement;
     XCAccessibilityElement *_parentAccessibilityElement;
     XCElementSnapshot *_parent;
@@ -140,6 +141,7 @@
 @property(copy) NSString *placeholderValue; // @synthesize placeholderValue=_placeholderValue;
 @property(copy) id value; // @synthesize value=_value;
 @property(readonly, copy) NSString *truncatedValueString;
+@property(copy) NSDictionary *systemAutomationProperties; // @synthesize systemAutomationProperties=_systemAutomationProperties;
 @property(copy) NSValue *activationPoint; // @synthesize activationPoint=_activationPoint;
 @property unsigned int windowContextID; // @synthesize windowContextID=_windowContextID;
 @property long long displayID; // @synthesize displayID=_displayID;

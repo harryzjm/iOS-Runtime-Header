@@ -33,6 +33,10 @@ struct CGSize {
     double height;
 };
 
+struct CompletionHandler<void (WebCore::NotificationPermission)> {
+    struct Function<void (WebCore::NotificationPermission)> m_function;
+};
+
 struct DOMWrapperWorld;
 
 struct DeviceOrientationClientMock;
@@ -43,10 +47,12 @@ struct Element;
 
 struct FileChooser;
 
-struct Frame;
+struct Function<void (WebCore::NotificationPermission)> {
+    struct unique_ptr<WTF::Detail::CallableWrapperBase<void, WebCore::NotificationPermission>, std::default_delete<WTF::Detail::CallableWrapperBase<void, WebCore::NotificationPermission>>> m_callableWrapper;
+};
 
-struct Function<void (WebCore::PolicyAction, WebCore::PolicyCheckIdentifier)> {
-    struct unique_ptr<WTF::Detail::CallableWrapperBase<void, WebCore::PolicyAction, WebCore::PolicyCheckIdentifier>, std::default_delete<WTF::Detail::CallableWrapperBase<void, WebCore::PolicyAction, WebCore::PolicyCheckIdentifier>>> m_callableWrapper;
+struct Function<void (WebCore::PolicyAction, WebCore::ProcessQualified<WTF::ObjectIdentifierGeneric<WebCore::PolicyCheckIdentifierType, WTF::ObjectIdentifierMainThreadAccessTraits>>)> {
+    struct unique_ptr<WTF::Detail::CallableWrapperBase<void, WebCore::PolicyAction, WebCore::ProcessQualified<WTF::ObjectIdentifierGeneric<WebCore::PolicyCheckIdentifierType, WTF::ObjectIdentifierMainThreadAccessTraits>>>, std::default_delete<WTF::Detail::CallableWrapperBase<void, WebCore::PolicyAction, WebCore::ProcessQualified<WTF::ObjectIdentifierGeneric<WebCore::PolicyCheckIdentifierType, WTF::ObjectIdentifierMainThreadAccessTraits>>>>> m_callableWrapper;
 };
 
 struct Geolocation;
@@ -86,9 +92,9 @@ struct JSValue {
 
 struct KeyboardEvent;
 
-struct LayerFlushController;
-
 struct LegacyWebArchive;
+
+struct LocalFrame;
 
 struct Lock {
     struct Atomic<unsigned char> m_byte;
@@ -96,16 +102,16 @@ struct Lock {
 
 struct MimeClassInfo;
 
-struct NakedPtr<WebCore::Frame> {
-    struct Frame *m_ptr;
-};
-
 struct NakedPtr<WebCore::Geolocation> {
     struct Geolocation *_field1;
 };
 
 struct NakedPtr<WebCore::InspectorController> {
     struct InspectorController *m_ptr;
+};
+
+struct NakedPtr<WebCore::LocalFrame> {
+    struct LocalFrame *m_ptr;
 };
 
 struct NakedPtr<WebInspectorFrontendClient> {
@@ -116,7 +122,11 @@ struct NakedRef<WebCore::Geolocation> {
     struct Geolocation *_field1;
 };
 
-struct ObjectIdentifier<WebCore::ProcessIdentifierType> {
+struct ObjectIdentifierGeneric<WebCore::PolicyCheckIdentifierType, WTF::ObjectIdentifierMainThreadAccessTraits> {
+    unsigned long long m_identifier;
+};
+
+struct ObjectIdentifierGeneric<WebCore::ProcessIdentifierType, WTF::ObjectIdentifierMainThreadAccessTraits> {
     unsigned long long m_identifier;
 };
 
@@ -130,13 +140,9 @@ struct PluginInfo {
     struct String bundleIdentifier;
 };
 
-struct PolicyCheckIdentifier {
-    struct ObjectIdentifier<WebCore::ProcessIdentifierType> m_process;
-    unsigned long long m_policyCheck;
-};
-
-struct RefPtr<LayerFlushController, WTF::RawPtrTraits<LayerFlushController>, WTF::DefaultRefDerefTraits<LayerFlushController>> {
-    struct LayerFlushController *m_ptr;
+struct ProcessQualified<WTF::ObjectIdentifierGeneric<WebCore::PolicyCheckIdentifierType, WTF::ObjectIdentifierMainThreadAccessTraits>> {
+    struct ObjectIdentifierGeneric<WebCore::PolicyCheckIdentifierType, WTF::ObjectIdentifierMainThreadAccessTraits> m_object;
+    struct ObjectIdentifierGeneric<WebCore::ProcessIdentifierType, WTF::ObjectIdentifierMainThreadAccessTraits> m_processIdentifier;
 };
 
 struct RefPtr<WTF::StringImpl, WTF::RawPtrTraits<WTF::StringImpl>, WTF::DefaultRefDerefTraits<WTF::StringImpl>> {
@@ -163,10 +169,6 @@ struct RefPtr<WebCore::FileChooser, WTF::RawPtrTraits<WebCore::FileChooser>, WTF
     struct FileChooser *m_ptr;
 };
 
-struct RefPtr<WebCore::Frame, WTF::RawPtrTraits<WebCore::Frame>, WTF::DefaultRefDerefTraits<WebCore::Frame>> {
-    struct Frame *m_ptr;
-};
-
 struct RefPtr<WebCore::Geolocation, WTF::RawPtrTraits<WebCore::Geolocation>, WTF::DefaultRefDerefTraits<WebCore::Geolocation>> {
     struct Geolocation *m_ptr;
 };
@@ -177,6 +179,10 @@ struct RefPtr<WebCore::HistoryItem, WTF::RawPtrTraits<WebCore::HistoryItem>, WTF
 
 struct RefPtr<WebCore::LegacyWebArchive, WTF::RawPtrTraits<WebCore::LegacyWebArchive>, WTF::DefaultRefDerefTraits<WebCore::LegacyWebArchive>> {
     struct LegacyWebArchive *m_ptr;
+};
+
+struct RefPtr<WebCore::LocalFrame, WTF::RawPtrTraits<WebCore::LocalFrame>, WTF::DefaultRefDerefTraits<WebCore::LocalFrame>> {
+    struct LocalFrame *m_ptr;
 };
 
 struct RefPtr<WebCore::UndoStep, WTF::RawPtrTraits<WebCore::UndoStep>, WTF::DefaultRefDerefTraits<WebCore::UndoStep>> {
@@ -317,7 +323,7 @@ struct UserContentURLPattern {
     struct String m_scheme;
     struct String m_host;
     struct String m_path;
-    _Bool m_invalid;
+    unsigned char m_error;
     _Bool m_matchSubdomains;
 };
 
@@ -430,6 +436,8 @@ struct WebScriptDebugger;
 
 struct WebViewGroup;
 
+struct WebViewRenderingUpdateScheduler;
+
 struct _NSRange {
     unsigned long long _field1;
     unsigned long long _field2;
@@ -449,8 +457,14 @@ struct optional<double> {
     _Bool __engaged_;
 };
 
-struct unique_ptr<WTF::Detail::CallableWrapperBase<void, WebCore::PolicyAction, WebCore::PolicyCheckIdentifier>, std::default_delete<WTF::Detail::CallableWrapperBase<void, WebCore::PolicyAction, WebCore::PolicyCheckIdentifier>>> {
-    struct __compressed_pair<WTF::Detail::CallableWrapperBase<void, WebCore::PolicyAction, WebCore::PolicyCheckIdentifier>*, std::default_delete<WTF::Detail::CallableWrapperBase<void, WebCore::PolicyAction, WebCore::PolicyCheckIdentifier>>> {
+struct unique_ptr<WTF::Detail::CallableWrapperBase<void, WebCore::NotificationPermission>, std::default_delete<WTF::Detail::CallableWrapperBase<void, WebCore::NotificationPermission>>> {
+    struct __compressed_pair<WTF::Detail::CallableWrapperBase<void, WebCore::NotificationPermission>*, std::default_delete<WTF::Detail::CallableWrapperBase<void, WebCore::NotificationPermission>>> {
+        void *__value_;
+    } __ptr_;
+};
+
+struct unique_ptr<WTF::Detail::CallableWrapperBase<void, WebCore::PolicyAction, WebCore::ProcessQualified<WTF::ObjectIdentifierGeneric<WebCore::PolicyCheckIdentifierType, WTF::ObjectIdentifierMainThreadAccessTraits>>>, std::default_delete<WTF::Detail::CallableWrapperBase<void, WebCore::PolicyAction, WebCore::ProcessQualified<WTF::ObjectIdentifierGeneric<WebCore::PolicyCheckIdentifierType, WTF::ObjectIdentifierMainThreadAccessTraits>>>>> {
+    struct __compressed_pair<WTF::Detail::CallableWrapperBase<void, WebCore::PolicyAction, WebCore::ProcessQualified<WTF::ObjectIdentifierGeneric<WebCore::PolicyCheckIdentifierType, WTF::ObjectIdentifierMainThreadAccessTraits>>>*, std::default_delete<WTF::Detail::CallableWrapperBase<void, WebCore::PolicyAction, WebCore::ProcessQualified<WTF::ObjectIdentifierGeneric<WebCore::PolicyCheckIdentifierType, WTF::ObjectIdentifierMainThreadAccessTraits>>>>> {
         void *__value_;
     } __ptr_;
 };
@@ -461,8 +475,8 @@ struct unique_ptr<WTF::HashMap<long long, WTF::RetainPtr<NSMutableArray>>, std::
     } __ptr_;
 };
 
-struct unique_ptr<WTF::Vector<WTF::String, 0, WTF::CrashOnOverflow, 16>, std::default_delete<WTF::Vector<WTF::String, 0, WTF::CrashOnOverflow, 16>>> {
-    struct __compressed_pair<WTF::Vector<WTF::String, 0, WTF::CrashOnOverflow, 16>*, std::default_delete<WTF::Vector<WTF::String, 0, WTF::CrashOnOverflow, 16>>> {
+struct unique_ptr<WTF::Vector<WTF::String>, std::default_delete<WTF::Vector<WTF::String>>> {
+    struct __compressed_pair<WTF::Vector<WTF::String>*, std::default_delete<WTF::Vector<WTF::String>>> {
         void *__value_;
     } __ptr_;
 };
@@ -491,13 +505,15 @@ struct unique_ptr<WebScriptDebugger, std::default_delete<WebScriptDebugger>> {
     } __ptr_;
 };
 
+struct unique_ptr<WebViewRenderingUpdateScheduler, std::default_delete<WebViewRenderingUpdateScheduler>> {
+    struct __compressed_pair<WebViewRenderingUpdateScheduler *, std::default_delete<WebViewRenderingUpdateScheduler>> {
+        struct WebViewRenderingUpdateScheduler *__value_;
+    } __ptr_;
+};
+
 #pragma mark Typedef'd Structures
 
 // Template types
-typedef struct NakedPtr<WebCore::Frame> {
-    struct Frame *m_ptr;
-} NakedPtr_4ac97545;
-
 typedef struct NakedPtr<WebCore::Geolocation> {
     struct Geolocation *_field1;
 } NakedPtr_331571b6;
@@ -506,6 +522,10 @@ typedef struct NakedPtr<WebCore::InspectorController> {
     struct InspectorController *m_ptr;
 } NakedPtr_5b249b89;
 
+typedef struct NakedPtr<WebCore::LocalFrame> {
+    struct LocalFrame *m_ptr;
+} NakedPtr_9be60511;
+
 typedef struct NakedPtr<WebInspectorFrontendClient> {
     struct WebInspectorFrontendClient *m_ptr;
 } NakedPtr_fc424271;
@@ -513,6 +533,11 @@ typedef struct NakedPtr<WebInspectorFrontendClient> {
 typedef struct NakedRef<WebCore::Geolocation> {
     struct Geolocation *_field1;
 } NakedRef_f8c98cc9;
+
+typedef struct ProcessQualified<WTF::ObjectIdentifierGeneric<WebCore::PolicyCheckIdentifierType, WTF::ObjectIdentifierMainThreadAccessTraits>> {
+    struct ObjectIdentifierGeneric<WebCore::PolicyCheckIdentifierType, WTF::ObjectIdentifierMainThreadAccessTraits> m_object;
+    struct ObjectIdentifierGeneric<WebCore::ProcessIdentifierType, WTF::ObjectIdentifierMainThreadAccessTraits> m_processIdentifier;
+} ProcessQualified_bb72c1c6;
 
 #pragma mark Named Unions
 

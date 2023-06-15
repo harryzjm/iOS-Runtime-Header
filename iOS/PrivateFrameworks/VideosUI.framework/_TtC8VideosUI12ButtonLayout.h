@@ -8,10 +8,11 @@
 
 @interface _TtC8VideosUI12ButtonLayout
 {
-    MISSING_TYPE *isRounded;
     MISSING_TYPE *$__lazy_storage_$_titleLayout;
     MISSING_TYPE *$__lazy_storage_$_subtitleLayout;
     MISSING_TYPE *$__lazy_storage_$_imageLayout;
+    MISSING_TYPE *verticalContentHuggingPriority;
+    MISSING_TYPE *horizontalContentHugginPriority;
 }
 
 @end

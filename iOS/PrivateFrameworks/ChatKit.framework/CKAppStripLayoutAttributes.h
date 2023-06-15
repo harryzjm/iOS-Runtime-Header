@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UICollectionViewLayoutAttributes.h>
+#import <UIKitCore/UICollectionViewLayoutAttributes.h>
 
 __attribute__((visibility("hidden")))
 @interface CKAppStripLayoutAttributes : UICollectionViewLayoutAttributes

@@ -11,9 +11,9 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (CDUnknownBlockType)alphabeticalUsageComparator;
-- (CDUnknownBlockType)usageComparator;
-- (CDUnknownBlockType)alphabeticalComparator;
++ (CDUnknownBlockType)userSelectedComparator;
++ (CDUnknownBlockType)usageComparator;
++ (CDUnknownBlockType)alphabeticalComparator;
 
 @end
 

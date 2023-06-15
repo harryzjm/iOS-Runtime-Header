@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
 @class MISSING_TYPE;
 
@@ -12,22 +12,29 @@ __attribute__((visibility("hidden")))
 @interface _TtC9CoreIDVUI43IdentityProofingFedStatsOptinViewController : UIViewController
 {
     MISSING_TYPE *proofingFlowManager;
-    MISSING_TYPE *confimationResult;
+    MISSING_TYPE *consentResult;
     MISSING_TYPE *uiConfigFactory;
     MISSING_TYPE *viewModels;
+    MISSING_TYPE *uiConfig;
+    MISSING_TYPE *learnMoreURL;
     MISSING_TYPE *primaryStackView;
     MISSING_TYPE *titleLabel;
     MISSING_TYPE *subtitleLabel;
     MISSING_TYPE *confirmButton;
     MISSING_TYPE *tableView;
+    MISSING_TYPE *learnMoreButton;
 }
 
 - (void).cxx_destruct;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)viewDidLoad;
 - (void)confirmButtonClicked;
-- (void)traitCollectionDidChange:(id)arg1;
+- (void)viewDidDisappear:(_Bool)arg1;
+- (void)viewDidAppear:(_Bool)arg1;
 - (void)viewDidLayoutSubviews;
+- (void)configureFonts;
+- (void)sizeHeaderToFit;
+- (void)learnMoreButtonClicked;
 - (id)initWithCoder:(id)arg1;
 
 @end

@@ -31,7 +31,7 @@ __attribute__((visibility("hidden")))
 - (id)entityNameToAttributesToUpdate;
 - (id)cloudKitSerializer:(id)arg1 safeSaveURLForAsset:(id)arg2;
 - (void)cloudKitSerializer:(id)arg1 failedToUpdateRelationship:(id)arg2 withError:(id)arg3;
-- (id)createMirroringResultForRequest:(id)arg1 success:(_Bool)arg2 madeChanges:(_Bool)arg3 error:(id)arg4;
+- (id)createMirroringResultForRequest:(id)arg1 storeIdentifier:(id)arg2 success:(_Bool)arg3 madeChanges:(_Bool)arg4 error:(id)arg5;
 - (void)addUpdatedRecord:(id)arg1;
 - (_Bool)commitMetadataChangesWithContext:(id)arg1 forStore:(id)arg2 error:(id *)arg3;
 - (_Bool)updateMetadataForAccumulatedChangesInContext:(id)arg1 inStore:(id)arg2 error:(id *)arg3;

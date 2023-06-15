@@ -4,12 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIFont.h>
+#import <UIKitCore/UIFont.h>
 
 @interface UIFont (AppleAccountUI)
-+ (id)aa_primaryActionFontForTraitCollection:(id)arg1;
-+ (id)aa_actionFontForTraitCollection:(id)arg1;
-+ (id)aa_cellLabelFontForTraitCollection:(id)arg1;
 + (id)aa_messageFontForTraitCollection:(id)arg1;
 + (id)aa_titleFontForTraitCollection:(id)arg1;
 + (id)aa_fontForLargerInformationLabel;

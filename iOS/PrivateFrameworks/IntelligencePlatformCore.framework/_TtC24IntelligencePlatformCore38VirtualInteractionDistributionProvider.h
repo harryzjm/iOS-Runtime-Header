@@ -10,8 +10,7 @@
 
 @interface _TtC24IntelligencePlatformCore38VirtualInteractionDistributionProvider : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *nuclearFamilyInference;
-    MISSING_TYPE *colleagueInference;
+    MISSING_TYPE *config;
     MISSING_TYPE *hashGenerator;
 }
 

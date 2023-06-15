@@ -4,7 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@protocol MPCProcessAudioTapDelegate
+#import <MediaControls/NSObject-Protocol.h>
+
+@protocol MPCProcessAudioTapDelegate <NSObject>
 - (void)processAudioTapDidReceiveAudioSamples:(void *)arg1 numberOfSamples:(unsigned int)arg2;
+
+@optional
+- (void)processAudioTapDidStop;
 @end
 

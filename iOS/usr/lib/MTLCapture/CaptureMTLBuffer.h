@@ -9,7 +9,6 @@
 @class NSString;
 @protocol MTLBuffer, MTLBufferSPI><MTLResourceSPI, MTLDevice, MTLHeap;
 
-__attribute__((visibility("hidden")))
 @interface CaptureMTLBuffer : NSObject
 {
     id <MTLBufferSPI><MTLResourceSPI> _baseObject;

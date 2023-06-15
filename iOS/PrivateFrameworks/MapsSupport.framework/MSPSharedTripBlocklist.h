@@ -6,28 +6,40 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSMutableSet, NSUbiquitousKeyValueStore;
+@class GCDTimer, NSMutableSet, _TtC8MapsSync13MapsSyncStore, _TtC8MapsSync23MapsSyncStoreController;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface MSPSharedTripBlocklist : NSObject
 {
-    NSMutableSet *_blockIDs;
+    NSMutableSet *_blockedIdentifiers;
     NSObject<OS_dispatch_queue> *_isolationQueue;
-    NSUbiquitousKeyValueStore *_kvStore;
-    NSDate *_lastUpdateDate;
+    NSObject<OS_dispatch_queue> *_storeQueue;
+    _TtC8MapsSync23MapsSyncStoreController *_storeController;
+    _TtC8MapsSync13MapsSyncStore *_store;
+    _Bool _waitingForStoreToLoad;
+    GCDTimer *_storeLoadTimeoutTimer;
 }
 
++ (void)migrateFromiCloudKVSIfNeeded;
++ (id)sharedInstance;
 - (void).cxx_destruct;
-- (id)description;
-- (void)updateBlockedListFromStore:(id)arg1;
-- (void)_loadIdentifiers;
-- (void)_storeIdentifiers;
-- (void)clearList;
+- (void)storeControllerWithDataChanged:(id)arg1;
+- (void)storeControllerWithFailedToLoad:(id)arg1;
+- (void)storeControllerWithDidLoad:(id)arg1;
+- (void)_cancelTimeoutTimer;
+- (void)_resumeIsolationQueueIfNeeded;
+- (id)_fetchSyncedIdentifiers;
+- (void)_reloadBlockedIdentifiersFromSync;
+- (void)_purgeExpiredIdentifiersIn:(id)arg1;
+- (void)purgeExpiredIdentifiers;
+- (void)clearBlockedIdentifiers;
 - (void)unblockIdentifiers:(id)arg1;
+- (void)blockIdentifiers:(id)arg1;
 - (void)blockIdentifier:(id)arg1;
 - (_Bool)containsIdentifier:(id)arg1;
 - (_Bool)containsAnyIdentifiersInArray:(id)arg1;
+- (id)description;
 - (id)init;
 
 @end

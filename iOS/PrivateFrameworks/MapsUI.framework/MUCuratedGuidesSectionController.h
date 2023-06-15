@@ -6,7 +6,7 @@
 
 #import "MUPlaceSectionController.h"
 
-@class MKUGCCallToActionViewAppearance, MUCuratedCollectionsPlacecardAnalyticsManager, MUCuratedGuidesSectionView, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, MUPlaceSectionView, NSArray, NSString, UIView, UIViewController;
+@class MUCuratedCollectionsPlacecardAnalyticsManager, MUCuratedGuidesSectionView, MUPlaceCallToActionAppearance, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, MUPlaceSectionView, NSArray, NSString, UIView, UIViewController;
 @protocol MKPlaceCollectionsDelegate, MUInfoCardAnalyticsDelegate;
 
 __attribute__((visibility("hidden")))
@@ -41,7 +41,6 @@ __attribute__((visibility("hidden")))
 - (void)collectionsCarouselDidRouteToCollectionId:(id)arg1 atIndex:(long long)arg2 isSaved:(_Bool)arg3;
 - (void)collectionsCarouselDidScrollBackward;
 - (void)collectionsCarouselDidScrollForward;
-- (void)scrollViewDidScroll:(id)arg1;
 @property(readonly, nonatomic) UIView *sectionView;
 - (void)_setupCollectionView;
 - (void)_setupViews;
@@ -56,7 +55,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) MUPlaceSectionFooterViewModel *sectionFooterViewModel;
 @property(readonly, nonatomic) UIViewController *sectionViewController;
 @property(readonly, nonatomic) NSArray *sectionViews;
-@property(retain, nonatomic) MKUGCCallToActionViewAppearance *submissionStatus;
+@property(retain, nonatomic) MUPlaceCallToActionAppearance *submissionStatus;
 @property(readonly) Class superclass;
 
 @end

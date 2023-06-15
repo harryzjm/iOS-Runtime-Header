@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
+@class NSString, _TtC13DVTFoundation36DVTServicesSessionProviderCredential;
 @protocol DVTServicesSession;
 
 @protocol DVTServicesSessionProvider
+@property(readonly) NSString *userDescription;
+@property(readonly) _TtC13DVTFoundation36DVTServicesSessionProviderCredential *serializableCredential;
 - (id <DVTServicesSession>)servicesSessionWithError:(id *)arg1;
-@property(nonatomic, readonly) NSString *userDescription;
 @end
 

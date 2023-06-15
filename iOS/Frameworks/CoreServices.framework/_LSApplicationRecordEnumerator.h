@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)_getObject:(id *)arg1 atIndex:(unsigned long long)arg2 context:(struct LSContext *)arg3;
 - (_Bool)_prepareWithContext:(struct LSContext *)arg1 error:(id *)arg2;
+- (_Bool)_enumerateAllBundles;
 - (id)initWithContext:(struct LSContext *)arg1 volumeURL:(id)arg2 options:(unsigned long long)arg3;
 - (id)_applicationRecordWithContext:(struct LSContext *)arg1 bundleIdentifierOrUnit:(unsigned int)arg2;
 - (_Bool)_getContainer:(unsigned int *)arg1 context:(struct LSContext *)arg2 error:(id *)arg3;

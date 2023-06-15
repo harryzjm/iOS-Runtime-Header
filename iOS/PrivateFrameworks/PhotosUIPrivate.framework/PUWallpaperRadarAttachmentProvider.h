@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
     PHAsset *_asset;
 }
 
-+ (id)radarConfigurationForAsset:(id)arg1 suggestion:(id)arg2 layerStack:(id)arg3 segmentationItem:(id)arg4 posterDescriptor:(id)arg5 posterConfiguration:(id)arg6 component:(long long)arg7 completionHandler:(CDUnknownBlockType)arg8;
++ (id)radarConfigurationForAsset:(id)arg1 suggestion:(id)arg2 compoundLayerStack:(id)arg3 segmentationItem:(id)arg4 posterDescriptor:(id)arg5 posterConfiguration:(id)arg6 component:(long long)arg7 completionHandler:(CDUnknownBlockType)arg8;
 + (id)generateDebugDescriptionForSuggestion:(id)arg1;
 - (void).cxx_destruct;
 @property(retain, nonatomic) PHAsset *asset; // @synthesize asset=_asset;

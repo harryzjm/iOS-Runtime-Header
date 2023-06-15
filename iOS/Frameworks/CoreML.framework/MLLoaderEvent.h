@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
     NSNumber *_modelIsEncrypted;
     NSNumber *_modelProgramValidationError;
     NSNumber *_modelProgramParsingError;
+    NSNumber *_modelEngineType;
     NSString *_modelHash;
     NSString *_nnModelNetHash;
     NSString *_nnModelShapeHash;
@@ -37,6 +38,7 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSString *nnModelShapeHash; // @synthesize nnModelShapeHash=_nnModelShapeHash;
 @property(copy, nonatomic) NSString *nnModelNetHash; // @synthesize nnModelNetHash=_nnModelNetHash;
 @property(copy, nonatomic) NSString *modelHash; // @synthesize modelHash=_modelHash;
+@property(copy, nonatomic) NSNumber *modelEngineType; // @synthesize modelEngineType=_modelEngineType;
 @property(copy, nonatomic) NSNumber *modelProgramParsingError; // @synthesize modelProgramParsingError=_modelProgramParsingError;
 @property(copy, nonatomic) NSNumber *modelProgramValidationError; // @synthesize modelProgramValidationError=_modelProgramValidationError;
 @property(copy, nonatomic) NSNumber *modelIsEncrypted; // @synthesize modelIsEncrypted=_modelIsEncrypted;

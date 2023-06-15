@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, getter=_fragmentMindingInterval, setter=_setFragmentMindingInterval:) double fragmentMindingInterval;
 @property(readonly, nonatomic) long long fragmentCount;
 @property(readonly, nonatomic) long long firstFragmentSequenceNumber;
+@property(readonly, nonatomic, getter=_prefersNominalDurations) _Bool prefersNominalDurations;
 @property(readonly, nonatomic, getter=_isStreaming) _Bool streaming;
 @property(readonly, nonatomic) _Bool hasProtectedContent;
 @property(readonly, nonatomic) NSArray *contentKeySpecifiersEligibleForPreloading;
@@ -42,7 +43,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic, getter=_classForTrackInspectors) Class classForTrackInspectors;
 @property(readonly, nonatomic, getter=_playbackItem) struct OpaqueFigPlaybackItem *playbackItem;
 @property(readonly, nonatomic, getter=_figAsset) struct OpaqueFigAsset *figAsset;
-@property(readonly, nonatomic, getter=_formatReader) struct OpaqueFigFormatReader *formatReader;
+- (struct OpaqueFigFormatReader *)_copyFormatReader;
 @property(readonly, nonatomic) NSURL *URL;
 - (void)cancelLoading;
 - (id)assetInspector;

@@ -12,10 +12,12 @@
 {
     MISSING_TYPE *collectionViewModel;
     MISSING_TYPE *identifier;
+    MISSING_TYPE *contextData;
     MISSING_TYPE *paginator;
     MISSING_TYPE *state;
-    MISSING_TYPE *fragmentServiceRequest;
     MISSING_TYPE *paginationSubscriber;
+    MISSING_TYPE *activeRequest;
+    MISSING_TYPE *shouldProcessResponse;
 }
 
 @end

@@ -16,6 +16,7 @@
 - (_Bool)setStreamConfig:(NSArray *)arg1 withError:(id *)arg2;
 
 @optional
+- (void)setJitterBufferMode:(int)arg1;
 - (void)setDecryptionTimeOutInterval:(double)arg1;
 - (void)setRtcpTimeOutInterval:(double)arg1;
 - (void)setRtpTimeOutInterval:(double)arg1;

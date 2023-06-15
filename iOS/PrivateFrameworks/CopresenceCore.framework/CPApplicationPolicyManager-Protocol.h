@@ -10,11 +10,11 @@
 @protocol CPApplicationPolicyManagerDelegate;
 
 @protocol CPApplicationPolicyManager <NSObject>
+@property(nonatomic) _Bool autoSharePlayEnabled;
+@property(readonly, nonatomic) NSDictionary *authorizedBundleIdentifiers;
 - (void)addDelegate:(id <CPApplicationPolicyManagerDelegate>)arg1 withQueue:(OS_dispatch_queue *)arg2;
 - (void)setAuthorization:(_Bool)arg1 forBundleID:(NSString *)arg2;
 - (void)updateAllowedHandlesForConversation:(TUConversation *)arg1;
 - (_Bool)shouldAutoLaunchAppForActivity:(TUConversationActivity *)arg1 onConversation:(TUConversation *)arg2;
-@property(nonatomic) _Bool autoSharePlayEnabled;
-@property(nonatomic, readonly) NSDictionary *authorizedBundleIdentifiers;
 @end
 

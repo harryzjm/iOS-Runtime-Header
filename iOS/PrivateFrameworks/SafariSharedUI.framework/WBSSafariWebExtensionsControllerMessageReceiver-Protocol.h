@@ -58,6 +58,11 @@
 - (void)getInformationForLastFocusedWindowForExtensionIdentifier:(NSUUID *)arg1 getInfo:(NSDictionary *)arg2 completionHandler:(void (^)(NSDictionary *))arg3;
 - (void)getInformationForAllWindowsForExtensionIdentifier:(NSUUID *)arg1 getInfo:(NSDictionary *)arg2 completionHandler:(void (^)(NSArray *))arg3;
 - (void)getInformationForWindow:(NSNumber *)arg1 getInfo:(NSDictionary *)arg2 extensionIdentifier:(NSUUID *)arg3 completionHandler:(void (^)(NSDictionary *))arg4;
+- (void)removeRegisteredContentScriptsWithIDs:(NSArray *)arg1 extensionIdentifier:(NSUUID *)arg2 completionHandler:(void (^)(NSString *))arg3;
+- (void)updateContentScriptsWithDetails:(NSArray *)arg1 extensionIdentifier:(NSUUID *)arg2 completionHandler:(void (^)(NSString *))arg3;
+- (void)getRegisteredContentScriptsWithIDs:(NSArray *)arg1 extensionIdentifier:(NSUUID *)arg2 completionHandler:(void (^)(NSString *, NSArray *))arg3;
+- (void)registerContentScriptsWithDetails:(NSArray *)arg1 extensionIdentifier:(NSUUID *)arg2 completionHandler:(void (^)(NSString *))arg3;
+- (void)toggleReaderModeForTab:(NSNumber *)arg1 extensionIdentifier:(NSUUID *)arg2 completionHandler:(void (^)(void))arg3;
 - (void)goBackInTab:(NSNumber *)arg1 extensionIdentifier:(NSUUID *)arg2 completionHandler:(void (^)(void))arg3;
 - (void)goForwardInTab:(NSNumber *)arg1 extensionIdentifier:(NSUUID *)arg2 completionHandler:(void (^)(void))arg3;
 - (void)duplicateTab:(NSNumber *)arg1 extensionIdentifier:(NSUUID *)arg2 completionHandler:(void (^)(NSDictionary *))arg3;
@@ -72,7 +77,8 @@
 - (void)executeScriptWithDetails:(NSDictionary *)arg1 fromExtensionWithID:(NSUUID *)arg2 toTabWithID:(NSNumber *)arg3 callingAPIName:(NSString *)arg4 completionHandler:(void (^)(NSArray *))arg5;
 - (void)getInformationForTab:(NSNumber *)arg1 extensionIdentifier:(NSUUID *)arg2 completionHandler:(void (^)(NSDictionary *))arg3;
 - (void)closeTabsWithIDs:(NSArray *)arg1 extensionIdentifier:(NSUUID *)arg2 completionHandler:(void (^)(void))arg3;
-- (void)getMatchedRulesForExtensionWithIdentifier:(NSUUID *)arg1 filter:(NSDictionary *)arg2 completionHandler:(void (^)(NSArray *, NSString *))arg3;
+- (void)setExtensionActionOptionsForExtensionWithIdentifier:(NSUUID *)arg1 options:(NSDictionary *)arg2 completionHandler:(void (^)(NSString *))arg3;
+- (void)getMatchedRulesForExtensionWithIdentifier:(NSUUID *)arg1 filter:(NSDictionary *)arg2 completionHandler:(void (^)(NSDictionary *, NSString *))arg3;
 - (void)getSessionRulesForExtensionWithIdentifier:(NSUUID *)arg1 completionHandler:(void (^)(NSArray *))arg2;
 - (void)updateSessionDeclarativeNetRequestRulesForExtensionWithIdentifier:(NSUUID *)arg1 options:(NSDictionary *)arg2 completionHandler:(void (^)(NSString *))arg3;
 - (void)getDynamicRulesForExtensionWithIdentifier:(NSUUID *)arg1 completionHandler:(void (^)(NSArray *))arg2;

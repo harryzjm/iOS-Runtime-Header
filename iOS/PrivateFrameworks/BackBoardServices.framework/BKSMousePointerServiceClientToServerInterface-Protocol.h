@@ -22,8 +22,10 @@
 - (oneway void)setContextRelativePointerPosition:(BKSContextRelativePoint *)arg1 withInitialVelocity:(BKSContextRelativePoint *)arg2 onDisplay:(NSString *)arg3 withDecelerationRate:(NSNumber *)arg4 restrictingToPID:(NSNumber *)arg5;
 - (oneway void)setContextRelativePointerPosition:(BKSContextRelativePoint *)arg1 onDisplay:(NSString *)arg2 withAnimationParameters:(BSAnimationSettings *)arg3 restrictingToPID:(NSNumber *)arg4;
 - (oneway void)setPointerPosition:(NSValue *)arg1 onDisplay:(NSString *)arg2 withAnimationParameters:(BSAnimationSettings *)arg3;
+- (oneway void)setSuppressAllEvents:(NSNumber *)arg1;
 - (oneway void)setGlobalPointerPosition:(NSValue *)arg1;
 - (NSValue *)globalPointerPosition;
+- (NSValue *)normalizedGlobalPointerPosition;
 - (oneway void)setMousePointerPreferenceObservationEnabled:(NSNumber *)arg1;
 - (NSSet<__BKSMousePointerDevice__> *)setMousePointerDeviceObservationEnabled:(NSNumber *)arg1;
 @end

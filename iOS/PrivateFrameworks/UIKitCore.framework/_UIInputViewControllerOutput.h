@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 @class NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UIInputViewControllerOutput : NSObject <NSCopying>
+@interface _UIInputViewControllerOutput : NSObject
 {
     _Bool _shouldDismiss;
     _Bool _proceedShouldReturn;

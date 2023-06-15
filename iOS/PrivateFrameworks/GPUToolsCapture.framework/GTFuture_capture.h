@@ -8,7 +8,6 @@
 
 @class NSCondition, NSError, NSMutableArray, NSTimer;
 
-__attribute__((visibility("hidden")))
 @interface GTFuture_capture : NSOperation
 {
     NSTimer *_timeout;

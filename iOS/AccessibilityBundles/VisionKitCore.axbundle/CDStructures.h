@@ -4,25 +4,3 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#pragma mark Named Structures
-
-struct CGPoint {
-    double _field1;
-    double _field2;
-};
-
-struct CGRect {
-    struct CGPoint _field1;
-    struct CGSize _field2;
-};
-
-struct CGSize {
-    double _field1;
-    double _field2;
-};
-
-struct _NSRange {
-    unsigned long long location;
-    unsigned long long length;
-};
-

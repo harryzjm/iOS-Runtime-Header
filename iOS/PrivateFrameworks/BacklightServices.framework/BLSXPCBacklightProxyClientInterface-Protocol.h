@@ -6,10 +6,12 @@
 
 #import <BacklightServices/NSObject-Protocol.h>
 
-@class BLSBacklightChangeEvent, NSNumber;
+@class BLSBacklightChangeEvent, NSArray, NSNumber;
+@protocol __BLSBacklightChangeEvent__;
 
 @protocol BLSXPCBacklightProxyClientInterface <NSObject>
+- (oneway void)performingEvent:(BLSBacklightChangeEvent *)arg1;
 - (oneway void)didChangeAlwaysOnEnabled:(NSNumber *)arg1;
-- (oneway void)didCompleteUpdateToState:(NSNumber *)arg1 forEvent:(BLSBacklightChangeEvent *)arg2;
+- (oneway void)didCompleteUpdateToState:(NSNumber *)arg1 forEvents:(NSArray<__BLSBacklightChangeEvent__> *)arg2 abortedEvents:(NSArray<__BLSBacklightChangeEvent__> *)arg3;
 @end
 

@@ -28,7 +28,7 @@ __attribute__((visibility("hidden")))
 - (void)_setStructuredThemeStore:(id)arg1;
 - (id)effectPreset;
 - (void)dealloc;
-- (id)_initWithCSIHeader:(const struct _csiheader *)arg1;
+- (id)_initWithCSIHeader:(const struct _csiheader *)arg1 version:(unsigned int)arg2;
 
 @end
 

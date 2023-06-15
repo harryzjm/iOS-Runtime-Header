@@ -9,6 +9,7 @@
 @protocol BLSBacklightStateObserving;
 
 @protocol BLSBacklightStateObservable <NSObject>
+@property(readonly, nonatomic) _Bool deviceSupportsAlwaysOn;
 @property(readonly, nonatomic, getter=isAlwaysOnEnabled) _Bool alwaysOnEnabled;
 @property(readonly, nonatomic, getter=isTransitioning) _Bool transitioning;
 @property(readonly, nonatomic) long long flipbookState;

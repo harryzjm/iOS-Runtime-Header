@@ -14,9 +14,6 @@
 }
 
 - (void).cxx_destruct;
-- (void)reset;
-- (id)runWithFloorPlan:(id)arg1 temporalMeta:(id)arg2 geometryMeta:(id)arg3;
-- (id)processWithFloorPlan:(id)arg1 temporalMeta:(id)arg2 geometryMeta:(id)arg3;
 - (id)init;
 
 @end

@@ -46,10 +46,10 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _midpointHandler;
     CDUnknownBlockType _nonAnimatedMidpointHandler;
     CDUnknownBlockType _nearCompletionHandler;
-    struct CGPoint _initialVelocity;
-    struct CGPoint _initialTargetVelocity;
     struct CAPoint3D _center;
     struct CGRect _targetFrame;
+    CDUnion_b2735e62 _initialVelocity;
+    CDUnion_b2735e62 _initialTargetVelocity;
 }
 
 - (void).cxx_destruct;
@@ -65,8 +65,8 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) _UIPlatterView *appPlatterView; // @synthesize appPlatterView=_appPlatterView;
 @property(retain, nonatomic) _UIPortalView *retargetingContainerPortalView; // @synthesize retargetingContainerPortalView=_retargetingContainerPortalView;
 @property(retain, nonatomic) UIView *retargetingContainerView; // @synthesize retargetingContainerView=_retargetingContainerView;
-@property(nonatomic) struct CGPoint initialTargetVelocity; // @synthesize initialTargetVelocity=_initialTargetVelocity;
-@property(nonatomic) struct CGPoint initialVelocity; // @synthesize initialVelocity=_initialVelocity;
+@property(nonatomic) CDUnion_7fc49c98 initialTargetVelocity; // @synthesize initialTargetVelocity=_initialTargetVelocity;
+@property(nonatomic) CDUnion_7fc49c98 initialVelocity; // @synthesize initialVelocity=_initialVelocity;
 @property(nonatomic) int animationCount; // @synthesize animationCount=_animationCount;
 @property(nonatomic) _Bool updatedPreviewWasAdded; // @synthesize updatedPreviewWasAdded=_updatedPreviewWasAdded;
 @property(nonatomic) _Bool reparentingCrossfadeComplete; // @synthesize reparentingCrossfadeComplete=_reparentingCrossfadeComplete;
@@ -99,6 +99,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)needsReparenting;
 - (CDUnknownBlockType)animationCompletionHandler;
 - (void)performSpringAnimations:(CDUnknownBlockType)arg1;
+- (void)previewContainerAnimationDidComplete;
 - (void)performTrackingAnimations:(CDUnknownBlockType)arg1;
 - (double)estimatedFractionCompleteOfAnimation;
 - (void)updateCurrentTargetFrame;

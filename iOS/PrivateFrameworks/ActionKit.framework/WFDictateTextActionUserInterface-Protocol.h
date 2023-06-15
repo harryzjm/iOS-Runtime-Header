@@ -11,6 +11,7 @@
 @protocol WFDictateTextActionUserInterface <WFActionRemoteUserInterface>
 - (void)actionDidReceiveTranscription:(NSString *)arg1;
 - (void)actionDidBeginListening;
+- (void)dismissWithCompletionHandler:(void (^)(NSError *))arg1;
 - (void)showWithCompletionHandler:(void (^)(NSError *))arg1;
 @end
 

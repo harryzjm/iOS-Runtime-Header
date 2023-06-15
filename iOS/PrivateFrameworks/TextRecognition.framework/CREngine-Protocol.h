@@ -7,20 +7,24 @@
 #import <TextRecognition/CRConfidenceThresholdProviding-Protocol.h>
 #import <TextRecognition/NSObject-Protocol.h>
 
-@class CRImage, CRTextDetectorResults, CRTextRecognizerResults, CRTextResults, NSArray, NSDictionary;
+@class CRDetectionResult, CRDocumentOutputRegion, CRImage, CRImageReaderTrackingSession, CRRecognitionResult, NSArray, NSDictionary;
+@protocol MLComputeDeviceProtocol;
 
 @protocol CREngine <NSObject, CRConfidenceThresholdProviding>
 + (struct CGSize)detectorImageSizeForOptions:(NSDictionary *)arg1 imageSize:(struct CGSize)arg2;
 + (_Bool)preheatModelsForOptions:(NSDictionary *)arg1 revision:(long long)arg2 error:(id *)arg3;
++ (NSArray *)supportedComputeDevicesForRevision:(long long)arg1;
 + (NSArray *)supportedLanguagesForRevision:(long long)arg1 error:(id *)arg2;
 - (void)cancel;
+- (id <MLComputeDeviceProtocol>)computeDevice;
 - (struct CGSize)smallestImageSizeForTextWithRelativeHeight:(double)arg1 originalImageSize:(struct CGSize)arg2;
 - (unsigned long long)subfeatureOutputType;
-- (CRTextResults *)textResultsInImage:(CRImage *)arg1 options:(NSDictionary *)arg2 withProgressHandler:(void (^)(double, NSError *))arg3 error:(id *)arg4;
+- (CRDocumentOutputRegion *)resultDocumentInImage:(CRImage *)arg1 options:(NSDictionary *)arg2 trackingSession:(CRImageReaderTrackingSession *)arg3 withProgressHandler:(void (^)(double, NSError *))arg4 error:(id *)arg5;
 - (id)initWithOptions:(NSDictionary *)arg1 error:(id *)arg2;
 
 @optional
-- (CRTextDetectorResults *)textDetectorResultsForImage:(CRImage *)arg1 error:(id *)arg2;
-- (CRTextRecognizerResults *)textRecognizerResultsForTextFeatures:(NSArray *)arg1 image:(CRImage *)arg2 progressHandler:(void (^)(double, NSError *))arg3 error:(id *)arg4;
+- (CRDocumentOutputRegion *)documentForLineRegions:(NSArray *)arg1 recognitionResult:(CRRecognitionResult *)arg2;
+- (CRDetectionResult *)textDetectorResultsForImage:(CRImage *)arg1 error:(id *)arg2;
+- (CRDocumentOutputRegion *)resultDocumentForDetectionResult:(CRDetectionResult *)arg1 image:(CRImage *)arg2 options:(NSDictionary *)arg3 progressHandler:(void (^)(double, NSError *))arg4 error:(id *)arg5;
 @end
 

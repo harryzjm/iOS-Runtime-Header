@@ -42,6 +42,7 @@
     MISSING_TYPE *matchingDeviceSubscriberAccount;
     MISSING_TYPE *deviceSubscriberAccount;
     MISSING_TYPE *deviceCloudAccount;
+    MISSING_TYPE *accountHasSupportedDevice;
     MISSING_TYPE *accountHasWatch;
     MISSING_TYPE *resumableWorkoutSessions;
     MISSING_TYPE *marketingContents;

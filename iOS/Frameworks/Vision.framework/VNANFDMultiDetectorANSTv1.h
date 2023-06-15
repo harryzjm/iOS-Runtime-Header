@@ -9,6 +9,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (id)supportedComputeStageDevicesForOptions:(id)arg1 error:(id *)arg2;
 + (_Bool)shouldAlignFacesForRequestWithSpecifier:(id)arg1;
 + (Class)detectorClass;
 + (_Bool)supportsExecution;

@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
     long long _subscriptionAdamID;
     long long _tvShowPurchasedAdamID;
     long long _tvShowSubscriptionAdamID;
+    double _vocalAttenuationDuration;
     int _audioQualityPreference;
     NSMutableArray *_buildFeatures;
     NSString *_buildVersion;
@@ -71,6 +72,7 @@ __attribute__((visibility("hidden")))
     ICPAAudioQualityDictionary *_targetedAudioQuality;
     NSData *_timedMetadata;
     NSData *_trackInfo;
+    int _vocalAttenuationAvailibility;
     _Bool _internalBuild;
     _Bool _offline;
     _Bool _privateListeningEnabled;
@@ -98,6 +100,7 @@ __attribute__((visibility("hidden")))
         unsigned int subscriptionAdamID:1;
         unsigned int tvShowPurchasedAdamID:1;
         unsigned int tvShowSubscriptionAdamID:1;
+        unsigned int vocalAttenuationDuration:1;
         unsigned int audioQualityPreference:1;
         unsigned int containerType:1;
         unsigned int displayType:1;
@@ -109,6 +112,7 @@ __attribute__((visibility("hidden")))
         unsigned int reasonHintType:1;
         unsigned int sourceType:1;
         unsigned int systemReleaseType:1;
+        unsigned int vocalAttenuationAvailibility:1;
         unsigned int internalBuild:1;
         unsigned int offline:1;
         unsigned int privateListeningEnabled:1;

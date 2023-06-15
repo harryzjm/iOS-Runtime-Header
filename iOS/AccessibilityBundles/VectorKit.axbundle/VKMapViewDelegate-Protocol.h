@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import "NSObject-Protocol.h"
+#import <VectorKit/NSObject-Protocol.h>
 
 @class NSError, NSString, VKARWalkingElevationRequestFailureInfo, VKARWalkingFeatureDidUpdateInfo, VKARWalkingFeatureSet, VKLabelMarker, VKMapView, VKMuninJunction, VKMuninRoad, VKNavigationPuckLocationTracingEvent, VKVenueBuildingFeatureMarker, VKVenueFeatureMarker;
 
@@ -16,6 +16,7 @@
 - (void)mapLayer:(VKMapView *)arg1 activeARWalkingFeatureDidUpdate:(VKARWalkingFeatureDidUpdateInfo *)arg2;
 - (void)mapLayer:(VKMapView *)arg1 arWalkingFeatureSetStateDidUpdate:(VKARWalkingFeatureSet *)arg2;
 - (void)mapLayer:(VKMapView *)arg1 nearestJunctionDidChange:(VKMuninJunction *)arg2 currentRoad:(VKMuninRoad *)arg3;
+- (void)mapLayer:(VKMapView *)arg1 locationInHikingToolTipRegion:(unsigned long long)arg2;
 - (void)mapLayer:(VKMapView *)arg1 venueWithFocusDidChange:(VKVenueFeatureMarker *)arg2 building:(VKVenueBuildingFeatureMarker *)arg3;
 - (void)mapLayer:(VKMapView *)arg1 didUpdateVerticalYawTo:(double)arg2;
 - (void)mapLayer:(VKMapView *)arg1 willTransitionTo:(long long)arg2;

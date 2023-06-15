@@ -30,7 +30,7 @@ __attribute__((visibility("hidden")))
 + (id)sharedInstanceRemoteFacing;
 + (void)initializeStateStrings;
 - (void)didUpdateBasebandCodec:(const struct _VCRemoteCodecInfo *)arg1;
-- (void)updateClient:(id)arg1 direction:(unsigned char)arg2;
+- (void)updateClient:(id)arg1 settings:(const struct tagVCAudioIOControllerClientSettings *)arg2;
 - (void)stopClient:(id)arg1;
 - (void)startClient:(id)arg1;
 - (void)flushEventQueue:(struct opaqueCMSimpleQueue *)arg1;
@@ -64,11 +64,11 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)retainCount;
 - (id)retain;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+@property(readonly, copy) NSString *description;
 - (id)initWithRelayType:(unsigned int)arg1 relayIOType:(unsigned int)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) NSDictionary *reportingStats;
 @property(readonly) Class superclass;

@@ -35,6 +35,7 @@
 - (void)enumerateCacheItemsUsingBlock:(CDUnknownBlockType)arg1;
 - (id)indexesForBaseCellRegion:(id)arg1;
 - (id)indexesForRange:(struct TSUModelCellRect)arg1;
+- (void)collectIndexes:(id)arg1 forRange:(struct TSUModelCellRect)arg2;
 - (void)removeCellRangeAtIndex:(unsigned long long)arg1;
 - (void)setCellRange:(struct TSUModelCellRect)arg1 atIndex:(unsigned long long)arg2;
 - (void)p_updateIndexesForReplacingRangeAtIndex:(unsigned long long)arg1 withRange:(struct TSUModelCellRect)arg2;

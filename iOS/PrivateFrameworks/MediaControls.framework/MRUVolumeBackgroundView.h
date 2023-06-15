@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class MRUOutputDeviceAssetView, MRUVisualStylingProvider, MRUVolumeNowPlayingView, MediaControlsBluetoothListeningModeButton, MediaControlsExpandableButton;
+@class MRUOutputDeviceAssetView, MRUVisualStylingProvider, MRUVolumeNowPlayingView, MediaControlsExpandableButton;
 
 __attribute__((visibility("hidden")))
 @interface MRUVolumeBackgroundView : UIView
@@ -16,28 +16,33 @@ __attribute__((visibility("hidden")))
     _Bool _showNowPlayingView;
     _Bool _showSecondaryListeningModeButton;
     _Bool _showSpatialAudioModeButton;
+    _Bool _showConversationDetectionButton;
     MRUOutputDeviceAssetView *_primaryAssetView;
     MRUOutputDeviceAssetView *_secondaryAssetView;
     MRUVolumeNowPlayingView *_nowPlayingView;
-    MediaControlsBluetoothListeningModeButton *_primaryListeningModeButton;
-    MediaControlsBluetoothListeningModeButton *_secondaryListeningModeButton;
+    MediaControlsExpandableButton *_primaryListeningModeButton;
+    MediaControlsExpandableButton *_secondaryListeningModeButton;
     MediaControlsExpandableButton *_spatialAudioModeButton;
+    MediaControlsExpandableButton *_conversationDetectionButton;
     MRUVisualStylingProvider *_stylingProvider;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool showConversationDetectionButton; // @synthesize showConversationDetectionButton=_showConversationDetectionButton;
 @property(nonatomic) _Bool showSpatialAudioModeButton; // @synthesize showSpatialAudioModeButton=_showSpatialAudioModeButton;
 @property(nonatomic) _Bool showSecondaryListeningModeButton; // @synthesize showSecondaryListeningModeButton=_showSecondaryListeningModeButton;
 @property(nonatomic) _Bool showNowPlayingView; // @synthesize showNowPlayingView=_showNowPlayingView;
 @property(nonatomic) _Bool showPrimaryListeningModeButton; // @synthesize showPrimaryListeningModeButton=_showPrimaryListeningModeButton;
 @property(nonatomic) _Bool showSecondaryAssetView; // @synthesize showSecondaryAssetView=_showSecondaryAssetView;
 @property(retain, nonatomic) MRUVisualStylingProvider *stylingProvider; // @synthesize stylingProvider=_stylingProvider;
+@property(retain, nonatomic) MediaControlsExpandableButton *conversationDetectionButton; // @synthesize conversationDetectionButton=_conversationDetectionButton;
 @property(retain, nonatomic) MediaControlsExpandableButton *spatialAudioModeButton; // @synthesize spatialAudioModeButton=_spatialAudioModeButton;
-@property(retain, nonatomic) MediaControlsBluetoothListeningModeButton *secondaryListeningModeButton; // @synthesize secondaryListeningModeButton=_secondaryListeningModeButton;
-@property(retain, nonatomic) MediaControlsBluetoothListeningModeButton *primaryListeningModeButton; // @synthesize primaryListeningModeButton=_primaryListeningModeButton;
+@property(retain, nonatomic) MediaControlsExpandableButton *secondaryListeningModeButton; // @synthesize secondaryListeningModeButton=_secondaryListeningModeButton;
+@property(retain, nonatomic) MediaControlsExpandableButton *primaryListeningModeButton; // @synthesize primaryListeningModeButton=_primaryListeningModeButton;
 @property(retain, nonatomic) MRUVolumeNowPlayingView *nowPlayingView; // @synthesize nowPlayingView=_nowPlayingView;
 @property(retain, nonatomic) MRUOutputDeviceAssetView *secondaryAssetView; // @synthesize secondaryAssetView=_secondaryAssetView;
 @property(retain, nonatomic) MRUOutputDeviceAssetView *primaryAssetView; // @synthesize primaryAssetView=_primaryAssetView;
+- (double)totalHorizontalSliderWidth;
 - (void)updateVisibility;
 - (void)collapseExpandableButtons;
 - (void)expandButton:(id)arg1;

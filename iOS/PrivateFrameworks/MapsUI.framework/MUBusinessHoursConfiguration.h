@@ -11,7 +11,6 @@
 __attribute__((visibility("hidden")))
 @interface MUBusinessHoursConfiguration : NSObject
 {
-    _Bool _suppressFullHours;
     _Bool _isServiceHours;
     NSTimeZone *_placeTimeZone;
     NSArray *_businessHours;
@@ -20,7 +19,6 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool isServiceHours; // @synthesize isServiceHours=_isServiceHours;
-@property(nonatomic) _Bool suppressFullHours; // @synthesize suppressFullHours=_suppressFullHours;
 @property(copy, nonatomic) NSString *hoursName; // @synthesize hoursName=_hoursName;
 @property(readonly, nonatomic) NSArray *businessHours; // @synthesize businessHours=_businessHours;
 @property(readonly, nonatomic) NSTimeZone *placeTimeZone; // @synthesize placeTimeZone=_placeTimeZone;

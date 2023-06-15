@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     _Bool _showSubtitle;
     _Bool _showPlaceholder;
     _Bool _marqueeEnabled;
+    _Bool _adjustsLabelsWhenHighlighted;
     MPAVRoute *_route;
     NSString *_title;
     NSString *_subtitle;
@@ -35,6 +36,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) MRUMarqueeLabel *titleMarqueeView; // @synthesize titleMarqueeView=_titleMarqueeView;
 @property(retain, nonatomic) MPRouteLabel *routeLabel; // @synthesize routeLabel=_routeLabel;
 @property(retain, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
+@property(nonatomic) _Bool adjustsLabelsWhenHighlighted; // @synthesize adjustsLabelsWhenHighlighted=_adjustsLabelsWhenHighlighted;
 @property(nonatomic, getter=isMarqueeEnabled) _Bool marqueeEnabled; // @synthesize marqueeEnabled=_marqueeEnabled;
 @property(nonatomic) _Bool showPlaceholder; // @synthesize showPlaceholder=_showPlaceholder;
 @property(nonatomic) _Bool showSubtitle; // @synthesize showSubtitle=_showSubtitle;
@@ -46,15 +48,18 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property(retain, nonatomic) MPAVRoute *route; // @synthesize route=_route;
+- (void)updatePlaceholderTextAlignment;
 - (void)updateVisibility;
 - (void)updateMarquee;
 - (void)updateContentSizeCategory;
 - (void)updateVisualStyling;
+- (_Bool)acuis_wantsPriorityOverTargetOfGestureRecognizer:(id)arg1;
 - (void)visualStylingProviderDidChange:(id)arg1;
 - (void)setHighlighted:(_Bool)arg1;
 - (id)viewForFirstBaselineLayout;
 - (struct CGSize)sizeForText:(id)arg1 font:(id)arg2 layout:(long long)arg3 availableSize:(struct CGSize)arg4;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
 - (void)didMoveToWindow;
 - (id)initWithFrame:(struct CGRect)arg1;

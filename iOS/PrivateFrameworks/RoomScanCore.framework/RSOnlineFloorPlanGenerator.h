@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MISSING_TYPE, NSMutableArray, RSDoorWindowOnlineDetector, RSFloorPlan, RSGeometryCalculation, RSKeyframeAccumulation, RSMarkerCoaching, RSMarkerSignal, RSMirrorDetection, RSNonUniformHeightEstimation, RSOnlineCurvedWallFusion, RSOpeningHeightAlignment, RSParentAssociation, RSProjection2DZ, RSRecessedAreaReconstructor, RSScanUIFormatter, RSWallOpeningOnlineDetector, RSWallOpeningOnlineOptimizer;
+@class NSMutableArray, RSDoorWindowOnlineDetector, RSFloorEstimation, RSFloorPlan, RSGeometryCalculation, RSKeyframeAccumulation, RSMarkerCoaching, RSMarkerSignal, RSMirrorDetection, RSNonUniformHeightEstimation, RSOpeningHeightAlignment, RSParentAssociation, RSProjection2DZ, RSRecessedAreaReconstructor, RSScanUIFormatter, RSWallOpeningOnlineDetector, RSWallOpeningOnlineOptimizer;
 
 @interface RSOnlineFloorPlanGenerator
 {
@@ -15,50 +15,30 @@
     RSKeyframeAccumulation *_accumulator;
     RSGeometryCalculation *_geometryEstimator;
     RSScanUIFormatter *_scanUiFormatter;
-    RSOnlineCurvedWallFusion *_onlineCurvedWallFusion;
     RSProjection2DZ *_projector;
     RSNonUniformHeightEstimation *_heightEstimator;
     RSOpeningHeightAlignment *_openingHeightAlignment;
     RSRecessedAreaReconstructor *_recessedAreaReconstructor;
     RSParentAssociation *_parentAssociation;
+    RSFloorEstimation *_floorEstimator;
     _Bool _isMarkerCoachingEnabled;
     RSMarkerCoaching *_markerCoaching;
     RSMarkerSignal *_markerSignal;
-    _Bool _isCurvedWallEnabled;
     _Bool _isNonUniformHeightEnabled;
     _Bool _isOpeningReplaceOpendoorEnabled;
     _Bool _isOpendoorReplaceOpeningEnabled;
     _Bool _isDoorReplaceOpeningEnabled;
-    _Bool _isBayWindowRecessedAreaEnable;
+    _Bool _isBayWindowRecessedAreaEnabled;
     RSFloorPlan *_floorPlanForOffline;
     NSMutableArray *_floorPlanDebug;
     _Bool _enableLiveDump;
 }
 
 - (void).cxx_destruct;
-- (void)resetScanUIFormatter;
-- (void)setDoorWindowBeautificationEnable:(_Bool)arg1;
-- (MISSING_TYPE *)floorCeilingCount;
-- (id)markerSignal;
-- (id)exportAsset;
-- (id)generateFloorPlanWithKeyframes:(id)arg1 objects:(id)arg2 error:(id *)arg3;
-- (id)generateFloorPlanWithKeyframes:(id)arg1 objects:(id)arg2;
-- (id)beautifyObjects:(id)arg1 withFloorPlan:(id)arg2;
 - (void)clear;
-- (void)computeMirrorPoints:(id)arg1;
-- (void)setBayWindowRecessedAreaEnable:(_Bool)arg1;
-- (void)setDoorReplaceOpeningEnable:(_Bool)arg1;
-- (void)setOpendoorReplaceOpeningEnable:(_Bool)arg1;
-- (void)setOpeningReplaceOpendoorEnable:(_Bool)arg1;
-- (void)setNonUniformHeightEnable:(_Bool)arg1;
-- (void)setCurvedWallEnable:(_Bool)arg1;
-- (void)setMarkerCoachingEnable:(_Bool)arg1;
 - (id)init;
-- (id)geometryMeta;
-- (const void *)lmapOfWall;
-- (id)getDebugInfo;
-- (void)setLiveDumpEnable:(_Bool)arg1;
-- (id)aggregatePointCloud;
+- (void)generateFloorPlanWithInputDir:(id)arg1 outputDir:(id)arg2 debug:(_Bool)arg3;
+- (void)generateFloorPlanWithInputPath:(id)arg1 outputPath:(id)arg2 debug:(_Bool)arg3;
 
 @end
 

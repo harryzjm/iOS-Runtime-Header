@@ -8,5 +8,6 @@
 
 @protocol PRPosterRenderingEnvironment_Private <PRPosterRenderingEnvironment>
 @property(readonly, nonatomic, getter=isFloatingViewSnapshot) _Bool floatingViewSnapshot;
+- (struct CGRect)titleBoundsForLayout:(unsigned long long)arg1;
 @end
 

@@ -6,7 +6,7 @@
 
 #import "MUPlaceSectionController.h"
 
-@class MKUGCCallToActionViewAppearance, MUBrowseCategoryViewController, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, MUPlaceSectionView, NSArray, NSString, UIView, UIViewController;
+@class MUBrowseCategoryViewController, MUPlaceCallToActionAppearance, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, MUPlaceSectionView, NSArray, NSString, UIView, UIViewController;
 @protocol MUBrowseCategorySectionControllerDelegate, MUInfoCardAnalyticsDelegate;
 
 __attribute__((visibility("hidden")))
@@ -21,7 +21,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak id <MUBrowseCategorySectionControllerDelegate> browseCategoryDelegate; // @synthesize browseCategoryDelegate=_browseCategoryDelegate;
 - (_Bool)isImpressionable;
 - (int)analyticsModuleType;
-- (void)categoryBrowseViewControllerDidDisplayBrowseCategories:(id)arg1;
 - (void)categoryBrowseViewController:(id)arg1 didTapOnSearchCategory:(id)arg2;
 @property(readonly, nonatomic) UIViewController *sectionViewController;
 @property(readonly, nonatomic) UIView *sectionView;
@@ -38,7 +37,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) MUPlaceSectionFooterViewModel *sectionFooterViewModel;
 @property(readonly, nonatomic) MUPlaceSectionHeaderViewModel *sectionHeaderViewModel;
 @property(readonly, nonatomic) NSArray *sectionViews;
-@property(retain, nonatomic) MKUGCCallToActionViewAppearance *submissionStatus;
+@property(retain, nonatomic) MUPlaceCallToActionAppearance *submissionStatus;
 @property(readonly) Class superclass;
 
 @end

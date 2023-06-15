@@ -12,14 +12,20 @@ __attribute__((visibility("hidden")))
 @interface _TtC8PaperKit20ToolPickerController : NSObject
 {
     MISSING_TYPE *delegate;
+    MISSING_TYPE *stickerPickerVC;
+    MISSING_TYPE *imageDescriptionVC;
     MISSING_TYPE *$__lazy_storage_$_textToolListViewController;
     MISSING_TYPE *$__lazy_storage_$_shapeButtonListViewController;
 }
 
 - (void).cxx_destruct;
 - (id)init;
+- (void)insertStickerFromItemProvider:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)stickerPickerViewControllerDidDismiss;
+- (void)stickerPickerViewControllerDidLoad;
 - (long long)adaptivePresentationStyleForPresentationController:(id)arg1 traitCollection:(id)arg2;
 - (long long)adaptivePresentationStyleForPresentationController:(id)arg1;
+- (void)toolPickerDidHideNotification:(id)arg1;
 - (void)toolPickerWillShowNotification:(id)arg1;
 - (void)dealloc;
 

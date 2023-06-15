@@ -7,6 +7,7 @@
 #import <BaseBoardUI/BSUIVibrancyConfiguration.h>
 
 @interface BSUIVibrancyConfiguration (ColorUtilities)
++ (id)vibrancyLUTFromColor:(id)arg1 extensionBundleURL:(id)arg2 luminanceReduced:(_Bool)arg3;
 + (id)vibrancyLUTFromColor:(id)arg1 extensionBundleURL:(id)arg2;
 + (long long)vibrancyEffectTypeFromColor:(id)arg1;
 @end

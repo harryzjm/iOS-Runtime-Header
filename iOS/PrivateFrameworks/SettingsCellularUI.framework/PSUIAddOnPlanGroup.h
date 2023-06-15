@@ -25,7 +25,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak PSListController *listController; // @synthesize listController=_listController;
 - (id)getLogger;
 - (void)simSetupFlowCompleted:(unsigned long long)arg1;
-- (void)remoteItemPressed:(id)arg1;
+- (void)_handleAddRemotePlan:(id)arg1;
+- (void)_addButtonPressed:(id)arg1;
 - (id)specifiersForRemotePlans;
 - (id)specifiers;
 - (id)initWithListController:(id)arg1 groupSpecifier:(id)arg2 planManager:(id)arg3 ctPlanManager:(id)arg4;

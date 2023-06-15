@@ -6,7 +6,7 @@
 
 #import <NanoPassKit/NSObject-Protocol.h>
 
-@class NSArray, NSData, PKContactlessInterfaceSession, PKContactlessInterfaceTransactionContext, PKFieldProperties, PKPaymentApplication, PKPaymentPass;
+@class NSArray, NSData, PKContactlessInterfaceSession, PKContactlessInterfaceTransactionContext, PKExpressTransactionState, PKFieldProperties, PKPaymentApplication, PKPaymentPass;
 
 @protocol PKContactlessInterfaceSessionDelegate <NSObject>
 
@@ -19,6 +19,7 @@
 - (void)contactlessInterfaceSessionDidExitField:(PKContactlessInterfaceSession *)arg1;
 - (void)contactlessInterfaceSession:(PKContactlessInterfaceSession *)arg1 didReceiveExpressState:(unsigned long long)arg2;
 - (void)contactlessInterfaceSession:(PKContactlessInterfaceSession *)arg1 didReceiveExpressState:(unsigned long long)arg2 expressTransactionEvent:(unsigned long long)arg3;
+- (void)contactlessInterfaceSession:(PKContactlessInterfaceSession *)arg1 didReceiveExpressTransactionState:(PKExpressTransactionState *)arg2;
 - (void)contactlessInterfaceSessionDidEnterField:(PKContactlessInterfaceSession *)arg1 withProperties:(PKFieldProperties *)arg2;
 - (void)contactlessInterfaceSession:(PKContactlessInterfaceSession *)arg1 didTransitionFromState:(unsigned long long)arg2 toState:(unsigned long long)arg3;
 - (void)contactlessInterfaceSession:(PKContactlessInterfaceSession *)arg1 didEndPersistentCardEmulationWithContext:(PKContactlessInterfaceTransactionContext *)arg2;

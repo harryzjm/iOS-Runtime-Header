@@ -46,6 +46,7 @@ __attribute__((visibility("hidden")))
 - (id)WKBackgroundModes;
 - (id)accentColorName;
 - (id)UIBackgroundModes;
+- (id)associatedPersonas;
 - (id)managedPersonas;
 - (_Bool)isFreeProfileValidated;
 - (_Bool)isUPPValidated;

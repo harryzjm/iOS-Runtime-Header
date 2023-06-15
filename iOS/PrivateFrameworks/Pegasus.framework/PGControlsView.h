@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
     PGCABackdropLayerView *_captureOnlyView;
     PGProgressIndicator *_progressIndicator;
     PGPrerollIndicatorView *_prerollIndicatorView;
-    UIView *_gradientView;
+    UIView *_dimmingView;
     NSArray *_allButtons;
     NSString *_groupNameBase;
     PGDisplayLink *_displayLinkForProgressUpdates;
@@ -31,7 +31,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool prefersControlsHidden; // @synthesize prefersControlsHidden=_prefersControlsHidden;
-- (_Bool)_showsGradientView;
+- (_Bool)_showsDimmingView;
 - (struct CGRect)_progressIndicatorFrameWithScaling:(double)arg1;
 - (struct CGRect)_prerollIndicatorFrameWithScaling:(double)arg1;
 - (struct UIEdgeInsets)buttonView:(id)arg1 contentEdgeInsetsForProposedInsets:(struct UIEdgeInsets)arg2;

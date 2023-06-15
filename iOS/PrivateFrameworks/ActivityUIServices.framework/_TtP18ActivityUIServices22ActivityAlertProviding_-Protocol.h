@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, TLAlertConfiguration;
+@class ACAlertPresentationOptions, NSString, TLAlertConfiguration;
 
 @protocol _TtP18ActivityUIServices22ActivityAlertProviding_
+@property(nonatomic, readonly) ACAlertPresentationOptions *presentationOptions;
 @property(nonatomic, readonly) long long action;
 @property(nonatomic, readonly) TLAlertConfiguration *configuration;
+@property(nonatomic, readonly) NSString *payloadIdentifier;
 @property(nonatomic, readonly) NSString *identifier;
 @end
 

@@ -8,6 +8,7 @@
 
 @interface NSBundle (VSAdditions)
 + (id)vs_bundleForProcessIdentifier:(int)arg1;
++ (id)vs_bundleForClassWithName:(id)arg1;
 + (id)vs_frameworkBundle;
 @end
 

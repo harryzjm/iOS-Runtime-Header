@@ -11,7 +11,7 @@
 @interface _TtC10StocksCore20StubWatchlistManager : _TtCs12_SwiftObject
 {
     MISSING_TYPE *stubWatchlist;
-    MISSING_TYPE *observableActiveWatchlist;
+    MISSING_TYPE *activeWatchlistSubject;
     MISSING_TYPE *watchlists;
 }
 

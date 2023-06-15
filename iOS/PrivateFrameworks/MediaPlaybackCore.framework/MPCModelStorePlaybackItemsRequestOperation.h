@@ -6,7 +6,7 @@
 
 #import <MediaPlayer/MPAsyncOperation.h>
 
-@class MPCModelStorePlaybackItemsRequest, MPCModelStorePlaybackItemsResponse, NSMutableArray, NSObject, NSOperationQueue, NSProgress;
+@class MPCModelStorePlaybackItemsRequest, MPCModelStorePlaybackItemsResponse, MPCPlaybackAccount, NSMutableArray, NSObject, NSOperationQueue, NSProgress;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -18,6 +18,13 @@ __attribute__((visibility("hidden")))
     MPCModelStorePlaybackItemsResponse *_previousModelResponse;
     _Bool _hasReceivedFinalResponse;
     _Bool _hasCalledResponseHandler;
+    _Bool _requiresFollowupRequest;
+    _Bool _useUniversalAccumulator;
+    struct {
+        _Bool useGlideMAPI;
+        _Bool useStorePlatform;
+    } _requestOptions;
+    MPCPlaybackAccount *_account;
     NSMutableArray *_errors;
     MPCModelStorePlaybackItemsRequest *_request;
     CDUnknownBlockType _responseHandler;
@@ -26,15 +33,12 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) CDUnknownBlockType responseHandler; // @synthesize responseHandler=_responseHandler;
 @property(readonly, copy, nonatomic) MPCModelStorePlaybackItemsRequest *request; // @synthesize request=_request;
-- (void)_runSubscriptionStatusWithRequestContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_handleItemMetadataBactchRequestCompletedWithAccumulator:(id)arg1 previousResponse:(id)arg2 userIdentity:(id)arg3 error:(id)arg4 isFinalResponse:(_Bool)arg5;
+- (void)_handleItemMetadataBatchRequestCompletedWithAccumulator:(id)arg1 previousResponse:(id)arg2 error:(id)arg3 isFinalResponse:(_Bool)arg4;
 - (id)_localStoreAdamIDToEquivalencySourceStoreAdamIDMap:(id)arg1;
-- (void)_runPersonalizationWithSectionCollection:(id)arg1 localEquivalencyMapping:(id)arg2 expirationDate:(id)arg3 userIdentity:(id)arg4 error:(id)arg5 isFinalResponse:(_Bool)arg6 isInvalidForPersonalization:(_Bool)arg7 networkingTime:(double)arg8;
-- (void)_validateUserIdentityForRequestWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_runStorePlatformRequestToLoadMetadataWithAccumulator:(id)arg1 userIdentity:(id)arg2 previousResponse:(id)arg3 shouldBatchResultsWithPlaceholderObjects:(_Bool)arg4;
-- (void)_importMediaAPICollectionItemMetadataResponse:(id)arg1 withError:(id)arg2 usingAccumulator:(id)arg3 userIdentity:(id)arg4 trustID:(id)arg5 previousResponse:(id)arg6 shouldBatchResultsWithPlaceholderObjects:(_Bool)arg7;
-- (void)_runMediaAPIRequestToLoadMetadataWithAccumulator:(id)arg1 userIdentity:(id)arg2 previousResponse:(id)arg3 shouldBatchResultsWithPlaceholderObjects:(_Bool)arg4;
-- (void)_executeWithUserIdentity:(id)arg1 useMediaAPILookup:(_Bool)arg2;
+- (void)_runPersonalizationWithSectionCollection:(id)arg1 localEquivalencyMapping:(id)arg2 expirationDate:(id)arg3 error:(id)arg4 isFinalResponse:(_Bool)arg5 isInvalidForPersonalization:(_Bool)arg6 performanceMetrics:(id)arg7;
+- (void)_runStorePlatformRequestToLoadMetadataWithAccumulator:(id)arg1 previousResponse:(id)arg2;
+- (void)_importMediaAPICollectionItemMetadataResponse:(id)arg1 withError:(id)arg2 usingAccumulator:(id)arg3 trustID:(id)arg4 previousResponse:(id)arg5;
+- (void)_runMediaAPIRequestToLoadMetadataWithAccumulator:(id)arg1 previousResponse:(id)arg2;
 - (void)execute;
 - (void)cancel;
 - (id)initWithRequest:(id)arg1 responseHandler:(CDUnknownBlockType)arg2;

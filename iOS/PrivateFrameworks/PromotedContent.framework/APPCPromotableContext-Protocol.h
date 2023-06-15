@@ -6,13 +6,14 @@
 
 #import <PromotedContent/APPCPromotableBaseContext-Protocol.h>
 
-@class NSArray;
+@class NSArray, NSDate;
 @protocol APPCPromotableContent;
 
 @protocol APPCPromotableContext <APPCPromotableBaseContext>
-- (void)registerBlacklistEvaluator:(long long (^)(APPCBlacklistReasonCharacteristic *))arg1;
+- (void)registerDenylistEvaluator:(long long (^)(APPCDenylistReasonCharacteristic *))arg1;
 - (id <APPCPromotableContent>)promotedContentWithoutFetchWithType:(long long)arg1 size:(struct CGSize)arg2;
 - (id <APPCPromotableContent>)promotedContentWithType:(long long)arg1 size:(struct CGSize)arg2 placeholderReplacement:(void (^)(id <APPCPromotableContent>))arg3;
 - (void)prefetchPromotedContentWithRequests:(NSArray *)arg1;
+@property(nonatomic, readonly) NSDate *prefetchTimestamp;
 @end
 

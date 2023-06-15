@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UICollectionViewListCell.h>
+#import <UIKitCore/UICollectionViewListCell.h>
 
 @class MISSING_TYPE;
 
@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)showDetailViewController:(id)arg1 viewController:(id)arg2;
+- (void)layoutSubviews;
 - (void)awakeFromNib;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

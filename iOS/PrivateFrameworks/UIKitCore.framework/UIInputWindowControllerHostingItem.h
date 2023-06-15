@@ -60,6 +60,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, retain, nonatomic) UISplitKeyboardSupport *splitKeyboardController; // @synthesize splitKeyboardController=_cachedSplitKeyboardController;
 - (void)configureFlickingAssistantViewController:(_Bool)arg1;
 - (void)enumerateBoundingRects:(CDUnknownBlockType)arg1;
+- (void)removeMatchMoveAnimationIfNeeded;
 - (void)clearInteractiveTransitionStateIfNecessary;
 - (void)finishScrollViewTransition;
 - (void)configureScrollDismissController:(_Bool)arg1;
@@ -72,6 +73,7 @@ __attribute__((visibility("hidden")))
 - (void)didFinishTranslationFromPlacement:(id)arg1 to:(id)arg2;
 - (void)willBeginTranslationFromPlacement:(id)arg1 to:(id)arg2;
 - (void)prepareTranslationFromPlacement:(id)arg1 to:(id)arg2;
+- (void)createAnimationMatchWithInfo:(id)arg1;
 - (void)transitionDidFinish:(_Bool)arg1;
 - (void)setPlacement:(id)arg1 quietly:(_Bool)arg2 animated:(_Bool)arg3 generateSplitNotification:(_Bool)arg4;
 - (void)completeTransition:(id)arg1 withInfo:(id)arg2;
@@ -111,6 +113,7 @@ __attribute__((visibility("hidden")))
 - (void)configureDockViewController:(_Bool)arg1;
 - (void)updateSupportsDockViewController;
 - (_Bool)_shouldShowInputDockView;
+@property(readonly, nonatomic) UIView *scrollTrackingView;
 @property(readonly, nonatomic) UIView *dockView;
 - (void)updateInputAssistantBackdropView;
 - (void)updateInputAccessoryBackdropView;
@@ -119,6 +122,9 @@ __attribute__((visibility("hidden")))
 - (void)_updateBackdropViews;
 - (void)updateViewSizingConstraints;
 - (void)updateEmptyHeightConstraint;
+- (struct CGRect)fullInputViewAndAssistantFrame;
+- (struct CGRect)fullScreenFrame;
+- (struct CGRect)notificationsFrame;
 - (struct CGRect)visibleFrame;
 - (void)extendKeyboardBackdropHeight:(double)arg1 withDuration:(double)arg2;
 - (void)resetBackdropHeight;

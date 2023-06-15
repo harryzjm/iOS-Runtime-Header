@@ -14,16 +14,17 @@
 @protocol AFUIViewControllerServing <NSObject, AFUISiriSessionDelegate, SiriUIPresentationRemoteControlling>
 - (void)hostApplicationDidSuccessfullyHandleCommandsInDelayedActionCommand:(SAUIDelayedActionCommand *)arg1;
 - (void)hostApplicationPresentationStateUpdatedFromPresentationState:(long long)arg1 toPresentationState:(long long)arg2;
-- (void)siriWillBeginTearDownForDismissalReason:(unsigned long long)arg1 withOriginalDismissalOptions:(SiriDismissalOptions *)arg2;
+- (void)siriWillBeginTearDownForDismissalReason:(long long)arg1 withOriginalDismissalOptions:(SiriDismissalOptions *)arg2;
+- (void)setSystemContentFrame:(struct CGRect)arg1;
 - (void)setSystemContentEdgeInsets:(struct UIEdgeInsets)arg1;
 - (void)setBottomContentInset:(double)arg1;
 - (void)hasContentAtPoint:(NSValue *)arg1 completion:(void (^)(_Bool))arg2;
 - (void)setWaitingForTelephonyToStart:(_Bool)arg1;
-- (void)invalidateAssertionOnOrientationChangeIfNeeded:(long long)arg1;
+- (void)orientationWillChangeTo:(long long)arg1;
 - (void)hostApplicationRequestsScreenshotWithCompletion:(void (^)(_Bool))arg1;
 - (void)hostApplicationRequestsEmitInstrumentationEvent:(PBCodable *)arg1 atTime:(unsigned long long)arg2;
 - (void)hostApplicationRequestsEmitInstrumentationEvent:(PBCodable *)arg1;
-- (void)hostApplicationRequestsEmitUIStateTransitionForSiriDismissalWithReason:(int)arg1;
+- (void)hostApplicationRequestsEmitUIStateTransitionForSiriDismissalWithReason:(int)arg1 completion:(void (^)(NSUUID *))arg2;
 - (void)hostApplicationDidBecomeActive;
 - (void)hostApplicationWillEnterForeground;
 - (void)hostApplicationWillResignActive;
@@ -46,7 +47,6 @@
 - (void)setRequestOptions:(SASRequestOptions *)arg1;
 - (void)siriDidActivateFromSource:(long long)arg1;
 - (void)siriWillActivateFromSource:(long long)arg1;
-- (void)invalidateProminentAssertion;
 - (void)setStatusViewHeightNumber:(NSNumber *)arg1;
 - (void)setStatusBarFrameValue:(NSValue *)arg1;
 - (void)setHostFrontMostAppOrientation:(long long)arg1;

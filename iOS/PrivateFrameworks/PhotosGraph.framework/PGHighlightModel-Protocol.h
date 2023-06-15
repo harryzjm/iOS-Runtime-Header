@@ -14,11 +14,11 @@
 @property(readonly, nonatomic) _Bool isUpToDate;
 @property(readonly, nonatomic) PHAssetCollection *assetCollection;
 @property(readonly, nonatomic) NSString *uuid;
-@property(readonly, nonatomic) _Bool isGroup;
 @property(readonly, nonatomic, getter=isRecent) _Bool recent;
 @property(readonly, nonatomic) unsigned short sharingComposition;
 @property(nonatomic) unsigned short enrichmentState;
 @property(nonatomic) unsigned short type;
+@property(readonly, nonatomic) unsigned short kind;
 - (id <PGHighlightModelChangeRequest>)changeRequest;
 - (double)nonDefaultCurationScorePercentageForPhotoLibrary:(PHPhotoLibrary *)arg1;
 - (double)faceAnalysisProgressForPhotoLibrary:(PHPhotoLibrary *)arg1;

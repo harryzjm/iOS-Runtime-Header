@@ -37,6 +37,7 @@
 - (void)setShouldDisableEntryField:(_Bool)arg1;
 - (void)setShouldIgnoreEmailsWhenSending:(_Bool)arg1;
 - (void)setCanEditRecipients:(_Bool)arg1;
+- (void)configureForDeviceValidation;
 - (void)setPendingAddresses:(NSArray *)arg1;
 @end
 

@@ -9,11 +9,9 @@
 @class NSIndexPath, UICollectionView;
 
 @protocol PXPeopleDragAndDropCollectionViewDelegateLayout <UICollectionViewDelegateFlowLayout>
+- (_Bool)collectionView:(UICollectionView *)arg1 shouldMergeDragIndexPath:(NSIndexPath *)arg2 targetIndexPath:(NSIndexPath *)arg3;
 - (void)collectionView:(UICollectionView *)arg1 didMergeDragIndexPath:(NSIndexPath *)arg2 targetIndexPath:(NSIndexPath *)arg3;
 - (void)collectionView:(UICollectionView *)arg1 didCancelMergeWithDragIndexPath:(NSIndexPath *)arg2 targetIndexPath:(NSIndexPath *)arg3;
 - (void)collectionView:(UICollectionView *)arg1 didBeginMergeWithDragIndexPath:(NSIndexPath *)arg2 targetIndexPath:(NSIndexPath *)arg3;
-
-@optional
-- (_Bool)collectionView:(UICollectionView *)arg1 shouldMergeDragIndexPath:(NSIndexPath *)arg2 targetIndexPath:(NSIndexPath *)arg3;
 @end
 

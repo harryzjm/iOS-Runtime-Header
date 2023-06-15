@@ -7,6 +7,6 @@
 @interface (null) (NewsAnalytics6)
 - (void)sessionWillEndWithEndReason:(id)arg1;
 - (void)sessionWillResignActive;
-- (void)sessionDidStartWithSessionID:(id)arg1 sourceApplication:(id)arg2;
+- (void)sessionDidStartWithSessionID:(id)arg1 sourceApplication:(id)arg2 url:(id)arg3;
 @end
 

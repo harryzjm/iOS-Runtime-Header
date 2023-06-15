@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (_Bool)isInternalMediaItemProperty:(id)arg1;
 + (id)transformValue:(id)arg1 forProperty:(id)arg2 toSerializationFormat:(_Bool)arg3 error:(id *)arg4;
 + (id)transformProperties:(id)arg1 toSerializationFormat:(_Bool)arg2 error:(id *)arg3;
 + (id)dateFormatter;

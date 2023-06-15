@@ -10,18 +10,12 @@ __attribute__((visibility("hidden")))
 @interface PUAlbumListSettings : PXSettings
 {
     _Bool _shouldUseEditorialLayout;
-    _Bool _shouldShowSubscriberMonograms;
-    _Bool _combinePeoplePlacesAndMediaTypesOnIpad;
     _Bool _allowNavigationTitleEditing;
-    double _avatarSpacing;
 }
 
 + (id)settingsControllerModule;
 + (id)sharedInstance;
 @property(nonatomic) _Bool allowNavigationTitleEditing; // @synthesize allowNavigationTitleEditing=_allowNavigationTitleEditing;
-@property(nonatomic) _Bool combinePeoplePlacesAndMediaTypesOnIpad; // @synthesize combinePeoplePlacesAndMediaTypesOnIpad=_combinePeoplePlacesAndMediaTypesOnIpad;
-@property(nonatomic) double avatarSpacing; // @synthesize avatarSpacing=_avatarSpacing;
-@property(nonatomic) _Bool shouldShowSubscriberMonograms; // @synthesize shouldShowSubscriberMonograms=_shouldShowSubscriberMonograms;
 @property(nonatomic) _Bool shouldUseEditorialLayout; // @synthesize shouldUseEditorialLayout=_shouldUseEditorialLayout;
 - (void)setDefaultValues;
 - (id)parentSettings;

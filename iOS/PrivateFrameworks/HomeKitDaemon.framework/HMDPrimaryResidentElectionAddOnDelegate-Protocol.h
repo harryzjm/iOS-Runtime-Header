@@ -6,10 +6,11 @@
 
 #import <HomeKitDaemon/NSObject-Protocol.h>
 
-@class HMDResidentDevice, HMMLogEvent, NSError, NSSet;
+@class HMDResidentDevice, HMMLogEvent, NSError, NSSet, NSUUID;
 @protocol HMDPrimaryResidentElectionAddOn;
 
 @protocol HMDPrimaryResidentElectionAddOnDelegate <NSObject>
+- (void)primaryElectionAddOn:(id <HMDPrimaryResidentElectionAddOn>)arg1 didReceivePrimaryResidentUUIDFromLeader:(NSUUID *)arg2;
 - (void)primaryElectionAddOn:(id <HMDPrimaryResidentElectionAddOn>)arg1 didUpdateActiveNodes:(NSSet *)arg2;
 - (void)primaryElectionAddOn:(id <HMDPrimaryResidentElectionAddOn>)arg1 didUpdateResidentDevice:(HMDResidentDevice *)arg2;
 - (void)primaryElectionAddOn:(id <HMDPrimaryResidentElectionAddOn>)arg1 didFailToElectWithError:(NSError *)arg2;

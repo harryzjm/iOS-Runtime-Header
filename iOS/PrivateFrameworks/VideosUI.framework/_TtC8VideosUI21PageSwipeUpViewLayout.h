@@ -10,6 +10,7 @@
 {
     MISSING_TYPE *textLayout;
     MISSING_TYPE *chevronImageLayout;
+    MISSING_TYPE *host;
 }
 
 @end

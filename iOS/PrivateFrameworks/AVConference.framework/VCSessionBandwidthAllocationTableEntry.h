@@ -6,8 +6,8 @@
 
 #import <objc/NSObject.h>
 
-@class NSNumber;
-@protocol VCSessionDownlinkBandwidthAllocatorClient;
+@class NSDictionary, NSNumber;
+@protocol VCSessionDownlinkBandwidthAllocatorClient, VCSessionUplinkBandwidthAllocatorClient;
 
 __attribute__((visibility("hidden")))
 @interface VCSessionBandwidthAllocationTableEntry : NSObject
@@ -28,14 +28,17 @@ __attribute__((visibility("hidden")))
     _Bool _onDemand;
     unsigned int _streamGroupID;
     unsigned int _encoderGroupID;
+    NSDictionary *_upgradeQualityTiers;
     _Bool _subscribedTo;
     _Bool _startOnDemand;
+    id <VCSessionUplinkBandwidthAllocatorClient> _uplinkClient;
 }
 
 + (long long)compareAudioEntry:(id)arg1 videoEntry:(id)arg2;
 + (long long)compareVideoEntry:(id)arg1 videoEntry:(id)arg2;
 + (long long)compareAudioEntry:(id)arg1 audioEntry:(id)arg2;
 + (unsigned char)entryTypeForMediaType:(unsigned int)arg1;
+@property(readonly) id <VCSessionUplinkBandwidthAllocatorClient> uplinkClient; // @synthesize uplinkClient=_uplinkClient;
 @property(readonly) NSNumber *streamToken; // @synthesize streamToken=_streamToken;
 @property(readonly) unsigned int encoderGroupID; // @synthesize encoderGroupID=_encoderGroupID;
 @property(readonly) unsigned int streamGroupID; // @synthesize streamGroupID=_streamGroupID;
@@ -56,6 +59,7 @@ __attribute__((visibility("hidden")))
 - (long long)compare:(id)arg1;
 - (id)description;
 - (void)dealloc;
+- (id)initWithClient:(id)arg1 type:(unsigned char)arg2 streamToken:(long long)arg3 streamID:(unsigned int)arg4 streamGroupID:(unsigned int)arg5;
 - (id)initWithClient:(id)arg1 type:(unsigned char)arg2 streamToken:(long long)arg3 minNetworkBitrate:(unsigned int)arg4 maxNetworkBitrate:(unsigned int)arg5 mediaBitrate:(unsigned int)arg6 qualityIndex:(unsigned int)arg7 streamID:(unsigned int)arg8 hasRepairStreamID:(_Bool)arg9 repairStreamID:(unsigned int)arg10 repairMaxNetworkBitrate:(unsigned int)arg11 subscribedTo:(_Bool)arg12 startOnDemand:(_Bool)arg13 streamGroupID:(unsigned int)arg14 encoderGroupID:(unsigned int)arg15;
 - (id)initWithClient:(id)arg1 type:(unsigned char)arg2 streamToken:(long long)arg3 networkBitrate:(unsigned int)arg4 mediaBitrate:(unsigned int)arg5 qualityIndex:(unsigned int)arg6 streamID:(unsigned int)arg7 streamGroupID:(unsigned int)arg8;
 

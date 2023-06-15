@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSString, VKTimedAnimation;
+@class NSArray, NSString, VKPuckAnimator, VKTimedAnimation;
 @protocol VKInteractiveMapDelegate;
 
 __attribute__((visibility("hidden")))
@@ -15,6 +15,9 @@ __attribute__((visibility("hidden")))
     VKTimedAnimation *_horizontalOffsetAnimation;
     double _canonicalSkyHeight;
     struct shared_ptr<md::OverlayContainer> _overlayContainer;
+    int _consoleFpsUpdateTicker;
+    float _consoleFps;
+    VKPuckAnimator *_puckAnimator;
     _Bool _trafficEnabled;
     id <VKInteractiveMapDelegate> _delegate;
 }
@@ -23,6 +26,7 @@ __attribute__((visibility("hidden")))
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool trafficEnabled; // @synthesize trafficEnabled=_trafficEnabled;
+@property(nonatomic) __weak VKPuckAnimator *puckAnimator; // @synthesize puckAnimator=_puckAnimator;
 @property(nonatomic) double canonicalSkyHeight; // @synthesize canonicalSkyHeight=_canonicalSkyHeight;
 @property(nonatomic) __weak id <VKInteractiveMapDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)didBecomeInActive;
@@ -30,7 +34,7 @@ __attribute__((visibility("hidden")))
 - (void)populateDebugNode:(void *)arg1 withOptions:(const void *)arg2;
 - (long long)tileSize;
 - (void)setCameraHorizontalOffset:(double)arg1 duration:(double)arg2 timingFunction:(id)arg3;
-- (void)transitionToTracking:(_Bool)arg1 mapMode:(long long)arg2 startLocation:(CDStruct_c3b9c2ee)arg3 startCourse:(double)arg4 cameraController:(id)arg5 pounceCompletionHandler:(CDUnknownBlockType)arg6;
+- (void)transitionToTracking:(_Bool)arg1 mapMode:(long long)arg2 startLocation:(CDStruct_2c43369c)arg3 startCourse:(double)arg4 cameraController:(id)arg5 pounceCompletionHandler:(CDUnknownBlockType)arg6;
 - (id)markerAtScreenPoint:(struct CGPoint)arg1 enableExtendedFeatureMarkers:(_Bool)arg2;
 - (void)clearScene;
 - (void)debugHighlightObjectAtPoint:(struct CGPoint)arg1 highlightTarget:(unsigned char)arg2;
@@ -47,11 +51,11 @@ __attribute__((visibility("hidden")))
 - (void)removeOverlay:(id)arg1;
 - (void)addOverlay:(id)arg1;
 - (void)updateOverlays;
-- (struct CGPoint)convertCoordinateToCameraModelPoint:(CDStruct_c3b9c2ee)arg1;
-- (struct CGPoint)convertCoordinateToPoint:(CDStruct_c3b9c2ee)arg1;
-- (struct CGPoint)convertMapPointToPoint:(CDStruct_c3b9c2ee)arg1;
-- (CDStruct_c3b9c2ee)convertPointToCoordinate:(struct CGPoint)arg1;
-- (CDStruct_c3b9c2ee)convertPointToMapPoint:(struct CGPoint)arg1;
+- (struct CGPoint)convertCoordinateToCameraModelPoint:(CDStruct_2c43369c)arg1;
+- (struct CGPoint)convertCoordinateToPoint:(CDStruct_2c43369c)arg1;
+- (struct CGPoint)convertMapPointToPoint:(CDStruct_2c43369c)arg1;
+- (CDStruct_2c43369c)convertPointToCoordinate:(struct CGPoint)arg1;
+- (CDStruct_2c43369c)convertPointToMapPoint:(struct CGPoint)arg1;
 - (void)updateCameraForFrameResize;
 - (optional_44235073)_zoomLevelForCanvasSize:(struct CGSize)arg1;
 - (void)updateWithTimestamp:(double)arg1 withContext:(void *)arg2;

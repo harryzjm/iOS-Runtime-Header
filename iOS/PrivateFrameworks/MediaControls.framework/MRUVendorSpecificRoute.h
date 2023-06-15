@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
     DADevice *_device;
     UIImage *_protocolIcon;
     NSString *_protocolName;
-    MRUVendorSpecificRoute *_preferredSubroute;
+    MRUVendorSpecificRoute *_tempPreferredSubrouteOverride;
     MPAVRoute *_underlyingNativeRoute;
     NSMutableDictionary *_subrouteMap;
 }
@@ -28,17 +28,19 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool isPreferredRoute; // @synthesize isPreferredRoute=_isPreferredRoute;
 @property(retain, nonatomic) MPAVRoute *underlyingNativeRoute; // @synthesize underlyingNativeRoute=_underlyingNativeRoute;
 @property(nonatomic) _Bool isPicked; // @synthesize isPicked=_isPicked;
-@property(readonly, nonatomic) MRUVendorSpecificRoute *preferredSubroute; // @synthesize preferredSubroute=_preferredSubroute;
+@property(retain, nonatomic) MRUVendorSpecificRoute *tempPreferredSubrouteOverride; // @synthesize tempPreferredSubrouteOverride=_tempPreferredSubrouteOverride;
 @property(readonly, nonatomic) NSString *protocolName; // @synthesize protocolName=_protocolName;
 @property(readonly, nonatomic) UIImage *protocolIcon; // @synthesize protocolIcon=_protocolIcon;
 @property(readonly, nonatomic) DADevice *device; // @synthesize device=_device;
 @property(nonatomic) _Bool shouldBeDisplayed; // @synthesize shouldBeDisplayed=_shouldBeDisplayed;
 @property(nonatomic) _Bool expanded; // @synthesize expanded=_expanded;
 - (long long)moreCapableTypeBetween:(long long)arg1 otherType:(long long)arg2;
+@property(readonly, nonatomic) MRUVendorSpecificRoute *preferredSubroute;
 - (void)addSubRoute:(id)arg1;
 @property(readonly, nonatomic) NSString *protocolIdentifier;
 - (_Bool)isKnown;
 - (_Bool)isDisplayedAsPicked;
+- (_Bool)supportsGrouping;
 - (_Bool)supportsAirPlayGrouping;
 - (_Bool)isAirPlayRoute;
 @property(readonly, nonatomic) NSArray *endpoints;

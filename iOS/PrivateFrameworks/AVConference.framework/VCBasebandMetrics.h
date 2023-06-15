@@ -60,7 +60,7 @@ __attribute__((visibility("hidden")))
 - (double)updateTotalQueueDepth:(unsigned int)arg1;
 - (void)calculateBitratesAndDelaysWithTotalQueueDepth:(unsigned int)arg1;
 - (void)addInfoListWithNotification:(CDStruct_b203c80d *)arg1;
-- (CDStruct_7df19fcb)getBasebandMetricsWithNotification:(CDStruct_b203c80d *)arg1;
+- (struct tagVCStatisticsMessage)getBasebandMetricsWithNotification:(CDStruct_b203c80d *)arg1;
 - (void)dealloc;
 - (id)init;
 

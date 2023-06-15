@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic, getter=_balloonTintColor) UIColor *balloonTintColor;
 @property(readonly, nonatomic, getter=_balloonCalloutStyle) long long balloonCalloutStyle;
 - (_Bool)_isMetroArea;
-- (void)traitCollectionDidChange:(id)arg1;
+- (void)traitEnvironment:(id)arg1 didChangeTraitCollection:(id)arg2;
 - (void)_resolveBalloonAttributes;
 - (void)_updateAnchorOffset;
 - (void)_updateFromMap;

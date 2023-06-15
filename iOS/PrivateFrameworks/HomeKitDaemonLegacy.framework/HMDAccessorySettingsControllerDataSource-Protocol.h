@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HMDAccessorySettingsController, HMDAccessorySetupMetricDispatcher, HMDBackingStore, HMDHome, HMFActivity, NSArray, NSData, NSUUID;
+@class HMDAccessorySettingsController, HMDAccessorySetupMetricDispatcher, HMDBackingStore, HMDCurrentAccessorySetupMetricDispatcher, HMDHome, HMFActivity, NSArray, NSData, NSUUID;
 
 @protocol HMDAccessorySettingsControllerDataSource
+@property(readonly) HMDCurrentAccessorySetupMetricDispatcher *currentAccessorySetupMetricDispatcher;
 @property(readonly) HMDAccessorySetupMetricDispatcher *accessorySetupMetricDispatcher;
 @property double setupStartTimestamp;
 @property(retain) HMFActivity *setupActivity;

@@ -9,7 +9,7 @@
 @class NSDictionary, VCAudioIOControllerClient;
 
 @protocol VCAudioIOControllerControl <VCBasebandCodecNotifications>
-- (void)updateClient:(VCAudioIOControllerClient *)arg1 direction:(unsigned char)arg2;
+- (void)updateClient:(VCAudioIOControllerClient *)arg1 settings:(const struct tagVCAudioIOControllerClientSettings *)arg2;
 - (void)stopClient:(VCAudioIOControllerClient *)arg1;
 - (void)startClient:(VCAudioIOControllerClient *)arg1;
 

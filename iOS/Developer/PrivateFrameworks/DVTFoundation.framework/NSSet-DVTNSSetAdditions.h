@@ -7,9 +7,11 @@
 #import <Foundation/NSSet.h>
 
 @interface NSSet (DVTNSSetAdditions)
++ (id)dvt_setByUnioningSets:(id)arg1;
 - (id)dvt_objectByFoldingWithBlock:(CDUnknownBlockType)arg1;
 - (id)dvt_dictionaryWithEntriesAsValuesAndKeysFromBlock:(CDUnknownBlockType)arg1;
 - (id)dvt_dictionaryWithEntriesAsKeysAndValuesFromBlock:(CDUnknownBlockType)arg1;
+- (id)dvt_shuffledArray;
 - (id)dvt_maximumObjectUsingComparator:(CDUnknownBlockType)arg1;
 - (id)dvt_minimumObjectUsingComparator:(CDUnknownBlockType)arg1;
 - (id)dvt_sortedArrayUsingComparator:(CDUnknownBlockType)arg1;

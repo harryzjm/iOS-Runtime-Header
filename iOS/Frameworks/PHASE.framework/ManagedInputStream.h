@@ -12,15 +12,24 @@ __attribute__((visibility("hidden")))
 @interface ManagedInputStream : NSObject
 {
     _Bool _streamPaused;
+    _Bool _canRecord;
+    _Bool _isMuted;
+    _Bool _isFading;
     PHASEExternalInputStreamDefinition *_definition;
     NSUUID *_attributedClientID;
+    shared_ptr_4516cf1a _fader;
 }
 
+- (id).cxx_construct;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool isFading; // @synthesize isFading=_isFading;
+@property(nonatomic) shared_ptr_4516cf1a fader; // @synthesize fader=_fader;
+@property(nonatomic) _Bool isMuted; // @synthesize isMuted=_isMuted;
+@property(nonatomic) _Bool canRecord; // @synthesize canRecord=_canRecord;
 @property(retain, nonatomic) NSUUID *attributedClientID; // @synthesize attributedClientID=_attributedClientID;
 @property(retain, nonatomic) PHASEExternalInputStreamDefinition *definition; // @synthesize definition=_definition;
 @property(nonatomic, getter=isStreamPaused) _Bool streamPaused; // @synthesize streamPaused=_streamPaused;
-- (id)initWithPaused:(_Bool)arg1 attributedTo:(id)arg2 definition:(id)arg3;
+- (id)initWithPaused:(_Bool)arg1 attributedTo:(id)arg2 definition:(id)arg3 canRecord:(_Bool)arg4 fader:(shared_ptr_4516cf1a)arg5;
 
 @end
 

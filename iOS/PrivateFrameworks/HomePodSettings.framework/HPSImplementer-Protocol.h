@@ -6,19 +6,16 @@
 
 #import <HomePodSettings/NSObject-Protocol.h>
 
-@class HPSettingValue, NSDictionary, NSString;
+@class NSDictionary, NSString;
 
 @protocol HPSImplementer <NSObject>
 @property(readonly, copy, nonatomic) NSDictionary *diagnosticInfo;
 - (void)startConnection;
 - (void)isAutomaticSoftwareUpdateEnabled:(void (^)(_Bool, NSError *))arg1;
-- (void)isValidHome:(void (^)(_Bool, NSError *))arg1;
 - (void)isHomeKitSyncComplete:(void (^)(_Bool, NSError *))arg1;
-- (void)homeKitSettingValueForKeyPath:(NSString *)arg1 completion:(void (^)(HPSettingValue *, NSError *))arg2;
 - (void)getHomeKitCachedSettings:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)getAirPlaySettings:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)getCurrentHomeAttribute:(NSString *)arg1 completion:(void (^)(id, NSError *))arg2;
 - (void)getHomeAccessoryAttribute:(NSString *)arg1 completion:(void (^)(id, NSError *))arg2;
-- (void)homeKitAccessorySettingForKeyPath:(NSString *)arg1 value:(HPSettingValue *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 @end
 

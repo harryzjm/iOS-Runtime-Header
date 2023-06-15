@@ -13,6 +13,7 @@
     MISSING_TYPE *db;
     MISSING_TYPE *config;
     MISSING_TYPE *store;
+    MISSING_TYPE *handleView;
     MISSING_TYPE *$__lazy_storage_$_featureNames;
 }
 

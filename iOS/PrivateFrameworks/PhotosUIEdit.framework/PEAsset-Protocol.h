@@ -6,10 +6,9 @@
 
 #import <PhotosUIEdit/NSObject-Protocol.h>
 
-@class NSString, PHAssetPhotoIrisProperties, PHContentEditingInputRequestOptions;
+@class NSString, PHContentEditingInputRequestOptions;
 
 @protocol PEAsset <NSObject>
-@property(readonly, nonatomic) unsigned long long mediaSubtypes;
 @property(readonly, nonatomic, getter=isResourceDownloadPossible) _Bool resourceDownloadPossible;
 @property(readonly, nonatomic, getter=isLivePhoto) _Bool livePhoto;
 @property(readonly, nonatomic) unsigned short playbackVariation;
@@ -17,11 +16,9 @@
 @property(readonly, nonatomic) double duration;
 @property(readonly, nonatomic) unsigned long long pixelHeight;
 @property(readonly, nonatomic) unsigned long long pixelWidth;
-@property(readonly, nonatomic) _Bool hasAdjustments;
+@property(readonly, nonatomic) _Bool isAdjusted;
 @property(readonly, nonatomic) NSString *uuid;
 - (unsigned long long)requestContentEditingInputWithOptions:(PHContentEditingInputRequestOptions *)arg1 completionHandler:(void (^)(PHContentEditingInput *, NSDictionary *))arg2;
 - (void)cancelContentEditingInputRequest:(unsigned long long)arg1;
-- (PHAssetPhotoIrisProperties *)photoIrisProperties;
-- (void)fetchPropertySetsIfNeeded;
 @end
 

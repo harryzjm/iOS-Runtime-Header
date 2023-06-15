@@ -9,6 +9,7 @@
 @interface NSData (HexString)
 + (id)NF_dataWithHexString:(id)arg1;
 - (id)NF_asHexString;
+- (unsigned long long)NF_toUint64:(id *)arg1;
 - (_Bool)NF_isZeroed;
 @end
 

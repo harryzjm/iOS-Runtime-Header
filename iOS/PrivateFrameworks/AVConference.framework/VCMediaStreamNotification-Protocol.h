@@ -9,6 +9,7 @@
 @class NSArray, VCMediaKeyIndex, VCMediaStream;
 
 @protocol VCMediaStreamNotification <NSObject>
+- (void)mediaStream:(VCMediaStream *)arg1 didReceiveRTPGapForMediaKeyIndex:(VCMediaKeyIndex *)arg2;
 - (void)mediaStream:(VCMediaStream *)arg1 didReceiveNewMediaKeyIndex:(VCMediaKeyIndex *)arg2;
 - (void)didReceiveRTCPPackets:(struct _RTCPPacketList *)arg1;
 

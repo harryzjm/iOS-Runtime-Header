@@ -12,14 +12,15 @@ __attribute__((visibility("hidden")))
 @interface VUIMediaEntityKind : NSObject
 {
     NSString *_mediaEntityClassName;
-    NSArray *_propertyDescriptors;
     NSDictionary *_propertyDescriptorsByName;
+    NSArray *_propertyDescriptors;
 }
 
 - (void).cxx_destruct;
-@property(copy, nonatomic) NSDictionary *propertyDescriptorsByName; // @synthesize propertyDescriptorsByName=_propertyDescriptorsByName;
 @property(copy, nonatomic) NSArray *propertyDescriptors; // @synthesize propertyDescriptors=_propertyDescriptors;
+@property(copy, nonatomic) NSDictionary *propertyDescriptorsByName; // @synthesize propertyDescriptorsByName=_propertyDescriptorsByName;
 @property(readonly, copy, nonatomic) NSString *mediaEntityClassName; // @synthesize mediaEntityClassName=_mediaEntityClassName;
+- (void)_updatePropertyDescriptorsByName;
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)sortingPropertyDescriptorForName:(id)arg1;

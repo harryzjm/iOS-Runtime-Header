@@ -7,6 +7,7 @@
 #import <PassKitCore/PKExpressPassInformation.h>
 
 @interface PKExpressPassInformation (NanoPassKit)
+- (void)npk_getAppletIdentifiers:(id)arg1 appletsToKeys:(id)arg2 includeKeyContainerAsApplet:(_Bool)arg3;
 - (_Bool)npk_hasImmediateAutomaticSelectionCriterion;
 @end
 

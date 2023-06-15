@@ -7,10 +7,7 @@
 #import <HealthUI/HKDisplayType.h>
 
 @interface HKDisplayType (WDDataProviders)
-- (long long)_heartRoomDisplayTypeContext:(long long)arg1;
-- (Class)_wd_listViewControllerDataProviderClass:(_Bool)arg1;
 - (id)wd_dataListViewControllerWithProfile:(id)arg1 unitController:(id)arg2;
-- (id)wd_dataListViewControllerWithProfile:(id)arg1;
 - (id)wd_listViewControllerDataProviderWithProfile:(id)arg1 unitController:(id)arg2 isHierarchical:(_Bool)arg3;
 - (id)wd_listViewControllerDataProviderWithProfile:(id)arg1 unitController:(id)arg2;
 @end

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class MISSING_TYPE;
 
@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *imageView;
     MISSING_TYPE *titleLabel;
     MISSING_TYPE *deviceBadgeView;
+    MISSING_TYPE *widthConstraint;
     MISSING_TYPE *imageTopConstraint;
     MISSING_TYPE *imageLeadingConstraint;
     MISSING_TYPE *imageBottomConstraint;
@@ -28,7 +29,6 @@ __attribute__((visibility("hidden")))
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-@property(nonatomic, readonly) struct CGSize intrinsicContentSize;
 
 @end
 

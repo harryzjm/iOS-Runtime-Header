@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (Class)layerClass;
+- (_Bool)clipsToBounds;
 - (id)layerHost;
 @property(nonatomic) unsigned int contextID;
 

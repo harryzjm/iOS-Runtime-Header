@@ -11,7 +11,54 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (id)audioTimeAdvancedByFrames:(unsigned int)arg1 fromTime:(id)arg2;
++ (id)loopTimeRange:(CDStruct_e83c9415)arg1 withinTimeRange:(CDStruct_e83c9415)arg2 error:(id *)arg3;
++ (CDStruct_1b6d18a9)loopTime:(CDStruct_1b6d18a9)arg1 withinTimeRange:(CDStruct_e83c9415)arg2 error:(id *)arg3;
++ (id)splitTimeRange:(CDStruct_e83c9415)arg1 atEachMultipleOf:(CDStruct_1b6d18a9)arg2 fromOffset:(CDStruct_1b6d18a9)arg3 error:(id *)arg4;
++ (id)splitTimeRange:(CDStruct_e83c9415)arg1 atEachMultipleOf:(CDStruct_1b6d18a9)arg2 error:(id *)arg3;
++ (id)multiplesOfTime:(CDStruct_1b6d18a9)arg1 withinTimeRange:(CDStruct_e83c9415)arg2 error:(id *)arg3;
++ (id)multiplesOfTime:(CDStruct_1b6d18a9)arg1 fromOffset:(CDStruct_1b6d18a9)arg2 count:(unsigned long long)arg3;
++ (id)multiplesOfTime:(CDStruct_1b6d18a9)arg1 count:(unsigned long long)arg2;
++ (_Bool)validateTimeRange:(CDStruct_e83c9415)arg1 hasTimescale:(int)arg2 error:(id *)arg3;
++ (_Bool)checkTimeRange:(CDStruct_e83c9415)arg1 hasTimescale:(int)arg2;
++ (CDStruct_1b6d18a9)timeWithinTimeRange:(CDStruct_e83c9415)arg1 precedingEndByMaxTime:(CDStruct_1b6d18a9)arg2;
++ (CDStruct_1b6d18a9)timeToEndOfTimeRange:(CDStruct_e83c9415)arg1 fromTimeWithinRange:(CDStruct_1b6d18a9)arg2 error:(id *)arg3;
++ (CDStruct_1b6d18a9)timeToEndOfTimeRange:(CDStruct_e83c9415)arg1 fromTime:(CDStruct_1b6d18a9)arg2;
++ (CDStruct_1b6d18a9)timeSinceBeginningOfTimeRange:(CDStruct_e83c9415)arg1 toTimeWithinRange:(CDStruct_1b6d18a9)arg2 error:(id *)arg3;
++ (CDStruct_1b6d18a9)timeSinceBeginningOfTimeRange:(CDStruct_e83c9415)arg1 toTime:(CDStruct_1b6d18a9)arg2;
++ (_Bool)validateTimeContainedInTimeRange:(CDStruct_e83c9415)arg1 time:(CDStruct_1b6d18a9)arg2 error:(id *)arg3;
++ (id)latestEndTimeInTimeRangeCollection:(id)arg1;
++ (id)latestTimeInTimeCollection:(id)arg1;
++ (CDUnknownBlockType)comparatorOrderingTimeValuesEarliestToLatest;
++ (long long)orderingFromEarliestToLatestCompareTimeValue:(id)arg1 toOther:(id)arg2;
++ (long long)orderingFromEarliestToLatestCompareTime:(CDStruct_1b6d18a9)arg1 toOther:(CDStruct_1b6d18a9)arg2;
 + (id)endTimesFromTimeRangeCollection:(id)arg1;
++ (CDStruct_1b6d18a9)selectLatestBetweenTime:(CDStruct_1b6d18a9)arg1 andTime:(CDStruct_1b6d18a9)arg2;
++ (CDStruct_1b6d18a9)selectEarliestBetweenTime:(CDStruct_1b6d18a9)arg1 andTime:(CDStruct_1b6d18a9)arg2;
++ (CDStruct_1b6d18a9)moveInStepsFromTime:(CDStruct_1b6d18a9)arg1 towardTargetTime:(CDStruct_1b6d18a9)arg2 stepSize:(CDStruct_1b6d18a9)arg3 roundingMethod:(unsigned int)arg4 movementHandler:(CDUnknownBlockType)arg5 error:(id *)arg6;
++ (CDStruct_e83c9415)timeRangeSteppingFromTime:(CDStruct_1b6d18a9)arg1 towardTargetTime:(CDStruct_1b6d18a9)arg2 stepSize:(CDStruct_1b6d18a9)arg3 roundingMethod:(unsigned int)arg4 error:(id *)arg5;
++ (CDStruct_1b6d18a9)remainderOfDividingTime:(CDStruct_1b6d18a9)arg1 byTime:(CDStruct_1b6d18a9)arg2 error:(id *)arg3;
++ (CDStruct_1b6d18a9)roundTime:(CDStruct_1b6d18a9)arg1 toMultipleOf:(CDStruct_1b6d18a9)arg2 relativeTo:(CDStruct_1b6d18a9)arg3 roundingMethod:(unsigned int)arg4 error:(id *)arg5;
++ (id)integerDivideTime:(CDStruct_1b6d18a9)arg1 byTime:(CDStruct_1b6d18a9)arg2 roundingMethod:(unsigned int)arg3 error:(id *)arg4;
++ (CDStruct_1b6d18a9)divideTime:(CDStruct_1b6d18a9)arg1 byTime:(CDStruct_1b6d18a9)arg2 error:(id *)arg3;
++ (CDStruct_1b6d18a9)timeFromAVAudioTime:(id)arg1;
++ (CDStruct_1b6d18a9)negateTime:(CDStruct_1b6d18a9)arg1;
++ (id)addOffset:(CDStruct_1b6d18a9)arg1 toTimeRanges:(id)arg2;
++ (id)addOffset:(CDStruct_1b6d18a9)arg1 toTimes:(id)arg2;
++ (CDStruct_e83c9415)subtractOffset:(CDStruct_1b6d18a9)arg1 fromTimeRange:(CDStruct_e83c9415)arg2;
++ (CDStruct_e83c9415)addOffset:(CDStruct_1b6d18a9)arg1 toTimeRange:(CDStruct_e83c9415)arg2;
++ (CDStruct_e83c9415)clipTimeRange:(CDStruct_e83c9415)arg1 toBounds:(CDStruct_e83c9415)arg2;
++ (void)clipTimeRange:(CDStruct_e83c9415)arg1 toBounds:(CDStruct_e83c9415)arg2 handler:(CDUnknownBlockType)arg3;
++ (CDStruct_e83c9415)standardizeTimeRange:(CDStruct_e83c9415)arg1 directionShouldBePositive:(_Bool)arg2 negativeShouldResideInTimescale:(_Bool)arg3;
++ (CDStruct_e83c9415)standardizeTimeRange:(CDStruct_e83c9415)arg1 negativeShouldResideInTimeScale:(_Bool)arg2;
++ (CDStruct_1b6d18a9)standardizeTime:(CDStruct_1b6d18a9)arg1 negativeShouldResideInTimescale:(_Bool)arg2;
++ (CDStruct_e83c9415)standardizeTimeRange:(CDStruct_e83c9415)arg1 directionShouldBePositive:(_Bool)arg2;
++ (CDStruct_e83c9415)convertScaleForTimeRange:(CDStruct_e83c9415)arg1 toValue:(int)arg2 preferShrinkingWhenRounding:(_Bool)arg3;
++ (CDStruct_e83c9415)convertScaleForTimeRange:(CDStruct_e83c9415)arg1 toValue:(int)arg2 startRoundingMethod:(unsigned int)arg3 durationRoundingMethod:(unsigned int)arg4;
++ (_Bool)checkTimeRange:(CDStruct_e83c9415)arg1 isEqualToOther:(CDStruct_e83c9415)arg2;
++ (_Bool)checkTimeRange:(CDStruct_e83c9415)arg1 isIdenticalToOther:(CDStruct_e83c9415)arg2;
++ (CDStruct_e83c9415)makeInvalidTimeRange;
+- (id)init;
 
 @end
 

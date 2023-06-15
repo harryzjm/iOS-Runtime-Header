@@ -10,9 +10,9 @@
 @protocol MTLCommandQueue, MTLDevice;
 
 @protocol MTLCaptureScope <NSObject>
-@property(nonatomic, readonly) id <MTLCommandQueue> commandQueue;
-@property(nonatomic, readonly) id <MTLDevice> device;
-@property(nonatomic, copy) NSString *label;
+@property(readonly, nonatomic) id <MTLCommandQueue> commandQueue;
+@property(readonly, nonatomic) id <MTLDevice> device;
+@property(copy) NSString *label;
 - (void)endScope;
 - (void)beginScope;
 @end

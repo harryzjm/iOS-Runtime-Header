@@ -6,7 +6,7 @@
 
 #import "UIView.h"
 
-@class NSArray, NSMutableArray, NSString, UIPointerInteraction, UIResponder, UISelectionGrabber, UISelectionGrabberCustomPath, UITextRangeAdjustmentInteraction, UITextSelectionView, UITouch;
+@class NSArray, NSMutableArray, NSString, UIPointerInteraction, UIResponder, UISelectionGrabber, UISelectionGrabberCustomPath, UITextSelectionView, UITouch;
 @protocol UITextInput;
 
 __attribute__((visibility("hidden")))
@@ -35,7 +35,7 @@ __attribute__((visibility("hidden")))
     UIPointerInteraction *_pointerInteraction;
     _Bool m_isClearingRange;
     _Bool m_shouldStayVisible;
-    UITextRangeAdjustmentInteraction *_adjustmentInteraction;
+    _Bool _baseIsStart;
     UISelectionGrabberCustomPath *_startCustomPath;
     UISelectionGrabberCustomPath *_endCustomPath;
     struct CGPoint m_basePoint;
@@ -47,8 +47,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) UISelectionGrabberCustomPath *endCustomPath; // @synthesize endCustomPath=_endCustomPath;
 @property(retain, nonatomic) UISelectionGrabberCustomPath *startCustomPath; // @synthesize startCustomPath=_startCustomPath;
-@property(retain, nonatomic) UITextRangeAdjustmentInteraction *adjustmentInteraction; // @synthesize adjustmentInteraction=_adjustmentInteraction;
 @property(readonly, nonatomic) struct CGPoint activeTouchPoint; // @synthesize activeTouchPoint=_activeTouchPoint;
+@property(nonatomic) _Bool baseIsStart; // @synthesize baseIsStart=_baseIsStart;
 @property(nonatomic) _Bool shouldStayVisible; // @synthesize shouldStayVisible=m_shouldStayVisible;
 @property(nonatomic) _Bool isClearingRange; // @synthesize isClearingRange=m_isClearingRange;
 @property(nonatomic) _Bool inputViewIsChanging; // @synthesize inputViewIsChanging=m_inputViewIsChanging;
@@ -73,6 +73,7 @@ __attribute__((visibility("hidden")))
 - (struct CGPoint)convertFromMagnifierPoint:(struct CGPoint)arg1;
 - (struct CGPoint)magnifierPoint;
 - (void)_cancelGrabberTransitionOutAnimations:(id)arg1;
+- (void)_setGrabber:(id)arg1 bounds:(struct CGRect)arg2 center:(struct CGPoint)arg3;
 - (void)updateGrabbers;
 - (_Bool)shouldShowGrabbers;
 - (_Bool)shouldHitTestGrabbers;
@@ -85,7 +86,6 @@ __attribute__((visibility("hidden")))
 - (void)animateHighlighterExpanderOnLayer:(id)arg1 withOffset:(struct CGPoint)arg2;
 - (void)animateHighlighterExpanderAnimation;
 @property(readonly, nonatomic) _Bool autoscrolled;
-- (struct CGPoint)applyTouchOffset:(struct CGPoint)arg1;
 - (_Bool)pointCloserToEnd:(struct CGPoint)arg1 startEdge:(struct CGRect)arg2 endEdge:(struct CGRect)arg3;
 - (void)cancelDelayedActions;
 - (void)_updateGrabbersVisibility:(_Bool)arg1 animated:(_Bool)arg2;
@@ -105,7 +105,6 @@ __attribute__((visibility("hidden")))
 - (void)prepareForMagnification;
 - (void)updateBaseAndExtentPointsFromEdges;
 - (void)updateBaseIsStartWithDocumentPoint:(struct CGPoint)arg1;
-@property(nonatomic) _Bool baseIsStart;
 - (void)updateSelectionWithDocumentPoint:(struct CGPoint)arg1;
 @property(retain, nonatomic) NSArray *rects; // @synthesize rects=m_rects;
 - (void)updateEdges;
@@ -123,6 +122,9 @@ __attribute__((visibility("hidden")))
 - (_Bool)_gestureRecognizerShouldReceiveTouch:(id)arg1;
 - (void)setMagnifierOrientation;
 - (_Bool)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (struct CGRect)paddedTextRangeAdjustmentHitRegionForEdge:(unsigned long long)arg1 precision:(unsigned long long)arg2;
+- (id)textRangeAdjustmentViewForEdge:(unsigned long long)arg1;
+- (struct CGRect)textRangeAdjustmentRectForEdge:(unsigned long long)arg1;
 - (struct CGRect)_endEdgeHitRectWithPrecision:(unsigned long long)arg1;
 - (struct CGRect)_startEdgeHitRectWithPrecision:(unsigned long long)arg1;
 - (struct CGRect)_edgeHitRectForEdgeRect:(struct CGRect)arg1 grabber:(id)arg2 precision:(unsigned long long)arg3;

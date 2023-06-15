@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 @class NSMutableDictionary, NSSet, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UICollectionLayoutAuxillaryOffsets : NSObject <NSCopying>
+@interface _UICollectionLayoutAuxillaryOffsets : NSObject
 {
     NSMutableDictionary *_offsets;
 }

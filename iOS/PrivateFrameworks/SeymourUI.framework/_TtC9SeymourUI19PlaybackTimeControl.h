@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIControl.h>
+#import <UIKitCore/UIControl.h>
 
 @class MISSING_TYPE;
 
@@ -17,9 +17,10 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *remainingTrackView;
     MISSING_TYPE *elapsedTimeLabelBottomConstraint;
     MISSING_TYPE *elapsedTrackViewWidthConstraint;
-    MISSING_TYPE *elapsedTrackMask;
     MISSING_TYPE *layout;
     MISSING_TYPE *style;
+    MISSING_TYPE *trackContainer;
+    MISSING_TYPE *trackMask;
     MISSING_TYPE *elapsedTimeFormatter;
     MISSING_TYPE *remainingTimeFormatter;
 }

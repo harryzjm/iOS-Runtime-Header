@@ -9,11 +9,11 @@
 @class UIColor;
 
 @protocol CLKUIColoringView <NSObject>
-@property(nonatomic, retain) UIColor *overrideColor;
+@property(retain, nonatomic) UIColor *overrideColor;
 @property(nonatomic) _Bool usesLegibility;
-@property(nonatomic, retain) UIColor *color;
+@property(retain, nonatomic) UIColor *color;
 
 @optional
-@property(nonatomic, readonly) UIColor *contentColor;
+@property(readonly, nonatomic) UIColor *contentColor;
 @end
 

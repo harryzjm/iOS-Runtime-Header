@@ -10,6 +10,7 @@
 
 @protocol MSVSQLExecutable <NSObject>
 - (MSVSQLRowEnumerator *)resultsForStatement:(MSVSQLStatement *)arg1;
+- (_Bool)executeStatementString:(NSString *)arg1 error:(id *)arg2;
 - (_Bool)executeStatement:(MSVSQLStatement *)arg1 error:(id *)arg2;
 - (MSVSQLStatement *)statementWithString:(NSString *)arg1 error:(id *)arg2;
 @end

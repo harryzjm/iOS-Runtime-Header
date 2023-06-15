@@ -9,10 +9,15 @@
 @class CKSelectionViewController, NSString;
 
 @protocol CKSelectionViewControllerDelegate <NSObject>
+- (_Bool)areSelectedConversationsBlocked;
+- (void)selectionViewControllerSelectedCompose;
+- (_Bool)anyConversationsExistFor:(CKSelectionViewController *)arg1;
 - (void)recoverButtonPressedOnSelectionViewController:(CKSelectionViewController *)arg1;
+- (void)deleteAllButtonPressedOnSelectionViewController:(CKSelectionViewController *)arg1;
 - (void)deleteButtonPressedOnSelectionViewController:(CKSelectionViewController *)arg1;
 - (NSString *)secondaryTextForSelectionViewController:(CKSelectionViewController *)arg1;
 - (unsigned long long)selectedCountForSelectionViewController:(CKSelectionViewController *)arg1;
+- (_Bool)shouldUseJunkFilteringConfigurationForSelectionViewController:(CKSelectionViewController *)arg1;
 - (_Bool)shouldUseRecentlyDeletedConfigurationForSelectionViewController:(CKSelectionViewController *)arg1;
 @end
 

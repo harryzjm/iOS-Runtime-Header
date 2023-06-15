@@ -22,9 +22,9 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) long long iconSize; // @synthesize iconSize=_iconSize;
 - (struct CGSize)intrinsicContentSize;
 - (void)applyStyleAttributes:(id)arg1;
-- (void)configurePortalViewIfNeeded;
+- (void)configurePortalViewIfNeededForTargetScreen:(id)arg1;
 - (void)layoutSubviews;
-- (void)configureSensorViewWithoutPortalIfNeeded;
+- (void)configureSensorViewWithoutPortalIfNeededForTargetScreen:(id)arg1;
 
 // Remaining properties
 @property(readonly, nonatomic) UIAccessibilityHUDItem *accessibilityHUDRepresentation;

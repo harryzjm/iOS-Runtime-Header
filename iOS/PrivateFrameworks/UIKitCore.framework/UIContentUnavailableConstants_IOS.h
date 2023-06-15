@@ -11,50 +11,27 @@
 __attribute__((visibility("hidden")))
 @interface UIContentUnavailableConstants_IOS : NSObject
 {
-    CDUnknownBlockType _buttonTextAttributesTransformer;
 }
 
 + (id)sharedConstants;
-- (void).cxx_destruct;
 - (long long)defaultUserInterfaceRenderingMode;
-- (unsigned long long)defaultLoadingViewElements;
-- (unsigned long long)defaultEmptyViewElements;
-- (double)defaultMaximumWidthForTraitCollection:(id)arg1;
 - (struct NSDirectionalEdgeInsets)defaultDirectionalLayoutMarginsForTraitCollection:(id)arg1;
-- (double)defaultEmptyExtraProminentButtonToSecondaryButtonPadding;
-- (double)defaultEmptyProminentButtonToSecondaryButtonPadding;
-- (double)defaultEmptyButtonToSecondaryButtonPadding;
-- (double)defaultEmptyExtraProminentTextToButtonPadding;
-- (double)defaultEmptyProminentTextToButtonPadding;
-- (double)defaultEmptyTextToButtonPadding;
-- (double)defaultEmptyExtraProminentTextToSecondaryTextPadding;
-- (double)defaultEmptyProminentTextToSecondaryTextPadding;
-- (double)defaultEmptyTextToSecondaryTextPadding;
-- (double)defaultLoadingImageToTextPadding;
-- (double)defaultEmptyExtraProminentImageToTextPadding;
-- (double)defaultEmptyProminentImageToTextPadding;
-- (double)defaultEmptyImageToTextPadding;
-- (unsigned long long)defaultButtonLayoutAxis;
+- (double)defaultEmptyButtonToSecondaryButtonPaddingForTraitCollection:(id)arg1;
+- (double)defaultEmptyTextToButtonPaddingForTraitCollection:(id)arg1;
+- (double)defaultEmptyTextToSecondaryTextPaddingForTraitCollection:(id)arg1;
+- (double)defaultLoadingImageToTextPaddingForTraitCollection:(id)arg1;
+- (double)defaultEmptyImageToTextPaddingForTraitCollection:(id)arg1;
+- (_Bool)prefersSideBySideButtonAndSecondaryButton;
 - (id)defaultButtonConfigurationForTraitCollection:(id)arg1;
 - (id)defaultSecondaryTextColor;
-- (id)defaultEmptyExtraProminentSecondaryTextFontForTraitCollection:(id)arg1;
-- (id)defaultEmptyProminentSecondaryTextFontForTraitCollection:(id)arg1;
 - (id)defaultEmptySecondaryTextFontForTraitCollection:(id)arg1;
 - (id)defaultLoadingTextColor;
-- (id)defaultEmptyExtraProminentTextColor;
-- (id)defaultEmptyProminentTextColor;
-- (id)defaultEmptyTextColor;
+- (id)defaultEmptyTextColorForTraitCollection:(id)arg1;
 - (id)defaultLoadingTextFontForTraitCollection:(id)arg1;
-- (id)defaultEmptyExtraProminentTextFontForTraitCollection:(id)arg1;
-- (id)defaultEmptyProminentTextFontForTraitCollection:(id)arg1;
 - (id)defaultEmptyTextFontForTraitCollection:(id)arg1;
 - (id)defaultLoadingImageTintColor;
-- (id)defaultEmptyExtraProminentImageTintColor;
-- (id)defaultEmptyProminentImageTintColor;
 - (id)defaultEmptyImageTintColor;
 - (id)defaultLoadingImageSymbolConfigurationForTraitCollection:(id)arg1;
-- (id)defaultEmptyExtraProminentImageSymbolConfigurationForTraitCollection:(id)arg1;
-- (id)defaultEmptyProminentImageSymbolConfigurationForTraitCollection:(id)arg1;
 - (id)defaultEmptyImageSymbolConfigurationForTraitCollection:(id)arg1;
 
 // Remaining properties

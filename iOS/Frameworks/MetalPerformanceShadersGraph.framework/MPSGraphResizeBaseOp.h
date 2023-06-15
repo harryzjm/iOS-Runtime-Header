@@ -15,6 +15,7 @@
     unsigned long long _layout;
 }
 
+- (id)initWithGraph:(id)arg1 inputTensors:(id)arg2 controlDependencies:(id)arg3 mode:(unsigned long long)arg4 nearestRoundingMode:(unsigned long long)arg5 centerResult:(_Bool)arg6 alignCorners:(_Bool)arg7 name:(id)arg8;
 - (id)initWithGraph:(id)arg1 inputTensors:(id)arg2 controlDependencies:(id)arg3 mode:(unsigned long long)arg4 nearestRoundingMode:(unsigned long long)arg5 centerResult:(_Bool)arg6 alignCorners:(_Bool)arg7 layout:(unsigned long long)arg8 name:(id)arg9;
 
 @end

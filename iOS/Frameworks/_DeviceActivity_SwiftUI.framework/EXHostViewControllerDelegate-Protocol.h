@@ -6,12 +6,11 @@
 
 #import <_DeviceActivity_SwiftUI/NSObject-Protocol.h>
 
-@class EXHostViewController, NSError, NSXPCConnection;
+@class EXHostViewController, NSError;
 
 @protocol EXHostViewControllerDelegate <NSObject>
 
 @optional
-- (_Bool)shouldAcceptXPCConnection:(NSXPCConnection *)arg1;
 - (void)hostViewControllerWillDeactivate:(EXHostViewController *)arg1 error:(NSError *)arg2;
 - (void)hostViewControllerDidActivate:(EXHostViewController *)arg1;
 @end

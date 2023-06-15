@@ -44,6 +44,7 @@ __attribute__((visibility("hidden")))
 - (id)_shadowView;
 - (void)set_backgroundEffectView:(id)arg1;
 - (id)_backgroundEffectView;
+- (void)transitionBackgroundViewsAnimated:(_Bool)arg1;
 - (void)transitionBackgroundViews;
 - (void)cleanupBackgroundViews;
 - (void)updateBackground;

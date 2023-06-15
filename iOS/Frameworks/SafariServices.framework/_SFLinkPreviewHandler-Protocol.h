@@ -7,6 +7,7 @@
 #import <SafariServices/BCSActionDelegate-Protocol.h>
 
 @class NSString, NSURL, UIMenu, UIViewController, _SFLinkPreviewHelper, _SFNavigationIntent, _SFNavigationResult;
+@protocol _SFBrowserViewProviding;
 
 @protocol _SFLinkPreviewHandler <BCSActionDelegate>
 - (void)linkPreviewHelper:(_SFLinkPreviewHelper *)arg1 didProduceNavigationIntent:(_SFNavigationIntent *)arg2 forAction:(long long)arg3;
@@ -14,7 +15,7 @@
 - (_SFNavigationResult *)linkPreviewHelper:(_SFLinkPreviewHelper *)arg1 resultOfLoadingURL:(NSURL *)arg2;
 - (_Bool)linkPreviewHelper:(_SFLinkPreviewHelper *)arg1 supportsAction:(long long)arg2 forURL:(NSURL *)arg3;
 - (void)linkPreviewHelper:(_SFLinkPreviewHelper *)arg1 commitPreviewViewControllerForAction:(long long)arg2 withTabOrder:(long long)arg3;
-- (UIViewController *)linkPreviewHelper:(_SFLinkPreviewHelper *)arg1 previewViewControllerForURL:(NSURL *)arg2;
+- (UIViewController<_SFBrowserViewProviding> *)linkPreviewHelper:(_SFLinkPreviewHelper *)arg1 previewViewControllerForURL:(NSURL *)arg2;
 
 @optional
 - (UIMenu *)openInTabGroupMenuWithNewTabGroupName:(NSString *)arg1 URL:(NSURL *)arg2 descendantCount:(long long)arg3 handler:(void (^)(void))arg4;

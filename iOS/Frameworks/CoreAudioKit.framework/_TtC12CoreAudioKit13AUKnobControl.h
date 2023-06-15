@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIControl.h>
+#import <UIKitCore/UIControl.h>
 
 @class MISSING_TYPE;
 
@@ -28,17 +28,16 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+- (_Bool)gestureRecognizerShouldBegin:(id)arg1;
 - (void)endTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (_Bool)continueTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (_Bool)beginTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (void)tintColorDidChange;
-- (void)configureWith:(id)arg1;
 - (void)accessibilityDecrement;
 - (void)accessibilityIncrement;
 @property(nonatomic) unsigned long long accessibilityTraits;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-@property(nonatomic) float value; // @synthesize value;
 
 @end
 

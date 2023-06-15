@@ -9,9 +9,9 @@
 @protocol NUANFDebugSettingsObserver;
 
 @protocol NUANFDebugSettingsProvider <NSObject>
+@property(readonly, nonatomic) _Bool testingConditionEnabled;
+@property(readonly, nonatomic) _Bool viewportDebuggingEnabled;
 - (void)removeObserver:(id <NUANFDebugSettingsObserver>)arg1;
 - (void)addObserver:(id <NUANFDebugSettingsObserver>)arg1;
-@property(nonatomic, readonly) _Bool testingConditionEnabled;
-@property(nonatomic, readonly) _Bool viewportDebuggingEnabled;
 @end
 

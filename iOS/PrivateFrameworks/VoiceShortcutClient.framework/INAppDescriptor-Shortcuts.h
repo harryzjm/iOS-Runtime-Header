@@ -7,7 +7,9 @@
 #import <Intents/INAppDescriptor.h>
 
 @interface INAppDescriptor (Shortcuts)
-- (_Bool)isThirdParty;
+- (id)selfIfNotShortcutsApp;
+@property(readonly, nonatomic, getter=isShortcutsApp) _Bool shortcutsApp;
+@property(readonly, nonatomic, getter=isThirdParty) _Bool thirdParty;
 - (_Bool)isEqualForSmartPromptPurposes:(id)arg1;
 - (unsigned long long)hashForSmartPromptPurposes;
 - (id)_descriptorWithExtensionBundleIdentifier:(id)arg1;

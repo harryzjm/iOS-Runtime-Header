@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSData, NSString;
+@class CKRoughlyEquivalentProperties, NSData, NSString;
 
 @interface CKDShortTokenLookupInfo : NSObject
 {
@@ -26,6 +26,7 @@
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+@property(readonly, nonatomic) CKRoughlyEquivalentProperties *equivalencyProperties;
 
 @end
 

@@ -9,7 +9,10 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (id)_posixOwnerForDeletedPathForContainerClass:(unsigned long long)arg1 user:(id)arg2;
++ (id)_deletedComponent;
 + (id)deletedURLWithUserIdentity:(id)arg1;
++ (id)deletedGlobalURL;
 + (id)containerPathForUserIdentity:(id)arg1 containerClass:(unsigned long long)arg2;
 
 @end

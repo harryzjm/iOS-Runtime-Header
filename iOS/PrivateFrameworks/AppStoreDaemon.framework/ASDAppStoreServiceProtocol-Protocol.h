@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSURL;
+@class NSArray, NSObject, NSURL;
+@protocol OS_nw_endpoint, OS_nw_parameters;
 
 @protocol ASDAppStoreServiceProtocol
+- (void)reloadWidgetOnConnectivityToEndpoint:(NSObject<OS_nw_endpoint> *)arg1 parameters:(NSObject<OS_nw_parameters> *)arg2 replyHandler:(void (^)(_Bool, NSError *))arg3;
 - (void)removeBadgeMetricsForBadgeIDs:(NSArray *)arg1 replyHandler:(void (^)(_Bool, NSError *))arg2;
 - (void)removeBadgeIDs:(NSArray *)arg1 replyHandler:(void (^)(_Bool, NSError *))arg2;
 - (void)removeAllBadgeIDsWithReplyHandler:(void (^)(_Bool, NSError *))arg1;

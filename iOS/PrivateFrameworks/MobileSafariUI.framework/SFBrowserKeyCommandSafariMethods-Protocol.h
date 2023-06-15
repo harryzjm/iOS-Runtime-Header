@@ -9,6 +9,7 @@
 @class UIKeyCommand;
 
 @protocol SFBrowserKeyCommandSafariMethods <SFBrowserKeyCommandSharedMethods>
+- (void)switchToProfileKeyPressed:(UIKeyCommand *)arg1;
 - (void)emptySelectorForDownloadModifierLinkTap;
 - (void)emptySelectorForAddLinkToReadingListModifierLinkTap;
 - (void)emptySelectorForOpenInNewTabOppositePreferenceModifierLinkTap;
@@ -42,6 +43,7 @@
 - (void)openNewTab:(id)arg1;
 
 @optional
+- (void)toggleShowWebpageStatusBar;
 - (void)nextTabGroupKeyPressed;
 - (void)previousTabGroupKeyPressed;
 - (void)renameTabGroupKeyPressed;
@@ -52,6 +54,7 @@
 - (void)share:(id)arg1;
 - (void)mergeAllWindows:(id)arg1;
 - (void)openNewPrivateWindow:(id)arg1;
+- (void)openNewWindowInFrontmostProfile:(id)arg1;
 - (void)openNewWindow:(id)arg1;
 - (void)addAllTabsToBookmarks:(id)arg1;
 - (void)closeAllTabsMatchingSearch:(id)arg1;

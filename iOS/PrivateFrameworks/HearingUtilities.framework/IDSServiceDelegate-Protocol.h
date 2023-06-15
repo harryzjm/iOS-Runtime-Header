@@ -11,6 +11,7 @@
 @protocol IDSServiceDelegate <NSObject>
 
 @optional
+- (void)service:(IDSService *)arg1 didCancelMessageWithSuccess:(_Bool)arg2 error:(NSError *)arg3 identifier:(NSString *)arg4;
 - (void)service:(IDSService *)arg1 didSwitchActivePairedDevice:(IDSDevice *)arg2 acknowledgementBlock:(void (^)(void))arg3;
 - (void)serviceAllowedTrafficClassifiersDidReset:(IDSService *)arg1;
 - (void)serviceSpaceDidBecomeAvailable:(IDSService *)arg1;
@@ -31,6 +32,7 @@
 - (void)service:(IDSService *)arg1 devicesChanged:(NSArray *)arg2;
 - (void)service:(IDSService *)arg1 activeAccountsChanged:(NSSet *)arg2;
 - (void)service:(IDSService *)arg1 account:(IDSAccount *)arg2 incomingPendingMessageOfType:(long long)arg3 fromID:(NSString *)arg4 context:(IDSMessageContext *)arg5;
+- (void)service:(IDSService *)arg1 account:(IDSAccount *)arg2 pendingResourceWithMetadata:(NSDictionary *)arg3 fromID:(NSString *)arg4 acknowledgementBlock:(void (^)(_Bool))arg5 context:(IDSMessageContext *)arg6;
 - (void)service:(IDSService *)arg1 account:(IDSAccount *)arg2 incomingResourceAtURL:(NSURL *)arg3 metadata:(NSDictionary *)arg4 fromID:(NSString *)arg5 context:(IDSMessageContext *)arg6;
 - (void)service:(IDSService *)arg1 account:(IDSAccount *)arg2 incomingResourceAtURL:(NSURL *)arg3 fromID:(NSString *)arg4 context:(IDSMessageContext *)arg5;
 - (void)service:(IDSService *)arg1 account:(IDSAccount *)arg2 incomingUnhandledProtobuf:(IDSProtobuf *)arg3 fromID:(NSString *)arg4 context:(IDSMessageContext *)arg5;

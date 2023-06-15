@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSNumber, NSString, NSURL, WBSGlobalFrameIdentifier, _WKFrameHandle;
+@class NSData, NSNumber, NSString, NSURL, WBSGlobalFrameIdentifier, _WKFrameHandle;
 
 __attribute__((visibility("hidden")))
 @interface SFFormAutoFillFrameHandle : NSObject
@@ -17,12 +17,14 @@ __attribute__((visibility("hidden")))
     NSNumber *_pageID;
 }
 
++ (id)frameHandleFromSerializedData:(id)arg1;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSNumber *pageID; // @synthesize pageID=_pageID;
 @property(readonly, nonatomic) _WKFrameHandle *frameHandle; // @synthesize frameHandle=_frameHandle;
 @property(readonly, nonatomic) struct __SecTrust *webui_serverTrust;
 @property(readonly, nonatomic) NSURL *webui_URL;
+@property(readonly, copy, nonatomic) NSData *serializedData;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

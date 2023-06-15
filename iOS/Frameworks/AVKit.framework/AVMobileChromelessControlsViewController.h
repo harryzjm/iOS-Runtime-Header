@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class AVButton, AVMediaSelectionMenuController, AVMobileAuxiliaryControl, AVMobileAuxiliaryControlsView, AVMobileChromelessBackgroundGradientView, AVMobileChromelessControlsStyleSheet, AVMobileChromelessDisplayModeControlsView, AVMobileChromelessPlaybackControlsView, AVMobileChromelessTimelineView, AVMobileChromelessVolumeControlsView, AVMobilePlaybackRateMenuController, AVMobileTitlebarView, AVObservationController, AVPlayerControllerTimeResolver, AVRoutePickerView, AVTimeFormatter, NSArray, NSLayoutConstraint, NSString, NSTimer, UIAction, UILayoutGuide, UIMenu, UIView, UIViewPropertyAnimator;
+@class AVButton, AVMediaSelectionMenuController, AVMobileAuxiliaryControl, AVMobileChromelessControlsStyleSheet, AVMobileChromelessControlsView, AVMobileContentTabPresentationContext, AVMobilePlaybackRateMenuController, AVMobileSliderMark, AVObservationController, AVPlayerControllerTimeResolver, AVRoutePickerView, AVTimeFormatter, NSArray, NSDateFormatter, NSLayoutConstraint, NSString, NSTimer, UIAction, UILayoutGuide, UIMenu, UIPanGestureRecognizer, UITapGestureRecognizer, UIViewController, UIViewPropertyAnimator;
 @protocol AVMobileChromelessControlsViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -14,25 +14,23 @@ __attribute__((visibility("hidden")))
     AVObservationController *_webKitExcludedObservationController;
     _Bool _hasBeenSetUp;
     AVMobileChromelessControlsStyleSheet *_styleSheet;
-    UIView *_view;
-    AVMobileChromelessBackgroundGradientView *_gradientBackgroundView;
-    AVMobileChromelessDisplayModeControlsView *_displayModeControlsView;
-    AVMobileChromelessPlaybackControlsView *_playbackControlsView;
-    AVMobileChromelessVolumeControlsView *_volumeControlsView;
-    AVMobileChromelessTimelineView *_timelineView;
-    AVMobileTitlebarView *_titlebarView;
-    AVMobileAuxiliaryControlsView *_auxiliaryControlsView;
-    AVRoutePickerView *_routePickerView;
+    AVMobileChromelessControlsView *_view;
     NSArray *_pinnedAuxiliaryControls;
     AVMobileAuxiliaryControl *_audibleMediaSelectionControl;
     AVMobileAuxiliaryControl *_legibleMediaSelectionControl;
     AVMobileAuxiliaryControl *_playbackSpeedControl;
     AVMobileAuxiliaryControl *_routePickerControl;
+    AVMobileAuxiliaryControl *_jumpToLiveControl;
     AVMobileAuxiliaryControl *_analysisControl;
+    AVMobileAuxiliaryControl *_copySubjectControl;
+    AVMobileAuxiliaryControl *_visualLookupControl;
     UIMenu *_audibleMediaSelectionMenu;
     UIMenu *_legibleMediaSelectionMenu;
-    AVButton *_analysisToggleButton;
+    AVRoutePickerView *_routePickerView;
+    AVButton *_jumpToLiveButton;
     UIAction *_analysisToggleAction;
+    UIAction *_copySubjectAction;
+    UIAction *_visualLookupAction;
     double _systemKeyboardUIHeight;
     UIViewPropertyAnimator *_keyboardUIAvoidanceAnimator;
     _Bool _volumeSliderTemporarilyVisibileInFullscreen;
@@ -43,24 +41,19 @@ __attribute__((visibility("hidden")))
     AVPlayerControllerTimeResolver *_timeResolver;
     AVTimeFormatter *_elapsedTimeFormatter;
     AVTimeFormatter *_remainingTimeFormatter;
+    NSDateFormatter *_dateFormatter;
     _Bool _needsTimeResolverUpdate;
     AVMobilePlaybackRateMenuController *_playbackSpeedMenuController;
     AVMediaSelectionMenuController *_mediaSelectionMenuController;
     _Bool _runningLoadingAnimation;
     UIViewPropertyAnimator *_loadingAnimator;
-    struct AVMobileChromelessControlsVisibilityState_st _currentVisibilityState;
+    struct AVMobileChromelessControlsVisibilityState _currentVisibilityState;
     _Bool _needsControlsVisibilityStateUpdate;
     NSTimer *_visibilityTimer;
     UIViewPropertyAnimator *_visibilityAnimator;
     _Bool _controlsExpanded;
     _Bool _temporarilyVisibile;
     long long _userInteractionCount;
-    _Bool _canFitVolumeControls;
-    _Bool _canFitDisplayModeControls;
-    _Bool _canFitPlaybackControls;
-    _Bool _canFitTimelineControls;
-    _Bool _canFitTitlebar;
-    _Bool _canFitAuxiliaryControls;
     UILayoutGuide *_displayModeControlsLayoutGuide;
     UILayoutGuide *_transportControlsLayoutGuide;
     UILayoutGuide *_volumeControlsLayoutGuide;
@@ -71,34 +64,48 @@ __attribute__((visibility("hidden")))
     NSLayoutConstraint *_defaultTopAnchorConstraint;
     NSArray *_auxiliaryControlsForControlItems;
     UIViewPropertyAnimator *_timelineSliderEmphasisAnimator;
+    AVMobileSliderMark *_liveEdgeSliderMark;
+    NSArray *_customInfoViewControllers;
+    _Bool _contentTabPresented;
+    UIViewController *_selectedCustomInfoViewController;
+    UIViewController *_activeCustomInfoViewController;
+    double _contentTabPanGestureTranslationScaleFactor;
+    double _contentTabInteractivePresentationInitialFractionComplete;
+    UIViewPropertyAnimator *_contentTabViewPresentationAnimator;
+    UIPanGestureRecognizer *_contentTabPanGestureRecognizer;
+    UITapGestureRecognizer *_contentTabTapGestureRecognizer;
+    AVMobileContentTabPresentationContext *_contentTabPresentationContext;
     _Bool _showsAnalysisControl;
+    _Bool _showsCopySubjectControl;
+    _Bool _showsVisualLookupControl;
+    _Bool _showsAudioTrackSelectionMenu;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) AVMobileContentTabPresentationContext *contentTabPresentationContext; // @synthesize contentTabPresentationContext=_contentTabPresentationContext;
+@property(nonatomic) _Bool showsAudioTrackSelectionMenu; // @synthesize showsAudioTrackSelectionMenu=_showsAudioTrackSelectionMenu;
+@property(nonatomic) _Bool showsVisualLookupControl; // @synthesize showsVisualLookupControl=_showsVisualLookupControl;
+@property(nonatomic) _Bool showsCopySubjectControl; // @synthesize showsCopySubjectControl=_showsCopySubjectControl;
 @property(nonatomic) _Bool showsAnalysisControl; // @synthesize showsAnalysisControl=_showsAnalysisControl;
-- (id)_sliderMarkForInterstitialTimeRange:(id)arg1;
-- (void)_timelineSliderTrackingStateDidChange:(id)arg1;
+@property(retain, nonatomic) NSArray *customInfoViewControllers; // @synthesize customInfoViewControllers=_customInfoViewControllers;
+- (void)_timelineSliderTrackingStateDidChange;
 - (void)_timelineSliderDidChangeValue:(id)arg1;
-- (void)_handleAnalysisToggleButton;
-- (void)_updatePrefersVolumeSliderIncludedAnimated:(_Bool)arg1;
-- (void)_updateLegibleMediaSelectionControlInclusionState;
-- (void)_updatePrefersSystemVolumeHUDHidden;
-- (void)_updateAudibleMediaSelectionControlInclusionState;
+- (void)_handleJumpToLiveButton;
 - (void)_updateStyleSheet;
+- (void)_contentTabTapGestureRecognizerTriggered:(id)arg1;
+- (void)_contentTabPanGestureRecognizerTriggered:(id)arg1;
 - (void)_updateControlsVisibilityStateIfNeededAnimated:(id)arg1;
-- (void)_incrementUserInteractionCount;
-- (void)_willBeginUpdatingControlsVisibilityStateTo:(struct AVMobileChromelessControlsVisibilityState_st)arg1 withAnimationCoordinator:(id)arg2;
-- (void)_didEndUpdatingControlsVisibilityStateTo:(struct AVMobileChromelessControlsVisibilityState_st)arg1 completed:(_Bool)arg2;
-- (void)_didBeginUpdatingControlsVisibilityStateTo:(struct AVMobileChromelessControlsVisibilityState_st)arg1 withAnimationCoordinator:(id)arg2;
 - (void)routePickerViewDidEndPresentingRoutes:(id)arg1;
 - (void)routePickerViewWillBeginPresentingRoutes:(id)arg1;
 - (void)webkitPlayerController:(id)arg1 didUpdateSeekToTime:(double)arg2;
 - (void)webkitPlayerController:(id)arg1 didChangeScrubbingStateTo:(_Bool)arg2;
 - (void)fullscreenControllerDidChangePresentationState:(id)arg1;
+- (void)contentTabSelectionView:(id)arg1 didChangeSelectedTabTo:(id)arg2 withReason:(unsigned long long)arg3;
+- (void)slider:(id)arg1 didUpdateFrame:(struct CGRect)arg2 forSliderMark:(id)arg3;
 - (void)sliderDidEndTracking:(id)arg1;
 - (void)sliderDidBeginTracking:(id)arg1;
-- (void)playbackControlsViewRightSecondaryControlWasPressed:(id)arg1;
-- (void)playbackControlsViewLeftSecondaryControlWasPressed:(id)arg1;
+- (void)playbackControlsViewForwardSecondaryControlWasPressed:(id)arg1;
+- (void)playbackControlsViewBackwardSecondaryControlWasPressed:(id)arg1;
 - (void)playbackControlsViewPlayPauseButtonWasPressed:(id)arg1;
 - (void)displayModeControlsViewPictureInPictureButtonWasPressed:(id)arg1;
 - (void)displayModeControlsViewFullscreenButtonWasPressed:(id)arg1;
@@ -109,7 +116,10 @@ __attribute__((visibility("hidden")))
 - (id)auxiliaryControlsView:(id)arg1 menuElementForControl:(id)arg2;
 - (void)auxiliaryControlsViewWillBeginShowingOverflowMenu:(id)arg1;
 - (void)auxiliaryControlsViewDidEndShowingOverflowMenu:(id)arg1;
+- (id)mediaSelectionMenuController:(id)arg1 displayNameForMediaSelectionOption:(id)arg2;
 - (void)mediaSelectionMenuController:(id)arg1 didSelectOption:(id)arg2 atIndex:(unsigned long long)arg3;
+- (void)chromelessControlsView:(id)arg1 didDetachControlsViews:(id)arg2;
+- (void)chromelessControlsView:(id)arg1 didAttachControlsViews:(id)arg2;
 - (void)controlItemDidUpdateVisualConfiguration:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
@@ -120,6 +130,7 @@ __attribute__((visibility("hidden")))
 - (void)updateVisibilityPolicy:(unsigned long long)arg1 animated:(_Bool)arg2;
 - (void)toggleVisibility:(id)arg1;
 - (void)flashControlsWithDuration:(double)arg1;
+- (id)controlsViewControllerIfChromeless;
 - (id)volumeControlsLayoutItem;
 - (void)setVolumeController:(id)arg1;
 - (unsigned long long)visibileControls;
@@ -132,11 +143,15 @@ __attribute__((visibility("hidden")))
 - (void)setPlaybackSpeedCollection:(id)arg1;
 - (void)setOptimizeForPerformance:(_Bool)arg1;
 - (void)setIncludedControls:(unsigned long long)arg1;
+- (void)setExcludedControls:(unsigned long long)arg1;
 - (void)setFullscreenController:(id)arg1;
 - (id)displayModeControlsLayoutItem;
 - (void)setControlItems:(id)arg1;
 - (void)setShowsFullScreenControl:(_Bool)arg1;
+@property(readonly, nonatomic) struct CGRect unobscuredContentArea;
 - (void)dealloc;
+- (id)init;
+- (id)controlsView;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

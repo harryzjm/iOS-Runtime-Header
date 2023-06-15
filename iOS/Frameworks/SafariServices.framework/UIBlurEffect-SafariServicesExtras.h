@@ -7,6 +7,7 @@
 #import <UIKit/UIBlurEffect.h>
 
 @interface UIBlurEffect (SafariServicesExtras)
++ (id)_sf_defaultStartPageBackgroundEffect;
 + (id)_sf_defaultPopoverBackgroundEffect;
 @end
 

@@ -18,9 +18,9 @@
     _Bool _ignoreAnnotationAndSelectionKVO;
     _Bool _isShowingOverlay;
     _Bool _isWaitingToCoalesceStrokes;
+    AKSmoothPathView *_intelligentSketchOverlayView;
     AKShapeDetectionController *_shapeDetectionController;
     AKController *_controller;
-    AKSmoothPathView *_intelligentSketchOverlayView;
     CDUnknownBlockType _performRecognitionBlock;
     AKAnnotation *_coalescedAnnotation;
     NSMutableArray *_recentDoodlesAnnotations;
@@ -37,10 +37,10 @@
 @property(retain) NSMutableArray *recentDoodlesAnnotations; // @synthesize recentDoodlesAnnotations=_recentDoodlesAnnotations;
 @property(retain) AKAnnotation *coalescedAnnotation; // @synthesize coalescedAnnotation=_coalescedAnnotation;
 @property(copy, nonatomic) CDUnknownBlockType performRecognitionBlock; // @synthesize performRecognitionBlock=_performRecognitionBlock;
-@property(retain, nonatomic) AKSmoothPathView *intelligentSketchOverlayView; // @synthesize intelligentSketchOverlayView=_intelligentSketchOverlayView;
 @property __weak AKController *controller; // @synthesize controller=_controller;
 @property(retain, nonatomic) AKShapeDetectionController *shapeDetectionController; // @synthesize shapeDetectionController=_shapeDetectionController;
 @property _Bool pressureSensitiveDoodleMode; // @synthesize pressureSensitiveDoodleMode=_pressureSensitiveDoodleMode;
+@property(retain, nonatomic) AKSmoothPathView *intelligentSketchOverlayView; // @synthesize intelligentSketchOverlayView=_intelligentSketchOverlayView;
 @property(nonatomic) _Bool selectNewlyCreatedAnnotations; // @synthesize selectNewlyCreatedAnnotations=_selectNewlyCreatedAnnotations;
 @property(nonatomic, getter=shapeDetectionEnabled) _Bool shapeDetectionEnabled; // @synthesize shapeDetectionEnabled=_shapeDetectionEnabled;
 @property(nonatomic) _Bool coalescesDoodles; // @synthesize coalescesDoodles=_coalescesDoodles;

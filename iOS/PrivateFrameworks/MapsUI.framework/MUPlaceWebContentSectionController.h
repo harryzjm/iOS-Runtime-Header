@@ -6,7 +6,7 @@
 
 #import "MUPlaceSectionController.h"
 
-@class GEOWebContentModuleConfiguration, MKUGCCallToActionViewAppearance, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, MUPlaceSectionView, MUWebContentViewController, NSArray, NSString, UIView, UIViewController;
+@class GEOWebContentModuleConfiguration, MUPlaceCallToActionAppearance, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, MUPlaceSectionView, MUWebContentViewController, NSArray, NSString, UIView, UIViewController;
 @protocol MUInfoCardAnalyticsDelegate, MUPlaceWebContentSectionControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -44,7 +44,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) MUPlaceSectionFooterViewModel *sectionFooterViewModel;
 @property(readonly, nonatomic) MUPlaceSectionHeaderViewModel *sectionHeaderViewModel;
 @property(readonly, nonatomic) NSArray *sectionViews;
-@property(retain, nonatomic) MKUGCCallToActionViewAppearance *submissionStatus;
+@property(retain, nonatomic) MUPlaceCallToActionAppearance *submissionStatus;
 @property(readonly) Class superclass;
 
 @end

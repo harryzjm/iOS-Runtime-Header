@@ -6,12 +6,13 @@
 
 #import <MobileSafariUI/UITableViewDragDelegate-Protocol.h>
 
-@class NSIndexPath, UITableView;
+@class NSIndexPath, UITableView, _UIDragSessionProperties;
 @protocol UIDragSession;
 
 @protocol UITableViewDragDelegate_Private <UITableViewDragDelegate>
 
 @optional
+- (_UIDragSessionProperties *)_tableView:(UITableView *)arg1 dragSessionPropertiesForSession:(id <UIDragSession>)arg2;
 - (_Bool)_tableView:(UITableView *)arg1 dragSessionSupportsSystemDrag:(id <UIDragSession>)arg2;
 - (long long)_tableView:(UITableView *)arg1 dataOwnerForDragSession:(id <UIDragSession>)arg2 atIndexPath:(NSIndexPath *)arg3;
 @end

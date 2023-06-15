@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MPCPlayerResponse, MRUArtwork, MRUEndpointController, MRUNowPlayingInfo, MRUTimeControls, MRUTransportControls, NSString, UIImage;
+@class MPCPlayerResponse, MRUArtwork, MRUEndpointController, MRUNowPlayingInfo, MRUTimeControls, MRUTransportControls, NSString;
 @protocol MRUMetadataDataSourceDelegate;
 
 __attribute__((visibility("hidden")))
@@ -20,15 +20,11 @@ __attribute__((visibility("hidden")))
     id <MRUMetadataDataSourceDelegate> _delegate;
     MRUEndpointController *_endpointController;
     MPCPlayerResponse *_response;
-    UIImage *_appIcon;
-    NSString *_iconURL;
     unsigned long long _stateHandle;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) unsigned long long stateHandle; // @synthesize stateHandle=_stateHandle;
-@property(retain, nonatomic) NSString *iconURL; // @synthesize iconURL=_iconURL;
-@property(retain, nonatomic) UIImage *appIcon; // @synthesize appIcon=_appIcon;
 @property(retain, nonatomic) MPCPlayerResponse *response; // @synthesize response=_response;
 @property(readonly, nonatomic) MRUEndpointController *endpointController; // @synthesize endpointController=_endpointController;
 @property(nonatomic) __weak id <MRUMetadataDataSourceDelegate> delegate; // @synthesize delegate=_delegate;
@@ -38,8 +34,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) MRUArtwork *artwork; // @synthesize artwork=_artwork;
 @property(readonly, copy, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
 - (id)_stateDumpObject;
-- (void)updateAppIconWithResponse:(id)arg1;
-- (void)updateAppIcon;
 - (id)placeholderSymbolName;
 - (id)placeholder;
 - (void)updateTransportControlsWithResponse:(id)arg1;

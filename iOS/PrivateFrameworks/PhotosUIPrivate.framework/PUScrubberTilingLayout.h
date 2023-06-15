@@ -40,11 +40,13 @@ __attribute__((visibility("hidden")))
     double _loupeAmount;
     NSIndexPath *_expandedItemIndexPath;
     double _expandedItemPlayheadProgress;
+    double _timeIndicatorVerticalOffset;
     struct CGSize _interItemSpacing;
     struct UIEdgeInsets _contentPadding;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) double timeIndicatorVerticalOffset; // @synthesize timeIndicatorVerticalOffset=_timeIndicatorVerticalOffset;
 @property(nonatomic) _Bool shouldHighlightSelectedItems; // @synthesize shouldHighlightSelectedItems=_shouldHighlightSelectedItems;
 @property(nonatomic) _Bool snapToExpandedItem; // @synthesize snapToExpandedItem=_snapToExpandedItem;
 @property(nonatomic) double expandedItemPlayheadProgress; // @synthesize expandedItemPlayheadProgress=_expandedItemPlayheadProgress;

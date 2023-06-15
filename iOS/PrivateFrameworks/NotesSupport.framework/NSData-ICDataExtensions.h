@@ -9,6 +9,7 @@
 @class NSString;
 
 @interface NSData (ICDataExtensions)
++ (id)ic_dataFromHexString:(id)arg1;
 + (id)ic_random256BitData:(id *)arg1;
 + (id)ic_random128BitData:(id *)arg1;
 + (id)ic_randomDataOfLength:(unsigned long long)arg1 error:(id *)arg2;
@@ -20,7 +21,7 @@
 - (id)ic_stringValue;
 @property(readonly, nonatomic) NSString *ic_sha256;
 @property(readonly, nonatomic) NSString *ic_md5;
-- (id)TT_gzipDeflate;
-- (id)TT_gzipInflate;
+- (id)ic_gzipDeflate;
+- (id)ic_gzipInflate;
 @end
 

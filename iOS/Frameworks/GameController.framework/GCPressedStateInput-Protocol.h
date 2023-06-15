@@ -6,7 +6,10 @@
 
 #import <GameController/NSObject-Protocol.h>
 
+@class NSSet;
+
 @protocol GCPressedStateInput <NSObject>
+@property(readonly, copy) NSSet *sources;
 @property(readonly) double lastPressedStateLatency;
 @property(readonly) double lastPressedStateTimestamp;
 @property(readonly, getter=isPressed) _Bool pressed;

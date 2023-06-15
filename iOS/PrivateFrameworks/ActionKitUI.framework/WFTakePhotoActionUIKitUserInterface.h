@@ -6,35 +6,46 @@
 
 #import <WorkflowUICore/WFEmbeddableActionUserInterface.h>
 
-@class AVCaptureSession, NSMutableArray, NSString, WFContentCollection;
+@class NSMutableArray, NSString, WFContentCollection, WFImagePickerController, WFTakePhotoImmediateModeManager;
 
 __attribute__((visibility("hidden")))
 @interface WFTakePhotoActionUIKitUserInterface : WFEmbeddableActionUserInterface
 {
-    _Bool _showCameraPreview;
+    _Bool _showPreview;
+    unsigned long long _duration;
     CDUnknownBlockType _completionHandler;
     WFContentCollection *_outputCollection;
     unsigned long long _remainingPhotos;
     NSMutableArray *_outputImages;
-    AVCaptureSession *_session;
+    long long _device;
+    WFImagePickerController *_pickerController;
+    WFTakePhotoImmediateModeManager *_immediateModeManager;
 }
 
 + (long long)cameraDeviceFromString:(id)arg1;
 - (void).cxx_destruct;
-@property(retain, nonatomic) AVCaptureSession *session; // @synthesize session=_session;
+@property(retain, nonatomic) WFTakePhotoImmediateModeManager *immediateModeManager; // @synthesize immediateModeManager=_immediateModeManager;
+@property(nonatomic) __weak WFImagePickerController *pickerController; // @synthesize pickerController=_pickerController;
+@property(nonatomic) long long device; // @synthesize device=_device;
 @property(retain, nonatomic) NSMutableArray *outputImages; // @synthesize outputImages=_outputImages;
 @property(nonatomic) unsigned long long remainingPhotos; // @synthesize remainingPhotos=_remainingPhotos;
 @property(retain, nonatomic) WFContentCollection *outputCollection; // @synthesize outputCollection=_outputCollection;
 @property(copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
-@property(nonatomic) _Bool showCameraPreview; // @synthesize showCameraPreview=_showCameraPreview;
-- (void)captureOutput:(id)arg1 didFinishProcessingPhoto:(id)arg2 error:(id)arg3;
+@property(nonatomic) unsigned long long duration; // @synthesize duration=_duration;
+@property(nonatomic) _Bool showPreview; // @synthesize showPreview=_showPreview;
+- (void)manager:(id)arg1 didFinishWithPhoto:(id)arg2 error:(id)arg3;
+- (void)managerDidBecomeReady:(id)arg1;
+- (void)addImageDataToOutput:(id)arg1;
 - (void)imagePickerControllerDidCancel:(id)arg1;
 - (void)imagePickerController:(id)arg1 didFinishPickingMediaWithInfo:(id)arg2;
-- (void)takePhotoOnDevice:(id)arg1 shortcutAttribution:(id)arg2;
-- (_Bool)prefersModalPresentation;
+- (void)dealloc;
 - (void)finishWithError:(id)arg1;
 - (void)cancelPresentationWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)showWithCameraPreview:(_Bool)arg1 photoCount:(unsigned long long)arg2 device:(id)arg3 shortcutAttribution:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (_Bool)prefersModalPresentation;
+- (void)setUpImmediateInterfaceWithAttribution:(id)arg1;
+- (void)setUpTapInterface;
+- (id)setupControllerWithOverlay:(id)arg1;
 - (id)initWithUserInterfaceType:(id)arg1 attribution:(id)arg2;
 
 // Remaining properties

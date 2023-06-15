@@ -11,7 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface DDResultTracker : NSObject
 {
-    unsigned int countRemainingByCategory[6];
+    unsigned int countRemainingByCategory[8];
     unsigned int totalCountRemaining;
     _Bool sortByProximity;
     unsigned long long referenceResultLocation;

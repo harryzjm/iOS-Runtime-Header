@@ -18,6 +18,7 @@
     MISSING_TYPE *activityItemFactory;
     MISSING_TYPE *issueReadingHistory;
     MISSING_TYPE *configurationManager;
+    MISSING_TYPE *commandCenter;
     MISSING_TYPE *options;
 }
 

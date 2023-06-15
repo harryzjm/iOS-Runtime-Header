@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, NWConcrete_nw_authentication_protection_space;
+@class NSString, NWConcrete_nw_authentication_credential, NWConcrete_nw_authentication_protection_space;
 
 __attribute__((visibility("hidden")))
 @interface NWConcrete_nw_authentication_challenge : NSObject
 {
     NWConcrete_nw_authentication_protection_space *protection_space;
+    NWConcrete_nw_authentication_credential *proposed_credential;
     void *http_message;
     int type;
     unsigned int attempt_count;

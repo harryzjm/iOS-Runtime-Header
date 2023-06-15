@@ -23,6 +23,7 @@
 @property(readonly, nonatomic) MTLRenderPassDescriptor *currentRenderPassDescriptor;
 @property(readonly, nonatomic) id <MTLRenderCommandEncoder> currentRenderCommandEncoder;
 @property(readonly, nonatomic) void *context;
+@property(readonly, nonatomic) struct CGColorSpace *workingColorSpace;
 @property(readonly, nonatomic) unsigned long long renderingAPI;
 @property(retain, nonatomic) SKScene *overlaySKScene;
 @property(nonatomic) unsigned long long debugOptions;

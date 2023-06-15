@@ -11,16 +11,16 @@
 __attribute__((visibility("hidden")))
 @interface _SKUIFontDescriptorCacheKey : NSObject
 {
-    const struct __CFString *_textStyle;
+    struct __CFString *_textStyle;
     NSString *_sizeCategory;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *sizeCategory; // @synthesize sizeCategory=_sizeCategory;
-@property(readonly, nonatomic) const struct __CFString *textStyle; // @synthesize textStyle=_textStyle;
+@property(readonly, nonatomic) struct __CFString *textStyle; // @synthesize textStyle=_textStyle;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-- (id)initWithTextStyle:(const struct __CFString *)arg1 sizeCategory:(id)arg2;
+- (id)initWithTextStyle:(struct __CFString *)arg1 sizeCategory:(id)arg2;
 
 @end
 

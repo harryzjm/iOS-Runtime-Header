@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
     NSString *_type;
 }
 
-+ (id)entryWithFormat:(id)arg1 arguments:(char *)arg2 withType:(id)arg3;
++ (id)entryWithMessage:(id)arg1 type:(id)arg2;
 - (void).cxx_destruct;
 - (int)importance;
 - (void)enumerateContents:(CDUnknownBlockType)arg1;

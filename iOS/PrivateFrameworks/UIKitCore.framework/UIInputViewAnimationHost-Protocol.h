@@ -6,11 +6,14 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class UIInputViewSetPlacement, UIView;
+@class UIInputViewSet, UIInputViewSetPlacement, UIView;
 
 @protocol UIInputViewAnimationHost <NSObject>
+- (void)changeToInputViewSet:(UIInputViewSet *)arg1;
+- (UIInputViewSet *)inputViewSet;
 - (UIView *)inputViewSnapshotOfView:(UIView *)arg1 afterScreenUpdates:(_Bool)arg2;
 - (UIView *)viewForTransitionScreenSnapshot;
+- (void)setKeyboardWindowSnapshotOn:(_Bool)arg1;
 - (void)setInputViewsHidden:(_Bool)arg1;
 - (void)updateToPlacement:(UIInputViewSetPlacement *)arg1 withNormalAnimationsAndNotifications:(_Bool)arg2;
 - (struct CGRect)transitioningFrame;

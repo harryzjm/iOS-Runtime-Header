@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UILabel.h>
+#import <UIKitCore/UILabel.h>
 
 @interface UILabel (NewsFeed)
 - (void)ne_verticallyCenterCapInRect:(struct CGRect)arg1;

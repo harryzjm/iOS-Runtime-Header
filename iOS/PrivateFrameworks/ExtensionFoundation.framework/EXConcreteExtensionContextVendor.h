@@ -20,7 +20,6 @@ __attribute__((visibility("hidden")))
 + (id)_completionConcurrentQueue;
 + (Class)_extensionContextClass;
 + (id)_extensionMainStoryboard;
-+ (id)_allowedItemPayloadClasses;
 + (Class)_extensionPrincipalClass;
 + (id)_extensionDictionary;
 + (void)_startListening;

@@ -12,9 +12,9 @@ __attribute__((visibility("hidden")))
 }
 
 + (_Bool)shouldApplyAccessibilityEffect;
++ (id)_effectWithInputEffect:(id)arg1;
 - (_Bool)prefersScaledContent;
 - (_Bool)prefersShadow;
-- (id)init;
 
 @end
 

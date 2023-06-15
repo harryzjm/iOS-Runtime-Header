@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
     NSArray *_resourceBundles;
     long long _workingWithSkewedSource;
     _Bool _forcedMigration;
+    NSString *_stageLabel;
     void *_reserved2;
     void *_reserved3;
     void *_reserved4;

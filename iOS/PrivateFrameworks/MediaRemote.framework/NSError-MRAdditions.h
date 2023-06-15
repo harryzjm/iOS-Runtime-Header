@@ -9,6 +9,7 @@
 @interface NSError (MRAdditions)
 - (id)mr_protobuf;
 - (id)mr_initWithProtobuf:(id)arg1;
+@property(readonly, nonatomic, getter=isInformational) _Bool informational; // @dynamic informational;
 - (id)recursiveUnderlyingError;
 - (id)mr_errorByEnvelopingWithMRError:(long long)arg1;
 - (id)initWithMRError:(long long)arg1 userInfo:(id)arg2;

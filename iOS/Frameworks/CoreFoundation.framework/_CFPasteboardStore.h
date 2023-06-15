@@ -56,16 +56,16 @@ __attribute__((visibility("hidden")))
 - (void)_onqueue_handleExpirationTimer;
 - (void)handleMakeGenerationLocal:(id)arg1;
 - (void)handleBeginGeneration:(id)arg1;
-- (void)_onqueue_beginGenerationWithNewOwner:(const struct __CFUUID *)arg1;
+- (void)_onqueue_beginGenerationWithNewOwner:(struct __CFUUID *)arg1;
 - (void)_onqueue_clearGenerationSpecificData;
 - (id)_onqueue_cacheForGeneration:(long long)arg1;
 - (long long)_onqueue_nextGenerationCount;
 - (void)_onqueue_noteMessageSenderNeedsCacheInvalidation:(id)arg1;
-- (void)_onqueue_invalidateCurrentGenerationCacheEntries:(const struct __CFArray *)arg1 inResponseToMessage:(id)arg2;
+- (void)_onqueue_invalidateCurrentGenerationCacheEntries:(struct __CFArray *)arg1 inResponseToMessage:(id)arg2;
 - (void)_onqueue_invalidateCachesWithCurrentGeneration;
 - (void)performBarrier:(CDUnknownBlockType)arg1;
 - (void)dealloc;
-- (id)_initWithName:(const struct __CFString *)arg1;
+- (id)_initWithName:(struct __CFString *)arg1;
 
 @end
 

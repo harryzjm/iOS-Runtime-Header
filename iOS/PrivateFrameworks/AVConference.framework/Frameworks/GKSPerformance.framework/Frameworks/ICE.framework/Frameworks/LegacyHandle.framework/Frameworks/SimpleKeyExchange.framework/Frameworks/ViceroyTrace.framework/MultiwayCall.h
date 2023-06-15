@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
 @class NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface MultiwayCall : NSObject
+@interface MultiwayCall
 {
     NSString *_remoteParticipantID;
     NSMutableDictionary *_streamGroups;
@@ -24,13 +22,13 @@ __attribute__((visibility("hidden")))
     int _adjustedDuration;
     int _interval;
     int _frequency;
-    unsigned long long _downlinkRateSum;
-    unsigned int _downlinkRateUpdateCounter;
+    unsigned long long _downlinkOptedInRateSum;
+    unsigned long long _downlinkOptedInRateUpdateCounter;
     unsigned long long _actualBitrateSum;
     unsigned int _actualBitrateUpdateCounter;
     unsigned int _videoStreamSwitchCount;
     unsigned int _audioStreamSwitchCount;
-    unsigned int _downlinkTargetBitrateSwitchCount;
+    unsigned long long _downlinkOptedInBitrateSwitchCount;
     unsigned int _timeToHearFirstRemoteAudioFrame;
     unsigned int _averageReceiveFramerate;
     unsigned int _averageJitterbufferLength;
@@ -53,6 +51,16 @@ __attribute__((visibility("hidden")))
     _Bool _reportRateControlExperimentRemote;
     unsigned char _rateControlExperimentVersionRemote;
     unsigned char _rateControlExperimentGroupIndexRemote;
+    unsigned int rateControlSmartBrakeTrialVersionRemote;
+    double _screenControlStartTime;
+    double _screenControlTotalDurationMsec;
+    double _cameraCompositionStartTimeMsec;
+    double _cameraCompositionTotalDurationMsec;
+    unsigned int _bootstrapSampleIndex;
+    _Bool _reportNetworkCapabilities;
+    _Bool _isUplinkRetransmissionEnabled;
+    unsigned int _rateControlSmartBrakeTrialVersionRemote;
+    unsigned int _downlinkTargetBitrateSwitchCount;
     int _mkmRecoveryAttemptCount;
     int _startDate;
 }
@@ -62,7 +70,14 @@ __attribute__((visibility("hidden")))
 @property _Bool reportRateControlExperimentRemote; // @synthesize reportRateControlExperimentRemote=_reportRateControlExperimentRemote;
 @property int startDate; // @synthesize startDate=_startDate;
 @property int mkmRecoveryAttemptCount; // @synthesize mkmRecoveryAttemptCount=_mkmRecoveryAttemptCount;
+@property unsigned int downlinkTargetBitrateSwitchCount; // @synthesize downlinkTargetBitrateSwitchCount=_downlinkTargetBitrateSwitchCount;
 @property(readonly) NSMutableDictionary *streamGroups; // @synthesize streamGroups=_streamGroups;
+@property _Bool isUplinkRetransmissionEnabled; // @synthesize isUplinkRetransmissionEnabled=_isUplinkRetransmissionEnabled;
+@property _Bool reportNetworkCapabilities; // @synthesize reportNetworkCapabilities=_reportNetworkCapabilities;
+@property unsigned int bootstrapSampleIndex; // @synthesize bootstrapSampleIndex=_bootstrapSampleIndex;
+@property unsigned int rateControlSmartBrakeTrialVersionRemote; // @synthesize rateControlSmartBrakeTrialVersionRemote=_rateControlSmartBrakeTrialVersionRemote;
+@property double cameraCompositionTotalDurationMsec; // @synthesize cameraCompositionTotalDurationMsec=_cameraCompositionTotalDurationMsec;
+@property double screenControlTotalDurationMsec; // @synthesize screenControlTotalDurationMsec=_screenControlTotalDurationMsec;
 @property unsigned long long failedToAssembleFramesWithRTXPacketsCount; // @synthesize failedToAssembleFramesWithRTXPacketsCount=_failedToAssembleFramesWithRTXPacketsCount;
 @property unsigned long long assembledFramesWithRTXPacketsCount; // @synthesize assembledFramesWithRTXPacketsCount=_assembledFramesWithRTXPacketsCount;
 @property unsigned long long lateFramesScheduledWithRTXCount; // @synthesize lateFramesScheduledWithRTXCount=_lateFramesScheduledWithRTXCount;
@@ -75,8 +90,8 @@ __attribute__((visibility("hidden")))
 @property double connectionTime; // @synthesize connectionTime=_connectionTime;
 @property unsigned int averageJitterbufferLength; // @synthesize averageJitterbufferLength=_averageJitterbufferLength;
 @property unsigned int timeToHearFirstRemoteAudioFrame; // @synthesize timeToHearFirstRemoteAudioFrame=_timeToHearFirstRemoteAudioFrame;
-@property unsigned int downlinkTargetBitrateSwitchCount; // @synthesize downlinkTargetBitrateSwitchCount=_downlinkTargetBitrateSwitchCount;
-@property int adjustedDuration; // @synthesize adjustedDuration=_adjustedDuration;
+@property unsigned long long downlinkOptedInBitrateSwitchCount; // @synthesize downlinkOptedInBitrateSwitchCount=_downlinkOptedInBitrateSwitchCount;
+@property(readonly) int adjustedDuration; // @synthesize adjustedDuration=_adjustedDuration;
 @property int duration; // @synthesize duration=_duration;
 @property _Bool hasWebParticipant; // @synthesize hasWebParticipant=_hasWebParticipant;
 @property _Bool isFullSize; // @synthesize isFullSize=_isFullSize;
@@ -84,16 +99,18 @@ __attribute__((visibility("hidden")))
 @property _Bool isExpanseEnabled; // @synthesize isExpanseEnabled=_isExpanseEnabled;
 @property _Bool isScreenEnabled; // @synthesize isScreenEnabled=_isScreenEnabled;
 @property _Bool isVideoEnabled; // @synthesize isVideoEnabled=_isVideoEnabled;
-@property(readonly, getter=isLive) _Bool live; // @synthesize live=_live;
+@property(getter=isLive) _Bool live; // @synthesize live=_live;
 @property(readonly) NSString *remoteParticipantID; // @synthesize remoteParticipantID=_remoteParticipantID;
 - (void)addControlChannelTelemetry:(id)arg1 timestamp:(double)arg2;
 - (void)addStreamGroupTelemetry:(id)arg1;
 - (void)addRTXStreamGroupTelemetry:(id)arg1 streamGroupID:(id)arg2;
 - (void)addAudioStreamGroupTelemetry:(id)arg1 streamGroupID:(id)arg2;
 - (void)addVideoStreamGroupTelemetry:(id)arg1 streamGroupID:(id)arg2;
+- (void)incrementCallDuration;
+- (void)processStreamData:(id)arg1 streamGroupID:(id)arg2;
 - (void)processVideoDegraded:(_Bool)arg1 streamGroup:(id)arg2 timestamp:(double)arg3;
 - (void)processVideoDegraded:(_Bool)arg1 timestamp:(double)arg2;
-- (void)updatePerfTimingWithFirstVideoFrameProcessingDelta:(double)arg1 firstMediaReceivedDelta:(double)arg2 firstMKIDelta:(double)arg3 streamGroupID:(id)arg4;
+- (void)updatePerfTimingWithFirstVideoFrameProcessingDelta:(double)arg1 firstMediaReceivedDelta:(double)arg2 firstMKIDelta:(double)arg3 totalMediaStallSaveDelta:(double)arg4 streamGroupID:(id)arg5;
 - (double)audioErasureTotalTime:(id)arg1;
 - (unsigned short)minVideoFrameRate:(id)arg1;
 - (unsigned short)maxJBTargetSizeChanges:(id)arg1;
@@ -109,12 +126,16 @@ __attribute__((visibility("hidden")))
 - (unsigned short)significantVideoStallCount:(id)arg1;
 - (unsigned int)actualBitrateUpdateCounter;
 - (unsigned long long)actualBitrateSum;
-- (unsigned int)downlinkRateUpdateCounter;
-- (unsigned long long)downlinkRateSum;
+- (unsigned int)downlinkOptedInRateUpdateCounter;
+- (unsigned long long)downlinkOptedInRateSum;
 - (void)processActualBitrateRateChange:(unsigned int)arg1;
-- (void)processDownlinkRateChange:(unsigned int)arg1;
+- (void)processDownlinkOptedInRateChange:(unsigned int)arg1;
 - (unsigned int)RTPeriod;
 - (_Bool)isVideoDegraded;
+- (void)markCameraCompositionStartWithTimestamp:(double)arg1;
+- (void)markScreenControlCompletionWithTimestamp:(double)arg1;
+- (void)markScreenControlStartWithTimestamp:(double)arg1;
+- (void)markCameraCompositionCompletionWithTimestamp:(double)arg1;
 - (double)markHandshakeCompletion:(double)arg1;
 - (void)markHandshakeStart:(double)arg1;
 - (void)finalizeCall:(double)arg1;

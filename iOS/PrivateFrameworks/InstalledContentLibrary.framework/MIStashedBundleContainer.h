@@ -18,7 +18,6 @@ __attribute__((visibility("hidden")))
 - (id)stashMetadataWithError:(id *)arg1;
 - (id)newStashMetadata;
 @property(readonly, nonatomic) NSURL *stashMetadataURL;
-- (id)initForAppContainerWithURL:(id)arg1;
 
 @end
 

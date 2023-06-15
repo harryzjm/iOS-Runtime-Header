@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     unsigned long long _maxScreenEncodingSizeSupported;
     long long _videoEncoderType;
     _Bool _hasAppleNeuralEngine;
+    _Bool _isInitialized;
     _Bool _hasBasebandInitialized;
     _Bool _hasBaseband;
     NSString *_marketingName;
@@ -25,6 +26,15 @@ __attribute__((visibility("hidden")))
 
 + (long long)deviceClass;
 + (id)sharedInstance;
++ (id)virtualHardwareSettings:(id)arg1;
+@property(readonly, nonatomic) _Bool isMLEnhanceOneToOneSupported;
+@property(readonly, nonatomic) _Bool isExternalCameraSupported;
+@property(readonly, nonatomic) _Bool isSmartBrakeSupported;
+- (_Bool)isSmartBrakeSupportedATV;
+- (_Bool)isSmartBrakeSupportedIPad;
+- (_Bool)isSmartBrakeSupportedIPhone;
+@property(readonly, nonatomic) _Bool isViewPointCorrectionSupported;
+@property(readonly, nonatomic) _Bool isMediaRecordingSupported;
 @property(readonly, nonatomic) _Bool isCellularTappingSupported;
 - (long long)screenShareCapabilitiesIPod;
 - (long long)screenShareCapabilitiesIPad;
@@ -32,6 +42,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) long long screenShareCapabilities;
 - (_Bool)disableMLScalarDuringSharing;
 - (_Bool)supportsDedicatedSystemAudioStream;
+- (_Bool)supportsSystemAudioTap;
+- (_Bool)supportsScreenCapture;
 - (_Bool)limitCameraDownlinkBitrateDuringSharing;
 @property(readonly, nonatomic) NSArray *supportedVideoPayloads;
 @property(readonly, nonatomic) _Bool isPixelFormatAvailable;
@@ -42,8 +54,11 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool isHEVC444DecodeSupported;
 @property(readonly, nonatomic) _Bool isSecondDisplaySupportEnabled;
 @property(readonly, nonatomic) _Bool isRemoteCameraSenderSupported;
+- (_Bool)isRemoteCameraSenderSupportediPhone;
+- (_Bool)isRemoteCameraSenderSupportediPad;
 @property(readonly, nonatomic) unsigned int audioPacketLossConcealmentAlgorithmAACELD;
 @property(readonly, nonatomic) _Bool supportsHEIFEncoding;
+@property(readonly, nonatomic) _Bool isVoiceProcessingAt24KSupported;
 @property(readonly, nonatomic) _Bool isCaptionsSupported;
 @property(readonly, nonatomic) _Bool hasAppleNeuralEngine;
 @property(readonly, nonatomic) _Bool isDeviceLargeScreen;
@@ -53,6 +68,10 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) unsigned int maxDisplayRefreshRate;
 - (unsigned int)maxMultiwayFramerateSupported;
 - (unsigned int)maxOneToOneFramerateSupported;
+@property(readonly, nonatomic) _Bool supportsMultiway1080pStream;
+- (_Bool)deviceSupportsMultiway1080p;
+- (_Bool)supportsMultiway1080pStreamEmbeddedOS;
+- (_Bool)supportsMultiway1080pStreamATV;
 @property(readonly, nonatomic) _Bool supportsMultiway720pStream;
 @property(readonly, nonatomic) _Bool useSoftFramerateSwitching;
 @property(readonly, nonatomic) long long videoEncoderType;
@@ -72,6 +91,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool isSpatialAudioSupported;
 - (_Bool)isSpatialAudioSupportedIPod;
 - (_Bool)isSpatialAudioSupportedIPad;
+- (_Bool)isSpatialAudioSupportedAppleTV;
 - (_Bool)isSpatialAudioSupportedIPhone;
 @property(readonly, nonatomic) _Bool hasBaseband;
 - (id)marketingName;
@@ -79,6 +99,7 @@ __attribute__((visibility("hidden")))
 - (void)_initializeScreenDimension;
 - (void)setupSiriSupport;
 - (void)dealloc;
+- (id)initForDevice:(id)arg1;
 - (id)init;
 
 // Remaining properties

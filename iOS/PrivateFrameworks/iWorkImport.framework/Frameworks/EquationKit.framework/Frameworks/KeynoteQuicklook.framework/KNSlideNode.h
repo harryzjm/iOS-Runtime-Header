@@ -14,7 +14,7 @@
     NSMutableDictionary *_thumbnails;
     _Bool _thumbnailsAreDirty;
     NSSet *_digestsForDatasThatNeedDownloadForThumbnail;
-    _Bool _hidden;
+    _Bool _skipped;
     _Bool _collapsed;
     _Bool _collapsedInOutlineView;
     _Bool _hasBodyInOutlineView;
@@ -77,7 +77,7 @@
 - (void)wasAddedToDocumentRoot:(id)arg1 dolcContext:(id)arg2;
 - (void)willBeAddedToDocumentRoot:(id)arg1 dolcContext:(id)arg2;
 @property(nonatomic) _Bool isSlideNumberVisible;
-@property(nonatomic, getter=isHidden) _Bool hidden;
+@property(nonatomic, getter=isSkipped) _Bool skipped;
 @property(retain, nonatomic) KNAbstractSlide *slide;
 @property(readonly, nonatomic) KNAbstractSlide *slideIfLoaded;
 - (id)slideAndReturnError:(id *)arg1;

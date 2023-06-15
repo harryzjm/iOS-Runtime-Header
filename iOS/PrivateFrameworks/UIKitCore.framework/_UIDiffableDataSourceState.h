@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 @class NSOrderedSet, NSString, NSUUID;
 @protocol _UIDataSourceSnapshotTranslating;
 
 __attribute__((visibility("hidden")))
-@interface _UIDiffableDataSourceState : NSObject <NSCopying>
+@interface _UIDiffableDataSourceState : NSObject
 {
     NSUUID *_generationID;
     id <_UIDataSourceSnapshotTranslating> _dataSourceSnapshot;

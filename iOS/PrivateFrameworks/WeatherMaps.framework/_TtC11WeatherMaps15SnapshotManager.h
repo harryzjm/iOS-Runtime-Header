@@ -24,5 +24,7 @@
     MISSING_TYPE *snapshotOverlayComposer;
 }
 
+- (void)voiceOverStatusDidChangeWithNotification:(id)arg1;
+
 @end
 

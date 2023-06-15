@@ -6,15 +6,12 @@
 
 #import <AudioSession/NSObject-Protocol.h>
 
-@class NSString;
-
 @protocol AVAudioIOController <NSObject>
 @property(readonly, nonatomic) struct AVAudioTimeInterval dynamicLatency;
-@property(readonly, nonatomic) _Bool supportsPresentationTime;
+@property(readonly, nonatomic) _Bool supportsDynamicLatency;
 @property(readonly, nonatomic, getter=isRunning) _Bool running;
 @property(readonly, nonatomic) struct AVAudioIOPeriod IOPeriod;
 - (struct AudioPresentationTimeStamp)presentationTime;
-- (_Bool)setDeviceUID:(NSString *)arg1 error:(id *)arg2;
 - (void)destroyIOEventBlock:(long long)arg1;
 - (long long)createIOEventBlock:(void (^)(unsigned long long))arg1;
 - (struct AudioTimeStamp)currentTime;

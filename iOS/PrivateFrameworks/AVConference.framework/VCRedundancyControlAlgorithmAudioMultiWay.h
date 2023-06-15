@@ -29,9 +29,9 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) unsigned int redundancyPercentage; // @synthesize redundancyPercentage=_redundancyPercentage;
 - (unsigned int)updateRedundancyPercentageWithPLRThresholds:(unsigned int *)arg1;
 - (void)computeRedundancyInfo;
-- (void)processRCNetworkStatistics:(CDStruct_7df19fcb)arg1;
-- (void)processNWConnectionStatistics:(CDStruct_7df19fcb)arg1;
-- (void)updateRedundancyStrategyWithNetworkStatistics:(CDStruct_7df19fcb)arg1;
+- (void)processRCNetworkStatistics:(struct tagVCStatisticsMessage)arg1;
+- (void)processNWConnectionStatistics:(struct tagVCStatisticsMessage)arg1;
+- (void)updateRedundancyStrategyWithNetworkStatistics:(struct tagVCStatisticsMessage)arg1;
 - (id)init;
 
 // Remaining properties

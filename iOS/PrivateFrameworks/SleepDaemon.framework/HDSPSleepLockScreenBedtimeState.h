@@ -9,11 +9,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (void)stateDidExpireWithContext:(id)arg1;
-- (_Bool)schedulesExpiration;
 - (long long)sleepLockScreenState;
 - (id)stateName;
-- (double)expirationDuration;
 
 @end
 

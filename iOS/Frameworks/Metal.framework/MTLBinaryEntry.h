@@ -15,15 +15,31 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_data> *_data;
     NSArray *_importedLibraries;
     NSArray *_importedSymbols;
-    NSObject<OS_dispatch_data> *_airntData;
+    NSObject<OS_dispatch_data> *_bitcode;
+    NSObject<OS_dispatch_data> *_airScript;
+    NSObject<OS_dispatch_data> *_reflectionBlock;
+    int _reflectionFlags;
+    unsigned long long _binaryPosition;
+    unsigned long long _index;
 }
 
+@property unsigned long long index; // @synthesize index=_index;
 @property(readonly) NSArray *importedLibraries; // @synthesize importedLibraries=_importedLibraries;
 @property(readonly) NSArray *importedSymbols; // @synthesize importedSymbols=_importedSymbols;
-@property(readonly) NSObject<OS_dispatch_data> *data; // @synthesize data=_data;
-@property NSObject<OS_dispatch_data> *airntData; // @synthesize airntData=_airntData;
+@property(readonly) int reflectionFlags; // @synthesize reflectionFlags=_reflectionFlags;
+@property(readonly) unsigned long long binaryPosition; // @synthesize binaryPosition=_binaryPosition;
+@property NSObject<OS_dispatch_data> *airScript; // @synthesize airScript=_airScript;
+@property NSObject<OS_dispatch_data> *bitcode; // @synthesize bitcode=_bitcode;
 - (id)description;
+@property(readonly) NSObject<OS_dispatch_data> *reflectionBlock; // @synthesize reflectionBlock=_reflectionBlock;
+@property(readonly) NSObject<OS_dispatch_data> *data; // @synthesize data=_data;
 - (void)dealloc;
+- (id)initWithData:(id)arg1;
+- (void)addReflectionWithData:(id)arg1 flag:(int)arg2;
+- (id)initWithData:(id)arg1 reflectionBlock:(id)arg2;
+- (id)initWithData:(id)arg1 reflectionBlock:(id)arg2 binaryPosition:(unsigned long long)arg3;
+- (void)internalInitWithData:(id)arg1 reflectionBlock:(id)arg2 binaryPosition:(unsigned long long)arg3;
+- (id)initWithData:(id)arg1 binaryPosition:(unsigned long long)arg2;
 - (id)initWithData:(id)arg1 importedSymbols:(id)arg2 importedLibraries:(id)arg3;
 
 @end

@@ -6,11 +6,12 @@
 
 #import <SafariServices/NSObject-Protocol.h>
 
-@class SFAddSavedAccountViewController, WBSSavedAccount;
+@class SFAddSavedAccountViewController, WBSSavedAccount, _SFAccountIconController;
 
 @protocol SFAddSavedAccountViewControllerDelegate <NSObject>
 
 @optional
+- (_SFAccountIconController *)iconControllerForAddSavedAccountDetailViewController:(SFAddSavedAccountViewController *)arg1;
 - (void)addSavedAccountViewControllerDidFinish:(SFAddSavedAccountViewController *)arg1 withSavedAccount:(WBSSavedAccount *)arg2;
 @end
 

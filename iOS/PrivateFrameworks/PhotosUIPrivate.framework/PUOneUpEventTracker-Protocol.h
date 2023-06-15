@@ -6,9 +6,17 @@
 
 #import <PhotosUIPrivate/PXViewControllerEventTracker-Protocol.h>
 
+@class NSString;
 @protocol PUDisplayAsset;
 
 @protocol PUOneUpEventTracker <PXViewControllerEventTracker>
+- (void)endLoggingTimeInterval:(long long)arg1 event:(NSString *)arg2;
+- (long long)startLoggingTimeInterval;
+- (void)logTipPresentedForType:(long long)arg1;
+- (void)logInfoPanelClosedBy:(long long)arg1;
+- (void)logInfoPanelOpenedBy:(long long)arg1;
+- (void)logInfoPanelShownAndSwipeToNewAsset;
+- (void)logInfoPanelRotatedToHorizontalView;
 - (void)logVitalityDidEndForLivePhoto:(id <PUDisplayAsset>)arg1;
 - (void)logUserDidPlayLivePhoto:(id <PUDisplayAsset>)arg1 pressOnSubject:(_Bool)arg2;
 - (void)logUserDidPlayLivePhoto:(id <PUDisplayAsset>)arg1;

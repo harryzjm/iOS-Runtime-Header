@@ -4,26 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
-@class NSString;
-
 __attribute__((visibility("hidden")))
-@interface VNANFDMultiDetectorOriginalRequestInfo : NSObject
+@interface VNANFDMultiDetectorOriginalRequestInfo
 {
-    NSString *_originatingRequestSpecifierKey;
-    unsigned long long _originalRequestResultsIndex;
 }
 
 + (id)originatingRequestSpecifierToDetectorClassMap;
 + (id)requestPropertiesFromRequestKey:(id)arg1;
 + (id)requestClassNameFromRequestKey:(id)arg1;
 + (id)requestKeyFromRequest:(id)arg1;
-- (void).cxx_destruct;
-@property(readonly, nonatomic) unsigned long long originalRequestResultsIndex; // @synthesize originalRequestResultsIndex=_originalRequestResultsIndex;
-@property(readonly, nonatomic) NSString *originatingRequestSpecifierKey; // @synthesize originatingRequestSpecifierKey=_originatingRequestSpecifierKey;
-- (id)description;
-- (id)initWithOriginatingRequestSpecifierProcessingOptionKey:(id)arg1 originalRequestResultsIndex:(unsigned long long)arg2;
 
 @end
 

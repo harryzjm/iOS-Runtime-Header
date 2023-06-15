@@ -9,9 +9,9 @@
 @protocol SXSubscriptionStatusObserving;
 
 @protocol SXSubscriptionStatusProviding <NSObject>
+@property(readonly, nonatomic) long long channelSubscriptionStatus;
+@property(readonly, nonatomic) long long bundleSubscriptionStatus;
 - (void)removeObserver:(id <SXSubscriptionStatusObserving>)arg1;
 - (void)addObserver:(id <SXSubscriptionStatusObserving>)arg1;
-@property(nonatomic, readonly) long long channelSubscriptionStatus;
-@property(nonatomic, readonly) long long bundleSubscriptionStatus;
 @end
 

@@ -11,7 +11,6 @@
 @interface _TtC25HealthMedicationsVisionUI22ScanResultDataProvider : _TtCs12_SwiftObject
 {
     MISSING_TYPE *healthStore;
-    MISSING_TYPE *searchEngine;
 }
 
 @end

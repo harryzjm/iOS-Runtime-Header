@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 - (void)oneUpPresentation:(id)arg1 didDismissPreviewViewController:(id)arg2 committing:(_Bool)arg3;
 - (id)previewViewControllerForOneUpPresentation:(id)arg1 allowingActions:(_Bool)arg2;
 - (_Bool)oneUpPresentation:(id)arg1 startWithConfigurationHandler:(CDUnknownBlockType)arg2;
+- (void)oneUpPresentation:(id)arg1 registerStateChangeHandler:(CDUnknownBlockType)arg2;
 - (id)oneUpPresentationLastViewedAssetReference:(id)arg1;
 - (_Bool)oneUpPresentation:(id)arg1 canStartAnimated:(_Bool)arg2;
 - (void)oneUpPresentation:(id)arg1 presentingViewControllerViewDidDisappear:(_Bool)arg2;

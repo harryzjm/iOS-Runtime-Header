@@ -12,5 +12,6 @@
 @property(nonatomic, readonly) _Bool useLocalEndpoint;
 @property(nonatomic, readonly) _Bool useSimulatorBag;
 @property(nonatomic, readonly) NSString *platformName;
+@property(nonatomic, readonly) _Bool disableHTTPCaching;
 @end
 

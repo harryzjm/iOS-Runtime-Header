@@ -14,16 +14,14 @@ __attribute__((visibility("hidden")))
     CoreTelephonyClient *_client;
     PSSimStatusCache *_simStatusCache;
     _Bool _cacheNeedsRefresh;
-    NSMutableDictionary *_SACapabilityDict;
     NSMutableDictionary *_SAEnabledDict;
-    NSMutableDictionary *_SAStatusDict;
+    NSMutableDictionary *_NRStatusDict;
 }
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
-@property(retain) NSMutableDictionary *SAStatusDict; // @synthesize SAStatusDict=_SAStatusDict;
+@property(retain) NSMutableDictionary *NRStatusDict; // @synthesize NRStatusDict=_NRStatusDict;
 @property(retain) NSMutableDictionary *SAEnabledDict; // @synthesize SAEnabledDict=_SAEnabledDict;
-@property(retain) NSMutableDictionary *SACapabilityDict; // @synthesize SACapabilityDict=_SACapabilityDict;
 - (id)getLogger;
 - (void)carrierBundleChange:(id)arg1;
 - (void)currentDataSimChanged:(id)arg1;
@@ -31,9 +29,11 @@ __attribute__((visibility("hidden")))
 - (void)clearCacheAndRefresh;
 - (void)notifyClientsNeedRefresh;
 - (void)clearCache;
-- (void)fetchNRDisableStatus;
+- (void)fetchNRStatus;
 - (void)fetch5GSupportAndEnabledStatusIfNeeded;
-- (unsigned long long)getUserInteractableStatusReasonMaskForContext:(id)arg1;
+- (unsigned long long)getNSADisableStatusReasonMaskForContext:(id)arg1;
+- (_Bool)are5GRATModesUserInteractableForContext:(id)arg1;
+- (unsigned long long)getSADisableStatusReasonMaskForContext:(id)arg1;
 - (_Bool)is5GSASwitchUserInteractableForContext:(id)arg1;
 - (id)set5GSAEnabled:(_Bool)arg1 forContext:(id)arg2;
 - (_Bool)is5GSAEnabledForContext:(id)arg1;

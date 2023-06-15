@@ -13,16 +13,17 @@
     MISSING_TYPE *config;
     MISSING_TYPE *eventRecorder;
     MISSING_TYPE *environment;
-    MISSING_TYPE *privacyPreferenceDataSource;
-    MISSING_TYPE *serviceSubscriptionProviderBroker;
+    MISSING_TYPE *recordingContextBuilder;
     MISSING_TYPE *clickSystem;
     MISSING_TYPE *clickUnidentifiedSystem;
     MISSING_TYPE *clickIdentifiedSystem;
+    MISSING_TYPE *clickDiagnosticsSystem;
+    MISSING_TYPE *healthActivitySystem;
     MISSING_TYPE *workoutSystem;
     MISSING_TYPE *musicSystem;
     MISSING_TYPE *identifierStore;
     MISSING_TYPE *platform;
-    MISSING_TYPE *referrerURLHost;
+    MISSING_TYPE *referrerURL;
     MISSING_TYPE *sourceApplication;
 }
 

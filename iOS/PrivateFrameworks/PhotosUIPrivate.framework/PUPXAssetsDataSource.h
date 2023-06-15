@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 - (id)indexPathForAssetReference:(id)arg1;
 - (id)assetReferenceAtIndexPath:(id)arg1;
 - (long long)numberOfSubItemsAtIndexPath:(id)arg1;
+- (id)startingAssetReference;
 - (id)initWithUnderlyingDataSource:(id)arg1;
 - (id)init;
 

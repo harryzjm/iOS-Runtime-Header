@@ -6,13 +6,13 @@
 
 #import <DataDeliveryServices/NSObject-Protocol.h>
 
-@class DDSAssertion, DDSAsset, NSError, NSSet;
+@class DDSAssertion, DDSAsset, NSError, NSSet, NSString;
 
 @protocol DDSAssetProvidingDelegate <NSObject>
 - (void)didCompleteDownloadForAssertions:(NSSet *)arg1 error:(NSError *)arg2;
 - (void)didCompleteDownloadForAssertion:(DDSAssertion *)arg1 error:(NSError *)arg2;
 - (void)didChangeDownloadState:(unsigned long long)arg1 forAsset:(DDSAsset *)arg2;
-- (void)didUpdateCatalogWithError:(NSError *)arg1;
+- (void)didUpdateCatalogWithAssetType:(NSString *)arg1 error:(NSError *)arg2;
 - (void)didBeginUpdateCatalog;
 @end
 

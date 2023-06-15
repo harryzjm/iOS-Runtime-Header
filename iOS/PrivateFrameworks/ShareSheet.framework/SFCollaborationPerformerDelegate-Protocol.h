@@ -6,13 +6,14 @@
 
 #import <ShareSheet/NSObject-Protocol.h>
 
-@class SFCollaborationPerformer;
+@class NSError, SFCollaborationPerformer;
 
 @protocol SFCollaborationPerformerDelegate <NSObject>
 - (void)didCancelCreationForCollaborationPerformer:(SFCollaborationPerformer *)arg1;
 - (void)didFinishCreationForCollaborationPerformer:(SFCollaborationPerformer *)arg1;
 
 @optional
+- (void)didFailCreationForCollaborationPerformer:(SFCollaborationPerformer *)arg1 error:(NSError *)arg2;
 - (void)didBeginCreationForCollaborationPerformer:(SFCollaborationPerformer *)arg1 requiresAddParticipants:(_Bool)arg2;
 - (void)didBeginCreationForCollaborationPerformer:(SFCollaborationPerformer *)arg1;
 @end

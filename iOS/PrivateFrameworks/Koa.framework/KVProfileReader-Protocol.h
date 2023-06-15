@@ -6,12 +6,13 @@
 
 #import <Koa/NSObject-Protocol.h>
 
-@class KVProfileInfo;
+@class KVProfileInfo, NSData;
 
 @protocol KVProfileReader <NSObject>
 + (id)new;
 - (_Bool)enumerateDatasetsWithError:(id *)arg1 usingBlock:(_Bool (^)(NSObject<KVDatasetReader> *))arg2;
 - (KVProfileInfo *)profileInfo;
+- (NSData *)data;
 - (id)init;
 @end
 

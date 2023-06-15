@@ -6,7 +6,7 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class FBScene, NSString, SBDeviceApplicationSceneHandle, SBDeviceApplicationSceneStatusBarBreadcrumbProvider, _UIStatusBarData;
+@class FBScene, NSSet, NSString, SBDeviceApplicationSceneHandle, SBDeviceApplicationSceneStatusBarBreadcrumbProvider, _UIStatusBarData;
 
 @protocol SBApplicationSceneStatusBarDescribing <NSObject>
 @property(readonly, nonatomic) FBScene *sceneToHandleStatusBarTapIfExists;
@@ -16,7 +16,7 @@
 @property(readonly, nonatomic) NSString *statusBarSceneIdentifier;
 @property(readonly, nonatomic) _Bool sceneWantsDeviceOrientationEventsEnabled;
 @property(readonly, nonatomic) struct CGRect statusBarAvoidanceFrame;
-@property(readonly, nonatomic) unsigned long long statusBarStyleOverridesToSuppress;
+@property(readonly, nonatomic) NSSet *backgroundActivitiesToSuppress;
 @property(readonly, nonatomic) long long statusBarOrientation;
 @property(readonly, nonatomic) double statusBarAlpha;
 @property(readonly, nonatomic) _Bool statusBarHidden;

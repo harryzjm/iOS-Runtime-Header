@@ -10,9 +10,8 @@
 
 @interface _TtC7NewsUI228ProxyHeadlineExposureTracker : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *submissionQueue;
     MISSING_TYPE *defaultTracker;
-    MISSING_TYPE *trackersByGroupType;
+    MISSING_TYPE *sportsTracker;
 }
 
 @end

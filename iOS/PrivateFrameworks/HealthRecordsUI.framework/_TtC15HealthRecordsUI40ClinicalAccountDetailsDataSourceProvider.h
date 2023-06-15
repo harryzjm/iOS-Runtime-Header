@@ -13,6 +13,8 @@
     MISSING_TYPE *account;
     MISSING_TYPE *manager;
     MISSING_TYPE *accountSourceDataSource;
+    MISSING_TYPE *staleAccountDeleteDataSource;
+    MISSING_TYPE *regularAccountDeleteDataSource;
     MISSING_TYPE *accountLoginDataSource;
     MISSING_TYPE *downloadDetailsDataSource;
     MISSING_TYPE *sharingDataSource;

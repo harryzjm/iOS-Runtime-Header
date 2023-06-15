@@ -18,7 +18,6 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *presenter;
     MISSING_TYPE *headerView;
     MISSING_TYPE *autoPlayDuration;
-    MISSING_TYPE *autoPlayMetrics;
     MISSING_TYPE *playbackState;
     MISSING_TYPE *featuredContentLogo;
     MISSING_TYPE *metadataContentHeight;
@@ -26,15 +25,15 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *playbackUpNextDelegate;
     MISSING_TYPE *interactionManager;
     MISSING_TYPE *playbackTimer;
-    MISSING_TYPE *controlFadeTimer;
-    MISSING_TYPE *playbackObservers;
-    MISSING_TYPE *propertyObservers;
+    MISSING_TYPE *cancellables;
+    MISSING_TYPE *volumeObserver;
     MISSING_TYPE *currentSizeClass;
 }
 
 - (void).cxx_destruct;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)vui_viewDidLayoutSubviews;
+- (void)vui_viewDidDisappear:(_Bool)arg1;
 - (void)vui_viewDidAppear:(_Bool)arg1;
 - (void)vui_viewWillAppear:(_Bool)arg1;
 - (void)vui_viewDidLoad;

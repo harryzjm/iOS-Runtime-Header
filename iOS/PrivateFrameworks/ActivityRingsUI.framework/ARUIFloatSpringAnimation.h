@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) float endValue;
 @property(readonly, nonatomic) float currentValue;
 - (void)update:(double)arg1;
+- (void)dealloc;
 - (id)initWithTension:(double)arg1 friction:(double)arg2 startValue:(float)arg3 endValue:(float)arg4 applier:(CDUnknownBlockType)arg5;
 
 // Remaining properties

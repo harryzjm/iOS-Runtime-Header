@@ -10,7 +10,10 @@
 @protocol DDSManagingDelegate;
 
 @protocol DDSManaging <NSObject>
-@property(retain, nonatomic) id <DDSManagingDelegate> delegate;
+@property(readonly, copy) NSString *xpcServiceName;
+@property __weak id <DDSManagingDelegate> delegate;
+- (void)updateAssetForQuery:(DDSAssetQuery *)arg1 callback:(void (^)(NSNumber *, NSError *))arg2;
+- (void)fetchAssetUpdateStatusForQuery:(DDSAssetQuery *)arg1 callback:(void (^)(long long, NSError *))arg2;
 - (void)triggerUpdate;
 - (void)triggerDump;
 - (void)assertionIDsForClientID:(NSString *)arg1 reply:(void (^)(NSSet *))arg2;

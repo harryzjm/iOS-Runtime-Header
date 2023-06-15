@@ -24,6 +24,7 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithURI:(id)arg1 isGuest:(_Bool)arg2;
 - (id)initWithDeviceURI:(id)arg1;
 - (id)initWithIDSDeviceURI:(id)arg1;

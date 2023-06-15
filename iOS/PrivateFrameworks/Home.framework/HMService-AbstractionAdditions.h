@@ -22,6 +22,7 @@
 + (id)_hf_allowedChildServicesTypeMap;
 + (id)hf_alarmSensorServiceTypes;
 + (id)hf_sensorServiceTypes;
++ (id)hf_fanServiceTypes;
 + (id)hf_serviceTypesHiddenFromScenesOrAutomations;
 + (CDUnknownBlockType)hf_serviceComparator;
 + (id)hf_roomsForServices:(id)arg1;
@@ -44,6 +45,8 @@
 @property(readonly, nonatomic) _Bool hf_hasSetFavorite;
 @property(readonly, nonatomic) _Bool hf_isFavorite;
 - (id)hf_moveToRoom:(id)arg1;
+@property(readonly, nonatomic) _Bool hf_isIdentifiable;
+@property(readonly, nonatomic) _Bool hf_canSpanMultipleRooms;
 @property(readonly, nonatomic) HMRoom *hf_safeRoom;
 @property(readonly, nonatomic) HFAccessoryType *hf_accessoryType;
 @property(readonly, nonatomic) NSSet *hf_associatedAccessories;
@@ -79,6 +82,7 @@
 - (_Bool)hf_isSensorService;
 - (_Bool)hf_isChildService;
 - (_Bool)hf_isTelevision;
+- (_Bool)hf_isFan;
 - (_Bool)hf_showsAsServiceInControlCentre;
 - (_Bool)hf_isVisible;
 - (_Bool)hf_isLegacyService;
@@ -100,6 +104,8 @@
 @property(readonly, nonatomic) __weak HMRoom *hf_parentRoom;
 - (id)hf_updateUserNotificationSettings:(id)arg1;
 @property(readonly, copy, nonatomic) HFUserNotificationServiceSettings *hf_userNotificationSettings;
+- (void)hf_updateApplicationData:(id)arg1 handleError:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_hf_applicationDataUpdated:(id)arg1;
 @property(readonly, nonatomic) id <HFAccessoryLikeObjectRootHomeKitObjectProvider><HFAccessoryRepresentable><HFFavoritable><HFShowInHomeDashboard><HFIncludedContextProtocol> hf_rootAccessoryLikeHomeKitObject;
 - (id)hf_updateDateAdded:(id)arg1;
 @property(readonly, copy, nonatomic) NSDate *hf_dateAdded;

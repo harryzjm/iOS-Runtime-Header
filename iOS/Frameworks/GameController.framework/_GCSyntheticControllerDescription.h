@@ -12,24 +12,21 @@
 __attribute__((visibility("hidden")))
 @interface _GCSyntheticControllerDescription : NSObject
 {
-    NSString *_identifier;
     id <NSCopying><NSObject><NSSecureCoding> _controllerIdentifier;
+    NSString *_persistentIdentifier;
 }
 
 - (void).cxx_destruct;
+@property(readonly) NSString *persistentIdentifier; // @synthesize persistentIdentifier=_persistentIdentifier;
 @property(readonly) id <NSCopying><NSObject><NSSecureCoding> controllerIdentifier; // @synthesize controllerIdentifier=_controllerIdentifier;
-@property(readonly) NSString *identifier; // @synthesize identifier=_identifier;
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
+- (id)debugDescription;
+- (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (_Bool)isEqualToDescription:(id)arg1;
-@property(readonly) unsigned long long hash;
+- (unsigned long long)hash;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
-- (id)initWithIdentifier:(id)arg1 controllerIdentifier:(id)arg2;
-
-// Remaining properties
-@property(readonly) Class superclass;
+- (id)initWithControllerIdentifier:(id)arg1 persistentIdentifier:(id)arg2;
 
 @end
 

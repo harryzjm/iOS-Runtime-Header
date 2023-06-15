@@ -13,7 +13,9 @@
 - (void)disconnectFromMACAddress:(NSData *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)connectUsingMACAddress:(NSData *)arg1 longTermKey:(NSData *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)readAISMetadataForIdentifier:(NSUUID *)arg1 completion:(void (^)(SPDiscoveredAccessoryMetadata *, NSError *))arg2;
+- (void)readRawAISMetadataForIdentifier:(NSUUID *)arg1 completion:(void (^)(SPRawAccessoryMetadata *, NSError *))arg2;
 - (void)readAISMetadataFromMACAddress:(NSData *)arg1 useOwnerControlPoint:(_Bool)arg2 completion:(void (^)(SPDiscoveredAccessoryMetadata *, NSError *))arg3;
+- (void)readRawAISMetadataFromMACAddress:(NSData *)arg1 useOwnerControlPoint:(_Bool)arg2 completion:(void (^)(SPRawAccessoryMetadata *, NSError *))arg3;
 - (void)allObservationsForBeacon:(NSUUID *)arg1 completion:(void (^)(NSArray *))arg2;
 - (void)requestLiveLocationForFriend:(NSString *)arg1 completion:(void (^)(NSString *))arg2;
 - (void)requestLiveLocationForUUID:(NSUUID *)arg1 completion:(void (^)(NSString *))arg2;
@@ -59,6 +61,7 @@
 - (void)didWithdrawUnauthorizedTrackingWithCompletion:(NSArray *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)didUpdateUnauthorizedTrackingWithCompletion:(SPUnauthorizedTrackingObservation *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)didDetectUnauthorizedTrackingWithCompletion:(NSArray *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)didObserveUnauthorizedTrackingWithCompletion:(NSSet *)arg1 completion:(void (^)(NSSet *, NSError *))arg2;
 - (void)updateBatteryStatus:(unsigned char)arg1 beaconUUID:(NSUUID *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)beaconsToMaintainWithCompletion:(void (^)(NSSet *))arg1;
 - (void)waitForBeaconStoreAvailableWithCompletion:(void (^)(void))arg1;

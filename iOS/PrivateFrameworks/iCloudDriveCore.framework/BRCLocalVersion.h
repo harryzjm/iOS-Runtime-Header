@@ -18,7 +18,6 @@ __attribute__((visibility("hidden")))
     BRCItemGlobalID *_prevZoneGlobalID;
 }
 
-+ (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSString *oldVersionIdentifier; // @synthesize oldVersionIdentifier=_oldVersionIdentifier;
 @property(readonly, nonatomic) unsigned long long localChangeCount; // @synthesize localChangeCount=_localChangeCount;
@@ -29,11 +28,9 @@ __attribute__((visibility("hidden")))
 - (void)updateServerFieldsFromVersion:(id)arg1;
 - (void)sqliteBind:(struct sqlite3_stmt *)arg1 index:(int)arg2;
 - (void)_clearSignatures:(unsigned long long)arg1 isPackage:(_Bool)arg2;
-- (_Bool)isMissingUploadsWithDiffs:(unsigned long long)arg1 isDocumentSyncPaused:(_Bool)arg2 isDocumentResumingSync:(_Bool)arg3;
+- (_Bool)isMissingUploadsWithDiffs:(unsigned long long)arg1;
 - (_Bool)shouldRecreateUploadJobGivenDiffs:(unsigned long long)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
 - (id)initWithLocalVersion:(id)arg1;
 - (id)initWithServerVersion:(id)arg1;
 - (id)initWithVersion:(id)arg1;
@@ -42,7 +39,9 @@ __attribute__((visibility("hidden")))
 - (id)descriptionWithContext:(id)arg1;
 - (id)sizeObj;
 - (id)isPackageObj;
+- (void)clearCKInfo;
 - (void)bumpLocalChangeCount;
+- (void)updateWithPackageSize:(unsigned long long)arg1;
 - (void)updateWithImportObject:(id)arg1 onlyContentDependentProperties:(_Bool)arg2;
 - (id)initWithImportObject:(id)arg1;
 - (id)initFromResultSet:(id)arg1 pos:(int)arg2;

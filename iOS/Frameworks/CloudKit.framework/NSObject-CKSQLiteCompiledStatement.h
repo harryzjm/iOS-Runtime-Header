@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 @interface NSObject (CKSQLiteCompiledStatement)
++ (_Bool)_cksql_isTableEntry;
 + (id)CKSQLiteClassName;
 - (id)cksqlcs_appendSQLConstantValueToString:(id)arg1;
 - (id)cksqlcs_bindArchivedObject:(struct sqlite3_stmt *)arg1 index:(int)arg2 db:(id)arg3;
@@ -19,12 +20,9 @@
 - (double)cksqlcs_doubleBindingValue:(id *)arg1;
 - (id)cksqlcs_bindInt64:(struct sqlite3_stmt *)arg1 index:(int)arg2 db:(id)arg3;
 - (long long)cksqlcs_int64BindingValue:(id *)arg1;
-- (id)CKSingleLineDescription;
-- (id)CKHashedDescription;
 - (id)_CKDescriptionWithExpansion:(_Bool)arg1;
 - (id)CKExpandedDescription;
 - (id)CKDescription;
-- (id)CKPropertiesDescriptionStringFromProperties:(id)arg1;
 - (id)CKDescriptionPropertiesWithPublic:(_Bool)arg1 private:(_Bool)arg2 shouldExpand:(_Bool)arg3;
 - (id)CKPropertiesDescription;
 - (void)CKAssignToContainerWithID:(id)arg1;
@@ -32,6 +30,8 @@
 - (id)CKObjectDescriptionRedact:(_Bool)arg1 avoidShortDescription:(_Bool)arg2;
 - (id)CKObjectDescriptionRedact:(_Bool)arg1;
 - (id)CKDescriptionRedact:(_Bool)arg1 avoidShortDescription:(_Bool)arg2;
+- (_Bool)CKDescriptionShouldPrintPointer;
+- (id)CKDescriptionClassName;
 - (id)CKRedactedDescription;
 - (id)CKUnredactedDescription;
 @end

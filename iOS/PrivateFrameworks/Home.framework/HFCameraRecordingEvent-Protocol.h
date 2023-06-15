@@ -14,6 +14,7 @@
 - (NSDate *)hf_endDate;
 - (_Bool)isComplete;
 - (_Bool)canAskForUserFeedback;
+- (_Bool)hf_hasInsufficientAnalysis;
 - (_Bool)hf_isPlayable;
 - (double)duration;
 - (double)hf_duration;

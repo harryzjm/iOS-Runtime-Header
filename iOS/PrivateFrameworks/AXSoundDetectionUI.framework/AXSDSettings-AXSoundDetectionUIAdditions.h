@@ -21,6 +21,9 @@
 - (void)editKShotDetectorName:(id)arg1 newName:(id)arg2;
 - (void)setKShotDetectorModelFailed:(id)arg1 modelFailed:(_Bool)arg2;
 - (void)setKShotDetectorIsEnabled:(id)arg1 isEnabled:(_Bool)arg2;
+- (void)setDetectorIsEnabled:(id)arg1 isEnabled:(_Bool)arg2;
+- (void)disableDetector:(id)arg1;
+- (void)enableDetector:(id)arg1;
 - (id)decodedKShotDetectors;
 - (void)removeAllKShotDetectors;
 - (void)removeKShotDetector:(id)arg1;

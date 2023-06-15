@@ -7,6 +7,7 @@
 #import <Foundation/NSArray.h>
 
 @interface NSArray (UIKBCandidateExtras)
+- (id)_sortedArrayByFrequency;
 - (id)_arrayByFilteringEmojiCandidates:(long long)arg1;
 - (id)_arrayByFilteringCandidatesForNonExtendedView;
 @end

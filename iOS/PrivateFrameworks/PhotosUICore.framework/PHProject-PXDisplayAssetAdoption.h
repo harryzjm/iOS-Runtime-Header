@@ -8,6 +8,7 @@
 
 @interface PHProject (PXDisplayAssetAdoption)
 - (_Bool)px_isProject;
+- (id)px_navigationURLHost;
 - (id)px_rootCollectionList;
 @end
 

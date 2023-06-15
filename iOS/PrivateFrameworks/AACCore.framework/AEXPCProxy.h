@@ -13,11 +13,16 @@ __attribute__((visibility("hidden")))
 @interface AEXPCProxy : NSObject
 {
     NSXPCConnection *_connection;
+    CDUnknownBlockType _interruptionHandler;
+    CDUnknownBlockType _invalidationHandler;
     id <AEXPCConnectionOrigin> _origin;
     NSXPCInterface *_interface;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
+@property(copy, nonatomic) CDUnknownBlockType interruptionHandler; // @synthesize interruptionHandler=_interruptionHandler;
+- (void)invalidate;
 - (void)dealloc;
 
 @end

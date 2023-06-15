@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UICollectionLayoutFramesQueryResultElementIndexKey : NSObject <NSCopying>
+@interface _UICollectionLayoutFramesQueryResultElementIndexKey : NSObject
 {
     NSString *_element;
     long long _index;

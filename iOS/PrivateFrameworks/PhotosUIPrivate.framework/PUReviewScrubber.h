@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIToolbar.h>
+#import <UIKitCore/UIToolbar.h>
 
 @class NSIndexPath, NSString, PUHorizontalCollectionViewLayout, UICollectionView, UIImageView, UIImpactFeedbackGenerator, UITapGestureRecognizer, _UIBackdropView;
 @protocol PUReviewScrubberDataSource, PUReviewScrubberDelegate;

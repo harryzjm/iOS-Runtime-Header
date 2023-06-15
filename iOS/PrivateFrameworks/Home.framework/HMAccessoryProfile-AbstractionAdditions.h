@@ -28,6 +28,8 @@
 @property(readonly, nonatomic) _Bool hf_hasSetFavorite;
 @property(readonly, nonatomic) _Bool hf_isFavorite;
 - (id)hf_moveToRoom:(id)arg1;
+@property(readonly, nonatomic) _Bool hf_isIdentifiable;
+@property(readonly, nonatomic) _Bool hf_canSpanMultipleRooms;
 @property(readonly, nonatomic) HMRoom *hf_safeRoom;
 - (_Bool)hf_isInRoom:(id)arg1;
 @property(readonly, nonatomic) HFAccessoryType *hf_accessoryType;

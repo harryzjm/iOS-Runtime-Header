@@ -6,7 +6,7 @@
 
 #import <CopresenceCore/NSObject-Protocol.h>
 
-@class NSString, TUConversation;
+@class NSString, TUConversation, TUConversationActivitySession;
 @protocol CPConversationManagerDataSource;
 
 @protocol CPConversationManagerDataSourceObserver <NSObject>
@@ -14,6 +14,7 @@
 - (void)conversationManager:(id <CPConversationManagerDataSource>)arg1 conversationChanged:(TUConversation *)arg2;
 
 @optional
+- (void)conversationManager:(id <CPConversationManagerDataSource>)arg1 requestedEndpointWithIdentifier:(NSString *)arg2 activitySession:(TUConversationActivitySession *)arg3 completion:(void (^)(NSXPCListenerEndpoint *))arg4;
 - (void)conversationManager:(id <CPConversationManagerDataSource>)arg1 screenSharingAllowedChanged:(_Bool)arg2;
 - (void)conversationManager:(id <CPConversationManagerDataSource>)arg1 sharePlayAllowedChanged:(_Bool)arg2;
 @end

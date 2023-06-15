@@ -27,6 +27,6 @@
 @property(readonly, nonatomic) NSString *title;
 - (UIImage *)completionIconWithSession:(id <WBSParsecSearchSession>)arg1;
 - (UIImage *)iconWithSession:(id <WBSParsecSearchSession>)arg1;
-- (_Bool)canBecomeTopHitForQuery:(WBSCompletionQuery *)arg1;
+- (_Bool)isPredictionFromServerMatchingUserTypedQuery:(WBSCompletionQuery *)arg1;
 @end
 

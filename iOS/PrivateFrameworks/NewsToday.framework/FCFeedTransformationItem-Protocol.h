@@ -11,9 +11,11 @@
 @protocol FCChannelProviding;
 
 @protocol FCFeedTransformationItem <NSObject, FCFeedPersonalizingItem>
+@property(readonly, nonatomic) _Bool hasVideoStillImage;
 @property(readonly, nonatomic) _Bool canBePurchased;
 @property(readonly, nonatomic) long long publisherArticleVersion;
 @property(readonly, nonatomic) long long minimumNewsVersion;
+@property(readonly, nonatomic, getter=isSponsored) _Bool sponsored;
 @property(readonly, nonatomic, getter=isExplicitContent) _Bool explicitContent;
 @property(readonly, nonatomic, getter=isFromBlockedStorefront) _Bool fromBlockedStorefront;
 @property(readonly, nonatomic) double globalUserFeedback;
@@ -27,6 +29,7 @@
 @property(readonly, copy, nonatomic) NSString *feedID;
 
 @optional
+@property(readonly, nonatomic) unsigned long long storyType;
 @property(readonly, nonatomic) unsigned long long role;
 @property(readonly, copy, nonatomic) id <FCChannelProviding> sourceChannel;
 @end

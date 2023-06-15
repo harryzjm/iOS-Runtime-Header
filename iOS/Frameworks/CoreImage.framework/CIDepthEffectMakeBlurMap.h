@@ -6,7 +6,7 @@
 
 #import "CIFilter.h"
 
-@class AVCameraCalibrationData, CIImage, CIVector, NSDictionary, NSNumber;
+@class AVCameraCalibrationData, CIImage, CIVector, NSDictionary, NSNumber, NSString;
 
 __attribute__((visibility("hidden")))
 @interface CIDepthEffectMakeBlurMap : CIFilter
@@ -29,9 +29,11 @@ __attribute__((visibility("hidden")))
     NSDictionary *tuningParameters;
     float simulatedAperture;
     NSNumber *inputDraftMode;
+    NSString *inputCaptureFolderMiscPath;
 }
 
 + (id)customAttributes;
+@property(retain, nonatomic) NSString *inputCaptureFolderMiscPath; // @synthesize inputCaptureFolderMiscPath;
 @property(retain, nonatomic) NSNumber *inputDraftMode; // @synthesize inputDraftMode;
 @property(retain, nonatomic) AVCameraCalibrationData *inputCalibrationData; // @synthesize inputCalibrationData;
 @property(retain, nonatomic) id inputAuxDataMetadata; // @synthesize inputAuxDataMetadata;

@@ -10,7 +10,7 @@
 @protocol NSCollectionLayoutContainer;
 
 @protocol NSCollectionLayoutEnvironment <NSObject>
-@property(nonatomic, readonly) UITraitCollection *traitCollection;
-@property(nonatomic, readonly) id <NSCollectionLayoutContainer> container;
+@property(readonly, nonatomic) UITraitCollection *traitCollection;
+@property(readonly, nonatomic) id <NSCollectionLayoutContainer> container;
 @end
 

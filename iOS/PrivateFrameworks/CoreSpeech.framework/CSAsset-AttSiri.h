@@ -13,7 +13,10 @@
 + (unsigned int)SSVDefaultDistanceChannelCount;
 + (unsigned int)SSVDefaultLKFSChannelCount;
 + (unsigned int)SSVDefaultNoiseChannelCount;
+@property(readonly, nonatomic) _Bool isJSSupported;
+@property(readonly, nonatomic) _Bool isMagusSupported;
 - (_Bool)isHSVoiceTrigger:(id)arg1;
+- (_Bool)isJSVoiceTrigger:(id)arg1;
 - (id)getCategoryKeyWithRecordCtx:(id)arg1;
 - (_Bool)shouldRunSpkrIdForCategory:(id)arg1;
 - (id)nldaConfigFileForCategory:(id)arg1;
@@ -21,10 +24,20 @@
 @property(readonly, nonatomic) unsigned long long allowListWordCountThreshold;
 @property(readonly, nonatomic) NSString *allowKeywordsFile;
 - (id)nldaConfigFile;
+@property(readonly, nonatomic) float mitigationModelDefaultELFusionScore;
 @property(readonly, nonatomic) float mitigationModelDefaultAFTMScore;
 - (id)mitigatonConfigFile;
+@property(readonly, nonatomic) float attendingTimeoutValueInSecs;
+@property(readonly, nonatomic) long long numOfConsecutiveBoronActivationThreshold;
+@property(readonly, nonatomic) _Bool useGazeSignal;
+@property(readonly, nonatomic) float startOfSpeechPrependAudioDuration;
+@property(readonly, nonatomic) float startOfSpeechThresholdDuration;
+@property(readonly, nonatomic) NSString *lipMovementVADModelFile;
+@property(readonly, nonatomic) NSString *gazeDetectionModelFile;
+@property(readonly, nonatomic) NSString *mimVotingConfigFile;
 @property(readonly, nonatomic) NSDictionary *SSVParameterDirectionary;
 - (id)_getNumberFromASVDictionaryForKey:(id)arg1 category:(id)arg2 default:(id)arg3;
+@property(readonly, nonatomic) float SSVCADropInCallAnnouncementMinTTSVolume;
 @property(readonly, nonatomic) float SSVCAMaximumCompensatedSpeechLevelNearField;
 @property(readonly, nonatomic) unsigned long long SSVCAHistoricalVolumeBufferSize;
 @property(readonly, nonatomic) float SSVCAVolumeHalfLifeSeconds;
@@ -140,8 +153,12 @@
 @property(readonly, nonatomic) unsigned int SSVNoiseLowerPercentile;
 @property(readonly, nonatomic) unsigned int SSVEnergyBufferSize;
 - (id)_adaptiveSiriVolumeDictionary;
-@property(readonly, nonatomic) NSString *flexKwdThresholdFile;
-@property(readonly, nonatomic) NSString *flexKwdConfigFile;
+- (id)_userSelectedPhraseTypeToRTModelPhraseType:(id)arg1;
+- (_Bool)_allowMultiPhrase:(id)arg1 forceSkipEngineVersionCheck:(_Bool)arg2;
+- (id)_rtModelWithRequestOptions:(id)arg1 accessoryBlobs:(id)arg2;
+- (id)_getFilteredAccessoryRTBlobListForRequestOptions:(id)arg1 accessoryBlobs:(id)arg2 forceSkipEngineVersionCheck:(_Bool)arg3;
+- (id)_splitBlobsByPhraseType:(id)arg1;
+- (id)_buildRTModelWithBlobConfig:(id)arg1 requestOptions:(id)arg2;
 - (id)_sha256:(id)arg1;
 - (id)_sha1:(id)arg1;
 - (id)localeMapWithName:(id)arg1;
@@ -149,12 +166,12 @@
 - (id)remoraRTModelLocaleMap;
 - (id)jarvisRTModelLocaleMap;
 - (id)hearstRTModelLocaleMap;
-- (id)hearstRTModelWithMajorVersion:(unsigned long long)arg1 minorVersion:(unsigned long long)arg2 locale:(id)arg3;
-- (id)remoraRTModelWithMajorVersion:(unsigned long long)arg1 minorVersion:(unsigned long long)arg2 locale:(id)arg3;
-- (id)rtModelWithAccessoryRTModelType:(long long)arg1 majorVersion:(unsigned long long)arg2 minorVersion:(unsigned long long)arg3 locale:(id)arg4;
-- (id)latestHearstRTModelForLocale:(id)arg1;
+- (id)hearstRTModelWithRequestOptions:(id)arg1;
+- (id)rtModelWithRequestOptions:(id)arg1;
+- (id)latestHearstRTModelWithRequestOptions:(id)arg1;
 - (id)RTModelWithFallbackLanguage:(id)arg1;
 - (id)createRTModelWithLocale:(id)arg1;
+@property(readonly, nonatomic) _Bool useTDTIEnrollment;
 @property(readonly, nonatomic) _Bool useSpeakerRecognitionAsset;
 @property(readonly, nonatomic) _Bool containsMultiUserThresholds;
 @property(readonly, nonatomic) _Bool satImplicitTrainingEnabled;
@@ -172,11 +189,16 @@
 @property(readonly, nonatomic) float satImplicitProfileThreshold;
 @property(readonly, nonatomic) float psrCombinationWeight;
 @property(readonly, nonatomic) long long multiUserDeltaScoreThreshold;
+- (long long)multiUserDeltaScoreThresholdForPhId:(unsigned long long)arg1;
 @property(readonly, nonatomic) long long multiUserConfidentScoreThreshold;
+- (long long)multiUserConfidentScoreThresholdForPhId:(unsigned long long)arg1;
 @property(readonly, nonatomic) long long multiUserHighScoreThreshold;
+- (long long)multiUserHighScoreThresholdForPhId:(unsigned long long)arg1;
 @property(readonly, nonatomic) long long multiUserLowScoreThreshold;
+- (long long)multiUserLowScoreThresholdForPhId:(unsigned long long)arg1;
 @property(readonly, nonatomic) float satScoreThreshold;
 - (float)satScoreThresholdForPhId:(unsigned long long)arg1;
+- (id)getPhraseConfig:(unsigned long long)arg1;
 @property(readonly, nonatomic) _Bool containsSpeakerRecognitionCategory;
 - (unsigned long long)_mapInputOriginFromAssetToCSAudioRecordType:(id)arg1;
 @property(readonly, nonatomic) NSArray *contConvThresholds;
@@ -189,5 +211,8 @@
 @property(readonly, nonatomic) NSString *startOfSpeechDetectorConfigFile;
 @property(readonly, nonatomic) NSString *languageDetectorConfigFile;
 @property(readonly, nonatomic) NSArray *languageDetectorSupportedLocale;
+
+// Remaining properties
+@property(readonly, nonatomic) float bargeInRequestDeferralDurationInSecs;
 @end
 

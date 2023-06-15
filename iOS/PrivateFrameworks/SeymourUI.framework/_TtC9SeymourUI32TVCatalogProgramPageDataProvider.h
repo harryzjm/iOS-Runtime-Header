@@ -10,12 +10,17 @@
 
 @interface _TtC9SeymourUI32TVCatalogProgramPageDataProvider : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *archivedSessionClient;
+    MISSING_TYPE *assetClient;
+    MISSING_TYPE *bookmarkClient;
     MISSING_TYPE *catalogClient;
+    MISSING_TYPE *configurationClient;
     MISSING_TYPE *dependencies;
     MISSING_TYPE *eventHub;
     MISSING_TYPE *marketingItemProvider;
     MISSING_TYPE *subscriptionCache;
     MISSING_TYPE *subscriptionToken;
+    MISSING_TYPE *upNextQueueClient;
     MISSING_TYPE *page;
     MISSING_TYPE *programIdentifier;
     MISSING_TYPE *programDetail;
@@ -29,6 +34,13 @@
     MISSING_TYPE *subtitleTags;
     MISSING_TYPE *shouldPublishPageEventWhenAvailable;
     MISSING_TYPE *backgroundArtworkDelegate;
+    MISSING_TYPE *assetBundles;
+    MISSING_TYPE *bookmarks;
+    MISSING_TYPE *configuration;
+    MISSING_TYPE *playlists;
+    MISSING_TYPE *resumableSessions;
+    MISSING_TYPE *subscription;
+    MISSING_TYPE *upNextQueueItems;
 }
 
 @end

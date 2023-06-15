@@ -40,8 +40,6 @@
 @property(retain, nonatomic) id <RSCamera> camera; // @synthesize camera=_camera;
 @property(nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
 - (void)dealloc;
-- (id)initWithPythonDictionary:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
 
 @end
 

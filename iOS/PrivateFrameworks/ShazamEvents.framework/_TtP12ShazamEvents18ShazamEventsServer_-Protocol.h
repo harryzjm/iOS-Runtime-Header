@@ -7,7 +7,7 @@
 @class NSString;
 
 @protocol _TtP12ShazamEvents18ShazamEventsServer_
-- (void)liveMusicScheduleWithVenueID:(NSString *)arg1 completionHandler:(void (^)(_TtC12ShazamEvents34LiveMusicScheduleXPCValueContainer *))arg2;
+- (void)liveMusicScheduleWithVenueID:(NSString *)arg1 completionHandler:(void (^)(_TtC12ShazamEvents39LiveMusicVenueScheduleXPCValueContainer *))arg2;
 - (void)liveMusicScheduleWithArtistID:(NSString *)arg1 completionHandler:(void (^)(_TtC12ShazamEvents34LiveMusicScheduleXPCValueContainer *))arg2;
 - (void)liveMusicEventWithEventID:(NSString *)arg1 completionHandler:(void (^)(_TtC12ShazamEvents31LiveMusicEventXPCValueContainer *))arg2;
 @end

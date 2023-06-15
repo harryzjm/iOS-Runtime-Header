@@ -17,7 +17,7 @@
 + (void)addSymbolicatedBacktraceFramesToCache:(id)arg1;
 + (id)fetchCachedBacktraceFramesForReturnAddresses:(unsigned long long *)arg1 returnAddressesCount:(unsigned long long)arg2 cacheMissReturnAddresses:(id *)arg3;
 + (id)_symbolicatedFramesForReturnAddresses:(unsigned long long *)arg1 returnAddressesCount:(unsigned long long)arg2 dyldImageSuffix:(id)arg3 useXPCClass:(_Bool)arg4 symbolicatorCreationBlock:(CDUnknownBlockType)arg5;
-+ (id)symbolicatedFramesForReturnAddresses:(unsigned long long *)arg1 returnAddressesCount:(unsigned long long)arg2 signature:(const struct __CFData *)arg3 dyldImageSuffix:(id)arg4 allowDsymData:(_Bool)arg5 useXPCClass:(_Bool)arg6;
++ (id)symbolicatedFramesForReturnAddresses:(unsigned long long *)arg1 returnAddressesCount:(unsigned long long)arg2 signature:(struct __CFData *)arg3 dyldImageSuffix:(id)arg4 allowDsymData:(_Bool)arg5 useXPCClass:(_Bool)arg6;
 + (id)symbolicatedFramesForReturnAddresses:(unsigned long long *)arg1 returnAddressesCount:(unsigned long long)arg2 task:(unsigned int)arg3 dyldImageSuffix:(id)arg4 allowDsymData:(_Bool)arg5 useXPCClass:(_Bool)arg6;
 + (id)_stackBacktraceFrameWithStackAddress:(unsigned long long)arg1 usingSymbolicator:(struct _CSTypeRef)arg2 dyldImageSuffix:(id)arg3 useXPCClass:(_Bool)arg4;
 + (void)clearCaches;

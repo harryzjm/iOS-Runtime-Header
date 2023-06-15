@@ -10,12 +10,12 @@ __attribute__((visibility("hidden")))
 @interface WebAccessibilityObjectWrapperBase : NSObject
 {
     void *m_axObject;
-    ObjectIdentifier_098db1e0 _identifier;
+    ObjectIdentifierGeneric_cadff505 _identifier;
 }
 
 + (void)accessibilitySetShouldRepostNotifications:(_Bool)arg1;
 - (id).cxx_construct;
-@property(nonatomic) ObjectIdentifier_098db1e0 identifier; // @synthesize identifier=_identifier;
+@property(nonatomic) ObjectIdentifierGeneric_cadff505 identifier; // @synthesize identifier=_identifier;
 - (id)outerHTML;
 - (id)innerHTML;
 - (void)accessibilityPostedNotification:(id)arg1 userInfo:(id)arg2;
@@ -28,12 +28,12 @@ __attribute__((visibility("hidden")))
 - (id)ariaLandmarkRoleDescription;
 - (id)lineRectsAndText;
 - (void *)baseUpdateBackingStore;
-- (id)contentForSimpleRange:(const void *)arg1 attributed:(_Bool)arg2;
 - (struct CGRect)convertRectToSpace:(const struct FloatRect *)arg1 space:(int)arg2;
 - (id)_accessibilityWebDocumentView;
 - (struct _NSRange)accessibilityVisibleCharacterRange;
 - (struct CGPath *)convertPathToScreenSpace:(const void *)arg1;
 - (id)baseAccessibilityHelpText;
+- (id)accessibilityCustomContent;
 - (id)baseAccessibilitySpeechHint;
 - (_Bool)isIsolatedObject;
 - (void *)axBackingObject;

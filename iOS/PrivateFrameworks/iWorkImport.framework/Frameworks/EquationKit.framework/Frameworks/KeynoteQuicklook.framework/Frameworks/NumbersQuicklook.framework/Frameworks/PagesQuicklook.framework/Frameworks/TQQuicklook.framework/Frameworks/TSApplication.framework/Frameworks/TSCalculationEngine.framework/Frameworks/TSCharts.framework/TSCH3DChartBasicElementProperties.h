@@ -15,10 +15,10 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) tvec2_3b141483 size; // @synthesize size=_size;
-- (id)texcoordsForSeries:(id)arg1 index:(const void *)arg2;
-- (id)normalsForSeries:(id)arg1 index:(const void *)arg2;
-- (id)boundsGeometryForSeries:(id)arg1 index:(const void *)arg2;
-- (id)geometryForSeries:(id)arg1 index:(const void *)arg2;
+- (id)texcoordsForSeries:(id)arg1 index:(void *)arg2;
+- (id)normalsForSeries:(id)arg1 index:(void *)arg2;
+- (id)boundsGeometryForSeries:(id)arg1 index:(void *)arg2;
+- (id)geometryForSeries:(id)arg1 index:(void *)arg2;
 - (void)createResources;
 - (void)resetWithEnumerator:(id)arg1 layoutSettings:(CDStruct_c48db077)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;

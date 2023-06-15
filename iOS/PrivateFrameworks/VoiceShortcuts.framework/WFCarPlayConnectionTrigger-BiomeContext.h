@@ -7,7 +7,7 @@
 #import <WorkflowKit/WFCarPlayConnectionTrigger.h>
 
 @interface WFCarPlayConnectionTrigger (BiomeContext)
-- (_Bool)shouldFireInResponseToEvent:(id)arg1;
+- (_Bool)shouldFireInResponseToEvent:(id)arg1 triggerIdentifier:(id)arg2;
 - (id)publisherWithScheduler:(id)arg1;
 @end
 

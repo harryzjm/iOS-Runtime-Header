@@ -6,11 +6,14 @@
 
 #import <NewsCore/FCKeyValueStoreValue-Protocol.h>
 
-@class NTPBKeyValuePair;
+@class NTPBKeyValuePair, PBDataWriter;
 
 @protocol FCKeyValueStoreCoding <FCKeyValueStoreValue>
 + (id)readValueFromKeyValuePair:(NTPBKeyValuePair *)arg1;
 + (int)keyValuePairType;
 - (void)writeToKeyValuePair:(NTPBKeyValuePair *)arg1;
+
+@optional
+- (void)writeValueToDataWriter:(PBDataWriter *)arg1;
 @end
 

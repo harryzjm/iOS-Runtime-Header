@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     _Bool _isFoundInMail;
     _Bool _isNaturalLanguageSuggestedEvents;
     _Bool _isSharedByMe;
+    _Bool _isSyncedHolidayCalendar;
     unsigned long long _numSharees;
     unsigned long long _readOnlySharees;
     unsigned long long _readWriteSharees;

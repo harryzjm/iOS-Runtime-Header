@@ -9,6 +9,6 @@
 @protocol SXAdvertisingSettings;
 
 @protocol NUAdSettings <NSObject>
-@property(nonatomic, readonly) id <SXAdvertisingSettings> debugAdvertisementSettings;
+@property(readonly, nonatomic) id <SXAdvertisingSettings> debugAdvertisementSettings;
 @end
 

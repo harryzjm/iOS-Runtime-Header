@@ -13,7 +13,6 @@
     MISSING_TYPE *string;
     MISSING_TYPE *runs;
     MISSING_TYPE *runOffsetCache;
-    MISSING_TYPE *runOffsetCacheLock;
 }
 
 @end

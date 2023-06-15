@@ -12,7 +12,10 @@
 + (struct _NSRange)safari_hostAndPortRangeFromUserTypedString:(id)arg1;
 + (void)safari_enumeratePossibleURLsForUserTypedString:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 + (id)safari_URLWithUserTypedString:(id)arg1;
-- (_Bool)safari_isEligibleforDirectSSO;
+@property(readonly, copy, nonatomic) NSURL *safari_wellKnownChangePasswordURL;
+@property(readonly, nonatomic) _Bool safari_isWellKnownChangePasswordURL;
+@property(readonly, copy, nonatomic) NSURL *safari_URLByRemovingUserPasswordPathQueryAndFragment;
+@property(readonly, nonatomic) _Bool safari_isEligibleforDirectSSO;
 - (id)safari_URLByReplacingSchemeWithString:(id)arg1;
 @property(readonly, nonatomic) _Bool safari_isHTTPFamilyURL;
 @property(readonly, nonatomic) NSString *safari_displayNameForFile;

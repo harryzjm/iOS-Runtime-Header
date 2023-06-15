@@ -15,6 +15,8 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *policyValidator;
     MISSING_TYPE *layoutEnvironmentProvider;
     MISSING_TYPE *layoutStore;
+    MISSING_TYPE *integrationQueue;
+    MISSING_TYPE *lock;
 }
 
 - (void).cxx_destruct;

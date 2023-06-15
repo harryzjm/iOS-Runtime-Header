@@ -26,7 +26,14 @@ __attribute__((visibility("hidden")))
     NSObject<OS_nw_dictionary> *activeConnections;
     NSObject<OS_nw_dictionary> *activeOutgoingRequests;
     NSObject<OS_xpc_object> *remotePubKeys;
-    unsigned char localPrivKey[32];
+    struct __SecKey {
+        struct __CFRuntimeBase {
+            unsigned long long _field1;
+            _Atomic unsigned long long _field2;
+        } _field1;
+        struct __SecKeyDescriptor *_field2;
+        void *_field3;
+    } *localPrivKey;
     unsigned char localPubKey[32];
     unsigned int useLargeUUIDForTesting:1;
     unsigned int failConnectionAfterVerificationFailsForTesting:1;

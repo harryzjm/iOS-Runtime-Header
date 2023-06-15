@@ -13,7 +13,7 @@
 @optional
 - (void)transferEventUpdate:(NSDictionary *)arg1;
 - (void)proxSetupAuthEventUpdate:(NSDictionary *)arg1;
-- (void)launchSecureIntentUI:(NSData *)arg1 completion:(void (^)(_Bool))arg2;
+- (void)launchSecureIntentUI:(NSData *)arg1 isLocalConvertFlow:(_Bool)arg2 completion:(void (^)(_Bool))arg3;
 - (void)launchWebsheet:(NSDictionary *)arg1 completion:(void (^)(_Bool))arg2;
 @end
 

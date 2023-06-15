@@ -10,9 +10,10 @@
 
 @interface _TtC8VideosUI27ViewRepresentableProperties : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *_firstBaselineFromTop;
-    MISSING_TYPE *_bottomBaseline;
-    MISSING_TYPE *_size;
+    MISSING_TYPE *firstBaselineFromTop;
+    MISSING_TYPE *bottomBaseline;
+    MISSING_TYPE *size;
+    MISSING_TYPE *isDirty;
 }
 
 @end

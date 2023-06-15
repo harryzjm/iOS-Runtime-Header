@@ -15,7 +15,6 @@
 @property(nonatomic) long long textOrientation;
 @property(nonatomic) _Bool interactiveWhenHidden;
 @property(nonatomic) _Bool useTickMarkLegibilityShadows;
-@property(nonatomic) _Bool useLegibilityShadows;
 @property(nonatomic) double labelVerticalPadding;
 @property(nonatomic) double levelIndicatorHeight;
 @property(nonatomic) double sliderVerticalOffset;

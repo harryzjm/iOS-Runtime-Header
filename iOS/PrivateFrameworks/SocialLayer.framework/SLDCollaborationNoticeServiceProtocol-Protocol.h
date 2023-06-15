@@ -6,9 +6,10 @@
 
 #import <SocialLayer/NSObject-Protocol.h>
 
-@class NSArray, NSData;
+@class NSArray, NSData, NSString;
 
 @protocol SLDCollaborationNoticeServiceProtocol <NSObject>
+- (void)sendClearNoticesFor:(NSString *)arg1 forAttributionIdentifiers:(NSArray *)arg2 reply:(void (^)(_Bool))arg3;
 - (void)sendHighlightEventData:(NSData *)arg1 eventType:(long long)arg2 forAttributionIdentifiers:(NSArray *)arg3 reply:(void (^)(_Bool))arg4;
 @end
 

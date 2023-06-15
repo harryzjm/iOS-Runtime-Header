@@ -10,7 +10,6 @@
 
 @protocol BRItemCollectionGathererDelegate <NSObject>
 - (void)itemCollectionGathererDidReceiveUpdates:(NSArray *)arg1 deleteItemsWithIDs:(NSArray *)arg2;
-- (void)itemCollectionGathererReloadedItems:(NSArray *)arg1;
 - (void)itemCollectionGathererGatheredItems:(NSArray *)arg1;
 - (void)itemCollectionGathererFinishedGathering;
 @end

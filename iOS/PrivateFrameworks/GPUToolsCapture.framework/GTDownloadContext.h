@@ -6,18 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray;
-@protocol MTLAccelerationStructureCommandEncoderSPI, MTLBlitCommandEncoder, MTLCommandBuffer, MTLCommandQueue;
+@class NSArray, NSMutableArray;
+@protocol MTLAccelerationStructureCommandEncoderSPI, MTLBlitCommandEncoder, MTLCommandBuffer, MTLCommandQueue, MTLComputeCommandEncoder;
 
-__attribute__((visibility("hidden")))
 @interface GTDownloadContext : NSObject
 {
     id <MTLCommandQueue> _queue;
     id <MTLCommandBuffer> _command;
     id <MTLBlitCommandEncoder> _blit;
+    id <MTLComputeCommandEncoder> _computeCommandEncoder;
     id <MTLAccelerationStructureCommandEncoderSPI> _accelerationStructureCommandEncoder;
     NSMutableArray *_MTLResources;
     NSMutableArray *_originalMTLResources;
+    NSArray *_captureAccelerationStructures;
     struct apr_pool_t *_pool;
     unsigned long long _blitRequestCount;
     struct apr_array_header_t *_requests;
@@ -26,12 +27,14 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSArray *captureAccelerationStructures; // @synthesize captureAccelerationStructures=_captureAccelerationStructures;
 @property(nonatomic) unsigned long long usedGPUMemory; // @synthesize usedGPUMemory=_usedGPUMemory;
 @property(retain, nonatomic) NSMutableArray *objects; // @synthesize objects=_objects;
 @property(nonatomic) struct apr_array_header_t *requests; // @synthesize requests=_requests;
 - (void)flush;
 - (void)flushWithCallback:(CDUnknownBlockType)arg1;
 - (id)accelerationStructureCommandEncoder;
+- (id)computeCommandEncoder;
 - (id)blitCommandEncoder;
 - (id)newCommandBuffer;
 - (void)retainMTLResource:(id)arg1;

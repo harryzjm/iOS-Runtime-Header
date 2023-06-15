@@ -14,6 +14,8 @@ __attribute__((visibility("hidden")))
 }
 
 @property(readonly, nonatomic) _UISheetPresentationMetrics *defaultSheetMetrics;
+- (Class)presentationControllerClassForModalPresentationStyle:(long long)arg1 inIdiom:(long long)arg2;
+- (id)presentationControllerForPresentedViewController:(id)arg1;
 - (long long)defaultConcreteTransitionStyleForViewController:(id)arg1;
 - (long long)defaultConcretePresentationStyleForViewController:(id)arg1;
 - (id)styleForSearchPresentationController:(id)arg1;

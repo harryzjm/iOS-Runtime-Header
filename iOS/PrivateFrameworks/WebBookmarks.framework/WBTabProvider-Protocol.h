@@ -6,16 +6,18 @@
 
 #import <WebBookmarks/NSObject-Protocol.h>
 
-@class NSArray, NSString, WBTab, WBTabGroup;
+@class NSArray, NSString, WBProfile, WBTab, WBTabGroup;
 
 @protocol WBTabProvider <NSObject>
 @property(nonatomic) unsigned long long maximumTabsPerGroup;
-@property(readonly, copy, nonatomic) NSArray *tabGroups;
 @property(readonly, nonatomic) int privatePinnedTabsFolderID;
 @property(readonly, nonatomic) int pinnedTabsFolderID;
+@property(readonly, copy, nonatomic) NSArray *allNamedTabGroupsUnsorted;
+@property(readonly, copy, nonatomic) NSArray *namedTabGroupsInDefaultProfile;
+- (NSArray *)namedTabGroupsForProfileWithUUID:(NSString *)arg1;
 - (WBTab *)tabWithUUID:(NSString *)arg1;
 - (WBTabGroup *)tabGroupWithUUID:(NSString *)arg1;
 - (NSArray *)tabsForTabGroup:(WBTabGroup *)arg1;
-- (void)tabGroupsWithCompletionHandler:(void (^)(NSArray *))arg1;
+- (NSArray *)devicesForProfile:(WBProfile *)arg1;
 @end
 

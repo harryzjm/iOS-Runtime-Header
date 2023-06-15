@@ -7,6 +7,7 @@
 @class ACAccount;
 
 @protocol AADaemonProtocol
+- (void)handleMarkedForSignOutForAccount:(ACAccount *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)handleAppleAccountDeleteForAccount:(ACAccount *)arg1 completion:(void (^)(NSError *))arg2;
 @end
 

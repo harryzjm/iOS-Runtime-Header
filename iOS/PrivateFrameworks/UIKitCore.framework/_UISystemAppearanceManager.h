@@ -37,6 +37,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool homeIndicatorAutoHidden; // @synthesize homeIndicatorAutoHidden=_homeIndicatorAutoHidden;
 - (void)_logOrientationPreferencesChangeWithOldSupportedOrientations:(unsigned long long)arg1 newSupportedOrientations:(unsigned long long)arg2 oldPreferredOrientation:(long long)arg3 newPreferredOrientation:(long long)arg4 animationSettings:(id)arg5 fenced:(_Bool)arg6;
 - (void)window:(id)arg1 didUpdateSupportedOrientations:(unsigned long long)arg2 preferredOrientation:(long long)arg3 prefersAnimation:(_Bool)arg4;
+- (void)updateContainerBackgroundStyle;
 - (void)updateMultitaskingDragExclusionRects;
 - (void)updateWhitePointAdaptivityStyle;
 - (void)updateUserInterfaceStyle;

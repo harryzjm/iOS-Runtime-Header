@@ -12,15 +12,22 @@ __attribute__((visibility("hidden")))
 @interface _TtC10ChronoCore17DescriptorService : NSObject
 {
     MISSING_TYPE *_descriptorPublisher;
+    MISSING_TYPE *_extensionPublisher;
     MISSING_TYPE *descriptorProvider;
     MISSING_TYPE *_test_noRetries;
     MISSING_TYPE *extensionManager;
+    MISSING_TYPE *remoteWidgetDescriptorService;
     MISSING_TYPE *preferences;
     MISSING_TYPE *descriptorCache;
-    MISSING_TYPE *configurationService;
+    MISSING_TYPE *hostService;
+    MISSING_TYPE *intentResolver;
+    MISSING_TYPE *keybagStateProvider;
     MISSING_TYPE *taskService;
+    MISSING_TYPE *iconStore;
     MISSING_TYPE *persistentSubscriptions;
+    MISSING_TYPE *finishLaunchingToken;
     MISSING_TYPE *queue;
+    MISSING_TYPE *iconFetchQueue;
     MISSING_TYPE *_queue_currentExtensionsAndCompletionsBeingFetched;
     MISSING_TYPE *_queue_tasks;
     MISSING_TYPE *_queue_extensionEvents;

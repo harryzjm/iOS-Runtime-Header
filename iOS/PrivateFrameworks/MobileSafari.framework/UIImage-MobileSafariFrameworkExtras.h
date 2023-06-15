@@ -13,6 +13,7 @@
 @property(readonly, nonatomic) long long sf_tabSnapshotEffectsVersion;
 - (id)sf_initWithCGImage:(struct CGImage *)arg1 tabSnapshotEffectsVersion:(long long)arg2;
 @property(nonatomic, setter=sf_setIsMonogram:) _Bool sf_isMonogram;
+- (void)sf_registerFaviconForDarkUserInterfaceStyleWithSize:(struct CGSize)arg1;
 - (void)sf_registerFaviconForDarkUserInterfaceStyle;
 - (_Bool)sf_hasRegisteredFaviconForDarkUserInterfaceStyle;
 @property(readonly, nonatomic) _Bool sf_shouldApplyBackingForDarkBackdrop;

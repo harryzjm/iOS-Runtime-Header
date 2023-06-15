@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
     ReadingListContentUnavailableView *_explanationView;
     ReadingListLeadImageCache *_imageCache;
     UISearchBar *_searchBar;
+    _Bool _shouldUseSearchControllerInNavigationBar;
     _Bool _isUsingSwipeAction;
     NSMutableSet *_visibleBookmarkIDs;
     _Bool _needsContentOffsetAdjustment;
@@ -54,6 +55,7 @@ __attribute__((visibility("hidden")))
 - (long long)_tableView:(id)arg1 dataOwnerForDragSession:(id)arg2 atIndexPath:(id)arg3;
 - (id)tableView:(id)arg1 itemsForAddingToDragSession:(id)arg2 atIndexPath:(id)arg3 point:(struct CGPoint)arg4;
 - (id)tableView:(id)arg1 itemsForBeginningDragSession:(id)arg2 atIndexPath:(id)arg3;
+- (void)searchBarCancelButtonClicked:(id)arg1;
 - (void)searchBarSearchButtonClicked:(id)arg1;
 - (void)searchBar:(id)arg1 textDidChange:(id)arg2;
 - (id)previewTableViewController:(id)arg1 menuForRowAtIndexPath:(id)arg2;
@@ -94,6 +96,8 @@ __attribute__((visibility("hidden")))
 - (void)tableView:(id)arg1 willBeginEditingRowAtIndexPath:(id)arg2;
 - (void)_setIconForBookmark:(id)arg1 cell:(id)arg2 synchronously:(_Bool)arg3;
 - (id)_iconForUUID:(id)arg1 iconData:(id)arg2;
+- (double)tableView:(id)arg1 estimatedHeightForHeaderInSection:(long long)arg2;
+- (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
@@ -137,6 +141,7 @@ __attribute__((visibility("hidden")))
 - (id)_separatorEffect;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
+- (void)viewDidLayoutSubviews;
 - (void)viewWillLayoutSubviews;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewDidLoad;

@@ -9,7 +9,7 @@
 @class NSSet;
 
 @protocol HFServiceVendor <HFAccessoryVendor>
-@property(nonatomic, readonly) NSSet *services;
+@property(readonly, nonatomic) NSSet *services;
 
 @optional
 - (_Bool)shouldReduceOptionItemsForNotifyingCharacteristics;

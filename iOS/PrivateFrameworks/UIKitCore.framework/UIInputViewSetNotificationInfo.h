@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary;
+@class NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
 @interface UIInputViewSetNotificationInfo : NSObject
@@ -16,9 +16,12 @@ __attribute__((visibility("hidden")))
     _Bool _forceNotification;
     _Bool _wasCausedRemotely;
     _Bool _dueToRotation;
+    _Bool _shouldSendInClient;
     double _duration;
     unsigned long long _options;
     unsigned long long _assistantPosition;
+    unsigned long long _type;
+    NSString *_debugInfo;
     struct CGPoint _beginCenter;
     struct CGPoint _endCenter;
     struct CGRect _beginFrame;
@@ -28,9 +31,13 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)info;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSString *debugInfo; // @synthesize debugInfo=_debugInfo;
 @property(nonatomic) struct CGRect bounds; // @synthesize bounds=_bounds;
 @property(nonatomic) struct CGPoint endCenter; // @synthesize endCenter=_endCenter;
 @property(nonatomic) struct CGPoint beginCenter; // @synthesize beginCenter=_beginCenter;
+@property(nonatomic) unsigned long long type; // @synthesize type=_type;
+@property(nonatomic) _Bool shouldSendInClient; // @synthesize shouldSendInClient=_shouldSendInClient;
 @property(nonatomic) _Bool dueToRotation; // @synthesize dueToRotation=_dueToRotation;
 @property(nonatomic) _Bool wasCausedRemotely; // @synthesize wasCausedRemotely=_wasCausedRemotely;
 @property(nonatomic) _Bool forceNotification; // @synthesize forceNotification=_forceNotification;
@@ -42,6 +49,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) double duration; // @synthesize duration=_duration;
 @property(nonatomic) struct CGRect endFrame; // @synthesize endFrame=_endFrame;
 @property(nonatomic) struct CGRect beginFrame; // @synthesize beginFrame=_beginFrame;
+- (id)description;
+- (void)addKeyboardNotificationDebuggingInfo:(id)arg1;
 - (void)populateEndInfoWithFrame:(struct CGRect)arg1;
 - (void)populateStartInfoWithFrame:(struct CGRect)arg1;
 - (void)populateWithAnimationStyle:(id)arg1;

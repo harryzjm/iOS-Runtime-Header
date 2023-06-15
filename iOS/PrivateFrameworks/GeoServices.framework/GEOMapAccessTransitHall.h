@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
 
 // Remaining properties
 @property(readonly, nonatomic) double boundingRadius;
-@property(readonly, nonatomic) CDStruct_02837cd9 boundingRect;
+@property(readonly, nonatomic) CDStruct_90e2a262 boundingRect;
 @property(readonly, nonatomic) CDStruct_c3b9c2ee coordinate;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;

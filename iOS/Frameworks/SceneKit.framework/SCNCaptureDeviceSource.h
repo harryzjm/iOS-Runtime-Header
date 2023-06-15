@@ -7,17 +7,15 @@
 #import "SCNTextureSource.h"
 
 @class AVCaptureDevice, AVCaptureSession, NSString;
-@protocol MTLTexture;
 
 __attribute__((visibility("hidden")))
 @interface SCNCaptureDeviceSource : SCNTextureSource
 {
     AVCaptureDevice *_captureDevice;
     AVCaptureSession *_captureSession;
+    CDStruct_1e850d63 _data;
     struct __CVMetalTextureCache *_textureCache;
-    struct __CVBuffer *_pixelBuffer;
-    id <MTLTexture> _mtlTexture;
-    _Bool _isFront;
+    _Bool _videoMirrored;
     unsigned long long _width;
     unsigned long long _height;
 }
@@ -28,7 +26,6 @@ __attribute__((visibility("hidden")))
 - (void)connectToProxy:(struct __C3DImageProxy *)arg1;
 @property(retain, nonatomic) AVCaptureDevice *captureDevice;
 - (void)dealloc;
-- (void)discardVideoData;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

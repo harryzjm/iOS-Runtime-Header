@@ -6,20 +6,32 @@
 
 #import <PhotoImaging/NSObject-Protocol.h>
 
-@class NSArray, NSDictionary, NSString, NSURL, NUComposition, PFParallaxLayerStyle, PFParallaxLayout, PIParallaxColorAnalysis;
-@protocol NUImageBuffer, PFParallaxAssetRegions, PFParallaxLayoutConfiguration;
+@class NSArray, NSData, NSDictionary, NSString, NSURL, NUComposition, PFParallaxLayerStyle, PFPosterLayout, PFWallpaperCompoundDeviceConfiguration, PIParallaxColorAnalysis;
+@protocol NUImageBuffer, PFParallaxAssetRegions;
 
 @protocol PISegmentationItem <NSObject>
+@property(readonly, nonatomic) _Bool supportsManualClockIntersectionTolerance;
+@property(readonly, nonatomic) unsigned long long version;
 @property(readonly, nonatomic) NSURL *segmentationDataURL;
 @property(readonly, nonatomic) NSURL *fileURL;
+@property(readonly, nonatomic) _Bool supportsBackgroundlessStyles;
+@property(readonly, nonatomic) _Bool supportsSegmentedStyles;
 @property(readonly, nonatomic) PFParallaxLayerStyle *originalStyle;
 @property(readonly, copy, nonatomic) NSArray *defaultStyles;
 @property(readonly, copy, nonatomic) NSArray *availableStyles;
+@property(readonly, nonatomic) NSArray *settlingEffectGatingDiagnostics;
+@property(readonly, copy, nonatomic) NSData *settlingEffectVideoData;
+@property(readonly, nonatomic) _Bool settlingEffectFailedAnyGating;
+@property(readonly, nonatomic) _Bool isSettlingEffectAvailable;
+@property(readonly, nonatomic) unsigned long long settlingEffectStatus;
+@property(readonly, nonatomic) struct CGRect settlingEffectNormalizedBounds;
 @property(readonly, copy, nonatomic) NSDictionary *localLightData;
 @property(readonly, nonatomic) PIParallaxColorAnalysis *colorAnalysis;
+@property(readonly, copy, nonatomic) NSDictionary *landscapeScores;
 @property(readonly, copy, nonatomic) NSDictionary *scores;
-@property(readonly, nonatomic) id <PFParallaxLayoutConfiguration> layoutConfiguration;
-@property(readonly, nonatomic) PFParallaxLayout *originalLayout;
+@property(readonly, nonatomic) PFWallpaperCompoundDeviceConfiguration *layoutConfiguration;
+@property(readonly, nonatomic) PFPosterLayout *settlingEffectLayout;
+@property(readonly, nonatomic) PFPosterLayout *originalLayout;
 @property(readonly, nonatomic) id <PFParallaxAssetRegions> regions;
 @property(readonly, nonatomic) id <NUImageBuffer> segmentationBackground;
 @property(readonly, nonatomic) id <NUImageBuffer> segmentationConfidenceMap;

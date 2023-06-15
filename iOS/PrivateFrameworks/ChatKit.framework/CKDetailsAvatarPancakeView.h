@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class CKAvatarView;
 
@@ -24,7 +24,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) CKAvatarView *bottomAvatar; // @synthesize bottomAvatar=_bottomAvatar;
 @property(retain, nonatomic) CKAvatarView *middleAvatar; // @synthesize middleAvatar=_middleAvatar;
 @property(retain, nonatomic) CKAvatarView *topAvatar; // @synthesize topAvatar=_topAvatar;
-- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (id)createAvatarCutOutView;
 - (void)addConstraints;
 - (id)initWithSize:(struct CGSize)arg1 avatarViews:(id)arg2;

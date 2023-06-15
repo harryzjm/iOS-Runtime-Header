@@ -9,6 +9,6 @@
 @class HMDCameraBulletinNotificationManager, NSUUID;
 
 @protocol HMDCameraSignificantEventNotificationObserver <NSObject>
-- (void)notificationManager:(HMDCameraBulletinNotificationManager *)arg1 didReceiveNotificationForCameraSignificantEventIdentifier:(NSUUID *)arg2;
+- (void)notificationManager:(HMDCameraBulletinNotificationManager *)arg1 didReceiveNotificationForCameraSignificantEventIdentifier:(NSUUID *)arg2 notificationReasons:(unsigned long long)arg3;
 @end
 

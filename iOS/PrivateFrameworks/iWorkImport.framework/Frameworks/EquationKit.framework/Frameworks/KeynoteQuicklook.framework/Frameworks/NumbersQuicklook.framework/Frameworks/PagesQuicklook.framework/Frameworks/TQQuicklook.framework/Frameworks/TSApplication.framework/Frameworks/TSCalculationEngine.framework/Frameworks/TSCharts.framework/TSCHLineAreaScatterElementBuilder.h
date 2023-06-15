@@ -14,8 +14,9 @@
 }
 
 - (void).cxx_destruct;
-- (unsigned long long)countOfLabelsForSeries:(id)arg1 forGroups:(id)arg2 forBodyLayout:(id)arg3 outNewTransforms:(struct CGAffineTransform **)arg4 outNewElementSizes:(struct CGSize **)arg5 outNewClipRect:(struct CGRect **)arg6 outNewStrings:(id *)arg7;
+- (unsigned long long)countOfLabelsForSeries:(id)arg1 forGroups:(id)arg2 forBodyLayout:(id)arg3 outNewTransforms:(struct CGAffineTransform **)arg4 outNewElementSizes:(struct CGSize **)arg5 outNewClipRects:(struct CGRect **)arg6 outNewStrings:(id *)arg7;
 - (unsigned long long)countOfPointsForSeries:(id)arg1 forGroups:(id)arg2 forBodyLayout:(id)arg3 outElementSize:(struct CGSize *)arg4 outClipRect:(struct CGRect *)arg5 outUnitSymbolPath:(const struct CGPath **)arg6 outNewTransformArray:(struct CGAffineTransform **)arg7 outNewGroupIndexArray:(unsigned long long **)arg8;
+- (struct CGRect)p_symbolRectWithSymbolPoint:(struct CGPoint)arg1 symbolType:(int)arg2 symbolSize:(double)arg3 stroke:(id)arg4;
 - (struct CGAffineTransform)transformForRenderingSeriesElementSymbolsForSeries:(id)arg1 forGroups:(id)arg2 forBodyLayout:(id)arg3 outElementSize:(struct CGSize *)arg4 outClipRect:(struct CGRect *)arg5 outNewElementPath:(const struct CGPath **)arg6;
 - (struct CGAffineTransform)transformForRenderingSeriesElementForSeries:(id)arg1 forGroups:(id)arg2 forBodyLayout:(id)arg3 outElementSize:(struct CGSize *)arg4 outClipRect:(struct CGRect *)arg5 outNewElementPath:(const struct CGPath **)arg6;
 - (struct CGAffineTransform)transformForRenderingSeriesElementTopStrokeForSeries:(id)arg1 forGroups:(id)arg2 forBodyLayout:(id)arg3 outElementSize:(struct CGSize *)arg4 outClipRect:(struct CGRect *)arg5 outNewElementPath:(const struct CGPath **)arg6;
@@ -27,7 +28,6 @@
 - (unsigned long long)countOfHitCheckRegionsInSeries:(id)arg1 forGroups:(id)arg2 forBodyLayout:(id)arg3 outNewElementPaths:(const struct CGPath ***)arg4 outSelectionKnobLocations:(id *)arg5;
 - (void)p_trendlineInfoForSeries:(id)arg1 forBodyLayout:(id)arg2 outVertical:(_Bool *)arg3 outOffsetInBody:(double *)arg4;
 - (unsigned long long)countOfErrorBarsInSeries:(id)arg1 forGroups:(id)arg2 forAxisID:(id)arg3 forBodyLayout:(id)arg4 outClipRect:(struct CGRect *)arg5 outNewErrorBarDescriptors:(struct **)arg6;
-- (struct CGAffineTransform)transformForRenderingLabelInBody:(id)arg1 forSeries:(unsigned long long)arg2 forGroup:(unsigned long long)arg3 outElementSize:(struct CGSize *)arg4 outClipRect:(struct CGRect *)arg5;
 - (unsigned long long)countOfElementsInSeries:(id)arg1 forGroups:(id)arg2 forBodyLayout:(id)arg3 outNewElementBounds:(struct CGRect **)arg4 outNewClipRects:(struct CGRect **)arg5 outNewElementPaths:(const struct CGPath ***)arg6 outSelectionKnobLocations:(id *)arg7 forHighlightPath:(_Bool)arg8;
 - (double)p_bubbleMaxForSeries:(id)arg1 inChartBodyLayoutSize:(struct CGSize)arg2;
 - (void)p_createElementsForSeries:(id)arg1 forGroups:(id)arg2 inBodyLayout:(id)arg3 outTopStrokePath:(const struct CGPath **)arg4 outTopStrokeClipRect:(struct CGRect *)arg5 outSeriesElementPath:(const struct CGPath **)arg6 outSeriesElementClipRect:(struct CGRect *)arg7 outSymbolElementPath:(const struct CGPath **)arg8 outSymbolElementClipRect:(struct CGRect *)arg9 outSymbolElementHitCheckPath:(const struct CGPath **)arg10 outSelectionKnobLocations:(id *)arg11;

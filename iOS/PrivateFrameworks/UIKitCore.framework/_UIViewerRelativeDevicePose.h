@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 @class _UIMotionEffectAcceleratedOutputRange;
 
 __attribute__((visibility("hidden")))
-@interface _UIViewerRelativeDevicePose : NSObject <NSCopying>
+@interface _UIViewerRelativeDevicePose : NSObject
 {
     _UIMotionEffectAcceleratedOutputRange *_acceleratedOutputRange;
     double _planarRotationAngle;

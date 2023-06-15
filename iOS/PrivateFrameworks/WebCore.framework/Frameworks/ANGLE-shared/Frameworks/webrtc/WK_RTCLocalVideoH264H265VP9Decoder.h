@@ -17,9 +17,11 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+- (void)flush;
 - (long long)releaseDecoder;
 - (void)setWidth:(unsigned short)arg1 height:(unsigned short)arg2;
-- (long long)decodeData:(const char *)arg1 size:(unsigned long long)arg2 timeStamp:(unsigned int)arg3;
+- (long long)decodeData:(const char *)arg1 size:(unsigned long long)arg2 timeStamp:(long long)arg3;
+- (long long)setFormat:(const char *)arg1 size:(unsigned long long)arg2 width:(unsigned short)arg3 height:(unsigned short)arg4;
 - (id)initVP9DecoderWithCallback:(CDUnknownBlockType)arg1;
 - (id)initH265DecoderWithCallback:(CDUnknownBlockType)arg1;
 - (id)initH264DecoderWithCallback:(CDUnknownBlockType)arg1;

@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
     unsigned short _builtInDataType;
 }
 
+- (_Bool)isEqual:(id)arg1;
 - (id)formattedDescription:(unsigned long long)arg1;
 - (unsigned long long)builtInType;
 - (unsigned long long)builtInDataType;

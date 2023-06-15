@@ -17,5 +17,6 @@
 
 @optional
 - (PXOperationStatus *)loadStatusForAsset:(id <PXDisplayAsset>)arg1 atSpriteIndex:(unsigned int)arg2 inLayout:(PXGLayout *)arg3;
+- (_Bool)shouldShowSavedToLibraryBadgeForAsset:(id <PXDisplayAsset>)arg1 inLayout:(PXGLayout *)arg2;
 @end
 

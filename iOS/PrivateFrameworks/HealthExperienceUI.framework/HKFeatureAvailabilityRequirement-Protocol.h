@@ -12,7 +12,7 @@
 
 @protocol HKFeatureAvailabilityRequirement <NSObject, NSSecureCoding, HKFeatureAvailabilityRequirementsProviding>
 + (NSString *)requirementIdentifier;
-@property(nonatomic, readonly) NSString *requirementDescription;
+@property(readonly, nonatomic) NSString *requirementDescription;
 - (NSNumber *)isSatisfiedWithDataSource:(HKFeatureAvailabilityRequirementEvaluationDataSource *)arg1 error:(id *)arg2;
 @end
 

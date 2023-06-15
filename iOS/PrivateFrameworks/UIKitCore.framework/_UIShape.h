@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 @class NSString, UIBezierPath;
 
 __attribute__((visibility("hidden")))
-@interface _UIShape : NSObject <NSCopying>
+@interface _UIShape : NSObject
 {
     UIBezierPath *_path;
     double _cornerRadius;

@@ -15,6 +15,7 @@
 + (id)deriveBundleIdentifierBuildSettingNames;
 + (id)primaryDeriveBundleIdentifierBuildSettingName;
 + (id)exportedIsMacCatalystBuildSettingNames;
++ (id)supportedDVTPlatformIdentifiers;
 + (id)supportedBuildSettingNames;
 + (id)primarySupportedBuildSettingName;
 + (id)supportedSDKVariantNames;

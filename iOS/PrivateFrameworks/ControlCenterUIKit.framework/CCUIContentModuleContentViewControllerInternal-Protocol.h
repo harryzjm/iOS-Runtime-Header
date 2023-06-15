@@ -9,6 +9,8 @@
 @protocol CCUIContentModuleContentViewControllerInternal <CCUIContentModuleContentViewController>
 
 @optional
+- (void)requestAuthenticationForTransitionToExpandedContentModuleWithCompletionHandler:(void (^)(_Bool))arg1;
+- (_Bool)shouldRequestAuthenticationForTransitionToExpandedContent;
 - (void)willResignActive;
 - (void)willBecomeActive;
 @end

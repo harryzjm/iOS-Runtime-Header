@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class KVProfileInfo, NSArray, NSDictionary, NSString;
+@class KVProfileInfo, NSArray, NSData, NSDictionary, NSString;
 
 @interface KVJSONProfileReader : NSObject
 {
-    NSString *_JSON;
+    NSData *_data;
     NSDictionary *_profile;
     KVProfileInfo *_profileInfo;
     NSArray *_datasets;
@@ -20,6 +20,7 @@
 @property(readonly, copy) NSString *description;
 - (id)profileInfo;
 - (_Bool)enumerateDatasetsWithError:(id *)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (id)data;
 - (id)initWithData:(id)arg1 error:(id *)arg2;
 
 // Remaining properties

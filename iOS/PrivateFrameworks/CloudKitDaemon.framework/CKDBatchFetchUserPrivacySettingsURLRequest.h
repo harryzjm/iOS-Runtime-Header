@@ -20,6 +20,7 @@
 - (_Bool)requiresTokenRegistration;
 - (id)requestOperationClasses;
 - (long long)databaseScope;
+- (id)equivalencyProperties;
 
 @end
 

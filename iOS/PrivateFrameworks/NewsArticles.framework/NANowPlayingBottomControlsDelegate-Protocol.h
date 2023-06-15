@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NANowPlayingBottomControls, UIContextMenuConfiguration, UIContextMenuInteraction;
+@class NANowPlayingBottomControls, UIMenu;
 
 @protocol NANowPlayingBottomControlsDelegate
-- (UIContextMenuConfiguration *)contextMenuInteraction:(UIContextMenuInteraction *)arg1 configurationForMenuAtLocation:(struct CGPoint)arg2;
-- (void)nowPlayingBottomControlsDidTapEllipsis:(NANowPlayingBottomControls *)arg1;
-- (void)nowPlayingBottomControlsDidTapPlaybackSpeed:(NANowPlayingBottomControls *)arg1;
+- (UIMenu *)nowPlayingBottomControlsProvidePlaybackRateMenu:(NANowPlayingBottomControls *)arg1;
 @end
 

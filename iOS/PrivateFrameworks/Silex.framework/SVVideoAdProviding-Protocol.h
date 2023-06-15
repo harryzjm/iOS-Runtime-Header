@@ -10,6 +10,7 @@
 @class UIButton, UIView;
 
 @protocol SVVideoAdProviding <SVVideoProviding, SVVideoAdEventTracker>
+@property(readonly, nonatomic) double prerollReadyToPlayTimeout;
 @property(readonly, nonatomic) _Bool hasAction;
 @property(readonly, nonatomic) unsigned long long skipThreshold;
 - (void)presentAction;

@@ -6,7 +6,7 @@
 
 #import "AMSUICommonViewController.h"
 
-@class AMSUIWebAppearance, AMSUIWebClientContext, AMSUIWebPageModel, AMSUIWebView, NSString, NSURL, UIToolbar;
+@class AMSUIWebAppearance, AMSUIWebClientContext, AMSUIWebPageModel, AMSUIWebView, NSString, NSURL;
 @protocol AMSUIWebPageViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -18,12 +18,10 @@ __attribute__((visibility("hidden")))
     AMSUIWebAppearance *_appearance;
     AMSUIWebClientContext *_context;
     AMSUIWebPageModel *_model;
-    UIToolbar *_toolbar;
     struct CGSize _contentSize;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) UIToolbar *toolbar; // @synthesize toolbar=_toolbar;
 @property(retain, nonatomic) AMSUIWebPageModel *model; // @synthesize model=_model;
 @property(nonatomic) struct CGSize contentSize; // @synthesize contentSize=_contentSize;
 @property(readonly, nonatomic) __weak AMSUIWebClientContext *context; // @synthesize context=_context;
@@ -32,17 +30,16 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) AMSUIWebView *webView; // @synthesize webView=_webView;
 @property(nonatomic) __weak id <AMSUIWebPageViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_willEncodeRequest:(id)arg1;
-- (void)_didTapRightToolbarButton:(id)arg1;
-- (void)_didTapLeftToolbarButton:(id)arg1;
 - (void)_updateLayout;
+- (void)_updateToolbarButtonItems;
 - (void)_downloadHTMLForRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_didEncodeRequest:(id)arg1;
 - (void)_applyAppearance;
 - (void)willPresentPageModel:(id)arg1 appearance:(id)arg2;
+- (id)contentScrollViewForEdge:(unsigned long long)arg1;
 - (id)loadRequest:(id)arg1;
 - (void)viewWillLayoutSubviews;
 - (void)viewWillAppear:(_Bool)arg1;
-- (void)viewDidAppear:(_Bool)arg1;
 - (void)loadView;
 - (id)initWithContext:(id)arg1 dataProvider:(id)arg2;
 

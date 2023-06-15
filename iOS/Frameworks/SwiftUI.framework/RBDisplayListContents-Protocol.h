@@ -13,16 +13,10 @@
 
 @protocol RBDisplayListContents <NSObject, RBEncodable, RBDecodable>
 + (id <RBDisplayListContents>)decodedObjectWithData:(NSData *)arg1 delegate:(id <RBDecoderDelegate>)arg2 error:(id *)arg3;
-- (const void *)_rbXmlDocument;
-- (const void *)_rbPredicate;
-- (const void *)_rbContents;
-@property(nonatomic, readonly) NSString *xmlDescription;
+@property(readonly, copy, nonatomic) NSString *xmlDescription;
+@property(readonly, nonatomic) struct CGRect boundingRect;
+@property(readonly, nonatomic, getter=isEmpty) _Bool empty;
 - (void)renderInContext:(struct CGContext *)arg1 options:(NSDictionary *)arg2;
-- (void)drawInState:(const void *)arg1;
-@property(nonatomic, readonly) struct CGRect boundingRect;
-- (_Bool)isEmpty;
-
-// Remaining properties
-@property(nonatomic, readonly) _Bool empty;
+- (void)drawInState:(void *)arg1;
 @end
 

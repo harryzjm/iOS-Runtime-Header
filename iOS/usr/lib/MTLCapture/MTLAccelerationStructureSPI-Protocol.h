@@ -14,6 +14,7 @@
 @property(readonly, nonatomic) unsigned long long resourceIndex;
 @property(readonly, nonatomic) unsigned long long bufferOffset;
 @property(readonly, nonatomic) id <MTLBuffer> buffer;
+@property(readonly, nonatomic) unsigned long long accelerationStructureUniqueIdentifier;
 @property(readonly, nonatomic) unsigned long long uniqueIdentifier;
 
 @optional

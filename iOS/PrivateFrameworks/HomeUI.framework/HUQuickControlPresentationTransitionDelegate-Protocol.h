@@ -9,6 +9,7 @@
 @class NSAttributedString, NSString, UIColor, UIFont, UIView;
 
 @protocol HUQuickControlPresentationTransitionDelegate <NSObject>
+@property(readonly, nonatomic) unsigned long long backgroundDisplayStyle;
 - (id)baseIconViewConfiguration;
 - (_Bool)recognizeDoubleClickGesture;
 - (UIView *)createBackgroundBlurView;
@@ -29,5 +30,14 @@
 - (NSString *)secondaryString;
 - (NSString *)primaryString;
 - (NSString *)prefixString;
+
+@optional
+- (UIColor *)secondaryLabelOffTextColor;
+- (UIColor *)primaryLabelOffTextColor;
+- (UIColor *)prefixLabelOffTextColor;
+- (UIColor *)secondaryLabelOnTextColor;
+- (UIColor *)primaryLabelOnTextColor;
+- (UIColor *)prefixLabelOnTextColor;
+- (NSString *)badgeIconIdentifier;
 @end
 

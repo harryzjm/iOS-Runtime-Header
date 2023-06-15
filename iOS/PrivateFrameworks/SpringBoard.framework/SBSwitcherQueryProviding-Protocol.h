@@ -28,7 +28,6 @@
 - (long long)dockUpdateMode;
 - (double)dockProgress;
 - (_Bool)wantsDockBehaviorAssertion;
-- (_Bool)shouldConfigureInAppDockVisibleAssertion;
 - (_Bool)shouldConfigureInAppDockHiddenAssertion;
 - (unsigned long long)indexToScrollToAfterInsertingAtIndex:(unsigned long long)arg1;
 - (unsigned long long)indexToScrollToAfterRemovingIndex:(unsigned long long)arg1;
@@ -65,9 +64,12 @@
 - (double)containerStatusBarAnimationDuration;
 - (_Bool)isContainerStatusBarVisible;
 - (_Bool)shouldRubberbandFullScreenHomeGrabberView;
+- (NSArray *)inactiveAppLayoutsReachableByKeyboardShortcut;
+- (NSArray *)activeLeafAppLayoutsReachableByKeyboardShortcut;
 - (_Bool)canPerformKeyboardShortcutAction:(long long)arg1 forBundleIdentifier:(NSString *)arg2;
 - (NSSet *)neighboringAppLayoutsForFocusedAppLayout:(SBAppLayout *)arg1;
 - (_Bool)isFocusEnabledForAppLayout:(SBAppLayout *)arg1;
+- (_Bool)canSelectLeafWithModifierKeysInAppLayout:(SBAppLayout *)arg1;
 - (_Bool)isItemContainerPointerInteractionEnabled;
 - (_Bool)shouldScrollViewBlockTouches;
 - (_Bool)isScrollEnabled;
@@ -77,6 +79,7 @@
 - (_Bool)switcherDimmingViewBlocksTouches;
 - (double)switcherDimmingAlpha;
 - (_Bool)wantsSwitcherDimmingView;
+- (_Bool)shouldAllowGroupOpacityForAppLayout:(SBAppLayout *)arg1;
 - (double)homeScreenBackdropBlurProgress;
 - (long long)homeScreenBackdropBlurType;
 - (double)homeScreenDimmingAlpha;

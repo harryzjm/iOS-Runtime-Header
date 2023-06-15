@@ -12,11 +12,16 @@
 @property(readonly, copy, nonatomic) UIColor *mostInterestingColor;
 @property(readonly, copy, nonatomic) UIColor *accentColor;
 @property(readonly, copy, nonatomic) UIColor *backgroundColor;
+@property(readonly, nonatomic) _Bool sbh_supportsRemovableBackgroundOrAccessoryFamilies;
+@property(readonly, nonatomic) _Bool sbh_supportsRemovableBackground;
 @property(readonly, nonatomic) _Bool sbh_canBeAddedToStack;
 @property(readonly, copy, nonatomic) NSString *sbh_widgetDescription;
 @property(readonly, nonatomic) unsigned long long sbh_supportedSizeClasses;
 @property(readonly, copy, nonatomic) NSString *sbh_widgetName;
 @property(readonly, copy, nonatomic) NSString *sbh_appName;
 @property(readonly, copy, nonatomic) NSString *sbh_galleryItemIdentifier;
+- (_Bool)sbh_isLinkedOnOrAfter:(unsigned long long)arg1;
+- (unsigned long long)sbh_disfavoredSizeClassesForAddWidgetSheetLocation:(unsigned long long)arg1;
+- (unsigned long long)sbh_favoredSizeClassesForAddWidgetSheetLocation:(unsigned long long)arg1;
 @end
 

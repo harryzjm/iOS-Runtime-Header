@@ -7,6 +7,7 @@
 @class APClientInfo, APContext, NSArray, NSDictionary, NSUUID;
 
 @protocol APPCControllerDaemonInterface
+- (void)sendAndRankContent:(NSArray *)arg1 forContext:(APContext *)arg2 placement:(unsigned long long)arg3 completionHandler:(void (^)(NSArray *, NSError *))arg4;
 - (void)preWarm:(NSDictionary *)arg1;
 - (void)proxyURLWithCompletionHandler:(void (^)(NSString *))arg1;
 - (void)finishedWithRequestsForRequester:(NSUUID *)arg1;

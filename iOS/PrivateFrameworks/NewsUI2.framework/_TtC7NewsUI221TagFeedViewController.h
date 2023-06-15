@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
 @class MISSING_TYPE;
 
@@ -20,12 +20,12 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *refreshStateMachine;
     MISSING_TYPE *refreshControl;
     MISSING_TYPE *sharingActivityProviderFactory;
-    MISSING_TYPE *backgroundContainerView;
     MISSING_TYPE *debugButtonConfiguration;
     MISSING_TYPE *lastGutterViewBounds;
     MISSING_TYPE *backgroundPlugin;
     MISSING_TYPE *didAppearCompletions;
     MISSING_TYPE *impressionObservers;
+    MISSING_TYPE *shouldAttemptRequestSportsScoresTooltip;
 }
 
 - (void).cxx_destruct;

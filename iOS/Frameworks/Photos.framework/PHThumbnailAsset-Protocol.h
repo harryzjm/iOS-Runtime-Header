@@ -6,14 +6,14 @@
 
 #import <Photos/NSCopying-Protocol.h>
 #import <Photos/NSObject-Protocol.h>
+#import <Photos/PHPhotoLibraryAsset-Protocol.h>
 
-@class NSManagedObjectID, PHPhotoLibrary;
+@class NSManagedObjectID;
 
-@protocol PHThumbnailAsset <NSCopying, NSObject>
+@protocol PHThumbnailAsset <NSCopying, NSObject, PHPhotoLibraryAsset>
 @property(readonly, nonatomic) long long cloudPlaceholderKind;
 @property(readonly, nonatomic) _Bool complete;
 @property(readonly, nonatomic) unsigned long long thumbnailIndex;
-@property(readonly, nonatomic) PHPhotoLibrary *photoLibrary;
 @property(readonly, nonatomic) NSManagedObjectID *objectID;
 @end
 

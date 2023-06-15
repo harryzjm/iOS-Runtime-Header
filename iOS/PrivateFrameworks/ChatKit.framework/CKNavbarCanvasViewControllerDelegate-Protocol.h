@@ -10,7 +10,11 @@
 
 @protocol CKNavbarCanvasViewControllerDelegate <NSObject>
 - (struct NSDirectionalEdgeInsets)systemMinimumLayoutMarginsForViewController:(UIViewController *)arg1;
-- (void)navbarCanvasViewControllerWantsNavbarResize:(CKNavbarCanvasViewController *)arg1;
+- (void)navbarCanvasViewControllerLegacyCanvasHeightDidChange:(CKNavbarCanvasViewController *)arg1;
+- (void)navbarCanvasViewControllerCanvasHeightDidChange:(CKNavbarCanvasViewController *)arg1;
+- (_Bool)shouldConfigureForJunkModalInNavbarCanvasViewController:(CKNavbarCanvasViewController *)arg1;
+- (_Bool)shouldShowChevronInNavbarCanvasViewController:(CKNavbarCanvasViewController *)arg1;
+- (_Bool)shouldShowFacetimeButtonInNavbarCanvasViewController:(CKNavbarCanvasViewController *)arg1;
 - (void)navbarCanvasViewController:(CKNavbarCanvasViewController *)arg1 updatedJoinStateWithStyle:(long long)arg2;
 - (void)navbarCanvasViewController:(CKNavbarCanvasViewController *)arg1 infoButtonTapped:(CKNavigationButtonView *)arg2;
 - (void)navbarCanvasViewControllerFaceTimeVideoButtonTapped:(CKNavbarCanvasViewController *)arg1;

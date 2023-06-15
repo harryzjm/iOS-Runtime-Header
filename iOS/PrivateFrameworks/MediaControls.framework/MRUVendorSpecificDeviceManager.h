@@ -23,9 +23,11 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_activatedDeviceMap;
     NSMutableDictionary *_invalidatingDeviceMap;
     NSMutableSet *_mutableResolverManagedAirPlayRouteIDs;
+    NSMutableDictionary *_groupableDeviceIDs;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableDictionary *groupableDeviceIDs; // @synthesize groupableDeviceIDs=_groupableDeviceIDs;
 @property(retain, nonatomic) NSMutableSet *mutableResolverManagedAirPlayRouteIDs; // @synthesize mutableResolverManagedAirPlayRouteIDs=_mutableResolverManagedAirPlayRouteIDs;
 @property(retain, nonatomic) NSMutableDictionary *invalidatingDeviceMap; // @synthesize invalidatingDeviceMap=_invalidatingDeviceMap;
 @property(retain, nonatomic) NSMutableDictionary *activatedDeviceMap; // @synthesize activatedDeviceMap=_activatedDeviceMap;
@@ -53,8 +55,11 @@ __attribute__((visibility("hidden")))
 - (void)resolverSetLastSelectedRoute:(id)arg1;
 - (void)updateLocalMapWith:(id)arg1 deviceIsLost:(_Bool)arg2;
 - (void)startDiscovery;
+- (_Bool)isGroupingAvailableFor:(id)arg1 activatedIDs:(id)arg2 forProtocolID:(id)arg3;
+- (_Bool)isGroupingAvailableForDevice:(id)arg1;
 - (long long)latestStateForDevice:(id)arg1;
 @property(readonly, copy, nonatomic) NSArray *resolverManagedAirPlayRouteIDs;
+@property(readonly, copy, nonatomic) NSArray *availableDeviceIDs;
 @property(readonly, copy, nonatomic) NSArray *pendingDeviceIDs;
 @property(readonly, copy, nonatomic) NSArray *invalidatingDeviceIDs;
 @property(readonly, copy, nonatomic) NSArray *activatingDeviceIDs;

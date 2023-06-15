@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class DVTCPUCount, DVTDeviceType, DVTDispatchLock, DVTExtension, DVTPlatform, NSArray, NSData, NSError, NSMutableArray, NSMutableSet, NSNumber, NSOrderedSet, NSSet, NSString, NSURL, UTType;
+@class DVTCPUCount, DVTDeviceType, DVTDispatchLock, DVTExtension, DVTPlatform, NSArray, NSData, NSDictionary, NSError, NSMutableArray, NSMutableSet, NSNumber, NSOrderedSet, NSSet, NSString, NSURL, UTType;
 @protocol DVTBasicDevice, OS_dispatch_queue;
 
 @interface DVTDevice : NSObject
@@ -19,20 +19,20 @@
     NSMutableSet *_capabilities;
     NSObject<OS_dispatch_queue> *_appListingChannelQueue;
     NSObject<OS_dispatch_queue> *_stateControlQueue;
+    _Atomic unsigned int _demandRetainCount;
     _Bool _deviceIsBusy;
     _Bool isInternalBuild;
     _Bool _dvtDevicesWindow_canSSH;
-    _Bool _ignored;
     _Bool _allowsSecureServices;
+    _Bool _usedForDevelopment;
     _Bool _canSelectArchitectureToExecute;
     _Bool _isCloudDevice;
     _Bool _isCloudDevicePlaceholder;
     _Bool _supportsSensorReplayFile;
     _Bool _available;
-    _Bool _usedForDevelopment;
-    _Bool _shouldDownloadSymbolsFromServer;
     DVTExtension *_extension;
     NSURL *_deviceLocation;
+    NSString *_disambiguousIdentifier;
     NSString *_nativeArchitecture;
     NSString *_operatingSystemVersionWithBuildNumber;
     NSString *_modelUTI;
@@ -40,8 +40,8 @@
     NSArray *_deviceSummaryPropertyDictionaries;
     NSArray *_deviceSummaryInternalPropertyDictionaries;
     NSString *_dvtDevicesWindow_isWirelessEnabled;
+    unsigned long long _visibilityPreference;
     DVTDeviceType *_deviceType;
-    NSOrderedSet *_supportedArchitectures;
     NSSet *_translatedArchitectures;
     long long _directSSHPort;
     long long _remoteSSHPort;
@@ -53,24 +53,34 @@
     NSString *_iOSSupportVersion;
     NSString *_operatingSystemBuild;
     DVTCPUCount *_cpuCountDescription;
+    NSString *_cpuKind;
+    NSNumber *_cpuSpeedMHz;
+    NSNumber *_busSpeedMHz;
     NSString *_identifier;
+    NSError *_lastPairingError;
 }
 
 + (id)keyPathsForValuesAffectingHasConnection;
++ (id)keyPathsForValuesAffectingIgnored;
 + (id)modelNameFromModelUTI:(id)arg1;
 + (id)modelUTIFromModelCode:(id)arg1;
++ (id)keyPathsForValuesAffectingSupportedArchitectures;
 + (id)keyPathsForValuesAffectingActiveProxiedDevice;
++ (id)deviceFrameworkVersionAnalytics;
 + (id)_knownDeviceLocators;
++ (id)remotePairingVersionScan:(id)arg1;
 + (void)initialize;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) _Bool shouldDownloadSymbolsFromServer; // @synthesize shouldDownloadSymbolsFromServer=_shouldDownloadSymbolsFromServer;
+@property(retain) NSError *lastPairingError; // @synthesize lastPairingError=_lastPairingError;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property(copy) NSNumber *busSpeedMHz; // @synthesize busSpeedMHz=_busSpeedMHz;
+@property(copy) NSNumber *cpuSpeedMHz; // @synthesize cpuSpeedMHz=_cpuSpeedMHz;
+@property(copy) NSString *cpuKind; // @synthesize cpuKind=_cpuKind;
 @property(retain) DVTCPUCount *cpuCountDescription; // @synthesize cpuCountDescription=_cpuCountDescription;
 @property(copy) NSString *operatingSystemBuild; // @synthesize operatingSystemBuild=_operatingSystemBuild;
 @property(copy) NSString *iOSSupportVersion; // @synthesize iOSSupportVersion=_iOSSupportVersion;
 @property(copy) NSString *operatingSystemVersion; // @synthesize operatingSystemVersion=_operatingSystemVersion;
 @property(retain) DVTPlatform *platform; // @synthesize platform=_platform;
-@property(nonatomic, getter=isUsedForDevelopment) _Bool usedForDevelopment; // @synthesize usedForDevelopment=_usedForDevelopment;
 @property(getter=isAvailable) _Bool available; // @synthesize available=_available;
 @property(copy, nonatomic) NSString *modelCode; // @synthesize modelCode=_modelCode;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
@@ -82,10 +92,10 @@
 @property _Bool isCloudDevice; // @synthesize isCloudDevice=_isCloudDevice;
 @property _Bool canSelectArchitectureToExecute; // @synthesize canSelectArchitectureToExecute=_canSelectArchitectureToExecute;
 @property(copy) NSSet *translatedArchitectures; // @synthesize translatedArchitectures=_translatedArchitectures;
-@property(copy) NSOrderedSet *supportedArchitectures; // @synthesize supportedArchitectures=_supportedArchitectures;
 @property(retain) DVTDeviceType *deviceType; // @synthesize deviceType=_deviceType;
+@property(nonatomic, getter=isUsedForDevelopment) _Bool usedForDevelopment; // @synthesize usedForDevelopment=_usedForDevelopment;
 @property(readonly, nonatomic) _Bool allowsSecureServices; // @synthesize allowsSecureServices=_allowsSecureServices;
-@property(getter=isIgnored) _Bool ignored; // @synthesize ignored=_ignored;
+@property unsigned long long visibilityPreference; // @synthesize visibilityPreference=_visibilityPreference;
 @property(readonly) NSString *dvtDevicesWindow_isWirelessEnabled; // @synthesize dvtDevicesWindow_isWirelessEnabled=_dvtDevicesWindow_isWirelessEnabled;
 @property(readonly) _Bool dvtDevicesWindow_canSSH; // @synthesize dvtDevicesWindow_canSSH=_dvtDevicesWindow_canSSH;
 @property(readonly) NSArray *deviceSummaryInternalPropertyDictionaries; // @synthesize deviceSummaryInternalPropertyDictionaries=_deviceSummaryInternalPropertyDictionaries;
@@ -96,13 +106,15 @@
 @property(copy, nonatomic) NSString *operatingSystemVersionWithBuildNumber; // @synthesize operatingSystemVersionWithBuildNumber=_operatingSystemVersionWithBuildNumber;
 @property(readonly, copy) NSURL *deviceLocation; // @synthesize deviceLocation=_deviceLocation;
 @property(readonly) DVTExtension *extension; // @synthesize extension=_extension;
-- (void)disconnectCoreDevice;
-- (void)connectAndPrepareCoreDevice;
+- (_Bool)hasRetainedDemand;
+- (void)releaseDemandWithDelay:(unsigned long long)arg1;
+- (void)retainDemand;
+@property(readonly) _Bool canConnectOnDemand;
 @property(readonly) _Bool supportsDeveloperMode;
 @property(readonly) long long developerMode;
 - (id)createFileHandleForDebugserver;
-- (id)prepareForDevelopment;
-- (id)_processSharedCacheFiles;
+- (id)reboot;
+- (id)performBatchedRootOperationsWithBlock:(CDUnknownBlockType)arg1;
 - (id)uninstallRootsWithIdentifiers:(id)arg1;
 - (id)installRootsAtLocalPaths:(id)arg1;
 - (id)fetchInstalledRoots;
@@ -110,7 +122,6 @@
 - (void)cancelWatchPowerAssertion;
 - (void)takeWatchPowerAssertionName:(id)arg1 details:(id)arg2;
 - (_Bool)supportsDYLDPrintToStdErr;
-- (_Bool)supportsNewLogging;
 - (id)_mobileDevice;
 - (id)loggingStream;
 - (id)fetchSpecificLaunchFailureReason;
@@ -146,6 +157,7 @@
 - (void)endDeviceOperation:(id)arg1;
 - (void)endDeviceOperation:(id)arg1 error:(id)arg2;
 - (id)_startDeviceOperationUserInitiated:(_Bool)arg1 description:(id)arg2 shouldReportAnalyticsWithName:(id)arg3 proxiedDeviceUsed:(id)arg4;
+- (id)startUserInitiatedDeviceOperationWithDescription:(id)arg1 analyticsName:(id)arg2;
 - (id)startUserInitiatedDeviceOperation;
 - (id)startDeviceOperationWithDescription:(id)arg1 analyticsName:(id)arg2 proxiedDeviceUsed:(id)arg3;
 - (id)startDeviceOperationWithDescription:(id)arg1 analyticsName:(id)arg2;
@@ -155,17 +167,19 @@
 @property(readonly) _Bool canTakeScreenshot;
 - (void)stopLocationSimulationWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)simulateLocationWithLatitude:(id)arg1 longitude:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
+- (void)unprepareIfPossible;
 - (void)attemptRecoveryFromUnavailabilityError;
-- (void)forget;
 @property(readonly) NSString *hostPairingToken;
 - (void)unpair;
+@property(readonly) _Bool supportsUnpair;
 - (void)extendedPairWithPromise:(id)arg1 extendedInformationHandler:(CDUnknownBlockType)arg2;
 - (id)_genericDeviceErrorWithMessage:(id)arg1;
 @property(readonly) _Bool isPaired;
 @property(readonly) _Bool usesPairingRecord;
-@property(readonly) _Bool canEnableWireless;
-- (_Bool)disableWirelessWithError:(id *)arg1;
-- (id)enableWireless;
+@property(readonly) _Bool autoPairEnabled;
+@property(readonly) _Bool userCanToggleLANConnections;
+- (_Bool)disableLANConnectionsWithError:(id *)arg1;
+- (id)enableLANConnections;
 @property(readonly) _Bool isWirelessEnabled;
 @property(copy) NSString *presumedRemoteAddress;
 @property(readonly, copy) NSArray *addresses;
@@ -175,6 +189,9 @@
 @property(readonly) _Bool hasWiredConnection;
 @property(readonly) _Bool hasWirelessConnection;
 @property(readonly) _Bool isWireless;
+@property(readonly) _Bool supportsLANConnections;
+- (id)crashLogTransferSession;
+@property(readonly, nonatomic) _Bool supportsLogFileRetrieval;
 @property(readonly) _Bool supportsSimulateVehicularCrash;
 @property(readonly) _Bool supportsSimulateMetricPayloads;
 - (void)showMessagesExtensionOnProxy:(_Bool)arg1 completed:(CDUnknownBlockType)arg2;
@@ -207,15 +224,19 @@
 - (void)requestDebugLaunchOfDaemon:(id)arg1 onPairedDevice:(_Bool)arg2;
 - (void)stopDebuggingXPCServices:(id)arg1 forPairedDevice:(_Bool)arg2;
 - (void)debugXPCServices:(id)arg1 onPairedDevice:(_Bool)arg2 completionSemaphore:(id)arg3;
-- (_Bool)validateDeviceSpecifierOptions:(id)arg1 allowMultipleMatches:(_Bool)arg2 error:(id *)arg3;
+- (_Bool)validateDeviceSpecifierOptions:(id)arg1 error:(id *)arg2;
 @property(readonly, copy) NSString *nameForDeveloperPortal;
 @property(readonly, copy) NSString *platformIdentifier;
 @property(readonly) _Bool isRunningSupportedOS;
 @property(readonly) _Bool isSupportedHardware;
-@property(readonly) _Bool canIgnore;
-- (void)uninstallProvisioningProfile:(id)arg1;
-- (_Bool)installProvisioningProfileAtURL:(id)arg1 error:(id *)arg2;
-- (_Bool)installProvisioningProfile:(id)arg1 error:(id *)arg2;
+@property(readonly, getter=isIgnored) _Bool ignored;
+- (_Bool)shouldIgnoreGivenVisibilityPreference:(unsigned long long)arg1 automaticallyVisible:(_Bool)arg2;
+@property(readonly) _Bool automaticallyVisible;
+@property(readonly) _Bool canUserIgnore;
+- (void)uninstallProvisioningProfile:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)installProvisioningProfileAtURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)installProvisioningProfiles:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)installProvisioningProfile:(id)arg1 completion:(CDUnknownBlockType)arg2;
 @property(readonly) NSSet *provisioningProfiles;
 @property(readonly) _Bool supportsProvisioning;
 @property(readonly) _Bool supportsArchiving;
@@ -230,6 +251,8 @@
 @property(readonly) _Bool deferProfileGenerationSetupUntilAfterInstallation;
 - (_Bool)supportsPGOReturningError:(id *)arg1;
 @property(readonly) _Bool disablesOnlyActiveArch;
+@property(readonly) NSString *pathOfLogRedirectDylib;
+@property(readonly) _Bool supportsDTServiceHubLogging;
 @property(readonly) _Bool supportsDebuggingForAskOnLaunch;
 @property(readonly) _Bool supportsUnhostedXPCServiceDebugging;
 @property(readonly) _Bool supportsXPCServiceDebugging;
@@ -245,14 +268,17 @@
 @property(readonly) _Bool supportsRoutingCoverageFile;
 @property(readonly) _Bool supportsLocalizationOptions;
 @property(readonly) _Bool supportsLocationSimulation;
+@property(readonly) NSDictionary *scriptingEnvironment;
 - (_Bool)supportsBuildingThinnedResources;
 - (id)deviceIdentifierForGPUTracing;
 @property(readonly) _Bool supportsApplicationDataUploading;
 @property(readonly) _Bool supportsAttachByPIDOrName;
+@property(readonly) NSArray *supportedDeviceFamilies;
 @property(readonly, copy, nonatomic) NSString *thinningProductType;
 @property(readonly, copy, nonatomic) NSString *modelCodename;
 @property(readonly, copy, nonatomic) UTType *modelUTType;
 - (id)processorDescription;
+- (id)coreDeviceIdentifier;
 @property(readonly) NSNumber *ecid;
 - (void)remotePathForBundleIdentifier:(id)arg1 onProxy:(_Bool)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)requestProcessInformationsOnPairedDevice:(_Bool)arg1 handler:(CDUnknownBlockType)arg2;
@@ -272,20 +298,26 @@
 @property(readonly, getter=isGenericDevice) _Bool genericDevice;
 @property(readonly) NSData *displayImageBitmapData;
 @property(readonly) NSString *displayOrder;
+@property(readonly, copy) NSOrderedSet *supportedArchitectures;
 @property(copy) NSString *nativeArchitecture; // @synthesize nativeArchitecture=_nativeArchitecture;
 - (void)setDeviceIsBusy:(_Bool)arg1;
 @property(readonly) _Bool deviceIsBusy; // @synthesize deviceIsBusy=_deviceIsBusy;
 @property(readonly) NSError *unavailabilityError;
 @property(readonly) __weak id <DVTBasicDevice> companionDevice;
+- (id)prepareSymbolCacheForTargetArch:(id)arg1;
+- (id)deviceSupportSymbolsPathForTargetArch:(id)arg1;
+@property(readonly, nonatomic) _Bool shouldPrepareDebugSymbols;
+@property(readonly) NSString *disambiguousIdentifier; // @synthesize disambiguousIdentifier=_disambiguousIdentifier;
 @property(readonly) _Bool isProxiedDevice;
 - (void)setActiveProxiedDevice:(id)arg1 completionQueue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setActiveProxiedDevice:(id)arg1;
 @property(readonly) _Bool canSetActiveProxiedDevice;
 @property(readonly) id <DVTBasicDevice> activeProxiedDevice;
+@property(readonly) NSSet *companionDevices;
 @property(readonly, copy) NSSet *proxiedDevices;
 - (id)servicesMatchingCapability:(id)arg1;
-- (id)_instantiateServicesForCapability:(id)arg1;
 - (id)deviceServicesCategory;
+@property(readonly) NSArray *deviceOperations;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
 - (void)dealloc;
@@ -297,9 +329,7 @@
 // Remaining properties
 @property(readonly, copy) NSSet *capabilities; // @dynamic capabilities;
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly) NSArray *deviceOperations; // @dynamic deviceOperations;
 @property(readonly, copy) NSMutableSet *mutableCapabilities; // @dynamic mutableCapabilities;
-@property(readonly, copy) NSMutableArray *mutableDeviceOperations; // @dynamic mutableDeviceOperations;
 @property(readonly) Class superclass;
 
 @end

@@ -10,7 +10,7 @@ __attribute__((visibility("hidden")))
 @interface WKPaymentAuthorizationDelegate : NSObject
 {
     struct RetainPtr<PKPaymentRequest> _request;
-    struct WeakPtr<WebKit::PaymentAuthorizationPresenter, WTF::EmptyCounter> _presenter;
+    struct WeakPtr<WebKit::PaymentAuthorizationPresenter, WTF::DefaultWeakPtrImpl> _presenter;
     struct RetainPtr<NSArray<PKPaymentSummaryItem *>> _summaryItems;
     struct RetainPtr<PKShippingMethods> _availableShippingMethods;
     struct RetainPtr<NSError> _sessionError;

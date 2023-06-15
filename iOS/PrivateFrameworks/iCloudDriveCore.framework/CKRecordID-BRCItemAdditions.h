@@ -6,11 +6,9 @@
 
 #import <CloudKit/CKRecordID.h>
 
-#import <iCloudDriveCore/PQLValuable-Protocol.h>
-
 @class NSString;
 
-@interface CKRecordID (BRCItemAdditions) <PQLValuable>
+@interface CKRecordID (BRCItemAdditions)
 + (id)newFromSqliteStatement:(struct sqlite3_stmt *)arg1 atIndex:(int)arg2;
 + (id)newFromSqliteValue:(struct sqlite3_value *)arg1;
 + (id)brc_fetchShareIDWithSharedItem:(id)arg1;

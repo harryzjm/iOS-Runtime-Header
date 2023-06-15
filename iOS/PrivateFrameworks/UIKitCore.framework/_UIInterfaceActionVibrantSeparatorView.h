@@ -6,11 +6,12 @@
 
 #import "UIView.h"
 
-@class NSString, _UIInterfaceActionSeparatorConstraintController;
+@class NSString, UIVisualEffectView, _UIInterfaceActionSeparatorConstraintController;
 
 __attribute__((visibility("hidden")))
 @interface _UIInterfaceActionVibrantSeparatorView : UIView
 {
+    UIVisualEffectView *_effectView;
     double _horizontalLineLeadingInset;
     _UIInterfaceActionSeparatorConstraintController *_separatorViewConstraints;
 }

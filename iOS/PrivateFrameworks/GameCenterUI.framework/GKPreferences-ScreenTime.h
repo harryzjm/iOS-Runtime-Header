@@ -11,7 +11,6 @@
 - (void)activeScreenTimeRemotePinUIWithHandler:(CDUnknownBlockType)arg1;
 - (_Bool)shouldShowScreenTimePINController;
 - (_Bool)isScreenTimeRestrictionsPasscodeSet;
-- (void)setScreenTimePinCallback:(CDUnknownBlockType)arg1;
-- (CDUnknownBlockType)screenTimePinCallback;
+@property(copy, nonatomic) CDUnknownBlockType screenTimePinCallback;
 @end
 

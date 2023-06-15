@@ -4,92 +4,97 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CALayer, CAPackage, CIContext, NSObject, NSValue, UIBezierPath, UIImage, VKCImageAnalysisResult, VKCImageSubjectGlowLayer, VKCRemoveBackgroundRequestHandler, VKCRemoveBackgroundResult;
-@protocol OS_dispatch_queue, VKCImageSubjectBaseViewDelegate;
+@class CALayer, CAPackage, CIContext, NSIndexSet, NSObject, NSValue, UIBezierPath, UIImage, VKCImageAnalysisResult, VKCImageSubjectContext, VKCImageSubjectGlowLayer, VKCRemoveBackgroundRequestHandler;
+@protocol OS_dispatch_queue, UITraitChangeRegistration, VKCImageSubjectBaseViewDelegate;
 
 __attribute__((visibility("hidden")))
 @interface VKCImageSubjectBaseView
 {
     _Bool _glowLayerActive;
+    _Bool _usesLightDimmingViewInLightMode;
     _Bool _subjectHighlightFeatureFlagEnabled;
-    _Bool _loadMaskRequested;
-    _Bool _loadImageRequested;
     id <VKCImageSubjectBaseViewDelegate> _baseSubjectDelegate;
     NSValue *_burstPoint;
     CALayer *_colorLayer;
     CALayer *_imageHighlightLayer;
     CALayer *_imageHighlightLayerContainer;
     CALayer *_imageHighlightLayerContainerShadow;
-    struct __CVBuffer *_subjectMaskBuffer;
-    UIBezierPath *_normalizedSubjectPath;
-    UIImage *_subjectImage;
     long long _imageOrientation;
-    VKCRemoveBackgroundResult *_maskRemoveBackgroundResult;
-    VKCRemoveBackgroundResult *_imageRemoveBackgroundResult;
+    VKCImageSubjectContext *_subjectContext;
     UIImage *_customImageForRemoveBackground;
+    unsigned long long _loadMaskRequestStatus;
+    NSIndexSet *_activeGlowLayerIndexSet;
     NSObject<OS_dispatch_queue> *_backgroundQueue;
+    CALayer *_imageHighlightLayerMask;
     VKCImageSubjectGlowLayer *_glowLayer;
     CAPackage *_pulsePackage;
-    unsigned long long _subjectPathIndex;
     unsigned long long _loadMaskIndex;
     CIContext *_maskLoadContext;
     VKCRemoveBackgroundRequestHandler *_removeBackgroundRequestHandler;
-    struct CGSize _imageSize;
-    struct CGRect _maskNormalizedCropRect;
-    struct CGRect _subjectNormalizedCropRect;
+    id <UITraitChangeRegistration> _traitChangeRegistration;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) id <UITraitChangeRegistration> traitChangeRegistration; // @synthesize traitChangeRegistration=_traitChangeRegistration;
 @property(retain, nonatomic) VKCRemoveBackgroundRequestHandler *removeBackgroundRequestHandler; // @synthesize removeBackgroundRequestHandler=_removeBackgroundRequestHandler;
 @property(retain) CIContext *maskLoadContext; // @synthesize maskLoadContext=_maskLoadContext;
-@property(nonatomic) _Bool loadImageRequested; // @synthesize loadImageRequested=_loadImageRequested;
 @property(nonatomic) unsigned long long loadMaskIndex; // @synthesize loadMaskIndex=_loadMaskIndex;
-@property(nonatomic) _Bool loadMaskRequested; // @synthesize loadMaskRequested=_loadMaskRequested;
 @property(nonatomic) _Bool subjectHighlightFeatureFlagEnabled; // @synthesize subjectHighlightFeatureFlagEnabled=_subjectHighlightFeatureFlagEnabled;
-@property(nonatomic) unsigned long long subjectPathIndex; // @synthesize subjectPathIndex=_subjectPathIndex;
 @property(retain, nonatomic) CAPackage *pulsePackage; // @synthesize pulsePackage=_pulsePackage;
 @property(retain, nonatomic) VKCImageSubjectGlowLayer *glowLayer; // @synthesize glowLayer=_glowLayer;
+@property(retain, nonatomic) CALayer *imageHighlightLayerMask; // @synthesize imageHighlightLayerMask=_imageHighlightLayerMask;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *backgroundQueue; // @synthesize backgroundQueue=_backgroundQueue;
+@property(nonatomic) _Bool usesLightDimmingViewInLightMode; // @synthesize usesLightDimmingViewInLightMode=_usesLightDimmingViewInLightMode;
+@property(copy, nonatomic) NSIndexSet *activeGlowLayerIndexSet; // @synthesize activeGlowLayerIndexSet=_activeGlowLayerIndexSet;
+@property(nonatomic) unsigned long long loadMaskRequestStatus; // @synthesize loadMaskRequestStatus=_loadMaskRequestStatus;
 @property(retain, nonatomic) UIImage *customImageForRemoveBackground; // @synthesize customImageForRemoveBackground=_customImageForRemoveBackground;
-@property(retain, nonatomic) VKCRemoveBackgroundResult *imageRemoveBackgroundResult; // @synthesize imageRemoveBackgroundResult=_imageRemoveBackgroundResult;
-@property(retain, nonatomic) VKCRemoveBackgroundResult *maskRemoveBackgroundResult; // @synthesize maskRemoveBackgroundResult=_maskRemoveBackgroundResult;
+@property(retain, nonatomic) VKCImageSubjectContext *subjectContext; // @synthesize subjectContext=_subjectContext;
 @property(nonatomic) long long imageOrientation; // @synthesize imageOrientation=_imageOrientation;
-@property(retain, nonatomic) UIImage *subjectImage; // @synthesize subjectImage=_subjectImage;
-@property(retain, nonatomic) UIBezierPath *normalizedSubjectPath; // @synthesize normalizedSubjectPath=_normalizedSubjectPath;
-@property(nonatomic) struct __CVBuffer *subjectMaskBuffer; // @synthesize subjectMaskBuffer=_subjectMaskBuffer;
 @property(retain, nonatomic) CALayer *imageHighlightLayerContainerShadow; // @synthesize imageHighlightLayerContainerShadow=_imageHighlightLayerContainerShadow;
 @property(retain, nonatomic) CALayer *imageHighlightLayerContainer; // @synthesize imageHighlightLayerContainer=_imageHighlightLayerContainer;
 @property(retain, nonatomic) CALayer *imageHighlightLayer; // @synthesize imageHighlightLayer=_imageHighlightLayer;
 @property(retain, nonatomic) CALayer *colorLayer; // @synthesize colorLayer=_colorLayer;
 @property(retain, nonatomic) NSValue *burstPoint; // @synthesize burstPoint=_burstPoint;
 @property(nonatomic) _Bool glowLayerActive; // @synthesize glowLayerActive=_glowLayerActive;
-@property(nonatomic) struct CGSize imageSize; // @synthesize imageSize=_imageSize;
-@property(nonatomic) struct CGRect subjectNormalizedCropRect; // @synthesize subjectNormalizedCropRect=_subjectNormalizedCropRect;
-@property(nonatomic) struct CGRect maskNormalizedCropRect; // @synthesize maskNormalizedCropRect=_maskNormalizedCropRect;
 @property(nonatomic) __weak id <VKCImageSubjectBaseViewDelegate> baseSubjectDelegate; // @synthesize baseSubjectDelegate=_baseSubjectDelegate;
 - (void)sendSubjectAnalyticsEventWithEventType:(long long)arg1 interactionType:(long long)arg2 subjectFound:(_Bool)arg3 processingDuration:(double)arg4;
+- (id)imageSubjectPathWithIndexes:(id)arg1;
+- (void)loadImageSubjectWithIndexes:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)loadImageSubjectIfNecessaryWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_loadSubjectMaskIfNecessaryWithCompletion:(CDUnknownBlockType)arg1;
+- (void)loadSubjectMaskIfNecessaryWithCompletion:(CDUnknownBlockType)arg1;
 - (void)loadSubjectMaskIfNecessary;
+- (void)beginImageSubjectAnalysisIfNecessaryWithCompletion:(CDUnknownBlockType)arg1;
 - (void)beginImageSubjectAnalysisWithDelayIfNecessary;
-- (struct CGPoint)convertViewPointToImagePixels:(struct CGPoint)arg1 isInImageBounds:(_Bool *)arg2;
+@property(readonly, nonatomic) NSIndexSet *allSubjectsIndexSet;
+- (id)indexOfSubjectAtPoint:(struct CGPoint)arg1;
 - (_Bool)subjectExistsAtPoint:(struct CGPoint)arg1;
 @property(readonly, nonatomic) VKCImageAnalysisResult *analysisResult;
+- (void)updateDimmingColorForAppearance;
 - (void)setRecognitionResult:(id)arg1;
 @property(readonly, nonatomic) struct CGRect subjectFrame;
 @property(readonly, nonatomic) struct CGRect imageBounds;
-- (void)updateForImageBoundsChange;
+- (void)_updateForImageBoundsChange;
+- (void)updateForImageBoundsChangeIfNecessary;
+@property(readonly, nonatomic) _Bool isLivePhoto;
 - (void)setHidden:(_Bool)arg1;
 - (void)setContentsRect:(struct CGRect)arg1;
 - (void)setBounds:(struct CGRect)arg1;
-@property(readonly) _Bool subjectAnalysisInProgress;
-- (void)processPath;
+- (void)configureMaskForCurrentSubjectContextWithLayer:(id)arg1 animated:(_Bool)arg2;
+- (void)updateMaskForCurrentSubjectIndexesAnimated:(_Bool)arg1;
+- (void)configureSubjectLiftAtPoint:(struct CGPoint)arg1;
+@property(readonly, nonatomic) struct CGSize imageSize;
 - (id)loadPulsePackage;
 - (void)configurePulseAnimationWithViewScale:(double)arg1;
 - (void)showPulseAnimationWithViewScale:(double)arg1;
+@property(copy, nonatomic) NSIndexSet *activeSubjectIndexSet;
+- (void)setActiveSubjectIndexSet:(id)arg1 animated:(_Bool)arg2;
+- (void)updateGlowLayerForActiveSubjectIndexSet;
 @property(readonly, nonatomic) CALayer *pulseLayer;
+- (id)convertNormalizedPathToBoundsCoordinates:(id)arg1;
 @property(readonly, nonatomic) UIBezierPath *subjectPathInBoundsCoordinates;
+@property(readonly, nonatomic) UIBezierPath *normalizedSubjectPath;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)dealloc;
 
 @end
 

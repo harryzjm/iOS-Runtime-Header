@@ -9,17 +9,15 @@
 @class NSArray, NSString;
 
 @protocol FCChannelProviding <FCTagProviding>
-@property(nonatomic, readonly) NSString *supergroupConfigJson;
-@property(nonatomic, readonly) NSString *supergroupKnobsJson;
+@property(readonly, copy, nonatomic) NSString *backIssuesListID;
+@property(readonly, copy, nonatomic) NSArray *recentIssueIDs;
+@property(readonly, copy, nonatomic) NSArray *currentIssueIDs;
+@property(readonly, nonatomic) unsigned long long channelType;
+@property(readonly, nonatomic) _Bool isWhitelisted;
+@property(readonly, nonatomic) _Bool supportsNotifications;
+@property(readonly, copy, nonatomic) NSString *defaultSectionID;
+@property(readonly, copy, nonatomic) NSArray *sectionIDs;
 - (NSString *)paidFeedIDForSection:(NSString *)arg1 bin:(long long)arg2;
 - (NSString *)freeFeedIDForSection:(NSString *)arg1 bin:(long long)arg2;
-@property(nonatomic, readonly) NSString *backIssuesListID;
-@property(nonatomic, readonly) NSArray *recentIssueIDs;
-@property(nonatomic, readonly) NSArray *currentIssueIDs;
-@property(nonatomic, readonly) unsigned long long channelType;
-@property(nonatomic, readonly) _Bool isWhitelisted;
-@property(nonatomic, readonly) _Bool supportsNotifications;
-@property(nonatomic, readonly) NSString *defaultSectionID;
-@property(nonatomic, readonly) NSArray *sectionIDs;
 @end
 

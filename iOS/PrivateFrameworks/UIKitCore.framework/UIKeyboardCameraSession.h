@@ -41,7 +41,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(readonly, nonatomic) UIResponder<UIKeyInput> *responder; // @synthesize responder=_responder;
 @property(nonatomic) _Bool shouldSuppressSoftwareKeyboard; // @synthesize shouldSuppressSoftwareKeyboard=_shouldSuppressSoftwareKeyboard;
-- (void)handleRemoteSelfDestruct;
+- (void)endActiveSession;
 - (void)dimmingViewWasTapped:(id)arg1;
 - (long long)_overrideTextInputSource;
 - (id)_sessionIdentifier;
@@ -66,6 +66,9 @@ __attribute__((visibility("hidden")))
 - (void)_show;
 - (void)_makeResponderEditableIfNecessary;
 @property(readonly) UITextInputSessionActionAnalytics *sessionAnalytics; // @synthesize sessionAnalytics=_sessionAnalytics;
+@property(readonly, nonatomic) _Bool isDismissing;
+@property(readonly, nonatomic) _Bool isPresenting;
+@property(readonly, nonatomic) _Bool isPresented;
 - (void)dealloc;
 - (void)showForResponder:(id)arg1 sender:(id)arg2 rtiConfiguration:(id)arg3;
 

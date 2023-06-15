@@ -14,6 +14,7 @@
     MISSING_TYPE *imageLayout;
     MISSING_TYPE *computedAttributedString;
     MISSING_TYPE *_routerDataSource;
+    MISSING_TYPE *_viewLayout;
 }
 
 @end

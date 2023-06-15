@@ -15,7 +15,6 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *feedManager;
     MISSING_TYPE *feedPluginManager;
     MISSING_TYPE *feedServiceConfigFetcher;
-    MISSING_TYPE *bundleSubscriptionManager;
     MISSING_TYPE *accessQueue;
     MISSING_TYPE *sharedItemManager;
     MISSING_TYPE *appConfigManager;
@@ -26,12 +25,13 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *subscriptionService;
     MISSING_TYPE *cachePreFlushTask;
     MISSING_TYPE *sportsOnboardingManager;
+    MISSING_TYPE *shortcutService;
+    MISSING_TYPE *historyService;
     MISSING_TYPE *blockNextAutoRefresh;
 }
 
 - (void).cxx_destruct;
 - (id)init;
-- (void)dealloc;
 
 @end
 

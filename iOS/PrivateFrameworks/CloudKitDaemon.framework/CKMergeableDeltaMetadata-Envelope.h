@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CloudKitDistributedSync/CKMergeableDeltaMetadata.h>
+#import <CloudKit/CKMergeableDeltaMetadata.h>
 
 @class CKTuple2, NSData, NSString;
 

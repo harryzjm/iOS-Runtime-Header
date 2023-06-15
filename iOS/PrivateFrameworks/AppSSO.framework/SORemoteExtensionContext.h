@@ -6,7 +6,7 @@
 
 #import <Foundation/NSExtensionContext.h>
 
-@class ASAuthorizationProviderExtensionAuthorizationRequest, NSString, SOExtensionServiceConnection, SOExtensionViewService;
+@class NSMapTable, NSString, SOExtensionServiceConnection, SOExtensionViewService;
 @protocol ASAuthorizationProviderExtensionAuthorizationRequestHandler, ASAuthorizationProviderExtensionAuthorizationRequestHandler><POExtensionRegistrationProtocol;
 
 __attribute__((visibility("hidden")))
@@ -15,24 +15,29 @@ __attribute__((visibility("hidden")))
     SOExtensionServiceConnection *_extensionServiceConnection;
     id <ASAuthorizationProviderExtensionAuthorizationRequestHandler><POExtensionRegistrationProtocol> _extensionAuthorizationRequestHandler;
     CDUnknownBlockType _finishAuthorizationCompletion;
+    NSMapTable *_requests;
     SOExtensionViewService *_viewService;
-    ASAuthorizationProviderExtensionAuthorizationRequest *_extensionAuthorizationRequest;
+    CDUnknownBlockType _registrationCompletion;
 }
 
 + (id)_extensionAuxiliaryVendorProtocol;
 + (id)_extensionAuxiliaryHostProtocol;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) ASAuthorizationProviderExtensionAuthorizationRequest *extensionAuthorizationRequest; // @synthesize extensionAuthorizationRequest=_extensionAuthorizationRequest;
+@property(copy) CDUnknownBlockType registrationCompletion; // @synthesize registrationCompletion=_registrationCompletion;
 @property __weak SOExtensionViewService *viewService; // @synthesize viewService=_viewService;
 - (void)_disableAppSSOInCFNetwork;
-- (void)registrationDidComplete;
-- (void)beginUserRegistrationUsingUserName:(id)arg1 authenticationMethod:(int)arg2 options:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)beginDeviceRegistrationUsingOptions:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)canPerformRegistrationCompletion:(CDUnknownBlockType)arg1;
+- (void)protocolVersionCompletion:(CDUnknownBlockType)arg1;
+- (void)supportedGrantTypesCompletion:(CDUnknownBlockType)arg1;
+- (void)registrationDidCancelWithCompletion:(CDUnknownBlockType)arg1;
+- (void)registrationDidCompleteWithCompletion:(CDUnknownBlockType)arg1;
+- (void)beginUserRegistrationUsingUserName:(id)arg1 authenticationMethod:(int)arg2 options:(long long)arg3 extensionData:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)beginDeviceRegistrationUsingOptions:(long long)arg1 extensionData:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (_Bool)canOpenURL:(id)arg1;
 - (void)openURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)completeFinishAuthorizationWithError:(id)arg1;
-- (void)finishAuthorizationWithCompletion:(CDUnknownBlockType)arg1;
-- (void)cancelAuthorizationWithCompletion:(CDUnknownBlockType)arg1;
+- (void)completeFinishAuthorization:(id)arg1 error:(id)arg2;
+- (void)finishAuthorization:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)cancelAuthorization:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)beginAuthorizationWithServiceXPCEndpoint:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)beginAuthorizationWithRequestParameters:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)synchronousHostContextWithError:(id *)arg1;
@@ -40,6 +45,9 @@ __attribute__((visibility("hidden")))
 - (id)extensionAuthorizationRequestHandlerWithError:(id *)arg1;
 - (id)authorizationRequestHandlerWithRequestParameters:(id)arg1 error:(id *)arg2;
 @property(readonly, nonatomic) id <ASAuthorizationProviderExtensionAuthorizationRequestHandler> extensionViewController;
+- (void)removeRequestForIdentifier:(id)arg1;
+- (id)findRequestForIdentifier:(id)arg1;
+- (void)saveRequest:(id)arg1 forIdentifier:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -9,7 +9,7 @@
 @class NSString;
 
 @interface GEOComposedRouteLeg (MNExtras)
-- (id)_listInstructionStringForFormattedString:(id)arg1 waypoint:(id)arg2;
+- (id)_listInstructionStringForComposedString:(id)arg1 waypoint:(id)arg2;
 @property(readonly, nonatomic) NSString *destinationListInstructionString;
 @property(readonly, nonatomic) NSString *originListInstructionString;
 @end

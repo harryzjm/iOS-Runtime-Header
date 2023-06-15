@@ -6,11 +6,13 @@
 
 #import <CoreUtils/HMHomeManagerDelegate-Protocol.h>
 
-@class HMHomeManager, NSArray, NSSet, NSString;
+@class HMHomeManager, NSArray, NSSet, NSString, NSUUID;
 
 @protocol HMHomeManagerDelegatePrivate <HMHomeManagerDelegate>
 
 @optional
+- (void)homeManager:(HMHomeManager *)arg1 didUpdateHomeSafetySecurityEnabled:(_Bool)arg2;
+- (void)homeManager:(HMHomeManager *)arg1 didRemoveHomePermanently:(NSUUID *)arg2;
 - (void)homeManager:(HMHomeManager *)arg1 didUpdateHH2MigrationInProgressState:(_Bool)arg2;
 - (void)homeManager:(HMHomeManager *)arg1 didUpdateDevices:(NSSet *)arg2;
 - (void)homeManager:(HMHomeManager *)arg1 didUpdateHH2MigrationAvailableState:(_Bool)arg2;

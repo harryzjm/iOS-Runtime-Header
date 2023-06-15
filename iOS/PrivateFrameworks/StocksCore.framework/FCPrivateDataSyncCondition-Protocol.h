@@ -5,9 +5,6 @@
 //
 
 @protocol FCPrivateDataSyncCondition
-- (_Bool)isSatisfied;
-
-// Remaining properties
-@property(nonatomic, readonly) _Bool satisfied;
+@property(readonly, nonatomic, getter=isSatisfied) _Bool satisfied;
 @end
 

@@ -43,7 +43,6 @@ __attribute__((visibility("hidden")))
 - (double)_minimumLineSpacing;
 - (void)_updateEmptyState;
 - (void)_updateArrowColor;
-- (void)traitCollectionDidChange:(id)arg1;
 - (id)flowLayout;
 - (void)invalidateLayoutAndForceUpdate:(_Bool)arg1;
 - (void)sizeToFit;

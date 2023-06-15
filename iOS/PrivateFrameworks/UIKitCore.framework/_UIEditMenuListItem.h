@@ -11,6 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface _UIEditMenuListItem : NSObject
 {
+    _Bool _wantsPasteSlotView;
     UIMenuElement *_menuElement;
     NSString *_title;
     UIImage *_image;
@@ -24,6 +25,7 @@ __attribute__((visibility("hidden")))
 + (id)itemWithTitle:(id)arg1;
 + (id)itemWithMenuElement:(id)arg1;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool wantsPasteSlotView; // @synthesize wantsPasteSlotView=_wantsPasteSlotView;
 @property(nonatomic) unsigned long long displayMode; // @synthesize displayMode=_displayMode;
 @property(nonatomic) double overrideMinimumWidth; // @synthesize overrideMinimumWidth=_overrideMinimumWidth;
 @property(readonly, nonatomic) UIView *customView; // @synthesize customView=_customView;
@@ -32,6 +34,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) UIImage *image; // @synthesize image=_image;
 @property(readonly, nonatomic) NSString *title; // @synthesize title=_title;
 @property(readonly, nonatomic) UIMenuElement *menuElement; // @synthesize menuElement=_menuElement;
+- (id)description;
 - (_Bool)hidesImageForTraitCollection:(id)arg1;
 - (_Bool)hidesTitleForTraitCollection:(id)arg1;
 

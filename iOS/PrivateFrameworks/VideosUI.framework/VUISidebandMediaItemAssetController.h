@@ -6,14 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, TVPDownload, VUIMediaEntityAssetControllerState, VUIMediaEntityType, VUIVideoManagedObject;
-@protocol OS_dispatch_queue, VUIMediaEntityAssetControllerDelegate, VUIMediaEntityIdentifier;
+@class NSString, TVPDownload, VUIContentRating, VUIMediaEntityAssetControllerState, VUIVideoManagedObject;
+@protocol OS_dispatch_queue, VUIMediaEntityAssetControllerDelegate;
 
 __attribute__((visibility("hidden")))
 @interface VUISidebandMediaItemAssetController : NSObject
 {
     VUIVideoManagedObject *_videoManagedObjectInternal;
-    NSObject<VUIMediaEntityIdentifier> *_mediaEntityIdentifierInternal;
     id <VUIMediaEntityAssetControllerDelegate> _delegateInternal;
     NSObject<OS_dispatch_queue> *_serialQueue;
     NSObject<OS_dispatch_queue> *_completionDispatchQueueInternal;
@@ -27,20 +26,22 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *completionDispatchQueueInternal; // @synthesize completionDispatchQueueInternal=_completionDispatchQueueInternal;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *serialQueue; // @synthesize serialQueue=_serialQueue;
 @property(nonatomic) __weak id <VUIMediaEntityAssetControllerDelegate> delegateInternal; // @synthesize delegateInternal=_delegateInternal;
-@property(retain, nonatomic) NSObject<VUIMediaEntityIdentifier> *mediaEntityIdentifierInternal; // @synthesize mediaEntityIdentifierInternal=_mediaEntityIdentifierInternal;
 @property(retain, nonatomic) VUIVideoManagedObject *videoManagedObjectInternal; // @synthesize videoManagedObjectInternal=_videoManagedObjectInternal;
 - (void)_updateDownloadStateAndNotifyDelegates;
 - (void)_updateObservedDownload;
 - (void)download:(id)arg1 progressDidChange:(double)arg2;
 - (void)download:(id)arg1 didChangeStateTo:(long long)arg2;
 - (void)downloadManagerDownloadsDidChange:(id)arg1;
+@property(readonly, nonatomic) _Bool allowsManualDownloadRenewal;
+@property(readonly, nonatomic) NSString *brandID;
+@property(readonly, nonatomic) NSString *brandName;
 - (void)cancelKeyFetch;
 - (void)cancelAndRemoveDownload;
 - (void)resumeDownload;
 - (void)pauseDownload;
 - (void)fetchNewKeysForDownloadedVideo;
 - (void)deleteAndRedownloadAllowingCellular:(_Bool)arg1 quality:(long long)arg2 shouldMarkAsDeletedOnCancellationOrFailure:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)startDownloadAllowingCellular:(_Bool)arg1 quality:(long long)arg2 shouldMarkAsDeletedOnCancellationOrFailure:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)startDownloadAllowingCellular:(_Bool)arg1 quality:(long long)arg2 shouldMarkAsDeletedOnCancellationOrFailure:(_Bool)arg3 preferEnhancedDownload:(_Bool)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)invalidate;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *completionDispatchQueue;
 @property(readonly, copy, nonatomic) VUIMediaEntityAssetControllerState *state;
@@ -48,13 +49,12 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool supportsRedownloadingContent;
 @property(readonly, nonatomic) _Bool supportsStartingDownload;
 @property(nonatomic) __weak id <VUIMediaEntityAssetControllerDelegate> delegate;
-@property(readonly, copy, nonatomic) VUIMediaEntityType *mediaEntityType;
-@property(readonly, copy, nonatomic) NSObject<VUIMediaEntityIdentifier> *mediaEntityIdentifier;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)dealloc;
-- (id)initWithVideoManagedObject:(id)arg1 mediaEntityIdentifier:(id)arg2;
+- (id)initWithVideoManagedObject:(id)arg1;
 
 // Remaining properties
+@property(readonly, nonatomic) VUIContentRating *contentRating;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;

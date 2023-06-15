@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, UIView, VKCActionInfoButton, VKCActionInfoViewLayoutContext, VKCVisualSearchCornerView, VKImageAnalysisButton;
+@class NSArray, UIView, VKCActionInfoMoreButton, VKCActionInfoViewLayoutContext, VKCVisualSearchCornerView, VKImageAnalysisButton;
 
 __attribute__((visibility("hidden")))
 @interface VKCActionInfoView
@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
     UIView *_textButtonContainer;
     UIView *_visualSearchContainer;
     UIView *_moreButtonContainer;
-    VKCActionInfoButton *_moreButton;
+    VKCActionInfoMoreButton *_moreButton;
     VKCActionInfoViewLayoutContext *_layoutContext;
     double _preferredQuickActionButtonHeight;
     CDUnknownBlockType _quickActionConfigurationUpdateHandler;
@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
     struct UIEdgeInsets _edgeInsets;
 }
 
++ (id)buildMoreButtonMenuFromQuickActions:(id)arg1 moreButton:(id)arg2 isStandAloneMoreButton:(_Bool)arg3;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool isShowingSingleTapMoreButtonMenu; // @synthesize isShowingSingleTapMoreButtonMenu=_isShowingSingleTapMoreButtonMenu;
 @property(copy, nonatomic) CDUnknownBlockType quickActionConfigurationUpdateHandler; // @synthesize quickActionConfigurationUpdateHandler=_quickActionConfigurationUpdateHandler;
@@ -44,7 +45,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool automaticVisualRectLayoutDisabled; // @synthesize automaticVisualRectLayoutDisabled=_automaticVisualRectLayoutDisabled;
 @property(nonatomic) _Bool _quickActionsHidden; // @synthesize _quickActionsHidden=__quickActionsHidden;
 @property(retain, nonatomic) VKCActionInfoViewLayoutContext *layoutContext; // @synthesize layoutContext=_layoutContext;
-@property(retain, nonatomic) VKCActionInfoButton *moreButton; // @synthesize moreButton=_moreButton;
+@property(retain, nonatomic) VKCActionInfoMoreButton *moreButton; // @synthesize moreButton=_moreButton;
 @property(retain, nonatomic) UIView *moreButtonContainer; // @synthesize moreButtonContainer=_moreButtonContainer;
 @property(retain, nonatomic) UIView *visualSearchContainer; // @synthesize visualSearchContainer=_visualSearchContainer;
 @property(retain, nonatomic) UIView *textButtonContainer; // @synthesize textButtonContainer=_textButtonContainer;
@@ -70,13 +71,10 @@ __attribute__((visibility("hidden")))
 - (void)updateMoreButtonMenuForContext:(id)arg1;
 - (void)adjustContextToFitWidth:(id)arg1;
 - (void)layoutContainerView;
-- (void)traitCollectionDidChange:(id)arg1;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)layoutSubviews;
 @property(readonly, nonatomic) NSArray *allViews;
 - (void)_applyConfigurationUpdateHandlerToQuickActions;
-- (void)showMoreButtonMenu:(id)arg1;
-- (id)buildMoreButtonMenuFromQuickActions:(id)arg1 moreButton:(id)arg2;
 - (void)updateLayoutIfNecessary;
 - (void)setHidden:(_Bool)arg1;
 @property(readonly, nonatomic) struct CGRect visibleImageRect;

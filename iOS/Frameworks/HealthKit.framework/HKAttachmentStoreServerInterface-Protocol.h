@@ -11,9 +11,9 @@
 @protocol HKAttachmentStoreServerInterface <NSObject>
 - (void)remote_getDataChunkForAttachment:(HKAttachment *)arg1 chunkSize:(unsigned long long)arg2 offset:(unsigned long long)arg3 completion:(void (^)(NSData *, NSError *))arg4;
 - (void)remote_streamDataForAttachment:(HKAttachment *)arg1;
-- (void)remote_attachmentReferencesForObjectIdentifier:(NSString *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
-- (void)remote_removeAllReferencesWithAttachmentIdentifier:(NSUUID *)arg1 objectIdentifier:(NSString *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
-- (void)remote_addAttachmentWithName:(NSString *)arg1 contentTypeIdentifier:(NSString *)arg2 fileHandle:(NSFileHandle *)arg3 toObjectWithIdentifier:(NSString *)arg4 attachmentMetadata:(NSDictionary *)arg5 referenceMetadata:(NSDictionary *)arg6 completion:(void (^)(HKAttachmentReference *, NSError *))arg7;
-- (void)remote_addReferenceWithAttachment:(HKAttachment *)arg1 toObjectWithIdentifier:(NSString *)arg2 metadata:(NSDictionary *)arg3 completion:(void (^)(HKAttachmentReference *, NSError *))arg4;
+- (void)remote_attachmentReferencesForObjectIdentifier:(NSString *)arg1 schemaIdentifier:(NSString *)arg2 completion:(void (^)(NSArray *, NSError *))arg3;
+- (void)remote_removeAllReferencesWithAttachmentIdentifier:(NSUUID *)arg1 objectIdentifier:(NSString *)arg2 schemaIdentifier:(NSString *)arg3 completion:(void (^)(_Bool, NSError *))arg4;
+- (void)remote_addAttachmentWithName:(NSString *)arg1 contentTypeIdentifier:(NSString *)arg2 fileHandle:(NSFileHandle *)arg3 toObjectWithIdentifier:(NSString *)arg4 schemaIdentifier:(NSString *)arg5 attachmentMetadata:(NSDictionary *)arg6 referenceMetadata:(NSDictionary *)arg7 completion:(void (^)(HKAttachmentReference *, NSError *))arg8;
+- (void)remote_addReferenceWithAttachment:(HKAttachment *)arg1 toObjectWithIdentifier:(NSString *)arg2 schemaIdentifier:(NSString *)arg3 metadata:(NSDictionary *)arg4 completion:(void (^)(HKAttachmentReference *, NSError *))arg5;
 @end
 

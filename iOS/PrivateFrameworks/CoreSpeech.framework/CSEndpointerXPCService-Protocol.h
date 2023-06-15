@@ -7,10 +7,11 @@
 @class NSArray, NSString;
 
 @protocol CSEndpointerXPCService
+- (void)getFirstAudioSampleSensorHostTimeWithReply:(void (^)(NSError *, unsigned long long))arg1;
 - (void)setEndpointerOperationMode:(long long)arg1;
 - (void)resetForVoiceTriggerTwoShotWithSampleRate:(unsigned long long)arg1;
 - (void)getEndPointAnalyzerTypeWithReply:(void (^)(NSError *, unsigned long long))arg1;
-- (void)getElapsedTimeNoSpeechWithReply:(void (^)(NSError *, double))arg1;
+- (void)getPostVoiceTriggerSilenceWithReply:(void (^)(NSError *, double))arg1;
 - (void)setAutomaticEndpointingSuspensionEndTime:(double)arg1;
 - (void)setEndWaitTime:(double)arg1;
 - (void)setStartWaitTime:(double)arg1;

@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)defaultManager;
+- (void)streamToken:(long long)arg1 didDetectGibberish:(_Bool)arg2;
 - (void)streamToken:(long long)arg1 didUpdateCaptions:(id)arg2;
 - (void)streamToken:(long long)arg1 didStopCaptioningWithReason:(unsigned char)arg2;
 - (void)streamToken:(long long)arg1 didStartCaptioningWithReason:(unsigned char)arg2;

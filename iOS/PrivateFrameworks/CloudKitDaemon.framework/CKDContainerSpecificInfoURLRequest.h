@@ -30,6 +30,7 @@
 - (_Bool)allowsAnonymousAccount;
 - (_Bool)requiresDeviceID;
 - (_Bool)requiresConfiguration;
+- (id)equivalencyProperties;
 - (id)initWithOperation:(id)arg1 containerIdentifier:(id)arg2;
 
 @end

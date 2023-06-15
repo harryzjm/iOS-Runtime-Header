@@ -37,6 +37,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)isEqual:(id)arg1;
 - (id)widthConstraintForInputViewSet:(id)arg1 hostView:(id)arg2 containerView:(id)arg3;
 - (id)horizontalConstraintForInputViewSet:(id)arg1 hostView:(id)arg2 containerView:(id)arg3;
+- (void)updateChromeBuffer;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)dealloc;
@@ -45,7 +46,7 @@ __attribute__((visibility("hidden")))
 - (void)setDelegate:(id)arg1;
 - (Class)applicatorClassForKeyboard:(_Bool)arg1;
 - (void)checkSizeForOwner:(id)arg1;
-- (void)_geometryChanged:(const CDStruct_f46536fb *)arg1 forAncestor:(id)arg2;
+- (void)_geometryChanged:(const CDStruct_c9afd433 *)arg1 forAncestor:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

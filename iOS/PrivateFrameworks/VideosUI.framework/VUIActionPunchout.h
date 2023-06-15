@@ -4,44 +4,54 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, NSURL, VUIAppContext, WLKChannelDetails;
+@class NSString, NSURL, VUIAppContext, VUIContentRating, WLKChannelDetails;
 
 __attribute__((visibility("hidden")))
 @interface VUIActionPunchout
 {
+    _Bool _isPlaybackURL;
     _Bool _isEntitledToPlay;
     _Bool _isAdultContent;
-    _Bool _isPlaybackURL;
     _Bool _shouldAvoidInstallSheet;
+    _Bool _shouldPunchOutAfterAppInstallation;
+    _Bool _shouldRunPreflightManager;
     NSURL *_punchoutURL;
     WLKChannelDetails *_channelDetails;
+    NSString *_contentTitle;
     NSString *_mediaType;
     NSString *_externalID;
     NSString *_referenceID;
     NSString *_canonicalID;
-    NSString *_contentTitle;
     VUIAppContext *_appContext;
+    VUIContentRating *_contentRating;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) VUIContentRating *contentRating; // @synthesize contentRating=_contentRating;
+@property(nonatomic) _Bool shouldRunPreflightManager; // @synthesize shouldRunPreflightManager=_shouldRunPreflightManager;
+@property(nonatomic) _Bool shouldPunchOutAfterAppInstallation; // @synthesize shouldPunchOutAfterAppInstallation=_shouldPunchOutAfterAppInstallation;
 @property(nonatomic) _Bool shouldAvoidInstallSheet; // @synthesize shouldAvoidInstallSheet=_shouldAvoidInstallSheet;
 @property(retain, nonatomic) VUIAppContext *appContext; // @synthesize appContext=_appContext;
-@property(copy, nonatomic) NSString *contentTitle; // @synthesize contentTitle=_contentTitle;
-@property(nonatomic) _Bool isPlaybackURL; // @synthesize isPlaybackURL=_isPlaybackURL;
 @property(retain, nonatomic) NSString *canonicalID; // @synthesize canonicalID=_canonicalID;
 @property(retain, nonatomic) NSString *referenceID; // @synthesize referenceID=_referenceID;
 @property(retain, nonatomic) NSString *externalID; // @synthesize externalID=_externalID;
 @property(retain, nonatomic) NSString *mediaType; // @synthesize mediaType=_mediaType;
+@property(copy, nonatomic) NSString *contentTitle; // @synthesize contentTitle=_contentTitle;
 @property(nonatomic) _Bool isAdultContent; // @synthesize isAdultContent=_isAdultContent;
 @property(nonatomic) _Bool isEntitledToPlay; // @synthesize isEntitledToPlay=_isEntitledToPlay;
 @property(retain, nonatomic) WLKChannelDetails *channelDetails; // @synthesize channelDetails=_channelDetails;
+@property(nonatomic) _Bool isPlaybackURL; // @synthesize isPlaybackURL=_isPlaybackURL;
 @property(retain, nonatomic) NSURL *punchoutURL; // @synthesize punchoutURL=_punchoutURL;
+- (id)topPresentedViewController;
 - (_Bool)isAccountRequired;
 - (_Bool)_isValidAppInstalled;
 - (void)_openPunchoutURL:(CDUnknownBlockType)arg1;
 - (void)_showErrorMessageAlert:(id)arg1;
 - (void)_openAirplayPicker:(CDUnknownBlockType)arg1;
+- (void)presentASCSingleAppInstaller:(CDUnknownBlockType)arg1;
+- (_Bool)runASCPrecheck:(CDUnknownBlockType)arg1;
 - (void)_startAppInstallFlow:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)showAPPInstallRestrictedErrorAlert;
 - (void)performWithTargetResponder:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (_Bool)canPerformNow;
 - (id)initWithContextData:(id)arg1 appContext:(id)arg2;

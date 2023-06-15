@@ -15,12 +15,10 @@ struct ButtonKey {
     int _field2;
 };
 
-struct Options {
-    CDUnknownFunctionPointerType *_vptr$Options;
-    struct shared_ptr<AMSCore::Options::OptionsImp> mOptionsImpSharedPtr;
+struct CGSize {
+    double width;
+    double height;
 };
-
-struct OptionsImp;
 
 struct _NSRange {
     unsigned long long _field1;
@@ -34,11 +32,6 @@ struct os_unfair_lock_s {
 struct os_unfair_recursive_lock_s {
     struct os_unfair_lock_s ourl_lock;
     unsigned int ourl_count;
-};
-
-struct shared_ptr<AMSCore::Options::OptionsImp> {
-    struct OptionsImp *__ptr_;
-    struct __shared_weak_count *__cntrl_;
 };
 
 #pragma mark Typedef'd Structures

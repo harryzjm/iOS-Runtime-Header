@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSIndexSet, NSMutableArray, NSMutableIndexSet;
+@class NSMutableArray, NSMutableIndexSet;
 
 __attribute__((visibility("hidden")))
 @interface _UIUpdateVisibleCellsContext : NSObject
@@ -19,16 +19,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSArray *indexPaths; // @synthesize indexPaths=_indexPaths;
-@property(readonly, nonatomic) NSArray *sizes; // @synthesize sizes=_sizes;
-@property(readonly, nonatomic) NSArray *attributes;
-@property(readonly, nonatomic) _Bool hasLeftVisibleCellsPass;
-- (void)didLeaveVisibleCellsPass;
-- (void)didEnterVisibleCellsPass;
-@property(readonly, nonatomic) NSIndexSet *sectionIndexes;
 - (id)description;
-- (_Bool)shouldInvalidate;
-- (void)addPreferredAttributes:(id)arg1;
 - (id)init;
 
 @end

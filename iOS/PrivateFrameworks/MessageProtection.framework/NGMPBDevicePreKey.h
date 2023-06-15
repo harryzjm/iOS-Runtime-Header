@@ -14,9 +14,16 @@ __attribute__((visibility("hidden")))
     double _timestamp;
     NGMPBP256Key *_dhKey;
     NSData *_prekeySignature;
+    NSData *_secondaryPrivateKey;
+    NSData *_secondaryRegistrationData;
+    unsigned int _secondaryVersion;
+    CDStruct_f773167c _has;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) unsigned int secondaryVersion; // @synthesize secondaryVersion=_secondaryVersion;
+@property(retain, nonatomic) NSData *secondaryRegistrationData; // @synthesize secondaryRegistrationData=_secondaryRegistrationData;
+@property(retain, nonatomic) NSData *secondaryPrivateKey; // @synthesize secondaryPrivateKey=_secondaryPrivateKey;
 @property(retain, nonatomic) NSData *prekeySignature; // @synthesize prekeySignature=_prekeySignature;
 @property(nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
 @property(retain, nonatomic) NGMPBP256Key *dhKey; // @synthesize dhKey=_dhKey;
@@ -29,6 +36,9 @@ __attribute__((visibility("hidden")))
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasSecondaryVersion;
+@property(readonly, nonatomic) _Bool hasSecondaryRegistrationData;
+@property(readonly, nonatomic) _Bool hasSecondaryPrivateKey;
 @property(readonly, nonatomic) _Bool hasDhKey;
 
 @end

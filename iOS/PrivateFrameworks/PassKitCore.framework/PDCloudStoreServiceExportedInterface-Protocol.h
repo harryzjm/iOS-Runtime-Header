@@ -6,7 +6,7 @@
 
 #import <PassKitCore/PDXPCServiceExportedInterface-Protocol.h>
 
-@class NSArray, NSSet, NSString, PKCloudStoreZoneQueryConfiguration, PKPaymentTransaction;
+@class NSArray, NSDate, NSSet, NSString, PKCloudStoreZoneQueryConfiguration, PKPaymentTransaction;
 
 @protocol PDCloudStoreServiceExportedInterface <PDXPCServiceExportedInterface>
 - (void)performAction:(long long)arg1 inContainerWithName:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
@@ -22,15 +22,17 @@
 - (void)cloudStoreStatusForContainer:(NSString *)arg1 completion:(void (^)(CKAccountInfo *, _Bool, NSError *))arg2;
 - (void)createZone:(NSString *)arg1 containerName:(NSString *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 - (void)deleteZone:(NSString *)arg1 containerName:(NSString *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
-- (void)recreateZone:(NSString *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (void)uploadTransaction:(PKPaymentTransaction *)arg1 forTransactionSourceIdentifier:(NSString *)arg2 includeServerData:(_Bool)arg3 completion:(void (^)(PKCloudRecordArray *, NSError *))arg4;
 - (void)generateRandomTransactionForTransactionSourceIdentifier:(NSString *)arg1 completion:(void (^)(PKCloudRecordArray *, NSError *))arg2;
+- (void)performBackgroundRecordChangesSyncWithCompletion:(void (^)(NSError *))arg1;
+- (void)performBackgroundTransactionSyncFromDate:(NSDate *)arg1 completion:(void (^)(PKCloudRecordArray *, NSError *))arg2;
 - (void)fetchAndStoreRecordsForTransactionSourceIdentifier:(NSString *)arg1 completion:(void (^)(PKCloudRecordArray *, NSError *))arg2;
 - (void)simulateCloudStorePushForContainerIdentifier:(NSString *)arg1 completion:(void (^)(PKCloudRecordArray *, NSArray *, NSError *))arg2;
 - (void)resetContainerWithIdentifier:(NSString *)arg1 zoneNames:(NSSet *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 - (void)cloudStoreRecordArrayWithConfiguration:(PKCloudStoreZoneQueryConfiguration *)arg1 completion:(void (^)(PKCloudRecordArray *, NSError *))arg2;
 - (void)itemOfItemTypeFromAllZones:(unsigned long long)arg1 recordName:(NSString *)arg2 qualityOfService:(long long)arg3 completion:(void (^)(PKCloudRecordArray *, NSError *))arg4;
 - (void)itemOfItemType:(unsigned long long)arg1 recordName:(NSString *)arg2 qualityOfService:(long long)arg3 completion:(void (^)(PKCloudRecordObject *, NSError *))arg4;
+- (void)applePayContainerItemsFromDate:(NSDate *)arg1 toDate:(NSDate *)arg2 completion:(void (^)(PKCloudRecordArray *, NSError *))arg3;
 - (void)allItemsOfItemType:(unsigned long long)arg1 storeLocally:(_Bool)arg2 completion:(void (^)(PKCloudRecordArray *, NSError *))arg3;
 - (void)removeRecordWithRecordName:(NSString *)arg1 zoneName:(NSString *)arg2 containerName:(NSString *)arg3 completion:(void (^)(NSError *))arg4;
 - (void)removeAllItems:(unsigned long long)arg1 inZoneName:(NSString *)arg2 containerName:(NSString *)arg3 storeLocally:(_Bool)arg4 completion:(void (^)(NSSet *, NSError *))arg5;

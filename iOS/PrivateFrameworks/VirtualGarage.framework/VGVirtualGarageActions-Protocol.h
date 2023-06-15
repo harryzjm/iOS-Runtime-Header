@@ -10,9 +10,11 @@
 - (void)virtualGarageGetLatestStateOfVehicleWithIdentifier:(NSString *)arg1 syncAcrossDevices:(_Bool)arg2 withReply:(void (^)(VGVehicle *, NSError *))arg3;
 - (void)virtualGarageGetListOfUnpairedVehiclesWithReply:(void (^)(NSArray *, NSError *))arg1;
 - (void)virtualGarageGetGarageWithReply:(void (^)(VGVirtualGarage *, NSError *))arg1;
+- (void)virtualGarageForceFetchAllVehicles;
 - (void)virtualGarageSetAssumesFullCharge:(_Bool)arg1;
 - (void)virtualGarageEndContinuousUpdates;
 - (void)virtualGarageStartContinuousUpdatesIfNeeded;
+- (void)virtualGarageSetShouldUsePreferredNetworks:(_Bool)arg1 forVehicle:(VGVehicle *)arg2;
 - (void)virtualGarageOnboardVehicle:(VGVehicle *)arg1;
 - (void)virtualGarageSelectVehicle:(VGVehicle *)arg1;
 - (void)virtualGarageSaveVehicle:(VGVehicle *)arg1;

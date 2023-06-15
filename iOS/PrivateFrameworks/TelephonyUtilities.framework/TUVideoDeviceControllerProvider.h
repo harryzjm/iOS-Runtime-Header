@@ -46,7 +46,8 @@ __attribute__((visibility("hidden")))
 - (void)setLocalScreenAttributes:(id)arg1;
 - (id)localScreenAttributesForVideoAttributes:(id)arg1;
 @property(nonatomic, getter=isCameraBlurEnabled) _Bool cameraBlurEnabled;
-@property(nonatomic) long long currentBackgroundBlurControlMode;
+- (void)setCurrentBackgroundBlurControlMode:(long long)arg1;
+- (long long)currentBackgroundBlurControlMode;
 - (_Bool)supportsCameraBlurForDevice:(id)arg1;
 - (void)getSnapshot;
 - (void)stopPreview;

@@ -11,6 +11,10 @@
     MISSING_TYPE *seasonNumber;
     MISSING_TYPE *episodeNumber;
     MISSING_TYPE *fractionalEpisodeNumber;
+    MISSING_TYPE *showAdamID;
+    MISSING_TYPE *seasonAdamID;
+    MISSING_TYPE *showImageURL;
+    MISSING_TYPE *showTitle;
 }
 
 @end

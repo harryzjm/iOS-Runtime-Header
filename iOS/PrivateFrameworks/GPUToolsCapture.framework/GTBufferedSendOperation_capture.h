@@ -9,7 +9,6 @@
 @class GTTransportMessage_capture;
 @protocol OS_dispatch_queue;
 
-__attribute__((visibility("hidden")))
 @interface GTBufferedSendOperation_capture : NSObject
 {
     GTTransportMessage_capture *_message;

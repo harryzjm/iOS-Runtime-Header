@@ -6,6 +6,12 @@
 
 #import <PhotosUIPrivate/NSObject-Protocol.h>
 
+@class UIViewController;
+@protocol PUOneUpAssetTransitionViewController;
+
 @protocol PUOneUpAssetTransition <NSObject>
+
+@optional
+- (UIViewController<PUOneUpAssetTransitionViewController> *)toViewController;
 @end
 

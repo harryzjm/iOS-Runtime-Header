@@ -7,6 +7,10 @@
 @class NSArray, NSData, NSDate, NSDictionary, NSNumber, NSString;
 
 @protocol PFMetadataImage
+@property(readonly, nonatomic) NSNumber *srlCompensationValue;
+@property(readonly, nonatomic) NSNumber *nrfSrlStatus;
+@property(readonly, nonatomic) unsigned long long photosAppFeatureFlags;
+@property(readonly, nonatomic) _Bool isProRAW;
 @property(readonly, nonatomic) _Bool isFrontFacingCamera;
 @property(readonly, nonatomic) NSNumber *semanticStylePreset;
 @property(readonly, nonatomic) NSNumber *semanticStyleRenderingVersion;
@@ -18,6 +22,7 @@
 @property(readonly, nonatomic) _Bool isPhotoBooth;
 @property(readonly, nonatomic) NSString *portraitInLandscapeCamera;
 @property(readonly, nonatomic) unsigned long long photoProcessingFlags;
+@property(readonly, nonatomic) NSNumber *HEICSDelayTime;
 @property(readonly, nonatomic) NSNumber *GIFDelayTime;
 @property(readonly, nonatomic) NSString *profileName;
 @property(readonly, nonatomic) _Bool isSDOF;
@@ -37,7 +42,7 @@
 @property(readonly, nonatomic) NSNumber *lensMinimumMM;
 @property(readonly, nonatomic) NSString *lensModel;
 @property(readonly, nonatomic) NSString *lensMake;
-@property(readonly, nonatomic) NSNumber *colorSpace;
+@property(readonly, nonatomic) struct CGColorSpace *cgColorSpace;
 @property(readonly, nonatomic) NSNumber *brightness;
 @property(readonly, nonatomic) NSNumber *fNumber;
 @property(readonly, nonatomic) NSNumber *lightSource;
@@ -61,7 +66,6 @@
 @property(readonly, nonatomic) _Bool hasCustomRendered;
 @property(readonly, nonatomic) _Bool isDeferredPhotoProxy;
 @property(readonly, nonatomic) NSArray *keywords;
-@property(readonly, nonatomic) NSString *artworkContentDescription;
 @property(readonly, nonatomic) NSDate *gpsDateTime;
 @property(readonly, nonatomic) NSString *imageDirectionRef;
 @property(readonly, nonatomic) NSNumber *imageDirection;
@@ -73,5 +77,6 @@
 @property(readonly, nonatomic) struct CGImageSource *imageSource;
 @property(readonly, nonatomic) NSData *imageData;
 @property(readonly, nonatomic) NSDictionary *cgImageProperties;
+- (void)enumerateRawThumbnailInfoWithBlock:(void (^)(double, double, unsigned long long, unsigned long long, unsigned int, _Bool *))arg1;
 @end
 

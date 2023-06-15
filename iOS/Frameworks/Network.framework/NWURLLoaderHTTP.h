@@ -6,32 +6,46 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, NSURLRequest, NWURLSessionTaskConfiguration;
-@protocol NWURLLoaderClient, NWURLSessionRequestBodyProvider, OS_dispatch_queue, OS_nw_connection, OS_nw_content_context;
+@class NSCachedURLResponse, NSError, NSString, NSURLRequest, NWConcrete_nw_connection, NWURLLoaderCache, NWURLSessionTaskConfiguration;
+@protocol NWURLLoaderClient, NWURLSessionRequestBodyProvider, OS_dispatch_queue, OS_nw_content_context, OS_sec_trust;
 
 __attribute__((visibility("hidden")))
 @interface NWURLLoaderHTTP : NSObject
 {
-    _Bool _hasBody;
+    _Bool _ready;
     _Bool _pendingCompletion;
+    _Bool _cancelled;
+    _Bool _allowCaching;
+    _Bool _loadingFromCache;
+    _Bool _revalidateCachedResponse;
+    _Bool _dataDelivered;
+    _Bool _isResponseMixed;
     NSURLRequest *_request;
+    long long _bodyKnownSize;
     NWURLSessionTaskConfiguration *_configuration;
     id <NWURLLoaderClient> _client;
     NSObject<OS_dispatch_queue> *_queue;
     id <NWURLSessionRequestBodyProvider> _requestBodyProvider;
-    NSObject<OS_nw_connection> *_connection;
+    NWConcrete_nw_connection *_connection;
     NSObject<OS_nw_content_context> *_requestContext;
+    NSObject<OS_nw_content_context> *_nextRequestContext;
+    NSError *_pendingError;
+    NWURLLoaderCache *_cache;
+    NSCachedURLResponse *_cachedResponse;
+    CDUnknownBlockType _responseCompletionHandler;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSObject<OS_nw_connection> *underlyingConnection;
+@property(readonly, nonatomic) NWConcrete_nw_connection *underlyingConnection;
+- (void)responseIsMixed;
 - (void)writeData:(id)arg1 complete:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 @property(readonly, nonatomic) _Bool allowsWrite;
+@property(readonly, nonatomic) NSObject<OS_sec_trust> *peerTrust;
 - (void)readDataOfMinimumIncompleteLength:(unsigned long long)arg1 maximumLength:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)readResponse:(CDUnknownBlockType)arg1;
 - (void)updateClient:(id)arg1;
 - (void)stop;
-- (void)start;
+- (void)start:(CDUnknownBlockType)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -27,7 +27,6 @@
 - (void)racGUIDForStoreID:(long long)arg1 withReply:(void (^)(NSUUID *, NSError *))arg2;
 - (void)setRacGUID:(NSUUID *)arg1 forStoreID:(long long)arg2 withReply:(void (^)(NSError *))arg3;
 - (void)monitorProgressWithReply:(void (^)(NSError *))arg1;
-- (void)flushMetricsWithReply:(void (^)(NSError *))arg1;
 - (void)reloadFromServerWithReply:(void (^)(NSError *))arg1;
 - (void)restartDownloadWithID:(NSString *)arg1 withReply:(void (^)(NSError *))arg2;
 - (void)setAutomaticDownloadEnabled:(_Bool)arg1 uiHostProxy:(id <BLUIHostServiceProtocol>)arg2 reply:(void (^)(NSError *))arg3;

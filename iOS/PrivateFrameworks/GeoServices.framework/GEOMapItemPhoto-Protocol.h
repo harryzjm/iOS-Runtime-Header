@@ -10,6 +10,7 @@
 @protocol GEOMapItemPhotoInfo;
 
 @protocol GEOMapItemPhoto <NSObject>
+@property(readonly, nonatomic) _Bool needsObfuscationWhenRenderedInFullScreen;
 @property(readonly, nonatomic) NSDate *dateCreated;
 @property(readonly, nonatomic) GEOMapItemPhotosAttribution *attribution;
 @property(readonly, nonatomic) _Bool isBackgroundJoeColorCurated;

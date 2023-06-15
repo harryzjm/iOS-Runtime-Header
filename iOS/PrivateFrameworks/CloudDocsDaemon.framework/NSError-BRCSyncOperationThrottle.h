@@ -11,6 +11,7 @@
 + (id)brc_daemonAccessDisabledError;
 + (id)brc_errorWithDomain:(id)arg1 code:(long long)arg2 underlyingError:(id)arg3;
 - (int)brc_syncOperationErrorKind;
+- (_Bool)brc_isXPCConnectionError;
 - (_Bool)brc_isExpectedErrorForTelemetry;
 - (id)brc_telemetryReportableErrorWithRecordName:(id *)arg1;
 - (id)brc_cloudKitErrorMessage;
@@ -28,7 +29,7 @@
 - (_Bool)_brc_isCloudKitZoneUserDeletedError;
 - (_Bool)_brc_isCloudKitZoneNotFoundError;
 - (_Bool)brc_isOutOfSpaceError;
-- (_Bool)brc_isBlacklistError;
+- (_Bool)brc_isDenylistError;
 - (_Bool)brc_isCloudKitErrorSafeToSyncUpWithoutSyncDown;
 - (_Bool)_brc_isCloudKitInternalErrorSafeToSyncUpWithoutSyncDown;
 - (_Bool)brc_isCloudKitErrorRequiringSkipThrottling;
@@ -42,6 +43,7 @@
 - (_Bool)_brc_isCloudKitPluginErrorCode:(long long)arg1;
 - (_Bool)brc_isCloudKitErrorRequiringAssetReupload;
 - (_Bool)brc_isCloudKitErrorRequiringAssetRescan;
+- (_Bool)brc_isCloudKitErrorRequiringAssetRecheck;
 - (_Bool)brc_isCloudKitAccountTemporarilyUnavailable;
 - (_Bool)brc_isCloudKitUnknownItemError;
 - (_Bool)brc_isCloudKitPCSChainingError;

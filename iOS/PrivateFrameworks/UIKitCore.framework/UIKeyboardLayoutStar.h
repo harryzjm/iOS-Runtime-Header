@@ -115,6 +115,7 @@ __attribute__((visibility("hidden")))
     UIGestureKeyboardIntroduction *_gestureKeyboardIntroduction;
     _Bool _dictationUsingServerManualEndpointing;
     _Bool _splitTransitionNeedsRebuild;
+    _Bool _selectedVariantIndexChanged;
     NSMutableDictionary *_extendedTouchInfoMap;
     UIKBResizingKeyplaneCoordinator *_resizingKeyplaneCoordinator;
     UIButton *_biasEscapeButton;
@@ -332,6 +333,7 @@ __attribute__((visibility("hidden")))
 - (void)setHideKeysUnderIndicator:(_Bool)arg1;
 - (_Bool)shouldShowIndicator;
 - (void)showPopupVariantsForKey:(id)arg1;
+- (void)preparePopupVariantsForKey:(id)arg1 onKeyplane:(id)arg2;
 - (id)_variantsOfCurrencyKey:(id)arg1 language:(id)arg2;
 - (id)_variantsByAppendingDualStringKey:(id)arg1 toVariants:(id)arg2;
 - (id)_appendingSecondaryStringToVariantsTop:(id)arg1 secondaryString:(id)arg2 withDirection:(id)arg3;
@@ -407,7 +409,6 @@ __attribute__((visibility("hidden")))
 - (id)cacheTokenForKeyplane:(id)arg1 caseAlternates:(_Bool)arg2;
 - (id)cacheIdentifierForKeyplaneNamed:(id)arg1;
 @property(readonly, nonatomic) UIKeyboardEmojiKeyDisplayController *emojiKeyManager; // @synthesize emojiKeyManager=_emojiKeyManager;
-- (Class)keyViewAnimatorClassForCurrentKeyboardLayout;
 - (id)keyViewAnimator;
 - (void)updateState:(int)arg1 forKey:(id)arg2;
 - (void)setState:(int)arg1 forKey:(id)arg2;
@@ -425,12 +426,13 @@ __attribute__((visibility("hidden")))
 - (void)recenterMonolithKeyplaneSwitchKeys;
 - (void)_transformCarPlayIfNecessary;
 - (void)_transformFloatingKeyboardIfNecessary;
-- (void)_addResizeTransformationIfNecessary;
+- (void)_addResizeTransformationsIfNecessary;
 - (void)_addExtraControlKeysIfNecessary;
 - (id)_currentKeyplaneTransformationContext;
 - (_Bool)_shouldAttemptToAddSupplementaryControlKeys;
 - (void)_updateSupplementaryKeys;
 - (void)_swapGlobeAndMoreKeysIfNecessary;
+- (_Bool)_shouldSwapGlobeAndMore;
 - (void)mergeKeysIfNeeded;
 - (id)keylistContainingKey:(id)arg1;
 - (int)stateForKeyplaneSwitchKey:(id)arg1;
@@ -523,6 +525,7 @@ __attribute__((visibility("hidden")))
 - (void)setKeyboardName:(id)arg1 appearance:(long long)arg2;
 - (id)keyForKeyboardName:(id)arg1 screenTraits:(id)arg2;
 - (void)updateKeyboardForKeyplane:(id)arg1;
+- (struct UIEdgeInsets)keyplanePadding;
 - (struct CGSize)sizeForKeyplane:(id)arg1;
 - (_Bool)allKeyplanesHaveSameHeight;
 - (void)setKeyboardAppearance:(long long)arg1;
@@ -573,7 +576,7 @@ __attribute__((visibility("hidden")))
 - (id)flickPopupStringForKey:(id)arg1 withString:(id)arg2;
 - (void)finishContinuousPathView:(_Bool)arg1;
 - (void)clearContinuousPathView;
-- (void)addContinuousPathPoint:(struct CGPoint)arg1 withTimestamp:(double)arg2 updateIdleDetection:(_Bool)arg3;
+- (void)addContinuousPathPoint:(struct CGPoint)arg1 withTimestamp:(double)arg2;
 - (void)didBeginContinuousPath;
 - (void)transitionToPunctuationKeysVisible:(_Bool)arg1;
 - (void)_transitionToContinuousPathState:(long long)arg1 forTouchInfo:(id)arg2;

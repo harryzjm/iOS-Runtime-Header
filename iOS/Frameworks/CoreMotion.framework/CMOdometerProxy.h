@@ -33,6 +33,7 @@
 - (void)_stopCyclingWorkoutDistanceUpdates;
 - (void)_startCyclingWorkoutDistanceUpdatesWithHandler:(CDUnknownBlockType)arg1;
 - (void)_stopOdometerUpdates;
+- (void)_stopOdometerGpsAvailability;
 - (void)_startOdometerUpdatesWithHandler:(CDUnknownBlockType)arg1;
 - (void)_startDaemonConnection;
 - (void)_teardown;

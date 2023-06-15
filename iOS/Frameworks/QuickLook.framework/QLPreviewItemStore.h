@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (id)previewController:(id)arg1 previewItemAtIndex:(long long)arg2;
 - (long long)numberOfPreviewItemsInPreviewController:(id)arg1;
 - (long long)indexOfPreviewItem:(id)arg1;
+- (void)resolvedPreviewItemAtIndex:(unsigned long long)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)previewItemAtIndex:(unsigned long long)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (id)loadedItemsMatching:(CDUnknownBlockType)arg1;
 - (_Bool)hasLoadedItemsMatching:(CDUnknownBlockType)arg1;

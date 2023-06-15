@@ -7,7 +7,7 @@
 #import <CloudKit/CKAssetRereferenceInfo.h>
 
 @interface CKAssetRereferenceInfo (CKDaemonExtensions)
-- (_Bool)validateAndSetRecordFetchPropertiesWithAsset:(id)arg1 assetReference:(id)arg2;
+- (_Bool)validateAndSetRecordFetchPropertiesWithAsset:(id)arg1;
 - (void)clearRecordFetchProperties;
 @end
 

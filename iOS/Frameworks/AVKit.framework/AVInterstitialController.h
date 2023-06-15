@@ -13,8 +13,10 @@ __attribute__((visibility("hidden")))
 @interface AVInterstitialController : NSObject
 {
     id <NSObject> _playerItemTimeJumpedObserver;
+    id <NSObject> _playerInterstitialPlayerDidChangeObserver;
     id <NSObject> _playerInterstitialEventsChangedObserver;
     id <NSObject> _playerInterstitialCurrentEventChangedObserver;
+    _Bool _shouldAlwaysSkipInterstitials;
     AVPlayer *_player;
     AVPlayer *_interstitialPlayer;
     id <AVInterstitialControllerDelegateManager> _delegateManager;
@@ -44,6 +46,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) AVPlayerInterstitialEventController *eventController; // @synthesize eventController=_eventController;
 @property(retain, nonatomic) AVPlayerInterstitialEventMonitor *eventMonitor; // @synthesize eventMonitor=_eventMonitor;
 @property(readonly, nonatomic) AVPlayerTimeController<AVTimeControlling> *interstitialTimingController; // @synthesize interstitialTimingController=_interstitialTimingController;
+@property(nonatomic) _Bool shouldAlwaysSkipInterstitials; // @synthesize shouldAlwaysSkipInterstitials=_shouldAlwaysSkipInterstitials;
 @property(copy, nonatomic) CDUnknownBlockType skipInterstitialTimeRangeBlock; // @synthesize skipInterstitialTimeRangeBlock=_skipInterstitialTimeRangeBlock;
 @property(copy, nonatomic) CDUnknownBlockType didLeaveRequiredInterstitialTimeRangeBlock; // @synthesize didLeaveRequiredInterstitialTimeRangeBlock=_didLeaveRequiredInterstitialTimeRangeBlock;
 @property(copy, nonatomic) CDUnknownBlockType didLeaveInterstitialTimeRangeBlock; // @synthesize didLeaveInterstitialTimeRangeBlock=_didLeaveInterstitialTimeRangeBlock;
@@ -85,8 +88,10 @@ __attribute__((visibility("hidden")))
 - (id)currentItem;
 - (double)displayTimeFromTime:(double)arg1;
 - (double)timeFromDisplayTime:(double)arg1;
+- (void)_performInterstitialPlayerDependentUpdates;
 - (void)invalidate;
 - (void)dealloc;
+- (void)setupInterstitialObservers;
 - (id)init;
 - (_Bool)loadDurationOfCurrentOrNextInterstitialEvent:(CDUnknownBlockType)arg1;
 - (id)timeRangeForPlayerInterstitialEvent:(id)arg1;

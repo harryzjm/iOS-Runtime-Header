@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     struct __DDResult *_result;
     NSDictionary *_context;
     NSArray *_associatedResults;
+    NSArray *_associatedVisualResults;
     NSString *_hostApplicationIdentifier;
     NSString *_actionClass;
 }
@@ -24,13 +25,14 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain) NSString *actionClass; // @synthesize actionClass=_actionClass;
 @property(copy) NSString *hostApplicationIdentifier; // @synthesize hostApplicationIdentifier=_hostApplicationIdentifier;
+@property(readonly) NSArray *associatedVisualResults; // @synthesize associatedVisualResults=_associatedVisualResults;
 @property(retain) NSArray *associatedResults; // @synthesize associatedResults=_associatedResults;
 @property(retain) NSDictionary *context; // @synthesize context=_context;
 @property struct __DDResult *result; // @synthesize result=_result;
 @property(retain) NSURL *URL; // @synthesize URL=_URL;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initWithURL:(id)arg1 result:(struct __DDResult *)arg2 context:(id)arg3 associatedResults:(id)arg4 className:(id)arg5;
+- (id)initWithURL:(id)arg1 result:(struct __DDResult *)arg2 context:(id)arg3 associatedResults:(id)arg4 associatedVisualResults:(id)arg5 className:(id)arg6;
 - (void)dealloc;
 
 @end

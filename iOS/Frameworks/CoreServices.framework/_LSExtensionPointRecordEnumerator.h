@@ -6,11 +6,12 @@
 
 #import "_LSRecordEnumerator.h"
 
-@class LSApplicationRecord;
+@class LSApplicationRecord, NSString;
 
 __attribute__((visibility("hidden")))
 @interface _LSExtensionPointRecordEnumerator : _LSRecordEnumerator
 {
+    NSString *_extensionPointID;
     struct vector<unsigned int, std::allocator<unsigned int>> _extensionIDs;
     LSApplicationRecord *_parentApplicationRecord;
 }
@@ -21,6 +22,7 @@ __attribute__((visibility("hidden")))
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)_getObject:(id *)arg1 atIndex:(unsigned long long)arg2 context:(struct LSContext *)arg3;
 - (_Bool)_prepareWithContext:(struct LSContext *)arg1 error:(id *)arg2;
+- (id)initWithExtensionPointIdentifier:(id)arg1;
 
 @end
 

@@ -6,18 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary;
+@class NSMutableDictionary, VisionCoreSceneNetInferenceNetworkDescriptor;
 
 __attribute__((visibility("hidden")))
 @interface _VNImageAnalyzerMultiDetectorSceneOperationPointsCache : NSObject
 {
-    unsigned long long _detectorModel;
+    VisionCoreSceneNetInferenceNetworkDescriptor *_inferenceNetworkDescriptor;
     NSMutableDictionary *_originatingRequestSpecifierToOperationPoints;
 }
 
 - (void).cxx_destruct;
 - (id)sceneLabelOperationPointsForOriginatingRequestSpecifier:(id)arg1 error:(id *)arg2;
-- (id)initWithDetectorModel:(unsigned long long)arg1;
+- (id)initWithInferenceNetworkDescriptor:(id)arg1;
 
 @end
 

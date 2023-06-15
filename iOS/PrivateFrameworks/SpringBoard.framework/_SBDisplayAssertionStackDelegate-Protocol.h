@@ -9,6 +9,6 @@
 @class SBDisplayAssertionPreferences, _SBDisplayAssertionStack;
 
 @protocol _SBDisplayAssertionStackDelegate <NSObject>
-- (void)assertionStack:(_SBDisplayAssertionStack *)arg1 activeAssertionPreferencesHaveChanged:(SBDisplayAssertionPreferences *)arg2;
+- (void)assertionStack:(_SBDisplayAssertionStack *)arg1 updatedAssertionPreferences:(SBDisplayAssertionPreferences *)arg2 oldPreferences:(SBDisplayAssertionPreferences *)arg3;
 @end
 

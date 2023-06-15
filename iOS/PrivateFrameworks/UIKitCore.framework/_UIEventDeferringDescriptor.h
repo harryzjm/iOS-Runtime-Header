@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 @class BKSHIDEventDeferringEnvironment, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UIEventDeferringDescriptor : NSObject <NSCopying>
+@interface _UIEventDeferringDescriptor : NSObject
 {
     _Bool _compatibility;
     unsigned int _predicateContextID;
@@ -22,6 +20,7 @@ __attribute__((visibility("hidden")))
     NSString *_displayHardwareIdentifier;
     NSString *_predicateSceneIdentityString;
     void *_predicateWindowPointer;
+    NSString *_targetSceneIdentityString;
     void *_targetWindowPointer;
 }
 

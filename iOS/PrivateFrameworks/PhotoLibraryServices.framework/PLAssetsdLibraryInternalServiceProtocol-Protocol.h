@@ -12,7 +12,7 @@
 - (void)mergeDuplicateAssetUuidSelection:(NSSet *)arg1 reply:(void (^)(_Bool, NSError *))arg2;
 - (void)assetsArePendingForDuplicateMergeProcessing:(NSSet *)arg1 reply:(void (^)(_Bool))arg2;
 - (void)processIdenticalDuplicatesWithProcessingType:(unsigned long long)arg1 reply:(void (^)(_Bool, NSError *))arg2;
-- (void)metricsForLibraryAtURL:(NSURL *)arg1 reply:(void (^)(NSDictionary *, unsigned long long, unsigned long long, NSError *))arg2;
+- (void)metricsForLibraryAtURL:(NSURL *)arg1 reply:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)coreAnalyticsLibrarySummaryDataWithCompletionHandler:(void (^)(_Bool, NSError *, NSDictionary *))arg1;
 - (void)forceRunBackgroundJobsOnLibraryPath:(NSString *)arg1 criteriaShortCode:(NSString *)arg2 completionHandler:(void (^)(_Bool, NSError *))arg3;
 - (void)setWidgetTimelineGeneratedForDisplaySize:(struct CGSize)arg1 completionHandler:(void (^)(_Bool, NSError *))arg2;

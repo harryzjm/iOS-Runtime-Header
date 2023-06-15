@@ -37,7 +37,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-- (void)_getPlaybackRequestEnvironmentWithBaseEnvironment:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)playbackRequestEnvironmentWithBaseEnvironment:(id)arg1 error:(id *)arg2;
 
 @end
 

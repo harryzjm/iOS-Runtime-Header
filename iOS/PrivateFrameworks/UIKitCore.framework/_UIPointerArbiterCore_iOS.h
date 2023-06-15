@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSMapTable, NSMutableArray, NSString, PSPointerClientController, PSPointerHoverRegion, PSPointerPortalSourceCollection, UIPointerRegion, UIPointerStyle, _UILumaTrackingBackdropView, _UIPortalView;
+@class NSMapTable, NSMutableArray, NSString, PSPointerClientController, PSPointerHoverRegion, PSPointerPortalSourceCollection, UIPointerRegion, UIPointerStyle, _UIAssertionController, _UILumaTrackingBackdropView, _UIPortalView;
 
 __attribute__((visibility("hidden")))
 @interface _UIPointerArbiterCore_iOS : NSObject
 {
     _Bool _hasRunningTransaction;
+    _Bool _updatesPausedViaAssertion;
     NSMutableArray *_pendingTransactionBlocks;
     UIPointerStyle *_activePointerStyle;
     UIPointerRegion *_activePointerRegion;
@@ -25,9 +26,12 @@ __attribute__((visibility("hidden")))
     _UILumaTrackingBackdropView *_samplingBackdropView;
     unsigned long long _transactionRevisionID;
     UIPointerRegion *_scrollingRegion;
+    _UIAssertionController *_pauseAssertionController;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool updatesPausedViaAssertion; // @synthesize updatesPausedViaAssertion=_updatesPausedViaAssertion;
+@property(retain, nonatomic) _UIAssertionController *pauseAssertionController; // @synthesize pauseAssertionController=_pauseAssertionController;
 @property(retain, nonatomic) UIPointerRegion *scrollingRegion; // @synthesize scrollingRegion=_scrollingRegion;
 @property(nonatomic) unsigned long long transactionRevisionID; // @synthesize transactionRevisionID=_transactionRevisionID;
 @property(retain, nonatomic) _UILumaTrackingBackdropView *samplingBackdropView; // @synthesize samplingBackdropView=_samplingBackdropView;
@@ -42,6 +46,8 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIPointerStyle *activePointerStyle; // @synthesize activePointerStyle=_activePointerStyle;
 @property(retain, nonatomic) NSMutableArray *pendingTransactionBlocks; // @synthesize pendingTransactionBlocks=_pendingTransactionBlocks;
 @property(nonatomic) _Bool hasRunningTransaction; // @synthesize hasRunningTransaction=_hasRunningTransaction;
+- (void)assertionActivationStateChangedToState:(_Bool)arg1 forType:(unsigned long long)arg2;
+- (_Bool)assertionActivationStateForType:(unsigned long long)arg1;
 - (void)backgroundLumaView:(id)arg1 didTransitionToLevel:(unsigned long long)arg2;
 - (void)_getPointerRegion:(inout id *)arg1 andStyle:(inout id *)arg2 atLocation:(struct CGPoint)arg3 inWindow:(id)arg4;
 - (id)_psPointerShapeFromUIPointerShape:(id)arg1 atScale:(double)arg2;
@@ -55,8 +61,10 @@ __attribute__((visibility("hidden")))
 - (void)pointerClientControllerClientInteractionStateDidChange:(id)arg1;
 - (void)pointerClientControllerWillDecelerate:(id)arg1 targetPointerPosition:(inout struct CGPoint *)arg2 velocity:(struct CGPoint)arg3 inContextID:(unsigned int)arg4 cursorRegionLookupRadius:(double)arg5 cursorRegionLookupResolution:(double)arg6 lookupConeAngle:(double)arg7;
 - (void)pointerClientController:(id)arg1 didInvalidatePortalSourceCollections:(id)arg2 matchMoveSources:(id)arg3;
+- (id)obtainPointerUpdatePauseAssertion;
 - (void)endScrollingWithRegion:(id)arg1;
 - (void)beginScrollingWithRegion:(id)arg1;
+- (void)_notifyPointerStateDidChange;
 @property(readonly, nonatomic) long long pointerState;
 - (void)_clearMatchMoveSourceForRegion:(id)arg1 immediately:(_Bool)arg2;
 - (void)_setActiveHoverRegion:(id)arg1 style:(id)arg2 forPointerRegion:(id)arg3 transactionID:(unsigned long long)arg4 completion:(CDUnknownBlockType)arg5;

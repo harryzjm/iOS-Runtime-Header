@@ -17,6 +17,8 @@
 @property(readonly, nonatomic) struct CGPoint positionConstraintConstant;
 @property(readonly, nonatomic) _Bool isChangingPlacement;
 @property(readonly, nonatomic) UIView *view;
+- (void)removeMatchMoveAnimationIfNeeded;
+- (UIView *)scrollTrackingView;
 - (void)finishSplitTransition;
 - (void)prepareForSplitTransition;
 - (UIInputViewSetNotificationInfo *)constructNotificationInfoForScrollWithMode:(unsigned long long)arg1;

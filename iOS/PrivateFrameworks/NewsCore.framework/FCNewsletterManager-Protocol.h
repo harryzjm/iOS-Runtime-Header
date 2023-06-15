@@ -28,11 +28,15 @@
 - (void)submitPersonalizationVector:(NTPBVersionedPersonalizationVector *)arg1 subscribedBundleChannelIDs:(NSSet *)arg2;
 - (_Bool)shouldSubmitPersonalizationVector;
 - (void)updateCacheWithNewsletterString:(NSString *)arg1 includeArray:(NSArray *)arg2;
+- (NFPromise *)getWebToken;
 - (NFPromise *)forceUpdateSubscription;
 - (NFPromise *)updateSubscription;
+- (void)optOutOfSports;
+- (void)optIntoSports;
 - (void)optOutOfIssues;
 - (void)unsubscribe;
-- (void)subscribe;
+- (void)subscribeFromPrivacyModalCTAWithCompletion:(void (^)(unsigned long long, NSError *))arg1;
+- (void)subscribeFromPrivacyModalCTA;
 - (_Bool)isOptedIntoIssues;
 - (_Bool)isEligibleForIssues;
 - (long long)issueOptinStatus;

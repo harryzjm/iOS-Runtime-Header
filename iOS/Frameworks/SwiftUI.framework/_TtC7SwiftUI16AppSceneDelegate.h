@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIResponder.h>
+#import <UIKitCore/UIResponder.h>
 
 @class MISSING_TYPE, UIWindow;
 
@@ -19,7 +19,6 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *scenePhase;
     MISSING_TYPE *sceneDelegateBox;
     MISSING_TYPE *sceneStorageValues;
-    MISSING_TYPE *presentedID;
     MISSING_TYPE *presentationDataType;
     MISSING_TYPE *presentationDataValue;
 }

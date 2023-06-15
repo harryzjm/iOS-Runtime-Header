@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UISpringTimingParameters.h>
+#import <UIKitCore/UISpringTimingParameters.h>
 
 @interface UISpringTimingParameters (Bridge)
 @property(readonly, nonatomic) double ts_settlingDuration;

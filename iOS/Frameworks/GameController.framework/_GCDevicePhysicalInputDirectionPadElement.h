@@ -10,20 +10,20 @@
 __attribute__((visibility("hidden")))
 @interface _GCDevicePhysicalInputDirectionPadElement
 {
+    unsigned long long _upValueFieldSlot;
+    unsigned long long _downValueFieldSlot;
+    unsigned long long _leftValueFieldSlot;
+    unsigned long long _rightValueFieldSlot;
     unsigned long long _xAxisSlot;
     unsigned long long _yAxisSlot;
     unsigned long long _upInputSlot;
     unsigned long long _downInputSlot;
     unsigned long long _leftInputSlot;
     unsigned long long _rightInputSlot;
-    long long _gamepadEventUpValueField;
-    long long _gamepadEventDownValueField;
-    long long _gamepadEventLeftValueField;
-    long long _gamepadEventRightValueField;
 }
 
-- (void)onCommitInvokeCallbacks:(unsigned long long)arg1;
-- (unsigned long long)handleGamepadEvent:(id)arg1 withTimestamp:(double)arg2;
++ (unsigned short)updateContextSize;
+- (_Bool)update:(void *)arg1 forGamepadEvent:(id)arg2 withTimestamp:(double)arg3;
 @property(readonly) id <GCLinearInput><GCPressedStateInput> right;
 @property(readonly) id <GCLinearInput><GCPressedStateInput> left;
 @property(readonly) id <GCLinearInput><GCPressedStateInput> down;
@@ -32,15 +32,18 @@ __attribute__((visibility("hidden")))
 @property(readonly) id <GCAxisInput> xAxis;
 @property(readonly, copy) NSString *description;
 - (_Bool)isEqualToElement:(id)arg1;
-- (id)initWith:(id)arg1 context:(id)arg2;
-- (id)initWithIdentifier:(id)arg1 configuration:(id)arg2;
+- (void)postCommit:(const void *)arg1 sender:(id)arg2;
+- (void)preCommit:(const void *)arg1 sender:(id)arg2;
+- (_Bool)update:(void *)arg1 forUsages:(unsigned long long)arg2 with:(id)arg3;
+- (id)initWithTemplate:(id)arg1 context:(id)arg2;
+- (id)initWithParameters:(id)arg1;
 
 // Remaining properties
-@property(readonly) NSSet *aliases;
+@property(readonly, copy) NSSet *aliases;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly) unsigned long long hash;
-@property(readonly) NSString *localizedName;
-@property(readonly) NSString *sfSymbolsName;
+@property(readonly, copy) NSString *localizedName;
+@property(readonly, copy) NSString *sfSymbolsName;
 @property(readonly) Class superclass;
 
 @end

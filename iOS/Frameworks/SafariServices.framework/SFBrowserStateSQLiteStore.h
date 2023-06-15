@@ -27,10 +27,10 @@ __attribute__((visibility("hidden")))
 - (void)_vacuum;
 - (void)setSecureDeleteEnabled:(_Bool)arg1;
 - (void)checkPointWriteAheadLog;
-- (_Bool)deleteAllSavedStates;
+- (void)deleteSavedStatesForProfileWithIdentifier:(id)arg1;
 - (void)removeTabWithTabData:(id)arg1;
 - (void)updateTabWithTabStateData:(id)arg1;
-- (_Bool)deleteTabStateWithBrowserWindowUUID:(id)arg1 andRemoveWindow:(_Bool)arg2;
+- (void)deleteTabStateWithBrowserWindowUUID:(id)arg1 andRemoveWindow:(_Bool)arg2;
 - (id)readSavedSessionStateDataForTabWithUUIDString:(id)arg1;
 - (id)_readSavedSessionStateDataForTabWithUUIDString:(id)arg1;
 - (void)updateBrowserWindowStateWithDictionary:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -56,7 +56,7 @@ __attribute__((visibility("hidden")))
 - (void)saveTabStateWithDictionary:(id)arg1;
 - (void)removeSavedSessionStateDataForTabsWithUUIDStrings:(id)arg1;
 - (void)_removeSavedSessionStateDataForTabsWithUUIDStrings:(id)arg1;
-- (void)deleteAllRecentlyClosedWindows;
+- (void)deleteRecentlyClosedWindowsWithProfileIdentifier:(id)arg1;
 @property(readonly, copy, nonatomic) NSArray *recentlyClosedWindows;
 @property(readonly, copy, nonatomic) NSArray *browserWindows;
 - (void)closeDatabase;
@@ -68,6 +68,8 @@ __attribute__((visibility("hidden")))
 - (int)_createTableForTabs;
 - (int)_createTableForTabSession;
 - (int)_recoverFromDatabaseInconsistencyFromSchemaVersion3Migration;
+- (int)_migrateToSchemaVersion_8;
+- (int)_migrateToSchemaVersion_7;
 - (int)_migrateToSchemaVersion_6;
 - (int)_migrateToSchemaVersion_5;
 - (int)_migrateToSchemaVersion_3;

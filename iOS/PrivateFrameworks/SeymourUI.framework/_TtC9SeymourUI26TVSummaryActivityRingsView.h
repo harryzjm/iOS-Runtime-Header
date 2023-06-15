@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class MISSING_TYPE;
 
@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface _TtC9SeymourUI26TVSummaryActivityRingsView : UIView
 {
     MISSING_TYPE *ringsView;
+    MISSING_TYPE *headerLabelStack;
     MISSING_TYPE *moveLabel;
     MISSING_TYPE *exerciseLabel;
     MISSING_TYPE *standLabel;

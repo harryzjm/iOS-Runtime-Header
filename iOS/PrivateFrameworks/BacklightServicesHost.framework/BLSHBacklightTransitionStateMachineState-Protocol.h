@@ -6,10 +6,12 @@
 
 #import <BacklightServicesHost/NSObject-Protocol.h>
 
-@class BLSHBacklightEnvironmentPresentation;
+@class BLSHBacklightEnvironmentPresentation, NSString;
 
 @protocol BLSHBacklightTransitionStateMachineState <NSObject>
 @property(readonly) BLSHBacklightEnvironmentPresentation *presentation;
 @property(readonly) long long displayMode;
+- (NSString *)bls_shortLoggingString;
+- (NSString *)bls_loggingString;
 @end
 

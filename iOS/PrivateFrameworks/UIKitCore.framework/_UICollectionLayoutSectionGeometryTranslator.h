@@ -13,11 +13,8 @@ __attribute__((visibility("hidden")))
     _Bool _layoutRTL;
     struct CGPoint _contentFrameOffset;
     struct NSDirectionalEdgeInsets _sectionInsets;
-    struct CGRect _contentFrame;
-    struct CGRect _effectiveFrame;
-    struct CGSize _primaryContentSize;
-    struct CGSize _contentSizeIncludingSupplementaries;
     struct CGRect _primaryContentFrame;
+    struct CGRect _contentFrameIncludingAuxiliaries;
 }
 
 - (id)description;

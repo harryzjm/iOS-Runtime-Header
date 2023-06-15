@@ -10,6 +10,7 @@
 @protocol PKLaunchRequest;
 
 @protocol PKPlugInPrivate <PKPlugIn>
+@property(readonly) unsigned int extensionPointPlatform;
 @property(copy) NSString *sandboxProfile;
 @property(readonly) NSArray *launchPersonas;
 @property(copy) NSArray *preferredLanguages;

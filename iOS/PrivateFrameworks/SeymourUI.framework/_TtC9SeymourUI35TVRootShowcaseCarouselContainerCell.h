@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UICollectionViewCell.h>
+#import <UIKitCore/UICollectionViewCell.h>
 
 @class MISSING_TYPE, NSArray;
 
@@ -23,11 +23,14 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *onImpressionableBoundsChange;
     MISSING_TYPE *onVisibleBoundsChange;
     MISSING_TYPE *itemCellIdentifier;
+    MISSING_TYPE *isUpdatingImpression;
+    MISSING_TYPE *impressionElements;
     MISSING_TYPE *leftArrowButton;
     MISSING_TYPE *rightArrowButton;
 }
 
 - (void).cxx_destruct;
+- (void)didMoveToWindow;
 - (void)layoutSubviews;
 - (void)prepareForReuse;
 - (id)initWithCoder:(id)arg1;

@@ -6,7 +6,7 @@
 
 @protocol NSFastEnumeration;
 
-@protocol GDTripleIteratorSubEntityRenderer
+@protocol GDTripleIteratorSubentityRenderer
 - (id)initWithRelationshipIdTriplesIterator:(id <NSFastEnumeration>)arg1;
 @end
 

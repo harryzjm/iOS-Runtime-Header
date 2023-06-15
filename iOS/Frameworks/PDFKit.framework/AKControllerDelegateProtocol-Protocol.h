@@ -6,7 +6,7 @@
 
 #import <PDFKit/NSObject-Protocol.h>
 
-@class AKAnnotation, AKController, AKPageModelController, CALayer, NSArray, NSData, NSIndexSet, NSString, NSUndoManager, UIGestureRecognizer, UIView, UIViewController;
+@class AKAnnotation, AKController, AKPageModelController, CALayer, NSArray, NSData, NSIndexSet, NSString, NSUndoManager, UIAutoFillTextSuggestion, UIGestureRecognizer, UIView, UIViewController;
 
 @protocol AKControllerDelegateProtocol <NSObject>
 - (void)updateDrawingGestureRecognizer:(UIGestureRecognizer *)arg1 forPageAtIndex:(unsigned long long)arg2 withPriority:(_Bool)arg3 forAnnotationController:(AKController *)arg4;
@@ -44,6 +44,7 @@
 - (CALayer *)layerContainingQuickBackgroundForLoupeOnOverlayAtPageIndex:(unsigned long long)arg1 forAnnotationController:(AKController *)arg2;
 - (_Bool)shouldPlaceProposedFormElementAtRect:(struct CGRect)arg1 onOverlayAtPageIndex:(unsigned long long)arg2 forAnnotationController:(AKController *)arg3;
 - (_Bool)shouldPlaceFormElementAtPoint:(struct CGPoint)arg1 onOverlayAtPageIndex:(unsigned long long)arg2 forAnnotationController:(AKController *)arg3;
+- (void)handleTextSuggestion:(UIAutoFillTextSuggestion *)arg1 forAnnotationController:(AKController *)arg2 completionHandler:(void (^)(NSSet *))arg3;
 - (_Bool)controllerShouldDetectFormElements:(AKController *)arg1;
 - (_Bool)handleBackTabInTextEditorForAnnotation:(AKAnnotation *)arg1 forAnnotationController:(AKController *)arg2;
 - (_Bool)handleTabInTextEditorForAnnotation:(AKAnnotation *)arg1 forAnnotationController:(AKController *)arg2;

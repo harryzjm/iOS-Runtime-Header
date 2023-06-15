@@ -38,7 +38,8 @@ struct __CFRuntimeBase {
 struct __CFString;
 
 struct __DDQueryOffset {
-    unsigned int :32;
+    unsigned int :16;
+    unsigned int :16;
     unsigned int :32;
 };
 

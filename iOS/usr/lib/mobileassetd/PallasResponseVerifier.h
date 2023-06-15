@@ -11,10 +11,10 @@ __attribute__((visibility("hidden")))
 {
     double _issuanceDate;
     struct __SecKey *_leafPublicKey;
-    const struct __CFString *_keyAlg;
+    struct __CFString *_keyAlg;
 }
 
-@property(readonly) const struct __CFString *keyAlg; // @synthesize keyAlg=_keyAlg;
+@property(readonly) struct __CFString *keyAlg; // @synthesize keyAlg=_keyAlg;
 @property(readonly) struct __SecKey *leafPublicKey; // @synthesize leafPublicKey=_leafPublicKey;
 @property(readonly) double issuanceDate; // @synthesize issuanceDate=_issuanceDate;
 - (_Bool)verifyResponse:(id)arg1 signature:(id)arg2 error:(id *)arg3;

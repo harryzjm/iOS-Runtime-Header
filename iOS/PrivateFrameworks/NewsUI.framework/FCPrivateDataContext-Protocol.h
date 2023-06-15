@@ -6,7 +6,7 @@
 
 #import <NewsUI/NSObject-Protocol.h>
 
-@class FCAudioPlaylist, FCIssueReadingHistory, FCKeyValueStore, FCNetworkBehaviorMonitor, FCPersonalizationData, FCPrivateChannelMembershipController, FCReadingHistory, FCReadingList, FCShortcutList, FCSubscriptionList, FCTagSettings, FCUserEventHistory, FCUserInfo, NSString;
+@class FCAudioPlaylist, FCIssueReadingHistory, FCKeyValueStore, FCNetworkBehaviorMonitor, FCPersonalizationData, FCPrivateChannelMembershipController, FCPuzzleHistory, FCPuzzleTypeSettings, FCReadingHistory, FCReadingList, FCShortcutList, FCSubscriptionList, FCTagSettings, FCUserEventHistory, FCUserInfo, NSString;
 @protocol FCPrivateDataContextInternal, FCPushNotificationHandling;
 
 @protocol FCPrivateDataContext <NSObject>
@@ -21,6 +21,8 @@
 @property(readonly, nonatomic) FCUserEventHistory *userEventHistory;
 @property(readonly, nonatomic) FCAudioPlaylist *audioPlaylist;
 @property(readonly, nonatomic) FCShortcutList *shortcutList;
+@property(readonly, nonatomic) FCPuzzleTypeSettings *puzzleTypeSettings;
+@property(readonly, nonatomic) FCPuzzleHistory *puzzleHistory;
 @property(readonly, nonatomic) FCReadingList *readingList;
 @property(readonly, nonatomic) FCReadingHistory *readingHistory;
 @property(readonly, nonatomic) FCPrivateChannelMembershipController *privateChannelMembershipController;

@@ -12,10 +12,12 @@ __attribute__((visibility("hidden")))
 @interface _TtC15PhotosUIPrivate40PUWallpaperShuffleConfigurationViewModel : NSObject
 {
     MISSING_TYPE *photoLibrary;
+    MISSING_TYPE *contentMode;
     MISSING_TYPE *posterConfiguration;
     MISSING_TYPE *finishHandler;
     MISSING_TYPE *cancelHandler;
     MISSING_TYPE *showAssetPreviews;
+    MISSING_TYPE *centerMedia;
     MISSING_TYPE *presentationState;
     MISSING_TYPE *$__lazy_storage_$_assetPreviewViewModel;
     MISSING_TYPE *$__lazy_storage_$_smartAlbumDataSource;
@@ -23,7 +25,6 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *_availableSmartAlbums;
     MISSING_TYPE *_isFinishingWithFeaturedPhotos;
     MISSING_TYPE *peoplePickerHandler;
-    MISSING_TYPE *selectedPersonLocalIdentifiers;
     MISSING_TYPE *$__lazy_storage_$_peoplePickerDataSource;
     MISSING_TYPE *availableShuffleFrequencies;
     MISSING_TYPE *_selectedShuffleFrequencyType;

@@ -25,6 +25,7 @@
 - (_Bool)isEqualForUnitTests:(id)arg1;
 - (id)childrenOrderedByMipmapLevel;
 - (id)childWithMipmapLevel:(long long)arg1;
+- (_Bool)providesBookmarkTitleForChild:(id)arg1;
 - (id)fullyQualifiedRuntimeNameProvidingItemForCARCompiler;
 - (id)effectiveModificationDateForCARCompiler;
 - (CDStruct_2a4d9400)taggingSupport;

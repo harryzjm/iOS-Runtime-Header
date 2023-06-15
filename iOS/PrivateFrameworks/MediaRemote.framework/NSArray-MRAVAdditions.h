@@ -9,6 +9,8 @@
 @class NSString;
 
 @interface NSArray (MRAVAdditions)
+@property(readonly, nonatomic) NSArray *mr_redactClusterMembers;
+@property(readonly, nonatomic) NSArray *mr_allOutputDevices;
 - (id)mr_arrayByRemovingLocalEndpoint;
 - (_Bool)mr_isEqualToOutputDevicesArray:(id)arg1;
 - (int)mr_ifDisabledWhyDisabled:(unsigned int)arg1;

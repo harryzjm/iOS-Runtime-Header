@@ -6,51 +6,48 @@
 
 #import <StocksCore/NSObject-Protocol.h>
 
-@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLArticleContentExpiration, COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats, COMAPPLEFELDSPARPROTOCOLLIVERPOOLTagMetadata, COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector, FCFeedPersonalizedItemScoreProfile, NSArray, NSDate, NSString;
+@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLArticleContentExpiration, COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats, COMAPPLEFELDSPARPROTOCOLLIVERPOOLTagMetadata, FCFeedPersonalizedItemScoreProfile, NSArray, NSData, NSDate, NSString;
 
 @protocol FCFeedPersonalizingItem <NSObject>
-@property(nonatomic, retain) FCFeedPersonalizedItemScoreProfile *scoreProfile;
-@property(nonatomic, readonly) COMAPPLEFELDSPARPROTOCOLLIVERPOOLTagMetadata *publisherTagMetadata;
-@property(nonatomic, readonly) NSArray *topics;
+@property(retain) FCFeedPersonalizedItemScoreProfile *scoreProfile;
+@property(readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLTagMetadata *publisherTagMetadata;
+@property(readonly, copy, nonatomic) NSArray *topics;
+@property(readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats *publisherConversionStats;
+@property(readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats *globalConversionStats;
+@property(readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *publisherCohorts;
+@property(readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *globalCohorts;
+@property(readonly, nonatomic, getter=isHiddenFromAutoFavorites) _Bool hiddenFromAutoFavorites;
+@property(readonly, nonatomic) _Bool hasThumbnail;
+@property(readonly, nonatomic) _Bool hasVideo;
+@property(readonly, nonatomic, getter=isPaid) _Bool paid;
+@property(readonly, nonatomic, getter=isANF) _Bool anf;
+@property(readonly, nonatomic) _Bool hasGlobalUserFeedback;
+@property(readonly, nonatomic) double globalUserFeedback;
+@property(readonly, copy, nonatomic) NSArray *topicIDs;
+@property(readonly, copy, nonatomic) NSString *publisherID;
+@property(readonly, nonatomic) unsigned long long halfLife;
+@property(readonly, copy, nonatomic) NSDate *publishDate;
+@property(readonly, copy, nonatomic) NSString *itemID;
+@property(readonly, copy, nonatomic) NSString *sourceFeedID;
 - (void)enumerateTopicConversionStatsWithBlock:(void (^)(NSString *, COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats *))arg1;
-@property(nonatomic, readonly) COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats *publisherConversionStats;
-@property(nonatomic, readonly) COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats *globalConversionStats;
 - (void)enumerateTopicCohortsWithBlock:(void (^)(NSString *, COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *))arg1;
-@property(nonatomic, readonly) COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *publisherCohorts;
-@property(nonatomic, readonly) COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *globalCohorts;
-- (_Bool)isHiddenFromAutoFavorites;
-@property(nonatomic, readonly) _Bool hasThumbnail;
-@property(nonatomic, readonly) _Bool hasVideo;
-- (_Bool)isPaid;
-- (_Bool)isANF;
-@property(nonatomic, readonly) _Bool hasGlobalUserFeedback;
-@property(nonatomic, readonly) double globalUserFeedback;
-@property(nonatomic, readonly) NSArray *topicIDs;
-@property(nonatomic, readonly) NSString *publisherID;
-@property(nonatomic, readonly) unsigned long long halfLife;
-@property(nonatomic, readonly) NSDate *publishDate;
-@property(nonatomic, readonly) NSString *itemID;
-@property(nonatomic, readonly) NSString *sourceFeedID;
 
 @optional
-@property(nonatomic, readonly) COMAPPLEFELDSPARPROTOCOLLIVERPOOLArticleContentExpiration *expirationData;
-@property(nonatomic, readonly) COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector *personalizationVectorAlt;
-@property(nonatomic, readonly) COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector *personalizationVector;
-@property(nonatomic, readonly) unsigned long long halfLifeOverride;
-@property(nonatomic, readonly) NSArray *iAdCategories;
-@property(nonatomic, readonly) _Bool webConverted;
-@property(nonatomic, readonly) _Bool reduceVisibility;
-@property(nonatomic, readonly) _Bool isEvergreen;
-@property(nonatomic, readonly) _Bool hasAudioTrack;
-@property(nonatomic, readonly) _Bool isFeatureCandidate;
-@property(nonatomic, readonly) _Bool isFeatured;
-@property(nonatomic, readonly) long long bodyTextLength;
-- (_Bool)isBundlePaid;
-
-// Remaining properties
-@property(nonatomic, readonly) _Bool anf;
-@property(nonatomic, readonly) _Bool bundlePaid;
-@property(nonatomic, readonly) _Bool hiddenFromAutoFavorites;
-@property(nonatomic, readonly) _Bool paid;
+@property(readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLArticleContentExpiration *expirationData;
+@property(readonly, nonatomic) NSData *thumbnailPerceptualHash;
+@property(readonly, copy, nonatomic) NSString *language;
+@property(readonly, copy, nonatomic) NSString *clusterID;
+@property(readonly, nonatomic) NSData *float16FullBodyEncoding;
+@property(readonly, nonatomic) NSData *float16TitleEncoding;
+@property(readonly, nonatomic) unsigned long long halfLifeOverride;
+@property(readonly, copy, nonatomic) NSArray *iAdCategories;
+@property(readonly, nonatomic) _Bool webConverted;
+@property(readonly, nonatomic) _Bool reduceVisibility;
+@property(readonly, nonatomic) _Bool isEvergreen;
+@property(readonly, nonatomic) _Bool hasAudioTrack;
+@property(readonly, nonatomic) _Bool isFeatureCandidate;
+@property(readonly, nonatomic) _Bool isFeatured;
+@property(readonly, nonatomic) long long bodyTextLength;
+@property(readonly, nonatomic, getter=isBundlePaid) _Bool bundlePaid;
 @end
 

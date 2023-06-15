@@ -14,12 +14,16 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *legibilityBlurMaskLayer;
     MISSING_TYPE *cornerBlurView;
     MISSING_TYPE *cornerBlurMaskLayer;
+    MISSING_TYPE *$__lazy_storage_$_legibilityGradientLayerDelegate;
+    MISSING_TYPE *$__lazy_storage_$_legibilityBlurMaskLayerDelegate;
+    MISSING_TYPE *$__lazy_storage_$_cornerBlurMaskLayerDelegate;
     MISSING_TYPE *protectionHeight;
     MISSING_TYPE *cornerRadius;
 }
 
 - (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)actionForLayer:(id)arg1 forKey:(id)arg2;
 - (struct CGSize)vui_layoutSubviews:(struct CGSize)arg1 computationOnly:(_Bool)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)init;

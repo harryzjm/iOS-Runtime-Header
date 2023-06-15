@@ -6,9 +6,11 @@
 
 #import <Silex/NSObject-Protocol.h>
 
+@class NSString;
 @protocol SXTextSelecting;
 
 @protocol SXTextSelectionManager <NSObject>
+@property(readonly, copy, nonatomic) NSString *selectedText;
 - (void)addTextSelecting:(id <SXTextSelecting>)arg1;
 - (void)clearSelection;
 @end

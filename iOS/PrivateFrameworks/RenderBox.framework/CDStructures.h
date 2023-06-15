@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSData, RBDisplayListInterpolator;
+@class CADisplayLink, NSData, NSThread, RBDisplayListInterpolator, RBImageQueueContents;
 
 #pragma mark Function Pointers
 
@@ -29,60 +29,83 @@ struct CGSize {
 
 struct Contents;
 
-struct DisplayListPredicate {
-    struct vector<RB::DisplayListPredicate::Term, 1UL, unsigned int> _terms;
-};
-
 struct Document;
 
-struct Invertible {
-    struct DisplayListPredicate predicate;
-    _Bool inverts_result;
+struct RBPath {
+    void *info;
+    struct RBPathCallbacks *callbacks;
 };
 
-struct Term;
+struct RBPathCallbacks;
+
+struct Surface;
 
 struct _CAImageQueue;
 
-struct atomic<_opaque_pthread_t *> {
-    struct __cxx_atomic_impl<_opaque_pthread_t *, std::__cxx_atomic_base_impl<_opaque_pthread_t *>> {
-        _Atomic struct _opaque_pthread_t *__a_value;
-    } __a_;
-};
-
 struct cf_ptr<_CAImageQueue *> {
     struct _CAImageQueue *_p;
+};
+
+struct cf_ptr<const __CFDictionary *> {
+    struct __CFDictionary *_p;
+};
+
+struct cf_ptr<const __CFString *> {
+    struct __CFString *_p;
+};
+
+struct objc_ptr<CADisplayLink *> {
+    CADisplayLink *_p;
 };
 
 struct objc_ptr<NSData *> {
     NSData *_p;
 };
 
+struct objc_ptr<NSThread *> {
+    NSThread *_p;
+};
+
 struct objc_ptr<RBDisplayListInterpolator *> {
     RBDisplayListInterpolator *_p;
 };
 
-struct objc_ptr<id<RBDisplayListContents>> {
+struct objc_ptr<RBImageQueueContents *> {
+    RBImageQueueContents *_p;
+};
+
+struct objc_ptr<id<_RBDisplayListContents>> {
     id _p;
 };
 
-struct unique_ptr<RB::DisplayList::Contents, RB::Destroy<RB::DisplayList::Contents>> {
-    struct __compressed_pair<RB::DisplayList::Contents *, RB::Destroy<RB::DisplayList::Contents>> {
-        struct Contents *__value_;
-    } __ptr_;
+struct objc_ptr<id> {
+    id _p;
+};
+
+struct os_unfair_lock_s {
+    unsigned int _os_unfair_lock_opaque;
+};
+
+struct path_ptr {
+    struct RBPath _p;
+};
+
+struct refcounted_ptr<RB::DisplayList::Contents> {
+    struct Contents *_p;
+};
+
+struct refcounted_ptr<RB::Surface> {
+    struct Surface *_p;
+};
+
+struct spin_lock {
+    struct os_unfair_lock_s _lock;
 };
 
 struct unique_ptr<RB::XML::Document, std::default_delete<RB::XML::Document>> {
     struct __compressed_pair<RB::XML::Document *, std::default_delete<RB::XML::Document>> {
         struct Document *__value_;
     } __ptr_;
-};
-
-struct vector<RB::DisplayListPredicate::Term, 1UL, unsigned int> {
-    unsigned char _p[24];
-    struct Term *_p;
-    unsigned int _size;
-    unsigned int _capacity;
 };
 
 #pragma mark Typedef'd Structures

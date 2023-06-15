@@ -6,8 +6,11 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
+@class MISSING_TYPE;
+
 @interface _TtC11WeatherCore21StubSyncedDataManager : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *defaultSyncedData;
 }
 
 @end

@@ -10,6 +10,7 @@
 - (unsigned short)localizationIdentifierForName:(NSString *)arg1;
 - (NSDictionary *)localizations;
 - (NSDictionary *)appearances;
+- (NSString *)nameForLocalizationIdentifier:(unsigned short)arg1;
 - (NSString *)nameForAppearanceIdentifier:(unsigned short)arg1;
 - (unsigned short)appearanceIdentifierForName:(NSString *)arg1;
 - (NSArray *)mappedAliases;

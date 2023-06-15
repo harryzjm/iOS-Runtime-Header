@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AVSystemController, CHHapticEngine, NSDictionary, NSString, NSUserDefaults;
+@class AVSystemController, CHHapticEngine, NSDate, NSDictionary, NSString, NSUserDefaults;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -16,15 +16,20 @@ __attribute__((visibility("hidden")))
     NSUserDefaults *_soundsDefaults;
     int _ringerStateNotifyToken;
     _Bool _isActive;
+    NSDate *_engineStartDate;
+    double _engineActiveDuration;
+    unsigned long long _engineStartCount;
+    unsigned long long _actionCount;
     AVSystemController *_avSystemController;
     float _volume;
     _Bool _isFeedbackDisabled;
     _Bool _isAudioOnly;
-    _Bool _isEngineRunning;
+    _Bool _usesCoreHapticsForAudioOnly;
     CHHapticEngine *_engine;
     NSDictionary *_players;
     NSDictionary *_systemSounds;
     double _lastActionTime;
+    _Bool __isEngineRunning;
     long long __mode;
 }
 

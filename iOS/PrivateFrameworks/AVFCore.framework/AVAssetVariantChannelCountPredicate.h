@@ -4,27 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSPredicate.h>
-
-@class NSDictionary, NSPredicateOperator;
-
 __attribute__((visibility("hidden")))
-@interface AVAssetVariantChannelCountPredicate : NSPredicate
+@interface AVAssetVariantChannelCountPredicate
 {
-    long long _channelcount;
-    NSDictionary *_mediaSelectionOptionPlist;
-    NSPredicateOperator *_operator;
 }
 
 + (_Bool)supportsSecureCoding;
-- (void)dealloc;
-- (id)description;
-- (id)predicateFormat;
-- (void)acceptVisitor:(id)arg1 flags:(unsigned long long)arg2;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (_Bool)evaluateWithObject:(id)arg1 substitutionVariables:(id)arg2;
+- (id)valueForAlternate:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (void)encodeWithCoder:(id)arg1;
 - (id)initWithChannelCount:(long long)arg1 mediaSelectionOption:(id)arg2 operatorType:(unsigned long long)arg3;
 
 @end

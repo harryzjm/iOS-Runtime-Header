@@ -11,6 +11,7 @@
 @protocol CUIStructuredThemeStorage <NSObject>
 - (NSDictionary *)catalogGlobals;
 - (unsigned int)authoredWithSchemaVersion;
+- (unsigned int)thinnedWithCoreUIVersion;
 - (unsigned int)distilledInCoreUIVersion;
 - (unsigned int)documentFormatVersion;
 - (_Bool)canGetRenditionWithKey:(const struct _renditionkeytoken *)arg1;

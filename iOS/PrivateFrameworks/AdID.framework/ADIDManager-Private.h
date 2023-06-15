@@ -16,6 +16,7 @@
 - (_Bool)reconcileInProgress;
 - (void)checkOnTask:(id)arg1 activity:(id)arg2;
 - (_Bool)runTask:(id)arg1;
+- (_Bool)scheduleDailyUpdate;
 - (_Bool)scheduleReconciliation:(double)arg1;
 - (void)cancelPendingReconcile;
 - (void)handleAccountChange:(CDUnknownBlockType)arg1;
@@ -26,6 +27,7 @@
 - (void)performOperationWhenNotReconciling:(CDUnknownBlockType)arg1;
 - (id)saveAndNotifyIfNecessary;
 - (id)save;
+- (void)saveDataForPCD;
 - (void)incrementMonthlyResetCount;
 - (void)notifyActiveRecordChanged;
 - (void)deleteRecords:(CDUnknownBlockType)arg1;

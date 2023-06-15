@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     _Bool _shouldRecoverConnection;
     id <LAUIDelegate> _uiDelegate;
     NSUUID *_uuid;
+    NSString *_proxyId;
     NSError *_permanentError;
     NSXPCConnection *_serverConnection;
     NSObject<LAContextXPC> *_remoteContext;
@@ -40,6 +41,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSObject<LAContextXPC> *remoteContext; // @synthesize remoteContext=_remoteContext;
 @property(readonly, nonatomic) NSXPCConnection *serverConnection; // @synthesize serverConnection=_serverConnection;
 @property(retain) NSError *permanentError; // @synthesize permanentError=_permanentError;
+@property(retain, nonatomic) NSString *proxyId; // @synthesize proxyId=_proxyId;
 @property(retain, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 @property(nonatomic) __weak id <LAUIDelegate> uiDelegate; // @synthesize uiDelegate=_uiDelegate;
 - (void)bootstrapServiceType:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -87,7 +89,7 @@ __attribute__((visibility("hidden")))
 - (void)allowTransferToProcess:(int)arg1 receiverAuditTokenData:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)_recoverConnection;
 - (void)_scheduleRecovery;
-- (void)_handleConnectionResult:(id)arg1 uuid:(id)arg2 error:(id)arg3;
+- (void)_handleConnectionResult:(id)arg1 uuid:(id)arg2 proxyId:(id)arg3 error:(id)arg4;
 - (void)_synchronousRemoteObjectProxy:(const unsigned int *)arg1 performCall:(CDUnknownBlockType)arg2;
 - (void)_connectToServerWithRecovery:(_Bool)arg1 userSession:(const unsigned int *)arg2 legacyService:(_Bool)arg3;
 - (void)dealloc;

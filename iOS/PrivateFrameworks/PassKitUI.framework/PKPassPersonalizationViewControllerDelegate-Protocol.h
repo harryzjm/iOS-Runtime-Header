@@ -9,6 +9,6 @@
 @class PKPass, PKPassPersonalizationViewController;
 
 @protocol PKPassPersonalizationViewControllerDelegate <NSObject>
-- (void)passPersonalizationViewController:(PKPassPersonalizationViewController *)arg1 didFinishPersonalizingPass:(PKPass *)arg2;
+- (void)passPersonalizationViewController:(PKPassPersonalizationViewController *)arg1 didFinishPersonalizingPass:(PKPass *)arg2 success:(_Bool)arg3;
 @end
 

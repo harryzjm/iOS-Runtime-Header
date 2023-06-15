@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface PUDisplayTileTransform : NSObject
 {
     _Bool _hasUserInput;
+    _Bool _isZoomedOut;
     NSString *_userInputOriginIdentifier;
     double __initialScale;
     struct CGSize _transformPadding;
@@ -22,6 +23,7 @@ __attribute__((visibility("hidden")))
 
 + (id)displayTileTransformWithModelTileTransform:(id)arg1 initialScale:(double)arg2 initialSize:(struct CGSize)arg3 displaySize:(struct CGSize)arg4 secondaryDisplayTileTransform:(id)arg5;
 - (void).cxx_destruct;
+@property(nonatomic, setter=_setZoomedOut:) _Bool isZoomedOut; // @synthesize isZoomedOut=_isZoomedOut;
 @property(nonatomic, setter=_setDisplaySize:) struct CGSize _displaySize; // @synthesize _displaySize=__displaySize;
 @property(nonatomic, setter=_setInitialSize:) struct CGSize _initialSize; // @synthesize _initialSize=__initialSize;
 @property(nonatomic, setter=_setInitialScale:) double _initialScale; // @synthesize _initialScale=__initialScale;
@@ -32,7 +34,7 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
-- (id)newDisplayTileTransformWithUserAffineTransform:(struct CGAffineTransform)arg1 userInputOriginIdentifier:(id)arg2;
+- (id)newDisplayTileTransformWithUserAffineTransform:(struct CGAffineTransform)arg1 userInputOriginIdentifier:(id)arg2 isZoomedOut:(_Bool)arg3;
 @property(readonly, nonatomic) PUModelTileTransform *modelTileTransform;
 
 @end

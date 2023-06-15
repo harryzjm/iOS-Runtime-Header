@@ -12,7 +12,6 @@
 {
     MISSING_TYPE *playbackConductor;
     MISSING_TYPE *readingHistory;
-    MISSING_TYPE *commandCenter;
 }
 
 @end

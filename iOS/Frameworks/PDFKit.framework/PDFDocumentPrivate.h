@@ -33,6 +33,9 @@ __attribute__((visibility("hidden")))
     _Bool respondsToClassForPage;
     _Bool respondsToClassForAnnotationType;
     _Bool respondsToClassForAnnotationClass;
+    _Bool respondsToShouldReadAKInkAnnotations;
+    _Bool respondsToHandleTabFrom;
+    _Bool respondsToDidReceiveAnalysis;
     unsigned long long pageCount;
     int majorVersion;
     int minorVersion;
@@ -73,6 +76,7 @@ __attribute__((visibility("hidden")))
     _Bool documentChanged;
     _Bool documentHasBurnInAnnotations;
     unsigned long long documentRedactionCount;
+    _Bool documentHasPageWithApplicationData;
     struct {
         _Bool pagesAdded;
         _Bool blankPagesAdded;

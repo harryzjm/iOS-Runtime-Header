@@ -35,7 +35,6 @@ __attribute__((visibility("hidden")))
 @property __weak id <TLKObserver> observer; // @synthesize observer;
 @property(readonly, copy) NSString *description;
 - (id)attributedString;
-- (id)viewForLastBaselineLayout;
 - (struct CGRect)containerView:(id)arg1 layoutFrameForArrangedSubview:(id)arg2 withProposedFrame:(struct CGRect)arg3;
 - (void)updateRoundedCornerLabels:(id)arg1;
 - (void)updateIcons:(id)arg1;

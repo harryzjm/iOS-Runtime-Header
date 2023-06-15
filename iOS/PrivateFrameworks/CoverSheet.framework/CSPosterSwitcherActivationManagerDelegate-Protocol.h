@@ -9,6 +9,7 @@
 @class CSPosterSwitcherActivationManager, NSString;
 
 @protocol CSPosterSwitcherActivationManagerDelegate <NSObject>
+- (_Bool)userPresenceDetectedSinceWake;
 - (void)posterSwitcherActivationManager:(CSPosterSwitcherActivationManager *)arg1 didChangeToCoachingText:(NSString *)arg2;
 @end
 

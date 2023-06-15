@@ -6,7 +6,7 @@
 
 #import <NewsToday/NSObject-Protocol.h>
 
-@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLArticleContentExpiration, COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats, COMAPPLEFELDSPARPROTOCOLLIVERPOOLTagMetadata, COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector, FCFeedPersonalizedItemScoreProfile, NSArray, NSDate, NSString;
+@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLArticleContentExpiration, COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats, COMAPPLEFELDSPARPROTOCOLLIVERPOOLTagMetadata, FCFeedPersonalizedItemScoreProfile, NSArray, NSData, NSDate, NSString;
 
 @protocol FCFeedPersonalizingItem <NSObject>
 @property(retain) FCFeedPersonalizedItemScoreProfile *scoreProfile;
@@ -34,8 +34,11 @@
 
 @optional
 @property(readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLArticleContentExpiration *expirationData;
-@property(readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector *personalizationVectorAlt;
-@property(readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector *personalizationVector;
+@property(readonly, nonatomic) NSData *thumbnailPerceptualHash;
+@property(readonly, copy, nonatomic) NSString *language;
+@property(readonly, copy, nonatomic) NSString *clusterID;
+@property(readonly, nonatomic) NSData *float16FullBodyEncoding;
+@property(readonly, nonatomic) NSData *float16TitleEncoding;
 @property(readonly, nonatomic) unsigned long long halfLifeOverride;
 @property(readonly, copy, nonatomic) NSArray *iAdCategories;
 @property(readonly, nonatomic) _Bool webConverted;

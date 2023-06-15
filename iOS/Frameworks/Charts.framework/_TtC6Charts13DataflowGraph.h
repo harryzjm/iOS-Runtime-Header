@@ -10,11 +10,8 @@
 
 @interface _TtC6Charts13DataflowGraph : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *graph;
-    MISSING_TYPE *node2id;
-    MISSING_TYPE *id2node;
+    MISSING_TYPE *dag;
     MISSING_TYPE *lastRunMaxSourceTimestamp;
-    MISSING_TYPE *nextID;
 }
 
 @end

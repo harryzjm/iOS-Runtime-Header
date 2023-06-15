@@ -13,11 +13,16 @@
     MISSING_TYPE *_deviceState;
     MISSING_TYPE *_siriInteractionType;
     MISSING_TYPE *_isNavigationMode;
+    MISSING_TYPE *_treatRandomAsFirst;
     MISSING_TYPE *_assistantID;
     MISSING_TYPE *_person;
     MISSING_TYPE *_interactionID;
     MISSING_TYPE *_restrictions;
+    MISSING_TYPE *_multiUserContext;
     MISSING_TYPE *_contentRatingRestrictions;
+    MISSING_TYPE *_userGroundingNeeded;
+    MISSING_TYPE *_resultCandidateID;
+    MISSING_TYPE *_isPhoneCallActive;
     MISSING_TYPE *_conversationContext;
 }
 

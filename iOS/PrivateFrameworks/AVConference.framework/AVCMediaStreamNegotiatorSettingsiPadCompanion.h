@@ -4,18 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSMutableSet;
-
 __attribute__((visibility("hidden")))
 @interface AVCMediaStreamNegotiatorSettingsiPadCompanion
 {
-    NSArray *_hdrModePixelFormats;
-    NSMutableSet *_hdrModesSupported;
 }
 
-- (id)hdrModesSupported;
-- (id)hdrModePixelFormats;
-- (long long)tilesPerFrame;
+- (unsigned char)featureListStringType;
+- (unsigned long long)maxBandwidth;
 - (int)operatingMode;
 - (long long)captureSource;
 - (long long)videoStreamMode;

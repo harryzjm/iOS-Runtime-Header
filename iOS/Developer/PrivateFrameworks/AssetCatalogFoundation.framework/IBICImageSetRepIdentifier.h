@@ -13,6 +13,7 @@
 + (id)inferredRepIdentifiersForImageReps:(id)arg1;
 + (id)scalesForImages:(id)arg1;
 + (id)imagesOrderedFromNarrowestToWidest:(id)arg1;
++ (id)inferredRepIdentifiersForPaths:(id)arg1;
 + (id)inferredRepIdentifiersGroupedByItemNameForPaths:(id)arg1;
 + (id)inferredRepIdentifierForPath:(id)arg1;
 + (Class)slotClass;

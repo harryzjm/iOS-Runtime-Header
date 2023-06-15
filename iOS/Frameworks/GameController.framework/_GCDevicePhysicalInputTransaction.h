@@ -9,7 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface _GCDevicePhysicalInputTransaction
 {
-    _GCDevicePhysicalInput *_implementation;
+    _GCDevicePhysicalInput *_physicalInput;
     double _lastEventTimestamp;
     _GCDevicePhysicalInputChangedElementsEnumerator *_changedElements;
     _Bool _updateContextsValid;
@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 - (double)lastEventTimestamp;
 - (_Bool)isSnapshot;
 - (id)description;
+- (id)physicalInput;
 - (_Bool)allowsWeakReference;
 - (void)dealloc;
 

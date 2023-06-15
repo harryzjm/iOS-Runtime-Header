@@ -60,7 +60,6 @@ __attribute__((visibility("hidden")))
 - (void)negotiateTilesPerFrame:(id)arg1 negotiatedSettings:(id)arg2;
 - (void)negotiateRTCPFB:(id)arg1;
 - (_Bool)selectBestVideoRuleForTransport:(unsigned char)arg1 payload:(int)arg2 encodingType:(unsigned char)arg3 localVideoRuleCollection:(id)arg4 remoteVideoSettings:(id)arg5 negotiatedVideoSettings:(id)arg6 isScreen:(_Bool)arg7;
-- (id)negotiateVideoMaxResolutionWithEncodeRules:(id)arg1 decodeRules:(id)arg2 isEncoder:(_Bool)arg3;
 - (id)selectVideoFeatureString:(id)arg1 selectedPayload:(int)arg2;
 - (_Bool)setupAudioWithNegotiatedSettings:(id)arg1;
 - (_Bool)negotiateAudioSettings:(id)arg1;
@@ -79,6 +78,8 @@ __attribute__((visibility("hidden")))
 - (_Bool)processRemoteNegotiationData:(id)arg1;
 - (id)negotiationData;
 - (void)dealloc;
+- (_Bool)isNegotiationModeForScreenShare:(long long)arg1;
+- (_Bool)isNegotiationModeValid:(long long)arg1;
 - (_Bool)isCellular16x9EncodeCapable;
 @property(readonly, nonatomic) _Bool isCaller;
 - (id)initWithMode:(long long)arg1 localSettings:(id)arg2;

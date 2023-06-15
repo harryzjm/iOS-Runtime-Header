@@ -23,6 +23,8 @@
 - (id)requestDidParseProtobufObject:(id)arg1;
 - (id)generateRequestOperations;
 - (id)requestOperationClasses;
+- (void)fillOutRequestProperties:(id)arg1;
+- (id)equivalencyProperties;
 - (id)initWithOperation:(id)arg1 assetOrPackageMetadata:(id)arg2 writeRepairRecord:(_Bool)arg3;
 
 @end

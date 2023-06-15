@@ -9,6 +9,7 @@
 @class CHSWidgetKey, NSNumber, NSString;
 
 @protocol CHSToolServiceServerInterface <NSObject>
+- (oneway void)runReaper;
 - (oneway void)contentURLForActivityID:(NSString *)arg1 completion:(void (^)(NSURL *, NSError *))arg2;
 - (oneway void)expireLocationGracePeriods;
 - (oneway void)reloadTimelinesOfKind:(NSString *)arg1 containedIn:(NSString *)arg2 reason:(NSString *)arg3 completion:(void (^)(NSError *))arg4;

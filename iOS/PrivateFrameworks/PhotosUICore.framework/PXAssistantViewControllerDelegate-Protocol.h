@@ -17,6 +17,7 @@
 - (void)assistantForAssistantViewController:(id <PXAssistantViewController>)arg1 failedWithError:(NSError *)arg2;
 - (void)completeAssistantForAssistantViewController:(id <PXAssistantViewController>)arg1;
 - (void)cancelAssistantForAssistantViewController:(id <PXAssistantViewController>)arg1;
+- (void)stepForwardInAssistantForAssistantViewControllerAsCurrentViewController:(id <PXAssistantViewController>)arg1;
 - (void)stepForwardInAssistantForAssistantViewController:(id <PXAssistantViewController>)arg1;
 @end
 

@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <BacklightServicesHost/BSInvalidatable-Protocol.h>
+#import <BacklightServicesHost/BLSHWatchdogInvalidatable-Protocol.h>
 
 @class NSString;
 
-@protocol BLSHWatchdogTiming <BSInvalidatable>
+@protocol BLSHWatchdogTiming <BLSHWatchdogInvalidatable>
+@property(readonly, nonatomic, getter=hasSleepBeenImminentSinceScheduled) _Bool sleepImminentSinceScheduled;
 @property(readonly, copy, nonatomic) NSString *explanation;
 @property(readonly, nonatomic, getter=isInvalidated) _Bool invalidated;
 @end

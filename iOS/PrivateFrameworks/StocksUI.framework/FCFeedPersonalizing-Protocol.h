@@ -10,16 +10,13 @@
 @protocol FCFeedPersonalizingItem;
 
 @protocol FCFeedPersonalizing <FCTagRanking>
+- (FCFeedPersonalizedItems *)sortItems:(NSArray *)arg1 options:(long long)arg2 configurationSet:(long long)arg3;
 - (double)decayedPublisherDiversificationPenalty;
 - (void)prepareForUseWithCompletionHandler:(void (^)(void))arg1;
 - (NSArray *)limitItemsByFlowRate:(NSArray *)arg1 timeInterval:(double)arg2 publisherCount:(unsigned long long)arg3;
 - (NSArray *)limitItemsByMinimumItemQuality:(NSArray *)arg1;
-- (FCFeedPersonalizedItems *)sortItems:(NSArray *)arg1 options:(long long)arg2;
-- (FCFeedPersonalizedItems *)sortItems:(NSArray *)arg1;
 
 @optional
 - (void)fetchAggregateMapForPersonalizingItem:(id <FCFeedPersonalizingItem>)arg1 completion:(void (^)(NSDictionary *))arg2;
-- (FCFeedPersonalizedItems *)sortItems:(NSArray *)arg1 options:(long long)arg2 configurationSet:(long long)arg3;
-- (FCFeedPersonalizedItems *)sortItems:(NSArray *)arg1 configurationSet:(long long)arg2;
 @end
 

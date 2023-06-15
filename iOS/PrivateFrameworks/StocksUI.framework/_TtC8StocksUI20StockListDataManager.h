@@ -17,6 +17,7 @@
     MISSING_TYPE *quoteDetailManager;
     MISSING_TYPE *cacheQueue;
     MISSING_TYPE *lastActiveWatchlist;
+    MISSING_TYPE *cancellables;
 }
 
 @end

@@ -20,11 +20,13 @@ __attribute__((visibility("hidden")))
 - (void)cancelPetsRegionsRequest:(int)arg1;
 - (void)cancelParallaxResourceRequest:(int)arg1;
 - (void)updateSegmentationResource:(CDUnknownBlockType)arg1;
+- (_Bool)clearSegmentationResourceCacheWithError:(id *)arg1;
 @property(readonly, nonatomic) NSURL *segmentationResourceURL;
 @property(readonly, nonatomic) _Bool supportsSegmentationResourceCaching;
 @property(readonly, copy, nonatomic) NSString *localIdentifier;
 @property(readonly, nonatomic) NSArray *petRegions;
 @property(readonly, nonatomic) NSArray *faceRegions;
+@property(readonly, nonatomic) struct CGRect gazeAreaRect;
 @property(readonly, nonatomic) struct CGRect preferredCropRect;
 @property(readonly, nonatomic) struct CGRect acceptableCropRect;
 - (id)initWithProxyImage:(struct CGImage *)arg1;

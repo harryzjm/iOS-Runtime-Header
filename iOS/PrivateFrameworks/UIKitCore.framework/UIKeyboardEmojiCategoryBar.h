@@ -29,14 +29,17 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)selectedIndexForTouches:(id)arg1;
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
+- (void)removeFromSuperview;
 - (struct CGRect)categorySelectedCircleRect:(long long)arg1;
 - (void)animateScrubberToRect:(struct CGRect)arg1;
 - (struct CGRect)frameForDivider:(int)arg1;
+- (struct CGRect)paddedFrame;
 - (unsigned long long)flippedIndexForIndex:(unsigned long long)arg1;
 - (void)updateCategory;
 - (void)updateCategoryOnBar:(unsigned long long)arg1;
 - (void)updateToCategory:(long long)arg1;
 - (void)dimKeys:(id)arg1;
+- (void)layoutSubviews;
 - (void)didMoveToWindow;
 - (void)dealloc;
 - (void)prepareForDisplay;

@@ -15,7 +15,8 @@
     MISSING_TYPE *environment;
     MISSING_TYPE *position;
     MISSING_TYPE *defaultFormatter;
-    MISSING_TYPE *textMeasurements;
+    MISSING_TYPE *measurements;
+    MISSING_TYPE *valueID;
     MISSING_TYPE *valueType;
     MISSING_TYPE *value;
 }

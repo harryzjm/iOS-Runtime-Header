@@ -9,9 +9,9 @@
 @protocol WKURLSchemeTask;
 
 @protocol SWURLSchemeHandler <NSObject>
+@property(readonly, nonatomic) id <WKURLSchemeTask> task;
 - (void)finish;
 - (void)cancel;
 - (void)start;
-@property(nonatomic, readonly) id <WKURLSchemeTask> task;
 @end
 

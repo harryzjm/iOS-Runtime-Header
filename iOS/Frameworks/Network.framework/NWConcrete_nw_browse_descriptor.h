@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSString;
-@protocol OS_dispatch_data;
+@protocol OS_dispatch_data, OS_nw_array;
 
 __attribute__((visibility("hidden")))
 @interface NWConcrete_nw_browse_descriptor : NSObject
@@ -17,13 +17,17 @@ __attribute__((visibility("hidden")))
     char *bonjour_domain;
     char *description;
     char *logging_description;
+    struct os_unfair_lock_s lock;
     NSObject<OS_dispatch_data> *custom_data;
     CDUnknownBlockType browse_block;
     char *application_service_name;
     char *bundle_id;
     unsigned int device_types;
+    unsigned int scope;
+    NSObject<OS_nw_array> *device_filters;
     unsigned int include_txt_record:1;
     unsigned int sign_results:1;
+    unsigned int discover_application_service_endpoints_only:1;
     unsigned int __pad_bits:5;
 }
 

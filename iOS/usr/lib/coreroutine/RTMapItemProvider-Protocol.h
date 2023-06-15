@@ -9,6 +9,7 @@
 @class NSArray, RTPlaceInferenceOptions;
 
 @protocol RTMapItemProvider <NSObject>
+- (_Bool)skipForOptions:(RTPlaceInferenceOptions *)arg1 error:(id *)arg2;
 - (NSArray *)mapItemsWithOptions:(RTPlaceInferenceOptions *)arg1 error:(id *)arg2;
 @end
 

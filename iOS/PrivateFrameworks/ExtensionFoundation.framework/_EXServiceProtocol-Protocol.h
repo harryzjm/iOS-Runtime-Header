@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSXPCListenerEndpoint, _EXLaunchConfiguration, _EXQuery;
+@class NSUUID, NSXPCListenerEndpoint, _EXLaunchConfiguration, _EXQuery;
 
 @protocol _EXServiceProtocol
+- (void)photoServiceAuthorizationStatusForExtensionUUID:(NSUUID *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
+- (void)invalidateLaunchAssertionsForExtensionAuditToken:(CDStruct_4c969caf)arg1 reply:(void (^)(void))arg2;
 - (void)prepareWithLaunchConfiguration:(_EXLaunchConfiguration *)arg1 reply:(void (^)(_EXExtensionProcessHandle *, NSError *))arg2;
 - (void)beginExtensionsQuery:(_EXQuery *)arg1 listenerEndpoint:(NSXPCListenerEndpoint *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)extensionsWithQuery:(_EXQuery *)arg1 reply:(void (^)(_EXQueryResult *, NSError *))arg2;

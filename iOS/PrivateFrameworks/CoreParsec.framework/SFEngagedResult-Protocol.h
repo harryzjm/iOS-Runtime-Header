@@ -7,14 +7,14 @@
 @class NSData, NSDate, NSString;
 
 @protocol SFEngagedResult
-@property(nonatomic, readonly) double freshnessScore;
-@property(nonatomic, readonly) double score;
-@property(nonatomic, readonly) NSDate *engagementTime;
-@property(nonatomic, readonly) int type;
-@property(nonatomic, readonly) NSString *searchString;
-@property(nonatomic, readonly) NSString *title;
+@property(readonly, nonatomic) double freshnessScore;
+@property(readonly, nonatomic) double score;
+@property(readonly, copy, nonatomic) NSDate *engagementTime;
+@property(readonly, nonatomic) int type;
+@property(readonly, copy, nonatomic) NSString *searchString;
+@property(readonly, copy, nonatomic) NSString *title;
 
 @optional
-@property(nonatomic, copy) NSData *encodedNormalizedTopic;
+@property(copy, nonatomic) NSData *encodedNormalizedTopic;
 @end
 

@@ -24,13 +24,16 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) struct os_unfair_lock_s inMemoryStorageLock; // @synthesize inMemoryStorageLock=_inMemoryStorageLock;
 - (void)cache:(id)arg1 willEvictObject:(id)arg2;
 - (void)updateCookiesWithCookiesToAdd:(id)arg1 cookiesToRemove:(id)arg2 forAccount:(id)arg3 withCompletion:(CDUnknownBlockType)arg4;
+- (id)getCookiesForAccount:(id)arg1 cookieDatabaseOnly:(_Bool)arg2 error:(id *)arg3;
+- (id)getCookiesForAccount:(id)arg1 error:(id *)arg2;
+- (void)getCookiesForAccount:(id)arg1 cookieDatabaseOnly:(_Bool)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)getCookiesForAccount:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)getCookieDatabasePathForAccount:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_unregisterFromCookieChangeNotifications;
 - (void)_registerForCookieChangeNotifications;
 - (id)_cachedCookiesForAccount:(id)arg1;
 - (void)_cacheCookies:(id)arg1 forAccount:(id)arg2;
 - (id)init;
-- (id)cookiePromiseForAccount:(id)arg1;
 - (void)clearCookieCacheForAccount:(id)arg1;
 - (void)clearCookieCache;
 

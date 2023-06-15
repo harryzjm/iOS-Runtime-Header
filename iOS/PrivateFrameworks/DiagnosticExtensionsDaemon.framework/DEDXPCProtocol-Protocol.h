@@ -37,6 +37,7 @@
 - (void)xpc_cancelSession:(NSString *)arg1;
 - (void)xpc_didCommitSession:(NSString *)arg1;
 - (void)xpc_commitSession:(NSString *)arg1;
+- (void)xpc_compressionProgress:(unsigned long long)arg1 total:(unsigned long long)arg2 session:(NSString *)arg3;
 - (void)xpc_uploadProgress:(unsigned long long)arg1 total:(long long)arg2 session:(NSString *)arg3;
 - (void)xpc_didAdoptFilesWithError:(NSError *)arg1 forSession:(NSString *)arg2;
 - (void)xpc_adoptFiles:(NSArray *)arg1 forSession:(NSString *)arg2;

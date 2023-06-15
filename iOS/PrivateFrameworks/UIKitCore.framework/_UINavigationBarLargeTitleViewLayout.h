@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     double _cachedRestingHeight;
     _Bool _alignAccessoryViewToTitleBaseline;
     _Bool _providesExtraSpaceForExcessiveLineHeights;
+    _Bool _overlaysContentView;
     _UINavigationBarLargeTitleView *_contentView;
     long long _titleType;
     UILabel *_titleLabel;
@@ -27,6 +28,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool overlaysContentView; // @synthesize overlaysContentView=_overlaysContentView;
 @property(nonatomic) struct NSDirectionalEdgeInsets layoutMargins; // @synthesize layoutMargins=_layoutMargins;
 @property(nonatomic) unsigned long long accessoryViewHorizontalAlignment; // @synthesize accessoryViewHorizontalAlignment=_accessoryViewHorizontalAlignment;
 @property(nonatomic) _Bool providesExtraSpaceForExcessiveLineHeights; // @synthesize providesExtraSpaceForExcessiveLineHeights=_providesExtraSpaceForExcessiveLineHeights;
@@ -52,6 +54,7 @@ __attribute__((visibility("hidden")))
 - (void)layoutViews;
 - (void)_enforceLayoutOrdering;
 - (void)updateRestingTitleHeight;
+- (double)restingTitleHeightForSize:(struct CGSize)arg1 type:(long long)arg2;
 - (struct CGRect)_contentLayoutBounds;
 - (struct CGRect)_contentLayoutBoundsUsingRestingTitleHeight:(_Bool)arg1;
 - (id)initWithContentView:(id)arg1;

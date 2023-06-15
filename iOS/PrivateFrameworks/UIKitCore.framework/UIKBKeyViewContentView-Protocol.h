@@ -6,13 +6,13 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class UIKBRenderConfig, UIKBRenderTraits, UIKBTree;
+@class UIKBRenderConfig, UIKBRenderTraits, UIKBTree, UIView;
 
 @protocol UIKBKeyViewContentView <NSObject>
 + (struct CGSize)preferredContentViewSizeForKey:(UIKBTree *)arg1 withTraits:(UIKBRenderTraits *)arg2;
+- (void)setTouchForwardingView:(UIView *)arg1;
 - (void)updateRenderConfig:(UIKBRenderConfig *)arg1;
-- (void)retestForTouchUpSelectedVariantIndexForKey:(UIKBTree *)arg1 atPoint:(struct CGPoint)arg2;
-- (void)retestSelectedVariantIndexForKey:(UIKBTree *)arg1 atPoint:(struct CGPoint)arg2;
+- (_Bool)retestSelectedVariantIndexForKey:(UIKBTree *)arg1 atPoint:(struct CGPoint)arg2 phase:(long long)arg3;
 - (void)updateForKeyplane:(UIKBTree *)arg1 key:(UIKBTree *)arg2;
 @end
 

@@ -6,7 +6,7 @@
 
 #import "CNContactAction.h"
 
-@class CNContact, CNContactCardFieldPicker, NSString, UIActivityViewController;
+@class CNContact, CNContactCardFieldPicker, NSString, UIActivityViewController, UIView;
 
 __attribute__((visibility("hidden")))
 @interface CNContactShareContactAction : CNContactAction
@@ -14,9 +14,11 @@ __attribute__((visibility("hidden")))
     UIActivityViewController *_activityViewController;
     CNContact *_filteredContact;
     CNContactCardFieldPicker *_fieldPicker;
+    UIView *_sourceView;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) UIView *sourceView; // @synthesize sourceView=_sourceView;
 @property(retain, nonatomic) CNContactCardFieldPicker *fieldPicker; // @synthesize fieldPicker=_fieldPicker;
 @property(retain, nonatomic) CNContact *filteredContact; // @synthesize filteredContact=_filteredContact;
 @property(retain, nonatomic) UIActivityViewController *activityViewController; // @synthesize activityViewController=_activityViewController;
@@ -25,6 +27,10 @@ __attribute__((visibility("hidden")))
 - (id)customLocalizedActionTitleForActivityViewController:(id)arg1;
 - (_Bool)_customizationAvailableForActivityViewController:(id)arg1;
 - (id)_customizationGroupsForActivityViewController:(id)arg1;
+- (id)activityItemForContact:(id)arg1;
+- (void)presentShareSheet;
+- (void)presentFilterFieldPicker;
+- (void)setupForContactFieldPicker;
 - (void)performActionWithSender:(id)arg1;
 - (_Bool)canPerformAction;
 

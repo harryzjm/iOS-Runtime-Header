@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 {
     unsigned long long _currentDetentIndex;
     double _initialYTranslation;
+    double _defaultZPosition;
     UIBezierPath *_menuScrubPath;
     double _currentDistanceToMenuScrubPath;
     struct CGPoint _initialLocationInsidePreview;
@@ -51,19 +52,23 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIPanGestureRecognizer *panGestureRecognizer; // @synthesize panGestureRecognizer=_panGestureRecognizer;
 @property(nonatomic) __weak id <_UIContextMenuPanControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_updatePlatterGestureDebugUIWithTranslation:(struct CGPoint)arg1 location:(struct CGPoint)arg2 invalidate:(_Bool)arg3;
-- (struct CGPoint)_rubberBandedTranslationForGestureTranslation:(struct CGPoint)arg1;
+- (struct CAPoint3D)_clampedRubberBandedTranslationForGestureTranslation:(struct CAPoint3D)arg1;
+- (void)_updateViewPositionsWithoutAnimationForRealityEngineWithTranslation:(struct CAPoint3D)arg1 location:(struct CAPoint3D)arg2 ended:(_Bool)arg3 withVelocity:(_Bool)arg4;
+- (struct CAPoint3D)_rubberBandedTranslationForGestureTranslation:(struct CAPoint3D)arg1;
+- (id)_currentPlatformMetrics;
+- (long long)_userInterfaceIdiom;
 - (void)scrollObservationInteraction:(id)arg1 didUpdateWithTranslation:(struct CGPoint)arg2 location:(struct CGPoint)arg3 ended:(_Bool)arg4;
 - (void)scrollObservationInteraction:(id)arg1 willBeginAtLocation:(struct CGPoint)arg2;
 - (_Bool)_initialPointInPlatterIsValid;
 - (void)_animationsForAnyAttachedAccessoryViews;
-- (void)_animationsForActionsStyleWithLocation:(struct CGPoint)arg1 ended:(_Bool)arg2;
-- (void)_animationsForPreviewPlusActionsStyleWithTranslation:(struct CGPoint)arg1 location:(struct CGPoint)arg2;
+- (void)_animationsForActionsStyleWithLocation:(struct CAPoint3D)arg1 ended:(_Bool)arg2;
+- (void)_animationsForPreviewPlusActionsStyleWithTranslation:(struct CAPoint3D)arg1 location:(struct CAPoint3D)arg2;
 @property(readonly, nonatomic) UIViewSpringAnimationBehavior *animationBehavior; // @synthesize animationBehavior=_animationBehavior;
-- (void)_updateViewPositionsWithTranslation:(struct CGPoint)arg1 location:(struct CGPoint)arg2 ended:(_Bool)arg3 withVelocity:(_Bool)arg4;
+- (void)_updateViewPositionsWithTranslation:(struct CAPoint3D)arg1 location:(struct CAPoint3D)arg2 ended:(_Bool)arg3 withVelocity:(_Bool)arg4;
 - (double)_tearOffSpeedMultiplier;
-- (_Bool)_canBeginDraggingWithTranslation:(struct CGPoint)arg1 location:(struct CGPoint)arg2;
+- (_Bool)_canBeginDraggingWithTranslation:(struct CAPoint3D)arg1 location:(struct CAPoint3D)arg2;
 - (void)_updateMenuScrubPathWithLocationIfNecessary:(struct CGPoint)arg1;
-- (void)_updateForGestureWithState:(long long)arg1 translation:(struct CGPoint)arg2 location:(struct CGPoint)arg3 allowsDragging:(_Bool)arg4;
+- (void)_updateForGestureWithState:(long long)arg1 translation:(struct CAPoint3D)arg2 location:(struct CAPoint3D)arg3 allowsDragging:(_Bool)arg4;
 - (void)_handlePanGesture:(id)arg1;
 - (_Bool)gestureRecognizer:(id)arg1 shouldBeRequiredToFailByGestureRecognizer:(id)arg2;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
@@ -75,7 +80,7 @@ __attribute__((visibility("hidden")))
 - (double)_rangeOfMotion;
 - (struct CGVector)_currentPlatterVelocity;
 - (void)_updateForSignificantLayoutChange;
-- (void)moveToDetentPosition:(long long)arg1;
+- (void)moveToDetentPosition:(long long)arg1 updateScrubPath:(_Bool)arg2;
 - (id)initWithContainerView:(id)arg1 platterView:(id)arg2 menuView:(id)arg3;
 
 // Remaining properties

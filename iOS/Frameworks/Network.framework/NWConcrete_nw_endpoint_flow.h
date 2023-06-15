@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     unsigned int is_empty_root:1;
     unsigned int initialized_protocol_callbacks:1;
     unsigned int started:1;
+    unsigned int rebuild_stack:1;
     unsigned int setup_protocols:1;
     unsigned int started_protocols:1;
     unsigned int did_join_protocols:1;
@@ -41,6 +42,9 @@ __attribute__((visibility("hidden")))
     unsigned int in_setup_protocols:1;
     unsigned int connected_child_handles_requests:1;
     unsigned int connected_child_failed:1;
+    unsigned int should_start_child:1;
+    unsigned int delay_start_child:1;
+    unsigned int cloned:1;
     NWConcrete_nw_endpoint_flow *clone_from_flow;
     struct nw_protocol_identifier protocol_identifier;
     struct nw_protocol_callbacks protocol_callbacks;

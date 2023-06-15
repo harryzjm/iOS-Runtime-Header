@@ -10,7 +10,6 @@
 {
     MISSING_TYPE *$__lazy_storage_$_titleTextLayout;
     MISSING_TYPE *$__lazy_storage_$_subtitleTextLayout;
-    MISSING_TYPE *$__lazy_storage_$_seeAllButtonLayout;
 }
 
 @end

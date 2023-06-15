@@ -15,7 +15,7 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) TSCH3DChartBoundsLayout *boundsLayout; // @synthesize boundsLayout=_boundsLayout;
 @property(readonly, nonatomic) TSCH3DChartResizerHelper *resizerHelper; // @synthesize resizerHelper=_resizerHelper;
-- (id)boundsLayoutByResizingToLayoutSize:(const void *)arg1;
+- (id)boundsLayoutByResizingToLayoutSize:(void *)arg1;
 - (id)containingViewportByResizingScene:(id)arg1 toResizingFrame:(struct CGRect)arg2;
 - (struct CGRect)oldResizingFrame;
 - (id)sceneResetWithLayoutSettings:(CDStruct_c48db077)arg1;

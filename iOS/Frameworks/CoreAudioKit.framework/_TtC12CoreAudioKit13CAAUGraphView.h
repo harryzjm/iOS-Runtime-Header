@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class MISSING_TYPE;
 
@@ -43,14 +43,9 @@ __attribute__((visibility("hidden")))
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
-- (double)locationForYWithValue:(float)arg1;
-- (double)locationForXWithValue:(float)arg1;
 - (void)layoutSublayersOfLayer:(id)arg1;
-- (id)data;
-- (void)configureWithData:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-@property(nonatomic) _Bool hideLabels; // @synthesize hideLabels;
 
 @end
 

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 @class UIColor, UIVisualEffect, _UICollectionLayoutListSectionData;
 
 __attribute__((visibility("hidden")))
-@interface _UICollectionLayoutListAttributes : NSObject <NSCopying>
+@interface _UICollectionLayoutListAttributes : NSObject
 {
     struct {
         unsigned int stylesFirstItemAsHeader:1;

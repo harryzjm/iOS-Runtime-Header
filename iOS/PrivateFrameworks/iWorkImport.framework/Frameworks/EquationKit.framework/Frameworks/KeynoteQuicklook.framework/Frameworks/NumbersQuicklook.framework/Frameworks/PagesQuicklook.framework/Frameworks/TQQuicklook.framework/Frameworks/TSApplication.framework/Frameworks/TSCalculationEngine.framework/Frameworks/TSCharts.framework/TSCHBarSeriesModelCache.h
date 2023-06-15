@@ -16,6 +16,7 @@
     TSWPParagraphStyle *_paragraphStyle;
     unsigned long long _seriesIndex;
     _Bool _valueLabelsOn;
+    _Bool _summaryValueLabelsOn;
     double _barWidthRatio;
     double _barGroupGapRatio;
     double _barGapRatio;
@@ -37,6 +38,7 @@
 @property(readonly) double barGapRatio; // @synthesize barGapRatio=_barGapRatio;
 @property(readonly) double barGroupGapRatio; // @synthesize barGroupGapRatio=_barGroupGapRatio;
 @property(readonly) double barWidthRatio; // @synthesize barWidthRatio=_barWidthRatio;
+@property(readonly) _Bool summaryValueLabelsOn; // @synthesize summaryValueLabelsOn=_summaryValueLabelsOn;
 @property(readonly) _Bool valueLabelsOn; // @synthesize valueLabelsOn=_valueLabelsOn;
 @property(readonly) TSWPParagraphStyle *paragraphStyle; // @synthesize paragraphStyle=_paragraphStyle;
 @property(readonly) TSCHChartAxis *groupAxis; // @synthesize groupAxis=_groupAxis;

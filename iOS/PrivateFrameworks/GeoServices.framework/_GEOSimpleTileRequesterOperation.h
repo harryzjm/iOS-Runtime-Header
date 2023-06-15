@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class GEODataRequest, GEODataSession, GEODataSessionTask, NSData, NSString, NSURL;
+@class GEODataRequest, GEODataURLSession, GEODataURLSessionTask, NSData, NSString, NSURL;
 @protocol GEOSimpleTileRequesterOperationDelegate, OS_dispatch_queue, OS_os_activity;
 
 __attribute__((visibility("hidden")))
@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
 {
     GEODataRequest *_request;
     NSData *_data;
-    GEODataSessionTask *_task;
+    GEODataURLSessionTask *_task;
     NSString *_responseEtag;
     struct _GEOTileKey _key;
     _GEOSimpleTileRequesterOperation *_baseTile;
@@ -26,14 +26,13 @@ __attribute__((visibility("hidden")))
     double _timeout;
     double _startTime;
     double _endTime;
-    GEODataSession *_dataSession;
+    GEODataURLSession *_dataSession;
     unsigned long long _signpostID;
     int _attempts;
     int _checksumMethod;
     _Atomic unsigned int _priority;
     _Bool _finished;
     _Bool _existingCachedDataCurrent;
-    _Bool _shouldReportAnalytics;
     NSString *_requestingBundleId;
     NSString *_requestingBundleVersion;
     double _tileLoaderCreateTime;
@@ -54,19 +53,19 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool finished; // @synthesize finished=_finished;
 @property(retain, nonatomic) _GEOSimpleTileRequesterOperation *localizationTile; // @synthesize localizationTile=_localizationTile;
 @property(retain, nonatomic) _GEOSimpleTileRequesterOperation *baseTile; // @synthesize baseTile=_baseTile;
-@property(retain, nonatomic) GEODataSessionTask *task; // @synthesize task=_task;
+@property(retain, nonatomic) GEODataURLSessionTask *task; // @synthesize task=_task;
 @property(retain, nonatomic) NSData *data; // @synthesize data=_data;
 @property(nonatomic) struct _GEOTileKey key; // @synthesize key=_key;
 @property(retain, nonatomic) NSObject<OS_os_activity> *parentTileActivity; // @synthesize parentTileActivity=_parentTileActivity;
 @property(retain, nonatomic) NSObject<OS_os_activity> *activity; // @synthesize activity=_activity;
 @property(nonatomic) unsigned long long signpostID; // @synthesize signpostID=_signpostID;
 @property(readonly, nonatomic) GEODataRequest *request; // @synthesize request=_request;
-@property(retain, nonatomic) GEODataSession *dataSession; // @synthesize dataSession=_dataSession;
-- (void)dataSession:(id)arg1 didCompleteTask:(id)arg2;
-- (void)dataSession:(id)arg1 shouldConvertDataTask:(id)arg2 toDownloadTaskForEstimatedResponseSize:(unsigned long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
+@property(retain, nonatomic) GEODataURLSession *dataSession; // @synthesize dataSession=_dataSession;
+- (void)dataURLSession:(id)arg1 didCompleteTask:(id)arg2;
+- (void)dataURLSession:(id)arg1 shouldConvertDataTask:(id)arg2 toDownloadTaskForEstimatedResponseSize:(unsigned long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
 @property(readonly, nonatomic) NSURL *downloadedFileURL;
 @property(readonly, nonatomic) _Bool responseIsCacheable;
-@property(readonly, nonatomic) long long responseSource;
+@property(readonly, nonatomic) unsigned long long responseMaxAge;
 @property(readonly, nonatomic) int httpResponseStatusCode;
 - (double)startTime;
 - (double)elapsed;

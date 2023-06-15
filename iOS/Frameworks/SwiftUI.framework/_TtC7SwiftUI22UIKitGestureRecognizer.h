@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIGestureRecognizer.h>
+#import <UIKitCore/UIGestureRecognizer.h>
 
 @class MISSING_TYPE;
 
@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *eventBridge;
     MISSING_TYPE *initialScale;
     MISSING_TYPE *initialAngle;
+    MISSING_TYPE *scrollConverter;
 }
 
 - (void).cxx_destruct;

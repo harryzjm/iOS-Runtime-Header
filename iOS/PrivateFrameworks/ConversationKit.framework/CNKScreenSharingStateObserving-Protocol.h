@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CNKScreenSharingStateMonitor;
+@protocol CNKScreenSharingStateMonitorProtocol;
 
 @protocol CNKScreenSharingStateObserving
 
 @optional
-- (void)screenSharingStateMonitorDidUpdateScreenInfoForParticipant:(CNKScreenSharingStateMonitor *)arg1;
-- (void)screenSharingStateMonitor:(CNKScreenSharingStateMonitor *)arg1 didUpdateScreenSharingState:(_Bool)arg2;
-- (void)screenSharingStateMonitor:(CNKScreenSharingStateMonitor *)arg1 didUpdateScreenSharingBroadcastingState:(_Bool)arg2;
+- (void)screenSharingStateMonitorDidUpdateScreenInfoForParticipant:(id <CNKScreenSharingStateMonitorProtocol>)arg1;
+- (void)screenSharingStateMonitor:(id <CNKScreenSharingStateMonitorProtocol>)arg1 didUpdateScreenSharingState:(_Bool)arg2;
+- (void)screenSharingStateMonitor:(id <CNKScreenSharingStateMonitorProtocol>)arg1 didUpdateScreenSharingBroadcastingState:(_Bool)arg2;
 @end
 

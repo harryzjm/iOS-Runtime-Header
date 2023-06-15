@@ -12,8 +12,7 @@
 {
     MISSING_TYPE *bundle;
     MISSING_TYPE *path;
-    MISSING_TYPE *_strings;
-    MISSING_TYPE *stateLock;
+    MISSING_TYPE *strings;
 }
 
 @end

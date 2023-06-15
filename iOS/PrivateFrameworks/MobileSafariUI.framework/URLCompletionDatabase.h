@@ -6,28 +6,30 @@
 
 #import <SafariSharedUI/WBSURLCompletionDatabase.h>
 
-@class CloudTabStore, NSArray, NSCache, NSObject, NSString;
-@protocol OS_dispatch_queue, WBBookmarkProvider;
+@class NSArray, NSCache, NSObject, NSString;
+@protocol OS_dispatch_queue, WBBookmarkProvider, WBSCloudTabDeviceProvider;
 
 __attribute__((visibility("hidden")))
 @interface URLCompletionDatabase : WBSURLCompletionDatabase
 {
-    CloudTabStore *_cloudTabStore;
+    id <WBSCloudTabDeviceProvider> _cloudTabStore;
     NSArray *_cloudDevices;
     NSObject<OS_dispatch_queue> *_cloudTabsAccessQueue;
     NSCache *_bookmarksCache;
     id <WBBookmarkProvider> _bookmarkProvider;
+    NSString *_profileUUID;
     int _searchableCollectionsMask;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) int searchableCollectionsMask; // @synthesize searchableCollectionsMask=_searchableCollectionsMask;
 - (id)fakeBookmarkMatchDataWithURLString:(id)arg1 title:(id)arg2 shouldPreload:(_Bool)arg3;
-- (void)enumerateMatchDataForTypedStringHint:(id)arg1 options:(unsigned long long)arg2 withBlock:(CDUnknownBlockType)arg3;
+- (void)enumerateMatchDataForTypedStringHint:(id)arg1 filterResultsUsingProfileUUIDString:(id)arg2 options:(unsigned long long)arg3 withBlock:(CDUnknownBlockType)arg4;
+- (void)tabGroupManagerDidUpdateDevices:(id)arg1;
 - (void)_updateCloudDevices:(id)arg1;
 - (void)clearBookmarksCache;
 - (void)dealloc;
-- (id)initWithCloudTabStore:(id)arg1 searchableCollectionsMask:(int)arg2 bookmarkProvider:(id)arg3;
+- (id)initWithCloudTabStore:(id)arg1 profileUUID:(id)arg2 searchableCollectionsMask:(int)arg3 bookmarkProvider:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

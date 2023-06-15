@@ -7,7 +7,7 @@
 @class NSProgress;
 
 @protocol GCConfigurationAssetManagementServiceXPCInterface
-- (NSProgress *)checkForNewAssets:(_Bool)arg1 forceCatalogRefresh:(_Bool)arg2 reply:(void (^)(NSError *))arg3;
+- (NSProgress *)checkForNewAssets:(_Bool)arg1 forceCatalogRefresh:(_Bool)arg2 reply:(void (^)(_Bool, NSError *))arg3;
 - (void)lastUpdateDateWithReply:(void (^)(NSDate *, NSError *))arg1;
 - (void)currentAsset:(_Bool)arg1 withReply:(void (^)(id <GCConfigurationAsset>, NSError *))arg2;
 - (void)assetsWithReply:(void (^)(NSArray *, NSError *))arg1;

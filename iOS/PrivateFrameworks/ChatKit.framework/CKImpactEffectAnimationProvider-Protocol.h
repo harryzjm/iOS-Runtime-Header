@@ -7,6 +7,7 @@
 @protocol CKSendAnimationContext;
 
 @protocol CKImpactEffectAnimationProvider
+- (void)beginQuickReplyAnimationWithSendAnimationContext:(id <CKSendAnimationContext>)arg1;
 - (void)beginAnimationWithSendAnimationContext:(id <CKSendAnimationContext>)arg1;
 - (void)stopAnimationWithSendAnimationContext:(id <CKSendAnimationContext>)arg1;
 @end

@@ -9,6 +9,7 @@
 @class NSString;
 
 @interface CKRecordID (IC)
+- (_Bool)ic_hasEqualRecordNameWithRecordID:(id)arg1;
 @property(readonly, nonatomic) _Bool ic_isOwnedByCurrentUser;
 - (long long)databaseScope;
 @property(readonly, copy, nonatomic) NSString *ic_loggingDescription;

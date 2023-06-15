@@ -6,7 +6,7 @@
 
 #import <Metal/_MTLObjectWithLabel.h>
 
-@class MTLSimDevice, NSString;
+@class IOSurfaceSharedEvent, MTLSimDevice, NSString;
 @protocol MTLDevice;
 
 __attribute__((visibility("hidden")))
@@ -17,7 +17,9 @@ __attribute__((visibility("hidden")))
     unsigned long long _signaledValue;
 }
 
-- (_Bool)waitSignaledValue:(unsigned long long)arg1 timeoutMS:(unsigned long long)arg2;
+@property(readonly) _Bool supportsRollback;
+@property(readonly, nonatomic) IOSurfaceSharedEvent *IOSurfaceSharedEvent;
+- (_Bool)waitUntilSignaledValue:(unsigned long long)arg1 timeoutMS:(unsigned long long)arg2;
 @property unsigned long long signaledValue; // @dynamic signaledValue;
 - (void)notifyListener:(id)arg1 atValue:(unsigned long long)arg2 block:(CDUnknownBlockType)arg3;
 - (id)newSharedEventHandle;

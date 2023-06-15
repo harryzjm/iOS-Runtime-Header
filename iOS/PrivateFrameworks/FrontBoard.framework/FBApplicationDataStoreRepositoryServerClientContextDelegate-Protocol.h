@@ -9,7 +9,7 @@
 @class FBApplicationDataStoreRepositoryServerClientContext, NSString;
 
 @protocol FBApplicationDataStoreRepositoryServerClientContextDelegate <NSObject>
-- (void)applicationDataStoreRepositoryClientContext:(FBApplicationDataStoreRepositoryServerClientContext *)arg1 repositoryInvalidatedForBundleID:(NSString *)arg2;
-- (void)applicationDataStoreRepositoryClientContext:(FBApplicationDataStoreRepositoryServerClientContext *)arg1 valueChangedForObject:(id)arg2 key:(NSString *)arg3 bundleID:(NSString *)arg4;
+- (void)applicationDataStoreRepositoryClientContext:(FBApplicationDataStoreRepositoryServerClientContext *)arg1 repositoryInvalidatedForAppID:(NSString *)arg2;
+- (void)applicationDataStoreRepositoryClientContext:(FBApplicationDataStoreRepositoryServerClientContext *)arg1 valueChangedForObject:(id)arg2 key:(NSString *)arg3 appID:(NSString *)arg4;
 @end
 

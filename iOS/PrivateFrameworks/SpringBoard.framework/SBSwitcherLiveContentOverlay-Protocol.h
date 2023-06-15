@@ -4,13 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SpringBoard/NSObject-Protocol.h>
+#import <SpringBoard/SBSDisplayLayoutElementProviding-Protocol.h>
 
-@class FBSSceneIdentityToken, NSString, SBSceneHandle, SBUIAnimationController, UIView, UIWindow;
+@class FBSSceneIdentityToken, NSSet, NSString, SBSceneHandle, SBUIAnimationController, UIView, UIWindow;
 @protocol SBSwitcherLiveContentOverlayDelegate;
 
-@protocol SBSwitcherLiveContentOverlay <NSObject>
-@property(nonatomic, getter=isDisplayLayoutElementActive) _Bool displayLayoutElementActive;
+@protocol SBSwitcherLiveContentOverlay <SBSDisplayLayoutElementProviding>
 @property(readonly, nonatomic) long long touchBehavior;
 @property(readonly, nonatomic) _Bool requiresLegacyRotationSupport;
 @property(nonatomic) _Bool resizesHostedContext;
@@ -23,7 +22,7 @@
 - (FBSSceneIdentityToken *)liveSceneIdentityToken;
 - (void)setTouchBehavior:(long long)arg1;
 - (double)currentStatusBarHeight;
-- (unsigned long long)styleOverridesToSuppress;
+- (NSSet *)backgroundActivitiesToSuppress;
 - (long long)trailingStatusBarStyle;
 - (long long)leadingStatusBarStyle;
 - (SBUIAnimationController *)prepareOverlayForContentRotation;
@@ -41,6 +40,7 @@
 - (void)setStatusBarHidden:(_Bool)arg1 nubViewHidden:(_Bool)arg2 animator:(void (^)(void (^)(void), void (^)(_Bool, _Bool)))arg3;
 
 @optional
+- (void)updateTopAffordanceContextMenu;
 - (_Bool)hitTestedToTopAffordance:(struct CGPoint)arg1 window:(UIWindow *)arg2;
 - (long long)bestHomeAffordanceOrientationForOrientation:(long long)arg1;
 - (UIView *)newPortaledLiveContentOverlayView;

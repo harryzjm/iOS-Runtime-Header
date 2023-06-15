@@ -6,9 +6,11 @@
 
 #import <ScreenTimeCore/NSObject-Protocol.h>
 
-@class NSDateInterval, NSDictionary, NSNumber, NSSecurityScopedURLWrapper, NSString, NSURL, STIntroductionModel;
+@class NSArray, NSDateInterval, NSDictionary, NSNumber, NSSecurityScopedURLWrapper, NSString, NSURL, STIntroductionModel;
 
 @protocol STManagementStateServerInterface <NSObject>
+- (void)lastCommunicationLimitsModifcationDateForDSID:(NSNumber *)arg1 completionHandler:(void (^)(NSDate *, NSError *))arg2;
+- (void)lastModifcationDateForDSID:(NSNumber *)arg1 completionHandler:(void (^)(NSDate *, NSError *))arg2;
 - (void)setLocationSharingModificationAllowed:(_Bool)arg1 forDSID:(NSNumber *)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)isLocationSharingModificationAllowedForDSID:(NSNumber *)arg1 completionHandler:(void (^)(NSNumber *, NSError *))arg2;
 - (void)applyIntroductionModel:(STIntroductionModel *)arg1 forDSID:(NSNumber *)arg2 completionHandler:(void (^)(NSError *))arg3;
@@ -17,6 +19,7 @@
 - (void)shouldAllowOneMoreMinuteForWebDomain:(NSString *)arg1 replyHandler:(void (^)(NSNumber *, NSError *))arg2;
 - (void)shouldAllowOneMoreMinuteForBundleIdentifier:(NSString *)arg1 replyHandler:(void (^)(NSNumber *, NSError *))arg2;
 - (void)permitWebFilterURL:(NSURL *)arg1 pageTitle:(NSString *)arg2 completionHandler:(void (^)(NSError *))arg3;
+- (void)applyDefaultUserPoliciesWithCompletionHandler:(void (^)(NSError *))arg1;
 - (void)performMigrationFromMCXSettings:(NSDictionary *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)contactsEditableWithReplyHandler:(void (^)(_Bool, NSError *))arg1;
 - (void)primaryiCloudCardDAVAccountIdentifierWithCompletionHandler:(void (^)(NSString *, NSError *))arg1;
@@ -27,9 +30,15 @@
 - (void)deleteAllWebApplicationHistory:(NSString *)arg1 clientBundleURLWrapper:(NSSecurityScopedURLWrapper *)arg2 replyHandler:(void (^)(NSError *))arg3;
 - (void)deleteWebHistoryDuringInterval:(NSDateInterval *)arg1 webApplication:(NSString *)arg2 clientBundleURLWrapper:(NSSecurityScopedURLWrapper *)arg3 replyHandler:(void (^)(NSError *))arg4;
 - (void)deleteWebHistoryForURL:(NSURL *)arg1 webApplication:(NSString *)arg2 clientBundleURLWrapper:(NSSecurityScopedURLWrapper *)arg3 replyHandler:(void (^)(NSError *))arg4;
+- (void)deleteAllWebApplicationHistory:(NSString *)arg1 profileIdentifier:(NSString *)arg2 replyHandler:(void (^)(NSError *))arg3;
+- (void)deleteWebHistoryDuringInterval:(NSDateInterval *)arg1 webApplication:(NSString *)arg2 profileIdentifier:(NSString *)arg3 replyHandler:(void (^)(NSError *))arg4;
+- (void)deleteWebHistoryForDomain:(NSString *)arg1 webApplication:(NSString *)arg2 profileIdentifier:(NSString *)arg3 replyHandler:(void (^)(NSError *))arg4;
+- (void)deleteWebHistoryForURLs:(NSArray *)arg1 webApplication:(NSString *)arg2 profileIdentifier:(NSString *)arg3 replyHandler:(void (^)(NSError *))arg4;
+- (void)deleteWebHistoryForURL:(NSURL *)arg1 webApplication:(NSString *)arg2 profileIdentifier:(NSString *)arg3 replyHandler:(void (^)(NSError *))arg4;
 - (void)deleteAllWebApplicationHistory:(NSString *)arg1 replyHandler:(void (^)(NSError *))arg2;
 - (void)deleteWebHistoryDuringInterval:(NSDateInterval *)arg1 webApplication:(NSString *)arg2 replyHandler:(void (^)(NSError *))arg3;
 - (void)deleteWebHistoryForDomain:(NSString *)arg1 webApplication:(NSString *)arg2 replyHandler:(void (^)(NSError *))arg3;
+- (void)deleteWebHistoryForURLs:(NSArray *)arg1 webApplication:(NSString *)arg2 replyHandler:(void (^)(NSError *))arg3;
 - (void)deleteWebHistoryForURL:(NSURL *)arg1 webApplication:(NSString *)arg2 replyHandler:(void (^)(NSError *))arg3;
 - (void)authenticateRestrictionsPasscode:(NSString *)arg1 replyHandler:(void (^)(NSError *))arg2;
 - (void)needsToSetRestrictionsPasscodeWithReplyHandler:(void (^)(_Bool, NSError *))arg1;

@@ -7,7 +7,8 @@
 #import <QuartzCore/CALayer.h>
 
 @interface CALayer (WebCoreCALayerExtras)
-+ (id)_web_renderLayerWithContextID:(unsigned int)arg1;
++ (id)_web_renderLayerWithContextID:(unsigned int)arg1 shouldPreserveFlip:(_Bool)arg2;
+- (void)_web_clearContents;
 - (_Bool)_web_maskMayIntersectRect:(struct CGRect)arg1;
 - (_Bool)_web_maskContainsPoint:(struct CGPoint)arg1;
 - (void)_web_setLayerTopLeftPosition:(struct CGPoint)arg1;

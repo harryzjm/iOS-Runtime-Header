@@ -29,6 +29,7 @@
 @property(retain, nonatomic) NSMutableDictionary *zonePCSDataByZoneID; // @synthesize zonePCSDataByZoneID=_zonePCSDataByZoneID;
 @property(retain, nonatomic) CKRecordZone *targetZone; // @synthesize targetZone=_targetZone;
 @property(retain, nonatomic) NSArray *sourceZoneIDs; // @synthesize sourceZoneIDs=_sourceZoneIDs;
+- (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)_setPermanentFailure;
 - (void)_handleZoneSavedWithID:(id)arg1 responseCode:(id)arg2;
 - (void)_sendCoreAnalyticsEventForKeySync;

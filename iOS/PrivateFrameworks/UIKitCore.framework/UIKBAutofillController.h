@@ -7,10 +7,12 @@
 #import <objc/NSObject.h>
 
 @class NSMutableDictionary, UIColor;
+@protocol AFUITargetDetectionController_Staging;
 
 __attribute__((visibility("hidden")))
 @interface UIKBAutofillController : NSObject
 {
+    id <AFUITargetDetectionController_Staging> _targetDetectionController;
     long long _delegateNeedsAutofillMode;
     _Bool _shouldSaveAutofill;
     NSMutableDictionary *_autofillGroup;
@@ -21,12 +23,10 @@ __attribute__((visibility("hidden")))
 
 + (long long)translateToUIAutofillMode:(unsigned long long)arg1;
 + (unsigned long long)translateToTextInputAutofillMode:(long long)arg1;
++ (id)preferredInsertionOrder;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool shouldSaveAutofill; // @synthesize shouldSaveAutofill=_shouldSaveAutofill;
 @property(copy, nonatomic) UIColor *textFieldOrigColor; // @synthesize textFieldOrigColor=_textFieldOrigColor;
-@property(copy, nonatomic) NSMutableDictionary *fallbackAutofillGroup; // @synthesize fallbackAutofillGroup=_fallbackAutofillGroup;
-@property(readonly, retain, nonatomic) NSMutableDictionary *autofillGroup; // @synthesize autofillGroup=_autofillGroup;
-@property(nonatomic) long long delegateNeedsAutofillMode; // @synthesize delegateNeedsAutofillMode=_delegateNeedsAutofillMode;
 - (void)removeTemporaryTextColorFromTextField:(id)arg1;
 - (void)addTemporaryTextColorToTextField:(id)arg1;
 - (void)enumeratePasswordFieldsUsingBlock:(CDUnknownBlockType)arg1;
@@ -66,7 +66,11 @@ __attribute__((visibility("hidden")))
 - (long long)needAutofillCandidate:(id)arg1 delegateAsResponder:(id)arg2 keyboardState:(id)arg3;
 - (void)updateAutofillContextForInputDelegate:(id)arg1;
 - (id)autofillContextForInputDelegate:(id)arg1;
+- (id)textContentTypeForInputDelegate:(id)arg1;
 - (long long)doTraits:(id)arg1 matchTextContentType:(id)arg2;
+@property(copy, nonatomic) NSMutableDictionary *fallbackAutofillGroup;
+@property(readonly, retain, nonatomic) NSMutableDictionary *autofillGroup;
+@property(nonatomic) long long delegateNeedsAutofillMode;
 - (id)init;
 - (void)_setAutofillGroup:(id)arg1;
 

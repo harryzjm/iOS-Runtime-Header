@@ -6,13 +6,13 @@
 
 #import <BackgroundAssets/NSObject-Protocol.h>
 
-@class NSDictionary, NSString, NSURL;
+@class BAAppStoreEventDescriptor, BAAppStorePrepareDescriptor, BAAppStoreProgressConfiguration, NSDictionary, NSString, NSURL;
 
 @protocol BAAgentSystemXPCProtocol <NSObject>
+- (void)updateAppStoreProgressObservationWithConfiguration:(BAAppStoreProgressConfiguration *)arg1 completionHandler:(void (^)(_Bool, NSError *))arg2;
 - (void)runDebugCommand:(NSDictionary *)arg1 reply:(void (^)(void))arg2;
-- (void)triggerPeriodic:(NSDictionary *)arg1 completionHandler:(void (^)(void))arg2;
-- (void)applicationWasUpdatedWithIdentifier:(NSString *)arg1 bundleURLPath:(NSURL *)arg2 completionHandler:(void (^)(_Bool, NSError *))arg3;
-- (void)applicationWasInstalledWithIdentifier:(NSString *)arg1 bundleURLPath:(NSURL *)arg2 completionHandler:(void (^)(_Bool, NSError *))arg3;
-- (void)grantedInitialBackgroundActivityWithIdentifier:(NSString *)arg1 completionHandler:(void (^)(_Bool, NSError *))arg2;
+- (void)applicationShouldTriggerPeriodicWithIdentifier:(NSString *)arg1 bundleURLPath:(NSURL *)arg2 completionHandler:(void (^)(_Bool, NSError *))arg3;
+- (void)applicationEventPerformedWithDescriptor:(BAAppStoreEventDescriptor *)arg1 completionHandler:(void (^)(_Bool, NSError *))arg2;
+- (void)applicationPrepareWithDescriptor:(BAAppStorePrepareDescriptor *)arg1 completionHandler:(void (^)(_Bool, NSError *))arg2;
 @end
 

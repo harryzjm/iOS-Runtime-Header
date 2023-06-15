@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UICollectionViewCell.h>
+#import <UIKitCore/UICollectionViewCell.h>
 
 @class CNAvatarView, CNContact, CNContactFormatter, CNContactGridClippingView, CNQuickActionsManager, CNQuickActionsView, NSArray, NSDictionary, UILabel, UIView;
 @protocol CNAvatarViewDelegate><CNQuickActionsViewDelegate;

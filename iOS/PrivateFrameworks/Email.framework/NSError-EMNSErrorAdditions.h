@@ -9,6 +9,7 @@
 @interface NSError (EMNSErrorAdditions)
 + (id)em_internalErrorWithReason:(id)arg1 userInfo:(id)arg2;
 + (id)em_internalErrorWithReason:(id)arg1;
++ (id)em_itemTimeoutError;
 + (id)em_itemNotFoundError;
 @property(readonly, nonatomic) _Bool em_isInternalError;
 @property(readonly, nonatomic) _Bool em_isItemNotFoundError;

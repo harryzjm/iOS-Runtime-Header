@@ -13,7 +13,6 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *bookmarkClient;
     MISSING_TYPE *storefrontLocalizer;
-    MISSING_TYPE *mediaType;
     MISSING_TYPE *workoutIdentifier;
 }
 

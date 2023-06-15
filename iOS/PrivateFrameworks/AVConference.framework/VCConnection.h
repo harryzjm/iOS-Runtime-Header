@@ -13,6 +13,10 @@ __attribute__((visibility("hidden")))
 {
     unsigned short _linkFlags;
     unsigned short _remoteLinkFlags;
+    unsigned long long _constantConnectionOverhead;
+    unsigned char _connectionType;
+    int _priority;
+    struct tagVCConnectionProtocolRealtimeVTable _vTable;
     NSDictionary *_connectionSelectionPriorities;
 }
 
@@ -27,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (void)setLinkFlags:(unsigned short)arg1;
 - (void)dealloc;
 - (id)init;
+- (void)setUpVTable;
 
 @end
 

@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
-@class CKBalloonView, CKChatControllerDummyAnimator, CKComposition, CKEffectPreviewCollectionViewController, CKEffectSelectionViewController, CKFullScreenEffectManager, NSLayoutConstraint, UIButton, UILabel, UIVibrancyEffect, UIView, UIVisualEffectView;
+@class CKBalloonView, CKChatControllerDummyAnimator, CKComposition, CKEffectPreviewCollectionViewController, CKEffectSelectionViewController, CKFullScreenEffectManager, CKMessageEntryView, NSLayoutConstraint, NSString, UIButton, UILabel, UIVibrancyEffect, UIView, UIVisualEffectView;
 @protocol CKEffectPickerViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     _Bool _hasSelectedDefaultEffect;
     _Bool _showingInStandAloneWindow;
     id <CKEffectPickerViewControllerDelegate> _delegate;
+    UIView *_effectPreviewOverlayView;
     CKBalloonView *_balloonView;
     CKEffectPreviewCollectionViewController *_effectCollectionViewController;
     CKEffectSelectionViewController *_selectionViewController;
@@ -24,26 +25,40 @@ __attribute__((visibility("hidden")))
     UILabel *_titleLabel;
     UIVisualEffectView *_titleContainerView;
     UIVibrancyEffect *_titleVibrancyEffect;
-    UIButton *_sendButton;
+    UIView *_sendButton;
     UIButton *_closeButton;
     CKComposition *_composition;
     NSLayoutConstraint *_heightConstraint;
+    NSLayoutConstraint *_balloonWidthConstraint;
+    NSLayoutConstraint *_balloonHeightConstraint;
     CKFullScreenEffectManager *_fsem;
     UIView *_contentView;
+    NSString *_effectIdentifier;
+    UIViewController *_wolfEffectSelectionVC;
+    UIViewController *_presentingVC;
+    UIView *_presentingView;
+    CKMessageEntryView *_entryView;
     struct CGPoint _balloonViewOrigin;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) __weak CKMessageEntryView *entryView; // @synthesize entryView=_entryView;
+@property(nonatomic) __weak UIView *presentingView; // @synthesize presentingView=_presentingView;
+@property(nonatomic) __weak UIViewController *presentingVC; // @synthesize presentingVC=_presentingVC;
+@property(retain, nonatomic) UIViewController *wolfEffectSelectionVC; // @synthesize wolfEffectSelectionVC=_wolfEffectSelectionVC;
+@property(retain, nonatomic) NSString *effectIdentifier; // @synthesize effectIdentifier=_effectIdentifier;
 @property(nonatomic) _Bool showingInStandAloneWindow; // @synthesize showingInStandAloneWindow=_showingInStandAloneWindow;
 @property(retain, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
 @property(retain, nonatomic) CKFullScreenEffectManager *fsem; // @synthesize fsem=_fsem;
 @property(nonatomic) _Bool hasSelectedDefaultEffect; // @synthesize hasSelectedDefaultEffect=_hasSelectedDefaultEffect;
+@property(retain, nonatomic) NSLayoutConstraint *balloonHeightConstraint; // @synthesize balloonHeightConstraint=_balloonHeightConstraint;
+@property(retain, nonatomic) NSLayoutConstraint *balloonWidthConstraint; // @synthesize balloonWidthConstraint=_balloonWidthConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *heightConstraint; // @synthesize heightConstraint=_heightConstraint;
 @property(nonatomic) BOOL color; // @synthesize color=_color;
 @property(nonatomic) struct CGPoint balloonViewOrigin; // @synthesize balloonViewOrigin=_balloonViewOrigin;
 @property(retain, nonatomic) CKComposition *composition; // @synthesize composition=_composition;
 @property(retain, nonatomic) UIButton *closeButton; // @synthesize closeButton=_closeButton;
-@property(retain, nonatomic) UIButton *sendButton; // @synthesize sendButton=_sendButton;
+@property(retain, nonatomic) UIView *sendButton; // @synthesize sendButton=_sendButton;
 @property(retain, nonatomic) UIVibrancyEffect *titleVibrancyEffect; // @synthesize titleVibrancyEffect=_titleVibrancyEffect;
 @property(retain, nonatomic) UIVisualEffectView *titleContainerView; // @synthesize titleContainerView=_titleContainerView;
 @property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
@@ -52,6 +67,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) CKEffectSelectionViewController *selectionViewController; // @synthesize selectionViewController=_selectionViewController;
 @property(retain, nonatomic) CKEffectPreviewCollectionViewController *effectCollectionViewController; // @synthesize effectCollectionViewController=_effectCollectionViewController;
 @property(retain, nonatomic) CKBalloonView *balloonView; // @synthesize balloonView=_balloonView;
+@property(retain, nonatomic) UIView *effectPreviewOverlayView; // @synthesize effectPreviewOverlayView=_effectPreviewOverlayView;
 @property(nonatomic) __weak id <CKEffectPickerViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)startAnimationPreviewForIdentifier:(id)arg1;
 - (id)_defaultSendAnimationContextForAnimationPreview;
@@ -60,16 +76,25 @@ __attribute__((visibility("hidden")))
 - (void)updateHintTransition:(double)arg1;
 - (void)updateColor:(BOOL)arg1;
 - (void)setCloseButtonYPosition:(double)arg1;
-- (void)presentPicker;
 - (void)effectCollectionViewController:(id)arg1 willDisplayEffect:(id)arg2;
 - (_Bool)effectShouldDisplayOverBalloon:(id)arg1;
-- (void)effectSelectionViewController:(id)arg1 didSelectEffectWithIdentifier:(id)arg2;
+- (_Bool)effectSelectionViewController:(id)arg1 didSelectEffectWithIdentifier:(id)arg2;
 - (void)closeButtonPressed:(id)arg1;
 - (void)touchUpInsideSendButton:(id)arg1;
 - (void)keyCommandReturn:(id)arg1;
 - (id)keyCommands;
+- (void)presentPicker;
 - (void)viewWillAppear:(_Bool)arg1;
+- (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
+- (void)showCloseButton;
+- (void)placeBalloonContainer:(id)arg1;
+- (void)placeSendButton;
+- (id)createSendButton;
+- (void)createBalloonView;
+- (void)createTranscriptBlurBackground;
+- (void)dismissViewControllerKeepingSideMount:(_Bool)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)initWithEntryView:(id)arg1 balloonViewOrigin:(struct CGPoint)arg2 color:(BOOL)arg3;
 - (id)initWithComposition:(id)arg1 balloonViewOrigin:(struct CGPoint)arg2 color:(BOOL)arg3;
 
 @end

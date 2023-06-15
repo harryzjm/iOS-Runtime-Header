@@ -11,6 +11,7 @@
 @protocol NSFileProviderItem_Private <NSFileProviderItem>
 
 @optional
+@property(readonly, nonatomic) NSData *originatorInfo;
 @property(readonly) _Bool isCollaborationInvitation;
 @property(readonly, nonatomic) NSString *preformattedMostRecentEditorName;
 @property(readonly, nonatomic) NSString *preformattedOwnerName;
@@ -32,6 +33,7 @@
 @property(readonly, getter=fp_isUbiquitous) _Bool fp_ubiquitous;
 @property(readonly, copy) NSString *fp_parentDomainIdentifier;
 @property(readonly, copy) NSString *fp_domainIdentifier;
+@property(readonly, copy) NSString *fp_spotlightSubDomainIdentifier;
 @property(readonly, copy) NSString *fp_spotlightDomainIdentifier;
 @property(readonly, copy) NSString *sharingPermissions;
 @property(readonly, copy) NSString *providerIdentifier;

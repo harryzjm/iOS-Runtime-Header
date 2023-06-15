@@ -17,23 +17,22 @@ struct GTMTLGuestAppClient {
     id _field2;
     id _field3;
     id _field4;
-    id _field5;
-    struct os_unfair_lock_s _field6;
-    unsigned int _field7;
+    struct os_unfair_lock_s _field5;
+    unsigned int _field6;
+    unsigned long long _field7;
     unsigned long long _field8;
     unsigned long long _field9;
-    unsigned long long _field10;
-    _Atomic long long _field11;
+    _Atomic long long _field10;
+    id _field11;
     id _field12;
     id _field13;
     id _field14;
-    id _field15;
+    int _field15;
     int _field16;
-    int _field17;
-    unsigned long long _field18;
-    double _field19;
-    _Bool _field20;
-    char _field21[7];
+    unsigned long long _field17;
+    double _field18;
+    _Bool _field19;
+    char _field20[7];
 };
 
 struct GTTraceContext {
@@ -46,22 +45,10 @@ struct GTTraceContext {
     _Atomic int _field7;
     char _field8[4];
     struct GTTraceStream *_field9;
-    struct GTTraceStoreList _field10[16];
+    _Atomic _Bool _field10;
+    char _field11[7];
+    struct GTTraceStoreList _field12[16];
 };
-
-struct GTTraceEncoder {
-    struct GTTraceContext *_field1;
-    struct GTTraceStream *_field2;
-    struct GTTraceFunc *_field3;
-    unsigned long long _field4;
-    unsigned long long _field5;
-    unsigned char _field6;
-    unsigned char _field7;
-    unsigned char _field8;
-    char _field9[5];
-};
-
-struct GTTraceFunc;
 
 struct GTTraceFuncRef {
     unsigned long long _field1;

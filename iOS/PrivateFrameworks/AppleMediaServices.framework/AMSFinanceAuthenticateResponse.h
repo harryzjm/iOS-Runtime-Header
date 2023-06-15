@@ -21,6 +21,8 @@ __attribute__((visibility("hidden")))
 + (id)_serviceIdentifierForResponse:(id)arg1 taskInfo:(id)arg2;
 + (id)_presentAuthRequest:(id)arg1 taskInfo:(id)arg2;
 + (void)_handleDialogFromAuthError:(id)arg1 taskInfo:(id)arg2;
++ (id)_handleAuthResult:(id)arg1 authError:(id)arg2 originalRequest:(id)arg3 actionResult:(id)arg4 redirectURL:(id)arg5 taskInfo:(id)arg6;
++ (id)_performSyncAuthRequest:(id)arg1 actionResult:(id)arg2 redirectURL:(id)arg3 taskInfo:(id)arg4;
 + (id)_performAuthRequest:(id)arg1 actionResult:(id)arg2 redirectURL:(id)arg3 taskInfo:(id)arg4;
 + (id)_authenticateRequestWithAuthType:(unsigned long long)arg1 taskInfo:(id)arg2 dialogResponse:(id)arg3 serviceIdentifier:(id)arg4;
 + (id)performAuthFromResponse:(id)arg1 taskInfo:(id)arg2;

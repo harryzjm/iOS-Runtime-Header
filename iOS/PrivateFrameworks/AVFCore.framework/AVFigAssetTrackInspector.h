@@ -24,8 +24,10 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_loadingBatches;
     unsigned int _mediaType;
     AVWeakReference *_weakReferenceToAsset;
+    _Bool _prefersNominalDurations;
 }
 
+- (_Bool)_isDefunct;
 - (void)_invokeCompletionHandlerForLoadingBatches:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -46,6 +48,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)segmentsExcludeAudioPrimingAndRemainderDurations;
 - (id)segmentForTrackTime:(CDStruct_1b6d18a9)arg1;
 - (id)segments;
+- (struct __CFString *)figAssetPropertyForSegments;
 - (id)_segmentsForProperty:(struct __CFString *)arg1;
 - (CDStruct_1b6d18a9)latentBaseDecodeTimeStampOfFirstTrackFragment;
 - (CDStruct_1b6d18a9)minSampleDuration;

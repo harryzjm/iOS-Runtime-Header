@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 
 @property(retain) AVWeakReference *weakReferenceToAssetWriter; // @synthesize weakReferenceToAssetWriter=_weakReferenceToAssetWriter;
 @property(readonly, nonatomic) AVAssetWriterConfigurationState *configurationState; // @synthesize configurationState=_configurationState;
+@property(readonly, nonatomic, getter=_isDefunct) _Bool defunct;
 - (void)flushSegment;
 - (void)flush;
 - (void)transitionToFailedStatusWithError:(id)arg1;
@@ -39,6 +40,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSArray *inputs;
 @property(nonatomic) long long singlePassMediaDataSize;
 @property(nonatomic) long long singlePassFileSize;
+@property(nonatomic) _Bool requiresInProcessOperation;
 @property(nonatomic) _Bool usesVirtualCaptureCard;
 @property(readonly, nonatomic, getter=isVirtualCaptureCardSupported) _Bool virtualCaptureCardSupported;
 @property(nonatomic) _Bool producesCombinableFragments;

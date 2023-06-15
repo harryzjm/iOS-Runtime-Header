@@ -9,15 +9,15 @@
 @class NSItemProvider, NSString, NSURL, TVPPlayer, VUIGroupWatchActivityPreviewMetadata, VUIVideosPlayable;
 
 @protocol VUIGroupActivitiesManagerDelegate <NSObject>
-@property(nonatomic, copy) NSString *sceneIdentifier;
-@property(nonatomic, readonly) _Bool isEligibleForSession;
-@property(nonatomic, readonly) _Bool isSessionActive;
+@property(readonly, nonatomic) _Bool isEligibleForSession;
+@property(readonly, nonatomic) _Bool isSessionActive;
 - (_Bool)isSharedWatchIdValidForCurrentSession:(NSString *)arg1;
 - (void)requestPermissionToStartCowatchingForPlayable:(VUIVideosPlayable *)arg1 completion:(void (^)(unsigned long long))arg2;
-- (void)endSession;
+- (void)endSessionWithReason:(unsigned long long)arg1;
 - (void)leaveSession;
 - (void)startPlaybackFailed;
 - (void)playerDidStart:(TVPPlayer *)arg1;
+- (NSItemProvider *)itemProviderForActivityWithAdamId:(NSString *)arg1 previewMetadata:(VUIGroupWatchActivityPreviewMetadata *)arg2;
 - (NSItemProvider *)itemProviderForActivityWithSharedWatchId:(NSString *)arg1 sharedWatchUrl:(NSURL *)arg2 previewMetadata:(VUIGroupWatchActivityPreviewMetadata *)arg3;
 - (_Bool)handleCommerceSharedWatchUrl:(NSURL *)arg1;
 - (void)handleSharedPlayable:(VUIVideosPlayable *)arg1 watchTogetherUrl:(NSURL *)arg2 startupAction:(long long)arg3 previewMetadata:(VUIGroupWatchActivityPreviewMetadata *)arg4 completion:(void (^)(unsigned long long))arg5;

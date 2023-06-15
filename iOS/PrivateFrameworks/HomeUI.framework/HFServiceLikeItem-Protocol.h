@@ -13,7 +13,7 @@
 @protocol HFCharacteristicValueSource;
 
 @protocol HFServiceLikeItem <HFHomeKitItemProtocol, HFHomeVendor, HFServiceVendor, NSCopying, HFNamingComponentCreating>
+@property(readonly, nonatomic) id <HFCharacteristicValueSource> valueSource;
 - (id)copyWithValueSource:(id <HFCharacteristicValueSource>)arg1;
-@property(nonatomic, readonly) id <HFCharacteristicValueSource> valueSource;
 @end
 

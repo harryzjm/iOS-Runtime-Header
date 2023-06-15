@@ -19,7 +19,7 @@
 + (id)vk_shiftLinePerpendicularlyFromPoint:(struct CGPoint)arg1 to:(struct CGPoint)arg2 radius:(double)arg3;
 + (void)_processPointsForRounding:(id)arg1 withRadius:(double)arg2;
 + (void)_processPointsForNarrowAngles:(id)arg1;
-+ (const struct CGPath *)vk_newRoundedPathWithRadius:(double)arg1 points:(id)arg2;
++ (struct CGPath *)vk_newRoundedPathWithRadius:(double)arg1 points:(id)arg2;
 + (struct CGPath *)_cgPathFromClipperPath:(void *)arg1;
 + (_Bool)vk_cgPathcontainsAnyCurveToPoints:(struct CGPath *)arg1;
 + (id)vk_groupAndRoundPaths:(id)arg1 radius:(double)arg2 offset:(double)arg3;
@@ -39,7 +39,8 @@
 @property(readonly, nonatomic) struct CGPoint vk_centroid;
 - (void)vk_appendBezierPath:(id)arg1;
 - (void)vk_addCurveToPoint:(struct CGPoint)arg1 controlPoint1:(struct CGPoint)arg2 controlPoint2:(struct CGPoint)arg3;
+- (void)vk_appendRect:(struct CGRect)arg1;
 - (void)vk_addLineToPoint:(struct CGPoint)arg1;
-@property(readonly, nonatomic) const struct CGPath *vk_CGPath;
+@property(readonly, nonatomic) struct CGPath *vk_CGPath;
 @end
 

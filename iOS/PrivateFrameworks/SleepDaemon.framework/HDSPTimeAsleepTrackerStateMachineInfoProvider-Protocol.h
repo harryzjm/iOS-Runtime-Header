@@ -11,7 +11,7 @@
 @protocol HDSPTimeAsleepTrackerStateMachineInfoProvider <HKSPStateMachineInfoProvider>
 @property(readonly, nonatomic) unsigned long long sleepScheduleState;
 @property(readonly, nonatomic) _Bool inWakeDetectionWindow;
-@property(readonly, nonatomic) _Bool inUserRequestedSleepMode;
+@property(readonly, nonatomic) _Bool inUnscheduledSleepMode;
 @property(readonly, nonatomic) _Bool isWristDetectEnabled;
 @property(readonly, nonatomic) _Bool isCharging;
 @property(readonly, nonatomic) HKSPSleepScheduleModel *sleepScheduleModel;

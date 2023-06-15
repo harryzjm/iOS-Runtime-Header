@@ -6,13 +6,15 @@
 
 #import <MarkupUI/NSObject-Protocol.h>
 
-@class NSArray, UIScrollView, UIView;
+@class NSArray, UIScrollView, UITouch, UIView;
 @protocol UICoordinateSpace;
 
 @protocol MUContentViewControllerProtocol <NSObject>
+@property(readonly, nonatomic) _Bool canEditContent;
 @property(readonly, nonatomic) UIScrollView *contentViewScrollView;
 @property(readonly, nonatomic) long long defaultToolTag;
 @property(nonatomic) struct UIEdgeInsets edgeInsets;
+- (_Bool)acceptSingleTouch:(UITouch *)arg1;
 - (UIView *)contentSnapshot;
 - (struct CGRect)visibleContentRectInCoordinateSpace:(id <UICoordinateSpace>)arg1;
 - (struct CGRect)visibleContentRect;

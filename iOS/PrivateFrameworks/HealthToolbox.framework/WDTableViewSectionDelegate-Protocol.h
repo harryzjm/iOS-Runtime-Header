@@ -14,6 +14,7 @@
 - (void)dismissViewControllerAnimated:(_Bool)arg1 completion:(void (^)(void))arg2;
 - (void)presentViewController:(UIViewController *)arg1 animated:(_Bool)arg2 completion:(void (^)(void))arg3;
 - (void)sectionAddedChildViewController:(UIViewController *)arg1;
+- (void)pushViewController:(UIViewController *)arg1 animated:(_Bool)arg2;
 - (void)pushViewController:(UIViewController *)arg1;
 - (void)reloadTable;
 - (void)reloadSection:(unsigned long long)arg1 animated:(_Bool)arg2;

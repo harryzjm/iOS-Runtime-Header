@@ -10,6 +10,7 @@
 - (_Bool)bls_isOnOrAfter:(id)arg1 andOnOrBefore:(id)arg2 withEpsilon:(double)arg3;
 - (_Bool)bls_isOnOrAfter:(id)arg1 andOnOrBefore:(id)arg2;
 - (long long)bls_compare:(id)arg1 withEpsilon:(double)arg2;
+- (id)bls_fileNameString;
 - (id)bls_shortLoggingString;
 - (id)bls_loggingString;
 - (id)bls_initWithBSContinuousMachTime:(double)arg1;

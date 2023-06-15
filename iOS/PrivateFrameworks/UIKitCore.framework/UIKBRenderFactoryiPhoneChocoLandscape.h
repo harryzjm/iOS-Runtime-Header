@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 - (double)_row4ControlSegmentWidthRight;
 - (double)_row4ControlSegmentWidthLeft;
 - (id)lightKeycapsFontName;
+- (double)dynamicBottomRowMultiplier;
 - (struct UIEdgeInsets)dynamicInsets;
 - (_Bool)isTallPopup;
 - (double)popupFontSize;

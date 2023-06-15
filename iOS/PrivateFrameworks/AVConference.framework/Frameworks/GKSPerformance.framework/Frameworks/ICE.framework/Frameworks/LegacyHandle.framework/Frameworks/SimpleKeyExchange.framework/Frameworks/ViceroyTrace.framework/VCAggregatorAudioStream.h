@@ -9,6 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface VCAggregatorAudioStream
 {
+    int _mode;
     double _sessionTotalDuration;
     double _maxHostTimeJumpSize;
     double _totalHostTimeJumpSize;
@@ -19,6 +20,8 @@ __attribute__((visibility("hidden")))
     unsigned int _audioErasureCount;
     unsigned int _maxAudioErasureCount;
     double _averageJitterBufferDelay;
+    unsigned int _channelCountRx;
+    unsigned int _channelCountTx;
     unsigned int _averageJitterBufferDelayCount;
     double _maxJBTargetSizeChanges;
     double _avgJBTargetSizeChanges;
@@ -41,9 +44,13 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSString *previousChannelSequence; // @synthesize previousChannelSequence=_previousChannelSequence;
 @property(copy, nonatomic) NSString *channelSequence; // @synthesize channelSequence=_channelSequence;
 - (void)processEventWithCategory:(unsigned short)arg1 type:(unsigned short)arg2 payload:(id)arg3;
+- (void)allModesProcessEventWithCategory:(unsigned short)arg1 type:(unsigned short)arg2 payload:(id)arg3;
+- (void)allModesProcessRealtimeStats:(id)arg1;
+- (void)screenSharingProcessEventWithCategory:(unsigned short)arg1 payload:(id)arg2;
+- (void)remoteMicProcessEventWithCategory:(unsigned short)arg1 type:(unsigned short)arg2 payload:(id)arg3;
 - (void)processTransportInfo:(id)arg1;
 - (void)processAudioStreamStart:(id)arg1;
-- (void)processRealtimeStats:(id)arg1;
+- (void)remoteMicProcessRealtimeStats:(id)arg1;
 - (void)processChannelSequenceStats:(id)arg1;
 - (void)processAudioPlaybackRealtimeStats:(id)arg1;
 - (void)processMediaCaptureRealtimeStats:(id)arg1;
@@ -54,7 +61,12 @@ __attribute__((visibility("hidden")))
 - (void)aggregateChannelSequenceReport:(id)arg1;
 - (void)updateAudioStreamHostTimeJumpSizeStats:(id)arg1;
 - (id)aggregatedSessionReport;
+- (void)telephonyCallingProcessEventWithCategory:(unsigned short)arg1 type:(unsigned short)arg2 payload:(id)arg3;
+- (void)telephonyCallingProcessRealtimeStatsTelephonyCalling:(id)arg1;
+- (id)aggregatedCallReport;
+- (id)aggregatedCallReports;
 - (void)dealloc;
+- (id)initWithDelegate:(id)arg1 withMode:(int)arg2;
 - (id)initWithDelegate:(id)arg1;
 
 @end

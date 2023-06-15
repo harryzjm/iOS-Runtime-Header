@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NLEmbedding, NLModelConfiguration, NSData, NSDictionary, NSString;
+@class NLContextualEmbedding, NLEmbedding, NLModelConfiguration, NSData, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
 @interface NLModelImplX
@@ -12,11 +12,13 @@ __attribute__((visibility("hidden")))
     struct MontrealNeuralNetwork *_montrealModel;
     NLModelConfiguration *_configuration;
     NLEmbedding *_embedding;
+    NLContextualEmbedding *_contextualEmbedding;
     NSData *_customEmbeddingData;
     NSDictionary *_labelMap;
     unsigned long long _numberOfTrainingInstances;
     NSString *_trainingLanguage;
     NSString *_trainingEmbeddingType;
+    NSString *_embeddingModelIdentifier;
     NSData *_modelData;
 }
 

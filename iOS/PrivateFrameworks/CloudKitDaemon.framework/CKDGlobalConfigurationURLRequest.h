@@ -22,6 +22,7 @@
 - (long long)partitionType;
 - (long long)serverType;
 - (id)additionalHeaderValues;
+- (id)equivalencyProperties;
 - (_Bool)allowsAnonymousAccount;
 - (_Bool)requiresDeviceID;
 - (_Bool)requiresConfiguration;

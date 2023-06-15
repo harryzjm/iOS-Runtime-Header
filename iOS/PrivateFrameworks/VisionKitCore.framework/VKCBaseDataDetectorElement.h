@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class DDScannerResult, NSArray, NSString, NSUUID, UIMenu;
+@class DDScannerResult, NSArray, NSDictionary, NSString, NSUUID, UIMenu;
 
 __attribute__((visibility("hidden")))
 @interface VKCBaseDataDetectorElement
 {
     double _area;
     double _maxLineHeight;
+    NSDictionary *_groupedElementData;
     NSUUID *_uuid;
 }
 
@@ -18,6 +19,7 @@ __attribute__((visibility("hidden")))
 + (unsigned long long)dataDetectorTypesForScannerResult:(id)arg1;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
+@property(retain, nonatomic) NSDictionary *groupedElementData; // @synthesize groupedElementData=_groupedElementData;
 @property(readonly, nonatomic) NSString *stringValue;
 - (_Bool)containsPoint:(struct CGPoint)arg1;
 @property(readonly, nonatomic) UIMenu *debugMenu;
@@ -33,6 +35,12 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) DDScannerResult *scannerResult;
 - (long long)elementType;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

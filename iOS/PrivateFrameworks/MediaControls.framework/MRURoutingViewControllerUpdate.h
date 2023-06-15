@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
     NSArray *_nativeRoutesInVendorSpecificGroup;
     NSArray *_activatedVendorSpecificDeviceIDs;
     NSArray *_pendingVendorSpecificDeviceIDs;
+    NSArray *_availableVendorSpecificDeviceIDs;
     NSDictionary *_routeGrouping;
 }
 
@@ -32,6 +33,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool hasPendingPickedRoutes; // @synthesize hasPendingPickedRoutes=_hasPendingPickedRoutes;
 @property(nonatomic) _Bool canGroup; // @synthesize canGroup=_canGroup;
 @property(copy, nonatomic) NSDictionary *routeGrouping; // @synthesize routeGrouping=_routeGrouping;
+@property(copy, nonatomic) NSArray *availableVendorSpecificDeviceIDs; // @synthesize availableVendorSpecificDeviceIDs=_availableVendorSpecificDeviceIDs;
 @property(copy, nonatomic) NSArray *pendingVendorSpecificDeviceIDs; // @synthesize pendingVendorSpecificDeviceIDs=_pendingVendorSpecificDeviceIDs;
 @property(copy, nonatomic) NSArray *activatedVendorSpecificDeviceIDs; // @synthesize activatedVendorSpecificDeviceIDs=_activatedVendorSpecificDeviceIDs;
 @property(copy, nonatomic) NSArray *nativeRoutesInVendorSpecificGroup; // @synthesize nativeRoutesInVendorSpecificGroup=_nativeRoutesInVendorSpecificGroup;

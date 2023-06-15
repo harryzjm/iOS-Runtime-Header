@@ -23,7 +23,7 @@
 - (void)walkGraph:(CDUnknownBlockType)arg1;
 - (id)deltaSince:(id)arg1 in:(id)arg2;
 - (void)mergeWith:(id)arg1;
-- (basic_string_05660eb3)CR_toStdString;
+- (basic_string_b963e3c0)CR_toStdString;
 - (id)TTShortDescription;
 - (long long)TTCompare:(id)arg1;
 

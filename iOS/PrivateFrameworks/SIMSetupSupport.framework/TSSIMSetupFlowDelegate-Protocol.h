@@ -14,7 +14,7 @@
 @optional
 - (void)maybeRegisterDismissHandler:(UIViewController *)arg1;
 - (void)cancelNextPane;
-- (void)installationFailed;
+- (void)attemptFailed;
 - (void)receivedResponseWithVC:(UIViewController *)arg1;
 - (void)receivedResponse;
 - (void)waitForResponse:(UIViewController *)arg1;

@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateImageAppearanceWithUserInterfaceStyle:(unsigned long long)arg1;
 - (_Bool)_shouldPutTextOnSeparateLines;
 - (id)_newRentalExpirationlabel:(id)arg1 exisitingLabel:(id)arg2;
+- (id)_newTextBadgeViewAsSubview:(id)arg1 layout:(id)arg2 withString:(id)arg3;
 - (id)_newImageViewAsSubview:(_Bool)arg1;
 - (_Bool)_shouldApplyTintColor:(id)arg1 forImage:(id)arg2;
 - (id)_newLabelAsSubview:(id)arg1 withAttributedString:(id)arg2;

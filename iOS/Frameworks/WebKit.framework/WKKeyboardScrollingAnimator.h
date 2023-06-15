@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)displayLinkFired:(id)arg1;
+- (void)stopScrollingImmediately;
 - (void)stopDisplayLink;
 - (void)startDisplayLinkIfNeeded;
 - (void)willStartInteractiveScroll;
@@ -33,7 +34,6 @@ __attribute__((visibility("hidden")))
 - (_Bool)beginWithEvent:(id)arg1;
 - (optional_383df22c)keyboardScrollForEvent:(id)arg1;
 - (void)invalidate;
-- (const struct KeyboardScrollParameters *)parameters;
 - (id)initWithScrollable:(id)arg1;
 - (id)init;
 

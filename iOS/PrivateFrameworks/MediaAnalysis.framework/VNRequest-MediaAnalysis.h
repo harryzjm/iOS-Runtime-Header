@@ -9,6 +9,7 @@
 @class NSValue;
 
 @interface VNRequest (MediaAnalysis)
++ (_Bool)mad_includeEntityNet;
 @property(readonly, nonatomic) NSValue *vcp_idealDimension;
 @end
 

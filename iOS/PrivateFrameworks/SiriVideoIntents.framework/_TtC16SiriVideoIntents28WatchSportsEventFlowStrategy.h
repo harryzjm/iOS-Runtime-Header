@@ -6,8 +6,12 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
+@class MISSING_TYPE;
+
 @interface _TtC16SiriVideoIntents28WatchSportsEventFlowStrategy : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *remoteDevice;
+    MISSING_TYPE *deviceLoggingUtil;
 }
 
 @end

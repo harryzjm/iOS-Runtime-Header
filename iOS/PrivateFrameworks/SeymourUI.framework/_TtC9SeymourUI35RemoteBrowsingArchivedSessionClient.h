@@ -10,7 +10,7 @@
 
 @interface _TtC9SeymourUI35RemoteBrowsingArchivedSessionClient : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *archivedSessionClient;
+    MISSING_TYPE *remoteBrowsingClient;
     MISSING_TYPE *remoteBrowsingSource;
 }
 

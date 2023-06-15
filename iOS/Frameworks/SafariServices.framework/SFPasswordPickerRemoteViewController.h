@@ -14,6 +14,9 @@ __attribute__((visibility("hidden")))
 + (id)exportedInterface;
 + (id)serviceViewControllerInterface;
 + (id)passwordServiceViewControllerName;
+- (void)fillVerificationCode:(id)arg1;
+- (void)fillPassword:(id)arg1;
+- (void)fillUsername:(id)arg1;
 - (void)selectedCredential:(id)arg1;
 - (_Bool)_canShowWhileLocked;
 

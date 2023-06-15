@@ -7,6 +7,7 @@
 @protocol SBDeviceApplicationSceneOverlayViewObserver;
 
 @protocol SBDeviceApplicationSceneOverlayView
+@property(readonly, nonatomic) _Bool needsCounterRotation;
 @property(nonatomic) _Bool shouldLayoutOverlayImmediatelyForContainerGeometryChange;
 @property(nonatomic) long long hostOrientation;
 - (void)removeObserver:(id <SBDeviceApplicationSceneOverlayViewObserver>)arg1;

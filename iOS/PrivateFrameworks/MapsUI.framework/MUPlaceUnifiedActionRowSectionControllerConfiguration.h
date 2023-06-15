@@ -15,6 +15,9 @@ __attribute__((visibility("hidden")))
     _Bool _shouldPerformMapsExtensionDiscovery;
     _Bool _canShowDetourTime;
     _Bool _isSearchAlongRoute;
+    _Bool _showMoreButtonIfAvailable;
+    _Bool _shouldShowContactsAction;
+    _Bool _canShowDownloadOffline;
     MKPlaceActionManager *_actionManager;
     unsigned long long _primaryButtonType;
     id <MUHeaderButtonMenuActionProvider> _moreActionsProvider;
@@ -28,9 +31,12 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool canShowDownloadOffline; // @synthesize canShowDownloadOffline=_canShowDownloadOffline;
 @property(retain, nonatomic) MUAMSResultProvider *amsResultProvider; // @synthesize amsResultProvider=_amsResultProvider;
 @property(retain, nonatomic) MUTimeExpirableLRUCache *artworkCache; // @synthesize artworkCache=_artworkCache;
 @property(retain, nonatomic) _MKPlaceActionButtonController *secondaryActionButtonController; // @synthesize secondaryActionButtonController=_secondaryActionButtonController;
+@property(nonatomic) _Bool shouldShowContactsAction; // @synthesize shouldShowContactsAction=_shouldShowContactsAction;
+@property(nonatomic) _Bool showMoreButtonIfAvailable; // @synthesize showMoreButtonIfAvailable=_showMoreButtonIfAvailable;
 @property(nonatomic) _Bool isSearchAlongRoute; // @synthesize isSearchAlongRoute=_isSearchAlongRoute;
 @property(nonatomic) _Bool canShowDetourTime; // @synthesize canShowDetourTime=_canShowDetourTime;
 @property(nonatomic) _Bool shouldPerformMapsExtensionDiscovery; // @synthesize shouldPerformMapsExtensionDiscovery=_shouldPerformMapsExtensionDiscovery;

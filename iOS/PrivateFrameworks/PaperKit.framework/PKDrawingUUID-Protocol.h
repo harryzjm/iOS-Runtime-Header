@@ -9,7 +9,7 @@
 @class NSData, NSString;
 
 @protocol PKDrawingUUID <NSObject>
-@property(nonatomic, readonly) NSData *AES128Key;
-@property(nonatomic, readonly) NSString *uniqueCacheFilePath;
+@property(readonly, copy) NSData *AES128Key;
+@property(readonly, copy) NSString *uniqueCacheFilePath;
 @end
 

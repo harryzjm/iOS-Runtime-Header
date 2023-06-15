@@ -25,8 +25,10 @@ __attribute__((visibility("hidden")))
     struct os_unfair_lock_s _readerLock;
     unsigned int _sourceVersion;
     _Bool _enforceAppStore;
+    _Bool _requiresAttributionInPhotoViewerHeader;
     struct {
         unsigned int has_enforceAppStore:1;
+        unsigned int has_requiresAttributionInPhotoViewerHeader:1;
         unsigned int read_attributionRequirements:1;
         unsigned int read_suppressAttributionLogos:1;
         unsigned int read_appAdamID:1;

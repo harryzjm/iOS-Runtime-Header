@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_UIToolbarVisualProvider.h"
+
 @class UIView, _UIBarBackground, _UIBarBackgroundLayoutLegacy;
 
 __attribute__((visibility("hidden")))
-@interface _UIToolbarVisualProviderLegacyIOS
+@interface _UIToolbarVisualProviderLegacyIOS : _UIToolbarVisualProvider
 {
     _UIBarBackground *_backgroundView;
     _UIBarBackgroundLayoutLegacy *_backgroundViewLayout;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
 @class MISSING_TYPE;
 
@@ -14,15 +14,14 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *presenter;
     MISSING_TYPE *eventHub;
     MISSING_TYPE *storefrontLocalizer;
+    MISSING_TYPE *contentSummaryView;
     MISSING_TYPE *stringBuilder;
     MISSING_TYPE *mediaTagStringBuilder;
     MISSING_TYPE *scrollView;
     MISSING_TYPE *contentView;
-    MISSING_TYPE *contentSummaryView;
     MISSING_TYPE *gridView;
     MISSING_TYPE *bottomStackView;
     MISSING_TYPE *doneButton;
-    MISSING_TYPE *shareButton;
     MISSING_TYPE *cooldownButton;
     MISSING_TYPE *ttrButton;
     MISSING_TYPE *activityRingsView;

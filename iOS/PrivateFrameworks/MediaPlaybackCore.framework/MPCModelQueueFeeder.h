@@ -32,20 +32,18 @@ __attribute__((visibility("hidden")))
     MPPropertySet *_representativeMetadataPropertySet;
     unsigned long long _backgroundTaskIdentifier;
     unsigned long long _backgroundTasks;
-    MPModelResponse<MPCModelPlaybackResponse> *_response;
     MPModelGenericObject *_fallbackSectionRepresentation;
+    MPModelResponse<MPCModelPlaybackResponse> *_response;
 }
 
 - (void).cxx_destruct;
-@property(copy, nonatomic) MPModelGenericObject *fallbackSectionRepresentation; // @synthesize fallbackSectionRepresentation=_fallbackSectionRepresentation;
 @property(readonly, nonatomic) MPModelResponse<MPCModelPlaybackResponse> *response; // @synthesize response=_response;
+@property(copy, nonatomic) MPModelGenericObject *fallbackSectionRepresentation; // @synthesize fallbackSectionRepresentation=_fallbackSectionRepresentation;
 - (id)_supplementalLibraryRequest;
 - (id)_sectionedModelObjectsRepresentationForSectionedCollection:(id)arg1;
 - (id)_equivalencySourceAdamIDForIdentifierSet:(id)arg1;
 - (void)_endBackgroundTaskAssertion;
 - (void)_beginBackgroundTaskAssertion;
-- (void)_didUpdateToResponse:(id)arg1;
-- (void)_performRequestUpdate:(CDUnknownBlockType)arg1;
 - (_Bool)section:(id)arg1 shouldShuffleExcludeItem:(id)arg2;
 - (_Bool)section:(id)arg1 supportsShuffleType:(long long)arg2;
 - (void)reloadSection:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -55,7 +53,7 @@ __attribute__((visibility("hidden")))
 - (void)loadPlaybackContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)firstItemIntersectingIdentifierSet:(id)arg1;
 - (_Bool)supportsAutoPlayForItem:(id)arg1 inSection:(id)arg2;
-@property(readonly, nonatomic) _Bool containsTransportableContent;
+- (_Bool)containsTransportableContentWithReason:(id *)arg1;
 @property(readonly, nonatomic) _Bool containsLiveStream;
 - (_Bool)canJumpToItem:(id)arg1 reason:(id *)arg2;
 @property(readonly, copy, nonatomic) NSString *rtcReportingPlayQueueSourceIdentifier;
@@ -76,6 +74,7 @@ __attribute__((visibility("hidden")))
 - (id)init;
 
 // Remaining properties
+@property(readonly, nonatomic) _Bool containsRadioContent;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;

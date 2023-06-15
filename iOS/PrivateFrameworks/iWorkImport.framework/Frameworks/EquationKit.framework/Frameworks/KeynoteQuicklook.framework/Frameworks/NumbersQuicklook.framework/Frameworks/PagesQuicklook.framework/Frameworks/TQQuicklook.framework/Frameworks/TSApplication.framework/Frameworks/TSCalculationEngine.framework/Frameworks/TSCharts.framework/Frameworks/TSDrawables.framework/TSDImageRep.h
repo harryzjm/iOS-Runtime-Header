@@ -22,11 +22,12 @@
     TSUBezierPath *_cachedRemoveBackgroundIAPath;
     _Bool _backgroundRemovalUnavailable;
     id <TSDRepTrackerDelegate> _repTrackerDelegate;
+    _Bool _userInitiatedBackgroundRemovalOperationIsRunning;
+    _Bool _autoBackgroundRemovalOperationIsRunning;
 }
 
 + (double)magicMoveAttributeMatchPercentBetweenOutgoingObject:(id)arg1 incomingObject:(id)arg2 mixingTypeContext:(id)arg3;
 - (void).cxx_destruct;
-- (id)itemsToAddToEditMenu;
 - (_Bool)canDrawShadowInOneStepWithChildren:(_Bool)arg1;
 - (_Bool)p_drawsInOneStep;
 - (id)p_validatedBitmapImageProvider;
@@ -50,9 +51,11 @@
 - (void)drawInLayerContext:(struct CGContext *)arg1;
 - (id)downloadProgressPlaceholderImage;
 - (_Bool)shouldShowCheckerboard;
+- (_Bool)wantsMediaForDrops;
 @property(readonly) TSPData *imageDataForRendering;
 - (id)layoutsForChildReps;
 - (void)willBeRemoved;
+@property(readonly, nonatomic) _Bool backgroundRemovalOperationIsRunning;
 @property(readonly, nonatomic) TSDMaskLayout *maskLayout;
 @property(readonly, nonatomic) TSDMaskInfo *maskInfo;
 @property(readonly, nonatomic) TSDImageLayout *imageLayout;

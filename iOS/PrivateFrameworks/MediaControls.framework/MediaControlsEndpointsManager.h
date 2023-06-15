@@ -53,6 +53,7 @@ __attribute__((visibility("hidden")))
 - (id)endpointControllerForRoute:(id)arg1;
 @property(readonly, nonatomic) MPAVEndpointRoute *resolvedActiveSystemRoute;
 @property(readonly, nonatomic) MPAVEndpointRoute *activeSystemRoute;
+- (void)setActiveSystemRoute:(id)arg1 requestDetails:(id)arg2;
 - (void)setActiveSystemRoute:(id)arg1 reason:(id)arg2;
 - (void)dealloc;
 - (id)initWithConfiguration:(id)arg1;

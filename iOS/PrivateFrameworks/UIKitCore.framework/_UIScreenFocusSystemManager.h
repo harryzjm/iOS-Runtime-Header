@@ -11,7 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface _UIScreenFocusSystemManager : NSObject
 {
-    _Bool _handlesFocusMovementAction;
+    _Bool _hasCarPlayFocusMovementBSActionsHandler;
     _Bool _allowsForwardingFocusMovementActions;
     UIWindowScene *_windowScene;
     _UIFocusScrollManager *_scrollManager;

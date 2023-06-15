@@ -32,8 +32,8 @@ __attribute__((visibility("hidden")))
     unsigned int _audioType;
 }
 
-+ (id)controllerForDeviceRole:(int)arg1 audioType:(unsigned int)arg2 direction:(unsigned char)arg3 streamInputID:(long long)arg4 streamToken:(long long)arg5 networkClockID:(unsigned long long)arg6;
-+ (id)defaultControllerForAudioType:(unsigned int)arg1 forDirection:(unsigned char)arg2;
++ (id)controllerForDeviceRole:(int)arg1 audioType:(unsigned int)arg2 direction:(unsigned char)arg3 operatingMode:(int)arg4 streamInputID:(long long)arg5 streamToken:(long long)arg6 networkClockID:(unsigned long long)arg7;
++ (id)defaultControllerForAudioType:(unsigned int)arg1 forDirection:(unsigned char)arg2 forOperatingMode:(int)arg3;
 @property(readonly, nonatomic) unsigned int state; // @synthesize state=_state;
 @property(nonatomic) _Bool isGKVoiceChat; // @synthesize isGKVoiceChat=_isGKVoiceChat;
 - (id)stop;
@@ -42,7 +42,7 @@ __attribute__((visibility("hidden")))
 - (id)start;
 - (void)startWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)didUpdateBasebandCodec:(const struct _VCRemoteCodecInfo *)arg1;
-- (void)didServerDie;
+- (void)serverDidDie;
 - (void)didResume;
 - (void)didSuspend;
 - (void)controllerFormatChanged:(const struct tagVCAudioFrameFormat *)arg1;
@@ -53,6 +53,7 @@ __attribute__((visibility("hidden")))
 - (void)releaseConverters;
 - (void)destroyBuffers;
 - (_Bool)createConverterForSource:(_Bool)arg1 error:(id *)arg2;
+- (void)updateVoiceActivityEnabled:(_Bool)arg1 isMediaPriorityEnabled:(_Bool)arg2;
 @property(nonatomic) _Bool spatialAudioDisabled;
 @property(readonly, nonatomic) unsigned int pullAudioSamplesCount;
 @property(nonatomic) unsigned char direction;
@@ -65,11 +66,13 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) const struct tagVCAudioFrameFormat *clientFormat;
 - (id)delegate;
 - (void)forceCleanup;
+- (void)cleanUpRealtimeDelegatesAndContext:(_Bool)arg1;
 - (void)dealloc;
 @property(readonly, nonatomic) NSDictionary *reportingStats;
-- (_Bool)reconfigureWithOperatingMode:(int)arg1 deviceRole:(int)arg2 direction:(unsigned char)arg3 streamInputID:(long long)arg4 streamToken:(long long)arg5 allowAudioRecording:(_Bool)arg6 networkClockID:(unsigned long long)arg7;
-- (void)setupClientFormatWithConfiguration:(struct _VCAudioIOInitConfiguration *)arg1;
-- (id)initWithConfiguration:(struct _VCAudioIOInitConfiguration *)arg1;
+- (_Bool)reconfigureWithConfig:(const struct tagVCAudioIOConfiguration *)arg1;
+- (void)setupClientFormatWithConfiguration:(const struct tagVCAudioIOConfiguration *)arg1;
+- (id)initWithConfiguration:(const struct tagVCAudioIOConfiguration *)arg1;
+- (void)setUpAndTransferDelegateContext:(const struct tagVCAudioIODelegateContext *)arg1 toDestinationContext:(struct tagVCAudioIODelegateContext *)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

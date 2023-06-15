@@ -26,12 +26,14 @@ __attribute__((visibility("hidden")))
 - (_Bool)inheritsCoalitionBand;
 - (_Bool)supportsLaunchingDirectly;
 - (id)validationToken;
+- (id)personaString;
 - (id)persona;
 - (id)uuid;
 - (id)hostIdentifier;
 - (id)hostIdentity;
 - (id)xpcServiceIdentifier;
 - (_Bool)isAnonymous;
+- (_Bool)isExternal;
 - (_Bool)isXPCService;
 - (unsigned char)defaultManageFlags;
 - (_Bool)isExtension;

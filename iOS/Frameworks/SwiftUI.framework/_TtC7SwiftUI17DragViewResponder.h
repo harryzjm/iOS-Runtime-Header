@@ -10,6 +10,7 @@
 {
     MISSING_TYPE *prefersFullSizeDragPreviews;
     MISSING_TYPE *dragItemGroupID;
+    MISSING_TYPE *dragPreviewMode;
     MISSING_TYPE *modifier;
     MISSING_TYPE *cachedContext;
 }

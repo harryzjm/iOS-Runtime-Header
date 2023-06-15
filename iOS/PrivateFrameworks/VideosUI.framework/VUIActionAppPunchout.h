@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSURL, VUIAppContext;
+@class NSDictionary, NSURL, VUIAppContext;
 
 __attribute__((visibility("hidden")))
 @interface VUIActionAppPunchout
@@ -12,13 +12,16 @@ __attribute__((visibility("hidden")))
     _Bool _isSensitiveURL;
     NSURL *_punchoutURL;
     VUIAppContext *_appContext;
+    NSDictionary *_metrics;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSDictionary *metrics; // @synthesize metrics=_metrics;
 @property(nonatomic) __weak VUIAppContext *appContext; // @synthesize appContext=_appContext;
 @property(readonly, nonatomic) _Bool isSensitiveURL; // @synthesize isSensitiveURL=_isSensitiveURL;
 @property(readonly, nonatomic) NSURL *punchoutURL; // @synthesize punchoutURL=_punchoutURL;
 - (void)_openPunchoutURL:(id)arg1;
+- (id)_addMusicAppMetricsToUrl:(id)arg1;
 - (void)performWithTargetResponder:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)initWithContextData:(id)arg1 appContext:(id)arg2;
 

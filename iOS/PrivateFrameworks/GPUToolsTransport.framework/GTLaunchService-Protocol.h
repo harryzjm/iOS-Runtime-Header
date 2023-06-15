@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDictionary;
+@class GTLaunchRequest;
 
 @protocol GTLaunchService
-- (void)terminateTaskForPid:(int)arg1;
-- (void)resumeTaskForPid:(int)arg1;
-- (void)symbolicatorSignatureForPid:(int)arg1 completionHandler:(void (^)(NSData *))arg2;
-- (NSDictionary *)launchReplayerWithConfiguration:(NSDictionary *)arg1;
+- (void)symbolicatorForService:(unsigned long long)arg1 completionHandler:(void (^)(NSData *))arg2;
+- (_Bool)foregroundService:(unsigned long long)arg1 error:(id *)arg2;
+- (_Bool)resumeService:(unsigned long long)arg1 error:(id *)arg2;
+- (_Bool)launchReplayService:(GTLaunchRequest *)arg1 error:(id *)arg2;
 @end
 

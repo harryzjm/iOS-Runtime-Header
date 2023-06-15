@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)prepareForReuse;
 - (void)layoutSubviews;
+- (void)posterPairDidUpdateHomePosterAppearance:(id)arg1;
 
 @end
 

@@ -6,15 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray, NSString, _EXHostSession;
+@class NSMutableArray, NSString, _EXHostConfiguration, _EXHostViewControllerSession, _EXHostViewControllerSessionConfiguration;
 @protocol OS_dispatch_source, _EXHostViewControllerProtocol;
 
 __attribute__((visibility("hidden")))
 @interface _EXHostSessionDriver : NSObject
 {
     _Bool _active;
-    _EXHostSession *_session;
-    _EXHostSession *_activeSession;
+    _EXHostViewControllerSession *_session;
+    _EXHostViewControllerSession *_activeSession;
+    _EXHostConfiguration *_retryProcessConfiguration;
+    _EXHostViewControllerSessionConfiguration *_retrySessionConfiguration;
     NSObject<OS_dispatch_source> *_deactivateSessionTimer;
     NSMutableArray *_deactivatingSessions;
     id <_EXHostViewControllerProtocol> _hostViewController;
@@ -25,8 +27,9 @@ __attribute__((visibility("hidden")))
 @property __weak id <_EXHostViewControllerProtocol> hostViewController; // @synthesize hostViewController=_hostViewController;
 @property(retain) NSMutableArray *deactivatingSessions; // @synthesize deactivatingSessions=_deactivatingSessions;
 @property(retain) NSObject<OS_dispatch_source> *deactivateSessionTimer; // @synthesize deactivateSessionTimer=_deactivateSessionTimer;
-@property(retain) _EXHostSession *activeSession; // @synthesize activeSession=_activeSession;
-@property(retain) _EXHostSession *session; // @synthesize session=_session;
+@property(retain) _EXHostViewControllerSessionConfiguration *retrySessionConfiguration; // @synthesize retrySessionConfiguration=_retrySessionConfiguration;
+@property(retain) _EXHostConfiguration *retryProcessConfiguration; // @synthesize retryProcessConfiguration=_retryProcessConfiguration;
+@property(retain) _EXHostViewControllerSession *activeSession; // @synthesize activeSession=_activeSession;
 - (_Bool)shouldAcceptXPCConnection:(id)arg1;
 - (id)hostSessionHostView:(id)arg1;
 - (void)hostSessionDidInvalidate:(id)arg1;
@@ -38,7 +41,8 @@ __attribute__((visibility("hidden")))
 - (id)makeXPCConnectionWithError:(id *)arg1;
 - (void)invalidateDeactivatingSessions;
 - (void)scheduleInvalidations;
-- (void)startSessionWithConfiguration:(id)arg1;
+@property(retain) _EXHostViewControllerSession *session; // @synthesize session=_session;
+- (void)startSessionWithProcessConfiguration:(id)arg1 configuration:(id)arg2;
 - (void)resume;
 - (void)dealloc;
 - (id)initWithHostViewController:(id)arg1;

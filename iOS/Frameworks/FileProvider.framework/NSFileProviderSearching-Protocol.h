@@ -6,10 +6,10 @@
 
 #import <FileProvider/NSObject-Protocol.h>
 
-@class NSFileProviderRequest, NSFileProviderSearchQuery;
+@class NSFileProviderRequest, NSFileProviderSearch;
 @protocol NSFileProviderEnumerator;
 
 @protocol NSFileProviderSearching <NSObject>
-- (id <NSFileProviderEnumerator>)enumeratorForSearchQuery:(NSFileProviderSearchQuery *)arg1 request:(NSFileProviderRequest *)arg2 error:(id *)arg3;
+- (id <NSFileProviderEnumerator>)enumeratorForSearch:(NSFileProviderSearch *)arg1 request:(NSFileProviderRequest *)arg2 error:(id *)arg3;
 @end
 

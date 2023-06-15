@@ -6,12 +6,20 @@
 
 #import <GeoServices/NSObject-Protocol.h>
 
-@class GEOApplicationAuditToken, GEOMapRegion, NSArray, NSDate, NSObject, NSString;
+@class GEOApplicationAuditToken, GEOMapRegion, GEOPBCompanionSubscriptionsInfo, NSArray, NSDate, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
 @protocol GEOMapDataSubscriptionPersistence <NSObject>
+- (void)fetchCompanionSubscriptionsWithIdentifiers:(NSArray *)arg1 callbackQueue:(NSObject<OS_dispatch_queue> *)arg2 completionHandler:(void (^)(NSArray *, NSError *))arg3;
+- (void)setCompanionSubscriptionInfo:(GEOPBCompanionSubscriptionsInfo *)arg1 callbackQueue:(NSObject<OS_dispatch_queue> *)arg2 completionHandler:(void (^)(NSError *))arg3;
+- (void)fetchSubscriptionsForSyncToWatchWithCallbackQueue:(NSObject<OS_dispatch_queue> *)arg1 completionHandler:(void (^)(GEOPBCompanionSubscriptionsInfo *, NSError *))arg2;
 - (void)removeSubscriptionWithIdentifier:(NSString *)arg1 callbackQueue:(NSObject<OS_dispatch_queue> *)arg2 completionHandler:(void (^)(_Bool, NSError *))arg3;
-- (void)addSubscriptionWithIdentifier:(NSString *)arg1 auditToken:(GEOApplicationAuditToken *)arg2 dataTypes:(unsigned long long)arg3 policy:(long long)arg4 region:(GEOMapRegion *)arg5 expirationDate:(NSDate *)arg6 callbackQueue:(NSObject<OS_dispatch_queue> *)arg7 completionHandler:(void (^)(GEOMapDataSubscription *, NSError *))arg8;
+- (void)addSubscriptionWithIdentifier:(NSString *)arg1 auditToken:(GEOApplicationAuditToken *)arg2 dataTypes:(unsigned long long)arg3 policy:(long long)arg4 region:(GEOMapRegion *)arg5 displayName:(NSString *)arg6 expirationDate:(NSDate *)arg7 callbackQueue:(NSObject<OS_dispatch_queue> *)arg8 completionHandler:(void (^)(GEOMapDataSubscription *, NSError *))arg9;
+- (void)fetchExpiredSubscriptionsWithIdentifiers:(NSArray *)arg1 callbackQueue:(NSObject<OS_dispatch_queue> *)arg2 completionHandler:(void (^)(NSArray *, NSError *))arg3;
 - (void)fetchSubscriptionsWithIdentifiers:(NSArray *)arg1 callbackQueue:(NSObject<OS_dispatch_queue> *)arg2 completionHandler:(void (^)(NSArray *, NSError *))arg3;
+
+@optional
+- (GEOPBCompanionSubscriptionsInfo *)companionSubscriptionInfo;
+- (void)calculateTotalSizeOfOfflineSubscriptionsWithCallbackQueue:(NSObject<OS_dispatch_queue> *)arg1 completionHandler:(void (^)(unsigned long long, NSError *))arg2;
 @end
 

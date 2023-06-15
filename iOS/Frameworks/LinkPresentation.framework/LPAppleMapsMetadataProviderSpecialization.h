@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (void)continueWithSnapshotOfMapRegion:(CDStruct_2b0c6e0b)arg1;
 - (void)continueWithLookAroundSnapshotWithOptions:(id)arg1;
 - (void)start;
+- (_Bool)isSearch;
 - (id)geocoder;
 - (void)resolveMapRegionWithCompletionHandler:(CDUnknownBlockType)arg1;
 

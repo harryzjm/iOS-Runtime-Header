@@ -9,6 +9,6 @@
 @class ARSession;
 
 @protocol ARSessionProviding <NSObject>
-@property(nonatomic, readonly) ARSession *session;
+@property(readonly) ARSession *session;
 @end
 

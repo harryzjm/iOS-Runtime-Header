@@ -10,9 +10,9 @@
 @protocol FCFeldsparIDProviderObserving;
 
 @protocol FCFeldsparIDProvider <NSObject>
+@property(readonly, copy, nonatomic) NSString *feldsparID;
 - (void)removeObserver:(id <FCFeldsparIDProviderObserving>)arg1;
 - (void)addObserver:(id <FCFeldsparIDProviderObserving>)arg1;
 - (void)registerUserInfo:(FCUserInfo *)arg1;
-@property(nonatomic, readonly) NSString *feldsparID;
 @end
 

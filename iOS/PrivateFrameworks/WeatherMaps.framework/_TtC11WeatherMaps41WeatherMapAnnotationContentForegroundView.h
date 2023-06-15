@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class MISSING_TYPE;
 
@@ -14,7 +14,8 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *model;
     MISSING_TYPE *titleLabel;
     MISSING_TYPE *iconView;
-    MISSING_TYPE *secondarySectionView;
+    MISSING_TYPE *headerSectionView;
+    MISSING_TYPE *footerSectionView;
 }
 
 - (void).cxx_destruct;

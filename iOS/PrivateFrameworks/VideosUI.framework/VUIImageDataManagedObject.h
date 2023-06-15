@@ -13,11 +13,9 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)fetchRequest;
 
 // Remaining properties
 @property(retain, nonatomic) NSData *data; // @dynamic data;
 @property(retain, nonatomic) VUIImageInfoManagedObject *imageInfo; // @dynamic imageInfo;
-
 @end
 

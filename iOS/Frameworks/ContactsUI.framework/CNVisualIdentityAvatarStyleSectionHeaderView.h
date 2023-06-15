@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UICollectionReusableView.h>
+#import <UIKitCore/UICollectionReusableView.h>
 
 @class UILabel;
 
@@ -19,7 +19,6 @@ __attribute__((visibility("hidden")))
 + (id)reuseID;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) UILabel *label; // @synthesize label=_label;
-- (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

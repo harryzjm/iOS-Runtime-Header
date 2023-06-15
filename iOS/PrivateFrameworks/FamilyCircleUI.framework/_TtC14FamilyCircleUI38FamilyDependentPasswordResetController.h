@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *hearbeatTokenKey;
     MISSING_TYPE *tokens;
     MISSING_TYPE *serverResourceLoader;
+    MISSING_TYPE *serverHookHandler;
     MISSING_TYPE *sessionConfiguration;
 }
 

@@ -6,23 +6,31 @@
 
 #import <VisionKitCore/NSObject-Protocol.h>
 
-@class NSArray, NSData, NSString, UIImage, UIView, UIViewController, VKAnalyticsEvent, VKCDataDetectorElementView, VKCImageAnalysisBaseView;
+@class NSArray, NSAttributedString, NSData, NSString, UIImage, UIView, UIViewController, VKAnalyticsEvent, VKCDataDetectorElementView, VKCImageAnalysisBaseView, VKCVisualSearchResultItem;
 @protocol RVTextQueryProtocol;
 
 @protocol VKCImageAnalysisBaseViewDelegate <NSObject>
 - (void)baseOverlayView:(VKCImageAnalysisBaseView *)arg1 analyticsEventDidOccur:(VKAnalyticsEvent *)arg2;
 - (void)triggerTapToRadar;
-- (void)submitVisualSearchUserFeedbackForReportIdentifier:(NSString *)arg1 payload:(NSData *)arg2;
+- (void)submitVisualSearchUserFeedbackForReportIdentifier:(NSString *)arg1 userFeedbackPayload:(NSData *)arg2 sfReportData:(NSData *)arg3;
 - (void)generateTextualVisualSearchResultForQueryInfo:(id <RVTextQueryProtocol>)arg1 completionHandler:(void (^)(_Bool, MADVITextLookupResult *, NSError *))arg2;
 - (void)generateVisualSearchResultForItems:(NSArray *)arg1 queryID:(unsigned long long)arg2 completionHandler:(void (^)(_Bool, VKCVisualSearchResult *, NSError *))arg3;
 - (void)baseOverlayViewDismissVisualSearchController:(VKCImageAnalysisBaseView *)arg1;
 - (void)baseOverlayView:(VKCImageAnalysisBaseView *)arg1 didTapVisualSearchIndicatorWithNormalizedBoundingBox:(struct CGRect)arg2;
+- (void)videoPreviewAvailableForBaseOverlayView:(VKCImageAnalysisBaseView *)arg1;
+- (_Bool)baseOverlayView:(VKCImageAnalysisBaseView *)arg1 shouldShowLookupForItemFromCallout:(VKCVisualSearchResultItem *)arg2;
 - (void)baseOverlayView:(VKCImageAnalysisBaseView *)arg1 livePhotoShouldPlay:(_Bool)arg2;
+- (void)baseOverlayViewSubjectInteractionInProgressDidChange:(VKCImageAnalysisBaseView *)arg1;
 - (_Bool)isBaseOverlayViewShowingLivePhoto:(VKCImageAnalysisBaseView *)arg1 delegateHasImplementation:(_Bool *)arg2;
-- (void)baseOverlayView:(VKCImageAnalysisBaseView *)arg1 prepareForCalloutAction:(SEL)arg2 competion:(void (^)(void))arg3;
+- (void)baseOverlayView:(VKCImageAnalysisBaseView *)arg1 prepareForCalloutAction:(SEL)arg2 completion:(void (^)(void))arg3;
 - (UIViewController *)presentingViewControllerForImageAnalysisInteraction;
 - (void)baseOverlayView:(VKCImageAnalysisBaseView *)arg1 didFinishTransitionToNormalizedVisibleRect:(struct CGRect)arg2;
+- (void)textSelectionDidChangeForBaseOverlayView:(VKCImageAnalysisBaseView *)arg1;
 - (_Bool)baseOverlayView:(VKCImageAnalysisBaseView *)arg1 shouldBeginInteractionAtPoint:(struct CGPoint)arg2 withTypes:(unsigned long long)arg3;
+- (_Bool)baseOverlayView:(VKCImageAnalysisBaseView *)arg1 shouldHandleShareWithRanges:(NSArray *)arg2 boundingRect:(struct CGRect)arg3 selectedText:(NSString *)arg4 selectedAttributedText:(NSAttributedString *)arg5;
+- (NSAttributedString *)baseOverlayView:(VKCImageAnalysisBaseView *)arg1 updateAttributedStringForCopy:(NSAttributedString *)arg2;
+- (NSString *)baseOverlayView:(VKCImageAnalysisBaseView *)arg1 updateStringForCopy:(NSString *)arg2;
+- (void)highlightSelectableItemsDidChangeForBaseOverlayView:(VKCImageAnalysisBaseView *)arg1;
 - (void)hasActiveTextSelectionDidChangeForBaseOverlayView:(VKCImageAnalysisBaseView *)arg1;
 - (void)baseOverlayViewDidRequestButtonStateUpdate:(VKCImageAnalysisBaseView *)arg1;
 - (void)baseOverlayViewDidCompleteSubjectAnalysis:(VKCImageAnalysisBaseView *)arg1;

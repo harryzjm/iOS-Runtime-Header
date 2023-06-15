@@ -59,6 +59,7 @@
 - (void)replaceDictatedText:(NSString *)arg1 withText:(NSString *)arg2;
 - (void)clearSelection;
 - (void)changeSelectionWithTouchAt:(struct CGPoint)arg1 withSelectionTouch:(long long)arg2 baseIsStart:(_Bool)arg3 withFlags:(long long)arg4;
+- (void)applyAutocorrection:(NSString *)arg1 toString:(NSString *)arg2 shouldUnderline:(_Bool)arg3 withCompletionHandler:(void (^)(UIWKAutocorrectionRects *))arg4;
 - (_Bool)shouldSuppressUpdateCandidateView;
 - (NSArray *)alternativesForSelectedText;
 - (NSAttributedString *)attributedMarkedText;

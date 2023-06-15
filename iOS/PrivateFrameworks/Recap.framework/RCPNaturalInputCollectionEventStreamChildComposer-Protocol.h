@@ -7,6 +7,7 @@
 #import <Recap/RCPBaseEventStreamComposer-Protocol.h>
 
 @protocol RCPNaturalInputCollectionEventStreamChildComposer <RCPBaseEventStreamComposer>
+- (void)finish;
 - (void)closeManipulatorAtLocation:(struct CGPoint)arg1 withZPosition:(double)arg2 sourceGroup:(long long)arg3 interactionMethod:(long long)arg4;
 - (void)moveManipulatorByDelta:(struct CGVector)arg1 withZDelta:(double)arg2 sourceGroup:(long long)arg3 interactionMethod:(long long)arg4;
 - (void)moveManipulatorToLocation:(struct CGPoint)arg1 withZPosition:(double)arg2 sourceGroup:(long long)arg3 interactionMethod:(long long)arg4;

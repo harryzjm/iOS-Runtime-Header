@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     double _metachronalRhythmAnimationStartTime;
     _Bool _usesDarkStyle;
     _Bool _hasSplitFontSupport;
+    UIView *_touchForwardingView;
     NSMutableArray *_familyMemberStackViews;
     UIView *_separatorView;
     UIStackView *_previewWellStackView;
@@ -43,10 +44,13 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIView *separatorView; // @synthesize separatorView=_separatorView;
 @property(retain, nonatomic) NSMutableArray *familyMemberStackViews; // @synthesize familyMemberStackViews=_familyMemberStackViews;
 @property(nonatomic) _Bool usesDarkStyle; // @synthesize usesDarkStyle=_usesDarkStyle;
+@property(retain, nonatomic) UIView *touchForwardingView; // @synthesize touchForwardingView=_touchForwardingView;
+- (id)nextResponder;
 - (void)updateRenderConfig:(id)arg1;
 - (void)updateForKeyplane:(id)arg1 key:(id)arg2;
 - (void)retestForTouchUpSelectedVariantIndexForKey:(id)arg1 atPoint:(struct CGPoint)arg2;
 - (void)retestSelectedVariantIndexForKey:(id)arg1 atPoint:(struct CGPoint)arg2;
+- (_Bool)retestSelectedVariantIndexForKey:(id)arg1 atPoint:(struct CGPoint)arg2 phase:(long long)arg3;
 - (void)layoutSubviews;
 - (void)_beginFamilyMetachronalRhythmAnimation;
 - (void)_updateReferencedKeySelectedVariantIndexBasedOnCurrentConfiguration;

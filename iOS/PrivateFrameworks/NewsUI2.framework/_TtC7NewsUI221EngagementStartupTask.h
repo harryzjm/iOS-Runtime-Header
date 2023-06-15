@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *engagementUpsellOfferManager;
     MISSING_TYPE *appReviewRequestManager;
+    MISSING_TYPE *bannerPropertiesProvider;
 }
 
 @end

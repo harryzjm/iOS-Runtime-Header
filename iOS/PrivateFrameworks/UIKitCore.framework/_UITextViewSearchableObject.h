@@ -18,7 +18,6 @@ __attribute__((visibility("hidden")))
     UITextHighlightView *_highlightView;
     _Bool _dimmingViewVisible;
     _Bool _highlightViewVisible;
-    _Bool _needsRelayoutAfterSearching;
     UIImageView *_highlightContentsImageView;
     UITextRange *_highlightedTextRange;
     UITextRange *_visuallyHighlightedTextRange;
@@ -49,7 +48,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool supportsTextReplacement;
 - (void)performTextSearchWithQueryString:(id)arg1 usingOptions:(id)arg2 resultAggregator:(id)arg3;
 - (void)_performTextSearchWithQueryString:(id)arg1 usingOptions:(id)arg2 resultHandler:(CDUnknownBlockType)arg3;
-- (CDStruct_3d581f42)_wordTerminationCharacteristicsForRange:(struct _NSRange)arg1;
+- (CDStruct_99503a0e)_wordTerminationCharacteristicsForRange:(struct _NSRange)arg1;
 - (long long)compareFoundRange:(id)arg1 toRange:(id)arg2 inDocument:(id)arg3;
 @property(readonly) UITextRange *selectedTextRange;
 - (id)_rangeProvider;

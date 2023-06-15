@@ -10,24 +10,23 @@ __attribute__((visibility("hidden")))
 @interface ISRecordResourceProvider
 {
     NSString *_templateType;
-    NSString *_fileExtension;
     LSRecord *_record;
+    NSString *_fileExtension;
 }
 
 - (void).cxx_destruct;
+@property(readonly) NSString *fileExtension; // @synthesize fileExtension=_fileExtension;
 @property(readonly) LSRecord *record; // @synthesize record=_record;
-@property(retain) NSString *fileExtension; // @synthesize fileExtension=_fileExtension;
 @property(retain) NSString *templateType; // @synthesize templateType=_templateType;
-- (_Bool)onlySupportsGraphicIcons;
-- (_Bool)supportsGraphicIcons;
+- (id)description;
+- (void)setPlatformWithBundle:(id)arg1;
 - (_Bool)_isAppleResource;
 - (id)symbol;
-- (unsigned long long)iconShape;
-- (id)customRecipe;
 - (id)templateIconResource;
 - (id)resourceNamed:(id)arg1;
 - (id)iconResource;
 - (void)resolveResources;
+- (id)initWithRecord:(id)arg1 fileExtension:(id)arg2 options:(unsigned long long)arg3;
 - (id)initWithRecord:(id)arg1 options:(unsigned long long)arg2;
 
 @end

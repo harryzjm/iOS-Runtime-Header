@@ -9,11 +9,11 @@
 __attribute__((visibility("hidden")))
 @interface RBPersonaManager : NSObject
 {
-    _Bool _hasUserManagement;
     _Bool _personasSupported;
     struct os_unfair_lock_s _lock;
 }
 
+- (_Bool)personaRequiredForExtensionContext:(id)arg1 serviceDict:(id)arg2;
 - (_Bool)isConcretePersona:(id)arg1;
 - (id)personalPersonaUniqueString;
 - (_Bool)personasAreSupported;

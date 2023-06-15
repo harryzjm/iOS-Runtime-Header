@@ -6,11 +6,12 @@
 
 #import <SearchFoundation/SFTitleCardSection-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSNumber, NSString, SFActionItem, SFColor, SFImage, SFRichText;
+@class NSArray, NSData, NSDictionary, NSNumber, NSString, SFActionItem, SFImage, SFRichText;
 
 @protocol SFRichTitleCardSection <SFTitleCardSection>
 @property(readonly, nonatomic) NSData *jsonData;
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property(copy, nonatomic) NSArray *buttonItems;
 @property(nonatomic) _Bool subtitleIsEmphasized;
 @property(retain, nonatomic) SFRichText *richSubtitle;
 @property(copy, nonatomic) NSString *footnote;
@@ -35,19 +36,7 @@
 @property(copy, nonatomic) NSString *ratingText;
 @property(copy, nonatomic) NSNumber *rating;
 @property(copy, nonatomic) NSString *descriptionText;
-@property(nonatomic) _Bool isCentered;
 @property(retain, nonatomic) SFImage *titleImage;
 @property(copy, nonatomic) NSString *contentAdvisory;
-@property(copy, nonatomic) NSString *subtitle;
-@property(copy, nonatomic) NSString *title;
-@property(retain, nonatomic) SFColor *backgroundColor;
-@property(nonatomic) int separatorStyle;
-@property(copy, nonatomic) NSString *type;
-@property(nonatomic) _Bool hasBottomPadding;
-@property(nonatomic) _Bool hasTopPadding;
-@property(nonatomic) _Bool canBeHidden;
-@property(copy, nonatomic) NSString *punchoutPickerDismissText;
-@property(copy, nonatomic) NSString *punchoutPickerTitle;
-@property(copy, nonatomic) NSArray *punchoutOptions;
 @end
 

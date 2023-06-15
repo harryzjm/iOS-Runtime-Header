@@ -9,8 +9,11 @@
 @class NSArray, NSString;
 
 @protocol INVocabularyUpdateService <NSObject>
+- (oneway void)askToSyncSlot:(NSString *)arg1 onBehalfOf:(NSString *)arg2;
 - (oneway void)askToSyncSlot:(NSString *)arg1;
+- (oneway void)recordVocabulary:(NSArray *)arg1 forIntentSlot:(NSString *)arg2 onBehalfOf:(NSString *)arg3 withValidationCompletion:(void (^)(_Bool))arg4;
 - (oneway void)recordVocabulary:(NSArray *)arg1 forIntentSlot:(NSString *)arg2 withValidationCompletion:(void (^)(_Bool))arg3;
+- (oneway void)deleteEverythingOnBehalfOf:(NSString *)arg1;
 - (oneway void)deleteEverything;
 @end
 

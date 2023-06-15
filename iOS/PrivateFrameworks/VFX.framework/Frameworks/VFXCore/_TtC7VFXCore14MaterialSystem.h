@@ -12,7 +12,8 @@
 {
     MISSING_TYPE *addRuntimeQuery;
     MISSING_TYPE *prepareMaterialsQuery;
-    MISSING_TYPE *rendererDependenciesQuery;
+    MISSING_TYPE *meshRendererDependenciesQuery;
+    MISSING_TYPE *quadRendererDependenciesQuery;
 }
 
 @end

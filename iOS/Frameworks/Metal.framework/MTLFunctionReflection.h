@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 
 // Remaining properties
 @property(readonly) NSArray *arguments; // @dynamic arguments;
+@property(readonly) NSArray *bindings; // @dynamic bindings;
 @property(readonly) unsigned long long primitiveKind; // @dynamic primitiveKind;
 @property(readonly) NSArray *tags; // @dynamic tags;
 

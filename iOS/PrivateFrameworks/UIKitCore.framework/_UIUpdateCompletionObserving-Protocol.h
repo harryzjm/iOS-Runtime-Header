@@ -5,6 +5,6 @@
 //
 
 @protocol _UIUpdateCompletionObserving
-- (void)_updateCompletedForModelMediaTime:(double)arg1 timing:(const struct _UIUpdateTiming *)arg2;
+- (void)_updateCompleted;
 @end
 

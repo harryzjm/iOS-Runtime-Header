@@ -7,6 +7,7 @@
 #import <CoreServices/LSApplicationExtensionRecord.h>
 
 @interface LSApplicationExtensionRecord (IconServicesAdditions)
+- (_Bool)_IS_isMessagesExtension;
 - (_Bool)_is_canProvideIconResources;
 @end
 

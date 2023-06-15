@@ -10,6 +10,7 @@
 + (id)safari_webExtensionUserContentController;
 + (id)safari_readingListFetcherUserContentController;
 + (id)safari_readerUserContentController;
++ (id)safari_privateBrowsingUserContentController;
 + (id)safari_userContentController;
 @end
 

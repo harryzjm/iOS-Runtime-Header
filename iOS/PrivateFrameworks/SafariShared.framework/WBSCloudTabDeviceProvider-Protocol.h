@@ -6,9 +6,11 @@
 
 #import <SafariShared/NSObject-Protocol.h>
 
-@class NSArray;
+@class NSArray, NSString;
+@protocol WBSCloudTabItem, WBSCloudTabProvider;
 
 @protocol WBSCloudTabDeviceProvider <NSObject>
-@property(readonly, copy, nonatomic) NSArray *syncedCloudTabDevices;
+- (_Bool)closeTab:(id <WBSCloudTabItem>)arg1 onDevice:(id <WBSCloudTabProvider>)arg2;
+- (NSArray *)syncedRemoteCloudTabDevicesForProfileWithUUID:(NSString *)arg1;
 @end
 

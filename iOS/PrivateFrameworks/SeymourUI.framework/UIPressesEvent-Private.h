@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIPressesEvent.h>
+#import <UIKitCore/UIPressesEvent.h>
 
 @interface UIPressesEvent (Private)
 @property(readonly, nonatomic) long long smu_triggeringPhysicalButtonPressType;

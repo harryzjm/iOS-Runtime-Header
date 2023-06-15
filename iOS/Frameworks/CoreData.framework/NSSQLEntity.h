@@ -41,6 +41,7 @@ __attribute__((visibility("hidden")))
     void *_odiousHashHackStorage;
     NSMutableArray *_derivedAttributes;
     NSSQLEntity_DerivedAttributesExtension *_derivedAttributeExtension;
+    NSMutableDictionary *_compositeAttributeNameToSQLProperties;
     struct __sqlentityFlags {
         unsigned int _hasAttributesWithExternalDataReferences:1;
         unsigned int _hasAttributesWithFileBackedFutures:1;

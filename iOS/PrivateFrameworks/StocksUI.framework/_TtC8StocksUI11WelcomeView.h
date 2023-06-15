@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class MISSING_TYPE;
 
@@ -19,8 +19,10 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *bullet3;
     MISSING_TYPE *continueButton;
     MISSING_TYPE *activityIndicator;
-    MISSING_TYPE *errorView;
+    MISSING_TYPE *privacyIcon;
     MISSING_TYPE *privacyLink;
+    MISSING_TYPE *onPrivacyTap;
+    MISSING_TYPE *errorView;
 }
 
 - (void).cxx_destruct;

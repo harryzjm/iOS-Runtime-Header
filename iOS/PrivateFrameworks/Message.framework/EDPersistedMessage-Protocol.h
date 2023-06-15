@@ -10,18 +10,19 @@
 @protocol EDAccount;
 
 @protocol EDPersistedMessage <EDBaseMessage>
+@property(readonly, nonatomic) _Bool isJournaled;
+@property(readonly, nonatomic) NSURL *basePath;
+@property(readonly, nonatomic) long long unsubscribeType;
+@property(retain, nonatomic) EMFollowUp *followUp;
+@property(readonly, nonatomic) id <EDAccount> accountForSender;
+@property(retain) NSDate *sendLaterDate;
+@property(retain) EMReadLater *readLater;
+@property(retain) NSDate *displayDate;
+@property(readonly, nonatomic) long long senderBucket;
+@property(readonly) unsigned long long conversationFlags;
+@property(readonly, nonatomic) long long persistedMessageID;
+@property(readonly, copy, nonatomic) NSString *summary;
+@property(readonly, copy, nonatomic) NSString *persistentID;
 - (void)setBrandIndicatorLocation:(NSURL *)arg1 andData:(NSData *)arg2;
-@property(nonatomic, readonly) NSURL *basePath;
-@property(nonatomic, readonly) long long unsubscribeType;
-@property(nonatomic, retain) EMFollowUp *followUp;
-@property(nonatomic, readonly) id <EDAccount> accountForSender;
-@property(nonatomic, copy) NSDate *sendLaterDate;
-@property(nonatomic, retain) EMReadLater *readLater;
-@property(nonatomic, copy) NSDate *displayDate;
-@property(nonatomic, readonly) long long senderBucket;
-@property(nonatomic, readonly) unsigned long long conversationFlags;
-@property(nonatomic, readonly) long long persistedMessageID;
-@property(nonatomic, readonly) NSString *summary;
-@property(nonatomic, readonly) NSString *persistentID;
 @end
 

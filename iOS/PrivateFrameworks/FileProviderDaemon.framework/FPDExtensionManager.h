@@ -6,16 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class FPDPushConnection, FPDServer, NSMapTable, NSMutableDictionary;
-@protocol OS_dispatch_group, OS_dispatch_queue;
+@class FPDPushConnection, FPDServer, LSObserver, NSMapTable, NSMutableDictionary, NSSet, NSString;
+@protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface FPDExtensionManager : NSObject
 {
     NSMutableDictionary *_providersByIdentifier;
     NSObject<OS_dispatch_queue> *_callbackQueue;
-    NSObject<OS_dispatch_group> *_providersLoadedGroup;
     id _matchingContext;
+    LSObserver *_observer;
+    NSSet *_providerUUIDs;
     NSMutableDictionary *_alternateContentsURLDictionary;
     NSMapTable *_sessionQueueForExtensionIdentifier;
     FPDPushConnection *_pushConnection;
@@ -48,20 +49,35 @@ __attribute__((visibility("hidden")))
 - (id)providerDomainsByID;
 - (id)nonEvictableSizeByProviderDomain;
 - (id)providerDomainsByIDFromExtensionsByID:(id)arg1;
-- (void)_updateProviderListForMatchingExtensions:(id)arg1 allExtensionStartedHandler:(CDUnknownBlockType)arg2;
+- (void)_updateProviderListForFilteredFPDExtensions:(id)arg1;
+- (void)_updateProviderListForMatchingExtensionRecords:(id)arg1;
+- (void)legacy_updateProviderListForMatchingExtensions:(id)arg1;
 - (id)uniquedExtensions:(id)arg1;
 - (id)extensionsByID:(id)arg1;
 - (void)migrateEnabledStateIfNecessary:(id)arg1;
+- (void)providerUpdateOnVolume:(id)arg1;
 - (void)forceSynchronousProviderUpdate;
+- (void)observerDidObserveDatabaseChange:(id)arg1;
+- (id)extensionPointRecords;
 - (void)accountsChanged:(id)arg1;
 - (void)purge:(id)arg1;
+- (void)legacy_loadProvidersAndMonitor;
+- (void)helena_loadProvidersAndMonitor;
 - (void)loadProvidersAndMonitor;
 - (id)_matchingAttributes;
-- (void)_updateWithMatchingExtensions:(id)arg1;
+- (id)extensionTypes;
+- (void)garbageCollectOnFirstLaunch;
+- (void)handleAllExtensionsStarted:(id)arg1;
 - (void)_garbageCollectRemovedProvidersForInstalledProviderIdentifiers:(id)arg1;
-- (void)garbageCollectDomainsWithIdentifiers:(id)arg1 fromDirectory:(id)arg2 isUserData:(_Bool)arg3;
+- (void)garbageCollectDomainsExceptIdentifiers:(id)arg1 fromDirectory:(id)arg2 isUserData:(_Bool)arg3;
 - (void)afterFirstDiscovery;
 - (id)initWithServer:(id)arg1 updateHandler:(CDUnknownBlockType)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UITableViewController.h>
+#import <UIKitCore/UITableViewController.h>
 
-@class NSString, PHCollection, PXPhotoKitCollectionsDataSource, PXPhotoKitCollectionsDataSourceManager, PXPhotoKitCollectionsDataSourceManagerConfiguration;
-@protocol PXImportAlbumPickerDelegate;
+@class NSString, PHCollection, PHPhotoLibrary, PXPhotoKitCollectionsDataSource, PXPhotoKitCollectionsDataSourceManager, PXPhotoKitCollectionsDataSourceManagerConfiguration;
+@protocol PXImportAlbumPickerDelegate, PXMemoryAssetsActionFactory;
 
 __attribute__((visibility("hidden")))
 @interface PUImportAddToLibraryAndAlbumsPickerViewController : UITableViewController
@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     _Bool _needsDatasourceUpdate;
     PXPhotoKitCollectionsDataSourceManagerConfiguration *_dataSourceManagerConfiguration;
     id <PXImportAlbumPickerDelegate> _delegate;
+    PHPhotoLibrary *_photoLibrary;
     PXPhotoKitCollectionsDataSource *_dataSource;
     PXPhotoKitCollectionsDataSourceManager *_dataSourceManager;
 }
@@ -27,11 +28,11 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) PXPhotoKitCollectionsDataSourceManager *dataSourceManager; // @synthesize dataSourceManager=_dataSourceManager;
 @property(retain, nonatomic) PXPhotoKitCollectionsDataSource *dataSource; // @synthesize dataSource=_dataSource;
+@property(readonly, nonatomic) PHPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
 @property(nonatomic) __weak id <PXImportAlbumPickerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) PXPhotoKitCollectionsDataSourceManagerConfiguration *dataSourceManagerConfiguration; // @synthesize dataSourceManagerConfiguration=_dataSourceManagerConfiguration;
-- (_Bool)canPresentPicker;
-- (CDUnknownBlockType)completionHandler;
-- (id)hostViewContoller;
+- (_Bool)actionPerformer:(id)arg1 presentViewController:(id)arg2;
+- (id)undoManagerForActionPerformer:(id)arg1;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)configureDataSourceManagerConfiguration:(id)arg1;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
@@ -46,6 +47,7 @@ __attribute__((visibility("hidden")))
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (id)init;
+- (id)initWithPhotoLibrary:(id)arg1;
 - (void)_dismissPicker;
 - (void)_updateDatasource;
 - (id)_userCreatredAlbumsPhotoKitConfiguration;
@@ -54,6 +56,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) id <PXMemoryAssetsActionFactory> memoryAssetsActionFactory;
 @property(readonly) Class superclass;
 
 @end

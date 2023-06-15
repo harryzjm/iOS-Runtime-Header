@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) MLModel *model; // @synthesize model=_model;
 - (id)configuration;
 - (_Bool)shouldSaturateInputBatchesForConfiguration:(id)arg1;
-- (id)inputBatchFromTextFeatures:(id)arg1 image:(id)arg2 featureWidth:(double)arg3 configuration:(id)arg4;
+- (id)inputBatchFromLineRegions:(id)arg1 image:(id)arg2 regionWidth:(double)arg3 configuration:(id)arg4 rectifier:(id)arg5;
 - (id)predictionsFromInputs:(id)arg1 options:(id)arg2 error:(id *)arg3;
 - (id)predictionFromImg_input:(id)arg1 error:(id *)arg2;
 - (id)predictionFromFeatures:(id)arg1 options:(id)arg2 error:(id *)arg3;

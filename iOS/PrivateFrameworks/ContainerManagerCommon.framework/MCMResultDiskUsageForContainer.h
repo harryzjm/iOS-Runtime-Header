@@ -7,12 +7,21 @@
 __attribute__((visibility("hidden")))
 @interface MCMResultDiskUsageForContainer
 {
+    int _personaType;
     unsigned long long _diskUsageBytes;
+    unsigned long long _descendants;
+    unsigned long long _containerClass;
 }
 
++ (id)_reportingWorkloop;
+@property(nonatomic) int personaType; // @synthesize personaType=_personaType;
+@property(nonatomic) unsigned long long containerClass; // @synthesize containerClass=_containerClass;
+@property(nonatomic) unsigned long long descendants; // @synthesize descendants=_descendants;
 @property(nonatomic) unsigned long long diskUsageBytes; // @synthesize diskUsageBytes=_diskUsageBytes;
+- (unsigned long long)_roundToTwoSignificantDigitsWithNumber:(unsigned long long)arg1;
+- (void)_report;
 - (_Bool)encodeResultOntoReply:(id)arg1;
-- (id)initWithDiskUsageBytes:(unsigned long long)arg1;
+- (id)initWithDiskUsageBytes:(unsigned long long)arg1 descendants:(unsigned long long)arg2 containerClass:(unsigned long long)arg3 personaType:(int)arg4;
 
 @end
 

@@ -11,8 +11,6 @@
 @interface RSOfflineProjection2DZNode : NSObject
 {
     RSSemanticImage *_image;
-    int _maxDensity2d;
-    int _maxDensity3d;
     struct {
         float global_max_density;
         float global_max_density_3d;
@@ -26,11 +24,6 @@
 }
 
 - (void).cxx_destruct;
-- (id)cameraImage;
-- (id)heightImage;
-- (id)semanticImage;
-- (void)reset;
-- (void)runWithPointCloud:(id)arg1 geometryMeta:(id)arg2;
 - (id)init;
 
 @end

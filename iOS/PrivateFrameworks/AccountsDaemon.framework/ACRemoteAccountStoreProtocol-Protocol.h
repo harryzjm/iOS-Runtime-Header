@@ -10,6 +10,7 @@
 
 @protocol ACRemoteAccountStoreProtocol <NSObject>
 - (void)resetDatabaseToVersion:(NSNumber *)arg1 withCompletion:(void (^)(_Bool, NSError *))arg2;
+- (void)accountsWithTypeIdentifier:(NSString *)arg1 propertyKey:(NSString *)arg2 value:(id)arg3 cacheSuffix:(NSString *)arg4 completion:(void (^)(NSArray *, NSError *))arg5;
 - (void)registerMonitorForAccountsOfTypes:(NSSet *)arg1 propertiesToPrefetch:(NSArray *)arg2 completion:(void (^)(NSArray *, NSError *))arg3;
 - (void)shutdownAccountsD:(void (^)(_Bool, NSError *))arg1;
 - (void)scheduleBackupIfNonexistent:(void (^)(_Bool, NSError *))arg1;

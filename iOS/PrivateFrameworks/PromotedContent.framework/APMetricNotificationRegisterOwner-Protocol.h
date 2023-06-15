@@ -9,6 +9,6 @@
 @protocol APMetricNotificationRegister><APMetricReceiving;
 
 @protocol APMetricNotificationRegisterOwner <NSObject>
-@property(nonatomic, readonly) id <APMetricNotificationRegister><APMetricReceiving> notificationRegistrar;
+@property(readonly, nonatomic) id <APMetricNotificationRegister><APMetricReceiving> notificationRegistrar;
 @end
 

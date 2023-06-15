@@ -7,6 +7,7 @@
 #import <MusicKit/NSObject-Protocol.h>
 
 @protocol MusicKit_SoftLinking_MPArtworkColorAnalysis <NSObject>
+@property(readonly, nonatomic) struct CGColor *musicKit_tertiaryTextColor;
 @property(readonly, nonatomic) struct CGColor *musicKit_secondaryTextColor;
 @property(readonly, nonatomic) struct CGColor *musicKit_primaryTextColor;
 @property(readonly, nonatomic) struct CGColor *musicKit_backgroundColor;

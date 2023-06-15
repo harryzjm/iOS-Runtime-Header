@@ -11,10 +11,10 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (_Bool)emitMentionResolverEvaluatedEventWithResponse:(id)arg1 WithNlId:(id)arg2 andWithResultCandidateId:(id)arg3 andWithRequester:(int)arg4;
++ (_Bool)emitMentionResolverEvaluatedEventWithResponse:(id)arg1 WithNlId:(id)arg2 andWithTrpId:(id)arg3 andWithResultCandidateId:(id)arg4 andWithRequester:(int)arg5;
 + (id)createMentionResolverEvaluatedTier1Event:(id)arg1 withNLXMetadata:(id)arg2 andLinkId:(id)arg3;
 + (id)createMentionResolverEvaluatedEvent:(id)arg1 withNLXMetadata:(id)arg2 andLinkId:(id)arg3;
-+ (_Bool)emitMentionDetectorEvaluatedEventWithResponse:(id)arg1 WithNlId:(id)arg2 andWithResultCandidateId:(id)arg3 andWithRequester:(int)arg4;
++ (_Bool)emitMentionDetectorEvaluatedEventWithResponse:(id)arg1 WithNlId:(id)arg2 andWithTrpId:(id)arg3 andWithResultCandidateId:(id)arg4 andWithRequester:(int)arg5;
 + (id)createMentionDetectorEvaluatedTier1Event:(id)arg1 withNLXMetadata:(id)arg2 andLinkId:(id)arg3;
 + (id)createMentionDetectorEvaluatedEvent:(id)arg1 withNLXMetadata:(id)arg2 andLinkId:(id)arg3;
 + (_Bool)emitEvent:(id)arg1;

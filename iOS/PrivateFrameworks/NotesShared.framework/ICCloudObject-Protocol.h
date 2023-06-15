@@ -7,7 +7,7 @@
 #import <NotesShared/ICHasDatabaseScope-Protocol.h>
 #import <NotesShared/NSObject-Protocol.h>
 
-@class CKModifyRecordsOperation, CKRecord, CKRecordID, NSArray, NSError, NSManagedObjectContext, NSManagedObjectID, NSPredicate, NSString;
+@class CKModifyRecordsOperation, CKRecord, CKRecordID, NSArray, NSError, NSManagedObjectContext, NSManagedObjectID, NSMutableDictionary, NSPredicate, NSString;
 
 @protocol ICCloudObject <NSObject, ICHasDatabaseScope>
 + (void)enumerateAllCloudObjectsInContext:(NSManagedObjectContext *)arg1 predicate:(NSPredicate *)arg2 sortDescriptors:(NSArray *)arg3 relationshipKeyPathsForPrefetching:(NSArray *)arg4 batchSize:(unsigned long long)arg5 saveAfterBatch:(_Bool)arg6 usingBlock:(void (^)(id <ICCloudObject>, _Bool *))arg7;
@@ -31,7 +31,7 @@
 - (void)objectWasFetchedButDoesNotExistInCloud;
 - (void)objectWasFetchedFromCloudWithRecord:(CKRecord *)arg1 accountID:(NSString *)arg2 force:(_Bool)arg3;
 - (void)objectWasFetchedFromCloudWithRecord:(CKRecord *)arg1 accountID:(NSString *)arg2;
-- (void)objectFailedToBePushedToCloudWithOperation:(CKModifyRecordsOperation *)arg1 recordID:(CKRecordID *)arg2 error:(NSError *)arg3;
+- (_Bool)objectFailedToBePushedToCloudWithOperation:(CKModifyRecordsOperation *)arg1 recordID:(CKRecordID *)arg2 error:(NSError *)arg3;
 - (void)objectWasPushedToCloudWithOperation:(CKModifyRecordsOperation *)arg1 serverRecord:(CKRecord *)arg2;
 - (void)objectWillBePushedToCloudWithOperation:(CKModifyRecordsOperation *)arg1;
 - (void)objectWasDeletedFromCloudByAnotherDevice;
@@ -40,12 +40,15 @@
 - (NSArray *)objectsToBeDeletedBeforeThisObject;
 - (void)deleteFromLocalDatabase;
 - (void)didDeleteUserSpecificRecordID:(CKRecordID *)arg1;
-- (void)didFailToSaveUserSpecificRecordWithID:(CKRecordID *)arg1 accountID:(NSString *)arg2 error:(NSError *)arg3;
+- (_Bool)didFailToSaveUserSpecificRecordWithID:(CKRecordID *)arg1 accountID:(NSString *)arg2 error:(NSError *)arg3;
 - (void)didSaveUserSpecificRecord:(CKRecord *)arg1;
 - (void)didFetchUserSpecificRecord:(CKRecord *)arg1 accountID:(NSString *)arg2 force:(_Bool)arg3;
-- (CKRecord *)newlyCreatedUserSpecificRecord;
-- (void)mergeDataFromRecord:(CKRecord *)arg1 accountID:(NSString *)arg2 force:(_Bool)arg3;
-- (void)mergeDataFromRecord:(CKRecord *)arg1 accountID:(NSString *)arg2;
+- (_Bool)mergeDataFromUserSpecificRecord:(CKRecord *)arg1 accountID:(NSString *)arg2;
+- (CKRecord *)makeUserSpecificCloudKitRecordForApproach:(long long)arg1;
+- (_Bool)mergeCloudKitRecord:(CKRecord *)arg1 accountID:(NSString *)arg2 approach:(long long)arg3;
+- (_Bool)mergeCloudKitRecord:(CKRecord *)arg1 accountID:(NSString *)arg2 approach:(long long)arg3 mergeableFieldState:(NSMutableDictionary *)arg4;
 - (CKRecord *)newlyCreatedRecord;
+- (CKRecord *)makeCloudKitRecordForApproach:(long long)arg1;
+- (CKRecord *)makeCloudKitRecordForApproach:(long long)arg1 mergeableFieldState:(NSMutableDictionary *)arg2;
 @end
 

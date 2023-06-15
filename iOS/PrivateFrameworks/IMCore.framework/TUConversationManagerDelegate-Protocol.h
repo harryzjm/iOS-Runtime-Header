@@ -12,6 +12,9 @@
 @protocol TUConversationManagerDelegate <NSObject>
 
 @optional
+- (void)conversationManager:(TUConversationManager *)arg1 screeningChangedForConversation:(TUConversation *)arg2;
+- (void)conversationManager:(TUConversationManager *)arg1 cameraMixedWithScreenDidChangeForConversation:(TUConversation *)arg2 fromOldConversation:(TUConversation *)arg3;
+- (void)conversationManager:(TUConversationManager *)arg1 cameraMixedWithScreenDidChangeForConversation:(TUConversation *)arg2;
 - (void)conversationManager:(TUConversationManager *)arg1 systemActivitySessionsChangedForConversation:(TUConversation *)arg2 fromOldConversation:(TUConversation *)arg3;
 - (void)conversationManager:(TUConversationManager *)arg1 systemActivitySessionsChangedForConversation:(TUConversation *)arg2;
 - (void)conversationManager:(TUConversationManager *)arg1 handoffEligibilityChangedToConversation:(TUConversation *)arg2 fromPreviousConversation:(TUConversation *)arg3;
@@ -35,8 +38,6 @@
 - (void)conversationManager:(TUConversationManager *)arg1 conversation:(TUConversation *)arg2 addedMembersLocally:(NSSet *)arg3;
 - (void)conversationManager:(TUConversationManager *)arg1 conversation:(TUConversation *)arg2 participant:(TUConversationParticipant *)arg3 addedNotice:(TUConversationNotice *)arg4;
 - (void)conversationManager:(TUConversationManager *)arg1 changedActivityAuthorizationForBundleIdentifier:(NSString *)arg2;
-- (void)conversationManager:(TUConversationManager *)arg1 conversation:(TUConversation *)arg2 remoteParticipantWithIdentifier:(unsigned long long)arg3 updatedVideoEnabled:(_Bool)arg4;
-- (void)conversationManager:(TUConversationManager *)arg1 conversation:(TUConversation *)arg2 remoteParticipantWithIdentifier:(unsigned long long)arg3 updatedAudioEnabled:(_Bool)arg4;
 - (void)conversationManager:(TUConversationManager *)arg1 conversation:(TUConversation *)arg2 receivedActivitySessionEvent:(TUConversationActivityEvent *)arg3;
 - (void)conversationManager:(TUConversationManager *)arg1 migratingFromConversation:(TUConversation *)arg2 toConversation:(TUConversation *)arg3;
 - (void)serverDisconnectedForConversationManager:(TUConversationManager *)arg1;

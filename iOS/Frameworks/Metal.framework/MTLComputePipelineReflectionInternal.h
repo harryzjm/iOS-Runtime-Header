@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 - (id)builtInArguments;
 - (id)bindings;
 - (id)arguments;
+- (void)setConstantSamplerDescriptorsFromBitmasks:(unsigned long long *)arg1 stride:(unsigned int)arg2 count:(unsigned long long)arg3;
 - (void)setConstantSamplerDescriptorsFromBitmasks:(unsigned long long *)arg1 count:(unsigned long long)arg2;
 - (void)setConstantSamplerUniqueIdentifiers:(id)arg1;
 - (id)constantSamplerDescriptors;

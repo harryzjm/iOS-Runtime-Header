@@ -7,6 +7,8 @@
 #import <Network/NSObject-Protocol.h>
 
 @protocol NWURLSessionRequestBodyProvider <NSObject>
+@property(readonly, nonatomic) long long countOfBytesSent;
+- (void)close;
 - (void)readMinimumIncompleteLength:(unsigned long long)arg1 maximumLength:(unsigned long long)arg2 completionHandler:(void (^)(NSObject<OS_dispatch_data> *, _Bool, NSError *))arg3;
 @end
 

@@ -24,10 +24,11 @@ __attribute__((visibility("hidden")))
 - (void)removeAutomaticPasswordElementsInFrame:(id)arg1 focusedPasswordControlUniqueID:(id)arg2 passwordControlUniqueIDs:(id)arg3;
 - (void)substitutePasswordElementsWithAutomaticPasswordElementsInFrame:(id)arg1 formID:(long long)arg2 focusedPasswordControlUniqueID:(id)arg3 passwordControlUniqueIDs:(id)arg4 automaticPassword:(id)arg5 blurAfterSubstitution:(_Bool)arg6 completionHandler:(CDUnknownBlockType)arg7;
 - (void)clearAutoFillMetadata;
-- (void)collectMetadataForTextField:(id)arg1 inFrame:(id)arg2 atURL:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)getMetadataForTextField:(id)arg1 inFrame:(id)arg2 atURL:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)collectFormMetadataForPageLevelAutoFillAtURL:(id)arg1;
 - (void)collectFormMetadataForPrefillingAtURL:(id)arg1;
 - (void)collectURLsForPrefillingAtURL:(id)arg1;
+- (void)clearFieldsAndSetFormControlsToNotAutoFilled:(id)arg1 inFrame:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setFormControls:(id)arg1 areAutoFilled:(_Bool)arg2 andClearField:(id)arg3 inFrame:(id)arg4;
 - (void)focusFormForStreamlinedLogin:(long long)arg1 inFrame:(id)arg2;
 - (void)autoFillOneTimeCodeFieldsInFrame:(id)arg1 withValue:(id)arg2 shouldSubmit:(_Bool)arg3;

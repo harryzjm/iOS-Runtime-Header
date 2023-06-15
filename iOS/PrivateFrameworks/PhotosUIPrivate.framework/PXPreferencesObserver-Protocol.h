@@ -4,9 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <PhotosUIPrivate/NSObject-Protocol.h>
-
-@protocol PXPreferencesObserver <NSObject>
+@protocol PXPreferencesObserver
 - (void)preferencesDidChange;
 @end
 

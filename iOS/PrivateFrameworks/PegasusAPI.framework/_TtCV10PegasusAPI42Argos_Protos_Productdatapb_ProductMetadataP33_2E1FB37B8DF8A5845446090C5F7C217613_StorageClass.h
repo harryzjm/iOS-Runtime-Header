@@ -24,6 +24,8 @@
     MISSING_TYPE *_ingredientString;
     MISSING_TYPE *_ingredients;
     MISSING_TYPE *_msrp;
+    MISSING_TYPE *_metadataType;
+    MISSING_TYPE *_metadataSource;
 }
 
 @end

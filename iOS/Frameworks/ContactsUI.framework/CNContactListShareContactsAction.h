@@ -36,6 +36,8 @@ __attribute__((visibility("hidden")))
 - (_Bool)_customizationAvailableForActivityViewController:(id)arg1;
 - (id)_customizationGroupsForActivityViewController:(id)arg1;
 - (id)activityItemForContacts:(id)arg1;
+- (void)presentShareSheet;
+- (void)presentFilterFieldPicker;
 - (void)setupForContactFieldPicker;
 - (_Bool)editRequiresAuthorization;
 - (void)performAction;

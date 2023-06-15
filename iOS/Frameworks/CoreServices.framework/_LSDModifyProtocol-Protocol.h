@@ -6,12 +6,13 @@
 
 #import <CoreServices/LSInstallationServiceProtocol-Protocol.h>
 
-@class LSRegistrationInfo, NSArray, NSData, NSDictionary, NSSet, NSString, NSURL, NSUUID;
+@class LSPrecondition, LSRegistrationInfo, NSArray, NSData, NSDictionary, NSSet, NSString, NSURL, NSUUID;
 
 @protocol _LSDModifyProtocol <LSInstallationServiceProtocol>
+- (void)forceSaveForTestingWithCompletion:(void (^)(NSError *))arg1;
 - (void)performUpdateOfPersonasOfBundleID:(NSString *)arg1 toPersonaUniqueStrings:(NSSet *)arg2 operationUUID:(NSUUID *)arg3 reply:(void (^)(id <_LSPendingSaveToken>, NSError *))arg4;
-- (void)performPostUninstallationUnregistrationOfBundleID:(NSString *)arg1 operationUUID:(NSUUID *)arg2 unregisterType:(unsigned int)arg3 reply:(void (^)(id <_LSPendingSaveToken>, NSError *))arg4;
-- (void)performPostInstallationRegistration:(NSArray *)arg1 operationUUID:(NSUUID *)arg2 reply:(void (^)(LSRecordPromise *, id <_LSPendingSaveToken>, NSError *))arg3;
+- (void)performPostUninstallationUnregistrationOfBundleID:(NSString *)arg1 operationUUID:(NSUUID *)arg2 unregisterType:(unsigned int)arg3 precondition:(LSPrecondition *)arg4 reply:(void (^)(id <_LSPendingSaveToken>, NSError *))arg5;
+- (void)performPostInstallationRegistration:(NSArray *)arg1 personaUniqueStrings:(NSArray *)arg2 operationUUID:(NSUUID *)arg3 reply:(void (^)(LSRecordPromise *, id <_LSPendingSaveToken>, NSError *))arg4;
 - (void)setPreferenceValueForCallingApplication:(id)arg1 forKey:(NSString *)arg2 completionHandler:(void (^)(_Bool, NSError *))arg3;
 - (void)setPreferenceValue:(id)arg1 forKey:(NSString *)arg2 forApplicationAtURL:(NSURL *)arg3 completionHandler:(void (^)(_Bool, NSError *))arg4;
 - (void)garbageCollectDatabaseWithCompletionHandler:(void (^)(_Bool, NSError *))arg1;

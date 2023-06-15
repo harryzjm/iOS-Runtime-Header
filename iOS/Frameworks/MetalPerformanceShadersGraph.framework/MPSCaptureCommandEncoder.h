@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
+#import "MPSGraphObject.h"
 
 @class MPSGraphCaptureContext, NSString;
 @protocol MTLComputeCommandEncoder, MTLDevice;
 
-@interface MPSCaptureCommandEncoder : NSObject
+@interface MPSCaptureCommandEncoder : MPSGraphObject
 {
     id <MTLComputeCommandEncoder> _encoder;
     MPSGraphCaptureContext *_captureContext;

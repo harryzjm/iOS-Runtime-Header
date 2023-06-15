@@ -9,6 +9,6 @@
 @class NSString;
 
 @protocol FBKDiffableCell <NSObject>
-@property(nonatomic, copy) NSString *itemIdentifier;
+@property(retain, nonatomic) NSString *itemIdentifier;
 @end
 

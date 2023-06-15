@@ -11,5 +11,6 @@
 @optional
 @property(nonatomic, getter=isShowingAccountManagerLockedView) _Bool showingAccountManagerLockedView;
 @property(readonly, nonatomic) _Bool shouldSuppressAccountManagerLockedView;
+- (void)updateUserAuthenticationState:(_Bool)arg1;
 @end
 

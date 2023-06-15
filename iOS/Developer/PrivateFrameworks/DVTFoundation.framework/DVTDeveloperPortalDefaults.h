@@ -11,10 +11,8 @@
     DVTDispatchLock *_lock;
     DVTNotificationToken *_token;
     NSString *_portalServiceXcodeClientID;
-    NSString *_portalServiceXcodeServerClientID;
     NSString *_portalServiceProtocolVersion;
     NSString *_portalServiceHostname;
-    NSString *_portalServiceCertificateHostname;
     NSString *_portalServiceHostDescription;
     NSString *_portalServiceEndpoint;
     NSString *_portalServiceBasePath;
@@ -27,10 +25,8 @@
 @property(readonly, copy, nonatomic) NSString *portalServiceEndpoint; // @synthesize portalServiceEndpoint=_portalServiceEndpoint;
 @property(readonly, copy, nonatomic) NSString *portalServiceHostDescription; // @synthesize portalServiceHostDescription=_portalServiceHostDescription;
 - (id)descriptionForPortalServiceHostName;
-@property(readonly, copy, nonatomic) NSString *portalServiceCertificateHostname; // @synthesize portalServiceCertificateHostname=_portalServiceCertificateHostname;
 @property(readonly, copy, nonatomic) NSString *portalServiceHostname; // @synthesize portalServiceHostname=_portalServiceHostname;
 @property(readonly, copy, nonatomic) NSString *portalServiceProtocolVersion; // @synthesize portalServiceProtocolVersion=_portalServiceProtocolVersion;
-@property(readonly, copy, nonatomic) NSString *portalServiceXcodeServerClientID; // @synthesize portalServiceXcodeServerClientID=_portalServiceXcodeServerClientID;
 @property(readonly, copy, nonatomic) NSString *portalServiceXcodeClientID; // @synthesize portalServiceXcodeClientID=_portalServiceXcodeClientID;
 - (id)_stringForKey:(id)arg1 legacyKey:(id)arg2;
 - (void)dealloc;

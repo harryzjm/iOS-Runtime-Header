@@ -6,6 +6,9 @@
 
 #import <TeaUI/NSObject-Protocol.h>
 
+@class UIView;
+
 @protocol UIPopoverPresentationControllerSourceItem <NSObject>
+- (struct CGRect)frameInView:(UIView *)arg1;
 @end
 

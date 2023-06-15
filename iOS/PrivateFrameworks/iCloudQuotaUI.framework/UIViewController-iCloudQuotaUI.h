@@ -4,10 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
 @interface UIViewController (iCloudQuotaUI)
-+ (id)makeLiftUIViewControllerWithURL:(id)arg1 dataSource:(id)arg2;
-+ (id)makeLiftUIUpsellViewControllerWithURL:(id)arg1 delegate:(id)arg2;
++ (id)makeLiftUIViewControllerForController:(id)arg1 withURL:(id)arg2 dataSource:(id)arg3 presenter:(id)arg4 data:(id)arg5;
+- (id)topMostViewController;
+- (void)addChildAndPinToEdgesWithChildViewController:(id)arg1;
 @end
 

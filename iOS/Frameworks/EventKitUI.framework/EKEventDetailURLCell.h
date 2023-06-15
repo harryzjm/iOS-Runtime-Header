@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
 
 + (Class)_SGSuggestionsServiceClass;
 - (void).cxx_destruct;
-- (_Bool)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
+- (id)textView:(id)arg1 primaryActionForTextItem:(id)arg2 defaultAction:(id)arg3;
 - (id)_URLView;
 - (id)_URLTitleView;
 - (void)layoutForWidth:(double)arg1 position:(int)arg2;

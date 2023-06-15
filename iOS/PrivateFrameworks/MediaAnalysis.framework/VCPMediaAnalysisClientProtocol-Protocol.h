@@ -4,7 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class MADVideoResultsPayload;
+
 @protocol VCPMediaAnalysisClientProtocol
+- (void)handleResult:(MADVideoResultsPayload *)arg1 atRequestIdx:(unsigned long long)arg2 forRequestID:(int)arg3;
 - (void)reportProgress:(double)arg1 forRequest:(int)arg2;
 @end
 

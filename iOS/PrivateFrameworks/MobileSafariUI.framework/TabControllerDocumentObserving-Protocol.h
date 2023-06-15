@@ -6,12 +6,12 @@
 
 #import <MobileSafariUI/NSObject-Protocol.h>
 
-@class NSArray, NSIndexSet, TabController, TabDocument;
+@class NSArray, NSIndexSet, TabController, TabDocument, WBTabGroup;
 
 @protocol TabControllerDocumentObserving <NSObject>
 
 @optional
-- (void)tabControllerDidSwitchTabGroups:(TabController *)arg1;
+- (void)tabController:(TabController *)arg1 didSwitchFromTabGroup:(WBTabGroup *)arg2;
 - (void)tabControllerDidEndUpdates:(TabController *)arg1;
 - (void)tabControllerWillBeginUpdates:(TabController *)arg1;
 - (void)tabControllerDidChangeCurrentTabDocuments:(TabController *)arg1;

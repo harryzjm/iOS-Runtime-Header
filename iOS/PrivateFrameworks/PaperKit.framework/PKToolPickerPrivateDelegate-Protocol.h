@@ -6,7 +6,7 @@
 
 #import <PaperKit/NSObject-Protocol.h>
 
-@class NSUndoManager, PKToolPicker, UIColor, UIView;
+@class NSUndoManager, PKToolPicker, UIBarButtonItem, UIColor, UIView;
 
 @protocol PKToolPickerPrivateDelegate <NSObject>
 
@@ -16,6 +16,7 @@
 - (_Bool)_toolPicker:(PKToolPicker *)arg1 shouldChangeSelectedToolColor:(UIColor *)arg2;
 - (NSUndoManager *)_toolPickerUndoManager:(PKToolPicker *)arg1;
 - (void)_toolPicker:(PKToolPicker *)arg1 shouldSetVisible:(_Bool)arg2;
+- (UIBarButtonItem *)_colorPickerPopoverPresentationBarButtonItem:(PKToolPicker *)arg1;
 - (UIView *)_colorPickerPopoverPresentationSourceView:(PKToolPicker *)arg1;
 - (struct CGRect)_colorPickerPopoverPresentationSourceRect:(PKToolPicker *)arg1;
 @end

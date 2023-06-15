@@ -20,6 +20,8 @@
 - (struct CGRect)boundsRect;
 - (void)setup;
 - (_Bool)drawCurrentPageInContext:(struct CGContext *)arg1 viewScale:(double)arg2 unscaledClipRect:(struct CGRect)arg3 createPage:(_Bool)arg4;
+- (struct CGRect)monoSlideRectFromScaledClipRect:(struct CGRect)arg1 outScaledClipRect:(struct CGRect *)arg2;
+- (_Bool)monoShouldPrintComments;
 - (void)p_preparePrintHelperIfNeeded;
 - (_Bool)incrementPage;
 - (unsigned long long)pageCount;

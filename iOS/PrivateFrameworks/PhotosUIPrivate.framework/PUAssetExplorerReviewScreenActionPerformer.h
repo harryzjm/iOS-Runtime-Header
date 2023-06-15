@@ -6,19 +6,19 @@
 
 #import "PUAssetActionPerformer.h"
 
-@class PUActivityProgressController;
+@class PXActivityProgressController;
 
 __attribute__((visibility("hidden")))
 @interface PUAssetExplorerReviewScreenActionPerformer : PUAssetActionPerformer
 {
     CDUnknownBlockType _performUserInteractionTaskBlock;
-    PUActivityProgressController *__requestProgressController;
+    PXActivityProgressController *__requestProgressController;
 }
 
 + (_Bool)shouldEnableOnAsset:(id)arg1 inAssetCollection:(id)arg2;
 + (_Bool)canPerformOnAsset:(id)arg1 inAssetCollection:(id)arg2;
 - (void).cxx_destruct;
-@property(retain, nonatomic, setter=_setRequestProgressController:) PUActivityProgressController *_requestProgressController; // @synthesize _requestProgressController=__requestProgressController;
+@property(retain, nonatomic, setter=_setRequestProgressController:) PXActivityProgressController *_requestProgressController; // @synthesize _requestProgressController=__requestProgressController;
 @property(copy, nonatomic) CDUnknownBlockType performUserInteractionTaskBlock; // @synthesize performUserInteractionTaskBlock=_performUserInteractionTaskBlock;
 - (void)_showFailedReviewAssetRequestAlert;
 - (void)_handleProgressControllerCanceled:(id)arg1;

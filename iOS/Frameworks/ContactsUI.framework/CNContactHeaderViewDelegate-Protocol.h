@@ -6,15 +6,24 @@
 
 #import <ContactsUI/NSObject-Protocol.h>
 
-@class CNContactHeaderView, CNContactViewCache, NSData, NSString, UIViewController;
+@class CNContactHeaderView, CNContactViewCache, NSArray, NSData, NSString, UIColor, UIImage, UIViewController;
 
 @protocol CNContactHeaderViewDelegate <NSObject>
 - (CNContactViewCache *)contactViewCache;
+- (double)navigationBarHeight;
+- (struct UIEdgeInsets)headerViewSafeAreaInsets;
+- (_Bool)isOrientationPhoneLandscape;
+- (void)headerViewDidChangeHeight:(CNContactHeaderView *)arg1;
 - (void)headerView:(CNContactHeaderView *)arg1 didAcceptDropOfImageData:(NSData *)arg2;
 - (_Bool)isNicknameProhibited;
 - (void)headerViewDidPickPreferredChannel:(NSString *)arg1;
 - (UIViewController *)viewControllerForHeaderView:(CNContactHeaderView *)arg1;
 - (void)headerViewDidUpdateLabelSizes;
 - (void)headerPhotoDidUpdate;
+
+@optional
+- (void)headerView:(CNContactHeaderView *)arg1 didSetNameLabelColor:(UIColor *)arg2;
+- (void)headerView:(CNContactHeaderView *)arg1 didSetBackgroundAsGradientColors:(NSArray *)arg2;
+- (void)headerView:(CNContactHeaderView *)arg1 didSetBackgroundAsPosterSnapshotImage:(UIImage *)arg2;
 @end
 

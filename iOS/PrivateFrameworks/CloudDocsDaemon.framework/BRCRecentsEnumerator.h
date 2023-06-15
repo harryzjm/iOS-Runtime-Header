@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class BRCAccountSession, NSString, br_pacer, brc_task_tracker;
+@class BRCAccountSession, BRCPQLConnection, NSString, br_pacer, brc_task_tracker;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -14,14 +14,15 @@ __attribute__((visibility("hidden")))
 {
     BRCAccountSession *_session;
     NSObject<OS_dispatch_queue> *_queue;
+    BRCPQLConnection *_indexingDB;
     br_pacer *_pacer;
     _Bool _readyForIndexing;
     unsigned long long _flushedNotifRank;
     brc_task_tracker *_tracker;
 }
 
-+ (void)dropRecentsForSession:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (void)dropLegacyCoreSpotlightIndexIfNeededWithCompletionHandler:(CDUnknownBlockType)arg1;
++ (void)dropRecentsForSession:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
 - (void)dealloc;
 @property(readonly, nonatomic) _Bool isCancelled;
@@ -40,8 +41,8 @@ __attribute__((visibility("hidden")))
 - (void)_readyForIndexingWithAckedRank:(unsigned long long)arg1;
 - (void)garbageCollectRanksPreceding:(unsigned long long)arg1;
 - (void)_deleteAllRanks;
-- (void)dropItemWithFileObjectID:(id)arg1 notifRank:(unsigned long long)arg2 itemIsLive:(_Bool)arg3;
 - (BOOL)computeTombstoneEntryType:(id)arg1;
+- (void)dropItemWithFileObjectID:(id)arg1 notifRank:(unsigned long long)arg2 itemIsLive:(_Bool)arg3;
 - (void)dropIndexForClientZone:(id)arg1;
 
 // Remaining properties

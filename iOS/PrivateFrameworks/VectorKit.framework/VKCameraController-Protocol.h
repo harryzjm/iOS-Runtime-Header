@@ -23,7 +23,7 @@
 @property(nonatomic) double pitch;
 @property(nonatomic) double heading;
 @property(nonatomic) double distanceFromCenterCoordinate;
-@property(nonatomic) CDStruct_c3b9c2ee centerCoordinate;
+@property(nonatomic) CDStruct_2c43369c centerCoordinate;
 - (long long)tileSize;
 - (_Bool)canZoomOutForTileSize:(long long)arg1;
 - (_Bool)canZoomInForTileSize:(long long)arg1;

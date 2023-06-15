@@ -38,7 +38,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool isInCloud;
 @property(readonly, nonatomic) _Bool representsBurst;
 @property(readonly, nonatomic, getter=isFavorite) _Bool favorite;
-@property(readonly, nonatomic) long long playbackVariation;
 @property(readonly, nonatomic) long long playbackStyle;
 @property(readonly, nonatomic) NSDate *localCreationDate;
 @property(readonly, nonatomic) NSDate *creationDate;
@@ -59,6 +58,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) CDStruct_1b6d18a9 livePhotoVideoDuration;
 @property(readonly, nonatomic) NSString *localizedGeoDescription;
 @property(readonly, nonatomic) long long originalFileSize;
+@property(readonly, nonatomic) unsigned short playbackVariation;
 @property(readonly) Class superclass;
 @property(readonly, nonatomic) unsigned long long thumbnailVersion;
 

@@ -6,7 +6,12 @@
 
 #import <UserNotificationsUIKit/MTMaterialGrouping-Protocol.h>
 
+@class UIColor;
+
 @protocol NCMaterialDisplaying <MTMaterialGrouping>
-@property(readonly, nonatomic) long long materialRecipe;
+@property(nonatomic) long long materialRecipe;
+
+@optional
+@property(copy, nonatomic) UIColor *materialTintColor;
 @end
 

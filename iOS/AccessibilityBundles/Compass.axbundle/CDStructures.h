@@ -4,18 +4,3 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#pragma mark Named Structures
-
-struct CGPoint {
-    double x;
-    double y;
-};
-
-#pragma mark Typedef'd Structures
-
-typedef struct {
-    double _field1;
-    double _field2;
-    double _field3;
-} CDStruct_39925896;
-

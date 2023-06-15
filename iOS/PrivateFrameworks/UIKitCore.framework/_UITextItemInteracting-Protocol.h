@@ -7,9 +7,15 @@
 #import <UIKitCore/UITextInput-Protocol.h>
 #import <UIKitCore/_UITextContent-Protocol.h>
 
-@class UITargetedPreview, _UITextInteractableItem;
+@class UIAction, UIMenu, UITargetedPreview, UITextItemMenuConfiguration, _UITextInteractableItem, _UITextInteractableItemCache;
+@protocol UIContextMenuInteractionAnimating;
 
 @protocol _UITextItemInteracting <UITextInput, _UITextContent>
+@property(retain, nonatomic) _UITextInteractableItemCache *_textInteractableItemCache;
+- (void)_textInteractableItem:(_UITextInteractableItem *)arg1 willDismissMenuWithAnimator:(id <UIContextMenuInteractionAnimating>)arg2;
+- (void)_textInteractableItem:(_UITextInteractableItem *)arg1 willDisplayMenuWithAnimator:(id <UIContextMenuInteractionAnimating>)arg2;
+- (UITextItemMenuConfiguration *)_menuConfigurationForTextInteractableItem:(_UITextInteractableItem *)arg1 defaultMenu:(UIMenu *)arg2;
+- (UIAction *)_primaryActionForTextInteractableItem:(_UITextInteractableItem *)arg1 defaultAction:(UIAction *)arg2;
 - (UITargetedPreview *)_targetedPreviewForTextInteractableItem:(_UITextInteractableItem *)arg1 dismissing:(_Bool)arg2;
 - (_Bool)_allowInteraction:(long long)arg1 forTextInteractableItem:(_UITextInteractableItem *)arg2;
 - (_UITextInteractableItem *)_textInteractableItemAtPoint:(struct CGPoint)arg1 precision:(unsigned long long)arg2;

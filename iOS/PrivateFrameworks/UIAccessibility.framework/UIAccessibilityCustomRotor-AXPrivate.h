@@ -9,5 +9,6 @@
 @interface UIAccessibilityCustomRotor (AXPrivate)
 - (id)_accessibilityAXAttributedName;
 @property(nonatomic) _Bool visibleInTouchRotor;
+@property(nonatomic) long long linkCount;
 @end
 

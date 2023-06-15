@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
+#import "CKSQLiteTableEntry.h"
 
-@class NSData, NSDate, NSNumber, NSString, NSUUID;
+@class NSData, NSDate, NSNumber, NSObject, NSString, NSUUID;
 @protocol NSCoding;
 
-@interface CKSQLiteKeyValueTableEntry : NSObject
+@interface CKSQLiteKeyValueTableEntry : CKSQLiteTableEntry
 {
     NSNumber *_scope;
     NSString *_scopeIdentifier;
@@ -32,7 +32,6 @@
 @property(retain, nonatomic) NSString *key; // @synthesize key=_key;
 @property(retain, nonatomic) NSString *scopeIdentifier; // @synthesize scopeIdentifier=_scopeIdentifier;
 @property(retain, nonatomic) NSNumber *scope; // @synthesize scope=_scope;
-- (id)description;
 
 @end
 

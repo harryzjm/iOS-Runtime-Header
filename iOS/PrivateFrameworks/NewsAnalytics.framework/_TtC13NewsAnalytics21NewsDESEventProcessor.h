@@ -18,6 +18,7 @@
     MISSING_TYPE *startDate;
     MISSING_TYPE *dateFormatter;
     MISSING_TYPE *cloudContext;
+    MISSING_TYPE *favoritesPersonalizer;
     MISSING_TYPE *jsonEncoder;
     MISSING_TYPE *jsonDecoder;
 }

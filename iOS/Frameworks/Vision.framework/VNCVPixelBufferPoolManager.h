@@ -10,7 +10,7 @@ __attribute__((visibility("hidden")))
 @interface VNCVPixelBufferPoolManager : NSObject
 {
     struct os_unfair_lock_s _poolsLock;
-    struct unordered_map<apple::vision::BufferSizeFormat, __CVPixelBufferPool *, std::hash<apple::vision::BufferSizeFormat>, std::equal_to<apple::vision::BufferSizeFormat>, std::allocator<std::pair<const apple::vision::BufferSizeFormat, __CVPixelBufferPool *>>> _pools;
+    struct unordered_map<apple::vision::BufferSizeFormat, __CVPixelBufferPool *, std::hash<BufferSizeFormat>, std::equal_to<apple::vision::BufferSizeFormat>, std::allocator<std::pair<const apple::vision::BufferSizeFormat, __CVPixelBufferPool *>>> _pools;
 }
 
 - (id).cxx_construct;

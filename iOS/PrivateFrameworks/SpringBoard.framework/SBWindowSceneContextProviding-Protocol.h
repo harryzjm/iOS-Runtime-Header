@@ -6,28 +6,32 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class BNBannerController, CSCoverSheetViewController, SBAlertItemsController, SBControlCenterController, SBCoverSheetPresentationManager, SBDisplayAppInteractionEventSource, SBFTraitsArbiter, SBFZStackResolver, SBFloatingDockController, SBLayoutStateTransitionCoordinator, SBLockScreenManager, SBMainDisplayLayoutStateManager, SBModalAlertPresentationCoordinator, SBModalLibraryController, SBModalUIFluidDismissGestureManager, SBReachabilitySceneController, SBSceneLayoutStateProvider, SBSceneManager, SBSwitcherController, SBSystemApertureController, SBSystemGestureManager, SBSystemPointerInteractionManager, SBTraitsPipelineManager, SBWallpaperController, SBWindowHidingManager, SBWindowScenePIPManager;
+@class BNBannerController, CSCoverSheetViewController, SBAlertItemsController, SBAmbientPresentationController, SBControlCenterController, SBCoverSheetPresentationManager, SBDisplayAppInteractionEventSource, SBFZStackResolver, SBFloatingDockController, SBLayoutStateTransitionCoordinator, SBLockScreenManager, SBLockedPointerManager, SBMainDisplayLayoutStateManager, SBMedusaHostedKeyboardWindowController, SBModalAlertPresentationCoordinator, SBModalLibraryController, SBModalUIFluidDismissGestureManager, SBReachabilitySceneController, SBRecordingIndicatorManager, SBSceneLayoutStateProvider, SBSceneManager, SBSwitcherController, SBSystemApertureController, SBSystemGestureManager, SBSystemPointerInteractionManager, SBTraitsPipelineManager, SBTransientUIInteractionManager, SBWallpaperController, SBWindowHidingManager, SBWindowScenePIPManager, TRAArbiter;
 @protocol FBSDisplayLayoutPublishing, SBAssistantSceneControlling, SBTransientOverlayPresenting, SBUILockStateProviding;
 
 @protocol SBWindowSceneContextProviding <NSObject>
+@property(readonly, nonatomic) SBSceneManager *sceneManager;
+@property(readonly, nonatomic) SBTransientUIInteractionManager *transientUIInteractionManager;
 @property(readonly, nonatomic) SBFZStackResolver *zStackResolver;
 @property(readonly, nonatomic) SBWindowHidingManager *windowHidingManager;
 @property(readonly, nonatomic) SBWallpaperController *wallpaperController;
 @property(readonly, nonatomic) id <SBTransientOverlayPresenting> transientOverlayPresenter;
 @property(readonly, nonatomic) SBTraitsPipelineManager *traitsPipelineManager;
-@property(readonly, nonatomic) SBFTraitsArbiter *traitsArbiter;
+@property(readonly, nonatomic) TRAArbiter *traitsArbiter;
 @property(readonly, nonatomic) SBSystemPointerInteractionManager *systemPointerInteractionManager;
 @property(readonly, nonatomic) SBSystemGestureManager *systemGestureManager;
 @property(readonly, nonatomic) SBSystemApertureController *systemApertureController;
 @property(readonly, nonatomic) SBSwitcherController *switcherController;
-@property(readonly, nonatomic) SBSceneManager *sceneManager;
+@property(readonly, nonatomic) SBRecordingIndicatorManager *recordingIndicatorManager;
 @property(readonly, nonatomic) SBReachabilitySceneController *reachabilityController;
 @property(readonly, nonatomic) SBWindowScenePIPManager *pictureInPictureManager;
 @property(readonly, nonatomic) SBModalUIFluidDismissGestureManager *modalUIFluidDismissGestureManager;
 @property(readonly, nonatomic) SBModalLibraryController *modalLibraryController;
 @property(readonly, nonatomic) SBModalAlertPresentationCoordinator *modalAlertPresentationCoordinator;
 @property(readonly, nonatomic) id <SBUILockStateProviding> uiLockStateProvider;
+@property(readonly, nonatomic) SBMedusaHostedKeyboardWindowController *medusaHostedKeyboardWindowController;
 @property(readonly, nonatomic) SBLockScreenManager *lockScreenManager;
+@property(readonly, nonatomic) SBLockedPointerManager *lockedPointerManager;
 @property(readonly, nonatomic) SBLayoutStateTransitionCoordinator *layoutStateTransitionCoordinator;
 @property(readonly, nonatomic) SBMainDisplayLayoutStateManager *layoutStateManager;
 @property(readonly, nonatomic) SBSceneLayoutStateProvider *layoutStateProvider;
@@ -39,6 +43,7 @@
 @property(readonly, nonatomic) BNBannerController *bannerController;
 @property(readonly, nonatomic) id <SBAssistantSceneControlling> assistantController;
 @property(readonly, nonatomic) SBDisplayAppInteractionEventSource *appInteractionEventSource;
+@property(readonly, nonatomic) SBAmbientPresentationController *ambientPresentationController;
 @property(readonly, nonatomic) SBAlertItemsController *alertItemsController;
 @end
 

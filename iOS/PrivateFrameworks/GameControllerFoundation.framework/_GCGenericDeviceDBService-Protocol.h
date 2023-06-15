@@ -6,10 +6,10 @@
 
 #import <GameControllerFoundation/NSObject-Protocol.h>
 
-@class GCFuture, GCHIDDeviceSnapshot, GCHIDUserDeviceSnapshot;
+@class GCFuture, GCHIDDeviceSnapshot;
 
 @protocol _GCGenericDeviceDBService <NSObject>
-- (GCFuture *)preparedModelForDevice:(GCHIDUserDeviceSnapshot *)arg1;
+- (GCFuture *)preparedModelForDevice:(GCHIDDeviceSnapshot *)arg1;
 - (GCFuture *)hasModelForDevice:(GCHIDDeviceSnapshot *)arg1;
 @end
 

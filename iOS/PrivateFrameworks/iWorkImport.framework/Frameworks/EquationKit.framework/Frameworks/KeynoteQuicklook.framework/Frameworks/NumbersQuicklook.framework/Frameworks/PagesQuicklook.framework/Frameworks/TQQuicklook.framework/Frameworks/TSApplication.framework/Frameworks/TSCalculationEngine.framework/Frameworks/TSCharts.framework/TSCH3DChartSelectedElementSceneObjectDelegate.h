@@ -21,7 +21,7 @@
 - (_Bool)willProcessElement:(id)arg1 sceneObject:(id)arg2;
 - (void)didProcessElements:(id)arg1 sceneObject:(id)arg2 pipeline:(id)arg3;
 - (_Bool)willProcessElements:(id)arg1 sceneObject:(id)arg2 pipeline:(id)arg3;
-- (void)didGenerateShaderEffectsForSeriesAtIndex:(const void *)arg1 effects:(id)arg2 sceneObject:(id)arg3 pipeline:(id)arg4;
+- (void)didGenerateShaderEffectsForSeriesAtIndex:(void *)arg1 effects:(id)arg2 sceneObject:(id)arg3 pipeline:(id)arg4;
 - (_Bool)willProcessSeries:(id)arg1 sceneObject:(id)arg2 pipeline:(id)arg3;
 - (id)initWithSelectedSeriesIndex:(unsigned long long)arg1;
 - (struct ElementRenderPass)renderPassForSceneObject:(id)arg1;

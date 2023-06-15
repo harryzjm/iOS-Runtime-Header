@@ -18,8 +18,11 @@
 + (void)enumerateAlternateAppearanceSlotsOfRep:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 + (id)appearanceSpecificationToPlatformAppearanceMapping;
 + (id)resultWithColorName:(id)arg1 forInfoPlistKey:(id)arg2 ifPresentInSelection:(id)arg3 softErrorWhenMissing:(id)arg4;
++ (void)setRemoteLARCARCompiler:(id)arg1;
++ (id)remoteLARCARCompiler;
 + (void)setRemoteCARCompiler:(id)arg1;
 + (id)remoteCARCompiler;
++ (_Bool)compilesCARItemsInProcessLAR:(_Bool)arg1;
 + (_Bool)compilesCARItemsInProcess;
 + (id)platform;
 + (id)adapterForPlatformNamed:(id)arg1 userInterfaceFrameworkFamily:(id)arg2 targetedDevices:(id)arg3 error:(id *)arg4;
@@ -80,6 +83,7 @@
 - (_Bool)supportsPlatformFeature:(id)arg1;
 - (id)absoluteMinimumDeploymentTarget;
 - (void)compileStandaloneSpriteAtlases:(id)arg1 options:(id)arg2 queue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)generateSymbolsForCatalogCollection:(id)arg1 options:(id)arg2 results:(id)arg3;
 - (void)compileCatalogCollection:(id)arg1 options:(id)arg2 queue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)compileBrandAssetCollectionsFromSelection:(id)arg1 options:(id)arg2 queue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)compileLaunchImageFromSelection:(id)arg1 options:(id)arg2;
@@ -88,7 +92,6 @@
 - (void)compileSelectedItems:(id)arg1 options:(id)arg2 queue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)validateApplicabilityForOnDemandResources:(id)arg1 options:(id)arg2 tagSolutionSpace:(id)arg3;
 - (id)tagSolutionSpaceFromSources:(id)arg1;
-- (void)_synthesizeAutoScaledAppIconsIfNecessaryAndModifySelection:(id)arg1 options:(id)arg2;
 - (id)selectCatalogItemsForCompilingCollection:(id)arg1 options:(id)arg2;
 - (id)effectivePlatformFamilyForCompilation;
 - (id)effectivePlatformVersionForCompilation;

@@ -31,7 +31,7 @@ __attribute__((visibility("hidden")))
 - (void)getDebugPreferences:(CDUnknownBlockType)arg1;
 - (void)getSupportedEventsWithReply:(CDUnknownBlockType)arg1;
 - (void)setSmartCoverClosed:(_Bool)arg1;
-- (void)processHIDEvent:(struct __IOHIDEvent *)arg1 mask:(unsigned long long)arg2 timestamp:(unsigned long long)arg3;
+- (void)processHIDEvent:(struct __IOHIDEvent *)arg1 mask:(unsigned long long)arg2 timestamp:(unsigned long long)arg3 senderID:(unsigned long long)arg4 displayUUID:(id)arg5;
 - (void)addClient:(id)arg1 clientConfig:(id)arg2 clientIndex:(int)arg3 unitTestMode:(_Bool)arg4 reply:(CDUnknownBlockType)arg5 subscribeForStreamingEvents:(_Bool)arg6;
 - (void)clientCountChangedFrom:(unsigned long long)arg1 to:(unsigned long long)arg2 forScheduler:(id)arg3;
 - (_Bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;

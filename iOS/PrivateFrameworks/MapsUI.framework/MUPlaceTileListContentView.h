@@ -24,7 +24,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) id <MUPlaceTileViewModel> viewModel; // @synthesize viewModel=_viewModel;
 @property(readonly, nonatomic) UIImageView *tileImageView; // @synthesize tileImageView=_tileImageView;
 - (void)_updateFonts;
-- (void)traitCollectionDidChange:(id)arg1;
 - (void)_updateAppearance;
 - (void)_setupConstraints;
 - (void)_setupViews;

@@ -7,7 +7,7 @@
 #import <NotesUI/ICGalleryTextAttachment.h>
 
 @interface ICGalleryTextAttachment (UI)
-- (_Bool)supportsThumbnailView;
+- (_Bool)supportsMultiplePresentationSizes;
 - (Class)attachmentViewClass;
 - (struct CGSize)attachmentSizeForTextContainer:(id)arg1;
 - (_Bool)useBrickView;

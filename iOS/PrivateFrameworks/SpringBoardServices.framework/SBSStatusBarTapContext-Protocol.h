@@ -4,7 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@protocol SBSStatusBarTapContext
+#import <SpringBoardServices/SBSStatusBarBackgroundActivityTapContext-Protocol.h>
+
+@protocol SBSStatusBarTapContext <SBSStatusBarBackgroundActivityTapContext>
 @property(readonly, nonatomic) unsigned long long styleOverride;
 @end
 

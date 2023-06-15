@@ -7,6 +7,7 @@
 #import <Foundation/NSProgress.h>
 
 @interface NSProgress (FPAdditions)
+- (_Bool)fp_isAccountedAsCopyProgress;
 - (_Bool)fp_isGlobalProgressForDomainAt:(id)arg1;
 - (void)fp_addChildProgress:(id)arg1 withUnitCount:(id)arg2;
 - (_Bool)fp_isOfFileOperationKind:(id)arg1 strict:(_Bool)arg2;

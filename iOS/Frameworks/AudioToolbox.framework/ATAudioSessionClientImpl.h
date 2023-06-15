@@ -50,7 +50,7 @@ __attribute__((visibility("hidden")))
 - (int)AudioSessionSetActiveImpl:(unsigned char)arg1 flags:(unsigned int)arg2;
 @property(readonly) AVAudioSession *avas;
 - (int)resetClientConfiguration;
-- (int)setClientConfiguration:(struct __CFRunLoop *)arg1 runLoopMode:(const struct __CFString *)arg2 listenerProc:(CDUnknownFunctionPointerType)arg3 userData:(void *)arg4;
+- (int)setClientConfiguration:(struct __CFRunLoop *)arg1 runLoopMode:(struct __CFString *)arg2 listenerProc:(CDUnknownFunctionPointerType)arg3 userData:(void *)arg4;
 - (_Bool)isValid;
 - (id)initWithStrongSession:(id)arg1;
 - (id)initWithSession:(id)arg1;

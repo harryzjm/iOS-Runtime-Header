@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
     unsigned int _inputPixelFormat;
     unsigned int _outputPixelFormat;
-    const void *_session;
+    void *_session;
 }
 
 - (void)dealloc;

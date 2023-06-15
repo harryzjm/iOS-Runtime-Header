@@ -27,6 +27,8 @@
 - (unsigned long long)allowedGridSizeClassesForDockForIconModel:(SBHIconModel *)arg1;
 - (unsigned long long)iconModel:(SBHIconModel *)arg1 allowedGridSizeClassesForFolderClass:(Class)arg2;
 - (struct SBHIconGridSize)iconModel:(SBHIconModel *)arg1 listWithNonDefaultSizedIconsGridSizeForFolderClass:(Class)arg2;
+- (unsigned long long)iconModel:(SBHIconModel *)arg1 listsIconLayoutBehaviorForFolderClass:(Class)arg2;
+- (long long)iconModel:(SBHIconModel *)arg1 listsFixedIconLocationBehaviorForFolderClass:(Class)arg2;
 - (_Bool)iconModel:(SBHIconModel *)arg1 listsAllowRotatedLayoutForFolderClass:(Class)arg2;
 - (unsigned long long)listRotatedLayoutClusterGridSizeClassForIconModel:(SBHIconModel *)arg1;
 - (unsigned long long)maxRowCountForFavoriteTodayListForIconModel:(SBHIconModel *)arg1;

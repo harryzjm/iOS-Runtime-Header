@@ -17,6 +17,7 @@
 - (void)invalidateMultiUserTokenForHomeIdentifier:(NSUUID *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (void)invalidateMultiUserTokenForAccount:(ACAccount *)arg1 homeUserIdentifier:(NSUUID *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 - (void)importMultiUserTokenWithInfoDictionary:(NSDictionary *)arg1 completion:(void (^)(AMSAuthenticateResult *, NSError *))arg2;
+- (void)iTunesAccountIsHomeOwner:(ACAccount *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (void)iTunesAccountForHomeWithIdentifier:(NSUUID *)arg1 completion:(void (^)(ACAccount *, NSError *))arg2;
 - (void)generateInfoWithCompletion:(void (^)(NSString *, NSError *))arg1;
 - (void)exportMultiUserTokenForHomeIdentifier:(NSString *)arg1 generateIfMissing:(_Bool)arg2 generateIfInvalid:(_Bool)arg3 completion:(void (^)(NSDictionary *, NSError *))arg4;

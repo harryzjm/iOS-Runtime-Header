@@ -22,6 +22,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (long long)personFlags;
 - (_Bool)setPersonFlags:(long long)arg1;
+- (unsigned long long)personFlagsByAddingSharedPhotoDisplayPreference:(long long)arg1 toFlags:(unsigned long long)arg2;
+- (long long)sharedPhotoDisplayPreferenceFromPersonFlags:(long long)arg1;
 - (unsigned long long)personFlagsByAddingContactType:(long long)arg1 toFlags:(unsigned long long)arg2;
 - (long long)contactTypeFromPersonFlags:(long long)arg1;
 - (id)validCountryCodes;

@@ -6,7 +6,7 @@
 
 #import <HomeKitDaemon/NSObject-Protocol.h>
 
-@class HMDAccountHandle, IDSAccount, NSArray, NSDictionary, NSObject, NSSet, NSString, NSURL;
+@class HMDAccountHandle, IDSAccount, IDSDevice, NSArray, NSDictionary, NSObject, NSSet, NSString, NSURL;
 @protocol HMDIDSServiceDelegate, OS_dispatch_queue;
 
 @protocol HMDIDSService <NSObject>
@@ -18,6 +18,7 @@
 @property(readonly, copy, nonatomic) NSArray *devices;
 @property(readonly, copy, nonatomic) NSSet *accounts;
 - (void)retrieveFirewallWithQueue:(NSObject<OS_dispatch_queue> *)arg1 completion:(void (^)(IDSFirewall *, NSError *))arg2;
+- (IDSDevice *)deviceForFromID:(NSString *)arg1;
 - (_Bool)reportSpamMessage:(NSDictionary *)arg1;
 - (_Bool)sendResourceAtURL:(NSURL *)arg1 metadata:(NSDictionary *)arg2 toDestinations:(NSSet *)arg3 priority:(long long)arg4 options:(NSDictionary *)arg5 identifier:(id *)arg6 error:(id *)arg7;
 - (_Bool)setWakingPushPriority:(long long)arg1 error:(id *)arg2;

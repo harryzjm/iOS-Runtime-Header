@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 + (id)sharedInstance;
 + (id)serviceInterface;
 - (void).cxx_destruct;
-- (void)setKeyboardAlpha:(double)arg1;
+- (void)setKeyboardAlpha:(double)arg1 force:(_Bool)arg2;
 - (id)snapshotViewForOptions:(unsigned long long)arg1;
 - (void)_initConnectionIfNeeded;
 - (void)dealloc;

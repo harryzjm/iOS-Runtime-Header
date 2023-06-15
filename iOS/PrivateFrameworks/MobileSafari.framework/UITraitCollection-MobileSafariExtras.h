@@ -16,6 +16,7 @@
 + (id)sf_traitCollectionWithAlternateTraitCollection:(id)arg1;
 @property(readonly, nonatomic) _Bool sf_usesSidebarPresentation;
 - (_Bool)sf_hasSameVisualEffectAs:(id)arg1;
+- (_Bool)sf_hasSameTextAppearanceAs:(id)arg1;
 @property(readonly, nonatomic) _Bool sf_usesVibrantAppearance;
 @property(readonly, nonatomic) UIBlurEffect *sf_backgroundBlurEffect;
 @property(readonly, nonatomic) UITraitCollection *sf_traitCollectionWithAlternateUserInterfaceColorAsPrimary;

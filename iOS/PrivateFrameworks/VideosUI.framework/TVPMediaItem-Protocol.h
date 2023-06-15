@@ -20,6 +20,7 @@
 - (NSURL *)mediaItemURL;
 
 @optional
+- (void)processFinishedDownloadWithCompletion:(void (^)(NSError *))arg1;
 - (_Bool)shouldRetryPlaybackForError:(NSError *)arg1;
 - (NSError *)replacementErrorForPlaybackError:(NSError *)arg1;
 - (void)cleanUpMediaItem;

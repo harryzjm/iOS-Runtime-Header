@@ -9,6 +9,6 @@
 @class HMDCameraSnapshotIDSStreamInitiator, NSError;
 
 @protocol HMDCameraSnapshotIDSStreamInitiatorDelegate <NSObject>
-- (void)streamInitiator:(HMDCameraSnapshotIDSStreamInitiator *)arg1 didFailToSendFile:(NSError *)arg2;
+- (void)streamInitiator:(HMDCameraSnapshotIDSStreamInitiator *)arg1 didFailToSendFileWithError:(NSError *)arg2;
 @end
 

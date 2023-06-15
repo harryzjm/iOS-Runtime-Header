@@ -9,6 +9,7 @@
 @class UILayoutGuide;
 
 @interface UIView (SBUISystemApertureStyling)
++ (void)SBUISA_performWithoutAnimationOrRetargeting:(CDUnknownBlockType)arg1;
 + (void)SBUISA_animateWithSettings:(id)arg1 animations:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)sbui_systemApertureApplyMinimumAndMaximumContentSizeCategoryForCustomLayoutMode:(_Bool)arg1;
 - (void)sb_setPresentationBoundsAndPositionFromFrame:(struct CGRect)arg1;

@@ -6,9 +6,10 @@
 
 #import <PencilKit/NSObject-Protocol.h>
 
-@class UIView;
+@class PKPaletteTooltipPresentationHandle, UIView;
 
 @protocol PKPaletteViewHosting <NSObject>
+@property(readonly, nonatomic) PKPaletteTooltipPresentationHandle *tooltipPresentationHandle;
 @property(readonly, nonatomic, getter=isPaletteVisualStateMinimized) _Bool paletteVisualStateMinimized;
 @property(nonatomic, getter=isPaletteVisible) _Bool paletteVisible;
 @property(readonly, nonatomic, getter=isPaletteDragging) _Bool paletteDragging;

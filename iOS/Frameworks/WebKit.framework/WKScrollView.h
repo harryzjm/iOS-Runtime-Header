@@ -24,6 +24,9 @@ __attribute__((visibility("hidden")))
     _Bool _scrollEnabledInternal;
     _Bool _zoomEnabledByClient;
     _Bool _zoomEnabledInternal;
+    _Bool _bouncesSetByClient;
+    _Bool _bouncesHorizontalInternal;
+    _Bool _bouncesVerticalInternal;
     struct optional<UIEdgeInsets> _contentScrollInsetFromClient;
     struct optional<UIEdgeInsets> _contentScrollInsetInternal;
     WKWebView<UIScrollViewDelegate> *_internalDelegate;
@@ -35,12 +38,18 @@ __attribute__((visibility("hidden")))
 - (void)_updateContentScrollInset;
 - (_Bool)_setContentScrollInsetInternal:(struct UIEdgeInsets)arg1;
 - (void)_setContentScrollInset:(struct UIEdgeInsets)arg1;
+- (void)handlePan:(id)arg1;
+- (void)_sendPinchGestureActionEarlyIfNeeded;
 - (void)_updateZoomability;
 - (void)_setZoomEnabledInternal:(_Bool)arg1;
 - (void)setZoomEnabled:(_Bool)arg1;
+- (void)_updateBouncability;
+- (void)_setBouncesInternal:(_Bool)arg1 vertical:(_Bool)arg2;
+- (void)setBounces:(_Bool)arg1;
 - (void)_updateScrollability;
 - (void)_setScrollEnabledInternal:(_Bool)arg1;
 - (void)setScrollEnabled:(_Bool)arg1;
+- (_Bool)isScrollEnabled;
 - (struct UIEdgeInsets)_systemContentInset;
 - (void)_adjustForAutomaticKeyboardInfo:(id)arg1 animated:(_Bool)arg2 lastAdjustment:(double *)arg3;
 - (void)_setContentSizePreservingContentOffsetDuringRubberband:(struct CGSize)arg1;

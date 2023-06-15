@@ -16,6 +16,10 @@
 @property(readonly, nonatomic) long long paragraphSpacingAfter;
 @property(readonly, nonatomic) long long paragraphSpacingBefore;
 @property(readonly, nonatomic) SXTextStyle *linkStyle;
+@property(readonly, nonatomic) double hyphenationZone;
+@property(readonly, nonatomic) unsigned long long hyphenationMinimumCharactersAfter;
+@property(readonly, nonatomic) unsigned long long hyphenationMinimumCharactersBefore;
+@property(readonly, nonatomic) unsigned long long hyphenationMinimumWordLength;
 @property(readonly, nonatomic) long long hyphenation;
 @property(readonly, nonatomic) SXDropCapStyle *dropCapStyle;
 @property(readonly, nonatomic) long long exactLineHeight;

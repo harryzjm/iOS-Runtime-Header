@@ -14,7 +14,10 @@
     MISSING_TYPE *appConfigManager;
     MISSING_TYPE *configManager;
     MISSING_TYPE *paidBundleConfigManager;
-    MISSING_TYPE *userInfo;
+    MISSING_TYPE *sportsOnboardingManager;
+    MISSING_TYPE *featureAvailability;
+    MISSING_TYPE *subscriptionController;
+    MISSING_TYPE *sportsDataService;
 }
 
 @end

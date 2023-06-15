@@ -32,8 +32,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) ShotflowDetector *shotflowDetector; // @synthesize shotflowDetector=_mMultiHeadedANFDDetector;
 - (_Bool)isDetectedObject:(id)arg1 ofAGivenObjectSubClass:(id)arg2;
 - (id)splitDetectedClassResultsIntoSubclasses:(id)arg1;
-- (void)processRecognizedObjectWithIdentifier:(id)arg1 originatingRequestSpecifier:(id)arg2 objectBoundingBox:(struct CGRect)arg3 objectConfidence:(float)arg4 detectedObjectResults:(id)arg5;
-- (_Bool)processDetectedObject:(id)arg1 originatingRequestSpecifier:(id)arg2 objectBoundingBox:(struct CGRect)arg3 imageBuffer:(id)arg4 qosClass:(unsigned int)arg5 warningRecorder:(id)arg6 detectedObjectResults:(id)arg7 error:(id *)arg8;
+- (void)processRecognizedObjectWithIdentifier:(id)arg1 originatingRequestSpecifier:(id)arg2 objectBoundingBox:(struct CGRect)arg3 objectGroupId:(id)arg4 objectConfidence:(float)arg5 detectedObjectResults:(id)arg6;
+- (_Bool)processDetectedObject:(id)arg1 originatingRequestSpecifier:(id)arg2 objectBoundingBox:(struct CGRect)arg3 objectGroupId:(id)arg4 imageBuffer:(id)arg5 qosClass:(unsigned int)arg6 warningRecorder:(id)arg7 detectedObjectResults:(id)arg8 error:(id *)arg9;
 - (id)_alignFace:(id)arg1 imageBuffer:(id)arg2 qosClass:(unsigned int)arg3 warningRecorder:(id)arg4 error:(id *)arg5;
 - (id)processRegionOfInterest:(struct CGRect)arg1 croppedPixelBuffer:(const struct __CVBuffer *)arg2 options:(id)arg3 qosClass:(unsigned int)arg4 warningRecorder:(id)arg5 error:(id *)arg6 progressHandler:(CDUnknownBlockType)arg7;
 - (_Bool)createRegionOfInterestCrop:(struct CGRect)arg1 options:(id)arg2 warningRecorder:(id)arg3 pixelBuffer:(struct __CVBuffer **)arg4 error:(id *)arg5 progressHandler:(CDUnknownBlockType)arg6;

@@ -45,8 +45,10 @@ __attribute__((visibility("hidden")))
     NSMutableArray *devicesToResetVideoZoomFactorAndMinMaxFrameDurations;
     _Bool authorizedToUseCameraInMultipleForegroundAppLayout;
     _Bool xctestAuthorizedToStealDevice;
+    _Bool continuityCameraIsWired;
     struct OpaqueFigReentrantMutex *figCaptureSourceConfigChangeCacheMutex;
     NSMutableArray *_devicesObservingVideoZoomFactor;
+    _Bool checkIfFileAlreadyExistForMFO;
 }
 
 @end

@@ -19,6 +19,9 @@
     MISSING_TYPE *paidAccessChecker;
     MISSING_TYPE *articleThumbnailImageCache;
     MISSING_TYPE *issueCoverImageCache;
+    MISSING_TYPE *puzzleService;
+    MISSING_TYPE *puzzleHistoryService;
+    MISSING_TYPE *bundleSubscriptionManager;
     MISSING_TYPE *dismissalDelayProvider;
 }
 

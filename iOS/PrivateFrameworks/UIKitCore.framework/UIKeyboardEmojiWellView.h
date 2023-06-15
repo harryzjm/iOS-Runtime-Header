@@ -38,11 +38,17 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIFont *labelFont; // @synthesize labelFont=_labelFont;
 @property(retain, nonatomic) NSArray *compositeImageRepresentation; // @synthesize compositeImageRepresentation=_compositeImageRepresentation;
 @property(nonatomic) struct CGSize compositeImageSize; // @synthesize compositeImageSize=_compositeImageSize;
+- (void)dragWillBegin:(id)arg1;
 - (void)layoutSubviews;
-- (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)fontUsingSilhouette:(unsigned long long)arg1 size:(double)arg2;
 - (void)setStringRepresentation:(id)arg1 silhouette:(unsigned long long)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -31,6 +31,8 @@
 - (id)requestOperationClasses;
 - (id)zoneIDsToLock;
 - (_Bool)requiresCKAnonymousUserIDs;
+- (void)fillOutRequestProperties:(id)arg1;
+- (id)equivalencyProperties;
 - (id)initWithOperation:(id)arg1 recordZonesToSave:(id)arg2 recordZoneIDsToDelete:(id)arg3;
 
 @end

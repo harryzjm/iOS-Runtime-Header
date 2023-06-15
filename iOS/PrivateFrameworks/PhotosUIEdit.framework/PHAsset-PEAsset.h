@@ -18,7 +18,7 @@
 - (_Bool)isInPlaceVideoTrimAllowed;
 - (_Bool)isLivePhotoVisibilityAdjustmentAllowed;
 - (_Bool)isContentAdjustmentAllowed;
-- (_Bool)isAdjusted;
+@property(readonly, nonatomic) _Bool isAdjusted;
 - (_Bool)isHighFramerateVideo;
 - (_Bool)isAnimatedImage;
 - (CDStruct_198678f7)photoIrisVideoDuration;
@@ -30,9 +30,7 @@
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly, nonatomic) double duration;
-@property(readonly, nonatomic) _Bool hasAdjustments;
 @property(readonly) unsigned long long hash;
-@property(readonly, nonatomic) unsigned long long mediaSubtypes;
 @property(readonly, nonatomic) unsigned long long pixelHeight;
 @property(readonly, nonatomic) unsigned long long pixelWidth;
 @property(readonly, nonatomic) unsigned short playbackVariation;

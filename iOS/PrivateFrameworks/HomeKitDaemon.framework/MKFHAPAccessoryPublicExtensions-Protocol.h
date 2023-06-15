@@ -5,13 +5,13 @@
 //
 
 @class NSManagedObjectContext, NSNumber, NSUUID;
-@protocol MKFCameraAccessModeBulletinRegistration, MKFCameraReachabilityBulletinRegistration, MKFCameraSignificantEventBulletinRegistration, MKFCharacteristic, MKFHome;
+@protocol MKFCameraAccessModeBulletinRegistration, MKFCameraReachabilityBulletinRegistration, MKFCameraSignificantEventBulletinRegistration, MKFCharacteristic, MKFHome, MKFUser;
 
 @protocol MKFHAPAccessoryPublicExtensions
 + (NSUUID *)modelIDForParentRelationshipTo:(id <MKFHome>)arg1;
-- (id <MKFCameraReachabilityBulletinRegistration>)cameraReachabilityBulletinRegistrationWithDeviceIdsIdentifier:(NSUUID *)arg1 context:(NSManagedObjectContext *)arg2;
-- (id <MKFCameraAccessModeBulletinRegistration>)cameraAccessModeBulletinRegistrationWithDeviceIdsIdentifier:(NSUUID *)arg1 context:(NSManagedObjectContext *)arg2;
-- (id <MKFCameraSignificantEventBulletinRegistration>)cameraSignificantEventBulletinRegistrationWithDeviceIdsIdentifier:(NSUUID *)arg1 context:(NSManagedObjectContext *)arg2;
+- (id <MKFCameraReachabilityBulletinRegistration>)cameraReachabilityBulletinRegistrationWithDeviceIdsIdentifier:(NSUUID *)arg1 user:(id <MKFUser>)arg2 context:(NSManagedObjectContext *)arg3;
+- (id <MKFCameraAccessModeBulletinRegistration>)cameraAccessModeBulletinRegistrationWithDeviceIdsIdentifier:(NSUUID *)arg1 user:(id <MKFUser>)arg2 context:(NSManagedObjectContext *)arg3;
+- (id <MKFCameraSignificantEventBulletinRegistration>)cameraSignificantEventBulletinRegistrationWithDeviceIdsIdentifier:(NSUUID *)arg1 user:(id <MKFUser>)arg2 context:(NSManagedObjectContext *)arg3;
 - (id <MKFCharacteristic>)characteristicFromInstanceID:(NSNumber *)arg1 context:(NSManagedObjectContext *)arg2;
 @end
 

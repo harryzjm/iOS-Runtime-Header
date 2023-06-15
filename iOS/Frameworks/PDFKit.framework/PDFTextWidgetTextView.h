@@ -11,6 +11,10 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (id)accessibilityTitleUIElement;
+- (id)accessibilityLabel;
+- (id)accessibilityParent;
+- (void)insertTextSuggestion:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)handleBackTab;
 - (void)handleTab;
 - (id)keyCommands;

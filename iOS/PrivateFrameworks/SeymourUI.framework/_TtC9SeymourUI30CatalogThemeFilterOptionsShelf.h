@@ -14,7 +14,7 @@
     MISSING_TYPE *identifier;
     MISSING_TYPE *coordinator;
     MISSING_TYPE *rootModality;
-    MISSING_TYPE *rootProperty;
+    MISSING_TYPE *filterRoot;
     MISSING_TYPE *row;
     MISSING_TYPE *storefrontLocalizer;
     MISSING_TYPE *themeToCategoryMap;

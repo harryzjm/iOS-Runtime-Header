@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 + (id)transitAttributionControllerForMapItem:(id)arg1 transitLine:(id)arg2;
 + (id)attributionControllerForMapItem:(id)arg1;
 + (id)attributionControllerForMapItemAttribution:(id)arg1;
++ (id)transitAttributionFormatString;
 + (id)vendorAttributionFormatString;
 - (void).cxx_destruct;
 @property(readonly, nonatomic, getter=isInteractable) _Bool interactable; // @synthesize interactable=_interactable;

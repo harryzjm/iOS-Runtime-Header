@@ -13,8 +13,10 @@ __attribute__((visibility("hidden")))
 {
     VCMediaStream *_stream;
     NSMutableArray *_streamConfigs;
+    _Bool _isOneToOneSupported;
 }
 
+@property(readonly, nonatomic) _Bool isOneToOneSupported; // @synthesize isOneToOneSupported=_isOneToOneSupported;
 @property(readonly, nonatomic) NSArray *streamConfigs; // @synthesize streamConfigs=_streamConfigs;
 @property(retain, nonatomic) VCMediaStream *stream; // @synthesize stream=_stream;
 - (void)addStreamConfig:(id)arg1;

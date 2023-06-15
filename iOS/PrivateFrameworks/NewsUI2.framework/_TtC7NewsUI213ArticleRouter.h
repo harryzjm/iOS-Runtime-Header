@@ -11,7 +11,6 @@
 @interface _TtC7NewsUI213ArticleRouter : _TtCs12_SwiftObject
 {
     MISSING_TYPE *controller;
-    MISSING_TYPE *resolver;
     MISSING_TYPE *linkHandler;
     MISSING_TYPE *actionHandler;
     MISSING_TYPE *navigator;

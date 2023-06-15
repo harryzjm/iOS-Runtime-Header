@@ -6,7 +6,7 @@
 
 #import <ShareSheet/NSObject-Protocol.h>
 
-@class LPLinkMetadata, NSArray, NSString, SFCollaborationItemsProvider, SHSheetActivitiesManager, SHSheetActivityItemsManager, SHSheetUIServiceClientContext, UIActivity, UIActivityViewController, UISDShareSheetSessionConfiguration, UIViewController;
+@class LPLinkMetadata, NSArray, NSString, SFCollaborationItemsProvider, SFUILoadedMetadataCollection, SHSheetActivitiesManager, SHSheetActivityItemsManager, SHSheetScene, SHSheetUIServiceClientContext, UIActivity, UIActivityContentContext, UIActivityViewController, UISDShareSheetSessionConfiguration, UIViewController;
 @protocol SFCollaborationItem, SFPeopleSuggestion;
 
 @protocol SHSheetSession <NSObject>
@@ -25,12 +25,15 @@
 @property(readonly, nonatomic) _Bool supportsCollaboration;
 @property(readonly, nonatomic) id <SFCollaborationItem> collaborationItem;
 @property(retain, nonatomic) id <SFPeopleSuggestion> currentPeopleSuggestion;
+@property(readonly, nonatomic) SHSheetScene *remoteScene;
+@property(readonly, nonatomic) _Bool showCustomScene;
 @property(readonly, nonatomic) _Bool useRemoteUIService;
 @property(readonly, nonatomic) _Bool showHeroActionsHorizontally;
 @property(readonly, nonatomic) _Bool instantShareSheet;
 @property(readonly, nonatomic) _Bool isAirdropOnly;
 @property(readonly, nonatomic) _Bool showOptions;
 @property(readonly, nonatomic) NSString *topContentSectionText;
+@property(readonly, nonatomic) _Bool hideSuggestions;
 @property(readonly, nonatomic) _Bool hideHeaderView;
 @property(readonly, nonatomic) _Bool configureForPhotosEdit;
 @property(readonly, nonatomic) _Bool configureForCloudSharing;
@@ -47,7 +50,7 @@
 @property(readonly, copy, nonatomic) NSArray *includedActivityTypes;
 @property(readonly, nonatomic) _Bool isExpanded;
 @property(readonly, nonatomic) long long sharingStyle;
-@property(readonly, copy, nonatomic) NSArray *metadataValuesForLinkPresentation;
+@property(readonly, nonatomic) SFUILoadedMetadataCollection *metadataCollection;
 @property(readonly, nonatomic) UISDShareSheetSessionConfiguration *configuration;
 @property(readonly, nonatomic) UIActivity *performingActivity;
 @property(readonly, nonatomic) SHSheetActivityItemsManager *activityItemsManager;
@@ -55,6 +58,7 @@
 @property(readonly, nonatomic) SFCollaborationItemsProvider *collaborationItemsProvider;
 @property(readonly, nonatomic) __weak UIActivityViewController *activityViewController;
 @property(readonly, copy, nonatomic) NSString *identifier;
+- (UIActivityContentContext *)createContentContext;
 - (SHSheetUIServiceClientContext *)createClientContext;
 @end
 

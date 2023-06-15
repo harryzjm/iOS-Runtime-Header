@@ -65,6 +65,7 @@
 - (void)getStartPoint:(struct CGPoint *)arg1 andEndPoint:(struct CGPoint *)arg2;
 - (void)saveToArchive:(void *)arg1;
 - (id)initWithArchive:(const void *)arg1;
+- (void)roundCoordinates:(double)arg1;
 - (_Bool)p_equalWidthAndHeightForSize:(struct CGSize)arg1;
 - (id)labelForSize:(struct CGSize)arg1;
 @property(readonly, nonatomic) NSString *inferredAccessibilityDescription;
@@ -79,6 +80,7 @@
 - (void)addPathToContext:(struct CGContext *)arg1;
 - (_Bool)intersectsRect:(struct CGRect)arg1 hasFill:(_Bool)arg2;
 @property(readonly, nonatomic) _Bool isLineSegment;
+@property(readonly, nonatomic) _Bool isFinite;
 @property(readonly, nonatomic) _Bool isOpen;
 - (id)pathByWobblingByUpTo:(double)arg1 subdivisions:(unsigned long long)arg2;
 - (void)clearStroke:(struct CGContext *)arg1;

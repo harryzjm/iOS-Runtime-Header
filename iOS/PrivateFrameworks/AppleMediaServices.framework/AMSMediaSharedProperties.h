@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 + (id)accessQueue;
 + (id)_propertiesForClientIdentifier:(id)arg1 account:(id)arg2 bag:(id)arg3 clientInfo:(id)arg4 URLKnownToBeTrusted:(_Bool)arg5;
 + (id)propertiesForUserNotificationSettingsTask:(id)arg1;
++ (id)propertiesForNotificationSettingsTask:(id)arg1;
 + (id)propertiesForStorefrontsTask:(id)arg1;
 + (id)propertiesForRatingsTask:(id)arg1;
 + (id)propertiesForMercuryCacheFetchTask:(id)arg1;

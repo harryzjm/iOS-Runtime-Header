@@ -10,8 +10,8 @@
 
 @interface _TtCO24IntelligencePlatformCore14ViewGeneration19HandleViewGenerator : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *inputStore;
     MISSING_TYPE *outputArtifact;
+    MISSING_TYPE *columns;
 }
 
 @end

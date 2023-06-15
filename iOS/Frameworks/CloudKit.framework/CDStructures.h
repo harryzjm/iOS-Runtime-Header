@@ -12,8 +12,23 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
+struct RangeDataVector<unsigned long, unsigned long, id, 0U, std::less<id>> {
+    struct vector<lldb_private::AugmentedRangeData<unsigned long, unsigned long, id>, std::allocator<lldb_private::AugmentedRangeData<unsigned long, unsigned long, id>>> m_entries;
+    struct less<id> m_compare;
+};
+
 struct _NSRange {
     unsigned long long _field1;
     unsigned long long _field2;
+};
+
+struct less<id>;
+
+struct vector<lldb_private::AugmentedRangeData<unsigned long, unsigned long, id>, std::allocator<lldb_private::AugmentedRangeData<unsigned long, unsigned long, id>>> {
+    void *__begin_;
+    void *__end_;
+    struct __compressed_pair<lldb_private::AugmentedRangeData<unsigned long, unsigned long, id>*, std::allocator<lldb_private::AugmentedRangeData<unsigned long, unsigned long, id>>> {
+        void *__value_;
+    } __end_cap_;
 };
 

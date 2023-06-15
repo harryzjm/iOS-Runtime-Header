@@ -36,7 +36,7 @@ __attribute__((visibility("hidden")))
 - (void)purgeExpiredEntries:(double)arg1 messageHistory:(id)arg2 participantID:(id)arg3;
 - (_Bool)isDuplicateMessageID:(id)arg1 messageHistory:(id)arg2 participantID:(id)arg3;
 - (void)sendMessage:(id)arg1 participantID:(unsigned long long)arg2 withSequence:(long long)arg3 numRetries:(long long)arg4;
-- (_Bool)sendReliableMessage:(id)arg1 participantID:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (_Bool)sendReliableMessage:(id)arg1 participantID:(unsigned long long)arg2 withOptions:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)handleSendMessageDidSucceed:(_Bool)arg1 message:(id)arg2 participantID:(id)arg3;
 - (void)sendMessage:(id)arg1 participantID:(unsigned long long)arg2;
 - (id)messageForCommand:(id)arg1;

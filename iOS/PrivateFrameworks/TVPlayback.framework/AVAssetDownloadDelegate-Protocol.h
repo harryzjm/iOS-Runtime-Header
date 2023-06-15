@@ -15,6 +15,7 @@
 - (void)URLSession:(NSURLSession *)arg1 aggregateAssetDownloadTask:(AVAggregateAssetDownloadTask *)arg2 didLoadTimeRange:(CDStruct_5c5366e1)arg3 totalTimeRangesLoaded:(NSArray *)arg4 timeRangeExpectedToLoad:(CDStruct_5c5366e1)arg5 forMediaSelection:(AVMediaSelection *)arg6;
 - (void)URLSession:(NSURLSession *)arg1 aggregateAssetDownloadTask:(AVAggregateAssetDownloadTask *)arg2 didCompleteForMediaSelection:(AVMediaSelection *)arg3;
 - (void)URLSession:(NSURLSession *)arg1 aggregateAssetDownloadTask:(AVAggregateAssetDownloadTask *)arg2 willDownloadToURL:(NSURL *)arg3;
+- (void)URLSession:(NSURLSession *)arg1 assetDownloadTask:(AVAssetDownloadTask *)arg2 willDownloadToURL:(NSURL *)arg3;
 - (void)URLSession:(NSURLSession *)arg1 assetDownloadTask:(AVAssetDownloadTask *)arg2 didResolveMediaSelection:(AVMediaSelection *)arg3;
 - (void)URLSession:(NSURLSession *)arg1 assetDownloadTask:(AVAssetDownloadTask *)arg2 didLoadTimeRange:(CDStruct_5c5366e1)arg3 totalTimeRangesLoaded:(NSArray *)arg4 timeRangeExpectedToLoad:(CDStruct_5c5366e1)arg5;
 - (void)URLSession:(NSURLSession *)arg1 assetDownloadTask:(AVAssetDownloadTask *)arg2 didFinishDownloadingToURL:(NSURL *)arg3;

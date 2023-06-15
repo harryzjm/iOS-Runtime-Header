@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     _Bool _isCelsius;
     _Bool _isKelvin;
     _Bool _doNotSuggest;
+    _Bool _formatNextSmallest;
     int _unitID;
     int _unitType;
     NSString *_name;
@@ -37,6 +38,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSMutableDictionary *localizationToCompactName; // @synthesize localizationToCompactName=_localizationToCompactName;
 @property(retain, nonatomic) NSSet *allSubunitIDs; // @synthesize allSubunitIDs=_allSubunitIDs;
 @property(retain, nonatomic) NSArray *subunitIDs; // @synthesize subunitIDs=_subunitIDs;
+@property(nonatomic) _Bool formatNextSmallest; // @synthesize formatNextSmallest=_formatNextSmallest;
 @property(nonatomic) __weak UnitInfo *nextSmallest; // @synthesize nextSmallest=_nextSmallest;
 @property(nonatomic) _Bool doNotSuggest; // @synthesize doNotSuggest=_doNotSuggest;
 @property(nonatomic) unsigned long long measurementSystem; // @synthesize measurementSystem=_measurementSystem;

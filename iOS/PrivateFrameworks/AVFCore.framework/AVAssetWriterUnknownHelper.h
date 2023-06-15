@@ -10,6 +10,7 @@ __attribute__((visibility("hidden")))
     short _alternateGroupID;
 }
 
+- (_Bool)_isDefunct;
 - (void)cancelWriting;
 - (void)startWriting;
 - (void)addInputGroup:(id)arg1;
@@ -20,6 +21,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)_canAddInput:(id)arg1 exceptionReason:(id *)arg2;
 - (void)setSinglePassMediaDataSize:(long long)arg1;
 - (void)setSinglePassFileSize:(long long)arg1;
+- (void)setRequiresInProcessOperation:(_Bool)arg1;
 - (void)setUsesVirtualCaptureCard:(_Bool)arg1;
 - (void)setProducesCombinableFragments:(_Bool)arg1;
 - (void)setInitialMovieFragmentSequenceNumber:(long long)arg1;

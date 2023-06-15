@@ -4,16 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CoverSheet/NSObject-Protocol.h>
+#import <CoverSheet/NCNotificationListSupplementaryViewsContainingDelegate-Protocol.h>
 
 @class CSListItem, NSSet, UIViewController;
 
-@protocol CSListItemManaging <NSObject>
+@protocol CSListItemManaging <NCNotificationListSupplementaryViewsContainingDelegate>
 @property(retain, nonatomic) CSListItem *nowPlayingItem;
 @property(readonly, nonatomic) _Bool listHasNotificationContent;
 - (void)didAddNewSceneHostEnvironment;
 - (void)significantUserInteractionEndedForItem:(CSListItem *)arg1;
 - (void)significantUserInteractionBeganForItem:(CSListItem *)arg1;
+- (void)restrictsTouchesOnAllHostedScenes:(_Bool)arg1;
+- (void)restrictsTouches:(_Bool)arg1 onHostedSceneOfContentHost:(UIViewController *)arg2;
 - (void)cancelTouchesForItem:(CSListItem *)arg1;
 - (void)handleRemovedItemsWithContentHosts:(NSSet *)arg1;
 - (void)item:(CSListItem *)arg1 requestsAuthenticationAndPerformBlock:(void (^)(_Bool))arg2;

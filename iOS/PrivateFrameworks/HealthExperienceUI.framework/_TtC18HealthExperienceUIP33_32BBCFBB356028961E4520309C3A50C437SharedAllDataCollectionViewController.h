@@ -11,6 +11,8 @@
 }
 
 - (id)initWithCollectionViewLayout:(id)arg1;
+- (void)viewControllerDidLeaveAdaptiveModal;
+- (void)viewControllerDidEnterAdaptiveModal;
 - (void)viewDidLoad;
 - (id)initWithCoder:(id)arg1;
 

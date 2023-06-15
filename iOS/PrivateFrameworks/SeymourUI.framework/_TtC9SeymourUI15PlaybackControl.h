@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIControl.h>
+#import <UIKitCore/UIControl.h>
 
 @class MISSING_TYPE;
 
@@ -16,7 +16,6 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *imageView;
     MISSING_TYPE *layout;
     MISSING_TYPE *transitionView;
-    MISSING_TYPE *highlightedWidth;
     MISSING_TYPE *imageViewWidthConstraint;
     MISSING_TYPE *width;
     MISSING_TYPE *widthConstraint;

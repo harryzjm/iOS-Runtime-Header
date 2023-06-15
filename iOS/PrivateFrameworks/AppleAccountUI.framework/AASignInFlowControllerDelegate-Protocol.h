@@ -19,6 +19,7 @@
 @property(nonatomic) _Bool backgroundDataclassEnablement;
 @property(nonatomic) _Bool skipCDPEnablement;
 @property(retain, nonatomic) CDPContext *cdpContext;
+- (void)signInFlowController:(AASignInFlowController *)arg1 presentProgressViewForAccount:(ACAccount *)arg2 completion:(void (^)(_Bool))arg3;
 - (void)signInFlowController:(AASignInFlowController *)arg1 saveAccount:(ACAccount *)arg2 withAllDataclassesEnabledIfPossibleWithCompletion:(void (^)(_Bool, ACAccount *, NSError *))arg3;
 - (void)signInFlowController:(AASignInFlowController *)arg1 enableFindMyWithAction:(unsigned long long)arg2 completion:(void (^)(_Bool))arg3;
 - (void)signInFlowController:(AASignInFlowController *)arg1 presentGenericTermsUIForAccount:(ACAccount *)arg2 completion:(void (^)(_Bool, ACAccount *, NSError *))arg3;

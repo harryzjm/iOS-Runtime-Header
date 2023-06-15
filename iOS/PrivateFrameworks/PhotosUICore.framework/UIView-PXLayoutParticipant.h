@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class NSString, PXViewSpec;
 
@@ -24,7 +24,7 @@
 - (_Bool)shouldReloadForUserData:(id)arg1;
 @property(readonly, nonatomic) _Bool shouldReuseWhenInvisible;
 - (void)pxg_shiftPosition:(struct CGPoint)arg1;
-- (void)pxg_configureWithTexture:(id)arg1 geometry:(CDStruct_4f725fed *)arg2 info:(CDStruct_9d1ebe49 *)arg3 style:(CDStruct_a79e78a9 *)arg4 textureInfo:(struct *)arg5 resizableCapInsets:(CDStruct_818bb265)arg6 reusableViewInfo:(id)arg7 screenScale:(double)arg8;
+- (void)pxg_configureWithTexture:(id)arg1 geometry:(CDStruct_4f725fed *)arg2 info:(CDStruct_12471299 *)arg3 style:(CDStruct_a79e78a9 *)arg4 textureInfo:(CDStruct_37a3040a *)arg5 resizableCapInsets:(CDStruct_818bb265)arg6 reusableViewInfo:(id)arg7 screenScale:(double)arg8 separateLayers:(_Bool)arg9;
 - (void)pxg_prepareForReuse;
 - (void)pxg_becomeReusable;
 - (void)pxg_removeFromSuperview;
@@ -35,8 +35,12 @@
 - (void)px_transferToSuperview:(id)arg1;
 - (struct CGAffineTransform)px_convertTransform:(struct CGAffineTransform)arg1 toView:(id)arg2;
 - (struct CGAffineTransform)px_convertTransform:(struct CGAffineTransform)arg1 fromView:(id)arg2;
+- (void)px_enumerateSuperviewsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)px_enumerateDescendantSubviewsPassingTest:(CDUnknownBlockType)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)px_enumerateDescendantSubviewsUsingBlock:(CDUnknownBlockType)arg1;
+- (id)px_ancestorSharedWithView:(id)arg1;
+- (id)px_ancestorViewPassingTest:(CDUnknownBlockType)arg1;
+- (id)px_ancestorViewOfClass:(Class)arg1;
 - (_Bool)px_isAncestorOfFocusEnvironment:(id)arg1;
 @property(readonly, nonatomic) _Bool px_hasHiddenAncestor;
 - (void)px_addFullBoundsSubview:(id)arg1;

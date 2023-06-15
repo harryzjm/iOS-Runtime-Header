@@ -13,6 +13,8 @@
 - (void)maximumPasscodeLengthForAccountUUID:(NSUUID *)arg1 reply:(void (^)(long long))arg2;
 - (void)minimumPasscodeLengthForAccountUUID:(NSUUID *)arg1 reply:(void (^)(long long))arg2;
 - (void)isPasscodeChangeSupportedForAccountUUID:(NSUUID *)arg1 reply:(void (^)(_Bool))arg2;
+- (void)isAccountOnline:(NSUUID *)arg1 reply:(void (^)(_Bool))arg2;
+- (void)isAccountSubscribed:(NSUUID *)arg1 reply:(void (^)(_Bool))arg2;
 - (void)accounts:(void (^)(NSArray *))arg1;
 @end
 

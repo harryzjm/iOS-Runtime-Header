@@ -21,6 +21,7 @@
 - (void)previewItemViewController:(QLItemViewController *)arg1 didEnableEditMode:(_Bool)arg2;
 - (NSString *)loadingTextForPreviewItemViewController:(QLItemViewController *)arg1;
 - (void)expandContentOfPreviewItemViewController:(QLItemViewController *)arg1 unarchivedItemsURL:(NSURL *)arg2;
+- (void)previewItemViewController:(QLItemViewController *)arg1 requestsTemporaryEditDirectoryWithCompletionHandler:(void (^)(FPSandboxingURLWrapper *, NSError *))arg2;
 - (void)previewItemViewController:(QLItemViewController *)arg1 wantsToForwardMessageToHost:(NSDictionary *)arg2 completionHandler:(void (^)(NSDictionary *, NSError *))arg3;
 - (void)previewItemViewControllerDidChangeCurrentPreviewController:(QLItemViewController *)arg1;
 - (void)previewItemViewControllerWantsToDismissQuickLook:(QLItemViewController *)arg1;

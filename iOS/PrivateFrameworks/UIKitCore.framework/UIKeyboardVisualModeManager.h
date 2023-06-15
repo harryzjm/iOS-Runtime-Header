@@ -11,14 +11,21 @@
 __attribute__((visibility("hidden")))
 @interface UIKeyboardVisualModeManager : NSObject
 {
+    int _lastVisualMode;
     id <UIKeyboardVisualModeManagerDelegate> _delegate;
 }
 
 + (id)visualModeLog;
++ (_Bool)softwareKeyboardAllowedForActiveKeyboardSceneDelegate;
++ (_Bool)softwareKeyboardAllowedOnExternalScreen;
 + (_Bool)windowingSoftwareKeyboardAllowed;
 - (void).cxx_destruct;
+@property(nonatomic) int lastVisualMode; // @synthesize lastVisualMode=_lastVisualMode;
 @property(nonatomic) __weak id <UIKeyboardVisualModeManagerDelegate> delegate; // @synthesize delegate=_delegate;
+- (_Bool)expectedInputModeIsSpecialized;
+- (_Bool)textEntryFocusOnExternalDisplay;
 - (_Bool)windowingModeEnabled;
+- (void)keyboardCameraNotification:(id)arg1;
 - (void)enhancedWindowingModeDidChange:(id)arg1;
 - (int)visualMode;
 - (_Bool)useVisualModeWindowed;

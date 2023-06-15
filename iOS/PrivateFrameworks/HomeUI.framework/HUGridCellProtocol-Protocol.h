@@ -11,15 +11,12 @@
 
 @protocol HUGridCellProtocol <NSObject, HUCellProtocol>
 + (Class)layoutOptionsClass;
-@property(nonatomic, retain) HUGridCellLayoutOptions *layoutOptions;
-@property(nonatomic) _Bool cellContentsHidden;
-- (_Bool)areCellContentsHidden;
+@property(retain, nonatomic) HUGridCellLayoutOptions *layoutOptions;
+@property(nonatomic, getter=areCellContentsHidden) _Bool cellContentsHidden;
 
 @optional
 @property(nonatomic) double pointerRegionMargin;
-@property(nonatomic) _Bool pointerInteractionEnabled;
-- (_Bool)isPointerInteractionEnabled;
-@property(nonatomic) _Bool rearranging;
-- (_Bool)isRearranging;
+@property(nonatomic, getter=isPointerInteractionEnabled) _Bool pointerInteractionEnabled;
+@property(nonatomic, getter=isRearranging) _Bool rearranging;
 @end
 

@@ -9,7 +9,6 @@
 @interface NSError (SHError)
 @property(readonly, nonatomic) _Bool sh_isMediaLibraryError;
 @property(readonly, nonatomic) _Bool sh_isInternalError;
-@property(readonly, nonatomic) _Bool sh_isMediaLibrarySyncFailed;
 @property(readonly, nonatomic) _Bool sh_isCustomCatalogInvalidURL;
 @property(readonly, nonatomic) _Bool sh_isCustomCatalogInvalid;
 @property(readonly, nonatomic) _Bool sh_isMatchAttemptFailed;
@@ -18,6 +17,7 @@
 @property(readonly, nonatomic) _Bool sh_isAudioDiscontinuity;
 @property(readonly, nonatomic) _Bool sh_isInvalidAudioFormat;
 - (_Bool)isShazamPublicErrorWithCode:(long long)arg1;
+@property(readonly, nonatomic) _Bool sh_isMediaLibraryPublicError;
 @property(readonly, nonatomic) _Bool sh_isShazamKitPublicError;
 @end
 

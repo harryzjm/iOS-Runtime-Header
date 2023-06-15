@@ -8,8 +8,8 @@
 @protocol NSSNewsAnalyticsAppSessionManagerObserving, NSSNewsAnalyticsSessionManagerObserving;
 
 @protocol NSSNewsAnalyticsSessionManager
+@property(readonly, nonatomic) NTPBSession *currentSession;
 - (void)addAppSessionObserver:(id <NSSNewsAnalyticsAppSessionManagerObserving>)arg1;
 - (void)addObserver:(id <NSSNewsAnalyticsSessionManagerObserving>)arg1;
-@property(nonatomic, readonly) NTPBSession *currentSession;
 @end
 

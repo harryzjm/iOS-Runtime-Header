@@ -6,7 +6,7 @@
 
 #import <Foundation/NSEnumerator.h>
 
-@class MPCQueueController, MPSectionedIdentifierListPosition;
+@class MPSectionedIdentifierListPosition, _MPCQueueControllerBehaviorMusic;
 
 __attribute__((visibility("hidden")))
 @interface _MPCQueueControllerEnumerator : NSEnumerator
@@ -14,7 +14,8 @@ __attribute__((visibility("hidden")))
     long long _nextEnumerator;
     _Bool _isEnumeratingFromRepeatAllBase;
     _Bool _hasEmittedItemFromRepeatAllBase;
-    MPCQueueController *_queueController;
+    CDUnknownBlockType _repeatBoundaryBlock;
+    _MPCQueueControllerBehaviorMusic *_musicBehavior;
     long long _mode;
     unsigned long long _options;
     NSEnumerator *_enumerator;
@@ -22,14 +23,15 @@ __attribute__((visibility("hidden")))
     MPSectionedIdentifierListPosition *_endPosition;
 }
 
-+ (id)enumeratorWithQueueController:(id)arg1 mode:(long long)arg2 options:(unsigned long long)arg3 startPosition:(id)arg4 endPosition:(id)arg5;
++ (id)enumeratorWithMusicBehavior:(id)arg1 mode:(long long)arg2 options:(unsigned long long)arg3 startPosition:(id)arg4 endPosition:(id)arg5;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) MPSectionedIdentifierListPosition *endPosition; // @synthesize endPosition=_endPosition;
 @property(readonly, nonatomic) MPSectionedIdentifierListPosition *startPosition; // @synthesize startPosition=_startPosition;
 @property(readonly, nonatomic) NSEnumerator *enumerator; // @synthesize enumerator=_enumerator;
 @property(readonly, nonatomic) unsigned long long options; // @synthesize options=_options;
 @property(readonly, nonatomic) long long mode; // @synthesize mode=_mode;
-@property(readonly, nonatomic) __weak MPCQueueController *queueController; // @synthesize queueController=_queueController;
+@property(readonly, nonatomic) __weak _MPCQueueControllerBehaviorMusic *musicBehavior; // @synthesize musicBehavior=_musicBehavior;
+@property(copy, nonatomic) CDUnknownBlockType repeatBoundaryBlock; // @synthesize repeatBoundaryBlock=_repeatBoundaryBlock;
 - (void)_buildEnumerator;
 - (id)_init;
 - (id)nextObject;

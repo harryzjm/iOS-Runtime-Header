@@ -9,6 +9,8 @@
 @class NSNumber;
 
 @protocol SUSUICommandLineToolServerInterface <NSObject>
+- (void)showDDMAlert:(long long)arg1 install:(_Bool)arg2;
+- (void)getDDMAlertStatus:(void (^)(NSDictionary *))arg1;
 - (void)setPasscodePolicy:(unsigned long long)arg1;
 - (void)downloadDidFinish;
 - (void)simulateComingFromOTAUpdate;
@@ -17,6 +19,8 @@
 - (void)showEmergencyCallUIWithOptions:(unsigned long long)arg1 result:(void (^)(_Bool, NSError *))arg2;
 - (void)showAuthenticationUIWithOptions:(unsigned long long)arg1 result:(void (^)(_Bool, NSError *))arg2;
 - (void)showFollowUp:(unsigned long long)arg1;
+- (void)dismissAllAlerts;
+- (void)showLaggardsUi:(unsigned long long)arg1 usingFakeData:(_Bool)arg2 result:(void (^)(_Bool, NSError *))arg3;
 - (void)showMiniAlert:(unsigned long long)arg1 usingFakeData:(_Bool)arg2 errorCode:(NSNumber *)arg3;
 @end
 

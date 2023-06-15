@@ -12,6 +12,7 @@
 - (void)rateController:(AVCRateController *)arg1 targetBitrateDidChange:(unsigned int)arg2 rateChangeCounter:(unsigned int)arg3;
 
 @optional
+- (void)rateController:(AVCRateController *)arg1 isECNEnabled:(_Bool)arg2;
 - (int)learntBitrateForSegment:(NSString *)arg1 defaultValue:(int)arg2;
 @end
 

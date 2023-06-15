@@ -11,6 +11,7 @@
 @interface _TtC7SiriCam31ActionAmbiguityHeuristicHandler : _TtCs12_SwiftObject
 {
     MISSING_TYPE *modelMetadata;
+    MISSING_TYPE *overrideDisambiguateForRankingEvaluationRate;
 }
 
 @end

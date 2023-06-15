@@ -58,5 +58,10 @@
 - (void)setValue:(float)arg1 animated:(_Bool)arg2;
 - (void)didSetValues;
 - (struct CGSize)_intrinsicSizeWithinSize:(struct CGSize)arg1;
+
+@optional
+- (_Bool)overriddenTrackingState;
+- (void)didSetUserInteractionEnabled;
+- (void)didUpdateConfiguration;
 @end
 

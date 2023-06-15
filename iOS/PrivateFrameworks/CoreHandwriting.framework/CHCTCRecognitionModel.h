@@ -8,7 +8,12 @@
 
 @interface CHCTCRecognitionModel
 {
+    struct unique_ptr<CoreHandwriting::PreprocessingManager, std::default_delete<CoreHandwriting::PreprocessingManager>> _preprocessor;
+    struct unique_ptr<CoreHandwriting::FeatureExtractionProcessor, std::default_delete<CoreHandwriting::FeatureExtractionProcessor>> _featureExtractor;
     _Bool _normalizeFeatures;
+    _Bool _shouldUseCPPFeatureExtraction;
+    _Bool _shouldUseArabicVisualOrderFeatureExtraction;
+    _Bool _shouldUseStrokeDirectionFeature;
     long long _sequenceCompression;
     long long _distanceFeatureIndex;
     long long _sinAlphaFeatureIndex;
@@ -23,13 +28,19 @@
     double _distMean;
     double _distStd;
     double _interpointDistance;
+    unsigned long long _strokeOrdering;
     NSOrderedSet *__stringCodeMap;
     struct CVNLPTextDecodingPruningPolicy _decodingPruningPolicy;
 }
 
+- (id).cxx_construct;
 - (void).cxx_destruct;
 @property(readonly) NSOrderedSet *_stringCodeMap; // @synthesize _stringCodeMap=__stringCodeMap;
 @property(nonatomic) struct CVNLPTextDecodingPruningPolicy decodingPruningPolicy; // @synthesize decodingPruningPolicy=_decodingPruningPolicy;
+@property(nonatomic) _Bool shouldUseStrokeDirectionFeature; // @synthesize shouldUseStrokeDirectionFeature=_shouldUseStrokeDirectionFeature;
+@property(nonatomic) _Bool shouldUseArabicVisualOrderFeatureExtraction; // @synthesize shouldUseArabicVisualOrderFeatureExtraction=_shouldUseArabicVisualOrderFeatureExtraction;
+@property(nonatomic) _Bool shouldUseCPPFeatureExtraction; // @synthesize shouldUseCPPFeatureExtraction=_shouldUseCPPFeatureExtraction;
+@property(nonatomic) unsigned long long strokeOrdering; // @synthesize strokeOrdering=_strokeOrdering;
 @property(nonatomic) double interpointDistance; // @synthesize interpointDistance=_interpointDistance;
 @property(nonatomic) double distStd; // @synthesize distStd=_distStd;
 @property(nonatomic) double distMean; // @synthesize distMean=_distMean;
@@ -51,9 +62,12 @@
 - (double)highestSymbolActivationWithResultArray:(id)arg1 indexArray:(id)arg2 symbol:(id *)arg3;
 - (_Bool)reachesActivationThreshold:(double)arg1 inCharacterSet:(id)arg2 resultArray:(id)arg3 indexArray:(id)arg4;
 - (void)enumerateActivationsInResultArray:(id)arg1 indexArray:(id)arg2 block:(CDUnknownBlockType)arg3;
-- (id)recognizeDrawing:(id)arg1 minimumDrawingSize:(struct CGSize)arg2 initialVectorAnchorPoint:(struct CGPoint)arg3 activeCharacterSet:(id)arg4 outStrokeEndings:(void *)arg5 outFallbackSymbol:(id *)arg6 outFallbackSymbolScore:(double *)arg7;
+- (id)recognizeDrawing:(id)arg1 minimumDrawingSize:(struct CGSize)arg2 initialVectorAnchorPoint:(struct CGPoint)arg3 activeCharacterSet:(id)arg4 outStrokeIndexMapping:(void *)arg5 outStrokeEndings:(void *)arg6 outFallbackSymbol:(id *)arg7 outFallbackSymbolScore:(double *)arg8;
+- (id)_featureProviderFromFeatureArray:(id)arg1;
 - (id)featureProviderForDrawing:(id)arg1 initialVectorAnchorPoint:(struct CGPoint)arg2 normalizeFeatures:(_Bool)arg3 padFeatures:(_Bool)arg4 outStrokeEndings:(void *)arg5 outInputSequenceLength:(long long *)arg6 outOutputSequenceLength:(long long *)arg7;
 - (void)dealloc;
+- (void)_initFeatureExtractor;
+- (void)_initPreprocessor;
 - (id)initWithModelName:(id)arg1 decodingPruningPolicy:(struct CVNLPTextDecodingPruningPolicy)arg2;
 
 @end

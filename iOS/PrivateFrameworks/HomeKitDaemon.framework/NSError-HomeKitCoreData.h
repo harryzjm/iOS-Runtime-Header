@@ -6,28 +6,22 @@
 
 #import <Foundation/NSError.h>
 
+@class NSNumber;
+
 @interface NSError (HomeKitCoreData)
++ (id)hmd_validationErrorWithDescription:(id)arg1 managedObject:(id)arg2 attributeName:(id)arg3;
 + (id)hmd_validationErrorWithDescription:(id)arg1;
 + (id)errorWithSQLite3Statement:(struct sqlite3_stmt *)arg1;
 + (id)errorWithSQLite3Context:(struct sqlite3 *)arg1 statement:(const char *)arg2;
 + (id)errorWithSQLite3Context:(struct sqlite3 *)arg1;
-+ (id)hmPrivateErrorWithCode:(long long)arg1 description:(id)arg2 underlyingError:(id)arg3;
-+ (id)hmPrivateErrorWithCode:(long long)arg1 underlyingError:(id)arg2;
-+ (id)hmInternalErrorWithCode:(long long)arg1 userInfo:(id)arg2;
-+ (id)hmPrivateErrorWithCode:(long long)arg1;
-+ (id)hmInternalErrorWithCode:(long long)arg1 underlyingError:(id)arg2;
-+ (id)hmInternalErrorWithCode:(long long)arg1;
-+ (id)hmErrorWithCode:(long long)arg1 userInfo:(id)arg2;
-+ (id)hmErrorWithCode:(long long)arg1;
-+ (id)hmErrorWithCode:(long long)arg1 description:(id)arg2 reason:(id)arg3 suggestion:(id)arg4;
-+ (id)hmErrorWithCode:(long long)arg1 description:(id)arg2 reason:(id)arg3 suggestion:(id)arg4 underlyingError:(id)arg5;
+@property(readonly, getter=hmd_isRecordConflictCKError) _Bool hmd_recordConflictCKError;
+@property(readonly, copy) NSNumber *hmd_retryAfterCKError;
 @property(readonly, copy) NSError *hmd_convertedCKError;
 @property(readonly, getter=hmd_isNonRecoverableCKError) _Bool hmd_nonRecoverableCKError;
+@property(readonly, getter=hmd_isInternalCKError) _Bool hmd_internalCKError;
 @property(readonly, getter=hmd_isCKError) _Bool hmd_ckError;
 @property(readonly, copy) NSError *hmd_hmErrorFromCKError;
 @property(readonly, copy) NSError *hmd_conciseCKError;
 - (id)hmd_actualCKErrorFromCKErrorPartialFailure:(id)arg1;
-@property(readonly, copy, nonatomic) NSError *hmPublicError;
-@property(readonly, nonatomic, getter=isHMError) _Bool hmError;
 @end
 

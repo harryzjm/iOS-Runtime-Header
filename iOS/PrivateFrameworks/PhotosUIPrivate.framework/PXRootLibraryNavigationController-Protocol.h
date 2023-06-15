@@ -8,22 +8,20 @@
 #import <PhotosUIPrivate/PLCloudFeedNavigating-Protocol.h>
 #import <PhotosUIPrivate/PXProgrammaticNavigationParticipant-Protocol.h>
 
-@class NSArray, NSObject, NSString, NSURL, PLCloudSharedAlbum, PLCloudSharedComment, PLManagedAsset;
+@class NSArray, NSObject, NSString, PHPhotoLibrary, PLCloudSharedAlbum, PLCloudSharedComment, PLManagedAsset;
 @protocol PLAlbumProtocol;
 
 @protocol PXRootLibraryNavigationController <NSObject, PLCloudFeedNavigating, PXProgrammaticNavigationParticipant>
+@property(readonly, nonatomic) PHPhotoLibrary *photoLibrary;
 - (void)navigateToSearchWithTerms:(NSArray *)arg1 searchCategories:(NSArray *)arg2;
 - (void)navigateToSearchWithHashtag:(NSString *)arg1;
 - (void)navigateToSearch;
 - (void)navigateToPlacesAlbumAnimated:(_Bool)arg1;
 - (void)navigateToPeopleAlbumAnimated:(_Bool)arg1 revealPersonWithLocalIdentifier:(NSString *)arg2 completion:(void (^)(UIViewController *))arg3;
-- (void)navigateToCloudKitShareWithURL:(NSURL *)arg1 animated:(_Bool)arg2;
 - (void)navigateToInvitationCMMWithIdentifier:(NSString *)arg1 animated:(_Bool)arg2;
 - (void)navigateToSuggestedCMMWithIdentifier:(NSString *)arg1 animated:(_Bool)arg2;
 - (void)navigateToFeaturedPhotoWithSuggestionIdentifier:(NSString *)arg1 animated:(_Bool)arg2;
 - (void)navigateToRevealTheMostRecentMemoryAnimated:(_Bool)arg1;
-- (_Bool)assetIsAvailableForNavigationInMoments:(PLManagedAsset *)arg1 refetchSectionsIfNeeded:(_Bool)arg2;
-- (_Bool)assetIsAvailableForNavigationInMoments:(PLManagedAsset *)arg1;
 - (_Bool)cloudFeedIsAvailableForNavigation;
 - (_Bool)commentIsAvailableForNavigation:(PLCloudSharedComment *)arg1 inAsset:(PLManagedAsset *)arg2;
 - (_Bool)assetIsAvailableForNavigation:(PLManagedAsset *)arg1 inAlbum:(NSObject<PLAlbumProtocol> *)arg2;
@@ -41,8 +39,6 @@
 - (void)navigateToRevealCloudFeedAsset:(PLManagedAsset *)arg1 completion:(void (^)(UIViewController *))arg2;
 - (void)navigateToCloudFeedWithCompletion:(void (^)(UIViewController *))arg1;
 - (void)navigateToOneYearAgoSearch;
-- (void)navigateToPhotosContentBottomAnimated:(_Bool)arg1;
-- (void)navigateToAsset:(PLManagedAsset *)arg1 openOneUp:(_Bool)arg2 animated:(_Bool)arg3;
 - (void)navigateToContentMode:(int)arg1 animated:(_Bool)arg2 completion:(void (^)(_Bool))arg3;
 @end
 

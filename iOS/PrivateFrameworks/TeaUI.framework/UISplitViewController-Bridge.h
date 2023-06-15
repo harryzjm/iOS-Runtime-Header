@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UISplitViewController.h>
+#import <UIKitCore/UISplitViewController.h>
 
 @interface UISplitViewController (Bridge)
 - (void)ts_columnSeparatorsExtendToTitlebar:(_Bool)arg1;

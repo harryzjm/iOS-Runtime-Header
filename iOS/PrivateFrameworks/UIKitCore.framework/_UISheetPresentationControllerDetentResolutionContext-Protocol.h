@@ -11,6 +11,7 @@
 @protocol _UISheetPresentationControllerDetentResolutionContext <UISheetPresentationControllerDetentResolutionContext>
 @property(readonly, nonatomic) double _maximumDetentValue;
 @property(readonly, nonatomic) struct CGRect _fullHeightPresentedViewFrame;
+@property(readonly, nonatomic) struct CGRect _effectiveKeyboardFrame;
 @property(readonly, nonatomic, getter=_isInverted) _Bool _inverted;
 @property(readonly, nonatomic, getter=_isEdgeAttached) _Bool _edgeAttached;
 @property(readonly, nonatomic) UITraitCollection *_containerTraitCollection;

@@ -7,10 +7,9 @@
 #import <DocumentManager/DOCRemoteAppearanceInterface-Protocol.h>
 
 @class DOCConfiguration;
-@protocol DOCHostDocumentBrowserViewControllerInterface, DOCHostTargetSelectionBrowserViewControllerProxy;
+@protocol DOCHostDocumentBrowserViewControllerInterface;
 
 @protocol DOCServiceContextProtocol <DOCRemoteAppearanceInterface>
-- (void)configureAsTargetSelectionBrowserWithHostProxy:(id <DOCHostTargetSelectionBrowserViewControllerProxy>)arg1 configuration:(DOCConfiguration *)arg2 completionBlock:(void (^)(id <DOCServiceTargetSelectionBrowserViewControllerProxy>))arg3;
 - (void)configureAsDocumentBrowserWithHostProxy:(id <DOCHostDocumentBrowserViewControllerInterface>)arg1 configuration:(DOCConfiguration *)arg2 completionBlock:(void (^)(id <DOCServiceDocumentBrowserViewControllerInterface>))arg3;
 @end
 

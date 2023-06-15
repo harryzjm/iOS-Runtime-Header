@@ -24,7 +24,6 @@ __attribute__((visibility("hidden")))
     struct VKEdgeInsets _edgeInsets;
     struct VKEdgeInsets _fullyOccludedEdgeInsets;
     _Bool _deallocing;
-    void *_mapRenderer;
     void *_layoutContext;
     id <MDMapControllerDelegate> _mapDelegate;
     struct PerspectiveView<double> _view;

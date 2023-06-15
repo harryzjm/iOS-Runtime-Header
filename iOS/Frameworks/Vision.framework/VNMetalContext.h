@@ -12,11 +12,11 @@
 __attribute__((visibility("hidden")))
 @interface VNMetalContext : NSObject
 {
+    id <MTLDevice> _device;
     struct os_unfair_lock_s _lock;
     id <MTLCommandQueue> _commandQueue;
     id <MTLLibrary> _library;
     NSDictionary *_wisdomParams;
-    id <MTLDevice> _device;
 }
 
 - (void).cxx_destruct;

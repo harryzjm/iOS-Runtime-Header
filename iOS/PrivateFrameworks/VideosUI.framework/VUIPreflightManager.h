@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class VUIExtrasInfo, VUIMediaEntity, VUIVideosPlayable;
+@class VUIContentRating, VUIExtrasInfo, VUIMediaEntity, VUIVideosPlayable;
 @protocol TVPMediaItem, VUIControllerPresenter;
 
 __attribute__((visibility("hidden")))
@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     NSObject<TVPMediaItem> *_mediaItem;
     VUIMediaEntity *_mediaEntity;
     VUIExtrasInfo *_extrasInfo;
+    VUIContentRating *_contentRating;
     unsigned long long _restrictionsCheckType;
     NSObject<VUIControllerPresenter> *_presentingController;
     CDUnknownBlockType _savedRestrictionsCompletion;
@@ -32,6 +33,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSObject<VUIControllerPresenter> *presentingController; // @synthesize presentingController=_presentingController;
 @property(nonatomic) unsigned long long restrictionsCheckType; // @synthesize restrictionsCheckType=_restrictionsCheckType;
 @property(nonatomic) _Bool contentAllowsCellularDownload; // @synthesize contentAllowsCellularDownload=_contentAllowsCellularDownload;
+@property(retain, nonatomic) VUIContentRating *contentRating; // @synthesize contentRating=_contentRating;
 @property(retain, nonatomic) VUIExtrasInfo *extrasInfo; // @synthesize extrasInfo=_extrasInfo;
 @property(retain, nonatomic) VUIMediaEntity *mediaEntity; // @synthesize mediaEntity=_mediaEntity;
 @property(retain, nonatomic) NSObject<TVPMediaItem> *mediaItem; // @synthesize mediaItem=_mediaItem;

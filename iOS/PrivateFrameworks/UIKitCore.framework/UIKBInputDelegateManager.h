@@ -19,18 +19,18 @@ __attribute__((visibility("hidden")))
     _Bool _shouldRespectForwardingInputDelegate;
     _Bool _insideKeyInputDelegateCall;
     id <UIKeyboardImplStateProtocol> _keyboardStateDelegate;
-    UIResponder<UIKeyInput> *_forwardingInputDelegate;
     UIResponder<UIKeyInput> *_keyInputDelegate;
     UITextInteractionSelectableInputDelegate *_selectableDelegate;
+    UIResponder<UIKeyInput> *_forwardingInputDelegate;
 }
 
 + (struct _NSRange)rangeForTextRange:(id)arg1 document:(id)arg2;
 - (void).cxx_destruct;
-@property(retain, nonatomic) UITextInteractionSelectableInputDelegate *selectableDelegate; // @synthesize selectableDelegate=_selectableDelegate;
-@property(retain, nonatomic) UIResponder<UIKeyInput> *keyInputDelegate; // @synthesize keyInputDelegate=_keyInputDelegate;
 @property(nonatomic) _Bool insideKeyInputDelegateCall; // @synthesize insideKeyInputDelegateCall=_insideKeyInputDelegateCall;
 @property(nonatomic) _Bool shouldRespectForwardingInputDelegate; // @synthesize shouldRespectForwardingInputDelegate=_shouldRespectForwardingInputDelegate;
 @property(nonatomic) __weak UIResponder<UIKeyInput> *forwardingInputDelegate; // @synthesize forwardingInputDelegate=_forwardingInputDelegate;
+@property(retain, nonatomic) UITextInteractionSelectableInputDelegate *selectableDelegate; // @synthesize selectableDelegate=_selectableDelegate;
+@property(retain, nonatomic) UIResponder<UIKeyInput> *keyInputDelegate; // @synthesize keyInputDelegate=_keyInputDelegate;
 @property(nonatomic) __weak id <UIKeyboardImplStateProtocol> keyboardStateDelegate; // @synthesize keyboardStateDelegate=_keyboardStateDelegate;
 - (_Bool)selectionIsWord;
 - (void)moveSelectionToEndOfWord;
@@ -46,13 +46,16 @@ __attribute__((visibility("hidden")))
 - (void)insertText:(id)arg1 updateInputSource:(_Bool)arg2;
 - (id)_rangeOfText:(id)arg1 endingAtPosition:(id)arg2;
 - (_Bool)shouldSuppressUpdateCandidateView;
+- (void)applyAutocorrection:(id)arg1 toString:(id)arg2 shouldUnderline:(_Bool)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
 - (void)applyAutocorrection:(id)arg1 toString:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)_setSelectionToPosition:(id)arg1;
 - (id)_textRangeFromNSRange:(struct _NSRange)arg1;
 - (unsigned int)_characterBeforeCaretSelection;
 - (id)__content;
 - (_Bool)_deleteForwardAndNotify:(_Bool)arg1;
+- (void)_deleteBackwardWhileOverridingContextAndNotifyAtEnd:(_Bool)arg1 deletionCount:(unsigned long long)arg2 reinsertTextInLoop:(_Bool)arg3;
 - (void)_deleteBackwardAndNotify:(_Bool)arg1 reinsertText:(_Bool)arg2;
+- (void)_deleteBackwardAndNotify:(_Bool)arg1 reinsertText:(_Bool)arg2 overrideOriginalContextBeforeInputWith:(id)arg3;
 - (void)_moveCurrentSelection:(int)arg1;
 - (void)_setMarkedText:(id)arg1 selectedRange:(struct _NSRange)arg2;
 - (_Bool)_hasMarkedText;
@@ -61,7 +64,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)requiresKeyEvents;
 - (void)insertDictationResult:(id)arg1;
 - (void)insertAttributedText:(id)arg1;
-- (void)insertTextSuggestion:(id)arg1;
+- (_Bool)insertTextSuggestion:(id)arg1;
 - (_Bool)insertSupplementalItem:(id)arg1 candidate:(id)arg2 replacementRange:(id)arg3;
 - (void)setBaseWritingDirection:(long long)arg1 forRange:(id)arg2;
 - (long long)baseWritingDirectionForPosition:(id)arg1 inDirection:(long long)arg2;
@@ -70,6 +73,7 @@ __attribute__((visibility("hidden")))
 - (id)positionFromPosition:(id)arg1 offset:(long long)arg2;
 - (id)endOfDocument;
 - (id)beginningOfDocument;
+- (id)tintColor;
 - (id)attributedMarkedText;
 - (id)markedText;
 - (void)unmarkText;
@@ -78,6 +82,7 @@ __attribute__((visibility("hidden")))
 - (id)selectedTextRange;
 - (id)markedTextRange;
 - (void)replaceRange:(id)arg1 oldText:(id)arg2 withText:(id)arg3 forReplaceAction:(int)arg4;
+- (void)correctedTypedText:(id)arg1 rangeOfReplacement:(id)arg2;
 - (void)replaceRange:(id)arg1 withText:(id)arg2;
 - (id)textInRange:(id)arg1;
 - (void)insertText:(id)arg1 alternatives:(id)arg2 style:(long long)arg3;
@@ -99,6 +104,7 @@ __attribute__((visibility("hidden")))
 - (id)delegateRespectingForwardingDelegate:(_Bool)arg1;
 - (_Bool)delegateAdoptsWebTextInputPrivate;
 - (void)storeDelegateConformance;
+- (void)updateDelegateConformanceForRemoteTraits;
 @property(readonly, nonatomic) unsigned long long delegateConformanceType;
 - (void)updateRespectForwardingInputDelegateFlagInDestination;
 - (void)clearForwardingInputDelegateAndResign:(_Bool)arg1;
@@ -114,6 +120,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *description;
 @property(nonatomic) _Bool enablesReturnKeyAutomatically;
 @property(readonly) unsigned long long hash;
+@property(nonatomic) long long inlinePredictionType;
 @property(nonatomic) long long keyboardAppearance;
 @property(nonatomic) long long keyboardType;
 @property(copy, nonatomic) UITextInputPasswordRules *passwordRules;

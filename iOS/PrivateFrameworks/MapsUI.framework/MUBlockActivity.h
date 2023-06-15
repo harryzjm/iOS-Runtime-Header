@@ -6,30 +6,29 @@
 
 #import <UIKit/UIActivity.h>
 
-@class NSString, UIImage;
+@class NSString;
 
 __attribute__((visibility("hidden")))
 @interface MUBlockActivity : UIActivity
 {
     CDUnknownBlockType _block;
     NSString *_title;
-    UIImage *_image;
+    NSString *_systemImageName;
     NSString *_type;
 }
 
-+ (id)createBlockActivitiesFromPlaceActionItems:(id)arg1 usingActionManager:(id)arg2 presentationOptions:(id)arg3;
++ (id)createBlockActivitiesFromPlaceActionItems:(id)arg1 usingActionManager:(id)arg2 presentationOptions:(id)arg3 analyticsModuleMetadata:(id)arg4;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *type; // @synthesize type=_type;
-@property(readonly, copy, nonatomic) UIImage *image; // @synthesize image=_image;
+@property(readonly, copy, nonatomic) NSString *systemImageName; // @synthesize systemImageName=_systemImageName;
 @property(readonly, copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property(readonly, copy, nonatomic) CDUnknownBlockType block; // @synthesize block=_block;
 - (void)performActivity;
 - (_Bool)canPerformWithActivityItems:(id)arg1;
 - (long long)activityCategory;
 - (id)activityType;
-- (id)activityImage;
+- (id)_systemImageName;
 - (id)activityTitle;
-- (id)initWithTitle:(id)arg1 image:(id)arg2 activityType:(id)arg3 block:(CDUnknownBlockType)arg4;
 - (id)initWithTitle:(id)arg1 systemImageName:(id)arg2 activityType:(id)arg3 block:(CDUnknownBlockType)arg4;
 
 @end

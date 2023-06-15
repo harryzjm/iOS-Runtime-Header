@@ -6,7 +6,7 @@
 
 #import <UIKit/UITableViewController.h>
 
-@class NSArray, NSDictionary, NSString, UISearchController, VSFontCenter, VSIdentityProvider, VSIdentityProviderFilter, VSIdentityProviderTableViewDataSource, VSOnboardingInfoCenter, VSSearchBarDelegate, VSStorefrontFilter;
+@class NSArray, NSDictionary, NSString, UISearchController, UITableViewHeaderFooterView, VSFontCenter, VSIdentityProvider, VSIdentityProviderFilter, VSIdentityProviderTableViewDataSource, VSOnboardingInfoCenter, VSSearchBarDelegate, VSStorefrontFilter;
 @protocol VSIdentityProviderPickerViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -34,9 +34,11 @@ __attribute__((visibility("hidden")))
     NSArray *_identityProvidersToDisplay;
     NSString *_searchString;
     VSStorefrontFilter *_storefrontFilter;
+    UITableViewHeaderFooterView *_firstSectionHeaderView;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) UITableViewHeaderFooterView *firstSectionHeaderView; // @synthesize firstSectionHeaderView=_firstSectionHeaderView;
 @property(retain, nonatomic) VSStorefrontFilter *storefrontFilter; // @synthesize storefrontFilter=_storefrontFilter;
 @property(retain, nonatomic) NSString *searchString; // @synthesize searchString=_searchString;
 @property(retain, nonatomic) NSArray *identityProvidersToDisplay; // @synthesize identityProvidersToDisplay=_identityProvidersToDisplay;
@@ -59,13 +61,17 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSArray *identityProviders; // @synthesize identityProviders=_identityProviders;
 @property(nonatomic, getter=isCancellationAllowed) _Bool cancellationAllowed; // @synthesize cancellationAllowed=_cancellationAllowed;
 @property(nonatomic) __weak id <VSIdentityProviderPickerViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)_showPrivacySheet:(id)arg1;
 - (_Bool)_shouldInsetListView;
 - (void)_updateSectionContentInsetWithAnimation:(_Bool)arg1;
 - (void)viewDidLayoutSubviews;
+- (void)resizeFooterViewIfNeeded;
 - (void)willMoveToParentViewController:(id)arg1;
+- (void)setSectionContentInset:(struct UIEdgeInsets)arg1;
+- (void)setLayoutMarginsFollowReadableWidth:(_Bool)arg1;
+- (id)filteredTableView;
 - (void)viewDidLoad;
 - (void)traitCollectionDidChange:(id)arg1;
-- (void)didInvalidateIntrinsicContentSizeForTableHeaderFooterView:(id)arg1;
 - (void)deselectSelectedProviderAnimated:(_Bool)arg1;
 - (void)tableViewDidFinishReload:(id)arg1;
 - (double)tableView:(id)arg1 estimatedHeightForRowAtIndexPath:(id)arg2;
@@ -82,7 +88,10 @@ __attribute__((visibility("hidden")))
 - (id)titleForTableFooterView;
 - (id)_titleForTableHeaderView;
 - (void)_updateTableHeaderTitle;
+- (id)_createTableHeaderContentConfiguration:(id)arg1;
+- (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
 - (void)setRequestedStorefrontCountryCode:(id)arg1 defaultToDeveloperProviders:(_Bool)arg2;
+- (id)init;
 - (id)initWithStyle:(long long)arg1;
 
 // Remaining properties

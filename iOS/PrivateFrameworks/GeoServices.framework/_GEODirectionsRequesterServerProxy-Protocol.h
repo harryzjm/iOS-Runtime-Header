@@ -6,11 +6,11 @@
 
 #import <GeoServices/NSObject-Protocol.h>
 
-@class GEOApplicationAuditToken, GEODirectionsRequest, NSNumber, NSObject;
+@class GEOApplicationAuditToken, GEODirectionsRequest, GEOMapServiceTraits, NSNumber, NSObject;
 @protocol OS_dispatch_queue;
 
 @protocol _GEODirectionsRequesterServerProxy <NSObject>
 - (void)cancelRequest:(GEODirectionsRequest *)arg1;
-- (void)startRequest:(GEODirectionsRequest *)arg1 auditToken:(GEOApplicationAuditToken *)arg2 useBackgroundURL:(_Bool)arg3 requestPriority:(NSNumber *)arg4 callbackQueue:(NSObject<OS_dispatch_queue> *)arg5 finished:(void (^)(GEODirectionsResponse *))arg6 networkActivity:(void (^)(_Bool))arg7 error:(void (^)(NSError *, GEODirectionsError *))arg8;
+- (void)startRequest:(GEODirectionsRequest *)arg1 traits:(GEOMapServiceTraits *)arg2 auditToken:(GEOApplicationAuditToken *)arg3 useBackgroundURL:(_Bool)arg4 requestPriority:(NSNumber *)arg5 callbackQueue:(NSObject<OS_dispatch_queue> *)arg6 finished:(void (^)(GEODirectionsResponse *))arg7 networkActivity:(void (^)(_Bool))arg8 error:(void (^)(NSError *, GEODirectionsError *))arg9;
 @end
 

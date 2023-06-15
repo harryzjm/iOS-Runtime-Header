@@ -12,9 +12,14 @@
 {
     MISSING_TYPE *position;
     MISSING_TYPE *leftUUID;
+    MISSING_TYPE *isLeftCurved;
+    MISSING_TYPE *leftDirection;
     MISSING_TYPE *leftNormal;
     MISSING_TYPE *rightUUID;
+    MISSING_TYPE *isRightCurved;
+    MISSING_TYPE *rightDirection;
     MISSING_TYPE *rightNormal;
+    MISSING_TYPE *configuration;
 }
 
 @end

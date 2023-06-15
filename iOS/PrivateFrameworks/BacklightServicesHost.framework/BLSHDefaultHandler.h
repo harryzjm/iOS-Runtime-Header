@@ -6,25 +6,25 @@
 
 #import <objc/NSObject.h>
 
-@class BLSAssertion, BLSAttribute, NSString;
+@class BLSAssertion, NSArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface BLSHDefaultHandler : NSObject
 {
     NSString *_key;
-    BLSAttribute *_attribute;
+    NSArray *_attributes;
     BLSAssertion *_lock_assertion;
     struct os_unfair_lock_s _lock;
     _Bool _invalidated;
 }
 
-+ (id)handlerForKey:(id)arg1 attribute:(id)arg2;
++ (id)handlerForKey:(id)arg1 attributes:(id)arg2;
 - (void).cxx_destruct;
 - (void)updateForNewValue:(_Bool)arg1;
 - (void)invalidate;
 @property(readonly, copy) NSString *description;
 - (void)dealloc;
-- (id)initWithKey:(id)arg1 attribute:(id)arg2;
+- (id)initWithKey:(id)arg1 attributes:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -20,6 +20,8 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) PSDataUsageStatisticsCache *statisticsCache; // @synthesize statisticsCache=_statisticsCache;
 @property(nonatomic) __weak id <PSAppCellularUsageSpecifierDelegate> specifierDelegate; // @synthesize specifierDelegate=_specifierDelegate;
 - (id)getLogger;
+- (id)usageSpecifiersForAppType:(unsigned long long)arg1 bundleIDs:(id)arg2;
+- (void)addDataUsageCategorySpecifierToSpecifiers:(id)arg1 appType:(unsigned long long)arg2;
 - (id)specifiers;
 - (id)initWithPolicySpecifierDelegate:(id)arg1 statisticsCache:(id)arg2;
 

@@ -6,10 +6,16 @@
 
 #import <VideosUI/NSObject-Protocol.h>
 
-@class NSArray, NSString, NSURL, VUIAppContext;
+@class NSArray, NSString, NSURL, UIViewController, VUIAppContext;
 
 @protocol VUIRootSplitViewController <NSObject>
-- (void)handleDeepLinkURL:(NSURL *)arg1 forBarItemIdentifier:(NSString *)arg2;
-- (void)updateWithBarItems:(NSArray *)arg1 setSelectedIndexFromDefaults:(_Bool)arg2 appContext:(VUIAppContext *)arg3;
+- (_Bool)isTabbarMode;
+- (UIViewController *)controllerForIdentifier:(NSString *)arg1;
+- (_Bool)controllerExistsForIdentifier:(NSString *)arg1;
+- (void)setSelectedIndexForIdentifier:(NSString *)arg1 withDeeplinkURL:(NSURL *)arg2;
+- (void)updateWithBarItems:(NSArray *)arg1 setSelectedIdentifierFromDefaults:(_Bool)arg2 appContext:(VUIAppContext *)arg3;
+
+@optional
+- (double)containerWidth;
 @end
 

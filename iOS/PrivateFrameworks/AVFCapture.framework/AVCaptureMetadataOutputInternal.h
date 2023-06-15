@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AVCaptureDataOutputDelegateCallbackHelper, AVWeakReference, NSArray;
+@class AVCaptureDataOutputDelegateCallbackHelper, AVWeakReference, NSArray, NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
 @interface AVCaptureMetadataOutputInternal : NSObject
@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
     _Bool textRegionObjectTypeAvailable;
     _Bool headObjectTypesAvailable;
     _Bool offlineVideoStabilizationMotionMetadataObjectTypesAvailable;
+    NSMutableDictionary *previousTwoCMTimesByDetectorType;
 }
 
 - (void)dealloc;

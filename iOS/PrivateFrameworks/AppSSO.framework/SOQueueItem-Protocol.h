@@ -6,7 +6,10 @@
 
 #import <AppSSO/NSObject-Protocol.h>
 
+@class SOAuthorizationRequestParameters;
+
 @protocol SOQueueItem <NSObject>
+@property(readonly, nonatomic) SOAuthorizationRequestParameters *requestParameters;
 @property _Bool isRunning;
 @end
 

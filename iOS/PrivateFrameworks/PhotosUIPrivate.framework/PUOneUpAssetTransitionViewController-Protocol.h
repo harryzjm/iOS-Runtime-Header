@@ -17,6 +17,7 @@
 - (void)oneUpAssetTransitionDidEnd:(id <PUOneUpAssetTransition>)arg1;
 - (void)oneUpAssetTransitionWillBegin:(id <PUOneUpAssetTransition>)arg1;
 - (void)oneUpAssetTransition:(id <PUOneUpAssetTransition>)arg1 animateTransitionWithContext:(PUOneUpAssetTransitionContext *)arg2 duration:(double)arg3 completion:(void (^)(_Bool))arg4;
+- (PUAssetTransitionInfo *)oneUpAssetTransition:(id <PUOneUpAssetTransition>)arg1 adjustTransitionInfo:(PUAssetTransitionInfo *)arg2;
 - (void)oneUpAssetTransition:(id <PUOneUpAssetTransition>)arg1 requestTransitionContextWithCompletion:(void (^)(PUOneUpAssetTransitionContext *))arg2 options:(unsigned long long)arg3;
 - (void)oneUpAssetTransition:(id <PUOneUpAssetTransition>)arg1 requestTransitionContextWithCompletion:(void (^)(PUOneUpAssetTransitionContext *))arg2;
 @end

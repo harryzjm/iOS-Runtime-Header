@@ -7,6 +7,6 @@
 #import <StocksUI/SNTestCase-Protocol.h>
 
 @protocol SNTestCaseRotate <SNTestCase>
-@property(nonatomic, readonly) long long rotateOrientation;
+@property(readonly, nonatomic) long long rotateOrientation;
 @end
 

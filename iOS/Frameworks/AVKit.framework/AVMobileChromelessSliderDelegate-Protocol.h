@@ -6,11 +6,12 @@
 
 #import <AVKit/NSObject-Protocol.h>
 
-@class AVMobileChromelessSlider;
+@class AVMobileChromelessSlider, AVMobileSliderMark;
 
 @protocol AVMobileChromelessSliderDelegate <NSObject>
 
 @optional
+- (void)slider:(AVMobileChromelessSlider *)arg1 didUpdateFrame:(struct CGRect)arg2 forSliderMark:(AVMobileSliderMark *)arg3;
 - (void)sliderDidEndTracking:(AVMobileChromelessSlider *)arg1;
 - (void)sliderDidBeginTracking:(AVMobileChromelessSlider *)arg1;
 @end

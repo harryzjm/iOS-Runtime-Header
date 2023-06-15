@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @interface UIView (GKAdditionsAdditional)
 + (id)_gkStandardBackdropView;
@@ -16,7 +16,6 @@
 - (id)_gkRecursiveDescriptionForKey:(id)arg1 depth:(long long)arg2;
 - (id)_gkRecursiveDescriptionForKey:(id)arg1;
 - (void)_gkRecursivelyApplyBlock:(CDUnknownBlockType)arg1 depth:(long long)arg2;
-@property(nonatomic) struct CGPoint integralCenter;
 - (void)_gkSetNeedsRender;
 - (void)_gkRemoveAllConstraints;
 - (void)_gkUseAsModalSheetBackgroundWithGroupName:(id)arg1;

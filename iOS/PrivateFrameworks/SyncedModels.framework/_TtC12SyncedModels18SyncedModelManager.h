@@ -17,7 +17,6 @@
     MISSING_TYPE *_isInitialAuthority;
     MISSING_TYPE *localParticipant;
     MISSING_TYPE *options;
-    MISSING_TYPE *incomingCatchupChunks;
     MISSING_TYPE *remoteParticipants;
     MISSING_TYPE *sendDataHandler;
     MISSING_TYPE *precatchupMessageBuffer;

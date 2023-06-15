@@ -4,14 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MISSING_TYPE, NSString;
+@class MISSING_TYPE, NSIndexPath, NSString;
 
 __attribute__((visibility("hidden")))
 @interface _TtC12GameCenterUI30DashboardActivityFeedPresenter
 {
+    MISSING_TYPE *scrollToIndexPath;
+    MISSING_TYPE *didScrollToIndexPath;
+    MISSING_TYPE *scrollToActivityInfo;
     MISSING_TYPE *sections;
     MISSING_TYPE *requiredData;
     MISSING_TYPE *dashboardDisplayMode;
+    MISSING_TYPE *pageMetricsPresenter;
     MISSING_TYPE *requiredDataPresenter;
 }
 
@@ -19,6 +23,8 @@ __attribute__((visibility("hidden")))
 - (id)initWithPlayerId:(id)arg1;
 - (void)loadMoreActivityFeedWithContinuationToken:(id)arg1;
 - (void)updateSnapshot;
+@property(nonatomic) _Bool didScrollToIndexPath; // @synthesize didScrollToIndexPath;
+@property(nonatomic, copy) NSIndexPath *scrollToIndexPath;
 @property(nonatomic, readonly) NSString *title;
 
 @end

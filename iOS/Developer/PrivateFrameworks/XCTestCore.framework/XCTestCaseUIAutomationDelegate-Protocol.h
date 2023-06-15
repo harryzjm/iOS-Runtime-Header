@@ -11,6 +11,7 @@
 @protocol XCTestCaseUIAutomationDelegate <NSObject>
 
 @optional
+- (void)tearDownSequence;
 - (void)performingTestAfterInvokingTest;
 - (void)startingTestWithActivity:(XCActivityRecord *)arg1;
 @end

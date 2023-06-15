@@ -6,11 +6,12 @@
 
 #import <NewsAds/NSObject-Protocol.h>
 
-@class NSError;
+@class NSError, NSURL;
 
 @protocol SVVideoEventTracker <NSObject>
 
 @optional
+@property(readonly, nonatomic) double impressionThreshold;
 - (void)stoppedPictureInPicture;
 - (void)startedPictureInPicture;
 - (void)playbackPassedQuartile:(unsigned long long)arg1;
@@ -26,7 +27,8 @@
 - (void)playbackPaused;
 - (void)playbackStarted;
 - (void)playbackReadyToStart;
+- (void)finishedLoadingVideoWithURL:(NSURL *)arg1;
+- (void)startedLoadingVideo;
 - (void)playbackInitiatedWithButtonTapped:(_Bool)arg1;
-@property(nonatomic, readonly) double impressionThreshold;
 @end
 

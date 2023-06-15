@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class UIColor, UIImage;
+@class UIColor;
 
 __attribute__((visibility("hidden")))
 @interface VUIMonogramViewConfiguration : NSObject
@@ -17,8 +17,6 @@ __attribute__((visibility("hidden")))
     UIColor *_focusedBgColor;
     double _unfocusedShadowAlpha;
     double _focusedShadowAlpha;
-    UIImage *_unfocusedShadowImage;
-    UIImage *_focusedShadowImage;
     long long _titleTextStyle;
     UIColor *_titleUnfocusedColor;
     UIColor *_titleFocusedColor;
@@ -34,8 +32,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIColor *titleFocusedColor; // @synthesize titleFocusedColor=_titleFocusedColor;
 @property(retain, nonatomic) UIColor *titleUnfocusedColor; // @synthesize titleUnfocusedColor=_titleUnfocusedColor;
 @property(nonatomic) long long titleTextStyle; // @synthesize titleTextStyle=_titleTextStyle;
-@property(retain, nonatomic) UIImage *focusedShadowImage; // @synthesize focusedShadowImage=_focusedShadowImage;
-@property(retain, nonatomic) UIImage *unfocusedShadowImage; // @synthesize unfocusedShadowImage=_unfocusedShadowImage;
 @property(nonatomic) double focusedShadowAlpha; // @synthesize focusedShadowAlpha=_focusedShadowAlpha;
 @property(nonatomic) double unfocusedShadowAlpha; // @synthesize unfocusedShadowAlpha=_unfocusedShadowAlpha;
 @property(retain, nonatomic) UIColor *focusedBgColor; // @synthesize focusedBgColor=_focusedBgColor;
@@ -44,6 +40,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) long long style; // @synthesize style=_style;
 @property(readonly, nonatomic) double unfocusedImageAlpha;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)focusedShadowImage;
+- (id)unfocusedShadowImage;
 - (id)initWithShadowImages:(_Bool)arg1;
 - (id)initWithStyle:(long long)arg1;
 

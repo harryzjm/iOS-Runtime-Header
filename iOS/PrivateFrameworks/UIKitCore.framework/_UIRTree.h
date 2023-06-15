@@ -11,14 +11,14 @@
 __attribute__((visibility("hidden")))
 @interface _UIRTree : NSObject
 {
-    struct shared_ptr<_UIRTreeContainerNode> _root;
+    struct shared_ptr<_UIRTreeContainerNode<>> _root;
     struct _NSRange _allIndexesRange;
     NSMutableIndexSet *_allIndexes;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (struct CGRect)_frameForIndex:(long long)arg1;
+- (struct CGRect)_frameForIndex:(unsigned long long)arg1;
 - (id)description;
 - (id)init;
 

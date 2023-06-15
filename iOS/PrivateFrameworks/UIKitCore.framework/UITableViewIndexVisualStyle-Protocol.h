@@ -6,7 +6,7 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class UIColor, UIEvent, UIFont, UITableViewIndex, UITouch;
+@class UIColor, UIEvent, UIFont, UITableViewIndex, UITouch, UIView;
 
 @protocol UITableViewIndexVisualStyle <NSObject>
 @property(readonly, nonatomic) double minLineSpacing;
@@ -17,6 +17,7 @@
 - (id)initWithTableViewIndex:(UITableViewIndex *)arg1;
 
 @optional
++ (UIView *)containerViewForTableViewIndex:(UITableViewIndex *)arg1;
 - (void)didDrawEntryAtIndex:(long long)arg1 indexBounds:(struct CGRect)arg2 entryBounds:(struct CGRect)arg3 context:(struct CGContext *)arg4 originalColor:(UIColor *)arg5;
 - (void)willDrawEntryAtIndex:(long long)arg1 indexBounds:(struct CGRect)arg2 entryBounds:(struct CGRect)arg3 context:(struct CGContext *)arg4 originalColor:(UIColor *)arg5;
 - (void)drawRect:(struct CGRect)arg1;

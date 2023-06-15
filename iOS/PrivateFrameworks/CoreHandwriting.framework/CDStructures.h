@@ -62,6 +62,10 @@ struct CVNLPTextDecodingPruningPolicy {
     unsigned int maxNumberOfCandidates;
 };
 
+struct FeatureExtractionProcessor;
+
+struct PreprocessingManager;
+
 struct _NSRange {
     unsigned long long location;
     unsigned long long length;
@@ -72,36 +76,36 @@ struct __tree_end_node<std::__tree_node_base<void *>*> {
 };
 
 struct map<std::string, std::pair<std::string, double>, std::less<std::string>, std::allocator<std::pair<const std::string, std::pair<std::string, double>>>> {
-    struct __tree<std::__value_type<std::string, std::pair<std::string, double>>, std::__map_value_compare<std::string, std::__value_type<std::string, std::pair<std::string, double>>, std::less<std::string>, true>, std::allocator<std::__value_type<std::string, std::pair<std::string, double>>>> {
+    struct __tree<std::__value_type<std::string, std::pair<std::string, double>>, std::__map_value_compare<std::string, std::__value_type<std::string, std::pair<std::string, double>>, std::less<std::string>>, std::allocator<std::__value_type<std::string, std::pair<std::string, double>>>> {
         void *__begin_node_;
         struct __compressed_pair<std::__tree_end_node<std::__tree_node_base<void *>*>, std::allocator<std::__tree_node<std::__value_type<std::string, std::pair<std::string, double>>, void *>>> {
             struct __tree_end_node<std::__tree_node_base<void *>*> __value_;
         } __pair1_;
-        struct __compressed_pair<unsigned long, std::__map_value_compare<std::string, std::__value_type<std::string, std::pair<std::string, double>>, std::less<std::string>, true>> {
+        struct __compressed_pair<unsigned long, std::__map_value_compare<std::string, std::__value_type<std::string, std::pair<std::string, double>>, std::less<std::string>>> {
             unsigned long long __value_;
         } __pair3_;
     } __tree_;
 };
 
 struct map<unsigned int, int, std::less<unsigned int>, std::allocator<std::pair<const unsigned int, int>>> {
-    struct __tree<std::__value_type<unsigned int, int>, std::__map_value_compare<unsigned int, std::__value_type<unsigned int, int>, std::less<unsigned int>, true>, std::allocator<std::__value_type<unsigned int, int>>> {
+    struct __tree<std::__value_type<unsigned int, int>, std::__map_value_compare<unsigned int, std::__value_type<unsigned int, int>, std::less<unsigned int>>, std::allocator<std::__value_type<unsigned int, int>>> {
         void *__begin_node_;
         struct __compressed_pair<std::__tree_end_node<std::__tree_node_base<void *>*>, std::allocator<std::__tree_node<std::__value_type<unsigned int, int>, void *>>> {
             struct __tree_end_node<std::__tree_node_base<void *>*> __value_;
         } __pair1_;
-        struct __compressed_pair<unsigned long, std::__map_value_compare<unsigned int, std::__value_type<unsigned int, int>, std::less<unsigned int>, true>> {
+        struct __compressed_pair<unsigned long, std::__map_value_compare<unsigned int, std::__value_type<unsigned int, int>, std::less<unsigned int>>> {
             unsigned long long __value_;
         } __pair3_;
     } __tree_;
 };
 
 struct map<unsigned int, unsigned long, std::less<unsigned int>, std::allocator<std::pair<const unsigned int, unsigned long>>> {
-    struct __tree<std::__value_type<unsigned int, unsigned long>, std::__map_value_compare<unsigned int, std::__value_type<unsigned int, unsigned long>, std::less<unsigned int>, true>, std::allocator<std::__value_type<unsigned int, unsigned long>>> {
+    struct __tree<std::__value_type<unsigned int, unsigned long>, std::__map_value_compare<unsigned int, std::__value_type<unsigned int, unsigned long>, std::less<unsigned int>>, std::allocator<std::__value_type<unsigned int, unsigned long>>> {
         void *__begin_node_;
         struct __compressed_pair<std::__tree_end_node<std::__tree_node_base<void *>*>, std::allocator<std::__tree_node<std::__value_type<unsigned int, unsigned long>, void *>>> {
             struct __tree_end_node<std::__tree_node_base<void *>*> __value_;
         } __pair1_;
-        struct __compressed_pair<unsigned long, std::__map_value_compare<unsigned int, std::__value_type<unsigned int, unsigned long>, std::less<unsigned int>, true>> {
+        struct __compressed_pair<unsigned long, std::__map_value_compare<unsigned int, std::__value_type<unsigned int, unsigned long>, std::less<unsigned int>>> {
             unsigned long long __value_;
         } __pair3_;
     } __tree_;
@@ -117,6 +121,18 @@ struct set<long, std::less<long>, std::allocator<long>> {
             unsigned long long __value_;
         } __pair3_;
     } __tree_;
+};
+
+struct unique_ptr<CoreHandwriting::FeatureExtractionProcessor, std::default_delete<CoreHandwriting::FeatureExtractionProcessor>> {
+    struct __compressed_pair<CoreHandwriting::FeatureExtractionProcessor *, std::default_delete<CoreHandwriting::FeatureExtractionProcessor>> {
+        struct FeatureExtractionProcessor *__value_;
+    } __ptr_;
+};
+
+struct unique_ptr<CoreHandwriting::PreprocessingManager, std::default_delete<CoreHandwriting::PreprocessingManager>> {
+    struct __compressed_pair<CoreHandwriting::PreprocessingManager *, std::default_delete<CoreHandwriting::PreprocessingManager>> {
+        struct PreprocessingManager *__value_;
+    } __ptr_;
 };
 
 struct vector<CGPoint, std::allocator<CGPoint>> {
@@ -163,28 +179,28 @@ struct vector<unsigned long, std::allocator<unsigned long>> {
 
 // Template types
 typedef struct map<unsigned int, int, std::less<unsigned int>, std::allocator<std::pair<const unsigned int, int>>> {
-    struct __tree<std::__value_type<unsigned int, int>, std::__map_value_compare<unsigned int, std::__value_type<unsigned int, int>, std::less<unsigned int>, true>, std::allocator<std::__value_type<unsigned int, int>>> {
+    struct __tree<std::__value_type<unsigned int, int>, std::__map_value_compare<unsigned int, std::__value_type<unsigned int, int>, std::less<unsigned int>>, std::allocator<std::__value_type<unsigned int, int>>> {
         void *__begin_node_;
         struct __compressed_pair<std::__tree_end_node<std::__tree_node_base<void *>*>, std::allocator<std::__tree_node<std::__value_type<unsigned int, int>, void *>>> {
             struct __tree_end_node<std::__tree_node_base<void *>*> __value_;
         } __pair1_;
-        struct __compressed_pair<unsigned long, std::__map_value_compare<unsigned int, std::__value_type<unsigned int, int>, std::less<unsigned int>, true>> {
+        struct __compressed_pair<unsigned long, std::__map_value_compare<unsigned int, std::__value_type<unsigned int, int>, std::less<unsigned int>>> {
             unsigned long long __value_;
         } __pair3_;
     } __tree_;
-} map_3815c996;
+} map_99134f14;
 
 typedef struct map<unsigned int, unsigned long, std::less<unsigned int>, std::allocator<std::pair<const unsigned int, unsigned long>>> {
-    struct __tree<std::__value_type<unsigned int, unsigned long>, std::__map_value_compare<unsigned int, std::__value_type<unsigned int, unsigned long>, std::less<unsigned int>, true>, std::allocator<std::__value_type<unsigned int, unsigned long>>> {
+    struct __tree<std::__value_type<unsigned int, unsigned long>, std::__map_value_compare<unsigned int, std::__value_type<unsigned int, unsigned long>, std::less<unsigned int>>, std::allocator<std::__value_type<unsigned int, unsigned long>>> {
         void *__begin_node_;
         struct __compressed_pair<std::__tree_end_node<std::__tree_node_base<void *>*>, std::allocator<std::__tree_node<std::__value_type<unsigned int, unsigned long>, void *>>> {
             struct __tree_end_node<std::__tree_node_base<void *>*> __value_;
         } __pair1_;
-        struct __compressed_pair<unsigned long, std::__map_value_compare<unsigned int, std::__value_type<unsigned int, unsigned long>, std::less<unsigned int>, true>> {
+        struct __compressed_pair<unsigned long, std::__map_value_compare<unsigned int, std::__value_type<unsigned int, unsigned long>, std::less<unsigned int>>> {
             unsigned long long __value_;
         } __pair3_;
     } __tree_;
-} map_aaf15588;
+} map_e7c97cc0;
 
 typedef struct set<long, std::less<long>, std::allocator<long>> {
     struct __tree<long, std::less<long>, std::allocator<long>> {

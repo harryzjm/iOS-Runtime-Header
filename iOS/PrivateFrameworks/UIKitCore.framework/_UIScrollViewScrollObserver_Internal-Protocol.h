@@ -11,6 +11,8 @@
 @protocol _UIScrollViewScrollObserver_Internal <_UIScrollViewScrollObserver_ForPUICOnly>
 
 @optional
+- (void)_observeScrollViewHasClearedContentOffsetAnimation:(UIScrollView *)arg1;
+- (void)_observeScrollView:(UIScrollView *)arg1 temporaryCoordinatingReplacementDidChange:(UIScrollView *)arg2;
 - (void)_observeScrollViewGeometryAffectingContentBottomDidChange:(UIScrollView *)arg1;
 - (void)_observeScrollViewAlignedContentMarginDidChange:(UIScrollView *)arg1;
 - (void)_observeScrollView:(UIScrollView *)arg1 didBeginTransitionToDeferredContentOffset:(struct CGPoint)arg2;

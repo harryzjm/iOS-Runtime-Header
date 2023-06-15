@@ -9,6 +9,9 @@
 @class NSDictionary, NSNumber, NSString;
 
 @protocol PRDiagnosticsServerProtocol <NSObject>
+- (void)setNarrowbandSarState:(long long)arg1 reply:(void (^)(_Bool))arg2;
+- (void)getChipPublicKey:(void (^)(NSData *))arg1;
+- (void)getChipType:(void (^)(long long))arg1;
 - (void)requestPowerChange:(_Bool)arg1 reply:(void (^)(_Bool))arg2;
 - (void)getRoseChipPowerState:(void (^)(_Bool, _Bool))arg1;
 - (void)setRoseGlobalConfigParams:(NSDictionary *)arg1 reply:(void (^)(_Bool))arg2;

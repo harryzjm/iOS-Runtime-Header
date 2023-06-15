@@ -13,6 +13,8 @@
 - (unsigned long long)hf_countForSubstring:(id)arg1;
 - (id)hf_toHexString:(char *)arg1 length:(unsigned int)arg2;
 - (unsigned int)hf_UTF8Length;
+@property(readonly, nonatomic) _Bool hf_containsOnlyDecimalDigits;
+@property(readonly, nonatomic) NSString *hf_extractDecimalDigits;
 - (id)hf_stringByLowercasingFirstWord;
 - (id)hf_stringByCapitalizingFirstWord;
 - (id)hf_stringByTransformingFirstWordUsingBlock:(CDUnknownBlockType)arg1;

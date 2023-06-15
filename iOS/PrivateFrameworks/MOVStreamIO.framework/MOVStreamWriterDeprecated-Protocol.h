@@ -10,7 +10,7 @@
 
 @protocol MOVStreamWriterDeprecated <NSObject>
 - (void)prepareToRecord;
-- (void)addTrackForStreamWithIdentifier:(NSString *)arg1 formatDescription:(const struct opaqueCMFormatDescription *)arg2 encoderConfig:(NSDictionary *)arg3;
+- (void)addTrackForStreamWithIdentifier:(NSString *)arg1 formatDescription:(struct opaqueCMFormatDescription *)arg2 encoderConfig:(NSDictionary *)arg3;
 - (_Bool)setVideoTransformFromOrientation:(int)arg1;
 @end
 

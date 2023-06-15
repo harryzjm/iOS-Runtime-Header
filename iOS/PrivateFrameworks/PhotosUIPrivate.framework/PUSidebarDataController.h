@@ -6,32 +6,29 @@
 
 #import <PhotosUICore/PXSidebarDataController.h>
 
-@class NSOperationQueue, PUStackView, UIImage;
+@class NSOperationQueue, UIImage;
 
 __attribute__((visibility("hidden")))
 @interface PUSidebarDataController : PXSidebarDataController
 {
     UIImage *_emptyAlbumPlaceholderImage;
-    PUStackView *_reusableStackView;
 }
 
-+ (void)_prepareConfiguration:(id)arg1 assetsFilterPredicate:(id)arg2;
-+ (id)fromMyMacAlbumsDataSectionManagerWithWorkQueue:(id)arg1 assetsFilterPredicate:(id)arg2;
-+ (id)otherAlbumsDataSectionManagerWithWorkQueue:(id)arg1 sectionEnablementProvider:(id)arg2 assetsFilterPredicate:(id)arg3;
-+ (id)sharedAlbumsDataSectionManagerWithWorkQueue:(id)arg1 assetsFilterPredicate:(id)arg2 hideAdd:(_Bool)arg3;
-+ (id)myAlbumsDataSectionManagerForPhotoLibrary:(id)arg1 withWorkQueue:(id)arg2 assetsFilterPredicate:(id)arg3 hideAdd:(_Bool)arg4;
++ (void)_prepareSectionConfiguration:(id)arg1 assetsFilterPredicate:(id)arg2;
++ (id)fromMyMacAlbumsDataSectionManagerWithPhotoLibrary:(id)arg1 context:(id)arg2;
++ (id)otherAlbumsDataSectionManagerWithPhotoLibrary:(id)arg1 context:(id)arg2;
++ (id)sharedAlbumsDataSectionManagerWithPhotoLibrary:(id)arg1 context:(id)arg2 hideAdd:(_Bool)arg3;
++ (id)myAlbumsDataSectionManagerForPhotoLibrary:(id)arg1 context:(id)arg2 hideAdd:(_Bool)arg3;
 + (id)_actionManagerWithActionType:(id)arg1;
-+ (id)_singleItemDataSourceManagerForCollection:(id)arg1 workQueue:(id)arg2 additionalAssetsFilterPredicate:(id)arg3;
++ (id)_singleItemDataSourceManagerForCollection:(id)arg1 context:(id)arg2;
 - (void).cxx_destruct;
-@property(retain, nonatomic) PUStackView *reusableStackView; // @synthesize reusableStackView=_reusableStackView;
 @property(retain, nonatomic) UIImage *emptyAlbumPlaceholderImage; // @synthesize emptyAlbumPlaceholderImage=_emptyAlbumPlaceholderImage;
 - (id)sidebarCustomSymbolImageWithName:(id)arg1 symbolColor:(id)arg2 scale:(double)arg3;
 - (id)backedPlusButtonImage;
-- (id)_createReusableStackViewWithTargetSize:(struct CGSize)arg1;
 - (long long)_requestImageForAsset:(id)arg1 size:(struct CGSize)arg2 completion:(CDUnknownBlockType)arg3;
 - (long long)requestImageForItem:(id)arg1 parentItem:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)appearanceDidChange;
-- (id)sectionManagersForLibrary:(id)arg1 workQueue:(id)arg2 sectionEnablementProvider:(id)arg3 additionalAssetsFilterPredicate:(id)arg4;
+- (id)makeSectionManagers;
 
 // Remaining properties
 @property(readonly, nonatomic) NSOperationQueue *workQueue; // @dynamic workQueue;

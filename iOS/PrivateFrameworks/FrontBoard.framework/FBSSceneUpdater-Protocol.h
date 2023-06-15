@@ -11,8 +11,9 @@
 
 @protocol FBSSceneUpdater <NSObject>
 - (void)scene:(FBSScene *)arg1 sendMessage:(FBSSceneMessage *)arg2 withResponse:(void (^)(FBSSceneMessage *, NSError *))arg3;
-- (void)scene:(FBSScene *)arg1 didReceiveActions:(NSSet *)arg2;
+- (void)scene:(FBSScene *)arg1 didReceiveActions:(NSSet *)arg2 forExtension:(Class)arg3;
 - (void)scene:(FBSScene *)arg1 didUpdateClientSettings:(FBSSceneClientSettings *)arg2 withDiff:(FBSSceneClientSettingsDiff *)arg3 transitionContext:(FBSSceneTransitionContext *)arg4;
+- (_Bool)canHaveAgent;
 - (id <FBSProcess>)hostProcess;
 - (FBSSerialQueue *)callOutQueue;
 @end

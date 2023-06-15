@@ -16,6 +16,7 @@
     MISSING_TYPE *priceDataManager;
     MISSING_TYPE *priceDataRefreshManager;
     MISSING_TYPE *quoteDetailManager;
+    MISSING_TYPE *chartManager;
     MISSING_TYPE *feedService;
     MISSING_TYPE *feedServiceConfigFetcher;
     MISSING_TYPE *appConfigurationManager;

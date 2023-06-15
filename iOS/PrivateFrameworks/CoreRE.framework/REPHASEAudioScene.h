@@ -11,9 +11,9 @@
 __attribute__((visibility("hidden")))
 @interface REPHASEAudioScene : NSObject
 {
-    struct unique_ptr<re::HashTable<unsigned long long, REPHASEEntity *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>, std::function<void (re::HashTable<unsigned long long, REPHASEEntity *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)>> _entities;
-    struct unique_ptr<re::HashTable<unsigned long long, PHASEListener *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>, std::function<void (re::HashTable<unsigned long long, PHASEListener *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)>> _listeners;
-    struct unique_ptr<re::HashTable<unsigned long long, PHASEObject *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>, std::function<void (re::HashTable<unsigned long long, PHASEObject *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)>> _sessionRootObjects;
+    struct unique_ptr<re::HashTable<unsigned long long, REPHASEEntity *>, std::function<void (re::HashTable<unsigned long long, REPHASEEntity *>*)>> _entities;
+    struct unique_ptr<re::HashTable<unsigned long long, PHASEListener *>, std::function<void (re::HashTable<unsigned long long, PHASEListener *>*)>> _listeners;
+    struct unique_ptr<re::HashTable<unsigned long long, PHASEObject *>, std::function<void (re::HashTable<unsigned long long, PHASEObject *>*)>> _sessionRootObjects;
     struct HashTable<unsigned long long, PHASESource *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false> _sources;
     struct vector<PendingListener, std::allocator<PendingListener>> pendingListeners;
     REPHASEContext *_context;

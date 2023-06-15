@@ -12,6 +12,7 @@
 
 @optional
 - (void)mapView:(MKMapView *)arg1 didStopRespondingToGesture:(long long)arg2 zoomDirection:(long long)arg3 didDecelerate:(_Bool)arg4 tiltDirection:(long long)arg5;
+- (void)mapView:(MKMapView *)arg1 didGetHikingToolTipRegionId:(unsigned long long)arg2;
 - (void)mapView:(MKMapView *)arg1 didUpdateYaw:(double)arg2;
 - (void)mapView:(MKMapView *)arg1 didChangeDisplayedFloorOrdinal:(short)arg2 forVenue:(VKVenueFeatureMarker *)arg3;
 - (void)mapView:(MKMapView *)arg1 didChangeFocusedVenue:(VKVenueFeatureMarker *)arg2 focusedBuilding:(VKVenueBuildingFeatureMarker *)arg3;
@@ -53,6 +54,7 @@
 - (_Bool)mapViewShouldHandleTapToDeselect:(MKMapView *)arg1;
 - (_Bool)mapView:(MKMapView *)arg1 shouldReceiveTouch:(UITouch *)arg2;
 - (void)mapView:(MKMapView *)arg1 didChangeMapType:(unsigned long long)arg2;
+- (void)mapView:(MKMapView *)arg1 didPerformPitchAction:(_Bool)arg2;
 - (void)mapView:(MKMapView *)arg1 didChangeUserTrackingMode:(long long)arg2 animated:(_Bool)arg3 fromTrackingButton:(_Bool)arg4;
 - (double)mapView:(MKMapView *)arg1 shouldDelayTapResponse:(UITouch *)arg2 onAnnotationView:(MKAnnotationView *)arg3 forDuration:(double)arg4;
 - (void)mapViewDidFinishInitialUserTrackingModeAnimation:(MKMapView *)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class MISSING_TYPE;
 
@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *iconConstraints;
     MISSING_TYPE *layoutHandler;
     MISSING_TYPE *recencyIconView;
+    MISSING_TYPE *stackIconView;
     MISSING_TYPE *shelfArtworkIconSafeAreaInsets;
     MISSING_TYPE *layout;
     MISSING_TYPE *style;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class BRCAccountSession, BRCItemGlobalID, BRCNotificationPipe, NSMutableArray, NSString;
+@class BRCAccountSessionFPFS, BRCItemGlobalID, BRCNotificationPipe, NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface BRCDataOrDocsScopeGatherer : NSObject
@@ -18,13 +18,15 @@ __attribute__((visibility("hidden")))
     unsigned long long _gatheringRankMax;
     unsigned long long _lastSentRank;
     NSString *_gatheringNamePrefix;
-    BRCAccountSession *_session;
+    BRCAccountSessionFPFS *_session;
     _Bool _includesDeadItems;
+    _Bool _invalidated;
     BRCItemGlobalID *_gatheredChildrenItemGlobalID;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) BRCItemGlobalID *gatheredChildrenItemGlobalID; // @synthesize gatheredChildrenItemGlobalID=_gatheredChildrenItemGlobalID;
+- (void)dealloc;
 - (void)invalidate;
 - (void)done;
 - (CDUnknownBlockType)_popGatherReply;

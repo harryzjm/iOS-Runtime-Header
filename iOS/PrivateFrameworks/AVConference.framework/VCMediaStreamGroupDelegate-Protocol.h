@@ -17,6 +17,7 @@
 - (void)streamGroup:(VCMediaStreamGroup *)arg1 didChangeMediaPriority:(unsigned char)arg2;
 
 @optional
+- (void)streamGroup:(VCMediaStreamGroup *)arg1 didChangeState:(unsigned int)arg2;
 - (void)streamGroup:(VCMediaStreamGroup *)arg1 remoteMediaStalled:(_Bool)arg2 duration:(double)arg3;
 - (void)streamGroup:(VCMediaStreamGroup *)arg1 didSuspendStreams:(_Bool)arg2;
 - (void)streamGroup:(VCMediaStreamGroup *)arg1 requestKeyFrameGenerationWithStreamID:(unsigned short)arg2 firType:(int)arg3;

@@ -6,8 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSNumber, NSString, STIntroductionViewModel, UINavigationController, UIViewController;
-@protocol STContentPrivacyViewModelCoordinator;
+@class NSNumber, NSString, NSURL, STIntroductionViewModel, UINavigationController, UIViewController, _TtC20ScreenTimeSettingsUI23SettingsPresetViewModel;
 
 __attribute__((visibility("hidden")))
 @interface STIntroductionController : NSObject
@@ -21,24 +20,26 @@ __attribute__((visibility("hidden")))
     _Bool _childOrNotSignedIntoiCloud;
     _Bool _isModalPresentation;
     NSString *_childName;
+    CDUnknownBlockType _completionBlock;
+    NSURL *_userURI;
     NSNumber *_childAge;
     NSString *_altDSID;
     NSNumber *_dsid;
-    NSObject<STContentPrivacyViewModelCoordinator> *_contentPrivacyCoordinator;
-    CDUnknownBlockType _completionBlock;
     STIntroductionViewModel *_introductionModel;
+    _TtC20ScreenTimeSettingsUI23SettingsPresetViewModel *_settingsPresetViewModel;
     UINavigationController *_navigationController;
 }
 
 - (void).cxx_destruct;
 @property(retain) UINavigationController *navigationController; // @synthesize navigationController=_navigationController;
+@property(retain, nonatomic) _TtC20ScreenTimeSettingsUI23SettingsPresetViewModel *settingsPresetViewModel; // @synthesize settingsPresetViewModel=_settingsPresetViewModel;
 @property(nonatomic) _Bool isModalPresentation; // @synthesize isModalPresentation=_isModalPresentation;
 @property(readonly) STIntroductionViewModel *introductionModel; // @synthesize introductionModel=_introductionModel;
+@property(readonly, copy) NSNumber *dsid; // @synthesize dsid=_dsid;
+@property(readonly, copy) NSString *altDSID; // @synthesize altDSID=_altDSID;
+@property(readonly, copy) NSNumber *childAge; // @synthesize childAge=_childAge;
+@property(copy) NSURL *userURI; // @synthesize userURI=_userURI;
 @property(copy) CDUnknownBlockType completionBlock; // @synthesize completionBlock=_completionBlock;
-@property(retain) NSObject<STContentPrivacyViewModelCoordinator> *contentPrivacyCoordinator; // @synthesize contentPrivacyCoordinator=_contentPrivacyCoordinator;
-@property(copy) NSNumber *dsid; // @synthesize dsid=_dsid;
-@property(copy) NSString *altDSID; // @synthesize altDSID=_altDSID;
-@property(copy) NSNumber *childAge; // @synthesize childAge=_childAge;
 @property(copy) NSString *childName; // @synthesize childName=_childName;
 @property(getter=isChildOrNotSignedIntoiCloud) _Bool childOrNotSignedIntoiCloud; // @synthesize childOrNotSignedIntoiCloud=_childOrNotSignedIntoiCloud;
 @property _Bool askForRecoveryAppleID; // @synthesize askForRecoveryAppleID=_askForRecoveryAppleID;
@@ -53,7 +54,8 @@ __attribute__((visibility("hidden")))
 - (void)_viewControllerCompleted:(id)arg1;
 @property(readonly) UIViewController *initialViewController;
 - (void)presentOverViewController:(id)arg1;
-- (id)init;
+- (id)initWithNewUserRootViewModelCoordinator:(id)arg1;
+- (id)initWithDSID:(id)arg1 childAge:(id)arg2 childName:(id)arg3 updateExistingSettings:(_Bool)arg4 restrictionsDataSource:(id)arg5;
 
 @end
 

@@ -6,25 +6,29 @@
 
 #import <NotesShared/NSObject-Protocol.h>
 
-@class CKRecord, ICCloudSyncingObject, NSData, NSString, NSURL;
+@class CKRecord, ICCloudSyncingObject, ICEncryptionKey, NSData, NSString, NSURL;
 
 @protocol ICCloudSyncingObjectCryptoStrategy <NSObject>
-@property(readonly) _Bool hasPassphraseSet;
-@property(readonly) _Bool isAuthenticated;
-@property(readonly) _Bool canAuthenticate;
+@property(readonly, copy, nonatomic) NSString *passphraseHint;
+@property(readonly, nonatomic) _Bool hasPassphraseSet;
+@property(readonly, nonatomic) _Bool isAuthenticated;
+@property(readonly, nonatomic) _Bool canAuthenticate;
 @property(readonly, nonatomic) long long intrinsicNotesVersion;
 - (void)invalidateStrategy;
 - (_Bool)isPassphraseCorrect:(NSString *)arg1;
-- (void)rewrapAndDivergeKeyUsingPassphrase:(NSString *)arg1;
-- (_Bool)canKeyDecrypt:(NSData *)arg1;
-- (NSData *)unwrappedKey;
+- (_Bool)authenticateWithPassphrase:(NSString *)arg1;
+- (ICEncryptionKey *)mainKeyForPassphrase:(NSString *)arg1;
+- (_Bool)rewrapWithMainKey:(ICEncryptionKey *)arg1;
+- (_Bool)rewrapDataAtURL:(NSURL *)arg1 withMainKey:(ICEncryptionKey *)arg2;
+- (NSData *)encryptedData:(NSData *)arg1 rewrappedWithMainKey:(ICEncryptionKey *)arg2;
+- (_Bool)mainKeyDecryptsPrimaryData:(ICEncryptionKey *)arg1;
 - (void)mergeEncryptedDataFromRecord:(CKRecord *)arg1;
 - (_Bool)encryptSidecarFileFromURL:(NSURL *)arg1 toURL:(NSURL *)arg2;
 - (NSData *)decryptSidecarData:(NSData *)arg1;
 - (NSData *)encryptSidecarData:(NSData *)arg1;
-- (void)loadDecryptedValuesIfNecessary;
+- (_Bool)loadDecryptedValuesIfNecessary;
 - (_Bool)encryptFileFromURL:(NSURL *)arg1 toURL:(NSURL *)arg2;
-- (void)saveEncryptedJSON;
+- (_Bool)saveEncryptedJSON;
 - (void)initializeCryptoPropertiesFromObject:(ICCloudSyncingObject *)arg1;
 @end
 

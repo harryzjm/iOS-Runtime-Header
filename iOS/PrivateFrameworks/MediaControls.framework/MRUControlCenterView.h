@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class MRUControlCenterButton, MRUTransportButton, MRUVisualStylingProvider, UICollectionView, UICollectionViewFlowLayout;
+@class MRUControlCenterButton, MRUControlCenterRouteButton, MRUVisualStylingProvider, UICollectionView, UICollectionViewFlowLayout;
 
 __attribute__((visibility("hidden")))
 @interface MRUControlCenterView : UIView
@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
     UICollectionViewFlowLayout *_collectionViewLayout;
     MRUControlCenterButton *_moreButton;
     MRUVisualStylingProvider *_stylingProvider;
-    MRUTransportButton *_routingButton;
+    MRUControlCenterRouteButton *_routingButton;
     long long _state;
     double _cornerRadius;
     UIView *_materialView;
@@ -38,7 +38,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) struct CGRect transitionFrame; // @synthesize transitionFrame=_transitionFrame;
 @property(nonatomic, getter=isTransitioning) _Bool transitioning; // @synthesize transitioning=_transitioning;
 @property(nonatomic) long long state; // @synthesize state=_state;
-@property(readonly, nonatomic) MRUTransportButton *routingButton; // @synthesize routingButton=_routingButton;
+@property(readonly, nonatomic) MRUControlCenterRouteButton *routingButton; // @synthesize routingButton=_routingButton;
 @property(readonly, nonatomic) MRUVisualStylingProvider *stylingProvider; // @synthesize stylingProvider=_stylingProvider;
 @property(readonly, nonatomic) MRUControlCenterButton *moreButton; // @synthesize moreButton=_moreButton;
 @property(readonly, nonatomic) UICollectionViewFlowLayout *collectionViewLayout; // @synthesize collectionViewLayout=_collectionViewLayout;

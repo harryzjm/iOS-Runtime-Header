@@ -10,12 +10,12 @@
 
 @interface _TtC11EmojiPoster18GridLayoutProvider : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *containerSize;
     MISSING_TYPE *sizeVariant;
     MISSING_TYPE *numberOfEmoji;
-    MISSING_TYPE *screenSize;
+    MISSING_TYPE *deviceType;
     MISSING_TYPE *attributes;
-    MISSING_TYPE *templateDeviceWidth;
-    MISSING_TYPE *templateScreenScale;
+    MISSING_TYPE *equilateralTriangleConstant;
 }
 
 @end

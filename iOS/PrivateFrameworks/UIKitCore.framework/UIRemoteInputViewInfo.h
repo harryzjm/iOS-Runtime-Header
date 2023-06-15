@@ -11,12 +11,14 @@
 __attribute__((visibility("hidden")))
 @interface UIRemoteInputViewInfo : NSObject
 {
+    _Bool _shouldShowDockView;
     int _processId;
     unsigned int _contextId;
     struct CGSize _size;
     struct NSEdgeInsets _insets;
 }
 
+@property(nonatomic) _Bool shouldShowDockView; // @synthesize shouldShowDockView=_shouldShowDockView;
 @property(nonatomic) unsigned int contextId; // @synthesize contextId=_contextId;
 @property(nonatomic) int processId; // @synthesize processId=_processId;
 @property(nonatomic) struct NSEdgeInsets insets; // @synthesize insets=_insets;

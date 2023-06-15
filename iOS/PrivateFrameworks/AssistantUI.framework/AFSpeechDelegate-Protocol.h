@@ -20,6 +20,7 @@
 - (void)assistantConnectionDidChangeAudioRecordingPower:(AFConnection *)arg1;
 - (void)assistantConnection:(AFConnection *)arg1 speechRecordingDidFail:(NSError *)arg2;
 - (void)assistantConnectionSpeechRecordingDidCancel:(AFConnection *)arg1;
+- (void)assistantConnectionUpdatedSpeechEndEstimate:(AFConnection *)arg1 speechEndEstimate:(unsigned long long)arg2;
 - (void)assistantConnectionSpeechRecordingDidEnd:(AFConnection *)arg1;
 - (void)assistantConnection:(AFConnection *)arg1 speechRecordingPerformTwoShotPromptWithType:(long long)arg2 completion:(void (^)(double, double, NSError *))arg3;
 - (void)assistantConnectionSpeechRecordingDidDetectStartpoint:(AFConnection *)arg1;

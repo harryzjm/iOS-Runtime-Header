@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIControl.h>
+#import <UIKitCore/UIControl.h>
 
 @interface UIControl (AvatarViewWorkaround)
 - (void)_cnui_super_touchesCancelled:(id)arg1 withEvent:(id)arg2;

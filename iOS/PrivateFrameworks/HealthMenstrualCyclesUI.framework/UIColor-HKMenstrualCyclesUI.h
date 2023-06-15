@@ -36,9 +36,7 @@
 + (id)hkmc_supplementaryDataColor;
 + (id)hkmc_regularDayColor;
 + (id)hkmc_projectionTextColor;
-+ (id)hkmc_menstruationProjectionLowReversedColor;
 + (id)hkmc_menstruationProjectionLowColor;
-+ (id)hkmc_menstruationProjectionHighReversedColor;
 + (id)hkmc_menstruationProjectionHighColor;
 + (id)hkmc_menstruationLoggingCardGradientBColor;
 + (id)hkmc_menstruationLoggingCardGradientAColor;

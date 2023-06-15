@@ -9,5 +9,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (long long)inputActionCount;
+
 @end
 

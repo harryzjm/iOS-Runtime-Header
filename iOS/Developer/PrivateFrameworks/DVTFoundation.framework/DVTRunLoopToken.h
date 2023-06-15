@@ -18,7 +18,6 @@
     SEL _initialSelector;
 }
 
-+ (void)initialize;
 - (void).cxx_destruct;
 @property SEL initialSelector; // @synthesize initialSelector=_initialSelector;
 @property(retain) NSRunLoop *cancellationRunLoop; // @synthesize cancellationRunLoop=_cancellationRunLoop;

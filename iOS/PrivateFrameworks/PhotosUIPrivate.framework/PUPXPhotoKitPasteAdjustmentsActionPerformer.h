@@ -4,19 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <PhotosUICore/PXPhotoKitAssetActionPerformer.h>
-
 __attribute__((visibility("hidden")))
-@interface PUPXPhotoKitPasteAdjustmentsActionPerformer : PXPhotoKitAssetActionPerformer
+@interface PUPXPhotoKitPasteAdjustmentsActionPerformer
 {
 }
 
 + (id)systemImageNameForActionManager:(id)arg1;
 + (id)localizedTitleForUseCase:(unsigned long long)arg1 actionManager:(id)arg2;
-+ (id)createPreviewActionWithTitle:(id)arg1 image:(id)arg2 handler:(CDUnknownBlockType)arg3;
-+ (id)newActivityProgressAlertForAction:(id)arg1 assets:(id)arg2;
-+ (id)newProgressToastForAction:(id)arg1 assets:(id)arg2;
-+ (id)newEditActionForPerformer:(id)arg1 class:(Class)arg2 assets:(id)arg3;
 + (_Bool)_canPasteOnAsset:(id)arg1;
 + (_Bool)canPerformOnAsset:(id)arg1 inAssetCollection:(id)arg2 person:(id)arg3;
 + (_Bool)canPerformWithSelectionSnapshot:(id)arg1 person:(id)arg2;

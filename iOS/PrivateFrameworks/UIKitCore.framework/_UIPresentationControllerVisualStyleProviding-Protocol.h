@@ -19,6 +19,8 @@
 
 @optional
 @property(readonly, nonatomic) _UISheetPresentationMetrics *defaultSheetMetrics;
+- (Class)presentationControllerClassForModalPresentationStyle:(long long)arg1 inIdiom:(long long)arg2;
+- (UIPresentationController *)presentationControllerForPresentedViewController:(UIViewController *)arg1;
 - (long long)defaultConcreteTransitionStyleForViewController:(UIViewController *)arg1;
 - (long long)defaultConcretePresentationStyleForViewController:(UIViewController *)arg1;
 @end

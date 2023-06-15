@@ -6,12 +6,13 @@
 
 #import <TrackingAvoidance/NSObject-Protocol.h>
 
-@class NSArray, TATrackingAvoidanceService;
+@class NSArray, TATrackingAvoidanceService, TAUnknownBeacon;
 
 @protocol TATrackingAvoidanceServiceObserver <NSObject>
 - (void)trackingAvoidanceService:(TATrackingAvoidanceService *)arg1 didFindSuspiciousDevices:(NSArray *)arg2;
 
 @optional
+- (void)trackingAvoidanceService:(TATrackingAvoidanceService *)arg1 didRequestAIS:(TAUnknownBeacon *)arg2;
 - (void)visitStateChangedForTrackingAvoidanceService:(TATrackingAvoidanceService *)arg1;
 - (void)trackingAvoidanceService:(TATrackingAvoidanceService *)arg1 didStageSuspiciousDevices:(NSArray *)arg2;
 - (void)trackingAvoidanceService:(TATrackingAvoidanceService *)arg1 didUpdateSuspiciousDevices:(NSArray *)arg2;

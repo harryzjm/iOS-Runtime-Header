@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
     unsigned int privacy_proxy_fail_closed:1;
     unsigned int privacy_proxy_fail_closed_for_unreachable_hosts:1;
     unsigned int allow_non_privacy_proxy_children:1;
+    unsigned int privacy_proxy_detected_unreachable_host:1;
     unsigned int direct_prohibited:1;
     unsigned int synthesized_url:1;
     unsigned int pac_failed_missing_url:1;

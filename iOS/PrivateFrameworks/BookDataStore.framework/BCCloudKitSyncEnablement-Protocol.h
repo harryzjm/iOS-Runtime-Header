@@ -6,7 +6,7 @@
 
 @protocol BCCloudKitSyncEnablement
 - (void)setCloudSyncPaused:(_Bool)arg1;
-- (void)setEnableSecureUserDataCloudSync:(_Bool)arg1;
+- (void)setEnableSecureCloudSync:(_Bool)arg1;
 - (void)setEnableCloudSync:(_Bool)arg1 enableReadingNowSync:(_Bool)arg2;
 - (void)setEnableCollectionSync:(_Bool)arg1;
 @end

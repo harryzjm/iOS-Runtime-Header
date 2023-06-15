@@ -9,9 +9,9 @@
 @class UIImage;
 
 @interface ICAttachmentSystemPaperModel (UI)
-+ (void)generatePreviewsForAttachment:(id)arg1 paperIdentifier:(id)arg2;
++ (_Bool)generatePreviewsForAttachment:(id)arg1 paperIdentifier:(id)arg2;
 + (id)previewImageForAttachment:(id)arg1 fullImage:(struct CGImage *)arg2 scale:(double)arg3 appearanceInfo:(id)arg4;
-+ (id)generateImageForAttachment:(id)arg1 fullResolution:(_Bool)arg2 appearanceInfo:(id)arg3 outContentBounds:(struct CGRect *)arg4 outHasDeepLink:(_Bool *)arg5;
++ (id)generateImageForAttachment:(id)arg1 fullResolution:(_Bool)arg2 appearanceInfo:(id)arg3;
 + (id)generateEmptyImage;
 - (void)drawPreviewInRect:(struct CGRect)arg1;
 - (id)activityItems;

@@ -9,6 +9,7 @@
 @class XCTTestIdentifierSet;
 
 @protocol XCTExecutionExtension <NSObject>
+- (void)getAllTestIdentifiersWithCompletion:(void (^)(XCTTestIdentifierSet *, NSError *))arg1;
 - (void)getParallelizableTestIdentifiersWithCompletion:(void (^)(XCTTestIdentifierSet *, NSError *))arg1;
 - (void)executeTestsWithIdentifiers:(XCTTestIdentifierSet *)arg1 skippingTestsWithIdentifiers:(XCTTestIdentifierSet *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 @end

@@ -9,8 +9,8 @@
 @interface TSKFidgetResolver : NSObject
 {
     double _fidgetThreshold;
-    id _values[10];
-    double _times[10];
+    id _values[20];
+    double _times[20];
     unsigned long long _head;
 }
 

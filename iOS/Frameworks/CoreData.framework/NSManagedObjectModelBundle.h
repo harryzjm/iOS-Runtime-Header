@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 - (id)optimizedVersionURL;
 - (id)currentVersionURL;
 - (id)urlForModelVersionWithName:(id)arg1;
+- (id)versionChecksums;
 - (id)modelVersions;
 - (id)currentVersion;
 - (void)dealloc;

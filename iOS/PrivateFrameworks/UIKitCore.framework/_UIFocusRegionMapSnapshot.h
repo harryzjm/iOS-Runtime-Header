@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 @class NSArray, NSMutableArray, UIImage, UIView, _UIFocusRegionMapSnapshotRequest;
 
 __attribute__((visibility("hidden")))
-@interface _UIFocusRegionMapSnapshot : NSObject <NSCopying>
+@interface _UIFocusRegionMapSnapshot : NSObject
 {
     _Bool _isFocusedRectEmpty;
     _Bool _didSetRegionClipFrame;

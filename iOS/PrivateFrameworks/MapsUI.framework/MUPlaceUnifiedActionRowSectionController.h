@@ -7,7 +7,7 @@
 #import "MUPlaceSectionController.h"
 
 @class MUGroupedActionsRowView, MUPlaceSectionView, MUPlaceUnifiedActionRowSectionControllerConfiguration, MUPlaceholderGridCache, MUTimeExpirableLRUCache, NSArray, NSString, _MKPlaceActionButtonController;
-@protocol MUPlaceUnifiedActionRowSectionControllerDelegate;
+@protocol MUOfflineMapProvider, MUPlaceUnifiedActionRowSectionControllerDelegate;
 
 __attribute__((visibility("hidden")))
 @interface MUPlaceUnifiedActionRowSectionController : MUPlaceSectionController
@@ -20,9 +20,11 @@ __attribute__((visibility("hidden")))
     MUTimeExpirableLRUCache *_partnerIconsByURLs;
     _Bool _hasContent;
     id <MUPlaceUnifiedActionRowSectionControllerDelegate> _actionDelegate;
+    id <MUOfflineMapProvider> _offlineMapProvider;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <MUOfflineMapProvider> offlineMapProvider; // @synthesize offlineMapProvider=_offlineMapProvider;
 @property(nonatomic) __weak id <MUPlaceUnifiedActionRowSectionControllerDelegate> actionDelegate; // @synthesize actionDelegate=_actionDelegate;
 - (void)instrumentExternalActionUsingAnalyticsAction:(int)arg1 target:(int)arg2 eventValue:(id)arg3 sharedStateButtonList:(id)arg4;
 - (void)actionRowItemViewModelDidUpdate:(id)arg1;
@@ -32,6 +34,8 @@ __attribute__((visibility("hidden")))
 - (id)_moreActionsViewModelWithGroupedButton:(id)arg1 excludedSystemActionsTypes:(id)arg2;
 - (id)_actionItemViewModelWithPlaceActionItem:(id)arg1;
 - (id)_partnerActionViewModelWithPartnerActionIndex:(unsigned long long)arg1;
+- (id)_contactActionRowViewModel;
+- (id)_downloadOfflineViewModel;
 - (id)_directionsViewModel;
 - (id)_buildServerControlledLayoutWithConfiguration:(id)arg1;
 - (id)_buildSARLayout;

@@ -18,7 +18,6 @@
     MISSING_TYPE *lastEnv;
     MISSING_TYPE *lastList;
     MISSING_TYPE *lastTime;
-    MISSING_TYPE *interpolatorCache;
     MISSING_TYPE *isValid;
     MISSING_TYPE *wasValid;
 }

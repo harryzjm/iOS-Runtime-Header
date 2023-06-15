@@ -9,6 +9,8 @@
 @interface NSIndexSet (TSUAdditions)
 + (id)tsu_indexSetWithIndices:(unsigned long long *)arg1 count:(unsigned long long)arg2;
 - (id)tsu_indexSetByOutsettingRangesBy:(unsigned long long)arg1;
+- (void)tsu_enumerateSkippedIndexesWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (void)tsu_enumerateSkippedRangesWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)tsu_enumerateRangesConcurrentlyUsingBeginBlock:(CDUnknownBlockType)arg1 concurrentBlock:(CDUnknownBlockType)arg2 finalBlock:(CDUnknownBlockType)arg3;
 - (unsigned long long)tsu_nsIndexSetConcurrencyFactor;
 - (id)tsu_indexSetChunkIndex:(unsigned long long)arg1 ofChunkCount:(unsigned long long)arg2;

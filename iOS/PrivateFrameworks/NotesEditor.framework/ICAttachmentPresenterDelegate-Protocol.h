@@ -13,6 +13,7 @@
 
 @optional
 - (void)attachmentPresenterDidDismiss:(ICAttachmentPresenter *)arg1;
+- (void)attachmentPresenterWillPresent:(ICAttachmentPresenter *)arg1;
 - (UIView *)attachmentPresenter:(ICAttachmentPresenter *)arg1 transitionViewForIndexPath:(NSIndexPath *)arg2;
 - (void)scrollCollectionViewToIndexPath:(NSIndexPath *)arg1;
 - (_Bool)attachmentPresenter:(ICAttachmentPresenter *)arg1 useFullPDFTransitionForAttachment:(ICAttachment *)arg2;

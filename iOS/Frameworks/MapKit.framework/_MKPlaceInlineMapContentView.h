@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, getter=isBottomHairlineHidden) _Bool bottomHairlineHidden;
 - (void)_contentSizeDidChange;
 - (double)titleHeight;
+- (id)initWithFrame:(struct CGRect)arg1 hideLookAroundView:(_Bool)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (_Bool)useImageView;
 - (_Bool)hasTitle;

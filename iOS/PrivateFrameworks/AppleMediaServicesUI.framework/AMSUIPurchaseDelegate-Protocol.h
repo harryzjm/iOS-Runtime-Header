@@ -6,12 +6,13 @@
 
 #import <AppleMediaServicesUI/AMSPurchaseDelegate-Protocol.h>
 
-@class AMSPurchase, AMSUISceneIdentifierRequest, AMSUIWindowRequest;
+@class AMSPurchase, AMSUISceneBundleIdentifierRequest, AMSUISceneIdentifierRequest, AMSUIWindowRequest;
 
 @protocol AMSUIPurchaseDelegate <AMSPurchaseDelegate>
 
 @optional
 - (void)purchase:(AMSPurchase *)arg1 handleWindowRequest:(AMSUIWindowRequest *)arg2 completion:(void (^)(UIWindow *, NSError *))arg3;
 - (void)purchase:(AMSPurchase *)arg1 handleSceneIdentifierRequest:(AMSUISceneIdentifierRequest *)arg2 completion:(void (^)(NSString *, NSError *))arg3;
+- (void)purchase:(AMSPurchase *)arg1 handleSceneBundleIdentifierRequest:(AMSUISceneBundleIdentifierRequest *)arg2 completion:(void (^)(NSString *, NSError *))arg3;
 @end
 

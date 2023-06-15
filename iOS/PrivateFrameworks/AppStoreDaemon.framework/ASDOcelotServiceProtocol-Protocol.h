@@ -12,6 +12,7 @@
 - (void)topAppsForAccount:(ACAccount *)arg1 completionBlock:(void (^)(NSArray *, NSError *))arg2;
 - (void)subscriptionStateWithCompletionBlock:(void (^)(_Bool, NSError *))arg1;
 - (void)subscriptionDetailsWithCompletionBlock:(void (^)(NSDictionary *, NSError *))arg1;
+- (void)showUpsellForItemID:(NSNumber *)arg1 completionBlock:(void (^)(_Bool, NSError *))arg2;
 - (void)sbsyncWithDuration:(NSNumber *)arg1 completionBlock:(void (^)(_Bool, NSError *))arg2;
 - (void)sbsyncWithCompletionBlock:(void (^)(_Bool, NSError *))arg1;
 - (void)sbsyncIfSubscribedWithAccount:(ACAccount *)arg1 completionBlock:(void (^)(_Bool, NSError *))arg2;

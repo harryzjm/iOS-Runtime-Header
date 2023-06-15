@@ -9,15 +9,13 @@
 @class NSArray, NSString, VUIAppContext;
 
 @protocol VUITabBarProtocol <NSObject>
-@property(nonatomic) _Bool tabBarHidden;
-- (_Bool)isTabBarHidden;
-@property(nonatomic, readonly) NSArray *tabBarItems;
+@property(nonatomic, getter=isTabBarHidden) _Bool tabBarHidden;
+@property(readonly, nonatomic) NSArray *tabBarItems;
 @property(nonatomic) unsigned long long selectedIndex;
 
 @optional
-- (void)updateWithTabBarItems:(NSArray *)arg1 setSelectedIndexFromDefaults:(_Bool)arg2 appContext:(VUIAppContext *)arg3;
+- (void)updateWithTabBarItems:(NSArray *)arg1 setSelectedIdentifierFromDefaults:(_Bool)arg2 appContext:(VUIAppContext *)arg3;
 - (unsigned long long)indexForTabBarItemIdentifier:(NSString *)arg1;
 - (void)setSelectedIndexForTabBarItemIdentifier:(NSString *)arg1;
-- (void)configureDebugUIGestureWithHandler:(void (^)(_Bool))arg1;
 @end
 

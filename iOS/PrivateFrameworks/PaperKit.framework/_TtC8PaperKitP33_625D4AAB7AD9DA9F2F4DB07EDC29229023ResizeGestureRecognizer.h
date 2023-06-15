@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIPanGestureRecognizer.h>
+#import <UIKitCore/UIPanGestureRecognizer.h>
 
 @interface _TtC8PaperKitP33_625D4AAB7AD9DA9F2F4DB07EDC29229023ResizeGestureRecognizer : UIPanGestureRecognizer
 {

@@ -16,9 +16,15 @@ __attribute__((visibility("hidden")))
     _Bool _shouldInterleaveClientResults;
     _Bool _enforceServerResultsOrder;
     _Bool _enableMapsSuggestServerReranking;
+    _Bool _isSectionForClientOnlyResults;
+    NSArray *_includedClientResultTypes;
+    NSArray *_excludedClientResultTypes;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSArray *excludedClientResultTypes; // @synthesize excludedClientResultTypes=_excludedClientResultTypes;
+@property(readonly, nonatomic) NSArray *includedClientResultTypes; // @synthesize includedClientResultTypes=_includedClientResultTypes;
+@property(readonly, nonatomic) _Bool isSectionForClientOnlyResults; // @synthesize isSectionForClientOnlyResults=_isSectionForClientOnlyResults;
 @property(readonly, nonatomic) _Bool enableMapsSuggestServerReranking; // @synthesize enableMapsSuggestServerReranking=_enableMapsSuggestServerReranking;
 @property(readonly, nonatomic) _Bool enforceServerResultsOrder; // @synthesize enforceServerResultsOrder=_enforceServerResultsOrder;
 @property(readonly, nonatomic) _Bool shouldInterleaveClientResults; // @synthesize shouldInterleaveClientResults=_shouldInterleaveClientResults;

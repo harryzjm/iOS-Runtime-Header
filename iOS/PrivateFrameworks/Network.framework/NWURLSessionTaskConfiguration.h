@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSURLRequest, NSURLSessionConfiguration, NWURLSessionTask;
+@protocol OS_nw_activity;
 
 __attribute__((visibility("hidden")))
 @interface NWURLSessionTaskConfiguration : NSObject
@@ -14,6 +15,7 @@ __attribute__((visibility("hidden")))
     NSURLSessionConfiguration *_configuration;
     NWURLSessionTask *_task;
     NSURLRequest *_request;
+    NSObject<OS_nw_activity> *_internalActivity;
 }
 
 - (void).cxx_destruct;

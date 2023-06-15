@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIColor.h>
+#import <UIKitCore/UIColor.h>
 
 @interface UIColor (PhotosUICore)
++ (id)px_colorNamed:(id)arg1;
++ (id)px_dynamicHighlightColor;
 + (id)px_alreadyImportedAssetSelectionColor;
 + (id)px_assetExplorerBackgroundColor;
 + (id)px_assetPlaceholderGray;

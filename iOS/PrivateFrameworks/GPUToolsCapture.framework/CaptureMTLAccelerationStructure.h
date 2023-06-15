@@ -6,10 +6,9 @@
 
 #import <objc/NSObject.h>
 
-@class CaptureMTLBuffer, CaptureMTLDevice, CaptureMTLHeap, MTLAccelerationStructureDescriptor, NSArray, NSString;
+@class CaptureMTLBuffer, CaptureMTLDevice, CaptureMTLHeap, MTLAccelerationStructureDescriptor, NSArray, NSMutableSet, NSString;
 @protocol MTLAccelerationStructure, MTLAccelerationStructureSPI><MTLResourceSPI, MTLBuffer, MTLDevice, MTLHeap;
 
-__attribute__((visibility("hidden")))
 @interface CaptureMTLAccelerationStructure : NSObject
 {
     id <MTLAccelerationStructureSPI><MTLResourceSPI> _baseObject;
@@ -18,11 +17,15 @@ __attribute__((visibility("hidden")))
     CaptureMTLBuffer *_buffer;
     struct GTTraceContext *_traceContext;
     struct GTTraceStream *_traceStream;
-    NSArray *_primitiveAccelerationStructures;
+    MTLAccelerationStructureDescriptor *_captureDescriptor;
+    NSArray *_childrenAccelerationStructures;
+    NSMutableSet *_extraRetainedObjects;
+    id <MTLBuffer> _stateBuffer;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSArray *primitiveAccelerationStructures; // @synthesize primitiveAccelerationStructures=_primitiveAccelerationStructures;
+@property(retain) id <MTLBuffer> stateBuffer; // @synthesize stateBuffer=_stateBuffer;
+@property(readonly, nonatomic) NSMutableSet *extraRetainedObjects; // @synthesize extraRetainedObjects=_extraRetainedObjects;
 - (void)waitUntilComplete;
 - (unsigned long long)setPurgeableState:(unsigned long long)arg1;
 - (void)makeAliasable;
@@ -50,6 +53,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) unsigned long long bufferOffset;
 @property(readonly) unsigned long long allocationID;
 @property(readonly) unsigned long long allocatedSize;
+@property(readonly, nonatomic) unsigned long long accelerationStructureUniqueIdentifier;
 - (_Bool)conformsToProtocol:(id)arg1;
 - (_Bool)respondsToSelector:(SEL)arg1;
 @property(readonly, copy) NSString *description;
@@ -60,7 +64,7 @@ __attribute__((visibility("hidden")))
 - (void)touch;
 - (id)originalObject;
 - (void)dealloc;
-@property(retain, nonatomic) MTLAccelerationStructureDescriptor *descriptor;
+@property(retain, nonatomic) MTLAccelerationStructureDescriptor *captureDescriptor;
 @property(readonly, nonatomic) id <MTLBuffer> buffer;
 @property(readonly) id <MTLHeap> heap;
 @property(readonly) id <MTLAccelerationStructure> baseObject;
@@ -70,6 +74,7 @@ __attribute__((visibility("hidden")))
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
+@property(retain, nonatomic) MTLAccelerationStructureDescriptor *descriptor;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

@@ -9,6 +9,7 @@
 @class BSAction, _TtC18ActivityUIServices26ActivityHostViewController;
 
 @protocol _TtP18ActivityUIServices34ActivityHostViewControllerDelegate_ <NSObject>
+- (void)activityHostViewControllerWithViewController:(_TtC18ActivityUIServices26ActivityHostViewController *)arg1 didSetIdleTimerDisabled:(_Bool)arg2;
 - (void)activityHostViewControllerSignificantUserInteractionEndedWithViewController:(_TtC18ActivityUIServices26ActivityHostViewController *)arg1;
 - (void)activityHostViewControllerSignificantUserInteractionBeganWithViewController:(_TtC18ActivityUIServices26ActivityHostViewController *)arg1;
 - (void)activityHostViewControllerHostShouldCancelTouchesWithViewController:(_TtC18ActivityUIServices26ActivityHostViewController *)arg1;

@@ -12,6 +12,7 @@
 __attribute__((visibility("hidden")))
 @interface QLExtensionHostContextThumbnailOperation : QLAsynchronousOperation
 {
+    _Bool _wantsLowQuality;
     int _iconFlavor;
     int _interpolationQuality;
     QLThumbnailHostContext *_hostContext;
@@ -32,6 +33,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSOperationQueue *coordinationQueue; // @synthesize coordinationQueue=_coordinationQueue;
 @property(retain, nonatomic) NSFileCoordinator *coordinator; // @synthesize coordinator=_coordinator;
 @property(retain, nonatomic) NSObject<OS_dispatch_semaphore> *generationSemaphore; // @synthesize generationSemaphore=_generationSemaphore;
+@property(nonatomic) _Bool wantsLowQuality; // @synthesize wantsLowQuality=_wantsLowQuality;
 @property(nonatomic) int interpolationQuality; // @synthesize interpolationQuality=_interpolationQuality;
 @property(retain, nonatomic) NSDictionary *generatorData; // @synthesize generatorData=_generatorData;
 @property(nonatomic) int iconFlavor; // @synthesize iconFlavor=_iconFlavor;
@@ -45,7 +47,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) QLThumbnailHostContext *hostContext; // @synthesize hostContext=_hostContext;
 - (void)finish;
 - (void)main;
-- (id)initWithThumbnailHostContext:(id)arg1 item:(id)arg2 size:(struct CGSize)arg3 minimumSize:(double)arg4 scale:(double)arg5 badgeType:(unsigned long long)arg6 iconFlavor:(int)arg7 generatorData:(id)arg8 interpolationQuality:(int)arg9 completionHandler:(CDUnknownBlockType)arg10 serviceErrorHandler:(CDUnknownBlockType)arg11;
+- (id)initWithThumbnailHostContext:(id)arg1 item:(id)arg2 size:(struct CGSize)arg3 minimumSize:(double)arg4 scale:(double)arg5 badgeType:(unsigned long long)arg6 iconFlavor:(int)arg7 generatorData:(id)arg8 interpolationQuality:(int)arg9 wantsLowQuality:(_Bool)arg10 completionHandler:(CDUnknownBlockType)arg11 serviceErrorHandler:(CDUnknownBlockType)arg12;
 
 @end
 

@@ -20,6 +20,7 @@
     MISSING_TYPE *allVersionsQueryStatement;
     MISSING_TYPE *hasReferenceQueryStatement;
     MISSING_TYPE *dataQueryStatement;
+    MISSING_TYPE *allDataQueryStatement;
     MISSING_TYPE *allQueryStatement;
     MISSING_TYPE *versionQueryStatement;
     MISSING_TYPE *retainCountQueryStatement;

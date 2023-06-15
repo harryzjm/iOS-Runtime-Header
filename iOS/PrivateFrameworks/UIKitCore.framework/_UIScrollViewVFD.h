@@ -17,12 +17,12 @@ __attribute__((visibility("hidden")))
     struct _UIUpdateRequest _updateRequest;
     struct _UIUpdateRequestRecord _updateRecord;
     struct _UIScrollViewVFDLookupState _lookupState;
-    unsigned long long _displayedModelTime;
+    unsigned long long _displayedPresentationTime;
     struct CGPoint _displayedOrigin;
 }
 
 - (void).cxx_destruct;
-- (void)_updateCompletedForModelMediaTime:(double)arg1 timing:(const struct _UIUpdateTiming *)arg2;
+- (void)_updateCompleted;
 - (void)dealloc;
 
 @end

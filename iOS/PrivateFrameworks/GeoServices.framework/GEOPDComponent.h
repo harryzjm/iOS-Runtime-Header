@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
     PBUnknownFields *_unknownFields;
     GEOPDAttribution *_attribution;
+    NSMutableArray *_commingledAttributions;
     GEOPDSource *_source;
     double _timestampFirstSeen;
     NSMutableArray *_values;

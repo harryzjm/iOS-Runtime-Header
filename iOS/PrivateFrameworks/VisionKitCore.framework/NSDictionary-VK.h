@@ -10,5 +10,6 @@
 - (id)vk_md5;
 - (id)vk_objectForNonNilKey:(id)arg1;
 - (id)vk_prettyDescriptionWithTabLevel:(unsigned long long)arg1;
+- (id)vk_dictionaryByAddingEntriesFromNonNilDictionary:(id)arg1;
 @end
 

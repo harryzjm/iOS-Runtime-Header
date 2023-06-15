@@ -67,7 +67,7 @@
 - (TSKUIDStructVectorTemplate_de88e035)orderedColumnUidsFromUids:(const void *)arg1;
 - (TSKUIDStructVectorTemplate_de88e035)rowUIDsForRowRange:(struct _NSRange)arg1;
 - (TSKUIDStructVectorTemplate_de88e035)columnUIDsForColumnRange:(struct _NSRange)arg1;
-- (struct TSUCellRect)range;
+@property(readonly, nonatomic) struct TSUCellRect range;
 - (const void *)rowUIDs;
 - (const void *)columnUIDs;
 - (TSKUIDStructVectorTemplate_de88e035)rowUIDsForRowIndexes:(id)arg1;

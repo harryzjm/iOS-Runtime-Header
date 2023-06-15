@@ -11,10 +11,7 @@
 @interface _TtC9SnippetUI11ImageLoader : _TtCs12_SwiftObject
 {
     MISSING_TYPE *$defaultActor;
-    MISSING_TYPE *$__lazy_storage_$_urlCache;
-    MISSING_TYPE *$__lazy_storage_$_urlSession;
-    MISSING_TYPE *pendingImageDataContinuations;
-    MISSING_TYPE *hasPendingImageRequest;
+    MISSING_TYPE *pendingRequests;
 }
 
 @end

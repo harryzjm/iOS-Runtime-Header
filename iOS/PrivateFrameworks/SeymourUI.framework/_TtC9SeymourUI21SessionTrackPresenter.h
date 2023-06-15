@@ -15,6 +15,7 @@
     MISSING_TYPE *externalOverlayDisplay;
     MISSING_TYPE *artworkImageLoader;
     MISSING_TYPE *state;
+    MISSING_TYPE *currentArtwork;
 }
 
 @end

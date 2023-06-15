@@ -18,10 +18,10 @@
 - (id)_mostRecentFileInDirectory:(id)arg1 withExtension:(id)arg2;
 - (id)_mostRecentTestBundle;
 - (id)_testConfigurationFromURL:(id)arg1;
-- (id)_synthesizedConfigurationForTestBundle:(id)arg1;
 - (id)_configurationForTestBundle:(id)arg1;
 - (id)_loadTestConfigurationFromTemporaryDirectoryWithDidFind:(_Bool *)arg1;
 - (id)_loadTestConfigurationFromEnvironmentURL:(id)arg1;
+- (id)_synthesizedConfigurationForTestBundle:(id)arg1;
 - (id)loadTestConfigurationFromEnvironmentWithDidSpecify:(_Bool *)arg1;
 - (id)loadTestConfiguration;
 - (id)init;

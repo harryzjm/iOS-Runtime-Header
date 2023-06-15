@@ -10,5 +10,7 @@
 + (id)binaryStringRepresentationOfInt:(long long)arg1 numberOfDigits:(unsigned int)arg2 chunkLength:(unsigned int)arg3;
 + (id)binaryStringRepresentationOfInt:(long long)arg1;
 @property(retain, nonatomic) NSString *IPASpeechPhonemes; // @dynamic IPASpeechPhonemes;
+@property(readonly, nonatomic) NSString *xmlDeEscaped;
+@property(readonly, nonatomic) NSString *xmlEscaped;
 @end
 

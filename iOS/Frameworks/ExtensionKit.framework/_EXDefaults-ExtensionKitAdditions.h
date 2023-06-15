@@ -7,6 +7,7 @@
 #import <ExtensionFoundation/_EXDefaults.h>
 
 @interface _EXDefaults (ExtensionKitAdditions)
+@property(readonly) double defaultRetryFailedSessionDelay; // @dynamic defaultRetryFailedSessionDelay;
 @property(readonly) _Bool viewBridgeSupportsCatalystExtensions; // @dynamic viewBridgeSupportsCatalystExtensions;
 @property(readonly) double debugDelayBeforeRequestingRemoteViewController; // @dynamic debugDelayBeforeRequestingRemoteViewController;
 @property(readonly) double defaultPlaceholderDelayBeforeShowingLoadingIndicator; // @dynamic defaultPlaceholderDelayBeforeShowingLoadingIndicator;

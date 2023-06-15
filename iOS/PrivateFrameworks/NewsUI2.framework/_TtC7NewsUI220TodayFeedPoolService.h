@@ -11,9 +11,15 @@
 @interface _TtC7NewsUI220TodayFeedPoolService : _TtCs12_SwiftObject
 {
     MISSING_TYPE *cloudContext;
+    MISSING_TYPE *feedPersonalizer;
+    MISSING_TYPE *favoritesPersonalizer;
     MISSING_TYPE *magazineFeedServiceConfigFetcher;
     MISSING_TYPE *personalizationService;
-    MISSING_TYPE *sharedItemManager;
+    MISSING_TYPE *topicClusteringService;
+    MISSING_TYPE *headlineService;
+    MISSING_TYPE *sportsGraphManager;
+    MISSING_TYPE *sportsOnboardingManager;
+    MISSING_TYPE *tracker;
 }
 
 @end

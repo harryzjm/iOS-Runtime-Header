@@ -73,6 +73,7 @@ __attribute__((visibility("hidden")))
 - (id)addLongPressTextSelectionInteractionsToView:(id)arg1;
 - (id)addTwoFingerTextSelectionInteractionsToView:(id)arg1;
 - (id)addOneFingerTextSelectionInteractionsToView:(id)arg1;
+- (id)textSelectionInteractionForRTIForwarding;
 - (_Bool)_longPressAllowedForView:(id)arg1;
 - (_Bool)allowOneFingerDeepPress;
 - (double)oneFingerForcePressAllowableMovement;

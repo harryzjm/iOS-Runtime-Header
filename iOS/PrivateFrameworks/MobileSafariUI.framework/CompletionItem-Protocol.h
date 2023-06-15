@@ -6,10 +6,11 @@
 
 #import <MobileSafariUI/WBSCompletionListItem-Protocol.h>
 
-@class CompletionList, CompletionListGroup, NSString, UITableViewCell, UIView;
+@class CompletionGroup, CompletionList, NSString, UITableViewCell, UIView;
 @protocol CompletionItem, CompletionItemActionHandler;
 
 @protocol CompletionItem <WBSCompletionListItem>
+@property(readonly, nonatomic) NSString *titleForHistoryServiceCompletionList;
 - (NSString *)reflectedStringForUserTypedString:(NSString *)arg1;
 - (void)auditAcceptedCompletionWithRank:(unsigned long long)arg1;
 - (void)acceptCompletionWithActionHandler:(id <CompletionItemActionHandler>)arg1;
@@ -18,6 +19,9 @@
 - (NSString *)completionTableViewCellReuseIdentifier;
 
 @optional
+@property(readonly, copy, nonatomic) NSString *subtextForHistoryServiceCompletionList;
+@property(readonly, nonatomic) NSString *urlStringForHistoryServiceCompletionList;
+@property(readonly, nonatomic) long long completionCellBackgroundModeInTopSection;
 @property(retain, nonatomic) id <CompletionItemActionHandler> handlerForActionItem;
 @property(readonly, nonatomic) _Bool restoresSearchState;
 @property(nonatomic) unsigned long long minimumRankOfTopHitToSuppressResult;
@@ -28,7 +32,7 @@
 - (NSString *)originalURLString;
 - (_Bool)shouldPrefetchWithMatchLength:(unsigned long long)arg1;
 - (_Bool)isEquivalentTo:(id <CompletionItem>)arg1;
-- (void)configureCompletionTableHeaderView:(UIView *)arg1 forCompletionListGroup:(CompletionListGroup *)arg2;
+- (void)configureCompletionTableHeaderView:(UIView *)arg1 forCompletionListGroup:(CompletionGroup *)arg2;
 - (UIView *)completionTableHeaderView;
 - (double)completionTableViewCellCustomHeightForCompletionList:(CompletionList *)arg1;
 @end

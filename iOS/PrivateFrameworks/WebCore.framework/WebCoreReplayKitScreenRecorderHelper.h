@@ -9,7 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface WebCoreReplayKitScreenRecorderHelper : NSObject
 {
-    struct WeakPtr<WebCore::ReplayKitCaptureSource, WTF::EmptyCounter> _callback;
+    struct WeakPtr<WebCore::ReplayKitCaptureSource, WTF::DefaultWeakPtrImpl> _callback;
 }
 
 - (id).cxx_construct;

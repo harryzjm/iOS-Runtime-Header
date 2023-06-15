@@ -14,11 +14,13 @@ __attribute__((visibility("hidden")))
     NSData *_encryptedPayload;
     NSData *_ephemeralPubKey;
     NSData *_keyValidator;
+    NSData *_secondaryMessage;
     NSData *_signature;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSData *keyValidator; // @synthesize keyValidator=_keyValidator;
+@property(retain, nonatomic) NSData *secondaryMessage; // @synthesize secondaryMessage=_secondaryMessage;
 @property(retain, nonatomic) NSData *signature; // @synthesize signature=_signature;
 @property(retain, nonatomic) NSData *ephemeralPubKey; // @synthesize ephemeralPubKey=_ephemeralPubKey;
 @property(retain, nonatomic) NSData *encryptedPayload; // @synthesize encryptedPayload=_encryptedPayload;
@@ -32,6 +34,10 @@ __attribute__((visibility("hidden")))
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(readonly, nonatomic) _Bool hasKeyValidator;
+@property(readonly, nonatomic) _Bool hasSecondaryMessage;
+@property(readonly, nonatomic) _Bool hasSignature;
+@property(readonly, nonatomic) _Bool hasEphemeralPubKey;
+@property(readonly, nonatomic) _Bool hasEncryptedPayload;
 
 @end
 

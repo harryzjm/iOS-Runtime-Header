@@ -23,25 +23,20 @@ __attribute__((visibility("hidden")))
     MCMUserIdentityCache *_userIdentityCache;
 }
 
-+ (void)_setUUID:(id)arg1 forSetter:(CDUnknownBlockType)arg2 pathForErrorLog:(CDUnknownBlockType)arg3;
-+ (void)_setSchemaVersion:(id)arg1 forSetter:(CDUnknownBlockType)arg2 pathForErrorLog:(CDUnknownBlockType)arg3;
-+ (void)_setIdentifier:(id)arg1 forSetter:(CDUnknownBlockType)arg2 pathForErrorLog:(CDUnknownBlockType)arg3;
-+ (id)_schemaVersionForGetter:(CDUnknownBlockType)arg1 pathForErrorLog:(CDUnknownBlockType)arg2;
-+ (id)_UUIDForGetter:(CDUnknownBlockType)arg1 pathForErrorLog:(CDUnknownBlockType)arg2;
-+ (id)_identifierWithGetter:(CDUnknownBlockType)arg1 pathForErrorLog:(CDUnknownBlockType)arg2;
-+ (void)clearAttributesForFD:(int)arg1;
++ (id)_fileHandleForURL:(id)arg1 writeable:(_Bool)arg2;
++ (void)clearAttributesForFileHandle:(id)arg1;
 + (void)clearAttributesForURL:(id)arg1;
-+ (void)setUUID:(id)arg1 forFD:(int)arg2;
++ (void)setUUID:(id)arg1 forFileHandle:(id)arg2;
 + (void)setUUID:(id)arg1 forURL:(id)arg2;
-+ (void)setSchemaVersion:(id)arg1 forFD:(int)arg2;
++ (void)setSchemaVersion:(id)arg1 forFileHandle:(id)arg2;
 + (void)setSchemaVersion:(id)arg1 forURL:(id)arg2;
-+ (void)setIdentifier:(id)arg1 forFD:(int)arg2;
++ (void)setIdentifier:(id)arg1 forFileHandle:(id)arg2;
 + (void)setIdentifier:(id)arg1 forURL:(id)arg2;
-+ (id)UUIDForFD:(int)arg1;
++ (id)UUIDForFileHandle:(id)arg1;
 + (id)UUIDForURL:(id)arg1;
-+ (id)schemaVersionForFD:(int)arg1;
++ (id)schemaVersionForFileHandle:(id)arg1;
 + (id)schemaVersionForURL:(id)arg1;
-+ (id)identifierForFD:(int)arg1;
++ (id)identifierForFileHandle:(id)arg1;
 + (id)identifierForURL:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) MCMUserIdentityCache *userIdentityCache; // @synthesize userIdentityCache=_userIdentityCache;
@@ -53,6 +48,10 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) id <MCMMetadata> metadata; // @synthesize metadata=_metadata;
 @property(retain, nonatomic) MCMContainerPath *containerPath; // @synthesize containerPath=_containerPath;
 @property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+- (id)_metadataFromContainerPath:(id)arg1 identifier:(id)arg2 uuid:(id)arg3 schemaVersion:(id)arg4 userIdentityCache:(id)arg5;
+- (id)_findUserManagedAssetsDirectoryAtContainerRootURL:(id)arg1;
+- (id)_identifierForContainerPath:(id)arg1;
+- (id)_fabricateMetadataForContainerPath:(id)arg1 identifier:(id)arg2 uuid:(id)arg3 schemaVersion:(id)arg4 userIdentityCache:(id)arg5;
 - (id)_readMetadataForIdentifier:(id)arg1 containerPath:(id)arg2 error:(id *)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;
@@ -64,8 +63,11 @@ __attribute__((visibility("hidden")))
 - (id)metadataMinimal;
 - (_Bool)verify;
 - (id)metadataWithError:(id *)arg1;
+- (id)initFromContainerPath:(id)arg1 identifier:(id)arg2 uuid:(id)arg3 schemaVersion:(id)arg4 userIdentityCache:(id)arg5;
 - (id)initWithIdentifier:(id)arg1 containerPath:(id)arg2 schemaVersion:(id)arg3 uuid:(id)arg4 metadata:(id)arg5 userIdentityCache:(id)arg6;
 - (id)initWithMetadata:(id)arg1 userIdentityCache:(id)arg2;
+- (void)setXattrsWithFileHandle:(id)arg1;
+- (void)setXattrs;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

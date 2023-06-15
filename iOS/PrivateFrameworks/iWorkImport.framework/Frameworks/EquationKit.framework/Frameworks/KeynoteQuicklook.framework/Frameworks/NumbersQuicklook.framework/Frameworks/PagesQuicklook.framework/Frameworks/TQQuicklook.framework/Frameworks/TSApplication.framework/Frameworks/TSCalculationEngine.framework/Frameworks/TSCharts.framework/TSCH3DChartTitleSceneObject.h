@@ -11,7 +11,7 @@
 + (void)setSelectionPath:(id)arg1 selectionMode:(int)arg2 forScene:(id)arg3;
 + (id)partWithChartInfo:(id)arg1 styleProvidingSource:(id)arg2;
 + (struct CGSize)labelWrapSizeForScene:(id)arg1;
-+ (_Bool)setLabelWrapBounds:(const void *)arg1 forScene:(id)arg2;
++ (_Bool)setLabelWrapBounds:(void *)arg1 forScene:(id)arg2;
 + (struct CGSize)p_labelWrapSizeForScene:(id)arg1 returningSizeValue:(id *)arg2;
 + (_Bool)supportsStyleProvidingSource;
 - (id)renderInfoForSelectionPath:(id)arg1 info:(id)arg2;

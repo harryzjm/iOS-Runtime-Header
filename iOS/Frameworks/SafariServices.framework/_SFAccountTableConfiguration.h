@@ -13,8 +13,14 @@ __attribute__((visibility("hidden")))
     _Bool _shouldShowSearchBar;
     _Bool _supportsDelete;
     _Bool _supportsShare;
+    _Bool _shouldConfigureMultipleSelectionDuringEditing;
+    _Bool _supportsOngoingCredentialSharing;
+    _Bool _isForFillingIndividualAccountFields;
 }
 
+@property(nonatomic) _Bool isForFillingIndividualAccountFields; // @synthesize isForFillingIndividualAccountFields=_isForFillingIndividualAccountFields;
+@property(nonatomic) _Bool supportsOngoingCredentialSharing; // @synthesize supportsOngoingCredentialSharing=_supportsOngoingCredentialSharing;
+@property(nonatomic) _Bool shouldConfigureMultipleSelectionDuringEditing; // @synthesize shouldConfigureMultipleSelectionDuringEditing=_shouldConfigureMultipleSelectionDuringEditing;
 @property(nonatomic) _Bool supportsShare; // @synthesize supportsShare=_supportsShare;
 @property(nonatomic) _Bool supportsDelete; // @synthesize supportsDelete=_supportsDelete;
 @property(nonatomic) _Bool shouldShowSearchBar; // @synthesize shouldShowSearchBar=_shouldShowSearchBar;

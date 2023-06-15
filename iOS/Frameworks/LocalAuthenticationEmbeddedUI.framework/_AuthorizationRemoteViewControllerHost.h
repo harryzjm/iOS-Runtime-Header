@@ -17,12 +17,16 @@ __attribute__((visibility("hidden")))
 
 + (id)serviceViewControllerInterface;
 + (id)exportedInterface;
++ (void)_requestViewController:(id)arg1 connectionHandler:(CDUnknownBlockType)arg2;
++ (void)requestViewControllerWithConnectionHandler:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <_AuthorizationRemoteViewControllerHostDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)stopWithReply:(CDUnknownBlockType)arg1;
 - (void)startWithConfiguration:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)authenticatorServiceDidObtainAuthenticationWithReply:(CDUnknownBlockType)arg1;
-- (void)authenticatorServiceDidFinishWithError:(id)arg1;
+- (void)authenticatorServiceDidFinishWithError:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)dealloc;
+- (void)viewServiceDidTerminateWithError:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

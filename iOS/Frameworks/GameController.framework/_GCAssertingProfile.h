@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
 - (void)appWillResignActive;
 - (unsigned int)sampleRate;
 - (id)productCategory;
-- (void)handleEvent:(struct __IOHIDEvent *)arg1;
+- (void)_legacy_handleEvent:(struct __IOHIDEvent *)arg1;
 - (CDUnknownBlockType)valueChangedHandler;
 - (void)setController:(id)arg1;
 - (void)setPlayerIndex:(long long)arg1;

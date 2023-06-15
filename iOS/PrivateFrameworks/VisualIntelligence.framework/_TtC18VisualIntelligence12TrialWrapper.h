@@ -4,16 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <swiftCore/_TtCs12_SwiftObject.h>
+#import ".h"
 
 @class MISSING_TYPE;
 
-@interface _TtC18VisualIntelligence12TrialWrapper : _TtCs12_SwiftObject
+@interface _TtC18VisualIntelligence12TrialWrapper : 
 {
     MISSING_TYPE *serialQueue;
     MISSING_TYPE *client;
     MISSING_TYPE *cachedPathFactors;
     MISSING_TYPE *cachedLongFactors;
+    MISSING_TYPE *cachedStringFactors;
+    MISSING_TYPE *configSource;
 }
 
 @end

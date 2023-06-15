@@ -7,6 +7,7 @@
 #import <MusicLibrary/NSObject-Protocol.h>
 
 @protocol MLMediaLibraryResourcesServiceXPCProtocol <NSObject>
+- (void)musicContainerPathWithCompletion:(void (^)(NSString *))arg1;
 - (void)libraryContainerPathWithCompletion:(void (^)(NSString *))arg1;
 @end
 

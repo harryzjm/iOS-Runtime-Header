@@ -10,6 +10,7 @@
 
 @protocol _DKSyncCommonClass <_DKSyncRemoteStorage>
 - (void)sendRequestID:(NSString *)arg1 request:(NSDictionary *)arg2 peer:(_DKSyncPeer *)arg3 highPriority:(_Bool)arg4 options:(NSDictionary *)arg5 responseHandler:(void (^)(NSDictionary *, NSDictionary *, NSError *))arg6;
+- (void)handshakeWithDuetSyncPeer:(_DKSyncPeer *)arg1 completion:(void (^)(NSUUID *, NSString *, NSError *))arg2;
 - (void)handshakeWithDuetSyncPeer:(_DKSyncPeer *)arg1 orError:(NSError *)arg2;
 - (NSError *)transformCaughtObject:(id)arg1 existingError:(NSError *)arg2;
 - (NSError *)transformResponseError:(NSError *)arg1;

@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 - (int)espressoEngine;
 - (id)metalDevice;
 - (_Bool)targetsCPU;
+- (id)computeDevice;
 
 @end
 

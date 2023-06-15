@@ -16,7 +16,6 @@ __attribute__((visibility("hidden")))
     int variant;
     struct nw_protocol_definition_common_state *common_state;
     struct nw_protocol_definition_extended_state *extended_state;
-    struct nw_protocol_plugin_definition *plugin_definition;
     CDUnknownFunctionPointerType allocate_options;
     CDUnknownFunctionPointerType copy_options;
     CDUnknownFunctionPointerType deallocate_options;

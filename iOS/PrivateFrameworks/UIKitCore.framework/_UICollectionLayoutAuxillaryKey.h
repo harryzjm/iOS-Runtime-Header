@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UICollectionLayoutAuxillaryKey : NSObject <NSCopying>
+@interface _UICollectionLayoutAuxillaryKey : NSObject
 {
     _Bool _isSupplementary;
     NSString *_elementKind;

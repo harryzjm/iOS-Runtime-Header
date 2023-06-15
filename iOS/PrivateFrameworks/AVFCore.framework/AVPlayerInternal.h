@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AVAudioSession, AVAudioSessionMediaPlayerOnly, AVOutputContext, AVPixelBufferAttributeMediator, AVPlayerItem, AVPlayerMediaSelectionCriteria, AVPlayerPlaybackCoordinator, AVPlayerRateState, AVQueuePlayer, AVWeakReference, NSArray, NSDictionary, NSError, NSHashTable, NSMutableArray, NSMutableDictionary, NSMutableSet, NSNumber, NSString;
+@class AVApplicationStateMonitor, AVAudioSession, AVAudioSessionMediaPlayerOnly, AVOutputContext, AVPixelBufferAttributeMediator, AVPlayerItem, AVPlayerMediaSelectionCriteria, AVPlayerPlaybackCoordinator, AVPlayerRateState, AVQueuePlayer, AVWeakReference, NSArray, NSDictionary, NSError, NSHashTable, NSMutableArray, NSMutableDictionary, NSMutableSet, NSNumber, NSString;
 @protocol AVBlockScheduler, AVLoggingIdentifier, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -23,7 +23,6 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *layersQ;
     struct OpaqueCMTimebase *proxyTimebase;
     _Bool logPerformanceData;
-    struct __CFNumber *primaryAirPlayID;
     id didFinishSuspensionNotificationToken;
     id didEnterBackgroundNotificationToken;
     id willEnterForegroundNotificationToken;
@@ -44,6 +43,9 @@ __attribute__((visibility("hidden")))
     NSDictionary *vibrationPattern;
     AVOutputContext *outputContext;
     _Bool IOwnTheFigPlayer;
+    AVQueuePlayer *interstitialPlayer;
+    struct OpaqueFigPlayerInterstitialCoordinator *interstitialEventCoordinator;
+    NSString *playerName;
     long long audiovisualBackgroundPlaybackPolicy;
     NSMutableArray *handlersToCallWhenReadyToPlay;
     _Bool shouldReduceResourceUsage;
@@ -61,7 +63,6 @@ __attribute__((visibility("hidden")))
     _Bool muted;
     _Bool closedCaptionDisplayEnabled;
     _Bool appliesMediaSelectionCriteriaAutomatically;
-    _Bool dynamicallyChoosesInitialVariant;
     _Bool limitsBandwidthForCellularAccess;
     _Bool usesAudioOnlyModeForExternalPlayback;
     _Bool allowsPixelBufferPoolSharing;
@@ -73,6 +74,7 @@ __attribute__((visibility("hidden")))
     _Bool disallowsVideoLayerDisplayCompositing;
     _Bool allowsExternalPlayback;
     _Bool usesExternalPlaybackWhileExternalScreenIsActive;
+    _Bool supportsAdvanceTimeForOverlappedPlayback;
     NSString *captionPipelineStrategy;
     NSString *audioOutputDeviceUniqueID;
     NSString *clientName;
@@ -83,6 +85,7 @@ __attribute__((visibility("hidden")))
     _Bool isDisplayingClosedCaptions;
     _Bool externalPlaybackActive;
     _Bool airPlayVideoActive;
+    _Bool bufferedAirPlayActive;
     _Bool isConnectedToPhysicalSecondScreen;
     _Bool outputObscuredDueToInsufficientExternalProtection;
     long long externalProtectionStatus;
@@ -95,7 +98,7 @@ __attribute__((visibility("hidden")))
     unsigned long long preferredVideoDecoderGPURegistryID;
     _Bool disallowsAutoPauseOnRouteRemovalIfNoAudio;
     _Bool ensuresActiveAudioSessionWhenStartingPlayback;
-    _Bool hostApplicationInForeground;
+    AVApplicationStateMonitor *applicationStateMonitor;
     _Bool preservesAudioSessionSampleRate;
     _Bool silencesOtherPlaybackDuringPIP;
     _Bool prefersPlayingSilentlyWhenConflictingWithOtherPlayback;
@@ -104,6 +107,7 @@ __attribute__((visibility("hidden")))
     _Bool isSilencedDueToConflictWithOtherPlayback;
     NSNumber *mxSessionID;
     NSArray *videoTargets;
+    struct __CFDictionary *videoTargetsForInterstitialPlayer;
     _Bool shouldWaitForVideoTarget;
     AVPlayerPlaybackCoordinator *playbackCoordinator;
     _Bool clientRequestedPlaybackCoordinator;
@@ -111,12 +115,12 @@ __attribute__((visibility("hidden")))
     _Bool rateDidChangeNotificationIncludesExtendedDiagnosticPayload;
     id <AVLoggingIdentifier> loggingIdentifier;
     NSDictionary *cachedFigMediaSelectionCriteriaProperty;
-    AVQueuePlayer *interstitialPlayer;
-    struct OpaqueFigPlayerInterstitialCoordinator *interstitialEventCoordinator;
+    NSArray *taggedBufferOutputs;
     NSMutableArray *videoLayers;
     NSMutableArray *subtitleLayers;
     NSMutableArray *closedCaptionLayers;
     NSHashTable *avPlayerLayers;
+    NSHashTable *playerCaptionLayers;
     int nextPrerollIDToGenerate;
     int pendingPrerollID;
     CDUnknownBlockType prerollCompletionHandler;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
 @class NSArray, PUPhotoEditToolPickerSpec, PUViewControllerSpec, UIView;
 
@@ -34,8 +34,6 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSArray *toolButtons; // @synthesize toolButtons=_toolButtons;
 @property(nonatomic) long long style; // @synthesize style=_style;
 @property(nonatomic) long long layoutDirection; // @synthesize layoutDirection=_layoutDirection;
-- (void)updateSelectionIndicatorConstraints;
-- (void)createSelectionIndicatorView;
 - (void)viewDidLayoutSubviews;
 - (void)updateViewConstraints;
 - (void)viewDidLoad;

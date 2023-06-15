@@ -10,6 +10,7 @@
 
 @protocol XCTTelemetryLogging <NSObject>
 - (void)flushWithCompletion:(void (^)(void))arg1;
+- (void)logCompletionOfTestIdentifier:(NSString *)arg1;
 - (void)logUsageOfFunction:(NSString *)arg1;
 - (void)logUsageOfClass:(NSString *)arg1 method:(NSString *)arg2;
 - (void)logEventWithName:(NSString *)arg1;

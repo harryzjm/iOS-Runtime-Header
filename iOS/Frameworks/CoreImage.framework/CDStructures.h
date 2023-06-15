@@ -178,13 +178,6 @@ struct float3x3 {
     MISSING_TYPE *columns[3];
 };
 
-struct vImage_Buffer {
-    void *_field1;
-    unsigned long long _field2;
-    unsigned long long _field3;
-    unsigned long long _field4;
-};
-
 struct vec2 {
     CDUnion_48fbf68f _field1;
     CDUnion_48fbf68f _field2;
@@ -285,29 +278,6 @@ typedef struct {
 } CDStruct_c3faddef;
 
 typedef struct {
-    void *_field1;
-    void *_field2;
-    unsigned long long _field3[4];
-    unsigned long long _field4[4];
-    unsigned long long _field5;
-    unsigned long long _field6;
-    unsigned long long _field7;
-    unsigned long long _field8;
-    unsigned long long _field9;
-    unsigned long long _field10;
-    unsigned long long _field11;
-    unsigned long long _field12;
-    unsigned long long _field13;
-    unsigned long long _field14;
-    int _field15;
-} CDStruct_cf098810;
-
-typedef struct {
-    void *plan;
-    int network_index;
-} CDStruct_2bc666a5;
-
-typedef struct {
     double focalLength;
     double lineSearchRangeV;
     double lineSearchRangeH;
@@ -326,14 +296,6 @@ typedef struct {
     double variance;
     int nNonZero;
 } CDStruct_fc6961d5;
-
-typedef struct {
-    float _field1;
-    float _field2;
-    float _field3;
-    float _field4;
-    _Bool _field5;
-} CDStruct_18e74ac9;
 
 typedef struct {
     float skinval;

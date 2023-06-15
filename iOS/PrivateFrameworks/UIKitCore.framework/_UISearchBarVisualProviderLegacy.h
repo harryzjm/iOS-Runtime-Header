@@ -29,7 +29,6 @@ __attribute__((visibility("hidden")))
         unsigned int usesEmbeddedAppearance:1;
         unsigned int showsCancelButton:1;
         unsigned int autoDisableCancelButton:1;
-        unsigned int cancelButtonWantsLetterpress:1;
         unsigned int showsDeleteButton:1;
         unsigned int showsSearchResultsButton:1;
         unsigned int searchResultsButtonSelected:1;
@@ -59,7 +58,7 @@ __attribute__((visibility("hidden")))
     _UISearchBarScopeBarBackground *_scopeBarBackgroundView;
     NSArray *_scopeTitles;
     long long _selectedScope;
-    unsigned long long _backdropStyle;
+    long long _backdropStyle;
     UIColor *_barTintColor;
     long long _barPosition;
     unsigned long long _scopeBarPosition;
@@ -88,7 +87,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)scopeBarPosition;
 - (void)setBarTintColor:(id)arg1;
 - (id)barTintColor;
-- (unsigned long long)backdropStyle;
+- (long long)backdropStyle;
 - (void)setSelectedScope:(long long)arg1;
 - (long long)selectedScope;
 - (id)scopeTitles;
@@ -232,7 +231,7 @@ __attribute__((visibility("hidden")))
 - (void)setPrompt:(id)arg1;
 - (long long)barPosition;
 - (void)setBarPosition:(long long)arg1;
-- (void)setBackdropStyle:(unsigned long long)arg1;
+- (void)setBackdropStyle:(long long)arg1;
 - (void)setMinimumContentInset:(struct UIEdgeInsets)arg1;
 - (void)setScopeTitles:(id)arg1;
 - (void)setCancelButton:(id)arg1;
@@ -261,8 +260,6 @@ __attribute__((visibility("hidden")))
 - (_Bool)showsSearchResultsButton;
 - (void)_setShowsSearchResultsButton:(_Bool)arg1;
 - (void)setShowsSearchResultsButton:(_Bool)arg1;
-- (_Bool)cancelButtonWantsLetterpress;
-- (void)setCancelButtonWantsLetterpress:(_Bool)arg1;
 - (_Bool)autoDisableCancelButton;
 - (void)_setAutoDisableCancelButton:(_Bool)arg1;
 - (void)setAutoDisableCancelButton:(_Bool)arg1;

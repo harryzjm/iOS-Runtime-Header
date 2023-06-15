@@ -12,7 +12,6 @@
 {
     MISSING_TYPE *articleModule;
     MISSING_TYPE *replicaModule;
-    MISSING_TYPE *rssModule;
     MISSING_TYPE *interstitialAdModule;
     MISSING_TYPE *paidAccessChecker;
     MISSING_TYPE *immersiveEffectChecker;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UILabel.h>
+#import <UIKitCore/UILabel.h>
 
 @interface UILabel (FocusUI)
 + (void)fcui_layoutPrimaryLabel:(id)arg1 secondaryLabel:(id)arg2 inTextFrame:(struct CGRect)arg3 primaryLabelFrame:(out struct CGRect *)arg4 secondaryLabelFrame:(out struct CGRect *)arg5 drawingContext:(inout id)arg6;

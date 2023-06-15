@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 @class _UIFocusRegion;
 
 __attribute__((visibility("hidden")))
-@interface _UIFocusRegionContentAttributes : NSObject <NSCopying>
+@interface _UIFocusRegionContentAttributes : NSObject
 {
     _Bool _requiresIntersectionWithFocusMapSearchArea;
     _UIFocusRegion *_contentRegion;

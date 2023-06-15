@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSString;
+@class NSArray, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
 @interface AVControlCenterModuleState : NSObject
@@ -14,6 +14,8 @@ __attribute__((visibility("hidden")))
     NSString *_bundleID;
     _Bool _isVOIPApp;
     _Bool _isOptedInForBackgroundBlur;
+    _Bool _isOptedInForStudioLight;
+    _Bool _isOptedInForReactionEffects;
     struct os_unfair_lock_s _stateLock;
     _Bool _holdingStateLock;
     _Bool _centerStageSupported;
@@ -28,12 +30,25 @@ __attribute__((visibility("hidden")))
     NSString *_backgroundBlurControlModeKey;
     NSString *_backgroundBlurEnabledKey;
     NSString *_backgroundBlurUnavailableReasonsKey;
+    float _backgroundBlurAperture;
+    NSString *_backgroundBlurApertureKey;
     _Bool _studioLightingSupported;
     long long _studioLightingControlMode;
     _Bool _studioLightingEnabled;
     NSString *_studioLightingControlModeKey;
     NSString *_studioLightingEnabledKey;
     NSString *_studioLightingUnavailableReasonsKey;
+    float _studioLightingIntensity;
+    NSString *_studioLightingIntensityKey;
+    _Bool _reactionsEnabled;
+    _Bool _gesturesEnabled;
+    _Bool _reactionEffectsSupported;
+    NSMutableDictionary *_previousReactionStateByDeviceIdentifier;
+    NSString *_reactionsEnabledKey;
+    NSString *_gesturesEnabledKey;
+    NSString *_reactionsUnavailableReasonsKey;
+    NSString *_reactionTriggeredKey;
+    NSString *_reactionsInProgressKey;
     _Bool _micModesSupported;
     _Bool _auVoiceIOBypassVoiceProcessing;
     NSString *_auVoiceIOBypassVoiceProcessingKey;
@@ -45,22 +60,60 @@ __attribute__((visibility("hidden")))
     NSString *_supportedMicrophoneModesKey;
     NSArray *_hiddenMicrophoneModes;
     NSString *_hiddenMicrophoneModesKey;
+    NSString *_startPanningAtPointKey;
+    NSString *_panWithTranslationKey;
+    NSString *_manualFramingVideoZoomFactorKey;
+    NSString *_performOneShotFramingKey;
+    NSString *_resetFramingKey;
+    NSString *_oneShotFramingCompletedKey;
+    NSString *_resetFramingCompletedKey;
+    NSString *_panningAnglesKey;
+    NSString *_centerStageFieldOfViewRestrictedToWideKey;
+    NSString *_manualFramingDeviceTypeKey;
+    double _currentPanningAngleX;
+    double _currentPanningAngleY;
+    double _currentOriginalZoomFactor;
+    long long _manualFramingDeviceType;
 }
 
 + (id)moduleStateForBundleID:(id)arg1 micModesSupported:(_Bool)arg2;
+- (_Bool)_zoomFactorConversionRequired;
+- (void)_checkManualFramingDefaultStateWithNewOriginalZoomFactor:(double)arg1;
+- (void)_handleBackPropagatedVideoZoomFactorUpdate:(id)arg1;
+- (void)_handlePanningAnglesUpdate:(id)arg1;
 - (void)_proprietaryDefaultChanged:(id)arg1 keyPath:(id)arg2 context:(void *)arg3;
+- (double)_defaultOriginalVideoZoomFactor;
+- (_Bool)_isCurrentlyAtDefault;
+@property long long manualFramingDeviceType;
+@property _Bool centerStageFieldOfViewRestrictedToWide;
+@property(readonly) _Bool manualFramingIsAtDefault;
+- (_Bool)manualFramingEnabledForDevice:(id)arg1;
+- (void)resetFraming;
+- (void)performOneShotFraming;
+- (double)manualFramingOriginalVideoZoomFactor;
+- (void)setManualFramingOriginalZoomFactor:(double)arg1 convertedZoomFactor:(double)arg2;
+- (void)panWithTranslation:(struct CGPoint)arg1;
+- (void)startPanningAtPoint:(struct CGPoint)arg1;
 - (_Bool)voiceProcessingBypassed;
 - (long long)activeMicrophoneMode;
 - (_Bool)setMicrophoneMode:(long long)arg1;
 - (long long)microphoneMode;
 - (id)hiddenMicrophoneModes;
 - (id)supportedMicrophoneModes;
+- (void)enableBlackenFrames:(_Bool)arg1 forDeviceUID:(id)arg2;
+- (float)getEffectIntensityDefaultForVideoEffect:(id)arg1;
+- (struct AudioValueRange)getEffectIntensityRangeForVideoEffect:(id)arg1;
+- (_Bool)setEffectIntensityForVideoEffect:(float)arg1 forVideoEffect:(id)arg2;
+- (float)getEffectIntensityForVideoEffect:(id)arg1;
+- (void)updateActiveReactions:(id)arg1 currentRenderPTS:(CDStruct_1b6d18a9)arg2 requestedTriggers:(int)arg3 forCaptureDeviceWithID:(id)arg4;
+- (void)performReactionEffect:(id)arg1 forCaptureDeviceWithID:(id)arg2;
 - (unsigned long long)unavailableReasonsForVideoEffect:(id)arg1;
 - (_Bool)setEnabled:(_Bool)arg1 forVideoEffect:(id)arg2;
 - (_Bool)isEnabledForVideoEffect:(id)arg1;
 - (long long)controlModeForVideoEffect:(id)arg1;
 - (_Bool)supportsVideoEffect:(id)arg1;
 @property _Bool micModesSupported;
+@property _Bool reactionEffectsSupported;
 @property _Bool studioLightingSupported;
 @property _Bool backgroundBlurSupported;
 @property _Bool centerStageSupported;

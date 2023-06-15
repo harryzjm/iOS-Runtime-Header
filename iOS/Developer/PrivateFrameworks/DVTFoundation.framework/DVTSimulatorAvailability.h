@@ -13,7 +13,8 @@
 + (Class)canonicalProviderClassWithError:(id *)arg1;
 + (id)observeSimulatorUpdatesWithInitialCallback:(_Bool)arg1 usingBlock:(CDUnknownBlockType)arg2;
 + (void)removeRuntimeWithIdentifier:(id)arg1 completionQueue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-+ (void)addDiskImageRuntimeAtPath:(id)arg1 expandPartition:(_Bool)arg2 userInfo:(id)arg3 completionQueue:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
++ (void)addDiskImageRuntimeAtPath:(id)arg1 expandPartition:(_Bool)arg2 mountInPlace:(_Bool)arg3 userInfo:(id)arg4 completionQueue:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
++ (id)runtimeMatchPoliciesWithTimeout:(double)arg1 error:(id *)arg2;
 + (id)infoForAllSimulatorsWithTimeout:(double)arg1 error:(id *)arg2;
 + (id)infoForAllSimulatorsWithError:(id *)arg1;
 

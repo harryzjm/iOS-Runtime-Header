@@ -26,8 +26,10 @@
     _Bool _requestNeedsUserPublicKeys;
     _Bool _shouldModifyRecordsInDatabase;
     _Bool _includeMergeableDeltasInModifyRecordsRequest;
+    _Bool _shouldCloneFileInAssetCache;
     int _saveAttempts;
     NSData *_cachedUserBoundaryKeyData;
+    CKDProtocolTranslator *_translator;
     CDUnknownBlockType _saveProgressBlock;
     CDUnknownBlockType _saveCompletionBlock;
     CDUnknownBlockType _deleteCompletionBlock;
@@ -46,7 +48,6 @@
     NSMutableDictionary *_modifyHandlersByZoneID;
     long long _savePolicy;
     NSData *_clientChangeTokenData;
-    CKDProtocolTranslator *_translator;
     NSObject<OS_dispatch_queue> *_modifyRecordsQueue;
     NSDictionary *_assetUUIDToExpectedProperties;
     NSDictionary *_packageUUIDToExpectedProperties;
@@ -57,6 +58,7 @@
 + (long long)isPredominatelyDownload;
 + (_Bool)_claimPackagesInRecord:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool shouldCloneFileInAssetCache; // @synthesize shouldCloneFileInAssetCache=_shouldCloneFileInAssetCache;
 @property(nonatomic) _Bool includeMergeableDeltasInModifyRecordsRequest; // @synthesize includeMergeableDeltasInModifyRecordsRequest=_includeMergeableDeltasInModifyRecordsRequest;
 @property(nonatomic) _Bool shouldModifyRecordsInDatabase; // @synthesize shouldModifyRecordsInDatabase=_shouldModifyRecordsInDatabase;
 @property(copy, nonatomic) C2RequestOptions *streamingAssetRequestOptions; // @synthesize streamingAssetRequestOptions=_streamingAssetRequestOptions;
@@ -68,7 +70,6 @@
 @property(retain, nonatomic) NSDictionary *assetUUIDToExpectedProperties; // @synthesize assetUUIDToExpectedProperties=_assetUUIDToExpectedProperties;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *modifyRecordsQueue; // @synthesize modifyRecordsQueue=_modifyRecordsQueue;
 @property(nonatomic) _Bool shouldReportRecordsInFlight; // @synthesize shouldReportRecordsInFlight=_shouldReportRecordsInFlight;
-@property(retain, nonatomic) CKDProtocolTranslator *translator; // @synthesize translator=_translator;
 @property(nonatomic) _Bool atomic; // @synthesize atomic=_atomic;
 @property(nonatomic) _Bool haveOutstandingHandlers; // @synthesize haveOutstandingHandlers=_haveOutstandingHandlers;
 @property(nonatomic) _Bool shouldOnlySaveAssetContent; // @synthesize shouldOnlySaveAssetContent=_shouldOnlySaveAssetContent;
@@ -92,6 +93,7 @@
 @property(copy, nonatomic) CDUnknownBlockType deleteCompletionBlock; // @synthesize deleteCompletionBlock=_deleteCompletionBlock;
 @property(copy, nonatomic) CDUnknownBlockType saveCompletionBlock; // @synthesize saveCompletionBlock=_saveCompletionBlock;
 @property(copy, nonatomic) CDUnknownBlockType saveProgressBlock; // @synthesize saveProgressBlock=_saveProgressBlock;
+@property(retain, nonatomic) CKDProtocolTranslator *translator; // @synthesize translator=_translator;
 @property(copy, nonatomic) NSData *cachedUserBoundaryKeyData; // @synthesize cachedUserBoundaryKeyData=_cachedUserBoundaryKeyData;
 @property(nonatomic) _Bool alwaysFetchPCSFromServer; // @synthesize alwaysFetchPCSFromServer=_alwaysFetchPCSFromServer;
 @property(nonatomic) _Bool trustProtectionData; // @synthesize trustProtectionData=_trustProtectionData;
@@ -126,7 +128,8 @@
 - (void)_prepareForUpload;
 - (void)_fetchAssetRecordsForRereferencing;
 - (void)_didCompleteRecordFetchOperation:(id)arg1 assetArrayByRecordID:(id)arg2;
-- (void)assetArrayByRecordID:(id)arg1 didFetchRecord:(id)arg2 recordID:(id)arg3 error:(id)arg4;
+- (void)packageArray:(id)arg1 didFetchRecord:(id)arg2 error:(id)arg3;
+- (void)assetArray:(id)arg1 didFetchRecord:(id)arg2 error:(id)arg3;
 - (void)_fetchRecordPCSData;
 - (_Bool)_needsSigningPCS;
 - (void)_fetchSharePCSData;

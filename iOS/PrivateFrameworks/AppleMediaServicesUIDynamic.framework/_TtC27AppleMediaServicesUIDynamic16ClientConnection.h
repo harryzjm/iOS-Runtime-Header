@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *onInterruption;
     MISSING_TYPE *exportedObject;
+    MISSING_TYPE *clientConnector;
     MISSING_TYPE *underlyingRemoteConnection;
     MISSING_TYPE *connectionQueue;
     MISSING_TYPE *requestProxyQueue;

@@ -27,6 +27,7 @@
 - (_Bool)dispatchEventWithDescription:(id)arg1 eventBuilder:(CDUnknownBlockType)arg2 error:(id *)arg3;
 - (_Bool)_dispatchEventWithEventBuilder:(CDUnknownBlockType)arg1 error:(id *)arg2;
 - (id)_hitPointByAttemptingToScrollToVisibleSnapshot:(id)arg1 error:(id *)arg2;
+- (id)description;
 - (id)initWithElement:(id)arg1;
 
 @end

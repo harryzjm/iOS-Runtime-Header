@@ -13,5 +13,8 @@
 - (void)fluidProgressControllerFinishProgressBar:(WBSFluidProgressController *)arg1 animateFillFade:(_Bool)arg2;
 - (void)fluidProgressController:(WBSFluidProgressController *)arg1 startFluidProgressBar:(WBSFluidProgressState *)arg2 animateFillFade:(_Bool)arg3;
 - (void)fluidProgressController:(WBSFluidProgressController *)arg1 updateFluidProgressBar:(WBSFluidProgressState *)arg2 completion:(void (^)(_Bool))arg3;
+
+@optional
+- (void)fluidProgressController:(WBSFluidProgressController *)arg1 suppressProgressAnimation:(_Bool)arg2 duringFluidProgressState:(WBSFluidProgressState *)arg3 animated:(_Bool)arg4;
 @end
 

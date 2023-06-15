@@ -33,6 +33,8 @@ __attribute__((visibility("hidden")))
     UIView *_leftButton;
     double _searchBarReadableWidth;
     UIBarButtonItem *_searchIconBarButtonItem;
+    long long _representedLayoutState;
+    double _searchBarFieldHeight;
     double _floatingSearchIconAlpha;
     double _mainContentAlpha;
     CDUnknownBlockType _delegateSearchFieldFrameForProposedFrame;
@@ -56,6 +58,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) double mainContentAlpha; // @synthesize mainContentAlpha=_mainContentAlpha;
 @property(readonly, nonatomic) double floatingSearchIconAlpha; // @synthesize floatingSearchIconAlpha=_floatingSearchIconAlpha;
 @property(readonly, nonatomic) struct CGRect floatingSearchIconLayoutFrame; // @synthesize floatingSearchIconLayoutFrame=_floatingSearchIconLayoutFrame;
+@property(nonatomic) double searchBarFieldHeight; // @synthesize searchBarFieldHeight=_searchBarFieldHeight;
+@property(nonatomic) long long representedLayoutState; // @synthesize representedLayoutState=_representedLayoutState;
 @property(retain, nonatomic) UIBarButtonItem *searchIconBarButtonItem; // @synthesize searchIconBarButtonItem=_searchIconBarButtonItem;
 @property(nonatomic) struct UIOffset searchFieldBackgroundPositionAdjustment; // @synthesize searchFieldBackgroundPositionAdjustment=_searchFieldBackgroundPositionAdjustment;
 @property(nonatomic) double searchBarReadableWidth; // @synthesize searchBarReadableWidth=_searchBarReadableWidth;

@@ -6,12 +6,17 @@
 
 #import "PUTileViewController.h"
 
-@class AVPlayerLayer, NSString, PUAssetViewModel, PUBrowsingVideoPlayer, PUMediaProvider, PXPixelBufferView, PXVideoSession, PXVideoSessionUIView, UIImage, UIImageView, UIView;
-@protocol PUDisplayAsset;
+@class AVPlayerLayer, NSString, PUAssetViewModel, PUBrowsingVideoPlayer, PUBrowsingViewModel, PUMediaProvider, PXPixelBufferView, PXVideoSession, PXVideoSessionUIView, UIImage, UIImageView, UIView;
+@protocol PUDisplayAsset, PUVideoTileViewControllerDelegate, PXVKImageAnalysisInteraction;
 
 __attribute__((visibility("hidden")))
 @interface PUVideoTileViewController : PUTileViewController
 {
+    struct {
+        _Bool respondsToPresentingViewController;
+        _Bool respondsToShouldShowVisualIntelligenceOverlay;
+        _Bool respondsToShouldEnableSubjectLiftingForVisualIntelligenceOverlay;
+    } _delegateFlags;
     UIView *_view;
     UIImageView *_placeholderImageView;
     UIImage *_preloadedImage;
@@ -30,19 +35,23 @@ __attribute__((visibility("hidden")))
     _Bool _placeholderHiddenBehindVideoView;
     int __currentImageRequestID;
     CDUnknownBlockType _readyForDisplayChangeHandler;
+    PUBrowsingViewModel *_browsingViewModel;
     PUAssetViewModel *_assetViewModel;
     PUMediaProvider *_mediaProvider;
+    id <PUVideoTileViewControllerDelegate> _delegate;
+    id <PUDisplayAsset> _asset;
     PXVideoSession *_videoSession;
     PXVideoSessionUIView *_videoView;
-    id <PUDisplayAsset> _asset;
     PUBrowsingVideoPlayer *__browsingVideoPlayer;
     long long __thumbnailRequestNumber;
     CDUnknownBlockType __readyForDisplayCompletionHandler;
+    id <PXVKImageAnalysisInteraction> _imageInteraction;
     struct CGSize __targetSize;
     struct CGSize _requestedImageTargetSize;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) id <PXVKImageAnalysisInteraction> imageInteraction; // @synthesize imageInteraction=_imageInteraction;
 @property(nonatomic) _Bool placeholderHiddenBehindVideoView; // @synthesize placeholderHiddenBehindVideoView=_placeholderHiddenBehindVideoView;
 @property(nonatomic) _Bool placeholderIsAnimatingToHidden; // @synthesize placeholderIsAnimatingToHidden=_placeholderIsAnimatingToHidden;
 @property(nonatomic) _Bool currentImageIsPlaceholder; // @synthesize currentImageIsPlaceholder=_currentImageIsPlaceholder;
@@ -56,14 +65,25 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) struct CGSize requestedImageTargetSize; // @synthesize requestedImageTargetSize=_requestedImageTargetSize;
 @property(nonatomic, setter=_setTargetSize:) struct CGSize _targetSize; // @synthesize _targetSize=__targetSize;
 @property(nonatomic, setter=_setCurrentImageRequestID:) int _currentImageRequestID; // @synthesize _currentImageRequestID=__currentImageRequestID;
-@property(retain, nonatomic, setter=_setAsset:) id <PUDisplayAsset> asset; // @synthesize asset=_asset;
 @property(retain, nonatomic) PXVideoSessionUIView *videoView; // @synthesize videoView=_videoView;
 @property(retain, nonatomic) PXVideoSession *videoSession; // @synthesize videoSession=_videoSession;
+@property(retain, nonatomic, setter=_setAsset:) id <PUDisplayAsset> asset; // @synthesize asset=_asset;
+@property(nonatomic) __weak id <PUVideoTileViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) _Bool isOnSecondScreen; // @synthesize isOnSecondScreen=_isOnSecondScreen;
 @property(nonatomic) _Bool canPlayVideo; // @synthesize canPlayVideo=_canPlayVideo;
 @property(retain, nonatomic) PUMediaProvider *mediaProvider; // @synthesize mediaProvider=_mediaProvider;
 @property(retain, nonatomic) PUAssetViewModel *assetViewModel; // @synthesize assetViewModel=_assetViewModel;
+@property(retain, nonatomic) PUBrowsingViewModel *browsingViewModel; // @synthesize browsingViewModel=_browsingViewModel;
 @property(copy, nonatomic) CDUnknownBlockType readyForDisplayChangeHandler; // @synthesize readyForDisplayChangeHandler=_readyForDisplayChangeHandler;
+- (void)_updateVKAnalysisAndDisplayMode;
+- (id)_ensureVKImageInteractionCreated;
+- (void)_removeVKImageInteractionFromImageView;
+- (struct CGRect)contentsRectForImageAnalysisInteraction:(id)arg1;
+- (void)imageAnalysisInteractionDidDismissVisualSearchController:(id)arg1;
+- (void)imageAnalysisInteraction:(id)arg1 didTapVisualSearchIndicatorWithNormalizedBoundingBox:(struct CGRect)arg2;
+- (id)presentingViewControllerForImageAnalysisInteraction:(id)arg1;
+- (_Bool)_allowsVKRemoveBackground;
+@property(readonly, nonatomic) _Bool visualImageInteractionEnabled;
 - (void)_updateLiveEffectsRenderDebugIndicatorVisibility;
 - (void)_layoutLiveEffectsRenderDebugIndicator;
 - (void)_updateLiveEffectsRenderDebugIndicator;

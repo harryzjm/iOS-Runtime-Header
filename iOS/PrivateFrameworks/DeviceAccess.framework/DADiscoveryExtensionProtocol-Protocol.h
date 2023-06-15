@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class DADiscoveryExtensionSession;
+@class DADeviceEvent, DADiscoveryExtensionSession;
 
 @protocol DADiscoveryExtensionProtocol
+- (void)didReceiveDeviceChangedEvent:(DADeviceEvent *)arg1;
 - (void)stopDiscoveryWithSession:(DADiscoveryExtensionSession *)arg1;
 - (void)startDiscoveryWithSession:(DADiscoveryExtensionSession *)arg1;
 @end

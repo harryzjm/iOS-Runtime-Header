@@ -6,10 +6,10 @@
 
 #import <NewsUI2/NSObject-Protocol.h>
 
-@class NSString;
+@class NSString, SXJSONDictionary;
 
 @protocol SXAction <NSObject>
-@property(nonatomic, readonly) id analytics;
-@property(nonatomic, readonly) NSString *type;
+@property(readonly, nonatomic) SXJSONDictionary *analytics;
+@property(readonly, nonatomic) NSString *type;
 @end
 

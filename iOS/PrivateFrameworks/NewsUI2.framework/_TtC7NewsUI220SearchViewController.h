@@ -4,20 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+#import <TeaUI/TUViewController.h>
 
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC7NewsUI220SearchViewController : UIViewController
+@interface _TtC7NewsUI220SearchViewController : TUViewController
 {
+    MISSING_TYPE *searchBar;
     MISSING_TYPE *styler;
     MISSING_TYPE *eventHandler;
     MISSING_TYPE *blueprintViewController;
-    MISSING_TYPE *toolbarManager;
     MISSING_TYPE *sceneStateManager;
     MISSING_TYPE *origination;
-    MISSING_TYPE *searchBar;
     MISSING_TYPE *searchAction;
     MISSING_TYPE *clearAction;
     MISSING_TYPE *sharingActivityProviderFactory;

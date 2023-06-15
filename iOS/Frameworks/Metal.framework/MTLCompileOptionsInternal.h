@@ -26,8 +26,17 @@ __attribute__((visibility("hidden")))
     NSString *_installName;
     _Bool _preserveInvariance;
     long long _optimizationLevel;
+    long long _compileSymbolVisibility;
+    _Bool _allowReferencingUndefinedSymbols;
+    unsigned long long _maxTotalThreadsPerThreadgroup;
 }
 
+- (void)setMaxTotalThreadsPerThreadgroup:(unsigned long long)arg1;
+- (unsigned long long)maxTotalThreadsPerThreadgroup;
+- (void)setAllowReferencingUndefinedSymbols:(_Bool)arg1;
+- (_Bool)allowReferencingUndefinedSymbols;
+- (void)setCompileSymbolVisibility:(long long)arg1;
+- (long long)compileSymbolVisibility;
 - (void)setOptimizationLevel:(long long)arg1;
 - (long long)optimizationLevel;
 - (void)setPreserveInvariance:(_Bool)arg1;

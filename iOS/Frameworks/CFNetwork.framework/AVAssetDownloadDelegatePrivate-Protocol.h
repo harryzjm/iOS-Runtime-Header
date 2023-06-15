@@ -6,11 +6,6 @@
 
 #import <CFNetwork/AVAssetDownloadDelegate-Protocol.h>
 
-@class AVAssetDownloadTask, NSURL, NSURLSession;
-
 @protocol AVAssetDownloadDelegatePrivate <AVAssetDownloadDelegate>
-
-@optional
-- (void)URLSession:(NSURLSession *)arg1 assetDownloadTask:(AVAssetDownloadTask *)arg2 willDownloadToURL:(NSURL *)arg3;
 @end
 

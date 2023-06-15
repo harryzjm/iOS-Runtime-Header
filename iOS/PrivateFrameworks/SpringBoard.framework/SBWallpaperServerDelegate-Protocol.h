@@ -6,9 +6,10 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class NSString, PBUIWallpaperGradient, SBWallpaperServer, UIColor;
+@class NSString, NSUUID, PBUIWallpaperGradient, SBWallpaperServer, UIColor;
 
 @protocol SBWallpaperServerDelegate <NSObject>
+- (void)wallpaperServer:(SBWallpaperServer *)arg1 fetchSignificantEventsCounterForPosterWithIdentifier:(NSUUID *)arg2 completionHandler:(void (^)(unsigned long long))arg3;
 - (void)wallpaperServer:(SBWallpaperServer *)arg1 triggerPosterSignificantEventCompletionHandler:(void (^)(_Bool))arg2;
 - (void)wallpaperServer:(SBWallpaperServer *)arg1 restoreDefaultWallpaperWithCompletionHandler:(void (^)(_Bool))arg2;
 - (void)wallpaperServer:(SBWallpaperServer *)arg1 setWallpaperGradient:(PBUIWallpaperGradient *)arg2 forVariants:(long long)arg3 completionHandler:(void (^)(_Bool))arg4;

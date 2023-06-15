@@ -11,6 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface HDSmoothingTask : NSObject
 {
+    _Bool _isTimedOut;
     HKWorkout *_workout;
     NSArray *_routes;
     NSArray *_unsmoothedLocations;

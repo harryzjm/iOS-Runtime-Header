@@ -7,6 +7,7 @@
 #import <MetalTools/MTLEvent-Protocol.h>
 
 @protocol MTLEventSPI <MTLEvent>
+@property(readonly) _Bool supportsRollback;
 @property(nonatomic) _Bool enableBarrier;
 @end
 

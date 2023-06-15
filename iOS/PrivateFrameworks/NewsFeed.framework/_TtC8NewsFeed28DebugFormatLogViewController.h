@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
 @class MISSING_TYPE;
 
@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *filterTermLabel;
     MISSING_TYPE *filterTermLabelAction;
     MISSING_TYPE *searchController;
+    MISSING_TYPE *throttler;
 }
 
 - (void).cxx_destruct;

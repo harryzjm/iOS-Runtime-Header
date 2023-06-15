@@ -7,9 +7,9 @@
 #import <ContainerManagerCommon/MCMClientFactory-Protocol.h>
 
 @class MCMClientIdentity, NSObject;
-@protocol MCMClientConnectionContext, OS_xpc_object;
+@protocol MCMClientMessageContext, OS_xpc_object;
 
 @protocol MCMClientFactoryWithXPC <MCMClientFactory>
-- (MCMClientIdentity *)clientIdentityWithClientConnectionContext:(id <MCMClientConnectionContext>)arg1 clientMessageContext:(id <MCMClientConnectionContext>)arg2 xpcMessage:(NSObject<OS_xpc_object> *)arg3 error:(id *)arg4;
+- (MCMClientIdentity *)clientIdentityWithClientMessageContext:(id <MCMClientMessageContext>)arg1 xpcMessage:(NSObject<OS_xpc_object> *)arg2 error:(id *)arg3;
 @end
 

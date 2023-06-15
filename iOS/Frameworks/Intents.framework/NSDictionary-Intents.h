@@ -12,6 +12,14 @@
 + (id)_intents_decodeWithJSONDecoder:(id)arg1 codableDescription:(id)arg2 from:(id)arg3;
 - (id)_intents_indexingRepresentation;
 - (id)descriptionAtIndent:(unsigned long long)arg1;
+- (id)_intents_widgetPlistRepresentableForKey:(id)arg1 ofClass:(Class)arg2 error:(id *)arg3;
+- (id)intents_urlForKey:(id)arg1;
+- (id)intents_numberForKey:(id)arg1;
+- (double)intents_doubleForKey:(id)arg1;
+- (long long)intents_intForKey:(id)arg1;
+- (id)intents_stringForKey:(id)arg1;
+- (_Bool)intents_boolForKey:(id)arg1;
+- (id)intents_safeObjectForKey:(id)arg1 ofType:(Class)arg2;
 - (id)_intents_encodeWithJSONEncoder:(id)arg1 codableDescription:(id)arg2;
 
 // Remaining properties

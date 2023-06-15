@@ -12,6 +12,8 @@
 - (id <WFUIPresenterInterface>)presenterWithErrorHandler:(void (^)(NSError *))arg1;
 
 @optional
+@property(copy, nonatomic) CDUnknownBlockType interruptionHandler;
+@property(readonly, nonatomic) _Bool isConnected;
 @property(nonatomic) id <WFUIPresenterHostInterface> host;
 - (id <WFUIPresenterInterface>)synchronousPresenterWithErrorHandler:(void (^)(NSError *))arg1;
 @end

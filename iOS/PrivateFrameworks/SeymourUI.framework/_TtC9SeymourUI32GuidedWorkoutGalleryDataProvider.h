@@ -11,15 +11,28 @@
 @interface _TtC9SeymourUI32GuidedWorkoutGalleryDataProvider : _TtCs12_SwiftObject
 {
     MISSING_TYPE *delegate;
-    MISSING_TYPE *dependencies;
-    MISSING_TYPE *displayStyle;
-    MISSING_TYPE *eventHub;
     MISSING_TYPE *identifier;
-    MISSING_TYPE *catalogClient;
+    MISSING_TYPE *displayStyle;
     MISSING_TYPE *metricPageCategory;
     MISSING_TYPE *metricPage;
-    MISSING_TYPE *subscriptionToken;
     MISSING_TYPE *galleryShelf;
+    MISSING_TYPE *archivedSessionClient;
+    MISSING_TYPE *assetClient;
+    MISSING_TYPE *bookmarkClient;
+    MISSING_TYPE *catalogClient;
+    MISSING_TYPE *configurationClient;
+    MISSING_TYPE *dependencies;
+    MISSING_TYPE *eventHub;
+    MISSING_TYPE *subscriptionCache;
+    MISSING_TYPE *subscriptionToken;
+    MISSING_TYPE *upNextQueueClient;
+    MISSING_TYPE *assetBundles;
+    MISSING_TYPE *bookmarks;
+    MISSING_TYPE *playlists;
+    MISSING_TYPE *resumableSessions;
+    MISSING_TYPE *upNextQueueItems;
+    MISSING_TYPE *configuration;
+    MISSING_TYPE *subscription;
     MISSING_TYPE *activationState;
     MISSING_TYPE *page;
 }

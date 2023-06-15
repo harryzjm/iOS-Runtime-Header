@@ -30,6 +30,7 @@
     IBICContrastAppearance *_highContrast;
 }
 
++ (_Bool)supportsLARToolsTargetingPlatformNamed:(id)arg1;
 + (_Bool)supportsRemoteToolsTargetingPlatformNamed:(id)arg1;
 - (void).cxx_destruct;
 - (id)platformID;

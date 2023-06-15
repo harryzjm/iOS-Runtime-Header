@@ -8,6 +8,8 @@
 
 @interface NSData (ContactsFoundation)
 + (id)_cn_dataFromHexString:(id)arg1;
+- (id)_cn_padDataToLength:(unsigned long long)arg1;
+- (id)_cn_trimTrailingZeros;
 - (id)_cn_writeToURL:(id)arg1 options:(unsigned long long)arg2;
 - (id)_cn_SHA1String;
 - (id)_cn_hexString;

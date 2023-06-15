@@ -26,6 +26,9 @@ __attribute__((visibility("hidden")))
 + (unsigned int)internalBundleFactorForPayload:(int)arg1;
 + (_Bool)canBundleExternallyForPayload:(int)arg1 forBundlingScheme:(int)arg2 operatingMode:(int)arg3;
 + (_Bool)shouldUseCookieForPayload:(int)arg1;
++ (_Bool)skipBandWidthCheckForCodecRateModes:(int)arg1 supportedBitrates:(id)arg2;
++ (_Bool)isOpus4Channel48KhzPayload:(int)arg1 outFormat:(const struct AudioStreamBasicDescription *)arg2;
++ (_Bool)isEVSPayload:(int)arg1;
 + (_Bool)isCodecModeSupported:(int)arg1 forBandwidth:(int)arg2 withPayload:(int)arg3;
 + (_Bool)isAMRCodecModeSupported:(int)arg1 forBandwidth:(int)arg2;
 + (_Bool)isEVSCodecModeSupported:(int)arg1 forBandwidth:(int)arg2;
@@ -39,6 +42,9 @@ __attribute__((visibility("hidden")))
 + (id)codecModesForAMR8kHz;
 + (int)codecBandwidthForPayload:(int)arg1;
 + (_Bool)canSetBitrateForPayload:(int)arg1;
++ (unsigned int)codecSamplesPerFrameForPayload:(int)arg1 blockSize:(double)arg2 sampleRate:(unsigned int)arg3;
++ (double)blockSizeForPayload:(int)arg1 sampleRate:(unsigned int)arg2;
++ (double)opusSamplesPerFrameForSampleRate:(unsigned int)arg1 blockSize:(double)arg2;
 + (unsigned int)codecSamplesPerFrameForPayload:(int)arg1 blockSize:(double)arg2;
 + (unsigned int)audioCodecTypeForPayload:(int)arg1;
 + (unsigned int)sampleRateForCodecBandwidth:(int)arg1;

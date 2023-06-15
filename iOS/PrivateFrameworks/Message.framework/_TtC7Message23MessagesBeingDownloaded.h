@@ -11,6 +11,7 @@
 @interface _TtC7Message23MessagesBeingDownloaded : _TtCs12_SwiftObject
 {
     MISSING_TYPE *elements;
+    MISSING_TYPE *pendingHeaders;
 }
 
 @end

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSData, VCPImageDescriptor, VCPVideoKeyFrame;
+@class NSArray, NSData, VCPImageDescriptor, VCPVideoKeyFrame;
 
 __attribute__((visibility("hidden")))
 @interface VCPMovieHighlight : NSObject
@@ -27,19 +27,33 @@ __attribute__((visibility("hidden")))
     float _motionScore;
     float _subjectScore;
     float _exposureChangeScore;
+    float _zoomChangeScore;
+    float _flashScore;
+    float _sharpnessScore;
     VCPImageDescriptor *_descriptor;
     VCPVideoKeyFrame *_keyFrame;
     NSData *_colorNormalization;
+    NSArray *_faceResults;
+    NSArray *_sceneClassificationResults;
+    NSArray *_sceneprintResults;
+    NSArray *_humanActionResults;
     struct CGRect _bestPlaybackCrop;
     CDStruct_e83c9415 _timerange;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) float sharpnessScore; // @synthesize sharpnessScore=_sharpnessScore;
+@property(nonatomic) float flashScore; // @synthesize flashScore=_flashScore;
+@property(nonatomic) float zoomChangeScore; // @synthesize zoomChangeScore=_zoomChangeScore;
 @property(nonatomic) float exposureChangeScore; // @synthesize exposureChangeScore=_exposureChangeScore;
 @property(nonatomic) float subjectScore; // @synthesize subjectScore=_subjectScore;
 @property(nonatomic) float motionScore; // @synthesize motionScore=_motionScore;
 @property(nonatomic) float autoplayScore; // @synthesize autoplayScore=_autoplayScore;
 @property(nonatomic) _Bool isSettlingOK; // @synthesize isSettlingOK=_isSettlingOK;
+@property(retain, nonatomic) NSArray *humanActionResults; // @synthesize humanActionResults=_humanActionResults;
+@property(retain, nonatomic) NSArray *sceneprintResults; // @synthesize sceneprintResults=_sceneprintResults;
+@property(retain, nonatomic) NSArray *sceneClassificationResults; // @synthesize sceneClassificationResults=_sceneClassificationResults;
+@property(retain, nonatomic) NSArray *faceResults; // @synthesize faceResults=_faceResults;
 @property(retain, nonatomic) NSData *colorNormalization; // @synthesize colorNormalization=_colorNormalization;
 @property(retain, nonatomic) VCPVideoKeyFrame *keyFrame; // @synthesize keyFrame=_keyFrame;
 @property(retain, nonatomic) VCPImageDescriptor *descriptor; // @synthesize descriptor=_descriptor;

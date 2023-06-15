@@ -6,41 +6,44 @@
 
 #import <BookFoundation/BFMResource-Protocol.h>
 
-@class NSDate, NSDictionary, NSNumber, NSString, NSURL;
+@class NSDate, NSDecimalNumber, NSDictionary, NSNumber, NSString, NSURL;
 @protocol BFMSeries;
 
 @protocol BFMAsset <BFMResource>
-@property(nonatomic, readonly) id <BFMSeries> seriesResource;
-@property(nonatomic, readonly) NSNumber *height;
-@property(nonatomic, readonly) NSNumber *width;
-@property(nonatomic, readonly) NSString *artworkURL;
-@property(nonatomic, readonly) NSURL *previewURL;
-@property(nonatomic, readonly) long long fileSize;
-@property(nonatomic, readonly) NSDictionary *offer;
-@property(nonatomic, readonly) NSDate *expectedReleaseDate;
-@property(nonatomic, readonly) _Bool isPreorder;
-@property(nonatomic, readonly) NSNumber *price;
-@property(nonatomic, readonly) NSString *priceFormatted;
-@property(nonatomic, readonly) NSString *standardDescription;
-@property(nonatomic, readonly) NSString *standardNotes;
-@property(nonatomic, readonly) unsigned long long ratingCount;
-@property(nonatomic, readonly) float averageRating;
-@property(nonatomic, readonly) NSURL *bookSampleDownloadURL;
-@property(nonatomic, readonly) NSString *pageProgressionDirection;
-@property(nonatomic, readonly) _Bool isSG;
-@property(nonatomic, readonly) _Bool hasSupplementalContent;
-@property(nonatomic, readonly) NSDate *releaseDate;
-@property(nonatomic, readonly) NSURL *url;
-@property(nonatomic, readonly) NSString *buyParams;
-@property(nonatomic, readonly) NSString *genre;
-@property(nonatomic, readonly) _Bool isExplicit;
-@property(nonatomic, readonly) NSString *contentRating;
-@property(nonatomic, readonly) NSString *artistName;
-@property(nonatomic, readonly) NSString *name;
-@property(nonatomic, readonly) NSString *sequenceDisplayLabel;
-@property(nonatomic, readonly) NSNumber *sequenceNumber;
-@property(nonatomic, readonly) NSString *seriesName;
-@property(nonatomic, readonly) _Bool isAudiobook;
-@property(nonatomic, readonly) _Bool isBook;
+@property(readonly, nonatomic) id <BFMSeries> seriesResource;
+@property(readonly, nonatomic) NSNumber *height;
+@property(readonly, nonatomic) NSNumber *width;
+@property(readonly, nonatomic) NSString *artworkURL;
+@property(readonly, nonatomic) NSURL *previewURL;
+@property(readonly, nonatomic) long long fileSize;
+@property(readonly, nonatomic) NSDictionary *offer;
+@property(readonly, nonatomic) NSDate *expectedReleaseDate;
+@property(readonly, nonatomic) _Bool isPreorder;
+@property(readonly, nonatomic) NSNumber *price;
+@property(readonly, nonatomic) NSString *priceFormatted;
+@property(readonly, nonatomic) NSString *standardDescription;
+@property(readonly, nonatomic) NSString *standardNotes;
+@property(readonly, nonatomic) unsigned long long ratingCountForAnalytics;
+@property(readonly, nonatomic) unsigned long long ratingCount;
+@property(readonly, nonatomic) double averageRating;
+@property(readonly, nonatomic) NSString *version;
+@property(readonly, nonatomic) NSURL *bookSampleDownloadURL;
+@property(readonly, nonatomic) _Bool pagesAreRTL;
+@property(readonly, nonatomic) NSString *pageProgressionDirection;
+@property(readonly, nonatomic) _Bool isSG;
+@property(readonly, nonatomic) _Bool hasSupplementalContent;
+@property(readonly, nonatomic) NSDate *releaseDate;
+@property(readonly, nonatomic) NSURL *url;
+@property(readonly, nonatomic) NSString *buyParams;
+@property(readonly, nonatomic) NSString *genre;
+@property(readonly, nonatomic) _Bool isExplicit;
+@property(readonly, nonatomic) NSString *contentRating;
+@property(readonly, nonatomic) NSString *artistName;
+@property(readonly, nonatomic) NSString *name;
+@property(readonly, nonatomic) NSString *sequenceDisplayLabel;
+@property(readonly, nonatomic) NSDecimalNumber *sequenceNumber;
+@property(readonly, nonatomic) NSString *seriesName;
+@property(readonly, nonatomic) _Bool isAudiobook;
+@property(readonly, nonatomic) _Bool isBook;
 @end
 

@@ -23,10 +23,14 @@ __attribute__((visibility("hidden")))
     unsigned long long _mode;
     int framesLeft;
     struct vector<unsigned char, std::allocator<unsigned char>> _nv12ScaleBuffer;
+    _Bool _useAnnexB;
+    _Bool _needsToSendDescription;
+    CDUnknownBlockType _descriptionCallback;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)flush;
 - (id)scalingSettings;
 - (void)frameWasEncoded:(int)arg1 flags:(unsigned int)arg2 sampleBuffer:(struct opaqueCMSampleBuffer *)arg3 width:(int)arg4 height:(int)arg5 renderTimeMs:(long long)arg6 timestamp:(unsigned int)arg7 rotation:(long long)arg8;
 - (void)setEncoderBitrateBps:(unsigned int)arg1;
@@ -39,6 +43,8 @@ __attribute__((visibility("hidden")))
 - (int)setBitrate:(unsigned int)arg1 framerate:(unsigned int)arg2;
 - (void)setCallback:(CDUnknownBlockType)arg1;
 - (long long)encode:(id)arg1 codecSpecificInfo:(id)arg2 frameTypes:(id)arg3;
+- (void)setDescriptionCallback:(CDUnknownBlockType)arg1;
+- (void)setUseAnnexB:(_Bool)arg1;
 - (long long)startEncodeWithSettings:(id)arg1 numberOfCores:(int)arg2;
 - (void)dealloc;
 - (id)initWithCodecInfo:(id)arg1;

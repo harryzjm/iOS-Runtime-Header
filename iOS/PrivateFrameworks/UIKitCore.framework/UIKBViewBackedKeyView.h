@@ -24,12 +24,12 @@ __attribute__((visibility("hidden")))
 - (void)layoutSubviews;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (_Bool)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
-- (void)retestForTouchUpSelectedVariantIndexForKey:(id)arg1 atPoint:(struct CGPoint)arg2;
-- (void)retestSelectedVariantIndexForKey:(id)arg1 atPoint:(struct CGPoint)arg2;
+- (_Bool)retestSelectedVariantIndexForKey:(id)arg1 atPoint:(struct CGPoint)arg2 phase:(long long)arg3;
 - (void)updateForKeyplane:(id)arg1 key:(id)arg2;
 - (void)setDrawFrame:(struct CGRect)arg1;
 - (void)setRenderConfig:(id)arg1;
 - (id)renderFlagsForTraits:(id)arg1;
+- (id)initWithFrame:(struct CGRect)arg1 keyplane:(id)arg2 key:(id)arg3;
 
 @end
 

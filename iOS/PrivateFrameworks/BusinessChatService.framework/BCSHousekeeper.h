@@ -18,9 +18,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSUserDefaults *userDefaults; // @synthesize userDefaults=_userDefaults;
 @property(readonly, nonatomic) long long currentVersion; // @synthesize currentVersion=_currentVersion;
-- (void)removeItemAtfileURL:(id)arg1;
-- (void)cleanupOldUserDefaults;
-- (void)cleanupOldCachePath;
 - (void)cleanupDataAtOldPathsIfNeeded;
 - (id)initWithUserDefaults:(id)arg1 currentVersion:(long long)arg2;
 - (id)initWithUserDefaults:(id)arg1;

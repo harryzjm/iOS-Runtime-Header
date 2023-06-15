@@ -23,6 +23,7 @@
     MISSING_TYPE *_title;
     MISSING_TYPE *_buttonItem;
     MISSING_TYPE *_collectionStyle;
+    MISSING_TYPE *_titleButtonItem;
 }
 
 @end

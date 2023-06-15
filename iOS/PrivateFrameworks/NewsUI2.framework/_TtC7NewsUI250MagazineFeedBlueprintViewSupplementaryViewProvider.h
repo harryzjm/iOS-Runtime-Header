@@ -11,10 +11,8 @@
 @interface _TtC7NewsUI250MagazineFeedBlueprintViewSupplementaryViewProvider : _TtCs12_SwiftObject
 {
     MISSING_TYPE *delegate;
-    MISSING_TYPE *groupTitleViewRenderer;
     MISSING_TYPE *feedItemSupplementaryRenderer;
-    MISSING_TYPE *separatorViewContainerViewRenderer;
-    MISSING_TYPE *sectionFooterViewRenderer;
+    MISSING_TYPE *embeddedSupplementaryRenderer;
 }
 
 @end

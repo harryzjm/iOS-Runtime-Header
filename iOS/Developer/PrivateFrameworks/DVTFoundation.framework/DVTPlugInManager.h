@@ -38,6 +38,7 @@
         unsigned int _isSecondaryScan:1;
         unsigned int _hasScannedForPlugIns:1;
     } _flags;
+    NSString *_loadFailureHint;
     CDUnknownBlockType _shouldAllowNonApplePlugInsCallback;
 }
 
@@ -49,6 +50,7 @@
 - (void).cxx_destruct;
 @property(copy) CDUnknownBlockType shouldAllowNonApplePlugInsCallback; // @synthesize shouldAllowNonApplePlugInsCallback=_shouldAllowNonApplePlugInsCallback;
 @property(retain) DVTPlugInLocator *plugInLocator; // @synthesize plugInLocator=_plugInLocator;
+@property(copy, nonatomic) NSString *loadFailureHint; // @synthesize loadFailureHint=_loadFailureHint;
 @property _Bool shouldClearPlugInCaches; // @synthesize shouldClearPlugInCaches=_shouldClearPlugInCaches;
 - (id)_duplicateRecords;
 - (id)_invalidExtensionWithIdentifier:(id)arg1;
@@ -63,6 +65,7 @@
 - (id)_modificationDateOfFileAtPath:(id)arg1;
 @property(readonly) _Bool usePlugInCache;
 - (void)_preLoadPlugIns;
+- (void)_freezePlugInObjectGraph;
 - (_Bool)_checkPresenceOfRequiredPlugIns:(id)arg1 error:(id *)arg2;
 - (_Bool)shouldPerformConsistencyCheck;
 - (void)_registerPlugInsFromScanRecords:(id)arg1;

@@ -20,13 +20,17 @@ __attribute__((visibility("hidden")))
     _Bool _allowMultipleFiles;
     _Bool _usingCamera;
     struct RetainPtr<WKFileUploadMediaTranscoder> _mediaTranscoder;
-    struct RetainPtr<UIImagePickerController> _imagePicker;
+    struct RetainPtr<UIImagePickerController> _cameraPicker;
+    struct RetainPtr<PHPickerViewController> _photoPicker;
     struct RetainPtr<UIViewController> _presentationViewController;
     _Bool _isPresentingSubMenu;
     _Bool _isRepositioningContextMenu;
     struct RetainPtr<UIContextMenuInteraction> _documentContextMenuInteraction;
     struct RetainPtr<UIDocumentPickerViewController> _documentPickerController;
-    int _mediaCaptureType;
+    unsigned char _mediaCaptureType;
+    struct Vector<WTF::RetainPtr<NSURL>, 0UL, WTF::CrashOnOverflow, 16UL, WTF::FastMalloc> _temporaryUploadedFileURLs;
+    struct RetainPtr<NSFileManager> _uploadFileManager;
+    struct RetainPtr<NSFileCoordinator> _uploadFileCoordinator;
     id <WKFileUploadPanelDelegate> _delegate;
 }
 
@@ -34,21 +38,27 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <WKFileUploadPanelDelegate> delegate; // @synthesize delegate=_delegate;
 - (_Bool)platformSupportsPickerViewController;
+- (pair_1e65d456)_copyToNewTemporaryDirectory:(id)arg1;
 - (void)_uploadMediaItemsTranscodingVideo:(id)arg1;
 - (void)_uploadItemFromMediaInfo:(id)arg1 successBlock:(CDUnknownBlockType)arg2 failureBlock:(CDUnknownBlockType)arg3;
 - (void)_uploadItemForJPEGRepresentationOfImage:(id)arg1 successBlock:(CDUnknownBlockType)arg2 failureBlock:(CDUnknownBlockType)arg3;
 - (void)_uploadItemForImageData:(id)arg1 imageName:(id)arg2 successBlock:(CDUnknownBlockType)arg3 failureBlock:(CDUnknownBlockType)arg4;
 - (void)_processMediaInfoDictionaries:(id)arg1 atIndex:(unsigned long long)arg2 processedResults:(id)arg3 successBlock:(CDUnknownBlockType)arg4 failureBlock:(CDUnknownBlockType)arg5;
+- (void)_uploadItemFromResult:(id)arg1 successBlock:(CDUnknownBlockType)arg2 failureBlock:(CDUnknownBlockType)arg3;
+- (void)_processPickerResults:(id)arg1 atIndex:(unsigned long long)arg2 processedResults:(id)arg3 successBlock:(CDUnknownBlockType)arg4 failureBlock:(CDUnknownBlockType)arg5;
+- (void)_processPickerResults:(id)arg1 successBlock:(CDUnknownBlockType)arg2 failureBlock:(CDUnknownBlockType)arg3;
 - (void)_processMediaInfoDictionaries:(id)arg1 successBlock:(CDUnknownBlockType)arg2 failureBlock:(CDUnknownBlockType)arg3;
 - (void)imagePickerControllerDidCancel:(id)arg1;
 - (void)imagePickerController:(id)arg1 didFinishPickingMultipleMediaWithInfo:(id)arg2;
 - (void)imagePickerController:(id)arg1 didFinishPickingMediaWithInfo:(id)arg2;
 - (_Bool)_willMultipleSelectionDelegateBeCalled;
+- (void)picker:(id)arg1 didFinishPicking:(id)arg2;
 - (void)documentPickerWasCancelled:(id)arg1;
 - (void)documentPicker:(id)arg1 didPickDocumentsAtURLs:(id)arg2;
 - (void)presentationControllerDidDismiss:(id)arg1;
 - (void)_presentFullscreenViewController:(id)arg1 animated:(_Bool)arg2;
-- (void)_showPhotoPickerWithSourceType:(long long)arg1;
+- (void)_showPhotoPicker;
+- (void)_showCamera;
 - (_Bool)_shouldMediaCaptureOpenMediaDevice;
 - (void)_adjustMediaCaptureType;
 - (void)showDocumentPickerMenu;

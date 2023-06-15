@@ -11,6 +11,7 @@
 
 @protocol AXSystemAppServer <NSObject>
 + (id <AXSystemAppServer>)server;
+- (_Bool)toggleIncomingCall;
 - (_Bool)showControlCenter:(_Bool)arg1;
 - (_Bool)isShelfSwitcherVisible;
 - (_Bool)isLockScreenVisible;
@@ -29,6 +30,7 @@
 - (_Bool)isScreenSaverVisible;
 - (_Bool)isControlCenterVisible;
 - (_Bool)isNotificationCenterVisible;
+- (_Bool)isStageManagerSwitcherVisible;
 - (_Bool)isDockVisible;
 - (_Bool)isAppSwitcherVisible;
 - (_Bool)isSiriVisible;

@@ -11,7 +11,7 @@
 @interface _TtC18HealthPlatformCore42GenerationOperationToPluginDelegateAdaptor : _TtCs12_SwiftObject
 {
     MISSING_TYPE *pluginInfo;
-    MISSING_TYPE *$__lazy_storage_$_queue;
+    MISSING_TYPE *queue;
 }
 
 @end

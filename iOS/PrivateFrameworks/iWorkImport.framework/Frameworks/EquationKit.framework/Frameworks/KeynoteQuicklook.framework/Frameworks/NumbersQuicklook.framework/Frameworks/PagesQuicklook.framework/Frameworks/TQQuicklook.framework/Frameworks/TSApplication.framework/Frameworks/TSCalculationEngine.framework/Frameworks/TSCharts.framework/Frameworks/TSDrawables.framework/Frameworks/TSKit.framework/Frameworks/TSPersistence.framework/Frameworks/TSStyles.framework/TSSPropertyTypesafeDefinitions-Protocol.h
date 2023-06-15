@@ -418,6 +418,14 @@
 @property(readonly) int TSCHChartInfoDefaultTitleParagraphStyleIndexProperty;
 @property(readonly) NSString *TSCHChartInfoDefaultTitleProperty;
 @property(readonly) TSUColor *TSCHChartInfoDefaultTitleColorProperty;
+@property(readonly) int TSCHChartInfoDefaultSummaryLabelValueLabelSpacingProperty;
+@property(readonly) _Bool TSCHChartInfoDefaultSummaryLabelShowLabelsProperty;
+@property(readonly) int TSCHChartInfoDefaultSummaryLabelParagraphStyleIndexProperty;
+@property(readonly) float TSCHChartInfoDefaultSummaryLabelOffsetProperty;
+@property(readonly) int TSCHChartInfoDefaultSummaryLabelNumberFormatTypeProperty;
+@property(readonly) id TSCHChartInfoDefaultSummaryLabelNumberFormatProperty;
+@property(readonly) id TSCHChartInfoDefaultSummaryLabelDurationFormatProperty;
+@property(readonly) id TSCHChartInfoDefaultSummaryLabelDateFormatProperty;
 @property(readonly) _Bool TSCHChartInfoDefaultSkipHiddenDataProperty;
 @property(readonly) _Bool TSCHChartInfoDefaultShowTitleProperty;
 @property(readonly) _Bool TSCHChartInfoDefaultShowLegendProperty;
@@ -453,6 +461,7 @@
 @property(readonly) float TSCHChartInfoDefaultBorderOpacityProperty;
 @property(readonly) id TSCHChartInfoDefaultBackgroundStrokeProperty;
 @property(readonly) id TSCHChartInfoDefaultBackgroundFillProperty;
+@property(readonly) _Bool TSCHChartInfoDefaultAxisAnchorLabelAtEndsProperty;
 @property(readonly) id TSCHChartInfoDefault3DViewportProperty;
 @property(readonly) id TSCHChartInfoPie3DScaleProperty;
 @property(readonly) id TSCHChartInfoLine3DScaleProperty;
@@ -645,6 +654,14 @@
 @property(readonly) int TSCHChartInfoTitleParagraphStyleIndexProperty;
 @property(readonly) TSUColor *TSCHChartInfoTitleColorProperty;
 @property(readonly) NSString *TSCHChartInfoTitleProperty;
+@property(readonly) int TSCHChartInfoSummaryLabelValueLabelSpacingProperty;
+@property(readonly) _Bool TSCHChartInfoSummaryLabelShowLabelsProperty;
+@property(readonly) int TSCHChartInfoSummaryLabelParagraphStyleIndexProperty;
+@property(readonly) float TSCHChartInfoSummaryLabelOffsetProperty;
+@property(readonly) int TSCHChartInfoSummaryLabelNumberFormatTypeProperty;
+@property(readonly) id TSCHChartInfoSummaryLabelNumberFormatProperty;
+@property(readonly) id TSCHChartInfoSummaryLabelDurationFormatProperty;
+@property(readonly) id TSCHChartInfoSummaryLabelDateFormatProperty;
 @property(readonly) _Bool TSCHChartInfoSkipHiddenDataProperty;
 @property(readonly) _Bool TSCHChartInfoShowTitleProperty;
 @property(readonly) _Bool TSCHChartInfoShowLegendProperty;
@@ -685,6 +702,7 @@
 @property(readonly) float TSCHChartInfoBorderOpacityProperty;
 @property(readonly) id TSCHChartInfoBackgroundStrokeProperty;
 @property(readonly) id TSCHChartInfoBackgroundFillProperty;
+@property(readonly) _Bool TSCHChartInfoAxisAnchorLabelAtEndsProperty;
 @property(readonly) id TSCHChartInfo3DViewportProperty;
 @property(readonly) id TSCHChartInfo3DScaleProperty;
 @property(readonly) id TSCHChartInfo3DRotationProperty;

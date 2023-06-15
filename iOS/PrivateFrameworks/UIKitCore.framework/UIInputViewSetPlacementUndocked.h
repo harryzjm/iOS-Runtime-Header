@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)isEqual:(id)arg1;
 - (id)verticalConstraintForInputViewSet:(id)arg1 hostView:(id)arg2 containerView:(id)arg3;
 - (double)heightOfInputViews:(id)arg1;
+- (void)updateChromeBuffer;
 - (void)setOffset:(struct CGPoint)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

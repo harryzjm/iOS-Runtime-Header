@@ -6,12 +6,12 @@
 
 #import <ContainerManagerCommon/MCMCommand_XPC-Protocol.h>
 
-@class MCMContext;
+@class MCMCommandContext;
 @protocol MCMReply, MCMResultPromise;
 
 @protocol MCMCommand_Internal <MCMCommand_XPC>
 @property(readonly, nonatomic) id <MCMResultPromise> resultPromise;
 @property(readonly, nonatomic) id <MCMReply> reply;
-@property(readonly, nonatomic) MCMContext *context;
+@property(readonly, nonatomic) MCMCommandContext *context;
 @end
 

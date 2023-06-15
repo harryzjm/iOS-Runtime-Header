@@ -24,6 +24,8 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _moduleVersionMigrator;
 }
 
++ (id)persistedComponentSymbol:(id)arg1;
++ (id)persistedOperationSymbol:(id)arg1;
 + (long long)persistedEntryStatusValue:(id)arg1;
 + (id)persistedEntryStatusName:(long long)arg1;
 + (id)entryFileIDForModule:(id)arg1 fromFilename:(id)arg2;
@@ -53,11 +55,13 @@ __attribute__((visibility("hidden")))
 - (void)_persistStatusChange:(id)arg1 ofEntryName:(id)arg2 withEntrySummary:(id)arg3 currentStatus:(long long)arg4 fromLocation:(id)arg5;
 - (id)_loadPersistedEntry:(id)arg1 forEntryName:(id)arg2 withEntryStatus:(long long)arg3;
 - (void)_persistTableOfContents:(id)arg1 forEntryName:(id)arg2 withEntryStatus:(long long)arg3;
+- (long long)persistedEntryCount:(id)arg1;
 - (id)persistedEntryIDs:(id)arg1;
 - (void)removeAllPersistedEntries:(id)arg1;
 - (void)removePersistedEntry:(id)arg1 fromLocation:(id)arg2;
 - (void)storePersistedEntry:(id)arg1 withEntrySummary:(id)arg2 fromLocation:(id)arg3;
 - (id)persistedEntry:(id)arg1 fromLocation:(id)arg2;
+- (_Bool)persistedEntryAlreadyExists:(id)arg1 fromLocation:(id)arg2;
 - (void)loadPersistedState:(id)arg1;
 - (id)initForModule:(id)arg1 ofModuleVersion:(id)arg2 usingDispatchQueue:(id)arg3 usingLogger:(id)arg4 loggingByName:(id)arg5 withVersionMigrator:(CDUnknownBlockType)arg6;
 

@@ -7,6 +7,7 @@
 #import <AVFoundation/AVAssetTrack.h>
 
 @interface AVAssetTrack (MediaAnalysis)
+- (unsigned long long)vcp_sampleCountForTimeRange:(CDStruct_e83c9415)arg1;
 - (struct CGRect)vcp_cleanApertureRect;
 - (struct CGSize)vcp_fullFrameSize;
 - (unsigned int)vcp_imageOrientation;

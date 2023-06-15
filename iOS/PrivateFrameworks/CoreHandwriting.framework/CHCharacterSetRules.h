@@ -44,8 +44,8 @@
     NSCharacterSet *_CJKPairedPunctuationsCharSet;
     NSCharacterSet *_alphaNumericCharSet;
     NSObject<OS_dispatch_queue> *__charSetRulesQueue;
-    map_aaf15588 _strokeMaxPenalties;
-    map_3815c996 _signatureUniChar;
+    map_e7c97cc0 _strokeMaxPenalties;
+    map_99134f14 _signatureUniChar;
 }
 
 + (unsigned long long)characterTypeFromString:(id)arg1;
@@ -57,8 +57,8 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *_charSetRulesQueue; // @synthesize _charSetRulesQueue=__charSetRulesQueue;
-@property(nonatomic) map_3815c996 signatureUniChar; // @synthesize signatureUniChar=_signatureUniChar;
-@property(nonatomic) map_aaf15588 strokeMaxPenalties; // @synthesize strokeMaxPenalties=_strokeMaxPenalties;
+@property(nonatomic) map_99134f14 signatureUniChar; // @synthesize signatureUniChar=_signatureUniChar;
+@property(nonatomic) map_e7c97cc0 strokeMaxPenalties; // @synthesize strokeMaxPenalties=_strokeMaxPenalties;
 @property(retain, nonatomic) NSCharacterSet *alphaNumericCharSet; // @synthesize alphaNumericCharSet=_alphaNumericCharSet;
 @property(retain, nonatomic) NSCharacterSet *CJKPairedPunctuationsCharSet; // @synthesize CJKPairedPunctuationsCharSet=_CJKPairedPunctuationsCharSet;
 @property(retain, nonatomic) NSCharacterSet *commonJapaneseSymbols; // @synthesize commonJapaneseSymbols=_commonJapaneseSymbols;

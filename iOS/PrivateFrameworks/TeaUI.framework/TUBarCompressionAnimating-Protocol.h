@@ -7,10 +7,10 @@
 @class UIScrollView, UITraitCollection;
 
 @protocol TUBarCompressionAnimating
+@property(readonly, nonatomic) _Bool shouldCloseGapOnScroll;
+@property(readonly, nonatomic) double topOffset;
+@property(readonly, nonatomic) _Bool shouldCompressAtTop;
 - (void)reloadWithTraitCollection:(UITraitCollection *)arg1;
-@property(nonatomic, readonly) _Bool shouldCloseGapOnScroll;
-@property(nonatomic, readonly) double topOffset;
-@property(nonatomic, readonly) _Bool shouldCompressAtTop;
 - (double)minimumBarHeightForTraitCollection:(UITraitCollection *)arg1;
 - (double)maximumBarHeightForTraitCollection:(UITraitCollection *)arg1;
 - (_Bool)animationShouldBeginForScrollView:(UIScrollView *)arg1 currentlyFullyCompressed:(_Bool)arg2;

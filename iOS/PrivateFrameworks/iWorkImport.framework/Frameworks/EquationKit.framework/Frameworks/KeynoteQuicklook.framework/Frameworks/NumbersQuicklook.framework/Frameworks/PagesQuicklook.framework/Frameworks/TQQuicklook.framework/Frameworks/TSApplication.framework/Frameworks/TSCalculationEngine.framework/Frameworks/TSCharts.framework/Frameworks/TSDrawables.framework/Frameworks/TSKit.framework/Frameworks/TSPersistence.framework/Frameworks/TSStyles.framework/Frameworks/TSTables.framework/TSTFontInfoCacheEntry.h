@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class TSWPTextMeasurerBundle;
+@class NSMutableArray, TSWPTextMeasurerBundle;
 
 @interface TSTFontInfoCacheEntry : NSObject
 {
     struct os_unfair_lock_s _lock[8];
     struct unordered_map<TSTFontInfoCacheDupContentEntry, double, std::hash<TSTFontInfoCacheDupContentEntry>, std::equal_to<TSTFontInfoCacheDupContentEntry>, std::allocator<std::pair<const TSTFontInfoCacheDupContentEntry, double>>> _dupContentEntryToHeightCache[8];
     struct unordered_map<TSTFontInfoCacheDupContentEntry, double, std::hash<TSTFontInfoCacheDupContentEntry>, std::equal_to<TSTFontInfoCacheDupContentEntry>, std::allocator<std::pair<const TSTFontInfoCacheDupContentEntry, double>>> _dupContentEntryToWidthCache[8];
+    NSMutableArray *_strongReferences[8];
     TSWPTextMeasurerBundle *_textMeasurerBundle;
 }
 

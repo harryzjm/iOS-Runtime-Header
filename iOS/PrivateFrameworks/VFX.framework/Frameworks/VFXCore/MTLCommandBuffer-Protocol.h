@@ -10,6 +10,18 @@
 @protocol MTLAccelerationStructureCommandEncoder, MTLBlitCommandEncoder, MTLCommandQueue, MTLComputeCommandEncoder, MTLDevice, MTLDrawable, MTLEvent, MTLLogContainer, MTLParallelRenderCommandEncoder, MTLRenderCommandEncoder, MTLResourceStateCommandEncoder;
 
 @protocol MTLCommandBuffer <NSObject>
+@property(readonly) NSError *error;
+@property(readonly) unsigned long long status;
+@property(readonly) double GPUEndTime;
+@property(readonly) double GPUStartTime;
+@property(readonly) id <MTLLogContainer> logs;
+@property(readonly) double kernelEndTime;
+@property(readonly) double kernelStartTime;
+@property(copy) NSString *label;
+@property(readonly) unsigned long long errorOptions;
+@property(readonly) _Bool retainedReferences;
+@property(readonly) id <MTLCommandQueue> commandQueue;
+@property(readonly) id <MTLDevice> device;
 - (void)popDebugGroup;
 - (void)pushDebugGroup:(NSString *)arg1;
 - (id <MTLAccelerationStructureCommandEncoder>)accelerationStructureCommandEncoderWithDescriptor:(MTLAccelerationStructurePassDescriptor *)arg1;
@@ -25,8 +37,6 @@
 - (id <MTLComputeCommandEncoder>)computeCommandEncoderWithDescriptor:(MTLComputePassDescriptor *)arg1;
 - (id <MTLRenderCommandEncoder>)renderCommandEncoderWithDescriptor:(MTLRenderPassDescriptor *)arg1;
 - (id <MTLBlitCommandEncoder>)blitCommandEncoder;
-@property(nonatomic, readonly) NSError *error;
-@property(nonatomic, readonly) unsigned long long status;
 - (void)waitUntilCompleted;
 - (void)addCompletedHandler:(void (^)(id <MTLCommandBuffer>))arg1;
 - (void)waitUntilScheduled;
@@ -35,15 +45,5 @@
 - (void)addScheduledHandler:(void (^)(id <MTLCommandBuffer>))arg1;
 - (void)commit;
 - (void)enqueue;
-@property(nonatomic, readonly) double GPUEndTime;
-@property(nonatomic, readonly) double GPUStartTime;
-@property(nonatomic, readonly) id <MTLLogContainer> logs;
-@property(nonatomic, readonly) double kernelEndTime;
-@property(nonatomic, readonly) double kernelStartTime;
-@property(nonatomic, copy) NSString *label;
-@property(nonatomic, readonly) unsigned long long errorOptions;
-@property(nonatomic, readonly) _Bool retainedReferences;
-@property(nonatomic, readonly) id <MTLCommandQueue> commandQueue;
-@property(nonatomic, readonly) id <MTLDevice> device;
 @end
 

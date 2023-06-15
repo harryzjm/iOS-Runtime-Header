@@ -12,6 +12,9 @@
 @protocol PUUserTransformTileViewControllerDelegate <NSObject>
 
 @optional
+- (void)userTransformTileViewControllerShowDetailsView:(PUUserTransformTileViewController *)arg1;
+- (_Bool)userTransformTileViewControllerShouldShowVisualIntelligenceOverlay:(PUUserTransformTileViewController *)arg1;
+- (long long)contentAccessoryViewForCurrentAsset;
 - (UIViewController *)userTransformTileViewControllerPresentingViewController:(PUUserTransformTileViewController *)arg1;
 - (UIView *)userTransformTileViewControllerPresentingTileView:(PUUserTransformTileViewController *)arg1;
 - (NSArray *)userTransformTileViewControllerTextsToHighlight:(PUUserTransformTileViewController *)arg1;

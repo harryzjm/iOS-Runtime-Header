@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     int _missingContainerRetryCount;
     _Bool _activelyUpdating;
     struct atomic_flag _isWaiting;
+    id _useProdURLsListener;
 }
 
 - (void).cxx_destruct;

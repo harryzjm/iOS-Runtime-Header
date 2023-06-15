@@ -9,6 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface UIKeyboardEmojiScrubBarView : UIView
 {
+    _Bool _isFirstPartyStickers;
 }
 
 - (void)didMoveToWindow;

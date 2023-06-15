@@ -15,10 +15,10 @@ __attribute__((visibility("hidden")))
     BLSHLocalAssertionService *_localAssertionService;
 }
 
-+ (id)serviceForService:(id)arg1 withOSTimerProvider:(id)arg2;
++ (id)serviceForService:(id)arg1 withOSInterfaceProvider:(id)arg2;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) BLSHLocalAssertionService *localAssertionService; // @synthesize localAssertionService=_localAssertionService;
-- (id)initWithService:(id)arg1 osTimerProvider:(id)arg2;
+- (id)initWithService:(id)arg1 osInterfaceProvider:(id)arg2;
 
 @end
 

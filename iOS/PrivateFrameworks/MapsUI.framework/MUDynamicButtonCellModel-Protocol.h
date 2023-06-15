@@ -19,7 +19,6 @@
 @optional
 @property(copy, nonatomic) UIMenu *menu;
 @property(nonatomic) __weak id <MUDynamicButtonCellModelChangeDelegate> changeDelegate;
-- (void)loadSubtitleWithCompletion:(void (^)(NSString *))arg1;
 - (NSString *)accessibilityIdentifierForAction;
 @end
 

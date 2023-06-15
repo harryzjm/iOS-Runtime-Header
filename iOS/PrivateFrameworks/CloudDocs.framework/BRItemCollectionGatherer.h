@@ -6,8 +6,8 @@
 
 #import <objc/NSObject.h>
 
-@class NSMetadataQuery, NSMutableArray, NSMutableDictionary, NSMutableSet, NSPredicate, NSString;
-@protocol BRItemCollectionGathererDelegate, OS_dispatch_queue;
+@class BRWatchingConfiguration, NSData, NSMetadataQuery, NSMutableDictionary, NSMutableSet, NSPredicate, NSString;
+@protocol BRItemCollectionGathererDelegate, NSObject, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface BRItemCollectionGatherer : NSObject
@@ -17,34 +17,56 @@ __attribute__((visibility("hidden")))
     id <BRItemCollectionGathererDelegate> _delegate;
     NSMetadataQuery *_query;
     NSPredicate *_predicate;
-    unsigned long long _watchTypes;
-    NSString *_gatherPrefix;
-    NSMutableArray *_watchedAppLibraryFPItemIDs;
+    BRWatchingConfiguration *_config;
+    NSMutableSet *_watchedAppLibraryFPItemIDs;
     NSMutableSet *_waitingToBeGatheredCollections;
+    NSMutableSet *_collectionsSet;
+    NSMutableDictionary *_itemOwnersMap;
     _Bool _finishedInitialGathering;
+    NSMutableSet *_boostedAppLibraries;
+    NSMutableDictionary *_failureCountByItemID;
+    NSData *_perAppAccountIdentifier;
+    id <NSObject> _accountTokenDidChangeNotificationObserver;
+    unsigned long long _appLibrariesLookupAttempts;
+    _Bool _finishedLookingUpAppLibraries;
 }
 
 - (void).cxx_destruct;
 - (void)collection:(id)arg1 didUpdateItems:(id)arg2 replaceItemsByFormerID:(id)arg3 deleteItemsWithIDs:(id)arg4;
+- (void)collection:(id)arg1 didEncounterError:(id)arg2;
 - (void)collectionDidFinishGathering:(id)arg1;
+- (void)dataForCollectionShouldBeReloaded:(id)arg1 deleteItemsWithIDs:(id)arg2;
 - (void)dataForCollectionShouldBeReloaded:(id)arg1;
+- (_Bool)_isItemOwnedByAnyCollection:(id)arg1;
+- (unsigned long long)_itemID:(id)arg1 wasDeletedByCollection:(id)arg2;
+- (unsigned long long)_itemID:(id)arg1 becameOwnedByCollection:(id)arg2;
+- (void)_removeCollectionFromGatherSet:(id)arg1;
+- (_Bool)_signalDelegateIfNeededOnFinishGathering;
+- (void)_queueSignalDelegateIfNeededOnFinishGathering;
 - (void)enableUpdates;
 - (void)disableUpdates;
 - (void)invalidate;
 - (void)stop;
-- (void)_stopWatchingItemIDRecusively:(id)arg1;
+- (void)_stopObserving;
+- (void)_unboostApplibrariesIfNeeded;
+- (void)_stopWatchingItemIDRecusively:(id)arg1 itemIDsInItem:(id)arg2;
 - (void)_startWatchingNewSubItem:(id)arg1;
+- (void)_startWatchingRootItemWithConfig:(id)arg1;
 - (void)startWatchingRootItemWithScopes:(id)arg1;
-- (void)_startWatchingAppLibrariesIfNeeded:(id)arg1;
-- (void)_startWatchingURLsIfNeeded:(id)arg1;
-- (id)initWithDelegate:(id)arg1 query:(id)arg2;
-- (_Bool)_buildCollectionsOnItem:(id)arg1;
+- (void)_startWatchingAppLibraries:(id)arg1;
+- (void)_startWatchingURLs:(id)arg1;
+- (void)_boostAppLibraryOfItemIfNeeded:(id)arg1;
+- (id)_getAppLibraryURLFromConfig:(id)arg1;
+- (_Bool)_buildCollectionOnItemIfPossible:(id)arg1;
 - (_Bool)_canWatchItem:(id)arg1;
-- (void)_addItemCollectionOnObject:(id)arg1;
+- (void)_addItemCollectionOnItem:(id)arg1;
+- (void)_startObservingAccountTokenDidChangeNotification;
+- (void)_stopObservingAccountTokenDidChangeNotification;
+@property(readonly, copy) NSString *description;
+- (id)initWithDelegate:(id)arg1 query:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

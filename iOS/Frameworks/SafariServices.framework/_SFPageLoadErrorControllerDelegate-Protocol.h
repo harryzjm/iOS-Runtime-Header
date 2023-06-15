@@ -6,9 +6,10 @@
 
 #import <SafariServices/NSObject-Protocol.h>
 
-@class NSArray, NSString, NSURL, NSURLRequest, UIViewController, _SFPageLoadErrorController, _SFSecIdentityPreferencesController;
+@class NSURL, NSURLRequest, UIViewController, _SFPageLoadErrorController, _SFSecIdentityPreferencesController;
 
 @protocol _SFPageLoadErrorControllerDelegate <NSObject>
+- (void)pageLoadErrorControllerReloadWithoutPrivateRelay:(_SFPageLoadErrorController *)arg1;
 - (void)pageLoadErrorController:(_SFPageLoadErrorController *)arg1 allowLegacyTLSConnectionForURL:(NSURL *)arg2 navigateToURL:(NSURL *)arg3;
 - (_Bool)pageLoadErrorControllerIsInPreviewMode:(_SFPageLoadErrorController *)arg1;
 - (_Bool)pageLoadErrorControllerShouldReloadAfterError:(_SFPageLoadErrorController *)arg1;
@@ -16,7 +17,6 @@
 - (_Bool)pageLoadErrorControllerShouldPermanentlyAcceptCertificate:(_SFPageLoadErrorController *)arg1;
 - (void)pageLoadErrorController:(_SFPageLoadErrorController *)arg1 presentViewController:(UIViewController *)arg2;
 - (void)pageLoadErrorControllerClosePage:(_SFPageLoadErrorController *)arg1;
-- (void)pageLoadErrorController:(_SFPageLoadErrorController *)arg1 setAllowsSpecificHTTPSCertificate:(NSArray *)arg2 forHost:(NSString *)arg3;
 - (void)pageLoadErrorController:(_SFPageLoadErrorController *)arg1 loadFailedRequestAfterError:(NSURLRequest *)arg2;
 - (_Bool)pageLoadErrorControllerShouldHandleCertificateError:(_SFPageLoadErrorController *)arg1;
 

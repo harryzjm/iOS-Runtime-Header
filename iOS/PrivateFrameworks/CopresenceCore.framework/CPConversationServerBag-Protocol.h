@@ -9,26 +9,26 @@
 @class NSArray, NSString;
 
 @protocol CPConversationServerBag <NSObject>
+@property(readonly, nonatomic) NSArray *blockedActivitySessionBundleIdentifiers;
+@property(readonly, nonatomic) unsigned long long timeBetweenMacOSSharePlayNotificationsSeconds;
+@property(readonly, nonatomic) unsigned long long unreliableMessengerChannelStreamRetryIntervalMillis;
+@property(readonly, nonatomic) unsigned long long unreliableMessengerChannelStreamMaxTries;
+@property(readonly, nonatomic) unsigned long long unreliableMessengerChannelStreamMaxQueueSize;
+@property(readonly, nonatomic) unsigned long long unreliableMessengerEgressMessagePayloadMaxSizeBytes;
+@property(readonly, nonatomic) unsigned long long unreliableMessengerEstablishChannelRetryIntervalMillis;
+@property(readonly, nonatomic) unsigned long long unreliableMessengerEstablishChannelMaxAttempts;
+@property(readonly, nonatomic) unsigned long long qrPluginRpcStreamRetryIntervalMillis;
+@property(readonly, nonatomic) unsigned long long qrPluginMaxRpcStreamAttempts;
+@property(readonly, nonatomic) unsigned long long qrPluginConnectionRetryIntervalMillis;
+@property(readonly, nonatomic) unsigned long long qrPluginMaxConnectionAttempts;
+@property(readonly, nonatomic) unsigned long long backgroundAppPolicyHandleExpiryDays;
+@property(readonly, nonatomic) unsigned long long maxActiveParticipantFetchRetries;
+@property(readonly, nonatomic) unsigned long long activeParticipantRefreshDelay;
+@property(readonly, nonatomic) unsigned long long rebroadcastTimeThreshold;
+@property(readonly, nonatomic) unsigned long long AVCBlobRecoveryTimeout;
+@property(readonly, nonatomic) unsigned long long AVCBlobRecoveryGracePeriod;
+@property(readonly, nonatomic) unsigned long long sessionCleanupTimeout;
+@property(readonly, nonatomic) unsigned long long activeParticipantPruningTimeout;
 - (NSString *)stableBundleIdentifierForLocalBundleIdentifier:(NSString *)arg1;
-@property(nonatomic, readonly) NSArray *blockedActivitySessionBundleIdentifiers;
-@property(nonatomic, readonly) long long timeBetweenMacOSSharePlayNotificationsSeconds;
-@property(nonatomic, readonly) long long unreliableMessengerChannelStreamRetryIntervalMillis;
-@property(nonatomic, readonly) long long unreliableMessengerChannelStreamMaxTries;
-@property(nonatomic, readonly) long long unreliableMessengerChannelStreamMaxQueueSize;
-@property(nonatomic, readonly) long long unreliableMessengerEgressMessagePayloadMaxSizeBytes;
-@property(nonatomic, readonly) long long unreliableMessengerEstablishChannelRetryIntervalMillis;
-@property(nonatomic, readonly) long long unreliableMessengerEstablishChannelMaxAttempts;
-@property(nonatomic, readonly) long long qrPluginRpcStreamRetryIntervalMillis;
-@property(nonatomic, readonly) long long qrPluginMaxRpcStreamAttempts;
-@property(nonatomic, readonly) long long qrPluginConnectionRetryIntervalMillis;
-@property(nonatomic, readonly) long long qrPluginMaxConnectionAttempts;
-@property(nonatomic, readonly) long long backgroundAppPolicyHandleExpiryDays;
-@property(nonatomic, readonly) long long maxActiveParticipantFetchRetries;
-@property(nonatomic, readonly) long long activeParticipantRefreshDelay;
-@property(nonatomic, readonly) long long rebroadcastTimeThreshold;
-@property(nonatomic, readonly) long long AVCBlobRecoveryTimeout;
-@property(nonatomic, readonly) long long AVCBlobRecoveryGracePeriod;
-@property(nonatomic, readonly) long long sessionCleanupTimeout;
-@property(nonatomic, readonly) long long activeParticipantPruningTimeout;
 @end
 

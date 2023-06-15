@@ -8,5 +8,7 @@
 
 @interface SCNSkinner (AVTExtension)
 + (id)avt_skinnerByInterpolatingFromSkinner:(id)arg1 toSkinner:(id)arg2 factor:(float)arg3 skeleton:(id)arg4;
+- (void)avt_setSimdBaseGeometryBindTransform:(CDStruct_14d5dc5e)arg1;
+- (CDStruct_14d5dc5e)avt_simdBaseGeometryBindTransform;
 @end
 

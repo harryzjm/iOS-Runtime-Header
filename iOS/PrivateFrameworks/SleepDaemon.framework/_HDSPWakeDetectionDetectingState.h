@@ -14,8 +14,8 @@ __attribute__((visibility("hidden")))
 - (_Bool)_isActivityDateInDetectionWindow:(id)arg1 type:(unsigned long long)arg2;
 - (_Bool)isDetectingState;
 @property(readonly, nonatomic) unsigned long long activeTypes;
-- (void)didExitWithNextState:(id)arg1 context:(id)arg2;
-- (void)didEnterWithPreviousState:(id)arg1 context:(id)arg2;
+- (void)didExit;
+- (void)didEnter;
 
 @end
 

@@ -7,6 +7,13 @@
 #import <Foundation/NSError.h>
 
 @interface NSError (SafariSharedUIExtras)
+@property(readonly, nonatomic) _Bool safari_isRecoverableByPageFormatMenu;
+- (id)_errorMessageForFailureReason:(id)arg1 failingURLString:(id)arg2 providerName:(id)arg3 networkName:(id)arg4 isUsingEthernetNetwork:(_Bool)arg5;
+- (void)fetchLocalNetworkContentFilteringErrorMessageForFailingURLString:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (id)computeLocalNetworkContentFilteringErrorTitle;
+@property(readonly, nonatomic) _Bool safari_isLocalNetworkContentFilteringError;
+@property(readonly, nonatomic) _Bool safari_isPrivacyProxyFailClosedError;
 @property(readonly, nonatomic) _Bool safari_isPrivacyProxyError;
+@property(readonly, nonatomic) _Bool safari_isInWebKitLegacyErrorDomain;
 @end
 

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, SHCustomCatalogMatcher, SHMediaTimeline;
+@class NSString, NSUUID, SHCustomCatalogMatcher, SHMediaTimeline;
 @protocol SHMatcherDelegate;
 
 __attribute__((visibility("hidden")))
@@ -15,9 +15,11 @@ __attribute__((visibility("hidden")))
     id <SHMatcherDelegate> _delegate;
     SHMediaTimeline *_contextTimeline;
     SHCustomCatalogMatcher *_customCatalogMatcher;
+    NSUUID *_timelineRequestID;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSUUID *timelineRequestID; // @synthesize timelineRequestID=_timelineRequestID;
 @property(retain, nonatomic) SHCustomCatalogMatcher *customCatalogMatcher; // @synthesize customCatalogMatcher=_customCatalogMatcher;
 @property(retain, nonatomic) SHMediaTimeline *contextTimeline; // @synthesize contextTimeline=_contextTimeline;
 @property(nonatomic) __weak id <SHMatcherDelegate> delegate; // @synthesize delegate=_delegate;
@@ -25,7 +27,8 @@ __attribute__((visibility("hidden")))
 - (void)callDelegateWithSyntheticMatchForResponse:(id)arg1;
 - (void)matcher:(id)arg1 didProduceResponse:(id)arg2;
 - (void)mediaTimeline:(id)arg1 hasUpdatedInScopeMediaItems:(id)arg2;
-- (void)stop;
+- (void)stopRecognition;
+- (void)stopRecognitionForRequestID:(id)arg1;
 - (void)startRecognitionForRequest:(id)arg1;
 - (id)initWithCustomCatalog:(id)arg1;
 - (void)dealloc;

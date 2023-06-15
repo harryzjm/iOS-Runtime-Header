@@ -96,6 +96,13 @@ struct PUGridCoordinates {
     long long column;
 };
 
+struct PUPhotoEditTitledNotchButtonMetrics {
+    double _field1;
+    double _field2;
+    double _field3;
+    double _field4;
+};
+
 struct PXAssetBadgeInfo {
     unsigned long long badges;
     double duration;
@@ -183,16 +190,31 @@ typedef struct {
 } CDStruct_cd98a358;
 
 typedef struct {
-    _Bool contentViewController;
-    _Bool loadedContentViewController;
-    _Bool contentViewMetrics;
-    _Bool contentBounds;
-    _Bool masterContentOffset;
-} CDStruct_516723a0;
+    _Bool _field1;
+    _Bool _field2;
+    _Bool _field3;
+    _Bool _field4;
+    _Bool _field5;
+    _Bool _field6;
+    long long _field7;
+} CDStruct_5a73b017;
 
 typedef struct {
     MISSING_TYPE *_field1[3];
 } CDStruct_d80e62f2;
+
+typedef struct {
+    double _field1;
+    double _field2;
+    double _field3;
+} CDStruct_39925896;
+
+typedef struct {
+    float _field1;
+    float _field2;
+    float _field3;
+    float _field4;
+} CDStruct_818bb265;
 
 typedef struct {
     long long privateInteger;
@@ -207,7 +229,80 @@ typedef struct {
 } CDStruct_1b6d18a9;
 
 typedef struct {
+    CDStruct_39925896 _field1;
+    CDStruct_39925896 _field2;
+    CDStruct_39925896 _field3;
+    CDStruct_39925896 _field4;
+} CDStruct_3ea48505;
+
+typedef struct {
     CDStruct_1b6d18a9 _field1;
     CDStruct_1b6d18a9 _field2;
 } CDStruct_5c5366e1;
+
+typedef struct {
+    struct CGAffineTransform _field1;
+} CDStruct_bf623e56;
+
+typedef struct {
+    long long _field1;
+    long long _field2;
+    struct CGSize _field3;
+    unsigned long long _field4;
+    struct {
+        CDStruct_1b6d18a9 _field1;
+        CDStruct_1b6d18a9 _field2;
+        CDStruct_1b6d18a9 _field3;
+        struct {
+            CDStruct_1b6d18a9 _field1;
+            long long _field2;
+        } _field4;
+        char _field5;
+    } _field5;
+    long long _field6;
+    struct {
+        struct CGSize _field1;
+        struct CGRect _field2;
+        struct CGRect _field3;
+        struct CGRect _field4;
+        struct CGRect _field5;
+    } _field7;
+    struct UIEdgeInsets _field8;
+    struct {
+        CDStruct_3ea48505 _field1;
+        CDStruct_3ea48505 _field2;
+        CDStruct_1b6d18a9 _field3;
+    } _field9;
+    struct {
+        CDStruct_bf623e56 _field1;
+        CDStruct_bf623e56 _field2;
+        CDStruct_1b6d18a9 _field3;
+    } _field10;
+    struct {
+        char _field1;
+        unsigned char _field2;
+        CDStruct_1b6d18a9 _field3;
+        char _field4;
+        union {
+            char _field1;
+            char _field2;
+            char _field3;
+            char _field4;
+        } _field5;
+        union {
+            double _field1;
+            double _field2;
+            char _field3;
+        } _field6;
+    } _field11;
+    struct {
+        long long _field1;
+        long long _field2;
+        float _field3;
+        double _field4;
+        double _field5;
+        double _field6;
+        double _field7;
+    } _field12;
+} CDStruct_7f86bb89;
 

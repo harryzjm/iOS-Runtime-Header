@@ -11,23 +11,32 @@
 @interface _TtC6Charts10ChartModel : _TtCs12_SwiftObject
 {
     MISSING_TYPE *currentPartialSpec;
-    MISSING_TYPE *textMeasurements;
-    MISSING_TYPE *graph;
-    MISSING_TYPE *persistentComponents;
-    MISSING_TYPE *signals;
-    MISSING_TYPE *plotWidthSignal;
-    MISSING_TYPE *plotHeightSignal;
+    MISSING_TYPE *measurements;
+    MISSING_TYPE *idContext;
+    MISSING_TYPE *updateSignals;
+    MISSING_TYPE *runNode;
+    MISSING_TYPE *plotAreaSizeSignal;
+    MISSING_TYPE *viewportSizeSignal;
+    MISSING_TYPE *coordinateSystemSignal;
+    MISSING_TYPE *isCanvasAccelerated;
     MISSING_TYPE *environmentSignals;
-    MISSING_TYPE *textMeasurementsSignal;
+    MISSING_TYPE *measurementsSignal;
     MISSING_TYPE *paddingSignal;
+    MISSING_TYPE *safeMarginSignal;
     MISSING_TYPE *xScaleSignal;
     MISSING_TYPE *yScaleSignal;
-    MISSING_TYPE *scenegraphSignal;
-    MISSING_TYPE *safeMargin;
+    MISSING_TYPE *foregroundStyleScaleSignal;
+    MISSING_TYPE *symbolScaleSignal;
+    MISSING_TYPE *symbolSizeScaleSignal;
+    MISSING_TYPE *lineStyleScaleSignal;
+    MISSING_TYPE *scaleAdjustments;
+    MISSING_TYPE *plotAreaContentsSignal;
+    MISSING_TYPE *xAxisSignal;
+    MISSING_TYPE *yAxisSignal;
+    MISSING_TYPE *selectionSignal;
     MISSING_TYPE *accessibilityElementsSignal;
     MISSING_TYPE *accessibilityAudioGraphSignal;
     MISSING_TYPE *legendContextSignal;
-    MISSING_TYPE *chartProxy;
 }
 
 @end

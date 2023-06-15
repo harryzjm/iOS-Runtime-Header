@@ -6,11 +6,13 @@
 
 #import <CoreParsec/NSObject-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString, _CPSearchResultForFeedback;
+@class NSArray, NSData, NSDictionary, NSString, _CPButtonForFeedback, _CPSearchResultForFeedback;
 
 @protocol _CPResultSectionForFeedback <NSObject>
 @property(readonly, nonatomic) unsigned long long whichBundleid;
 @property(readonly, nonatomic) NSData *jsonData;
+@property(retain, nonatomic) _CPButtonForFeedback *titleButtonItem;
+@property(nonatomic) unsigned int totalAvailableResults;
 @property(nonatomic) _Bool isInitiallyHidden;
 @property(nonatomic) int knownBundleIdentifier;
 @property(copy, nonatomic) NSString *bundleIdentifier;

@@ -26,17 +26,11 @@ __attribute__((visibility("hidden")))
 }
 
 @property(retain, nonatomic) VCRateControlServerBag *serverBag; // @synthesize serverBag=_serverBag;
-@property(nonatomic) _Bool fastSuddenBandwidthDetectionEnabled; // @synthesize fastSuddenBandwidthDetectionEnabled=_fastSuddenBandwidthDetectionEnabled;
-@property(nonatomic) double estimatedBandwidthUncapped; // @synthesize estimatedBandwidthUncapped=_estimatedBandwidthUncapped;
 @property(nonatomic) unsigned int mode; // @synthesize mode=_mode;
 @property(nonatomic) unsigned int radioAccessTechnology; // @synthesize radioAccessTechnology=_radioAccessTechnology;
-- (void)enableBWELogDump:(void *)arg1;
 @property(readonly, nonatomic) int bandwidthEstimationState;
-@property(nonatomic) double estimatedBandwidth; // @synthesize estimatedBandwidth=_estimatedBandwidth;
-- (double)estimatedBandwidthUncappedWithArrivalTime:(double)arg1;
-- (double)estimatedBandwidthWithArrivalTime:(double)arg1;
-- (void)deregisterBandwidthEstimatorWithID:(unsigned int)arg1;
-- (id)bandwidthEstimatorWithID:(unsigned int)arg1 isProbingSequence:(_Bool)arg2 isEndOfProbingSequence:(_Bool)arg3;
+@property(nonatomic) double estimatedBandwidth;
+@property(nonatomic) double estimatedBandwidthUncapped;
 - (void)dealloc;
 - (id)init;
 

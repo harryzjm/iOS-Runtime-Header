@@ -27,6 +27,7 @@
     NSUndoManager *_textViewUndoManager;
 }
 
++ (id)textContentTypeFromCRFormContentType:(unsigned long long)arg1;
 - (void).cxx_destruct;
 @property _Bool isInAdjustAnnotationFrameToFitText; // @synthesize isInAdjustAnnotationFrameToFitText=_isInAdjustAnnotationFrameToFitText;
 @property _Bool isInEndEditing; // @synthesize isInEndEditing=_isInEndEditing;

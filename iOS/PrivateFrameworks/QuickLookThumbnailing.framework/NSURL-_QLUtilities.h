@@ -10,10 +10,12 @@
 + (id)_QLCreateTemporaryReplacementURLForOriginalFileAtURL:(id)arg1 withExtension:(id)arg2 temporaryDirectoryURL:(id *)arg3;
 + (id)_QLTemporaryURLWithExtension:(id)arg1 openingFileHandle:(int *)arg2 inDirectoryAtURL:(id)arg3;
 - (id)ql_realpathURL;
+- (id)_qlFastRealpathURL;
 - (id)_QLIssueFileExtensionWithSandboxType:(const char *)arg1;
 - (id)_QLUrlFileSize;
 - (id)_QLFileSize;
 - (_Bool)_QLNeedsDownload;
+- (_Bool)_QLIsDataLess;
 - (_Bool)_QLNeedsCoordination;
 @end
 

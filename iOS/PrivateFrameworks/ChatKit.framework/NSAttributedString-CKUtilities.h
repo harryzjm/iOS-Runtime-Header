@@ -8,5 +8,8 @@
 
 @interface NSAttributedString (CKUtilities)
 - (_Bool)containsAttribute:(id)arg1;
+- (void)ck_enumerateAllMentionAnimationIdentifiersUsingBlock:(CDUnknownBlockType)arg1;
+- (void)ck_textKit2_enumerateAllAutomaticConfirmedMentionsUsingBlock:(CDUnknownBlockType)arg1;
+- (void)ck_textKit1_enumerateAllAutomaticConfirmedMentionsUsingBlock:(CDUnknownBlockType)arg1;
 @end
 

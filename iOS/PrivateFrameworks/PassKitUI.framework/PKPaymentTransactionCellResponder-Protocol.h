@@ -9,6 +9,7 @@
 @class NSString, PKPaymentTransactionView;
 
 @protocol PKPaymentTransactionCellResponder <NSObject>
+@property(nonatomic, getter=isDeletable) _Bool deletable;
 @property(readonly, nonatomic) PKPaymentTransactionView *transactionView;
 @property(copy, nonatomic) NSString *identifier;
 @end

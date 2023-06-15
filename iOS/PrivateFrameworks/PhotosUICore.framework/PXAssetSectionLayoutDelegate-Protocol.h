@@ -9,6 +9,7 @@
 @class PXAssetsSectionLayout;
 
 @protocol PXAssetSectionLayoutDelegate <NSObject>
+- (void)assetSectionLayoutDidUpdateVisibleRectOvershootFactor:(PXAssetsSectionLayout *)arg1;
 - (void)assetSectionLayoutDidConfigureLayouts:(PXAssetsSectionLayout *)arg1;
 @end
 

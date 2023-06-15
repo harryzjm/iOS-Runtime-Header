@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UILabel.h>
+#import <UIKitCore/UILabel.h>
 
 @interface UILabel (PKUIUtilities)
 - (struct CGSize)pkui_sizeThatFits:(struct CGSize)arg1 forceWordWrap:(_Bool)arg2;

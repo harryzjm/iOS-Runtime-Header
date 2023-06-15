@@ -6,11 +6,13 @@
 
 #import <PencilKit/PKToolPickerObserver-Protocol.h>
 
-@class PKToolPicker, UIColor;
+@class PKToolPicker, UIColor, UIView;
 
 @protocol PKToolPickerObserverPrivate <PKToolPickerObserver>
 
 @optional
+- (void)_toolPickerDidInvokeDoneAction:(PKToolPicker *)arg1;
+- (void)_toolPicker:(PKToolPicker *)arg1 startEditingOpacityWithAccessoryView:(UIView *)arg2;
 - (void)_toolPickerVisibilityDidChange:(PKToolPicker *)arg1 isAnimationFinished:(_Bool)arg2;
 - (void)_toolPickerDidChangeScaleFactor:(PKToolPicker *)arg1;
 - (void)_toolPickerDidChangePosition:(PKToolPicker *)arg1 fromPosition:(long long)arg2 toPosition:(long long)arg3;

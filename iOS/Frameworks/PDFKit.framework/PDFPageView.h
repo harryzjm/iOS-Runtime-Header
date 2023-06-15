@@ -24,6 +24,9 @@ __attribute__((visibility("hidden")))
 - (void)setStringValue:(id)arg1 onTextWidgetAnnotation:(id)arg2 withTextView:(id)arg3;
 - (_Bool)_shouldReplaceStringOnAnnotation:(id)arg1 withTextView:(id)arg2;
 - (void)_setAttributedStringForAnnotation:(id)arg1 stringValue:(id)arg2 textView:(id)arg3;
+- (void)setStringValue:(id)arg1 onTextAnnotation:(id)arg2;
+- (void)setStringValue:(id)arg1 onTextWidgetAnnotation:(id)arg2;
+- (_Bool)shouldRegisterUndo;
 - (_Bool)_allowsFormFieldEntry;
 - (void)_formChanged:(id)arg1;
 - (long long)numberOfComponentsInPickerView:(id)arg1;
@@ -50,6 +53,7 @@ __attribute__((visibility("hidden")))
 - (void)_setupBookmarkLayer;
 - (void)setHidden:(_Bool)arg1;
 - (void)setFrame:(struct CGRect)arg1;
+- (void)populateFormFieldsWithAutoFillSuggestion:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)markupAnnotationsForIndexSet:(id)arg1;
 - (void)addMarkupWithStyle:(unsigned long long)arg1 forIndexSet:(id)arg2;
 - (void)removeControlForAnnotation:(id)arg1;

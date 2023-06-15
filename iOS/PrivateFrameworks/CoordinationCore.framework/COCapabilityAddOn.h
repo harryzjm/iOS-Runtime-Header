@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (void)_setAvailableCapabilities_Unsafe:(id)arg1;
 - (void)_withLock:(CDUnknownBlockType)arg1;
 - (void)_notifyDelegateCapabilitiesChanged;
+- (id)availableCapabilitiesForNode:(id)arg1;
 @property(nonatomic) __weak id <COCapabilityAddOnDelegate> delegate; // @synthesize delegate=_delegate;
 @property(copy, nonatomic) NSDictionary *gatheredCapabilities; // @synthesize gatheredCapabilities=_gatheredCapabilities;
 @property(copy, nonatomic) NSSet *availableCapabilities; // @synthesize availableCapabilities=_availableCapabilities;

@@ -7,6 +7,8 @@
 @class NSDictionary, NSMutableArray, NSString, TCTagger;
 
 @protocol TCPostEditing
+- (void)resetModels;
+- (void)loadModelsInBackground:(_Bool)arg1;
 - (void)checkString:(NSString *)arg1 range:(struct _NSRange)arg2 tagger:(TCTagger *)arg3 offset:(unsigned long long)arg4 options:(NSDictionary *)arg5 mutableResults:(NSMutableArray *)arg6;
 - (id)initWithOptions:(NSDictionary *)arg1;
 @end

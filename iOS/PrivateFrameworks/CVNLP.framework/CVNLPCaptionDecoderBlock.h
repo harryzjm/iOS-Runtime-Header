@@ -17,9 +17,9 @@
     NSString *_metricString;
     NSString *_metricCopyString;
     CDStruct_2bc666a5 _decoderNet;
-    map_b0fe4ef5 _stateOutputEspressoBuffers;
-    map_b0fe4ef5 _stateInputEspressoBuffers;
-    map_5c6edff9 _stateInputEspressoBuffersShape;
+    map_33c06f8b _stateOutputEspressoBuffers;
+    map_33c06f8b _stateInputEspressoBuffers;
+    map_0c0ea2fa _stateInputEspressoBuffersShape;
     vector_bfe5b09a _decoderInputNames;
     CDStruct_0a65202a _attFeatsPlaceholderBlob;
     CDStruct_0a65202a _scaleInput;
@@ -36,9 +36,9 @@
 @property(retain, nonatomic) NSString *metricString; // @synthesize metricString=_metricString;
 @property(retain, nonatomic) CVNLPCaptionDecoderBlock *nextBlock; // @synthesize nextBlock=_nextBlock;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *decoderQueue; // @synthesize decoderQueue=_decoderQueue;
-@property(nonatomic) map_5c6edff9 stateInputEspressoBuffersShape; // @synthesize stateInputEspressoBuffersShape=_stateInputEspressoBuffersShape;
-@property(nonatomic) map_b0fe4ef5 stateInputEspressoBuffers; // @synthesize stateInputEspressoBuffers=_stateInputEspressoBuffers;
-@property(nonatomic) map_b0fe4ef5 stateOutputEspressoBuffers; // @synthesize stateOutputEspressoBuffers=_stateOutputEspressoBuffers;
+@property(nonatomic) map_0c0ea2fa stateInputEspressoBuffersShape; // @synthesize stateInputEspressoBuffersShape=_stateInputEspressoBuffersShape;
+@property(nonatomic) map_33c06f8b stateInputEspressoBuffers; // @synthesize stateInputEspressoBuffers=_stateInputEspressoBuffers;
+@property(nonatomic) map_33c06f8b stateOutputEspressoBuffers; // @synthesize stateOutputEspressoBuffers=_stateOutputEspressoBuffers;
 @property(nonatomic) CDStruct_0a65202a blockOutput; // @synthesize blockOutput=_blockOutput;
 @property(nonatomic) CDStruct_0a65202a blockInput; // @synthesize blockInput=_blockInput;
 @property(nonatomic) CDStruct_0a65202a maskInput; // @synthesize maskInput=_maskInput;

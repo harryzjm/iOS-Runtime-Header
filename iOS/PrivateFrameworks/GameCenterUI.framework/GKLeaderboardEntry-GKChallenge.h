@@ -7,6 +7,7 @@
 #import <GameCenterFoundation/GKLeaderboardEntry.h>
 
 @interface GKLeaderboardEntry (GKChallenge)
+- (id)challengeComposeControllerWithMessage:(id)arg1 players:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)challengeComposeControllerWithMessage:(id)arg1 players:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 @end
 

@@ -4,13 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIColor.h>
+#import <UIKitCore/UIColor.h>
 
 @class NSString;
 
 @interface UIColor (PKAccessibility)
 + (id)pkaxHueNameForValue:(double)arg1;
-+ (double)pk_rgbDistanceFromColor:(id)arg1 toColor:(id)arg2;
 + (id)pk_randomColor;
 + (id)pk_convertColorPickerColor:(id)arg1 fromUserInterfaceStyle:(long long)arg2 to:(long long)arg3;
 + (id)pk_textInputReserveSpaceColor;
@@ -26,8 +25,11 @@
 + (id)pk_toolDockMaskColor;
 + (id)pk_crosshairViewShadowColor;
 + (id)pk_crosshairViewBorderColor;
++ (id)pk_thicknessButtonWhiteUseSystemColor:(_Bool)arg1;
 + (id)pk_thicknessButtonWhite;
++ (id)pk_thicknessButtonBlackUseSystemColor:(_Bool)arg1;
 + (id)pk_thicknessButtonBlack;
++ (id)pk_thicknessButtonLightGrayUseSystemColor:(_Bool)arg1;
 + (id)pk_thicknessButtonLightGray;
 + (id)pk_selectedPickerButtonMaskColor;
 + (id)pk_selectedPickerButtonBackgroundColor;
@@ -51,7 +53,5 @@
 - (double)pkaxSaturation;
 - (double)pkaxHue;
 @property(retain, nonatomic, setter=_pkaxSetCachedApproximateColorDescription:) NSString *_pkaxCachedApproximateColorDescription;
-- (_Bool)pk_isColorBlack;
-- (_Bool)pk_isColorWhite;
 @end
 

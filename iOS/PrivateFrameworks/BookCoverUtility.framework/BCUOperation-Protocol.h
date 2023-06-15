@@ -6,7 +6,10 @@
 
 #import <BookCoverUtility/NSObject-Protocol.h>
 
+@class NSString;
+
 @protocol BCUOperation <NSObject>
+@property(readonly, nonatomic) NSString *logKey;
 @property(nonatomic) float priority;
 - (void)cancel;
 - (void)start;

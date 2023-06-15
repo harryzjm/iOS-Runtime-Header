@@ -13,6 +13,7 @@
     MISSING_TYPE *encodedValues;
     MISSING_TYPE *locations;
     MISSING_TYPE *encodedValueCount;
+    MISSING_TYPE *associatedHost;
 }
 
 @end

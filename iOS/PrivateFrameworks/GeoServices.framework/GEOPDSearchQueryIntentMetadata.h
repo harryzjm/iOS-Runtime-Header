@@ -6,7 +6,7 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-@class GEOPDSearchACHintMetadata, GEOPDSearchQueryCompletionMetadata, GEOPDSearchQueryDirectionsIntentMetadata, GEOPDSearchQueryDymMetadata, GEOPDSearchQueryFuzzyMatchV2Metadata, GEOPDSearchQueryGeoMetadata, GEOPDSearchQueryGeoNormalizerMetadata, GEOPDSearchQueryGeoTagMetadata, GEOPDSearchQueryInterpretationMetadata, GEOPDSearchQueryNormalizerMetadata, GEOPDSearchQueryPoiMetadata, GEOPDSearchQuerySpellCorrectionMetadata, GEOPDSearchQuerySynonymMetadata, GEOPDSearchQueryTagMetadata, GEOPDSearchQueryTokenImportanceMetadata, GEOPDSearchQueryTokenizerMetadata, GEOPDSearchQueryTransliteratorMetadata, GEOPDSearchRichBrandMetadata, NSMutableArray, NSString, PBDataReader;
+@class GEOPDSearchACHintMetadata, GEOPDSearchQueryCompletionMetadata, GEOPDSearchQueryDirectionsIntentMetadata, GEOPDSearchQueryDymMetadata, GEOPDSearchQueryFuzzyMatchV2Metadata, GEOPDSearchQueryGeoMetadata, GEOPDSearchQueryGeoNormalizerMetadata, GEOPDSearchQueryGeoTagMetadata, GEOPDSearchQueryInterpretationMetadata, GEOPDSearchQueryNeuralRewriteMetadata, GEOPDSearchQueryNormalizerMetadata, GEOPDSearchQueryPoiMetadata, GEOPDSearchQuerySpellCorrectionMetadata, GEOPDSearchQuerySynonymMetadata, GEOPDSearchQueryTagMetadata, GEOPDSearchQueryTokenImportanceMetadata, GEOPDSearchQueryTokenizerMetadata, GEOPDSearchQueryTransliteratorMetadata, GEOPDSearchRichBrandMetadata, GEOPDSearchTokenSynonymMetadata, NSMutableArray, NSString, PBDataReader;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDSearchQueryIntentMetadata : PBCodable
@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
     GEOPDSearchQueryGeoTagMetadata *_queryGeoTagMetadata;
     double _queryIntentWeight;
     GEOPDSearchQueryInterpretationMetadata *_queryInterpretationMetadata;
+    GEOPDSearchQueryNeuralRewriteMetadata *_queryNeuralRewriteMetadata;
     GEOPDSearchQueryNormalizerMetadata *_queryNormalizerMetadata;
     GEOPDSearchQueryPoiMetadata *_queryPoiMetadata;
     GEOPDSearchQuerySpellCorrectionMetadata *_querySpellCorrectionMetadata;
@@ -39,6 +40,7 @@ __attribute__((visibility("hidden")))
     GEOPDSearchQueryTokenizerMetadata *_rawQueryTokenizerMetadata;
     NSString *_rewrittenQuery;
     GEOPDSearchRichBrandMetadata *_richBrandMetadata;
+    GEOPDSearchTokenSynonymMetadata *_tokenSynonymMetadata;
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
@@ -67,6 +69,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_queryGeoNormalizerMetadata:1;
         unsigned int read_queryGeoTagMetadata:1;
         unsigned int read_queryInterpretationMetadata:1;
+        unsigned int read_queryNeuralRewriteMetadata:1;
         unsigned int read_queryNormalizerMetadata:1;
         unsigned int read_queryPoiMetadata:1;
         unsigned int read_querySpellCorrectionMetadata:1;
@@ -78,6 +81,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_rawQueryTokenizerMetadata:1;
         unsigned int read_rewrittenQuery:1;
         unsigned int read_richBrandMetadata:1;
+        unsigned int read_tokenSynonymMetadata:1;
         unsigned int wrote_anyField:1;
     } _flags;
 }

@@ -10,6 +10,7 @@
 
 @protocol _SFPBFlight <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
+@property(copy, nonatomic) NSString *carrierWebsite;
 @property(copy, nonatomic) NSString *carrierPhoneNumber;
 @property(copy, nonatomic) NSString *operatorFlightNumber;
 @property(copy, nonatomic) NSString *operatorCarrierCode;

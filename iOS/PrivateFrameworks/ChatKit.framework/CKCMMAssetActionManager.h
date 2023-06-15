@@ -11,14 +11,16 @@
 __attribute__((visibility("hidden")))
 @interface CKCMMAssetActionManager : PXPhotoKitAssetActionManager
 {
+    _Bool _presentedFromInlineReply;
     CKMediaObjectAssetActionManager *_messagesAssetActionManager;
     id _photosAssetActionManager;
     PXCMMSession *_session;
 }
 
-+ (id)assetActionManagerWithCMMSession:(id)arg1 chatItem:(id)arg2 chatActionHelper:(id)arg3 performerDelegate:(id)arg4;
++ (id)assetActionManagerWithCMMSession:(id)arg1 chatItem:(id)arg2 presentedFromInlineReply:(_Bool)arg3 chatActionHelper:(id)arg4 performerDelegate:(id)arg5;
 - (void).cxx_destruct;
 @property(retain, nonatomic) PXCMMSession *session; // @synthesize session=_session;
+@property(nonatomic) _Bool presentedFromInlineReply; // @synthesize presentedFromInlineReply=_presentedFromInlineReply;
 @property(retain, nonatomic) id photosAssetActionManager; // @synthesize photosAssetActionManager=_photosAssetActionManager;
 @property(retain, nonatomic) CKMediaObjectAssetActionManager *messagesAssetActionManager; // @synthesize messagesAssetActionManager=_messagesAssetActionManager;
 - (void)_propagateObjectReference:(id)arg1;

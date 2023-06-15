@@ -11,5 +11,6 @@
 - (CDStruct_1b6d18a9)_avkit_findTimeForFrameUsingFrameRateSteppedByFrameCount:(long long)arg1 fromFrameAtTime:(CDStruct_1b6d18a9)arg2;
 - (CDStruct_1b6d18a9)_avkit_timeForFrameUsingSampleCursorSteppedByFrameCount:(long long)arg1 fromFrameAtTime:(CDStruct_1b6d18a9)arg2;
 - (CDStruct_1b6d18a9)avkit_timeForFrameSteppedByFrameCount:(long long)arg1 fromFrameAtTime:(CDStruct_1b6d18a9)arg2;
+- (id)avkit_associatedTracksOfType:(id)arg1;
 @end
 

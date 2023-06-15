@@ -5,13 +5,17 @@
 //
 
 #import <SpringBoard/BSInvalidatable-Protocol.h>
-#import <SpringBoard/SBPIPPositionHyperregionProviding-Protocol.h>
 
-@class NSDictionary;
+@class NSArray, NSDictionary;
 @protocol SBPIPPositionHyperregionComposerDelegate;
 
-@protocol SBPIPPositionHyperregionComposing <SBPIPPositionHyperregionProviding, BSInvalidatable>
+@protocol SBPIPPositionHyperregionComposing <BSInvalidatable>
 @property(nonatomic) __weak id <SBPIPPositionHyperregionComposerDelegate> delegate;
+- (unsigned long long)canonicalPositionForPoint:(struct CGPoint)arg1 proposedPosition:(unsigned long long)arg2 geometry:(struct SBPIPPositionGeometryContext)arg3 interaction:(struct SBPIPPositionInteractionStateContext)arg4;
+- (struct CGPoint)defaultCornerPositionForLayoutSettingsPosition:(unsigned long long)arg1 proposedCenter:(struct CGPoint)arg2 geometry:(struct SBPIPPositionGeometryContext)arg3 interaction:(struct SBPIPPositionInteractionStateContext)arg4;
 - (NSDictionary *)positionRegionsForRegions:(NSDictionary *)arg1 geometry:(struct SBPIPPositionGeometryContext)arg2 interaction:(struct SBPIPPositionInteractionStateContext)arg3;
+
+@optional
+@property(copy, nonatomic) NSArray *connectedWindowScenes;
 @end
 

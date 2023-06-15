@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class GEOMapDataSubscription, GEOMapDataSubscriptionTileDownloader, GEOResourceManifestManager, GEOTileDB, NSError, NSProgress, NSString;
+@class GEOMapDataSubscription, GEOMapDataSubscriptionOfflineDownloader, GEOMapDataSubscriptionTileDownloader, GEOPowerAssertion, GEOResourceManifestManager, GEOTileDB, NSError, NSProgress, NSString;
 @protocol GEOMapDataSubscriptionDownloaderDelegate, OS_dispatch_queue, OS_os_log;
 
 __attribute__((visibility("hidden")))
@@ -16,12 +16,15 @@ __attribute__((visibility("hidden")))
     id <GEOMapDataSubscriptionDownloaderDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_delegateQueue;
     NSProgress *_progress;
+    GEOPowerAssertion *_powerAssertion;
     NSObject<OS_os_log> *_log;
     NSString *_logPrefix;
     GEOMapDataSubscription *_subscription;
     GEOTileDB *_diskCache;
     GEOResourceManifestManager *_manifestManager;
     GEOMapDataSubscriptionTileDownloader *_tileDownloader;
+    GEOMapDataSubscriptionOfflineDownloader *_offlineDownloader;
+    long long _updateType;
     NSError *_firstError;
     struct GEOOnce_s _finished;
     _Bool _paused;
@@ -31,6 +34,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(readonly, nonatomic) GEOMapDataSubscription *subscription; // @synthesize subscription=_subscription;
 @property(readonly, nonatomic) __weak id <GEOMapDataSubscriptionDownloaderDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)offlineDownloader:(id)arg1 willUseDataVersions:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)offlineDownloader:(id)arg1 didFinishWithError:(id)arg2;
 - (void)batchTileRequesterDidFinish:(id)arg1;
 - (void)batchTileRequester:(id)arg1 failedToLoadKey:(struct _GEOTileKey)arg2 error:(id)arg3;
 - (void)batchTileRequester:(id)arg1 receivedData:(id)arg2 tileEdition:(unsigned int)arg3 tileSet:(CDUnion_20bcf645)arg4 etag:(id)arg5 forKey:(struct _GEOTileKey)arg6 userInfo:(id)arg7;
@@ -44,7 +49,7 @@ __attribute__((visibility("hidden")))
 - (void)pause;
 - (void)resume;
 @property(readonly) NSProgress *progress;
-- (id)initWithSubscription:(id)arg1 diskCache:(id)arg2 delegate:(id)arg3 delegateQueue:(id)arg4 reason:(unsigned char)arg5 requestOptions:(unsigned long long)arg6 manifestManager:(id)arg7 log:(id)arg8 logPrefix:(id)arg9 tileRequesterCreationBlock:(CDUnknownBlockType)arg10 tileDownloader:(id)arg11;
+- (id)initWithSubscription:(id)arg1 diskCache:(id)arg2 delegate:(id)arg3 delegateQueue:(id)arg4 reason:(unsigned char)arg5 requestOptions:(unsigned long long)arg6 manifestManager:(id)arg7 log:(id)arg8 logPrefix:(id)arg9 tileRequesterCreationBlock:(CDUnknownBlockType)arg10 tileDownloader:(id)arg11 offlineDownloader:(id)arg12 updateType:(long long)arg13;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

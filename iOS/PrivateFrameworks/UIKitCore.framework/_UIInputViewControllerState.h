@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 @class NSUUID, TIDocumentState, TITextInputTraits, UITextInputMode;
 
 __attribute__((visibility("hidden")))
-@interface _UIInputViewControllerState : NSObject <NSCopying>
+@interface _UIInputViewControllerState : NSObject
 {
     _Bool _needsInputModeSwitchKey;
     TIDocumentState *_documentState;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/_UIRemoteViewController.h>
+#import <UIKitCore/_UIRemoteViewController.h>
 
 @class QLPreviewCollectionHostContext, UIView;
 @protocol QLPreviewControllerStateProtocolHostOnly;
@@ -38,7 +38,6 @@ __attribute__((visibility("hidden")))
 - (void)hostViewControlerTransitionToState:(unsigned long long)arg1 animated:(_Bool)arg2;
 - (void)overrideParentApplicationDisplayIdentifierWithIdentifier:(id)arg1;
 - (void)setLoadingString:(id)arg1;
-- (void)getCurrentPreviewActivityUserInfoWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)notifyStateRestorationUserInfo:(id)arg1;
 - (void)notifyFirstTimeAppearanceWithActions:(unsigned long long)arg1;
 - (void)setAppearance:(id)arg1 animated:(_Bool)arg2;

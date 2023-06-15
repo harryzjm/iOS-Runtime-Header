@@ -6,22 +6,23 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSMutableArray, NSString, NSURL, SNRecordOperator;
+@class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
 @interface SNUltronReportOperator : NSObject
 {
-    SNRecordOperator *_recordOperator;
-    NSURL *_destinationDirectory;
-    NSDate *_date;
-    NSString *_requestDescription;
-    NSString *_buildVersion;
-    NSMutableArray *_detectionResults;
+    MISSING_TYPE *recordOperator;
+    MISSING_TYPE *destinationDirectory;
+    MISSING_TYPE *date;
+    MISSING_TYPE *requestDescription;
+    MISSING_TYPE *buildVersion;
+    MISSING_TYPE *detectionResults;
 }
 
 - (void).cxx_destruct;
 - (void)processTerminationWithOptionalError:(id)arg1 portID:(id)arg2 downstreamHandler:(CDUnknownBlockType)arg3;
 - (void)processInput:(id)arg1 portID:(id)arg2 downstreamHandler:(CDUnknownBlockType)arg3;
+- (id)initWithDestinationDirectory:(id)arg1 date:(id)arg2 requestDescription:(id)arg3 buildVersion:(id)arg4 format:(id)arg5 error:(id *)arg6;
 - (id)init;
 
 @end

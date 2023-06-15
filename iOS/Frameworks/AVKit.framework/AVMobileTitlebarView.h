@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class AVButton, AVMobileChromelessControlsStyleSheet, AVMobileContentTag, CAGradientLayer, NSString, UILabel, UIView;
+@class AVButton, AVMobileChromelessControlsStyleSheet, AVMobileContentTag, AVMobileContentTagView, CAGradientLayer, NSAttributedString, NSMutableAttributedString, UILabel, UIView;
 @protocol AVMobileTitlebarViewDelegate;
 
 __attribute__((visibility("hidden")))
@@ -12,22 +12,24 @@ __attribute__((visibility("hidden")))
 {
     UIView *_contentContainerView;
     CAGradientLayer *_contentContainerViewMask;
-    UILabel *_contentTagLabel;
+    AVMobileContentTagView *_contentTagView;
     UILabel *_titleLabel;
     UILabel *_subtitleLabel;
     AVButton *_infoAffordance;
+    NSMutableAttributedString *_titleLabelString;
+    NSMutableAttributedString *_subtitleLabelString;
     _Bool _showsInfoAffordance;
     AVMobileContentTag *_contentTag;
     AVMobileChromelessControlsStyleSheet *_styleSheet;
-    NSString *_subtitle;
-    NSString *_title;
+    NSAttributedString *_subtitle;
+    NSAttributedString *_title;
     id <AVMobileTitlebarViewDelegate> _delegate;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) id <AVMobileTitlebarViewDelegate> delegate; // @synthesize delegate=_delegate;
-@property(retain, nonatomic) NSString *title; // @synthesize title=_title;
-@property(retain, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
+@property(retain, nonatomic) NSAttributedString *title; // @synthesize title=_title;
+@property(retain, nonatomic) NSAttributedString *subtitle; // @synthesize subtitle=_subtitle;
 @property(retain, nonatomic) AVMobileChromelessControlsStyleSheet *styleSheet; // @synthesize styleSheet=_styleSheet;
 @property(nonatomic) _Bool showsInfoAffordance; // @synthesize showsInfoAffordance=_showsInfoAffordance;
 @property(retain, nonatomic) AVMobileContentTag *contentTag; // @synthesize contentTag=_contentTag;

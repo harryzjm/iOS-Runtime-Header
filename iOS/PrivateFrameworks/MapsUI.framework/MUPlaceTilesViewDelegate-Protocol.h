@@ -10,7 +10,6 @@
 @protocol MUPlaceTileViewModel;
 
 @protocol MUPlaceTilesViewDelegate <NSObject>
-- (void)placeTileCollectionViewDidScroll:(MUPlaceTilesView *)arg1;
 - (void)placeTileCollectionView:(MUPlaceTilesView *)arg1 didTapOnAccessoryViewModel:(MUPunchoutViewModel *)arg2;
 - (void)placeTileCollectionView:(MUPlaceTilesView *)arg1 didTapOnViewModel:(id <MUPlaceTileViewModel>)arg2;
 @end

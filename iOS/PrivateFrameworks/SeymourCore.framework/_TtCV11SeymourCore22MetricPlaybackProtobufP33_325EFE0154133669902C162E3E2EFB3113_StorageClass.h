@@ -33,6 +33,8 @@
     MISSING_TYPE *_closedCaptionLocale;
     MISSING_TYPE *_sdhLocale;
     MISSING_TYPE *_subtitleLocale;
+    MISSING_TYPE *_activityTrackingDevices;
+    MISSING_TYPE *_audioFocusType;
 }
 
 @end

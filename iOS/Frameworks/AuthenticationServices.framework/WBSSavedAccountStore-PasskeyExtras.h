@@ -11,8 +11,9 @@
 + (id)exportPasskeyCredentialWithID:(id)arg1;
 + (void)updateUserVisibleName:(id)arg1 forPasskeyWithIdentifier:(id)arg2;
 + (void)deletePasskeyWithIdentifier:(id)arg1;
-+ (id)_passkeyDataForPasskeyCredentialID:(id)arg1;
++ (id)_passkeyDataFromWebKitPasskeyData:(id)arg1;
 + (id)passkeyDataForPasskeyCredentialID:(id)arg1;
-+ (id)allPasskeysData;
++ (id)recentlyDeletedPasskeysData;
++ (id)passkeysData;
 @end
 

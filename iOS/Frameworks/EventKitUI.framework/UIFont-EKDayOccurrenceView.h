@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIFont.h>
+#import <UIKitCore/UIFont.h>
 
 @interface UIFont (EKDayOccurrenceView)
 + (id)ek_defaultOccurrenceSmallPrimaryTextFontForSizeClass:(long long)arg1;

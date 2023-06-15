@@ -9,11 +9,6 @@
 __attribute__((visibility("hidden")))
 @interface CADStatsOccurrenceInfo : NSObject
 {
-    _Bool _isInLast1Day;
-    _Bool _isInNext1Day;
-    _Bool _isInNext7Days;
-    _Bool _isInNext30Days;
-    _Bool _isInNext365Days;
     _Bool _isAllDay;
     _Bool _isBirthday;
     _Bool _isHoliday;
@@ -36,6 +31,8 @@ __attribute__((visibility("hidden")))
     long long _status;
     long long _participationStatus;
     double _durationInMinutes;
+    double _minutesUntilStart;
+    double _minutesUntilEnd;
 }
 
 @end

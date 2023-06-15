@@ -5,6 +5,6 @@
 //
 
 @protocol GDDonationView
-- (void)enumerateTriples:(void (^)(id <GDExtendedTriple>))arg1;
+- (void)enumerateTriples:(void (^)(id <GDFusedTriple>))arg1;
 @end
 

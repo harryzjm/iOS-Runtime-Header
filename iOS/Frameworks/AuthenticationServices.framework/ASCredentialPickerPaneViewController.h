@@ -4,8 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class AKASAuthorizationProvider, ASCAuthorizationPresentationContext, ASCPasswordCredential, ASCredentialRequestConfirmButtonSubPane, ASCredentialRequestImageSubPane, ASCredentialRequestInfoLabelSubPane, NSArray, NSObject, NSString, UIWindow, _ASPasswordCredentialAuthenticationViewController;
-@protocol ASCLoginChoiceProtocol, OS_dispatch_queue;
+@class AKASAuthorizationProvider, ASCAuthorizationPresentationContext, ASCPasswordCredential, ASCredentialRequestConfirmButtonSubPane, ASCredentialRequestImageSubPane, ASCredentialRequestInfoLabelSubPane, NSArray, NSObject, NSString, UIWindow, _ASCredentialAuthenticationViewController;
+@protocol ASCLoginChoiceProtocol, OS_dispatch_queue, OS_os_activity;
 
 __attribute__((visibility("hidden")))
 @interface ASCredentialPickerPaneViewController
@@ -18,14 +18,20 @@ __attribute__((visibility("hidden")))
     _Bool _shouldExpandOtherLoginChoices;
     NSArray *_tableViewLoginChoices;
     NSArray *_otherLoginChoices;
+    NSObject<OS_os_activity> *_authorizationActivity;
     AKASAuthorizationProvider *_authKitAuthorizationProvider;
     NSObject<OS_dispatch_queue> *_alertQueue;
-    _ASPasswordCredentialAuthenticationViewController *_credentialProviderViewController;
+    _ASCredentialAuthenticationViewController *_credentialProviderViewController;
     ASCPasswordCredential *_externalPasswordCredentialForSelectedLoginChoice;
+    _Bool _isUserVerificationConfigured;
+    long long _currentlyEnabledBiometryType;
+    long long _supportedBiometryType;
     ASCredentialRequestInfoLabelSubPane *_infoLabelPane;
+    ASCredentialRequestInfoLabelSubPane *_subtitleSubPane;
 }
 
 - (void).cxx_destruct;
+- (_Bool)_isUserVerificationConfigured;
 @property(readonly, nonatomic) UIWindow *presentationAnchor;
 - (void)authenticationProvider:(id)arg1 hideViewController:(id)arg2;
 - (void)authenticationProvider:(id)arg1 showViewController:(id)arg2;
@@ -49,8 +55,10 @@ __attribute__((visibility("hidden")))
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
+- (void)credentialAuthenticationViewController:(id)arg1 didFinishWithPasskeyRegistrationCredential:(id)arg2 error:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)credentialAuthenticationViewController:(id)arg1 didFinishWithPasskeyAssertionCredential:(id)arg2 error:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)credentialProviderExtensionManagerExtensionListDidChange:(id)arg1;
-- (void)passwordCredentialAuthenticationViewController:(id)arg1 didFinishWithCredential:(id)arg2 error:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)credentialAuthenticationViewController:(id)arg1 didFinishWithCredential:(id)arg2 error:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)presentUIForPasswordCredentialAuthenticationViewController:(id)arg1;
 - (void)_userSelectedExternalPasswordCredential;
 - (id)_iconImage;
@@ -58,12 +66,15 @@ __attribute__((visibility("hidden")))
 - (_Bool)_shouldShowLoginChoicesInTableView;
 - (void)_performAuthorizationWithAuthenticatedContext:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_setCancelButtonEnabled:(_Bool)arg1;
+- (id)_usernameForContinueButtonWithLoginChoice:(id)arg1;
 - (void)_configureAuthenticationPaneForSelectedLoginChoice:(id)arg1;
 - (id)_infoLabelStringForSignInWithApple;
 - (id)_infoLabelStringForPassword;
 - (id)_infoLabelStringForSecurityKeyCredentialAssertion;
-- (id)_infoLabelStringForPlatformPublicKeyCredentialAssertion;
-- (id)_infoLabelStringForPlatformPublicKeyCredentialRegistration;
+- (id)_subtitleForPlatformPublicKeyCredentialAssertion;
+- (id)_subtitleForPlatformPublicKeyCredentialRegistration;
+- (id)_titleForPlatformPublicKeyCredentialRegistration;
+- (id)_defaultPasskeySignInTitle;
 - (id)_serviceName;
 - (id)_localizedInfoString;
 - (void)_selectInitialLoginChoice;
@@ -77,14 +88,15 @@ __attribute__((visibility("hidden")))
 - (void)_addAuthorizationButtonToPaneContext:(id)arg1;
 - (void)_setUpInfoLabel;
 - (void)_setUpIconViewIfNecessary;
+- (void)_setUpPlatformCredentialRequestPane;
 - (void)_setUpView;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (void)_selectPreviouslySelectedLoginChoiceIfPossible:(id)arg1;
 - (void)reloadLoginChoices;
-- (id)initWithPresentationContext:(id)arg1;
-- (id)initWithPresentationContext:(id)arg1 shouldExpandOtherLoginChoices:(_Bool)arg2;
+- (id)initWithPresentationContext:(id)arg1 activity:(id)arg2;
+- (id)initWithPresentationContext:(id)arg1 shouldExpandOtherLoginChoices:(_Bool)arg2 activity:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

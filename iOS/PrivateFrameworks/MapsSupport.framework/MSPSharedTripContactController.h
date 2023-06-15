@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableOrderedSet, NSMutableSet, NSOrderedSet, NSSet;
+@class MSPSharingRestorationStorage, NSMutableOrderedSet, NSMutableSet, NSOrderedSet, NSSet;
 @protocol MSPSharedTripContactControllerDelegate, MSPSharedTripXPCServer, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -22,6 +22,8 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <MSPSharedTripContactControllerDelegate> delegate; // @synthesize delegate=_delegate;
+- (id)_archivedSharingStorage;
+@property(readonly, nonatomic) MSPSharingRestorationStorage *archivedSharingStorage;
 - (void)_updateActiveSharingHandles:(id)arg1;
 - (void)updateActiveSharingHandles:(id)arg1;
 - (id)_existingValueForContact:(id)arg1;

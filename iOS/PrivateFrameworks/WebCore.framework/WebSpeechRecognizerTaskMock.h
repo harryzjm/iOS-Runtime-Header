@@ -7,7 +7,7 @@
 __attribute__((visibility("hidden")))
 @interface WebSpeechRecognizerTaskMock
 {
-    ObjectIdentifier_0a27c126 _identifier;
+    ObjectIdentifierGeneric_137971da _identifier;
     struct BlockPtr<void (const WebCore::SpeechRecognitionUpdate &)> _delegateCallback;
     _Bool _doMultipleRecognitions;
     _Bool _hasSentSpeechStart;
@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
 - (void)stop;
 - (void)abort;
 - (void)audioSamplesAvailable:(struct opaqueCMSampleBuffer *)arg1;
-- (id)initWithIdentifier:(ObjectIdentifier_0a27c126)arg1 locale:(id)arg2 doMultipleRecognitions:(_Bool)arg3 reportInterimResults:(_Bool)arg4 maxAlternatives:(unsigned long long)arg5 delegateCallback:(CDUnknownBlockType)arg6;
+- (id)initWithIdentifier:(ObjectIdentifierGeneric_137971da)arg1 locale:(id)arg2 doMultipleRecognitions:(_Bool)arg3 reportInterimResults:(_Bool)arg4 maxAlternatives:(unsigned long long)arg5 delegateCallback:(CDUnknownBlockType)arg6;
 
 @end
 

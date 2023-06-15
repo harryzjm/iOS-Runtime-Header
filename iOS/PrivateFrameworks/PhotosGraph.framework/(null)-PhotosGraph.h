@@ -4,14 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSNumber, NSString;
-
 @interface (null) (PhotosGraph)
-- (_Bool)isEqual:(id)arg1;
-@property(nonatomic, readonly) NSNumber *keySongValence;
-@property(nonatomic, readonly) NSNumber *keySongArousal;
-@property(nonatomic, readonly) NSString *keySongArtist;
-@property(nonatomic, readonly) NSString *keySongTitle;
-@property(nonatomic, readonly) NSString *keySongAdamID;
++ (id)flexMusicFeatureExtractionContextWithCuratorContext:(id)arg1;
++ (id)appleMusicFeatureExtractionContextWithCuratorContext:(id)arg1;
 @end
 

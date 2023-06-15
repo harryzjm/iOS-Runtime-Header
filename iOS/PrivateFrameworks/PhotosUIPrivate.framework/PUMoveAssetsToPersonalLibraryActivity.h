@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)performActivity;
+- (id)_multiContributorConfirmationAlertControllerForAssets:(id)arg1 contributorName:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (_Bool)canPerformWithActivityItems:(id)arg1;
 - (id)_systemImageName;
 - (id)activityTitle;

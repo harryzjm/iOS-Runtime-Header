@@ -4,12 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
 @class HFItem, NSString;
 
 @interface UIViewController (HUPresentation)
-- (void)hu_updateNavigationBarStateForViewController;
 - (id)hu_dismissViewControllerAnimated:(_Bool)arg1;
 - (id)hu_performDismissalRequest:(id)arg1;
 - (id)hu_performPresentationRequest:(id)arg1;

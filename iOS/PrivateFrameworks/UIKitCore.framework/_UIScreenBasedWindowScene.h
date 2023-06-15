@@ -6,31 +6,35 @@
 
 #import "UIWindowScene.h"
 
-@class UIMutableApplicationSceneSettings, UIScreen;
-@protocol NSCopying;
+@class NSMutableSet, UIMutableApplicationSceneSettings, UIScreen;
+@protocol BSInvalidatable, NSCopying;
 
 __attribute__((visibility("hidden")))
 @interface _UIScreenBasedWindowScene : UIWindowScene
 {
+    id <NSCopying> _lookupKey;
     UIScreen *_screen;
     UIMutableApplicationSceneSettings *_synthesizedSettings;
-    _Bool _invalidationHandlerRegistered;
-    id <NSCopying> _lookupKey;
+    _Bool _invalidationEvaluatorRegistered;
+    _Bool _needsInvalidation;
+    id <BSInvalidatable> _screenDisconnectionPreventionAssertion;
+    NSMutableSet *_autoInvalidationPreventionAssertions;
 }
 
++ (id)_unassociatedWindowSceneForScreen:(id)arg1 create:(_Bool)arg2;
 + (id)unassociationCacheAccessQueue;
 + (id)unassociationCache;
-+ (id)_unassociatedWindowSceneForScreen:(id)arg1 create:(_Bool)arg2;
-+ (_Bool)autoinvalidates;
++ (_Bool)autoInvalidates;
 + (_Bool)shouldAllowComponents;
 + (_Bool)alwaysKeepContexts;
 - (void).cxx_destruct;
+- (void)_applyOverridesToHostedSceneSettings:(id)arg1;
+- (void)_screenInterfaceOrientationChanged:(id)arg1;
+- (void)_screenDisconnected:(id)arg1;
 - (_Bool)_shouldAllowFencing;
 - (void)_openURL:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setDelegate:(id)arg1;
 - (id)_displayInfoProvider;
-- (void)_screenInterfaceOrientationChanged:(id)arg1;
-- (void)_screenDisconnected:(id)arg1;
 - (void)_detachWindow:(id)arg1;
 - (void)_attachWindow:(id)arg1;
 - (id)_synthesizedSettings;
@@ -39,6 +43,9 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)_referenceBoundsForOrientation:(long long)arg1;
 - (struct CGRect)_referenceBounds;
 - (id)screen;
+- (void)_addSubclassDebugDescriptionWithBuilder:(id)arg1;
+- (void)_addSubclassFlagsToDebugDescriptionWithBuilder:(id)arg1;
+- (void)_removeAutoInvalidationPreventionAssertion:(id)arg1;
 - (void)_invalidate;
 - (id)initWithScreen:(id)arg1 session:(id)arg2 lookupKey:(id)arg3;
 

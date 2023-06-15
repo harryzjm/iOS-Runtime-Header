@@ -9,6 +9,6 @@
 @class NSString, SWShareableContent;
 
 @protocol SWShareableContentRepresentationProvider <NSObject>
-- (void)loadDataRepresentationForContent:(SWShareableContent *)arg1 typeIdentifier:(NSString *)arg2 completionHandler:(void (^)(NSData *, NSError *))arg3;
+- (void)loadRepresentationForContent:(SWShareableContent *)arg1 typeIdentifier:(NSString *)arg2 completionHandler:(void (^)(SLShareableContentLoadResult *, NSError *))arg3;
 @end
 

@@ -7,8 +7,10 @@
 #import <SafariServices/NSObject-Protocol.h>
 
 @class NSDictionary, NSString;
+@protocol WBSSearchProvider;
 
 @protocol WBSSearchProviderContext <NSObject>
+@property(readonly, nonatomic) id <WBSSearchProvider> defaultSearchProvider;
 @property(readonly, nonatomic) _Bool isChinaDevice;
 @property(readonly, copy, nonatomic) NSDictionary *carrierTemplateParameterValues;
 @property(readonly, copy, nonatomic) NSDictionary *templateParameterValues;

@@ -4,12 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIButtonConfiguration.h>
+#import <UIKitCore/UIButtonConfiguration.h>
 
 @interface UIButtonConfiguration (PKUIUtilities)
 + (id)pkui_plainConfigurationWithImage:(id)arg1 imageConfiguration:(id)arg2 foregroundColor:(id)arg3;
 + (id)pkui_plainConfigurationWithImage:(id)arg1 foregroundColor:(id)arg2;
 + (id)pkui_plainConfigurationWithTitle:(id)arg1 font:(id)arg2 lineBreakMode:(long long)arg3 textAlignment:(long long)arg4;
 + (id)pkui_plainConfigurationWithTitle:(id)arg1 font:(id)arg2;
++ (id)pkui_createPlainMinimalButtonConfiguration;
++ (id)pkui_createPlainButtonConfiguration;
 @end
 

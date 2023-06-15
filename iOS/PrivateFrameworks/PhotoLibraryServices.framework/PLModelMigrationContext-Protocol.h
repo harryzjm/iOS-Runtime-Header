@@ -6,9 +6,10 @@
 
 #import <PhotoLibraryServices/NSObject-Protocol.h>
 
-@class PLCoreAnalyticsEventManager, PLPhotoLibraryPathManager;
+@class PLCoreAnalyticsEventManager, PLModelMigrationHistory, PLPhotoLibraryPathManager;
 
 @protocol PLModelMigrationContext <NSObject>
+@property(readonly) PLModelMigrationHistory *modelMigrationHistory;
 @property(readonly) long long libraryIdentifier;
 @property(readonly) unsigned int policy;
 @property(readonly) PLPhotoLibraryPathManager *pathManager;

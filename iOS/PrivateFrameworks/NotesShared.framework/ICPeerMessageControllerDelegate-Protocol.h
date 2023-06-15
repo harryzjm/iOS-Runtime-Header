@@ -6,11 +6,10 @@
 
 #import <NotesShared/NSObject-Protocol.h>
 
-@class ICMedia, NSData;
+@class NSData;
 @protocol NSCopying;
 
 @protocol ICPeerMessageControllerDelegate <NSObject>
-- (void)sendMedia:(ICMedia *)arg1 toSource:(id <NSCopying>)arg2;
 - (_Bool)sendMessage:(NSData *)arg1 toSource:(id <NSCopying>)arg2 error:(id *)arg3;
 @end
 

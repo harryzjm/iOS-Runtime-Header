@@ -66,6 +66,25 @@ struct PXIntSize_st {
     unsigned long long _field2;
 };
 
+struct PXMediaProviderThumbnailDataFormat {
+    unsigned long long _field1;
+    struct __CFString *_field2;
+    unsigned short _field3;
+    unsigned short _field4;
+    _Bool _field5;
+};
+
+struct PXMediaProviderThumbnailDataSpec {
+    struct PXMediaProviderThumbnailDataFormat _field1;
+    unsigned short _field2;
+    unsigned short _field3;
+    unsigned short _field4;
+    unsigned short _field5;
+    unsigned short _field6;
+    unsigned short _field7;
+    unsigned short _field8;
+};
+
 struct PXMemoryFontsSpecIdentifier {
     long long _field1;
     long long _field2;
@@ -123,15 +142,33 @@ struct _PXGSpriteIndexRange {
     unsigned int _field2;
 };
 
+struct __CFString;
+
 #pragma mark Typedef'd Structures
 
 typedef struct {
-    id _field1;
-} CDStruct_183fa7cb;
+    _Bool _field1;
+    float _field2;
+    _Bool _field3;
+} CDStruct_906e517f;
+
+typedef struct {
+    unsigned char _field1;
+    unsigned char _field2;
+    float _field3;
+    long long _field4;
+    unsigned short _field5;
+    unsigned char _field6;
+} CDStruct_12471299;
 
 typedef struct {
     unsigned char _field1;
 } CDStruct_6b48f683;
+
+typedef struct {
+    unsigned int _field1;
+    _Bool _field2;
+} CDStruct_0dd72924;
 
 typedef struct {
     unsigned int _field1;
@@ -212,13 +249,8 @@ typedef struct {
 } CDStruct_b2fbf00d;
 
 typedef struct {
-    int _field1;
-    int _field2;
-    float _field3;
-    long long _field4;
-    unsigned short _field5;
-    unsigned char _field6;
-} CDStruct_9d1ebe49;
+    float _field1;
+} CDStruct_37a3040a;
 
 typedef struct {
     long long _field1;
@@ -238,16 +270,6 @@ typedef struct {
     unsigned int _field3;
     long long _field4;
 } CDStruct_198678f7;
-
-typedef struct {
-    long long _field1;
-    long long _field2;
-    _Bool _field3;
-    double _field4;
-    double _field5;
-    double _field6;
-    _Bool _field7;
-} CDStruct_b72cf85b;
 
 typedef struct {
     long long _field1;
@@ -358,6 +380,14 @@ typedef struct {
     double _field2;
     double _field3;
 } CDStruct_8f389bc1;
+
+typedef struct {
+    struct CLLocationCoordinate2D _field1;
+    struct {
+        double _field1;
+        double _field2;
+    } _field2;
+} CDStruct_2b0c6e0b;
 
 typedef struct {
     union {

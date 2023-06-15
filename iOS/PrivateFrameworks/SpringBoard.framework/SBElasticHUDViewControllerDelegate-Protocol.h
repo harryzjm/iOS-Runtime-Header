@@ -6,9 +6,11 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class SBElasticHUDViewController;
+@class NSString, SBElasticHUDViewController, SBFAlwaysOnLiveRenderingAssertion;
 
 @protocol SBElasticHUDViewControllerDelegate <NSObject>
 - (void)elasticHUDViewControllerRequestsDismissal:(SBElasticHUDViewController *)arg1;
+- (_Bool)elasticHUDViewControllerCanBePresented:(SBElasticHUDViewController *)arg1 withReason:(out id *)arg2;
+- (SBFAlwaysOnLiveRenderingAssertion *)elasticHUDViewControllerRequestsLiveRendering:(SBElasticHUDViewController *)arg1 forReason:(NSString *)arg2;
 @end
 

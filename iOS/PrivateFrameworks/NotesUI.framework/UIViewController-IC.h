@@ -4,12 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
-@class ICViewControllerManager, UINavigationController, UIWindowScene;
+@class ICViewControllerManager, UILayoutGuide, UINavigationController, UIWindowScene;
 
 @interface UIViewController (IC)
++ (void)load;
 + (void)ic_enableUIViewAnimations:(_Bool)arg1 forBlock:(CDUnknownBlockType)arg2;
+- (void)ic_presentViewController:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
+- (_Bool)ic_isOrNavigationControllerContainsViewControllerOfClass:(Class)arg1;
 - (void)ic_performBlockAfterActiveTransition:(CDUnknownBlockType)arg1;
 - (void)ic_replacePresentedViewControllerWithViewController:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)ic_dismissPresentedViewControllerAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
@@ -22,9 +25,9 @@
 - (id)ic_topViewController;
 - (void)ic_showSingleButtonAlertWithTitle:(id)arg1 message:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)ic_showSingleButtonAlertWithTitle:(id)arg1 message:(id)arg2;
-- (id)ic_safeAreaLayoutGuide;
-- (double)ic_safeAreaDistanceFromBottom;
-- (double)ic_safeAreaDistanceFromTop;
+@property(readonly, nonatomic) UILayoutGuide *ic_safeAreaLayoutGuide;
+@property(readonly, nonatomic) double ic_safeAreaDistanceFromBottom;
+@property(readonly, nonatomic) double ic_safeAreaDistanceFromTop;
 - (_Bool)ic_isViewVisible;
 - (void)ic_showViewController:(id)arg1 animated:(_Bool)arg2 sender:(id)arg3;
 @property(readonly, nonatomic) _Bool ic_isRTL;

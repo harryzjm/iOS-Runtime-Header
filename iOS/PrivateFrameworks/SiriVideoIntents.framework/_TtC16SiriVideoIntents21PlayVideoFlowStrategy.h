@@ -12,7 +12,7 @@
 {
     MISSING_TYPE *remoteDevice;
     MISSING_TYPE *deviceState;
-    MISSING_TYPE *deviceResolutionAnalytics;
+    MISSING_TYPE *deviceLoggingUtil;
     MISSING_TYPE *aceServiceInvoker;
     MISSING_TYPE *contentResolver;
 }

@@ -8,7 +8,7 @@
 
 @interface NSString (StdString)
 + (id)rtcStringForStdString:(const void *)arg1;
-+ (basic_string_05660eb3)rtcStdStringForString:(id)arg1;
-@property(readonly, nonatomic) basic_string_05660eb3 rtcStdString;
++ (basic_string_b963e3c0)rtcStdStringForString:(id)arg1;
+@property(readonly, nonatomic) basic_string_b963e3c0 rtcStdString;
 @end
 

@@ -10,13 +10,13 @@
 
 @interface MPSGraphDequantizeOp : MPSGraphOperation
 {
-    unsigned int _dtype;
+    unsigned int _dataType;
     NSNumber *_axis;
 }
 
 - (void).cxx_destruct;
 - (void *)makeMLIROpWithBuilder:(void *)arg1 symbolTable:(void *)arg2 inputValues:(void *)arg3 opInitialization:(_Bool)arg4 name:(id)arg5;
-- (id)initWithGraph:(id)arg1 inputTensors:(id)arg2 controlDependencies:(id)arg3 dtype:(unsigned int)arg4 axis:(id)arg5 name:(id)arg6;
+- (id)initWithGraph:(id)arg1 inputTensors:(id)arg2 controlDependencies:(id)arg3 dataType:(unsigned int)arg4 axis:(id)arg5 name:(id)arg6;
 
 @end
 

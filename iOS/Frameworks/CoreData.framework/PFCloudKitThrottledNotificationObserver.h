@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)dealloc;
-- (id)initWithLabel:(id)arg1;
+- (id)initWithLabel:(id)arg1 handlerBlock:(CDUnknownBlockType)arg2;
 
 @end
 

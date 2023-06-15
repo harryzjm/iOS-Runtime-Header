@@ -9,6 +9,7 @@
 #import <IMDaemonCore/IMDaemonAutomationProtocol-Protocol.h>
 #import <IMDaemonCore/IMDaemonBuddyListProtocol-Protocol.h>
 #import <IMDaemonCore/IMDaemonChatFileTransferProtocol-Protocol.h>
+#import <IMDaemonCore/IMDaemonChatInsertMessageProtocol-Protocol.h>
 #import <IMDaemonCore/IMDaemonChatMessageHistoryProtocol-Protocol.h>
 #import <IMDaemonCore/IMDaemonChatModifyReadStateProtocol-Protocol.h>
 #import <IMDaemonCore/IMDaemonChatProtocol-Protocol.h>
@@ -18,12 +19,13 @@
 #import <IMDaemonCore/IMDaemonFileTransferProtocol-Protocol.h>
 #import <IMDaemonCore/IMDaemonManageStatusProtocol-Protocol.h>
 #import <IMDaemonCore/IMDaemonModifyReadStateProtocol-Protocol.h>
+#import <IMDaemonCore/IMDaemonSyncedSettingsProtocol-Protocol.h>
 #import <IMDaemonCore/IMDaemonVCACProtocol-Protocol.h>
 #import <IMDaemonCore/IMDaemonVCInvitationsAVObserverProtocol-Protocol.h>
 #import <IMDaemonCore/IMDaemonVCProtocol-Protocol.h>
 #import <IMDaemonCore/NSObject-Protocol.h>
 
-@protocol IMDaemonProtocol <NSObject, IMDaemonAccountsProtocol, IMDaemonAnyProtocol, IMDaemonAutomationProtocol, IMDaemonBuddyListProtocol, IMDaemonChatFileTransferProtocol, IMDaemonChatMessageHistoryProtocol, IMDaemonChatModifyReadStateProtocol, IMDaemonChatProtocol, IMDaemonChatSendMessageProtocol, IMDaemonCloudSyncProtocol, IMDaemonFileTransferProtocol, IMDaemonFileProviderProtocol, IMDaemonManageStatusProtocol, IMDaemonModifyReadStateProtocol, IMDaemonVCACProtocol, IMDaemonVCInvitationsAVObserverProtocol, IMDaemonVCProtocol>
+@protocol IMDaemonProtocol <NSObject, IMDaemonAccountsProtocol, IMDaemonAnyProtocol, IMDaemonAutomationProtocol, IMDaemonBuddyListProtocol, IMDaemonChatFileTransferProtocol, IMDaemonChatInsertMessageProtocol, IMDaemonChatMessageHistoryProtocol, IMDaemonChatModifyReadStateProtocol, IMDaemonChatProtocol, IMDaemonChatSendMessageProtocol, IMDaemonCloudSyncProtocol, IMDaemonFileTransferProtocol, IMDaemonFileProviderProtocol, IMDaemonManageStatusProtocol, IMDaemonModifyReadStateProtocol, IMDaemonVCACProtocol, IMDaemonVCInvitationsAVObserverProtocol, IMDaemonVCProtocol, IMDaemonSyncedSettingsProtocol>
 - (void)setListenerCapabilities:(unsigned int)arg1;
 - (void)setVCCapabilities:(unsigned long long)arg1;
 @end

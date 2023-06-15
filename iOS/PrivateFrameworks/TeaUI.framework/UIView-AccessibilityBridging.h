@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @interface UIView (AccessibilityBridging)
 + (void)ts_executeWithAnimated:(_Bool)arg1 duration:(double)arg2 setupBlock:(CDUnknownBlockType)arg3 animationBlock:(CDUnknownBlockType)arg4 completion:(CDUnknownBlockType)arg5;
 - (_Bool)_accessibilityIsSpeakThisElement;
 @property(nonatomic) unsigned long long ts_accessibilityInterfaceStyleIntent;
+- (void)ts_setHiddenForReuse:(_Bool)arg1;
 - (void)ts_setPlusLCompositingFilter;
 - (void)ts_setPlusDCompositingFilter;
 - (_Bool)ts_safeAreaWidthExceedsReadableWidth;

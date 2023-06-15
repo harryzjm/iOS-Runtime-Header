@@ -17,6 +17,7 @@
     MISSING_TYPE *remoteBrowsingSource;
     MISSING_TYPE *storefrontLocalizer;
     MISSING_TYPE *subscriptionToken;
+    MISSING_TYPE *upNextQueueClient;
     MISSING_TYPE *state;
     MISSING_TYPE *display;
 }

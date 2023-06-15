@@ -12,7 +12,6 @@
 __attribute__((visibility("hidden")))
 @interface PUProgressIndicatorTileViewController : PUTileViewController
 {
-    _Bool _allowsVKToggleModeButton;
     _Bool __needsUpdateProgressViewStyle;
     _Bool __needsUpdateStatus;
     _Bool __needsUpdateSizeClass;
@@ -55,7 +54,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, setter=_setNeedsUpdateSizeClass:) _Bool _needsUpdateSizeClass; // @synthesize _needsUpdateSizeClass=__needsUpdateSizeClass;
 @property(nonatomic, setter=_setNeedsUpdateStatus:) _Bool _needsUpdateStatus; // @synthesize _needsUpdateStatus=__needsUpdateStatus;
 @property(nonatomic, setter=_setNeedsUpdateProgressViewStyle:) _Bool _needsUpdateProgressViewStyle; // @synthesize _needsUpdateProgressViewStyle=__needsUpdateProgressViewStyle;
-@property(nonatomic) _Bool allowsVKToggleModeButton; // @synthesize allowsVKToggleModeButton=_allowsVKToggleModeButton;
 @property(retain, nonatomic) PUBrowsingViewModel *browsingViewModel; // @synthesize browsingViewModel=_browsingViewModel;
 @property(retain, nonatomic) PUAssetViewModel *assetViewModel; // @synthesize assetViewModel=_assetViewModel;
 @property(copy, nonatomic) CDUnknownBlockType errorPresenter; // @synthesize errorPresenter=_errorPresenter;

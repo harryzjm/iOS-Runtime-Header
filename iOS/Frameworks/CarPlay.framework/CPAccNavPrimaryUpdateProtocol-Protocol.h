@@ -7,6 +7,6 @@
 #import <CarPlay/CPAccNavUpdateProtocol-Protocol.h>
 
 @protocol CPAccNavPrimaryUpdateProtocol <CPAccNavUpdateProtocol>
-@property(readonly, nonatomic) unsigned short componentID;
+@property(nonatomic) unsigned short componentID;
 @end
 

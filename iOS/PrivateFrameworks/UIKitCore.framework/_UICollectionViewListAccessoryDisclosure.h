@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 {
     UIImageView *_imageView;
     _Bool _rotated;
+    UIImage *_image;
     id <UITableConstants> _constants;
     UIColor *_accessoryTintColor;
     CDUnknownBlockType _actionHandler;
@@ -41,9 +42,10 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)_minimumSizeForHitTesting;
 - (void)_updateRotation;
-@property(retain, nonatomic) UIImage *image;
+@property(retain, nonatomic) UIImage *image; // @synthesize image=_image;
 - (void)_executeActionHandler;
 - (unsigned long long)_controlEventsForActionTriggered;
+@property(readonly, nonatomic) UIControl *control;
 - (id)initWithConstants:(id)arg1;
 
 // Remaining properties

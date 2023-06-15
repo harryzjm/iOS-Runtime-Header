@@ -5,6 +5,6 @@
 //
 
 @protocol SBSystemApertureGainMapBackedRendering
-@property(nonatomic) long long renderingStyle;
+@property(nonatomic) struct SBSystemApertureContainerRenderingConfiguration renderingConfiguration;
 @end
 

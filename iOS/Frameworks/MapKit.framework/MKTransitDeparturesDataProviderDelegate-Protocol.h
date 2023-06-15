@@ -10,8 +10,6 @@
 
 @protocol MKTransitDeparturesDataProviderDelegate <NSObject>
 - (void)transitDeparturesDataProviderDidReload:(MKTransitDeparturesDataProvider *)arg1;
-- (void)transitDeparturesDataProviderDidUpdateDepartures:(MKTransitDeparturesDataProvider *)arg1;
-- (void)transitDeparturesDataProviderWillUpdateDepartures:(MKTransitDeparturesDataProvider *)arg1;
 - (GEOMapServiceTraits *)traitsForTransitDeparturesDataProvider:(MKTransitDeparturesDataProvider *)arg1;
 @end
 

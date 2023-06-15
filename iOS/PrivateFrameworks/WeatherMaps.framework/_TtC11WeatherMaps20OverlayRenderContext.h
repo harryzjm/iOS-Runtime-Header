@@ -13,6 +13,8 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *mainContext;
     MISSING_TYPE *shaders;
+    MISSING_TYPE *texturePools;
+    MISSING_TYPE *colorMap;
 }
 
 - (void).cxx_destruct;

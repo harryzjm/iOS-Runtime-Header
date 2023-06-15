@@ -20,15 +20,6 @@
 }
 
 - (void).cxx_destruct;
-- (id)pointCloud;
-- (id)temporalMeta;
-- (void)reset;
-- (id)diffKeyframes;
-- (id)newKeyframes;
-- (void)run:(id)arg1;
-- (id)sortKeyframesByTimestamp:(id)arg1;
-- (id)generateKeyframesMeta:(id)arg1;
-- (id)sortKeyframeMetas:(id)arg1;
 - (id)init;
 
 @end

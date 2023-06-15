@@ -5,16 +5,19 @@
 //
 
 @class NSSet;
+@protocol MLComputeDeviceProtocol;
 
 __attribute__((visibility("hidden")))
 @interface VNEspressoModelClassifier
 {
     shared_ptr_b26ea6de mDescriptorProcessor;
     shared_ptr_047f28ed mClassifier;
-    NSSet *_blacklistedIdentifiers;
+    id <MLComputeDeviceProtocol> _computeDevice;
+    NSSet *_disallowedIdentifiers;
 }
 
 + (void)initDumpDebugIntermediates:(id *)arg1 debugInfo:(id *)arg2;
++ (id)supportedComputeStageDevicesForOptions:(id)arg1 error:(id *)arg2;
 + (id)configurationOptionKeysForDetectorKey;
 + (id)classifierResourceTypesToNamesForOriginatingRequestSpecifier:(id)arg1;
 + (void)convertRelationships:(id)arg1 toStdRelationships:(void *)arg2;
@@ -24,13 +27,14 @@ __attribute__((visibility("hidden")))
 + (shared_ptr_047f28ed)createClassifierWithDescriptor:(shared_ptr_b26ea6de)arg1 classifierAbsolutePath:(const char *)arg2 computePlatform:(int)arg3 computePath:(int)arg4 labelsFilename:(const char *)arg5 options:(struct Options)arg6;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (id)blacklistedIdentifiers;
+- (id)disallowedIdentifiers;
 - (id)getLabels;
 - (id)calculateImageDescriptors:(id)arg1 regionOfInterest:(struct CGRect)arg2 warningRecorder:(id)arg3 canceller:(id)arg4 error:(id *)arg5;
 - (id)processRegionOfInterest:(struct CGRect)arg1 croppedPixelBuffer:(const struct __CVBuffer *)arg2 options:(id)arg3 qosClass:(unsigned int)arg4 warningRecorder:(id)arg5 error:(id *)arg6 progressHandler:(CDUnknownBlockType)arg7;
 - (_Bool)createRegionOfInterestCrop:(struct CGRect)arg1 options:(id)arg2 warningRecorder:(id)arg3 pixelBuffer:(struct __CVBuffer **)arg4 error:(id *)arg5 progressHandler:(CDUnknownBlockType)arg6;
 - (id)internalProcessUsingQualityOfServiceClass:(unsigned int)arg1 options:(id)arg2 regionOfInterest:(struct CGRect)arg3 warningRecorder:(id)arg4 error:(id *)arg5 progressHandler:(CDUnknownBlockType)arg6;
 - (_Bool)completeInitializationForSession:(id)arg1 error:(id *)arg2;
+- (id)boundComputeStageDevices;
 
 @end
 

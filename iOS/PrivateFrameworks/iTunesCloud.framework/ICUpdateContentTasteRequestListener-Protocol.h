@@ -10,6 +10,7 @@
 
 @protocol ICUpdateContentTasteRequestListener <NSObject>
 - (void)updateContentTasteForMediaItemsAndInvalidateLocalCache:(_Bool)arg1 configuration:(ICConnectionConfiguration *)arg2 withCompletionHandler:(void (^)(NSError *))arg3;
+- (void)setContentTaste:(long long)arg1 forArtistStoreID:(long long)arg2 configuration:(ICConnectionConfiguration *)arg3 withCompletionHandler:(void (^)(NSError *))arg4;
 - (void)setContentTaste:(long long)arg1 forAlbumStoreID:(long long)arg2 configuration:(ICConnectionConfiguration *)arg3 withCompletionHandler:(void (^)(NSError *))arg4;
 - (void)setContentTaste:(long long)arg1 forPlaylistGlobalID:(NSString *)arg2 configuration:(ICConnectionConfiguration *)arg3 withCompletionHandler:(void (^)(NSError *))arg4;
 - (void)setContentTaste:(long long)arg1 forMediaItem:(long long)arg2 storeIdentifier:(long long)arg3 configuration:(ICConnectionConfiguration *)arg4 timeStamp:(NSDate *)arg5 withCompletionHandler:(void (^)(NSError *))arg6;

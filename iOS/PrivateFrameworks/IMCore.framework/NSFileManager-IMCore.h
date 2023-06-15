@@ -8,6 +8,5 @@
 
 @interface NSFileManager (IMCore)
 - (_Bool)im_copySecurityScopedResourceAtURL:(id)arg1 toDestination:(id)arg2 error:(id *)arg3;
-- (id)im_temporaryDirectoryPathForFilename:(id)arg1;
 @end
 

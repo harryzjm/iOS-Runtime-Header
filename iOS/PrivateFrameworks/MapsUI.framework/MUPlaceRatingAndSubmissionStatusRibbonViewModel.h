@@ -4,17 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MKMapItem, MKUGCCallToActionViewAppearance;
+@class MKMapItem, MUPlaceCallToActionAppearance;
 
 __attribute__((visibility("hidden")))
 @interface MUPlaceRatingAndSubmissionStatusRibbonViewModel
 {
     MKMapItem *_mapItem;
-    MKUGCCallToActionViewAppearance *_submissionStatus;
+    MUPlaceCallToActionAppearance *_submissionStatus;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) MKUGCCallToActionViewAppearance *submissionStatus; // @synthesize submissionStatus=_submissionStatus;
+@property(retain, nonatomic) MUPlaceCallToActionAppearance *submissionStatus; // @synthesize submissionStatus=_submissionStatus;
 @property(readonly, nonatomic) MKMapItem *mapItem; // @synthesize mapItem=_mapItem;
 - (_Bool)isEqual:(id)arg1;
 - (id)typeStringForAX;

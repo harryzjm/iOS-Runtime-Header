@@ -16,6 +16,7 @@
 
 @optional
 + (_Bool)usesMultipleLibrariesConcurrently;
+- (_Bool)avoidCheckingOtherWorkersIfThisWorkerHasPendingWork;
 - (_Bool)hasEnoughDiskSpaceToContinue:(void (^)(NSError *))arg1;
 - (void)workerDidFinishWithDatabaseContext:(PLDatabaseContext *)arg1;
 - (PLPhotoLibrary *)photoLibraryWithDatabaseContext:(PLDatabaseContext *)arg1;

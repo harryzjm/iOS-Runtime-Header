@@ -8,13 +8,29 @@
 
 @interface _TtC8VideosUI22SportsPlayByPlayLayout
 {
+    MISSING_TYPE *contentTransition;
+    MISSING_TYPE *contentAnimationDuration;
     MISSING_TYPE *$__lazy_storage_$_playItemLayout;
     MISSING_TYPE *$__lazy_storage_$_textLayout;
+    MISSING_TYPE *$__lazy_storage_$_playerStatisticsTextLayout;
+    MISSING_TYPE *$__lazy_storage_$_battingRecordLayout;
     MISSING_TYPE *$__lazy_storage_$_clockScoreLayout;
     MISSING_TYPE *$__lazy_storage_$_teamBarLayout;
+    MISSING_TYPE *highlightedPlayItemLayout;
+    MISSING_TYPE *playIndexLayout;
+    MISSING_TYPE *footnoteLayout;
+    MISSING_TYPE *subheadlineEmphLayout;
+    MISSING_TYPE *childItemVerticalMargin;
+    MISSING_TYPE *childItemHorizontalSpacing;
+    MISSING_TYPE *childItemHorizontalMargin;
+    MISSING_TYPE *highlightedPlayPadding;
+    MISSING_TYPE *pitchIndexBottomPadding;
+    MISSING_TYPE *childItemHorizontalSpacingAX;
+    MISSING_TYPE *childItemHorizontalMarginAX;
     MISSING_TYPE *$__lazy_storage_$_errorItemLayout;
     MISSING_TYPE *$__lazy_storage_$_errorTitleLayout;
     MISSING_TYPE *$__lazy_storage_$_errorSubtitleLayout;
+    MISSING_TYPE *squarePlusEnabled;
     MISSING_TYPE *playItemHeightCache;
 }
 

@@ -12,11 +12,13 @@ __attribute__((visibility("hidden")))
 @interface _TtC9SiriSetup20DataSharingPresenter : NSObject
 {
     MISSING_TYPE *dataSource;
+    MISSING_TYPE *dataSourceWriter;
     MISSING_TYPE *delegate;
     MISSING_TYPE *optInRadioButtonSelection;
     MISSING_TYPE *presentingViewController;
     MISSING_TYPE *viewModel;
     MISSING_TYPE *viewStyle;
+    MISSING_TYPE *page;
 }
 
 - (void).cxx_destruct;

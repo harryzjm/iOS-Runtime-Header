@@ -18,7 +18,7 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) CKDAssetVolumeTable *assetVolumeTable; // @synthesize assetVolumeTable=_assetVolumeTable;
 @property(readonly, nonatomic) CKDAssetHandleTable *assetHandleTable; // @synthesize assetHandleTable=_assetHandleTable;
-- (id)createTables;
+- (id)createTables:(id *)arg1;
 
 @end
 

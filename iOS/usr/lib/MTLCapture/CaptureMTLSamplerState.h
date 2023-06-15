@@ -9,7 +9,6 @@
 @class CaptureMTLDevice, NSString;
 @protocol MTLDevice, MTLSamplerState, MTLSamplerStateSPI;
 
-__attribute__((visibility("hidden")))
 @interface CaptureMTLSamplerState : NSObject
 {
     id <MTLSamplerStateSPI> _baseObject;

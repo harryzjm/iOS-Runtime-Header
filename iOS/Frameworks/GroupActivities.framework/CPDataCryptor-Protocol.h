@@ -10,9 +10,9 @@
 @class NSArray, NSData, NSUUID;
 
 @protocol CPDataCryptor <NSObject, NSSecureCoding>
+@property(readonly, nonatomic) NSArray *decryptionKeyIDSet;
+@property(readonly, nonatomic) NSUUID *encryptionKeyID;
 - (NSData *)decryptData:(NSData *)arg1 keyID:(NSUUID *)arg2 seqNum:(unsigned long long)arg3 error:(id *)arg4;
 - (NSData *)encryptData:(NSData *)arg1 seqNum:(unsigned long long)arg2 error:(id *)arg3;
-@property(nonatomic, readonly) NSArray *decryptionKeyIDSet;
-@property(nonatomic, readonly) NSUUID *encryptionKeyID;
 @end
 

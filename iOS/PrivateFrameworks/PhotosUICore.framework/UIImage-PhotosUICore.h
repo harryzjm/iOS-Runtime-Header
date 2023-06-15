@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIImage.h>
+#import <UIKitCore/UIImage.h>
 
 @interface UIImage (PhotosUICore)
 + (id)px_roundedCornerMaskImage:(CDStruct_c2259bfa)arg1 size:(struct CGSize)arg2;
@@ -12,7 +12,9 @@
 + (void)px_preloadPlayOverlayGlyphsIfNeeded;
 + (id)px_playOverlayImage:(unsigned long long)arg1;
 + (id)px_imageFromSolidColor:(id)arg1;
++ (id)px_systemImageNamed:(id)arg1 withConfiguration:(id)arg2;
 + (id)px_systemImageNamed:(id)arg1;
++ (id)px_imageNamed:(id)arg1 withConfiguration:(id)arg2;
 + (id)px_imageNamed:(id)arg1;
 - (id)px_predrawnImage;
 - (id)px_backdropImageWithStyle:(long long)arg1;
@@ -26,6 +28,7 @@
 - (id)px_imageByCroppingEdgeInsets:(struct UIEdgeInsets)arg1;
 - (id)px_imageWithDebugRect:(struct CGRect)arg1;
 - (id)px_tintedCircularImageWithColor:(id)arg1 backgroundColor:(id)arg2;
+- (id)px_tintedCircularImageWithColor:(id)arg1 backgroundColor:(id)arg2 backgroundInsets:(struct UIEdgeInsets)arg3;
 - (id)px_imageByApplyingAlpha:(double)arg1;
 - (id)px_tintedImageWithColor:(id)arg1;
 - (_Bool)px_isLargerThan:(id)arg1;

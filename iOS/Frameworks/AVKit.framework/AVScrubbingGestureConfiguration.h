@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface AVScrubbingGestureConfiguration : NSObject
 {
     _Bool _usesNaturalDirection;
+    _Bool _linearSeeking;
     float _syntheticFriction;
     AVScrubbingGesturePlatformConfiguration *_platformConfiguration;
 }
@@ -20,6 +21,7 @@ __attribute__((visibility("hidden")))
 + (id)defaultConfiguration;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) AVScrubbingGesturePlatformConfiguration *platformConfiguration; // @synthesize platformConfiguration=_platformConfiguration;
+@property(readonly, nonatomic) _Bool linearSeeking; // @synthesize linearSeeking=_linearSeeking;
 @property(readonly, nonatomic) _Bool usesNaturalDirection; // @synthesize usesNaturalDirection=_usesNaturalDirection;
 @property(readonly, nonatomic) float syntheticFriction; // @synthesize syntheticFriction=_syntheticFriction;
 

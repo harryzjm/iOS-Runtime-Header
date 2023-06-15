@@ -7,7 +7,7 @@
 #import <WorkflowKit/NSCopying-Protocol.h>
 #import <WorkflowKit/WFVariableSerialization-Protocol.h>
 
-@class NSArray, WFParameterStateProcessingContext, WFVariable;
+@class NSArray, WFParameterStateProcessingContext;
 @protocol WFPropertyListObject;
 
 @protocol WFParameterState <NSCopying, WFVariableSerialization>
@@ -20,6 +20,5 @@
 + (NSArray *)processingValueClasses;
 + (Class)processingValueClass;
 - (id <WFPropertyListObject>)legacySerializedRepresentation;
-- (id)initWithVariable:(WFVariable *)arg1;
 @end
 

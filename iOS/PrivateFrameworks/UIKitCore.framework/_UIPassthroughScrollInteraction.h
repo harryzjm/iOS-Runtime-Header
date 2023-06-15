@@ -38,6 +38,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRequireFailureOfGestureRecognizer:(id)arg2;
 - (_Bool)gestureRecognizer:(id)arg1 shouldBeRequiredToFailByGestureRecognizer:(id)arg2;
+- (void)_setOverrideAllowsHitTestingOnTouchFallbackView:(_Bool)arg1;
 - (_Bool)_delegateShouldInteractAtLocation:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)_handlePassthroughGestureRecognizerEndWithReason:(unsigned long long)arg1;
 - (void)__forciblyEndWithReason:(unsigned long long)arg1;

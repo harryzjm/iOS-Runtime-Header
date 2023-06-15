@@ -6,10 +6,12 @@
 
 #import <Foundation/NSDictionary.h>
 
+@class NSString;
+
 @interface NSDictionary (CKUtilsAdditions)
 - (id)CKObjectForKeyCaseInsensitive:(id)arg1;
 - (id)CKFirstUrlForKeys:(id)arg1;
-- (id)CKSingleLineDescription;
+- (id)CKPropertiesStyleString;
 - (id)CKDescriptionPropertiesWithPublic:(_Bool)arg1 private:(_Bool)arg2 shouldExpand:(_Bool)arg3;
 - (void)CKAssignToContainerWithID:(id)arg1;
 - (id)CKFilter:(CDUnknownBlockType)arg1;
@@ -19,5 +21,13 @@
 - (id)CKFlatMap:(CDUnknownBlockType)arg1;
 - (id)CKCompactMap:(CDUnknownBlockType)arg1;
 - (id)CKMap:(CDUnknownBlockType)arg1;
+- (id)CKDeepCopyWithLeafNodeCopyBlock:(CDUnknownBlockType)arg1;
+- (id)CKDeepCopy;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 @end
 

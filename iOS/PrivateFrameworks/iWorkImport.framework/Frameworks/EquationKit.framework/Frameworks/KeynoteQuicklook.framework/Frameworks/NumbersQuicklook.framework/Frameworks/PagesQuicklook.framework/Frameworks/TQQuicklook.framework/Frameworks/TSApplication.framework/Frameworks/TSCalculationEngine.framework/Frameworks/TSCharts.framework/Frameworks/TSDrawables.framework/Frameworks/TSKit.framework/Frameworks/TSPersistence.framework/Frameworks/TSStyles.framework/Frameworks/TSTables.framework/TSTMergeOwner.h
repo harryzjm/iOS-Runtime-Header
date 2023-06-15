@@ -14,21 +14,21 @@
     struct unordered_map<TSUModelCellCoord, TSUModelCellCoord, std::hash<TSUModelCellCoord>, std::equal_to<TSUModelCellCoord>, std::allocator<std::pair<const TSUModelCellCoord, TSUModelCellCoord>>> _reverseOriginsMap;
     _Bool _mergeCacheLoaded;
     TSTFormulaStore *_formulaStore;
+    TSTMergeChangeDistributor *_mergeChangeDistributor;
     TSTCellRangeCache *_mergeRangeCache;
     TSTTableModel *_tableModel;
     TSCECalculationEngine *_calculationEngine;
-    TSTMergeChangeDistributor *_mergeChangeDistributor;
     struct TSKUIDStruct _ownerUID;
 }
 
 + (vector_fad096c6)mergeListFromModelMergeList:(const void *)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(retain, nonatomic) TSTMergeChangeDistributor *mergeChangeDistributor; // @synthesize mergeChangeDistributor=_mergeChangeDistributor;
 @property(nonatomic) __weak TSCECalculationEngine *calculationEngine; // @synthesize calculationEngine=_calculationEngine;
 @property(readonly, nonatomic) __weak TSTTableModel *tableModel; // @synthesize tableModel=_tableModel;
 @property(retain, nonatomic) TSTCellRangeCache *mergeRangeCache; // @synthesize mergeRangeCache=_mergeRangeCache;
 @property(nonatomic) _Bool mergeCacheLoaded; // @synthesize mergeCacheLoaded=_mergeCacheLoaded;
+@property(retain, nonatomic) TSTMergeChangeDistributor *mergeChangeDistributor; // @synthesize mergeChangeDistributor=_mergeChangeDistributor;
 @property(readonly, nonatomic) const void *reverseOriginsMap; // @synthesize reverseOriginsMap=_reverseOriginsMap;
 @property(readonly, nonatomic) const void *mergeOriginsMap; // @synthesize mergeOriginsMap=_mergeOriginsMap;
 @property(nonatomic) struct TSKUIDStruct ownerUID; // @synthesize ownerUID=_ownerUID;
@@ -71,12 +71,13 @@
 - (void)enumerateMergesIntersectingBaseCellRegion:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)p_enumerateMergesUsingBlock:(CDUnknownBlockType)arg1;
 - (_Bool)find:(struct TSUModelCellRect)arg1;
-- (id)p_growReturningInverseForAction:(id)arg1;
+- (id)p_growReturningInverseForAction:(id)arg1 formulaReplacer:(id)arg2;
 - (struct TSUModelCellRect)p_growRangeFrom:(struct TSUModelCellRect)arg1 toDesired:(struct TSUModelCellRect)arg2;
-- (id)p_shrinkReturningInverseForAction:(id)arg1;
+- (id)p_shrinkReturningInverseForAction:(id)arg1 formulaReplacer:(id)arg2;
+- (id)shrinkReturningInverseForBaseCellRegion:(id)arg1 formulaReplacer:(id)arg2;
 - (id)shrinkReturningInverseForBaseCellRegion:(id)arg1;
 - (id)removeReturningInverseForBaseCellRegion:(id)arg1;
-- (id)performActionReturningInverse:(id)arg1;
+- (id)performActionReturningInverse:(id)arg1 formulaReplacer:(id)arg2;
 - (void)removeBaseMergeRange:(struct TSUModelCellRect)arg1;
 - (_Bool)insertBaseMergeRangeRemovingOverlaps:(struct TSUModelCellRect)arg1;
 - (_Bool)insertBaseMergeRange:(struct TSUModelCellRect)arg1;
@@ -87,7 +88,7 @@
 - (_Bool)isValidMergeRange:(struct TSUModelCellRect)arg1;
 - (id)mergeActionForBaseCellRegion:(id)arg1 nonOriginPartialsOnly:(_Bool)arg2;
 - (id)mergeActionForBaseCellRegion:(id)arg1;
-- (id)p_shrinkMergesAtIndexes:(id)arg1 intersectedByBaseRegion:(id)arg2;
+- (id)p_shrinkMergesAtIndexes:(id)arg1 intersectedByBaseRegion:(id)arg2 formulaReplacer:(id)arg3;
 - (void)p_moveCellFromCellCoord:(struct TSUModelCellCoord)arg1 toCellCoord:(struct TSUModelCellCoord)arg2;
 - (void)p_updateOriginMapWithSourceCellCoord:(struct TSUModelCellCoord)arg1 destCellCoord:(struct TSUModelCellCoord)arg2;
 @property(readonly, nonatomic) _Bool isEmpty;

@@ -9,16 +9,17 @@
 @class GEOMapServiceTraits, NSArray, NSDictionary, NSNumber, NSString, PBRequest;
 
 @protocol GEOServiceRequestConfiguring <NSObject>
+- (_Bool)supportsOffline;
 - (NSNumber *)serviceTypeNumber;
 - (NSString *)debugRequestName;
-- (CDStruct_d1a7ebee)dataRequestKindForRequest:(PBRequest *)arg1 traits:(GEOMapServiceTraits *)arg2;
+- (CDStruct_026435ec)dataRequestKindForRequest:(PBRequest *)arg1 traits:(GEOMapServiceTraits *)arg2;
 - (NSDictionary *)additionalHTTPHeaders;
 - (NSArray *)additionalURLQueryItems;
 - (unsigned long long)urlType;
 
 @optional
+- (int)analyticNetworkServiceTypeForRequest:(PBRequest *)arg1 traits:(GEOMapServiceTraits *)arg2;
 - (_Bool)usesBackgroundURL;
-- (NSString *)appIdForNetworkEvent;
 - (NSArray *)additionalStatesForNetworkEvent;
 - (unsigned long long)multipathServiceType;
 - (double)timeout;

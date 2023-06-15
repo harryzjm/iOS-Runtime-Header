@@ -12,6 +12,7 @@
 @property(readonly, nonatomic) _Bool isLocalVideoKeyFrameValid;
 @property(readonly, nonatomic) unsigned long long originalResourceChoice;
 @property(readonly, nonatomic) _Bool isRAWPlusJPEG;
+@property(readonly, nonatomic) _Bool isWalrusEnabled;
 @property(readonly, nonatomic) unsigned short deferredProcessingNeeded;
 @property(readonly, nonatomic) unsigned long long effectiveThumbnailIndex;
 @property(readonly, nonatomic) long long mediaType;

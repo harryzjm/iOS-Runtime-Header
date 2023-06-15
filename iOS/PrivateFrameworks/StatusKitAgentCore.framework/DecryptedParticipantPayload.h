@@ -6,13 +6,14 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-@class NSString;
+@class NSData, NSString;
 
 __attribute__((visibility("hidden")))
 @interface DecryptedParticipantPayload : PBCodable
 {
     unsigned long long _timestamp;
     NSString *_channelIdentifier;
+    NSData *_clientPayload;
     NSString *_presenceIdentifier;
     NSString *_tokenUri;
     struct {
@@ -21,6 +22,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSData *clientPayload; // @synthesize clientPayload=_clientPayload;
 @property(nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
 @property(retain, nonatomic) NSString *channelIdentifier; // @synthesize channelIdentifier=_channelIdentifier;
 @property(retain, nonatomic) NSString *presenceIdentifier; // @synthesize presenceIdentifier=_presenceIdentifier;
@@ -34,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasClientPayload;
 @property(nonatomic) _Bool hasTimestamp;
 @property(readonly, nonatomic) _Bool hasChannelIdentifier;
 @property(readonly, nonatomic) _Bool hasPresenceIdentifier;

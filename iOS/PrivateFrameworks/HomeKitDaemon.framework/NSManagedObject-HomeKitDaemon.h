@@ -24,6 +24,7 @@
 - (_Bool)hmd_validateCharacteristicValue:(id)arg1 key:(id)arg2 error:(id *)arg3;
 - (_Bool)hmd_validateNumber:(id)arg1 key:(id)arg2 error:(id *)arg3;
 - (_Bool)hmd_validateUUID:(id)arg1 key:(id)arg2 error:(id *)arg3;
+- (id)hmd_modelsWithChangeType:(unsigned long long)arg1 detached:(_Bool)arg2 createManagedObject:(_Bool)arg3 error:(id *)arg4;
 - (id)hmd_modelsWithChangeType:(unsigned long long)arg1 detached:(_Bool)arg2 error:(id *)arg3;
 - (id)hmd_parentModelID;
 - (id)hmd_modelID;

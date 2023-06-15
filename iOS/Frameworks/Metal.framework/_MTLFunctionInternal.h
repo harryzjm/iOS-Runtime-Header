@@ -6,7 +6,7 @@
 
 #import "_MTLFunction.h"
 
-@class NSObject, NSString;
+@class MTLFunctionConstantValuesInternal, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -21,6 +21,9 @@ __attribute__((visibility("hidden")))
     NSString *_filePath;
     long long _lineNumber;
     NSObject<OS_dispatch_queue> *_functionQueue;
+    NSString *_baseLibraryFilePath;
+    CDStruct_41a22ec7 _baseLibraryUUID;
+    MTLFunctionConstantValuesInternal *_baseFunctionConstantValues;
 }
 
 - (id).cxx_construct;
@@ -39,7 +42,8 @@ __attribute__((visibility("hidden")))
 - (id)newFunctionWithPluginData:(id)arg1 bitcodeType:(unsigned char)arg2;
 - (id)newSpecializedFunctionWithDescriptor:(id)arg1 destinationArchive:(id)arg2 functionCache:(id)arg3 error:(id *)arg4;
 - (void)newSpecializedFunctionWithDescriptor:(id)arg1 destinationArchive:(id)arg2 functionCache:(id)arg3 sync:(_Bool)arg4 completionHandler:(CDUnknownBlockType)arg5;
-- (_Bool)specializedFunctionHash:(CDStruct_41a22ec7 *)arg1 requestData:(id *)arg2 constants:(id)arg3 specializedName:(id)arg4 privateFunctions:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (void)storeTrackingDataWithDescriptor:(id)arg1 function:(id)arg2 variantHash:(const CDStruct_41a22ec7 *)arg3;
+- (_Bool)specializedFunctionHash:(CDStruct_41a22ec7 *)arg1 requestData:(id *)arg2 airScript:(id *)arg3 constants:(id)arg4 specializedName:(id)arg5 privateFunctions:(id)arg6 completionHandler:(CDUnknownBlockType)arg7;
 - (void)setOptions:(unsigned long long)arg1;
 - (void)setSourceArchiveOffset:(unsigned long long)arg1;
 - (unsigned long long)sourceArchiveOffset;
@@ -74,6 +78,10 @@ __attribute__((visibility("hidden")))
 - (const struct MTLFunctionData *)functionData;
 - (void *)programObject;
 - (void)dealloc;
+- (id)baseFunctionConstantValues;
+- (CDStruct_41a22ec7)baseLibraryUUID;
+- (id)baseLibraryFilePath;
+- (id)specializationAirScript;
 - (id)initWithName:(id)arg1 type:(unsigned long long)arg2 libraryData:(struct MTLLibraryData *)arg3 functionData:(struct MTLFunctionData *)arg4 device:(id)arg5;
 
 @end

@@ -63,6 +63,7 @@ __attribute__((visibility("hidden")))
 - (void)livePhotoView:(id)arg1 didEndPlaybackWithStyle:(long long)arg2;
 - (void)livePhotoView:(id)arg1 willBeginPlaybackWithStyle:(long long)arg2;
 - (_Bool)livePhotoView:(id)arg1 canBeginPlaybackWithStyle:(long long)arg2;
+- (void)becomeReusable;
 - (id)gestureRecognizers;
 - (id)loadView;
 - (void)dealloc;

@@ -13,9 +13,11 @@ __attribute__((visibility("hidden")))
     unsigned long long _deviceClass;
     unsigned long long _deviceSubtype;
     double _screenScale;
+    long long _rawDeviceIdiom;
 }
 
 + (id)sharedInstance;
+@property(readonly) long long rawDeviceIdiom; // @synthesize rawDeviceIdiom=_rawDeviceIdiom;
 @property(readonly) double screenScale; // @synthesize screenScale=_screenScale;
 @property(readonly) unsigned long long deviceSubtype; // @synthesize deviceSubtype=_deviceSubtype;
 @property(readonly) struct CGSize messagesLauncherIconSize;

@@ -8,7 +8,6 @@
 
 @class GDLazyGraphTripleRow, NSString;
 
-__attribute__((visibility("hidden")))
 @interface GDSQLRelationshipIdTripleRowIterator : NSObject
 {
     GDLazyGraphTripleRow *_lazyTripleRow;

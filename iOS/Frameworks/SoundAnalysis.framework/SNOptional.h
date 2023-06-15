@@ -6,17 +6,23 @@
 
 #import <objc/NSObject.h>
 
+@class MISSING_TYPE;
+
 __attribute__((visibility("hidden")))
 @interface SNOptional : NSObject
 {
-    id _object;
+    MISSING_TYPE *object;
 }
 
 - (void).cxx_destruct;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (unsigned long long)hash;
+- (id)copyWithZone:(void *)arg1;
+@property(nonatomic, readonly) long long hash;
+- (_Bool)isEqualToOptional:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
+- (id)initWithObject:(id)arg1;
+- (id)initEmpty;
 - (id)init;
+@property(nonatomic, readonly) id object; // @synthesize object;
 
 @end
 

@@ -12,18 +12,18 @@
 
 @interface XCAXAuditResult : NSObject <NSSecureCoding>
 {
-    NSString *_shortDescription;
-    NSString *_longDescription;
+    NSString *_compactDescription;
+    NSString *_detailedDescription;
     XCAccessibilityElement *_element;
-    long long _issueCode;
+    NSString *_auditType;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(nonatomic) long long issueCode; // @synthesize issueCode=_issueCode;
+@property(copy, nonatomic) NSString *auditType; // @synthesize auditType=_auditType;
 @property(copy, nonatomic) XCAccessibilityElement *element; // @synthesize element=_element;
-@property(copy, nonatomic) NSString *longDescription; // @synthesize longDescription=_longDescription;
-@property(copy, nonatomic) NSString *shortDescription; // @synthesize shortDescription=_shortDescription;
+@property(copy, nonatomic) NSString *detailedDescription; // @synthesize detailedDescription=_detailedDescription;
+@property(copy, nonatomic) NSString *compactDescription; // @synthesize compactDescription=_compactDescription;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

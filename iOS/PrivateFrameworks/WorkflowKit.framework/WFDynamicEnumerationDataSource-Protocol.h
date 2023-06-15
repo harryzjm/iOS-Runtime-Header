@@ -19,6 +19,7 @@
 - (id)defaultSerializedRepresentationForEnumeration:(WFEnumerationParameter *)arg1;
 - (void)loadPossibleStatesForEnumeration:(WFEnumerationParameter *)arg1 searchTerm:(NSString *)arg2 completionHandler:(void (^)(INObjectCollection *, NSError *))arg3;
 - (NSArray *)possibleStatesForEnumeration:(WFEnumerationParameter *)arg1;
+- (_Bool)enumerationShouldAlwaysReloadPossibleStates:(WFEnumerationParameter *)arg1;
 - (_Bool)enumeration:(WFEnumerationParameter *)arg1 shouldStripSenstitiveContentFromValue:(id)arg2;
 - (WFIcon *)enumeration:(WFEnumerationParameter *)arg1 accessoryIconForPossibleState:(WFVariableSubstitutableParameterState *)arg2;
 - (WFImage *)enumeration:(WFEnumerationParameter *)arg1 accessoryImageForPossibleState:(WFVariableSubstitutableParameterState *)arg2;

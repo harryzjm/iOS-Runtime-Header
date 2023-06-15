@@ -9,14 +9,20 @@
 @interface SFCardSection (SearchUIViewClass)
 - (Class)_searchUIHorizontalViewClass;
 - (Class)_searchUIViewClass;
+- (long long)preferredBackgroundStyleForIsLeadingPrimaryCard:(_Bool)arg1;
+- (void)customizeSection:(id)arg1 isLeading:(_Bool)arg2;
 - (Class)_searchUIHorizontallyScrollingButtonControllerClass;
+- (struct NSDirectionalEdgeInsets)searchUIGridSectionModel_sectionInsetsFor:(id)arg1;
+- (struct NSDirectionalEdgeInsets)searchUIGridSectionModel_groupInset;
 - (double)searchUIGridSectionModel_interItemSpacing;
 - (_Bool)searchUIGridSectionModel_useBackground;
 - (id)searchUIGridSectionModel_heightDimensionWithColumnCount:(unsigned long long)arg1;
+- (_Bool)_wantsHeaderSeparator;
 - (double)searchUIHorizontallyScrollingSectionModel_interItemSpacing;
 - (_Bool)searchUIHorizontallyScrollingSectionModel_useBackground;
 - (id)searchUIHorizontallyScrollingSectionModel_heightDimension;
 - (id)searchUIHorizontallyScrollingSectionModel_widthDimension;
 - (double)searchUIHorizontallyScrollingSectionModel_widthDimensionMultiplier;
+- (_Bool)supportsConfiguration;
 @end
 

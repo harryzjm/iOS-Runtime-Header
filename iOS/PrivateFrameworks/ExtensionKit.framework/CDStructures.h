@@ -4,37 +4,30 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSObject;
-
 #pragma mark Blocks
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
 
 #pragma mark Named Structures
 
-struct CGPoint {
-    double _field1;
-    double _field2;
+struct _EXExtensionActivationRules {
+    id _field1;
+    id _field2;
+    id _field3;
+    id _field4;
+    id _field5;
+    id _field6;
+    id _field7;
+    id _field8;
 };
 
-struct CGRect {
-    struct CGPoint _field1;
-    struct CGSize _field2;
-};
-
-struct CGSize {
-    double _field1;
-    double _field2;
-};
-
-struct os_activity_scope_state_s {
-    unsigned long long opaque[2];
+struct os_unfair_lock_s {
+    unsigned int _os_unfair_lock_opaque;
 };
 
 #pragma mark Typedef'd Structures
 
 typedef struct {
-    struct os_activity_scope_state_s state;
-    NSObject *osActivity;
-} CDStruct_dfa98e2d;
+    unsigned int val[8];
+} CDStruct_4c969caf;
 

@@ -10,6 +10,8 @@
 {
 }
 
++ (_Bool)isLivePreviewEnabled;
++ (_Bool)isAlternateRenderModeEnabled;
 + (_Bool)expandedProductTypesAreEnabled;
 + (_Bool)isAlternateModeEnabled;
 - (void).cxx_destruct;

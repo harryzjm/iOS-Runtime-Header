@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     CEKSlider *_slider;
     _Bool _isSliderTouchDown;
     _Bool _isScrubbing;
+    _Bool _isInteractingWithWheelScrubber;
     CIImage *_inputImage;
     _Bool _monitorAdjustmentsForCache;
     NSMutableDictionary *_filterThumbnailCache;
@@ -54,10 +55,11 @@ __attribute__((visibility("hidden")))
 - (id)_effectAdjustment;
 - (long long)_adjustedFilterIndex;
 - (long long)toolControllerTag;
-- (_Bool)installLivePhotoPlaybackGestureRecognizer:(id)arg1;
-- (_Bool)installTogglePreviewGestureRecognizer:(id)arg1;
 - (_Bool)wantsZoomAndPanEnabled;
 - (id)centerToolbarView;
+- (_Bool)toolbarGlyphUsesHierarchicalColor;
+- (id)selectedToolbarIconGlyphName;
+- (id)toolbarIconGlyphName;
 - (id)toolbarIcon;
 - (id)localizedName;
 - (void)_updateScrubberLayout;

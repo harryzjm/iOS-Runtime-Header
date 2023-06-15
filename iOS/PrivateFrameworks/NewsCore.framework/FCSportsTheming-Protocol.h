@@ -7,8 +7,10 @@
 @class FCAssetHandle, FCColor;
 
 @protocol FCSportsTheming
+@property(readonly, nonatomic) unsigned long long sportsLogoMastheadVisibility;
 @property(readonly, nonatomic) long long sportsLogoMastheadHorizontalPaddingOffset;
 @property(readonly, nonatomic) long long sportsLogoMastheadLeadingOffset;
+@property(readonly, nonatomic) FCColor *sportsEventNavigationForegroundColor;
 @property(readonly, nonatomic) FCColor *sportsSecondaryColor;
 @property(readonly, nonatomic) FCColor *sportsPrimaryColor;
 @property(readonly, nonatomic) FCAssetHandle *sportsLogoImageLargeAssetHandle;

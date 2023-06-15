@@ -13,12 +13,15 @@
 - (void)labelMarkerDidChangeState:(const void *)arg1;
 - (void)selectedLabelMarkerWillDisappear:(const void *)arg1;
 - (void)labelManagerDidLayout;
+- (void)didFinishDaVinciTransition;
+- (_Bool)isChangingRegionWithoutAnimating;
 - (void)didUpdateSceneStatus:(unsigned char)arg1;
 - (void)willBecomeFullyDrawn;
 - (void)didFinishLoadingDataWithError:(NSError *)arg1;
 - (void)didFinishLoadingData;
 - (void)didStartLoadingData;
 - (_Bool)canChangeVenueFocus;
+- (void)locationInHikingToolTipRegion:(unsigned long long)arg1;
 - (void)nearestVenueDidChange:(const void *)arg1 building:(const void *)arg2;
 - (_Bool)wantsTimerTick;
 - (void)didPresent;

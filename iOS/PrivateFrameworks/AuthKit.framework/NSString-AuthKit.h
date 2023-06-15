@@ -12,8 +12,5 @@
 - (id)ak_safeBase64String;
 - (id)ak_stringByZeroPaddingOccurencesOfString:(id)arg1;
 - (id)ak_truncatedCopy;
-- (id)ak_urlEncoded;
-- (id)ak_SHA256String;
-- (id)ak_SHA256;
 @end
 

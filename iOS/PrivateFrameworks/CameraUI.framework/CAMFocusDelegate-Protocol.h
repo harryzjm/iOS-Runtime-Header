@@ -11,6 +11,7 @@
 @protocol CAMFocusDelegate <NSObject>
 - (void)captureControllerWillResetFocusAndExposure:(CUCaptureController *)arg1;
 - (_Bool)captureController:(CUCaptureController *)arg1 shouldResetFocusAndExposureForReason:(long long)arg2;
+- (_Bool)captureController:(CUCaptureController *)arg1 shouldResetFocusAndExposureAfterCaptureForType:(long long)arg2;
 - (void)captureController:(CUCaptureController *)arg1 didOutputFocusResult:(CAMFocusResult *)arg2;
 
 @optional

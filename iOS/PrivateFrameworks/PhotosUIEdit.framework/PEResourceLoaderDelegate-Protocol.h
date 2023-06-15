@@ -6,7 +6,8 @@
 
 #import <PhotosUIEdit/NSObject-Protocol.h>
 
-@class NSError, PEResourceLoadRequest, PEResourceLoadResult, PEResourceLoader;
+@class NSError, NSObject, PEResourceLoadRequest, PEResourceLoadResult, PEResourceLoader;
+@protocol OS_dispatch_queue;
 
 @protocol PEResourceLoaderDelegate <NSObject>
 - (void)resourceLoader:(PEResourceLoader *)arg1 request:(PEResourceLoadRequest *)arg2 downloadProgress:(double)arg3;
@@ -14,6 +15,7 @@
 - (void)resourceLoader:(PEResourceLoader *)arg1 request:(PEResourceLoadRequest *)arg2 didCompleteWithResult:(PEResourceLoadResult *)arg3;
 
 @optional
+- (NSObject<OS_dispatch_queue> *)callbackQueue;
 - (void)photoEditResourceLoadRequestResourcesAvailabilityChanged:(PEResourceLoadRequest *)arg1 previousAvailability:(long long)arg2 currentAvailability:(long long)arg3;
 - (void)photoEditResourceLoadRequestDidCompleteDownload:(PEResourceLoadRequest *)arg1;
 - (void)photoEditResourceLoadRequestWillBeginDownload:(PEResourceLoadRequest *)arg1;

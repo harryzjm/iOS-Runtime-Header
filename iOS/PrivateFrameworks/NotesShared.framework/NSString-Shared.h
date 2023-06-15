@@ -13,8 +13,8 @@
 - (void)setDocument:(id)arg1;
 - (void)walkGraph:(CDUnknownBlockType)arg1;
 - (id)deltaSince:(id)arg1 in:(id)arg2;
-- (void)encodeWithCRCoder:(id)arg1;
-- (id)initWithCRCoder:(id)arg1;
+- (void)encodeWithICCRCoder:(id)arg1;
+- (id)initWithICCRCoder:(id)arg1;
 - (void)mergeWith:(id)arg1;
 
 // Remaining properties

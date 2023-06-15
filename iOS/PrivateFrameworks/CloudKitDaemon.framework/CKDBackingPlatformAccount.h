@@ -13,7 +13,7 @@
 - (void)updateAccountPropertiesAndSaveAccount:(CDUnknownBlockType)arg1;
 - (id)ckAccount;
 - (long long)accountType;
-- (id)_initWithParentAccount:(id)arg1;
+- (id)initWithAppleAccount:(id)arg1;
 
 @end
 

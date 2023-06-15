@@ -11,11 +11,13 @@
 __attribute__((visibility("hidden")))
 @interface _LSDataBackedPropertyList : _LSLazyPropertyList
 {
-    NSData *_plistData;
+    NSData *_rawPlistData;
     _LSPlistHint *_plistHint;
+    struct unfair_lock_mutex _lock;
 }
 
 + (_Bool)supportsSecureCoding;
+- (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

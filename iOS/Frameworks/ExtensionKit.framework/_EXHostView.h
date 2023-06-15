@@ -4,17 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 __attribute__((visibility("hidden")))
 @interface _EXHostView : UIView
 {
+    float _horizontalContentCompressionResistancePriority;
+    float _verticalContentCompressionResistancePriority;
     UIView *_embededView;
 }
 
 - (void).cxx_destruct;
+@property float verticalContentCompressionResistancePriority; // @synthesize verticalContentCompressionResistancePriority=_verticalContentCompressionResistancePriority;
+@property float horizontalContentCompressionResistancePriority; // @synthesize horizontalContentCompressionResistancePriority=_horizontalContentCompressionResistancePriority;
 @property(retain) UIView *embededView; // @synthesize embededView=_embededView;
 - (void)embedView:(id)arg1;
+- (void)setContentCompressionResistancePriority:(float)arg1 forAxis:(long long)arg2;
 
 @end
 

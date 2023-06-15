@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
 @class MISSING_TYPE, UIImageView, UILabel;
 
@@ -42,7 +42,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
-- (void)traitCollectionDidChange:(id)arg1;
+- (void)updateViewLayout:(id)arg1 previousTraitCollection:(id)arg2;
 - (void)viewDidLoad;
 - (void)tertiaryButtonClicked;
 - (void)cancelButtonClicked;

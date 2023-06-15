@@ -6,7 +6,7 @@
 
 #import <AuthenticationServicesCore/NSObject-Protocol.h>
 
-@class ASCAuthorizationPresentationContext, LAContext, NSArray, NSError, NSString;
+@class ASCAuthorizationPresentationContext, BSProcessHandle, LAContext, NSArray, NSError, NSString;
 @protocol ASCCredentialProtocol, ASCLoginChoiceProtocol;
 
 @protocol ASCAuthorizationPresenterHostProtocol <NSObject>
@@ -17,7 +17,7 @@
 - (void)validateUserEnteredPIN:(NSString *)arg1 completionHandler:(void (^)(id <ASCCredentialProtocol>, NSError *))arg2;
 - (void)authorizationRequestFinishedWithCredential:(id <ASCCredentialProtocol>)arg1 error:(NSError *)arg2 completionHandler:(void (^)(void))arg3;
 - (void)authorizationRequestInitiatedWithLoginChoice:(id <ASCLoginChoiceProtocol>)arg1 authenticatedContext:(LAContext *)arg2 completionHandler:(void (^)(id <ASCCredentialProtocol>, NSError *))arg3;
-- (void)presentAuthorizationWithContext:(ASCAuthorizationPresentationContext *)arg1 completionHandler:(void (^)(id <ASCCredentialProtocol>, NSError *))arg2;
+- (void)presentAuthorizationWithContext:(ASCAuthorizationPresentationContext *)arg1 forProcess:(BSProcessHandle *)arg2 completionHandler:(void (^)(id <ASCCredentialProtocol>, NSError *))arg3;
 - (void)updateInterfaceForUserVisibleError:(NSError *)arg1;
 - (void)presentPINEntryInterface;
 - (void)updateInterfaceWithLoginChoices:(NSArray *)arg1;

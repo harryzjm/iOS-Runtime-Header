@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSLayoutConstraint, UIStackView;
+@class NSLayoutConstraint, UIStackView, UIView;
 
 __attribute__((visibility("hidden")))
 @interface _UIFindNavigatorViewLayout_iPhone
@@ -13,12 +13,16 @@ __attribute__((visibility("hidden")))
     UIStackView *_findStackView;
     UIStackView *_replaceStackView;
     UIStackView *_nextPrevStackView;
+    UIView *_nextPrevSpacerView;
     NSLayoutConstraint *_doneSpaceConstraint;
     NSLayoutConstraint *_replaceButtonWidthConstraint;
 }
 
 - (void).cxx_destruct;
 - (void)layoutSubviews;
+- (struct CGRect)preferredVerticalStackViewFrame;
+@property(readonly, nonatomic) _Bool usesSmallScreenStyle;
+- (void)_setAndActivateConstraints;
 - (void)prepareForLayout;
 - (void)setReplaceFieldVisible:(_Bool)arg1;
 - (struct CGSize)preferredContentSize;

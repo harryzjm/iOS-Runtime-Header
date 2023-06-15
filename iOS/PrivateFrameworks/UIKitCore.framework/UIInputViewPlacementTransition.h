@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     id <UIInputViewAnimationController> animationController;
 }
 
++ (id)transitionForExistingPlacement:(id)arg1 animationStyle:(id)arg2;
 + (id)transitionFromPlacement:(id)arg1 toPlacement:(id)arg2 withAnimationStyle:(id)arg3;
 - (void).cxx_destruct;
 @property(retain, nonatomic) id <UIInputViewAnimationController> animationController; // @synthesize animationController;

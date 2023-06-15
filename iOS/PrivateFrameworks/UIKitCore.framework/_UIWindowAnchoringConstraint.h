@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
     UIWindow *_window;
 }
 
-@property(nonatomic) UIWindow *window; // @synthesize window=_window;
 - (_Bool)_addToEngine:(id)arg1 integralizationAdjustment:(double)arg2 mutuallyExclusiveConstraints:(id *)arg3;
 
 @end

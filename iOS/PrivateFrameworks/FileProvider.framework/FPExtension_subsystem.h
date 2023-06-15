@@ -6,19 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSString;
+@class NSString;
 
 __attribute__((visibility("hidden")))
 @interface FPExtension_subsystem : NSObject
 {
-    _Bool _initialized;
-    NSDictionary *_infoDictionary;
 }
 
 + (id)initForPlugInKit;
 + (id)sharedInstance;
-- (void).cxx_destruct;
-@property(copy, nonatomic) NSDictionary *infoDictionary; // @synthesize infoDictionary=_infoDictionary;
 - (void)endUsing:(id)arg1;
 - (void)beginUsing:(id)arg1 withBundle:(id)arg2;
 

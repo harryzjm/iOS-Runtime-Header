@@ -9,5 +9,8 @@
 @protocol MTLPipelineStateBinary
 @property(readonly) unsigned long long uniqueIdentifier;
 @property(readonly) NSData *binary;
+
+@optional
+@property(readonly) unsigned long long debugIdentifier;
 @end
 

@@ -10,7 +10,7 @@ __attribute__((visibility("hidden")))
 @interface VNVTSessionManager : NSObject
 {
     struct unique_ptr<SessionsHandler<VNVTPixelTransferSession>, std::default_delete<SessionsHandler<VNVTPixelTransferSession>>> _pixelTransferSessionsHandler;
-    struct unique_ptr<SessionsHandler<VNVTImageRotationSession>, std::default_delete<SessionsHandler<VNVTImageRotationSession>>> _imageRotationSessionsHandler;
+    struct unique_ptr<SessionsHandler<VNVTPixelRotationSession>, std::default_delete<SessionsHandler<VNVTPixelRotationSession>>> _pixelRotationSessionsHandler;
     unsigned long long _maxSessionsCount;
 }
 

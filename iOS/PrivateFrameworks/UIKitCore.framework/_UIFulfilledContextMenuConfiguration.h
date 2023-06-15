@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, UIAction, UIMenu, UIResponder, UIViewController;
+@class NSArray, UIAction, UIMenu, UIResponder, UITargetedPreview, UIViewController;
 @protocol NSCopying;
 
 __attribute__((visibility("hidden")))
@@ -14,6 +14,8 @@ __attribute__((visibility("hidden")))
 {
     id <NSCopying> _identifier;
     id _internalIdentifier;
+    UITargetedPreview *_sourcePreview;
+    NSArray *_secondarySourcePreviews;
     UIViewController *_previewViewController;
     NSArray *_accessoryViews;
     UIMenu *_menu;
@@ -31,6 +33,8 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) UIMenu *menu; // @synthesize menu=_menu;
 @property(retain, nonatomic) NSArray *accessoryViews; // @synthesize accessoryViews=_accessoryViews;
 @property(retain, nonatomic) UIViewController *previewViewController; // @synthesize previewViewController=_previewViewController;
+@property(retain, nonatomic) NSArray *secondarySourcePreviews; // @synthesize secondarySourcePreviews=_secondarySourcePreviews;
+@property(retain, nonatomic) UITargetedPreview *sourcePreview; // @synthesize sourcePreview=_sourcePreview;
 @property(retain, nonatomic) id internalIdentifier; // @synthesize internalIdentifier=_internalIdentifier;
 @property(copy, nonatomic) id <NSCopying> identifier; // @synthesize identifier=_identifier;
 @property(readonly, nonatomic) _Bool isMultiItemMenu;

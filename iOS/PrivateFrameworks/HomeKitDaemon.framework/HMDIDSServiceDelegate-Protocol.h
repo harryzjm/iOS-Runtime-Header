@@ -6,12 +6,13 @@
 
 #import <HomeKitDaemon/NSObject-Protocol.h>
 
-@class IDSAccount, IDSMessageContext, NSArray, NSDictionary, NSError, NSSet, NSString;
+@class IDSAccount, IDSMessageContext, NSArray, NSDictionary, NSError, NSSet, NSString, NSURL;
 @protocol HMDIDSService;
 
 @protocol HMDIDSServiceDelegate <NSObject>
 
 @optional
+- (void)service:(id <HMDIDSService>)arg1 account:(IDSAccount *)arg2 incomingResourceAtURL:(NSURL *)arg3 metadata:(NSDictionary *)arg4 fromID:(NSString *)arg5 context:(IDSMessageContext *)arg6;
 - (void)service:(id <HMDIDSService>)arg1 account:(IDSAccount *)arg2 identifier:(NSString *)arg3 didSendWithSuccess:(_Bool)arg4 error:(NSError *)arg5 context:(IDSMessageContext *)arg6;
 - (void)service:(id <HMDIDSService>)arg1 account:(IDSAccount *)arg2 identifier:(NSString *)arg3 didSendWithSuccess:(_Bool)arg4 error:(NSError *)arg5;
 - (void)service:(id <HMDIDSService>)arg1 devicesChanged:(NSArray *)arg2;

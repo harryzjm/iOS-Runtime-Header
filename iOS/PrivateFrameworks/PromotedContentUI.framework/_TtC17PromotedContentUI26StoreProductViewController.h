@@ -4,17 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+#import <StoreKit/SKStoreProductViewController.h>
 
 @class MISSING_TYPE;
 
-@interface _TtC17PromotedContentUI26StoreProductViewController : UIViewController
+@interface _TtC17PromotedContentUI26StoreProductViewController : SKStoreProductViewController
 {
     MISSING_TYPE *actionResult;
     MISSING_TYPE *actionDelegate;
     MISSING_TYPE *adamIdentifier;
     MISSING_TYPE *notificationObserver;
-    MISSING_TYPE *storeProductViewController;
+    MISSING_TYPE *notificationOpenObserver;
+    MISSING_TYPE *backgroundedTime;
 }
 
 - (void).cxx_destruct;
@@ -23,7 +24,6 @@
 @property(nonatomic, readonly) unsigned long long supportedInterfaceOrientations;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
-- (void)viewDidLoad;
 
 @end
 

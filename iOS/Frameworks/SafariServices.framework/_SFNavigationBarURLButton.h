@@ -16,8 +16,8 @@ __attribute__((visibility("hidden")))
     UIVibrancyEffect *_vibrancyEffect;
     UIVisualEffectView *_effectView;
     UIView *_effectMask;
-    UIEditMenuInteraction *_editMenuInteraction;
     UIGestureRecognizer *_longPressGestureRecognizer;
+    UIEditMenuInteraction *_editMenuInteraction;
     PKScribbleInteraction *_pencilScribbleInteraction;
     double _backgroundAlphaFactor;
     _SFNavigationBarTheme *_theme;

@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, RBSLaunchContext, RBSProcessIdentity;
+@class NSObject, NSString, RBSLaunchContext, RBSProcessIdentity;
+@protocol OS_xpc_object;
 
 @protocol RBPersonaManaging
+- (_Bool)personaRequiredForExtensionContext:(RBSLaunchContext *)arg1 serviceDict:(NSObject<OS_xpc_object> *)arg2;
 - (_Bool)isConcretePersona:(NSString *)arg1;
 - (NSString *)personalPersonaUniqueString;
 - (_Bool)personaForIdentity:(RBSProcessIdentity *)arg1 context:(RBSLaunchContext *)arg2 personaUID:(out unsigned int *)arg3 personaUniqueString:(out id *)arg4;

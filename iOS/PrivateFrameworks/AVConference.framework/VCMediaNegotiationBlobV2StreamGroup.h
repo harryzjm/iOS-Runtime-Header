@@ -6,12 +6,13 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-@class NSMutableArray;
+@class NSMutableArray, VCMediaNegotiationBlobV2SettingsU1;
 
 __attribute__((visibility("hidden")))
 @interface VCMediaNegotiationBlobV2StreamGroup : PBCodable
 {
     NSMutableArray *_payloads;
+    VCMediaNegotiationBlobV2SettingsU1 *_settingsU1;
     unsigned int _streamGroup;
     NSMutableArray *_streams;
     struct {
@@ -28,6 +29,7 @@ __attribute__((visibility("hidden")))
 + (void)updateParentStreamIDForGroupConfig:(id)arg1;
 + (id)defaultsForStreamGroupCustom:(unsigned int)arg1;
 + (id)defaultsForStreamGroup:(unsigned int)arg1;
+@property(retain, nonatomic) VCMediaNegotiationBlobV2SettingsU1 *settingsU1; // @synthesize settingsU1=_settingsU1;
 @property(retain, nonatomic) NSMutableArray *streams; // @synthesize streams=_streams;
 @property(retain, nonatomic) NSMutableArray *payloads; // @synthesize payloads=_payloads;
 @property(nonatomic) unsigned int streamGroup; // @synthesize streamGroup=_streamGroup;
@@ -40,6 +42,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasSettingsU1;
 - (id)streamsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)streamsCount;
 - (void)addStreams:(id)arg1;

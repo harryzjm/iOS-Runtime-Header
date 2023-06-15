@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
 @class CNContactCardFieldPickerDataSource, NSArray, NSString, UIBarButtonItem, UITableView;
 @protocol CNContactCardFieldPickerDelegate;
@@ -12,21 +12,22 @@
 __attribute__((visibility("hidden")))
 @interface CNContactCardFieldPicker : UIViewController
 {
+    _Bool _shouldSelectDefaultFields;
     NSArray *_contacts;
-    NSArray *_filteredContacts;
     id <CNContactCardFieldPickerDelegate> _delegate;
     CNContactCardFieldPickerDataSource *_fieldPickerDataSource;
     UITableView *_tableView;
     UIBarButtonItem *_toggleSelectAllFieldsButton;
 }
 
++ (id)privateCardPropertiesForContacts:(id)arg1;
 + (id)imageProperties;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool shouldSelectDefaultFields; // @synthesize shouldSelectDefaultFields=_shouldSelectDefaultFields;
 @property(retain, nonatomic) UIBarButtonItem *toggleSelectAllFieldsButton; // @synthesize toggleSelectAllFieldsButton=_toggleSelectAllFieldsButton;
 @property(retain, nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;
 @property(retain, nonatomic) CNContactCardFieldPickerDataSource *fieldPickerDataSource; // @synthesize fieldPickerDataSource=_fieldPickerDataSource;
 @property(retain, nonatomic) id <CNContactCardFieldPickerDelegate> delegate; // @synthesize delegate=_delegate;
-@property(retain, nonatomic) NSArray *filteredContacts; // @synthesize filteredContacts=_filteredContacts;
 @property(retain, nonatomic) NSArray *contacts; // @synthesize contacts=_contacts;
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didDeselectRowAtIndexPath:(id)arg2;
@@ -38,16 +39,17 @@ __attribute__((visibility("hidden")))
 - (void)updateToggleSelectAllFieldsButtonTitle;
 - (void)deselectAllFields;
 - (void)selectAllFields;
+- (void)selectDefaultFields;
 - (void)toggleSelectionOfFields:(id)arg1;
 - (void)saveFilteredContacts;
 - (void)done:(id)arg1;
-- (void)configureNavigationItems;
+- (_Bool)isInActivityController;
+- (void)setUpDoneButton;
 - (void)setUpToggleSelectAllFieldsButton;
 - (void)setUpTableView;
-- (void)viewWillDisappear:(_Bool)arg1;
+- (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
-- (id)initWithContacts:(id)arg1 filteredContacts:(id)arg2;
 - (id)initWithContacts:(id)arg1;
 - (id)initWithContact:(id)arg1;
 

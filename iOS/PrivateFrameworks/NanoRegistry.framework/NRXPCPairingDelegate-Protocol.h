@@ -7,6 +7,7 @@
 @class NSData, NSDictionary, NSNumber, NSString, NSUUID;
 
 @protocol NRXPCPairingDelegate
+- (void)xpcUpdateWatchBuddyStage:(unsigned int)arg1 forPairingID:(NSUUID *)arg2;
 - (void)xpcIsAssertionActive:(NSString *)arg1 withCompletion:(void (^)(_Bool, NSError *))arg2;
 - (void)xpcIsPhoneReadyToMigrateDevice:(NSUUID *)arg1 withCompletion:(void (^)(unsigned long long, NSError *))arg2;
 - (void)xpcGetInitialSyncCompletedForPairingID:(NSUUID *)arg1 completion:(void (^)(_Bool, NSError *))arg2;

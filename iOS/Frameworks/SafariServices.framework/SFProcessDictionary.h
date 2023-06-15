@@ -6,28 +6,27 @@
 
 #import <objc/NSObject.h>
 
-@class BKSApplicationStateMonitor, NSCountedSet, NSMutableArray, NSMutableDictionary, NSMutableSet;
+@class NSCountedSet, NSMutableArray, NSMutableDictionary, NSMutableSet, RBSProcessMonitor;
 
 __attribute__((visibility("hidden")))
 @interface SFProcessDictionary : NSObject
 {
-    NSMutableDictionary *_pidToBundleIdentifierMap;
     NSMutableSet *_pidsPendingTermination;
+    RBSProcessMonitor *_processMonitor;
     NSMutableArray *_recentlyReferencedPIDs;
     NSCountedSet *_references;
-    BKSApplicationStateMonitor *_stateMonitor;
     NSMutableDictionary *_values;
     unsigned long long _cacheCapacity;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long cacheCapacity; // @synthesize cacheCapacity=_cacheCapacity;
-- (id)incrementReferenceForPID:(int)arg1 bundleIdentifier:(id)arg2 valueCreationBlock:(CDUnknownBlockType)arg3;
+- (id)incrementReferenceForPID:(int)arg1 additionalKey:(id)arg2 valueCreationBlock:(CDUnknownBlockType)arg3;
+- (id)incrementReferenceForPID:(int)arg1 valueCreationBlock:(CDUnknownBlockType)arg2;
 - (void)_removeUnreferencedObjectsIfNeeded;
 - (void)decrementReferenceForPID:(int)arg1;
-- (void)_removeValueForPID:(id)arg1;
-- (void)_handleProcessTermination:(int)arg1;
-- (void)_handleApplicationStateUpdate:(id)arg1;
+- (void)_removeValuesForPID:(id)arg1;
+- (void)_handleProcessStateUpdate:(int)arg1 state:(unsigned char)arg2;
 - (void)_updateInterestedApplications;
 - (void)dealloc;
 - (id)init;

@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIImageSymbolConfiguration.h>
+#import <UIKitCore/UIImageSymbolConfiguration.h>
 
 @interface UIImageSymbolConfiguration (PKPaletteButtonAdditions)
++ (long long)_pk_defaultImageSymbolScale;
 + (id)pk_defaultImageSymbolConfiguration;
 @end
 

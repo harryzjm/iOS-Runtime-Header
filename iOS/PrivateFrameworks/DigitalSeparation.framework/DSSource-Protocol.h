@@ -6,7 +6,7 @@
 
 #import <DigitalSeparation/NSObject-Protocol.h>
 
-@class NSString;
+@class NSArray, NSString;
 @protocol DSParticipation, DSSharedResource;
 
 @protocol DSSource <NSObject>
@@ -17,7 +17,11 @@
 - (void)fetchSharedResourcesWithCompletion:(void (^)(NSArray *, NSError *))arg1;
 
 @optional
+@property(readonly, copy, nonatomic) NSArray *resourceNames;
 - (void)updateVisibilityTo:(long long)arg1 onResource:(id <DSSharedResource>)arg2 withCompletion:(void (^)(id <DSSharedResource>, NSError *))arg3;
 - (void)updateParticipantAccessLevelTo:(unsigned long long)arg1 onResource:(id <DSSharedResource>)arg2 withCompletion:(void (^)(id <DSSharedResource>, NSError *))arg3;
+- (void)stopSharingResourcesWithName:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)stopSharingWithParticipant:(id <DSParticipation>)arg1 forResourceName:(NSString *)arg2 withCompletion:(void (^)(NSError *))arg3;
+- (void)fetchSharedResourcesWithName:(NSString *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 @end
 

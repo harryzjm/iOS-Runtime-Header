@@ -4,26 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UICollectionViewCell.h>
+#import <UIKitCore/UICollectionViewCell.h>
 
-@class MISSING_TYPE, NSLayoutConstraint, UILabel, UITextView;
+@class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
 @interface _TtC18HealthExperienceUI29DataTypeDetailDescriptionCell : UICollectionViewCell
 {
-    MISSING_TYPE *detailTextLabel;
-    MISSING_TYPE *attributionTextView;
-    MISSING_TYPE *labelSpacingConstraint;
+    MISSING_TYPE *$__lazy_storage_$_textView;
+    MISSING_TYPE *textInsets;
     MISSING_TYPE *item;
 }
 
 - (void).cxx_destruct;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)layoutSubviews;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)awakeFromNib;
-@property(nonatomic) __weak NSLayoutConstraint *labelSpacingConstraint; // @synthesize labelSpacingConstraint;
-@property(nonatomic) __weak UITextView *attributionTextView; // @synthesize attributionTextView;
-@property(nonatomic) __weak UILabel *detailTextLabel; // @synthesize detailTextLabel;
 
 @end
 

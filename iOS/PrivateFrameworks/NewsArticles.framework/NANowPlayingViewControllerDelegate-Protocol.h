@@ -4,15 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NANowPlayingViewController, UIContextMenuConfiguration, UIContextMenuInteraction;
+@class NANowPlayingViewController, UIMenu;
 
 @protocol NANowPlayingViewControllerDelegate
-- (UIContextMenuConfiguration *)nowPlayingViewController:(NANowPlayingViewController *)arg1 didReceiveContextMenuInteraction:(UIContextMenuInteraction *)arg2 configurationForMenuAtLocation:(struct CGPoint)arg3;
+- (UIMenu *)nowPlayingViewControllerProvidePlaybackRateMenu:(NANowPlayingViewController *)arg1;
 - (void)nowPlayingViewControllerDidRequestNavigateToArticle:(NANowPlayingViewController *)arg1;
 - (void)nowPlayingViewControllerDidTapDismissButton:(NANowPlayingViewController *)arg1;
 - (void)nowPlayingViewController:(NANowPlayingViewController *)arg1 seekToPosition:(double)arg2;
 - (void)nowPlayingViewControllerDidTapEllipsis:(NANowPlayingViewController *)arg1;
-- (void)nowPlayingViewControllerDidTapPlaybackRate:(NANowPlayingViewController *)arg1;
 - (void)nowPlayingViewControllerDidTapPlay:(NANowPlayingViewController *)arg1;
 - (void)nowPlayingViewControllerDidTapPause:(NANowPlayingViewController *)arg1;
 - (void)nowPlayingViewControllerDidTapNextTrack:(NANowPlayingViewController *)arg1;

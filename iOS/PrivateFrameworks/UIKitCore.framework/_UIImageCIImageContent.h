@@ -19,10 +19,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (struct CGSize)sizeInPixels;
-- (_Bool)canEmitDrawingCommands;
 - (_Bool)canScaleImageToTargetResolution;
 - (_Bool)isCIImage;
 - (id)CIImage;
+- (id)typeName;
 - (id)initWithScale:(double)arg1;
 - (id)initWithCIImage:(id)arg1 scale:(double)arg2;
 

@@ -11,6 +11,7 @@
 
 @interface _IDSIDQueryController : NSObject
 {
+    NSString *_listenerGUID;
     NSMutableDictionary *_listeners;
     NSMutableDictionary *_idStatusCache;
     NSMutableDictionary *_transactionIDToBlockMap;
@@ -26,6 +27,7 @@
 + (id)_createXPCConnectionOnQueue:(id)arg1;
 + (void)initialize;
 - (void).cxx_destruct;
+- (void)ktPeerVerificationResultsUpdated:(id)arg1 forService:(id)arg2;
 - (void)removeDelegate:(id)arg1 forService:(id)arg2 listenerID:(id)arg3;
 - (void)addDelegate:(id)arg1 forService:(id)arg2 listenerID:(id)arg3 queue:(id)arg4;
 - (_Bool)_flushQueryCacheForService:(id)arg1;
@@ -47,6 +49,7 @@
 - (_Bool)_refreshIDStatusForDestinations:(id)arg1 service:(id)arg2 listenerID:(id)arg3 allowRefresh:(_Bool)arg4 respectExpiry:(_Bool)arg5 waitForReply:(_Bool)arg6 forceRefresh:(_Bool)arg7 bypassLimit:(_Bool)arg8 queue:(id)arg9 completionBlock:(CDUnknownBlockType)arg10;
 - (void)_idStatusForDestinations:(id)arg1 service:(id)arg2 listenerID:(id)arg3 allowRenew:(_Bool)arg4 respectExpiry:(_Bool)arg5 waitForReply:(_Bool)arg6 forceRefresh:(_Bool)arg7 bypassLimit:(_Bool)arg8 completionBlock:(CDUnknownBlockType)arg9;
 - (void)_setCurrentIDStatus:(long long)arg1 forDestination:(id)arg2 service:(id)arg3;
+- (void)_callDelegatesForService:(id)arg1 destinationToVerifierResult:(id)arg2;
 - (id)_delegateMapForListenerID:(id)arg1 service:(id)arg2;
 - (void)_callDelegatesWithBlock:(CDUnknownBlockType)arg1 delegateMap:(id)arg2;
 - (void)_purgeIDStatusCache;

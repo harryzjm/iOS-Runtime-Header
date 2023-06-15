@@ -23,7 +23,6 @@ __attribute__((visibility("hidden")))
     shared_ptr_46708168 _camera;
     int _mapType;
     id <MDRenderTarget> _displayTarget;
-    void *_mapRenderer;
     void *_layoutContext;
     struct RunLoopController *_runLoopController;
     struct VKEdgeInsets _edgeInsets;
@@ -42,7 +41,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) double pitch;
 @property(readonly, nonatomic) double yaw;
 @property(readonly, nonatomic) GEOMapRegion *mapRegion;
-- (void)setCenterCoordinate:(CDStruct_c3b9c2ee)arg1 altitude:(double)arg2 yaw:(double)arg3 pitch:(double)arg4;
+- (void)setCenterCoordinate:(CDStruct_2c43369c)arg1 altitude:(double)arg2 yaw:(double)arg3 pitch:(double)arg4;
 - (void)setMapRegion:(id)arg1 pitch:(double)arg2 yaw:(double)arg3;
 - (void)cancelTileRequests;
 - (void)clearScene;

@@ -5,11 +5,10 @@
 //
 
 #import <SpringBoardHome/SBIconAnimationContaining-Protocol.h>
-#import <SpringBoardHome/WGWidgetIconAnimationExtraViewsProviding-Protocol.h>
 
 @class SBHIconModel, SBIconListView;
 
-@protocol SBIconZoomAnimationContaining <SBIconAnimationContaining, WGWidgetIconAnimationExtraViewsProviding>
+@protocol SBIconZoomAnimationContaining <SBIconAnimationContaining>
 @property(readonly, nonatomic) SBIconListView *dockIconListView;
 @property(readonly, nonatomic) SBIconListView *currentIconListView;
 @property(readonly, nonatomic) SBHIconModel *iconModel;

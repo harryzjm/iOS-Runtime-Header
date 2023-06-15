@@ -6,22 +6,25 @@
 
 #import <objc/NSObject.h>
 
+@class LPPointUnit;
+
 __attribute__((visibility("hidden")))
 @interface LPContactsBadgeStyle : NSObject
 {
     _Bool _useShadow;
-    double _size;
+    LPPointUnit *_size;
     double _margin;
     double _iconOffset;
     long long _location;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool useShadow; // @synthesize useShadow=_useShadow;
 @property(nonatomic) long long location; // @synthesize location=_location;
 @property(nonatomic) double iconOffset; // @synthesize iconOffset=_iconOffset;
 @property(nonatomic) double margin; // @synthesize margin=_margin;
-@property(nonatomic) double size; // @synthesize size=_size;
-- (id)init;
+@property(retain, nonatomic) LPPointUnit *size; // @synthesize size=_size;
+- (id)initWithPlatform:(long long)arg1;
 
 @end
 

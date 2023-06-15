@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class MISSING_TYPE, NSLayoutYAxisAnchor;
 
@@ -19,10 +19,11 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+- (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)didMoveToSuperview;
 - (void)layoutSubviews;
-- (id)initWithFrame:(struct CGRect)arg1;
+@property(nonatomic, readonly) struct CGSize intrinsicContentSize;
 @property(nonatomic, readonly) UIView *viewForLastBaselineLayout;
 @property(nonatomic, readonly) UIView *viewForFirstBaselineLayout;
 @property(nonatomic, readonly) NSLayoutYAxisAnchor *lastBaselineAnchor;

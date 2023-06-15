@@ -34,6 +34,9 @@
 @property(readonly, nonatomic) __weak SBWindowScene *windowScene;
 - (void)setFluidDismissalState:(SBFluidDismissalState *)arg1 forViewController:(SBTransientOverlayViewController *)arg2;
 - (id <BSInvalidatable>)newContentStatusBarHiddenAssertionWithReason:(NSString *)arg1;
+- (_Bool)hasActiveSpotlightPresentation;
+- (_Bool)isTopmostPresentationFromSceneWithIdentityTokenString:(NSString *)arg1;
+- (_Bool)hasActivePresentationFromBundleIdentifier:(NSString *)arg1;
 - (_Bool)hasActivePresentationFromProcess:(BSProcessHandle *)arg1;
 - (_Bool)handleDoubleHeightStatusBarTap;
 - (_Bool)isTopmostPresentedViewController:(SBTransientOverlayViewController *)arg1;

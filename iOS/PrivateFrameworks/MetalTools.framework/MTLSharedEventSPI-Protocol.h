@@ -6,7 +6,11 @@
 
 #import <MetalTools/MTLSharedEvent-Protocol.h>
 
+@class IOSurfaceSharedEvent;
+
 @protocol MTLSharedEventSPI <MTLSharedEvent>
+@property(readonly) _Bool supportsRollback;
+@property(readonly, nonatomic) IOSurfaceSharedEvent *IOSurfaceSharedEvent;
 - (_Bool)waitUntilSignaledValue:(unsigned long long)arg1 timeoutMS:(unsigned long long)arg2;
 @end
 

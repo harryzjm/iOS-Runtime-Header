@@ -6,7 +6,7 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class UIEvent, UIIndexBarDisplayEntry, UIIndexBarEntry, UIIndexBarView, UITouch, UITraitCollection;
+@class UIEvent, UIIndexBarDisplayEntry, UIIndexBarEntry, UIIndexBarView, UITouch, UIView;
 
 @protocol UIIndexBarVisualStyle <NSObject>
 @property(readonly, nonatomic) double indexWidth;
@@ -19,13 +19,13 @@
 - (id)initWithView:(UIIndexBarView *)arg1;
 
 @optional
++ (UIView *)containerViewForIndexBar:(UIIndexBarView *)arg1;
 @property(nonatomic) _Bool expanded;
 - (void)handleTouch:(UITouch *)arg1 withEvent:(UIEvent *)arg2 touchedEntryIndex:(long long)arg3;
 - (void)trackingDidEnd;
 - (void)selectedSectionDidChange:(long long)arg1;
 - (void)trackingDidBegin;
 - (long long)_accessibility_indexForEntryAtPoint:(struct CGPoint)arg1;
-- (void)traitCollectionDidChange:(UITraitCollection *)arg1;
 - (_Bool)updateSectionForTouch:(UITouch *)arg1 withEvent:(UIEvent *)arg2;
 - (void)drawRect:(struct CGRect)arg1;
 - (void)layoutSubviews;

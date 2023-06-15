@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
     PLVideoRemaker *_videoRemaker;
     CDUnknownBlockType _remakerCompletionHandler;
     id _strongSelf;
-    _Bool _isSharingSingleVideo;
+    _Bool _shouldTranscodeSingleVideo;
     _Bool _didCheckMailDropAvailable;
     _Bool _isMailDropAvailable;
     _Bool _canSendMailInNewScene;

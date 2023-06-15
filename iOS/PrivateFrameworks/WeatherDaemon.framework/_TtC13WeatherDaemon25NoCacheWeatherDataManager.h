@@ -11,6 +11,9 @@
 @interface _TtC13WeatherDaemon25NoCacheWeatherDataManager : _TtCs12_SwiftObject
 {
     MISSING_TYPE *service;
+    MISSING_TYPE *interpolator;
+    MISSING_TYPE *lastFetched;
+    MISSING_TYPE *lock;
 }
 
 @end

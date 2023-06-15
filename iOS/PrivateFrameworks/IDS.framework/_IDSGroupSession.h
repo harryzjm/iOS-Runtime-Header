@@ -35,6 +35,7 @@
     _Bool _alwaysSkipSelf;
     _Bool _startAsUPlusOneSession;
     _Bool _isLightweightParticipant;
+    _Bool _callScreeningMode;
     unsigned int _sessionEndedReason;
     NSMutableDictionary *_preferences;
     NSMutableDictionary *_sessionConfig;
@@ -42,12 +43,6 @@
     NSString *_stableGroupID;
     NSString *_groupID;
     NSDictionary *_participantInfo;
-    struct cfs_client_s *_cfs_client;
-    int _cfs_requestID;
-    _Bool _cfsJoinReply;
-    _Bool _didJoinCallback;
-    _Bool _cfsLeaveReply;
-    _Bool _didLeaveCallback;
     NSArray *_existingParticipants;
     NSError *_joinLeaveError;
     NSNumber *_qrReason;
@@ -55,6 +50,7 @@
     unsigned long long _localParticipantID;
     IDSGroupEncryptionKeyMaterialCache *_keyMaterialCache;
     NSMutableArray *_dataCryptorRequests;
+    NSMutableDictionary *_URIsToParticipantIDRequests;
     NSMutableDictionary *_createParticipantIDAliasCallbacks;
     NSMutableDictionary *_getParticipantIDForAliasCallbacks;
     NSMutableArray *_getParticipantIDForAliasDelegateQueueCallbacks;
@@ -70,10 +66,12 @@
 @property(readonly, nonatomic) unsigned long long localParticipantID; // @synthesize localParticipantID=_localParticipantID;
 @property(retain, nonatomic) id boostContext; // @synthesize boostContext=_boostContext;
 @property(readonly, nonatomic) unsigned int state; // @synthesize state=_state;
+- (id)getURIsToParticipantIDRequests;
 - (id)getDestinationsLightweightStatusDict;
 - (id)getDestinations;
 - (void)setKeyMaterialCache:(id)arg1;
 - (void)setUniqueID:(id)arg1;
+- (void)emptyXPCReply;
 - (id)keyValueDelivery;
 - (void)xpcObject:(id)arg1 objectContext:(id)arg2;
 - (void)session:(id)arg1 didReceiveServerErrorCode:(unsigned int)arg2;
@@ -83,6 +81,7 @@
 - (void)session:(id)arg1 didCreateParticipantIDAlias:(unsigned long long)arg2 forParticipantID:(unsigned long long)arg3 salt:(id)arg4;
 - (void)session:(id)arg1 hasOutdatedSKI:(id)arg2;
 - (void)participantUpdatedForSession:(id)arg1;
+- (void)session:(id)arg1 didReceiveURIsForParticipantIDs:(id)arg2 withRequestID:(id)arg3;
 - (void)session:(id)arg1 didReceiveParticipantIDs:(id)arg2 withCode:(unsigned int)arg3 managementType:(unsigned short)arg4;
 - (void)sessionDidReceiveParticipantUpgrade:(id)arg1 participantType:(unsigned short)arg2 error:(id)arg3;
 - (void)session:(id)arg1 shouldInvalidateKeyMaterialByKeyIndexes:(id)arg2;
@@ -99,10 +98,10 @@
 - (void)sessionDidLeaveGroup:(id)arg1 error:(id)arg2;
 - (void)sessionDidJoinGroup:(id)arg1 participantUpdateDictionary:(id)arg2 error:(id)arg3;
 - (void)sessionDidJoinGroup:(id)arg1 participantInfo:(id)arg2 error:(id)arg3;
-- (void)sessionDidJoinGroup:(id)arg1 participantsInfo:(id)arg2 error:(id)arg3;
 - (void)groupSessionEnded:(id)arg1 withReason:(unsigned int)arg2 error:(id)arg3;
 - (void)groupSessionDidTerminate:(id)arg1;
 - (void)session:(id)arg1 didReceiveReport:(id)arg2;
+- (void)setCallScreeningMode:(_Bool)arg1;
 - (void)getParticipantIDForAlias:(unsigned long long)arg1 salt:(id)arg2 delegateQueueCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)createAliasForLocalParticipantIDWithSalt:(id)arg1 delegateQueueCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)createAliasForParticipantID:(unsigned long long)arg1 salt:(id)arg2 delegateQueueCompletionHandler:(CDUnknownBlockType)arg3;
@@ -115,12 +114,13 @@
 - (void)requestEncryptionKeyForParticipants:(id)arg1;
 - (void)unregisterPluginWithOptions:(id)arg1;
 - (void)registerPluginWithOptions:(id)arg1;
+- (void)requestURIsForParticipantIDs:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)requestActiveParticipants;
 @property(readonly, nonatomic) unsigned int sessionEndedReason;
 - (void)setRequiredCapabilities:(id)arg1 requiredLackOfCapabilities:(id)arg2;
 - (void)setPreferences:(id)arg1;
 - (void)reconnectUPlusOneSession;
-- (void)leaveGroupSession;
+- (void)leaveGroupSessionWithOptions:(id)arg1;
 - (void)joinWithOptions:(id)arg1;
 - (void)updateParticipantType:(unsigned short)arg1 members:(id)arg2 withContext:(id)arg3 triggeredLocally:(_Bool)arg4;
 - (void)setParticipantInfo:(id)arg1;

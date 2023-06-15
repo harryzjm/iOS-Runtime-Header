@@ -9,6 +9,6 @@
 @class SUICVoiceSelectionViewModel;
 
 @protocol SUICVoiceSelectionViewModelProviding <NSObject>
-@property(nonatomic, readonly) SUICVoiceSelectionViewModel *voiceSelectionViewModel;
+@property(readonly, copy, nonatomic) SUICVoiceSelectionViewModel *voiceSelectionViewModel;
 @end
 

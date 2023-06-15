@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class ICLiveLinkIdentity, MPCPlaybackSharedListeningProperties;
+@class ICLiveLinkIdentity, MPCPlaybackSharedListeningProperties, NSString;
 
 __attribute__((visibility("hidden")))
 @interface MPCSharedListeningPlaybackIntentTracklistToken : NSObject
@@ -16,11 +16,19 @@ __attribute__((visibility("hidden")))
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)payloadValueFromJSONValue:(id)arg1;
 - (void).cxx_destruct;
 @property(copy, nonatomic) ICLiveLinkIdentity *identity; // @synthesize identity=_identity;
 @property(copy, nonatomic) MPCPlaybackSharedListeningProperties *sharedListeningProperties; // @synthesize sharedListeningProperties=_sharedListeningProperties;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)mpc_jsonValue;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

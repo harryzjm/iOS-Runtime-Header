@@ -11,10 +11,17 @@
 @interface GCGenericDeviceModel (DeviceDelegate)
 + (id)defaultSymbolNameForElement:(id)arg1;
 + (id)defaultLocalizedNameForElement:(id)arg1;
++ (_Bool)elementsMakeValidGamepad:(id)arg1;
 + (_Bool)elementsMakeValidExtendedGamepad:(id)arg1;
+- (_Bool)respondsToSelector:(SEL)arg1;
 - (id)logicalDevice:(id)arg1 makeControllerPhysicalInputProfileWithIdentifier:(id)arg2;
+- (id)logicalDevice:(id)arg1 makeControllerInputDescriptionWithIdentifier:(id)arg2 bindings:(id)arg3;
 - (id)logicalDevice:(id)arg1 makeControllerPhysicalInputProfileDescriptionWithIdentifier:(id)arg2 bindings:(id)arg3;
+- (_Bool)logicalDeviceControllerIsAttachedToHost:(id)arg1;
 - (id)logicalDeviceControllerProductCategory:(id)arg1;
+- (Class)logicalDeviceControllerDescriptionClass:(id)arg1;
+- (id)physicalDeviceGetHapticCapabilityGraph:(id)arg1;
+- (id)physicalDeviceGetHapticCapabilities:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

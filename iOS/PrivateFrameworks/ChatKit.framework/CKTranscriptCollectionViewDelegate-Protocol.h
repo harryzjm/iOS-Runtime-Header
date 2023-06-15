@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ChatKit/CKEditableCollectionViewDelegate-Protocol.h>
+#import <ChatKit/UICollectionViewDelegate-Protocol.h>
 
-@class CKTranscriptCollectionView;
+@class CKTranscriptCollectionView, NSIndexPath;
 
-@protocol CKTranscriptCollectionViewDelegate <CKEditableCollectionViewDelegate>
+@protocol CKTranscriptCollectionViewDelegate <UICollectionViewDelegate>
+- (_Bool)collectionView:(CKTranscriptCollectionView *)arg1 shouldAllowSwipeForItemAtIndexPath:(NSIndexPath *)arg2;
 - (void)collectionViewDidInset:(CKTranscriptCollectionView *)arg1;
 - (void)collectionViewWillInset:(CKTranscriptCollectionView *)arg1 targetContentInset:(inout struct UIEdgeInsets *)arg2;
 - (void)collectionViewWillProgrammaticallyScroll:(CKTranscriptCollectionView *)arg1 animated:(_Bool)arg2;

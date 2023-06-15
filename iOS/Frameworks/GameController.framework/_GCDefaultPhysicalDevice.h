@@ -24,7 +24,7 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _batteryComponentBatteryUpdatedHandler;
     long long _cachedIntentEvent;
     CDUnknownBlockType _gameIntentComponentGameIntentTriggeredHandler;
-    long long _cachedGlyphSet;
+    unsigned long long _cachedGlyphFlags;
     id <NSObject><NSCopying><NSSecureCoding> _identifier;
     id <_GCDeviceManager> _manager;
     id <_GCDefaultPhysicalDeviceDelegate> _delegate;
@@ -47,7 +47,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak id <_GCDefaultPhysicalDeviceDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly) __weak id <_GCDeviceManager> manager; // @synthesize manager=_manager;
 @property(readonly, copy) id <NSObject><NSCopying><NSSecureCoding> identifier; // @synthesize identifier=_identifier;
-- (void)updateGlyphSetOverride;
+- (void)updateGlyphFlags;
 - (void)eaAccessoriesDidChange;
 - (id)propertyForKey:(id)arg1;
 @property(readonly) NSSet *components;
@@ -90,7 +90,7 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) CDUnknownBlockType deviceGameIntentComponentGameIntentTriggeredHandler;
 - (void)setEnableGlobalGameControllerFunctionality:(_Bool)arg1;
 - (void)triggerGameIntentWithEvent:(long long)arg1;
-- (long long)getGlyphSetOverride;
+- (unsigned long long)getGlyphFlags;
 
 // Remaining properties
 @property(readonly) unsigned long long hash;

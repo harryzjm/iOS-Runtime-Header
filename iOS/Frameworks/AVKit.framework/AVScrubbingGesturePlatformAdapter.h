@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak id <AVScrubbingGesturePlatformAdapterDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) _Bool gestureActive;
 @property(readonly, nonatomic) float timelineVelocity;
+@property(readonly, nonatomic) struct CGPoint translation;
 - (id)_abstractInit;
 
 @end

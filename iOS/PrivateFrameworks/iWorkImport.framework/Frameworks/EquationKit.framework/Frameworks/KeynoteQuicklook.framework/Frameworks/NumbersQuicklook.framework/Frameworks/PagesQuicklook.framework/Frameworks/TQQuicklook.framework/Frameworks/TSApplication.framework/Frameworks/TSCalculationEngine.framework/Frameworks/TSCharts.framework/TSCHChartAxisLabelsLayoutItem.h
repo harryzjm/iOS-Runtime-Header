@@ -15,7 +15,7 @@
 
 @property struct CGSize maxLabelSizeInPoints; // @synthesize maxLabelSizeInPoints=_maxLabelSizeInPoints;
 @property(nonatomic) double distanceFromAxis; // @synthesize distanceFromAxis=_distanceFromAxis;
-- (const struct CGPath *)newDragAndDropHighlightPathForSelection:(id)arg1;
+- (struct CGPath *)newDragAndDropHighlightPathForSelection:(id)arg1;
 - (void)iterateHitChartElements:(struct CGPoint)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (id)p_overrideLabelStringForHitTestingEmptyLabel;
 - (struct CGRect)layoutSpaceRectForAllLabels;
@@ -51,6 +51,7 @@
 - (unsigned long long)p_computeAutoStrideInLayoutSize:(struct CGSize)arg1;
 - (unsigned long long)p_numberOfAxisLabels;
 - (id)p_axis;
+- (unsigned long long)snappedLabelAngleInDegree:(float)arg1;
 @property(readonly, nonatomic) unsigned long long stride;
 - (unsigned long long)strideInLayoutSize:(struct CGSize)arg1;
 - (id)selectionPathLabelType;

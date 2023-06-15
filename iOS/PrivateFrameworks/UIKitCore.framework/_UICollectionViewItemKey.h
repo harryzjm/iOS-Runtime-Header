@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 @class NSIndexPath, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UICollectionViewItemKey : NSObject <NSCopying>
+@interface _UICollectionViewItemKey : NSObject
 {
     NSIndexPath *_indexPath;
     NSString *_identifier;
@@ -19,22 +17,11 @@ __attribute__((visibility("hidden")))
     unsigned long long _type;
 }
 
-+ (id)collectionItemKeyForLayoutAttributes:(id)arg1;
-+ (id)collectionItemKeyForDecorationViewOfKind:(id)arg1 andIndexPath:(id)arg2;
-+ (id)collectionItemKeyForSupplementaryViewOfKind:(id)arg1 andIndexPath:(id)arg2;
-+ (id)collectionItemKeyForCellWithIndexPath:(id)arg1;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) _Bool isClone; // @synthesize isClone=_isClone;
-@property(readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
-@property(readonly, retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property(readonly, retain, nonatomic) NSIndexPath *indexPath; // @synthesize indexPath=_indexPath;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
-- (id)copyAsClone:(_Bool)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
-- (id)initWithType:(unsigned long long)arg1 indexPath:(id)arg2 identifier:(id)arg3 clone:(_Bool)arg4;
-- (id)initWithType:(unsigned long long)arg1 indexPath:(id)arg2 identifier:(id)arg3;
 
 @end
 

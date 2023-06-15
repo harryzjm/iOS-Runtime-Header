@@ -4,16 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <swiftCore/_TtCs12_SwiftObject.h>
+#import <objc/NSObject.h>
 
 @class MISSING_TYPE;
 
-@interface _TtCC8Settings35SettingsExtensionHostViewControllerP33_66DE5C0BC5107F4CC3560F98A88F046722SettingsExtensionProxy : _TtCs12_SwiftObject
+@interface _TtCC8Settings35SettingsExtensionHostViewControllerP33_66DE5C0BC5107F4CC3560F98A88F046722SettingsExtensionProxy : NSObject
 {
     MISSING_TYPE *host;
+    MISSING_TYPE *hostIdentifier;
     MISSING_TYPE *completion;
-    MISSING_TYPE *connection;
+    MISSING_TYPE *$__lazy_storage_$_privateListener;
+    MISSING_TYPE *connections;
+    MISSING_TYPE *connectionError;
 }
+
+- (void).cxx_destruct;
+- (id)init;
+- (_Bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 
 @end
 

@@ -7,6 +7,7 @@
 #import <SearchFoundation/SFShowPhotosOneUpViewCommand.h>
 
 @interface SFShowPhotosOneUpViewCommand (SearchUICommandClass)
+- (id)_matchedPerson;
 - (Class)_searchUICommandHandlerClass;
 @end
 

@@ -29,14 +29,19 @@ __attribute__((visibility("hidden")))
     unsigned int _lastSentAudioSampleTime;
     double _lastSentAudioHostTime;
     _Bool _isServerBasedBandwidthProbingEnabled;
+    _Bool _isEndToEndBasedBandwidthProbingEnabled;
     NSString *_profileLevel;
+    struct tagVCVideoTransmitterRealtimeSPI _realtimeSPI;
+    _Bool _rtxEnabled;
 }
 
+@property(nonatomic, getter=isRtxEnabled) _Bool rtxEnabled; // @synthesize rtxEnabled=_rtxEnabled;
 @property(readonly) unsigned int targetFramerate; // @synthesize targetFramerate=_targetFramerate;
 @property(readonly) unsigned int encodingHeight; // @synthesize encodingHeight=_encodingHeight;
 @property(readonly) unsigned int encodingWidth; // @synthesize encodingWidth=_encodingWidth;
 @property(nonatomic) unsigned int targetBitrateChangeCounter; // @synthesize targetBitrateChangeCounter=_targetBitrateChangeCounter;
 @property(nonatomic) unsigned int targetBitrate; // @synthesize targetBitrate=_targetBitrate;
+@property(nonatomic) _Bool isEndToEndBasedBandwidthProbingEnabled; // @synthesize isEndToEndBasedBandwidthProbingEnabled=_isEndToEndBasedBandwidthProbingEnabled;
 @property(nonatomic) _Bool isServerBasedBandwidthProbingEnabled; // @synthesize isServerBasedBandwidthProbingEnabled=_isServerBasedBandwidthProbingEnabled;
 @property double lastSentAudioHostTime; // @synthesize lastSentAudioHostTime=_lastSentAudioHostTime;
 @property unsigned int lastSentAudioSampleTime; // @synthesize lastSentAudioSampleTime=_lastSentAudioSampleTime;
@@ -59,7 +64,6 @@ __attribute__((visibility("hidden")))
 - (void)generateKeyFrameWithFIRType:(int)arg1;
 - (void)stopVideo;
 - (void)startVideo;
-- (_Bool)enqueueVideoFrame:(struct opaqueCMSampleBuffer *)arg1 frameTime:(CDStruct_1b6d18a9)arg2 cameraStatusBits:(unsigned char)arg3;
 - (void)dealloc;
 - (id)initWithConfig:(id)arg1;
 

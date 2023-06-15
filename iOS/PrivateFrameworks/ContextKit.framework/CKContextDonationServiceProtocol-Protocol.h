@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CKContextDonation, NSArray, NSUUID;
+@class CKContextDonation;
 
 @protocol CKContextDonationServiceProtocol
-- (void)retrieveImageDataForRecentWithUUID:(NSUUID *)arg1 withReply:(void (^)(UIImage *, UIImage *))arg2;
-- (void)pruneLocalMetadataExcludingUUIDs:(NSArray *)arg1;
 - (oneway void)donate:(CKContextDonation *)arg1;
 @end
 

@@ -11,7 +11,6 @@
 @protocol BMFileManagerDelegate <NSObject>
 
 @optional
-- (long long)cachingOptionsForMemoryMappingWithAttributes:(BMFileAttributes *)arg1;
 - (long long)cachingOptionsForFileHandleWithAttributes:(BMFileAttributes *)arg1;
 @end
 

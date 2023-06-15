@@ -14,6 +14,8 @@
 @protocol PLPhotoLibraryPathManager <PLPhotoLibraryPathManagerCore, PLPhotoLibraryPathManagerModel, PLPhotoLibraryPathManagerDCIM>
 - (_Bool)pathRelativeToBundle:(NSString *)arg1 isSubpathOfPhotoDirectoryWithType:(unsigned char)arg2;
 - (_Bool)path:(NSString *)arg1 isSubpathOfPhotoDirectoryWithType:(unsigned char)arg2;
+- (NSSet *)pathsForFinderSyncFilesystemSizeCalculation;
+- (NSSet *)pathsForLibraryFilesystemSizeCalculation;
 - (NSSet *)pathsForExternalWriters;
 - (_Bool)createPathsForNewLibrariesWithError:(id *)arg1;
 - (NSSet *)pathsForPermissionCheck;
@@ -23,6 +25,7 @@
 - (NSString *)externalDirectoryWithSubType:(unsigned char)arg1 leafType:(unsigned char)arg2 additionalPathComponents:(NSString *)arg3 createIfNeeded:(_Bool)arg4 error:(id *)arg5;
 - (NSString *)externalDirectoryWithSubType:(unsigned char)arg1 createIfNeeded:(_Bool)arg2 error:(id *)arg3;
 - (NSString *)externalDirectoryWithSubType:(unsigned char)arg1;
+- (NSString *)privateCacheDirectoryWithSubType:(unsigned char)arg1 leafType:(unsigned char)arg2 additionalPathComponents:(NSString *)arg3 createIfNeeded:(_Bool)arg4 error:(id *)arg5;
 - (NSString *)privateCacheDirectoryWithSubType:(unsigned char)arg1 createIfNeeded:(_Bool)arg2 error:(id *)arg3;
 - (NSString *)privateCacheDirectoryWithSubType:(unsigned char)arg1;
 - (NSString *)privateDirectoryWithSubType:(unsigned char)arg1 leafType:(unsigned char)arg2 additionalPathComponents:(NSString *)arg3 createIfNeeded:(_Bool)arg4 error:(id *)arg5;

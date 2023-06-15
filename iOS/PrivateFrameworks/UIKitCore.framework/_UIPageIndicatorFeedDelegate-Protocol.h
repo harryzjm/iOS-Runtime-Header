@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIImage, _UIPageIndicatorView;
+@class _UIPageIndicatorView;
 
 @protocol _UIPageIndicatorFeedDelegate
+- (void)configureIndicatorImagesForIndicator:(_UIPageIndicatorView *)arg1 atPage:(long long)arg2;
 - (void)configureIndicator:(_UIPageIndicatorView *)arg1 atPage:(long long)arg2;
-- (UIImage *)indicatorImageForPage:(long long)arg1;
 @end
 

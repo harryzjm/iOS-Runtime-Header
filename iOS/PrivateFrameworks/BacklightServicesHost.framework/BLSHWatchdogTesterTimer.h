@@ -13,19 +13,15 @@ __attribute__((visibility("hidden")))
 {
     _Bool _invalidated;
     NSString *_explanation;
+    _Bool _sleepImminentSinceScheduled;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic, getter=hasSleepBeenImminentSinceScheduled) _Bool sleepImminentSinceScheduled; // @synthesize sleepImminentSinceScheduled=_sleepImminentSinceScheduled;
 @property(readonly, copy, nonatomic) NSString *explanation;
 @property(readonly, nonatomic, getter=isInvalidated) _Bool invalidated;
-- (void)invalidate;
+- (void)invalidate:(unsigned long long)arg1;
 - (id)initWithExplanation:(id)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

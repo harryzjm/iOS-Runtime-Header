@@ -19,14 +19,14 @@ struct HapticSharedMemoryAddressReserve {
 };
 
 struct map<unsigned long, AVHapticSequenceEntry *, std::less<unsigned long>, std::allocator<std::pair<const unsigned long, AVHapticSequenceEntry *>>> {
-    struct __tree<std::__value_type<unsigned long, AVHapticSequenceEntry *>, std::__map_value_compare<unsigned long, std::__value_type<unsigned long, AVHapticSequenceEntry *>, std::less<unsigned long>, true>, std::allocator<std::__value_type<unsigned long, AVHapticSequenceEntry *>>> {
+    struct __tree<std::__value_type<unsigned long, AVHapticSequenceEntry *>, std::__map_value_compare<unsigned long, std::__value_type<unsigned long, AVHapticSequenceEntry *>, std::less<unsigned long>>, std::allocator<std::__value_type<unsigned long, AVHapticSequenceEntry *>>> {
         void *__begin_node_;
         struct __compressed_pair<std::__tree_end_node<std::__tree_node_base<void *>*>, std::allocator<std::__tree_node<std::__value_type<unsigned long, AVHapticSequenceEntry *>, void *>>> {
             struct __tree_end_node<std::__tree_node_base<void *>*> {
                 void *__left_;
             } __value_;
         } __pair1_;
-        struct __compressed_pair<unsigned long, std::__map_value_compare<unsigned long, std::__value_type<unsigned long, AVHapticSequenceEntry *>, std::less<unsigned long>, true>> {
+        struct __compressed_pair<unsigned long, std::__map_value_compare<unsigned long, std::__value_type<unsigned long, AVHapticSequenceEntry *>, std::less<unsigned long>>> {
             unsigned long long __value_;
         } __pair3_;
     } __tree_;

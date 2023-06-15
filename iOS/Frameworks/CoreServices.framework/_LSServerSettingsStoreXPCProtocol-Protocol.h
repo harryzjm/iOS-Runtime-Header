@@ -7,6 +7,7 @@
 @class NSString;
 
 @protocol _LSServerSettingsStoreXPCProtocol
+- (void)resetUserElectionsWithReply:(void (^)(NSError *))arg1;
 - (void)setUserElection:(unsigned char)arg1 forExtensionKey:(NSString *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)userElectionForExtensionKey:(NSString *)arg1 reply:(void (^)(unsigned char, NSError *))arg2;
 @end

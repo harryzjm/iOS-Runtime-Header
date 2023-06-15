@@ -9,18 +9,18 @@
 @class NSArray, NSString;
 
 @protocol APKRemoteInspectorNodeProtocol <NSObject>
-- (NSString *)description;
-@property(nonatomic, readonly) unsigned long long depth;
-@property(nonatomic, copy) NSArray *children;
+@property(readonly, nonatomic) unsigned long long depth;
+@property(copy, nonatomic) NSArray *children;
 @property(nonatomic) int childNodeCount;
-@property(nonatomic, copy) NSString *xmlVersion;
-@property(nonatomic, copy) NSString *documentURL;
-@property(nonatomic, copy) NSString *frameId;
-@property(nonatomic, copy) NSArray *attributes;
-@property(nonatomic, copy) NSString *nodeValue;
-@property(nonatomic, copy) NSString *localName;
-@property(nonatomic, copy) NSString *nodeName;
+@property(copy, nonatomic) NSString *xmlVersion;
+@property(copy, nonatomic) NSString *documentURL;
+@property(copy, nonatomic) NSString *frameId;
+@property(copy, nonatomic) NSArray *attributes;
+@property(copy, nonatomic) NSString *nodeValue;
+@property(copy, nonatomic) NSString *localName;
+@property(copy, nonatomic) NSString *nodeName;
 @property(nonatomic) int nodeType;
 @property(nonatomic) int nodeId;
+- (NSString *)description;
 @end
 

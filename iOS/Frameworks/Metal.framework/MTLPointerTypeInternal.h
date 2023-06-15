@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)access;
 - (unsigned long long)elementType;
 - (unsigned long long)dataType;
+- (_Bool)isEqual:(id)arg1;
 - (id)formattedDescription:(unsigned long long)arg1;
 - (id)elementArrayType;
 - (id)structType;

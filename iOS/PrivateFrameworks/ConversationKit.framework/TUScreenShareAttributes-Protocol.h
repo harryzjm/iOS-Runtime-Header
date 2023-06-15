@@ -11,20 +11,20 @@
 @protocol TUScreenShareAttributes;
 
 @protocol TUScreenShareAttributes <NSObject, NSSecureCoding>
-+ (id)defaultAttributes;
 + (NSNumber *)defaultScaleFactor;
 + (NSNumber *)defaultDisplayScale;
 + (long long)currentDeviceFamily;
-- (_Bool)isSignificantChangeFromAttributes:(id <TUScreenShareAttributes>)arg1;
-@property(nonatomic, copy) NSUUID *windowUUID;
-@property(nonatomic) _Bool windowed;
-- (_Bool)isWindowed;
-@property(nonatomic, retain) NSNumber *displayID;
-@property(nonatomic, retain) NSNumber *frameRate;
-@property(nonatomic, retain) NSValue *originalResolution;
-@property(nonatomic, retain) NSNumber *scaleFactor;
-@property(nonatomic, retain) NSNumber *displayScale;
++ (id)defaultAttributes;
+@property(retain, nonatomic) NSUUID *windowUUID;
+@property(nonatomic, getter=isWindowed) _Bool windowed;
+@property(retain, nonatomic) NSNumber *displayID;
+@property(retain, nonatomic) NSNumber *frameRate;
+@property(retain, nonatomic) NSValue *originalResolution;
+@property(retain, nonatomic) NSNumber *scaleFactor;
+@property(retain, nonatomic) NSNumber *displayScale;
 @property(nonatomic) long long style;
 @property(nonatomic) long long deviceFamily;
+- (id)initWithAttributes:(id <TUScreenShareAttributes>)arg1;
+- (_Bool)isSignificantChangeFromAttributes:(id <TUScreenShareAttributes>)arg1;
 @end
 

@@ -4,8 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <Home/HFSoftwareUpdateManagerDelegate-Protocol.h>
 #import <Home/HMAccessorySoftwareUpdateControllerV2Delegate-Protocol.h>
 
-@protocol HFAccessorySoftwareUpdateControllerV2Observer <HMAccessorySoftwareUpdateControllerV2Delegate>
+@protocol HFAccessorySoftwareUpdateControllerV2Observer <HMAccessorySoftwareUpdateControllerV2Delegate, HFSoftwareUpdateManagerDelegate>
 @end
 

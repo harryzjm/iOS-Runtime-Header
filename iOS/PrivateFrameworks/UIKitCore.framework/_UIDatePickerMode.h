@@ -29,13 +29,13 @@ __attribute__((visibility("hidden")))
     NSNumberFormatter *_formatter;
     _UIDatePickerView *_datePickerView;
     _Bool _isUsingJapaneseCalendar;
+    unsigned long long _numberOfComponents;
     long long _minuteInterval;
     double _todaySinceReferenceDate;
     NSDate *_minimumDate;
     NSDateComponents *_minimumDateComponents;
     NSDate *_maximumDate;
     NSDateComponents *_maximumDateComponents;
-    unsigned long long _numberOfComponents;
     NSDate *_baseDate;
     NSDate *_originatingDate;
 }
@@ -47,19 +47,19 @@ __attribute__((visibility("hidden")))
 + (id)newDateFromGregorianYear:(long long)arg1 month:(long long)arg2 day:(long long)arg3 timeZone:(id)arg4;
 + (void)initialize;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSDateComponents *selectedDateComponents; // @synthesize selectedDateComponents=_selectedDateComponents;
 @property(retain, nonatomic) NSDate *originatingDate; // @synthesize originatingDate=_originatingDate;
 @property(nonatomic) long long yearsSinceBaseDate; // @synthesize yearsSinceBaseDate=_yearsSinceBaseDate;
 @property(retain, nonatomic) NSDate *baseDate; // @synthesize baseDate=_baseDate;
 @property(retain, nonatomic) NSString *localizedFormatString; // @synthesize localizedFormatString=_localizedFormatString;
-@property(nonatomic) unsigned long long numberOfComponents; // @synthesize numberOfComponents=_numberOfComponents;
 @property(nonatomic) __weak _UIDatePickerView *datePickerView; // @synthesize datePickerView=_datePickerView;
+@property(retain, nonatomic) NSDateComponents *selectedDateComponents; // @synthesize selectedDateComponents=_selectedDateComponents;
 @property(readonly, nonatomic) NSDateComponents *maximumDateComponents; // @synthesize maximumDateComponents=_maximumDateComponents;
 @property(readonly, nonatomic) NSDate *maximumDate; // @synthesize maximumDate=_maximumDate;
 @property(readonly, nonatomic) NSDateComponents *minimumDateComponents; // @synthesize minimumDateComponents=_minimumDateComponents;
 @property(readonly, nonatomic) NSDate *minimumDate; // @synthesize minimumDate=_minimumDate;
 @property(nonatomic) double todaySinceReferenceDate; // @synthesize todaySinceReferenceDate=_todaySinceReferenceDate;
 @property(nonatomic) long long minuteInterval; // @synthesize minuteInterval=_minuteInterval;
+@property(nonatomic) unsigned long long numberOfComponents; // @synthesize numberOfComponents=_numberOfComponents;
 - (void)updateEnabledStateOfViewForRow:(long long)arg1 inComponent:(long long)arg2;
 - (_Bool)_shouldEnableValueForRow:(long long)arg1 inComponent:(long long)arg2 calendarUnit:(unsigned long long)arg3;
 - (_Bool)_shouldEnableValueForRow:(long long)arg1 column:(long long)arg2;
@@ -112,6 +112,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic, getter=isTimeIntervalMode) _Bool isTimeIntervalMode; // @dynamic isTimeIntervalMode;
 - (double)widthForCalendarUnit:(unsigned long long)arg1 font:(id)arg2 maxWidth:(double)arg3;
 - (double)widthForComponent:(long long)arg1 maxWidth:(double)arg2;
+- (void)invalidateTodayTextColor;
 @property(readonly, nonatomic) UIColor *todayTextColor;
 @property(readonly, nonatomic) double rowHeight;
 @property(readonly, nonatomic) UIFont *amPmFont;
@@ -129,6 +130,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic, getter=is24Hour) _Bool is24Hour; // @dynamic is24Hour;
 - (double)componentWidthForTwoDigitCalendarUnit:(unsigned long long)arg1 font:(id)arg2 maxWidth:(double)arg3;
 - (void)_shouldReset:(id)arg1;
+- (id)_style;
 - (id)timeZone;
 - (id)locale;
 - (id)calendarForFormatters;

@@ -10,6 +10,8 @@
 + (struct CGRect)centerRect:(struct CGRect)arg1 inRect:(struct CGRect)arg2;
 + (id)compositedImageWithSize:(struct CGSize)arg1 images:(id)arg2 cornerRadius:(double)arg3 blendMode:(int)arg4 legacyMode:(_Bool)arg5;
 + (id)imageWithSize:(struct CGSize)arg1 format:(id)arg2 actions:(CDUnknownBlockType)arg3;
++ (id)smm_systemImageNamed:(id)arg1 withConfiguration:(id)arg2;
++ (id)smm_systemImageNamed:(id)arg1;
 - (id)initWithData:(id)arg1 immediateLoadWithMaxSize:(struct CGSize)arg2 scale:(double)arg3;
 @end
 

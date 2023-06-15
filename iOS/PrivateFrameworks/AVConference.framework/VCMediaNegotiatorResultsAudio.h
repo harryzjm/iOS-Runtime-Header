@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) int redPayload; // @synthesize redPayload=_redPayload;
 @property(nonatomic) int dtxPayload; // @synthesize dtxPayload=_dtxPayload;
 @property(nonatomic) int primaryPayload; // @synthesize primaryPayload=_primaryPayload;
+- (_Bool)isEqual:(id)arg1;
 - (void)dealloc;
 - (void)addSecondaryPayload:(int)arg1;
 @property(readonly, nonatomic) NSArray *secondaryPayloads;

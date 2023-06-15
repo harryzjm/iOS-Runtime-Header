@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <swiftCore/_TtCs12_SwiftObject.h>
+#import ".h"
 
 @class MISSING_TYPE;
 
-@interface _TtCC18VisualIntelligence15ProcessingGraph9NodeState : _TtCs12_SwiftObject
+@interface _TtCC18VisualIntelligence15ProcessingGraph9NodeState : 
 {
     MISSING_TYPE *numTimesCalled;
     MISSING_TYPE *inputs;

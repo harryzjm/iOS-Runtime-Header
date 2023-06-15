@@ -10,6 +10,7 @@
 @property(readonly, nonatomic) _Bool isAuthKitUnableToPromptDueToNetworkError;
 @property(readonly, nonatomic) _Bool isAuthKitUnableToPromptError;
 @property(readonly, nonatomic) _Bool isAuthenticationError;
+- (_Bool)isRecordNotViableError;
 - (id)errorByExtendingUserInfoWithDictionary:(id)arg1;
 - (_Bool)isRecoveryPETSoftLimitError;
 - (_Bool)isRecoveryPETHardLimitError;

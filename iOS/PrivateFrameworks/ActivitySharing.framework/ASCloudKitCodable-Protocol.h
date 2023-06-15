@@ -6,9 +6,12 @@
 
 #import <ActivitySharing/NSObject-Protocol.h>
 
-@class CKRecord, CKRecordZoneID;
+@class CKRecord, CKRecordID, CKRecordZoneID;
 
 @protocol ASCloudKitCodable <NSObject>
 - (CKRecord *)recordWithZoneID:(CKRecordZoneID *)arg1;
+
+@optional
+- (CKRecord *)recordWithRecordID:(CKRecordID *)arg1;
 @end
 

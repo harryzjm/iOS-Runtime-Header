@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class MISSING_TYPE;
 
 @interface _TtC17PromotedContentUI14ImpressionSent : UIView
 {
     MISSING_TYPE *alreadySent;
+    MISSING_TYPE *alreadyRecorded;
 }
 
 - (id)initWithCoder:(id)arg1;

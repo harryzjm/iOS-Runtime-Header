@@ -9,9 +9,13 @@
 @class UIColor;
 
 @interface PFParallaxColor (PhotosUI)
-+ (id)pu_parallaxColorWithHue:(double)arg1 variation:(double)arg2;
++ (id)pu_parallaxColorWithLuma:(double)arg1 hue:(double)arg2 chromaVariation:(double)arg3;
++ (id)pu_parallaxColorWithHue:(double)arg1 chroma:(double)arg2 lumaVariation:(double)arg3;
++ (id)pu_parallaxColorWithHue:(double)arg1 toneVariation:(double)arg2;
 + (id)pu_parallaxColorWithUIColor:(id)arg1;
-@property(readonly, nonatomic) double pu_variation;
+@property(readonly, nonatomic) double pu_chromaVariation;
+@property(readonly, nonatomic) double pu_lumaVariation;
+@property(readonly, nonatomic) double pu_toneVariation;
 @property(readonly, nonatomic) UIColor *pu_UIColor;
 @end
 

@@ -19,16 +19,16 @@ __attribute__((visibility("hidden")))
 - (void)automationTurnedOnSleepModeWithReason:(unsigned long long)arg1;
 - (void)userTurnedOffSleepModeWithReason:(unsigned long long)arg1;
 - (void)userTurnedOnSleepModeWithReason:(unsigned long long)arg1;
-- (void)sleepScheduleStateChangedToDisabledFromState:(unsigned long long)arg1;
-- (void)sleepScheduleStateChangedToWakeUp:(unsigned long long)arg1;
+- (void)sleepScheduleStateChangedToDisabled;
+- (void)sleepScheduleStateChangedToWakeUp:(unsigned long long)arg1 fromState:(unsigned long long)arg2;
 - (void)sleepScheduleStateChangedToBedtime:(unsigned long long)arg1 fromState:(unsigned long long)arg2;
 - (void)sleepScheduleStateChangedToWindDown:(unsigned long long)arg1 fromState:(unsigned long long)arg2;
 @property(readonly, nonatomic) unsigned long long defaultChangeReason;
 @property(readonly, nonatomic) long long sleepMode;
-- (id)_nextSleepModeStateFromTimeline:(id *)arg1;
-- (id)_nextSleepModeStateCommon:(id *)arg1;
-- (id)nextStateWithContext:(id *)arg1;
-- (void)didEnterWithPreviousState:(id)arg1 context:(id)arg2;
+- (_Bool)updateStateCommon;
+- (void)updateStateFromTimeline;
+- (void)updateState;
+- (void)didEnter;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

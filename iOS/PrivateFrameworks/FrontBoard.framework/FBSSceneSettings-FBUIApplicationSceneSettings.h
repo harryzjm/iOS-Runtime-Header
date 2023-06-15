@@ -8,5 +8,7 @@
 
 @interface FBSSceneSettings (FBUIApplicationSceneSettings)
 - (id)fb_fallbackSpecification;
+- (id)_uiApplicationSceneSettingsShim;
+- (_Bool)_uikitShimming_isUISubclass;
 @end
 

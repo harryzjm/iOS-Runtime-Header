@@ -11,6 +11,9 @@
 @interface _TtC7SiriCam22CodeBasedRankerHandler : _TtCs12_SwiftObject
 {
     MISSING_TYPE *scorer;
+    MISSING_TYPE *modelName;
+    MISSING_TYPE *modelVersion;
+    MISSING_TYPE *tieBreakerChain;
 }
 
 @end

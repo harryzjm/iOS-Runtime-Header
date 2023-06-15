@@ -4,9 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#pragma mark Function Pointers and Blocks
-
-typedef void (*CDUnknownFunctionPointerType)(void); // return type and parameters are unknown
+#pragma mark Blocks
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
 
@@ -62,15 +60,6 @@ struct container_error_extended_s {
     struct container_query_s *_field5;
     struct container_references_s *_field6;
 };
-
-struct container_link_s {
-    struct container_object_s *_field1;
-    struct container_object_s *_field2;
-    unsigned long long _field3;
-    _Bool _field4;
-};
-
-struct container_object_s;
 
 struct container_query_s;
 
@@ -131,6 +120,11 @@ struct timespec {
 };
 
 #pragma mark Typedef'd Structures
+
+typedef struct {
+    unsigned long long _field1;
+    unsigned long long _field2;
+} CDStruct_4bcfbbae;
 
 typedef struct {
     unsigned int val[8];

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 @class NSMutableDictionary, _UISelectorDictionary;
 
 __attribute__((visibility("hidden")))
-@interface _UICommandIdentifierDictionary : NSObject <NSCopying>
+@interface _UICommandIdentifierDictionary : NSObject
 {
     _UISelectorDictionary *_actionDictionary;
     NSMutableDictionary *_actionPropertyListDictionary;

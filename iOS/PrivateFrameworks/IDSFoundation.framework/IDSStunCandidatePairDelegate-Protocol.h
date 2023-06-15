@@ -6,9 +6,10 @@
 
 #import <IDSFoundation/NSObject-Protocol.h>
 
-@class IDSQRProtoGetMaterialResponse, IDSQRProtoMessage, IDSQRProtoPutMaterialIndication, IDSQRProtoPutMaterialResponse, IDSStunCandidatePair, IDSStunMessage, NSData, NSDictionary, NSString;
+@class IDSGFTMetricsLink, IDSQRProtoGetMaterialResponse, IDSQRProtoMessage, IDSQRProtoPutMaterialIndication, IDSQRProtoPutMaterialResponse, IDSStunCandidatePair, IDSStunMessage, NSData, NSDictionary, NSString;
 
 @protocol IDSStunCandidatePairDelegate <NSObject>
+- (IDSGFTMetricsLink *)createLinkCycleForCandidatePair:(IDSStunCandidatePair *)arg1;
 - (void)disconnectIdleQUICConnectionForCandidatePair:(IDSStunCandidatePair *)arg1;
 - (_Bool)receiveNoSessionStateForCandidatePair:(IDSStunCandidatePair *)arg1 didLocalExternalAddressChange:(_Bool)arg2;
 - (void)receiveErrorIndicationWithCode:(unsigned int)arg1;
@@ -28,6 +29,7 @@
 - (void)candidatePair:(IDSStunCandidatePair *)arg1 didAddQREvent:(NSDictionary *)arg2;
 - (void)candidatePair:(IDSStunCandidatePair *)arg1 protoRequestDidTimeOut:(unsigned long long)arg2;
 - (void)candidatePair:(IDSStunCandidatePair *)arg1 didReceiveStunErrorResponse:(long long)arg2 errorCode:(unsigned short)arg3 didLocalExternalAddressChange:(_Bool)arg4;
+- (void)candidatePair:(IDSStunCandidatePair *)arg1 didReceiveSessionStats:(NSDictionary *)arg2 success:(_Bool)arg3;
 - (void)candidatePair:(IDSStunCandidatePair *)arg1 didReceiveSessionInfo:(NSDictionary *)arg2 status:(unsigned int)arg3;
 @end
 

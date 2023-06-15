@@ -10,10 +10,14 @@ __attribute__((visibility("hidden")))
 @interface SigX : NSObject
 {
     void *_mySigX;
+    CDUnknownBlockType _spectralOutputHandler;
 }
 
-+ (basic_string_05660eb3)getVersion;
++ (basic_string_b963e3c0)getVersion;
+@property(copy, nonatomic) CDUnknownBlockType spectralOutputHandler; // @synthesize spectralOutputHandler=_spectralOutputHandler;
 @property(nonatomic) void *mySigX; // @synthesize mySigX=_mySigX;
+- (void)disableSpectralOutput;
+- (void)enableSpectralOutputForNumberOfFrequencyBins:(int)arg1 callbackFrequency:(int)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (_Bool)setRollingBufferSeconds:(float)arg1 error:(id *)arg2;
 - (void)dealloc;
 - (_Bool)getSignature:(void *)arg1 error:(id *)arg2;

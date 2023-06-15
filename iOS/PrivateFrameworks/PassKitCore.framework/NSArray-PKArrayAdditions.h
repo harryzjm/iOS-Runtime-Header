@@ -8,12 +8,14 @@
 
 @interface NSArray (PKArrayAdditions)
 + (id)pk_FilteredCardErrors:(id)arg1;
++ (id)pk_FilteredShippingErrorsForContactFields:(id)arg1 errors:(id)arg2 contactFieldOptional:(_Bool)arg3;
 + (id)pk_FilteredShippingErrorsForContactFields:(id)arg1 errors:(id)arg2;
 + (id)pk_FilteredBillingErrorsForContactFields:(id)arg1 errors:(id)arg2;
 + (id)paymentShippingAddressUnserviceableErrorWithLocalizedDescription:(id)arg1;
 + (id)paymentBillingAddressInvalidErrorWithKey:(id)arg1 localizedDescription:(id)arg2;
 + (id)paymentShippingAddressInvalidErrorWithKey:(id)arg1 localizedDescription:(id)arg2;
 + (id)paymentContactInvalidErrorWithContactField:(id)arg1 localizedDescription:(id)arg2;
+- (id)pk_lastObjectPassingTest:(CDUnknownBlockType)arg1;
 - (id)pk_firstObjectPassingTest:(CDUnknownBlockType)arg1;
 - (_Bool)pk_containsObjectPassingTest:(CDUnknownBlockType)arg1;
 - (id)pk_intersectArray:(id)arg1;

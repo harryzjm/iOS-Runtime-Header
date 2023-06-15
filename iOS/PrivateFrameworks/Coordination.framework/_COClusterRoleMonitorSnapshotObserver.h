@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSSet, NSString;
+@class NSSet;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface _COClusterRoleMonitorSnapshotObserver : NSObject
 {
-    NSString *_cluster;
+    id _cluster;
     NSObject<OS_dispatch_queue> *_queue;
     CDUnknownBlockType _block;
     NSSet *_lastValue;
@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSSet *lastValue; // @synthesize lastValue=_lastValue;
 @property(readonly, copy, nonatomic) CDUnknownBlockType block; // @synthesize block=_block;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-@property(readonly, nonatomic) NSString *cluster; // @synthesize cluster=_cluster;
+@property(readonly, nonatomic) id cluster; // @synthesize cluster=_cluster;
 - (void)notify:(id)arg1;
 - (id)description;
 - (id)initInCluster:(id)arg1 queue:(id)arg2 block:(CDUnknownBlockType)arg3;

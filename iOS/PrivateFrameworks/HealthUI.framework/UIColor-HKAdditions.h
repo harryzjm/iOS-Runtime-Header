@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIColor.h>
+#import <UIKitCore/UIColor.h>
 
 @interface UIColor (HKAdditions)
 + (id)_accessibilityHigherContrastTintColorForColorIfNeeded:(id)arg1;
@@ -24,12 +24,24 @@
 + (id)hk_devicesClinicalKeyColor;
 + (id)hk_conditionsClinicalKeyColor;
 + (id)hk_clinicalDocumentsKeyColor;
++ (id)hk_clinicalNotesClinicalKeyColor;
 + (id)hk_carePlansClinicalKeyColor;
 + (id)hk_allergiesClinicalKeyColor;
 + (id)hk_clinicalRecordShowMoreBackgroundColor;
 + (id)hk_clinicalRecordUnitColor;
 + (id)hk_clinicalRecordValueColor;
 + (id)hk_clinicalRecordSeparatorColor;
++ (id)hk_hearingHealthAudiogramDisabledPointMarkerColor;
++ (id)hk_hearingHealthAudiogramDisabledLineColor;
++ (id)hk_hearingHealthAudiogramAverageLineColor;
++ (id)hk_hearingHealthAudiogramRightEarDeemphasizedColor;
++ (id)hk_hearingHealthAudiogramRightEarAnnotationColor;
++ (id)hk_hearingHealthAudiogramRightEarPointMarkerColor;
++ (id)hk_hearingHealthAudiogramRightEarLineColor;
++ (id)hk_hearingHealthAudiogramLeftEarDeemphasizedColor;
++ (id)hk_hearingHealthAudiogramLeftEarAnnotationColor;
++ (id)hk_hearingHealthAudiogramLeftEarPointMarkerColor;
++ (id)hk_hearingHealthAudiogramLeftEarLineColor;
 + (id)hk_hearingHealthAudioExposureColorForClassification:(unsigned long long)arg1;
 + (id)hk_hearingHealthAudioExposureBackground;
 + (id)hk_hearingHealthAudioExposureLoudFill;
@@ -146,5 +158,6 @@
 + (id)hk_appErrorColor;
 + (id)hk_appKeyColor;
 + (id)hk_appTintColor;
+- (id)_colorWithSaturationAdjustedByPercentage:(double)arg1;
 @end
 

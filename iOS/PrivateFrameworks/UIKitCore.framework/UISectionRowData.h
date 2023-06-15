@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 @class UITableViewRowData;
 
 __attribute__((visibility("hidden")))
-@interface UISectionRowData : NSObject <NSCopying>
+@interface UISectionRowData : NSObject
 {
     _Bool _valid;
     _Bool _sectionOffsetValid;

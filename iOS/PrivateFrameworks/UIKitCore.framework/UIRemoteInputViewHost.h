@@ -6,22 +6,26 @@
 
 #import <objc/NSObject.h>
 
-@class NSLayoutConstraint, UIInputViewSet, UIRemoteInputViewInfo, UIView, UIViewController, UIWindow;
+@class NSLayoutConstraint, NSString, UIInputViewController, UIInputViewSet, UIRemoteInputViewInfo, UIView, UIViewController, UIWindow;
 
 __attribute__((visibility("hidden")))
 @interface UIRemoteInputViewHost : NSObject
 {
     UIViewController *_inputRootViewController;
+    UIInputViewController *_inputViewController;
     UIView *_inputView;
     NSLayoutConstraint *_inputViewWidthConstraint;
     NSLayoutConstraint *_inputViewHeightConstraint;
+    NSLayoutConstraint *_inputViewBottomConstraint;
     UIViewController *_assistantViewController;
+    _Bool _shouldShowDockView;
     UIWindow *_inputViewWindow;
     UIWindow *_assistantViewWindow;
     UIInputViewSet *_inputViewSet;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool shouldShowDockView; // @synthesize shouldShowDockView=_shouldShowDockView;
 @property(retain, nonatomic) UIInputViewSet *inputViewSet; // @synthesize inputViewSet=_inputViewSet;
 @property(readonly, nonatomic) UIWindow *assistantViewWindow; // @synthesize assistantViewWindow=_assistantViewWindow;
 @property(readonly, nonatomic) UIWindow *inputViewWindow; // @synthesize inputViewWindow=_inputViewWindow;
@@ -34,6 +38,13 @@ __attribute__((visibility("hidden")))
 - (_Bool)updateAssistantViewIfNecessary;
 - (struct UIEdgeInsets)assistantViewInsets;
 @property(readonly, nonatomic) UIRemoteInputViewInfo *assistantViewInfo;
+- (void)setInputViewSet:(id)arg1 delayRemoveInputView:(_Bool)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

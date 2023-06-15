@@ -13,6 +13,8 @@
 + (_Bool)shouldUpdateContextMenuEnabledOnMenuChanges;
 + (_Bool)requiresNewVisualProviderForChanges;
 + (id)visualProviderForButton:(UIButton *)arg1;
+- (void)updatedAppliedCornersAreContinuous:(_Bool)arg1;
+- (void)updatedAppliedCornerRadius:(double)arg1;
 - (void)willMoveToWindow:(UIWindow *)arg1;
 - (void)setContentHuggingPriorities:(struct CGSize)arg1;
 - (void)setContentVerticalAlignment:(long long)arg1;
@@ -56,6 +58,8 @@
 - (void)setMenuProvider:(UIMenu * (^)(id, NSArray *))arg1;
 - (void)setMenu:(UIMenu *)arg1;
 - (void)setContextMenuIsPrimary:(_Bool)arg1;
+- (void)touchesEnded;
+- (void)touchesBegan;
 - (void)setShowsTouchWhenHighlighted:(_Bool)arg1;
 - (void)setOn:(_Bool)arg1;
 - (_Bool)isOn;

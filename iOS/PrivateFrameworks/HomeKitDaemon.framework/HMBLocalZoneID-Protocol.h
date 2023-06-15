@@ -4,12 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HomeKitDaemon/HMBSearchableEntry-Protocol.h>
 #import <HomeKitDaemon/NSCopying-Protocol.h>
 
 @class NSData, NSString;
 
-@protocol HMBLocalZoneID <NSCopying, HMBSearchableEntry>
+@protocol HMBLocalZoneID <NSCopying>
 @property(readonly, nonatomic) NSString *name;
 @property(readonly, nonatomic) NSData *token;
 @end

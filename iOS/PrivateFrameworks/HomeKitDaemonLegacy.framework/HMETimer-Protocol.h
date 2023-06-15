@@ -5,6 +5,7 @@
 //
 
 @protocol HMETimer
+@property(readonly, nonatomic) double timeInterval;
 - (void)suspend;
 - (void)resume;
 @end

@@ -93,7 +93,7 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)_defaultFocusRegionFrame;
 - (_Bool)shouldUpdateFocusInContext:(id)arg1;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
-- (void)_sendFocusAction;
+- (void)_sendFocusAction:(id)arg1;
 - (_Bool)_isEligibleForFocusInteraction;
 - (_Bool)canBecomeFocused;
 - (id)_systemDefaultFocusGroupIdentifier;

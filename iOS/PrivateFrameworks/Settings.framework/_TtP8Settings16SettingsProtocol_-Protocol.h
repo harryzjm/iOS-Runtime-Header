@@ -6,16 +6,19 @@
 
 #import <Settings/_TtP8Settings20SettingsBaseProtocol_-Protocol.h>
 
-@class NSString;
+@class NSString, _TtC8Settings22SettingsNavigationPath;
 @protocol _TtP8Settings20SettingsHostProtocol_;
 
 @protocol _TtP8Settings16SettingsProtocol_ <_TtP8Settings20SettingsBaseProtocol_>
 @property(nonatomic, retain) id <_TtP8Settings20SettingsHostProtocol_> settingsHost;
 
 @optional
+- (void)popNavigationStack;
 - (void)setCloudSyncEnabled:(_Bool)arg1;
 - (void)isCloudSyncEnabled:(void (^)(_Bool, NSError *))arg1;
 - (void)didUnselect;
+- (void)willSelectWithNavigationPath:(_TtC8Settings22SettingsNavigationPath *)arg1;
+- (void)willSelectWithRevealElementKey:(NSString *)arg1;
 - (void)willSelectWithSidebarItemWithUUID:(NSString *)arg1;
 - (void)willSelect;
 - (void)willSelect:(void (^)(void))arg1;

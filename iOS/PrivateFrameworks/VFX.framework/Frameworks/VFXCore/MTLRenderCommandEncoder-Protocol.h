@@ -9,6 +9,8 @@
 @protocol MTLAccelerationStructure, MTLBuffer, MTLCounterSampleBuffer, MTLDepthStencilState, MTLFence, MTLHeap, MTLIndirectCommandBuffer, MTLIntersectionFunctionTable, MTLRenderPipelineState, MTLResource, MTLSamplerState, MTLTexture, MTLVisibleFunctionTable;
 
 @protocol MTLRenderCommandEncoder <MTLCommandEncoder>
+@property(readonly) unsigned long long tileHeight;
+@property(readonly) unsigned long long tileWidth;
 - (void)sampleCountersInBuffer:(id <MTLCounterSampleBuffer>)arg1 atSampleIndex:(unsigned long long)arg2 withBarrier:(_Bool)arg3;
 - (void)memoryBarrierWithResources:(const id *)arg1 count:(unsigned long long)arg2 afterStages:(unsigned long long)arg3 beforeStages:(unsigned long long)arg4;
 - (void)memoryBarrierWithScope:(unsigned long long)arg1 afterStages:(unsigned long long)arg2 beforeStages:(unsigned long long)arg3;
@@ -39,8 +41,6 @@
 - (void)setTileBufferOffset:(unsigned long long)arg1 atIndex:(unsigned long long)arg2;
 - (void)setTileBuffer:(id <MTLBuffer>)arg1 offset:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
 - (void)setTileBytes:(const void *)arg1 length:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
-@property(nonatomic, readonly) long long tileHeight;
-@property(nonatomic, readonly) long long tileWidth;
 - (void)drawIndexedPatches:(unsigned long long)arg1 patchIndexBuffer:(id <MTLBuffer>)arg2 patchIndexBufferOffset:(unsigned long long)arg3 controlPointIndexBuffer:(id <MTLBuffer>)arg4 controlPointIndexBufferOffset:(unsigned long long)arg5 indirectBuffer:(id <MTLBuffer>)arg6 indirectBufferOffset:(unsigned long long)arg7;
 - (void)drawIndexedPatches:(unsigned long long)arg1 patchStart:(unsigned long long)arg2 patchCount:(unsigned long long)arg3 patchIndexBuffer:(id <MTLBuffer>)arg4 patchIndexBufferOffset:(unsigned long long)arg5 controlPointIndexBuffer:(id <MTLBuffer>)arg6 controlPointIndexBufferOffset:(unsigned long long)arg7 instanceCount:(unsigned long long)arg8 baseInstance:(unsigned long long)arg9;
 - (void)drawPatches:(unsigned long long)arg1 patchIndexBuffer:(id <MTLBuffer>)arg2 patchIndexBufferOffset:(unsigned long long)arg3 indirectBuffer:(id <MTLBuffer>)arg4 indirectBufferOffset:(unsigned long long)arg5;
@@ -129,6 +129,10 @@
 - (void)setVertexSamplerState:(id <MTLSamplerState>)arg1 atIndex:(unsigned long long)arg2;
 - (void)setVertexTextures:(const id *)arg1 withRange:(struct _NSRange)arg2;
 - (void)setVertexTexture:(id <MTLTexture>)arg1 atIndex:(unsigned long long)arg2;
+- (void)setVertexBytes:(const void *)arg1 length:(unsigned long long)arg2 attributeStride:(unsigned long long)arg3 atIndex:(unsigned long long)arg4;
+- (void)setVertexBufferOffset:(unsigned long long)arg1 attributeStride:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
+- (void)setVertexBuffers:(const id *)arg1 offsets:(const unsigned long long *)arg2 attributeStrides:(const unsigned long long *)arg3 withRange:(struct _NSRange)arg4;
+- (void)setVertexBuffer:(id <MTLBuffer>)arg1 offset:(unsigned long long)arg2 attributeStride:(unsigned long long)arg3 atIndex:(unsigned long long)arg4;
 - (void)setVertexBuffers:(const id *)arg1 offsets:(const unsigned long long *)arg2 withRange:(struct _NSRange)arg3;
 - (void)setVertexBufferOffset:(unsigned long long)arg1 atIndex:(unsigned long long)arg2;
 - (void)setVertexBuffer:(id <MTLBuffer>)arg1 offset:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;

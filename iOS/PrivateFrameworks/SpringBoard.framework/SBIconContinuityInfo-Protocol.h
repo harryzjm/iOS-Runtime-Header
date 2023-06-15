@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <SpringBoard/NSObject-Protocol.h>
+
 @class NSString;
 
-@protocol SBIconContinuityInfo
+@protocol SBIconContinuityInfo <NSObject>
 @property(readonly, copy, nonatomic) NSString *originatingDeviceType;
 - (_Bool)isFirstWakePrediction;
 - (_Bool)isHeadphonesPrediction;

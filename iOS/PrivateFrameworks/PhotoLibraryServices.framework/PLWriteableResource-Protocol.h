@@ -12,7 +12,6 @@
 @protocol PLWriteableResource <PLResource>
 @property(retain, nonatomic) PLUniformTypeIdentifier *uniformTypeIdentifier;
 @property(retain, nonatomic) NSString *codecFourCharCodeName;
-@property(nonatomic) int qualitySortValue;
 @property(nonatomic) long long unorientedHeight;
 @property(nonatomic) long long unorientedWidth;
 @property(nonatomic) float scale;
@@ -20,7 +19,6 @@
 @property(retain, nonatomic) id <PLResourceDataStoreKey> dataStoreKey;
 @property(nonatomic) long long dataStoreSubtype;
 @property(retain, nonatomic) id <PLResourceDataStore> dataStore;
-@property(nonatomic) unsigned int orientation;
 @property(nonatomic) unsigned int recipeID;
 @property(nonatomic) unsigned int version;
 @property(nonatomic) unsigned int resourceType;

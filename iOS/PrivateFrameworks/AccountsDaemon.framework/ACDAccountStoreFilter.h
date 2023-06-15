@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(readonly, nonatomic) ACDAccountStore *backingAccountStore; // @synthesize backingAccountStore=_backingAccountStore;
 - (void)registerMonitorForAccountsOfTypes:(id)arg1 propertiesToPrefetch:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)accountsWithTypeIdentifier:(id)arg1 propertyKey:(id)arg2 value:(id)arg3 cacheSuffix:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)shutdownAccountsD:(CDUnknownBlockType)arg1;
 - (void)resetDatabaseToVersion:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)scheduleBackupIfNonexistent:(CDUnknownBlockType)arg1;

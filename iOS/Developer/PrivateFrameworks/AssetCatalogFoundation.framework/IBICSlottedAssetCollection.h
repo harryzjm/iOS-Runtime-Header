@@ -21,6 +21,7 @@
 @property(copy, nonatomic) NSDictionary *childrenIdentifiersToSlots; // @synthesize childrenIdentifiersToSlots=_childrenIdentifiersToSlots;
 - (_Bool)isEqualForUnitTests:(id)arg1;
 - (void)populateMutatorsToAddRequiredChildCounterparts:(id)arg1;
+- (_Bool)providesBookmarkTitleForChild:(id)arg1;
 - (id)createDefaultChildForSlot:(id)arg1 suggestedIdioms:(id)arg2;
 - (_Bool)shouldMutateChild:(id)arg1 byCopyingContentToNewSlot:(id)arg2;
 - (_Bool)isChildMinimallyFitForCompiling:(id)arg1;

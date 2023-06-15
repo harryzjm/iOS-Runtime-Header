@@ -6,23 +6,31 @@
 
 #import <Foundation/NSURL.h>
 
-@class NSString;
+@class NSString, NSUUID;
 
 @interface NSURL (QueryParameters)
 + (id)screenSharingAppURL;
++ (id)faceTimeAppVideoMessagePlaybackURLForUUID:(id)arg1;
++ (id)faceTimeVideoMessagePlaybackURLForUUID:(id)arg1;
++ (id)faceTimeRefreshShareableContentURLForBundleIdentifier:(id)arg1;
 + (id)faceTimeAppJoinConversationURLForConversationLinkURL:(id)arg1;
 + (id)faceTimeAppViewLinkDetailsURLForPseudonym:(id)arg1;
 + (id)faceTimeAnswerURLWithSourceIdentifier:(id)arg1;
 + (id)faceTimeUpdateForegroundAppURLForBundleIdentifier:(id)arg1 applicationType:(long long)arg2;
++ (id)faceTimeRefreshShareableContentURL;
 + (id)faceTimeAppJoinConversationLinkURL;
 + (id)faceTimeNeedsBackgroundLaunchURL;
 + (id)faceTimeAppViewLinkDetailsURL;
 + (id)faceTimeUpdateForegroundAppURL;
++ (id)faceTimeShowAccessoryButtonEventsNoticeUIURL;
 + (id)faceTimeShowIncomingTransmissionNoticeUIURL;
++ (id)faceTimeShowLagunaPullConversationURL;
 + (id)faceTimeShowHandoffEligibleNearbyURL;
 + (id)faceTimeShowSystemCallControlsURL;
 + (id)faceTimeShowCarPlayInCallUIURL;
++ (id)showKeypadURL;
 + (id)faceTimeShowInCallUIURL;
++ (id)faceTimeLaunchForScreeningURL;
 + (id)faceTimeLaunchForOutgoingConversationURL;
 + (id)faceTimeLaunchForIncomingCallURL;
 + (id)faceTimePromptURLWithURL:(id)arg1;
@@ -36,8 +44,20 @@
 + (id)faceTimeURLWithDestinationID:(id)arg1;
 + (id)_faceTimeURLWithHandle:(id)arg1 addressBookUID:(int)arg2 audioOnly:(_Bool)arg3;
 + (id)_faceTimeURLWithDestinationID:(id)arg1 addressBookUID:(int)arg2 audioOnly:(_Bool)arg3;
++ (id)faceTimeVideoMessageScheme;
++ (id)TUDialRequestSchemeFaceTimeAudio;
++ (id)TUDialRequestSchemeFaceTime;
++ (id)TUDialRequestSchemeTelephony;
++ (id)faceTimeMultiwayScheme;
++ (id)faceTimeOpenLinkScheme;
++ (id)faceTimeSystemCallControlsScheme;
++ (id)faceTimeAudioScheme;
++ (id)faceTimeScheme;
++ (id)faceTimePinExchangeScheme;
 + (id)faceTimeURLWithPhoneNumber:(id)arg1 addressBookUID:(int)arg2 audioOnly:(_Bool)arg3 forceAssist:(_Bool)arg4 suppressAssist:(_Bool)arg5 wasAssisted:(_Bool)arg6;
 + (id)faceTimeURLWithPhoneNumber:(id)arg1 addressBookUID:(int)arg2 forceAssist:(_Bool)arg3 suppressAssist:(_Bool)arg4 wasAssisted:(_Bool)arg5;
++ (id)phoneAppVoicemailURLForMessageUUID:(id)arg1;
++ (id)phoneAppVoicemailURLForRecordID:(unsigned long long)arg1;
 + (id)telephonyURLForTelEmergencyCall;
 + (id)telephonyURLForVoicemail;
 + (id)telephonyURLWithDestinationID:(id)arg1 addressBookUID:(int)arg2 forceAssist:(_Bool)arg3 suppressAssist:(_Bool)arg4 wasAssisted:(_Bool)arg5;
@@ -54,13 +74,21 @@
 - (_Bool)isFaceTimeNeedsBackgroundLaunchURL;
 - (long long)foregroundAppApplicationType;
 - (id)foregroundAppBundleIdentifier;
+- (id)videoMessageUUID;
+- (_Bool)isFaceTimeAppVideoMessagePlaybackURL;
+- (_Bool)isVideoMessagePlaybackURL;
+- (_Bool)isRefreshShareableContentURL;
 - (_Bool)isUpdateForegroundAppURL;
 - (_Bool)isShowScreenSharingURL;
+- (_Bool)isShowLagunaPullConversationURL;
 - (_Bool)isShowHandoffEligibleNearbyURL;
 - (_Bool)isShowSystemCallControlsURL;
 - (_Bool)isShowCarPlayInCallUIURL;
+- (_Bool)isShowAccessoryButtonEventsNoticeURL;
 - (_Bool)isShowIncomingTransmissionNoticeURL;
+- (_Bool)isShowKeypadURL;
 - (_Bool)isShowInCallUIURL;
+- (_Bool)isLaunchForScreeningURL;
 - (_Bool)isLaunchForOutgoingConversationURL;
 - (_Bool)isLaunchForIncomingCallURL;
 - (_Bool)isDialCallURL;
@@ -79,6 +107,9 @@
 - (_Bool)isFaceTimeURL;
 - (_Bool)_isPhoneNumberID:(id)arg1;
 - (id)faceTimeDestinationAccount;
+@property(readonly, copy, nonatomic) NSUUID *voicemailMessageUUID;
+@property(readonly, nonatomic) long long voicemailRecordID;
+- (_Bool)isPhoneAppVoicemailURL;
 - (id)_mobilePhoneQueryParameters;
 - (id)_mobilePhonePathParameters;
 - (id)telephonyParameterDictionary;

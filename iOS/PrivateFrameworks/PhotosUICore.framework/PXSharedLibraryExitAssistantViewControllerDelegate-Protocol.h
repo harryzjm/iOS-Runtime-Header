@@ -6,10 +6,10 @@
 
 #import <PhotosUICore/NSObject-Protocol.h>
 
-@class NSProgress, PXSharedLibraryExitAssistantViewController;
+@class PXSharedLibraryExitAssistantViewController;
 
 @protocol PXSharedLibraryExitAssistantViewControllerDelegate <NSObject>
-- (void)exitAssistantViewController:(PXSharedLibraryExitAssistantViewController *)arg1 didSetActivityProgress:(NSProgress *)arg2;
-- (void)exitAssistantViewController:(PXSharedLibraryExitAssistantViewController *)arg1 didSetExitRetentionPolicy:(long long)arg2;
+- (void)completeExitAssistantViewController:(PXSharedLibraryExitAssistantViewController *)arg1 withExitRetentionPolicy:(long long)arg2;
+- (void)cancelExitAssistantViewController:(PXSharedLibraryExitAssistantViewController *)arg1;
 @end
 

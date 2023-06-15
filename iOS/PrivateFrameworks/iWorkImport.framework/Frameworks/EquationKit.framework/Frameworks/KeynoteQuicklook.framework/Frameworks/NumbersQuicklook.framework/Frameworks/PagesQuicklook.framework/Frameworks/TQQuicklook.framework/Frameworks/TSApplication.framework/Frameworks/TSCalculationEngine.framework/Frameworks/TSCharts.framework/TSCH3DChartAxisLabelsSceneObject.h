@@ -29,13 +29,13 @@
 - (void)renderAnnotatedLabels:(id)arg1;
 - (void)renderLabels:(id)arg1;
 - (void)postRenderBounds:(id)arg1;
-- (void)p_setOffset:(const void *)arg1 forLabelType:(int)arg2 pipeline:(id)arg3 part:(id)arg4 positioner:(id)arg5;
+- (void)p_setOffset:(void *)arg1 forLabelType:(int)arg2 pipeline:(id)arg3 part:(id)arg4 positioner:(id)arg5;
 - (void)p_renderCategoryLabels:(id)arg1;
 - (tvec3_17f03ce0)p_categoryLabelsOffsetFromAccessor:(id)arg1;
 - (long long)p_categoryStride:(id)arg1;
 - (void)p_renderValueLabels:(id)arg1;
 - (tvec3_17f03ce0)p_valueLabelsOffsetFromAccessor:(id)arg1;
-- (void)p_renderLabels:(id)arg1 labelType:(int)arg2 part:(id)arg3 positioner:(id)arg4 offset:(const void *)arg5 offset2DBlock:(CDUnknownBlockType)arg6 strideBlock:(CDUnknownBlockType)arg7 skipFirst:(_Bool)arg8 showLast:(_Bool)arg9;
+- (void)p_renderLabels:(id)arg1 labelType:(int)arg2 part:(id)arg3 positioner:(id)arg4 offset:(void *)arg5 offset2DBlock:(CDUnknownBlockType)arg6 strideBlock:(CDUnknownBlockType)arg7 skipFirst:(_Bool)arg8 showLast:(_Bool)arg9;
 - (unsigned int)alignmentForPositioner:(id)arg1 scene:(id)arg2 enumerator:(id)arg3 returningDirection:(void *)arg4;
 - (tvec3_17f03ce0)labelPositionDirectionForScene:(id)arg1 enumerator:(id)arg2;
 - (id)effects;

@@ -12,7 +12,7 @@
 
 - (void)setFakeResponseOperationResult:(id)arg1 forNextRequestOfClassName:(id)arg2 forItemID:(id)arg3 withLifetime:(int)arg4;
 - (void)setFakeError:(id)arg1 forNextRequestOfClassName:(id)arg2;
-- (void)deviceCountWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)lastKnownDeviceCountWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)tossConfigWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)performRepairZonePCSOperation:(id)arg1 clientOperationCallbackProxy:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
 - (void)getRecordPCSDiagnosticsForZonesWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -26,6 +26,8 @@
 - (void)dropDetachedContainersWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getOutstandingOperationCountWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)clearInvalidatedPCSCacheEntriesIfNeeded;
+- (void)fetchPCSFromCacheForRecordWithRecordID:(id)arg1 databaseScope:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)fetchPCSFromCacheForShareWithRecordID:(id)arg1 databaseScope:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)fetchPCSFromCacheForZoneWithZoneID:(id)arg1 databaseScope:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)clearCachesForZoneWithZoneID:(id)arg1 databaseScope:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)clearCachesForRecordWithRecordID:(id)arg1 databaseScope:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;

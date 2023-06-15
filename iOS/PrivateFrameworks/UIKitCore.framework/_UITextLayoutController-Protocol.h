@@ -32,6 +32,7 @@
 - (struct _NSRange)rangeOfCharacterClusterAtIndex:(unsigned long long)arg1 type:(long long)arg2;
 - (UITextPosition *)positionWithOffset:(long long)arg1 affinity:(long long)arg2;
 - (UITextRange *)textRangeForCharacterRange:(struct _NSRange)arg1;
+- (struct _NSRange)characterRangeForTextRange:(UITextRange *)arg1 clippedToDocument:(_Bool)arg2;
 - (struct _NSRange)characterRangeForTextRange:(UITextRange *)arg1;
 - (struct CGRect)boundingRectForRange:(UITextRange *)arg1;
 - (void)invalidateLayoutForRange:(UITextRange *)arg1;
@@ -69,9 +70,14 @@
 - (long long)affinityForPosition:(UITextPosition *)arg1;
 - (long long)offsetFromPosition:(UITextPosition *)arg1 toPosition:(UITextPosition *)arg2;
 - (long long)comparePosition:(UITextPosition *)arg1 toPosition:(UITextPosition *)arg2;
+- (UITextRange *)_visualSelectionRangeForExtent:(UITextPosition *)arg1 forPoint:(struct CGPoint)arg2 fromPosition:(UITextPosition *)arg3 inDirection:(long long)arg4;
+- (UITextRange *)textRangeForTextKit2Ranges:(NSArray *)arg1;
 - (UITextRange *)textRangeForLineEnclosingPosition:(UITextPosition *)arg1 effectiveAffinity:(long long)arg2;
 - (UITextPosition *)positionFromPosition:(UITextPosition *)arg1 offset:(long long)arg2 affinity:(long long)arg3;
 - (UITextRange *)textRangeFromPosition:(UITextPosition *)arg1 toPosition:(UITextPosition *)arg2;
 - (UITextRange *)emptyTextRangeAtPosition:(UITextPosition *)arg1;
+
+@optional
+- (UITextPosition *)positionFromPosition:(UITextPosition *)arg1 inDirection:(long long)arg2 offset:(long long)arg3 affinity:(long long)arg4;
 @end
 

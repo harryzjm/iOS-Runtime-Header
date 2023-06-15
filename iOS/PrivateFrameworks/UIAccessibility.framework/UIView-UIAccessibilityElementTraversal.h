@@ -26,6 +26,7 @@
 - (void)_accessibilitySetOverridesInvalidFrames:(_Bool)arg1;
 - (_Bool)_accessibilityOverridesInvalidFrames;
 - (id)_accessibilitySubviews;
+- (id)_accessibleNonSupplementarySubviews;
 - (id)_accessibleSubviews;
 - (id)_accessibleSubviews:(int)arg1;
 - (_Bool)_accessibilityViewIsVisibleIgnoringAXOverrides:(_Bool)arg1 stoppingBeforeContainer:(id)arg2;

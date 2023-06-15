@@ -9,7 +9,6 @@
 @class CaptureMTLDevice, NSString;
 @protocol MTLDevice, MTLHeap, MTLIndirectCommandBuffer, MTLIndirectCommandBufferSPI><MTLResourceSPI;
 
-__attribute__((visibility("hidden")))
 @interface CaptureMTLIndirectCommandBuffer : NSObject
 {
     id <MTLIndirectCommandBufferSPI><MTLResourceSPI> _baseObject;
@@ -28,21 +27,25 @@ __attribute__((visibility("hidden")))
 - (_Bool)isAliasable;
 - (id)indirectRenderCommandAtIndex:(unsigned long long)arg1;
 - (id)indirectComputeCommandAtIndex:(unsigned long long)arg1;
+- (void)getHeader:(void **)arg1 headerSize:(unsigned long long *)arg2;
 - (_Bool)doesAliasResource:(id)arg1;
 - (_Bool)doesAliasAnyResources:(const id *)arg1 count:(unsigned long long)arg2;
 - (_Bool)doesAliasAllResources:(const id *)arg1 count:(unsigned long long)arg2;
 - (void)dealloc;
+- (unsigned long long)uniqueIdentifier;
 @property(readonly) unsigned long long unfilteredResourceOptions;
 @property(readonly) unsigned long long storageMode;
 @property(readonly) unsigned long long size;
 @property int responsibleProcess;
 @property(readonly) unsigned long long resourceOptions;
+- (unsigned long long)resourceIndex;
 @property(copy) NSString *label;
 @property(readonly) unsigned long long heapOffset;
 @property(readonly) id <MTLHeap> heap;
 @property(readonly) unsigned long long hazardTrackingMode;
 @property(readonly) struct MTLResourceID gpuResourceID;
 - (unsigned long long)gpuHandle;
+- (unsigned long long)gpuAddress;
 @property(readonly) id <MTLDevice> device;
 @property(readonly) unsigned long long cpuCacheMode;
 @property(readonly) unsigned long long allocationID;

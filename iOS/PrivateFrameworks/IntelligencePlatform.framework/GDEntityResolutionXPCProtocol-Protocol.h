@@ -4,9 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class GDEntityResolutionRequest;
+@class GDEntityResolutionRequest, NSString;
 
 @protocol GDEntityResolutionXPCProtocol
+- (void)generateMentionsForQuery:(NSString *)arg1 withCompletion:(void (^)(GDMentionGenerationResult *, NSError *))arg2;
+- (void)submitCollectionQuery:(GDEntityResolutionRequest *)arg1 withCompletion:(void (^)(GDEntityResolutionCollectionResult *, NSError *))arg2;
 - (void)submitQuery:(GDEntityResolutionRequest *)arg1 withCompletion:(void (^)(GDEntityResolutionResult *, NSError *))arg2;
+- (void)warmupForMode:(long long)arg1 withCompletion:(void (^)(_Bool, NSError *))arg2;
 @end
 

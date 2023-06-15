@@ -8,6 +8,7 @@
 
 @protocol HKSPFeatureSettingsModel
 @property(readonly, nonatomic) _Bool sleepTracking;
+- (id)copy;
 - (_Bool)isEqualToModel:(id <HKSPFeatureSettingsModel>)arg1;
 @end
 

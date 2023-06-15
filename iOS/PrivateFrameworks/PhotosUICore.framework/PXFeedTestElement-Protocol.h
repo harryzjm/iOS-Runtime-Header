@@ -4,10 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class PXFeedConfiguration, PXFeedView;
+@class UIScrollView;
 
 @protocol PXFeedTestElement
-@property(readonly, nonatomic) PXFeedConfiguration *configuration;
-@property(readonly, nonatomic) PXFeedView *feedView;
+@property(readonly, nonatomic) UIScrollView *ppt_scrollView;
 @end
 

@@ -10,16 +10,16 @@
 
 @interface NSAttributedString (NSAttributedStringPersistenceAdditions)
 + (void)enumerateAttachmentsInData:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
-+ (id)TT_attributedStringWithData:(id)arg1 dataPersister:(id)arg2 note:(id)arg3 parentAttachment:(id)arg4 shouldCreateAttachments:(_Bool)arg5 error:(id *)arg6;
-+ (id)TT_attributedStringWithData:(id)arg1 dataPersister:(id)arg2 note:(id)arg3 shouldCreateAttachments:(_Bool)arg4 error:(id *)arg5;
-+ (id)TT_attributedStringWithData:(id)arg1 dataPersister:(id)arg2 createNewAttachmentsInNote:(id)arg3 forParentAttachment:(id)arg4 error:(id *)arg5;
-+ (id)TT_attributedStringWithData:(id)arg1 dataPersister:(id)arg2 createNewAttachmentsInNote:(id)arg3 error:(id *)arg4;
-+ (id)TT_attributedStringWithArchive:(const void *)arg1 dataPersister:(id)arg2 note:(id)arg3 parentAttachment:(id)arg4 shouldCreateNewAttachments:(_Bool)arg5 error:(id *)arg6;
-+ (id)TT_attributedStringWithArchive:(const void *)arg1 dataPersister:(id)arg2 note:(id)arg3 shouldCreateNewAttachments:(_Bool)arg4 error:(id *)arg5;
-- (_Bool)TT_isCopyableSize;
-- (unsigned long long)TT_approximateAttachmentsSizeIncludingPreviews:(_Bool)arg1;
-- (id)TT_serializeWithFlags:(unsigned long long)arg1 dataPersister:(id)arg2 managedObjectContext:(id)arg3 error:(id *)arg4;
-- (_Bool)TT_saveToArchive:(void *)arg1 flags:(unsigned long long)arg2 dataPersister:(id)arg3 managedObjectContext:(id)arg4 error:(id *)arg5;
++ (id)ic_attributedStringWithData:(id)arg1 dataPersister:(id)arg2 note:(id)arg3 parentAttachment:(id)arg4 shouldCreateAttachments:(_Bool)arg5 error:(id *)arg6;
++ (id)ic_attributedStringWithData:(id)arg1 dataPersister:(id)arg2 note:(id)arg3 shouldCreateAttachments:(_Bool)arg4 error:(id *)arg5;
++ (id)ic_attributedStringWithData:(id)arg1 dataPersister:(id)arg2 createNewAttachmentsInNote:(id)arg3 forParentAttachment:(id)arg4 error:(id *)arg5;
++ (id)ic_attributedStringWithData:(id)arg1 dataPersister:(id)arg2 createNewAttachmentsInNote:(id)arg3 error:(id *)arg4;
++ (id)ic_attributedStringWithArchive:(const void *)arg1 dataPersister:(id)arg2 note:(id)arg3 parentAttachment:(id)arg4 shouldCreateNewAttachments:(_Bool)arg5 error:(id *)arg6;
++ (id)ic_attributedStringWithArchive:(const void *)arg1 dataPersister:(id)arg2 note:(id)arg3 shouldCreateNewAttachments:(_Bool)arg4 error:(id *)arg5;
+- (_Bool)ic_isCopyableSize;
+- (unsigned long long)ic_approximateAttachmentsSizeIncludingPreviews:(_Bool)arg1;
+- (id)ic_serializeWithFlags:(unsigned long long)arg1 dataPersister:(id)arg2 managedObjectContext:(id)arg3 error:(id *)arg4;
+- (_Bool)ic_saveToArchive:(void *)arg1 flags:(unsigned long long)arg2 dataPersister:(id)arg3 managedObjectContext:(id)arg4 error:(id *)arg5;
 - (id)ic_searchableStringInContext:(id)arg1;
 - (id)ic_attributedStringByFlatteningInlineAttachmentsWithContext:(id)arg1 flattenUnsupportedInlineAttachmentsOnly:(_Bool)arg2 updateRangeValueToObjectMapBlock:(CDUnknownBlockType)arg3 replacementAttributedStringBlock:(CDUnknownBlockType)arg4;
 - (id)ic_attributedStringByFlatteningUnsupportedInlineAttachmentsWithContext:(id)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UITableViewController.h>
+#import <UIKitCore/UITableViewController.h>
 
 @class NSArray, NSMutableArray, NSString, UIBarButtonItem, VUIDownloadShowDataSource, VUIDownloadShowTableHeaderView, VUIMediaEntitiesDataSource;
 
@@ -32,6 +32,8 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) VUIDownloadShowTableHeaderView *sizingHeader; // @synthesize sizingHeader=_sizingHeader;
 @property(retain, nonatomic) VUIMediaEntitiesDataSource *seasonsDataSource; // @synthesize seasonsDataSource=_seasonsDataSource;
 @property(retain, nonatomic) VUIDownloadShowDataSource *downloadDataSource; // @synthesize downloadDataSource=_downloadDataSource;
+- (void)fullscreenPlaybackUIDidChangeNotification:(id)arg1;
+- (void)_clearTableViewSelections:(_Bool)arg1;
 - (void)_updateNavigationBarPadding;
 - (_Bool)_mediaItemShouldShowRenewOption:(id)arg1;
 - (void)_didPressGetMoreEpisodes:(id)arg1;
@@ -58,6 +60,7 @@ __attribute__((visibility("hidden")))
 - (void)dataSourceDidFinishFetching:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
+- (void)dealloc;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillLayoutSubviews;
 - (void)viewWillAppear:(_Bool)arg1;

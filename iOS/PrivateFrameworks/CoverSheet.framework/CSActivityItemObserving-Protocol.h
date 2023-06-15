@@ -7,6 +7,7 @@
 #import <CoverSheet/NSObject-Protocol.h>
 
 @protocol CSActivityItemObserving <NSObject>
+- (void)activityItemsMayHaveChanged;
 - (void)didAddNewActivityItemSceneHostEnvironment;
 @end
 

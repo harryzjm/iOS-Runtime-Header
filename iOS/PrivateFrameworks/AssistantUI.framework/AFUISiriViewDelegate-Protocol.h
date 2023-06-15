@@ -9,6 +9,7 @@
 @class AFUISiriView, NSString;
 
 @protocol AFUISiriViewDelegate <NSObject>
+- (_Bool)requestSessionAttendingState;
 - (_Bool)siriViewShouldSupportTextInput:(AFUISiriView *)arg1;
 - (void)siriView:(AFUISiriView *)arg1 didReceiveSiriActivationMessageWithSource:(long long)arg2;
 - (_Bool)siriView:(AFUISiriView *)arg1 attemptUnlockWithPassword:(NSString *)arg2;

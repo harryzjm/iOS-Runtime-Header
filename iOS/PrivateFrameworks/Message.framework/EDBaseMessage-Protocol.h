@@ -6,24 +6,25 @@
 
 #import <Message/ECMessage-Protocol.h>
 
-@class EMFollowUp, EMReadLater, NSArray, NSData, NSDate, NSDictionary, NSURL;
+@class ECSubject, EMFollowUp, EMReadLater, NSArray, NSData, NSDate, NSDictionary, NSURL;
 @protocol EDIndexableAccount, EDIndexableMailbox;
 
 @protocol EDBaseMessage <ECMessage>
-@property(nonatomic, readonly) NSDictionary *dataDetectionAttributes;
-@property(nonatomic, readonly) NSData *brandIndicator;
-@property(nonatomic, readonly) NSURL *brandIndicatorLocation;
-@property(nonatomic, readonly) NSDate *sendLaterDate;
-@property(nonatomic, readonly) EMFollowUp *followUp;
-@property(nonatomic, readonly) EMReadLater *readLater;
-@property(nonatomic, readonly) NSDate *date;
-@property(nonatomic, readonly) NSDate *displayDate;
-@property(nonatomic, readonly) long long fileSize;
-@property(nonatomic, readonly) id <EDIndexableMailbox> mailbox;
-@property(nonatomic, readonly) id <EDIndexableAccount> account;
-@property(nonatomic, readonly) long long globalMessageID;
+@property(readonly, copy, nonatomic) NSDictionary *dataDetectionAttributes;
+@property(readonly, nonatomic) NSData *brandIndicator;
+@property(readonly, nonatomic) NSURL *brandIndicatorLocation;
+@property(readonly) NSDate *sendLaterDate;
+@property(readonly, nonatomic) EMFollowUp *followUp;
+@property(readonly) EMReadLater *readLater;
+@property(readonly) NSDate *date;
+@property(readonly) NSDate *displayDate;
+@property(readonly, nonatomic) unsigned long long fileSize;
+@property(readonly, copy, nonatomic) ECSubject *subjectIfAvailable;
+@property(readonly, nonatomic) id <EDIndexableMailbox> mailbox;
+@property(readonly, nonatomic) id <EDIndexableAccount> account;
+@property(readonly, nonatomic) long long globalMessageID;
 
 @optional
-@property(nonatomic, readonly) NSArray *bccIfAvailable;
+@property(readonly, copy) NSArray *bccIfAvailable;
 @end
 

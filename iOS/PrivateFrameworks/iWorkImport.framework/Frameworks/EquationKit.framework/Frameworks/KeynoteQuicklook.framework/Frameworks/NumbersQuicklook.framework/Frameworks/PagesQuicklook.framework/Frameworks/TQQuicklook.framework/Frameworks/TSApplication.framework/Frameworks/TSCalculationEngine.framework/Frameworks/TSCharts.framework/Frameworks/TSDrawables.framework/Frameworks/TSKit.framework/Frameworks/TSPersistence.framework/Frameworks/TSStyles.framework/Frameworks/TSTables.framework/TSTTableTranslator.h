@@ -202,7 +202,7 @@
 - (id)conditionalStyleSetAtCellID:(struct TSUViewCellCoord)arg1;
 - (id)textStyleAtCellUID:(const struct TSKUIDStructCoord *)arg1 isDefault:(out _Bool *)arg2;
 - (id)cellStyleAtCellUID:(const struct TSKUIDStructCoord *)arg1 isDefault:(out _Bool *)arg2;
-- (void)defaultStylesForCellID:(struct TSUViewCellCoord)arg1 useSoftDefault:(_Bool)arg2 outCellStyle:(id *)arg3 outTextStyle:(id *)arg4;
+- (void)defaultStyleHandlesForCellID:(struct TSUViewCellCoord)arg1 useSoftDefault:(_Bool)arg2 styleDefaultsCache:(id)arg3 outCellStyleHandle:(id *)arg4 outTextStyleHandle:(id *)arg5;
 - (id)textStyleAtCellID:(struct TSUViewCellCoord)arg1 isDefault:(out _Bool *)arg2;
 - (id)cellStyleAtCellID:(struct TSUViewCellCoord)arg1 isDefault:(out _Bool *)arg2;
 - (id)defaultTextStyleForTableStyleArea:(unsigned long long)arg1;

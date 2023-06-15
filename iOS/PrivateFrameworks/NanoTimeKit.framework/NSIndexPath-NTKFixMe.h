@@ -7,8 +7,8 @@
 #import <Foundation/NSIndexPath.h>
 
 @interface NSIndexPath (NTKFixMe)
-+ (id)indexPathWithElement:(unsigned long long)arg1 inUpNextSection:(unsigned long long)arg2;
-@property(readonly, nonatomic) unsigned long long upNextSection;
++ (id)indexPathWithElement:(unsigned long long)arg1 inUpNextSection:(long long)arg2;
+@property(readonly, nonatomic) long long upNextSection;
 @property(readonly, nonatomic) unsigned long long element;
 @end
 

@@ -9,7 +9,7 @@
 #import <XCTestCore/NSCopying-Protocol.h>
 #import <XCTestCore/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDictionary, NSNumber, NSString, NSURL, NSUUID, XCTAggregateSuiteRunStatistics, XCTCapabilities, XCTRepetitionPolicy, XCTTestIdentifierSet;
+@class NSArray, NSDictionary, NSNumber, NSSet, NSString, NSURL, NSUUID, XCTAggregateSuiteRunStatistics, XCTCapabilities, XCTRepetitionPolicy, XCTRuntimeIssueDetectionPolicy, XCTScreenCapturePolicy, XCTTestIdentifierSet;
 
 @interface XCTestConfiguration : NSObject <NSSecureCoding, NSCopying>
 {
@@ -25,7 +25,6 @@
     _Bool _gatherLocalizableStringsData;
     _Bool _emitOSLogs;
     _Bool _testTimeoutsEnabled;
-    _Bool _shouldEncodeLegacyTestIdentifiers;
     NSString *_testBundleRelativePath;
     NSURL *_testBundleURL;
     XCTTestIdentifierSet *_testsToRun;
@@ -36,6 +35,7 @@
     NSString *_targetApplicationPath;
     NSString *_targetApplicationBundleID;
     NSDictionary *_testApplicationDependencies;
+    NSSet *_bundleIDsForCrashReportEmphasis;
     NSDictionary *_testApplicationUserOverrides;
     NSString *_productModuleName;
     NSString *_multiDeviceRequirementsFilePath;
@@ -48,9 +48,11 @@
     NSString *_automationFrameworkPath;
     long long _systemAttachmentLifetime;
     long long _userAttachmentLifetime;
+    long long _preferredScreenCaptureFormat;
     long long _testExecutionOrdering;
     NSNumber *_randomExecutionOrderingSeed;
     XCTRepetitionPolicy *_repetitionPolicy;
+    XCTRuntimeIssueDetectionPolicy *_runtimeIssueDetectionPolicy;
     NSNumber *_defaultTestExecutionTimeAllowance;
     NSNumber *_maximumTestExecutionTimeAllowance;
     CDUnknownBlockType _randomNumberGenerator;
@@ -68,16 +70,17 @@
 - (void).cxx_destruct;
 @property(copy) NSDictionary *multiDevicePlatformVersionMap; // @synthesize multiDevicePlatformVersionMap=_multiDevicePlatformVersionMap;
 @property(copy) NSDictionary *applicationBundleInfos; // @synthesize applicationBundleInfos=_applicationBundleInfos;
-@property _Bool shouldEncodeLegacyTestIdentifiers; // @synthesize shouldEncodeLegacyTestIdentifiers=_shouldEncodeLegacyTestIdentifiers;
 @property(retain) XCTCapabilities *IDECapabilities; // @synthesize IDECapabilities=_IDECapabilities;
 @property(copy, nonatomic) NSString *basePathForTestBundleResolution; // @synthesize basePathForTestBundleResolution=_basePathForTestBundleResolution;
 @property(copy) CDUnknownBlockType randomNumberGenerator; // @synthesize randomNumberGenerator=_randomNumberGenerator;
 @property(copy, nonatomic) NSNumber *maximumTestExecutionTimeAllowance; // @synthesize maximumTestExecutionTimeAllowance=_maximumTestExecutionTimeAllowance;
 @property(copy, nonatomic) NSNumber *defaultTestExecutionTimeAllowance; // @synthesize defaultTestExecutionTimeAllowance=_defaultTestExecutionTimeAllowance;
 @property _Bool testTimeoutsEnabled; // @synthesize testTimeoutsEnabled=_testTimeoutsEnabled;
+@property(retain) XCTRuntimeIssueDetectionPolicy *runtimeIssueDetectionPolicy; // @synthesize runtimeIssueDetectionPolicy=_runtimeIssueDetectionPolicy;
 @property(retain) XCTRepetitionPolicy *repetitionPolicy; // @synthesize repetitionPolicy=_repetitionPolicy;
 @property(retain) NSNumber *randomExecutionOrderingSeed; // @synthesize randomExecutionOrderingSeed=_randomExecutionOrderingSeed;
 @property long long testExecutionOrdering; // @synthesize testExecutionOrdering=_testExecutionOrdering;
+@property(nonatomic) long long preferredScreenCaptureFormat; // @synthesize preferredScreenCaptureFormat=_preferredScreenCaptureFormat;
 @property long long userAttachmentLifetime; // @synthesize userAttachmentLifetime=_userAttachmentLifetime;
 @property long long systemAttachmentLifetime; // @synthesize systemAttachmentLifetime=_systemAttachmentLifetime;
 @property _Bool emitOSLogs; // @synthesize emitOSLogs=_emitOSLogs;
@@ -97,6 +100,7 @@
 @property _Bool reportActivities; // @synthesize reportActivities=_reportActivities;
 @property(copy) NSString *productModuleName; // @synthesize productModuleName=_productModuleName;
 @property(copy) NSDictionary *testApplicationUserOverrides; // @synthesize testApplicationUserOverrides=_testApplicationUserOverrides;
+@property(copy) NSSet *bundleIDsForCrashReportEmphasis; // @synthesize bundleIDsForCrashReportEmphasis=_bundleIDsForCrashReportEmphasis;
 @property(copy) NSDictionary *testApplicationDependencies; // @synthesize testApplicationDependencies=_testApplicationDependencies;
 @property(copy) NSString *targetApplicationBundleID; // @synthesize targetApplicationBundleID=_targetApplicationBundleID;
 @property(copy) NSString *targetApplicationPath; // @synthesize targetApplicationPath=_targetApplicationPath;
@@ -112,12 +116,13 @@
 @property(copy, nonatomic) NSURL *testBundleURL; // @synthesize testBundleURL=_testBundleURL;
 @property(copy) NSString *testBundleRelativePath; // @synthesize testBundleRelativePath=_testBundleRelativePath;
 - (void)clearXcodeReportingConfiguration;
+@property(readonly) XCTScreenCapturePolicy *effectiveScreenCapturePolicy;
 @property(readonly) long long testMode;
+@property(readonly, copy) NSString *testBundleName;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)_encodeTestIdentifiersWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)init;

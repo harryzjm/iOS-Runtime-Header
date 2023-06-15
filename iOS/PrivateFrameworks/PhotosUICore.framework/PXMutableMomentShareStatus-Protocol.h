@@ -6,10 +6,9 @@
 
 #import <PhotosUICore/NSObject-Protocol.h>
 
-@protocol PXDisplayAssetFetchResult, PXDisplayMomentShare, PXSectionedFetchResult;
+@protocol PXDisplayAssetFetchResult, PXDisplayMomentShare;
 
 @protocol PXMutableMomentShareStatus <NSObject>
-@property(retain, nonatomic) id <PXSectionedFetchResult> participantsFetchResult;
 @property(retain, nonatomic) id <PXDisplayAssetFetchResult> allAssetsFetchResult;
 @property(retain, nonatomic) id <PXDisplayAssetFetchResult> copiedAssetsFetchResult;
 @property(retain, nonatomic) id <PXDisplayAssetFetchResult> copyingAssetsFetchResult;

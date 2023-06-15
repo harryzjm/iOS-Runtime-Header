@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)dataDetectorElementFromVNBarcodeObservation:(id)arg1 loggingIndex:(long long)arg2;
++ (void)addGroupingToDataDetectors:(id)arg1 parentDocument:(id)arg2;
 + (id)dataDetectorsFromCRDocumentOutputRegion:(id)arg1 shouldFilter:(_Bool)arg2;
 + (id)textElementsFromCRDocumentOutputRegion:(id)arg1;
 

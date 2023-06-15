@@ -13,6 +13,7 @@
     MISSING_TYPE *bundlePath;
     MISSING_TYPE *bundleId;
     MISSING_TYPE *isPersonalDomain;
+    MISSING_TYPE *sensitivityPolicy;
 }
 
 @end

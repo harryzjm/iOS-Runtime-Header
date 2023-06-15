@@ -15,6 +15,6 @@
 @property(nonatomic) VKSceneConfiguration *sceneConfiguration;
 @property(nonatomic) VKScreenCanvas<VKInteractiveMap> *screenCanvas;
 - (void)stop;
-- (void)startWithPounce:(_Bool)arg1 startLocation:(CDStruct_c3b9c2ee)arg2 startCourse:(double)arg3 pounceCompletionHandler:(void (^)(_Bool))arg4;
+- (void)startWithPounce:(_Bool)arg1 startLocation:(CDStruct_2c43369c)arg2 startCourse:(double)arg3 pounceCompletionHandler:(void (^)(_Bool))arg4;
 @end
 

@@ -13,25 +13,34 @@ __attribute__((visibility("hidden")))
 @interface VUIDownloadButtonViewModel : NSObject
 {
     _Bool _renewsOfflineKeysAutomatically;
+    _Bool _downloadFailedDueToError;
     VUIVideosPlayable *_videosPlayable;
     VUIMediaEntity *_mediaEntity;
     unsigned long long _downloadState;
+    NSString *_downloadStateStringValue;
     NSDate *_downloadExpirationDate;
     NSDate *_availabilityEndDate;
     double _downloadProgress;
     NSObject<VUIMediaEntityAssetController> *_assetController;
-    NSString *_downloadStateStringValue;
+    NSString *_accessibilityIdentifier;
     NSArray *_downloadStateToString;
 }
 
++ (id)viewModelWithMPMediaItemCollection:(id)arg1;
++ (id)viewModelWithVideoManagedObject:(id)arg1;
++ (id)viewModelWithMPMediaItem:(id)arg1;
++ (id)viewModelWithAssetController:(id)arg1;
++ (id)viewModelWithVideosPlayable:(id)arg1;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *downloadStateToString; // @synthesize downloadStateToString=_downloadStateToString;
-@property(retain, nonatomic) NSString *downloadStateStringValue; // @synthesize downloadStateStringValue=_downloadStateStringValue;
+@property(retain, nonatomic) NSString *accessibilityIdentifier; // @synthesize accessibilityIdentifier=_accessibilityIdentifier;
 @property(retain, nonatomic) NSObject<VUIMediaEntityAssetController> *assetController; // @synthesize assetController=_assetController;
+@property(nonatomic) _Bool downloadFailedDueToError; // @synthesize downloadFailedDueToError=_downloadFailedDueToError;
 @property(nonatomic) double downloadProgress; // @synthesize downloadProgress=_downloadProgress;
 @property(retain, nonatomic) NSDate *availabilityEndDate; // @synthesize availabilityEndDate=_availabilityEndDate;
 @property(retain, nonatomic) NSDate *downloadExpirationDate; // @synthesize downloadExpirationDate=_downloadExpirationDate;
 @property(nonatomic) _Bool renewsOfflineKeysAutomatically; // @synthesize renewsOfflineKeysAutomatically=_renewsOfflineKeysAutomatically;
+@property(retain, nonatomic) NSString *downloadStateStringValue; // @synthesize downloadStateStringValue=_downloadStateStringValue;
 @property(nonatomic) unsigned long long downloadState; // @synthesize downloadState=_downloadState;
 @property(retain, nonatomic) VUIMediaEntity *mediaEntity; // @synthesize mediaEntity=_mediaEntity;
 @property(retain, nonatomic) VUIVideosPlayable *videosPlayable; // @synthesize videosPlayable=_videosPlayable;
@@ -46,8 +55,14 @@ __attribute__((visibility("hidden")))
 - (void)resumeDownload;
 - (void)pauseDownload;
 - (void)fetchNewKeysForDownloadedVideo;
-- (void)startDownloadAllowingCellular:(_Bool)arg1 shouldMarkAsDeletedOnCancellationOrFailure:(_Bool)arg2 quality:(long long)arg3;
+- (void)startDownloadAllowingCellular:(_Bool)arg1 shouldMarkAsDeletedOnCancellationOrFailure:(_Bool)arg2 quality:(long long)arg3 preferEnhancedDownload:(_Bool)arg4;
+@property(readonly, nonatomic) _Bool allowsManualDownloadRenewal;
+@property(readonly, nonatomic) NSString *brandID;
+@property(readonly, nonatomic) NSString *brandName;
 - (void)dealloc;
+- (id)initWithMPMediaItemCollection:(id)arg1;
+- (id)initWithVideoManagedObject:(id)arg1;
+- (id)initWithMPMediaItem:(id)arg1;
 - (id)initWithAssetController:(id)arg1;
 - (id)initWithVideosPlayable:(id)arg1;
 

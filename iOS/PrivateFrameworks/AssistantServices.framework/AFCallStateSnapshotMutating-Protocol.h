@@ -7,6 +7,7 @@
 #import <AssistantServices/NSObject-Protocol.h>
 
 @protocol AFCallStateSnapshotMutating <NSObject>
+- (void)setIsDropInCall:(_Bool)arg1;
 - (void)setOnSpeaker:(_Bool)arg1;
 - (void)setCallState:(unsigned long long)arg1;
 @end

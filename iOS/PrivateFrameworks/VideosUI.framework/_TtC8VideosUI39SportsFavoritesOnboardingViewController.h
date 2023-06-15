@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
 @interface _TtC8VideosUI39SportsFavoritesOnboardingViewController : UIViewController
 {
+    MISSING_TYPE *dismissHandler;
     MISSING_TYPE *viewModel;
     MISSING_TYPE *$__lazy_storage_$_controller;
     MISSING_TYPE *imageView;

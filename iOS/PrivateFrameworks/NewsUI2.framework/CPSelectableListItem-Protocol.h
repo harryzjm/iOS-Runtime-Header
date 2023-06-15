@@ -7,6 +7,6 @@
 #import <NewsUI2/CPListTemplateItem-Protocol.h>
 
 @protocol CPSelectableListItem <CPListTemplateItem>
-@property(nonatomic, copy) CDUnknownBlockType handler;
+@property(copy, nonatomic) CDUnknownBlockType handler;
 @end
 

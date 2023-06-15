@@ -8,6 +8,8 @@
 
 @interface UILabel (RangeBold)
 - (void)setBoldSubString:(id)arg1;
+- (void)setColor:(id)arg1 toSubstring:(id)arg2;
+- (void)setBoldSubString:(id)arg1;
 - (void)setBoldSubString:(id)arg1;
 @end
 

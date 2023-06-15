@@ -6,15 +6,18 @@
 
 #import <MapsUI/MUInfoCardContentProtocol-Protocol.h>
 
-@class MKLookAroundView, MKPlaceCardActionItem, MKUGCCallToActionViewAppearance, MUPresentationOptions, NSArray, NSDictionary, NSURL;
+@class MKLookAroundView, MKPlaceCardActionItem, MUPlaceCallToActionAppearance, MUPresentationOptions, NSArray, NSDictionary, NSString, NSURL, UILayoutGuide;
+@protocol MUOfflineMapProvider;
 
 @protocol MUPlaceCardContentProtocol <MUInfoCardContentProtocol>
+@property(nonatomic) __weak id <MUOfflineMapProvider> offlineMapProvider;
 @property(nonatomic) double verifiedHeaderExpansionProgress;
 @property(nonatomic) unsigned long long placeNumberOfReportsInReview;
 @property(nonatomic) _Bool placeInBookmarks;
 @property(nonatomic) _Bool placeInShortcuts;
 @property(nonatomic) _Bool placeInCollections;
 @property(readonly, nonatomic) _Bool shouldBlurChromeHeaderButtons;
+@property(readonly, nonatomic) UILayoutGuide *headerViewTitleLabelToTopLayoutGuide;
 @property(readonly, nonatomic) MKLookAroundView *lookAroundView;
 - (NSArray *)createShareSheetFooterActions;
 - (void)performShareActionWithPresentationOptions:(MUPresentationOptions *)arg1;
@@ -26,7 +29,7 @@
 - (void)updateCollectionViewsAnimated:(_Bool)arg1;
 - (void)updateSuggestionView;
 - (void)updateActionRowView;
-- (void)updateUserSubmissionWithPhotoURL:(NSURL *)arg1 numberOfPhotos:(long long)arg2;
-- (void)updateViewsWithSubmissionStatus:(MKUGCCallToActionViewAppearance *)arg1 animated:(_Bool)arg2;
+- (void)updateUserSubmissionWithPhotoURL:(NSURL *)arg1 photoID:(NSString *)arg2 numberOfPhotos:(long long)arg3;
+- (void)updateViewsWithSubmissionStatus:(MUPlaceCallToActionAppearance *)arg1 animated:(_Bool)arg2;
 @end
 

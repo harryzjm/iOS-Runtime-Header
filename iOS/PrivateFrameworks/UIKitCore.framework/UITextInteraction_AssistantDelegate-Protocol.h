@@ -7,14 +7,24 @@
 #import <UIKitCore/NSObject-Protocol.h>
 #import <UIKitCore/UITextAutoscrolling-Protocol.h>
 
-@class NSString, NSTextAlternatives, UIContextMenuInteraction, UIDragRecognizer, UIGestureRecognizer, UITextCursorAssertionController, UITextRange, UITextSelectionView, UITouch, UIView, _UIKeyboardTextSelectionController;
-@protocol UIContextMenuInteractionDelegate, UITextInput;
+@class NSArray, NSString, NSTextAlternatives, UIContextMenuInteraction, UIDragRecognizer, UIGestureRecognizer, UITextCursorAssertionController, UITextRange, UITextRangeAdjustmentInteraction, UITextSelection, UITextSelectionView, UITouch, UIView, _UIKeyboardTextSelectionController, _UITextChoiceAccelerationAssistant, _UITextInteractionEditMenuAssistant;
+@protocol UIContextMenuInteractionDelegate, UITextInput, _UITextSelectionWidgetAnimating;
 
 @protocol UITextInteraction_AssistantDelegate <UITextAutoscrolling, NSObject>
 @property(nonatomic) __weak id <UIContextMenuInteractionDelegate> externalContextMenuInteractionDelegate;
 @property(readonly, nonatomic) UIContextMenuInteraction *contextMenuInteraction;
+@property(readonly, nonatomic) UIView *dynamicCaretView;
+@property(nonatomic) int glowViewMode;
+@property(nonatomic, getter=isCursorBlinkAnimationEnabled) _Bool cursorBlinkAnimationEnabled;
+@property(nonatomic, getter=isSelectionDisplayVisible) _Bool selectionDisplayVisible;
+@property(readonly, nonatomic) UITextRangeAdjustmentInteraction *rangeAdjustmentInteraction;
+@property(readonly, nonatomic) UITextSelection *activeSelection;
+@property(nonatomic) int selectionHighlightMode;
+@property(readonly, nonatomic) UIView<_UITextSelectionWidgetAnimating> *_caretView;
 @property(retain, nonatomic) id keyboardSuppressionAssertion;
 @property(retain, nonatomic) id grabberSuppressionAssertion;
+@property(readonly, nonatomic) _UITextChoiceAccelerationAssistant *_textChoicesAssistant;
+@property(readonly, nonatomic) _UITextInteractionEditMenuAssistant *_editMenuAssistant;
 @property(readonly, nonatomic) UITextCursorAssertionController *_assertionController;
 @property(readonly, nonatomic) _UIKeyboardTextSelectionController *activeSelectionController;
 @property(nonatomic) _Bool expectingCommit;
@@ -24,11 +34,13 @@
 @property(nonatomic) _Bool autoscrolled;
 - (void)lollipopGestureWithState:(long long)arg1 location:(struct CGPoint)arg2 locationOfFirstTouch:(struct CGPoint)arg3 forTouchType:(long long)arg4;
 - (_Bool)didPerformLoupeSelectionHandoff;
+- (id)obtainSelectionGrabberSuppressionAssertion;
 - (void)endFloatingCursor;
 - (void)updateFloatingCursorAtPoint:(struct CGPoint)arg1 animated:(_Bool)arg2;
 - (void)beginFloatingCursorAtPoint:(struct CGPoint)arg1;
 - (void)willBeginFloatingCursor:(_Bool)arg1;
 - (void)resetWillHandoffLoupeMagnifier;
+- (NSArray *)updatedTextReplacementsMenuWithMenuElements:(NSArray *)arg1;
 - (_Bool)scheduleReplacementsForRange:(UITextRange *)arg1 withOptions:(unsigned long long)arg2;
 - (void)scheduleDictationReplacementsForAlternatives:(NSTextAlternatives *)arg1 range:(UITextRange *)arg2;
 - (_Bool)isDisplayingMenu;
@@ -36,7 +48,6 @@
 - (void)dismissMenuForInputUI;
 - (void)presentMenuForInputUI:(NSString *)arg1;
 - (void)setAutomaticSelectionCommandsSuppressedForPointerTouchType:(_Bool)arg1;
-- (void)showSelectionCommandsForSecondaryClickAtPoint:(struct CGPoint)arg1;
 - (void)selectWordWithoutShowingCommands;
 - (void)updateWithMagnifierTerminalPoint:(_Bool)arg1;
 - (void)setGestureRecognizers;
@@ -53,6 +64,11 @@
 - (void)willBeginSelectionInteraction;
 - (void)clearStashedSelection;
 - (void)stashCurrentSelection;
+- (void)selectionChanged;
+- (void)hideSelectionCommands;
+- (void)showSelectionCommands;
+- (void)setNeedsSelectionDisplayUpdate;
+- (void)updateDisplayedSelection;
 - (_Bool)supportsIndirectInteractions;
 - (_Bool)viewConformsToAsynchronousInteractionProtocol;
 - (_Bool)usesAsynchronousSelectionController;
@@ -61,8 +77,8 @@
 - (_Bool)viewCouldBecomeEditable:(id <UITextInput>)arg1;
 - (UITextRange *)rangeForTextReplacement:(UITextRange *)arg1;
 - (void)setSuppressSystemUI:(_Bool)arg1;
+- (UITextSelectionView *)_legacySelectionView;
 - (_Bool)useGesturesForEditableContent;
-- (UITextSelectionView *)selectionView;
 - (_Bool)containerAllowsSelectionTintOnly;
 - (_Bool)containerIsTextField;
 - (UIView *)view;

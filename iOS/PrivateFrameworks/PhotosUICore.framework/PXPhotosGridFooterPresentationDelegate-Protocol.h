@@ -10,6 +10,7 @@
 @protocol PXAnonymousViewController;
 
 @protocol PXPhotosGridFooterPresentationDelegate <NSObject>
+- (struct UIEdgeInsets)maskPaddingForFooterPresentation:(PXPhotosGridFooterPresentation *)arg1;
 - (void)dismissPresentedViewControllerForFooterPresentation:(PXPhotosGridFooterPresentation *)arg1;
 - (void)footerPresentation:(PXPhotosGridFooterPresentation *)arg1 presentViewController:(NSObject<PXAnonymousViewController> *)arg2;
 @end

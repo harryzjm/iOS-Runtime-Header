@@ -12,9 +12,11 @@ __attribute__((visibility("hidden")))
 @interface _UIDatePickerContainerViewController : UIViewController
 {
     CDUnknownBlockType _pendingKeyboardAdjustment;
+    double _keyboardAdjustmentOffset;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) double keyboardAdjustmentOffset; // @synthesize keyboardAdjustmentOffset=_keyboardAdjustmentOffset;
 @property(copy, nonatomic) CDUnknownBlockType pendingKeyboardAdjustment; // @synthesize pendingKeyboardAdjustment=_pendingKeyboardAdjustment;
 - (_Bool)passthroughScrollInteraction:(id)arg1 shouldInteractAtLocation:(struct CGPoint)arg2 withEvent:(id)arg3;
 - (_Bool)passthroughScrollInteractionDidRecognize:(id)arg1;

@@ -7,5 +7,6 @@
 #import <MediaRemote/NSObject-Protocol.h>
 
 @protocol MRLockScreenUIClientXPCProtocol <NSObject>
+- (void)routeRecommendationDismissed;
 @end
 

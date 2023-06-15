@@ -4,21 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
 @interface _TtC11WeatherMaps22WeatherMapSnapshotView : UIView
 {
-    MISSING_TYPE *cornerRadius;
+    MISSING_TYPE *delegate;
     MISSING_TYPE *annotationViewModelFactory;
+    MISSING_TYPE *mapLocationAccessibilityModelManager;
+    MISSING_TYPE *overlaySonifier;
     MISSING_TYPE *snapshotManager;
+    MISSING_TYPE *$__lazy_storage_$_showDebugConsole;
     MISSING_TYPE *status;
-    MISSING_TYPE *mapLayer;
-    MISSING_TYPE *baseLayer;
-    MISSING_TYPE *overlayLayer;
-    MISSING_TYPE *borderLayer;
+    MISSING_TYPE *$__lazy_storage_$_snapshotDisplayView;
+    MISSING_TYPE *$__lazy_storage_$_borderLayer;
     MISSING_TYPE *annotationView;
     MISSING_TYPE *annotationViewFractionalCenter;
     MISSING_TYPE *debugLabel;
@@ -26,11 +27,17 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *errorEffectView;
     MISSING_TYPE *errorLabel;
     MISSING_TYPE *errorPlatterView;
+    MISSING_TYPE *loadingIndicator;
+    MISSING_TYPE *needsBuild;
     MISSING_TYPE *options;
+    MISSING_TYPE *isTransitioningToSnapshotView;
 }
 
 - (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)darkerSystemColorsStatusDidChange:(id)arg1;
+- (void)didTransitionToSnapshotMap:(id)arg1;
+- (void)willTransitionToSnapshotMap:(id)arg1;
 - (void)layoutSubviews;
 - (void)dealloc;
 - (id)initWithCoder:(id)arg1;

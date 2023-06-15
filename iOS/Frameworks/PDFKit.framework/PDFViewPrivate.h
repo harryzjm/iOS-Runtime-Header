@@ -23,6 +23,8 @@ __attribute__((visibility("hidden")))
     _Bool delegateWillScale;
     _Bool delegateOrdersPageDrawing;
     _Bool delegateRespondsToAllowFormFilling;
+    _Bool delegateRespondsToAllowFormFillingWithAutoFill;
+    _Bool delegateRespondsToAllowFormFillingWithConfidence;
     double gutterWide;
     _Bool displaysPageBreaks;
     struct UIEdgeInsets pageBreakMargins;
@@ -52,12 +54,14 @@ __attribute__((visibility("hidden")))
     _Bool showsScrollIndicators;
     _Bool dataDetectorsEnabled;
     _Bool debugDrawCGPDFNodeLayer[11];
-    _Bool debugDrawCGPDFTextBoundingBoxesLayer[8];
-    _Bool debugDrawCGPDFNodeBoundingBoxesLayer[11];
     _Bool wantsForceUpdate;
     double blockingWaitDuration;
     unsigned long long activeMarkupStyle;
     _Bool inFormFillingMode;
+    _Bool formFillingUpdatesAnnotationOnEveryTextChange;
+    _Bool allowsMarkupAnnotationEditing;
+    _Bool allowsUndo;
+    _Bool textSelectionEnabled;
     UILongPressGestureRecognizer *longPressGestureRecognizer;
     UITapGestureRecognizer *tapGestureRecognizer;
     UITapGestureRecognizer *doubleTapGestureRecognizer;

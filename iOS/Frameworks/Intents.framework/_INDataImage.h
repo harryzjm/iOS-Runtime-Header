@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface _INDataImage : INImage
 {
     NSUUID *_sha256HashUUID;
+    struct os_unfair_lock_s _hashLock;
     NSData *_imageData;
 }
 

@@ -6,7 +6,7 @@
 
 #import "MUPlaceSectionController.h"
 
-@class GEOAppleMediaServicesResult, MKUGCCallToActionViewAppearance, MUPlaceAppLockupView, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, MUPlaceSectionView, MUTimeExpirableLRUCache, NSArray, NSString, UIView, UIViewController;
+@class GEOAppleMediaServicesResult, MUPlaceAppLockupView, MUPlaceCallToActionAppearance, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, MUPlaceSectionView, MUTimeExpirableLRUCache, NSArray, NSString, UIView, UIViewController;
 @protocol MUInfoCardAnalyticsDelegate;
 
 __attribute__((visibility("hidden")))
@@ -41,7 +41,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) MUPlaceSectionFooterViewModel *sectionFooterViewModel;
 @property(readonly, nonatomic) UIViewController *sectionViewController;
 @property(readonly, nonatomic) NSArray *sectionViews;
-@property(retain, nonatomic) MKUGCCallToActionViewAppearance *submissionStatus;
+@property(retain, nonatomic) MUPlaceCallToActionAppearance *submissionStatus;
 @property(readonly) Class superclass;
 
 @end

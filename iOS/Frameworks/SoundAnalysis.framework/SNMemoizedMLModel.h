@@ -6,31 +6,26 @@
 
 #import <objc/NSObject.h>
 
-@class MLModelDescription, NSString;
-@protocol SNMLModel;
+@class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
 @interface SNMemoizedMLModel : NSObject
 {
-    unsigned long long _maxCacheSize;
-    struct unordered_map<SoundAnalysis::MD5Hash, id<MLFeatureProvider>, std::hash<SoundAnalysis::MD5Hash>, std::equal_to<SoundAnalysis::MD5Hash>, std::allocator<std::pair<const SoundAnalysis::MD5Hash, id<MLFeatureProvider>>>> _cacheStorage;
-    struct list<SoundAnalysis::MD5Hash, std::allocator<SoundAnalysis::MD5Hash>> _cacheAccessRecency;
-    id <SNMLModel> _wrappedModel;
+    MISSING_TYPE *wrappedModel;
+    MISSING_TYPE *maxCacheSize;
+    MISSING_TYPE *cacheStorage;
+    MISSING_TYPE *cacheAccessRecency;
 }
 
-+ (id)new;
-- (id).cxx_construct;
++ (id)withWrappedModel:(id)arg1;
++ (id)withWrappedModel:(id)arg1 maxCacheSize:(long long)arg2;
 - (void).cxx_destruct;
 - (id)predictionFromFeatures:(id)arg1 options:(id)arg2 error:(id *)arg3;
-@property(readonly) MLModelDescription *modelDescription;
+- (id)modelDescription;
+- (id)initWithWrappedModel:(id)arg1 maxCacheSize:(long long)arg2;
+- (id)initWithWrappedModel:(id)arg1;
 - (id)initWithModelDescription:(id)arg1 parameterDictionary:(id)arg2 error:(id *)arg3;
 - (id)init;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

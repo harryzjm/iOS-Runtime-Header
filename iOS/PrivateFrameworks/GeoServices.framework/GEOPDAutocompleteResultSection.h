@@ -13,6 +13,9 @@ __attribute__((visibility("hidden")))
 {
     PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
+    CDStruct_95bda58d _allowedTypeClientOnlySections;
+    CDStruct_95bda58d _excludedClientResultTypes;
+    CDStruct_95bda58d _includedClientResultTypes;
     NSMutableArray *_entries;
     NSString *_name;
     unsigned int _readerMarkPos;
@@ -24,6 +27,7 @@ __attribute__((visibility("hidden")))
     int _type;
     _Bool _enableMapsSuggestServerReranking;
     _Bool _enforceServerResultsOrder;
+    _Bool _isSectionForClientOnlyResults;
     _Bool _shouldInterleaveClientResults;
     struct {
         unsigned int has_contentType:1;
@@ -32,8 +36,12 @@ __attribute__((visibility("hidden")))
         unsigned int has_type:1;
         unsigned int has_enableMapsSuggestServerReranking:1;
         unsigned int has_enforceServerResultsOrder:1;
+        unsigned int has_isSectionForClientOnlyResults:1;
         unsigned int has_shouldInterleaveClientResults:1;
         unsigned int read_unknownFields:1;
+        unsigned int read_allowedTypeClientOnlySections:1;
+        unsigned int read_excludedClientResultTypes:1;
+        unsigned int read_includedClientResultTypes:1;
         unsigned int read_entries:1;
         unsigned int read_name:1;
         unsigned int wrote_anyField:1;
@@ -49,6 +57,7 @@ __attribute__((visibility("hidden")))
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (void)dealloc;
 - (id)initWithData:(id)arg1;
 - (id)init;
 

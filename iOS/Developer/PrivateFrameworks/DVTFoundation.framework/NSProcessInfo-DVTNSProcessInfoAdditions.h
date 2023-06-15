@@ -9,8 +9,6 @@
 @interface NSProcessInfo (DVTNSProcessInfoAdditions)
 - (id)dvt_activeSystemActivityTokensMatchingOptions:(unsigned long long)arg1;
 - (id)dvt_beginActivityWithOptions:(unsigned long long)arg1 reason:(id)arg2;
-- (void)dvt_setUseCommandLineMessageTracerReportingOverride:(_Bool)arg1;
-- (_Bool)dvt_shouldUseCommandLineMessageTracerReporting;
 - (void)dvt_setDisableSCMOverride:(_Bool)arg1;
 - (_Bool)dvt_shouldDisableSCM;
 - (void)dvt_setDisallowSavingOverride:(_Bool)arg1;

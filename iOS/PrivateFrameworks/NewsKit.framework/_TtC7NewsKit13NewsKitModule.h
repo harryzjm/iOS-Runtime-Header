@@ -10,7 +10,8 @@
 
 @interface _TtC7NewsKit13NewsKitModule : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *resolver;
+    MISSING_TYPE *container;
+    MISSING_TYPE *$__lazy_storage_$_resolver;
     MISSING_TYPE *singletonPool;
     MISSING_TYPE *$__lazy_storage_$_cloudContext;
     MISSING_TYPE *$__lazy_storage_$_configurationManager;

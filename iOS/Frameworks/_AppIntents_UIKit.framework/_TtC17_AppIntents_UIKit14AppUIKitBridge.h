@@ -13,6 +13,7 @@
     MISSING_TYPE *host;
     MISSING_TYPE *lock;
     MISSING_TYPE *entityInteractionsTable;
+    MISSING_TYPE *interactionIdToEntityIdentifierTable;
     MISSING_TYPE *intentInteractionsTable;
 }
 

@@ -10,7 +10,7 @@
 
 @interface _TtC14NewsEngagement28EngagementDebugEventProvider : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *dialogRequestFactory;
+    MISSING_TYPE *requestFactory;
     MISSING_TYPE *observersStore;
 }
 

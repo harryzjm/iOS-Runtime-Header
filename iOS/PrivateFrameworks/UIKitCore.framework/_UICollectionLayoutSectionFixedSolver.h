@@ -46,7 +46,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) struct CGPoint orthogonalOffset; // @synthesize orthogonalOffset=_orthogonalOffset;
 @property(nonatomic) _Bool shouldAdjustContentSizeForPartialLastGroupSolution; // @synthesize shouldAdjustContentSizeForPartialLastGroupSolution=_shouldAdjustContentSizeForPartialLastGroupSolution;
 - (double)_dimensionForRootGroupAlongAxis:(unsigned long long)arg1;
-- (void)_setOrthogonalOffset:(struct CGPoint)arg1;
 - (double)auxillaryHostPaddingBeforeBoundarySupplementaries;
 - (id)auxillaryHostTraitCollection;
 - (id)auxillaryHostPreferredSizes;
@@ -59,6 +58,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)auxillaryHostWantsOverlapAdjustmentForMatchingAlignmentsOnly;
 - (struct CGRect)auxillaryHostPinningRect;
 - (struct CGSize)auxillaryHostContentSize;
+- (struct _NSRange)preferredSizeGroupingRangeForItemAtIndex:(long long)arg1;
 @property(readonly, nonatomic) unsigned long long containerSizeDependentAxes;
 - (id)sectionSupplementaryFrameWithKind:(id)arg1 index:(long long)arg2;
 - (long long)sectionSupplementaryKindIndexForEnrollmentIdentifier:(id)arg1;
@@ -66,8 +66,8 @@ __attribute__((visibility("hidden")))
 - (id)sectionSupplementaryFrameForIndex:(long long)arg1;
 - (id)supplementaryFrameWithKind:(id)arg1 index:(long long)arg2;
 - (id)frameForIndex:(long long)arg1;
-@property(readonly, nonatomic) struct CGRect effectiveContentFrame;
-@property(readonly, nonatomic) struct CGSize contentSize;
+@property(readonly, nonatomic) struct CGRect primaryContentFrame;
+@property(readonly, nonatomic) struct CGRect contentFrameIncludingAuxiliaries;
 @property(readonly, nonatomic) NSIndexSet *pinnedSupplementaryIndexes;
 - (id)visualDescription;
 - (id)queryFramesIntersectingRect:(struct CGRect)arg1 frameOffset:(struct CGPoint)arg2;

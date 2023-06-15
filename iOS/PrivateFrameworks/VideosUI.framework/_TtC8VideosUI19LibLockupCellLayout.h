@@ -11,7 +11,6 @@
     MISSING_TYPE *$__lazy_storage_$_titleTextLayout;
     MISSING_TYPE *$__lazy_storage_$_subtitleTextLayout;
     MISSING_TYPE *$__lazy_storage_$_imageViewLayout;
-    MISSING_TYPE *$__lazy_storage_$_buttonLayout;
     MISSING_TYPE *$__lazy_storage_$_loadingSpinnerLayout;
 }
 

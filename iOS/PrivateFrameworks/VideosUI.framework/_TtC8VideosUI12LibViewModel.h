@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *libRouterDataSource;
     MISSING_TYPE *libViewLayout;
+    MISSING_TYPE *libAttributes;
 }
 
 @end

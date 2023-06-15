@@ -6,25 +6,29 @@
 
 #import <objc/NSObject.h>
 
-@class NSMapTable, NSMutableSet, _UIKeyShortcutHUDMenu, _UIMenuLeafValidation;
+@class NSMapTable, NSMutableDictionary, NSMutableSet, _UIKeyShortcutHUDMenu, _UIMenuLeafValidation;
 
 __attribute__((visibility("hidden")))
 @interface _UIKeyShortcutHUDModel : NSObject
 {
-    NSMapTable *_displayableKeyCommandModelMap;
+    NSMapTable *_displayableAppKeyCommandToModelShortcutMap;
+    NSMutableSet *_performableAppKeyCommands;
     NSMutableSet *_equivalentKeyCommandsInPriorityAlreadyEnumerated;
+    NSMapTable *_appKeyCommandToModelKeyCommandMap;
     struct __GSKeyboard *_gsKeyboard;
     _UIMenuLeafValidation *_validation;
     _UIKeyShortcutHUDMenu *_menu;
-    NSMutableSet *_activeKeyCommands;
-    NSMapTable *_keyCommandModelMap;
+    NSMutableSet *_modelKeyCommands;
+    NSMapTable *_modelKeyCommandToModelShortcutMap;
+    NSMutableDictionary *_modelKeyCommandToAppKeyCommandMap;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)modelForCurrentMenu;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSMapTable *keyCommandModelMap; // @synthesize keyCommandModelMap=_keyCommandModelMap;
-@property(retain, nonatomic) NSMutableSet *activeKeyCommands; // @synthesize activeKeyCommands=_activeKeyCommands;
+@property(retain, nonatomic) NSMutableDictionary *modelKeyCommandToAppKeyCommandMap; // @synthesize modelKeyCommandToAppKeyCommandMap=_modelKeyCommandToAppKeyCommandMap;
+@property(retain, nonatomic) NSMapTable *modelKeyCommandToModelShortcutMap; // @synthesize modelKeyCommandToModelShortcutMap=_modelKeyCommandToModelShortcutMap;
+@property(retain, nonatomic) NSMutableSet *modelKeyCommands; // @synthesize modelKeyCommands=_modelKeyCommands;
 @property(readonly, nonatomic) _UIKeyShortcutHUDMenu *menu; // @synthesize menu=_menu;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
@@ -39,12 +43,12 @@ __attribute__((visibility("hidden")))
 - (id)_sanitizedMainMenu;
 - (id)_responderBasedKeyCommandsStartingAtResponder:(id)arg1;
 - (void)_buildMenu;
-- (id)originalTargetForAppKeyCommand:(id)arg1;
-- (id)appKeyCommandForEquivalentKeyCommand:(id)arg1;
-- (id)hudModelShortcutForAppKeyCommand:(id)arg1;
+- (id)originalTargetForSelectedKeyCommand:(id)arg1;
+- (id)appKeyCommandForSelectedKeyCommand:(id)arg1;
+- (id)modelShortcutForModelKeyCommand:(id)arg1;
 - (id)menuWithAlternatesForModifierFlags:(long long)arg1;
 - (id)searchMenuWithSearchText:(id)arg1 maxSearchResultEntries:(unsigned long long)arg2;
-- (id)activeKeyCommandsExcludingHUDCommands:(id)arg1;
+- (id)modelKeyCommandsExcludingHUDCommands:(id)arg1;
 @property(readonly, nonatomic, getter=isEmpty) _Bool empty;
 - (id)init;
 

@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (void)webAppViewController:(id)arg1 viewServiceDidTerminateWithError:(id)arg2;
 - (void)webAppViewControllerDidFinishInitialLoad:(id)arg1;
 - (void)webAppViewController:(id)arg1 didChangeLoadingState:(_Bool)arg2;
+- (void)notificationActivated:(id)arg1;
 - (void)processWebPushWithIdentifier:(id)arg1;
 - (void)openURLWithCustomSchemeIfNeeded;
 - (void)viewDidAppear:(_Bool)arg1;

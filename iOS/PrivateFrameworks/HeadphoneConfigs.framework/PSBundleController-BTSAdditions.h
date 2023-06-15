@@ -12,6 +12,5 @@
 - (id)bundleParentController;
 - (id)bundleParentController;
 - (id)bundleParentController;
-- (id)bundleParentController;
 @end
 

@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface _UIKBRTFingerInfo : NSObject <NSCopying>
+@interface _UIKBRTFingerInfo : NSObject
 {
     _Bool _unknownSeen;
     double _radius;

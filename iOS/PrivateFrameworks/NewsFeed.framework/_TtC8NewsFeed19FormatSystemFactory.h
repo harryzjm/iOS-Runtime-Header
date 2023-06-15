@@ -14,6 +14,7 @@
     MISSING_TYPE *featureAvailability;
     MISSING_TYPE *appConfigManager;
     MISSING_TYPE *bundleSubscriptionManager;
+    MISSING_TYPE *formatVersion;
 }
 
 @end

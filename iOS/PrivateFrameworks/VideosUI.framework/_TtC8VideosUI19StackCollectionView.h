@@ -9,6 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface _TtC8VideosUI19StackCollectionView
 {
+    MISSING_TYPE *logForCellGhosting;
     MISSING_TYPE *$__lazy_storage_$_registeredCells;
 }
 

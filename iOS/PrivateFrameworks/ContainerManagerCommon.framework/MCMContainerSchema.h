@@ -23,7 +23,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSNumber *latestSchemaVersion; // @synthesize latestSchemaVersion=_latestSchemaVersion;
 @property(readonly, nonatomic) MCMContainerSchemaContext *context; // @synthesize context=_context;
 @property(readonly, nonatomic) id <MCMMetadataMinimal> metadata; // @synthesize metadata=_metadata;
-- (_Bool)_sanityCheckPassesForBundleID:(id)arg1 error:(id *)arg2;
 - (_Bool)_executeActions:(id)arg1 error:(id *)arg2;
 - (id)_actionsFromVersion:(id)arg1 toTargetVersion:(id)arg2 context:(id)arg3;
 - (id)_interpolationReplacements;

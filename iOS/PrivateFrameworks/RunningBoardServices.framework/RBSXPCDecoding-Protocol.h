@@ -16,7 +16,7 @@
 - (_Bool)decodeBoolForKey:(NSString *)arg1;
 - (double)decodeDoubleForKey:(NSString *)arg1;
 - (NSString *)decodeStringForKey:(NSString *)arg1;
-- (NSObject<OS_xpc_object> *)decodeXPCObjectOfType:(const struct _xpc_type_s *)arg1 forKey:(NSString *)arg2;
+- (NSObject<OS_xpc_object> *)decodeXPCObjectOfType:(struct _xpc_type_s *)arg1 forKey:(NSString *)arg2;
 - (id)decodeCollectionOfClass:(Class)arg1 containingClass:(Class)arg2 forKey:(NSString *)arg3;
 - (id)decodeObjectOfClass:(Class)arg1 forKey:(NSString *)arg2;
 @end

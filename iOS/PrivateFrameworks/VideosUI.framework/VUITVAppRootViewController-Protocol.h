@@ -9,7 +9,7 @@
 @class UINavigationController, UIViewController;
 
 @protocol VUITVAppRootViewController <NSObject>
-@property(nonatomic, readonly) UIViewController *currentViewController;
-@property(nonatomic, readonly) UINavigationController *currentNavigationController;
+@property(readonly, nonatomic) UIViewController *currentViewController;
+@property(readonly, nonatomic) UINavigationController *currentNavigationController;
 @end
 

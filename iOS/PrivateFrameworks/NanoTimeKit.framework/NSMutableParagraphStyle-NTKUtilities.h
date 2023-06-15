@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/NSMutableParagraphStyle.h>
+#import <UIKitCore/NSMutableParagraphStyle.h>
 
 @interface NSMutableParagraphStyle (NTKUtilities)
 + (id)NTKHyphenationParagraphStyleWithFactor:(float)arg1;

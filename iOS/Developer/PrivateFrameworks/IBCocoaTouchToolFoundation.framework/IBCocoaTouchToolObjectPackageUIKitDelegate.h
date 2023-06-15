@@ -13,7 +13,7 @@
 - (void)cocoaTouchToolObjectPackage:(id)arg1 didSetPersistentToSessionObjects:(id)arg2;
 - (id)cocoaTouchToolObjectPackage:(id)arg1 traitStorageListByProcessingTraitStorageLists:(id)arg2 objectIDsToObjects:(id)arg3;
 - (void)cocoaTouchToolObjectPackage:(id)arg1 didEstablishRelationshipsForObject:(id)arg2 globalMarshallingContext:(id)arg3 populatingWarningMessages:(id)arg4;
-- (id)cocoaTouchToolObjectPackage:(id)arg1 keyValuePairWithObject:(id)arg2 keyPath:(id)arg3 value:(id)arg4;
+- (id)cocoaTouchToolObjectPackage:(id)arg1 keyValuePairWithObject:(id)arg2 keyPath:(id)arg3 value:(id)arg4 globalMarshallingContext:(id)arg5;
 - (id)cocoaTouchToolObjectPackage:(id)arg1 effectiveToManyRelationshipKeyPathForObject:(id)arg2 relationshipKeyPath:(id)arg3 globalMarshallingContext:(id)arg4;
 - (void)cocoaTouchToolObjectPackage:(id)arg1 didInstantiateObject:(id)arg2 globalMarshallingContext:(id)arg3;
 - (id)cocoaTouchToolObjectPackage:(id)arg1 connectionsByProcessingConnections:(id)arg2;

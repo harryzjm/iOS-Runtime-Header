@@ -41,6 +41,7 @@ __attribute__((visibility("hidden")))
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)dealloc;
 - (void)_viewControllerDismissalTransitionDidEnd:(id)arg1;
+- (id)_remoteInspectionMenuTitleForWebExtension:(id)arg1 popupURL:(id)arg2;
 - (id)initWithPopupURL:(id)arg1 webExtension:(id)arg2 window:(id)arg3 parentViewController:(id)arg4 popoverSourceInfo:(id)arg5;
 
 // Remaining properties

@@ -17,7 +17,9 @@
 - (void)removeEngagementForSuggestion:(ATXProactiveSuggestion *)arg1 recordType:(unsigned long long)arg2;
 - (void)updateForClientModelCacheUpdate:(NSArray *)arg1 clientModelId:(NSString *)arg2;
 - (void)addHiddenSuggestion:(ATXProactiveSuggestion *)arg1 duration:(double)arg2 engagementRecordType:(unsigned long long)arg3;
+- (void)addEngagedExecutable:(NSString *)arg1 clientModelId:(NSString *)arg2 engagementRecordType:(unsigned long long)arg3;
 - (void)addEngagedSuggestion:(ATXProactiveSuggestion *)arg1 engagementRecordType:(unsigned long long)arg2;
+- (_Bool)hasEngagedWithExecutable:(NSString *)arg1 engagementRecordType:(unsigned long long)arg2;
 - (_Bool)hasEngagedWithSuggestion:(ATXProactiveSuggestion *)arg1 engagedExecutables:(NSSet *)arg2;
 - (_Bool)hasEngagedWithSuggestion:(ATXProactiveSuggestion *)arg1 engagementRecordType:(unsigned long long)arg2;
 - (NSSet *)engagedExecutablesOfType:(unsigned long long)arg1 queryOptions:(unsigned long long)arg2;

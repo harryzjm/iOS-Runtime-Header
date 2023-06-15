@@ -28,6 +28,8 @@
 - (id)generateRequestOperations;
 - (id)requestOperationClasses;
 - (_Bool)requiresCKAnonymousUserIDs;
+- (void)fillOutRequestProperties:(id)arg1;
+- (id)equivalencyProperties;
 - (id)initWithOperation:(id)arg1 subscriptionsToSave:(id)arg2 subscriptionIDsToDelete:(id)arg3;
 
 @end

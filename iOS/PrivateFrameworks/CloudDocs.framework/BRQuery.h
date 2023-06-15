@@ -6,7 +6,8 @@
 
 #import <objc/NSObject.h>
 
-@class BRItemCollectionGatherer, BRNotificationReceiver, NSArray, NSMetadataQuery, NSMutableArray, NSMutableDictionary, NSOperationQueue, NSPredicate, NSString;
+@class BRItemCollectionGatherer, BRNotificationReceiver, NSArray, NSMetadataQuery, NSMutableArray, NSMutableDictionary, NSMutableSet, NSOperationQueue, NSPredicate, NSString, br_pacer;
+@protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface BRQuery : NSObject
@@ -47,6 +48,13 @@ __attribute__((visibility("hidden")))
     _Atomic int _disableCount;
     int _handlerDisableCount;
     BRItemCollectionGatherer *_collectionGatherer;
+    NSMutableDictionary *_progressObserverByFPItemID;
+    NSMutableSet *_fpItemIDsInTransfer;
+    _Bool _isNetworkOffline;
+    id _networkReachabilityToken;
+    NSMutableSet *_fpItemIDsWithProgressUpdates;
+    br_pacer *_progressUpdatePacer;
+    NSObject<OS_dispatch_queue> *_progressQueue;
 }
 
 + (void)initialize;
@@ -59,13 +67,17 @@ __attribute__((visibility("hidden")))
 @property __weak NSMetadataQuery *query; // @synthesize query=_query;
 - (void)itemCollectionGathererDidReceiveUpdates:(id)arg1 deleteItemsWithIDs:(id)arg2;
 - (void)itemCollectionGathererGatheredItems:(id)arg1;
-- (void)itemCollectionGathererReloadedItems:(id)arg1;
 - (void)itemCollectionGathererFinishedGathering;
-- (void)_prepareResultsForRelaoding;
 - (void)_handleRemovedItemsNotifications:(id)arg1 userInfo:(id)arg2;
 - (void)_handleReplacedItemsNotifications:(id)arg1 userInfo:(id)arg2;
 - (void)_handleAddedItemsNotifications:(id)arg1 userInfo:(id)arg2;
 - (id)_classifyItems:(id)arg1 deletedItemIDs:(id)arg2;
+- (void)_processProgressUpdateBatch;
+- (void)_stopProgressObservers;
+- (void)_stopMonitoringTransferForFPItemID:(id)arg1;
+- (void)_monitorNetworkForQueryItemIfNecessary:(id)arg1 fpItemID:(id)arg2;
+- (void)_monitorTransferForFPItemIfNecessary:(id)arg1;
+- (void)networkReachabilityChanged:(_Bool)arg1;
 - (void)notificationReceiverDidReceiveNotifications:(id)arg1;
 - (void)notificationsReceiverDidReceiveNotificationsBatch:(id)arg1;
 - (void)notificationsReceiverDidFinishGathering:(id)arg1;
@@ -76,8 +88,8 @@ __attribute__((visibility("hidden")))
 - (void)_processChanges:(id)arg1;
 - (void)_processUpdates;
 - (_Bool)_collectUpdates:(id)arg1;
-- (void)_postNote:(const struct __CFString *)arg1 userInfo:(id)arg2;
-- (void)_postNote:(const struct __CFString *)arg1;
+- (void)_postNote:(struct __CFString *)arg1 userInfo:(id)arg2;
+- (void)_postNote:(struct __CFString *)arg1;
 - (id)queryQueue;
 - (void)setQueryQueue:(id)arg1;
 - (void)setSortComparator:(CDUnknownFunctionPointerType)arg1 withContext:(void *)arg2;

@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) double allowableMovement; // @synthesize allowableMovement=_allowableMovement;
 @property(nonatomic) __weak UIView *view; // @synthesize view=_view;
 @property(nonatomic) __weak id <_UIClickInteractionDriverDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)_gestureRecognizerFailed:(id)arg1;
 - (void)_handlePressGesture:(id)arg1;
 - (void)_removeFromView;
 - (void)_addToView:(id)arg1;

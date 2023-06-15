@@ -19,9 +19,8 @@
 + (id)ibArchivedDataForColor:(id)arg1;
 + (id)ibDefaultTintColor;
 + (id)ibComputeSystemColors;
-+ (void)registerColorIfMissing:(id)arg1 forKey:(id)arg2 inDictionary:(id)arg3;
 + (id)ibSystemColors;
-+ (id)ibDeprecatedSystemColorNames;
++ (id)ibRequiredSystemColorNames;
 - (const char *)cStringClassNameForBinaryArchiver:(id)arg1;
 - (id)ibArchivedSystemKeyPathForBinaryArchiver:(id)arg1 fallbackColor:(id *)arg2;
 - (_Bool)ibGetColorName:(id *)arg1 bundleID:(id *)arg2 fallbackColor:(id *)arg3 unarchiveAsColorWrapper:(_Bool *)arg4;

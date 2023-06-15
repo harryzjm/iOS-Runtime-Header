@@ -18,7 +18,7 @@
 - (void)stickerPackUpdated:(NSDictionary *)arg1;
 - (void)fileTransfer:(NSString *)arg1 updatedWithCurrentBytes:(unsigned long long)arg2 totalBytes:(unsigned long long)arg3 averageTransferRate:(unsigned long long)arg4;
 - (void)fileTransfers:(NSArray *)arg1 createdWithLocalPaths:(NSArray *)arg2;
-- (void)fileTransfer:(NSString *)arg1 updatedWithProperties:(NSDictionary *)arg2 forceNotify:(_Bool)arg3;
+- (void)fileTransfer:(NSString *)arg1 updatedWithProperties:(NSDictionary *)arg2;
 - (void)fileTransfer:(NSString *)arg1 createdWithProperties:(NSDictionary *)arg2;
 - (void)persistentProperty:(NSString *)arg1 changedTo:(id)arg2 from:(id)arg3;
 - (void)property:(NSString *)arg1 changedTo:(id)arg2 from:(id)arg3;

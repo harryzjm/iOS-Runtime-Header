@@ -7,8 +7,8 @@
 #import <NewsCore/NFCopying-Protocol.h>
 #import <NewsCore/NSObject-Protocol.h>
 
-@class FCAssetHandle, FCColor, FCPaywallConfiguration, FCPurchaseOfferableConfiguration, FCSportsRecommendationMappings, NSArray, NSData, NSDate, NSString, NSURL, NTPBPublisherPaidDescriptionStrings;
-@protocol FCChannelProviding, FCFeedTheming, FCSectionProviding, FCSportsProviding, FCTagProviding, FCTagStocksFields, FCTopicProviding;
+@class FCAssetHandle, FCColor, FCPaywallConfiguration, FCPurchaseOfferableConfiguration, FCSectionSupergroupKnobs, FCSportsRecommendationMappings, NSArray, NSData, NSDate, NSDictionary, NSString, NSURL, NTPBPublisherPaidDescriptionStrings;
+@protocol FCChannelProviding, FCFeedTheming, FCPuzzleTypeProviding, FCSectionProviding, FCSportsEventProviding, FCSportsProviding, FCTagProviding, FCTagStocksFields, FCTopicProviding;
 
 @protocol FCTagProviding <NSObject, NFCopying>
 @property(readonly, nonatomic) FCSportsRecommendationMappings *sportsRecommendationMappings;
@@ -17,9 +17,15 @@
 @property(copy, nonatomic) NSString *titleDisplayPrefix;
 @property(readonly, copy, nonatomic) FCPaywallConfiguration *paidBundlePaywallConfiguration;
 @property(readonly, nonatomic) id <FCTagStocksFields> stocksFields;
+@property(readonly, nonatomic) NSString *personalizedPaywallName;
+@property(readonly, nonatomic) NSDictionary *publisherSpecifiedArticles;
 @property(readonly, nonatomic) NSDate *publisherSpecifiedArticleIDsModifiedDate;
 @property(readonly, nonatomic) NSArray *publisherSpecifiedArticleIDs;
 @property(readonly, nonatomic) NSString *articleRecirculationConfigJSON;
+@property(readonly, nonatomic) _Bool isPuzzleType;
+@property(readonly, nonatomic) _Bool isPuzzleHub;
+@property(readonly, nonatomic) _Bool isMySports;
+@property(readonly, nonatomic) _Bool isSportsEvent;
 @property(readonly, nonatomic) _Bool isSports;
 @property(readonly, nonatomic) _Bool isMagazine;
 @property(readonly, nonatomic) _Bool isNewspaper;
@@ -27,9 +33,15 @@
 @property(readonly, nonatomic) _Bool isLocal;
 @property(readonly, nonatomic) _Bool isSandbox;
 @property(readonly, nonatomic) _Bool isInternal;
+@property(readonly, nonatomic) _Bool useCompactNameForPersonalizedPaywall;
+@property(readonly, nonatomic) _Bool disableBlock;
+@property(readonly, nonatomic) _Bool disableFollow;
 @property(readonly, nonatomic) _Bool isAutoDarkModeEnabled;
 @property(readonly, nonatomic) _Bool isArticleReadCountReportingEnabled;
 @property(readonly, nonatomic) _Bool isRealTimeTrackingEnabled;
+@property(readonly, nonatomic) FCSectionSupergroupKnobs *supergroupKnobs;
+@property(readonly, nonatomic) NSString *supergroupConfigJson;
+@property(readonly, nonatomic) NSString *supergroupKnobsJson;
 @property(readonly, nonatomic) _Bool isHidden;
 @property(readonly, nonatomic) unsigned long long groupingEligibility;
 @property(readonly, nonatomic) NTPBPublisherPaidDescriptionStrings *publisherPaidDescriptionStrings;
@@ -47,6 +59,7 @@
 @property(readonly, copy, nonatomic) NSString *publisherPaidWebAccessURL;
 @property(readonly, copy, nonatomic) NSString *publisherPaidVerificationURL;
 @property(readonly, copy, nonatomic) NSString *publisherPaidAuthorizationURL;
+@property(readonly, nonatomic) NSArray *adTargetingKeywords;
 @property(readonly, nonatomic) double subscriptionRate;
 @property(readonly, copy, nonatomic) NSString *superfeedConfigResourceID;
 @property(readonly, copy, nonatomic) NSString *magazineGenre;
@@ -61,6 +74,7 @@
 @property(readonly, copy, nonatomic) FCColor *groupDarkStyleTitleColor;
 @property(readonly, copy, nonatomic) FCColor *groupTitleColor;
 @property(readonly, copy, nonatomic) id <FCFeedTheming> theme;
+@property(readonly, nonatomic) FCAssetHandle *feedNavImageHQAssetHandle;
 @property(readonly, nonatomic) FCAssetHandle *feedNavImageAssetHandle;
 @property(readonly, nonatomic) FCAssetHandle *coverImageAssetHandle;
 @property(readonly, nonatomic) _Bool isSubscribable;
@@ -80,6 +94,9 @@
 @property(readonly, copy, nonatomic) NSString *name;
 @property(readonly, copy, nonatomic) NSString *identifier;
 @property(readonly, nonatomic) NSDate *loadDate;
+@property(readonly, nonatomic) NSDate *fetchDate;
+@property(readonly, nonatomic) id <FCPuzzleTypeProviding> asPuzzleType;
+@property(readonly, nonatomic) id <FCSportsEventProviding> asSportsEvent;
 @property(readonly, nonatomic) id <FCSportsProviding> asSports;
 @property(readonly, nonatomic) id <FCTopicProviding> asTopic;
 @property(readonly, nonatomic) id <FCSectionProviding> asSection;

@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(readonly, nonatomic) UIView *popoverSourceView;
 @property(readonly, nonatomic) struct CGRect popoverSourceRect;
+- (long long)_tabOverviewBarButton;
 @property(readonly, copy) NSString *description;
 - (id)initWithBrowserController:(id)arg1 barItem:(long long)arg2;
 

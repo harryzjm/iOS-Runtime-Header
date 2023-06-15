@@ -10,17 +10,16 @@
 @class NSIndexPath, NSString;
 
 @protocol NSCollectionLayoutVisibleItem <NSObject, UIDynamicItem>
-@property(nonatomic, readonly) NSString *representedElementKind;
-@property(nonatomic, readonly) unsigned long long representedElementCategory;
-@property(nonatomic, readonly) struct CGRect bounds;
-@property(nonatomic, readonly) struct CGRect frame;
-@property(nonatomic, readonly) NSIndexPath *indexPath;
-@property(nonatomic, readonly) NSString *name;
+@property(readonly, nonatomic) NSString *representedElementKind;
+@property(readonly, nonatomic) unsigned long long representedElementCategory;
+@property(readonly, nonatomic) struct CGRect bounds;
+@property(readonly, nonatomic) struct CGRect frame;
+@property(readonly, nonatomic) NSIndexPath *indexPath;
+@property(readonly, nonatomic) NSString *name;
 @property(nonatomic) struct CATransform3D transform3D;
 @property(nonatomic) struct CGAffineTransform transform;
 @property(nonatomic) struct CGPoint center;
-@property(nonatomic) _Bool hidden;
-- (_Bool)isHidden;
+@property(nonatomic, getter=isHidden) _Bool hidden;
 @property(nonatomic) long long zIndex;
 @property(nonatomic) double alpha;
 @end

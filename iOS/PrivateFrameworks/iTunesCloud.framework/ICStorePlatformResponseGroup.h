@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDate, NSNumber, NSString;
+@class ICURLAggregatedPerformanceMetrics, NSArray, NSDate, NSNumber, NSString;
 
 __attribute__((visibility("hidden")))
 @interface ICStorePlatformResponseGroup : NSObject
@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-@property(readonly, nonatomic) NSArray *performanceMetrics;
+@property(readonly, nonatomic) ICURLAggregatedPerformanceMetrics *performanceMetrics;
 @property(readonly, copy, nonatomic) id rawResponse;
 @property(readonly, copy, nonatomic) NSString *storefrontIdentifier;
 - (id)itemForIdentifier:(id)arg1;

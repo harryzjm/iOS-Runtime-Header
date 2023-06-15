@@ -13,16 +13,18 @@ __attribute__((visibility("hidden")))
 {
     NSData *_rawClientDataJSON;
     NSData *_credentialID;
+    long long _attachment;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(nonatomic) long long attachment; // @synthesize attachment=_attachment;
 @property(readonly, copy, nonatomic) NSData *credentialID; // @synthesize credentialID=_credentialID;
 @property(readonly, copy, nonatomic) NSData *rawClientDataJSON; // @synthesize rawClientDataJSON=_rawClientDataJSON;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithCredentialID:(id)arg1 rawClientDataJSON:(id)arg2;
+- (id)initWithCredentialID:(id)arg1 rawClientDataJSON:(id)arg2 attachment:(long long)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

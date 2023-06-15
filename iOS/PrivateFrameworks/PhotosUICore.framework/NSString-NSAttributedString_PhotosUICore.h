@@ -9,11 +9,13 @@
 @class NSArray;
 
 @interface NSString (NSAttributedString_PhotosUICore)
++ (id)_excessiveLineHeightCharacterSet;
 @property(readonly, nonatomic) NSString *px_stringConvertedToHTMLString;
 - (long long)digits;
 - (id)stringByRemovingDigits;
 - (_Bool)containsDigits;
 - (struct _NSRange)rangeOfDigits;
+@property(readonly, nonatomic) _Bool px_hasExcessiveLineHeightCharacters;
 - (id)px_stringByAppendingDescriptionDetails:(id)arg1;
 - (id)px_stringByAppendingDescriptionDetailsWithFormat:(id)arg1;
 @property(readonly, nonatomic) _Bool px_endsWithFullStopOrEquivalentPunctuationMark;

@@ -10,6 +10,9 @@
 {
 }
 
++ (_Bool)propertyChanged:(int)arg1 forStyleOwner:(id)arg2 newValue:(id)arg3;
++ (_Bool)anyPropertiesChanged:(id)arg1 forStyleOwner:(id)arg2;
++ (id)transformedTuplesWithStyleOwner:(id)arg1 mutations:(id)arg2;
 + (int)safe_specificMutationPropertyForGeneric:(int)arg1 styleOwner:(id)arg2 allowSpecificProperties:(_Bool)arg3;
 + (int)specificMutationPropertyForGeneric:(int)arg1 styleOwner:(id)arg2 allowSpecificProperties:(_Bool)arg3;
 + (void)setValue:(id)arg1 forProperty:(int)arg2 ofStyleOwner:(id)arg3;

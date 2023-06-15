@@ -6,24 +6,26 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, NSString, NWURLSessionMultipartBoundaryRecognizer, NWURLSessionMultipartHeaderRecognizer;
+@class NSMutableArray, NSMutableDictionary, NSString, NWURLSessionMultipartBoundaryRecognizer, NWURLSessionMultipartHeaderRecognizer, NWURLSessionMultipartPartBoundarySuffixRecognizer;
 @protocol NWURLSessionResponseConsumer, OS_dispatch_data, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface NWURLSessionMultipartParser : NSObject
 {
     _Bool _isFirstBoundary;
+    _Bool _didDeliverComplete;
     int _parserState;
+    int _dispositionState;
     NSString *_boundary;
     id <NWURLSessionResponseConsumer> _responseConsumer;
     NSObject<OS_dispatch_data> *_data;
+    NSMutableArray *_parts;
     NWURLSessionMultipartBoundaryRecognizer *_boundaryRecognizer;
-    NWURLSessionMultipartBoundaryRecognizer *_closeDelimiterRecognizer;
     NWURLSessionMultipartHeaderRecognizer *_headerRecognizer;
+    NWURLSessionMultipartPartBoundarySuffixRecognizer *_boundarySuffixRecognizer;
     NSMutableDictionary *_headers;
     NSObject<OS_dispatch_queue> *_queue;
     unsigned long long _boundaryPatternSize;
-    unsigned long long _closeDelimiterPatternSize;
 }
 
 - (void).cxx_destruct;

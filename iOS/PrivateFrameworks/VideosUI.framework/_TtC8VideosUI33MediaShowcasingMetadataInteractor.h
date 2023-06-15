@@ -11,11 +11,14 @@
 @interface _TtC8VideosUI33MediaShowcasingMetadataInteractor : _TtCs12_SwiftObject
 {
     MISSING_TYPE *viewModels;
-    MISSING_TYPE *imageQueue;
     MISSING_TYPE *mediaInfoOperations;
     MISSING_TYPE *featuredContentLogoOperations;
+    MISSING_TYPE *teamTitlesOperations;
     MISSING_TYPE *imageViewModels;
     MISSING_TYPE *featuredImageViewModels;
+    MISSING_TYPE *selectedIndex;
+    MISSING_TYPE *imageQueue;
+    MISSING_TYPE *teamTitlesImageViewModels;
 }
 
 @end

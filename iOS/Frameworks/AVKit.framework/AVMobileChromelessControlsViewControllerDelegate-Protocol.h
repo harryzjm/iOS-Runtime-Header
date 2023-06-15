@@ -6,9 +6,12 @@
 
 #import <AVKit/AVMobileControlsViewControllerDelegate-Protocol.h>
 
-@class AVMobileChromelessControlsViewController;
+@class AVMobileChromelessControlsViewController, AVMobileContentTabPresentationContext;
 
 @protocol AVMobileChromelessControlsViewControllerDelegate <AVMobileControlsViewControllerDelegate>
-- (void)chromlessControlsViewControllerDidPressLiveTextButton:(AVMobileChromelessControlsViewController *)arg1;
+- (void)chromelessControlsViewController:(AVMobileChromelessControlsViewController *)arg1 willBeginDismissingContentTabWithContext:(AVMobileContentTabPresentationContext *)arg2;
+- (void)chromelessControlsViewController:(AVMobileChromelessControlsViewController *)arg1 willBeginPresentingContentTabWithContext:(AVMobileContentTabPresentationContext *)arg2;
+- (double)chromelessControlsViewController:(AVMobileChromelessControlsViewController *)arg1 contentTabPresentationHeightWithPreferredHeight:(double)arg2;
+- (void)chromelessControlsViewControllerDidPressLiveTextButton:(AVMobileChromelessControlsViewController *)arg1;
 @end
 

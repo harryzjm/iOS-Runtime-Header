@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIContextualAction.h>
+#import <UIKitCore/UIContextualAction.h>
 
 @interface UIContextualAction (IC)
 + (id)contextualActionWithSystemImageNamed:(id)arg1 style:(long long)arg2 color:(id)arg3 actionBlock:(CDUnknownBlockType)arg4;

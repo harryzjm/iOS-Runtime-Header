@@ -10,9 +10,9 @@
 @protocol SAStrokeAnimatingDelegate;
 
 @protocol SAStrokeVisualResponse <NSObject>
+@property(nonatomic) __weak id <SAStrokeAnimatingDelegate> interactionDelegate;
 - (void)endAnimation;
 - (void)updateWithData:(SAStrokeData *)arg1;
 - (void)startAnimationRepeating:(_Bool)arg1;
-@property(nonatomic) __weak id <SAStrokeAnimatingDelegate> interactionDelegate;
 @end
 

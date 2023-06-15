@@ -17,7 +17,7 @@
 - (id)px_map:(CDUnknownBlockType)arg1;
 - (id)px_intersectionWithIndexSet:(id)arg1;
 - (_Bool)px_intersectsWithIndexSet:(id)arg1;
+- (unsigned long long)px_indexAtPosition:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSString *px_shortDescription;
-- (id)px_indexesInRange:(struct _NSRange)arg1;
 @end
 

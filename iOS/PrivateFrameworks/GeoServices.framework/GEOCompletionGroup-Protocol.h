@@ -9,6 +9,9 @@
 @class NSArray, NSString;
 
 @protocol GEOCompletionGroup <NSObject>
+@property(readonly, nonatomic) NSArray *excludedClientResultTypes;
+@property(readonly, nonatomic) NSArray *includedClientResultTypes;
+@property(readonly, nonatomic) _Bool isSectionForClientOnlyResults;
 @property(readonly, nonatomic) _Bool enableMapsSuggestServerReranking;
 @property(readonly, nonatomic) _Bool enforceServerResultsOrder;
 @property(readonly, nonatomic) _Bool shouldInterleaveClientResults;

@@ -6,12 +6,13 @@
 
 #import <PhotoLibraryServices/NSProgressReporting-Protocol.h>
 
-@class NSProgress, NSString, PLModelMigratorLog, PLPhotoLibraryPathManager;
+@class NSProgress, NSString, PLModelMigrationHistory, PLModelMigratorLog, PLPhotoLibraryPathManager;
 
 @protocol PLModelMigrationActionCore <NSProgressReporting>
 + (NSString *)shortenedMigrationActionClassName;
 + (NSString *)actionDescription;
 + (long long)actionProgressWeight;
+@property(readonly) PLModelMigrationHistory *migrationHistory;
 @property(readonly) NSString *actionName;
 @property(readonly) PLModelMigratorLog *logger;
 @property(readonly) PLPhotoLibraryPathManager *pathManager;

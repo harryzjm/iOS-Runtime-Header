@@ -10,6 +10,10 @@
 
 @protocol _SFPBUserReportRequest <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
+@property(copy, nonatomic) NSString *attachmentSectionTitle;
+@property(retain, nonatomic) _SFPBPunchout *disclaimerLearnMorePunchout;
+@property(copy, nonatomic) NSString *disclaimerText;
+@property(copy, nonatomic) NSString *reportOptionsSectionTitle;
 @property(nonatomic) int reportType;
 @property(copy, nonatomic) NSArray *userReportOptions;
 @property(copy, nonatomic) NSString *dismissText;

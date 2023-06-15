@@ -6,7 +6,7 @@
 
 #import <Sharing/NSObject-Protocol.h>
 
-@class NSData, NSString, RTIDocumentState, RTIDocumentTraits, RTIInputOperation, RTIInputSystemService, RTIInputSystemServiceSession, RTISessionOptions, RTISupplementalLexicon, TISupplementalLexicon;
+@class NSData, NSString, RTIDocumentState, RTIDocumentTraits, RTIInputOperation, RTIInputSystemService, RTIInputSystemServiceSession, RTIInputSystemSession, RTISessionOptions, RTISupplementalLexicon, TISupplementalLexicon;
 
 @protocol RTIInputSystemDelegate <NSObject>
 - (void)inputSystemService:(RTIInputSystemService *)arg1 didCreateInputSession:(RTIInputSystemServiceSession *)arg2;
@@ -25,9 +25,11 @@
 - (void)inputSystemService:(RTIInputSystemService *)arg1 inputSession:(RTIInputSystemServiceSession *)arg2 documentStateDidChange:(RTIDocumentState *)arg3;
 - (void)inputSystemService:(RTIInputSystemService *)arg1 inputSessionDocumentDidChange:(RTIInputSystemServiceSession *)arg2;
 - (void)inputSystemService:(RTIInputSystemService *)arg1 inputSessionDidDie:(RTIInputSystemServiceSession *)arg2;
+- (void)inputSystemService:(RTIInputSystemService *)arg1 inputSessionDidEnd:(RTIInputSystemServiceSession *)arg2 options:(RTISessionOptions *)arg3 completion:(void (^)(void))arg4;
 - (void)inputSystemService:(RTIInputSystemService *)arg1 inputSessionDidEnd:(RTIInputSystemServiceSession *)arg2 options:(RTISessionOptions *)arg3;
 - (void)inputSystemService:(RTIInputSystemService *)arg1 inputSessionDidEnd:(RTIInputSystemServiceSession *)arg2;
 - (void)inputSystemService:(RTIInputSystemService *)arg1 inputSessionDidBegin:(RTIInputSystemServiceSession *)arg2 options:(RTISessionOptions *)arg3;
 - (void)inputSystemService:(RTIInputSystemService *)arg1 inputSessionDidBegin:(RTIInputSystemServiceSession *)arg2;
+- (void)inputSystemService:(RTIInputSystemService *)arg1 prepareForInputSession:(RTIInputSystemSession *)arg2 options:(RTISessionOptions *)arg3;
 @end
 

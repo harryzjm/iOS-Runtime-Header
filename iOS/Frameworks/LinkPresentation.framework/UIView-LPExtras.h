@@ -8,7 +8,10 @@
 
 @interface UIView (LPExtras)
 + (id)_lp_createFlippedView;
+- (void)_lp_applyAndRegisterForUpdatesToValue:(id)arg1 withApplyCallback:(CDUnknownBlockType)arg2;
+- (id)_lp_appearance;
 - (id)_lp_tintColor;
+- (void)_lp_setHoverEffectEnabled:(_Bool)arg1;
 - (_Bool)_lp_prefersDarkInterface;
 - (void)_lp_bringSubviewToFront:(id)arg1;
 - (void)_lp_setCornerRadius:(double)arg1;
@@ -20,6 +23,7 @@
 - (void)_lp_insertSubview:(id)arg1 aboveSubview:(id)arg2;
 - (void)_lp_layoutIfNeeded;
 - (void)_lp_setNeedsLayout;
+- (void)_lp_setCompositingFilter:(id)arg1;
 - (void)_lp_setShadowOpacity:(double)arg1;
 - (void)_lp_setShadowColor:(id)arg1;
 - (void)_lp_setShadowOffset:(struct CGSize)arg1;

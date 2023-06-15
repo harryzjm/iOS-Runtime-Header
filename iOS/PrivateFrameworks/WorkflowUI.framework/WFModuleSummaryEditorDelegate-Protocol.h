@@ -14,6 +14,7 @@
 - (void)summaryEditor:(WFModuleSummaryEditor *)arg1 didRequestEditingSlotWithIdentifier:(WFSlotIdentifier *)arg2;
 - (void)summaryEditorDidRequestTextEntry:(WFModuleSummaryEditor *)arg1;
 - (void)summaryEditor:(WFModuleSummaryEditor *)arg1 didCommitParameterState:(id <WFParameterState>)arg2;
+- (id <WFParameterState>)initialStateForSummaryEditor:(WFModuleSummaryEditor *)arg1;
 
 @optional
 - (void)summaryEditor:(WFModuleSummaryEditor *)arg1 didStageParameterState:(id <WFParameterState>)arg2;

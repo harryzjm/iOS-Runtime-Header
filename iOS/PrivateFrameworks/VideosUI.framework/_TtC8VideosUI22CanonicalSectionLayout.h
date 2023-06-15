@@ -8,6 +8,7 @@
 
 @interface _TtC8VideosUI22CanonicalSectionLayout
 {
+    MISSING_TYPE *sectionType;
     MISSING_TYPE *$__lazy_storage_$_headerLayout;
     MISSING_TYPE *$__lazy_storage_$_itemLayout;
     MISSING_TYPE *$__lazy_storage_$_footerLayout;

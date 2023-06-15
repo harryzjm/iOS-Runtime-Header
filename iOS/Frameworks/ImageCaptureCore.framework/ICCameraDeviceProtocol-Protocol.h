@@ -18,6 +18,7 @@
 - (void)registerInterestedEventNotifications:(NSArray *)arg1;
 - (void)ptpEventForwarding:(_Bool)arg1;
 - (void)enumerateContentWithOptions:(NSDictionary *)arg1;
+- (void)requestSecurityScopedURLForObjectHandle:(NSNumber *)arg1 withReply:(void (^)(NSMutableDictionary *))arg2;
 - (void)requestEjectDeviceWithReply:(void (^)(NSMutableDictionary *))arg1;
 - (void)requestStartUsingDeviceWithReply:(void (^)(NSMutableDictionary *))arg1;
 - (void)requestDeleteObjectHandle:(NSNumber *)arg1 options:(NSDictionary *)arg2 withReply:(void (^)(NSMutableDictionary *))arg3;

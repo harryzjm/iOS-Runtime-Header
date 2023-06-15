@@ -11,11 +11,12 @@
 __attribute__((visibility("hidden")))
 @interface _TtC7SwiftUI27PopoverPresentationDelegate : NSObject
 {
-    MISSING_TYPE *popoverSource;
+    MISSING_TYPE *delegate;
 }
 
 - (void).cxx_destruct;
 - (id)init;
+- (long long)adaptivePresentationStyleForPresentationController:(id)arg1 traitCollection:(id)arg2;
 - (_Bool)presentationControllerShouldDismiss:(id)arg1;
 - (void)popoverPresentationController:(id)arg1 willRepositionPopoverToRect:(struct CGRect *)arg2 inView:(id *)arg3;
 - (void)prepareForPopoverPresentation:(id)arg1;

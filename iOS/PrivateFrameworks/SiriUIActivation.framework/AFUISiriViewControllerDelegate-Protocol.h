@@ -26,6 +26,7 @@
 - (void)siriViewController:(AFUISiriViewController *)arg1 didEncounterUnexpectedError:(NSError *)arg2;
 
 @optional
+- (_Bool)headphonesAuthenticated;
 - (void)invalidateSystemApertureAssertion;
 - (void)requestSystemApertureCollapse;
 - (void)siriViewController:(AFUISiriViewController *)arg1 didReceiveButtonUpWithRequestOptions:(SASRequestOptions *)arg2;
@@ -51,8 +52,8 @@
 - (void)siriSessionShouldExtendAudioSessionForImminentPhoneCall;
 - (void)siriViewController:(AFUISiriViewController *)arg1 didCompleteRequestWithError:(NSError *)arg2;
 - (void)siriViewController:(AFUISiriViewController *)arg1 didEndSession:(AFUISiriSession *)arg2;
-- (void)siriViewController:(AFUISiriViewController *)arg1 requestsDismissalWithReason:(unsigned long long)arg2 withCompletion:(void (^)(_Bool))arg3;
-- (void)dismissSiriViewController:(AFUISiriViewController *)arg1 withReason:(unsigned long long)arg2;
+- (void)siriViewController:(AFUISiriViewController *)arg1 requestsDismissalWithReason:(long long)arg2 withCompletion:(void (^)(_Bool))arg3;
+- (void)dismissSiriViewController:(AFUISiriViewController *)arg1 withReason:(long long)arg2;
 - (void)siriViewController:(AFUISiriViewController *)arg1 requestsPresentation:(void (^)(_Bool))arg2;
 - (void)siriViewController:(AFUISiriViewController *)arg1 presentedIntentWithBundleId:(NSString *)arg2;
 - (void)siriViewControllerDidFinishDismissing:(AFUISiriViewController *)arg1;

@@ -7,10 +7,14 @@
 #import <Foundation/NSURL.h>
 
 @interface NSURL (HFAdditions)
++ (id)hf_locationFromURL:(id)arg1;
 + (id)hf_appStoreURLForBundleIdentifier:(id)arg1;
++ (id)hf_matterAccessoriesInSettingsApp;
 + (id)hf_systemSoftwareUpdate;
 + (id)hf_threadNetworkRequiredLearnMoreURL;
++ (id)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;
 + (id)hf_homeHubRequiredLearnMoreURL;
++ (id)hf_setupHomeHubLearnMoreURL;
 + (id)hf_losslessURL;
 + (id)hf_faceRecognitionPrivacyURL;
 + (id)hf_photosLibraryPeopleAlbumURL;
@@ -19,6 +23,8 @@
 + (id)hf_openiCloudKeychainPreferences;
 + (id)hf_openiCloudPreferencesURL;
 + (id)hf_applePrivacyURL;
++ (id)hf_learnAboutActivityLogsURL;
++ (id)hf_learnToUpdateAppleTVURL;
 + (id)hf_learnAboutNetworksRequiringProfilesURL;
 + (id)hf_learnAboutUnshareableNetworksURL;
 + (id)hf_learnToAddAccessoriesURL;

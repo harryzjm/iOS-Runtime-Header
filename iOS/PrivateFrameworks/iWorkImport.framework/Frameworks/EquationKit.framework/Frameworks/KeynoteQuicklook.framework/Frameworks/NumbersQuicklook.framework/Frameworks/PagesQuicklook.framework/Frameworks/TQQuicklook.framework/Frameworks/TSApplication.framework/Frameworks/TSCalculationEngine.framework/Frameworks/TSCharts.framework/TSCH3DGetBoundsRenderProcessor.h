@@ -14,7 +14,7 @@
 - (void).cxx_destruct;
 @property(nonatomic) int mode; // @synthesize mode=_mode;
 - (void)submit:(id)arg1;
-- (void)extend2DProjectedBounds:(const void *)arg1;
+- (void)extend2DProjectedBounds:(void *)arg1;
 - (void)resetBounds;
 @property(readonly, nonatomic) const void *bounds;
 - (id)init;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 @class NSString, UIPress, UIPressesEvent;
 
 __attribute__((visibility("hidden")))
-@interface UIGestureDelayedPress : NSObject <NSCopying>
+@interface UIGestureDelayedPress : NSObject
 {
     long long _delayCount;
     _Bool _cloneForSecondDelivery;

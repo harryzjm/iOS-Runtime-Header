@@ -38,6 +38,7 @@
 - (oneway void)speechRecordingDidBeginOnAVRecordRoute:(NSString *)arg1 audioSessionID:(unsigned int)arg2 reply:(void (^)(void))arg3;
 - (oneway void)speechRecordingWillBeginWithInputAudioPowerXPCWrapper:(AFXPCWrapper *)arg1 reply:(void (^)(void))arg2;
 - (oneway void)getBulletinContext:(void (^)(NSArray *))arg1;
+- (oneway void)requestDidUpdateResponseMode:(NSString *)arg1;
 - (oneway void)startUIRequestWithInfo:(AFRequestInfo *)arg1 completion:(void (^)(_Bool))arg2;
 - (oneway void)startUIRequestWithText:(NSString *)arg1 completion:(void (^)(_Bool))arg2;
 - (oneway void)extensionRequestFinishedForApplication:(NSString *)arg1 error:(NSError *)arg2;

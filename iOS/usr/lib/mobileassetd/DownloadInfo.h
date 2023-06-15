@@ -27,6 +27,8 @@ __attribute__((visibility("hidden")))
     long long _totalBytesThisSlice;
     long long _previousTotalDownloaded;
     long long _totalExpectedBytes;
+    unsigned long long _numStalled;
+    unsigned long long _numNoLongerStalled;
     long long _currentTotalWritten;
     NSString *_taskDescriptor;
     long long _downloadSize;
@@ -75,6 +77,8 @@ __attribute__((visibility("hidden")))
 @property long long downloadSize; // @synthesize downloadSize=_downloadSize;
 @property(retain) NSString *taskDescriptor; // @synthesize taskDescriptor=_taskDescriptor;
 @property long long currentTotalWritten; // @synthesize currentTotalWritten=_currentTotalWritten;
+@property(readonly, nonatomic) unsigned long long numNoLongerStalled; // @synthesize numNoLongerStalled=_numNoLongerStalled;
+@property(readonly, nonatomic) unsigned long long numStalled; // @synthesize numStalled=_numStalled;
 @property(readonly, nonatomic) _Bool isStalled; // @synthesize isStalled=_isStalled;
 @property long long totalExpectedBytes; // @synthesize totalExpectedBytes=_totalExpectedBytes;
 @property long long previousTotalDownloaded; // @synthesize previousTotalDownloaded=_previousTotalDownloaded;

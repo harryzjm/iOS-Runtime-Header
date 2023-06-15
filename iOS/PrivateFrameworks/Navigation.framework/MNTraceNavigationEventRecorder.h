@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)navigationSession:(id)arg1 didReceiveTransitAlert:(id)arg2;
 - (void)navigationSession:(id)arg1 didReceiveTrafficIncidentAlert:(id)arg2 responseCallback:(CDUnknownBlockType)arg3;
+- (void)navigationSession:(id)arg1 didUpdateVehicleParkingInfo:(id)arg2;
 - (void)navigationSession:(id)arg1 hideJunctionViewForId:(id)arg2;
 - (void)navigationSession:(id)arg1 showJunctionView:(id)arg2;
 - (void)navigationSession:(id)arg1 hideLaneDirectionsForId:(id)arg2;
@@ -39,9 +40,11 @@ __attribute__((visibility("hidden")))
 - (void)navigationSession:(id)arg1 didSwitchToNewTransportType:(int)arg2 newRoute:(id)arg3;
 - (void)navigationSession:(id)arg1 didReroute:(id)arg2 withLocation:(id)arg3 withAlternateRoutes:(id)arg4 rerouteReason:(unsigned long long)arg5;
 - (void)navigationSession:(id)arg1 didSuppressReroute:(id)arg2;
+- (void)navigationSession:(id)arg1 didUpdateTargetLegIndex:(unsigned long long)arg2;
 - (void)navigationSession:(id)arg1 didResumeNavigatingFromWaypoint:(id)arg2 endOfLegIndex:(unsigned long long)arg3 reason:(unsigned long long)arg4;
 - (void)navigationSession:(id)arg1 didArriveAtWaypoint:(id)arg2 endOfLegIndex:(unsigned long long)arg3;
 - (void)navigationSession:(id)arg1 didEnterPreArrivalStateForWaypoint:(id)arg2 endOfLegIndex:(unsigned long long)arg3;
+- (void)navigationSession:(id)arg1 isApproachingEndOfLeg:(unsigned long long)arg2;
 - (void)navigationSession:(id)arg1 matchedToStepIndex:(unsigned long long)arg2 segmentIndex:(unsigned long long)arg3;
 - (void)navigationSession:(id)arg1 didStopWithReason:(unsigned long long)arg2;
 - (void)navigationSession:(id)arg1 didStartWithRoute:(id)arg2 navigationType:(long long)arg3 isResumingMultipointRoute:(_Bool)arg4 isReconnecting:(_Bool)arg5;

@@ -6,12 +6,12 @@
 
 #import <CoreServices/NSObject-Protocol.h>
 
-@class FSNode, LSApplicationRecord, NSDictionary, NSString;
+@class FSNode, LSApplicationRecord, NSDictionary, NSSet, NSString;
 
 @protocol LSMIResultRegistrantDatabaseContext <NSObject>
 - (void (^)(id))unregisterApplicationWithBundleIdentifier:(NSString *)arg1 type:(unsigned int)arg2 error:(id *)arg3;
 - (LSApplicationRecord *)findContainerizedRecordForBundleUnit:(unsigned int)arg1 error:(id *)arg2;
-- (unsigned int)findOrRegisterContainerizedNodeReinitializingContext:(FSNode *)arg1 installDictionary:(NSDictionary *)arg2 error:(id *)arg3;
-- (_Bool)fullBundleExistsForIdentifier:(NSString *)arg1;
+- (unsigned int)findOrRegisterContainerizedNodeReinitializingContext:(FSNode *)arg1 installDictionary:(NSDictionary *)arg2 personasWithAttributes:(NSSet *)arg3 error:(id *)arg4;
+- (_Bool)fullBundleExistsForIdentifier:(NSString *)arg1 matchingNode:(FSNode *)arg2;
 @end
 

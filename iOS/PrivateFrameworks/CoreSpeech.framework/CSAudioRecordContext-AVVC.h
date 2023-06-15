@@ -8,6 +8,7 @@
 
 @interface CSAudioRecordContext (AVVC)
 - (id)avvcContextSettings;
+- (_Bool)shouldUseLocalAudioFileWriter;
 - (_Bool)isPluginContext;
 @end
 

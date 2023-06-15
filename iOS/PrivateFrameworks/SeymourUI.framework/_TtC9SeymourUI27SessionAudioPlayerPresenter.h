@@ -20,11 +20,13 @@
     MISSING_TYPE *catalogWorkout;
     MISSING_TYPE *eventHub;
     MISSING_TYPE *mediaPlayer;
+    MISSING_TYPE *mediaTagStringBuilder;
     MISSING_TYPE *sessionMediaMomentsPrefetcher;
+    MISSING_TYPE *storefrontLocalizer;
     MISSING_TYPE *subscriptionToken;
     MISSING_TYPE *isAppBackgrounded;
     MISSING_TYPE *state;
-    MISSING_TYPE *watchConnectionState;
+    MISSING_TYPE *workoutDeviceConnection;
     MISSING_TYPE *hasPlaybackBegun;
 }
 

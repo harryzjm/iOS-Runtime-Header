@@ -12,7 +12,10 @@
 - (void)enumerateReliableMeaningNodesUsingBlock:(void (^)(PGGraphMeaningNode *, _Bool *))arg1;
 - (void)enumerateMeaningNodesUsingBlock:(void (^)(PGGraphMeaningNode *, _Bool *))arg1;
 - (void)enumerateMeaningEdgesAndNodesUsingBlock:(void (^)(PGGraphMeaningEdge *, PGGraphMeaningNode *, _Bool *))arg1;
+- (void)enumerateMeaningEdgesAndNodesWithDomain:(unsigned short)arg1 block:(void (^)(PGGraphMeaningEdge *, PGGraphMeaningNode *, _Bool *))arg2;
+- (PGGraphMeaningNodeCollection *)alternativeMeaningNodes;
 - (PGGraphMeaningNodeCollection *)meaningNodes;
+- (NSSet *)alternativeMeaningLabels;
 - (NSSet *)meaningLabels;
 - (double)meaningScore;
 @end

@@ -4,14 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UICollectionView.h>
-
-@class NSArray;
+#import <UIKitCore/UICollectionView.h>
 
 @interface UICollectionView (PhotosUI)
 - (void)pu_animateUpdateOfCollectionViewSubview:(id)arg1 animations:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
-- (id)pu_preparedCellForItemAtIndexPath:(id)arg1;
-@property(readonly, nonatomic) NSArray *pu_indexPathsForPreparedItems;
 - (id)next:(long long)arg1 indexPathFromIndexPath:(id)arg2;
 - (void)pu_scrollToItemAtIndexPath:(id)arg1 atScrollPosition:(unsigned long long)arg2 animated:(_Bool)arg3;
 - (void)pu_scrollToRect:(struct CGRect)arg1 atScrollPosition:(unsigned long long)arg2 animated:(_Bool)arg3;

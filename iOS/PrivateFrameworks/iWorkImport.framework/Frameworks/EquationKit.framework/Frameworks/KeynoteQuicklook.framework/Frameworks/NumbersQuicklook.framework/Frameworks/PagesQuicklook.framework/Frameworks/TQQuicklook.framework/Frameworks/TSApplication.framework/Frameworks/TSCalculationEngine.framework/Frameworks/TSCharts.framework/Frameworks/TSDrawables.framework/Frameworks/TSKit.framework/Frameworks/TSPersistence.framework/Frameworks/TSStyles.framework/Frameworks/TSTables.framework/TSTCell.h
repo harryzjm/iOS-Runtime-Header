@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSString, TSCEFormulaObject, TSDCommentStorage, TSDFill, TSKFormat, TSTCellBorder, TSTCellSpec, TSTCellStyle, TSTConditionalStyleSet, TSTImportWarningSet, TSTStockDetails, TSULocale, TSWPParagraphStyle, TSWPStorage;
+@class NSDate, NSString, TSCEFormulaObject, TSDCommentStorage, TSDFill, TSKFormat, TSTCellBorder, TSTCellSpec, TSTCellStyle, TSTCellStyleHandle, TSTConditionalStyleSet, TSTImportWarningSet, TSTStockDetails, TSTTextStyleHandle, TSULocale, TSWPParagraphStyle, TSWPStorage;
 
 @interface TSTCell : NSObject
 {
@@ -32,8 +32,10 @@
     unsigned int _booleanFormatID;
     unsigned int _commentStorageID;
     unsigned int _importWarningSetID;
-    TSTCellStyle *_cellStyle;
-    TSWPParagraphStyle *_textStyle;
+    TSTCellStyleHandle *_cellStyleHandle;
+    TSTCellStyle *_strongCellStyle;
+    TSTTextStyleHandle *_textStyleHandle;
+    TSWPParagraphStyle *_strongTextStyle;
     TSTConditionalStyleSet *_conditionalStyle;
     TSTCellBorder *_cellBorder;
     TSTCellSpec *_cellSpec;
@@ -88,8 +90,8 @@
 @property(retain, nonatomic) TSTCellBorder *cellBorder; // @synthesize cellBorder=_cellBorder;
 @property(nonatomic) unsigned char conditionalStyleAppliedRule; // @synthesize conditionalStyleAppliedRule=_conditionalStyleAppliedRule;
 @property(retain, nonatomic) TSTConditionalStyleSet *conditionalStyle; // @synthesize conditionalStyle=_conditionalStyle;
-@property(retain, nonatomic) TSWPParagraphStyle *textStyle; // @synthesize textStyle=_textStyle;
-@property(retain, nonatomic) TSTCellStyle *cellStyle; // @synthesize cellStyle=_cellStyle;
+@property(readonly, nonatomic) TSTTextStyleHandle *textStyleHandle; // @synthesize textStyleHandle=_textStyleHandle;
+@property(readonly, nonatomic) TSTCellStyleHandle *cellStyleHandle; // @synthesize cellStyleHandle=_cellStyleHandle;
 @property(nonatomic) unsigned char valueType; // @synthesize valueType=_valueType;
 - (id)cellValueDescription;
 - (id)cellValueTypeDescription;
@@ -125,6 +127,7 @@
 - (void)p_setFormatFlags:(unsigned short)arg1 explicit:(_Bool)arg2;
 - (void)p_TSTCellSetMostRecentlySetNumberFormatWithCurrencyFlag:(_Bool)arg1;
 - (_Bool)p_formatTypeIsANumberFormatTypeForMostRecentlySet:(unsigned int)arg1;
+- (_Bool)removeCustomFormatsWithIDs:(id)arg1;
 - (void)updateCustomFormatFromPaste:(id)arg1;
 - (_Bool)_validateCustomFormatWrapper:(id)arg1;
 - (void)processCustomFormatsWithBlock:(CDUnknownBlockType)arg1;
@@ -148,7 +151,7 @@
 - (void)setCurrentFormat:(id)arg1 isExplicit:(_Bool)arg2 forExcel:(_Bool)arg3;
 - (void)setFormat:(id)arg1 shouldSetExplFlags:(_Bool)arg2 isExplicit:(_Bool)arg3 makeCurrent:(_Bool)arg4 clearingID:(_Bool)arg5;
 @property(readonly, nonatomic) TSKFormat *currentFormat;
-- (id)p_formatOfCellFormatKind:(unsigned char)arg1 create:(_Bool)arg2 outCreated:(_Bool *)arg3;
+- (id)p_formatOfCellFormatKind:(unsigned char)arg1 create:(_Bool)arg2 returnFormat:(_Bool)arg3 outCreated:(_Bool *)arg4;
 @property(readonly, nonatomic) unsigned int formatType;
 - (void)suggestCellFormatKind:(unsigned char)arg1;
 @property(readonly, nonatomic) _Bool hasControl;
@@ -179,7 +182,11 @@
 @property(readonly, nonatomic) _Bool hasCellStyle;
 - (void)setConditionalStyle:(id)arg1 clearingID:(_Bool)arg2;
 @property(readonly, nonatomic) TSWPParagraphStyle *effectiveTextStyle;
+@property(nonatomic) TSWPParagraphStyle *textStyle;
+- (void)setTextStyleHandle:(id)arg1 clearingID:(_Bool)arg2;
 - (void)setTextStyle:(id)arg1 clearingID:(_Bool)arg2;
+@property(nonatomic) TSTCellStyle *cellStyle;
+- (void)setCellStyleHandle:(id)arg1 clearingID:(_Bool)arg2;
 - (void)setCellStyle:(id)arg1 clearingID:(_Bool)arg2;
 - (_Bool)hasEqualValueToCell:(id)arg1;
 @property(readonly, nonatomic) _Bool dataIsReplaceable;
@@ -245,11 +252,33 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithStorageRef:(struct TSTCellStorage *)arg1 dataStore:(id)arg2;
 - (id)initWithLocale:(id)arg1;
-- (void)replaceContentWithParsableString:(id)arg1 tableInfo:(id)arg2 cellID:(struct TSUCellCoord)arg3 flags:(unsigned long long)arg4 outControlWasRemoved:(_Bool *)arg5;
-- (_Bool)coerceCellToFormatTypeUsingSpares:(unsigned int)arg1;
+- (_Bool)_parseFormulaFromString:(id)arg1 tableInfo:(id)arg2 cellID:(struct TSUCellCoord)arg3;
+- (_Bool)_coerceTextCellToBestNumberFormatUsingLimitedParsing:(_Bool)arg1 allowFractions:(_Bool)arg2;
+- (_Bool)_coerceToNumberFormatWithSeparatorFixing:(unsigned int)arg1;
+- (_Bool)_coerceToBooleanFormat;
+- (_Bool)_coerceToCheckboxFormat;
+- (_Bool)_coerceToRatingFormat;
+- (_Bool)_coerceToTextFormat;
+- (_Bool)_coerceToCustomTextFormat;
+- (_Bool)_coerceToCustomDateTimeFormat;
+- (_Bool)_coerceToCustomCurrencyFormat;
+- (_Bool)_coerceToCustomNumberFormat;
+- (_Bool)_coerceToCustomNumberishFormat:(unsigned int)arg1;
+- (_Bool)_coerceToCurrencyFormat;
+- (_Bool)_coerceToDurationFormat;
+- (_Bool)_coerceToDateTimeFormat;
+- (_Bool)_coerceToFractionFormat;
+- (_Bool)_coerceToPercentageFormat;
+- (_Bool)_coerceToScientificFormat;
+- (_Bool)_coerceToDecimalFormat;
+- (_Bool)_coerceEmptyCellToFormat:(unsigned int)arg1;
+@property(readonly, nonatomic) NSString *_rawValueForStringCoercion;
+@property(readonly, nonatomic) struct TSUDecimal _rawValueForDecimalCoercion;
+- (void)parseContentOrFormulaFromString:(id)arg1 tableInfo:(id)arg2 cellID:(struct TSUCellCoord)arg3 flags:(unsigned long long)arg4;
+- (void)parseContentFromString:(id)arg1 flags:(unsigned long long)arg2;
 - (_Bool)coerceTextCellToBestNumberFormatUsingLimitedParsing:(_Bool)arg1;
 - (_Bool)coerceToBaseFormat:(id)arg1;
-- (_Bool)coerceToFormatType:(unsigned int)arg1;
+- (_Bool)coerceToFormatType:(unsigned int)arg1 usingSpares:(_Bool)arg2;
 - (_Bool)removeControlCellSpec;
 
 @end

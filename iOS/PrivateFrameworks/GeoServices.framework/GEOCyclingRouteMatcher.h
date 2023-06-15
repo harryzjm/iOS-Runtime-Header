@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 - (double)_maxMatchDistance:(double)arg1 routeCoordinate:(struct PolylineCoordinate)arg2 previousMatchGood:(_Bool)arg3;
 - (void)_finishRouteMatch:(id)arg1 previousRouteMatch:(id)arg2 forLocation:(id)arg3;
 - (id)_candidateForSegment:(id)arg1 location:(id)arg2 previousRouteMatch:(id)arg3;
-- (id)initWithRoute:(id)arg1;
+- (id)initWithRoute:(id)arg1 auditToken:(id)arg2;
 
 @end
 

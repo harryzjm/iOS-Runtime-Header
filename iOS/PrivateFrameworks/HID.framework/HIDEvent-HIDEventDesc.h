@@ -193,6 +193,8 @@
 - (double)digitizerTiltY;
 - (void)setDigitizerTiltX:(double)arg1;
 - (double)digitizerTiltX;
+- (void)setDigitizerRoll:(double)arg1;
+- (double)digitizerRoll;
 - (void)setDigitizerRange:(unsigned int)arg1;
 - (unsigned int)digitizerRange;
 - (void)setDigitizerQualityRadiiAccuracy:(double)arg1;

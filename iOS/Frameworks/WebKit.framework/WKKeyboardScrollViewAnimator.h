@@ -38,6 +38,7 @@ __attribute__((visibility("hidden")))
 - (void)handleKeyEvent:(id)arg1;
 - (_Bool)beginWithEvent:(id)arg1;
 - (void)willStartInteractiveScroll;
+- (void)stopScrollingImmediately;
 - (void)invalidate;
 - (void)dealloc;
 - (id)initWithScrollView:(id)arg1;

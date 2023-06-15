@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIImage.h>
+#import <UIKitCore/UIImage.h>
 
 @interface UIImage (TelephonyUI)
 + (id)genericBusinessLogo;
@@ -15,10 +15,12 @@
 + (id)customImageNameForSymbolType:(long long)arg1;
 + (_Bool)isCustomSymbol:(long long)arg1;
 + (id)tpImageForSymbolType:(long long)arg1 configuration:(id)arg2;
++ (id)tpHierarchicalImageForSymbolType:(long long)arg1 pointSize:(double)arg2 scale:(long long)arg3;
 + (id)tpHierarchicalImageForSymbolType:(long long)arg1 pointSize:(double)arg2;
 + (id)tpImageForSymbolType:(long long)arg1 pointSize:(double)arg2;
 + (id)tpImageForSymbolType:(long long)arg1 textStyle:(id)arg2 cappedAt:(id)arg3;
 + (id)tpImageForSymbolType:(long long)arg1 textStyle:(id)arg2 scale:(long long)arg3 symbolWeight:(long long)arg4;
++ (id)tpImageForSymbolType:(long long)arg1 textStyle:(id)arg2 scale:(long long)arg3 paletteColors:(id)arg4 isStaticSize:(_Bool)arg5;
 + (id)tpImageForSymbolType:(long long)arg1 textStyle:(id)arg2 scale:(long long)arg3 hierarchicalColor:(id)arg4 isStaticSize:(_Bool)arg5;
 + (_Bool)shouldBeHierarchicalSymbolType:(long long)arg1;
 + (id)tpImageForSymbolType:(long long)arg1 textStyle:(id)arg2 scale:(long long)arg3 isStaticSize:(_Bool)arg4;
@@ -35,7 +37,9 @@
 + (id)muteRouteGlyphForDisplayStyle:(long long)arg1;
 + (id)carplayRouteGlyphForDisplayStyle:(long long)arg1;
 + (id)currentDeviceRouteGlyphForDisplayStyle:(long long)arg1;
++ (id)videoMessageRecordGlyphImage;
 + (id)voicemailGlyphForSymbolType:(long long)arg1;
++ (id)voicemailTTYGlyphImage;
 + (id)voicemailReportFeedbackGlyphImage;
 + (id)voicemailPauseGlyphDisabledImage;
 + (id)voicemailPauseGlyphImage;
@@ -53,6 +57,8 @@
 + (id)recentsTTYDirectGlyphImage;
 + (id)recentsOutgoingVideoCallGlyphImage;
 + (id)recentsOutgoingAudioCallGlyphImage;
++ (id)recentsIncomingVideoCallGlyphImage;
++ (id)recentsIncomingAudioCallGlyphImage;
 + (id)favoritesGlyphForSymbolType:(long long)arg1;
 + (id)favoritesVideoGlyphImage;
 + (id)favoritesTTYRelayGlyphImage;

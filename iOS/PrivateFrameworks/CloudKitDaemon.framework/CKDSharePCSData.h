@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CKRecordID, NSData, NSString;
+@class CKRecordID, NSData, NSDate, NSString;
 
 @interface CKDSharePCSData
 {
     CKRecordID *_shareID;
+    NSDate *_shareModificationDate;
     unsigned long long _serviceType;
     NSString *_shareEtag;
     long long _publicPermission;
@@ -37,8 +38,10 @@
 @property(nonatomic) long long publicPermission; // @synthesize publicPermission=_publicPermission;
 @property(retain, nonatomic) NSString *shareEtag; // @synthesize shareEtag=_shareEtag;
 @property(nonatomic) unsigned long long serviceType; // @synthesize serviceType=_serviceType;
+@property(retain, nonatomic) NSDate *shareModificationDate; // @synthesize shareModificationDate=_shareModificationDate;
 @property(retain, nonatomic) CKRecordID *shareID; // @synthesize shareID=_shareID;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)itemID;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)CKPropertiesDescription;

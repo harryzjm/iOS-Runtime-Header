@@ -9,6 +9,7 @@
 @protocol HAPAccessoryReachabilityDelegate, HAPAccessoryReachabilityProfile;
 
 @protocol HAPAccessoryReachabilityClient <NSObject>
+@property(readonly, nonatomic) double confirmInterval;
 @property(copy, nonatomic) id <HAPAccessoryReachabilityProfile> profile;
 @property(nonatomic) __weak id <HAPAccessoryReachabilityDelegate> delegate;
 - (void)kick;

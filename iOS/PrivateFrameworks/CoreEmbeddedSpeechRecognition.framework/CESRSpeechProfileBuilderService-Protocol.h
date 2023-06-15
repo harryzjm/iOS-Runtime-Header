@@ -14,6 +14,9 @@
 - (oneway void)addVocabularyItems:(NSArray *)arg1 isBoosted:(NSArray *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 - (oneway void)beginWithCategoriesAndVersions:(NSDictionary *)arg1 bundleId:(NSString *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 - (oneway void)getVersionForCategory:(NSString *)arg1 completion:(void (^)(long long, NSError *))arg2;
+- (oneway void)getExperimentIdsWithCompletion:(void (^)(NSSet *, NSError *))arg1;
+- (oneway void)removeExperimentId:(NSString *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
+- (oneway void)addExperimentId:(NSString *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (oneway void)setProfileConfigWithLanguage:(NSString *)arg1 profileDir:(NSString *)arg2 userId:(NSString *)arg3 dataProtectionClass:(long long)arg4 completion:(void (^)(_Bool, NSError *))arg5;
 @end
 

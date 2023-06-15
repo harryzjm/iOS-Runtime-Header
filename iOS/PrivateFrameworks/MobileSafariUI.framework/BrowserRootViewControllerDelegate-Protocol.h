@@ -6,7 +6,7 @@
 
 #import <MobileSafariUI/NSObject-Protocol.h>
 
-@class BrowserRootViewController, BrowserToolbar, ContinuousReadingViewController, NavigationBar, SFBannerTheme, UITraitCollection, UIViewController, UnifiedBar;
+@class BrowserRootViewController, BrowserToolbar, ContinuousReadingViewController, NavigationBar, SFBannerTheme, UITraitCollection, UnifiedBar;
 
 @protocol BrowserRootViewControllerDelegate <NSObject>
 - (_Bool)browserViewControllerShouldFreezeWebViewUpdatesForSizeTransition:(BrowserRootViewController *)arg1;
@@ -29,7 +29,6 @@
 - (void)browserViewController:(BrowserRootViewController *)arg1 didChangeSidebarStyle:(long long)arg2;
 - (void)browserViewController:(BrowserRootViewController *)arg1 didChangeShowingSidebar:(_Bool)arg2;
 - (long long)browserViewController:(BrowserRootViewController *)arg1 sidebarStyleForViewSize:(struct CGSize)arg2;
-- (UIViewController *)sidebarContentViewControllerForBrowserViewController:(BrowserRootViewController *)arg1;
 - (void)browserViewController:(BrowserRootViewController *)arg1 traitCollectionDidChange:(UITraitCollection *)arg2;
 - (void)browserViewControllerDidChangeMaximumObscuredInsets:(BrowserRootViewController *)arg1;
 - (void)browserViewControllerDidChangeBarInsets:(BrowserRootViewController *)arg1;

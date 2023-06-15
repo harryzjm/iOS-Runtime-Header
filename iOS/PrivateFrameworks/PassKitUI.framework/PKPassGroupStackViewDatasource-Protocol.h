@@ -28,5 +28,7 @@
 - (_Bool)groupStackViewShouldShowHeaderViews:(PKPassGroupStackView *)arg1;
 - (PKGroup *)featuredGroup;
 - (double)externalPresentationNavigationHeight;
+- (void)endPinningExternalPresentationNavigationHeight;
+- (void)beginPinningExternalPresentationNavigationHeight;
 @end
 

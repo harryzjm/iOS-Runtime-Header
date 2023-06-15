@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 {
     _Bool _sandboxed;
     _Bool _kernel;
+    _Bool _extension;
     _Bool _cached;
     int _posixPID;
     unsigned int _platform;
@@ -29,6 +30,7 @@ __attribute__((visibility("hidden")))
 + (id)anonymousPrivilegedClientIdentityWithUserIdentity:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool cached; // @synthesize cached=_cached;
+@property(readonly, nonatomic, getter=isExtension) _Bool extension; // @synthesize extension=_extension;
 @property(readonly, nonatomic) id <MCMClientCodeSignInfo> codeSignInfo; // @synthesize codeSignInfo=_codeSignInfo;
 @property(readonly, nonatomic) NSURL *sandboxContainerURL; // @synthesize sandboxContainerURL=_sandboxContainerURL;
 @property(readonly, nonatomic) unsigned int platform; // @synthesize platform=_platform;
@@ -42,7 +44,7 @@ __attribute__((visibility("hidden")))
 - (id)shortDescription;
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (char *)issueSandboxExtensionWithMetadata:(id)arg1 forceIssue:(_Bool)arg2 error:(unsigned long long *)arg3;
+- (char *)issueSandboxExtensionWithMetadata:(id)arg1 legacyExtensionPolicy:(_Bool)arg2 error:(id *)arg3;
 - (_Bool)needsSandboxExtensionForContainerWithClass:(unsigned long long)arg1 identifier:(id)arg2;
 - (_Bool)isAllowedToChangeReferences;
 - (_Bool)isAllowedToReadReferences;
@@ -62,12 +64,14 @@ __attribute__((visibility("hidden")))
 - (_Bool)isAllowedToReplaceContainers;
 - (_Bool)isAllowedToControlCaches;
 - (_Bool)isAllowedToWipePlugInDataContainerWithIdentifier:(id)arg1;
+- (_Bool)isAllowedToLookupViaPrivateEntitlementWithClass:(unsigned long long)arg1 identifier:(id)arg2;
 - (_Bool)isAllowedToLookupGroupContainersOfClass:(unsigned long long)arg1 ownedByIdentifier:(id)arg2;
+- (_Bool)isAllowedToAccessContainerIdentity:(id)arg1 error:(unsigned long long *)arg2;
 - (_Bool)isAllowedToLookupContainerIdentity:(id)arg1;
 - (_Bool)isAllowedToLookupAllContainersOfClass:(unsigned long long)arg1;
 - (id)clientIdentityByChangingCached:(_Bool)arg1;
 - (struct container_client *)createLibsystemClient;
-- (id)initWithPOSIXUser:(id)arg1 POSIXPID:(int)arg2 platform:(unsigned int)arg3 userIdentity:(id)arg4 effectiveAuditToken:(CDStruct_4c969caf)arg5 realAuditToken:(CDStruct_4c969caf)arg6 codeSignInfo:(id)arg7 sandboxed:(_Bool)arg8 sandboxContainerURL:(id)arg9 kernel:(_Bool)arg10;
+- (id)initWithPOSIXUser:(id)arg1 POSIXPID:(int)arg2 platform:(unsigned int)arg3 userIdentity:(id)arg4 effectiveAuditToken:(CDStruct_4c969caf)arg5 realAuditToken:(CDStruct_4c969caf)arg6 codeSignInfo:(id)arg7 extension:(_Bool)arg8 sandboxed:(_Bool)arg9 sandboxContainerURL:(id)arg10 kernel:(_Bool)arg11;
 - (id)initInternal;
 - (id)init;
 

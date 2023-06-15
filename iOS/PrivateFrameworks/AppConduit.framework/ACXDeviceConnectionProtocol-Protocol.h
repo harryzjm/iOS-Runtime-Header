@@ -27,6 +27,7 @@
 - (void)fetchLocallyAvailableWatchAppWithBundleID:(NSString *)arg1 forDeviceWithPairingID:(NSUUID *)arg2 options:(unsigned long long)arg3 completion:(void (^)(ACXApplication *, NSError *))arg4;
 - (void)fetchInstalledWatchAppBundleIDsForDeviceWithPairingID:(NSUUID *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)fetchLocallyAvailableWatchAppBundleIDsWithCompletion:(void (^)(NSArray *, NSError *))arg1;
+- (void)applicationWillInstallAfterPairingOnDeviceWithPairingID:(NSUUID *)arg1 withBundleID:(NSString *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 - (void)cancelUpdatePendingForCompanionApp:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)setUpdatePendingForCompanionApp:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)updatePreferencesForApplicationWithIdentifier:(NSString *)arg1 preferences:(NSDictionary *)arg2 writingToPreferencesLocation:(unsigned long long)arg3 forDeviceWithPairingID:(NSUUID *)arg4 options:(unsigned long long)arg5 completion:(void (^)(NSError *))arg6;

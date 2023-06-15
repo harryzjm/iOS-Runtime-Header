@@ -9,6 +9,6 @@
 @class NSString;
 
 @protocol SIRINLUSystemDialogAct <NSSecureCoding>
-@property(nonatomic, copy) NSString *renderedText;
+@property(retain, nonatomic) NSString *renderedText;
 @end
 

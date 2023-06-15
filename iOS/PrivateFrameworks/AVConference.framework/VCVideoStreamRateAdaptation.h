@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
 @class VCMediaStreamStats, VCVideoStreamRateController;
 
 __attribute__((visibility("hidden")))
-@interface VCVideoStreamRateAdaptation : NSObject
+@interface VCVideoStreamRateAdaptation
 {
     struct tagHANDLE *_rtpHandle;
     unsigned int _sendTmmbrBitrate;
@@ -32,6 +30,7 @@ __attribute__((visibility("hidden")))
     VCMediaStreamStats *_stats;
 }
 
+@property(retain, nonatomic) VCMediaStreamStats *stats; // @synthesize stats=_stats;
 @property(readonly, nonatomic) unsigned int operatingBitrate; // @synthesize operatingBitrate=_operatingBitrate;
 @property(readonly, nonatomic) unsigned int sendTmmbrBitrate; // @synthesize sendTmmbrBitrate=_sendTmmbrBitrate;
 @property(nonatomic) double maxOWRD; // @synthesize maxOWRD=_maxOWRD;
@@ -55,7 +54,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)runVideoStreamRateAdaptation;
 - (void)setEnableRateAdaptation:(_Bool)arg1 maxBitrate:(unsigned int)arg2 minBitrate:(unsigned int)arg3 adaptationInterval:(double)arg4;
 - (void)dealloc;
-- (id)initWithRTPHandle:(struct tagHANDLE *)arg1 reportingAgent:(struct opaqueRTCReporting *)arg2 receiverStats:(id)arg3 dumpID:(unsigned int)arg4 reportingParentID:(int)arg5;
+- (id)initWithMediaStreamRateAdaptationParam:(const struct tagVCMediaStreamRateAdaptationParams *)arg1;
 
 @end
 

@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <PhotosUICore/NSObject-Protocol.h>
-
 @class PXFeedSectionInfosChange, PXFeedSectionInfosManager;
 
-@protocol PXFeedSectionInfosManagerDelegate <NSObject>
+@protocol PXFeedSectionInfosManagerDelegate
 - (void)feedSectionInfosManager:(PXFeedSectionInfosManager *)arg1 sectionInfosDidChange:(PXFeedSectionInfosChange *)arg2;
 @end
 

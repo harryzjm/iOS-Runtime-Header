@@ -33,6 +33,8 @@ __attribute__((visibility("hidden")))
 - (void)_handleTapGesture:(id)arg1;
 - (long long)toolControllerTag;
 - (void)setLayoutOrientation:(long long)arg1 withTransitionCoordinator:(id)arg2;
+- (id)selectedToolbarIconGlyphName;
+- (id)toolbarIconGlyphName;
 - (id)selectedToolbarIcon;
 - (id)toolbarIcon;
 - (_Bool)wantsSecondaryToolbarVisible;

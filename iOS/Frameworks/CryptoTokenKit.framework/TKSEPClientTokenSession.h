@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 - (id)objectForObjectID:(id)arg1 error:(id *)arg2;
 - (id)createObjectWithAttributes:(id)arg1 error:(id *)arg2;
 - (id)initWithToken:(id)arg1 LAContext:(id)arg2 parameters:(id)arg3 error:(id *)arg4;
+- (_Bool)forceSystemSession;
 @property(readonly, nonatomic) TKTokenID *tokenID;
 
 @end

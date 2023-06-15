@@ -30,7 +30,7 @@
 - (id)activityItem;
 @property(readonly, nonatomic) UIImage *imageForActivityItem;
 - (_Bool)actuallyMergeWithDrawing:(id)arg1;
-- (_Bool)mergeWithMergeableData:(id)arg1;
+- (_Bool)mergeWithMergeableData:(id)arg1 mergeableFieldState:(id)arg2;
 - (_Bool)mergeWithDrawing:(id)arg1;
 - (void)attachmentModelDealloc;
 - (_Bool)generatePreviewsInOperation:(id)arg1;

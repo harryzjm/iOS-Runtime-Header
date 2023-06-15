@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     NSNumberFormatter *_tomatoPercentFormatter;
 }
 
++ (_Bool)contentMetadataContainsMediaTags:(id)arg1;
 - (void).cxx_destruct;
 - (id)_commonSenseString:(id)arg1;
 - (void)_mediaBagdesWithVUIMediaEntity:(id)arg1;

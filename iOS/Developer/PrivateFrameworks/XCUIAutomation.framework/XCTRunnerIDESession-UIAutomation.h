@@ -7,14 +7,18 @@
 #import <XCTestCore/XCTRunnerIDESession.h>
 
 #import <XCUIAutomation/XCTRunnerIDESessionUIAutomationDelegate-Protocol.h>
+#import <XCUIAutomation/XCUIXcodeApplicationManaging-Protocol.h>
 
 @class NSString;
 
-@interface XCTRunnerIDESession (UIAutomation) <XCTRunnerIDESessionUIAutomationDelegate>
+@interface XCTRunnerIDESession (UIAutomation) <XCTRunnerIDESessionUIAutomationDelegate, XCUIXcodeApplicationManaging>
 - (void)requestDiagnosticsForAdditionalDevices:(id)arg1;
 - (void)processWithToken:(id)arg1 exitedWithStatus:(id)arg2;
 - (void)stopTrackingProcessWithToken:(id)arg1;
 - (void)processWithBundleID:(id)arg1 path:(id)arg2 pid:(id)arg3 crashedUnderSymbol:(id)arg4;
+- (void)terminateProcessWithToken:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)requestLaunchProgressForProcessWithToken:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)launchProcessWithPath:(id)arg1 bundleID:(id)arg2 arguments:(id)arg3 environmentVariables:(id)arg4 completion:(CDUnknownBlockType)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

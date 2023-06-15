@@ -6,7 +6,7 @@
 
 #import "UIViewController.h"
 
-@class NSString, UIButton, UIKeyboardDockItem, UIKeyboardDockView;
+@class NSDate, NSString, UIButton, UIKeyboardDockItem, UIKeyboardDockView;
 
 __attribute__((visibility("hidden")))
 @interface UISystemKeyboardDockController : UIViewController
@@ -19,6 +19,10 @@ __attribute__((visibility("hidden")))
     UIKeyboardDockItem *_dictationRunningDockItem;
     UIKeyboardDockItem *_keyboardDockItem;
     UIButton *_stopDictationButton;
+    NSDate *_dictationItemButtonTouchDownTime;
+    struct CGPoint _dictationItemButtonTouchDownLocationInView;
+    NSDate *_globeItemButtonTouchDownTime;
+    struct CGPoint _globeItemButtonTouchDownLocationInView;
     UIKeyboardDockView *_dockView;
 }
 

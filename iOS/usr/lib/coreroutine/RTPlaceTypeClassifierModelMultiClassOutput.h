@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <coreroutine/MLFeatureProvider-Protocol.h>
-
 @class NSDictionary, NSSet;
 
 __attribute__((visibility("hidden")))
-@interface RTPlaceTypeClassifierModelMultiClassOutput : NSObject <MLFeatureProvider>
+@interface RTPlaceTypeClassifierModelMultiClassOutput : NSObject
 {
     long long _target;
     NSDictionary *_classProbability;

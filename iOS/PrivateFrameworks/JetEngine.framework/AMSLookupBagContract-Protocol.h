@@ -6,10 +6,12 @@
 
 #import <JetEngine/AMSURLBagContract-Protocol.h>
 
+@class AMSBagValue;
+
 @protocol AMSLookupBagContract <AMSURLBagContract>
 
 @optional
-@property(nonatomic, readonly) id unpersonalizedLookupURL;
-@property(nonatomic, readonly) id personalizedLookupURL;
+@property(readonly, nonatomic) AMSBagValue *unpersonalizedLookupURL;
+@property(readonly, nonatomic) AMSBagValue *personalizedLookupURL;
 @end
 

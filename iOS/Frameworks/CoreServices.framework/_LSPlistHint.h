@@ -13,13 +13,13 @@ __attribute__((visibility("hidden")))
 {
     NSSet *_keys;
     NSDictionary *_cachedValues;
-    struct os_unfair_lock_s _valueLock;
     _Bool _cachedValuesAreComplete;
     _Bool _keysAreCompacted;
 }
 
 - (void).cxx_destruct;
 - (id)debugDescription;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 
 @end
 

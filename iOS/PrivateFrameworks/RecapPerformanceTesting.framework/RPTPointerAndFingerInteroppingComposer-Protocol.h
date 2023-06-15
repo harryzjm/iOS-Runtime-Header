@@ -14,6 +14,7 @@
 - (void)pointerOrFingerTapUp:(struct CGPoint)arg1;
 - (void)pointerOrFingerMoveToPoint:(struct CGPoint)arg1 duration:(double)arg2;
 - (void)pointerOrFingerTapDown:(struct CGPoint)arg1;
+- (void)_pointerOrFingerFlickAt:(struct CGPoint)arg1 byDelta:(struct CGVector)arg2 duration:(double)arg3;
 - (void)_pointerOrFingerScrollAt:(struct CGPoint)arg1 byDelta:(struct CGVector)arg2 duration:(double)arg3 touchDownAndLift:(_Bool)arg4;
 - (void)pointerMoveToPointIfApplicable:(struct CGPoint)arg1;
 - (void)pointerOrFingerScrollAt:(struct CGPoint)arg1 byDelta:(struct CGVector)arg2 duration:(double)arg3;

@@ -6,22 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSString, NSURL;
+@class NSArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface CADDiagnosticsDatabaseCollector : NSObject
 {
-    NSURL *_outputURL;
-    NSArray *_auxDBInfo;
-    struct CalDatabase *_database;
+    NSArray *_dbInfos;
 }
 
 - (void).cxx_destruct;
-- (void)collectDatabase:(struct CalDatabase *)arg1 auxDatabase:(void *)arg2 outputURL:(id)arg3 context:(id)arg4;
 - (void)collect:(id)arg1;
 - (void)determineExpectedOutputFiles:(id)arg1;
-- (struct CalDatabase *)database;
-- (void)dealloc;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -10,12 +10,16 @@
 
 @interface _TtC10ChronoCore17ActivityViewModel : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *_isPendingInteractionUpdate;
     MISSING_TYPE *activityDescriptor;
     MISSING_TYPE *defaultView;
     MISSING_TYPE *_viewEntryDidChangePublisher;
     MISSING_TYPE *viewEntryDidChangePublisher;
     MISSING_TYPE *viewEntry;
-    MISSING_TYPE *viewCollection;
+    MISSING_TYPE *_colorSchemeDidChangePublisher;
+    MISSING_TYPE *colorSchemeDidChangePublisher;
+    MISSING_TYPE *colorScheme;
+    MISSING_TYPE *preferredColorScheme;
     MISSING_TYPE *canAppearInSecureEnvironment;
     MISSING_TYPE *isForeground;
     MISSING_TYPE *rawEnvironmentValues;
@@ -27,9 +31,14 @@
     MISSING_TYPE *overrideDate;
     MISSING_TYPE *currentActionURL;
     MISSING_TYPE *handleLaunchRequest;
+    MISSING_TYPE *handlePayloadUpdated;
+    MISSING_TYPE *_lock;
+    MISSING_TYPE *_lock_activeRunners;
     MISSING_TYPE *logger;
     MISSING_TYPE *logIdentifier;
+    MISSING_TYPE *viewTag;
     MISSING_TYPE *_activityID;
+    MISSING_TYPE *_descriptorService;
     MISSING_TYPE *_activityService;
     MISSING_TYPE *_environmentProvider;
     MISSING_TYPE *_cancellable;
@@ -37,6 +46,9 @@
     MISSING_TYPE *_hasLoadedViewOnce;
     MISSING_TYPE *_viewSecurityPolicy;
     MISSING_TYPE *_viewSecurityPolicyDataSource;
+    MISSING_TYPE *_isSubscribed;
+    MISSING_TYPE *_descriptorObserver;
+    MISSING_TYPE *_activityEntry;
 }
 
 @end

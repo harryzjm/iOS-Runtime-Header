@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIDevice.h>
+#import <UIKitCore/UIDevice.h>
 
 @interface UIDevice (CKUtilities)
++ (_Bool)__ck_currentDeviceIsMac;
 + (_Bool)__ck_currentDeviceIsPadOrMac;
 @end
 

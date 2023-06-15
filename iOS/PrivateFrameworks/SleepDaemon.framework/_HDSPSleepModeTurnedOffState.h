@@ -9,12 +9,11 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (void)userTurnedOffSleepModeWithReason:(unsigned long long)arg1;
 - (void)sleepScheduleStateChangedToBedtime:(unsigned long long)arg1 fromState:(unsigned long long)arg2;
 - (void)sleepScheduleStateChangedToWindDown:(unsigned long long)arg1 fromState:(unsigned long long)arg2;
-- (_Bool)shouldUpdateSleepModeStateForState:(unsigned long long)arg1 changeReason:(unsigned long long)arg2 previousState:(unsigned long long)arg3;
-- (void)stateDidExpireWithContext:(id)arg1;
-- (id)nextStateWithContext:(id *)arg1;
+- (_Bool)_shouldUpdateSleepModeStateForState:(unsigned long long)arg1 changeReason:(unsigned long long)arg2 previousState:(unsigned long long)arg3;
+- (void)stateDidExpire;
+- (void)updateState;
 - (id)expirationDate;
 
 @end

@@ -8,8 +8,8 @@
 @protocol UIContextMenuInteractionAnimating, UIContextMenuInteractionCommitAnimating;
 
 @protocol _TtP8VideosUI36VUICollectionViewContextMenuDelegate_
-- (void)vuiCollectionView:(UICollectionView *)arg1 willEndContextMenuInteraction:(UIContextMenuConfiguration *)arg2 animator:(id <UIContextMenuInteractionAnimating>)arg3;
 - (void)vuiCollectionView:(UICollectionView *)arg1 willPerformPreviewActionForMenuWith:(UIContextMenuConfiguration *)arg2 animator:(id <UIContextMenuInteractionCommitAnimating>)arg3;
+- (void)vuiCollectionView:(UICollectionView *)arg1 willEndContextMenuInteraction:(UIContextMenuConfiguration *)arg2 animator:(id <UIContextMenuInteractionAnimating>)arg3;
 - (UIContextMenuConfiguration *)vuiCollectionView:(UICollectionView *)arg1 contextMenuConfigurationForItemAt:(NSIndexPath *)arg2 point:(struct CGPoint)arg3;
 - (UITargetedPreview *)vuiCollectionView:(UICollectionView *)arg1 previewForDismissingContextMenuWithConfiguration:(UIContextMenuConfiguration *)arg2;
 - (UITargetedPreview *)vuiCollectionView:(UICollectionView *)arg1 previewForHighlightingContextMenuWithConfiguration:(UIContextMenuConfiguration *)arg2;

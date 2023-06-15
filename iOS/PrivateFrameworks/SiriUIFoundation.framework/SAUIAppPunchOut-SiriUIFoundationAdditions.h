@@ -7,6 +7,7 @@
 #import <SAObjects/SAUIAppPunchOut.h>
 
 @interface SAUIAppPunchOut (SiriUIFoundationAdditions)
+- (long long)sruif_usefulUserResultType;
 - (long long)sruif_aceCommandType;
 @end
 

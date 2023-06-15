@@ -14,9 +14,11 @@ __attribute__((visibility("hidden")))
     PBUnknownFields *_unknownFields;
     _Bool _includeName;
     _Bool _includeSpokenNames;
+    _Bool _populateAltCategory;
     struct {
         unsigned int has_includeName:1;
         unsigned int has_includeSpokenNames:1;
+        unsigned int has_populateAltCategory:1;
     } _flags;
 }
 

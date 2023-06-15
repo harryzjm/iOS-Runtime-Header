@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIAlertController.h>
+#import <UIKitCore/UIAlertController.h>
 
 @class NSString;
 
 @interface UIAlertController (HUPreloadingModalPresentation)
 + (id)hu_actionSheetWithTitle:(id)arg1 message:(id)arg2 anchorView:(id)arg3;
++ (id)hu_alertControllerForAddingPersonWithCompletionHandler:(CDUnknownBlockType)arg1;
 + (id)hu_alertControllerForAcknowledgementWithTitle:(id)arg1 message:(id)arg2;
 + (id)hu_alertControllerWithActivityIndicatorAndTitle:(id)arg1;
 + (id)hu_alertControllerForUnimplementedFeature:(id)arg1;

@@ -6,7 +6,7 @@
 
 #import "MUPlaceSectionController.h"
 
-@class MKUGCCallToActionViewAppearance, MUFooterActionsSectionController, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, NSArray, NSString, UIView, UIViewController;
+@class MUFooterActionsSectionController, MUPlaceCallToActionAppearance, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, NSArray, NSString, UIView, UIViewController;
 @protocol MUInfoCardAnalyticsDelegate;
 
 __attribute__((visibility("hidden")))
@@ -34,7 +34,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) MUPlaceSectionHeaderViewModel *sectionHeaderViewModel;
 @property(readonly, nonatomic) UIViewController *sectionViewController;
 @property(readonly, nonatomic) NSArray *sectionViews;
-@property(retain, nonatomic) MKUGCCallToActionViewAppearance *submissionStatus;
+@property(retain, nonatomic) MUPlaceCallToActionAppearance *submissionStatus;
 @property(readonly) Class superclass;
 
 @end

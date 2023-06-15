@@ -14,13 +14,20 @@ __attribute__((visibility("hidden")))
     MPModelLibraryTransientStateController *_underlyingLibraryTransientStateController;
 }
 
++ (id)didChangeNotificationName;
 + (id)sharedLibraryTransientStateController;
 - (void).cxx_destruct;
+- (void)_handleLibraryTransientStateControllerDidChangeNotification:(id)arg1;
+- (long long)_underlyingLibraryTransientFavoriteState:(long long)arg1;
+- (long long)_libraryTransientFavoriteState:(long long)arg1;
 - (void)performOperation:(id)arg1;
+- (void)performFavoriteStateChangeRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)performLibraryKeepLocalChangeWithRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)performLibraryImportChangeWithRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)performDeleteEntityWithRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)performAddToPlaylistWithRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (long long)transientFavoriteStateForModelObject:(id)arg1;
+- (void)dealloc;
 - (id)_initWithUnderlyingLibraryTransientStateController:(id)arg1;
 
 @end

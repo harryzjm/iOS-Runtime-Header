@@ -19,13 +19,15 @@ __attribute__((visibility("hidden")))
 
 + (id)reuseIdentifier;
 - (void).cxx_destruct;
+- (void)_setAction:(id)arg1 backgroundEffect:(id)arg2;
 - (void)_setAction:(id)arg1;
-- (void)configureUsingAction:(id)arg1;
+- (void)configureUsingAction:(id)arg1 backgroundEffect:(id)arg2;
 @property(copy, nonatomic) NSString *subtitle;
 @property(copy, nonatomic) NSString *title;
 @property(retain, nonatomic) UIImage *icon;
 - (void)setIconFromAction:(id)arg1;
 - (void)setIconFromBookmark:(id)arg1;
+@property(copy, nonatomic) NSString *visualEffectGroupName;
 - (id)focusEffect;
 @property(readonly, nonatomic) UIView *contextMenuPreviewView;
 - (void)updateViewsDependingOnCustomTraits;

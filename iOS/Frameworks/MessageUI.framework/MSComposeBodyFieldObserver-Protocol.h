@@ -9,6 +9,7 @@
 @class NSData, NSException, NSString;
 
 @protocol MSComposeBodyFieldObserver <NSObject>
+- (void)composeBodyFieldQuickReplyEnabled:(void (^)(_Bool))arg1;
 - (void)composeBodyFieldDidThrowException:(NSException *)arg1;
 - (void)composeBodyFieldDidChange;
 - (void)composeBodyFieldAddAttachmentWithData:(NSData *)arg1 filename:(NSString *)arg2 mimeType:(NSString *)arg3 uniqueID:(NSString *)arg4;

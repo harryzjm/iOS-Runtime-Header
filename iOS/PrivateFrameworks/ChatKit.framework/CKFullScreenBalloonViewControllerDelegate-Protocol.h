@@ -6,7 +6,7 @@
 
 #import <ChatKit/NSObject-Protocol.h>
 
-@class CKChatItem, CKFullScreenBalloonViewController, CKMessagePartChatItem, NSNumber, NSString;
+@class CKAssociatedStickerChatItem, CKChatItem, CKFullScreenBalloonViewController, CKMessagePartChatItem, NSNumber, NSString;
 
 @protocol CKFullScreenBalloonViewControllerDelegate <NSObject>
 - (struct CGRect)fullScreenBalloonViewController:(CKFullScreenBalloonViewController *)arg1 balloonFrameForChatItem:(CKChatItem *)arg2;
@@ -20,6 +20,8 @@
 - (BOOL)fullScreenBalloonViewControllerAnchorVertialOrientation:(CKFullScreenBalloonViewController *)arg1 withBalloonFrame:(struct CGRect)arg2;
 - (_Bool)fullScreenBalloonViewControllerShouldShowReplyButton:(CKFullScreenBalloonViewController *)arg1;
 - (void)fullScreenBalloonViewController:(CKFullScreenBalloonViewController *)arg1 replyButtonPressedForChatItem:(CKChatItem *)arg2;
+- (void)fullScreenBalloonViewController:(CKFullScreenBalloonViewController *)arg1 downloadStickerForChatItem:(CKAssociatedStickerChatItem *)arg2;
+- (void)fullScreenBalloonViewController:(CKFullScreenBalloonViewController *)arg1 deleteSentStickerForChatItem:(CKAssociatedStickerChatItem *)arg2;
 - (void)fullScreenBalloonViewController:(CKFullScreenBalloonViewController *)arg1 deleteStickerWithTransferGUID:(NSString *)arg2;
 - (void)fullScreenBalloonViewController:(CKFullScreenBalloonViewController *)arg1 stickerPackTappedWithAdamID:(NSNumber *)arg2;
 - (void)fullScreenBalloonViewController:(CKFullScreenBalloonViewController *)arg1 verticallyScrollTranscriptByAmount:(double)arg2 animated:(_Bool)arg3 completion:(void (^)(void))arg4;

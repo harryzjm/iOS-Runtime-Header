@@ -7,6 +7,9 @@
 @class NSArray, NSDictionary, NSString;
 
 @protocol AudioComponentPreferenceProtocol
+- (void)clearConfigurationInfoCache;
+- (void)writeConfigurationInfoToCache:(NSString *)arg1 configurationInfo:(NSDictionary *)arg2;
+- (void)copyConfigurationInfoFromCache:(NSString *)arg1 reply:(void (^)(NSDictionary *))arg2;
 - (void)getInterAppIcon:(NSString *)arg1 reply:(void (^)(NSData *))arg2;
 - (void)getExtensionIcon:(NSString *)arg1 reply:(void (^)(NSData *))arg2;
 - (void)setComponentUserTags:(NSDictionary *)arg1 tags:(NSArray *)arg2;

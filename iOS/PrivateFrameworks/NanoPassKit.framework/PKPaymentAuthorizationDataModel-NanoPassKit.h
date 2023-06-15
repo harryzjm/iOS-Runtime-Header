@@ -10,6 +10,7 @@
 - (_Bool)npkIsCompanionAuthForTvOS;
 - (_Bool)npkIsExternalContextAuthorization;
 - (_Bool)npkIsCardOnFilePayment;
+- (_Bool)npkIsOutgoingPeerPayment;
 - (_Bool)_hasNonPeerPaymentAcceptedPasses;
 - (_Bool)npkIsSplitPeerPaymentWithoutAnotherPaymentMethod;
 - (_Bool)npkIsSplitPeerPaymentWithAnotherPaymentMethod;

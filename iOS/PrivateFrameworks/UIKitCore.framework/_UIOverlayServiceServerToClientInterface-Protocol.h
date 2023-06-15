@@ -6,9 +6,9 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class _UIOResponse;
+@class _UIOClientAction;
 
 @protocol _UIOverlayServiceServerToClientInterface <NSObject>
-- (oneway void)handleOverlayResponse:(_UIOResponse *)arg1;
+- (oneway void)performOverlayClientAction:(_UIOClientAction *)arg1;
 @end
 

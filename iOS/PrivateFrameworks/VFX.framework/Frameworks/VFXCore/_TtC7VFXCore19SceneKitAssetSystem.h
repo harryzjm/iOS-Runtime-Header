@@ -10,7 +10,8 @@
 
 @interface _TtC7VFXCore19SceneKitAssetSystem : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *scenesToLoad;
+    MISSING_TYPE *scenesToUpdate;
+    MISSING_TYPE *newNcenesToLoad;
 }
 
 @end

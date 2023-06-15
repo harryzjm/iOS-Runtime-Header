@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HUCollectionViewSwitchCell;
+@class _TtC6HomeUI26HUCollectionViewSwitchCell;
 
 @protocol _TtP6HomeUI34HUCollectionViewSwitchCellDelegate_
-- (void)didTurnOnSwichCell:(HUCollectionViewSwitchCell *)arg1 isOn:(_Bool)arg2;
+- (void)switchCell:(_TtC6HomeUI26HUCollectionViewSwitchCell *)arg1 didTurnOn:(_Bool)arg2;
 @end
 

@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <PosterBoard/NSObject-Protocol.h>
+#import <PosterBoard/PBFExtensionInstanceProviding-Protocol.h>
 
 @class NSString, PRSServerPosterPath;
 @protocol PRPosterExtensionDescribing;
 
-@protocol PBFExtensionProviding <NSObject>
+@protocol PBFExtensionProviding <PBFExtensionInstanceProviding>
 - (id <PRPosterExtensionDescribing>)providerForExtensionIdentifier:(NSString *)arg1;
 - (id <PRPosterExtensionDescribing>)providerForPath:(PRSServerPosterPath *)arg1;
 @end

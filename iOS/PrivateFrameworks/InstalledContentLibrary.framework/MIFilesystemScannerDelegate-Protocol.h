@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MIBundleContainer, MIExecutableBundle, NSError;
+@class MIBundleContainer, MIExecutableBundle, NSError, NSString;
 
 @protocol MIFilesystemScannerDelegate
 - (void)errorOccurred:(NSError *)arg1;
 - (_Bool)scanAppExtensionsInFrameworkBundle:(MIExecutableBundle *)arg1 withError:(id *)arg2;
-- (_Bool)scanExecutableBundle:(MIExecutableBundle *)arg1 inContainer:(MIBundleContainer *)arg2 withError:(id *)arg3;
+- (_Bool)scanExecutableBundle:(MIExecutableBundle *)arg1 inContainer:(MIBundleContainer *)arg2 forPersona:(NSString *)arg3 withError:(id *)arg4;
 @end
 

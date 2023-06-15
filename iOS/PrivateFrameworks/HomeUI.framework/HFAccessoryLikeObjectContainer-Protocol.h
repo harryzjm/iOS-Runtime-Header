@@ -9,6 +9,6 @@
 @class NSSet;
 
 @protocol HFAccessoryLikeObjectContainer <NSObject>
-@property(nonatomic, readonly) NSSet *hf_accessoryLikeObjects;
+@property(readonly, nonatomic) NSSet *hf_accessoryLikeObjects;
 @end
 

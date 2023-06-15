@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (_Bool)isProcessEntitled:(CDStruct_6ad76789)arg1 entitlementName:(struct __CFString *)arg2;
 + (_Bool)checkForEntitlement:(id)arg1;
 
 @end

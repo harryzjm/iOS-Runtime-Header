@@ -21,6 +21,7 @@
 @property(readonly, nonatomic) unsigned long long currentAudioAndVideoCallCount;
 @property(readonly, nonatomic) unsigned long long currentVideoCallCount;
 @property(readonly, nonatomic) unsigned long long currentCallCount;
+@property(readonly, nonatomic) TUCall *screeningCall;
 @property(readonly, nonatomic) TUCall *currentVideoCall;
 @property(readonly, nonatomic) TUCall *activeVideoCall;
 @property(readonly, nonatomic) TUCall *incomingVideoCall;

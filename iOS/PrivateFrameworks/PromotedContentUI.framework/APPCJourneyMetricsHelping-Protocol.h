@@ -9,13 +9,13 @@
 
 @protocol APPCJourneyMetricsHelping
 - (void)addUnfilledReason:(long long)arg1;
-- (void)adDidImpress;
 - (void)contentLoadFailure;
 - (void)exceededContainer;
 - (void)getAppWithButtonState:(long long)arg1 timeToPreviousInstall:(long long)arg2;
 - (void)unloadedWithReason:(long long)arg1;
 - (void)adMarkerInteracted;
-- (void)userReturnedFromInteraction;
+- (void)userReturnedFromInteractionWithIsVoiceOverEnabled:(_Bool)arg1 ignoreVisibilityState:(_Bool)arg2;
+- (void)userReturnedFromInteractionWithIsVoiceOverEnabled:(_Bool)arg1;
 - (void)interactedWithElementID:(unsigned char)arg1 atXPos:(float)arg2 yPos:(float)arg3;
 - (void)interactedAtXPos:(float)arg1 yPos:(float)arg2;
 - (void)interacted;
@@ -27,14 +27,16 @@
 - (void)placedWithPlacementType:(long long)arg1 placement:(long long)arg2 position:(long long)arg3;
 - (void)placedWithPlacementType:(long long)arg1 placement:(long long)arg2 unfilledReason:(long long)arg3;
 - (void)placedWithPlacementType:(long long)arg1 placement:(long long)arg2;
-- (void)placedWithPlacementType:(long long)arg1 wasNativeSlot:(_Bool)arg2;
-- (void)placedWithPlacementType:(long long)arg1;
+- (void)placedWithPlacementType:(long long)arg1 placement:(long long)arg2 wasNativeSlot:(_Bool)arg3;
 - (void)loaded;
 - (void)replacedWithHelper:(id <APPCJourneyMetricsHelping>)arg1;
+- (void)createdWithAdType:(long long)arg1 container:(long long)arg2 format:(long long)arg3;
+- (void)createdWithAdType:(long long)arg1 container:(long long)arg2;
 - (void)createdWithAdType:(long long)arg1;
 - (void)notConsumedWithCode:(long long)arg1 placeholder:(_Bool)arg2;
 - (void)discardedWithCode:(long long)arg1;
 - (void)delivered;
+@property(nonatomic) double impressionThresholdDuration;
 @property(nonatomic) __weak id <APPCPromotableContent> promotedContent;
 @property(nonatomic, readonly) _TtC15PromotedContent31JourneyMetricsHelperDiagnostics *diagnostics;
 @property(nonatomic, readonly) _Bool didUnload;

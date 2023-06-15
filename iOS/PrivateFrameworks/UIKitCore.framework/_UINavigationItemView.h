@@ -36,7 +36,6 @@ __attribute__((visibility("hidden")))
 - (id)title;
 - (struct CGSize)_titleSize;
 - (void)_resetTitleSize;
-- (void)traitCollectionDidChange:(id)arg1;
 - (void)layoutSubviews;
 - (void)_updateLabel;
 - (struct CGRect)_labelFrame;

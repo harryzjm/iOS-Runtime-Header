@@ -6,24 +6,17 @@
 
 #import <SearchFoundation/SFCardSection-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString, SFColor, SFImage, SFRichText;
+@class NSData, NSDictionary, NSString, SFImage, SFRichText;
 
 @protocol SFVerticalLayoutCardSection <SFCardSection>
 @property(readonly, nonatomic) NSData *jsonData;
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property(nonatomic) _Bool useAppIconMetrics;
 @property(retain, nonatomic) SFRichText *thumbnailOverlayText;
 @property(nonatomic) _Bool contentsLeading;
 @property(retain, nonatomic) SFRichText *footnote;
 @property(retain, nonatomic) SFRichText *title;
 @property(retain, nonatomic) SFImage *thumbnail;
-@property(retain, nonatomic) SFColor *backgroundColor;
-@property(nonatomic) int separatorStyle;
 @property(copy, nonatomic) NSString *type;
-@property(nonatomic) _Bool hasBottomPadding;
-@property(nonatomic) _Bool hasTopPadding;
-@property(nonatomic) _Bool canBeHidden;
-@property(copy, nonatomic) NSString *punchoutPickerDismissText;
-@property(copy, nonatomic) NSString *punchoutPickerTitle;
-@property(copy, nonatomic) NSArray *punchoutOptions;
 @end
 

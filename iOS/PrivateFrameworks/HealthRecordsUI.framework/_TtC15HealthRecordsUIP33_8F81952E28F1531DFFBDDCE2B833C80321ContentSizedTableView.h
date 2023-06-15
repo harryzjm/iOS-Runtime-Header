@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UITableView.h>
+#import <UIKitCore/UITableView.h>
 
 @interface _TtC15HealthRecordsUIP33_8F81952E28F1531DFFBDDCE2B833C80321ContentSizedTableView : UITableView
 {

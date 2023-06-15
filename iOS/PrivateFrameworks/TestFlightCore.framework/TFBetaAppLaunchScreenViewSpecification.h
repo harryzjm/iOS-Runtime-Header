@@ -25,19 +25,23 @@ __attribute__((visibility("hidden")))
     UIFont *_subtitleFont;
     UIFont *_bodyTitleFont;
     UIFont *_bodyTextFont;
+    UIFont *_primaryButtonTextFont;
     UIFontMetrics *_titleFontMetrics;
     UIFontMetrics *_subtitleFontMetrics;
     UIFontMetrics *_bodyTitleFontMetrics;
     UIFontMetrics *_bodyTextFontMetrics;
+    UIFontMetrics *_primaryButtonTextFontMetrics;
     struct UIEdgeInsets _scrollViewContentLayoutInsets;
     struct UIEdgeInsets _buttonModuleContentLayoutInsets;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) UIFontMetrics *primaryButtonTextFontMetrics; // @synthesize primaryButtonTextFontMetrics=_primaryButtonTextFontMetrics;
 @property(readonly, nonatomic) UIFontMetrics *bodyTextFontMetrics; // @synthesize bodyTextFontMetrics=_bodyTextFontMetrics;
 @property(readonly, nonatomic) UIFontMetrics *bodyTitleFontMetrics; // @synthesize bodyTitleFontMetrics=_bodyTitleFontMetrics;
 @property(readonly, nonatomic) UIFontMetrics *subtitleFontMetrics; // @synthesize subtitleFontMetrics=_subtitleFontMetrics;
 @property(readonly, nonatomic) UIFontMetrics *titleFontMetrics; // @synthesize titleFontMetrics=_titleFontMetrics;
+@property(readonly, nonatomic) UIFont *primaryButtonTextFont; // @synthesize primaryButtonTextFont=_primaryButtonTextFont;
 @property(readonly, nonatomic) UIFont *bodyTextFont; // @synthesize bodyTextFont=_bodyTextFont;
 @property(readonly, nonatomic) UIFont *bodyTitleFont; // @synthesize bodyTitleFont=_bodyTitleFont;
 @property(readonly, nonatomic) UIFont *subtitleFont; // @synthesize subtitleFont=_subtitleFont;
@@ -58,6 +62,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) UIColor *overButtonTintTextColor;
 @property(readonly, nonatomic) UIColor *buttonTintColor;
 @property(readonly, nonatomic) UIColor *backgroundColor;
+- (id)_primaryButtonTextFontStyle;
+- (id)_createPrimaryButtonTextFontForTraitCollection:(id)arg1;
 - (id)_bodyTextFontStyle;
 - (id)_createBodyTextFontForTraitCollection:(id)arg1;
 - (id)_bodyTitleFontStyle;
@@ -66,6 +72,7 @@ __attribute__((visibility("hidden")))
 - (id)_createSubtitleFontForTraitCollection:(id)arg1;
 - (id)_titleFontStyle;
 - (id)_createTitleFontForTraitCollection:(id)arg1;
+@property(readonly, nonatomic) struct CGSize headerIconViewSize;
 @property(readonly, nonatomic) double primaryButtonCornerRadius;
 - (id)initWithTraitCollection:(id)arg1;
 

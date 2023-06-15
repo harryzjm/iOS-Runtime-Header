@@ -16,8 +16,6 @@
     float _bay_window_depth_thr;
 }
 
-- (void)reset;
-- (id)runWithFloorPlan:(id)arg1;
 - (id)init;
 
 @end

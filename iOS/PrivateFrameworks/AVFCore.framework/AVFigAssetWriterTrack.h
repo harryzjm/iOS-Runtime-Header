@@ -51,6 +51,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)markEndOfDataReturningError:(id *)arg1;
 - (void)prepareToEndSession;
 - (void)endPassWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (_Bool)addTaggedPixelBufferGroup:(struct OpaqueCMTaggedBufferGroup *)arg1 atPresentationTime:(CDStruct_1b6d18a9)arg2 error:(id *)arg3;
 - (_Bool)addPixelBuffer:(struct __CVBuffer *)arg1 atPresentationTime:(CDStruct_1b6d18a9)arg2 error:(id *)arg3;
 - (_Bool)addSampleBuffer:(struct opaqueCMSampleBuffer *)arg1 error:(id *)arg2;
 - (_Bool)beginPassReturningError:(id *)arg1;

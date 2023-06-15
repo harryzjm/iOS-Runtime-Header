@@ -9,14 +9,12 @@
 @interface RSMarkerCoaching : NSObject
 {
     struct MarkerProposal _generator;
-    struct vector<wlw::lcnn_flp::willow_line2d, std::allocator<wlw::lcnn_flp::willow_line2d>> _all_major_view_lines;
+    struct vector<roomscancore::Line<float __attribute__((ext_vector_type(2)))>, std::allocator<roomscancore::Line<float __attribute__((ext_vector_type(2)))>>> _all_major_view_lines;
     struct vector<float __attribute__((ext_vector_type(3))), std::allocator<float __attribute__((ext_vector_type(3)))>> _all_poses;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)reset;
-- (id)runWithFloorPlan:(id)arg1 temporalMeta:(id)arg2;
 
 @end
 

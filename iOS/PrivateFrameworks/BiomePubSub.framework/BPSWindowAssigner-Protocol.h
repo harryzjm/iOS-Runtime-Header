@@ -9,6 +9,7 @@
 @class NSArray, NSSet;
 
 @protocol BPSWindowAssigner <NSObject>
+- (NSSet *)updateAndReturnNewWindowStates:(NSArray *)arg1 input:(id)arg2;
 - (NSSet *)assignWindow:(NSArray *)arg1 input:(id)arg2;
 @end
 

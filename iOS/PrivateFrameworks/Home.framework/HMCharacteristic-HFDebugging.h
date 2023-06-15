@@ -53,6 +53,7 @@
 - (long long)hf_sortPriority;
 - (id)hf_associatedCharacteristicType;
 - (id)hf_defaultValue;
+- (id)hf_formattedValueUpdatedTime;
 - (_Bool)hf_isReadable;
 - (_Bool)hf_isWritable;
 - (id)hf_characteristicTypeDescription;

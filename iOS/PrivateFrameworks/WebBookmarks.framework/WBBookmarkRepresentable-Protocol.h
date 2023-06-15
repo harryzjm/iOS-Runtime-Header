@@ -6,10 +6,16 @@
 
 #import <WebBookmarks/NSObject-Protocol.h>
 
-@class WebBookmark;
+@class NSArray, NSDictionary, NSString, WebBookmark;
 
 @protocol WBBookmarkRepresentable <NSObject>
+@property(readonly, copy, nonatomic) NSString *privacyPreservingDescription;
+@property(readonly, nonatomic) _Bool needsSecureDelete;
 @property(retain, nonatomic) WebBookmark *bookmark;
 - (id)initWithBookmark:(WebBookmark *)arg1;
+
+@optional
+@property(readonly, copy, nonatomic) NSDictionary *modifiedSettingsFieldsByName;
+- (void)resumeIncrementingFields:(NSArray *)arg1;
 @end
 

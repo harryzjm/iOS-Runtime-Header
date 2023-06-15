@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
 @class MISSING_TYPE;
 
@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *forYouTitleView;
     MISSING_TYPE *commands;
     MISSING_TYPE *watchlistManager;
+    MISSING_TYPE *cancellables;
 }
 
 - (void).cxx_destruct;

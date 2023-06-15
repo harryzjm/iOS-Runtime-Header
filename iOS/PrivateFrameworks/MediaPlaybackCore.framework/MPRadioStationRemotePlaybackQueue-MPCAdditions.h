@@ -7,6 +7,6 @@
 #import <MediaPlayer/MPRadioStationRemotePlaybackQueue.h>
 
 @interface MPRadioStationRemotePlaybackQueue (MPCAdditions)
-- (void)getPlaybackContextWithCompletion:(CDUnknownBlockType)arg1;
+- (id)asMusicPlaybackContextWithError:(id *)arg1;
 @end
 

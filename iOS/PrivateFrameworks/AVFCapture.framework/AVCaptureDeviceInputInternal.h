@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
     NSArray *ports;
     NSArray *multiCamPorts;
     _Bool unifiedAutoExposureDefaultsEnabled;
-    _Bool builtInMicrophoneStereoAudioCaptureEnabled;
+    long long audioCaptureMode;
     _Bool visionDataDeliveryEnabled;
     _Bool cameraCalibrationDataDeliveryEnabled;
     float simulatedAperture;
@@ -24,11 +24,12 @@ __attribute__((visibility("hidden")))
     float maxGainOverride;
     _Bool centerStageAllowed;
     _Bool backgroundBlurAllowed;
+    _Bool studioLightingAllowed;
+    _Bool reactionEffectsAllowed;
     _Bool ready;
     float portraitLightingEffectStrength;
     AVWeakReference *weakReference;
     id <AVCallbackCancellation> deviceOpenCallbackInvoker;
-    _Bool studioLightingAllowed;
 }
 
 - (void)dealloc;

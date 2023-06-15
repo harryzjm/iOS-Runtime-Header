@@ -62,14 +62,17 @@
 - (void)requestDidComplete;
 - (void)requestDidParseNodeFailure:(id)arg1;
 - (id)requestDidParseProtobufObject:(id)arg1;
-- (void)addSignatureForRequestOperation:(id)arg1;
+- (id)returnVerificationKeyAndSignatureForRequestOperation:(id)arg1 dataToBeSigned:(id)arg2 error:(id *)arg3;
 - (id)generateMergeableDeltaSaveOperationsForRecord:(id)arg1 error:(id *)arg2;
 - (id)generateRequestOperations;
+- (_Bool)requiresCKAnonymousSignature;
 - (_Bool)handlesAnonymousCKUserIDPropagation;
 - (int)isolationLevel;
 - (id)requestOperationClasses;
 - (id)zoneIDsToLock;
 - (_Bool)allowsAnonymousAccount;
+- (void)fillOutRequestProperties:(id)arg1;
+- (id)equivalencyProperties;
 - (id)initWithOperation:(id)arg1 recordsToSave:(id)arg2 recordIDsToDelete:(id)arg3 recordIDsToDeleteToSigningPCSIdentity:(id)arg4 oplock:(_Bool)arg5 sendAllFields:(_Bool)arg6 clientChangeTokenData:(id)arg7 requestedFieldsByRecordId:(id)arg8;
 
 @end

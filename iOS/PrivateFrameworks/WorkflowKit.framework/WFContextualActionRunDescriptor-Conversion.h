@@ -7,6 +7,6 @@
 #import <VoiceShortcutClient/WFContextualActionRunDescriptor.h>
 
 @interface WFContextualActionRunDescriptor (Conversion)
-- (void)createWorkflowWithEnvironment:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)createWorkflowWithEnvironment:(long long)arg1 database:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 @end
 

@@ -16,7 +16,6 @@ __attribute__((visibility("hidden")))
     UILabel *_internalPhishingWarningLabel;
 }
 
-+ (id)reportSpamButton;
 + (id)internalPhishingWarning;
 + (id)internalPhishingWarningLabel;
 - (void).cxx_destruct;
@@ -27,7 +26,9 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSAttributedString *attributedButtonText;
 - (void)clearFilters;
 - (void)addFilter:(id)arg1;
+- (struct CGSize)layoutSizeForWidth:(double)arg1 applyLayout:(_Bool)arg2;
 - (void)layoutSubviewsForAlignmentContents;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)configureForChatItem:(id)arg1 context:(id)arg2;
 

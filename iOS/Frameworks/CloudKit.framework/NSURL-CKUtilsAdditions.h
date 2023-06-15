@@ -7,6 +7,7 @@
 #import <Foundation/NSURL.h>
 
 @interface NSURL (CKUtilsAdditions)
+- (_Bool)CKMarkFilePurgeable:(id *)arg1;
 - (id)CKSanitizedPath;
 - (id)CKPathAfterSlug;
 - (id)CKURLThroughSlug;

@@ -9,7 +9,6 @@
 @class CaptureMTLComputePipelineState, CaptureMTLDevice, CaptureMTLFunction, CaptureMTLRenderPipelineState, NSString;
 @protocol MTLDevice, MTLFunctionHandle;
 
-__attribute__((visibility("hidden")))
 @interface CaptureMTLFunctionHandle : NSObject
 {
     id <MTLFunctionHandle> _baseObject;

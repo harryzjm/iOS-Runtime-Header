@@ -28,6 +28,8 @@ __attribute__((visibility("hidden")))
     _Bool activeHapticChannelIndexWasSet;
     float hapticVolume;
     _Bool hapticVolumeWasSet;
+    _Bool mutesHaptics;
+    _Bool mutesHapticsWasSet;
     NSMutableArray *sampleBufferOutputs;
     NSObject<OS_dispatch_queue> *ivarAccessQueue;
 }

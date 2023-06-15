@@ -6,24 +6,34 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, NSString;
+@class NSArray, NSDate, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
 @interface VUISportsScoreboardViewModel : NSObject
 {
+    NSDictionary *_dictionaryRepresentation;
     _Bool _showScoreboard;
     _Bool _configureScoreUpdates;
+    _Bool _isVersus;
     NSString *_canonicalId;
     NSDictionary *_leagueContext;
     NSArray *_scores;
+    NSDate *_lastUpdatedTime;
+    NSDictionary *_contentMetadata;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSDictionary *contentMetadata; // @synthesize contentMetadata=_contentMetadata;
+@property(readonly, nonatomic) NSDate *lastUpdatedTime; // @synthesize lastUpdatedTime=_lastUpdatedTime;
+@property(readonly, nonatomic) _Bool isVersus; // @synthesize isVersus=_isVersus;
 @property(nonatomic) _Bool configureScoreUpdates; // @synthesize configureScoreUpdates=_configureScoreUpdates;
 @property(readonly, nonatomic) _Bool showScoreboard; // @synthesize showScoreboard=_showScoreboard;
 @property(readonly, nonatomic) NSArray *scores; // @synthesize scores=_scores;
 @property(readonly, nonatomic) NSDictionary *leagueContext; // @synthesize leagueContext=_leagueContext;
 @property(readonly, nonatomic) NSString *canonicalId; // @synthesize canonicalId=_canonicalId;
+- (_Bool)isEqual:(id)arg1;
+- (void)removeUnicodeFromScoreValuesIfNeeded;
+- (id)dictionaryRepresentation;
 - (id)jsContextDictionary;
 - (id)initWithDictionary:(id)arg1;
 

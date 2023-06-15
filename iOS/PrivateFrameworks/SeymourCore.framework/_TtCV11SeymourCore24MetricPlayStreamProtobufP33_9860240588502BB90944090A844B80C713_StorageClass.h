@@ -15,6 +15,7 @@
     MISSING_TYPE *_environment;
     MISSING_TYPE *_groupActivity;
     MISSING_TYPE *_remoteParticipantDeviceType;
+    MISSING_TYPE *_metadata;
 }
 
 @end

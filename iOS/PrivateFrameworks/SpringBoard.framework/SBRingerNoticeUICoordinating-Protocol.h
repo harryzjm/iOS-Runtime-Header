@@ -13,6 +13,6 @@
 - (void)buttonReleased;
 - (void)nudgeUp:(_Bool)arg1;
 - (void)setVolume:(float)arg1 animated:(_Bool)arg2 forKeyPress:(_Bool)arg3;
-- (void)presentForMuteSwitch:(_Bool)arg1;
+- (void)presentForMuteChange:(_Bool)arg1;
 @end
 

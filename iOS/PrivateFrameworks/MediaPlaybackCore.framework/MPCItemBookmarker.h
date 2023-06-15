@@ -6,32 +6,27 @@
 
 #import <objc/NSObject.h>
 
-@class MPCMediaFoundationTranslator;
-@protocol OS_dispatch_source;
+@class MPCMediaFoundationTranslator, MPCPlaybackEngine;
 
 __attribute__((visibility("hidden")))
 @interface MPCItemBookmarker : NSObject
 {
     MPCMediaFoundationTranslator *_translator;
-    NSObject<OS_dispatch_source> *_bookmarkingTimer;
+    MPCPlaybackEngine *_engine;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSObject<OS_dispatch_source> *bookmarkingTimer; // @synthesize bookmarkingTimer=_bookmarkingTimer;
+@property(nonatomic) __weak MPCPlaybackEngine *engine; // @synthesize engine=_engine;
 @property(retain, nonatomic) MPCMediaFoundationTranslator *translator; // @synthesize translator=_translator;
-- (void)_teardownBookmarkingTimer;
-- (void)_setupBookmarkingTimerForItem:(id)arg1;
 - (void)updateDurationSnapshotWithTime:(double)arg1 forItem:(id)arg2 rate:(float)arg3;
 - (void)playbackStateDidChangeFromState:(long long)arg1 toState:(long long)arg2 forItem:(id)arg3 time:(double)arg4 rate:(float)arg5;
 - (void)playbackRateDidChangeToRate:(float)arg1 forItem:(id)arg2 time:(double)arg3;
 - (void)playbackDidStopForItem:(id)arg1 time:(double)arg2;
 - (void)playbackDidStartForItem:(id)arg1 time:(double)arg2 rate:(float)arg3;
 - (void)itemDidPlayToEnd:(id)arg1 time:(double)arg2;
-- (void)itemDidResignCurrent:(id)arg1 time:(double)arg2;
 - (void)itemDidBecomeCurrent:(id)arg1 time:(double)arg2;
 - (void)currentItemWillChangeFromItem:(id)arg1 toItem:(id)arg2 time:(double)arg3;
-- (void)userDidSkipDuringPlaybackFromItem:(id)arg1 direction:(long long)arg2;
-- (id)initWithTranslator:(id)arg1;
+- (id)initWithPlaybackEngine:(id)arg1 translator:(id)arg2;
 
 @end
 

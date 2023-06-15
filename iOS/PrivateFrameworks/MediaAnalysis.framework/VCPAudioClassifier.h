@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     float _sampleRate;
     NSMutableArray *_detectors;
     NSMutableArray *_classifiers;
+    NSMutableArray *_classifiers300;
 }
 
 - (void).cxx_destruct;

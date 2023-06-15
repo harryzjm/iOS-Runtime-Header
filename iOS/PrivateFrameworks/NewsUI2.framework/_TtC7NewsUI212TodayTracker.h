@@ -27,6 +27,10 @@
     MISSING_TYPE *todayActivityRegistrationType;
     MISSING_TYPE *hasRegisteredUserActivity;
     MISSING_TYPE *headlineSeenQueue;
+    MISSING_TYPE *upsellManager;
+    MISSING_TYPE *puzzleHistoryService;
+    MISSING_TYPE *commandCenter;
+    MISSING_TYPE *gapOnscreenTimer;
 }
 
 @end

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UICollectionViewLayout.h>
+#import <UIKitCore/UICollectionViewLayout.h>
 
 @interface UICollectionViewLayout (PhotosUI)
 - (id)pu_layoutAttributesForElementClosestToPoint:(struct CGPoint)arg1 inRect:(struct CGRect)arg2 passingTest:(CDUnknownBlockType)arg3;

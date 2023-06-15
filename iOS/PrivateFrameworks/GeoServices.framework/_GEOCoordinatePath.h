@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
     struct vector<GEOLocationCoordinate3D, std::allocator<GEOLocationCoordinate3D>> _basicCoordinates;
     struct vector<zilch::ControlPoint, std::allocator<zilch::ControlPoint>> _zilchPoints;
+    unsigned long long _count;
     NSArray *_supportPoints;
     struct vector<double, std::allocator<double>> _pointLengths;
     unsigned long long _pathStartIndex;
@@ -22,20 +23,8 @@ __attribute__((visibility("hidden")))
 + (_Bool)supportsSecureCoding;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(nonatomic) double pathStartOffset; // @synthesize pathStartOffset=_pathStartOffset;
-@property(nonatomic) unsigned long long pathStartIndex; // @synthesize pathStartIndex=_pathStartIndex;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (void)calibratePointLengths:(void *)arg1 startIndex:(unsigned long long)arg2 endIndex:(unsigned long long)arg3 rangeLength:(double)arg4;
-- (CDStruct_071ac149)coordinateAt:(unsigned long long)arg1;
-- (void)setPointLengths:(void *)arg1;
-- (void)setBasicCoordinates:(void *)arg1;
-- (void)setZilchPoints:(void *)arg1;
-@property(readonly, nonatomic) double *pointLengths;
-@property(readonly, nonatomic) double length;
-@property(readonly, nonatomic) unsigned long long count;
-@property(readonly, nonatomic) struct ControlPoint *zilchControlPoints;
-- (id)initWithGeoRoutingPathData:(id)arg1 pathStartIndex:(unsigned long long)arg2;
 
 @end
 

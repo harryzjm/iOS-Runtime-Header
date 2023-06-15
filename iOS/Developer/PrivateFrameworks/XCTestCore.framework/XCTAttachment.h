@@ -55,7 +55,8 @@
 @property(copy) CDUnknownBlockType serializationBlock; // @synthesize serializationBlock=_serializationBlock;
 @property(copy) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
 @property(copy) NSString *name; // @synthesize name=_name;
-@property(readonly, copy) NSString *uniformTypeIdentifier; // @synthesize uniformTypeIdentifier=_uniformTypeIdentifier;
+@property(copy) NSString *uniformTypeIdentifier; // @synthesize uniformTypeIdentifier=_uniformTypeIdentifier;
+- (void)copyMetadataFromAttachmentFuture:(id)arg1;
 - (id)debugQuickLookObject;
 - (void)makeSystem;
 - (id)debugDescription;

@@ -12,13 +12,18 @@
 @protocol PXVKImageAnalysisInteractionDelegate <NSObject>
 
 @optional
+- (void)imageAnalysisInteractionDidCompleteSubjectAnalysis:(id <PXVKImageAnalysisInteraction>)arg1;
+- (void)imageAnalysisInteractionDidBeginSubjectAnalysis:(id <PXVKImageAnalysisInteraction>)arg1;
+- (_Bool)imageAnalysisInteraction:(id <PXVKImageAnalysisInteraction>)arg1 shouldShowLookupForItemFromCallout:(id)arg2;
 - (void)imageAnalysisInteraction:(id <PXVKImageAnalysisInteraction>)arg1 livePhotoShouldPlay:(_Bool)arg2;
 - (_Bool)isShowingLivePhotoForImageAnalysisInteraction:(id <PXVKImageAnalysisInteraction>)arg1;
+- (void)imageAnalysisInteraction:(id <PXVKImageAnalysisInteraction>)arg1 liveTextButtonDidChangeToVisible:(_Bool)arg2;
 - (_Bool)imageAnalysisInteraction:(id <PXVKImageAnalysisInteraction>)arg1 shouldBeginAtPoint:(struct CGPoint)arg2 forAnalysisType:(unsigned long long)arg3;
 - (UIImage *)contentImageForImageAnalysisInteraction:(id <PXVKImageAnalysisInteraction>)arg1;
 - (UIView *)contentViewForImageAnalysisInteraction:(id <PXVKImageAnalysisInteraction>)arg1;
 - (void)imageAnalysisInteractionDidDismissVisualSearchController:(id <PXVKImageAnalysisInteraction>)arg1;
 - (void)imageAnalysisInteraction:(id <PXVKImageAnalysisInteraction>)arg1 didTapVisualSearchIndicatorWithNormalizedBoundingBox:(struct CGRect)arg2;
 - (UIViewController *)presentingViewControllerForImageAnalysisInteraction:(id <PXVKImageAnalysisInteraction>)arg1;
+- (struct CGRect)contentsRectForImageAnalysisInteraction:(id <PXVKImageAnalysisInteraction>)arg1;
 @end
 

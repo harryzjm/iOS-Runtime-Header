@@ -12,6 +12,7 @@
 @property(readonly, nonatomic) long long item;
 @property(readonly, nonatomic) long long row;
 @property(readonly, nonatomic) long long section;
+- (void)ui_getSectionIndex:(out long long *)arg1 itemIndex:(out long long *)arg2;
 - (id)_ui_shortDescription;
 @end
 

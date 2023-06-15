@@ -21,8 +21,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) void *insertStrings; // @synthesize insertStrings=_insertStrings;
 @property(readonly, nonatomic) void *deleteRanges; // @synthesize deleteRanges=_deleteRanges;
 - (id)description;
-- (void)_applyToString:(id)arg1;
-- (void)applyToString:(id)arg1;
+- (_Bool)_applyToString:(id)arg1;
+- (_Bool)applyToString:(id)arg1;
 - (id)renamedWith:(id)arg1;
 - (void)updateInsertTopoIDRange:(struct TopoIDRange)arg1 toNewRangeID:(struct TopoIDRange)arg2;
 - (void)retainTemporaryIDs;

@@ -9,6 +9,8 @@
 @class CLLocation, NSArray, NSData, NSMapTable, NSNumber, NSSet, NSString, PKAddShareablePassConfiguration, PKAppleAccountChange, PKContact, PKDisplayProfile, PKDisplayTraitCollection, PKFieldProperties, PKFileDescriptorXPCContainer, PKGroupsControllerSnapshotFetchOptions, PKPassesXPCContainer, PKPaymentSetupRequest;
 
 @protocol PDPassLibraryExtendedExportedInterface <PDPassLibraryInAppExportedInterface>
+- (void)presentIssuerBindingFlowForIssuerData:(NSData *)arg1 signature:(NSData *)arg2 orientation:(NSNumber *)arg3;
+- (void)usingSynchronousProxy:(_Bool)arg1 requestIssuerBoundPassesWihBindingWithData:(NSData *)arg2 automaticallyProvision:(_Bool)arg3 withCompletion:(void (^)(NSArray *, NSError *))arg4;
 - (void)paymentPassWithAssociatedAccountIdentifier:(NSString *)arg1 completion:(void (^)(PKPaymentPass *))arg2;
 - (void)presentPaymentSetupRequest:(PKPaymentSetupRequest *)arg1 orientation:(NSNumber *)arg2 completion:(void (^)(_Bool))arg3;
 - (void)getDataForBundleResources:(NSSet *)arg1 objectUniqueIdentifier:(NSString *)arg2 handler:(void (^)(NSDictionary *))arg3;
@@ -17,6 +19,7 @@
 - (void)spotlightResetWithCompletion:(void (^)(void))arg1;
 - (void)spotlightReindexAllContentWithAcknowledgement:(void (^)(void))arg1;
 - (void)hasSecureElementPassesOfType:(long long)arg1 handler:(void (^)(_Bool))arg2;
+- (void)passbookHasBeenDeletedWithHandler:(void (^)(_Bool))arg1;
 - (void)isPassbookVisibleWithHandler:(void (^)(_Bool))arg1;
 - (void)isRemovingPassesOfType:(unsigned long long)arg1 handler:(void (^)(_Bool))arg2;
 - (void)enabledValueAddedServicePassesWithHandler:(void (^)(NSArray *))arg1;
@@ -66,7 +69,7 @@
 - (void)usingSynchronousProxy:(_Bool)arg1 generateSEEncryptionCertificateForSubCredentialId:(NSString *)arg2 completion:(void (^)(NSData *, NSError *))arg3;
 - (void)usingSynchronousProxy:(_Bool)arg1 signWithFidoKeyForRelyingParty:(NSString *)arg2 relyingPartyAccountHash:(NSString *)arg3 fidoKeyHash:(NSData *)arg4 challenge:(NSData *)arg5 publicKeyIdentifier:(NSString *)arg6 externalizedAuth:(NSData *)arg7 completion:(void (^)(NSData *, NSError *))arg8;
 - (void)usingSynchronousProxy:(_Bool)arg1 checkFidoKeyPresenceForRelyingParty:(NSString *)arg2 relyingPartyAccountHash:(NSString *)arg3 fidoKeyHash:(NSData *)arg4 completion:(void (^)(_Bool))arg5;
-- (void)usingSynchronousProxy:(_Bool)arg1 createFidoKeyForRelyingParty:(NSString *)arg2 relyingPartyAccountHash:(NSString *)arg3 challenge:(NSData *)arg4 externalizedAuth:(NSData *)arg5 completion:(void (^)(NSData *, NSData *, NSError *))arg6;
+- (void)usingSynchronousProxy:(_Bool)arg1 createFidoKeyForRelyingParty:(NSString *)arg2 relyingPartyAccountHash:(NSString *)arg3 challenge:(NSData *)arg4 externalizedAuth:(NSData *)arg5 completion:(void (^)(NSData *, NSData *, NSData *, NSError *))arg6;
 - (void)usingSynchronousProxy:(_Bool)arg1 availableHomeKeyPassesWithCompletionHandler:(void (^)(NSArray *, NSError *))arg2;
 - (void)usingSynchronousProxy:(_Bool)arg1 provisionHomeKeyPassForSerialNumbers:(NSArray *)arg2 completionHandler:(void (^)(NSArray *, NSError *))arg3;
 - (void)usingSynchronousProxy:(_Bool)arg1 enableExpressForPassWithPassTypeIdentifier:(NSString *)arg2 serialNumber:(NSString *)arg3 completionHandler:(void (^)(_Bool))arg4;

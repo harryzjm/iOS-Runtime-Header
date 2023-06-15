@@ -4,9 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <PhotosUICore/NSObject-Protocol.h>
+
 @class PXGLayout;
 
-@protocol PXGSublayoutFaultingDelegate
+@protocol PXGSublayoutFaultingDelegate <NSObject>
 - (_Bool)layout:(PXGLayout *)arg1 shouldPreventFaultOutOfSublayout:(PXGLayout *)arg2;
+
+@optional
+- (_Bool)layout:(PXGLayout *)arg1 shouldFaultInSublayoutIfOutsideVisibleRect:(long long)arg2;
 @end
 

@@ -49,7 +49,10 @@ struct _NSRange {
 #pragma mark Typedef'd Structures
 
 typedef struct {
-    struct CGPoint _field1;
+    union {
+        struct CGPoint _field1;
+        struct CGPoint _field2;
+    } _field1;
     double _field2;
     double _field3;
     double _field4;
@@ -61,5 +64,5 @@ typedef struct {
     long long _field10;
     double _field11;
     _Bool _field12;
-} CDStruct_fedef440;
+} CDStruct_f37d75ce;
 

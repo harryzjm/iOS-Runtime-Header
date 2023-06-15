@@ -6,8 +6,8 @@
 
 #import <MobileTimer/NSObject-Protocol.h>
 
-@class MTTimer, NSArray, NSDate, NSString;
-@protocol MTSource, MTTimerObserver;
+@class MTTimer, MTTimerDuration, NSArray, NSDate, NSString;
+@protocol MTDurationUpdateDelegate, MTSource, MTTimerObserver;
 
 @protocol MTTimerStorage <NSObject>
 @property(readonly, nonatomic) NSDate *lastModifiedDate;
@@ -21,5 +21,14 @@
 - (void)addTimer:(MTTimer *)arg1 withCompletion:(void (^)(NSError *))arg2 source:(id <MTSource>)arg3;
 - (void)getTimersWithCompletion:(void (^)(NSArray *, MTTimer *, NSError *))arg1;
 - (void)registerObserver:(id <MTTimerObserver>)arg1;
+
+@optional
+- (void)saveLatestDuration:(MTTimerDuration *)arg1 withCompletion:(void (^)(NSError *))arg2 source:(id <MTSource>)arg3;
+- (void)removeFavoriteDuration:(MTTimerDuration *)arg1 withCompletion:(void (^)(NSError *))arg2 source:(id <MTSource>)arg3;
+- (void)addFavoriteDuration:(MTTimerDuration *)arg1 withCompletion:(void (^)(NSError *))arg2 source:(id <MTSource>)arg3;
+- (void)removeRecentDuration:(MTTimerDuration *)arg1 withCompletion:(void (^)(NSError *))arg2 source:(id <MTSource>)arg3;
+- (void)addRecentDuration:(MTTimerDuration *)arg1 withCompletion:(void (^)(NSError *))arg2 source:(id <MTSource>)arg3;
+- (void)getDurationsWithCompletion:(void (^)(NSArray *, NSArray *, NSArray *, MTTimerDuration *, NSError *))arg1;
+- (void)setDurationUpdateDelegate:(id <MTDurationUpdateDelegate>)arg1;
 @end
 

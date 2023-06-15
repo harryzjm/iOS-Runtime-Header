@@ -6,7 +6,7 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-@class GEOPDETAFilter, GEOPDRecentRouteInfo, GEOPDResultRefinementQuery, GEOPDSSearchEvChargingParameters, GEOPDSearchOriginationInfo, GEOPDViewportInfo, NSData, NSString, PBDataReader, PBUnknownFields;
+@class GEOPDETAFilter, GEOPDRecentRouteInfo, GEOPDResultRefinementQuery, GEOPDSSearchEvChargingParameters, GEOPDSearchOriginationInfo, GEOPDViewportInfo, NSData, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDCategorySearchParameters : PBCodable
@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
     GEOPDViewportInfo *_previousSearchViewport;
     GEOPDRecentRouteInfo *_recentRouteInfo;
     GEOPDResultRefinementQuery *_resultRefinementQuery;
+    NSMutableArray *_searchEnrichmentRevisionMetadatas;
     GEOPDSearchOriginationInfo *_searchOriginationInfo;
     NSData *_suggestionEntryMetadata;
     GEOPDViewportInfo *_viewportInfo;
@@ -61,6 +62,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_previousSearchViewport:1;
         unsigned int read_recentRouteInfo:1;
         unsigned int read_resultRefinementQuery:1;
+        unsigned int read_searchEnrichmentRevisionMetadatas:1;
         unsigned int read_searchOriginationInfo:1;
         unsigned int read_suggestionEntryMetadata:1;
         unsigned int read_viewportInfo:1;

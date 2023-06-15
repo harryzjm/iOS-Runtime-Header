@@ -8,10 +8,13 @@
 
 @interface _TtC11WeatherMaps15OverlayRenderer
 {
-    MISSING_TYPE *signposter;
     MISSING_TYPE *captureScope;
     MISSING_TYPE *overlayDescriptor;
+    MISSING_TYPE *signposter;
     MISSING_TYPE *viewportManager;
+    MISSING_TYPE *keyedTextures;
+    MISSING_TYPE *lastAnimationFrameIndex;
+    MISSING_TYPE *delegate;
 }
 
 @end

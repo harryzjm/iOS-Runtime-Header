@@ -15,5 +15,6 @@
 - (void)presentDrawerViewController:(UIViewController *)arg1 inPopover:(_Bool)arg2 withSourceRect:(struct CGRect)arg3;
 - (void)expandDrawer;
 - (void)collapseDrawer;
+- (double)actionCanvasWidth;
 @end
 

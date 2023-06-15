@@ -14,11 +14,12 @@
 @property(nonatomic) _Bool shouldIgnoreTextInputChanges;
 @property(readonly, nonatomic) TIKeyboardState *keyboardState;
 - (void)textSuggestionDidChange:(id <UITextInput>)arg1;
-- (void)setTextSelectionControllerFromDelegate;
 - (void)didChangeForwardingInputDelegate:(UIResponder<UIKeyInput> *)arg1;
 - (void)clearInputForMarkedText;
 - (void)syncDocumentStateToInputDelegate;
 - (void)setDocumentState:(TIDocumentState *)arg1;
+- (TIDocumentState *)documentState;
+- (void)updateKeyboardStateForReplacingText:(NSString *)arg1 withText:(NSString *)arg2;
 - (void)updateKeyboardStateForDeletion;
 - (void)updateTextInputKeyboardSource;
 - (void)updateKeyboardStateForInsertion:(NSString *)arg1;

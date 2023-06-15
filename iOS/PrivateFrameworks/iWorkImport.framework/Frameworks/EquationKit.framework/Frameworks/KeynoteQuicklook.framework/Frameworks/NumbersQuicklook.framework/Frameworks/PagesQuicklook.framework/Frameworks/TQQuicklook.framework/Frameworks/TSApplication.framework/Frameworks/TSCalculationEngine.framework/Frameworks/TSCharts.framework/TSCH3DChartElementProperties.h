@@ -22,9 +22,9 @@
 - (void)applyChartElementsTransform:(void *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
-- (void)addTexcoordsToProcessor:(id)arg1 series:(id)arg2 index:(const void *)arg3;
-- (_Bool)applyCombinedTransform:(void *)arg1 series:(id)arg2 index:(const void *)arg3 propertyAccessor:(id)arg4;
-- (_Bool)applyElementTransformToProcessor:(id)arg1 series:(id)arg2 index:(const void *)arg3 propertyAccessor:(id)arg4;
+- (void)addTexcoordsToProcessor:(id)arg1 series:(id)arg2 index:(void *)arg3;
+- (_Bool)applyCombinedTransform:(void *)arg1 series:(id)arg2 index:(void *)arg3 propertyAccessor:(id)arg4;
+- (_Bool)applyElementTransformToProcessor:(id)arg1 series:(id)arg2 index:(void *)arg3 propertyAccessor:(id)arg4;
 - (void)applyChartElementsTransformToProcessor:(id)arg1;
 - (id)getPropertiesOfType:(Class)arg1;
 

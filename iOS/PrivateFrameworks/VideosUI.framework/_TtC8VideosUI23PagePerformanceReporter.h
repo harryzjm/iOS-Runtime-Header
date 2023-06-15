@@ -10,17 +10,13 @@
 
 @interface _TtC8VideosUI23PagePerformanceReporter : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *baseAbsoluteTime;
-    MISSING_TYPE *baseTimeval;
-    MISSING_TYPE *baseTimevalInMicros;
+    MISSING_TYPE *metricsTime;
     MISSING_TYPE *perfMetrics;
     MISSING_TYPE *metricsFlushed;
-    MISSING_TYPE *imageProxyList;
     MISSING_TYPE *metricsWithEventType;
+    MISSING_TYPE *imagePerfRecorder;
+    MISSING_TYPE *pageRenderMetrics;
 }
-
-- (void)onImageDidLoad:(id)arg1;
-- (void)onImageWillLoad:(id)arg1;
 
 @end
 

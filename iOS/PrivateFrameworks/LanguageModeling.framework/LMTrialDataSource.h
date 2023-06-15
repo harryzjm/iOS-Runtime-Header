@@ -13,7 +13,7 @@
 }
 
 @property(readonly) NSNotificationCenter *notificationCenter;
-- (optional_a0dbb3b7)loadParametersWithLocaleIdentifier:(const void *)arg1;
+- (optional_84d43732)loadParametersWithLocaleIdentifier:(const void *)arg1;
 - (void)startWithParametersUpdateCallback:(function_e94c552d)arg1;
 
 // Remaining properties

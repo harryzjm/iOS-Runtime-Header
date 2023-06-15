@@ -18,7 +18,9 @@
     MISSING_TYPE *_siriInstruction;
     MISSING_TYPE *_alternateSiriInstructions;
     MISSING_TYPE *_responseMetadata;
+    MISSING_TYPE *_responseContext;
     MISSING_TYPE *_conversationContextBytes;
+    MISSING_TYPE *_serviceDebug;
     MISSING_TYPE *_rewrittenUtteranceIdx;
 }
 

@@ -14,6 +14,9 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)sharedConstants;
+- (long long)defaultFooterTextRenderingMode;
+- (long long)defaultAccessoryRenderingModeForAccessorySystemType:(long long)arg1;
+- (long long)defaultSecondaryTextRenderingMode;
 - (_Bool)shouldAnimatePropertyInContentViewWithKey:(id)arg1;
 - (id)defaultAccessoryBackgroundColorForAccessorySystemType:(long long)arg1 header:(_Bool)arg2 sidebarStyle:(_Bool)arg3 cellConfigurationState:(id)arg4 traitCollection:(id)arg5;
 - (id)defaultAccessoryTintColorForAccessorySystemType:(long long)arg1 header:(_Bool)arg2 sidebarStyle:(_Bool)arg3 cellConfigurationState:(id)arg4 traitCollection:(id)arg5 inheritedTintColor:(id)arg6;
@@ -28,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (id)defaultReorderControlImageForTraitCollection:(id)arg1 withAccessoryBaseColor:(id)arg2;
 - (struct CGSize)defaultReorderControlSizeForCell:(id)arg1 withAccessoryBaseColor:(id)arg2;
 - (double)defaultEditAndUpdateAnimationDuration;
+- (id)defaultDetailAccessoryImage;
 - (id)defaultMultiSelectSelectedImageForCellStyle:(long long)arg1 traitCollection:(id)arg2 checkmarkColor:(id)arg3 backgroundColor:(id)arg4;
 - (id)defaultMultiSelectNotSelectedImageForCellStyle:(long long)arg1 traitCollection:(id)arg2 accessoryBaseColor:(id)arg3;
 - (id)defaultInsertImageWithTintColor:(id)arg1 backgroundColor:(id)arg2;
@@ -47,7 +51,7 @@ __attribute__((visibility("hidden")))
 - (id)_symbolImageNamed:(id)arg1 withTextStyle:(id)arg2 scale:(long long)arg3;
 - (id)_accessoryTintColorForAccessoryBaseColor:(id)arg1;
 - (id)_defaultAccessoryTintColor;
-- (struct _UITableConstantsBackgroundProperties)defaultHeaderFooterBackgroundPropertiesForTableViewStyle:(long long)arg1 tableBackgroundColor:(id)arg2 floating:(_Bool)arg3;
+- (struct _UITableConstantsBackgroundProperties)defaultHeaderFooterBackgroundPropertiesForTableViewStyle:(long long)arg1 cellConfigurationState:(id)arg2 traitCollection:(id)arg3 floating:(_Bool)arg4;
 - (long long)defaultHeaderFooterPinningBehaviorForTableStyle:(long long)arg1;
 - (_Bool)useChromelessSectionHeadersAndFootersForTableStyle:(long long)arg1;
 - (id)defaultFooterTextColorForTableViewStyle:(long long)arg1 focused:(_Bool)arg2;
@@ -82,11 +86,14 @@ __attribute__((visibility("hidden")))
 - (double)_defaultMarginWidthForTableView:(id)arg1 canUseLayoutMargins:(_Bool)arg2;
 - (double)defaultPaddingBetweenHeaderAndRows;
 - (double)defaultPaddingBetweenRows;
+- (double)defaultPaddingBetweenRowsForTableStyle:(long long)arg1;
+- (double)defaultPaddingAboveFirstSectionWithoutHeaderTableStyle:(long long)arg1;
 - (double)defaultSidebarPaddingAboveSectionHeadersWithFallbackTableStyle:(long long)arg1;
 - (double)defaultPaddingAboveSectionHeadersForTableStyle:(long long)arg1;
+- (double)defaultPaddingAboveFirstSectionHeaderForTableStyle:(long long)arg1;
 - (double)defaultIndentationWidthForSidebarStyle:(_Bool)arg1;
 - (double)interspaceBetweenInnerAccessoryIdentifier:(id)arg1 outerAccessoryIdentifier:(id)arg2 forCell:(id)arg3 trailingAccessoryGroup:(_Bool)arg4;
-- (double)defaultCellCornerRadius;
+- (double)defaultCellCornerRadiusForTableViewStyle:(long long)arg1 isSidebarStyle:(_Bool)arg2 isHeaderFooter:(_Bool)arg3 traitCollection:(id)arg4;
 - (double)defaultDisclosureLayoutWidthForView:(id)arg1;
 - (double)defaultImageViewSymbolImageLayoutHeightForTraitCollection:(id)arg1;
 - (double)defaultImageViewSymbolImageAndAccessoryLayoutWidthForSidebar:(_Bool)arg1 traitCollection:(id)arg2;
@@ -98,7 +105,7 @@ __attribute__((visibility("hidden")))
 - (double)defaultContentEditPaddingForCell:(id)arg1 inTableView:(id)arg2;
 - (_Bool)imageViewOffsetByLayoutMarginsForCell:(id)arg1 inTableView:(id)arg2;
 - (struct UIEdgeInsets)defaultHeaderFooterLayoutMarginsForTableViewStyle:(long long)arg1 isHeader:(_Bool)arg2 isFirstSection:(_Bool)arg3;
-- (struct UIEdgeInsets)defaultCellLayoutMarginsForStyle:(long long)arg1 textLabelFont:(id)arg2 rawLayoutMargins:(struct UIEdgeInsets)arg3;
+- (struct UIEdgeInsets)defaultCellLayoutMarginsForTableStyle:(long long)arg1 cellStyle:(long long)arg2 textLabelFont:(id)arg3 rawLayoutMargins:(struct UIEdgeInsets)arg4;
 - (struct UIEdgeInsets)defaultLayoutMarginsForCell:(id)arg1 inTableView:(id)arg2;
 - (double)minimumContentViewHeightForFont:(id)arg1 traitCollection:(id)arg2;
 - (double)defaultTextToSubtitlePaddingForCellStyle:(long long)arg1;
@@ -110,6 +117,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)defaultRowHeightDependsOnCellStyle;
 - (double)defaultRowHeightForTableView:(id)arg1;
 - (double)defaultRowHeightForTableView:(id)arg1 cellStyle:(long long)arg2;
+- (id)defaultSeparatorVisualEffectForTableViewStyle:(long long)arg1;
 - (long long)defaultSeparatorStyleForTableViewStyle:(long long)arg1;
 - (id)defaultMultiSelectBackgroundColorForCell:(id)arg1 inTableView:(id)arg2;
 - (struct _UITableConstantsBackgroundProperties)defaultSidebarHeaderBackgroundPropertiesWithState:(id)arg1 traitCollection:(id)arg2;

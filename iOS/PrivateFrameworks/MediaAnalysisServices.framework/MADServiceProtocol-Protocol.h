@@ -7,6 +7,8 @@
 @class NSSet, NSString, Protocol;
 
 @protocol MADServiceProtocol
++ (NSSet *)allowedVideoResultClasses;
++ (NSSet *)allowedVideoRequestClasses;
 + (NSSet *)allowedClasses;
 + (Protocol *)serverProtocol;
 + (NSString *)serviceName;

@@ -6,7 +6,7 @@
 
 #import <HMFoundation/HMFObject.h>
 
-@class NSArray, NSData, NSString;
+@class NSData, NSString;
 
 __attribute__((visibility("hidden")))
 @interface HMBLocalZoneIDRow : HMFObject
@@ -22,17 +22,12 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSString *name; // @synthesize name=_name;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-@property(readonly) unsigned long long hash;
+- (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)attributeDescriptions;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-@property(readonly, nonatomic) NSArray *labels;
+- (id)labels;
 - (id)initWithName:(id)arg1 token:(id)arg2;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) Class superclass;
 
 @end
 

@@ -13,6 +13,17 @@
 + (id)safari_stringAsHexWithData:(id)arg1;
 + (void)safari_reverseEnumerateComponents:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 @property(readonly, nonatomic) _Bool safari_isSpecialFolderRecordName;
+- (id)safari_fixedStringByExpandingTildeInPathToUserHomeDirectory;
+- (id)safari_stringByDeletingTrailingSlash;
+- (id)safari_stringByDeletingStartingSlash;
+@property(readonly, nonatomic) NSString *safari_stringByRemovingWrappingParenthesis;
+@property(readonly, nonatomic) NSString *safari_stringByRemovingWrappingSingleQuotes;
+- (unsigned long long)safari_indexOfFirstAppearanceOfCharacter:(unsigned short)arg1;
+@property(readonly, nonatomic) _Bool safari_containsCJKCharacters;
+@property(readonly, copy, nonatomic) NSString *safari_urlStringSuppressingHTTPFamilySchemeAndWWWSubdomain;
+@property(readonly, copy, nonatomic) NSString *safari_urlStringForCompletionDeduplication;
+@property(readonly, nonatomic) _Bool safari_allowsLooserMatchingInSearch;
+@property(readonly, nonatomic) _Bool safari_isPrefixOfWwwDot;
 - (id)safari_bestURLForUserTypedString;
 @property(readonly, copy, nonatomic) NSString *safari_highLevelDomainForUserTypedStringWhenAddingPasswordInPasswordManager;
 @property(readonly, copy, nonatomic) NSString *safari_highLevelDomainForPasswordManager;
@@ -36,6 +47,7 @@
 - (id)safari_setOfAllSubstringsWithMinimumLength:(unsigned long long)arg1;
 - (_Bool)safari_containsAllCharactersInString:(id)arg1;
 - (_Bool)safari_isVersionStringBetweenVersionString:(id)arg1 andVersionString:(id)arg2;
+- (_Bool)safari_isVersionStringGreaterThanOrEqualToVersionString:(id)arg1;
 - (_Bool)safari_isVersionStringGreaterThanVersionString:(id)arg1;
 @property(readonly, copy, nonatomic) NSString *safari_userVisibleSafariBundleVersionFromFullVersion;
 @property(readonly, copy, nonatomic) NSString *safari_stringByNormalizingVersionString;
@@ -63,6 +75,7 @@
 @property(readonly, copy, nonatomic) NSString *safari_filenameByFixingIllegalCharacters;
 @property(readonly, nonatomic) _Bool safari_containsInteriorWhitespace;
 @property(readonly, copy, nonatomic) NSString *safari_stringByTrimmingWhitespace;
+@property(readonly, copy, nonatomic) NSString *safari_effectiveTopLevelDomainForHost;
 - (id)safari_topLevelDomainUsingCFFromComponents:(id)arg1;
 @end
 

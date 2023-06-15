@@ -6,10 +6,12 @@
 
 #import <VoiceShortcutClient/WFContextualAction.h>
 
+@class WFContextualActionContext;
+
 @interface WFContextualAction (WorkflowKit)
 - (void)getInputWithCompletionHandler:(void (^)(WFContentCollection *, NSError *))arg1;
 @property(nonatomic, readonly) _Bool selfPopulatesInput;
-- (void)_getActionRepresentationTakingInput:(_Bool)arg1 completionHandler:(void (^)(WFAction *, NSError *))arg2;
-- (void)getActionRepresentationTakingInput:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_getActionRepresentationTakingInput:(_Bool)arg1 context:(WFContextualActionContext *)arg2 completionHandler:(void (^)(WFAction *, NSError *))arg3;
+- (void)getActionRepresentationTakingInput:(_Bool)arg1 context:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 @end
 

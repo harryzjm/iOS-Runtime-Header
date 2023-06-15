@@ -20,6 +20,8 @@
 + (id)tu_predicateForConversationLinkDescriptorsWithInvitedHandle:(id)arg1;
 + (id)tu_predicateForConversationLinkDescriptorsWithGroupUUID:(id)arg1;
 + (id)tu_predicateForConversationLinkDescriptorsWithExpirationDateAfter:(id)arg1;
++ (id)tu_predicateForConversationLinkDescriptorsIsDeleted:(_Bool)arg1;
++ (id)tu_predicateForConversationLinkDescriptorsWithDeletionDate:(id)arg1;
 + (id)tu_predicateForConversationLinkDescriptorsWithExpirationDate:(id)arg1;
 + (id)tu_predicateForConversationLinkDescriptorsWithCreationDate:(id)arg1;
 + (id)tu_predicateForConversationLinkDescriptorsWithActivated:(_Bool)arg1;

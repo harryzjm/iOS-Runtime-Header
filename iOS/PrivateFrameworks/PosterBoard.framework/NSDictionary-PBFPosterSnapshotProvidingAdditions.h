@@ -9,8 +9,11 @@
 @class NSString;
 
 @interface NSDictionary (PBFPosterSnapshotProvidingAdditions)
+- (void)purgeSnapshotCacheForType:(long long)arg1;
+- (void)cancelRequests:(id)arg1 reason:(id)arg2;
 - (void)prewarmSnapshotsForRequests:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchPosterSnapshotForRequest:(id)arg1 definition:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)purgeSnapshotsForRequest:(id)arg1;
 - (id)posterSnapshotForRequest:(id)arg1 definition:(id)arg2 error:(out id *)arg3;
 
 // Remaining properties

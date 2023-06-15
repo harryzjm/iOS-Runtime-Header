@@ -6,12 +6,13 @@
 
 #import <WebKit/NSObject-Protocol.h>
 
-@class NSString, WKWebView, _WKInspectorExtension;
+@class NSString, NSURL, WKWebView, _WKInspectorExtension;
 
 @protocol _WKInspectorExtensionHost <NSObject>
 
 @optional
 @property(readonly, nonatomic) WKWebView *extensionHostWebView;
+- (void)navigateExtensionTabWithIdentifier:(NSString *)arg1 toURL:(NSURL *)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)showExtensionTabWithIdentifier:(NSString *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)unregisterExtension:(_WKInspectorExtension *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)registerExtensionWithID:(NSString *)arg1 extensionBundleIdentifier:(NSString *)arg2 displayName:(NSString *)arg3 completionHandler:(void (^)(NSError *, _WKInspectorExtension *))arg4;

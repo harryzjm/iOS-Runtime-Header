@@ -14,6 +14,7 @@
 - (void)applyKeyAsset:(id <PXDisplayAsset>)arg1;
 - (void)applyManuallyRemovedAssets:(NSSet *)arg1;
 - (void)applyManuallyCuratedAssets:(id <PXDisplayAssetFetchResult>)arg1;
+- (void)applyCustomUserAssets:(id <PXDisplayAssetFetchResult>)arg1;
 - (void)applyTargetOverallDurationInfo:(CDStruct_9ee4859c)arg1;
 @end
 

@@ -16,7 +16,6 @@ __attribute__((visibility("hidden")))
     _Bool _familyShareable;
     NSArray *_downloadContentLengths;
     SKProductDiscount *_introductoryPrice;
-    NSString *_localeIdentifier;
     NSString *_localizedDescription;
     NSString *_localizedTitle;
     NSDecimalNumber *_price;

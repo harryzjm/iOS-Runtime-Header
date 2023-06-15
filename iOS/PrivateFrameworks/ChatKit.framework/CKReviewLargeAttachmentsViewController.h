@@ -4,15 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSString;
+@class NSArray, NSObject, NSString;
+@protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface CKReviewLargeAttachmentsViewController
 {
     NSArray *_attachments;
+    NSObject<OS_dispatch_queue> *_privateWorkQueue;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *privateWorkQueue; // @synthesize privateWorkQueue=_privateWorkQueue;
 @property(retain, nonatomic) NSArray *attachments; // @synthesize attachments=_attachments;
 - (id)_previewItem;
 - (void)_populateAttachmentData;
@@ -26,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (Class)tableViewCellClass;
 - (id)tableViewCellReuseIdentifier;
 - (id)navigationBarTitle;
+- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

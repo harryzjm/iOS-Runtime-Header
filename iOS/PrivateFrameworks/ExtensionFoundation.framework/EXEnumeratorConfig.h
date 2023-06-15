@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
     NSURL *_extensionPointsConfigURL;
     NSDictionary *_legacyExtensionPointAllowList;
+    NSDictionary *_compatibilityExtensionPointAllowList;
     NSURL *_rootURL;
     NSURL *_xpcExtensionsCache;
     NSURL *_xpcExtensionPointsCache;
@@ -22,6 +23,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) NSURL *xpcExtensionPointsCache; // @synthesize xpcExtensionPointsCache=_xpcExtensionPointsCache;
 @property(readonly) NSURL *xpcExtensionsCache; // @synthesize xpcExtensionsCache=_xpcExtensionsCache;
 @property(readonly) NSURL *rootURL; // @synthesize rootURL=_rootURL;
+@property(readonly) NSDictionary *compatibilityExtensionPointAllowList; // @synthesize compatibilityExtensionPointAllowList=_compatibilityExtensionPointAllowList;
 @property(readonly) NSDictionary *legacyExtensionPointAllowList; // @synthesize legacyExtensionPointAllowList=_legacyExtensionPointAllowList;
 @property(readonly) NSURL *extensionPointsConfigURL; // @synthesize extensionPointsConfigURL=_extensionPointsConfigURL;
 - (id)init;

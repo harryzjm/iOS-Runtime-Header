@@ -9,8 +9,7 @@
 @class UIView;
 
 @protocol _UIContentViewContainerBackgroundViewProviding <NSObject>
-- (void)_setContainerBackgroundViewDidChangeHandler:(void (^)(void))arg1;
-@property(nonatomic, copy) CDUnknownBlockType _containerBackgroundViewDidChangeHandler;
-@property(nonatomic, readonly) UIView *_containerBackgroundView;
+@property(copy, nonatomic, setter=_setContainerBackgroundViewDidChangeHandler:) CDUnknownBlockType _containerBackgroundViewDidChangeHandler;
+@property(readonly, nonatomic) UIView *_containerBackgroundView;
 @end
 

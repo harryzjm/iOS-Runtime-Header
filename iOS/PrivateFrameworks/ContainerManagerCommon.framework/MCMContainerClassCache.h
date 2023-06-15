@@ -37,9 +37,10 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSUUID *lastCompletedDiskScanUUID; // @synthesize lastCompletedDiskScanUUID=_lastCompletedDiskScanUUID;
 @property(readonly, nonatomic) MCMContainerClassPath *containerClassPath; // @synthesize containerClassPath=_containerClassPath;
 @property(readonly, nonatomic) unsigned long long containerClass; // @synthesize containerClass=_containerClass;
+- (void)_handleUnrecoverableCorruptContainerPath:(id)arg1;
 - (id)_setEntry:(id)arg1 forIdentifier:(id)arg2 writeThrough:(_Bool)arg3;
 - (id)_concurrent_generateCacheEntryWithURL:(id)arg1 identifier:(id)arg2 containerPath:(id)arg3 schemaVersion:(id)arg4 uuid:(id)arg5 metadata:(id)arg6;
-- (id)_concurrent_slowGenerateCacheEntryWithFD:(int)arg1 URL:(id)arg2 containerPath:(id)arg3;
+- (id)_concurrent_slowGenerateCacheEntryWithFileHandle:(id)arg1 URL:(id)arg2 identifier:(id)arg3 uuid:(id)arg4 schemaVersion:(id)arg5 containerPath:(id)arg6;
 - (void)_concurrent_processCorruptEntry:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_concurrent_processURL:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_processCorruptEntries:(id)arg1 handler:(CDUnknownBlockType)arg2;

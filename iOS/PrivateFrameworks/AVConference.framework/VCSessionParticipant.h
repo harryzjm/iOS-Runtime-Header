@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class AVCBasebandCongestionDetector, AVCStatisticsCollector, NSArray, NSData, NSDictionary, NSMutableArray, NSMutableDictionary, NSObject, NSString, VCAudioIO, VCAudioRuleCollection, VCCallInfoBlob, VCNetworkFeedbackController, VCRedundancyControllerVideo, VCSecurityKeyManager, VCSessionMediaNegotiator, VCSessionParticipantOneToOneConfig;
+@class AVCBasebandCongestionDetector, AVCStatisticsCollector, NSArray, NSData, NSDictionary, NSMutableArray, NSMutableDictionary, NSObject, NSString, VCAudioIO, VCAudioRuleCollection, VCCallInfoBlob, VCMediaRecorder, VCNetworkFeedbackController, VCRedundancyControllerVideo, VCSecurityKeyManager, VCSessionMediaNegotiator, VCSessionParticipantOneToOneConfig;
 @protocol OS_dispatch_queue, VCSessionParticipantDelegate, VCSessionParticipantStreamDelegate;
 
 __attribute__((visibility("hidden")))
@@ -29,8 +29,6 @@ __attribute__((visibility("hidden")))
     VCAudioRuleCollection *_supportedAudioRules;
     int _deviceRole;
     long long _direction;
-    NSMutableArray *_audioStreams;
-    NSMutableArray *_videoStreams;
     AVCStatisticsCollector *_statisticsCollector;
     AVCBasebandCongestionDetector *_basebandCongestionDetector;
     unsigned int _cellularUniqueTag;
@@ -66,7 +64,8 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_videoStreamGroups;
     VCSecurityKeyManager *_securityKeyManager;
     VCNetworkFeedbackController *_networkFeedbackController;
-    _Bool _hasScreenStreams;
+    VCMediaRecorder *_mediaRecorder;
+    NSMutableDictionary *_mediaTypeMixingList;
 }
 
 + (id)mediaTypesFromStreamGroupID:(unsigned int)arg1;
@@ -79,7 +78,6 @@ __attribute__((visibility("hidden")))
 + (id)participantDataWithParticipantInfo:(id)arg1;
 + (id)participantInfoWithParticipantData:(id)arg1;
 @property(nonatomic, getter=isOneToOneModeEnabled) _Bool oneToOneModeEnabled; // @synthesize oneToOneModeEnabled=_oneToOneModeEnabled;
-@property(readonly, nonatomic) _Bool hasScreenStreams; // @synthesize hasScreenStreams=_hasScreenStreams;
 @property(retain, nonatomic) VCSessionParticipantOneToOneConfig *oneToOneConfig; // @synthesize oneToOneConfig=_oneToOneConfig;
 @property(nonatomic, getter=isScreenEnabled) _Bool screenEnabled; // @synthesize screenEnabled=_screenEnabled;
 @property(nonatomic) unsigned char presentationState; // @synthesize presentationState=_presentationState;
@@ -102,6 +100,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) union tagNTP creationTime; // @synthesize creationTime=_creationTime;
 @property(readonly, nonatomic) NSData *opaqueData; // @synthesize opaqueData=_opaqueData;
 @property(readonly, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
+- (void)streamGroup:(id)arg1 didChangeState:(unsigned int)arg2;
 - (void)stopVideoCaptureClient;
 - (void)streamGroup:(id)arg1 remoteMediaStalled:(_Bool)arg2 duration:(double)arg3;
 - (void)streamGroup:(id)arg1 didSuspendStreams:(_Bool)arg2;
@@ -128,7 +127,7 @@ __attribute__((visibility("hidden")))
 - (void)handleActiveConnectionChange:(id)arg1;
 - (void)pushAudioSamples:(struct opaqueVCAudioBufferList *)arg1;
 - (void)pullAudioSamples:(struct opaqueVCAudioBufferList *)arg1;
-- (void)didServerDie;
+- (void)serverDidDie;
 - (void)didResumeAudioIO:(id)arg1;
 - (void)didSuspendAudioIO:(id)arg1;
 - (void)didEncryptionKeyRollTimeout;
@@ -136,6 +135,8 @@ __attribute__((visibility("hidden")))
 - (_Bool)handleEncryptionInfoChange:(id)arg1;
 - (void)vcMediaStreamServerDidDie:(id)arg1;
 - (void)vcMediaStream:(id)arg1 requestKeyFrameGenerationWithStreamID:(unsigned short)arg2 firType:(int)arg3;
+@property(retain, nonatomic) VCMediaRecorder *mediaRecorder; // @synthesize mediaRecorder=_mediaRecorder;
+- (void)setStreamGroup:(unsigned int)arg1 syncSourceStreamGroupID:(unsigned int)arg2;
 - (void)swapScreenStreamGroupSyncSourceWithState:(unsigned int)arg1;
 - (_Bool)setupStreamGroupMediaSync;
 - (_Bool)setupMediaSyncForStreamGroup:(id)arg1;
@@ -144,14 +145,12 @@ __attribute__((visibility("hidden")))
 - (void)collectVideoChannelMetrics:(CDStruct_b671a7c4 *)arg1;
 - (void)createRedundancyControllers;
 - (unsigned int)streamGroupStateFromStreamGroupID:(unsigned int)arg1;
+- (void)setMediaType:(unsigned int)arg1 mixingWithMediaType:(unsigned int)arg2;
 - (void)setMediaState:(unsigned int)arg1 forMediaType:(unsigned int)arg2;
 - (_Bool)setAudioPosition:(float)arg1;
 - (_Bool)setVolume:(float)arg1;
 @property(nonatomic, getter=isMuted) _Bool muted; // @synthesize muted=_isMuted;
 @property(readonly, nonatomic) NSArray *allParticipantStreamInfo;
-@property(readonly, nonatomic) NSArray *allParticipantManagedStreamInfos;
-@property(readonly, nonatomic) _Bool hasVideoStreams;
-@property(readonly, nonatomic) NSArray *audioStreams;
 - (void)updateAudioSpectrumState;
 - (void)updateVideoPaused:(_Bool)arg1;
 - (id)updateMediaState:(unsigned int)arg1 forStreamGroups:(id)arg2;
@@ -174,13 +173,17 @@ __attribute__((visibility("hidden")))
 - (_Bool)updateMediaStatesWithConfig:(id)arg1;
 - (void)dealloc;
 - (id)initWithConfig:(id)arg1 delegate:(id)arg2;
+- (_Bool)configureMultiwayStreamGroups;
+- (_Bool)configureStreamInfosForMultiway:(id)arg1 streamGroupID:(unsigned int)arg2;
 - (_Bool)dispatchedConfigureWithDeviceRole:(int)arg1 negotiatedVideoEnabled:(_Bool)arg2 negotiatedScreenEnabled:(_Bool)arg3 operatingMode:(int)arg4;
 - (_Bool)configureWithDeviceRole:(int)arg1 negotiatedVideoEnabled:(_Bool)arg2 negotiatedScreenEnabled:(_Bool)arg3 operatingMode:(int)arg4;
 - (_Bool)configureOneToOneWithConfig:(id)arg1;
-- (_Bool)configureVideoWithDeviceRole:(int)arg1 streamInfoArray:(id)arg2;
-- (id)newAudioRateControlConfigWithMediaControlInfoVersion:(unsigned char)arg1 isOneToOne:(_Bool)arg2;
-- (id)newVideoRateControlConfigWithMediaControlInfoVersion:(unsigned char)arg1 enableMediaControlInfoGenerator:(_Bool)arg2 isOneToOne:(_Bool)arg3;
-- (_Bool)configureAudioWithDeviceRole:(int)arg1;
+- (_Bool)configureOneToOneVideoStreamsWithDeviceRole:(int)arg1 streamInfoArray:(id)arg2;
+- (_Bool)configureOneToOneVideoStreamsWithDeviceRole:(int)arg1;
+- (id)newAudioRateControlConfigWithMediaControlInfoVersion:(unsigned char)arg1 enableFeedbackController:(_Bool)arg2 isOneToOne:(_Bool)arg3;
+- (id)newVideoRateControlConfigWithMediaControlInfoVersion:(unsigned char)arg1 enableMediaControlInfoGenerator:(_Bool)arg2 enableFeedbackController:(_Bool)arg3 isOneToOne:(_Bool)arg4;
+- (_Bool)configureOneToOneAudioStreamsWithDeviceRole:(int)arg1 streamInfoArray:(id)arg2;
+- (_Bool)configureOneToOneAudioStreamsWithDeviceRole:(int)arg1;
 - (_Bool)updateConfigurationWithDeviceRole:(int)arg1;
 - (_Bool)configureAudioIOWithDeviceRole:(int)arg1 operatingMode:(int)arg2;
 - (_Bool)completeStreamSetup:(id)arg1;
@@ -197,14 +200,18 @@ __attribute__((visibility("hidden")))
 - (id)systemAudioGroup;
 - (id)screenGroup;
 - (long long)participantScreenToken;
+- (id)cameraGroupsExt;
 - (id)cameraGroups;
 - (long long)participantVideoToken;
 - (long long)participantMicrophoneToken;
-- (id)newOneToOneScreenStreamConfigWithStreamDirection:(long long)arg1 streamSsrc:(unsigned int)arg2 encodingType:(unsigned char)arg3;
-- (id)newOneToOneVideoStreamConfigWithStreamDirection:(long long)arg1 streamSsrc:(unsigned int)arg2 encodingType:(unsigned char)arg3;
-- (id)newOneToOneAudioStreamConfigWithAudioSettings:(id)arg1 streamDirection:(long long)arg2 streamSsrc:(unsigned int)arg3;
-- (id)newOneToOneVideoStreamMultiwayConfiguration:(unsigned char)arg1;
-- (id)newOneToOneScreenStreamMultiwayConfiguration:(unsigned char)arg1;
+- (id)newOneToOneVideoStreamConfigWithStreamDirection:(long long)arg1 streamGroupId:(unsigned int)arg2 streamSsrc:(unsigned int)arg3 encodingType:(unsigned char)arg4 videoSettings:(id)arg5;
+- (_Bool)rtcpPSFBForLTRAckStoreBagConfig;
+- (_Bool)rtcpPSFBForFeedbackStoreBagConfig;
+- (int)captureSourceIDFromStreamGroupID:(unsigned int)arg1;
+- (id)newOneToOneAudioStreamConfigWithAudioSettings:(id)arg1 streamDirection:(long long)arg2 streamGroupId:(unsigned int)arg3 streamSsrc:(unsigned int)arg4;
+- (id)newOneToOneVideoStreamMultiwayConfiguration:(unsigned char)arg1 streamGroupId:(unsigned int)arg2 videoSettings:(id)arg3 streamDirection:(long long)arg4;
+- (_Bool)isOneToOneTemporalSupportedForSettings:(id)arg1 streamDirection:(long long)arg2;
+- (void)updateOneToOneVideoStreamCustomResolution:(id)arg1 videoSettings:(id)arg2;
 - (_Bool)setupAudioStreamConfiguration:(id)arg1 audioRules:(id)arg2;
 - (void)onDidResumeAudio;
 - (id)pauseVideo:(_Bool)arg1;
@@ -214,7 +221,6 @@ __attribute__((visibility("hidden")))
 - (id)setPaused:(_Bool)arg1 onStreamGroups:(id)arg2;
 - (id)setCameraStreamGroupsPaused:(_Bool)arg1;
 - (id)setAudioStreamGroupsPaused:(_Bool)arg1;
-- (id)stopVideoStreams;
 - (id)stopAudioStreams;
 - (id)stopMediaStreams:(id)arg1;
 - (void)stopAudioIOCompletion;
@@ -223,7 +229,6 @@ __attribute__((visibility("hidden")))
 - (id)stopScreenGroup;
 - (id)startScreenGroup;
 - (id)startVideo;
-- (id)startVideoStreams;
 - (void)stopStreamGroups;
 - (id)startStreamGroups;
 - (id)updateActiveStateForStreamGroup:(id)arg1;
@@ -232,9 +237,9 @@ __attribute__((visibility("hidden")))
 - (id)updateStreamGroups:(id)arg1;
 - (id)startStreamGroups:(id)arg1;
 - (id)stopStreamGroups:(id)arg1;
+- (id)startCameraStreamGroups;
 - (id)startMicStreamGroups;
 - (id)stopMicStreamGroups;
-- (id)startAudioStreams;
 - (id)startMediaStreams:(id)arg1;
 - (id)stopAudioIO;
 - (id)startAudioIO;
@@ -243,10 +248,10 @@ __attribute__((visibility("hidden")))
 - (_Bool)isAudioStream:(id)arg1;
 - (void)stopInternal;
 - (void)stopOneToOneStreams;
-- (id)oneToOneVideoStream;
 - (id)generateEncryptionKey;
-- (id)streamsToString;
 @property(readonly, copy) NSString *description;
+- (void)reportCameraCompositionEnabled:(_Bool)arg1;
+- (void)dispatchSetMediaType:(unsigned int)arg1 mixingWithMediaType:(unsigned int)arg2;
 - (void)dispatchedSetMediaState:(unsigned int)arg1 forMediaType:(unsigned int)arg2;
 - (void)dispatchedSetVideoPaused:(_Bool)arg1;
 - (void)dispatchedSetAudioPaused:(_Bool)arg1;
@@ -262,6 +267,7 @@ __attribute__((visibility("hidden")))
 - (void)logAllStreamTokens;
 - (void)callStreamDelegateWithBlock:(CDUnknownBlockType)arg1;
 - (void)callDelegateWithBlock:(CDUnknownBlockType)arg1;
+@property(readonly, nonatomic) NSDictionary *mediaTypeMixingList;
 @property(readonly, nonatomic) int operatingMode;
 @property(nonatomic) struct opaqueRTCReporting *reportingAgent;
 

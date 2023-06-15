@@ -6,9 +6,11 @@
 
 #import <SystemStatus/NSObject-Protocol.h>
 
+@class NSArray;
 @protocol STStatusDomainData, STStatusDomainDataChangeContext;
 
 @protocol STStatusDomainClientHandle <NSObject>
+@property(readonly, copy, nonatomic) NSArray *preferredLocalizations;
 - (void)observeData:(id <STStatusDomainData>)arg1 forDomain:(unsigned long long)arg2 withChangeContext:(id <STStatusDomainDataChangeContext>)arg3;
 @end
 

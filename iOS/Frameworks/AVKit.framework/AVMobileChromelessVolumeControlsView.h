@@ -4,20 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class AVMobileChromelessSlider, AVMobileVolumeChromelessButtonControl, NSString, UISelectionFeedbackGenerator, UIView, UIViewPropertyAnimator;
+@class AVMobileChromelessSlider, AVMobileVolumeChromelessButtonControl, NSString, UIBlurEffect, UIView, UIViewPropertyAnimator;
 @protocol AVMobileChromelessVolumeControlsViewDelegate;
 
 __attribute__((visibility("hidden")))
 @interface AVMobileChromelessVolumeControlsView
 {
-    UISelectionFeedbackGenerator *_feedbackGenerator;
     AVMobileVolumeChromelessButtonControl *_volumeButton;
     UIView *_volumeControls;
     AVMobileChromelessSlider *_volumeSlider;
     UIViewPropertyAnimator *_emphasizedAnimator;
+    UIBlurEffect *_enabledFilledBarViewEffect;
+    UIBlurEffect *_enabledUnfilledBarViewEffect;
     struct CGRect _sliderShadowPathRect;
     struct CGRect _buttonShadowPathRect;
+    double _volumeButtonXOffset;
     _Bool _drawsShadow;
+    _Bool _allowsVolumeAdjustment;
     _Bool _prefersVolumeSliderIncluded;
     _Bool _emphasized;
     _Bool _mute;
@@ -33,17 +36,21 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, getter=isEmphasized) _Bool emphasized; // @synthesize emphasized=_emphasized;
 @property(nonatomic) _Bool prefersVolumeSliderIncluded; // @synthesize prefersVolumeSliderIncluded=_prefersVolumeSliderIncluded;
 @property __weak id <AVMobileChromelessVolumeControlsViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic, getter=isTrackingEnabled) _Bool allowsVolumeAdjustment; // @synthesize allowsVolumeAdjustment=_allowsVolumeAdjustment;
 - (void)_volumeSliderValueDidChange;
 - (void)_updateVolumeSliderEmphasizedScale;
 - (void)_updateVolumeButtonIconState;
 - (void)_layoutVolumeControlView;
 - (void)_handleVolumeControlButtonTap;
+- (void)slider:(id)arg1 didExtendWithInsets:(struct UIEdgeInsets)arg2;
 - (void)sliderDidEndTracking:(id)arg1;
 - (void)sliderDidBeginTracking:(id)arg1;
-- (void)volumeControlButtonPanningDidContinueWithXDelta:(double)arg1;
-- (void)volumeControlButtonDidEndPanning;
-- (void)volumeControlButtonDidBeginPanning;
+- (void)volumeControlButton:(id)arg1 didContinuePanningWithXDelta:(double)arg2;
+- (void)volumeControlButtonDidEndPanning:(id)arg1;
+- (void)volumeControlButtonDidBeginPanning:(id)arg1;
+- (_Bool)volumeControlButtonCanBeginPanning:(id)arg1;
 @property(nonatomic) _Bool drawsShadow;
+- (_Bool)gestureRecognizerShouldBegin:(id)arg1;
 - (_Bool)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)layoutSubviews;
 - (struct CGSize)intrinsicContentSize;

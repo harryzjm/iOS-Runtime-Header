@@ -6,11 +6,13 @@
 
 #import <ContactsAutocompleteUI/CNAutocompleteSearchControllerDelegate-Protocol.h>
 
-@class CNAutocompleteSearchController, NSString, UIView;
+@class CNAutocompleteSearchController, CNComposeRecipient, NSString, UIView;
 
 @protocol CNAutocompleteSearchControllerInternalDelegate <CNAutocompleteSearchControllerDelegate>
 
 @optional
+- (void)searchController:(CNAutocompleteSearchController *)arg1 didAddRecipientBySuggestionsController:(CNComposeRecipient *)arg2;
+- (void)searchController:(CNAutocompleteSearchController *)arg1 didAddRecipientByResultsController:(CNComposeRecipient *)arg2;
 - (void)searchController:(CNAutocompleteSearchController *)arg1 textViewDidChangeSize:(struct CGSize)arg2;
 - (void)searchController:(CNAutocompleteSearchController *)arg1 textViewWillChangeSize:(struct CGSize)arg2;
 - (void)searchController:(CNAutocompleteSearchController *)arg1 didHideResultsView:(UIView *)arg2;

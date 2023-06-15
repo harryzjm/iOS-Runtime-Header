@@ -24,6 +24,7 @@
     MISSING_TYPE *_groupSequenceNumber;
     MISSING_TYPE *_isPresentInResponse;
     MISSING_TYPE *_origin;
+    MISSING_TYPE *_listResolutionType;
 }
 
 @end

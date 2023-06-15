@@ -6,10 +6,9 @@
 
 #import <GameCenterUI/NSObject-Protocol.h>
 
-@class GKGame, NSData, NSDictionary, NSObject, NSString;
+@class NSData, NSDictionary, NSObject, NSString;
 
 @protocol GKExtensionProtocol <NSObject>
-@property(retain, nonatomic) GKGame *game;
 - (void)setInitialState:(NSDictionary *)arg1 withReply:(void (^)(_Bool))arg2;
 - (void)messageFromClient:(NSData *)arg1;
 

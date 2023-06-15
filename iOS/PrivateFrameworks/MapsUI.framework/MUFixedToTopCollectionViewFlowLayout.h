@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UICollectionViewFlowLayout.h>
+#import <UIKitCore/UICollectionViewFlowLayout.h>
 
 __attribute__((visibility("hidden")))
 @interface MUFixedToTopCollectionViewFlowLayout : UICollectionViewFlowLayout

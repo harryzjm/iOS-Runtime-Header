@@ -4,11 +4,56 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#pragma mark Typedef'd Structures
+#pragma mark Blocks
 
-typedef struct {
-    unsigned int _field1;
-    unsigned int _field2;
-    unsigned int _field3;
-} CDStruct_32a7f38a;
+typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
+
+#pragma mark Named Structures
+
+struct GTPoint2D {
+    unsigned long long x;
+    unsigned long long y;
+};
+
+struct GTPoint3D {
+    unsigned long long x;
+    unsigned long long y;
+    unsigned long long z;
+};
+
+struct GTRange {
+    unsigned long long location;
+    unsigned long long length;
+};
+
+struct GTRegion {
+    struct GTPoint3D origin;
+    struct GTSize size;
+};
+
+struct GTSize {
+    unsigned long long width;
+    unsigned long long height;
+    unsigned long long depth;
+};
+
+#pragma mark Named Unions
+
+union GTDataVersion {
+    struct {
+        unsigned int version;
+        unsigned int type;
+    } ;
+    unsigned long long value;
+};
+
+#pragma mark Typedef'd Unions
+
+typedef union {
+    struct {
+        int dispatchIndex;
+        int dispatchICBIndex;
+    } ;
+    unsigned long long uid;
+} CDUnion_afa92939;
 

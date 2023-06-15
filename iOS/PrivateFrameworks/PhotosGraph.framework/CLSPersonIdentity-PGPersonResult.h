@@ -28,6 +28,7 @@
 @property(readonly, nonatomic) NSString *fullName;
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) _Bool isFavorite;
+@property(readonly, nonatomic) _Bool isHidden;
 @property(readonly, nonatomic) _Bool isMe;
 @property(readonly, nonatomic) _Bool isUserCreated;
 @property(readonly, nonatomic) NSString *localIdentifier;

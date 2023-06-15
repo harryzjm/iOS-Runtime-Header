@@ -13,6 +13,7 @@
     MISSING_TYPE *tracker;
     MISSING_TYPE *channelDataFactory;
     MISSING_TYPE *headlineService;
+    MISSING_TYPE *sanitizer;
 }
 
 @end

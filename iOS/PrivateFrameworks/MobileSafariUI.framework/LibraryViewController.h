@@ -6,7 +6,7 @@
 
 #import <UIKit/UIViewController.h>
 
-@class LibraryItemController, NSArray, NSString, UICollectionView, UICollectionViewDiffableDataSource, WebBookmarkCollection;
+@class LibraryConfiguration, LibraryItemController, NSArray, NSString, UICollectionView, UICollectionViewDiffableDataSource, UIView, WebBookmarkCollection;
 @protocol LibraryViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -14,15 +14,27 @@ __attribute__((visibility("hidden")))
 {
     UICollectionViewDiffableDataSource *_dataSource;
     UICollectionView *_collectionView;
+    UICollectionViewDiffableDataSource *_floatingCollectionViewDataSource;
+    UICollectionView *_floatingCollectionView;
+    UIView *_separator;
+    struct {
+        _Bool needsReload;
+        _Bool needsReloadForProfileSwitcher;
+        _Bool animated;
+    } _reloadFlags;
     id <LibraryViewControllerDelegate> _delegate;
     WebBookmarkCollection *_collection;
+    LibraryConfiguration *_configuration;
     NSArray *_sectionControllers;
     LibraryItemController *_presentedItemController;
+    NSArray *_profilesInSwitcherMenu;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSArray *profilesInSwitcherMenu; // @synthesize profilesInSwitcherMenu=_profilesInSwitcherMenu;
 @property(retain, nonatomic) LibraryItemController *presentedItemController; // @synthesize presentedItemController=_presentedItemController;
 @property(copy, nonatomic) NSArray *sectionControllers; // @synthesize sectionControllers=_sectionControllers;
+@property(retain, nonatomic) LibraryConfiguration *configuration; // @synthesize configuration=_configuration;
 @property(readonly, nonatomic) WebBookmarkCollection *collection; // @synthesize collection=_collection;
 @property(nonatomic) __weak id <LibraryViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_applySnapshotForSection:(id)arg1 animated:(_Bool)arg2;
@@ -31,26 +43,37 @@ __attribute__((visibility("hidden")))
 - (id)collectionView:(id)arg1 dropSessionDidUpdate:(id)arg2 withDestinationIndexPath:(id)arg3;
 - (id)collectionView:(id)arg1 itemsForAddingToDragSession:(id)arg2 atIndexPath:(id)arg3 point:(struct CGPoint)arg4;
 - (id)collectionView:(id)arg1 itemsForBeginningDragSession:(id)arg2 atIndexPath:(id)arg3;
+- (void)collectionView:(id)arg1 performPrimaryActionForItemAtIndexPath:(id)arg2;
 - (_Bool)collectionView:(id)arg1 selectionFollowsFocusForItemAtIndexPath:(id)arg2;
 - (_Bool)collectionView:(id)arg1 shouldSpringLoadItemAtIndexPath:(id)arg2 withContext:(id)arg3;
-- (id)collectionView:(id)arg1 contextMenuConfigurationForItemAtIndexPath:(id)arg2 point:(struct CGPoint)arg3;
-- (_Bool)collectionView:(id)arg1 canFocusItemAtIndexPath:(id)arg2;
+- (id)collectionView:(id)arg1 contextMenuConfigurationForItemsAtIndexPaths:(id)arg2 point:(struct CGPoint)arg3;
 - (_Bool)collectionView:(id)arg1 shouldSelectItemAtIndexPath:(id)arg2;
 - (void)_collectionViewDidSelectItem:(id)arg1 atIndexPath:(id)arg2;
-- (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
+- (void)scrollViewDidScroll:(id)arg1;
 @property(retain, nonatomic) LibraryItemController *selectedItemController;
 - (id)_swipeActionsConfigurationForIndexPath:(id)arg1;
 - (void)_enumerateItemControllersWithBlock:(CDUnknownBlockType)arg1;
 - (id)_diffableDataSourceForCollectionView:(id)arg1;
-- (_Bool)_lastSectionShouldFloat;
+- (void)viewWillLayoutSubviews;
 - (void)scrollToTopAnimated:(_Bool)arg1;
-- (void)reloadSectionControllersAnimated:(_Bool)arg1;
+- (void)_reloadSectionControllersImmediatelyAnimated:(_Bool)arg1;
+- (void)reloadSectionControllersIfNeeded;
+- (void)_reloadFloatingSectionControllersImmediately;
+- (void)setNeedsReloadForProfileSwitcher;
+- (void)setNeedsReloadSectionControllersAnimated:(_Bool)arg1;
+- (void)reloadExpansionStateForItem:(id)arg1 inSection:(id)arg2;
 - (void)updateSelectionByIgnoringExistingSelection:(_Bool)arg1;
 - (void)updateSelection;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
+- (void)_layOutFloatingViews;
+- (struct CGRect)_frameForFloatingCollectionView;
+- (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
+- (void)collectionViewContentSizeDidChange:(id)arg1;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)dealloc;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

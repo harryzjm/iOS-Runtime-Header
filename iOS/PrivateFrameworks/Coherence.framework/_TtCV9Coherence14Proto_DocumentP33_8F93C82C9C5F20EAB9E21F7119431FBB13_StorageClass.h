@@ -17,6 +17,7 @@
     MISSING_TYPE *_assets;
     MISSING_TYPE *_versionUuid;
     MISSING_TYPE *_deltaReferences;
+    MISSING_TYPE *_minVersion;
 }
 
 @end

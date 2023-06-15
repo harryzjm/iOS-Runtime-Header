@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class _TtC26AuthenticationServicesCore13ASCABLEClient;
+@class NSArray, _TtC26AuthenticationServicesCore13ASCABLEClient;
 
 @protocol _TtP26AuthenticationServicesCore21ASCABLEClientDelegate_
 - (void)cableClientWillAuthenticate:(_TtC26AuthenticationServicesCore13ASCABLEClient *)arg1;
 - (void)cableClientWillConnect:(_TtC26AuthenticationServicesCore13ASCABLEClient *)arg1;
-- (id)encodeMakeCredentialCTAPCommandForAuthenticatorWithUserVerificationAvailability:(unsigned long long)arg1;
-- (id)encodeGetAssertionCTAPCommandForAuthenticatorWithUserVerificationAvailability:(unsigned long long)arg1;
+- (id)encodeMakeCredentialCTAPCommandForAuthenticatorWithUserVerificationAvailability:(unsigned long long)arg1 authenticatorSupportedExtensions:(NSArray *)arg2;
+- (id)encodeGetAssertionCTAPCommandForAuthenticatorWithUserVerificationAvailability:(unsigned long long)arg1 authenticatorSupportedExtensions:(NSArray *)arg2;
 @end
 

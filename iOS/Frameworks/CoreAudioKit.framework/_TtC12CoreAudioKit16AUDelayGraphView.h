@@ -5,7 +5,6 @@
 //
 
 @class MISSING_TYPE;
-@protocol _TtP12CoreAudioKit27CAAUViewParameterDataSource_;
 
 __attribute__((visibility("hidden")))
 @interface _TtC12CoreAudioKit16AUDelayGraphView
@@ -14,6 +13,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *delayLayers;
     MISSING_TYPE *defaultMax;
     MISSING_TYPE *xMinorGridCount;
+    MISSING_TYPE *graphActivated;
     MISSING_TYPE *accessibilityParam;
     MISSING_TYPE *accessibilityTimeFormatter;
     MISSING_TYPE *accessibilityDecimalFormatter;
@@ -30,15 +30,9 @@ __attribute__((visibility("hidden")))
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
-- (struct CGRect)graphFrame;
-- (void)updateFor:(unsigned int)arg1 value:(float)arg2;
-@property(nonatomic) float zoomFactor; // @synthesize zoomFactor;
-- (void)configureWithData:(id)arg1;
-@property(nonatomic, retain) id <_TtP12CoreAudioKit27CAAUViewParameterDataSource_> dataSource; // @synthesize dataSource;
 - (_Bool)accessibilityActivate;
 - (void)accessibilityDecrement;
 - (void)accessibilityIncrement;
-@property(nonatomic) _Bool invert; // @synthesize invert;
 
 @end
 

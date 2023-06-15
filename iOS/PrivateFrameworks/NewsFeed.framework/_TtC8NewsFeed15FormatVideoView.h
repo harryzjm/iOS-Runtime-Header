@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class MISSING_TYPE;
 
@@ -12,10 +12,14 @@ __attribute__((visibility("hidden")))
 @interface _TtC8NewsFeed15FormatVideoView : UIView
 {
     MISSING_TYPE *identifier;
+    MISSING_TYPE *assets;
+    MISSING_TYPE *displayStateCoordinator;
+    MISSING_TYPE *playerProperties;
 }
 
 + (Class)layerClass;
 - (void).cxx_destruct;
+- (void)didMoveToWindow;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 

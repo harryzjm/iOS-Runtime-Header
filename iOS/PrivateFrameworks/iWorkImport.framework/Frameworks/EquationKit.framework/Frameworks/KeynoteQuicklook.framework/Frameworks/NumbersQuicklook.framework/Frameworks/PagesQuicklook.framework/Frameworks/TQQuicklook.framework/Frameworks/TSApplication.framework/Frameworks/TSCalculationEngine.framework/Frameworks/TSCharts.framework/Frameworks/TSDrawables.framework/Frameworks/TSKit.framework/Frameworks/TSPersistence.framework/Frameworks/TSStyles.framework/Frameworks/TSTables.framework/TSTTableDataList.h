@@ -43,13 +43,16 @@
 - (unsigned int)refCountForKey:(unsigned int)arg1;
 - (unsigned long long)count;
 - (_Bool)repairStyleDatalistStylesheetIfNecessary;
+- (void)replaceFormatsUsingBlock:(CDUnknownBlockType)arg1;
+- (void)replaceRichTextUsingBlock:(CDUnknownBlockType)arg1;
+- (void)replaceFormulaErrorsUsingBlock:(CDUnknownBlockType)arg1;
+- (void)replaceStylesUsingBlock:(CDUnknownBlockType)arg1;
+- (void)replaceCommentStoragesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)replaceConditionalStyleSetsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)replaceFormulasUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateKeysAndCountsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateLegacyCustomFormatsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateFormatsUsingBlock:(CDUnknownBlockType)arg1;
-- (void)p_enumerateDataObjectsUsingBlock:(CDUnknownBlockType)arg1;
-- (id)p_objectForKey:(unsigned int)arg1;
 - (void)removeObjectForKey:(unsigned int)arg1;
 - (void)p_replaceObjectAtKey:(unsigned int)arg1 withObject:(id)arg2;
 - (id)p_setPayload:(id)arg1 atSuggestedKey:(unsigned int)arg2 callWillModify:(_Bool)arg3;
@@ -59,7 +62,6 @@
 - (unsigned int)p_nextAvailableKey;
 - (void)p_clearReverseMapForObject:(id)arg1 atKey:(unsigned int)arg2;
 - (void)p_setObject:(id)arg1 atKey:(unsigned int)arg2 updateReverseMap:(_Bool)arg3;
-- (id)p_segmentForKey:(unsigned int)arg1;
 @property(readonly, nonatomic) unsigned long long archivingCompatibilityVersion;
 - (void)saveToArchiver:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
@@ -69,7 +71,7 @@
 - (void)p_addInitialSegment;
 - (_Bool)p_shouldUseReverseMap;
 - (id)styleForKey:(unsigned int)arg1;
-- (id)stringForKey:(unsigned int)arg1 shouldWrap:(_Bool *)arg2;
+- (id)stringForKey:(unsigned int)arg1 outShouldWrap:(_Bool *)arg2 outIsShared:(_Bool *)arg3;
 - (id)stringForKey:(unsigned int)arg1;
 - (id)richTextForKey:(unsigned int)arg1;
 - (id)multipleChoiceListFormatForKey:(unsigned int)arg1;
@@ -92,7 +94,7 @@
 - (unsigned int)addCommentStorage:(id)arg1 atSuggestedKey:(unsigned int)arg2 callWillModify:(_Bool)arg3;
 - (unsigned int)addCellFormat:(id)arg1 atSuggestedKey:(unsigned int)arg2 callWillModify:(_Bool)arg3;
 - (void)updateCustomFormatsAtKey:(id)arg1;
-- (void)replaceCustomFormatsWithBlock:(CDUnknownBlockType)arg1;
+- (void)p_replaceCustomFormatsWithBlock:(CDUnknownBlockType)arg1;
 - (_Bool)containsFormulas;
 - (_Bool)containsControlCellSpecs;
 - (id)allRichTextStorages;

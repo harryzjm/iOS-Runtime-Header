@@ -44,6 +44,11 @@ __attribute__((visibility("hidden")))
 - (id)accessibilityARIALiveRegionStatus;
 - (_Bool)accessibilityARIAIsBusy;
 - (id)accessibilitySpeechHint;
+- (_Bool)accessibilityIsMarkAnnotation;
+- (_Bool)accessibilityIsLastItemInSuggestion;
+- (_Bool)accessibilityIsFirstItemInSuggestion;
+- (_Bool)accessibilityIsDeletion;
+- (_Bool)accessibilityIsInsertion;
 - (id)accessibilityIdentifier;
 - (id)accessibilityExpandedTextValue;
 - (id)textMarkersForRange:(const void *)arg1;
@@ -68,7 +73,6 @@ __attribute__((visibility("hidden")))
 - (id)lineEndMarkerForMarker:(id)arg1;
 - (id)selectedTextMarker;
 - (id)selectionRangeString;
-- (id)elementsForRange:(struct _NSRange)arg1;
 - (_Bool)accessibilityInsertText:(id)arg1;
 - (_Bool)accessibilityReplaceRange:(struct _NSRange)arg1 withText:(id)arg2;
 - (void)_accessibilitySetSelectedTextRange:(struct _NSRange)arg1;
@@ -76,8 +80,6 @@ __attribute__((visibility("hidden")))
 - (id)attributedStringForElement;
 - (id)attributedStringForRange:(struct _NSRange)arg1;
 - (id)stringForRange:(struct _NSRange)arg1;
-- (id)_stringForRange:(struct _NSRange)arg1 attributed:(_Bool)arg2;
-- (id)_stringFromStartMarker:(id)arg1 toEndMarker:(id)arg2 attributed:(_Bool)arg3;
 - (id)textMarkerForPosition:(long long)arg1;
 - (id)textMarkerRangeForSelection;
 - (id)accessibilityObjectForTextMarker:(id)arg1;
@@ -91,6 +93,7 @@ __attribute__((visibility("hidden")))
 - (void)accessibilityIncrement;
 - (void)accessibilityMoveSelectionToMarker:(id)arg1;
 - (void)accessibilityDecreaseSelection:(unsigned char)arg1;
+- (_Bool)_accessibilityIsFocusedForTesting;
 - (void)_accessibilitySetFocus:(_Bool)arg1;
 - (void)accessibilityIncreaseSelection:(unsigned char)arg1;
 - (void)accessibilityModifySelection:(unsigned char)arg1 increase:(_Bool)arg2;
@@ -162,7 +165,6 @@ __attribute__((visibility("hidden")))
 - (double)_accessibilityMaxValue;
 - (double)_accessibilityMinValue;
 - (_Bool)_accessibilityIsStrongPasswordField;
-- (_Bool)_accessibilityValueIsAutofilled;
 - (_Bool)_accessibilityHasTouchEventListener;
 - (_Bool)stringValueShouldBeUsedInLabel;
 - (_Bool)isAccessibilityElement;
@@ -237,6 +239,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)_axLinkTrait;
 - (void)dealloc;
 - (void)detach;
+- (void *)axBackingObject;
 - (id)initWithAccessibilityObject:(void *)arg1;
 
 @end

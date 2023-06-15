@@ -7,7 +7,5 @@
 #import <MediaPlaybackCore/MPMusicPlayerControllerServer-Protocol.h>
 
 @protocol MPMusicPlayerControllerSystemServer <MPMusicPlayerControllerServer>
-- (void)setUserQueueModificationsDisabled:(_Bool)arg1;
-- (void)getUserQueueModificationsDisabledWithReply:(void (^)(_Bool))arg1;
 @end
 

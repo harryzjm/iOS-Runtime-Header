@@ -15,7 +15,16 @@ __attribute__((visibility("hidden")))
     id <VCSessionStatsControllerDelegate> _weakDelegate;
     AVCStatisticsCollector *_uplinkStatisticsCollector;
     AVCStatisticsCollector *_downlinkStatisticsCollector;
-    CDStruct_2756d7ac _remoteStats;
+    struct {
+        double responseTime;
+        unsigned char linkID;
+        unsigned short statsIdentifier;
+        unsigned short remoteTimestamp;
+        unsigned short serverPacketInterval;
+        unsigned short uplinkBandwidthSample;
+        unsigned short totalRemoteMediaPacketSent;
+        unsigned short totalRemoteMediaPacketReceived;
+    } _remoteStats;
     NSObject<OS_dispatch_source> *_localSessionStatsTimemoutSource;
     unsigned int _statsRequestCounter;
     VCConnectionManager *_connectionManager;
@@ -61,21 +70,14 @@ __attribute__((visibility("hidden")))
     double _lastHealthPrintTime;
 }
 
+@property(readonly, nonatomic) _Bool didReceiveServerStatsResponse; // @synthesize didReceiveServerStatsResponse=_didReceiveServerStatsResponse;
 @property(nonatomic) double statsReportingInterval; // @synthesize statsReportingInterval=_statsReportingInterval;
 - (void)flushRealTimeReportingStats;
 - (void)deregisterPeriodicTask;
 - (void)periodicTask:(void *)arg1;
 - (void)registerPeriodicTask;
 @property(readonly) id reportingAgent;
-- (void)resetHealthPrintCounters;
-- (void)healthPrintForServerStats;
-- (void)calculateInterCallbackDurationWithTime:(double)arg1;
-- (void)handleRemoteSessionStats:(CDStruct_a6ed07b8 *)arg1;
-- (void)statsReceiveStatsPayload;
-- (void)triggerRateControlWithLocalSessionStats:(CDStruct_b5e1e8f2)arg1 time:(double)arg2 forUplink:(_Bool)arg3 forDownlink:(_Bool)arg4 fromVCRCExternalThread:(_Bool)arg5;
 - (unsigned short)translateTimestampFromMicro:(double)arg1;
-- (_Bool)isRemoteSessionStatsTooLateWithStatsId:(unsigned short)arg1;
-- (void)updateRemoteSessionStats:(CDStruct_2756d7ac)arg1;
 - (void)stopLocalSessionStatsUpdate;
 - (void)startLocalSessionStatsSend;
 - (void)startLocalSessionStatsReceive;

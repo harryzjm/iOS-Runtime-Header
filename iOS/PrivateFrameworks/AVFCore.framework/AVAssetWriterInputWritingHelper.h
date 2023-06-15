@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (void)markCurrentPassAsFinished;
 - (_Bool)prepareToFinishWritingReturningError:(id *)arg1;
 - (void)prepareToEndSession;
+- (_Bool)appendTaggedPixelBufferGroup:(struct OpaqueCMTaggedBufferGroup *)arg1 withPresentationTime:(CDStruct_1b6d18a9)arg2;
 - (_Bool)appendPixelBuffer:(struct __CVBuffer *)arg1 withPresentationTime:(CDStruct_1b6d18a9)arg2;
 - (long long)appendSampleBuffer:(struct opaqueCMSampleBuffer *)arg1 error:(id *)arg2;
 - (void)beginPassIfAppropriate;

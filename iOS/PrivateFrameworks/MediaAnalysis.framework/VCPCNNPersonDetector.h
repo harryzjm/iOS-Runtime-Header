@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     VCPCNNModelEspresso *_modelEspresso;
     int _inputWidth;
     int _inputHeight;
+    struct Scaler _scaler;
 }
 
 - (id).cxx_construct;

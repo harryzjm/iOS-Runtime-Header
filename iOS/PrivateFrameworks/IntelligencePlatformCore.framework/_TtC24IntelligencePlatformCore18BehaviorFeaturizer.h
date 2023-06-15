@@ -15,7 +15,7 @@
     MISSING_TYPE *histogramManager;
     MISSING_TYPE *keyValueStore;
     MISSING_TYPE *digestBookmarkDateKey;
-    MISSING_TYPE *$__lazy_storage_$_cachedCompletedLocationVisits;
+    MISSING_TYPE *contextIntervalCalculator;
 }
 
 @end

@@ -9,6 +9,7 @@
 @class NSError, NSString, VCSessionParticipant;
 
 @protocol VCSessionParticipantDelegate <VCServerDelegate>
+- (void)vcSessionParticipant:(VCSessionParticipant *)arg1 reactionDidStart:(NSString *)arg2;
 - (void)vcSessionParticipant:(VCSessionParticipant *)arg1 oneToOneModeDidChange:(_Bool)arg2;
 - (void)vcSessionParticipant:(VCSessionParticipant *)arg1 didDetectError:(NSError *)arg2;
 - (void)vcSessionParticipantDidRemoteMediaStallTimeout:(VCSessionParticipant *)arg1 duration:(double)arg2;
@@ -19,11 +20,12 @@
 - (void)vcSessionParticipantDidChangeSendingStreams:(VCSessionParticipant *)arg1;
 - (void)vcSessionParticipant:(VCSessionParticipant *)arg1 didRequestVideoRedundancy:(_Bool)arg2;
 - (void)vcSessionParticipant:(VCSessionParticipant *)arg1 didSwitchFromStreamID:(unsigned short)arg2 toStreamID:(unsigned short)arg3;
-- (void)vcSessionParticipant:(VCSessionParticipant *)arg1 requestKeyFrameGenerationWithStreamID:(unsigned short)arg2 firType:(int)arg3;
+- (void)vcSessionParticipant:(VCSessionParticipant *)arg1 requestKeyFrameGenerationWithStreamID:(unsigned short)arg2 streamGroupID:(unsigned int)arg3 firType:(int)arg4;
 - (void)vcSessionParticipant:(VCSessionParticipant *)arg1 didChangeActualNetworkBitrateForStreamGroupID:(unsigned int)arg2;
 - (void)vcSessionParticipant:(VCSessionParticipant *)arg1 didChangeMediaPriority:(unsigned char)arg2 description:(NSString *)arg3;
 - (void)vcSessionParticipant:(VCSessionParticipant *)arg1 remoteVideoPausedDidChange:(_Bool)arg2;
 - (void)vcSessionParticipant:(VCSessionParticipant *)arg1 remoteAudioPausedDidChange:(_Bool)arg2;
+- (void)vcSessionParticipant:(VCSessionParticipant *)arg1 mediaMixingDidChangeForMediaType:(unsigned int)arg2 mixingMediaType:(unsigned int)arg3;
 - (void)vcSessionParticipant:(VCSessionParticipant *)arg1 remoteMediaStateDidChange:(unsigned int)arg2 forMediaType:(unsigned int)arg3;
 - (void)vcSessionParticipant:(VCSessionParticipant *)arg1 mediaStateDidChange:(unsigned int)arg2 forMediaType:(unsigned int)arg3 didSucceed:(_Bool)arg4 error:(NSError *)arg5;
 - (void)vcSessionParticipant:(VCSessionParticipant *)arg1 videoPaused:(_Bool)arg2 didSucceed:(_Bool)arg3 error:(NSError *)arg4;

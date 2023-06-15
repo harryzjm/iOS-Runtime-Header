@@ -6,14 +6,13 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class NSXPCListenerEndpoint, UIFontDescriptor, UIFontPickerViewControllerConfiguration;
+@class NSArray, NSXPCListenerEndpoint, UIFontPickerViewControllerConfiguration;
 
 @protocol _UIFontPickerRemoteViewController <NSObject>
 - (void)_setFontServicesFontPickerSupportListenerEndpoint:(NSXPCListenerEndpoint *)arg1;
 - (void)_prepareForDisplayWithCompletion:(void (^)(void))arg1;
 - (void)_setHideNavigationBar:(_Bool)arg1;
 - (void)_setConfiguration:(UIFontPickerViewControllerConfiguration *)arg1;
-- (void)_moveSelectedFontIntoRecents;
-- (void)_setSelectedFont:(UIFontDescriptor *)arg1 scrollToVisible:(_Bool)arg2;
+- (void)_setSelectedFonts:(NSArray *)arg1 scrollToVisible:(_Bool)arg2;
 @end
 

@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray;
+@class NSArray, NSString, SGIPMessage;
 
 @protocol SGSuggestionsServiceIpsosProtocol
+- (NSString *)titleSuggestionForMessage:(SGIPMessage *)arg1 error:(id *)arg2;
+- (void)titleSuggestionForMessage:(SGIPMessage *)arg1 withCompletion:(void (^)(NSString *, NSError *))arg2;
 - (NSArray *)ipsosMessagesFromSearchableItems:(NSArray *)arg1 error:(id *)arg2;
 - (void)ipsosMessagesFromSearchableItems:(NSArray *)arg1 withCompletion:(void (^)(NSArray *, NSError *))arg2;
 @end

@@ -6,7 +6,7 @@
 
 #import <UIKit/UIViewController.h>
 
-@class AVSystemController, CARSessionStatus, MPAVEndpointRoute, MPAVRoute, MPAVRoutingController, MPSectionedCollection, MPWeakTimer, MRURoutingView, MRURoutingViewControllerUpdate, MRUVendorSpecificDeviceManager, MRUVisualStylingProvider, MRUVolumeGroupCoordinator, NSArray, NSDictionary, NSIndexPath, NSMutableArray, NSMutableDictionary, NSMutableSet, NSNumberFormatter, NSString, NSTimer;
+@class AVSystemController, CARSessionStatus, MPAVEndpointRoute, MPAVRoute, MPAVRoutingController, MPSectionedCollection, MPWeakTimer, MRGroupSessionDiscovery, MRURoutingView, MRURoutingViewControllerUpdate, MRUVendorSpecificDeviceManager, MRUVisualStylingProvider, MRUVolumeGroupCoordinator, NSArray, NSDictionary, NSIndexPath, NSMutableArray, NSMutableDictionary, NSMutableSet, NSNumberFormatter, NSString, NSTimer;
 @protocol MRURoutingViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
     NSArray *_cachedNativeRoutesInVendorSpecificGroup;
     NSArray *_cachedActivatedVendorSpecificDeviceIDs;
     NSArray *_cachedPendingVendorSpecificDeviceIDs;
+    NSArray *_cachedAvailableVendorSpecificDeviceIDs;
     MPWeakTimer *_updateTimer;
     int _airPlayPasswordAlertDidAppearToken;
     int _airPlayPasswordAlertDidCancelToken;
@@ -43,6 +44,7 @@ __attribute__((visibility("hidden")))
     _Bool _needsDisplayedRoutesUpdate;
     _Bool _presentingAppHasActiveAVSession;
     _Bool _didLastPickNativeRoute;
+    _Bool _didExpandVendorSpecificSpeakerGroup;
     int _presentingAppProcessIdentifier;
     MPAVRoutingController *_routingController;
     MRUVendorSpecificDeviceManager *_vendorSpecificManager;
@@ -53,6 +55,7 @@ __attribute__((visibility("hidden")))
     MPAVEndpointRoute *_endpointRoute;
     long long _discoveryMode;
     NSMutableArray *_customRows;
+    NSString *_presentingAppBundleID;
     NSDictionary *_outputDeviceVolumeControllers;
     CARSessionStatus *_carPlaySessionStatus;
     NSMutableSet *_expandedGroupUIDs;
@@ -70,13 +73,16 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_vendorSpecificGroupDisplayedSubroutes;
     NSMutableArray *_staticCustomRowItems;
     AVSystemController *_mediaServerController;
+    MRGroupSessionDiscovery *_groupSessionDiscovery;
     struct UIEdgeInsets _contentEdgeInsets;
     struct UIEdgeInsets _scrollIndicatorInsets;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) MRGroupSessionDiscovery *groupSessionDiscovery; // @synthesize groupSessionDiscovery=_groupSessionDiscovery;
 @property(retain, nonatomic) AVSystemController *mediaServerController; // @synthesize mediaServerController=_mediaServerController;
 @property(retain, nonatomic) NSMutableArray *staticCustomRowItems; // @synthesize staticCustomRowItems=_staticCustomRowItems;
+@property(nonatomic) _Bool didExpandVendorSpecificSpeakerGroup; // @synthesize didExpandVendorSpecificSpeakerGroup=_didExpandVendorSpecificSpeakerGroup;
 @property(retain, nonatomic) NSMutableDictionary *vendorSpecificGroupDisplayedSubroutes; // @synthesize vendorSpecificGroupDisplayedSubroutes=_vendorSpecificGroupDisplayedSubroutes;
 @property(retain, nonatomic) NSMutableSet *expandedVendorSpecificGroupUIDs; // @synthesize expandedVendorSpecificGroupUIDs=_expandedVendorSpecificGroupUIDs;
 @property(retain, nonatomic) NSMutableSet *collapsedVendorSpecificGroupUIDs; // @synthesize collapsedVendorSpecificGroupUIDs=_collapsedVendorSpecificGroupUIDs;
@@ -96,6 +102,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) CARSessionStatus *carPlaySessionStatus; // @synthesize carPlaySessionStatus=_carPlaySessionStatus;
 @property(retain, nonatomic) NSDictionary *outputDeviceVolumeControllers; // @synthesize outputDeviceVolumeControllers=_outputDeviceVolumeControllers;
 @property(nonatomic) _Bool onScreen; // @synthesize onScreen=_onScreen;
+@property(retain, nonatomic) NSString *presentingAppBundleID; // @synthesize presentingAppBundleID=_presentingAppBundleID;
 @property(nonatomic) int presentingAppProcessIdentifier; // @synthesize presentingAppProcessIdentifier=_presentingAppProcessIdentifier;
 @property(copy, nonatomic) NSMutableArray *customRows; // @synthesize customRows=_customRows;
 @property(nonatomic) struct UIEdgeInsets scrollIndicatorInsets; // @synthesize scrollIndicatorInsets=_scrollIndicatorInsets;
@@ -110,8 +117,14 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak id <MRURoutingViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) MRUVendorSpecificDeviceManager *vendorSpecificManager; // @synthesize vendorSpecificManager=_vendorSpecificManager;
 @property(readonly, nonatomic) MPAVRoutingController *routingController; // @synthesize routingController=_routingController;
+- (void)hearingAidReachabilityDidChange;
+- (void)hearingAidConnectionDidChange;
 - (id)_fullStateDumpObject;
 - (id)_stateDumpObject;
+- (void)groupSessionDiscovery:(id)arg1 activeSessionDidChange:(id)arg2;
+- (void)groupSessionDiscovery:(id)arg1 discoveredSessionsDidChange:(id)arg2;
+- (void)fetchAvailableRoutesWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (_Bool)handleSelectedRoutingViewItem:(id)arg1 operation:(long long)arg2;
 - (id)symbolNameForVendorSpecificRoute:(id)arg1;
 - (_Bool)_shouldShowShowMoreButton;
 - (void)ensureVendorSpecificGroupTreeIsVisible:(id)arg1;
@@ -131,6 +144,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)wasVendorSpecificGroupDisplayedAsExpanded:(id)arg1;
 - (void)updateExpandedGroups;
 - (id)endpointGroupUID;
+- (void)_configureVolumeForUpdate:(id)arg1 volumeCapableRoutes:(id *)arg2 volumeController:(id *)arg3;
 - (id)_createRefreshUpdateForCoalesceResult;
 - (id)_createReloadUpdate;
 - (id)_createRefreshUpdate;
@@ -141,13 +155,17 @@ __attribute__((visibility("hidden")))
 - (void)_createUpdateWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_mergeRoutes:(id)arg1 withCoalescedResult:(id)arg2;
 - (id)_airPlayRoutesInRoutes:(id)arg1;
-- (id)_getNearbyRoutes:(id)arg1;
 - (id)_displayAsPickedRoutesInRoutes:(id)arg1;
+- (id)_recommendedRoutesFromRoutes:(id)arg1;
 - (id)_displayableRoutesInRoutes:(id)arg1;
+- (void)_updateGroupSessionDiscovery;
 - (void)_setupUpdateTimerIfNecessary;
 - (void)_setNeedsDisplayedRoutesUpdate;
 - (void)_setNeedsRouteDiscoveryModeUpdate;
-- (void)_diplayShareAudioDisabledAlertForReason:(id)arg1;
+- (void)_displayEndGroupSessionForReason:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_displayShareAudioDisabledAlertForReason:(id)arg1;
+- (void)handleGroupSessionEndWithActiveGroupSession:(id)arg1;
+- (void)handleGroupSessionJoinWithPickedRoute:(id)arg1;
 - (_Bool)_wouldShareAudioForPickedRoute:(id)arg1 operation:(long long)arg2 pickedRoutes:(id)arg3;
 - (void)enqueueRefreshUpdate;
 - (long long)subtitleAccessoryForItem:(id)arg1 nowPlayingInfo:(id)arg2;
@@ -158,6 +176,7 @@ __attribute__((visibility("hidden")))
 - (void)showMoreAction;
 - (void)updateHeaderView:(id)arg1 forSection:(long long)arg2;
 - (void)updateCell:(id)arg1 forIndexPath:(id)arg2;
+- (void)updateVendorSpecificSpeakerGroupCell:(id)arg1 forIndexPath:(id)arg2;
 - (void)updateVendorSpecificCustomRowCell:(id)arg1 forIndexPath:(id)arg2;
 - (void)updateVendorSpecificCell:(id)arg1 forIndexPath:(id)arg2;
 - (void)updateVendorSpecificSubRouteCell:(id)arg1 forIndexPath:(id)arg2;

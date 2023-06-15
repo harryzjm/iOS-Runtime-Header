@@ -9,11 +9,11 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)primaryInferenceNetworkDescriptorForVNInferenceNetworkIdentifierFaceprint_3_1_0;
-+ (id)availableVNInferenceNetworkIdentifierFaceprintVersions;
-+ (id)inferenceNetworkIdentifiers;
-+ (id)espressoModelFileNameForConfigurationOptions:(id)arg1;
++ (id)espressoModelInputImageDimensionsBlobNameForConfigurationOptions:(id)arg1;
++ (unsigned int)networkRequiredInputImagePixelFormatForConfigurationOptions:(id)arg1;
++ (id)espressoModelPathForConfigurationOptions:(id)arg1 error:(id *)arg2;
 + (const void *)modelVersionForOptions:(id)arg1;
++ (id)_inferenceDescriptorForModelConfiguredWithOptions:(id)arg1 error:(id *)arg2;
 - (_Bool)_isFaceprintJunk:(shared_ptr_0a6daad2)arg1;
 
 @end

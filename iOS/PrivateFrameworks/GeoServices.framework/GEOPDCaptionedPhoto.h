@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
     _Bool _displayFullScreenPhotoGallery;
     _Bool _highQuality;
     _Bool _isBusinessOwned;
+    _Bool _obfuscateFullScreenPhoto;
     _Bool _useGallery;
     struct {
         unsigned int has_dateAdded:1;
@@ -35,6 +36,7 @@ __attribute__((visibility("hidden")))
         unsigned int has_displayFullScreenPhotoGallery:1;
         unsigned int has_highQuality:1;
         unsigned int has_isBusinessOwned:1;
+        unsigned int has_obfuscateFullScreenPhoto:1;
         unsigned int has_useGallery:1;
         unsigned int read_unknownFields:1;
         unsigned int read_attribution:1;

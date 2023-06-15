@@ -8,9 +8,9 @@
 
 @interface USKPropertyIterator : NSObject
 {
-    struct vector<pxrInternal_v0_21__aapl__pxrReserved__::UsdProperty, std::allocator<pxrInternal_v0_21__aapl__pxrReserved__::UsdProperty>> _properties;
-    struct __wrap_iter<pxrInternal_v0_21__aapl__pxrReserved__::UsdProperty *> {
-        struct UsdProperty *__i;
+    struct vector<pxrInternal_v0_22__aapl__pxrReserved__::UsdProperty, std::allocator<pxrInternal_v0_22__aapl__pxrReserved__::UsdProperty>> _properties;
+    struct __wrap_iter<pxrInternal_v0_22__aapl__pxrReserved__::UsdProperty *> {
+        struct UsdProperty *__i_;
     } _it;
 }
 

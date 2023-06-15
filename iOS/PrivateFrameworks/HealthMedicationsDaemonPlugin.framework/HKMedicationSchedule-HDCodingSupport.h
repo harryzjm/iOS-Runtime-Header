@@ -7,9 +7,8 @@
 #import <HealthMedications/HKMedicationSchedule.h>
 
 @interface HKMedicationSchedule (HDCodingSupport)
-+ (id)_medicationScheduleIntervalDataFromCodable:(id)arg1;
 + (id)hd_medicationScheduleFromCodable:(id)arg1;
-+ (id)hd_medicationSchedulesFromCodables:(id)arg1;
++ (id)hd_medicationSchedulesFromCodables:(id)arg1 profile:(id)arg2 ignoreDuplicates:(_Bool)arg3;
 - (id)hd_codableMedicationSchedule;
 @end
 

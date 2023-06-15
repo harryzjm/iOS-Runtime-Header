@@ -19,22 +19,23 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *previousViewSize;
     MISSING_TYPE *accessibilityPreviouslyEnabled;
     MISSING_TYPE *transitionBackgroundView;
-    MISSING_TYPE *sportsCanonicalBannerOpacityProxy;
-    MISSING_TYPE *newBannerView;
+    MISSING_TYPE *sportsCanonicalBannerProxy;
     MISSING_TYPE *newBannerAccessoryView;
-    MISSING_TYPE *bannerView;
+    MISSING_TYPE *newBannerView;
+    MISSING_TYPE *currentBannerWidth;
+    MISSING_TYPE *$__lazy_storage_$_bannerPresenter;
     MISSING_TYPE *scoreboardUpdateTimer;
     MISSING_TYPE *scoreboardUpdateRequest;
 }
 
 - (void).cxx_destruct;
-- (id)initWithCoder:(id)arg1;
-- (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)vui_layoutSubviews:(struct CGSize)arg1 computationOnly:(_Bool)arg2;
 - (void)vui_cellDidEndDisplaying;
 - (void)vui_cellWillBeDisplayed;
 - (void)vui_prepareForReuse;
-- (id)preferredLayoutAttributesFittingAttributes:(id)arg1;
+- (void)dealloc;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

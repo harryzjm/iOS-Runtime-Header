@@ -13,8 +13,11 @@
     MISSING_TYPE *assetLoggerQueue;
     MISSING_TYPE *instrumentationUtil;
     MISSING_TYPE *uodSupported;
+    MISSING_TYPE *shouldAsrRunOnServer;
     MISSING_TYPE *currentSessionId;
     MISSING_TYPE *assetsForLogging;
+    MISSING_TYPE *assetSetsForLogging;
+    MISSING_TYPE *uafAssetSet;
 }
 
 @end

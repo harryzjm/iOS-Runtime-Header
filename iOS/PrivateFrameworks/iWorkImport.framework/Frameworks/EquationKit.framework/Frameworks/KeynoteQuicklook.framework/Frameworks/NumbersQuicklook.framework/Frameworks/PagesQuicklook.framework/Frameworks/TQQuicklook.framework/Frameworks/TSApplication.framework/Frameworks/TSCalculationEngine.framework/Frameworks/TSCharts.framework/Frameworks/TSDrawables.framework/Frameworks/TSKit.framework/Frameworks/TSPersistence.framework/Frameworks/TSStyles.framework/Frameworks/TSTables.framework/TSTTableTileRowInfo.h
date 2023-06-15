@@ -6,6 +6,8 @@
 
 #import <objc/NSObject.h>
 
+@class TSTCell;
+
 @interface TSTTableTileRowInfo : NSObject
 {
     struct TSTTableTileRowBuffer _currentData;
@@ -14,12 +16,14 @@
     _Bool _maxColumnIndexIsValidPrivate;
     unsigned char _storageVersion;
     struct os_unfair_lock_s _unfairLock;
+    TSTCell *_emptyCellForPreBNC;
     unsigned int _tileRowIndex;
     unsigned long long _cellCount;
 }
 
 + (id)rowInfoFromArchive:(const void *)arg1;
 + (id)rowInfoWithTileRowIndex:(unsigned int)arg1 wideOffsets:(_Bool)arg2;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long cellCount; // @synthesize cellCount=_cellCount;
 @property(nonatomic) unsigned int tileRowIndex; // @synthesize tileRowIndex=_tileRowIndex;
 - (id)description;
@@ -32,19 +36,20 @@
 - (void)moveColumnsFromIndex:(unsigned short)arg1 toIndex:(unsigned short)arg2 count:(unsigned int)arg3;
 - (unsigned long long)removeColumnsAtIndex:(unsigned short)arg1 count:(unsigned int)arg2;
 - (void)insertColumnsAtIndex:(unsigned short)arg1 count:(unsigned int)arg2;
-- (long long)setCell:(id)arg1 atIndex:(unsigned short)arg2 formatKeys:(CDStruct_c8ca99d5 *)arg3;
+- (long long)setCell:(id)arg1 atIndex:(unsigned short)arg2;
 - (void)_removeCellAtIndex:(unsigned short)arg1;
-- (void)_insertCell:(id)arg1 atIndex:(unsigned short)arg2 formatKeys:(CDStruct_c8ca99d5 *)arg3;
-- (void)_replaceCellAtIndex:(unsigned short)arg1 withCell:(id)arg2 formatKeys:(CDStruct_c8ca99d5 *)arg3;
+- (void)_insertCell:(id)arg1 atIndex:(unsigned short)arg2;
+- (void)_replaceCellAtIndex:(unsigned short)arg1 withCell:(id)arg2;
 - (unsigned short)cellIndexAtOrBeforeIndex:(unsigned short)arg1;
 - (unsigned short)cellIndexAtOrAfterIndex:(unsigned short)arg1;
-- (struct TSTCellStorage *)preBNCStorageRefAtIndex:(unsigned short)arg1;
+- (struct TSTCellStorage *)p_preBNCStorageRefAtIndex:(unsigned short)arg1;
 - (struct TSTCellStorage *)cellStorageRefAtIndex:(unsigned short)arg1;
 - (void)convertToWideOffsets;
 @property(readonly, nonatomic) _Bool usesWideOffsets;
 @property(readonly, nonatomic) unsigned long long archivingCompatibilityVersion;
 - (void)encodeToArchive:(void *)arg1 archiver:(id)arg2;
 - (unsigned short)_archivedColumnCount;
+- (id)p_emptyCell;
 - (id)initFromArchive:(const void *)arg1;
 - (void)dealloc;
 - (id)initWithTileRowIndex:(unsigned int)arg1 wideOffsets:(_Bool)arg2;

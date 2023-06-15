@@ -24,9 +24,9 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool pause; // @synthesize pause=_pause;
 - (void)getDebugInfoDictionariesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)addAsynchronousData:(CDUnknownBlockType)arg1;
-- (void)errorWithFormat:(const char *)arg1;
-- (void)debugWithFormat:(const char *)arg1;
-- (void)infoWithFormat:(const char *)arg1;
+- (void)errorWithMessage:(id)arg1;
+- (void)debugWithMessage:(id)arg1;
+- (void)infoWithMessage:(id)arg1;
 - (void)addEntry:(id)arg1;
 - (id)init;
 

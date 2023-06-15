@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <swiftCore/_TtCs12_SwiftObject.h>
+#import ".h"
 
 @class MISSING_TYPE;
 
-@interface _TtC18VisualIntelligence21ServerSearchProcessor : _TtCs12_SwiftObject
+@interface _TtC18VisualIntelligence21ServerSearchProcessor : 
 {
     MISSING_TYPE *networkService;
+    MISSING_TYPE *lazySimilarityClient;
 }
 
 @end

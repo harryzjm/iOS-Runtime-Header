@@ -11,5 +11,13 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (void)assertAudioStreamAnalyzerSupportsFormat:(id)arg1;
++ (_Bool)validateAudioStreamAnalyzerSupportsFormat:(id)arg1 error:(id *)arg2;
++ (_Bool)validateFormatIsValid:(id)arg1 error:(id *)arg2;
++ (_Bool)checkFormatIsValid:(id)arg1;
++ (_Bool)validateFormatIsLinearPCM:(id)arg1 error:(id *)arg2;
++ (_Bool)checkFormatIsLinearPCM:(id)arg1;
+- (id)init;
+
 @end
 

@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)_hasAlertActions;
 - (void)present;
 - (void)dealloc;
-- (id)initWithTitle:(id)arg1 datadetectorActions:(id)arg2 fromRect:(struct CGRect)arg3 inView:(id)arg4;
+- (id)initWithTitle:(id)arg1 dataDetectorActions:(id)arg2 fromRect:(struct CGRect)arg3 inView:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

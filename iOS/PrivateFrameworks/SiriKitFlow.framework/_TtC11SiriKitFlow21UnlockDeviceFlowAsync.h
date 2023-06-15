@@ -14,6 +14,7 @@
     MISSING_TYPE *strategy;
     MISSING_TYPE *deviceState;
     MISSING_TYPE *outputPublisher;
+    MISSING_TYPE *debugId;
     MISSING_TYPE *state;
 }
 

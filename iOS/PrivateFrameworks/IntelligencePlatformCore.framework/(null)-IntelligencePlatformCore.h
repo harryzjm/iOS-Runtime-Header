@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSString;
+
 @interface (null) (IntelligencePlatformCore)
-- (void)clearPipelineStatusWithCompletion:(void (^)(_Bool, NSError *))arg1;
-- (void)stopPipelineWithCompletion:(void (^)(_Bool, NSError *))arg1;
-- (void)runToMatchingPipelineWithCompletion:(void (^)(_Bool, NSError *))arg1;
-- (void)runDeltaUpdatePipelineWithCompletion:(void (^)(_Bool, NSError *))arg1;
+- (void)reportSQLiteErrorForViewName:(NSString *)arg1 sqliteErrorCode:(long long)arg2 completion:(void (^)(_Bool, NSError *))arg3;
+- (void)reportUnknownErrorForViewName:(NSString *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 @end
 

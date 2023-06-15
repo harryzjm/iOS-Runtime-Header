@@ -9,10 +9,10 @@
 @class NSData, NSError, NSURLRequest, NSURLResponse;
 
 @protocol WKURLSchemeTask <NSObject>
+@property(readonly, copy, nonatomic) NSURLRequest *request;
 - (void)didFailWithError:(NSError *)arg1;
 - (void)didFinish;
 - (void)didReceiveData:(NSData *)arg1;
 - (void)didReceiveResponse:(NSURLResponse *)arg1;
-@property(nonatomic, readonly) NSURLRequest *request;
 @end
 

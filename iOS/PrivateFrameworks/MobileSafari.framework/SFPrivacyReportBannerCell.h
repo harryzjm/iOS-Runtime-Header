@@ -9,14 +9,16 @@ __attribute__((visibility("hidden")))
 {
     long long _numberOfTrackers;
     unsigned long long _action;
+    _Bool _privateBrowsingEnabled;
 }
 
 + (id)reuseIdentifier;
+@property(nonatomic, getter=isPrivateBrowsingEnabled) _Bool privateBrowsingEnabled; // @synthesize privateBrowsingEnabled=_privateBrowsingEnabled;
 @property(nonatomic) long long numberOfTrackers; // @synthesize numberOfTrackers=_numberOfTrackers;
 - (void)_setAction:(unsigned long long)arg1 text:(id)arg2;
 - (void)_updateState;
 - (void)_privacyProxyAvailabilityChanged:(id)arg1;
-- (void)setModel:(id)arg1;
+- (void)configureUsingBanner:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

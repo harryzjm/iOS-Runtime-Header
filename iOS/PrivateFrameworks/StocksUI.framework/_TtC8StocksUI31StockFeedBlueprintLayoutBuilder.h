@@ -23,6 +23,7 @@
     MISSING_TYPE *newsSource;
     MISSING_TYPE *quoteAttributionProvider;
     MISSING_TYPE *earningsViewModelFactory;
+    MISSING_TYPE *featureAvailability;
 }
 
 @end

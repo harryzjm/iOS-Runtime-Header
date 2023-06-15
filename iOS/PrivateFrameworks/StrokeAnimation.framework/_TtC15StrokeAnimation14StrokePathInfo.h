@@ -19,6 +19,7 @@
     MISSING_TYPE *strokeKeyTimes;
     MISSING_TYPE *animationInterval;
     MISSING_TYPE *animationSpeedRate;
+    MISSING_TYPE *animtingExtraInfo;
 }
 
 @end

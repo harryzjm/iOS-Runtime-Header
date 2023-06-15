@@ -18,6 +18,7 @@
     MISSING_TYPE *_lastPflDataCollectionMillis;
     MISSING_TYPE *_lastShadowEvaluationMillis;
     MISSING_TYPE *_lastIndXpcCallMillis;
+    MISSING_TYPE *_lastMobileAssetDownloadActivityRunMillis;
 }
 
 @end

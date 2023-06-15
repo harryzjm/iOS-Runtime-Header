@@ -9,6 +9,7 @@
 @class NSString, UIImage, VUIScorecardView;
 
 @protocol VUIScorecardViewDelegate <NSObject>
+- (struct UIEdgeInsets)marginsForRow:(long long)arg1 atIndex:(long long)arg2;
 - (double)maximumWidthForScorecardView:(VUIScorecardView *)arg1;
 - (NSString *)scoreValue:(VUIScorecardView *)arg1 inRow:(long long)arg2 atIndex:(long long)arg3;
 - (long long)numberOfScoreValuesForScorecardView:(VUIScorecardView *)arg1 inRow:(long long)arg2;

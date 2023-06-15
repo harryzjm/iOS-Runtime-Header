@@ -6,7 +6,7 @@
 
 #import "MRAVRoutingDiscoverySession.h"
 
-@class MRAVEndpoint, MRAVRoutingDiscoverySessionConfiguration, MRExternalDevice, NSString;
+@class MRAVEndpoint, MRAVRoutingDiscoverySessionConfiguration, MRExternalDevice;
 
 __attribute__((visibility("hidden")))
 @interface MRAVExternalRoutingDiscoverySession : MRAVRoutingDiscoverySession
@@ -21,7 +21,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) MRExternalDevice *externalDevice; // @synthesize externalDevice=_externalDevice;
 @property(retain, nonatomic) MRAVEndpoint *destination; // @synthesize destination=_destination;
-- (void)endpointDidDisconnect:(id)arg1;
 - (id)destinationOutputDeviceUID;
 - (id)availableOutputDevices;
 - (id)availableEndpoints;
@@ -30,13 +29,9 @@ __attribute__((visibility("hidden")))
 - (void)setDiscoveryMode:(unsigned int)arg1;
 - (unsigned int)discoveryMode;
 - (void)dealloc;
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
+- (id)debugDescription;
+- (id)description;
 - (id)initWithConfiguration:(id)arg1;
-
-// Remaining properties
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

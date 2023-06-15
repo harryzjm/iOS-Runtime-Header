@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (double)defaultHeight;
+- (double)defaultHeightForBarMetrics:(long long)arg1;
 
 @end
 

@@ -7,13 +7,13 @@
 #import <MapsUI/MUInfoCardSectionAnalyticsDelegate-Protocol.h>
 #import <MapsUI/NSObject-Protocol.h>
 
-@class MKUGCCallToActionViewAppearance, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, NSArray, UIView, UIViewController;
+@class MUPlaceCallToActionAppearance, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, NSArray, UIView, UIViewController;
 @protocol MUInfoCardAnalyticsDelegate;
 
 @protocol MUPlaceSectionControlling <NSObject, MUInfoCardSectionAnalyticsDelegate>
 @property(nonatomic) __weak id <MUInfoCardAnalyticsDelegate> analyticsDelegate;
 @property(nonatomic, getter=isActive) _Bool active;
-@property(retain, nonatomic) MKUGCCallToActionViewAppearance *submissionStatus;
+@property(retain, nonatomic) MUPlaceCallToActionAppearance *submissionStatus;
 @property(readonly, nonatomic) MUPlaceSectionFooterViewModel *sectionFooterViewModel;
 @property(readonly, nonatomic) MUPlaceSectionHeaderViewModel *sectionHeaderViewModel;
 @property(readonly, nonatomic) NSArray *sectionViews;

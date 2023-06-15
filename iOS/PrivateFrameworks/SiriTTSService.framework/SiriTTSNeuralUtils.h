@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 + (_Bool)compileANEModel:(id)arg1 error:(id *)arg2;
 + (_Bool)isANEModelCompiled:(id)arg1;
 + (_Bool)shouldUseNeuralVoice:(id)arg1;
++ (_Bool)isNeuralVoiceReady:(id)arg1;
 + (_Bool)isH12Platform;
 + (_Bool)isNeuralPlatform;
 + (_Bool)isANEOnly;

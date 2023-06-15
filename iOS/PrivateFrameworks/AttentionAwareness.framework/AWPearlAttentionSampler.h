@@ -4,52 +4,59 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class BKDevicePearl, BKFaceDetectOperation, NSObject, NSString;
-@protocol OS_dispatch_source;
+@class CARSessionStatus, NSObject, NSString;
+@protocol OS_dispatch_source, SamplingOperation;
 
 __attribute__((visibility("hidden")))
 @interface AWPearlAttentionSampler
 {
-    BKDevicePearl *_pearlDevice;
-    BKFaceDetectOperation *_pendingPresenceOperation;
-    BKFaceDetectOperation *_finishingPresenceOperation;
+    id <SamplingOperation> _unitTestOperation;
+    id <SamplingOperation> _currentOperation;
+    id <SamplingOperation> _finishingOperation;
+    CARSessionStatus *_carSessionStatus;
     NSObject<OS_dispatch_source> *_operationStalledTimer;
     unsigned long long _operationCreateTime;
     unsigned long long _lastErrorTime;
     int _displayNotifyToken;
     _Bool _displayState;
     _Bool _smartCoverClosed;
+    _Bool _carPlayConnected;
+    _Bool _useAVFoundation;
+    _Bool _unitTest;
+    struct {
+        _Bool AWAttentionSamplerActivateAttentionDetection;
+        _Bool AWAttentionSamplerActivateMotionDetection;
+    } _currentOptions;
 }
 
 - (void).cxx_destruct;
 - (id)unitTestSampler;
-- (void)operation:(id)arg1 presenceStateChanged:(_Bool)arg2;
-- (void)operation:(id)arg1 stateChanged:(long long)arg2;
-- (void)device:(id)arg1 pearlStateChanged:(long long)arg2;
-- (void)device:(id)arg1 pearlEventOccurred:(long long)arg2;
-- (void)operation:(id)arg1 finishedWithReason:(long long)arg2;
-- (void)operation:(id)arg1 faceDetectStateChanged:(id)arg2;
+- (void)cameraActivityNotification:(int)arg1 data:(CDUnion_0e6d45a1 *)arg2 forOperation:(id)arg3;
 - (void)updateSamplingDeadline:(unsigned long long)arg1 forClient:(id)arg2;
 - (int)currentState;
 - (void)setSmartCoverClosed:(_Bool)arg1;
 - (void)setDisplayState:(_Bool)arg1;
 - (void)setDisplayStateFromNotification;
-- (void)updateSuppressedMaskWithDisplayState:(_Bool)arg1 smartCoverClosed:(_Bool)arg2;
+- (void)setCarplayStateFromNotification:(_Bool)arg1;
+- (void)sessionDidDisconnect:(id)arg1;
+- (void)sessionDidConnect:(id)arg1;
+- (void)updateSuppressedMaskWithDisplayState:(_Bool)arg1 smartCoverClosed:(_Bool)arg2 carPlayConnected:(_Bool)arg3;
 - (void)cancelStalledTimer;
 - (void)startStalledTimerForOperation:(id)arg1;
 - (unsigned long long)minimumAttentionSamplerErrorRetryTime;
-- (unsigned long long)nextSampleTimeForSamplingInterval:(unsigned long long)arg1;
+- (unsigned long long)nextSampleTimeForSamplingInterval:(unsigned long long)arg1 ignoreDisplayState:(_Bool)arg2;
 - (void)setCurrentState:(int)arg1;
 - (void)pearlAttentionSamplerErrorOccurred;
 - (void)updateFaceState:(int)arg1 withFaceMetadata:(struct AWFaceDetectMetadata *)arg2;
 - (void)updateFaceState:(int)arg1;
-- (void)shouldSample:(_Bool)arg1 withDeadline:(unsigned long long)arg2 withOptions:(union)arg3;
+- (void)shouldSample:(_Bool)arg1 withDeadline:(unsigned long long)arg2 withOptions:(CDStruct_3d581f42)arg3;
 - (void)cancelFaceDetect:(id)arg1;
 - (void)finishingFaceDetect:(id)arg1;
 - (void)faceDetectStalled:(id)arg1;
-- (void)triggerFaceDetectWithDeadline:(unsigned long long)arg1;
-- (id)init;
-- (id)initForUnitTest:(_Bool)arg1;
+- (void)triggerFaceDetectWithDeadline:(unsigned long long)arg1 options:(CDStruct_3d581f42)arg2;
+- (id)createNewSamplingOperation;
+- (id)initForUnitTest:(_Bool)arg1 useAVFoundation:(_Bool)arg2;
+- (id)initWithOptions:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

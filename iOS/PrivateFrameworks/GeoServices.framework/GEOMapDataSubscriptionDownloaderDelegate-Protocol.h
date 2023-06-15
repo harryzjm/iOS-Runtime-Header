@@ -6,9 +6,12 @@
 
 #import <GeoServices/NSObject-Protocol.h>
 
-@class GEOMapDataSubscriptionDownloader, NSError;
+@class GEOMapDataSubscriptionDownloader, NSDictionary, NSError;
 
 @protocol GEOMapDataSubscriptionDownloaderDelegate <NSObject>
 - (void)subscriptionDownloader:(GEOMapDataSubscriptionDownloader *)arg1 didFinishWithError:(NSError *)arg2;
+
+@optional
+- (void)subscriptionDownloader:(GEOMapDataSubscriptionDownloader *)arg1 willUseOfflineDataVersions:(NSDictionary *)arg2 completionHandler:(void (^)(_Bool))arg3;
 @end
 

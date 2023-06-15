@@ -16,9 +16,6 @@
 @property(readonly, copy, nonatomic) NSString *xmlDescription;
 @property(readonly, nonatomic) struct CGRect boundingRect;
 @property(readonly, nonatomic, getter=isEmpty) _Bool empty;
-- (const void *)_rbXmlDocument;
-- (const void *)_rbPredicate;
-- (const void *)_rbContents;
 - (void)renderInContext:(struct CGContext *)arg1 options:(NSDictionary *)arg2;
 - (void)drawInState:(struct _RBDrawingState *)arg1;
 @end

@@ -9,6 +9,7 @@
 @class NSArray, NSDictionary, NSProgress, NSSecurityScopedURLWrapper, NSSet, NSString, NSURL, PLDelayedSaveActionsDetail, PLInterLibraryTransferOptions, PLPhotoLibraryOptions, PLXPCDictionary;
 
 @protocol PLAssetsdLibraryServiceProtocol <NSObject>
+- (NSProgress *)resetPersonsWithReply:(void (^)(_Bool, NSError *))arg1;
 - (NSProgress *)transferPersonsWithUuids:(NSSet *)arg1 fromLibraryURL:(NSSecurityScopedURLWrapper *)arg2 transferOptions:(PLInterLibraryTransferOptions *)arg3 reply:(void (^)(NSError *))arg4;
 - (NSProgress *)transferAssetsWithUuids:(NSSet *)arg1 fromLibraryURL:(NSSecurityScopedURLWrapper *)arg2 transferOptions:(PLInterLibraryTransferOptions *)arg3 reply:(void (^)(NSError *))arg4;
 - (void)pendingEventsForRequest:(PLXPCDictionary *)arg1 reply:(void (^)(PLXPCDictionary *))arg2;

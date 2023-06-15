@@ -22,6 +22,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool requiresConstraintUpdate; // @synthesize requiresConstraintUpdate=_requiresConstraintUpdate;
 @property(nonatomic) int extraHostsRequired; // @synthesize extraHostsRequired=_extraHostsRequired;
 @property(nonatomic) __weak UIInputWindowController *owner; // @synthesize owner=_owner;
+- (void)removeMatchMoveAnimationIfNeeded;
+- (id)scrollTrackingView;
 - (unsigned long long)indexOfHost:(id)arg1;
 - (_Bool)host:(id)arg1 isForPurpose:(unsigned long long)arg2;
 - (id)expectedPlacementForHost:(id)arg1;
@@ -48,7 +50,7 @@ __attribute__((visibility("hidden")))
 - (void)updateViewConstraints;
 - (struct UIEdgeInsets)_inputViewPadding;
 - (id)itemForPurpose:(unsigned long long)arg1;
-- (void)reloadForPlacement;
+- (void)reloadForPlacementForInputViewSet:(id)arg1;
 - (void)unloadForPlacement;
 - (_Bool)useCrescendoHostingItem;
 @property(readonly, retain, nonatomic) NSArray *allHostingItems;

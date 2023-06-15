@@ -15,6 +15,9 @@
 @optional
 - (void)cancelAuthenticationSessionWithID:(NSUUID *)arg1;
 - (void)authenticateUsingClientProxy:(id <SFUnlockClientProtocol>)arg1 type:(unsigned long long)arg2 sessionID:(NSUUID *)arg3;
+- (void)disableWithAuthenticationType:(unsigned long long)arg1 device:(SFAutoUnlockDevice *)arg2 sessionID:(NSUUID *)arg3;
+- (void)enableUsingClientProxy:(id <SFUnlockClientProtocol>)arg1 authenticationType:(unsigned long long)arg2 device:(SFAutoUnlockDevice *)arg3 passcode:(NSString *)arg4 sessionID:(NSUUID *)arg5;
+- (void)listEligibleDevicesForAuthenticationType:(unsigned long long)arg1 completionHandler:(void (^)(NSSet *, NSError *))arg2;
 - (void)unlockStateForDevice:(NSString *)arg1 completionHandler:(void (^)(SFUnlockState *, NSError *))arg2;
 - (void)establishStashBagWithManifest:(NSData *)arg1 completionHandler:(void (^)(_Bool, NSError *))arg2;
 - (void)establishStashBagWithCompletionHandler:(void (^)(_Bool, NSError *))arg1;

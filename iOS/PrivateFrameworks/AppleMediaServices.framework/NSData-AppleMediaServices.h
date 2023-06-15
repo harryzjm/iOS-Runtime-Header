@@ -12,7 +12,7 @@
 + (id)_labelForDataProtectionClass:(unsigned long long)arg1;
 + (id)_generateInitializationVectorDataWithError:(id *)arg1;
 + (id)_AESKeyForDataProtectionClass:(unsigned long long)arg1 error:(id *)arg2;
-+ (const struct __CFString *)_accessibleAttributeForDataProtectionClass:(unsigned long long)arg1;
++ (struct __CFString *)_accessibleAttributeForDataProtectionClass:(unsigned long long)arg1;
 + (id)ams_generateEncryptionKey;
 - (CDStruct_0f015c83)ams_encryptDataUsingKey:(id)arg1 error:(id *)arg2;
 - (CDStruct_0f015c83)ams_encryptDataUsingDataProtectionClass:(unsigned long long)arg1 error:(id *)arg2;

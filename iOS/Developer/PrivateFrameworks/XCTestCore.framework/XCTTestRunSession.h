@@ -19,6 +19,7 @@
 - (void).cxx_destruct;
 - (void)executeTestsWithIdentifiers:(id)arg1 skippingTestsWithIdentifiers:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)getParallelizableTestIdentifiersWithCompletion:(CDUnknownBlockType)arg1;
+- (void)getAllTestIdentifiersWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithTestConfiguration:(id)arg1 error:(id *)arg2;
 
 // Remaining properties

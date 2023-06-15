@@ -7,9 +7,6 @@
 #import <WebBookmarks/NSObject-Protocol.h>
 #import <WebBookmarks/WBTabGroupSyncAgentProtocol-Protocol.h>
 
-@class WBBrowserState;
-
 @protocol WBTabGroupSyncAgentProxyProtocol <WBTabGroupSyncAgentProtocol, NSObject>
-- (void)saveBrowserState:(WBBrowserState *)arg1 canSafelyTerminateCompletionHandler:(void (^)(void))arg2;
 @end
 

@@ -9,7 +9,6 @@
 @class GTIntKeyedDictionary_capture, NSError, NSMutableSet, NSString, NSURL;
 @protocol OS_dispatch_queue;
 
-__attribute__((visibility("hidden")))
 @interface GTTransport_capture : NSObject
 {
     NSURL *_url;

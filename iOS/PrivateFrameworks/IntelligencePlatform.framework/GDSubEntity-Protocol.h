@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class GDSubEntityIdentifier;
+@class GDRelationshipIdentifier;
 
-@protocol GDSubEntity
-@property(readonly, nonatomic) GDSubEntityIdentifier *subEntityIdentifier;
+@protocol GDSubentity
+@property(readonly, nonatomic) GDRelationshipIdentifier *relationshipIdentifier;
 @end
 

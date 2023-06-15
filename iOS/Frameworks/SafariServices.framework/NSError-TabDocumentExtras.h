@@ -8,6 +8,5 @@
 
 @interface NSError (TabDocumentExtras)
 - (id)failingURL;
-@property(readonly, nonatomic) _Bool _sf_recoverableByPageFormatMenu;
 @end
 

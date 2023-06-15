@@ -11,11 +11,13 @@
 __attribute__((visibility("hidden")))
 @interface MGOutstandingQuery : NSObject
 {
+    _Bool _requiresTopology;
     NSUUID *_identifier;
     NSPredicate *_predicate;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool requiresTopology; // @synthesize requiresTopology=_requiresTopology;
 @property(readonly, copy, nonatomic) NSPredicate *predicate; // @synthesize predicate=_predicate;
 @property(readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 - (id)initWithPredicate:(id)arg1;

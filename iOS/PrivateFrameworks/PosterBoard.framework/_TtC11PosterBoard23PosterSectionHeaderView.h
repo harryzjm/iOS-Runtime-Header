@@ -4,21 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UICollectionReusableView.h>
+#import <UIKitCore/UICollectionReusableView.h>
 
 @class MISSING_TYPE, NSString;
 
 __attribute__((visibility("hidden")))
 @interface _TtC11PosterBoard23PosterSectionHeaderView : UICollectionReusableView
 {
+    MISSING_TYPE *delegate;
+    MISSING_TYPE *posterPair;
     MISSING_TYPE *title;
     MISSING_TYPE *titleLabel;
     MISSING_TYPE *titleLabelSpacingFromBottomEdge;
 }
 
 - (void).cxx_destruct;
+- (void)posterPairDidUpdateLocalizedTitle:(id)arg1;
 - (void)layoutSubviews;
-- (void)traitCollectionDidChange:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)prepareForReuse;

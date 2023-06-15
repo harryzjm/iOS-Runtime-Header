@@ -13,7 +13,7 @@
     MISSING_TYPE *hasStagedChanges;
 }
 
-- (id)initWithParameter:(id)arg1 initialState:(id)arg2 initialArrayState:(id)arg3 arrayIndex:(long long)arg4 processing:(_Bool)arg5;
+- (id)initWithParameter:(id)arg1 arrayIndex:(long long)arg2 processing:(_Bool)arg3;
 - (void)textEntryDidFinish;
 - (void)textEntryTextDidChange:(id)arg1;
 - (void)textEntryWillBegin:(id)arg1 allowMultipleLines:(_Bool *)arg2;

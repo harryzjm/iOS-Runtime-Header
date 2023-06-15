@@ -9,7 +9,6 @@
 @interface NSFileManager (TRIServer)
 + (id)triDiskUsageForDirectory:(id)arg1;
 + (unsigned long long)triCompressedSizeForFileAtPath:(id)arg1 shouldFault:(_Bool *)arg2;
-+ (_Bool)triRemoveFileProtectionIfPresentForPath:(id)arg1;
 + (id)triTargetPathForSymlink:(id)arg1;
 + (_Bool)triForceRenameWithSourcePath:(id)arg1 destPath:(id)arg2;
 + (_Bool)triRenameOrFaultWithSourcePath:(id)arg1 destPath:(id)arg2;

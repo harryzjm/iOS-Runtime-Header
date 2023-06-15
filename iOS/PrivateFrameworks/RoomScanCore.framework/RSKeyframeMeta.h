@@ -17,10 +17,6 @@
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
-@property(nonatomic) unsigned long long size; // @synthesize size=_size;
-@property(nonatomic) CDStruct_14d5dc5e cameraPose; // @synthesize cameraPose=_cameraPose;
-@property(retain, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 

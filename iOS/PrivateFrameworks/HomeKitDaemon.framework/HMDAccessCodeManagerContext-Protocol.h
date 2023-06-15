@@ -10,10 +10,14 @@
 @protocol OS_dispatch_queue;
 
 @protocol HMDAccessCodeManagerContext <NSObject>
+
+@optional
 @property(readonly) HMDHomeWalletKeyManager *walletKeyManager;
 @property(readonly) HMDRemoteMessageForwarder *remoteMessageForwarder;
 @property(readonly) HMDBulletinBoard *bulletinBoard;
 @property(readonly) NSArray *UUIDsOfUsersWithoutAccessCodes;
+@property(readonly) NSArray *UUIDsOfHAPAccessoriesSupportingAccessCodes;
+@property(readonly) NSArray *UUIDsOfMatterAccessoriesSupportingAccessCodes;
 @property(readonly) NSArray *UUIDsOfAccessoriesSupportingAccessCodes;
 @property(readonly) NSArray *accessoriesSupportingAccessCodes;
 @property(readonly) HMDDevice *residentCommunicationHandlerPreferredDevice;
@@ -47,6 +51,6 @@
 - (HMAccessCodeValue *)generateAccessCodeValueFromConstraints:(NSArray *)arg1 accessoryAccessCodes:(NSArray *)arg2 homeAccessCodes:(NSArray *)arg3;
 - (NAFuture *)performReadRequests:(NSArray *)arg1 withRetries:(long long)arg2 timeInterval:(double)arg3 loggingObject:(id)arg4;
 - (NAFuture *)performWriteRequests:(NSArray *)arg1 withRetries:(long long)arg2 timeInterval:(double)arg3 loggingObject:(id)arg4;
-- (void)configure;
+- (void)configureWithMessageDispatcher:(HMFMessageDispatcher *)arg1;
 @end
 

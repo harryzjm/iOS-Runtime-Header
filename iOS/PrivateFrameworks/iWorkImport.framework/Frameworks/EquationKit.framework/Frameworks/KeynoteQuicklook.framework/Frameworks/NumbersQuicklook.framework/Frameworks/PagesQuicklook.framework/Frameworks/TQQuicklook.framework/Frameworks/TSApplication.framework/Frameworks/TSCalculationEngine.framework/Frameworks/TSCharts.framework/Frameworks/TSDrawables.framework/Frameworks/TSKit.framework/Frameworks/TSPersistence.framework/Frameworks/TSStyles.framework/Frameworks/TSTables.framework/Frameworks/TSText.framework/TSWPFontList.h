@@ -6,11 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, NSMutableArray, NSSet;
+@class NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSSet;
+@protocol OS_dispatch_queue;
 
 @interface TSWPFontList : NSObject
 {
-    NSDictionary *_knownFonts;
+    NSObject<OS_dispatch_queue> *_knownFontsAccessQueue;
+    NSMutableDictionary *_knownFonts;
     CDUnknownBlockType _fontPropertyResolver;
     NSSet *_downloadedFonts;
     NSDictionary *_knownFontFamilyFaces;
@@ -26,7 +28,6 @@
 @property(retain) NSDictionary *knownFontFamilyFaces; // @synthesize knownFontFamilyFaces=_knownFontFamilyFaces;
 @property(retain) NSSet *downloadedFonts; // @synthesize downloadedFonts=_downloadedFonts;
 @property(copy, nonatomic) CDUnknownBlockType fontPropertyResolver; // @synthesize fontPropertyResolver=_fontPropertyResolver;
-@property(retain) NSDictionary *knownFonts; // @synthesize knownFonts=_knownFonts;
 - (void)saveRecentFontNames:(id)arg1;
 @property(readonly) NSArray *recentBaseFonts;
 - (id)description;
@@ -59,6 +60,7 @@
 - (id)sortedFontFamilies;
 - (id)availableFontDescriptorsForAllFamilies;
 - (id)familiesForFontsInCollection:(struct __CTFontCollection *)arg1;
+@property(readonly) NSDictionary *knownFonts;
 - (void)loadRecentFonts;
 - (id)init;
 

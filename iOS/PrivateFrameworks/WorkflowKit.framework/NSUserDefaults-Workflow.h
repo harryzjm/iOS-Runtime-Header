@@ -7,13 +7,22 @@
 #import <Foundation/NSUserDefaults.h>
 
 @interface NSUserDefaults (Workflow)
++ (_Bool)dawnFluidityEnabled;
++ (_Bool)dawnRunningUIEnabled;
 + (_Bool)jindoUseIconOnlyLayoutInCompact;
-+ (_Bool)jindoDisableTapToApp;
++ (_Bool)remoteWidgetConfigurationEnabled;
++ (_Bool)syncV2Enabled;
++ (_Bool)drawerPerformanceEnabled;
++ (_Bool)maritimeEnabled;
++ (_Bool)watchAutomationEnabled;
++ (_Bool)walletTransactionTriggerEnabled;
++ (_Bool)allowActionsFromAllBundles;
 + (_Bool)universalPreviewsEnabled;
 + (_Bool)bannerWorkaroundsDisabled;
 + (_Bool)bannersEnabled;
 + (_Bool)useLinkActionDenyList;
-+ (_Bool)linkEnabled;
++ (id)simulatedFeatureFlagState:(id)arg1;
++ (void)setSimulatedStateForTesting:(_Bool)arg1 forFeatureFlag:(id)arg2;
 + (id)siriAssistantUserDefaults;
 + (id)systemShortcutsUserDefaults;
 + (id)workflowUserDefaults;

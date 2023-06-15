@@ -105,6 +105,7 @@ __attribute__((visibility("hidden")))
 - (void)setShowsSeparator:(_Bool)arg1;
 - (void)layoutSubviews;
 - (void)invalidateLayout;
+@property(nonatomic) double heightAllowanceForTopSearchBarInTitleViewLocation;
 @property(nonatomic) double rightInsetForInlineSearch;
 @property(nonatomic) double leftInsetForInlineSearch;
 - (double)idealInlineWidthForLayoutState:(long long)arg1;
@@ -131,7 +132,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool showsBookmarkButton;
 @property(nonatomic, getter=isSearchResultsButtonSelected) _Bool searchResultsButtonSelected;
 @property(nonatomic) _Bool showsSearchResultsButton;
-@property(nonatomic) _Bool cancelButtonWantsLetterpress;
 @property(nonatomic) _Bool autoDisableCancelButton;
 - (void)setShowsCancelButton:(_Bool)arg1 animated:(_Bool)arg2;
 @property(nonatomic) _Bool showsCancelButton;
@@ -145,7 +145,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned long long scopeBarPosition;
 @property(nonatomic) long long barPosition;
 @property(retain, nonatomic) UIColor *barTintColor;
-@property(nonatomic) unsigned long long backdropStyle;
+@property(nonatomic) long long backdropStyle;
 @property(nonatomic) long long barTranslucence;
 @property(nonatomic) unsigned long long searchBarStyle;
 @property(nonatomic) long long barStyle;

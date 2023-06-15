@@ -15,6 +15,7 @@
 - (void)beginHSA2PasscodeRequest:(SecureBackup *)arg1 desirePasscodeImmediately:(_Bool)arg2 uuid:(NSString *)arg3 reason:(SecureBackupEscrowReason *)arg4 reply:(void (^)(SecureBackupBeginPasscodeRequestResults *, NSError *))arg5;
 - (void)prepareHSA2EscrowRecordContents:(SecureBackup *)arg1 usesComplexPassphrase:(_Bool)arg2 reply:(void (^)(NSError *))arg3;
 - (void)stateCaptureWithReply:(void (^)(NSDictionary *, NSError *))arg1;
+- (void)backupForRecoveryKeyWithInfoInDaemon:(NSDictionary *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)backupWithInfo:(NSDictionary *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)notificationInfoWithReply:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)uncachePassphraseWithRequestAsync:(SecureBackup *)arg1;
@@ -31,7 +32,10 @@
 - (void)updateMetadataWithRequest:(SecureBackup *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)disableWithRequest:(SecureBackup *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)stashRecoveryDataWithRequest:(SecureBackup *)arg1 reply:(void (^)(NSError *))arg2;
+- (void)verifyRecoveryKeyInDaemon:(NSString *)arg1 reply:(void (^)(_Bool, NSError *))arg2;
+- (void)restoreKeychainWithBackupPasswordInDaemon:(NSData *)arg1 reply:(void (^)(_Bool, NSError *))arg2;
 - (void)restoreKeychainAsyncWithPasswordInDaemon:(NSData *)arg1 keybagDigest:(NSData *)arg2 haveBottledPeer:(_Bool)arg3 viewsNotToBeRestored:(NSSet *)arg4 reply:(void (^)(NSError *))arg5;
+- (void)isRecoveryKeySetInDaemon:(void (^)(_Bool, NSError *))arg1;
 - (void)recoverSilentWithCDPContextInDaemon:(OTICDPRecordContext *)arg1 allRecords:(NSArray *)arg2 reply:(void (^)(NSDictionary *, NSError *))arg3;
 - (void)recoverWithCDPContextInDaemon:(OTICDPRecordContext *)arg1 escrowRecord:(OTEscrowRecord *)arg2 reply:(void (^)(NSDictionary *, NSError *))arg3;
 - (void)recoverWithRequest:(SecureBackup *)arg1 reply:(void (^)(NSDictionary *, NSError *))arg2;

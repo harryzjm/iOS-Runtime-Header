@@ -9,7 +9,6 @@
 __attribute__((visibility("hidden")))
 @interface _TtC8VideosUI33SportsFavoritesTemplateController
 {
-    MISSING_TYPE *syncTeamFavorites;
     MISSING_TYPE *templateUpdateObserver;
     MISSING_TYPE *teamsServiceRequest;
     MISSING_TYPE *favoriteTeamsBefore;

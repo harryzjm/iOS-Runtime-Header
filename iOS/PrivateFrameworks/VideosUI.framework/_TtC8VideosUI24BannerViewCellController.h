@@ -11,12 +11,13 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *bannerViewCell;
     MISSING_TYPE *viewModel;
-    MISSING_TYPE *yOffset;
+    MISSING_TYPE *navigationBarHeight;
 }
 
 - (void).cxx_destruct;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)vui_viewDidLayoutSubviews;
+- (void)vui_viewWillAppear:(_Bool)arg1;
 - (void)vui_viewDidLoad;
 - (id)initWithCoder:(id)arg1;
 - (id)init;

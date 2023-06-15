@@ -10,40 +10,46 @@
 __attribute__((visibility("hidden")))
 @interface _GCDevicePhysicalInputButtonElement
 {
-    _Bool _isAnalog;
-    float _pressedThreshold;
-    long long _pressedValueField;
+    unsigned long long _sourcesSlot;
+    unsigned long long _isAnalogSlot;
+    unsigned long long _pressedThresholdSlot;
+    unsigned long long _pressedValueFieldSlot;
     unsigned long long _valueChangedHandlerSlot;
     unsigned long long _pressedChangedHandlerSlot;
     unsigned long long _valueSlot;
-    unsigned long long _timestampSlot;
+    unsigned long long _valueTimestampSlot;
+    unsigned long long _pressedTimestampSlot;
 }
 
-- (void)onCommitInvokeCallbacks:(unsigned long long)arg1;
-- (unsigned long long)handleGamepadEvent:(id)arg1 withTimestamp:(double)arg2;
++ (unsigned short)updateContextSize;
+- (_Bool)update:(void *)arg1 forGamepadEvent:(id)arg2 withTimestamp:(double)arg3;
 @property(readonly) double lastPressedStateLatency;
 @property(readonly) double lastPressedStateTimestamp;
 @property(readonly, getter=isPressed) _Bool pressed;
 @property(copy) CDUnknownBlockType pressedDidChangeHandler;
+@property(readonly, copy) NSSet *sources;
 @property(readonly) double lastValueLatency;
 @property(readonly) double lastValueTimestamp;
 @property(readonly) _Bool canWrap;
 @property(readonly, getter=isAnalog) _Bool analog;
 @property(readonly) float value;
 @property(copy) CDUnknownBlockType valueDidChangeHandler;
+@property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 - (_Bool)isEqualToElement:(id)arg1;
 @property(readonly) id <GCTouchedStateInput> touchedInput;
 @property(readonly) id <GCPressedStateInput><GCLinearInput> pressedInput;
-- (id)initWith:(id)arg1 context:(id)arg2;
-- (id)initWithIdentifier:(id)arg1 configuration:(id)arg2;
+- (void)postCommit:(const void *)arg1 sender:(id)arg2;
+- (void)preCommit:(const void *)arg1 sender:(id)arg2;
+- (_Bool)update:(void *)arg1 forUsages:(unsigned long long)arg2 with:(id)arg3;
+- (id)initWithTemplate:(id)arg1 context:(id)arg2;
+- (id)initWithParameters:(id)arg1;
 
 // Remaining properties
-@property(readonly) NSSet *aliases;
-@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSSet *aliases;
 @property(readonly) unsigned long long hash;
-@property(readonly) NSString *localizedName;
-@property(readonly) NSString *sfSymbolsName;
+@property(readonly, copy) NSString *localizedName;
+@property(readonly, copy) NSString *sfSymbolsName;
 @property(readonly) Class superclass;
 
 @end

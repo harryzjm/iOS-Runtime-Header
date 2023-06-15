@@ -6,7 +6,6 @@
 
 @interface (null) (SleepHealthUI)
 - (void)cancelWithAnimated:(_Bool)arg1;
-- (void)featureAvailabilityProvidingDidUpdatePairedDeviceCapability:(id)arg1;
 - (void)featureAvailabilityProvidingDidUpdateOnboardingCompletion:(id)arg1;
 @end
 

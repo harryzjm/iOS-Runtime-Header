@@ -9,7 +9,6 @@
 @class CaptureMTLDevice, NSString;
 @protocol MTLResourceGroupSPI;
 
-__attribute__((visibility("hidden")))
 @interface CaptureMTLResourceGroup : NSObject
 {
     id <MTLResourceGroupSPI> _baseObject;

@@ -6,7 +6,7 @@
 
 #import <MapsSupport/NSObject-Protocol.h>
 
-@class GEOSharedNavState, MSPSharedTripSharingIdentity, NSArray, NSError;
+@class GEOSharedNavState, MSPSharedTripSharingIdentity, NSArray, NSError, NSString;
 
 @protocol MSPSharedTripXPCClient <NSObject>
 - (void)destinationReachedDidUpdateForSharedTrip:(GEOSharedNavState *)arg1;
@@ -18,6 +18,7 @@
 - (void)sharedTripDidBecomeAvailable:(GEOSharedNavState *)arg1;
 - (void)sharedTripInvalidatedWithError:(NSError *)arg1;
 - (void)sharedTripDidUpdateRecipients:(NSArray *)arg1;
+- (void)sharedTripDidStartSharingWithIdentifier:(NSString *)arg1;
 - (void)sharingIdentityDidChange:(MSPSharedTripSharingIdentity *)arg1;
 @end
 

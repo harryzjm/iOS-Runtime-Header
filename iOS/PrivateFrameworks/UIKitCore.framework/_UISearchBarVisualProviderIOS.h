@@ -35,7 +35,6 @@ __attribute__((visibility("hidden")))
         unsigned int usesEmbeddedAppearance:1;
         unsigned int showsCancelButton:1;
         unsigned int autoDisableCancelButton:1;
-        unsigned int cancelButtonWantsLetterpress:1;
         unsigned int showsDeleteButton:1;
         unsigned int showsSearchResultsButton:1;
         unsigned int searchResultsButtonSelected:1;
@@ -70,7 +69,7 @@ __attribute__((visibility("hidden")))
     _UISearchBarScopeBarBackground *_scopeBarBackgroundView;
     NSArray *_scopeTitles;
     long long _selectedScope;
-    unsigned long long _backdropStyle;
+    long long _backdropStyle;
     UIColor *_barTintColor;
     long long _barPosition;
     unsigned long long _scopeBarPosition;
@@ -96,9 +95,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) _UISearchBarLayout *currentLayout; // @synthesize currentLayout=_currentLayout;
 @property(nonatomic) double backgroundExtension; // @synthesize backgroundExtension=_backgroundExtension;
 @property(readonly, nonatomic) long long previousLayoutState; // @synthesize previousLayoutState=_previousLayoutState;
-- (void)setRightInsetForInlineSearch:(double)arg1;
 - (double)rightInsetForInlineSearch;
-- (void)setLeftInsetForInlineSearch:(double)arg1;
 - (double)leftInsetForInlineSearch;
 - (long long)layoutState;
 - (id)animatedAppearanceBarButtonItem;
@@ -116,7 +113,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)scopeBarPosition;
 - (void)setBarTintColor:(id)arg1;
 - (id)barTintColor;
-- (unsigned long long)backdropStyle;
+- (long long)backdropStyle;
 - (void)setSelectedScope:(long long)arg1;
 - (long long)selectedScope;
 - (id)scopeTitles;
@@ -164,6 +161,8 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)boundsForSearchBarAndUpdateIfNecessaryFromSuggestedBounds:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)configureLayout:(id)arg1 forState:(long long)arg2;
+- (void)setRightInsetForInlineSearch:(double)arg1;
+- (void)setLeftInsetForInlineSearch:(double)arg1;
 - (double)effectiveBackgroundExtension;
 - (void)configureLayout:(id)arg1;
 - (void)invalidateLayout;
@@ -185,6 +184,7 @@ __attribute__((visibility("hidden")))
 - (double)navigationBarContentHeight;
 - (double)defaultHeightForOrientation:(long long)arg1;
 - (long long)barMetricsForOrientation:(long long)arg1;
+- (double)allowedHeightInNavigationContentView;
 - (double)barHeightForBarMetrics:(long long)arg1;
 - (double)barHeightForBarMetrics:(long long)arg1 barPosition:(long long)arg2;
 - (double)searchFieldHeight;
@@ -202,6 +202,9 @@ __attribute__((visibility("hidden")))
 - (void)getTopInset:(double *)arg1 bottomInset:(double *)arg2 forBarMetrics:(long long)arg3 barPosition:(long long)arg4 layoutState:(long long)arg5 forcingInlineCalculation:(_Bool)arg6;
 - (void)getTopInset:(double *)arg1 bottomInset:(double *)arg2 forBarMetrics:(long long)arg3 barPosition:(long long)arg4 layoutState:(long long)arg5;
 - (void)getTopInset:(double *)arg1 bottomInset:(double *)arg2 forBarMetrics:(long long)arg3 barPosition:(long long)arg4;
+- (void)getDefaultTopInset:(double *)arg1 bottomInset:(double *)arg2;
+- (void)getTopAttachedTopInset:(double *)arg1 bottomInset:(double *)arg2 isCompact:(_Bool)arg3;
+- (void)getNavigationBarHostedTopInset:(double *)arg1 bottomInset:(double *)arg2 forActive:(_Bool)arg3 isCompact:(_Bool)arg4;
 - (_Bool)_getNavigationTitleLeadingInset:(double *)arg1 trailingInset:(double *)arg2 isRTL:(_Bool)arg3;
 - (void)navigationBarTransitionCompleted:(long long)arg1 willBeDisplayed:(_Bool)arg2;
 - (void)navigationBarTransitionWillBegin:(long long)arg1 willBeDisplayed:(_Bool)arg2;
@@ -216,6 +219,7 @@ __attribute__((visibility("hidden")))
 - (void)growToSearchFieldIfNecessary;
 - (void)cancelTransitionToSearchLayoutState:(long long)arg1;
 - (void)completeTransitionToSearchLayoutState:(long long)arg1;
+- (_Bool)searchFieldContainerViewNeedsLayoutForTransitionFromLayoutState:(id)arg1 toLayout:(id)arg2;
 - (void)animateTransitionToSearchLayoutState:(long long)arg1;
 - (void)freezeForAnimatedTransitionToSearchLayoutState:(long long)arg1;
 - (void)prepareForTransitionToSearchLayoutState:(long long)arg1;
@@ -303,7 +307,7 @@ __attribute__((visibility("hidden")))
 - (void)setPrompt:(id)arg1;
 - (long long)barPosition;
 - (void)setBarPosition:(long long)arg1;
-- (void)setBackdropStyle:(unsigned long long)arg1;
+- (void)setBackdropStyle:(long long)arg1;
 - (void)setMinimumContentInset:(struct UIEdgeInsets)arg1;
 - (void)setScopeTitles:(id)arg1;
 - (void)setCancelButton:(id)arg1;
@@ -320,8 +324,6 @@ __attribute__((visibility("hidden")))
 - (void)setShowsBookmarkButton:(_Bool)arg1;
 - (void)setSearchResultsButtonSelected:(_Bool)arg1;
 - (void)setShowsSearchResultsButton:(_Bool)arg1;
-- (_Bool)cancelButtonWantsLetterpress;
-- (void)setCancelButtonWantsLetterpress:(_Bool)arg1;
 - (void)setAutoDisableCancelButton:(_Bool)arg1;
 - (_Bool)showsCancelButton;
 - (void)_setShowsCancelButton:(_Bool)arg1;

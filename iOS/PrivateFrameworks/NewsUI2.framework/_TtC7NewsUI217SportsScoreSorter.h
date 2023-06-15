@@ -6,8 +6,12 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
+@class MISSING_TYPE;
+
 @interface _TtC7NewsUI217SportsScoreSorter : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *subscribedTagsSetProvider;
+    MISSING_TYPE *scorePersonalizer;
 }
 
 @end

@@ -11,7 +11,7 @@
 @interface _TtCO24IntelligencePlatformCore14ViewGeneration18PeopleDonationView : _TtCs12_SwiftObject
 {
     MISSING_TYPE *inputStore;
-    MISSING_TYPE *dependencyTableNames;
+    MISSING_TYPE *dependencyStores;
     MISSING_TYPE *client;
     MISSING_TYPE *builder;
 }

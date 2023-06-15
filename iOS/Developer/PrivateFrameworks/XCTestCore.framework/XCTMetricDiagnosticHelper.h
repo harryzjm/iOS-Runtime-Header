@@ -17,6 +17,7 @@
     XCTMeasureOptions *_measureOptions;
 }
 
++ (id)generateRandomString;
 - (void).cxx_destruct;
 @property(copy, nonatomic) XCTMeasureOptions *measureOptions; // @synthesize measureOptions=_measureOptions;
 @property(retain) XCTTestIdentifier *testIdentifier; // @synthesize testIdentifier=_testIdentifier;
@@ -26,7 +27,10 @@
 - (void)attachPerfdataFileCollected:(id)arg1;
 - (void)attachTraceFileCollectedForInstrument:(id)arg1;
 - (void)sendMetricUseToCoreAnalytics:(id)arg1;
-- (void)applyXcodebuildCommandLineOverridesToOptions:(id)arg1;
+- (void)_applyXcodebuildCommandLineOverridesToOptions:(id)arg1;
+- (void)_applyDefaultTraceName;
+- (id)_generateTraceName;
+- (id)_sanitizeFileNameString:(id)arg1;
 - (id)initWithMetrics:(id)arg1 attachmentManager:(id)arg2 options:(id)arg3 testIdentifier:(id)arg4;
 
 @end

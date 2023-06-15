@@ -10,9 +10,9 @@
 @class NSString, UIColor;
 
 @protocol SXAdComponent <SXComponent, SXComponentAdvertisingMetadataProviding>
-@property(nonatomic, readonly) unsigned long long placementType;
-@property(nonatomic, readonly) UIColor *debugColor;
-@property(nonatomic, readonly) unsigned long long adType;
-@property(nonatomic, readonly) NSString *placementIdentifier;
+@property(readonly, nonatomic) unsigned long long placementType;
+@property(readonly, nonatomic) UIColor *debugColor;
+@property(readonly, nonatomic) unsigned long long adType;
+@property(readonly, nonatomic) NSString *placementIdentifier;
 @end
 

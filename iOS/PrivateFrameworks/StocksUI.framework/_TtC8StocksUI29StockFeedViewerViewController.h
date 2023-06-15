@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
 @class MISSING_TYPE;
 
@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *eventHandler;
     MISSING_TYPE *blueprintPageViewController;
     MISSING_TYPE *toolbarManager;
+    MISSING_TYPE *shareMenuItemManager;
 }
 
 - (void).cxx_destruct;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIControl.h>
+#import <UIKitCore/UIControl.h>
 
 @class MISSING_TYPE, NSArray;
 
@@ -25,12 +25,8 @@ __attribute__((visibility("hidden")))
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 @property(nonatomic, copy) NSArray *accessibilityElements;
-- (id)initWithFrame:(struct CGRect)arg1 data:(id)arg2 horizontal:(_Bool)arg3;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-@property(nonatomic) double maxTabDimension; // @synthesize maxTabDimension;
-@property(nonatomic) long long numActiveTabs; // @synthesize numActiveTabs;
-@property(nonatomic) long long selectedTabIndex; // @synthesize selectedTabIndex;
 
 @end
 

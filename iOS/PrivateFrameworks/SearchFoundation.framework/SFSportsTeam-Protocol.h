@@ -11,6 +11,7 @@
 @protocol SFSportsTeam <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property(nonatomic) _Bool isWinner;
 @property(retain, nonatomic) SFButtonItem *button;
 @property(copy, nonatomic) NSString *name;
 @property(copy, nonatomic) NSString *accessibilityDescription;

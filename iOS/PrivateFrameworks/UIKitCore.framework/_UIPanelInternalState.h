@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 @class UISlidingBarConfiguration, UISlidingBarStateRequest, UIViewController, _UIPanelAnimationState;
 @protocol UIPanelControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UIPanelInternalState : NSObject <NSCopying>
+@interface _UIPanelInternalState : NSObject
 {
     UIViewController *_mainViewController;
     UIViewController *_leadingViewController;

@@ -6,9 +6,10 @@
 
 #import <HomeUI/NSObject-Protocol.h>
 
-@class HFAccessorySettingsEntity, NAFuture;
+@class HFAccessorySettingsEntity, NAFuture, NSString;
 
 @protocol HFAccessorySettingAdapterButtonHandling <NSObject>
+- (NAFuture *)inProgressButtonPressFutureForKeyPath:(NSString *)arg1;
 - (NAFuture *)inProgressButtonPressFutureForEntity:(HFAccessorySettingsEntity *)arg1;
 - (_Bool)supportButtonPressForEntity:(HFAccessorySettingsEntity *)arg1;
 - (NAFuture *)handleButtonPressForEntity:(HFAccessorySettingsEntity *)arg1;

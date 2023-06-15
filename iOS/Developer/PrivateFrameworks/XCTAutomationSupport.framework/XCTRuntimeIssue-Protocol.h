@@ -7,12 +7,13 @@
 #import <XCTAutomationSupport/NSObject-Protocol.h>
 #import <XCTAutomationSupport/NSSecureCoding-Protocol.h>
 
-@class NSString;
+@class NSArray, NSString;
 @protocol XCTRuntimeIssue;
 
 @protocol XCTRuntimeIssue <NSObject, NSSecureCoding>
 + (NSString *)capability;
 @property(readonly) unsigned long long aggregationHash;
+@property(readonly) NSArray *callStackAddresses;
 @property(readonly) NSString *detailedDescription;
 @property(readonly) NSString *shortDescription;
 - (_Bool)isEqualForAggregationWith:(id <XCTRuntimeIssue>)arg1;

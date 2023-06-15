@@ -15,6 +15,7 @@
     CNContactStore *_contactStore;
 }
 
++ (id)sharedInstance;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool didRegisterForContactStoreChangeNotifications; // @synthesize didRegisterForContactStoreChangeNotifications=_didRegisterForContactStoreChangeNotifications;
 @property(retain, nonatomic) CNContactStore *contactStore; // @synthesize contactStore=_contactStore;

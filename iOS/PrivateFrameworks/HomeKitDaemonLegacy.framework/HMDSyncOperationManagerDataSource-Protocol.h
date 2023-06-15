@@ -8,7 +8,7 @@
 @property(readonly) _Bool isNetworkConnectionAvailable;
 @property(readonly) _Bool zoneFetchFailed;
 @property(readonly) _Bool isCloudAccountActive;
-@property(readonly) _Bool legacyZoneHasRecordsAvaliable;
+@property(readonly) _Bool legacyZoneHasRecordsAvailable;
 - (void)forceCloudFetch;
 @end
 

@@ -11,14 +11,16 @@
 @interface CKDDiscoverUserIdentitiesURLRequest : CKDURLRequest
 {
     _Bool _wantsProtectionInfo;
+    _Bool _adopterProvidedLookupInfos;
     CDUnknownBlockType _progressBlock;
     NSArray *_infosToDiscover;
     NSMutableDictionary *_submittedInfos;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSMutableDictionary *submittedInfos; // @synthesize submittedInfos=_submittedInfos;
-@property(retain, nonatomic) NSArray *infosToDiscover; // @synthesize infosToDiscover=_infosToDiscover;
+@property(readonly, nonatomic) _Bool adopterProvidedLookupInfos; // @synthesize adopterProvidedLookupInfos=_adopterProvidedLookupInfos;
+@property(readonly, nonatomic) NSMutableDictionary *submittedInfos; // @synthesize submittedInfos=_submittedInfos;
+@property(readonly, nonatomic) NSArray *infosToDiscover; // @synthesize infosToDiscover=_infosToDiscover;
 @property(copy, nonatomic) CDUnknownBlockType progressBlock; // @synthesize progressBlock=_progressBlock;
 @property(nonatomic) _Bool wantsProtectionInfo; // @synthesize wantsProtectionInfo=_wantsProtectionInfo;
 - (void)requestDidParseNodeFailure:(id)arg1;
@@ -26,7 +28,8 @@
 - (id)generateRequestOperations;
 - (id)requestOperationClasses;
 - (long long)databaseScope;
-- (id)initWithOperation:(id)arg1 lookupInfos:(id)arg2;
+- (id)equivalencyProperties;
+- (id)initWithOperation:(id)arg1 lookupInfos:(id)arg2 adopterProvidedLookupInfos:(_Bool)arg3;
 
 @end
 

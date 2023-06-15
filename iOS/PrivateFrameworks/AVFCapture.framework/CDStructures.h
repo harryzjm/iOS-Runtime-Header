@@ -10,6 +10,22 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
+struct AVCapturePhotoOutputCaptureReadinessState {
+    _Bool sessionIsRunning;
+    _Bool autoDeferredPhotoDeliveryEnabled;
+    _Bool responsiveCaptureEnabled;
+    int numberOfPhotoCapturesInflight;
+    long long latestCaptureUniqueID;
+    long long inflightNonOverlappingCaptureUniqueID;
+    long long inflightUniqueIDWaitingForCapture;
+    long long inflightUniqueIDWaitingForProcessing;
+};
+
+struct AudioValueRange {
+    double _field1;
+    double _field2;
+};
+
 struct CGAffineTransform {
     double a;
     double b;

@@ -22,11 +22,10 @@
 - (void)p_drawDividerLineForRect:(struct CGRect)arg1 pageRect:(struct CGRect)arg2 context:(struct CGContext *)arg3;
 - (id)p_noteSegmentsForSlideNode:(id)arg1 withScaledClipRect:(struct CGRect)arg2 firstSegmentIndex:(unsigned long long)arg3;
 - (id)p_segmentsForSlideNode:(id)arg1 withScaledClipRect:(struct CGRect)arg2 firstSegmentIndex:(unsigned long long)arg3;
-- (void)p_segmentSlideNodesWithUnscaledClipRect:(struct CGRect)arg1 viewScale:(double)arg2;
+- (void)p_segmentSlideNodesWithScaledClipRect:(struct CGRect)arg1;
 - (id)p_segmentsForPage:(unsigned long long)arg1;
+- (void)drawPolyPageBodyInContext:(struct CGContext *)arg1 scaledClipRect:(struct CGRect)arg2;
 - (_Bool)drawCurrentPageInContext:(struct CGContext *)arg1 viewScale:(double)arg2 unscaledClipRect:(struct CGRect)arg3 createPage:(_Bool)arg4;
-- (struct CGRect)rectBySubtractingPageMarginsFromRect:(struct CGRect)arg1;
-- (void)createPage:(_Bool)arg1 inContext:(struct CGContext *)arg2 withRect:(struct CGRect)arg3;
 - (void)p_segmentSlidesIfNecessary;
 - (_Bool)incrementPage;
 - (unsigned long long)pageCount;

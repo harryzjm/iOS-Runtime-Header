@@ -16,7 +16,7 @@
 }
 
 - (void).cxx_destruct;
-- (void)enumerateIssuesForSentence:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
+- (void)enumerateIssuesForSentence:(id)arg1 checkTermination:(_Bool)arg2 withBlock:(CDUnknownBlockType)arg3;
 - (_Bool)loadCorrectionsFromURL:(id)arg1;
 - (void)dealloc;
 - (id)initWithModelPath:(id)arg1 OTABundlePath:(id)arg2 options:(id)arg3;

@@ -6,11 +6,8 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
-@class MISSING_TYPE;
-
 @interface _TtCO24IntelligencePlatformCore14ViewGeneration25FeatureViewClientProvider : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *viewConfigs;
 }
 
 @end

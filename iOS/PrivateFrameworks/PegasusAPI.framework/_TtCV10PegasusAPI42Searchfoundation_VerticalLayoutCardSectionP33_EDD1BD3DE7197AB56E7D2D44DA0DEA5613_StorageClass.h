@@ -24,6 +24,7 @@
     MISSING_TYPE *_footnote;
     MISSING_TYPE *_contentsLeading;
     MISSING_TYPE *_thumbnailOverlayText;
+    MISSING_TYPE *_useAppIconMetrics;
 }
 
 @end

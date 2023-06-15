@@ -13,24 +13,27 @@
     MISSING_TYPE *serviceExecutionContext;
     MISSING_TYPE *isRunningAsXcodeApp;
     MISSING_TYPE *enableInternalExceptions;
-    MISSING_TYPE *usePortalDeveloperAPI;
     MISSING_TYPE *enableAppIdentifierPrefixedEntitlementsProcessor;
     MISSING_TYPE *enableXcodeCloudSigning;
     MISSING_TYPE *installCloudManagedCertificatesInKeychain;
     MISSING_TYPE *isMultiPlatformEntitlementFilteringEnabled;
+    MISSING_TYPE *isProfileExplicitPlatformValidationEnabled;
+    MISSING_TYPE *isPortalDrivenCapabilitiesEnabled;
+    MISSING_TYPE *isPortalDrivenCapabilitiesFilteredByAppIDEnabled;
 }
 
 + (id)defaultContext;
 - (void).cxx_destruct;
 - (id)init;
-- (id)initWithServiceExecutionContext:(long long)arg1 isRunningAsXcodeApp:(_Bool)arg2 enableInternalExceptions:(_Bool)arg3 usePortalDeveloperAPI:(_Bool)arg4 enableAppIdentifierPrefixedEntitlementsProcessor:(_Bool)arg5 enableXcodeCloudSigning:(_Bool)arg6 installCloudManagedCertificatesInKeychain:(_Bool)arg7 isMultiPlatformEntitlementFilteringEnabled:(_Bool)arg8;
-@property(nonatomic, readonly) _Bool isXcodeServer;
+- (id)initWithServiceExecutionContext:(long long)arg1 isRunningAsXcodeApp:(_Bool)arg2 enableInternalExceptions:(_Bool)arg3 enableAppIdentifierPrefixedEntitlementsProcessor:(_Bool)arg4 enableXcodeCloudSigning:(_Bool)arg5 installCloudManagedCertificatesInKeychain:(_Bool)arg6 isMultiPlatformEntitlementFilteringEnabled:(_Bool)arg7 isProfileExplicitPlatformValidationEnabled:(_Bool)arg8 isPortalDrivenCapabilitiesEnabled:(_Bool)arg9 isPortalDrivenCapabilitiesFilteredByAppIDEnabled:(_Bool)arg10;
 @property(nonatomic, readonly) _Bool isManaged;
+@property(nonatomic, readonly) _Bool isPortalDrivenCapabilitiesFilteredByAppIDEnabled; // @synthesize isPortalDrivenCapabilitiesFilteredByAppIDEnabled;
+@property(nonatomic, readonly) _Bool isPortalDrivenCapabilitiesEnabled; // @synthesize isPortalDrivenCapabilitiesEnabled;
+@property(nonatomic, readonly) _Bool isProfileExplicitPlatformValidationEnabled; // @synthesize isProfileExplicitPlatformValidationEnabled;
 @property(nonatomic, readonly) _Bool isMultiPlatformEntitlementFilteringEnabled; // @synthesize isMultiPlatformEntitlementFilteringEnabled;
 @property(nonatomic, readonly) _Bool installCloudManagedCertificatesInKeychain; // @synthesize installCloudManagedCertificatesInKeychain;
 @property(nonatomic, readonly) _Bool enableXcodeCloudSigning; // @synthesize enableXcodeCloudSigning;
 @property(nonatomic, readonly) _Bool enableAppIdentifierPrefixedEntitlementsProcessor; // @synthesize enableAppIdentifierPrefixedEntitlementsProcessor;
-@property(nonatomic, readonly) _Bool usePortalDeveloperAPI; // @synthesize usePortalDeveloperAPI;
 @property(nonatomic, readonly) _Bool enableInternalExceptions; // @synthesize enableInternalExceptions;
 @property(nonatomic, readonly) _Bool isRunningAsXcodeApp; // @synthesize isRunningAsXcodeApp;
 @property(nonatomic, readonly) long long serviceExecutionContext; // @synthesize serviceExecutionContext;

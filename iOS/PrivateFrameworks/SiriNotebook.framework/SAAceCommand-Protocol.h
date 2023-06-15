@@ -9,7 +9,7 @@
 @class NSString;
 
 @protocol SAAceCommand <SAAceSerializable>
-@property(nonatomic, copy) NSString *refId;
-@property(nonatomic, copy) NSString *aceId;
+@property(copy, nonatomic) NSString *refId;
+@property(copy, nonatomic) NSString *aceId;
 @end
 

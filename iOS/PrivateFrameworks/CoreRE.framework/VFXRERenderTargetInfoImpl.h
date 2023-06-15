@@ -22,8 +22,10 @@ __attribute__((visibility("hidden")))
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
+@property(readonly, nonatomic) unsigned long long depthPixelFormat;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) unsigned long long stencilPixelFormat;
 @property(readonly) Class superclass;
 
 @end

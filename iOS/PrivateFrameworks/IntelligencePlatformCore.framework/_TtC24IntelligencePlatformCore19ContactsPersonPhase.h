@@ -4,7 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface _TtC24IntelligencePlatformCore19ContactsPersonPhase
+#import "_$s24IntelligencePlatformCore13PipelinePhaseCN.h"
+
+@interface _TtC24IntelligencePlatformCore19ContactsPersonPhase : _$s24IntelligencePlatformCore13PipelinePhaseCN
 {
 }
 

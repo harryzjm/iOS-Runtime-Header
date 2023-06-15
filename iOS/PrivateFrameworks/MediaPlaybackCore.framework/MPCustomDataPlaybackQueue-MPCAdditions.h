@@ -7,6 +7,6 @@
 #import <MediaPlayer/MPCustomDataPlaybackQueue.h>
 
 @interface MPCustomDataPlaybackQueue (MPCAdditions)
-- (void)getPlaybackContextWithCompletion:(CDUnknownBlockType)arg1;
+- (id)asMusicPlaybackContextWithError:(id *)arg1;
 @end
 

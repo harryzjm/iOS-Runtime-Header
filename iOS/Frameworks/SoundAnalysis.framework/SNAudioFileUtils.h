@@ -11,5 +11,39 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (CDUnknownBlockType)errorBufferPopulator;
++ (CDUnknownBlockType)zeroBufferPopulator;
++ (CDStruct_1b6d18a9)readTimeRangeFromLoopedAudioFile:(id)arg1 timeRange:(CDStruct_e83c9415)arg2 assumingCurrentProcessingFramePosition:(long long)arg3 maxFramesPerBuffer:(unsigned int)arg4 recycleBuffers:(_Bool)arg5 handler:(CDUnknownBlockType)arg6 error:(id *)arg7;
++ (CDStruct_1b6d18a9)readTimeRangeFromLoopedAudioFile:(id)arg1 timeRange:(CDStruct_e83c9415)arg2 assumingCurrentProcessingframePoition:(long long)arg3 bufferFactory:(CDUnknownBlockType)arg4 handler:(CDUnknownBlockType)arg5 error:(id *)arg6;
++ (_Bool)readTimeRangeFromAudioFile:(id)arg1 timeRange:(CDStruct_e83c9415)arg2 assumingCurrentProcessingFramePosition:(long long)arg3 maxFramesPerBuffer:(unsigned int)arg4 recycleBuffers:(_Bool)arg5 prefixBufferPopulator:(CDUnknownBlockType)arg6 suffixBufferPopulator:(CDUnknownBlockType)arg7 handler:(CDUnknownBlockType)arg8 error:(id *)arg9;
++ (_Bool)readTimeRangeFromAudioFile:(id)arg1 timeRange:(CDStruct_e83c9415)arg2 assumingCurrentProcessingFramePosition:(long long)arg3 bufferFactory:(CDUnknownBlockType)arg4 prefixBufferPopulator:(CDUnknownBlockType)arg5 suffixBufferPopulator:(CDUnknownBlockType)arg6 handler:(CDUnknownBlockType)arg7 error:(id *)arg8;
++ (_Bool)setProcessingFramePositionInAudiofile:(id)arg1 framePosition:(long long)arg2 bufferFactory:(CDUnknownBlockType)arg3 error:(id *)arg4;
++ (CDStruct_e83c9415)primingRangeToSetProcessingFramePosition:(unsigned int)arg1 inAudioFile:(id)arg2 error:(id *)arg3;
++ (CDStruct_1b6d18a9)findFileFrameReachableWithProcessingRateInAudioFile:(id)arg1 nearestToProcessingFrame:(long long)arg2 roundingMethod:(unsigned int)arg3 error:(id *)arg4;
++ (CDStruct_1b6d18a9)getTimeWhichIsIntegralNumberOfSamplesInRate:(long long)arg1 andRate:(long long)arg2;
++ (CDStruct_1b6d18a9)timeInAudioFile:(id)arg1 ofProcessingFrame:(unsigned int)arg2;
++ (_Bool)fullyReadFramesFromAudioFile:(id)arg1 frameCount:(unsigned int)arg2 fromProcessingFramePosition:(long long)arg3 assumingCurrentProcessingFramePosition:(long long)arg4 bufferFactory:(CDUnknownBlockType)arg5 handler:(CDUnknownBlockType)arg6 error:(id *)arg7;
++ (unsigned int)readFramesFromAudioFile:(id)arg1 frameCount:(unsigned int)arg2 framProcessingFramePosition:(long long)arg3 assumingCurrentProcessingFramePosition:(long long)arg4 bufferFactory:(CDUnknownBlockType)arg5 handler:(CDUnknownBlockType)arg6 error:(id *)arg7;
++ (_Bool)fullyReadFramesFromAudioFile:(id)arg1 frameCount:(unsigned int)arg2 maxFramesPerBuffer:(unsigned int)arg3 recycleBuffers:(_Bool)arg4 handler:(CDUnknownBlockType)arg5 error:(id *)arg6;
++ (_Bool)fullyReadFramesFromAudioFile:(id)arg1 frameCount:(unsigned int)arg2 bufferFactory:(CDUnknownBlockType)arg3 handler:(CDUnknownBlockType)arg4 error:(id *)arg5;
++ (unsigned int)readFramesFromAudioFile:(id)arg1 frameCount:(unsigned int)arg2 maxFramesPerBuffer:(unsigned int)arg3 recycleBuffers:(_Bool)arg4 handler:(CDUnknownBlockType)arg5 error:(id *)arg6;
++ (unsigned int)readFramesFromAudioFile:(id)arg1 frameCount:(unsigned int)arg2 bufferFactory:(CDUnknownBlockType)arg3 handler:(CDUnknownBlockType)arg4 error:(id *)arg5;
++ (_Bool)validateAllFramesProcessedFromRemainingCount:(unsigned int)arg1 error:(id *)arg2;
++ (CDUnknownBlockType)ignoredBufferHandler;
++ (CDUnknownBlockType)bufferPopulatorReadingFromAudioFile:(id)arg1;
++ (CDUnknownBlockType)factoryProducingBuffersWithFormat:(id)arg1 frameCapacity:(unsigned int)arg2 recycleBuffers:(_Bool)arg3;
++ (id)viewOfAudioFile:(id)arg1 withSampleRate:(double)arg2 error:(id *)arg3;
++ (id)viewOfAudioFile:(id)arg1 withAudioStreamBasicDescription:(const struct AudioStreamBasicDescription *)arg2 error:(id *)arg3;
++ (id)viewOfAudioFile:(id)arg1 withFormat:(id)arg2 error:(id *)arg3;
++ (_Bool)fullyProcessFrameCount:(unsigned int)arg1 bufferFactory:(CDUnknownBlockType)arg2 populator:(CDUnknownBlockType)arg3 handler:(CDUnknownBlockType)arg4 error:(id *)arg5;
++ (unsigned int)processFrameCount:(unsigned int)arg1 bufferFactory:(CDUnknownBlockType)arg2 populator:(CDUnknownBlockType)arg3 handler:(CDUnknownBlockType)arg4 error:(id *)arg5;
++ (CDStruct_e83c9415)getTimeRangeEncompassingEntireAudioFileAtURL:(id)arg1 error:(id *)arg2;
++ (CDStruct_e83c9415)getTimeRangeEncompassingEntireAudioFile:(id)arg1 atSampleRate:(double)arg2;
++ (CDStruct_e83c9415)getTimeRangeEncompassingEntireAudioFile:(id)arg1;
++ (long long)audioFileFrameCount:(id)arg1;
++ (id)openFileForReadingAtURL:(id)arg1 format:(id)arg2 error:(id *)arg3;
++ (id)openFileForRecordingAtURL:(id)arg1 format:(id)arg2 error:(id *)arg3;
+- (id)init;
+
 @end
 

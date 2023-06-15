@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (id)localizedName;
 - (id)UUID;
 - (unsigned int)platform;
+- (id)applicationExtensionRecord;
 - (id)containingBundleRecord;
 - (id)bundleIdentifier;
 - (id)extensionPointIdentifier;

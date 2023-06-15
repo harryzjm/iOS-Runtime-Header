@@ -23,8 +23,10 @@ __attribute__((visibility("hidden")))
 - (void)addClientObserver:(id)arg1 forNotificationName:(id)arg2;
 - (id)clientObserversForNotificationName:(id)arg1;
 - (id)clientObserversForXPCConnection:(id)arg1;
+- (id)clientObservers;
 - (void)_withLock:(CDUnknownBlockType)arg1;
 - (id)init;
+- (id)constraints;
 
 @end
 

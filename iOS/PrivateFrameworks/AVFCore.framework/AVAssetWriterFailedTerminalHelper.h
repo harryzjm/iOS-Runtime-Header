@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
     NSError *_terminalError;
 }
 
+- (_Bool)_isDefunct;
 - (void)flushSegment;
 - (void)flush;
 - (void)setFinishWritingDelegate:(id)arg1;

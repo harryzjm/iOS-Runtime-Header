@@ -6,7 +6,7 @@
 
 #import <UIKit/UIViewController.h>
 
-@class NSString, NSUUID, SFDialogController, WBSPermissionDialogThrottler, WKWebView, WKWebViewConfiguration, _SFAuthenticationContext, _SFFormAutoFillController;
+@class NSString, NSUUID, SFContentBlockerManager, SFDialogController, WBSPermissionDialogThrottler, WKWebView, WKWebViewConfiguration, _SFAuthenticationContext, _SFFormAutoFillController;
 @protocol SFWebViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     _Bool _shouldSuppressDialogsThatBlockWebProcess;
     NSString *_domainWhereUserDeclinedAutomaticStrongPassword;
     WBSPermissionDialogThrottler *_permissionDialogThrottler;
+    SFContentBlockerManager *_contentBlockerManager;
     _Bool _loading;
     _Bool _didFirstVisuallyNonEmptyLayout;
     _Bool _didFirstPaint;
@@ -39,6 +40,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool didFirstVisuallyNonEmptyLayout; // @synthesize didFirstVisuallyNonEmptyLayout=_didFirstVisuallyNonEmptyLayout;
 @property(nonatomic, getter=isLoading) _Bool loading; // @synthesize loading=_loading;
 @property(nonatomic) __weak id <SFWebViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)_webView:(id)arg1 requestNotificationPermissionForSecurityOrigin:(id)arg2 decisionHandler:(CDUnknownBlockType)arg3;
 - (_Bool)sfWebViewCanFindNextOrPrevious:(id)arg1;
 - (_Bool)sfWebViewShouldFillStringForFind:(id)arg1;
 - (_Bool)sfWebViewCanPromptForAccountSecurityRecommendation;
@@ -53,6 +55,7 @@ __attribute__((visibility("hidden")))
 - (void)presentDialog:(id)arg1 sender:(id)arg2;
 - (void)dialogController:(id)arg1 willPresentDialog:(id)arg2;
 - (long long)dialogController:(id)arg1 presentationPolicyForDialog:(id)arg2;
+- (void)_webView:(id)arg1 updatedAppBadge:(id)arg2 fromSecurityOrigin:(id)arg3;
 - (_Bool)_webView:(id)arg1 fileUploadPanelContentIsManagedWithInitiatingFrame:(id)arg2;
 - (void)panel:(id)arg1 decidePolicyForLocalAuthenticatorWithCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)panel:(id)arg1 selectAssertionResponse:(id)arg2 source:(long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
@@ -86,6 +89,7 @@ __attribute__((visibility("hidden")))
 - (void)_webView:(id)arg1 insertTextSuggestion:(id)arg2 inInputSession:(id)arg3;
 - (void)_webView:(id)arg1 accessoryViewCustomButtonTappedInFormInputSession:(id)arg2;
 - (void)_webView:(id)arg1 willSubmitFormValues:(id)arg2 userObject:(id)arg3 submissionHandler:(CDUnknownBlockType)arg4;
+- (void)copyCurrentStrongPassword;
 - (void)makeStrongPasswordFieldViewableAndEditable:(_Bool)arg1;
 - (void)replaceCurrentPasswordWithPassword:(id)arg1;
 @property(readonly, nonatomic) NSString *alphanumericStrongPassword;
@@ -108,11 +112,11 @@ __attribute__((visibility("hidden")))
 - (void)formAutoFillControllerGetAuthenticationForAutoFill:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)formAutoFillControllerUserChoseToUseGeneratedPassword:(id)arg1;
 - (_Bool)formAutoFillControllerDidUserDeclineAutomaticStrongPasswordForCurrentDomain:(id)arg1;
+- (id)currentSavedAccountContextForFormAutoFillController:(id)arg1;
 - (_Bool)formAutoFillControllerShouldDisableStreamlinedLogin:(id)arg1;
 - (id)formAutoFillControllerURLForFormAutoFill:(id)arg1;
 - (_Bool)formAutoFillControllerCanPrefillForm:(id)arg1;
 @property(readonly, nonatomic) _SFAuthenticationContext *autoFillAuthenticationContext;
-- (int)_analyticsClient;
 - (void)_webView:(id)arg1 didFinishLoadForQuickLookDocumentInMainFrame:(id)arg2;
 - (void)_webView:(id)arg1 didStartLoadForQuickLookDocumentInMainFrameWithFileName:(id)arg2 uti:(id)arg3;
 - (void)webView:(id)arg1 didReceiveAuthenticationChallenge:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -136,6 +140,7 @@ __attribute__((visibility("hidden")))
 - (void)_webView:(id)arg1 willPerformClientRedirectToURL:(id)arg2 delay:(double)arg3;
 - (void)webView:(id)arg1 didReceiveServerRedirectForProvisionalNavigation:(id)arg2;
 - (void)webView:(id)arg1 didStartProvisionalNavigation:(id)arg2;
+- (void)reloadContentBlockers;
 - (void)willBeginUserInitiatedNavigation;
 - (void)willActivateWebViewController;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
@@ -145,7 +150,7 @@ __attribute__((visibility("hidden")))
 - (id)_presentingViewControllerForWebView:(id)arg1;
 - (void)presentViewController:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)loadView;
-- (id)initWithWebViewConfiguration:(id)arg1;
+- (id)initWithWebViewConfiguration:(id)arg1 contentBlockerManager:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

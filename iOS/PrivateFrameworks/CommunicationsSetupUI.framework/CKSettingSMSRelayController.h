@@ -16,14 +16,23 @@ __attribute__((visibility("hidden")))
 
 + (_Bool)shouldShowSMSRelaySettings;
 + (unsigned long long)numberOfActiveDevices;
++ (_Bool)isDeviceUsingMiCWithIdentifier:(id)arg1;
++ (id)micSMSRelayDevices;
 + (_Bool)deviceIsAuthorized:(id)arg1;
 + (id)authorizedSMSRelayDevices;
 - (void).cxx_destruct;
 @property(retain, nonatomic) IDSService *relayService; // @synthesize relayService=_relayService;
+- (_Bool)isDeviceUsingMiCWithIdentifier:(id)arg1;
 - (void)setDeviceActive:(id)arg1 specifier:(id)arg2;
+- (id)getDeviceOn:(id)arg1;
 - (id)getDeviceActive:(id)arg1;
 - (void)service:(id)arg1 devicesChanged:(id)arg2;
+- (id)_specifiersForDevices:(id)arg1 cellType:(long long)arg2 get:(SEL)arg3;
+- (id)_footerSpecifierForSMSRelayGroup;
+- (id)_headerSpecifierForNonMicGroupDisplayingHeader:(_Bool)arg1;
+- (id)_headerSpecifierForMicGroup;
 - (id)specifiers;
+- (_Bool)isMiCEnabled;
 - (void)systemApplicationWillEnterForeground;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)dealloc;

@@ -32,7 +32,7 @@ __attribute__((visibility("hidden")))
 + (id)_extensionContextForIdentifier:(id)arg1;
 + (id)_extensionContextVendorProtocolWithAllowedErrorClasses:(id)arg1;
 + (id)_defaultExtensionContextVendorProtocol;
-+ (id)_extensionContextHostProtocolWithAllowedPayloadCompletionClasses:(id)arg1 AllowedErrorClasses:(id)arg2;
++ (id)_extensionContextHostProtocolWithAllowedErrorClasses:(id)arg1;
 + (id)_extensionContextHostProtocolAllowedClassesForItems;
 - (void).cxx_destruct;
 @property(getter=_isDummyExtension, setter=_setDummyExtension:) _Bool _dummyExtension; // @synthesize _dummyExtension=__dummyExtension;

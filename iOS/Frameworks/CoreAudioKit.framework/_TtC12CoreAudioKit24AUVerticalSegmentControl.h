@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIControl.h>
+#import <UIKitCore/UIControl.h>
 
 @class MISSING_TYPE, NSArray;
 
@@ -22,13 +22,10 @@ __attribute__((visibility("hidden")))
 - (void)layoutSubviews;
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
-- (id)colorAt:(long long)arg1;
-- (void)setSegmentAt:(long long)arg1 enabled:(_Bool)arg2;
 - (void)segmentEnabledChangedWithNotification:(id)arg1;
 - (void)segmentSelectionChangedWithNotification:(id)arg1;
 - (void)removeFromSuperview;
 @property(nonatomic, copy) NSArray *accessibilityElements;
-- (id)initWithFrame:(struct CGRect)arg1 data:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 

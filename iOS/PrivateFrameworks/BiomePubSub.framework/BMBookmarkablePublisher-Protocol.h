@@ -6,12 +6,20 @@
 
 #import <BiomePubSub/BPSPublisher-Protocol.h>
 
-@class BPSPublisher, NSArray;
+@class BMBookmarkNode, BPSPublisher, NSArray, NSError;
 @protocol BMBookmark, BMBookmarkablePublisher;
 
 @protocol BMBookmarkablePublisher <BPSPublisher>
++ (_Bool)isPipelineBookmarkable:(BPSPublisher *)arg1;
++ (NSArray *)bookmarkablePublishersFromPublishers:(NSArray *)arg1;
 + (BPSPublisher<BMBookmarkablePublisher> *)publisherWithPublisher:(BPSPublisher<BMBookmarkablePublisher> *)arg1 upstreams:(NSArray *)arg2 bookmarkState:(id <BMBookmark>)arg3;
 @property(readonly, nonatomic) NSArray *bookmarkableUpstreams;
+- (void)applyBookmarkNode:(BMBookmarkNode *)arg1;
+- (NSError *)validateBookmarkNode:(BMBookmarkNode *)arg1;
+- (BMBookmarkNode *)bookmarkNode;
+- (void)applyBookmark:(id <BMBookmark>)arg1;
+- (NSError *)validateBookmark:(id <BMBookmark>)arg1;
+- (id <BMBookmark>)bookmark;
 - (_Bool)canStoreInternalStateInBookmark;
 - (_Bool)canStorePassThroughValueInBookmark;
 - (BPSPublisher<BMBookmarkablePublisher> *)withBookmark:(id <BMBookmark>)arg1;

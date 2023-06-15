@@ -29,8 +29,8 @@
 - (id)copyByUpgradingToLinkedRefAtHostCellRef:(const struct TSCECellRef *)arg1;
 - (id)copyByOffsettingRelativeReferencesWithOffset:(struct TSUColumnRowOffset)arg1;
 - (id)copyByRewritingWithSpec:(id)arg1 inOwner:(id)arg2 inCellCoordinate:(struct TSUCellCoord)arg3;
-- (id)copyByRemappingHostCellAgnosticOwnerUIDsWithMap:(const void *)arg1 calcEngine:(id)arg2 ownerUID:(const struct TSKUIDStruct *)arg3 error:(_Bool *)arg4;
-- (id)copyByRemappingOwnerUIDsWithMap:(const void *)arg1 calcEngine:(id)arg2 error:(_Bool *)arg3;
+- (id)copyByRemappingHostCellAgnosticOwnerUIDsWithMap:(const void *)arg1 rewriteContext:(struct TSCEFormulaRewriteContext *)arg2 error:(_Bool *)arg3;
+- (id)copyByRemappingOwnerUIDsWithMap:(const void *)arg1 rewriteContext:(struct TSCEFormulaRewriteContext *)arg2 error:(_Bool *)arg3;
 @property(readonly, nonatomic) NSString *predicateDescription;
 - (id)description;
 - (_Bool)evaluateFormulaAtCellID:(struct TSUCellCoord)arg1 withCalcEngine:(id)arg2 onOwnerUID:(const struct TSKUIDStruct *)arg3;

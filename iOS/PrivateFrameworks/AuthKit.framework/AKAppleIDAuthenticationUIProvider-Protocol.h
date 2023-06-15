@@ -7,7 +7,7 @@
 #import <AuthKit/AKAppleIDAuthenticationLimitedUIProvider-Protocol.h>
 #import <AuthKit/AKAppleIDServerAuthenticationUIProvider-Protocol.h>
 
-@class AKAccountRecoveryContext, AKAppleIDAuthenticationContext, AKFidoContext, NSString;
+@class AKAccountRecoveryContext, AKAppleIDAuthenticationContext, AKFidoContext, CUMessageSession, NSString;
 
 @protocol AKAppleIDAuthenticationUIProvider <AKAppleIDAuthenticationLimitedUIProvider, AKAppleIDServerAuthenticationUIProvider>
 - (void)presentFidoAuthForContext:(AKAppleIDAuthenticationContext *)arg1 fidoContext:(AKFidoContext *)arg2 completion:(void (^)(AKFidoAuthenticationResponse *, NSError *))arg3;
@@ -15,6 +15,10 @@
 - (void)presentNativeRecoveryUIWithContext:(AKAccountRecoveryContext *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
 
 @optional
+- (void)activateProximitySession:(CUMessageSession *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
+- (void)dismissProximityPairingUIWithCompletion:(void (^)(NSDictionary *, NSError *))arg1;
+- (void)presentProximityPairingUIWithVerificationCode:(NSString *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
+- (void)presentProximityBroadcastUIWithCompletion:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)dismissKeepUsingUIWithCompletion:(void (^)(_Bool, NSError *))arg1;
 - (void)presentKeepUsingUIForAppleID:(NSString *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 @end

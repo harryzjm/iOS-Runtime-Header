@@ -22,7 +22,7 @@
 - (void)clearBulletinsFromDate:(NSDate *)arg1 toDate:(NSDate *)arg2 inSections:(NSSet *)arg3;
 - (void)clearSection:(NSString *)arg1;
 - (void)finishedWithBulletinID:(NSString *)arg1 transactionID:(unsigned long long)arg2;
-- (void)handleResponse:(BBResponse *)arg1 withCompletion:(void (^)(_Bool))arg2;
+- (void)handleResponse:(BBResponse *)arg1 withCompletion:(void (^)(_Bool, BBResponse *))arg2;
 - (void)setObserverFeed:(unsigned long long)arg1 asLightsAndSirensGateway:(NSString *)arg2 priority:(unsigned long long)arg3;
 - (void)setObserverFeed:(unsigned long long)arg1 attachToLightsAndSirensGateway:(NSString *)arg2;
 @end

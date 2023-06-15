@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     _Bool _forceCPU;
     _Bool _sharedModel;
     _Bool _flushModel;
+    struct Scaler _scaler;
 }
 
 + (id)sharedModel:(id)arg1 inputNames:(id)arg2;

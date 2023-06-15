@@ -14,10 +14,10 @@
 + (id)zeroUUID;
 + (id)hmf_zeroUUID;
 + (id)hmf_UUIDWithNamespace:(id)arg1 data:(id)arg2;
-- (_Bool)hmf_isEqualToUUIDString:(id)arg1;
-- (_Bool)hmf_isEqualToUUID:(id)arg1;
 @property(readonly, copy) NSString *privateDescription;
 @property(readonly, copy) NSString *shortDescription;
+- (_Bool)hmf_isEqualToUUIDString:(id)arg1;
+- (_Bool)hmf_isEqualToUUID:(id)arg1;
 @property(readonly) NSData *hmf_bytesAsData;
 - (id)initWithNamespace:(id)arg1 data:(id)arg2;
 

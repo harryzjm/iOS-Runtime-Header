@@ -9,7 +9,6 @@
 @class CaptureMTLDevice, NSString;
 @protocol MTLDevice, MTLSharedEvent, MTLSharedEventSPI;
 
-__attribute__((visibility("hidden")))
 @interface CaptureMTLSharedEvent : NSObject
 {
     CaptureMTLDevice *_captureDevice;
@@ -19,11 +18,11 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-- (_Bool)waitUntilSignaledValue:(unsigned long long)arg1 timeoutMS:(unsigned long long)arg2;
 - (void)dealloc;
 @property unsigned long long signaledValue;
 @property(copy) NSString *label;
 @property(readonly) id <MTLDevice> device;
+- (id)IOSurfaceSharedEvent;
 - (_Bool)conformsToProtocol:(id)arg1;
 - (_Bool)respondsToSelector:(SEL)arg1;
 @property(readonly, copy) NSString *description;
@@ -33,6 +32,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) struct GTTraceContext *traceContext;
 - (void)touch;
 - (id)originalObject;
+- (_Bool)waitUntilSignaledValue:(unsigned long long)arg1 timeoutMS:(unsigned long long)arg2;
 - (void)notifyListener:(id)arg1 atValue:(unsigned long long)arg2 block:(CDUnknownBlockType)arg3;
 - (id)newSharedEventHandle;
 @property(readonly) id <MTLSharedEvent> baseObject;

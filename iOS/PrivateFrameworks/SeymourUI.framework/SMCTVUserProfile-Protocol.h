@@ -9,12 +9,9 @@
 @class NSString;
 
 @protocol SMCTVUserProfile <NSObject>
-- (_Bool)isSelected;
-@property(nonatomic, readonly) NSString *iTunesAltDSID;
-@property(nonatomic, readonly) NSString *iCloudAltDSID;
-@property(nonatomic, readonly) NSString *identifier;
-
-// Remaining properties
-@property(nonatomic, readonly) _Bool selected;
+@property(readonly, nonatomic, getter=isSelected) _Bool selected;
+@property(readonly, nonatomic) NSString *iTunesAltDSID;
+@property(readonly, nonatomic) NSString *iCloudAltDSID;
+@property(readonly, nonatomic) NSString *identifier;
 @end
 

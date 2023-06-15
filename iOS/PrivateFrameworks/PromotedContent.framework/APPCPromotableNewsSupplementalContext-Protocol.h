@@ -10,6 +10,7 @@
 @class NSArray, NSDictionary, NSNumber, NSString;
 
 @protocol APPCPromotableNewsSupplementalContext <APPCSecureCodable, NSCopying>
+@property(nonatomic, readonly) NSArray *superFeedMetadata;
 @property(nonatomic, readonly) long long currentIssueIsCurrent;
 @property(nonatomic, readonly) long long currentIssueIsDraft;
 @property(nonatomic, readonly) NSString *currentIssueId;

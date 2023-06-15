@@ -7,6 +7,7 @@
 #import <SetupAssistant/NSObject-Protocol.h>
 
 @protocol BYCapabilities <NSObject>
+- (_Bool)mgSupportsSingleDisplayEnhancedMultitasking;
 - (_Bool)mgHasGreenTea;
 - (_Bool)mgHasCellularTelephony;
 - (_Bool)mgHasCellularData;

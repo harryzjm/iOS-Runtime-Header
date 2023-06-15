@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
         NSString *name;
         long long requirement;
         _Bool supported;
-    } _featureInfo[177];
+    } _featureInfo[187];
     _Bool isAGX;
     id <MTLDeviceSPI> _device;
 }
@@ -23,13 +23,16 @@ __attribute__((visibility("hidden")))
 - (_Bool)supportForFeature:(long long)arg1;
 - (long long)requirementForFeature:(long long)arg1;
 - (_Bool)familySupportsExplicitVisibilityGroups;
+- (_Bool)familySupportsPerformanceStateAssertion;
 - (_Bool)familySupportsRayTracingICBs;
 - (_Bool)familySupportsStackOverflowErrorCode;
 - (_Bool)familySupportsCommandBufferJump;
+- (_Bool)familySupportsBfloat16Buffers;
 - (_Bool)familySupportsMeshShadersInICB;
 - (_Bool)familySupportsFunctionPointersFromMesh;
 - (_Bool)familySupportsMeshShaders;
 - (_Bool)familySupportsLossyCompression;
+- (_Bool)familySupportsAtomicUlongVoidMinMax;
 - (_Bool)familySupportsSparseDepthAttachments;
 - (_Bool)familySupportsBfloat16Format;
 - (_Bool)familySupportsSIMDShuffleAndFill;
@@ -54,8 +57,13 @@ __attribute__((visibility("hidden")))
 - (_Bool)familySupportsMirrorClampToEdgeSamplerMode;
 - (_Bool)familySupportsBlackOrWhiteSamplerBorderColors;
 - (_Bool)familySupportsShaderBarycentricCoordinates;
+- (_Bool)familySupportsRayTracingCurves;
+- (_Bool)familySupportsRayTracingGPUTableUpdateBuffers;
+- (_Bool)familySupportsRayTracingIndirectInstanceAccelerationStructureBuild;
+- (_Bool)familySupportsRayTracingMultiLevelInstancing;
 - (_Bool)familySupportsRayTracingAccelerationStructureCPUDeserialization;
 - (_Bool)familySupportsRayTracingBuffersFromTables;
+- (_Bool)familySupportsRayTracingTraversalMetrics;
 - (_Bool)familySupportsRayTracingPerPrimitiveData;
 - (_Bool)familySupportsHeapAccelerationStructureAllocation;
 - (_Bool)familySupportsRayTracingExtendedVertexFormats;
@@ -80,6 +88,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)familySupportsSIMDShufflesAndBroadcast;
 - (_Bool)familySupportsShaderMinLODClamp;
 - (_Bool)familySupportsSIMDGroup;
+- (_Bool)familySupportsExtendedVertexFormats;
 - (_Bool)familySupportsUnalignedVertexFetch;
 - (_Bool)familySupportsFP32TessFactors;
 - (_Bool)familySupportsStencilFeedback;
@@ -91,6 +100,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)familySupportsSeparateVisibilityAndShadingRate;
 - (_Bool)familySupportsNonSquareTileShaders;
 - (_Bool)familySupportsLinearTexture2DArray;
+- (_Bool)familySupportsDynamicAttributeStride;
 - (_Bool)familySupportsRasterOrderGroupsColorAttachment;
 - (_Bool)familySupportsRasterOrderGroups;
 - (_Bool)familySupportsRenderPassWithoutRenderTarget;

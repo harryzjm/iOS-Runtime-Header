@@ -6,7 +6,7 @@
 
 #import <SPOwner/NSObject-Protocol.h>
 
-@class NSArray, NSDate, NSUUID, SPUnauthorizedTrackingAdvertisement, SPUnauthorizedTrackingObservation;
+@class NSArray, NSDate, NSSet, NSUUID, SPUnauthorizedTrackingAdvertisement, SPUnauthorizedTrackingObservation;
 
 @protocol SPTrackingAvoidanceServiceProtocol <NSObject>
 - (void)playUnauthorizedSoundOnBeaconByUUID:(NSUUID *)arg1 completion:(void (^)(NSError *))arg2;
@@ -20,5 +20,6 @@
 - (void)didWithdrawUnauthorizedTrackingWithCompletion:(NSArray *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)didUpdateUnauthorizedTrackingWithCompletion:(SPUnauthorizedTrackingObservation *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)didDetectUnauthorizedTrackingWithCompletion:(NSArray *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)didObserveUnauthorizedTrackingWithCompletion:(NSSet *)arg1 completion:(void (^)(NSSet *, NSError *))arg2;
 @end
 

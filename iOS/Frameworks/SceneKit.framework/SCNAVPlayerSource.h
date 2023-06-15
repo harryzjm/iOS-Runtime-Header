@@ -6,19 +6,14 @@
 
 #import "SCNTextureSource.h"
 
-@class AVPlayer, AVPlayerItemVideoOutput;
-@protocol MTLTexture;
+@class AVPlayer;
 
 __attribute__((visibility("hidden")))
 @interface SCNAVPlayerSource : SCNTextureSource
 {
     AVPlayer *_player;
-    AVPlayerItemVideoOutput *_videoOutput;
+    CDStruct_1e850d63 _data;
     struct __CVMetalTextureCache *_textureCache;
-    struct __CVBuffer *_pixelBuffer;
-    id <MTLTexture> _mtlTexture;
-    unsigned long long _texturePixelFormat;
-    unsigned char _videoSourceFormat;
     unsigned long long _width;
     unsigned long long _height;
 }
@@ -29,9 +24,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) AVPlayer *player;
 - (void)dealloc;
 - (void)unregisterPlayer:(id)arg1;
-- (void)registerPlayer:(id)arg1;
-- (void)setVideoSourceFormat:(unsigned char)arg1;
-- (void)discardVideoData;
+- (void)registerPlayerIfNeeded:(id)arg1;
 - (id)init;
 
 @end

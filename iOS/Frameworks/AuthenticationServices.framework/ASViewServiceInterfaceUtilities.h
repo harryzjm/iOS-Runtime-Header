@@ -20,7 +20,8 @@ __attribute__((visibility("hidden")))
 + (id)continueButtonHighlightedBackgroundColor;
 + (id)continueButtonDisabledBackgroundColor;
 + (id)continueButtonBackgroundColor;
-+ (id)cellIconSymbolConfiguration;
++ (id)cellIconPasskeySymbolConfiguration;
++ (id)cellIconDefaultSymbolConfiguration;
 + (id)cellIconBackgroundColor;
 + (double)cellIconMarginTrailing;
 + (double)cellIconMarginLeading;

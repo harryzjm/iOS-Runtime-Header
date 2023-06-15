@@ -11,6 +11,7 @@
 @interface _TtC9SeymourUI27RemoteBrowsingCatalogClient : _TtCs12_SwiftObject
 {
     MISSING_TYPE *catalogClient;
+    MISSING_TYPE *remoteBrowsingClient;
     MISSING_TYPE *remoteBrowsingSource;
 }
 

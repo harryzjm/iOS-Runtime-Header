@@ -9,7 +9,6 @@
 @class CaptureMTLCommandBuffer, CaptureMTLDevice, NSMutableSet, NSString;
 @protocol MTLComputeCommandEncoder, MTLComputeCommandEncoderSPI, MTLDevice;
 
-__attribute__((visibility("hidden")))
 @interface CaptureMTLComputeCommandEncoder : NSObject
 {
     id <MTLComputeCommandEncoderSPI> _baseObject;
@@ -30,7 +29,10 @@ __attribute__((visibility("hidden")))
 - (void)updateFence:(id)arg1;
 - (void)setVisibleFunctionTables:(const id *)arg1 withBufferRange:(struct _NSRange)arg2;
 - (void)setVisibleFunctionTable:(id)arg1 atBufferIndex:(unsigned long long)arg2;
+- (void)setThreadgroupPackingDisabled:(_Bool)arg1;
 - (void)setThreadgroupMemoryLength:(unsigned long long)arg1 atIndex:(unsigned long long)arg2;
+- (void)setThreadgroupDistributionModeWithClusterGroupIndex:(unsigned int)arg1;
+- (void)setThreadgroupDistributionMode:(long long)arg1;
 - (void)setTextures:(const id *)arg1 withRange:(struct _NSRange)arg2;
 - (void)setTexture:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)setStageInRegionWithIndirectBuffer:(id)arg1 indirectBufferOffset:(unsigned long long)arg2;
@@ -43,9 +45,13 @@ __attribute__((visibility("hidden")))
 - (void)setIntersectionFunctionTable:(id)arg1 atBufferIndex:(unsigned long long)arg2;
 - (void)setImageblockWidth:(unsigned long long)arg1 height:(unsigned long long)arg2;
 - (void)setComputePipelineState:(id)arg1;
+- (void)setBytes:(const void *)arg1 length:(unsigned long long)arg2 attributeStride:(unsigned long long)arg3 atIndex:(unsigned long long)arg4;
 - (void)setBytes:(const void *)arg1 length:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
 - (void)setBuffers:(const id *)arg1 offsets:(const unsigned long long *)arg2 withRange:(struct _NSRange)arg3;
+- (void)setBuffers:(const id *)arg1 offsets:(const unsigned long long *)arg2 attributeStrides:(const unsigned long long *)arg3 withRange:(struct _NSRange)arg4;
+- (void)setBufferOffset:(unsigned long long)arg1 attributeStride:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
 - (void)setBufferOffset:(unsigned long long)arg1 atIndex:(unsigned long long)arg2;
+- (void)setBuffer:(id)arg1 offset:(unsigned long long)arg2 attributeStride:(unsigned long long)arg3 atIndex:(unsigned long long)arg4;
 - (void)setBuffer:(id)arg1 offset:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
 - (void)sampleCountersInBuffer:(id)arg1 atSampleIndex:(unsigned long long)arg2 withBarrier:(_Bool)arg3;
 - (void)pushDebugGroup:(id)arg1;

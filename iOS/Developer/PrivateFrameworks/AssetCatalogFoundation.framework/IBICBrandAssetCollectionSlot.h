@@ -22,6 +22,7 @@
 @property(readonly) IBICSize *size; // @synthesize size=_size;
 @property(readonly) IBICRole *role; // @synthesize role=_role;
 @property(readonly) IBICIdiom *idiom; // @synthesize idiom=_idiom;
+- (_Bool)providesBookmarkTitleForChild:(id)arg1;
 - (id)outputFileNameGivenBaseName:(id)arg1 andExtension:(id)arg2;
 - (id)detailAreaPath;
 - (long long)compareDisplayOrder:(id)arg1;

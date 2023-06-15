@@ -23,9 +23,7 @@
 @property(readonly, copy, nonatomic) NSString *portalServiceEndpoint;
 @property(readonly, copy, nonatomic) NSString *portalServiceProtocolVersion;
 @property(readonly, copy, nonatomic) NSString *portalServiceHostDescription;
-@property(readonly, copy, nonatomic) NSString *portalServiceXcodeServerClientID;
 @property(readonly, copy, nonatomic) NSString *portalServiceXcodeClientID;
-@property(readonly, copy, nonatomic) NSString *portalServiceCertificateHostname;
 @property(readonly, copy, nonatomic) NSString *portalServiceHostname;
 - (id)initWithHostnameOverride:(id)arg1 endpointOverride:(id)arg2 basePathOverride:(id)arg3;
 

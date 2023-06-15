@@ -6,7 +6,7 @@
 
 #import <SearchFoundation/SFCardSection-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString, SFColor;
+@class NSArray, NSData, NSDictionary, NSString;
 
 @protocol SFStrokeAnimationCardSection <SFCardSection>
 @property(readonly, nonatomic) NSData *jsonData;
@@ -15,14 +15,6 @@
 @property(copy, nonatomic) NSArray *characters;
 @property(copy, nonatomic) NSArray *strokeNames;
 @property(copy, nonatomic) NSString *strokeAnimationRepresentation;
-@property(retain, nonatomic) SFColor *backgroundColor;
-@property(nonatomic) int separatorStyle;
 @property(copy, nonatomic) NSString *type;
-@property(nonatomic) _Bool hasBottomPadding;
-@property(nonatomic) _Bool hasTopPadding;
-@property(nonatomic) _Bool canBeHidden;
-@property(copy, nonatomic) NSString *punchoutPickerDismissText;
-@property(copy, nonatomic) NSString *punchoutPickerTitle;
-@property(copy, nonatomic) NSArray *punchoutOptions;
 @end
 

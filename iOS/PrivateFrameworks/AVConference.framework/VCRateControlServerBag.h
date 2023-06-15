@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 + (id)groupKeysWithMode:(int)arg1 primaryKey:(id)arg2;
 + (id)profileNumberKeyWithMode:(int)arg1;
 + (id)keysWithMode:(int)arg1;
+@property(readonly) NSDictionary *serverBagDictionary; // @synthesize serverBagDictionary=_serverBagDict;
 - (id)getExperimentValueForKey:(id)arg1;
 @property(readonly, retain) NSNumber *experimentGroupIndex;
 @property(readonly) int experimentVersion;

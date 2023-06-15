@@ -9,10 +9,10 @@
 @protocol IMDaemonProtocol;
 
 @protocol IMDaemonMultiplexedConnectionManaging <NSObject>
+@property(readonly, nonatomic) id <IMDaemonProtocol> synchronousRemoteProxy;
+@property(readonly, nonatomic) id <IMDaemonProtocol> remoteProxy;
 - (void)invalidate;
 - (void)connectWithCompletion:(void (^)(void))arg1;
 - (void)waitForSetup;
-@property(nonatomic, readonly) id <IMDaemonProtocol> synchronousRemoteProxy;
-@property(nonatomic, readonly) id <IMDaemonProtocol> remoteProxy;
 @end
 

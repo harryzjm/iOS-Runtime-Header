@@ -10,6 +10,7 @@
 @protocol MTLTexture;
 
 @protocol PXGMetalSpriteTexture <PXGSpriteTexture>
+@property(readonly, nonatomic) float alpha;
 @property(readonly, nonatomic) int shaderFlags;
 @property(readonly, nonatomic) _Bool isCaptureTexture;
 @property(readonly, nonatomic) _Bool isAtlas;
@@ -19,6 +20,6 @@
 @property(readonly, nonatomic) id <MTLTexture> texture;
 - (void)cleanupAfterRender:(long long)arg1;
 - (void)prepareForRender:(long long)arg1;
-- (void)getTextureInfos:(struct *)arg1 forSpriteIndexes:(unsigned int *)arg2 geometries:(const CDStruct_4f725fed *)arg3 spriteStyles:(const CDStruct_a79e78a9 *)arg4 spriteInfos:(const CDStruct_9d1ebe49 *)arg5 screenScale:(double)arg6 count:(unsigned int)arg7;
+- (void)getTextureInfos:(CDStruct_37a3040a *)arg1 forSpriteIndexes:(unsigned int *)arg2 geometries:(const CDStruct_4f725fed *)arg3 spriteStyles:(const CDStruct_a79e78a9 *)arg4 spriteInfos:(const CDStruct_12471299 *)arg5 screenScale:(double)arg6 count:(unsigned int)arg7;
 @end
 

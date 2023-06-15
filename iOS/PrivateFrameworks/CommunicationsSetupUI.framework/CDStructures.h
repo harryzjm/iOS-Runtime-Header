@@ -25,6 +25,14 @@ struct CGSize {
     double height;
 };
 
+struct CKiCloudSyncStatusDescriptor {
+    long long _field1;
+    id _field2;
+    unsigned long long _field3;
+    unsigned long long _field4;
+    id _field5;
+};
+
 struct _NSRange {
     unsigned long long _field1;
     unsigned long long _field2;

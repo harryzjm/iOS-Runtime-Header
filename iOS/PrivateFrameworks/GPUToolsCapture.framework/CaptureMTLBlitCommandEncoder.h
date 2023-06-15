@@ -9,7 +9,6 @@
 @class CaptureMTLCommandBuffer, CaptureMTLDevice, NSMutableSet, NSString;
 @protocol MTLBlitCommandEncoder, MTLBlitCommandEncoderSPI, MTLDevice;
 
-__attribute__((visibility("hidden")))
 @interface CaptureMTLBlitCommandEncoder : NSObject
 {
     id <MTLBlitCommandEncoderSPI> _baseObject;

@@ -18,7 +18,7 @@
 }
 
 + (id)helperWithInfo:(id)arg1;
-+ (id)vectorForContainingViewport:(const void *)arg1;
++ (id)vectorForContainingViewport:(void *)arg1;
 + (tvec2_3b141483)containingViewportForVector:(id)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
@@ -28,10 +28,10 @@
 @property(readonly, nonatomic) TSCHChartInfo *chartInfo; // @synthesize chartInfo=_chartInfo;
 - (void)invalidateLabelsBoundsForSceneObjectClass:(Class)arg1 boundsIndex:(long long)arg2;
 - (void)invalidateBounds;
-- (tvec2_84d5962d)layoutSizeByResizingScene:(id)arg1 toChartBodyLayoutSize:(const void *)arg2 resizeStartingSize:(void *)arg3 returningChartBodyLayoutBoundsInChartAreaLayoutSpace:(void *)arg4;
-- (tvec2_84d5962d)chartBodySizeByResizingScene:(id)arg1 toLayoutSize:(const void *)arg2 resizeStartingSize:(void *)arg3 returningChartBodyLayoutOffsetInChartAreaLayoutSpace:(void *)arg4 resultLayoutSize:(void *)arg5;
+- (tvec2_84d5962d)layoutSizeByResizingScene:(id)arg1 toChartBodyLayoutSize:(void *)arg2 resizeStartingSize:(void *)arg3 returningChartBodyLayoutBoundsInChartAreaLayoutSpace:(void *)arg4;
+- (tvec2_84d5962d)chartBodySizeByResizingScene:(id)arg1 toLayoutSize:(void *)arg2 resizeStartingSize:(void *)arg3 returningChartBodyLayoutOffsetInChartAreaLayoutSpace:(void *)arg4 resultLayoutSize:(void *)arg5;
 - (tvec2_84d5962d)chartBodyLayoutOffsetInChartAreaLayoutSpaceUsingConverter:(const void *)arg1;
-- (id)boundsLayoutResizedForScene:(id)arg1 bounds:(const void *)arg2 resizeStartingSize:(void *)arg3 mode:(int)arg4 returningResultSize:(void *)arg5;
+- (id)boundsLayoutResizedForScene:(id)arg1 bounds:(void *)arg2 resizeStartingSize:(void *)arg3 mode:(int)arg4 returningResultSize:(void *)arg5;
 - (id)boundsLayoutForScene:(id)arg1 mode:(int)arg2;
 @property(readonly, nonatomic) TSCH3DVector *containingViewportVector;
 - (void)initializeOriginalContainingViewport;

@@ -6,9 +6,10 @@
 
 #import <GameCenterFoundation/NSObject-Protocol.h>
 
-@class GKGameSettingsInternal, NSNumber, NSString;
+@class GKGameSettingsInternal, NSArray, NSNumber, NSString;
 
 @protocol GKGameService <NSObject>
+- (oneway void)storeGameForBundleIDs:(NSArray *)arg1 completion:(void (^)(NSError *))arg2;
 - (oneway void)resetTCCAuthorization:(void (^)(void))arg1;
 - (oneway void)checkTCCAuthorization:(void (^)(_Bool))arg1;
 - (oneway void)getPerGameFriendsForBundleID:(NSString *)arg1 handler:(void (^)(NSArray *, NSError *))arg2;

@@ -7,12 +7,13 @@
 #import <PhotosUIPrivate/NSObject-Protocol.h>
 
 @class NSObject, NSUndoManager, PXActionPerformer;
-@protocol PXAnonymousViewController, PXPresentationEnvironment;
+@protocol PXAnonymousViewController, PXMemoryAssetsActionFactory, PXPresentationEnvironment;
 
 @protocol PXActionPerformerDelegate <NSObject>
 - (NSUndoManager *)undoManagerForActionPerformer:(PXActionPerformer *)arg1;
 
 @optional
+@property(readonly, nonatomic) id <PXMemoryAssetsActionFactory> memoryAssetsActionFactory;
 - (double)progressToastPaddingForActionPerformer:(PXActionPerformer *)arg1;
 - (NSObject<PXAnonymousViewController> *)progressToastViewControllerForActionPerformer:(PXActionPerformer *)arg1;
 - (NSObject<PXAnonymousViewController> *)hostViewControllerForActionPerformer:(PXActionPerformer *)arg1;

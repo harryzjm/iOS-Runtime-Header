@@ -12,6 +12,7 @@
 - (void)automationSummaryViewController:(WFAutomationSummaryViewController *)arg1 didFinishWithTrigger:(WFConfiguredTriggerRecord *)arg2;
 
 @optional
+- (void)automationSummaryViewControllerDidCancel:(WFAutomationSummaryViewController *)arg1;
 - (void)automationSummaryViewController:(WFAutomationSummaryViewController *)arg1 editWorkflow:(WFWorkflow *)arg2;
 - (void)automationSummaryViewController:(WFAutomationSummaryViewController *)arg1 editTrigger:(WFConfiguredTriggerRecord *)arg2;
 @end

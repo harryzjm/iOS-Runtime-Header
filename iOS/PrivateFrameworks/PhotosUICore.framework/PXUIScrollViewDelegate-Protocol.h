@@ -7,6 +7,8 @@
 @class UIScrollView;
 
 @protocol PXUIScrollViewDelegate
+- (void)scrollViewDidEndFocusFastScrolling:(UIScrollView *)arg1;
+- (void)scrollViewDidBeginFocusFastScrolling:(UIScrollView *)arg1;
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)arg1;
 - (void)scrollView:(UIScrollView *)arg1 willBeginScrollingAnimationTowardsContentEdges:(unsigned long long)arg2;
 - (void)scrollViewDidLayoutSubviews:(UIScrollView *)arg1;

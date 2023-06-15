@@ -6,12 +6,13 @@
 
 #import <SeymourUI/NSObject-Protocol.h>
 
-@class AMSCarrierLinkResult, AMSPurchaseResult, AMSUIDynamicViewController, NSDictionary, NSError, UIView, UIViewController;
+@class AMSCarrierLinkResult, AMSDelegateAction, AMSPurchaseResult, AMSUIDynamicViewController, NSDictionary, NSError, UIView, UIViewController;
 @protocol AMSUIDynamicContentViewProtocol;
 
 @protocol AMSUIDynamicViewControllerDelegate <NSObject>
 
 @optional
+- (_Bool)dynamicViewController:(AMSUIDynamicViewController *)arg1 handleDelegateAction:(AMSDelegateAction *)arg2 completionHandler:(void (^)(id, NSError *))arg3;
 - (_Bool)dynamicViewControllerShouldDismiss:(AMSUIDynamicViewController *)arg1;
 - (void)dynamicViewController:(AMSUIDynamicViewController *)arg1 didResolveWithResult:(NSDictionary *)arg2 error:(NSError *)arg3;
 - (void)dynamicViewController:(AMSUIDynamicViewController *)arg1 didFinishCarrierLinkingWithResult:(AMSCarrierLinkResult *)arg2 error:(NSError *)arg3;

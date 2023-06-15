@@ -11,10 +11,10 @@
 @protocol MDLMeshBufferAllocator, MDLMeshBufferZone;
 
 @protocol MDLMeshBuffer <NSObject, NSCopying>
-@property(nonatomic, readonly) unsigned long long type;
-@property(nonatomic, readonly) id <MDLMeshBufferZone> zone;
-@property(nonatomic, readonly) id <MDLMeshBufferAllocator> allocator;
-@property(nonatomic, readonly) long long length;
+@property(readonly, nonatomic) unsigned long long type;
+@property(readonly, retain, nonatomic) id <MDLMeshBufferZone> zone;
+@property(readonly, retain, nonatomic) id <MDLMeshBufferAllocator> allocator;
+@property(readonly, nonatomic) unsigned long long length;
 - (MDLMeshBufferMap *)map;
 - (void)fillData:(NSData *)arg1 offset:(unsigned long long)arg2;
 @end

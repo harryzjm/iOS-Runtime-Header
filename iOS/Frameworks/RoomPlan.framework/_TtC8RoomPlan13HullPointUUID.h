@@ -11,6 +11,7 @@
 @interface _TtC8RoomPlan13HullPointUUID : _TtCs12_SwiftObject
 {
     MISSING_TYPE *type;
+    MISSING_TYPE *hasThickness;
 }
 
 @end

@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
-@class NSAttributedString, UILabel;
+@class NSAttributedString, UILabel, UITapGestureRecognizer;
 @protocol MUOverallRatingPlatterViewModel;
 
 __attribute__((visibility("hidden")))
@@ -15,19 +15,20 @@ __attribute__((visibility("hidden")))
     UILabel *_attributionLabel;
     UILabel *_starLabel;
     UILabel *_ratingLabel;
+    UITapGestureRecognizer *_tapGestureRecognizer;
     id <MUOverallRatingPlatterViewModel> _viewModel;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) id <MUOverallRatingPlatterViewModel> viewModel; // @synthesize viewModel=_viewModel;
 - (struct CGSize)intrinsicContentSize;
-- (void)_updateAttributiion;
-- (void)traitCollectionDidChange:(id)arg1;
+- (void)_updateAttribution;
 - (void)_contentSizeDidChange;
 - (void)_updateAppearance;
 - (id)_attributesWithFont:(id)arg1 color:(id)arg2;
 @property(readonly, nonatomic) NSAttributedString *starString;
 @property(readonly, nonatomic) NSAttributedString *ratingString;
+- (void)addSelectionGestureWithTarget:(id)arg1 action:(SEL)arg2;
 - (void)_setupConstraints;
 - (void)_setupSubviews;
 - (id)initWithFrame:(struct CGRect)arg1;

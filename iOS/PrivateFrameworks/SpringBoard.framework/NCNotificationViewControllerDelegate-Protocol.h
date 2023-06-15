@@ -4,13 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SpringBoard/NSObject-Protocol.h>
+#import <SpringBoard/NCNotificationRequestPresentingDelegate-Protocol.h>
 
 @class BSAnimationSettings, NCNotificationAction, NCNotificationViewController, NSDictionary, UIDragInteraction, UIView, UIWindow;
 @protocol NCContainerViewProviding, PLKeyboardHomeAffordanceAssertion, UIDragSession, UIViewSpringAnimationBehaviorDescribing;
 
-@protocol NCNotificationViewControllerDelegate <NSObject>
-- (void)notificationViewController:(NCNotificationViewController *)arg1 executeAction:(NCNotificationAction *)arg2 withParameters:(NSDictionary *)arg3 completion:(void (^)(_Bool))arg4;
+@protocol NCNotificationViewControllerDelegate <NCNotificationRequestPresentingDelegate>
 - (void)notificationViewController:(NCNotificationViewController *)arg1 requestPermissionToExecuteAction:(NCNotificationAction *)arg2 withParameters:(NSDictionary *)arg3 completion:(void (^)(_Bool))arg4;
 
 @optional
@@ -25,12 +24,10 @@
 - (BSAnimationSettings *)unhideHomeAffordanceAnimationSettingsForNotificationViewController:(NCNotificationViewController *)arg1;
 - (BSAnimationSettings *)hideHomeAffordanceAnimationSettingsForNotificationViewController:(NCNotificationViewController *)arg1;
 - (id <PLKeyboardHomeAffordanceAssertion>)notificationViewController:(NCNotificationViewController *)arg1 keyboardAssertionForGestureWindow:(UIWindow *)arg2;
-- (NSDictionary *)notificationUsageTrackingStateForNotificationViewController:(NCNotificationViewController *)arg1;
 - (_Bool)showAdditionalMessageLinesForNotificationViewController:(NCNotificationViewController *)arg1;
 - (void)notificationViewController:(NCNotificationViewController *)arg1 dragInteraction:(UIDragInteraction *)arg2 session:(id <UIDragSession>)arg3 didEndWithOperation:(unsigned long long)arg4;
 - (void)notificationViewController:(NCNotificationViewController *)arg1 dragInteraction:(UIDragInteraction *)arg2 session:(id <UIDragSession>)arg3 willEndWithOperation:(unsigned long long)arg4;
 - (void)notificationViewController:(NCNotificationViewController *)arg1 dragInteraction:(UIDragInteraction *)arg2 sessionWillBegin:(id <UIDragSession>)arg3;
-- (void)notificationViewController:(NCNotificationViewController *)arg1 shouldFinishLongLookTransitionForTrigger:(long long)arg2 withCompletionBlock:(void (^)(_Bool))arg3;
 - (struct CGRect)notificationViewController:(NCNotificationViewController *)arg1 finalFrameForDismissingLongLookFromView:(UIView *)arg2;
 - (struct CGRect)notificationViewController:(NCNotificationViewController *)arg1 initialFrameForPresentingLongLookFromView:(UIView *)arg2;
 - (id <NCContainerViewProviding>)notificationViewControllerContainerViewProviderForExpandedContent:(NCNotificationViewController *)arg1;

@@ -9,7 +9,6 @@
 @class CaptureMTLDevice, NSString;
 @protocol MTLCounterSampleBuffer, MTLDevice;
 
-__attribute__((visibility("hidden")))
 @interface CaptureMTLCounterSampleBuffer : NSObject
 {
     id <MTLCounterSampleBuffer> _baseObject;

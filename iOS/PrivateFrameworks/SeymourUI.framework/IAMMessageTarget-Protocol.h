@@ -9,10 +9,10 @@
 @class IAMMessage, IAMMessageCoordinator, NSString;
 
 @protocol IAMMessageTarget <NSObject>
+@property(readonly, nonatomic) NSString *targetIdentifier;
 - (void)messageCoordinator:(IAMMessageCoordinator *)arg1 didUpdatePriorityMessage:(IAMMessage *)arg2 forTarget:(NSString *)arg3;
-@property(nonatomic, readonly) NSString *targetIdentifier;
 
 @optional
-@property(nonatomic, readonly) _Bool shouldBeNotifiedOfNilPriorityMessageAfterRegistration;
+@property(readonly, nonatomic) _Bool shouldBeNotifiedOfNilPriorityMessageAfterRegistration;
 @end
 

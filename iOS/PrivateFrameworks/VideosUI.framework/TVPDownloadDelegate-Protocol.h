@@ -11,6 +11,7 @@
 @protocol TVPDownloadDelegate <NSObject>
 
 @optional
+- (void)download:(TVPDownload *)arg1 processFinishedDownloadWithCompletion:(void (^)(NSError *))arg2;
 - (void)download:(TVPDownload *)arg1 progressDidChange:(double)arg2;
 - (void)download:(TVPDownload *)arg1 didChangeStateTo:(long long)arg2;
 - (void)download:(TVPDownload *)arg1 willDownloadToURL:(NSURL *)arg2;

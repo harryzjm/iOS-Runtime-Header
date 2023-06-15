@@ -6,7 +6,7 @@
 
 #import "UITextInteraction.h"
 
-@class UITextGestureTuning, UITextModernLoupeSession, UITextSelectionGrabberSuppressionAssertion, _UIKeyboardTextSelectionController;
+@class UITextGestureTuning, UITextLoupeSession, UITextSelectionGrabberSuppressionAssertion, _UIKeyboardTextSelectionController;
 
 __attribute__((visibility("hidden")))
 @interface UITextSelectionInteraction : UITextInteraction
@@ -19,9 +19,9 @@ __attribute__((visibility("hidden")))
     struct CGRect _originalCaretRect;
     _Bool _wasOriginallyFirstResponder;
     long long _granularityToHandOff;
+    UITextLoupeSession *_activeLoupeSession;
     _UIKeyboardTextSelectionController *_activeSelectionController;
     UITextSelectionGrabberSuppressionAssertion *_grabberSuppressionAssertion;
-    UITextModernLoupeSession *_activeLoupeSession;
 }
 
 - (void).cxx_destruct;
@@ -42,6 +42,7 @@ __attribute__((visibility("hidden")))
 - (void)oneFingerTapSelectsAll:(id)arg1;
 - (void)tappedToSelectTextWithGesture:(id)arg1 atPoint:(struct CGPoint)arg2 granularity:(long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)tappedToPositionCursorWithGesture:(id)arg1 atPoint:(struct CGPoint)arg2 granularity:(long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (_Bool)_hasTextAlternativesAtLocation:(struct CGPoint)arg1;
 - (void)tappedToUpdateSelectionWithGesture:(id)arg1 atPoint:(struct CGPoint)arg2 granularity:(long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_checkForRepeatedTap:(id)arg1 gestureLocationOut:(struct CGPoint *)arg2;
 - (long long)_textGranularityForNumberOfTaps:(unsigned long long)arg1;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UICompoundObjectMapKey : NSObject <NSCopying>
+@interface _UICompoundObjectMapKey : NSObject
 {
     id _object;
     NSString *_property;
@@ -19,6 +17,7 @@ __attribute__((visibility("hidden")))
 
 + (id)keyWithObject:(id)arg1 andProperty:(id)arg2;
 - (void).cxx_destruct;
+- (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)copyWithZone:(struct _NSZone *)arg1;

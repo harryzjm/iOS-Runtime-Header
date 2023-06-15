@@ -15,6 +15,7 @@
     MISSING_TYPE *formatService;
     MISSING_TYPE *tagService;
     MISSING_TYPE *headlineService;
+    MISSING_TYPE *feedPersonalizer;
     MISSING_TYPE *suggestionClusteringService;
     MISSING_TYPE *sportsOnboardingManager;
     MISSING_TYPE *sportsGraphManager;

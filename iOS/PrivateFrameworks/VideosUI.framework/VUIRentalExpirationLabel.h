@@ -22,7 +22,6 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)_calculateExpirationStringForDate:(id)arg1 displayWarningColor:(_Bool *)arg2 updateInterval:(long long *)arg3 locStringPrefix:(id)arg4;
-+ (_Bool)shouldShowLabelForDownloadExpirationDate:(id)arg1;
 + (id)calculateExpirationStringForDate:(id)arg1 updateInterval:(long long *)arg2 locStringPrefix:(id)arg3;
 + (id)labelWithExpirationDate:(id)arg1 textLayout:(id)arg2 existingLabel:(id)arg3 locStringPrefix:(id)arg4 forDownload:(_Bool)arg5 contentIsAvailable:(_Bool)arg6;
 + (id)labelWithExpirationDate:(id)arg1 textLayout:(id)arg2 existingLabel:(id)arg3 locStringPrefix:(id)arg4 useWarningColor:(_Bool)arg5;
@@ -41,6 +40,7 @@ __attribute__((visibility("hidden")))
 - (void)invalidateTimer;
 - (void)dealloc;
 - (void)vui_willMoveToWindow:(id)arg1;
+- (void)willMoveToWindow:(id)arg1;
 
 @end
 

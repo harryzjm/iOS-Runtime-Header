@@ -4,3 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#pragma mark Named Structures
+
+struct ScalarArgsArray {
+    unsigned long long _field1[16];
+    unsigned int _field2;
+};
+

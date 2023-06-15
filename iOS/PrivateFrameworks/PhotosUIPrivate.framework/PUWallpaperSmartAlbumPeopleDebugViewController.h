@@ -4,24 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UICollectionViewController.h>
+#import <UIKitCore/UICollectionViewController.h>
 
-@class NSArray, NSString, PUWallpaperDebugViewSpec, PXWallpaperSmartAlbumPeoplePickerDataSource;
+@class NSArray, NSString, PUWallpaperDebugViewSpec, PXPassiveContentPeoplePickerDataSourceBase;
 
 __attribute__((visibility("hidden")))
 @interface PUWallpaperSmartAlbumPeopleDebugViewController : UICollectionViewController
 {
+    short _contentMode;
     PUWallpaperDebugViewSpec *_spec;
-    PXWallpaperSmartAlbumPeoplePickerDataSource *_dataSource;
+    PXPassiveContentPeoplePickerDataSourceBase *_dataSource;
     NSArray *_dataSourceEntries;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *dataSourceEntries; // @synthesize dataSourceEntries=_dataSourceEntries;
-@property(retain, nonatomic) PXWallpaperSmartAlbumPeoplePickerDataSource *dataSource; // @synthesize dataSource=_dataSource;
+@property(retain, nonatomic) PXPassiveContentPeoplePickerDataSourceBase *dataSource; // @synthesize dataSource=_dataSource;
+@property(nonatomic) short contentMode; // @synthesize contentMode=_contentMode;
 @property(retain, nonatomic) PUWallpaperDebugViewSpec *spec; // @synthesize spec=_spec;
-- (_Bool)shouldAutorotate;
-- (unsigned long long)navigationControllerSupportedInterfaceOrientations:(id)arg1;
+- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (id)collectionView:(id)arg1 viewForSupplementaryElementOfKind:(id)arg2 atIndexPath:(id)arg3;
 - (struct UIEdgeInsets)collectionView:(id)arg1 layout:(id)arg2 insetForSectionAtIndex:(long long)arg3;
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 referenceSizeForHeaderInSection:(long long)arg3;
@@ -30,10 +31,10 @@ __attribute__((visibility("hidden")))
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
-- (void)wallpaperSmartAlbumPeoplePickerDataSourceChanged:(id)arg1;
+- (void)passiveContentPeoplePickerDataSourceChanged:(id)arg1;
 - (void)_updateDisplayDataSource;
 - (void)viewDidLoad;
-- (id)initWithSpec:(id)arg1;
+- (id)initWithSpec:(id)arg1 contentMode:(short)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

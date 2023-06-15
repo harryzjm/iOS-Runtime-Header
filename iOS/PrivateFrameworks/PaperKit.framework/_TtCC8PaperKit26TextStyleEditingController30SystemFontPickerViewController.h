@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIFontPickerViewController.h>
+#import <UIKitCore/UIFontPickerViewController.h>
 
 __attribute__((visibility("hidden")))
 @interface _TtCC8PaperKit26TextStyleEditingController30SystemFontPickerViewController : UIFontPickerViewController

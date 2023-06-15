@@ -8,6 +8,7 @@
 @protocol FCOperationCanceling;
 
 @protocol FCArticleDownloadServiceType
+- (_Bool)isArticleDownloadedEnoughToRead:(NSString *)arg1;
 - (id <FCOperationCanceling>)downloadArticleWithID:(NSString *)arg1 completionHandler:(void (^)(FCInterestToken *, unsigned long long, _Bool, NSError *))arg2;
 - (id <FCOperationCanceling>)fetchCachedArticleWithID:(NSString *)arg1 completionHandler:(void (^)(FCInterestToken *, unsigned long long, _Bool, NSError *))arg2;
 @end

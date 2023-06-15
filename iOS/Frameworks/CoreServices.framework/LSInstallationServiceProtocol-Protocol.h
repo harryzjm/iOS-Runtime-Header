@@ -7,12 +7,9 @@
 #import <CoreServices/NSObject-Protocol.h>
 
 @class NSDictionary, NSString, NSURL;
-@protocol LSMIInstallCall, LSMIUninstallCall;
 
 @protocol LSInstallationServiceProtocol <NSObject>
 - (void)performShimmedUninstallOfApplicationWithIdentifier:(NSString *)arg1 options:(NSDictionary *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 - (void)performShimmedInstallOfArtifact:(NSURL *)arg1 options:(NSDictionary *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
-- (void)performUninstallCall:(id <LSMIUninstallCall>)arg1 withOptions:(NSDictionary *)arg2 uninstallType:(unsigned long long)arg3 reply:(void (^)(NSArray *, NSError *))arg4;
-- (void)performInstallCall:(id <LSMIInstallCall>)arg1 withOptions:(NSDictionary *)arg2 installType:(unsigned long long)arg3 reply:(void (^)(NSArray *, LSRecordPromise *, NSError *))arg4;
 @end
 

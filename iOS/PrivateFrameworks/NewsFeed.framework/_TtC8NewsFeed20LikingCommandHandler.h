@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *readingHistory;
     MISSING_TYPE *bundleSubscriptionManager;
     MISSING_TYPE *paidAccessChecker;
-    MISSING_TYPE *commandCenter;
     MISSING_TYPE *allLikedArticleIDs;
     MISSING_TYPE *allDislikedArticleIDs;
 }

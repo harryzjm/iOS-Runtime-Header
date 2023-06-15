@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 @class NSString, UIInterfaceActionConcreteVisualStyle, UIInterfaceActionGroupViewState, UIInterfaceActionOverrideVisualStyle;
 @protocol UIInterfaceActionConcreteVisualStyleImpl;
 
 __attribute__((visibility("hidden")))
-@interface UIInterfaceActionVisualStyle : NSObject <NSCopying>
+@interface UIInterfaceActionVisualStyle : NSObject
 {
     UIInterfaceActionGroupViewState *_groupViewState;
     UIInterfaceActionConcreteVisualStyle<UIInterfaceActionConcreteVisualStyleImpl> *_concreteVisualStyle;
@@ -36,9 +34,11 @@ __attribute__((visibility("hidden")))
 - (id)actionGroupPropertiesAffectingActionsScrollViewStyling;
 - (void)configureForDismissingGroupView:(id)arg1 alongsideTransitionCoordinator:(id)arg2;
 - (void)configureForPresentingGroupView:(id)arg1 alongsideTransitionCoordinator:(id)arg2;
+- (double)actionSpacingForGroupViewState:(id)arg1;
 - (id)actionImageViewTintColorForImageProperty:(id)arg1 actionViewState:(id)arg2;
 - (id)actionClassificationLabelColorForViewState:(id)arg1;
 - (id)actionClassificationLabelFontForViewState:(id)arg1;
+- (id)actionTitleLabelCompositingFilterForViewState:(id)arg1;
 - (id)actionTitleLabelColorForViewState:(id)arg1;
 - (id)actionTitleLabelFontForViewState:(id)arg1;
 - (id)newActionBackgroundViewForViewState:(id)arg1;
@@ -54,6 +54,7 @@ __attribute__((visibility("hidden")))
 - (double)contentCornerRadius;
 - (struct UIEdgeInsets)actionSequenceEdgeInsets;
 - (double)actionSectionSpacing;
+- (_Bool)allowsZeroSizedSectionSeparators;
 - (double)verticalImageContentSpacing;
 - (double)horizontalImageContentSpacing;
 - (struct CGSize)minimumActionContentSize;

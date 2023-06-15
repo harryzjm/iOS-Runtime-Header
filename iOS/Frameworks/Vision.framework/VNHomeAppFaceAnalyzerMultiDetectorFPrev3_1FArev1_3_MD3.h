@@ -9,7 +9,6 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)espressoModelInputImageDimensionsBlobNameForConfigurationOptions:(id)arg1;
 + (id)espressoModelFileNameForConfigurationOptions:(id)arg1;
 + (const void *)modelVersionForOptions:(id)arg1;
 - (_Bool)_isFaceprintJunk:(shared_ptr_0a6daad2)arg1;

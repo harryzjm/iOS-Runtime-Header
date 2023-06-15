@@ -6,9 +6,9 @@
 
 #import <TextRecognition/NSObject-Protocol.h>
 
-@class CRImage, NSArray;
+@class CRImage, CRMetalPolygonRectifier, NSArray;
 
 @protocol CRTextOrientationCorrecting <NSObject>
-- (_Bool)correctOrientationOnAllFeatures:(_Bool)arg1 sortedFeatures:(NSArray *)arg2 image:(CRImage *)arg3 error:(id *)arg4;
+- (NSArray *)regionsByCorrectingOrientationOnSortedRegions:(NSArray *)arg1 correctAllRegions:(_Bool)arg2 image:(CRImage *)arg3 rectifier:(CRMetalPolygonRectifier *)arg4 error:(id *)arg5;
 @end
 

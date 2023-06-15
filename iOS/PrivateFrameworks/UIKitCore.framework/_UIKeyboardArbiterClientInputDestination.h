@@ -4,7 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableSet, NSString, UIScreen, UIWindowScene;
+@class NSMutableDictionary, NSMutableSet, NSObject, NSString, UIScreen, UIWindowScene;
+@protocol OS_os_transaction;
 
 __attribute__((visibility("hidden")))
 @interface _UIKeyboardArbiterClientInputDestination
@@ -16,15 +17,19 @@ __attribute__((visibility("hidden")))
     int _hostedCount;
     UIScreen *_lastScreen;
     _Bool _resigningByOtherApp;
+    NSObject<OS_os_transaction> *_clientChangeResponseTransaction;
+    NSString *_keyboardSceneIdentifierEnteringForeground;
     _Bool _updatingKeyWindow;
     NSString *_focusedSceneIdentityStringOrIdentifier;
     NSMutableSet *_pendingKeyboardGrabs;
     NSMutableSet *_activePIDs;
+    NSMutableDictionary *_callerIDs;
 }
 
 + (id)currentBundleIdentifier;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool updatingKeyWindow; // @synthesize updatingKeyWindow=_updatingKeyWindow;
+@property(retain, nonatomic) NSMutableDictionary *callerIDs; // @synthesize callerIDs=_callerIDs;
 @property(retain, nonatomic) NSMutableSet *activePIDs; // @synthesize activePIDs=_activePIDs;
 @property(retain, nonatomic) NSMutableSet *pendingKeyboardGrabs; // @synthesize pendingKeyboardGrabs=_pendingKeyboardGrabs;
 @property(copy, nonatomic) NSString *focusedSceneIdentityStringOrIdentifier; // @synthesize focusedSceneIdentityStringOrIdentifier=_focusedSceneIdentityStringOrIdentifier;
@@ -35,6 +40,7 @@ __attribute__((visibility("hidden")))
 - (void)handleKeyboardUIDidChange:(id)arg1;
 - (void)handleKeyboardUITrackingChange:(id)arg1;
 - (void)queue_keyboardChanged:(id)arg1 onComplete:(CDUnknownBlockType)arg2;
+- (void)queue_endInputSessionWithCompletion:(CDUnknownBlockType)arg1;
 - (void)peekApplicationEvent:(id)arg1;
 - (_Bool)_sceneFocusUpdatePermittedForWindow:(id)arg1;
 - (_Bool)_sceneFocusPermittedForApplication;
@@ -44,6 +50,12 @@ __attribute__((visibility("hidden")))
 - (void)setWindowEnabled:(_Bool)arg1 force:(_Bool)arg2;
 - (void)setWindowEnabled:(_Bool)arg1;
 - (void)resignFirstResponderIfNeeded;
+- (_Bool)allowedToEnableKeyboardWindow;
+- (void)sceneWillEnterForeground:(id)arg1;
+- (void)clearKeyboardSceneIdentifierEnteringForeground:(id)arg1;
+- (void)setKeyboardSceneIdentifierEnteringForegroundForScene:(id)arg1;
+- (void)sceneDidActivate:(id)arg1;
+- (void)sceneDidEnterBackground:(id)arg1;
 - (_Bool)allowedToShowKeyboard;
 - (_Bool)needsToShowKeyboardForViewServiceHost;
 - (_Bool)needsToShowKeyboard;
@@ -53,8 +65,9 @@ __attribute__((visibility("hidden")))
 - (_Bool)wantsToShowKeyboardForViewServiceHost;
 - (_Bool)wantsToShowKeyboard;
 - (void)setWindowHostingPID:(int)arg1 active:(_Bool)arg2;
-- (void)removeWindowHostingPID:(int)arg1;
-- (void)addWindowHostingPID:(int)arg1;
+- (void)removeWindowHostingPID:(int)arg1 callerID:(id)arg2;
+- (void)addWindowHostingPID:(int)arg1 callerID:(id)arg2;
+- (_Bool)hasWindowHostingCallerID:(id)arg1;
 - (_Bool)hasWindowHostingPID:(int)arg1;
 - (_Bool)isHostedInAnotherProcess;
 - (void)applicationKeyWindowDidChange:(id)arg1;
@@ -72,6 +85,7 @@ __attribute__((visibility("hidden")))
 - (void)didRemoveDeactivationReason:(id)arg1;
 - (void)willAddDeactivationReason:(id)arg1;
 - (void)didSuspend:(id)arg1;
+- (void)sceneDidDisconnect:(id)arg1;
 - (void)willResume:(id)arg1;
 - (void)restorePreservedInputViewsIfNecessary;
 - (_Bool)shouldSnapshot;

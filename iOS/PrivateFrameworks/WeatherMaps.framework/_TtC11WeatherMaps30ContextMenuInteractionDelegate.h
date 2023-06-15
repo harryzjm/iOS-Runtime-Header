@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface _TtC11WeatherMaps30ContextMenuInteractionDelegate : NSObject
 {
     MISSING_TYPE *currentPreviewViewController;
+    MISSING_TYPE *location;
 }
 
 - (void).cxx_destruct;

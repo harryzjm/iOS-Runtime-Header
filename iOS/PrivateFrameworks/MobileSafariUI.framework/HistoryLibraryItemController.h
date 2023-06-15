@@ -4,17 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HistoryTableViewController, NSString;
+#import "LibraryItemController.h"
+
+@class NSString, SFHistoryViewController;
 
 __attribute__((visibility("hidden")))
-@interface HistoryLibraryItemController
+@interface HistoryLibraryItemController : LibraryItemController
 {
-    HistoryTableViewController *_viewController;
+    SFHistoryViewController *_historyViewController;
 }
 
 - (void).cxx_destruct;
+- (id)accessibilityIdentifier;
 - (_Bool)selectionFollowsFocus;
 - (_Bool)panelViewControllerShouldTranslucentAppearance:(id)arg1;
+- (_Bool)panelViewControllerShouldUseSearchControllerInNavigationItem:(id)arg1;
 - (id)viewController;
 - (void)updateListContentConfiguration:(id)arg1;
 

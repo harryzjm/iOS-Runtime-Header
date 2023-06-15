@@ -18,9 +18,10 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-@property(retain) DCXPCDisconnectHandler *disconnectionHandler; // @synthesize disconnectionHandler=_disconnectionHandler;
-@property(retain) id <DCCredentialStoreXPCProtocol> remoteObjectProxy; // @synthesize remoteObjectProxy=_remoteObjectProxy;
-@property(retain) NSXPCConnection *serverConnection; // @synthesize serverConnection=_serverConnection;
+@property(retain, nonatomic) DCXPCDisconnectHandler *disconnectionHandler; // @synthesize disconnectionHandler=_disconnectionHandler;
+@property(retain, nonatomic) id <DCCredentialStoreXPCProtocol> remoteObjectProxy; // @synthesize remoteObjectProxy=_remoteObjectProxy;
+@property(retain, nonatomic) NSXPCConnection *serverConnection; // @synthesize serverConnection=_serverConnection;
+- (void)clearPresentmentKeyUsageForCredential:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)eraseLegacySEKeySlot:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)occupiedLegacySEKeySlotsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)allElementsOfCredential:(id)arg1 authData:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -38,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (void)credentialIdentifierForPublicKeyIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)associateExternalPresentmentKeyWithCredential:(id)arg1 publicKeyIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)authorizeRemoteKeySigningKeyWithCredential:(id)arg1 remoteKey:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)generatePresentmentKeysForCredential:(id)arg1 numKeys:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)generatePresentmentKeyForCredential:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)generateDeviceEncryptionKeyForCredential:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)generateKeySigningKeyForCredential:(id)arg1 completion:(CDUnknownBlockType)arg2;

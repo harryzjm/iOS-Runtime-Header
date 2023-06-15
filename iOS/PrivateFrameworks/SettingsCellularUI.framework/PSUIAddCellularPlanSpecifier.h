@@ -15,12 +15,14 @@ __attribute__((visibility("hidden")))
     id _originAccessoryView;
     UIActivityIndicatorView *_spinner;
     _Bool _isRequestingFirstViewController;
+    _Bool _isEmbeddedInCarrierList;
     PSListController *_hostController;
     UIViewController *_firstViewController;
     TSSIMSetupFlow *_flow;
 }
 
 - (void).cxx_destruct;
+@property _Bool isEmbeddedInCarrierList; // @synthesize isEmbeddedInCarrierList=_isEmbeddedInCarrierList;
 @property _Bool isRequestingFirstViewController; // @synthesize isRequestingFirstViewController=_isRequestingFirstViewController;
 @property(retain) TSSIMSetupFlow *flow; // @synthesize flow=_flow;
 @property __weak UIViewController *firstViewController; // @synthesize firstViewController=_firstViewController;
@@ -31,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (void)showSpinner:(_Bool)arg1;
 - (long long)userConsentResponse;
 - (void)simSetupFlowCompleted:(unsigned long long)arg1;
+- (void)cellularPlanChanged;
 - (void)addCellularPlanCellPressed:(id)arg1;
 - (void)setUpeSIMNeeded;
 - (id)initWithHostController:(id)arg1 isEmbeddedInCarrierList:(_Bool)arg2 planManager:(id)arg3;

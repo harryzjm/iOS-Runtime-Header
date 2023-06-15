@@ -11,6 +11,7 @@
 @protocol IDSIDQueryControllerDelegate <NSObject>
 
 @optional
+- (void)idsKTVerifierResultsUpdatedForDestinations:(NSDictionary *)arg1 service:(NSString *)arg2;
 - (void)idStatusUpdatedForDestinations:(NSDictionary *)arg1 service:(NSString *)arg2;
 @end
 

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSItemProvider, WBSStartPageBackgroundImageDescription, WBSStartPageBackgroundImagesDataSource;
+@class NSItemProvider, NSString, WBSStartPageBackgroundImageDescription, WBSStartPageBackgroundImagesDataSource;
 
 __attribute__((visibility("hidden")))
 @interface SFStartPageBackgroundImageModel : NSObject
@@ -15,9 +15,13 @@ __attribute__((visibility("hidden")))
     long long _index;
     NSItemProvider *_itemProvider;
     _Bool _selected;
+    NSString *_profileUUID;
+    NSString *_symbolName;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *symbolName; // @synthesize symbolName=_symbolName;
+@property(retain, nonatomic) NSString *profileUUID; // @synthesize profileUUID=_profileUUID;
 @property(readonly, nonatomic, getter=isSelected) _Bool selected; // @synthesize selected=_selected;
 @property(readonly, nonatomic) NSItemProvider *itemProvider; // @synthesize itemProvider=_itemProvider;
 - (unsigned long long)hash;
@@ -27,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (void)getThumbnailImageWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)description;
 - (id)initWithIndex:(long long)arg1 inDataSource:(id)arg2 selected:(_Bool)arg3;
+- (id)initWithItemProvider:(id)arg1 symbolName:(id)arg2 profileUUID:(id)arg3 selected:(_Bool)arg4;
 - (id)initWithItemProvider:(id)arg1;
 
 @end

@@ -12,6 +12,7 @@
 @protocol HMBAPSConnection <NSObject>
 @property(copy) NSArray *enabledTopics;
 @property __weak id <HMBAPSConnectionDelegate> delegate;
+- (void)invalidateTokenForTopic:(NSString *)arg1 identifier:(NSString *)arg2;
 - (void)requestTokenForTopic:(NSString *)arg1 identifier:(NSString *)arg2;
 @end
 

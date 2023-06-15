@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
-@class AUAudioUnit, MISSING_TYPE;
+@class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
 @interface _TtC12CoreAudioKit16CAAUSettingsView : UIView
@@ -20,7 +20,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-@property(nonatomic, retain) AUAudioUnit *au; // @synthesize au;
 
 @end
 

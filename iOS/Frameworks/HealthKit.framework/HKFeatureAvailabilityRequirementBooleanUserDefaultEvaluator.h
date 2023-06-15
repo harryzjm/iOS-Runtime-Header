@@ -18,11 +18,9 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy, nonatomic) NSString *userDefaultsKey; // @synthesize userDefaultsKey=_userDefaultsKey;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (void)unregisterObserver:(id)arg1 fromDataSource:(id)arg2;
-- (void)_notifyObserver:(id)arg1 forNewValue:(id)arg2;
 - (void)registerObserver:(id)arg1 forDataSource:(id)arg2;
 - (id)isSatisfiedWithDataSource:(id)arg1 error:(id *)arg2;
 @property(readonly, nonatomic) NSString *requirementDescription;

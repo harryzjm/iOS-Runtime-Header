@@ -9,6 +9,6 @@
 @protocol SXPresentationDelegate;
 
 @protocol SXPresentationDelegateProvider <NSObject>
-@property(nonatomic, readonly) id <SXPresentationDelegate> presentationDelegate;
+@property(readonly, nonatomic) __weak id <SXPresentationDelegate> presentationDelegate;
 @end
 

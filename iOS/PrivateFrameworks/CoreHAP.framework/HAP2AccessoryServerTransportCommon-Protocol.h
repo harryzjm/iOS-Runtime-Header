@@ -21,8 +21,8 @@
 - (id <HAP2AccessoryServerTransportRequestEndpoint>)endpointForCharacteristic:(HAPCharacteristic *)arg1;
 - (id <HAP2AccessoryServerTransportRequestEndpoint>)wellKnownEndpoint:(unsigned long long)arg1;
 - (unsigned long long)protocolFeaturesForVersion:(HMFVersion *)arg1;
-- (void)closeWithError:(NSError *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)closeWithError:(NSError *)arg1 completion:(void (^)(_Bool, HAP2AccessorySessionInfo *, NSError *))arg2;
 - (void)sendRequest:(HAP2AccessoryServerTransportRequest *)arg1 completion:(void (^)(NSData *, NSError *))arg2;
-- (void)openWithCompletion:(void (^)(NSError *))arg1;
+- (void)openWithCompletion:(void (^)(_Bool, HAP2AccessorySessionInfo *, NSError *))arg1;
 @end
 

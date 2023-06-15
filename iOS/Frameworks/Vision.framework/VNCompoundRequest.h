@@ -15,7 +15,8 @@ __attribute__((visibility("hidden")))
     NSNumber *_cachedDependencyProcessingOrdinality;
 }
 
-+ (id)compoundRequestProcessingDeviceFromOriginalRequestsProcessingDevice:(id)arg1;
++ (_Bool)supportedRevisionsAreFilteredBasedOnAvailableComputeDevices;
++ (id)computeStageDeviceAssignmentsForOriginalRequests:(id)arg1;
 + (id)compoundRequestsForOriginalRequests:(id)arg1 withPerformingContext:(id)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSArray *originalRequests; // @synthesize originalRequests=_originalRequests;
@@ -29,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (id)sequencedRequestPreviousObservationsKey;
 - (_Bool)resultsAreAssignedWithOriginatingRequestSpecifier;
 - (_Bool)allowsCachingOfResults;
+- (_Bool)dumpIntermediateImages;
 - (id)compoundResults;
 - (id)initWithOriginalRequests:(id)arg1;
 

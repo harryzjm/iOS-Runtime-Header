@@ -6,15 +6,18 @@
 
 #import <PhotosUICore/NSObject-Protocol.h>
 
-@class NSArray, NSDate, NSError, NSProgress, PHPickerConfiguration, PXAssetsDataSourceManager;
+@class NSArray, NSDate, NSError, NSProgress, PHPickerConfiguration, PXAssetsDataSourceManager, PXSharedLibraryStatusProvider;
 @protocol PXPresentationEnvironment;
 
 @protocol PXSharedLibrarySourceLibraryInfo <NSObject>
+@property(readonly, nonatomic) PXSharedLibraryStatusProvider *sharedLibraryStatusProvider;
 @property(readonly, nonatomic) _Bool isCloudPhotoLibraryInitialSyncCompleted;
+@property(readonly, nonatomic) _Bool isCloudPhotoLibraryExiting;
 @property(readonly, nonatomic) _Bool isCloudPhotoLibraryEnabled;
 @property(readonly, nonatomic) _Bool isSystemPhotoLibrary;
 - (_Bool)isFailedToURLFetchOwnedSharedLibraryError:(NSError *)arg1;
 - (_Bool)isSharedLibraryNotFoundError:(NSError *)arg1;
+- (_Bool)presentServerGeneratedMessageForError:(NSError *)arg1 customMessage:(id *)arg2 learnMoreURL:(id *)arg3;
 - (_Bool)presentCustomInformationForError:(NSError *)arg1 customTitle:(id *)arg2 customMessage:(id *)arg3;
 - (void)createPreviewWithEmailAddresses:(NSArray *)arg1 phoneNumbers:(NSArray *)arg2 autoSharePolicy:(long long)arg3 startDate:(NSDate *)arg4 personUUIDs:(NSArray *)arg5 progress:(NSProgress *)arg6 presentationEnvironment:(id <PXPresentationEnvironment>)arg7 withCompletionHandler:(void (^)(id <PXSharedLibrary>, NSError *))arg8;
 - (void)createSharedLibraryWithEmailAddresses:(NSArray *)arg1 phoneNumbers:(NSArray *)arg2 autoSharePolicy:(long long)arg3 startDate:(NSDate *)arg4 personUUIDs:(NSArray *)arg5 progress:(NSProgress *)arg6 presentationEnvironment:(id <PXPresentationEnvironment>)arg7 withCompletionHandler:(void (^)(id <PXSharedLibrary>, NSError *))arg8;

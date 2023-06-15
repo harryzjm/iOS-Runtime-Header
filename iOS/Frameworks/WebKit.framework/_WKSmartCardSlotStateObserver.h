@@ -9,12 +9,13 @@
 __attribute__((visibility("hidden")))
 @interface _WKSmartCardSlotStateObserver : NSObject
 {
-    struct WeakPtr<WebKit::CcidService, WTF::EmptyCounter> m_service;
+    struct WeakPtr<WebKit::CcidService, WTF::DefaultWeakPtrImpl> m_service;
     struct RetainPtr<TKSmartCardSlot> m_slot;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)removeObserver;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (id)initWithService:(void *)arg1 slot:(void *)arg2;
 

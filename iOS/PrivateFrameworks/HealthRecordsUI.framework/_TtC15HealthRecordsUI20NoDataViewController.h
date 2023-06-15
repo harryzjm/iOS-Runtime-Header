@@ -4,18 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UITableViewController.h>
 
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC15HealthRecordsUI20NoDataViewController : UIViewController
+@interface _TtC15HealthRecordsUI20NoDataViewController : UITableViewController
 {
     MISSING_TYPE *style;
+    MISSING_TYPE *profile;
+    MISSING_TYPE *category;
+    MISSING_TYPE *accountUpgradeTile;
 }
 
+- (void).cxx_destruct;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
-- (void)loadView;
+- (id)initWithStyle:(long long)arg1;
+- (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
+- (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
+- (void)viewDidLoad;
 - (id)initWithCoder:(id)arg1;
 
 @end

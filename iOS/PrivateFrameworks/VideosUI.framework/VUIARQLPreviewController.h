@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) ARQuickLookWebKitItem *quickLookWebKitItem; // @synthesize quickLookWebKitItem=_quickLookWebKitItem;
 - (id)previewController:(id)arg1 previewItemAtIndex:(long long)arg2;
 - (long long)numberOfPreviewItemsInPreviewController:(id)arg1;
+- (void)_commonInit;
 - (id)initWithQuickLookWebKitItem:(id)arg1;
 - (id)initWithQuickLookPreviewItem:(id)arg1;
 

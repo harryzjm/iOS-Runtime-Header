@@ -6,12 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class GDSubEntityIdentifier, NSString;
+@class GDRelationshipIdentifier, NSString;
 
-__attribute__((visibility("hidden")))
 @interface GDPersonIdentifier : NSObject
 {
-    GDSubEntityIdentifier *_subEntityIdentifier;
+    GDRelationshipIdentifier *_relationshipIdentifier;
     NSString *_type;
     NSString *_identifier;
 }
@@ -19,7 +18,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(readonly, nonatomic) NSString *type; // @synthesize type=_type;
-@property(readonly, nonatomic) GDSubEntityIdentifier *subEntityIdentifier; // @synthesize subEntityIdentifier=_subEntityIdentifier;
+@property(readonly, nonatomic) GDRelationshipIdentifier *relationshipIdentifier; // @synthesize relationshipIdentifier=_relationshipIdentifier;
 - (id)initWithRelationshipIdTriplesIterator:(id)arg1;
 
 @end

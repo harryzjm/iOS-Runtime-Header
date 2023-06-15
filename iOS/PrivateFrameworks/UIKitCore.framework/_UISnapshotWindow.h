@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)_shouldAdjustSizeClassesAndResizeWindow;
 - (_Bool)_alwaysGetsContexts;
 - (double)_adjustedWindowLevelFromLevel:(double)arg1;
+- (_Bool)_canDisableMirroring;
 - (_Bool)_canActAsKeyWindowForScreen:(id)arg1;
 - (_Bool)canBecomeKeyWindow;
 - (void)_setFirstResponder:(id)arg1;

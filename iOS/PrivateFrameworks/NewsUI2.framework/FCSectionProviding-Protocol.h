@@ -6,12 +6,9 @@
 
 #import <NewsUI2/FCTagProviding-Protocol.h>
 
-@class FCSectionSupergroupKnobs, NSString;
+@class NSString;
 
 @protocol FCSectionProviding <FCTagProviding>
-@property(nonatomic, readonly) NSString *supergroupConfigJson;
-@property(nonatomic, readonly) FCSectionSupergroupKnobs *supergroupKnobs;
-@property(nonatomic, readonly) NSString *supergroupKnobsJson;
-@property(nonatomic, readonly) NSString *parentID;
+@property(readonly, copy, nonatomic) NSString *parentID;
 @end
 

@@ -25,6 +25,7 @@
     MISSING_TYPE *_comparisonItem;
     MISSING_TYPE *_attributionItem;
     MISSING_TYPE *_specificAnswerItem;
+    MISSING_TYPE *_imageCollectionItem;
 }
 
 @end

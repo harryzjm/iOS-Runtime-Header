@@ -6,9 +6,11 @@
 
 #import <AssistantServices/NSObject-Protocol.h>
 
-@class NSData, NSDictionary, NSURL;
+@class NSData, NSDictionary, NSString, NSURL;
 
 @protocol AFAudioPlaybackRequestMutating <NSObject>
+- (void)setUUID:(NSString *)arg1;
+- (void)setHapticLibraryKey:(NSString *)arg1;
 - (void)setUserInfo:(NSDictionary *)arg1;
 - (void)setFadeOutDuration:(double)arg1;
 - (void)setFadeInDuration:(double)arg1;

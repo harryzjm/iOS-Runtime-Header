@@ -4,20 +4,28 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSString;
+
 @interface DVTExtensionAttributeDescription
 {
     long long _extensionAttributeType;
     id _defaultValue;
+    NSString *_requiredAncestorClassName;
+    NSString *_requiredProtocolName;
 }
 
 - (void).cxx_destruct;
+@property(copy) NSString *requiredProtocolName; // @synthesize requiredProtocolName=_requiredProtocolName;
+@property(copy) NSString *requiredAncestorClassName; // @synthesize requiredAncestorClassName=_requiredAncestorClassName;
 @property(retain) id defaultValue; // @synthesize defaultValue=_defaultValue;
 @property long long extensionAttributeType; // @synthesize extensionAttributeType=_extensionAttributeType;
 - (id)adjustedValueForString:(id)arg1;
 - (void)encodeIntoPropertyList:(id)arg1;
 - (void)awakeFromPropertyList;
 - (id)initWithPropertyList:(id)arg1 owner:(id)arg2;
-- (id)initWithName:(id)arg1 extensionAttributeType:(long long)arg2 defaultValue:(id)arg3 isOptional:(_Bool)arg4;
+- (id)initWithName:(id)arg1 extensionAttributeType:(long long)arg2 defaultValue:(id)arg3 requiredAncestorClassName:(id)arg4 requiredProtocolName:(id)arg5 isOptional:(_Bool)arg6;
+- (void)validateClassValue:(Class)arg1 className:(id)arg2 forKeyPath:(id)arg3 extensionPoint:(id)arg4 failureHandler:(CDUnknownBlockType)arg5;
+- (void)validateRequiredTypesArePresentForKeyPathPrefix:(id)arg1 failureHandler:(CDUnknownBlockType)arg2;
 
 @end
 

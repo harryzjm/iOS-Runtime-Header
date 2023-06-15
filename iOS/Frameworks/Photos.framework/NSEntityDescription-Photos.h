@@ -7,6 +7,7 @@
 #import <CoreData/NSEntityDescription.h>
 
 @interface NSEntityDescription (Photos)
+- (void)ph_enumerateSelfAndSubentities:(CDUnknownBlockType)arg1;
 - (id)ph_relationshipDescriptionsForKeyPath:(id)arg1;
 @property(readonly) NSEntityDescription *ph_baseEntity;
 @end

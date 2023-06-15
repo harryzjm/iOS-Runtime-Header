@@ -9,6 +9,6 @@
 @protocol HMDMediaDestinationControllerLocalDataStorageHandler
 - (void)updateDestinationControllerAvailableDestinationIdentifiers:(NSArray *)arg1;
 - (void)updateDestinationControllerDestinationIdentifier:(NSUUID *)arg1;
-- (void)updateDestinationController:(HMMediaDestinationControllerData *)arg1;
+- (void)updateDestinationControllerData:(HMMediaDestinationControllerData *)arg1;
 @end
 

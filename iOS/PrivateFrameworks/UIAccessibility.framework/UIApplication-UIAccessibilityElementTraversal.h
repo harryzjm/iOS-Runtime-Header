@@ -19,6 +19,7 @@
 - (_Bool)_accessibilitySystemAppServerIsReady;
 - (void)_accessibilityUpdateIsSystemAppServer;
 - (_Bool)_accessibilityIsSystemAppServer;
+- (void)_accessibilitySetIsDictationListeningOverride:(id)arg1;
 - (_Bool)_accessibilityIsAppReadyToBeProbed;
 - (double)_accessibilityMaximumAllowedOutOfBoundsPercent;
 @property(copy, nonatomic) CDUnknownBlockType accessibilityKeyboardKeyDispatchOverride;

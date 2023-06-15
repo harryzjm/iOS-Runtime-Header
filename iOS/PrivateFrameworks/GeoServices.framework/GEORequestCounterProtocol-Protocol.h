@@ -6,7 +6,7 @@
 
 #import <GeoServices/NSObject-Protocol.h>
 
-@class NSDate, NSDateInterval, NSObject, NSString;
+@class GEOApplicationAuditToken, GEOMapServiceTraits, NSDate, NSDateInterval, NSObject, NSString;
 @protocol GEOExternalRequestCounterTicket, GEORequestCounterTicket, OS_dispatch_queue;
 
 @protocol GEORequestCounterProtocol <NSObject>
@@ -28,6 +28,6 @@
 - (void)clearCounters;
 - (void)readRequestLogsDuring:(NSDateInterval *)arg1 handler:(void (^)(NSArray *, NSError *))arg2;
 - (void)readRequestsPerAppDuring:(NSDateInterval *)arg1 handler:(void (^)(NSDictionary *, NSError *))arg2;
-- (id <GEORequestCounterTicket>)requestCounterTicketForType:(CDStruct_d1a7ebee)arg1 appId:(NSString *)arg2;
+- (id <GEORequestCounterTicket>)requestCounterTicketForType:(CDStruct_026435ec)arg1 auditToken:(GEOApplicationAuditToken *)arg2 traits:(GEOMapServiceTraits *)arg3;
 @end
 

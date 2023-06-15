@@ -7,6 +7,7 @@
 #import <iCloudQuotaUI/NSObject-Protocol.h>
 
 @protocol ICQServerHookDelegate <NSObject>
+- (_Bool)isLiftUIFlow;
 - (void)dismissUpgradeFlowWithSuccess:(_Bool)arg1;
 @end
 

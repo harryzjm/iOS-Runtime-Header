@@ -8,7 +8,6 @@
 
 @interface TPAppDelegate : TSABaseApplicationDelegate
 {
-    _Bool _appDoneLaunching;
     _Bool _cachedBidiIsSupported;
 }
 

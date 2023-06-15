@@ -9,7 +9,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (void)stateDidExpireWithContext:(id)arg1;
+- (void)stateDidExpire;
 - (id)stateName;
 - (_Bool)schedulesExpiration;
 - (id)expirationDate;

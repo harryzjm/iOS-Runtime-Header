@@ -9,8 +9,8 @@
 @protocol SUICVoiceSelectionEventHandling, SUICVoiceSelectionViewModelProviding;
 
 @protocol SUICVoiceSelectionDisplaying <NSObject>
-- (void)voiceSelectionViewModelDidChange;
 @property(nonatomic) __weak id <SUICVoiceSelectionEventHandling> voiceSelectionEventHandler;
 @property(nonatomic) __weak id <SUICVoiceSelectionViewModelProviding> voiceSelectionViewModelProvider;
+- (void)voiceSelectionViewModelDidChange;
 @end
 

@@ -9,6 +9,7 @@
 @class NSSet;
 
 @protocol TRIPurgeableFactorPacksEnumerating <NSObject>
+- (void)enumerateExperimentFactorPackPurgeCandidatesFromNamespaceNames:(NSSet *)arg1 purgeableFactorFilterBlock:(_Bool (^)(NSString *, NSString *))arg2 block:(void (^)(TRIPurgeableFactorPack *, NSDictionary *, _Bool *))arg3;
 - (void)enumerateRolloutFactorPackPurgeCandidatesFromNamespaceNames:(NSSet *)arg1 purgeableFactorFilterBlock:(_Bool (^)(NSString *, NSString *))arg2 block:(void (^)(TRIPurgeableFactorPack *, NSDictionary *, _Bool *))arg3;
 @end
 

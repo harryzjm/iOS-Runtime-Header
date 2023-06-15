@@ -23,6 +23,8 @@
     _Bool _validating;
     _Bool _overrideAllowFootnotes;
     NSMutableSet *_anchoredDrawableLayouts;
+    id <NSFastEnumeration> _childTextLayoutsForExteriorWrapCache;
+    int _childTextLayoutCacheHits;
     TSDFill *_backgroundFill;
     id <TPMasterDrawableProvider> _masterDrawableProvider;
 }
@@ -100,6 +102,8 @@
 - (_Bool)isRootLevelForInlineGeometry;
 - (_Bool)isRootLayoutForInspectorGeometry;
 @property(readonly, nonatomic) id <NSFastEnumeration> childTextLayoutsForExteriorWrap;
+- (void)p_clearChildTextLayoutCache;
+- (id)p_generateChildTextLayoutsForExteriorWrap;
 - (void)invalidateSize;
 - (void)invalidatePosition;
 - (id)dependentLayouts;

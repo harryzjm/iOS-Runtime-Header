@@ -7,6 +7,7 @@
 #import <HealthKit/HKMedicalUserDomainConcept.h>
 
 @interface HKMedicalUserDomainConcept (HDSyncSupport)
+- (id)codableSubclassData;
 - (void)applyCodableSubclassData:(id)arg1 mutableUserDomainConceptProperties:(id)arg2;
 @end
 

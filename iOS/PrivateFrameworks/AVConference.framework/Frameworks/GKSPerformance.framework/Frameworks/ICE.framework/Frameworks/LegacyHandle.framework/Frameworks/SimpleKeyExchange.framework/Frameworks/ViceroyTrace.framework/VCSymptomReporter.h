@@ -18,8 +18,9 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_reportingQueue;
     CDUnknownFunctionPointerType _symptomReporterCallback;
     id _symptomReporterContext;
-    _Bool _didSubmitABCSymptom[44];
-    _Bool _didShowAlreadyExistFailure[44];
+    _Bool _didSubmitABCSymptom[48];
+    _Bool _didShowAlreadyExistFailure[48];
+    _Bool _isSymptomReportingEnabled;
     NSString *_procName;
 }
 
@@ -31,9 +32,11 @@ __attribute__((visibility("hidden")))
 - (int)reportOSLogSymptomWithDictionary:(id)arg1;
 - (int)reportSymptomWithIDSDestination:(id)arg1 sessionID:(id)arg2 type:(id)arg3 subType:(id)arg4 context:(id)arg5;
 - (int)reportSymptomWithType:(id)arg1 subType:(id)arg2 context:(id)arg3 actions:(id)arg4;
+- (int)reportMediaSymptomSubtypeConnectionWithContext:(id)arg1;
+- (int)reportVideoSymptom:(id)arg1 options:(id)arg2;
+- (int)reportVideoSymptom:(id)arg1;
 - (int)reportKeyFrameGenerationFailure;
 - (int)reportTerminateProcessWithOptionalDictionary:(id)arg1;
-- (int)reportMediaServerTerminated;
 - (int)reportFrameQueueForDecodeHighWaterMarkExceeded;
 - (int)reportInvalidVideoStallTime;
 - (int)reportInactiveSlotsInChannelSequence;
@@ -43,7 +46,7 @@ __attribute__((visibility("hidden")))
 - (int)reportNoServerStatsActivity;
 - (int)reportUnexpectedRampUpFrozen;
 - (int)reportUnexpectedHighRTT;
-- (int)reportHighConsecutiveAudioErasures;
+- (int)reportHighConsecutiveAudioErasuresWithOptionalDictionary:(id)arg1;
 - (int)reportMediaQueueFlushingTooFrequent;
 - (int)reportMediaQueueOvershoot;
 - (int)reportUnexpectedLowTargetBitrate;
@@ -56,8 +59,8 @@ __attribute__((visibility("hidden")))
 - (int)reportIDSDataChannelEventUsageError;
 - (int)reportNegativeJitterBufferSize;
 - (int)reportAlgosScoreWithOptionalDictionary:(id)arg1;
-- (int)reportVideoStall;
-- (int)reportAudioStall;
+- (int)reportVideoStall:(id)arg1;
+- (int)reportAudioStall:(id)arg1;
 - (int)reportSignificantHandshakeDelayWithOptionalDictionary:(id)arg1;
 - (int)reportExtendedPoorConnectionWithOptionalDictionary:(id)arg1;
 - (int)reportMKMDecryptionWithOptionalDictionary:(id)arg1;
@@ -65,11 +68,12 @@ __attribute__((visibility("hidden")))
 - (int)reportNoPacketsWithOptionalDictionary:(id)arg1;
 - (int)reportNoFirstFrameWithOptionalDictionary:(id)arg1;
 - (int)reportFailedToStartVideo;
+- (int)reportFailedToSetupAudioCodec;
 - (int)reportFailedToStartAudio;
 - (int)reportNoSNATMAPResponseWithOptionalDictionary:(id)arg1;
 - (int)reportNoRelayResponseWithOptionalDictionary:(id)arg1;
-- (int)reportConnectionTimeout;
-- (int)reportSignalingFailed;
+- (int)reportConnectionTimeout:(id)arg1;
+- (int)reportSignalingFailed:(id)arg1;
 - (int)reportNoMediaBlob;
 - (int)reportBandwidthEstimationMismatch;
 - (int)reportRateTargetMismatch;

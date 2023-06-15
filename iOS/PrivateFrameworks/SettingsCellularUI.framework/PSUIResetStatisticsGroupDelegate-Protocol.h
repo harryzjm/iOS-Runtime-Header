@@ -5,6 +5,7 @@
 //
 
 @protocol PSUIResetStatisticsGroupDelegate
+- (void)didModifyStatisticsSetting;
 - (void)didResetStatistics;
 @end
 

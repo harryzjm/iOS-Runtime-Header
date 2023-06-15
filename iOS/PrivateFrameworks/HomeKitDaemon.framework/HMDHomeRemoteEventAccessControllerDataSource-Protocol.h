@@ -9,7 +9,6 @@
 @class NSUUID;
 
 @protocol HMDHomeRemoteEventAccessControllerDataSource <NSObject>
-- (_Bool)isMediaGroup:(NSUUID *)arg1;
 - (_Bool)isMediaSystem:(NSUUID *)arg1;
 - (_Bool)isSidekickAccessory:(NSUUID *)arg1;
 - (_Bool)isAppleMediaAccessory:(NSUUID *)arg1;

@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class BRCAccountSession, BRCDeadlineSource, NSString, PQLNameInjection;
+@class BRCAccountSessionFPFS, BRCDeadlineSource, NSString, PQLNameInjection;
 @protocol OS_dispatch_group, OS_dispatch_workloop;
 
 __attribute__((visibility("hidden")))
 @interface BRCFSSchedulerBase : NSObject
 {
-    BRCAccountSession *_session;
+    BRCAccountSessionFPFS *_session;
     BRCDeadlineSource *_schedulerSource;
     NSObject<OS_dispatch_workloop> *_schedulerWorkloop;
     NSString *_name;
@@ -54,7 +54,7 @@ __attribute__((visibility("hidden")))
 - (void)computeStamps:(struct throttle_stamps *)arg1 forJobID:(id)arg2 throttle:(id)arg3 shouldBackoff:(_Bool)arg4;
 - (long long)updateStamps:(struct throttle_stamps *)arg1 throttle:(id)arg2 now:(long long)arg3;
 - (void)rescheduleSuspendedJobsMatching:(id)arg1 inState:(int)arg2;
-- (struct brc_job_update)insertOrUpdateJobID:(id)arg1 throttle:(id)arg2 withState:(int)arg3 insertedSQLColumn:(id)arg4 insertedSQLValues:(id)arg5 updatedSQLValues:(id)arg6;
+- (struct brc_job_update)insertOrUpdateJobID:(id)arg1 throttle:(id)arg2 withState:(int)arg3 insertedSQLColumn:(id)arg4 insertedSQLValues:(id)arg5 updatedSQLValues:(id)arg6 error:(id *)arg7;
 - (unsigned long long)postponeJobID:(id)arg1 withThrottle:(id)arg2;
 - (id)aggregateDescriptionForJobsMatching:(id)arg1 context:(id)arg2;
 - (void)describeInBuffer:(id)arg1 aggregateOfJobsMatching:(id)arg2 context:(id)arg3;
@@ -62,7 +62,6 @@ __attribute__((visibility("hidden")))
 - (id)descriptionForJobsMatching:(id)arg1 ordering:(id)arg2 additionalColumns:(id)arg3 additionalValuesHandler:(CDUnknownBlockType)arg4 context:(id)arg5;
 - (int)jobStateFor:(id)arg1;
 - (_Bool)haveActiveJobsMatching:(id)arg1;
-- (_Bool)canRetryJobWithID:(id)arg1;
 - (id)initWithSession:(id)arg1 name:(id)arg2 tableName:(id)arg3;
 @property(readonly) _Bool closed;
 

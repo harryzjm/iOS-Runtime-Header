@@ -6,7 +6,7 @@
 
 #import <ChatKit/NSObject-Protocol.h>
 
-@class CKBrowserDragManager, IMBalloonPlugin, IMBalloonPluginDataSource, NSArray, NSData, NSNumber, NSObject, NSString, NSURL, UIViewController;
+@class CKBrowserDragManager, IMBalloonPlugin, IMBalloonPluginDataSource, NSArray, NSData, NSDictionary, NSNumber, NSString, NSURL, NSUUID, UIView, UIViewController;
 @protocol CKBrowserViewControllerSendDelegate, UIViewControllerTransitioningDelegate;
 
 @protocol CKBrowserViewControllerProtocol <NSObject>
@@ -25,7 +25,7 @@
 @property(nonatomic) _Bool isiMessage;
 @property(retain, nonatomic) IMBalloonPluginDataSource *balloonPluginDataSource;
 @property(readonly, nonatomic) IMBalloonPlugin *balloonPlugin;
-@property(nonatomic) __weak NSObject<CKBrowserViewControllerSendDelegate> *sendDelegate;
+@property(nonatomic) __weak id <CKBrowserViewControllerSendDelegate> sendDelegate;
 @property(retain, nonatomic) UIViewController *presentationViewController;
 - (_Bool)isLoaded;
 - (void)dismiss;
@@ -33,6 +33,9 @@
 - (id)initWithBalloonPlugin:(IMBalloonPlugin *)arg1 dataSource:(IMBalloonPluginDataSource *)arg2;
 
 @optional
+@property(readonly, nonatomic) UIViewController *canvasViewController;
+@property(nonatomic) __weak UIView *dragTargetView;
+@property(readonly, nonatomic) _Bool isAlive;
 @property(readonly, nonatomic) __weak id <UIViewControllerTransitioningDelegate> parentTransitioningDelegate;
 @property(readonly, nonatomic) long long parentModalPresentationStyle;
 @property(retain, nonatomic) NSNumber *adamID;
@@ -47,6 +50,14 @@
 @property(readonly, nonatomic) _Bool wasExpandedPresentation;
 @property(retain, nonatomic) NSArray *recipients;
 @property(retain, nonatomic) NSString *sender;
+- (void)_animatedStickerCreationProgressChanged:(NSDictionary *)arg1 progress:(double)arg2;
+- (void)_didRemoveStickerPreview;
+- (void)_addStickerAnimationDidFinishWithCompletion:(void (^)(void))arg1;
+- (void)_prepareForAddStickerFromSubjectLift;
+- (void)_addStickerToStoreWithRepresentations:(NSArray *)arg1 sourceRect:(struct CGRect)arg2 completion:(void (^)(NSArray *, NSError *))arg3;
+- (void)_addStickerToStoreWithRepresentations:(NSArray *)arg1 completionWithStickerIDs:(void (^)(struct CGRect, NSArray *, NSError *))arg2;
+- (void)_addStickerToStoreWithRepresentations:(NSArray *)arg1 completionHandler:(void (^)(struct CGRect, NSError *))arg2;
+- (void)_setPluginIdentifierToShow:(NSString *)arg1 completion:(void (^)(void))arg2;
 - (void)volumeButtonPressed:(_Bool)arg1;
 - (void)killExtensionProcess;
 - (void)dropAssertion;
@@ -65,12 +76,19 @@
 - (void)deferredForceTearDownRemoteView;
 - (void)forceTearDownRemoteView;
 - (void)unloadRemoteView;
-- (void)loadRemoteView;
+- (void)loadRemoteViewWithCompletion:(void (^)(_Bool))arg1;
 - (void)prepareForDisplay;
 - (id)cancelTouchesInView;
+- (_Bool)linkedBeforeYukon;
+- (_Bool)linkedForAppCards;
+- (unsigned long long)sheetDetentStyle;
+- (_Bool)shouldDisableInsetsForGrabber;
+- (void)_updateCurrentBrowserConsumer:(long long)arg1;
 - (void)_updateContentOverlayInsetsForSelfAndChildren;
 - (void)endSuppressingAppearanceMethods;
 - (void)beginSuppressingAppearanceMethods;
 - (NSData *)requestSnapshotDataForPersistance;
+- (void)requestStickerExtensionMetadataDictionary:(void (^)(NSDictionary *))arg1;
+- (void)requestPresentationWithStickerType:(NSString *)arg1 identifier:(NSUUID *)arg2;
 @end
 

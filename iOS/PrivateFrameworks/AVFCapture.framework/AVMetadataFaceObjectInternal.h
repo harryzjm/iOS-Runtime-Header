@@ -14,6 +14,8 @@ __attribute__((visibility("hidden")))
     double _rollAngle;
     _Bool _hasYawAngle;
     double _yawAngle;
+    _Bool _hasPitchAngle;
+    double _pitchAngle;
     _Bool _hasLeftEyeClosedConfidence;
     int _leftEyeClosedConfidence;
     _Bool _hasRightEyeClosedConfidence;
@@ -36,6 +38,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool hasRightEyeClosedConfidence; // @synthesize hasRightEyeClosedConfidence=_hasRightEyeClosedConfidence;
 @property(nonatomic) int leftEyeClosedConfidence; // @synthesize leftEyeClosedConfidence=_leftEyeClosedConfidence;
 @property(nonatomic) _Bool hasLeftEyeClosedConfidence; // @synthesize hasLeftEyeClosedConfidence=_hasLeftEyeClosedConfidence;
+@property(nonatomic) double pitchAngle; // @synthesize pitchAngle=_pitchAngle;
+@property(nonatomic) _Bool hasPitchAngle; // @synthesize hasPitchAngle=_hasPitchAngle;
 @property(nonatomic) double yawAngle; // @synthesize yawAngle=_yawAngle;
 @property(nonatomic) _Bool hasYawAngle; // @synthesize hasYawAngle=_hasYawAngle;
 @property(nonatomic) double rollAngle; // @synthesize rollAngle=_rollAngle;

@@ -9,7 +9,7 @@
 @class GCFuture, NSProgress;
 
 @protocol GCConfigurationAssetManagementService <NSObject>
-- (NSProgress *)checkForNewAssets:(_Bool)arg1 forceCatalogRefresh:(_Bool)arg2 completion:(void (^)(NSError *))arg3;
+- (NSProgress *)checkForNewAssets:(_Bool)arg1 forceCatalogRefresh:(_Bool)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 - (GCFuture *)lastUpdateDate;
 - (GCFuture *)currentAsset:(_Bool)arg1;
 - (GCFuture *)assets;

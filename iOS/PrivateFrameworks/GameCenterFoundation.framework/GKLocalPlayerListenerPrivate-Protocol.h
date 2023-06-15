@@ -5,8 +5,7 @@
 //
 
 #import <GameCenterFoundation/GKLocalPlayerListener-Protocol.h>
-#import <GameCenterFoundation/GKTournamentEventListener-Protocol.h>
 
-@protocol GKLocalPlayerListenerPrivate <GKLocalPlayerListener, GKTournamentEventListener>
+@protocol GKLocalPlayerListenerPrivate <GKLocalPlayerListener>
 @end
 

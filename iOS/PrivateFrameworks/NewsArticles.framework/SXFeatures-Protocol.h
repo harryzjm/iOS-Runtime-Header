@@ -7,6 +7,6 @@
 #import <NewsArticles/NSObject-Protocol.h>
 
 @protocol SXFeatures <NSObject>
-@property(nonatomic, readonly) _Bool newAdsEnabled;
+@property(readonly, nonatomic) _Bool newAdsEnabled;
 @end
 

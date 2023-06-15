@@ -6,7 +6,7 @@
 
 #import <NotesShared/NSObject-Protocol.h>
 
-@class CSSearchableItemAttributeSet, NSArray, NSData, NSDate, NSManagedObjectContext, NSManagedObjectID, NSString, NSURL;
+@class CSSearchableItemAttributeSet, NSArray, NSData, NSDate, NSManagedObjectContext, NSManagedObjectID, NSSet, NSString, NSURL;
 
 @protocol ICSearchIndexable <NSObject>
 @property(readonly, nonatomic) CSSearchableItemAttributeSet *userActivityContentAttributeSet;
@@ -29,6 +29,8 @@
 @property(readonly, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 @optional
+@property(readonly) CSSearchableItemAttributeSet *searchableItemViewAttributeSet;
+- (NSSet *)additionalSearchIndexablesForChangedKeys:(NSSet *)arg1;
 - (NSData *)dataForTypeIdentifier:(NSString *)arg1;
 - (NSURL *)fileURLForTypeIdentifier:(NSString *)arg1;
 @end

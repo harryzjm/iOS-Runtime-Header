@@ -9,6 +9,7 @@
 @class DCCredentialOptions, NSArray, NSData, NSDictionary, NSString;
 
 @protocol DCCredentialStoreXPCProtocol <NSObject>
+- (void)clearPresentmentKeyUsageForCredential:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)eraseLegacySEKeySlot:(long long)arg1 completion:(void (^)(NSError *))arg2;
 - (void)occupiedLegacySEKeySlotsWithCompletion:(void (^)(NSArray *, NSError *))arg1;
 - (void)allElementsOfCredential:(NSString *)arg1 authData:(NSData *)arg2 completion:(void (^)(NSDictionary *, NSError *))arg3;
@@ -23,6 +24,7 @@
 - (void)associateExternalPresentmentKeyWithCredential:(NSString *)arg1 publicKeyIdentifier:(NSData *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)deleteCredential:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)authorizeRemoteKeySigningKeyWithCredential:(NSString *)arg1 remoteKey:(NSData *)arg2 completion:(void (^)(NSData *, NSError *))arg3;
+- (void)generatePresentmentKeysForCredential:(NSString *)arg1 numKeys:(long long)arg2 completion:(void (^)(NSArray *, NSError *))arg3;
 - (void)generatePresentmentKeyForCredential:(NSString *)arg1 completion:(void (^)(DCCredentialCryptoKey *, NSError *))arg2;
 - (void)generateDeviceEncryptionKeyForCredential:(NSString *)arg1 completion:(void (^)(DCCredentialCryptoKey *, NSError *))arg2;
 - (void)generateKeySigningKeyForCredential:(NSString *)arg1 completion:(void (^)(DCCredentialCryptoKey *, NSError *))arg2;

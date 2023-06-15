@@ -18,11 +18,11 @@
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSMutableOrderedSet *assetHandleItemIDsToDelete; // @synthesize assetHandleItemIDsToDelete=_assetHandleItemIDsToDelete;
-@property(retain, nonatomic) NSMutableOrderedSet *itemIDsToUnregister; // @synthesize itemIDsToUnregister=_itemIDsToUnregister;
+@property(readonly, nonatomic) NSMutableOrderedSet *assetHandleItemIDsToDelete; // @synthesize assetHandleItemIDsToDelete=_assetHandleItemIDsToDelete;
+@property(readonly, nonatomic) NSMutableOrderedSet *itemIDsToUnregister; // @synthesize itemIDsToUnregister=_itemIDsToUnregister;
 @property _Bool clearRegisteredItems; // @synthesize clearRegisteredItems=_clearRegisteredItems;
-@property _Bool evictNow; // @synthesize evictNow=_evictNow;
-@property _Bool forced; // @synthesize forced=_forced;
+@property(readonly, nonatomic) _Bool evictNow; // @synthesize evictNow=_evictNow;
+@property(readonly, nonatomic) _Bool forced; // @synthesize forced=_forced;
 - (id)initWithForced:(_Bool)arg1 evictNow:(_Bool)arg2;
 
 @end

@@ -18,7 +18,7 @@
     MISSING_TYPE *platform;
     MISSING_TYPE *musicGenres;
     MISSING_TYPE *equipment;
-    MISSING_TYPE *watchConnectionState;
+    MISSING_TYPE *workoutDeviceConnection;
     MISSING_TYPE *gymKitConnectionState;
     MISSING_TYPE *display;
     MISSING_TYPE *onStartCountdown;

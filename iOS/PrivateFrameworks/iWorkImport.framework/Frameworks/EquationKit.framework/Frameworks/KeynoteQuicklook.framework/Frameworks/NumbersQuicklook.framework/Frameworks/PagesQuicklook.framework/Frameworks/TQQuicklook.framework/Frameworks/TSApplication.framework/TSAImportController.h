@@ -91,6 +91,8 @@
 - (Class)importerClass;
 - (void)importWithProgress:(id)arg1 completionQueue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)prepareForImportDisplayingProgress:(id)arg1 completionQueue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)obscuredProgressImage;
+- (id)displayNameForURL:(id)arg1;
 - (id)importWithCompletionQueue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 @property(readonly, nonatomic) NSURL *temporaryURL;
 @property(readonly, nonatomic) long long documentTypeCategory;

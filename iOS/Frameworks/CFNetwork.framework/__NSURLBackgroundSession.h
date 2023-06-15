@@ -66,6 +66,7 @@
 - (void)backgroundTask:(unsigned long long)arg1 didSendBodyData:(long long)arg2 totalBytesSent:(long long)arg3 totalBytesExpectedToSend:(long long)arg4;
 - (void)backgroundTask:(unsigned long long)arg1 didReceiveResponse:(id)arg2 transactionMetrics:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)backgroundTask:(unsigned long long)arg1 didReceiveResponse:(id)arg2 transactionMetrics:(id)arg3;
+- (void)backgroundTask:(unsigned long long)arg1 didReceiveInformationalResponse:(id)arg2;
 - (void)backgroundTask:(unsigned long long)arg1 hasConnectionWaitingWithError:(id)arg2;
 - (void)backgroundTask:(unsigned long long)arg1 hasConnectionWaitingWithReason:(long long)arg2;
 - (void)backgroundTaskHasConnectionWaiting:(unsigned long long)arg1;

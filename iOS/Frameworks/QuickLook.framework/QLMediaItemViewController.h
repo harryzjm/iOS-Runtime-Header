@@ -49,6 +49,7 @@ __attribute__((visibility("hidden")))
 - (void)showTimeLabel;
 - (void)showTimeLabelIfNeeded;
 - (void)setTimeLabelNeedsUpdate;
+- (long long)playbackTimeFormat;
 - (void)removeTimeLabel;
 - (void)setUpTimeLabelIfNeeded;
 - (void)setAppearance:(id)arg1 animated:(_Bool)arg2;

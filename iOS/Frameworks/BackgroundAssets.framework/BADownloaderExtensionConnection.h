@@ -6,7 +6,7 @@
 
 #import <Foundation/NSExtensionContext.h>
 
-@class NSObject, NSString;
+@class NSObject, NSString, NSXPCConnection;
 @protocol BADownloaderExtension, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -14,18 +14,17 @@ __attribute__((visibility("hidden")))
 {
     NSObject<OS_dispatch_queue> *_extensionWorkQueue;
     id <BADownloaderExtension> _principalObject;
+    NSXPCConnection *_daemonConnection;
 }
 
 - (void).cxx_destruct;
 @property(retain) id <BADownloaderExtension> principalObject; // @synthesize principalObject=_principalObject;
-@property(retain) NSObject<OS_dispatch_queue> *extensionWorkQueue; // @synthesize extensionWorkQueue=_extensionWorkQueue;
-- (void)backgroundDownloadDidFinish:(id)arg1 stagedClientURL:(id)arg2 sandboxToken:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)backgroundDownloadDidFail:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (CDUnknownBlockType)acquireWakeAssertion;
+- (void)backgroundDownload:(id)arg1 finishedWithSandboxToken:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)backgroundDownload:(id)arg1 failedWithError:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)extensionWillTerminate;
 - (void)receivedAuthenticationChallenge:(id)arg1 download:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)checkForUpdatesWithMetadata:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)applicationDidUpdateWithMetadata:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)applicationDidInstallWithMetadata:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)downloadsForRequest:(long long)arg1 manifestURL:(id)arg2 manifestToken:(id)arg3 extensionInfo:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)wakeupForTokenWithReply:(CDUnknownBlockType)arg1;
 - (_Bool)shouldAcceptXPCConnection:(id)arg1;
 - (id)initWithPrincipalObject:(id)arg1;

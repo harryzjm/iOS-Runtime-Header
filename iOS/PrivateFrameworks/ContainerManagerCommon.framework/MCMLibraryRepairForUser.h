@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)performRepairForContainerPath:(id)arg1 containerIdentifier:(id)arg2 error:(id *)arg3;
 - (_Bool)fixAndRetryIfPermissionsErrorWithURL:(id)arg1 containerPath:(id)arg2 containerIdentifier:(id)arg3 error:(id *)arg4 duringBlock:(CDUnknownBlockType)arg5;
 - (_Bool)fixAndRetryIfPermissionsErrorWithURL:(id)arg1 containerRootURL:(id)arg2 error:(id *)arg3 duringBlock:(CDUnknownBlockType)arg4;
-- (id)initWithManagedUserPathRegistry:(id)arg1;
+- (id)initWithManagedUserPathRegistry:(id)arg1 fileManager:(id)arg2;
 
 @end
 

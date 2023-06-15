@@ -7,16 +7,21 @@
 #import <AppleMediaServices/NSObject-Protocol.h>
 
 @class AMSPromise;
-@protocol AMSDeviceMessengerClientInterface, AMSSecurityClientInterface;
+@protocol AMSCookieServiceInterface, AMSDeviceMessengerClientInterface, AMSSecurityClientInterface;
 
 @protocol AMSDServiceBrokerProtocol <NSObject>
 - (AMSPromise *)callService:(AMSPromise *)arg1 then:(AMSPromise * (^)(id))arg2;
 - (void)addInterruptionHandler:(void (^)(void))arg1;
+- (AMSPromise *)accountCachedServerDataService;
+- (AMSPromise *)accountSignOutServiceProxy;
 - (AMSPromise *)securityServiceProxyWithDelegate:(id <AMSSecurityClientInterface>)arg1;
 - (AMSPromise *)pushNotificationService;
 - (AMSPromise *)purchaseServiceProxy;
+- (AMSPromise *)keychainServiceProxy;
 - (AMSPromise *)fraudReportServiceProxy;
+- (AMSPromise *)dismissQRDialogServiceProxy;
 - (AMSPromise *)deviceMessengerProxyWithDelegate:(id <AMSDeviceMessengerClientInterface>)arg1;
+- (id <AMSCookieServiceInterface>)cookieServiceProxySyncWithError:(id *)arg1;
 - (AMSPromise *)cookieServiceProxy;
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIMenuController.h>
+#import <UIKitCore/UIMenuController.h>
 
 @interface UIMenuController (IC)
 - (void)ic_addMenuItemsIfNecessary:(id)arg1;

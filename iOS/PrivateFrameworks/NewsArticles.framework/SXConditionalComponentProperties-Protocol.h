@@ -6,15 +6,15 @@
 
 #import <NewsArticles/NSObject-Protocol.h>
 
-@class NSString, SXComponentAnimation;
+@class NSString, SXComponentAnimation, SXJSONArray;
 @protocol SXComponentAnchor;
 
 @protocol SXConditionalComponentProperties <NSObject>
-@property(nonatomic, readonly) _Bool hidden;
-@property(nonatomic, readonly) SXComponentAnimation *animation;
-@property(nonatomic, readonly) id behaviors;
-@property(nonatomic, readonly) id <SXComponentAnchor> anchor;
-@property(nonatomic, readonly) NSString *style;
-@property(nonatomic, readonly) NSString *layout;
+@property(readonly, nonatomic) _Bool hidden;
+@property(readonly, nonatomic) SXComponentAnimation *animation;
+@property(readonly, nonatomic) SXJSONArray *behaviors;
+@property(readonly, nonatomic) id <SXComponentAnchor> anchor;
+@property(readonly, nonatomic) NSString *style;
+@property(readonly, nonatomic) NSString *layout;
 @end
 

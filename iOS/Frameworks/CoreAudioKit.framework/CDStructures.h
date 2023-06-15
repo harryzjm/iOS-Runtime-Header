@@ -6,17 +6,20 @@
 
 #pragma mark Named Structures
 
+struct AudioComponentDescription {
+    unsigned int _field1;
+    unsigned int _field2;
+    unsigned int _field3;
+    unsigned int _field4;
+    unsigned int _field5;
+};
+
 struct AudioUnitEvent {
     unsigned int _field1;
     union {
         struct AudioUnitParameter _field1;
         struct AudioUnitProperty _field2;
     } _field2;
-};
-
-struct AudioUnitFrequencyResponseBin {
-    double _field1;
-    double _field2;
 };
 
 struct AudioUnitParameter {

@@ -6,13 +6,16 @@
 
 #import <PhotosUIPrivate/NSObject-Protocol.h>
 
-@class UIView;
+@class NSString, UIView;
+@protocol PUInvalidatable;
 
 @protocol PUWallpaperRenderer <NSObject>
 @property(readonly, nonatomic) UIView *floatingView;
 @property(readonly, nonatomic) UIView *foregroundView;
 @property(readonly, nonatomic) UIView *backgroundView;
 - (void)pu_updatePreferences:(void (^)(id <PUWallpaperMutablePreferences>, id <PUWallpaperTransition>))arg1;
+- (id <PUInvalidatable>)pu_extendRenderSessionForReason:(NSString *)arg1;
+- (void)pu_noteContentSignificantlyChanged;
 
 @optional
 @property(readonly, nonatomic) double pu_shuffleSleepFadeInAnimationDuration;

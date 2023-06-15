@@ -10,5 +10,7 @@
 - (id)darkQRCode;
 - (id)lightQRCode;
 - (id)qrCode;
+- (_Bool)isEqualToPhoneNumber:(id)arg1;
+- (id)unformattedPhoneNumber;
 @end
 

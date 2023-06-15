@@ -7,6 +7,7 @@
 #import <HealthDaemon/HDSampleEntity.h>
 
 @interface HDSampleEntity (HKMenstrualCycles)
-+ (id)hdmc_analysisAnchorWithHealthDatabase:(id)arg1 error:(id *)arg2;
++ (_Bool)hdmc_analysisSampleInfo:(id *)arg1 forProfile:(id)arg2 error:(id *)arg3;
++ (id)hdmc_daySummaryAnchorWithHealthDatabase:(id)arg1 error:(id *)arg2;
 @end
 

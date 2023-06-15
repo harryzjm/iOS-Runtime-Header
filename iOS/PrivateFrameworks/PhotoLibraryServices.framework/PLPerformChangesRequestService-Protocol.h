@@ -9,6 +9,7 @@
 @class NSPersistentStoreCoordinator, NSString, PLLibraryServicesManager;
 
 @protocol PLPerformChangesRequestService <NSObject>
+- (unsigned long long)libraryRole;
 - (NSString *)clientDescription;
 - (NSString *)clientDisplayName;
 - (NSString *)clientBundleID;

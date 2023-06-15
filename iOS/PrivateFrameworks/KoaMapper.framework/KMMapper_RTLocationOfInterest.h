@@ -8,6 +8,7 @@
 
 @class KVItemBuilder, NSString;
 
+__attribute__((visibility("hidden")))
 @interface KMMapper_RTLocationOfInterest : NSObject
 {
     KVItemBuilder *_builder;

@@ -7,11 +7,11 @@
 @class NSString;
 
 @protocol HUEditActionDelegate
+@property(readonly, nonatomic) _Bool supportsEditing;
+@property(readonly, nonatomic) NSString *editActionTitleLocalizationKey;
+@property(readonly, nonatomic) NSString *editActionTitle;
 - (void)endEditing;
 - (void)startEditing;
-@property(nonatomic, readonly) _Bool supportsEditing;
-@property(nonatomic, readonly) NSString *editActionTitleLocalizationKey;
-@property(nonatomic, readonly) NSString *editActionTitle;
 
 @optional
 - (void)sendContextMenuMetricsWithTitleLocalizationKey:(NSString *)arg1;

@@ -9,6 +9,8 @@
 @class NSString;
 
 @interface CSSearchableItemAttributeSet (IC)
++ (id)ic_folderNameCustomKey;
++ (id)ic_accountNameCustomKey;
 + (id)ic_itemHasAttachmentsCustomKey;
 + (id)ic_itemHasScannedDocumentsCustomKey;
 + (id)ic_itemHasDrawingsCustomKey;
@@ -22,6 +24,9 @@
 + (id)ic_specializedIndexFieldAttributeKeyForStringField:(id)arg1;
 + (id)ic_customAttributeKeyWithName:(id)arg1 searchable:(_Bool)arg2 searchableByDefault:(_Bool)arg3 unique:(_Bool)arg4 multiValued:(_Bool)arg5;
 + (id)ic_customAttributeKeyDictionary;
+@property(copy, nonatomic, setter=ic_setURLString:) NSString *ic_urlString;
+@property(copy, nonatomic) NSString *ic_folderName;
+@property(copy, nonatomic) NSString *ic_accountName;
 @property(nonatomic) _Bool ic_hasAttachments;
 @property(nonatomic) _Bool ic_hasScannedDocuments;
 @property(nonatomic) _Bool ic_hasDrawings;

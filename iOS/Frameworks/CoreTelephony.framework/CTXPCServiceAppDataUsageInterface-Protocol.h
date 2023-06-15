@@ -7,6 +7,7 @@
 @class CTXPCServiceSubscriptionContext, NSNumber;
 
 @protocol CTXPCServiceAppDataUsageInterface
+- (void)getCellularUsageWorkspaceInfo:(void (^)(CTCellularUsageWorkspaceInfo *, NSError *))arg1;
 - (void)clearUserEnteredBillingEndDayOfMonth:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)setUserEnteredBillingEnd:(CTXPCServiceSubscriptionContext *)arg1 dayOfMonth:(NSNumber *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)userEnteredBillingEndDayOfMont:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSNumber *, NSError *))arg2;
@@ -16,6 +17,8 @@
 - (void)clearUserEnteredMonthlyBudget:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)setUserEntered:(CTXPCServiceSubscriptionContext *)arg1 monthlyBudget:(NSNumber *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)userEnteredMonthlyBudget:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSNumber *, NSError *))arg2;
+- (void)setUsageCollectionEnabled:(_Bool)arg1 completion:(void (^)(NSError *))arg2;
+- (void)usageCollectionEnabled:(void (^)(NSNumber *, NSError *))arg1;
 - (void)billingCycleEndDatesForLastPeriods:(unsigned long long)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)dataUsageForLastPeriodsOnActivePairedDevice:(unsigned long long)arg1 completion:(void (^)(CTDeviceDataUsage *, NSError *))arg2;
 - (void)dataUsageForLastPeriods:(unsigned long long)arg1 completion:(void (^)(CTDeviceDataUsage *, NSError *))arg2;

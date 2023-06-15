@@ -24,7 +24,10 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _writeDatagramBlock;
     CDUnknownBlockType _readyToReadBlock;
     NSLock *_blockSettingLock;
+    NSLock *_writeDirectPathIDSLock;
+    NSLock *_flushDatagramPacketsLock;
     struct _VCSingleLinkedList _datagramPackets;
+    struct _VCSingleLinkedList _datagramPacketsDirectIDSPath;
     struct __CFAllocator *_datagramPacketAllocator;
     unsigned long long _datagramPacketNextSequenceNumber;
     _Bool _usingOptions;
@@ -32,20 +35,24 @@ __attribute__((visibility("hidden")))
     _Bool _doNotDropNackOrRetransmitted;
     struct _opaque_pthread_mutex_t _streamSubscriptionLock;
     long long _participantGenerationCounter;
-    _Bool _isTestingOneToOneMode;
     unsigned short numPacketSent;
     unsigned short numPacketReceived;
     int _dataPath;
-    _Bool _idsUPlusOneMode;
     _Bool _isNackEnabled;
     unsigned char _packetBuffer[2048][1500];
     unsigned short _packetBufferDataSize[2048];
     CDStruct_9bf45fcd _packetDatagramOptions[2048];
+    _Bool _isServerStatsCached;
+    CDStruct_9bf45fcd _datagramOptionsCached;
     NSObject<OS_dispatch_queue> *_directPathReadQueue;
+    NSObject<OS_dispatch_queue> *_directPathRTXQueue;
+    _Bool _isSourceParticipantIDOnFanOutPacketsEnabled;
+    _Bool _isWrongParticipantIDOnFanOutPacketsEnabled;
+    _Bool _isECNEnabled;
 }
 
 + (void)extractRTPData:(char *)arg1 ssrc:(unsigned int *)arg2 sequenceNumber:(unsigned short *)arg3;
-@property(readonly) _Bool idsUPlusOneMode; // @synthesize idsUPlusOneMode=_idsUPlusOneMode;
+- (void)setParticipantIDOnOptions:(CDStruct_9bf45fcd *)arg1;
 - (void)setUPlusOneMode:(_Bool)arg1 isInitiator:(_Bool)arg2;
 - (void)flushLinkProbingStatusWithOptions:(id)arg1;
 - (void)queryStatusWithOptions:(id)arg1;
@@ -54,7 +61,7 @@ __attribute__((visibility("hidden")))
 - (void)startActiveProbingWithOptions:(id)arg1;
 - (void)setWiFiAssist:(_Bool)arg1;
 - (void)osChannelInfoLog;
-- (void)handlePacket:(struct _VCMockIDSDatagramChannelPacket *)arg1 packetHandler:(CDUnknownBlockType)arg2;
+- (void)handlePacket:(struct _VCMockIDSDatagramChannelPacket *)arg1 packetHandler:(CDUnknownBlockType)arg2 shouldDropThisPacket:(_Bool)arg3;
 - (void)retrieveAndProcessMediaPacketsFromBuffer:(struct tagRTCPPACKET *)arg1 packetHandler:(CDUnknownBlockType)arg2;
 - (void)retrieveAndProcesOnePacket:(unsigned int)arg1 seq:(unsigned short)arg2 count:(int)arg3 index:(int)arg4;
 - (void)addMediaPacketToBuffer:(char *)arg1 length:(unsigned long long)arg2 datagramOptions:(CDStruct_9bf45fcd)arg3;
@@ -94,8 +101,10 @@ __attribute__((visibility("hidden")))
 - (void)setWriteDatagramBlock:(CDUnknownBlockType)arg1;
 - (void)setWriteDatagramsBlock:(CDUnknownBlockType)arg1;
 - (void)readDatagram:(const void *)arg1 datagramSize:(unsigned int)arg2 datagramOptions:(CDStruct_9bf45fcd *)arg3;
+@property(readonly) _Bool idsUPlusOneMode;
 - (void)dealloc;
 - (void)cleanup;
+- (void)flushDatagramPacketsListDIrectIDSPath;
 - (void)flushDatagramPacketsList;
 - (id)initCreateSocketRequiresOptions:(_Bool)arg1 dataPath:(int)arg2;
 - (id)initRequiresOptions:(_Bool)arg1;

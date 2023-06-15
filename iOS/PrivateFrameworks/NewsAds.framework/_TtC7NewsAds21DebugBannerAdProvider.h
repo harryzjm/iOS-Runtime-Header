@@ -11,8 +11,9 @@
 @interface _TtC7NewsAds21DebugBannerAdProvider : _TtCs12_SwiftObject
 {
     MISSING_TYPE *isEnabled;
-    MISSING_TYPE *successRate;
-    MISSING_TYPE *loadingDelay;
+    MISSING_TYPE *_successRate;
+    MISSING_TYPE *_loadingDelay;
+    MISSING_TYPE *_collapseBehavior;
 }
 
 @end

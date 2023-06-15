@@ -18,7 +18,7 @@
 #import <HomeRecommendationEngine/HFSymptomsVendor-Protocol.h>
 #import <HomeRecommendationEngine/HMMediaObject-Protocol.h>
 
-@class ACAccount, HMAccessory, HMMediaSession, HMUser, NAFuture, NSSet, NSString;
+@class ACAccount, HFSiriLanguageOptionsManager, HMAccessory, HMMediaSession, HMUser, NAFuture, NSSet, NSString;
 @protocol HFMediaValueSource, HMMediaDestination;
 
 @protocol HFMediaProfileContainer <HMMediaObject, HFHomeKitSettingsVendor, HFAccessoryVendor, HFStateDumpBuildable, HFReorderableHomeKitObject, HFFavoritable, HFHomeStatusVisible, HFShowInHomeDashboard, HFRoomContextProviding, HFSymptomsVendor, HFSymptomsHandlerVendor, HFSymptomFixableObject, HFServiceNameComponentsProviding>
@@ -38,8 +38,6 @@
 @property(readonly, nonatomic) NSString *hf_prettyDescription;
 @property(readonly, nonatomic) _Bool hf_supportsMusicAlarm;
 @property(readonly, nonatomic) _Bool hf_showsAudioSettings;
-@property(readonly, nonatomic) _Bool hf_isSpeakerGrouped;
-@property(readonly, nonatomic) _Bool hf_supportsSpeakerGrouping;
 @property(readonly, nonatomic) _Bool hf_supportsStereoPairing;
 @property(readonly, nonatomic) _Bool hf_supportsSoftwareUpdate;
 @property(readonly, nonatomic) _Bool hf_isReachable;
@@ -48,12 +46,14 @@
 @property(readonly, nonatomic) _Bool hf_isCurrentAccessory;
 @property(readonly, nonatomic) NSSet *mediaProfiles;
 @property(readonly, copy, nonatomic) HMMediaSession *mediaSession;
+- (NAFuture *)hf_identify;
 - (unsigned long long)hf_preferredUserSelectionType;
 - (HMUser *)hf_preferredMediaUser;
 - (id <HMMediaDestination>)hf_destination;
 - (NSString *)hf_idsDeviceIdentifierWithError:(id *)arg1;
 - (NAFuture *)hf_fetchLog:(NSString *)arg1 timeout:(double)arg2;
 - (NAFuture *)hf_fetchLogListWithTimeout:(double)arg1;
+- (HFSiriLanguageOptionsManager *)hf_siriLanguageOptionsManager;
 - (NAFuture *)hf_isEitherHomePodMediaAccountOrHomeMediaAccountPresent;
 - (NAFuture *)hf_homePodMediaAccountIsMismatchedWithHomeMediaAccount;
 - (NAFuture *)hf_homePodSupportsMultiUserLanguage;

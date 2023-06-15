@@ -24,6 +24,7 @@
 - (_Bool)hf_hasSetForContextType:(unsigned long long)arg1;
 - (_Bool)hf_isOnForContextType:(unsigned long long)arg1;
 - (_Bool)hf_isValidObject;
+- (id)hf_identify;
 - (unsigned long long)hf_preferredUserSelectionType;
 - (id)hf_preferredMediaUser;
 @property(readonly, nonatomic) _Bool hf_supportsPreferredMediaUser;
@@ -34,6 +35,8 @@
 @property(readonly, copy, nonatomic) NSString *hf_displayName;
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
 - (id)hf_moveToRoom:(id)arg1;
+@property(readonly, nonatomic) _Bool hf_isIdentifiable;
+@property(readonly, nonatomic) _Bool hf_canSpanMultipleRooms;
 @property(readonly, nonatomic) HMRoom *hf_safeRoom;
 - (_Bool)hf_isInRoom:(id)arg1;
 @property(readonly, nonatomic) HFAccessoryType *hf_accessoryType;
@@ -90,8 +93,6 @@
 @property(readonly, nonatomic) _Bool hf_isAppleMusicReachable;
 @property(readonly, nonatomic) _Bool hf_supportsSoftwareUpdate;
 @property(readonly, nonatomic) _Bool hf_showsAudioSettings;
-@property(readonly, nonatomic) _Bool hf_isSpeakerGrouped;
-@property(readonly, nonatomic) _Bool hf_supportsSpeakerGrouping;
 @property(readonly, nonatomic) _Bool hf_supportsMusicAlarm;
 @property(readonly, nonatomic) _Bool hf_supportsStereoPairing;
 @property(readonly, nonatomic) _Bool hf_isReachable;

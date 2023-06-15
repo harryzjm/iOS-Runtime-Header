@@ -14,8 +14,7 @@
     MISSING_TYPE *subscriptionToken;
     MISSING_TYPE *systemRouteCategoriesFetcher;
     MISSING_TYPE *currentSessionRouteCategory;
-    MISSING_TYPE *currentRemoteDisplay;
-    MISSING_TYPE *currentSystemRouteCategories;
+    MISSING_TYPE *systemRouteCategories;
 }
 
 - (void)onOutputDeviceChanged;

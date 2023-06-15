@@ -9,7 +9,8 @@
 @protocol SWInteraction;
 
 @protocol SWInteractionProvider <NSObject>
+@property(copy, nonatomic) CDUnknownBlockType interactionBlock;
+@property(readonly, nonatomic) id <SWInteraction> interaction;
 - (void)onChange:(void (^)(id <SWInteraction>))arg1;
-@property(nonatomic, readonly) id <SWInteraction> interaction;
 @end
 

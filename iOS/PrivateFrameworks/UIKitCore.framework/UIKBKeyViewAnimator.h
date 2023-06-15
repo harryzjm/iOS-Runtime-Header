@@ -12,12 +12,14 @@ __attribute__((visibility("hidden")))
 @interface UIKBKeyViewAnimator : NSObject
 {
     _Bool _disabled;
+    double _keyScale;
 }
 
 + (id)normalizedUnwindAnimationWithKeyPath:(id)arg1 originallyFromValue:(id)arg2 toValue:(id)arg3 offset:(double)arg4;
 + (id)normalizedUnwindOpacityAnimationWithKeyPath:(id)arg1 originallyFromValue:(id)arg2 toValue:(id)arg3 offset:(double)arg4;
 + (id)normalizedUnwindAnimationWithKeyPath:(id)arg1 fromValue:(id)arg2 toValue:(id)arg3 offset:(double)arg4;
 + (id)normalizedAnimationWithKeyPath:(id)arg1 fromValue:(id)arg2 toValue:(id)arg3;
+@property(nonatomic) double keyScale; // @synthesize keyScale=_keyScale;
 @property(nonatomic) _Bool disabled; // @synthesize disabled=_disabled;
 - (void)reset;
 - (void)endTransitionForKeyView:(id)arg1;
@@ -37,11 +39,13 @@ __attribute__((visibility("hidden")))
 - (id)keycapPrimaryExitTransform;
 - (id)keycapRightTransform;
 - (id)keycapLeftTransform;
+- (id)primaryReverseTransform;
 - (id)keycapAlternateDualStringTransform:(id)arg1;
 - (id)keycapAlternateTransform:(id)arg1;
 - (id)keycapPrimaryDualStringTransform:(id)arg1;
 - (id)keycapPrimaryTransform;
 - (id)keycapNullTransform;
+- (id)keycapMeshTransformFromRect:(struct CGRect)arg1 toRect:(struct CGRect)arg2 scale:(double)arg3;
 - (id)keycapMeshTransformFromRect:(struct CGRect)arg1 toRect:(struct CGRect)arg2;
 @property(readonly, nonatomic) struct CGRect secondaryGlyphNormalizedExitRect;
 @property(readonly, nonatomic) struct CGRect primaryGlyphNormalizedExitRect;

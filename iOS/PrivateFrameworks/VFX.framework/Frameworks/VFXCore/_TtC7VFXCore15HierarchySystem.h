@@ -11,8 +11,9 @@
 @interface _TtC7VFXCore15HierarchySystem : _TtCs12_SwiftObject
 {
     MISSING_TYPE *allChildren;
-    MISSING_TYPE *roots;
+    MISSING_TYPE *computeTransformFromPosOriScale;
     MISSING_TYPE *dirtyWithParent;
+    MISSING_TYPE *dirtyWithOverride;
     MISSING_TYPE *wrongDepthRoots;
     MISSING_TYPE *computeInverse;
 }

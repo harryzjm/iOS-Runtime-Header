@@ -6,17 +6,23 @@
 
 #import <objc/NSObject.h>
 
+@class MPCPlaybackEngine;
+
 __attribute__((visibility("hidden")))
 @interface MPCAssetLoadPropertiesLocalFileEvaluator : NSObject
 {
+    MPCPlaybackEngine *_playbackEngine;
 }
 
-+ (_Bool)_shouldUpgradeCacheOnPlay:(id)arg1 assetCachingIsAllowed:(_Bool)arg2;
-+ (_Bool)_shouldUpgradeDownloadOnPlay:(id)arg1 defaults:(id)arg2;
-+ (long long)_recommendationForEvaluation:(id)arg1 assetCachingIsAllowed:(_Bool)arg2 userDefaults:(id)arg3;
-+ (_Bool)isHLSFileAsset:(id)arg1;
-+ (long long)_loadedAudioAssetTypeForFileAsset:(id)arg1;
-+ (id)evaluateAssetLoadProperties:(id)arg1 allowingCachedAssets:(_Bool)arg2 defaults:(id)arg3;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) __weak MPCPlaybackEngine *playbackEngine; // @synthesize playbackEngine=_playbackEngine;
+- (_Bool)_shouldUpgradeCacheOnPlay:(id)arg1 assetCachingIsAllowed:(_Bool)arg2;
+- (_Bool)_shouldUpgradeDownloadOnPlay:(id)arg1 defaults:(id)arg2;
+- (long long)_recommendationForEvaluation:(id)arg1 assetCachingIsAllowed:(_Bool)arg2 userDefaults:(id)arg3;
+- (_Bool)isHLSFileAsset:(id)arg1;
+- (long long)_loadedAudioAssetTypeForFileAsset:(id)arg1;
+- (id)evaluateAssetLoadProperties:(id)arg1 allowingCachedAssets:(_Bool)arg2 defaults:(id)arg3;
+- (id)initWithPlaybackEngine:(id)arg1;
 
 @end
 

@@ -39,11 +39,11 @@ __attribute__((visibility("hidden")))
 - (double)altitude;
 - (double)distanceFromCenterCoordinate;
 - (void)setDistanceFromCenterCoordinate:(double)arg1;
-- (CDStruct_c3b9c2ee)centerCoordinate;
-- (void)setCenterCoordinate:(CDStruct_c3b9c2ee)arg1;
+- (CDStruct_2c43369c)centerCoordinate;
+- (void)setCenterCoordinate:(CDStruct_2c43369c)arg1;
 - (void)setCamera:(shared_ptr_46708168)arg1;
 - (void)setVkCamera:(id)arg1;
-- (void)setCenterCoordinate:(CDStruct_c3b9c2ee)arg1 altitude:(double)arg2 yaw:(double)arg3 pitch:(double)arg4 duration:(double)arg5 animationStyle:(long long)arg6 timingCurve:(CDUnknownBlockType)arg7 completion:(CDUnknownBlockType)arg8;
+- (void)setCenterCoordinate:(CDStruct_2c43369c)arg1 altitude:(double)arg2 yaw:(double)arg3 pitch:(double)arg4 duration:(double)arg5 animationStyle:(long long)arg6 timingCurve:(CDUnknownBlockType)arg7 completion:(CDUnknownBlockType)arg8;
 - (void)_updateDebugOverlay:(void *)arg1;
 - (id)_buildDebugString:(void *)arg1;
 - (void)updateWithTimestamp:(double)arg1 withContext:(void *)arg2;

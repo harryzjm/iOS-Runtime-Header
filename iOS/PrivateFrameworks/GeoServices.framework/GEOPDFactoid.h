@@ -6,17 +6,19 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-@class GEOPDMapsIdentifier, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
+@class GEOPDColor, GEOPDMapsIdentifier, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDFactoid : PBCodable
 {
     PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
+    GEOPDColor *_color;
     NSString *_icon;
     double _number;
     GEOPDMapsIdentifier *_placeId;
     NSMutableArray *_placeNames;
+    NSString *_symbolColor;
     NSString *_text;
     NSString *_title;
     unsigned int _readerMarkPos;
@@ -31,9 +33,11 @@ __attribute__((visibility("hidden")))
         unsigned int has_unit:1;
         unsigned int has_canBeDisplayedInPlaceSummary:1;
         unsigned int read_unknownFields:1;
+        unsigned int read_color:1;
         unsigned int read_icon:1;
         unsigned int read_placeId:1;
         unsigned int read_placeNames:1;
+        unsigned int read_symbolColor:1;
         unsigned int read_text:1;
         unsigned int read_title:1;
         unsigned int wrote_anyField:1;

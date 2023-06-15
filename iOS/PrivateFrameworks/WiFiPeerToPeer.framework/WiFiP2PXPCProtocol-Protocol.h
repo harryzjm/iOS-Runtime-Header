@@ -16,7 +16,7 @@
 - (void)queryActiveServiceUniqueIdentifiersWithCompletionHandler:(void (^)(NSArray *))arg1;
 - (void)queryAWDLLowLatencyStatisticsWithCompletionHandler:(void (^)(NSDictionary *))arg1;
 - (void)queryAWDLStatisticsWithCompletionHandler:(void (^)(NSDictionary *))arg1;
-- (void)queryPeersWithCompletionHandler:(void (^)(long long))arg1;
+- (void)queryPeersWithCompletionHandler:(void (^)(NSArray *))arg1;
 - (void)queryAverageRSSIForAWDLPeer:(WiFiMACAddress *)arg1 completionHandler:(void (^)(int))arg2;
 - (void)queryCurrentDeviceCapabilities:(void (^)(WiFiAwareDeviceCapabilities *))arg1;
 - (void)createXPCResponderWithType:(unsigned long long)arg1 completionHandler:(void (^)(long long))arg2;

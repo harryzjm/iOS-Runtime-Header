@@ -4,9 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <EventKitUI/EKUIAppReviewPrompter-Protocol.h>
+#import <EventKitUI/NSObject-Protocol.h>
+
 @class EKDayOccurrenceView, NSArray, UIView, UIViewController;
 
-@protocol EKDayOccurrenceViewDelegate
+@protocol EKDayOccurrenceViewDelegate <NSObject, EKUIAppReviewPrompter>
 - (NSArray *)selectedEventsForEditMenu;
 - (UIViewController *)presentationControllerForEditMenu;
 - (void)dayOccurrenceViewSelected:(EKDayOccurrenceView *)arg1 source:(unsigned long long)arg2;

@@ -6,14 +6,13 @@
 
 #import <VoiceShortcuts/NSObject-Protocol.h>
 
-@class NSNumber, NSURL, WFDialogAttribution, WFDialogRequest, WFWorkflowRunningContext;
+@class NSNumber, NSURL, WFDialogAttribution, WFDialogRequest, WFWorkflowRunViewSource, WFWorkflowRunningContext;
 
 @protocol WFUIPresenterInterface <NSObject>
 
 @optional
+- (void)updateRunViewSource:(WFWorkflowRunViewSource *)arg1;
 - (void)openURL:(NSURL *)arg1 completionHandler:(void (^)(NSNumber *, NSError *))arg2;
-- (void)returnFocusToOriginatingAppForRunningContext:(WFWorkflowRunningContext *)arg1 completionHandler:(void (^)(NSError *))arg2;
-- (void)bringDialogsToFrontForRunningContext:(WFWorkflowRunningContext *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)resumeDialogPresentationWithCompletionHandler:(void (^)(NSError *))arg1;
 - (void)pauseDialogPresentationForDuration:(NSNumber *)arg1 withCompletionHandler:(void (^)(NSError *))arg2;
 - (void)dismissPresentedContentForRunningContext:(WFWorkflowRunningContext *)arg1 completionHandler:(void (^)(NSError *))arg2;

@@ -11,6 +11,7 @@
 @protocol UIApplicationDelegate <NSObject>
 
 @optional
+@property(retain, nonatomic) UIWindow *window;
 - (_Bool)applicationShouldAutomaticallyLocalizeKeyCommands:(UIApplication *)arg1;
 - (void)application:(UIApplication *)arg1 didDiscardSceneSessions:(NSSet *)arg2;
 - (UISceneConfiguration *)application:(UIApplication *)arg1 configurationForConnectingSceneSession:(UISceneSession *)arg2 options:(UISceneConnectionOptions *)arg3;
@@ -28,7 +29,6 @@
 - (UIViewController *)application:(UIApplication *)arg1 viewControllerWithRestorationIdentifierPath:(NSArray *)arg2 coder:(NSCoder *)arg3;
 - (_Bool)application:(UIApplication *)arg1 shouldAllowExtensionPointIdentifier:(NSString *)arg2;
 - (unsigned long long)application:(UIApplication *)arg1 supportedInterfaceOrientationsForWindow:(UIWindow *)arg2;
-@property(nonatomic, retain) UIWindow *window;
 - (void)applicationProtectedDataDidBecomeAvailable:(UIApplication *)arg1;
 - (void)applicationProtectedDataWillBecomeUnavailable:(UIApplication *)arg1;
 - (void)applicationWillEnterForeground:(UIApplication *)arg1;

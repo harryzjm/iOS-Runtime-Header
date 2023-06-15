@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSDictionary, NSIndexSet, NSString, UIColor, UIDragInteraction, UIImage, UIInputContextHistory, UILongPressGestureRecognizer, UITextInputPasswordRules, UITextInputStringTokenizer, UITextInteraction, UITextPosition, UITextRange, UITextSelectionGrabberSuppressionAssertion, UIView, VKCTextPointerTrackingView, VKCTextSelectionLongPressDelegateHandler, _UISupplementalLexicon;
+@class NSArray, NSDictionary, NSIndexSet, NSString, UIColor, UIDragInteraction, UIImage, UIInputContextHistory, UILongPressGestureRecognizer, UITextInputPasswordRules, UITextInputStringTokenizer, UITextInteraction, UITextPosition, UITextRange, UITextSelectionGrabberSuppressionAssertion, UIView, VKCTextPointerTrackingView, VKCTextSelectionLongPressDelegateHandler, VKTextRange, _UISupplementalLexicon;
 @protocol UITextInputDelegate;
 
 __attribute__((visibility("hidden")))
@@ -24,11 +24,11 @@ __attribute__((visibility("hidden")))
     UITextInteraction *_textInteraction;
     UIDragInteraction *_dragInteraction;
     unsigned long long _draggedRectEdge;
+    VKTextRange *_preSelectionChangeSelectedRange;
     VKCTextPointerTrackingView *_textPointerTrackingView;
     VKCTextSelectionLongPressDelegateHandler *_longPressHandler;
     UILongPressGestureRecognizer *_longPressGR;
     UITextSelectionGrabberSuppressionAssertion *_textSelectionGrabberSuppression;
-    struct _NSRange _preSelectionChangeSelectedRange;
 }
 
 + (_Bool)processHasSnapshotDragEntitlement;
@@ -38,7 +38,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UILongPressGestureRecognizer *longPressGR; // @synthesize longPressGR=_longPressGR;
 @property(retain, nonatomic) VKCTextSelectionLongPressDelegateHandler *longPressHandler; // @synthesize longPressHandler=_longPressHandler;
 @property(nonatomic) __weak VKCTextPointerTrackingView *textPointerTrackingView; // @synthesize textPointerTrackingView=_textPointerTrackingView;
-@property(nonatomic) struct _NSRange preSelectionChangeSelectedRange; // @synthesize preSelectionChangeSelectedRange=_preSelectionChangeSelectedRange;
+@property(retain, nonatomic) VKTextRange *preSelectionChangeSelectedRange; // @synthesize preSelectionChangeSelectedRange=_preSelectionChangeSelectedRange;
 @property(nonatomic) unsigned long long draggedRectEdge; // @synthesize draggedRectEdge=_draggedRectEdge;
 @property(nonatomic) _Bool manuallySettingSelectedRange; // @synthesize manuallySettingSelectedRange=_manuallySettingSelectedRange;
 @property(nonatomic) _Bool beginSelectionChangedCalled; // @synthesize beginSelectionChangedCalled=_beginSelectionChangedCalled;
@@ -52,6 +52,7 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSDictionary *markedTextStyle; // @synthesize markedTextStyle=_markedTextStyle;
 @property(retain, nonatomic) UITextInputStringTokenizer *tokenizer; // @synthesize tokenizer=_tokenizer;
 @property(nonatomic) __weak id <UITextInputDelegate> inputDelegate; // @synthesize inputDelegate=_inputDelegate;
+- (id)_pointerInteractionDelegate;
 - (void)unsuppressSelectionViewGrabbers;
 - (void)suppressSelectionViewGrabbers;
 - (id)_accessibilityUserTestingChildren;
@@ -68,10 +69,10 @@ __attribute__((visibility("hidden")))
 - (void)takeTraitsFrom:(id)arg1;
 - (id)_textRangeForActions;
 @property(readonly, nonatomic) UITextRange *textRangeForServicesInteraction;
-- (struct _NSRange)preSelectionChangeSelectedRangeForTextRecognitionResult:(id)arg1;
+- (id)preSelectionChangeSelectedRangeForTextRecognitionResult:(id)arg1;
 - (unsigned long long)draggedRectEdgeForTextRecognitionResult:(id)arg1;
 - (unsigned long long)currentDraggedRectEdge;
-- (struct _NSRange)selectedRangeForTextRecognitionResult:(id)arg1;
+- (id)selectedRangeForTextRecognitionResult:(id)arg1;
 - (void)unmarkText;
 - (void)setBaseWritingDirection:(long long)arg1 forRange:(id)arg2;
 - (void)setMarkedText:(id)arg1 selectedRange:(struct _NSRange)arg2;
@@ -89,6 +90,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)selectable;
 - (_Bool)isEditing;
 - (_Bool)isEditable;
+- (void)presentShareSheetForCustomStrings:(id)arg1 attributedString:(id)arg2;
 - (void)_share:(id)arg1;
 - (void)_translate:(id)arg1;
 - (void)_define:(id)arg1;
@@ -105,6 +107,8 @@ __attribute__((visibility("hidden")))
 - (void)setContentsRect:(struct CGRect)arg1;
 - (void)copy:(id)arg1;
 - (void)selectAll:(id)arg1;
+- (id)_textImageFromRect:(struct CGRect)arg1;
+- (id)_textInputForReveal;
 - (void)setHidden:(_Bool)arg1;
 - (id)selectedRange;
 - (void)setSelectedRange:(id)arg1;
@@ -150,6 +154,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool hasDefaultContents;
 @property(readonly) unsigned long long hash;
 @property(nonatomic) _Bool hidePrediction;
+@property(nonatomic) long long inlineCompletionType;
+@property(nonatomic) long long inlinePredictionType;
 @property(retain, nonatomic) UIInputContextHistory *inputContextHistory;
 @property(readonly, nonatomic) id insertDictationResultPlaceholder;
 @property(retain, nonatomic) UIColor *insertionPointColor;

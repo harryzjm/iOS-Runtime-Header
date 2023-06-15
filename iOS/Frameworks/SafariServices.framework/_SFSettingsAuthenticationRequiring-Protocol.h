@@ -14,6 +14,7 @@
 @property(readonly, copy, nonatomic) NSString *authenticationPrompt;
 
 @optional
+@property(readonly, nonatomic) _Bool shouldAuthenticateBeforeShowingSettings;
 @property(readonly, copy, nonatomic) NSDictionary *customLocalAuthenticationOptions;
 - (NSArray *)additionalViewControllersToPushHandlingURLResourceDictionary:(NSDictionary *)arg1 didAuthenticate:(_Bool)arg2;
 @end

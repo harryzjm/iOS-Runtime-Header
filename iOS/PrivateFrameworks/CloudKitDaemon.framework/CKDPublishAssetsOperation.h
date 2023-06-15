@@ -31,7 +31,9 @@
 - (void)main;
 - (void)_fetchRecords;
 - (void)_fetchPCSForRecords;
-- (void)_dispatchAssetURLsForRecord:(id)arg1 recordID:(id)arg2 pcs:(struct _OpaquePCSShareProtection *)arg3 error:(id)arg4;
+- (void)_finishPublishAssetsForRecord:(id)arg1;
+- (void)_dispatchAssetURLsForRecord:(id)arg1 pcs:(struct _OpaquePCSShareProtection *)arg2;
+- (id)_checkEntitlements;
 - (id)nameForState:(unsigned long long)arg1;
 - (_Bool)makeStateTransition;
 - (id)activityCreate;

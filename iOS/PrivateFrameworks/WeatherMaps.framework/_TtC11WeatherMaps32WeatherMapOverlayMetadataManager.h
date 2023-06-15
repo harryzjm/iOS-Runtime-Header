@@ -21,6 +21,7 @@
     MISSING_TYPE *activeOverlayKind;
     MISSING_TYPE *activeRegion;
     MISSING_TYPE *activeVisibleMapRect;
+    MISSING_TYPE *activePointsOfInterest;
     MISSING_TYPE *activeZoomLevel;
     MISSING_TYPE *delegate;
 }

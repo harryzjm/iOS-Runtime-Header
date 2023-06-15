@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class VUIButton, VUIImageView, _TVProgressView;
 @protocol VUILibraryEpisodeFrameViewDelegate;
@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (void)_playButtonPressed;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)layoutSubviews;
+- (void)updateProgress:(id)arg1;
 
 @end
 

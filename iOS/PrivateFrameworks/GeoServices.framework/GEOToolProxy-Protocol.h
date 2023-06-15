@@ -7,6 +7,8 @@
 @class NSDictionary, NSString;
 
 @protocol GEOToolProxy
+- (_Bool)flushPurgeableOfflineData;
+- (void)fetchOfflineMetadataWithCompletionHandler:(void (^)(NSDictionary *, NSDate *))arg1;
 - (NSDictionary *)listFilePathsLocal;
 - (NSDictionary *)listFilePathsRemote;
 - (_Bool)isProactiveTileDownloadEnabled;

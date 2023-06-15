@@ -11,7 +11,7 @@
 - (void)cocoaTouchToolObjectPackage:(IBCocoaTouchToolObjectPackage *)arg1 didSetPersistentToSessionObjects:(NSMutableSet *)arg2;
 - (NSArray *)cocoaTouchToolObjectPackage:(IBCocoaTouchToolObjectPackage *)arg1 traitStorageListByProcessingTraitStorageLists:(NSArray *)arg2 objectIDsToObjects:(NSDictionary *)arg3;
 - (void)cocoaTouchToolObjectPackage:(IBCocoaTouchToolObjectPackage *)arg1 didEstablishRelationshipsForObject:(id)arg2 globalMarshallingContext:(NSMutableDictionary *)arg3 populatingWarningMessages:(NSMutableArray *)arg4;
-- (id <IBNibKeyValuePair>)cocoaTouchToolObjectPackage:(IBCocoaTouchToolObjectPackage *)arg1 keyValuePairWithObject:(id)arg2 keyPath:(NSString *)arg3 value:(id)arg4;
+- (id <IBNibKeyValuePair>)cocoaTouchToolObjectPackage:(IBCocoaTouchToolObjectPackage *)arg1 keyValuePairWithObject:(id)arg2 keyPath:(NSString *)arg3 value:(id)arg4 globalMarshallingContext:(NSMutableDictionary *)arg5;
 - (NSString *)cocoaTouchToolObjectPackage:(IBCocoaTouchToolObjectPackage *)arg1 effectiveToManyRelationshipKeyPathForObject:(id)arg2 relationshipKeyPath:(NSString *)arg3 globalMarshallingContext:(NSMutableDictionary *)arg4;
 - (void)cocoaTouchToolObjectPackage:(IBCocoaTouchToolObjectPackage *)arg1 didInstantiateObject:(id)arg2 globalMarshallingContext:(NSMutableDictionary *)arg3;
 - (NSArray *)cocoaTouchToolObjectPackage:(IBCocoaTouchToolObjectPackage *)arg1 connectionsByProcessingConnections:(NSArray *)arg2;

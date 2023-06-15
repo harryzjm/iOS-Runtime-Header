@@ -4,19 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIButton.h>
 
 @class CNGeminiBadge, CNGeminiResult, NSArray, NSDictionary, UIColor, UIImageView, UILabel, UILayoutGuide;
 
 __attribute__((visibility("hidden")))
-@interface CNContactGeminiView : UIView
+@interface CNContactGeminiView : UIButton
 {
     _Bool _allowsPickerActions;
-    _Bool _highlighted;
     _Bool _didCalculateLayout;
     _Bool _isUsingTwoLineLayout;
     CNGeminiResult *_geminiResult;
     UIColor *_highlightedColor;
+    UIColor *_backgroundColor;
     NSDictionary *_ab_textAttributes;
     UILayoutGuide *_layoutGuide;
     UILayoutGuide *_geminiLabelLayoutGuide;
@@ -39,8 +39,8 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UILayoutGuide *geminiLabelLayoutGuide; // @synthesize geminiLabelLayoutGuide=_geminiLabelLayoutGuide;
 @property(retain, nonatomic) UILayoutGuide *layoutGuide; // @synthesize layoutGuide=_layoutGuide;
 @property(copy, nonatomic) NSDictionary *ab_textAttributes; // @synthesize ab_textAttributes=_ab_textAttributes;
+@property(retain, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property(retain, nonatomic) UIColor *highlightedColor; // @synthesize highlightedColor=_highlightedColor;
-@property(nonatomic, getter=isHighlighted) _Bool highlighted; // @synthesize highlighted=_highlighted;
 @property(retain, nonatomic) CNGeminiResult *geminiResult; // @synthesize geminiResult=_geminiResult;
 @property(nonatomic) _Bool allowsPickerActions; // @synthesize allowsPickerActions=_allowsPickerActions;
 - (id)viewForLastBaselineLayout;
@@ -60,6 +60,7 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)sizeForTwoLineLayoutFittingSize:(struct CGSize)arg1;
 - (struct CGSize)sizeForSingleLineLayoutFittingSize:(struct CGSize)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)setHighlighted:(_Bool)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

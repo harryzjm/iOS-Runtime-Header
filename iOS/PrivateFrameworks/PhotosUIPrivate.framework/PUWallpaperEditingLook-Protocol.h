@@ -6,10 +6,10 @@
 
 #import <PhotosUIPrivate/NSObject-Protocol.h>
 
-@class NSObject, NSString;
+@class NSString, PRPosterColor;
 
 @protocol PUWallpaperEditingLook <NSObject>
-@property(readonly, nonatomic) NSObject *pu_timeFontColor;
+@property(readonly, nonatomic) PRPosterColor *pu_timeFontColor;
 @property(readonly, nonatomic) NSString *pu_timeFontIdentifier;
 @property(readonly, nonatomic) unsigned long long pu_timeAppearance;
 @property(readonly, copy, nonatomic) NSString *identifier;

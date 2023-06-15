@@ -25,19 +25,25 @@ __attribute__((visibility("hidden")))
 - (void)timerAddOn:(id)arg1 didUpdateTimers:(id)arg2;
 - (void)timerAddOn:(id)arg1 didRemoveTimers:(id)arg2;
 - (void)timerAddOn:(id)arg1 didAddTimers:(id)arg2;
-- (void)canDispatchForAccessoryUniqueIdentifier:(id)arg1 categoryType:(id)arg2 asInstance:(id)arg3 cluster:(id)arg4 reply:(CDUnknownBlockType)arg5;
+- (void)canDispatchAsAccessory:(id)arg1 asInstance:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)removeObserverForNotificationName:(id)arg1 cluster:(id)arg2 withCallback:(CDUnknownBlockType)arg3;
-- (void)addObserverForNotificationName:(id)arg1 constraints:(id)arg2 asInstance:(id)arg3 cluster:(id)arg4 withCallback:(CDUnknownBlockType)arg5;
+- (void)addObserverForNotificationName:(id)arg1 asAccessory:(id)arg2 asInstance:(id)arg3 constraints:(id)arg4 cluster:(id)arg5 withCallback:(CDUnknownBlockType)arg6;
 - (void)dismissTimerWithIdentifier:(id)arg1 cluster:(id)arg2 withCallback:(CDUnknownBlockType)arg3;
 - (void)removeTimer:(id)arg1 cluster:(id)arg2 withCallback:(CDUnknownBlockType)arg3;
 - (void)updateTimer:(id)arg1 cluster:(id)arg2 withCallback:(CDUnknownBlockType)arg3;
 - (void)addTimer:(id)arg1 asInstance:(id)arg2 cluster:(id)arg3 withCallback:(CDUnknownBlockType)arg4;
+- (void)timersForAccessories:(id)arg1 cluster:(id)arg2 callback:(CDUnknownBlockType)arg3;
 - (void)timersforAccessoryUniqueIdentifier:(id)arg1 asInstance:(id)arg2 cluster:(id)arg3 withCallback:(CDUnknownBlockType)arg4;
+- (void)_didStopCanDispatchUpdate:(id)arg1;
+- (void)_completeDispatchabilityStallActivity:(id)arg1;
+- (void)_postCanDispatchChangedAddOn:(id)arg1;
 - (void)_postNotificationName:(id)arg1 forTimers:(id)arg2 toAddOn:(id)arg3 requiresUserInfo:(_Bool)arg4;
-- (_Bool)_canRequestCreationOfCluster:(id)arg1;
+- (void)_postNotificationName:(id)arg1 connection:(id)arg2 userInfo:(id)arg3;
+- (_Bool)_applicableToCluster:(id)arg1;
 - (void)_addOnRemoved:(id)arg1;
 - (void)_addOnAdded:(id)arg1;
 - (void)_clientLost:(id)arg1;
+- (id)_newClientForConnection:(id)arg1;
 - (void)_configureServiceInterfacesOnConnection:(id)arg1;
 - (id)initWithListenerProvider:(id)arg1 addOnProvider:(id)arg2 delegate:(id)arg3;
 

@@ -119,6 +119,7 @@
 - (void)fetchBundleIdentifierForPersona:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setBundlesIdentifiers:(id)arg1 forUniquePersona:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)fetchAsidMapwithCompletionHandler:(CDUnknownBlockType)arg1;
+- (unsigned long long)fetchPersonaGenerationNumberWithError:(id *)arg1;
 - (id)fetchPersonaSynchronous:(id)arg1 WithError:(id *)arg2;
 - (void)fetchPersona:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)fetchListOfPersonasSynchronousWithError:(id *)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UICollectionView.h>
+#import <UIKitCore/UICollectionView.h>
 
 @interface UICollectionView (HKUIAdditions)
 - (void)hk_scrollToItemRespectingFlowLayoutSectionInsetAtIndexPath:(id)arg1 animated:(_Bool)arg2 scrollPosition:(unsigned long long)arg3;

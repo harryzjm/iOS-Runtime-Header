@@ -6,7 +6,14 @@
 
 #import <SafariServices/JSExport-Protocol.h>
 
+@class NSString;
+
 @protocol SFCertificateWarningJSControllerMethods <JSExport>
+- (NSString *)bypassFeatureIconPath;
+- (NSString *)bypassFeatureButtonText;
+- (NSString *)bypassFeatureWarningText;
+- (NSString *)bypassFeatureTitleText;
+- (void)bypassFeatureVisitWebsite;
 - (void)goBackSelected;
 - (void)openClockSettings;
 - (void)showCertificateInformation;

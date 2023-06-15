@@ -4,20 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIScreen.h>
+#import <UIKitCore/UIScreen.h>
 
 @interface UIScreen (TSKAdditions)
 + (id)tsk_mainScreen;
 + (_Bool)tsk_is3xScreenScale;
 + (double)tsk_screenScale;
 + (void)tsk_resetScreenScaleCache;
++ (void)tsk_didAddWindowScene:(id)arg1;
 + (double)tsk_expectedScreenScale;
 + (_Bool)tsk_deviceIsLandscape;
 + (_Bool)tsk_appIsAlwaysInDarkMode;
 + (_Bool)tsk_deviceCanUseSidebar;
 + (_Bool)tsk_isHorizontallyCompactOnLandscape;
++ (_Bool)tsk_phoneUI932H;
 + (_Bool)tsk_phoneUI926H;
 + (_Bool)tsk_phoneUI896H;
++ (_Bool)tsk_phoneUI852H;
 + (_Bool)tsk_phoneUI844H;
 + (_Bool)tsk_phoneUI812HOrLarger;
 + (_Bool)tsk_phoneUI812H;
@@ -27,6 +30,10 @@
 + (_Bool)tsk_phoneUI667H;
 + (_Bool)tsk_phoneUI568HOrSmaller;
 + (_Bool)tsk_phoneUI568H;
++ (_Bool)tsk_pad1590HOrLarger;
++ (_Bool)tsk_pad1590H;
++ (_Bool)tsk_pad1373HOrLarger;
++ (_Bool)tsk_pad1373H;
 + (_Bool)tsk_pad1366HOrLarger;
 + (_Bool)tsk_pad1366H;
 + (_Bool)tsk_pad1194H;
@@ -38,5 +45,6 @@
 + (_Bool)tsk_screenClassPhoneUIRegularOrLarge;
 + (long long)p_tsk_uncachedScreenClass;
 + (long long)tsk_screenClass;
+- (_Bool)tsk_isEmbeddedScreen;
 @end
 

@@ -6,7 +6,7 @@
 
 #import <SearchFoundation/SFCardSection-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString, SFColor;
+@class NSArray, NSData, NSDictionary, NSString;
 
 @protocol SFButtonListCardSection <SFCardSection>
 @property(readonly, nonatomic) NSData *jsonData;
@@ -14,14 +14,6 @@
 @property(copy, nonatomic) NSString *showMoreButtonTitle;
 @property(copy, nonatomic) NSArray *buttons;
 @property(copy, nonatomic) NSString *SectionTitle;
-@property(retain, nonatomic) SFColor *backgroundColor;
-@property(nonatomic) int separatorStyle;
 @property(copy, nonatomic) NSString *type;
-@property(nonatomic) _Bool hasBottomPadding;
-@property(nonatomic) _Bool hasTopPadding;
-@property(nonatomic) _Bool canBeHidden;
-@property(copy, nonatomic) NSString *punchoutPickerDismissText;
-@property(copy, nonatomic) NSString *punchoutPickerTitle;
-@property(copy, nonatomic) NSArray *punchoutOptions;
 @end
 

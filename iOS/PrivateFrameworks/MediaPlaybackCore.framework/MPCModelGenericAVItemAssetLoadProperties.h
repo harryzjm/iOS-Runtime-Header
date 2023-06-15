@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     _Bool _prefersHighQualityContent;
     _Bool _radioPlayback;
     _Bool _followUp;
+    _Bool _supportsVocalAttenuation;
     long long _HLSContentPolicy;
     NSString *_assetSourceStorefrontID;
     id <MPCModelPlaybackAssetCacheProviding> _assetCacheProvider;
@@ -34,6 +35,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool supportsVocalAttenuation; // @synthesize supportsVocalAttenuation=_supportsVocalAttenuation;
 @property(retain, nonatomic) MPCAudioAssetTypeSelection *audioAssetTypeSelection; // @synthesize audioAssetTypeSelection=_audioAssetTypeSelection;
 @property(nonatomic) long long preferredAudioAssetType; // @synthesize preferredAudioAssetType=_preferredAudioAssetType;
 @property(copy, nonatomic) NSString *playbackAuthorizationToken; // @synthesize playbackAuthorizationToken=_playbackAuthorizationToken;

@@ -10,7 +10,9 @@ __attribute__((visibility("hidden")))
     void *_renderRef;
 }
 
+- (_Bool)isPreparedCGImage;
 - (void)dealloc;
+- (id)typeName;
 
 @end
 

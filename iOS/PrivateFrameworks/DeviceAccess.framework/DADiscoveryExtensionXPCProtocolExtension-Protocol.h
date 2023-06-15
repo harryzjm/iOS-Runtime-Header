@@ -4,8 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class DADeviceEvent;
+
 @protocol DADiscoveryExtensionXPCProtocolExtension
 - (void)consumeToken:(char *)arg1;
+- (void)didReceiveDeviceChangedEvent:(DADeviceEvent *)arg1;
 - (void)startDiscovery;
 @end
 

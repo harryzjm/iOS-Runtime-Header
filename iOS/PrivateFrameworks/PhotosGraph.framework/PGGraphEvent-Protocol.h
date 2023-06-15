@@ -18,7 +18,6 @@
 @property(readonly) double timestampUTCEnd;
 @property(readonly) double timestampUTCStart;
 @property(readonly) _Bool petIsPresent;
-@property(readonly) _Bool babyIsPresent;
 @property(readonly) _Bool isTrip;
 @property(readonly) _Bool isShortTrip;
 @property(readonly) _Bool isLongTrip;

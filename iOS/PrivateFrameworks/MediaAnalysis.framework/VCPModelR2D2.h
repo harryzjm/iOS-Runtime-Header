@@ -28,8 +28,10 @@ __attribute__((visibility("hidden")))
         struct __CVBuffer *warpedBuffers[7];
     } _storage;
     NSObject<OS_dispatch_semaphore> *_flowDecoderSemaphore;
+    struct Scaler _scaler;
 }
 
+- (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)dealloc;
 - (void)releaseMemory;

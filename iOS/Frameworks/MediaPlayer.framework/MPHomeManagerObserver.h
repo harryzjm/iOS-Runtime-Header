@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_userMonitorMap;
     _Bool _soundCheckCachedValue;
     _Bool _setupDidComplete;
+    unsigned long long _homekitInitSignpostId;
     id <MPHomeManagerObserverDelegate> _delegate;
 }
 

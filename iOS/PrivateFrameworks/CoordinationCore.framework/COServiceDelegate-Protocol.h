@@ -6,9 +6,10 @@
 
 #import <CoordinationCore/NSObject-Protocol.h>
 
-@class NSString;
+@class COCluster, COClusterAssertion;
 
 @protocol COServiceDelegate <NSObject>
-- (void)ensureOnDemandControllerForCluster:(NSString *)arg1 completion:(void (^)(void))arg2;
+- (void)waitForClusterBootstrap:(COCluster *)arg1 completion:(void (^)(void))arg2;
+- (COClusterAssertion *)takeAssertionForCluster:(COCluster *)arg1;
 @end
 

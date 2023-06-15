@@ -9,7 +9,7 @@
 @class NSArray, UIPasteConfiguration;
 
 @protocol UIPasteConfigurationSupporting <NSObject>
-@property(nonatomic, copy) UIPasteConfiguration *pasteConfiguration;
+@property(copy, nonatomic) UIPasteConfiguration *pasteConfiguration;
 
 @optional
 - (_Bool)canPasteItemProviders:(NSArray *)arg1;

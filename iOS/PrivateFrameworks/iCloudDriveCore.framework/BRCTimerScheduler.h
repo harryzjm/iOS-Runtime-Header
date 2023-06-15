@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class BRCAccountSession, NSString;
+@class BRCAccountSessionFPFS, NSString;
 @protocol OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
 @interface BRCTimerScheduler : NSObject
 {
-    BRCAccountSession *_session;
+    BRCAccountSessionFPFS *_session;
     NSObject<OS_dispatch_source> *_timer;
     _Bool _suspended;
     NSString *_name;

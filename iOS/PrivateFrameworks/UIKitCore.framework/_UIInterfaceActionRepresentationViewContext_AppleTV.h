@@ -15,12 +15,17 @@ __attribute__((visibility("hidden")))
     _Bool _highlighted;
     _Bool _pressed;
     UIView *_highlightTransformTargetView;
+    long long _actionLayoutAxis;
+    double _focusedSizeIncrease;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) double focusedSizeIncrease; // @synthesize focusedSizeIncrease=_focusedSizeIncrease;
+@property(nonatomic) long long actionLayoutAxis; // @synthesize actionLayoutAxis=_actionLayoutAxis;
 @property(nonatomic) _Bool pressed; // @synthesize pressed=_pressed;
 @property(nonatomic) _Bool highlighted; // @synthesize highlighted=_highlighted;
 @property(nonatomic) __weak UIView *highlightTransformTargetView; // @synthesize highlightTransformTargetView=_highlightTransformTargetView;
+- (id)motionEffectsOnAxis:(long long)arg1;
 - (id)_newMotionEffectsGroupForHighlightedAction;
 - (void)_removeMotionEffects;
 - (void)_insertMotionEffects;

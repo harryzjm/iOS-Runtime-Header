@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *delegate;
     MISSING_TYPE *feedItemSupplementaryRenderer;
+    MISSING_TYPE *embeddedSupplementaryRenderer;
 }
 
 @end

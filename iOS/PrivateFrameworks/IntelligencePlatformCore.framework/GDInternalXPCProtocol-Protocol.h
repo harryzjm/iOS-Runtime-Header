@@ -4,12 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class GDEntityResolutionRequest, NSDate, NSDictionary, NSNumber, NSString;
+@class GDEntityResolutionRequest, GDViewQuery, NSDate, NSDictionary, NSNumber, NSString;
 
 @protocol GDInternalXPCProtocol
-- (void)clearPipelineStatusWithCompletion:(void (^)(_Bool, NSError *))arg1;
+- (void)featureKeys:(void (^)(NSArray *, NSError *))arg1;
+- (void)viewSqlWithName:(NSString *)arg1 statement:(NSString *)arg2 completion:(void (^)(NSString *, NSError *))arg3;
+- (void)viewInfoWithViewQuery:(GDViewQuery *)arg1 rows:(NSNumber *)arg2 completion:(void (^)(NSArray *, NSError *))arg3;
+- (void)generateActivityCentricLifeEventsFromStartDate:(NSDate *)arg1 toEndDate:(NSDate *)arg2 completion:(void (^)(NSArray *, NSError *))arg3;
+- (void)photosMetadataWithStartDate:(NSDate *)arg1 endDate:(NSDate *)arg2 maxEvents:(long long)arg3 newestFirst:(_Bool)arg4 completion:(void (^)(NSData *, NSError *))arg5;
+- (void)behaviorUnderstandingClearEntityTaggingInjectedTagsWithCompletion:(void (^)(_Bool, NSError *))arg1;
+- (void)behaviorUnderstandingShowEntityTaggingInjectedTagsWithCompletion:(void (^)(NSString *, NSError *))arg1;
+- (void)behaviorUnderstandingInjectTagForPersonID:(NSString *)arg1 tagType:(NSString *)arg2 confidence:(double)arg3 completion:(void (^)(_Bool, NSError *))arg4;
+- (void)behaviorUnderstandingMockEntityRelevanceContextWithDate:(NSDate *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
+- (void)behaviorUnderstandingDumpEntityTaggingDataCollectionWithOutputPath:(NSString *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
+- (void)behaviorUnderstandingTriggerEntityTaggingDataCollectionWithCompletion:(void (^)(_Bool, NSError *))arg1;
+- (void)behaviorUnderstandingSampleEntityTaggingFeaturesForPersonID:(NSString *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
+- (void)behaviorUnderstandingEvaluateForBehaviorType:(NSString *)arg1 inferenceServiceInstanceId:(NSString *)arg2 completion:(void (^)(NSDictionary *, NSError *))arg3;
+- (void)contextDataForSource:(NSString *)arg1 startDate:(NSDate *)arg2 endDate:(NSDate *)arg3 completion:(void (^)(NSString *, NSError *))arg4;
 - (void)behaviorUnderstandingFeaturizedBehaviorsForFeatureName:(NSString *)arg1 behaviorType:(NSString *)arg2 completion:(void (^)(NSData *, NSError *))arg3;
-- (void)behaviorUnderstandingHistogramsOfKind:(NSString *)arg1 behaviorType:(NSString *)arg2 completion:(void (^)(NSData *, NSError *))arg3;
+- (void)behaviorUnderstandingHistogramsOfKind:(NSString *)arg1 behaviorType:(NSString *)arg2 viewName:(NSString *)arg3 completion:(void (^)(NSData *, NSError *))arg4;
 - (void)behaviorUnderstandingFeaturizeBehaviorOfType:(NSString *)arg1 identifier:(NSString *)arg2 usingContextAt:(NSDate *)arg3 completion:(void (^)(NSDictionary *, NSError *))arg4;
 - (void)behaviorUnderstandingRecentBehaviorsOfType:(NSString *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)behaviorUnderstandingDigestWithShouldDigestFeaturizer:(_Bool)arg1 shouldDigestSampleGenerator:(_Bool)arg2 completion:(void (^)(_Bool, NSError *))arg3;
@@ -20,16 +33,11 @@
 - (void)validateGraphWithCompletion:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)benchmarkWithCompletion:(void (^)(_Bool, NSError *))arg1;
 - (void)runToMatchingPipelineWithCompletion:(void (^)(_Bool, NSError *))arg1;
-- (void)runDeltaUpdatePipelineWithCompletion:(void (^)(_Bool, NSError *))arg1;
+- (void)runDeltaUpdatePipelineWithSource:(NSString *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (void)stopPipelineWithCompletion:(void (^)(_Bool, NSError *))arg1;
 - (void)triplesQueryWithQuery:(NSDictionary *)arg1 completion:(void (^)(NSArray *, NSArray *))arg2;
-- (void)viewValidateWithCompletion:(void (^)(_Bool, NSError *))arg1;
-- (void)viewMarkNeedsUpdateWithSchedule:(NSString *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
-- (void)viewRunUpdateWithName:(NSString *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
-- (void)viewSetEnabledWithName:(NSString *)arg1 enabled:(NSNumber *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
-- (void)viewClearAllDataWithName:(NSString *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
-- (void)viewInfoWithCompletion:(void (^)(NSArray *))arg1;
 - (void)statsWithCompletion:(void (^)(NSString *, NSError *))arg1;
+- (void)clearStatusWithCompletion:(void (^)(_Bool, NSError *))arg1;
 - (void)statusWithCompletion:(void (^)(NSString *, NSError *))arg1;
 @end
 

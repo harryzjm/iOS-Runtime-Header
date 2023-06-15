@@ -15,6 +15,13 @@
     MISSING_TYPE *operationQueue;
     MISSING_TYPE *asyncGroupRequests;
     MISSING_TYPE *textureEntryByKey;
+    MISSING_TYPE *defaultSampler;
+    MISSING_TYPE *defaultSamplerRepeatTrilinear;
+    MISSING_TYPE *defaultSamplerClampMipNearest;
+    MISSING_TYPE *defaultSamplerRepeatMipNearest;
+    MISSING_TYPE *defaultSamplerRepeatSMipNearest;
+    MISSING_TYPE *defaultSamplerMirrorRepeatMipNearest;
+    MISSING_TYPE *defaultTextures;
     MISSING_TYPE *groupID;
 }
 

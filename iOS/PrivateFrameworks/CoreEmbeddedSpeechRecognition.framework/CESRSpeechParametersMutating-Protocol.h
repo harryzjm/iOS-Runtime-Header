@@ -9,6 +9,8 @@
 @class AFPowerContextPolicy, CLLocation, NSArray, NSData, NSDictionary, NSString, NSURL;
 
 @protocol CESRSpeechParametersMutating <NSObject>
+- (void)setShouldGenerateVoiceCommandCandidates:(_Bool)arg1;
+- (void)setRecognitionStart:(double)arg1;
 - (void)setPowerContext:(AFPowerContextPolicy *)arg1;
 - (void)setSelectedText:(NSString *)arg1;
 - (void)setPostfixText:(NSString *)arg1;

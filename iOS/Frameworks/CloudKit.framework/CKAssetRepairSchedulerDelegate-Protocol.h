@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CKAssetRepairScheduler, CKRepairAssetsOperation, CKUploadRequestMetadata, NSError;
+@class CKAssetRepairScheduler, CKUploadRequestMetadata, NSError;
 
 @protocol CKAssetRepairSchedulerDelegate
 - (void)assetRepairSchedulerAllRequestsComplete:(CKAssetRepairScheduler *)arg1;
 - (void)assetRepairScheduler:(CKAssetRepairScheduler *)arg1 completedRepairWithMetadata:(CKUploadRequestMetadata *)arg2 error:(NSError *)arg3;
-- (void)assetRepairScheduler:(CKAssetRepairScheduler *)arg1 preparingRepairWithOperation:(CKRepairAssetsOperation *)arg2;
+- (void)assetRepairScheduler:(CKAssetRepairScheduler *)arg1 preparingRepairWithIncludedMetadataCount:(unsigned long long)arg2;
 - (void)assetRepairScheduler:(CKAssetRepairScheduler *)arg1 completedRequestWithMetadata:(CKUploadRequestMetadata *)arg2 result:(long long)arg3;
 @end
 

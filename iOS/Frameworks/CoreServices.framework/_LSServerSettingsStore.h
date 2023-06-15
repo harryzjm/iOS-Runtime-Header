@@ -16,14 +16,17 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(readonly) NSXPCListener *listener; // @synthesize listener=_listener;
 - (void)postSettingsChangeNotification;
+- (void)resetUserElectionsWithReply:(CDUnknownBlockType)arg1;
 - (void)setUserElection:(unsigned char)arg1 forExtensionKey:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)userElectionForExtensionKey:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (_Bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
+- (void)_internalQueue_resetUserElection;
 - (void)_internalQueue_insertIdentifier:(id)arg1 userElection:(unsigned char)arg2 timestamp:(double)arg3;
 - (void)_internalQueue_insertIdentifier:(id)arg1 userElection:(unsigned char)arg2;
 - (void)_internalQueue_initializeDatabase;
 - (void)_internalQueue_loadPluginKitDatabase;
 - (void)_internalQueue_loadDatabase;
+- (_Bool)resetUserElectionsWithError:(id *)arg1;
 - (_Bool)setUserElection:(unsigned char)arg1 forExtensionKey:(id)arg2 error:(id *)arg3;
 - (id)settingsStoreConfigurationForProcessWithAuditToken:(CDStruct_4c969caf)arg1;
 - (id)init;

@@ -9,7 +9,6 @@
 @class CaptureMTLDevice, NSString;
 @protocol MTLArgumentEncoder, MTLDevice;
 
-__attribute__((visibility("hidden")))
 @interface CaptureMTLArgumentEncoder : NSObject
 {
     id <MTLArgumentEncoder> _baseObject;

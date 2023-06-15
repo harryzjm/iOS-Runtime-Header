@@ -10,8 +10,6 @@
 @protocol PUWallpaperEditingLook, PUWallpaperEditor, PUWallpaperEditorEnvironment, PUWallpaperEditorLookViewProviding, PUWallpaperTransition;
 
 @protocol PUWallpaperEditorDelegate <NSObject>
-- (UIMenu *)actionsMenuForEditor:(id <PUWallpaperEditor>)arg1;
-- (UIAction *)primaryActionForEditor:(id <PUWallpaperEditor>)arg1;
 - (void)editor:(id <PUWallpaperEditor>)arg1 populateViews:(id <PUWallpaperEditorLookViewProviding>)arg2 forLook:(id <PUWallpaperEditingLook>)arg3;
 - (NSArray *)looksForEditor:(id <PUWallpaperEditor>)arg1;
 - (void)editorDidInvalidate:(id <PUWallpaperEditor>)arg1;
@@ -27,5 +25,10 @@
 - (double)editor:(id <PUWallpaperEditor>)arg1 luminanceForLook:(id <PUWallpaperEditingLook>)arg2 inRect:(struct CGRect)arg3;
 - (void)editor:(id <PUWallpaperEditor>)arg1 didTransitionToLook:(id <PUWallpaperEditingLook>)arg2 progress:(double)arg3;
 - (NSString *)initialLookIdentifierForEditor:(id <PUWallpaperEditor>)arg1;
+- (NSArray *)trailingMenuElementsForEditor:(id <PUWallpaperEditor>)arg1;
+- (NSArray *)leadingMenuElementsForEditor:(id <PUWallpaperEditor>)arg1;
+- (UIMenu *)actionsMenuForEditor:(id <PUWallpaperEditor>)arg1;
+- (UIAction *)secondaryActionForEditor:(id <PUWallpaperEditor>)arg1;
+- (UIAction *)primaryActionForEditor:(id <PUWallpaperEditor>)arg1;
 @end
 

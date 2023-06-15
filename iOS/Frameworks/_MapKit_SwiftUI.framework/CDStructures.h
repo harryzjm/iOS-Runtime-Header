@@ -33,3 +33,15 @@ struct UIEdgeInsets {
     double _field4;
 };
 
+#pragma mark Typedef'd Structures
+
+typedef struct {
+    double _field1;
+    double _field2;
+} CDStruct_c3b9c2ee;
+
+typedef struct {
+    CDStruct_c3b9c2ee _field1;
+    CDStruct_c3b9c2ee _field2;
+} CDStruct_90e2a262;
+

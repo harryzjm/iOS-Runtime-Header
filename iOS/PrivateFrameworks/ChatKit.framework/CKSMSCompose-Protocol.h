@@ -35,6 +35,7 @@
 - (void)setShouldIgnoreEmailsWhenSending:(_Bool)arg1;
 - (void)setShouldDisableEntryField:(_Bool)arg1;
 - (void)setCanEditRecipients:(_Bool)arg1;
+- (void)configureForDeviceValidation;
 - (void)setPendingAddresses:(NSArray *)arg1;
 - (_Bool)insertMessage:(MSMessage *)arg1;
 - (_Bool)insertRichLinkWithURL:(NSURL *)arg1 andData:(NSData *)arg2;

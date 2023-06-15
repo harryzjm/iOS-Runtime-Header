@@ -9,12 +9,13 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (id)segmentationLabelsFilePathForConfiguration:(id)arg1 error:(id *)arg2;
++ (_Bool)providesSegmentationLabelsForConfiguration:(id)arg1;
 + (unsigned int)analysisPixelFormatTypeForConfiguration:(id)arg1;
 + (id)inputImageBlobNameForConfiguration:(id)arg1;
-+ (id)modelNameForConfiguration:(id)arg1;
++ (id)modelPathForConfiguration:(id)arg1 error:(id *)arg2;
 - (id)observationsForLastAnalysisOfImageAnalyzer:(void *)arg1 processOptions:(id)arg2 originatingRequestSpecifier:(id)arg3 qosClass:(unsigned int)arg4 error:(id *)arg5;
 - (unsigned int)analysisTypesForProcessOptions:(id)arg1;
-- (id)segmentationLabelsFileName;
 - (_Bool)configureImageAnalyzerOptions:(void *)arg1 error:(id *)arg2;
 
 @end

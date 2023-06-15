@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSDate *when; // @synthesize when=_when;
 @property(readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 - (id)description;
+- (void)dealloc;
 - (id)initWithName:(id)arg1;
 
 @end

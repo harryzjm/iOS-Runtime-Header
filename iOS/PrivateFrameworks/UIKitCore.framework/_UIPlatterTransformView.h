@@ -40,6 +40,7 @@ __attribute__((visibility("hidden")))
 - (void)layoutSubviews;
 - (void)didTearOffForDrag;
 @property(readonly, nonatomic) UIView *sourceView;
+- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

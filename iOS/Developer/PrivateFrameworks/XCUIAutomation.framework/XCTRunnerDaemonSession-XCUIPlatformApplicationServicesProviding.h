@@ -9,6 +9,7 @@
 #import <XCUIAutomation/XCTMessagingRole_UIApplicationStateUpdating-Protocol.h>
 #import <XCUIAutomation/XCUIApplicationAutomationSessionProviding-Protocol.h>
 #import <XCUIAutomation/XCUIDeviceAutomationModeInterface-Protocol.h>
+#import <XCUIAutomation/XCUIDeviceDelayedAttachmentTransferSupportInterface-Protocol.h>
 #import <XCUIAutomation/XCUIDeviceEventAndStateInterface-Protocol.h>
 #import <XCUIAutomation/XCUILocalDeviceScreenshotIPCInterface-Protocol.h>
 #import <XCUIAutomation/XCUIPlatformApplicationServicesProviding-Protocol.h>
@@ -19,20 +20,20 @@
 @class NSString, XCTCapabilities;
 @protocol XCUIApplicationPlatformServicesProviderDelegate;
 
-@interface XCTRunnerDaemonSession (XCUIPlatformApplicationServicesProviding) <XCUIPlatformApplicationServicesProviding, XCUIDeviceAutomationModeInterface, XCUIResetAuthorizationStatusOfProtectedResourcesInterface, XCUIRemoteSiriInterface, XCUIDeviceEventAndStateInterface, XCUILocalDeviceScreenshotIPCInterface, XCUIApplicationAutomationSessionProviding, XCTMessagingRole_UIApplicationStateUpdating, XCUIRemoteAccessibilityInterface>
+@interface XCTRunnerDaemonSession (XCUIPlatformApplicationServicesProviding) <XCUIPlatformApplicationServicesProviding, XCUIDeviceDelayedAttachmentTransferSupportInterface, XCUIDeviceAutomationModeInterface, XCUIResetAuthorizationStatusOfProtectedResourcesInterface, XCUIRemoteSiriInterface, XCUIDeviceEventAndStateInterface, XCUILocalDeviceScreenshotIPCInterface, XCUIApplicationAutomationSessionProviding, XCTMessagingRole_UIApplicationStateUpdating, XCUIRemoteAccessibilityInterface>
 + (id)unsupportedBundleIdentifiersForAutomationSessions;
 + (void)registerCapabilitiesForDaemonConnection:(id)arg1 completion:(CDUnknownBlockType)arg2;
-+ (id)daemonCapabilitiesForProtocolVersion:(unsigned long long)arg1 platform:(unsigned long long)arg2 error:(id *)arg3;
 + (id)capabilities;
-+ (void)legacyCapabilitiesForDaemonConnection:(id)arg1 completion:(CDUnknownBlockType)arg2;
-+ (void)modernCapabilitiesForDaemonConnection:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)requestApplicationSpecifierForPID:(int)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)fetchAttributesForElement:(id)arg1 attributes:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)openURL:(id)arg1 usingApplication:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)openDefaultApplicationForURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)terminateApplicationWithBundleID:(id)arg1 pid:(int)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)launchApplicationWithPath:(id)arg1 bundleID:(id)arg2 arguments:(id)arg3 environment:(id)arg4 completion:(CDUnknownBlockType)arg5;
 @property(readonly) _Bool providesClientStateUpdates;
 - (void)beginMonitoringApplicationWithSpecifier:(id)arg1;
 @property __weak id <XCUIApplicationPlatformServicesProviderDelegate> platformApplicationServicesProviderDelegate;
+@property(readonly) _Bool supportsDelayedAttachmentTransfer;
 - (_Bool)enableAutomationModeWithError:(id *)arg1;
 @property(readonly) _Bool supportsAutomationMode;
 - (_Bool)resetAuthorizationStatusForBundleIdentifier:(id)arg1 resourceIdentifier:(id)arg2 error:(id *)arg3;
@@ -43,6 +44,10 @@
 - (void)startSiriUIRequestWithAudioFileURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)startSiriUIRequestWithText:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)requestSiriEnabledStatus:(CDUnknownBlockType)arg1;
+- (void)setSimulatedLocation:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)getSimulatedLocationWithReply:(CDUnknownBlockType)arg1;
+- (void)clearSimulatedLocationWithReply:(CDUnknownBlockType)arg1;
+@property(readonly) _Bool supportsLocationSimulation;
 - (void)hasHardwareButton:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getInterfaceOrientationWithReply:(CDUnknownBlockType)arg1;
 - (void)updateAppearanceMode:(long long)arg1 completion:(CDUnknownBlockType)arg2;
@@ -51,12 +56,19 @@
 - (void)updateDeviceOrientation:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)performDeviceEvent:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getDeviceOrientationWithCompletion:(CDUnknownBlockType)arg1;
+- (void)requestScreenshotAttachmentWithRequest:(id)arg1 withReply:(CDUnknownBlockType)arg2;
 - (void)requestScreenshotWithRequest:(id)arg1 withReply:(CDUnknownBlockType)arg2;
 @property(readonly, nonatomic) _Bool supportsHEICImageEncoding;
 @property(readonly, nonatomic) _Bool useLegacyScreenshotPath;
+- (void)stopScreenRecordingWithUUID:(id)arg1 withReply:(CDUnknownBlockType)arg2;
+- (void)startScreenRecordingWithRequest:(id)arg1 withReply:(CDUnknownBlockType)arg2;
+- (_Bool)supportsScreenRecording;
+- (_Bool)preferScreenshotsOverScreenRecordings;
 - (void)requestUnsupportedBundleIdentifiersForAutomationSessions:(CDUnknownBlockType)arg1;
 - (void)requestAutomationSessionForTestTargetWithPID:(int)arg1 preferredBackendPath:(id)arg2 reply:(CDUnknownBlockType)arg3;
 @property(readonly) long long applicationAutomationSessionSupport;
+- (void)_XCT_interfaceOrientationDidChange:(long long)arg1;
+- (void)_XCT_deviceOrientationDidChange:(long long)arg1;
 - (void)_XCT_applicationWithBundleID:(id)arg1 didUpdatePID:(int)arg2 andState:(unsigned long long)arg3;
 - (void)_XCT_applicationDidUpdateState:(id)arg1;
 - (unsigned long long)currentKeyboardModifierFlags;

@@ -43,6 +43,8 @@
 - (void)_releaseHandlerObjects;
 - (void)_stopRelativeAltitudeUpdates;
 - (void)_startRelativeAltitudeUpdates;
+- (void)_queryElevationProfileFromDate:(id)arg1 toDate:(id)arg2 withBatchSize:(unsigned long long)arg3 withHandler:(CDUnknownBlockType)arg4;
+- (void)_queryElevationProfileFromDate:(id)arg1 toDate:(id)arg2 withBatchSize:(unsigned long long)arg3 fromRecordId:(int)arg4 withHandler:(CDUnknownBlockType)arg5;
 - (void)_querySignificantElevationChangeFromDate:(id)arg1 toDate:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
 - (void)_stopSignificantElevationUpdates;
 - (void)_startSignificantElevationUpdatesWithHandler:(CDUnknownBlockType)arg1;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray, NSMutableSet, NSString, NSXPCConnection;
+@class NSMutableArray, NSString, NSXPCConnection;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -14,26 +14,32 @@ __attribute__((visibility("hidden")))
 {
     NSXPCConnection *_sharedConnection;
     NSObject<OS_dispatch_queue> *_sharedConnectionAccessQueue;
-    NSMutableSet *_activePromises;
     NSMutableArray *_interruptionHandlers;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSMutableArray *interruptionHandlers; // @synthesize interruptionHandlers=_interruptionHandlers;
-@property(readonly, nonatomic) NSMutableSet *activePromises; // @synthesize activePromises=_activePromises;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *sharedConnectionAccessQueue; // @synthesize sharedConnectionAccessQueue=_sharedConnectionAccessQueue;
 @property(retain, nonatomic) NSXPCConnection *sharedConnection; // @synthesize sharedConnection=_sharedConnection;
+- (void)attemptResumeIfRequired;
+- (void)_initializeConnection;
+- (id)_serviceInterfaceForSelector:(SEL)arg1;
 - (void)_handleInvalidation;
 - (void)_handleInterruption;
-- (void)_checkOutPromise:(id)arg1;
-- (void)_checkInPromise:(id)arg1;
-- (id)_connectionProxyForAsync:(_Bool)arg1 accessBlock:(CDUnknownBlockType)arg2;
+- (void)_errorForwardingProxyForServiceProxy:(id)arg1 proxyReplyError:(id)arg2 interface:(id)arg3 proxyPromise:(id)arg4;
+- (id)_connectionProxyWithAccessBlock:(CDUnknownBlockType)arg1;
+- (void)_connectionSyncProxyWithAccessBlock:(CDUnknownBlockType)arg1;
 - (id)securityServiceProxyWithDelegate:(id)arg1;
 - (id)pushNotificationService;
 - (id)purchaseServiceProxy;
+- (id)keychainServiceProxy;
 - (id)fraudReportServiceProxy;
+- (id)dismissQRDialogServiceProxy;
 - (id)deviceMessengerProxyWithDelegate:(id)arg1;
+- (id)cookieServiceProxySyncWithError:(id *)arg1;
 - (id)cookieServiceProxy;
+- (id)accountSignOutServiceProxy;
+- (id)accountCachedServerDataService;
 - (id)callService:(id)arg1 then:(CDUnknownBlockType)arg2;
 - (void)addInterruptionHandler:(CDUnknownBlockType)arg1;
 - (void)dealloc;

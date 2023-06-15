@@ -11,7 +11,9 @@
 @protocol SUCoreConnectClientProxyProtocol <NSObject>
 
 @optional
+- (void)executeProgressBlock:(SUCoreProgress *)arg1 disableVerboseLogging:(_Bool)arg2;
 - (void)executeProgressBlock:(SUCoreProgress *)arg1;
+- (void)executeGenericBlock:(id)arg1 disableVerboseLogging:(_Bool)arg2;
 - (void)executeGenericBlock:(id)arg1;
 @end
 

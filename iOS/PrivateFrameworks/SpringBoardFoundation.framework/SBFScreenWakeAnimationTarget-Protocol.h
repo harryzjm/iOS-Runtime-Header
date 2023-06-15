@@ -7,6 +7,7 @@
 #import <SpringBoardFoundation/NSObject-Protocol.h>
 
 @protocol SBFScreenWakeAnimationTarget <NSObject>
+- (void)removeAllWakeEffects;
 - (void)updateWakeEffectsForWake:(_Bool)arg1 animated:(_Bool)arg2 completion:(void (^)(_Bool))arg3;
 - (void)updateWakeEffectsForWake:(_Bool)arg1;
 @end

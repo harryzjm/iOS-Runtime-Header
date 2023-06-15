@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
 + (void)load;
 - (void).cxx_destruct;
 @property(nonatomic, getter=_scene, setter=_setScene:) __weak UIScene *_scene; // @synthesize _scene;
-- (id)_actionHandlersForScene:(id)arg1;
+- (id)_actionRespondersForScene:(id)arg1;
 - (id)initWithScene:(id)arg1;
 
 // Remaining properties

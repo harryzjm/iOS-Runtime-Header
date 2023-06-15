@@ -17,8 +17,11 @@ __attribute__((visibility("hidden")))
 + (void)_applyProtectionClassForDirectoryAtURL:(id)arg1;
 + (_Bool)_addSkipBackupAttribute:(_Bool)arg1 forURL:(id)arg2;
 + (id)databaseFolderNameForType:(long long)arg1;
++ (_Bool)removeDatabaseAtURL:(id)arg1;
 + (_Bool)removeDatabaseForDataVaultPath:(id)arg1;
 + (_Bool)removeDatabaseForCachePath:(id)arg1;
++ (id)databaseURLForDataVaultPath:(id)arg1 type:(long long)arg2;
++ (id)databaseURLForCachePath:(id)arg1 type:(long long)arg2;
 + (id)databasePathForDataVaultPath:(id)arg1 type:(long long)arg2;
 + (id)databasePathForCachePath:(id)arg1 type:(long long)arg2;
 

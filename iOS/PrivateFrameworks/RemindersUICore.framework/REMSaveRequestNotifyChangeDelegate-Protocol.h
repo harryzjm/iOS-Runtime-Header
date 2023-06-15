@@ -7,7 +7,7 @@
 @class NSSet, OS_dispatch_queue;
 
 @protocol REMSaveRequestNotifyChangeDelegate
-@property(nonatomic, readonly) OS_dispatch_queue *callbackQueue;
+@property(readonly, nonatomic) OS_dispatch_queue *callbackQueue;
 - (void)notifyEventFromSaveRequest:(NSSet *)arg1;
 @end
 

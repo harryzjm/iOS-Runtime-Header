@@ -13,10 +13,10 @@ __attribute__((visibility("hidden")))
 @interface BRCDiskSpaceReclaimer : NSObject
 {
     BRCAccountSession *_session;
-    _Bool _isClosed;
-    _Bool _computingPurgable;
     br_pacer *_purgePacer;
     NSObject<OS_dispatch_queue> *_queue;
+    _Bool _isClosed;
+    _Bool _computingPurgable;
 }
 
 + (double)accessTimeDeltaForUrgency:(int)arg1;
@@ -25,14 +25,12 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 - (unsigned long long)totalSize;
+- (unsigned long long)nonPurgeableSizeWithPurgeableSize:(unsigned long long)arg1;
 - (unsigned long long)_recursivelySizeDirectoryAtPath:(id)arg1;
 - (_Bool)performOptimizeStorageWithTimeDelta:(double)arg1 onDiskAccessTimeDelta:(double)arg2 error:(id *)arg3;
-- (void)requestPurgeSpace;
+- (long long)cachedNonPurgeableSpace;
 - (long long)cachedPurgeableSpaceForUrgency:(int)arg1;
-- (void)_requestPurgeSpace;
-- (void)lowDiskStatusChangedForDevice:(int)arg1 hasEnoughSpace:(_Bool)arg2;
 - (_Bool)renameAndUnlinkInBackgroundItemAt:(int)arg1 path:(id)arg2;
-- (_Bool)renameAndUnlinkInBackgroundItemAtRelpath:(id)arg1;
 - (int)urgencyForCacheDeleteUrgency:(int)arg1;
 - (long long)periodicReclaimSpace;
 - (long long)purgeSpace:(long long)arg1 withUrgency:(int)arg2;
@@ -45,9 +43,13 @@ __attribute__((visibility("hidden")))
 - (long long)_dbSizeInBytes:(id)arg1;
 - (long long)_computeCiconiaSizeInBytes:(_Bool)arg1;
 - (void)computePurgeableSpaceForAllUrgenciesWithReply:(CDUnknownBlockType)arg1;
-- (void)cachedPurgeableSpaceForAllUrgencies:(id *)arg1 nonPurgeableSpace:(id *)arg2 error:(id *)arg3;
 - (void)close;
 - (id)initWithAccountSession:(id)arg1;
+- (void)lowDiskStatusChangedForDevice:(int)arg1 hasEnoughSpace:(_Bool)arg2;
+- (void)requestPurgeSpace;
+- (void)_requestPurgeSpace;
+- (void)_setupPurgePacer;
+- (_Bool)renameAndUnlinkInBackgroundItemAtRelpath:(id)arg1;
 - (void)_enumerateItemsForEvictSyncWithBlock:(CDUnknownBlockType)arg1 withUrgency:(int)arg2;
 - (void)_enumerateItemsForEvictSyncWithBlock:(CDUnknownBlockType)arg1 withTimeDelta:(double)arg2 onDiskAccessTimeDelta:(double)arg3;
 - (id)descriptionForItem:(id)arg1 context:(id)arg2;

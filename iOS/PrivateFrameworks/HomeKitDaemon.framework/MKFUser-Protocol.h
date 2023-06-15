@@ -7,29 +7,33 @@
 #import <HomeKitDaemon/MKFModel-Protocol.h>
 #import <HomeKitDaemon/MKFUserPublicExtensions-Protocol.h>
 
-@class CKRecordID, HAPPairingIdentity, HMDAccountHandle, HMDAccountIdentifier, MKFUserDatabaseID, NSArray, NSDate, NSDictionary, NSNumber, NSString, NSUUID, Protocol;
-@protocol MKFAccessory, MKFAnalysisEventBulletinRegistration, MKFBulletinRegistration, MKFCameraAccessModeBulletinRegistration, MKFCameraReachabilityBulletinRegistration, MKFCameraSignificantEventBulletinRegistration, MKFCharacteristicBulletinRegistration, MKFHAPAccessory, MKFHome, MKFNotificationRegistration, MKFNotificationRegistrationCharacteristic, MKFNotificationRegistrationMediaProperty, MKFPhotosPerson, MKFPresenceBulletinCondition, MKFPresenceEvent, MKFUserAccessCode;
+@class CKDeviceToDeviceShareInvitationToken, CKRecordID, HAPPairingIdentity, HMDAccountHandle, HMDAccountIdentifier, MKFUserDatabaseID, NSArray, NSDate, NSDictionary, NSNumber, NSString, NSUUID, Protocol;
+@protocol MKFAccessory, MKFAirPlayAccessory, MKFAnalysisEventBulletinRegistration, MKFBulletinRegistration, MKFCameraAccessModeBulletinRegistration, MKFCameraReachabilityBulletinRegistration, MKFCameraSignificantEventBulletinRegistration, MKFCharacteristicBulletinRegistration, MKFHAPAccessory, MKFHome, MKFNotificationRegistration, MKFNotificationRegistrationCharacteristic, MKFNotificationRegistrationMediaProperty, MKFOutgoingInvitation, MKFPhotosPerson, MKFPresenceBulletinCondition, MKFUserAccessCode;
 
 @protocol MKFUser <MKFModel, MKFUserPublicExtensions>
 @property(readonly, copy, nonatomic) MKFUserDatabaseID *databaseID;
 @property(readonly, retain, nonatomic) NSArray *triggers;
-@property(readonly, retain, nonatomic) id <MKFPresenceEvent> presenceEvent;
+@property(readonly, retain, nonatomic) NSArray *presenceEvents;
 @property(readonly, retain, nonatomic) NSArray *personsFromPhotos;
 @property(readonly, retain, nonatomic) NSArray *pairedHAPAccessories;
+@property(readonly, retain, nonatomic) NSArray *pairedAirPlayAccessories;
 @property(readonly, retain, nonatomic) id <MKFHome> ownedHome;
 @property(readonly, retain, nonatomic) NSArray *notificationRegistrations;
+@property(readonly, retain, nonatomic) NSArray *locationEvents;
+@property(retain, nonatomic) id <MKFOutgoingInvitation> invitation;
 @property(readonly, retain, nonatomic) id <MKFHome> home;
 @property(readonly, retain, nonatomic) NSArray *bulletinRegistrations;
 @property(readonly, retain, nonatomic) NSArray *bulletinConditions;
 @property(readonly, retain, nonatomic) NSArray *accessoriesWithPersonalRequestsEnabled;
 @property(readonly, retain, nonatomic) NSArray *accessoriesWithMediaContentProfileEnabled;
 @property(readonly, retain, nonatomic) NSArray *accessoriesWithListeningHistoryEnabled;
-@property(readonly, retain, nonatomic) NSArray *accessCodeChangedBy;
 @property(retain, nonatomic) id <MKFUserAccessCode> accessCode;
 @property(copy, nonatomic) NSDate *writerTimestamp;
 @property(copy, nonatomic) NSString *userID;
+@property(copy, nonatomic) NSNumber *uniqueIDForAccessories;
 @property(copy, nonatomic) NSNumber *siriIdentifyVoiceEnabled;
 @property(copy, nonatomic) NSNumber *sharePhotosFaceClassifications;
+@property(retain, nonatomic) CKDeviceToDeviceShareInvitationToken *reverseShareToken;
 @property(retain, nonatomic) CKRecordID *reverseShareID;
 @property(copy, nonatomic) NSNumber *remoteAccessAllowed;
 @property(copy, nonatomic) NSNumber *privilege;
@@ -60,6 +64,7 @@
 @property(copy, nonatomic) NSNumber *ownerAddSceneButtonPresentedCount;
 @property(readonly, copy, nonatomic) NSUUID *modelID;
 @property(copy, nonatomic) NSNumber *losslessMusicEnabled;
+@property(copy, nonatomic) NSString *idsMergeIdentifier;
 @property(copy, nonatomic) NSNumber *dolbyAtmosEnabled;
 @property(copy, nonatomic) NSString *changeTag;
 @property(copy, nonatomic) NSNumber *camerasAccessLevel;
@@ -76,6 +81,8 @@
 - (id <MKFPhotosPerson>)materializeOrCreatePersonsFromPhotosRelationWithModelID:(NSUUID *)arg1 createdNew:(_Bool *)arg2;
 - (void)removePairedHAPAccessoriesObject:(id <MKFHAPAccessory>)arg1;
 - (void)addPairedHAPAccessoriesObject:(id <MKFHAPAccessory>)arg1;
+- (void)removePairedAirPlayAccessoriesObject:(id <MKFAirPlayAccessory>)arg1;
+- (void)addPairedAirPlayAccessoriesObject:(id <MKFAirPlayAccessory>)arg1;
 - (void)removeNotificationRegistrationsObject:(id <MKFNotificationRegistration>)arg1;
 - (void)addNotificationRegistrationsObject:(id <MKFNotificationRegistration>)arg1;
 - (id <MKFNotificationRegistrationMediaProperty>)findNotificationRegistrationsRelationOfTypeNotificationRegistrationMediaPropertyWithModelID:(NSUUID *)arg1;

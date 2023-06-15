@@ -10,7 +10,5 @@
 {
 }
 
-- (id)runWithFloorPlan:(id)arg1 lmap:(const void *)arg2 geometryMeta:(id)arg3;
-
 @end
 

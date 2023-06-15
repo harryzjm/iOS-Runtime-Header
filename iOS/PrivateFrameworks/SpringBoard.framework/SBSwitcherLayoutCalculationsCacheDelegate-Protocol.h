@@ -6,9 +6,9 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class NSDictionary;
+@class NSDictionary, SBSwitcherLayoutCalculationsCache;
 
 @protocol SBSwitcherLayoutCalculationsCacheDelegate <NSObject>
-- (NSDictionary *)buildLayoutCalculations;
+- (NSDictionary *)buildLayoutCalculationsForCache:(SBSwitcherLayoutCalculationsCache *)arg1;
 @end
 

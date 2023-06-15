@@ -8,6 +8,7 @@
 
 @interface NSMutableArray (PKMutableArrayAdditions)
 - (void)pk_removeObjectsPassingTest:(CDUnknownBlockType)arg1;
+- (void)safelyAddObjectsFromArray:(id)arg1;
 - (void)safelyAddObject:(id)arg1;
 @end
 

@@ -9,6 +9,7 @@
 @class NSString;
 
 @interface NSDate (ConversationKit)
-@property(nonatomic, readonly) NSString *faceTimeDateString;
+- (id)faceTimeDateString;
+@property(nonatomic, readonly) NSString *_faceTimeDateString;
 @end
 

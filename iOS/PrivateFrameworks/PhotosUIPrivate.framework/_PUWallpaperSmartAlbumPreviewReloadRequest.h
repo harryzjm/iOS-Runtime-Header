@@ -18,8 +18,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType completion; // @synthesize completion=_completion;
 @property(retain, nonatomic) PXWallpaperSmartAlbumDataSource *smartAlbumDataSource; // @synthesize smartAlbumDataSource=_smartAlbumDataSource;
-- (void)wallpaperSmartAlbumDataSourcePreviewAssetsDidChange:(id)arg1;
-- (void)wallpaperSmartAlbumDataSourceAvailableTypesDidChange:(id)arg1;
+- (void)passiveContentDataSourcePreviewAssetsDidChange:(id)arg1;
+- (void)passiveContentDataSourceAvailableTypesDidChange:(id)arg1;
 - (id)initWithPhotoLibrary:(id)arg1 shuffleConfiguration:(id)arg2 completion:(CDUnknownBlockType)arg3;
 
 // Remaining properties

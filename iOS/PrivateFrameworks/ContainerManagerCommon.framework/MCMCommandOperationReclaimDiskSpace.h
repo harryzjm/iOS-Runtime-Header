@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) id <MCMReply> handoffReply; // @synthesize handoffReply=_handoffReply;
 @property(readonly, nonatomic) id <MCMXPCMessage> message; // @synthesize message=_message;
 - (void)_deleteContainersOnDeathRowWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_deleteContainersAtDeathRowURL:(id)arg1 error:(id *)arg2;
 - (_Bool)_removeItemOrMoveToTempAtURL:(id)arg1 error:(id *)arg2;
 - (void)execute;
 - (_Bool)preflightClientAllowed;

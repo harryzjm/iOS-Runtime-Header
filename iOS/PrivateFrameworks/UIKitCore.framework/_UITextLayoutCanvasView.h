@@ -32,6 +32,8 @@ __attribute__((visibility("hidden")))
 - (void)updateContentSizeIfNeeded;
 - (void)viewportBoundsDidChange;
 - (void)drawTextInRect:(struct CGRect)arg1;
+- (void)textViewportLayoutControllerDidLayout:(id)arg1;
+- (void)textViewportLayoutControllerWillLayout:(id)arg1;
 - (void)textViewportLayoutController:(id)arg1 configureRenderingSurfaceForTextLayoutFragment:(id)arg2;
 - (struct CGRect)viewportBoundsForTextViewportLayoutController:(id)arg1;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;

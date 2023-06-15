@@ -4,20 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
 @interface _TtC9SeymourUI26ChartGalleryViewController : UIViewController
 {
+    MISSING_TYPE *resignActiveObserver;
     MISSING_TYPE *visibility;
     MISSING_TYPE *dependencies;
     MISSING_TYPE *dataProvider;
     MISSING_TYPE *eventHub;
     MISSING_TYPE *galleryTitle;
     MISSING_TYPE *metricPageCategory;
-    MISSING_TYPE *resignActiveObserver;
+    MISSING_TYPE *platform;
+    MISSING_TYPE *serviceSubscriptionCache;
+    MISSING_TYPE *storefrontLocalizer;
+    MISSING_TYPE *upNextQueueButton;
+    MISSING_TYPE *upNextQueueButtonPresenter;
 }
 
 - (void).cxx_destruct;

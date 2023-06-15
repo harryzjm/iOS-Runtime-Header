@@ -7,7 +7,10 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (CLSGraphVertex)
++ (id)cls_TokenSeparators;
 @property(readonly, nonatomic) id vertexID;
+- (id)_cls_searchableTokens;
+- (_Bool)_cls_containsCharacterInSet:(id)arg1;
 - (unsigned long long)_cls_stableHash;
 @property(readonly, nonatomic) NSString *sha224;
 @end

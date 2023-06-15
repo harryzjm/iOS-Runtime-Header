@@ -9,7 +9,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (void)performRebuildRegistration:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)noteMigratorRunningWithReply:(CDUnknownBlockType)arg1;
+- (void)performRebuildRegistration:(id)arg1 personaUniqueStrings:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (id)initWithXPCConnection:(id)arg1;
 
 @end

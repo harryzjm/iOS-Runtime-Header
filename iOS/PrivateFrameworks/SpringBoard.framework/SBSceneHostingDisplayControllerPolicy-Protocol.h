@@ -6,26 +6,20 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class BSTransaction, CADisplayMode, FBSDisplayConfiguration, FBSDisplayConfigurationBuilder, FBSDisplayIdentity, SBDisplayPowerLogEntry, SBExternalDisplayArrangementItem, SBSceneHostingDisplayController, SBSceneManager;
+@class BSTransaction, FBSDisplayConfiguration, FBSDisplayIdentity, SBDisplayAssertionPreferences, SBSceneHostingDisplayController, SBSceneHostingDisplayPreferences, SBSceneManager;
 
 @protocol SBSceneHostingDisplayControllerPolicy <NSObject>
-- (unsigned long long)preferredPointScaleForDisplayController:(SBSceneHostingDisplayController *)arg1;
-- (CADisplayMode *)preferredDisplayModeForDisplayController:(SBSceneHostingDisplayController *)arg1;
-- (long long)preferredOverscanCompensationForDisplayController:(SBSceneHostingDisplayController *)arg1;
+- (SBDisplayAssertionPreferences *)assertionPreferencesForDisplay:(SBSceneHostingDisplayController *)arg1 displayConfiguration:(FBSDisplayConfiguration *)arg2;
+- (SBSceneHostingDisplayPreferences *)displayPreferencesForDisplayController:(SBSceneHostingDisplayController *)arg1;
 - (void)displayController:(SBSceneHostingDisplayController *)arg1 updatePresentationWithSceneManager:(SBSceneManager *)arg2 displayConfiguration:(FBSDisplayConfiguration *)arg3 completion:(void (^)(void))arg4;
-- (_Bool)displayController:(SBSceneHostingDisplayController *)arg1 shouldUpdatePresentationWithSceneManager:(SBSceneManager *)arg2 displayConfiguration:(FBSDisplayConfiguration *)arg3;
 - (void)displayController:(SBSceneHostingDisplayController *)arg1 didBeginTransaction:(BSTransaction *)arg2 sceneManager:(SBSceneManager *)arg3 displayConfiguration:(FBSDisplayConfiguration *)arg4 deactivationReasons:(unsigned long long)arg5;
-- (void)displayControllerDidDisconnect:(SBSceneHostingDisplayController *)arg1 sceneManager:(SBSceneManager *)arg2;
+- (void)displayControllerDidDisconnect:(SBSceneHostingDisplayController *)arg1 transaction:(BSTransaction *)arg2 sceneManager:(SBSceneManager *)arg3;
+- (void)displayControllerWillDisconnect:(SBSceneHostingDisplayController *)arg1 sceneManager:(SBSceneManager *)arg2;
 - (void)connectToDisplayController:(SBSceneHostingDisplayController *)arg1 displayConfiguration:(FBSDisplayConfiguration *)arg2;
 - (unsigned long long)displayAssertionDeactivationReasons:(FBSDisplayIdentity *)arg1;
 - (unsigned long long)displayAssertionPriorityLevel:(FBSDisplayIdentity *)arg1;
 
 @optional
-- (void)displayController:(SBSceneHostingDisplayController *)arg1 transformDisplayConfiguration:(FBSDisplayConfiguration *)arg2 withBuilder:(FBSDisplayConfigurationBuilder *)arg3;
-- (SBDisplayPowerLogEntry *)powerLogEntryForDisplayConfiguration:(FBSDisplayConfiguration *)arg1;
-- (SBExternalDisplayArrangementItem *)displayArrangementForDisplayController:(SBSceneHostingDisplayController *)arg1;
-- (_Bool)displayControllerShouldHaveControlOfDisplay:(SBSceneHostingDisplayController *)arg1;
-- (struct CGSize)preferredLogicalScaleForDisplayController:(SBSceneHostingDisplayController *)arg1;
 - (void)displayController:(SBSceneHostingDisplayController *)arg1 sceneManager:(SBSceneManager *)arg2 didReceiveNewDeactivationReasons:(unsigned long long)arg3;
 - (void)displayController:(SBSceneHostingDisplayController *)arg1 sceneManager:(SBSceneManager *)arg2 didLoseControlOfDisplayWithDeactivationReasons:(unsigned long long)arg3;
 - (void)displayController:(SBSceneHostingDisplayController *)arg1 didGainControlOfDisplayWithSceneManager:(SBSceneManager *)arg2;

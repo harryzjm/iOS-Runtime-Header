@@ -16,6 +16,7 @@
     MISSING_TYPE *messageEncoder;
     MISSING_TYPE *messageDecoder;
     MISSING_TYPE *link;
+    MISSING_TYPE *onPlaybackTransportControlStateUpdated;
     MISSING_TYPE *lock;
     MISSING_TYPE *cancellables;
     MISSING_TYPE *catchupCompletion;

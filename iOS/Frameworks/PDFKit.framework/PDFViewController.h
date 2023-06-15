@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class PDFViewControllerPrivate;
+@class NSString, PDFViewControllerPrivate;
 
 __attribute__((visibility("hidden")))
 @interface PDFViewController : NSObject
@@ -20,21 +20,16 @@ __attribute__((visibility("hidden")))
 - (id)_annotationsForSelection:(id)arg1;
 - (id)_annotationAtGestureLocation:(struct CGPoint)arg1;
 - (void)_annotationHitLongPress:(id)arg1 gestureState:(long long)arg2 location:(struct CGPoint)arg3;
-- (id)markupMenuPDFView:(id)arg1;
-- (void)markupMenuControllerLayoutDidChange:(id)arg1;
-- (void)markupMenuControllerDidHide:(id)arg1;
-- (void)markupMenuControllerShowTextSelectionMenu:(id)arg1;
-- (void)markupMenuControllerDeleteAnnotation:(id)arg1;
-- (void)markupMenuController:(id)arg1 setMarkupStyle:(unsigned long long)arg2;
-- (void)markupMenuControllerEditNote:(id)arg1;
-- (void)deleteAnnotation:(id)arg1;
-- (void)showMarkupMenu:(id)arg1;
+- (void)deleteAnnotation;
+- (void)setMarkupStyle:(unsigned long long)arg1;
+- (void)_closeTextEditingMenu;
+- (id)editMenuInteraction:(id)arg1 menuForConfiguration:(id)arg2 suggestedActions:(id)arg3;
+- (id)additionalEditMenuElementsForMarkupAnnotation:(id)arg1;
+- (id)additionalEditMenuElementsForSelection:(id)arg1;
 - (void)highlight:(id)arg1;
-- (void)showPDFMarkupMenuView;
+- (void)showMenuForMarkupAnnotation:(id)arg1;
+- (void)showMarkupStyleMenuForMarkupAnnotation;
 - (void)_hidePDFMarkupMenuView;
-- (void)_clearTextSelectionMenuItems;
-- (id)_menuItemsForTextSelectionMenu:(unsigned long long)arg1;
-- (void)updateTextSelectionMenuAndShowMenu:(_Bool)arg1;
 - (void)showActiveMenus;
 - (void)hideActiveMenus;
 - (void)_hideTextSelectionMenu;
@@ -54,24 +49,27 @@ __attribute__((visibility("hidden")))
 - (void)setMarkupStyle:(unsigned long long)arg1 forAnnotation:(id)arg2;
 - (void)setMarkupStyle:(unsigned long long)arg1 forSelection:(id)arg2 clearSelection:(_Bool)arg3;
 - (_Bool)_shouldUpdateMarkupWithStyle:(unsigned long long)arg1 onPage:(id)arg2 forIndexSet:(id)arg3;
-- (id)_annotationFollowing:(id)arg1 wrapAround:(_Bool)arg2;
-- (id)_annotationPreceding:(id)arg1 wrapAround:(_Bool)arg2;
 - (id)addAnnotationForDetectedFormField:(id)arg1 onPage:(id)arg2 activate:(_Bool)arg3;
-- (id)_populateDetectedFormFieldsOnPage:(id)arg1;
+- (void)populateAnnotationsFromDetectedAnnotationsOnPage:(id)arg1;
+- (void)handleTextSuggestion:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)removeControlForAnnotation:(id)arg1;
 - (void)_addControlForAnnotation:(id)arg1;
-- (_Bool)_annotationIsValidTextFieldToActivate:(id)arg1;
 - (void)_activateAnotation:(id)arg1;
-- (void)activateNextAnnotation:(_Bool)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (void)activateNextAnnotation:(_Bool)arg1;
+- (void)activateNextAnnotation:(unsigned long long)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)interactWithAnnotation:(id)arg1;
 - (void)setActiveAnnotation:(id)arg1;
-- (void)_activateNearestAnnotationFromPage:(id)arg1 startPage:(id)arg2 previous:(_Bool)arg3 withCompletion:(CDUnknownBlockType)arg4;
-- (void)activateNearestAnnotation:(_Bool)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (id)_findNextActivatableAnnotationOnPage:(id)arg1 fromAnnotation:(id)arg2 direction:(unsigned long long)arg3;
+- (void)findNextActivatableAnnotationFromPage:(id)arg1 fromAnnotation:(id)arg2 direction:(unsigned long long)arg3 withCompletion:(CDUnknownBlockType)arg4;
 - (id)activeAnnotation;
 - (void)dealloc;
 - (id)initWithView:(id)arg1;
 - (struct CGPoint)_convertPoint:(struct CGPoint)arg1 toPageView:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

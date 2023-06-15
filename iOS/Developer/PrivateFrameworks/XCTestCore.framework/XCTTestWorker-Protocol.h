@@ -7,6 +7,7 @@
 #import <XCTestCore/XCTTestSchedulerWorker-Protocol.h>
 
 @protocol XCTTestWorker <XCTTestSchedulerWorker>
+- (void)fetchAllTestIdentifiersWithCompletion:(void (^)(XCTTestIdentifierSet *, NSError *))arg1;
 - (void)fetchParallelizableTestIdentifiersWithCompletion:(void (^)(XCTTestIdentifierSet *, NSError *))arg1;
 @end
 

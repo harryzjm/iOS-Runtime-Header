@@ -31,6 +31,8 @@ __attribute__((visibility("hidden")))
 + (id)processingDeviceNetworkWithModelPath:(id)arg1 threshold:(float)arg2 preferredDeviceID:(int)arg3 engineID:(int)arg4 storageType:(int)arg5;
 + (unsigned long long)numberBinsYaw;
 + (unsigned long long)numberBinsRoll;
++ (_Bool)hasFaceBodyAssociation;
++ (_Bool)hasPetFaces;
 + (_Bool)hasPose;
 + (_Bool)inputBGR;
 + (tuple_8dc74180)inputBiasRGB;

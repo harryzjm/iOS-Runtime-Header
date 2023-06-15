@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 @interface ICLiveLinkQRConnectionDataSource : NSObject
 {
     IDSService *_service;
+    IDSAccount *_account;
     NSUUID *_groupSessionIdentifier;
     NSDictionary *_groupSessionOptions;
     NSURL *_sharedListeningSessionInviteURL;
@@ -20,7 +21,6 @@ __attribute__((visibility("hidden")))
     NSString *_sharedSessionToken;
     ICSharedListeningConnectionReport *_report;
     CDUnknownBlockType _dataSourceErrorHandler;
-    IDSAccount *_account;
     IDSPseudonym *_pseudonym;
     MSVTimer *_pseudonymRenewalTimer;
     NSObject<OS_dispatch_queue> *_queue;
@@ -34,7 +34,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(retain, nonatomic) MSVTimer *pseudonymRenewalTimer; // @synthesize pseudonymRenewalTimer=_pseudonymRenewalTimer;
 @property(retain, nonatomic) IDSPseudonym *pseudonym; // @synthesize pseudonym=_pseudonym;
-@property(retain, nonatomic) IDSAccount *account; // @synthesize account=_account;
 @property(copy, nonatomic) CDUnknownBlockType dataSourceErrorHandler; // @synthesize dataSourceErrorHandler=_dataSourceErrorHandler;
 @property(nonatomic) __weak ICSharedListeningConnectionReport *report; // @synthesize report=_report;
 @property(retain, nonatomic) NSString *sharedSessionToken; // @synthesize sharedSessionToken=_sharedSessionToken;
@@ -42,6 +41,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSURL *sharedListeningSessionInviteURL; // @synthesize sharedListeningSessionInviteURL=_sharedListeningSessionInviteURL;
 @property(retain, nonatomic) NSDictionary *groupSessionOptions; // @synthesize groupSessionOptions=_groupSessionOptions;
 @property(retain, nonatomic) NSUUID *groupSessionIdentifier; // @synthesize groupSessionIdentifier=_groupSessionIdentifier;
+@property(retain, nonatomic) IDSAccount *account; // @synthesize account=_account;
 @property(retain, nonatomic) IDSService *service; // @synthesize service=_service;
 @property(readonly, nonatomic) CDUnknownBlockType trustHandler;
 @property(readonly, nonatomic) NSString *applicationProtocol;

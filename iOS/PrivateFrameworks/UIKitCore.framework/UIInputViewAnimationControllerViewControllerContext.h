@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, UIKBViewTreeSnapshotter, UIView, _UIViewControllerTransitionContext;
+@class NSString, UIInputViewSet, UIKBViewTreeSnapshotter, UIView, _UIViewControllerTransitionContext;
 @protocol UIInputViewAnimationHost, UIViewControllerContextTransitioning;
 
 __attribute__((visibility("hidden")))
@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     struct CGRect _fromRect;
     struct CGRect _toRect;
     UIKBViewTreeSnapshotter *_kbSnapshotter;
+    UIInputViewSet *_preservedInputViewSet;
 }
 
 + (id)contextWithHost:(id)arg1 startPlacement:(id)arg2 endPlacement:(id)arg3 transitionContext:(id)arg4;

@@ -6,13 +6,9 @@
 
 #import <PassKitUI/NSObject-Protocol.h>
 
-@class PKPaymentCredential, UICollectionViewCell;
+@class PKPaymentCredential;
 
 @protocol PKPaymentSetupCredentialsSectionControllerDelegate <NSObject>
-- (void)deselectCells;
-- (void)reloadItem:(id)arg1 animated:(_Bool)arg2;
-- (UICollectionViewCell *)cellForItem:(id)arg1;
-- (void)reloadAnimated:(_Bool)arg1;
 - (void)setShowNoResultsView:(_Bool)arg1;
 - (void)showCredentialDeletionError;
 - (void)showUnableToDeleteSafariCredentialError;

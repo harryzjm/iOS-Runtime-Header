@@ -10,11 +10,11 @@
 
 @protocol SOSControlProtocol <NSObject>
 - (void)setBypass:(_Bool)arg1 reply:(void (^)(_Bool, NSError *))arg2;
-- (NSString *)sosIsEnabledString;
-- (_Bool)sosIsEnabled;
-- (void)sosIsEnabledCB:(void (^)(_Bool))arg1;
-- (void)sosEnable;
-- (void)sosDisable;
+- (NSString *)SOSMonitorModeSOSIsActiveDescription;
+- (_Bool)SOSMonitorModeSOSIsActive;
+- (void)SOSMonitorModeSOSIsActiveWithCallback:(void (^)(_Bool))arg1;
+- (void)SOSMonitorModeEnableSOS;
+- (void)SOSMonitorModeDisableSOS;
 - (void)removeV0Peers:(void (^)(_Bool, NSError *))arg1;
 - (void)rpcTriggerRingUpdate:(void (^)(NSError *))arg1;
 - (void)rpcTriggerBackup:(NSArray *)arg1 complete:(void (^)(NSError *))arg2;

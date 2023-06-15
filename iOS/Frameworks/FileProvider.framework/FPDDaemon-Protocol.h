@@ -8,6 +8,7 @@
 @protocol FPOperationClient, FPXEnumeratorObserver;
 
 @protocol FPDDaemon
+- (void)_test_queryDiskImportSchedulerLabel:(NSString *)arg1 completionHandler:(void (^)(NSString *, NSError *))arg2;
 - (void)_test_resetCounters:(NSString *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)_test_getCountersArray:(NSString *)arg1 completionHandler:(void (^)(NSArray *, NSError *))arg2;
 - (void)_test_getRootSupportDirURLForDomainURL:(NSURL *)arg1 completionHandler:(void (^)(NSURL *))arg2;
@@ -30,11 +31,15 @@
 - (void)appHasNonUploadedFiles:(NSString *)arg1 completionHandler:(void (^)(_Bool, NSError *))arg2;
 - (void)fetchAlternateContentsURLForDocumentURL:(NSURL *)arg1 completionHandler:(void (^)(NSURL *, NSError *))arg2;
 - (void)setAlternateContentsURL:(FPSandboxingURLWrapper *)arg1 onDocumentURL:(NSURL *)arg2 completionHandler:(void (^)(NSError *))arg3;
+- (void)calculateNonPurgeableSpaceUsageOfDomain:(NSString *)arg1 completionHandler:(void (^)(NSNumber *, NSError *))arg2;
 - (void)dumpDatabaseAt:(NSString *)arg1 fullDump:(_Bool)arg2 writeTo:(NSFileHandle *)arg3 completionHandler:(void (^)(NSError *))arg4;
-- (void)runFPCKForDomainWithID:(NSString *)arg1 databasesBackupsPath:(NSDictionary *)arg2 url:(NSURL *)arg3 options:(unsigned long long)arg4 completionHandler:(void (^)(NSString *, FPCKStats *, NSDictionary *, NSError *))arg5;
+- (void)runFPCKForDomainWithID:(NSString *)arg1 databasesBackupsPath:(NSDictionary *)arg2 options:(unsigned long long)arg3 reason:(unsigned long long)arg4 completionHandler:(void (^)(NSString *, FPCKStats *, NSDictionary *, NSError *))arg5;
 - (void)stateForDomainWithID:(NSString *)arg1 completionHandler:(void (^)(unsigned long long, NSError *))arg2;
 - (void)updateBlockedProcessNamesForProvider:(NSString *)arg1 processNames:(NSArray *)arg2 completionHandler:(void (^)(NSError *))arg3;
+- (void)importProgressForDomainWithID:(NSString *)arg1 completionHandler:(void (^)(FPImportProgressReport *, NSError *))arg2;
+- (void)forceUpdateBlockedProcessNamesFromDomain:(NSString *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)reimportItemsBelowItemWithID:(FPItemID *)arg1 removeCachedItems:(_Bool)arg2 markItemDataless:(_Bool)arg3 completionHandler:(void (^)(NSError *))arg4;
+- (void)setHiddenByUser:(_Bool)arg1 forDomainIdentifier:(NSString *)arg2 providerIdentifier:(NSString *)arg3 completionHandler:(void (^)(NSError *))arg4;
 - (void)setEnabled:(_Bool)arg1 forDomainIdentifier:(NSString *)arg2 providerIdentifier:(NSString *)arg3 completionHandler:(void (^)(NSError *))arg4;
 - (void)getDomainsForProviderIdentifier:(NSString *)arg1 completionHandler:(void (^)(NSString *, NSArray *, NSError *))arg2;
 - (void)removeAllDomainsForProviderIdentifier:(NSString *)arg1 completionHandler:(void (^)(NSError *))arg2;
@@ -42,12 +47,14 @@
 - (void)removeDomainWithID:(NSString *)arg1 mode:(unsigned long long)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)removeDomain:(NSFileProviderDomain *)arg1 mode:(unsigned long long)arg2 completionHandler:(void (^)(FPSandboxingURLWrapper *, NSError *))arg3;
 - (void)removeDomain:(NSFileProviderDomain *)arg1 completionHandler:(void (^)(NSError *))arg2;
-- (void)addDomain:(NSFileProviderDomain *)arg1 forProviderIdentifier:(NSString *)arg2 byImportingDirectoryAtURL:(FPSandboxingURLWrapper *)arg3 completionHandler:(void (^)(NSString *, NSError *))arg4;
+- (void)addDomain:(NSFileProviderDomain *)arg1 forProviderIdentifier:(NSString *)arg2 byImportingDirectoryAtURL:(FPSandboxingURLWrapper *)arg3 nonWrappedURL:(NSURL *)arg4 knownFolders:(NSArray *)arg5 completionHandler:(void (^)(NSString *, NSError *))arg6;
+- (void)listRemoteVersionsOfItemAtURL:(NSURL *)arg1 completionHandler:(void (^)(_Bool, FPItem *, NSArray *, NSError *))arg2;
 - (void)resolveConflictAtURL:(NSURL *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)restoreUserURL:(NSURL *)arg1 completionHandler:(void (^)(_Bool, NSError *))arg2;
 - (void)backUpUserURL:(NSURL *)arg1 outputUserURL:(NSURL *)arg2 completionHandler:(void (^)(NSURL *, NSError *))arg3;
 - (void)reindexAllSearchableItemsForBundleIDs:(NSArray *)arg1 acknowledgementHandler:(void (^)(void))arg2;
 - (void)reindexAllSearchableItemsWithAcknowledgementHandler:(void (^)(void))arg1;
+- (void)fetchPathComponentsForURL:(NSURL *)arg1 completionHandler:(void (^)(NSArray *, NSError *))arg2;
 - (void)providerDomainForURL:(NSURL *)arg1 completionHandler:(void (^)(FPProviderDomain *, NSError *))arg2;
 - (void)copyDatabaseForFPCKStartingAtPath:(NSString *)arg1 completionHandler:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)getPersonaForProvider:(NSString *)arg1 completionHandler:(void (^)(NSString *, NSError *))arg2;
@@ -67,7 +74,6 @@
 - (void)valuesForAttributes:(NSArray *)arg1 forItemAtURL:(NSURL *)arg2 completionHandler:(void (^)(NSDictionary *, NSError *))arg3;
 - (void)fetchAccessServicer:(void (^)(id <FPDAccessControlServicing>, NSError *))arg1;
 - (void)extendBookmarkForItemID:(FPItemID *)arg1 consumerID:(NSString *)arg2 completionHandler:(void (^)(NSString *, NSError *))arg3;
-- (void)fetchIndexPropertiesForItemAtURL:(NSURL *)arg1 completionHandler:(void (^)(FPItem *, NSString *, NSString *, NSError *))arg2;
 - (void)fetchFSItemsForItemIdentifiers:(NSArray *)arg1 providerIdentifier:(NSString *)arg2 domainIdentifier:(NSString *)arg3 materializingIfNeeded:(_Bool)arg4 completionHandler:(void (^)(NSDictionary *, NSError *))arg5;
 - (void)itemForURL:(NSURL *)arg1 completionHandler:(void (^)(FPItem *, NSError *))arg2;
 - (void)createItemBasedOnTemplate:(FPItem *)arg1 fields:(unsigned long long)arg2 urlWrapper:(FPSandboxingURLWrapper *)arg3 options:(unsigned long long)arg4 bounceOnCollision:(_Bool)arg5 completionHandler:(void (^)(FPItem *, NSError *))arg6;
@@ -80,6 +86,9 @@
 - (void)extendBookmarkForFileURL:(NSURL *)arg1 toConsumerID:(NSString *)arg2 completionHandler:(void (^)(NSString *, NSError *))arg3;
 - (void)providerDomainForIdentifier:(NSString *)arg1 completionHandler:(void (^)(FPProviderDomain *, NSError *))arg2;
 - (void)providerDomainsCompletionHandler:(void (^)(NSError *, NSDictionary *))arg1;
+- (void)attachItemWithID:(FPItemID *)arg1 options:(unsigned long long)arg2 completionHandler:(void (^)(NSError *))arg3;
+- (void)importDetachedFolder:(NSURL *)arg1 parentID:(FPItemID *)arg2 logicalName:(NSString *)arg3 options:(unsigned long long)arg4 completionHandler:(void (^)(NSError *))arg5;
+- (void)detachItemWithID:(FPItemID *)arg1 relocatingAtURL:(NSURL *)arg2 options:(unsigned long long)arg3 completionHandler:(void (^)(NSError *))arg4;
 - (void)unpinItemWithID:(FPItemID *)arg1 completionHandler:(void (^)(FPItem *, NSError *))arg2;
 - (void)pinItemWithID:(FPItemID *)arg1 completionHandler:(void (^)(FPItem *, NSError *))arg2;
 - (void)evictItemWithID:(FPItemID *)arg1 completionHandler:(void (^)(NSError *))arg2;

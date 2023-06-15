@@ -7,12 +7,19 @@
 #import <HomeKitDaemon/MKFAirPlayAccessoryPublicExtensions-Protocol.h>
 #import <HomeKitDaemon/MKFMediaAccessory-Protocol.h>
 
-@class HMFPairingIdentity, MKFAirPlayAccessoryDatabaseID, NSNumber, NSString;
+@class HMFPairingIdentity, MKFAirPlayAccessoryDatabaseID, NSArray, NSDate, NSNumber, NSSet, NSString;
+@protocol MKFUser;
 
 @protocol MKFAirPlayAccessory <MKFMediaAccessory, MKFAirPlayAccessoryPublicExtensions>
 @property(readonly, copy, nonatomic) MKFAirPlayAccessoryDatabaseID *databaseID;
+@property(readonly, retain, nonatomic) NSArray *pairedUsers;
 @property(copy, nonatomic) NSString *password;
+@property(retain, nonatomic) NSSet *pairingsToRemove;
 @property(retain, nonatomic) HMFPairingIdentity *pairingIdentity;
+@property(copy, nonatomic) NSNumber *needsPairingAudit;
 @property(copy, nonatomic) NSNumber *minimumUserPriviledge;
+@property(copy, nonatomic) NSDate *lastPairingAuditTime;
+- (void)removePairedUsersObject:(id <MKFUser>)arg1;
+- (void)addPairedUsersObject:(id <MKFUser>)arg1;
 @end
 

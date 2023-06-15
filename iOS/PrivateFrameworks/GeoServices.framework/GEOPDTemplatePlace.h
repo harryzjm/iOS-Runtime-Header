@@ -6,16 +6,25 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-@class NSMutableArray, PBUnknownFields;
+@class GEOPDFollowUpRequestMetadata, NSMutableArray, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDTemplatePlace : PBCodable
 {
+    PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
+    GEOPDFollowUpRequestMetadata *_followUpRequestMetadata;
     NSMutableArray *_templateDatas;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     unsigned int _numInlineItems;
     struct {
         unsigned int has_numInlineItems:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_followUpRequestMetadata:1;
+        unsigned int read_templateDatas:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -29,6 +38,8 @@ __attribute__((visibility("hidden")))
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

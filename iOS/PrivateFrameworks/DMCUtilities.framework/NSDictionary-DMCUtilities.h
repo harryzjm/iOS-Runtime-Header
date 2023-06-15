@@ -13,6 +13,7 @@
 + (id)DMCShortenedObject:(id)arg1;
 + (id)DMCDictionaryFromFile:(id)arg1;
 - (id)DMCShortenedPlistDescription;
+- (id)dmc_valueOfClass:(Class)arg1 forKey:(id)arg2;
 - (_Bool)DMCWriteToBinaryFile:(id)arg1;
 @end
 

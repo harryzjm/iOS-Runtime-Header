@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *bannerViewModel;
     MISSING_TYPE *bannerLayout;
+    MISSING_TYPE *collectionViewFrameSize;
     MISSING_TYPE *titleImageView;
     MISSING_TYPE *contentTitleView;
     MISSING_TYPE *contentSubtitleView;
@@ -58,7 +59,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, readonly) VUILabel *accessibilityContentTitleView;
 @property(nonatomic, readonly) VUIImageView *accessibilityTitleImageView;
 - (void)vui_cellWillBeDisplayed;
-- (id)preferredLayoutAttributesFittingAttributes:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (struct CGSize)vui_layoutSubviews:(struct CGSize)arg1 computationOnly:(_Bool)arg2;
 @property(nonatomic, readonly) struct CGSize intrinsicContentSize;

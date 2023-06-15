@@ -6,8 +6,8 @@
 
 #import "PUAssetActionPerformer.h"
 
-@class NSString, PXAssetActionPerformer, UIViewController;
-@protocol PXActionPerformerDelegate;
+@class NSString, PXAssetActionManager, PXAssetActionPerformer, UIViewController;
+@protocol PXActionPerformerDelegate, PXMemoryAssetsActionFactory;
 
 __attribute__((visibility("hidden")))
 @interface PUPXAssetActionPerformer : PUAssetActionPerformer
@@ -15,9 +15,11 @@ __attribute__((visibility("hidden")))
     PXAssetActionPerformer *_underlyingActionPerformer;
     UIViewController *presentedViewController;
     id <PXActionPerformerDelegate> _forwardingDelegate;
+    PXAssetActionManager *_underlyingActionManager;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) PXAssetActionManager *underlyingActionManager; // @synthesize underlyingActionManager=_underlyingActionManager;
 @property(readonly, nonatomic) __weak id <PXActionPerformerDelegate> forwardingDelegate; // @synthesize forwardingDelegate=_forwardingDelegate;
 @property(retain, nonatomic) UIViewController *presentedViewController; // @synthesize presentedViewController;
 - (id)undoManagerForActionPerformer:(id)arg1;
@@ -33,6 +35,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) id <PXMemoryAssetsActionFactory> memoryAssetsActionFactory;
 @property(readonly) Class superclass;
 
 @end

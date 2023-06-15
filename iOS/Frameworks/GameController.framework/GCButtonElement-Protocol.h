@@ -6,10 +6,10 @@
 
 #import <GameController/GCPhysicalInputElement-Protocol.h>
 
-@protocol GCLinearInput><GCPressedStateInput, GCTouchedStateInput;
+@protocol GCPressedStateInput><GCLinearInput, GCTouchedStateInput;
 
 @protocol GCButtonElement <GCPhysicalInputElement>
-@property(nonatomic, readonly) id <GCTouchedStateInput> touchedInput;
-@property(nonatomic, readonly) id <GCLinearInput><GCPressedStateInput> pressedInput;
+@property(readonly) id <GCTouchedStateInput> touchedInput;
+@property(readonly) id <GCPressedStateInput><GCLinearInput> pressedInput;
 @end
 

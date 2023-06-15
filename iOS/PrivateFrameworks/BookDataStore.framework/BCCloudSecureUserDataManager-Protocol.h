@@ -21,6 +21,5 @@
 - (void)setUserData:(NSDictionary *)arg1 completion:(void (^)(_Bool, _Bool, NSError *))arg2;
 - (void)setUserDatum:(id <BCSecureUserDatum>)arg1 completion:(void (^)(_Bool, _Bool, NSError *))arg2;
 - (void)currentCloudSyncVersions:(void (^)(BCMutableCloudSyncVersions *))arg1;
-- (void)setEnableSecureUserDataCloudSync:(_Bool)arg1;
 @end
 

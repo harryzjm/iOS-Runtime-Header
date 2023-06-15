@@ -6,7 +6,7 @@
 
 #import "FPOperation.h"
 
-@class CSSearchableIndex, FPSpotlightIndexer, NSString;
+@class CSSearchableIndex, FPSpotlightIndexer, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
 @interface FPSpotlightFetchClientStateOperation : FPOperation
@@ -14,8 +14,9 @@ __attribute__((visibility("hidden")))
     FPSpotlightIndexer *_indexer;
     CSSearchableIndex *_index;
     NSString *_indexName;
-    NSString *_domainIdentifier;
+    NSString *_spotlightDomainIdentifier;
     NSString *_reason;
+    NSURL *_supportURL;
 }
 
 + (id)_currentIndexerVersion;
@@ -26,7 +27,7 @@ __attribute__((visibility("hidden")))
 - (void)_markClientStateResetDone;
 - (id)_clientStateCurrentVersionIfNeedReset;
 - (id)operationDescription;
-- (id)initWithIndexer:(id)arg1 index:(id)arg2 indexName:(id)arg3 domainID:(id)arg4 reason:(id)arg5;
+- (id)initWithIndexer:(id)arg1 index:(id)arg2 indexName:(id)arg3 spotlightDomainIdentifier:(id)arg4 reason:(id)arg5 supportURL:(id)arg6;
 
 @end
 

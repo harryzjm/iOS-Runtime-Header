@@ -14,11 +14,19 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_originalRequests;
     NSMutableDictionary *_kindToOriginalRequestsMapping;
     NSMutableDictionary *_detectorConfigurationOptions;
+    NSMutableDictionary *_computeStageDeviceAssignments;
+    unsigned long long _detectorModel;
 }
 
 - (void).cxx_destruct;
+- (id)computeStageDeviceAssignments;
+- (void)enumerateOriginalRequestsByKindUsingBlock:(CDUnknownBlockType)arg1;
+- (id)originalRequests;
+- (id)detectorConfigurationOptions;
 - (void)addTilingWarningRecorder:(id)arg1;
-- (id)init;
+- (void)addOriginalRequest:(id)arg1 forKind:(unsigned long long)arg2;
+- (void)setDetectorConfigurationOption:(id)arg1 value:(id)arg2;
+- (id)addSceneConfigurationForOriginalRequest:(id)arg1;
 
 @end
 

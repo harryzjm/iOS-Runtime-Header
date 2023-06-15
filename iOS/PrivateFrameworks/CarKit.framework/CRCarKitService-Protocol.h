@@ -9,7 +9,6 @@
 @protocol CRCarKitService
 - (void)postBannerToPhone:(NSString *)arg1 notificationMessage:(NSString *)arg2 reply:(void (^)(void))arg3;
 - (void)fetchScaledDisplaysWithReply:(NSArray *)arg1 reply:(void (^)(NSArray *, NSError *))arg2;
-- (void)fetchSessionInstrumentClusterURLsWithReply:(void (^)(NSArray *, NSError *))arg1;
 - (void)fetchInstrumentClusterURLsWithReply:(void (^)(NSArray *, NSError *))arg1;
 - (void)vehicleIdentifierForCertificateSerial:(NSData *)arg1 reply:(void (^)(NSString *, NSError *))arg2;
 - (void)handleCarPlayDiagnosticsWithDeviceScreenshotURL:(NSURL *)arg1 carScreenshotURL:(NSURL *)arg2 attachmentURLs:(NSArray *)arg3 activeBundleIdentifier:(NSString *)arg4 reply:(void (^)(void))arg5;

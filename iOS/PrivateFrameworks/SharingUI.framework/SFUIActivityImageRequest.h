@@ -9,6 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface SFUIActivityImageRequest
 {
+    int _iconFormat;
     long long _activityCategory;
     NSString *_contentSizeCategory;
     UIActivity *_activity;
@@ -18,10 +19,11 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(readonly, nonatomic) UIImageSymbolConfiguration *imageSymbolConfiguration; // @synthesize imageSymbolConfiguration=_imageSymbolConfiguration;
 @property(readonly, nonatomic) UIActivity *activity; // @synthesize activity=_activity;
+@property(readonly, nonatomic) int iconFormat; // @synthesize iconFormat=_iconFormat;
 @property(readonly, nonatomic) NSString *contentSizeCategory; // @synthesize contentSizeCategory=_contentSizeCategory;
 @property(readonly, nonatomic) long long activityCategory; // @synthesize activityCategory=_activityCategory;
 - (id)initWithRequestID:(int)arg1 activity:(id)arg2 contentSizeCategory:(id)arg3 imageSymbolConfiguration:(id)arg4 synchronous:(_Bool)arg5 resultHandler:(CDUnknownBlockType)arg6;
-- (id)initWithRequestID:(int)arg1 identifier:(id)arg2 activityCategory:(long long)arg3 contentSizeCategory:(id)arg4 synchronous:(_Bool)arg5 resultHandler:(CDUnknownBlockType)arg6;
+- (id)initWithRequestID:(int)arg1 identifier:(id)arg2 activityCategory:(long long)arg3 contentSizeCategory:(id)arg4 iconFormat:(int)arg5 synchronous:(_Bool)arg6 resultHandler:(CDUnknownBlockType)arg7;
 
 @end
 

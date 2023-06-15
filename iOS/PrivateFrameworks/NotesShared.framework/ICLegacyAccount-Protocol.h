@@ -10,7 +10,7 @@
 @protocol ICLegacyFolder;
 
 @protocol ICLegacyAccount <ICAccountObject>
-@property(readonly, nonatomic) _Bool *hasAnyCustomFolders;
+@property(readonly, nonatomic) _Bool hasAnyCustomFolders;
 @property(readonly, copy, nonatomic) NSString *localizedAttachmentsNotSupportedReason;
 @property(readonly, nonatomic) _Bool preventMovingNotesToOtherAccounts;
 @property(readonly, nonatomic) _Bool isManaged;

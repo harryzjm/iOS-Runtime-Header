@@ -9,7 +9,7 @@
 @protocol PXTrimToolPlayerWrapper;
 
 @protocol PXTrimToolPlayerObserver <NSObject>
-- (void)compositonDidUpdateForPlayerWrapper:(id <PXTrimToolPlayerWrapper>)arg1;
+- (void)compositionDidUpdateForPlayerWrapper:(id <PXTrimToolPlayerWrapper>)arg1;
 
 @optional
 - (void)playerWrapper:(id <PXTrimToolPlayerWrapper>)arg1 timeChanged:(CDStruct_1b6d18a9)arg2;

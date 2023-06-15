@@ -6,7 +6,7 @@
 
 #import <UserNotificationsUIKit/NSObject-Protocol.h>
 
-@class NCModalNavigationController, NCNotificationListCell, NSSet, NSString, UIView, UIViewController, _UILegibilitySettings;
+@class NCModalNavigationController, NSSet, NSString, PLSwipeInteraction, UIView, UIViewController, _UILegibilitySettings;
 @protocol NCMaterialDisplaying, NCNotificationListBaseComponent, NCNotificationListCoalescingControlsHandler;
 
 @protocol NCNotificationListBaseComponentDelegate <NSObject>
@@ -24,7 +24,7 @@
 - (NSString *)backgroundGroupNameBaseForNotificationListBaseComponent:(id <NCNotificationListBaseComponent>)arg1;
 - (_UILegibilitySettings *)legibilitySettingsForNotificationListBaseComponent:(id <NCNotificationListBaseComponent>)arg1;
 - (_Bool)shouldHintDefaultActionForNotificationListBaseComponent:(id <NCNotificationListBaseComponent>)arg1;
-- (void)notificationListBaseComponent:(id <NCNotificationListBaseComponent>)arg1 didTransitionActionsForNotificationCell:(NCNotificationListCell *)arg2 revealed:(_Bool)arg3;
+- (void)notificationListBaseComponent:(id <NCNotificationListBaseComponent>)arg1 didTransitionActionsForSwipeInteraction:(PLSwipeInteraction *)arg2 revealed:(_Bool)arg3;
 - (void)notificationListBaseComponentDidSignificantUserInteraction:(id <NCNotificationListBaseComponent>)arg1;
 - (void)notificationListBaseComponent:(id <NCNotificationListBaseComponent>)arg1 didEndUserInteractionWithViewController:(UIViewController *)arg2;
 - (void)notificationListBaseComponent:(id <NCNotificationListBaseComponent>)arg1 didBeginUserInteractionWithViewController:(UIViewController *)arg2;

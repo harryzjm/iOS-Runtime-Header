@@ -6,11 +6,15 @@
 
 #import <XCUIAutomation/NSObject-Protocol.h>
 
-@class XCDeviceEvent;
+@class CLLocation, XCDeviceEvent;
 
 @protocol XCUIDeviceEventAndStateInterface <NSObject>
+@property(readonly) _Bool supportsLocationSimulation;
 @property(readonly) _Bool supportsAppearanceMode;
 - (void)hasHardwareButton:(long long)arg1 completion:(void (^)(_Bool, NSError *))arg2;
+- (void)clearSimulatedLocationWithReply:(void (^)(_Bool, NSError *))arg1;
+- (void)setSimulatedLocation:(CLLocation *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
+- (void)getSimulatedLocationWithReply:(void (^)(CLLocation *, NSError *))arg1;
 - (void)getInterfaceOrientationWithReply:(void (^)(long long, NSError *))arg1;
 - (void)getAppearanceModeWithReply:(void (^)(long long, NSError *))arg1;
 - (void)updateAppearanceMode:(long long)arg1 completion:(void (^)(_Bool, NSError *))arg2;

@@ -14,7 +14,7 @@
 
 @optional
 + (long long)itemProviderVisibilityForRepresentationWithTypeIdentifier:(NSString *)arg1;
+@property(readonly, copy, nonatomic) NSArray *writableTypeIdentifiersForItemProvider;
 - (long long)itemProviderVisibilityForRepresentationWithTypeIdentifier:(NSString *)arg1;
-@property(nonatomic, readonly) NSArray *writableTypeIdentifiersForItemProvider;
 @end
 

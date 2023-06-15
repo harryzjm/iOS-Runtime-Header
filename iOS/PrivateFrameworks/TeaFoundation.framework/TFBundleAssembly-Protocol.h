@@ -9,6 +9,6 @@
 @class NSArray;
 
 @protocol TFBundleAssembly <NSObject>
-@property(nonatomic, readonly) NSArray *assemblies;
+@property(readonly, copy, nonatomic) NSArray *assemblies;
 @end
 

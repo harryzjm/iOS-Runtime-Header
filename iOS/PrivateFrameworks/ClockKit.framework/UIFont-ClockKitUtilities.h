@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIFont.h>
+#import <UIKitCore/UIFont.h>
 
 @interface UIFont (ClockKitUtilities)
 + (id)CLKMonospaceNumbersFeatureSettings;
 - (id)CLKFontByApplyingFeatureSettings:(id)arg1;
+- (id)CLKFontWithLooplessThaiFallback;
 - (id)CLKFontWithRareLigaturesAndStylisticSet:(unsigned long long)arg1;
 - (id)CLKFontWithStylisticSet:(unsigned long long)arg1;
 - (id)CLKFontWithStraightSix;

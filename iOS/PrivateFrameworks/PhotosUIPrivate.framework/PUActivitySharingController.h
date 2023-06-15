@@ -6,13 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, NSString, PHAsset, PHPerson, PHResourceLocalAvailabilityRequest, PUActivitySharingViewModel, PUActivityViewController, PUCarouselSharingViewController, PXSelectionSnapshot, UIActivityViewController;
+@class NSArray, NSDictionary, NSString, PHAsset, PHFetchResult, PHPerson, PHResourceLocalAvailabilityRequest, PUActivitySharingViewModel, PUActivityViewController, PUCarouselSharingViewController, PUPhotosSharingStackViewController, PXSelectionSnapshot, UIActivityViewController;
 @protocol PXActivitySharingControllerDelegate, PXActivityViewController;
 
 __attribute__((visibility("hidden")))
 @interface PUActivitySharingController : NSObject
 {
     _Bool _activityViewControllerWasCreated;
+    PUPhotosSharingStackViewController *_stackViewController;
+    PHFetchResult *_initialAssetsFetchResult;
+    _Bool _usePhotosStack;
     _Bool _allowsAirPlayActivity;
     _Bool _allowsRemoveFromFeaturedPhotosActivity;
     _Bool _allowsSuggestLessPersonActivity;
@@ -64,6 +67,7 @@ __attribute__((visibility("hidden")))
 - (void)_activityViewControllerDidCompleteWithActivityType:(id)arg1 success:(_Bool)arg2 error:(id)arg3;
 - (void)_updateExcludedActivityTypes;
 - (id)_createActivityViewControllerWithActivities:(id)arg1;
+- (id)_assetItemsForAssetsFetchResult:(id)arg1;
 - (void)selectAllAssets;
 @property(readonly, nonatomic) NSArray *selectedAssets;
 @property(readonly, nonatomic) NSDictionary *selectedAssetsByAssetCollection;
@@ -71,7 +75,7 @@ __attribute__((visibility("hidden")))
 - (id)photosDataSource;
 @property(readonly, nonatomic) UIActivityViewController<PXActivityViewController> *activityViewController;
 - (id)activityViewControllerIfAvailable;
-- (void)_createCarouselSharingViewControllerIfNeeded;
+- (void)_createPhotosViewControllerIfNeeded;
 - (id)initWithActivitySharingConfiguration:(id)arg1;
 - (id)new;
 - (id)init;

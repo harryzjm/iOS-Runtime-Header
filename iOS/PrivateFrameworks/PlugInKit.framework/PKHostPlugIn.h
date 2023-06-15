@@ -115,6 +115,7 @@
 @property(readonly) NSURL *containingUrl;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly) NSDictionary *entitlements;
+@property(readonly) unsigned int extensionPointPlatform;
 @property(readonly) unsigned long long hash;
 @property(readonly) NSString *identifier;
 @property(readonly) NSArray *launchPersonas;

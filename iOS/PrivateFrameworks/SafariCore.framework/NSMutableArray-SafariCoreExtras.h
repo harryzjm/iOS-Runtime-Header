@@ -7,6 +7,7 @@
 #import <Foundation/NSMutableArray.h>
 
 @interface NSMutableArray (SafariCoreExtras)
+- (id)safari_takeFirstObject;
 - (void)safari_insertObject:(id)arg1 inSortedOrderUsingComparator:(CDUnknownBlockType)arg2;
 - (void)safari_insertObjects:(id)arg1 afterObject:(id)arg2;
 - (void)safari_insertObject:(id)arg1 afterObject:(id)arg2;

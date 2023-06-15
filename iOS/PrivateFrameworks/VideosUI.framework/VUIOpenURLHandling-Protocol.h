@@ -7,6 +7,10 @@
 @class AMSEngagementResult, NSDictionary, NSError, NSString, NSURL, VUIAppContext;
 
 @protocol VUIOpenURLHandling
+@property(readonly, nonatomic) _Bool isLoadingSharedWatchURL;
+@property(nonatomic) _Bool isFinished;
+@property(nonatomic) _Bool openedByDeeplink;
+@property(readonly, nonatomic) NSURL *deferredOpenURL;
 - (_Bool)isRedeemURL:(NSURL *)arg1;
 - (NSString *)queryParameterStringfromURL:(NSURL *)arg1 parameter:(NSString *)arg2;
 - (void)openSharedWatchURL:(NSURL *)arg1 appContext:(VUIAppContext *)arg2 completion:(void (^)(_Bool))arg3;
@@ -17,9 +21,5 @@
 - (void)handleDeferredURLWithAppContext:(VUIAppContext *)arg1;
 - (void)processEntityWithContextData:(NSDictionary *)arg1 appContext:(VUIAppContext *)arg2;
 - (void)parseURL:(NSURL *)arg1 appContext:(VUIAppContext *)arg2 completion:(void (^)(VUIDocumentDataSource *))arg3;
-@property(nonatomic, readonly) _Bool isLoadingSharedWatchURL;
-@property(nonatomic) _Bool isFinished;
-@property(nonatomic) _Bool openedByDeeplink;
-@property(nonatomic, readonly) NSURL *deferredOpenURL;
 @end
 

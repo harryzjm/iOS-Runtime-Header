@@ -13,7 +13,7 @@
 - (oneway void)bulletinManagerDidChangeBulletins;
 - (oneway void)updateCurrentLockState:(SASLockStateTransport *)arg1;
 - (oneway void)handleButtonLongPressFromButtonIdentifier:(SASButtonIdentifierTransport *)arg1 deviceIdentifier:(NSString *)arg2 timestamp:(SASTimeIntervalTransport *)arg3 context:(SiriLongPressButtonContext *)arg4;
-- (oneway void)handleButtonTapFromButtonIdentifier:(SASButtonIdentifierTransport *)arg1;
+- (oneway void)handleButtonTapFromButtonIdentifier:(SASButtonIdentifierTransport *)arg1 timestamp:(SASTimeIntervalTransport *)arg2 context:(SiriLongPressButtonContext *)arg3;
 - (oneway void)handleButtonUpFromButtonIdentifier:(SASButtonIdentifierTransport *)arg1 deviceIdentifier:(NSString *)arg2 timestamp:(SASTimeIntervalTransport *)arg3 context:(SiriLongPressButtonContext *)arg4;
 - (oneway void)handleButtonDownFromButtonIdentifier:(SASButtonIdentifierTransport *)arg1 timestamp:(SASTimeIntervalTransport *)arg2 context:(SiriLongPressButtonContext *)arg3;
 - (_Bool)handleTestingActivation:(SASActivationRequest *)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class AVPlayerLayer, AVPlayerLooper, AVQueuePlayer;
+@class AVPlayerLayer, AVPlayerLooper, AVQueuePlayer, LPVideo;
 
 __attribute__((visibility("hidden")))
 @interface LPStreamingVideoView
@@ -46,6 +46,9 @@ __attribute__((visibility("hidden")))
 - (void)createPlayerItemAdjustedForLoopingWithAsset:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (id)initWithHost:(id)arg1 video:(id)arg2 style:(id)arg3 posterFrame:(id)arg4 posterFrameStyle:(id)arg5 configuration:(id)arg6;
+
+// Remaining properties
+@property(readonly, nonatomic) LPVideo *media; // @dynamic media;
 
 @end
 

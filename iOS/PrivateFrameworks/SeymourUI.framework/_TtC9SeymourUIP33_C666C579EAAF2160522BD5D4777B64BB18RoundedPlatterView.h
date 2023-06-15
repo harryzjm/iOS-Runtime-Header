@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @interface _TtC9SeymourUIP33_C666C579EAAF2160522BD5D4777B64BB18RoundedPlatterView : UIView
 {

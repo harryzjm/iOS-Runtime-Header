@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)failedToApplyContactUpdateOfKind:(const char *)arg1 value:(id)arg2 property:(id)arg3 error:(id)arg4;
+- (void)deletePosterRecentsMetadataRequestFailed:(id)arg1;
 - (void)deleteImageRecentsMetadataRequestFailed:(id)arg1;
 - (void)setContactImageDataZeroCropRect:(id)arg1 format:(const char *)arg2;
 - (void)setContactImageData:(id)arg1 format:(const char *)arg2 cropRect:(struct CGRect)arg3;
@@ -43,6 +44,7 @@ __attribute__((visibility("hidden")))
 - (void)contactsAccessWasGranted;
 - (void)requestAuthorizationWasDenied;
 - (void)accessAuthorizationStatusWasDenied;
+- (void)requestingExtensionCommand:(CDUnknownBlockType)arg1;
 - (void)postingNotification:(CDUnknownBlockType)arg1;
 - (void)servicingContactsRequest:(CDUnknownBlockType)arg1;
 - (void)settingDefaultAccount:(CDUnknownBlockType)arg1;

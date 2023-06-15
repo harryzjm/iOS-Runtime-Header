@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface _UIViewCubicTimingFunction : NSObject <NSCopying>
+@interface _UIViewCubicTimingFunction : NSObject
 {
     struct CGPoint _point1;
     struct CGPoint _point2;

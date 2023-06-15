@@ -10,6 +10,22 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
+struct TrackingAlignment {
+    struct duration<unsigned int, std::ratio<1, 125>> _field1;
+    struct duration<unsigned int, std::ratio<1, 125>> _field2;
+};
+
+struct TrackingResult {
+    struct TrackingAlignment _field1;
+    struct TrackingAlignment _field2;
+    float _field3;
+};
+
+struct _NSRange {
+    unsigned long long _field1;
+    unsigned long long _field2;
+};
+
 struct basic_string<char, std::char_traits<char>, std::allocator<char>> {
     struct __compressed_pair<std::basic_string<char>::__rep, std::allocator<char>> {
         struct __rep {
@@ -17,13 +33,14 @@ struct basic_string<char, std::char_traits<char>, std::allocator<char>> {
                 struct __long {
                     char *_field1;
                     unsigned long long _field2;
-                    unsigned long long _field3;
+                    unsigned int :63;
+                    unsigned int :1;
                 } _field1;
                 struct __short {
                     char _field1[23];
-                    struct {
-                        unsigned char _field1;
-                    } _field2;
+                    unsigned char _field2[0];
+                    unsigned int :7;
+                    unsigned int :1;
                 } _field2;
                 struct __raw {
                     unsigned long long _field1[3];
@@ -31,6 +48,10 @@ struct basic_string<char, std::char_traits<char>, std::allocator<char>> {
             } _field1;
         } _field1;
     } _field1;
+};
+
+struct duration<unsigned int, std::ratio<1, 125>> {
+    unsigned int _field1;
 };
 
 struct error_category;
@@ -66,13 +87,14 @@ typedef struct basic_string<char, std::char_traits<char>, std::allocator<char>> 
                 struct __long {
                     char *_field1;
                     unsigned long long _field2;
-                    unsigned long long _field3;
+                    unsigned int :63;
+                    unsigned int :1;
                 } _field1;
                 struct __short {
                     char _field1[23];
-                    struct {
-                        unsigned char _field1;
-                    } _field2;
+                    unsigned char _field2[0];
+                    unsigned int :7;
+                    unsigned int :1;
                 } _field2;
                 struct __raw {
                     unsigned long long _field1[3];
@@ -80,5 +102,5 @@ typedef struct basic_string<char, std::char_traits<char>, std::allocator<char>> 
             } _field1;
         } _field1;
     } _field1;
-} basic_string_05660eb3;
+} basic_string_b963e3c0;
 

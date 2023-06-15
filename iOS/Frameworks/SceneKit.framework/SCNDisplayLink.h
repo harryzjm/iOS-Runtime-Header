@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
 @interface SCNDisplayLink : NSObject
 {
     CADisplayLink *_caDisplayLink;
-    double _lastDisplayLinkTime;
+    _Atomic double _lastDisplayLinkTime;
     NSObject<OS_dispatch_source> *_coalescingSource;
     CDUnknownBlockType _block;
     CDUnknownBlockType _adaptativeFrameDuration;

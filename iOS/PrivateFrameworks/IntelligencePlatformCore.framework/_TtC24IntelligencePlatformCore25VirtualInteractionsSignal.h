@@ -10,10 +10,9 @@
 
 @interface _TtC24IntelligencePlatformCore25VirtualInteractionsSignal : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *motionStateActivityIntervalProvider;
-    MISSING_TYPE *distributionProvider;
-    MISSING_TYPE *thirtyMinutesInSeconds;
-    MISSING_TYPE *fiveMinutesInSeconds;
+    MISSING_TYPE *config;
+    MISSING_TYPE *publisher;
+    MISSING_TYPE *virtualInteractionsStream;
 }
 
 - (id)featureValueForName:(id)arg1;

@@ -6,7 +6,7 @@
 
 #import <CoverSheet/NSObject-Protocol.h>
 
-@class NSArray, SBDeviceApplicationSceneHandle, SBFTraitsParticipant;
+@class NSArray, SBDeviceApplicationSceneHandle, TRAParticipant;
 
 @protocol SBApplicationHosting <NSObject>
 - (NSArray *)hostedAppSceneHandles;
@@ -18,7 +18,7 @@
 @optional
 - (void)hostedAppWillRotateToInterfaceOrientation:(long long)arg1;
 - (void)setHostedAppReferenceSize:(struct CGSize)arg1 withInterfaceOrientation:(long long)arg2;
-- (SBFTraitsParticipant *)traitsParticipantForSceneHandle:(SBDeviceApplicationSceneHandle *)arg1;
+- (TRAParticipant *)traitsParticipantForSceneHandle:(SBDeviceApplicationSceneHandle *)arg1;
 - (void)setInvalidationHandler:(void (^)(void))arg1;
 @end
 

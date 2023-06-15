@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 @class NSMutableArray, NSSet, NSString, _UIStatusBarIdentifier;
 
 __attribute__((visibility("hidden")))
-@interface _UIStatusBarAnimation : NSObject <NSCopying>
+@interface _UIStatusBarAnimation : NSObject
 {
     _Bool _delaysAnimatingItems;
     _Bool _delaysDependentItems;

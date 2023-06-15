@@ -16,7 +16,9 @@
     MISSING_TYPE *delegate;
     MISSING_TYPE *dynamicViewController;
     MISSING_TYPE *mediaClient;
+    MISSING_TYPE *mediaContentDelegate;
     MISSING_TYPE *metricsContext;
+    MISSING_TYPE *preferredSizing;
     MISSING_TYPE *navigationController;
     MISSING_TYPE *urlPromise;
 }

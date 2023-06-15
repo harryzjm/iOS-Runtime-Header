@@ -6,19 +6,20 @@
 
 #import <objc/NSObject.h>
 
-@class AVAudioFile, AVAudioFormat;
+@class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
 @interface SNRecordOperator : NSObject
 {
-    AVAudioFormat *_format;
-    AVAudioFile *_outputFile;
+    MISSING_TYPE *format;
+    MISSING_TYPE *outputFile;
 }
 
 - (void).cxx_destruct;
 - (void)processTerminationWithOptionalError:(id)arg1 portID:(id)arg2 downstreamHandler:(CDUnknownBlockType)arg3;
 - (void)processInput:(id)arg1 portID:(id)arg2 downstreamHandler:(CDUnknownBlockType)arg3;
 - (void)dealloc;
+- (id)initWithSaveDestination:(id)arg1 format:(id)arg2 error:(id *)arg3;
 - (id)init;
 
 @end

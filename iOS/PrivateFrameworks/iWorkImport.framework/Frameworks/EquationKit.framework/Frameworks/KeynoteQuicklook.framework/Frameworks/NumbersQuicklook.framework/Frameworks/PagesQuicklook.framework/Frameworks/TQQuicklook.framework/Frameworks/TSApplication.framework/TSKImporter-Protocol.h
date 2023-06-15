@@ -22,6 +22,8 @@
 
 @optional
 + (_Bool)instancesRespondToSelector:(SEL)arg1;
+- (TSUImage *)obscuredProgressImage;
+- (_Bool)shouldObscureFileExtension;
 - (NSUUID *)uuidOfImportedDocument;
 - (TSUImage *)thumbnailImage;
 - (NSArray *)buildVersionHistory;

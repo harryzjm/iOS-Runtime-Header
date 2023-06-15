@@ -6,7 +6,7 @@
 
 #import "UIView.h"
 
-@class NSString, UIAccessibilityHUDItem, UIVectorLabel, _UIStatusBarStringView;
+@class NSLayoutConstraint, NSString, UIAccessibilityHUDItem, UIVectorLabel, _UIStatusBarStringView;
 
 __attribute__((visibility("hidden")))
 @interface _UIStatusBarCellularNetworkTypeView : UIView
@@ -16,22 +16,25 @@ __attribute__((visibility("hidden")))
     _UIStatusBarStringView *_stringView;
     UIVectorLabel *_prefixLabel;
     UIVectorLabel *_accessoryLabel;
+    NSLayoutConstraint *_widthConstraint;
 }
 
 - (void).cxx_destruct;
-@property(retain) UIVectorLabel *accessoryLabel; // @synthesize accessoryLabel=_accessoryLabel;
+@property(retain, nonatomic) NSLayoutConstraint *widthConstraint; // @synthesize widthConstraint=_widthConstraint;
+@property(retain, nonatomic) UIVectorLabel *accessoryLabel; // @synthesize accessoryLabel=_accessoryLabel;
 @property(retain, nonatomic) UIVectorLabel *prefixLabel; // @synthesize prefixLabel=_prefixLabel;
 @property(retain, nonatomic) _UIStatusBarStringView *stringView; // @synthesize stringView=_stringView;
 @property(nonatomic) long long type; // @synthesize type=_type;
+@property(readonly, nonatomic) UIAccessibilityHUDItem *accessibilityHUDRepresentation;
 - (id)viewForLastBaselineLayout;
 - (void)applyStyleAttributes:(id)arg1;
 - (void)setText:(id)arg1 prefixLength:(long long)arg2 withStyleAttributes:(id)arg3 forType:(long long)arg4 animated:(_Bool)arg5;
 - (void)setAttributedText:(id)arg1 prefixLength:(long long)arg2 forType:(long long)arg3 animated:(_Bool)arg4;
 - (void)_animateUpdateToText:(id)arg1 prefixLength:(long long)arg2 styleAttributes:(id)arg3 attributedText:(id)arg4 type:(long long)arg5;
+- (void)setFixedWidth:(double)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 // Remaining properties
-@property(readonly, nonatomic) UIAccessibilityHUDItem *accessibilityHUDRepresentation;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;

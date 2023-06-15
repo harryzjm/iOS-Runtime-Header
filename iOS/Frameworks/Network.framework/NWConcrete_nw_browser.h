@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSString;
-@protocol OS_dispatch_queue, OS_nw_array, OS_nw_browse_descriptor, OS_nw_dictionary, OS_nw_parameters, OS_nw_path, OS_nw_path_evaluator, OS_xpc_object;
+@protocol OS_dispatch_queue, OS_nw_array, OS_nw_browse_descriptor, OS_nw_dictionary, OS_nw_error, OS_nw_parameters, OS_nw_path, OS_nw_path_evaluator, OS_xpc_object;
 
 __attribute__((visibility("hidden")))
 @interface NWConcrete_nw_browser : NSObject
@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType browse_results_changed_handler;
     CDUnknownBlockType state_changed_handler;
     int state;
+    NSObject<OS_nw_error> *error;
     NSObject<OS_nw_path_evaluator> *browse_evaluator;
     NSObject<OS_nw_path> *current_browse_path;
     NSObject<OS_nw_dictionary> *browse_flow_registrations;

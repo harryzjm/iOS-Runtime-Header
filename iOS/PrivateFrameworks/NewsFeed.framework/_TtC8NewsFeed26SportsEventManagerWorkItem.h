@@ -10,7 +10,7 @@
 
 @interface _TtC8NewsFeed26SportsEventManagerWorkItem : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *visualization;
+    MISSING_TYPE *visualizations;
     MISSING_TYPE *dispatchWorkItem;
 }
 

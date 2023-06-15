@@ -16,6 +16,6 @@
 - (void)proximityConnectionPreparing:(CUMessageSession *)arg1;
 - (void)dismissProximityPinCode;
 - (void)displayProximityPinCode:(NSString *)arg1 visual:(_Bool)arg2;
-- (void)proximititySetupCompleted:(NSError *)arg1;
+- (void)proximitySetupCompleted:(NSError *)arg1;
 @end
 

@@ -35,7 +35,7 @@ __attribute__((visibility("hidden")))
 - (double)baseToUnit:(double)arg1;
 - (_Bool)keepZeroValue;
 - (double)unitToBase:(double)arg1;
-- (_Bool)isUK;
+- (_Bool)isUKMeasurement;
 - (_Bool)inputValueIsValid:(double)arg1 fromUnit:(id)arg2;
 - (id)localizedConvertedValueFrom:(double)arg1 unit:(id)arg2;
 - (id)valueAsString:(double)arg1;
@@ -44,6 +44,7 @@ __attribute__((visibility("hidden")))
 - (id)localizedTitleFormat:(id)arg1;
 - (id)localizedConvertedValueFormat:(id)arg1;
 - (id)localizedUnitNameWithValue:(double)arg1 unit:(id)arg2;
+- (id)patchedVariantName;
 - (id)initWithName:(id)arg1 abbreviation:(id)arg2 restrictionLocales:(id)arg3 groupType:(unsigned long long)arg4 a:(double)arg5 b:(double)arg6;
 
 @end

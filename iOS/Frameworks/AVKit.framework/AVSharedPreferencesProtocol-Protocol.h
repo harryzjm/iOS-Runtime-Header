@@ -7,6 +7,7 @@
 @class NSString;
 
 @protocol AVSharedPreferencesProtocol
+- (void)extendedDisplayActive:(void (^)(_Bool))arg1;
 - (void)setAutomaticVideoGravity:(NSString *)arg1 completion:(void (^)(void))arg2;
 @end
 

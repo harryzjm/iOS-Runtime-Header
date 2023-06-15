@@ -7,6 +7,7 @@
 @interface (null) (NewsUI2)
 - (void)setEditing:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewWillLayoutSubviews;
 - (void)viewDidLoad;

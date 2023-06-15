@@ -6,7 +6,7 @@
 
 #import <SearchFoundation/SFCardSection-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString, NSURL, SFColor, SFMessageAttachment;
+@class NSData, NSDictionary, NSString, NSURL, SFMessageAttachment;
 
 @protocol SFMessageCardSection <SFCardSection>
 @property(readonly, nonatomic) NSData *jsonData;
@@ -16,14 +16,6 @@
 @property(nonatomic) int messageServiceType;
 @property(nonatomic) int messageStatus;
 @property(copy, nonatomic) NSString *messageText;
-@property(retain, nonatomic) SFColor *backgroundColor;
-@property(nonatomic) int separatorStyle;
 @property(copy, nonatomic) NSString *type;
-@property(nonatomic) _Bool hasBottomPadding;
-@property(nonatomic) _Bool hasTopPadding;
-@property(nonatomic) _Bool canBeHidden;
-@property(copy, nonatomic) NSString *punchoutPickerDismissText;
-@property(copy, nonatomic) NSString *punchoutPickerTitle;
-@property(copy, nonatomic) NSArray *punchoutOptions;
 @end
 

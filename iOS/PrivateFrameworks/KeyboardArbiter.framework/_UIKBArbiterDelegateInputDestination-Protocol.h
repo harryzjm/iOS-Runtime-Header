@@ -9,6 +9,7 @@
 @class FBSSceneIdentityToken;
 
 @protocol _UIKBArbiterDelegateInputDestination <_UIKBArbiterDelegateProtocol>
+- (void)queue_endInputSessionWithCompletion:(void (^)(void))arg1;
 - (void)queue_activeProcessResignWithCompletion:(void (^)(void))arg1;
 - (void)queue_sceneBecameFocused:(FBSSceneIdentityToken *)arg1 withCompletion:(void (^)(void))arg2;
 - (void)queue_setKeyboardDisabled:(_Bool)arg1 withCompletion:(void (^)(void))arg2;

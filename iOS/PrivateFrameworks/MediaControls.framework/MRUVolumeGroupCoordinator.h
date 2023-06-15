@@ -22,6 +22,10 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) MRUVolumeController *mainVolumeController; // @synthesize mainVolumeController=_mainVolumeController;
 - (float)updateVolumeScales;
 - (void)volumeController:(id)arg1 volumeValueDidChange:(float)arg2;
+- (void)finishEqualization;
+- (void)equalizeVolumes;
+- (void)beginEqualization;
+- (_Bool)shouldAllowEqualization;
 - (id)initWithMainVolumeController:(id)arg1;
 
 // Remaining properties

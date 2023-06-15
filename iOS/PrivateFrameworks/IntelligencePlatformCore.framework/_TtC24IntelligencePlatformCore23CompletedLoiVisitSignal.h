@@ -6,10 +6,11 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
-@class NSSet;
+@class MISSING_TYPE, NSSet;
 
 @interface _TtC24IntelligencePlatformCore23CompletedLoiVisitSignal : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *maxEvents;
 }
 
 - (id)featureValueForName:(id)arg1;

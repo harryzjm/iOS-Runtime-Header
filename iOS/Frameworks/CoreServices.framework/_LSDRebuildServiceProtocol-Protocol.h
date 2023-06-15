@@ -7,6 +7,7 @@
 @class NSArray;
 
 @protocol _LSDRebuildServiceProtocol
-- (void)performRebuildRegistration:(NSArray *)arg1 reply:(void (^)(NSError *))arg2;
+- (void)noteMigratorRunningWithReply:(void (^)(NSError *))arg1;
+- (void)performRebuildRegistration:(NSArray *)arg1 personaUniqueStrings:(NSArray *)arg2 reply:(void (^)(NSError *))arg3;
 @end
 

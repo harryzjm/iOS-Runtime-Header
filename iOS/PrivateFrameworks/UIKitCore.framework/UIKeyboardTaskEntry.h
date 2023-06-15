@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 @class NSArray;
 
 __attribute__((visibility("hidden")))
-@interface UIKeyboardTaskEntry : NSObject <NSCopying>
+@interface UIKeyboardTaskEntry : NSObject
 {
     CDUnknownBlockType __task;
     NSArray *__creationStack;

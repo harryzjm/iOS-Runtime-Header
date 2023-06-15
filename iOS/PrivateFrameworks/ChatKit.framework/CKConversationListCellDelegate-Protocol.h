@@ -12,6 +12,9 @@
 - (double)widthForDeterminingAvatarVisibility;
 
 @optional
+- (_Bool)shouldAlwaysHideAvatar;
+- (_Bool)hasUnreadMessagesForConversation:(CKConversation *)arg1;
+- (_Bool)shouldAlwaysHideUnreadIndicatorForConversation:(CKConversation *)arg1;
 - (_Bool)shouldAppearAsRecoverableConversation;
 - (void)updateSummaryLabel:(UILabel *)arg1 conversation:(CKConversation *)arg2 fastPreview:(_Bool)arg3;
 - (void)updateDateLabel:(CKDateLabel *)arg1 conversation:(CKConversation *)arg2;

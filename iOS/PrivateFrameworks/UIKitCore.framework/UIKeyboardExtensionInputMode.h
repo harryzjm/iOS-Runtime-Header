@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSExtension *extension; // @synthesize extension=_extension;
-- (id)_indicatorIconWithBackground:(_Bool)arg1 scaleFactor:(double)arg2;
+- (id)_indicatorIconWithBackground:(_Bool)arg1 iconWidth:(double)arg2 scaleFactor:(double)arg3;
 - (_Bool)isDesiredForTraits:(id)arg1;
 - (_Bool)isAllowedForTraits:(id)arg1;
 - (id)normalizedIdentifierLevels;

@@ -14,6 +14,8 @@
     MISSING_TYPE *contentLookupPresenter;
     MISSING_TYPE *sections;
     MISSING_TYPE *gameRecord;
+    MISSING_TYPE *pageMetricsPresenter;
+    MISSING_TYPE *pageContext;
     MISSING_TYPE *sectionData;
     MISSING_TYPE *onDidLoadSections;
     MISSING_TYPE *onDidUpdateSectionData;

@@ -13,11 +13,11 @@ __attribute__((visibility("hidden")))
 {
     NSMutableArray *_assetContainers;
     PUCurationTraitContainer *_traitContainer;
-    PHPhotoLibrary *_photoLibrary;
+    PHPhotoLibrary *_curationPhotoLibrary;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) PHPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
+@property(retain, nonatomic) PHPhotoLibrary *curationPhotoLibrary; // @synthesize curationPhotoLibrary=_curationPhotoLibrary;
 @property(retain, nonatomic) PUCurationTraitContainer *traitContainer; // @synthesize traitContainer=_traitContainer;
 @property(retain, nonatomic) NSMutableArray *assetContainers; // @synthesize assetContainers=_assetContainers;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;

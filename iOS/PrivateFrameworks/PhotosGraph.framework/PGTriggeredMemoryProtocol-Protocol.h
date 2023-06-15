@@ -9,11 +9,11 @@
 @class NSArray, NSDate, NSDictionary, NSIndexSet;
 
 @protocol PGTriggeredMemoryProtocol <PGMemoryNodeProtocol>
-@property(nonatomic, readonly) NSDictionary *validityIntervalByTriggerType;
-@property(nonatomic, copy) NSArray *blockableFeatures;
+@property(readonly, nonatomic) NSDictionary *validityIntervalByTriggerType;
+@property(retain, nonatomic) NSArray *blockableFeatures;
 @property(nonatomic) double electionScore;
-@property(nonatomic, readonly) long long photosGraphVersion;
-@property(nonatomic, readonly) NSIndexSet *triggerTypes;
-@property(nonatomic, readonly) NSDate *creationDate;
+@property(readonly, nonatomic) long long photosGraphVersion;
+@property(readonly, nonatomic) NSIndexSet *triggerTypes;
+@property(readonly, nonatomic) NSDate *creationDate;
 @end
 

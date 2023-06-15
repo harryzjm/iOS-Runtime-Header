@@ -17,7 +17,8 @@
 - (id)printHelper:(id)arg1 noteSegmentsForSlideNode:(id)arg2;
 - (id)slideNodesForPrintHelper:(id)arg1;
 - (_Bool)drawCurrentPageInContext:(struct CGContext *)arg1 viewScale:(double)arg2 unscaledClipRect:(struct CGRect)arg3 createPage:(_Bool)arg4;
-- (struct CGRect)p_slideRectFromUnscaledClipRect:(struct CGRect)arg1 viewScale:(double)arg2 outScaledClipRect:(struct CGRect *)arg3;
+- (_Bool)drawMonoPageExtraContentInContext:(struct CGContext *)arg1 scaledClipRect:(struct CGRect)arg2;
+- (struct CGRect)monoSlideRectFromScaledClipRect:(struct CGRect)arg1 outScaledClipRect:(struct CGRect *)arg2;
 - (void)p_preparePrintHelperIfNeeded;
 - (_Bool)incrementPage;
 - (unsigned long long)pageCount;

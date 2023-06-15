@@ -31,6 +31,9 @@ struct Store {
     struct atomic<long long> enumerationState;
     struct atomic<long long> getNSDataCallCount;
     struct Pedigree pedigree;
+    struct {
+        unsigned int readonly:1;
+    } flags;
 };
 
 struct Table {

@@ -7,6 +7,7 @@
 #import <TrialProto/TRIFactorLevel.h>
 
 @interface TRIFactorLevel (CESRAdditions)
+- (_Bool)_cesr_supportsVoiceCommands;
 - (_Bool)_cesr_supportsEmojiRecognition;
 - (_Bool)_cesr_supportsAutoPunctuation;
 - (_Bool)_cesr_supportsOnDeviceSearch;

@@ -4,8 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, PXPhotosViewModel, PXStoryItemPlacement;
-@protocol PXStoryDiagnosticHUDContentProvider, PXStoryViewActionPerformer;
+@class NSArray, PXGItemPlacement, PXPhotosViewModel;
+@protocol PXStoryDiagnosticHUDContentProvider, PXStoryViewActionPerformer, PXStoryViewEnvironmentModel;
 
 @protocol PXStoryMutableViewModel
 @property(nonatomic) _Bool isUserPerformingRemoteGesture;
@@ -17,6 +17,7 @@
 @property(nonatomic) long long diagnosticHUDType;
 @property(nonatomic) _Bool isHUDVisible;
 @property(nonatomic) _Bool shouldShowErrorIndicator;
+@property(nonatomic) __weak id <PXStoryViewEnvironmentModel> viewEnvironmentModel;
 @property(copy, nonatomic) NSArray *relatedConfigurations;
 @property(nonatomic) __weak id <PXStoryViewActionPerformer> actionPerformer;
 @property(nonatomic) _Bool showSongInTitleWhenPaused;
@@ -25,7 +26,7 @@
 @property(nonatomic) double swipeDownDismissalPreviewFraction;
 @property(nonatomic) _Bool swipeDownDismissalPreviewEnabled;
 @property(nonatomic) _Bool swipeDownTriggeringDismissal;
-@property(retain, nonatomic) PXStoryItemPlacement *viewControllerDismissalTargetPlacement;
+@property(retain, nonatomic) PXGItemPlacement *viewControllerDismissalTargetPlacement;
 @property(nonatomic) _Bool isPerformingViewControllerTransition;
 @property(nonatomic) CDStruct_67c61e0b swipeDownInteractionState;
 @property(nonatomic) unsigned long long edgeToHighlight;

@@ -6,12 +6,13 @@
 
 #import <PassKitCore/NSObject-Protocol.h>
 
-@class NSArray, NSDictionary, NSString;
+@class NSArray, NSDictionary, NSString, PKOSVersionRequirementRange;
 
 @protocol PKDynamicTemplateLayoutAsset <NSObject>
 + (NSString *)assetKey;
 + (NSDictionary *)nameToAssetsMapFromDictionaries:(NSArray *)arg1;
 @property(retain, nonatomic) NSDictionary *configuration;
+@property(retain, nonatomic) PKOSVersionRequirementRange *osVersionRange;
 @property(retain, nonatomic) NSString *name;
 @end
 

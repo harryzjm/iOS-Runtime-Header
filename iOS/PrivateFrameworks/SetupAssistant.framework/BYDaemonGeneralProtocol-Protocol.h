@@ -6,7 +6,7 @@
 
 #import <SetupAssistant/NSObject-Protocol.h>
 
-@class LAContext, NSArray, NSString;
+@class LAContext, NSString;
 
 @protocol BYDaemonGeneralProtocol <NSObject>
 - (void)startExpressSettingsUpload;
@@ -14,10 +14,7 @@
 - (void)storeAuthenticationContextforBiometric:(LAContext *)arg1 completion:(void (^)(void))arg2;
 - (void)fetchAuthenticationContextForApplePay:(void (^)(LAContext *))arg1;
 - (void)storeAuthenticationContextforApplyPay:(LAContext *)arg1 completion:(void (^)(void))arg2;
-- (void)enrollInSeedProgramNamed:(NSString *)arg1 withAssetAudience:(NSString *)arg2 completion:(void (^)(void))arg3;
-- (void)cancelInternalSkipInfo:(void (^)(void))arg1;
-- (void)getInternalSkipInfo:(void (^)(_Bool, NSArray *))arg1;
-- (void)setInternalShouldSkipFlows:(_Bool)arg1 skipExceptions:(NSArray *)arg2 completion:(void (^)(void))arg3;
+- (void)enrollInSeedProgramNamed:(NSString *)arg1 withAssetAudience:(NSString *)arg2 programID:(NSString *)arg3 completion:(void (^)(void))arg4;
 - (void)cancelDataMigratorDeferredExit:(void (^)(void))arg1;
 - (void)deferDataMigratorExit:(void (^)(void))arg1;
 - (void)performSilentICDPUpgrade:(void (^)(void))arg1;

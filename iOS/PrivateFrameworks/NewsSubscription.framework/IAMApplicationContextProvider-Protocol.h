@@ -12,7 +12,7 @@
 
 @optional
 @property(nonatomic) double lastMessageDisplayTime;
-@property(nonatomic, readonly) _Bool allowsModalMessageDisplay;
+@property(readonly) _Bool allowsModalMessageDisplay;
 - (UIViewController *)viewControllerForModalPresentation;
 @end
 

@@ -13,13 +13,13 @@
     tmat4x4_3074befe _combined;
 }
 
-+ (id)projectorWithProjection:(const void *)arg1 transform:(const void *)arg2;
++ (id)projectorWithProjection:(void *)arg1 transform:(void *)arg2;
 - (id).cxx_construct;
-@property(readonly, nonatomic) const void *combined; // @synthesize combined=_combined;
-@property(readonly, nonatomic) const void *transform; // @synthesize transform=_transform;
-@property(readonly, nonatomic) const void *projection; // @synthesize projection=_projection;
-- (line_e1962432)objectSpaceLineFromPoint:(const void *)arg1;
-- (id)initWithProjection:(const void *)arg1 transform:(const void *)arg2;
+@property(readonly, nonatomic) void *combined; // @synthesize combined=_combined;
+@property(readonly, nonatomic) void *transform; // @synthesize transform=_transform;
+@property(readonly, nonatomic) void *projection; // @synthesize projection=_projection;
+- (line_e1962432)objectSpaceLineFromPoint:(void *)arg1;
+- (id)initWithProjection:(void *)arg1 transform:(void *)arg2;
 
 @end
 

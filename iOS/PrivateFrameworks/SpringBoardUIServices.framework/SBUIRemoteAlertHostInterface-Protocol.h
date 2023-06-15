@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class BSAnimationSettings, NSNumber, NSString, SBUIRemoteAlertIdleTimerSettings;
+@class BSAnimationSettings, NSNumber, NSSet, NSString, SBUIRemoteAlertIdleTimerSettings;
 
 @protocol SBUIRemoteAlertHostInterface
 - (void)setSceneDeactivationReason:(NSNumber *)arg1;
@@ -20,8 +20,8 @@
 - (void)setDesiredIdleTimerSettings:(SBUIRemoteAlertIdleTimerSettings *)arg1;
 - (void)setDesiredAutoLockDuration:(double)arg1;
 - (void)setIdleTimerDisabled:(_Bool)arg1 forReason:(NSString *)arg2;
+- (void)setBackgroundActivitiesToCancel:(NSSet *)arg1 animationSettings:(BSAnimationSettings *)arg2;
 - (void)setStyleOverridesToCancel:(unsigned long long)arg1 animationSettings:(BSAnimationSettings *)arg2;
-- (void)setDesiredStatusBarStyleOverrides:(unsigned long long)arg1;
 - (void)setSwipeDismissalStyle:(long long)arg1;
 - (void)setDismissalAnimationStyle:(long long)arg1;
 - (void)setAllowsAlertStacking:(_Bool)arg1;

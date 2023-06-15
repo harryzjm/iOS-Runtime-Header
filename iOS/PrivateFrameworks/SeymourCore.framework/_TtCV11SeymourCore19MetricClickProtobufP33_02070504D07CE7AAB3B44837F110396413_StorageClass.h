@@ -20,6 +20,8 @@
     MISSING_TYPE *_targetIdentifierType;
     MISSING_TYPE *_targetType;
     MISSING_TYPE *_marketingFields;
+    MISSING_TYPE *_marketingMessageIdentifier;
+    MISSING_TYPE *_marketingPlacement;
 }
 
 @end

@@ -6,17 +6,15 @@
 
 #import <AVConference/NSObject-Protocol.h>
 
-@class NSDictionary, VCVideoReceiverBase, VideoAttributes;
+@class NSDictionary, VCVideoReceiverBase;
 
 @protocol VCVideoReceiverDelegate <NSObject>
 - (void)vcVideoReceiver:(VCVideoReceiverBase *)arg1 requestKeyFrameGenerationWithStreamID:(unsigned short)arg2 firType:(int)arg3;
-- (_Bool)videoReceiver:(VCVideoReceiverBase *)arg1 didReceiveRemoteFrame:(struct __CVBuffer *)arg2 atTime:(CDStruct_1b6d18a9)arg3 remoteVideoAttributes:(VideoAttributes *)arg4 remoteScreenAttributes:(VideoAttributes *)arg5 isFirstFrame:(_Bool)arg6;
 
 @optional
 - (void)vcVideoReceiver:(VCVideoReceiverBase *)arg1 didSwitchFromStreamID:(unsigned short)arg2 toStreamID:(unsigned short)arg3;
 - (unsigned int)vcVideoReceiver:(VCVideoReceiverBase *)arg1 receivedTMMBR:(unsigned int)arg2;
 - (void)vcVideoReceiver:(VCVideoReceiverBase *)arg1 downlinkQualityDidChange:(NSDictionary *)arg2;
 - (void)vcVideoReceiverRequestKeyFrame:(VCVideoReceiverBase *)arg1 rtcpPSFBType:(unsigned int)arg2;
-- (_Bool)vcVideoReceiver:(VCVideoReceiverBase *)arg1 didReceiveSampleBuffer:(struct opaqueCMSampleBuffer *)arg2 isFirstFrame:(_Bool)arg3;
 @end
 

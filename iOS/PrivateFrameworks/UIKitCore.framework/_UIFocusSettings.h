@@ -6,20 +6,18 @@
 
 #import <PrototypeTools/PTSettings.h>
 
-@class _UIFocusDeferralSettings, _UIFocusHaloSettings, _UIFocusLiftEffectSettings;
+@class _UIFocusDeferralSettings, _UIFocusHaloSettings;
 
 __attribute__((visibility("hidden")))
 @interface _UIFocusSettings : PTSettings
 {
     _UIFocusDeferralSettings *_deferralSettings;
-    _UIFocusLiftEffectSettings *_liftEffectSettings;
     _UIFocusHaloSettings *_haloSettings;
 }
 
 + (id)settingsControllerModule;
 - (void).cxx_destruct;
 @property(retain, nonatomic) _UIFocusHaloSettings *haloSettings; // @synthesize haloSettings=_haloSettings;
-@property(retain, nonatomic) _UIFocusLiftEffectSettings *liftEffectSettings; // @synthesize liftEffectSettings=_liftEffectSettings;
 @property(retain, nonatomic) _UIFocusDeferralSettings *deferralSettings; // @synthesize deferralSettings=_deferralSettings;
 - (void)setDefaultValues;
 

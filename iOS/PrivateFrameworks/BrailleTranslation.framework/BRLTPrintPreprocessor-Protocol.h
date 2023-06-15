@@ -6,12 +6,9 @@
 
 #import <BrailleTranslation/NSObject-Protocol.h>
 
-@class NSString;
+@class BRLTTextFormattingRanges, NSString;
 
 @protocol BRLTPrintPreprocessor <NSObject>
-- (NSString *)preprocessPrintString:(NSString *)arg1 withLocationMap:(id *)arg2;
-
-@optional
-- (NSString *)preprocessPrintString:(NSString *)arg1 withLocationMap:(id *)arg2 isEightDot:(_Bool)arg3;
+- (NSString *)preprocessPrintString:(NSString *)arg1 withLocationMap:(id *)arg2 isEightDot:(_Bool)arg3 textFormattingRanges:(BRLTTextFormattingRanges *)arg4;
 @end
 

@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)init;
+- (void)accommodatePresentedItemDeletionWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)accommodatePresentedSubitemDeletionAtURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)presentedSubitemDidChangeAtURL:(id)arg1;
 - (void)presentedSubitemDidAppearAtURL:(id)arg1;

@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *extensionService;
     MISSING_TYPE *descriptorService;
     MISSING_TYPE *stateCaptureService;
-    MISSING_TYPE *configurationService;
+    MISSING_TYPE *hostService;
     MISSING_TYPE *timelineCacheManager;
     MISSING_TYPE *placeholderCacheManager;
     MISSING_TYPE *snapshotCacheManager;

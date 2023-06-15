@@ -7,6 +7,7 @@
 #import <Foundation/NSMutableDictionary.h>
 
 @interface NSMutableDictionary (IC)
++ (id)ic_dictionaryFromNonNilDictionary:(id)arg1;
 - (void)ic_addKey:(id)arg1 forNonNilObject:(id)arg2;
 - (void)ic_setNonNilObject:(id)arg1 forNonNilKey:(id)arg2;
 - (void)ic_setNonNilObject:(id)arg1 forKey:(id)arg2;

@@ -6,10 +6,10 @@
 
 #import <LinkServices/NSObject-Protocol.h>
 
-@class LNActionConfirmationRequest, LNConfirmationRequest, LNDisambiguationRequest, LNNeedsValueRequest;
+@class LNActionConfirmationRequest, LNConfirmationRequest, LNContinueInAppRequest, LNDisambiguationRequest, LNNeedsValueRequest;
 
 @protocol LNConnectionClientInterface <NSObject>
-- (void)requestViewSnippetSizeWithCompletion:(void (^)(NSValue *))arg1;
+- (void)requestContinueInApp:(LNContinueInAppRequest *)arg1 completionHandler:(void (^)(LNContinueInAppResponse *, NSError *))arg2;
 - (void)requestViewSnippetEnvironmentWithCompletion:(void (^)(LNSnippetEnvironment *))arg1;
 - (void)requestActionConfirmation:(LNActionConfirmationRequest *)arg1 completionHandler:(void (^)(LNActionConfirmationResponse *, NSError *))arg2;
 - (void)requestParameterNeedsValue:(LNNeedsValueRequest *)arg1 completionHandler:(void (^)(LNNeedsValueResponse *, NSError *))arg2;

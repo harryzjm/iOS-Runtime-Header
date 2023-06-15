@@ -12,16 +12,15 @@
 {
     MISSING_TYPE *config;
     MISSING_TYPE *dateRange;
+    MISSING_TYPE *priority;
+    MISSING_TYPE *feedConfigData;
     MISSING_TYPE *headlines;
     MISSING_TYPE *tags;
-    MISSING_TYPE *trending;
     MISSING_TYPE *forYouHeadlines;
     MISSING_TYPE *myHeadlines;
     MISSING_TYPE *missedStories;
-    MISSING_TYPE *latestStories;
     MISSING_TYPE *suggestions;
     MISSING_TYPE *magazines;
-    MISSING_TYPE *sharedWithYou;
 }
 
 @end

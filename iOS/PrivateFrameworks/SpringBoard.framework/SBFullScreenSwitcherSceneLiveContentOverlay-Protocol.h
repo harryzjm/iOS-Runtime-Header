@@ -11,7 +11,7 @@
 
 @protocol SBFullScreenSwitcherSceneLiveContentOverlay <SBSwitcherLiveContentOverlay>
 - (void)invalidate;
-- (void)configureWithWorkspaceEntity:(SBWorkspaceEntity *)arg1 referenceFrame:(struct CGRect)arg2 interfaceOrientation:(long long)arg3 layoutRole:(long long)arg4 spaceConfiguration:(long long)arg5 floatingConfiguration:(long long)arg6 hasClassicAppOrientationMismatch:(_Bool)arg7 sizingPolicy:(long long)arg8;
+- (void)configureWithWorkspaceEntity:(SBWorkspaceEntity *)arg1 referenceFrame:(struct CGRect)arg2 contentOrientation:(long long)arg3 containerOrientation:(long long)arg4 layoutRole:(long long)arg5 sbsDisplayLayoutRole:(long long)arg6 spaceConfiguration:(long long)arg7 floatingConfiguration:(long long)arg8 hasClassicAppOrientationMismatch:(_Bool)arg9 sizingPolicy:(long long)arg10;
 - (UIViewController<SBLayoutStateTransitionObserver> *)contentViewController;
 - (long long)overlayType;
 @end

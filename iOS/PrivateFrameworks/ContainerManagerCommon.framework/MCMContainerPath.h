@@ -45,6 +45,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSString *containerPathIdentifier; // @synthesize containerPathIdentifier=_containerPathIdentifier;
 - (_Bool)_createURLIfNecessary:(id)arg1 mode:(unsigned short)arg2 owner:(id)arg3 dataProtectionClass:(int)arg4 exists:(_Bool *)arg5 error:(id *)arg6;
 - (_Bool)_obj1:(id)arg1 isEqualToObj2:(id)arg2;
+@property(readonly, nonatomic, getter=isRandomized) _Bool randomized;
 @property(readonly, nonatomic) NSURL *metadataURL;
 @property(readonly, nonatomic) NSURL *containerDataURL;
 @property(readonly, nonatomic) NSURL *containerRootURL;

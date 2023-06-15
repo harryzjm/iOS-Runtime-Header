@@ -6,17 +6,15 @@
 
 #import <BackgroundAssets/NSObject-Protocol.h>
 
-@class BAAppExtensionInfo, BADownload, NSURL, NSURLAuthenticationChallenge;
+@class BAAppExtensionInfo, BADownload, NSError, NSSet, NSURL, NSURLAuthenticationChallenge;
 
 @protocol BADownloaderExtension <NSObject>
 
 @optional
 - (void)extensionWillTerminate;
-- (void)backgroundDownloadDidFinish:(BADownload *)arg1 fileURL:(NSURL *)arg2;
-- (void)backgroundDownloadDidFail:(BADownload *)arg1;
-- (void)receivedAuthenticationChallenge:(NSURLAuthenticationChallenge *)arg1 download:(BADownload *)arg2 completionHandler:(void (^)(long long, NSURLCredential *))arg3;
-- (void)checkForUpdatesWithMetadata:(BAAppExtensionInfo *)arg1;
-- (void)applicationDidUpdateWithMetadata:(BAAppExtensionInfo *)arg1;
-- (void)applicationDidInstallWithMetadata:(BAAppExtensionInfo *)arg1;
+- (void)backgroundDownload:(BADownload *)arg1 finishedWithFileURL:(NSURL *)arg2;
+- (void)backgroundDownload:(BADownload *)arg1 failedWithError:(NSError *)arg2;
+- (void)backgroundDownload:(BADownload *)arg1 didReceiveChallenge:(NSURLAuthenticationChallenge *)arg2 completionHandler:(void (^)(long long, NSURLCredential *))arg3;
+- (NSSet *)downloadsForRequest:(long long)arg1 manifestURL:(NSURL *)arg2 extensionInfo:(BAAppExtensionInfo *)arg3;
 @end
 

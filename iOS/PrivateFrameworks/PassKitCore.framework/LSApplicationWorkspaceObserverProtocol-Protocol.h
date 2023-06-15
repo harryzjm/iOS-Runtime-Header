@@ -11,6 +11,8 @@
 @protocol LSApplicationWorkspaceObserverProtocol <NSObject>
 
 @optional
+- (void)helperPlaceholdersUninstalled:(NSArray *)arg1;
+- (void)helperPlaceholdersInstalled:(NSArray *)arg1;
 - (void)databaseWasRebuilt;
 - (void)applicationsDidChangePersonas:(NSArray *)arg1;
 - (void)deviceManagementPolicyDidChange:(NSArray *)arg1;

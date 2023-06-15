@@ -6,7 +6,9 @@
 
 #import <VoiceShortcutClient/WFAutoShortcutContextualAction.h>
 
+@class WFContextualActionContext;
+
 @interface WFAutoShortcutContextualAction (WorkflowKit)
-- (void)_getActionRepresentationTakingInput:(_Bool)arg1 completionHandler:(void (^)(WFAction *, NSError *))arg2;
+- (void)_getActionRepresentationTakingInput:(_Bool)arg1 context:(WFContextualActionContext *)arg2 completionHandler:(void (^)(WFAction *, NSError *))arg3;
 @end
 

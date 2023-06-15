@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property(readonly, nonatomic) id <MTLBuffer> buffer; // @synthesize buffer=_buffer;
-- (id)newSubBuffer;
+- (id)newSubBufferForAllocator:(id)arg1;
 - (void)deallocateElementAtOffset:(unsigned long long)arg1;
 - (unsigned long long)_allocateElement;
 - (_Bool)hasFreeElementsLeft;

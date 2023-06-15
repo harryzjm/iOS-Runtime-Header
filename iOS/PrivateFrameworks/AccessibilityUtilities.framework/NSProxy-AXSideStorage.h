@@ -13,7 +13,7 @@
 - (void)_accessibilitySetIntegerValue:(long long)arg1 forKey:(id)arg2;
 - (void)_accessibilitySetBoolValue:(_Bool)arg1 forKey:(id)arg2;
 - (void)_accessibilitySetRetainedValue:(id)arg1 forKey:(id)arg2;
-- (void)_accessibilitySetValue:(id)arg1 forKey:(id)arg2 storageMode:(int)arg3;
+- (void)_accessibilitySetValue:(id)arg1 forKey:(id)arg2 storageMode:(long long)arg3;
 - (unsigned long long)_accessibilityUnsignedIntegerValueForKey:(id)arg1;
 - (long long)_accessibilityIntegerValueForKey:(id)arg1;
 - (_Bool)_accessibilityBoolValueForKey:(id)arg1;

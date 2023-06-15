@@ -7,7 +7,6 @@
 @class NSString;
 
 @protocol SRSensorKitServiceServerAuthorizationListening
-- (void)onboardingAirGapEnabled:(void (^)(_Bool))arg1;
 - (void)legacyResearchStudyEntitlement:(void (^)(NSString *))arg1;
 - (void)legacyResearchStudyBundleIDs:(void (^)(NSArray *))arg1;
 - (void)setFirstRunOnboardingCompleted:(_Bool)arg1;

@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *styler;
     MISSING_TYPE *shineImageFactory;
+    MISSING_TYPE *backgroundImageCache;
 }
 
 @end

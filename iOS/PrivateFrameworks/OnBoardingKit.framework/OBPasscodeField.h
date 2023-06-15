@@ -47,6 +47,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *description;
 @property(nonatomic) _Bool enablesReturnKeyAutomatically;
 @property(readonly) unsigned long long hash;
+@property(nonatomic) long long inlinePredictionType;
 @property(nonatomic) long long keyboardAppearance;
 @property(copy, nonatomic) UITextInputPasswordRules *passwordRules;
 @property(nonatomic) long long returnKeyType;

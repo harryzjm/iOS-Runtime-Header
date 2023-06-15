@@ -10,6 +10,6 @@
 
 @protocol VKRouteOverlay <NSObject>
 @property(readonly, nonatomic) GEOMapRegion *boundingMapRegion;
-@property(readonly, nonatomic) CDStruct_c3b9c2ee coordinate;
+@property(readonly, nonatomic) CDStruct_2c43369c coordinate;
 @end
 

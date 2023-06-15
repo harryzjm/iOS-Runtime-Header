@@ -21,7 +21,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) _UICalendarDataModel *dataModel; // @synthesize dataModel=_dataModel;
 @property(nonatomic) __weak id <_UICalendarMonthYearSelectorDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_didSelectDate:(id)arg1;
-- (void)_setSelectedMonth:(id)arg1 animated:(_Bool)arg2 updatePicker:(_Bool)arg3 notifyDelegate:(_Bool)arg4;
 - (void)setSelectedMonth:(id)arg1 animated:(_Bool)arg2;
 - (void)setSelectedMonth:(id)arg1;
 - (void)didUpdateVisibleMonth;

@@ -4,11 +4,29 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSString;
+
 @interface __NSCFLocalUploadTask
 {
+    _Bool _startedProducingResumeData;
+    CDUnknownBlockType _resumeCallback;
 }
 
++ (id)_expandResumeData:(id)arg1;
+@property(copy) CDUnknownBlockType resumeCallback; // @synthesize resumeCallback=_resumeCallback;
+- (id)initWithResumeData:(id)arg1 ident:(unsigned long long)arg2 taskGroup:(id)arg3;
+- (id)_createResumeData:(id *)arg1;
+- (void)cancelByProducingResumeData:(CDUnknownBlockType)arg1;
+- (void)_onqueue_cancelByProducingResumeData:(CDUnknownBlockType)arg1;
+- (void)_task_onqueue_didFinish;
 - (_Bool)isKindOfClass:(Class)arg1;
+- (void)dealloc;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

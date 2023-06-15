@@ -10,6 +10,7 @@
 @class NSArray, NSString, WBBrowserState, WBWindow, WBWindowState;
 
 @protocol WBStateProvider <NSObject, WBTabProvider>
+@property(readonly, copy, nonatomic) NSArray *profiles;
 @property(readonly, copy, nonatomic) NSArray *windows;
 @property(readonly, nonatomic) int windowsFolderSpecialID;
 @property(readonly, copy, nonatomic) NSArray *windowStates;

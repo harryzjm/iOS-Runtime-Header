@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class GEORelatedPlaceList, GEORelatedPlaceModuleConfiguration;
+@class GEORelatedPlaceList, GEORelatedPlaceModuleConfiguration, GEOTrailHead;
 
 __attribute__((visibility("hidden")))
 @interface MURelatedPlaceSectionControllerConfiguration : NSObject
@@ -15,15 +15,22 @@ __attribute__((visibility("hidden")))
     _Bool _suppressItemSelection;
     GEORelatedPlaceModuleConfiguration *_moduleConfiguration;
     GEORelatedPlaceList *_relatedPlaceList;
+    long long _dataSource;
+    GEOTrailHead *_trailHead;
+    unsigned long long _numInlineItems;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool suppressItemSelection; // @synthesize suppressItemSelection=_suppressItemSelection;
+@property(readonly, nonatomic) unsigned long long numInlineItems; // @synthesize numInlineItems=_numInlineItems;
 @property(nonatomic) _Bool suppressSeeAllButton; // @synthesize suppressSeeAllButton=_suppressSeeAllButton;
+@property(readonly, nonatomic) GEOTrailHead *trailHead; // @synthesize trailHead=_trailHead;
+@property(readonly, nonatomic) long long dataSource; // @synthesize dataSource=_dataSource;
 @property(readonly, nonatomic) GEORelatedPlaceList *relatedPlaceList; // @synthesize relatedPlaceList=_relatedPlaceList;
 @property(retain, nonatomic) GEORelatedPlaceModuleConfiguration *moduleConfiguration; // @synthesize moduleConfiguration=_moduleConfiguration;
-@property(readonly, nonatomic) unsigned long long numInlineItems;
+- (id)initWithTrailHead:(id)arg1;
 - (id)initWithRelatedPlaceList:(id)arg1;
+- (id)initWithDataSource:(long long)arg1 relatedPlaceList:(id)arg2 trailHead:(id)arg3;
 
 @end
 

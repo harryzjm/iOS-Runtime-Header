@@ -11,6 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (long long)rawValueForPlaylistTraits:(long long)arg1;
++ (long long)playlistTraitsForRawValue:(long long)arg1;
 + (long long)rawValueForEditableComponents:(long long)arg1;
 + (long long)editableComponentsForRawValue:(long long)arg1;
 + (long long)rawValueForPlaylistType:(long long)arg1;

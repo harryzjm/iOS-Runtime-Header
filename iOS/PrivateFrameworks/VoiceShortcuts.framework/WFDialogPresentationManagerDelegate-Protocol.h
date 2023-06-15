@@ -6,16 +6,9 @@
 
 #import <VoiceShortcuts/NSObject-Protocol.h>
 
-@class NSArray, NSString, WFDialogPresentationManager, WFDialogRequest, WFDialogResponse, WFWorkflowReference, WFWorkflowRunningContext;
+@class NSArray, NSString, WFDialogPresentationManager, WFWorkflowReference, WFWorkflowRunningContext;
 
 @protocol WFDialogPresentationManagerDelegate <NSObject>
-- (void)presentationManager:(WFDialogPresentationManager *)arg1 pauseExecutionOfWorkflowWithContext:(WFWorkflowRunningContext *)arg2;
-- (void)presentationManager:(WFDialogPresentationManager *)arg1 cancelExecutionOfWorkflowWithContext:(WFWorkflowRunningContext *)arg2;
-- (void)presentationManager:(WFDialogPresentationManager *)arg1 didEnqueueDialogRequest:(WFDialogRequest *)arg2 withContext:(WFWorkflowRunningContext *)arg3;
-- (WFWorkflowRunningContext *)presentationManager:(WFDialogPresentationManager *)arg1 runningContextForContext:(WFWorkflowRunningContext *)arg2;
-- (unsigned long long)presentationManager:(WFDialogPresentationManager *)arg1 dialogPresentationModeForRequest:(WFDialogRequest *)arg2 withContext:(WFWorkflowRunningContext *)arg3;
-- (WFDialogResponse *)presentationManager:(WFDialogPresentationManager *)arg1 responseForDialogRequest:(WFDialogRequest *)arg2 withContext:(WFWorkflowRunningContext *)arg3;
-- (_Bool)presentationManager:(WFDialogPresentationManager *)arg1 shouldPresentDialogRequest:(WFDialogRequest *)arg2 withContext:(WFWorkflowRunningContext *)arg3;
 
 @optional
 - (void)presentationManager:(WFDialogPresentationManager *)arg1 updateSmartPromptStateData:(NSArray *)arg2 actionUUID:(NSString *)arg3 context:(WFWorkflowRunningContext *)arg4 reference:(WFWorkflowReference *)arg5;

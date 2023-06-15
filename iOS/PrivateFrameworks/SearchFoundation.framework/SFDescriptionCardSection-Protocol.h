@@ -6,7 +6,7 @@
 
 #import <SearchFoundation/SFTitleCardSection-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSNumber, NSString, NSURL, SFColor, SFImage, SFText;
+@class NSArray, NSData, NSDictionary, NSNumber, NSString, NSURL, SFImage, SFText;
 
 @protocol SFDescriptionCardSection <SFTitleCardSection>
 @property(readonly, nonatomic) NSData *jsonData;
@@ -25,16 +25,5 @@
 @property(retain, nonatomic) SFImage *image;
 @property(copy, nonatomic) NSString *expandText;
 @property(retain, nonatomic) SFText *descriptionText;
-@property(copy, nonatomic) NSString *subtitle;
-@property(copy, nonatomic) NSString *title;
-@property(retain, nonatomic) SFColor *backgroundColor;
-@property(nonatomic) int separatorStyle;
-@property(copy, nonatomic) NSString *type;
-@property(nonatomic) _Bool hasBottomPadding;
-@property(nonatomic) _Bool hasTopPadding;
-@property(nonatomic) _Bool canBeHidden;
-@property(copy, nonatomic) NSString *punchoutPickerDismissText;
-@property(copy, nonatomic) NSString *punchoutPickerTitle;
-@property(copy, nonatomic) NSArray *punchoutOptions;
 @end
 

@@ -6,23 +6,36 @@
 
 #import <objc/NSObject.h>
 
-@class _UINavigationBarTitleRenamerSession;
+@class NSMutableSet;
 @protocol _UINavigationBarTitleRenamerDelegate;
 
 __attribute__((visibility("hidden")))
 @interface _UINavigationBarTitleRenamer : NSObject
 {
+    struct {
+        unsigned int allowsMultipleSessions:1;
+    } _flags;
     id <_UINavigationBarTitleRenamerDelegate> _delegate;
-    _UINavigationBarTitleRenamerSession *_currentSession;
+    NSMutableSet *_trackedSessions;
 }
 
++ (id)renameServer;
 - (void).cxx_destruct;
-@property(retain, nonatomic) _UINavigationBarTitleRenamerSession *currentSession; // @synthesize currentSession=_currentSession;
+@property(readonly, nonatomic) NSMutableSet *trackedSessions; // @synthesize trackedSessions=_trackedSessions;
 @property(nonatomic) __weak id <_UINavigationBarTitleRenamerDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)_session:(id)arg1 fileRenameDidEnd:(id)arg2;
+- (void)_session:(id)arg1 fileRenameDidFail:(id)arg2;
+- (void)_sessionDidCancel:(id)arg1;
 - (void)_sessionTextFieldDidEndEditing:(id)arg1;
-- (void)_sessionTextFieldWillEndEditing:(id)arg1;
+- (_Bool)_session:(id)arg1 textFieldShouldEndRenamingWithTitle:(id)arg2;
+- (id)_session:(id)arg1 textFieldWillBeginRenamingWithTitle:(id)arg2 selectedRange:(inout struct _NSRange *)arg3;
+- (id)sessionWithIdentifier:(id)arg1;
 - (void)endSession:(id)arg1;
 - (void)startSession:(id)arg1;
+- (void)sceneWillDeactivateNotification:(id)arg1;
+- (id)description;
+- (void)dealloc;
+- (id)init;
 
 @end
 

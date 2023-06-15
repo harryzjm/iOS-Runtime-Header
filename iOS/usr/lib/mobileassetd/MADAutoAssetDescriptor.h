@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
     _Bool _isMAAutoAsset;
     _Bool _foundByLookupWithoutAssetVersion;
+    _Bool _foundAsPreInstalled;
     _Bool _preSoftwareUpdateAssetStaging;
     _Bool _isPatch;
     _Bool _isOnFilesystem;
@@ -39,6 +40,7 @@ __attribute__((visibility("hidden")))
     NSError *_patchingAttemptError;
 }
 
++ (_Bool)isAutoAssetMetadata:(id)arg1;
 + (long long)totalFilesystemSpaceForAutoAssetDescriptors:(id)arg1;
 + (_Bool)doesMetatadaIndicateEmptyEntry:(id)arg1;
 + (_Bool)supportsSecureCoding;
@@ -65,12 +67,14 @@ __attribute__((visibility("hidden")))
 @property(readonly, retain, nonatomic) NSString *assetSpecifier; // @synthesize assetSpecifier=_assetSpecifier;
 @property(nonatomic) _Bool isPatch; // @synthesize isPatch=_isPatch;
 @property(nonatomic) _Bool preSoftwareUpdateAssetStaging; // @synthesize preSoftwareUpdateAssetStaging=_preSoftwareUpdateAssetStaging;
+@property(nonatomic) _Bool foundAsPreInstalled; // @synthesize foundAsPreInstalled=_foundAsPreInstalled;
 @property(nonatomic) _Bool foundByLookupWithoutAssetVersion; // @synthesize foundByLookupWithoutAssetVersion=_foundByLookupWithoutAssetVersion;
 @property(readonly, nonatomic) _Bool isMAAutoAsset; // @synthesize isMAAutoAsset=_isMAAutoAsset;
 @property(readonly, retain, nonatomic) NSString *assetId; // @synthesize assetId=_assetId;
 @property(readonly, retain, nonatomic) NSString *assetType; // @synthesize assetType=_assetType;
 - (_Bool)isEqualSelector:(id)arg1;
 - (_Bool)isBlankEntry;
+- (id)newSummaryWithoutSelector;
 - (id)summary;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

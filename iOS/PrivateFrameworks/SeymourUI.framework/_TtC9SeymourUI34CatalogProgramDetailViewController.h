@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
 @class MISSING_TYPE;
 
@@ -18,6 +18,11 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *dataProvider;
     MISSING_TYPE *eventHub;
     MISSING_TYPE *localeAnalyzer;
+    MISSING_TYPE *platform;
+    MISSING_TYPE *serviceSubscriptionCache;
+    MISSING_TYPE *storefrontLocalizer;
+    MISSING_TYPE *upNextQueueButton;
+    MISSING_TYPE *upNextQueueButtonPresenter;
     MISSING_TYPE *resignActiveObserver;
     MISSING_TYPE *navigationBarTintColor;
     MISSING_TYPE *lastNavigationBarTintColor;

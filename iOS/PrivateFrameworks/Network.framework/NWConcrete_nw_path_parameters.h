@@ -12,6 +12,7 @@
 __attribute__((visibility("hidden")))
 @interface NWConcrete_nw_path_parameters : NSObject
 {
+    struct nw_parameters_process_path_value process_path_value;
     struct nw_parameters_path_value path_value;
     struct nw_parameters_joinable_path_value joinable_path_value;
     char *account_id;

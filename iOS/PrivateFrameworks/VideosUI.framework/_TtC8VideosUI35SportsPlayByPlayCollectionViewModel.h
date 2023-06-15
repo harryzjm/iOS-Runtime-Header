@@ -11,8 +11,11 @@
 @interface _TtC8VideosUI35SportsPlayByPlayCollectionViewModel : _$s8VideosUI19CollectionViewModelCN
 {
     MISSING_TYPE *numberOfPlays;
+    MISSING_TYPE *queue;
+    MISSING_TYPE *sport;
     MISSING_TYPE *cancellables;
     MISSING_TYPE *returningFromBackground;
+    MISSING_TYPE *sportsSpoilersEnabled;
 }
 
 - (void)willEnterForeground;

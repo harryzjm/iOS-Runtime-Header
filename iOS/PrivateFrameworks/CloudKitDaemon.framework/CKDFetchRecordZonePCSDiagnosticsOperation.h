@@ -8,19 +8,19 @@
 
 @interface CKDFetchRecordZonePCSDiagnosticsOperation
 {
+    CKPCSDiagnosticInformation *_pcsDiagnosticInfo;
     NSString *_identityStatus;
     NSDictionary *_invalidPCSByZoneID;
     NSDictionary *_validPCSByZoneID;
     NSArray *_recordZoneIDs;
-    CKPCSDiagnosticInformation *_pcsDiagnosticInfo;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) CKPCSDiagnosticInformation *pcsDiagnosticInfo; // @synthesize pcsDiagnosticInfo=_pcsDiagnosticInfo;
 @property(retain, nonatomic) NSArray *recordZoneIDs; // @synthesize recordZoneIDs=_recordZoneIDs;
 @property(retain, nonatomic) NSDictionary *validPCSByZoneID; // @synthesize validPCSByZoneID=_validPCSByZoneID;
 @property(retain, nonatomic) NSDictionary *invalidPCSByZoneID; // @synthesize invalidPCSByZoneID=_invalidPCSByZoneID;
 @property(retain, nonatomic) NSString *identityStatus; // @synthesize identityStatus=_identityStatus;
+@property(retain, nonatomic) CKPCSDiagnosticInformation *pcsDiagnosticInfo; // @synthesize pcsDiagnosticInfo=_pcsDiagnosticInfo;
 - (void)main;
 - (int)operationType;
 - (void)_handleRecordZoneFetch:(id)arg1 zoneID:(id)arg2 responseCode:(id)arg3;

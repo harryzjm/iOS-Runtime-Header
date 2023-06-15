@@ -16,7 +16,6 @@
 - (void)audioRecorderStreamHandleIdInvalidated:(unsigned long long)arg1;
 - (void)audioRecorderBuiltInAudioStreamInvalidated:(CSAudioRecorder *)arg1 error:(NSError *)arg2;
 - (void)audioRecorderWillBeDestroyed:(CSAudioRecorder *)arg1;
-- (void)audioRecorderLostMediaserverd:(CSAudioRecorder *)arg1;
 - (void)audioRecorderDisconnected:(CSAudioRecorder *)arg1;
 - (void)voiceTriggerDetectedOnAOP:(NSDictionary *)arg1;
 - (void)audioRecorder:(CSAudioRecorder *)arg1 didSetAudioSessionActive:(_Bool)arg2;

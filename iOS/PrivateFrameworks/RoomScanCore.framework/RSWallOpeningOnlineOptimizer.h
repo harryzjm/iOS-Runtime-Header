@@ -17,12 +17,11 @@
     struct TracingMap _tracing_map;
     struct ONLINE_CONFIG _online_config;
     // Error: parsing type: '{Tensor<__fp16, 2UL>="_vptr$Tensor"^^?"_view"{Inside_View<2UL>="_shape_of_view"{Shape<2UL>="_sp"[6Q]}"_stride_of_view"{Shape<2UL>="_sp"[6Q]}"_length_of_view"Q"_offset_of_view"Q}"_storage"{shared_ptr<wt::Storage<__fp16>>="__ptr_"^v"__cntrl_"^{__shared_weak_count}}"_is_contiguous"B"_is_empty"B"_buffer_head"^ }', name: _density_map
+    _Bool _isCurvedWallEnabled;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)reset;
-- (id)runWithFloorPlan:(id)arg1 pointCloud:(id)arg2 temporalMeta:(id)arg3 geometryMeta:(id)arg4 semanticImage:(id)arg5 doorImage:(id)arg6 maxDensity:(float)arg7 lmap:(const void *)arg8;
 - (id)init;
 
 @end

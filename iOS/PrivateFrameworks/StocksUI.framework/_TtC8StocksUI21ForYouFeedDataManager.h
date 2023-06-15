@@ -17,8 +17,10 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *feedServiceConfigFetcher;
     MISSING_TYPE *appConfigurationManager;
     MISSING_TYPE *bundleSubscriptionManager;
+    MISSING_TYPE *watchlistManager;
     MISSING_TYPE *accessQueue;
     MISSING_TYPE *lastRefreshDate;
+    MISSING_TYPE *cancellables;
 }
 
 - (void).cxx_destruct;

@@ -13,6 +13,7 @@
 + (id)safeCategoryTargetClassName;
 - (void)faceViewWantsCustomKeylineFramesReloadedForEditMode:(long long)arg1;
 - (void)configureWithDuration:(double)arg1 block:(CDUnknownBlockType)arg2;
+- (void)viewDidAppear:(_Bool)arg1;
 - (void)_accessibilityLoadAccessibilityInformation;
 
 @end

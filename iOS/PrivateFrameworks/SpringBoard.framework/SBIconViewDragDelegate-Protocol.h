@@ -12,6 +12,7 @@
 @protocol SBIconViewDragDelegate <NSObject>
 
 @optional
+- (_Bool)dragsSupportSystemDragsForIconView:(SBIconView *)arg1;
 - (UITargetedDragPreview *)iconView:(SBIconView *)arg1 dragPreviewForItem:(UIDragItem *)arg2 session:(id <UIDragSession>)arg3 previewParameters:(UIDragPreviewParameters *)arg4;
 - (NSURL *)launchURLForIconView:(SBIconView *)arg1;
 - (NSSet *)launchActionsForIconView:(SBIconView *)arg1;

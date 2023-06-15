@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <coreroutine/MLFeatureProvider-Protocol.h>
-
 @class NSSet;
 
 __attribute__((visibility("hidden")))
-@interface RTPlaceTypeClassifierModelRankerOutput : NSObject <MLFeatureProvider>
+@interface RTPlaceTypeClassifierModelRankerOutput : NSObject
 {
     double _target;
 }

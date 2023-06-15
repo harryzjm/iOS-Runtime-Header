@@ -10,5 +10,8 @@
 
 @protocol HUPreloadableViewController <NSObject>
 - (NAFuture *)hu_preloadContent;
+
+@optional
+- (_Bool)needsToWaitForPreload;
 @end
 

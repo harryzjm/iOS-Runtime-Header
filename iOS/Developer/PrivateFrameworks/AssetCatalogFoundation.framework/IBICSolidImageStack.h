@@ -14,6 +14,7 @@
 + (id)defaultInstanceForIdioms:(id)arg1 enforceStrictIdioms:(_Bool)arg2;
 + (id)defaultsInstanceWithImageStackLayerCreator:(CDUnknownBlockType)arg1;
 + (id)classNameComponents;
++ (id)exportedItemFileExtension;
 + (id)catalogItemFileExtension;
 - (_Bool)populateNamedAssetImportInfo:(id)arg1 allCompiledItems:(id)arg2 withOptions:(id)arg3 error:(id *)arg4;
 - (id)coreUILayerReferenceRecordForStackLayer:(id)arg1 candidateGenerator:(CDUnknownBlockType)arg2 isBaseLayer:(_Bool)arg3;

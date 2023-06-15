@@ -11,6 +11,7 @@
 @protocol SBSpotlightMultiplexingViewControllerDelegate <SPUIRemoteSearchViewDelegate>
 
 @optional
+- (void)spotlightMultiplexingViewController:(SBSpotlightMultiplexingViewController *)arg1 searchContentAvailabilityDidChange:(_Bool)arg2;
 - (void)spotlightMultiplexingViewController:(SBSpotlightMultiplexingViewController *)arg1 externalKeyboardViewContainsKeyboardDidChange:(_Bool)arg2;
 @end
 

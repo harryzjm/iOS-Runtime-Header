@@ -5,7 +5,7 @@
 //
 
 @protocol TSDRealignablePathSource
-@property(readonly, nonatomic) const struct CGPath *pathWithoutFlips;
+@property(readonly, nonatomic) struct CGPath *pathWithoutFlips;
 - (void)alignToOrigin;
 @end
 

@@ -13,6 +13,7 @@
     MISSING_TYPE *viewModel;
     MISSING_TYPE *viewModelSubject;
     MISSING_TYPE *overlayViewModelFactory;
+    MISSING_TYPE *scrubberForecastHintManager;
 }
 
 @end

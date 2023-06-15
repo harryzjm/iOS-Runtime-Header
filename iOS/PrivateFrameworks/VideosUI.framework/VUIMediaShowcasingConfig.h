@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
     _Bool _carouselBehaviorEnabled;
     _Bool _autoAdvanceToNextPageEnabled;
     _Bool _parallaxEnabled;
-    _Bool _shouldShowFullScreenButton;
     _Bool _gradientUsesImageColor;
     float _backgroundVolume;
     float _foregroundVolume;
@@ -23,6 +22,8 @@ __attribute__((visibility("hidden")))
     float _parallaxRatio;
     float _metadataFadeOutSpeed;
     float _metadataFadeInSpeed;
+    float _swipeCompletionSpeedFactor;
+    float _swipeSpeedFactor;
     double _playbackDelayInterval;
     double _animationTransitionDuration;
     double _backgroundMediaTransferAnimationDuration;
@@ -35,12 +36,15 @@ __attribute__((visibility("hidden")))
     double _advanceToNextPageDelayDurationImageOnly;
     double _itemHoverDelayDuration;
     double _hideMuteButtonDelayDuration;
+    double _hidePageIndicatorsDelayDuration;
 }
 
+@property(nonatomic) float swipeSpeedFactor; // @synthesize swipeSpeedFactor=_swipeSpeedFactor;
+@property(nonatomic) double hidePageIndicatorsDelayDuration; // @synthesize hidePageIndicatorsDelayDuration=_hidePageIndicatorsDelayDuration;
 @property(nonatomic) double hideMuteButtonDelayDuration; // @synthesize hideMuteButtonDelayDuration=_hideMuteButtonDelayDuration;
 @property(nonatomic) _Bool gradientUsesImageColor; // @synthesize gradientUsesImageColor=_gradientUsesImageColor;
-@property(nonatomic) _Bool shouldShowFullScreenButton; // @synthesize shouldShowFullScreenButton=_shouldShowFullScreenButton;
 @property(nonatomic) double itemHoverDelayDuration; // @synthesize itemHoverDelayDuration=_itemHoverDelayDuration;
+@property(nonatomic) float swipeCompletionSpeedFactor; // @synthesize swipeCompletionSpeedFactor=_swipeCompletionSpeedFactor;
 @property(nonatomic) float metadataFadeInSpeed; // @synthesize metadataFadeInSpeed=_metadataFadeInSpeed;
 @property(nonatomic) float metadataFadeOutSpeed; // @synthesize metadataFadeOutSpeed=_metadataFadeOutSpeed;
 @property(nonatomic) float parallaxRatio; // @synthesize parallaxRatio=_parallaxRatio;

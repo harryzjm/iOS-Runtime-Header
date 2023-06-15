@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class NSArray, UIImage, VUIScoreboardLayout;
 @protocol VUIScorecardViewDelegate;
@@ -40,6 +40,7 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)_calculateMetricsOfScorecard;
 - (void)drawRect:(struct CGRect)arg1;
 - (void)_calculateColumnSpacing;
+- (_Bool)_useAbbreviationsUI;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)invalidateData;
 

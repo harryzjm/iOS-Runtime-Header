@@ -14,6 +14,7 @@
 @property(readonly, copy) NSSet *walletKeys;
 @property(readonly, copy) NSString *secureElementIdentifier;
 @property __weak id <HMDWalletPassLibraryDelegate> delegate;
+- (_Bool)isExpressModeEnabledForPassUniqueIdentifier:(NSString *)arg1 serialNumber:(NSString *)arg2;
 - (NSURL *)createTemporaryPassDirectoryURL;
 - (_Bool)removePassWithTypeIdentifier:(NSString *)arg1 serialNumber:(NSString *)arg2;
 - (void)deleteKeyMaterialForSubCredentialId:(NSString *)arg1;

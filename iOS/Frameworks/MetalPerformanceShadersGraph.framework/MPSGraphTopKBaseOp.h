@@ -8,7 +8,7 @@
 
 @interface MPSGraphTopKBaseOp : MPSGraphOperation
 {
-    unsigned long long _K;
+    _Bool _smallest;
 }
 
 @end

@@ -11,6 +11,7 @@
 @protocol MPMutablePersonalStoreIdentifiers <MPPersonalStoreIdentifiers>
 @property(copy, nonatomic) NSString *playbackAuthorizationToken;
 @property(copy, nonatomic) NSString *recommendationID;
+@property(copy, nonatomic) NSString *cloudArtistID;
 @property(copy, nonatomic) NSString *cloudAlbumID;
 @property(nonatomic) unsigned long long cloudID;
 @end

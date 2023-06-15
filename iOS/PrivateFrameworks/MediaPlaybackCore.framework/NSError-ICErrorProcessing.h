@@ -12,8 +12,8 @@
 + (_Bool)_isAgeVerificationError:(id)arg1;
 + (id)errorForICError:(id)arg1 response:(id)arg2;
 + (id)payloadValueFromJSONValue:(id)arg1;
-- (id)mpc_remoteCommandDialog;
 @property(readonly, nonatomic) MPRemoteCommandStatus *mpc_remoteCommandStatus;
+@property(readonly, nonatomic) _Bool mpc_isKeyServerNoOfflineSlotError;
 @property(readonly, nonatomic) _Bool mpc_isLeaseTakenError;
 - (_Bool)mpc_isSubscriptionRequiredError;
 @property(readonly, nonatomic) _Bool mpc_isResourceUnavailableError;

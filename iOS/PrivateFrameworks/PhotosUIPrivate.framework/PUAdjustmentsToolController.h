@@ -55,8 +55,6 @@ __attribute__((visibility("hidden")))
 - (void)didBecomeActiveTool;
 - (void)_performInitialAction;
 - (void)willBecomeActiveTool;
-- (_Bool)installLivePhotoPlaybackGestureRecognizer:(id)arg1;
-- (_Bool)installTogglePreviewGestureRecognizer:(id)arg1;
 - (void)decreaseSliderValue:(_Bool)arg1;
 - (void)increaseSliderValue:(_Bool)arg1;
 - (_Bool)wantsSliderKeyControl;
@@ -65,6 +63,8 @@ __attribute__((visibility("hidden")))
 - (id)localizedResetToolActionTitle;
 - (_Bool)canResetToDefaultValue;
 - (id)centerToolbarView;
+- (id)selectedToolbarIconGlyphName;
+- (id)toolbarIconGlyphName;
 - (id)toolbarIcon;
 - (id)localizedName;
 - (void)_updateBadgeTextWithInfo:(id)arg1;
@@ -74,7 +74,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateBackgroundAnimated:(_Bool)arg1;
 - (void)updateAdjustmentControls;
 - (void)mediaViewIsReady;
-- (void)setupWithAsset:(id)arg1 compositionController:(id)arg2 editSource:(id)arg3 overcaptureEditSource:(id)arg4 valuesCalculator:(id)arg5;
+- (void)setupWithAsset:(id)arg1 compositionController:(id)arg2 editSource:(id)arg3 valuesCalculator:(id)arg4;
 - (void)viewDidLayoutSubviews;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)willTransitionToTraitCollection:(id)arg1 withTransitionCoordinator:(id)arg2;

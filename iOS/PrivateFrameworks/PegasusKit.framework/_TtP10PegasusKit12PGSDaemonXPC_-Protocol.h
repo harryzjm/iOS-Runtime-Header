@@ -10,6 +10,6 @@
 - (void)reportPegasusFeedbackWithPayloadData:(NSData *)arg1 forUseragent:(NSString *)arg2;
 - (void)getIsDeviceSetupCompleteWithReply:(void (^)(long long, NSError *))arg1;
 - (void)getBagDataWithReply:(void (^)(NSData *, NSError *))arg1;
-- (void)getQueryContextDataWithReply:(void (^)(NSData *, NSError *))arg1;
+- (void)getQueryContextDataWithRequestor:(unsigned long long)arg1 reply:(void (^)(NSData *, NSError *))arg2;
 @end
 

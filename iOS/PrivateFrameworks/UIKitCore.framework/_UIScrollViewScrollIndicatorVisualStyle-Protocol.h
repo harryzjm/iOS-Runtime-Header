@@ -4,9 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <UIKitCore/NSObject-Protocol.h>
+
 @class UIColor, UIView;
 
-@protocol _UIScrollViewScrollIndicatorVisualStyle
+@protocol _UIScrollViewScrollIndicatorVisualStyle <NSObject>
+@property(readonly, nonatomic) _Bool doesExpand;
 @property(readonly, nonatomic) _Bool clipsToBounds;
 @property(readonly, nonatomic) struct UIEdgeInsets cursorHitTestingInsets;
 @property(readonly, nonatomic) double staticDimensionExpandedSize;

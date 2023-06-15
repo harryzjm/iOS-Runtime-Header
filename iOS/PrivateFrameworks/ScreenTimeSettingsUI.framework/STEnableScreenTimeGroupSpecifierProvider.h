@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property __weak UIViewController *rootViewController; // @synthesize rootViewController=_rootViewController;
 @property(retain) PSSpecifier *setupScreenTimeSpecifier; // @synthesize setupScreenTimeSpecifier=_setupScreenTimeSpecifier;
-- (void)saveValuesForModel:(id)arg1;
+- (_Bool)isHidden;
 - (void)setupScreenTime:(id)arg1;
 - (id)enableScreenTimeFooterText;
 - (void)profileConnectionDidReceiveEffectiveSettingsChangedNotification:(id)arg1 userInfo:(id)arg2;

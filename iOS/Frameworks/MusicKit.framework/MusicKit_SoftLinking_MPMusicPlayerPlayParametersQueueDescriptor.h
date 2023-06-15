@@ -14,9 +14,11 @@ __attribute__((visibility("hidden")))
     MPMusicPlayerPlayParametersQueueDescriptor *_underlyingQueueDescriptor;
     NSString *_playActivityFeatureName;
     MusicKit_SoftLinking_MPMusicPlayerPlayParameters *_startItemPlayParameters;
+    MusicKit_SoftLinking_MPMusicPlayerPlayParameters *_containerPlayParameters;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) MusicKit_SoftLinking_MPMusicPlayerPlayParameters *containerPlayParameters; // @synthesize containerPlayParameters=_containerPlayParameters;
 @property(retain, nonatomic) MusicKit_SoftLinking_MPMusicPlayerPlayParameters *startItemPlayParameters; // @synthesize startItemPlayParameters=_startItemPlayParameters;
 @property(copy, nonatomic) NSString *playActivityFeatureName; // @synthesize playActivityFeatureName=_playActivityFeatureName;
 - (void)setEndTime:(double)arg1 forItemWithPlayParameters:(id)arg2;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
 @class MISSING_TYPE, NSArray, UILabel;
 
@@ -18,7 +18,9 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *dependencies;
     MISSING_TYPE *eventHub;
     MISSING_TYPE *marketingMetricFieldsProvider;
+    MISSING_TYPE *platform;
     MISSING_TYPE *storefrontLocalizer;
+    MISSING_TYPE *menuPresenter;
     MISSING_TYPE *purchaseCoordinator;
     MISSING_TYPE *purchaseHandler;
     MISSING_TYPE *dynamicOfferCoordinator;
@@ -32,6 +34,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *bottomBlurView;
     MISSING_TYPE *titleLabel;
     MISSING_TYPE *subtitleLabel;
+    MISSING_TYPE *ellipsisButton;
     MISSING_TYPE *gradientMaskLayer;
 }
 

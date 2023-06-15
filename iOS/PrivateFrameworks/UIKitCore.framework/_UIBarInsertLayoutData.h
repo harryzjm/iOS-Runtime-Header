@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UIBarInsertLayoutData : NSObject <NSCopying>
+@interface _UIBarInsertLayoutData : NSObject
 {
     _Bool _collapsible;
     _Bool _prefersExpanded;
@@ -20,6 +18,7 @@ __attribute__((visibility("hidden")))
     NSString *_identifier;
     double _minimumHeight;
     double _preferredHeight;
+    double _bottomInsetForTransitionProgress;
     double _assignedHeight;
     double _collapsingHeight;
     long long _priority;

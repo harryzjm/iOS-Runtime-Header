@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     double _scaleUpPoints;
     double _scaleUpAnimationResponse;
     double _scaleUpAnimationDampingRatio;
+    double _progressiveScaleUpAnimationResponse;
     double _dampedAnimationResponse;
     double _dampedAnimationDampingRatio;
 }
@@ -26,6 +27,7 @@ __attribute__((visibility("hidden")))
 + (_Bool)pointerSlipMatchesContentSlip;
 @property(nonatomic) double dampedAnimationDampingRatio; // @synthesize dampedAnimationDampingRatio=_dampedAnimationDampingRatio;
 @property(nonatomic) double dampedAnimationResponse; // @synthesize dampedAnimationResponse=_dampedAnimationResponse;
+@property(nonatomic) double progressiveScaleUpAnimationResponse; // @synthesize progressiveScaleUpAnimationResponse=_progressiveScaleUpAnimationResponse;
 @property(nonatomic) double scaleUpAnimationDampingRatio; // @synthesize scaleUpAnimationDampingRatio=_scaleUpAnimationDampingRatio;
 @property(nonatomic) double scaleUpAnimationResponse; // @synthesize scaleUpAnimationResponse=_scaleUpAnimationResponse;
 @property(nonatomic) double scaleUpPoints; // @synthesize scaleUpPoints=_scaleUpPoints;

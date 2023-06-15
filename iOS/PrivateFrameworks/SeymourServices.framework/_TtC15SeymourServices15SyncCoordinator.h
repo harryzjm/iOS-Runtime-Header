@@ -20,6 +20,7 @@
     MISSING_TYPE *subscriptionToken;
     MISSING_TYPE *_pairedSyncEnabled;
     MISSING_TYPE *_serverSyncEnabled;
+    MISSING_TYPE *_ignoreSyncTimer;
 }
 
 @end

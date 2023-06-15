@@ -13,9 +13,6 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)reset;
-- (void)processFloorPlan:(id)arg1;
-- (id)runWithFrame:(id)arg1 keyframes:(id)arg2 cameraPose:(CDStruct_14d5dc5e)arg3;
 - (id)init;
 
 @end

@@ -25,6 +25,7 @@
 @property(readonly) XCUIElement *element; // @synthesize element=_element;
 @property(readonly) struct CGPoint screenPoint;
 - (struct CGPoint)_userSpaceScreenPoint;
+- (struct CGVector)_originIndependentOffset;
 - (id)device;
 @property(readonly) XCUIElement *referencedElement;
 - (id)coordinateWithOffset:(struct CGVector)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
 @class MISSING_TYPE, NSArray;
 
@@ -12,7 +12,8 @@ __attribute__((visibility("hidden")))
 @interface _TtC11WeatherMaps25InteractiveViewController : UIViewController
 {
     MISSING_TYPE *delegate;
-    MISSING_TYPE *mapLocationAccessibilityModelManager;
+    MISSING_TYPE *controlsVisiblity;
+    MISSING_TYPE *isDismissing;
     MISSING_TYPE *$__lazy_storage_$_mapView;
     MISSING_TYPE *configuration;
     MISSING_TYPE *selectedLocationZoomLevel;
@@ -22,6 +23,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *geocodeManager;
     MISSING_TYPE *interaction;
     MISSING_TYPE *locationMetadataManager;
+    MISSING_TYPE *mapLocationAccessibilityModelManager;
     MISSING_TYPE *overlayManager;
     MISSING_TYPE *overlayProgressReporter;
     MISSING_TYPE *visibleMapRect;
@@ -44,14 +46,31 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *verticalSpacingAttributionToScrubber;
     MISSING_TYPE *$__lazy_storage_$_backgroundEffectManagerBlur;
     MISSING_TYPE *$__lazy_storage_$_backgroundEffectManagerUltraThin;
+    MISSING_TYPE *$__lazy_storage_$_showDebugConsole;
+    MISSING_TYPE *$__lazy_storage_$_backgroundEffectManagerVibrancyFill;
+    MISSING_TYPE *supportsControlEffects;
+    MISSING_TYPE *contentStatusBannerViewController;
+    MISSING_TYPE *pendingBannerReplacementBlock;
     MISSING_TYPE *backdropLayerBlur;
     MISSING_TYPE *backdropLayerUltraThin;
+    MISSING_TYPE *wasPlayingBeforeBackgrounded;
+    MISSING_TYPE *wasPlayingBeforeSonification;
+    MISSING_TYPE *overlayIsLoading;
+    MISSING_TYPE *overlayLoadingWasInterruptedByUserInteraction;
+    MISSING_TYPE *refreshTimer;
+    MISSING_TYPE *overlayAccessibilityDataManager;
+    MISSING_TYPE *overlaySonifier;
+    MISSING_TYPE *accessibilityFrameDateFormatter;
+    MISSING_TYPE *onMapEventHandler;
+    MISSING_TYPE *animationDelegates;
 }
 
 - (void).cxx_destruct;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (void)dismissFromKeyboard;
 - (void)zoomOut;
 - (void)zoomIn;
+- (void)selectWindOverlay;
 - (void)selectAirQualityOverlay;
 - (void)selectPrecipitationOverlay;
 - (void)selectTemperatureOverlay;
@@ -59,11 +78,17 @@ __attribute__((visibility("hidden")))
 - (void)didHoverMap:(id)arg1;
 - (void)didTapMap:(id)arg1;
 - (void)mapGestureDidChange;
+- (void)dealloc;
+- (void)didMoveToForeground;
+- (void)didMoveToBackground;
+- (_Bool)accessibilityPerformMagicTap;
 - (_Bool)accessibilityPerformEscape;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)didMoveToParentViewController:(id)arg1;
 - (void)viewDidLayoutSubviews;
+- (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidLoad;
+- (void)handleVoiceOverStatusDidChangeWithNotification:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 
 @end

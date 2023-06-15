@@ -6,16 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSMutableDictionary, VCRateControlBandwidthEstimatorMap, VCRateControlOWRDEstimator, VCRateControlServerBag, VCStatisticsCollectorQueue, VCStatisticsHistory;
+@class VCRateControlBandwidthEstimatorMap, VCRateControlOWRDEstimator, VCRateControlServerBag, VCStatisticsCollectorQueue, VCStatisticsHistory;
 
 __attribute__((visibility("hidden")))
 @interface AVCStatisticsCollector : NSObject
 {
-    NSMutableDictionary *_statistics;
     struct tagVCStatisticsCollection *_statisticsCollection;
-    NSMutableDictionary *_statisticChangeHandlerDictionary;
-    NSDictionary *_statisticChangeHandlerDictionaryCache;
-    _Bool _isStatisticChangeHandlerDictionaryModified;
     VCRateControlBandwidthEstimatorMap *_bandwidthEstimatorMap;
     VCRateControlOWRDEstimator *_owrdEstimator;
     VCStatisticsHistory *_history;
@@ -25,7 +21,7 @@ __attribute__((visibility("hidden")))
     unsigned int _radioAccessTechnology;
     unsigned int _mode;
     _Bool _useExternalThread;
-    _Atomic _Bool _isStarted;
+    _Bool _isStarted;
     unsigned int _sharedEstimatedBandwidth;
     unsigned int _sharedEstimatedBandwidthUncapped;
     unsigned int _sharedRemoteEstimatedBandwidth;
@@ -42,10 +38,19 @@ __attribute__((visibility("hidden")))
     unsigned int _feedbackOutOfOrderTotalCount;
     _Bool _resetRemoteAudioPacketReceived;
     struct _opaque_pthread_rwlock_t _statisticsCollectionLock;
+    struct __CFAllocator *_statisticsChangeHandlerEntryAllocator;
+    unsigned int _nextChangeHandlerIdentifier;
+    struct _VCSingleLinkedList _statisticsChangeHandlers[14];
+    struct _opaque_pthread_rwlock_t _statisticsChangeHandlersLock;
+    struct __CFAllocator *_changeHandlerRequestAllocator;
+    struct tagAVCStatisticsCollectorChangedHandlerRequest _changeHandlerRequests;
+    struct os_unfair_lock_s _changeHandlerRequestsLock;
+    struct _opaque_pthread_mutex_t _startMutex;
 }
 
+@property(readonly, nonatomic) _Bool isStarted; // @synthesize isStarted=_isStarted;
+@property(readonly, nonatomic) _Bool fastSuddenBandwidthDetectionEnabled; // @synthesize fastSuddenBandwidthDetectionEnabled=_fastSuddenBandwidthDetectionEnabled;
 @property(retain, nonatomic) VCRateControlServerBag *serverBag; // @synthesize serverBag=_serverBag;
-@property(nonatomic) _Bool fastSuddenBandwidthDetectionEnabled; // @synthesize fastSuddenBandwidthDetectionEnabled=_fastSuddenBandwidthDetectionEnabled;
 @property(nonatomic) unsigned char mediaControlInfoFECFeedbackVersion; // @synthesize mediaControlInfoFECFeedbackVersion=_mediaControlInfoFECFeedbackVersion;
 @property(nonatomic) unsigned int expectedBitrate; // @synthesize expectedBitrate=_expectedBitrate;
 @property(nonatomic) unsigned int estimatedBandwidthCap; // @synthesize estimatedBandwidthCap=_estimatedBandwidthCap;
@@ -54,31 +59,11 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) unsigned int sharedEstimatedBandwidth; // @synthesize sharedEstimatedBandwidth=_sharedEstimatedBandwidth;
 @property(nonatomic) unsigned int radioAccessTechnology; // @synthesize radioAccessTechnology=_radioAccessTechnology;
 @property(nonatomic) unsigned int mode; // @synthesize mode=_mode;
-- (void)addMostBurstyLossInfo:(CDStruct_7df19fcb *)arg1;
-- (void)addRoundTripTimeInfo:(CDStruct_7df19fcb *)arg1;
-- (void)addActualBitrateInfo:(CDStruct_7df19fcb *)arg1;
-- (void)addPacketLossInfo:(CDStruct_7df19fcb *)arg1;
-- (void)computeOWRDEstimation:(CDStruct_7df19fcb *)arg1;
-- (void)computeBWEstimation:(CDStruct_7df19fcb *)arg1;
-- (void)updateLocalEstimatedBandwidthWithArrivalTime:(double)arg1;
-- (void)updateLocalEstimatedBandwidth;
-- (void)recordRemoteEstimatedBandwidthForLargeFrameInfo:(CDStruct_7df19fcb *)arg1;
-- (void)updateMaxLocalBurstyLoss:(unsigned int)arg1 isAudio:(_Bool)arg2;
-- (void)updatePacketReceivedCount:(CDStruct_7df19fcb *)arg1;
-- (void)computeOtherStatistics:(CDStruct_7df19fcb *)arg1;
-- (void)addStatisticsHistory:(CDStruct_7df19fcb *)arg1;
-- (void)addEntriesFromStatistics:(CDStruct_7df19fcb)arg1;
-- (void)updateStatisticChangeHandlerDictionaryCache;
-- (void)processVCStatisticsInternal:(CDStruct_7df19fcb)arg1;
-- (CDStruct_7df19fcb)getVCStatisticsWithType:(int)arg1 time:(double)arg2;
+- (struct tagVCStatisticsMessage)getVCStatisticsWithType:(int)arg1 time:(double)arg2;
 - (_Bool)shouldProcessAtTime:(double)arg1;
-- (void)drainAndProcessVCStatistics:(CDStruct_7df19fcb)arg1;
-- (void)setVCStatistics:(CDStruct_7df19fcb)arg1;
 - (void)unregisterAllStatisticsChangeHandlers;
 - (_Bool)unregisterStatisticsChangeHandlerWithType:(int)arg1 handlerIndex:(int)arg2;
 - (int)registerStatisticsChangeHandlerWithType:(int)arg1 handler:(CDUnknownBlockType)arg2;
-@property(readonly, nonatomic) _Bool isStarted;
-- (void)enableBWELogDump:(void *)arg1;
 - (id)getStatistics:(id)arg1;
 - (void)setStatistics:(id)arg1;
 - (void)stop;

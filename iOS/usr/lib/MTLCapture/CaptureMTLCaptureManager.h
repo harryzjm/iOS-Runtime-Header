@@ -6,17 +6,19 @@
 
 #import <Metal/MTLCaptureManager.h>
 
-@class NSString;
+@class NSObject, NSString;
+@protocol OS_dispatch_semaphore;
 
-__attribute__((visibility("hidden")))
 @interface CaptureMTLCaptureManager : MTLCaptureManager
 {
     struct GTTraceContext *_traceContext;
     struct GTTraceStream *_traceStream;
     NSString *_gputracePath;
-    _Bool _isToolTriggeredCapture;
+    _Bool _isToolManager;
+    NSObject<OS_dispatch_semaphore> *_waitResponse;
 }
 
++ (id)toolsCaptureManager;
 - (void).cxx_destruct;
 - (id)newCaptureScopeWithCommandQueue:(id)arg1;
 - (id)newCaptureScopeWithDevice:(id)arg1;
@@ -28,7 +30,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)startCaptureWithDescriptor:(id)arg1 error:(id *)arg2;
 - (_Bool)supportsDestination:(long long)arg1;
 - (void)dealloc;
-- (id)initWithCaptureContext:(struct GTTraceContext *)arg1;
+- (id)initWithCaptureContext:(struct GTTraceContext *)arg1 andIsToolsManager:(_Bool)arg2;
 @property(readonly) struct GTTraceStream *traceStream;
 
 // Remaining properties

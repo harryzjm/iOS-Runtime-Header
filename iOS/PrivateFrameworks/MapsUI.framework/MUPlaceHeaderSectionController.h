@@ -6,7 +6,7 @@
 
 #import "MUPlaceSectionController.h"
 
-@class MUPlaceHeaderSectionControllerConfiguration, MUPlaceHeaderView, NSString;
+@class MUPlaceHeaderSectionControllerConfiguration, MUPlaceHeaderView, NSString, UILayoutGuide, UIView;
 @protocol MUPlaceHeaderSectionControllerDelegate, _MKPlaceItem;
 
 __attribute__((visibility("hidden")))
@@ -21,6 +21,8 @@ __attribute__((visibility("hidden")))
 + (double)minimalModeHeight;
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <MUPlaceHeaderSectionControllerDelegate> headerDelegate; // @synthesize headerDelegate=_headerDelegate;
+@property(readonly, nonatomic) UIView *viewForContainmentString;
+- (void)reloadTrailingConstraint;
 @property(readonly, nonatomic) _Bool shouldBlurChromeHeaderButtons;
 - (void)_populateRevealedAnalyticsModule:(id)arg1;
 - (_Bool)isImpressionable;
@@ -34,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (void)verifiedBusinessHeaderScrollPositionChanged:(double)arg1;
 - (double)verifiedBusinessHeaderHeight;
 - (void)hideTitle:(_Bool)arg1;
+@property(readonly, nonatomic) UILayoutGuide *headerViewTitleLabelToTopLayoutGuide;
 - (id)sectionView;
 - (void)_setupHeaderView;
 - (id)initWithPlaceItem:(id)arg1 configuration:(id)arg2;

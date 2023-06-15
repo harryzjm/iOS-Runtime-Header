@@ -7,6 +7,6 @@
 #import <MediaPlayer/MPLocalMediaQueryRemotePlaybackQueue.h>
 
 @interface MPLocalMediaQueryRemotePlaybackQueue (MPCAdditions)
-- (void)getPlaybackContextWithCompletion:(CDUnknownBlockType)arg1;
+- (id)asMusicPlaybackContextWithError:(id *)arg1;
 @end
 

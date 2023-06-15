@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <PhotosUIPrivate/NSObject-Protocol.h>
+#import <PhotosUIPrivate/PUPosterEnvironment-Protocol.h>
 
 @class NSURL;
 
-@protocol PUWallpaperRenderingEnvironment <NSObject>
+@protocol PUWallpaperRenderingEnvironment <PUPosterEnvironment>
+@property(readonly, nonatomic) long long pu_deviceOrientation;
 @property(readonly, nonatomic) long long pu_contentsType;
 @property(readonly, nonatomic) NSURL *pu_assetDirectory;
-@property(readonly, nonatomic) unsigned long long pu_significantEventsCounter;
 @property(readonly, nonatomic, getter=pu_backlightLuminance) long long pu_backlightLuminance;
 @property(readonly, nonatomic, getter=pu_isPlayground) _Bool pu_playground;
 @property(readonly, nonatomic, getter=pu_isPreview) _Bool pu_preview;

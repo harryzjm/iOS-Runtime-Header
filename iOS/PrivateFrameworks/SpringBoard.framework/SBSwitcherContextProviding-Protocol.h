@@ -6,10 +6,15 @@
 
 #import <SpringBoard/SBChainableModifierContext-Protocol.h>
 
-@class NSArray, NSOrderedSet, NSSet, NSString, SBAppLayout, SBAppSwitcherSettings, SBDisplayItem, SBDisplayItemLayoutAttributesCalculator, SBEntityRemovalAnimationSettings, SBFHomeGrabberSettings, SBHomeGestureSettings, SBMedusaSettings, SBSwitcherChamoisLayoutAttributes, SBSwitcherModifier, SBSwitcherShelf, SBTransitionSwitcherModifierEvent;
+@class NSArray, NSSet, NSString, SBAppLayout, SBAppSwitcherSettings, SBDisplayItem, SBDisplayItemGridLayoutRestrictionInfo, SBDisplayItemLayoutAttributesCalculator, SBEntityRemovalAnimationSettings, SBFHomeGrabberSettings, SBHomeGestureSettings, SBMedusaSettings, SBSwitcherChamoisLayoutAttributes, SBSwitcherModifier, SBSwitcherShelf, SBTransitionSwitcherModifierEvent;
 @protocol SBSwitcherLayoutElementProviding;
 
 @protocol SBSwitcherContextProviding <SBChainableModifierContext>
+- (SBAppLayout *)sourceLeafAppLayoutForCenterItem:(SBDisplayItem *)arg1;
+- (SBAppLayout *)appLayoutAtLocation:(struct CGPoint)arg1 withDraggedItem:(SBDisplayItem *)arg2 environment:(long long)arg3;
+- (NSSet *)proposedAppLayoutsForWindowDrag;
+- (NSSet *)draggingAppLayoutsForWindowDrag;
+- (SBAppLayout *)appLayoutOnStage;
 - (SBAppLayout *)appLayoutByBringingItemToFront:(SBDisplayItem *)arg1 inAppLayout:(SBAppLayout *)arg2;
 - (long long)displayOrdinal;
 - (_Bool)isDisplayEmbedded;
@@ -48,6 +53,7 @@
 - (struct CGRect)homeScreenIconFrameForAppLayout:(SBAppLayout *)arg1;
 - (NSArray *)appLayoutsToEnsureExistForMainTransitionEvent:(SBTransitionSwitcherModifierEvent *)arg1;
 - (_Bool)isLayoutRoleContentReady:(long long)arg1 inAppLayout:(SBAppLayout *)arg2;
+- (_Bool)isMedusaHostedKeyboardVisible;
 - (_Bool)isSoftwareKeyboardVisible;
 - (_Bool)prefersDockHidden;
 - (_Bool)prefersStripHidden;
@@ -63,11 +69,14 @@
 - (_Bool)isDevicePad;
 - (_Bool)anyHighlightedAppLayoutsForContinuousExposeIdentifier:(NSString *)arg1;
 - (NSArray *)appLayoutsForContinuousExposeIdentifier:(NSString *)arg1;
-- (NSOrderedSet *)continuousExposeIdentifiers;
-- (unsigned long long)numberOfVisibleContinuousExposeIdentifiersWhileInApp;
+- (unsigned long long)newContinuousExposeIdentifiersGenerationCount;
+- (unsigned long long)continuousExposeIdentifiersGenerationCount;
+- (NSArray *)continuousExposeIdentifiersInStrip;
+- (NSArray *)continuousExposeIdentifiersInSwitcher;
 - (long long)numberOfHiddenAppLayoutsForBundleIdentifier:(NSString *)arg1;
 - (long long)numberOfVisibleAppLayoutsForBundleIdentifier:(NSString *)arg1;
 - (long long)numberOfVisibleCards;
+- (SBDisplayItemGridLayoutRestrictionInfo *)layoutRestrictionInfoForItem:(SBDisplayItem *)arg1;
 - (SBDisplayItemLayoutAttributesCalculator *)displayItemLayoutAttributesCalculator;
 - (SBSwitcherChamoisLayoutAttributes *)chamoisLayoutAttributes;
 - (SBEntityRemovalAnimationSettings *)entityRemovalSettings;
@@ -84,7 +93,8 @@
 - (_Bool)homeScreenHasWidgetCenterOrLibraryOpen;
 - (_Bool)homeScreenHasOpenFolder;
 - (_Bool)isFloatingDockGesturePossible;
-- (double)continuousExposeAppStripUnoccludedProgress;
+- (_Bool)requireStripContentsInViewHierarchy;
+- (double)continuousExposeStripProgress;
 - (double)shelfPresentedHeight;
 - (_Bool)isFloatingDockFullyPresented;
 - (double)floatingDockViewTopMargin;
@@ -95,9 +105,11 @@
 - (unsigned long long)numberOfRowsInGridSwitcher;
 - (struct CGPoint)scrollViewContentOffset;
 - (id <SBSwitcherLayoutElementProviding>)genericSwitcherAccessoryLayoutElement;
+- (id <SBSwitcherLayoutElementProviding>)continuousExposeStripTongueBackdropCaptureLayoutElement;
 - (id <SBSwitcherLayoutElementProviding>)slideOverTongueLayoutElement;
 - (id <SBSwitcherLayoutElementProviding>)switcherBackdropLayoutElement;
 - (id <SBSwitcherLayoutElementProviding>)switcherDimmingViewLayoutElement;
+- (unsigned long long)supportedContentInterfaceOrientationsForItem:(SBDisplayItem *)arg1;
 - (unsigned long long)supportedSizingPoliciesForItem:(SBDisplayItem *)arg1 inAppLayout:(SBAppLayout *)arg2;
 - (_Bool)appLayoutRequiresLegacyRotationSupport:(SBAppLayout *)arg1;
 - (_Bool)displayItemSupportsMultipleWindowsIndicator:(SBDisplayItem *)arg1;

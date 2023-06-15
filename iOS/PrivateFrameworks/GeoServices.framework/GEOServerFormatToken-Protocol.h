@@ -11,6 +11,7 @@
 @protocol GEOServerFormatTokenCountdownValue, GEOServerFormatTokenManeuverValue, GEOServerFormatTokenNumberData, GEOServerFormatTokenPriceValue, GEOServerFormatTokenUrlValue, GEOTransitArtworkDataSource;
 
 @protocol GEOServerFormatToken <NSObject, NSCoding>
+@property(readonly, nonatomic) int waypointIndex;
 @property(readonly, nonatomic) GEOGenericCombinations *genericCombinations;
 @property(readonly, nonatomic) id <GEOServerFormatTokenNumberData> numberData;
 @property(readonly, nonatomic) id <GEOServerFormatTokenManeuverValue> maneuverValue;

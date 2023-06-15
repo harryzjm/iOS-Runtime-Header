@@ -6,7 +6,7 @@
 
 #import <PassKitCore/NSObject-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSMapTable, NSString, NSURL, PKAccount, PKApplePayTrustKeyRequest, PKPass, PKPaymentPass, PKPaymentWebServiceBackgroundContext, PKPaymentWebServiceContext, PKPushProvisioningTarget, PKSecureElementPass;
+@class NSArray, NSData, NSDictionary, NSMapTable, NSString, NSURL, PKAccount, PKApplePayTrustKeyRequest, PKPass, PKPaymentPass, PKPaymentWebServiceBackgroundContext, PKPaymentWebServiceContext, PKProvisioningRequirementsContainer, PKPushProvisioningTarget, PKSecureElementPass;
 
 @protocol PKPaymentWebServiceProxyObjectExportedInterface <NSObject>
 - (void)invalidateRemoteProxyTargetDevice;
@@ -23,12 +23,20 @@
 - (void)generateSEEncryptionCertificateForSubCredentialId:(NSString *)arg1 completion:(void (^)(NSData *, NSError *))arg2;
 - (void)signWithFidoKeyForRelyingParty:(NSString *)arg1 relyingPartyAccountHash:(NSString *)arg2 fidoKeyHash:(NSData *)arg3 challenge:(NSData *)arg4 publicKeyIdentifier:(NSString *)arg5 externalizedAuth:(NSData *)arg6 completion:(void (^)(NSData *, NSError *))arg7;
 - (void)checkFidoKeyPresenceForRelyingParty:(NSString *)arg1 relyingPartyAccountHash:(NSString *)arg2 fidoKeyHash:(NSData *)arg3 completion:(void (^)(_Bool))arg4;
-- (void)createFidoKeyForRelyingParty:(NSString *)arg1 relyingPartyAccountHash:(NSString *)arg2 challenge:(NSData *)arg3 externalizedAuth:(NSData *)arg4 completion:(void (^)(NSData *, NSData *, NSError *))arg5;
+- (void)createFidoKeyForRelyingParty:(NSString *)arg1 relyingPartyAccountHash:(NSString *)arg2 challenge:(NSData *)arg3 externalizedAuth:(NSData *)arg4 completion:(void (^)(NSData *, NSData *, NSData *, NSError *))arg5;
 - (void)availableHomeKeyPassesWithCompletionHandler:(void (^)(NSArray *, NSError *))arg1;
 - (void)provisionHomeKeyPassForSerialNumbers:(NSArray *)arg1 completionHandler:(void (^)(NSArray *, NSError *))arg2;
 - (void)generateTransactionKeyWithParameters:(NSDictionary *)arg1 withCompletion:(void (^)(NSString *, NSArray *, NSData *, NSError *))arg2;
 - (void)familyMembersWithCompletion:(void (^)(NSArray *))arg1;
-- (void)performDeviceRegistrationForReason:(NSString *)arg1 brokerURL:(NSURL *)arg2 completion:(void (^)(unsigned long long, NSError *))arg3;
+- (void)performDeviceRegistrationReturningContextForReason:(NSString *)arg1 brokerURL:(NSURL *)arg2 completion:(void (^)(unsigned long long, PKPaymentWebServiceContext *, NSError *))arg3;
+- (void)addPendingProvisionings:(NSArray *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)allPaymentApplicationUsageSummariesWithCompletion:(void (^)(NSArray *))arg1;
+- (void)secureElementIsAvailableWithCompletion:(void (^)(_Bool))arg1;
+- (void)maximumPaymentCardsWithCompletion:(void (^)(unsigned long long))arg1;
+- (void)deleteReservation:(NSArray *)arg1 completion:(void (^)(void))arg2;
+- (void)reserveStorageForAppletTypes:(NSArray *)arg1 metadata:(NSDictionary *)arg2 completion:(void (^)(NSArray *, _Bool, NSError *))arg3;
+- (void)currentSecureElementSnapshot:(void (^)(PKProvisioningSEStorageSnapshot *, NSError *))arg1;
+- (void)usingSynchronousProxy:(_Bool)arg1 meetsProvisioningRequirements:(PKProvisioningRequirementsContainer *)arg2 completion:(void (^)(_Bool, PKProvisioningRequirementsContainer *))arg3;
 - (void)performDeviceCheckInWithCompletion:(void (^)(_Bool, NSError *))arg1;
 - (void)deleteApplePayTrustKeyWithIdentifier:(NSString *)arg1 completion:(void (^)(_Bool))arg2;
 - (void)createApplePayTrustKeyWithRequest:(PKApplePayTrustKeyRequest *)arg1 completion:(void (^)(PKApplePayTrustKey *, NSError *))arg2;
@@ -82,5 +90,8 @@
 - (void)getConfigurationDataWithCompletion:(void (^)(PKPaymentDeviceConfigurationData *, NSError *))arg1;
 - (void)queueConnectionToTrustedServiceManagerForPushTopic:(NSString *)arg1 withCompletion:(void (^)(_Bool, NSError *))arg2;
 - (void)getContextWithCompletion:(void (^)(PKPaymentWebServiceContext *))arg1;
+
+@optional
+- (void)performDeviceRegistrationForReason:(NSString *)arg1 brokerURL:(NSURL *)arg2 completion:(void (^)(unsigned long long, NSError *))arg3;
 @end
 

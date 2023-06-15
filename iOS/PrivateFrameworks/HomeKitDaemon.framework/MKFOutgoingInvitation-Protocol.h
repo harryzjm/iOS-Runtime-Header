@@ -7,12 +7,14 @@
 #import <HomeKitDaemon/MKFInvitation-Protocol.h>
 #import <HomeKitDaemon/MKFOutgoingInvitationPublicExtensions-Protocol.h>
 
-@class MKFOutgoingInvitationDatabaseID, NSDate, NSNumber, NSString;
-@protocol MKFHome;
+@class CKDeviceToDeviceShareInvitationToken, MKFOutgoingInvitationDatabaseID, NSDate, NSNumber, NSString;
+@protocol MKFHome, MKFUser;
 
 @protocol MKFOutgoingInvitation <MKFInvitation, MKFOutgoingInvitationPublicExtensions>
 @property(readonly, copy, nonatomic) MKFOutgoingInvitationDatabaseID *databaseID;
+@property(retain, nonatomic) id <MKFUser> pendingUser;
 @property(readonly, retain, nonatomic) id <MKFHome> home;
+@property(retain, nonatomic) CKDeviceToDeviceShareInvitationToken *shareToken;
 @property(copy, nonatomic) NSNumber *remoteAccessAllowed;
 @property(copy, nonatomic) NSNumber *privilege;
 @property(copy, nonatomic) NSString *inviteeUserID;

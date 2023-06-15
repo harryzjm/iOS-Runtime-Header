@@ -21,8 +21,8 @@ __attribute__((visibility("hidden")))
 + (unsigned long long)stepIndexForPointIndex:(unsigned long long)arg1 withSteps:(id)arg2;
 + (id)segmentForPointIndex:(unsigned long long)arg1 withSegments:(id)arg2 andSteps:(id)arg3;
 + (id)buildPointSectionsWithSteps:(id)arg1 segments:(id)arg2 coordinates:(id)arg3;
-+ (id)_composedRouteLegForStartStep:(id)arg1 endStep:(id)arg2 custodian:(id)arg3 geoRouteLeg:(id)arg4 legIndex:(unsigned long long)arg5 origin:(id)arg6 destination:(id)arg7 arrivalParameters:(id)arg8 legLength:(double)arg9;
-+ (id)_composedRouteSegmentForStartStep:(id)arg1 andEndStep:(id)arg2 andCustodian:(id)arg3;
++ (id)_composedRouteLegForStartStep:(id)arg1 endStep:(id)arg2 startSegment:(id)arg3 endSegment:(id)arg4 custodian:(id)arg5 geoRouteLeg:(id)arg6 legIndex:(unsigned long long)arg7 origin:(id)arg8 destination:(id)arg9 arrivalParameters:(id)arg10 legLength:(double)arg11;
++ (id)_composedRouteSegmentForStartStep:(id)arg1 andEndStep:(id)arg2 segmentIndex:(unsigned long long)arg3 andCustodian:(id)arg4;
 + (id)_composedRouteStepWithTransportType:(int)arg1 andCustodian:(id)arg2 geoRouteLeg:(id)arg3 forGeoStep:(id)arg4 withStepIndex:(unsigned long long)arg5 stepStartPointIndex:(unsigned long long)arg6 legStartPointIndex:(unsigned long long)arg7;
 + (id)_composedRouteStepWithTransportType:(int)arg1 andCustodian:(id)arg2 geoRouteLeg:(id)arg3 forGeoStep:(id)arg4 withStepIndex:(unsigned long long)arg5 startRouteCoordinate:(struct PolylineCoordinate)arg6 endRouteCoordinate:(struct PolylineCoordinate)arg7 maneuverStartRouteCoordinate:(struct PolylineCoordinate)arg8;
 + (void)_componentsForGeoWaypointRoute:(id)arg1 initializerData:(id)arg2 coordinates:(id)arg3 custodian:(id)arg4 outLegs:(out id *)arg5 outSegments:(out id *)arg6 outSteps:(out id *)arg7;

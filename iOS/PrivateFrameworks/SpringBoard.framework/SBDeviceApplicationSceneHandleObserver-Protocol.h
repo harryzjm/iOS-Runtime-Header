@@ -6,11 +6,13 @@
 
 #import <SpringBoard/SBSceneHandleObserver-Protocol.h>
 
-@class NSData, NSString, SBDeviceApplicationSceneHandle;
+@class NSData, NSSet, NSString, SBDeviceApplicationSceneHandle;
 
 @protocol SBDeviceApplicationSceneHandleObserver <SBSceneHandleObserver>
 
 @optional
+- (void)sceneHandle:(SBDeviceApplicationSceneHandle *)arg1 didChangeContentPrefersToDisableClipping:(_Bool)arg2;
+- (void)sceneHandle:(SBDeviceApplicationSceneHandle *)arg1 didChangeBackgroundActivitiesToSuppress:(NSSet *)arg2;
 - (void)sceneHandle:(SBDeviceApplicationSceneHandle *)arg1 didChangeActivationConditionsData:(NSData *)arg2;
 - (void)sceneHandle:(SBDeviceApplicationSceneHandle *)arg1 didChangeSceneTitle:(NSString *)arg2;
 - (void)sceneHandle:(SBDeviceApplicationSceneHandle *)arg1 didChangeStatusBarAvoidanceFrame:(struct CGRect)arg2;

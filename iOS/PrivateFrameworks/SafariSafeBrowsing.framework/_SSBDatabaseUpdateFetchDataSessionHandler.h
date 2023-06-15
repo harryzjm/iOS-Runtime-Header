@@ -6,25 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class NSError, NSFileHandle, NSMutableData, NSString, NSURL, NSURLResponse;
+@class NSError, NSString;
 
 __attribute__((visibility("hidden")))
 @interface _SSBDatabaseUpdateFetchDataSessionHandler : NSObject
 {
-    NSURLResponse *_response;
+    struct unique_ptr<Backend::Google::FetchThreatListUpdatesResponseParser, std::default_delete<Backend::Google::FetchThreatListUpdatesResponseParser>> _parser;
+    struct shared_ptr<ByteProvider> _byteProvider;
+    unsigned long long _receivedBytes;
     NSError *_error;
-    NSMutableData *_data;
-    NSURL *_tempFileURL;
-    NSFileHandle *_tempFileHandle;
-    CDUnknownBlockType _completionHandler;
+    int _provider;
 }
 
+- (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)URLSession:(id)arg1 task:(id)arg2 didCompleteWithError:(id)arg3;
 - (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveData:(id)arg3;
 - (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveResponse:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)dealloc;
-- (id)initWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (id)initWithCompletionHandler:(void *)arg1 provider:(int)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

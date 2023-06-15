@@ -31,6 +31,8 @@
 }
 
 @property(retain, nonatomic) __CFN_TaskMetrics *_metrics; // @synthesize _metrics;
+- (id)resumableUploadState;
+- (void)_logUnlistedTracker:(id)arg1;
 - (int)_requiresDNSSECValidation;
 - (id)_cookieTransformCallback;
 - (id)_resolvedCNAMEChain;
@@ -48,7 +50,6 @@
 - (id)_incompleteCurrentTaskTransactionMetrics;
 - (id)_incompleteTaskMetrics;
 - (_Bool)_preconnect;
-- (void)didReceiveInformationalResponse:(id)arg1;
 - (void)set_preconnect:(_Bool)arg1;
 - (void)_consumePendingBytesReceivedEncoded;
 - (void)_appendCountOfPendingBytesReceivedEncoded:(long long)arg1;
@@ -104,7 +105,12 @@
 - (unsigned char)_preventsIdleSystemSleep;
 - (unsigned long long)_cachePolicy;
 - (unsigned long long)_allowedProtocolTypes;
+- (id)_isWebSearchContent;
+- (id)_failInsecureLoadWithHTTPSDNSRecord;
+- (id)_blockTrackers;
+- (id)_useEnhancedPrivacyMode;
 - (id)_prohibitPrivacyProxy;
+- (id)_privacyProxyFailClosedForUnreachableHosts;
 - (id)_privacyProxyFailClosedForUnreachableNonMainHosts;
 - (id)_privacyProxyFailClosed;
 - (id)_trackerContext;

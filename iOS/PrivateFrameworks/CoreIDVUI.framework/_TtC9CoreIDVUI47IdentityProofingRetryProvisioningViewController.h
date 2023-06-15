@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)tertiaryButtonClicked;
+- (void)configureFonts;
 - (void)viewDidLoad;
 - (id)initWithCoder:(id)arg1;
 

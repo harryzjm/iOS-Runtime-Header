@@ -6,9 +6,13 @@
 
 #import <TrackingAvoidance/NSObject-Protocol.h>
 
+@class NSData, NSUUID;
 @protocol TAEventProtocol, TATrackingAvoidanceServiceObserver;
 
 @protocol TATrackingAvoidanceServiceProtocol <NSObject>
+- (void)debugForceSurfaceStagedDetections:(NSData *)arg1 deviceType:(unsigned long long)arg2;
+- (void)debugStageTADetection:(NSData *)arg1 deviceType:(unsigned long long)arg2;
+- (void)fetchTAUnknownBeacon:(NSUUID *)arg1 withCompletion:(void (^)(TAUnknownBeacon *))arg2;
 - (void)ingestTAEvent:(id <TAEventProtocol>)arg1;
 - (void)removeObserver:(id <TATrackingAvoidanceServiceObserver>)arg1;
 - (void)addObserver:(id <TATrackingAvoidanceServiceObserver>)arg1;

@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     AVOutputSettings *outputSettings;
     NSString *audioTimePitchAlgorithm;
     _Bool appliesPreferredTrackTransform;
+    _Bool limitsImageQueueCapacityToOneFrame;
     AVWeakReference *weakReferenceToAttachedAdaptor;
 }
 

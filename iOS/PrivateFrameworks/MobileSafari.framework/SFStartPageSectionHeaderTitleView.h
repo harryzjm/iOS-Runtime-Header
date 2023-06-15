@@ -18,13 +18,15 @@ __attribute__((visibility("hidden")))
     UIFont *_font;
     NSString *_title;
     UIMenu *_menu;
+    NSString *_symbolImageName;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *symbolImageName; // @synthesize symbolImageName=_symbolImageName;
 @property(copy, nonatomic) UIMenu *menu; // @synthesize menu=_menu;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
 - (void)buttonShapesEnabledStatusDidChange:(id)arg1;
-- (void)setModel:(id)arg1 visualStyleProvider:(id)arg2;
+- (void)configureUsingSection:(id)arg1 visualStyleProvider:(id)arg2;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)dealloc;
 - (id)initWithCoder:(id)arg1;

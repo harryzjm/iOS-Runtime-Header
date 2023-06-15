@@ -4,14 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ConversationKit/NSObject-Protocol.h>
+#import <ConversationKit/CNKSystemApertureProviderDelegate-Protocol.h>
 
-@class CNKSystemBannerHostViewController;
+@class _TtC15ConversationKit30SystemBannerHostViewController;
 
-@protocol _TtP15ConversationKit38SystemBannerHostViewControllerDelegate_ <NSObject>
+@protocol _TtP15ConversationKit38SystemBannerHostViewControllerDelegate_ <CNKSystemApertureProviderDelegate>
 - (void)deepLinkToFullScreenCallDetailsView;
 - (void)deepLinkToFullScreenCallUI;
-- (void)didDismiss:(CNKSystemBannerHostViewController *)arg1;
+- (void)didDismiss:(_TtC15ConversationKit30SystemBannerHostViewController *)arg1;
+@property(nonatomic, readonly) _Bool isSpringBoardLocked;
+@property(nonatomic, readonly) _Bool isPresentingFullScreenCallUI;
 @property(nonatomic, readonly) _Bool hasPresentedFullScreenCallUI;
 @end
 

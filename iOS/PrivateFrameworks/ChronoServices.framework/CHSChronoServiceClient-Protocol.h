@@ -6,11 +6,13 @@
 
 #import <ChronoServices/NSObject-Protocol.h>
 
-@class NSDictionary;
+@class NSArray, NSDictionary, NSSet;
 
 @protocol CHSChronoServiceClient <NSObject>
 
 @optional
-- (void)widgetDescriptorsDidChange:(NSDictionary *)arg1;
+- (void)widgetRelevanceEntriesDidChange:(NSDictionary *)arg1;
+- (void)nearbyDevicesDidChange:(NSArray *)arg1;
+- (void)widgetExtensionsDidChange:(NSSet *)arg1;
 @end
 

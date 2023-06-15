@@ -11,5 +11,24 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (CDUnknownBlockType)integrateInjectionIntoBufferHandler:(CDUnknownBlockType)arg1 format:(id)arg2 queryInjectionPath:(CDUnknownBlockType)arg3;
++ (_Bool)processBufferWithInjectionOperator:(id)arg1 bufferHandler:(CDUnknownBlockType)arg2 audioBuffer:(id)arg3 time:(id)arg4 error:(id *)arg5;
++ (long long)monitorHealthOfAudioBuffersGivenUnhealthyBufferCounter:(long long)arg1 newFloatAudioBufferObject:(id)arg2 errorThresholdBufferCount:(long long)arg3 errorHandler:(CDUnknownBlockType)arg4;
++ (long long)advanceConsecutiveUnhealthyAudioBufferCounterFrom:(long long)arg1 assessingNewFloatAudioBufferObject:(id)arg2 error:(id *)arg3;
++ (_Bool)validateHealthyAudioContainedInFloatAudioPCMBufferObject:(id)arg1 error:(id *)arg2;
++ (_Bool)validateNoInfiniteValueContainedInFloatAudioPCMBufferObject:(id)arg1 error:(id *)arg2;
++ (_Bool)isInfiniteValueContainedInFloatAudioPCMBufferObject:(id)arg1;
++ (_Bool)isInfiniteValueContainedInFloatAudioBufferList:(const struct AudioBufferList *)arg1;
++ (_Bool)isInfiniteValueContainedInFloatAudioBuffer:(const struct AudioBuffer *)arg1;
++ (_Bool)validateNoNaNContainedInFloatAudioPCMBufferObject:(id)arg1 error:(id *)arg2;
++ (_Bool)isNaNContainedInFloatAudioPCMBufferObject:(id)arg1;
++ (_Bool)isNaNContainedInFloatAudioBufferList:(const struct AudioBufferList *)arg1;
++ (_Bool)isNaNContainedInFloatAudioBuffer:(const struct AudioBuffer *)arg1;
++ (_Bool)validateAudioPCMBufferObjectIsNotSilent:(id)arg1 error:(id *)arg2;
++ (_Bool)audioPCMBufferObjectIsSilent:(id)arg1;
++ (_Bool)unencodedAudioBufferListIsSilent:(const struct AudioBufferList *)arg1;
++ (_Bool)unencodedAudioBufferIsSilent:(const struct AudioBuffer *)arg1;
+- (id)init;
+
 @end
 

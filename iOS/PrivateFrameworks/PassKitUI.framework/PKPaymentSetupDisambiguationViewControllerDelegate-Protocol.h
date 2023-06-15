@@ -9,7 +9,7 @@
 @class PKPaymentSetupDisambiguationViewController, PKPaymentSetupProduct;
 
 @protocol PKPaymentSetupDisambiguationViewControllerDelegate <NSObject>
-- (void)disambiguationViewControllerSetupLater:(PKPaymentSetupDisambiguationViewController *)arg1;
+- (void)disambiguationViewControllerSetUpLater:(PKPaymentSetupDisambiguationViewController *)arg1;
 - (void)disambiguationViewController:(PKPaymentSetupDisambiguationViewController *)arg1 didSelectProduct:(PKPaymentSetupProduct *)arg2;
 @end
 

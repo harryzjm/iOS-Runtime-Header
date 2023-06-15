@@ -7,6 +7,6 @@
 #import <NewsArticles/NSObject-Protocol.h>
 
 @protocol NUSettings <NSObject>
-@property(nonatomic, readonly) _Bool shouldShowArticlesInExcerptMode;
+@property(readonly, nonatomic) _Bool shouldShowArticlesInExcerptMode;
 @end
 

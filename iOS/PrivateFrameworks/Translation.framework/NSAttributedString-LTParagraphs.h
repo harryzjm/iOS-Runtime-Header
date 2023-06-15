@@ -9,6 +9,8 @@
 @class NSArray;
 
 @interface NSAttributedString (LTParagraphs)
++ (id)lt_attributedStringByJoiningComponents:(id)arg1 withAttributedString:(id)arg2;
++ (id)lt_attributedStringByJoiningComponents:(id)arg1 withString:(id)arg2;
 @property(readonly, nonatomic) NSArray *sentences;
 @property(readonly, nonatomic) NSArray *paragraphs;
 - (id)_ltAttributedStringByTrimmingCharactersInSet:(id)arg1;

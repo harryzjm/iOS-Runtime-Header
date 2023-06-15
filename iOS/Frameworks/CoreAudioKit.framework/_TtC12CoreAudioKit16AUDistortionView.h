@@ -4,10 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
-@class AUAudioUnit, MISSING_TYPE;
-@protocol _TtP12CoreAudioKit27CAAUViewParameterDataSource_;
+@class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
 @interface _TtC12CoreAudioKit16AUDistortionView : UIView
@@ -25,13 +24,10 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-- (void)setWithParameter:(unsigned int)arg1 value:(float)arg2;
 @property(nonatomic) struct CGRect bounds;
 - (void)removeFromSuperview;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-@property(nonatomic, retain) AUAudioUnit *auAudioUnit; // @synthesize auAudioUnit;
-@property(nonatomic, retain) id <_TtP12CoreAudioKit27CAAUViewParameterDataSource_> parameterDataSource; // @synthesize parameterDataSource;
 
 @end
 

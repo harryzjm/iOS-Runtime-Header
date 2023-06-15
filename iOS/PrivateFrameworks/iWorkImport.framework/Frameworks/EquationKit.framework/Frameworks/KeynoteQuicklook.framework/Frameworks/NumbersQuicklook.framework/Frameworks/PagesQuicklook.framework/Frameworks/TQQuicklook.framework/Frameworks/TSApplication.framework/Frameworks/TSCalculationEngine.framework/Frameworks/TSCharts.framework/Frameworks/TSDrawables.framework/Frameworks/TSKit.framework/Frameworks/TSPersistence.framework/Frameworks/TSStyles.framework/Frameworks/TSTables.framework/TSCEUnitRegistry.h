@@ -16,7 +16,7 @@
 + (CDStruct_615b4e23)prefixedUnitForString:(id)arg1;
 + (unsigned char)binaryUnitPrefixForChars:(unsigned short)arg1:(unsigned short)arg2;
 + (unsigned char)unitPrefixForCharacter:(unsigned short)arg1;
-+ (double)multiplierForUnitPrefix:(unsigned char)arg1;
++ (double)multiplierForUnit:(CDStruct_615b4e23)arg1;
 + (unsigned short)unitForString:(id)arg1;
 + (unsigned short)canonicalUnitForDimension:(unsigned char)arg1;
 + (id)currencyCodeForUnit:(unsigned short)arg1;

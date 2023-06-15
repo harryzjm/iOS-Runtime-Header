@@ -9,6 +9,7 @@
 @protocol SUNetworkObserver <NSObject>
 
 @optional
+- (void)pathSatisficationStatusChangedTo:(_Bool)arg1;
 - (void)operatorBundleChanged;
 - (void)carrierBundleChanged;
 - (void)cellularRoamingStatusChanged:(_Bool)arg1;

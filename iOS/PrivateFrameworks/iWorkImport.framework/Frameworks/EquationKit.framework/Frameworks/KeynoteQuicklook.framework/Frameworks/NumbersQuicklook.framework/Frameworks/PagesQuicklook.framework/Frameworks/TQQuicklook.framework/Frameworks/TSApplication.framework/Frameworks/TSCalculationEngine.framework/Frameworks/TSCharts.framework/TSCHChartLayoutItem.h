@@ -26,6 +26,7 @@
 }
 
 + (id)chartLayoutWithChartInfo:(id)arg1 styleProvidingSource:(id)arg2;
++ (Class)radarAreaLayoutItem;
 + (double)halfProtrusionForRegularPolygonWithSides:(long long)arg1 strokeWidth:(double)arg2;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool treeBuilt; // @synthesize treeBuilt=_treeBuilt;
@@ -39,7 +40,7 @@
 @property(nonatomic) _Bool layoutSizeSet; // @synthesize layoutSizeSet=_layoutSizeSet;
 @property(nonatomic) struct CGPoint layoutOffset; // @synthesize layoutOffset=_layoutOffset;
 @property(nonatomic) __weak TSCHChartLayoutItem *parent; // @synthesize parent=_parent;
-- (const struct CGPath *)newDragAndDropHighlightPathForSelection:(id)arg1;
+- (struct CGPath *)newDragAndDropHighlightPathForSelection:(id)arg1;
 - (id)subselectionHaloPositionsForSelections:(id)arg1;
 - (id)subselectionKnobPositionsForSelection:(id)arg1;
 - (id)hitChartElements:(struct CGPoint)arg1 passingTest:(CDUnknownBlockType)arg2;

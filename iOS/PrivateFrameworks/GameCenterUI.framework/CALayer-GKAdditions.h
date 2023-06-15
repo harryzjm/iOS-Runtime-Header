@@ -10,5 +10,14 @@
 - (struct CATransform3D)_gkParentSublayerTransform;
 - (id)_gkRecursiveDescription;
 - (id)_gkDescriptionWithChildren:(long long)arg1;
+- (void)mp_moveAndResizeWithinParentLayer:(id)arg1 usingGravity:(id)arg2 geometryFlipped:(_Bool)arg3 retinaScale:(double)arg4 animate:(_Bool)arg5;
+- (id)mp_allAnimationsInTree;
+- (id)mp_allLayersWithKindOfClass:(Class)arg1;
+- (id)mp_allLayersWhoseNamesContainString:(id)arg1;
+- (void)mp_addLayerAndSublayersToArray:(id)arg1 allowHiddenLayers:(_Bool)arg2;
+- (id)mp_allLayersInTree;
+- (id)mp_propertiesToCopy;
+- (id)mp_basicPropertiesToCopy;
+- (id)mp_deepCopyLayer;
 @end
 

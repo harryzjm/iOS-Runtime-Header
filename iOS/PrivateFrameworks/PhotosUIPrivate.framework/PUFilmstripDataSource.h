@@ -22,9 +22,10 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSArray *indicatorInfos; // @synthesize indicatorInfos=_indicatorInfos;
 @property(readonly, nonatomic) long long numberOfIndexes; // @synthesize numberOfIndexes=_numberOfIndexes;
 @property(readonly, nonatomic) AVAsset *asset; // @synthesize asset=_asset;
+- (CDStruct_5c5366e1)timeRangeRepresentedByAssetAtIndex:(long long)arg1;
 - (id)indexPathForAsset:(id)arg1;
 - (id)assetAtIndexPath:(id)arg1;
-- (double)_normalizedTimeForIndexPath:(id)arg1;
+- (double)_normalizedTimeForIndex:(long long)arg1;
 - (long long)numberOfSubItemsAtIndexPath:(id)arg1;
 - (id)initWithAsset:(id)arg1 numberOfIndexes:(long long)arg2 indicatorInfos:(id)arg3;
 - (id)init;

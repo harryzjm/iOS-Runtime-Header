@@ -56,6 +56,8 @@
     MISSING_TYPE *_entityType;
     MISSING_TYPE *_crAtKscore;
     MISSING_TYPE *_cfdebug;
+    MISSING_TYPE *_pegasusVersion;
+    MISSING_TYPE *_otherCrAtKscores;
 }
 
 @end

@@ -40,6 +40,7 @@ __attribute__((visibility("hidden")))
 - (void)navigationSession:(id)arg1 didUpdateDisplayETA:(id)arg2 remainingDistance:(id)arg3 batteryChargeInfo:(id)arg4;
 - (void)navigationSessionDidArrive:(id)arg1;
 - (void)navigationSessionDidEnterPreArrivalState:(id)arg1;
+- (void)navigationSession:(id)arg1 didUpdateTargetLegIndex:(unsigned long long)arg2;
 - (void)navigationSession:(id)arg1 didResumeNavigatingFromWaypoint:(id)arg2 endOfLegIndex:(unsigned long long)arg3 reason:(unsigned long long)arg4;
 - (void)navigationSession:(id)arg1 didArriveAtWaypoint:(id)arg2 endOfLegIndex:(unsigned long long)arg3;
 - (void)navigationSession:(id)arg1 didEnterPreArrivalStateForWaypoint:(id)arg2 endOfLegIndex:(unsigned long long)arg3;

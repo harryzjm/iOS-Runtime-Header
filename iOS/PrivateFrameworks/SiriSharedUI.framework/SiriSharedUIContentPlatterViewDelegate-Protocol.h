@@ -7,6 +7,8 @@
 @class SiriSharedUIContentPlatterView;
 
 @protocol SiriSharedUIContentPlatterViewDelegate
+- (void)contentPlatterViewScrollDidEnd;
+- (void)contentPlatterViewScrollDidBegin;
 - (void)contentPlatterViewScrolledToContentOffset:(struct CGPoint)arg1;
 - (void)contentPlatterView:(SiriSharedUIContentPlatterView *)arg1 didScrollWithContentOffset:(struct CGPoint)arg2;
 @end

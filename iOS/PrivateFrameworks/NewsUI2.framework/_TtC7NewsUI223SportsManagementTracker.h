@@ -10,7 +10,8 @@
 
 @interface _TtC7NewsUI223SportsManagementTracker : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *tracker;
+    MISSING_TYPE *appTracker;
+    MISSING_TYPE *sportsTracker;
 }
 
 @end

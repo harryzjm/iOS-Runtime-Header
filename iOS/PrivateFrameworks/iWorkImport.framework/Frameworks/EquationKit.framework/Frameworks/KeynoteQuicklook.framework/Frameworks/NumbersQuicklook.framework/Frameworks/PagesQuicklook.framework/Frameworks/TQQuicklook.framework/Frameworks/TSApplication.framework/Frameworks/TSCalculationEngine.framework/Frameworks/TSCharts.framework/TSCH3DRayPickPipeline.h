@@ -12,7 +12,7 @@
     TSCH3DRayPickPipelineDelegate *_sceneObjectDelegate;
 }
 
-+ (id)pipelineWithScene:(id)arg1 position:(const void *)arg2;
++ (id)pipelineWithScene:(id)arg1 position:(void *)arg2;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)makeDelegateWithSceneObject:(id)arg1 scene:(id)arg2;
@@ -26,7 +26,7 @@
 - (id)p_unsortedPickedPoints;
 - (_Bool)run;
 - (void)rayPick:(id)arg1;
-- (id)initWithScene:(id)arg1 position:(const void *)arg2;
+- (id)initWithScene:(id)arg1 position:(void *)arg2;
 - (Class)labelsMeshRendererClassForLabelsRenderer:(id)arg1;
 
 @end

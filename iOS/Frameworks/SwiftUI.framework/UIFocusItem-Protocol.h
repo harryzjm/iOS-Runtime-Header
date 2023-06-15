@@ -9,13 +9,13 @@
 @class UIFocusEffect, UIFocusMovementHint;
 
 @protocol UIFocusItem <UIFocusEnvironment>
-@property(nonatomic, readonly) struct CGRect frame;
-@property(nonatomic, readonly) _Bool canBecomeFocused;
+@property(readonly, nonatomic) struct CGRect frame;
+@property(readonly, nonatomic) _Bool canBecomeFocused;
 
 @optional
+@property(readonly, nonatomic) _Bool isTransparentFocusItem;
+@property(readonly, nonatomic) long long focusGroupPriority;
+@property(readonly, copy, nonatomic) UIFocusEffect *focusEffect;
 - (void)didHintFocusMovement:(UIFocusMovementHint *)arg1;
-@property(nonatomic, readonly) _Bool isTransparentFocusItem;
-@property(nonatomic, readonly) long long focusGroupPriority;
-@property(nonatomic, readonly) UIFocusEffect *focusEffect;
 @end
 

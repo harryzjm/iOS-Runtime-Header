@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDictionary, NSString, NSURL;
+@class NSArray, NSDictionary, NSString, NSURL;
 
 @protocol SpeechModelTrainingProtocol
+- (void)xpcExitClean;
+- (void)generateConfusionPairsWithUUID:(NSString *)arg1 parameters:(NSDictionary *)arg2 language:(NSString *)arg3 task:(NSString *)arg4 samplingRate:(unsigned long long)arg5 recognizedTokens:(NSArray *)arg6 recognizedText:(NSString *)arg7 correctedText:(NSString *)arg8 selectedAlternatives:(NSArray *)arg9 completion:(void (^)(NSArray *, NSError *))arg10;
 - (void)generateAudioWithTexts:(NSDictionary *)arg1 language:(NSString *)arg2 completion:(void (^)(NSDictionary *, NSError *))arg3;
 - (void)buildPhoneticMatchWithLanguage:(NSString *)arg1 saveIntermediateFsts:(_Bool)arg2 completion:(void (^)(NSDictionary *, NSError *))arg3;
 - (void)trainGlobalNNLMwithFidesSessionURL:(NSURL *)arg1 completion:(void (^)(NSError *))arg2;

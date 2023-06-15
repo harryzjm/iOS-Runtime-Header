@@ -7,11 +7,18 @@
 #import <Foundation/NSXPCConnection.h>
 
 @interface NSXPCConnection (UserNotificationsServer)
+- (_Bool)_uns_connection:(id)arg1 valueForEntitlementKey:(id)arg2 matchesValue:(id)arg3;
+- (_Bool)_uns_connection:(id)arg1 isAuthorizedToSendNotificationsForManagementDomainOfBundleIdentifier:(id)arg2;
+- (_Bool)_uns_connection:(id)arg1 isAuthorizedToSendNotificationsForBundleIdentifier:(id)arg2;
+- (id)uns_getClientConnectionDetails;
+- (void)uns_setConnectionDetails:(id)arg1;
 - (_Bool)uns_isInternalUserNotificationsTool;
 - (_Bool)uns_hasEntitlement:(id)arg1 capability:(id)arg2;
 - (_Bool)uns_isAllowedToWriteSettings;
 - (_Bool)uns_isAllowedToReadSettings;
 - (_Bool)uns_isAllowedToRequestUserNotificationsForBundleIdentifier:(id)arg1;
+- (_Bool)uns_isAllowedFromDaemon;
+- (id)uns_clientAuditToken;
 - (id)uns_clientBundleProxy;
 @end
 

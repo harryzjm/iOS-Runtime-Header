@@ -12,10 +12,13 @@ __attribute__((visibility("hidden")))
 @interface VUIVideoAdvisoryLogoImageDownloader : NSObject
 {
     TVImageProxy *_ratingImageProxy;
+    TVImageProxy *_photoSensitivityImageProxy;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) TVImageProxy *photoSensitivityImageProxy; // @synthesize photoSensitivityImageProxy=_photoSensitivityImageProxy;
 @property(retain, nonatomic) TVImageProxy *ratingImageProxy; // @synthesize ratingImageProxy=_ratingImageProxy;
+- (void)downloadImagesWithAdvisoryImageInfo:(id)arg1 photoSensitivityImageInfo:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)downloadImageWithURL:(id)arg1 imageInfo:(id)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end

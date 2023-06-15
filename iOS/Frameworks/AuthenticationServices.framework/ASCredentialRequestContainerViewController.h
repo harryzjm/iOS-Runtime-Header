@@ -4,19 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
-@class NSLayoutConstraint, NSString, UITapGestureRecognizer, UIVisualEffectView;
-@protocol ASCredentialRequestContainerViewControllerDelegate, ASCredentialRequestPaneViewControllerDelegate;
+@class NSLayoutConstraint, NSString, UIVisualEffectView;
+@protocol ASCredentialRequestPaneViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
 @interface ASCredentialRequestContainerViewController : UIViewController
 {
-    UITapGestureRecognizer *_tapGestureRecognizer;
     NSLayoutConstraint *_sheetHeightConstraint;
     NSLayoutConstraint *_sheetPresentedConstraint;
     UIViewController *_rootViewController;
-    id <ASCredentialRequestContainerViewControllerDelegate> _delegate;
     id <ASCredentialRequestPaneViewControllerDelegate> _paneDelegate;
     UIVisualEffectView *_blurBackgroundView;
 }
@@ -24,7 +22,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIVisualEffectView *blurBackgroundView; // @synthesize blurBackgroundView=_blurBackgroundView;
 @property(nonatomic) __weak id <ASCredentialRequestPaneViewControllerDelegate> paneDelegate; // @synthesize paneDelegate=_paneDelegate;
-@property(nonatomic) __weak id <ASCredentialRequestContainerViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) UIViewController *rootViewController; // @synthesize rootViewController=_rootViewController;
 - (id)animationControllerForDismissedController:(id)arg1;
 - (id)animationControllerForPresentedController:(id)arg1 presentingController:(id)arg2 sourceController:(id)arg3;
@@ -34,8 +31,6 @@ __attribute__((visibility("hidden")))
 - (void)_clearPaneDelegateForViewController:(id)arg1;
 - (void)_setPaneDelegateForViewController:(id)arg1;
 - (void)_setPaneDelegateForTopViewController;
-- (_Bool)_shouldDismiss;
-- (void)_handleTapGesture:(id)arg1;
 - (unsigned long long)supportedInterfaceOrientations;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;

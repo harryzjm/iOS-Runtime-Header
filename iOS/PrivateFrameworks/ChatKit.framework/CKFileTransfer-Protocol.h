@@ -9,6 +9,8 @@
 @class IMMessage, NSDictionary, NSError, NSString, NSURL;
 
 @protocol CKFileTransfer <NSObject>
+@property(readonly, copy, nonatomic) NSURL *animatedImageCacheURL;
+@property(nonatomic) unsigned long long stickerEffectType;
 @property(readonly, copy, nonatomic) NSURL *shareURL;
 @property(readonly, nonatomic) _Bool isFromMomentShare;
 @property(readonly, nonatomic, getter=isRestoring) _Bool restoring;
@@ -20,6 +22,7 @@
 @property(readonly, nonatomic) long long commSafetySensitive;
 @property(readonly, nonatomic) _Bool isDirectory;
 @property(readonly, nonatomic) _Bool hideAttachment;
+@property(readonly, nonatomic) _Bool isScreenshot;
 @property(readonly, nonatomic) _Bool isSticker;
 @property(readonly, nonatomic) unsigned long long totalBytes;
 @property(readonly, nonatomic) unsigned long long currentBytes;
@@ -34,10 +37,11 @@
 - (void)mediaObjectRemoved;
 - (void)mediaObjectAdded;
 - (void)fetchHighQualityFile:(void (^)(_Bool, NSURL *))arg1;
+- (id)initWithFileURL:(NSURL *)arg1 transcoderUserInfo:(NSDictionary *)arg2 attributionInfo:(NSDictionary *)arg3 hideAttachment:(_Bool)arg4 isScreenshot:(_Bool)arg5;
 - (id)initWithFileURL:(NSURL *)arg1 transcoderUserInfo:(NSDictionary *)arg2 attributionInfo:(NSDictionary *)arg3 hideAttachment:(_Bool)arg4;
 - (id)initWithTransferGUID:(NSString *)arg1 imMessage:(IMMessage *)arg2;
 
 @optional
-- (id)initWithStickerFileURL:(NSURL *)arg1 transferUserInfo:(NSDictionary *)arg2 attributionInfo:(NSDictionary *)arg3;
+- (id)initWithStickerFileURL:(NSURL *)arg1 transferUserInfo:(NSDictionary *)arg2 attributionInfo:(NSDictionary *)arg3 animatedImageCacheURL:(NSURL *)arg4;
 @end
 

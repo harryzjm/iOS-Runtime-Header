@@ -8,6 +8,8 @@
 
 @interface UISearchBar (IBUIKitSearchBarSupport)
 - (id)scopeBar;
+- (_Bool)ibShadowedEnabled;
+- (void)setIbShadowedEnabled:(_Bool)arg1;
 - (void)setIbSearchTextPositionAdjustment:(id)arg1;
 - (void)setIbSearchFieldBackgroundPositionAdjustment:(id)arg1;
 - (id)scopeBarControlFont;

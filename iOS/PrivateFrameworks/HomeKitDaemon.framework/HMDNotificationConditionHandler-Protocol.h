@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HMDNotificationCondition;
+@class HMDNotificationCondition, HMDUser;
 
 @protocol HMDNotificationConditionHandler
-- (_Bool)conditionPasses:(HMDNotificationCondition *)arg1;
+- (_Bool)conditionPasses:(HMDNotificationCondition *)arg1 registrationUser:(HMDUser *)arg2;
 - (_Bool)canHandleCondition:(HMDNotificationCondition *)arg1;
 @end
 

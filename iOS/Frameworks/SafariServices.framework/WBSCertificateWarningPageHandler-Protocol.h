@@ -7,6 +7,7 @@
 #import <SafariServices/NSObject-Protocol.h>
 
 @protocol WBSCertificateWarningPageHandler <NSObject>
+- (void)visitWebsiteWithoutPrivateRelay;
 - (void)openClockSettings;
 - (void)showCertificateInformation;
 - (void)visitInsecureWebsiteWithTemporaryBypass;

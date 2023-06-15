@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIColor.h>
+#import <UIKitCore/UIColor.h>
 
 @interface UIColor (AVAdditions)
++ (id)avkit_liveContentAccessoryViewColor;
 + (id)AV_indicatorForegroundColor;
 + (id)AV_indicatorBackgroundColor;
 @end

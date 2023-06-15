@@ -6,12 +6,13 @@
 
 #import <ShazamKit/NSObject-Protocol.h>
 
-@class SHMatcherRequest;
+@class NSUUID, SHMatcherRequest;
 @protocol SHMatcherDelegate;
 
 @protocol SHMatcher <NSObject>
 @property(nonatomic) __weak id <SHMatcherDelegate> delegate;
-- (void)stop;
+- (void)stopRecognition;
+- (void)stopRecognitionForRequestID:(NSUUID *)arg1;
 - (void)startRecognitionForRequest:(SHMatcherRequest *)arg1;
 @end
 

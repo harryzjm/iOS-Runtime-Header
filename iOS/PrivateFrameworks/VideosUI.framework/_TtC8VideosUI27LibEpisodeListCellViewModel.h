@@ -11,7 +11,9 @@
 @interface _TtC8VideosUI27LibEpisodeListCellViewModel : _$s8VideosUI9ViewModelCN
 {
     MISSING_TYPE *contextMenuItemViewModels;
+    MISSING_TYPE *downloadButtonViewModel;
     MISSING_TYPE *id;
+    MISSING_TYPE *shouldShowDownloadExpiration;
     MISSING_TYPE *_isViewModelConstructed;
     MISSING_TYPE *_routerDataSource;
     MISSING_TYPE *episodeMediaEntity;

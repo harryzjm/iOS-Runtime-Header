@@ -4,8 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HomeUI/HFSoftwareUpdateManagerDelegate-Protocol.h>
 #import <HomeUI/HMSoftwareUpdateDelegate-Protocol.h>
 
-@protocol HFSoftwareUpdateObserver <HMSoftwareUpdateDelegate>
+@protocol HFSoftwareUpdateObserver <HMSoftwareUpdateDelegate, HFSoftwareUpdateManagerDelegate>
 @end
 

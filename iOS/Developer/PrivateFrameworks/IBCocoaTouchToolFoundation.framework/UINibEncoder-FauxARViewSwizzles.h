@@ -9,8 +9,12 @@
 @protocol IBNibDataArchivingDelegate;
 
 @interface UINibEncoder (FauxARViewSwizzles)
++ (void)ibSwizzleOrderedEncoding;
 - (id)ibFauxARViewSwizzledEncodedClassNameForClass:(Class)arg1;
 - (id)ibFauxRoomCaptureViewSwizzledEncodedClassNameForClass:(Class)arg1;
+- (void)ibSwizzledSerializeSet:(id)arg1;
+- (void)ibSwizzledSerializeDictionary:(id)arg1;
+- (_Bool)ibIsUnorderedCollectionSortingEnabled;
 @property(nonatomic) id <IBNibDataArchivingDelegate> archivingDelegate;
 @end
 

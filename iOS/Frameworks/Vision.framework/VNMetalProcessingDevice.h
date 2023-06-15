@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 - (int)espressoDeviceID;
 - (id)metalDevice;
 - (_Bool)targetsGPU;
+- (id)computeDevice;
 - (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;

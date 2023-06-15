@@ -11,10 +11,13 @@
 __attribute__((visibility("hidden")))
 @interface NGMPBPublicDeviceIdentity : PBCodable
 {
+    unsigned int _secondaryVersion;
     NSData *_signingKey;
+    CDStruct_f773167c _has;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) unsigned int secondaryVersion; // @synthesize secondaryVersion=_secondaryVersion;
 @property(retain, nonatomic) NSData *signingKey; // @synthesize signingKey=_signingKey;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
@@ -25,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasSecondaryVersion;
 
 @end
 

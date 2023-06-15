@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     SFSyntheticBookmarkFolder *_activeSyntheticFolder;
     NSArray *_allSyntheticFolders;
     UISearchBar *_searchBar;
+    _Bool _shouldUseSearchControllerInNavigationBar;
     NSString *_userTypedFilter;
     unsigned long long _skipOffset;
     _Bool _needsInitialContentOffsetUpdateForTableHeaderView;
@@ -48,6 +49,7 @@ __attribute__((visibility("hidden")))
 - (id)tableView:(id)arg1 itemsForAddingToDragSession:(id)arg2 atIndexPath:(id)arg3 point:(struct CGPoint)arg4;
 - (id)tableView:(id)arg1 itemsForBeginningDragSession:(id)arg2 atIndexPath:(id)arg3;
 - (id)_dragItemsAtIndexPath:(id)arg1 includingFolders:(_Bool)arg2;
+- (void)searchBarCancelButtonClicked:(id)arg1;
 - (void)searchBarSearchButtonClicked:(id)arg1;
 - (void)searchBar:(id)arg1 textDidChange:(id)arg2;
 - (void)bookmark:(id)arg1 didProduceNavigationIntent:(id)arg2 userInfo:(id)arg3;
@@ -83,6 +85,9 @@ __attribute__((visibility("hidden")))
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (id)_tableViewCellForBookmark:(id)arg1 syntheticFolder:(id)arg2;
 - (id)_fontForCurrentTraitCollection;
+- (double)tableView:(id)arg1 estimatedHeightForHeaderInSection:(long long)arg2;
+- (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
+- (id)backgroundColorUsingTranslucentAppearance:(_Bool)arg1;
 - (id)bookmarksTableViewCellWithReuseIdentifier:(id)arg1;
 - (id)_syntheticFolderAtIndexPath:(id)arg1;
 - (_Bool)_bookmarkAtIndexPathIsFolder:(id)arg1;

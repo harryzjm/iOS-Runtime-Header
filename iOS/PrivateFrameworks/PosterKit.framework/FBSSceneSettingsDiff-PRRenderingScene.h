@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <FrontBoard/FBSSceneSettingsDiff.h>
+#import <FrontBoardServices/FBSSceneSettingsDiff.h>
 
 @interface FBSSceneSettingsDiff (PRRenderingScene)
 - (_Bool)pr_unlockProgressDidChange;

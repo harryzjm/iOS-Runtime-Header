@@ -4,23 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSSet, PXStoryErrorRepository, PXStoryViewControllerTransition;
+#import <PhotosUICore/PXMemoryAssetsPickerPresenter-Protocol.h>
+
+@class NSSet, PXGViewControllerTransition, PXStoryErrorRepository;
 @protocol NSObject, PXAudioAsset, PXAudioAssetFetchResult, PXDisplayAsset;
 
-@protocol PXStoryViewActionPerformer
+@protocol PXStoryViewActionPerformer <PXMemoryAssetsPickerPresenter>
 - (void)performActionForChromeActionMenuItem:(long long)arg1 withValue:(long long)arg2 sender:(id)arg3;
 - (id <NSObject>)musicFeedbackContextMenuDelegateWithAudioAssetProvidingBlock:(id <PXAudioAsset> (^)(void))arg1;
+- (void)deleteMemory;
 - (void)removeAssetsFromCuration:(NSSet *)arg1;
 - (void)makeAssetKeyPhoto:(id <PXDisplayAsset>)arg1;
 - (void)presentTitleEditor;
-- (void)toggleFullscreenMode;
 - (void)toggleMuteState;
 - (void)toggleFavoriteState;
 - (void)showVisualDiagnostics;
+- (void)copyInternalURL;
 - (void)fileRadarForErrorRepository:(PXStoryErrorRepository *)arg1;
 - (void)fileRadar;
 - (void)presentSharingViewWithSender:(id)arg1;
-- (PXStoryViewControllerTransition *)dismissStoryViewControllerInteractively;
+- (PXGViewControllerTransition *)dismissStoryViewControllerInteractively;
 - (void)dismissStoryViewController;
 - (void)deleteCurrentChapter;
 - (void)presentChapterInsertor;

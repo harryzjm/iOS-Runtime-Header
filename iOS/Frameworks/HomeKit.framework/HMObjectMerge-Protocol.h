@@ -11,9 +11,9 @@
 
 @protocol HMObjectMerge <NSObject>
 @property(readonly, nonatomic) NSUUID *uniqueIdentifier;
-- (_Bool)_mergeWithNewObject:(id <HMObjectMerge>)arg1;
+- (_Bool)mergeFromNewObject:(id <HMObjectMerge>)arg1;
 
 @optional
-- (void)mergeWithNewObjectNoMergeCount:(id <HMObjectMerge>)arg1;
+- (void)mergeFromNewObjectNoMergeCount:(id <HMObjectMerge>)arg1;
 @end
 

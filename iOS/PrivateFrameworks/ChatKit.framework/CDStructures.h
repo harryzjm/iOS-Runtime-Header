@@ -58,6 +58,11 @@ struct CGSize {
     double height;
 };
 
+struct CGVector {
+    double _field1;
+    double _field2;
+};
+
 struct CKBalloonDescriptor_t {
     char _field1;
     char _field2;
@@ -82,16 +87,6 @@ struct CKFeedSeparatorMetrics {
 struct CLLocationCoordinate2D {
     double latitude;
     double longitude;
-};
-
-struct IMAssociatedMessageGeometryDescriptor {
-    unsigned long long _field1;
-    unsigned long long _field2;
-    float _field3;
-    float _field4;
-    float _field5;
-    float _field6;
-    float _field7;
 };
 
 struct MTLResourceID {

@@ -6,9 +6,10 @@
 
 #import <TelephonyUtilities/NSObject-Protocol.h>
 
-@class NSUUID, TUNearbyDeviceHandle;
+@class NSUUID, TUNearbyDeviceHandle, TUNearbySuggestion;
 
 @protocol TUNeighborhoodActivityConduitXPCClient <NSObject>
+- (oneway void)suggestionUpdated:(TUNearbySuggestion *)arg1;
 - (oneway void)splitSessionEnded:(TUNearbyDeviceHandle *)arg1;
 - (oneway void)splitSessionStarted:(TUNearbyDeviceHandle *)arg1;
 - (oneway void)tvDeviceDisappeared:(TUNearbyDeviceHandle *)arg1;

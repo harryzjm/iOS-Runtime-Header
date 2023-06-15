@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 @class SCNMTLBuffer;
+@protocol MTLBuffer;
 
 __attribute__((visibility("hidden")))
 @interface SCNMTLMeshElement : NSObject
@@ -16,25 +17,16 @@ __attribute__((visibility("hidden")))
     unsigned long long _instanceCount;
     long long _sharedIndexBufferOffset;
     SCNMTLBuffer *_indexBuffer;
+    id <MTLBuffer> _drawIndexedPrimitivesIndirectBuffer;
     unsigned long long _indexType;
     long long _effectiveIndexOffset;
     long long _effectiveIndexCount;
+    long long _drawIndexedPrimitivesIndirectBufferOffset;
 }
 
-@property(readonly, nonatomic) long long effectiveIndexCount; // @synthesize effectiveIndexCount=_effectiveIndexCount;
-@property(readonly, nonatomic) long long effectiveIndexOffset; // @synthesize effectiveIndexOffset=_effectiveIndexOffset;
-@property(nonatomic) unsigned long long indexType; // @synthesize indexType=_indexType;
-@property(retain, nonatomic) SCNMTLBuffer *indexBuffer; // @synthesize indexBuffer=_indexBuffer;
-@property(nonatomic) long long sharedIndexBufferOffset; // @synthesize sharedIndexBufferOffset=_sharedIndexBufferOffset;
-@property(nonatomic) unsigned long long instanceCount; // @synthesize instanceCount=_instanceCount;
-@property(nonatomic) long long indexCount; // @synthesize indexCount=_indexCount;
-@property(nonatomic) unsigned long long primitiveType; // @synthesize primitiveType=_primitiveType;
-- (void)setPrimitiveRange:(CDStruct_912cb5d2)arg1;
-@property(readonly, nonatomic) long long effectivePrimitiveCount;
-@property(readonly, nonatomic) long long primitiveCount;
-- (void)setupWithElement:(struct __C3DMeshElement *)arg1;
 - (id)description;
 - (void)dealloc;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 
 @end
 

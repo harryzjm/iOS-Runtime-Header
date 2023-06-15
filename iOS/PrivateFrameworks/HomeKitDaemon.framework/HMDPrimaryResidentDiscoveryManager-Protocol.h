@@ -6,13 +6,12 @@
 
 #import <HomeKitDaemon/NSObject-Protocol.h>
 
-@class HMFFuture;
 @protocol HMDPrimaryResidentDiscoveryManagerDelegate, HMDResidentDeviceManagerContext;
 
 @protocol HMDPrimaryResidentDiscoveryManager <NSObject>
 @property __weak id <HMDPrimaryResidentDiscoveryManagerDelegate> delegate;
 - (void)cancel;
-- (HMFFuture *)discoverPrimaryResident;
+- (void)discoverPrimaryResident;
 - (void)configureWithContext:(id <HMDResidentDeviceManagerContext>)arg1;
 @end
 

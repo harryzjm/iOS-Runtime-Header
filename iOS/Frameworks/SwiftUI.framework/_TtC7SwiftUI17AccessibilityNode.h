@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
+#import <UIKitCore/UIResponder.h>
 
 @class AXChartDescriptor, MISSING_TYPE, NSArray, NSAttributedString, NSString, UIBezierPath;
+@protocol _TtP7SwiftUI28PlatformAccessibilityElement_;
 
 __attribute__((visibility("hidden")))
-@interface _TtC7SwiftUI17AccessibilityNode : NSObject
+@interface _TtC7SwiftUI17AccessibilityNode : UIResponder
 {
     MISSING_TYPE *id;
     MISSING_TYPE *version;
@@ -24,19 +25,17 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *platformRotorStorage;
     MISSING_TYPE *cachedIsPlaceholderOrIgnored;
     MISSING_TYPE *relationshipScope;
-    MISSING_TYPE *isCell;
 }
 
 - (void).cxx_destruct;
 - (id)init;
+@property(nonatomic, readonly) UIResponder *nextResponder;
 - (void)dealloc;
 - (_Bool)_accessibilityIsChartElement;
 @property(nonatomic, retain) AXChartDescriptor *accessibilityChartDescriptor;
-- (_Bool)_accessibilityUserTestingIsElementClassAcceptable;
 - (_Bool)_accessibilityIsRTL;
 @property(nonatomic, copy) NSArray *accessibilityCustomRotors;
-- (id)_accessibilityHeadingLevel;
-- (_Bool)_accessibilityScrollToVisible;
+- (_Bool)_accessibilityCanPerformAction:(int)arg1;
 - (_Bool)accessibilityScroll:(long long)arg1;
 @property(nonatomic, readonly) NSArray *_accessibilityUserDefinedLinkedUIElements;
 - (id)accessibilityURL;
@@ -47,14 +46,13 @@ __attribute__((visibility("hidden")))
 - (_Bool)accessibilityPerformEscape;
 - (_Bool)_accessibilitySupportsActivateAction;
 - (_Bool)accessibilityActivate;
+@property(nonatomic) unsigned long long accessibilityDirectTouchOptions;
 @property(nonatomic, copy) NSArray *accessibilityCustomActions;
-- (void)accessibilityZoomOutAtPoint:(struct CGPoint)arg1;
-- (void)accessibilityZoomInAtPoint:(struct CGPoint)arg1;
+- (_Bool)accessibilityZoomOutAtPoint:(struct CGPoint)arg1;
+- (_Bool)accessibilityZoomInAtPoint:(struct CGPoint)arg1;
 - (void)accessibilityDecrement;
 - (void)accessibilityIncrement;
-@property(nonatomic, retain) UIBezierPath *accessibilityPath;
 @property(nonatomic) _Bool accessibilityRespondsToUserInteraction;
-- (struct _NSRange)accessibilityRowRange;
 @property(nonatomic) long long accessibilityContainerType;
 @property(nonatomic) long long accessibilityNavigationStyle;
 @property(nonatomic) _Bool shouldGroupAccessibilityChildren;
@@ -66,13 +64,15 @@ __attribute__((visibility("hidden")))
 - (id)_accessibilityUserTestingVisibleAncestor;
 - (id)_accessibilityUserTestingParent;
 - (id)accessibilityContainer;
-- (_Bool)_accessibilityAutomationHitTestReverseOrder;
 - (id)_accessibilityUserTestingChildren;
-- (_Bool)accessibilityShouldEnumerateContainerElementsArrayDirectly;
-- (long long)accessibilityElementCount;
 @property(nonatomic, copy) NSArray *accessibilityElements;
+@property(nonatomic, readonly) NSArray *_accessibilityNodeChildrenUnsorted;
 - (struct CGRect)_accessibilityBoundsForRange:(struct _NSRange)arg1;
+@property(nonatomic, readonly) id <_TtP7SwiftUI28PlatformAccessibilityElement_> _accessibilityNodeRepresentedElement;
+@property(nonatomic, readonly) _Bool _accessibilityIsHostNode;
+@property(nonatomic, retain) UIBezierPath *accessibilityPath;
 @property(nonatomic) struct CGRect accessibilityFrame;
+- (id)_accessibilityHeadingLevel;
 @property(nonatomic, copy) NSString *accessibilityTextualContext;
 @property(nonatomic, copy) NSString *accessibilityLanguage;
 @property(nonatomic, retain) NSAttributedString *accessibilityAttributedHint;
@@ -85,8 +85,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, copy) NSString *accessibilityLabel;
 @property(nonatomic) unsigned long long accessibilityTraits;
 @property(nonatomic) _Bool isAccessibilityElement;
-@property(nonatomic, copy) NSArray *accessibilityCustomContent;
-- (void)_accessibilityUpdateContainerElementReferencesIfNeededForNewElements:(id)arg1;
+- (id)accessibilityCustomContent;
 @property(nonatomic, copy) NSString *accessibilityIdentifier;
 - (unsigned long long)_accessibilityAutomationType;
 - (id)_accessibilityRoleDescription;
@@ -94,6 +93,14 @@ __attribute__((visibility("hidden")))
 - (double)_accessibilityMaxValue;
 - (double)_accessibilityMinValue;
 - (long long)_accessibilityExpandedStatus;
+- (id)accessibilityHeaderElementsForColumn:(long long)arg1;
+- (id)accessibilityHeaderElementsForRow:(long long)arg1;
+- (long long)accessibilityColumnCount;
+- (long long)accessibilityRowCount;
+- (id)accessibilityDataTableCellElementForRow:(long long)arg1 column:(long long)arg2;
+- (_Bool)_accessibilityIsFirstSiblingForType:(unsigned long long)arg1;
+- (struct _NSRange)accessibilityRowRange;
+- (struct _NSRange)accessibilityColumnRange;
 - (id)_accessibilityDataSeriesValueDescriptionForPosition:(double)arg1 axis:(long long)arg2;
 - (id)_accessibilityDataSeriesGridlinePositionsForAxis:(long long)arg1;
 - (id)_accessibilityDataSeriesMaximumValueForAxis:(long long)arg1;
@@ -107,7 +114,6 @@ __attribute__((visibility("hidden")))
 - (_Bool)_accessibilityDataSeriesSupportsSummarization;
 - (long long)_accessibilityDataSeriesType;
 - (id)_accessibilityDataSeriesName;
-- (id)_accessibilityMediaAnalysisElement;
 - (id)accessibilityCustomAttribute:(id)arg1;
 
 @end

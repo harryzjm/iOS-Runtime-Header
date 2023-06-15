@@ -14,11 +14,14 @@ __attribute__((visibility("hidden")))
 {
     NSArray *_suggestions;
     id <_UISearchSuggestionControllerDelegate> _delegate;
+    NSArray *_suggestionGroups;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSArray *suggestionGroups; // @synthesize suggestionGroups=_suggestionGroups;
 @property(nonatomic) __weak id <_UISearchSuggestionControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(copy, nonatomic) NSArray *suggestions; // @synthesize suggestions=_suggestions;
+- (void)updateSuggestionGroups:(id)arg1 userInitiated:(_Bool)arg2;
 - (void)updateSuggestions:(id)arg1 userInitiated:(_Bool)arg2;
 
 @end

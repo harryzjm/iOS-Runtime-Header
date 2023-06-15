@@ -8,6 +8,7 @@
 
 @interface NSError (AuthKit)
 + (id)ak_wrappedAnisetteError:(int)arg1;
++ (id)ak_generalErrorWithCode:(long long)arg1 errorDomain:(id)arg2 underlyingError:(id)arg3;
 + (id)ak_errorWithCode:(long long)arg1 underlyingError:(id)arg2;
 + (id)ak_errorWithCode:(long long)arg1 userInfo:(id)arg2;
 + (id)ak_errorWithCode:(long long)arg1;

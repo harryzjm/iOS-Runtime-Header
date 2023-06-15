@@ -14,6 +14,7 @@
 @optional
 - (void)presentation:(id <CRKCardPresenting>)arg1 didApplyCardSectionViewSource:(id <CRKCardSectionViewSourcing>)arg2 toCardViewController:(UIViewController<CRKCardViewControlling> *)arg3;
 - (unsigned long long)displayPriorityForCard:(id <CRCard>)arg1;
+- (void)unregisterCardViewController:(UIViewController<CRKCardViewControlling> *)arg1;
 - (UIViewController<CRKCardViewControlling> *)cardViewControllerForCard:(id <CRCard>)arg1;
 @end
 

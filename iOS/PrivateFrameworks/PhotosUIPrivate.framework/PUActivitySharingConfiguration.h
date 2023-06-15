@@ -28,9 +28,11 @@ __attribute__((visibility("hidden")))
     NSString *_subtitle;
     id <PXDisplayAsset> _keyAsset;
     long long _sourceOrigin;
+    PHFetchResult *_initialAssetsFetchResult;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) PHFetchResult *initialAssetsFetchResult; // @synthesize initialAssetsFetchResult=_initialAssetsFetchResult;
 @property(nonatomic) long long sourceOrigin; // @synthesize sourceOrigin=_sourceOrigin;
 @property(retain, nonatomic) id <PXDisplayAsset> keyAsset; // @synthesize keyAsset=_keyAsset;
 @property(copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;

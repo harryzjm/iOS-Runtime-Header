@@ -7,7 +7,7 @@
 @class MLFeatureValue, NSSet, NSString;
 
 @protocol MLFeatureProvider
+@property(readonly, nonatomic) NSSet *featureNames;
 - (MLFeatureValue *)featureValueForName:(NSString *)arg1;
-@property(nonatomic, readonly) NSSet *featureNames;
 @end
 

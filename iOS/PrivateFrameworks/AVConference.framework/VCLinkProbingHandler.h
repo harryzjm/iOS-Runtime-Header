@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMutableDictionary, NSMutableSet, NSSet, VCDispatchTimer;
+@class NSArray, NSMutableDictionary, NSMutableSet, NSNumber, NSSet, VCDispatchTimer;
 @protocol OS_dispatch_queue, VCLinkProbingHandlerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     id <VCLinkProbingHandlerDelegate> _linkProbingHandlerDelegate;
     VCDispatchTimer *_queryProbingResultsTimer;
     VCDispatchTimer *_probingLockdownTimer;
+    VCDispatchTimer *_requestStatsTimer;
     NSObject<OS_dispatch_queue> *_serialQueue;
     NSObject<OS_dispatch_queue> *_delegateQueue;
     NSMutableDictionary *_aggregatedProbingResults;
@@ -41,17 +42,30 @@ __attribute__((visibility("hidden")))
     unsigned int _linkProbingDuplicationWaitTimeout;
     unsigned int _consecutiveIdenticalQueryResultMax;
     unsigned int _consecutiveIdenticalQueryResultCount;
+    unsigned int _linkProbingQRStatFrequency;
+    unsigned int _linkProbingQRStatRequestMaxCount;
+    double _inkProbingQRStatRequestMaxRTT;
+    unsigned char _qrLinkProbingState;
+    NSNumber *_qrLinkID;
+    unsigned long long _requestStatsIdentifier;
+    NSMutableDictionary *_activeQRStatRequests;
 }
 
 @property _Bool isDuplicationEnabled; // @synthesize isDuplicationEnabled=_isDuplicationEnabled;
 @property(readonly) NSSet *activelyProbingLinkIDs; // @synthesize activelyProbingLinkIDs=_activelyProbingLinkIDs;
 @property unsigned char linkProbingCapabilityVersion; // @synthesize linkProbingCapabilityVersion=_linkProbingCapabilityVersion;
+- (void)dispatchedUpdateQRProbingResult:(id)arg1;
+- (void)requestStats;
 - (void)resetAggregatedProbingResults;
 - (void)probingLockdownEnded;
 - (void)updateLinkPreferenceOrder;
 - (void)queryProbingResults;
 - (void)setLinkProbingResultConfig;
 - (void)loadStorebagValues;
+- (void)updateQRProbingResult:(id)arg1;
+- (void)stopActiveProbingQRLink;
+- (void)startActiveProbingQRLink;
+- (void)setQRLinkID:(id)arg1;
 - (id)getProbingResultsForLinkID:(id)arg1;
 - (void)removeProbingResultsForLinks:(id)arg1;
 - (_Bool)isValidProbingResult:(id)arg1;

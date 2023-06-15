@@ -7,6 +7,6 @@
 #import <PosterKit/PRPosterConfigurableOptions.h>
 
 @interface PRPosterConfigurableOptions (PRBAdditions)
-+ (id)prb_configurableOptionsForPreview:(id)arg1;
++ (id)pbf_configurableOptionsForPreview:(id)arg1;
 @end
 

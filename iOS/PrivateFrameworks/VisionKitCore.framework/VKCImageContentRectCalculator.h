@@ -11,8 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (struct CGRect)processNormalizedRect:(struct CGRect)arg1 forContentMode:(long long)arg2;
-+ (struct CGRect)unitContentsRectForBounds:(struct CGRect)arg1 contentMode:(long long)arg2 imageSize:(struct CGSize)arg3;
++ (struct CGRect)processNormalizedRect:(struct CGRect)arg1 scale:(double *)arg2 contentMode:(long long)arg3;
++ (struct CGRect)unitContentsRectForBounds:(struct CGRect)arg1 contentMode:(long long)arg2 imageSize:(struct CGSize)arg3 orientation:(long long)arg4 view:(id)arg5;
 
 @end
 

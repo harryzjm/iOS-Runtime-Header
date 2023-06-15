@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 @class NSSet, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UIEventDeferringEnvironmentsContainer : NSObject <NSCopying>
+@interface _UIEventDeferringEnvironmentsContainer : NSObject
 {
     NSSet *_environments;
 }

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
 @class MISSING_TYPE;
 
@@ -19,18 +19,21 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *pageViewController;
     MISSING_TYPE *pageBlueprintProvider;
     MISSING_TYPE *toolbarCoverFactory;
+    MISSING_TYPE *tableOfContentsVisibilityProvider;
     MISSING_TYPE *paywallFactory;
     MISSING_TYPE *paywall;
     MISSING_TYPE *titleView;
     MISSING_TYPE *paywallViewController;
-    MISSING_TYPE *paidAccessChecker;
     MISSING_TYPE *eventManager;
     MISSING_TYPE *featureAvailability;
+    MISSING_TYPE *newsPlusLabelVisibilityProvider;
+    MISSING_TYPE *newsPlusLabelItem;
     MISSING_TYPE *sharingActivityItemFactory;
     MISSING_TYPE *subscriptionController;
     MISSING_TYPE *toolbarManager;
     MISSING_TYPE *backButton;
     MISSING_TYPE *nextButton;
+    MISSING_TYPE *coverButton;
     MISSING_TYPE *barVisibilityAnimator;
     MISSING_TYPE *pageSheetPresentationObserver;
     MISSING_TYPE *commands;

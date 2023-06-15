@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class GEOComposedRoute, GEOMapFeatureAccess, GEOMotionContext, GEOTransitRouteMatcher;
+@class GEOApplicationAuditToken, GEOComposedRoute, GEOMapFeatureAccess, GEOMotionContext, GEOTransitRouteMatcher;
 
 __attribute__((visibility("hidden")))
 @interface _GEORouteMatchUpdater : NSObject
@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     GEOComposedRoute *_route;
     GEOMapFeatureAccess *_mapFeatureAccess;
     GEOMotionContext *_motionContext;
+    GEOApplicationAuditToken *_auditToken;
     double _stationRadius;
 }
 

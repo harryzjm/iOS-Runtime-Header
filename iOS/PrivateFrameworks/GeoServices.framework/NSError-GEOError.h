@@ -9,13 +9,18 @@
 @interface NSError (GEOError)
 + (id)geo_insufficientFilesystemCapacityWithBytesNeeded:(unsigned long long)arg1 bytesAvailable:(unsigned long long)arg2;
 + (id)GEOErrorWithCode:(long long)arg1 userInfo:(id)arg2;
++ (id)GEOErrorWithCode:(long long)arg1 reason:(id)arg2 userInfo:(id)arg3;
 + (id)GEOErrorWithCode:(long long)arg1 reason:(id)arg2 underlyingError:(id)arg3;
 + (id)GEOErrorWithCode:(long long)arg1 reason:(id)arg2;
++ (id)GEOErrorWithCode:(long long)arg1;
 + (id)zilchDecoderErrorForNoSolution;
 + (id)_geo_errorFromXPCError:(id)arg1;
 + (id)_geo_errorFromXPCData:(id)arg1;
+@property(readonly, nonatomic, getter=_geo_isNetworkError) _Bool _geo_networkError;
+- (id)_geo_directionsErrorInfo;
 - (id)zilchDecoderTileLoadingError;
 - (id)_geo_newXPCData;
 @property(readonly, nonatomic) _Bool _geo_isXPCInterruptedError;
+- (id)_geo_etaTrafficUpdateErrorInfo;
 @end
 

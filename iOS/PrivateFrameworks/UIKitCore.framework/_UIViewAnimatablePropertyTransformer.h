@@ -12,8 +12,10 @@
 __attribute__((visibility("hidden")))
 @interface _UIViewAnimatablePropertyTransformer : NSObject
 {
+    _Bool _unsafe;
     _Bool _presentationValueCallbackRan;
     NSObject<OS_dispatch_queue> *_lockingQueue;
+    _Bool _clearsCapturesPropertiesOnStabilization;
     CDUnknownBlockType _modelValueChangedCallback;
     CDUnknownBlockType _presentationValueChangedCallback;
     CDUnknownBlockType _stabilizedCallback;
@@ -23,6 +25,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableSet *runningProgresses; // @synthesize runningProgresses=_runningProgresses;
+@property(nonatomic) _Bool clearsCapturesPropertiesOnStabilization; // @synthesize clearsCapturesPropertiesOnStabilization=_clearsCapturesPropertiesOnStabilization;
 @property(retain, nonatomic) _UICompoundObjectMap *capturedProperties; // @synthesize capturedProperties=_capturedProperties;
 @property(copy, nonatomic) CDUnknownBlockType stabilizedCallback; // @synthesize stabilizedCallback=_stabilizedCallback;
 @property(copy, nonatomic) CDUnknownBlockType presentationValueChangedCallback; // @synthesize presentationValueChangedCallback=_presentationValueChangedCallback;
@@ -34,9 +37,9 @@ __attribute__((visibility("hidden")))
 - (void)presentationValueUpdatedForProgress:(id)arg1;
 - (id)initWithInputAnimatableProperties:(id)arg1 presentationValueChangedCallback:(CDUnknownBlockType)arg2;
 - (id)initWithProgressAnimatableProperty:(id)arg1 modelValueSetter:(CDUnknownBlockType)arg2 presentationValueSetter:(CDUnknownBlockType)arg3;
-- (id)initWithInputAnimatableProperties:(id)arg1 modelValueSetter:(CDUnknownBlockType)arg2 presentationValueSetter:(CDUnknownBlockType)arg3;
-- (id)initWithInputAnimatableProperties:(id)arg1 modelValueSetter:(CDUnknownBlockType)arg2 presentationValueSetter:(CDUnknownBlockType)arg3 stabilizedCallback:(CDUnknownBlockType)arg4;
-- (id)initWithInputAnimatableProperties:(id)arg1 modelValueSetter:(CDUnknownBlockType)arg2 presentationValueSetter:(CDUnknownBlockType)arg3 stabilizedCallback:(CDUnknownBlockType)arg4 allowsProgressAnimatableProperties:(_Bool)arg5;
+- (id)initWithInputAnimatableProperties:(id)arg1 unsafe:(_Bool)arg2 modelValueSetter:(CDUnknownBlockType)arg3 presentationValueSetter:(CDUnknownBlockType)arg4;
+- (id)initWithInputAnimatableProperties:(id)arg1 unsafe:(_Bool)arg2 modelValueSetter:(CDUnknownBlockType)arg3 presentationValueSetter:(CDUnknownBlockType)arg4 stabilizedCallback:(CDUnknownBlockType)arg5;
+- (id)initWithInputAnimatableProperties:(id)arg1 unsafe:(_Bool)arg2 modelValueSetter:(CDUnknownBlockType)arg3 presentationValueSetter:(CDUnknownBlockType)arg4 stabilizedCallback:(CDUnknownBlockType)arg5 allowsProgressAnimatableProperties:(_Bool)arg6;
 
 @end
 

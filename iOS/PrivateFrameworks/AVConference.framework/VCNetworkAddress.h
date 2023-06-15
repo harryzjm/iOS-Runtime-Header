@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
+- (_Bool)isValid;
 - (_Bool)isIPv6;
 - (void)dealloc;
 

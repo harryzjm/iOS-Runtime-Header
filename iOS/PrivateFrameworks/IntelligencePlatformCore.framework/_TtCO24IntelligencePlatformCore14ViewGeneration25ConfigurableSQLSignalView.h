@@ -10,7 +10,7 @@
 
 @interface _TtCO24IntelligencePlatformCore14ViewGeneration25ConfigurableSQLSignalView : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *dependencyTableNames;
+    MISSING_TYPE *dependencies;
     MISSING_TYPE *viewSignals;
     MISSING_TYPE *viewUpdates;
     MISSING_TYPE *signalConfiguration;

@@ -14,20 +14,27 @@ __attribute__((visibility("hidden")))
 {
     NSMutableArray *_bookmarks;
     id <WBSURLCompletionMatchData> _historyMatchData;
+    _Bool _onlyContainsCloudTab;
+    _Bool _containsBookmark;
+    NSString *_cloudTabDeviceName;
 }
 
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSString *cloudTabDeviceName; // @synthesize cloudTabDeviceName=_cloudTabDeviceName;
+@property(readonly, nonatomic) _Bool containsBookmark; // @synthesize containsBookmark=_containsBookmark;
+@property(readonly, nonatomic) _Bool onlyContainsCloudTab; // @synthesize onlyContainsCloudTab=_onlyContainsCloudTab;
 - (long long)visitCountScoreForPageTitleAtTime;
 - (long long)visitCountScoreForURLStringAtIndex:(unsigned long long)arg1;
 - (float)topSitesScoreForPageTitleAtTime:(double)arg1;
 - (float)topSitesScoreForURLStringAtIndex:(unsigned long long)arg1 atTime:(double)arg2;
 - (_Bool)matchesAutocompleteTrigger:(id)arg1 isStrengthened:(_Bool)arg2;
+- (void)enumeratePageTitlesAndUserVisibleURLsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateUserVisibleURLsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumeratePageTitlesUsingBlock:(CDUnknownBlockType)arg1;
 - (id)matchDataByMergingWithMatchData:(id)arg1;
+@property(readonly, nonatomic) _Bool visitWasClientError;
 @property(readonly, nonatomic) _Bool lastVisitWasFailure;
 @property(readonly, nonatomic) double lastVisitedTimeInterval;
-@property(readonly, nonatomic) _Bool containsBookmark;
 - (id)pageTitleForUserVisibleURLStringAtIndex:(unsigned long long)arg1;
 - (id)userVisibleURLStringAtIndex:(unsigned long long)arg1;
 - (id)userVisibleURLStringForPageTitleAtIndex:(unsigned long long)arg1;
@@ -36,8 +43,8 @@ __attribute__((visibility("hidden")))
 - (id)_historyItemUserVisibleURLString;
 - (id)_bookmarkUserVisibleURLString;
 - (id)bookmark;
-- (id)initWithBookmark:(id)arg1 andBookmark:(id)arg2;
-- (id)initWithBookmark:(id)arg1 historyMatchData:(id)arg2;
+- (id)initWithBookmarkData:(id)arg1 andBookmarkData:(id)arg2;
+- (id)initWithBookmarkData:(id)arg1 historyMatchData:(id)arg2;
 @property(readonly, nonatomic) _Bool shouldPreload;
 
 // Remaining properties
@@ -47,7 +54,6 @@ __attribute__((visibility("hidden")))
 @property(readonly) Class superclass;
 @property(readonly, nonatomic) long long visitCount;
 @property(readonly, nonatomic) long long visitCountScore;
-@property(readonly, nonatomic) _Bool visitWasClientError;
 
 @end
 

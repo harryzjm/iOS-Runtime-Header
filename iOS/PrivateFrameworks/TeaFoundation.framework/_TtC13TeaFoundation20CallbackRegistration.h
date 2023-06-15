@@ -12,7 +12,7 @@
 {
     MISSING_TYPE *callbackStore;
     MISSING_TYPE *publicContainer;
-    MISSING_TYPE *privateContainer;
+    MISSING_TYPE *privateContainerIdentifier;
 }
 
 @end

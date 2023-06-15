@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(nonatomic) struct os_unfair_lock_s connectionLock; // @synthesize connectionLock=_connectionLock;
 @property(readonly, nonatomic) SHShazamKitUIServiceConnectionProvider *connectionProvider; // @synthesize connectionProvider=_connectionProvider;
+- (void)presentMediaItem:(id)arg1 presentationSettings:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)presentMediaItem:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)tearDownConnection;
 - (void)attachDefaultConnectionHandlers;

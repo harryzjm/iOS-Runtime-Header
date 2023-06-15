@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
     UIInputViewController *_assistantViewController;
     _Bool _isNullInputView;
     _Bool _isCustomInputView;
+    _Bool _shouldShowDockView;
     _Bool _isRemoteKeyboard;
     UIView *_hostedCustomInputView;
     struct CGRect _inputAssistantViewBounds;
@@ -41,6 +42,7 @@ __attribute__((visibility("hidden")))
 + (id)inputSetWithInputView:(id)arg1 accessoryView:(id)arg2 assistantView:(id)arg3;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool isRemoteKeyboard; // @synthesize isRemoteKeyboard=_isRemoteKeyboard;
+@property(nonatomic) _Bool shouldShowDockView; // @synthesize shouldShowDockView=_shouldShowDockView;
 @property(nonatomic) _Bool isCustomInputView; // @synthesize isCustomInputView=_isCustomInputView;
 @property(readonly, nonatomic) struct CGRect inputAssistantViewBounds; // @synthesize inputAssistantViewBounds=_inputAssistantViewBounds;
 @property(retain, nonatomic) UIView *hostedCustomInputView; // @synthesize hostedCustomInputView=_hostedCustomInputView;

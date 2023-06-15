@@ -6,12 +6,10 @@
 
 #import <Settings/_TtP8Settings24SettingsHostBaseProtocol_-Protocol.h>
 
-@class NSArray, _TtC8Settings20SidebarConfiguration, _TtC8Settings21TitlebarConfiguration;
+@class NSString, _TtC8Settings21TitlebarConfiguration;
 
 @protocol _TtP8Settings20SettingsHostProtocol_ <_TtP8Settings24SettingsHostBaseProtocol_>
+- (void)signalWithMilestone:(NSString *)arg1;
 - (void)updateTitlebarWithConfig:(_TtC8Settings21TitlebarConfiguration *)arg1;
-- (void)updateSidebarWithItems:(NSArray *)arg1;
-- (void)updateSidebarWithConfig:(_TtC8Settings20SidebarConfiguration *)arg1;
-- (void)updateSidebarWithSections:(NSArray *)arg1;
 @end
 

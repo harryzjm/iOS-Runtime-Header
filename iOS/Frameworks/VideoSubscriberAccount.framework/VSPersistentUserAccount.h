@@ -27,10 +27,10 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSString *deviceName; // @dynamic deviceName;
 @property(nonatomic) long long deviceType; // @dynamic deviceType;
 @property(nonatomic) long long keychainItemHash; // @dynamic keychainItemHash;
-@property(nonatomic) _Bool markedAsDeleted; // @dynamic markedAsDeleted;
 @property(copy, nonatomic) NSDate *modified; // @dynamic modified;
 @property(copy, nonatomic) NSString *providerID; // @dynamic providerID;
 @property(nonatomic) _Bool requiresSystemTrust; // @dynamic requiresSystemTrust;
+@property(nonatomic) _Bool signedOut; // @dynamic signedOut;
 @property(copy, nonatomic) NSString *sourceIdentifier; // @dynamic sourceIdentifier;
 @property(nonatomic) long long sourceType; // @dynamic sourceType;
 @property(retain, nonatomic) NSObject *tierIdentifiers; // @dynamic tierIdentifiers;

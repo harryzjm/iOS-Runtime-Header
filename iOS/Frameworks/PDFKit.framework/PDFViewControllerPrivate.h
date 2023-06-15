@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CALayer, NSMutableArray, PDFAnnotation, PDFMarkupMenuView, PDFView, UIMenuItem;
+@class CALayer, PDFAnnotation, PDFView, UIEditMenuInteraction;
 
 __attribute__((visibility("hidden")))
 @interface PDFViewControllerPrivate : NSObject
@@ -15,11 +15,8 @@ __attribute__((visibility("hidden")))
     struct CGRect viewMarquee;
     CALayer *marqueeEffect;
     PDFAnnotation *activeAnnotation;
+    UIEditMenuInteraction *editMenuInteraction;
     unsigned long long textSelectionMenu;
-    NSMutableArray *textSelectionMenuItems;
-    UIMenuItem *highlightItem;
-    UIMenuItem *showMarkupMenuItem;
-    PDFMarkupMenuView *markupMenuView;
     double longPressGestureStartTime;
     _Bool didPostPDFExtensionViewAnnotationLongPress;
 }

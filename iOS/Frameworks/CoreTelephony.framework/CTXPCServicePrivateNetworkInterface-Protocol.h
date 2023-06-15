@@ -7,6 +7,7 @@
 @class CTGeofenceProfile, CTXPCServiceSubscriptionContext;
 
 @protocol CTXPCServicePrivateNetworkInterface
+- (void)deleteHiddenSims:(void (^)(NSError *))arg1;
 - (void)removeGeofenceProfile:(void (^)(_Bool))arg1;
 - (void)updateGeofenceProfile:(CTGeofenceProfile *)arg1 completion:(void (^)(_Bool))arg2;
 - (void)isPrivateNetworkPreferredOverWifi:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(_Bool, NSError *))arg2;

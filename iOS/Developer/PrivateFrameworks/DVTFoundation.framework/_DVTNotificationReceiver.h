@@ -20,8 +20,8 @@
     CDUnknownBlockType _block;
 }
 
-+ (void)_receiveNotification:(id)arg1 observer:(id)arg2 selector:(SEL)arg3 createHintGenerator:(CDUnknownBlockType)arg4;
-+ (void)_recieveNotification:(id)arg1 queue:(id)arg2 creationBacktrace:(id)arg3 createHintGenerator:(CDUnknownBlockType)arg4 block:(CDUnknownBlockType)arg5;
++ (void)_receiveNotification:(id)arg1 observer:(id)arg2 selector:(SEL)arg3 creationBacktrace:(id)arg4;
++ (void)_receiveNotification:(id)arg1 queue:(id)arg2 creationBacktrace:(id)arg3 block:(CDUnknownBlockType)arg4;
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType block; // @synthesize block=_block;
 @property(copy) NSString *notificationName; // @synthesize notificationName=_notificationName;

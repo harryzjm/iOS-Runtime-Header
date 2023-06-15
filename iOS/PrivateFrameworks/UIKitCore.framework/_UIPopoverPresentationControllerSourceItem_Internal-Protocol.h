@@ -6,10 +6,13 @@
 
 #import <UIKitCore/UIPopoverPresentationControllerSourceItem-Protocol.h>
 
-@class UIView, UIWindow;
+@class UIView, UIViewController, UIWindow;
+@protocol UICoordinateSpace;
 
 @protocol _UIPopoverPresentationControllerSourceItem_Internal <UIPopoverPresentationControllerSourceItem>
 - (struct CGRect)_sourceRectForPresentationInWindow:(UIWindow *)arg1;
 - (UIView *)_sourceViewForPresentationInWindow:(UIWindow *)arg1;
+- (UIViewController *)_nearestViewController;
+- (struct CGRect)_frameInCoordinateSpace:(id <UICoordinateSpace>)arg1 window:(UIWindow *)arg2;
 @end
 

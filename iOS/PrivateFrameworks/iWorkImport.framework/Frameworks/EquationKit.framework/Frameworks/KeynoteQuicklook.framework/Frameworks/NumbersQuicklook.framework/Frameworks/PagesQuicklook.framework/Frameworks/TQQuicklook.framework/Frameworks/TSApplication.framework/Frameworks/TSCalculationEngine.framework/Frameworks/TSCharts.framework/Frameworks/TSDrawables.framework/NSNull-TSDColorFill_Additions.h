@@ -10,7 +10,7 @@
 
 @interface NSNull (TSDColorFill_Additions)
 - (void)drawSwatchInRect:(struct CGRect)arg1 inContext:(struct CGContext *)arg2;
-- (void)paintPath:(const struct CGPath *)arg1 inContext:(struct CGContext *)arg2;
+- (void)paintPath:(struct CGPath *)arg1 inContext:(struct CGContext *)arg2;
 - (id)mixedObjectWithFraction:(double)arg1 ofObject:(id)arg2;
 - (long long)mixingTypeWithObject:(id)arg1 context:(id)arg2;
 

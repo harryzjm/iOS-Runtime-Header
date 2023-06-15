@@ -6,12 +6,14 @@
 
 #import <GameController/GCDevicePhysicalInputState-Protocol.h>
 
-@protocol GCDevice, GCDevicePhysicalInputState, GCDevicePhysicalInputState><GCDevicePhysicalInputStateDiff;
+@class NSObject;
+@protocol GCDevice, GCDevicePhysicalInputState, GCDevicePhysicalInputState><GCDevicePhysicalInputStateDiff, OS_dispatch_queue;
 
 @protocol GCDevicePhysicalInput <GCDevicePhysicalInputState>
 @property long long inputStateQueueDepth;
 @property(copy) CDUnknownBlockType inputStateAvailableHandler;
 @property(copy) CDUnknownBlockType elementValueDidChangeHandler;
+@property(retain) NSObject<OS_dispatch_queue> *queue;
 @property(readonly) __weak id <GCDevice> device;
 - (id <GCDevicePhysicalInputState><GCDevicePhysicalInputStateDiff>)nextInputState;
 - (id <GCDevicePhysicalInputState>)capture;

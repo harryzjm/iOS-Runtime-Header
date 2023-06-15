@@ -6,32 +6,39 @@
 
 #import <UIKit/UIView.h>
 
-@class MRUSlider, MRUStepper, MRUVisualStylingProvider, MRUVolumeController, NSString, UIImageView, UIWindowScene;
+@class MRUGroupSlider, MRUStepper, MRUVisualStylingProvider, MRUVolumeController, MRUVolumeGroupCoordinator, NSString, UIWindowScene;
+@protocol MPVolumeControllerDataSource, MRUNowPlayingVolumeControlsViewDelegate;
 
 __attribute__((visibility("hidden")))
 @interface MRUNowPlayingVolumeControlsView : UIView
 {
     _Bool _onScreen;
     _Bool _dimmed;
+    _Bool _ignoreAnimationForVolumeEvents;
+    id <MRUNowPlayingVolumeControlsViewDelegate> _delegate;
     MRUVolumeController *_volumeController;
+    MRUVolumeGroupCoordinator *_volumeGroupCoordinator;
     MRUVisualStylingProvider *_stylingProvider;
     long long _layout;
-    UIImageView *_minImageView;
-    UIImageView *_maxImageView;
-    MRUSlider *_slider;
+    double _sliderHeight;
+    double _sliderExpansionFactor;
+    MRUGroupSlider *_slider;
     MRUStepper *_stepper;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool ignoreAnimationForVolumeEvents; // @synthesize ignoreAnimationForVolumeEvents=_ignoreAnimationForVolumeEvents;
 @property(retain, nonatomic) MRUStepper *stepper; // @synthesize stepper=_stepper;
-@property(retain, nonatomic) MRUSlider *slider; // @synthesize slider=_slider;
-@property(retain, nonatomic) UIImageView *maxImageView; // @synthesize maxImageView=_maxImageView;
-@property(retain, nonatomic) UIImageView *minImageView; // @synthesize minImageView=_minImageView;
+@property(retain, nonatomic) MRUGroupSlider *slider; // @synthesize slider=_slider;
+@property(nonatomic) double sliderExpansionFactor; // @synthesize sliderExpansionFactor=_sliderExpansionFactor;
+@property(nonatomic) double sliderHeight; // @synthesize sliderHeight=_sliderHeight;
 @property(nonatomic, getter=isDimmed) _Bool dimmed; // @synthesize dimmed=_dimmed;
 @property(nonatomic, getter=isOnScreen) _Bool onScreen; // @synthesize onScreen=_onScreen;
 @property(nonatomic) long long layout; // @synthesize layout=_layout;
 @property(retain, nonatomic) MRUVisualStylingProvider *stylingProvider; // @synthesize stylingProvider=_stylingProvider;
+@property(retain, nonatomic) MRUVolumeGroupCoordinator *volumeGroupCoordinator; // @synthesize volumeGroupCoordinator=_volumeGroupCoordinator;
 @property(retain, nonatomic) MRUVolumeController *volumeController; // @synthesize volumeController=_volumeController;
+@property(nonatomic) __weak id <MRUNowPlayingVolumeControlsViewDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)updateVisualStyling;
 - (void)updateVisibility;
 - (void)updateVolumeAnimated:(_Bool)arg1;
@@ -45,10 +52,15 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSString *volumeAudioCategory;
 @property(readonly, nonatomic) UIWindowScene *windowSceneForVolumeDisplay;
 @property(readonly, nonatomic, getter=isOnScreenForVolumeDisplay) _Bool onScreenForVolumeDisplay;
+- (void)sliderLongPressActionDidFinish:(id)arg1;
+- (void)sliderLongPressActionDidCancel:(id)arg1;
+- (void)sliderLongPressActionDidBegin:(id)arg1;
+- (_Bool)sliderShouldAllowLongPress:(id)arg1;
 - (void)volumeController:(id)arg1 volumeControlCapabilitiesDidChange:(unsigned int)arg2;
 - (void)volumeController:(id)arg1 volumeControlAvailableDidChange:(_Bool)arg2;
 - (void)volumeController:(id)arg1 volumeValueDidChange:(float)arg2;
 - (void)sliderValueChanged:(id)arg1;
+@property(retain, nonatomic) id <MPVolumeControllerDataSource> dataSource;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)layoutSubviews;
 - (void)dealloc;

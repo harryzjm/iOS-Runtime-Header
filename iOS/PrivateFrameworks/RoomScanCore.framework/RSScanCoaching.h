@@ -31,17 +31,6 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) long long state; // @synthesize state=_state;
-- (void)reset;
-- (void)runWithFloorCeilingCount: /* Error: Ran out of types for this method. */;
-- (void)processFloorPlan:(id)arg1;
-- (id)runWithFrame:(id)arg1 cameraPose:(CDStruct_14d5dc5e)arg2 driftSignal:(id)arg3;
-- (id)runModelWithFrame:(id)arg1 cameraPose:(CDStruct_14d5dc5e)arg2 driftSignal:(id)arg3 intrinsic:(CDStruct_8e0628e6)arg4 seeWall:(_Bool)arg5;
-- (CDStruct_8e0628e6)correctIntrinsics:(CDStruct_8e0628e6)arg1;
-- (void)updateCoachingStateFirstKeyframe:(_Bool)arg1;
-- (float)computeCosPitchFromPose:(CDStruct_14d5dc5e)arg1 intrinsic:(CDStruct_8e0628e6)arg2;
-- (_Bool)currentPoseSeeWall:(CDStruct_14d5dc5e)arg1 intrinsic:(CDStruct_8e0628e6)arg2;
-- (void)setOnboarding:(_Bool)arg1;
 - (id)init;
 
 @end

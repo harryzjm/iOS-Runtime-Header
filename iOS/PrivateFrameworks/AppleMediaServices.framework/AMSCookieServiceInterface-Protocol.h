@@ -10,6 +10,8 @@
 
 @protocol AMSCookieServiceInterface <NSObject>
 - (void)updateCookiesWithCookiesToAdd:(NSArray *)arg1 cookiesToRemove:(NSArray *)arg2 forAccount:(ACAccount *)arg3 withCompletion:(void (^)(_Bool, NSError *))arg4;
+- (void)getCookiesForAccount:(ACAccount *)arg1 cookieDatabaseOnly:(_Bool)arg2 withCompletion:(void (^)(NSArray *, NSError *))arg3;
 - (void)getCookiesForAccount:(ACAccount *)arg1 withCompletion:(void (^)(NSArray *, NSError *))arg2;
+- (void)getCookieDatabasePathForAccount:(ACAccount *)arg1 withCompletion:(void (^)(NSString *, NSError *))arg2;
 @end
 

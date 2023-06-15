@@ -14,6 +14,8 @@
     MISSING_TYPE *textLayout;
     MISSING_TYPE *imageLayout;
     MISSING_TYPE *gradientLayout;
+    MISSING_TYPE *innerStrokeColor;
+    MISSING_TYPE *innerStrokeWidth;
 }
 
 @end

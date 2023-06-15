@@ -6,17 +6,18 @@
 
 #import <CoordinationCore/NSObject-Protocol.h>
 
-@class MTAlarm, NSSet, NSString, NSUUID;
+@class COHomeKitAccessoryMemento, MTAlarm, NSArray, NSSet, NSString, NSUUID;
 
 @protocol COAlarmManagerServiceInterface <NSObject>
-- (void)canDispatchForAccessoryUniqueIdentifier:(NSUUID *)arg1 categoryType:(NSString *)arg2 asInstance:(NSUUID *)arg3 cluster:(NSString *)arg4 reply:(void (^)(_Bool))arg5;
-- (void)removeObserverForNotificationName:(NSString *)arg1 cluster:(NSString *)arg2 withCallback:(void (^)(NSError *))arg3;
-- (void)addObserverForNotificationName:(NSString *)arg1 constraints:(NSSet *)arg2 asInstance:(NSUUID *)arg3 cluster:(NSString *)arg4 withCallback:(void (^)(NSError *))arg5;
-- (void)dismissAlarmWithIdentifier:(NSString *)arg1 cluster:(NSString *)arg2 withCallback:(void (^)(NSError *))arg3;
-- (void)snoozeAlarmWithIdentifier:(NSString *)arg1 cluster:(NSString *)arg2 withCallback:(void (^)(NSError *))arg3;
-- (void)removeAlarm:(MTAlarm *)arg1 forAccessoryUniqueIdentifier:(NSUUID *)arg2 categoryType:(NSString *)arg3 asInstance:(NSUUID *)arg4 cluster:(NSString *)arg5 withCallback:(void (^)(NSError *))arg6;
-- (void)updateAlarm:(MTAlarm *)arg1 forAccessoryUniqueIdentifier:(NSUUID *)arg2 categoryType:(NSString *)arg3 asInstance:(NSUUID *)arg4 cluster:(NSString *)arg5 withCallback:(void (^)(NSError *))arg6;
-- (void)addAlarm:(MTAlarm *)arg1 forAccessoryUniqueIdentifier:(NSUUID *)arg2 categoryType:(NSString *)arg3 asInstance:(NSUUID *)arg4 cluster:(NSString *)arg5 withCallback:(void (^)(NSError *))arg6;
-- (void)alarmsforAccessoryUniqueIdentifier:(NSUUID *)arg1 categoryType:(NSString *)arg2 asInstance:(NSUUID *)arg3 cluster:(NSString *)arg4 withCallback:(void (^)(NSArray *, NSError *))arg5;
+- (void)canDispatchAsAccessory:(COHomeKitAccessoryMemento *)arg1 asInstance:(NSUUID *)arg2 reply:(void (^)(_Bool))arg3;
+- (void)removeObserverForNotificationName:(NSString *)arg1 asAccessory:(COHomeKitAccessoryMemento *)arg2 asInstance:(NSUUID *)arg3 withCallback:(void (^)(NSError *))arg4;
+- (void)addObserverForNotificationName:(NSString *)arg1 asAccessory:(COHomeKitAccessoryMemento *)arg2 asInstance:(NSUUID *)arg3 constraints:(NSSet *)arg4 withCallback:(void (^)(NSError *))arg5;
+- (void)dismissAlarmWithIdentifier:(NSString *)arg1 asAccessory:(COHomeKitAccessoryMemento *)arg2 asInstance:(NSUUID *)arg3 withCallback:(void (^)(NSError *))arg4;
+- (void)snoozeAlarmWithIdentifier:(NSString *)arg1 asAccessory:(COHomeKitAccessoryMemento *)arg2 asInstance:(NSUUID *)arg3 withCallback:(void (^)(NSError *))arg4;
+- (void)removeAlarm:(MTAlarm *)arg1 asAccessory:(COHomeKitAccessoryMemento *)arg2 asInstance:(NSUUID *)arg3 withCallback:(void (^)(NSError *))arg4;
+- (void)updateAlarm:(MTAlarm *)arg1 asAccessory:(COHomeKitAccessoryMemento *)arg2 asInstance:(NSUUID *)arg3 withCallback:(void (^)(NSError *))arg4;
+- (void)addAlarm:(MTAlarm *)arg1 asAccessory:(COHomeKitAccessoryMemento *)arg2 asInstance:(NSUUID *)arg3 withCallback:(void (^)(NSError *))arg4;
+- (void)alarmsAsAccessory:(COHomeKitAccessoryMemento *)arg1 asInstance:(NSUUID *)arg2 forAccessories:(NSArray *)arg3 callback:(void (^)(NSDictionary *, NSError *))arg4;
+- (void)alarmsAsAccessory:(COHomeKitAccessoryMemento *)arg1 asInstance:(NSUUID *)arg2 withCallback:(void (^)(NSArray *, NSError *))arg3;
 @end
 

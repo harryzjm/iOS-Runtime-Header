@@ -13,7 +13,9 @@
 @optional
 - (void)cache:(SBAVSystemControllerCache *)arg1 didUpdateAirplayDisplayActive:(_Bool)arg2;
 - (void)cache:(SBAVSystemControllerCache *)arg1 didUpdateAudioSessionPlaying:(_Bool)arg2;
+- (void)cache:(SBAVSystemControllerCache *)arg1 didUpdateRingerMuted:(_Bool)arg2;
 - (void)cache:(SBAVSystemControllerCache *)arg1 didUpdateActiveAudioRoutingWithRoute:(NSString *)arg2 routeAttributes:(NSDictionary *)arg3 activeOutputDevices:(NSArray *)arg4;
+- (void)cache:(SBAVSystemControllerCache *)arg1 didUpdateActiveCategoryName:(NSString *)arg2;
 - (void)cache:(SBAVSystemControllerCache *)arg1 didUpdateActiveOutputDevices:(NSArray *)arg2;
 - (void)cache:(SBAVSystemControllerCache *)arg1 didUpdatePickableRoutes:(NSArray *)arg2;
 - (void)cache:(SBAVSystemControllerCache *)arg1 didUpdateActiveAudioRoute:(NSString *)arg2;

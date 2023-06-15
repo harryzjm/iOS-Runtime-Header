@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @interface UIView (UIFloatingContentView)
 + (id)smu_floatingContentViewWithFrame:(struct CGRect)arg1;
@@ -13,6 +13,7 @@
 + (void)smu_animateUsingSpringWithDuration:(double)arg1 delay:(double)arg2 options:(unsigned long long)arg3 mass:(double)arg4 stiffness:(double)arg5 damping:(double)arg6 initialVelocity:(double)arg7 animations:(CDUnknownBlockType)arg8 completion:(CDUnknownBlockType)arg9;
 + (void)smu_animateUsingSpringWithDuration:(double)arg1 delay:(double)arg2 options:(unsigned long long)arg3 mass:(double)arg4 stiffness:(double)arg5 damping:(double)arg6 initialVelocity:(double)arg7 animations:(CDUnknownBlockType)arg8;
 + (unsigned long long)smu_coreAnimationDefaultCurve;
++ (_Bool)smu_isInAnimationBlock;
 + (id)smu_tvFocusableTextView;
 + (id)smu_animationConfigurationForStyle:(long long)arg1;
 + (id)smu_contentUnavailableView;

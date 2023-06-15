@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (id)enumerateObjectsFromLocation:(id)arg1 options:(long long)arg2 usingBlock:(CDUnknownBlockType)arg3;
 @property(readonly) long long baseIndex;
 @property(readonly) id <NSTextLocation> baseLocation;
+@property(readonly) _Bool isEmpty;
 - (id)description;
 - (void)dealloc;
 - (id)initWithDataSource:(id)arg1;

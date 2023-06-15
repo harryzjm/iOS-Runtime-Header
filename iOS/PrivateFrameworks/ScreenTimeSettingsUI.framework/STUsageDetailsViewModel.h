@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface STUsageDetailsViewModel : NSObject
 {
     _Bool _localDevice;
+    _Bool _hasDeviceActivityData;
     _Bool _hasAggregateUsageData;
     unsigned long long _selectedWeek;
     STUsageReport *_selectedWeekUsageReport;
@@ -20,6 +21,7 @@ __attribute__((visibility("hidden")))
     STUsageReport *_selectedDayUsageReport;
     NSArray *_dayUsageReportByWeekdays;
     NSString *_selectedItemDisplayName;
+    NSString *_selectedCoreDuetIdentifier;
     NSDate *_lastUpdatedDate;
     NSArray *_rawUsageItems;
 }
@@ -31,7 +33,9 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(copy) NSArray *rawUsageItems; // @synthesize rawUsageItems=_rawUsageItems;
 @property _Bool hasAggregateUsageData; // @synthesize hasAggregateUsageData=_hasAggregateUsageData;
+@property _Bool hasDeviceActivityData; // @synthesize hasDeviceActivityData=_hasDeviceActivityData;
 @property(copy) NSDate *lastUpdatedDate; // @synthesize lastUpdatedDate=_lastUpdatedDate;
+@property(copy) NSString *selectedCoreDuetIdentifier; // @synthesize selectedCoreDuetIdentifier=_selectedCoreDuetIdentifier;
 @property(copy) NSString *selectedItemDisplayName; // @synthesize selectedItemDisplayName=_selectedItemDisplayName;
 @property(getter=isLocalDevice) _Bool localDevice; // @synthesize localDevice=_localDevice;
 @property(copy) NSArray *dayUsageReportByWeekdays; // @synthesize dayUsageReportByWeekdays=_dayUsageReportByWeekdays;

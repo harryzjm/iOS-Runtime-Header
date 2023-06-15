@@ -20,7 +20,6 @@ __attribute__((visibility("hidden")))
     VNImageBasedRequest *_weakRequest;
 }
 
-+ (_Bool)enableGating;
 + (id)dependencies;
 + (id)taskWithRequest:(id)arg1 imageAsset:(id)arg2 andSignpostPayload:(id)arg3;
 - (void).cxx_destruct;

@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     struct CC_SHA256state_st _sha256Ctx;
     unsigned int _xid;
     _Bool _needsRetry;
+    unsigned long long _fileOffset;
     RPFileTransferItem *_fileItem;
     NSObject<OS_dispatch_queue> *_queue;
     unsigned long long _taskID;
@@ -32,6 +33,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) int outstandingSends; // @synthesize outstandingSends=_outstandingSends;
 @property(nonatomic) _Bool needsRetry; // @synthesize needsRetry=_needsRetry;
 @property(retain, nonatomic) RPFileTransferItem *fileItem; // @synthesize fileItem=_fileItem;
+@property(nonatomic) unsigned long long fileOffset; // @synthesize fileOffset=_fileOffset;
 @property(nonatomic) int fileFD; // @synthesize fileFD=_fileFD;
 
 @end

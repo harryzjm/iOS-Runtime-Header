@@ -8,5 +8,6 @@
 
 @interface NSArray (EMMessageListItem)
 @property(readonly, nonatomic) unsigned long long em_messageListItemTotalCount;
+- (id)em_senderAddresses;
 @end
 

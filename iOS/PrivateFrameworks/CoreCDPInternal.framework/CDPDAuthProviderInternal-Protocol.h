@@ -9,8 +9,6 @@
 @class CDPContext, NSDictionary;
 
 @protocol CDPDAuthProviderInternal <NSObject>
-- (void)setDataPrivacyStatusEnabled:(_Bool)arg1 completion:(void (^)(NSError *))arg2;
-- (void)getDevicesLosingAccountAccessWithCompletion:(void (^)(NSArray *, NSError *))arg1;
 - (_Bool)isPrimaryAppleIDLoggedIn;
 - (void)cdpContext:(CDPContext *)arg1 persistMasterKeyVerifier:(NSDictionary *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 @end

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class MISSING_TYPE;
 
@@ -16,7 +16,6 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *moreOptionsButton;
     MISSING_TYPE *shareButton;
     MISSING_TYPE *watchStockButton;
-    MISSING_TYPE *addStockButton;
     MISSING_TYPE *quoteSummaryView;
     MISSING_TYPE *separatorView;
     MISSING_TYPE *exchangeLabel;

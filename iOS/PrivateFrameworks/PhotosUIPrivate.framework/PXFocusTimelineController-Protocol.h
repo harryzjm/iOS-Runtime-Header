@@ -17,6 +17,7 @@
 - (void)updateFocusTimelineWithTimeRange:(CDStruct_5c5366e1)arg1;
 - (void)updateFocusTimeline;
 - (void)resetTimeline;
+- (void)enableUIForCinematographyScriptLoad:(_Bool)arg1;
 - (void)showFocusTimeline:(_Bool)arg1;
 - (void)enableFocusTimeline:(_Bool)arg1;
 @end

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray, NSString;
+@class NSMutableArray;
 
 __attribute__((visibility("hidden")))
 @interface VCMediaControlInfoGenerator : NSObject
@@ -24,25 +24,12 @@ __attribute__((visibility("hidden")))
 @property unsigned char fecFeedbackVersion; // @synthesize fecFeedbackVersion=_fecFeedbackVersion;
 @property(readonly) unsigned char version; // @synthesize version=_version;
 @property(readonly) unsigned int type; // @synthesize type=_type;
-- (void)disposeControlInfo:(id)arg1;
-- (void *)newControlInfoWithBuffer:(const char *)arg1 length:(unsigned long long)arg2 optionalControlInfo:(CDStruct_d3f1d543 *)arg3;
-- (void *)newControlInfo;
-- (id)newControlInfoFromPool;
 - (unsigned long long)feedbackSize;
 - (int)addMediaControlInfoOption:(unsigned int)arg1;
-- (void *)newMediaControlInfoWithBuffer:(const char *)arg1 length:(unsigned long long)arg2 optionalControlInfo:(CDStruct_d3f1d543 *)arg3;
-- (void *)newMediaControlInfo;
-- (void)passMediaControlInfo:(id)arg1 isFillBlobCallback:(_Bool)arg2;
 - (int)deregisterCallbacksWithContext:(void *)arg1;
 - (int)registerFillBlobCallback:(CDUnknownFunctionPointerType)arg1 processBlobCallback:(CDUnknownFunctionPointerType)arg2 context:(void *)arg3;
 - (void)dealloc;
 - (id)initWithType:(unsigned int)arg1 version:(unsigned char)arg2;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

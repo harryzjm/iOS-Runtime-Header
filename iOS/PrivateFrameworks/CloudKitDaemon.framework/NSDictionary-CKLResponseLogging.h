@@ -6,16 +6,8 @@
 
 #import <Foundation/NSDictionary.h>
 
-@class NSString;
-
 @interface NSDictionary (CKLResponseLogging)
 - (void)_CKLogToFileHandle:(id)arg1 atDepth:(int)arg2;
 - (id)CKPercentEscapedQueryString;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 @end
 

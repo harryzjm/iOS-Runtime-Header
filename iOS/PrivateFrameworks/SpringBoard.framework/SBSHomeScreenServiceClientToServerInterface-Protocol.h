@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class BSMachPortSendRight, NSDate, NSError, NSNumber, NSString, NSURL, SBSDebugActiveWidgetInfo, SBSHomeScreenServiceArrayOfNumbers, SBSHomeScreenServiceArrayOfStrings, SBSHomeScreenSilhouetteLayout;
+@class BSMachPortSendRight, NSDate, NSError, NSNumber, NSString, NSURL, SBSDebugActiveWidgetInfo, SBSHomeScreenServiceArrayOfNumbers, SBSHomeScreenServiceArrayOfStrings, SBSHomeScreenServiceNumberOrString, SBSHomeScreenSilhouetteLayout;
 
 @protocol SBSHomeScreenServiceClientToServerInterface
 @property(readonly, copy, nonatomic) SBSHomeScreenServiceArrayOfNumbers *overflowSlotCounts;
@@ -20,12 +20,16 @@
 - (SBSHomeScreenSilhouetteLayout *)silhouetteLayoutForPageAtIndex:(NSNumber *)arg1;
 - (void)runWidgetDiscoverabilityTest;
 - (void)setupHomeScreenForWidgetScrollPerformanceTest;
-- (void)clearAllOverflowSlotCounts;
-- (void)setObservingHomeScreenLayoutAvailability:(NSNumber *)arg1;
+- (oneway void)clearAllOverflowSlotCounts;
+- (oneway void)setObservingIconBadgeValue:(NSNumber *)arg1;
+- (void)badgeValueForIconWithApplicationBundleIdentifier:(NSString *)arg1 completionHandler:(void (^)(SBSHomeScreenServiceNumberOrString *, NSError *))arg2;
+- (SBSHomeScreenServiceNumberOrString *)badgeValueForIconWithApplicationBundleIdentifier:(NSString *)arg1;
+- (oneway void)setObservingHomeScreenLayout:(NSNumber *)arg1;
+- (oneway void)setObservingHomeScreenLayoutAvailability:(NSNumber *)arg1;
 - (void)addSuggestedPageWithPageType:(NSString *)arg1 focusModeIdentifier:(NSString *)arg2;
 - (void)addEmptyPage;
 - (void)insertEmptyPageAtIndex:(NSNumber *)arg1;
-- (void)setObservingInstalledWebClips:(NSNumber *)arg1;
+- (oneway void)setObservingInstalledWebClips:(NSNumber *)arg1;
 - (void)addDebugIconWithSizeClassDescription:(NSString *)arg1 inPage:(NSNumber *)arg2 atPositionDescription:(NSString *)arg3;
 - (void)dismissAppLibraryWithCompletion:(void (^)(NSError *))arg1;
 - (void)presentAppLibraryAnimated:(NSNumber *)arg1 completion:(void (^)(NSError *))arg2;
@@ -52,7 +56,7 @@
 - (void)requestAppLibraryUpdate:(NSNumber *)arg1 reason:(NSString *)arg2 completion:(void (^)(NSDictionary *, NSError *))arg3;
 - (void)runRemoveAndRestoreIconTest;
 - (void)runDownloadingIconTest;
-- (_Bool)debugContinuityWithBadgeType:(NSString *)arg1;
+- (_Bool)debugContinuityWithBadgeType:(NSString *)arg1 deviceTypeIdentifier:(NSString *)arg2;
 - (_Bool)hasWidgetWithBundleIdentifier:(NSString *)arg1;
 - (oneway void)runFloatingDockStressTestWithCompletion:(void (^)(NSError *))arg1;
 - (oneway void)requestSuggestedApplicationWithBundleIdentifier:(NSString *)arg1 assertionPort:(BSMachPortSendRight *)arg2 completion:(void (^)(NSError *))arg3;

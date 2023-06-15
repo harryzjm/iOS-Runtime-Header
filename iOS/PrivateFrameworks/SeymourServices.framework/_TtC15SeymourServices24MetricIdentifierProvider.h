@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *identifierStore;
     MISSING_TYPE *clickTopic;
+    MISSING_TYPE *diagnosticsTopic;
     MISSING_TYPE *workoutTopic;
     MISSING_TYPE *musicTopic;
 }

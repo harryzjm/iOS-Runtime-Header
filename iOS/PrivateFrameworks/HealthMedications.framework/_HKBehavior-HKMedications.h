@@ -7,6 +7,7 @@
 #import <HealthKit/_HKBehavior.h>
 
 @interface _HKBehavior (HKMedications)
+- (_Bool)hkmd_supportsMedicationsWidget;
 - (_Bool)hkmd_supportsTimeZone;
 @end
 

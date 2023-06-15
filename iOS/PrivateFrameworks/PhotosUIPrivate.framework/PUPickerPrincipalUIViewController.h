@@ -4,18 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
-@class NSDate, NSError, NSFileProviderDomain, NSLayoutConstraint, NSMutableDictionary, NSOrderedSet, NSString, PUAssetPickerCoordinator, PUPickerConfiguration, PXLoadingStatusManager;
+@class NSDate, NSError, NSFileProviderDomain, NSFileProviderManager, NSLayoutConstraint, NSMutableDictionary, NSOrderedSet, NSString, PUAssetPickerCoordinator, PUPickerConfiguration, PUPickerOnDemandProcessor, PXLoadingStatusManager;
 
 __attribute__((visibility("hidden")))
 @interface PUPickerPrincipalUIViewController : UIViewController
 {
     PUPickerConfiguration *_configuration;
     NSError *_configurationError;
+    NSFileProviderManager *_manager;
     NSFileProviderDomain *_domain;
     NSError *_domainError;
     PUAssetPickerCoordinator *_coordinator;
+    PUPickerOnDemandProcessor *_onDemandProcessor;
     NSLayoutConstraint *_topConstraint;
     NSLayoutConstraint *_bottomConstraint;
     NSLayoutConstraint *_leadingConstraint;
@@ -26,14 +28,12 @@ __attribute__((visibility("hidden")))
     NSDate *_selectionDate;
     PXLoadingStatusManager *_loadingStatusManager;
     NSMutableDictionary *_progressSubscribers;
-    NSMutableDictionary *_activityIndicatorTrackingIDs;
 }
 
 + (_Bool)_preventsAppearanceProxyCustomization;
 + (_Bool)shouldDebounceDidFinishPicking:(id)arg1 previousSelectedObjectIDs:(id)arg2 previousSelectionDate:(id)arg3;
 + (void)initialize;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSMutableDictionary *activityIndicatorTrackingIDs; // @synthesize activityIndicatorTrackingIDs=_activityIndicatorTrackingIDs;
 @property(retain, nonatomic) NSMutableDictionary *progressSubscribers; // @synthesize progressSubscribers=_progressSubscribers;
 @property(retain, nonatomic) PXLoadingStatusManager *loadingStatusManager; // @synthesize loadingStatusManager=_loadingStatusManager;
 @property(retain, nonatomic) NSDate *selectionDate; // @synthesize selectionDate=_selectionDate;
@@ -44,25 +44,35 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSLayoutConstraint *leadingConstraint; // @synthesize leadingConstraint=_leadingConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *bottomConstraint; // @synthesize bottomConstraint=_bottomConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *topConstraint; // @synthesize topConstraint=_topConstraint;
+@property(retain, nonatomic) PUPickerOnDemandProcessor *onDemandProcessor; // @synthesize onDemandProcessor=_onDemandProcessor;
 @property(retain, nonatomic) PUAssetPickerCoordinator *coordinator; // @synthesize coordinator=_coordinator;
 @property(retain, nonatomic) NSError *domainError; // @synthesize domainError=_domainError;
 @property(retain, nonatomic) NSFileProviderDomain *domain; // @synthesize domain=_domain;
+@property(retain, nonatomic) NSFileProviderManager *manager; // @synthesize manager=_manager;
 @property(retain, nonatomic) NSError *configurationError; // @synthesize configurationError=_configurationError;
 @property(retain, nonatomic) PUPickerConfiguration *configuration; // @synthesize configuration=_configuration;
-- (void)coordinator:(id)arg1 didFinishPicking:(id)arg2 downscalingTargetDimension:(id)arg3;
+- (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
+- (void)coordinator:(id)arg1 didFinishPicking:(id)arg2 additionalSelectionState:(id)arg3;
+- (void)_zoomOutContent;
+- (void)_zoomInContent;
+- (void)_scrollContentToInitialPosition;
+- (void)_popViewControllerWithReply:(CDUnknownBlockType)arg1;
 - (void)_searchWithString:(id)arg1;
 - (void)_moveAssetWithIdentifier:(id)arg1 afterIdentifier:(id)arg2;
 - (void)_deselectAssetsWithIdentifiers:(id)arg1;
 - (void)_stopActivityIndicatorsForAssetsWithIdentifiers:(id)arg1;
 - (void)_startActivityIndicatorsForAssetsWithIdentifiers:(id)arg1;
+- (void)_updatePickerUsingUpdateConfiguration:(id)arg1;
 - (void)_updateConfiguration:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_pickerUnavailableViewControllerCancelButtonTapped:(id)arg1;
 - (void)beginRequestWithExtensionContext:(id)arg1;
-- (void)finishPicking:(id)arg1 downscalingTargetDimension:(id)arg2;
+- (void)finishPicking:(id)arg1 additionalSelectionState:(id)arg2;
 - (void)finishProgress:(id)arg1 progressURL:(id)arg2 trackingID:(id)arg3 observation:(id)arg4;
 - (CDUnknownBlockType)showProgress:(id)arg1 forAsset:(id)arg2 progressURL:(id)arg3;
-- (void)confirmPicking:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)confirmUserSafetyIntervention:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)confirmConfidentialWarning:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)logExitIfNeeded:(id)arg1;
+- (void)updateModalInPresentation;
 - (_Bool)updatePicker;
 - (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;

@@ -121,7 +121,7 @@
 - (int)verticalAlignmentForTextStorage:(id)arg1;
 - (long long)naturalAlignmentAtCharIndex:(unsigned long long)arg1 inTextStorage:(id)arg2;
 - (_Bool)useLigatures;
-- (const struct __CFLocale *)hyphenationLocale;
+- (struct __CFLocale *)hyphenationLocale;
 - (_Bool)shouldHyphenate;
 - (_Bool)documentDisallowsHighlightsOnStorage:(id)arg1;
 - (id)pencilAnnotationUIState;

@@ -10,6 +10,7 @@
 
 @interface _TtC15SeymourServices34RemoteBrowsingGuestPairingVerifier : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *analyticsReporter;
     MISSING_TYPE *connectionBrokerProvider;
     MISSING_TYPE *eventHub;
     MISSING_TYPE *identityStore;

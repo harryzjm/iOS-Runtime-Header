@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)invalidate;
 - (void)dealloc;
-- (void)addHandlerForKey:(id)arg1 attribute:(id)arg2;
+- (void)addHandlerForKey:(id)arg1 attributes:(id)arg2;
 - (id)init;
 
 // Remaining properties

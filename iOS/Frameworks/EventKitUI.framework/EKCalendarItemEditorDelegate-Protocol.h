@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <EventKitUI/EKUIAppReviewPrompter-Protocol.h>
 #import <EventKitUI/NSObject-Protocol.h>
 
-@class EKCalendarItem, EKCalendarItemEditor, EKUIPasteboardManager;
+@class CUIKPasteboardManager, EKCalendarItem, EKCalendarItemEditor;
 @protocol CUIKEditor;
 
-@protocol EKCalendarItemEditorDelegate <NSObject>
-- (EKUIPasteboardManager *)pasteboardManagerForCalendarItemEditor:(EKCalendarItemEditor *)arg1;
+@protocol EKCalendarItemEditorDelegate <NSObject, EKUIAppReviewPrompter>
+- (CUIKPasteboardManager *)pasteboardManagerForCalendarItemEditor:(EKCalendarItemEditor *)arg1;
 - (id <CUIKEditor>)editorForCalendarItemEditor:(EKCalendarItemEditor *)arg1;
 
 @optional

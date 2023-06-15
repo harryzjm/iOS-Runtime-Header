@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+- (_Bool)_shim_107516167;
 - (_Bool)_shim_34415965;
 - (void)_shim_30244716;
 - (void)_shim_updateBackgroundViewIgnoringFlag;
@@ -101,6 +102,7 @@ __attribute__((visibility("hidden")))
 - (void)updateTopNavigationItemAnimated:(_Bool)arg1;
 - (void)popAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)pushAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)removeContentForItem:(id)arg1;
 - (void)prepareForPop;
 - (void)prepareForPush;
 - (void)layoutSubviews;
@@ -111,6 +113,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)shouldUseHeightRangeFittingWidth;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)invalidateIntrinsicContentSize;
+- (id)hitTest:(struct CGPoint)arg1 defaultViewHit:(id)arg2;
 - (struct CGSize)_preferredContentSizeForItem:(id)arg1;
 - (struct CGPoint)frameOriginForStatusBarLocatedAt:(struct CGPoint)arg1;
 - (_Bool)shouldGestureHandler:(id)arg1 recognizedPopAtLocation:(struct CGPoint)arg2;

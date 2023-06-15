@@ -6,10 +6,8 @@
 
 #import "UICollectionViewLayoutAttributes.h"
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface UIKeyboardCandidatePocketShadowLayoutAttributes : UICollectionViewLayoutAttributes <NSCopying>
+@interface UIKeyboardCandidatePocketShadowLayoutAttributes : UICollectionViewLayoutAttributes
 {
     _Bool _drawsShadow;
 }

@@ -4,7 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSNumber;
+
 @protocol PKBannerService_Client
-- (void)didCompleteWithReply:(void (^)(NSError *))arg1;
+- (oneway void)detachWithFinished:(NSNumber *)arg1 reply:(void (^)(NSError *))arg2;
 @end
 

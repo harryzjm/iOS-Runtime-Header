@@ -53,8 +53,8 @@
 - (void)adoptStylesheet:(id)arg1 withMapper:(id)arg2;
 - (void)setParentStorage:(id)arg1;
 @property(readonly, nonatomic) NSEnumerator *headerFooterFragmentEnumerator;
-- (long long)headerFragmentIndexForModel:(id)arg1;
-- (long long)headerFooterTypeForModel:(id)arg1;
+- (long long)headerFragmentIndexForStorage:(id)arg1;
+- (long long)headerFooterTypeForStorage:(id)arg1;
 - (_Bool)isHeaderFooterEmpty:(long long)arg1 fragmentAtIndex:(long long)arg2;
 - (_Bool)isHeaderFooterEmpty:(long long)arg1;
 - (id)headerFooter:(long long)arg1 fragmentAtIndex:(long long)arg2;

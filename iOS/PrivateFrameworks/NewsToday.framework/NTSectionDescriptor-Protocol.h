@@ -14,8 +14,8 @@
 @protocol NTSectionDescriptor <NTSectionDisplayDescriptor, NTSectionFetchDescriptor, NSObject, NFCopying>
 @property(readonly, nonatomic) NSString *backingTagID;
 @property(readonly, nonatomic) int promotionCriterion;
-@property(readonly, nonatomic) long long supplementalIntraSectionFilterOptions;
-@property(readonly, nonatomic) long long supplementalInterSectionFilterOptions;
+@property(readonly, nonatomic) unsigned long long supplementalIntraSectionFilterOptions;
+@property(readonly, nonatomic) unsigned long long supplementalInterSectionFilterOptions;
 @property(readonly, nonatomic) long long seenArticlesMinimumTimeSinceFirstSeenToFilter;
 @property(readonly, nonatomic) int seenArticlesFilterMethod;
 @property(readonly, nonatomic) int readArticlesFilterMethod;

@@ -10,7 +10,6 @@
 
 @interface NSURLRequest (AMSMockURLRequest)
 - (id)body;
-- (id)ams_valueForHTTPHeader:(id)arg1;
 @property(readonly, nonatomic) _Bool ams_requestIsBagLoad;
 @property(readonly, nonatomic) NSDictionary *ams_cookies;
 @end

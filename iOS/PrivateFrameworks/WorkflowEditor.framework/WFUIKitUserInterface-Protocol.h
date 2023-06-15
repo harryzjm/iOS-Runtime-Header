@@ -9,7 +9,7 @@
 @class UIView, UIViewController;
 
 @protocol WFUIKitUserInterface <WFUserInterfaceHost>
-@property(nonatomic, readonly) UIView *view;
-@property(nonatomic, readonly) UIViewController *viewController;
+@property(readonly, nonatomic) __weak UIView *view;
+@property(readonly, nonatomic) __weak UIViewController *viewController;
 @end
 

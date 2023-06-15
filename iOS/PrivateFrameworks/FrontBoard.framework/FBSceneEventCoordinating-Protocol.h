@@ -9,7 +9,7 @@
 @class FBSSceneClientSettings, FBSSceneClientSettingsDiff, FBSSceneSettings, FBSSceneTransitionContext, FBScene, NSError, NSSet, NSString;
 
 @protocol FBSceneEventCoordinating <NSObject>
-- (void)scene:(FBScene *)arg1 didReceiveActions:(NSSet *)arg2;
+- (void)scene:(FBScene *)arg1 didReceiveActions:(NSSet *)arg2 forExtension:(Class)arg3;
 - (void)scene:(FBScene *)arg1 deactivateAndInvalidate:(_Bool)arg2 withError:(NSError *)arg3 block:(void (^)(void))arg4;
 - (void)scene:(FBScene *)arg1 didUpdateClientSettingsWithDiff:(FBSSceneClientSettingsDiff *)arg2 oldClientSettings:(FBSSceneClientSettings *)arg3 transitionContext:(FBSSceneTransitionContext *)arg4;
 - (void)scene:(FBScene *)arg1 handleUpdateToSettings:(FBSSceneSettings *)arg2 withTransitionContext:(FBSSceneTransitionContext *)arg3 completion:(void (^)(_Bool, NSError *))arg4;

@@ -10,6 +10,6 @@
 - (void)remote_triggerDownloadForAttachment:(NSUUID *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (void)remote_pingDownloaderWithCompletion:(void (^)(_Bool, NSError *))arg1;
 - (void)remote_downloadAttachment:(HKMedicalDownloadableAttachment *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
-- (void)remote_beginOrResumeDownloadingAttachments:(NSArray *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
+- (void)remote_beginOrResumeDownloadingAttachments:(NSArray *)arg1 shouldRequestMore:(_Bool)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 @end
 

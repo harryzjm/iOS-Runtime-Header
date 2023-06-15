@@ -4,7 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSString;
+
 @protocol _TtP13WeatherDaemon38WDSJWTAuthenticatorServiceListenerType_
-- (void)generateTokenWithCompletion:(void (^)(NSString *, NSError *))arg1;
+- (void)generateTokenWithUrl:(NSString *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 @end
 

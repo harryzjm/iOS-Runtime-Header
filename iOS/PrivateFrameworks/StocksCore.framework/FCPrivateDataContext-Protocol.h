@@ -6,28 +6,28 @@
 
 #import <StocksCore/NSObject-Protocol.h>
 
-@class FCAudioPlaylist, FCIssueReadingHistory, FCKeyValueStore, FCNetworkBehaviorMonitor, FCPersonalizationData, FCPrivateChannelMembershipController, FCReadingHistory, FCReadingList, FCShortcutList, FCSubscriptionList, FCTagSettings, FCUserEventHistory, FCUserInfo, NSString;
-@protocol FCPushNotificationHandling;
+@class FCAudioPlaylist, FCIssueReadingHistory, FCKeyValueStore, FCNetworkBehaviorMonitor, FCPersonalizationData, FCPrivateChannelMembershipController, FCPuzzleHistory, FCPuzzleTypeSettings, FCReadingHistory, FCReadingList, FCShortcutList, FCSubscriptionList, FCTagSettings, FCUserEventHistory, FCUserInfo, NSString;
+@protocol FCPrivateDataContextInternal, FCPushNotificationHandling;
 
 @protocol FCPrivateDataContext <NSObject>
+@property(readonly, nonatomic) id <FCPrivateDataContextInternal> internalPrivateDataContext;
+@property(readonly, copy, nonatomic) NSString *privateDataDirectory;
+@property(readonly, nonatomic, getter=isPrivateDataSyncingEnabled) _Bool privateDataSyncingEnabled;
+@property(readonly, nonatomic) id <FCPushNotificationHandling> privatePushNotificationHandler;
+@property(readonly, nonatomic) FCNetworkBehaviorMonitor *networkBehaviorMonitor;
+@property(readonly, nonatomic) FCTagSettings *tagSettings;
+@property(readonly, nonatomic) FCUserInfo *userInfo;
+@property(readonly, nonatomic) FCSubscriptionList *subscriptionList;
+@property(readonly, nonatomic) FCUserEventHistory *userEventHistory;
+@property(readonly, nonatomic) FCAudioPlaylist *audioPlaylist;
+@property(readonly, nonatomic) FCShortcutList *shortcutList;
+@property(readonly, nonatomic) FCPuzzleTypeSettings *puzzleTypeSettings;
+@property(readonly, nonatomic) FCPuzzleHistory *puzzleHistory;
+@property(readonly, nonatomic) FCReadingList *readingList;
+@property(readonly, nonatomic) FCReadingHistory *readingHistory;
+@property(readonly, nonatomic) FCPrivateChannelMembershipController *privateChannelMembershipController;
+@property(readonly, nonatomic) FCPersonalizationData *personalizationData;
+@property(readonly, nonatomic) FCIssueReadingHistory *issueReadingHistory;
 - (FCKeyValueStore *)privateStoreWithName:(NSString *)arg1 version:(unsigned long long)arg2 options:(unsigned long long)arg3;
-@property(nonatomic, readonly) NSString *privateDataDirectory;
-- (_Bool)isPrivateDataSyncingEnabled;
-@property(nonatomic, readonly) id <FCPushNotificationHandling> privatePushNotificationHandler;
-@property(nonatomic, readonly) FCNetworkBehaviorMonitor *networkBehaviorMonitor;
-@property(nonatomic, readonly) FCTagSettings *tagSettings;
-@property(nonatomic, readonly) FCUserInfo *userInfo;
-@property(nonatomic, readonly) FCSubscriptionList *subscriptionList;
-@property(nonatomic, readonly) FCUserEventHistory *userEventHistory;
-@property(nonatomic, readonly) FCAudioPlaylist *audioPlaylist;
-@property(nonatomic, readonly) FCShortcutList *shortcutList;
-@property(nonatomic, readonly) FCReadingList *readingList;
-@property(nonatomic, readonly) FCReadingHistory *readingHistory;
-@property(nonatomic, readonly) FCPrivateChannelMembershipController *privateChannelMembershipController;
-@property(nonatomic, readonly) FCPersonalizationData *personalizationData;
-@property(nonatomic, readonly) FCIssueReadingHistory *issueReadingHistory;
-
-// Remaining properties
-@property(nonatomic, readonly) _Bool privateDataSyncingEnabled;
 @end
 

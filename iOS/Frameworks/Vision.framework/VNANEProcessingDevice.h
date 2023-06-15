@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 
 - (int)espressoStorageType;
 - (_Bool)targetsANE;
+- (id)computeDevice;
 
 @end
 

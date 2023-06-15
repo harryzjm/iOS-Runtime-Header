@@ -10,18 +10,18 @@
 @protocol FCPersonalizationAggregate;
 
 @protocol FCPersonalizationAggregate <NSObject>
+@property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property(readonly, nonatomic) double confidence;
+@property(readonly, nonatomic) double ctr;
+@property(readonly, nonatomic) NSDate *lastModified;
+@property(readonly, nonatomic) unsigned long long eventCount;
+@property(readonly, nonatomic) double impressions;
+@property(readonly, nonatomic) double clicks;
+@property(readonly, nonatomic) NSString *featureKey;
 - (double)relativePersonalizationValueWithCorrelatedAggregate:(id <FCPersonalizationAggregate>)arg1 baseline:(id <FCPersonalizationAggregate>)arg2 decayFactor:(double)arg3 baselineClicksMultiplier:(double)arg4;
 - (double)powerWithDecayFactor:(double)arg1;
 - (double)personalizationValueWithCorrelatedAggregate:(id <FCPersonalizationAggregate>)arg1 baseline:(id <FCPersonalizationAggregate>)arg2 decayRate:(double)arg3 baselineClicksMultiplier:(double)arg4;
 - (double)personalizationValueWithBaseline:(id <FCPersonalizationAggregate>)arg1 decayRate:(double)arg2 baselineClicksMultiplier:(double)arg3;
 - (double)personalizationValueWithBaseline:(id <FCPersonalizationAggregate>)arg1 decayRate:(double)arg2;
-@property(nonatomic, readonly) NSDictionary *dictionaryRepresentation;
-@property(nonatomic, readonly) double confidence;
-@property(nonatomic, readonly) double ctr;
-@property(nonatomic, readonly) NSDate *lastModified;
-@property(nonatomic, readonly) unsigned long long eventCount;
-@property(nonatomic, readonly) double impressions;
-@property(nonatomic, readonly) double clicks;
-@property(nonatomic, readonly) NSString *featureKey;
 @end
 

@@ -23,6 +23,8 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSMutableArray *sections; // @synthesize sections=_sections;
 @property(retain, nonatomic) HKCategorySample *event; // @synthesize event=_event;
 @property(nonatomic) _Bool firstViewDidLayoutSubviews; // @synthesize firstViewDidLayoutSubviews=_firstViewDidLayoutSubviews;
+- (void)viewControllerDidLeaveAdaptiveModal;
+- (void)viewControllerDidEnterAdaptiveModal;
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;

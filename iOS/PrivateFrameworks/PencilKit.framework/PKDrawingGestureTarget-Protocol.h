@@ -5,10 +5,11 @@
 //
 
 #import <PencilKit/NSObject-Protocol.h>
+#import <PencilKit/PKDrawingReplaySupport-Protocol.h>
 
 @class NSSet, UIEvent, UITouch;
 
-@protocol PKDrawingGestureTarget <NSObject>
+@protocol PKDrawingGestureTarget <NSObject, PKDrawingReplaySupport>
 - (void)drawingEstimatedPropertiesUpdated:(NSSet *)arg1;
 - (void)drawingCancelled;
 - (void)drawingEnded:(UITouch *)arg1;
@@ -16,10 +17,6 @@
 - (void)drawingBegan:(UITouch *)arg1;
 
 @optional
-- (void)_replayDrawingCancelled;
-- (void)_replayDrawingEnded;
-- (void)_replayDrawingMoved:(CDStruct_fedef440)arg1;
-- (void)_replayDrawingBegan:(CDStruct_fedef440)arg1;
 - (_Bool)drawingShouldBegin:(NSSet *)arg1 withEvent:(UIEvent *)arg2;
 @end
 

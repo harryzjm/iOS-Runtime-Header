@@ -6,7 +6,7 @@
 
 #import <NewsEngagement/NSObject-Protocol.h>
 
-@class AMSDialogRequest, AMSDialogResult, NSDictionary, NSError, NSString, UIViewController;
+@class AMSDelegateAction, AMSDialogRequest, AMSDialogResult, NSDictionary, NSError, NSString, UIViewController;
 @protocol AMSUIMessageViewController;
 
 @protocol AMSUIMessageViewControllerDelegate <NSObject>
@@ -16,6 +16,7 @@
 
 @optional
 - (_Bool)messageViewController:(UIViewController<AMSUIMessageViewController> *)arg1 shouldEnqueueMetricsForDialogResult:(AMSDialogResult *)arg2;
+- (_Bool)messageViewController:(UIViewController<AMSUIMessageViewController> *)arg1 handleDelegateAction:(AMSDelegateAction *)arg2 completionHandler:(void (^)(id, NSError *))arg3;
 - (void)messageViewControllerDidDismiss:(UIViewController<AMSUIMessageViewController> *)arg1;
 - (void)messageViewController:(UIViewController<AMSUIMessageViewController> *)arg1 enqueueEventWithFields:(NSDictionary *)arg2 inTopic:(NSString *)arg3;
 - (void)messageViewController:(UIViewController<AMSUIMessageViewController> *)arg1 didLoadDialogRequest:(AMSDialogRequest *)arg2;

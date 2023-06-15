@@ -7,22 +7,24 @@
 #import "LSSettingsStore.h"
 
 @class NSObject;
-@protocol OS_dispatch_queue;
+@protocol OS_dispatch_queue, OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
 @interface _LSInProcessSettingsStore : LSSettingsStore
 {
+    NSObject<OS_dispatch_source> *_dbCloseTimer;
     struct sqlite3 *_database;
     NSObject<OS_dispatch_queue> *_internalQueue;
 }
 
 - (void).cxx_destruct;
 @property(readonly) NSObject<OS_dispatch_queue> *internalQueue; // @synthesize internalQueue=_internalQueue;
-@property struct sqlite3 *database; // @synthesize database=_database;
+@property(nonatomic) struct sqlite3 *database; // @synthesize database=_database;
 - (unsigned char)_internalQueue_selectUserElectionForIdentifier:(id)arg1;
 - (void)_internalQueue_loadDatabase;
 - (unsigned char)userElectionForExtensionKey:(id)arg1;
 - (void)dealloc;
+- (void)_internalQueue_purgeDatabase;
 - (id)init;
 
 @end

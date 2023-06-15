@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSArray;
 @protocol CNUILikenessCachingRendererDelegate;
 
 @protocol CNUILikenessCachingRenderer
+- (void)updateContactsWithIdentifiers:(NSArray *)arg1;
 - (void)addDelegate:(id <CNUILikenessCachingRendererDelegate>)arg1;
 @end
 

@@ -9,7 +9,6 @@
 @class HFImageIconDescriptor, NSDate, NSSet, NSString, NSUUID, UIColor;
 
 @interface HMActionSet (HFFavoritableAdoption)
-+ (id)hf_standardIconDescriptorForActionSetType:(id)arg1;
 + (id)hf_standardSystemIconIdentifierForActionSetType:(id)arg1;
 - (id)hf_updateShowInHomeDashboard:(_Bool)arg1;
 @property(readonly, nonatomic) _Bool hf_effectiveShowInHomeDashboard;
@@ -23,8 +22,6 @@
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
 - (_Bool)hf_isShortcutOwned;
 - (id)hf_shortcutAction;
-- (id)hf_updateIconDescriptor:(id)arg1;
-- (id)hf_iconDescriptor_legacy;
 - (id)hf_standardIconTintColorForIconIdentifier:(id)arg1;
 - (id)hf_mapOldIconIdentifierToNewSystemIconIdentifier:(id)arg1;
 - (id)hf_setIconIdentifier:(id)arg1 andTintColor:(id)arg2;
@@ -33,6 +30,7 @@
 - (id)_hf_iconIdentifier;
 - (float)hf_percentOfAccessoryRepresentableObjectsAssociatedWithGroup:(id)arg1;
 @property(readonly, nonatomic) _Bool hf_requiresDeviceUnlock;
+@property(readonly, nonatomic) _Bool hf_isBuilder;
 - (_Bool)hf_isAnonymous;
 - (id)hf_affectedAccessoryRepresentableObjects;
 - (_Bool)hf_affectsServiceWithIdentifier:(id)arg1;
@@ -46,6 +44,8 @@
 - (_Bool)hf_shouldBeOnForContextType:(unsigned long long)arg1;
 - (_Bool)hf_hasSetForContextType:(unsigned long long)arg1;
 - (_Bool)hf_isOnForContextType:(unsigned long long)arg1;
+- (void)hf_updateApplicationData:(id)arg1 handleError:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_hf_didUpdateApplicationData:(id)arg1;
 - (id)hf_updateDateAdded:(id)arg1;
 @property(readonly, copy, nonatomic) NSDate *hf_dateAdded;
 @property(readonly, copy, nonatomic) NSString *hf_displayName;

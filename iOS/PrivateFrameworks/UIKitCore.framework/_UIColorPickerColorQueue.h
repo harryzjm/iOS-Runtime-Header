@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) _UIColorPickerColorQueueContainer *latestObject; // @synthesize latestObject=_latestObject;
 @property(retain, nonatomic) CADisplayLink *displayLink; // @synthesize displayLink=_displayLink;
 @property(nonatomic) __weak id <_UIColorPickerColorQueueDelegate> delegate; // @synthesize delegate=_delegate;
-- (void)_pickerDidSelectColor:(id)arg1 colorspace:(id)arg2 isVolatile:(_Bool)arg3;
+- (void)_pickerDidSelectColor:(id)arg1 colorSpace:(id)arg2 isVolatile:(_Bool)arg3;
 - (void)_forwardToDelegate:(id)arg1;
 - (void)_displayLinkFired;
 - (id)init;

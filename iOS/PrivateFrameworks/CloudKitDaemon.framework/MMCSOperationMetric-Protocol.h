@@ -15,6 +15,9 @@
 @property(readonly) NSMutableDictionary *fileCountByChunkProfile;
 @property(readonly) NSMutableDictionary *chunkCountByChunkProfile;
 @property(readonly) NSMutableDictionary *totalBytesByChunkProfile;
+@property unsigned long long bytesResumed;
+@property unsigned long long bytesFulfilledLocally;
+@property unsigned long long bytesFulfilledByPeers;
 @property unsigned long long connectionsCreated;
 @property unsigned long long connections;
 @property unsigned long long bytesDownloaded;

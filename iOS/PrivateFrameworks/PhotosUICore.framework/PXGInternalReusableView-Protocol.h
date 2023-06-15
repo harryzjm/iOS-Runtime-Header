@@ -13,7 +13,7 @@
 @property(readonly, nonatomic) _Bool shouldReuseWhenInvisible;
 - (_Bool)shouldReloadForUserData:(id <NSCopying>)arg1;
 - (void)pxg_shiftPosition:(struct CGPoint)arg1;
-- (void)pxg_configureWithTexture:(id <PXGSpriteTexture>)arg1 geometry:(CDStruct_4f725fed *)arg2 info:(CDStruct_9d1ebe49 *)arg3 style:(CDStruct_a79e78a9 *)arg4 textureInfo:(struct *)arg5 resizableCapInsets:(CDStruct_818bb265)arg6 reusableViewInfo:(_PXGReusableViewInfo *)arg7 screenScale:(double)arg8;
+- (void)pxg_configureWithTexture:(id <PXGSpriteTexture>)arg1 geometry:(CDStruct_4f725fed *)arg2 info:(CDStruct_12471299 *)arg3 style:(CDStruct_a79e78a9 *)arg4 textureInfo:(CDStruct_37a3040a *)arg5 resizableCapInsets:(CDStruct_818bb265)arg6 reusableViewInfo:(_PXGReusableViewInfo *)arg7 screenScale:(double)arg8 separateLayers:(_Bool)arg9;
 - (void)pxg_prepareForReuse;
 - (void)pxg_becomeReusable;
 - (void)pxg_removeFromSuperview;

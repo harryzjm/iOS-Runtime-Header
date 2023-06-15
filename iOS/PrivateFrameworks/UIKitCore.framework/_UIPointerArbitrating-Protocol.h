@@ -7,9 +7,11 @@
 #import <UIKitCore/NSObject-Protocol.h>
 
 @class UIPointerRegion, UIPointerStyle;
+@protocol _UIAssertion;
 
 @protocol _UIPointerArbitrating <NSObject>
 @property(readonly, nonatomic) long long pointerState;
+- (id <_UIAssertion>)obtainPointerUpdatePauseAssertion;
 - (void)endScrollingWithRegion:(UIPointerRegion *)arg1;
 - (void)beginScrollingWithRegion:(UIPointerRegion *)arg1;
 - (void)exitRegion:(UIPointerRegion *)arg1 removeStyle:(_Bool)arg2 completion:(void (^)(void))arg3;

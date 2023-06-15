@@ -6,7 +6,7 @@
 
 #import <PhotosUICore/PXRunNode.h>
 
-@class NSArray, NSData, NSString, NSURL, PUEditableMediaProviderImageDataNode, PUEditableMediaProviderVideoURLNode, PUImageDataRenderNode, PUPhotoEditIrisModel, PUVideoExportNode;
+@class NSArray, NSData, NSString, NSURL, PUEditableMediaProviderImageDataNode, PUEditableMediaProviderVideoURLNode, PUImageDataRenderNode, PUVideoExportNode;
 @protocol PXRunNodeDelegate;
 
 __attribute__((visibility("hidden")))
@@ -26,14 +26,12 @@ __attribute__((visibility("hidden")))
     PUEditableMediaProviderVideoURLNode *_videoURLNode;
     PUVideoExportNode *_videoRenderNode;
     NSURL *_directory;
-    PUPhotoEditIrisModel *_livePhotoModel;
     struct CGSize _renderedVideoSize;
     struct CGSize _baseImageSize;
     struct CGSize _renderedImageSize;
 }
 
 - (void).cxx_destruct;
-@property(readonly, copy, nonatomic) PUPhotoEditIrisModel *livePhotoModel; // @synthesize livePhotoModel=_livePhotoModel;
 @property(readonly, nonatomic) NSURL *directory; // @synthesize directory=_directory;
 @property(readonly, nonatomic) PUVideoExportNode *videoRenderNode; // @synthesize videoRenderNode=_videoRenderNode;
 @property(readonly, nonatomic) PUEditableMediaProviderVideoURLNode *videoURLNode; // @synthesize videoURLNode=_videoURLNode;
@@ -56,7 +54,7 @@ __attribute__((visibility("hidden")))
 - (long long)_adjustmentBaseVersion;
 - (double)_baseDuration;
 - (long long)_baseExifOrientation;
-- (id)initWithDirectory:(id)arg1 imageDataNode:(id)arg2 imageRenderNode:(id)arg3 videoURLNode:(id)arg4 videoRenderNode:(id)arg5 livePhotoModel:(id)arg6;
+- (id)initWithDirectory:(id)arg1 imageDataNode:(id)arg2 imageRenderNode:(id)arg3 videoURLNode:(id)arg4 videoRenderNode:(id)arg5;
 
 // Remaining properties
 @property(readonly, getter=isCanceled) _Bool canceled;

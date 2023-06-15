@@ -10,8 +10,8 @@
 @class UICubicTimingParameters, UISpringTimingParameters;
 
 @protocol UITimingCurveProvider <NSCoding, NSCopying>
-@property(nonatomic, readonly) UISpringTimingParameters *springTimingParameters;
-@property(nonatomic, readonly) UICubicTimingParameters *cubicTimingParameters;
-@property(nonatomic, readonly) long long timingCurveType;
+@property(readonly, nonatomic) UISpringTimingParameters *springTimingParameters;
+@property(readonly, nonatomic) UICubicTimingParameters *cubicTimingParameters;
+@property(readonly, nonatomic) long long timingCurveType;
 @end
 

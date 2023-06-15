@@ -8,7 +8,6 @@
 
 @interface DOCTag (Color)
 + (id)nonClearNoneTagColor;
-+ (id)pickerAppearance;
 - (id)tagBackgroundColor;
 - (id)_tagColorWithFallback:(CDUnknownBlockType)arg1;
 - (id)tagColorIfNotClear;

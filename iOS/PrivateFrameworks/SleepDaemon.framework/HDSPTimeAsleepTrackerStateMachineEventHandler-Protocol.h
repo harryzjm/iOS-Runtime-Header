@@ -6,9 +6,10 @@
 
 #import <SleepDaemon/HKSPPersistentStateMachineEventHandler-Protocol.h>
 
-@class NSDate;
+@class HDSPSleepScheduleModelChangeEvaluation, NSDate;
 
 @protocol HDSPTimeAsleepTrackerStateMachineEventHandler <HKSPPersistentStateMachineEventHandler>
+- (void)scheduleModelChanged:(HDSPSleepScheduleModelChangeEvaluation *)arg1;
 - (void)sleepSessionFinished;
 - (void)sleepSessionEndRequestedInternally;
 - (void)appLaunchedOnDate:(NSDate *)arg1;

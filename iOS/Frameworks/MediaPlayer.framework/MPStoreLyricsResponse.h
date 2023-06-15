@@ -11,7 +11,6 @@
 __attribute__((visibility("hidden")))
 @interface MPStoreLyricsResponse : NSObject
 {
-    _Bool _TTML;
     NSString *_lyricsContent;
     NSString *_lyricsID;
 }
@@ -19,7 +18,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSString *lyricsID; // @synthesize lyricsID=_lyricsID;
 @property(retain, nonatomic) NSString *lyricsContent; // @synthesize lyricsContent=_lyricsContent;
-@property(nonatomic, getter=isTTML) _Bool TTML; // @synthesize TTML=_TTML;
 
 @end
 

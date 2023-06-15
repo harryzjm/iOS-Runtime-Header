@@ -11,5 +11,9 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (_Bool)atomicAdd:(long long)arg1 notSurpassing:(long long)arg2 atAddress:(void *)arg3;
++ (long long)atomicUpdateValue:(CDUnknownBlockType)arg1 atAddress:(void *)arg2;
+- (id)init;
+
 @end
 

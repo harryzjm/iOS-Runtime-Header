@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)serializableClassName;
-- (void)setPasscode:(id)arg1;
+- (void)didChangeValueForKey:(id)arg1;
 - (id)dictionaryRepresentation;
 - (_Bool)updateWithDictionaryRepresentation:(id)arg1;
 - (id)computeUniqueIdentifier;
@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(nonatomic) _Bool isAppAndWebsiteActivityEnabled; // @dynamic isAppAndWebsiteActivityEnabled;
 @property(retain, nonatomic) STiCloudOrganization *organization; // @dynamic organization;
 @property(copy, nonatomic) NSString *recoveryAltDSID; // @dynamic recoveryAltDSID;
 @property(readonly) Class superclass;

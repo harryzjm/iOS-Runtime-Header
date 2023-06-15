@@ -6,16 +6,18 @@
 
 #import <CopresenceCore/CPConversationMediaControllerXPCHost-Protocol.h>
 
-@class NSDictionary, NSSet, NSString, NSUUID, TUConversationActivityCreateSessionRequest, TUConversationMember;
+@class CPAuthorizationRequestOverrides, NSDictionary, NSSet, NSString, NSUUID, TUConversationActivityCreateSessionRequest, TUConversationMember;
 
 @protocol CPConversationManagerXPCHost <CPConversationMediaControllerXPCHost>
+- (void)unregisterIdentifierForCustomEndpoint:(NSString *)arg1;
+- (void)registerIdentifierForCustomEndpoint:(NSString *)arg1;
 - (void)includeMetricsReport:(NSDictionary *)arg1 onConversationWithUUID:(NSUUID *)arg2;
 - (void)kickMember:(TUConversationMember *)arg1 conversationUUID:(NSUUID *)arg2;
 - (void)setDownlinkMuted:(_Bool)arg1 forRemoteParticipantsInConversationWithUUID:(NSUUID *)arg2;
 - (void)buzzMember:(TUConversationMember *)arg1 conversationUUID:(NSUUID *)arg2;
 - (void)createActivitySessionWith:(TUConversationActivityCreateSessionRequest *)arg1 onConversationWithUUID:(NSUUID *)arg2 completion:(void (^)(_Bool))arg3;
 - (void)setActivityAuthorization:(_Bool)arg1 forBundleIdentifier:(NSString *)arg2;
-- (void)prepareForGroupActivityWithCompletionHandler:(void (^)(_Bool, NSError *))arg1;
+- (void)prepareForGroupActivityWithOverrides:(CPAuthorizationRequestOverrides *)arg1 completionHandler:(void (^)(_Bool, NSError *))arg2;
 - (void)addRemoteMembers:(NSSet *)arg1 toConversationWithUUID:(NSUUID *)arg2;
 - (void)requestConversationContainersByGroupUUIDWithReply:(void (^)(NSDictionary *))arg1;
 @end

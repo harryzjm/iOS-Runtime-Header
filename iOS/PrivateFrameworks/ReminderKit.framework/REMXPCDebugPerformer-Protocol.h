@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDate, NSString, NSURL, NSUUID, REMObjectID, REMSharedEntitySyncActivity, REMStoreContainerToken, REMTemplatePublicLinkConfiguration;
+@class NSArray, NSDate, NSString, NSUUID, REMObjectID, REMSharedEntitySyncActivity, REMStoreContainerToken, REMTemplatePublicLinkConfiguration;
 
 @protocol REMXPCDebugPerformer
+- (void)fetchAllDueDateDeltaAlertsIncludingUnsupported:(_Bool)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)updateRemCurrentRuntimeVersionDebuggingOverride:(long long)arg1;
 - (void)updateMinimumSupportedVersionWithObjectID:(REMObjectID *)arg1 minimumSupportedVersion:(long long)arg2 completion:(void (^)(NSError *))arg3;
 - (void)removeSharedEntitySyncActivitiesWithCKIdentifier:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
@@ -21,8 +22,10 @@
 - (void)validateHashtagsWithoutHashtagLabelWithRepair:(_Bool)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)validateHashtagLabelsWithConcealedHashtagsWithRepair:(_Bool)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)validateHashtagLabelsWithoutHashtagWithRepair:(_Bool)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
+- (void)synchronous_revertImageAttachmentsToUnDeduped:(NSArray *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)immediatelyRevokePublicLinkOfTemplateWithTemplateObjectID:(REMObjectID *)arg1 completion:(void (^)(REMObjectID *, NSError *))arg2;
 - (void)immediatelyCreateOrUpdatePublicLinkOfTemplateWithTemplateObjectID:(REMObjectID *)arg1 configuration:(REMTemplatePublicLinkConfiguration *)arg2 completion:(void (^)(REMTemplatePublicLink *, NSError *))arg3;
+- (void)handleIncompleteGroceryOperationQueueItemsImmediatelyWithTimeout:(double)arg1;
 - (void)handleIncompleteTemplateOperationQueueItemsImmediately;
 - (void)refreshHashtagLabelsImmediately;
 - (void)setupManualHashtagLabelUpdater;
@@ -34,11 +37,11 @@
 - (void)removeManualSortHintWithIdentifier:(NSUUID *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)fetchManualSortHintWithListType:(NSString *)arg1 listID:(NSString *)arg2 completion:(void (^)(NSArray *, NSError *))arg3;
 - (void)fetchAllManualSortHintsWithDetails:(_Bool)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
-- (void)downloadContainerWithAccountID:(NSString *)arg1 outputDir:(NSURL *)arg2 completion:(void (^)(NSError *))arg3;
+- (void)purgeCKRecordWithRecordType:(NSString *)arg1 identifier:(NSUUID *)arg2 completion:(void (^)(NSError *))arg3;
+- (void)downloadContainerWithAccountID:(NSString *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 - (void)resetBabysitterWithRestrictedAccountID:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)registerBabysitterWith:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)dataAccessStatusReports:(void (^)(NSArray *, NSError *))arg1;
-- (void)logStoresDirectoryContents;
 - (void)destroyIsolatedStoreContainerWithToken:(REMStoreContainerToken *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)createIsolatedStoreContainerWithCompletion:(void (^)(REMStoreContainerToken *, NSError *))arg1;
 - (void)fetchContactsMatching:(NSString *)arg1 completion:(void (^)(NSArray *))arg2;
@@ -48,6 +51,13 @@
 - (void)removeGeofenceWithUUID:(NSUUID *)arg1 completion:(void (^)(void))arg2;
 - (void)addGeofenceWithLatitude:(double)arg1 longitude:(double)arg2 radius:(double)arg3 uuid:(NSUUID *)arg4 completion:(void (^)(void))arg5;
 - (void)fetchGeofencesWithCompletion:(void (^)(NSArray *))arg1;
+- (void)removeFromUbKVSForKey:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)writeUbKVSWithKey:(NSString *)arg1 dateValue:(NSDate *)arg2 completion:(void (^)(NSError *))arg3;
+- (void)writeUbKVSWithKey:(NSString *)arg1 stringValue:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
+- (void)dumpUbKVS:(void (^)(NSDictionary *, NSError *))arg1;
+- (void)setDueDateResolutionTokenNonceForReminderID:(REMObjectID *)arg1 nonce:(double)arg2 shouldSetDirtyFlags:(_Bool)arg3 completion:(void (^)(NSError *))arg4;
+- (void)setDueDateResolutionTokenNonceForAlarmID:(REMObjectID *)arg1 nonce:(double)arg2 shouldSetDirtyFlags:(_Bool)arg3 completion:(void (^)(NSError *))arg4;
+- (void)markAndDeleteExtraneousAlarmsFromReminderID:(REMObjectID *)arg1 shouldSetDirtyFlags:(_Bool)arg2 completion:(void (^)(NSError *))arg3;
 - (void)lowLevelUnmarkForDeletionWithObjectID:(REMObjectID *)arg1 shouldSetDirtyFlags:(_Bool)arg2 completion:(void (^)(NSError *))arg3;
 - (void)lowLevelMarkForDeletionWithObjectID:(REMObjectID *)arg1 shouldSetDirtyFlags:(_Bool)arg2 shouldRemoveFromParent:(_Bool)arg3 completion:(void (^)(NSError *))arg4;
 - (void)purgeDeletedObjectsWithCompletionHandler:(void (^)(NSError *))arg1;
@@ -60,7 +70,6 @@
 - (void)testInitialSyncWithAccountName:(NSString *)arg1 completion:(void (^)(long long, NSDictionary *, NSError *))arg2;
 - (void)nukeDatabase:(void (^)(NSError *))arg1;
 - (void)containerStats:(void (^)(NSDictionary *, NSError *))arg1;
-- (void)containerURL:(void (^)(NSURL *))arg1;
 - (void)daemonStatus:(_Bool)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)daemonPid:(void (^)(NSString *))arg1;
 - (void)daemonVersion:(void (^)(NSString *))arg1;

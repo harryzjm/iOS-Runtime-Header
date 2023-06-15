@@ -20,6 +20,7 @@
 - (void).cxx_destruct;
 @property(readonly) long long lineNumber; // @synthesize lineNumber=_lineNumber;
 @property(readonly) NSURL *fileURL; // @synthesize fileURL=_fileURL;
+- (id)filePath;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;

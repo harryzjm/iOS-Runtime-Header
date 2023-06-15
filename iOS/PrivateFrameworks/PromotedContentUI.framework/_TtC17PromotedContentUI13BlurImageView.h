@@ -4,12 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class MISSING_TYPE;
 
 @interface _TtC17PromotedContentUI13BlurImageView : UIView
 {
+    MISSING_TYPE *image;
+    MISSING_TYPE *imageViewContentMode;
+    MISSING_TYPE *style;
     MISSING_TYPE *$__lazy_storage_$_visualEffectView;
     MISSING_TYPE *$__lazy_storage_$_blurImageView;
 }

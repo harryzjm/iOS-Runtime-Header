@@ -6,12 +6,12 @@
 
 #import <ContainerManagerCommon/NSObject-Protocol.h>
 
-@protocol MCMContext, MCMResultPromise;
+@protocol MCMCommandContext, MCMResultPromise;
 
 @protocol MCMCommand <NSObject>
 + (Class)incomingMessageClass;
 + (unsigned long long)command;
 - (void)execute;
-- (id)initWithContext:(id <MCMContext>)arg1 resultPromise:(id <MCMResultPromise>)arg2;
+- (id)initWithContext:(id <MCMCommandContext>)arg1 resultPromise:(id <MCMResultPromise>)arg2;
 @end
 

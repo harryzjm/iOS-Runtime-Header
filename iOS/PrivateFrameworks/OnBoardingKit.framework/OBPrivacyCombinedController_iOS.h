@@ -12,25 +12,29 @@ __attribute__((visibility("hidden")))
 @interface OBPrivacyCombinedController_iOS : OBPrivacyCombinedController
 {
     _Bool _isUnifiedAbout;
-    NSArray *_identifiers;
-    NSArray *_privacyFlows;
+    NSArray *_bundles;
+    NSArray *_privacyFlowGroups;
 }
 
 - (void).cxx_destruct;
 @property _Bool isUnifiedAbout; // @synthesize isUnifiedAbout=_isUnifiedAbout;
-@property(retain) NSArray *privacyFlows; // @synthesize privacyFlows=_privacyFlows;
-@property(retain, nonatomic) NSArray *identifiers; // @synthesize identifiers=_identifiers;
+@property(retain) NSArray *privacyFlowGroups; // @synthesize privacyFlowGroups=_privacyFlowGroups;
+@property(retain, nonatomic) NSArray *bundles; // @synthesize bundles=_bundles;
+- (_Bool)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
 - (_Bool)_canShowWhileLocked;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
+- (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
+- (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
+- (id)_privacyFlowForIndexPath:(id)arg1;
 - (void)setCustomTintColor:(id)arg1;
 - (void)showPrivacyGateway:(id)arg1;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
-- (id)initWithIdentifiers:(id)arg1;
+- (id)initWithBundles:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

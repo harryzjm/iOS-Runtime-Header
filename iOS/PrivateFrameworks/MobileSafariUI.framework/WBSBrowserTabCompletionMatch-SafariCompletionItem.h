@@ -19,6 +19,7 @@
 - (void)acceptCompletionWithActionHandler:(id)arg1;
 
 // Remaining properties
+@property(readonly, nonatomic) long long completionCellBackgroundModeInTopSection;
 @property(readonly, nonatomic) NSString *completionTableHeaderViewReuseIdentifier;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
@@ -33,7 +34,10 @@
 @property(readonly, nonatomic) _Bool restoresSearchState;
 @property(readonly, nonatomic) SFSearchResult *sfSearchResultValue;
 @property(retain, nonatomic) WBSQuerySuggestion *siriSuggestion;
+@property(readonly, copy, nonatomic) NSString *subtextForHistoryServiceCompletionList;
 @property(readonly) Class superclass;
+@property(readonly, nonatomic) NSString *titleForHistoryServiceCompletionList;
+@property(readonly, nonatomic) NSString *urlStringForHistoryServiceCompletionList;
 @property(readonly, nonatomic) _Bool usesDefaultHeaderView;
 @end
 

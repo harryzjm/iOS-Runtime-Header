@@ -6,11 +6,12 @@
 
 #import <MapsUI/NSObject-Protocol.h>
 
-@class NSString, UIFont, UIImage;
+@class NSString, UIColor, UIFont, UIImage;
 
 @protocol MUFactoidViewModel <NSObject>
 @property(readonly, nonatomic) NSString *valueString;
 @property(readonly, nonatomic) NSString *titleString;
+@property(readonly, nonatomic) UIColor *symbolColor;
 @property(readonly, nonatomic) NSString *symbolName;
 - (UIImage *)buildSymbolWithFont:(UIFont *)arg1;
 @end

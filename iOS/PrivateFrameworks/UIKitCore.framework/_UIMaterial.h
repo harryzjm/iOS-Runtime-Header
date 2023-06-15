@@ -17,6 +17,8 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)vibrancyEffectWithA:(double)arg1 B:(double)arg2 C:(double)arg3 D:(double)arg4 E:(double)arg5 F:(double)arg6;
++ (id)defaultMaterialMapping;
++ (id)watchMaterialMapping;
 + (id)materialMapping;
 + (id)materialForSystemColorName:(id)arg1;
 - (void).cxx_destruct;
@@ -26,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (id)initWithVisualEffect:(id)arg1;
 - (id)initWithVibrantVisualEffect:(id)arg1;
+- (id)initWithVibrancy:(long long)arg1 forBlurEffectStyle:(long long)arg2;
 - (id)initWithVibrancy:(long long)arg1;
 - (id)initWithBlur:(long long)arg1;
 

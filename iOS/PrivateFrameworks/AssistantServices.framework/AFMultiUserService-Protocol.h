@@ -9,11 +9,14 @@
 @class NSString;
 
 @protocol AFMultiUserService <NSObject>
+- (oneway void)getUserAgentStringForSharedUserID:(NSString *)arg1 completion:(void (^)(NSString *))arg2;
 - (oneway void)getSharedUserInfoForSharedUserID:(NSString *)arg1 completion:(void (^)(AFSharedUserInfo *))arg2;
 - (oneway void)homeUserIdToNames:(void (^)(NSDictionary *, NSError *))arg1;
 - (oneway void)getPreferredMediaUserHomeUserIDWithCompletion:(void (^)(NSString *, NSError *))arg1;
 - (oneway void)getiCloudAltDSIDOfRecognizedUserWithCompletion:(void (^)(NSString *, NSError *))arg1;
 - (oneway void)getHomeUserIdOfRecognizedUserWithCompletion:(void (^)(NSString *, NSError *))arg1;
+- (oneway void)getMultiUserAudioAppSignalsForSharedUserID:(NSString *)arg1 completion:(void (^)(NSData *, NSError *))arg2;
+- (oneway void)getMultiUserSettingsForRecognizedUserWithCompletion:(void (^)(AFPersonalUserSettings *, NSError *))arg1;
 - (oneway void)getMultiUserSettingsForSharedUserID:(NSString *)arg1 completion:(void (^)(AFPersonalUserSettings *, NSError *))arg2;
 - (oneway void)getConformingSharedUserIds:(void (^)(NSDictionary *, NSError *))arg1;
 - (oneway void)getFirstNameForSharedUserId:(NSString *)arg1 completion:(void (^)(NSString *, NSError *))arg2;

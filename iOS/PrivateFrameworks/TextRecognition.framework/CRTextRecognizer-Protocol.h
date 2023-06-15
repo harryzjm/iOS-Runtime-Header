@@ -7,10 +7,12 @@
 #import <TextRecognition/CRConfidenceThresholdProviding-Protocol.h>
 #import <TextRecognition/NSObject-Protocol.h>
 
-@class CRImage, CRTextRecognizerResults, NSArray;
+@class CRImage, CRRecognitionResult, NSArray;
 
 @protocol CRTextRecognizer <NSObject, CRConfidenceThresholdProviding>
-- (CRTextRecognizerResults *)recognizeInImage:(CRImage *)arg1 textFeatures:(NSArray *)arg2 progressHandler:(void (^)(double, NSError *))arg3 error:(id *)arg4;
+- (NSArray *)sortAndGroupPrunedRegions:(NSArray *)arg1 tableGroups:(NSArray *)arg2;
+- (NSArray *)pruneSortAndGroupRegions:(NSArray *)arg1 recognitionResult:(CRRecognitionResult *)arg2;
+- (NSArray *)recognizeInImage:(CRImage *)arg1 lineRegions:(NSArray *)arg2 progressHandler:(void (^)(double, NSError *))arg3 error:(id *)arg4;
 - (void)cancel;
 @end
 

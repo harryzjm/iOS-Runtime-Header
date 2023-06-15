@@ -31,29 +31,12 @@ __attribute__((visibility("hidden")))
     _Bool _shouldBlockRampUpForNWConnection;
     unsigned int _nwConnectionOverDelayThresholdCount;
     unsigned int _nwConnectionPacketLossPerFrame;
+    _Bool _isStable;
+    double _rampUpSettleDuration;
+    double _rateChangeSystemTime;
 }
 
-- (void)printRateControlInfoToLogDump;
-- (void)checkCongestionStatus;
-- (void)checkRampUpSettlingStatus;
-- (int)rampDownTierDueToNWConnection;
-- (_Bool)shouldRampDownDueToNWConnection;
-- (_Bool)shouldRampUpDueToNWConnection;
-- (double)computeNWConnectionDelayThresholdForRampDown:(_Bool)arg1;
-- (_Bool)shouldRampDownDueToNOWRDAcc;
-- (_Bool)shouldRampDownDueToNOWRD;
-- (_Bool)shouldRampDown;
-- (_Bool)shouldRampUp;
-- (void)setRateChangeCounter;
-- (int)rampDownTier;
-- (int)rampUpTier;
-- (void)resetRampingStatus;
-- (void)updateInternalStatus;
-- (void)updateSendBitrateAndCheckIdlePeriod:(unsigned int)arg1 instantBitrate:(unsigned int)arg2;
-- (_Bool)doRateControlWithNWConnectionStatistics:(CDStruct_7df19fcb)arg1;
-- (_Bool)doRateControlWithVCRCStatistics:(CDStruct_7df19fcb)arg1;
-- (_Bool)doRateControlWithStatistics:(CDStruct_7df19fcb)arg1;
-- (void)configure:(struct VCRateControlAlgorithmConfig)arg1 restartRequired:(_Bool)arg2;
+- (_Bool)setUpVTable;
 - (id)init;
 
 @end

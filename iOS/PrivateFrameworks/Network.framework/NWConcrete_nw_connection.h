@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSString;
-@protocol OS_dispatch_group, OS_dispatch_queue, OS_dispatch_workloop, OS_nw_array, OS_nw_context, OS_nw_endpoint, OS_nw_endpoint_handler, OS_nw_establishment_report, OS_nw_parameters, OS_nw_read_request, OS_nw_write_request;
+@protocol OS_dispatch_data, OS_dispatch_group, OS_dispatch_queue, OS_dispatch_workloop, OS_nw_array, OS_nw_candidate_manager, OS_nw_context, OS_nw_endpoint, OS_nw_endpoint_handler, OS_nw_establishment_report, OS_nw_interface, OS_nw_parameters, OS_nw_read_request, OS_nw_resolution_report, OS_nw_write_request;
 
 __attribute__((visibility("hidden")))
 @interface NWConcrete_nw_connection : NSObject
@@ -18,8 +18,11 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *request_queue;
     NSObject<OS_dispatch_workloop> *workloop;
     NWConcrete_nw_connection *_internal_reference;
+    NSObject<OS_nw_candidate_manager> *candidate_manager;
+    NSObject<OS_nw_array> *ids_info;
     unsigned long long start_time;
     int state;
+    NSObject<OS_dispatch_data> *start_trace;
     struct netcore_stats_tcp_report *stats_report;
     int stats_reason;
     unsigned int should_report_stats:1;
@@ -31,11 +34,15 @@ __attribute__((visibility("hidden")))
     unsigned int should_report_probe_parent_stats:1;
     unsigned int should_report_probe_stats:1;
     unsigned int attempted_probe:1;
+    unsigned int should_report_proxy_race_stats:1;
     unsigned int created_from_protocol:1;
     unsigned int cancelled:1;
     unsigned int prohibit_set_queue:1;
     unsigned int batching:1;
     unsigned int endpoint_handler_connected:1;
+    unsigned int has_called_update_block:1;
+    unsigned int blocked_tracker:1;
+    unsigned int unlisted_tracker:1;
     NSObject<OS_nw_write_request> *batched_sends;
     NSObject<OS_nw_read_request> *batched_receives;
     int reported_viable;
@@ -51,6 +58,7 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *client_queue;
     CDUnknownBlockType client_handler;
     CDUnknownBlockType cancel_handler;
+    void *viability_changed_timer;
     CDUnknownBlockType viability_changed_handler;
     CDUnknownBlockType better_path_available_handler;
     CDUnknownBlockType alternate_path_state_handler;
@@ -72,6 +80,7 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_group> *cancel_group;
     NSObject<OS_nw_establishment_report> *establishment_report;
     NSObject<OS_nw_array> *data_transfer_reports;
+    NSObject<OS_nw_resolution_report> *failed_resolution_report;
     NSObject<OS_nw_array> *errors;
     unsigned int top_id;
     unsigned char top_uuid[16];
@@ -79,6 +88,8 @@ __attribute__((visibility("hidden")))
     unsigned char group_uuid[16];
     unsigned char logging_sequence_number;
     int privacy_stance;
+    CDUnknownBlockType interface_use_update_block;
+    NSObject<OS_nw_interface> *current_interface;
 }
 
 - (void).cxx_destruct;

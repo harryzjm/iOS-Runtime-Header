@@ -6,7 +6,7 @@
 
 #import <CoreSuggestionsUI/SGSuggestionViewControllerPresenter-Protocol.h>
 
-@class UIViewController;
+@class EKEventStore, EKICSPreviewController, NSData, UIViewController;
 @protocol SGSuggestion;
 
 @protocol SGSuggestionDelegate <SGSuggestionViewControllerPresenter>
@@ -15,6 +15,8 @@
 - (void)suggestion:(id <SGSuggestion>)arg1 actionFinished:(_Bool)arg2;
 
 @optional
+- (EKICSPreviewController *)icsPreviewControllerForData:(NSData *)arg1 andEventStore:(EKEventStore *)arg2;
+- (void)dismissICSPreviewController:(id)arg1;
 - (void)suggestionBatchDismissal;
 - (void)bannerDismissAction;
 - (UIViewController *)tableViewController;

@@ -77,6 +77,7 @@
 - (_Bool)hasiOSPlatform;
 - (_Bool)hasMacPlatform;
 - (_Bool)hasDriverKitEntitlement;
+@property(readonly) _Bool hasAppClipEntitlement;
 - (_Bool)isDriverKitDevelopmentProfile;
 @property(readonly) NSSet *platforms;
 - (id)initWithName:(id)arg1 UUID:(id)arg2 entitlements:(id)arg3 appIdentifierName:(id)arg4 appIdentifierPrefixes:(id)arg5 teamName:(id)arg6 teamIdentifierPrefixes:(id)arg7 dateCreated:(id)arg8 dateExpired:(id)arg9 platforms:(id)arg10 supportedUDIDs:(id)arg11 certificateSHA1Hashes:(id)arg12 certificateKinds:(id)arg13 isUniversal:(_Bool)arg14 isAppleInternal:(_Bool)arg15 isXcodeManaged:(id)arg16 isFreeTeamProfile:(_Bool)arg17 containsDEREncodedProfile:(_Bool)arg18 logAspect:(id)arg19;

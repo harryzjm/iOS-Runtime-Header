@@ -17,6 +17,9 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *signatureStyleController;
     MISSING_TYPE *toolPickerController;
     MISSING_TYPE *isApplyingStyle;
+    MISSING_TYPE *canEditVellumOpacity;
+    MISSING_TYPE *canEditDescription;
+    MISSING_TYPE *shouldDeselectElementsWhenToolPickerIsHidden;
     MISSING_TYPE *editingContainerView;
 }
 

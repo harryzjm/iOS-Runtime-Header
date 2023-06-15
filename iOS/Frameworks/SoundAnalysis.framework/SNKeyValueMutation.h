@@ -6,21 +6,29 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class MISSING_TYPE, NSString;
 
 __attribute__((visibility("hidden")))
 @interface SNKeyValueMutation : NSObject
 {
-    int _type;
-    NSString *_keyPath;
-    id _value;
+    MISSING_TYPE *type;
+    MISSING_TYPE *keyPath;
+    MISSING_TYPE *value;
 }
 
 - (void).cxx_destruct;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (unsigned long long)hash;
+- (id)copyWithZone:(void *)arg1;
+@property(nonatomic, readonly) long long hash;
+- (_Bool)isEqualToKeyValueMutation:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
+- (id)initAssignmentOfKeyPath:(id)arg1 value:(id)arg2;
+- (id)initRemovalOfKeyPath:(id)arg1;
+- (id)initUpdateOfKeyPath:(id)arg1 value:(id)arg2;
+- (id)initAdditionOfKeyPath:(id)arg1 value:(id)arg2;
 - (id)init;
+@property(nonatomic, readonly) id value; // @synthesize value;
+@property(nonatomic, readonly) NSString *keyPath;
+@property(nonatomic, readonly) long long type; // @synthesize type;
 
 @end
 

@@ -11,5 +11,9 @@
 @property(readonly, nonatomic) long long sampleCount;
 @property(readonly, nonatomic) _Bool vrrEnabled;
 - (unsigned long long)colorPixelFormatAtIndex:(long long)arg1;
+
+@optional
+@property(readonly, nonatomic) unsigned long long stencilPixelFormat;
+@property(readonly, nonatomic) unsigned long long depthPixelFormat;
 @end
 

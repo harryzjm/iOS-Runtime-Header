@@ -16,6 +16,8 @@ __attribute__((visibility("hidden")))
 + (id)validKeyPaths;
 + (id)streamNames;
 + (id)identifier;
++ (id)Views;
++ (id)EntityTagging;
 + (id)configurationForFeatureStore;
 + (id)syncPolicyForFeatureStore;
 + (id)storeConfigurationForFeatureStore;

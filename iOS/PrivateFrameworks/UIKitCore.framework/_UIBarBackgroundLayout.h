@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 @class NSArray, UIColor, UIImage, UIVibrancyEffect;
 
 __attribute__((visibility("hidden")))
-@interface _UIBarBackgroundLayout : NSObject <NSCopying>
+@interface _UIBarBackgroundLayout : NSObject
 {
     double _backgroundAlpha;
     double _shadowAlpha;

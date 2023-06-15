@@ -8,7 +8,7 @@
 
 @interface SAMPQueueState (SiriMediaRemoteHelpers)
 - (void)_af_validateAndFinalize;
-- (void)_af_setNowPlayingInfo:(id)arg1;
+- (void)_af_setNowPlayingInfo:(id)arg1 mediaType:(long long)arg2;
 - (void)_af_setShuffleModeFromNowPlayingInfo:(id)arg1;
 - (id)_mediaTypeFromNowPlayingInfo:(id)arg1;
 - (id)_mediaItemIdURLFromNowPlayingInfo:(id)arg1;

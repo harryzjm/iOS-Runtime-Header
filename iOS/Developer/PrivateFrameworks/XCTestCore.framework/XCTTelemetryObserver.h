@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (void)testCaseDidFinish:(id)arg1;
 - (void)testCaseWillStart:(id)arg1;
 
 // Remaining properties

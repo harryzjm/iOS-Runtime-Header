@@ -4,16 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
-@class MKPlaceActionManager, MUPlaceCardActionsRowView, NSArray;
-@protocol MUPlaceCardActionsRowViewMenuProvider;
+@class MUPlaceCardActionsRowView, NSArray;
+@protocol MKPlaceActionManagerProtocol, MUPlaceCardActionsRowViewMenuProvider;
 
 __attribute__((visibility("hidden")))
 @interface MUPlaceCardActionsRowViewController : UIViewController
 {
     NSArray *_items;
-    MKPlaceActionManager *_actionManager;
+    id <MKPlaceActionManagerProtocol> _actionManager;
     id <MUPlaceCardActionsRowViewMenuProvider> _menuProvider;
     MUPlaceCardActionsRowView *_actionsRowView;
 }
@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(readonly, nonatomic) MUPlaceCardActionsRowView *actionsRowView; // @synthesize actionsRowView=_actionsRowView;
 @property(nonatomic) __weak id <MUPlaceCardActionsRowViewMenuProvider> menuProvider; // @synthesize menuProvider=_menuProvider;
-@property(nonatomic) __weak MKPlaceActionManager *actionManager; // @synthesize actionManager=_actionManager;
+@property(nonatomic) __weak id <MKPlaceActionManagerProtocol> actionManager; // @synthesize actionManager=_actionManager;
 @property(copy, nonatomic) NSArray *items; // @synthesize items=_items;
 - (void)viewDidLoad;
 @property(readonly, nonatomic) NSArray *actionButtons;

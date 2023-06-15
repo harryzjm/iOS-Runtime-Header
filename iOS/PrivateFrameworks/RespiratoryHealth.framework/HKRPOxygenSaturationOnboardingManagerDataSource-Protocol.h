@@ -6,11 +6,11 @@
 
 #import <RespiratoryHealth/NSObject-Protocol.h>
 
-@class HKMobileCountryCodeManager, HKRPOxygenSaturationOnboardingCache, HKRPOxygenSaturationSettings, NRDevice, NSString;
-@protocol HKFeatureAvailabilityProviding;
+@class HKRPOxygenSaturationOnboardingCache, HKRPOxygenSaturationSettings, NRDevice, NSString;
+@protocol HKFeatureAvailabilityProviding, HKRegulatoryDomainProvider;
 
 @protocol HKRPOxygenSaturationOnboardingManagerDataSource <NSObject>
-@property(readonly, nonatomic) HKMobileCountryCodeManager *mobileCountryCodeManager;
+@property(readonly, nonatomic) id <HKRegulatoryDomainProvider> mobileCountryCodeManager;
 @property(readonly, nonatomic) HKRPOxygenSaturationOnboardingCache *onboardingCache;
 @property(readonly, nonatomic) HKRPOxygenSaturationSettings *oxygenSaturationSettings;
 @property(readonly, nonatomic) id <HKFeatureAvailabilityProviding> featureAvailabilityProvider;

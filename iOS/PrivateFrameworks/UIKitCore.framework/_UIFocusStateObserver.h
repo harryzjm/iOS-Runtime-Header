@@ -14,12 +14,14 @@ __attribute__((visibility("hidden")))
     NSMapTable *_observers;
     struct {
         unsigned int wasActive:1;
+        unsigned int supressNotifyObservers:1;
     } _flags;
 }
 
 - (void).cxx_destruct;
 - (id)description;
 - (id)descriptionBuilder;
+- (void)performUpdatesAndNotifyObservers:(CDUnknownBlockType)arg1;
 - (void)notifyObserversIfNecessary;
 - (void)removeObserver:(id)arg1;
 - (id)addObserver:(CDUnknownBlockType)arg1;

@@ -8,7 +8,6 @@
 
 @class NSString, _PASSqliteDatabase;
 
-__attribute__((visibility("hidden")))
 @interface GDSQLGraphObjectRetriever : NSObject
 {
     _PASSqliteDatabase *_db;

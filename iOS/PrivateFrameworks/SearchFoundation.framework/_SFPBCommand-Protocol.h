@@ -6,12 +6,19 @@
 
 #import <SearchFoundation/NSObject-Protocol.h>
 
-@class NSData, NSDictionary, NSString, _SFPBAddToPhotosLibraryCommand, _SFPBBeginMapsRoutingCommand, _SFPBCallCommand, _SFPBCopyCommand, _SFPBEmailCommand, _SFPBExpandInlineCommand, _SFPBIndexedUserActivityCommand, _SFPBInvokeSiriCommand, _SFPBLaunchAppCommand, _SFPBOpenAppClipCommand, _SFPBOpenCalculationCommand, _SFPBOpenCoreSpotlightItemCommand, _SFPBOpenFileProviderItemCommand, _SFPBOpenMediaCommand, _SFPBOpenPunchoutCommand, _SFPBOpenWebClipCommand, _SFPBPerformContactActionCommand, _SFPBPerformContactQueryCommand, _SFPBPerformEntityQueryCommand, _SFPBPerformIntentCommand, _SFPBPerformPersonEntityQueryCommand, _SFPBPlayMediaCommand, _SFPBPlayVideoCommand, _SFPBRejectPeopleInPhotoCommand, _SFPBRequestAppClipInstallCommand, _SFPBRequestUserReportCommand, _SFPBRunVoiceShortcutCommand, _SFPBSearchInAppCommand, _SFPBSearchWebCommand, _SFPBShareCommand, _SFPBShowAppStoreSheetCommand, _SFPBShowContactCardCommand, _SFPBShowPhotosOneUpViewCommand, _SFPBShowPurchaseRequestSheetCommand, _SFPBShowSFCardCommand, _SFPBShowScreenTimeRequestSheetCommand, _SFPBSubscribeForUpdatesCommand, _SFPBToggleAudioCommand, _SFPBToggleWatchListStatusCommand, _SFPBUpdateSearchQueryCommand, _SFPBViewEmailCommand;
+@class NSData, NSDictionary, NSString, _SFPBAddToPhotosLibraryCommand, _SFPBBeginMapsRoutingCommand, _SFPBCallCommand, _SFPBClearProactiveCategoryCommand, _SFPBCopyCommand, _SFPBCreateCalendarEventCommand, _SFPBCreateContactCommand, _SFPBCreateReminderCommand, _SFPBEmailCommand, _SFPBExpandInlineCommand, _SFPBIndexedUserActivityCommand, _SFPBInvokeSiriCommand, _SFPBLaunchAppCommand, _SFPBOpenAppClipCommand, _SFPBOpenCalculationCommand, _SFPBOpenCoreSpotlightItemCommand, _SFPBOpenFileProviderItemCommand, _SFPBOpenMediaCommand, _SFPBOpenPunchoutCommand, _SFPBOpenWebClipCommand, _SFPBPerformContactActionCommand, _SFPBPerformContactQueryCommand, _SFPBPerformEntityQueryCommand, _SFPBPerformIntentCommand, _SFPBPerformPersonEntityQueryCommand, _SFPBPlayMediaCommand, _SFPBPlayVideoCommand, _SFPBRejectPeopleInPhotoCommand, _SFPBRequestAppClipInstallCommand, _SFPBRequestUserReportCommand, _SFPBRunVoiceShortcutCommand, _SFPBSearchInAppCommand, _SFPBSearchWebCommand, _SFPBShareCommand, _SFPBShowAppStoreSheetCommand, _SFPBShowContactCardCommand, _SFPBShowPhotosOneUpViewCommand, _SFPBShowPurchaseRequestSheetCommand, _SFPBShowSFCardCommand, _SFPBShowScreenTimeRequestSheetCommand, _SFPBShowWrapperResponseViewCommand, _SFPBSubscribeForUpdatesCommand, _SFPBToggleAudioCommand, _SFPBToggleWatchListStatusCommand, _SFPBTopic, _SFPBUpdateSearchQueryCommand, _SFPBViewEmailCommand;
 
 @protocol _SFPBCommand <NSObject>
 @property(readonly, nonatomic) unsigned long long whichValue;
 @property(readonly, nonatomic) NSData *jsonData;
+@property(copy, nonatomic) NSData *backendData;
+@property(retain, nonatomic) _SFPBTopic *normalizedTopic;
 @property(copy, nonatomic) NSString *commandDetail;
+@property(retain, nonatomic) _SFPBCreateReminderCommand *createReminderCommand;
+@property(retain, nonatomic) _SFPBCreateCalendarEventCommand *createCalendarEventCommand;
+@property(retain, nonatomic) _SFPBCreateContactCommand *createContactCommand;
+@property(retain, nonatomic) _SFPBClearProactiveCategoryCommand *clearProactiveCategoryCommand;
+@property(retain, nonatomic) _SFPBShowWrapperResponseViewCommand *showWrapperResponseViewCommand;
 @property(retain, nonatomic) _SFPBRejectPeopleInPhotoCommand *rejectPeopleInPhotoCommand;
 @property(retain, nonatomic) _SFPBViewEmailCommand *viewEmailCommand;
 @property(retain, nonatomic) _SFPBSubscribeForUpdatesCommand *subscribeForUpdatesCommand;

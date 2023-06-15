@@ -110,6 +110,14 @@
     _Bool fFactoryGyroFitComputed;
     struct NonlinearGyroBiasFit fFactoryGyroNonlinearGyroBiasFit;
     struct LinearFit fFactoryGyroLinearGyroBiasFit;
+    CDUnknownBlockType fKeyboardMotionHandler;
+    NSOperationQueue *fKeyboardMotionQueue;
+    struct Dispatcher *fKeyboardMotionDMDispatcher;
+    double fKeyboardMotionTimestampGravityHidReportPrev;
+    struct CMVector<float, 3UL> fKeyboardMotionGravityHIDReportPrev;
+    float fKeyboardMotionGravityDeltaThreshold;
+    float fKeyboardMotionGravityNotificationFrequency;
+    struct Dispatcher *fKeyboardMotionDispatcher;
     NSOperationQueue *_fDeviceMotionLiteClientQueue;
     CDUnknownBlockType _fDeviceMotionLiteFusedHandler;
     NSString *_fDeviceMotionLitePhysicalDeviceID;

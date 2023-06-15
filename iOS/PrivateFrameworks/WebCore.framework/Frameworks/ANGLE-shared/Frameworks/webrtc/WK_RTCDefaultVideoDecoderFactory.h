@@ -15,11 +15,12 @@ __attribute__((visibility("hidden")))
     _Bool _supportsVP9Profile0;
     _Bool _supportsVP9Profile2;
     _Bool _supportsVP9VTB;
+    _Bool _supportsAv1;
 }
 
 - (id)createDecoder:(id)arg1;
 - (id)supportedCodecs;
-- (id)initWithH265:(_Bool)arg1 vp9Profile0:(_Bool)arg2 vp9Profile2:(_Bool)arg3 vp9VTB:(_Bool)arg4;
+- (id)initWithH265:(_Bool)arg1 vp9Profile0:(_Bool)arg2 vp9Profile2:(_Bool)arg3 vp9VTB:(_Bool)arg4 av1:(_Bool)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -15,6 +15,7 @@
 
 @optional
 @property(readonly, nonatomic) NSArray *displayedCandidates;
+- (_Bool)requiresKeyboard;
 - (void)setAssistantBarStyle:(long long)arg1;
 - (_Bool)allowsCompactAssistantBar;
 - (_Bool)hidesExpandableButton;

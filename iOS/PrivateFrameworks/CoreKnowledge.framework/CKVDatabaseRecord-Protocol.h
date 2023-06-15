@@ -6,10 +6,10 @@
 
 #import <CoreKnowledge/NSObject-Protocol.h>
 
-@class CKVDatabaseValueRow, NSString;
+@class CKVDatabaseValueRow, NSArray, NSString;
 
 @protocol CKVDatabaseRecord <NSObject>
-+ (NSString *)genSQLCreateTable;
++ (NSArray *)genSQLCreateStatements;
 + (NSString *)tableName;
 + (id)recordFromDatabaseValueRow:(CKVDatabaseValueRow *)arg1;
 @end

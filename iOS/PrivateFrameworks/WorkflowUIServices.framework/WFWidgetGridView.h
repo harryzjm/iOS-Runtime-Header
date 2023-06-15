@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class NSArray, NSObject, NSString;
 @protocol OS_os_log, WFWidgetGridViewDelegate;
@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     id <WFWidgetGridViewDelegate> _delegate;
     NSArray *_workflows;
     long long _family;
+    long long _widgetType;
     double _cornerRadius;
     NSObject<OS_os_log> *_log;
     NSString *_lastKnownContentSizeCategory;
@@ -25,6 +26,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSString *lastKnownContentSizeCategory; // @synthesize lastKnownContentSizeCategory=_lastKnownContentSizeCategory;
 @property(readonly, nonatomic) NSObject<OS_os_log> *log; // @synthesize log=_log;
 @property(readonly, nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
+@property(readonly, nonatomic) long long widgetType; // @synthesize widgetType=_widgetType;
 @property(readonly, nonatomic) long long family; // @synthesize family=_family;
 @property(nonatomic) struct CGSize lastKnownSize; // @synthesize lastKnownSize=_lastKnownSize;
 @property(retain, nonatomic) NSArray *workflows; // @synthesize workflows=_workflows;
@@ -38,7 +40,7 @@ __attribute__((visibility("hidden")))
 - (id)cellForWorkflowWithIdentifier:(id)arg1;
 - (void)enableAllCells;
 - (void)disableAllCellsExceptCell:(id)arg1;
-- (id)initWithFamily:(long long)arg1 cornerRadius:(double)arg2 log:(id)arg3;
+- (id)initWithFamily:(long long)arg1 widgetType:(long long)arg2 cornerRadius:(double)arg3 log:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

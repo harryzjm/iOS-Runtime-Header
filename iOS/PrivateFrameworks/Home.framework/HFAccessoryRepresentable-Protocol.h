@@ -15,15 +15,17 @@
 @protocol HFHomeKitObject;
 
 @protocol HFAccessoryRepresentable <NSObject, HFServiceNameComponentsProviding, HFFavoritable, HFHomeStatusVisible, HFShowInHomeDashboard, HFTileResizable>
+@property(readonly, nonatomic) NSSet *hf_associatedAccessories;
+@property(readonly, nonatomic) NSSet *hf_containedProfiles;
+@property(readonly, nonatomic) NSSet *hf_containedServices;
+@property(readonly, nonatomic) NSSet *hf_containedCharacteristics;
+@property(readonly, nonatomic) _Bool hf_isIdentifiable;
+@property(readonly, nonatomic) _Bool hf_canSpanMultipleRooms;
+@property(readonly, nonatomic) HMRoom *hf_safeRoom;
+@property(readonly, nonatomic) HFAccessoryType *hf_accessoryType;
+@property(readonly, nonatomic) Class hf_itemClass;
+@property(readonly, nonatomic) id <HFHomeKitObject> hf_homeKitObject;
 - (NAFuture *)hf_moveToRoom:(HMRoom *)arg1;
 - (_Bool)hf_isInRoom:(HMRoom *)arg1;
-@property(nonatomic, readonly) NSSet *hf_associatedAccessories;
-@property(nonatomic, readonly) NSSet *hf_containedProfiles;
-@property(nonatomic, readonly) NSSet *hf_containedServices;
-@property(nonatomic, readonly) NSSet *hf_containedCharacteristics;
-@property(nonatomic, readonly) HMRoom *hf_safeRoom;
-@property(nonatomic, readonly) HFAccessoryType *hf_accessoryType;
-@property(nonatomic, readonly) Class hf_itemClass;
-@property(nonatomic, readonly) id <HFHomeKitObject> hf_homeKitObject;
 @end
 

@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)doesQoSSourceExistForStreamToken:(id)arg1;
 - (void)deregisterBlocksForService;
 - (void)registerBlocksForService;
+- (void)updateEventDrivenQoSReport:(id)arg1 toClientsWithToken:(long long)arg2;
 - (void)updateQoSReport:(id)arg1 toClientsWithToken:(long long)arg2;
 - (void)unregisterQoSReportingSourceForToken:(long long)arg1;
 - (void)registerQoSReportingSourceForToken:(long long)arg1;

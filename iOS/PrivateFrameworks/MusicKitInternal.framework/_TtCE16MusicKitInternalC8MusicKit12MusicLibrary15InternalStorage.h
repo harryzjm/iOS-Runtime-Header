@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *underlyingLibraryTransientStateController;
     MISSING_TYPE *underlyingCloudController;
+    MISSING_TYPE *underlyingCloudServiceStatusController;
     MISSING_TYPE *underlyingRestrictionsMonitor;
     MISSING_TYPE *underlyingContentTasteController;
 }

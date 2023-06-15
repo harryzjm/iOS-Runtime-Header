@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSLayoutConstraint, NSString, QLOverlayPlayButton, QLVideoScrubberView, QLWaveformScrubberViewProvider, UIScrollView, UIView;
+@class NSLayoutConstraint, NSString, QLOverlayPlayButton, QLVideoScrubberView, QLWaveformScrubberViewProvider, UIImageView, UIScrollView, UIView;
 
 __attribute__((visibility("hidden")))
 @interface QLAudioItemViewController
 {
+    UIImageView *_backgroundIconImageView;
     QLOverlayPlayButton *_playButton;
     UIView *_scrubberContainer;
     UIScrollView *_scrubberContainerScrollView;
@@ -25,6 +26,12 @@ __attribute__((visibility("hidden")))
 @property _Bool scrubbing; // @synthesize scrubbing=_scrubbing;
 @property(retain) UIView *scrubberContainer; // @synthesize scrubberContainer=_scrubberContainer;
 @property(retain) NSLayoutConstraint *topScrubber; // @synthesize topScrubber=_topScrubber;
+- (double)maximumWaveformDimension;
+- (_Bool)usesScrubber;
+- (id)imageAccessibilityIdentifier;
+- (id)iconImageWithConfiguration:(id)arg1;
+- (double)waveformImageDimension;
+- (void)setupConstraints;
 - (void)transitionDidFinish:(_Bool)arg1 didComplete:(_Bool)arg2;
 - (void)transitionDidStart:(_Bool)arg1;
 - (_Bool)canEnterFullScreen;

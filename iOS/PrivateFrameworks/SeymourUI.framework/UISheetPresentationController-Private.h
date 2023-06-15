@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UISheetPresentationController.h>
+#import <UIKitCore/UISheetPresentationController.h>
 
 @interface UISheetPresentationController (Private)
 @property(nonatomic) _Bool smu_wantsFullScreen;

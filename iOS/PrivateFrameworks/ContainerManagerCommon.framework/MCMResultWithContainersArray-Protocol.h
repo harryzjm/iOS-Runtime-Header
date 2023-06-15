@@ -10,6 +10,6 @@
 
 @protocol MCMResultWithContainersArray <MCMResult>
 - (id)initWithContainerPaths:(NSArray *)arg1 containerIdentities:(NSArray *)arg2 includePath:(_Bool)arg3 clientIdentity:(MCMClientIdentity *)arg4 skipSandboxExtensions:(_Bool)arg5;
-- (id)initWithContainers:(NSArray *)arg1 resolvedLinks:(NSArray *)arg2 includePath:(_Bool)arg3 includeInfo:(_Bool)arg4 clientIdentity:(MCMClientIdentity *)arg5 skipSandboxExtensions:(_Bool)arg6;
+- (id)initWithContainers:(NSArray *)arg1 includePath:(_Bool)arg2 includeInfo:(_Bool)arg3 includeUserManagedAssetsRelPath:(_Bool)arg4 clientIdentity:(MCMClientIdentity *)arg5 skipSandboxExtensions:(_Bool)arg6;
 @end
 

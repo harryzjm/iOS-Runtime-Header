@@ -7,14 +7,20 @@
 #import <GroupActivities/NSObject-Protocol.h>
 
 @protocol CPFeatureFlags <NSObject>
-@property(nonatomic, readonly) _Bool newApplicationLauncherEnabled;
-@property(nonatomic, readonly) _Bool autoGameCenterEnabled;
-@property(nonatomic, readonly) _Bool sharePlayLiteEnabled;
-@property(nonatomic, readonly) _Bool unreliableMessengerEnabled;
-@property(nonatomic, readonly) _Bool mochiEnabled;
-@property(nonatomic, readonly) _Bool expanseTopicStateEnabled;
-@property(nonatomic, readonly) _Bool expanseEnabled;
-@property(nonatomic, readonly) _Bool expanseParticipantIDHashed;
-@property(nonatomic, readonly) _Bool qrPluginEncryptionEnabled;
+@property(readonly, nonatomic) _Bool fastSyncPresenceSeparationEnabled;
+@property(readonly, nonatomic) _Bool wranglerEnabled;
+@property(readonly, nonatomic) _Bool sharePlayAttachmentLedgerEnabled;
+@property(readonly, nonatomic) _Bool sharePlayInFaceTimeCanvasEnabled;
+@property(readonly, nonatomic) _Bool newApplicationLauncherEnabled;
+@property(readonly, nonatomic) _Bool gameCenterFastSyncTransport;
+@property(readonly, nonatomic) _Bool gameCenterSharePlayIntegration;
+@property(readonly, nonatomic) _Bool autoGameCenterEnabled;
+@property(readonly, nonatomic) _Bool sharePlayLiteEnabled;
+@property(readonly, nonatomic) _Bool unreliableMessengerEnabled;
+@property(readonly, nonatomic) _Bool mochiEnabled;
+@property(readonly, nonatomic) _Bool expanseTopicStateEnabled;
+@property(readonly, nonatomic) _Bool expanseEnabled;
+@property(readonly, nonatomic) _Bool expanseParticipantIDHashed;
+@property(readonly, nonatomic) _Bool qrPluginEncryptionEnabled;
 @end
 

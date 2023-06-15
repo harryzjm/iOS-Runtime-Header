@@ -7,9 +7,9 @@
 #import <iCloudDriveCore/BRCLifeCycle-Protocol.h>
 #import <iCloudDriveCore/NSObject-Protocol.h>
 
-@class BRCAccountSession;
+@class BRCAccountSessionFPFS;
 
 @protocol BRCModule <NSObject, BRCLifeCycle>
-- (id)initWithAccountSession:(BRCAccountSession *)arg1;
+- (id)initWithAccountSession:(BRCAccountSessionFPFS *)arg1;
 @end
 

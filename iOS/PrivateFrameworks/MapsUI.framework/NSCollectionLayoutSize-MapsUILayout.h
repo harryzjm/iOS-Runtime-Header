@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/NSCollectionLayoutSize.h>
+#import <UIKitCore/NSCollectionLayoutSize.h>
 
 @interface NSCollectionLayoutSize (MapsUILayout)
 + (id)_mapsui_layoutSizeWithFractionalWidth:(double)arg1 height:(double)arg2;

@@ -54,6 +54,7 @@
 - (_Bool)fc_isMissingZoneError;
 - (_Bool)fc_isCKUnknownItemError;
 - (_Bool)fc_hasErrorCode:(long long)arg1;
+- (_Bool)fc_hasUnderlyingErrorPassingTest:(CDUnknownBlockType)arg1;
 - (_Bool)fc_isAuthenticationUserCancelled;
 - (id)fc_errorWithMaximumRetryAfter:(double)arg1;
 - (_Bool)fc_isHTTPNotFoundError;

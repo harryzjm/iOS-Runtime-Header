@@ -4,9 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSString;
+@protocol PXDisplayAsset, PXDisplayCollection;
+
 @interface (null) (PhotosUIPrivate)
-- (void)wallpaperSmartAlbumDataSourcePreviewAssetsDidChange:(id)arg1;
-- (void)wallpaperSmartAlbumDataSourceAvailableTypesDidChange:(id)arg1;
-- (void)wallpaperSmartAlbumPeoplePickerDataSourceChanged:(id)arg1;
+- (void)presentationControllerDidDismiss:(id)arg1;
+- (id)undoManagerForActionPerformer:(id)arg1;
+- (_Bool)actionPerformer:(id)arg1 dismissViewController:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (_Bool)actionPerformer:(id)arg1 transitionToViewController:(id)arg2 transitionType:(long long)arg3;
+- (void)didEndExportWithConfiguration:(id)arg1;
+- (void)didBeginExportWithConfiguration:(id)arg1;
+@property(nonatomic, readonly) id <PXDisplayCollection> collection;
+@property(nonatomic, readonly) NSString *preferredExportFilename;
+@property(nonatomic, readonly) id <PXDisplayAsset> iconAsset;
+- (void)requestExportConfigurationWithCompletionHandler:(CDUnknownBlockType)arg1;
 @end
 

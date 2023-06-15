@@ -6,13 +6,16 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class NSArray, SBIconListView, SBIconListViewLayoutMetrics, SBIconView;
+@class NSArray, NSString, SBIconListView, SBIconListViewLayoutMetrics, SBIconView;
 @protocol SBIconListLayoutAnimating;
 
 @protocol SBIconListLayoutDelegate <NSObject>
 
 @optional
+- (NSString *)iconListView:(SBIconListView *)arg1 alternateIconLocationForListWithNonDefaultSizedIcons:(_Bool)arg2;
 - (id <SBIconListLayoutAnimating>)iconListView:(SBIconListView *)arg1 animatorForRemovingIcons:(NSArray *)arg2 proposedAnimator:(id <SBIconListLayoutAnimating>)arg3;
+- (id <SBIconListLayoutAnimating>)iconListView:(SBIconListView *)arg1 animatorForLayingOutIconView:(SBIconView *)arg2 proposedAnimator:(id <SBIconListLayoutAnimating>)arg3;
+- (void)iconListView:(SBIconListView *)arg1 wantsAnimatedLayoutForIconView:(SBIconView *)arg2 withParameters:(struct SBIconListLayoutAnimationParameters)arg3 alongsideAnimationBlock:(void (^)(void))arg4;
 - (void)iconListViewDidLayoutIcons:(SBIconListView *)arg1;
 - (void)iconListView:(SBIconListView *)arg1 willLayoutIconView:(SBIconView *)arg2;
 - (struct CGSize)iconListView:(SBIconListView *)arg1 sizeThatFits:(struct CGSize)arg2 metrics:(SBIconListViewLayoutMetrics *)arg3 proposedSize:(struct CGSize)arg4;

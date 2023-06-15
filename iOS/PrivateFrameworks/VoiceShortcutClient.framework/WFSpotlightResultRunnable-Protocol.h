@@ -7,9 +7,10 @@
 #import <VoiceShortcutClient/NSObject-Protocol.h>
 #import <VoiceShortcutClient/NSSecureCoding-Protocol.h>
 
-@class WFWorkflowRunDescriptor, WFWorkflowRunRequest;
+@class NSString, WFWorkflowRunDescriptor, WFWorkflowRunRequest;
 
 @protocol WFSpotlightResultRunnable <NSSecureCoding, NSObject>
+- (NSString *)settingBiomeStreamIdentifier;
 - (WFWorkflowRunRequest *)runRequestForSurface:(unsigned long long)arg1;
 - (WFWorkflowRunDescriptor *)runDescriptorForSurface:(unsigned long long)arg1;
 @end

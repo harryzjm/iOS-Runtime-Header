@@ -9,7 +9,6 @@
 @class NSString;
 @protocol MTLIndirectComputeCommand;
 
-__attribute__((visibility("hidden")))
 @interface CaptureMTLIndirectComputeCommand : NSObject
 {
     id <MTLIndirectComputeCommand> _baseObject;
@@ -20,6 +19,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)setThreadgroupMemoryLength:(unsigned long long)arg1 atIndex:(unsigned long long)arg2;
 - (void)setStageInRegion:(CDStruct_4c83c94d)arg1;
+- (void)setKernelBuffer:(id)arg1 offset:(unsigned long long)arg2 attributeStride:(unsigned long long)arg3 atIndex:(unsigned long long)arg4;
 - (void)setKernelBuffer:(id)arg1 offset:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
 - (void)setComputePipelineState:(id)arg1;
 - (void)setBarrier;

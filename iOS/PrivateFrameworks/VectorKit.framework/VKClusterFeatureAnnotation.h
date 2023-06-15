@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) CDStruct_c3b9c2ee coordinate; // @synthesize coordinate=_coordinate;
+@property(nonatomic) CDStruct_2c43369c coordinate; // @synthesize coordinate=_coordinate;
 - (id)feature;
 - (id)initWithClusterNode:(void *)arg1 clusterTree:(const void *)arg2 baseStyle:(const void *)arg3 imageText:(id)arg4 annotationText:(id)arg5 annotationLocale:(id)arg6;
 

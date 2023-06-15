@@ -9,13 +9,13 @@
 __attribute__((visibility("hidden")))
 @interface WKWebViewContentProviderRegistry : NSObject
 {
-    struct HashMap<WTF::String, Class<WKWebViewContentProvider>, WTF::ASCIICaseInsensitiveHash, WTF::HashTraits<WTF::String>, WTF::HashTraits<Class<WKWebViewContentProvider>>, WTF::HashTableTraits> _contentProviderForMIMEType;
+    struct HashMap<WTF::String, Class<WKWebViewContentProvider>, WTF::ASCIICaseInsensitiveHash, WTF::HashTraits<String>, WTF::HashTraits<Class<WKWebViewContentProvider>>, WTF::HashTableTraits> _contentProviderForMIMEType;
     struct HashCountedSet<WebKit::WebPageProxy *, WTF::DefaultHash<WebKit::WebPageProxy *>, WTF::HashTraits<WebKit::WebPageProxy *>> _pages;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (Vector_7aeb0c1e)_mimeTypesWithCustomContentProviders;
+- (Vector_07070297)_mimeTypesWithCustomContentProviders;
 - (Class)providerForMIMEType:(const void *)arg1;
 - (void)registerProvider:(Class)arg1 forMIMEType:(const void *)arg2;
 - (void)removePage:(void *)arg1;

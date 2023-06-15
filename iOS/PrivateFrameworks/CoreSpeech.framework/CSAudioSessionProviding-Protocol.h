@@ -10,7 +10,6 @@
 @protocol CSAudioSessionProvidingDelegate;
 
 @protocol CSAudioSessionProviding <NSObject>
-- (void)reportsDynamicActivityAttribute:(unsigned long long)arg1 bundleId:(NSString *)arg2;
 - (void)enableSmartRoutingConsideration:(_Bool)arg1;
 - (void)enableMiniDucking:(_Bool)arg1;
 - (void)setDuckOthersOption:(_Bool)arg1;

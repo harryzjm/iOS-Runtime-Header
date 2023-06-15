@@ -7,6 +7,7 @@
 #import <CoreCDPInternal/NSObject-Protocol.h>
 
 @protocol CDPLocalSecretFollowUpProvider <NSObject>
+- (void)deleteCreatePasscodeFollowUp;
 - (void)deleteConfirmExistingSecretFollowUp;
 - (void)postConfirmExistingSecretFollowUp;
 - (void)deleteLocalSecretChangeFollowUp;

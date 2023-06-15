@@ -71,3 +71,10 @@ typedef struct {
     double _field4;
 } CDStruct_d2b197d1;
 
+typedef struct {
+    long long _field1;
+    int _field2;
+    unsigned int _field3;
+    long long _field4;
+} CDStruct_198678f7;
+

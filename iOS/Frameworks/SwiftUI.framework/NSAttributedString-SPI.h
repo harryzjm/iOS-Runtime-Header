@@ -7,6 +7,7 @@
 #import <Foundation/NSAttributedString.h>
 
 @interface NSAttributedString (SPI)
+@property(readonly, nonatomic) _Bool isEmptyOrTerminatedByParagraphSeparator;
 - (id)initSwiftUIAttributedStringWithFormat:(id)arg1 options:(unsigned long long)arg2 locale:(id)arg3 arguments:(char *)arg4;
 @end
 

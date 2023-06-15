@@ -23,8 +23,8 @@ __attribute__((visibility("hidden")))
     _Bool _reachedClickDownThreshold;
     id <_UIClickInteractionDriverDelegate> _delegate;
     UIView *_view;
-    _UITouchDurationObservingGestureRecognizer *_gestureRecognizer;
     double _clickDownDuration;
+    _UITouchDurationObservingGestureRecognizer *_gestureRecognizer;
     double _forceMultiplier;
 }
 
@@ -33,8 +33,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(nonatomic) _Bool reachedClickDownThreshold; // @synthesize reachedClickDownThreshold=_reachedClickDownThreshold;
 @property(nonatomic) double forceMultiplier; // @synthesize forceMultiplier=_forceMultiplier;
-@property(nonatomic) double clickDownDuration; // @synthesize clickDownDuration=_clickDownDuration;
 @property(retain, nonatomic) _UITouchDurationObservingGestureRecognizer *gestureRecognizer; // @synthesize gestureRecognizer=_gestureRecognizer;
+@property(nonatomic) double clickDownDuration; // @synthesize clickDownDuration=_clickDownDuration;
 @property(nonatomic) _Bool cancelsTouchesInView; // @synthesize cancelsTouchesInView=_cancelsTouchesInView;
 @property(nonatomic) __weak UIView *view; // @synthesize view=_view;
 @property(nonatomic) __weak id <_UIClickInteractionDriverDelegate> delegate; // @synthesize delegate=_delegate;

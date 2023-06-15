@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)init;
+- (id)copyWithZone:(void *)arg1;
 @property(nonatomic, readonly) NSString *description;
 @property(nonatomic, readonly) long long hash;
 - (_Bool)isEqual:(id)arg1;

@@ -38,8 +38,8 @@
 - (long long)topBevelStartIndex;
 - (void)createSpinePointArray;
 - (float)spineUValueAtIndex:(long long)arg1;
-- (const void *)scaleValues;
-- (const void *)spinePoints;
+- (void *)scaleValues;
+- (void *)spinePoints;
 - (void *)inputSpinePoints;
 - (void)generate;
 - (id)init;

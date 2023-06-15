@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UICollectionViewListCell.h>
+#import <UIKitCore/UICollectionViewListCell.h>
 
 @class MISSING_TYPE;
 
@@ -20,11 +20,15 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *separator;
     MISSING_TYPE *subtitleLabel;
     MISSING_TYPE *titleLabel;
+    MISSING_TYPE *artworkViewWidthConstraint;
     MISSING_TYPE *layout;
+    MISSING_TYPE *oldWindowSize;
 }
 
 - (void).cxx_destruct;
 - (void)downloadButtonTapped:(id)arg1;
+- (void)layoutSubviews;
+- (void)didMoveToWindow;
 - (void)traitCollectionDidChange:(id)arg1;
 - (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1 withHorizontalFittingPriority:(float)arg2 verticalFittingPriority:(float)arg3;
 - (void)prepareForReuse;

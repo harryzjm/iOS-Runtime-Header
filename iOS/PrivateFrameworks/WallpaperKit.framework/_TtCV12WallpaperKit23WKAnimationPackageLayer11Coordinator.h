@@ -10,10 +10,11 @@
 
 @interface _TtCV12WallpaperKit23WKAnimationPackageLayer11Coordinator : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *layerName;
+    MISSING_TYPE *layerLevel;
+    MISSING_TYPE *colorScheme;
     MISSING_TYPE *package;
     MISSING_TYPE *animationMapping;
-    MISSING_TYPE *wallpaperPosterRenderEnvironmentTraits;
+    MISSING_TYPE *posterEnvironmentSnapshot;
 }
 
 @end

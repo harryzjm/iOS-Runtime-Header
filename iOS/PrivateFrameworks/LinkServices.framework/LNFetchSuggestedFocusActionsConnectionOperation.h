@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import "LNConnectionOperation.h"
-
 @class LNActionMetadata, LNFocusConfigurationSuggestionContext, NSArray;
 
 __attribute__((visibility("hidden")))
-@interface LNFetchSuggestedFocusActionsConnectionOperation : LNConnectionOperation
+@interface LNFetchSuggestedFocusActionsConnectionOperation
 {
     LNActionMetadata *_actionMetadata;
     LNFocusConfigurationSuggestionContext *_suggestionContext;
@@ -24,7 +22,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) LNActionMetadata *actionMetadata; // @synthesize actionMetadata=_actionMetadata;
 - (void)finishWithError:(id)arg1;
 - (void)start;
-- (id)initWithConnectionInterface:(id)arg1 actionMetadata:(id)arg2 suggestionContext:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (id)initWithConnectionInterface:(id)arg1 actionMetadata:(id)arg2 suggestionContext:(id)arg3 queue:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 
 @end
 

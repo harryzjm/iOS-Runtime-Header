@@ -13,8 +13,10 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (void)fetchSubscriptionsForSyncToWatchWithCallbackQueue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)removeSubscriptionWithIdentifier:(id)arg1 callbackQueue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)addSubscriptionWithIdentifier:(id)arg1 auditToken:(id)arg2 dataTypes:(unsigned long long)arg3 policy:(long long)arg4 region:(id)arg5 expirationDate:(id)arg6 callbackQueue:(id)arg7 completionHandler:(CDUnknownBlockType)arg8;
+- (void)addSubscriptionWithIdentifier:(id)arg1 auditToken:(id)arg2 dataTypes:(unsigned long long)arg3 policy:(long long)arg4 region:(id)arg5 displayName:(id)arg6 expirationDate:(id)arg7 callbackQueue:(id)arg8 completionHandler:(CDUnknownBlockType)arg9;
+- (void)fetchExpiredSubscriptionsWithIdentifiers:(id)arg1 callbackQueue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)fetchSubscriptionsWithIdentifiers:(id)arg1 callbackQueue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 
 // Remaining properties

@@ -6,21 +6,25 @@
 
 #import <BacklightServicesHost/BLSHOSTimerProviding-Protocol.h>
 
-@class BLSHSuppressionEvent, NSString, SWSystemSleepMonitor;
-@protocol BLSHFlipbook, BLSHWatchdogDelegate, BSInvalidatable;
+@class BLSHSuppressionEvent, NSString;
+@protocol BLSHBacklightSceneHostEnvironment, BLSHFlipbook, BLSHPreventSystemSleepAsserting, BLSHSceneEnvironmentObserving, BLSHSystemActivityAsserting, BLSHSystemSleepMonitoring, BLSHWatchdogDelegate, BLSHWatchdogInvalidatable, BSInvalidatable, NSObject><NSCopying;
 
 @protocol BLSHOSInterfaceProviding <BLSHOSTimerProviding>
 @property(readonly, nonatomic) BLSHSuppressionEvent *lastSuppressionEvent;
 @property(readonly, nonatomic, getter=isSuppressionServiceActive) _Bool suppressionServiceActive;
+@property(readonly, nonatomic) unsigned long long flipbookDiagnosticHistoryMemoryLimit;
+@property(readonly, nonatomic) unsigned long long flipbookDiagnosticHistoryFrameLimit;
 @property(readonly, nonatomic) _Bool deviceSupportsAlwaysOn;
+- (id <BLSHBacklightSceneHostEnvironment>)removeSceneObserver:(id <BLSHSceneEnvironmentObserving>)arg1 forSceneIdentityToken:(id <NSObject><NSCopying>)arg2;
+- (id <BLSHBacklightSceneHostEnvironment>)addSceneObserver:(id <BLSHSceneEnvironmentObserving>)arg1 forSceneIdentityToken:(id <NSObject><NSCopying>)arg2;
 - (void)didDetectSignificantUserInteraction;
 - (void)endSuppressionService;
 - (void)startSuppressionServiceWithHandler:(void (^)(BLSHSuppressionEvent *))arg1;
 - (id <BSInvalidatable>)observeSignificantTimeChangeWithIdentifier:(NSString *)arg1 handler:(void (^)(void))arg2;
-- (SWSystemSleepMonitor *)systemSleepMonitor;
+- (id <BLSHSystemSleepMonitoring>)systemSleepMonitor;
 - (id <BLSHFlipbook>)createFlipbook;
-- (id <BSInvalidatable>)acquireSystemActivityAssertionWithIdentifier:(NSString *)arg1 timeout:(double)arg2 handler:(void (^)(_Bool, NSError *, id <SWSystemActivityAcquisitionDetails>))arg3;
-- (id <BSInvalidatable>)acquirePowerAssertionWithIdentifier:(NSString *)arg1 timeout:(double)arg2;
-- (id <BSInvalidatable>)scheduleWatchdogWithDelegate:(id <BLSHWatchdogDelegate>)arg1 explanation:(NSString *)arg2 timeout:(double)arg3;
+- (id <BLSHSystemActivityAsserting>)createSystemActivityAssertionWithIdentifier:(NSString *)arg1;
+- (id <BLSHPreventSystemSleepAsserting>)createPowerAssertionWithIdentifier:(NSString *)arg1;
+- (id <BLSHWatchdogInvalidatable>)scheduleWatchdogWithDelegate:(id <BLSHWatchdogDelegate>)arg1 explanation:(NSString *)arg2 timeout:(double)arg3;
 @end
 

@@ -13,12 +13,12 @@ __attribute__((visibility("hidden")))
 {
     long long _rotation;
     long long _timeStampNs;
-    int timeStamp;
     id <RTCVideoFrameBuffer> _buffer;
+    long long timeStamp;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) int timeStamp; // @synthesize timeStamp;
+@property(nonatomic) long long timeStamp; // @synthesize timeStamp;
 @property(readonly, nonatomic) id <RTCVideoFrameBuffer> buffer; // @synthesize buffer=_buffer;
 - (id)initWithBuffer:(id)arg1 rotation:(long long)arg2 timeStampNs:(long long)arg3;
 - (id)initWithPixelBuffer:(struct __CVBuffer *)arg1 scaledWidth:(int)arg2 scaledHeight:(int)arg3 cropWidth:(int)arg4 cropHeight:(int)arg5 cropX:(int)arg6 cropY:(int)arg7 rotation:(long long)arg8 timeStampNs:(long long)arg9;

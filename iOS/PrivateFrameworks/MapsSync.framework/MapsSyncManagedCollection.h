@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, copy) NSString *imageUrl; // @dynamic imageUrl;
 @property(nonatomic, copy) NSDate *modificationTime; // @dynamic modificationTime;
 @property(nonatomic, retain) NSSet *places; // @dynamic places;
+@property(nonatomic) int placesCount; // @dynamic placesCount;
 @property(nonatomic) long long positionIndex; // @dynamic positionIndex;
 @property(nonatomic, copy) NSString *title; // @dynamic title;
 

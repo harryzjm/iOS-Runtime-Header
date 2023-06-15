@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIBarButtonItem.h>
+#import <UIKitCore/UIBarButtonItem.h>
 
 @interface UIBarButtonItem (Bridge)
 - (id)ts_barButtonItemView;
+- (id)ts_compressibleBarButtonItemView;
 @end
 

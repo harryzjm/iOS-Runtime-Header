@@ -22,6 +22,7 @@
 @property(readonly, nonatomic) NSDate *universalStartDate;
 
 // Remaining properties
+@property(readonly, nonatomic) unsigned long long availableFeatures;
 @property(readonly, nonatomic) NSDate *creationDate;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;

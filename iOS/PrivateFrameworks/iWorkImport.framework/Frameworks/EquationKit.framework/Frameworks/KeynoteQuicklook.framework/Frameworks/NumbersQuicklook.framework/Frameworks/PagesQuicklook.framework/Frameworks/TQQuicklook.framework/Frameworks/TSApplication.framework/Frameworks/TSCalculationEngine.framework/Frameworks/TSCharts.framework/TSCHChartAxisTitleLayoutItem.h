@@ -12,7 +12,7 @@
 
 @property(nonatomic) double minHitSize; // @synthesize minHitSize=_minHitSize;
 @property(nonatomic) struct CGSize chartBodySize; // @synthesize chartBodySize=_chartBodySize;
-- (const struct CGPath *)newDragAndDropHighlightPathForSelection:(id)arg1;
+- (struct CGPath *)newDragAndDropHighlightPathForSelection:(id)arg1;
 - (double)titlePaddingForAxis:(id)arg1;
 - (id)subselectionHaloPositionsForSelections:(id)arg1;
 - (id)subselectionKnobPositionsForSelection:(id)arg1;

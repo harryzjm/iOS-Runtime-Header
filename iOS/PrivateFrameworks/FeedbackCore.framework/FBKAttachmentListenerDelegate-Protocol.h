@@ -10,6 +10,7 @@
 @protocol FBKAttachmentProvider;
 
 @protocol FBKAttachmentListenerDelegate <NSObject>
+- (NSSet *)popPendingRequirements;
 - (void)attachmentProvider:(id <FBKAttachmentProvider>)arg1 didTakeAttachment:(FBKAttachment *)arg2 fromOtherProvider:(id <FBKAttachmentProvider>)arg3;
 - (void)attachmentProvider:(id <FBKAttachmentProvider>)arg1 didFinishAttaching:(FBKAttachment *)arg2 error:(NSError *)arg3;
 - (void)attachmentProvider:(id <FBKAttachmentProvider>)arg1 didStartAttaching:(FBKAttachment *)arg2;

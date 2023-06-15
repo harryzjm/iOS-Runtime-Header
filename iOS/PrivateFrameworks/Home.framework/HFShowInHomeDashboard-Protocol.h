@@ -9,9 +9,9 @@
 @class NAFuture;
 
 @protocol HFShowInHomeDashboard <NSObject>
+@property(readonly, nonatomic) _Bool hf_effectiveShowInHomeDashboard;
+@property(readonly, nonatomic) _Bool hf_hasSetShowInHomeDashboard;
+@property(readonly, nonatomic) _Bool hf_showInHomeDashboard;
 - (NAFuture *)hf_updateShowInHomeDashboard:(_Bool)arg1;
-@property(nonatomic, readonly) _Bool hf_effectiveShowInHomeDashboard;
-@property(nonatomic, readonly) _Bool hf_hasSetShowInHomeDashboard;
-@property(nonatomic, readonly) _Bool hf_showInHomeDashboard;
 @end
 

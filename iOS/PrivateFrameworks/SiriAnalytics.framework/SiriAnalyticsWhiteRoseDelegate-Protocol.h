@@ -10,7 +10,7 @@
 
 @protocol SiriAnalyticsWhiteRoseDelegate <NSObject>
 - (void)whiteRose:(SiriAnalyticsWhiteRose *)arg1 derivativeClockCreated:(SiriAnalyticsDerivativeClock *)arg2 rootClock:(SiriAnalyticsRootClock *)arg3;
-- (void)whiteRose:(SiriAnalyticsWhiteRose *)arg1 rootClockDestroyed:(SiriAnalyticsRootClock *)arg2 completion:(void (^)(void))arg3;
+- (void)whiteRose:(SiriAnalyticsWhiteRose *)arg1 rootClockDestroyed:(SiriAnalyticsRootClock *)arg2 reason:(unsigned long long)arg3 completion:(void (^)(void))arg4;
 - (void)whiteRose:(SiriAnalyticsWhiteRose *)arg1 rootClockCreated:(SiriAnalyticsRootClock *)arg2 trailingRootClock:(SiriAnalyticsRootClock *)arg3;
 - (void)whiteRose:(SiriAnalyticsWhiteRose *)arg1 willCreateRootClock:(SiriAnalyticsRootClock *)arg2 completion:(void (^)(void))arg3;
 @end

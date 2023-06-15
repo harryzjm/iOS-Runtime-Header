@@ -6,12 +6,12 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class NSArray, UIView, _UIInternalDraggingSessionSource;
+@class NSArray, UIView, _UIDragSessionProperties, _UIInternalDraggingSessionSource;
 
 @protocol _UIViewInternalDraggingSourceDelegate <NSObject>
+- (_UIDragSessionProperties *)_viewDragSessionProperties:(UIView *)arg1;
 - (NSArray *)_requiredContextIDsForDragSessionInView:(UIView *)arg1;
 - (long long)_dataOwnerOfDragFromView:(UIView *)arg1;
-- (_Bool)_viewSupportsSystemDrag:(UIView *)arg1;
 - (void)_viewFailedToDrag:(UIView *)arg1;
 - (void)_view:(UIView *)arg1 willBeginDraggingWithSession:(_UIInternalDraggingSessionSource *)arg2;
 - (_Bool)_canDragFromView:(UIView *)arg1;

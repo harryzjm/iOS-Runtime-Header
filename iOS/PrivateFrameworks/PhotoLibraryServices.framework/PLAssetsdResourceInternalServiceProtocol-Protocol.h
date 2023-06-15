@@ -6,9 +6,12 @@
 
 #import <PhotoLibraryServices/NSObject-Protocol.h>
 
-@class NSArray, NSString;
+@class NSArray, NSString, PLAbstractEncodableObject;
+@protocol PLCapturePhotoSettings;
 
 @protocol PLAssetsdResourceInternalServiceProtocol <NSObject>
+- (void)cancelAllPrewarmingWithReply:(void (^)(_Bool, NSError *))arg1;
+- (void)prewarmWithCapturePhotoSettings:(PLAbstractEncodableObject<PLCapturePhotoSettings> *)arg1 reply:(void (^)(_Bool, NSError *))arg2;
 - (void)asynchronousMasterThumbnailForAssetUUID:(NSString *)arg1 reply:(void (^)(_Bool, NSData *, NSError *))arg2;
 - (void)batchSaveAssetJobs:(NSArray *)arg1 reply:(void (^)(NSArray *))arg2;
 @end

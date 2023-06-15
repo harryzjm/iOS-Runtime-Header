@@ -11,6 +11,8 @@
 @interface NSURLProtectionSpace (SafariCoreExtras)
 + (id)safari_passkeySidecarProtectionSpaceForRelyingPartyIdentifier:(id)arg1;
 + (id)safari_HTMLFormProtectionSpaceForURL:(id)arg1;
+@property(readonly, nonatomic) _Bool safari_hasDefaultPortForProtocol;
+@property(readonly, nonatomic) long long safari_defaultPortForProtocol;
 @property(readonly, nonatomic) _Bool safari_allowsCredentialSaving;
 - (_Bool)isEqualToProtectionSpaceForPasswordManager:(id)arg1;
 - (id)safari_creationDateOfCredentialWithUser:(id)arg1;
@@ -21,6 +23,6 @@
 - (long long)safari_compareToHighLevelDomainFromProtectionSpace:(id)arg1;
 - (long long)safari_compareToHighLevelDomainFromProtectionSpaceOrderingDecimalCharactersLast:(id)arg1;
 @property(readonly, nonatomic) NSURLProtectionSpace *safari_protectionSpaceByReplacingHostWithHighlevelDomain;
-@property(readonly, nonatomic) const struct __CFString *safari_protocolAsSecAttrProtocolValue;
+@property(readonly, nonatomic) struct __CFString *safari_protocolAsSecAttrProtocolValue;
 @end
 

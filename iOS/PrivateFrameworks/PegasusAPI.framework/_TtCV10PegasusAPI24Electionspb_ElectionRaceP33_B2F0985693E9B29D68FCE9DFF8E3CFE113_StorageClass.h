@@ -39,6 +39,7 @@
     MISSING_TYPE *_imageURL;
     MISSING_TYPE *_newsURL;
     MISSING_TYPE *_numberOfSeats;
+    MISSING_TYPE *_partyResults;
 }
 
 @end

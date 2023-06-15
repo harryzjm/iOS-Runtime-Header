@@ -6,7 +6,7 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
-@class MISSING_TYPE;
+@class MISSING_TYPE, NSArray;
 
 @interface _TtC7NewsUI223LocalNewsChannelService : _TtCs12_SwiftObject
 {
@@ -15,7 +15,12 @@
     MISSING_TYPE *localAreasManager;
     MISSING_TYPE *locationManager;
     MISSING_TYPE *personalizationService;
+    MISSING_TYPE *refreshQueue;
+    MISSING_TYPE *_lastKnownChannelIDs;
+    MISSING_TYPE *_hasKnownChannelIDs;
 }
+
+@property(nonatomic, copy) NSArray *lastKnownChannelIDs;
 
 @end
 

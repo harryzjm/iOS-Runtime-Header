@@ -39,7 +39,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)_updateDateAndTimePlacements;
 - (void)itemCreated:(id)arg1;
 - (void)sizeUpdatedFromSize:(struct CGSize)arg1;
-- (void)avoidanceFrameUpdatedFromFrame:(struct CGRect)arg1 withAnimationSettings:(id)arg2 interactively:(_Bool)arg3;
+- (void)avoidanceFrameUpdatedFromFrame:(struct CGRect)arg1 withAnimationSettings:(id)arg2 options:(unsigned long long)arg3;
 - (void)_updateConstraintsForAvoidanceFrame:(struct CGRect)arg1;
 - (void)statusBarEnabledPartsUpdated;
 - (void)actionable:(id)arg1 highlighted:(_Bool)arg2 initialPress:(_Bool)arg3;
@@ -52,11 +52,14 @@ __attribute__((visibility("hidden")))
 - (id)setupInContainerView:(id)arg1;
 - (void)dealloc;
 - (id)init;
+- (_Bool)wantsPillInExpandedTrailingPlacements;
 @property(readonly, nonatomic) UIFont *clockFont;
+- (id)expandedPillFont;
 - (id)pillSmallFont;
 - (id)pillFont;
 - (id)expandedFont;
 - (id)normalFont;
+- (struct CGSize)expandedPillSize;
 - (struct CGSize)smallPillSize;
 - (struct CGSize)pillSize;
 @property(readonly, nonatomic) struct NSDirectionalEdgeInsets expandedEdgeInsets;

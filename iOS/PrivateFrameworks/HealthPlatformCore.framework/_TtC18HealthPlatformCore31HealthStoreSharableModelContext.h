@@ -12,10 +12,11 @@
 {
     MISSING_TYPE *sourceProfile;
     MISSING_TYPE *healthStore;
-    MISSING_TYPE *summarySharingEntryStore;
     MISSING_TYPE *pluginInfo;
-    MISSING_TYPE *initialSharableModelChangePublisher;
-    MISSING_TYPE *initialPreviousSharedSummariesPublisher;
+    MISSING_TYPE *summarySharingEntryStore;
+    MISSING_TYPE *previousSharedSummariesPublisherFactory;
+    MISSING_TYPE *sharableModelChangePublisherFactory;
+    MISSING_TYPE *customPreviousSharedSummariesErrorHandler;
 }
 
 @end

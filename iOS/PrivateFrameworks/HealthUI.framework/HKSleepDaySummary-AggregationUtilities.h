@@ -21,15 +21,15 @@
 @property(readonly, nonatomic) double hui_durationOfSleep;
 @property(readonly, nonatomic) NSDate *hui_endOfSleep;
 @property(readonly, nonatomic) NSDate *hui_startOfSleep;
-- (id)lastEndDateMatchingSleepValues:(id)arg1;
-- (id)firstStartDateMatchingSleepValues:(id)arg1;
-- (id)hkui_somnogramChartDateInterval;
-- (double)hkui_durationForSleepCategoryValue:(long long)arg1;
 - (id)_secondsFromSummaryStartDateForDateComponents:(id)arg1;
 - (id)hk_sleepDurationGoalValue;
 - (id)hk_wakeTimeGoalValue;
 - (id)hk_bedtimeGoalValue;
 - (id)maxYValue;
 - (id)minYValue;
+- (id)lastEndDateMatchingSleepValues:(id)arg1;
+- (id)firstStartDateMatchingSleepValues:(id)arg1;
+- (id)hkui_somnogramChartDateInterval;
+- (double)hkui_durationForSleepCategoryValue:(long long)arg1;
 @end
 

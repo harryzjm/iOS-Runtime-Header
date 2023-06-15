@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class PKPaymentTransaction;
+@class NSString, PKPaymentTransaction, PKPeerPaymentRecurringPaymentMemo;
 
 @protocol PassKitServicesXPCServiceProtocol
+- (void)imageDataForRecurringPaymentMemo:(PKPeerPaymentRecurringPaymentMemo *)arg1 size:(struct CGSize)arg2 completion:(void (^)(NSData *))arg3;
+- (void)imageDataForPassUniqueIdentifier:(NSString *)arg1 size:(struct CGSize)arg2 completion:(void (^)(NSData *))arg3;
 - (void)imageDataForTransaction:(PKPaymentTransaction *)arg1 size:(struct CGSize)arg2 completion:(void (^)(NSData *))arg3;
 @end
 

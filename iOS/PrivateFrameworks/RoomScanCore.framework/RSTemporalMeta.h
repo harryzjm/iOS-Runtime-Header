@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MISSING_TYPE, NSMutableArray, NSMutableDictionary;
+@class NSMutableArray, NSMutableDictionary;
 
 @interface RSTemporalMeta : NSObject
 {
@@ -21,27 +21,8 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSMutableDictionary *mappingInterval; // @synthesize mappingInterval=_mappingInterval;
-@property(retain, nonatomic) NSMutableArray *incrementalIds; // @synthesize incrementalIds=_incrementalIds;
-@property(nonatomic) _Bool isUpdate; // @synthesize isUpdate=_isUpdate;
 - (_Bool)isEqual:(id)arg1;
-- (_Bool)isEqualToRSTemporalMeta:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
-- (id)dictionaryRepresentation;
-- (void)reset;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)assignBoundaryPoints:(MISSING_TYPE **)arg1 withSize:(unsigned long long)arg2;
-- (void)assignCoveringHullPoints:(MISSING_TYPE **)arg1 withSize:(unsigned long long)arg2;
-- (void)clearIncrementalPoses;
-- (void)appendIncrementalPose:(CDStruct_14d5dc5e)arg1;
-- (void)assignIncrementalPoints:(const MISSING_TYPE **)arg1 withSize:(unsigned long long)arg2;
-@property(readonly, nonatomic) unsigned long long boundaryPointsCount;
-@property(readonly, nonatomic) MISSING_TYPE **boundaryPoints;
-@property(readonly, nonatomic) unsigned long long coveringHullPointsCount;
-@property(readonly, nonatomic) MISSING_TYPE **coveringHullPoints;
-@property(readonly, nonatomic) CDStruct_14d5dc5e *incrementalPoses;
-@property(readonly, nonatomic) unsigned long long incrementalPointsCount;
-@property(readonly, nonatomic) const MISSING_TYPE **incrementalPoints;
 - (id)init;
 
 @end

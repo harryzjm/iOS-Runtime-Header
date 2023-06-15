@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import "_$s18VisualIntelligence11S2EdgeIndexCN.h"
+#import ".h"
 
 @class MISSING_TYPE;
 
-@interface _TtCV18VisualIntelligence6S2LoopP33_0A5C7CC7D7BDB7AF05ED030EC51F345F15S2LoopEdgeIndex : _$s18VisualIntelligence11S2EdgeIndexCN
+@interface _TtCV18VisualIntelligence6S2LoopP33_0A5C7CC7D7BDB7AF05ED030EC51F345F15S2LoopEdgeIndex : 
 {
     MISSING_TYPE *loop;
 }

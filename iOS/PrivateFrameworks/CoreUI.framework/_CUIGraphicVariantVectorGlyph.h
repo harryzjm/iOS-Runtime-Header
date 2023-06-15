@@ -45,7 +45,7 @@ __attribute__((visibility("hidden")))
 - (void)drawInContext:(struct CGContext *)arg1;
 - (struct CGImage *)rasterizeImageUsingScaleFactor:(double)arg1 forTargetSize:(struct CGSize)arg2;
 - (struct CGImage *)image;
-- (const struct CGPath *)CGPath;
+- (struct CGPath *)CGPath;
 - (_Bool)_containsWideGamutColor;
 - (struct CGRect)interiorAlignmentRectForTargetSize:(struct CGSize)arg1 scale:(double)arg2;
 - (struct CGRect)interiorAlignmentRectUnrounded;

@@ -6,9 +6,11 @@
 
 #import <ChronoCore/NSObject-Protocol.h>
 
-@class CHSWidgetDescriptorsBox;
+@class CHSRelevanceEntryBox, CHSRemoteDevicesBox, CHSWidgetExtensionsBox;
 
 @protocol CHSChronoWidgetServiceClientInterface <NSObject>
-- (oneway void)widgetDescriptorsDidChange:(CHSWidgetDescriptorsBox *)arg1;
+- (oneway void)nearbyDevicesDidChange:(CHSRemoteDevicesBox *)arg1;
+- (oneway void)widgetRelevanceEntriesDidChange:(CHSRelevanceEntryBox *)arg1;
+- (oneway void)widgetExtensionsDidChange:(CHSWidgetExtensionsBox *)arg1;
 @end
 

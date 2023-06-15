@@ -14,14 +14,19 @@
     MISSING_TYPE *identifier;
     MISSING_TYPE *row;
     MISSING_TYPE *bookmarkClient;
+    MISSING_TYPE *bookmarkType;
     MISSING_TYPE *descriptorIdentifier;
     MISSING_TYPE *downloadSubscriptionCoordinator;
     MISSING_TYPE *eventHub;
+    MISSING_TYPE *galleryIcon;
     MISSING_TYPE *lazyLockupFetcher;
     MISSING_TYPE *mediaTagStringBuilder;
     MISSING_TYPE *platform;
+    MISSING_TYPE *storefrontLocalizer;
     MISSING_TYPE *subscriptionCache;
     MISSING_TYPE *subscriptionToken;
+    MISSING_TYPE *titleText;
+    MISSING_TYPE *secondaryText;
 }
 
 @end

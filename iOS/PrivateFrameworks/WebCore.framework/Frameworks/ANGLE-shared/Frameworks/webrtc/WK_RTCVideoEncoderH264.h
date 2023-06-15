@@ -26,7 +26,6 @@ __attribute__((visibility("hidden")))
     _Bool _useBaseline;
     struct OpaqueVTCompressionSession *_vtCompressionSession;
     void *_vcpCompressionSession;
-    struct __CVPixelBufferPool *_pixelBufferPool;
     unsigned long long _mode;
     struct H264BitstreamParser _h264BitstreamParser;
     struct vector<unsigned char, std::allocator<unsigned char>> _frameScaleBuffer;
@@ -37,10 +36,14 @@ __attribute__((visibility("hidden")))
     _Bool _isBelowExpectedFrameRate;
     unsigned int _frameCount;
     long long _lastFrameRateEstimationTime;
+    _Bool _useAnnexB;
+    _Bool _needsToSendDescription;
+    CDUnknownBlockType _descriptionCallback;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)flush;
 - (id)scalingSettings;
 - (void)frameWasEncoded:(int)arg1 flags:(unsigned int)arg2 sampleBuffer:(struct opaqueCMSampleBuffer *)arg3 codecSpecificInfo:(id)arg4 width:(int)arg5 height:(int)arg6 renderTimeMs:(long long)arg7 timestamp:(unsigned int)arg8 rotation:(long long)arg9 isKeyFrameRequired:(_Bool)arg10;
 - (void)updateBitRateAccordingActualFrameRate;
@@ -57,6 +60,8 @@ __attribute__((visibility("hidden")))
 - (void)setCallback:(CDUnknownBlockType)arg1;
 - (long long)encode:(id)arg1 codecSpecificInfo:(id)arg2 frameTypes:(id)arg3;
 - (_Bool)hasCompressionSession;
+- (void)setDescriptionCallback:(CDUnknownBlockType)arg1;
+- (void)setUseAnnexB:(_Bool)arg1;
 - (long long)startEncodeWithSettings:(id)arg1 numberOfCores:(int)arg2;
 - (void)dealloc;
 - (void)setH264LowLatencyEncoderEnabled:(_Bool)arg1;

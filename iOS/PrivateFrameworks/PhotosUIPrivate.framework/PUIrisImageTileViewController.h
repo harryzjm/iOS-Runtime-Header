@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
         _Bool respondsToDelegateForGestureRecognizer;
     } _delegateFlags;
     CDUnknownBlockType _ppt_didEndPlayingHandler;
-    _Bool _isVitalityDisabledBytransformInset;
+    _Bool _isVitalityDisabledByTransformInset;
     id <PUIrisImageTileViewControllerDelegate> _delegate;
     PHLivePhotoView *__livePhotoView;
     PXLivePhotoViewModulator *_livePhotoViewModulator;
@@ -28,7 +28,7 @@ __attribute__((visibility("hidden")))
 
 + (id)srlCompensationLoadingQueue;
 - (void).cxx_destruct;
-@property(nonatomic) _Bool isVitalityDisabledBytransformInset; // @synthesize isVitalityDisabledBytransformInset=_isVitalityDisabledBytransformInset;
+@property(nonatomic) _Bool isVitalityDisabledByTransformInset; // @synthesize isVitalityDisabledByTransformInset=_isVitalityDisabledByTransformInset;
 @property(retain, nonatomic) PXLivePhotoViewModulator *livePhotoViewModulator; // @synthesize livePhotoViewModulator=_livePhotoViewModulator;
 @property(readonly, nonatomic) PHLivePhotoView *_livePhotoView; // @synthesize _livePhotoView=__livePhotoView;
 @property(nonatomic) __weak id <PUIrisImageTileViewControllerDelegate> delegate; // @synthesize delegate=_delegate;

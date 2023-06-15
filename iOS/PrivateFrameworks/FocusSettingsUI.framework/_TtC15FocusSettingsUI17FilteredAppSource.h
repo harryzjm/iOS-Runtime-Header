@@ -13,6 +13,7 @@
     MISSING_TYPE *_filter;
     MISSING_TYPE *base;
     MISSING_TYPE *_filteredAppsCache;
+    MISSING_TYPE *excludeWebApps;
 }
 
 @end

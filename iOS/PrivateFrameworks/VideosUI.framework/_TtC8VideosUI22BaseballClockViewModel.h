@@ -14,6 +14,7 @@
     MISSING_TYPE *_pitchCount;
     MISSING_TYPE *_outs;
     MISSING_TYPE *_activeBases;
+    MISSING_TYPE *components;
     MISSING_TYPE *voiceOverModel;
 }
 

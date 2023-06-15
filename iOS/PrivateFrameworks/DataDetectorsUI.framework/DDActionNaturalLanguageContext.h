@@ -15,9 +15,11 @@ __attribute__((visibility("hidden")))
     NSString *_trailingText;
     struct __DDResult *_result;
     NSArray *_associatedResults;
+    NSString *_bundleIdentifier;
 }
 
 - (void).cxx_destruct;
+@property(retain) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property(retain) NSArray *associatedResults; // @synthesize associatedResults=_associatedResults;
 @property(retain) NSString *trailingText; // @synthesize trailingText=_trailingText;
 @property(retain) NSString *leadingText; // @synthesize leadingText=_leadingText;

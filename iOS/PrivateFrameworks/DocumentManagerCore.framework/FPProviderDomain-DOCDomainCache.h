@@ -7,6 +7,7 @@
 #import <FileProvider/FPProviderDomain.h>
 
 @interface FPProviderDomain (DOCDomainCache)
++ (id)domainPathCache;
 + (id)domainCache;
 + (void)setDomainCache:(id)arg1;
 @end

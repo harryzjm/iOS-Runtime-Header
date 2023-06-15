@@ -16,6 +16,8 @@
 - (void)loadChatsFilteredUsingPredicate:(NSPredicate *)arg1 lastMessageOlderThan:(NSDate *)arg2 limit:(long long)arg3 queryID:(NSString *)arg4;
 - (void)loadChatsFilteredUsingPredicate:(NSPredicate *)arg1 queryID:(NSString *)arg2;
 - (void)loadChatWithGUID:(NSString *)arg1 queryID:(NSString *)arg2;
+- (void)unreadCountWithCompletion:(void (^)(long long))arg1;
+- (void)updateNotice:(IMCollaborationNotice *)arg1;
 - (void)dismissNotice:(IMCollaborationNotice *)arg1;
 - (void)fetchCollaborationNoticesForChatGUID:(NSString *)arg1 reply:(void (^)(NSArray *))arg2;
 - (void)sendCommand:(NSNumber *)arg1 withProperties:(NSDictionary *)arg2 toPerson:(NSString *)arg3 account:(NSString *)arg4 toChatID:(NSString *)arg5 identifier:(NSString *)arg6 style:(unsigned char)arg7;
@@ -25,9 +27,12 @@
 - (void)leaveChatID:(NSString *)arg1 identifier:(NSString *)arg2 style:(unsigned char)arg3 account:(NSString *)arg4;
 - (void)declineInvitationToChatID:(NSString *)arg1 identifier:(NSString *)arg2 style:(unsigned char)arg3 account:(NSString *)arg4;
 - (void)closeSessionChatID:(NSString *)arg1 identifier:(NSString *)arg2 style:(unsigned char)arg3 account:(NSString *)arg4;
+- (void)recoverChatsFromJunkContainingMessageWithGUID:(NSString *)arg1;
 - (void)unblackholeAndLoadChatWithHandleIDs:(NSArray *)arg1 reply:(void (^)(NSArray *))arg2;
 - (void)chat:(NSString *)arg1 updateLastAddressedSIMID:(NSString *)arg2;
 - (void)chat:(NSString *)arg1 updateLastAddressHandle:(NSString *)arg2;
+- (void)chat:(NSString *)arg1 updateIsDeletingIncomingMessages:(_Bool)arg2;
+- (void)chat:(NSString *)arg1 updateIsRecovered:(_Bool)arg2;
 - (void)chat:(NSString *)arg1 updateIsBlackholed:(_Bool)arg2;
 - (void)chat:(NSString *)arg1 updateIsFiltered:(long long)arg2;
 - (void)chat:(NSString *)arg1 updateDisplayName:(NSString *)arg2;

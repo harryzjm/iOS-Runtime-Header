@@ -9,6 +9,8 @@
 @class NSString;
 
 @interface NSObject (Readable)
++ (id)intents_arrayOfWidgetPlistRepresentableInDict:(id)arg1 key:(id)arg2 error:(id *)arg3 resultTransformer:(CDUnknownBlockType)arg4;
++ (id)intents_widgetPlistRepresentableInDict:(id)arg1 key:(id)arg2 error:(id *)arg3;
 - (id)_intents_readableDescriptionWithLocalizer:(id)arg1 metadata:(id)arg2;
 - (id)_intents_readableDescriptionWithLocalizer:(id)arg1;
 - (id)_intents_readableDescriptionForLanguage:(id)arg1 withMetadata:(id)arg2;

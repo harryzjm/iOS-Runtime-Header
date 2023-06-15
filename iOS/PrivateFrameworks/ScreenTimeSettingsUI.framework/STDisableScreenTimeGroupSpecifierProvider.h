@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) PSSpecifier *disableScreenTimeSpecifier; // @synthesize disableScreenTimeSpecifier=_disableScreenTimeSpecifier;
+- (_Bool)isHidden;
 - (void)disableScreenTime:(id)arg1;
 - (id)disableScreenTimeConfirmationPrompt;
 - (void)updateDisableScreenTimeSpecifier;

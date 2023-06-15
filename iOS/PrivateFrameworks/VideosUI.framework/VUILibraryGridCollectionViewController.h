@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UICollectionViewController.h>
+#import <UIKitCore/UICollectionViewController.h>
 
 @class NSArray, NSMutableDictionary, NSString, UIBarButtonItem, UICollectionViewCell, UICollectionViewDiffableDataSource, VUICollectionHeaderView, VUIFamilyMember, VUIMediaEntitiesDataSource, VUIMediaEntityFetchRequest, VUIViewControllerContentPresenter;
 @protocol VUILibraryGridCollectionViewControllerDelegate;
@@ -12,7 +12,7 @@
 __attribute__((visibility("hidden")))
 @interface VUILibraryGridCollectionViewController : UICollectionViewController
 {
-    double _lastAppearWidth;
+    double _lastViewWidth;
     _Bool _requiresRelayout;
     struct CGSize _cellSize;
     NSMutableDictionary *_cellMetrics;
@@ -82,6 +82,8 @@ __attribute__((visibility("hidden")))
 - (void)viewDidLayoutSubviews;
 - (void)viewWillLayoutSubviews;
 - (void)viewDidAppear:(_Bool)arg1;
+- (void)viewWillDisappear:(_Bool)arg1;
+- (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (void)loadView;
 - (void)updateWithLatestMediaEntities:(id)arg1;

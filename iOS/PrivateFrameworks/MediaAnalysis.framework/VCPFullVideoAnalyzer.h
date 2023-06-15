@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSDictionary, NSMutableDictionary, VCPFrameAnalysisStats, VCPFrameScoreFilter, VCPMotionFlowAnalyzer, VCPMotionFlowSubtleMotionAnalyzer;
+@class NSArray, NSDictionary, NSMutableDictionary, VCPFrameAnalysisStats, VCPFrameScoreFilter, VCPMotionFlowAnalyzer, VCPMotionFlowSubtleMotionAnalyzer, VCPVideoEmbeddings;
 
 __attribute__((visibility("hidden")))
 @interface VCPFullVideoAnalyzer
@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
     _Bool _isCaptureAnalysis;
     NSMutableDictionary *_privateResults;
     VCPFrameAnalysisStats *_videoFrameAnalysis;
+    VCPVideoEmbeddings *_videoEmbeddings;
     VCPFrameScoreFilter *_trackScoreFilter;
     NSDictionary *_metaMotionResults;
     _Bool _faceDominated;
@@ -65,6 +66,7 @@ __attribute__((visibility("hidden")))
 - (id)privateResults;
 - (id)results;
 - (float)estimateQualityScore:(void *)arg1;
+- (id)processSceneResults;
 - (void)processAndEstimateQualityScore:(void *)arg1;
 - (int)process:(int)arg1;
 - (int)finishAnalysisPass:(CDStruct_e83c9415)arg1;
@@ -76,7 +78,7 @@ __attribute__((visibility("hidden")))
 - (void)prepareVideoAnalysisByScenes:(id)arg1;
 - (int)seedAnalyzersWithPixelBuffer:(struct __CVBuffer *)arg1 startTime:(CDStruct_1b6d18a9)arg2;
 - (void)dealloc;
-- (id)initWithVideoTrack:(id)arg1 withMetaOrientation:(id)arg2 withPrivateResults:(id)arg3 withFrameStats:(id)arg4 isTimelapse:(_Bool)arg5 isIris:(_Bool)arg6 irisPhotoOffsetSec:(float)arg7 irisPhotoExposureSec:(float)arg8 slowMoRate:(float)arg9 faceDominated:(_Bool)arg10;
+- (id)initWithVideoTrack:(id)arg1 withMetaOrientation:(id)arg2 withPrivateResults:(id)arg3 withFrameStats:(id)arg4 withEmbeddings:(id)arg5 isTimelapse:(_Bool)arg6 isIris:(_Bool)arg7 irisPhotoOffsetSec:(float)arg8 irisPhotoExposureSec:(float)arg9 slowMoRate:(float)arg10 faceDominated:(_Bool)arg11;
 - (id)initWithTransform:(struct CGAffineTransform)arg1;
 
 @end

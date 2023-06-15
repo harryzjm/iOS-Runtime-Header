@@ -7,6 +7,7 @@
 @class NSData, NSDictionary, NSString;
 
 @protocol StreamingUnzipProtocol
+- (void)getPidForTestingWithReply:(void (^)(int, NSError *))arg1;
 - (void)setActiveDelegateMethods:(int)arg1;
 - (void)terminateStreamWithReply:(void (^)(NSError *))arg1;
 - (void)finishStreamWithReply:(void (^)(NSError *))arg1;

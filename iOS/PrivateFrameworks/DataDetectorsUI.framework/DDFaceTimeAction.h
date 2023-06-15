@@ -10,6 +10,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (_Bool)isAvailable;
++ (id)matchingScheme;
 - (id)dialRequest;
 - (id)notificationTitle;
 - (id)iconName;

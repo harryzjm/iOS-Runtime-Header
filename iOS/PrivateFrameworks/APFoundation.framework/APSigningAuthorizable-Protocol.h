@@ -9,9 +9,11 @@
 @class NSData;
 
 @protocol APSigningAuthorizable <NSObject>
+@property(readonly, nonatomic) _Bool isStashed;
+@property(readonly, nonatomic) unsigned long long contextIdx;
+@property(readonly, nonatomic) long long failureError;
 @property(readonly, nonatomic) long long state;
 - (NSData *)signatureForRawData:(NSData *)arg1 error:(id *)arg2;
 - (NSData *)signatureForData:(NSData *)arg1 error:(id *)arg2;
-- (_Bool)isValidSignature:(NSData *)arg1 forData:(NSData *)arg2 error:(id *)arg3;
 @end
 

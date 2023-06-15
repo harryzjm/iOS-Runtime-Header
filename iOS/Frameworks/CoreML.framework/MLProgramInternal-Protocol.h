@@ -11,7 +11,6 @@
 @protocol MLFeatureProvider;
 
 @protocol MLProgramInternal <MLModeling, MLProgram>
-- (void)removeEngineForFunctionName:(NSString *)arg1;
 - (MLProgramContext *)newContextAndReturnError:(id *)arg1;
 - (id <MLFeatureProvider>)evaluateFunction:(NSString *)arg1 arguments:(id <MLFeatureProvider>)arg2 error:(id *)arg3;
 @end

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UITextSelectionRect.h>
+#import <UIKitCore/UITextSelectionRect.h>
 
 @interface UITextSelectionRect (WFInsetting)
 - (id)wf_selectionRectByInsetting:(struct UIEdgeInsets)arg1;

@@ -10,7 +10,7 @@
 @protocol VUIPlaybackContainerViewController;
 
 @protocol VUIPlaybackContainerViewControllerDelegate <NSObject>
-- (void)playbackContainerVieControllerDidAutoPlay:(UIViewController<VUIPlaybackContainerViewController> *)arg1;
+- (void)playbackContainerViewControllerDidAutoPlay:(UIViewController<VUIPlaybackContainerViewController> *)arg1;
 - (void)playbackContainerViewControllerDidDisappear:(UIViewController<VUIPlaybackContainerViewController> *)arg1;
 - (void)playbackContainerViewControllerBackgroundPlaybackWillBegin:(UIViewController<VUIPlaybackContainerViewController> *)arg1;
 - (struct CGRect)playbackContainerViewControllerPiPFrameForCurrentPlayback:(UIViewController<VUIPlaybackContainerViewController> *)arg1;

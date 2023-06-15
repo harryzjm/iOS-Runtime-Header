@@ -11,6 +11,7 @@
 + (id)stringWithFileSystemRepresentation:(const char *)arg1;
 + (id)stringWithContentsOfFile:(id)arg1 usingEncoding:(unsigned long long)arg2;
 + (id)ellipsisString;
+- (id)cal_stringWithNormalizedSpacesForUnitTesting;
 - (id)CalStringWithOnlyAutoComment;
 - (id)CalStringByRemovingAutoComment;
 - (_Bool)CalHasAutoCommentPrefix;
@@ -21,7 +22,7 @@
 - (id)CalSafeHFSPathComponentName;
 - (id)appendSlashIfNeeded;
 - (id)removeSlashIfNeeded;
-- (id)safeFilename;
+- (id)CalSafeFilename;
 - (id)searchAndReplaceString:(id)arg1 withString:(id)arg2;
 - (id)unquote;
 - (id)quote;
@@ -41,13 +42,14 @@
 - (void)cal_enumerateCharactersUsingBlock:(CDUnknownBlockType)arg1;
 - (id)stringByDecodingSlashes;
 - (id)stringByEncodingSlashes;
+- (id)RTLString;
 - (id)directionalityIsolatedString;
 - (_Bool)isEqualAsURL:(id)arg1;
 - (id)CalAddressComment;
 - (id)CalUncommentedAddress;
 - (id)calDataDetectedURL;
-- (id)_phoneNumberDetector;
 - (id)phoneURL;
+- (_Bool)cal_isPhoneNumber;
 - (_Bool)isPhoneNumber;
 - (id)radarLink;
 - (_Bool)isMessagesURL;

@@ -8,7 +8,7 @@
 #import <SpringBoard/SBLayoutStateTransitionObserver-Protocol.h>
 #import <SpringBoard/SBSwitcherAnimatedTransitioning-Protocol.h>
 
-@class FBSSceneIdentityToken, NSArray, NSSet, NSString, SBAppLayout, SBApplicationSceneHandle, SBBestAppSuggestion, SBFluidSwitcherAnimationController, SBFluidSwitcherGesture, SBHomeGrabberView, SBIcon, SBMainWorkspaceTransitionRequest, SBSceneHandle, SBTransientOverlayViewController, SBWorkspaceApplicationSceneTransitionContext, UIStatusBarStyleRequest;
+@class FBSSceneIdentityToken, NSArray, NSSet, NSString, SBAppLayout, SBApplicationSceneHandle, SBBestAppSuggestion, SBFluidSwitcherAnimationController, SBFluidSwitcherGesture, SBFluidSwitcherGestureManager, SBHomeGrabberView, SBIcon, SBMainWorkspaceTransitionRequest, SBSceneHandle, SBTransientOverlayViewController, SBWorkspaceApplicationSceneTransitionContext, UIStatusBarStyleRequest;
 @protocol SBSwitcherContentViewControllerDataSource, SBSwitcherContentViewControllerDelegate, SBSwitcherLiveContentOverlay;
 
 @protocol SBSwitcherContentViewControlling <SBButtonEventsHandler, SBLayoutStateTransitionObserver, SBSwitcherAnimatedTransitioning>
@@ -19,6 +19,7 @@
 @property(nonatomic) __weak id <SBSwitcherContentViewControllerDataSource> dataSource;
 @property(nonatomic) __weak id <SBSwitcherContentViewControllerDelegate> delegate;
 - (void)invalidate;
+- (void)noteWindowSceneCountDidChange;
 - (NSArray *)liveScenesIdentityTokens;
 - (void)sceneLayoutTransitionWillStartWithTransitionContext:(SBWorkspaceApplicationSceneTransitionContext *)arg1;
 - (BOOL)activityModeForAppLayout:(SBAppLayout *)arg1;
@@ -26,6 +27,7 @@
 - (NSSet *)foregroundAppLayouts;
 - (void)tapReceivedForGrabberTongueAtEdge:(unsigned long long)arg1;
 - (void)clickReceivedForHomeGrabberView:(SBHomeGrabberView *)arg1;
+- (id <SBSwitcherLiveContentOverlay>)liveContentOverlayForAppLayout:(SBAppLayout *)arg1;
 - (SBIcon *)iconForAppLayout:(SBAppLayout *)arg1;
 - (void)performKeyboardShortcutAction:(long long)arg1;
 - (_Bool)canPerformKeyboardShortcutAction:(long long)arg1 forBundleIdentifier:(NSString *)arg2;
@@ -34,9 +36,9 @@
 - (void)relinquishTransientOverlayViewController:(SBTransientOverlayViewController *)arg1;
 - (void)acquiredViewController:(SBTransientOverlayViewController *)arg1 forTransientOverlayAppLayout:(SBAppLayout *)arg2;
 - (void)noteAppLayoutsDidChange;
-- (void)handleGestureDidEnd:(SBFluidSwitcherGesture *)arg1;
-- (void)handleGestureDidUpdate:(SBFluidSwitcherGesture *)arg1;
-- (void)handleGestureDidBegin:(SBFluidSwitcherGesture *)arg1;
+- (void)handleFluidSwitcherGestureManager:(SBFluidSwitcherGestureManager *)arg1 didEndGesture:(SBFluidSwitcherGesture *)arg2;
+- (void)handleFluidSwitcherGestureManager:(SBFluidSwitcherGestureManager *)arg1 didUpdateGesture:(SBFluidSwitcherGesture *)arg2;
+- (void)handleFluidSwitcherGestureManager:(SBFluidSwitcherGestureManager *)arg1 didBeginGesture:(SBFluidSwitcherGesture *)arg2;
 - (void)removeLayoutRole:(long long)arg1 inSpace:(SBAppLayout *)arg2 mutationBlock:(void (^)(void))arg3 reason:(long long)arg4;
 - (void)performAnimatedInsertionOfAppLayouts:(NSArray *)arg1 atIndexes:(NSArray *)arg2 completion:(void (^)(_Bool, _Bool))arg3;
 - (void)noteModelDidMutateForInsertionOfAppLayouts:(NSArray *)arg1 atIndexes:(NSArray *)arg2 willAnimate:(_Bool)arg3;
@@ -46,6 +48,7 @@
 - (UIStatusBarStyleRequest *)leadingStatusBarStyleRequest;
 - (_Bool)isStatusBarHiddenForAppLayout:(SBAppLayout *)arg1;
 - (void)respondToInAppStatusBarRequestedHiddenUpdateAnimated:(_Bool)arg1;
+- (double)contentAspectRatio;
 - (_Bool)shouldRubberbandFullScreenHomeGrabberView;
 - (_Bool)shouldAcceleratedHomeButtonPressBegin;
 - (_Bool)isUserInteractionEnabled;

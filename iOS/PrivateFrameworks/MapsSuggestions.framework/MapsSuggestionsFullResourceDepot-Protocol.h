@@ -6,8 +6,8 @@
 
 #import <MapsSuggestions/MapsSuggestionsInternalResourceDepot-Protocol.h>
 
-@class MapsSuggestionsContacts, MapsSuggestionsEventKit, MapsSuggestionsFlightUpdater, MapsSuggestionsMapsSync, MapsSuggestionsPortrait, MapsSuggestionsRoutine, MapsSuggestionsShortcutManager, MapsSuggestionsUser, MapsSuggestionsVirtualGarage;
-@protocol MapsSuggestionsContactsConnector, MapsSuggestionsEventKitConnector, MapsSuggestionsFlightRequester, MapsSuggestionsInsights, MapsSuggestionsMapsSyncConnector, MapsSuggestionsNetworkRequester, MapsSuggestionsPortraitConnector, MapsSuggestionsRoutineConnector, MapsSuggestionsSourceDelegate, MapsSuggestionsVirtualGarageConnector;
+@class MapsSuggestionsBiome, MapsSuggestionsContacts, MapsSuggestionsEventKit, MapsSuggestionsFlightUpdater, MapsSuggestionsMapsSync, MapsSuggestionsPortrait, MapsSuggestionsRoutine, MapsSuggestionsShortcutManager, MapsSuggestionsUser, MapsSuggestionsVirtualGarage, _TtC15MapsSuggestions21MapsSuggestionsFindMy, _TtC15MapsSuggestions30MapsSuggestionsContactActivity;
+@protocol MapsSuggestionsBiomeConnector, MapsSuggestionsContactsConnector, MapsSuggestionsEventKitConnector, MapsSuggestionsFindMyConnector, MapsSuggestionsFlightRequester, MapsSuggestionsInsights, MapsSuggestionsMapsSyncConnector, MapsSuggestionsNetworkRequester, MapsSuggestionsPortraitConnector, MapsSuggestionsRoutineConnector, MapsSuggestionsSourceDelegate, MapsSuggestionsVirtualGarageConnector;
 
 @protocol MapsSuggestionsFullResourceDepot <MapsSuggestionsInternalResourceDepot>
 - (void)setOneFlightUpdater:(MapsSuggestionsFlightUpdater *)arg1;
@@ -17,6 +17,11 @@
 - (void)setOneFavorites:(MapsSuggestionsShortcutManager *)arg1;
 - (void)setOneVirtualGarage:(MapsSuggestionsVirtualGarage *)arg1;
 - (void)setOneVirtualGarageConnector:(id <MapsSuggestionsVirtualGarageConnector>)arg1;
+- (void)setOneContactActivity:(_TtC15MapsSuggestions30MapsSuggestionsContactActivity *)arg1;
+- (void)setOneFindMy:(_TtC15MapsSuggestions21MapsSuggestionsFindMy *)arg1;
+- (void)setOneFindMyConnector:(id <MapsSuggestionsFindMyConnector>)arg1;
+- (void)setOneBiome:(MapsSuggestionsBiome *)arg1;
+- (void)setOneBiomeConnector:(id <MapsSuggestionsBiomeConnector>)arg1;
 - (void)setOnePortrait:(MapsSuggestionsPortrait *)arg1;
 - (void)setOnePortraitConnector:(id <MapsSuggestionsPortraitConnector>)arg1;
 - (void)setOneContacts:(MapsSuggestionsContacts *)arg1;

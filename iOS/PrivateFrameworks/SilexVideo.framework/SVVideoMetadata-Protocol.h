@@ -6,7 +6,10 @@
 
 #import <SilexVideo/NSObject-Protocol.h>
 
+@class NSURL;
+
 @protocol SVVideoMetadata <NSObject>
+@property(readonly, nonatomic) NSURL *videoURL;
 @property(readonly, nonatomic) unsigned long long playbackState;
 @property(readonly, nonatomic) struct CGSize naturalSize;
 @property(readonly, nonatomic) double volume;

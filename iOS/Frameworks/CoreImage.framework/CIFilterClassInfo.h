@@ -17,6 +17,8 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)classInfoForClass:(Class)arg1;
++ (void)clearCache;
++ (id)cache;
 - (id)outputKeys;
 - (id)inputClasses;
 - (id)inputKeys;

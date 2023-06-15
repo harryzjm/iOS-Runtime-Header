@@ -11,5 +11,7 @@
 + (id)vk_menuWithItems:(id)arg1 title:(id)arg2 subtitle:(id)arg3;
 + (id)vk_menuWithItems:(id)arg1 title:(id)arg2;
 - (id)vk_addItems:(id)arg1;
+- (id)vk_addNonNilItem:(id)arg1;
+- (id)vk_addNonNilItems:(id)arg1;
 @end
 

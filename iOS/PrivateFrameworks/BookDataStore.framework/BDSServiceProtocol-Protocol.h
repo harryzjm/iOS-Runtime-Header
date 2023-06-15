@@ -18,13 +18,16 @@
 #import <BookDataStore/BDSBookWidgetInfoService-Protocol.h>
 #import <BookDataStore/BDSBookWidgetReadingHistoryServiceProtocol-Protocol.h>
 #import <BookDataStore/BDSCloudKitSupportSignOut-Protocol.h>
+#import <BookDataStore/BDSCloudSyncDiagnosticServiceProtocol-Protocol.h>
 #import <BookDataStore/BDSJaliscoDAAPClientService-Protocol.h>
 #import <BookDataStore/BDSNBPinningManagerService-Protocol.h>
 #import <BookDataStore/BDSReadingDataMigrationService-Protocol.h>
 #import <BookDataStore/BDSReadingGoalsServiceProtocol-Protocol.h>
 #import <BookDataStore/BDSReadingHistoryServiceProtocol-Protocol.h>
+#import <BookDataStore/BDSSecureEngagementManaging-Protocol.h>
+#import <BookDataStore/BDSServiceNotificationMonitoring-Protocol.h>
 
-@protocol BDSServiceProtocol <BCCloudAssetDetailManager, BCCloudReadingNowDetailManager, BCCloudAssetReviewManager, BCCloudStoreAssetManager, BCCloudCollectionDetailManager, BCCloudCollectionMemberManager, BCCloudKitSyncEnablement, BDSCloudKitSupportSignOut, BCCloudKitTransactionManagerService, BDSJaliscoDAAPClientService, BDSNBPinningManagerService, BDSReadingGoalsServiceProtocol, BDSReadingHistoryServiceProtocol, BDSBookWidgetInfoManagerService, BCCloudSecureUserDataManager, BDSReadingDataMigrationService, BDSBookWidgetDataService, BDSBookWidgetInfoService, BDSBookWidgetReadingHistoryServiceProtocol>
+@protocol BDSServiceProtocol <BCCloudAssetDetailManager, BCCloudReadingNowDetailManager, BCCloudAssetReviewManager, BCCloudStoreAssetManager, BCCloudCollectionDetailManager, BCCloudCollectionMemberManager, BCCloudKitSyncEnablement, BDSCloudKitSupportSignOut, BCCloudKitTransactionManagerService, BDSJaliscoDAAPClientService, BDSServiceNotificationMonitoring, BDSNBPinningManagerService, BDSCloudSyncDiagnosticServiceProtocol, BDSReadingGoalsServiceProtocol, BDSReadingHistoryServiceProtocol, BCCloudSecureUserDataManager, BDSReadingDataMigrationService, BDSSecureEngagementManaging, BDSBookWidgetDataService, BDSBookWidgetInfoService, BDSBookWidgetInfoManagerService, BDSBookWidgetReadingHistoryServiceProtocol>
 - (void)audiobookStoreEnabledWithCompletion:(void (^)(NSNumber *, NSError *))arg1;
 @end
 

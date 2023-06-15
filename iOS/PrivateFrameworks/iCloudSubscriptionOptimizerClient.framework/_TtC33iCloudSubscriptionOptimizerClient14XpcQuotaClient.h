@@ -15,6 +15,8 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+- (void)logFailsafeEvent:(id)arg1;
+- (id)failsafeDelayedOfferJsonContext;
 - (id)parseDelayedOfferFromJson:(id)arg1;
 - (id)parseDelayedOffer:(id)arg1;
 - (void)clearNotificationState:(CDUnknownBlockType)arg1;

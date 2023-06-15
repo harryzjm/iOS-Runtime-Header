@@ -42,7 +42,9 @@ __attribute__((visibility("hidden")))
 - (id)playable;
 - (id)subtitleButton;
 - (id)button;
+- (void)updateTextStack;
 - (void)_buildViewsForCaptionBarIfNeeded;
+- (void)setPresentationProperties:(id)arg1;
 - (struct CGSize)_layoutCaptionBarForSize:(struct CGSize)arg1 applyingLayout:(_Bool)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)layoutComponentView;

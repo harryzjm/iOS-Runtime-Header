@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <XCTestCore/XCTMessagingRole_AttachmentFutureResultStatusUpdating-Protocol.h>
 #import <XCTestCore/XCTMessagingRole_CrashReporting-Protocol.h>
 #import <XCTestCore/XCTMessagingRole_DebugLogging-Protocol.h>
 #import <XCTestCore/XCTMessagingRole_SelfDiagnosisIssueReporting-Protocol.h>
 #import <XCTestCore/_XCTMessaging_VoidProtocol-Protocol.h>
 
-@protocol XCTMessagingChannel_DaemonToIDE <XCTMessagingRole_DebugLogging, XCTMessagingRole_SelfDiagnosisIssueReporting, XCTMessagingRole_CrashReporting, _XCTMessaging_VoidProtocol>
+@protocol XCTMessagingChannel_DaemonToIDE <XCTMessagingRole_DebugLogging, XCTMessagingRole_SelfDiagnosisIssueReporting, XCTMessagingRole_CrashReporting, XCTMessagingRole_AttachmentFutureResultStatusUpdating, _XCTMessaging_VoidProtocol>
 
 @optional
 - (void)__dummy_method_to_work_around_68987191;

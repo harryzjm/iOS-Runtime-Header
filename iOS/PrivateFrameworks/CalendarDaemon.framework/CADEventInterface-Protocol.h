@@ -8,7 +8,6 @@
 
 @protocol CADEventInterface
 - (void)CADDatabaseGetTTLLocationAuthorizationStatus:(void (^)(int, unsigned long long))arg1;
-- (void)CADDatabaseGetAttachmentUUIDWithExternalID:(NSString *)arg1 store:(CADObjectID *)arg2 reply:(void (^)(int, NSString *))arg3;
 - (void)CADDatabaseGetAttachmentWithUUID:(NSString *)arg1 reply:(void (^)(int, CADObjectID *))arg2;
 - (void)CADDatabaseShouldPermitOrganizerPhoneNumberFromJunkChecks:(NSString *)arg1 reply:(void (^)(int, _Bool))arg2;
 - (void)CADDatabaseShouldPermitOrganizerEmailFromJunkChecks:(NSString *)arg1 reply:(void (^)(int, _Bool))arg2;
@@ -22,14 +21,19 @@
 - (void)CADOccurrenceCacheGetOccurrenceCountsForCalendars:(NSArray *)arg1 reply:(void (^)(int, NSArray *))arg2;
 - (void)CADDatabaseRemoveSuggestedEventCalendarWithReply:(void (^)(int))arg1;
 - (void)CADDatabaseInsertSuggestedEventCalendarWithReply:(void (^)(int))arg1;
+- (void)CADDatabaseGetSourceIdentifierForEventWithObjectID:(CADObjectID *)arg1 reply:(void (^)(int, NSString *))arg2;
 - (void)CADDatabaseCanModifySuggestedEventCalendar:(void (^)(int, _Bool))arg1;
 - (void)CADDatabaseGetNaturalLanguageSuggestedEventCalendarWithReply:(void (^)(int, CADObjectID *))arg1;
 - (void)CADDatabaseGetSuggestedEventCalendarWithReply:(void (^)(int, CADObjectID *))arg1;
+- (void)CADDatabaseSetBirthdayCalendarVersion:(int)arg1 withReply:(void (^)(int))arg2;
+- (void)CADDatabaseGetBirthdayCalendarVersionWithReply:(void (^)(int, int))arg1;
 - (void)CADDatabaseSetBirthdayCalendarEnabled:(_Bool)arg1 withReply:(void (^)(int))arg2;
 - (void)CADDatabaseGetBirthdayCalendarEnabledWithReply:(void (^)(int, _Bool))arg1;
 - (void)CADDatabaseGetAllEventsWithUniqueID:(NSString *)arg1 reply:(void (^)(int, NSArray *))arg2;
 - (void)CADDatabaseGetEventWithUniqueID:(NSString *)arg1 reply:(void (^)(int, CADObjectID *))arg2;
 - (void)CADDatabaseGetEventWithEventIdentifier:(NSString *)arg1 reply:(void (^)(int, CADObjectID *))arg2;
+- (void)CADDatabaseIsCurrentProcessCreatorOfEventWithObjectID:(CADObjectID *)arg1 reply:(void (^)(_Bool))arg2;
+- (void)CADDatabaseGetCreatorTeamIdentifierForEventWithObjectID:(CADObjectID *)arg1 reply:(void (^)(int, NSString *))arg2;
 - (void)CADDatabaseSetDefaultCalendarForNewEvents:(CADObjectID *)arg1 delegateSource:(CADObjectID *)arg2 reply:(void (^)(int))arg3;
 - (void)CADDatabaseGetDefaultCalendarForNewEventsInDelegateSource:(CADObjectID *)arg1 withReply:(void (^)(int, CADObjectID *))arg2;
 - (void)CADDatabaseGetOrCreateBirthdayCalendar:(void (^)(int, CADObjectID *))arg1;

@@ -6,9 +6,9 @@
 
 #import <TextRecognition/NSObject-Protocol.h>
 
-@class CRTextFeature;
+@class CRDetectedLineRegion;
 
 @protocol CRTextRecognizerFeatureInfo <NSObject>
-@property(retain) CRTextFeature *textFeature;
+@property(retain) CRDetectedLineRegion *lineRegion;
 @end
 

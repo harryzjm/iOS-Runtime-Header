@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
     unsigned long long _dataType;
 }
 
+- (_Bool)isEqual:(id)arg1;
 - (id)description;
 - (id)formattedDescription:(unsigned long long)arg1;
 - (unsigned long long)dataType;

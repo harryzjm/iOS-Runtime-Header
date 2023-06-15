@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 + (id)validKeyPaths;
 + (id)streamNames;
 + (id)identifier;
++ (id)Clip;
 + (id)configurationForRelevantShortcuts;
 + (id)syncPolicyForRelevantShortcuts;
 + (id)storeConfigurationForRelevantShortcuts;
@@ -25,9 +26,29 @@ __attribute__((visibility("hidden")))
 + (id)configurationForActivity;
 + (id)syncPolicyForActivity;
 + (id)storeConfigurationForActivity;
++ (id)configurationForMediaUsage;
++ (id)syncPolicyForMediaUsage;
++ (id)storeConfigurationForMediaUsage;
++ (id)configurationForIntent;
++ (id)syncPolicyForIntent;
++ (id)storeConfigurationForIntent;
++ (id)configurationForWebUsage;
++ (id)syncPolicyForWebUsage;
++ (id)storeConfigurationForWebUsage;
++ (id)configurationForContextualActions;
++ (id)syncPolicyForContextualActions;
++ (id)storeConfigurationForContextualActions;
++ (id)configurationForInFocus;
++ (id)syncPolicyForInFocus;
++ (id)storeConfigurationForInFocus;
 + (id)RelevantShortcuts;
 + (id)Install;
 + (id)Activity;
++ (id)MediaUsage;
++ (id)Intent;
++ (id)WebUsage;
++ (id)ContextualActions;
++ (id)InFocus;
 
 @end
 

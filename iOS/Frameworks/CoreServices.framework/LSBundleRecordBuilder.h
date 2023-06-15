@@ -70,6 +70,7 @@ __attribute__((visibility("hidden")))
     NSString *_sourceAppBundleID;
     NSString *_appVariant;
     NSMutableSet *_counterpartAppBundleIDs;
+    NSMutableSet *_equivalentBundleIDs;
     NSArray *_parentApplicationIdentifiers;
     NSString *_watchKitVersion;
     NSString *_complicationPrincipalClass;
@@ -111,7 +112,6 @@ __attribute__((visibility("hidden")))
     NSDictionary *_localizedIdentityUsageDescription;
     NSDictionary *_localizedStrings;
     NSDictionary *_unlocalizedNamesWithContext;
-    NSArray *_managedPersonas;
     NSNumber *_directoryClass;
     NSDictionary *_mobileInstallIDs;
     NSArray *_slices;
@@ -129,7 +129,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSArray *slices; // @synthesize slices=_slices;
 @property(readonly) NSDictionary *mobileInstallIDs; // @synthesize mobileInstallIDs=_mobileInstallIDs;
 @property(readonly, nonatomic) NSNumber *directoryClass; // @synthesize directoryClass=_directoryClass;
-@property(readonly, nonatomic) NSArray *managedPersonas; // @synthesize managedPersonas=_managedPersonas;
 @property(readonly, nonatomic) NSDictionary *unlocalizedNamesWithContext; // @synthesize unlocalizedNamesWithContext=_unlocalizedNamesWithContext;
 @property(readonly, nonatomic) NSDictionary *localizedStrings; // @synthesize localizedStrings=_localizedStrings;
 @property(readonly, nonatomic) NSDictionary *localizedIdentityUsageDescription; // @synthesize localizedIdentityUsageDescription=_localizedIdentityUsageDescription;
@@ -172,6 +171,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSString *complicationPrincipalClass; // @synthesize complicationPrincipalClass=_complicationPrincipalClass;
 @property(readonly, nonatomic) NSString *watchKitVersion; // @synthesize watchKitVersion=_watchKitVersion;
 @property(readonly, nonatomic) NSArray *parentApplicationIdentifiers; // @synthesize parentApplicationIdentifiers=_parentApplicationIdentifiers;
+@property(readonly, nonatomic) NSMutableSet *equivalentBundleIDs; // @synthesize equivalentBundleIDs=_equivalentBundleIDs;
 @property(readonly, nonatomic) NSMutableSet *counterpartAppBundleIDs; // @synthesize counterpartAppBundleIDs=_counterpartAppBundleIDs;
 @property(readonly, nonatomic) NSString *appVariant; // @synthesize appVariant=_appVariant;
 @property(readonly, nonatomic) NSString *sourceAppBundleID; // @synthesize sourceAppBundleID=_sourceAppBundleID;
@@ -221,6 +221,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)parseInstallationInfo:(id)arg1;
 - (_Bool)parseInfoPlist:(id)arg1;
 - (void)parseURLClaimsFromDict:(id)arg1;
+- (void)parseDocumentClaimsFromDict:(id)arg1;
 - (void)parseDeviceFamilyFromDict:(id)arg1;
 - (void)parseIconFilenamesFromDict:(id)arg1;
 - (id)iconsDictionaryFromDict:(id)arg1;

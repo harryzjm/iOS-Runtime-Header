@@ -19,6 +19,7 @@
 @property(readonly, nonatomic, getter=isVolumeControlAvailable) _Bool volumeControlAvailable;
 @property(readonly, copy, nonatomic) NSString *volumeControlLabel;
 @property(readonly, nonatomic) _Bool applicationShouldOverrideHardwareVolumeBehavior;
+@property(readonly, copy, nonatomic) NSString *volumeAudioCategory;
 @property(nonatomic) __weak id <MPVolumeControllerDataSourceDelegate> delegate;
 - (void)getVolumeValueWithCompletion:(void (^)(float))arg1;
 - (void)reload;

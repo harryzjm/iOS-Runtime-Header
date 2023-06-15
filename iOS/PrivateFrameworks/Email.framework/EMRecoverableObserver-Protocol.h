@@ -9,7 +9,7 @@
 @class EMRemoteConnection;
 
 @protocol EMRecoverableObserver <EFCancelable>
-- (void)recoverQueryWithRemoteConnection:(EMRemoteConnection *)arg1;
-- (void)performQueryWithRemoteConnection:(EMRemoteConnection *)arg1;
+- (void)recoverWithRemoteConnection:(EMRemoteConnection *)arg1;
+- (void)performWithRemoteConnection:(EMRemoteConnection *)arg1;
 @end
 

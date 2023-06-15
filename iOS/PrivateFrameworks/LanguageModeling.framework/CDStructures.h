@@ -18,13 +18,14 @@ struct basic_string<char, std::char_traits<char>, std::allocator<char>> {
                 struct __long {
                     char *_field1;
                     unsigned long long _field2;
-                    unsigned long long _field3;
+                    unsigned int :63;
+                    unsigned int :1;
                 } _field1;
                 struct __short {
                     char _field1[23];
-                    struct {
-                        unsigned char _field1;
-                    } _field2;
+                    unsigned char _field2[0];
+                    unsigned int :7;
+                    unsigned int :1;
                 } _field2;
                 struct __raw {
                     unsigned long long _field1[3];
@@ -42,14 +43,14 @@ struct function<void (const std::string &, const std::optional<LM::TrialParamete
 };
 
 struct map<std::string, std::string, std::less<std::string>, std::allocator<std::pair<const std::string, std::string>>> {
-    struct __tree<std::__value_type<std::string, std::string>, std::__map_value_compare<std::string, std::__value_type<std::string, std::string>, std::less<std::string>, true>, std::allocator<std::__value_type<std::string, std::string>>> {
+    struct __tree<std::__value_type<std::string, std::string>, std::__map_value_compare<std::string, std::__value_type<std::string, std::string>, std::less<std::string>>, std::allocator<std::__value_type<std::string, std::string>>> {
         void *_field1;
         struct __compressed_pair<std::__tree_end_node<std::__tree_node_base<void *>*>, std::allocator<std::__tree_node<std::__value_type<std::string, std::string>, void *>>> {
             struct __tree_end_node<std::__tree_node_base<void *>*> {
                 void *_field1;
             } _field1;
         } _field2;
-        struct __compressed_pair<unsigned long, std::__map_value_compare<std::string, std::__value_type<std::string, std::string>, std::less<std::string>, true>> {
+        struct __compressed_pair<unsigned long, std::__map_value_compare<std::string, std::__value_type<std::string, std::string>, std::less<std::string>>> {
             unsigned long long _field1;
         } _field3;
     } _field1;
@@ -87,5 +88,5 @@ typedef struct optional<LM::TrialParameters> {
         struct TrialParameters _field2;
     } _field1;
     _Bool _field2;
-} optional_a0dbb3b7;
+} optional_84d43732;
 

@@ -23,14 +23,13 @@ __attribute__((visibility("hidden")))
     _Bool _isWaitingForTransferBatch;
     _Bool _hasReachedCap;
     _Atomic int _multipleItemsInteractiveSchedulingCount;
+    unsigned long long _maxCountOfBatchesInFlight;
     _Bool _isCancelled;
     CDUnknownBlockType _streamDidBecomeReadyToTransferRecords;
-    unsigned long long _maxCountOfBatchesInFlight;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long inFlightSize; // @synthesize inFlightSize=_inFlightSize;
-@property(nonatomic) unsigned long long maxCountOfBatchesInFlight; // @synthesize maxCountOfBatchesInFlight=_maxCountOfBatchesInFlight;
 @property(readonly, nonatomic) _Bool isCancelled; // @synthesize isCancelled=_isCancelled;
 @property(copy, nonatomic) CDUnknownBlockType streamDidBecomeReadyToTransferRecords; // @synthesize streamDidBecomeReadyToTransferRecords=_streamDidBecomeReadyToTransferRecords;
 - (void)suspend;
@@ -51,7 +50,7 @@ __attribute__((visibility("hidden")))
 - (void)_setReachedCap:(_Bool)arg1;
 - (void)signal;
 - (void)signalWithDeadline:(long long)arg1;
-- (id)initWithSyncContext:(id)arg1 name:(id)arg2 scheduler:(id)arg3;
+- (id)initWithSyncContext:(id)arg1 name:(id)arg2 scheduler:(id)arg3 maxCountOfBatchesInFlight:(unsigned long long)arg4;
 @property(readonly) NSArray *operations;
 
 // Remaining properties

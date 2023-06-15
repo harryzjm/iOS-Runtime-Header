@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UICollectionViewDiffableDataSource.h>
+#import <UIKitCore/UICollectionViewDiffableDataSource.h>
 
 @interface UICollectionViewDiffableDataSource (IC)
 - (id)ic_sortedIndexPathsOfItemIdentifiers:(id)arg1;

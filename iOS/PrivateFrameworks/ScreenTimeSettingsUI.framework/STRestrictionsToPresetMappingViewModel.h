@@ -6,23 +6,22 @@
 
 #import <objc/NSObject.h>
 
-@protocol STContentPrivacyViewModelCoordinator;
+@protocol STRestrictionsDataSourceProtocol;
 
 __attribute__((visibility("hidden")))
 @interface STRestrictionsToPresetMappingViewModel : NSObject
 {
-    NSObject<STContentPrivacyViewModelCoordinator> *_contentPrivacyCoordinator;
+    id <STRestrictionsDataSourceProtocol> _restrictionsDataSource;
 }
 
 + (id)boolPresetKeys;
 + (id)presetKeys;
 - (void).cxx_destruct;
-@property(retain) NSObject<STContentPrivacyViewModelCoordinator> *contentPrivacyCoordinator; // @synthesize contentPrivacyCoordinator=_contentPrivacyCoordinator;
-- (id)_keyFromRestrictionItem:(id)arg1;
+@property(retain) id <STRestrictionsDataSourceProtocol> restrictionsDataSource; // @synthesize restrictionsDataSource=_restrictionsDataSource;
 - (id)_restrictionsWithValuesByRestriction:(id)arg1 presetKeys:(id)arg2;
 - (id)_presetForValuesByRestriction:(id)arg1;
 - (void)loadPresetMatchingCurrentRestrictionsWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (id)initWithContentPrivacyCoordinator:(id)arg1;
+- (id)initWithRestrictionsDataSource:(id)arg1;
 
 @end
 

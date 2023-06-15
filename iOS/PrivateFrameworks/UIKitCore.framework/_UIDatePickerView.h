@@ -122,6 +122,7 @@ __attribute__((visibility("hidden")))
 - (id)_labelForCalendarUnit:(unsigned long long)arg1 createIfNecessary:(_Bool)arg2;
 - (void)_UIAppearance_setTextColor:(id)arg1;
 @property(retain, nonatomic, getter=_textColor, setter=_setTextColor:) UIColor *textColor;
+- (void)_removeUnitLabels;
 - (void)_updateLabelColors;
 - (void)_updateLabels:(_Bool)arg1;
 - (_Bool)_updatedLastSelectedComponentsByValidatingSelectedDateWithLastManipulatedComponent:(long long)arg1;

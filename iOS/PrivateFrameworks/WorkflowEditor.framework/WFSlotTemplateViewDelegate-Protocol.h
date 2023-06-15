@@ -12,6 +12,7 @@
 @protocol WFSlotTemplateViewDelegate <NSObject>
 
 @optional
+- (void)slotTemplateView:(WFSlotTemplateView *)arg1 outputButtonDidChange:(_Bool)arg2;
 - (void)slotTemplateView:(WFSlotTemplateView *)arg1 disclosureArrowDidChange:(_Bool)arg2;
 - (void)slotTemplateViewTintColorDidChange:(WFSlotTemplateView *)arg1;
 - (void)slotTemplateViewDidInvalidateSize:(WFSlotTemplateView *)arg1;

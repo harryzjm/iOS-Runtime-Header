@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSSet *allowedSourceIdentifiers; // @synthesize allowedSourceIdentifiers=_allowedSourceIdentifiers;
-- (_Bool)isActionAllowed:(unsigned long long)arg1 forStore:(const void *)arg2 inDatabase:(struct CalDatabase *)arg3;
+- (_Bool)isActionAllowed:(unsigned long long)arg1 forStore:(void *)arg2 inDatabase:(struct CalDatabase *)arg3;
 - (id)initWithAllowedSourceIdentifiers:(id)arg1 databaseDataProvider:(id)arg2;
 
 @end

@@ -13,6 +13,7 @@
 @optional
 - (void)signOutFlowController:(AASignOutFlowController *)arg1 signOutAccount:(ACAccount *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 - (void)signOutFlowController:(AASignOutFlowController *)arg1 disableFindMyDeviceForAccount:(ACAccount *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
+- (void)signOutFlowController:(AASignOutFlowController *)arg1 performWalrusValidationForAccount:(ACAccount *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 - (void)signOutFlowController:(AASignOutFlowController *)arg1 showAlertWithTitle:(NSString *)arg2 message:(NSString *)arg3 completion:(void (^)(_Bool))arg4;
 @end
 

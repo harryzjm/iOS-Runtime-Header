@@ -6,17 +6,19 @@
 
 #import <MusicCarDisplayUI/NSObject-Protocol.h>
 
-@class MPCPlayerResponse, MPModelObject, NSError, NSString, UIViewController, _MCDNowPlayingContentManager;
+@class MPCPlayerResponse, MPModelObject, NSArray, NSError, NSString, UIViewController, _MCDNowPlayingContentManager;
 
 @protocol MCDNowPlayingContentManagerDelegate <NSObject>
 
 @optional
+- (void)contentManager:(_MCDNowPlayingContentManager *)arg1 setAdditionalBarButtonItems:(NSArray *)arg2;
 - (void)contentManager:(_MCDNowPlayingContentManager *)arg1 itemDidChange:(MPModelObject *)arg2 response:(MPCPlayerResponse *)arg3;
 - (void)contentManager:(_MCDNowPlayingContentManager *)arg1 sectionName:(NSString *)arg2;
 - (void)contentManagerCompletedAllPlayback:(_MCDNowPlayingContentManager *)arg1;
 - (void)contentManager:(_MCDNowPlayingContentManager *)arg1 displayItemIndex:(long long)arg2 totalItemCount:(long long)arg3;
 - (void)contentManagerInitiatedPlaybackFromPlaybackQueue:(_MCDNowPlayingContentManager *)arg1;
 - (void)contentManager:(_MCDNowPlayingContentManager *)arg1 bufferingItem:(_Bool)arg2;
+- (void)contentManager:(_MCDNowPlayingContentManager *)arg1 pushViewController:(UIViewController *)arg2;
 - (void)contentManager:(_MCDNowPlayingContentManager *)arg1 presentViewController:(UIViewController *)arg2;
 - (void)contentManagerReloadData:(_MCDNowPlayingContentManager *)arg1;
 - (void)contentManager:(_MCDNowPlayingContentManager *)arg1 shouldShowPlaybackQueue:(_Bool)arg2;

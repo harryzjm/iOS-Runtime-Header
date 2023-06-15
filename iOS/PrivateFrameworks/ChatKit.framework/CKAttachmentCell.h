@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UICollectionViewCell.h>
+#import <UIKitCore/UICollectionViewCell.h>
 
 @class CKAnimatedImage, CKAttachmentItem, NSArray, NSObject, NSString, UIImage, UIImageView, UITapGestureRecognizer;
 @protocol CKAttachmentCellDelegate;
@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 {
     _Bool _editing;
     _Bool _isIrisAsset;
+    _Bool _userExplicitlyUnpausedAnimation;
     UIImage *_image;
     CKAnimatedImage *_animatedImage;
     UIImageView *_checkmarkView;
@@ -28,6 +29,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIImageView *irisBadgeView; // @synthesize irisBadgeView=_irisBadgeView;
 @property(retain, nonatomic) UITapGestureRecognizer *tapRecognizer; // @synthesize tapRecognizer=_tapRecognizer;
 @property(copy, nonatomic) NSArray *frames; // @synthesize frames=_frames;
+@property(nonatomic) _Bool userExplicitlyUnpausedAnimation; // @synthesize userExplicitlyUnpausedAnimation=_userExplicitlyUnpausedAnimation;
 @property(nonatomic) _Bool isIrisAsset; // @synthesize isIrisAsset=_isIrisAsset;
 @property(nonatomic, getter=isEditing) _Bool editing; // @synthesize editing=_editing;
 @property(retain, nonatomic) CKAttachmentItem *representedObject; // @synthesize representedObject=_representedObject;
@@ -36,9 +38,11 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) CKAnimatedImage *animatedImage; // @synthesize animatedImage=_animatedImage;
 @property(retain, nonatomic) UIImage *image; // @synthesize image=_image;
 - (_Bool)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
-- (void)animationTimerFired:(unsigned long long)arg1;
+- (void)animationTimerFired:(double)arg1;
+- (_Bool)animationExplicitlyResumed;
 - (void)updateAnimationTimerObserving;
 - (struct CGImage *)_cgImageForUIImage:(id)arg1;
+- (void)setIsMonoskiAsset:(_Bool)arg1;
 @property(retain, nonatomic) UIImage *iconImage;
 - (void)saveAttachment:(id)arg1;
 - (void)more:(id)arg1;

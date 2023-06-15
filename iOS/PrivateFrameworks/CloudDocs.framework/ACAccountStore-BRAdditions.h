@@ -9,6 +9,7 @@
 @interface ACAccountStore (BRAdditions)
 - (void)invalidateAccountForPersonaCache;
 - (id)br_accountForPersona:(id)arg1;
+- (id)br_allEnabledAppleAccountsIncludingDataSeparated:(_Bool)arg1;
 - (id)br_allEligibleAppleAccounts;
 - (id)br_accountForCurrentPersona;
 - (id)br_appleAccountWithPersonID:(id)arg1;

@@ -21,5 +21,8 @@
 - (void)avkit_startRoutingVideoToPictureInPictureViewController:(AVPictureInPictureViewController *)arg1;
 - (AVPictureInPictureViewController *)avkit_pictureInPictureViewController;
 - (AVPlayerController *)avkit_makePlayerControllerIfNeeded:(AVPlayerController *)arg1;
+
+@optional
+- (_Bool)avkit_isFullScreen;
 @end
 

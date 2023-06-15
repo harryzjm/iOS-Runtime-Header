@@ -12,7 +12,6 @@
 {
     MISSING_TYPE *styler;
     MISSING_TYPE *moreActionsButtonRenderer;
-    MISSING_TYPE *shineImageFactory;
 }
 
 @end

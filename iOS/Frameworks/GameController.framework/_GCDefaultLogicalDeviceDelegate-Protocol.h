@@ -6,7 +6,7 @@
 
 #import <GameController/NSObject-Protocol.h>
 
-@class GCMotion, GCPhysicalInputProfile, NSArray, NSString, _GCControllerDescription, _GCDefaultLogicalDevice, _GCDevicePhysicalInputComponentDescription;
+@class GCMotion, GCPhysicalInputProfile, NSArray, NSString, _GCControllerDescription, _GCControllerInputComponentDescription, _GCDefaultLogicalDevice, _GCDevicePhysicalInputComponentDescription;
 @protocol NSObject><NSCopying><NSSecureCoding;
 
 @protocol _GCDefaultLogicalDeviceDelegate <NSObject>
@@ -15,8 +15,11 @@
 
 @optional
 - (_GCControllerDescription *)logicalDevice:(_GCDefaultLogicalDevice *)arg1 makeControllerForClient:(id)arg2;
+- (Class)logicalDeviceControllerDescriptionClass:(_GCDefaultLogicalDevice *)arg1;
 - (GCMotion *)logicalDevice:(_GCDefaultLogicalDevice *)arg1 makeControllerMotionWithIdentifier:(id <NSObject><NSCopying><NSSecureCoding>)arg2;
+- (_Bool)logicalDeviceControllerIsAttachedToHost:(_GCDefaultLogicalDevice *)arg1;
 - (NSString *)logicalDeviceControllerDetailedProductCategory:(_GCDefaultLogicalDevice *)arg1;
+- (_GCControllerInputComponentDescription *)logicalDevice:(_GCDefaultLogicalDevice *)arg1 makeControllerInputDescriptionWithIdentifier:(id <NSObject><NSCopying><NSSecureCoding>)arg2 bindings:(NSArray *)arg3;
 - (_GCDevicePhysicalInputComponentDescription *)logicalDevice:(_GCDefaultLogicalDevice *)arg1 makeControllerPhysicalInputProfileDescriptionWithIdentifier:(id <NSObject><NSCopying><NSSecureCoding>)arg2 bindings:(NSArray *)arg3;
 @end
 

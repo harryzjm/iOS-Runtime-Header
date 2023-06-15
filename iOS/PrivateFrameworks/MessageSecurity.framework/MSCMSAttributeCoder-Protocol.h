@@ -4,10 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MSCMSAttribute;
+@class MSCMSAttribute, MSOID;
 @protocol MSCMSAttributeCoder;
 
 @protocol MSCMSAttributeCoder
+@property(readonly, retain) MSOID *attributeType;
 - (_Bool)isKindOfClass:(Class)arg1;
 - (MSCMSAttribute *)encodeAttributeWithError:(id *)arg1;
 - (id <MSCMSAttributeCoder>)initWithAttribute:(MSCMSAttribute *)arg1 error:(id *)arg2;

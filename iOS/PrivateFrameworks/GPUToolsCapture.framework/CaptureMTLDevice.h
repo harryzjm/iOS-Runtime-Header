@@ -6,10 +6,9 @@
 
 #import <objc/NSObject.h>
 
-@class GTResourceDownloader, MTLArchitecture, MTLGPUBVHBuilder, MTLTargetDeviceArchitecture, NSArray, NSDictionary, NSMapTable, NSMutableArray, NSString;
-@protocol MTLArgumentEncoder, MTLComputePipelineState, MTLDevice, MTLDeviceSPI, MTLFunction, MTLRenderPipelineState, OS_dispatch_group;
+@class GTResourceDownloader, MTLArchitecture, MTLGPUBVHBuilder, MTLSharedEventListener, MTLTargetDeviceArchitecture, NSArray, NSDictionary, NSMapTable, NSMutableArray, NSString;
+@protocol MTLArgumentEncoder, MTLComputePipelineState, MTLDevice, MTLDeviceSPI, MTLFunction, MTLRenderPipelineState, OS_dispatch_group, OS_dispatch_queue;
 
-__attribute__((visibility("hidden")))
 @interface CaptureMTLDevice : NSObject
 {
     id <MTLDeviceSPI> _baseObject;
@@ -26,6 +25,8 @@ __attribute__((visibility("hidden")))
     id <MTLComputePipelineState> _computePipelineCopyBuffer;
     GTResourceDownloader *_downloader;
     long long _downloaderOnceToken;
+    NSObject<OS_dispatch_queue> *_eventQueue;
+    MTLSharedEventListener *_eventListener;
     id <MTLArgumentEncoder> _dummyArgumentEncoder;
     long long _dummyArgEncOnceToken;
     _Bool isArgumentBufferPatchingTypeIndexed[9];
@@ -45,22 +46,19 @@ __attribute__((visibility("hidden")))
     struct os_unfair_lock_s _cachedSamplerStateLock;
     _Bool _bufferPinningEnabled;
     _Bool _isBaseObjectDebugDevice;
-    _Bool _disableHeapTextureCompression;
-    _Bool _captureASExtraBuffers;
     _Bool _captureRaytracingEnabled;
     struct GTResourceHarvester *_harvester;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) struct GTResourceHarvester *harvester; // @synthesize harvester=_harvester;
+- (CDStruct_4bcfbbae)heapTextureSizeAndAlignWithDescriptor:(id)arg1;
 - (id)newAccelerationStructureWithBuffer:(id)arg1 offset:(unsigned long long)arg2 resourceIndex:(unsigned long long)arg3;
 - (id)newAccelerationStructureWithBuffer:(id)arg1 offset:(unsigned long long)arg2;
 - (id)newHeapWithDescriptor:(id)arg1;
 - (id)newSamplerStateWithDescriptor:(id)arg1;
 - (id)newDepthStencilStateWithDescriptor:(id)arg1;
 - (void)reserveResourceIndicesForResourceType:(unsigned long long)arg1 indices:(unsigned long long *)arg2 indexCount:(unsigned long long)arg3;
-@property(readonly) unsigned long long maxIOCommandsInFlight;
-- (id)newIOHandleWithURL:(id)arg1 error:(id *)arg2;
 - (id)vendorName;
 - (_Bool)validateDynamicLibraryURL:(id)arg1 error:(id *)arg2;
 - (_Bool)validateDynamicLibraryDescriptor:(id)arg1 error:(id *)arg2;
@@ -84,19 +82,21 @@ __attribute__((visibility("hidden")))
 - (void)setRawBVHBuilderPtr:(id)arg1;
 - (void)setIndirectArgumentBufferDecodingData:(id)arg1;
 @property(getter=areGPUAssertionsEnabled, setter=setGPUAssertionsEnabled:) _Bool gpuAssertionsEnabled;
+- (id)serializeTileRenderPipelineDescriptor:(id)arg1;
 - (void)sampleTimestamps:(unsigned long long *)arg1 gpuTimestamp:(unsigned long long *)arg2;
 - (unsigned long long)resourcePatchingTypeForResourceType:(unsigned long long)arg1;
 - (_Bool)reserveGPUAddressRange:(struct _NSRange)arg1;
 - (id)productName;
 - (CDStruct_c0454aff)pipelineCacheStats;
 - (id)newVisibleFunctionTableWithDescriptor:(id)arg1;
+- (id)newTileRenderPipelineDescriptorWithSerializedData:(id)arg1 deserializationContext:(id)arg2;
 - (id)newTextureWithDescriptor:(id)arg1 iosurface:(struct __IOSurface *)arg2 plane:(unsigned long long)arg3;
 - (id)newTextureWithDescriptor:(id)arg1;
 - (id)newTextureWithBytesNoCopy:(void *)arg1 length:(unsigned long long)arg2 descriptor:(id)arg3 deallocator:(CDUnknownBlockType)arg4;
 - (id)newTextureLayoutWithDescriptor:(id)arg1 isHeapOrBufferBacked:(_Bool)arg2;
 - (id)newProfileWithExecutionSize:(unsigned long long)arg1;
+- (id)newPerformanceStateAssertion:(long long)arg1 error:(id *)arg2;
 - (id)newLibraryWithStitchedDescriptorSPI:(id)arg1 error:(id *)arg2;
-- (id)newLibraryWithStitchedDescriptor:(id)arg1 error:(id *)arg2;
 - (id)newLibraryWithDescriptorSPI:(id)arg1 error:(id *)arg2;
 - (id)newLibraryWithDescriptor:(id)arg1 error:(id *)arg2;
 - (id)newLibraryWithData:(id)arg1 error:(id *)arg2;
@@ -108,8 +108,6 @@ __attribute__((visibility("hidden")))
 - (id)newIndirectArgumentEncoderWithLayout:(id)arg1;
 - (id)newIndirectArgumentEncoderWithArguments:(id)arg1;
 - (id)newIndirectArgumentBufferLayoutWithStructType:(id)arg1;
-- (id)newIOHandleWithURL:(id)arg1 compressionMethod:(long long)arg2 error:(id *)arg3;
-- (id)newIOCommandQueueWithDescriptor:(id)arg1 error:(id *)arg2;
 - (id)newFence;
 - (id)newEvent;
 - (id)newDynamicLibraryWithURL:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
@@ -141,7 +139,6 @@ __attribute__((visibility("hidden")))
 - (CDStruct_c0454aff)libraryCacheStats;
 - (_Bool)isCompatibleWithAccelerationStructure:(CDStruct_c0454aff)arg1;
 - (id)indirectArgumentBufferDecodingData;
-- (CDStruct_4bcfbbae)heapTextureSizeAndAlignWithDescriptor:(id)arg1;
 - (CDStruct_4bcfbbae)heapBufferSizeAndAlignWithLength:(unsigned long long)arg1 options:(unsigned long long)arg2;
 - (CDStruct_4bcfbbae)heapAccelerationStructureSizeAndAlignWithSize:(unsigned long long)arg1;
 - (CDStruct_4bcfbbae)heapAccelerationStructureSizeAndAlignWithDescriptor:(id)arg1;
@@ -170,6 +167,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) unsigned long long sharedMemorySize;
 @property _Bool shaderDebugInfoCaching;
 @property(readonly) _Bool requiresRaytracingEmulation;
+@property(readonly) _Bool requiresBFloat16Emulation;
 @property(readonly) unsigned long long registryID;
 @property(readonly) unsigned long long readWriteTextureSupport;
 @property(readonly, getter=areRasterOrderGroupsSupported) _Bool rasterOrderGroupsSupported;
@@ -231,6 +229,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) unsigned long long maxColorAttachments;
 @property(readonly) unsigned long long maxBufferLength;
 @property(readonly) unsigned long long maxArgumentBufferSamplerCount;
+@property(readonly) unsigned long long maxAccelerationStructureTraversalDepth;
 @property(readonly) unsigned long long linearTextureArrayAlignmentSlice;
 @property(readonly) unsigned long long linearTextureArrayAlignmentBytes;
 @property(readonly) unsigned long long linearTextureAlignmentBytes;
@@ -248,13 +247,13 @@ __attribute__((visibility("hidden")))
 @property(readonly) unsigned long long deviceCreationFlags;
 @property(readonly) long long defaultTextureWriteRoundingMode;
 @property(readonly) unsigned long long dedicatedMemorySize;
+@property(readonly, nonatomic) long long currentPerformanceState;
 @property(readonly) unsigned long long currentAllocatedSize;
 @property(readonly) NSArray *counterSets;
 @property(nonatomic) unsigned long long commandBufferErrorOptions;
 @property(readonly) unsigned long long bufferRobustnessSupport;
 @property(readonly, getter=areBarycentricCoordsSupported) _Bool barycentricCoordsSupported;
 @property(readonly) unsigned long long argumentBuffersSupport;
-@property(readonly) MTLArchitecture *architecture;
 @property(readonly, getter=isRTZRoundingSupported) _Bool RTZRoundingSupported;
 @property(readonly, getter=isRGB10A2GammaSupported) _Bool RGB10A2GammaSupported;
 @property(readonly) MTLGPUBVHBuilder *GPUBVHBuilder;
@@ -269,13 +268,18 @@ __attribute__((visibility("hidden")))
 @property(readonly) struct GTTraceContext *traceContext;
 - (void)touch;
 - (id)originalObject;
+- (id)newArgumentEncoderWithBufferBinding:(id)arg1;
+- (id)newSharedEventWithOptions:(long long)arg1;
+- (id)newEventWithOptions:(long long)arg1;
 - (void)deserializeInstanceAccelerationStructure:(id)arg1 fromBytes:(const void *)arg2 primitiveAccelerationStructures:(id)arg3 withDescriptor:(id)arg4;
 - (void)deserializePrimitiveAccelerationStructure:(id)arg1 fromBytes:(const void *)arg2 withDescriptor:(id)arg3;
 - (void)compileVisibleFunction:(id)arg1 withDescriptor:(id)arg2 destinationBinaryArchive:(id)arg3 error:(id *)arg4;
 - (void)newLibraryWithStitchedDescriptor:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)newLibraryWithStitchedDescriptor:(id)arg1 error:(id *)arg2;
 - (void)newLibraryWithDescriptor:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)newDynamicLibrary:(id)arg1 error:(id *)arg2;
 - (id)newBufferWithDescriptor:(id)arg1;
+@property(readonly) unsigned long long maxAccelerationStructureLevels;
 @property(readonly) unsigned long long maxPredicatedNestingDepth;
 - (id)newIntersectionFunctionTableWithDescriptor:(id)arg1;
 - (id)loadDynamicLibrariesForFunction:(id)arg1 insertLibraries:(id)arg2 options:(unsigned long long)arg3 error:(id *)arg4;
@@ -301,7 +305,6 @@ __attribute__((visibility("hidden")))
 - (id)newPipelineLibraryWithFilePath:(id)arg1 error:(id *)arg2;
 - (void)_setDeviceWrapper:(id)arg1;
 - (id)_deviceWrapper;
-- (_Bool)setResourcesPurgeableState:(id *)arg1 newState:(unsigned long long)arg2 oldState:(unsigned long long *)arg3 count:(int)arg4;
 - (id)newResourceGroupFromResources:(const id *)arg1 count:(unsigned long long)arg2;
 - (id)newCounterSampleBufferWithDescriptor:(id)arg1 error:(id *)arg2;
 - (_Bool)supportsPrimitiveType:(unsigned long long)arg1;
@@ -339,14 +342,12 @@ __attribute__((visibility("hidden")))
 - (_Bool)respondsToSelector:(SEL)arg1;
 - (_Bool)conformsToProtocol:(id)arg1;
 - (void)dealloc;
-- (_Bool)captureADSExtraBuffers;
+@property(readonly, nonatomic) MTLSharedEventListener *captureEventListener;
 - (_Bool)captureRaytracingEnabled;
 - (_Bool)bufferPinningEnabled;
 - (void)purgeDeallocatedObjects;
 - (void)deallocateResource:(id)arg1;
 - (void)invalidateHarvester;
-- (_Bool)disableHeapTextureCompression;
-- (void)updateAssociatedFunction:(id)arg1;
 - (_Bool)newCaptureSamplerState:(out id *)arg1 associatedWithBaseSamplerState:(id)arg2;
 - (_Bool)newCaptureDepthStencilState:(out id *)arg1 associatedWithBaseDepthStencilState:(id)arg2;
 - (_Bool)newCaptureFunction:(out id *)arg1 associatedWithBaseFunction:(id)arg2 captureLibrary:(id)arg3;
@@ -374,6 +375,7 @@ __attribute__((visibility("hidden")))
 
 // Remaining properties
 @property(readonly, getter=isAnisoSampleFixSupported) _Bool AnisoSampleFixSupported;
+@property(readonly) MTLArchitecture *architecture;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, getter=isDepth24Stencil8PixelFormatSupported) _Bool depth24Stencil8PixelFormatSupported;
 @property(readonly) _Bool hasUnifiedMemory;
@@ -399,9 +401,11 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool supportsArgumentBuffersTier2;
 @property(readonly, nonatomic) _Bool supportsArrayOfSamplers;
 @property(readonly, nonatomic) _Bool supportsArrayOfTextures;
+@property(readonly, nonatomic) _Bool supportsAtomicUlongVoidMinMax;
 @property(readonly, nonatomic) _Bool supportsBCTextureCompression;
 @property(readonly, nonatomic) _Bool supportsBGR10A2;
 @property(readonly, nonatomic) _Bool supportsBaseVertexInstanceDrawing;
+@property(readonly, nonatomic) _Bool supportsBfloat16Buffers;
 @property(readonly, nonatomic) _Bool supportsBfloat16Format;
 @property(readonly, nonatomic) _Bool supportsBinaryArchives;
 @property(readonly, nonatomic) _Bool supportsBinaryLibraries;
@@ -423,9 +427,11 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool supportsDepthClipMode;
 @property(readonly, nonatomic) _Bool supportsDepthClipModeClampExtended;
 @property(readonly, nonatomic) _Bool supportsDevicePartitioning;
+@property(readonly, nonatomic) _Bool supportsDynamicAttributeStride;
 @property(readonly, nonatomic) _Bool supportsDynamicControlPointCount;
 @property(readonly, nonatomic) _Bool supportsDynamicLibraries;
 @property(readonly, nonatomic) _Bool supportsExplicitVisibilityGroups;
+@property(readonly, nonatomic) _Bool supportsExtendedVertexFormats;
 @property(readonly, nonatomic) _Bool supportsExtendedXR10Formats;
 @property(readonly, nonatomic) _Bool supportsExtendedYUVFormats;
 @property(readonly, nonatomic) _Bool supportsFP32TessFactors;
@@ -485,6 +491,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool supportsNorm16BCubicFiltering;
 @property(readonly, nonatomic) _Bool supportsOpenCLTextureWriteSwizzles;
 @property(readonly, nonatomic) _Bool supportsPacked32TextureBufferWrites;
+@property(readonly, nonatomic) _Bool supportsPerformanceStateAssertion;
 @property(readonly, nonatomic) _Bool supportsPipelineLibraries;
 @property(readonly, nonatomic) _Bool supportsPlacementHeaps;
 @property(readonly, nonatomic) _Bool supportsPostDepthCoverage;
@@ -504,9 +511,14 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool supportsRasterOrderGroupsColorAttachment;
 @property(readonly, nonatomic) _Bool supportsRayTracingAccelerationStructureCPUDeserialization;
 @property(readonly, nonatomic) _Bool supportsRayTracingBuffersFromTables;
+@property(readonly, nonatomic) _Bool supportsRayTracingCurves;
 @property(readonly, nonatomic) _Bool supportsRayTracingExtendedVertexFormats;
+@property(readonly, nonatomic) _Bool supportsRayTracingGPUTableUpdateBuffers;
 @property(readonly, nonatomic) _Bool supportsRayTracingICBs;
+@property(readonly, nonatomic) _Bool supportsRayTracingIndirectInstanceAccelerationStructureBuild;
+@property(readonly, nonatomic) _Bool supportsRayTracingMultiLevelInstancing;
 @property(readonly, nonatomic) _Bool supportsRayTracingPerPrimitiveData;
+@property(readonly, nonatomic) _Bool supportsRayTracingTraversalMetrics;
 @property(readonly) _Bool supportsRaytracing;
 @property(readonly, nonatomic) _Bool supportsRaytracingFromRender;
 @property(readonly, nonatomic) _Bool supportsReadWriteBufferArguments;

@@ -6,28 +6,55 @@
 
 #import "_UIClickPresentation.h"
 
-@class UIView, UIWindow, _UIPlatterView;
+@class NSArray, NSString, _UIContextMenuUIController, _UIFulfilledContextMenuConfiguration;
+@protocol _UIContextMenuPresentationDelegate;
 
 __attribute__((visibility("hidden")))
 @interface _UIContextMenuPresentation : _UIClickPresentation
 {
     _Bool _suppressInputViewDuringPresentation;
-    UIView *_dragContainer;
-    _UIPlatterView *_destinationPlatterView;
-    CDUnknownBlockType _postDismissItemUpdate;
-    CDUnknownBlockType _postDismissCleanUp;
-    UIView *_dragAnimationPortalView;
-    UIWindow *_dragAnimationWindow;
+    id <_UIContextMenuPresentationDelegate> _delegate;
+    _UIContextMenuUIController *_uiController;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) UIWindow *dragAnimationWindow; // @synthesize dragAnimationWindow=_dragAnimationWindow;
-@property(retain, nonatomic) UIView *dragAnimationPortalView; // @synthesize dragAnimationPortalView=_dragAnimationPortalView;
 @property(nonatomic) _Bool suppressInputViewDuringPresentation; // @synthesize suppressInputViewDuringPresentation=_suppressInputViewDuringPresentation;
-@property(copy, nonatomic) CDUnknownBlockType postDismissCleanUp; // @synthesize postDismissCleanUp=_postDismissCleanUp;
-@property(copy, nonatomic) CDUnknownBlockType postDismissItemUpdate; // @synthesize postDismissItemUpdate=_postDismissItemUpdate;
-@property(retain, nonatomic) _UIPlatterView *destinationPlatterView; // @synthesize destinationPlatterView=_destinationPlatterView;
-@property(retain, nonatomic) UIView *dragContainer; // @synthesize dragContainer=_dragContainer;
+@property(readonly, nonatomic) _UIContextMenuUIController *uiController; // @synthesize uiController=_uiController;
+@property(nonatomic) __weak id <_UIContextMenuPresentationDelegate> delegate; // @synthesize delegate=_delegate;
+- (id)preferredFocusEnvironmentsForContextMenuPreviewPresentationController:(id)arg1;
+- (void)contextMenuPreviewPresentationController:(id)arg1 didChangePreviewContentSize:(struct CGSize)arg2;
+- (id)contextMenuUIController:(id)arg1 dismissalPreviewForItem:(id)arg2 clientReturnedPreview:(_Bool *)arg3;
+- (void)contextMenuUIController:(id)arg1 didBeginDragWithTouch:(id)arg2;
+- (void)contextMenuUIControllerDidEndPanInteraction:(id)arg1;
+- (_Bool)contextMenuUIControllerShouldAllowSwipeToDismissForBeginningPanInteraction:(id)arg1;
+- (void)contextMenuUIController:(id)arg1 didRequestDismissalWithReason:(unsigned long long)arg2 alongsideActions:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)contextMenuUIController:(id)arg1 didSelectMenuLeaf:(id)arg2;
+- (void)contextMenuUIControllerWillPerformLayout:(id)arg1 withPreviewSize:(struct CGSize)arg2;
+- (id)contextMenuUIController:(id)arg1 willDisplayMenu:(id)arg2;
+- (void)requestMenuDismissal;
+- (id)windowSceneActivationPreview;
+- (void)dragWillCancelWithAnimator:(id)arg1;
+- (id)previewForCancellingDragItem:(id)arg1;
+- (id)livePreviewForDragItem:(id)arg1 preferringFullSize:(_Bool)arg2;
+- (void)viewTraitCollectionDidChange;
+- (void)retargetDismissingMenuToPreview:(id)arg1;
+- (void)displayMenu:(id)arg1 inPlaceOfMenu:(id)arg2;
+- (void)dismiss;
+- (void)prepareToDismiss;
+- (void)setAlongsideAnimatorForDismissal:(id)arg1;
+- (void)present;
+- (void)prepareToPresent;
+- (void)setAlongsideAnimatorForPresentation:(id)arg1;
+- (id)_platformMetrics;
+@property(readonly, nonatomic) NSArray *visibleMenus;
+@property(readonly, nonatomic) _UIFulfilledContextMenuConfiguration *menuConfiguration;
+- (id)initWithPresentingViewController:(id)arg1 configuration:(id)arg2 style:(id)arg3;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

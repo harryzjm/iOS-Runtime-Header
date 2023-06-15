@@ -11,10 +11,10 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (_Bool)_shouldReceiveTouch:(id)arg1 withEvent:(id)arg2;
 - (_Bool)_affectedByGesture:(id)arg1;
 - (_Bool)canBePreventedByGestureRecognizer:(id)arg1;
 - (_Bool)canPreventGestureRecognizer:(id)arg1;
-- (_Bool)_shouldReceiveTouch:(id)arg1 withEvent:(id)arg2;
 
 @end
 

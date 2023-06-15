@@ -10,18 +10,18 @@
 
 @protocol CUIKSingleDayTimelineViewItem <NSObject>
 + (double)barToBarHorizontalDistanceIncludingBarWidth;
+@property(readonly) _Bool visibleHeightLocked;
+@property struct CGRect unPinnedViewFrame;
+@property(readonly, nonatomic) double viewMaxNaturalTextHeight;
+@property(readonly, nonatomic) double enoughHeightForOneLine;
+@property(readonly, nonatomic) _Bool hideTravelTime;
+@property(readonly, nonatomic) NSString *eventIdentifier;
+@property(readonly, nonatomic) NSDate *end;
+@property(readonly, nonatomic) NSDate *start;
+@property(readonly, nonatomic) NSDate *startWithTravelTime;
 - (void)setTravelTimeHeight:(double)arg1;
 - (void)setVisibleHeight:(double)arg1;
-@property(nonatomic, readonly) _Bool visibleHeightLocked;
-@property(nonatomic) struct CGRect unPinnedViewFrame;
 - (struct CGRect)stagedFrame;
 - (void)setStagedFrame:(struct CGRect)arg1;
-@property(nonatomic, readonly) double viewMaxNaturalTextHeight;
-@property(nonatomic, readonly) double enoughHeightForOneLine;
-@property(nonatomic, readonly) _Bool hideTravelTime;
-@property(nonatomic, readonly) NSString *eventIdentifier;
-@property(nonatomic, readonly) NSDate *end;
-@property(nonatomic, readonly) NSDate *start;
-@property(nonatomic, readonly) NSDate *startWithTravelTime;
 @end
 

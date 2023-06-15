@@ -18,8 +18,8 @@ __attribute__((visibility("hidden")))
 - (void)sleepScheduleStateDidChange:(unsigned long long)arg1;
 - (void)sleepModeDidChange:(long long)arg1 isUserRequested:(_Bool)arg2;
 - (_Bool)shouldGoIntoUpcomingState;
-- (id)nextStateWithContext:(id *)arg1;
-- (void)didEnterWithPreviousState:(id)arg1 context:(id)arg2;
+- (void)updateState;
+- (void)didEnter;
 @property(readonly, nonatomic) _Bool widgetStateHasTimeComponent;
 @property(readonly, nonatomic) _Bool reloadsWidgetOnTimeChange;
 @property(readonly, nonatomic) _Bool reloadsWidgetOnModelChange;

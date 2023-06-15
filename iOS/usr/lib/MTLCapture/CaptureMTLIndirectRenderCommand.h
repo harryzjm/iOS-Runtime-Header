@@ -7,26 +7,51 @@
 #import <objc/NSObject.h>
 
 @class NSString;
-@protocol MTLIndirectRenderCommand;
+@protocol MTLIndirectRenderCommand, MTLIndirectRenderCommandSPI;
 
-__attribute__((visibility("hidden")))
 @interface CaptureMTLIndirectRenderCommand : NSObject
 {
-    id <MTLIndirectRenderCommand> _baseObject;
+    id <MTLIndirectRenderCommandSPI> _baseObject;
     struct GTTraceContext *_traceContext;
     struct GTTraceStream *_traceStream;
 }
 
 - (void).cxx_destruct;
+- (void)setVertexBuffer:(id)arg1 offset:(unsigned long long)arg2 attributeStride:(unsigned long long)arg3 atIndex:(unsigned long long)arg4;
 - (void)setVertexBuffer:(id)arg1 offset:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
 - (void)setRenderPipelineState:(id)arg1;
+- (void)setObjectBuffer:(id)arg1 offset:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
+- (void)setMeshBuffer:(id)arg1 offset:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
 - (void)setFragmentBuffer:(id)arg1 offset:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
+- (void)setBarrier;
 - (void)reset;
+- (_Bool)hasBarrier;
+- (void *)getVertexBufferAtIndex:(unsigned long long)arg1;
+- (unsigned long long)getVertexBufferAddressAtIndex:(unsigned long long)arg1;
+- (unsigned long long)getVertexAttributeStrideAtIndex:(unsigned long long)arg1;
+- (id)getTessellationFactorArguments;
+- (unsigned long long)getPipelineStateUniqueIdentifier;
+- (unsigned long long)getOptimizedStatus;
+- (unsigned long long)getObjectThreadgroupMemoryLengthAtIndex:(unsigned long long)arg1;
+- (unsigned long long)getObjectBufferAddressAtIndex:(unsigned long long)arg1;
+- (unsigned long long)getMeshBufferAddressAtIndex:(unsigned long long)arg1;
+- (void *)getFragmentBufferAtIndex:(unsigned long long)arg1;
+- (unsigned long long)getFragmentBufferAddressAtIndex:(unsigned long long)arg1;
+- (unsigned long long)getCommandType;
 - (void)drawPrimitives:(unsigned long long)arg1 vertexStart:(unsigned long long)arg2 vertexCount:(unsigned long long)arg3 instanceCount:(unsigned long long)arg4 baseInstance:(unsigned long long)arg5;
+- (id)drawPatchesArguments;
 - (void)drawPatches:(unsigned long long)arg1 patchStart:(unsigned long long)arg2 patchCount:(unsigned long long)arg3 patchIndexBuffer:(id)arg4 patchIndexBufferOffset:(unsigned long long)arg5 instanceCount:(unsigned long long)arg6 baseInstance:(unsigned long long)arg7 tessellationFactorBuffer:(id)arg8 tessellationFactorBufferOffset:(unsigned long long)arg9 tessellationFactorBufferInstanceStride:(unsigned long long)arg10;
+- (id)drawMeshThreadsArguments;
+- (void)drawMeshThreads:(CDStruct_14f26992)arg1 threadsPerObjectThreadgroup:(CDStruct_14f26992)arg2 threadsPerMeshThreadgroup:(CDStruct_14f26992)arg3;
+- (id)drawMeshThreadgroupsArguments;
+- (void)drawMeshThreadgroups:(CDStruct_14f26992)arg1 threadsPerObjectThreadgroup:(CDStruct_14f26992)arg2 threadsPerMeshThreadgroup:(CDStruct_14f26992)arg3;
 - (void)drawIndexedPrimitives:(unsigned long long)arg1 indexCount:(unsigned long long)arg2 indexType:(unsigned long long)arg3 indexBuffer:(id)arg4 indexBufferOffset:(unsigned long long)arg5 instanceCount:(unsigned long long)arg6 baseVertex:(long long)arg7 baseInstance:(unsigned long long)arg8;
+- (id)drawIndexedPatchesArguments;
 - (void)drawIndexedPatches:(unsigned long long)arg1 patchStart:(unsigned long long)arg2 patchCount:(unsigned long long)arg3 patchIndexBuffer:(id)arg4 patchIndexBufferOffset:(unsigned long long)arg5 controlPointIndexBuffer:(id)arg6 controlPointIndexBufferOffset:(unsigned long long)arg7 instanceCount:(unsigned long long)arg8 baseInstance:(unsigned long long)arg9 tessellationFactorBuffer:(id)arg10 tessellationFactorBufferOffset:(unsigned long long)arg11 tessellationFactorBufferInstanceStride:(unsigned long long)arg12;
+- (id)drawIndexedArguments;
+- (id)drawArguments;
 - (void)dealloc;
+- (void)clearBarrier;
 - (_Bool)conformsToProtocol:(id)arg1;
 - (_Bool)respondsToSelector:(SEL)arg1;
 @property(readonly, copy) NSString *description;

@@ -11,5 +11,13 @@
 - (id)ak_addAdditiveAnimation:(id)arg1 withKeyPath:(id)arg2;
 - (id)ak_addAdditiveAnimation:(id)arg1;
 - (id)ak_additiveAnimationKeyPrefixForKeyPath:(id)arg1;
+- (void)mp_moveAndResizeWithinParentLayer:(id)arg1 usingGravity:(id)arg2 geometryFlipped:(_Bool)arg3 retinaScale:(double)arg4 animate:(_Bool)arg5;
+- (id)mp_allAnimationsInTree;
+- (id)mp_allLayersWhoseNamesContainString:(id)arg1;
+- (void)mp_addLayerAndSublayersToArray:(id)arg1 allowHiddenLayers:(_Bool)arg2;
+- (id)mp_allLayersInTree;
+- (id)mp_propertiesToCopy;
+- (id)mp_basicPropertiesToCopy;
+- (id)mp_deepCopyLayer;
 @end
 

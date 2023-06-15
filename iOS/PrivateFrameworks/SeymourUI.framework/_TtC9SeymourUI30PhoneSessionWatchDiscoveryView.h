@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class MISSING_TYPE;
 
@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *landscapeConstraints;
     MISSING_TYPE *portraitConstraints;
     MISSING_TYPE *previousBounds;
+    MISSING_TYPE *messageStackView;
     MISSING_TYPE *stackView;
     MISSING_TYPE *spinnerView;
     MISSING_TYPE *lookingLabel;

@@ -11,30 +11,32 @@
 __attribute__((visibility("hidden")))
 @interface _TtC7NewsUI223FollowingViewController : TUViewController
 {
-    MISSING_TYPE *searchProvider;
-    MISSING_TYPE *lazySearchController;
-    MISSING_TYPE *lazySearchResultsViewController;
-    MISSING_TYPE *lazySearchHomeViewController;
+    MISSING_TYPE *searchCoordinator;
     MISSING_TYPE *styler;
     MISSING_TYPE *eventHandler;
     MISSING_TYPE *blueprintViewController;
     MISSING_TYPE *blueprintSelectionProvider;
     MISSING_TYPE *purchaseController;
     MISSING_TYPE *bundleSubscriptionManager;
-    MISSING_TYPE *searchBarCanEndEditing;
     MISSING_TYPE *previousSelectedIndexPath;
-    MISSING_TYPE *previousSelectedItem;
-    MISSING_TYPE *featureAvailability;
     MISSING_TYPE *commands;
     MISSING_TYPE *newsActivityManager;
-    MISSING_TYPE *onAppear;
     MISSING_TYPE *$__lazy_storage_$_sidebarBarButtonItem;
 }
 
 - (void).cxx_destruct;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (void)handleSidebarWithSender:(id)arg1;
 - (_Bool)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (void)delete:(id)arg1;
+- (void)setEditing:(_Bool)arg1 animated:(_Bool)arg2;
+- (id)contentScrollView;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)viewWillLayoutSubviews;
+- (void)viewDidDisappear:(_Bool)arg1;
+- (void)viewDidAppear:(_Bool)arg1;
+- (void)viewWillAppear:(_Bool)arg1;
+- (void)viewDidLoad;
 - (id)initWithCoder:(id)arg1;
 
 @end

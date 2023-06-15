@@ -10,9 +10,11 @@
 
 @interface AVSpeechSynthesisProviderVoice (AXSpeechPublicInterface_Private)
 + (void)updateSpeechVoices;
+- (id)rawTTSIdentifier;
 @property(retain, nonatomic) NSDictionary *extraAttributes;
 @property(retain, nonatomic) NSArray *supportedLanguages;
 @property(retain, nonatomic) NSArray *primaryLanguages;
+@property(nonatomic) _Bool isPersonalVoice;
 @property(nonatomic) _Bool isFirstParty;
 @property(retain, nonatomic) NSString *synthesizerBundleIdentifier;
 @property(retain, nonatomic) NSString *manufacturerName;

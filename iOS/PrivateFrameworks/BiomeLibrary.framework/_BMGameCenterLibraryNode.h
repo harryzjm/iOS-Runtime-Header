@@ -16,10 +16,10 @@ __attribute__((visibility("hidden")))
 + (id)validKeyPaths;
 + (id)streamNames;
 + (id)identifier;
-+ (id)configurationForSuggestionsFeedback;
-+ (id)syncPolicyForSuggestionsFeedback;
-+ (id)storeConfigurationForSuggestionsFeedback;
-+ (id)SuggestionsFeedback;
++ (id)configurationForAchievementEarned;
++ (id)syncPolicyForAchievementEarned;
++ (id)storeConfigurationForAchievementEarned;
++ (id)AchievementEarned;
 
 @end
 

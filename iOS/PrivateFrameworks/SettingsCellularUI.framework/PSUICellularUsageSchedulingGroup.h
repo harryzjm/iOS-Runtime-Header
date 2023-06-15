@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 - (void)sortGroup;
 - (void)setGroupSpecifierTitle:(id)arg1;
 - (void)calculateUsage;
+- (void)didModifyStatisticsSetting;
 - (void)didResetStatistics;
 - (void)selectedBillingPeriodChanged:(unsigned long long)arg1;
 - (void)didFailToSetPolicyForSpecifier:(id)arg1;

@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *voiceOptionsView;
     MISSING_TYPE *voiceSelectionPresenter;
     MISSING_TYPE *continueButton;
+    MISSING_TYPE *primaryButton;
 }
 
 - (void).cxx_destruct;

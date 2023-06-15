@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) UIWindowScene *windowSceneForVolumeDisplay;
 @property(readonly, nonatomic) NSString *volumeAudioCategory;
 @property(readonly, nonatomic, getter=isOnScreenForVolumeDisplay) _Bool onScreenForVolumeDisplay;
+- (void)didAddToHomeScreen;
 - (void)_sf_sceneDidEnterBackground:(id)arg1;
 - (void)_sf_sceneWillEnterForeground:(id)arg1;
 - (void)willOpenCurrentPageInBrowser;

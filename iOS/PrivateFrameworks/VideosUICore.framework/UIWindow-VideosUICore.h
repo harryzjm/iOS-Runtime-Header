@@ -7,6 +7,7 @@
 #import <UIKit/UIWindow.h>
 
 @interface UIWindow (VideosUICore)
+@property(readonly, nonatomic) double vuiHeight;
 @property(readonly, nonatomic) double vuiWidth;
 - (void)vui_makeKeyAndVisible;
 - (void)vui_setRootViewController:(id)arg1;

@@ -9,7 +9,6 @@
 @class NSSet, NSString;
 
 @interface CKShareParticipant (IC)
-+ (id)ic_participantForUserRecordName:(id)arg1 inNote:(id)arg2;
 + (id)ic_mentionableNamesCache;
 + (unsigned long long)ic_mentionTokensPerParticipant;
 + (id)ic_nonCurrentUserParticipants:(id)arg1;

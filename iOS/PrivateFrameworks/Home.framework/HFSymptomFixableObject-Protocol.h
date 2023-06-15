@@ -12,8 +12,8 @@
 @class HMSymptomsHandler, NSSet, NSUUID;
 
 @protocol HFSymptomFixableObject <NSObject, HFSymptomsHandlerVendor, HFAccessoryVendor, HFHomeKitObject>
-@property(nonatomic, readonly) NSUUID *uniqueIdentifier;
-@property(nonatomic, readonly) NSSet *accessories;
-@property(nonatomic, readonly) HMSymptomsHandler *symptomsHandler;
+@property(readonly, copy, nonatomic) NSUUID *uniqueIdentifier;
+@property(readonly, nonatomic) NSSet *accessories;
+@property(readonly, nonatomic) HMSymptomsHandler *symptomsHandler;
 @end
 

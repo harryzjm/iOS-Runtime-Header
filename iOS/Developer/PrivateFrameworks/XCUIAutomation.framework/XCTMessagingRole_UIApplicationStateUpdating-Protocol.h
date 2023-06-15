@@ -7,6 +7,8 @@
 @class NSString, XCTApplicationStateSnapshot;
 
 @protocol XCTMessagingRole_UIApplicationStateUpdating
+- (void)_XCT_interfaceOrientationDidChange:(long long)arg1;
+- (void)_XCT_deviceOrientationDidChange:(long long)arg1;
 - (void)_XCT_applicationDidUpdateState:(XCTApplicationStateSnapshot *)arg1;
 - (void)_XCT_applicationWithBundleID:(NSString *)arg1 didUpdatePID:(int)arg2 andState:(unsigned long long)arg3;
 @end

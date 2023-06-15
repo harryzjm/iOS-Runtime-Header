@@ -19,11 +19,13 @@
 @property(retain, nonatomic) GEOTransitOptions *transitOptions;
 @property(retain, nonatomic) GEOWalkingOptions *walkingOptions;
 @property(retain, nonatomic) GEOAutomobileOptions *automobileOptions;
+@property(readonly, nonatomic) UIView *viewForHeaderContainmentString;
+@property(readonly, nonatomic) UIView *draggableHeaderView;
 - (double)currentHeight;
 - (void)scrollToTopAnimated:(_Bool)arg1;
 - (void)contentAboveTitleScrollPositionChanged:(double)arg1;
 - (void)hideTitle:(_Bool)arg1;
-- (UIView *)draggableHeaderView;
+- (void)updateHeaderTrailingConstant;
 - (NSArray *)draggableContent;
 @end
 

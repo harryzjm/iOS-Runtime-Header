@@ -11,6 +11,8 @@
 __attribute__((visibility("hidden")))
 @interface QLMediaItemBaseViewController : QLScrollableContentItemViewController
 {
+    AVAsset *_mediaAsset;
+    AVPlayer *_player;
     NSObject *_playbackTimeObserver;
     _Bool _playing;
     _Bool _mediaWasPausedOnResignActive;
@@ -20,20 +22,17 @@ __attribute__((visibility("hidden")))
     _Bool _visualTracksEnabled;
     _Bool _isFullScreen;
     _Bool _isVisible;
-    AVPlayer *_player;
     UIView *_playerView;
     AVPlayerLayer *_playerLayer;
     NSError *_error;
+    double _mediaDuration;
     double _elapsedTime;
     double _remainingTime;
     long long _playingStatus;
     double _mediaVolume;
-    AVAsset *_mediaAsset;
-    double _mediaDuration;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) double mediaDuration; // @synthesize mediaDuration=_mediaDuration;
 @property(readonly, nonatomic) _Bool isVisible; // @synthesize isVisible=_isVisible;
 @property(readonly, nonatomic) _Bool isFullScreen; // @synthesize isFullScreen=_isFullScreen;
 @property(readonly, nonatomic) AVAsset *mediaAsset; // @synthesize mediaAsset=_mediaAsset;
@@ -43,6 +42,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) long long playingStatus; // @synthesize playingStatus=_playingStatus;
 @property(nonatomic) double remainingTime; // @synthesize remainingTime=_remainingTime;
 @property(nonatomic) double elapsedTime; // @synthesize elapsedTime=_elapsedTime;
+@property(nonatomic) double mediaDuration; // @synthesize mediaDuration=_mediaDuration;
 @property(retain, nonatomic) NSError *error; // @synthesize error=_error;
 @property(readonly, nonatomic) AVPlayerLayer *playerLayer; // @synthesize playerLayer=_playerLayer;
 @property(readonly, nonatomic) UIView *playerView; // @synthesize playerView=_playerView;
@@ -63,6 +63,8 @@ __attribute__((visibility("hidden")))
 - (void)stop;
 - (_Bool)pause;
 - (_Bool)play;
+- (CDUnknownBlockType)playbackObserverBlock;
+- (float)playerTimeObservationInterval;
 - (_Bool)shouldDisplayPlayButtonInNavigationBar;
 @property(readonly, nonatomic) _Bool endOfMediaReached;
 - (struct CGSize)imageSize;

@@ -12,6 +12,6 @@
 @property(nonatomic) double presentationAccuracy;
 @property(nonatomic, getter=isAnimatingAccuracy) _Bool animatingAccuracy;
 @property(nonatomic) _Bool tracking;
-@property(nonatomic) CDStruct_c3b9c2ee presentationCoordinate;
+@property(nonatomic) CDStruct_2c43369c presentationCoordinate;
 @end
 

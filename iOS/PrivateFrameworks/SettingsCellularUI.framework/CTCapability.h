@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(retain) NSMutableDictionary *enabledDict; // @synthesize enabledDict=_enabledDict;
-@property(copy) NSMutableDictionary *capabilityInfo; // @synthesize capabilityInfo=_capabilityInfo;
+@property(retain) NSMutableDictionary *capabilityInfo; // @synthesize capabilityInfo=_capabilityInfo;
 @property(retain) NSMutableDictionary *capability; // @synthesize capability=_capability;
 @property _Bool enabledFetched; // @synthesize enabledFetched=_enabledFetched;
 @property _Bool capabilityFetched; // @synthesize capabilityFetched=_capabilityFetched;

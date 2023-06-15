@@ -12,7 +12,7 @@
 
 + (_Bool)rebootShouldClearData;
 + (id)groupName;
-- (id)createTables;
+- (id)createTables:(id *)arg1;
 
 @end
 

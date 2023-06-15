@@ -4,14 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, NSURL;
+@class KVProfile, NSDate, NSString, NSURL;
 
 @protocol CKVAdminService
+- (oneway void)endEvaluation:(void (^)(long long))arg1;
+- (oneway void)beginEvaluation:(KVProfile *)arg1 clean:(_Bool)arg2 completion:(void (^)(long long))arg3;
 - (oneway void)deleteAllItemsWithUserId:(NSString *)arg1 deviceId:(NSString *)arg2 completion:(void (^)(long long))arg3;
 - (oneway void)deleteAllItemsWithUserId:(NSString *)arg1 completion:(void (^)(long long))arg2;
 - (oneway void)rebuildSpeechProfileForUserId:(NSString *)arg1 completion:(void (^)(long long))arg2;
+- (oneway void)findProfileSnapshotsNearDate:(NSDate *)arg1 completion:(void (^)(long long, NSArray *))arg2;
 - (oneway void)captureVocabularySnapshot:(NSURL *)arg1 completion:(void (^)(long long, NSURL *))arg2;
-- (oneway void)enumerateItemsWithBatchSize:(unsigned long long)arg1 offset:(unsigned long long)arg2 usingBlock:(void (^)(NSArray *, NSArray *))arg3;
+- (oneway void)fetchLocalItemsBatchWithSize:(unsigned long long)arg1 offset:(unsigned long long)arg2 usingBlock:(void (^)(NSArray *, NSArray *))arg3;
 - (oneway void)triggerMaintenance:(void (^)(long long))arg1;
 - (oneway void)triggerMigration:(_Bool)arg1 completeAfterTrigger:(_Bool)arg2 completion:(void (^)(long long))arg3;
 - (oneway void)finishEventSimulation:(void (^)(long long))arg1;

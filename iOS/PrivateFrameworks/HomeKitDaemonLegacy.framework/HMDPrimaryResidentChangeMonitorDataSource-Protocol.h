@@ -9,6 +9,7 @@
 @class HMDDevice, HMDPrimaryResidentChangeMonitor;
 
 @protocol HMDPrimaryResidentChangeMonitorDataSource <NSObject>
+- (_Bool)hasResidentDevicesForPrimaryResidentChangeMonitor:(HMDPrimaryResidentChangeMonitor *)arg1;
 - (HMDDevice *)confirmedPrimaryResidentDeviceForPrimaryResidentChangeMonitor:(HMDPrimaryResidentChangeMonitor *)arg1;
 @end
 

@@ -18,7 +18,7 @@
 
 + (id)propertiesThatInvalidateLayout;
 - (void).cxx_destruct;
-- (const struct CGPath *)newDragAndDropHighlightPathForSelection:(id)arg1;
+- (struct CGPath *)newDragAndDropHighlightPathForSelection:(id)arg1;
 - (id)subselectionHaloPositionsForSelections:(id)arg1;
 - (id)subselectionKnobPositionsForSelection:(id)arg1;
 - (id)hitChartElements:(struct CGPoint)arg1 passingTest:(CDUnknownBlockType)arg2;

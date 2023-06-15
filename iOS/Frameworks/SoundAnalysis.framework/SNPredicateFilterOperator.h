@@ -6,20 +6,23 @@
 
 #import <objc/NSObject.h>
 
-@class NSPredicate;
+@class MISSING_TYPE, NSPredicate;
 
 __attribute__((visibility("hidden")))
 @interface SNPredicateFilterOperator : NSObject
 {
-    long long _leakRemaining;
-    NSPredicate *_predicate;
-    long long _leakCount;
+    MISSING_TYPE *leakCount;
+    MISSING_TYPE *predicate;
+    MISSING_TYPE *leakRemaining;
 }
 
 - (void).cxx_destruct;
 - (void)processTerminationWithOptionalError:(id)arg1 portID:(id)arg2 downstreamHandler:(CDUnknownBlockType)arg3;
 - (void)processInput:(id)arg1 portID:(id)arg2 downstreamHandler:(CDUnknownBlockType)arg3;
+- (id)initWithPredicate:(id)arg1 leakCount:(long long)arg2;
 - (id)init;
+@property(nonatomic, readonly) NSPredicate *predicate; // @synthesize predicate;
+@property(nonatomic, readonly) long long leakCount; // @synthesize leakCount;
 
 @end
 

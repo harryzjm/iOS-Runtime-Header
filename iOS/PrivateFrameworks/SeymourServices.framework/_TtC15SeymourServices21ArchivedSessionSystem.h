@@ -15,7 +15,6 @@
     MISSING_TYPE *syncCoordinator;
     MISSING_TYPE *eventHub;
     MISSING_TYPE *subscriptionToken;
-    MISSING_TYPE *healthKitWorkoutDataStore;
     MISSING_TYPE *configurationDataStore;
     MISSING_TYPE *programCompletionDataStore;
 }

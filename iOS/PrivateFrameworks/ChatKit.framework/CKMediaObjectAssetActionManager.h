@@ -57,7 +57,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)supportsActionType:(id)arg1;
 @property(readonly, nonatomic) _Bool shouldHideInteractions;
 @property(readonly, nonatomic) UIMenu *actionContextMenu;
-- (id)initWithChatItem:(id)arg1 chatActionHelper:(id)arg2 selectionManager:(id)arg3;
+- (id)initWithChatItem:(id)arg1 presentedFromInlineReply:(_Bool)arg2 chatActionHelper:(id)arg3 selectionManager:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

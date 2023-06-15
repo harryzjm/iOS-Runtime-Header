@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
 @class MISSING_TYPE;
 
@@ -26,8 +26,12 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *purchaseCoordinator;
     MISSING_TYPE *purchaseHandler;
     MISSING_TYPE *resignActiveObserver;
+    MISSING_TYPE *serviceSubscriptionCache;
     MISSING_TYPE *storefrontLocalizer;
+    MISSING_TYPE *upNextQueueButton;
+    MISSING_TYPE *upNextQueueButtonPresenter;
     MISSING_TYPE *webUserInterfaceCoordinator;
+    MISSING_TYPE *subscriptionToken;
     MISSING_TYPE *navigationBarTintColor;
     MISSING_TYPE *lastNavigationBarTintColor;
 }
@@ -39,6 +43,7 @@ __attribute__((visibility("hidden")))
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
+- (void)viewWillAppear:(_Bool)arg1;
 - (void)viewSafeAreaInsetsDidChange;
 - (void)viewDidLoad;
 - (id)initWithCoder:(id)arg1;

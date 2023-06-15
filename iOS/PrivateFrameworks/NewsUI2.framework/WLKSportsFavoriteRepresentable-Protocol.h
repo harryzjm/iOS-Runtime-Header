@@ -9,6 +9,6 @@
 @class NSString;
 
 @protocol WLKSportsFavoriteRepresentable <NSObject>
-@property(nonatomic, readonly) NSString *ID;
+@property(readonly, copy, nonatomic) NSString *ID;
 @end
 

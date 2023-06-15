@@ -21,6 +21,9 @@ __attribute__((visibility("hidden")))
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (void)encodeWithCoder:(id)arg1;
+- (float)backgroundStatisticsForegroundForStyle:(id)arg1;
+- (float)backgroundStatisticsFailingContrastForStyle:(id)arg1;
+- (float)backgroundStatisticsPassingContrastForStyle:(id)arg1;
 - (unsigned long long)authenticationMessageContextForStyle:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithSite:(long long)arg1;

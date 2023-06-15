@@ -6,12 +6,12 @@
 
 #import <UIKit/UICollectionViewCell.h>
 
-@class NSArray, NSString, UIButton, UILabel, UIVisualEffectView;
+@class NSArray, NSString, SFBannerBackgroundView, UIButton, UILabel;
 
 __attribute__((visibility("hidden")))
 @interface SFBannerCell : UICollectionViewCell
 {
-    UIVisualEffectView *_backgroundView;
+    SFBannerBackgroundView *_backgroundView;
     UIButton *_dismissButton;
     UILabel *_messageLabel;
     NSArray *_minimalLayoutConstraints;
@@ -27,12 +27,10 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) CDUnknownBlockType dismissHandler; // @synthesize dismissHandler=_dismissHandler;
 @property(retain, nonatomic) NSString *message;
 @property(retain, nonatomic) NSString *title;
-- (void)setModel:(id)arg1;
-- (void)_updateVibrancy;
+- (void)configureUsingBanner:(id)arg1;
 - (void)_dismiss:(id)arg1;
 - (id)focusEffect;
 - (void)layoutSubviews;
-- (void)traitCollectionDidChange:(id)arg1;
 - (void)_updateStyle;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 style:(long long)arg2;

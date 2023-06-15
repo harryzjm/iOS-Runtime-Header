@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, SNComposedDetector;
+@class MLModel, NSString, SNComposedDetector;
 
 __attribute__((visibility("hidden")))
 @interface SNDetectorVariant : NSObject
@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     long long _type;
     SNComposedDetector *_composedDetector;
     NSString *_detectorIdentifier;
+    MLModel *_endToEndDetectorModel;
 }
 
 + (_Bool)supportsSecureCoding;

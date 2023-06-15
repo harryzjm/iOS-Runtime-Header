@@ -15,22 +15,22 @@ __attribute__((visibility("hidden")))
     id <UIKeyboardInputModeIndicatorControllerDelegate> _delegate;
     UIDelayedAction *_dismissAction;
     UIDelayedAction *_idleAction;
-    NSDate *_lastPresentedTime;
     NSString *_focusedSceneID;
 }
 
 + (_Bool)enabled;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSString *focusedSceneID; // @synthesize focusedSceneID=_focusedSceneID;
-@property(retain, nonatomic) NSDate *lastPresentedTime; // @synthesize lastPresentedTime=_lastPresentedTime;
 @property(retain, nonatomic) UIDelayedAction *idleAction; // @synthesize idleAction=_idleAction;
 @property(retain, nonatomic) UIDelayedAction *dismissAction; // @synthesize dismissAction=_dismissAction;
 @property(nonatomic) __weak id <UIKeyboardInputModeIndicatorControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property(retain, nonatomic) NSDate *indicatorLastShownDate;
 - (void)clear;
 - (void)setNeedsIndicatorShow;
 - (void)dismissIndicator;
-- (void)presentIndicator;
-- (void)showIndicator;
+- (void)presentIndicatorWithReason:(id)arg1;
+- (void)showIndicatorWithReason:(id)arg1;
+- (void)inputModeSelectorDidOpen;
 - (void)willResignActive;
 - (void)keyPressed;
 - (void)keyboardWindowEnabled:(_Bool)arg1;

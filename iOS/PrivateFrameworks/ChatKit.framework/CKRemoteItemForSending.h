@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)_sharedIOSurfaceCIContext;
 + (_Bool)hasAppendedVideo:(id)arg1;
 + (id)previewQueue;
 - (void).cxx_destruct;

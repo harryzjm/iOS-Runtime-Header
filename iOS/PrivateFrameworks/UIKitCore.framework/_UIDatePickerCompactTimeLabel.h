@@ -84,6 +84,7 @@ __attribute__((visibility("hidden")))
 - (void)didTapInputLabel:(id)arg1;
 - (id)_currentDateForInput;
 - (void)_updateLayoutRectsForRanges:(CDStruct_a33ff3ce)arg1;
+- (void)_updateTextContentStorage;
 - (void)_updateInputFieldLayoutForCurrentState;
 - (void)_updateTimeFormatIfNeeded;
 - (void)stateMachineUpdateFromState:(unsigned long long)arg1 toState:(unsigned long long)arg2;

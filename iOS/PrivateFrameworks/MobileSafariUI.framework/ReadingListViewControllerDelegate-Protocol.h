@@ -13,8 +13,6 @@
 - (ContinuousReadingItem *)readingListViewControllerCurrentReadingListItem:(ReadingListViewController *)arg1;
 
 @optional
-- (void)readingListViewControllerDidEndEditing:(ReadingListViewController *)arg1;
-- (void)readingListViewControllerDidBeginEditing:(ReadingListViewController *)arg1;
 - (void)readingListViewController:(ReadingListViewController *)arg1 updateUnreadFilterShowingAllBookmarks:(_Bool)arg2;
 @end
 

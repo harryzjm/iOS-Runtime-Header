@@ -6,7 +6,7 @@
 
 #import <Photos/PHFetchResult.h>
 
-@class NSArray;
+@class NSArray, PHPhotoLibrary;
 
 @interface PHFetchResult (MediaAnalysis)
 - (id)resultsAsSet;
@@ -15,6 +15,8 @@
 
 // Remaining properties
 @property(readonly, nonatomic) unsigned long long count;
+@property(readonly) NSArray *fetchedObjectIDs;
 @property(readonly, nonatomic) NSArray *fetchedObjects;
+@property(readonly, nonatomic) PHPhotoLibrary *photoLibrary;
 @end
 

@@ -23,6 +23,7 @@
     MISSING_TYPE *subPositionContext;
     MISSING_TYPE *hasSymbolEncoding;
     MISSING_TYPE *hasLineMarkSymbolEncoding;
+    MISSING_TYPE *hasSectorMark;
 }
 
 @end

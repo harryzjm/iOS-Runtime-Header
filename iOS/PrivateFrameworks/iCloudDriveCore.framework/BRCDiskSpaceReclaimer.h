@@ -6,16 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class BRCAccountSession, NSString, br_pacer;
+@class BRCAccountSessionFPFS;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface BRCDiskSpaceReclaimer : NSObject
 {
-    BRCAccountSession *_session;
+    BRCAccountSessionFPFS *_session;
     _Bool _isClosed;
     _Bool _computingPurgable;
-    br_pacer *_purgePacer;
     NSObject<OS_dispatch_queue> *_queue;
 }
 
@@ -24,18 +23,17 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 - (unsigned long long)totalSize;
+- (unsigned long long)nonPurgeableSizeWithPurgeableSize:(unsigned long long)arg1;
 - (unsigned long long)_recursivelySizeDirectoryAtPath:(id)arg1;
 - (_Bool)performOptimizeStorageWithTimeDelta:(double)arg1 onDiskAccessTimeDelta:(double)arg2 error:(id *)arg3;
-- (void)requestPurgeSpace;
+- (long long)cachedNonPurgeableSpace;
 - (long long)cachedPurgeableSpaceForUrgency:(int)arg1;
-- (void)_requestPurgeSpace;
-- (void)lowDiskStatusChangedForDevice:(int)arg1 hasEnoughSpace:(_Bool)arg2;
 - (_Bool)renameAndUnlinkInBackgroundItemAt:(int)arg1 path:(id)arg2;
-- (_Bool)renameAndUnlinkInBackgroundItemAtRelpath:(id)arg1;
 - (int)urgencyForCacheDeleteUrgency:(int)arg1;
 - (long long)periodicReclaimSpace;
 - (long long)purgeSpace:(long long)arg1 withUrgency:(int)arg2;
 - (long long)_purgeSpaceUnderQueue:(long long)arg1 withUrgency:(int)arg2;
+- (void)_cleanFPCreationItemIdentifier;
 - (long long)_garbageCollectGroupContainersDownloadStage;
 - (void)_asyncAutovacuumIfNeeds:(id)arg1;
 - (long long)_vacuumDB:(id)arg1 amount:(long long)arg2 withUrgency:(int)arg3;
@@ -45,15 +43,8 @@ __attribute__((visibility("hidden")))
 - (long long)_dbSizeInBytes:(id)arg1;
 - (long long)_computeCiconiaSizeInBytes:(_Bool)arg1;
 - (void)computePurgeableSpaceForAllUrgenciesWithReply:(CDUnknownBlockType)arg1;
-- (void)cachedPurgeableSpaceForAllUrgencies:(id *)arg1 nonPurgeableSpace:(id *)arg2 error:(id *)arg3;
 - (void)close;
 - (id)initWithAccountSession:(id)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface _UICommandChange : NSObject <NSCopying>
+@interface _UICommandChange : NSObject
 {
     id _anchor;
 }

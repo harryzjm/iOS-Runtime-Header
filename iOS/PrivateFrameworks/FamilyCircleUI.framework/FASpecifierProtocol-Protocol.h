@@ -10,8 +10,8 @@
 
 @protocol FASpecifierProtocol <NSObject>
 @property(nonatomic) long long cellType;
-@property(nonatomic, copy) NSString *identifier;
-@property(nonatomic, copy) NSString *name;
+@property(retain, nonatomic) NSString *identifier;
+@property(retain, nonatomic) NSString *name;
 - (void)performButtonAction;
 - (void)setProperty:(id)arg1 forKey:(NSString *)arg2;
 - (id)propertyForKey:(NSString *)arg1;

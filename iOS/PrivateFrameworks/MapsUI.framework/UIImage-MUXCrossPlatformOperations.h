@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIImage.h>
+#import <UIKitCore/UIImage.h>
 
 @interface UIImage (MUXCrossPlatformOperations)
 + (id)_mapsui_resolvedSymbolImageNamed:(id)arg1 withConfiguration:(id)arg2;

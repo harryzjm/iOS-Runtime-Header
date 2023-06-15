@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIImage.h>
+#import <UIKitCore/UIImage.h>
 
 @interface UIImage (Utilities)
 + (struct CGRect)ic_aspectFitImageFrameForViewWithFrame:(struct CGRect)arg1 imageSize:(struct CGSize)arg2;
@@ -18,6 +18,7 @@
 + (id)ic_orientedImageFromImage:(id)arg1 fromOrientation:(long long)arg2;
 + (id)ic_orientedImageFromCGImage:(struct CGImage *)arg1 scale:(double)arg2 transform:(struct CGAffineTransform)arg3;
 + (id)ic_UIImageFromCIImage:(id)arg1;
++ (id)ic_systemImageNamed:(id)arg1 pointSize:(double)arg2;
 + (id)ic_systemImageNamed:(id)arg1 usePrivateCatalog:(_Bool)arg2;
 + (id)ic_systemImageNamed:(id)arg1;
 + (id)ic_symbolsNeedingPrivateCatalog;
@@ -47,6 +48,7 @@
 - (void)ic_decodeWithCompletion:(CDUnknownBlockType)arg1;
 - (id)ic_imageDataWithUTType:(id)arg1 metadata:(id)arg2;
 - (id)ic_imageDataWithUTType:(id)arg1;
+- (id)ic_PDFData;
 - (id)ic_PNGDataWithOrientation:(long long)arg1;
 - (id)ic_PNGData;
 - (id)ic_JPEGDataWithOrientation:(long long)arg1;
@@ -61,6 +63,7 @@
 - (id)ic_scaledImageMaxDimension:(double)arg1 scale:(double)arg2;
 - (id)ic_scaledImageMinDimension:(double)arg1 scale:(double)arg2;
 - (id)ic_imageWithTint:(id)arg1 size:(struct CGSize)arg2;
+- (id)ic_imageWithTint:(id)arg1;
 - (id)ic_imageWithTextStyle:(id)arg1 scale:(long long)arg2;
 - (id)ic_imageWithTextStyle:(id)arg1;
 - (id)ic_imageWithFont:(id)arg1 scale:(long long)arg2;

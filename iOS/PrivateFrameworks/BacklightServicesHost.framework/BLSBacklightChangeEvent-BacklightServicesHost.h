@@ -7,7 +7,6 @@
 #import <BacklightServices/BLSBacklightChangeEvent.h>
 
 @interface BLSBacklightChangeEvent (BacklightServicesHost)
-- (_Bool)isSameRequestAsEvent:(id)arg1;
 @property(readonly, nonatomic, getter=isEnvironmentTransitionAnimated) _Bool environmentTransitionAnimated;
 @property(readonly, nonatomic, getter=isTransitionForcedUnanimated) _Bool transitionForcedUnanimated;
 @property(readonly, nonatomic, getter=isAlwaysOnTransition) _Bool alwaysOnTransition;

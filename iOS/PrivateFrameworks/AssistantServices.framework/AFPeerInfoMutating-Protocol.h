@@ -9,6 +9,7 @@
 @class NSString;
 
 @protocol AFPeerInfoMutating <NSObject>
+- (void)setIsLocationSharingDevice:(_Bool)arg1;
 - (void)setAceVersion:(NSString *)arg1;
 - (void)setUserInterfaceIdiom:(NSString *)arg1;
 - (void)setBuildVersion:(NSString *)arg1;

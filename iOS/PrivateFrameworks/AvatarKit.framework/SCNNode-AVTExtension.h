@@ -7,6 +7,7 @@
 #import <SceneKit/SCNNode.h>
 
 @interface SCNNode (AVTExtension)
+- (void)avt_setGeometryPrimitiveRangesFromFaceIndexRanges:(id)arg1;
 - (void)avt_enableSubdivisionOnHierarchyWithQuality:(unsigned long long)arg1 animoji:(_Bool)arg2;
 @end
 

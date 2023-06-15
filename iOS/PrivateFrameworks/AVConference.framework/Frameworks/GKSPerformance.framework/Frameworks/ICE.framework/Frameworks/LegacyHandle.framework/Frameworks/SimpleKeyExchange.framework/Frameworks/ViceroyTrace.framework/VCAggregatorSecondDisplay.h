@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableDictionary, NSString, VCHistogram;
+@class NSMutableDictionary, NSString, VCReportingHistogram;
 
 __attribute__((visibility("hidden")))
 @interface VCAggregatorSecondDisplay
@@ -26,6 +26,8 @@ __attribute__((visibility("hidden")))
     int _videoHeight;
     int _codec;
     int _hdrMode;
+    int _transportProtocol;
+    int _accessNetworkType;
     double _averageExpirationTime;
     double _maxExpirationTime;
     double _averageWiFiPacketDelay;
@@ -66,17 +68,17 @@ __attribute__((visibility("hidden")))
     unsigned int _evictedFramesAnalysisValidIntervals;
     double _evictedFramesAverageLatePacketDelay;
     unsigned int _evictedFramesRecoveredCount;
-    VCHistogram *_RBR;
-    VCHistogram *_TBR;
-    VCHistogram *_SBR;
-    VCHistogram *_VST;
-    VCHistogram *_PLR;
-    VCHistogram *_BPL;
-    VCHistogram *_EXT;
-    VCHistogram *_BWE;
-    VCHistogram *_VJS;
-    VCHistogram *_RTT;
-    VCHistogram *_HEL;
+    VCReportingHistogram *_RBR;
+    VCReportingHistogram *_TBR;
+    VCReportingHistogram *_SBR;
+    VCReportingHistogram *_VST;
+    VCReportingHistogram *_PLR;
+    VCReportingHistogram *_BPL;
+    VCReportingHistogram *_EXT;
+    VCReportingHistogram *_BWE;
+    VCReportingHistogram *_VJS;
+    VCReportingHistogram *_RTT;
+    VCReportingHistogram *_HEL;
     NSMutableDictionary *_fecStatsDict;
     int _twoPtFourGhzChannelCount;
     int _fiveGhzChannelCount;
@@ -89,24 +91,28 @@ __attribute__((visibility("hidden")))
     NSString *_remoteOSBuildVersion;
     NSString *_remoteFrameworkVersion;
     NSString *_remoteDeviceModel;
+    unsigned int _aggregatorVideoStreamMode;
 }
 
 @property(retain, nonatomic) NSString *previousChannelSequence; // @synthesize previousChannelSequence=_previousChannelSequence;
 @property(copy, nonatomic) NSString *channelSequence; // @synthesize channelSequence=_channelSequence;
 - (void)processEventWithCategory:(unsigned short)arg1 type:(unsigned short)arg2 payload:(id)arg3;
+- (void)processResiliencyEnablementConfig:(id)arg1;
 - (void)updateReceiverVideoStreamConfiguration:(id)arg1;
 - (void)updateSenderVideoStreamConfiguration:(id)arg1;
 - (void)processRealtimeStats:(id)arg1;
 - (void)updateVideoFECStats:(id)arg1;
+- (void)addScreenSharingSpecificReportingKeys:(id)arg1;
 - (id)sessionFECReport;
 - (id)aggregatedSessionReport;
 - (id)aggregatedCallReports;
 - (void)saveCallSegmentHistory;
 - (id)aggregatedSegmentQRReport;
 - (id)aggregatedSegmentReport:(int)arg1;
-- (void)initAdaptiveLearningWithParameters:(id)arg1;
+- (void)setupAdaptiveLearningWithParameters:(id)arg1;
 - (void)flushCurrentSegment;
 - (void)dealloc;
+- (id)initWithDelegate:(id)arg1 withMode:(unsigned int)arg2;
 - (id)initWithDelegate:(id)arg1;
 
 @end

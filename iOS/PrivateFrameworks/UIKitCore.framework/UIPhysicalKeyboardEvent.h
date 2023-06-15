@@ -6,12 +6,14 @@
 
 #import "UIPressesEvent.h"
 
-@class NSString;
+@class NSString, _UIPhysicalKeyTranslationMap;
 
 __attribute__((visibility("hidden")))
 @interface UIPhysicalKeyboardEvent : UIPressesEvent
 {
     _Bool _canPrivatize;
+    _UIPhysicalKeyTranslationMap *_originalEscapeKeyTranslationMap;
+    _UIPhysicalKeyTranslationMap *_keyTranslationMap;
     _Bool _keyCommandHandlingBeforePublic;
     _Bool _keyEventForwardedFromInputUIHost;
     _Bool _shiftDown;
@@ -26,8 +28,6 @@ __attribute__((visibility("hidden")))
     long long _modifierFlags;
     NSString *_privateInput;
     long long _privateModifierFlags;
-    NSString *_privateShiftModifiedInput;
-    NSString *_privateCommandModifiedInput;
     NSString *_hint;
     long long __keyCode;
     long long _source;
@@ -44,12 +44,10 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) long long source; // @synthesize source=_source;
 @property(nonatomic) long long _keyCode; // @synthesize _keyCode=__keyCode;
 @property(retain, nonatomic) NSString *_hint; // @synthesize _hint;
-@property(retain, nonatomic) NSString *_privateCommandModifiedInput; // @synthesize _privateCommandModifiedInput;
-@property(retain, nonatomic) NSString *_privateShiftModifiedInput; // @synthesize _privateShiftModifiedInput;
 @property(nonatomic) long long _privateModifierFlags; // @synthesize _privateModifierFlags;
 @property(retain, nonatomic) NSString *_privateInput; // @synthesize _privateInput;
 @property(nonatomic) int _inputFlags; // @synthesize _inputFlags;
-@property(nonatomic) long long _modifierFlags; // @synthesize _modifierFlags;
+@property(nonatomic, setter=_setModifierFlags:) long long _modifierFlags; // @synthesize _modifierFlags;
 @property(retain, nonatomic) NSString *_markedInput; // @synthesize _markedInput;
 @property(retain, nonatomic) NSString *_commandModifiedInput; // @synthesize _commandModifiedInput;
 @property(retain, nonatomic) NSString *_shiftModifiedInput; // @synthesize _shiftModifiedInput;
@@ -61,8 +59,12 @@ __attribute__((visibility("hidden")))
 - (id)_cloneEvent;
 - (_Bool)isEqual:(id)arg1;
 - (_Bool)_shouldAttemptSecurePasteAuthentication;
-- (_Bool)_matchesKeyCommand:(id)arg1 usesPrivateShiftModifiedInput:(_Bool)arg2;
+- (long long)_matchFidelityFromKeyMapForKeyCommand:(id)arg1 translationMap:(id)arg2 translator:(id)arg3 addingModifiers:(long long)arg4 ignoringModifiers:(long long)arg5;
+- (long long)_matchFidelityForKeyCommand:(id)arg1 translationMap:(id)arg2 additionalModifiers:(long long)arg3;
+- (long long)_matchFidelityForKeyCommand:(id)arg1 translationMap:(id)arg2;
+- (long long)_matchFidelityForKeyCommand:(id)arg1;
 - (void)_setHIDEvent:(struct __IOHIDEvent *)arg1 keyboard:(struct __GSKeyboard *)arg2;
+@property(readonly, nonatomic) _Bool _isDeleteKey;
 @property(readonly, nonatomic) _Bool _isARepeat;
 @property(readonly, nonatomic) _Bool _isModifierKey;
 - (_Bool)_isPhysicalKeyEvent;

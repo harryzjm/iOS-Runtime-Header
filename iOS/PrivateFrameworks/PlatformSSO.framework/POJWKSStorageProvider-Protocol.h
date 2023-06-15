@@ -9,6 +9,6 @@
 @class NSData;
 
 @protocol POJWKSStorageProvider <NSObject>
-@property(retain) NSData *jwksCache;
+@property(copy) NSData *jwksCache;
 @end
 

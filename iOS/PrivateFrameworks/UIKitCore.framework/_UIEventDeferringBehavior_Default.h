@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 - (_Bool)shouldAllowFallbackWindowForEnvironment:(id)arg1;
+- (_Bool)wantsSystemKeyCommandOverlayRules;
 - (long long)compareRemoteRuleOwningElement:(id)arg1 toElement:(id)arg2 inEnvironment:(id)arg3;
 - (_Bool)shouldSuppressRemoteRuleForOwningElement:(id)arg1 inEnvironment:(id)arg2;
 - (_Bool)shouldDisableRemoteViewControllerEventDeferringForKeyboardKeyWindowChanges;

@@ -6,7 +6,7 @@
 
 #import <VideoSubscriberAccount/NSObject-Protocol.h>
 
-@class NSArray, NSDictionary, VSSubscription, VSUserAccount;
+@class NSArray, NSDictionary, NSNumber, NSString, VSSubscription, VSUserAccount;
 
 @protocol VSUserAccountServiceProtocol <NSObject>
 - (void)removeSubscriptions:(NSArray *)arg1;
@@ -14,6 +14,7 @@
 - (void)fetchActiveSubscriptionsWithOptions:(NSDictionary *)arg1 completionHandler:(void (^)(NSArray *, NSError *))arg2;
 - (void)forceUpdateUserAccountsWithCompletion:(void (^)(void))arg1;
 - (void)deleteUserAccount:(VSUserAccount *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)queryUserAccountsWithOptions:(long long)arg1 sourceIdentifier:(NSString *)arg2 sourceType:(NSNumber *)arg3 deviceIdentifier:(NSString *)arg4 completion:(void (^)(NSArray *, NSError *))arg5;
 - (void)queryUserAccountsWithOptions:(long long)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)updateUserAccount:(VSUserAccount *)arg1 completion:(void (^)(NSError *))arg2;
 @end

@@ -7,13 +7,20 @@
 #import <UIKitCore/UIKeyboardImplStateProtocol-Protocol.h>
 #import <UIKitCore/UITextInputSuggestionDelegate-Protocol.h>
 
-@class NSArray, NSAttributedString, NSDictionary, NSString, RTIAssistantItem, RTIInputSystemSourceSession, TIDocumentState, TIKeyboardCandidate, TIKeyboardIntermediateText, TIKeyboardOutput, UIDictationInputModeOptions, UIKeyboardCameraSessionRTIConfiguration, UIPhysicalKeyboardEvent, UIRemoteInputViewInfo, UIResponder, UITextInputTraits, UITextRange, UITextSuggestion, _UIKeyboardIndirectTextSelectionGestureState, _UISupplementalItem;
+@class NSArray, NSAttributedString, NSDictionary, NSString, NSURL, RTIAssistantItem, RTIInputSystemSourceSession, TIDocumentState, TIKeyboardCandidate, TIKeyboardInput, TIKeyboardIntermediateText, TIKeyboardOutput, UIDictationInputModeOptions, UIKeyboardCameraSessionRTIConfiguration, UIKeyboardTaskQueue, UIPhysicalKeyboardEvent, UIRemoteInputViewInfo, UIResponder, UITextInputTraits, UITextRange, UITextSuggestion, _UIKeyboardIndirectTextSelectionGestureState, _UISticker, _UISupplementalItem;
 @protocol UIKeyInput, UITextInput, UIWKInteractionViewProtocol;
 
 @protocol UIKBRTIPartnerDelegate <UIKeyboardImplStateProtocol, UITextInputSuggestionDelegate>
 @property(nonatomic) _Bool canSuggestSupplementalItemsForCurrentSelection;
 @property(readonly, nonatomic) _Bool needAutofillLogin;
 @property(nonatomic) _Bool performingRemoteTextOperations;
+@property(readonly, nonatomic) UIKeyboardTaskQueue *taskQueue;
+- (void)handleGrammarCorrectionEntries:(NSDictionary *)arg1;
+- (void)presentKeyboardFeedbackAssistantViewControllerForLogURL:(NSURL *)arg1;
+- (void)setCandidateDisplayIsExtended:(_Bool)arg1;
+- (void)undoWithKeyboardInput:(TIKeyboardInput *)arg1;
+- (void)setShiftStatesNeededInDestination:(_Bool)arg1 autoShifted:(_Bool)arg2 shiftLocked:(_Bool)arg3;
+- (void)clearShiftState;
 - (void)resumeDictationForResponderChange;
 - (void)performStopAutoDeleteAtDocumentStart;
 - (void)handleAutoDeleteContinuationOnDestinationWithDeletionCount:(unsigned long long)arg1;
@@ -27,14 +34,26 @@
 - (void)handleEventFromRemoteSource_insertSupplementalCandidate:(TIKeyboardCandidate *)arg1 textToCommit:(NSString *)arg2;
 - (void)ejectKeyDown;
 - (void)setInputMode:(NSString *)arg1 userInitiated:(_Bool)arg2;
+- (void)handleAutoFillPasswordDetected;
+- (void)handleAutoFillCreditCardDetected;
+- (void)handleAutoFillContactDetected;
+- (void)handleAutoFillPasswordPopoverCommand;
+- (void)handleAutoFillCreditCardPopoverCommand;
+- (void)handleAutoFillContactPopoverCommand;
 - (void)handleEmojiPopoverKeyCommand;
 - (void)setInputModeSwitcherVisibleInRemote:(_Bool)arg1;
 - (_Bool)inputModeSwitcherVisible;
+- (void)changingContextWithTrigger:(NSString *)arg1;
+- (void)acceptingCandidateWithTrigger:(NSString *)arg1;
+- (_Bool)returnKeyEnabled;
 - (void)setRemoteDelegateSupportsImagePaste:(_Bool)arg1;
 - (_Bool)delegateSupportsImagePaste;
 - (void)handleRemoteKeyboardCameraEvent_startCameraInput:(UIKeyboardCameraSessionRTIConfiguration *)arg1;
+- (void)showTextChoicesPrompt;
+- (void)acceptAutocorrectionWithCompletionHandler:(void (^)(_Bool))arg1 requestedByRemoteInputDestination:(_Bool)arg2;
 - (void)acceptAutocorrectionWithCompletionHandler:(void (^)(_Bool))arg1;
 - (void)acceptAutocorrection;
+- (void)handleRemoteDictationEvent_resumeDictation;
 - (void)handleRemoteDictationEvent_stopDictationIgnoreFinalizePhrases;
 - (void)handleRemoteDictationEvent_updateIdleDetection:(long long)arg1;
 - (void)handleRemoteDictationEvent_handleTip:(NSDictionary *)arg1;
@@ -45,25 +64,35 @@
 - (void)handleRemoteDictationEvent_startDictation;
 - (void)handleRemoteDictationEvent_switchToDictationLanguage:(NSString *)arg1;
 - (void)handleRemoteDictationEvent_switchToDictationInputModeWithOptions:(UIDictationInputModeOptions *)arg1;
+- (void)handleEventFromRemoteSource_insertAutofillContent:(NSDictionary *)arg1;
 - (void)provideAutoFillTypingUpdatesIfNecessary;
+- (void)_handleWebKeyEvent:(UIPhysicalKeyboardEvent *)arg1 withEventType:(unsigned long long)arg2 withInputString:(NSString *)arg3 withInputStringIgnoringModifiers:(NSString *)arg4;
 - (_Bool)performKeyboardEvent:(UIPhysicalKeyboardEvent *)arg1;
 - (void)performTextOperationActionSelector:(SEL)arg1;
 - (void)performOperations:(void (^)(void))arg1 withTextInputSource:(long long)arg2;
 - (void)updateDocumentViewsAfterKeyboardOutput:(TIKeyboardOutput *)arg1;
 - (_Bool)performKeyboardOutput:(TIKeyboardOutput *)arg1 checkingDelegate:(_Bool)arg2 forwardToRemoteInputSource:(_Bool)arg3;
 - (void)handleRemoteIndirectGestureWithState:(_UIKeyboardIndirectTextSelectionGestureState *)arg1;
+- (void)insertSticker:(_UISticker *)arg1;
 - (void)insertCustomTextSuggestion:(UITextSuggestion *)arg1;
 - (void)replaceRange:(UITextRange *)arg1 oldText:(NSString *)arg2 withText:(NSString *)arg3;
+- (void)setInlineCompletionAsMarkedText:(NSAttributedString *)arg1 selectedRange:(struct _NSRange)arg2 inputString:(NSString *)arg3 searchString:(NSString *)arg4;
 - (void)setAttributedMarkedText:(NSAttributedString *)arg1 selectedRange:(struct _NSRange)arg2 inputString:(NSString *)arg3 searchString:(NSString *)arg4;
 - (void)insertAttributedText:(NSAttributedString *)arg1;
 - (_Bool)assertTextForRemoteDocument:(NSString *)arg1 withSelectionDelta:(struct _NSRange)arg2 updatingSelection:(_Bool)arg3;
 - (unsigned int)assertIntermediateText:(TIKeyboardIntermediateText *)arg1;
 - (void)applyAssistantItem:(RTIAssistantItem *)arg1;
 - (void)updateAssistantViewInfo:(UIRemoteInputViewInfo *)arg1;
-- (void)updateInputDelegateForRemoteDocumentStateChange:(TIDocumentState *)arg1 selectedTextRange:(struct _NSRange)arg2 forceSync:(_Bool)arg3;
+- (void)updateForExpectedRemoteDocumentStateChange:(TIDocumentState *)arg1 selectedTextRange:(struct _NSRange)arg2 forceSync:(_Bool)arg3;
+- (void)updateInputDelegateForRemoteDocumentStateChange:(TIDocumentState *)arg1 selectedTextRange:(struct _NSRange)arg2 hasText:(_Bool)arg3 forceSync:(_Bool)arg4;
 - (void)updateInputDelegateForRemoteTraitChange:(UITextInputTraits *)arg1 forceSync:(_Bool)arg2;
+- (NSString *)textContentTypeForCurrentInputDelegate;
 - (UITextInputTraits *)textInputTraits;
 - (RTIInputSystemSourceSession *)inputSystemSourceSession;
+- (void)presentTextChoicePromptForRange:(UITextRange *)arg1;
+- (void)dismissTextChoicePrompt;
+- (void)textDidScroll;
+- (void)textWillScroll;
 - (void)textDidChange:(id <UITextInput>)arg1;
 - (void)textWillChange:(id <UITextInput>)arg1;
 - (void)setCaretVisible:(_Bool)arg1;

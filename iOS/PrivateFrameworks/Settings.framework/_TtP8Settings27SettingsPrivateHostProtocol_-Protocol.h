@@ -6,15 +6,16 @@
 
 #import <Settings/_TtP8Settings20SettingsHostProtocol_-Protocol.h>
 
-@class NSAttributedString, NSString;
+@class NSAttributedString, NSError, NSString, _TtC8Settings15NavigationToken;
 
 @protocol _TtP8Settings27SettingsPrivateHostProtocol_ <_TtP8Settings20SettingsHostProtocol_>
+- (void)signalWithExtensionID:(NSString *)arg1 milestone:(NSString *)arg2;
 - (void)navigationSubtitleDidChange:(NSAttributedString *)arg1;
 - (void)navigationTitleDidChange:(NSString *)arg1;
-- (void)navigationStackDidChangeWithHasPushedContent:(_Bool)arg1;
+- (void)navigationStackDidChange:(_TtC8Settings15NavigationToken *)arg1;
 
 @optional
-- (void)didEndHosting;
+- (void)didEndHosting:(NSError *)arg1;
 - (void)didBeginHosting;
 @end
 

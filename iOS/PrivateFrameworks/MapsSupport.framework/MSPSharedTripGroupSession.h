@@ -33,7 +33,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSString *initiatorIdentifier; // @synthesize initiatorIdentifier=_initiatorIdentifier;
 - (void)participantDidLeave:(id)arg1;
 - (void)participantDidJoin:(id)arg1;
-- (_Bool)_validParticipant:(id)arg1;
+- (_Bool)_isValidParticipant:(id)arg1;
 - (id)_currentRoutePath;
 - (_Bool)_sendChunkMessage:(id)arg1 to:(id)arg2 packet:(id)arg3 options:(id)arg4 error:(id *)arg5;
 - (_Bool)sendChunkedMessage:(id)arg1 to:(id)arg2 options:(id)arg3 error:(id *)arg4;

@@ -27,6 +27,11 @@ __attribute__((visibility("hidden")))
     _Bool _isFull;
     int _operatingMode;
     unsigned char _priority;
+    struct opaqueVCPacketBundlerCdrxBundleInfo *_cdrxBundleInfoRef;
+    _Bool _shouldSendPacket;
+    int _numBufferedSamples;
+    CDUnknownFunctionPointerType _packetHandler;
+    void *_packetHandlerContext;
 }
 
 @property(readonly, nonatomic) unsigned char priority; // @synthesize priority=_priority;
@@ -39,11 +44,9 @@ __attribute__((visibility("hidden")))
 - (void)unlock;
 - (void)lock;
 - (void)initLock;
-- (void)updatePriority:(unsigned char)arg1;
 - (void)resetBuffer;
 - (_Bool)bundleAudioLegacy:(void *)arg1 numInputBytes:(unsigned int)arg2 payloadType:(int)arg3 timestamp:(unsigned int)arg4;
 - (_Bool)_copyInputBytes:(void *)arg1 numInputBytes:(unsigned int)arg2 payloadType:(int)arg3 timestamp:(unsigned int)arg4;
-- (_Bool)bundleAudio:(void *)arg1 numInputBytes:(unsigned int)arg2 payloadType:(int)arg3 timestamp:(unsigned int)arg4 voiceActivity:(_Bool)arg5 priority:(unsigned char)arg6;
 - (_Bool)bundleAudioRFC3640:(void *)arg1 numInputBytes:(unsigned int)arg2 payloadType:(int)arg3 timestamp:(unsigned int)arg4;
 - (char *)accessUnitDataSectionHead;
 - (unsigned int)accessUnitHeaderSectionSizeMaximum;
@@ -57,11 +60,10 @@ __attribute__((visibility("hidden")))
 - (_Bool)setPacketsPerBundle:(unsigned int)arg1;
 @property(nonatomic) unsigned int maxPacketSize;
 - (_Bool)reallocateBufferWithMaxPacketSize:(unsigned int)arg1 maxPacketCount:(unsigned int)arg2;
-- (void)releaseBundleBuffer;
 - (_Bool)allocateBundleBuffer:(unsigned int)arg1;
 - (unsigned int)bundleBufferSizeWidthMaxPacketSize:(unsigned int)arg1 maxPacketCount:(unsigned int)arg2;
 - (void)dealloc;
-- (id)initWithOperatingMode:(int)arg1;
+- (id)initWithOperatingMode:(int)arg1 bundlingScheme:(int)arg2 packetHandler:(CDUnknownFunctionPointerType)arg3 packetHandlerContext:(void *)arg4;
 
 @end
 

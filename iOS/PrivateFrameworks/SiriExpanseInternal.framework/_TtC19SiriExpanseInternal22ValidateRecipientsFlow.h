@@ -11,6 +11,7 @@
 @interface _TtC19SiriExpanseInternal22ValidateRecipientsFlow : _TtCs12_SwiftObject
 {
     MISSING_TYPE *exitValue;
+    MISSING_TYPE *permittedRecipients;
     MISSING_TYPE *recipients;
     MISSING_TYPE *recipientsResolver;
 }

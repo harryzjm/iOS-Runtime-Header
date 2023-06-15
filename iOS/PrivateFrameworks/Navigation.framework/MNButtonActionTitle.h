@@ -6,20 +6,22 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class GEOComposedString, NSString;
 
 __attribute__((visibility("hidden")))
 @interface MNButtonActionTitle : NSObject
 {
-    unsigned long long _action;
-    NSString *_title;
     int _buttonDisplay;
+    unsigned long long _action;
+    GEOComposedString *_formattedTitle;
+    NSString *_title;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) int buttonDisplay; // @synthesize buttonDisplay=_buttonDisplay;
 @property(readonly, nonatomic) NSString *title; // @synthesize title=_title;
+@property(readonly, nonatomic) GEOComposedString *formattedTitle; // @synthesize formattedTitle=_formattedTitle;
 @property(readonly, nonatomic) unsigned long long action; // @synthesize action=_action;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

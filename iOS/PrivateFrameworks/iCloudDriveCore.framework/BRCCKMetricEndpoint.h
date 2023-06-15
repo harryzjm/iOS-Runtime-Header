@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class BRCAccountSession;
+@class BRCAccountSessionFPFS;
 
 __attribute__((visibility("hidden")))
 @interface BRCCKMetricEndpoint
 {
-    BRCAccountSession *_session;
+    BRCAccountSessionFPFS *_session;
 }
 
 - (void).cxx_destruct;

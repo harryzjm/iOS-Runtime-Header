@@ -7,6 +7,7 @@
 #import "MKTableViewCell.h"
 
 @class GEOComposedRouteAdvisoryItem, NSString, UIImageView, UIStackView;
+@protocol IncidentExtendedDetailCellDelegate;
 
 __attribute__((visibility("hidden")))
 @interface MKIncidentExtendedDetailCell : MKTableViewCell
@@ -14,12 +15,15 @@ __attribute__((visibility("hidden")))
     UIStackView *_stackView;
     UIImageView *_imageView;
     GEOComposedRouteAdvisoryItem *_advisoryItem;
+    id <IncidentExtendedDetailCellDelegate> _delegate;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <IncidentExtendedDetailCellDelegate> delegate; // @synthesize delegate=_delegate;
 - (_Bool)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
 - (void)_setConstraints;
 - (id)customBodyTextView;
+- (void)_didTapActionButton;
 - (void)configureWithAdvisoryItem:(id)arg1;
 - (id)initWithReuseIdentifier:(id)arg1;
 

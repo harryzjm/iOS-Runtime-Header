@@ -11,6 +11,7 @@
 @protocol XCUILocalDeviceScreenshotIPCInterface <NSObject>
 @property(readonly, nonatomic) _Bool supportsHEICImageEncoding;
 @property(readonly, nonatomic) _Bool useLegacyScreenshotPath;
+- (void)requestScreenshotAttachmentWithRequest:(XCTScreenshotRequest *)arg1 withReply:(void (^)(XCTAttachmentFuture *, NSError *))arg2;
 - (void)requestScreenshotWithRequest:(XCTScreenshotRequest *)arg1 withReply:(void (^)(XCTImage *, NSError *))arg2;
 @end
 

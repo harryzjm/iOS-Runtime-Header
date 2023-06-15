@@ -6,7 +6,7 @@
 
 #import <UserNotificationsServer/NSObject-Protocol.h>
 
-@class NSArray, NSNumber, NSSet, NSString, UNNotificationContent, UNNotificationRequest;
+@class NSArray, NSNumber, NSSet, NSString, UNNotificationConnectionDetails, UNNotificationContent, UNNotificationRequest;
 
 @protocol UNUserNotificationServerProtocol <NSObject>
 - (void)getNotificationSettingsForTopicsWithBundleIdentifier:(NSString *)arg1 withCompletionHandler:(void (^)(NSDictionary *))arg2;
@@ -34,6 +34,9 @@
 
 @optional
 - (void)getClearedInfoForDataProviderMigrationWithBundleIdentifier:(NSString *)arg1 withCompletionHandler:(void (^)(id))arg2;
+- (void)isAccessToNotificationCenterAllowedForServiceExtensionWithIdentifier:(NSString *)arg1 completionHandler:(void (^)(_Bool, NSError *))arg2;
+- (void)setConnectionDetails:(UNNotificationConnectionDetails *)arg1;
 - (void)requestRemoveAuthorizationForBundleIdentifier:(NSString *)arg1 completionHandler:(void (^)(_Bool, NSError *))arg2;
+- (void)setNotificationRequests:(NSArray *)arg1 forBundleIdentifier:(NSString *)arg2 completionHandler:(void (^)(NSError *))arg3;
 @end
 

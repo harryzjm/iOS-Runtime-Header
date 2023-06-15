@@ -10,7 +10,7 @@
 - (void)removeItemId:(NSString *)arg1 completion:(void (^)(unsigned short))arg2;
 - (void)addItems:(NSArray *)arg1 completion:(void (^)(unsigned short))arg2;
 - (oneway void)abortDatasetStream;
-- (oneway void)closeDatasetStream:(void (^)(unsigned short))arg1;
+- (oneway void)closeDatasetStream:(void (^)(unsigned short, unsigned short))arg1;
 - (oneway void)openDatasetStream:(unsigned long long)arg1 validity:(NSString *)arg2 itemType:(long long)arg3 originAppId:(NSString *)arg4 deviceId:(NSString *)arg5 userId:(NSString *)arg6 options:(unsigned short)arg7 completion:(void (^)(unsigned short, unsigned long long))arg8;
 @end
 

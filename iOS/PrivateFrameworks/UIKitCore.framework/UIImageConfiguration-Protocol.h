@@ -12,7 +12,6 @@
 
 @protocol UIImageConfiguration <NSObject, NSCopying, NSSecureCoding>
 @property(readonly, nonatomic) UITraitCollection *traitCollection;
-- (_Bool)isEquivalentToConfiguration:(UIImageConfiguration *)arg1;
 - (id)configurationByApplyingConfiguration:(UIImageConfiguration *)arg1;
 - (id)configurationWithTraitCollection:(UITraitCollection *)arg1;
 @end

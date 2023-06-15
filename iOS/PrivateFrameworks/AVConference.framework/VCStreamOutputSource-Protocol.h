@@ -7,10 +7,8 @@
 #import <AVConference/NSObject-Protocol.h>
 
 @class VCStreamOutput;
-@protocol VCStreamSychronizationDelegate;
 
 @protocol VCStreamOutputSource <NSObject>
 @property(retain) VCStreamOutput *streamOutput;
-@property(nonatomic) id <VCStreamSychronizationDelegate> synchronizationDelegate;
 @end
 

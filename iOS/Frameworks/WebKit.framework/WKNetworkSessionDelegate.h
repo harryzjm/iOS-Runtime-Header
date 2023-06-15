@@ -11,8 +11,8 @@
 __attribute__((visibility("hidden")))
 @interface WKNetworkSessionDelegate : NSObject
 {
-    struct WeakPtr<WebKit::NetworkSessionCocoa, WTF::EmptyCounter> _session;
-    struct WeakPtr<WebKit::SessionWrapper, WTF::EmptyCounter> _sessionWrapper;
+    struct WeakPtr<WebKit::NetworkSessionCocoa, WTF::DefaultWeakPtrImpl> _session;
+    struct WeakPtr<WebKit::SessionWrapper, WTF::DefaultWeakPtrImpl> _sessionWrapper;
     _Bool _withCredentials;
 }
 
@@ -26,6 +26,8 @@ __attribute__((visibility("hidden")))
 - (void)URLSession:(id)arg1 downloadTask:(id)arg2 didFinishDownloadingToURL:(id)arg3;
 - (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveData:(id)arg3;
 - (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveResponse:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)URLSession:(id)arg1 task:(id)arg2 _didReceiveInformationalResponse:(id)arg3;
+- (void)URLSession:(id)arg1 task:(id)arg2 didReceiveInformationalResponse:(id)arg3;
 - (void)URLSession:(id)arg1 task:(id)arg2 didFinishCollectingMetrics:(id)arg3;
 - (void)URLSession:(id)arg1 task:(id)arg2 didCompleteWithError:(id)arg3;
 - (void)URLSession:(id)arg1 task:(id)arg2 didReceiveChallenge:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;

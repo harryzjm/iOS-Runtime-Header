@@ -16,6 +16,7 @@
     _Bool _allowsPowerNapScheduling;
     _Bool _resolvedAutomaticallyRetryNetworkFailures;
     _Bool _isCrossOwner;
+    _Bool _shouldCloneFileInAssetCache;
     long long _databaseScope;
     CKContainerID *_containerID;
     NSString *_topmostParentOperationID;
@@ -33,7 +34,7 @@
     unsigned long long _duetPreClearedMode;
     C2MetricOptions *_metricOptions;
     NSNumber *_cacheDeleteAvailableSpaceClass;
-    NSObject<C2NetworkingDelegate> *_networkingDelegate;
+    id <C2NetworkingDelegate> _networkingDelegate;
     unsigned long long _networkServiceType;
     CKOperationMMCSRequestOptions *_MMCSRequestOptions;
 }
@@ -41,7 +42,8 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) CKOperationMMCSRequestOptions *MMCSRequestOptions; // @synthesize MMCSRequestOptions=_MMCSRequestOptions;
 @property(nonatomic) unsigned long long networkServiceType; // @synthesize networkServiceType=_networkServiceType;
-@property(retain, nonatomic) NSObject<C2NetworkingDelegate> *networkingDelegate; // @synthesize networkingDelegate=_networkingDelegate;
+@property(retain, nonatomic) id <C2NetworkingDelegate> networkingDelegate; // @synthesize networkingDelegate=_networkingDelegate;
+@property(nonatomic) _Bool shouldCloneFileInAssetCache; // @synthesize shouldCloneFileInAssetCache=_shouldCloneFileInAssetCache;
 @property(retain, nonatomic) NSNumber *cacheDeleteAvailableSpaceClass; // @synthesize cacheDeleteAvailableSpaceClass=_cacheDeleteAvailableSpaceClass;
 @property(nonatomic) _Bool isCrossOwner; // @synthesize isCrossOwner=_isCrossOwner;
 @property(retain, nonatomic) C2MetricOptions *metricOptions; // @synthesize metricOptions=_metricOptions;

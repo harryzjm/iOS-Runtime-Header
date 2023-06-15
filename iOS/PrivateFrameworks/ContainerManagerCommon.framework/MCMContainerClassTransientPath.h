@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 
 + (id)_temporaryComponent;
 + (id)_globalTemporaryComponent;
-+ (id)transientURLWithUserIdentity:(id)arg1;
++ (id)transientURLWithUserIdentity:(id)arg1 withContainerClass:(unsigned long long)arg2;
 + (id)transientGlobalURL;
 + (id)transientGlobalBundleURL;
 + (id)containerPathForUserIdentity:(id)arg1 containerClass:(unsigned long long)arg2;

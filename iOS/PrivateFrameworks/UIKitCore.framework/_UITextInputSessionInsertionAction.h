@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned long long emojiCount; // @synthesize emojiCount=_emojiCount;
 @property(nonatomic) unsigned long long options; // @synthesize options=_options;
 @property(nonatomic) unsigned long long textLength; // @synthesize textLength=_textLength;
+- (long long)inputActionCount;
 - (id)description;
 - (_Bool)changedContent;
 - (long long)mergeActionIfPossible:(id)arg1;

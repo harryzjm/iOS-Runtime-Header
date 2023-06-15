@@ -4,22 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
-@class NSString;
-
 __attribute__((visibility("hidden")))
-@interface MPCRadioPlaybackIntentDataSource : NSObject
+@interface MPCRadioPlaybackIntentDataSource
 {
 }
 
-- (void)getPlaybackContextForIntent:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (void)_getPlaybackContextForIntent:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 
 @end
 

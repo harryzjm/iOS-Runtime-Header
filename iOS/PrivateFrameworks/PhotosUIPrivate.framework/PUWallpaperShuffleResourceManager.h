@@ -11,11 +11,14 @@
 __attribute__((visibility("hidden")))
 @interface PUWallpaperShuffleResourceManager : NSObject
 {
+    _Bool _depthEnabledForAllMedia;
     PIParallaxStyle *_style;
     NSDictionary *_initialPosterMediaByAssetUUIDs;
     long long _shuffleType;
+    PIParallaxStyle *_persistedStyle;
     NSOperationQueue *_operationQueue;
     NSOperationQueue *_requestOperationQueue;
+    NSOperationQueue *_exportOperationQueue;
     NSMutableDictionary *_segmentationLoadingOperationsByAssetUUIDs;
     PUWallpaperShuffleLayerStackLoadingOperation *_currentLayerStackOperation;
     PUWallpaperShuffleLayerStackLoadingOperation *_nextLayerStackOperation;
@@ -29,10 +32,13 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) PUWallpaperShuffleLayerStackLoadingOperation *nextLayerStackOperation; // @synthesize nextLayerStackOperation=_nextLayerStackOperation;
 @property(retain, nonatomic) PUWallpaperShuffleLayerStackLoadingOperation *currentLayerStackOperation; // @synthesize currentLayerStackOperation=_currentLayerStackOperation;
 @property(readonly, nonatomic) NSMutableDictionary *segmentationLoadingOperationsByAssetUUIDs; // @synthesize segmentationLoadingOperationsByAssetUUIDs=_segmentationLoadingOperationsByAssetUUIDs;
+@property(readonly, nonatomic) NSOperationQueue *exportOperationQueue; // @synthesize exportOperationQueue=_exportOperationQueue;
 @property(readonly, nonatomic) NSOperationQueue *requestOperationQueue; // @synthesize requestOperationQueue=_requestOperationQueue;
 @property(readonly, nonatomic) NSOperationQueue *operationQueue; // @synthesize operationQueue=_operationQueue;
+@property(readonly, nonatomic) PIParallaxStyle *persistedStyle; // @synthesize persistedStyle=_persistedStyle;
 @property(readonly, nonatomic) long long shuffleType; // @synthesize shuffleType=_shuffleType;
 @property(readonly, nonatomic) NSDictionary *initialPosterMediaByAssetUUIDs; // @synthesize initialPosterMediaByAssetUUIDs=_initialPosterMediaByAssetUUIDs;
+@property(nonatomic) _Bool depthEnabledForAllMedia; // @synthesize depthEnabledForAllMedia=_depthEnabledForAllMedia;
 @property(retain, nonatomic) PIParallaxStyle *style; // @synthesize style=_style;
 - (id)segmentationItemLoadingOperationForPosterMedia:(id)arg1;
 - (void)exportResourcesForFinalPosterMedia:(id)arg1 options:(unsigned long long)arg2 assetDirectory:(id)arg3 progressHandler:(CDUnknownBlockType)arg4 completion:(CDUnknownBlockType)arg5;
@@ -40,11 +46,13 @@ __attribute__((visibility("hidden")))
 - (void)cancelPreloading;
 - (id)_loadResourceForPosterMedia:(id)arg1 isPreloading:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)requestResourceForPosterMedia:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_preloadNextMedia;
+- (void)_handleSetDepthEnabledForAllMedia:(_Bool)arg1;
 - (void)_handleSetStyle:(id)arg1;
 - (void)stopPreloadingResources;
 - (void)stopPreloadingResourcesWithTimeout:(double)arg1;
 - (void)startPreloadingResourcesForPosterMedia:(id)arg1;
-- (id)initWithPosterMedia:(id)arg1 style:(id)arg2 assetDirectory:(id)arg3 photoLibrary:(id)arg4 shuffleType:(long long)arg5;
+- (id)initWithPosterMedia:(id)arg1 style:(id)arg2 assetDirectory:(id)arg3 persistedStyle:(id)arg4 photoLibrary:(id)arg5 shuffleType:(long long)arg6;
 
 @end
 

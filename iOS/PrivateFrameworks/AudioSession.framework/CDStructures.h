@@ -29,10 +29,12 @@ struct AudioPresentationTimeStamp {
     unsigned int _field1;
     unsigned int _field2;
     unsigned long long _field3;
-    double _field4;
-    double _field5;
-    double _field6;
-    double _field7;
+    unsigned long long _field4;
+    unsigned long long _field5;
+    unsigned long long _field6;
+    unsigned long long _field7;
+    double _field8;
+    double _field9;
 };
 
 struct AudioTimeStamp {
@@ -52,7 +54,6 @@ struct IOControllerImpl {
     _Bool mIsDecoupledInput;
     struct weak_ptr<as::client::XPCConnection> mXPCConnection;
     struct atomic<unsigned int> mTimingStateSlot;
-    struct DeviceTimeClient *mDeviceTimeClient;
     struct synchronized<(anonymous namespace)::ListenerMgr, caulk::mach::unfair_lock, caulk::empty_atomic_interface<(anonymous namespace)::ListenerMgr>> mListenerMgr;
 };
 
@@ -95,6 +96,11 @@ struct os_unfair_lock_s {
     unsigned int _os_unfair_lock_opaque;
 };
 
+struct shared_ptr<as::client::DeviceTimeClient> {
+    struct DeviceTimeClient *__ptr_;
+    struct __shared_weak_count *__cntrl_;
+};
+
 struct shared_ptr<as::client::XPCConnection> {
     struct XPCConnection *_field1;
     struct __shared_weak_count *_field2;
@@ -129,6 +135,11 @@ typedef struct {
 } CDStruct_4c969caf;
 
 // Template types
+typedef struct shared_ptr<as::client::DeviceTimeClient> {
+    struct DeviceTimeClient *__ptr_;
+    struct __shared_weak_count *__cntrl_;
+} shared_ptr_a9ec9eae;
+
 typedef struct shared_ptr<as::client::XPCConnection> {
     struct XPCConnection *_field1;
     struct __shared_weak_count *_field2;

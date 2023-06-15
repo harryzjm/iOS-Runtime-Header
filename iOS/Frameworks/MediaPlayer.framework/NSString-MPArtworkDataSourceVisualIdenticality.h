@@ -10,6 +10,7 @@
 - (id)stringRepresentation;
 - (id)stringByLeftPaddingToLength:(unsigned long long)arg1 withString:(id)arg2 startingAtIndex:(unsigned long long)arg3;
 - (id)MPMediaLibraryDataProviderSystemML3CoercedString;
+- (id)MP_colorFromHexString;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

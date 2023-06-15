@@ -6,10 +6,10 @@
 
 #import <BacklightServicesHost/BLSAssertionService-Protocol.h>
 
-@protocol BLSAssertionServiceResponding, BLSHOSTimerProviding;
+@protocol BLSAssertionServiceResponding, BLSHOSInterfaceProviding;
 
 @protocol BLSHAssertionAttributeHandlerService <BLSAssertionService>
-@property(readonly, nonatomic) id <BLSHOSTimerProviding> osTimerProvider;
+@property(readonly, nonatomic) id <BLSHOSInterfaceProviding> osInterfaceProvider;
 - (void)willCancelAssertion:(id <BLSAssertionServiceResponding>)arg1;
 - (void)resumeAssertion:(id <BLSAssertionServiceResponding>)arg1;
 - (void)pauseAssertion:(id <BLSAssertionServiceResponding>)arg1;

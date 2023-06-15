@@ -33,7 +33,6 @@ __attribute__((visibility("hidden")))
 - (void)_setNeedsRebuildLabels;
 - (void)_rebuildLabels;
 - (void)_updateFont;
-- (void)traitCollectionDidChange:(id)arg1;
 - (id)initWithDataModel:(id)arg1;
 
 @end

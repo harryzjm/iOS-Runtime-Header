@@ -46,6 +46,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) unsigned long long hash;
 @property(retain, nonatomic) NSString *legacyTetheredSyncComputerAnchor;
 @property(retain, nonatomic) NSString *legacyTetheredSyncDeviceAnchor;
+@property(readonly, nonatomic) _Bool shouldCaptureMetricsForQueries;
 @property(readonly, nonatomic) _Bool shouldLogPrivacyAccountingAccessEvents;
 @property(readonly) Class superclass;
 

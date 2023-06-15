@@ -13,7 +13,6 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)fetchRequest;
 - (void)populateFromKeyRequest:(id)arg1 video:(id)arg2;
 
 // Remaining properties

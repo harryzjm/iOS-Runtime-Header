@@ -13,9 +13,11 @@ __attribute__((visibility("hidden")))
 {
     NSURL *_photoURL;
     NSString *_title;
+    NSString *_photoID;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *photoID; // @synthesize photoID=_photoID;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
 - (void)configureWithSize:(struct CGSize)arg1 imageProvider:(CDUnknownBlockType)arg2;
 - (id)initWithPhotoURL:(id)arg1;

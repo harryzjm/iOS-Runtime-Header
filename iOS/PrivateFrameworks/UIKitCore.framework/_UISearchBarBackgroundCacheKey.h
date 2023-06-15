@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface _UISearchBarBackgroundCacheKey : NSObject <NSCopying>
+@interface _UISearchBarBackgroundCacheKey : NSObject
 {
     long long _barPosition;
     _Bool _usesContiguousBarBackground;

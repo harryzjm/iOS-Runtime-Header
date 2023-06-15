@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MNStartNavigationDetails, MNUserOptions, NSArray, NSHashTable, NSMutableArray, NSString, NSXPCConnection, geo_isolater;
+@class MNStartNavigationDetails, MNStartNavigationReconnectionDetails, MNUserOptions, NSArray, NSHashTable, NSMutableArray, NSString, NSXPCConnection, geo_isolater;
 @protocol MNNavigationServiceClientInterface, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -20,8 +20,7 @@ __attribute__((visibility("hidden")))
     MNStartNavigationDetails *_startNavigationDetails;
     geo_isolater *_interruptionDatesLock;
     NSMutableArray *_interruptionDates;
-    _Bool _isReconnecting;
-    NSArray *_announcementsToIgnore;
+    MNStartNavigationReconnectionDetails *_reconnectionDetails;
     NSObject<OS_dispatch_queue> *_serialQueue;
     long long _sandboxHandle;
     id <MNNavigationServiceClientInterface> _delegate;
@@ -29,6 +28,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <MNNavigationServiceClientInterface> delegate; // @synthesize delegate=_delegate;
+- (void)navigationServiceProxy:(id)arg1 didSendNavigationServiceCallback:(id)arg2;
 - (void)navigationServiceProxy:(id)arg1 didUpdateNavigationDetails:(id)arg2;
 - (void)navigationServiceProxy:(id)arg1 didChangeFromState:(unsigned long long)arg2 toState:(unsigned long long)arg3;
 - (void)navigationServiceProxy:(id)arg1 willChangeFromState:(unsigned long long)arg2 toState:(unsigned long long)arg3;
@@ -45,6 +45,7 @@ __attribute__((visibility("hidden")))
 - (void)setTracePlaybackSpeed:(double)arg1;
 - (void)setTraceIsPlaying:(_Bool)arg1;
 - (void)acceptReroute:(_Bool)arg1 forTrafficIncidentAlert:(id)arg2;
+- (void)changeOfflineState:(unsigned long long)arg1;
 - (void)enableNavigationCapability:(unsigned long long)arg1;
 - (void)disableNavigationCapability:(unsigned long long)arg1;
 - (void)setJunctionViewImageWidth:(double)arg1 height:(double)arg2;
@@ -59,6 +60,7 @@ __attribute__((visibility("hidden")))
 - (void)repeatCurrentGuidanceWithReply:(CDUnknownBlockType)arg1;
 - (void)changeUserOptions:(id)arg1;
 - (void)setGuidanceType:(unsigned long long)arg1;
+- (void)changeTransportType:(int)arg1 route:(id)arg2;
 - (void)switchToRoute:(id)arg1;
 - (void)forceReroute;
 - (void)resumeOriginalDestination;
@@ -80,8 +82,11 @@ __attribute__((visibility("hidden")))
 - (_Bool)_shouldReconnectWithInterruptionOnDate:(id)arg1;
 - (void)_restoreIdleConnection;
 - (void)_restoreNavigationSession;
+- (void)_handleDisconnect;
+- (void)_handleInvalidation;
 - (void)_handleInterruption;
 - (_Bool)_hasNavigationServiceEntitlement;
+- (void)_setExpectedClassesForClientInterface:(id)arg1;
 - (void)_openConnection;
 - (void)_updateConnection;
 @property(readonly, nonatomic) unsigned long long clientCount;

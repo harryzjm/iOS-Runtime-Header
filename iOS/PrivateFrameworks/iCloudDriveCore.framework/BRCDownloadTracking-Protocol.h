@@ -6,9 +6,9 @@
 
 #import <iCloudDriveCore/NSObject-Protocol.h>
 
-@class BRFileObjectID, NSError;
+@class BRFileObjectID, NSError, NSString;
 
 @protocol BRCDownloadTracking <NSObject>
-- (void)downloadTrackedForFileObjectID:(BRFileObjectID *)arg1 didFinishWithError:(NSError *)arg2;
+- (void)downloadTrackedForFileObjectID:(BRFileObjectID *)arg1 withEtagIfLoser:(NSString *)arg2 didFinishWithError:(NSError *)arg3;
 @end
 

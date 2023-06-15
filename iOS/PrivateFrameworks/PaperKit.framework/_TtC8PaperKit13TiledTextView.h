@@ -14,39 +14,12 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *currentPaperView;
     MISSING_TYPE *paperLinedPaper;
     MISSING_TYPE *canvasElementController;
+    MISSING_TYPE *selectionInteractionDelegate;
 }
 
 - (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (id)initInScrollView:(id)arg1 sixChannelBlending:(_Bool)arg2 defaultDrawingClass:(Class)arg3 readOnly:(_Bool)arg4;
-- (void)selectionInteraction:(id)arg1 contextMenuInteraction:(id)arg2 willEndForConfiguration:(id)arg3 animator:(id)arg4 forElement:(id)arg5 inAttachment:(id)arg6;
-- (void)selectionInteraction:(id)arg1 contextMenuInteraction:(id)arg2 willDisplayMenuForConfiguration:(id)arg3 animator:(id)arg4 forElement:(id)arg5 inAttachment:(id)arg6;
-- (id)selectionInteraction:(id)arg1 contextMenuInteraction:(id)arg2 previewForHighlightingMenuWithConfiguration:(id)arg3 forElement:(id)arg4 inAttachment:(id)arg5;
-- (id)selectionInteraction:(id)arg1 contextMenuInteraction:(id)arg2 configurationForElement:(id)arg3 inAttachment:(id)arg4;
-- (_Bool)selectionInteraction:(id)arg1 didLongPressElement:(id)arg2 withGesture:(id)arg3 inAttachment:(id)arg4;
-- (void)selectionInteraction:(id)arg1 didTapElement:(id)arg2 withGesture:(id)arg3 inAttachment:(id)arg4;
-- (void)selectionInteraction:(id)arg1 didDropItemProvider:(id)arg2 inAttachment:(id)arg3 withCompletion:(CDUnknownBlockType)arg4;
-- (void)selectionInteraction:(id)arg1 dragInteractionWillEndForElements:(id)arg2 withOperation:(unsigned long long)arg3 inAttachment:(id)arg4;
-- (void)selectionInteraction:(id)arg1 dragInteractionWillBeginForElements:(id)arg2 inAttachment:(id)arg3;
-- (void)selectionInteraction:(id)arg1 renderPreviewForElements:(id)arg2 inContext:(struct CGContext *)arg3 withConfig:(id)arg4 inAttachment:(id)arg5 withCompletion:(CDUnknownBlockType)arg6;
-- (id)selectionInteraction:(id)arg1 selectedElementsInAttachment:(id)arg2;
-- (id)selectionInteraction:(id)arg1 elementsInAttachment:(id)arg2;
-- (_Bool)selectionInteraction:(id)arg1 selectionContainsPoint:(struct CGPoint)arg2 inAttachment:(id)arg3;
-- (id)selectionInteraction:(id)arg1 elementsForSpaceInsertedAtPoint:(struct CGPoint)arg2 inAttachment:(id)arg3;
-- (id)selectionInteraction:(id)arg1 didDuplicateElements:(id)arg2 inAttachment:(id)arg3;
-- (void)selectionInteraction:(id)arg1 didDeleteElements:(id)arg2 inAttachment:(id)arg3;
-- (void)selectionInteractionDidPaste:(id)arg1 atPoint:(struct CGPoint)arg2 inAttachment:(id)arg3;
-- (id)selectionInteraction:(id)arg1 pasteboardRepresentationsForElements:(id)arg2 strokes:(id)arg3 inAttachment:(id)arg4;
-- (_Bool)selectionInteraction:(id)arg1 canPerformAction:(SEL)arg2 withSender:(id)arg3 inAttachment:(id)arg4;
-- (void)selectionInteraction:(id)arg1 didClearSelectionForElements:(id)arg2 inAttachment:(id)arg3;
-- (void)selectionInteraction:(id)arg1 didEndDraggingElements:(id)arg2 inAttachment:(id)arg3;
-- (void)selectionInteraction:(id)arg1 didDragElements:(id)arg2 withTransform:(struct CGAffineTransform)arg3 inAttachment:(id)arg4;
-- (void)selectionInteraction:(id)arg1 didSelectElements:(id)arg2 inAttachment:(id)arg3;
-- (const struct CGPath *)selectionInteraction:(id)arg1 pathForElement:(id)arg2 inAttachment:(id)arg3;
-- (id)selectionInteraction:(id)arg1 requestElementsInPath:(id)arg2 inAttachment:(id)arg3;
-- (id)selectionInteraction:(id)arg1 requestElementsInRect:(struct CGRect)arg2 inAttachment:(id)arg3;
-- (_Bool)selectionInteractionShouldForwardToElements:(id)arg1 atPoint:(struct CGPoint)arg2 forEvent:(id)arg3;
-- (_Bool)selectionInteractionShouldBegin:(id)arg1 atPoint:(struct CGPoint)arg2 forEvent:(id)arg3 orGestureRecognizer:(id)arg4;
 @property(nonatomic, retain) PKLinedPaper *linedPaper;
 - (void)didMoveToWindow;
 

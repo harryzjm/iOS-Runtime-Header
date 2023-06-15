@@ -10,6 +10,7 @@
 {
 }
 
++ (id)errorWithErrorCode:(unsigned long long)arg1 mergingUserInfo:(id)arg2 intoExistingUserInfo:(id)arg3;
 + (id)errorWithErrorCode:(unsigned long long)arg1 userInfo:(id)arg2;
 + (id)errorWithErrorCode:(unsigned long long)arg1 underlyingError:(id)arg2;
 + (id)errorWithErrorCode:(unsigned long long)arg1;

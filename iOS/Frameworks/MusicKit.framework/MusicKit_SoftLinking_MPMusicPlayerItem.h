@@ -12,6 +12,7 @@
 __attribute__((visibility("hidden")))
 @interface MusicKit_SoftLinking_MPMusicPlayerItem : NSObject
 {
+    _Bool _isExplicit;
     _Bool _isMusicVideo;
     NSString *_identifier;
     NSString *_title;
@@ -38,6 +39,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy, nonatomic) NSNumber *hasHDR; // @synthesize hasHDR=_hasHDR;
 @property(readonly, copy, nonatomic) NSNumber *has4K; // @synthesize has4K=_has4K;
 @property(readonly, nonatomic) _Bool isMusicVideo; // @synthesize isMusicVideo=_isMusicVideo;
+@property(readonly, nonatomic) _Bool isExplicit; // @synthesize isExplicit=_isExplicit;
 @property(readonly, copy, nonatomic) NSDate *releaseDate; // @synthesize releaseDate=_releaseDate;
 @property(readonly, copy, nonatomic) NSNumber *discNumber; // @synthesize discNumber=_discNumber;
 @property(readonly, copy, nonatomic) NSNumber *trackNumber; // @synthesize trackNumber=_trackNumber;

@@ -10,8 +10,9 @@
 
 @interface _TtC24IntelligencePlatformCore24PromoteConstructionPhase : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *shouldContinue;
+    MISSING_TYPE *phaseName;
     MISSING_TYPE *graphStore;
+    MISSING_TYPE *resolverKeyValueStore;
 }
 
 @end

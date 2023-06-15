@@ -4,15 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <NotesEditor/ICTTTextUndoTarget-Protocol.h>
 #import <NotesEditor/ICTableDelegate-Protocol.h>
 #import <NotesEditor/NSObject-Protocol.h>
-#import <NotesEditor/TTTextUndoTarget-Protocol.h>
 
-@protocol ICTableAttachmentProviderDelegate <NSObject, ICTableDelegate, TTTextUndoTarget>
-
-@optional
+@protocol ICTableAttachmentProviderDelegate <NSObject, ICTableDelegate, ICTTTextUndoTarget>
 - (void)tableAttachmentSaveOnMainThread;
-- (void)tableAttachmentDidMerge;
-- (void)tableAttachmentWillMerge;
 @end
 

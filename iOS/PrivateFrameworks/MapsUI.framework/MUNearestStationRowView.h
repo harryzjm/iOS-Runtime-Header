@@ -22,7 +22,6 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)_updateFonts;
-- (void)traitCollectionDidChange:(id)arg1;
 @property(retain, nonatomic) NSString *distanceString;
 - (void)layoutSubviews;
 - (void)_setupConstraints;

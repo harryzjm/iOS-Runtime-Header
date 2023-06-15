@@ -11,9 +11,9 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)init;
 - (id)stringify:(id)arg1:(id)arg2;
 - (id)parse:(id)arg1;
+- (id)init;
 
 @end
 

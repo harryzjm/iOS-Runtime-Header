@@ -15,8 +15,8 @@ __attribute__((visibility("hidden")))
     double _vectorScale;
     struct CGSize _sizeInPixels;
     struct CGImage *_overrideImageRef;
-    _Atomic id _isMultiColor;
-    _Atomic id _numberOfHierarchyLayers;
+    _Atomic int _isMultiColor;
+    _Atomic long long _numberOfHierarchyLayers;
 }
 
 - (void).cxx_destruct;
@@ -43,15 +43,15 @@ __attribute__((visibility("hidden")))
 - (_Bool)isVectorGlyph;
 - (struct CGImage *)CGImage;
 - (_Bool)_canProvideCGImageDirectly;
-- (_Bool)canEmitDrawingCommands;
+- (_Bool)canEmitVectorDrawingCommands;
 - (_Bool)canScaleImageToTargetResolution;
-- (_Bool)canDrawImage;
 - (_Bool)isCGImage;
 - (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)outlinePath;
 - (double)vectorScale;
+- (id)typeName;
 - (id)initWithScale:(double)arg1;
 - (id)initWithCUIVectorGlyph:(id)arg1 scale:(double)arg2;
 

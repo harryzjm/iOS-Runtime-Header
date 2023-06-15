@@ -6,12 +6,11 @@
 
 #import <BulletinBoard/NSObject-Protocol.h>
 
-@class BBBulletin, BBSyncService, NSArray, NSSet, NSString;
+@class NSArray, NSString;
+@protocol BBSyncServiceInterface;
 
 @protocol BBSyncServiceDelegate <NSObject>
-- (NSSet *)syncService:(BBSyncService *)arg1 sectionIdentifiersForUniversalSectionIdentifier:(NSString *)arg2;
-- (NSString *)syncService:(BBSyncService *)arg1 universalSectionIdentifierForSectionIdentifier:(NSString *)arg2;
-- (_Bool)syncService:(BBSyncService *)arg1 shouldAbortDelayedDismissalForBulletin:(BBBulletin *)arg2;
-- (void)syncService:(BBSyncService *)arg1 receivedDismissalDictionaries:(NSArray *)arg2 dismissalIDs:(NSArray *)arg3 inSection:(NSString *)arg4 forFeeds:(unsigned long long)arg5;
+- (NSString *)syncService:(id <BBSyncServiceInterface>)arg1 universalSectionIdentifierForSectionIdentifier:(NSString *)arg2;
+- (void)syncService:(id <BBSyncServiceInterface>)arg1 receivedDismissalDictionaries:(NSArray *)arg2 dismissalIDs:(NSArray *)arg3 inSection:(NSString *)arg4 universalSectionID:(NSString *)arg5 forFeeds:(unsigned long long)arg6;
 @end
 

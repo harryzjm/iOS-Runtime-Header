@@ -6,9 +6,11 @@
 
 #import <NewsArticles/NSObject-Protocol.h>
 
+@class SXJSONArray;
+
 @protocol SXConditionalObject <NSObject>
 
 @optional
-@property(nonatomic, readonly) id conditional;
+@property(readonly, nonatomic) SXJSONArray *conditional;
 @end
 

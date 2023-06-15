@@ -6,12 +6,13 @@
 
 #import <SOS/SOSClientProtocol-Protocol.h>
 
-@class SOSStatus;
+@class SOSButtonPressState, SOSStatus;
 
 @protocol SOSInternalClientProtocol <SOSClientProtocol>
 - (void)didUpdateSOSStatus:(SOSStatus *)arg1;
 - (void)didDismissClientSOSBeforeSOSCall:(long long)arg1;
 - (void)dismissClientSOSWithCompletion:(void (^)(_Bool))arg1;
+- (void)updateClientCurrentSOSButtonPressState:(SOSButtonPressState *)arg1;
 - (void)updateClientCurrentSOSInteractiveState:(long long)arg1;
 - (void)updateClientCurrentSOSInitiationState:(long long)arg1;
 @end

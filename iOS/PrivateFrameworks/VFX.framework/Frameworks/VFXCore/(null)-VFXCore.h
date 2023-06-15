@@ -5,7 +5,6 @@
 //
 
 @interface (null) (VFXCore)
-- (void)captureOutput:(id)arg1 didOutputSampleBuffer:(struct opaqueCMSampleBuffer *)arg2 fromConnection:(id)arg3;
-- (void)captureOutput:(id)arg1 didDropSampleBuffer:(struct opaqueCMSampleBuffer *)arg2 fromConnection:(id)arg3;
+- (id)absoluteURLForAssetPath:(id)arg1;
 @end
 

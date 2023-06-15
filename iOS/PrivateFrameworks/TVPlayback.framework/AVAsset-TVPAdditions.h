@@ -12,6 +12,7 @@
 + (id)tvp_groupedAudioAVMediaSelectionOptionsFromOptions:(id)arg1;
 - (long long)tvp_maximumVideoRange;
 - (long long)tvp_maximumVideoResolution;
+- (id)tvp_mediaSelectionGroupForMediaCharacteristic:(id)arg1;
 - (id)tvp_sortedSubtitleAVMediaSelectionOptions;
 - (id)tvp_sortedAudioAVMediaSelectionOptions;
 @end

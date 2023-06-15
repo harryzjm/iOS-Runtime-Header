@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CLLocation, NSArray, NSData, NSDictionary, NSString, NSUUID;
+@class CLLocation, NSArray, NSData, NSDate, NSDictionary, NSString, NSUUID;
 
 @protocol CLLocationInternalServiceProtocol
 - (void)notifyWeatherForecast:(NSDictionary *)arg1 airQualityConditions:(NSDictionary *)arg2 hourlyForecasts:(NSArray *)arg3 dailyForecasts:(NSArray *)arg4 latitude:(double)arg5 longitude:(double)arg6;
@@ -15,13 +15,16 @@
 - (void)setAuthorizationStatusByType:(int)arg1 withCorrectiveCompensation:(int)arg2 andZoneIdentifier:(NSString *)arg3 andSubIdentityIdentifier:(NSString *)arg4 forBundleID:(NSString *)arg5 orBundlePath:(NSString *)arg6 replyBlock:(void (^)(NSError *))arg7;
 - (void)setLocationButtonUseMode:(int)arg1 forBundleID:(NSString *)arg2 orBundlePath:(NSString *)arg3 replyBlock:(void (^)(NSError *))arg4;
 - (void)setIncidentalUseMode:(int)arg1 forBundleID:(NSString *)arg2 orBundlePath:(NSString *)arg3 replyBlock:(void (^)(NSError *))arg4;
-- (void)updateCorrectiveCompensationChoiceForOutstandingPrompt:(int)arg1 replyBlock:(void (^)(NSError *))arg2;
+- (void)updatePromptedLatitude:(double)arg1 longitude:(double)arg2 replyBlock:(void (^)(NSError *))arg3;
+- (void)updatePillButtonChoiceForOutstandingPrompt:(int)arg1 replyBlock:(void (^)(NSError *))arg2;
 - (void)getActivitiesWithReplyBlock:(void (^)(NSError *, NSArray *))arg1;
+- (void)getGyroCalibrationDatabaseBiasFitAtTemperature:(float)arg1 withReply:(void (^)(NSError *, NSData *))arg2;
 - (void)setTemporaryAuthorizationGranted:(_Bool)arg1 forBundleID:(NSString *)arg2 orBundlePath:(NSString *)arg3 orAuditToken:(CDStruct_6ad76789)arg4 byLocationButton:(_Bool)arg5 voiceInteractionEnabled:(_Bool)arg6 replyBlock:(void (^)(NSError *))arg7;
 - (void)getPipelinedCacheWithReply:(void (^)(NSError *, NSArray *))arg1;
 - (void)getOdometryBatchedLocationsWithReplyBlock:(void (^)(NSError *, NSDictionary *))arg1;
 - (void)getAccessoryPASCDTransmissionStateWithReplyBlock:(void (^)(NSError *, int))arg1;
 - (void)getAccessoryTypeBitSetWithReplyBlock:(void (^)(NSError *, int))arg1;
+- (void)setTrackRunHint:(NSData *)arg1 replyBlock:(void (^)(NSError *))arg2;
 - (void)setMapMatchingRouteHint:(NSData *)arg1 routingType:(int)arg2 stepType:(int)arg3 replyBlock:(void (^)(NSError *))arg4;
 - (void)getStatusBarIconState:(void (^)(NSError *, int))arg1;
 - (void)getStatusBarIconEnabledForEntityClass:(unsigned int)arg1 replyBlock:(void (^)(NSError *, _Bool))arg2;
@@ -30,6 +33,7 @@
 - (void)applyArchivedAuthorizationDecisions:(NSData *)arg1 withConfirmationToken:(NSUUID *)arg2 replyBlock:(void (^)(NSError *))arg3;
 - (void)resetAllClientsWithReplyBlock:(void (^)(NSError *))arg1;
 - (void)resetClientForBundleId:(NSString *)arg1 orBundlePath:(NSString *)arg2 withReplyBlock:(void (^)(NSError *))arg3;
+- (void)reportLocationUtilityEvent:(int)arg1 atDate:(NSDate *)arg2 withReplyBlock:(void (^)(NSError *))arg3;
 - (void)getGroundAltitudeForBundleID:(NSString *)arg1 orBundlePath:(NSString *)arg2 location:(CLLocation *)arg3 replyBlock:(void (^)(NSError *, struct))arg4;
 - (void)getLocationForBundleID:(NSString *)arg1 orBundlePath:(NSString *)arg2 dynamicAccuracyReductionEnabled:(_Bool)arg3 allowsAlteredAccessoryLocations:(_Bool)arg4 replyBlock:(void (^)(NSError *, struct))arg5;
 - (void)deleteInterestZoneWithId:(NSString *)arg1 registeredForBundleId:(NSString *)arg2 orBundlePath:(NSString *)arg3 replyBlock:(void (^)(NSError *))arg4;

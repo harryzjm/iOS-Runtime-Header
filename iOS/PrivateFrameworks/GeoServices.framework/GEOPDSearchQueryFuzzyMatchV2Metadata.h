@@ -6,7 +6,7 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-@class NSMutableArray, PBDataReader;
+@class GEOPDSearchTokenSet, NSMutableArray, PBDataReader;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDSearchQueryFuzzyMatchV2Metadata : PBCodable
@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     } _fuzzyV2Scores;
     CDStruct_95bda58d _rewriteTypes;
     NSMutableArray *_rewrittenQueries;
+    GEOPDSearchTokenSet *_rewrittenQueryTokens;
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
@@ -30,6 +31,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_fuzzyV2Scores:1;
         unsigned int read_rewriteTypes:1;
         unsigned int read_rewrittenQueries:1;
+        unsigned int read_rewrittenQueryTokens:1;
         unsigned int wrote_anyField:1;
     } _flags;
 }

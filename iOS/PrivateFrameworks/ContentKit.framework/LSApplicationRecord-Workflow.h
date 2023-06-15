@@ -7,6 +7,7 @@
 #import <CoreServices/LSApplicationRecord.h>
 
 @interface LSApplicationRecord (Workflow)
++ (id)wf_bundleAllowList;
 @property(readonly, nonatomic) _Bool wf_isLinkEnabled;
 - (_Bool)wf_iconIsDefaultVisible;
 - (_Bool)wf_isAvailableInContext:(long long)arg1;

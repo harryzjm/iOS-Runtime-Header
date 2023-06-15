@@ -9,10 +9,13 @@
 @interface CUICatalog (IconServicesAdditions)
 + (id)_IS_assetCatalogURLWithBundleURL:(id)arg1;
 + (id)_IS_coreGlyphsBundleURL;
-- (long long)_CUIdiomFromISIdiom:(unsigned long long)arg1;
-- (_Bool)_IS_multiSizeImageExistsWithName:(id)arg1;
-- (id)_IS_multisizedImageWithName:(id)arg1 size:(struct CGSize)arg2 scale:(double)arg3 layoutDirection:(long long)arg4;
-- (id)_IS_multisizedImageWithName:(id)arg1 size:(struct CGSize)arg2 scale:(double)arg3;
-- (long long)_layoutDirection;
+- (unsigned long long)subtypeForPlatform:(unsigned long long)arg1;
+- (id)idiomsForPlatform:(unsigned long long)arg1;
+- (long long)nativeIdiom;
+- (_Bool)_IS_possibleMultisizedImageExistsWithName:(id)arg1 platform:(unsigned long long)arg2;
+- (_Bool)_IS_possibleLayerStackExistsWithName:(id)arg1 platform:(unsigned long long)arg2;
+- (id)_IS_layerStackWithName:(id)arg1 scale:(double)arg2 layoutDirection:(long long)arg3 softCheck:(_Bool)arg4 platform:(unsigned long long)arg5;
+- (id)_IS_layerStackWithName:(id)arg1 scale:(double)arg2 layoutDirection:(long long)arg3 platform:(unsigned long long)arg4;
+- (id)_IS_multisizedImageWithName:(id)arg1 size:(struct CGSize)arg2 scale:(double)arg3 layoutDirection:(long long)arg4 platform:(unsigned long long)arg5;
 @end
 

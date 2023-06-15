@@ -11,9 +11,9 @@
 __attribute__((visibility("hidden")))
 @interface _CFPasteboardEntry : NSObject
 {
-    const struct __CFString *_flavorName;
-    const struct __CFUUID *_uuid;
-    const struct __CFData *_data;
+    struct __CFString *_flavorName;
+    struct __CFUUID *_uuid;
+    struct __CFData *_data;
     NSObject<OS_xpc_object> *_xpcData;
     unsigned long long _dataFlags;
     CDUnknownBlockType _promisor;
@@ -31,10 +31,10 @@ __attribute__((visibility("hidden")))
 @property unsigned char extensionConsumed; // @synthesize extensionConsumed=_extensionConsumed;
 @property unsigned char isPendingFlush; // @synthesize isPendingFlush=_isPendingFlush;
 @property(getter=isHidden) unsigned char hidden; // @synthesize hidden=_isHidden;
-@property(readonly) const struct __CFUUID *promiseUUID; // @synthesize promiseUUID=_uuid;
+@property(readonly) struct __CFUUID *promiseUUID; // @synthesize promiseUUID=_uuid;
 @property(readonly) int itemIdentifier; // @synthesize itemIdentifier=_itemIdentifier;
 @property unsigned long long dataFlags; // @synthesize dataFlags=_dataFlags;
-@property(readonly) const struct __CFString *flavorName; // @synthesize flavorName=_flavorName;
+@property(readonly) struct __CFString *flavorName; // @synthesize flavorName=_flavorName;
 - (CDUnknownBlockType)requestDataForPasteboard:(struct __CFPasteboard *)arg1 generation:(long long)arg2 immediatelyAvailableResult:(CDStruct_55991ab6 *)arg3;
 - (void)resolveClientPromisedDataWithQueue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (unsigned char)resolveLocalPromisedData;
@@ -44,13 +44,13 @@ __attribute__((visibility("hidden")))
 @property(readonly) unsigned char promisorExistsInCurrentProcess;
 - (void)_setLocalPromiseState:(unsigned char)arg1;
 @property(readonly) unsigned char hasLocalPromise;
-- (const struct __CFData *)createDataAndReturnError:(int *)arg1;
+- (struct __CFData *)createDataAndReturnError:(int *)arg1;
 - (id)_createXPCData;
 - (void)setData:(struct __CFData *)arg1;
 @property(readonly) unsigned char hasData;
 - (id)description;
 - (void)dealloc;
-- (id)initWithFlavorName:(const struct __CFString *)arg1 itemIdentifier:(int)arg2;
+- (id)initWithFlavorName:(struct __CFString *)arg1 itemIdentifier:(int)arg2;
 - (void)promiseDataWithFetchOperation:(id)arg1;
 
 @end

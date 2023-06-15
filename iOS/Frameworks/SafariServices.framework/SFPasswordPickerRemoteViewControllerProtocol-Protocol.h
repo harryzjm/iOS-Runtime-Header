@@ -6,9 +6,12 @@
 
 #import <SafariServices/SFPasswordRemoteViewControllerProtocol-Protocol.h>
 
-@class SFSafariCredential;
+@class NSString, SFSafariCredential;
 
 @protocol SFPasswordPickerRemoteViewControllerProtocol <SFPasswordRemoteViewControllerProtocol>
+- (void)fillVerificationCode:(NSString *)arg1;
+- (void)fillPassword:(NSString *)arg1;
+- (void)fillUsername:(NSString *)arg1;
 - (void)selectedCredential:(SFSafariCredential *)arg1;
 @end
 

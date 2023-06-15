@@ -5,6 +5,12 @@
 //
 
 @interface (null) (ChatKit)
-+ (void)initializeTips;
+- (void)playFrom:(id)arg1;
+- (void)resumeFrom:(id)arg1;
+- (void)sendFrom:(id)arg1;
+- (void)stopFrom:(id)arg1;
+- (void)closeFrom:(id)arg1;
+- (void)scrubFrom:(id)arg1;
+- (_Bool)gestureRecognizerShouldBegin:(id)arg1;
 @end
 

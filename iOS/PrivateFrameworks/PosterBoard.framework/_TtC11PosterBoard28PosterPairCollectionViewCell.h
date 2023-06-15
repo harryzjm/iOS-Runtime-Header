@@ -20,7 +20,10 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)traitCollectionDidChange:(id)arg1;
+- (void)posterPairDidUpdateHomePosterAppearance:(id)arg1;
+- (void)posterPairDidUpdateLockPosterSnapshots:(id)arg1;
+- (void)posterPairDidUpdateLockPosterAppearance:(id)arg1;
+- (void)posterPairDidUpdateConfiguredProperties:(id)arg1;
 - (void)prepareForReuse;
 - (void)layoutSubviews;
 

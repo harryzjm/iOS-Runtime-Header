@@ -6,9 +6,9 @@
 
 #import <HomeKitDaemonLegacy/NSObject-Protocol.h>
 
-@class HMDPrimaryResidentMessageRouter, HMDPrimaryResidentMessageRouterMetricsDispatcher, HMFMessageDispatcher;
+@class HMDPrimaryResidentMessageRouter, HMDPrimaryResidentMessageRouterMetricsDispatcher, HMFMessageDispatcher, NSUUID;
 
 @protocol HMDPrimaryResidentMessageRouterFactory <NSObject>
-- (HMDPrimaryResidentMessageRouter *)createPrimaryResidentMessageRouterWithMessageDispatcher:(HMFMessageDispatcher *)arg1 metricsDispatcher:(HMDPrimaryResidentMessageRouterMetricsDispatcher *)arg2;
+- (HMDPrimaryResidentMessageRouter *)createPrimaryResidentMessageRouterWithHomeUUID:(NSUUID *)arg1 messageDispatcher:(HMFMessageDispatcher *)arg2 metricsDispatcher:(HMDPrimaryResidentMessageRouterMetricsDispatcher *)arg3;
 @end
 

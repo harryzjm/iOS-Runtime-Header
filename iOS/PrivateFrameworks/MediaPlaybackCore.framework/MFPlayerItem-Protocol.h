@@ -7,17 +7,16 @@
 @class AVPlayerItem, NSString, NSURL;
 
 @protocol MFPlayerItem
-@property(readonly, nonatomic) double time;
-@property(readonly, nonatomic) _Bool prefersSeekOverSkip;
-@property(readonly, copy, nonatomic) NSString *description;
-@property(readonly, nonatomic) _Bool isFullyDownloaded;
-@property(readonly, nonatomic) _Bool isAssetLoaded;
-@property(readonly, nonatomic) _Bool hasLoadableAsset;
+@property(nonatomic, readonly) double time;
+@property(nonatomic, readonly) _Bool prefersSeekOverSkip;
+@property(nonatomic, readonly) NSString *description;
+@property(nonatomic, readonly) _Bool isFullyDownloaded;
+@property(nonatomic, readonly) _Bool isAssetLoaded;
+@property(nonatomic, readonly) _Bool hasLoadableAsset;
 @property(nonatomic) _Bool isVideoContent;
-@property(readonly, copy, nonatomic) NSURL *url;
-@property(readonly, nonatomic) AVPlayerItem *avPlayerItem;
-@property(copy, nonatomic) NSString *title;
-@property(nonatomic) long long repeatIndex;
-@property(copy, nonatomic) NSString *contentItemID;
+@property(nonatomic, readonly) NSURL *url;
+@property(nonatomic, readonly) AVPlayerItem *avPlayerItem;
+@property(nonatomic, copy) NSString *title;
+@property(nonatomic, copy) NSString *contentItemID;
 @end
 

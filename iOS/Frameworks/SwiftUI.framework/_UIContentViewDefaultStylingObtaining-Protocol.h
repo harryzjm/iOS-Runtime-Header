@@ -9,9 +9,8 @@
 @protocol _UIContentViewDefaultStylingObtaining <NSObject>
 
 @optional
+@property(copy, nonatomic, setter=_setDefaultListContentConfigurationProvider:) CDUnknownBlockType _defaultListContentConfigurationProvider;
 - (void)_containingListStyleUpdated:(long long)arg1;
 - (void)_defaultListContentConfigurationMayHaveChanged;
-- (void)_setDefaultListContentConfigurationProvider:(UIListContentConfiguration * (^)(void))arg1;
-@property(nonatomic, copy) CDUnknownBlockType _defaultListContentConfigurationProvider;
 @end
 

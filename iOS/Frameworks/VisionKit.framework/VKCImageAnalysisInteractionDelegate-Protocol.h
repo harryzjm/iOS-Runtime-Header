@@ -6,16 +6,21 @@
 
 #import <VisionKit/NSObject-Protocol.h>
 
-@class NSArray, NSDictionary, NSURL, UIBarButtonItem, UIButton, UIImage, UIView, UIViewController, VKCImageAnalysisInteraction;
+@class NSArray, NSAttributedString, NSDictionary, NSString, NSURL, UIBarButtonItem, UIButton, UIImage, UIView, UIViewController, VKCImageAnalysisInteraction;
 
 @protocol VKCImageAnalysisInteractionDelegate <NSObject>
 
 @optional
+- (void)videoPreviewAvailableForImageAnalysisInteraction:(VKCImageAnalysisInteraction *)arg1;
 - (void)writeFeedbackAttachementForImageAnalysisInteraction:(VKCImageAnalysisInteraction *)arg1 to:(NSURL *)arg2;
 - (NSArray *)promisedFeedbackAttachementsForImageAnalysisInteraction:(VKCImageAnalysisInteraction *)arg1;
 - (NSDictionary *)feedbackMetadataForImageAnalysisInteraction:(VKCImageAnalysisInteraction *)arg1;
 - (unsigned long long)feedbackOptionsForImageAnalysisInteraction:(VKCImageAnalysisInteraction *)arg1;
 - (unsigned long long)feedbackTypeForImageAnalysisInteraction:(VKCImageAnalysisInteraction *)arg1;
+- (_Bool)imageAnalysisInteraction:(VKCImageAnalysisInteraction *)arg1 shouldHandleShareWithRanges:(NSArray *)arg2 boundingRect:(struct CGRect)arg3 selectedText:(NSString *)arg4 selectedAttributedText:(NSAttributedString *)arg5;
+- (NSAttributedString *)imageAnalysisInteraction:(VKCImageAnalysisInteraction *)arg1 updateAttributedStringForCopy:(NSAttributedString *)arg2;
+- (NSString *)imageAnalysisInteraction:(VKCImageAnalysisInteraction *)arg1 updateStringForCopy:(NSString *)arg2;
+- (_Bool)imageAnalysisInteraction:(VKCImageAnalysisInteraction *)arg1 shouldShowLookupForItemFromCallout:(id)arg2;
 - (void)imageAnalysisInteraction:(VKCImageAnalysisInteraction *)arg1 livePhotoShouldPlay:(_Bool)arg2;
 - (_Bool)isShowingLivePhotoForImageAnalysisInteraction:(VKCImageAnalysisInteraction *)arg1;
 - (void)imageAnalysisInteractionDidDismissVisualSearchController:(VKCImageAnalysisInteraction *)arg1;
@@ -25,6 +30,7 @@
 - (void)imageAnalysisInteraction:(VKCImageAnalysisInteraction *)arg1 prepareForCalloutAction:(SEL)arg2 competion:(void (^)(void))arg3;
 - (void)imageAnalysisInteraction:(VKCImageAnalysisInteraction *)arg1 didTapVisualSearchIndicatorWithNormalizedBoundingBox:(struct CGRect)arg2;
 - (void)hasActiveTextSelectionDidChangeForImageAnalysisInteraction:(VKCImageAnalysisInteraction *)arg1;
+- (void)imageAnalysisInteractionSubjectInteractionInProgressDidChange:(VKCImageAnalysisInteraction *)arg1;
 - (void)imageAnalysisInteractionDidCompleteSubjectAnalysis:(VKCImageAnalysisInteraction *)arg1;
 - (void)imageAnalysisInteractionDidBeginSubjectAnalysis:(VKCImageAnalysisInteraction *)arg1;
 - (UIViewController *)presentingViewControllerForImageAnalysisInteraction:(VKCImageAnalysisInteraction *)arg1;
@@ -33,6 +39,7 @@
 - (void)imageAnalysisInteraction:(VKCImageAnalysisInteraction *)arg1 imageAnalysisBarItemPressed:(UIBarButtonItem *)arg2;
 - (void)imageAnalysisInteraction:(VKCImageAnalysisInteraction *)arg1 imageAnalysisButtonPressed:(UIButton *)arg2;
 - (struct CGRect)contentsRectForImageAnalysisInteraction:(VKCImageAnalysisInteraction *)arg1;
+- (void)textSelectionDidChangeForImageAnalysisInteraction:(VKCImageAnalysisInteraction *)arg1;
 - (_Bool)imageAnalysisInteraction:(VKCImageAnalysisInteraction *)arg1 shouldBeginAtPoint:(struct CGPoint)arg2 forAnalysisType:(unsigned long long)arg3;
 @end
 

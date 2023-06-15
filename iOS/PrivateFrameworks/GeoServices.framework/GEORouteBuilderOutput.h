@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     NSArray *_guidanceEvents;
     NSArray *_enrouteNotices;
     NSArray *_visualInfos;
+    NSArray *_visualInfosForRouteNameLabels;
     NSArray *_pointSections;
     GEOComposedRouteCellularCoverage *_cellularCoverage;
     GEOMapRegion *_boundingMapRegion;
@@ -35,6 +36,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool usesZilch; // @synthesize usesZilch=_usesZilch;
 @property(retain, nonatomic) GEOComposedRouteCellularCoverage *cellularCoverage; // @synthesize cellularCoverage=_cellularCoverage;
 @property(retain, nonatomic) NSArray *cameraInfos; // @synthesize cameraInfos=_cameraInfos;
+@property(retain, nonatomic) NSArray *visualInfosForRouteNameLabels; // @synthesize visualInfosForRouteNameLabels=_visualInfosForRouteNameLabels;
 @property(retain, nonatomic) NSArray *visualInfos; // @synthesize visualInfos=_visualInfos;
 @property(retain, nonatomic) NSArray *enrouteNotices; // @synthesize enrouteNotices=_enrouteNotices;
 @property(retain, nonatomic) NSArray *guidanceEvents; // @synthesize guidanceEvents=_guidanceEvents;

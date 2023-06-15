@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <BaseBoard/BSAction.h>
+#import <FrontBoard/BSAction.h>
 
 @interface BSAction (UIActionType)
 @property(readonly, nonatomic) long long UIActionType;

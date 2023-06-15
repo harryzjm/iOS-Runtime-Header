@@ -6,13 +6,14 @@
 
 #import "UIView.h"
 
-@class UIActionSheet, UIColor, UIImageView, UIPopoverBackgroundView, UIPopoverController;
+@class UIActionSheet, UIColor, UIImageView, UIPopoverBackgroundView, UIPopoverController, _UICutoutShadowView;
 
 __attribute__((visibility("hidden")))
 @interface _UIPopoverView : UIView
 {
     UIView *_contentView;
     UIPopoverBackgroundView *_backgroundView;
+    UIView *_clipView;
     Class _backgroundViewClass;
     UIImageView *_toolbarShine;
     _Bool _showsBackgroundComponentHighlights;
@@ -23,10 +24,16 @@ __attribute__((visibility("hidden")))
     _Bool _chromeHiddenForSizeTransition;
     UIActionSheet *_presentedActionSheet;
     UIPopoverController *_popoverController;
+    _UICutoutShadowView *_shadowView;
+    double _animationOvershootHeight;
+    struct CGSize _contentSize;
 }
 
 + (id)popoverViewContainingView:(id)arg1;
 - (void).cxx_destruct;
+@property(nonatomic) double animationOvershootHeight; // @synthesize animationOvershootHeight=_animationOvershootHeight;
+@property(nonatomic) struct CGSize contentSize; // @synthesize contentSize=_contentSize;
+@property(retain, nonatomic) _UICutoutShadowView *shadowView; // @synthesize shadowView=_shadowView;
 @property(nonatomic) _Bool chromeHiddenForSizeTransition; // @synthesize chromeHiddenForSizeTransition=_chromeHiddenForSizeTransition;
 @property(nonatomic) _Bool chromeHidden; // @synthesize chromeHidden=_chromeHidden;
 @property(readonly, nonatomic) _Bool contentExtendsOverArrow; // @synthesize contentExtendsOverArrow=_contentExtendsOverArrow;
@@ -39,7 +46,6 @@ __attribute__((visibility("hidden")))
 - (_Bool)_definesTintColor;
 - (id)_normalInheritedTintColor;
 - (id)_traitCollectionForChildEnvironment:(id)arg1;
-- (void)traitCollectionDidChange:(id)arg1;
 - (void)_hideArrow;
 - (void)_showArrow;
 - (void)_setCornerRadius:(double)arg1;

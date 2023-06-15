@@ -29,6 +29,7 @@
 - (_Bool)navigationItemIsTopItem:(UINavigationItem *)arg1;
 
 @optional
+- (_Bool)shouldSearchControllerDeferPresentationTransitionForNavigationItem:(UINavigationItem *)arg1;
 - (id <UIPopoverPresentationControllerSourceItem>)presentationSourceForContent:(long long)arg1 navigationItem:(UINavigationItem *)arg2;
 - (void)navigationItemUpdatedAdditionalOverflowItems:(UINavigationItem *)arg1;
 - (void)navigationItemUpdatedCenterBarButtonItems:(UINavigationItem *)arg1 animated:(_Bool)arg2;

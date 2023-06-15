@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSString, NWConcrete_nw_protocol_definition, NWConcrete_nw_protocol_metadata, NWConcrete_nw_protocol_options;
-@protocol OS_nw_array, OS_nw_association, OS_nw_context, OS_nw_endpoint, OS_nw_parameters, OS_nw_path, OS_nw_path_flow_registration;
+@protocol OS_nw_array, OS_nw_association, OS_nw_context, OS_nw_endpoint, OS_nw_parameters, OS_nw_path, OS_nw_path_flow_registration, OS_nw_protocol_instance_registrar, OS_xpc_object;
 
 __attribute__((visibility("hidden")))
 @interface NWConcrete_nw_protocol_instance : NSObject
@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
     NSObject<OS_nw_parameters> *parameters;
     NWConcrete_nw_protocol_options *options;
     NSObject<OS_nw_association> *association;
+    NSObject<OS_xpc_object> *paths_to_establish;
     unsigned long long reserve_header_size;
     unsigned long long reserve_footer_size;
     unsigned long long maximum_content_size;
@@ -52,8 +53,13 @@ __attribute__((visibility("hidden")))
     NSObject<OS_nw_endpoint> *current_setup_path_local_endpoint;
     NSObject<OS_nw_parameters> *current_setup_path_parameters;
     NSObject<OS_nw_endpoint> *derived_ipv4_endpoint;
+    NSObject<OS_nw_endpoint> *preferred_ipv4_address;
+    NSObject<OS_nw_endpoint> *preferred_ipv6_address;
     int level;
+    unsigned long long flow_in_connected;
+    NSObject<OS_nw_protocol_instance_registrar> *registrar;
     unsigned short paths_log_id_num;
+    unsigned int last_probe_connectivity:1;
     unsigned int initialized:1;
     unsigned int started:1;
     unsigned int ready:1;
@@ -68,6 +74,7 @@ __attribute__((visibility("hidden")))
     unsigned int processing_input:1;
     unsigned int processing_output:1;
     unsigned int pending_input_finished:1;
+    unsigned int should_signal_outbound_not_pending:1;
     unsigned int waiting_for_listener_accept:1;
     unsigned int new_flow_is_control:1;
     unsigned int prohibit_joining:1;
@@ -84,6 +91,7 @@ __attribute__((visibility("hidden")))
     unsigned int previous_fallback_is_weak:1;
     unsigned int reporting_all_done:1;
     unsigned int suppress_logging:1;
+    unsigned int tearing_down:1;
     char log_str[84];
 }
 

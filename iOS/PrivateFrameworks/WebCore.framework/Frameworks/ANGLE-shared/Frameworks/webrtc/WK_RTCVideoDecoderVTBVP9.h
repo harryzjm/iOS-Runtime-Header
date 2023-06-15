@@ -23,13 +23,14 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)implementationName;
 - (void)setVideoFormat:(struct opaqueCMFormatDescription *)arg1;
+- (void)flush;
 - (void)destroyDecompressionSession;
 - (void)configureDecompressionSession;
 - (int)resetDecompressionSession;
 - (long long)releaseDecoder;
 - (void)setError:(int)arg1;
 - (void)setCallback:(CDUnknownBlockType)arg1;
-- (long long)decodeData:(const char *)arg1 size:(unsigned long long)arg2 timeStamp:(unsigned int)arg3;
+- (long long)decodeData:(const char *)arg1 size:(unsigned long long)arg2 timeStamp:(long long)arg3;
 - (void)setWidth:(unsigned short)arg1 height:(unsigned short)arg2;
 - (long long)decode:(id)arg1 missingFrames:(_Bool)arg2 codecSpecificInfo:(id)arg3 renderTimeMs:(long long)arg4;
 - (long long)startDecodeWithNumberOfCores:(int)arg1;

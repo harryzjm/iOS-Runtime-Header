@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIKeyCommand.h>
+#import <UIKitCore/UIKeyCommand.h>
 
 @interface UIKeyCommand (IC)
 + (id)ic_keyCommandWithInput:(id)arg1 modifierFlags:(long long)arg2 action:(SEL)arg3 discoverabilityTitle:(id)arg4;

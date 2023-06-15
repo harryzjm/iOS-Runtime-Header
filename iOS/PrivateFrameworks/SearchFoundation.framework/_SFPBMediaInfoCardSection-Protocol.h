@@ -10,6 +10,7 @@
 
 @protocol _SFPBMediaInfoCardSection <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
+@property(nonatomic) int watchListItemType;
 @property(retain, nonatomic) _SFPBRichText *specialOfferButtonLabel;
 @property(nonatomic) _Bool isMediaContainer;
 @property(copy, nonatomic) NSString *watchListConfirmationText;

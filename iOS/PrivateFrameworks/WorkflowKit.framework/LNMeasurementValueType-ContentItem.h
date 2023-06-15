@@ -7,6 +7,6 @@
 #import <LinkMetadata/LNMeasurementValueType.h>
 
 @interface LNMeasurementValueType (ContentItem)
-- (Class)wf_contentItemClassWithMetadata:(id)arg1 valueNamespace:(id)arg2;
+- (Class)wf_contentItemClassWithAppBundleIdentifier:(id)arg1;
 @end
 

@@ -6,7 +6,7 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class NSArray, NSString, UICellConfigurationState, UIColor, UIFont, UIImage, UIImageSymbolConfiguration, UIScreen, UITraitCollection, UIView;
+@class NSArray, NSString, UICellConfigurationState, UIColor, UIFont, UIImage, UIImageSymbolConfiguration, UIScreen, UITraitCollection, UIView, UIVisualEffect;
 @protocol UITableConstants, UITableConstantsCellProviding, UITableConstantsTableProviding, _UICellConfigurationStateReadonly;
 
 @protocol UITableConstants <NSObject>
@@ -25,6 +25,7 @@
 - (struct CGSize)defaultReorderControlSizeForCell:(UIView<UITableConstantsCellProviding> *)arg1 withAccessoryBaseColor:(UIColor *)arg2;
 - (_Bool)shouldAnimatePropertyInContentViewWithKey:(NSString *)arg1;
 - (double)defaultEditAndUpdateAnimationDuration;
+- (UIImage *)defaultDetailAccessoryImage;
 - (UIImage *)defaultMultiSelectSelectedImageForCellStyle:(long long)arg1 traitCollection:(UITraitCollection *)arg2 checkmarkColor:(UIColor *)arg3 backgroundColor:(UIColor *)arg4;
 - (UIImage *)defaultMultiSelectNotSelectedImageForCellStyle:(long long)arg1 traitCollection:(UITraitCollection *)arg2 accessoryBaseColor:(UIColor *)arg3;
 - (UIImage *)defaultInsertImageWithTintColor:(UIColor *)arg1 backgroundColor:(UIColor *)arg2;
@@ -38,7 +39,7 @@
 - (UIImage *)defaultCheckmarkImageForCell:(UIView<UITableConstantsCellProviding> *)arg1;
 - (UIImage *)defaultDisclosureImageForCell:(UIView<UITableConstantsCellProviding> *)arg1 withAccessoryBaseColor:(UIColor *)arg2;
 - (long long)defaultHeaderFooterPinningBehaviorForTableStyle:(long long)arg1;
-- (struct _UITableConstantsBackgroundProperties)defaultHeaderFooterBackgroundPropertiesForTableViewStyle:(long long)arg1 tableBackgroundColor:(UIColor *)arg2 floating:(_Bool)arg3;
+- (struct _UITableConstantsBackgroundProperties)defaultHeaderFooterBackgroundPropertiesForTableViewStyle:(long long)arg1 cellConfigurationState:(id <_UICellConfigurationStateReadonly>)arg2 traitCollection:(UITraitCollection *)arg3 floating:(_Bool)arg4;
 - (_Bool)useChromelessSectionHeadersAndFootersForTableStyle:(long long)arg1;
 - (UIColor *)defaultFooterTextColorForTableViewStyle:(long long)arg1 focused:(_Bool)arg2;
 - (UIColor *)defaultHeaderTextColorForTableViewStyle:(long long)arg1 focused:(_Bool)arg2;
@@ -61,12 +62,15 @@
 - (struct _UITableConstantsBackgroundProperties)defaultSidebarCellBackgroundPropertiesWithState:(id <_UICellConfigurationStateReadonly>)arg1 traitCollection:(UITraitCollection *)arg2 isAccompanied:(_Bool)arg3;
 - (struct _UITableConstantsBackgroundProperties)defaultCellBackgroundPropertiesForTableViewStyle:(long long)arg1 state:(id <_UICellConfigurationStateReadonly>)arg2;
 - (double)defaultPaddingBetweenHeaderAndRows;
+- (double)defaultPaddingBetweenRowsForTableStyle:(long long)arg1;
 - (double)defaultPaddingBetweenRows;
+- (double)defaultPaddingAboveFirstSectionWithoutHeaderTableStyle:(long long)arg1;
 - (double)defaultSidebarPaddingAboveSectionHeadersWithFallbackTableStyle:(long long)arg1;
 - (double)defaultPaddingAboveSectionHeadersForTableStyle:(long long)arg1;
+- (double)defaultPaddingAboveFirstSectionHeaderForTableStyle:(long long)arg1;
 - (double)interspaceBetweenInnerAccessoryIdentifier:(NSString *)arg1 outerAccessoryIdentifier:(NSString *)arg2 forCell:(UIView<UITableConstantsCellProviding> *)arg3 trailingAccessoryGroup:(_Bool)arg4;
 - (double)defaultIndentationWidthForSidebarStyle:(_Bool)arg1;
-- (double)defaultCellCornerRadius;
+- (double)defaultCellCornerRadiusForTableViewStyle:(long long)arg1 isSidebarStyle:(_Bool)arg2 isHeaderFooter:(_Bool)arg3 traitCollection:(UITraitCollection *)arg4;
 - (double)defaultDisclosureLayoutWidthForView:(UIView *)arg1;
 - (double)defaultImageViewSymbolImageLayoutHeightForTraitCollection:(UITraitCollection *)arg1;
 - (double)defaultImageViewSymbolImageAndAccessoryLayoutWidthForSidebar:(_Bool)arg1 traitCollection:(UITraitCollection *)arg2;
@@ -78,7 +82,7 @@
 - (double)defaultContentEditPaddingForCell:(UIView<UITableConstantsCellProviding> *)arg1 inTableView:(id <UITableConstantsTableProviding>)arg2;
 - (_Bool)imageViewOffsetByLayoutMarginsForCell:(UIView<UITableConstantsCellProviding> *)arg1 inTableView:(id <UITableConstantsTableProviding>)arg2;
 - (struct UIEdgeInsets)defaultHeaderFooterLayoutMarginsForTableViewStyle:(long long)arg1 isHeader:(_Bool)arg2 isFirstSection:(_Bool)arg3;
-- (struct UIEdgeInsets)defaultCellLayoutMarginsForStyle:(long long)arg1 textLabelFont:(UIFont *)arg2 rawLayoutMargins:(struct UIEdgeInsets)arg3;
+- (struct UIEdgeInsets)defaultCellLayoutMarginsForTableStyle:(long long)arg1 cellStyle:(long long)arg2 textLabelFont:(UIFont *)arg3 rawLayoutMargins:(struct UIEdgeInsets)arg4;
 - (struct UIEdgeInsets)defaultLayoutMarginsForCell:(UIView<UITableConstantsCellProviding> *)arg1 inTableView:(id <UITableConstantsTableProviding>)arg2;
 - (double)defaultTrailingCellMarginWidthForTableView:(id <UITableConstantsTableProviding>)arg1;
 - (double)defaultLeadingCellMarginWidthForTableView:(id <UITableConstantsTableProviding>)arg1;
@@ -98,6 +102,7 @@
 - (_Bool)defaultRowHeightDependsOnCellStyle;
 - (double)defaultRowHeightForTableView:(id <UITableConstantsTableProviding>)arg1 cellStyle:(long long)arg2;
 - (double)defaultRowHeightForTableView:(id <UITableConstantsTableProviding>)arg1;
+- (UIVisualEffect *)defaultSeparatorVisualEffectForTableViewStyle:(long long)arg1;
 - (long long)defaultSeparatorStyleForTableViewStyle:(long long)arg1;
 - (UIColor *)defaultSeparatorColorForTableViewStyle:(long long)arg1;
 - (NSArray *)defaultBackgroundEffectsForTableViewStyle:(long long)arg1;
@@ -107,6 +112,9 @@
 - (id <UITableConstants>)sidebarVariant;
 
 @optional
+- (long long)defaultFooterTextRenderingMode;
+- (long long)defaultAccessoryRenderingModeForAccessorySystemType:(long long)arg1;
+- (long long)defaultSecondaryTextRenderingMode;
 - (Class)defaultHeaderFooterBackgroundViewClassForTableViewStyle:(long long)arg1;
 - (_Bool)shouldUseRoundedGroupsForTableViewStyle:(long long)arg1 backgroundInsets:(struct UIEdgeInsets)arg2;
 - (unsigned long long)contentClipCornersForCell:(UIView<UITableConstantsCellProviding> *)arg1 inTableView:(id <UITableConstantsTableProviding>)arg2;

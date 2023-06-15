@@ -14,6 +14,7 @@
     MISSING_TYPE *descriptors;
     MISSING_TYPE *completion;
     MISSING_TYPE *id;
+    MISSING_TYPE *group;
 }
 
 @end

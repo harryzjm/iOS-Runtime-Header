@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (id)initWithRequest:(id)arg1 bag:(id)arg2 account:(id)arg3;
 - (id)initWithRequest:(id)arg1;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;

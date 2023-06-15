@@ -15,6 +15,7 @@
     MISSING_TYPE *scienceDataFactory;
     MISSING_TYPE *tagService;
     MISSING_TYPE *navigator;
+    MISSING_TYPE *sportsEventManager;
 }
 
 @end

@@ -12,12 +12,13 @@ __attribute__((visibility("hidden")))
 @interface AVAudioIOController_iOS : NSObject
 {
     struct optional<(anonymous namespace)::IOControllerImpl> impl;
+    shared_ptr_a9ec9eae _deviceTimeClient;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) struct AVAudioTimeInterval dynamicLatency;
-@property(readonly, nonatomic) _Bool supportsPresentationTime;
+@property(readonly, nonatomic) _Bool supportsDynamicLatency;
 - (struct AudioPresentationTimeStamp)presentationTime;
 - (void)privateDispatchIOControllerEvent:(unsigned long long)arg1;
 - (void)destroyIOEventBlock:(long long)arg1;
@@ -25,8 +26,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) struct AVAudioIOPeriod IOPeriod;
 @property(readonly, nonatomic, getter=isRunning) _Bool running;
 - (struct AudioTimeStamp)currentTime;
-@property(nonatomic) unsigned int timingStateSlot;
-- (id)initWithSession:(id)arg1 xpcConnection:(shared_ptr_fa4fc137)arg2 timingStateSlot:(unsigned int)arg3 isDecoupledInput:(_Bool)arg4;
+- (void)setTimingSlot:(unsigned int)arg1;
+- (id)initWithSession:(id)arg1 xpcConnection:(shared_ptr_fa4fc137)arg2 deviceTimeClient:(shared_ptr_a9ec9eae)arg3 timingSlot:(unsigned int)arg4 isDecoupledInput:(_Bool)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -15,6 +15,8 @@
 - (void)siriClientBehaviorMonitor:(CSSiriClientBehaviorMonitor *)arg1 willStartStreamWithContext:(CSAudioRecordContext *)arg2 option:(CSAudioStartStreamOption *)arg3;
 
 @optional
+- (void)siriClientBehaviorMonitor:(CSSiriClientBehaviorMonitor *)arg1 willStopStream:(CSAudioStopStreamOption *)arg2 reason:(unsigned long long)arg3 withEventUUID:(NSString *)arg4;
+- (void)siriClientBehaviorMonitor:(CSSiriClientBehaviorMonitor *)arg1 willStartStreamWithContext:(CSAudioRecordContext *)arg2 option:(CSAudioStartStreamOption *)arg3 withEventUUID:(NSString *)arg4;
 - (void)siriClientBehaviorMonitorReleasedAudioSession:(CSSiriClientBehaviorMonitor *)arg1;
 - (void)siriClientBehaviorMonitor:(CSSiriClientBehaviorMonitor *)arg1 preparedSiriClientAudioStream:(CSAudioStream *)arg2 successfully:(_Bool)arg3;
 - (void)siriClientBehaviorMonitor:(CSSiriClientBehaviorMonitor *)arg1 fetchedSiriClientAudioStream:(CSAudioStream *)arg2 successfully:(_Bool)arg3;

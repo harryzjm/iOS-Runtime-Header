@@ -20,10 +20,10 @@
 - (void).cxx_destruct;
 - (void)processItems;
 - (void)performItemsProcessing;
-- (void)p_processElementInfoWithSeries:(id)arg1 position:(const void *)arg2;
+- (void)p_processElementInfoWithSeries:(id)arg1 position:(void *)arg2;
 - (void)processDelayedItemsWithOpacity:(float)arg1;
 - (_Bool)p_delayedItemsAreUnique;
-- (id)elementInfoWithSeries:(id)arg1 position:(const void *)arg2;
+- (id)elementInfoWithSeries:(id)arg1 position:(void *)arg2;
 @property(readonly, nonatomic) TSCH3DRenderProcessor *processor;
 @property(readonly, nonatomic) _Bool geometryOnly;
 @property(readonly, nonatomic) _Bool useBoundsGeometry;

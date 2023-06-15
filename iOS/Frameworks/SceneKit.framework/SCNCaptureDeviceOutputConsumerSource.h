@@ -7,16 +7,15 @@
 #import "SCNTextureSource.h"
 
 @class NSString;
-@protocol MTLTexture;
 
 __attribute__((visibility("hidden")))
 @interface SCNCaptureDeviceOutputConsumerSource : SCNTextureSource
 {
+    CDStruct_1e850d63 _data;
     struct __CVMetalTextureCache *_textureCache;
-    struct __CVBuffer *_pixelBuffer;
-    id <MTLTexture> _mtlTexture;
+    _Bool _videoMirrored;
+    _Bool _automaticallyAdjustsVideoMirroring;
     _Bool _containsAlpha;
-    _Bool _isFront;
     unsigned long long _width;
     unsigned long long _height;
 }
@@ -25,11 +24,12 @@ __attribute__((visibility("hidden")))
 - (void)setPixelBuffer:(struct __CVBuffer *)arg1;
 - (void)setSampleBuffer:(struct opaqueCMSampleBuffer *)arg1 fromDevice:(id)arg2;
 - (void)setSampleBuffer:(struct opaqueCMSampleBuffer *)arg1;
+@property(nonatomic, getter=isVideoMirrored) _Bool videoMirrored;
+@property(nonatomic) _Bool automaticallyAdjustsVideoMirroring;
 - (id)metalTextureWithEngineContext:(struct __C3DEngineContext *)arg1 textureSampler:(struct __C3DTextureSampler *)arg2 nextFrameTime:(double *)arg3 status:(CDStruct_3d581f42 *)arg4;
 - (void)cleanup:(struct __C3DRendererContext *)arg1;
 - (void)connectToProxy:(struct __C3DImageProxy *)arg1;
 - (void)dealloc;
-- (void)discardVideoData;
 - (_Bool)containsAlpha;
 - (id)initWithOptions:(id)arg1;
 - (id)init;

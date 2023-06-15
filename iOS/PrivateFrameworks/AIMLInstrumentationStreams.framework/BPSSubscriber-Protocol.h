@@ -6,12 +6,18 @@
 
 #import <AIMLInstrumentationStreams/NSObject-Protocol.h>
 
-@class BPSCompletion, BPSSubscription;
+@class BPSCompletion, BPSSubscription, NSError;
+@protocol BPSPublisher;
 
 @protocol BPSSubscriber <NSObject>
 - (void)cancel;
 - (void)receiveCompletion:(BPSCompletion *)arg1;
 - (void)receiveSubscription:(BPSSubscription *)arg1;
 - (long long)receiveInput:(id)arg1;
+
+@optional
+- (void)completeWithError:(NSError *)arg1;
+- (void)requestNextEvents;
+- (void)subscribeTo:(id <BPSPublisher>)arg1;
 @end
 

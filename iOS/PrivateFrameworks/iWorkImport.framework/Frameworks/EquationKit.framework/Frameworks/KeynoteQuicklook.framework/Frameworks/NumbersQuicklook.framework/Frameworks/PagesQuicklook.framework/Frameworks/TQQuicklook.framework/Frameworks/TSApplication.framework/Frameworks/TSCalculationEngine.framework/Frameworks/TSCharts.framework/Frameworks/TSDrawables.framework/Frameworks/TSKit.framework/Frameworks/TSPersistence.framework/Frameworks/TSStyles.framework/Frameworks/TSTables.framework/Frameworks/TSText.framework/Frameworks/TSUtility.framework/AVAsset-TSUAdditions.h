@@ -15,6 +15,8 @@
 @property(readonly, nonatomic) _Bool tsu_containsHDRContent;
 - (void)tsu_loadValuesAsynchronouslyForKeys:(id)arg1 completionQueue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (_Bool)p_doesTrack:(id)arg1 matchCodecTypes:(id)arg2;
+- (_Bool)tsu_containsTrackWithMediaType:(id)arg1 matchingCodecTypes:(id)arg2;
+- (_Bool)tsu_containsVideoTrackWithDimensionsGreaterThan:(CDStruct_1ef3fb1f)arg1;
 @property(readonly, nonatomic) _Bool tsu_isPlayable;
 @property(readonly, nonatomic) struct CGSize naturalSizeWithPreferredTransforms;
 @end

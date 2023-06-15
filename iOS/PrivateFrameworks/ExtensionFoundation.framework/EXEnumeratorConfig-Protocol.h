@@ -9,6 +9,7 @@
 @class NSDictionary, NSURL;
 
 @protocol EXEnumeratorConfig <NSObject>
+@property(readonly) NSDictionary *compatibilityExtensionPointAllowList;
 @property(readonly) NSDictionary *legacyExtensionPointAllowList;
 @property(readonly) NSURL *extensionPointsConfigURL;
 @property(readonly) NSURL *xpcExtensionPointsCache;

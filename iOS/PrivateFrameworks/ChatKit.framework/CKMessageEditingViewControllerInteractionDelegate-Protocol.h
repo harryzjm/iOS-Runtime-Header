@@ -6,11 +6,14 @@
 
 #import <ChatKit/NSObject-Protocol.h>
 
-@class CKComposition, CKMessageEditingViewController, NSString, UIView;
+@class CKComposition, CKMessageEditingViewController, NSDictionary, NSString, UIView;
 
 @protocol CKMessageEditingViewControllerInteractionDelegate <NSObject>
+- (NSDictionary *)proofReadingInfoForMessageEditingViewController:(CKMessageEditingViewController *)arg1;
+- (BOOL)messageEditingViewController:(CKMessageEditingViewController *)arg1 colorForChatItemGuid:(NSString *)arg2;
 - (void)messageEditingViewController:(CKMessageEditingViewController *)arg1 didUpdateFrameForBalloonView:(UIView *)arg2;
 - (_Bool)messageEditingViewController:(CKMessageEditingViewController *)arg1 balloonHasTailForChatItemGuid:(NSString *)arg2;
+- (struct UIEdgeInsets)transcriptContentInsetsForMessageEditingViewController:(CKMessageEditingViewController *)arg1;
 - (struct UIEdgeInsets)messageEditingViewController:(CKMessageEditingViewController *)arg1 contentInsetsForChatItemGuid:(NSString *)arg2;
 - (double)balloonMaxWidthForMessageEditingViewController:(CKMessageEditingViewController *)arg1;
 - (CKComposition *)messageEditingViewController:(CKMessageEditingViewController *)arg1 originalMessageCompositionForMessageWithGuid:(NSString *)arg2;

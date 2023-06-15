@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, RPTCoordinateSpaceConverter;
+@class CAMediaTimingFunction, NSString, RPTCoordinateSpaceConverter;
 
 __attribute__((visibility("hidden")))
 @interface RPTOscillationScrollTestParameters : NSObject
@@ -18,6 +18,8 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _completionHandler;
     RPTCoordinateSpaceConverter *_conversion;
     unsigned long long _iterations;
+    CAMediaTimingFunction *_curveFunction;
+    double _useDefaultDurationForFlick;
     double _amplitudeVariationPerIteration;
     double _initialAmplitude;
     long long _initialDirection;
@@ -32,7 +34,9 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) double amplitudeVariationPerIteration; // @synthesize amplitudeVariationPerIteration=_amplitudeVariationPerIteration;
 @property(nonatomic) _Bool finishWithHalfIteration; // @synthesize finishWithHalfIteration=_finishWithHalfIteration;
 @property(nonatomic) _Bool preventDismissalGestures; // @synthesize preventDismissalGestures=_preventDismissalGestures;
+@property(nonatomic) double useDefaultDurationForFlick; // @synthesize useDefaultDurationForFlick=_useDefaultDurationForFlick;
 @property(nonatomic) _Bool shouldFlick; // @synthesize shouldFlick=_shouldFlick;
+@property(retain, nonatomic) CAMediaTimingFunction *curveFunction; // @synthesize curveFunction=_curveFunction;
 @property(nonatomic) struct CGRect scrollingBounds; // @synthesize scrollingBounds=_scrollingBounds;
 @property(nonatomic) unsigned long long iterations; // @synthesize iterations=_iterations;
 @property(retain, nonatomic) RPTCoordinateSpaceConverter *conversion; // @synthesize conversion=_conversion;

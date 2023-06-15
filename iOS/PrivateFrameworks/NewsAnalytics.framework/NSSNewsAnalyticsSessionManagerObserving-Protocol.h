@@ -6,12 +6,12 @@
 
 #import <NewsAnalytics/NSObject-Protocol.h>
 
-@class NSNumber, NSString;
+@class NSNumber, NSString, NSURL;
 
 @protocol NSSNewsAnalyticsSessionManagerObserving <NSObject>
+@property(readonly, nonatomic) NSString *sceneSessionIdentifier;
 - (void)sessionWillEndWithEndReason:(NSNumber *)arg1;
 - (void)sessionWillResignActive;
-- (void)sessionDidStartWithSessionID:(NSString *)arg1 sourceApplication:(NSString *)arg2;
-@property(nonatomic, readonly) NSString *sceneSessionIdentifier;
+- (void)sessionDidStartWithSessionID:(NSString *)arg1 sourceApplication:(NSString *)arg2 url:(NSURL *)arg3;
 @end
 

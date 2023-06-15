@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UICollectionView.h>
+#import <UIKitCore/UICollectionView.h>
 
 @class MISSING_TYPE;
 
@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)layoutSubviews;
+- (void)dealloc;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 collectionViewLayout:(id)arg2;
 - (void)handleAccessibilitySettingsChangedWithNotification:(id)arg1;

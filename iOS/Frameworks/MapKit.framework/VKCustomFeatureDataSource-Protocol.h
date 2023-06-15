@@ -20,5 +20,8 @@
 - (_Bool)isClusteringEnabled;
 - (void)removeObserver:(id <VKCustomFeatureDataSourceObserver>)arg1;
 - (void)addObserver:(id <VKCustomFeatureDataSourceObserver>)arg1;
+
+@optional
+- (unsigned char)featureType;
 @end
 

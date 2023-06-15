@@ -14,10 +14,13 @@ __attribute__((visibility("hidden")))
     float _normalizedCornerRadius;
     NSString *_title;
     UIColor *_tintColor;
+    UIColor *_labelTextColor;
     unsigned long long _placement;
     struct UIEdgeInsets _layoutMargins;
 }
 
++ (id)_liveContentTagWithTintColor:(id)arg1 withTextColor:(id)arg2;
++ (id)liveEdgeContentTag;
 + (id)liveContentTag;
 + (id)adContentTagWithTintColor:(id)arg1;
 + (id)adContentTag;
@@ -25,6 +28,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) struct UIEdgeInsets layoutMargins; // @synthesize layoutMargins=_layoutMargins;
 @property(readonly, nonatomic) unsigned long long placement; // @synthesize placement=_placement;
 @property(readonly, nonatomic) float normalizedCornerRadius; // @synthesize normalizedCornerRadius=_normalizedCornerRadius;
+@property(readonly, nonatomic) UIColor *labelTextColor; // @synthesize labelTextColor=_labelTextColor;
 @property(readonly, nonatomic) UIColor *tintColor; // @synthesize tintColor=_tintColor;
 @property(readonly, nonatomic) NSString *title; // @synthesize title=_title;
 - (id)_initInternal;

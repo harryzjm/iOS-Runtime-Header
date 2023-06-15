@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
     AMSEngagementRequest *_request;
     AMSEngagementResult *_result;
     UIViewController *_viewController;
+    struct CGSize _preferredContentSize;
 }
 
 - (void).cxx_destruct;
@@ -31,6 +32,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIViewController *presentedViewController; // @synthesize presentedViewController=_presentedViewController;
 @property(retain, nonatomic) NSError *error; // @synthesize error=_error;
 @property(retain, nonatomic) NSObject<OS_dispatch_group> *dispatchGroup; // @synthesize dispatchGroup=_dispatchGroup;
+@property(nonatomic) struct CGSize preferredContentSize; // @synthesize preferredContentSize=_preferredContentSize;
 @property(retain, nonatomic) AMSProcessInfo *clientInfo; // @synthesize clientInfo=_clientInfo;
 @property(retain, nonatomic) id <AMSBagProtocol> bag; // @synthesize bag=_bag;
 - (void)_presentViewController:(id)arg1;

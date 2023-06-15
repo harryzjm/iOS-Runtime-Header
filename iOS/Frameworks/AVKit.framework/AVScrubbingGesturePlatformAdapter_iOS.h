@@ -19,11 +19,15 @@ __attribute__((visibility("hidden")))
     float _coordinateVelocityScale;
     float _deviceCoordinateVelocityScaleFactor;
     _Bool _gestureEnabled;
+    double _scrubbingWidth;
+    struct CGPoint _translation;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) double scrubbingWidth; // @synthesize scrubbingWidth=_scrubbingWidth;
 - (_Bool)gestureEnabled;
 - (float)timelineVelocity;
+- (struct CGPoint)translation;
 - (void)_touchGestureAction:(id)arg1;
 - (void)_panGestureAction:(id)arg1;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;

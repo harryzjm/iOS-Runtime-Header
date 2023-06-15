@@ -9,30 +9,24 @@
 __attribute__((visibility("hidden")))
 @interface HKFeatureAvailabilityRequirementMutuallyExclusiveFeatureIsOff
 {
-    _Bool _isOnWhenSettingIsAbsent;
     NSString *_featureIdentifier;
-    NSString *_settingsOnKey;
+    NSString *_context;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)requirementIdentifier;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) _Bool isOnWhenSettingIsAbsent; // @synthesize isOnWhenSettingIsAbsent=_isOnWhenSettingIsAbsent;
-@property(readonly, copy, nonatomic) NSString *settingsOnKey; // @synthesize settingsOnKey=_settingsOnKey;
+@property(readonly, copy, nonatomic) NSString *context; // @synthesize context=_context;
 @property(readonly, copy, nonatomic) NSString *featureIdentifier; // @synthesize featureIdentifier=_featureIdentifier;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (void)unregisterObserver:(id)arg1 fromDataSource:(id)arg2;
 - (void)registerObserver:(id)arg1 forDataSource:(id)arg2;
-- (_Bool)_isFeatureOnWithOnboardingRecord:(id)arg1;
-- (_Bool)_isSatisfiedWithOnboardingRecord:(id)arg1;
 - (id)isSatisfiedWithDataSource:(id)arg1 error:(id *)arg2;
 @property(readonly, nonatomic) NSString *requirementDescription;
-- (id)initWithFeatureIdentifier:(id)arg1 settingsOnKey:(id)arg2 isOnWhenSettingIsAbsent:(_Bool)arg3;
-- (id)initWithFeatureIdentifier:(id)arg1 isOnWhenSettingIsAbsent:(_Bool)arg2;
+- (id)initWithFeatureIdentifier:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
     _Bool _allowsSearchSuggestions;
     _Bool _allowsAlbums;
+    _Bool _containsStickersFilter;
     _Bool _pu_legacy_mediaTypesIncludesLivePhoto;
     NSPredicate *_assetPredicate;
     unsigned long long _possibleAssetTypes;
@@ -30,6 +31,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) unsigned long long requiredAssetTypes; // @synthesize requiredAssetTypes=_requiredAssetTypes;
 @property(readonly, nonatomic) unsigned long long possibleAssetTypes; // @synthesize possibleAssetTypes=_possibleAssetTypes;
 @property(readonly, copy, nonatomic) NSPredicate *assetPredicate; // @synthesize assetPredicate=_assetPredicate;
+@property(readonly, nonatomic) _Bool containsStickersFilter; // @synthesize containsStickersFilter=_containsStickersFilter;
 @property(readonly, nonatomic) _Bool allowsAlbums; // @synthesize allowsAlbums=_allowsAlbums;
 @property(readonly, nonatomic) _Bool allowsSearchSuggestions; // @synthesize allowsSearchSuggestions=_allowsSearchSuggestions;
 - (long long)displayAssetMediaTypeConsideringAssetObjectIDs:(id)arg1 photoLibrary:(id)arg2;

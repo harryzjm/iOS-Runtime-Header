@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MNLocation, MNTrafficIncidentAlert, NSString, NSTimer;
+@class MNLocation, MNTrafficIncidentAlert, NSDate, NSMutableSet, NSString;
 @protocol MNTrafficIncidentAlertUpdaterDelegate;
 
 __attribute__((visibility("hidden")))
@@ -14,27 +14,36 @@ __attribute__((visibility("hidden")))
 {
     id <MNTrafficIncidentAlertUpdaterDelegate> _delegate;
     MNLocation *_lastLocation;
-    MNTrafficIncidentAlert *_pendingAlert;
+    NSMutableSet *_pendingAlerts;
     MNTrafficIncidentAlert *_activeAlert;
-    _Bool _isSpeakingAlert;
+    NSDate *_activeAlertDisplayedTime;
+    NSDate *_nextAlertDisplayTime;
     int _trafficIncidentStatus;
-    NSTimer *_alertRetryTimer;
     NSString *_previousBannerID;
+    NSMutableSet *_displayedBannerIds;
+    _Bool _useTriggerPointRangeBannerQueuing;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool useTriggerPointRangeBannerQueuing; // @synthesize useTriggerPointRangeBannerQueuing=_useTriggerPointRangeBannerQueuing;
 @property(nonatomic) __weak id <MNTrafficIncidentAlertUpdaterDelegate> delegate; // @synthesize delegate=_delegate;
-- (void)_activateAlertForLocation:(id)arg1;
-- (void)_updatePreviousDisplayedBannerForRequest:(id)arg1;
-- (void)_updateRerouteProposalStatusForRequest:(id)arg1;
-- (void)_updateAlertDistanceAndETA:(id)arg1;
+- (void)_updateAlertDistanceAndETAForLocation:(id)arg1;
+- (void)_updateActiveAlertForLocation:(id)arg1;
 - (void)_removeActiveAlert;
+- (void)_updateRerouteProposalStatusForRequest:(id)arg1;
+- (void)_updatePreviousDisplayedBannerForRequest:(id)arg1;
+- (void)_activateAlert:(id)arg1 forLocation:(id)arg2;
+- (void)_updateForLocationUsingDistancePoints:(id)arg1;
+- (void)_updateForAlertsFromResponseUsingDistancePoints:(id)arg1;
+- (id)_nextAlert;
 - (void)clearAlerts;
-- (void)updateForAlertFromResponse:(id)arg1;
+- (void)updateForAlertsFromResponse:(id)arg1;
 - (void)updatePreviousIncidentResultForRequest:(id)arg1;
 - (void)updateForReroute:(id)arg1;
 - (void)updateForLocation:(id)arg1;
+@property(retain, nonatomic) MNTrafficIncidentAlert *activeAlert;
 - (void)dealloc;
+- (id)init;
 
 @end
 

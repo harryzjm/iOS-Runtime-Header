@@ -4,27 +4,67 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import "UIImageView.h"
+#import "UIView.h"
+
+@class UIColor, UIImage, UIViewFloatAnimatableProperty, _UIPageIndicatorImageView, _UIPageIndicatorProgressView;
 
 __attribute__((visibility("hidden")))
-@interface _UIPageIndicatorView : UIImageView
+@interface _UIPageIndicatorView : UIView
 {
-    struct CGSize _cachedSize;
+    _Bool _active;
+    _Bool _supportsExpandedIndicator;
+    float _currentProgress;
     long long _page;
+    long long _mode;
+    long long _direction;
+    UIImage *_image;
+    UIImage *_activeImage;
+    UIColor *_indicatorColor;
+    UIColor *_activeIndicatorColor;
+    _UIPageIndicatorImageView *_imageView;
+    _UIPageIndicatorProgressView *_progressView;
+    UIViewFloatAnimatableProperty *_expandProgress;
+    long long _offsetDirection;
+    struct CGSize _defaultModeSize;
+    struct CGSize _expandedModeSize;
 }
 
+- (void).cxx_destruct;
+@property(readonly, nonatomic) long long offsetDirection; // @synthesize offsetDirection=_offsetDirection;
+@property(readonly, nonatomic) UIViewFloatAnimatableProperty *expandProgress; // @synthesize expandProgress=_expandProgress;
+@property(readonly, nonatomic) _UIPageIndicatorProgressView *progressView; // @synthesize progressView=_progressView;
+@property(readonly, nonatomic) _UIPageIndicatorImageView *imageView; // @synthesize imageView=_imageView;
+@property(nonatomic) struct CGSize expandedModeSize; // @synthesize expandedModeSize=_expandedModeSize;
+@property(nonatomic) struct CGSize defaultModeSize; // @synthesize defaultModeSize=_defaultModeSize;
+@property(nonatomic) float currentProgress; // @synthesize currentProgress=_currentProgress;
+@property(retain, nonatomic) UIColor *activeIndicatorColor; // @synthesize activeIndicatorColor=_activeIndicatorColor;
+@property(retain, nonatomic) UIColor *indicatorColor; // @synthesize indicatorColor=_indicatorColor;
+@property(retain, nonatomic) UIImage *activeImage; // @synthesize activeImage=_activeImage;
+@property(retain, nonatomic) UIImage *image; // @synthesize image=_image;
+@property(nonatomic) long long direction; // @synthesize direction=_direction;
+@property(readonly, nonatomic) long long mode; // @synthesize mode=_mode;
+@property(nonatomic) _Bool supportsExpandedIndicator; // @synthesize supportsExpandedIndicator=_supportsExpandedIndicator;
+@property(nonatomic, getter=isActive) _Bool active; // @synthesize active=_active;
 @property(nonatomic) long long page; // @synthesize page=_page;
+- (_Bool)_isDefaultSymbolImage;
+- (long long)_transitionDirection;
+- (_Bool)_hasOngoingExpandTransition;
+- (struct CGSize)_adjustedExpandedModeSize;
+- (struct CGSize)_adjustedDefaultModeSize;
+- (struct UIEdgeInsets)_currentImageContentInsets;
+- (void)_updateIndicatorExpandProgress;
+- (void)_updateProgressBar;
+- (void)_updateImage;
 - (id)debugDescription;
+- (void)layoutSubviews;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (struct CGSize)sizeForImage:(id)arg1 traits:(id)arg2;
+- (double)currentExpandProgress;
 - (_Bool)isInvalidated;
 - (void)invalidate;
-- (struct CGSize)sizeForImage:(id)arg1 withTraitCollection:(id)arg2;
-- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (void)setImage:(id)arg1;
-- (void)traitCollectionDidChange:(id)arg1;
-- (void)updateSymbolConfigurationForTraitCollection;
+- (void)setMode:(long long)arg1 direction:(long long)arg2;
 - (void)prepare;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithImage:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

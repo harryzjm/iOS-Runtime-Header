@@ -54,7 +54,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSString *localizedGeoDescription;
 @property(readonly, nonatomic) long long originalFileSize;
 @property(readonly, nonatomic) long long playbackStyle;
-@property(readonly, nonatomic) long long playbackVariation;
+@property(readonly, nonatomic) unsigned short playbackVariation;
 @property(readonly) Class superclass;
 @property(readonly, nonatomic) unsigned long long thumbnailVersion;
 @property(readonly, nonatomic) NSString *uuid;

@@ -8,6 +8,7 @@
 
 @class KVItemBuilder, NSMutableArray, NSString;
 
+__attribute__((visibility("hidden")))
 @interface KMMapper_HMHome : NSObject
 {
     KVItemBuilder *_builder;

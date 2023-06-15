@@ -9,16 +9,23 @@
 #import <XCUIAutomation/XCUIScreenDataSource-Protocol.h>
 
 @class NSString;
-@protocol XCUILocalDeviceScreenshotIPCInterface;
+@protocol XCUILocalDeviceScreenRecordingIPCInterface, XCUILocalDeviceScreenshotIPCInterface;
 
 @interface XCUILocalDeviceScreenDataSource : NSObject <XCUIScreenDataSource>
 {
     id <XCUILocalDeviceScreenshotIPCInterface> _screenshotIPCInterface;
+    id <XCUILocalDeviceScreenRecordingIPCInterface> _screenRecordingIPCInterface;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) id <XCUILocalDeviceScreenRecordingIPCInterface> screenRecordingIPCInterface; // @synthesize screenRecordingIPCInterface=_screenRecordingIPCInterface;
 @property(retain, nonatomic) id <XCUILocalDeviceScreenshotIPCInterface> screenshotIPCInterface; // @synthesize screenshotIPCInterface=_screenshotIPCInterface;
+@property(readonly, nonatomic) _Bool supportsScreenRecording;
+@property(readonly, nonatomic) _Bool preferScreenshotsOverScreenRecordings;
+- (void)stopScreenRecordingWithUUID:(id)arg1 withReply:(CDUnknownBlockType)arg2;
+- (void)startScreenRecordingWithRequest:(id)arg1 withReply:(CDUnknownBlockType)arg2;
 - (id)_clippedScreenshotFromImage:(id)arg1 encoding:(id)arg2 rect:(struct CGRect)arg3;
+- (void)requestScreenshotAttachmentWithRequest:(id)arg1 withReply:(CDUnknownBlockType)arg2;
 - (void)requestScreenshotWithRequest:(id)arg1 withReply:(CDUnknownBlockType)arg2;
 - (void)requestBoundsForScreenWithIdentifier:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)requestScaleForScreenWithIdentifier:(long long)arg1 completion:(CDUnknownBlockType)arg2;
@@ -26,7 +33,7 @@
 - (id)_displayWithIdentifier:(long long)arg1;
 - (void)requestScreenIdentifiersWithCompletion:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) _Bool supportsHEICImageEncoding;
-- (id)initWithScreenshotIPCInterface:(id)arg1;
+- (id)initWithScreenshotIPCInterface:(id)arg1 screenRecordingIPCInterface:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

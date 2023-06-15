@@ -6,8 +6,8 @@
 
 #import <MetalTools/NSObject-Protocol.h>
 
-@class MTLAccelerationStructureDescriptor, MTLBinaryArchiveDescriptor, MTLCompileOptions, MTLComputePipelineDescriptor, MTLCounterSampleBufferDescriptor, MTLDepthStencilDescriptor, MTLHeapDescriptor, MTLIOCommandQueueDescriptor, MTLIndirectCommandBufferDescriptor, MTLMeshRenderPipelineDescriptor, MTLRasterizationRateMapDescriptor, MTLRenderPipelineDescriptor, MTLSamplerDescriptor, MTLSharedEventHandle, MTLStitchedLibraryDescriptor, MTLTextureDescriptor, MTLTileRenderPipelineDescriptor, NSArray, NSBundle, NSObject, NSString, NSURL;
-@protocol MTLAccelerationStructure, MTLArgumentEncoder, MTLBinaryArchive, MTLBuffer, MTLBufferBinding, MTLCommandQueue, MTLComputePipelineState, MTLCounterSampleBuffer, MTLDepthStencilState, MTLDynamicLibrary, MTLEvent, MTLFence, MTLFunction, MTLHeap, MTLIOCommandQueue, MTLIOFileHandle, MTLIndirectCommandBuffer, MTLLibrary, MTLRasterizationRateMap, MTLRenderPipelineState, MTLSamplerState, MTLSharedEvent, MTLTexture, OS_dispatch_data;
+@class MTLAccelerationStructureDescriptor, MTLArchitecture, MTLBinaryArchiveDescriptor, MTLCompileOptions, MTLComputePipelineDescriptor, MTLCounterSampleBufferDescriptor, MTLDepthStencilDescriptor, MTLHeapDescriptor, MTLIndirectCommandBufferDescriptor, MTLMeshRenderPipelineDescriptor, MTLRasterizationRateMapDescriptor, MTLRenderPipelineDescriptor, MTLSamplerDescriptor, MTLSharedEventHandle, MTLStitchedLibraryDescriptor, MTLTextureDescriptor, MTLTileRenderPipelineDescriptor, NSArray, NSBundle, NSObject, NSString, NSURL;
+@protocol MTLAccelerationStructure, MTLArgumentEncoder, MTLBinaryArchive, MTLBuffer, MTLBufferBinding, MTLCommandQueue, MTLComputePipelineState, MTLCounterSampleBuffer, MTLDepthStencilState, MTLDynamicLibrary, MTLEvent, MTLFence, MTLFunction, MTLHeap, MTLIndirectCommandBuffer, MTLLibrary, MTLRasterizationRateMap, MTLRenderPipelineState, MTLSamplerState, MTLSharedEvent, MTLTexture, OS_dispatch_data;
 
 @protocol MTLDevice <NSObject>
 @property(readonly) _Bool supportsPrimitiveMotionBlur;
@@ -41,6 +41,7 @@
 @property(readonly, getter=isHeadless) _Bool headless;
 @property(readonly, getter=isLowPower) _Bool lowPower;
 @property(readonly) CDStruct_14f26992 maxThreadsPerThreadgroup;
+@property(readonly) MTLArchitecture *architecture;
 @property(readonly) unsigned long long registryID;
 @property(readonly) NSString *name;
 - (CDStruct_4bcfbbae)heapAccelerationStructureSizeAndAlignWithDescriptor:(MTLAccelerationStructureDescriptor *)arg1;
@@ -59,9 +60,6 @@
 - (CDStruct_14f26992)sparseTileSizeWithTextureType:(unsigned long long)arg1 pixelFormat:(unsigned long long)arg2 sampleCount:(unsigned long long)arg3 sparsePageSize:(long long)arg4;
 - (unsigned long long)sparseTileSizeInBytesForSparsePageSize:(long long)arg1;
 - (CDStruct_14f26992)sparseTileSizeWithTextureType:(unsigned long long)arg1 pixelFormat:(unsigned long long)arg2 sampleCount:(unsigned long long)arg3;
-- (id <MTLIOFileHandle>)newIOHandleWithURL:(NSURL *)arg1 compressionMethod:(long long)arg2 error:(id *)arg3;
-- (id <MTLIOCommandQueue>)newIOCommandQueueWithDescriptor:(MTLIOCommandQueueDescriptor *)arg1 error:(id *)arg2;
-- (id <MTLIOFileHandle>)newIOHandleWithURL:(NSURL *)arg1 error:(id *)arg2;
 - (id <MTLSharedEvent>)newSharedEventWithHandle:(MTLSharedEventHandle *)arg1;
 - (id <MTLSharedEvent>)newSharedEvent;
 - (id <MTLEvent>)newEvent;

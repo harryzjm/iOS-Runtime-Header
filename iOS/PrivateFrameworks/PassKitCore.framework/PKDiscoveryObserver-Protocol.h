@@ -6,12 +6,14 @@
 
 #import <PassKitCore/NSObject-Protocol.h>
 
-@class NSArray, PKDiscoveryService;
+@class NSArray, NSString, PKDiscoveryItem, PKDiscoveryService;
 
 @protocol PKDiscoveryObserver <NSObject>
 
 @optional
 - (void)discoveryServiceDidReceiveUpdatedDiscoveryEngagementMessages:(PKDiscoveryService *)arg1;
+- (void)discoveryService:(PKDiscoveryService *)arg1 dialogRequestsChangedForPlacement:(NSString *)arg2;
+- (void)discoveryService:(PKDiscoveryService *)arg1 completedCTAForItem:(PKDiscoveryItem *)arg2;
 - (void)discoveryService:(PKDiscoveryService *)arg1 receivedUpdatedDiscoveryArticleLayouts:(NSArray *)arg2;
 @end
 

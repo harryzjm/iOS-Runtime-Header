@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     struct CGSize _size;
 }
 
++ (id)new;
 - (void).cxx_destruct;
 @property(retain, nonatomic, setter=_setWindow:) UIWindow *_window; // @synthesize _window=__window;
 @property(retain, nonatomic) UIViewController *rootViewController; // @synthesize rootViewController=_rootViewController;
@@ -28,6 +29,8 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic, setter=_setScreen:) UIScreen *screen; // @synthesize screen=_screen;
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;
 - (void)_updateWindow;
+- (id)_associatedWindowScene;
+@property(readonly, nonatomic, getter=isValid) _Bool valid;
 @property(readonly, nonatomic) NSString *_typeName;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;

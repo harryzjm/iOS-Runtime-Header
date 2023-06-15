@@ -4,10 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSUUID;
+@class NSArray, NSUUID;
 
 @protocol AIMLExperimentationAnalytics
 - (void)emitTriggerFromCacheForCodePathID:(NSUUID *)arg1 requestID:(NSUUID *)arg2 completionHandler:(void (^)(NSError *))arg3;
+- (void)cacheTrialExperimentsIdentifiersForCodePathID:(NSUUID *)arg1 namespaces:(NSArray *)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)cacheTrialExperimentsForCodePathID:(NSUUID *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)emitTriggerForCodePathID:(NSUUID *)arg1 requestID:(NSUUID *)arg2 completionHandler:(void (^)(NSError *))arg3;
 @end

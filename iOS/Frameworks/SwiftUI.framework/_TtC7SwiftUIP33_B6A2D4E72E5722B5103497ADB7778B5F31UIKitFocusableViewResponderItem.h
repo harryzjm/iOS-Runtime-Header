@@ -13,6 +13,7 @@
 {
     MISSING_TYPE *base;
     MISSING_TYPE *host;
+    MISSING_TYPE *frame;
     MISSING_TYPE *contentPath;
 }
 
@@ -28,7 +29,7 @@
 @property(nonatomic, readonly) id <UIFocusEnvironment> parentFocusEnvironment;
 @property(nonatomic, readonly) NSString *swiftui_focusGroupIdentifier;
 @property(nonatomic, readonly) _Bool canBecomeFocused;
-@property(nonatomic, readonly) struct CGRect frame;
+@property(nonatomic) struct CGRect frame; // @synthesize frame;
 
 @end
 

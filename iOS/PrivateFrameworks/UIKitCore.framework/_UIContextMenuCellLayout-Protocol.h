@@ -6,16 +6,19 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class NSString, _UIContextMenuCellContentView;
+@class UIColor, UIFont, _UIContextMenuCellContentView;
 
 @protocol _UIContextMenuCellLayout <NSObject>
+@property(readonly, nonatomic) UIColor *preferredContentColorForCurrentState;
+@property(readonly, nonatomic) struct NSDirectionalEdgeInsets backgroundViewInsets;
+@property(readonly, nonatomic) _Bool allowsHighlightingOnHover;
 @property(readonly, nonatomic) unsigned long long labelMaximumNumberOfLines;
 @property(readonly, nonatomic) long long labelTextAlignment;
 @property(readonly, nonatomic) long long layoutSize;
+- (UIFont *)preferredIconFontUsingBoldFont:(_Bool)arg1;
 - (void)removeConstraints;
 - (void)updateConstraints;
 - (void)installConstraints;
 - (id)initWithContentView:(_UIContextMenuCellContentView *)arg1;
-- (NSString *)preferredTextStyleUsingBoldFont:(_Bool)arg1;
 @end
 

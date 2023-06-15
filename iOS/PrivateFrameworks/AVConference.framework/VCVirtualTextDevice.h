@@ -18,8 +18,10 @@ __attribute__((visibility("hidden")))
     id _sendDelegate;
     id _mediaStreamDelegate;
     NSObject<OS_dispatch_queue> *_mediaStreamDelegateQueue;
+    struct tagVCMediaStreamDelegateRealtimeInstanceVTable _mediaStreamDelegateFunctions;
 }
 
+@property(nonatomic) struct tagVCMediaStreamDelegateRealtimeInstanceVTable mediaStreamDelegateFunctions; // @synthesize mediaStreamDelegateFunctions=_mediaStreamDelegateFunctions;
 - (void)didReceiveText:(id)arg1;
 - (void)sendText:(id)arg1;
 - (void)sendCharacter:(unsigned short)arg1;
@@ -32,7 +34,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *mediaStreamDelegateQueue;
 @property(nonatomic) NSObject<VCMediaStreamDelegate> *mediaStreamDelegate;
 - (void)dealloc;
-- (id)initWithSendDelegate:(id)arg1 clientPid:(int)arg2 delegate:(id)arg3 delegateQueue:(id)arg4;
+- (id)initWithSendDelegate:(id)arg1 clientPid:(int)arg2 delegate:(id)arg3 delegateFunctions:(const struct tagVCMediaStreamDelegateRealtimeInstanceVTable *)arg4 delegateQueue:(id)arg5;
 - (_Bool)setStreamConfig:(id)arg1 withError:(id *)arg2;
 
 // Remaining properties

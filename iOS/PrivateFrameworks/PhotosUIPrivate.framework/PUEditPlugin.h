@@ -11,15 +11,18 @@
 __attribute__((visibility("hidden")))
 @interface PUEditPlugin : NSObject
 {
-    UIApplicationExtensionActivity *_applicationExtensionActivity;
     unsigned long long _category;
+    UIApplicationExtensionActivity *_applicationExtensionActivity;
     NSExtension *_extension;
 }
 
++ (_Bool)pu_isMarkupExtensionIdentifier:(id)arg1;
++ (id)pu_defaultMarkupExtensionIdentifier;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSExtension *extension; // @synthesize extension=_extension;
-@property(nonatomic) unsigned long long category; // @synthesize category=_category;
 @property(readonly, nonatomic) UIApplicationExtensionActivity *applicationExtensionActivity; // @synthesize applicationExtensionActivity=_applicationExtensionActivity;
+@property(nonatomic) unsigned long long category; // @synthesize category=_category;
+- (_Bool)pu_isMarkupExtension;
 @property(readonly, nonatomic) UIImage *smallIcon;
 @property(readonly, nonatomic) UIImage *icon;
 @property(readonly, nonatomic) NSString *title;

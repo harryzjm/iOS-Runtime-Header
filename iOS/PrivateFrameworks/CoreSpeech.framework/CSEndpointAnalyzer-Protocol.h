@@ -16,6 +16,7 @@
 @property(nonatomic) double startWaitTime;
 @property(nonatomic) double delay;
 @property(nonatomic) long long endpointStyle;
+- (void)getFirstAudioSampleSensorHostTimeWithReply:(void (^)(NSError *, unsigned long long))arg1;
 - (void)preheat;
 - (void)reset;
 

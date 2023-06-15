@@ -10,15 +10,12 @@
 
 @interface _TtC16SiriVideoIntents41PlayOnThirdPartyAppSignalRecordingHandler : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *cooldownPeriod;
+    MISSING_TYPE *numSelfMessages;
     MISSING_TYPE *configProvider;
     MISSING_TYPE *videoAppsOverrideProvider;
     MISSING_TYPE *appsProvider;
     MISSING_TYPE *globals;
-    MISSING_TYPE *userDefaultsProvider;
-    MISSING_TYPE *randomProvider;
-    MISSING_TYPE *nowProvider;
-    MISSING_TYPE *description;
+    MISSING_TYPE *eligibilityManager;
 }
 
 @end

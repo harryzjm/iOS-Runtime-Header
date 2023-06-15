@@ -12,7 +12,7 @@
 - (void)fetchActivitiesForClient:(NSString *)arg1 replyHandler:(void (^)(NSArray *, NSError *))arg2;
 - (void)stopMonitoringActivities:(NSArray *)arg1 forClient:(NSString *)arg2 replyHandler:(void (^)(NSError *))arg3;
 - (void)startMonitoringActivity:(NSString *)arg1 withSchedule:(USDeviceActivitySchedule *)arg2 events:(NSDictionary *)arg3 forClient:(NSString *)arg4 withExtension:(NSString *)arg5 replyHandler:(void (^)(NSError *))arg6;
-- (void)stopVideoUsageForBundleIdentifier:(NSString *)arg1 URL:(NSURL *)arg2 mediaURL:(NSURL *)arg3 usageTrusted:(_Bool)arg4 replyHandler:(void (^)(void))arg5;
-- (void)startVideoUsageForBundleIdentifier:(NSString *)arg1 URL:(NSURL *)arg2 mediaURL:(NSURL *)arg3 usageTrusted:(_Bool)arg4 replyHandler:(void (^)(void))arg5;
+- (void)stopVideoUsageForBundleIdentifier:(NSString *)arg1 profileIdentifier:(NSString *)arg2 URL:(NSURL *)arg3 mediaURL:(NSURL *)arg4 usageTrusted:(_Bool)arg5 replyHandler:(void (^)(void))arg6;
+- (void)startVideoUsageForBundleIdentifier:(NSString *)arg1 profileIdentifier:(NSString *)arg2 URL:(NSURL *)arg3 mediaURL:(NSURL *)arg4 usageTrusted:(_Bool)arg5 replyHandler:(void (^)(void))arg6;
 @end
 

@@ -6,13 +6,13 @@
 
 #import <NotesEditor/NSObject-Protocol.h>
 
-@class ICAttachment, ICAttachmentInsertionController, ICInlineAttachment, TTTextStorage;
+@class ICAttachment, ICAttachmentInsertionController, ICInlineAttachment, ICTTTextStorage;
 
 @protocol ICAttachmentInsertionDelegate <NSObject>
 
 @optional
-- (void)attachmentInsertionController:(ICAttachmentInsertionController *)arg1 didAddInlineAttachment:(ICInlineAttachment *)arg2 atRange:(struct _NSRange)arg3 textStorage:(TTTextStorage *)arg4;
-- (void)attachmentInsertionController:(ICAttachmentInsertionController *)arg1 willAddInlineAttachment:(ICInlineAttachment *)arg2 atRange:(struct _NSRange)arg3 textStorage:(TTTextStorage *)arg4;
+- (void)attachmentInsertionController:(ICAttachmentInsertionController *)arg1 didAddInlineAttachment:(ICInlineAttachment *)arg2 atRange:(struct _NSRange)arg3 textStorage:(ICTTTextStorage *)arg4;
+- (void)attachmentInsertionController:(ICAttachmentInsertionController *)arg1 willAddInlineAttachment:(ICInlineAttachment *)arg2 atRange:(struct _NSRange)arg3 textStorage:(ICTTTextStorage *)arg4;
 - (void)attachmentInsertionController:(ICAttachmentInsertionController *)arg1 didAddAttachment:(ICAttachment *)arg2 atRange:(struct _NSRange)arg3;
 - (void)attachmentInsertionController:(ICAttachmentInsertionController *)arg1 willAddAttachment:(ICAttachment *)arg2 atRange:(struct _NSRange)arg3;
 @end

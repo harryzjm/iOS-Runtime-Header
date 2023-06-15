@@ -16,9 +16,15 @@
 @property(readonly, copy, nonatomic) UIColor *mostInterestingColor;
 @property(readonly, copy, nonatomic) UIColor *accentColor;
 @property(readonly, copy, nonatomic) UIColor *backgroundColor;
+- (_Bool)sbh_isLinkedOnOrAfter:(unsigned long long)arg1;
 @property(readonly, copy, nonatomic) NSString *sbh_galleryItemIdentifier;
 @property(readonly, nonatomic) id <SBLeafIconDataSource> sbh_iconDataSource;
+@property(readonly, nonatomic) _Bool sbh_supportsRemovableBackgroundOrAccessoryFamilies;
+@property(readonly, nonatomic) _Bool sbh_supportsRemovableBackground;
 @property(readonly, nonatomic) _Bool sbh_canBeAddedToStack;
+- (unsigned long long)_widgetLocationStyleForAddWidgetSheetLocation:(unsigned long long)arg1;
+- (unsigned long long)sbh_disfavoredSizeClassesForAddWidgetSheetLocation:(unsigned long long)arg1;
+- (unsigned long long)sbh_favoredSizeClassesForAddWidgetSheetLocation:(unsigned long long)arg1;
 @property(readonly, nonatomic) unsigned long long sbh_supportedSizeClasses;
 @property(readonly, copy, nonatomic) NSString *sbh_widgetDescription;
 @property(readonly, copy, nonatomic) NSString *sbh_widgetName;

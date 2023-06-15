@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (void)telephonyDidChange:(id)arg1;
 - (void)propertiesDidChange:(id)arg1;
 - (void)appQueryManager:(id)arg1 didReceiveApps:(id)arg2;
+- (void)_subscriptionStatusChangeHWBundle:(id)arg1;
 - (void)_subscriptionStatusChangeiCloud:(id)arg1;
 - (void)_subscriptionStatusChangeTV:(id)arg1;
 - (void)_subscriptionStatusChangeNews:(id)arg1;

@@ -54,11 +54,11 @@
 - (id)copyByRewritingWithSpec:(id)arg1 inOwner:(id)arg2 inCellCoordinate:(struct TSUCellCoord)arg3;
 - (id)copyByConvertingChromeToBase:(id)arg1 inOwner:(id)arg2 inCellCoordinate:(struct TSUCellCoord)arg3;
 - (id)copyByConvertingBaseToChrome:(id)arg1 inOwner:(id)arg2 inCellCoordinate:(struct TSUCellCoord)arg3;
-- (id)copyByRemappingHostCellAgnosticOwnerUIDsWithMap:(const void *)arg1 calcEngine:(id)arg2 ownerUID:(const struct TSKUIDStruct *)arg3 error:(_Bool *)arg4;
+- (id)copyByRemappingHostCellAgnosticOwnerUIDsWithMap:(const void *)arg1 rewriteContext:(struct TSCEFormulaRewriteContext *)arg2 error:(_Bool *)arg3;
 - (void)rewriteFormulaWithBlock:(CDUnknownBlockType)arg1;
 - (void)rewriteNumberToDurationForSageImport:(const struct TSCECellRef *)arg1 durationUnitLargest:(unsigned char)arg2;
-- (void)remapOwnerUIDsWithMap:(const void *)arg1 calcEngine:(id)arg2 error:(_Bool *)arg3;
-- (id)copyByRemappingOwnerUIDsWithMap:(const void *)arg1 calcEngine:(id)arg2 error:(_Bool *)arg3;
+- (void)remapOwnerUIDsWithMap:(const void *)arg1 rewriteContext:(struct TSCEFormulaRewriteContext *)arg2 error:(_Bool *)arg3;
+- (id)copyByRemappingOwnerUIDsWithMap:(const void *)arg1 rewriteContext:(struct TSCEFormulaRewriteContext *)arg2 error:(_Bool *)arg3;
 - (void)p_populateMembersFromFormula;
 - (id)predicateArg2atBaseHostCoord:(struct TSUModelCellCoord)arg1 calcEngine:(id)arg2;
 - (id)predicateArg1atBaseHostCoord:(struct TSUModelCellCoord)arg1 calcEngine:(id)arg2;

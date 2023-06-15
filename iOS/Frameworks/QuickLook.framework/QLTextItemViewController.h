@@ -6,21 +6,30 @@
 
 #import <QuickLookUICore/QLItemViewController.h>
 
-@class NSAttributedString, NSLayoutConstraint, NSString, UIPrintPageRenderer, UISimpleTextPrintFormatter, UITextView;
+@class NSAttributedString, NSLayoutConstraint, NSString, UIPrintPageRenderer, UISimpleTextPrintFormatter, UITextView, _TtC9QuickLook14QLTextDocument;
 
 __attribute__((visibility("hidden")))
 @interface QLTextItemViewController : QLItemViewController
 {
-    UITextView *_textView;
     NSAttributedString *_content;
     NSLayoutConstraint *_leftConstraint;
     NSLayoutConstraint *_rightConstraint;
+    _Bool _isDocumentOpen;
+    _TtC9QuickLook14QLTextDocument *_textDocument;
+    UITextView *_textView;
     UISimpleTextPrintFormatter *_printFormatter;
     UIPrintPageRenderer *_pageRenderer;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) UITextView *textView; // @synthesize textView=_textView;
+@property(readonly, nonatomic) _TtC9QuickLook14QLTextDocument *textDocument; // @synthesize textDocument=_textDocument;
+@property _Bool isDocumentOpen; // @synthesize isDocumentOpen=_isDocumentOpen;
 - (void)_updateConstraintConstants:(_Bool)arg1;
+- (void)setUpDocumentWithItem:(id)arg1;
+- (void)_updateViewConstraintsFromKeyboardAppearanceInfo:(id)arg1 notificationName:(id)arg2;
+- (void)_keyboardWillDisappear:(id)arg1;
+- (void)_keyboardWillAppear:(id)arg1;
 - (long long)preferredWhitePointAdaptivityStyle;
 - (void)provideCurrentPageAndVisibleRectWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)pdfDataForPageAtIndex:(long long)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
@@ -44,10 +53,47 @@ __attribute__((visibility("hidden")))
 - (void)buttonPressedWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)toolbarButtonsForTraitCollection:(id)arg1;
 - (void)previewDidAppear:(_Bool)arg1;
+- (void)viewDidLoad;
 - (_Bool)_documentAttributesContainTextColors:(id)arg1;
+- (void)_setupTextViewMarginsWithDocumentAttributes:(id)arg1;
 - (void)_setupTextViewColorsWithDocumentAttributes:(id)arg1;
+- (void)_setupTextViewWithDocumentAttributes:(id)arg1;
 - (_Bool)_isContentPotentiallySuspicious:(id)arg1 context:(id)arg2;
+- (void)previewWillDisappear:(_Bool)arg1;
+- (void)previewWillAppear:(_Bool)arg1;
+- (struct UIEdgeInsets)customEdgeInsets;
 - (void)loadPreviewControllerWithContents:(id)arg1 context:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)textDocumentChangedRemotely:(id)arg1;
+- (void)_saveDocumentContentIfNeeded;
+- (void)_loadDocumentContent;
+- (void)closeDocumentWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)openDocumentWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (id)displayedDocumentURLForItem:(id)arg1;
+- (void)colorPickerViewController:(id)arg1 didSelectColor:(id)arg2 continuously:(_Bool)arg3;
+- (void)presentColorPicker;
+- (void)textSizePickerDidCancel;
+- (void)pickerView:(id)arg1 didSelectRow:(long long)arg2 inComponent:(long long)arg3;
+- (id)pickerView:(id)arg1 titleForRow:(long long)arg2 forComponent:(long long)arg3;
+- (long long)pickerView:(id)arg1 numberOfRowsInComponent:(long long)arg2;
+- (long long)numberOfComponentsInPickerView:(id)arg1;
+- (void)presentTextSizePicker;
+- (id)availableTextSizes;
+- (void)fontPickerViewControllerDidPickFont:(id)arg1;
+- (void)presentFontPicker;
+- (void)updateSelectionAttributesWithColor:(id)arg1 oldColor:(id)arg2 range:(struct _NSRange)arg3 undoable:(_Bool)arg4;
+- (void)updateSelectionAttributesWithFont:(id)arg1 oldFont:(id)arg2 range:(struct _NSRange)arg3 undoable:(_Bool)arg4;
+- (void)updateTypingAttributesWithFont:(id)arg1 color:(id)arg2;
+- (void)updateTextWithColor:(id)arg1 range:(struct _NSRange)arg2 undoable:(_Bool)arg3;
+- (void)updateTextWithColor:(id)arg1 undoable:(_Bool)arg2;
+- (void)updateTextWithFont:(id)arg1 range:(struct _NSRange)arg2 undoable:(_Bool)arg3;
+- (void)updateTextWithFont:(id)arg1 undoable:(_Bool)arg2;
+- (id)_textInputShortcutsBarButtons;
+- (void)setUpTextInputShortcutsBar;
+- (void)_saveTextIfEditedWithEditedCopy:(id)arg1 shouldDismissAfterSaving:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_saveTextIfEdited:(_Bool)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)savePreviewEditedCopyWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (_Bool)shouldEditByCreatingCopy;
+- (_Bool)shouldAllowEditingContents;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

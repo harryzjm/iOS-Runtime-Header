@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 + (id)taskWithRequest:(id)arg1 imageAsset:(id)arg2 andSignpostPayload:(id)arg3;
 - (void).cxx_destruct;
 - (int)run;
+- (id)computeSensitivityOfPixelBuffer:(struct __CVBuffer *)arg1;
 - (void)cancel;
 - (_Bool)autoCancellable;
 - (float)resourceRequirement;

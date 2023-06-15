@@ -16,6 +16,7 @@
     MISSING_TYPE *thisBundle;
     MISSING_TYPE *sdkPath;
     MISSING_TYPE *toolchainPath;
+    MISSING_TYPE *$__lazy_storage_$_isCurrentVFXBuiltForAllArchs;
 }
 
 @end

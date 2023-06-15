@@ -10,14 +10,14 @@ __attribute__((visibility("hidden")))
 @interface GEOMapFeatureIntersectedRoadFinder
 {
     GEOMapFeatureMultiSegmentRoadFinder *_multiSegmentRoadFinder;
-    _Bool _joinAllRoadsByMuid;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) _Bool joinAllRoadsByMuid; // @synthesize joinAllRoadsByMuid=_joinAllRoadsByMuid;
 - (void)_tilesBorderingTile:(struct _GEOTileKey)arg1 atPoint:(struct GeoCodecsVectorTilePoint)arg2 withHandler:(CDUnknownBlockType)arg3;
-- (id)findUnjoinedRoadsAtJunction:(id)arg1 desiredRoadDirectionality:(unsigned long long)arg2 muid:(unsigned long long)arg3 requireExactMuidMatch:(_Bool)arg4 featureToIgnore:(id)arg5 handler:(CDUnknownBlockType)arg6 completionHandler:(CDUnknownBlockType)arg7;
-- (id)_findRoadsAtJunction:(id)arg1 desiredRoadDirectionality:(unsigned long long)arg2 muid:(unsigned long long)arg3 featureToIgnore:(id)arg4 handler:(CDUnknownBlockType)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (id)_old_intersectedRoadsInAdjacentTile:(id)arg1 tileBorderPoint:(struct GeoCodecsVectorTilePoint)arg2 junction:(id)arg3 desiredRoadDirectionality:(unsigned long long)arg4 featuresToIgnore:(id)arg5;
+- (id)_intersectedRoadsInAdjacentTile:(id)arg1 tileBorderPoint:(struct GeoCodecsVectorTilePoint)arg2 junction:(id)arg3 desiredRoadDirectionality:(unsigned long long)arg4 muid:(unsigned long long)arg5 requireExactMuidMatch:(_Bool)arg6 featuresToIgnore:(id)arg7 shouldStop:(_Bool *)arg8;
+- (id)findUnjoinedRoadsAtJunction:(id)arg1 desiredRoadDirectionality:(unsigned long long)arg2 muid:(unsigned long long)arg3 requireExactMuidMatch:(_Bool)arg4 featuresToIgnore:(id)arg5 handler:(CDUnknownBlockType)arg6 completionHandler:(CDUnknownBlockType)arg7;
+- (id)_findRoadsAtJunction:(id)arg1 desiredRoadDirectionality:(unsigned long long)arg2 muid:(unsigned long long)arg3 featuresToIgnore:(id)arg4 handler:(CDUnknownBlockType)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (id)findRoadsAtJunction:(id)arg1 desiredRoadDirectionality:(unsigned long long)arg2 handler:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)findRoadsAtNextIntersectionOf:(id)arg1 desiredRoadDirectionality:(unsigned long long)arg2 handler:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)findRoadsAtPreviousIntersectionOf:(id)arg1 desiredRoadDirectionality:(unsigned long long)arg2 handler:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;

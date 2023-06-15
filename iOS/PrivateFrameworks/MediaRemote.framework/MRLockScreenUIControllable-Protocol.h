@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MediaRemote/MRUIControllable-Protocol.h>
+#import <MediaRemote/MRRouteRecommendationUIControllable-Protocol.h>
 
-@protocol MRLockScreenUIControllable <MRUIControllable>
+@protocol MRLockScreenUIControllable <MRRouteRecommendationUIControllable>
 - (void)releaseLockScreenControlsAssertion;
 - (void)acquireLockScreenControlsAssertion;
 @end

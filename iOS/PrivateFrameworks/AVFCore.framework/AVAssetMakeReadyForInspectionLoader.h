@@ -48,7 +48,7 @@ __attribute__((visibility("hidden")))
 - (struct OpaqueFigFormatReader *)_copyFormatReaderFromFigObjectWithFigErrorCode:(int *)arg1;
 - (_Bool)_providesAccurateTiming;
 - (struct OpaqueFigSimpleMutex *)_loadingMutex;
-- (struct OpaqueFigFormatReader *)_formatReader;
+- (struct OpaqueFigFormatReader *)_copyFormatReader;
 - (void)cancelLoading;
 - (id)assetInspector;
 - (id)copyWithZone:(struct _NSZone *)arg1;

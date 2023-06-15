@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, UIView;
+@class NSArray, SiriSharedUIStandardScrollView, UIView;
 @protocol SiriSharedUIStackableContent><SiriSharedUIStackableContentActionOffering;
 
 @protocol SiriSharedUIViewStackContainerHosting
+@property(retain, nonatomic) SiriSharedUIStandardScrollView *scrollView;
+@property(nonatomic) _Bool isInAmbient;
 @property(nonatomic) double bottomPadding;
 @property(readonly, nonatomic) double topPadding;
 @property(readonly, nonatomic) NSArray *contentViews;

@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-- (unsigned long long)preferredTrashActionTypeOnAssetsByAssetCollection:(id)arg1 allowsRemove:(_Bool)arg2;
+@property(readonly, nonatomic) PXAssetActionManager *underlyingActionManager; // @synthesize underlyingActionManager=_underlyingActionManager;
 - (id)localizedTitleForActionType:(unsigned long long)arg1;
 - (id)barButtonItemForActionType:(unsigned long long)arg1;
 - (id)actionPerformerForSimpleActionType:(unsigned long long)arg1 onAssetsByAssetCollection:(id)arg2;

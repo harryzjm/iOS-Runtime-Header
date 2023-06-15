@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 + (id)_sanitizeFilePathForVarOrTmpSymlink:(id)arg1;
 + (id)defaultManager;
 - (_Bool)secureRenameFromSourceURL:(id)arg1 toDestinationURL:(id)arg2 destinationStatus:(unsigned char)arg3 error:(id *)arg4;
+- (void)logAccessPermissionsForURL:(id)arg1;
 - (id)debugDescriptionForItemAtURL:(id)arg1;
 - (id)modificationDateForURL:(id)arg1 error:(id *)arg2;
 - (_Bool)setModificationDateToNowForURL:(id)arg1 error:(id *)arg2;
@@ -48,6 +49,8 @@ __attribute__((visibility("hidden")))
 - (id)extendedAttributesFromURL:(id)arg1 error:(id *)arg2;
 - (id)aclTextFromURL:(id)arg1 error:(id *)arg2;
 - (id)upToFirstFourBytesFromURL:(id)arg1 error:(id *)arg2;
+- (_Bool)itemIsSocketAtURL:(id)arg1 error:(id *)arg2;
+- (_Bool)itemIsFIFOAtURL:(id)arg1 error:(id *)arg2;
 - (_Bool)itemIsDirectoryAtURL:(id)arg1 error:(id *)arg2;
 - (_Bool)itemIsSymlinkAtURL:(id)arg1 error:(id *)arg2;
 - (_Bool)itemIsFileAtURL:(id)arg1 error:(id *)arg2;

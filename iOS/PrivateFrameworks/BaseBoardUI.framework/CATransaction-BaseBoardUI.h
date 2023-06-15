@@ -7,6 +7,7 @@
 #import <QuartzCore/CATransaction.h>
 
 @interface CATransaction (BaseBoardUI)
++ (void)bs_performAfterCommit:(CDUnknownBlockType)arg1;
 + (void)bs_performAfterSynchronizedCommit:(CDUnknownBlockType)arg1;
 @end
 

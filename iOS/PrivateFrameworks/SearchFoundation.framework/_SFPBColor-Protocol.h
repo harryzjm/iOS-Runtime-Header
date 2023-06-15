@@ -6,12 +6,18 @@
 
 #import <SearchFoundation/NSObject-Protocol.h>
 
-@class NSData, NSDictionary, _SFPBCalendarColor, _SFPBGraphicalFloat;
+@class NSData, NSDictionary, _SFPBAppColor, _SFPBCalendarColor, _SFPBColor, _SFPBGradientColor, _SFPBGraphicalFloat, _SFPBImageDerivedColor, _SFPBWeatherColor;
 
 @protocol _SFPBColor <NSObject>
 @property(readonly, nonatomic) unsigned long long whichValue;
 @property(readonly, nonatomic) NSData *jsonData;
+@property(retain, nonatomic) _SFPBWeatherColor *weatherColor;
+@property(retain, nonatomic) _SFPBGradientColor *gradientColor;
+@property(retain, nonatomic) _SFPBImageDerivedColor *imageDerivedColor;
+@property(retain, nonatomic) _SFPBAppColor *appColor;
 @property(retain, nonatomic) _SFPBCalendarColor *calendarColor;
+@property(retain, nonatomic) _SFPBColor *darkModeColor;
+@property(nonatomic) int colorTintStyle;
 @property(retain, nonatomic) _SFPBGraphicalFloat *alphaComponent;
 @property(retain, nonatomic) _SFPBGraphicalFloat *blueComponent;
 @property(retain, nonatomic) _SFPBGraphicalFloat *greenComponent;

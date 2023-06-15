@@ -17,10 +17,12 @@
     _Bool _showingTemplateSlides;
     _Bool _showingElementList;
     _Bool _showingActivityStream;
+    _Bool _activityStreamWasShown;
     long long _inspectorPaneViewMode;
 }
 
 + (id)uiLayoutFromArchive:(const void *)arg1 unarchiver:(id)arg2 context:(id)arg3;
+@property(readonly, nonatomic) _Bool activityStreamWasShown; // @synthesize activityStreamWasShown=_activityStreamWasShown;
 @property(readonly, nonatomic, getter=isShowingActivityStream) _Bool showingActivityStream; // @synthesize showingActivityStream=_showingActivityStream;
 @property(readonly, nonatomic, getter=isShowingElementList) _Bool showingElementList; // @synthesize showingElementList=_showingElementList;
 @property(readonly, nonatomic, getter=isShowingTemplateSlides) _Bool showingTemplateSlides; // @synthesize showingTemplateSlides=_showingTemplateSlides;
@@ -35,6 +37,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
+@property(readonly, nonatomic, getter=currentViewModeSupportsActivityStream) _Bool supportsActivityStream;
 - (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
 - (_Bool)inspectorPaneAutoHidden;
 - (void)setInspectorPaneAutoHidden:(_Bool)arg1;

@@ -15,14 +15,21 @@ __attribute__((visibility("hidden")))
     _Bool _hidden;
     NSString *_ssid;
     NSString *_password;
+    NSString *_airplayBrokerID;
+    NSString *_airplayBrokerPin;
+    NSString *_captivePortalToken;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *captivePortalToken; // @synthesize captivePortalToken=_captivePortalToken;
+@property(copy, nonatomic) NSString *airplayBrokerPin; // @synthesize airplayBrokerPin=_airplayBrokerPin;
+@property(copy, nonatomic) NSString *airplayBrokerID; // @synthesize airplayBrokerID=_airplayBrokerID;
 @property(readonly, nonatomic, getter=isHidden) _Bool hidden; // @synthesize hidden=_hidden;
 @property(readonly, copy, nonatomic) NSString *password; // @synthesize password=_password;
 @property(readonly, nonatomic, getter=isWEP) _Bool WEP; // @synthesize WEP=_WEP;
 @property(readonly, copy, nonatomic) NSString *ssid; // @synthesize ssid=_ssid;
+@property(readonly, nonatomic) _Bool hasAirplayPayload;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 @property(readonly, copy, nonatomic) NSString *extraPreviewText;

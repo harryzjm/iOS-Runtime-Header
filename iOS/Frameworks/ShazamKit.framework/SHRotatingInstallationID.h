@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 + (id)installationID;
 + (void)setInstallationID:(id)arg1;
 + (id)cachedInstallationIDWithMaxAge:(double)arg1;
++ (id)cachedInstallationForDays:(long long)arg1;
 + (id)cachedInstallationIDForUTCDay;
 
 @end

@@ -55,6 +55,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSArray *frequencies;
 - (unsigned long long)stopId;
 @property(readonly, nonatomic) NSArray *departures;
+@property(readonly, nonatomic) unsigned long long departureTimeDisplayStyle;
 - (id)initWithSequence:(id)arg1 line:(id)arg2 pbLine:(id)arg3 stopInfo:(id)arg4 container:(id)arg5;
 
 // Remaining properties

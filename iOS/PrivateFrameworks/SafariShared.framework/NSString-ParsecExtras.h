@@ -28,6 +28,8 @@
 - (id)safari_scriptIfJavaScriptURLString;
 - (_Bool)safari_isJavaScriptURLString;
 - (_Bool)safari_isPathExtensionAllowedForAnalytics;
+- (_Bool)safari_isRightToLeft;
+- (id)safari_favoritesTitleWithEmojiForRTL:(_Bool)arg1;
 - (id)safari_stringBySubstitutingHTMLEntitiesForAmpersandAndAngleBrackets;
 - (id)safari_stringBySubstitutingAmpersandAndAngleBracketsForHTMLEntities;
 - (_Bool)safari_hasDirectionalPrefix;
@@ -40,9 +42,6 @@
 - (id)safari_bestURLStringForUserTypedString;
 - (id)safari_bestLanguageTag;
 - (id)safari_bestURLForUserTypedString;
-- (id)safari_stringByDeletingTrailingSlash;
-- (id)safari_stringByDeletingStartingSlash;
-- (id)safari_fixedStringByExpandingTildeInPathToUserHomeDirectory;
 - (id)safari_stringByRemovingTopLevelDomainFromHost;
 @end
 

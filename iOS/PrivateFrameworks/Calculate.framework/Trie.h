@@ -6,22 +6,37 @@
 
 #import <objc/NSObject.h>
 
-@class TrieNode;
+@class NSMutableArray, TrieNode;
 
 __attribute__((visibility("hidden")))
 @interface Trie : NSObject
 {
+    _Bool _autocompress;
+    _Bool _compressed;
+    int _characterCount;
+    int _characterSize;
+    int _nodeCount;
+    int _nodeSize;
     TrieNode *_root;
+    char *_characters;
+    CDStruct_ef06dbdc *_nodes;
+    NSMutableArray *_objects;
+    int *_firstByteCache;
 }
 
-+ (void)enumerateCharactersInKey:(id)arg1 range:(struct _NSRange)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
-@property(retain, nonatomic) TrieNode *root; // @synthesize root=_root;
-- (void)setObject:(id)arg1 forKeyedSubscript:(id)arg2;
-- (id)objectForKeyedSubscript:(id)arg1;
-- (void)setObject:(id)arg1 forKey:(id)arg2;
-- (id)objectForKey:(id)arg1;
-- (id)nodeForKey:(id)arg1;
+@property(nonatomic) _Bool compressed; // @synthesize compressed=_compressed;
+@property(nonatomic) int *firstByteCache; // @synthesize firstByteCache=_firstByteCache;
+@property(retain, nonatomic) NSMutableArray *objects; // @synthesize objects=_objects;
+@property(nonatomic) int nodeSize; // @synthesize nodeSize=_nodeSize;
+@property(nonatomic) int nodeCount; // @synthesize nodeCount=_nodeCount;
+@property(nonatomic) CDStruct_ef06dbdc *nodes; // @synthesize nodes=_nodes;
+@property(nonatomic) int characterSize; // @synthesize characterSize=_characterSize;
+@property(nonatomic) int characterCount; // @synthesize characterCount=_characterCount;
+@property(nonatomic) char *characters; // @synthesize characters=_characters;
+- (void)writeNode:(CDStruct_ef06dbdc)arg1;
+- (void)writeCharacter:(unsigned char)arg1;
+- (void)dealloc;
 - (id)init;
 
 @end

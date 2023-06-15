@@ -19,6 +19,7 @@
 - (void)requestTransitionToPreferredLayoutMode;
 - (void)requestTransitionToMaximumSupportedLayoutMode;
 - (void)setElementNeedsUpdateWithCoordinatedAnimations:(void (^)(void))arg1;
+- (void)setElementNeedsLayoutUpdateWithOptions:(unsigned long long)arg1 coordinatedAnimations:(void (^)(void))arg2;
 - (void)setElementNeedsUpdate;
 @end
 

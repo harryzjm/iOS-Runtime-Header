@@ -8,6 +8,8 @@
 
 @interface UIBarButtonItem (SafariServicesExtras)
 + (double)_sf_longPressAllowableMovement;
++ (long long)_sf_popoverCancelButtonItem;
++ (long long)_sf_popoverDoneButtonItem;
 - (void)_sf_test_simulateLongPressInvocation;
 - (void)_sf_setTarget:(id)arg1 touchDownAction:(SEL)arg2 longPressAction:(SEL)arg3;
 - (void)_sf_setTarget:(id)arg1 longPressAction:(SEL)arg2;

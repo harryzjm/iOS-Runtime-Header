@@ -27,6 +27,13 @@
     MISSING_TYPE *_cropCode;
     MISSING_TYPE *_bundleReason;
     MISSING_TYPE *_bundleProgress;
+    MISSING_TYPE *_accessibilityTitle;
+    MISSING_TYPE *_duration;
+    MISSING_TYPE *_streamingSubtitle;
+    MISSING_TYPE *_streamingTitle;
+    MISSING_TYPE *_streamingURL;
+    MISSING_TYPE *_contextMenuSubtitleTags;
+    MISSING_TYPE *_contextMenuTitleTags;
 }
 
 @end

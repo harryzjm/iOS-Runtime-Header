@@ -7,13 +7,14 @@
 @class NSString, VCVideoRule;
 
 @protocol VCVideoCaptureClient
+- (void)reactionDidStart:(NSString *)arg1;
 - (void)cameraAvailabilityDidChange:(_Bool)arg1;
 - (void)thermalLevelDidChange:(int)arg1;
 - (VCVideoRule *)clientCaptureRule;
 - (void)avConferencePreviewError:(NSString *)arg1;
 
 @optional
-- (void)effectsDidApply:(_Bool)arg1;
+- (void)captureSource1080pAvailabilityDidChange:(_Bool)arg1;
 - (void)captureSourcePortraitBlurEnabledDidChange:(_Bool)arg1;
 - (void)captureSourceCenterStageEnabledDidChange:(_Bool)arg1;
 - (void)captureSourcePositionDidChange:(_Bool)arg1;

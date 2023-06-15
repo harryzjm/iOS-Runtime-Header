@@ -16,6 +16,7 @@
 - (void)writeToKeyValuePair:(id)arg1;
 - (_Bool)fc_isValidColorHexString;
 - (unsigned long long)fc_unsignedLongLongValue;
+- (_Bool)fc_isValidPuzzleTypeID;
 - (_Bool)fc_isValidTagID;
 - (_Bool)fc_isValidHardPaywallArticleID;
 - (_Bool)fc_isValidIssueID;

@@ -9,6 +9,7 @@
 @class NSArray, NSDate, NSDictionary, NSString;
 
 @protocol IMDaemonAutomationProtocol <NSObject>
+- (void)test_firstUnlockCompleted;
 - (void)debugUpdateGroupParticipantversion:(long long)arg1 chatIdentifier:(NSString *)arg2;
 - (void)logDumpAndSendMessageTo:(NSString *)arg1 forHours:(int)arg2;
 - (void)_automation_markMessagesAsRead:(_Bool)arg1 messageGUID:(NSString *)arg2 forChatGUID:(NSString *)arg3 fromMe:(_Bool)arg4 queryID:(NSString *)arg5;

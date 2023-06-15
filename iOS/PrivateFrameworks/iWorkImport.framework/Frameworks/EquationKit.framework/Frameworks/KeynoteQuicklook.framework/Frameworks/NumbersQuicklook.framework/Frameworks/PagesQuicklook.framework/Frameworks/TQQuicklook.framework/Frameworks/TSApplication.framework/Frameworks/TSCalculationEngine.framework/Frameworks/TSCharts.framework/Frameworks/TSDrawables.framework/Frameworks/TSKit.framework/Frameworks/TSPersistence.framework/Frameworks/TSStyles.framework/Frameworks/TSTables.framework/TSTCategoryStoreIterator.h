@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSIndexSet, NSString, TSTCategoryTranslator, TSTCell, TSTCellRegion, TSTColumnRowUIDMap, TSTGroupBy, TSTSummaryCellVendor, TSTTableDataListCache, TSTTableDataStore, TSTTableInfo, TSTTableTile, TSTTableTileRowInfo;
+@class NSIndexSet, NSString, TSTCategoryTranslator, TSTCell, TSTCellRegion, TSTColumnRowUIDMap, TSTGroupBy, TSTMutableCellIteratorData, TSTSummaryCellVendor, TSTTableDataListCache, TSTTableDataStore, TSTTableInfo, TSTTableTile, TSTTableTileRowInfo;
 @protocol TSTCellRegionIterating;
 
 @interface TSTCategoryStoreIterator : NSObject
@@ -36,6 +36,7 @@
     struct TSUCellCoord _curCellID;
     TSTTableTile *_baseTile;
     TSTTableTileRowInfo *_baseRow;
+    TSTMutableCellIteratorData *_cellData;
     TSTCell *_cell;
     NSIndexSet *_populatedColumnsForGroupLevel1;
     NSIndexSet *_populatedColumnsForGroupLevel2;
@@ -58,6 +59,7 @@
 @property(nonatomic) _Bool terminated; // @synthesize terminated=_terminated;
 @property(nonatomic) _Bool columnOrderReversed; // @synthesize columnOrderReversed=_columnOrderReversed;
 @property(readonly, nonatomic) TSTCell *cell; // @synthesize cell=_cell;
+@property(readonly, nonatomic) TSTMutableCellIteratorData *cellData; // @synthesize cellData=_cellData;
 @property(retain, nonatomic) TSTTableTileRowInfo *baseRow; // @synthesize baseRow=_baseRow;
 @property(nonatomic) struct _NSRange baseTileRange; // @synthesize baseTileRange=_baseTileRange;
 @property(retain, nonatomic) TSTTableTile *baseTile; // @synthesize baseTile=_baseTile;

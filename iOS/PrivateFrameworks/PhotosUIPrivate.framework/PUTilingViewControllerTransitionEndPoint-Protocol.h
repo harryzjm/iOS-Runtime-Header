@@ -6,10 +6,11 @@
 
 #import <PhotosUIPrivate/NSObject-Protocol.h>
 
-@class PUTilingView, UIView;
+@class PUTilingView, UIView, UIViewController;
 @protocol PUTilingViewControllerTransition, PUTilingViewControllerTransitionEndPoint;
 
 @protocol PUTilingViewControllerTransitionEndPoint <NSObject>
+@property(readonly, nonatomic) UIViewController *tilingViewControllerTransitionEndPointHostViewController;
 - (void)tilingViewControllerTransition:(id <PUTilingViewControllerTransition>)arg1 adoptTilingView:(PUTilingView *)arg2 fromEndPoint:(id <PUTilingViewControllerTransitionEndPoint>)arg3 isCancelingTransition:(_Bool)arg4 animationSetupCompletionHandler:(void (^)(PUAnimationGroup *))arg5;
 - (void)tilingViewControllerTransition:(id <PUTilingViewControllerTransition>)arg1 abandonTilingView:(PUTilingView *)arg2 toEndPoint:(id <PUTilingViewControllerTransitionEndPoint>)arg3;
 - (PUTilingView *)tilingViewControllerTransition:(id <PUTilingViewControllerTransition>)arg1 tilingViewToTransferToEndPoint:(id <PUTilingViewControllerTransitionEndPoint>)arg2;

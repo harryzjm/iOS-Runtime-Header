@@ -13,6 +13,7 @@
 @property(nonatomic) _Bool isAnimatingInDarkEffect;
 @property(nonatomic) double associatedItemOffset;
 @property(nonatomic) double drawerPercentRevealed;
+@property(nonatomic) struct CGRect contentAlignmentRect;
 @property(nonatomic) BOOL orientation;
 @property(nonatomic) _Bool wantsDrawerLayout;
 - (void)clearFilters;

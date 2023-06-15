@@ -6,10 +6,14 @@
 
 #import <HomeKitDaemon/MKFApplicationDataContainer-Protocol.h>
 
-@class NSManagedObjectContext, NSString;
+@class NSManagedObjectContext, NSNumber, NSString;
 @protocol MKFGuestAccessCode;
 
 @protocol MKFHomePublicExtensions <MKFApplicationDataContainer>
+@property(copy) NSNumber *eventLogDuration;
+@property(copy) NSNumber *eventLogEnabled;
+@property(copy) NSNumber *didOnboardEventLog;
+@property(copy) NSNumber *audioAnalysisClassifierOptions;
 - (id <MKFGuestAccessCode>)guestAccessCode:(NSString *)arg1 withLabel:(NSString *)arg2 context:(NSManagedObjectContext *)arg3;
 @end
 

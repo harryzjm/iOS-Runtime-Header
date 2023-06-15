@@ -11,5 +11,13 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (id)outerOutputFeatureProviderFromInner:(id)arg1 outerToInnerOutputFeatureNameMappings:(id)arg2 error:(id *)arg3;
++ (id)innerInputFeatureProviderFromOuter:(id)arg1 outerToInnerInputFeatureNameMappings:(id)arg2 error:(id *)arg3;
++ (id)generateOutputFeatureMappingsFromOuterDescription:(id)arg1 toInnerDescription:(id)arg2;
++ (id)generateInputFeatureMappingsFromOuterDescription:(id)arg1 toInnerDescription:(id)arg2;
++ (id)generateFeatureMappingsFromOuterFeatureNames:(id)arg1 toInnerFeatureNames:(id)arg2;
++ (id)generateFeatureMappingsFromOuterFeatureNames:(id)arg1 toInnerFeatureNames:(id)arg2 matcher:(CDUnknownBlockType)arg3;
+- (id)init;
+
 @end
 

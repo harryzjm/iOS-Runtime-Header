@@ -10,7 +10,9 @@
 
 @interface UIColor (SafariSharedExtras)
 + (id)safari_colorWithSerializedColorData:(id)arg1;
++ (id)safari_colorWithWBSNamedColorOption:(id)arg1;
 + (id)safari_colorWithRGBColorComponents:(id)arg1;
+- (id)safari_colorByModifyingBrightnessByMultiplier:(double)arg1;
 - (double)safari_contrastRatioWithColor:(id)arg1;
 @property(readonly, nonatomic) UIColor *safari_sRGBColor;
 @property(readonly, nonatomic) _Bool safari_isOffWhite;

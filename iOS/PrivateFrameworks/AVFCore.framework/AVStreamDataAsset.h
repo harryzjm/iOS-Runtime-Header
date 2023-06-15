@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
 - (Class)_classForTrackInspectors;
 - (id)_assetInspectorLoader;
 - (id)_assetInspector;
-- (struct OpaqueFigFormatReader *)_formatReader;
+- (struct OpaqueFigFormatReader *)_copyFormatReader;
 - (id)tracks;
 - (id)formatDescriptionsForTrackID:(int)arg1;
 - (id)mediaTypeForTrackID:(int)arg1;

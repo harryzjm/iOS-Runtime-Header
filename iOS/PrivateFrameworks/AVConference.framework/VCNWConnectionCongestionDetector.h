@@ -12,7 +12,8 @@ __attribute__((visibility("hidden")))
 @interface VCNWConnectionCongestionDetector : NSObject
 {
     AVCStatisticsCollector *_statisticsCollector;
-    CDStruct_7df19fcb _previousStatistics;
+    struct tagVCStatisticsMessage _previousStatistics;
+    void *_logNWDump;
     unsigned int _averageThroughputBps;
     unsigned int _averagePacketDelayMs;
     unsigned int _maxAveragePacketDelayMs;
@@ -20,7 +21,6 @@ __attribute__((visibility("hidden")))
     unsigned int _packetDropCount;
     unsigned int _packetDropCountPerFrame;
     _Bool _didSendCongestionEvent;
-    void *_logNWDump;
 }
 
 @property(readonly) unsigned int packetDropCount; // @synthesize packetDropCount=_packetDropCount;

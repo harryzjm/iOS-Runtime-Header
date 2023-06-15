@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, NSURL, PHASECardioidDirectivityModelParameters, PHASEEngine, PHASENumberMetaParameterDefinition;
+@class NSMutableDictionary, NSURL, PHASECardioidDirectivityModelParameters, PHASEEngine, PHASENumberMetaParameterDefinition, PHASEObject;
 
 __attribute__((visibility("hidden")))
 @interface REPHASEContext : NSObject
@@ -16,15 +16,16 @@ __attribute__((visibility("hidden")))
     PHASEEngine *_engine;
     int _mixerDefNameCounter;
     struct atomic<bool> _stoppedAndDestroyed;
-    struct unique_ptr<re::HashTable<unsigned long long, REPHASEAudioScene *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>, std::function<void (re::HashTable<unsigned long long, REPHASEAudioScene *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)>> _scenes;
-    struct unique_ptr<re::HashTable<unsigned long long, PHASEShape *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>, std::function<void (re::HashTable<unsigned long long, PHASEShape *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)>> _shapes;
-    struct unique_ptr<re::HashTable<unsigned long long, REPHASESoundEvent *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>, std::function<void (re::HashTable<unsigned long long, REPHASESoundEvent *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)>> _soundEvents;
+    struct unique_ptr<re::HashTable<unsigned long long, REPHASEAudioScene *>, std::function<void (re::HashTable<unsigned long long, REPHASEAudioScene *>*)>> _scenes;
+    struct unique_ptr<re::HashTable<unsigned long long, PHASEShape *>, std::function<void (re::HashTable<unsigned long long, PHASEShape *>*)>> _shapes;
+    struct unique_ptr<re::HashTable<unsigned long long, REPHASESoundEvent *>, std::function<void (re::HashTable<unsigned long long, REPHASESoundEvent *>*)>> _soundEvents;
     struct UnfairLock _soundEventsMutex;
-    struct unique_ptr<re::HashTable<unsigned long long, bool, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>, std::function<void (re::HashTable<unsigned long long, bool, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)>> _soundEventsPreparing;
+    struct unique_ptr<re::HashTable<unsigned long long, bool>, std::function<void (re::HashTable<unsigned long long, bool>*)>> _soundEventsPreparing;
     struct UnfairLock _soundEventsPreparingMutex;
-    struct unique_ptr<re::HashTable<unsigned long long, REPHASESoundAsset, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>, std::function<void (re::HashTable<unsigned long long, REPHASESoundAsset, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)>> _audioAssets;
+    struct unique_ptr<re::HashTable<unsigned long long, REPHASESoundAsset>, std::function<void (re::HashTable<unsigned long long, REPHASESoundAsset>*)>> _audioAssets;
     struct UnfairLock _audioAssetsMutex;
     struct UnfairLock _audioEngineMutex;
+    PHASEObject *_sharedSimulationWorldRootObject;
     _Bool _shouldPostNotificationWhenPHASESoundEventCreated;
     _Bool _automaticUpdate;
     _Bool _engineIsConfiguredForAutomaticUpdate;
@@ -73,6 +74,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)eventBeingPrepared:(unsigned long long)arg1;
 - (id)eventFor:(unsigned long long)arg1;
 - (void)prepare:(id)arg1;
+@property(readonly) PHASEObject *sharedSimulationWorldRootObject;
 - (id)mixerParametersForPrepareState:(id)arg1 source:(id)arg2 listener:(id)arg3 mixerIdentifiers:(id)arg4;
 - (id)samplerDefForFileAsset:(unsigned long long)arg1 with:(id)arg2;
 - (id)createSamplerDefinitionForToken:(unsigned long long)arg1;

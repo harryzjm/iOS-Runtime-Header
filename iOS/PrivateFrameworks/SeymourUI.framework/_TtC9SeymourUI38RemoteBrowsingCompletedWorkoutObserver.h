@@ -13,6 +13,7 @@
     MISSING_TYPE *configurationClient;
     MISSING_TYPE *source;
     MISSING_TYPE *subscriptionToken;
+    MISSING_TYPE *workoutPlanClient;
 }
 
 @end

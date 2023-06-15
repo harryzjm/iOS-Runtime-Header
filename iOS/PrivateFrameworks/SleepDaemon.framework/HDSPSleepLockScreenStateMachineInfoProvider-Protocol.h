@@ -10,7 +10,7 @@
 
 @protocol HDSPSleepLockScreenStateMachineInfoProvider <HKSPStateMachineInfoProvider>
 @property(readonly, nonatomic) _Bool isLockScreenActive;
-@property(readonly, nonatomic) _Bool inUserRequestedSleepMode;
+@property(readonly, nonatomic) _Bool inUnscheduledSleepMode;
 @property(readonly, nonatomic) long long sleepMode;
 @property(readonly, nonatomic) HKSPSleepScheduleModel *sleepScheduleModel;
 @property(readonly, nonatomic) NSDate *currentDate;

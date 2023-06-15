@@ -9,6 +9,7 @@
 @interface _TtC8VideosUI21LibMenuItemViewLayout
 {
     MISSING_TYPE *$__lazy_storage_$_titleTextLayout;
+    MISSING_TYPE *$__lazy_storage_$_headerTitleLayout;
     MISSING_TYPE *$__lazy_storage_$_imageViewLayout;
     MISSING_TYPE *$__lazy_storage_$_loadingSpinnerLayout;
     MISSING_TYPE *$__lazy_storage_$_rentalBadgeCountTextLayout;

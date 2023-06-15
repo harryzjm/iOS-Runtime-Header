@@ -9,18 +9,20 @@
 #import <AppPredictionUIWidget/SBIconViewBehaviorDelegate-Protocol.h>
 #import <AppPredictionUIWidget/SBIconViewConfigurationUIDelegate-Protocol.h>
 #import <AppPredictionUIWidget/SBIconViewDragDelegate-Protocol.h>
+#import <AppPredictionUIWidget/SBIconViewDropDelegate-Protocol.h>
 #import <AppPredictionUIWidget/SBIconViewReuseDelegate-Protocol.h>
 #import <AppPredictionUIWidget/SBIconViewShortcutsDelegate-Protocol.h>
 
 @class SBIconView;
-@protocol SBIconViewActionDelegate, SBIconViewBehaviorDelegate, SBIconViewConfigurationUIDelegate, SBIconViewDragDelegate, SBIconViewReuseDelegate, SBIconViewShortcutsDelegate;
+@protocol SBIconViewActionDelegate, SBIconViewBehaviorDelegate, SBIconViewConfigurationUIDelegate, SBIconViewDragDelegate, SBIconViewDropDelegate, SBIconViewReuseDelegate, SBIconViewShortcutsDelegate;
 
-@protocol SBIconViewDelegate <SBIconViewActionDelegate, SBIconViewBehaviorDelegate, SBIconViewReuseDelegate, SBIconViewDragDelegate, SBIconViewShortcutsDelegate, SBIconViewConfigurationUIDelegate, NSObject>
+@protocol SBIconViewDelegate <SBIconViewActionDelegate, SBIconViewBehaviorDelegate, SBIconViewReuseDelegate, SBIconViewDragDelegate, SBIconViewDropDelegate, SBIconViewShortcutsDelegate, SBIconViewConfigurationUIDelegate, NSObject>
 
 @optional
 - (id <SBIconViewConfigurationUIDelegate>)configurationUIDelegateForIconView:(SBIconView *)arg1;
 - (id <SBIconViewShortcutsDelegate>)shortcutsDelegateForIconView:(SBIconView *)arg1;
 - (id <SBIconViewReuseDelegate>)reuseDelegateForIconView:(SBIconView *)arg1;
+- (id <SBIconViewDropDelegate>)droppingDelegateForIconView:(SBIconView *)arg1;
 - (id <SBIconViewDragDelegate>)draggingDelegateForIconView:(SBIconView *)arg1;
 - (id <SBIconViewBehaviorDelegate>)behaviorDelegateForIconView:(SBIconView *)arg1;
 - (id <SBIconViewActionDelegate>)actionDelegateForIconView:(SBIconView *)arg1;

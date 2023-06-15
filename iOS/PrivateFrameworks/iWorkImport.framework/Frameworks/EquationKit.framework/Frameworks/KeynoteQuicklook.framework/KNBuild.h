@@ -137,6 +137,7 @@
 @property(readonly, nonatomic) NSString *effect;
 @property(retain, nonatomic) TSDDrawableInfo *drawable;
 @property(readonly, copy) NSString *description;
+@property(readonly, copy) NSString *debugDescription;
 - (void)didInitFromSOS;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithSlide:(id)arg1 effect:(id)arg2 buildType:(long long)arg3 context:(id)arg4;
@@ -160,7 +161,6 @@
 - (void)loadFromArchive:(const void *)arg1 unarchiver:(id)arg2;
 
 // Remaining properties
-@property(readonly, copy) NSString *debugDescription;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

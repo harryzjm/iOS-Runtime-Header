@@ -5,12 +5,16 @@
 //
 
 #import <CDMFoundation/NSObject-Protocol.h>
+#import <CDMFoundation/NSSecureCoding-Protocol.h>
 
 @class NSDictionary, NSString;
 
-@protocol NLAsset <NSObject>
+@protocol NLAsset <NSObject, NSSecureCoding>
 - (NSDictionary *)toDictionary;
 - (NSString *)description;
+- (void)appendPathWithServiceAssetFolder:(NSString *)arg1;
+- (NSString *)getAssetSetName;
+- (NSString *)getAssetLocale;
 - (NSDictionary *)getAssetMetadata;
 - (NSString *)getAssetVersion;
 - (NSString *)getAssetPath;

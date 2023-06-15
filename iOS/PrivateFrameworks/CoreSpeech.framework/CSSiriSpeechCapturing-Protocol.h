@@ -6,13 +6,14 @@
 
 #import <CoreSpeech/NSObject-Protocol.h>
 
-@class AFExperimentContext, AFSpeechRequestOptions, CSAudioSessionController, CSServerEndpointFeatures, CSSiriAudioPlaybackService, CSSpeechController, NSObject;
+@class AFExperimentContext, AFSpeechRequestOptions, CSAudioSessionController, CSServerEndpointFeatures, CSSiriAudioPlaybackService, CSSpeechController, NSObject, SASResultCandidate;
 @protocol CSSiriSpeechCapturingDelegate, OS_dispatch_queue;
 
 @protocol CSSiriSpeechCapturing <NSObject>
+- (void)setHybridUODEnabled:(_Bool)arg1;
 - (void)disableSpeechPacketGeneration:(_Bool)arg1;
 - (void)enforcePreviousEndpointHint;
-- (void)updateEndpointHintForDuration:(double)arg1 completion:(void (^)(_Bool, NSArray *))arg2;
+- (void)updateEndpointHintForRC:(SASResultCandidate *)arg1 forceAccept:(_Bool)arg2 completion:(void (^)(_Bool, _Bool, NSArray *))arg3;
 - (void)updateServerEndpointFeatures:(CSServerEndpointFeatures *)arg1;
 - (void)playRecordingStartAlert;
 - (void)getLastStartpointTimestampAndCurrentTime:(void (^)(double, double))arg1;

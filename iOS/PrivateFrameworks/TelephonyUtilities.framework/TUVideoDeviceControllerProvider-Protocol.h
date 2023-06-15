@@ -13,7 +13,6 @@
 @property(nonatomic) __weak id <TUVideoDeviceControllerProviderDelegate> delegate;
 @property(readonly, nonatomic) _Bool hasAvailableDeskViewCameras;
 @property(nonatomic, getter=isCameraBlurEnabled) _Bool cameraBlurEnabled;
-@property(nonatomic) long long currentBackgroundBlurControlMode;
 @property(copy, nonatomic) VideoAttributes *localVideoAttributes;
 @property(readonly, copy, nonatomic) NSArray *inputDevices;
 @property(readonly, copy, nonatomic) NSString *localCameraUID;

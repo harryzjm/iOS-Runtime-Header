@@ -20,7 +20,6 @@ __attribute__((visibility("hidden")))
 }
 
 @property(retain, nonatomic) VCCaptionsTranscription *currentTranscription; // @synthesize currentTranscription=_currentTranscription;
-- (void)processCaptionsData:(id)arg1;
 @property(readonly) id <VCCaptionsReceiverDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)dealloc;
 - (id)initWithDelegate:(id)arg1;

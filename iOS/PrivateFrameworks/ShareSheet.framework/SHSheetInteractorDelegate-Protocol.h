@@ -6,10 +6,11 @@
 
 #import <ShareSheet/NSObject-Protocol.h>
 
-@class LPLinkMetadata, NSError, NSString, SFAirDropTransferChange, SFCollaborationCloudSharingRequest, SHSheetActivityPerformerResult, SHSheetUserDefaultsContext, UIActivity;
+@class LPLinkMetadata, NSError, SFAirDropTransferChange, SFCollaborationCloudSharingRequest, SFShareSheetRecipient, SHSheetActivityPerformerResult, SHSheetUserDefaultsContext, UIActivity;
 @protocol SHSheetActivityPerformerPresentationInterface, SHSheetInteractor;
 
 @protocol SHSheetInteractorDelegate <NSObject>
+- (void)interactor:(id <SHSheetInteractor>)arg1 didChangeMetadata:(LPLinkMetadata *)arg2;
 - (void)interactorDidFailPerformActivityNotCollaborationEligible:(id <SHSheetInteractor>)arg1;
 - (void)interactorDidUpdateCollaborationDetails:(id <SHSheetInteractor>)arg1;
 - (void)interactor:(id <SHSheetInteractor>)arg1 didCancelCollaborationForActivity:(UIActivity *)arg2;
@@ -22,7 +23,7 @@
 - (LPLinkMetadata *)interactor:(id <SHSheetInteractor>)arg1 linkMetadataForActivity:(UIActivity *)arg2;
 - (id <SHSheetActivityPerformerPresentationInterface>)interactor:(id <SHSheetInteractor>)arg1 activityPresentationControllerForActivity:(UIActivity *)arg2;
 - (void)interactor:(id <SHSheetInteractor>)arg1 didUpdateAirDropTransferWithChange:(SFAirDropTransferChange *)arg2;
-- (void)interactor:(id <SHSheetInteractor>)arg1 airDropViewServiceWillStartTransferToRecipient:(NSString *)arg2;
+- (void)interactor:(id <SHSheetInteractor>)arg1 airDropViewServiceWillStartTransferToRecipient:(SFShareSheetRecipient *)arg2;
 - (void)interactor:(id <SHSheetInteractor>)arg1 didPerformAirdropViewActivityWithNoContentView:(_Bool)arg2;
 - (void)interactor:(id <SHSheetInteractor>)arg1 didPerformUserDefaultsActivityWithContext:(SHSheetUserDefaultsContext *)arg2;
 - (void)interactor:(id <SHSheetInteractor>)arg1 didPerformActivityWithResult:(SHSheetActivityPerformerResult *)arg2;

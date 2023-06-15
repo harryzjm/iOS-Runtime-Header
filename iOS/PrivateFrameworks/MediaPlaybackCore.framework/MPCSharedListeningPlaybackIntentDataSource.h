@@ -49,7 +49,8 @@ __attribute__((visibility("hidden")))
 - (void)liveLink:(id)arg1 didUpdateQueue:(id)arg2;
 - (void)liveLink:(id)arg1 didEncounterError:(id)arg2 willRetry:(_Bool)arg3;
 - (void)didStartLiveLink:(id)arg1;
-- (void)getPlaybackContextForIntent:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)getRemotePlaybackQueueFromIntent:(id)arg1 destination:(long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)getRepresentativeObjectFromIntent:(id)arg1 properties:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)buildSharedSessionIntentWithIntent:(id)arg1 identity:(id)arg2 completion:(CDUnknownBlockType)arg3;
 
 // Remaining properties

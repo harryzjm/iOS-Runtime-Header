@@ -7,7 +7,7 @@
 #import <PhotoLibraryServices/PLMomentRefreshable-Protocol.h>
 #import <PhotoLibraryServices/PLRegionsClusteringItem-Protocol.h>
 
-@class CLLocation, NSArray, NSData, NSDate, NSObject, NSString, PLRevGeoLocationInfo, PLRevGeoPlaceAnnotation, PLSharedAssetsContainerIncrementalChange;
+@class CLLocation, NSArray, NSData, NSDate, NSObject, NSSet, NSString, PLRevGeoLocationInfo, PLRevGeoPlaceAnnotation, PLSharedAssetsContainerIncrementalChange;
 @protocol NSCopying, PLMomentAssetData, PLMomentData, PLPhotosHighlightData;
 
 @protocol PLMomentAssetData <PLMomentRefreshable, PLRegionsClusteringItem>
@@ -15,6 +15,10 @@
 @property(readonly, nonatomic) _Bool isAvalancheStackPhoto;
 @property(readonly, nonatomic) _Bool isInterestingForAvalanche;
 @property(readonly, nonatomic) NSString *avalancheUUID;
+@property(readonly, nonatomic) unsigned long long syndicationProcessingVersion;
+@property(readonly, nonatomic) unsigned short syndicationProcessingValue;
+@property(readonly, nonatomic) NSString *importedByBundleIdentifier;
+@property(readonly, nonatomic) short savedAssetType;
 @property(readonly, nonatomic) _Bool isScreenRecording;
 @property(readonly, nonatomic) _Bool isVideo;
 @property(readonly, nonatomic) _Bool isPhoto;
@@ -27,6 +31,15 @@
 @property(retain, nonatomic) id <PLPhotosHighlightData> dayGroupHighlightBeingKeyAssetShared;
 @property(readonly, nonatomic) _Bool isSuggestedForSharingByPhotos;
 @property(readonly, nonatomic) _Bool hasLibraryScope;
+@property(retain, nonatomic) NSSet *highlightsBeingAdaptiveKeyAssetSharedUserEdited;
+@property(retain, nonatomic) NSSet *highlightsBeingAdaptiveKeyAssetShared;
+@property(retain, nonatomic) NSSet *highlightsBeingAdaptiveKeyAssetPrivateUserEdited;
+@property(retain, nonatomic) NSSet *highlightsBeingAdaptiveKeyAssetPrivate;
+@property(retain, nonatomic) NSSet *highlightsBeingAdaptiveExplicitlyRemovedAssets;
+@property(retain, nonatomic) NSSet *highlightsBeingAdaptiveExplicitlyAddedAssets;
+@property(retain, nonatomic) NSSet *highlightsBeingAdaptiveSummaryAssets;
+@property(retain, nonatomic) NSSet *highlightsBeingAdaptiveExtendedAssets;
+@property(retain, nonatomic) NSSet *highlightsBeingAdaptiveAssets;
 @property(retain, nonatomic) id <PLPhotosHighlightData> yearHighlightBeingKeyAssetPrivate;
 @property(retain, nonatomic) id <PLPhotosHighlightData> monthHighlightBeingKeyAssetPrivate;
 @property(retain, nonatomic) id <PLPhotosHighlightData> dayGroupHighlightBeingSummaryAssets;

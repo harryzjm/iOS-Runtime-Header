@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, NSURL, NSUUID;
+@class NSString, NSURL;
 
 @protocol GTURLAccessProvider
-- (void)transferIdentifier:(NSString *)arg1 fromDevice:(NSUUID *)arg2 completionHandler:(void (^)(NSURL *))arg3;
-- (void)securityScopedURLFromSandboxID:(NSString *)arg1 completionHandler:(void (^)(NSURL *))arg2;
-- (NSString *)makeURL:(NSURL *)arg1;
+- (void)transferIdentifier:(NSURL *)arg1 toDevice:(NSString *)arg2 completionHandler:(void (^)(NSURL *))arg3;
+- (void)securityScopedURLFromSandboxID:(NSURL *)arg1 completionHandler:(void (^)(NSURL *))arg2;
+- (NSURL *)urlForPath:(NSString *)arg1;
+- (NSURL *)makeURL:(NSURL *)arg1;
 @end
 

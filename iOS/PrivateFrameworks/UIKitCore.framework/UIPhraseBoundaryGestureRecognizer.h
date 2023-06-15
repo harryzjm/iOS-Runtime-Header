@@ -24,8 +24,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool secondDelayElapsed; // @synthesize secondDelayElapsed=_secondDelayElapsed;
 @property(nonatomic) double secondDelay; // @synthesize secondDelay=_secondDelay;
 @property(nonatomic) __weak UIResponder<UITextInput> *textInput; // @synthesize textInput=_textInput;
-- (void)clearTimer;
-- (void)startTimer;
+- (void)clearAllTimers;
+- (void)_startEnoughTimeElapsedTimer;
 - (void)secondDelayElapsed:(id)arg1;
 - (void)setState:(long long)arg1;
 - (void)_resetGestureRecognizer;

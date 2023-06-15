@@ -6,12 +6,18 @@
 
 #import <SpringBoard/SBSystemServiceServerDelegate-Protocol.h>
 
-@class BSMachPortSendRight, NSArray, NSString, SBSystemServiceServer;
+@class BSMachPortSendRight, NSArray, NSDictionary, NSString, SBSystemServiceServer;
 @protocol FBSServiceFacilityClientHandle;
 
 @protocol SBSystemServiceServerTestAutomationDelegate <SBSystemServiceServerDelegate>
+- (NSDictionary *)systemServiceServer:(SBSystemServiceServer *)arg1 getWidgetControllerStateDump:(id <FBSServiceFacilityClientHandle>)arg2;
 - (NSArray *)systemServiceServer:(SBSystemServiceServer *)arg1 getSystemApertureStateDumpForClient:(id <FBSServiceFacilityClientHandle>)arg2;
 - (void)systemServiceServer:(SBSystemServiceServer *)arg1 client:(id <FBSServiceFacilityClientHandle>)arg2 getDeviceSupportsSystemAperture:(void (^)(_Bool))arg3;
+- (void)systemServiceServer:(SBSystemServiceServer *)arg1 setUserPresenceDetectedSinceWakeForClient:(id <FBSServiceFacilityClientHandle>)arg2;
+- (void)systemServiceServer:(SBSystemServiceServer *)arg1 client:(id <FBSServiceFacilityClientHandle>)arg2 setChamoisPrefersStripHidden:(_Bool)arg3;
+- (void)systemServiceServer:(SBSystemServiceServer *)arg1 client:(id <FBSServiceFacilityClientHandle>)arg2 getChamoisPrefersStripHiddenWithCompletion:(void (^)(_Bool))arg3;
+- (void)systemServiceServer:(SBSystemServiceServer *)arg1 client:(id <FBSServiceFacilityClientHandle>)arg2 setChamoisPrefersDockHidden:(_Bool)arg3;
+- (void)systemServiceServer:(SBSystemServiceServer *)arg1 client:(id <FBSServiceFacilityClientHandle>)arg2 getChamoisPrefersDockHiddenWithCompletion:(void (^)(_Bool))arg3;
 - (void)systemServiceServer:(SBSystemServiceServer *)arg1 client:(id <FBSServiceFacilityClientHandle>)arg2 setChamoisWindowingUIEnabled:(_Bool)arg3;
 - (void)systemServiceServer:(SBSystemServiceServer *)arg1 client:(id <FBSServiceFacilityClientHandle>)arg2 getIsChamoisWindowingUIEnabledWithCompletion:(void (^)(_Bool))arg3;
 - (void)systemServiceServer:(SBSystemServiceServer *)arg1 exitLostModeForClient:(id <FBSServiceFacilityClientHandle>)arg2;
@@ -27,6 +33,7 @@
 - (void)systemServiceServer:(SBSystemServiceServer *)arg1 client:(id <FBSServiceFacilityClientHandle>)arg2 port:(BSMachPortSendRight *)arg3 acquireHUDHiddenAssertionForIdentifier:(NSString *)arg4;
 - (void)systemServiceServer:(SBSystemServiceServer *)arg1 client:(id <FBSServiceFacilityClientHandle>)arg2 setAccessoryType:(long long)arg3 attached:(_Bool)arg4;
 - (void)systemServiceServer:(SBSystemServiceServer *)arg1 client:(id <FBSServiceFacilityClientHandle>)arg2 resetToHomeScreenAnimated:(_Bool)arg3;
+- (void)systemServiceServer:(SBSystemServiceServer *)arg1 client:(id <FBSServiceFacilityClientHandle>)arg2 setAmbientPresentationState:(long long)arg3;
 - (void)systemServiceServer:(SBSystemServiceServer *)arg1 client:(id <FBSServiceFacilityClientHandle>)arg2 port:(BSMachPortSendRight *)arg3 acquireAssertionForReachabilityEnabled:(_Bool)arg4;
 - (void)systemServiceServer:(SBSystemServiceServer *)arg1 client:(id <FBSServiceFacilityClientHandle>)arg2 setReachabilityActive:(_Bool)arg3;
 - (void)systemServiceServer:(SBSystemServiceServer *)arg1 client:(id <FBSServiceFacilityClientHandle>)arg2 setHiddenFeaturesEnabled:(_Bool)arg3;

@@ -6,12 +6,13 @@
 
 #import <PhotoLibraryServices/NSObject-Protocol.h>
 
-@class NSArray, NSDictionary, NSProgress, NSString, NSURL;
+@class NSArray, NSDictionary, NSProgress, NSSet, NSString, NSURL;
 
 @protocol PLAssetsdCloudInternalServiceProtocol <NSObject>
 - (void)markResourcesPurgeableWithUrgency:(long long)arg1 assetUuids:(NSArray *)arg2 reply:(void (^)(_Bool, NSError *))arg3;
 - (void)unsharePendingAssetsSharedToScopeWithIdentifier:(NSString *)arg1;
 - (void)getLibraryScopeStatusCountsForScopeWithIdentifier:(NSString *)arg1 reply:(void (^)(CPLScopeStatusCounts *, NSError *))arg2;
+- (void)refreshLibraryScopeWithIdentifier:(NSString *)arg1 reply:(void (^)(CPLScopeChange *, NSError *))arg2;
 - (void)forceParticipantAssetTrashNotificationWithReply:(void (^)(NSString *))arg1;
 - (void)userViewedSharedLibraryParticipantAssetTrashNotificationWithReply:(void (^)(NSError *))arg1;
 - (void)sharedLibraryRampCheckWithReply:(void (^)(_Bool, NSError *))arg1;
@@ -20,7 +21,7 @@
 - (void)resetLocalOnlyLibraryScopesAndAllLibraryScopeAssetStatesWithReply:(void (^)(_Bool, NSError *))arg1;
 - (void)requestDeviceLibraryConfigurationChange:(long long)arg1 reply:(void (^)(_Bool, long long, NSError *))arg2;
 - (void)confirmAllRemainingOnboardingPreviewAssetsOnLibraryScopeWithUUID:(NSString *)arg1 reply:(void (^)(_Bool, NSError *))arg2;
-- (NSProgress *)markOnboardingPreviewAssetsByProcessingRulesOnLibraryScopeWithUUID:(NSString *)arg1 reply:(void (^)(_Bool, NSError *))arg2;
+- (NSProgress *)markOnboardingPreviewAssetsByProcessingRulesOnLibraryScopeWithUUID:(NSString *)arg1 excludePersonUUIDs:(NSSet *)arg2 reply:(void (^)(_Bool, NSError *))arg3;
 - (void)deactivateLibraryScopeWithUUID:(NSString *)arg1 reply:(void (^)(_Bool, NSError *))arg2;
 - (NSProgress *)activateLibraryScopeWithUUID:(NSString *)arg1 reply:(void (^)(_Bool, NSError *))arg2;
 - (void)getResetSyncStatusWithReply:(void (^)(unsigned long long))arg1;
@@ -29,7 +30,7 @@
 - (void)acceptShareWithUUID:(NSString *)arg1 reply:(void (^)(_Bool, NSError *))arg2;
 - (void)fetchShareWithURL:(NSURL *)arg1 ignoreExistingShare:(_Bool)arg2 reply:(void (^)(_Bool, NSString *, NSError *))arg3;
 - (void)publishShareWithUUID:(NSString *)arg1 reply:(void (^)(_Bool, NSURL *, NSError *))arg2;
-- (void)overrideSystemBudgetsForSyncSession:(_Bool)arg1 systemBudgets:(unsigned long long)arg2 reply:(void (^)(_Bool, NSError *))arg3;
+- (void)overrideSystemBudgetsForSyncSession:(_Bool)arg1 pauseReason:(NSString *)arg2 systemBudgets:(unsigned long long)arg3 reply:(void (^)(_Bool, NSError *))arg4;
 - (void)getSystemBudgetsWithReply:(void (^)(_Bool, _Bool, NSError *))arg1;
 - (void)getNotUploadedCount:(void (^)(unsigned long long, unsigned long long, unsigned long long, NSError *))arg1;
 - (void)getCurrentTransferProgress:(void (^)(unsigned long long, unsigned long long, unsigned long long, unsigned long long))arg1;

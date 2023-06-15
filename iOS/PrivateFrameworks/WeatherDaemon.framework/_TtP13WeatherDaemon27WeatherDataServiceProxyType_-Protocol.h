@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class _TtC13WeatherDaemon23WeatherDataProxyRequest, _TtC13WeatherDaemon24AvailabilityProxyRequest, _TtC13WeatherDaemon27AirQualityScaleProxyRequest, _TtC13WeatherDaemon33HistoricalWeatherDataProxyRequest;
+@class _TtC13WeatherDaemon23WeatherDataProxyRequest, _TtC13WeatherDaemon24AvailabilityProxyRequest, _TtC13WeatherDaemon27AirQualityScaleProxyRequest, _TtC13WeatherDaemon29WeatherStatisticsProxyRequest, _TtC13WeatherDaemon33HistoricalWeatherDataProxyRequest;
 
 @protocol _TtP13WeatherDaemon27WeatherDataServiceProxyType_
+- (void)fetchStatisticsWith:(_TtC13WeatherDaemon29WeatherStatisticsProxyRequest *)arg1 completion:(void (^)(_TtC13WeatherDaemon30WeatherStatisticsProxyResponse *))arg2;
 - (void)fetchHistoricalWeatherWith:(_TtC13WeatherDaemon33HistoricalWeatherDataProxyRequest *)arg1 completion:(void (^)(_TtC13WeatherDaemon34HistoricalWeatherDataProxyResponse *))arg2;
 - (void)fetchAvailableDataSetsWith:(_TtC13WeatherDaemon24AvailabilityProxyRequest *)arg1 completion:(void (^)(_TtC13WeatherDaemon25AvailabilityProxyResponse *))arg2;
 - (void)fetchAirQualityScaleWith:(_TtC13WeatherDaemon27AirQualityScaleProxyRequest *)arg1 completion:(void (^)(_TtC13WeatherDaemon28AirQualityScaleProxyResponse *))arg2;

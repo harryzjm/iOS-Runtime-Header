@@ -6,19 +6,19 @@
 
 #import <ActivityAwardsServices/NSObject-Protocol.h>
 
-@class ACHTemplate, NSDictionary, NSString, NSURL;
-@protocol ACHTemplateAssetSourceDelegate><NSObject;
+@class ACHTemplate, NSDictionary, NSObject, NSString, NSURL;
+@protocol ACHTemplateAssetSourceDelegate;
 
 @protocol ACHTemplateAssetSource <NSObject>
+@property(readonly, nonatomic) NSString *identifier;
 - (NSURL *)stickerBundleURLForTemplate:(ACHTemplate *)arg1;
 - (NSURL *)propertyListBundleURLForTemplate:(ACHTemplate *)arg1;
 - (NSURL *)resourceBundleURLForTemplate:(ACHTemplate *)arg1;
 - (NSURL *)localizationBundleURLForTemplate:(ACHTemplate *)arg1;
-@property(nonatomic, readonly) NSString *identifier;
 
 @optional
+@property(nonatomic) __weak NSObject<ACHTemplateAssetSourceDelegate> *assetSourceDelegate;
 - (long long)mobileAssetVersionForTemplate:(ACHTemplate *)arg1;
 - (NSDictionary *)customPlaceholderValuesForTemplate:(ACHTemplate *)arg1 error:(id *)arg2;
-@property(nonatomic) __weak id <ACHTemplateAssetSourceDelegate><NSObject> assetSourceDelegate;
 @end
 

@@ -17,6 +17,9 @@
     MISSING_TYPE *platform;
     MISSING_TYPE *_fakeSupportedWatchAvailable;
     MISSING_TYPE *accountHasSupportedWatch;
+    MISSING_TYPE *_fakeSupportedPhoneAvailable;
+    MISSING_TYPE *accountHasSupportedPhone;
+    MISSING_TYPE *accountHasSupportedDevice;
     MISSING_TYPE *accountOwnedDevices;
 }
 

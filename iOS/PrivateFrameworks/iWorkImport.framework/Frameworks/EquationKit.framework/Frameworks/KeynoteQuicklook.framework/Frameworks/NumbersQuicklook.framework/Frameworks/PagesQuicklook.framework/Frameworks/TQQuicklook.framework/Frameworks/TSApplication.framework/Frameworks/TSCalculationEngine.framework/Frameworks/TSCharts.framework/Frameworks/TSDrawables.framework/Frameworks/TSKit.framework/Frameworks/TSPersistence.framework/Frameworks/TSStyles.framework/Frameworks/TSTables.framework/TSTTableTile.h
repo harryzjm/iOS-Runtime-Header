@@ -37,8 +37,7 @@
 - (void)moveColumnsAtColumnIndex:(unsigned short)arg1 numberOfColumns:(unsigned int)arg2 toDestColumnIndex:(unsigned short)arg3;
 - (id)removeColumnsAtColumnIndex:(unsigned short)arg1 numberOfColumns:(unsigned int)arg2;
 - (int)insertColumnsAtColumnIndex:(unsigned short)arg1 numberOfColumns:(unsigned int)arg2;
-- (long long)setCell:(id)arg1 atColumnIndex:(unsigned short)arg2 tileRowIndex:(unsigned int)arg3 formatKeys:(CDStruct_c8ca99d5 *)arg4;
-- (struct TSTCellStorage *)preBNCCellStorageRefAtColumnIndex:(unsigned short)arg1 tileRowIndex:(unsigned int)arg2;
+- (long long)setCell:(id)arg1 atColumnIndex:(unsigned short)arg2 tileRowIndex:(unsigned int)arg3;
 - (struct TSTCellStorage *)cellStorageRefAtColumnIndex:(unsigned short)arg1 tileRowIndex:(unsigned int)arg2;
 - (id)rowInfoAtOrAfterTileRowIndex:(unsigned int)arg1 outTileRowIndex:(out unsigned int *)arg2;
 - (void)enumerateRowsWithBlock:(CDUnknownBlockType)arg1;

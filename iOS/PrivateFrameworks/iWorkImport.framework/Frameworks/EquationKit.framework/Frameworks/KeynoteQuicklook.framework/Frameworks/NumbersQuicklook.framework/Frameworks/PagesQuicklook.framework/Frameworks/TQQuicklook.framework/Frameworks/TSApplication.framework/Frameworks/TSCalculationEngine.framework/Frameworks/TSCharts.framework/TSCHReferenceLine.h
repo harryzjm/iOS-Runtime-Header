@@ -30,6 +30,7 @@
 @property(readonly, copy, nonatomic) TSCHChartAxisID *axisID; // @synthesize axisID=_axisID;
 @property(readonly, copy, nonatomic) NSUUID *uuid; // @synthesize uuid=_UUID;
 - (void)setStyle:(id)arg1 nonStyle:(id)arg2;
+- (id)transformedTuplesWithTuple:(id)arg1;
 - (id)nonstyle;
 - (id)style;
 - (id)swapTuplesForParagraphStyleMutations:(id)arg1 forReferencingProperty:(int)arg2;

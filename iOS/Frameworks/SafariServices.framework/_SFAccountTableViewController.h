@@ -6,20 +6,23 @@
 
 #import <UIKit/UITableViewController.h>
 
+#import <SafariServices/UISearchControllerDelegate-Protocol.h>
+
 @class NSCountedSet, NSString, UISearchController, WBSSavedAccount, _SFAccountIconController, _SFAccountTableConfiguration;
 
 __attribute__((visibility("hidden")))
-@interface _SFAccountTableViewController : UITableViewController
+@interface _SFAccountTableViewController : UITableViewController <UISearchControllerDelegate>
 {
-    _SFAccountIconController *_iconController;
     NSCountedSet *_visibleDomains;
     _SFAccountTableConfiguration *_configuration;
-    _Bool _isAuthenticatingForOneTimeSharing;
+    _Bool _isOneTimeSharingAccount;
     NSString *_searchPattern;
     UISearchController *_searchController;
+    _SFAccountIconController *_iconController;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) _SFAccountIconController *iconController; // @synthesize iconController=_iconController;
 @property(retain, nonatomic) UISearchController *searchController; // @synthesize searchController=_searchController;
 @property(readonly, nonatomic) NSString *searchPattern; // @synthesize searchPattern=_searchPattern;
 @property(readonly, nonatomic) _Bool shouldSuppressAccountManagerLockedView;
@@ -33,15 +36,19 @@ __attribute__((visibility("hidden")))
 - (void)iconDidUpdateForDomain:(id)arg1 iconController:(id)arg2;
 - (void)tableView:(id)arg1 didEndEditingRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 willBeginEditingRowAtIndexPath:(id)arg2;
-- (id)_tableView:(id)arg1 previewForIndexPath:(id)arg2;
-- (id)tableView:(id)arg1 previewForDismissingContextMenuWithConfiguration:(id)arg2;
-- (id)tableView:(id)arg1 previewForHighlightingContextMenuWithConfiguration:(id)arg2;
 - (void)tableView:(id)arg1 willPerformPreviewActionForMenuWithConfiguration:(id)arg2 animator:(id)arg3;
 - (id)tableView:(id)arg1 contextMenuConfigurationForRowAtIndexPath:(id)arg2 point:(struct CGPoint)arg3;
 - (void)tableView:(id)arg1 didEndDisplayingCell:(id)arg2 forRowAtIndexPath:(id)arg3;
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
+- (id)_contextMenuForSavedAccountAtIndexPath:(id)arg1;
+- (void)_fillVerificationCodeForSavedAccount:(id)arg1;
+- (void)_fillPasswordForSavedAccount:(id)arg1;
+- (void)_fillUsernameForSavedAccount:(id)arg1;
+- (void)presentConfirmationAlertToShareSavedAccount:(id)arg1 toGroup:(id)arg2;
+- (void)presentSharedAccountGroupCreationFlowWithSavedAccountToAddToNewlyCreatedGroup:(id)arg1;
+- (id)_allSharedCredentialGroupsMenuForSavedAccount:(id)arg1;
 - (_Bool)_shouldShowToolbarWhenSearching;
-- (_Bool)_shouldUseStackedSearchBarPlacement;
+- (void)handleIconDidUpdateForDomain:(id)arg1;
 - (void)handleContextMenuDeleteForIndexPath:(id)arg1;
 - (void)_shareSavedAccount:(id)arg1 authenticationContext:(id)arg2 modalPresentationSourceView:(id)arg3;
 - (void)_shareSavedAccount:(id)arg1 modalPresentationSourceView:(id)arg2;

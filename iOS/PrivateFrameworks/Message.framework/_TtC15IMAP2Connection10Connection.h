@@ -11,12 +11,14 @@
 @interface _TtC15IMAP2Connection10Connection : _TtCs12_SwiftObject
 {
     MISSING_TYPE *logger;
+    MISSING_TYPE *createdAt;
+    MISSING_TYPE *tlsOptions;
     MISSING_TYPE *delegate;
     MISSING_TYPE *connection;
     MISSING_TYPE *receiveTranscoder;
-    MISSING_TYPE *delegateQueue;
-    MISSING_TYPE *networkQueue;
+    MISSING_TYPE *queue;
     MISSING_TYPE *pendingHandshakeReplyCount;
+    MISSING_TYPE *underlyingID;
 }
 
 @end

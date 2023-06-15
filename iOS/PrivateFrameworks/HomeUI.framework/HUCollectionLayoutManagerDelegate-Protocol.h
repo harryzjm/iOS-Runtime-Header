@@ -13,5 +13,6 @@
 @optional
 - (_Bool)allowsCondensedAccessoryTiles;
 - (HUGridLayoutOptions *)transformWithLayoutOptions:(HUGridLayoutOptions *)arg1;
+- (_Bool)shouldShowFooterForSection:(NSString *)arg1;
 @end
 

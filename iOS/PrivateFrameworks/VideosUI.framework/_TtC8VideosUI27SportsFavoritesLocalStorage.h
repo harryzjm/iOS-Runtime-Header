@@ -14,5 +14,7 @@
     MISSING_TYPE *teamFavoritesLock;
 }
 
+- (void)handleSportsFavoriteSyncNotification:(id)arg1;
+
 @end
 

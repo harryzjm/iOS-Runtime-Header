@@ -8,7 +8,7 @@
 
 #import <XCTestCore/XCTSymbolInfoProviding-Protocol.h>
 
-@class NSArray, NSString;
+@class NSArray, NSSet, NSString;
 
 @interface XCTOutOfProcessSymbolicationService : NSObject <XCTSymbolInfoProviding>
 {
@@ -35,6 +35,7 @@
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
+@property(readonly) NSSet *symbolInfoImageNames;
 
 @end
 

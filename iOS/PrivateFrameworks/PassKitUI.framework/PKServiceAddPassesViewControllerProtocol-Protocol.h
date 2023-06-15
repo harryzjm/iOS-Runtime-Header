@@ -6,12 +6,12 @@
 
 #import <PassKitUI/NSObject-Protocol.h>
 
-@class NSArray, PKPassesXPCContainer;
+@class NSArray, NSData, PKPassesXPCContainer;
 
 @protocol PKServiceAddPassesViewControllerProtocol <NSObject>
 - (void)resetBrightness;
 - (void)evaluateBrightness;
-- (void)ingestPasses:(NSArray *)arg1 orPassesContainer:(PKPassesXPCContainer *)arg2 fromPresentationSource:(unsigned long long)arg3;
+- (void)ingestPasses:(NSArray *)arg1 orPassesContainer:(PKPassesXPCContainer *)arg2 orIssuerData:(NSData *)arg3 withSignature:(NSData *)arg4 fromPresentationSource:(unsigned long long)arg5;
 - (void)setDisplayPropertiesWithScreenSize:(struct CGSize)arg1 scale:(double)arg2;
 @end
 

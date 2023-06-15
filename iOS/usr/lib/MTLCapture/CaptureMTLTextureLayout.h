@@ -9,7 +9,6 @@
 @class NSString;
 @protocol MTLTextureLayout;
 
-__attribute__((visibility("hidden")))
 @interface CaptureMTLTextureLayout : NSObject
 {
     id <MTLTextureLayout> _baseObject;

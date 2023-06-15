@@ -20,7 +20,6 @@ __attribute__((visibility("hidden")))
     NSString *_identifier;
 }
 
-+ (_Bool)_cursorInteractionEnabled;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(nonatomic) double cursorScale; // @synthesize cursorScale=_cursorScale;
@@ -29,8 +28,8 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) MPCPlayerCommandRequest *holdEndCommandRequest; // @synthesize holdEndCommandRequest=_holdEndCommandRequest;
 @property(retain, nonatomic) MPCPlayerCommandRequest *holdBeginCommandRequest; // @synthesize holdBeginCommandRequest=_holdBeginCommandRequest;
 @property(retain, nonatomic) MPCPlayerCommandRequest *touchUpInsideCommandRequest; // @synthesize touchUpInsideCommandRequest=_touchUpInsideCommandRequest;
-- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2 modifiers:(long long)arg3;
 - (void)setHighlighted:(_Bool)arg1;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

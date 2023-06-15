@@ -6,28 +6,30 @@
 
 #import <PassKitCore/PDXPCServiceExportedInterface-Protocol.h>
 
-@class NSArray, NSData, NSOrderedSet, NSString, PKAddSecureElementPassConfiguration, PKCatalog, PKDisplayProfile, PKGroupsControllerSnapshotFetchOptions, PKMapsTransitRouteInfo, PKPaymentMarket, PKPaymentSetupConfiguration;
+@class NSArray, NSData, NSOrderedSet, NSString, PKAddCarKeyPassConfiguration, PKAddSecureElementPassConfiguration, PKCatalog, PKDisplayProfile, PKGroupsControllerSnapshotFetchOptions, PKPaymentMarket, PKPaymentSetupConfiguration, PKProvisioningRequirementsContainer;
 
 @protocol PDPassLibraryExportedInterface <PDXPCServiceExportedInterface>
 - (void)signData:(NSData *)arg1 forPassUniqueID:(NSString *)arg2 completion:(void (^)(NSData *, NSData *, NSError *))arg3;
+- (void)usingSynchronousProxy:(_Bool)arg1 meetsProvisioningRequirements:(PKProvisioningRequirementsContainer *)arg2 completion:(void (^)(_Bool, PKProvisioningRequirementsContainer *))arg3;
+- (void)usingSynchronousProxy:(_Bool)arg1 canAddCarKeyPassWithConfiguration:(PKAddCarKeyPassConfiguration *)arg2 completion:(void (^)(_Bool, PKCarUnlockSupportedTerminal *, NSError *))arg3;
 - (void)usingSynchronousProxy:(_Bool)arg1 canAddSecureElementPassWithConfiguration:(PKAddSecureElementPassConfiguration *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 - (void)invalidateVehicleConnectionSessionIdentifier:(NSString *)arg1;
 - (void)sendRKEPassThroughMessage:(NSData *)arg1 forSessionIdentifier:(NSString *)arg2 withCompletion:(void (^)(_Bool, NSError *))arg3;
 - (void)startVehicleConnectionSessionWithPassUniqueIdentifier:(NSString *)arg1 completion:(void (^)(NSString *))arg2;
 - (void)usingSynchronousProxy:(_Bool)arg1 getPassForProvisioningCredentialHash:(NSString *)arg2 handler:(void (^)(PKPass *))arg3;
 - (void)usingSynchronousProxy:(_Bool)arg1 passLocalizedStringForKey:(NSString *)arg2 uniqueID:(NSString *)arg3 completion:(void (^)(NSString *))arg4;
+- (void)usingSynchronousProxy:(_Bool)arg1 postUpgradesAvailableNotificationForMarket:(PKPaymentMarket *)arg2 passUniqueID:(NSString *)arg3;
 - (void)postUpgradedPassNotificationForMarket:(PKPaymentMarket *)arg1 passUniqueID:(NSString *)arg2;
 - (void)checkForTransitNotification;
 - (void)supportsSearchForPassUniqueID:(NSString *)arg1 completion:(void (^)(_Bool))arg2;
-- (void)supportsDisbursements:(void (^)(_Bool, NSError *))arg1;
 - (void)peerPaymentPassUniqueIDWithHandler:(void (^)(NSString *))arg1;
 - (void)migrateDataWithHandler:(void (^)(_Bool))arg1;
+- (void)prepareForBackupRestoreWithExistingPreferencesData:(NSData *)arg1 handler:(void (^)(void))arg2;
 - (void)setBackupMetadata:(NSData *)arg1 handler:(void (^)(void))arg2;
 - (void)backupMetadataWithHandler:(void (^)(NSData *))arg1;
 - (void)passWithDPANIdentifier:(NSString *)arg1 handler:(void (^)(PKPaymentPass *))arg2;
 - (void)passWithFPANIdentifier:(NSString *)arg1 handler:(void (^)(PKPaymentPass *))arg2;
 - (void)paymentSetupFeaturesForConfiguration:(PKPaymentSetupConfiguration *)arg1 completion:(void (^)(NSArray *))arg2;
-- (void)transitMessageForRouteInfo:(PKMapsTransitRouteInfo *)arg1 handler:(void (^)(PKMapsTransitMessage *))arg2;
 - (void)supportedTransitPartnersForDigitalIssuance:(void (^)(NSArray *))arg1;
 - (void)sortedTransitPassesForTransitNetworkIdentifiers:(void (^)(NSDictionary *))arg1;
 - (void)sortedTransitPassesForAppletDataFormat:(NSString *)arg1 handler:(void (^)(NSArray *))arg2;

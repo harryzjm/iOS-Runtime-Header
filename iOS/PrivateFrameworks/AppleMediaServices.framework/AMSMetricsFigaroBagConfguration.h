@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_queue;
 }
 
-+ (id)configurationWithBag:(id)arg1 error:(id *)arg2;
++ (id)configurationPromiseWithBag:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(readonly, nonatomic) AMSMetricsFigaroEventModifier *defaultModifier; // @synthesize defaultModifier=_defaultModifier;

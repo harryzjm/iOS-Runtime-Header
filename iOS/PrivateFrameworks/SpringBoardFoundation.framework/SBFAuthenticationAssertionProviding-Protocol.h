@@ -7,8 +7,10 @@
 #import <SpringBoardFoundation/NSObject-Protocol.h>
 
 @class NSString, SBFAuthenticationAssertion;
+@protocol BSInvalidatable;
 
 @protocol SBFAuthenticationAssertionProviding <NSObject>
+- (id <BSInvalidatable>)createSecureDisplayDeferralAssertionWithReason:(NSString *)arg1;
 - (SBFAuthenticationAssertion *)createGracePeriodAssertionWithReason:(NSString *)arg1;
 - (SBFAuthenticationAssertion *)createKeybagUnlockAssertionWithReason:(NSString *)arg1;
 @end

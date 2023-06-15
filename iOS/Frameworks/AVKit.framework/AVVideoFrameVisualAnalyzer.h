@@ -24,10 +24,13 @@ __attribute__((visibility("hidden")))
     AVPlayerController *_playerController;
     AVPlayerLayer *_playerLayer;
     id <AVVideoFrameVisualAnalyzerDelegate> _delegate;
+    unsigned long long _videoFrameAnalysisTypes;
 }
 
++ (_Bool)analysis:(id)arg1 containsVideoFrameAnalysisType:(unsigned long long)arg2;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool actuallyEnabled; // @synthesize actuallyEnabled=_actuallyEnabled;
+@property(nonatomic) unsigned long long videoFrameAnalysisTypes; // @synthesize videoFrameAnalysisTypes=_videoFrameAnalysisTypes;
 @property(nonatomic) _Bool enabled; // @synthesize enabled=_enabled;
 @property(nonatomic) __weak id <AVVideoFrameVisualAnalyzerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) AVPlayerLayer *playerLayer; // @synthesize playerLayer=_playerLayer;

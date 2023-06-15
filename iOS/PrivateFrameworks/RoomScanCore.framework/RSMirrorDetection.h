@@ -14,9 +14,6 @@
 }
 
 - (void).cxx_destruct;
-- (id)mirrorPoints;
-- (void)reset;
-- (void)run:(id)arg1;
 - (id)init;
 
 @end

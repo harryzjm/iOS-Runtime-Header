@@ -15,7 +15,7 @@
 - (void)CADCountCalendarItemsOfType:(int)arg1 inSource:(CADObjectID *)arg2 reply:(void (^)(int, unsigned long long))arg3;
 - (void)CADSourceRefresh:(CADObjectID *)arg1 isUserRequested:(_Bool)arg2 reply:(void (^)(int, _Bool))arg3;
 - (void)CADSourceGetNotificationCollection:(CADObjectID *)arg1 reply:(void (^)(int, CADObjectID *))arg2;
-- (void)CADSourceGetConstraints:(CADObjectID *)arg1 reply:(void (^)(int, NSData *))arg2;
+- (void)CADObjectGetConstraints:(CADObjectID *)arg1 reply:(void (^)(int, NSData *))arg2;
 - (void)CADDatabaseGetLocalBirthdaySource:(void (^)(int, CADObjectID *))arg1;
 - (void)CADDatabaseGetLocalSourceWithEnableIfNeeded:(_Bool)arg1 reply:(void (^)(int, CADObjectID *))arg2;
 - (void)CADDatabaseGetSourcesWithFaultedProperties:(NSArray *)arg1 reply:(void (^)(int, NSArray *, NSArray *))arg2;

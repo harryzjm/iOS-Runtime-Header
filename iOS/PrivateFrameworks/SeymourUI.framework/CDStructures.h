@@ -102,6 +102,13 @@ typedef struct {
 } CDStruct_b2fbf00d;
 
 typedef struct {
+    long long _field1;
+    int _field2;
+    unsigned int _field3;
+    long long _field4;
+} CDStruct_198678f7;
+
+typedef struct {
     CDStruct_14f26992 _field1;
     CDStruct_14f26992 _field2;
 } CDStruct_4c83c94d;

@@ -7,6 +7,7 @@
 #import <OnBoardingKit/OBPrivacyFlow.h>
 
 @interface OBPrivacyFlow (PKPrivacy)
++ (unsigned long long)pk_privacyContentVersionForContext:(unsigned long long)arg1;
 + (id)pk_privacyFlowForContext:(unsigned long long)arg1;
 @end
 

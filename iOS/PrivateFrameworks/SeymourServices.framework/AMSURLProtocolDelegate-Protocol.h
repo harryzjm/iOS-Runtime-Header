@@ -6,7 +6,7 @@
 
 #import <SeymourServices/NSObject-Protocol.h>
 
-@class ACAccount, AMSAuthenticateRequest, AMSDialogRequest, AMSEngagementRequest, AMSMetricsLoadURLContext, AMSURLSession, NSDictionary, NSError, NSURLSessionTask;
+@class ACAccount, AMSAuthenticateRequest, AMSDialogRequest, AMSEngagementRequest, AMSMetricsLoadURLContext, AMSURLSession, NSDictionary, NSError, NSString, NSURLSessionTask;
 
 @protocol AMSURLProtocolDelegate <NSObject>
 
@@ -17,6 +17,7 @@
 - (void)AMSURLSession:(AMSURLSession *)arg1 handleDialogRequest:(AMSDialogRequest *)arg2 completion:(void (^)(AMSDialogResult *, NSError *))arg3;
 - (void)AMSURLSession:(AMSURLSession *)arg1 handleAuthenticateRequest:(AMSAuthenticateRequest *)arg2 completion:(void (^)(AMSAuthenticateResult *, NSError *))arg3;
 - (void)reportMetricsForContext:(AMSMetricsLoadURLContext *)arg1;
+- (NSString *)presentingSceneIdentifier;
 - (_Bool)AMSURLSession:(AMSURLSession *)arg1 task:(NSURLSessionTask *)arg2 shouldFailWithServerError:(NSError *)arg3;
 - (void)AMSURLSession:(AMSURLSession *)arg1 task:(NSURLSessionTask *)arg2 handleEngagementRequest:(AMSEngagementRequest *)arg3 completion:(void (^)(AMSEngagementResult *, NSError *))arg4;
 - (void)AMSURLSession:(AMSURLSession *)arg1 task:(NSURLSessionTask *)arg2 handleDialogRequest:(AMSDialogRequest *)arg3 completion:(void (^)(AMSDialogResult *, NSError *))arg4;

@@ -8,7 +8,9 @@
 @protocol TRITask;
 
 @protocol TRIXPCInternalServiceProtocol
+- (void)removeUnusedChannelsWithCompletion:(void (^)(void))arg1;
 - (void)immediatelySchedulePostUpgradeActivityWithCompletion:(void (^)(_Bool, NSError *))arg1;
+- (void)activeBMLTInformationWithPrivacyFilterPolicy:(unsigned char)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)activeExperimentInformationWithPrivacyFilterPolicy:(unsigned char)arg1 completion:(void (^)(NSArray *))arg2;
 - (void)activeRolloutInformationWithPrivacyFilterPolicy:(unsigned char)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)setSubscription:(NSArray *)arg1 namespaceName:(NSString *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
@@ -20,6 +22,7 @@
 - (void)resumeSQLiteCKDatabaseQueueWithCompletion:(void (^)(void))arg1;
 - (void)suspendSQLiteCKDatabaseQueueWithCompletion:(void (^)(void))arg1;
 - (void)setFailureInjectionDelegate:(TRISQLiteCKDatabaseFailureInjectionDelegate *)arg1;
+- (void)bmltCustomTargetingMetricWithCompletion:(void (^)(TRIMetric *))arg1;
 - (void)setLastFetchDate:(NSDate *)arg1 forContainer:(int)arg2 teamId:(NSString *)arg3 completion:(void (^)(_Bool, NSError *))arg4;
 - (void)lastFetchDateForContainer:(int)arg1 teamId:(NSString *)arg2 completion:(void (^)(NSDate *, NSError *))arg3;
 - (void)submitTask:(id <TRITask>)arg1 options:(TRITaskQueuingOptions *)arg2 completion:(void (^)(_Bool, NSError *))arg3;

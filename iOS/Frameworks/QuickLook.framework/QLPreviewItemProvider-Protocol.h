@@ -5,6 +5,7 @@
 //
 
 @protocol QLPreviewItemProvider
+- (void)resolvedPreviewItemAtIndex:(unsigned long long)arg1 withCompletionHandler:(void (^)(QLItem *, id <QLPreviewItemURLProvider>))arg2;
 - (void)previewItemAtIndex:(unsigned long long)arg1 withCompletionHandler:(void (^)(QLItem *, id <QLPreviewItemURLProvider>))arg2;
 @end
 

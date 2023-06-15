@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *featureStore; // @synthesize featureStore=_featureStore;
 - (void)storeFeatureData:(id)arg1 error:(id *)arg2;
-- (id)getFeatureWithName:(id)arg1 error:(id *)arg2;
+- (id)getFeatureWithName:(id)arg1 withColumn:(id)arg2 error:(id *)arg3;
 
 @end
 

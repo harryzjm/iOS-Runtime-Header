@@ -10,8 +10,10 @@
 
 @optional
 @property(nonatomic) double containerCornerRadius;
+@property(nonatomic, getter=isListAppeared) _Bool listAppeared;
 @property(nonatomic, getter=isScreenOn) _Bool screenOn;
 - (void)setContainerSize:(struct CGSize)arg1;
 - (struct CGSize)preferredContentSize;
+- (void)restrictsTouchesOnHostedScene:(_Bool)arg1;
 @end
 

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 @class UIImage;
 
 __attribute__((visibility("hidden")))
-@interface _UIVisualEffectViewCornerMask : NSObject <NSCopying>
+@interface _UIVisualEffectViewCornerMask : NSObject
 {
     UIImage *_image;
     struct CGRect _imageCenter;

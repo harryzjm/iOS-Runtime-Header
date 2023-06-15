@@ -6,7 +6,7 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class NSString, SBPIPContainerViewController, SBPIPController, SBPIPInterruptionAssertion;
+@class NSString, SBPIPContainerViewController, SBPIPController, SBPIPInterruptionAssertion, SBPIPMorphAnimatorController, SBWindowScene;
 @protocol SBPIPControllerAdapterContextProviding, SBViewMorphAnimatorDataSource;
 
 @protocol SBPIPControllerAdapter <NSObject>
@@ -21,6 +21,7 @@
 @optional
 - (void)pipController:(SBPIPController *)arg1 willRestorePictureInPictureForTestForApplicationWithBundleIdentifier:(NSString *)arg2;
 - (void)pipController:(SBPIPController *)arg1 willStartPictureInPictureTestActionForApplicationWithBundleIdentifier:(NSString *)arg2;
+- (void)pipController:(SBPIPController *)arg1 didUpdateEnhancedWindowingModeEnabled:(_Bool)arg2 windowScene:(SBWindowScene *)arg3;
 - (_Bool)preventStashAssertionsForPIPController:(SBPIPController *)arg1;
 - (void)windowVisibilityDidChangeForPIPController:(SBPIPController *)arg1;
 - (void)windowLevelDidChangeForPIPController:(SBPIPController *)arg1;
@@ -28,7 +29,7 @@
 - (void)pipController:(SBPIPController *)arg1 didStartPictureInPictureForApplicationWithProcessIdentifierEnteringBackground:(int)arg2 scenePersistenceIdentifier:(NSString *)arg3 animated:(_Bool)arg4 completionHandler:(void (^)(_Bool, NSError *))arg5;
 - (void)pipController:(SBPIPController *)arg1 willEndPIPInterruptionForAssertion:(SBPIPInterruptionAssertion *)arg2;
 - (_Bool)pipController:(SBPIPController *)arg1 willBeginPIPInterruptionForAssertion:(SBPIPInterruptionAssertion *)arg2;
-- (id <SBViewMorphAnimatorDataSource>)pipController:(SBPIPController *)arg1 morphAnimatorDataSourceForTargetProcessIdentifier:(int)arg2 scenePersistenceIdentifier:(NSString *)arg3 gestureInitiated:(_Bool)arg4;
+- (id <SBViewMorphAnimatorDataSource>)pipController:(SBPIPController *)arg1 morphAnimatorDataSourceForMorphAnimatorController:(SBPIPMorphAnimatorController *)arg2;
 - (void)pipController:(SBPIPController *)arg1 willRemoveContainerViewController:(SBPIPContainerViewController *)arg2;
 - (void)pipController:(SBPIPController *)arg1 didAddContainerViewController:(SBPIPContainerViewController *)arg2;
 @end

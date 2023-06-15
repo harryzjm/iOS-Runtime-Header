@@ -6,13 +6,13 @@
 
 #import <StatusKitAgentCore/NSObject-Protocol.h>
 
-@class NSArray, NSString, SKHandle;
+@class NSArray, NSString, SKHandle, SKPresencePayload;
 
 @protocol SKPresenceDaemonProtocol <NSObject>
-- (void)registerForDelegateCallbacksWithPresenceIdentifier:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)registerForDelegateCallbacksWithPresenceIdentifier:(NSString *)arg1 isPersonal:(_Bool)arg2 completion:(void (^)(NSError *))arg3;
 - (void)fetchPresenceCapability:(void (^)(_Bool))arg1;
-- (void)releasePresenceForIdentifier:(id)arg1 completion:(void (^)(NSError *))arg2;
-- (void)assertPresenceForIdentifier:(id)arg1 completion:(void (^)(NSError *))arg2;
+- (void)releasePresenceForIdentifier:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)assertPresenceForIdentifier:(NSString *)arg1 withPresencePayload:(SKPresencePayload *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)releaseTransientSubscriptionAssertionForPresenceIdentifier:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)retainTransientSubscriptionAssertionForPresenceIdentifier:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)removeInvitedHandles:(NSArray *)arg1 presenceIdentifier:(NSString *)arg2 completion:(void (^)(NSError *))arg3;

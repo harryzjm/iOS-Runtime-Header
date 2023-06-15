@@ -7,6 +7,7 @@
 #import <AppIntents/NSObject-Protocol.h>
 
 @protocol LNPerformActionExecutorDelegate <NSObject>
+- (void)requestContinueInApp:(id)arg1 completionHandler:(void (^)(id, NSError *))arg2;
 - (void)requestViewSnippetEnvironmentWithCompletionHandler:(void (^)(id))arg1;
 - (void)requestParameterNeedsValue:(id)arg1 completionHandler:(void (^)(id, NSError *))arg2;
 - (void)requestParameterDisambiguation:(id)arg1 completionHandler:(void (^)(id, NSError *))arg2;

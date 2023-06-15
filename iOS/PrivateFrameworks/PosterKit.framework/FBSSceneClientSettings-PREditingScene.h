@@ -4,18 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <FrontBoard/FBSSceneClientSettings.h>
+#import <FrontBoardServices/FBSSceneClientSettings.h>
 
-@class BSColor, BSUIVibrancyConfiguration, PRTimeDescriptor, UIColor;
+@class BSColor, BSUIVibrancyConfiguration, PRPosterLegibilitySettings, PRTimeDescriptor;
 
 @interface FBSSceneClientSettings (PREditingScene)
 @property(readonly, nonatomic) _Bool pr_hasBackgroundTasks;
 @property(readonly, nonatomic, getter=pr_areContentsCoveredByModalPresentation) _Bool pr_contentsCoveredByModalPresentation;
 @property(readonly, nonatomic, getter=pr_isEditingFocusActive) _Bool pr_editingFocusActive;
+@property(readonly, nonatomic) _Bool pr_hideChrome;
 @property(readonly, nonatomic) struct CGSize pr_contentSize;
+@property(readonly, nonatomic) _Bool pr_handlesWakeAnimation;
+@property(readonly, nonatomic) _Bool pr_userTapEventsRequested;
 @property(readonly, nonatomic) unsigned long long pr_significantEventOptions;
 @property(readonly, nonatomic) unsigned long long pr_significantEventTime;
-@property(readonly, nonatomic) UIColor *pr_averageColor;
+@property(readonly, nonatomic) PRPosterLegibilitySettings *pr_desiredLegibilitySettings;
+@property(readonly, nonatomic) BSColor *pr_averageColor;
 @property(readonly, nonatomic) _Bool pr_inExtendedRenderSession;
 @property(readonly, nonatomic) _Bool pr_didFinishInitialization;
 @property(readonly, nonatomic) BSUIVibrancyConfiguration *pr_vibrancyConfiguration;

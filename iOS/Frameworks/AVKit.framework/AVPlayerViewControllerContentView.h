@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class AVCABackdropLayerView, AVExternalPlaybackIndicatorView, AVMobileControlsViewController, AVPlaybackControlsView, AVPlayerViewControllerCustomControlsView, AVScrollingObserver, AVTurboModePlaybackControlsPlaceholderView, NSArray, NSMutableDictionary, NSNumber, NSString, UIImageView;
 @protocol AVPlaybackContentContainer, AVPlayerViewControllerContentViewDelegate, AVPlayerViewControllerContentViewDelegate_Gen1;
@@ -64,11 +64,13 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) AVMobileControlsViewController *controlsViewController; // @synthesize controlsViewController=_controlsViewController;
 - (void)_applyVideoGravityIfNeeded:(long long)arg1;
 - (void)scrollingObserverDidChangeScrollingState:(id)arg1;
+- (void)_boundingPathMayHaveChangedForView:(id)arg1 relativeToBoundsOriginOnly:(_Bool)arg2;
 - (void)avkit_needsUpdateBackdropCaptureViewHidden;
 - (_Bool)avkit_hasFullScreenLayoutClass;
 - (id)avkit_backdropGroupLeader;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (void)willMoveToWindow:(id)arg1;
 - (void)didMoveToSuperview;
 - (void)didMoveToWindow;
 - (void)updateCustomControlsViewLayoutGuides;

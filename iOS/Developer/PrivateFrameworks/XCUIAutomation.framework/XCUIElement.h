@@ -176,6 +176,7 @@
 - (_Bool)_shouldDispatchEvent:(id *)arg1;
 - (void)_dispatchEvent:(id)arg1 eventBuilder:(CDUnknownBlockType)arg2;
 - (_Bool)_dispatchEventWithEventBuilder:(CDUnknownBlockType)arg1 error:(id *)arg2;
+- (void)typeKey:(id)arg1 modifierFlags:(unsigned long long)arg2;
 - (void)typeText:(id)arg1;
 - (_Bool)_focusValidForElementSnapshot:(id)arg1 error:(id *)arg2;
 - (void)rotate:(double)arg1 withVelocity:(double)arg2;
@@ -220,6 +221,7 @@
 - (void)tripleClick;
 - (void)clickForDuration:(double)arg1;
 - (void)playBackEventStreamAtURL:(id)arg1 withSpeed:(double)arg2;
+- (id)screenshotAttachmentWithPreferredEncoding:(id)arg1 options:(unsigned long long)arg2;
 - (id)screenshotWithPreferredEncoding:(id)arg1 options:(unsigned long long)arg2;
 - (id)screenshot;
 - (id)screenshotAttachmentWithName:(id)arg1 lifetime:(long long)arg2;

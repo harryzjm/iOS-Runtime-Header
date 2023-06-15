@@ -7,6 +7,6 @@
 #import <Sleep/NSObject-Protocol.h>
 
 @protocol HKSPStateMachineEventHandler <NSObject>
-- (void)updateStateWithContext:(id)arg1;
+- (void)updateState;
 @end
 

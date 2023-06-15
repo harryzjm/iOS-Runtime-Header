@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HealthDaemon/NSObject-Protocol.h>
+
 @class NSArray, NSDate;
 @protocol HDWorkoutDataAccumulatorObserver;
 
-@protocol HDWorkoutDataAccumulator
+@protocol HDWorkoutDataAccumulator <NSObject>
 - (NSDate *)startDate;
 - (NSArray *)currentEvents;
 - (void)removeDataAccumulationObserver:(id <HDWorkoutDataAccumulatorObserver>)arg1;

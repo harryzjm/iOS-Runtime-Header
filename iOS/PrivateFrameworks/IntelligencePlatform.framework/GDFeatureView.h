@@ -9,7 +9,6 @@
 @class GDSQLFeatureRetriever, _PASSqliteDatabase;
 @protocol GDViewAccessAssertion;
 
-__attribute__((visibility("hidden")))
 @interface GDFeatureView : NSObject
 {
     id <GDViewAccessAssertion> _accessAssertion;

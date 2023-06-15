@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIImage.h>
+#import <UIKitCore/UIImage.h>
 
 @interface UIImage (HealthRecordsUI)
 + (id)xmarkSymbol;
 + (id)checkmarkSymbol;
+- (id)hr_imageWithWhiteBackground:(id *)arg1;
 - (id)scaledToTargetSize:(struct CGSize)arg1 padding:(struct CGPoint)arg2;
 - (id)scaledToTargetSize:(struct CGSize)arg1;
 @end

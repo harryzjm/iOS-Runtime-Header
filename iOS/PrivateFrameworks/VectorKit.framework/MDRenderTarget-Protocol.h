@@ -7,11 +7,9 @@
 #import <VectorKit/NSObject-Protocol.h>
 
 @class CALayer;
-@protocol GGLRenderQueueSource;
+@protocol GGLRenderQueueSource, MDRenderTargetSizeObserver;
 
 @protocol MDRenderTarget <NSObject>
-@property(readonly, nonatomic) const struct RenderTargetFormat *blitFormat;
-@property(readonly, nonatomic) void *blitRenderTarget;
 @property(readonly, nonatomic) void *linearRenderTarget;
 @property(readonly, nonatomic) const struct RenderTargetFormat *linearFormat;
 @property(readonly, nonatomic) void *finalRenderTarget;
@@ -27,13 +25,15 @@
 @property(nonatomic) struct CGSize size;
 - (shared_ptr_fa6aa836)bitmapData;
 - (struct __IOSurface *)flipImage;
-- (void)renderWithTimestamp:(double)arg1 completion:(function_ffe40f9b)arg2;
+-     // Error parsing type: {function<void (std::function<std::future<void> (std::function<void ()>)>, std::function<std::future<void> (std::function<void ()>)>)>={__value_func<void (std::function<std::future<void> (std::function<void ()>)>, std::function<std::future<void> (std::function<void ()>)>)>={type=[24C]}^v}}128@0:8d16d24{LayoutSceneTaskModule={function<ggl::RenderQueue *()>={__value_func<ggl::RenderQueue *()>={type=[24C]}^v}}{function<void ()>={__value_func<void ()>={type=[24C]}^v}}{function<void ()>={__value_func<void ()>={type=[24C]}^v}}}32, name: prepareRenderTask:presentAtTime:taskModule:
 - (_Bool)hasRenderTarget;
 - (void)destroyRenderTarget;
 - (void)createRenderTarget;
 
 @optional
 @property(readonly, nonatomic) float averageFPS;
+- (void)removeSizeObserver:(id <MDRenderTargetSizeObserver>)arg1;
+- (void)addSizeObserver:(id <MDRenderTargetSizeObserver>)arg1;
 - (void *)debugConsoleForId:(int)arg1;
 - (struct CGPoint)convertPoint:(struct CGPoint)arg1 toLayer:(CALayer *)arg2;
 - (void)didDrawView;

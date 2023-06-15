@@ -7,6 +7,6 @@
 #import <PhotosGraph/PGUpNextMatchingInfo-Protocol.h>
 
 @protocol PGUpNextMatchingTarget <PGUpNextMatchingInfo>
-@property(nonatomic, readonly) unsigned long long nodeIdentifier;
+@property(readonly, nonatomic) unsigned long long nodeIdentifier;
 @end
 

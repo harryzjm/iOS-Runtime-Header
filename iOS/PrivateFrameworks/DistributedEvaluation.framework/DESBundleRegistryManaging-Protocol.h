@@ -11,6 +11,7 @@
 @protocol DESBundleRegistryManaging <NSObject>
 - (long long)pluginTypeForBundleId:(NSString *)arg1;
 - (_Bool)containsBundleId:(NSString *)arg1;
+- (NSArray *)allUnrestrictedExtensionIds;
 - (NSArray *)allUnrestrictedBundleIds;
 - (NSArray *)allBundleIds;
 @end

@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)hasSeekableLiveStreamingContent;
 - (_Bool)hasLiveStreamingContent;
 - (_Bool)hasEnabledVideo;
+- (_Bool)hasEnabledAudio;
 - (_Bool)isPictureInPicturePossible;
 - (_Bool)hasContent;
 

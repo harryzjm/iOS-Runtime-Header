@@ -10,13 +10,16 @@
 {
     _Bool _normalizeCoordinates;
     _Bool _relativeCoordinates;
+    _Bool _alignCorners;
     long long _paddingMode;
     unsigned long long _samplingMode;
+    unsigned long long _nearestRoundingMode;
+    unsigned long long _layout;
 }
 
 - (void *)makeMLIROpWithBuilder:(void *)arg1 symbolTable:(void *)arg2 inputValues:(void *)arg3 opInitialization:(_Bool)arg4 name:(id)arg5;
 - (id)partialDerivativeForInputTensor:(id)arg1 incomingGradient:(id)arg2 inputIndex:(unsigned long long)arg3 name:(id)arg4;
-- (id)initWithGraph:(id)arg1 inputTensors:(id)arg2 controlDependencies:(id)arg3 normalizeCoordinates:(_Bool)arg4 relativeCoordinates:(_Bool)arg5 paddingMode:(long long)arg6 samplingMode:(unsigned long long)arg7 name:(id)arg8;
+- (id)initWithGraph:(id)arg1 inputTensors:(id)arg2 controlDependencies:(id)arg3 layout:(unsigned long long)arg4 normalizeCoordinates:(_Bool)arg5 relativeCoordinates:(_Bool)arg6 alignCorners:(_Bool)arg7 paddingMode:(long long)arg8 samplingMode:(unsigned long long)arg9 nearestRoundingMode:(unsigned long long)arg10 name:(id)arg11;
 
 @end
 

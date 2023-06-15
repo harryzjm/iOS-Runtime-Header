@@ -29,6 +29,7 @@
 - (void)updateKeyboardHandBias:(NSString *)arg1;
 - (void)updateKeyboardIsFloating:(_Bool)arg1;
 - (void)updateKeyboardIsSplit:(_Bool)arg1 locked:(_Bool)arg2;
+- (void)updateIndicatorLastShownDate:(NSDate *)arg1;
 - (void)updateLastUsedKeyboards:(NSDictionary *)arg1;
 - (void)updateLastUsedLayout:(NSString *)arg1;
 - (void)updateLastUsedInputMode:(NSString *)arg1;

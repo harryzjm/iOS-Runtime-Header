@@ -18,9 +18,9 @@ __attribute__((visibility("hidden")))
     _Bool _previewingNextDocument;
     ContinuousReadingItem *_continuousReadingItem;
     WKWebView *_contentView;
+    ContinuousReadingBannerView *_bannerView;
     UIImage *_documentSnapshot;
     UIView *_headerView;
-    ContinuousReadingBannerView *_bannerView;
     UIView *_contentBackgroundView;
     UILabel *_headerLabel;
     struct CGSize _contentViewSize;
@@ -29,12 +29,12 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) UILabel *headerLabel; // @synthesize headerLabel=_headerLabel;
 @property(retain, nonatomic) UIView *contentBackgroundView; // @synthesize contentBackgroundView=_contentBackgroundView;
-@property(retain, nonatomic) ContinuousReadingBannerView *bannerView; // @synthesize bannerView=_bannerView;
 @property(retain, nonatomic) UIView *headerView; // @synthesize headerView=_headerView;
 @property(nonatomic) struct CGSize contentViewSize; // @synthesize contentViewSize=_contentViewSize;
 @property(retain, nonatomic) UIImage *documentSnapshot; // @synthesize documentSnapshot=_documentSnapshot;
 @property(readonly, nonatomic, getter=isPreviewingNextDocument) _Bool previewingNextDocument; // @synthesize previewingNextDocument=_previewingNextDocument;
 @property(nonatomic, getter=isPrefetchingDisabled) _Bool prefetchingDisabled; // @synthesize prefetchingDisabled=_prefetchingDisabled;
+@property(retain, nonatomic) ContinuousReadingBannerView *bannerView; // @synthesize bannerView=_bannerView;
 @property(retain, nonatomic) WKWebView *contentView; // @synthesize contentView=_contentView;
 @property(readonly, retain, nonatomic) ContinuousReadingItem *continuousReadingItem; // @synthesize continuousReadingItem=_continuousReadingItem;
 - (void)_layOutContentView;

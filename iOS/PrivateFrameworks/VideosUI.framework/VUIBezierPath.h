@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIBezierPath.h>
+#import <UIKitCore/UIBezierPath.h>
 
 __attribute__((visibility("hidden")))
 @interface VUIBezierPath : UIBezierPath
@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
 
 + (id)vui_bezierPathWithRoundedRect:(struct CGRect)arg1 radius:(double)arg2;
 + (id)vui_bezierPathWithArcCenter:(struct CGPoint)arg1 radius:(double)arg2 startAngle:(double)arg3 endAngle:(double)arg4 clockwise:(_Bool)arg5;
-@property(nonatomic) const struct CGPath *vuiCGPath;
+@property(nonatomic) struct CGPath *vuiCGPath;
 
 @end
 

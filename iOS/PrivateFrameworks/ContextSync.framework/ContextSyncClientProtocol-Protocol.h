@@ -9,8 +9,10 @@
 @class BMDSL, NSString;
 
 @protocol ContextSyncClientProtocol <NSObject>
+- (_Bool)unregisterForUpdates:(BMDSL *)arg1 withIdentifier:(NSString *)arg2 forUseCase:(NSString *)arg3 forDeviceTypes:(long long)arg4 withError:(id *)arg5;
 - (_Bool)unregisterForUpdates:(BMDSL *)arg1 withIdentifier:(NSString *)arg2 forDeviceTypes:(long long)arg3;
 - (_Bool)unregisterForUpdates:(BMDSL *)arg1 withIdentifier:(NSString *)arg2 forDeviceTypes:(long long)arg3 withError:(id *)arg4;
+- (_Bool)registerForUpdates:(BMDSL *)arg1 withIdentifier:(NSString *)arg2 forUseCase:(NSString *)arg3 shouldWake:(_Bool)arg4 forDeviceTypes:(long long)arg5 withError:(id *)arg6;
 - (_Bool)registerForUpdates:(BMDSL *)arg1 withIdentifier:(NSString *)arg2 shouldWake:(_Bool)arg3 forDeviceTypes:(long long)arg4;
 - (_Bool)registerForUpdates:(BMDSL *)arg1 withIdentifier:(NSString *)arg2 shouldWake:(_Bool)arg3 forDeviceTypes:(long long)arg4 withError:(id *)arg5;
 @end

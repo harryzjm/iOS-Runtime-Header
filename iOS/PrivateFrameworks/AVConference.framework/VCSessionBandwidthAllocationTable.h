@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_streamIDToEntryTable;
     unsigned int _currentScreenEncoderGroupCount;
     unsigned int _maxActiveScreenEncoders;
-    _Bool _shouldScreenCapEncoderCount;
+    unsigned int _maxActiveCameraEncoders;
     NSDictionary *_audioOnlyBitrateToStreamIDsTable;
     NSDictionary *_audioVideoBitrateToStreamIDsTable;
     NSDictionary *_videoOnlyBitrateToStreamIDsTable;
@@ -28,10 +28,11 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSDictionary *audioOnlyBitrateToStreamIDsTable; // @synthesize audioOnlyBitrateToStreamIDsTable=_audioOnlyBitrateToStreamIDsTable;
 - (void)printTable:(id)arg1;
 - (_Bool)shouldAddBackupEntry:(id)arg1 referenceTable:(id)arg2 referenceQualityIndices:(id)arg3;
-- (void)appendEntry:(id)arg1 streamTokenEntries:(id)arg2 currentNetworkBitrate:(unsigned int *)arg3 shouldUseRepairBitrate:(_Bool)arg4 screenEncoderGroups:(id)arg5;
-- (void)cleanupStreamTokenEntries:(id)arg1 currentNetworkBitrate:(unsigned int *)arg2 isRedundancyEnabled:(_Bool)arg3 screenEncoderGroups:(id)arg4;
-- (_Bool)shouldAppendEntry:(id)arg1 screenEncoderGroups:(id)arg2;
-- (id)newAggregatedBandwidthTableWithRedundancy:(_Bool)arg1 redundancyEnabledFor720Stream:(_Bool)arg2 enableMap:(id)arg3;
+- (void)appendEntry:(id)arg1 streamTokenEntries:(id)arg2 currentNetworkBitrate:(unsigned int *)arg3 shouldUseRepairBitrate:(_Bool)arg4 appendedVideoEncoderGroups:(id)arg5;
+- (void)cleanupStreamTokenEntries:(id)arg1 currentNetworkBitrate:(unsigned int *)arg2 isRedundancyEnabled:(_Bool)arg3 appendedVideoEncoderGroups:(id)arg4;
+- (_Bool)shouldAppendEntry:(id)arg1 appendedVideoEncoderGroups:(id)arg2 is1080pCameraAvailable:(_Bool)arg3;
+- (_Bool)shouldAppendEntry:(id)arg1 appendedVideoEncoderGroups:(id)arg2;
+- (id)newAggregatedBandwidthTableWithRedundancy:(_Bool)arg1 redundancyEnabledFor720Stream:(_Bool)arg2 enableMap:(id)arg3 is1080pCameraAvailable:(_Bool)arg4;
 - (_Bool)shouldUseRepairBitrateForEntry:(id)arg1 isRedundancyEnabled:(_Bool)arg2 isRedundancyEnabledFor720Stream:(_Bool)arg3;
 - (id)tableEntriesForStreamToken:(long long)arg1;
 - (void)addBandwidthAllocationTableEntry:(id)arg1;

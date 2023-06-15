@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
+@class NSString, UIImage;
 
 @protocol PXVisualDiagnosticsDrawImageConfiguration
+@property(copy, nonatomic) UIImage *image;
 @property(copy, nonatomic) NSString *symbolName;
 @end
 

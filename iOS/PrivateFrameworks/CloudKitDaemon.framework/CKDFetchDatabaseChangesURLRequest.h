@@ -46,6 +46,7 @@
 - (id)requestOperationClasses;
 - (_Bool)requiresCKAnonymousUserIDs;
 - (_Bool)allowsAnonymousAccount;
+- (id)equivalencyProperties;
 - (id)initWithOperation:(id)arg1 previousServerChangeTokenData:(id)arg2;
 
 // Remaining properties

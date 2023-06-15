@@ -16,11 +16,11 @@ __attribute__((visibility("hidden")))
     _Bool _transient;
     _Bool _includeUnowned;
     _Bool _expectSingleResult;
-    _Bool _includeLinks;
     _Bool _fuzzyMatchTransient;
     _Bool _fuzzyMatchInternalUUID;
     _Bool _legacyPersonaPolicy;
     _Bool _legacyExtensionPolicy;
+    _Bool _includeUserManagedAssetsRelPath;
     unsigned int _uid;
     unsigned long long _explicitFlags;
     NSSet *_identifiers;
@@ -32,13 +32,13 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool includeUserManagedAssetsRelPath; // @synthesize includeUserManagedAssetsRelPath=_includeUserManagedAssetsRelPath;
 @property(readonly, nonatomic) _Bool legacyExtensionPolicy; // @synthesize legacyExtensionPolicy=_legacyExtensionPolicy;
 @property(readonly, nonatomic) _Bool legacyPersonaPolicy; // @synthesize legacyPersonaPolicy=_legacyPersonaPolicy;
 @property(readonly, nonatomic) unsigned long long privateFlags; // @synthesize privateFlags=_privateFlags;
 @property(readonly, nonatomic) NSUUID *internalUUID; // @synthesize internalUUID=_internalUUID;
 @property(readonly, nonatomic) _Bool fuzzyMatchInternalUUID; // @synthesize fuzzyMatchInternalUUID=_fuzzyMatchInternalUUID;
 @property(readonly, nonatomic) _Bool fuzzyMatchTransient; // @synthesize fuzzyMatchTransient=_fuzzyMatchTransient;
-@property(readonly, nonatomic) _Bool includeLinks; // @synthesize includeLinks=_includeLinks;
 @property(readonly, nonatomic) _Bool expectSingleResult; // @synthesize expectSingleResult=_expectSingleResult;
 @property(readonly, nonatomic) _Bool includeUnowned; // @synthesize includeUnowned=_includeUnowned;
 @property(readonly, nonatomic) _Bool transient; // @synthesize transient=_transient;

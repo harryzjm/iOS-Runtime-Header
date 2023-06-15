@@ -7,6 +7,7 @@
 #import <TextInput/TIKeyboardOutput.h>
 
 @interface TIKeyboardOutput (UIKBExtras)
-- (void)copyTo:(id)arg1;
+@property(readonly, nonatomic, getter=_isEmpty) _Bool _empty;
+- (void)_copyTo:(id)arg1;
 @end
 

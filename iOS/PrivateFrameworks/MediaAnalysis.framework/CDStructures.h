@@ -68,8 +68,36 @@ struct CAStreamBasicDescription {
     unsigned int _field9;
 };
 
+struct CF<CGImage *> {
+    struct CGImage *value_;
+};
+
+struct CF<CGImageDestination *> {
+    struct CGImageDestination *value_;
+};
+
+struct CF<CMPhotoCompressionSession *> {
+    struct CMPhotoCompressionSession *value_;
+};
+
+struct CF<CMPhotoDecompressionContainer *> {
+    struct CMPhotoDecompressionContainer *value_;
+};
+
+struct CF<CMPhotoDecompressionSession *> {
+    struct CMPhotoDecompressionSession *value_;
+};
+
+struct CF<OpaqueVTPixelTransferSession *> {
+    struct OpaqueVTPixelTransferSession *value_;
+};
+
 struct CF<__CVBuffer *> {
     struct __CVBuffer *value_;
+};
+
+struct CF<__CVPixelBufferPool *> {
+    struct __CVPixelBufferPool *value_;
 };
 
 struct CGAffineTransform {
@@ -80,6 +108,10 @@ struct CGAffineTransform {
     double tx;
     double ty;
 };
+
+struct CGImage;
+
+struct CGImageDestination;
 
 struct CGPoint {
     double x;
@@ -105,6 +137,12 @@ struct CLLocationCoordinate2D {
     double _field1;
     double _field2;
 };
+
+struct CMPhotoCompressionSession;
+
+struct CMPhotoDecompressionContainer;
+
+struct CMPhotoDecompressionSession;
 
 struct DSPSplitComplex {
     float *realp;
@@ -385,11 +423,11 @@ struct SMPTETime {
 };
 
 struct Scaler {
-    struct __CVPixelBufferPool *pool_;
+    struct CF<__CVPixelBufferPool *> pool_;
     int width_;
     int height_;
-    struct CGRect crop_rect_;
-    struct OpaqueVTPixelTransferSession *sw_scaler_;
+    unsigned int format_;
+    struct CF<OpaqueVTPixelTransferSession *> transfer_session_;
 };
 
 struct Translation {
@@ -446,6 +484,12 @@ struct atomic<bool> {
     } __a_;
 };
 
+struct atomic<int> {
+    struct __cxx_atomic_impl<int, std::__cxx_atomic_base_impl<int>> {
+        _Atomic int __a_value;
+    } __a_;
+};
+
 struct layout<double, 6L, 1L, dlib::memory_manager_stateless_kernel_1<char>, 1> {
     double _field1[6];
 };
@@ -457,6 +501,20 @@ struct mach_timebase_info {
 
 struct matrix<double, 6L, 1L, dlib::memory_manager_stateless_kernel_1<char>, dlib::row_major_layout> {
     struct layout<double, 6L, 1L, dlib::memory_manager_stateless_kernel_1<char>, 1> _field1;
+};
+
+struct set<unsigned long, std::less<unsigned long>, std::allocator<unsigned long>> {
+    struct __tree<unsigned long, std::less<unsigned long>, std::allocator<unsigned long>> {
+        void *_field1;
+        struct __compressed_pair<std::__tree_end_node<std::__tree_node_base<void *>*>, std::allocator<std::__tree_node<unsigned long, void *>>> {
+            struct __tree_end_node<std::__tree_node_base<void *>*> {
+                void *_field1;
+            } _field1;
+        } _field2;
+        struct __compressed_pair<unsigned long, std::less<unsigned long>> {
+            unsigned long long _field1;
+        } _field3;
+    } _field1;
 };
 
 struct tplTracker_resampler_context;
@@ -520,6 +578,12 @@ typedef struct {
 typedef struct {
     MISSING_TYPE *columns[4];
 } CDStruct_14d5dc5e;
+
+typedef struct {
+    unsigned int *list;
+    unsigned long long count;
+    unsigned long long size;
+} CDStruct_9f2792e4;
 
 typedef struct {
     float *list;
@@ -588,6 +652,20 @@ typedef struct array<float, 6UL> {
 typedef struct matrix<double, 6L, 1L, dlib::memory_manager_stateless_kernel_1<char>, dlib::row_major_layout> {
     struct layout<double, 6L, 1L, dlib::memory_manager_stateless_kernel_1<char>, 1> _field1;
 } matrix_116be4a2;
+
+typedef struct set<unsigned long, std::less<unsigned long>, std::allocator<unsigned long>> {
+    struct __tree<unsigned long, std::less<unsigned long>, std::allocator<unsigned long>> {
+        void *_field1;
+        struct __compressed_pair<std::__tree_end_node<std::__tree_node_base<void *>*>, std::allocator<std::__tree_node<unsigned long, void *>>> {
+            struct __tree_end_node<std::__tree_node_base<void *>*> {
+                void *_field1;
+            } _field1;
+        } _field2;
+        struct __compressed_pair<unsigned long, std::less<unsigned long>> {
+            unsigned long long _field1;
+        } _field3;
+    } _field1;
+} set_a5418947;
 
 typedef struct vector<espresso_buffer_t, std::allocator<espresso_buffer_t>> {
     CDStruct_183601bc *__begin_;

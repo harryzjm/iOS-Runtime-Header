@@ -23,11 +23,11 @@
 
 - (void).cxx_destruct;
 - (id)init;
-- (id)activityDescriptorContentStatesAndReturnError:(id *)arg1;
-- (id)activityDescriptorsAndReturnError:(id *)arg1;
-- (id)activityDescriptorFor:(id)arg1;
+- (id)activityDescriptorContentStatesWithError:(id *)arg1;
+- (id)subscribeWithOptions:(id)arg1 error:(id *)arg2;
+- (id)activityDescriptorForIdentifier:(id)arg1;
+- (id)activityDescriptorsWithError:(id *)arg1;
 - (void)unsubscribe;
-- (_Bool)subscribeWithOptions:(id)arg1 error:(id *)arg2;
 
 @end
 

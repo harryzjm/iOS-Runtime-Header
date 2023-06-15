@@ -21,7 +21,6 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (void)viewWillLayoutSubviews;
 - (void)viewDidLoad;
-- (void)viewWillAppear:(_Bool)arg1;
 - (void)loadView;
 - (id)initWithCoder:(id)arg1;
 

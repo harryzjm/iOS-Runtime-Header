@@ -13,14 +13,13 @@ __attribute__((visibility("hidden")))
 {
     long long _tracklistAction;
     MPSectionedCollection *_tracks;
-    double _networkingTime;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) double networkingTime; // @synthesize networkingTime=_networkingTime;
 @property(readonly, copy, nonatomic) MPSectionedCollection *tracks; // @synthesize tracks=_tracks;
 @property(readonly, nonatomic) long long tracklistAction; // @synthesize tracklistAction=_tracklistAction;
-- (id)initWithTracks:(id)arg1 tracklistAction:(long long)arg2 networkingTime:(double)arg3;
+- (id)description;
+- (id)initWithTracks:(id)arg1 tracklistAction:(long long)arg2;
 
 @end
 

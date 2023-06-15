@@ -6,11 +6,13 @@
 
 #import <SearchFoundation/NSObject-Protocol.h>
 
-@class NSData, NSDictionary;
+@class NSData, NSDictionary, SFColor;
 
 @protocol SFColor <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property(retain, nonatomic) SFColor *darkModeColor;
+@property(nonatomic) int colorTintStyle;
 @property(nonatomic) double alphaComponent;
 @property(nonatomic) double blueComponent;
 @property(nonatomic) double greenComponent;

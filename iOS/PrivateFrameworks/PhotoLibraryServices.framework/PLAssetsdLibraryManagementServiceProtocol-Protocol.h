@@ -9,6 +9,8 @@
 @class NSData, NSURL;
 
 @protocol PLAssetsdLibraryManagementServiceProtocol <NSObject>
+- (void)filesystemSizeForLibraryURL:(NSURL *)arg1 reply:(void (^)(unsigned long long, unsigned long long, unsigned long long, unsigned long long, NSError *))arg2;
+- (void)getPhotosXPCEndpointWithReply:(void (^)(_Bool, NSXPCListenerEndpoint *, NSError *))arg1;
 - (void)resetSyndicationLibraryWithReply:(void (^)(_Bool, NSError *))arg1;
 - (void)closePhotoLibraryAtURL:(NSURL *)arg1 reply:(void (^)(_Bool, NSError *))arg2;
 - (void)closeAndDeletePhotoLibraryAtURL:(NSURL *)arg1 reply:(void (^)(_Bool, NSError *))arg2;

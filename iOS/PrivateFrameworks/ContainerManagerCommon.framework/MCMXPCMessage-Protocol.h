@@ -7,10 +7,10 @@
 #import <ContainerManagerCommon/NSObject-Protocol.h>
 
 @class NSObject;
-@protocol MCMContext, MCMXPCMessage, OS_xpc_object;
+@protocol MCMCommandContext, MCMXPCMessage, OS_xpc_object;
 
 @protocol MCMXPCMessage <NSObject>
-+ (id <MCMXPCMessage>)xpcMessageFromXPCObject:(NSObject<OS_xpc_object> *)arg1 context:(id <MCMContext>)arg2 error:(unsigned long long *)arg3;
++ (id <MCMXPCMessage>)xpcMessageFromXPCObject:(NSObject<OS_xpc_object> *)arg1 context:(id <MCMCommandContext>)arg2 error:(unsigned long long *)arg3;
 @property(readonly, nonatomic) unsigned long long command;
 @property(readonly, nonatomic) unsigned int disposition;
 @property(readonly, nonatomic) unsigned int platform;

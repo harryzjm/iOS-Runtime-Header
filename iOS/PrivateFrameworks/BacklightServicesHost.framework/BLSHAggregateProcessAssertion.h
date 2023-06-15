@@ -22,16 +22,15 @@ __attribute__((visibility("hidden")))
     RBSProcessIdentity *_processIdentity;
 }
 
-+ (void)purgeForProcessIdentity:(id)arg1;
 + (id)classLock_aggregateForProcessIdentity:(id)arg1 shouldCreate:(_Bool)arg2;
-+ (id)aggregateForProcessIdentity:(id)arg1 shouldCreate:(_Bool)arg2;
-+ (id)aggregateForProcessIdentity:(id)arg1;
++ (void)invalidateAggregatedAssertion:(id)arg1;
++ (void)acquireAggregatedAssertion:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) RBSProcessIdentity *processIdentity; // @synthesize processIdentity=_processIdentity;
 @property(readonly, copy) NSString *debugDescription;
 - (struct os_state_data_s *)stateDataWithHints:(struct os_state_hints_s *)arg1;
 - (void)invalidate;
-- (void)invalidateAggregatedAssertion:(id)arg1;
+- (_Bool)invalidateAggregatedAssertion:(id)arg1;
 - (_Bool)isCurrentRBSAssertion:(id)arg1;
 - (void)acquireAggregatedAssertion:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)dealloc;

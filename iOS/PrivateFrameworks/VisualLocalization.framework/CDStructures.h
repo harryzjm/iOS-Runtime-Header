@@ -12,6 +12,15 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
+struct _GEOContourLinesKey {
+    unsigned int z:6;
+    unsigned int x:26;
+    unsigned int y:26;
+    unsigned int pixelSize:4;
+    unsigned int units:8;
+    unsigned int padding:50;
+};
+
 struct _GEOFlyoverKey {
     unsigned int z:6;
     unsigned int x:26;
@@ -27,7 +36,15 @@ struct _GEOGloriaQuadIDTileKey {
     unsigned int z:6;
     unsigned int quadKey:64;
     unsigned int type:14;
-    unsigned int padding:36;
+    unsigned int padding:4;
+    union {
+        struct {
+            unsigned int mcc:10;
+            unsigned int mnc:10;
+            unsigned int padding:12;
+        } cellularInfo;
+        unsigned int unused;
+    } typeSpecificInfo;
 };
 
 struct _GEOIdentifiedResourceKey {
@@ -36,6 +53,17 @@ struct _GEOIdentifiedResourceKey {
     unsigned char type;
     unsigned int supportsASTC:1;
     unsigned int padding:39;
+};
+
+struct _GEOLiveTileKey {
+    unsigned int z:6;
+    unsigned int x:26;
+    unsigned int y:26;
+    unsigned int type:14;
+    unsigned int pixelSize:4;
+    unsigned int textScale:4;
+    unsigned int domain:4;
+    unsigned int padding:36;
 };
 
 struct _GEOMuninMeshKey {
@@ -61,6 +89,13 @@ struct _GEORegionalResourceKey {
     unsigned int textScale:8;
     unsigned int forceRefetch:1;
     unsigned int padding:57;
+};
+
+struct _GEORoadSelectionKey {
+    unsigned int z:6;
+    unsigned int x:25;
+    unsigned int y:25;
+    unsigned int roadId:64;
 };
 
 struct _GEOS2TileKey {
@@ -103,6 +138,8 @@ struct _GEOTileKey {
         struct _GEOFlyoverKey flyover;
         struct _GEOTransitLineSelectionKey transitLineSelection;
         struct _GEOPolygonSelectionKey polygonSelection;
+        struct _GEORoadSelectionKey roadSelection;
+        struct _GEOContourLinesKey contourLines;
         struct _GEOTileOverlayKey tileOverlay;
         struct _GEOIdentifiedResourceKey identifiedResource;
         struct _GEOMuninMeshKey muninMesh;
@@ -110,6 +147,7 @@ struct _GEOTileKey {
         struct _GEOVisualLocalizationMetadataKey visualLocalizationMetadata;
         struct _GEOVisualLocalizationDataKey visualLocalizationData;
         struct _GEOS2TileKey s2Tile;
+        struct _GEOLiveTileKey liveTile;
     } ;
 };
 
@@ -175,6 +213,8 @@ struct list<VLLocalizationDataKey, std::allocator<VLLocalizationDataKey>> {
     } __size_alloc_;
 };
 
+struct vl_tile_t;
+
 #pragma mark Typedef'd Structures
 
 typedef struct {
@@ -208,29 +248,39 @@ typedef struct {
     double *points3d;
     float *points2d;
     int *inlier_indices;
+    short *inlier_number;
+    short *slam_pt3s_inlier_idx;
+    float gravity[3];
+    int localized;
+    int status_ps;
+    float *solver_conf;
+    float *fused_conf;
+    int num_confs;
+    int num_inliers;
+    int num_keypoints;
+    int num_tracks;
+    int num_matches;
+    struct vl_tile_t *tile;
+    char *uuid;
+    struct *result_poses;
+    int *result_status;
+    int num_frame;
     double slam_origin[6];
-    float *slam_trks;
-    char *slam_trks_desc;
-    short *slam_trks_obs;
-    float *slam_trks_2d;
-    short *slam_trks_img_idx;
+    float *slam_pt3s;
+    char *slam_pt3_desc;
+    int desc_dim;
+    float *slam_tracks;
+    short *slam_tracks_img_idx;
+    short *slam_tracks_len;
+    float *slam_poses;
+    double *slam_time_stamps;
     int *vio_status;
     float *vio_poses;
     float *K;
     float *distortion;
-    float *solver_conf;
-    float *fused_conf;
-    float gravity[3];
-    int num_keypoints;
-    int num_tracks;
-    int num_matches;
-    int num_inliers;
-    int num_inliers_gt;
-    int num_solutions;
-    int status_ps;
-    int num_slam_tracks;
-    int num_frame;
-    int desc_dim;
+    int slam_keyframe;
+    int num_slam_pt3s;
+    int start_frame;
     double t_kpts;
     double t_kpts_pyr;
     double t_kpts_det;
@@ -242,6 +292,7 @@ typedef struct {
     double t_match;
     double t_match_sss;
     double t_match_filter;
+    double t_slam_tracker;
     double t_pose;
     double t_pose_score_filter;
     double t_pose_score_vote;
@@ -253,8 +304,7 @@ typedef struct {
     double t_pose_referee;
     double t_pose_fuse;
     double t_total;
-    CDStruct_4c217994 tile;
     long long tracks_file_size;
     int peak_mem_usage;
-} CDStruct_8259f036;
+} CDStruct_5dcdcb60;
 

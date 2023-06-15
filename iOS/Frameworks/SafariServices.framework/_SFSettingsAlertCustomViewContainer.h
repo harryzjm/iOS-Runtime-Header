@@ -6,16 +6,22 @@
 
 #import <UIKit/UIView.h>
 
-@class NSString, _SFSettingsAlertItem, _SFSettingsAlertItemBackgroundView;
+@class NSAttributedString, NSString, UIImage, _SFSettingsAlertItem, _SFSettingsAlertItemBackgroundView;
 @protocol SFSettingsAlertItemViewDelegate;
 
 __attribute__((visibility("hidden")))
 @interface _SFSettingsAlertCustomViewContainer : UIView
 {
     _SFSettingsAlertItemBackgroundView *_backgroundView;
-    _Bool _enabled;
+    _Bool selected;
+    _Bool enabled;
     _Bool _hidesSeparator;
-    id <SFSettingsAlertItemViewDelegate> _delegate;
+    NSString *text;
+    NSAttributedString *attributedText;
+    NSString *detailText;
+    NSAttributedString *attributedDetailText;
+    UIImage *image;
+    id <SFSettingsAlertItemViewDelegate> delegate;
     UIView *_contentView;
     _SFSettingsAlertItem *_item;
     long long _defaultBackgroundMode;
@@ -26,8 +32,14 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool hidesSeparator; // @synthesize hidesSeparator=_hidesSeparator;
 @property(nonatomic) __weak _SFSettingsAlertItem *item; // @synthesize item=_item;
 @property(readonly, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
-@property(nonatomic) __weak id <SFSettingsAlertItemViewDelegate> delegate; // @synthesize delegate=_delegate;
-@property(nonatomic, getter=isEnabled) _Bool enabled; // @synthesize enabled=_enabled;
+@property(nonatomic) __weak id <SFSettingsAlertItemViewDelegate> delegate; // @synthesize delegate;
+@property(nonatomic, getter=isEnabled) _Bool enabled; // @synthesize enabled;
+@property(nonatomic, getter=isSelected) _Bool selected; // @synthesize selected;
+@property(retain, nonatomic) UIImage *image; // @synthesize image;
+@property(copy, nonatomic) NSAttributedString *attributedDetailText; // @synthesize attributedDetailText;
+@property(copy, nonatomic) NSString *detailText; // @synthesize detailText;
+@property(copy, nonatomic) NSAttributedString *attributedText; // @synthesize attributedText;
+@property(copy, nonatomic) NSString *text; // @synthesize text;
 @property(readonly, nonatomic) long long backgroundMode;
 - (id)initWithContentView:(id)arg1;
 

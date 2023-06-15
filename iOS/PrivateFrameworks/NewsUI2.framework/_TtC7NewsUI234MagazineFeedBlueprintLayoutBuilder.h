@@ -13,8 +13,7 @@
     MISSING_TYPE *feedLayoutSolver;
     MISSING_TYPE *decorationProviderFactory;
     MISSING_TYPE *baseStyler;
-    MISSING_TYPE *groupTitleViewLayoutAttributesFactory;
-    MISSING_TYPE *sectionFooterViewLayoutAttributesFactory;
+    MISSING_TYPE *embeddedSupplementaryBuilder;
 }
 
 @end

@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(readonly, nonatomic) MLModel *model; // @synthesize model=_model;
 - (id)predictionsFromInputs:(id)arg1 options:(id)arg2 error:(id *)arg3;
-- (id)predictionFromInput1:(id)arg1 stateIn:(id)arg2 detectedHistoryIn:(id)arg3 error:(id *)arg4;
+- (id)predictionFromInput1:(id)arg1 stateIn:(id)arg2 thresholdedHistoryIn:(id)arg3 detectedHistoryIn:(id)arg4 error:(id *)arg5;
 - (id)predictionFromFeatures:(id)arg1 options:(id)arg2 error:(id *)arg3;
 - (id)predictionFromFeatures:(id)arg1 error:(id *)arg2;
 - (id)initWithContentsOfURL:(id)arg1 configuration:(id)arg2 error:(id *)arg3;

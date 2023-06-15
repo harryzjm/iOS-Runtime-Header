@@ -6,10 +6,9 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class UIFocusSystem, _UIFocusEventRecognizer, _UIFocusFastScrollingRequest, _UIFocusMovementRequest;
+@class UIFocusSystem, _UIFocusEventRecognizer, _UIFocusMovementRequest;
 
 @protocol _UIFocusEventRecognizerDelegate <NSObject>
-- (void)_focusEventRecognizer:(_UIFocusEventRecognizer *)arg1 didRecognizeFastScrollingRequest:(_UIFocusFastScrollingRequest *)arg2;
 - (_Bool)_focusEventRecognizer:(_UIFocusEventRecognizer *)arg1 didRecognizeFocusMovementRequest:(_UIFocusMovementRequest *)arg2;
 - (UIFocusSystem *)_focusMovementSystemForFocusEventRecognizer:(_UIFocusEventRecognizer *)arg1;
 - (_Bool)_shouldRecognizeEventsInFocusEventRecognizer:(_UIFocusEventRecognizer *)arg1;

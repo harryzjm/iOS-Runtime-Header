@@ -9,6 +9,6 @@
 @class NSString, UIColor;
 
 @protocol _UIColorPickerColorQueueDelegate <NSObject>
-- (void)_dequeue_pickerDidSelectColor:(UIColor *)arg1 colorspace:(NSString *)arg2 isVolatile:(_Bool)arg3;
+- (void)_dequeue_pickerDidSelectColor:(UIColor *)arg1 colorSpace:(NSString *)arg2 isVolatile:(_Bool)arg3;
 @end
 

@@ -20,7 +20,6 @@
 @property(nonatomic) CDStruct_8e0628e6 intrinsics; // @synthesize intrinsics=_intrinsics;
 @property(nonatomic) CDStruct_14d5dc5e pose; // @synthesize pose=_pose;
 @property(nonatomic) CDStruct_14d5dc5e transform; // @synthesize transform;
-- (id)initWithDictionary:(id)arg1;
 
 @end
 

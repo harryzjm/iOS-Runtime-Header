@@ -23,13 +23,16 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, getter=_scene, setter=_setScene:) __weak UIScene *_scene; // @synthesize _scene;
 - (void)findNavigatorViewControllerViewDidChangeIntrinsicContentSize:(id)arg1;
 - (void)findNavigatorViewControllerDidRequestDismissal:(id)arg1;
+- (_Bool)findNavigatorShouldDismissOnResponderChange:(id)arg1;
 - (void)_monitoredView:(id)arg1 didMoveFromSuperview:(id)arg2 toSuperview:(id)arg3;
 - (void)_monitoredView:(id)arg1 willMoveFromSuperview:(id)arg2 toSuperview:(id)arg3;
 - (_Bool)_monitorsView:(id)arg1;
 - (id)_searchableView;
-- (void)dismissFindNavigator;
+- (void)_sendPlacementUpdate;
+- (void)dismissFindNavigatorEndingActiveSession:(_Bool)arg1;
 - (void)presentFindNavigatorWithFindSession:(id)arg1 showingReplace:(_Bool)arg2;
 @property(readonly, nonatomic, getter=isFindNavigatorVisible) _Bool findNavigatorVisible;
+- (_Bool)_keyboardIsPreservingFindNavigatorAsRestorableResponder;
 - (id)initWithScene:(id)arg1;
 
 // Remaining properties

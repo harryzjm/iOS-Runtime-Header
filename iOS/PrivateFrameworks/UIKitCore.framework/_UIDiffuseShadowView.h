@@ -6,16 +6,21 @@
 
 #import "UIView.h"
 
+@class UIBezierPath;
+
 __attribute__((visibility("hidden")))
 @interface _UIDiffuseShadowView : UIView
 {
+    double _intensity;
+    UIBezierPath *_path;
 }
 
+- (void).cxx_destruct;
+@property(copy, nonatomic) UIBezierPath *path; // @synthesize path=_path;
+@property(nonatomic) double intensity; // @synthesize intensity=_intensity;
 - (void)_updateForCurrentTraits;
-- (void)traitCollectionDidChange:(id)arg1;
 @property(nonatomic) struct CGSize offset;
 @property(nonatomic) double radius;
-@property(nonatomic) double intensity;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

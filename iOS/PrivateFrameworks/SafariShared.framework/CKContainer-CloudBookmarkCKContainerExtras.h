@@ -10,7 +10,9 @@
 + (id)safari_cloudExtensionsContainer;
 + (id)safari_cloudSettingsContainer;
 + (id)safari_cloudTabsContainer;
++ (id)safari_historyManateeContainer;
++ (id)safari_historyContainer;
 + (id)safari_cloudBookmarksContainer;
-+ (id)_safari_containerWithIdentifier:(id)arg1 encryptionServiceName:(id)arg2 environment:(long long)arg3;
++ (id)_safari_containerWithIdentifier:(id)arg1 encryptionServiceName:(id)arg2 environment:(long long)arg3 useApplicationBundleIdentifierOverride:(_Bool)arg4;
 @end
 

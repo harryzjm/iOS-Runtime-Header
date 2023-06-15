@@ -10,6 +10,7 @@
 @protocol MTLComputePipelineState, MTLDevice, MTLPipelineCache, MTLRenderPipelineState;
 
 @protocol MTLPipelineLibrarySPI <MTLPipelineLibrary>
+@property(readonly) NSArray *metallibPaths;
 @property(readonly, nonatomic) id <MTLPipelineCache> functionCache;
 @property(readonly, nonatomic) id <MTLPipelineCache> pipelineCache;
 @property _Bool disableRunTimeCompilation;

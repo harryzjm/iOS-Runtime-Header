@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
 - (void)animatePopTransition;
 - (void)animatePushTransition;
 - (_Bool)isInteractive;
-- (id)init;
+- (id)initWithEndPoint:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

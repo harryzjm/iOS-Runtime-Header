@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
-@class UIButton, UIImage, UIImageView, UILabel;
+@class NSObject, STUsageReport, UIButton, UIImage, UIImageView, UILabel;
+@protocol STRootViewModelCoordinator;
 
 __attribute__((visibility("hidden")))
 @interface STDatePickerBar : UIView
@@ -15,13 +16,20 @@ __attribute__((visibility("hidden")))
     UIButton *_leftArrowButton;
     UIButton *_rightArrowButton;
     UIImageView *_bottomBorderLine;
+    STUsageReport *_usageReport;
+    NSObject<STRootViewModelCoordinator> *_coordinator;
 }
 
 - (void).cxx_destruct;
+@property(retain) NSObject<STRootViewModelCoordinator> *coordinator; // @synthesize coordinator=_coordinator;
+@property(retain) STUsageReport *usageReport; // @synthesize usageReport=_usageReport;
 @property(readonly) UIImageView *bottomBorderLine; // @synthesize bottomBorderLine=_bottomBorderLine;
 @property(readonly) UIButton *rightArrowButton; // @synthesize rightArrowButton=_rightArrowButton;
 @property(readonly) UIButton *leftArrowButton; // @synthesize leftArrowButton=_leftArrowButton;
 @property(readonly) UILabel *dateLabel; // @synthesize dateLabel=_dateLabel;
+- (void)_rightDatePickerBarButtonTapped:(id)arg1;
+- (void)_leftDatePickerBarButtonTapped:(id)arg1;
+- (void)updateWithCoordinator:(id)arg1;
 @property(readonly) UIImage *horizontalLineImage;
 - (void)_configureArrowButton:(id)arg1 isLeft:(_Bool)arg2 isLayoutDirectionRightToLeft:(_Bool)arg3;
 - (void)_stDatePickerBarCommonInit;

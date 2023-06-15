@@ -7,15 +7,13 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (BRCBookmarkAdditions)
-+ (id)unsaltedBookmarkDataWithRelativePath:(id)arg1 serverZoneMangledID:(id)arg2;
-+ (id)bookmarkDataWithRelativePath:(id)arg1 serverZone:(id)arg2;
 + (id)bookmarkDataWithDocumentID:(id)arg1 serverZone:(id)arg2;
-+ (id)itemResolutionStringWithRelativePath:(id)arg1;
 + (id)itemResolutionStringWithDocumentID:(id)arg1;
 + (id)bookmarkDataWithItemResolutionString:(id)arg1 serverZone:(id)arg2;
 + (id)unsaltedBookmarkDataWithItemResolutionString:(id)arg1 serverZoneMangledID:(id)arg2;
 + (id)bookmarkDataWithItemResolutionString:(id)arg1 serverZoneMangledID:(id)arg2 saltAccountDSID:(id)arg3;
 + (id)brc_groupDownloadStagePath;
++ (id)_br_currentMobileDocumentsDirForLegacy;
 + (id)br_currentMobileDocumentsDirWithRefreshCache:(_Bool)arg1;
 + (id)br_currentMobileDocumentsDir;
 + (id)brc_locateUbiquityTokenSaltInOldAccountPath:(id)arg1;

@@ -9,6 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface _TtC8VideosUI19OfferListLockupCell
 {
+    MISSING_TYPE *layout;
     MISSING_TYPE *enableHighlight;
     MISSING_TYPE *containerView;
 }

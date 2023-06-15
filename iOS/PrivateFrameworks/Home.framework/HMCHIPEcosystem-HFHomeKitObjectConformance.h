@@ -9,6 +9,7 @@
 @class NSString, NSUUID;
 
 @interface HMCHIPEcosystem (HFHomeKitObjectConformance)
++ (CDUnknownBlockType)hf_ecosystemComparator;
 @property(readonly, copy, nonatomic) NSUUID *uniqueIdentifier;
 
 // Remaining properties

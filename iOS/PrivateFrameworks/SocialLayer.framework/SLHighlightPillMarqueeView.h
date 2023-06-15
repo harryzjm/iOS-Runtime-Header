@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class CALayer, NSLayoutConstraint, SLReplicatorView;
 
@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     _Bool _marqueeAnimationIsActive;
     _Bool _endingPositionConstraintsShouldBeActive;
     double _marqueeClippingWidth;
+    long long _replicatedContentAlignment;
     UIView *_pillView;
     SLReplicatorView *_replicatorView;
     NSLayoutConstraint *_ourWidthConstraint;
@@ -36,6 +37,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool marqueeAnimationIsActive; // @synthesize marqueeAnimationIsActive=_marqueeAnimationIsActive;
 @property(retain, nonatomic) SLReplicatorView *replicatorView; // @synthesize replicatorView=_replicatorView;
 @property(retain, nonatomic) UIView *pillView; // @synthesize pillView=_pillView;
+@property(nonatomic) long long replicatedContentAlignment; // @synthesize replicatedContentAlignment=_replicatedContentAlignment;
 @property(nonatomic) double marqueeClippingWidth; // @synthesize marqueeClippingWidth=_marqueeClippingWidth;
 @property(nonatomic) _Bool marqueeEnabled; // @synthesize marqueeEnabled=_marqueeEnabled;
 - (void)_deactivateMarqueeAnimationIfNecessary;

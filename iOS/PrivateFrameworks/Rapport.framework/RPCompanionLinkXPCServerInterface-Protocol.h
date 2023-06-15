@@ -17,6 +17,8 @@
 - (void)companionLinkRegisterRequestID:(NSString *)arg1 options:(NSDictionary *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)companionLinkDeregisterProfileID:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)companionLinkRegisterProfileID:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)companionLinkRemoveLocalDeviceAsContextCollector:(void (^)(NSError *))arg1;
+- (void)companionLinkSetLocalDeviceAsContextCollector:(void (^)(NSError *))arg1;
 - (void)companionLinkCreateDeviceToEndpointMappingForDeviceID:(NSString *)arg1 completion:(void (^)(NSUUID *, NSError *))arg2;
 - (void)companionLinkTriggerEnhancedDiscovery:(NSString *)arg1 useCase:(unsigned int)arg2 completion:(void (^)(NSError *))arg3;
 - (void)companionLinkUpdateClient:(RPCompanionLinkClient *)arg1;

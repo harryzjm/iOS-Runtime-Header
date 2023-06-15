@@ -9,6 +9,6 @@
 @class MRUArtworkView, UIImage;
 
 @protocol MRUArtworkViewObserver <NSObject>
-- (void)artworkView:(MRUArtworkView *)arg1 artworkImageDidChange:(UIImage *)arg2;
+- (void)artworkView:(MRUArtworkView *)arg1 didChangeArtworkImage:(UIImage *)arg2;
 @end
 

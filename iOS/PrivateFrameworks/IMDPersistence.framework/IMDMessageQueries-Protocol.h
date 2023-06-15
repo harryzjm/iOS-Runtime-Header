@@ -9,12 +9,16 @@
 @class NSArray, NSAttributedString, NSDate, NSPredicate, NSString;
 
 @protocol IMDMessageQueries <NSObject>
+- (void)updateMessagesSyncedSyndicationRangesForGUIDs:(NSArray *)arg1 toStatus:(long long)arg2;
+- (void)updateMessagesSyncStatusTo:(long long)arg1 forGUIDs:(NSArray *)arg2;
 - (void)storeRecoverableMessagePartWithBody:(NSAttributedString *)arg1 forMessageWithGUID:(NSString *)arg2 deleteDate:(NSDate *)arg3;
+- (void)updateRecoverableMessageSyncState:(long long)arg1 forMessageGUIDs:(NSArray *)arg2;
 - (void)updateRecoverableMessageSyncState:(long long)arg1 forMessageRowID:(long long)arg2 onPartIndex:(long long)arg3;
 - (void)clearRecoverableMessageTombStones;
 - (NSArray *)recoverableMessagesMetadataPendingCloudKitDeleteWithLimit:(long long)arg1;
 - (NSArray *)recoverableMessagesMetadataPendingCloudKitSaveWithLimit:(long long)arg1;
 - (void)permanentlyDeleteRecoverableMessagesInChatsWithGUIDs:(NSArray *)arg1 completionHandler:(void (^)(NSArray *))arg2;
+- (void)deleteJunkMessagesOlderThanDays:(long long)arg1;
 - (void)deleteRecoverableMessagesOlderThanDays:(long long)arg1;
 - (void)moveMessageRecordsToRecoveryForMessageGUIDs:(NSArray *)arg1 deleteDate:(NSDate *)arg2;
 - (void)updateMessageSyndicationRanges:(NSString *)arg1 shouldHideFromSyndication:(_Bool)arg2;

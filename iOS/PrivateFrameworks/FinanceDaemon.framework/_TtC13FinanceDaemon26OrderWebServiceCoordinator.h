@@ -14,12 +14,11 @@
     MISSING_TYPE *store;
     MISSING_TYPE *activityScheduler;
     MISSING_TYPE *orderWebServiceClientProvider;
+    MISSING_TYPE *prismWebServiceClientProvider;
     MISSING_TYPE *pushNotificationCoordinator;
+    MISSING_TYPE *coreAnalytics;
+    MISSING_TYPE *$__lazy_storage_$_taskScheduler;
     MISSING_TYPE *remoteChangeNotificationTask;
-    MISSING_TYPE *pendingTasksRetryState;
-    MISSING_TYPE *isPerformingPendingTasks;
-    MISSING_TYPE *needsSchedulePendingTasks;
-    MISSING_TYPE *schedulePendingTasksTask;
 }
 
 @end

@@ -11,11 +11,12 @@
 @protocol SBSystemApertureLayoutCustomizing <NSObject>
 
 @optional
-@property(readonly, nonatomic) _Bool overridesConcentricPaddingInCompactLayout;
+@property(readonly, nonatomic) long long systemApertureLayoutCustomizingOptions;
 @property(readonly, nonatomic) long long customLayoutRequestingSpecialFlowerBoundsResizingAnimation;
 @property(readonly, nonatomic) long long systemApertureCustomLayout;
+- (_Bool)isFixedInOrientation;
 - (_Bool)isRequestingLayoutUpdateForHostedClient;
-- (_Bool)isRequestingAnimatedDynamicLayoutUpdateForHostedClient;
-- (double)concentricPaddingOverrideForCompactLayoutOfView:(UIView *)arg1;
+- (double)concentricPaddingOverrideForView:(UIView *)arg1 inLayoutMode:(long long)arg2;
+- (_Bool)overridesConcentricPaddingForView:(UIView *)arg1 inLayoutMode:(long long)arg2;
 @end
 

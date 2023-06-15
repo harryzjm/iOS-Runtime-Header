@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 @interface OSLogDevice : NSObject
 {
     long long _devType;
-    void *_mobDev;
+    void *_mobileDeviceRef;
     SimDevice *_simDev;
     NSString *_uid;
 }
@@ -20,10 +20,11 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSString *uid; // @synthesize uid=_uid;
 @property(retain, nonatomic) SimDevice *simDev; // @synthesize simDev=_simDev;
-@property(nonatomic) void *mobDev; // @synthesize mobDev=_mobDev;
+@property(nonatomic) void *mobileDeviceRef; // @synthesize mobileDeviceRef=_mobileDeviceRef;
 @property(nonatomic) long long devType; // @synthesize devType=_devType;
+- (void)dealloc;
 - (id)initWithSimualatedDevice:(id)arg1;
-- (id)initWithMobileDevice:(void *)arg1 andID:(id)arg2;
+- (id)initWithMobileDevice:(void *)arg1 andUDID:(id)arg2;
 - (id)description;
 - (id)init;
 

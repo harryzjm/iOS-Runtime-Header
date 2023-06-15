@@ -11,7 +11,9 @@
 
 @protocol CKSearchControllerDelegate <NSObject>
 - (UICollectionViewCell<CKSearchResultCell> *)searchController:(CKSearchController *)arg1 cellForResult:(CKSpotlightQueryResult *)arg2;
+- (_Bool)searchControllerCanShowSectionHeader:(CKSearchController *)arg1;
 - (_Bool)shouldInsetResultsForSearchController:(CKSearchController *)arg1;
+- (NSArray *)searchTokenFiltersForSearchController:(CKSearchController *)arg1;
 - (double)widthForDeterminingAvatarVisibility;
 - (void)deleteMessageItem:(IMMessageItem *)arg1;
 - (void)deleteTransferGUID:(NSString *)arg1;
@@ -25,6 +27,7 @@
 - (void)searchControllerContentsDidChange:(CKSearchController *)arg1;
 
 @optional
+- (NSArray *)contextMenusForConversation:(CKConversation *)arg1;
 - (void)deleteChatItemWithTransferGUID:(NSString *)arg1 fromMessageItem:(IMMessageItem *)arg2;
 - (NSArray *)searchControllerChatGUIDsForDetailsSearch:(CKSearchController *)arg1;
 @end

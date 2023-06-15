@@ -25,8 +25,10 @@ __attribute__((visibility("hidden")))
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
+    _Bool _isHidden;
     struct {
         unsigned int has_transitId:1;
+        unsigned int has_isHidden:1;
         unsigned int read_unknownFields:1;
         unsigned int read_artworks:1;
         unsigned int read_labels:1;

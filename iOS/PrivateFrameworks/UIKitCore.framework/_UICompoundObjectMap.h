@@ -16,9 +16,12 @@ __attribute__((visibility("hidden")))
 
 + (id)compoundObjectMap;
 - (void).cxx_destruct;
+- (id)description;
+@property(readonly, nonatomic) unsigned long long count;
 - (id)deepCopy;
 - (void)performWithEach:(CDUnknownBlockType)arg1;
 - (void)removeAllMappings;
+- (void)addEntriesFromCompoundObjectMap:(id)arg1 keepingCurrentValues:(_Bool)arg2;
 - (void)setValue:(id)arg1 forObject:(id)arg2 andProperty:(id)arg3;
 - (id)valueForObject:(id)arg1 andProperty:(id)arg2;
 - (id)init;

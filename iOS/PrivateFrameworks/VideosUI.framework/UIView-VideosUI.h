@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @interface UIView (VideosUI)
 - (struct CGSize)vui_sizeThatFits:(struct CGSize)arg1 layout:(id)arg2 withSizeCalculation:(CDUnknownBlockType)arg3;
 - (struct CGSize)vui_sizeThatFits:(struct CGSize)arg1 layout:(id)arg2;
-- (_Bool)vui_shouldReuseCachedSizeThatFits:(struct CGSize)arg1 previousTargetSize:(struct CGSize)arg2 newTargetSize:(struct CGSize)arg3;
+- (_Bool)vui_shouldRecomputeCachedSizeThatFits:(struct CGSize)arg1 previousTargetSize:(struct CGSize)arg2 previousTraitCollection:(id)arg3 newTargetSize:(struct CGSize)arg4;
 - (double)bottomMarginWithBaselineMargin:(double)arg1 maximumContentSizeCategory:(unsigned long long)arg2;
 - (double)bottomMarginWithBaselineMargin:(double)arg1;
 - (double)topMarginWithBaselineMargin:(double)arg1 maximumContentSizeCategory:(unsigned long long)arg2;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class MISSING_TYPE;
 
@@ -21,6 +21,9 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithCoder:(id)arg1;
+- (void)textBoxViewUpdateModelFrame:(id)arg1 modelFrame:(struct CGRect)arg2;
+- (void)textBoxViewUpdateViewFrame:(id)arg1 viewFrame:(struct CGRect)arg2;
+- (struct CGRect)textBoxViewActiveTextBoxFrame:(id)arg1;
 
 @end
 

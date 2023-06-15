@@ -6,12 +6,12 @@
 
 #import <GeoServices/NSObject-Protocol.h>
 
-@class NSData;
+@class NSArray, NSDate, NSDictionary, NSString;
 
 @protocol GEODaemonToMapsPushDaemon <NSObject>
-- (void)deleteSyncedAnalyticsIdentifier:(NSData *)arg1 completion:(void (^)(NSError *))arg2;
-- (void)setSyncedAnalyticsIdentifier:(NSData *)arg1 completion:(void (^)(NSError *))arg2;
-- (void)fetchSyncedAnalyticsIdentifierWithCompletion:(void (^)(NSArray *, NSError *))arg1;
+- (void)willExpireOfflineSubscriptionsUnlessUpdatedByDate:(NSDate *)arg1;
+- (void)expiredOfflineSubscriptions:(NSArray *)arg1 withDisplayNames:(NSDictionary *)arg2 forReason:(long long)arg3;
+- (void)finishedDownloadingOfflineSubscription:(NSString *)arg1 withDisplayName:(NSString *)arg2;
 - (void)pingWithReply:(void (^)(void))arg1;
 - (void)geoDInternalError:(long long)arg1;
 - (void)proxyAuthFailed:(long long)arg1;

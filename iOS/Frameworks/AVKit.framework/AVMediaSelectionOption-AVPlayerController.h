@@ -23,5 +23,6 @@
 @property(readonly, nonatomic) NSString *mediaRemoteIdentifier;
 @property(readonly, nonatomic) NSString *shortLocalizedDisplayName;
 @property(readonly, nonatomic) NSString *localizedDisplayName;
+@property(readonly, nonatomic) NSString *avkit_displayName;
 @end
 

@@ -8,5 +8,9 @@
 
 @protocol _NUIBoxArrangementContainer <NUIArrangementContainer>
 - (void)populateBoxArrangementCells:(void *)arg1;
+
+@optional
+- (_Bool)shouldCancelMeasurementForCompressionInAxis:(long long)arg1;
+- (_Bool)canCancelMeasurementForCompression;
 @end
 

@@ -11,6 +11,8 @@
 @protocol SVVideoPlaybackObserver <NSObject>
 
 @optional
+- (void)playbackCoordinatorFinishedLoadingVideoURL:(SVPlaybackCoordinator *)arg1;
+- (void)playbackCoordinatorStartedLoadingVideo:(SVPlaybackCoordinator *)arg1;
 - (void)playbackCoordinatorMuteStateChanged:(SVPlaybackCoordinator *)arg1;
 - (void)playbackCoordinatorStateChanged:(SVPlaybackCoordinator *)arg1;
 - (void)playbackCoordinatorPlaybackLikelyToKeepUpStateChanged:(SVPlaybackCoordinator *)arg1;

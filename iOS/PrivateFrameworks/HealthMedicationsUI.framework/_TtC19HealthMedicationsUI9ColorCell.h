@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UICollectionViewListCell.h>
+#import <UIKitCore/UICollectionViewListCell.h>
 
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
 @interface _TtC19HealthMedicationsUI9ColorCell : UICollectionViewListCell
 {
+    MISSING_TYPE *deselectionBehavior;
     MISSING_TYPE *$__lazy_storage_$_gradientView;
     MISSING_TYPE *item;
 }

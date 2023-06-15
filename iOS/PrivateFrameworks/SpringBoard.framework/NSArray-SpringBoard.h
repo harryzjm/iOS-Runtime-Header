@@ -11,6 +11,9 @@
 - (id)sb_arrayByRemovingObject:(id)arg1;
 - (id)sb_arrayByAddingOrMovingObject:(id)arg1;
 - (id)sb_arrayByInsertingOrMovingObject:(id)arg1 toIndex:(unsigned long long)arg2;
-- (id)sb_historianDescription;
+- (id)sbsa_arrayByAddingOrReplacingObjectMatchingClass:(id)arg1;
+- (id)sbsa_arrayByAddingOrReplacingObject:(id)arg1 passingTest:(CDUnknownBlockType)arg2;
+- (id)sbsa_onlyObject;
+- (id)sb_switcherModifierDebugTimelineDescription;
 @end
 

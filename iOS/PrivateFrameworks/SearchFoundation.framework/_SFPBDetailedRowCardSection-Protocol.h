@@ -10,6 +10,7 @@
 
 @protocol _SFPBDetailedRowCardSection <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
+@property(retain, nonatomic) _SFPBRichText *topText;
 @property(nonatomic) _Bool buttonItemsAreTrailing;
 @property(retain, nonatomic) _SFPBImage *trailingThumbnail;
 @property(copy, nonatomic) NSArray *buttonItems;

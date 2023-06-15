@@ -6,17 +6,17 @@
 
 #import <StatusKitAgentCore/NSObject-Protocol.h>
 
-@class NSData, NSManagedObjectContext, NSString, SKADatabaseChannel;
+@class NSData, NSManagedObjectContext, NSString, SKADatabaseChannel, SKPresencePayload;
 @protocol SKAClientConnectionRepresentable;
 
 @protocol SKAPresenceManaging <NSObject>
-- (void)createPresenceChannelForPresenceIdentifier:(NSString *)arg1 databaseContext:(NSManagedObjectContext *)arg2 completion:(void (^)(SKADatabaseChannel *, NSError *))arg3;
-- (void)findPresenceChannelForPresenceIdentifier:(NSString *)arg1 databaseContext:(NSManagedObjectContext *)arg2 completion:(void (^)(SKADatabaseChannel *, NSError *))arg3;
-- (void)findOrCreatePresenceChannelForPresenceIdentifier:(NSString *)arg1 databaseContext:(NSManagedObjectContext *)arg2 completion:(void (^)(SKADatabaseChannel *, NSError *))arg3;
+- (void)createPresenceChannelForPresenceIdentifier:(NSString *)arg1 isPersonal:(_Bool)arg2 databaseContext:(NSManagedObjectContext *)arg3 completion:(void (^)(SKADatabaseChannel *, NSError *))arg4;
+- (void)findPresenceChannelForPresenceIdentifier:(NSString *)arg1 isPersonal:(_Bool)arg2 databaseContext:(NSManagedObjectContext *)arg3 completion:(void (^)(SKADatabaseChannel *, NSError *))arg4;
+- (void)findOrCreatePresenceChannelForPresenceIdentifier:(NSString *)arg1 isPersonal:(_Bool)arg2 databaseContext:(NSManagedObjectContext *)arg3 completion:(void (^)(SKADatabaseChannel *, NSError *))arg4;
 - (void)channelReceivedIncomingPayloadUpdate:(NSData *)arg1 channel:(SKADatabaseChannel *)arg2;
-- (void)presentDevicesForPresenceIdentifier:(NSString *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
+- (void)presentDevicesForPresenceIdentifier:(NSString *)arg1 isPersonal:(_Bool)arg2 completion:(void (^)(NSArray *, NSError *))arg3;
 - (void)releaseAllPresenceAssertionsAssociatedWithClient:(id <SKAClientConnectionRepresentable>)arg1 completion:(void (^)(NSError *))arg2;
-- (void)releasePresenceAssertionForPresenceIdentifier:(NSString *)arg1 client:(id <SKAClientConnectionRepresentable>)arg2 completion:(void (^)(NSError *))arg3;
-- (void)retainPresenceAssertionForPresenceIdentifier:(NSString *)arg1 client:(id <SKAClientConnectionRepresentable>)arg2 completion:(void (^)(NSError *))arg3;
+- (void)releasePresenceAssertionForPresenceIdentifier:(NSString *)arg1 isPersonal:(_Bool)arg2 client:(id <SKAClientConnectionRepresentable>)arg3 completion:(void (^)(NSError *))arg4;
+- (void)retainPresenceAssertionForPresenceIdentifier:(NSString *)arg1 isPersonal:(_Bool)arg2 withPresencePayload:(SKPresencePayload *)arg3 client:(id <SKAClientConnectionRepresentable>)arg4 completion:(void (^)(NSError *))arg5;
 @end
 

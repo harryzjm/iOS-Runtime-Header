@@ -22,6 +22,7 @@
 - (void)deliverMessage:(EMOutgoingMessage *)arg1 usingMailDrop:(_Bool)arg2 isCancelable:(_Bool)arg3 completion:(void (^)(EMMessageDeliveryResult *))arg4;
 - (void)deleteDraftsInMailboxID:(EMMailboxObjectID *)arg1 documentID:(NSString *)arg2 previousDraftObjectID:(EMMessageObjectID *)arg3;
 - (void)scheduleAlarmForSendLaterDate:(NSDate *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)removeSendLaterDateFromMessage:(EMMessage *)arg1 draftsMailboxObjectID:(EMMailboxObjectID *)arg2 completion:(void (^)(EMMessage *))arg3;
 - (void)updateSendLaterDate:(NSDate *)arg1 message:(EMMessage *)arg2 completion:(void (^)(EMMessage *))arg3;
 - (void)saveSendLaterMessage:(EMOutgoingMessage *)arg1 sendLaterDate:(NSDate *)arg2 completion:(void (^)(EMMessage *))arg3;
 - (void)saveDraftMessage:(EMOutgoingMessage *)arg1 mailboxID:(EMMailboxObjectID *)arg2 previousDraftObjectID:(EMMessageObjectID *)arg3 completion:(void (^)(EMMessage *))arg4;

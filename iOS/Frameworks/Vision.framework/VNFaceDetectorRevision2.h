@@ -16,6 +16,8 @@ __attribute__((visibility("hidden")))
 
 + (id)configurationOptionKeysForDetectorKey;
 + (id)supportedImageSizeSetForOptions:(id)arg1 error:(id *)arg2;
++ (id)supportedComputeStageDevicesForOptions:(id)arg1 error:(id *)arg2;
++ (id)computeStagesToBindForConfigurationOptions:(id)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)purgeIntermediates;

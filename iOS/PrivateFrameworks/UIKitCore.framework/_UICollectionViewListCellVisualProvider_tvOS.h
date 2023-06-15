@@ -9,6 +9,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (void)configureFocusedFloatingContentView:(id)arg1 useSidebarListStyle:(_Bool)arg2;
 - (void)configureFocusedFloatingContentView:(id)arg1;
 - (id)accessoryManagerContainerView;
 - (_Bool)canFocusProgrammatically;

@@ -18,11 +18,14 @@ __attribute__((visibility("hidden")))
     double _duration;
     struct _NSRange _originRange;
     long long _source;
+    unsigned long long _eventAttributes;
     NSString *_notes;
     NSURL *_URL;
     NSString *_location;
 }
 
++ (id)_messageWithNaturalLanguageContext:(id)arg1 context:(id)arg2;
++ (id)_eventComponents:(id)arg1 withSuggestedTitleFromNaturalLanguageContext:(id)arg2 context:(id)arg3;
 + (id)_eventsFromIntelligentSuggestions:(id)arg1;
 + (id)_eventsFromNaturalLanguageText:(id)arg1 context:(id)arg2;
 + (id)_eventComponents:(id)arg1 matchingResult:(struct __DDResult *)arg2 context:(id)arg3;
@@ -32,6 +35,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSString *location; // @synthesize location=_location;
 @property(retain, nonatomic) NSURL *URL; // @synthesize URL=_URL;
 @property(retain, nonatomic) NSString *notes; // @synthesize notes=_notes;
+@property(nonatomic) unsigned long long eventAttributes; // @synthesize eventAttributes=_eventAttributes;
 @property(nonatomic) long long source; // @synthesize source=_source;
 @property(nonatomic) struct _NSRange originRange; // @synthesize originRange=_originRange;
 @property(nonatomic) double duration; // @synthesize duration=_duration;

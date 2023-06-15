@@ -10,8 +10,8 @@
 
 @interface _TtC6Charts18CanvasMarkRenderer : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *origin;
     MISSING_TYPE *plotSize;
+    MISSING_TYPE *coordinateSystem;
     MISSING_TYPE *layoutDirection;
     MISSING_TYPE *isRenderingToCGContext;
     MISSING_TYPE *colorCache;

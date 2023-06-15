@@ -12,6 +12,8 @@
 - (void)failedAuthenticationSessionWithID:(NSUUID *)arg1 error:(NSError *)arg2;
 - (void)completedAuthenticationSessionWithID:(NSUUID *)arg1;
 - (void)startedAuthenticationSessionWithID:(NSUUID *)arg1;
+- (void)failedToEnableDeviceForSessionID:(NSUUID *)arg1 error:(NSError *)arg2;
+- (void)enabledAuthenticationSessionWithID:(NSUUID *)arg1;
 - (void)failedUnlockWithError:(NSError *)arg1;
 - (void)completedUnlockWithDevice:(SFAutoUnlockDevice *)arg1;
 - (void)beganAttemptWithDevice:(SFAutoUnlockDevice *)arg1;

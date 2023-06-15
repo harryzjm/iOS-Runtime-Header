@@ -33,12 +33,19 @@ __attribute__((visibility("hidden")))
 + (void)forceGlobalForget:(id)arg1;
 + (id)jobsAwaitingTrigger;
 + (void)addScheduledJobs:(id)arg1 basedOnControl:(id)arg2;
++ (_Bool)isSelector:(id)arg1 consideredEqualTo:(id)arg2;
 + (long long)tickerIntervalForActivityIntervalSecs:(long long)arg1;
 + (id)nameForXPCStatus:(long long)arg1;
++ (id)jobTypeName:(_Bool)arg1 setJob:(_Bool)arg2 requiringRetry:(_Bool)arg3;
 + (id)migrateMismatchedPersistedStateVersion:(id)arg1 forEntryID:(id)arg2 withMismatchedState:(id)arg3;
++ (void)controlEliminateSetDomainName:(id)arg1 forAssetSetIdentifier:(id)arg2;
 + (void)controlEliminateSelector:(id)arg1;
 + (void)schedulePushNotifications:(id)arg1;
++ (void)jobFinishedForSetDomainName:(id)arg1 forAssetSetIdentifier:(id)arg2 withPotentialNetworkFailure:(_Bool)arg3;
++ (void)jobFinishedForSelector:(id)arg1 withPotentialNetworkFailure:(_Bool)arg2;
++ (void)scheduleSetDomainName:(id)arg1 forAssetSetIdentifier:(id)arg2 usingSetUpdatePolicy:(id)arg3;
 + (void)scheduleSelector:(id)arg1 triggeringAtIntervalSecs:(long long)arg2;
++ (long long)persistedScheduledCount;
 + (void)resumeFromPersisted;
 + (id)autoAssetScheduler;
 - (void).cxx_destruct;
@@ -60,6 +67,17 @@ __attribute__((visibility("hidden")))
 @property(readonly, retain, nonatomic) SUCoreLog *logger; // @synthesize logger=_logger;
 - (id)summary;
 - (id)description;
+- (void)_logPersistedTableOfContents:(id)arg1;
+- (void)_logPersistedRemovedEntry:(id)arg1 removedSelector:(id)arg2 message:(id)arg3;
+- (void)_logPersistedEntry:(id)arg1 operation:(id)arg2 persistingSelector:(id)arg3 intervalSecs:(long long)arg4 remainingSecs:(long long)arg5 pushedJob:(_Bool)arg6 setJob:(_Bool)arg7 requiringRetry:(_Bool)arg8 message:(id)arg9;
+- (void)_logPersistedConfigSet:(id)arg1 activityIntervalSecs:(long long)arg2 pushTriggerSecs:(long long)arg3 message:(id)arg4;
+- (void)_logPersistedConfigLoad:(id)arg1 activityIntervalSecs:(long long)arg2 pushTriggerSecs:(long long)arg3 message:(id)arg4;
+- (id)_copyCurrentlyScheduledSelectorsRequiringRetry;
+- (id)_copyCurrentlyScheduledSelectors;
+- (void)_informConnectorActiveJobFinishedforSelector:(id)arg1 withPotentialNetworkFailure:(_Bool)arg2;
+- (void)_informConnectorTriggeredSelectors:(id)arg1 withTriggeredRequiringRetry:(id)arg2;
+- (void)_informConnectorAlteredSelectors;
+- (void)_resumeConnector;
 - (void)_performPushNotificationOperations;
 - (void)_performPushNotificationActivityOperations;
 - (void)_performTickerOperations:(long long)arg1;
@@ -70,9 +88,11 @@ __attribute__((visibility("hidden")))
 - (void)_startActivityBackupTrigger;
 - (void)_registerForAndStartActivity:(long long)arg1;
 - (void)_eliminateSpecificSelector:(id)arg1;
-- (void)_eliminateSelector:(id)arg1;
+- (void)_eliminateSelector:(id)arg1 forSetJob:(_Bool)arg2;
+- (void)_jobFinishedForSetDomainName:(id)arg1 forAssetSetIdentifier:(id)arg2 withPotentialNetworkFailure:(_Bool)arg3;
+- (void)_jobFinishedForSelector:(id)arg1 withPotentialNetworkFailure:(_Bool)arg2;
 - (void)_schedulePushNotifications:(id)arg1;
-- (void)_scheduleSelector:(id)arg1 triggeringAtIntervalSecs:(long long)arg2 withRemainingSecs:(long long)arg3 forPushedJob:(_Bool)arg4;
+- (void)_scheduleSelector:(id)arg1 triggeringAtIntervalSecs:(long long)arg2 withRemainingSecs:(long long)arg3 forPushedJob:(_Bool)arg4 forSetJob:(_Bool)arg5 triggeringIfLearned:(_Bool)arg6;
 - (id)init;
 
 @end

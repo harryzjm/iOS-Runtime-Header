@@ -31,11 +31,11 @@
 - (_Bool)willSubmitLabelType:(int)arg1 boundsIndex:(long long)arg2 alignment:(unsigned long long)arg3 elementIndex:(unsigned long long)arg4 forSceneObject:(id)arg5;
 - (void)labelsResourcesSessionWillEndForSceneObject:(id)arg1 pipeline:(id)arg2;
 - (void)labelsResourcesSessionWillBeginForSceneObject:(id)arg1 pipeline:(id)arg2;
-- (void)setOffset:(const void *)arg1 labelType:(int)arg2 boundsIndex:(long long)arg3 forSceneObject:(id)arg4;
+- (void)setOffset:(void *)arg1 labelType:(int)arg2 boundsIndex:(long long)arg3 forSceneObject:(id)arg4;
 - (void)didSubmitSceneObject:(id)arg1 pipeline:(id)arg2;
 - (_Bool)willSubmitSceneObject:(id)arg1 pipeline:(id)arg2;
 - (void)didGenerateShaderEffects:(id)arg1 sceneObject:(id)arg2 pipeline:(id)arg3;
-- (void)didGenerateShaderEffectsForSeriesAtIndex:(const void *)arg1 effects:(id)arg2 sceneObject:(id)arg3 pipeline:(id)arg4;
+- (void)didGenerateShaderEffectsForSeriesAtIndex:(void *)arg1 effects:(id)arg2 sceneObject:(id)arg3 pipeline:(id)arg4;
 - (_Bool)willProcessSeries:(id)arg1 sceneObject:(id)arg2 pipeline:(id)arg3;
 - (struct ElementRenderPass)renderPassForSceneObject:(id)arg1;
 - (_Bool)renderPassDelayDisallowedForSceneObject:(id)arg1 pipeline:(id)arg2;

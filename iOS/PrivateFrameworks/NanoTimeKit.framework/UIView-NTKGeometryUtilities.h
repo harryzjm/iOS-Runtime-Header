@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class NSString;
 
 @interface UIView (NTKGeometryUtilities)
++ (id)ntk_gossamer_terminatorViewForDate:(id)arg1 size:(struct CGSize)arg2;
 - (void)ntk_setBoundsAndPositionFromFrame:(struct CGRect)arg1;
 - (void)removeFromParent;
 - (void)setAffineTransform:(struct CGAffineTransform)arg1;
@@ -16,6 +17,7 @@
 - (void)addToParentView:(id)arg1;
 
 // Remaining properties
+@property(nonatomic) double alpha;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;

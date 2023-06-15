@@ -9,6 +9,7 @@
 @class MULabeledTokenViewModel, NSArray, NSAttributedString, NSString, UIColor, UIFont;
 
 @protocol MUPlaceHeaderViewModel <NSObject>
+@property(readonly, nonatomic) _Bool supportsContactAddressDescription;
 @property(readonly, nonatomic) UIColor *logoBackgroundColor;
 @property(readonly, nonatomic) UIColor *coverPhotoBackgroundColor;
 @property(readonly, nonatomic) _Bool supportsLogo;
@@ -16,6 +17,7 @@
 @property(readonly, nonatomic) NSArray *transitLabelItems;
 @property(readonly, nonatomic) MULabeledTokenViewModel *enclosingPlaceViewModel;
 @property(readonly, nonatomic) _Bool hasEnclosingPlace;
+@property(readonly, nonatomic) NSAttributedString *addressDescriptionForContact;
 @property(readonly, nonatomic) NSString *placeSecondaryName;
 @property(readonly, nonatomic) NSString *placeName;
 @property(readonly, nonatomic) _Bool hasInitialData;

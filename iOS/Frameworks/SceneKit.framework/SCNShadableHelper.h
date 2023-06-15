@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
 - (void)_didDecodeSCNShadableHelper:(id)arg1;
 - (void)_customDecodingOfSCNShadableHelper:(id)arg1;
 - (void)_customEncodingOfSCNShadableHelper:(id)arg1;
-- (const void *)__CFObject;
+- (void *)__CFObject;
 - (void)_setC3DProgram;
 - (void)_setC3DProgramDelegate;
 - (void)_updateAllC3DProgramInputs;

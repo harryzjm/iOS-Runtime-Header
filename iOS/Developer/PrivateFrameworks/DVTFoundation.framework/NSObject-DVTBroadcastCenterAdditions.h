@@ -34,7 +34,6 @@
 - (void)_dvt_removeObserver:(id)arg1 forKeyPath:(id)arg2 context:(void *)arg3;
 - (void)_dvt_addObserver:(id)arg1 forKeyPath:(id)arg2 options:(unsigned long long)arg3 context:(void *)arg4;
 - (id)dvt_cloneByArchiving;
-- (_Bool)dvt_requiresWeakIntercession;
 - (void)dvt_logReferenceTree;
 @property(setter=dvt_setLeakingFatal:) _Bool dvt_isLeakingFatal;
 - (void)dvt_shouldDeallocate;

@@ -14,8 +14,10 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) AVDisplayCriteria *preferredDisplayCriteria;
 @property(readonly, nonatomic) NSArray *availableVideoDynamicRanges;
 @property(readonly, nonatomic) struct CGSize maximumVideoResolution;
+@property(readonly, nonatomic, getter=_isDefunct) _Bool defunct;
 - (id)makePropertyListForProxyWithOptions:(id)arg1;
 @property(readonly, nonatomic) id propertyListForProxy;
+@property(readonly, nonatomic, getter=_moovAtomSize) long long moovAtomSize;
 @property(readonly, nonatomic, getter=_assetAnalysisMessages) NSArray *assetAnalysisMessages;
 @property(readonly, nonatomic) _Bool supportsAnalysisReporting;
 @property(readonly, nonatomic) CDStruct_1b6d18a9 overallDurationHint;
@@ -40,6 +42,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSArray *commonMetadata;
 @property(readonly, nonatomic) NSString *lyrics;
 @property(readonly, nonatomic) AVMetadataItem *creationDate;
+@property(readonly, nonatomic, getter=_localizedMediaSelectionOptionDisplayNames) NSDictionary *localizedMediaSelectionOptionDisplayNames;
 @property(readonly, nonatomic, getter=_mediaSelectionGroupDictionaries) NSArray *mediaSelectionGroupDictionaries;
 @property(readonly, nonatomic) NSDictionary *trackReferences;
 @property(readonly, nonatomic) NSArray *alternateTrackGroups;

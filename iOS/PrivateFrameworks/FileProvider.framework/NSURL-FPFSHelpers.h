@@ -9,16 +9,16 @@
 @class NSPersonNameComponents, NSString;
 
 @interface NSURL (FPFSHelpers)
++ (id)fp_uncachedContainerURLForSecurityApplicationGroupIdentifier:(id)arg1;
 + (id)fp_uniqueTempFolderWithError:(id *)arg1;
-+ (id)fp_containerDirectoryForDataSeparatedPersonaWithPurposeIdentifier:(id)arg1;
 + (id)fp_supportDirectory;
-+ (id)fp_personaCloudStorageDirectory;
++ (id)fp_cloudStorageDirectory;
 + (id)fp_tempDirectory;
 + (id)fp_homeDirectoryForUserID:(unsigned int)arg1;
-+ (id)fp_personaHomeDirectoryPathForUserID:(unsigned int)arg1;
++ (id)fp_personaSharedDirectoryPathForUserID:(unsigned int)arg1;
 + (id)fp_homeDirectoryPathForUserID:(unsigned int)arg1;
 + (id)fp_homeDirectory;
-+ (id)fp_personaHomeDirectory;
++ (id)fp_personaSharedDirectory;
 + (void)fp_createEmptyTempPackageWithName:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (void)fp_createEmptyTempFileWithName:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (void)_fp_createInTempDirectoryWithName:(id)arg1 creationBlock:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
@@ -41,16 +41,19 @@
 - (_Bool)fp_importUnderFolder:(id)arg1 usingBlock:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (_Bool)fp_importUnderFolder:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (_Bool)fp_importUnderFolder:(id)arg1 allowCoordination:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (_Bool)fp_queued_moveUnderFolder:(id)arg1 withNewName:(id)arg2 coordinationOptions:(unsigned long long)arg3 allowBounce:(_Bool)arg4 allowCoordination:(_Bool)arg5 moveHandler:(CDUnknownBlockType)arg6 completionHandler:(CDUnknownBlockType)arg7;
 - (_Bool)fp_moveUnderFolder:(id)arg1 withNewName:(id)arg2 coordinationOptions:(unsigned long long)arg3 allowBounce:(_Bool)arg4 allowCoordination:(_Bool)arg5 moveHandler:(CDUnknownBlockType)arg6 completionHandler:(CDUnknownBlockType)arg7;
 - (_Bool)fp_moveUnderFolder:(id)arg1 withNewName:(id)arg2 coordinationOptions:(unsigned long long)arg3 allowBounce:(_Bool)arg4 allowCoordination:(_Bool)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (_Bool)fp_moveUnderFolder:(id)arg1 withNewName:(id)arg2 allowBounce:(_Bool)arg3 allowCoordination:(_Bool)arg4 moveHandler:(CDUnknownBlockType)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (_Bool)fp_moveUnderFolder:(id)arg1 withNewName:(id)arg2 allowBounce:(_Bool)arg3 allowCoordination:(_Bool)arg4 completionHandler:(CDUnknownBlockType)arg5;
-- (id)fp_existingURLOfChildWithName:(id)arg1 isFolder:(_Bool)arg2 notMatchingFileID:(id)arg3 maximumBounceNumber:(id *)arg4 forceFetchingBounceNumber:(_Bool)arg5;
-- (id)_fp_scanForURLOfChildWithName:(id)arg1 isFolder:(_Bool)arg2 notMatchingFileID:(id)arg3 maximumBounceNumber:(id *)arg4;
+- (id)fp_existingURLOfChildWithName:(id)arg1 isFolder:(_Bool)arg2 notMatchingFileID:(id)arg3 nextAvailableBounceNumber:(id *)arg4 forceFetchingBounceNumber:(_Bool)arg5;
+- (unsigned long long)getMaxChildrenCount;
+- (id)fp_scanForURLOfChildWithName:(id)arg1 isFolder:(_Bool)arg2 maxChildrenCount:(unsigned long long)arg3 notMatchingFileID:(id)arg4 nextAvailableBounceNumber:(id *)arg5;
 - (id)_fp_lookupURLOfChildWithName:(id)arg1 notMatchingFileID:(id)arg2;
 - (id)fp_existingURLOfChildWithName:(id)arg1 isFolder:(_Bool)arg2;
 - (CDUnknownBlockType)fp_defaultMoverBlock;
 - (id)fp_isDatalessWithError:(id *)arg1;
+- (id)fp_volumeUUID;
 - (id)fp_bouncedNameWithIndex:(long long)arg1;
 - (id)fp_commonDirectDescendantOf:(id)arg1;
 - (id)fp_matchesUbiquitousHeuristics;
@@ -70,6 +73,8 @@
 - (_Bool)fp_matchesFileProviderURL:(id)arg1;
 - (id)fp_moveToTempFolderWithFilename:(id)arg1 error:(id *)arg2;
 - (id)fp_directorySizeWithError:(id *)arg1;
+- (_Bool)fp_hasThumbnailOnImmutableDocument;
+- (_Bool)fp_associateThumbnailToVersionAtURL:(id)arg1 thumbnailMetadata:(id)arg2 error:(id *)arg3;
 - (_Bool)fp_associateThumbnailFromDocumentAtURL:(id)arg1 error:(id *)arg2;
 - (void)fp_attachSecurityScopeFromURL:(id)arg1;
 - (id)fp_addDocumentTrackingWithError:(id *)arg1;
@@ -93,6 +98,7 @@
 - (id)fp_copyToTempFolderWithFilename:(id)arg1 queue:(id)arg2 precomputedItemSize:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)fp_copyToURL:(id)arg1 queue:(id)arg2 precomputedItemSize:(unsigned long long)arg3 replacePlaceholder:(_Bool)arg4 completion:(CDUnknownBlockType)arg5;
 - (_Bool)fp_getSize:(unsigned long long *)arg1 error:(id *)arg2;
+- (id)fp_pathComponentDisplayMetadata;
 - (id)fp_addTestConflictLoserFromItemAtURL:(id)arg1 lastEditorDeviceName:(id)arg2 lastEditorUserName:(id)arg3 error:(id *)arg4;
 @property(readonly, nonatomic) NSPersonNameComponents *fp_lastEditorNameComponents;
 @property(readonly, nonatomic) NSString *fp_lastEditorDeviceName;

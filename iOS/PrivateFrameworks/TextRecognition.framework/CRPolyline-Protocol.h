@@ -12,7 +12,8 @@
 @protocol CRPolyline <NSCopying, NSSecureCoding>
 @property(readonly) unsigned long long pointCount;
 @property(readonly) NSArray *pointValues;
-@property(readonly) const struct CGPath *path;
+@property(readonly) struct CGPath *path;
+- (id)rotated180;
 - (id)simplified;
 - (void)enumeratePoints:(void (^)(unsigned long long, struct CGPoint, _Bool *))arg1;
 @end

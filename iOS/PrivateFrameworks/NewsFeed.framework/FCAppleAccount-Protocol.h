@@ -10,6 +10,22 @@
 @protocol FCAppleAccountObserver;
 
 @protocol FCAppleAccount <NSObject>
+@property(readonly, nonatomic) NSString *altDSID;
+@property(readonly, nonatomic) NSArray *allEmailAddresses;
+@property(readonly, nonatomic) NSString *appStoreEmailAddress;
+@property(readonly, nonatomic) NSString *primaryEmailAddress;
+@property(readonly, nonatomic) ACAccount *activeiTunesAccount;
+@property(readonly, nonatomic) NSString *endpointConnectionClientID;
+@property(readonly, nonatomic, getter=isUserSignedInToiCloud) _Bool userSignedInToiCloud;
+@property(readonly, nonatomic, getter=isPrivateDataSyncingEnabled) _Bool privateDataSyncingEnabled;
+@property(readonly, nonatomic) NSString *supportedContentStoreFrontID;
+@property(readonly, nonatomic) _Bool isSignedInStoreFrontSupported;
+@property(readonly, nonatomic) _Bool isContentStoreFrontSupported;
+@property(readonly, nonatomic) long long supportedContentLanguage;
+@property(readonly, nonatomic) NSString *primaryLanguageCode;
+@property(readonly, nonatomic) NSString *contentStoreFrontID;
+@property(readonly, nonatomic) NSString *userStoreFrontID;
+@property(readonly, nonatomic) NSString *DSID;
 - (void)removeObserver:(id <FCAppleAccountObserver>)arg1;
 - (void)addObserver:(id <FCAppleAccountObserver>)arg1;
 - (_Bool)isPrimaryAccountEmailAddress;
@@ -24,24 +40,5 @@
 - (NSString *)iTunesAccountDSID;
 - (NSString *)iTunesAccountName;
 - (_Bool)isUserSignedIntoiTunes;
-@property(nonatomic, readonly) NSArray *allEmailAddresses;
-@property(nonatomic, readonly) NSString *appStoreEmailAddress;
-@property(nonatomic, readonly) NSString *primaryEmailAddress;
-@property(nonatomic, readonly) ACAccount *activeiTunesAccount;
-@property(nonatomic, readonly) NSString *endpointConnectionClientID;
-- (_Bool)isUserSignedInToiCloud;
-- (_Bool)isPrivateDataSyncingEnabled;
-@property(nonatomic, readonly) NSString *supportedContentStoreFrontID;
-@property(nonatomic, readonly) _Bool isSignedInStoreFrontSupported;
-@property(nonatomic, readonly) _Bool isContentStoreFrontSupported;
-@property(nonatomic, readonly) long long supportedContentLanguage;
-@property(nonatomic, readonly) NSString *primaryLanguageCode;
-@property(nonatomic, readonly) NSString *contentStoreFrontID;
-@property(nonatomic, readonly) NSString *userStoreFrontID;
-@property(nonatomic, readonly) NSString *DSID;
-
-// Remaining properties
-@property(nonatomic, readonly) _Bool privateDataSyncingEnabled;
-@property(nonatomic, readonly) _Bool userSignedInToiCloud;
 @end
 

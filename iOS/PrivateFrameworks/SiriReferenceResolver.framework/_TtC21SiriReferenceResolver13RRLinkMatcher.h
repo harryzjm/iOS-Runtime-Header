@@ -13,7 +13,6 @@
     MISSING_TYPE *cachedEntities;
     MISSING_TYPE *$__lazy_storage_$_handlers;
     MISSING_TYPE *$__lazy_storage_$_handlersByProtocol;
-    MISSING_TYPE *enableLinkMatching;
     MISSING_TYPE *logger;
 }
 

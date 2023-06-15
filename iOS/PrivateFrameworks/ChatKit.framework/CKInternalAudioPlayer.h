@@ -35,6 +35,8 @@ __attribute__((visibility("hidden")))
 - (void)prepareToPlay;
 @property(readonly, nonatomic) double duration;
 @property(readonly, nonatomic) double currentTime;
+@property(readonly, nonatomic) double playbackSpeed;
+- (void)setPlaybackSpeed:(double)arg1;
 - (void)setCurrentTime:(double)arg1;
 @property(readonly, nonatomic, getter=isPlaying) _Bool playing;
 @property(nonatomic) float volume;

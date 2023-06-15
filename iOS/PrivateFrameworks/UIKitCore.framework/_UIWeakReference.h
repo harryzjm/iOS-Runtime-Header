@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface _UIWeakReference : NSObject <NSCopying>
+@interface _UIWeakReference : NSObject
 {
     id _object;
 }

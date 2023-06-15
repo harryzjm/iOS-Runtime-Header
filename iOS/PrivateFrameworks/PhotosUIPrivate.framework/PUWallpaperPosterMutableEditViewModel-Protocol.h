@@ -6,15 +6,24 @@
 
 #import <PhotosUIPrivate/NSObject-Protocol.h>
 
-@class PUParallaxLayerStackViewModel;
+@class NSString, PFParallaxLayerStack, PUParallaxLayerStackViewModel;
+@protocol PISegmentationItem;
 
 @protocol PUWallpaperPosterMutableEditViewModel <NSObject>
+@property(nonatomic) struct CGRect settlingEffectStateRestorationNormalizedVisibleFrame;
+@property(retain, nonatomic) NSString *settlingEffectStateRestorationLayerStyleKind;
+@property(nonatomic) _Bool userHasAdjustedVisibleFrame;
 @property(nonatomic) _Bool parallaxDisabled;
+@property(nonatomic) _Bool settlingEffectEnabled;
+@property(nonatomic) _Bool appliesDepthToAllOrientations;
 @property(nonatomic) _Bool depthEnabled;
 @property(nonatomic) struct CGRect normalizedVisibleFrame;
 @property(nonatomic) struct CGRect containerFrame;
 @property(nonatomic) _Bool isUserPanningOrZooming;
+@property(nonatomic) long long deviceOrientation;
 @property(retain, nonatomic) PUParallaxLayerStackViewModel *currentLayerStackViewModel;
+- (void)setNormalizedVisibleFrameAnimated:(struct CGRect)arg1;
+- (void)updateSettlingEffectWithSegmentationItem:(id <PISegmentationItem>)arg1 layerStack:(PFParallaxLayerStack *)arg2;
 - (void)scrollToPosition:(CDStruct_cd98a358)arg1;
 @end
 

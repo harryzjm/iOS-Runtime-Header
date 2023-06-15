@@ -10,6 +10,6 @@
 
 @protocol PHASuggestionGenerationTask <PHATask>
 @property(retain, nonatomic) NSDictionary *suggestionOptionsDictionary;
-- (_Bool)runWithGraphManager:(PGManager *)arg1 progressReporter:(MAProgressReporter *)arg2 reply:(void (^)(NSDictionary *, NSError *))arg3;
+- (NSDictionary *)generateSuggestionsWithGraphManager:(PGManager *)arg1 progressReporter:(MAProgressReporter *)arg2 error:(id *)arg3;
 @end
 

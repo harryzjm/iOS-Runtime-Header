@@ -6,18 +6,22 @@
 
 #import <objc/NSObject.h>
 
-@class CNContact, NSArray, NSData, NSDateComponents, NSDictionary, NSString;
+@class CNContact, CNVCardWritingOptions, NSArray, NSData, NSDateComponents, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
 @interface CNContactVCardWritingAdapter : NSObject
 {
     CNContact *_contact;
+    CNVCardWritingOptions *_options;
 }
 
 + (id)descriptorForAllSupportedKeys;
-+ (id)adapterWithContact:(id)arg1;
++ (id)adapterWithContact:(id)arg1 options:(id)arg2;
 - (void).cxx_destruct;
 @property(readonly) NSArray *unknownProperties;
+@property(readonly) int sharedPhotoDisplayPreference;
+@property(readonly) NSData *watchWallpaperImageData;
+@property(readonly) NSData *wallpaper;
 @property(readonly) NSData *memojiMetadata;
 @property(readonly) NSData *imageHash;
 @property(readonly) NSString *imageType;
@@ -57,6 +61,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) NSString *companyName;
 @property(readonly) NSString *phoneticOrganization;
 @property(readonly) NSString *organization;
+@property(readonly) NSArray *addressingGrammars;
 @property(readonly) NSString *pronunciationLastName;
 @property(readonly) NSString *pronunciationFirstName;
 @property(readonly) NSString *phoneticLastName;
@@ -69,7 +74,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) NSString *middleName;
 @property(readonly) NSString *lastName;
 @property(readonly) NSString *firstName;
-- (id)initWithContact:(id)arg1;
+- (id)initWithContact:(id)arg1 options:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

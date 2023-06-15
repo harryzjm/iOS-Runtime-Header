@@ -13,5 +13,8 @@
 @property(readonly, nonatomic) UIView *minimalView;
 @property(readonly, nonatomic) UIView *trailingView;
 @property(readonly, nonatomic) UIView *leadingView;
+
+@optional
+@property(readonly, nonatomic) UIView *detachedMinimalView;
 @end
 

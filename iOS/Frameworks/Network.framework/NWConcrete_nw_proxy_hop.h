@@ -12,9 +12,20 @@
 __attribute__((visibility("hidden")))
 @interface NWConcrete_nw_proxy_hop : NSObject
 {
+    unsigned char resumable_session_agent[16];
     NSObject<OS_nw_endpoint> *endpoint;
+    NSObject<OS_nw_endpoint> *fallback_endpoint;
     NSObject<OS_nw_protocol_options> *options;
+    NSObject<OS_nw_protocol_options> *tls_options;
     struct __CFArray *raw_public_keys;
+    struct __CFData *client_identity_persistent_reference;
+    struct __CFArray *client_certificates;
+    unsigned int supports_raw_ip:1;
+    unsigned int supports_resumption:1;
+    unsigned int supports_l4s:1;
+    unsigned int enable_multipath:1;
+    unsigned int trust_certs:1;
+    unsigned int fallback_only:1;
 }
 
 - (void).cxx_destruct;

@@ -4,25 +4,27 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface CKSQLiteKeyValueStore
+#import "CKSQLiteTable.h"
+
+@interface CKSQLiteKeyValueStore : CKSQLiteTable
 {
 }
 
 + (Class)entryClass;
 + (id)dbProperties;
-- (void)setObjectValue:(id)arg1 forKey:(id)arg2 scope:(unsigned long long)arg3 scopeIdentifier:(id)arg4;
-- (id)objectValueForKey:(id)arg1 scope:(unsigned long long)arg2 scopeIdentifier:(id)arg3;
-- (void)setUUIDValue:(id)arg1 forKey:(id)arg2 scope:(unsigned long long)arg3 scopeIdentifier:(id)arg4;
-- (id)UUIDValueForKey:(id)arg1 scope:(unsigned long long)arg2 scopeIdentifier:(id)arg3;
-- (void)setDateValue:(id)arg1 forKey:(id)arg2 scope:(unsigned long long)arg3 scopeIdentifier:(id)arg4;
-- (id)dateValueForKey:(id)arg1 scope:(unsigned long long)arg2 scopeIdentifier:(id)arg3;
-- (void)setDataValue:(id)arg1 forKey:(id)arg2 scope:(unsigned long long)arg3 scopeIdentifier:(id)arg4;
-- (id)dataValueForKey:(id)arg1 scope:(unsigned long long)arg2 scopeIdentifier:(id)arg3;
-- (void)setStringValue:(id)arg1 forKey:(id)arg2 scope:(unsigned long long)arg3 scopeIdentifier:(id)arg4;
-- (id)stringValueForKey:(id)arg1 scope:(unsigned long long)arg2 scopeIdentifier:(id)arg3;
-- (void)setNumberValue:(id)arg1 forKey:(id)arg2 scope:(unsigned long long)arg3 scopeIdentifier:(id)arg4;
-- (id)numberValueForKey:(id)arg1 scope:(unsigned long long)arg2 scopeIdentifier:(id)arg3;
-- (id)finishInitializing:(_Bool)arg1;
+- (id)setObjectValue:(id)arg1 forKey:(id)arg2 scope:(unsigned long long)arg3 scopeIdentifier:(id)arg4;
+- (id)objectValueForKey:(id)arg1 scope:(unsigned long long)arg2 scopeIdentifier:(id)arg3 error:(id *)arg4;
+- (id)setUUIDValue:(id)arg1 forKey:(id)arg2 scope:(unsigned long long)arg3 scopeIdentifier:(id)arg4;
+- (id)UUIDValueForKey:(id)arg1 scope:(unsigned long long)arg2 scopeIdentifier:(id)arg3 error:(id *)arg4;
+- (id)setDateValue:(id)arg1 forKey:(id)arg2 scope:(unsigned long long)arg3 scopeIdentifier:(id)arg4;
+- (id)dateValueForKey:(id)arg1 scope:(unsigned long long)arg2 scopeIdentifier:(id)arg3 error:(id *)arg4;
+- (id)setDataValue:(id)arg1 forKey:(id)arg2 scope:(unsigned long long)arg3 scopeIdentifier:(id)arg4;
+- (id)dataValueForKey:(id)arg1 scope:(unsigned long long)arg2 scopeIdentifier:(id)arg3 error:(id *)arg4;
+- (id)setStringValue:(id)arg1 forKey:(id)arg2 scope:(unsigned long long)arg3 scopeIdentifier:(id)arg4;
+- (id)stringValueForKey:(id)arg1 scope:(unsigned long long)arg2 scopeIdentifier:(id)arg3 error:(id *)arg4;
+- (id)setNumberValue:(id)arg1 forKey:(id)arg2 scope:(unsigned long long)arg3 scopeIdentifier:(id)arg4;
+- (id)numberValueForKey:(id)arg1 scope:(unsigned long long)arg2 scopeIdentifier:(id)arg3 error:(id *)arg4;
+- (id)wakeFromDatabase;
 - (void)purgeOrphanedKeys;
 - (void)purgeOrphanedTableKeys;
 - (void)purgeOrphanedTableGroupKeys;

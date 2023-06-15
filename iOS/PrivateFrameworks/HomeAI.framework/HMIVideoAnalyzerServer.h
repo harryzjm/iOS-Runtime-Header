@@ -25,9 +25,9 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_inputQueue;
     NSObject<OS_dispatch_queue> *_workQueue;
     NSObject<OS_dispatch_queue> *_encoderQueue;
-    const struct opaqueCMFormatDescription *_inputVideoFormat;
-    const struct opaqueCMFormatDescription *_inputAudioFormat;
-    const struct opaqueCMFormatDescription *_timelapseOutputVideoFormat;
+    struct opaqueCMFormatDescription *_inputVideoFormat;
+    struct opaqueCMFormatDescription *_inputAudioFormat;
+    struct opaqueCMFormatDescription *_timelapseOutputVideoFormat;
     HMFTimer *_watchdogTimer;
     HMIVideoCommandBuffer *_commandBuffer;
     HMIVideoDecoder *_decoder;
@@ -79,9 +79,9 @@ __attribute__((visibility("hidden")))
 @property(readonly) HMIVideoDecoder *decoder; // @synthesize decoder=_decoder;
 @property(readonly) HMIVideoCommandBuffer *commandBuffer; // @synthesize commandBuffer=_commandBuffer;
 @property(readonly) HMFTimer *watchdogTimer; // @synthesize watchdogTimer=_watchdogTimer;
-@property const struct opaqueCMFormatDescription *timelapseOutputVideoFormat; // @synthesize timelapseOutputVideoFormat=_timelapseOutputVideoFormat;
-@property const struct opaqueCMFormatDescription *inputAudioFormat; // @synthesize inputAudioFormat=_inputAudioFormat;
-@property const struct opaqueCMFormatDescription *inputVideoFormat; // @synthesize inputVideoFormat=_inputVideoFormat;
+@property struct opaqueCMFormatDescription *timelapseOutputVideoFormat; // @synthesize timelapseOutputVideoFormat=_timelapseOutputVideoFormat;
+@property struct opaqueCMFormatDescription *inputAudioFormat; // @synthesize inputAudioFormat=_inputAudioFormat;
+@property struct opaqueCMFormatDescription *inputVideoFormat; // @synthesize inputVideoFormat=_inputVideoFormat;
 @property(readonly) NSObject<OS_dispatch_queue> *encoderQueue; // @synthesize encoderQueue=_encoderQueue;
 @property(readonly) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 @property(readonly) NSObject<OS_dispatch_queue> *inputQueue; // @synthesize inputQueue=_inputQueue;
@@ -129,8 +129,8 @@ __attribute__((visibility("hidden")))
 - (void)_configureTimelapseAssetWriter;
 - (void)_configureAssetWriter;
 - (void)dealloc;
-- (void)_prepareForTimelapseOutputVideoFormat:(const struct opaqueCMFormatDescription *)arg1;
-- (void)_prepareForInputVideoFormat:(const struct opaqueCMFormatDescription *)arg1 audioFormat:(const struct opaqueCMFormatDescription *)arg2;
+- (void)_prepareForTimelapseOutputVideoFormat:(struct opaqueCMFormatDescription *)arg1;
+- (void)_prepareForInputVideoFormat:(struct opaqueCMFormatDescription *)arg1 audioFormat:(struct opaqueCMFormatDescription *)arg2;
 - (void)_saveFragmentDataToDisk:(id)arg1 diskBufferSize:(unsigned long long)arg2;
 - (void)cancel;
 - (void)finishWithCompletionHandler:(CDUnknownBlockType)arg1;

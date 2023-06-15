@@ -6,7 +6,12 @@
 
 #import <PosterKit/PRSceneSettings-Protocol.h>
 
+@class NSDate, NSString;
+
 @protocol PREditingSceneSettings <PRSceneSettings>
+@property(readonly, nonatomic) long long pr_deviceOrientation;
+@property(readonly, nonatomic) NSDate *pr_overrideDate;
+@property(readonly, copy, nonatomic) NSString *pr_titleString;
 @property(readonly, nonatomic, getter=pr_areComplicationsDisallowed) _Bool pr_complicationsDisallowed;
 @property(readonly, nonatomic, getter=pr_areControlsHidden) _Bool pr_controlsHidden;
 @property(readonly, nonatomic) long long pr_focusedComplicationElement;

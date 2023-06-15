@@ -112,7 +112,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool shouldDisplaySelectionIndicators;
 @property(readonly, nonatomic) _Bool shouldShowTitleView;
 @property(readonly, nonatomic) _Bool allowTapOnTitle;
-@property(readonly, nonatomic) _Bool allowDoneButton;
+@property(readonly, nonatomic) _Bool allowProgrammaticNavBackButton;
 @property(readonly, nonatomic) _Bool allowSuggestions;
 @property(readonly, nonatomic) _Bool allowAccessoryVisibility;
 - (_Bool)_isAssetExplorerReviewScreen;

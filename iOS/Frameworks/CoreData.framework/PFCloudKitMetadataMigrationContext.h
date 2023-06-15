@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
     _Bool _needsImportAfterClientMigration;
     _Bool _needsBatchUpdateForSystemFieldsAndLastExportedTransaction;
     _Bool _needsAnalyzedHistoryCheck;
+    _Bool _needsCleanupFromNeedsNewShareInvitationBug;
     NSManagedObjectModel *_currentModel;
     NSSQLModel *_sqlModel;
     NSManagedObjectModel *_storeMetadataModel;

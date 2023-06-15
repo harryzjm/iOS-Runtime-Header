@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) OspreyChannel *grpcChannel; // @synthesize grpcChannel=_grpcChannel;
+- (void)preconnect;
 - (void)initializeDeviceAuthenticationSessionWithCompletion:(CDUnknownBlockType)arg1;
 - (void)streamTTS:(id)arg1 beginHandler:(CDUnknownBlockType)arg2 chunkHandler:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)initWithURL:(id)arg1 configuration:(id)arg2;

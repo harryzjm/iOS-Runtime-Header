@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 @interface NWURLSessionRequestBodyInfo : NSObject
 {
     _Bool _streamUsed;
+    long long _knownSize;
     NSObject<OS_dispatch_data> *_data;
     NSURL *_fileURL;
     NSInputStream *_stream;

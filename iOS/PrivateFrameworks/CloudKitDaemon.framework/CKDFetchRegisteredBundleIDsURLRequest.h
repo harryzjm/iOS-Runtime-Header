@@ -21,6 +21,7 @@
 - (id)applicationBundleIdentifierForContainerAccess;
 - (_Bool)requiresTokenRegistration;
 - (id)requestOperationClasses;
+- (id)equivalencyProperties;
 
 @end
 

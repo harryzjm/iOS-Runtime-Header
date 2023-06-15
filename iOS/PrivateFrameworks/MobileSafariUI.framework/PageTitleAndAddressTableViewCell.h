@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 + (double)defaultHeight;
 - (void)_updateFont;
 - (void)_updateNumberOfLines;
+- (void)setTitle:(id)arg1 address:(id)arg2 prompt:(id)arg3 withQuery:(id)arg4;
 - (void)traitCollectionDidChange:(id)arg1;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 

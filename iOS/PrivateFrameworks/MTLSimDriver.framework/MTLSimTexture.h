@@ -52,7 +52,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) unsigned long long tailSizeInBytes; // @synthesize tailSizeInBytes=_tailSizeInBytes;
 @property(readonly) unsigned long long firstMipmapInTail; // @synthesize firstMipmapInTail=_firstMipmapInTail;
 @property(readonly) unsigned long long usage; // @synthesize usage=_usage;
-@property(readonly, getter=isShareable) _Bool shareable; // @synthesize shareable=_shareable;
+@property(getter=isShareable, setter=_simSetShareable:) _Bool shareable; // @synthesize shareable=_shareable;
 @property(readonly, getter=isFramebufferOnly) _Bool framebufferOnly; // @synthesize framebufferOnly=_framebufferOnly;
 @property(readonly) _Bool allowGPUOptimizedContents; // @synthesize allowGPUOptimizedContents=_allowGPUOptimizedContents;
 @property(readonly) id <MTLResource> rootResource; // @synthesize rootResource;
@@ -62,6 +62,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) unsigned long long iosurfacePlane; // @synthesize iosurfacePlane;
 @property(readonly) struct __IOSurface *iosurface; // @synthesize iosurface=_iosurface;
 @property(readonly) unsigned long long rotation; // @synthesize rotation;
+- (void)_swapDecompressedPropertiesWith:(id)arg1;
 @property(readonly) struct MTLResourceID gpuResourceID;
 @property(readonly) unsigned long long gpuHandle;
 @property(readonly) _Bool isCompressed;
@@ -93,7 +94,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)setPurgeableState:(unsigned long long)arg1;
 @property(readonly) unsigned long long bufferBytesPerRow;
 @property(readonly) unsigned long long bufferOffset; // @dynamic bufferOffset;
-@property(readonly) id <MTLTexture> parentTexture; // @dynamic parentTexture;
+@property(retain, setter=_simSetParentTexture:) id <MTLTexture> parentTexture; // @dynamic parentTexture;
 @property(readonly) id <MTLBuffer> buffer; // @dynamic buffer;
 @property(readonly, copy) NSString *description;
 - (id)formattedDescription:(unsigned long long)arg1;

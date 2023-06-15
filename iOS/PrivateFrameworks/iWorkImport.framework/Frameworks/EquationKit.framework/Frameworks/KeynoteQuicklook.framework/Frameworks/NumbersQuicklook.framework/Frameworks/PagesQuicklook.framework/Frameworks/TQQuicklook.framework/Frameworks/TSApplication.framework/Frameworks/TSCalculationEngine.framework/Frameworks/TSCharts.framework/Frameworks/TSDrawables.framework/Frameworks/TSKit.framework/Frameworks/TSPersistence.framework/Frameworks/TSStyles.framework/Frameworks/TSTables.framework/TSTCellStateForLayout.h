@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class TSTCell, TSTLayoutContentCachedKey, TSWPColumn, TSWPParagraphStyle;
+@class TSTCell, TSTLayoutContentCachedKey, TSTTextStyleHandle, TSWPColumn;
 
 @interface TSTCellStateForLayout : NSObject
 {
@@ -16,13 +16,15 @@
     _Bool _shouldFastPathMeasureFitWidth;
     _Bool _forDrawing;
     _Bool _inDynamicLayout;
+    _Bool _hasContent;
+    _Bool _hasContentIsCached;
     int _verticalAlignment;
     int _layoutCacheFlags;
     struct TSUCellCoord _modelCellID;
     TSTCell *_cell;
     id _cellContents;
     double _maxWidthForChildren;
-    TSWPParagraphStyle *_textStyle;
+    TSTTextStyleHandle *_textStyleHandle;
     TSTLayoutContentCachedKey *_keyVal;
     TSWPColumn *_wpColumn;
     unsigned long long _pageNumber;
@@ -35,10 +37,12 @@
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool hasContentIsCached; // @synthesize hasContentIsCached=_hasContentIsCached;
 @property(nonatomic) unsigned long long pageCount; // @synthesize pageCount=_pageCount;
 @property(nonatomic) unsigned long long pageNumber; // @synthesize pageNumber=_pageNumber;
 @property(retain, nonatomic) TSWPColumn *wpColumn; // @synthesize wpColumn=_wpColumn;
 @property(retain, nonatomic) TSTLayoutContentCachedKey *keyVal; // @synthesize keyVal=_keyVal;
+@property(nonatomic) _Bool hasContent; // @synthesize hasContent=_hasContent;
 @property(nonatomic) struct CGSize sizeOfText; // @synthesize sizeOfText=_sizeOfText;
 @property(nonatomic) int layoutCacheFlags; // @synthesize layoutCacheFlags=_layoutCacheFlags;
 @property(nonatomic) _Bool inDynamicLayout; // @synthesize inDynamicLayout=_inDynamicLayout;
@@ -47,7 +51,7 @@
 @property(nonatomic) _Bool needWPColumn; // @synthesize needWPColumn=_needWPColumn;
 @property(nonatomic) _Bool cellWraps; // @synthesize cellWraps=_cellWraps;
 @property(nonatomic) _Bool cellPropsRowHeight; // @synthesize cellPropsRowHeight=_cellPropsRowHeight;
-@property(retain, nonatomic) TSWPParagraphStyle *textStyle; // @synthesize textStyle=_textStyle;
+@property(retain, nonatomic) TSTTextStyleHandle *textStyleHandle; // @synthesize textStyleHandle=_textStyleHandle;
 @property(nonatomic) int verticalAlignment; // @synthesize verticalAlignment=_verticalAlignment;
 @property(nonatomic) struct UIEdgeInsets paddingInsets; // @synthesize paddingInsets=_paddingInsets;
 @property(nonatomic) double maxWidthForChildren; // @synthesize maxWidthForChildren=_maxWidthForChildren;
@@ -57,7 +61,7 @@
 @property(nonatomic) struct TSUCellRect layoutMergeRange; // @synthesize layoutMergeRange=_layoutMergeRange;
 @property(copy, nonatomic) TSTCell *cell; // @synthesize cell=_cell;
 @property(nonatomic) struct TSUCellCoord modelCellID; // @synthesize modelCellID=_modelCellID;
-@property(readonly, nonatomic) _Bool hasContent;
+- (id)p_generateCellContentsAndReturnContents:(_Bool)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 

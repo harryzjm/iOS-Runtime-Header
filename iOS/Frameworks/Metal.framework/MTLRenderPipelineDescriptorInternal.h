@@ -10,12 +10,9 @@ __attribute__((visibility("hidden")))
 @interface MTLRenderPipelineDescriptorInternal : MTLRenderPipelineDescriptor
 {
     struct MTLRenderPipelineDescriptorPrivate _private;
-    struct FlatBufferBuilder _builder;
 }
 
-- (id).cxx_construct;
-- (void).cxx_destruct;
-- (const void *)getPipelineScript;
+- (id)newPipelineScript;
 - (id)newSerializedMeshDataWithFlags:(unsigned long long)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
 - (id)newSerializedObjectDataWithFlags:(unsigned long long)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
 - (id)newSerializedVertexDataWithFlags:(unsigned long long)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
@@ -32,6 +29,8 @@ __attribute__((visibility("hidden")))
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (const struct MTLRenderPipelineDescriptorPrivate *)_descriptorPrivate;
+- (id)gpuCompilerSPIOptions;
+- (void)setGpuCompilerSPIOptions:(id)arg1;
 - (id)driverCompilerOptions;
 - (void)setDriverCompilerOptions:(id)arg1;
 - (id)vertexDescriptor;
@@ -68,6 +67,8 @@ __attribute__((visibility("hidden")))
 - (void)setLabel:(id)arg1;
 - (id)label;
 - (void)reset;
+- (void)setMaxAccelerationStructureTraversalDepth:(unsigned long long)arg1;
+- (unsigned long long)maxAccelerationStructureTraversalDepth;
 - (void)setProfileControl:(id)arg1;
 - (id)profileControl;
 - (void)setExplicitVisibilityGroupID:(unsigned int)arg1;

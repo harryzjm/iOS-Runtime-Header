@@ -14,6 +14,7 @@
 @property(readonly, nonatomic) _Bool hasStoreLoaded;
 @property(readonly, nonatomic) NSManagedObjectContext *viewContext;
 - (NSManagedObjectContext *)newBackgroundContext;
+- (_Bool)saveContext:(NSManagedObjectContext *)arg1 error:(id *)arg2;
 - (void)performBackgroundTaskAndWait:(void (^)(NSManagedObjectContext *))arg1;
 - (void)performBackgroundTask:(void (^)(NSManagedObjectContext *))arg1;
 @end

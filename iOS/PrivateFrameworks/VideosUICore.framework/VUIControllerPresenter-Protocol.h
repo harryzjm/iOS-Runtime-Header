@@ -6,11 +6,12 @@
 
 #import <VideosUICore/NSObject-Protocol.h>
 
-@class NSArray, NSString, NSURL, UIViewController;
+@class NSArray, NSString, NSURL, UIViewController, VUIRouterDataSource;
 
 @protocol VUIControllerPresenter <NSObject>
 - (_Bool)dismissViewControllerWithID:(NSString *)arg1 animated:(_Bool)arg2 completion:(void (^)(void))arg3;
 - (void)dismissViewControllerAnimated:(_Bool)arg1 completion:(void (^)(void))arg2;
+- (void)presentRouterDataSource:(VUIRouterDataSource *)arg1;
 - (void)handleAccountSettingsEventWithUrl:(NSURL *)arg1 amsBagKey:(NSString *)arg2 useAMSWebView:(_Bool)arg3;
 - (void)presentViewController:(UIViewController *)arg1 modalPresentationStyle:(long long)arg2 animated:(_Bool)arg3 completion:(void (^)(void))arg4;
 - (void)presentAlertWithTitle:(NSString *)arg1 message:(NSString *)arg2 actions:(NSArray *)arg3 animated:(_Bool)arg4;

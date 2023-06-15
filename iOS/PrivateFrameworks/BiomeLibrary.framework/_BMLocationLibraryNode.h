@@ -16,12 +16,17 @@ __attribute__((visibility("hidden")))
 + (id)validKeyPaths;
 + (id)streamNames;
 + (id)identifier;
++ (id)PointOfInterest;
++ (id)MicroLocation;
 + (id)configurationForSignificantVisit;
 + (id)syncPolicyForSignificantVisit;
 + (id)storeConfigurationForSignificantVisit;
 + (id)configurationForHashedCoordinates;
 + (id)syncPolicyForHashedCoordinates;
 + (id)storeConfigurationForHashedCoordinates;
++ (id)configurationForSemantic;
++ (id)syncPolicyForSemantic;
++ (id)storeConfigurationForSemantic;
 + (id)configurationForMotion;
 + (id)syncPolicyForMotion;
 + (id)storeConfigurationForMotion;
@@ -30,6 +35,7 @@ __attribute__((visibility("hidden")))
 + (id)storeConfigurationForMicroLocationVisit;
 + (id)SignificantVisit;
 + (id)HashedCoordinates;
++ (id)Semantic;
 + (id)Motion;
 + (id)MicroLocationVisit;
 

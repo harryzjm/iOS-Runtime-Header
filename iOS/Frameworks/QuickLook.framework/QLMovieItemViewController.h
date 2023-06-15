@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class AVEditBehavior, AVPlayerViewController, NSLayoutConstraint, NSNumber, NSString, PHPlaceholderView, PXUIAssetBadgeView, QLMovieEdits, QLOverlayPlayButton, QLVideoScrubberView, UIScrollView, UIView;
+@class AVEditBehavior, AVPlayerViewController, NSLayoutConstraint, NSNumber, NSString, PHPlaceholderView, PXUIAssetBadgeView, QLMovieEdits, QLOverlayPlayButton, QLToolbarButton, QLVideoScrubberView, UIScrollView, UIView;
 
 __attribute__((visibility("hidden")))
 @interface QLMovieItemViewController
@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
     _Bool _previewIsVisisble;
     _Bool _isObservingPlayerExternalPlaybackActive;
     PHPlaceholderView *_airPlayPlaceholderView;
+    QLToolbarButton *_imageAnalysisToolbarButton;
     _Bool _isEditing;
     _Bool _isSavingEditsBeforeDismissing;
     _Bool _assetCanBeRotated;
@@ -49,6 +50,8 @@ __attribute__((visibility("hidden")))
 @property(retain) QLVideoScrubberView *scrubber; // @synthesize scrubber=_scrubber;
 @property(retain) QLOverlayPlayButton *playButton; // @synthesize playButton=_playButton;
 @property(retain, nonatomic) AVPlayerViewController *playerViewController; // @synthesize playerViewController=_playerViewController;
+- (void)playerViewController:(id)arg1 willTransitionToVisibilityOfPlaybackControls:(_Bool)arg2 withAnimationCoordinator:(id)arg3;
+- (void)playerViewController:(id)arg1 restoreUserInterfaceForPictureInPictureStopWithCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)playerViewControllerWillPerformAnalysisCalloutAction:(id)arg1;
 - (void)_updateHDRBadgeViewVisibilityForFullscreenMode:(_Bool)arg1;
 - (void)_updateHDRBadgeViewVisibilityWithNewPlayingStatus:(long long)arg1;
@@ -69,6 +72,9 @@ __attribute__((visibility("hidden")))
 - (void)editBehaviorDidCancel:(id)arg1;
 - (id)editBehaviorAlertActionsForDoneButtonTap:(id)arg1;
 - (void)_showFailedToSaveChangesAlertWithError:(id)arg1;
+- (void)_lookupButtonTapped;
+- (id)lookupAction;
+- (id)imageAnalysisToolbarButton;
 - (void)savePreviewEditedCopyWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_saveMovieIfEditedWithEditedCopy:(id)arg1 shouldDismissAfterSaving:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_saveMovieIfEdited:(_Bool)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
@@ -87,8 +93,8 @@ __attribute__((visibility("hidden")))
 - (_Bool)_enterEditModeIfPossible;
 - (void)editButtonTapped;
 - (void)_setupEditBehavior;
+- (void)_setupTransportBarCustomActions;
 - (_Bool)shouldHandleRegisteringForCommandCenterHandlers;
-- (_Bool)shouldDisplayPlayButtonInNavigationBar;
 - (_Bool)shouldAllowEditingContents;
 - (id)parallaxView;
 - (id)transitioningView;
@@ -107,6 +113,7 @@ __attribute__((visibility("hidden")))
 - (id)scrollView;
 - (_Bool)play;
 - (_Bool)canEnterFullScreen;
+- (void)showTimeLabelIfNeeded;
 - (id)timeLabelScrollView;
 - (id)accessoryView;
 - (void)previewBecameFullScreen:(_Bool)arg1 animated:(_Bool)arg2;

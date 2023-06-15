@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class VUIAccountConfig, VUIAutoPlayConfig, VUICanonicalConfig, VUIContextMenuConfig, VUIDownloadConfig, VUIDropOnTabConfig, VUIInAppMessagesConfig, VUILiveLinkConfig, VUIMediaShowcasingConfig, VUINowPlayingConfig, VUIPlaybackUpNextConfig, VUISyndicationConfig, VUIUpNextConfig;
+@class VUIAccountConfig, VUIAccountMessageConfig, VUIAutoPlayConfig, VUICanonicalConfig, VUIDownloadConfig, VUIDropOnTabConfig, VUILiveLinkConfig, VUIMediaShowcasingConfig, VUIMultiviewConfig, VUINowPlayingConfig, VUIPlaybackUpNextConfig, VUIRootControllerConfig, VUISyndicationConfig, VUITabItemsUpdateConfig, VUIUpNextConfig;
 
 __attribute__((visibility("hidden")))
 @interface VUIFeaturesConfiguration : NSObject
@@ -15,37 +15,46 @@ __attribute__((visibility("hidden")))
     VUINowPlayingConfig *_nowPlayingConfig;
     VUIAutoPlayConfig *_autoPlayConfig;
     VUILiveLinkConfig *_liveLinkConfig;
-    VUIInAppMessagesConfig *_inAppMessagesConfig;
     VUIDownloadConfig *_downloadConfig;
     VUISyndicationConfig *_syndicationConfig;
     VUIDropOnTabConfig *_dropOnTabConfig;
     VUIMediaShowcasingConfig *_mediaShowcaseConfig;
     VUIUpNextConfig *_upNextConfig;
-    VUIContextMenuConfig *_contextMenuConfig;
     VUICanonicalConfig *_canonicalConfig;
     VUIAccountConfig *_accountConfig;
+    VUIAccountMessageConfig *_accountMessageConfig;
+    VUIRootControllerConfig *_rootControllerConfig;
+    VUITabItemsUpdateConfig *_tabItemsUpdateConfig;
+    VUIMultiviewConfig *_multiviewConfig;
 }
 
 + (_Bool)boolValueForKey:(id)arg1 fromDictionary:(id)arg2 defaultValue:(_Bool)arg3;
 + (id)numberValueForKey:(id)arg1 fromDictionary:(id)arg2;
++ (id)stringValueForKey:(id)arg1 fromDictionary:(id)arg2;
 + (id)defaultsStringValueForKey:(id)arg1;
 + (id)defaultsNumberValueForKey:(id)arg1;
 + (id)sharedInstance;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) VUIMultiviewConfig *multiviewConfig; // @synthesize multiviewConfig=_multiviewConfig;
+@property(readonly, nonatomic) VUITabItemsUpdateConfig *tabItemsUpdateConfig; // @synthesize tabItemsUpdateConfig=_tabItemsUpdateConfig;
+@property(readonly, nonatomic) VUIRootControllerConfig *rootControllerConfig; // @synthesize rootControllerConfig=_rootControllerConfig;
+@property(readonly, nonatomic) VUIAccountMessageConfig *accountMessageConfig; // @synthesize accountMessageConfig=_accountMessageConfig;
 @property(readonly, nonatomic) VUIAccountConfig *accountConfig; // @synthesize accountConfig=_accountConfig;
 @property(readonly, nonatomic) VUICanonicalConfig *canonicalConfig; // @synthesize canonicalConfig=_canonicalConfig;
-@property(readonly, nonatomic) VUIContextMenuConfig *contextMenuConfig; // @synthesize contextMenuConfig=_contextMenuConfig;
 @property(readonly, nonatomic) VUIUpNextConfig *upNextConfig; // @synthesize upNextConfig=_upNextConfig;
 @property(readonly, nonatomic) VUIMediaShowcasingConfig *mediaShowcaseConfig; // @synthesize mediaShowcaseConfig=_mediaShowcaseConfig;
 @property(readonly, nonatomic) VUIDropOnTabConfig *dropOnTabConfig; // @synthesize dropOnTabConfig=_dropOnTabConfig;
 @property(readonly, nonatomic) VUISyndicationConfig *syndicationConfig; // @synthesize syndicationConfig=_syndicationConfig;
 @property(readonly, nonatomic) VUIDownloadConfig *downloadConfig; // @synthesize downloadConfig=_downloadConfig;
-@property(readonly, nonatomic) VUIInAppMessagesConfig *inAppMessagesConfig; // @synthesize inAppMessagesConfig=_inAppMessagesConfig;
 @property(readonly, nonatomic) VUILiveLinkConfig *liveLinkConfig; // @synthesize liveLinkConfig=_liveLinkConfig;
 @property(readonly, nonatomic) VUIAutoPlayConfig *autoPlayConfig; // @synthesize autoPlayConfig=_autoPlayConfig;
 @property(readonly, nonatomic) VUINowPlayingConfig *nowPlayingConfig; // @synthesize nowPlayingConfig=_nowPlayingConfig;
 @property(readonly, nonatomic) VUIPlaybackUpNextConfig *playbackUpNextConfig; // @synthesize playbackUpNextConfig=_playbackUpNextConfig;
+- (void)_populateTabItemsUpdateConfig:(id)arg1;
 - (void)_updateTVSettingsIfNeeded:(_Bool)arg1;
+- (void)_populateMultiviewConfig:(id)arg1;
+- (void)_populateRootControllerConfig:(id)arg1;
+- (void)_populateAccountMessageConfig:(id)arg1;
 - (void)_populateAccountConfig:(id)arg1;
 - (void)_populateCanonicalConfig:(id)arg1;
 - (void)_populateMediaShowcaseConfig:(id)arg1;

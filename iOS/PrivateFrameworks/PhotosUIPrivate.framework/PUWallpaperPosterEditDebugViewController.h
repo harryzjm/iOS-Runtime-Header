@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
 @class NSArray, NSString, PUWallpaperPosterDateView, PUWallpaperPosterEditToolBar, PUWallpaperPosterEditorController, UIAction, UIButton, UIPageControl, UIScrollView, UIView, _PUWallpaperPosterEditorDebugEnvironment, _PUWallpaperPosterEditorDebugPreferences;
 @protocol PUWallpaperEditingLook;
@@ -22,6 +22,9 @@ __attribute__((visibility("hidden")))
     UIView *_foregroundView;
     UIView *_floatingView;
     UIView *_contentOverlayView;
+    UIButton *_primaryActionButton;
+    UIButton *_secondaryActionButton;
+    UIButton *_actionsMenuButton;
     PUWallpaperPosterEditToolBar *_editToolBar;
     UIAction *_tapToRadarAction;
     UIPageControl *_pageControl;
@@ -41,6 +44,9 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIPageControl *pageControl; // @synthesize pageControl=_pageControl;
 @property(retain, nonatomic) UIAction *tapToRadarAction; // @synthesize tapToRadarAction=_tapToRadarAction;
 @property(retain, nonatomic) PUWallpaperPosterEditToolBar *editToolBar; // @synthesize editToolBar=_editToolBar;
+@property(retain, nonatomic) UIButton *actionsMenuButton; // @synthesize actionsMenuButton=_actionsMenuButton;
+@property(retain, nonatomic) UIButton *secondaryActionButton; // @synthesize secondaryActionButton=_secondaryActionButton;
+@property(retain, nonatomic) UIButton *primaryActionButton; // @synthesize primaryActionButton=_primaryActionButton;
 @property(retain, nonatomic) UIView *contentOverlayView; // @synthesize contentOverlayView=_contentOverlayView;
 @property(retain, nonatomic) UIView *floatingView; // @synthesize floatingView=_floatingView;
 @property(retain, nonatomic) UIView *foregroundView; // @synthesize foregroundView=_foregroundView;
@@ -78,6 +84,7 @@ __attribute__((visibility("hidden")))
 - (void)_setupPosterEditorController;
 - (void)viewDidLoad;
 - (id)initWithAssets:(id)arg1 posterType:(long long)arg2 photoLibrary:(id)arg3;
+- (id)initWithExistingConfiguration:(id)arg1 assetDirectory:(id)arg2 overrideConfiguration:(id)arg3 photoLibrary:(id)arg4;
 - (id)initWithMigratorOfLegacyConfigurationType:(unsigned long long)arg1 photoLibrary:(id)arg2;
 - (id)initWithPosterType:(long long)arg1 photoLibrary:(id)arg2;
 - (id)initWithAsset:(id)arg1 posterType:(long long)arg2;

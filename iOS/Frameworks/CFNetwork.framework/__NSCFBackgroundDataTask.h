@@ -4,36 +4,28 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSFileHandle, NSInputStream, NSObject, NSString;
-@protocol OS_dispatch_io, OS_dispatch_queue, OS_dispatch_semaphore;
+@class NSFileHandle, NSInputStream, NSObject;
+@protocol OS_dispatch_io;
 
 @interface __NSCFBackgroundDataTask
 {
+    struct shared_ptr<RequestBody> _requestBody;
     NSInputStream *_requestBodyStream;
     NSInputStream *_initialStream;
-    NSObject<OS_dispatch_queue> *_writeQueue;
     NSFileHandle *_readHandle;
     NSObject<OS_dispatch_io> *_pipeIO;
-    unsigned long long _bytesRead;
-    NSObject<OS_dispatch_semaphore> *_streamOpenedSema;
-    _Bool _finishedOpen;
+    unsigned long long _numberOfOngoingWrites;
     _Bool _openedStreamDuringNeedNewBodyStream;
-    _Bool _streamBased;
-    CDUnknownBlockType _streamWriteCompletion;
+    _Bool _readingRequestBody;
 }
 
-- (void)stream:(id)arg1 handleEvent:(unsigned long long)arg2;
+- (id).cxx_construct;
+- (void).cxx_destruct;
 - (void)dealloc;
 - (_Bool)isKindOfClass:(Class)arg1;
 - (void)_onqueue_didFinishWithError:(id)arg1;
 - (void)_onqueue_willSendRequestForEstablishedConnection:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)initWithOriginalRequest:(id)arg1 ident:(unsigned long long)arg2 taskGroup:(id)arg3;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

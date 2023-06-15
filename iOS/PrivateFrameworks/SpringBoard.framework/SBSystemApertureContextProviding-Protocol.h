@@ -15,5 +15,6 @@
 @property(readonly, nonatomic) FBScene *scene;
 @property(readonly, nonatomic) UIColor *keyColor;
 @property(readonly, nonatomic, getter=isAffiliatedWithSessionMonitor) _Bool affiliatedWithSessionMonitor;
+- (double)preferredAlertingDuration:(double)arg1;
 @end
 

@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-- (CDStruct_d1a7ebee)dataRequestKind;
+- (CDStruct_026435ec)dataRequestKind;
 - (void)submitWithHandler:(CDUnknownBlockType)arg1 networkActivity:(CDUnknownBlockType)arg2;
 - (void)cancel;
 - (id)initWithFeedbackRequestParameters:(id)arg1 placeForProblemContext:(id)arg2 userCredentials:(id)arg3 pushToken:(id)arg4 allowContactBackAtEmailAddress:(id)arg5 traits:(id)arg6;

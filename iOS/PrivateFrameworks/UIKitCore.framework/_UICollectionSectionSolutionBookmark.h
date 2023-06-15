@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSCollectionLayoutSection, _UICollectionPreferredSizes, _UICompositionalLayoutSolverSectionContainerDescriptor;
+@class NSCollectionLayoutSection, _UICollectionLayoutSectionDescriptor, _UICollectionPreferredSizes;
 @protocol _UICollectionLayoutSectionSolver, _UIContentInsetsEnvironment;
 
 __attribute__((visibility("hidden")))
@@ -18,9 +18,8 @@ __attribute__((visibility("hidden")))
     struct CGRect _globalPinningFrame;
     id <_UIContentInsetsEnvironment> _insetEnvironment;
     id <_UIContentInsetsEnvironment> _supplementaryInsetEnvironment;
-    struct CGSize _contentSize;
     _UICollectionPreferredSizes *_preferredSizes;
-    _UICompositionalLayoutSolverSectionContainerDescriptor *_memoizedContainerDescriptor;
+    _UICollectionLayoutSectionDescriptor *_memoizedDescriptor;
 }
 
 - (void).cxx_destruct;

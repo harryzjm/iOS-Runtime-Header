@@ -13,8 +13,6 @@
     MISSING_TYPE *config;
     MISSING_TYPE *knobs;
     MISSING_TYPE *formatService;
-    MISSING_TYPE *topicClusterService;
-    MISSING_TYPE *personalizationService;
     MISSING_TYPE *configurationManager;
     MISSING_TYPE *sportsOnboardingManager;
     MISSING_TYPE *sportsGraphManager;

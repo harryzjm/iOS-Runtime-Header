@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <WorkflowKit/NSObject-Protocol.h>
+#import <WorkflowKit/WFAppAttributedAction-Protocol.h>
 
-@protocol WFStandaloneShortcutAction <NSObject>
+@protocol WFStandaloneShortcutAction <WFAppAttributedAction>
 - (void)generateStandaloneShortcutRepresentation:(void (^)(WFStandaloneShortcutRepresentation *))arg1;
 
 @optional

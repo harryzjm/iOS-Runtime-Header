@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UICollectionViewCell.h>
+#import <UIKitCore/UICollectionViewCell.h>
 
-@class MISSING_TYPE;
+@class MISSING_TYPE, NSArray;
 
 __attribute__((visibility("hidden")))
 @interface _TtC9SeymourUI22ContentUnavailableCell : UICollectionViewCell
@@ -14,13 +14,16 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *delegate;
     MISSING_TYPE *itemInfo;
     MISSING_TYPE *contentUnavailableView;
+    MISSING_TYPE *contentBottomConstraint;
 }
 
 - (void).cxx_destruct;
 - (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1 withHorizontalFittingPriority:(float)arg2 verticalFittingPriority:(float)arg3;
 - (void)prepareForReuse;
+- (void)didMoveToSuperview;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+@property(nonatomic, readonly) NSArray *preferredFocusEnvironments;
 
 @end
 

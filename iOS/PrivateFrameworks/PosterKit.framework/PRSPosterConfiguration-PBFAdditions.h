@@ -9,12 +9,17 @@
 @interface PRSPosterConfiguration (PBFAdditions)
 - (id)pr_posterUUID;
 - (id)pr_posterProvider;
+- (_Bool)pr_storeAmbientWidgetLayout:(id)arg1 error:(out id *)arg2;
+- (id)pr_loadOtherMetadataWithError:(out id *)arg1;
 - (id)pr_loadSuggestionMetadataWithError:(out id *)arg1;
+- (id)pr_loadAmbientWidgetLayoutWithError:(out id *)arg1;
+- (id)pr_loadAmbientConfigurationWithError:(out id *)arg1;
 - (id)pr_loadColorVariationsWithError:(out id *)arg1;
 - (id)pr_loadComplicationLayoutWithError:(out id *)arg1;
 - (id)pr_loadTitleStyleConfigurationWithError:(out id *)arg1;
 - (id)pr_loadHomeScreenConfigurationWithError:(out id *)arg1;
 - (id)pr_loadFocusConfigurationWithError:(out id *)arg1;
 - (id)pr_loadConfiguredPropertiesWithError:(out id *)arg1;
+- (id)pr_modelObjectCache;
 @end
 

@@ -9,6 +9,6 @@
 @class BSAnimationSettings, UIStatusBar, UIStatusBarManager;
 
 @protocol SBFStatusBarManagerObserver <NSObject>
-- (void)statusBarManager:(UIStatusBarManager *)arg1 didUpdateAvoidanceFrameForStatusBar:(UIStatusBar *)arg2 withAnimationSettings:(BSAnimationSettings *)arg3 isInteractive:(_Bool)arg4;
+- (void)statusBarManager:(UIStatusBarManager *)arg1 didUpdateAvoidanceFrameForStatusBar:(UIStatusBar *)arg2 withAnimationSettings:(BSAnimationSettings *)arg3;
 @end
 

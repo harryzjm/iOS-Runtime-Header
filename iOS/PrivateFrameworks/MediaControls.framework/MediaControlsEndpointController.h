@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class MPAVEndpointRoute, MPAVRoutingController, MPCPlayerPath, MPCPlayerResponse, MPMediaControlsConfiguration, MPRequestResponseController, NSArray, NSString;
-@protocol MediaControlsEndpointControllerConnectionDelegate, MediaControlsEndpointControllerDelegate, MediaControlsEndpointObserverDelegate, OS_dispatch_queue;
+@class MPAVEndpointRoute, MPCPlayerPath, MPCPlayerResponse, MPMediaControlsConfiguration, MPRequestResponseController, NSArray, NSString;
+@protocol MediaControlsEndpointControllerConnectionDelegate, MediaControlsEndpointControllerDelegate, MediaControlsEndpointObserverDelegate;
 
 __attribute__((visibility("hidden")))
 @interface MediaControlsEndpointController : NSObject
 {
     _Bool _allowsAutomaticResponseLoading;
+    _Bool _hasAvailableRoutes;
     _Bool _onScreen;
     _Bool _deviceUnlocked;
     _Bool _hasEverReceivedResponse;
@@ -26,8 +27,6 @@ __attribute__((visibility("hidden")))
     MPRequestResponseController *_requestController;
     NSString *_specifiedClient;
     NSString *_specifiedPlayer;
-    MPAVRoutingController *_routingController;
-    NSObject<OS_dispatch_queue> *_routingControllerQueue;
     NSString *_predictedDeviceUID;
     id <MediaControlsEndpointControllerConnectionDelegate> _connectionDelegate;
 }
@@ -36,8 +35,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak id <MediaControlsEndpointControllerConnectionDelegate> connectionDelegate; // @synthesize connectionDelegate=_connectionDelegate;
 @property(nonatomic, getter=isAutomaticResponseLoading) _Bool automaticResponseLoading; // @synthesize automaticResponseLoading=_automaticResponseLoading;
 @property(readonly, copy, nonatomic) NSString *predictedDeviceUID; // @synthesize predictedDeviceUID=_predictedDeviceUID;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *routingControllerQueue; // @synthesize routingControllerQueue=_routingControllerQueue;
-@property(retain, nonatomic) MPAVRoutingController *routingController; // @synthesize routingController=_routingController;
 @property(readonly, nonatomic) NSString *specifiedPlayer; // @synthesize specifiedPlayer=_specifiedPlayer;
 @property(readonly, nonatomic) NSString *specifiedClient; // @synthesize specifiedClient=_specifiedClient;
 @property(nonatomic, getter=isAttemptingConnection) _Bool attemptingConnection; // @synthesize attemptingConnection=_attemptingConnection;
@@ -47,6 +44,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak id <MediaControlsEndpointControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) _Bool deviceUnlocked; // @synthesize deviceUnlocked=_deviceUnlocked;
 @property(nonatomic) _Bool onScreen; // @synthesize onScreen=_onScreen;
+@property(readonly, nonatomic) _Bool hasAvailableRoutes; // @synthesize hasAvailableRoutes=_hasAvailableRoutes;
 @property(nonatomic) _Bool allowsAutomaticResponseLoading; // @synthesize allowsAutomaticResponseLoading=_allowsAutomaticResponseLoading;
 @property(nonatomic) long long state; // @synthesize state=_state;
 @property(readonly, copy, nonatomic) NSArray *routeNames; // @synthesize routeNames=_routeNames;
@@ -56,15 +54,12 @@ __attribute__((visibility("hidden")))
 - (void)_connectionDidAttemptConnection:(id)arg1;
 - (void)_connectionDidConnect:(id)arg1;
 - (void)_connectionDidInvalidate:(id)arg1;
-- (void)routingControllerAvailableRoutesDidChange:(id)arg1;
-- (void)routingController:(id)arg1 pickedRouteDidChange:(id)arg2;
 - (void)_reloadPlayerPathWithRoute:(id)arg1;
 - (void)_maybeReloadPlayerPathWithRoute:(id)arg1;
 - (void)_connectIfNeeded;
 - (void)_updateState;
 - (void)_getConnected:(_Bool *)arg1 connecting:(_Bool *)arg2 invalid:(_Bool *)arg3;
 - (void)_getConnected:(_Bool *)arg1 invalid:(_Bool *)arg2;
-- (void)_initRoutingController;
 - (void)_createRequestController;
 - (void)_connectionHasBecomeInvalid;
 - (_Bool)controller:(id)arg1 shouldRetryFailedRequestWithError:(id)arg2;
@@ -79,7 +74,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic, getter=isRoutingToWireless) _Bool routingToWireless;
 @property(readonly, nonatomic) _Bool isDeviceSystemRoute;
 @property(readonly, nonatomic, getter=isAirPlaying) _Bool airplaying;
-@property(readonly, nonatomic) _Bool hasAvailableRoutes;
 @property(readonly, nonatomic) MPCPlayerPath *playerPath;
 @property(readonly, copy, nonatomic) NSString *representedBundleID;
 @property(readonly, copy, nonatomic) NSString *bundleID;

@@ -4,16 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/NSObject-Protocol.h>
+#import <UIKitCore/_UIColorPickerViewProvidingDelegate-Protocol.h>
 
-@class NSError, NSString, UIColor;
+@class NSError;
 
-@protocol _UIColorPickerRemoteViewControllerHost <NSObject>
+@protocol _UIColorPickerRemoteViewControllerHost <_UIColorPickerViewProvidingDelegate>
 - (void)_colorPickerViewServiceDidTerminateWithError:(NSError *)arg1;
-- (void)_colorPickerDidFinish;
-- (void)_pickerDidDismissEyedropper;
-- (void)_pickerDidFloatEyedropper;
-- (void)_pickerDidShowEyedropper;
-- (void)_pickerDidSelectColor:(UIColor *)arg1 colorspace:(NSString *)arg2 isVolatile:(_Bool)arg3;
+- (void)_colorPickerDidUpdatePreferredContentSize:(struct CGSize)arg1;
 @end
 

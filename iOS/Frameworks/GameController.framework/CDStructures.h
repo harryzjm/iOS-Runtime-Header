@@ -12,21 +12,6 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
-struct CGPoint {
-    double x;
-    double y;
-};
-
-struct CGRect {
-    struct CGPoint origin;
-    struct CGSize size;
-};
-
-struct CGSize {
-    double width;
-    double height;
-};
-
 struct GCQuaternion {
     double x;
     double y;
@@ -111,26 +96,9 @@ struct PrimitiveStateEntry {
     unsigned long long _field1;
 };
 
-struct UIEdgeInsets {
-    double top;
-    double left;
-    double bottom;
-    double right;
-};
-
 struct UsagePage_Usage_Pair {
     long long usagePage;
     long long usage;
-};
-
-struct _GCDevicePhysicalInputAxisInputParams {
-    _Bool _field1;
-    _Bool _field2;
-};
-
-struct _GCDevicePhysicalInputButtonInputParams {
-    _Bool _field1;
-    float _field2;
 };
 
 struct _NSRange {
@@ -164,6 +132,23 @@ typedef struct {
 typedef struct {
     unsigned int _field1[8];
 } CDStruct_6ad76789;
+
+typedef struct {
+    double _field1;
+    double _field2;
+} CDStruct_c3b9c2ee;
+
+typedef struct {
+    unsigned long long _field1;
+    unsigned long long _field2;
+    union {
+        struct {
+            float _field1;
+            float _field2;
+        } _field1;
+        long long _field2;
+    } _field3;
+} CDStruct_f61ac39c;
 
 typedef struct {
     struct {
@@ -213,4 +198,16 @@ typedef struct {
     double y;
     double z;
 } CDStruct_31142d93;
+
+#pragma mark Named Unions
+
+union SlotID {
+    unsigned long long _field1;
+    struct {
+        unsigned int _field1;
+        unsigned int :8;
+        unsigned int :8;
+        unsigned short _field2;
+    } _field2;
+};
 

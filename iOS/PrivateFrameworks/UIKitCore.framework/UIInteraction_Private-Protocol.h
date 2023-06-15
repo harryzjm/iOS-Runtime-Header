@@ -6,9 +6,13 @@
 
 #import <UIKitCore/UIInteraction-Protocol.h>
 
+@class UIWindow;
 @protocol UIInteractionEffect;
 
 @protocol UIInteraction_Private <UIInteraction>
+
+@optional
 @property(retain, nonatomic) id <UIInteractionEffect> interactionEffect;
+- (void)_didMoveFromWindow:(UIWindow *)arg1 toWindow:(UIWindow *)arg2;
 @end
 

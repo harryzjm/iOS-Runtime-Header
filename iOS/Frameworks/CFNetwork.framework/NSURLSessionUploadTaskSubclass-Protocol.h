@@ -7,5 +7,6 @@
 #import <CFNetwork/NSURLSessionDataTaskSubclass-Protocol.h>
 
 @protocol NSURLSessionUploadTaskSubclass <NSURLSessionDataTaskSubclass>
+- (void)_onqueue_cancelByProducingResumeData:(void (^)(NSData *))arg1;
 @end
 

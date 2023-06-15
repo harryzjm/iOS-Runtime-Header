@@ -13,10 +13,13 @@
     MISSING_TYPE *appleNewsContent;
     MISSING_TYPE *appleNewsPrivateData;
     MISSING_TYPE *isBilingualFeedAvailable;
-    MISSING_TYPE *isEarningsDatesEnabled;
-    MISSING_TYPE *isMultipleWatchlistsEnabled;
     MISSING_TYPE *isAppReviewPromptEnabled;
     MISSING_TYPE *isCIPBestOfferEnabled;
+    MISSING_TYPE *isWatchlistSortingEnabled;
+    MISSING_TYPE *isPaidBundleViaOfferEnabled;
+    MISSING_TYPE *isNewsFreeExperienceEnabled;
+    MISSING_TYPE *symbolsInArticlesEnabled;
+    MISSING_TYPE *isYahooNewsAttributionInWidgetEnabled;
     MISSING_TYPE *appConfiguration;
 }
 

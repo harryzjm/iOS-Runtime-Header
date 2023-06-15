@@ -6,11 +6,13 @@
 
 #import <SearchFoundation/NSObject-Protocol.h>
 
-@class NSData, NSDictionary, NSString;
+@class NSData, NSDictionary, NSString, SFTopic;
 
 @protocol SFCommand <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property(copy, nonatomic) NSData *backendData;
+@property(retain, nonatomic) SFTopic *normalizedTopic;
 @property(copy, nonatomic) NSString *commandDetail;
 @end
 

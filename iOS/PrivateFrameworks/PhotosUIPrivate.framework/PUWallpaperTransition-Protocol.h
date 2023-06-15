@@ -7,5 +7,6 @@
 #import <PhotosUIPrivate/NSObject-Protocol.h>
 
 @protocol PUWallpaperTransition <NSObject>
+@property(nonatomic) double pu_Duration;
 @end
 

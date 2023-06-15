@@ -33,6 +33,8 @@
 - (id)requestOperationClasses;
 - (id)zoneIDsToLock;
 - (_Bool)allowsAnonymousAccount;
+- (void)fillOutRequestProperties:(id)arg1;
+- (id)equivalencyProperties;
 - (id)initWithOperation:(id)arg1 deltas:(id)arg2 replacementRequests:(id)arg3;
 
 @end

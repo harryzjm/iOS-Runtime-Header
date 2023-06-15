@@ -15,6 +15,7 @@
 - (void)getImageMap:(void (^)(NSDictionary *))arg1;
 - (void)updateParametersForSmartSearchV1:(PARSmartSearchV1Parameters *)arg1 smartSearchV2:(PARSmartSearchV2Parameters *)arg2;
 - (void)clearEncodedEngagedResults:(NSArray *)arg1 withConfiguration:(PARSessionConfiguration *)arg2 completion:(void (^)(NSError *))arg3;
+- (void)allEngagedResults:(NSString *)arg1 maxCount:(long long)arg2 withConfiguration:(PARSessionConfiguration *)arg3 completion:(void (^)(NSArray *))arg4;
 - (void)topEncodedEngagedResultsForInput:(NSString *)arg1 maxCount:(long long)arg2 withConfiguration:(PARSessionConfiguration *)arg3 completion:(void (^)(NSArray *))arg4;
 - (void)addEncodedEngagedResults:(NSArray *)arg1 withConfiguration:(PARSessionConfiguration *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)addEncodedEngagedResults:(NSArray *)arg1 withConfiguration:(PARSessionConfiguration *)arg2;

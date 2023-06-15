@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) NSMutableSet *mutableRelatedElements; // @synthesize mutableRelatedElements=_mutableRelatedElements;
 @property(readonly) _Bool hasMatched; // @synthesize hasMatched=_hasMatched;
 @property unsigned long long count; // @synthesize count=_count;
-@property(readonly) XCTElementIndexingTransformer *indexingTransformer; // @synthesize indexingTransformer=_indexingTransformer;
+@property(readonly) __weak XCTElementIndexingTransformer *indexingTransformer; // @synthesize indexingTransformer=_indexingTransformer;
 @property(retain) XCElementSnapshot *currentMatch; // @synthesize currentMatch=_currentMatch;
 @property(readonly) id <XCTElementSetTransformer> transformer; // @synthesize transformer=_transformer;
 @property(retain) XCElementSnapshot *input; // @synthesize input=_input;

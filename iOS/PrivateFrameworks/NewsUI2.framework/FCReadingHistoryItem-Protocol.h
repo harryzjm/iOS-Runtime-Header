@@ -11,35 +11,32 @@
 @class CKRecord, NSDate, NSString;
 
 @protocol FCReadingHistoryItem <NSObject, NSCopying, NSMutableCopying>
-@property(nonatomic, readonly) CKRecord *asCKRecord;
-- (_Bool)isPruningDisabled;
-@property(nonatomic, readonly) unsigned long long articleLikingStatus;
-@property(nonatomic, readonly) _Bool hasArticleBeenRemovedFromAudio;
-@property(nonatomic, readonly) _Bool hasArticleCompletedReading;
-@property(nonatomic, readonly) _Bool hasArticleCompletedListening;
-@property(nonatomic, readonly) _Bool hasArticleBeenConsumed;
-@property(nonatomic, readonly) _Bool hasArticleBeenMarkedOffensive;
-@property(nonatomic, readonly) _Bool hasArticleBeenSeen;
-@property(nonatomic, readonly) _Bool hasArticleBeenRead;
-@property(nonatomic, readonly) unsigned long long flags;
-@property(nonatomic, readonly) long long readCount;
-@property(nonatomic, readonly) NSDate *readingPositionSavedAt;
-@property(nonatomic, readonly) NSString *readingPosition;
-@property(nonatomic, readonly) NSDate *lastListenedAt;
-@property(nonatomic, readonly) NSDate *listeningProgressSavedAt;
-@property(nonatomic, readonly) double listeningProgress;
-@property(nonatomic, readonly) long long listenedCount;
-@property(nonatomic, readonly) long long maxVersionSeen;
-@property(nonatomic, readonly) NSDate *firstSeenAtOfMaxVersionSeen;
-@property(nonatomic, readonly) NSDate *firstSeenAt;
-@property(nonatomic, readonly) long long maxVersionRead;
-@property(nonatomic, readonly) NSDate *lastVisitedAt;
-@property(nonatomic, readonly) NSString *deviceID;
-@property(nonatomic, readonly) NSString *sourceChannelTagID;
-@property(nonatomic, readonly) NSString *articleID;
-@property(nonatomic, readonly) NSString *identifier;
-
-// Remaining properties
-@property(nonatomic, readonly) _Bool pruningDisabled;
+@property(readonly, nonatomic) CKRecord *asCKRecord;
+@property(readonly, nonatomic, getter=isPruningDisabled) _Bool pruningDisabled;
+@property(readonly, nonatomic) unsigned long long articleLikingStatus;
+@property(readonly, nonatomic) _Bool hasArticleBeenRemovedFromAudio;
+@property(readonly, nonatomic) _Bool hasArticleCompletedReading;
+@property(readonly, nonatomic) _Bool hasArticleCompletedListening;
+@property(readonly, nonatomic) _Bool hasArticleBeenConsumed;
+@property(readonly, nonatomic) _Bool hasArticleBeenMarkedOffensive;
+@property(readonly, nonatomic) _Bool hasArticleBeenSeen;
+@property(readonly, nonatomic) _Bool hasArticleBeenRead;
+@property(readonly, nonatomic) unsigned long long flags;
+@property(readonly, nonatomic) long long readCount;
+@property(readonly, copy, nonatomic) NSDate *readingPositionSavedAt;
+@property(readonly, copy, nonatomic) NSString *readingPosition;
+@property(readonly, copy, nonatomic) NSDate *lastListenedAt;
+@property(readonly, copy, nonatomic) NSDate *listeningProgressSavedAt;
+@property(readonly, nonatomic) double listeningProgress;
+@property(readonly, nonatomic) long long listenedCount;
+@property(readonly, nonatomic) long long maxVersionSeen;
+@property(readonly, copy, nonatomic) NSDate *firstSeenAtOfMaxVersionSeen;
+@property(readonly, copy, nonatomic) NSDate *firstSeenAt;
+@property(readonly, nonatomic) long long maxVersionRead;
+@property(readonly, copy, nonatomic) NSDate *lastVisitedAt;
+@property(readonly, copy, nonatomic) NSString *deviceID;
+@property(readonly, copy, nonatomic) NSString *sourceChannelTagID;
+@property(readonly, copy, nonatomic) NSString *articleID;
+@property(readonly, copy, nonatomic) NSString *identifier;
 @end
 

@@ -7,11 +7,12 @@
 #import <NewsCore/NFCopying-Protocol.h>
 #import <NewsCore/NSObject-Protocol.h>
 
-@class NSArray, NSDictionary, NSString;
-@protocol FCPersonalizationAggregate;
+@class NSArray, NSDictionary, NSString, NTPBPersonalizationAggregate;
 
 @protocol FCDerivedPersonalizationData <NSObject, NFCopying>
-- (id <FCPersonalizationAggregate>)aggregateForFeatureKey:(NSString *)arg1;
+@property(readonly, nonatomic) unsigned long long scoringType;
+- (NTPBPersonalizationAggregate *)aggregateForFeatureKey:(NSString *)arg1;
 - (NSDictionary *)aggregatesForFeatureKeys:(NSArray *)arg1;
+- (NSDictionary *)allAggregates;
 @end
 

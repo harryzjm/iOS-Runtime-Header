@@ -14,17 +14,16 @@ __attribute__((visibility("hidden")))
 {
     _Bool _actionSheet;
     PHFetchResult *_collectionListFetchResult;
+    PUPhotoSelectionManager *_selectionManager;
     PXPhotosDataSource *_photosDataSource;
     NSString *_localizedTitle;
     NSString *_localizedSubtitle;
     id <PXDisplayAsset> _keyAsset;
     PHPerson *_person;
     long long _sourceOrigin;
-    PUPhotoSelectionManager *_selectionManager;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) PUPhotoSelectionManager *selectionManager; // @synthesize selectionManager=_selectionManager;
 @property(readonly, nonatomic) long long sourceOrigin; // @synthesize sourceOrigin=_sourceOrigin;
 @property(readonly, nonatomic) PHPerson *person; // @synthesize person=_person;
 @property(readonly, nonatomic) id <PXDisplayAsset> keyAsset; // @synthesize keyAsset=_keyAsset;
@@ -32,6 +31,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy, nonatomic) NSString *localizedTitle; // @synthesize localizedTitle=_localizedTitle;
 @property(readonly, nonatomic, getter=isActionSheet) _Bool actionSheet; // @synthesize actionSheet=_actionSheet;
 @property(readonly, nonatomic) PXPhotosDataSource *photosDataSource; // @synthesize photosDataSource=_photosDataSource;
+@property(retain, nonatomic) PUPhotoSelectionManager *selectionManager; // @synthesize selectionManager=_selectionManager;
 @property(readonly, nonatomic) PHFetchResult *collectionListFetchResult; // @synthesize collectionListFetchResult=_collectionListFetchResult;
 - (void)setActionSheet:(_Bool)arg1;
 - (void)performChanges:(CDUnknownBlockType)arg1;

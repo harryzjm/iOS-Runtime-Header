@@ -4,15 +4,29 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
+
+@class MISSING_TYPE, NSArray;
 
 __attribute__((visibility("hidden")))
 @interface _TtCC7SwiftUI17HostingScrollView22PlatformGroupContainer : UIView
 {
+    MISSING_TYPE *scrollView;
+    MISSING_TYPE *_focusableBounds;
+    MISSING_TYPE *_focusableFillerBounds;
+    MISSING_TYPE *_focusableBorder;
+    MISSING_TYPE *fillerItems;
+    MISSING_TYPE *requestedFocusItem;
 }
 
++ (_Bool)_supportsInvalidatingFocusCache;
+- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)focusItemsInRect:(struct CGRect)arg1;
+- (id)_childFocusRegionsInRect:(struct CGRect)arg1 inCoordinateSpace:(id)arg2;
+@property(nonatomic, readonly) NSArray *preferredFocusEnvironments;
+- (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 
 @end
 

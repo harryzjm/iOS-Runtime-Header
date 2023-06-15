@@ -16,7 +16,7 @@
     MISSING_TYPE *mediaTagStringBuilder;
     MISSING_TYPE *storefrontLocalizer;
     MISSING_TYPE *eventHub;
-    MISSING_TYPE *rootProperty;
+    MISSING_TYPE *filterRoot;
     MISSING_TYPE *subscriptionToken;
     MISSING_TYPE *currentItem;
     MISSING_TYPE *displaysSeparatorBelow;

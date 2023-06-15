@@ -10,6 +10,7 @@
 - (id)vcp_highResImageResourcesForAsset:(id)arg1;
 - (float)vcp_getFpsRate;
 - (id)vcp_avAsset:(_Bool)arg1;
+- (id)vcp_movieResourcesSorted:(_Bool)arg1;
 - (id)vcp_localMovieResourcesSorted:(_Bool)arg1;
 - (id)vcp_photoResourcesSorted:(_Bool)arg1;
 - (id)vcp_localPhotoResourcesSorted:(_Bool)arg1;

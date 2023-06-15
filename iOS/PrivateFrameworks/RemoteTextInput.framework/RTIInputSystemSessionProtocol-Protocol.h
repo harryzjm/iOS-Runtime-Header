@@ -23,6 +23,7 @@
 - (oneway void)remoteTextInputSessionWithID:(NSUUID *)arg1 textSuggestionsChanged:(NSData *)arg2;
 - (oneway void)remoteTextInputSessionWithID:(NSUUID *)arg1 didChangePause:(_Bool)arg2 withReason:(NSString *)arg3;
 - (oneway void)remoteTextInputSessionWithID:(NSUUID *)arg1 documentTraitsDidChange:(RTIDocumentTraits *)arg2;
+- (oneway void)endRemoteTextInputSessionWithID:(NSUUID *)arg1 options:(RTISessionOptions *)arg2 completion:(void (^)(void))arg3;
 - (oneway void)endRemoteTextInputSessionWithID:(NSUUID *)arg1 options:(RTISessionOptions *)arg2;
 - (oneway void)beginRemoteTextInputSessionWithID:(NSUUID *)arg1 options:(RTISessionOptions *)arg2 documentTraits:(RTIDocumentTraits *)arg3 initialDocumentState:(RTIDocumentState *)arg4;
 @end

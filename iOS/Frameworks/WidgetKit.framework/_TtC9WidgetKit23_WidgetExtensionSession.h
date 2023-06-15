@@ -10,24 +10,27 @@
 
 @interface _TtC9WidgetKit23_WidgetExtensionSession : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *theExtension;
+    MISSING_TYPE *extensionIdentity;
+    MISSING_TYPE *extensionProcess;
     MISSING_TYPE *sessionUUID;
-    MISSING_TYPE *hostContext;
-    MISSING_TYPE *loggingIdentifier;
+    MISSING_TYPE *$__lazy_storage_$_loggingIdentifier;
     MISSING_TYPE *lock;
     MISSING_TYPE *subscriptions;
     MISSING_TYPE *watchdogTimeoutQueue;
     MISSING_TYPE *watchdogTimeoutProvider;
     MISSING_TYPE *rbsInterface;
     MISSING_TYPE *suspensionObserver;
+    MISSING_TYPE *shouldTakeExtensionAssertion;
     MISSING_TYPE *widgetExtensionAssertion;
     MISSING_TYPE *bundleProvider;
     MISSING_TYPE *lock_invalidated;
     MISSING_TYPE *connection;
 }
 
+@property(nonatomic, readonly) int pid;
 - (void)invalidate;
 - (void)getActivitiesWithRequests:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)getAppIntentsXPCListenerEndpointWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getTimelineFor:(id)arg1 into:(id)arg2 environment:(id)arg3 isPreview:(_Bool)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)getTimelinesWithRequests:(id)arg1 isPreview:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)attachPreviewAgentWithFrameworkPath:(id)arg1 endpoint:(id)arg2 handler:(CDUnknownBlockType)arg3;

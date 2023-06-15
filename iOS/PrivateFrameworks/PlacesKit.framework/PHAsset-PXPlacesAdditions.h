@@ -9,10 +9,10 @@
 @class NSString;
 
 @interface PHAsset (PXPlacesAdditions)
-+ (id)pk_fetchPlacesAssetsInAssetCollection:(id)arg1 options:(id)arg2;
-- (long long)pk_isContentEqualTo:(id)arg1;
++ (id)pk_fetchPlacesAssetsInAssetCollection:(id)arg1 shouldMergeOptionFetchPropertySets:(_Bool)arg2 options:(id)arg3;
 - (long long)compareTo:(id)arg1;
 - (struct CLLocationCoordinate2D)coordinate;
+- (long long)pk_isContentEqualTo:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -4,7 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSString;
+
 @protocol UMUserVolumeMigration
+- (_Bool)migrateGuestUserVolume:(NSString *)arg1 withError:(id *)arg2;
 - (_Bool)migrateSharedAndPrimaryUserVolumeWithError:(id *)arg1;
 @end
 

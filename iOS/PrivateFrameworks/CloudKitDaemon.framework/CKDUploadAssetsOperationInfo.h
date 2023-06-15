@@ -11,12 +11,14 @@
 @interface CKDUploadAssetsOperationInfo : CKDatabaseOperationInfo
 {
     _Bool _temporary;
+    _Bool _shouldCloneFileInAssetCache;
     NSArray *_assetsToUpload;
     NSDictionary *_assetUUIDToExpectedProperties;
     NSDictionary *_packageUUIDToExpectedProperties;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool shouldCloneFileInAssetCache; // @synthesize shouldCloneFileInAssetCache=_shouldCloneFileInAssetCache;
 @property(nonatomic) _Bool temporary; // @synthesize temporary=_temporary;
 @property(retain, nonatomic) NSDictionary *packageUUIDToExpectedProperties; // @synthesize packageUUIDToExpectedProperties=_packageUUIDToExpectedProperties;
 @property(retain, nonatomic) NSDictionary *assetUUIDToExpectedProperties; // @synthesize assetUUIDToExpectedProperties=_assetUUIDToExpectedProperties;

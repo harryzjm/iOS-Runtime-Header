@@ -13,7 +13,7 @@
 + (void)p_loadSectionsForBrush:(id)arg1 fromSVGDoc:(struct _xmlDoc *)arg2 intoStorage:(id)arg3;
 + (void)p_loadImageForBrush:(id)arg1 intoStorage:(id)arg2;
 + (void)p_loadLineEndsForBrush:(id)arg1 fromSVGDoc:(struct _xmlDoc *)arg2 intoStorage:(id)arg3;
-+ (void)p_loadLineEndTextureForBrush:(id)arg1 lineEnd:(id)arg2 path:(const struct CGPath *)arg3 andBounds:(struct CGRect)arg4;
++ (void)p_loadLineEndTextureForBrush:(id)arg1 lineEnd:(id)arg2 path:(struct CGPath *)arg3 andBounds:(struct CGRect)arg4;
 + (void)p_clearOnDiskCache;
 + (void)p_loadBrushIfNeeded:(id)arg1;
 + (double)p_brushPixelScaleAt100Percent;

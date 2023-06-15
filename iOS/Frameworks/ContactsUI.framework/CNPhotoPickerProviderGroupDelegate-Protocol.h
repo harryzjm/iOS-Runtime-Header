@@ -10,6 +10,6 @@
 
 @protocol CNPhotoPickerProviderGroupDelegate <NSObject>
 - (void)photoPickerProviderGroup:(CNPhotoPickerProviderGroup *)arg1 didUpdateItem:(CNPhotoPickerProviderItem *)arg2;
-- (void)photoPickerProviderGroupDidUpdate:(CNPhotoPickerProviderGroup *)arg1;
+- (void)photoPickerProviderGroupDidUpdate:(CNPhotoPickerProviderGroup *)arg1 requiresFullReload:(_Bool)arg2;
 @end
 

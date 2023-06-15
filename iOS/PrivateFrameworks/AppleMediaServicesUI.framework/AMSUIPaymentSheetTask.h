@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (id)presentationWindowForPaymentAuthorizationController:(id)arg1;
+- (id)presentationSceneBundleIdentifierForPaymentAuthorizationController:(id)arg1;
 - (id)presentationSceneIdentifierForPaymentAuthorizationController:(id)arg1;
 - (void)paymentAuthorizationControllerDidFinish:(id)arg1;
 

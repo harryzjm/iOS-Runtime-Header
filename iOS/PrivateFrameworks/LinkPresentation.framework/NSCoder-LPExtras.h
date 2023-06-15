@@ -7,10 +7,12 @@
 #import <Foundation/NSCoder.h>
 
 @interface NSCoder (LPExtras)
+@property(nonatomic, setter=_lp_setCoderType:) unsigned long long _lp_coderType;
 - (id)_lp_strictlyDecodeColorForKey:(id)arg1;
 - (void)_lp_encodeColorIfNotNil:(id)arg1 forKey:(id)arg2;
 - (void)_lp_encodeURLIfNotNilOrLocalFile:(id)arg1 forKey:(id)arg2;
 - (void)_lp_encodeArrayIfNotEmpty:(id)arg1 forKey:(id)arg2;
+- (void)_lp_encodeStringIfNotNil:(id)arg1 forKey:(id)arg2;
 - (void)_lp_encodeObjectIfNotNil:(id)arg1 forKey:(id)arg2;
 - (id)_lp_strictlyDecodeDictionaryOfObjectsWithKeysOfClass:(Class)arg1 andObjectsOfClass:(Class)arg2 forKey:(id)arg3;
 - (id)_lp_strictlyDecodeArrayOfObjectsOfClasses:(id)arg1 forKey:(id)arg2;

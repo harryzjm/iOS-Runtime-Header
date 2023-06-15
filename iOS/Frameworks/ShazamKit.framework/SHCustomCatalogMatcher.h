@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MRE, NSString, SHCustomCatalog;
+@class MRE, NSString, SHCustomCatalog, SHCustomCatalogMatcherResultBuilder;
 @protocol SHMatcherDelegate;
 
 __attribute__((visibility("hidden")))
@@ -15,18 +15,27 @@ __attribute__((visibility("hidden")))
     id <SHMatcherDelegate> _delegate;
     MRE *_mre;
     SHCustomCatalog *_customCatalog;
+    SHCustomCatalogMatcherResultBuilder *_matchResultBuilder;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) SHCustomCatalog *customCatalog; // @synthesize customCatalog=_customCatalog;
+@property(readonly, nonatomic) SHCustomCatalogMatcherResultBuilder *matchResultBuilder; // @synthesize matchResultBuilder=_matchResultBuilder;
+@property(readonly, nonatomic) SHCustomCatalog *customCatalog; // @synthesize customCatalog=_customCatalog;
 @property(retain, nonatomic) MRE *mre; // @synthesize mre=_mre;
 @property(nonatomic) __weak id <SHMatcherDelegate> delegate; // @synthesize delegate=_delegate;
-- (id)mediaItemsFromTrackID:(unsigned long long)arg1 offset:(id)arg2 timeSkew:(id)arg3 frequencySkew:(id)arg4 score:(id)arg5 audioStartDate:(id)arg6;
-- (void)stop;
+- (void)stopRecognitionForRequestID:(id)arg1;
+- (void)stopRecognition;
+- (_Bool)shouldTrackQuerySignature:(id)arg1;
+- (id)stringIDFromTrackID:(unsigned long long)arg1;
+- (id)bestMatchFromMatchedResults:(id)arg1;
+- (id)matcherResponseFrom:(id)arg1 signatureAlignments:(id)arg2 querySignature:(id)arg3 error:(id)arg4;
+- (id)matchLongSignature:(id)arg1;
+- (id)matchShortSignature:(id)arg1;
 - (void)startRecognitionForRequest:(id)arg1;
 - (id)MRESignaturesFromMatches:(id)arg1;
 - (void)buildMRE;
 - (long long)storeDensityToMREDensity:(long long)arg1;
+- (long long)algorithmToMREAlgorithm:(long long)arg1;
 - (id)initWithCustomCatalog:(id)arg1;
 
 // Remaining properties

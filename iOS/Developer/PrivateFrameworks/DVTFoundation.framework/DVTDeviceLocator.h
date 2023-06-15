@@ -11,17 +11,21 @@
 @interface DVTDeviceLocator : NSObject
 {
     NSMutableSet *_locatedDevices;
+    NSString *_deviceFrameworkVersionAnalyticsKey;
+    NSString *_deviceFrameworkVersion;
 }
 
 + (id)deviceLocator;
 + (void)initialize;
 - (void).cxx_destruct;
+@property(readonly) NSString *deviceFrameworkVersion; // @synthesize deviceFrameworkVersion=_deviceFrameworkVersion;
+@property(readonly) NSString *deviceFrameworkVersionAnalyticsKey; // @synthesize deviceFrameworkVersionAnalyticsKey=_deviceFrameworkVersionAnalyticsKey;
 - (void)unpairDevice:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)pairCompanionDevice:(id)arg1 withGizmoDevice:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)deleteDevice:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (_Bool)matchDevice:(id)arg1 againstOptions:(id)arg2 genericOnly:(_Bool)arg3;
 - (_Bool)matchDevice:(id)arg1 againstOptions:(id)arg2 genericOnly:(_Bool)arg3 allowAliases:(_Bool)arg4;
-- (_Bool)validateDeviceSpecifierOptions:(id)arg1 genericOnly:(_Bool)arg2 allowMultipleMatches:(_Bool)arg3 error:(id *)arg4;
+- (_Bool)validateDeviceSpecifierOptions:(id)arg1 genericOnly:(_Bool)arg2 error:(id *)arg3;
 @property(readonly) DVTDeviceType *deviceType; // @dynamic deviceType;
 - (id)knownDeviceAtDeviceLocation:(id)arg1;
 - (void)stopLocating;

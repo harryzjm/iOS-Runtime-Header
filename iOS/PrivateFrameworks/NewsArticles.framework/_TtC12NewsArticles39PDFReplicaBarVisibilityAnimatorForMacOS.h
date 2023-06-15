@@ -13,7 +13,6 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *shouldHideStatusBar;
     MISSING_TYPE *delegate;
-    MISSING_TYPE *navigationController;
     MISSING_TYPE *hoverGestureRecognizer;
     MISSING_TYPE *barHideTimer;
     MISSING_TYPE *barHider;

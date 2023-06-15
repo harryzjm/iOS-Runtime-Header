@@ -6,13 +6,14 @@
 
 #import <DashBoard/NSObject-Protocol.h>
 
-@class NSArray;
+@class NSArray, NSDictionary;
 
 @protocol CRSAppHistoryDataProviding <NSObject>
-- (void)setSessionFeatureKeys:(NSArray *)arg1 completion:(void (^)(NSNumber *, NSError *))arg2;
-- (void)getSessionFeatureKeysWithCompletion:(void (^)(NSArray *, NSError *))arg1;
-- (void)getSessionEchoContextStatesWithCompletion:(void (^)(NSArray *, NSError *))arg1;
-- (void)getSessionUIContextStatesWithCompletion:(void (^)(NSArray *, NSError *))arg1;
-- (void)getUIContextStatesWithCompletion:(void (^)(NSArray *, NSError *))arg1;
+- (oneway void)setAnalyticsValues:(NSDictionary *)arg1 onEvent:(unsigned long long)arg2 completion:(void (^)(NSError *))arg3;
+- (oneway void)setSessionFeatureKeys:(NSArray *)arg1 completion:(void (^)(NSNumber *, NSError *))arg2;
+- (oneway void)getSessionFeatureKeysWithCompletion:(void (^)(NSArray *, NSError *))arg1;
+- (oneway void)getSessionEchoContextStatesWithCompletion:(void (^)(NSArray *, NSError *))arg1;
+- (oneway void)getSessionUIContextStatesWithCompletion:(void (^)(NSArray *, NSError *))arg1;
+- (oneway void)getUIContextStatesWithCompletion:(void (^)(NSArray *, NSError *))arg1;
 @end
 

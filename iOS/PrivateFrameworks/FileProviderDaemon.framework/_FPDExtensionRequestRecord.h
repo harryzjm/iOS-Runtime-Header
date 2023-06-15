@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class FPXPCAutomaticErrorProxy, NSDate, NSObservation, NSProgress;
-@protocol OS_dispatch_queue, OS_dispatch_source;
+@protocol OS_dispatch_queue, OS_dispatch_source, OS_os_log;
 
 __attribute__((visibility("hidden")))
 @interface _FPDExtensionRequestRecord : NSObject
@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     SEL _selector;
     NSProgress *_progress;
     NSObject<OS_dispatch_queue> *_queue;
+    NSObject<OS_os_log> *_log;
     CDUnknownBlockType _handler;
     NSDate *_lastEventDate;
     NSObservation *_fractionCompletedObservation;
@@ -33,7 +34,7 @@ __attribute__((visibility("hidden")))
 - (void)_handleTimeout;
 - (void)monitorProgress:(id)arg1;
 - (void)cancelTimeout;
-- (id)initWithSelector:(SEL)arg1 proxy:(id)arg2 timeout:(double)arg3 queue:(id)arg4 timeoutHandler:(CDUnknownBlockType)arg5;
+- (id)initWithSelector:(SEL)arg1 proxy:(id)arg2 timeout:(double)arg3 queue:(id)arg4 log:(id)arg5 timeoutHandler:(CDUnknownBlockType)arg6;
 
 @end
 

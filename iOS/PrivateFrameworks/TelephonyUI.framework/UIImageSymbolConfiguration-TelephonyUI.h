@@ -4,10 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIImageSymbolConfiguration.h>
+#import <UIKitCore/UIImageSymbolConfiguration.h>
 
 @interface UIImageSymbolConfiguration (TelephonyUI)
 + (id)tpConfigurationWithStaticTextStyle:(id)arg1 scale:(long long)arg2 symbolWeight:(long long)arg3;
++ (id)paletteTpConfigurationWithStaticTextStyle:(id)arg1 scale:(long long)arg2 colors:(id)arg3;
 + (id)hierarchicalTpConfigurationWithStaticTextStyle:(id)arg1 scale:(long long)arg2 color:(id)arg3;
 + (id)tpConfigurationWithStaticTextStyle:(id)arg1 scale:(long long)arg2;
 @end

@@ -11,17 +11,17 @@
 @interface XCUIAccessibilityAudit : NSObject
 {
     XCUIApplication *_application;
-    NSArray *__auditTypes;
+    unsigned long long __auditTypes;
     NSArray *__ignoredIdentifiers;
 }
 
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSArray *_ignoredIdentifiers; // @synthesize _ignoredIdentifiers=__ignoredIdentifiers;
-@property(retain, nonatomic) NSArray *_auditTypes; // @synthesize _auditTypes=__auditTypes;
+@property(nonatomic) unsigned long long _auditTypes; // @synthesize _auditTypes=__auditTypes;
 @property(readonly, nonatomic) XCUIApplication *application; // @synthesize application=_application;
 - (id)_runAudit:(id *)arg1;
 - (id)runAuditWithError:(id *)arg1;
-- (id)initWithApplication:(id)arg1 auditType:(id)arg2 elementIdentifiersToIgnore:(id)arg3;
+- (id)initWithApplication:(id)arg1 auditTypes:(unsigned long long)arg2 elementIdentifiersToIgnore:(id)arg3;
 
 @end
 

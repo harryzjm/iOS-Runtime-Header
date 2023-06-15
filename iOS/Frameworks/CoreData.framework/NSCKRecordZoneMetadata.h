@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSDate *lastFetchDate; // @dynamic lastFetchDate;
 @property(retain, nonatomic) NSSet *mirroredRelationships; // @dynamic mirroredRelationships;
 @property(nonatomic) _Bool needsImport; // @dynamic needsImport;
+@property(nonatomic) _Bool needsNewShareInvitation; // @dynamic needsNewShareInvitation;
 @property(nonatomic) _Bool needsRecoveryFromIdentityLoss; // @dynamic needsRecoveryFromIdentityLoss;
 @property(nonatomic) _Bool needsRecoveryFromUserPurge; // @dynamic needsRecoveryFromUserPurge;
 @property(nonatomic) _Bool needsRecoveryFromZoneDelete; // @dynamic needsRecoveryFromZoneDelete;

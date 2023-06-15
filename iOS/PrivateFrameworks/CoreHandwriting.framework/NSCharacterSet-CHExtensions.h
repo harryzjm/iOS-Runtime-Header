@@ -17,8 +17,13 @@
 + (id)ch_kanjiCompCharacterSet;
 + (id)ch_kanjiCharacterSet;
 + (id)ch_russianOnlyCharacterSet;
++ (id)ch_arabicCombiningDiacriticSet;
++ (id)ch_arabicTanweenDiacriticSet;
++ (id)ch_arabicDiacriticSet;
++ (id)ch_basicArabicCharacterSet;
 + (id)ch_basicCyrillicCharacterSet;
 + (id)ch_latinCharacterSet;
++ (id)ch_englishCharacterSet;
 + (id)ch_basicAlphanumericCharacterSet;
 + (id)ch_basicAlphabeticCharacterSet;
 + (id)ch_sentenceStartPunctuationCharacterSet;

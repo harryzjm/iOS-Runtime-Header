@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIAction.h>
+#import <UIKitCore/UIAction.h>
 
 @interface UIAction (FocusUI)
 - (_Bool)fcui_isEqualToAction:(id)arg1;

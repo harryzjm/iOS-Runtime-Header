@@ -6,6 +6,9 @@
 
 #import <HealthKit/NSObject-Protocol.h>
 
+@class NSError;
+
 @protocol HKCloudSyncControlClientInterface <NSObject>
+- (void)clientRemote_syncRequestDidCompleteWithSuccess:(_Bool)arg1 error:(NSError *)arg2;
 @end
 

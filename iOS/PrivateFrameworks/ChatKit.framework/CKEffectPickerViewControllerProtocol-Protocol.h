@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class UIView;
 @protocol CKEffectPickerViewControllerDelegate;
 
 @protocol CKEffectPickerViewControllerProtocol
+@property(retain, nonatomic) UIView *effectPreviewOverlayView;
 @property(nonatomic) __weak id <CKEffectPickerViewControllerDelegate> delegate;
 - (void)setShowingInStandAloneWindow:(_Bool)arg1;
 - (void)updateColor:(BOOL)arg1;
@@ -15,5 +17,6 @@
 - (void)handleTouchUp:(struct CGPoint)arg1;
 - (void)presentPicker;
 - (void)updateHintTransition:(double)arg1;
+- (void)dismissViewControllerKeepingSideMount:(_Bool)arg1 animated:(_Bool)arg2 completion:(void (^)(void))arg3;
 @end
 

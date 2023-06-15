@@ -6,7 +6,7 @@
 
 #import <Sleep/HKSPPersistentStateMachine.h>
 
-@class HDSPSleepModeAutomatedOffFromManualState, HDSPSleepModeAutomatedOffState, HDSPSleepModeBedtimeState, HDSPSleepModeManualBedtimeState, HDSPSleepModeManualOffState, HDSPSleepModeOffState, HDSPSleepModeWindDownState, HKSPSleepScheduleModel, NSDate, NSString;
+@class HDSPSleepModeAutomatedOffState, HDSPSleepModeAutomatedOnState, HDSPSleepModeBedtimeState, HDSPSleepModeManualOffState, HDSPSleepModeManualOnState, HDSPSleepModeOffState, HDSPSleepModeWindDownState, HKSPSleepScheduleModel, NSDate, NSString;
 @protocol HDSPSleepModeStateMachineDelegate, HDSPSleepModeStateMachineInfoProvider, NAScheduler;
 
 __attribute__((visibility("hidden")))
@@ -16,15 +16,15 @@ __attribute__((visibility("hidden")))
     HDSPSleepModeWindDownState *_windDownState;
     HDSPSleepModeManualOffState *_manualOffState;
     HDSPSleepModeBedtimeState *_bedtimeState;
-    HDSPSleepModeManualBedtimeState *_manualBedtimeState;
+    HDSPSleepModeManualOnState *_manualOnState;
+    HDSPSleepModeAutomatedOnState *_automatedOnState;
     HDSPSleepModeAutomatedOffState *_automatedOffState;
-    HDSPSleepModeAutomatedOffFromManualState *_automatedOffFromManualState;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) HDSPSleepModeAutomatedOffFromManualState *automatedOffFromManualState; // @synthesize automatedOffFromManualState=_automatedOffFromManualState;
 @property(readonly, nonatomic) HDSPSleepModeAutomatedOffState *automatedOffState; // @synthesize automatedOffState=_automatedOffState;
-@property(readonly, nonatomic) HDSPSleepModeManualBedtimeState *manualBedtimeState; // @synthesize manualBedtimeState=_manualBedtimeState;
+@property(readonly, nonatomic) HDSPSleepModeAutomatedOnState *automatedOnState; // @synthesize automatedOnState=_automatedOnState;
+@property(readonly, nonatomic) HDSPSleepModeManualOnState *manualOnState; // @synthesize manualOnState=_manualOnState;
 @property(readonly, nonatomic) HDSPSleepModeBedtimeState *bedtimeState; // @synthesize bedtimeState=_bedtimeState;
 @property(readonly, nonatomic) HDSPSleepModeManualOffState *manualOffState; // @synthesize manualOffState=_manualOffState;
 @property(readonly, nonatomic) HDSPSleepModeWindDownState *windDownState; // @synthesize windDownState=_windDownState;
@@ -43,8 +43,8 @@ __attribute__((visibility("hidden")))
 - (void)automationTurnedOnSleepModeWithReason:(unsigned long long)arg1;
 - (void)userTurnedOnSleepModeWithReason:(unsigned long long)arg1;
 - (void)userTurnedOffSleepModeWithReason:(unsigned long long)arg1;
-- (void)sleepScheduleStateChangedToDisabledFromState:(unsigned long long)arg1;
-- (void)sleepScheduleStateChangedToWakeUp:(unsigned long long)arg1;
+- (void)sleepScheduleStateChangedToDisabled;
+- (void)sleepScheduleStateChangedToWakeUp:(unsigned long long)arg1 fromState:(unsigned long long)arg2;
 - (void)sleepScheduleStateChangedToBedtime:(unsigned long long)arg1 fromState:(unsigned long long)arg2;
 - (void)sleepScheduleStateChangedToWindDown:(unsigned long long)arg1 fromState:(unsigned long long)arg2;
 - (unsigned long long)loggingCategory;

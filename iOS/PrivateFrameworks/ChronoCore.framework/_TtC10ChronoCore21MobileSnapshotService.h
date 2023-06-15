@@ -11,18 +11,24 @@
 @interface _TtC10ChronoCore21MobileSnapshotService : _TtCs12_SwiftObject
 {
     MISSING_TYPE *cacheManager;
+    MISSING_TYPE *$__lazy_storage_$_reloadPublisher;
+    MISSING_TYPE *$__lazy_storage_$_addSnapshotPublisher;
+    MISSING_TYPE *_addSnapshotPublisher;
+    MISSING_TYPE *$__lazy_storage_$_removalPublisher;
     MISSING_TYPE *environmentProvidingFactory;
-    MISSING_TYPE *configurationService;
+    MISSING_TYPE *configurationServiceForReplication;
     MISSING_TYPE *descriptorProvider;
     MISSING_TYPE *locationService;
     MISSING_TYPE *persistentSubscriptions;
     MISSING_TYPE *environmentSubscriptions;
     MISSING_TYPE *extensionManager;
     MISSING_TYPE *statefulStore;
-    MISSING_TYPE *statefulStoreUI;
-    MISSING_TYPE *placeholderStoreUI;
+    MISSING_TYPE *protectionLevelProvider;
     MISSING_TYPE *logger;
     MISSING_TYPE *widgetEnvironmentModificationContext;
+    MISSING_TYPE *lock;
+    MISSING_TYPE *lock_configurationLifetimeAssertions;
+    MISSING_TYPE *reloadFilters;
 }
 
 @end

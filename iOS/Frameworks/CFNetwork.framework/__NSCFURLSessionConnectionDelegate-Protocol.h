@@ -24,6 +24,8 @@
 - (void)connectionWillFinishLoading:(__NSCFURLSessionConnection *)arg1;
 - (void)connection:(__NSCFURLSessionConnection *)arg1 willCacheResponse:(NSCachedURLResponse *)arg2 responseCallback:(void (^)(NSCachedURLResponse *))arg3;
 - (void)connection:(__NSCFURLSessionConnection *)arg1 didReceiveResponse:(NSURLResponse *)arg2 completion:(void (^)(struct SessionResponseOptions))arg3;
+- (void)connection:(__NSCFURLSessionConnection *)arg1 didReceiveInformationalResponse:(NSHTTPURLResponse *)arg2;
+- (void)connection:(__NSCFURLSessionConnection *)arg1 request:(NSURLRequest *)arg2 needsNewBodyStreamFromOffset:(long long)arg3 callback:(void (^)(NSInputStream *))arg4;
 - (void)connection:(__NSCFURLSessionConnection *)arg1 request:(NSURLRequest *)arg2 needsNewBodyStreamCallback:(void (^)(NSInputStream *))arg3;
 - (void)connection:(__NSCFURLSessionConnection *)arg1 wasRedirected:(NSHTTPURLResponse *)arg2 newRequest:(NSURLRequest *)arg3 responseCallback:(void (^)(NSURLRequest *))arg4;
 @end

@@ -60,6 +60,8 @@
 - (id)chromeColumnIndexesForViewColumnIndexes:(id)arg1;
 - (id)viewRowIndexesForBaseRowIndexes:(id)arg1;
 - (id)viewColumnIndexesForBaseColumnIndexes:(id)arg1;
+- (id)baseRowIndexesForChromeRowIndexes:(id)arg1;
+- (id)baseColumnIndexesForChromeColumnIndexes:(id)arg1;
 - (id)baseRowIndexesForViewRowIndexes:(id)arg1;
 - (id)baseColumnIndexesForViewColumnIndexes:(id)arg1;
 - (struct TSUViewRowIndex)viewRowIndexForSummaryRowIndex:(struct TSUModelRowIndex)arg1;

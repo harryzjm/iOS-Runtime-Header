@@ -27,10 +27,10 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) UIImageView *chevron;
 @property(readonly, nonatomic) struct CGSize sizeIncludingLabels;
 - (void)buttonShapesEnabledDidChange;
-- (void)toggleExpanded;
-- (void)updateExpanded;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1 expanded:(_Bool)arg2 modally:(_Bool)arg3;
+- (void)toggleExpanded;
+- (void)updateExpanded;
 
 @end
 

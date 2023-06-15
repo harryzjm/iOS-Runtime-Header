@@ -9,8 +9,10 @@
 __attribute__((visibility("hidden")))
 @interface UITextIndirectKeyboardInteraction : UITextInteraction
 {
+    _Bool _disableTouchesForGestures;
 }
 
+@property(nonatomic) _Bool disableTouchesForGestures; // @synthesize disableTouchesForGestures=_disableTouchesForGestures;
 - (id)initWithView:(id)arg1;
 
 @end

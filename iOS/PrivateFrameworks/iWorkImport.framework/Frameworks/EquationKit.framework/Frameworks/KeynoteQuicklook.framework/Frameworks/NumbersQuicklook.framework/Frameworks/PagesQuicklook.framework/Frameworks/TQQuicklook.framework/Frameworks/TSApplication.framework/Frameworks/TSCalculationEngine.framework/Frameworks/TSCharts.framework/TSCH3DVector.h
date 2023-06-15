@@ -20,7 +20,7 @@
 + (id)x:(float)arg1 y:(float)arg2 z:(float)arg3 w:(float)arg4;
 + (id)x:(float)arg1 y:(float)arg2 z:(float)arg3;
 + (id)vector;
-+ (unsigned long long)hashVec4:(const void *)arg1;
++ (unsigned long long)hashVec4:(void *)arg1;
 + (id)instanceWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 @property(readonly, nonatomic) float w; // @synthesize w=_w;
 @property(readonly, nonatomic) float z; // @synthesize z=_z;

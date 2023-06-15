@@ -10,10 +10,10 @@
 
 @interface _TtC24IntelligencePlatformCore16BehaviorDatabase : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *url;
     MISSING_TYPE *config;
     MISSING_TYPE *pool;
-    MISSING_TYPE *$__lazy_storage_$_behaviorKeyCache;
+    MISSING_TYPE *$__lazy_storage_$_histogramKeyProvider;
+    MISSING_TYPE *$__lazy_storage_$_eventTracker;
     MISSING_TYPE *signposter;
 }
 

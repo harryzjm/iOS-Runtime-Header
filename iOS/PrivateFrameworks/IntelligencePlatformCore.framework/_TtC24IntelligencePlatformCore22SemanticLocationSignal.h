@@ -11,6 +11,7 @@
 @interface _TtC24IntelligencePlatformCore22SemanticLocationSignal : _TtCs12_SwiftObject
 {
     MISSING_TYPE *semanticLocationStream;
+    MISSING_TYPE *includeLastOngoingEventInSessions;
 }
 
 - (id)featureValueForName:(id)arg1;

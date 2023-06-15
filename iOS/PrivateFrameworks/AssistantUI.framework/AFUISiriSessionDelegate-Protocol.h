@@ -10,6 +10,8 @@
 @protocol SAAceCommand;
 
 @protocol AFUISiriSessionDelegate <AFUISiriSessionListener>
+- (void)siriSessionRequestsToShowAssetsDownloadNotificationPrompt;
+- (void)siriSessionRequestsTTSDuckToVolume:(float)arg1 rampTime:(double)arg2 completion:(void (^)(NSError *))arg3;
 - (void)siriSessionRequestsReadoutOfBulletin:(AFBulletin *)arg1 completion:(void (^)(unsigned long long))arg2;
 - (void)siriSessionWillProcessAceCommand:(AceObject<SAAceCommand> *)arg1;
 - (void)siriSessionWillDismissAudioRoutePicker;
@@ -66,7 +68,7 @@
 - (void)siriSessionIsPresentingApplePaySheet;
 - (void)siriSessionIsPresentingLocalAuthenticationUI;
 - (void)siriSessionWantsToCacheImage:(INImage *)arg1;
-- (void)siriSessionRequestsDismissalForReason:(unsigned long long)arg1;
+- (void)siriSessionRequestsDismissalForReason:(long long)arg1;
 - (void)siriSessionOpenURL:(NSURL *)arg1 completionHandler:(void (^)(_Bool))arg2;
 - (void)siriSessionDidChangeLockState:(unsigned long long)arg1;
 - (void)siriSessionDidChangeNetworkAvailability;
@@ -78,7 +80,7 @@
 - (void)siriSessionWillStartRequest;
 - (void)siriSessionWillStartRequestWithOptions:(SASRequestOptions *)arg1 completion:(void (^)(SASRequestOptions *))arg2;
 - (void)siriSessionRequestsInstrumentingMessage:(PBCodable *)arg1 machAbsoluteTime:(double)arg2;
-- (void)siriSessionDidStartNewTurn:(AFAnalyticsTurnBasedInstrumentationContext *)arg1 associatedLaunchStartContext:(PBCodable *)arg2 machAbsoluteTime:(double)arg3;
+- (void)siriSessionDidStartNewTurn:(AFAnalyticsTurnBasedInstrumentationContext *)arg1 associatedLaunchStartContext:(PBCodable *)arg2 machAbsoluteTime:(double)arg3 linkPreviousTurn:(_Bool)arg4;
 - (void)siriSessionDidStartNewTurn:(AFAnalyticsTurnBasedInstrumentationContext *)arg1;
 - (void)siriSessionDidTransitionFromState:(long long)arg1 toState:(long long)arg2 event:(long long)arg3 machAbsoluteTransitionTime:(double)arg4;
 - (void)siriSessionResultForAceCommand:(AceObject<SAAceCommand> *)arg1 completion:(void (^)(long long))arg2;

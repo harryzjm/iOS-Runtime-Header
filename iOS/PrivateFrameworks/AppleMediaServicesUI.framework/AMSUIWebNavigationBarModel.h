@@ -6,44 +6,34 @@
 
 #import <objc/NSObject.h>
 
-@class AMSUIWebButtonModel, NSArray, NSString;
+@class AMSUIWebBarButtonItemModel, NSArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface AMSUIWebNavigationBarModel : NSObject
 {
     _Bool _hidesBackButton;
-    AMSUIWebButtonModel *_accessoryButton;
-    NSArray *_accessoryButtons;
+    AMSUIWebBarButtonItemModel *_accessoryBarButtonItemModel;
     NSString *_backButtonTitle;
     NSString *_backgroundColor;
     long long _backgroundStyle;
-    AMSUIWebButtonModel *_leftButton;
-    NSArray *_leftButtons;
-    AMSUIWebButtonModel *_otherButton;
-    NSArray *_otherButtons;
-    AMSUIWebButtonModel *_rightButton;
-    NSArray *_rightButtons;
+    AMSUIWebBarButtonItemModel *_leftBarButtonItemModel;
+    NSArray *_otherBarButtonItemModels;
+    AMSUIWebBarButtonItemModel *_rightBarButtonItemModel;
     long long _style;
     NSString *_title;
 }
 
-+ (id)_conditionalButtonsWithJSObject:(id)arg1 context:(id)arg2;
-+ (id)_buttonWithJSObject:(id)arg1 context:(id)arg2;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSString *title; // @synthesize title=_title;
 @property(nonatomic) long long style; // @synthesize style=_style;
-@property(retain, nonatomic) NSArray *rightButtons; // @synthesize rightButtons=_rightButtons;
-@property(retain, nonatomic) AMSUIWebButtonModel *rightButton; // @synthesize rightButton=_rightButton;
-@property(retain, nonatomic) NSArray *otherButtons; // @synthesize otherButtons=_otherButtons;
-@property(retain, nonatomic) AMSUIWebButtonModel *otherButton; // @synthesize otherButton=_otherButton;
-@property(retain, nonatomic) NSArray *leftButtons; // @synthesize leftButtons=_leftButtons;
-@property(retain, nonatomic) AMSUIWebButtonModel *leftButton; // @synthesize leftButton=_leftButton;
+@property(retain, nonatomic) AMSUIWebBarButtonItemModel *rightBarButtonItemModel; // @synthesize rightBarButtonItemModel=_rightBarButtonItemModel;
+@property(retain, nonatomic) NSArray *otherBarButtonItemModels; // @synthesize otherBarButtonItemModels=_otherBarButtonItemModels;
+@property(retain, nonatomic) AMSUIWebBarButtonItemModel *leftBarButtonItemModel; // @synthesize leftBarButtonItemModel=_leftBarButtonItemModel;
 @property(nonatomic) _Bool hidesBackButton; // @synthesize hidesBackButton=_hidesBackButton;
 @property(nonatomic) long long backgroundStyle; // @synthesize backgroundStyle=_backgroundStyle;
 @property(retain, nonatomic) NSString *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property(retain, nonatomic) NSString *backButtonTitle; // @synthesize backButtonTitle=_backButtonTitle;
-@property(retain, nonatomic) NSArray *accessoryButtons; // @synthesize accessoryButtons=_accessoryButtons;
-@property(retain, nonatomic) AMSUIWebButtonModel *accessoryButton; // @synthesize accessoryButton=_accessoryButton;
+@property(retain, nonatomic) AMSUIWebBarButtonItemModel *accessoryBarButtonItemModel; // @synthesize accessoryBarButtonItemModel=_accessoryBarButtonItemModel;
 @property(readonly, copy) NSString *description;
 @property(readonly, nonatomic) _Bool includesRightItems;
 @property(readonly, nonatomic) _Bool includesLeftItems;

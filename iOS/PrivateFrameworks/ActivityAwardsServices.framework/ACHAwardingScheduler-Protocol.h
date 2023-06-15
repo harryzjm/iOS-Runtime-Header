@@ -8,5 +8,6 @@
 
 @protocol ACHAwardingScheduler <NSObject>
 - (void)requestAwardingEvaluationWithCompletion:(void (^)(_Bool, NSError *))arg1;
+- (void)activate;
 @end
 

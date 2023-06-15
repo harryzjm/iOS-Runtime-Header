@@ -5,6 +5,8 @@
 //
 
 @interface (null) (ActivityUIServices)
+- (void)scene:(id)arg1 didUpdateClientSettingsWithDiff:(id)arg2 oldClientSettings:(id)arg3 transitionContext:(id)arg4;
+- (void)scene:(id)arg1 didReceiveActions:(id)arg2;
 - (void)sceneDidDeactivate:(id)arg1 withError:(id)arg2;
 - (void)sceneDidInvalidate:(id)arg1;
 - (void)sceneDidActivate:(id)arg1;

@@ -10,6 +10,7 @@
 @protocol ECMailbox, EDDeliveryAccount;
 
 @protocol EDReceivingAccount <EDAccount>
+@property(readonly, nonatomic) NSURL *accountURL;
 @property(readonly, nonatomic) id <ECMailbox> rootMailbox;
 @property(readonly, nonatomic) _Bool shouldArchiveByDefault;
 @property(readonly, nonatomic) _Bool isLocalAccount;

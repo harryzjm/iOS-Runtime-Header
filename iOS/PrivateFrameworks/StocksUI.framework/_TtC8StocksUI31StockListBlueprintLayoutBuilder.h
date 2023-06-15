@@ -15,6 +15,7 @@
     MISSING_TYPE *watchlistSwitcherViewLayoutAttributesFactory;
     MISSING_TYPE *emptyListViewLayoutAttributesFactory;
     MISSING_TYPE *watchlistSwitcherCellViewLayoutAttributesFactory;
+    MISSING_TYPE *featureAvailability;
 }
 
 @end

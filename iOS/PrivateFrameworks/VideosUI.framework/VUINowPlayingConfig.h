@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray;
+@class NSArray, NSDictionary;
 
 __attribute__((visibility("hidden")))
 @interface VUINowPlayingConfig : NSObject
@@ -18,19 +18,37 @@ __attribute__((visibility("hidden")))
     _Bool _showsStillWatchingAlert;
     _Bool _allowQOSReportingForiTunesLibraryPlayback;
     _Bool _convertMainContentRelativeStartTimeOfZeroToAbsoluteStartTimeOfZero;
+    _Bool _shouldSendLiveStreamStartAndEndTimesToAVKit;
+    _Bool _shouldAdjustLiveStreamStartTimeToMatchSeekableRangeStartTime;
+    _Bool _shouldAdjustLiveStreamEndTimeToMatchSeekableRangeEndTime;
     _Bool _showsLozengeForLivePlayback;
+    double _stillWatchingAlertDuration;
     double _alertIdleTimeout;
     NSArray *_mediaTypesExcludedFromReporting;
-    double _stillWatchingAlertDuration;
+    NSArray *_mediaCharacteristicsToLocalize;
+    NSDictionary *_mediaLocalizationKeyMapping;
+    double _liveSportsStartFromBeginningOffset;
+    double _liveStreamStartTimeAdjustmentSlopFactor;
+    double _liveStreamStartAndEndTimeBadMetadataCutoff;
+    double _liveStreamOverrunExtension;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) double stillWatchingAlertDuration; // @synthesize stillWatchingAlertDuration=_stillWatchingAlertDuration;
 @property(nonatomic) _Bool showsLozengeForLivePlayback; // @synthesize showsLozengeForLivePlayback=_showsLozengeForLivePlayback;
+@property(nonatomic) double liveStreamOverrunExtension; // @synthesize liveStreamOverrunExtension=_liveStreamOverrunExtension;
+@property(nonatomic) double liveStreamStartAndEndTimeBadMetadataCutoff; // @synthesize liveStreamStartAndEndTimeBadMetadataCutoff=_liveStreamStartAndEndTimeBadMetadataCutoff;
+@property(nonatomic) double liveStreamStartTimeAdjustmentSlopFactor; // @synthesize liveStreamStartTimeAdjustmentSlopFactor=_liveStreamStartTimeAdjustmentSlopFactor;
+@property(nonatomic) _Bool shouldAdjustLiveStreamEndTimeToMatchSeekableRangeEndTime; // @synthesize shouldAdjustLiveStreamEndTimeToMatchSeekableRangeEndTime=_shouldAdjustLiveStreamEndTimeToMatchSeekableRangeEndTime;
+@property(nonatomic) _Bool shouldAdjustLiveStreamStartTimeToMatchSeekableRangeStartTime; // @synthesize shouldAdjustLiveStreamStartTimeToMatchSeekableRangeStartTime=_shouldAdjustLiveStreamStartTimeToMatchSeekableRangeStartTime;
+@property(nonatomic) _Bool shouldSendLiveStreamStartAndEndTimesToAVKit; // @synthesize shouldSendLiveStreamStartAndEndTimesToAVKit=_shouldSendLiveStreamStartAndEndTimesToAVKit;
+@property(nonatomic) double liveSportsStartFromBeginningOffset; // @synthesize liveSportsStartFromBeginningOffset=_liveSportsStartFromBeginningOffset;
+@property(copy, nonatomic) NSDictionary *mediaLocalizationKeyMapping; // @synthesize mediaLocalizationKeyMapping=_mediaLocalizationKeyMapping;
+@property(copy, nonatomic) NSArray *mediaCharacteristicsToLocalize; // @synthesize mediaCharacteristicsToLocalize=_mediaCharacteristicsToLocalize;
 @property(nonatomic) _Bool convertMainContentRelativeStartTimeOfZeroToAbsoluteStartTimeOfZero; // @synthesize convertMainContentRelativeStartTimeOfZeroToAbsoluteStartTimeOfZero=_convertMainContentRelativeStartTimeOfZeroToAbsoluteStartTimeOfZero;
 @property(nonatomic) _Bool allowQOSReportingForiTunesLibraryPlayback; // @synthesize allowQOSReportingForiTunesLibraryPlayback=_allowQOSReportingForiTunesLibraryPlayback;
 @property(copy, nonatomic) NSArray *mediaTypesExcludedFromReporting; // @synthesize mediaTypesExcludedFromReporting=_mediaTypesExcludedFromReporting;
 @property(nonatomic) double alertIdleTimeout; // @synthesize alertIdleTimeout=_alertIdleTimeout;
+@property(nonatomic) double stillWatchingAlertDuration; // @synthesize stillWatchingAlertDuration=_stillWatchingAlertDuration;
 @property(nonatomic) _Bool showsStillWatchingAlert; // @synthesize showsStillWatchingAlert=_showsStillWatchingAlert;
 @property(nonatomic) _Bool showsUpNextInHUDForLive; // @synthesize showsUpNextInHUDForLive=_showsUpNextInHUDForLive;
 @property(nonatomic) _Bool refetchesUpNextDataForVOD; // @synthesize refetchesUpNextDataForVOD=_refetchesUpNextDataForVOD;

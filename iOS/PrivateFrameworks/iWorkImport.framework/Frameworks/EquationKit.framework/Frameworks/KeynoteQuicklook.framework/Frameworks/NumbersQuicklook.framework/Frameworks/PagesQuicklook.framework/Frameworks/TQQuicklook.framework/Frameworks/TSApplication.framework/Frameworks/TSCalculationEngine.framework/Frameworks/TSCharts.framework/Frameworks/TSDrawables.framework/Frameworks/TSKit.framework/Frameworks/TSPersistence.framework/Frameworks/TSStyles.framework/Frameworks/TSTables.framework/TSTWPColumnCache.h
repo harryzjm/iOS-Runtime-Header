@@ -10,6 +10,7 @@
 {
 }
 
+- (void)invalidateObjectsWithKeysInCellRegion:(id)arg1;
 - (void)invalidateObjectsWithKeysInCellRange:(struct TSUCellRect)arg1;
 
 @end

@@ -14,11 +14,9 @@
     MISSING_TYPE *title;
     MISSING_TYPE *subtitle;
     MISSING_TYPE *subtitleColor;
-    MISSING_TYPE *actionURL;
     MISSING_TYPE *attributes;
     MISSING_TYPE *thumbnailImageSource;
-    MISSING_TYPE *tagModel;
-    MISSING_TYPE *headline;
+    MISSING_TYPE *route;
 }
 
 @end

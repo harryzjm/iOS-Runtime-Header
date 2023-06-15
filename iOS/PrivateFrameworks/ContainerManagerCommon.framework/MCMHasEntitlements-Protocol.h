@@ -7,6 +7,7 @@
 @class NSDictionary, NSSet, NSString;
 
 @protocol MCMHasEntitlements
+@property(readonly, nonatomic) _Bool hasDaemonContainer;
 @property(readonly, nonatomic) _Bool canReadWriteReferences;
 @property(readonly, nonatomic) _Bool canReadReferences;
 @property(readonly, nonatomic) _Bool requestsNoContainer;
@@ -30,7 +31,10 @@
 - (NSString *)containerRequiredIdentifier;
 - (NSSet *)systemGroupIdentifiers;
 - (NSSet *)appGroupIdentifiers;
+- (NSSet *)protectedAppGroupIdentifiers;
+- (NSSet *)publicAppGroupIdentifiers;
 - (int)intendedDataProtectionClass;
+- (_Bool)isOwnerOfProtectedAppGroupContainerWithIdentifier:(NSString *)arg1;
 - (_Bool)isOwnerOfContainerWithClass:(unsigned long long)arg1 identifier:(NSString *)arg2;
 - (NSSet *)lookupForContainerClass:(unsigned long long)arg1;
 - (_Bool)isEntitledForLookupWithClass:(unsigned long long)arg1 identifier:(NSString *)arg2;

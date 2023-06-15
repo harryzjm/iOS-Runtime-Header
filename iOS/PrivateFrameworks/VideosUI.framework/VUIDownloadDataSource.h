@@ -41,11 +41,11 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) VUIMediaLibrary *mediaLibrary; // @synthesize mediaLibrary=_mediaLibrary;
 @property(retain, nonatomic) NSArray *downloadEntities; // @synthesize downloadEntities=_downloadEntities;
 @property(nonatomic) __weak id <VUIDownloadDataSourceDelegate> downloadDelegate; // @synthesize downloadDelegate=_downloadDelegate;
+- (id)_deDupedMediaEntities:(id)arg1;
 - (_Bool)_downloadsDidChange:(id)arg1;
 - (id)_coalesceActiveDownloadEntitiesAndDownloadedEntities;
 - (_Bool)_doesEpisodeSet:(id)arg1 containMediaEntity:(id)arg2;
 - (void)_notifyDelegatesDownloadsFetchCompletedWithChanges:(_Bool)arg1;
-- (id)_sortDownloadEntitiesByTitle:(id)arg1;
 - (void)_updateDownloadEntity:(id *)arg1 withLatestMediaEntity:(id)arg2;
 - (id)_createDownloadEntitiesFromLatestDownloads:(id)arg1;
 - (id)_createGroupingByShowIdentifierWithLatestMediaEntityGroups:(id)arg1;

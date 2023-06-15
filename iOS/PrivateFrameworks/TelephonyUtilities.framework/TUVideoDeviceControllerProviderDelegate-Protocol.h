@@ -11,6 +11,8 @@
 
 @protocol TUVideoDeviceControllerProviderDelegate <AVConferencePreviewClientDelegate>
 - (void)provider:(id <TUVideoDeviceControllerProvider>)arg1 didGetSnapshot:(NSData *)arg2;
+- (void)provider:(id <TUVideoDeviceControllerProvider>)arg1 systemPreferredCameraUIDDidChange:(NSString *)arg2;
+- (void)provider:(id <TUVideoDeviceControllerProvider>)arg1 userPreferredCameraUIDDidChange:(NSString *)arg2;
 - (void)provider:(id <TUVideoDeviceControllerProvider>)arg1 cameraBlurEnabledDidChange:(_Bool)arg2;
 - (void)provider:(id <TUVideoDeviceControllerProvider>)arg1 cameraZoomAvailabilityDidChange:(_Bool)arg2;
 - (void)provider:(id <TUVideoDeviceControllerProvider>)arg1 didChangeLocalCameraUID:(NSString *)arg2;

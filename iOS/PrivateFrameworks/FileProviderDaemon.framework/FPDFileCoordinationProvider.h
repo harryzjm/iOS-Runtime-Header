@@ -22,14 +22,13 @@ __attribute__((visibility("hidden")))
 @property(getter=isRegistered) _Bool registered; // @synthesize registered=_registered;
 @property(copy) NSString *extensionIdentifier; // @synthesize extensionIdentifier=_extensionIdentifier;
 @property __weak id <FPDFileCoordinationProviderDelegate> delegate; // @synthesize delegate=_delegate;
-- (void)_movingItemAtURL:(id)arg1 requiresProvidingWithDestinationURL:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_movingItemAtURL:(id)arg1 withInfo:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_providedItemAtURL:(id)arg1 withPresenterWithID:(id)arg2 didMoveToURL:(id)arg3;
 - (void)_providedItemAtURL:(id)arg1 didLosePresenterWithID:(id)arg2;
 - (void)_providedItemAtURL:(id)arg1 didGainPresenterWithID:(id)arg2;
 - (void)_writerWithID:(id)arg1 didFinishWritingForURL:(id)arg2;
 - (void)_cancelProvidingItemAtURL:(id)arg1 toReaderWithID:(id)arg2;
 - (void)_provideItemAtURL:(id)arg1 withInfo:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)_provideItemAtURL:(id)arg1 toReaderWithID:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_provideItemAtURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)_physicalURLForURL:(id)arg1;
 @property(readonly, copy) NSString *_fileReactorID;

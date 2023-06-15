@@ -7,7 +7,7 @@
 @class NSArray;
 
 @protocol CRTextFeaturesFiltering
-- (NSArray *)filterBlocks:(NSArray *)arg1 imageSize:(struct CGSize)arg2;
-- (NSArray *)filterFeatures:(NSArray *)arg1;
+- (NSArray *)filterBlocks:(NSArray *)arg1;
+- (NSArray *)filterLineRegions:(NSArray *)arg1;
 @end
 

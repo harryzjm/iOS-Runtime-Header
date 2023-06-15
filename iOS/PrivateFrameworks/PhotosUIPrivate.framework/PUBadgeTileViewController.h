@@ -7,7 +7,7 @@
 #import "PUTileViewController.h"
 
 @class NSString, PUAssetViewModel, PUBadgeInfoProvider, PXUIAssetBadgeView;
-@protocol PUBadgeTileViewControllerDelegate;
+@protocol PUBadgeTileViewControllerDelegate, PXMemoryAssetsActionFactory;
 
 __attribute__((visibility("hidden")))
 @interface PUBadgeTileViewController : PUTileViewController
@@ -29,9 +29,8 @@ __attribute__((visibility("hidden")))
     struct PXAssetBadgeInfo __badgeInfo;
 }
 
-+ (id)badgeSizeCacheKeyValueFromBadgeInfo:(struct PXAssetBadgeInfo)arg1 contentWidth:(double)arg2;
 + (void)_configureBadgeView:(id)arg1 withBadgeInfo:(struct PXAssetBadgeInfo)arg2 isOverContent:(_Bool)arg3 contentWidth:(double)arg4 animated:(_Bool)arg5;
-+ (struct CGSize)_badgeTileSizeForBadgeInfo:(struct PXAssetBadgeInfo)arg1 contentWidth:(double)arg2;
++ (struct CGSize)leadingBadgesSizeForAssetViewModel:(id)arg1 contentWidth:(double)arg2;
 + (struct CGSize)badgeTileSizeForAssetViewModel:(id)arg1 contentWidth:(double)arg2;
 + (void)disableLivePhotoForAsset:(id)arg1 undoManager:(id)arg2;
 + (void)applyLivePhotoEffect:(long long)arg1 toAsset:(id)arg2 undoManager:(id)arg3;
@@ -49,6 +48,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak id <PUBadgeTileViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)viewModel:(id)arg1 didChange:(id)arg2;
+- (id)undoManagerForActionPerformer:(id)arg1;
 - (void)assetBadgeView:(id)arg1 dismissAnyPresentedViewControllerWithCompletion:(CDUnknownBlockType)arg2;
 - (id)assetBadgeView:(id)arg1 menuForBadges:(unsigned long long)arg2;
 - (void)_updateBadgeViewIfNeeded;
@@ -72,6 +72,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) id <PXMemoryAssetsActionFactory> memoryAssetsActionFactory;
 @property(readonly) Class superclass;
 
 @end

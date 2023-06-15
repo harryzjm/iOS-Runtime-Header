@@ -24,7 +24,6 @@
 - (_Bool)switcherContentController:(id <SBSwitcherContentViewControlling>)arg1 supportsKillingOfAppLayout:(SBAppLayout *)arg2;
 - (_Bool)switcherContentController:(id <SBSwitcherContentViewControlling>)arg1 supportsTitleItemsForAppLayout:(SBAppLayout *)arg2;
 - (_Bool)switcherContentControllerReloadsSnapshotsForActiveInterfaceOrientationChange:(id <SBSwitcherContentViewControlling>)arg1;
-- (NSOrderedSet *)continuousExposeIdentifiersForSwitcherContentController:(id <SBSwitcherContentViewControlling>)arg1;
 - (NSArray *)switcherContentController:(id <SBSwitcherContentViewControlling>)arg1 hiddenAppLayoutsForBundleIdentifier:(NSString *)arg2;
 - (NSOrderedSet *)switcherContentController:(id <SBSwitcherContentViewControlling>)arg1 visibleDisplayItemsForBundleIdentifier:(NSString *)arg2;
 - (NSArray *)switcherContentController:(id <SBSwitcherContentViewControlling>)arg1 visibleAppLayoutsForBundleIdentifier:(NSString *)arg2;

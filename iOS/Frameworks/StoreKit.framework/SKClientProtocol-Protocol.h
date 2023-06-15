@@ -9,11 +9,12 @@
 #import <StoreKit/SKStatusReceiverProtocol-Protocol.h>
 #import <StoreKit/SKTransactionReceiverProtocol-Protocol.h>
 
-@class NSArray, NSDictionary;
+@class NSArray, NSDictionary, StorefrontInfo;
 
 @protocol SKClientProtocol <SKStatusReceiverProtocol, SKTransactionReceiverProtocol, SKDialogProtocol, SKMessageReceiverProtocol>
+- (void)receivedPurchaseIntentsForProductIdentifiers:(NSArray *)arg1;
 - (void)updatedTransactions:(NSArray *)arg1;
-- (void)storefrontChanged:(NSDictionary *)arg1;
+- (void)storefrontChanged:(StorefrontInfo *)arg1;
 - (void)removedTransactions:(NSArray *)arg1;
 - (void)removedEntitlementsForProductIdentifiers:(NSArray *)arg1;
 - (void)hasAnyMessageListenersWithReply:(void (^)(_Bool))arg1;

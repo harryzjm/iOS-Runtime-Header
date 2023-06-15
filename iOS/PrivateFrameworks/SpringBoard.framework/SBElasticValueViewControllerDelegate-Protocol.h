@@ -6,9 +6,11 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class SBElasticValueViewController;
+@class SBElasticValueViewController, SBFAlwaysOnLiveRenderingAssertion;
 
 @protocol SBElasticValueViewControllerDelegate <NSObject>
 - (void)elasticValueViewControllerNeedsDismissal:(SBElasticValueViewController *)arg1;
+- (_Bool)elasticValueViewControllerCanBePresented:(SBElasticValueViewController *)arg1 withReason:(out id *)arg2;
+- (SBFAlwaysOnLiveRenderingAssertion *)elasticValueViewControllerNeedsLiveRendering:(SBElasticValueViewController *)arg1;
 @end
 

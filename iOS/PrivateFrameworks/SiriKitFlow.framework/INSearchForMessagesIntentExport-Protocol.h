@@ -10,15 +10,15 @@
 @class INDateComponentsRange, NSArray;
 
 @protocol INSearchForMessagesIntentExport <NSObject, JSExport>
-@property(nonatomic, copy) NSArray *conversationIdentifiers;
-@property(nonatomic, copy) NSArray *speakableGroupNames;
-@property(nonatomic, copy) NSArray *notificationIdentifiers;
-@property(nonatomic, copy) NSArray *identifiers;
-@property(nonatomic, copy) INDateComponentsRange *dateTimeRange;
+@property(copy, nonatomic) NSArray *conversationIdentifiers;
+@property(copy, nonatomic) NSArray *speakableGroupNames;
+@property(copy, nonatomic) NSArray *notificationIdentifiers;
+@property(copy, nonatomic) NSArray *identifiers;
+@property(copy, nonatomic) INDateComponentsRange *dateTimeRange;
 @property(nonatomic) unsigned long long attributes;
-@property(nonatomic, copy) NSArray *searchTerms;
-@property(nonatomic, copy) NSArray *senders;
-@property(nonatomic, copy) NSArray *recipients;
+@property(copy, nonatomic) NSArray *searchTerms;
+@property(copy, nonatomic) NSArray *senders;
+@property(copy, nonatomic) NSArray *recipients;
 - (id)init;
 @end
 

@@ -6,17 +6,28 @@
 
 #import "COMeshAddOn.h"
 
-@protocol COMessagingAddOnDelegate;
+@class NSMutableArray, NSObject;
+@protocol COMessagingAddOnDelegate, OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
 @interface COMessagingAddOn : COMeshAddOn
 {
     struct os_unfair_lock_s _lock;
+    _Bool _timerEnabled;
     id <COMessagingAddOnDelegate> _delegate;
+    NSObject<OS_dispatch_source> *_timer;
+    NSMutableArray *_queuedIncomingRequests;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSMutableArray *queuedIncomingRequests; // @synthesize queuedIncomingRequests=_queuedIncomingRequests;
+@property(nonatomic, getter=isTimerEnabled) _Bool timerEnabled; // @synthesize timerEnabled=_timerEnabled;
+@property(readonly, nonatomic) NSObject<OS_dispatch_source> *timer; // @synthesize timer=_timer;
+- (void)_timerRequestAdded:(id)arg1;
+- (void)_timerFired;
+- (void)_configureTimer;
 - (void)_handleRequest:(id)arg1 callback:(CDUnknownBlockType)arg2;
+- (void)didChangeNodesForMeshController:(id)arg1;
 - (void)willRemoveFromMeshController:(id)arg1;
 - (void)didAddToMeshController:(id)arg1;
 - (void)broadcastRequest:(id)arg1 recipientsCallback:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;

@@ -18,7 +18,6 @@ __attribute__((visibility("hidden")))
 - (id)_contentsCompositingFilter;
 - (id)_contentsTintColor;
 - (void)_updateContentAppearance;
-- (void)traitCollectionDidChange:(id)arg1;
 - (id)iconView;
 - (id)initWithFrame:(struct CGRect)arg1;
 

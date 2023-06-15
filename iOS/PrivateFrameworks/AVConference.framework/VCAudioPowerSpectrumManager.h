@@ -24,7 +24,7 @@ __attribute__((visibility("hidden")))
 + (id)sharedInstance;
 @property(readonly, nonatomic) NSMutableDictionary *sources; // @synthesize sources=_sources;
 @property(readonly, nonatomic) NSMutableArray *meters; // @synthesize meters=_meters;
-- (void)didServerDie;
+- (void)serverDidDie;
 - (void)audioPowerSpectrumMeter:(id)arg1 didUpdateAudioPowerSpectrums:(id)arg2;
 - (void)deregisterBlocksForService;
 - (void)registerBlocksForService;
@@ -37,9 +37,9 @@ __attribute__((visibility("hidden")))
 - (_Bool)unregisterListenerWithCellularTapType:(id)arg1 powerSpectrumMeter:(id)arg2 error:(id *)arg3;
 - (_Bool)registerListenerWithCellularTapType:(id)arg1 clientProcessId:(id)arg2 powerSpectrumMeter:(id)arg3 powerSpectrumMeterKey:(id)arg4 error:(id *)arg5;
 - (void)cleanupPowerSpectrumSetForCellularTapType:(id)arg1;
+- (void)cleanUpCellularAudioTap;
 - (id)powerSpectrumMetersForCellularTapType:(id)arg1;
 - (id)registerStreamTokenForCellularTapType:(id)arg1 clientProcessId:(int)arg2 error:(id *)arg3;
-- (_Bool)unregisterListenerWithStreamToken:(id)arg1 powerSpectrumMeter:(id)arg2 error:(id *)arg3;
 - (_Bool)registerListenerWithStreamToken:(id)arg1 powerSpectrumKey:(id)arg2 powerSpectrumMeter:(id)arg3 error:(id *)arg4;
 - (void)terminatePowerSpectrumMeter:(id)arg1;
 - (id)newPowerSpectrumMeterWithBinCount:(unsigned short)arg1 refreshRate:(double)arg2 delegate:(id)arg3 error:(id *)arg4;

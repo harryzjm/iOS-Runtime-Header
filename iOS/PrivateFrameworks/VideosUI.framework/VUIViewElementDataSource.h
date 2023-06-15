@@ -11,15 +11,15 @@
 __attribute__((visibility("hidden")))
 @interface VUIViewElementDataSource : NSObject
 {
-    NSDictionary *_dataDictionary;
     VUIRouterDataSource *_routerDataSource;
+    NSDictionary *_dataDictionary;
     IKViewElement *_viewElement;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak IKViewElement *viewElement; // @synthesize viewElement=_viewElement;
-@property(retain, nonatomic) VUIRouterDataSource *routerDataSource; // @synthesize routerDataSource=_routerDataSource;
 @property(copy, nonatomic) NSDictionary *dataDictionary; // @synthesize dataDictionary=_dataDictionary;
+@property(retain, nonatomic) VUIRouterDataSource *routerDataSource; // @synthesize routerDataSource=_routerDataSource;
 - (id)initWithDataDictionary:(id)arg1 viewElement:(id)arg2;
 
 @end

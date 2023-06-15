@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class MUHoursSummaryViewModel, NSLayoutConstraint, UIImageView, UILayoutGuide, UITapGestureRecognizer;
 @protocol MULabelViewProtocol;
@@ -30,7 +30,6 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) CDUnknownBlockType actionHandler; // @synthesize actionHandler=_actionHandler;
 @property(readonly, nonatomic) MUHoursSummaryViewModel *viewModel; // @synthesize viewModel=_viewModel;
 - (void)_contentSizeDidChange;
-- (void)traitCollectionDidChange:(id)arg1;
 - (void)_updateAppearance;
 - (void)_handleServiceHoursAnimation;
 - (void)_handleNormalHoursAnimation;
@@ -39,6 +38,7 @@ __attribute__((visibility("hidden")))
 - (void)handleAnimationStart;
 - (void)_updateExpandButton;
 - (void)expandButtonTapped;
+- (void)_updateForPlatterAvailability;
 - (void)_setupConstraints;
 - (void)_setupSubviews;
 - (id)initWithViewModel:(id)arg1;

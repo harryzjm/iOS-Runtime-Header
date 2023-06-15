@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class IDSDataChannelLinkContext, NSData, NSMutableArray, NSMutableDictionary;
+@class IDSDataChannelLinkContext, IDSDataChannelsDirectConnections, NSData, NSMutableArray, NSMutableDictionary;
 @protocol OS_dispatch_queue, OS_nw_connection, OS_nw_context, OS_nw_path_evaluator;
 
 @interface _IDSDatagramChannel : NSObject
@@ -49,7 +49,7 @@
     NSMutableDictionary *_MKIArrivalTime;
     NSMutableDictionary *_firstPacketArrivalTimeForMKI;
     NSMutableDictionary *_probingDict;
-    NSObject<OS_nw_connection> *_directConnectionsByLinkID[256];
+    IDSDataChannelsDirectConnections *_directConnectionsByLinkID[256];
     IDSDataChannelLinkContext *_linkContextsByLinkID[256];
     NSMutableDictionary *_linkIDToParticipantMap;
     NSMutableDictionary *_localRemoteRelayLinkIDToVirtualLinkIDMap;

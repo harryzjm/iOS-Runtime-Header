@@ -45,6 +45,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)canBecomeFirstResponder;
 - (void)squishedBarTapped;
 - (void)metricsDidChange;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

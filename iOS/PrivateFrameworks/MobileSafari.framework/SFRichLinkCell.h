@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) UIView *contextMenuPreviewView;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 - (id)initWithCoder:(id)arg1;
+- (void)prepareForReuse;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 // Remaining properties

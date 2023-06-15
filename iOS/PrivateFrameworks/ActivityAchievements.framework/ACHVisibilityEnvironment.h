@@ -10,10 +10,14 @@ __attribute__((visibility("hidden")))
 @interface ACHVisibilityEnvironment : NSObject
 {
     _Bool _isStandalonePhoneFitnessMode;
+    _Bool _prerequisiteMet;
     long long _activityMoveMode;
     unsigned long long _experienceType;
+    long long _earnedInstanceCount;
 }
 
+@property(nonatomic) long long earnedInstanceCount; // @synthesize earnedInstanceCount=_earnedInstanceCount;
+@property(nonatomic) _Bool prerequisiteMet; // @synthesize prerequisiteMet=_prerequisiteMet;
 @property(nonatomic) _Bool isStandalonePhoneFitnessMode; // @synthesize isStandalonePhoneFitnessMode=_isStandalonePhoneFitnessMode;
 @property(nonatomic) unsigned long long experienceType; // @synthesize experienceType=_experienceType;
 @property(nonatomic) long long activityMoveMode; // @synthesize activityMoveMode=_activityMoveMode;

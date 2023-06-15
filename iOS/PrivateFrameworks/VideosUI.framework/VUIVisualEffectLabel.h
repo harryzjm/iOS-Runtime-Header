@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class NSString, UIVisualEffectView, VUILabel;
 
 __attribute__((visibility("hidden")))
 @interface VUIVisualEffectLabel : UIView
 {
+    _Bool _disableClippingOnTallScripts;
     VUILabel *_label;
     UIVisualEffectView *_visualEffectView;
     unsigned long long _visualEffectLabelType;
@@ -23,6 +24,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) long long blurEffectStyle; // @synthesize blurEffectStyle=_blurEffectStyle;
 @property(nonatomic) unsigned long long visualEffectLabelType; // @synthesize visualEffectLabelType=_visualEffectLabelType;
 @property(retain, nonatomic) UIVisualEffectView *visualEffectView; // @synthesize visualEffectView=_visualEffectView;
+@property(nonatomic) _Bool disableClippingOnTallScripts; // @synthesize disableClippingOnTallScripts=_disableClippingOnTallScripts;
 @property(retain, nonatomic) VUILabel *label; // @synthesize label=_label;
 - (void)_configureVisualEffectForTraitCollection;
 - (double)vui_baselineOffsetFromBottom;

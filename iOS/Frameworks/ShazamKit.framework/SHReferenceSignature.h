@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(readonly, nonatomic) SHSignature *signature; // @synthesize signature=_signature;
 @property(readonly, nonatomic) unsigned long long trackID; // @synthesize trackID=_trackID;
-@property(readonly, nonatomic) NSString *ID; // @synthesize ID=_ID;
+@property(readonly, copy, nonatomic) NSString *ID; // @synthesize ID=_ID;
 - (id)initWithID:(id)arg1 trackID:(unsigned long long)arg2 signature:(id)arg3;
 
 @end

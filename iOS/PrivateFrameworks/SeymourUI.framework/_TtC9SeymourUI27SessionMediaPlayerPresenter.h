@@ -50,6 +50,7 @@
     MISSING_TYPE *state;
     MISSING_TYPE *isRemoteDisplayConnected;
     MISSING_TYPE *currentMusicTrack;
+    MISSING_TYPE *isShowingMediaMoment;
     MISSING_TYPE *outputDeviceChangedObserver;
     MISSING_TYPE *outputDevicesChangedObserver;
     MISSING_TYPE *multiUserSessionRequiringResync;

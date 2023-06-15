@@ -13,15 +13,20 @@ __attribute__((visibility("hidden")))
     double _marginInset;
 }
 
++ (id)_bodyTextColor;
++ (id)_boldTitleTextColor;
++ (id)_bodyFont;
++ (id)_boldTitleFont;
 + (double)_infoLabelMarginInset;
-+ (id)_textColorForLabelType:(unsigned long long)arg1;
-+ (id)_fontForLabelType:(unsigned long long)arg1;
-+ (id)_infoLabelWithString:(id)arg1 labelType:(unsigned long long)arg2;
++ (id)_textColorForLabelStyle:(long long)arg1;
++ (id)_fontForLabelStyle:(long long)arg1;
++ (id)_infoLabelWithString:(id)arg1 labelStyle:(long long)arg2;
 - (void).cxx_destruct;
 @property(nonatomic) double marginInset; // @synthesize marginInset=_marginInset;
 @property(retain, nonatomic) NSString *text;
 - (void)addToStackView:(id)arg1 withCustomSpacingAfter:(double)arg2 context:(id)arg3;
 - (id)initWithString:(id)arg1 labelType:(unsigned long long)arg2;
+- (id)initWithString:(id)arg1 labelStyle:(long long)arg2;
 
 @end
 

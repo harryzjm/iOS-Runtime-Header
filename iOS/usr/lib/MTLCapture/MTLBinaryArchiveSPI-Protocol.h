@@ -6,8 +6,8 @@
 
 #import <GPUToolsCapture/MTLBinaryArchive-Protocol.h>
 
-@class MTLBinaryEntry, MTLBinaryKey, MTLComputePipelineDescriptor, MTLMeshRenderPipelineDescriptor, MTLRenderPipelineDescriptor, MTLStitchedLibraryDescriptor, MTLTileRenderPipelineDescriptor, NSArray, NSMutableArray, NSObject, NSString, NSURL;
-@protocol NSObject, OS_dispatch_data;
+@class MTLComputePipelineDescriptor, MTLMeshRenderPipelineDescriptor, MTLRenderPipelineDescriptor, MTLStitchedLibraryDescriptor, MTLTileRenderPipelineDescriptor, NSArray, NSMutableArray, NSString, NSURL;
+@protocol MTLBinaryArchive, MTLBinaryArchiveSPI, NSObject;
 
 @protocol MTLBinaryArchiveSPI <MTLBinaryArchive>
 @property(readonly) NSArray *keys;
@@ -20,8 +20,6 @@
 - (_Bool)storeRenderPipelineDescriptor:(MTLRenderPipelineDescriptor *)arg1;
 - (_Bool)storeComputePipelineDescriptor:(MTLComputePipelineDescriptor *)arg1;
 - (_Bool)addLibraryWithDescriptor:(MTLStitchedLibraryDescriptor *)arg1 error:(id *)arg2;
-- (NSObject<OS_dispatch_data> *)getArchiveDataForKey:(const CDStruct_5af0f983 *)arg1;
-- (void)addArchiveEntry:(NSObject<OS_dispatch_data> *)arg1 forKey:(const CDStruct_5af0f983 *)arg2;
 - (_Bool)addMeshRenderPipelineFunctionsWithDescriptor:(MTLMeshRenderPipelineDescriptor *)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
 - (_Bool)addMeshRenderPipelineFunctionsWithDescriptor:(MTLMeshRenderPipelineDescriptor *)arg1 error:(id *)arg2;
 - (_Bool)addTileRenderPipelineFunctionsWithDescriptor:(MTLTileRenderPipelineDescriptor *)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
@@ -29,11 +27,10 @@
 - (_Bool)addComputePipelineFunctionsWithDescriptor:(MTLComputePipelineDescriptor *)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
 - (NSString *)formattedDescription:(unsigned long long)arg1;
 - (_Bool)serializeToURL:(NSURL *)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
+- (_Bool)recompileToArchive:(id <MTLBinaryArchiveSPI>)arg1 error:(id *)arg2;
 - (NSMutableArray *)archiveFunctionIds;
-- (id <NSObject>)newPipelineDescriptorAtIndex:(unsigned long long)arg1 pipelineType:(unsigned int *)arg2 error:(id *)arg3;
 - (unsigned long long)recompilablePipelineCount;
-- (NSString *)getArchiveIDWithError:(id *)arg1;
-- (MTLBinaryEntry *)getBinaryDataForKey:(MTLBinaryKey *)arg1;
-- (void)addBinaryEntry:(MTLBinaryEntry *)arg1 forKey:(MTLBinaryKey *)arg2;
+- (void)initMetalScriptWithArchive:(id <MTLBinaryArchive>)arg1;
+- (id <NSObject>)newPipelineDescriptorAtIndex:(unsigned long long)arg1 pipelineType:(unsigned int *)arg2 error:(id *)arg3;
 @end
 

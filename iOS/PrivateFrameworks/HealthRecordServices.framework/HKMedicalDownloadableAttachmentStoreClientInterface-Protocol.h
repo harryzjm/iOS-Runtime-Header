@@ -9,6 +9,6 @@
 @class HKMedicalDownloadableAttachment;
 
 @protocol HKMedicalDownloadableAttachmentStoreClientInterface <NSObject>
-- (void)clientRemote_attachmentDidChange:(HKMedicalDownloadableAttachment *)arg1 changeType:(long long)arg2;
+- (void)clientRemote_downloadableAttachmentDidChangeState:(HKMedicalDownloadableAttachment *)arg1;
 @end
 

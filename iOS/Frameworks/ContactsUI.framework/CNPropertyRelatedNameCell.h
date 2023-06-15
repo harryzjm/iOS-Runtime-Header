@@ -9,7 +9,6 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (_Bool)allowsCellSelection;
 - (id)labelView;
 
 @end

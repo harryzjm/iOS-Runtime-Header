@@ -4,16 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <swiftCore/_TtCs12_SwiftObject.h>
+#import ".h"
 
 @class MISSING_TYPE;
 
-@interface _TtC18VisualIntelligence9ParseFlow : _TtCs12_SwiftObject
+@interface _TtC18VisualIntelligence9ParseFlow : 
 {
     MISSING_TYPE *triggeringModelProcessor;
     MISSING_TYPE *domainAssignmentProcessor;
     MISSING_TYPE *regionMergingProcessor;
     MISSING_TYPE *regionSelectionProcessor;
+    MISSING_TYPE *regionGroupingProcessor;
     MISSING_TYPE *triggeringPredictionProcessor;
     MISSING_TYPE *annotationExtractorProcessor;
     MISSING_TYPE *nsfwCheckerProcessor;
@@ -27,7 +28,7 @@
     MISSING_TYPE *objectDetector;
     MISSING_TYPE *domainGlyphConfig;
     MISSING_TYPE *queue;
-    MISSING_TYPE *_flowEvent;
+    MISSING_TYPE *eventLoggingService;
 }
 
 @end

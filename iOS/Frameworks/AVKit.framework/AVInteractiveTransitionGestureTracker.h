@@ -12,6 +12,7 @@
 __attribute__((visibility("hidden")))
 @interface AVInteractiveTransitionGestureTracker : NSObject
 {
+    UIPanGestureRecognizer *_activePanGestureRecognizer;
     _Bool _enabled;
     _Bool _pinchToDismissEnabled;
     _Bool _pinchToPresentEnabled;
@@ -27,6 +28,7 @@ __attribute__((visibility("hidden")))
     double _previousPinchScale;
     double __rotation;
     UIPanGestureRecognizer *_panGestureRecognizer;
+    UIPanGestureRecognizer *_indirectPanGestureRecognizer;
     UIPinchGestureRecognizer *_pinchGestureRecognizer;
     UIRotationGestureRecognizer *_rotationGestureRecognizer;
     NSArray *_recognizers;
@@ -58,6 +60,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSArray *recognizers; // @synthesize recognizers=_recognizers;
 @property(readonly, nonatomic) UIRotationGestureRecognizer *rotationGestureRecognizer; // @synthesize rotationGestureRecognizer=_rotationGestureRecognizer;
 @property(readonly, nonatomic) UIPinchGestureRecognizer *pinchGestureRecognizer; // @synthesize pinchGestureRecognizer=_pinchGestureRecognizer;
+@property(readonly, nonatomic) UIPanGestureRecognizer *indirectPanGestureRecognizer; // @synthesize indirectPanGestureRecognizer=_indirectPanGestureRecognizer;
 @property(readonly, nonatomic) UIPanGestureRecognizer *panGestureRecognizer; // @synthesize panGestureRecognizer=_panGestureRecognizer;
 @property(nonatomic, setter=_setRotation:) double _rotation; // @synthesize _rotation=__rotation;
 @property(nonatomic) double previousPinchScale; // @synthesize previousPinchScale=_previousPinchScale;

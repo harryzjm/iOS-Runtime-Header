@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface _UIValuePredictor : NSObject <NSCopying>
+@interface _UIValuePredictor : NSObject
 {
     unsigned long long _capacity;
     unsigned long long _arrayCapacity;

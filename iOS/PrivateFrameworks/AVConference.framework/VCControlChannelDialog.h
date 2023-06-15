@@ -28,13 +28,13 @@ __attribute__((visibility("hidden")))
 - (void)confirmTransaction:(id)arg1;
 - (id)newDataFromMessage:(id)arg1 topic:(id)arg2 transactionID:(unsigned long long)arg3 isReliable:(_Bool)arg4 transactionDelegate:(id)arg5;
 - (_Bool)sendUnreliableMessage:(id)arg1 withTopic:(id)arg2 sessionID:(unsigned int)arg3 participantID:(id)arg4 transactionDelegate:(id)arg5;
-- (_Bool)sendReliableMessageInternal:(id)arg1 withTopic:(id)arg2 timeout:(id)arg3 useFastRetries:(_Bool)arg4;
-- (_Bool)sendReliableMessage:(id)arg1 withTopic:(id)arg2 timeout:(id)arg3;
-- (void)cacheOutgoingMessage:(id)arg1 topic:(id)arg2 timeout:(id)arg3;
-- (void)startHandshakeWithMessage:(id)arg1 topic:(id)arg2;
+- (_Bool)sendReliableMessageInternal:(id)arg1 withTopic:(id)arg2 timeout:(id)arg3 useFastRetries:(_Bool)arg4 withOptions:(id)arg5;
+- (_Bool)sendReliableMessage:(id)arg1 withTopic:(id)arg2 timeout:(id)arg3 withOptions:(id)arg4;
+- (void)cacheOutgoingMessage:(id)arg1 topic:(id)arg2 timeout:(id)arg3 withOptions:(id)arg4;
+- (void)startHandshakeWithMessage:(id)arg1 topic:(id)arg2 withOptions:(id)arg3;
 - (void)sendAllCachedMessagesAndDisableHandshakeWhenDone;
 - (void)checkForSignificantHandshakeDelayWithDelegate:(id)arg1;
-- (void)doHandshakeWithMessage:(id)arg1 topic:(id)arg2 afterDelay:(double)arg3;
+- (void)doHandshakeWithMessage:(id)arg1 topic:(id)arg2 afterDelay:(double)arg3 withOptions:(id)arg4;
 - (id)processMessageData:(id)arg1 participantID:(id)arg2 topic:(id *)arg3 transactionID:(id *)arg4 messageStatus:(unsigned int *)arg5 isInternalMessage:(_Bool *)arg6;
 - (void)removeTransactionForTransactionID:(int)arg1;
 - (void)flushActiveTransactions;

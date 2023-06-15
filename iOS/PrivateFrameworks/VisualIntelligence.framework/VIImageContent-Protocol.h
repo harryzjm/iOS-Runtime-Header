@@ -7,9 +7,9 @@
 #import <VisualIntelligence/NSObject-Protocol.h>
 
 @protocol VIImageContent <NSObject>
+@property(readonly, nonatomic) unsigned int orientation;
+@property(readonly, nonatomic) struct __CVBuffer *pixelBuffer;
 - (_Bool)isLoaded;
 - (struct CGSize)imageSize;
-@property(nonatomic, readonly) unsigned int orientation;
-@property(nonatomic, readonly) struct __CVBuffer *pixelBuffer;
 @end
 

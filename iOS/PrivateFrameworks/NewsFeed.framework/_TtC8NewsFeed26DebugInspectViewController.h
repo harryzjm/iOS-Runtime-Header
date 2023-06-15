@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
 @class MISSING_TYPE;
 
@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface _TtC8NewsFeed26DebugInspectViewController : UIViewController
 {
     MISSING_TYPE *cloudContext;
+    MISSING_TYPE *feedPersonalizer;
     MISSING_TYPE *key;
     MISSING_TYPE *result;
     MISSING_TYPE *factory;

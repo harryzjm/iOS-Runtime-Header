@@ -6,10 +6,11 @@
 
 #import <FrontBoardServices/FBSMutableSceneSettings.h>
 
-@class FBSDisplayIdentity;
+@class FBSDisplayConfiguration;
 
 @interface FBSMutableSceneSettings (SBTransientLocal)
-@property(retain, nonatomic, setter=sb_setDisplayIdentityForSceneManagers:) FBSDisplayIdentity *sb_displayIdentityForSceneManagers;
+@property(retain, nonatomic, setter=sb_setDisplayConfigurationForSceneManagers:) FBSDisplayConfiguration *sb_displayConfigurationForSceneManagers;
+- (id)sb_displayIdentityForSceneManagers;
 - (void)SBUI_applySystemApertureTransitionParameters:(id)arg1;
 @end
 

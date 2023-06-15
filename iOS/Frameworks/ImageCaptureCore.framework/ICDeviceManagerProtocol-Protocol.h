@@ -9,6 +9,7 @@
 @class ICCameraDevice, ICCameraFile, ICDevice, NSArray, NSData, NSDictionary;
 
 @protocol ICDeviceManagerProtocol <NSObject>
+- (long long)getSecurityScopedURL:(ICCameraFile *)arg1 fromDevice:(ICCameraDevice *)arg2 completion:(void (^)(id, NSMutableDictionary *))arg3;
 - (long long)ejectDevice:(ICCameraDevice *)arg1 completion:(void (^)(id, NSMutableDictionary *))arg2;
 - (long long)unregisterDevice:(ICCameraDevice *)arg1 forImageCaptureEventNotifications:(NSArray *)arg2;
 - (long long)registerDevice:(ICCameraDevice *)arg1 forImageCaptureEventNotifications:(NSArray *)arg2;

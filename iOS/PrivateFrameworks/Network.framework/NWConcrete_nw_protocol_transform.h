@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
     int data_mode;
     NSObject<OS_nw_endpoint> *replace_endpoint;
     NSObject<OS_xpc_object> *disabled_protocols;
+    NSObject<OS_xpc_object> *match_url_schemes;
     NSObject<OS_nw_protocol_stack> *transform_stack;
 }
 

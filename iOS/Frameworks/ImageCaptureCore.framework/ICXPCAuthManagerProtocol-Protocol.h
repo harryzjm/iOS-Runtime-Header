@@ -7,7 +7,7 @@
 @protocol ICXPCAuthManagerProtocol
 - (void)resetControlAuthorizationStatusWithReply:(void (^)(NSMutableDictionary *))arg1;
 - (void)resetContentsAuthorizationStatusWithReply:(void (^)(NSMutableDictionary *))arg1;
-- (void)requestGoodNewsStatusShouldPrompt:(_Bool)arg1 withReply:(void (^)(NSMutableDictionary *))arg2;
+- (void)requestGoodNewsStatusWithReply:(void (^)(NSMutableDictionary *))arg1;
 - (void)requestControlAuthorizationStatusShouldPrompt:(_Bool)arg1 withReply:(void (^)(NSMutableDictionary *))arg2;
 - (void)requestContentsAuthorizationStatusShouldPrompt:(_Bool)arg1 withReply:(void (^)(NSMutableDictionary *))arg2;
 @end

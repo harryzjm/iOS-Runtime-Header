@@ -9,7 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface WKVideoLayerRemote : CALayer
 {
-    struct WeakPtr<WebKit::MediaPlayerPrivateRemote, WTF::EmptyCounter> _mediaPlayerPrivateRemote;
+    struct WeakPtr<WebKit::MediaPlayerPrivateRemote, WTF::DefaultWeakPtrImpl> _mediaPlayerPrivateRemote;
     struct RetainPtr<CAContext> _context;
     unsigned char _videoGravity;
     struct unique_ptr<WebCore::Timer, std::default_delete<WebCore::Timer>> _resolveBoundsTimer;
@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)resizePreservingGravity;
 @property(nonatomic) unsigned char videoGravity;
 @property(nonatomic) void *mediaPlayerPrivateRemote;
+- (void)dealloc;
 - (id)init;
 
 @end

@@ -16,7 +16,8 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *$__lazy_storage_$_secondaryBarButton;
     MISSING_TYPE *$__lazy_storage_$_artworkHeight;
     MISSING_TYPE *title;
-    MISSING_TYPE *subtitle;
+    MISSING_TYPE *gameCenterIcon;
+    MISSING_TYPE *whatsNewBullets;
 }
 
 - (void).cxx_destruct;

@@ -9,7 +9,7 @@
 @class UITraitCollection;
 
 @protocol UITraitEnvironment <NSObject>
+@property(readonly, nonatomic) UITraitCollection *traitCollection;
 - (void)traitCollectionDidChange:(UITraitCollection *)arg1;
-@property(nonatomic, readonly) UITraitCollection *traitCollection;
 @end
 

@@ -28,8 +28,8 @@
 - (struct CGPoint)endPointForPath:(id)arg1 andBounds:(struct CGRect)arg2;
 - (struct CGPoint)startPointForPath:(id)arg1 andBounds:(struct CGRect)arg2;
 - (struct CGAffineTransform)transformForSize:(struct CGSize)arg1;
-- (void)paintPath:(const struct CGPath *)arg1 naturalBounds:(struct CGRect)arg2 inContext:(struct CGContext *)arg3 isPDF:(_Bool)arg4;
-- (void)paintPath:(const struct CGPath *)arg1 inContext:(struct CGContext *)arg2;
+- (void)paintPath:(struct CGPath *)arg1 naturalBounds:(struct CGRect)arg2 inContext:(struct CGContext *)arg3 isPDF:(_Bool)arg4;
+- (void)paintPath:(struct CGPath *)arg1 inContext:(struct CGContext *)arg2;
 - (void)paintRect:(struct CGRect)arg1 inContext:(struct CGContext *)arg2;
 - (void)paintRect:(struct CGRect)arg1 inContext:(struct CGContext *)arg2 atAngle:(double)arg3;
 - (void)p_setBaseNaturalSize:(struct CGSize)arg1;

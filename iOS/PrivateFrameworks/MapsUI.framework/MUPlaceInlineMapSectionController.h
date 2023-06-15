@@ -6,7 +6,7 @@
 
 #import "MUPlaceSectionController.h"
 
-@class CLLocation, MKPlaceInlineMapViewController, MKPlacePoisInlineMapViewController, MKUGCCallToActionViewAppearance, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, MUPlaceSectionView, NSArray, NSString, UIView, UIViewController;
+@class CLLocation, MKPlaceInlineMapViewController, MKPlaceInlineMapViewControllerConfiguration, MKPlacePoisInlineMapViewController, MUPlaceCallToActionAppearance, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, MUPlaceSectionView, NSArray, NSString, UIView, UIViewController;
 @protocol MUInfoCardAnalyticsDelegate;
 
 __attribute__((visibility("hidden")))
@@ -15,9 +15,11 @@ __attribute__((visibility("hidden")))
     MKPlaceInlineMapViewController *_inlineMapViewController;
     MKPlacePoisInlineMapViewController *_poiInlineMapViewController;
     MUPlaceSectionView *_sectionView;
+    MKPlaceInlineMapViewControllerConfiguration *_configuration;
 }
 
 - (void).cxx_destruct;
+- (_Bool)inlineMapViewControllerDidSelectMap:(id)arg1;
 - (_Bool)isImpressionable;
 - (int)analyticsModuleType;
 @property(readonly, nonatomic) _Bool hasContent;
@@ -27,7 +29,7 @@ __attribute__((visibility("hidden")))
 - (void)updateWithMapItem:(id)arg1;
 @property(retain, nonatomic) CLLocation *location;
 - (void)_setupInlineMap;
-- (id)initWithMapItem:(id)arg1;
+- (id)initWithMapItem:(id)arg1 configuration:(id)arg2;
 
 // Remaining properties
 @property(nonatomic, getter=isActive) _Bool active;
@@ -37,7 +39,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) MUPlaceSectionFooterViewModel *sectionFooterViewModel;
 @property(readonly, nonatomic) NSArray *sectionViews;
-@property(retain, nonatomic) MKUGCCallToActionViewAppearance *submissionStatus;
+@property(retain, nonatomic) MUPlaceCallToActionAppearance *submissionStatus;
 @property(readonly) Class superclass;
 
 @end

@@ -7,12 +7,13 @@
 #import <GameController/NSObject-Protocol.h>
 
 @class GCSProfile, NSString;
-@protocol GCSControllers, GCSCopilotFusedControllers, GCSGames, GCSProfiles;
+@protocol GCSControllers, GCSCopilotFusedControllers, GCSGames, GCSMouseProfiles, GCSProfiles;
 
 @protocol GCSSettingsStoreService <NSObject>
 @property _Bool showGCPreferencesPane;
 @property(readonly, nonatomic) id <GCSCopilotFusedControllers> copilotFusedControllers;
 @property(readonly, nonatomic) id <GCSControllers> controllers;
+@property(readonly, nonatomic) id <GCSMouseProfiles> mouseProfiles;
 @property(readonly, nonatomic) id <GCSProfiles> profiles;
 @property(readonly, nonatomic) id <GCSGames> games;
 @property(readonly, nonatomic) NSString *settingsVersion;

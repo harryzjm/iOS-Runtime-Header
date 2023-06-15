@@ -7,6 +7,10 @@
 #import <PhotosUICore/NSCopying-Protocol.h>
 #import <PhotosUICore/NSObject-Protocol.h>
 
+@class NSString;
+
 @protocol PXDisplayPerson <NSObject, NSCopying>
+@property(readonly, nonatomic) NSString *displayName;
+@property(readonly, nonatomic) NSString *name;
 @end
 

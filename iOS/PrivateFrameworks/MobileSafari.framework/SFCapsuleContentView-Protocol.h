@@ -22,7 +22,6 @@
 @property(nonatomic) struct CGAffineTransform keyContentTransform;
 @property(readonly, nonatomic) struct CGRect keyContentRect;
 @property(nonatomic) double minimizationPercent;
-@property(nonatomic) double minimizedContentHorizontalInset;
 @property(nonatomic) long long layoutStyle;
 @property(retain, nonatomic) _SFBarTheme *theme;
 @property(copy, nonatomic) CDUnknownBlockType highlightObserver;
@@ -30,6 +29,7 @@
 @property(nonatomic, setter=setMinimized:) _Bool isMinimized;
 @property(nonatomic, setter=setSelected:) _Bool isSelected;
 @property(nonatomic) __weak id <SFCapsuleContentViewSizeUpdating> sizeUpdater;
+- (void)prepareForReuse;
 - (double)horizontalPointerPaddingForButton:(UIView *)arg1;
 - (void)willChangeToMinimized:(_Bool)arg1 coordinator:(id <SFTransitionCoordinating>)arg2;
 @end

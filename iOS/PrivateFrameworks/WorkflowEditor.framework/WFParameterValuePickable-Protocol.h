@@ -9,18 +9,18 @@
 @class NSString, WFIcon, WFImage, WFVariableSubstitutableParameterState;
 
 @protocol WFParameterValuePickable <NSObject>
+@property(readonly, nonatomic) _Bool wf_alwaysScaleIconImage;
+@property(readonly, nonatomic) _Bool wf_shouldValidateCurrentStateOnCollectionChanged;
+@property(readonly, nonatomic) _Bool wf_usesGroupTableViewStyle;
+@property(readonly, nonatomic) _Bool wf_usesTogglesForSelection;
+@property(readonly, nonatomic) _Bool wf_allowsMultipleSelection;
+@property(readonly, nonatomic) _Bool wf_supportsSearch;
+@property(readonly, nonatomic) NSString *wf_displayLocalizedPrompt;
 - (WFImage *)wf_pickerLocalizedImageForState:(WFVariableSubstitutableParameterState *)arg1;
 - (NSString *)wf_pickerLocalizedSubtitleForState:(WFVariableSubstitutableParameterState *)arg1;
 - (NSString *)wf_pickerLocalizedTitleForState:(WFVariableSubstitutableParameterState *)arg1;
 - (void)wf_reloadFromAttributesDidChangeWithCompletionHandler:(void (^)(INObjectCollection *, NSString *, NSError *))arg1;
 - (void)wf_loadStatesWithSearchTerm:(NSString *)arg1 completionHandler:(void (^)(INObjectCollection *, NSString *, NSError *))arg2;
-@property(nonatomic, readonly) _Bool wf_alwaysScaleIconImage;
-@property(nonatomic, readonly) _Bool wf_shouldValidateCurrentStateOnCollectionChanged;
-@property(nonatomic, readonly) _Bool wf_usesGroupTableViewStyle;
-@property(nonatomic, readonly) _Bool wf_usesTogglesForSelection;
-@property(nonatomic, readonly) _Bool wf_allowsMultipleSelection;
-@property(nonatomic, readonly) _Bool wf_supportsSearch;
-@property(nonatomic, readonly) NSString *wf_displayLocalizedPrompt;
 
 @optional
 - (WFIcon *)wf_pickerLocalizedIconForState:(WFVariableSubstitutableParameterState *)arg1;

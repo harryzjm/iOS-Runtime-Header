@@ -79,6 +79,7 @@
     MISSING_TYPE *_minsUntilIcloudBuy;
     MISSING_TYPE *_openLabelSubStream;
     MISSING_TYPE *_minsUntilIcloudOpenedSubStream;
+    MISSING_TYPE *_userTier;
     MISSING_TYPE *_obsoleteTrafficType;
 }
 

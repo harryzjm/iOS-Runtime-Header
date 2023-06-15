@@ -7,15 +7,17 @@
 #import <Foundation/NSUserDefaults.h>
 
 @interface NSUserDefaults (SafariCoreExtras)
-+ (_Bool)safari_passwordManagerIsInDemoMode;
 + (id)safari_notificationNameForUserDefaultsKey:(id)arg1;
 + (id)safari_cloudBookmarksDefaults;
 + (id)_safari_browserDefaults;
++ (id)safari_standardUserDefaultsWithOptimizedKeyValueObserving;
 + (id)safari_browserDefaults;
 + (id)sf_safariSharedDefaults;
+- (_Bool)safari_enableAdvancedPrivacyProtections:(_Bool)arg1;
 - (id)safari_observeValueForKey:(id)arg1 onQueue:(id)arg2 notifyForInitialValue:(_Bool)arg3 handler:(CDUnknownBlockType)arg4;
 - (_Bool)safari_boolForKey:(id)arg1 defaultValue:(_Bool)arg2;
 - (_Bool)safari_toggleBoolAndNotifyForKey:(id)arg1;
+- (void)safari_modifyDictionaryForKey:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)safari_setObject:(id)arg1 andNotifyForKey:(id)arg2;
 - (void)safari_setBool:(_Bool)arg1 forKey:(id)arg2 andNotifyWithUserInfo:(id)arg3;
 - (void)safari_setBool:(_Bool)arg1 andNotifyForKey:(id)arg2;

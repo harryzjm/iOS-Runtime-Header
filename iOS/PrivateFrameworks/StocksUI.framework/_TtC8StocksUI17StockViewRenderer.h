@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *styler;
     MISSING_TYPE *sparklineRenderer;
+    MISSING_TYPE *unnecessaryWordRemover;
     MISSING_TYPE *renderHistory;
 }
 

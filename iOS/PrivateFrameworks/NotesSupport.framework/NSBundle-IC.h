@@ -7,6 +7,7 @@
 #import <Foundation/NSBundle.h>
 
 @interface NSBundle (IC)
+@property(readonly, nonatomic) _Bool ic_canEditNotes;
 @property(readonly, nonatomic) _Bool ic_isAppExtension;
 @end
 

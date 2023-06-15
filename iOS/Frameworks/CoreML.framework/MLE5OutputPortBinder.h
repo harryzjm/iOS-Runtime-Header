@@ -6,13 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@class MLFeatureDescription, MLFeatureValue, NSString;
+@class MLFeatureDescription, MLFeatureValue, MLPixelBufferPool, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface MLE5OutputPortBinder : NSObject
 {
+    struct __CVBuffer *_temporarilyBoundPixelBuffer;
     MLFeatureValue *_featureValue;
+    _Bool _outputBackingWasDirectlyBound;
+    MLPixelBufferPool *_pixelBufferPool;
     id _outputBacking;
     struct e5rt_io_port *_portHandle;
     MLFeatureDescription *_featureDescription;
@@ -23,10 +26,17 @@ __attribute__((visibility("hidden")))
 @property(readonly) NSObject<OS_dispatch_queue> *serialQueue; // @synthesize serialQueue=_serialQueue;
 @property(readonly) MLFeatureDescription *featureDescription; // @synthesize featureDescription=_featureDescription;
 @property(readonly) struct e5rt_io_port *portHandle; // @synthesize portHandle=_portHandle;
+@property(nonatomic) _Bool outputBackingWasDirectlyBound; // @synthesize outputBackingWasDirectlyBound=_outputBackingWasDirectlyBound;
 @property(retain) id outputBacking; // @synthesize outputBacking=_outputBacking;
+@property(retain, nonatomic) MLPixelBufferPool *pixelBufferPool; // @synthesize pixelBufferPool=_pixelBufferPool;
+- (void)reset;
+- (id)_makeFeatureValueFromPort:(struct e5rt_io_port *)arg1 featureDescription:(id)arg2 error:(id *)arg3;
+- (_Bool)_copyOutputFromPort:(struct e5rt_io_port *)arg1 toOutputBacking:(id)arg2 featureDescription:(id)arg3 error:(id *)arg4;
+- (id)_makeFeatureValueFromOutputBacking:(id)arg1 error:(id *)arg2;
 - (id)_makeFeatureValueAndReturnError:(id *)arg1;
 @property(readonly) MLFeatureValue *featureValue;
 - (_Bool)bindAndReturnError:(id *)arg1;
+- (long long)_tryToBindOutputBackingDirectlyAndReturnError:(id *)arg1;
 - (id)initWithPort:(struct e5rt_io_port *)arg1 featureDescription:(id)arg2;
 
 // Remaining properties

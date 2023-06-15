@@ -9,11 +9,11 @@
 @class NSArray, NSString;
 
 @protocol SNTestCase <SNTestSetup>
-@property(nonatomic, readonly) unsigned long long aggregate;
-@property(nonatomic, readonly) double timeoutInSeconds;
-@property(nonatomic, readonly) NSString *testName;
+@property(readonly, nonatomic) unsigned long long aggregate;
+@property(readonly, nonatomic) double timeoutInSeconds;
+@property(readonly, copy, nonatomic) NSString *testName;
 
 @optional
-@property(nonatomic, readonly) NSArray *requiredCapabilities;
+@property(readonly, nonatomic) NSArray *requiredCapabilities;
 @end
 

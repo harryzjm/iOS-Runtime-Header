@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CKRecordID, CKShare, NSArray, NSObject, NSString;
+@class CKRecordID, CKShare, NSArray, NSObject;
 @protocol BROperationClient;
 
 @protocol BRShareOperationProtocol
@@ -13,6 +13,6 @@
 - (void)copyCurrentUserNameAndDisplayHandleWithReply:(void (^)(NSPersonNameComponents *, NSString *, NSString *, NSString *, NSError *))arg1;
 - (void)startOperation:(NSObject<BROperationClient> *)arg1 toUnshareShare:(CKShare *)arg2 forceDelete:(_Bool)arg3 reply:(void (^)(NSError *))arg4;
 - (void)startOperation:(NSObject<BROperationClient> *)arg1 toSaveSharingInfo:(CKShare *)arg2 reply:(void (^)(CKShare *, NSError *))arg3;
-- (void)startOperation:(NSObject<BROperationClient> *)arg1 toCopyShareURLForShare:(CKShare *)arg2 appName:(NSString *)arg3 reply:(void (^)(CKShare *, NSURL *, NSError *))arg4;
+- (void)startOperation:(NSObject<BROperationClient> *)arg1 toCopyShareURLForShare:(CKShare *)arg2 reply:(void (^)(CKShare *, NSURL *, NSError *))arg3;
 @end
 

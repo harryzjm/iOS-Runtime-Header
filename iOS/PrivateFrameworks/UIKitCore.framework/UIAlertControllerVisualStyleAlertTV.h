@@ -24,7 +24,7 @@ __attribute__((visibility("hidden")))
 - (long long)permittedActionLayoutDirection;
 - (id)textFieldContainingViewWithTextField:(id)arg1 position:(long long)arg2;
 - (struct UIEdgeInsets)contentInsetsForContainerView:(id)arg1;
-- (double)actionWidthForMinimumActionWidth:(double)arg1;
+- (double)actionWidthForMinimumActionWidth:(double)arg1 availableWidth:(double)arg2;
 - (double)maximumWidthForTitleAndMessageContentView;
 - (double)maximumWidth;
 - (double)_maximumContentWidth;

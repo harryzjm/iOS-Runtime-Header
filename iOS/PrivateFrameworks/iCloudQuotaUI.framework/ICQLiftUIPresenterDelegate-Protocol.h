@@ -6,10 +6,16 @@
 
 #import <iCloudQuotaUI/NSObject-Protocol.h>
 
-@class ICQLiftUIPresenter;
+@class ICQLiftUIPresenter, NSDictionary, NSError;
 
 @protocol ICQLiftUIPresenterDelegate <NSObject>
 - (void)liftUIPresenterDidComplete:(ICQLiftUIPresenter *)arg1;
 - (void)liftUIPresenterDidCancel:(ICQLiftUIPresenter *)arg1;
+
+@optional
+- (void)liftUIPresenterDidComplete:(ICQLiftUIPresenter *)arg1 userInfo:(NSDictionary *)arg2;
+- (void)liftUIPresenterDidCancel:(ICQLiftUIPresenter *)arg1 userInfo:(NSDictionary *)arg2;
+- (void)liftUIPresenter:(ICQLiftUIPresenter *)arg1 didLoadWithSuccess:(_Bool)arg2 error:(NSError *)arg3;
+- (void)liftUIPresenter:(ICQLiftUIPresenter *)arg1 performAction:(long long)arg2 parameters:(NSDictionary *)arg3 completion:(void (^)(_Bool, NSError *))arg4;
 @end
 

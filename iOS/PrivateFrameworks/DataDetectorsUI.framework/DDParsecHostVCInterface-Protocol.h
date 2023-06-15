@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, NSURL, SFPunchout;
+@class NSData, NSString, NSURL, SFPunchout;
 
 @protocol DDParsecHostVCInterface
 - (void)remoteVCIsReady;
@@ -13,7 +13,8 @@
 - (void)openTrailerPunchout:(SFPunchout *)arg1;
 - (void)getStatusBarHidden:(void (^)(_Bool))arg1;
 - (void)openParsecURL:(NSURL *)arg1;
-- (void)reportAnIssueWithReportIdentifier:(NSString *)arg1;
+- (void)loadReportAnIssueImage:(void (^)(NSData *))arg1;
+- (void)reportAnIssueWithReportIdentifier:(NSString *)arg1 sfReportData:(NSData *)arg2;
 - (void)interactionEndedWithPunchout:(_Bool)arg1;
 - (void)showingFTE:(_Bool)arg1;
 - (void)showingErrorView:(_Bool)arg1;

@@ -67,6 +67,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *description;
 - (void)sceneLayerManagerDidUpdateLayers:(id)arg1;
 - (void)invalidate;
+- (long long)_focusedSound;
 - (id)window;
 - (id)_hitTest:(struct CGPoint)arg1 withEvent:(id)arg2 windowServerHitTestWindow:(id)arg3;
 - (_Bool)_shouldAnimatePropertyWithKey:(id)arg1;

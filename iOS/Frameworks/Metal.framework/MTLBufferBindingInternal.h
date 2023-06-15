@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     unsigned long long _aluType;
 }
 
+- (_Bool)isEqual:(id)arg1;
 - (id)formattedDescription:(unsigned long long)arg1;
 - (id)bufferIndirectArgumentType;
 @property(readonly) MTLPointerType *bufferPointerType;

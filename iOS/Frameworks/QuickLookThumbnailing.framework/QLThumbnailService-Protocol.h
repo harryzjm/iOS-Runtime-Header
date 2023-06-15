@@ -9,6 +9,6 @@
 @class NSDictionary, NSString;
 
 @protocol QLThumbnailService <NSObject>
-- (void)generateThumbnailOfSize:(struct CGSize)arg1 minimumSize:(double)arg2 scale:(double)arg3 badgeType:(unsigned long long)arg4 iconFlavor:(int)arg5 contentType:(NSString *)arg6 interpolationQuality:(int)arg7 withContents:(id)arg8 additionalResourcesWrapper:(id)arg9 generatorData:(NSDictionary *)arg10 completionHandler:(void (^)(NSData *, QLURLHandler *, IOSurface *, struct CGSize, QLTBitmapFormat *, NSDictionary *, _Bool, NSError *))arg11;
+- (void)generateThumbnailOfSize:(struct CGSize)arg1 minimumSize:(double)arg2 scale:(double)arg3 badgeType:(unsigned long long)arg4 iconFlavor:(int)arg5 contentType:(NSString *)arg6 interpolationQuality:(int)arg7 wantsLowQuality:(_Bool)arg8 withContents:(id)arg9 additionalResourcesWrapper:(id)arg10 generatorData:(NSDictionary *)arg11 completionHandler:(void (^)(NSData *, QLURLHandler *, IOSurface *, struct CGSize, QLTBitmapFormat *, NSDictionary *, _Bool, NSError *))arg12;
 @end
 

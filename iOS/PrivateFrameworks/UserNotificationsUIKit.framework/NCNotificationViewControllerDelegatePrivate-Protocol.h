@@ -7,12 +7,11 @@
 #import <UserNotificationsUIKit/NCNotificationViewControllerDelegate-Protocol.h>
 
 @class NCNotificationRequest, NCNotificationViewController;
-@protocol NCAuxiliaryOptionsProviding, NCNotificationStaticContentProviding;
+@protocol NCAuxiliaryOptionsProviding;
 
 @protocol NCNotificationViewControllerDelegatePrivate <NCNotificationViewControllerDelegate>
 
 @optional
 - (id <NCAuxiliaryOptionsProviding>)notificationViewController:(NCNotificationViewController *)arg1 auxiliaryOptionsContentProviderForNotificationRequest:(NCNotificationRequest *)arg2 withLongLook:(_Bool)arg3;
-- (id <NCNotificationStaticContentProviding>)notificationViewController:(NCNotificationViewController *)arg1 staticContentProviderForNotificationRequest:(NCNotificationRequest *)arg2;
 @end
 

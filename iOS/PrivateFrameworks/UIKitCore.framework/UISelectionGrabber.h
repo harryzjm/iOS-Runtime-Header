@@ -14,13 +14,8 @@ __attribute__((visibility("hidden")))
     double m_screenScale;
     UISelectionGrabberDot *m_dotView;
     _Bool m_isDotted;
-    _Bool m_activeFlattened;
-    _Bool m_alertFlattened;
-    _Bool m_navigationTransitionFlattened;
     _Bool m_animating;
     long long m_orientation;
-    int _applicationDeactivationReason;
-    _Bool _sheetFlattened;
     UISelectionGrabberCustomPath *_customPath;
 }
 
@@ -28,12 +23,8 @@ __attribute__((visibility("hidden")))
 + (id)_grabberDot;
 - (void).cxx_destruct;
 @property(retain, nonatomic) UISelectionGrabberCustomPath *customPath; // @synthesize customPath=_customPath;
-@property(nonatomic) _Bool sheetFlattened; // @synthesize sheetFlattened=_sheetFlattened;
 @property(nonatomic) long long orientation; // @synthesize orientation=m_orientation;
 @property(nonatomic) _Bool animating; // @synthesize animating=m_animating;
-@property(nonatomic) _Bool navigationTransitionFlattened; // @synthesize navigationTransitionFlattened=m_navigationTransitionFlattened;
-@property(nonatomic) _Bool activeFlattened; // @synthesize activeFlattened=m_activeFlattened;
-@property(nonatomic) _Bool alertFlattened; // @synthesize alertFlattened=m_alertFlattened;
 @property(nonatomic) _Bool isDotted; // @synthesize isDotted=m_isDotted;
 - (id)fillColor;
 - (void)drawRect:(struct CGRect)arg1;
@@ -67,15 +58,6 @@ __attribute__((visibility("hidden")))
 - (_Bool)isRotating;
 - (_Bool)isScaling;
 - (_Bool)isScrolling;
-- (void)canExpandAfterNavigationTransition:(id)arg1;
-- (void)mustFlattenForNavigationTransition:(id)arg1;
-- (void)canExpandAfterBecomeActive:(id)arg1;
-- (void)mustFlattenForResignActive:(id)arg1;
-- (void)saveDeactivationReason:(id)arg1;
-- (void)canExpandAfterSheet:(id)arg1;
-- (void)mustFlattenForSheet:(id)arg1;
-- (void)canExpandAfterAlert:(id)arg1;
-- (void)mustFlattenForAlert:(id)arg1;
 @property(readonly, nonatomic) UITextRangeView *hostView;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;

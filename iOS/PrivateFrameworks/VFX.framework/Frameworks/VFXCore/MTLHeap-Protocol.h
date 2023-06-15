@@ -10,25 +10,25 @@
 @protocol MTLAccelerationStructure, MTLBuffer, MTLDevice, MTLTexture;
 
 @protocol MTLHeap <NSObject>
+@property(readonly) long long type;
+@property(readonly) unsigned long long currentAllocatedSize;
+@property(readonly) unsigned long long usedSize;
+@property(readonly) unsigned long long size;
+@property(readonly) unsigned long long resourceOptions;
+@property(readonly) unsigned long long hazardTrackingMode;
+@property(readonly) unsigned long long cpuCacheMode;
+@property(readonly) unsigned long long storageMode;
+@property(readonly) id <MTLDevice> device;
+@property(copy) NSString *label;
 - (id <MTLAccelerationStructure>)newAccelerationStructureWithDescriptor:(MTLAccelerationStructureDescriptor *)arg1 offset:(unsigned long long)arg2;
 - (id <MTLAccelerationStructure>)newAccelerationStructureWithSize:(unsigned long long)arg1 offset:(unsigned long long)arg2;
 - (id <MTLAccelerationStructure>)newAccelerationStructureWithDescriptor:(MTLAccelerationStructureDescriptor *)arg1;
 - (id <MTLAccelerationStructure>)newAccelerationStructureWithSize:(unsigned long long)arg1;
 - (id <MTLTexture>)newTextureWithDescriptor:(MTLTextureDescriptor *)arg1 offset:(unsigned long long)arg2;
 - (id <MTLBuffer>)newBufferWithLength:(unsigned long long)arg1 options:(unsigned long long)arg2 offset:(unsigned long long)arg3;
-@property(nonatomic, readonly) long long type;
 - (unsigned long long)setPurgeableState:(unsigned long long)arg1;
 - (id <MTLTexture>)newTextureWithDescriptor:(MTLTextureDescriptor *)arg1;
 - (id <MTLBuffer>)newBufferWithLength:(unsigned long long)arg1 options:(unsigned long long)arg2;
 - (unsigned long long)maxAvailableSizeWithAlignment:(unsigned long long)arg1;
-@property(nonatomic, readonly) long long currentAllocatedSize;
-@property(nonatomic, readonly) long long usedSize;
-@property(nonatomic, readonly) long long size;
-@property(nonatomic, readonly) unsigned long long resourceOptions;
-@property(nonatomic, readonly) unsigned long long hazardTrackingMode;
-@property(nonatomic, readonly) unsigned long long cpuCacheMode;
-@property(nonatomic, readonly) unsigned long long storageMode;
-@property(nonatomic, readonly) id <MTLDevice> device;
-@property(nonatomic, copy) NSString *label;
 @end
 

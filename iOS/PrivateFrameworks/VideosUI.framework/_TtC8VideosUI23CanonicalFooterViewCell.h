@@ -20,7 +20,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-- (id)preferredLayoutAttributesFittingAttributes:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)vui_prepareForReuse;
 - (struct CGSize)vui_layoutSubviews:(struct CGSize)arg1 computationOnly:(_Bool)arg2;

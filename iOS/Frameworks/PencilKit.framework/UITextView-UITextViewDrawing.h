@@ -4,12 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UITextView.h>
+#import <UIKitCore/UITextView.h>
 
 @class PKInk, PKLinedPaper, PKTool, UIImage;
 @protocol UITextViewDrawingDelegate;
 
 @interface UITextView (UITextViewDrawing)
+- (void)_cleanupStaleCachedViewProviders;
+- (id)_cachedViewProviderForTextAttachment:(id)arg1;
+- (void)_setCachedViewProvider:(id)arg1 textAttachment:(id)arg2;
+- (id)_cacheIdentifierForTextAttachment:(id)arg1;
+- (id)_pk_viewProviderForAttachment:(id)arg1 atCharacterIndex:(unsigned long long)arg2 createIfNeeded:(_Bool)arg3;
+- (struct CGRect)_pk_lineFragmentRectForGlyphAtCharacterIndex:(unsigned long long)arg1;
+- (void)_pk_ensureLayoutForCharacterRange:(struct _NSRange)arg1;
+- (void)_pk_invalidateLayoutForCharacterRange:(struct _NSRange)arg1 invalidateDisplay:(_Bool)arg2 ensureLayout:(_Bool)arg3;
+- (id)_pk_textRangeFromCharacterRange:(struct _NSRange)arg1 textLayoutManager:(id)arg2;
 - (_Bool)_canSelectDrawing;
 - (void)_insertDrawing:(id)arg1;
 - (_Bool)_canInsertDrawingInRange:(struct _NSRange)arg1;
@@ -26,6 +35,7 @@
 - (void)_removeDrawingAttachment:(id)arg1 withView:(id)arg2 forDeletion:(_Bool)arg3;
 - (id)_insertEmptyDrawingAttachmentAtLocation:(long long)arg1;
 - (id)_textRangeFromRange:(struct _NSRange)arg1;
+- (struct CGRect)_pk_boundsForDrawingTextAttachment:(id)arg1 characterIndex:(unsigned long long)arg2;
 - (struct CGRect)_boundsForDrawingTextAttachment:(id)arg1 characterIndex:(unsigned long long)arg2 layoutManager:(id)arg3;
 - (void)_didEndInteractiveResize;
 - (void)_willBeginInteractiveResize;

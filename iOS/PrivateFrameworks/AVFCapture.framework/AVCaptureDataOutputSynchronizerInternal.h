@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
     NSArray *dataOutputs;
     struct OpaqueFigSimpleMutex *dataOutputsStorageMutex;
     NSArray *dataOutputsStorage;
-    int masterSynchronizedDataQueueMaxDepth;
+    int leaderSynchronizedDataQueueMaxDepth;
     _Bool synchronizingVideoAndDepth;
     _Bool synchronizingVideoAndVisionData;
 }

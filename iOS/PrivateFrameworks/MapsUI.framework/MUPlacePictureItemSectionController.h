@@ -6,7 +6,7 @@
 
 #import "MUPlaceSectionController.h"
 
-@class MKUGCCallToActionViewAppearance, MUPlacePhotoGalleryViewController, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, MUPlaceSectionView, MUPlaceTilesView, MUPunchoutViewModel, NSArray, NSString, UIImageView, UIView, UIViewController;
+@class MUPlaceCallToActionAppearance, MUPlacePhotoGalleryViewController, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, MUPlaceSectionView, MUPlaceTilesView, MUPunchoutViewModel, NSArray, NSString, UIImageView, UIView, UIViewController;
 @protocol GEOAnnotatedItemList, MUInfoCardAnalyticsDelegate, MUPlacePictureItemSectionControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -41,7 +41,6 @@ __attribute__((visibility("hidden")))
 - (void)_performPunchout;
 - (void)placeTileCollectionView:(id)arg1 didTapOnAccessoryViewModel:(id)arg2;
 - (void)placeTileCollectionView:(id)arg1 didTapOnViewModel:(id)arg2;
-- (void)placeTileCollectionViewDidScroll:(id)arg1;
 @property(readonly, nonatomic) MUPlaceSectionHeaderViewModel *sectionHeaderViewModel; // @synthesize sectionHeaderViewModel=_sectionHeaderViewModel;
 @property(readonly, nonatomic) UIView *sectionView;
 - (void)_setupSubviews;
@@ -56,7 +55,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) MUPlaceSectionFooterViewModel *sectionFooterViewModel;
 @property(readonly, nonatomic) UIViewController *sectionViewController;
 @property(readonly, nonatomic) NSArray *sectionViews;
-@property(retain, nonatomic) MKUGCCallToActionViewAppearance *submissionStatus;
+@property(retain, nonatomic) MUPlaceCallToActionAppearance *submissionStatus;
 @property(readonly) Class superclass;
 
 @end

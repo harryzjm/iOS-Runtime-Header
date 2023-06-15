@@ -18,7 +18,6 @@ __attribute__((visibility("hidden")))
     _UIStatusBarStringView *_serviceNameView;
     _UIStatusBarCellularSignalView *_signalView;
     _UIStatusBarStringView *_networkTypeView;
-    _UIStatusBarImageView *_sosView;
     _UIStatusBarImageView *_warningView;
     _UIStatusBarImageView *_callForwardingView;
     _UIStatusBarStringView *_rawStringView;
@@ -26,7 +25,6 @@ __attribute__((visibility("hidden")))
 
 + (id)rawDisplayIdentifier;
 + (id)callForwardingDisplayIdentifier;
-+ (id)sosDisplayIdentifier;
 + (id)typeDisplayIdentifier;
 + (id)nameDisplayIdentifier;
 + (id)warningDisplayIdentifier;
@@ -36,7 +34,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) _UIStatusBarStringView *rawStringView; // @synthesize rawStringView=_rawStringView;
 @property(retain, nonatomic) _UIStatusBarImageView *callForwardingView; // @synthesize callForwardingView=_callForwardingView;
 @property(retain, nonatomic) _UIStatusBarImageView *warningView; // @synthesize warningView=_warningView;
-@property(retain, nonatomic) _UIStatusBarImageView *sosView; // @synthesize sosView=_sosView;
 @property(retain, nonatomic) _UIStatusBarStringView *networkTypeView; // @synthesize networkTypeView=_networkTypeView;
 @property(retain, nonatomic) _UIStatusBarCellularSignalView *signalView; // @synthesize signalView=_signalView;
 @property(retain, nonatomic) _UIStatusBarStringView *serviceNameView; // @synthesize serviceNameView=_serviceNameView;
@@ -48,7 +45,6 @@ __attribute__((visibility("hidden")))
 - (void)_create_rawStringView;
 - (void)_create_callForwardingView;
 - (void)_create_warningView;
-- (void)_create_sosView;
 - (void)_create_networkTypeView;
 - (void)_create_serviceNameView;
 - (void)_create_signalView;
@@ -58,7 +54,6 @@ __attribute__((visibility("hidden")))
 - (id)applyUpdate:(id)arg1 toDisplayItem:(id)arg2;
 - (id)entryForDisplayItemWithIdentifier:(id)arg1;
 - (_Bool)_updateSignalView:(id)arg1 withUpdate:(id)arg2 entry:(id)arg3 forceShowingDisabledSignalBars:(_Bool)arg4;
-- (_Bool)_hideSignalViewWithData:(id)arg1 cellularEntry:(id)arg2;
 - (id)_backgroundColorForUpdate:(id)arg1 entry:(id)arg2;
 - (id)_fillColorForUpdate:(id)arg1 entry:(id)arg2;
 - (id)dependentEntryKeys;

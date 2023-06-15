@@ -11,24 +11,24 @@ __attribute__((visibility("hidden")))
 {
     _Bool _includePath;
     _Bool _includeInfo;
+    _Bool _includeUserManagedAssetsRelPath;
     _Bool _skipSandboxExtensions;
     NSArray *_containerPaths;
     NSArray *_containerIdentities;
     NSArray *_containers;
-    NSArray *_resolvedLinks;
     MCMClientIdentity *_clientIdentity;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool skipSandboxExtensions; // @synthesize skipSandboxExtensions=_skipSandboxExtensions;
 @property(readonly, nonatomic) MCMClientIdentity *clientIdentity; // @synthesize clientIdentity=_clientIdentity;
+@property(readonly, nonatomic) _Bool includeUserManagedAssetsRelPath; // @synthesize includeUserManagedAssetsRelPath=_includeUserManagedAssetsRelPath;
 @property(readonly, nonatomic) _Bool includeInfo; // @synthesize includeInfo=_includeInfo;
 @property(readonly, nonatomic) _Bool includePath; // @synthesize includePath=_includePath;
-@property(readonly, nonatomic) NSArray *resolvedLinks; // @synthesize resolvedLinks=_resolvedLinks;
 @property(readonly, nonatomic) NSArray *containers; // @synthesize containers=_containers;
 @property(readonly, nonatomic) NSArray *containerIdentities; // @synthesize containerIdentities=_containerIdentities;
 @property(readonly, nonatomic) NSArray *containerPaths; // @synthesize containerPaths=_containerPaths;
-- (id)initWithContainers:(id)arg1 resolvedLinks:(id)arg2 includePath:(_Bool)arg3 includeInfo:(_Bool)arg4 clientIdentity:(id)arg5 skipSandboxExtensions:(_Bool)arg6;
+- (id)initWithContainers:(id)arg1 includePath:(_Bool)arg2 includeInfo:(_Bool)arg3 includeUserManagedAssetsRelPath:(_Bool)arg4 clientIdentity:(id)arg5 skipSandboxExtensions:(_Bool)arg6;
 - (id)initWithContainerPaths:(id)arg1 containerIdentities:(id)arg2 includePath:(_Bool)arg3 clientIdentity:(id)arg4 skipSandboxExtensions:(_Bool)arg5;
 - (_Bool)encodeResultOntoReply:(id)arg1;
 

@@ -7,6 +7,7 @@
 #import <Foundation/NSMutableDictionary.h>
 
 @interface NSMutableDictionary (OSAStackshotKCDataExtension)
+- (void)parsePortLabelContainer:(struct kcdata_iter)arg1;
 - (void)addWaitInfoDesc:(const void *)arg1 count:(unsigned int)arg2 elSize:(unsigned int)arg3;
 - (void)addTurnstileInfoDesc:(const void *)arg1 count:(unsigned int)arg2 elSize:(unsigned int)arg3;
 - (_Bool)osa_logCounter_isLog:(id)arg1 byKey:(id)arg2 count:(unsigned long long *)arg3 withinLimit:(unsigned long long *)arg4 withOptions:(id)arg5;

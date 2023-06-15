@@ -16,6 +16,10 @@ struct AVAudio3DPoint {
     float _field3;
 };
 
+struct AVVCKeepAliveImpl {
+    CDUnknownFunctionPointerType *_field1;
+};
+
 struct AudioBuffer {
     unsigned int _field1;
     unsigned int _field2;

@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class LSInstallProgressList, NSArray, NSMutableArray, NSMutableDictionary, NSMutableOrderedSet, NSMutableSet, NSString;
-@protocol OS_dispatch_queue;
+@protocol OS_dispatch_queue, OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
 @interface _LSInstallProgressService : NSObject
@@ -24,6 +24,9 @@ __attribute__((visibility("hidden")))
     NSArray *_journalledNotificationsToReplay;
     NSMutableArray *_startupJournalledNotifications;
     _Bool _replayingJournalToNewClients;
+    NSObject<OS_dispatch_source> *_progressProportionsSaveTimerSource;
+    struct os_unfair_lock_s _progressProportionsLock;
+    NSMutableDictionary *_progressProportions;
     _Bool _usingNetwork;
 }
 
@@ -39,7 +42,12 @@ __attribute__((visibility("hidden")))
 - (id)loadJournalledNotificationsFromDisk;
 - (void)addSendNotificationFenceWithTimeout:(double)arg1 fenceBlock:(CDUnknownBlockType)arg2;
 - (void)sendNetworkUsageChangedNotification;
-- (void)sendAppControlsNotificationForApp:(id)arg1 withName:(id)arg2;
+- (void)setProgressProportionsByPhase:(id)arg1 forInstallOfApplicationWithIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)progressProportionsForBundleID:(id)arg1;
+- (void)discardProportionsForBundleID:(id)arg1;
+- (void)coalesceProportionsSave;
+- (void)saveProportions;
+- (void)loadProportions;
 - (void)sendNotification:(int)arg1 forApps:(id)arg2 withPlugins:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)_prepareApplicationProxiesForNotification:(int)arg1 identifiers:(id)arg2 withPlugins:(_Bool)arg3;
 - (void)sendDatabaseRebuiltNotification;
@@ -56,6 +64,8 @@ __attribute__((visibility("hidden")))
 - (void)createInstallProgressForApplication:(id)arg1 withPhase:(unsigned long long)arg2 andPublishingString:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (id)parentProgressForApplication:(id)arg1 andPhase:(unsigned long long)arg2 isActive:(_Bool)arg3;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (unsigned long long)finalInstallPhaseForAppProxy:(id)arg1;
+- (void)getMaxProgressPhaseUnitsForLoading:(int *)arg1 restoring:(int *)arg2 installing:(int *)arg3 essentialAssets:(int *)arg4 forAppProxy:(id)arg5;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;
 - (_Bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;

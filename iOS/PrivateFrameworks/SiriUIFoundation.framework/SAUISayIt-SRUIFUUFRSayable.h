@@ -8,6 +8,7 @@
 
 @interface SAUISayIt (SRUIFUUFRSayable)
 - (id)sruif__uufrSaid;
+- (long long)sruif_usefulUserResultType;
 @property(nonatomic, setter=sruif_setIgnoresMuteSwitch:) _Bool sruif_ignoresMuteSwitch;
 @end
 

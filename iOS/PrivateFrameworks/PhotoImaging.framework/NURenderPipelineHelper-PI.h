@@ -18,6 +18,5 @@
 - (id)videoCrossfadeLoop:(id)arg1 crossfadeAdjustment:(id)arg2 error:(out id *)arg3;
 - (id)videoReframe:(id)arg1 reframes:(id)arg2 error:(out id *)arg3;
 - (id)remapPortraitV2Strength:(id)arg1 portraitEffectKind:(id)arg2;
-- (struct CGRect)overcaptureRectForAutoCrop:(CDStruct_912cb5d2)arg1 overcaptureVideoComplementSize:(CDStruct_912cb5d2)arg2 primarySize:(CDStruct_912cb5d2)arg3 CGRect:(struct CGRect)arg4;
 @end
 

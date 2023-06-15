@@ -10,21 +10,19 @@ __attribute__((visibility("hidden")))
 @interface ASCredentialRequestBasicPaneViewController
 {
     NSString *_title;
+    long long _titleStyle;
     NSString *_subtitle;
+    long long _subtitleStyle;
     UIImage *_icon;
+    long long _iconStyle;
     ASCredentialRequestInfoLabelSubPane *_subtitleSubPane;
 }
 
 - (void).cxx_destruct;
-- (void)_addBottomFillerView;
-- (void)_setUpSubtitleLabel;
-- (void)_setUpTitleLabel;
-- (void)_addTopFillerViewWithMargin:(double)arg1;
-- (void)_setUpIconView;
-- (void)_setUpView;
 - (void)updateSubtitle:(id)arg1;
 - (void)viewDidLoad;
 - (id)initWithTitle:(id)arg1 subtitle:(id)arg2 icon:(id)arg3;
+- (id)initWithTitle:(id)arg1 titleStyle:(long long)arg2 subtitle:(id)arg3 subtitleStyle:(long long)arg4 icon:(id)arg5 iconStyle:(long long)arg6;
 
 @end
 

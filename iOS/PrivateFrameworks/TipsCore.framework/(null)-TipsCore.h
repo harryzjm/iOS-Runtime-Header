@@ -4,12 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
+@class NSURL;
 
 @interface (null) (TipsCore)
-+ (_Bool)supportsSecureCoding;
-@property(nonatomic, readonly) NSString *description;
-- (id)initWithCoder:(id)arg1;
-- (void)encodeWithCoder:(id)arg1;
+@property(nonatomic, readonly) NSURL *supportSiteURL;
 @end
 

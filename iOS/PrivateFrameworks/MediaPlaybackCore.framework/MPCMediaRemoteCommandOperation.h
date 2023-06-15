@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSDate *sendDate; // @synthesize sendDate=_sendDate;
 @property(readonly, nonatomic) unsigned long long options; // @synthesize options=_options;
 @property(readonly, nonatomic) MPCPlayerCommandRequest *request; // @synthesize request=_request;
+- (void)performLibraryFavoriteEntityChangeRequestFor:(id)arg1 withFavoriteEntityChangeRequestAction:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)execute;
 - (id)initWithCommandRequest:(id)arg1 options:(unsigned long long)arg2 sendDate:(id)arg3;
 

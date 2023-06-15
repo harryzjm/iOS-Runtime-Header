@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)isEmpty;
 - (id)end;
 - (id)start;
+- (void)dealloc;
 
 @end
 

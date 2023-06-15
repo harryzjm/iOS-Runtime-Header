@@ -11,6 +11,8 @@
 __attribute__((visibility("hidden")))
 @interface _PUWallpaperDebugMutablePreferences : NSObject
 {
+    _Bool _userTapEventsRequested;
+    _Bool _hideChrome;
     UIFont *_timeFont;
     UIColor *_timeColor;
     UIColor *_statusBarTintColor;
@@ -19,6 +21,8 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool hideChrome; // @synthesize hideChrome=_hideChrome;
+@property(nonatomic) _Bool userTapEventsRequested; // @synthesize userTapEventsRequested=_userTapEventsRequested;
 @property(nonatomic) unsigned long long significantEventOptions; // @synthesize significantEventOptions=_significantEventOptions;
 @property(nonatomic) unsigned long long significantEventTime; // @synthesize significantEventTime=_significantEventTime;
 @property(retain, nonatomic) UIColor *statusBarTintColor; // @synthesize statusBarTintColor=_statusBarTintColor;

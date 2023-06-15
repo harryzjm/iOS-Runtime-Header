@@ -6,13 +6,14 @@
 
 #import <HMFoundation/NSObject-Protocol.h>
 
-@class NSString;
+@class HMFWifiNetworkAssociation, NSNumber, NSString;
 @protocol HMFWiFiManagerDataSourceDelegate;
 
 @protocol HMFWiFiManagerDataSource <NSObject>
 + (NSString *)MACAddressString;
 @property(readonly, nonatomic, getter=isCaptive) _Bool captive;
-@property(readonly, copy, nonatomic) NSString *currentNetworkSSID;
+@property(readonly, copy, nonatomic) NSNumber *currentNetworkRSSI;
+@property(readonly, copy) HMFWifiNetworkAssociation *currentNetworkAssociation;
 @property(nonatomic, getter=isWoWAsserted, setter=setWoWAsserted:) _Bool wowAsserted;
 @property(readonly) unsigned long long assertionOptions;
 @property(readonly, getter=isAssertionActive) _Bool assertionActive;

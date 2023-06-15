@@ -18,7 +18,6 @@
 - (NSUUID *)currentContentUUIDForNavigationBar:(_SFNavigationBar *)arg1;
 - (long long)dataOwnerForNavigationBar:(_SFNavigationBar *)arg1;
 - (NSItemProvider *)itemProviderForNavigationBar:(_SFNavigationBar *)arg1;
-- (void)navigationBarDidUpdateBackdropEffect:(_SFNavigationBar *)arg1;
 - (void)navigationBar:(_SFNavigationBar *)arg1 didProduceNavigationIntent:(_SFNavigationIntent *)arg2;
 - (void)navigationBarDoneButtonWasTapped:(_SFNavigationBar *)arg1;
 @end

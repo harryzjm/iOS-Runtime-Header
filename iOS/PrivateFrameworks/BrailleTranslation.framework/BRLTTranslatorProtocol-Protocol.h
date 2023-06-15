@@ -6,11 +6,11 @@
 
 #import <BrailleTranslation/NSObject-Protocol.h>
 
-@class NSString;
+@class BRLTTextFormattingRanges, NSString;
 
 @protocol BRLTTranslatorProtocol <NSObject>
 - (NSString *)textForPrintBraille:(NSString *)arg1 mode:(unsigned long long)arg2 locations:(id *)arg3;
-- (NSString *)printBrailleForText:(NSString *)arg1 mode:(unsigned long long)arg2 locations:(id *)arg3 textPositionsRange:(struct _NSRange)arg4;
+- (NSString *)printBrailleForText:(NSString *)arg1 mode:(unsigned long long)arg2 locations:(id *)arg3 textPositionsRange:(struct _NSRange)arg4 textFormattingRanges:(BRLTTextFormattingRanges *)arg5;
 - (_Bool)activeTableSupportsIPA;
 - (_Bool)activeTableSupportsTechnicalBraille;
 - (_Bool)activeTableSupportsEightDotBraille;

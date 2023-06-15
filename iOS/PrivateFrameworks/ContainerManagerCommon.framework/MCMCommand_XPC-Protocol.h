@@ -6,10 +6,10 @@
 
 #import <ContainerManagerCommon/MCMCommand-Protocol.h>
 
-@protocol MCMContext, MCMReply, MCMXPCMessage;
+@protocol MCMCommandContext, MCMReply, MCMXPCMessage;
 
 @protocol MCMCommand_XPC <MCMCommand>
 - (_Bool)preflightClientAllowed;
-- (id)initWithMessage:(id <MCMXPCMessage>)arg1 context:(id <MCMContext>)arg2 reply:(id <MCMReply>)arg3;
+- (id)initWithMessage:(id <MCMXPCMessage>)arg1 context:(id <MCMCommandContext>)arg2 reply:(id <MCMReply>)arg3;
 @end
 

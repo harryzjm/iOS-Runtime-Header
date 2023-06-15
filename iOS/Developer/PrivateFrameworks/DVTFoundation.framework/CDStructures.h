@@ -220,17 +220,17 @@ struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<
 };
 
 struct unordered_map<DVTFuture *, long, (anonymous namespace)::objc_pointer_hasher, std::equal_to<DVTFuture *>, std::allocator<std::pair<DVTFuture *const, long>>> {
-    struct __hash_table<std::__hash_value_type<DVTFuture *, long>, std::__unordered_map_hasher<DVTFuture *, std::__hash_value_type<DVTFuture *, long>, (anonymous namespace)::objc_pointer_hasher, std::equal_to<DVTFuture *>, true>, std::__unordered_map_equal<DVTFuture *, std::__hash_value_type<DVTFuture *, long>, std::equal_to<DVTFuture *>, (anonymous namespace)::objc_pointer_hasher, true>, std::allocator<std::__hash_value_type<DVTFuture *, long>>> {
+    struct __hash_table<std::__hash_value_type<DVTFuture *, long>, std::__unordered_map_hasher<DVTFuture *, std::__hash_value_type<DVTFuture *, long>, (anonymous namespace)::objc_pointer_hasher, std::equal_to<DVTFuture *>>, std::__unordered_map_equal<DVTFuture *, std::__hash_value_type<DVTFuture *, long>, std::equal_to<DVTFuture *>, (anonymous namespace)::objc_pointer_hasher>, std::allocator<std::__hash_value_type<DVTFuture *, long>>> {
         struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<DVTFuture *, long>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<DVTFuture *, long>, void *>*>*>>> __bucket_list_;
         struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<DVTFuture *, long>, void *>*>, std::allocator<std::__hash_node<std::__hash_value_type<DVTFuture *, long>, void *>>> {
             struct __hash_node_base<std::__hash_node<std::__hash_value_type<DVTFuture *, long>, void *>*> {
                 void *__next_;
             } __value_;
         } __p1_;
-        struct __compressed_pair<unsigned long, std::__unordered_map_hasher<DVTFuture *, std::__hash_value_type<DVTFuture *, long>, (anonymous namespace)::objc_pointer_hasher, std::equal_to<DVTFuture *>, true>> {
+        struct __compressed_pair<unsigned long, std::__unordered_map_hasher<DVTFuture *, std::__hash_value_type<DVTFuture *, long>, (anonymous namespace)::objc_pointer_hasher, std::equal_to<DVTFuture *>>> {
             unsigned long long __value_;
         } __p2_;
-        struct __compressed_pair<float, std::__unordered_map_equal<DVTFuture *, std::__hash_value_type<DVTFuture *, long>, std::equal_to<DVTFuture *>, (anonymous namespace)::objc_pointer_hasher, true>> {
+        struct __compressed_pair<float, std::__unordered_map_equal<DVTFuture *, std::__hash_value_type<DVTFuture *, long>, std::equal_to<DVTFuture *>, (anonymous namespace)::objc_pointer_hasher>> {
             float __value_;
         } __p3_;
     } __table_;

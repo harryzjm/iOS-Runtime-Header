@@ -6,25 +6,25 @@
 
 #import <objc/NSObject.h>
 
-@class NSURL;
-@protocol MCMMetadata;
+@class NSSet;
+@protocol MCMDeleteManifest, MCMMetadata;
 
 __attribute__((visibility("hidden")))
 @interface MCMCommandOperationDeleteItem : NSObject
 {
-    _Bool _removeCodesignInfo;
     id <MCMMetadata> _metadata;
-    NSURL *_manifestURL;
+    NSSet *_codeSignIdentifiersToRemove;
+    id <MCMDeleteManifest> _manifest;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSURL *manifestURL; // @synthesize manifestURL=_manifestURL;
-@property(readonly, nonatomic) _Bool removeCodesignInfo; // @synthesize removeCodesignInfo=_removeCodesignInfo;
+@property(retain, nonatomic) id <MCMDeleteManifest> manifest; // @synthesize manifest=_manifest;
+@property(readonly, nonatomic) NSSet *codeSignIdentifiersToRemove; // @synthesize codeSignIdentifiersToRemove=_codeSignIdentifiersToRemove;
 @property(readonly, nonatomic) id <MCMMetadata> metadata; // @synthesize metadata=_metadata;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-- (id)initWithMetadata:(id)arg1 removeCodesignInfo:(_Bool)arg2 manifestURL:(id)arg3;
+- (id)initWithMetadata:(id)arg1 codeSignIdentifiersToRemove:(id)arg2 manifest:(id)arg3;
 
 @end
 

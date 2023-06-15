@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSMutableDictionary, NSMutableSet, NSSet, VCVideoRuleCollections;
+@class NSData, NSDictionary, NSMutableDictionary, NSMutableSet, NSSet, VCVideoRuleCollections;
 
 __attribute__((visibility("hidden")))
 @interface VCMediaNegotiatorResultsVideo : NSObject
@@ -23,10 +23,18 @@ __attribute__((visibility("hidden")))
     NSMutableSet *_pixelFormats;
     NSMutableSet *_hdrModesNegotiated;
     _Bool _ltrpEnabled;
+    _Bool _fecEnabled;
+    _Bool _rtxEnabled;
+    NSData *_featureBitfieldEncoder;
+    NSData *_featureBitfieldDecoder;
 }
 
 @property(nonatomic) _Bool ltrpEnabled; // @synthesize ltrpEnabled=_ltrpEnabled;
 @property(nonatomic) unsigned int tilesPerFrame; // @synthesize tilesPerFrame=_tilesPerFrame;
+@property(retain, nonatomic) NSData *featureBitfieldDecoder; // @synthesize featureBitfieldDecoder=_featureBitfieldDecoder;
+@property(retain, nonatomic) NSData *featureBitfieldEncoder; // @synthesize featureBitfieldEncoder=_featureBitfieldEncoder;
+@property(nonatomic) _Bool rtxEnabled; // @synthesize rtxEnabled=_rtxEnabled;
+@property(nonatomic) _Bool fecEnabled; // @synthesize fecEnabled=_fecEnabled;
 @property(readonly, nonatomic) NSSet *hdrModesNegotiated; // @synthesize hdrModesNegotiated=_hdrModesNegotiated;
 @property(readonly, nonatomic) NSSet *pixelFormats; // @synthesize pixelFormats=_pixelFormats;
 @property(nonatomic) unsigned int customVideoWidth; // @synthesize customVideoWidth=_customVideoWidth;
@@ -37,6 +45,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) VCVideoRuleCollections *videoRuleCollections; // @synthesize videoRuleCollections=_videoRuleCollections;
 @property(nonatomic) _Bool isRTCPFBEnabled; // @synthesize isRTCPFBEnabled=_isRTCPFBEnabled;
 @property(nonatomic) unsigned int remoteSSRC; // @synthesize remoteSSRC=_remoteSSRC;
+- (_Bool)isEqual:(id)arg1;
 - (void)addNegotiatedHDRMode:(id)arg1;
 - (void)addPixelFormatSet:(id)arg1;
 - (void)addParameterSet:(id)arg1 payload:(int)arg2;

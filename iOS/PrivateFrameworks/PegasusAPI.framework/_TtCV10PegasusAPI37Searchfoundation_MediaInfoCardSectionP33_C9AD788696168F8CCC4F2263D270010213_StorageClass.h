@@ -29,6 +29,7 @@
     MISSING_TYPE *_watchListConfirmationText;
     MISSING_TYPE *_isMediaContainer;
     MISSING_TYPE *_specialOfferButtonLabel;
+    MISSING_TYPE *_watchListItemType;
 }
 
 @end

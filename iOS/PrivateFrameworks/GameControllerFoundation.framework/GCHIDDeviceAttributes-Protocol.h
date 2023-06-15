@@ -4,9 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSNumber, NSString;
+@class NSArray, NSNumber, NSString;
 
 @protocol GCHIDDeviceAttributes
+@property(readonly) NSArray *elements;
+@property(readonly) NSNumber *maxFeatureReportSize;
+@property(readonly) NSNumber *maxOutputReportSize;
+@property(readonly) NSNumber *maxInputReportSize;
 @property(readonly) NSString *product;
 @property(readonly) NSString *manufacturer;
 @property(readonly) NSNumber *versionNumber;

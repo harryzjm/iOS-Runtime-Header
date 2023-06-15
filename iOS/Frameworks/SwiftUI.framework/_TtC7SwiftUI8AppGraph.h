@@ -15,7 +15,6 @@
     MISSING_TYPE *_primarySceneSummaries;
     MISSING_TYPE *_focusedValues;
     MISSING_TYPE *_focusStore;
-    MISSING_TYPE *_sceneNavigationActions;
     MISSING_TYPE *_sceneKeyboardShortcuts;
     MISSING_TYPE *$__lazy_storage_$_launchProfileOptions;
     MISSING_TYPE *didCollectLaunchProfile;

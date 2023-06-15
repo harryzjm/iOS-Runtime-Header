@@ -9,8 +9,10 @@
 @interface _TtC6Charts21AxisMarkRenderContext
 {
     MISSING_TYPE *layout;
-    MISSING_TYPE *plotWidth;
-    MISSING_TYPE *plotHeight;
+    MISSING_TYPE *xRange;
+    MISSING_TYPE *yRange;
+    MISSING_TYPE *viewportXRange;
+    MISSING_TYPE *viewportYRange;
     MISSING_TYPE *startLocation;
     MISSING_TYPE *endLocation;
     MISSING_TYPE *direction;

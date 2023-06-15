@@ -25,6 +25,8 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)count;
 - (id)candidateStrings;
 - (id)candidates;
+- (void)addOmissionCandidateWithBuffer:(char *)arg1 encoding:(unsigned int)arg2 transform:(unsigned long long)arg3 intendedPrecedingCharacter:(unsigned short)arg4 omittedCharacter:(unsigned short)arg5 intendedFollowingCharacter:(unsigned short)arg6;
+- (void)addInsertionCandidateWithBuffer:(char *)arg1 encoding:(unsigned int)arg2 transform:(unsigned long long)arg3 intendedPrecedingCharacter:(unsigned short)arg4 insertedCharacter:(unsigned short)arg5 intendedFollowingCharacter:(unsigned short)arg6;
 - (void)addTranspositionCandidateWithBuffer:(char *)arg1 encoding:(unsigned int)arg2 transform:(unsigned long long)arg3 intendedFirstCharacter:(unsigned short)arg4 intendedSecondCharacter:(unsigned short)arg5;
 - (void)addReplacementCandidateWithBuffer:(char *)arg1 encoding:(unsigned int)arg2 transform:(unsigned long long)arg3 intendedCharacter:(unsigned short)arg4 actualCharacter:(unsigned short)arg5;
 - (void)addCandidateWithBuffer:(char *)arg1 encoding:(unsigned int)arg2 transform:(unsigned long long)arg3 errorType:(unsigned long long)arg4;

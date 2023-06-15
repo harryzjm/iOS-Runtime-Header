@@ -6,20 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@class AVAudioFile, AVAudioFormat;
+@class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
 @interface SNFileInjectOperator : NSObject
 {
-    AVAudioFormat *_format;
-    AVAudioFile *_inputFile;
-    CDStruct_1b6d18a9 _offsetInInputFile;
+    MISSING_TYPE *format;
+    MISSING_TYPE *inputFile;
+    MISSING_TYPE *offsetInInputfile;
 }
 
 - (void).cxx_destruct;
 - (void)processTerminationWithOptionalError:(id)arg1 portID:(id)arg2 downstreamHandler:(CDUnknownBlockType)arg3;
 - (void)processInput:(id)arg1 portID:(id)arg2 downstreamHandler:(CDUnknownBlockType)arg3;
 - (void)dealloc;
+- (id)initWithAudioFileURL:(id)arg1 format:(id)arg2 error:(id *)arg3;
 - (id)init;
 
 @end

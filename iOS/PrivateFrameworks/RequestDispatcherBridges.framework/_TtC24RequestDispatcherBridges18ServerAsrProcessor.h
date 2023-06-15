@@ -14,10 +14,15 @@
     MISSING_TYPE *assistantId;
     MISSING_TYPE *sessionId;
     MISSING_TYPE *requestId;
+    MISSING_TYPE *isIdentityScoreConsumptionEnabled;
+    MISSING_TYPE *serverEndPointReceived;
+    MISSING_TYPE *serverEndPointSentToSpeech;
+    MISSING_TYPE *serverEndpointIdentifiedMessage;
     MISSING_TYPE *userId;
     MISSING_TYPE *serviceHelper;
     MISSING_TYPE *bufferedResultCandidateHandler;
     MISSING_TYPE *instrumentationUtil;
+    MISSING_TYPE *muxRequestContext;
 }
 
 @end

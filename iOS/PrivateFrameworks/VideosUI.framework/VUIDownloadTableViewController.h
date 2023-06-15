@@ -4,19 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
 @class NSDictionary, NSMutableArray, NSString, UIAlertController, UIBarButtonItem, UITableView, UITableViewDiffableDataSource, VUIDownloadDataSource, VUIDownloadEntityTableViewCell, VUIViewControllerContentPresenter;
 
 __attribute__((visibility("hidden")))
 @interface VUIDownloadTableViewController : UIViewController
 {
+    _Bool _isSelectingAll;
     UITableView *_downloadEntitiesTableView;
     VUIDownloadDataSource *_downloadDataSource;
     UITableViewDiffableDataSource *_diffableDataSource;
     NSMutableArray *_downloadEntities;
     VUIDownloadEntityTableViewCell *_sizingCell;
     UIBarButtonItem *_rightBarButtonItem;
+    UIBarButtonItem *_selectAllBarButtonItem;
     UIBarButtonItem *_leftBarButtonItem;
     UIBarButtonItem *_backBarButtonItem;
     UIAlertController *_alertController;
@@ -26,18 +28,22 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool isSelectingAll; // @synthesize isSelectingAll=_isSelectingAll;
 @property(retain, nonatomic) VUIViewControllerContentPresenter *contentPresenter; // @synthesize contentPresenter=_contentPresenter;
 @property(retain, nonatomic) NSMutableArray *assetControllersToRemove; // @synthesize assetControllersToRemove=_assetControllersToRemove;
 @property(retain, nonatomic) NSDictionary *identifierToDownloadEntityDictionary; // @synthesize identifierToDownloadEntityDictionary=_identifierToDownloadEntityDictionary;
 @property(retain, nonatomic) UIAlertController *alertController; // @synthesize alertController=_alertController;
 @property(retain, nonatomic) UIBarButtonItem *backBarButtonItem; // @synthesize backBarButtonItem=_backBarButtonItem;
 @property(retain, nonatomic) UIBarButtonItem *leftBarButtonItem; // @synthesize leftBarButtonItem=_leftBarButtonItem;
+@property(retain, nonatomic) UIBarButtonItem *selectAllBarButtonItem; // @synthesize selectAllBarButtonItem=_selectAllBarButtonItem;
 @property(retain, nonatomic) UIBarButtonItem *rightBarButtonItem; // @synthesize rightBarButtonItem=_rightBarButtonItem;
 @property(retain, nonatomic) VUIDownloadEntityTableViewCell *sizingCell; // @synthesize sizingCell=_sizingCell;
 @property(retain, nonatomic) NSMutableArray *downloadEntities; // @synthesize downloadEntities=_downloadEntities;
 @property(retain, nonatomic) UITableViewDiffableDataSource *diffableDataSource; // @synthesize diffableDataSource=_diffableDataSource;
 @property(retain, nonatomic) VUIDownloadDataSource *downloadDataSource; // @synthesize downloadDataSource=_downloadDataSource;
 @property(retain, nonatomic) UITableView *downloadEntitiesTableView; // @synthesize downloadEntitiesTableView=_downloadEntitiesTableView;
+- (void)fullscreenPlaybackUIDidChangeNotification:(id)arg1;
+- (void)_clearTableViewSelections:(_Bool)arg1;
 - (void)_updateNavigationBarPadding;
 - (id)_identifiersForDownloadEntities;
 - (id)_createIdentifierToDownloadEntityDictionary;
@@ -50,6 +56,9 @@ __attribute__((visibility("hidden")))
 - (id)_configureRenewAlertControllerForIndexPath:(id)arg1 forPreferredStyle:(long long)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (id)_configureAlertControllerForIndexPath:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_cancelPressed;
+- (void)_selectAllCells;
+- (void)_clearSelections;
+- (void)_batchSelectToggled;
 - (void)_editToggled;
 - (void)downloadCellDidRequestCancelDownload:(id)arg1;
 - (void)downloadManager:(id)arg1 downloadsDidChange:(id)arg2;
@@ -62,6 +71,7 @@ __attribute__((visibility("hidden")))
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
+- (void)dealloc;
 - (void)viewDidLayoutSubviews;
 - (void)viewWillLayoutSubviews;
 - (void)viewDidLoad;

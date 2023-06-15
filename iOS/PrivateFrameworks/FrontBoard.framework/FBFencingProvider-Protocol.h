@@ -6,10 +6,9 @@
 
 #import <FrontBoard/NSObject-Protocol.h>
 
-@class BKSAnimationFenceHandle, FBSSerialQueue;
+@class BKSAnimationFenceHandle;
 
 @protocol FBFencingProvider <NSObject>
-- (FBSSerialQueue *)systemAnimationFenceExemptQueue;
 - (void)synchronizeDrawingWithFence:(BKSAnimationFenceHandle *)arg1;
 @end
 

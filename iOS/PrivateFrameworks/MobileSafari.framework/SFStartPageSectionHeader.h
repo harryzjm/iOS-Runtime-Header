@@ -6,7 +6,7 @@
 
 #import <UIKit/UICollectionReusableView.h>
 
-@class NSArray, NSLayoutConstraint, SFBannerCell, SFBannerModel, SFStartPageSectionHeaderTitleView, UIStackView, UIVisualEffectView;
+@class NSArray, NSLayoutConstraint, SFBannerCell, SFStartPageSectionHeaderTitleView, UIStackView, UIVisualEffectView, WBSStartPageBanner;
 
 __attribute__((visibility("hidden")))
 @interface SFStartPageSectionHeader : UICollectionReusableView
@@ -20,17 +20,17 @@ __attribute__((visibility("hidden")))
     NSLayoutConstraint *_stackLeadingConstraint;
     NSLayoutConstraint *_stackCenterXConstraint;
     NSArray *_actions;
-    SFBannerModel *_banner;
+    WBSStartPageBanner *_banner;
 }
 
 + (id)reuseIdentifier;
 - (void).cxx_destruct;
-@property(retain, nonatomic) SFBannerModel *banner; // @synthesize banner=_banner;
+@property(retain, nonatomic) WBSStartPageBanner *banner; // @synthesize banner=_banner;
 @property(readonly, copy, nonatomic) NSArray *actions; // @synthesize actions=_actions;
 - (void)_createSeparatorViewIfNeeded;
 @property(nonatomic) double bottomGap;
 - (void)setActions:(id)arg1 expandsModally:(_Bool)arg2 withSize:(long long)arg3;
-- (void)setModel:(id)arg1 visualStyleProvider:(id)arg2 resolvingActionsUsingBlock:(CDUnknownBlockType)arg3;
+- (void)configureUsingSection:(id)arg1 visualStyleProvider:(id)arg2 resolvingActionsUsingBlock:(CDUnknownBlockType)arg3;
 - (void)updateViewsDependingOnCustomTraits;
 - (void)traitCollectionDidChange:(id)arg1;
 - (id)_disclosureButtonForLayout;

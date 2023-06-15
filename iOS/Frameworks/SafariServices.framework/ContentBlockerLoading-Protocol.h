@@ -7,9 +7,9 @@
 @class NSArray, NSString;
 
 @protocol ContentBlockerLoading
-- (void)loadDeclarativeNetRequestContentBlockerWithIdentifier:(NSString *)arg1 rules:(NSArray *)arg2 reply:(void (^)(NSString *, NSError *, NSArray *))arg3;
+- (void)loadDeclarativeNetRequestContentBlockerWithIdentifier:(NSString *)arg1 forProfileWithServerID:(NSString *)arg2 previouslyLoadedHash:(NSString *)arg3 rules:(NSArray *)arg4 reply:(void (^)(NSString *, NSError *, NSArray *))arg5;
 - (void)getStateOfContentBlockerWithIdentifier:(NSString *)arg1 reply:(void (^)(SFContentBlockerState *, NSError *))arg2;
-- (void)removeContentBlockerWithIdentifier:(NSString *)arg1;
+- (void)removeContentBlockerWithIdentifierIfNecessary:(NSString *)arg1;
 - (void)loadContentBlockerWithIdentifier:(NSString *)arg1 reply:(void (^)(NSError *))arg2;
 @end
 

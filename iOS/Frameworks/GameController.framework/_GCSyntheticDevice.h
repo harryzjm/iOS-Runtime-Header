@@ -7,24 +7,25 @@
 #import <objc/NSObject.h>
 
 @class NSString;
+@protocol NSCopying><NSObject><NSSecureCoding;
 
 __attribute__((visibility("hidden")))
 @interface _GCSyntheticDevice : NSObject
 {
-    unsigned int _service;
+    unsigned int _serviceIdentity;
     NSString *_identifier;
+    id <NSCopying><NSObject><NSSecureCoding> _controllerIdentifier;
+    NSString *_persistentIdentifier;
 }
 
-+ (id)deviceWithService:(unsigned int)arg1;
 + (id)devicePropertiesWithDescription:(id)arg1;
 - (void).cxx_destruct;
-@property(readonly) NSString *identifier; // @synthesize identifier=_identifier;
-@property(readonly) unsigned int service; // @synthesize service=_service;
+- (id)debugDescription;
+- (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (void)dealloc;
 - (id)init;
-- (id)initWithService:(unsigned int)arg1;
 
 @end
 

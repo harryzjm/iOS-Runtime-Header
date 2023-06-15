@@ -6,8 +6,9 @@
 
 #import <Settings/_TtP8Settings16SettingsProtocol_-Protocol.h>
 
+@class NSXPCListenerEndpoint;
+
 @protocol _TtP8Settings23SettingsPrivateProtocol_ <_TtP8Settings16SettingsProtocol_>
-- (void)popNavigationStack;
-- (void)handshake;
+- (void)handshakeWithEndPoint:(NSXPCListenerEndpoint *)arg1;
 @end
 

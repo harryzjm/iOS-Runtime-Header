@@ -15,7 +15,6 @@ __attribute__((visibility("hidden")))
 + (double)nativeDisplayWidth;
 + (double)height;
 + (double)referenceScreenScale;
-- (_Bool)supportsCondensedBatteryPercentage;
 - (id)stringForCellularType:(long long)arg1 condensed:(_Bool)arg2;
 - (long long)normalIconSize;
 - (double)baselineBottomInset;

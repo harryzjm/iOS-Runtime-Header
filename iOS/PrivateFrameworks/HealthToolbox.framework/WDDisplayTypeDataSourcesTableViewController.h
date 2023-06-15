@@ -6,7 +6,7 @@
 
 #import <HealthUI/HKTableViewController.h>
 
-@class HKAuthorizationStore, HKDisplayCategory, HKDisplayType, HKHealthStore, HKProfileStore, HKSourceListDataSource, HKTitledIconHeaderView, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableSet, NSSet, WDProfile, WDSourceOrderController;
+@class HKAuthorizationStore, HKDisplayCategory, HKDisplayType, HKHealthStore, HKProfileStore, HKSourceListDataSource, HKTitledIconHeaderView, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableSet, NSSet, UIBarButtonItem, WDProfile, WDSourceOrderController;
 
 __attribute__((visibility("hidden")))
 @interface WDDisplayTypeDataSourcesTableViewController : HKTableViewController
@@ -34,15 +34,19 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_orderedDataSources;
     NSSet *_loadedAllDataSources;
     NSDictionary *_loadedAuthorizationRecordsBySource;
+    UIBarButtonItem *_leftBarButtonItemReference;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) UIBarButtonItem *leftBarButtonItemReference; // @synthesize leftBarButtonItemReference=_leftBarButtonItemReference;
 @property(copy, nonatomic) NSDictionary *loadedAuthorizationRecordsBySource; // @synthesize loadedAuthorizationRecordsBySource=_loadedAuthorizationRecordsBySource;
 @property(copy, nonatomic) NSSet *loadedAllDataSources; // @synthesize loadedAllDataSources=_loadedAllDataSources;
 @property(retain, nonatomic) NSMutableArray *orderedDataSources; // @synthesize orderedDataSources=_orderedDataSources;
 @property(copy, nonatomic) NSArray *loadedOrderedDataSources; // @synthesize loadedOrderedDataSources=_loadedOrderedDataSources;
 @property(retain, nonatomic) HKSourceListDataSource *sourceListDataSource; // @synthesize sourceListDataSource=_sourceListDataSource;
 @property(nonatomic) _Bool shouldInsetSectionContentForDataSourceDataList; // @synthesize shouldInsetSectionContentForDataSourceDataList=_shouldInsetSectionContentForDataSourceDataList;
+- (void)viewControllerDidLeaveAdaptiveModal;
+- (void)viewControllerDidEnterAdaptiveModal;
 - (void)sourceListDataSourceDidUpdate:(id)arg1;
 - (void)switchCellValueChanged:(id)arg1 value:(_Bool)arg2;
 - (id)tableView:(id)arg1 targetIndexPathForMoveFromRowAtIndexPath:(id)arg2 toProposedIndexPath:(id)arg3;
@@ -60,7 +64,7 @@ __attribute__((visibility("hidden")))
 - (void)_handleReturnedImage:(id)arg1 forSource:(id)arg2 cell:(id)arg3 tableView:(id)arg4 fetchError:(id)arg5;
 - (id)_noneTableViewCell;
 - (id)_dataSourceCellForTableView:(id)arg1 row:(unsigned long long)arg2;
-- (id)_readerSourceCellForTableView:(id)arg1 sourceArray:(id)arg2 row:(unsigned long long)arg3;
+- (id)_readerSourceCellForTableView:(id)arg1 sourceArray:(id)arg2 row:(unsigned long long)arg3 group:(long long)arg4;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
@@ -88,6 +92,7 @@ __attribute__((visibility("hidden")))
 - (id)createSectionIdentifiers;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
+- (void)updateHeaderView;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithStyle:(long long)arg1;

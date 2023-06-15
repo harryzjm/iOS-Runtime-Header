@@ -6,9 +6,9 @@
 
 #import <ShazamKit/NSObject-Protocol.h>
 
-@class NSString;
+@class NSArray;
 
 @protocol SHMediaItemProvider <NSObject>
-- (void)mediaItemForShazamID:(NSString *)arg1 completionHandler:(void (^)(SHMediaItem *, NSError *))arg2;
+- (void)mediaItemsForShazamIDs:(NSArray *)arg1 completionHandler:(void (^)(NSArray *, NSError *))arg2;
 @end
 

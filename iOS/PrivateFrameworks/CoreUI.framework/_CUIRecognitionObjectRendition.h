@@ -13,9 +13,9 @@ __attribute__((visibility("hidden")))
 
 - (CDStruct_14d5dc5e)transformation;
 - (int)objectVersion;
-- (void)_initalizeMetadataFromCSIData:(const struct _csiheader *)arg1;
-- (id)_initWithCSIHeader:(const struct _csiheader *)arg1;
-- (id)initWithCSIData:(id)arg1 forKey:(const struct _renditionkeytoken *)arg2;
+- (void)_initalizeMetadataFromCSIData:(const struct _csiheader *)arg1 version:(unsigned int)arg2;
+- (id)_initWithCSIHeader:(const struct _csiheader *)arg1 version:(unsigned int)arg2;
+- (id)initWithCSIData:(id)arg1 forKey:(const struct _renditionkeytoken *)arg2 version:(unsigned int)arg3;
 
 @end
 

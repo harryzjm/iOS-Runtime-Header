@@ -29,7 +29,7 @@ __attribute__((visibility("hidden")))
 - (void)removeMember:(id)arg1 group:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)addMember:(id)arg1 group:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setName:(id)arg1 group:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)HomeKitAccessoryOfType:(id)arg1 accessoryIdentifier:(id)arg2 homeIdentifier:(id)arg3 categoryType:(id)arg4 name:(id)arg5 completion:(CDUnknownBlockType)arg6;
+- (void)HomeKitAccessoryOfType:(id)arg1 accessoryIdentifier:(id)arg2 homeIdentifier:(id)arg3 categoryType:(id)arg4 name:(id)arg5 properties:(id)arg6 completion:(CDUnknownBlockType)arg7;
 - (void)deleteGroup:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)createGroupWithType:(id)arg1 name:(id)arg2 members:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)init;

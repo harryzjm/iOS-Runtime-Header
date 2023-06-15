@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     UIView *_overlayView;
     NSLayoutConstraint *_ratioConstraint;
     NSLayoutConstraint *_imageViewWidthConstraint;
+    NSLayoutConstraint *_imageViewHeightConstraint;
     UIButton *_actionsButton;
     UIImageView *_imageView;
     PDFPage *_page;
@@ -23,6 +24,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) PDFPage *page; // @synthesize page=_page;
 @property(retain, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
 @property(retain, nonatomic) UIButton *actionsButton; // @synthesize actionsButton=_actionsButton;
+- (void)setThumbnailHeight:(double)arg1;
 - (void)setThumbnailWidth:(double)arg1;
 - (void)updateAspectConstraintWithSize:(struct CGSize)arg1;
 - (void)setupSubviews;

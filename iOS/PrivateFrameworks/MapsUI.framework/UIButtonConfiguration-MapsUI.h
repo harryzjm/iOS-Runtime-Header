@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIButtonConfiguration.h>
+#import <UIKitCore/UIButtonConfiguration.h>
 
 @interface UIButtonConfiguration (MapsUI)
++ (id)_mapsui_textButtonConfigurationWithFont:(id)arg1 textColor:(id)arg2;
 + (id)_mapsui_textButtonConfiguration;
 + (id)_mapsui_filledButtonConfiguration;
 + (id)_mapsui_grayButtonConfiguration;

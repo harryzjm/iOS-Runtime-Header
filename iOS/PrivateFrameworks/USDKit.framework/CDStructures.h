@@ -11,15 +11,15 @@ struct Handle {
 };
 
 struct SdfPath {
-    struct Sdf_PathNodeHandleImpl<pxrInternal_v0_21__aapl__pxrReserved__::Sdf_Pool<pxrInternal_v0_21__aapl__pxrReserved__::Sdf_PathPrimTag, 24, 8, 16384>::Handle, true, const pxrInternal_v0_21__aapl__pxrReserved__::Sdf_PathNode> _primPart;
-    struct Sdf_PathNodeHandleImpl<pxrInternal_v0_21__aapl__pxrReserved__::Sdf_Pool<pxrInternal_v0_21__aapl__pxrReserved__::Sdf_PathPropTag, 24, 8, 16384>::Handle, false, const pxrInternal_v0_21__aapl__pxrReserved__::Sdf_PathNode> _propPart;
+    struct Sdf_PathNodeHandleImpl<pxrInternal_v0_22__aapl__pxrReserved__::Sdf_Pool<pxrInternal_v0_22__aapl__pxrReserved__::Sdf_PathPrimTag, 24, 8>::Handle, true, const pxrInternal_v0_22__aapl__pxrReserved__::Sdf_PathNode> _primPart;
+    struct Sdf_PathNodeHandleImpl<pxrInternal_v0_22__aapl__pxrReserved__::Sdf_Pool<pxrInternal_v0_22__aapl__pxrReserved__::Sdf_PathPropTag, 24, 8>::Handle, false, const pxrInternal_v0_22__aapl__pxrReserved__::Sdf_PathNode> _propPart;
 };
 
-struct Sdf_PathNodeHandleImpl<pxrInternal_v0_21__aapl__pxrReserved__::Sdf_Pool<pxrInternal_v0_21__aapl__pxrReserved__::Sdf_PathPrimTag, 24, 8, 16384>::Handle, true, const pxrInternal_v0_21__aapl__pxrReserved__::Sdf_PathNode> {
+struct Sdf_PathNodeHandleImpl<pxrInternal_v0_22__aapl__pxrReserved__::Sdf_Pool<pxrInternal_v0_22__aapl__pxrReserved__::Sdf_PathPrimTag, 24, 8>::Handle, true, const pxrInternal_v0_22__aapl__pxrReserved__::Sdf_PathNode> {
     struct Handle _poolHandle;
 };
 
-struct Sdf_PathNodeHandleImpl<pxrInternal_v0_21__aapl__pxrReserved__::Sdf_Pool<pxrInternal_v0_21__aapl__pxrReserved__::Sdf_PathPropTag, 24, 8, 16384>::Handle, false, const pxrInternal_v0_21__aapl__pxrReserved__::Sdf_PathNode> {
+struct Sdf_PathNodeHandleImpl<pxrInternal_v0_22__aapl__pxrReserved__::Sdf_Pool<pxrInternal_v0_22__aapl__pxrReserved__::Sdf_PathPropTag, 24, 8>::Handle, false, const pxrInternal_v0_22__aapl__pxrReserved__::Sdf_PathNode> {
     struct Handle _poolHandle;
 };
 
@@ -61,15 +61,15 @@ struct iterator {
     _Bool _isPost;
 };
 
-struct iterator_range<pxrInternal_v0_21__aapl__pxrReserved__::UsdPrimSiblingIterator> {
+struct iterator_range<pxrInternal_v0_22__aapl__pxrReserved__::UsdPrimSiblingIterator> {
     struct UsdPrimSiblingIterator m_Begin;
     struct UsdPrimSiblingIterator m_End;
 };
 
-struct vector<pxrInternal_v0_21__aapl__pxrReserved__::UsdProperty, std::allocator<pxrInternal_v0_21__aapl__pxrReserved__::UsdProperty>> {
+struct vector<pxrInternal_v0_22__aapl__pxrReserved__::UsdProperty, std::allocator<pxrInternal_v0_22__aapl__pxrReserved__::UsdProperty>> {
     struct UsdProperty *__begin_;
     struct UsdProperty *__end_;
-    struct __compressed_pair<pxrInternal_v0_21__aapl__pxrReserved__::UsdProperty *, std::allocator<pxrInternal_v0_21__aapl__pxrReserved__::UsdProperty>> {
+    struct __compressed_pair<pxrInternal_v0_22__aapl__pxrReserved__::UsdProperty *, std::allocator<pxrInternal_v0_22__aapl__pxrReserved__::UsdProperty>> {
         struct UsdProperty *__value_;
     } __end_cap_;
 };

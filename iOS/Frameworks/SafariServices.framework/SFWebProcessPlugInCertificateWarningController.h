@@ -14,12 +14,14 @@ __attribute__((visibility("hidden")))
 {
     _SFWebProcessPlugInPageController *_pageController;
     _WKRemoteObjectInterface *_certificateWarningPagePresenterInterface;
-    WBSCertificateWarningPageContext *_warningPageContext;
     id <WBSCertificateWarningPageHandler> _certificateWarningPageHandlerProxy;
+    WBSCertificateWarningPageContext *_warningPageContext;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) WBSCertificateWarningPageContext *warningPageContext; // @synthesize warningPageContext=_warningPageContext;
 - (void)prepareCertificateWarningPage:(id)arg1;
+- (void)visitWebsiteWithoutPrivateRelay;
 - (void)goBackSelected;
 - (void)openClockSettings;
 - (void)showCertificateInformation;

@@ -9,6 +9,7 @@
 @class INIntent, WFWidgetConfigurationRemoteViewController;
 
 @protocol WFWidgetConfigurationRemoteViewControllerDelegate <NSObject>
+- (void)widgetConfigurationRemoteViewController:(WFWidgetConfigurationRemoteViewController *)arg1 preferredContentSizeDidChange:(struct CGSize)arg2;
 - (void)widgetConfigurationRemoteViewController:(WFWidgetConfigurationRemoteViewController *)arg1 didReceiveConfiguredIntent:(INIntent *)arg2;
 @end
 

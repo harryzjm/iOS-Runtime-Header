@@ -30,6 +30,7 @@
     _Bool _isClosing;
     struct TSKUIDStruct _nrm_ownerUID;
     NSCharacterSet *_whitespaceToBreakAt;
+    vector_522b9630 _removeFormulasDuringWritePhase;
 }
 
 - (id).cxx_construct;
@@ -52,7 +53,7 @@
 - (void)willApplyConcurrentCellMap:(id)arg1 tableUID:(const struct TSKUIDStruct *)arg2;
 - (void)willApplyBaseCellMap:(id)arg1 tableUID:(const struct TSKUIDStruct *)arg2;
 - (void)willApplyCell:(id)arg1 baseCellCoord:(struct TSUModelCellCoord)arg2 tableUID:(const struct TSKUIDStruct *)arg3;
-- (void)p_willApplyCell:(id)arg1 baseCellCoord:(struct TSUModelCellCoord)arg2 tableUID:(const struct TSKUIDStruct *)arg3;
+- (void)p_willApplyCell:(id)arg1 baseCellCoord:(struct TSUModelCellCoord)arg2 tableUID:(const struct TSKUIDStruct *)arg3 toDirtyCellRefs:(void *)arg4;
 @property(readonly, copy) NSString *description;
 - (id)anyRefForRangeForHeaderCell:(const struct TSCECellRef *)arg1 usePreserveFlags:(_Bool)arg2;
 - (_Bool)referenceNameIsUnique:(id)arg1 forReference:(const void *)arg2 contextTable:(const struct TSKUIDStruct *)arg3;
@@ -60,10 +61,10 @@
 - (struct TSCERangeRef)spanningRangeForHeaderCell:(const struct TSCECellRef *)arg1;
 - (struct TSCECellRefSet)nameFragmentPrecedentsForReferenceString:(id)arg1;
 - (void)clearTextAtCellCoord:(const struct TSKUIDStructCoord *)arg1 tableUID:(const struct TSKUIDStruct *)arg2;
-- (void)p_updateWithWordFragments:(const void *)arg1 atCellCoord:(const struct TSKUIDStructCoord *)arg2 tableUID:(const struct TSKUIDStruct *)arg3;
-- (void)p_updateText:(id)arg1 atCellCoord:(const struct TSKUIDStructCoord *)arg2 tableUID:(const struct TSKUIDStruct *)arg3;
+- (_Bool)p_updateWithWordFragments:(const void *)arg1 atCellCoord:(const struct TSKUIDStructCoord *)arg2 tableUID:(const struct TSKUIDStruct *)arg3 toDirtyCellRefs:(void *)arg4;
+- (void)p_updateText:(id)arg1 atCellCoord:(const struct TSKUIDStructCoord *)arg2 tableUID:(const struct TSKUIDStruct *)arg3 toDirtyCellRefs:(void *)arg4;
 - (void)updateText:(id)arg1 atCellCoord:(const struct TSKUIDStructCoord *)arg2 tableUID:(const struct TSKUIDStruct *)arg3;
-- (void)updateWithIndexingChunks:(id)arg1;
+- (_Bool)updateWithIndexingChunks:(id)arg1;
 - (void)createFragmentEntryForString:(id)arg1 createIfMissingUsingPrecedentCoord:(const struct TSUCellCoord *)arg2;
 - (void *)fragmentEntryForString:(id)arg1;
 - (void)handleFullTile:(id)arg1;
@@ -79,7 +80,7 @@
 - (void)beginTrackingNamesInTable:(const struct TSKUIDStruct *)arg1;
 - (void)updateTrackedHeadersForDocumentLocaleChange:(const struct TSKUIDStruct *)arg1;
 - (void)updateTrackedHeaders:(const struct TSKUIDStruct *)arg1;
-- (void)updateTrackedHeaders:(const struct TSKUIDStruct *)arg1 checkForEmptyHeaders:(_Bool)arg2;
+- (_Bool)updateTrackedHeaders:(const struct TSKUIDStruct *)arg1 checkForEmptyHeaders:(_Bool)arg2;
 - (struct TSTHeaderPerTable *)perTableEntryForTable:(const struct TSKUIDStruct *)arg1 createIfMissing:(_Bool)arg2;
 - (vector_5a9bb81a)wordFragmentsFromString:(id)arg1 savePreserveFlags:(_Bool)arg2;
 - (void)integrateReservedPrecedents;

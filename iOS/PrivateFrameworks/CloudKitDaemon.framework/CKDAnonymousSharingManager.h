@@ -17,12 +17,11 @@
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *synchronizeQueue; // @synthesize synchronizeQueue=_synchronizeQueue;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *synchronizeQueue; // @synthesize synchronizeQueue=_synchronizeQueue;
 @property(retain, nonatomic) CKDZonePCSData *zonePCSData; // @synthesize zonePCSData=_zonePCSData;
-@property(nonatomic) __weak CKDContainer *container; // @synthesize container=_container;
+@property(readonly, nonatomic) __weak CKDContainer *container; // @synthesize container=_container;
 - (void)_lockedFetchSystemZonePCSDataWithCompletion:(CDUnknownBlockType)arg1;
 - (id)pcsCache;
-- (id)pcsManager;
 - (void)_locked_decryptShareTuple:(id)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
 - (void)decryptShareTuple:(id)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
 - (void)_locked_encryptShareTuples:(id)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;

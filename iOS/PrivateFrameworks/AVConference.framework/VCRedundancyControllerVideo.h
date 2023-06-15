@@ -24,17 +24,19 @@ __attribute__((visibility("hidden")))
     unsigned long long _statisticsID;
     _Bool _isNWConnectionEnabled;
     int _btNotificationHandlerIndex;
+    _Bool _isUsingInternalStatisticsCollector;
     NSArray *_fecLevelPerFrameSizeVector;
 }
 
-+ (double)convertRedundancyPercentageToRatio:(unsigned int)arg1;
 @property(readonly, nonatomic) NSArray *fecLevelPerFrameSizeVector; // @synthesize fecLevelPerFrameSizeVector=_fecLevelPerFrameSizeVector;
+@property(readonly, nonatomic) AVCStatisticsCollector *statisticsCollector; // @synthesize statisticsCollector=_statisticsCollector;
 @property(nonatomic) unsigned long long statisticsID; // @synthesize statisticsID=_statisticsID;
 - (void)resetRedundancyStrategy:(CDStruct_b9c9288f *)arg1;
 - (void)setBtNotificationMonitor;
 - (void)loadDefaultSettings;
 - (void)reportRedundancyPercentage:(unsigned int)arg1 redundancyInterval:(double)arg2;
-- (void)updateRedundancyStrategyWithNetworkStatistics:(CDStruct_7df19fcb)arg1;
+- (void)unregisterStatistics;
+- (void)updateRedundancyStrategyWithNetworkStatistics:(struct tagVCStatisticsMessage)arg1;
 - (void)dealloc;
 - (id)initWithDelegate:(id)arg1 mode:(unsigned int)arg2 parameters:(struct VCRedundancyControllerVideoParameters_t)arg3;
 

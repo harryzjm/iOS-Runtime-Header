@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIControl.h>
+#import <UIKitCore/UIControl.h>
 
-@class CNAvatarView, CNMutableContact, CNPhotoPickerViewController, NSArray, NSString, PRLikeness, UIButton, UIDropInteraction, UILongPressGestureRecognizer, UITapGestureRecognizer;
+@class CNAvatarView, CNMutableContact, CNPhotoPickerViewController, CNRadiantShadowImageView, NSArray, NSString, PRLikeness, UIButton, UIDropInteraction, UILongPressGestureRecognizer, UITapGestureRecognizer;
 @protocol CNContactPhotoViewDelegate, CNPresenterDelegate;
 
 __attribute__((visibility("hidden")))
@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 {
     _Bool _editing;
     _Bool _showEditingLabel;
+    _Bool _showRadiantShadowView;
     _Bool _modified;
     _Bool _shouldAllowTakePhotoAction;
     _Bool _prohibitsPersonaFetch;
@@ -27,6 +28,7 @@ __attribute__((visibility("hidden")))
     CNMutableContact *_pendingEditContact;
     PRLikeness *_originalLikeness;
     PRLikeness *_currentLikeness;
+    CNRadiantShadowImageView *_radiantShadowView;
     UIButton *_editPhotoButton;
     NSArray *_variableConstraints;
     UITapGestureRecognizer *_tapGestureRecognizer;
@@ -49,6 +51,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSArray *variableConstraints; // @synthesize variableConstraints=_variableConstraints;
 @property(nonatomic) _Bool isAnimatingBounce; // @synthesize isAnimatingBounce=_isAnimatingBounce;
 @property(retain, nonatomic) UIButton *editPhotoButton; // @synthesize editPhotoButton=_editPhotoButton;
+@property(retain, nonatomic) CNRadiantShadowImageView *radiantShadowView; // @synthesize radiantShadowView=_radiantShadowView;
 @property(nonatomic) _Bool prohibitsPersonaFetch; // @synthesize prohibitsPersonaFetch=_prohibitsPersonaFetch;
 @property(retain, nonatomic) PRLikeness *currentLikeness; // @synthesize currentLikeness=_currentLikeness;
 @property(retain, nonatomic) PRLikeness *originalLikeness; // @synthesize originalLikeness=_originalLikeness;
@@ -58,6 +61,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) CNAvatarView *avatarView; // @synthesize avatarView=_avatarView;
 @property(readonly, nonatomic) _Bool shouldAllowTakePhotoAction; // @synthesize shouldAllowTakePhotoAction=_shouldAllowTakePhotoAction;
 @property(nonatomic) _Bool modified; // @synthesize modified=_modified;
+@property(nonatomic) _Bool showRadiantShadowView; // @synthesize showRadiantShadowView=_showRadiantShadowView;
 @property(nonatomic) _Bool showEditingLabel; // @synthesize showEditingLabel=_showEditingLabel;
 @property(nonatomic) double labelAlpha; // @synthesize labelAlpha=_labelAlpha;
 @property(nonatomic, getter=isEditing) _Bool editing; // @synthesize editing=_editing;
@@ -79,6 +83,7 @@ __attribute__((visibility("hidden")))
 - (void)_zoomContactPhoto;
 - (id)previewPath;
 - (void)visualIdentityPicker:(id)arg1 presentationControllerWillDismiss:(id)arg2;
+- (void)updatePendingContactWithEditedContact:(id)arg1;
 - (void)photoPicker:(id)arg1 didUpdatePhotoForContact:(id)arg2 withContactImage:(id)arg3;
 - (void)photoPickerDidCancel:(id)arg1;
 @property(readonly) _Bool isPresentingModalViewController;

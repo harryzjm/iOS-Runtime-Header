@@ -19,9 +19,11 @@
     NSDate *_completionDate;
     NSNumber *_syncStatus;
     NSError *_syncError;
+    NSString *_requestorOperationID;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *requestorOperationID; // @synthesize requestorOperationID=_requestorOperationID;
 @property(nonatomic) _Bool KRSReturnedExistingIdentity; // @synthesize KRSReturnedExistingIdentity=_KRSReturnedExistingIdentity;
 @property(retain, nonatomic) NSError *syncError; // @synthesize syncError=_syncError;
 @property(retain, nonatomic) NSNumber *syncStatus; // @synthesize syncStatus=_syncStatus;
@@ -30,7 +32,7 @@
 @property(nonatomic, getter=isManatee) _Bool manatee; // @synthesize manatee=_manatee;
 @property(retain, nonatomic) NSString *accountDsid; // @synthesize accountDsid=_accountDsid;
 @property(retain, nonatomic) NSString *serviceName; // @synthesize serviceName=_serviceName;
-- (void)waitOnSyncWithQueue:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)waitOnSyncWithQueue:(id)arg1 waiterOperationID:(id)arg2 handler:(CDUnknownBlockType)arg3;
 @property(readonly, nonatomic) unsigned long long state;
 
 @end

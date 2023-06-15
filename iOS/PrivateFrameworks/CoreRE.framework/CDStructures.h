@@ -30,7 +30,7 @@ struct AttributeTable {
     unsigned long long _field1;
     struct FixedArray<re::BufferSlice> _field2;
     struct FixedArray<re::VertexBufferFormat> _field3;
-    struct HashBrown<re::WeakStringID, unsigned char, re::Hash<re::WeakStringID>, re::EqualTo<re::WeakStringID>, re::Hash<uint8_t>, false> _field4;
+    struct HashBrown<re::WeakStringID, unsigned char, re::Hash<WeakStringID>, re::EqualTo<re::WeakStringID>, re::Hash<uint8_t>, false> _field4;
 };
 
 struct AudioAssetConfiguration {
@@ -164,7 +164,7 @@ struct FixedInlineArray<unsigned char, 24UL> {
     unsigned char _field1[24];
 };
 
-struct HashBrown<re::WeakStringID, unsigned char, re::Hash<re::WeakStringID>, re::EqualTo<re::WeakStringID>, re::Hash<uint8_t>, false> {
+struct HashBrown<re::WeakStringID, unsigned char, re::Hash<WeakStringID>, re::EqualTo<re::WeakStringID>, re::Hash<uint8_t>, false> {
     void *_field1;
     void *_field2;
     unsigned long long _field3;
@@ -434,57 +434,57 @@ struct float4x4 {
     MISSING_TYPE *_field1[4];
 };
 
-struct function<void (re::HashTable<unsigned long long, PHASEListener *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)> {
-    struct __value_func<void (re::HashTable<unsigned long long, PHASEListener *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)> {
+struct function<void (re::HashTable<unsigned long long, PHASEListener *>*)> {
+    struct __value_func<void (re::HashTable<unsigned long long, PHASEListener *>*)> {
         struct type __buf_;
         void *__f_;
     } __f_;
 };
 
-struct function<void (re::HashTable<unsigned long long, PHASEObject *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)> {
-    struct __value_func<void (re::HashTable<unsigned long long, PHASEObject *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)> {
+struct function<void (re::HashTable<unsigned long long, PHASEObject *>*)> {
+    struct __value_func<void (re::HashTable<unsigned long long, PHASEObject *>*)> {
         struct type __buf_;
         void *__f_;
     } __f_;
 };
 
-struct function<void (re::HashTable<unsigned long long, PHASEShape *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)> {
-    struct __value_func<void (re::HashTable<unsigned long long, PHASEShape *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)> {
+struct function<void (re::HashTable<unsigned long long, PHASEShape *>*)> {
+    struct __value_func<void (re::HashTable<unsigned long long, PHASEShape *>*)> {
         struct type __buf_;
         void *__f_;
     } __f_;
 };
 
-struct function<void (re::HashTable<unsigned long long, REPHASEAudioScene *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)> {
-    struct __value_func<void (re::HashTable<unsigned long long, REPHASEAudioScene *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)> {
+struct function<void (re::HashTable<unsigned long long, REPHASEAudioScene *>*)> {
+    struct __value_func<void (re::HashTable<unsigned long long, REPHASEAudioScene *>*)> {
         struct type __buf_;
         void *__f_;
     } __f_;
 };
 
-struct function<void (re::HashTable<unsigned long long, REPHASEEntity *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)> {
-    struct __value_func<void (re::HashTable<unsigned long long, REPHASEEntity *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)> {
+struct function<void (re::HashTable<unsigned long long, REPHASEEntity *>*)> {
+    struct __value_func<void (re::HashTable<unsigned long long, REPHASEEntity *>*)> {
         struct type __buf_;
         void *__f_;
     } __f_;
 };
 
-struct function<void (re::HashTable<unsigned long long, REPHASESoundAsset, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)> {
-    struct __value_func<void (re::HashTable<unsigned long long, REPHASESoundAsset, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)> {
+struct function<void (re::HashTable<unsigned long long, REPHASESoundAsset>*)> {
+    struct __value_func<void (re::HashTable<unsigned long long, REPHASESoundAsset>*)> {
         struct type __buf_;
         void *__f_;
     } __f_;
 };
 
-struct function<void (re::HashTable<unsigned long long, REPHASESoundEvent *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)> {
-    struct __value_func<void (re::HashTable<unsigned long long, REPHASESoundEvent *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)> {
+struct function<void (re::HashTable<unsigned long long, REPHASESoundEvent *>*)> {
+    struct __value_func<void (re::HashTable<unsigned long long, REPHASESoundEvent *>*)> {
         struct type __buf_;
         void *__f_;
     } __f_;
 };
 
-struct function<void (re::HashTable<unsigned long long, bool, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)> {
-    struct __value_func<void (re::HashTable<unsigned long long, bool, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)> {
+struct function<void (re::HashTable<unsigned long long, bool>*)> {
+    struct __value_func<void (re::HashTable<unsigned long long, bool>*)> {
         struct type __buf_;
         void *__f_;
     } __f_;
@@ -535,59 +535,59 @@ struct type {
     unsigned char __lx[24];
 };
 
-struct unique_ptr<re::HashTable<unsigned long long, PHASEListener *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>, std::function<void (re::HashTable<unsigned long long, PHASEListener *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)>> {
-    struct __compressed_pair<re::HashTable<unsigned long long, PHASEListener *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*, std::function<void (re::HashTable<unsigned long long, PHASEListener *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)>> {
+struct unique_ptr<re::HashTable<unsigned long long, PHASEListener *>, std::function<void (re::HashTable<unsigned long long, PHASEListener *>*)>> {
+    struct __compressed_pair<re::HashTable<unsigned long long, PHASEListener *>*, std::function<void (re::HashTable<unsigned long long, PHASEListener *>*)>> {
         void *__value_;
-        struct function<void (re::HashTable<unsigned long long, PHASEListener *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)> __value_;
+        struct function<void (re::HashTable<unsigned long long, PHASEListener *>*)> __value_;
     } __ptr_;
 };
 
-struct unique_ptr<re::HashTable<unsigned long long, PHASEObject *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>, std::function<void (re::HashTable<unsigned long long, PHASEObject *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)>> {
-    struct __compressed_pair<re::HashTable<unsigned long long, PHASEObject *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*, std::function<void (re::HashTable<unsigned long long, PHASEObject *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)>> {
+struct unique_ptr<re::HashTable<unsigned long long, PHASEObject *>, std::function<void (re::HashTable<unsigned long long, PHASEObject *>*)>> {
+    struct __compressed_pair<re::HashTable<unsigned long long, PHASEObject *>*, std::function<void (re::HashTable<unsigned long long, PHASEObject *>*)>> {
         void *__value_;
-        struct function<void (re::HashTable<unsigned long long, PHASEObject *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)> __value_;
+        struct function<void (re::HashTable<unsigned long long, PHASEObject *>*)> __value_;
     } __ptr_;
 };
 
-struct unique_ptr<re::HashTable<unsigned long long, PHASEShape *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>, std::function<void (re::HashTable<unsigned long long, PHASEShape *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)>> {
-    struct __compressed_pair<re::HashTable<unsigned long long, PHASEShape *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*, std::function<void (re::HashTable<unsigned long long, PHASEShape *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)>> {
+struct unique_ptr<re::HashTable<unsigned long long, PHASEShape *>, std::function<void (re::HashTable<unsigned long long, PHASEShape *>*)>> {
+    struct __compressed_pair<re::HashTable<unsigned long long, PHASEShape *>*, std::function<void (re::HashTable<unsigned long long, PHASEShape *>*)>> {
         void *__value_;
-        struct function<void (re::HashTable<unsigned long long, PHASEShape *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)> __value_;
+        struct function<void (re::HashTable<unsigned long long, PHASEShape *>*)> __value_;
     } __ptr_;
 };
 
-struct unique_ptr<re::HashTable<unsigned long long, REPHASEAudioScene *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>, std::function<void (re::HashTable<unsigned long long, REPHASEAudioScene *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)>> {
-    struct __compressed_pair<re::HashTable<unsigned long long, REPHASEAudioScene *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*, std::function<void (re::HashTable<unsigned long long, REPHASEAudioScene *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)>> {
+struct unique_ptr<re::HashTable<unsigned long long, REPHASEAudioScene *>, std::function<void (re::HashTable<unsigned long long, REPHASEAudioScene *>*)>> {
+    struct __compressed_pair<re::HashTable<unsigned long long, REPHASEAudioScene *>*, std::function<void (re::HashTable<unsigned long long, REPHASEAudioScene *>*)>> {
         void *__value_;
-        struct function<void (re::HashTable<unsigned long long, REPHASEAudioScene *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)> __value_;
+        struct function<void (re::HashTable<unsigned long long, REPHASEAudioScene *>*)> __value_;
     } __ptr_;
 };
 
-struct unique_ptr<re::HashTable<unsigned long long, REPHASEEntity *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>, std::function<void (re::HashTable<unsigned long long, REPHASEEntity *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)>> {
-    struct __compressed_pair<re::HashTable<unsigned long long, REPHASEEntity *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*, std::function<void (re::HashTable<unsigned long long, REPHASEEntity *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)>> {
+struct unique_ptr<re::HashTable<unsigned long long, REPHASEEntity *>, std::function<void (re::HashTable<unsigned long long, REPHASEEntity *>*)>> {
+    struct __compressed_pair<re::HashTable<unsigned long long, REPHASEEntity *>*, std::function<void (re::HashTable<unsigned long long, REPHASEEntity *>*)>> {
         void *__value_;
-        struct function<void (re::HashTable<unsigned long long, REPHASEEntity *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)> __value_;
+        struct function<void (re::HashTable<unsigned long long, REPHASEEntity *>*)> __value_;
     } __ptr_;
 };
 
-struct unique_ptr<re::HashTable<unsigned long long, REPHASESoundAsset, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>, std::function<void (re::HashTable<unsigned long long, REPHASESoundAsset, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)>> {
-    struct __compressed_pair<re::HashTable<unsigned long long, REPHASESoundAsset, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*, std::function<void (re::HashTable<unsigned long long, REPHASESoundAsset, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)>> {
+struct unique_ptr<re::HashTable<unsigned long long, REPHASESoundAsset>, std::function<void (re::HashTable<unsigned long long, REPHASESoundAsset>*)>> {
+    struct __compressed_pair<re::HashTable<unsigned long long, REPHASESoundAsset>*, std::function<void (re::HashTable<unsigned long long, REPHASESoundAsset>*)>> {
         void *__value_;
-        struct function<void (re::HashTable<unsigned long long, REPHASESoundAsset, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)> __value_;
+        struct function<void (re::HashTable<unsigned long long, REPHASESoundAsset>*)> __value_;
     } __ptr_;
 };
 
-struct unique_ptr<re::HashTable<unsigned long long, REPHASESoundEvent *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>, std::function<void (re::HashTable<unsigned long long, REPHASESoundEvent *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)>> {
-    struct __compressed_pair<re::HashTable<unsigned long long, REPHASESoundEvent *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*, std::function<void (re::HashTable<unsigned long long, REPHASESoundEvent *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)>> {
+struct unique_ptr<re::HashTable<unsigned long long, REPHASESoundEvent *>, std::function<void (re::HashTable<unsigned long long, REPHASESoundEvent *>*)>> {
+    struct __compressed_pair<re::HashTable<unsigned long long, REPHASESoundEvent *>*, std::function<void (re::HashTable<unsigned long long, REPHASESoundEvent *>*)>> {
         void *__value_;
-        struct function<void (re::HashTable<unsigned long long, REPHASESoundEvent *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)> __value_;
+        struct function<void (re::HashTable<unsigned long long, REPHASESoundEvent *>*)> __value_;
     } __ptr_;
 };
 
-struct unique_ptr<re::HashTable<unsigned long long, bool, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>, std::function<void (re::HashTable<unsigned long long, bool, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)>> {
-    struct __compressed_pair<re::HashTable<unsigned long long, bool, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*, std::function<void (re::HashTable<unsigned long long, bool, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)>> {
+struct unique_ptr<re::HashTable<unsigned long long, bool>, std::function<void (re::HashTable<unsigned long long, bool>*)>> {
+    struct __compressed_pair<re::HashTable<unsigned long long, bool>*, std::function<void (re::HashTable<unsigned long long, bool>*)>> {
         void *__value_;
-        struct function<void (re::HashTable<unsigned long long, bool, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)> __value_;
+        struct function<void (re::HashTable<unsigned long long, bool>*)> __value_;
     } __ptr_;
 };
 

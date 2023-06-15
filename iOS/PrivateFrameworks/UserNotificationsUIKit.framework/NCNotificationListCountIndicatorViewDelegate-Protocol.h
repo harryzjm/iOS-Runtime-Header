@@ -6,9 +6,10 @@
 
 #import <UserNotificationsUIKit/NSObject-Protocol.h>
 
-@class NCNotificationListCountIndicatorView;
+@class NCNotificationListCountIndicatorView, UIView;
 
 @protocol NCNotificationListCountIndicatorViewDelegate <NSObject>
+- (void)notificationListCountIndicatorViewLongPressed:(NCNotificationListCountIndicatorView *)arg1 presentingView:(UIView *)arg2;
 - (void)notificationListCountIndicatorViewTapped:(NCNotificationListCountIndicatorView *)arg1;
 @end
 

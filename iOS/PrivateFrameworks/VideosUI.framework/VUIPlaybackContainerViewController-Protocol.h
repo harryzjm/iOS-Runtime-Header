@@ -6,11 +6,13 @@
 
 #import <VideosUI/NSObject-Protocol.h>
 
-@class AVPlayerViewController, NSObject;
-@protocol TVPMediaItem, VUIPlaybackContainerViewControllerDelegate;
+@class AVPlayerViewController, NSObject, UIViewController;
+@protocol TVPMediaItem, VUIMultiPlayerViewController, VUIPlaybackContainerViewControllerDelegate;
 
 @protocol VUIPlaybackContainerViewController <NSObject>
 @property(nonatomic) __weak id <VUIPlaybackContainerViewControllerDelegate> delegate;
+- (UIViewController<VUIMultiPlayerViewController> *)unembedMultiPlayerViewController;
+- (void)embedMultiPlayerViewController:(UIViewController<VUIMultiPlayerViewController> *)arg1;
 - (void)hidePictureInPictureWithCompletion:(void (^)(void))arg1;
 - (void)exitPictureInPictureWithCompletion:(void (^)(void))arg1;
 - (void)enterPictureInPicture;

@@ -4,29 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSObject, NSString;
-@protocol OS_dispatch_queue, OS_nw_connection;
+@class NSObject, VCNWConnectionInfo;
+@protocol OS_dispatch_semaphore;
 
 __attribute__((visibility("hidden")))
 @interface VCTransportSessionNW
 {
-    NSObject<OS_nw_connection> *_rtpConnection;
-    NSObject<OS_nw_connection> *_rtcpConnection;
-    NSString *_rtpConnectionID;
-    NSString *_rtcpConnectionID;
+    VCNWConnectionInfo *_rtpConnectionInfo;
+    VCNWConnectionInfo *_rtcpConnectionInfo;
     _Bool _isSharedConnection;
-    struct tagVCNWConnectionMonitor *_monitor;
-    CDUnknownFunctionPointerType _notificationHandler;
-    CDUnknownFunctionPointerType _packetEventHandler;
-    void *_handlerContext;
-    NSObject<OS_dispatch_queue> *_handlerQueue;
     _Bool _didScheduleReceive;
     int _networkInterfaceType;
-    struct os_unfair_lock_s _nwMonitorLock;
+    NSObject<OS_dispatch_semaphore> *_startWaitSemaphore;
+    NSObject<OS_dispatch_semaphore> *_cancelWaitSemaphore;
     _Bool _isIPv6;
     unsigned int _networkMTU;
 }
 
+@property(retain, nonatomic) VCNWConnectionInfo *rtcpConnectionInfo; // @synthesize rtcpConnectionInfo=_rtcpConnectionInfo;
+@property(retain, nonatomic) VCNWConnectionInfo *rtpConnectionInfo; // @synthesize rtpConnectionInfo=_rtpConnectionInfo;
 - (_Bool)isIPv6;
 - (unsigned int)networkMTU;
 - (int)networkInterfaceType;
@@ -36,16 +32,20 @@ __attribute__((visibility("hidden")))
 - (int)dupRTPNWConnectionBackingSocketForNWConnection:(id)arg1;
 - (int)dupRTCPNWConnectionBackingSocket;
 - (int)dupRTPNWConnectionBackingSocket;
-- (void)destroyNWMonitor;
-- (void)createNWMonitor;
+- (struct tagVCNWConnectionMonitor *)createNWMonitor;
 - (void)stop;
 - (void)start;
 - (int)createVFD:(int *)arg1 forStreamType:(unsigned int)arg2;
-- (_Bool)setupNWConnection:(id)arg1;
-- (_Bool)setStateChangeHandlerForConnection:(id)arg1 result:(_Bool *)arg2 semaphore:(id)arg3;
-- (void)handleStateChanges:(int)arg1 error:(id)arg2 semaphore:(id)arg3 operationResult:(_Bool *)arg4;
+- (int)setupNWConnection:(id)arg1;
+- (int)setStateChangeHandlerForConnection:(id)arg1 result:(_Bool *)arg2;
+- (void)handleStateChanges:(int)arg1 error:(id)arg2 operationResult:(_Bool *)arg3;
 - (void)dealloc;
-- (void)createNWConnection:(id *)arg1 forConnectionID:(id)arg2;
+- (int)setRemoteAddress:(id)arg1 remoteRTCPPort:(int)arg2;
+- (int)destroyNWConnection:(id *)arg1;
+- (int)cancelConnections;
+- (int)createNWConnection:(id)arg1;
+- (int)createAndSetupConnection:(id)arg1;
+- (int)createConnections;
 - (id)initWithRTPNWConnectionID:(id)arg1 RTCPNWConnectionID:(id)arg2 handlerQueue:(id)arg3 context:(void *)arg4 notificationHandler:(CDUnknownFunctionPointerType)arg5 eventHandler:(CDUnknownFunctionPointerType)arg6;
 
 @end

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIFontMetrics.h>
+#import <UIKitCore/UIFontMetrics.h>
 
 @interface UIFontMetrics (HKAdditions)
 - (struct NSDirectionalEdgeInsets)hk_scaledDirectionalEdgeInsetsForDirectionalEdgeInsets:(struct NSDirectionalEdgeInsets)arg1 compatibleWithTraitCollection:(id)arg2;

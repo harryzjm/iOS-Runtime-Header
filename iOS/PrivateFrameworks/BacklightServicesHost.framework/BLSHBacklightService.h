@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class BLSHBacklightStateMachine, BLSHBacklightTransitionStateMachine, BLSHDiagnosticsServer, BLSHWatchdogTester, BLSHXPCBacklightProxyHostServer;
+@class BLSHBacklightStateMachine, BLSHBacklightTransitionStateMachine, BLSHCriticalAssertTester, BLSHDiagnosticsServer, BLSHWatchdogTester, BLSHXPCBacklightProxyHostServer;
 
 __attribute__((visibility("hidden")))
 @interface BLSHBacklightService : NSObject
@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     BLSHXPCBacklightProxyHostServer *_backlightXPCServer;
     BLSHDiagnosticsServer *_diagnosticsServer;
     BLSHWatchdogTester *_watchdogTester;
+    BLSHCriticalAssertTester *_criticalAssertTester;
 }
 
 + (id)serviceForService:(id)arg1 withPlatformProvider:(id)arg2 osInterfaceProvider:(id)arg3 inactiveBudgetPolicy:(id)arg4;

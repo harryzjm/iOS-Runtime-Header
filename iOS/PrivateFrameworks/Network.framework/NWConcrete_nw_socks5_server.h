@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSString;
-@protocol OS_dispatch_queue, OS_dispatch_source, OS_nw_array, OS_nw_listener, OS_nw_parameters;
+@protocol OS_dispatch_queue, OS_dispatch_source, OS_nw_array, OS_nw_dictionary, OS_nw_listener, OS_nw_parameters;
 
 __attribute__((visibility("hidden")))
 @interface NWConcrete_nw_socks5_server : NSObject
@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType ss_error;
     NSObject<OS_nw_listener> *ss_listener;
     NSObject<OS_nw_array> *ss_socks5_connections;
+    NSObject<OS_nw_dictionary> *ss_socks5_udp_associate_connections;
     struct nw_shoes_statistics ss_stats;
     unsigned long long ss_assertion_toggle_mach_time;
     NSObject<OS_dispatch_source> *ss_assertion_timer;

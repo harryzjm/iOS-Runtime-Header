@@ -4,19 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import "_$s8VideosUI9ViewModelCN.h"
-
 @class MISSING_TYPE;
 
-@interface _TtC8VideosUI18LibLockupViewModel : _$s8VideosUI9ViewModelCN
+@interface _TtC8VideosUI18LibLockupViewModel
 {
     MISSING_TYPE *id;
+    MISSING_TYPE *familyMemberId;
     MISSING_TYPE *_isDownloadInProgress;
     MISSING_TYPE *isViewModelConstructed;
-    MISSING_TYPE *_routerDataSource;
     MISSING_TYPE *_contextMenuItemViewModels;
-    MISSING_TYPE *downloadInteractor;
-    MISSING_TYPE *downloadInteractorObserver;
+    MISSING_TYPE *downloadButtonViewModel;
+    MISSING_TYPE *downloadStateObserver;
+    MISSING_TYPE *didQueryDownloadInfo;
+    MISSING_TYPE *childrenUpdatedSubject;
     MISSING_TYPE *mediaEntity;
     MISSING_TYPE *residesInMenuType;
 }

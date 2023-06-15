@@ -6,7 +6,7 @@
 
 #import <PlatformSSO/NSObject-Protocol.h>
 
-@class NSData, NSString, POLoginConfiguration;
+@class NSData, NSString, POLoginConfiguration, POUserLoginConfiguration;
 
 @protocol POServiceLoginManagerProtocol <NSObject>
 - (void)resetKeysWithCompletion:(void (^)(_Bool, NSError *))arg1;
@@ -19,6 +19,8 @@
 - (void)secIdentityProxyEndpointForKeyType:(long long)arg1 completion:(void (^)(NSXPCListenerEndpoint *, NSError *))arg2;
 - (void)secKeyProxyEndpointForKeyType:(long long)arg1 completion:(void (^)(NSXPCListenerEndpoint *, NSError *))arg2;
 - (void)setCertificateData:(NSData *)arg1 keyType:(long long)arg2 completion:(void (^)(_Bool, NSError *))arg3;
+- (void)setUserLoginConfiguration:(POUserLoginConfiguration *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
+- (void)userLoginConfigurationWithCompletion:(void (^)(POUserLoginConfiguration *, NSError *))arg1;
 - (void)setLoginConfiguration:(POLoginConfiguration *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (void)loginConfigurationWithCompletion:(void (^)(POLoginConfiguration *, NSError *))arg1;
 - (void)setSsoTokens:(NSData *)arg1 completion:(void (^)(_Bool, NSError *))arg2;

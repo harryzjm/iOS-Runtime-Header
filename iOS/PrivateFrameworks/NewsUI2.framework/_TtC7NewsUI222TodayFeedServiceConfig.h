@@ -19,8 +19,9 @@
     MISSING_TYPE *subscriptionController;
     MISSING_TYPE *refreshInterval;
     MISSING_TYPE *cacheKey;
+    MISSING_TYPE *excludedGroupKindsForIgnoredTagIdentification;
     MISSING_TYPE *canCache;
-    MISSING_TYPE *userInfo;
+    MISSING_TYPE *sportsOnboardingManager;
 }
 
 @end

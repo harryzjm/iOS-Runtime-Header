@@ -9,9 +9,12 @@
 __attribute__((visibility("hidden")))
 @interface UIKBFocusVCView : UIView
 {
+    _Bool _isEligibleForFocusWithZeroAlpha;
 }
 
+@property(nonatomic) _Bool isEligibleForFocusWithZeroAlpha; // @synthesize isEligibleForFocusWithZeroAlpha=_isEligibleForFocusWithZeroAlpha;
 - (id)preferredFocusedView;
+- (_Bool)_isEligibleForFocusGivenAlpha;
 
 @end
 

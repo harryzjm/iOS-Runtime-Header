@@ -15,17 +15,18 @@ __attribute__((visibility("hidden")))
     struct MANAConfigurableAnalyzer *_analyzer;
     struct MTokenizer *_tokenizer;
     const struct MDDictionaryMetaData *_dictionary;
+    NSString *_languageCode;
 }
 
+@property(readonly, copy, nonatomic) NSString *languageCode; // @synthesize languageCode=_languageCode;
+- (void)_iterateFormsOfWord:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (id)preferredPronoun:(id)arg1 forTermOfAddress:(id)arg2 morphology:(id)arg3 dependency:(id)arg4;
 - (id)allPossibleWordAttributesForWord:(id)arg1;
 - (void)dealloc;
 - (id)initWithLanguage:(id)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (void)_iterateAllPossibleWordAttributesForWord:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (id)_appropriateCustomEnglishPronounFromPronouns:(id)arg1;
+- (id)_replaceLegacyEnglishPronouns:(id)arg1 inSourceStringRange:(struct _NSRange)arg2 lengthLens:(CDUnknownBlockType)arg3 substringInRangeLens:(CDUnknownBlockType)arg4 enumerateWordSubstringsInRangeLens:(CDUnknownBlockType)arg5 attributes:(CDStruct_87bb3e60)arg6 pronouns:(id)arg7;
 
 @end
 

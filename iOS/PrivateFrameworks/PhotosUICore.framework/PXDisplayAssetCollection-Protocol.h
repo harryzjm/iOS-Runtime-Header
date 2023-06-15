@@ -6,12 +6,10 @@
 
 #import <PhotosUICore/PXDisplayCollection-Protocol.h>
 
-@class NSArray, NSDate, NSString;
+@class NSArray, NSString;
 
 @protocol PXDisplayAssetCollection <PXDisplayCollection>
 @property(readonly, nonatomic) unsigned long long estimatedAssetCount;
-@property(readonly, nonatomic) NSDate *endDate;
-@property(readonly, nonatomic) NSDate *startDate;
 @property(readonly, nonatomic) NSString *localizedSmartDescription;
 @property(readonly, nonatomic) NSString *localizedDateDescription;
 @property(readonly, nonatomic) NSArray *localizedLocationNames;

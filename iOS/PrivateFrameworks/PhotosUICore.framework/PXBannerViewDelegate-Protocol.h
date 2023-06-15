@@ -7,9 +7,8 @@
 #import <PhotosUICore/NSObject-Protocol.h>
 
 @class NSString, PXBannerView;
-@protocol PXPresentationEnvironment;
 
 @protocol PXBannerViewDelegate <NSObject>
-- (id <PXPresentationEnvironment>)presentationEnvironmentForBannerView:(PXBannerView *)arg1 actionIdentifier:(NSString *)arg2;
+- (void)preparePresentationEnvironmentForBannerView:(PXBannerView *)arg1 actionIdentifier:(NSString *)arg2 completionHandler:(void (^)(id <PXPresentationEnvironment>, NSError *))arg3;
 @end
 

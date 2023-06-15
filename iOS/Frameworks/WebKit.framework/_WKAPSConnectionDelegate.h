@@ -11,7 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface _WKAPSConnectionDelegate : NSObject
 {
-    struct WeakPtr<WebPushD::ApplePushServiceConnection, WTF::EmptyCounter> _connection;
+    struct WeakPtr<WebPushD::ApplePushServiceConnection, WTF::DefaultWeakPtrImpl> _connection;
 }
 
 - (id).cxx_construct;

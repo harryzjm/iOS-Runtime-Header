@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned long long multiModalDictationBeganCount; // @synthesize multiModalDictationBeganCount=_multiModalDictationBeganCount;
 @property(nonatomic) unsigned long long modelessUsedAtLeastOnceCount; // @synthesize modelessUsedAtLeastOnceCount=_modelessUsedAtLeastOnceCount;
 @property(nonatomic) unsigned long long dictationBeganCount; // @synthesize dictationBeganCount=_dictationBeganCount;
+- (long long)inputActionCount;
 - (id)description;
 - (long long)mergeActionIfPossible:(id)arg1;
 

@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) MRScreenMirroringObserver *internalObserver; // @synthesize internalObserver=_internalObserver;
 @property(retain, nonatomic) id <MRScreenMirroringQuickControlsUIControllable> uiController; // @synthesize uiController=_uiController;
 - (void)_mirrorStateChanged:(_Bool)arg1 screenType:(unsigned int)arg2;
+- (void)dealloc;
 - (id)init;
 
 @end

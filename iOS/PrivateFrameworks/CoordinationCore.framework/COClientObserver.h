@@ -4,25 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
-@class NSXPCConnection;
+@class NSObject;
 @protocol OS_os_transaction;
 
 __attribute__((visibility("hidden")))
-@interface COClientObserver : NSObject
+@interface COClientObserver
 {
-    NSXPCConnection *_connection;
     NSObject<OS_os_transaction> *_transaction;
+    id _cluster;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) id cluster; // @synthesize cluster=_cluster;
 @property(readonly, nonatomic) NSObject<OS_os_transaction> *transaction; // @synthesize transaction=_transaction;
-@property(readonly, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 - (_Bool)isEqual:(id)arg1;
-- (unsigned long long)hash;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
+- (id)initWithConnection:(id)arg1 cluster:(id)arg2;
 - (id)initWithConnection:(id)arg1;
 
 @end

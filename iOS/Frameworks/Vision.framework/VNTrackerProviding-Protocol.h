@@ -9,5 +9,6 @@
 @protocol VNTrackerProviding
 - (void)releaseTracker:(VNTracker *)arg1;
 - (VNTracker *)trackerWithOptions:(NSDictionary *)arg1 error:(id *)arg2;
+- (Class)trackerClassForOptions:(NSDictionary *)arg1 error:(id *)arg2;
 @end
 

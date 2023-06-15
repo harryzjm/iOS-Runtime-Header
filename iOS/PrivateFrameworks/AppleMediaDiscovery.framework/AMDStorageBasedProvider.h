@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSString *domain; // @synthesize domain=_domain;
 - (void)storeFeatureData:(id)arg1 error:(id *)arg2;
-- (id)getFeatureWithName:(id)arg1 error:(id *)arg2;
+- (id)getFeatureWithName:(id)arg1 withColumn:(id)arg2 error:(id *)arg3;
 - (id)initWithDomain:(id)arg1;
 
 @end

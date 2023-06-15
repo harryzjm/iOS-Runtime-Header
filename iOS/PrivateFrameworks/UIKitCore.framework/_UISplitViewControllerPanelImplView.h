@@ -14,6 +14,8 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak UISplitViewControllerPanelImpl *impl; // @synthesize impl=_impl;
+- (void)setBounds:(struct CGRect)arg1;
+- (void)setFrame:(struct CGRect)arg1;
 - (void)_searchForFocusRegionsInContext:(id)arg1;
 
 @end

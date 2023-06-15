@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 
 - (id)findBuildingsNear:(CDStruct_c3b9c2ee)arg1 radius:(double)arg2 handler:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)findBuildingsNear:(CDStruct_c3b9c2ee)arg1 radius:(double)arg2 tileSetStyle:(int)arg3 handler:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (vector_8ad7b88a)_verticesFromTile:(id)arg1 forBuildingIndex:(unsigned int)arg2;
 
 @end
 

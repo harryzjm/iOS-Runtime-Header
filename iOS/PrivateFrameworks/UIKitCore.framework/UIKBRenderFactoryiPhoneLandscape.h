@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 - (double)moreABCKeyFontSize;
 - (double)_row4ControlSegmentWidthRight;
 - (double)_row4ControlSegmentWidthLeft;
+- (double)dynamicBottomRowMultiplier;
 - (struct UIEdgeInsets)dynamicInsets;
 - (double)symbolImageControlKeyFontSize;
 - (double)emojiPopupDividerKeyOffset;

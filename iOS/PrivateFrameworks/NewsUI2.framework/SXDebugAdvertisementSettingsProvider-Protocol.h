@@ -7,6 +7,6 @@
 @protocol SXAdvertisingSettings;
 
 @protocol SXDebugAdvertisementSettingsProvider
-@property(nonatomic, readonly) id <SXAdvertisingSettings> debugSettings;
+@property(readonly, nonatomic) id <SXAdvertisingSettings> debugSettings;
 @end
 

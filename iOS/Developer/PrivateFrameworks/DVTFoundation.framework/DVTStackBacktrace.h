@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray;
+@class NSArray, NSString;
 
 @interface DVTStackBacktrace : NSObject
 {
@@ -14,6 +14,8 @@
     unsigned long long *_returnAddresses;
     unsigned long long _returnAddressesCount;
     unsigned long long _hash;
+    NSString *_threadName;
+    NSString *_queueLabel;
 }
 
 + (void)allowFetchingSymbolsViaXPC;
@@ -30,6 +32,8 @@
 + (_Bool)supportsSecureCoding;
 + (_Bool)symbolicationEnabled;
 - (void).cxx_destruct;
+@property(copy) NSString *queueLabel; // @synthesize queueLabel=_queueLabel;
+@property(copy) NSString *threadName; // @synthesize threadName=_threadName;
 - (id)symbolicatedFramesFromXPCServiceForReturnAddresses:(unsigned long long *)arg1 returnAddressesCount:(unsigned long long)arg2 dyldImageSuffix:(id)arg3 allowDsymData:(_Bool)arg4;
 - (id)callStackReturnAddresses;
 - (id)_primitiveSymbolicatedStackBacktraceFrames;
@@ -43,7 +47,7 @@
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (void)dealloc;
-- (id)initWithCallStackReturnAddresses:(unsigned long long *)arg1 count:(unsigned long long)arg2 symbolicatedStackBacktraceFrames:(id)arg3;
+- (id)initWithCallStackReturnAddresses:(unsigned long long *)arg1 count:(unsigned long long)arg2 symbolicatedStackBacktraceFrames:(id)arg3 threadName:(id)arg4 queueLabel:(id)arg5;
 - (id)init;
 
 @end

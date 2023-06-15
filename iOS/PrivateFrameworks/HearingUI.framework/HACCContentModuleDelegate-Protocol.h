@@ -14,10 +14,12 @@
 - (NSObject<OS_dispatch_queue> *)backgroundUpdateQueue;
 - (void)viewController:(HACCContentViewController *)arg1 didExpand:(_Bool)arg2;
 - (double)preferredContentWidth;
+- (void)updateHeight;
 - (void)updateView;
 - (void)updateViewForModule:(unsigned long long)arg1;
 - (void)updateViewForProperties:(NSArray *)arg1;
 - (void)controlDidActivate:(UIView<HACCContentModule> *)arg1;
+- (_Bool)shouldDisplayControlForModule:(unsigned long long)arg1;
 - (AXRemoteHearingAidDevice *)currentHearingDevice;
 @end
 

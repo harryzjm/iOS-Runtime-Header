@@ -13,8 +13,9 @@ __attribute__((visibility("hidden")))
 @interface COStateAddOn : COMeshAddOn
 {
     struct os_unfair_lock_s _lock;
-    unsigned long long _outstandingMeshContructions;
+    unsigned long long _stateConstructionGeneration;
     NSMutableArray *_outstandingUpdateRequests;
+    _Bool _isConstructingState;
     id <COStateAddOnDelegate> _delegate;
     NSDictionary *_meshState;
 }

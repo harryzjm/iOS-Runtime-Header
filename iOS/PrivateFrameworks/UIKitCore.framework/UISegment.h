@@ -6,8 +6,8 @@
 
 #import "UIImageView.h"
 
-@class NSArray, NSString, UIAction, UIView, _UIBadgeView, _UIFloatingContentView, _UISegmentedControlAppearanceStorage;
-@protocol UISegmentBezelView;
+@class NSArray, NSString, UIAction, UIView, _UIBadgeView, _UISegmentedControlAppearanceStorage;
+@protocol UISegmentBezelView, _UISegmentedControlContentView;
 
 __attribute__((visibility("hidden")))
 @interface UISegment : UIImageView
@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
     UIImageView *_selectionImageView;
     UIView<UISegmentBezelView> *_bezelView;
     _UISegmentedControlAppearanceStorage *_appearanceStorage;
-    _UIFloatingContentView *_floatingContentView;
+    UIView<_UISegmentedControlContentView> *_infoContentView;
     double _width;
     struct CGSize _contentOffset;
     long long _barStyle;
@@ -42,6 +42,7 @@ __attribute__((visibility("hidden")))
         unsigned int adjustsForContentSizeCategory:1;
         unsigned int hovered:1;
         unsigned int animatingSelectionIndicator:1;
+        unsigned int hasCustomInfoView:1;
     } _segmentFlags;
     NSArray *_infoConstraints;
     UIAction *_action;
@@ -66,8 +67,6 @@ __attribute__((visibility("hidden")))
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (_Bool)canBecomeFocused;
 - (void)_updateFloatingContentControlState:(unsigned long long)arg1 context:(id)arg2 withAnimationCoordinator:(id)arg3 animated:(_Bool)arg4;
-- (id)_floatingContentView;
-- (id)_effectiveContentView;
 - (void)_forceInfoDisplay;
 - (id)objectValue;
 - (void)setObjectValue:(id)arg1;
@@ -150,7 +149,7 @@ __attribute__((visibility("hidden")))
 - (id)_encodableSubviews;
 - (id)_tintColorArchivingKey;
 - (id)_effectiveBackgroundView;
-- (id)_effectiveVibrancyEffect;
+- (id)_effectiveVisualEffect;
 - (_Bool)_effectiveUseDynamicShadow;
 - (_Bool)_effectiveDisableShadow;
 - (id)_effectiveBackgroundTintColor;
@@ -158,7 +157,7 @@ __attribute__((visibility("hidden")))
 - (Class)_segmentedControlClass;
 - (id)_parentSegmentedControl;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithInfo:(id)arg1 size:(int)arg2 barStyle:(long long)arg3 tintColor:(id)arg4 appearanceStorage:(id)arg5 position:(unsigned int)arg6 autosizeText:(_Bool)arg7 adjustsForContentSizeCategory:(_Bool)arg8 traitCollection:(id)arg9;
+- (id)initWithInfo:(id)arg1 size:(int)arg2 barStyle:(long long)arg3 tintColor:(id)arg4 appearanceStorage:(id)arg5 position:(unsigned int)arg6 autosizeText:(_Bool)arg7 adjustsForContentSizeCategory:(_Bool)arg8 customInfoView:(id)arg9 traitCollection:(id)arg10;
 - (void)_finishInitialSegmentSetup;
 
 // Remaining properties

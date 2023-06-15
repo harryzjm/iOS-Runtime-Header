@@ -6,11 +6,14 @@
 
 #import <CoordinationCore/HMHomeDelegate-Protocol.h>
 
-@class CLLocation, HMAccessory, HMAccessoryNetworkProtectionGroup, HMActionSet, HMHome, HMHomePersonManagerSettings, HMMediaGroupsController, HMMediaSystem, HMResidentDevice, HMRoom, HMServiceGroup, HMUser, NSArray, NSError, NSString;
+@class CLLocation, HMAccessory, HMAccessoryNetworkProtectionGroup, HMActionSet, HMHome, HMHomePersonManagerSettings, HMMediaSystem, HMResidentDevice, HMRoom, HMServiceGroup, HMUser, NSArray, NSError, NSString;
 
 @protocol HMHomeDelegatePrivate <HMHomeDelegate>
 
 @optional
+- (void)home:(HMHome *)arg1 didUpdateEventLogDuration:(unsigned long long)arg2;
+- (void)homeDidUpdateOnboardedEventLog:(HMHome *)arg1;
+- (void)home:(HMHome *)arg1 didUpdateEventLogEnabled:(_Bool)arg2;
 - (void)home:(HMHome *)arg1 didUpdateAreBulletinNotificationsSupported:(_Bool)arg2;
 - (void)homeDidUpdateToROAR:(HMHome *)arg1;
 - (void)homeDidUpdateAssistantIdentifiers:(HMHome *)arg1;
@@ -21,11 +24,13 @@
 - (void)home:(HMHome *)arg1 didFailAccessorySetupWithError:(NSError *)arg2;
 - (void)home:(HMHome *)arg1 didUpdatePersonManagerSettings:(HMHomePersonManagerSettings *)arg2;
 - (void)homeDidSetEnableDoorbellChime:(HMHome *)arg1;
-- (void)home:(HMHome *)arg1 didUpdateAudioGroupsController:(HMMediaGroupsController *)arg2;
 - (void)home:(HMHome *)arg1 didUpdateAccessoryNetworkProtectionGroup:(HMAccessoryNetworkProtectionGroup *)arg2;
 - (void)home:(HMHome *)arg1 didRemoveAccessoryNetworkProtectionGroup:(HMAccessoryNetworkProtectionGroup *)arg2;
 - (void)home:(HMHome *)arg1 didAddAccessoryNetworkProtectionGroup:(HMAccessoryNetworkProtectionGroup *)arg2;
 - (void)homeDidSetHasAnyUserAcknowledgedCameraRecordingOnboarding:(HMHome *)arg1;
+- (void)home:(HMHome *)arg1 didUpdateSiriPhraseOptions:(unsigned long long)arg2;
+- (void)home:(HMHome *)arg1 didUpdateOnboardAudioAnalysis:(_Bool)arg2;
+- (void)home:(HMHome *)arg1 didUpdateAudioAnalysisClassifierOptions:(unsigned long long)arg2;
 - (void)homeDidEnableMultiUser:(HMHome *)arg1;
 - (void)homeDidUpdateHomeLocationStatus:(HMHome *)arg1;
 - (void)homeDidUpdateNetworkRouterSupport:(HMHome *)arg1;

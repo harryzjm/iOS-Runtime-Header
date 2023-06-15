@@ -5,8 +5,8 @@
 //
 
 @protocol DASClientToServiceProtocol
-- (void)dumpAllWithCompletion:(void (^)(NSDictionary *))arg1;
-- (void)nameAndDumpAllWithCompletion:(void (^)(NSDictionary *))arg1;
-- (void)nameAllWithCompletion:(void (^)(void))arg1;
+- (void)dumpAllWithCompletion:(void (^)(NSDictionary *, NSError *))arg1;
+- (void)nameAndDumpAllWithCompletion:(void (^)(NSDictionary *, NSError *))arg1;
+- (void)nameAllWithCompletion:(void (^)(NSError *))arg1;
 @end
 

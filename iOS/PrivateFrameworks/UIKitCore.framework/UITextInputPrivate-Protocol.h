@@ -8,7 +8,7 @@
 #import <UIKitCore/UITextInputTokenizer-Protocol.h>
 #import <UIKitCore/UITextInputTraits_Private-Protocol.h>
 
-@class NSArray, NSAttributedString, NSDictionary, NSString, NSTextAlternatives, RTIInputSystemSourceSession, UIColor, UIDictationSerializableResults, UIFont, UIMenu, UITextInputTraits, UITextInteractionAssistant, UITextPosition, UITextRange, UITextSuggestion, UIView, WebEvent, _UISupplementalItem;
+@class NSArray, NSAttributedString, NSDictionary, NSString, NSTextAlternatives, RTIInputSystemSourceSession, UIColor, UIDictationSerializableResults, UIFont, UITextInputTraits, UITextInteractionAssistant, UITextPosition, UITextRange, UITextSuggestion, UIView, WebEvent, _UISupplementalItem;
 @protocol UISelectionInteractionAssistant, UITextInputSuggestionDelegate;
 
 @protocol UITextInputPrivate <UITextInput, UITextInputTokenizer, UITextInputTraits_Private>
@@ -20,6 +20,7 @@
 - (UITextInputTraits *)textInputTraits;
 
 @optional
+@property(nonatomic) _Bool _systemCursorAccessoriesDisabled;
 @property(readonly, nonatomic) _Bool supportsImagePaste;
 @property(readonly, nonatomic) RTIInputSystemSourceSession *_rtiSourceSession;
 @property(nonatomic) long long _textInputSource;
@@ -29,6 +30,8 @@
 - (void)removeAnnotation:(NSString *)arg1 forRange:(UITextRange *)arg2;
 - (void)replaceRange:(UITextRange *)arg1 withAnnotatedString:(NSAttributedString *)arg2 relativeReplacementRange:(struct _NSRange)arg3;
 - (NSAttributedString *)annotatedSubstringForRange:(UITextRange *)arg1;
+- (UITextRange *)_visualSelectionRangeForExtent:(UITextPosition *)arg1 forPoint:(struct CGPoint)arg2 fromPosition:(UITextPosition *)arg3 inDirection:(long long)arg4;
+- (UITextRange *)_rangeForTextKitRanges:(NSArray *)arg1;
 - (_Bool)_isInteractiveDespiteResponderStatus;
 - (SEL)_sendCurrentLocationAction;
 - (_Bool)_shouldSuppressSelectionCommands;
@@ -37,6 +40,7 @@
 - (void)_insertAttributedTextWithoutClosingTyping:(NSAttributedString *)arg1;
 - (UIFont *)fontForCaretSelection;
 - (UIColor *)textColorForCaretSelection;
+- (void)correctedTypedText:(NSString *)arg1 rangeOfReplacement:(UITextRange *)arg2;
 - (void)replaceRangeWithTextWithoutClosingTyping:(UITextRange *)arg1 replacementText:(NSString *)arg2;
 - (_Bool)_shouldRepeatInsertText:(NSString *)arg1;
 - (double)_delayUntilRepeatInsertText:(NSString *)arg1;
@@ -50,6 +54,7 @@
 - (void)_chooseSupplementalItemToInsert:(NSArray *)arg1 replacementRange:(UITextRange *)arg2 completionHandler:(void (^)(_UISupplementalItem *))arg3;
 - (_Bool)_insertsSpaceAfterAcceptingPredictionForSupplementalItem:(_UISupplementalItem *)arg1;
 - (void)_insertSupplementalItem:(_UISupplementalItem *)arg1 forString:(NSString *)arg2 replacementRange:(UITextRange *)arg3;
+- (void)insertTextSuggestion:(UITextSuggestion *)arg1 completionHandler:(void (^)(NSSet *))arg2;
 - (void)insertTextSuggestion:(UITextSuggestion *)arg1;
 - (void)removeEmojiAlternatives;
 - (void)addTextAlternatives:(NSTextAlternatives *)arg1;
@@ -60,6 +65,7 @@
 - (void)streamingDictationDidBegin;
 - (struct CGRect)visibleRect;
 - (struct CGRect)_selectionClipRect;
+- (UIView *)_selectionContainerViewAboveText;
 - (UIView *)selectionContainerView;
 - (UIView *)automaticallySelectedOverlay;
 - (void)setBottomBufferHeight:(double)arg1;
@@ -68,7 +74,6 @@
 - (void)handleKeyWebEvent:(WebEvent *)arg1 withCompletionHandler:(void (^)(WebEvent *, _Bool))arg2;
 - (void)handleKeyWebEvent:(WebEvent *)arg1;
 - (_Bool)requiresKeyEvents;
-- (UIMenu *)_dci_editingMenuForSuggestedActions:(NSArray *)arg1 textRange:(UITextRange *)arg2;
 - (void)updateFloatingCursorAtPoint:(struct CGPoint)arg1 animated:(_Bool)arg2;
 - (void)insertText:(NSString *)arg1 style:(long long)arg2 alternatives:(NSArray *)arg3;
 - (void)replaceRange:(UITextRange *)arg1 withAttributedText:(NSAttributedString *)arg2;

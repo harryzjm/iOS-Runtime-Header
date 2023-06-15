@@ -9,6 +9,8 @@
 @class NSSet;
 
 @interface PKSecureElementPass (NanoPassKit)
+- (unsigned long long)npkLinkedAccountFeatureIdentifier;
+- (_Bool)npkProvidesLinkedAccountFeatureIdentifier;
 - (_Bool)npkSupportUWBSecureRanging;
 @property(readonly, nonatomic) NSSet *npkSubcredentials;
 - (_Bool)npkExclusivelyTransactsOverNFC;

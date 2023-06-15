@@ -8,12 +8,18 @@
 
 @interface _TtC13DVTFoundation20DVTInvalidationToken
 {
-    MISSING_TYPE *body;
+    MISSING_TYPE *content;
 }
 
++ (id)tokenByJoiningCancellableTokens:(id)arg1;
++ (id)tokenByJoiningTokens:(id)arg1;
++ (id)tokenWithCancellable:(id)arg1;
++ (id)tokenWithBlock:(CDUnknownBlockType)arg1;
++ (id)standaloneToken;
 - (void).cxx_destruct;
 - (id)init;
 - (void)primitiveInvalidate;
+- (id)initWithBlock:(CDUnknownBlockType)arg1;
 
 @end
 

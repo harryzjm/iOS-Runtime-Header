@@ -7,6 +7,7 @@
 @protocol SiriSharedUICompactResultViewHosting;
 
 @protocol SiriSharedUICompactResultViewDelegate
+- (void)resultViewContentScrolling:(id <SiriSharedUICompactResultViewHosting>)arg1 didBegin:(_Bool)arg2;
 - (void)resultViewContentScrolled:(id <SiriSharedUICompactResultViewHosting>)arg1 toContentOffset:(struct CGPoint)arg2;
 - (struct UIEdgeInsets)contentInsetsForResultView:(id <SiriSharedUICompactResultViewHosting>)arg1;
 - (double)maximumHeightForResultView:(id <SiriSharedUICompactResultViewHosting>)arg1;

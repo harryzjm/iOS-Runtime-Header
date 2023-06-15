@@ -30,7 +30,6 @@ __attribute__((visibility("hidden")))
 - (void)beginReordering;
 - (void)pan:(id)arg1;
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1;
-- (void)traitCollectionDidChange:(id)arg1;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)_minimumSizeForHitTesting;

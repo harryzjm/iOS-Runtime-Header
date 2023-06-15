@@ -17,8 +17,6 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool wantsAppearanceConfigValues; // @synthesize wantsAppearanceConfigValues=_wantsAppearanceConfigValues;
-- (void)setContinuousCorners:(_Bool)arg1;
-- (_Bool)continuousCorners;
 - (void)setCornerRadius:(double)arg1;
 - (double)cornerRadius;
 - (void)setCornerCurve:(id)arg1;

@@ -4,19 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSData;
+@class SLShareableContentLoadResult;
 
 __attribute__((visibility("hidden")))
 @interface SLFetchShareableContentActionResponse
 {
-    NSData *_dataRepresentation;
+    SLShareableContentLoadResult *_result;
 }
 
 + (_Bool)supportsSecureCoding;
 + (_Bool)supportsBSXPCSecureCoding;
-+ (id)responseWithDataRepresentation:(id)arg1;
++ (id)responseWithResult:(id)arg1;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSData *dataRepresentation; // @synthesize dataRepresentation=_dataRepresentation;
+@property(retain, nonatomic) SLShareableContentLoadResult *result; // @synthesize result=_result;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithBSXPCCoder:(id)arg1;

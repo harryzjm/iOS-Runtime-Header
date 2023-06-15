@@ -9,6 +9,7 @@
 @class NSDictionary, NSString;
 
 @protocol CXNetworkExtensionMessageControllerDataSource <NSObject>
+- (void)sendNetworkExtensionPushToTalkMessage:(NSDictionary *)arg1 forBundleIdentifier:(NSString *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 - (void)sendNetworkExtensionMessage:(NSDictionary *)arg1 forBundleIdentifier:(NSString *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 @end
 

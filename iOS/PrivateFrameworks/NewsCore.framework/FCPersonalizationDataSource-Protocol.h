@@ -7,7 +7,7 @@
 @class NSDictionary, NSSet, NSString, NTPBPersonalizationAggregate;
 
 @protocol FCPersonalizationDataSource
-- (NSDictionary *)allAggregates;
+@property(readonly, nonatomic) NSDictionary *allAggregates;
 - (NTPBPersonalizationAggregate *)createAggregateWith:(NSString *)arg1 clicks:(double)arg2 impressions:(double)arg3;
 - (NSDictionary *)lookupAggregatesWith:(NSSet *)arg1 creationBlock:(NTPBPersonalizationAggregate * (^)(NSString *))arg2;
 - (void)updateAggregatesWith:(NSSet *)arg1 creationBlock:(NTPBPersonalizationAggregate * (^)(NSString *))arg2 updateBlock:(void (^)(NTPBPersonalizationAggregate *))arg3;

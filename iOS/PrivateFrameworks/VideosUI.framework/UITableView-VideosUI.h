@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UITableView.h>
+#import <UIKitCore/UITableView.h>
 
 @interface UITableView (VideosUI)
 + (id)_vui_indexPathsWithIndexSet:(id)arg1 andSection:(unsigned long long)arg2;

@@ -12,9 +12,9 @@
 {
     _Bool _tableIsLTR;
     _Bool _layoutIsLTR;
+    TSTLayout *_scaledLayout;
     TSTTableInfo *_tableInfo;
     TSDInfoGeometry *_infoGeometry;
-    TSTLayout *_scaledLayout;
     double _firstPartitionWidth;
     TSUPointerKeyDictionary *_hintMatricesByCanvas;
     NSMutableDictionary *_partitioningPassCache;
@@ -27,10 +27,10 @@
 @property(nonatomic) double firstPartitionWidth; // @synthesize firstPartitionWidth=_firstPartitionWidth;
 @property(nonatomic) _Bool layoutIsLTR; // @synthesize layoutIsLTR=_layoutIsLTR;
 @property(nonatomic) _Bool tableIsLTR; // @synthesize tableIsLTR=_tableIsLTR;
-@property(retain, nonatomic) TSTLayout *scaledLayout; // @synthesize scaledLayout=_scaledLayout;
 @property(copy, nonatomic) TSDInfoGeometry *infoGeometry; // @synthesize infoGeometry=_infoGeometry;
 @property(nonatomic) struct CGSize scaleToFit; // @synthesize scaleToFit=_scaleToFit;
 @property(nonatomic) __weak TSTTableInfo *tableInfo; // @synthesize tableInfo=_tableInfo;
+@property(retain, nonatomic) TSTLayout *scaledLayout; // @synthesize scaledLayout=_scaledLayout;
 - (void)p_flushCacheAfterPartitioningFinished:(id)arg1 lastHint:(id)arg2 horizontally:(_Bool)arg3;
 - (id)hintCacheKeyForHint:(id)arg1;
 - (id)hintCacheKeyForPartitioningPass:(id)arg1 andHintID:(struct TSUCellCoord)arg2;

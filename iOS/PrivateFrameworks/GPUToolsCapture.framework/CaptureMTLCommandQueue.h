@@ -9,7 +9,6 @@
 @class CaptureMTLDevice, NSArray, NSMutableArray, NSString;
 @protocol MTLCommandQueue, MTLCommandQueueSPI, MTLDevice, OS_dispatch_queue;
 
-__attribute__((visibility("hidden")))
 @interface CaptureMTLCommandQueue : NSObject
 {
     id <MTLCommandQueueSPI> _baseObject;
@@ -19,6 +18,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_pendingQueue;
     NSObject<OS_dispatch_queue> *_pendingQueueLock;
     id <MTLCommandQueue> _downloadQueue;
+    id <MTLCommandQueue> _accelerationStructureDescriptorDownloadQueue;
     _Bool _perfSampleHandlerUsed;
 }
 
@@ -37,6 +37,9 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)getBackgroundGPUPriority;
 - (void)finish;
 - (id)counterInfo;
+- (id)commandBufferWithUnretainedReferences;
+- (id)commandBufferWithDescriptor:(id)arg1;
+- (id)commandBuffer;
 - (id)availableCountersAndDict;
 - (id)availableCounters;
 @property _Bool skipRender;
@@ -64,9 +67,6 @@ __attribute__((visibility("hidden")))
 @property(readonly) struct GTTraceContext *traceContext;
 - (void)touch;
 - (id)originalObject;
-- (id)commandBufferWithUnretainedReferences;
-- (id)commandBufferWithDescriptor:(id)arg1;
-- (id)commandBuffer;
 - (void)addPerfSampleHandler:(CDUnknownBlockType)arg1;
 @property(readonly) NSArray *enqueuedCommandBuffers;
 - (void)commitCommandBuffer:(id)arg1;
@@ -74,6 +74,8 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)insertDebugCaptureBoundary;
 @property(readonly) id <MTLCommandQueue> baseObject;
+@property(readonly) id <MTLCommandQueue> accelerationStructureDescriptorDownloadQueue;
+@property(readonly) id <MTLCommandQueue> downloadQueue;
 - (id)initWithBaseObject:(id)arg1 captureDevice:(id)arg2;
 
 // Remaining properties

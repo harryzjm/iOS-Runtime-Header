@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_HMAccessoryProfile.h"
+
 @class NSArray;
 @protocol _HMTelevisionProfileDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _HMTelevisionProfile
+@interface _HMTelevisionProfile : _HMAccessoryProfile
 {
     _Bool _mediaSourceDisplayOrderModifiable;
     NSArray *_mediaSourceDisplayOrder;

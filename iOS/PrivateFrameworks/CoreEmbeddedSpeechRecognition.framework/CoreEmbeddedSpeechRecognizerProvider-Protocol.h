@@ -13,6 +13,7 @@
 + (NSDictionary *)dictionaryWithContentsProfilePathForLanguage:(NSString *)arg1 errorOut:(id *)arg2;
 + (NSString *)profilePathForLanguage:(NSString *)arg1 errorOut:(id *)arg2;
 + (void)resetCacheAndCompileAllAssets;
++ (void)compileAllAssets;
 + (void)setAssetsPurgeabilityExceptLanguages:(NSSet *)arg1 assetType:(unsigned long long)arg2;
 + (_Bool)purgeInstalledAssetsExceptLanguages:(NSSet *)arg1 assetType:(unsigned long long)arg2 error:(id *)arg3;
 + (NSNumber *)purgeInstalledAssetsExceptLanguages:(NSSet *)arg1 error:(id *)arg2;
@@ -25,7 +26,6 @@
 - (void)removePersonalizedLMForFidesOnly:(_Bool)arg1;
 - (void)invalidatePersonalizedLM;
 - (void)invalidate;
-- (void)writeDESRecord;
 - (void)runEvaluationWithDESRecordDatas:(NSDictionary *)arg1 language:(NSString *)arg2 recipe:(NSDictionary *)arg3 attachments:(NSArray *)arg4 fidesPersonalizedLMPath:(NSString *)arg5 fidesPersonalizedLMTrainingAsset:(NSString *)arg6 scrubResult:(_Bool)arg7 completion:(void (^)(NSDictionary *, NSError *))arg8;
 - (void)runEvaluationWithDESRecordDatas:(NSDictionary *)arg1 language:(NSString *)arg2 recipe:(NSDictionary *)arg3 fidesPersonalizedLMPath:(NSString *)arg4 fidesPersonalizedLMTrainingAsset:(NSString *)arg5 scrubResult:(_Bool)arg6 completion:(void (^)(NSDictionary *, NSError *))arg7;
 - (void)sendSpeechCorrectionInfo:(AFSpeechCorrectionInfo *)arg1 interactionIdentifier:(NSString *)arg2;
@@ -33,8 +33,10 @@
 - (void)fetchUserDataForLanguage:(NSString *)arg1 completion:(void (^)(NSError *, NSData *))arg2;
 - (void)resetDESWithCompletion:(void (^)(NSError *))arg1;
 - (void)readProfileAndUserDataWithLanguage:(NSString *)arg1 allowOverride:(_Bool)arg2 completion:(void (^)(NSData *, NSString *))arg3;
+- (void)redecodeWithAudioDatas:(NSDictionary *)arg1 language:(NSString *)arg2 task:(NSString *)arg3 samplingRate:(unsigned long long)arg4 completion:(void (^)(NSDictionary *, NSError *))arg5;
 - (void)runCorrectedTextEvaluationWithAudioDatas:(NSDictionary *)arg1 recordDatas:(NSDictionary *)arg2 language:(NSString *)arg3 samplingRate:(unsigned long long)arg4 caseSensitive:(_Bool)arg5 skipLME:(_Bool)arg6 wordSenseAccessListSet:(NSSet *)arg7 completion:(void (^)(NSDictionary *, NSError *))arg8;
-- (void)runAdaptationRecipeEvaluation:(NSDictionary *)arg1 recordData:(NSData *)arg2 attachments:(NSArray *)arg3 completion:(void (^)(NSDictionary *, NSError *))arg4;
+- (void)requestEagerResult;
+- (void)stopAudioDecoding;
 - (void)finishAudio;
 - (void)addAudioPacket:(NSData *)arg1;
 - (CESRModelProperties *)modelPropertiesForAssetConfig:(CESRAssetConfig *)arg1 error:(id *)arg2;
@@ -48,7 +50,7 @@
 - (void)createSpeechProfileWithLanguage:(NSString *)arg1 modelOverridePath:(NSString *)arg2 JSONData:(NSData *)arg3 completion:(void (^)(NSData *, NSError *))arg4;
 - (void)startSpeechRecognitionWithParameters:(CESRSpeechParameters *)arg1 didStartHandlerWithInfo:(void (^)(CESRModelProperties *, NSError *))arg2;
 - (void)startSpeechRecognitionWithParameters:(CESRSpeechParameters *)arg1 didStartHandler:(void (^)(NSString *, NSString *, NSError *))arg2;
-- (void)preheatSpeechRecognitionWithAssetConfig:(CESRAssetConfig *)arg1 modelOverrideURL:(NSURL *)arg2;
+- (void)preheatSpeechRecognitionWithAssetConfig:(CESRAssetConfig *)arg1 preheatSource:(NSString *)arg2 modelOverrideURL:(NSURL *)arg3;
 - (void)preheatSpeechRecognitionWithLanguage:(NSString *)arg1 modelOverrideURL:(NSURL *)arg2;
 @end
 

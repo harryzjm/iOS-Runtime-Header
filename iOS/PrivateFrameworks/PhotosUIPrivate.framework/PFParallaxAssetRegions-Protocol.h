@@ -11,6 +11,7 @@
 @protocol PFParallaxAssetRegions <NSObject>
 @property(readonly, nonatomic) NSArray *petRegions;
 @property(readonly, nonatomic) NSArray *faceRegions;
+@property(readonly, nonatomic) struct CGRect gazeAreaRect;
 @property(readonly, nonatomic) struct CGRect preferredCropRect;
 @property(readonly, nonatomic) struct CGRect acceptableCropRect;
 @end

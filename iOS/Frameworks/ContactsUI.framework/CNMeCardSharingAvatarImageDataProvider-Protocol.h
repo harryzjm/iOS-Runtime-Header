@@ -6,9 +6,10 @@
 
 #import <ContactsUI/NSObject-Protocol.h>
 
-@class NSData;
+@class CNWallpaper, NSData;
 
 @protocol CNMeCardSharingAvatarImageDataProvider <NSObject>
+@property(readonly, nonatomic) CNWallpaper *wallpaper;
 @property(readonly, nonatomic) NSData *thumbnailImageData;
 @property(readonly, nonatomic) struct CGRect cropRect;
 @property(readonly, nonatomic) NSData *imageData;

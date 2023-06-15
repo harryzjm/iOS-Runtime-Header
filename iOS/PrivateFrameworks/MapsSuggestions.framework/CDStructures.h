@@ -4,6 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSObject, NSString;
+
 #pragma mark Blocks
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
@@ -22,6 +24,11 @@ struct CLLocationCoordinate2D {
 
 struct Duration {
     struct duration<long long, std::ratio<1, 1000000000>> _field1;
+};
+
+struct Queue {
+    NSObject *_innerQueue;
+    NSString *_name;
 };
 
 struct duration<long long, std::ratio<1, 1000000000>> {

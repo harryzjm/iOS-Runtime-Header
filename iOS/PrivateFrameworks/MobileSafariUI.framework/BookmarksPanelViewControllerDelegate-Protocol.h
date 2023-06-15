@@ -11,6 +11,9 @@
 @protocol BookmarksPanelViewControllerDelegate <NSObject>
 
 @optional
+- (void)panelViewControllerDidEndEditing:(UIViewController *)arg1;
+- (void)panelViewControllerDidBeginEditing:(UIViewController *)arg1;
+- (_Bool)panelViewControllerShouldUseSearchControllerInNavigationItem:(UIViewController *)arg1;
 - (_Bool)panelViewControllerShouldTranslucentAppearance:(UIViewController *)arg1;
 - (void)panelViewController:(UIViewController *)arg1 updateToolbarItemsAnimated:(_Bool)arg2;
 - (void)setPinnedPaletteForPanelViewController:(UIViewController *)arg1;

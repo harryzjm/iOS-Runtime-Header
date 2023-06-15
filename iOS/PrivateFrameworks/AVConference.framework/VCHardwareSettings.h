@@ -18,11 +18,19 @@ __attribute__((visibility("hidden")))
     _Bool _isSiriVoiceTapSupported;
     _Bool _isSiriVoicePlayoutSupported;
     _Bool _vcpSupportsHEVCEncoder;
+    _Bool _isMLEnhanceOneToOneSupported;
 }
 
-+ (_Bool)retainPixelBufferForMomentsEnabled;
++ (_Bool)isMLEnhanceOneToOneSupported;
++ (_Bool)isDeviceLargeScreen;
++ (_Bool)isAppleSilicon;
++ (_Bool)isMediaRecordingSupported;
++ (_Bool)isRemoteCameraSenderSupported;
++ (_Bool)supportsMultiway720pStream;
++ (_Bool)retainPixelBufferForMediaRecordingEnabled;
 + (_Bool)isCellularTappingSupported;
-+ (struct CGPoint)frontCameraOffsetFromDisplayCenter;
++ (_Bool)isExternalCameraSupported;
++ (_Bool)isViewPointCorrectionSupported;
 + (_Bool)isSiriVoicePlayoutSupported;
 + (_Bool)isSiriVoiceTapSupported;
 + (unsigned int)maxVCPSupportedTemporalLayers;
@@ -35,13 +43,17 @@ __attribute__((visibility("hidden")))
 + (double)previewPreferredAspectRatio;
 + (_Bool)disableMLScalarDuringSharing;
 + (_Bool)supportsDedicatedSystemAudioStream;
++ (_Bool)supportsSystemAudioTap;
++ (_Bool)supportsScreenCapture;
 + (_Bool)limitCameraDownlinkBitrateDuringSharing;
 + (id)supportedVideoPayloads;
 + (unsigned int)maxMultiwayFramerateSupported;
 + (unsigned int)maxOneToOneFramerateSupported;
++ (_Bool)supportsMultiway1080pStream;
 + (_Bool)supportsHEVCDecoding;
 + (_Bool)supportsHEVCEncoding;
 + (_Bool)supportsHEIFEncoding;
++ (_Bool)isVoiceProcessingAt24KSupported;
 + (_Bool)isCaptionsSupported;
 + (_Bool)isCaptureSIFRPreferred;
 + (_Bool)isSpatialAudioSupported;
@@ -51,6 +63,7 @@ __attribute__((visibility("hidden")))
 + (_Bool)shouldEnforceScreenFrameRateLimit;
 + (unsigned int)maxFrameRateSupportedScreenShare;
 + (unsigned long long)maxScreenEncodingSizeSupported;
++ (_Bool)supportsFilteredScreenCapture;
 + (unsigned int)screenHeightForDisplayID:(unsigned int)arg1;
 + (unsigned int)screenWidthForDisplayID:(unsigned int)arg1;
 + (unsigned int)screenHeight;
@@ -61,6 +74,8 @@ __attribute__((visibility("hidden")))
 + (unsigned int)maxRemoteParticipants30fps;
 + (unsigned int)builtinMicCount;
 + (long long)deviceClass;
++ (id)virtualHardwareSettings:(id)arg1;
+@property(readonly, nonatomic) _Bool isMLEnhanceOneToOneSupported; // @synthesize isMLEnhanceOneToOneSupported=_isMLEnhanceOneToOneSupported;
 @property(readonly, nonatomic) NSSet *pixelFormatCollections; // @synthesize pixelFormatCollections=_pixelFormatCollections;
 @property(readonly, nonatomic) _Bool vcpSupportsHEVCEncoder; // @synthesize vcpSupportsHEVCEncoder=_vcpSupportsHEVCEncoder;
 @property(readonly, nonatomic) _Bool isSiriVoicePlayoutSupported;

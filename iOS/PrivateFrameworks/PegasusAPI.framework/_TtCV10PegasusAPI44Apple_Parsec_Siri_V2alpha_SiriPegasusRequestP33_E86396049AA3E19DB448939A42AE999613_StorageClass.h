@@ -24,6 +24,7 @@
     MISSING_TYPE *_requestType;
     MISSING_TYPE *_pommesRequestContext;
     MISSING_TYPE *_visualSearchContext;
+    MISSING_TYPE *_asrContext;
 }
 
 @end

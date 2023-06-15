@@ -11,15 +11,18 @@
 __attribute__((visibility("hidden")))
 @interface _TtC8VideosUI6Router : NSObject
 {
-    MISSING_TYPE *topMostDocument;
     MISSING_TYPE *currentTransaction;
     MISSING_TYPE *_id;
     MISSING_TYPE *presentingRoute;
     MISSING_TYPE *managedRoutes;
+    MISSING_TYPE *multipleDocumentRoute;
+    MISSING_TYPE *tabSwitchSubject;
+    MISSING_TYPE *$__lazy_storage_$_logPrefix;
 }
 
 - (void).cxx_destruct;
 - (id)init;
+- (void)presentRouterDataSource:(id)arg1;
 
 @end
 

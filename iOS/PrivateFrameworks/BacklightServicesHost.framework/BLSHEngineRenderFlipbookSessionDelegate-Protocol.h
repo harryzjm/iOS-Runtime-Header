@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <BacklightServicesHost/NSObject-Protocol.h>
+#import <BacklightServicesHost/BLSHFlipbookPowerSavingProviding-Protocol.h>
 
 @class BLSHEngineRenderFlipbookSession, BLSHPresentationDateSpecifier, NSArray, NSError;
 @protocol BLSHRenderedFlipbookFrame;
 
-@protocol BLSHEngineRenderFlipbookSessionDelegate <NSObject>
+@protocol BLSHEngineRenderFlipbookSessionDelegate <BLSHFlipbookPowerSavingProviding>
 @property(readonly, nonatomic, getter=isUsingPseudoFlipbook) _Bool usePseudoFlipbook;
 - (void)renderFramesSession:(BLSHEngineRenderFlipbookSession *)arg1 failedToRenderSpecifier:(BLSHPresentationDateSpecifier *)arg2 error:(NSError *)arg3 timedOutEnvironments:(NSArray *)arg4;
 - (void)renderFramesSession:(BLSHEngineRenderFlipbookSession *)arg1 didRenderFrame:(id <BLSHRenderedFlipbookFrame>)arg2 timedOutEnvironments:(NSArray *)arg3;

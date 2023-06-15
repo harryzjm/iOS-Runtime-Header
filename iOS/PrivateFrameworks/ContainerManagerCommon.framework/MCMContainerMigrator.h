@@ -17,6 +17,8 @@ __attribute__((visibility("hidden")))
 + (id)sharedInstance;
 - (void).cxx_destruct;
 @property(retain, nonatomic) MCMUserIdentityCache *userIdentityCache; // @synthesize userIdentityCache=_userIdentityCache;
+- (_Bool)_migrateManifestIfNecessaryAtURL:(id)arg1 withLibraryRepairForUser:(id)arg2 error:(id *)arg3;
+- (_Bool)_migrateDeleteOperationManifestsWithError:(id *)arg1;
 - (_Bool)performSynchronousBuildUpgradeMigration:(id)arg1 context:(id)arg2 error:(id *)arg3;
 - (_Bool)_migrateBundleContainersWithError:(id *)arg1;
 - (void)_checkIfDeviceMayNeedSystemContainerACLMigration:(id)arg1;

@@ -26,13 +26,13 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool isIgnoringOwnership; // @synthesize isIgnoringOwnership=_isIgnoringOwnership;
 @property(readonly, nonatomic) _Bool isCaseSensitive; // @synthesize isCaseSensitive=_isCaseSensitive;
 @property(readonly, nonatomic) int deviceID; // @synthesize deviceID=_deviceID;
+- (_Bool)setUpForRelPath:(id)arg1 error:(id *)arg2;
 @property(readonly, nonatomic) NSNumber *totalSize;
 @property(readonly, nonatomic) NSNumber *freeSize;
 - (id)description;
 @property(readonly, nonatomic) NSString *fsTypeName;
-@property(readonly, nonatomic) NSString *mountPath;
-- (_Bool)setUpForRelPath:(id)arg1 session:(id)arg2 error:(id *)arg3;
 - (int)_setUpForStatfs:(struct statfs)arg1;
+@property(readonly, nonatomic) NSString *mountPath;
 
 @end
 

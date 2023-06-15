@@ -9,6 +9,6 @@
 @class REMObjectID;
 
 @protocol REMObjectIDProviding <REMNullableObjectIDProviding>
-@property(nonatomic, readonly) REMObjectID *remObjectID;
+@property(readonly, nonatomic) REMObjectID *remObjectID;
 @end
 

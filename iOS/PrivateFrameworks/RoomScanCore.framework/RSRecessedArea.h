@@ -16,10 +16,6 @@
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) RS3DSurface *frontOpening; // @synthesize frontOpening;
-@property(retain, nonatomic) NSArray *bayWindows; // @synthesize bayWindows;
-@property(retain, nonatomic) NSArray *recessedWalls; // @synthesize recessedWalls;
-- (id)initWithDictionaryRepresentation:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 
 @end

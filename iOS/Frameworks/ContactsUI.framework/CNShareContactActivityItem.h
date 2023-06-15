@@ -11,6 +11,8 @@
 __attribute__((visibility("hidden")))
 @interface CNShareContactActivityItem : NSObject
 {
+    _Bool _canSharePronouns;
+    _Bool _canShareMeCardOnlySharingProperties;
     NSArray *_contacts;
     NSString *_groupName;
     LPLinkMetadata *_linkMetadata;
@@ -24,6 +26,8 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) LPLinkMetadata *linkMetadata; // @synthesize linkMetadata=_linkMetadata;
 @property(retain, nonatomic) NSString *groupName; // @synthesize groupName=_groupName;
 @property(retain, nonatomic) NSArray *contacts; // @synthesize contacts=_contacts;
+@property(nonatomic) _Bool canShareMeCardOnlySharingProperties; // @synthesize canShareMeCardOnlySharingProperties=_canShareMeCardOnlySharingProperties;
+@property(nonatomic) _Bool canSharePronouns; // @synthesize canSharePronouns=_canSharePronouns;
 - (id)activityViewController:(id)arg1 attachmentNameForActivityType:(id)arg2;
 - (id)activityViewController:(id)arg1 dataTypeIdentifierForActivityType:(id)arg2;
 - (id)activityViewController:(id)arg1 thumbnailImageForActivityType:(id)arg2 suggestedSize:(struct CGSize)arg3;

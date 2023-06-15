@@ -11,7 +11,7 @@
 @interface _TtC7VFXCore18VoxelizationSystem : _TtCs12_SwiftObject
 {
     MISSING_TYPE *voxelQuery;
-    MISSING_TYPE *queryColorOpacity;
+    MISSING_TYPE *voxelRendererQuery;
 }
 
 @end

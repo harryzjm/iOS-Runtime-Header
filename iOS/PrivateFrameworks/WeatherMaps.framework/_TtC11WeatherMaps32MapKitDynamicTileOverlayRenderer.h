@@ -15,15 +15,20 @@
     MISSING_TYPE *signposter;
     MISSING_TYPE *defaultFramerate;
     MISSING_TYPE *renderTimer;
+    MISSING_TYPE *previousVisibleTiles;
+    MISSING_TYPE *delegate;
+    MISSING_TYPE *ioSurfaceRefCache;
+    MISSING_TYPE *fallbackBehaviourEnabled;
+    MISSING_TYPE *useIOSurfaceCache;
     MISSING_TYPE *animationPosition;
-    MISSING_TYPE *lastProcessedVisibleTiles;
+    MISSING_TYPE *isPlaying;
 }
 
 - (void).cxx_destruct;
 - (id)initWithOverlay:(id)arg1;
 - (id)initWithTileOverlay:(id)arg1;
-- (void)onVisibleTiles:(const CDStruct_68723fc0 *)arg1 count:(long long)arg2;
 - (void)didExitTile:(CDStruct_68723fc0)arg1;
+- (void)onVisibleTiles:(const CDStruct_68723fc0 *)arg1 count:(long long)arg2;
 - (_Bool)canDrawKey:(CDStruct_68723fc0)arg1 withTile:(id)arg2;
 - (_Bool)isFallbackEnabled;
 - (void)drawTileAtPath:(CDStruct_68723fc0)arg1 withTile:(id)arg2 inIOSurface:(struct __IOSurface *)arg3 withTimestamp:(double)arg4;

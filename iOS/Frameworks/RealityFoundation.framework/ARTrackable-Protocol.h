@@ -7,6 +7,6 @@
 #import <RealityFoundation/NSObject-Protocol.h>
 
 @protocol ARTrackable <NSObject>
-@property(nonatomic, readonly) _Bool isTracked;
+@property(readonly, nonatomic) _Bool isTracked;
 @end
 

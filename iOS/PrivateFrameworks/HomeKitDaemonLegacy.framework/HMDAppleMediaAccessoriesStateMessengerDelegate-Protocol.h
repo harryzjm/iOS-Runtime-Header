@@ -9,6 +9,6 @@
 @class HMDAppleMediaAccessoriesStateMessenger, HMFMessage, NSString;
 
 @protocol HMDAppleMediaAccessoriesStateMessengerDelegate <NSObject>
-- (void)appleMediaAccessoriesStateMessenger:(HMDAppleMediaAccessoriesStateMessenger *)arg1 didReceiveModelIdentiferRequestMessage:(HMFMessage *)arg2 withAccessoryIdentifier:(NSString *)arg3;
+- (void)appleMediaAccessoriesStateMessenger:(HMDAppleMediaAccessoriesStateMessenger *)arg1 didReceiveModelIdentifierRequestMessage:(HMFMessage *)arg2 withAccessoryIdentifier:(NSString *)arg3;
 @end
 

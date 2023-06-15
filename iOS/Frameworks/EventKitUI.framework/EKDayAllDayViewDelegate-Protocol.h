@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <EventKitUI/EKUIAppReviewPrompter-Protocol.h>
 #import <EventKitUI/NSObject-Protocol.h>
 
 @class EKCalendarDate, EKDayAllDayView, EKEvent, NSArray, UIViewController;
 
-@protocol EKDayAllDayViewDelegate <NSObject>
+@protocol EKDayAllDayViewDelegate <NSObject, EKUIAppReviewPrompter>
 - (NSArray *)selectedEventsForEditMenu;
 - (UIViewController *)presentationControllerForEditMenu;
 - (EKCalendarDate *)allDayViewRequestsCurrentDisplayDate:(EKDayAllDayView *)arg1;

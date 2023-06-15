@@ -8,6 +8,6 @@
 
 @protocol PXPlacesMapAnnotationPopoverImageRenderer <PXPlacesMapAnnotationRenderer>
 @property(readonly) unsigned long long imageOptions;
-@property(readonly) unsigned long long popoverImageType;
+@property(readonly) long long popoverImageType;
 @end
 

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 @class NSMutableArray, _UIValuePredictor;
 
 __attribute__((visibility("hidden")))
-@interface _UITouchPredictor : NSObject <NSCopying>
+@interface _UITouchPredictor : NSObject
 {
     NSMutableArray *_predictions;
     _Bool _predictionsValid;

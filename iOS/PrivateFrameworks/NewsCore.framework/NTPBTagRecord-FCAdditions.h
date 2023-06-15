@@ -15,6 +15,7 @@
 - (id)generateNavigationChromeBackgroundImageAssetHandleForURLString:(id)arg1 withAssetManager:(id)arg2;
 - (id)generateNameImageLargeMaskAssetHandleForURLString:(id)arg1 withAssetManager:(id)arg2;
 - (id)generateNameImageLargeAssetHandleForURLString:(id)arg1 withAssetManager:(id)arg2;
+- (id)generateFeedNavImageHQAssetHandleWithAssetManager:(id)arg1;
 - (id)generateFeedNavImageAssetHandleWithAssetManager:(id)arg1;
 - (id)generateCoverImageAssetHandleForURLString:(id)arg1 withAssetManager:(id)arg2;
 - (id)generateCoverImageAssetHandleWithAssetManager:(id)arg1;

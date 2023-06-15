@@ -51,6 +51,7 @@ __attribute__((visibility("hidden")))
 + (_Bool)isDefaultPayloadConfig:(id)arg1 index:(unsigned int)arg2 rtpSampleRate:(unsigned int)arg3 streamGroupID:(unsigned int)arg4;
 + (unsigned int)defaultRTPSampleRateForStreamGroupID:(unsigned int)arg1;
 + (id)defaultPayloadConfigurationsForStreamGroupID:(unsigned int)arg1;
++ (id)defaultMMJIConfig;
 + (id)defaultMoCapConfig;
 + (id)defaultDataCodecConfig;
 + (id)defaultFTXTCodecConfig;

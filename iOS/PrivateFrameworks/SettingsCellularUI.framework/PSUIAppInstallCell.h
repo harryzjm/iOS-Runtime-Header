@@ -6,7 +6,7 @@
 
 #import <Preferences/PSTableCell.h>
 
-@class NSLayoutConstraint, NSMutableArray, SKUIItemOfferButton, UIImageView, UILabel, UIView;
+@class NSLayoutConstraint, NSMutableArray, UIButton, UIImageView, UILabel, UIView;
 
 __attribute__((visibility("hidden")))
 @interface PSUIAppInstallCell : PSTableCell
@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
     NSLayoutConstraint *_availableConstraint;
     NSLayoutConstraint *_labelPaddingTop;
     NSLayoutConstraint *_labelPaddingBottom;
-    SKUIItemOfferButton *_installButton;
+    UIButton *_installButton;
     NSLayoutConstraint *_installButtonWidthConstraint;
     NSLayoutConstraint *_installButtonHeightConstraint;
     NSMutableArray *_constraints;
@@ -32,7 +32,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSMutableArray *constraints; // @synthesize constraints=_constraints;
 @property(retain, nonatomic) NSLayoutConstraint *installButtonHeightConstraint; // @synthesize installButtonHeightConstraint=_installButtonHeightConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *installButtonWidthConstraint; // @synthesize installButtonWidthConstraint=_installButtonWidthConstraint;
-@property(retain, nonatomic) SKUIItemOfferButton *installButton; // @synthesize installButton=_installButton;
+@property(retain, nonatomic) UIButton *installButton; // @synthesize installButton=_installButton;
 @property(retain, nonatomic) NSLayoutConstraint *labelPaddingBottom; // @synthesize labelPaddingBottom=_labelPaddingBottom;
 @property(retain, nonatomic) NSLayoutConstraint *labelPaddingTop; // @synthesize labelPaddingTop=_labelPaddingTop;
 @property(retain, nonatomic) NSLayoutConstraint *availableConstraint; // @synthesize availableConstraint=_availableConstraint;

@@ -9,6 +9,7 @@
 @interface PHFetchOptions (PXSearch)
 + (id)px_searchAssetFetchOptionsForPhotoLibrary:(id)arg1;
 + (id)px_searchAssetFetchOptions;
++ (id)px_defaultDetectionTypes;
 + (id)px_standardFetchOptions;
 @end
 

@@ -7,10 +7,10 @@
 #import <EmailDaemon/EDReconciliationQueryProvider-Protocol.h>
 #import <EmailDaemon/EFCancelable-Protocol.h>
 
-@class EFQuery, EMMessageObjectID;
+@class EMMessageObjectID, EMQuery;
 
 @protocol EDMessageRepositoryQueryHandler <EDReconciliationQueryProvider, EFCancelable>
-@property(readonly, copy, nonatomic) EFQuery *query;
+@property(readonly, copy, nonatomic) EMQuery *query;
 - (void)requestSummaryForMessageObjectID:(EMMessageObjectID *)arg1;
 - (void)test_tearDown;
 - (void)tearDown;

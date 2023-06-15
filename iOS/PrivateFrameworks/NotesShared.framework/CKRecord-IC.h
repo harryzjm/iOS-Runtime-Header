@@ -13,11 +13,15 @@
 + (id)ic_encryptedKeyForKeyPrefix:(id)arg1;
 + (id)ic_assetKeyForKeyPrefix:(id)arg1;
 + (id)ic_valueKeyForKeyPrefix:(id)arg1;
-- (void)ic_setEncryptedInlineableDataAsset:(id)arg1 forKeyPrefix:(id)arg2;
++ (id)ic_systemFieldsValueTransformer;
+- (id)ic_copyWithUserFields:(_Bool)arg1;
+- (void)ic_inlineEncryptedDataAssetForKeyPrefix:(id)arg1;
+- (void)ic_inlineDataAssetForKeyPrefix:(id)arg1;
+- (void)ic_setEncryptedInlineableDataAsset:(id)arg1 forKeyPrefix:(id)arg2 approach:(long long)arg3;
 - (id)ic_encryptedInlineableDataAssetForKeyPrefix:(id)arg1;
-- (void)ic_setInlineableDataAsset:(id)arg1 forKeyPrefix:(id)arg2;
+- (void)ic_setInlineableDataAsset:(id)arg1 forKeyPrefix:(id)arg2 approach:(long long)arg3;
 - (id)ic_inlineableDataAssetForKeyPrefix:(id)arg1;
-- (_Bool)ic_shouldUseAssetForInlineableDataAsset:(id)arg1;
+- (_Bool)ic_shouldUseAssetForInlineableDataAsset:(id)arg1 approach:(long long)arg2;
 @property(readonly, nonatomic) _Bool ic_isOwnedByCurrentUser;
 @property(readonly, nonatomic) _Bool ic_hasMetadata;
 - (long long)databaseScope;

@@ -6,25 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class RS3DObjectMerger;
-
 @interface RSObjectAlign : NSObject
 {
-    RS3DObjectMerger *merger;
-    struct vector<quad3dType2, std::allocator<quad3dType2>> walls;
-    struct vector<int, std::allocator<int>> nearest_wall_indices_;
-    struct vector<std::vector<float>, std::allocator<std::vector<float>>> obj_wall_dists_;
 }
 
-- (id).cxx_construct;
-- (void).cxx_destruct;
-- (id)AlignWithWalls:(id)arg1 objectAsset:(id)arg2 worldPC:(id)arg3 beautification:(_Bool)arg4 chairBeautification:(_Bool)arg5;
-- (void)AlignWithFloor:(id)arg1 objects:(id)arg2;
-- (void)ResizeObjects:(id)arg1;
-- (struct Box3d)optimizeBbox:(const void *)arg1 intersectWallsIndex:(const void *)arg2 nearestWallId:(int)arg3 conservative:(_Bool)arg4;
-- (vector_22100960)alignBoxesToNearestWall:(const void *)arg1 conservative:(_Bool)arg2;
 - (id)init;
-- (void)assignUuidsForNewObjects:(id)arg1 withOldObjects:(id)arg2;
 
 @end
 

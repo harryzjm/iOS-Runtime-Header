@@ -5,6 +5,7 @@
 //
 
 @protocol HMDCarPlayDataSource
+- (_Bool)synchronouslyFetchIsCarPlayConnectedWirelessly;
 - (_Bool)synchronouslyFetchIsCarPlayConnectedStatus;
 @end
 

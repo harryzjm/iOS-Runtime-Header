@@ -12,13 +12,13 @@ __attribute__((visibility("hidden")))
 @interface VSKeychainItemKind : NSObject
 {
     NSString *_itemClassName;
-    const struct __CFString *_secItemClass;
+    struct __CFString *_secItemClass;
     NSArray *_properties;
 }
 
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSArray *properties; // @synthesize properties=_properties;
-@property(nonatomic) const struct __CFString *secItemClass; // @synthesize secItemClass=_secItemClass;
+@property(nonatomic) struct __CFString *secItemClass; // @synthesize secItemClass=_secItemClass;
 @property(copy, nonatomic) NSString *itemClassName; // @synthesize itemClassName=_itemClassName;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly, copy, nonatomic) NSDictionary *attributesBySecItemAttributeKey;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIImageView.h>
+#import <UIKitCore/UIImageView.h>
 
 @interface _TtC14WorkflowUICoreP33_05C30733584E7BCE9234AF268964879814UIKitImageView : UIImageView
 {

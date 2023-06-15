@@ -21,10 +21,10 @@ __attribute__((visibility("hidden")))
     MRClient *_client;
     MRPlayer *_player;
     id <MRQHONowPlayingControllerDelegate> _delegate;
+    MRNowPlayingPlayerResponse *_response;
     MRPlayerPath *_unresolvedPlayerPath;
     MRPlayerPath *_resolvedPlayerPath;
     MRAVEndpoint *_endpoint;
-    MRNowPlayingPlayerResponse *_response;
     id _playerPathInvalidationObserver;
     MRAVEndpointObserver *_endpointObserver;
     NSString *_endpointObserverGroupUID;
@@ -51,10 +51,10 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSString *endpointObserverGroupUID; // @synthesize endpointObserverGroupUID=_endpointObserverGroupUID;
 @property(retain, nonatomic) MRAVEndpointObserver *endpointObserver; // @synthesize endpointObserver=_endpointObserver;
 @property(retain, nonatomic) id playerPathInvalidationObserver; // @synthesize playerPathInvalidationObserver=_playerPathInvalidationObserver;
-@property(copy, nonatomic) MRNowPlayingPlayerResponse *response; // @synthesize response=_response;
 @property(retain, nonatomic) MRAVEndpoint *endpoint; // @synthesize endpoint=_endpoint;
 @property(retain, nonatomic) MRPlayerPath *resolvedPlayerPath; // @synthesize resolvedPlayerPath=_resolvedPlayerPath;
 @property(retain, nonatomic) MRPlayerPath *unresolvedPlayerPath; // @synthesize unresolvedPlayerPath=_unresolvedPlayerPath;
+@property(copy, nonatomic) MRNowPlayingPlayerResponse *response; // @synthesize response=_response;
 @property(nonatomic) __weak id <MRQHONowPlayingControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) MRPlayer *player; // @synthesize player=_player;
 @property(readonly, nonatomic) MRClient *client; // @synthesize client=_client;

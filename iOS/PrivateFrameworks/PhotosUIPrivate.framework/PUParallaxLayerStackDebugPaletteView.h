@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class PIParallaxColorPalette;
 
@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) PIParallaxColorPalette *palette; // @synthesize palette=_palette;
-- (void)_layoutSuggestions:(id)arg1 origin:(struct CGPoint)arg2 cellsPerRow:(int)arg3 cellWidth:(double)arg4 callback:(CDUnknownBlockType)arg5;
+- (void)_layoutPalette:(id)arg1 origin:(struct CGPoint)arg2 cellsPerRow:(int)arg3 cellWidth:(double)arg4 callback:(CDUnknownBlockType)arg5;
 - (void)layoutSubviews;
 - (id)initWithColorPalette:(id)arg1;
 

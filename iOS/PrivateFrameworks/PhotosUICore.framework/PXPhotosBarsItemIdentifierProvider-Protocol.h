@@ -9,6 +9,6 @@
 @class PXPhotosViewModel;
 
 @protocol PXPhotosBarsItemIdentifierProvider <NSObject>
-+ (void)valuesForModel:(PXPhotosViewModel *)arg1 title:(id *)arg2 leadingIdentifiers:(id *)arg3 trailingIdentifiers:(id *)arg4 toolbarIdentifiers:(id *)arg5;
++ (void)valuesForModel:(PXPhotosViewModel *)arg1 title:(id *)arg2 leadingIdentifiers:(id *)arg3 trailingIdentifiers:(id *)arg4 toolbarIdentifiers:(id *)arg5 hasSharedLibraryOrPreview:(_Bool)arg6;
 @end
 

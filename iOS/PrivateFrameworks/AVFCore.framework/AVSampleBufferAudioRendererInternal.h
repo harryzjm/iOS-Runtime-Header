@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 @class AVAudioSession, AVContentKeySession, AVMediaDataRequester, AVOutputContext, AVScheduledAudioParameters, AVWeakReference, NSError, NSString;
+@protocol AVLoggingIdentifier;
 
 __attribute__((visibility("hidden")))
 @interface AVSampleBufferAudioRendererInternal : NSObject
@@ -34,6 +35,7 @@ __attribute__((visibility("hidden")))
     struct OpaqueFigCPECryptor *lastCryptor;
     struct OpaqueFigSampleBufferAudioRenderer *figAudioRenderer;
     AVOutputContext *outputContext;
+    id <AVLoggingIdentifier> loggingIdentifier;
 }
 
 - (void).cxx_destruct;

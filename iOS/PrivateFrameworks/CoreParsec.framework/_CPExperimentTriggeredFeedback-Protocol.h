@@ -6,10 +6,11 @@
 
 #import <CoreParsec/NSObject-Protocol.h>
 
-@class NSData, NSDictionary, _CPCounterfactualInfo;
+@class NSData, NSDictionary, NSString, _CPCounterfactualInfo;
 
 @protocol _CPExperimentTriggeredFeedback <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
+@property(copy, nonatomic) NSString *codepathId;
 @property(retain, nonatomic) _CPCounterfactualInfo *counterfactual;
 @property(nonatomic) unsigned long long timestamp;
 @property(nonatomic) unsigned long long queryID;

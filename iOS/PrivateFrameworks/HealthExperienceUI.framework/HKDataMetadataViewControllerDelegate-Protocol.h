@@ -9,7 +9,7 @@
 @class HKDataMetadataDetailSection, HKDisplayTypeController, HKHealthStore, HKSample, HKSampleType, HKUnitPreferenceController, NSPredicate, NSString, UIViewController;
 
 @protocol HKDataMetadataViewControllerDelegate <NSObject>
-@property(nonatomic, readonly) HKHealthStore *healthStore;
+@property(readonly, nonatomic) HKHealthStore *healthStore;
 
 @optional
 - (HKDataMetadataDetailSection *)detailSectionForSample:(HKSample *)arg1;

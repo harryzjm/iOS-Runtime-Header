@@ -15,6 +15,7 @@
 - (_Bool)startNamespaceDownloadWithName:(NSString *)arg1 withTeamId:(NSString *)arg2 options:(TRIDownloadOptions *)arg3 error:(id *)arg4;
 - (_Bool)deregisterNamespaceWithNamespaceName:(NSString *)arg1 withTeamId:(NSString *)arg2 error:(id *)arg3;
 - (_Bool)registerNamespaceWithNamespaceName:(NSString *)arg1 compatibilityVersion:(unsigned int)arg2 defaultsFileURL:(NSURL *)arg3 withTeamId:(NSString *)arg4 appContainerId:(NSString *)arg5 appContainerType:(long long)arg6 cloudKitContainerId:(int)arg7 error:(id *)arg8;
+- (_Bool)removeUnusedChannels:(id *)arg1;
 - (_Bool)resumeSQLiteCKDatabaseQueueWithError:(id *)arg1;
 - (_Bool)suspendSQLiteCKDatabaseQueueWithError:(id *)arg1;
 - (_Bool)setFailureInjectionDelegate:(TRISQLiteCKDatabaseFailureInjectionDelegate *)arg1 error:(id *)arg2;

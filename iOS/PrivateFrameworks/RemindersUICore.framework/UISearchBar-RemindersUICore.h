@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UISearchBar.h>
+#import <UIKitCore/UISearchBar.h>
 
 @interface UISearchBar (RemindersUICore)
 @property(nonatomic) _Bool roundedFont;

@@ -67,6 +67,7 @@ __attribute__((visibility("hidden")))
 - (void)dismissalTransitionWillBegin;
 - (void)presentationTransitionDidEnd:(_Bool)arg1;
 - (void)presentationTransitionWillBegin;
+- (_Bool)_requiresDeferralToCoordinateWithNavigationTransitionAnimated:(_Bool)arg1;
 - (void)_dismissalTransitionWithSearchBarHostedByNavBarDidEnd:(_Bool)arg1;
 - (void)_dismissalTransitionWithSearchBarHostedByNavBarWillBegin;
 - (void)_presentationTransitionWithSearchBarHostedByNavBarDidEnd:(_Bool)arg1;

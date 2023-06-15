@@ -11,7 +11,6 @@
 @interface _TtC11SiriSignals21AudioMegamodelManager : _TtCs12_SwiftObject
 {
     MISSING_TYPE *trialClient;
-    MISSING_TYPE *trialNotificationToken;
 }
 
 @end

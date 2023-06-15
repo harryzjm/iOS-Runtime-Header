@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 - (void)wakeupEventDetected:(unsigned long long)arg1 date:(id)arg2;
 - (void)wakeDetectionEventDue;
 - (_Bool)isWakeDetectionDisabled;
-- (id)nextStateWithContext:(id *)arg1;
+- (void)updateState;
 @property(readonly, nonatomic) _Bool isDetectingState;
 
 // Remaining properties

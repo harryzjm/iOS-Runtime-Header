@@ -11,7 +11,6 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)feedbackTapToRadarViewControllerWithAttachmentURLs:(id)arg1;
 + (_Bool)hasLimitedScreenSize;
 + (_Bool)indexPathIsFirstRowInSection:(id)arg1 tableView:(id)arg2;
 + (_Bool)indexPathIsLastRowInSection:(id)arg1 tableView:(id)arg2;

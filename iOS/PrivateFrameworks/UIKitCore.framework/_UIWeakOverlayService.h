@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) __weak _UIOverlayService *service; // @synthesize service=_service;
-- (oneway void)handleOverlayResponse:(id)arg1;
+- (oneway void)performOverlayClientAction:(id)arg1;
 - (id)initWithService:(id)arg1;
 
 // Remaining properties

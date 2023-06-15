@@ -6,7 +6,7 @@
 
 #import <MobileSafariUI/NSObject-Protocol.h>
 
-@class NSArray, NSDictionary, NSString, NSURL, WBSTranslationContext, WKWebView;
+@class NSArray, NSDictionary, NSString, NSURL, WBProfile, WBSTranslationContext, WKWebView;
 @protocol WBSWebExtensionWindow;
 
 @protocol WBSWebExtensionTab <NSObject>
@@ -14,9 +14,12 @@
 @property(readonly, nonatomic) WBSTranslationContext *translationContext;
 @property(nonatomic) double zoomFactor;
 @property(readonly, nonatomic) unsigned long long changedPropertiesForOnUpdatedWebExtensionEvent;
+@property(readonly, nonatomic) WBProfile *profile;
 @property(readonly, nonatomic) id <WBSWebExtensionWindow> webExtensionWindow;
 @property(readonly, nonatomic) struct CGSize tabViewSize;
 @property(readonly, copy, nonatomic) NSString *tabTitle;
+@property(readonly, nonatomic) _Bool isInReaderMode;
+@property(readonly, nonatomic) _Bool isArticle;
 @property(readonly, nonatomic) _Bool isPrivate;
 @property(readonly, nonatomic) _Bool isPinnedTab;
 @property(readonly, nonatomic) _Bool isFrontmost;
@@ -38,6 +41,7 @@
 - (void)reloadFromOrigin;
 - (void)reload;
 - (void)loadURL:(NSURL *)arg1;
+- (void)toggleReader;
 - (void)unmute;
 - (void)mute;
 @end

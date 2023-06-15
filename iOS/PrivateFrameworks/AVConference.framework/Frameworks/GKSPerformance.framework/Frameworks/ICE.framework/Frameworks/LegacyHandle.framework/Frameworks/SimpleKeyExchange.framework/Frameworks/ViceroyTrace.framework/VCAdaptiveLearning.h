@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
 @interface VCAdaptiveLearning : NSObject
 {
     NSMutableDictionary *_callHistory;
-    _Bool _dirty;
+    _Bool _segmentChanged;
     int _adaptiveLearningState;
     int _shortTermHistoryLength;
     int _longTermHistoryLength;
@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (int)longTermAverageISBRForSegment:(id)arg1;
 - (int)shortTermAverageTBRForSegment:(id)arg1;
 - (int)longTermAverageTBRForSegment:(id)arg1;
+- (int)getValueForSegment:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void)updateSegment:(id)arg1 TBR:(int)arg2 ISBTR:(int)arg3 SATXBR:(int)arg4 SARBR:(int)arg5 BWE:(int)arg6;
 - (int)learntBitrateForSegment:(id)arg1 defaultValue:(int)arg2;
 - (void)saveCallSegmentHistory;

@@ -9,6 +9,10 @@
 @class _TtC7SwiftUI17AccessibilityNode;
 
 @interface NSObject (SwiftUIAccessibilityPrivate)
+@property(copy, nonatomic) CDUnknownBlockType accessibilitySwiftUIColumnHeaderElementsBlock;
+@property(copy, nonatomic) CDUnknownBlockType accessibilitySwiftUIDataTableCellBlock;
+@property(copy, nonatomic) CDUnknownBlockType accessibilitySwiftUIRowCountBlock;
+@property(copy, nonatomic) CDUnknownBlockType accessibilitySwiftUIColumnCountBlock;
 @property(copy, nonatomic) CDUnknownBlockType accessibilitySwiftUIDefaultActionStoredBlock;
 - (void)_performSelector:(SEL)arg1 withObject:(id)arg2;
 @property(nonatomic, retain) _TtC7SwiftUI17AccessibilityNode *accessibilityNodeForPlatformElement;

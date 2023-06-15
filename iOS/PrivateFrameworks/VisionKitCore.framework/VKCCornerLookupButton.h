@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, UIButton, UITapGestureRecognizer, VKCVisualSearchResultItem;
+@class NSString, UIButton, UITapGestureRecognizer, VKCVisualSearchResult, VKCVisualSearchResultItem;
 @protocol VKCCornerLookupButtonDelegate;
 
 __attribute__((visibility("hidden")))
@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     _Bool _shouldShowResultWhenVisible;
     UITapGestureRecognizer *_tapGestureRecognizer;
     VKCVisualSearchResultItem *_resultItem;
+    VKCVisualSearchResult *_result;
     UIButton *_button;
     id <VKCCornerLookupButtonDelegate> _delegate;
     NSString *_currentRVItemID;
@@ -33,6 +34,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool isShowingVisualResultsPane; // @synthesize isShowingVisualResultsPane=_isShowingVisualResultsPane;
 @property(nonatomic) __weak id <VKCCornerLookupButtonDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) UIButton *button; // @synthesize button=_button;
+@property(retain, nonatomic) VKCVisualSearchResult *result; // @synthesize result=_result;
 @property(retain, nonatomic) VKCVisualSearchResultItem *resultItem; // @synthesize resultItem=_resultItem;
 @property(retain, nonatomic) UITapGestureRecognizer *tapGestureRecognizer; // @synthesize tapGestureRecognizer=_tapGestureRecognizer;
 - (void)_didDismissVisualResultsPane:(id)arg1;

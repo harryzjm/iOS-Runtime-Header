@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
 + (id)sharedInstance;
 - (id)loadNeuralNetworkClasses:(_Bool)arg1 trainWithMLCompute:(_Bool)arg2;
 - (Class)classForCompilingModelType:(int)arg1;
-- (id)classesForLoadingModelType:(int)arg1 isUpdatable:(_Bool)arg2 trainWithMLCompute:(_Bool)arg3;
+- (id)classesForLoadingModelType:(int)arg1 configuration:(id)arg2 isUpdatable:(_Bool)arg3 isEncrypted:(_Bool)arg4;
 - (id)classesForLoadingModelType:(int)arg1;
 - (id)init;
 

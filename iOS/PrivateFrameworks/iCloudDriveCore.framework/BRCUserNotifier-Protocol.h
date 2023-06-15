@@ -6,7 +6,7 @@
 
 #import <iCloudDriveCore/NSObject-Protocol.h>
 
-@class BRCAccountSession, CKShareMetadata, NSURL;
+@class BRCAccountSessionFPFS, CKShareMetadata, NSURL;
 
 @protocol BRCUserNotifier <NSObject>
 - (void)showErrorDocumentsAppNotVisibleForShareURL:(NSURL *)arg1 reply:(void (^)(void))arg2;
@@ -19,7 +19,7 @@
 - (void)showErrorInstallNativeAppForShareMetadata:(CKShareMetadata *)arg1 reply:(void (^)(_Bool, _Bool, NSError *))arg2;
 - (void)showErrorTurnOniCloudDriveForShareMetadata:(CKShareMetadata *)arg1 reply:(void (^)(_Bool, _Bool, NSError *))arg2;
 - (void)showErrorSignInToiCloudForShareMetadata:(CKShareMetadata *)arg1 reply:(void (^)(_Bool, _Bool, NSError *))arg2;
-- (void)showJoinDialogForShareMetadata:(CKShareMetadata *)arg1 session:(BRCAccountSession *)arg2 reply:(void (^)(_Bool, NSError *))arg3;
+- (void)showJoinDialogForShareMetadata:(CKShareMetadata *)arg1 session:(BRCAccountSessionFPFS *)arg2 reply:(void (^)(_Bool, NSError *))arg3;
 - (void)close;
 - (void)moveToFront;
 @end

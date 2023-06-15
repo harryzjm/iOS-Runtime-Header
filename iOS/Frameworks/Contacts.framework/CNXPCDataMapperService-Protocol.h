@@ -6,10 +6,11 @@
 
 #import <Contacts/NSObject-Protocol.h>
 
-@class CNChangeHistoryClearRequest, CNChangeHistoryFetchRequest, CNContact, CNContactFetchRequest, CNContainer, CNGeminiHandle, CNSaveRequest, NSArray, NSData, NSDictionary, NSPredicate, NSString;
+@class CNChangeHistoryClearRequest, CNChangeHistoryFetchRequest, CNContact, CNContactFetchRequest, CNContainer, CNExtensionCommand, CNGeminiHandle, CNSaveRequest, NSArray, NSData, NSDictionary, NSPredicate, NSString;
 @protocol ProgressiveResultsHandlerProtocol;
 
 @protocol CNXPCDataMapperService <NSObject>
+- (void)requestExtensionCommand:(CNExtensionCommand *)arg1 withReply:(void (^)(id, NSError *))arg2;
 - (void)authorizedKeysForContactKeys:(NSArray *)arg1 withReply:(void (^)(NSArray *, NSError *))arg2;
 - (void)bestSenderIdentityForHandle:(CNGeminiHandle *)arg1 withReply:(void (^)(TUSenderIdentity *, NSError *))arg2;
 - (void)geminiResultForContact:(CNContact *)arg1 substituteDefaultForDangling:(_Bool)arg2 withReply:(void (^)(CNGeminiResult *, NSError *))arg3;

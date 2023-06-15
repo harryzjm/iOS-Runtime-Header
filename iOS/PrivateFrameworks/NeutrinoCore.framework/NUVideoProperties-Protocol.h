@@ -9,6 +9,7 @@
 @class NSArray, NSDictionary, NSURL;
 
 @protocol NUVideoProperties <NSObject>
+@property(readonly, copy) NSArray *trackGroups;
 @property(readonly) CDStruct_198678f7 duration;
 @property(readonly) CDStruct_198678f7 livePhotoKeyFrameTime;
 @property(readonly) _Bool isHDR;
@@ -18,7 +19,7 @@
 @property(readonly) CDStruct_0973877e cleanAperture;
 @property(readonly) CDStruct_912cb5d2 originalSize;
 @property(readonly) CDStruct_912cb5d2 size;
-@property(readonly) NSArray *metadata;
+@property(readonly, copy) NSArray *metadata;
 @property(readonly) NSURL *url;
 @end
 

@@ -6,13 +6,13 @@
 
 #import <HomeKitDaemon/HMDDeviceSetupTrackingInfo-Protocol.h>
 
-@class NSDate, NSError, NSString, NSUUID;
+@class NSError, NSString, NSUUID;
 
 @protocol HMDDeviceSetupTrackingInfoMutable <HMDDeviceSetupTrackingInfo>
 @property(copy) NSString *category;
 @property(copy) NSError *sessionError;
-@property(copy) NSDate *endTime;
-@property(copy) NSDate *startTime;
+@property unsigned long long endTime;
+@property unsigned long long startTime;
 @property(copy) NSUUID *accessoryUUID;
 @end
 

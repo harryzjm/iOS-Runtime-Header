@@ -9,6 +9,7 @@
 @class AMSPromise, AMSUIWebClientContext, NSDictionary;
 
 @protocol AMSUIWebActionRunnable <NSObject>
+@property(readonly, nonatomic) AMSUIWebClientContext *context;
 - (AMSPromise *)runAction;
 - (id)initWithJSObject:(NSDictionary *)arg1 context:(AMSUIWebClientContext *)arg2;
 @end

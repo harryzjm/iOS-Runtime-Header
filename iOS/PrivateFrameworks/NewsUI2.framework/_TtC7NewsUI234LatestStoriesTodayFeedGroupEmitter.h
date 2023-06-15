@@ -14,6 +14,7 @@
     MISSING_TYPE *knobs;
     MISSING_TYPE *formatService;
     MISSING_TYPE *paidAccessChecker;
+    MISSING_TYPE *cloudContext;
     MISSING_TYPE *name;
 }
 

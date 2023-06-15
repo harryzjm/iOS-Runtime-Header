@@ -20,10 +20,12 @@ __attribute__((visibility("hidden")))
     unsigned long long _animationCount;
     double _effectProgress;
     long long _state;
+    double _baseZOffset;
 }
 
 + (id)effectWithDescriptor:(id)arg1 continuationPreview:(id)arg2;
 - (void).cxx_destruct;
+@property(nonatomic) double baseZOffset; // @synthesize baseZOffset=_baseZOffset;
 @property(nonatomic) long long state; // @synthesize state=_state;
 @property(nonatomic) double effectProgress; // @synthesize effectProgress=_effectProgress;
 @property(nonatomic) unsigned long long animationCount; // @synthesize animationCount=_animationCount;

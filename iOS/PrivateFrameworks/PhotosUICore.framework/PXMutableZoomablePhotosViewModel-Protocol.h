@@ -9,6 +9,7 @@
 @class NSSet, PXAssetReference;
 
 @protocol PXMutableZoomablePhotosViewModel <NSObject>
+@property(nonatomic, getter=isFaceModeEnabled) _Bool faceModeEnabled;
 @property(nonatomic) _Bool alwaysShowTopBadges;
 @property(copy, nonatomic) CDUnknownBlockType effectProvider;
 @property(nonatomic) _Bool layoutExtendsContentBelowBounds;

@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CTXPCServiceSubscriptionContext;
+@class CTSMSDataType, CTXPCServiceSubscriptionContext;
 
 @protocol CTXPCServiceSMSInterface
+- (void)injectMTsms:(CTXPCServiceSubscriptionContext *)arg1 smsData:(CTSMSDataType *)arg2 completion:(void (^)(id *))arg3;
 - (void)getEmergencyTextNumbers:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)getSmscAddress:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 - (void)getSmsReadyState:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(_Bool, NSError *))arg2;

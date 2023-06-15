@@ -7,10 +7,12 @@
 #import <UIKit/UIScrollView.h>
 
 @class ISUIScrollViewVitalityController;
+@protocol UIScrollViewDelegate;
 
 @interface UIScrollView (ISScrollViewVitalityController)
-- (id)is_scrollViewDelegate;
+@property(readonly, nonatomic) id <UIScrollViewDelegate> is_scrollViewDelegate;
 - (void)is_didLayoutPlayerViews;
+@property(nonatomic) _Bool canDriveVitality;
 - (id)is_vitalityControllerCreateIfNeeded:(_Bool)arg1;
 @property(readonly, nonatomic) ISUIScrollViewVitalityController *is_vitalityController;
 @end

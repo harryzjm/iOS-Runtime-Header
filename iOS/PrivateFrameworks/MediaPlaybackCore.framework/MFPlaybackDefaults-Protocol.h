@@ -5,7 +5,7 @@
 //
 
 @protocol MFPlaybackDefaults
-@property(readonly, nonatomic) _Bool allowScreenRecording;
-@property(readonly, nonatomic) _Bool shouldPreroll;
+@property(nonatomic, readonly) _Bool allowScreenRecording;
+@property(nonatomic, readonly) _Bool shouldPreroll;
 @end
 

@@ -6,9 +6,10 @@
 
 #import <ShazamKit/NSObject-Protocol.h>
 
-@class SHSignature;
+@class NSError, SHSignature;
 
 @protocol SHSessionDriverDelegate <NSObject>
+- (void)sessionDriverEncounteredUnrecoverableError:(NSError *)arg1 forSignature:(SHSignature *)arg2;
 - (void)matchSignature:(SHSignature *)arg1;
 @end
 

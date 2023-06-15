@@ -20,6 +20,7 @@
 - (NSArray *)summaryCurationWithHighlightInfo:(PGHighlightTailorHighlightInfo *)arg1 sharingFilter:(unsigned short)arg2 progressBlock:(void (^)(double, _Bool *))arg3;
 - (NSArray *)extendedCurationWithHighlightInfo:(PGHighlightTailorHighlightInfo *)arg1 sharingFilter:(unsigned short)arg2 progressBlock:(void (^)(double, _Bool *))arg3;
 - (PHAsset *)keyAssetWithHighlightInfo:(PGHighlightTailorHighlightInfo *)arg1 sharingFilter:(unsigned short)arg2 graph:(PGGraph *)arg3 progressBlock:(void (^)(double, _Bool *))arg4;
+- (NSDictionary *)momentProcessedLocationByMomentUUIDWithHighlightInfo:(PGHighlightTailorHighlightInfo *)arg1 graph:(PGGraph *)arg2;
 - (NSDictionary *)momentTitleByMomentUUIDWithHighlightInfo:(PGHighlightTailorHighlightInfo *)arg1;
 - (PGTitleTuple *)titleWithHighlightInfo:(PGHighlightTailorHighlightInfo *)arg1 sharingFilter:(unsigned short)arg2 curatedAssets:(NSArray *)arg3 keyAsset:(PHAsset *)arg4 createVerboseTitle:(_Bool)arg5;
 - (double)promotionScoreWithHighlightInfo:(PGHighlightTailorHighlightInfo *)arg1;

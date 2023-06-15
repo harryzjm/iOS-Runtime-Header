@@ -9,6 +9,7 @@
 @class AKAppleIDAuthenticationContext;
 
 @protocol AKAuthenticationController <NSObject>
+- (void)performPasswordResetWithContext:(AKAppleIDAuthenticationContext *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)authenticateWithContext:(AKAppleIDAuthenticationContext *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
 @end
 

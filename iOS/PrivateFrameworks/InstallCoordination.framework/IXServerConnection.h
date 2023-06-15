@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (oneway void)_client_coordinatorWithUUID:(id)arg1 didUpdateProgress:(double)arg2 forPhase:(unsigned long long)arg3 overallProgress:(double)arg4;
 - (oneway void)_client_coordinatorWithUUID:(id)arg1 didCancelWithReason:(id)arg2 client:(unsigned long long)arg3;
 - (oneway void)_client_coordinatorDidCompleteSuccessfullyWithUUID:(id)arg1 forRecordPromise:(id)arg2;
+- (oneway void)_client_coordinatorShouldBeginPostProcessingWithUUID:(id)arg1 forRecordPromise:(id)arg2;
 - (oneway void)_client_coordinatorDidInstallPlaceholderWithUUID:(id)arg1 forRecordPromise:(id)arg2;
 - (oneway void)_client_coordinatorShouldBeginRestoringUserDataWithUUID:(id)arg1;
 - (oneway void)_client_coordinatorWithUUID:(id)arg1 configuredPromiseDidBeginFulfillment:(unsigned long long)arg2;

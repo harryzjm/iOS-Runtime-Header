@@ -21,7 +21,9 @@ __attribute__((visibility("hidden")))
     unsigned int _tilesPerVideoFrame;
 }
 
++ (id)videoCodecFeatureBitfieldForEncoderUsage:(unsigned int)arg1;
 + (unsigned int)encoderUsageTypeWithOperatingMode:(int)arg1;
++ (id)videoCodecFeatureBitfieldForOperatingMode:(int)arg1;
 @property(readonly, nonatomic) NSString *featureListStringH264; // @synthesize featureListStringH264=_featureListStringH264;
 @property(readonly, nonatomic) NSString *featureListStringHEVC; // @synthesize featureListStringHEVC=_featureListStringHEVC;
 @property(readonly, nonatomic) unsigned int tilesPerVideoFrame; // @synthesize tilesPerVideoFrame=_tilesPerVideoFrame;

@@ -10,6 +10,7 @@
 
 @interface _TtC15FocusSettingsUI9WatchFace : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *faceIdentifier;
     MISSING_TYPE *faceName;
     MISSING_TYPE *isSelected;
     MISSING_TYPE *faceImage;

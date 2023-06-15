@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSString;
-@protocol OS_nw_agent, OS_nw_authentication_credential, OS_nw_dictionary, OS_nw_endpoint, OS_xpc_object;
+@protocol OS_nw_agent, OS_nw_array, OS_nw_authentication_credential, OS_nw_dictionary, OS_nw_endpoint, OS_xpc_object;
 
 __attribute__((visibility("hidden")))
 @interface NWConcrete_nw_proxy_config : NSObject
@@ -17,8 +17,10 @@ __attribute__((visibility("hidden")))
     NSObject<OS_xpc_object> *required_protocols;
     NSObject<OS_xpc_object> *remove_protocols;
     NSObject<OS_nw_endpoint> *endpoint;
+    NSObject<OS_nw_array> *resolved_endpoints;
     unsigned char identifier[16];
     unsigned char fallback_agent_uuid[16];
+    NWConcrete_nw_proxy_config *fallback_config;
     NSObject<OS_nw_agent> *agent;
     NSObject<OS_nw_authentication_credential> *credential;
     NSObject<OS_xpc_object> *pac_script;
@@ -27,8 +29,10 @@ __attribute__((visibility("hidden")))
     int type;
     int multipath_service;
     unsigned int generation;
+    unsigned short config_epoch;
     unsigned int is_privacy_proxy:1;
     unsigned int privacy_proxy_fail_open:1;
+    unsigned int ignore_privacy_stance:1;
     unsigned int prohibit_direct:1;
     unsigned int supports_bonjour:1;
     unsigned int match_address_family:1;
@@ -40,6 +44,8 @@ __attribute__((visibility("hidden")))
     unsigned int disable_tfo_cookie:1;
     unsigned int override_opaque_https:1;
     unsigned int is_fallback:1;
+    unsigned int supports_udp_associate:1;
+    unsigned int use_fast_fallback:1;
 }
 
 - (void).cxx_destruct;

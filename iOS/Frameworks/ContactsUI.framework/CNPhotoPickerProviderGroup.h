@@ -62,8 +62,10 @@ __attribute__((visibility("hidden")))
 - (id)providerItemAtIndex:(long long)arg1;
 - (long long)numberOfItems;
 - (void)prepareDisplayItems:(id)arg1;
+- (void)reloadDisplayItemsNotifyDelegate:(_Bool)arg1 requiresFullReload:(_Bool)arg2;
 - (void)reloadDisplayItemsNotifyDelegate:(_Bool)arg1;
 - (id)itemsForProviderIdentifier:(id)arg1;
+- (void)setItemsPerRow:(unsigned long long)arg1 requiresFullReload:(_Bool)arg2;
 - (id)suggestionsProviderPrecedingFacesProvider;
 - (void)loadProvidersItemsForSize:(struct CGSize)arg1 itemsPerRow:(double)arg2 scale:(double)arg3 RTL:(_Bool)arg4;
 - (id)initWithProviders:(id)arg1 groupType:(long long)arg2 environment:(id)arg3 allowAddItem:(_Bool)arg4;

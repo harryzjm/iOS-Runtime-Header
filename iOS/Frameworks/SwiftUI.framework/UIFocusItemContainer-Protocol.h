@@ -10,7 +10,7 @@
 @protocol UICoordinateSpace;
 
 @protocol UIFocusItemContainer <NSObject>
+@property(readonly, nonatomic) id <UICoordinateSpace> coordinateSpace;
 - (NSArray *)focusItemsInRect:(struct CGRect)arg1;
-@property(nonatomic, readonly) id <UICoordinateSpace> coordinateSpace;
 @end
 

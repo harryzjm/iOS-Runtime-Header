@@ -19,7 +19,7 @@
 - (_Bool)startNotifyingWithQueue:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (_Bool)getReachabilityFlags:(out unsigned int *)arg1;
 - (void)dealloc;
-- (id)initWithReachabilityRef:(const struct __SCNetworkReachability *)arg1;
+- (id)initWithReachabilityRef:(struct __SCNetworkReachability *)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

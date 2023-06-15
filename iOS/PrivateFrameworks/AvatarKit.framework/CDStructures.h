@@ -12,22 +12,97 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
+struct CGPoint {
+    double _field1;
+    double _field2;
+};
+
+struct CGRect {
+    struct CGPoint _field1;
+    struct CGSize _field2;
+};
+
+struct CGSize {
+    double width;
+    double height;
+};
+
 struct SCNVector3 {
     float _field1;
     float _field2;
     float _field3;
 };
 
-struct SCNVector4 {
-    float _field1;
-    float _field2;
-    float _field3;
-    float _field4;
+struct os_unfair_lock_s {
+    unsigned int _os_unfair_lock_opaque;
 };
 
 #pragma mark Typedef'd Structures
 
 typedef struct {
-    MISSING_TYPE *_field1[4];
-} CDStruct_f1db2b5e;
+    MISSING_TYPE *vector;
+} CDStruct_0e8a9a91;
+
+typedef struct {
+    MISSING_TYPE *columns[3];
+} CDStruct_8e0628e6;
+
+typedef struct {
+    MISSING_TYPE *columns[4];
+} CDStruct_14d5dc5e;
+
+typedef struct {
+    double timestamp;
+    _Bool translation__orientation__cameraSpace;
+    float blendShapeWeights_smooth[51];
+    float blendShapeWeights_raw[51];
+    float parameters_smooth[1];
+    float parameters_raw[1];
+} CDStruct_32896d86;
+
+typedef struct {
+    double timestamp;
+    float blendShapeWeights[51];
+    float parameters[1];
+} CDStruct_abc4cf9c;
+
+typedef struct {
+    double totalLatency;
+    double arKitLatency;
+    double updateSyncLatency;
+    double metalLatency;
+    double timeBetweenARFrame;
+    unsigned int fps;
+    double audioTime;
+    unsigned int droppedFrame;
+    _Bool doubleBuffer;
+    unsigned int onlineShaderCompilationCount;
+} CDStruct_53ba08a1;
+
+typedef struct {
+    double _field1;
+    double _field2;
+    double _field3;
+    double _field4;
+    double _field5;
+    double _field6;
+} CDStruct_8727d297;
+
+typedef struct {
+    float _field1;
+    float _field2;
+    float _field3;
+} CDStruct_869f9c67;
+
+typedef struct {
+    long long _field1;
+    int _field2;
+    unsigned int _field3;
+    long long _field4;
+} CDStruct_198678f7;
+
+typedef struct {
+    _Bool mirroringEnabled;
+    CDStruct_8e0628e6 transform;
+} CDStruct_10883d13;
 

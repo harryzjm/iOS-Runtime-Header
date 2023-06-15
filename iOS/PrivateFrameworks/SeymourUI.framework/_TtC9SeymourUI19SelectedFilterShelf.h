@@ -18,7 +18,7 @@
     MISSING_TYPE *eventHub;
     MISSING_TYPE *storefrontLocalizer;
     MISSING_TYPE *subscriptionToken;
-    MISSING_TYPE *rootProperty;
+    MISSING_TYPE *filterRoot;
     MISSING_TYPE *filterConfiguration;
     MISSING_TYPE *filterOptions;
     MISSING_TYPE *hasValidModality;

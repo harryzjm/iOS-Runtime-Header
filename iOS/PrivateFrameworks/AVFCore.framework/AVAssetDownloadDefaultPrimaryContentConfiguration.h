@@ -12,8 +12,8 @@ __attribute__((visibility("hidden")))
 }
 
 + (_Bool)supportsSecureCoding;
-- (void)_serializeIntoDownloadConfig:(void *)arg1 asset:(id)arg2;
-- (void)_setupContentConfigWithDownloadConfig:(void *)arg1 asset:(id)arg2;
+- (void)_serializeIntoDownloadConfig:(struct FigStreamingAssetDownloadConfig *)arg1 asset:(id)arg2;
+- (void)_setupContentConfigWithDownloadConfig:(struct FigStreamingAssetDownloadConfig *)arg1 asset:(id)arg2;
 
 @end
 

@@ -13,8 +13,10 @@ __attribute__((visibility("hidden")))
 {
     NSNotificationCenter *nc;
     unsigned long long _token;
+    CDUnknownBlockType _block;
 }
 
+@property(copy) CDUnknownBlockType block; // @synthesize block=_block;
 @property unsigned long long token; // @synthesize token=_token;
 - (void)dealloc;
 

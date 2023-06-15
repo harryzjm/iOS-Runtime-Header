@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (id)viewForFirstBaselineLayout;
 - (_Bool)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (unsigned int)_secureName;
+- (void)configureSecurePasteButtonInRootView:(id)arg1;
 - (void)layoutControlForType:(long long)arg1 andStyling:(id)arg2;
 - (id)controlImageByType:(long long)arg1;
 - (id)controlLabelImageNameByType:(long long)arg1 isRTL:(_Bool)arg2;

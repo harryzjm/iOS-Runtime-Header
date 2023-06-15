@@ -68,10 +68,12 @@ __attribute__((visibility("hidden")))
 - (void)performHighlightSelectableTextAnimated:(_Bool)arg1;
 - (struct CGAffineTransform)transformForHighlightLayerInCurrentBounds;
 @property(readonly, nonatomic) struct CGRect currentContentsRectInLayerCoordinates;
+- (id)summaryDescription;
 - (void)updateHighlightLayerGeometry;
 - (void)updateHighlightLayerGeometryIfVisible;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)updateHighlightLayerContentIfVisible;
+@property(readonly, nonatomic) NSAttributedString *selectedAttributedText;
 @property(readonly, nonatomic) NSString *selectedText;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setHighlightSelectableItems:(_Bool)arg1 animated:(_Bool)arg2;

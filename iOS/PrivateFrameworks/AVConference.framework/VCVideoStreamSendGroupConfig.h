@@ -4,18 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class VCMoments;
+@class VCSessionUplinkVideoStreamController;
 
 __attribute__((visibility("hidden")))
 @interface VCVideoStreamSendGroupConfig
 {
-    VCMoments *_moments;
     int _captureSource;
+    VCSessionUplinkVideoStreamController *_uplinkVideoStreamController;
 }
 
+@property(retain, nonatomic) VCSessionUplinkVideoStreamController *uplinkVideoStreamController; // @synthesize uplinkVideoStreamController=_uplinkVideoStreamController;
 - (void)setCaptureSource:(int)arg1;
 - (int)captureSource;
-@property(retain, nonatomic) VCMoments *moments; // @synthesize moments=_moments;
 - (void)dealloc;
 
 @end

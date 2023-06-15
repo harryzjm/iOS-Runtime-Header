@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class UIResponder, UITextInteractionAssistant, UITextPosition, UITextRange, UIView;
+@class UIResponder, UITextInteractionAssistant, UITextPosition, UITextRange, UITextSelection, UIView;
 @protocol UISelectionInteractionAssistant, UITextInput;
 
 __attribute__((visibility("hidden")))
@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     _Bool _hasSelectionInteractionAssistant;
     _Bool _hasTextInputView;
     UITextPosition *_cursorPosition;
+    UITextSelection *_selection;
     UITextRange *_initialSelection;
     long long _selectionGranularity;
     UITextRange *_selectionBase;
@@ -26,8 +27,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(readonly, nonatomic) __weak UIResponder<UITextInput> *inputDelegate; // @synthesize inputDelegate=_inputDelegate;
 @property(retain, nonatomic) UITextRange *selectionBase; // @synthesize selectionBase=_selectionBase;
-@property(nonatomic) struct CGRect caretRectForCursorPosition; // @synthesize caretRectForCursorPosition=_caretRectForCursorPosition;
 @property(nonatomic) long long selectionGranularity; // @synthesize selectionGranularity=_selectionGranularity;
+@property(nonatomic) struct CGRect caretRectForCursorPosition; // @synthesize caretRectForCursorPosition=_caretRectForCursorPosition;
 @property(retain, nonatomic) UITextRange *initialSelection; // @synthesize initialSelection=_initialSelection;
 - (void)endSelection;
 - (void)modifySelectionWithExtentPoint:(struct CGPoint)arg1 executionContext:(id)arg2;
@@ -86,6 +87,7 @@ __attribute__((visibility("hidden")))
 - (void)setSelectedTextRange:(id)arg1;
 - (void)resetCursorPosition;
 @property(retain, nonatomic) UITextPosition *cursorPosition;
+@property(readonly, nonatomic) UITextSelection *selection;
 - (void)endSelectionChange;
 - (void)beginSelectionChange;
 @property(readonly, nonatomic) id <UISelectionInteractionAssistant> selectionInteractionAssistant;

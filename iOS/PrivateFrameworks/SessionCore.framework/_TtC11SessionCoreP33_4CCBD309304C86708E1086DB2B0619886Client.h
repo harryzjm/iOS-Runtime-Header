@@ -18,7 +18,7 @@
 
 - (void).cxx_destruct;
 - (id)init;
-- (_Bool)registerForPushTokensAndReturnError:(id *)arg1;
+- (_Bool)registerForPushTokensWithError:(id *)arg1;
 
 @end
 

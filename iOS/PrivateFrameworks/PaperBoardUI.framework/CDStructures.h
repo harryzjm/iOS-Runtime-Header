@@ -25,6 +25,13 @@ struct CGSize {
     double _field2;
 };
 
+struct PBUIRenderState {
+    struct CGSize _field1;
+    double _field2;
+    id _field3;
+    id _field4;
+};
+
 #pragma mark Typedef'd Structures
 
 typedef struct {

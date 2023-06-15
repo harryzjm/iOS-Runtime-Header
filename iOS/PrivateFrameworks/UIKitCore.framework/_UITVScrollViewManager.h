@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 {
     _Bool _delegateScrollViewManagerDidFinishScrolling;
     _Bool _useCustomMaskForScrolling;
+    _Bool _ignoreScrollAnimationDidEnd;
     id <_UITVScrollViewManagerDelegate> _delegate;
     UIScrollView *_scrollView;
     long long _scrollStyle;
@@ -24,6 +25,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(nonatomic) struct CGPoint targetOffset; // @synthesize targetOffset=_targetOffset;
+@property(nonatomic) _Bool ignoreScrollAnimationDidEnd; // @synthesize ignoreScrollAnimationDidEnd=_ignoreScrollAnimationDidEnd;
 @property(nonatomic) _Bool useCustomMaskForScrolling; // @synthesize useCustomMaskForScrolling=_useCustomMaskForScrolling;
 @property(retain, nonatomic) UIView *snapshotViewForWindow; // @synthesize snapshotViewForWindow=_snapshotViewForWindow;
 @property(retain, nonatomic) CASpringAnimation *scrollAnimation; // @synthesize scrollAnimation=_scrollAnimation;
@@ -31,12 +33,11 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
 @property(nonatomic) __weak id <_UITVScrollViewManagerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_observeScrollViewDidScroll:(id)arg1;
-- (id)_customScrollViewMaskForScrolling:(struct CGRect)arg1;
+- (id)_customScrollingMaskForScrollView:(id)arg1 frame:(struct CGRect)arg2;
 - (void)_removeScreenshotViewIfNeeded;
-- (void)_scrollToContentOffset:(struct CGPoint)arg1;
-- (long long)_currentPage;
+- (void)_scroll:(id)arg1 toContentOffset:(struct CGPoint)arg2;
 - (void)_scrollAnimationDidEnd:(id)arg1;
-- (void)_tearDown;
+- (void)_tearDown:(id)arg1;
 - (void)setContentOffset:(struct CGPoint)arg1 animated:(_Bool)arg2;
 - (void)dealloc;
 - (id)initWithScrollView:(id)arg1 scrollStyle:(long long)arg2;

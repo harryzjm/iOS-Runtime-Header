@@ -12,9 +12,9 @@
 @protocol CSAudioAlertProviding <NSObject>
 - (void)configureAlertBehavior:(NSDictionary *)arg1;
 - (unsigned long long)alertStartTime;
-- (_Bool)playRecordStartingAlertAndResetEndpointer;
+- (_Bool)playRecordStartingAlertAndResetEndpointerWithAlertOverride:(long long)arg1;
 - (_Bool)playAlertSoundForType:(long long)arg1;
-- (_Bool)setAlertSoundFromURL:(NSURL *)arg1 forType:(long long)arg2;
+- (_Bool)setAlertSoundFromURL:(NSURL *)arg1 forType:(long long)arg2 force:(_Bool)arg3;
 - (void)setAudioAlertDelegate:(id <CSAudioAlertProvidingDelegate>)arg1;
 @end
 

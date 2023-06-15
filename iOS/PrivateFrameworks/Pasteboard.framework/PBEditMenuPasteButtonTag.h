@@ -27,6 +27,8 @@ __attribute__((visibility("hidden")))
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (void)encodeWithCoder:(id)arg1;
+- (float)backgroundStatisticsForegroundForStyle:(id)arg1;
+- (CDStruct_8abe0896)backgroundStatisticsRegionForStyle:(id)arg1;
 - (unsigned long long)authenticationMessageContextForStyle:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithSecureName:(unsigned int)arg1 size:(struct CGSize)arg2 contentOrigin:(struct CGPoint)arg3 displayMode:(unsigned long long)arg4;

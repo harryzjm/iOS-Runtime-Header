@@ -9,16 +9,10 @@
 __attribute__((visibility("hidden")))
 @interface GEOMapFeatureRoadFinder
 {
-    _Bool _flipNegativeTravelDirectionRoads;
-    _Bool _visitDoubleTravelDirectionRoadsTwice;
-    _Bool _joinAllRoadsByMuid;
     GEOMapFeatureMultiSegmentRoadFinder *_multiSegmentRoadFinder;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) _Bool joinAllRoadsByMuid; // @synthesize joinAllRoadsByMuid=_joinAllRoadsByMuid;
-@property(nonatomic) _Bool visitDoubleTravelDirectionRoadsTwice; // @synthesize visitDoubleTravelDirectionRoadsTwice=_visitDoubleTravelDirectionRoadsTwice;
-@property(nonatomic) _Bool flipNegativeTravelDirectionRoads; // @synthesize flipNegativeTravelDirectionRoads=_flipNegativeTravelDirectionRoads;
 - (id)_multiSegmentRoadFinder;
 - (id)_findUnjoinedRoadsNear:(CDStruct_c3b9c2ee)arg1 radius:(double)arg2 handler:(CDUnknownBlockType)arg3;
 - (id)_findUnjoinedRoadsNear:(CDStruct_c3b9c2ee)arg1 radius:(double)arg2 handler:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;

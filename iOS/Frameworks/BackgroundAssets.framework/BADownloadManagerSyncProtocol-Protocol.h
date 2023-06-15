@@ -6,10 +6,10 @@
 
 #import <BackgroundAssets/NSObject-Protocol.h>
 
-@class NSArray, NSError, NSString, NSURL, NSURLAuthenticationChallenge;
+@class NSArray, NSError, NSString, NSURLAuthenticationChallenge;
 
 @protocol BADownloadManagerSyncProtocol <NSObject>
-- (void)downloadIdentifierDidFinish:(NSString *)arg1 clientStagedURL:(NSURL *)arg2 sandboxExtensionToken:(NSString *)arg3 wasHandled:(void (^)(_Bool))arg4;
+- (void)downloadIdentifierDidFinish:(NSString *)arg1 sandboxExtensionToken:(NSString *)arg2 wasHandled:(void (^)(_Bool))arg3;
 - (void)downloadIdentifier:(NSString *)arg1 didFailWithError:(NSError *)arg2 wasHandled:(void (^)(_Bool))arg3;
 - (void)downloadIdentifier:(NSString *)arg1 didReceiveChallenge:(NSURLAuthenticationChallenge *)arg2 authChallengeHandler:(void (^)(long long, NSURLCredential *))arg3;
 - (void)downloadIdentifier:(NSString *)arg1 didWriteBytes:(long long)arg2 totalBytesWritten:(long long)arg3 totalBytesExpectedToWrite:(long long)arg4;

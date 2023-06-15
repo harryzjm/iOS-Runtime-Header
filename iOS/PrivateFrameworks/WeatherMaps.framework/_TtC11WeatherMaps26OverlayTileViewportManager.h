@@ -13,15 +13,10 @@
     MISSING_TYPE *overlayDescriptor;
     MISSING_TYPE *progressReporter;
     MISSING_TYPE *renderContext;
+    MISSING_TYPE *tileLoaderFactory;
     MISSING_TYPE *lock;
-    MISSING_TYPE *preparedTimeIdentifiers;
-    MISSING_TYPE *tileResourceProviders;
-    MISSING_TYPE *progresses;
-    MISSING_TYPE *observers;
-    MISSING_TYPE *id;
-    MISSING_TYPE *tileLoaderDebugger;
-    MISSING_TYPE *delegate;
-    MISSING_TYPE *visibleTilePaths;
+    MISSING_TYPE *tileLoaders;
+    MISSING_TYPE *textureLoaderQueue;
 }
 
 @end

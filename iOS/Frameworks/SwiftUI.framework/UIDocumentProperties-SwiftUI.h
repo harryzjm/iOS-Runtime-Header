@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIDocumentProperties.h>
+#import <UIKitCore/UIDocumentProperties.h>
 
 @interface UIDocumentProperties (SwiftUI)
 - (id)initWithTitle:(id)arg1 iconProvider:(id)arg2 imageProvider:(id)arg3;

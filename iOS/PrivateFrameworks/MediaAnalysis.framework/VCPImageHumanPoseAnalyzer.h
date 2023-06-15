@@ -22,11 +22,13 @@ __attribute__((visibility("hidden")))
     _Bool _forceCPU;
     _Bool _sharedModel;
     _Bool _flushModel;
+    struct Scaler _scaler;
     _Bool _trackingMode;
 }
 
 + (id)sharedModel:(id)arg1;
 + (_Bool)saveKeypoints;
+- (id).cxx_construct;
 - (void).cxx_destruct;
 @property _Bool trackingMode; // @synthesize trackingMode=_trackingMode;
 - (int)analyzePixelBuffer:(struct __CVBuffer *)arg1 flags:(unsigned long long *)arg2 results:(id *)arg3 cancel:(CDUnknownBlockType)arg4;

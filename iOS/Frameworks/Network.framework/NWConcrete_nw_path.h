@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 @interface NWConcrete_nw_path : NSObject
 {
     struct os_unfair_lock_s lock;
+    struct os_unfair_lock_s description_lock;
     NSObject<OS_nw_parameters> *parameters;
     NSObject<OS_nw_endpoint> *endpoint;
     NSObject<OS_nw_group_descriptor> *group_descriptor;
@@ -32,12 +33,15 @@ __attribute__((visibility("hidden")))
     NSObject<OS_xpc_object> *fallback_agent_domains;
     NSObject<OS_xpc_object> *fallback_agent_types;
     NSObject<OS_nw_array> *resolver_configs;
+    NSObject<OS_nw_array> *override_resolver_configs;
+    NSObject<OS_nw_array> *override_extra_interface_options;
     NSObject<OS_nw_array> *gateways;
     NSObject<OS_nw_array> *group_members;
     NSObject<OS_xpc_object> *network_agent_dictionary;
     NSObject<OS_nw_array> *proxy_configs;
     NSObject<OS_xpc_object> *proxy_settings;
     char *reason_description;
+    NSString *description;
     struct nw_path_necp_result policy_result;
     unsigned int effective_mtu;
     unsigned int effective_traffic_class;
@@ -71,6 +75,7 @@ __attribute__((visibility("hidden")))
     unsigned int specific_listener:1;
     unsigned int override_is_expensive:1;
     unsigned int override_is_constrained:1;
+    unsigned int override_is_roaming:1;
     unsigned int override_uses_wifi:1;
     unsigned int override_uses_cellular:1;
     unsigned int override_interface_scoped:1;
@@ -79,7 +84,7 @@ __attribute__((visibility("hidden")))
     unsigned int has_pf_rules:1;
     unsigned int has_application_level_firewall:1;
     unsigned int has_parental_controls:1;
-    unsigned int __pad_bits:3;
+    unsigned int __pad_bits:2;
 }
 
 - (void).cxx_destruct;

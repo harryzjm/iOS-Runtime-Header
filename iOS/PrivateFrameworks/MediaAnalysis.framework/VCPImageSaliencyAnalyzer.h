@@ -12,9 +12,12 @@ __attribute__((visibility("hidden")))
     float _score[5];
     int _maxNumRegions;
     _Bool _prune;
+    struct Scaler _scaler;
 }
 
 + (id)analyzerWith:(int)arg1 prune:(_Bool)arg2;
+- (id).cxx_construct;
+- (void).cxx_destruct;
 - (int)analyzePixelBuffer:(struct __CVBuffer *)arg1 flags:(unsigned long long *)arg2 results:(id *)arg3 cancel:(CDUnknownBlockType)arg4;
 - (id)pruneRegions:(id)arg1;
 - (int)aggregateTileResults:(id)arg1 tileRect:(struct CGRect)arg2 imageSize:(struct CGSize)arg3 landscape:(_Bool)arg4 results:(id)arg5;

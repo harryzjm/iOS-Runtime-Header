@@ -39,7 +39,7 @@
 - (NSOrderedSet *)region:(_UIStatusBarRegion *)arg1 willSetDisplayItems:(NSOrderedSet *)arg2;
 - (NSArray *)willUpdateWithData:(_UIStatusBarData *)arg1;
 - (void)sizeUpdatedFromSize:(struct CGSize)arg1;
-- (void)avoidanceFrameUpdatedFromFrame:(struct CGRect)arg1 withAnimationSettings:(BSAnimationSettings *)arg2 interactively:(_Bool)arg3;
+- (void)avoidanceFrameUpdatedFromFrame:(struct CGRect)arg1 withAnimationSettings:(BSAnimationSettings *)arg2 options:(unsigned long long)arg3;
 - (void)styleUpdatedFromStyle:(long long)arg1;
 - (void)orientationUpdatedFromOrientation:(long long)arg1;
 - (void)modeUpdatedFromMode:(long long)arg1;

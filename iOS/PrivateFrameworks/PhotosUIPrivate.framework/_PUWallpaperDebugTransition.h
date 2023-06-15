@@ -13,9 +13,11 @@ __attribute__((visibility("hidden")))
 @interface _PUWallpaperDebugTransition : NSObject
 {
     id <NSObject> _animationSettings;
+    double _pu_Duration;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) double pu_Duration; // @synthesize pu_Duration=_pu_Duration;
 @property(retain, nonatomic) id <NSObject> animationSettings; // @synthesize animationSettings=_animationSettings;
 
 // Remaining properties

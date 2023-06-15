@@ -15,6 +15,7 @@
 + (id)ef_accountAllowedCharacterSet;
 + (id)ef_defaultAllowedCharacterSet;
 + (id)ef_urlWithString:(id)arg1;
+- (id)ef_URLByAppendingTimestampedPathComponent:(id)arg1 withExtension:(id)arg2;
 - (id)ef_urlByRemovingPrefixFromScheme:(id)arg1;
 - (id)ef_urlByAddingPrefixToScheme:(id)arg1;
 - (id)ef_urlByReplacingSchemeWithScheme:(id)arg1;

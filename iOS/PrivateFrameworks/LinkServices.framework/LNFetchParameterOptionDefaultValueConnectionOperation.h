@@ -4,13 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import "LNRuntimeAssertionsTakingConnectionOperation.h"
-
-@class LNDynamicOption, NSString;
+@class LNActionMetadata, LNDynamicOption, NSString;
 
 __attribute__((visibility("hidden")))
-@interface LNFetchParameterOptionDefaultValueConnectionOperation : LNRuntimeAssertionsTakingConnectionOperation
+@interface LNFetchParameterOptionDefaultValueConnectionOperation
 {
+    LNActionMetadata *_actionMetadata;
     NSString *_parameterIdentifier;
     LNDynamicOption *_result;
     CDUnknownBlockType _completionHandler;
@@ -20,9 +19,10 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property(copy, nonatomic) LNDynamicOption *result; // @synthesize result=_result;
 @property(copy, nonatomic) NSString *parameterIdentifier; // @synthesize parameterIdentifier=_parameterIdentifier;
+@property(retain, nonatomic) LNActionMetadata *actionMetadata; // @synthesize actionMetadata=_actionMetadata;
 - (void)finishWithError:(id)arg1;
 - (void)start;
-- (id)initWithConnectionInterface:(id)arg1 actionMetadata:(id)arg2 parameterIdentifier:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (id)initWithConnectionInterface:(id)arg1 actionMetadata:(id)arg2 parameterIdentifier:(id)arg3 queue:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 
 @end
 

@@ -6,10 +6,10 @@
 
 #import <MobileSafariUI/NSObject-Protocol.h>
 
-@class NSArray, NSString, SFSectionModel, SFStartPageViewController;
+@class NSArray, NSString, SFStartPageViewController, WBSStartPageSection;
 
 @protocol SFStartPageDataSource <NSObject>
-- (SFSectionModel *)startPageViewController:(SFStartPageViewController *)arg1 detailSectionForItemIdentifier:(id)arg2;
+- (WBSStartPageSection *)startPageViewController:(SFStartPageViewController *)arg1 detailSectionForItemIdentifier:(id)arg2;
 - (NSArray *)sectionsForStartPageViewController:(SFStartPageViewController *)arg1;
 
 @optional
@@ -18,7 +18,7 @@
 - (_Bool)startPageViewControllerShouldShowSearchField:(SFStartPageViewController *)arg1;
 - (void)startPageViewControllerDidChangeRootViewVisibility:(SFStartPageViewController *)arg1;
 - (void)startPageViewController:(SFStartPageViewController *)arg1 didSelectItemWithIdentifier:(id)arg2;
-- (void)startPageViewController:(SFStartPageViewController *)arg1 toggleSectionExpanded:(SFSectionModel *)arg2;
-- (_Bool)startPageViewController:(SFStartPageViewController *)arg1 isSectionExpanded:(SFSectionModel *)arg2;
+- (void)startPageViewController:(SFStartPageViewController *)arg1 toggleSectionExpanded:(WBSStartPageSection *)arg2;
+- (_Bool)startPageViewController:(SFStartPageViewController *)arg1 isSectionExpanded:(WBSStartPageSection *)arg2;
 @end
 

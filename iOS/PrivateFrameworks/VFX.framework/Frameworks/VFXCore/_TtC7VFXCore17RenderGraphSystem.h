@@ -16,6 +16,11 @@
     MISSING_TYPE *authoringDrawCallsQuery;
     MISSING_TYPE *volumetricScattering;
     MISSING_TYPE *voxelQuery;
+    MISSING_TYPE *directionalLightQuery;
+    MISSING_TYPE *pointLightQuery;
+    MISSING_TYPE *spotLightQuery;
+    MISSING_TYPE *ambientLightQuery;
+    MISSING_TYPE *iblLightQuery;
 }
 
 @end

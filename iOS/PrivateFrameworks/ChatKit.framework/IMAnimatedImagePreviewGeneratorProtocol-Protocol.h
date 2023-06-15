@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, NSURL;
+@class IMSenderContext, NSString, NSURL;
 
 @protocol IMAnimatedImagePreviewGeneratorProtocol
-- (NSURL *)generateAndPersistAnimatedPreviewFromSourceURL:(NSURL *)arg1 forWidth:(double)arg2 withTransferGUID:(NSString *)arg3 isSticker:(_Bool)arg4;
+- (NSURL *)generateAndPersistAnimatedPreviewFromSourceURL:(NSURL *)arg1 senderContext:(IMSenderContext *)arg2 forWidth:(double)arg3 withTransferGUID:(NSString *)arg4 isSticker:(_Bool)arg5;
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class MISSING_TYPE;
 
@@ -13,11 +13,13 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *style;
     MISSING_TYPE *onBoundsChange;
+    MISSING_TYPE *dotConstraints;
+    MISSING_TYPE *$__lazy_storage_$_dotView;
+    MISSING_TYPE *$__lazy_storage_$_innerDotView;
 }
 
 - (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)traitCollectionDidChange:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 @property(nonatomic) struct CGRect bounds;
 

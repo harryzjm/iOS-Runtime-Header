@@ -7,6 +7,10 @@
 #import <objc/NSObject.h>
 
 @interface NSObject (BRCSwizzle)
++ (void)brc_swizzleClassMethod:(SEL)arg1 with:(Class)arg2 newSel:(SEL)arg3 usingBlock:(CDUnknownBlockType)arg4;
++ (void)brc_swizzleInstanceMethod:(SEL)arg1 with:(Class)arg2 newSel:(SEL)arg3 usingBlock:(CDUnknownBlockType)arg4;
++ (_Bool)brc_swizzleClassMethod:(SEL)arg1 with:(Class)arg2 newSel:(SEL)arg3;
++ (_Bool)brc_swizzleInstanceMethod:(SEL)arg1 with:(Class)arg2 newSel:(SEL)arg3;
 + (_Bool)brc_swizzleClassMethod:(SEL)arg1 with:(SEL)arg2;
 + (_Bool)brc_swizzleInstanceMethod:(SEL)arg1 with:(SEL)arg2;
 @end

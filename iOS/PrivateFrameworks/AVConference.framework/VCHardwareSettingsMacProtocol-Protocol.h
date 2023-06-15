@@ -9,8 +9,6 @@
 @class NSString;
 
 @protocol VCHardwareSettingsMacProtocol <VCHardwareSettingsProtocol>
-@property(readonly, nonatomic) _Bool isDeviceLargeScreen;
-@property(readonly, nonatomic) _Bool supportsMultiway720pStream;
 @property(readonly, nonatomic) unsigned int hwEncoderEnterBitrate;
 @property(readonly, nonatomic) unsigned int hwEncoderExitBitrate;
 @property(readonly, nonatomic) _Bool isMacmini;

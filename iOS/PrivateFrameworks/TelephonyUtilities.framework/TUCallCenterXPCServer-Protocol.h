@@ -6,9 +6,16 @@
 
 #import <TelephonyUtilities/TUCallServicesProxyCallActions-Protocol.h>
 
-@class NSDictionary, NSString, TUCallDisplayContext, TUDialRequest, TUJoinConversationRequest;
+@class NSDictionary, NSString, NSUUID, NSXPCListenerEndpoint, TUCallDisplayContext, TUDialRequest, TUJoinConversationRequest, TUSandboxExtendedURL, TUScreeningRequest;
 
 @protocol TUCallCenterXPCServer <TUCallServicesProxyCallActions>
+- (oneway void)fetchAnonymousXPCEndpoint:(void (^)(NSXPCListenerEndpoint *, NSError *))arg1;
+- (oneway void)registerAnonymousXPCEndpoint:(NSXPCListenerEndpoint *)arg1;
+- (oneway void)screenWithRequest:(TUScreeningRequest *)arg1;
+- (oneway void)fetchCurrentCallUpdates:(void (^)(NSArray *))arg1;
+- (oneway void)deleteCustomGreetingForAccountUUID:(NSUUID *)arg1;
+- (oneway void)saveCustomSandboxedURLGreeting:(TUSandboxExtendedURL *)arg1 forAccountUUID:(NSUUID *)arg2;
+- (oneway void)isAnsweringMachineAvailable:(void (^)(_Bool))arg1;
 - (oneway void)reportLocalPreviewStoppedForCallWithUniqueProxyIdentifier:(NSString *)arg1;
 - (oneway void)pullCallFromClientUsingHandoffActivityUserInfo:(NSDictionary *)arg1 reply:(void (^)(TUCall *, NSArray *))arg2;
 - (oneway void)shouldAllowRingingCallStatusIndicator:(_Bool)arg1;

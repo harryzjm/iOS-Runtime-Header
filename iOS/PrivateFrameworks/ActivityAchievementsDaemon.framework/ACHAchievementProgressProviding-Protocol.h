@@ -6,11 +6,11 @@
 
 #import <ActivityAchievementsDaemon/NSObject-Protocol.h>
 
-@class ACHTemplate, HKQuantity;
+@class ACHTemplate, NSArray, NSString;
 
 @protocol ACHAchievementProgressProviding <NSObject>
-- (HKQuantity *)currentGoalQuantityForTemplate:(ACHTemplate *)arg1;
-- (HKQuantity *)currentProgressQuantityForTemplate:(ACHTemplate *)arg1;
+- (NSString *)providerIdentifier;
+- (void)requestAchievementProgressUpdatesForTemplates:(NSArray *)arg1;
 - (_Bool)providesProgressForTemplate:(ACHTemplate *)arg1;
 @end
 

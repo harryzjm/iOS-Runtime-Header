@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIDevice.h>
+#import <UIKitCore/UIDevice.h>
 
 @interface UIDevice (IC)
++ (_Bool)ic_isLiveTextAvailable;
 + (_Bool)ic_is12hrClock;
 + (_Bool)ic_isLocked;
 + (_Bool)ic_isLargeiPad;

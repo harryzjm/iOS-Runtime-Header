@@ -31,3 +31,10 @@ struct ccec_projective_point {
     unsigned long long _field1[1];
 };
 
+#pragma mark Typedef'd Structures
+
+// Ambiguous groups
+typedef struct {
+    unsigned int secondaryVersion:1;
+} CDStruct_f773167c;
+

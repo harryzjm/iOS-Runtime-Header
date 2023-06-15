@@ -19,11 +19,11 @@ __attribute__((visibility("hidden")))
 @property(retain) SOServiceConnection *serviceConnection; // @synthesize serviceConnection=_serviceConnection;
 - (void)profilesWithExtensionBundleIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)isExtensionProcessWithAuditToken:(CDStruct_6ad76789)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)finishAuthorizationWithCompletion:(CDUnknownBlockType)arg1;
+- (void)finishAuthorization:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)debugHintsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)realmsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)configurationWithCompletion:(CDUnknownBlockType)arg1;
-- (void)cancelAuthorizationWithCompletion:(CDUnknownBlockType)arg1;
+- (void)cancelAuthorization:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)beginAuthorizationWithRequestParameters:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)performAuthorizationWithRequestParameters:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getAuthorizationHintsWithURL:(id)arg1 responseCode:(long long)arg2 completion:(CDUnknownBlockType)arg3;

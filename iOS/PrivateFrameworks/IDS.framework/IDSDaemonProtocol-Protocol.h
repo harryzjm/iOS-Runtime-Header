@@ -6,12 +6,14 @@
 
 #import <IDS/NSObject-Protocol.h>
 
-@class ENGroupID, IDSMessagingCapabilities, IDSPseudonym, IDSPseudonymProperties, IDSPseudonymRequestProperties, IDSSigningOptions, IDSURI, NSArray, NSData, NSDictionary, NSNumber, NSObject, NSSet, NSString, NSURL;
+@class ENGroupID, IDSMessagingCapabilities, IDSPseudonym, IDSPseudonymProperties, IDSPseudonymRequestProperties, IDSSigningOptions, IDSURI, NSArray, NSData, NSDictionary, NSNumber, NSObject, NSSet, NSString, NSURL, NSUUID;
 @protocol OS_xpc_object;
 
 @protocol IDSDaemonProtocol <NSObject>
 
 @optional
+- (void)deletePendingResourceWithMessageGUID:(NSString *)arg1;
+- (void)downloadPendingResourceWithMessageGUID:(NSString *)arg1;
 - (void)tryForceFamilyFetch;
 - (void)removeReceivedInvitation:(NSArray *)arg1 forService:(NSString *)arg2;
 - (void)removePendingInvitation:(NSArray *)arg1 forService:(NSString *)arg2;
@@ -29,7 +31,7 @@
 - (void)reportSpamMessage:(NSDictionary *)arg1 serviceIdentifier:(NSString *)arg2;
 - (void)reportAction:(long long)arg1 ofTempURI:(IDSURI *)arg2 fromURI:(IDSURI *)arg3 onAccount:(NSString *)arg4 requestUUID:(NSString *)arg5;
 - (void)reportiMessageSpamCheckUnknown:(NSString *)arg1 count:(NSNumber *)arg2 requestID:(NSString *)arg3;
-- (void)reportiMessageUnknownSender:(NSString *)arg1 messageID:(NSString *)arg2 isBlackholed:(_Bool)arg3 messageServerTimestamp:(NSNumber *)arg4 toURI:(NSString *)arg5;
+- (void)reportiMessageUnknownSender:(NSString *)arg1 messageID:(NSString *)arg2 isBlackholed:(_Bool)arg3 isJunked:(_Bool)arg4 messageServerTimestamp:(NSNumber *)arg5 toURI:(NSString *)arg6;
 - (void)reportiMessageSpam:(NSArray *)arg1 toURI:(NSString *)arg2;
 - (void)continuityStopTrackingPeer:(NSString *)arg1 forType:(long long)arg2;
 - (void)continuityStartTrackingPeer:(NSString *)arg1 forType:(long long)arg2;
@@ -56,14 +58,16 @@
 - (void)requestEncryptionKeyForGroup:(NSString *)arg1 participants:(NSArray *)arg2;
 - (void)unregisterPluginForGroup:(NSString *)arg1 options:(NSDictionary *)arg2;
 - (void)registerPluginForGroup:(NSString *)arg1 options:(NSDictionary *)arg2;
+- (void)requestURIsForParticipantIDs:(NSArray *)arg1 withRequestID:(NSUUID *)arg2 forGroupSession:(NSString *)arg3;
 - (void)requestActiveParticipantsForGroupSession:(NSString *)arg1;
-- (void)leaveGroupSession:(NSString *)arg1 participantInfo:(NSDictionary *)arg2;
+- (void)leaveGroupSession:(NSString *)arg1 participantInfo:(NSDictionary *)arg2 options:(NSDictionary *)arg3;
 - (void)joinGroupSession:(NSString *)arg1 withOptions:(NSDictionary *)arg2;
 - (void)updateParticipantType:(unsigned short)arg1 forGroup:(NSString *)arg2 sessionID:(NSString *)arg3 members:(NSArray *)arg4 triggeredLocally:(_Bool)arg5 withContext:(NSData *)arg6 lightweightStatusDict:(NSDictionary *)arg7;
 - (void)updateParticipantData:(NSData *)arg1 forGroup:(NSString *)arg2 sessionID:(NSString *)arg3 withContext:(NSData *)arg4;
 - (void)removeParticipantIDs:(NSSet *)arg1 forGroup:(NSString *)arg2 sessionID:(NSString *)arg3;
 - (void)manageDesignatedMembers:(NSArray *)arg1 forGroup:(NSString *)arg2 sessionID:(NSString *)arg3 withType:(unsigned short)arg4;
 - (void)updateMembers:(NSArray *)arg1 forGroup:(NSString *)arg2 sessionID:(NSString *)arg3 withContext:(NSData *)arg4 messagingCapabilities:(IDSMessagingCapabilities *)arg5 triggeredLocally:(_Bool)arg6 lightweightStatusDict:(NSDictionary *)arg7;
+- (void)enableP2PlinksForSession:(NSString *)arg1;
 - (void)sendAllocationRequest:(NSString *)arg1 options:(NSDictionary *)arg2;
 - (void)acknowledgeSessionID:(NSString *)arg1 clientID:(NSString *)arg2;
 - (void)setInviteTimetout:(long long)arg1 forSessionWithUniqueID:(NSString *)arg2;
@@ -106,6 +110,7 @@
 - (void)sendPersistedFile:(NSURL *)arg1 userInfo:(NSDictionary *)arg2 toDestinations:(NSArray *)arg3 usingAccountWithUniqueID:(NSString *)arg4 identifier:(NSString *)arg5;
 - (void)getProgressUpdateForIdentifier:(NSString *)arg1 service:(NSString *)arg2;
 - (void)cancelItemWithIdentifier:(NSString *)arg1 service:(NSString *)arg2;
+- (void)cancelMessageWithQueueOneIdentifier:(NSString *)arg1 fromID:(NSString *)arg2 service:(NSString *)arg3 accountUniqueID:(NSString *)arg4 messageIdentifier:(NSString *)arg5;
 - (void)sendMessageWithSendParameters:(NSDictionary *)arg1;
 - (void)sendCertifiedDeliveryReceipt:(NSDictionary *)arg1 serviceName:(NSString *)arg2;
 - (void)cancelOpportunisticDataOnService:(NSString *)arg1 withIdentifier:(NSString *)arg2;

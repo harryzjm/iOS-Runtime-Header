@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *delegate;
     MISSING_TYPE *identifier;
+    MISSING_TYPE *canonicalIdentifier;
     MISSING_TYPE *storefrontLocalizer;
     MISSING_TYPE *mediaTagStringBuilder;
     MISSING_TYPE *row;

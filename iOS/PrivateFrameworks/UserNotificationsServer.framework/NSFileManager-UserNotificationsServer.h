@@ -8,6 +8,6 @@
 
 @interface NSFileManager (UserNotificationsServer)
 - (id)uns_contentsSortedByLastModificationDateOfDirectoryAtPath:(id)arg1 error:(id *)arg2;
-- (_Bool)uns_securelyMoveFile:(id)arg1 fromURL:(id)arg2 toURL:(id)arg3 copyFile:(_Bool)arg4 error:(id *)arg5;
+- (_Bool)uns_securelyCopyFile:(id)arg1 fromURL:(id)arg2 toURL:(id)arg3 error:(id *)arg4;
 @end
 

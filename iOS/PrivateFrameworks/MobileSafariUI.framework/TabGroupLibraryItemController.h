@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "LibraryItemController.h"
+
 @class WBTab, WBTabGroup;
 
 __attribute__((visibility("hidden")))
-@interface TabGroupLibraryItemController
+@interface TabGroupLibraryItemController : LibraryItemController
 {
     WBTabGroup *_tabGroup;
     WBTab *_tab;
@@ -30,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (void)willToggleExpansionState;
 - (_Bool)isExpanded;
 - (id)subitems;
+- (_Bool)_shouldHidePrivateBrowsingVerticalTabs;
 - (_Bool)hasSubitems;
 - (id)accessibilityIdentifier;
 - (_Bool)shouldPersistSelection;
@@ -42,7 +45,6 @@ __attribute__((visibility("hidden")))
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)swipeActionsConfiguration;
-- (id)contextMenuConfiguration;
 - (id)initWithConfiguration:(id)arg1 sectionController:(id)arg2 tabGroup:(id)arg3 tab:(id)arg4;
 
 @end

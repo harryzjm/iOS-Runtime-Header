@@ -9,7 +9,7 @@
 @interface CNContactStore (PhotoLibraryAdditions)
 - (id)contactsMatchingPhoneNumber:(id)arg1 keysToFetch:(id)arg2;
 - (id)contactsMatchingEmailAddress:(id)arg1 keysToFetch:(id)arg2;
-- (id)_allContactIDsMatchingPredicate:(id)arg1;
+- (id)_allContactIDsMatchingPredicate:(id)arg1 keysToFetch:(id)arg2;
 - (id)allContactIDsMatchingEmailAddress:(id)arg1 orPhoneNumber:(id)arg2;
 - (id)allContactIDsMatchingEmailAddress:(id)arg1;
 @end

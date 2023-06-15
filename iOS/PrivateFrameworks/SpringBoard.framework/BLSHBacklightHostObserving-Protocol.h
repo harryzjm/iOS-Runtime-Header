@@ -6,13 +6,17 @@
 
 #import <SpringBoard/BLSBacklightStateObserving-Protocol.h>
 
-@class BLSBacklightChangeEvent;
+@class BLSBacklightChangeEvent, NSArray;
 @protocol BLSHBacklightHostObservable, BLSHBacklightHostObservable><BLSBacklightChangeRequestable;
 
 @protocol BLSHBacklightHostObserving <BLSBacklightStateObserving>
 
 @optional
+- (_Bool)observesPerformingAllEvents;
+- (_Bool)observesDeactivation;
+- (_Bool)observesActivation;
 - (void)backlight:(id <BLSHBacklightHostObservable>)arg1 didCompleteUpdateToFlipbookState:(long long)arg2 forEvent:(BLSBacklightChangeEvent *)arg3;
+- (void)backlight:(id <BLSHBacklightHostObservable>)arg1 didCompleteUpdateToFlipbookState:(long long)arg2 forEvents:(NSArray *)arg3 abortedEvents:(NSArray *)arg4;
 - (void)backlightHost:(id <BLSHBacklightHostObservable><BLSBacklightChangeRequestable>)arg1 willTransitionToState:(long long)arg2 forEvent:(BLSBacklightChangeEvent *)arg3;
 @end
 

@@ -9,6 +9,6 @@
 @class AXChartDescriptor;
 
 @protocol AXChart <NSObject>
-@property(nonatomic, retain) AXChartDescriptor *accessibilityChartDescriptor;
+@property(retain, nonatomic) AXChartDescriptor *accessibilityChartDescriptor;
 @end
 

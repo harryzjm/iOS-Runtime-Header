@@ -28,6 +28,8 @@ struct _NSRange {
 
 struct __CFArray;
 
+struct __CFData;
+
 struct __CFPasteboard {
     struct __CFRuntimeBase {
         unsigned long long _field1;
@@ -45,6 +47,8 @@ struct __CFPasteboard {
     unsigned char _field11;
     unsigned char _field12;
     unsigned char _field13;
+    struct __CFData *_field14;
+    struct __CFDictionary *_field15;
 };
 
 struct __cfobservers_t {

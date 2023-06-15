@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) AMSThreadSafeObject *backingSet; // @synthesize backingSet=_backingSet;
+- (_Bool)containsObject:(id)arg1;
 - (void)removeObject:(id)arg1;
 - (void)addObject:(id)arg1;
 @property(readonly, nonatomic) unsigned long long count;

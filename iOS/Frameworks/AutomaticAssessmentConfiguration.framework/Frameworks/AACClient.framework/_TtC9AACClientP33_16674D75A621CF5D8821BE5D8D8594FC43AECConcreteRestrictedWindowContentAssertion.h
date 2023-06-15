@@ -13,7 +13,7 @@
     MISSING_TYPE *windowPrimitives;
     MISSING_TYPE *currentWindowsSubscription;
     MISSING_TYPE *windowResizeSubscriptionByWindowNumber;
-    MISSING_TYPE *didReleaseRestriction;
+    MISSING_TYPE *isObserving;
 }
 
 @end

@@ -11,14 +11,14 @@
 @protocol UITextInputTraits <NSObject>
 
 @optional
-@property(nonatomic, copy) UITextInputPasswordRules *passwordRules;
-@property(nonatomic, copy) NSString *textContentType;
-@property(nonatomic) _Bool secureTextEntry;
-- (_Bool)isSecureTextEntry;
+@property(copy, nonatomic) UITextInputPasswordRules *passwordRules;
+@property(copy, nonatomic) NSString *textContentType;
+@property(nonatomic, getter=isSecureTextEntry) _Bool secureTextEntry;
 @property(nonatomic) _Bool enablesReturnKeyAutomatically;
 @property(nonatomic) long long returnKeyType;
 @property(nonatomic) long long keyboardAppearance;
 @property(nonatomic) long long keyboardType;
+@property(nonatomic) long long inlinePredictionType;
 @property(nonatomic) long long smartInsertDeleteType;
 @property(nonatomic) long long smartDashesType;
 @property(nonatomic) long long smartQuotesType;

@@ -9,7 +9,9 @@
 @class NSData;
 
 @protocol ICAttachmentCryptoStrategy <ICCloudSyncingObjectCryptoStrategy>
+- (NSData *)decryptedFallbackPDFData;
 - (NSData *)decryptedFallbackImageData;
+- (void)writeEncryptedFallbackPDFData:(NSData *)arg1;
 - (void)writeEncryptedFallbackImageData:(NSData *)arg1;
 @end
 

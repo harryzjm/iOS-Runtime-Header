@@ -6,8 +6,8 @@
 
 #import <TextRecognition/NSObject-Protocol.h>
 
-@class CRTextFeature, NSObject, NSString;
-@protocol CRWrappingEvaluationResult;
+@class NSObject, NSString;
+@protocol CRLayoutLine, CRWrappingEvaluationResult;
 
 @protocol CRWrappingEvaluationResult <NSObject>
 @property(readonly) double verticalSpacingToHeightRatio;
@@ -17,7 +17,7 @@
 @property(readonly) vector_32ba81c5 featureTokens;
 @property(readonly) _Bool isOversegmented;
 @property(readonly) NSString *paragraphText;
-@property(readonly) CRTextFeature *featureInTest;
+@property(readonly) id <CRLayoutLine> featureInTest;
 @property(readonly) _Bool matchingLocales;
 - (NSObject<CRWrappingEvaluationResult> *)resultByMerging:(NSObject<CRWrappingEvaluationResult> *)arg1;
 @end

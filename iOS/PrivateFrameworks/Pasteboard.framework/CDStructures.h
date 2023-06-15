@@ -20,3 +20,12 @@ struct CGSize {
     double height;
 };
 
+#pragma mark Typedef'd Structures
+
+typedef struct {
+    unsigned short _field1;
+    unsigned short _field2;
+    unsigned short _field3;
+    unsigned short _field4;
+} CDStruct_8abe0896;
+

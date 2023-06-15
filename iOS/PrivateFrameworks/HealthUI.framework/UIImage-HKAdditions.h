@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIImage.h>
+#import <UIKitCore/UIImage.h>
 
 @interface UIImage (HKAdditions)
 + (id)hk_hearingHealthAudioExposureSymbolForClassification:(unsigned long long)arg1 font:(id)arg2;

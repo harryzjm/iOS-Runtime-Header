@@ -14,8 +14,13 @@
 - (void)scanBundlesWithReply:(void (^)(NSError *))arg1;
 - (void)resetWithReply:(void (^)(NSError *))arg1;
 - (void)registerBundleWithIdentifier:(NSString *)arg1 force:(_Bool)arg2 reply:(void (^)(NSError *))arg3;
+- (void)actionForBundleIdentifier:(NSString *)arg1 appShortcutIdentifier:(NSString *)arg2 parameterIdentifier:(NSString *)arg3 completionHandler:(void (^)(LNAction *, NSError *))arg4;
+- (void)actionForBundleIdentifier:(NSString *)arg1 basePhraseTemplate:(NSString *)arg2 actionIdentifier:(NSString *)arg3 parameterIdentifier:(NSUUID *)arg4 completionHandler:(void (^)(LNAction *, NSError *))arg5;
 - (void)actionForBundleIdentifier:(NSString *)arg1 basePhraseTemplate:(NSString *)arg2 parameterIdentifier:(NSUUID *)arg3 completionHandler:(void (^)(LNAction *, NSError *))arg4;
 - (void)actionForBundleIdentifier:(NSString *)arg1 basePhraseTemplate:(NSString *)arg2 completionHandler:(void (^)(LNAction *, NSError *))arg3;
+- (void)relevantIntentsWithReply:(void (^)(NSDictionary *, NSError *))arg1;
+- (void)relevantIntentsForBundleIdentifier:(NSString *)arg1 reply:(void (^)(NSArray *, NSError *))arg2;
+- (void)propertiesForIdentifiers:(NSArray *)arg1 completionHandler:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)autoShortcutsForLocaleIdentifier:(NSString *)arg1 completionHandler:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)autoShortcutsForBundleIdentifier:(NSString *)arg1 localeIdentifier:(NSString *)arg2 completionHandler:(void (^)(NSArray *, NSError *))arg3;
 - (void)entitiesForBundleIdentifier:(NSString *)arg1 reply:(void (^)(NSArray *, NSError *))arg2;
@@ -32,5 +37,6 @@
 - (void)actionsConformingToSystemProtocol:(LNSystemProtocol *)arg1 withParametersOfTypes:(NSDictionary *)arg2 bundleIdentifier:(NSString *)arg3 reply:(void (^)(NSDictionary *, NSError *))arg4;
 - (void)actionsConformingToSystemProtocols:(NSSet *)arg1 logicalType:(unsigned long long)arg2 bundleIdentifier:(NSString *)arg3 reply:(void (^)(NSDictionary *, NSError *))arg4;
 - (void)actionsWithReply:(void (^)(NSDictionary *, NSError *))arg1;
+- (void)fetchDatabaseURL:(void (^)(NSSecurityScopedURLWrapper *, NSError *))arg1;
 @end
 

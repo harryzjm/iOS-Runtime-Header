@@ -32,7 +32,6 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)rectForIndicatorDot;
 - (double)opacityForCurrentQuadSize;
 - (void)_updateLayout;
-- (void)traitCollectionDidChange:(id)arg1;
 - (void)layoutSubviews;
 - (id)initWithColor:(id)arg1;
 

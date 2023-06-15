@@ -6,12 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class ICRadioPlaybackHistory, ICRadioPlaybackHistoryStore, ICStoreRequestContext, MPCModelGenericAVItemUserIdentityPropertySet, MPModelRadioStation, MPSectionedCollection, _MPCModelRadioPlaybackQueueStationTracksCollection;
+@class ICStoreRequestContext, MPCModelGenericAVItemUserIdentityPropertySet, MPModelRadioStation, MPSectionedCollection, _MPCModelRadioPlaybackQueueStationTracksCollection;
 
 __attribute__((visibility("hidden")))
 @interface MPCModelRadioPlaybackQueue : NSObject
 {
-    ICRadioPlaybackHistoryStore *_playbackHistoryStore;
     ICStoreRequestContext *_storeRequestContext;
     MPModelRadioStation *_radioStation;
     _MPCModelRadioPlaybackQueueStationTracksCollection *_stationTracks;
@@ -24,11 +23,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) MPSectionedCollection *tracks;
 - (id)trackForItemAtIndex:(long long)arg1;
 @property(readonly, nonatomic) MPSectionedCollection *trackModels;
-- (void)savePlaybackHistoryWithUpdates:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)savePlaybackHistoryWithUpdates:(CDUnknownBlockType)arg1;
 - (long long)removeExplicitItems;
 - (void)removeAllItems;
-@property(readonly, copy, nonatomic) ICRadioPlaybackHistory *playbackHistory;
 @property(readonly, nonatomic) long long numberOfItems;
 - (_Bool)isExplicitItemAtIndex:(long long)arg1;
 - (id)AVItemAtIndex:(long long)arg1;

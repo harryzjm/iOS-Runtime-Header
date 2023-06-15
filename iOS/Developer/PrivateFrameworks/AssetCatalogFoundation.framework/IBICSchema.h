@@ -57,7 +57,6 @@
     NSMutableDictionary *_catalogColorsByPlatformAndName;
     NSMutableSet *_fileTypes;
     NSMutableDictionary *_allowedFileTypesByItemClass;
-    NSMutableDictionary *_slotClassesToFilterFileTypePairs;
     NSMutableArray *_thinningFilters;
     NSMutableDictionary *_defaultMatchingContextBySlotClassAndPlatform;
     NSMutableSet *_variantSlotClasses;
@@ -151,7 +150,6 @@
 - (id)allowedFileTypesForSlot:(id)arg1;
 - (_Bool)isValidFileExtension:(id)arg1 forSlotClass:(Class)arg2;
 - (_Bool)isValidFileExtension:(id)arg1 forSlot:(id)arg2;
-- (void)unionOverrideAllowedFileTypes:(id)arg1 forSlotsMatchingFilter:(id)arg2;
 - (id)allowedFileTypesForCatalogItemClass:(Class)arg1;
 - (_Bool)isAllowedFileType:(id)arg1 forCatalogItem:(id)arg2;
 - (id)allowedFileTypesForCatalogItem:(id)arg1;
@@ -209,6 +207,7 @@
 - (void)addSuggestionSetSection:(id)arg1;
 - (_Bool)shouldDisplaySuggestionSetGroup:(id)arg1 withAvailableSimDeviceTypeIdentifiers:(id)arg2;
 - (void)hideSuggestionSetGroup:(id)arg1 inAbsenceOfSimDeviceTypeWithIdentifier:(id)arg2;
+@property(readonly, nonatomic) _Bool hasSuggestionSetsThatDependOnSimDeviceTypeIdentifiers;
 - (id)suggestionSetsForGroup:(id)arg1;
 - (id)allSuggestionSetGroupsWithAvailableSimDeviceTypeIdentifiers:(id)arg1;
 - (id)suggestionSetGroupForIdentifier:(id)arg1 forSlotClass:(Class)arg2;

@@ -6,12 +6,14 @@
 
 #import <HomeKitDaemon/NSObject-Protocol.h>
 
-@class HAPPairingIdentity, HMDAppleAccessoryPairingHomeState, HMFTimer, NSArray, NSNotificationCenter, NSUUID;
+@class HAPPairingIdentity, HMDAppleAccessoryPairingHomeState, HMDBulletinBoard, HMDDevice, HMFTimer, NSArray, NSNotificationCenter, NSUUID;
 
 @protocol HMDAppleAccessoryPairingControllerDataSource <NSObject>
+@property(readonly, nonatomic) HMDBulletinBoard *bulletinBoard;
 @property(readonly, nonatomic) NSNotificationCenter *notificationCenter;
 @property(readonly, nonatomic) HAPPairingIdentity *hh1ControllerIdentity;
 @property(readonly, nonatomic) NSArray *inProgressPairingAccessories;
+- (HMDDevice *)deviceForIdentifier:(NSUUID *)arg1;
 - (void)deletePairingAccessoryState:(NSUUID *)arg1;
 - (void)updatePairingAccessoryState:(HMDAppleAccessoryPairingHomeState *)arg1;
 - (HMFTimer *)timerWithInterval:(double)arg1 options:(unsigned long long)arg2;

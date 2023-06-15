@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 - (void)popped;
 - (void)previewed;
 - (id)_clickConfiguration;
-- (id)initWithCoordinateSpace:(id)arg1;
+- (id)initWithConfiguration:(id)arg1 view:(id)arg2;
 
 @end
 

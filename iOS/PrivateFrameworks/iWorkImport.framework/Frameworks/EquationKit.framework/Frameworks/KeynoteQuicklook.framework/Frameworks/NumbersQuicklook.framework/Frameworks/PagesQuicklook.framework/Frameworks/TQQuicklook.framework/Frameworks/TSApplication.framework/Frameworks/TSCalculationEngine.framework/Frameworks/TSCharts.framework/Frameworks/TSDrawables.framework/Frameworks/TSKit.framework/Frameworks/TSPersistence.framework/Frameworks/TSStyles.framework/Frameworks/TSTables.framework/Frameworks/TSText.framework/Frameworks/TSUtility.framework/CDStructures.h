@@ -76,6 +76,56 @@ struct __sbuf {
     int _field2;
 };
 
+struct _xmlDoc {
+    void *_field1;
+    int _field2;
+    char *_field3;
+    struct _xmlNode *_field4;
+    struct _xmlNode *_field5;
+    struct _xmlNode *_field6;
+    struct _xmlNode *_field7;
+    struct _xmlNode *_field8;
+    struct _xmlDoc *_field9;
+    int _field10;
+    int _field11;
+    struct _xmlDtd *_field12;
+    struct _xmlDtd *_field13;
+    struct _xmlNs *_field14;
+    char *_field15;
+    char *_field16;
+    void *_field17;
+    void *_field18;
+    char *_field19;
+    int _field20;
+    struct _xmlDict *_field21;
+    void *_field22;
+    int _field23;
+    int _field24;
+};
+
+struct _xmlDtd;
+
+struct _xmlNode {
+    void *_field1;
+    int _field2;
+    char *_field3;
+    struct _xmlNode *_field4;
+    struct _xmlNode *_field5;
+    struct _xmlNode *_field6;
+    struct _xmlNode *_field7;
+    struct _xmlNode *_field8;
+    struct _xmlDoc *_field9;
+    struct _xmlNs *_field10;
+    char *_field11;
+    struct _xmlAttr *_field12;
+    struct _xmlNs *_field13;
+    void *_field14;
+    unsigned short _field15;
+    unsigned short _field16;
+};
+
+struct _xmlNs;
+
 struct atomic<unsigned long> {
     struct __cxx_atomic_impl<unsigned long, std::__cxx_atomic_base_impl<unsigned long>> {
         _Atomic unsigned long long __a_value;
@@ -137,6 +187,11 @@ typedef struct {
     unsigned short _field1;
     unsigned short _field2;
 } CDStruct_d65e47c4;
+
+typedef struct {
+    int _field1;
+    int _field2;
+} CDStruct_1ef3fb1f;
 
 typedef struct {
     long long _field1;

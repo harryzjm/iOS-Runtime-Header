@@ -14,6 +14,13 @@
 + (id)CalComponentForDays:(long long)arg1;
 + (id)CalComponentForHours:(long long)arg1;
 + (id)CalComponentForMinutes:(long long)arg1;
+- (void)CalClearTimeComponents;
+- (_Bool)CalHasTimeComponents;
+- (CDStruct_79f9e052)CalGregorianDate;
+- (id)CalDateComponentsForEndOfDay;
+- (id)CalDateComponentsForDateOnly;
+- (id)CalDateComponents:(unsigned long long)arg1 byAddingDays:(int)arg2 calendar:(id)arg3;
+- (id)CalDateComponents:(unsigned long long)arg1 byAddingComponents:(id)arg2 calendar:(id)arg3;
 - (_Bool)CalIsSameYearAsComponents:(id)arg1;
 - (_Bool)CalIsSameMonthAsComponents:(id)arg1;
 - (_Bool)CalIsSameDayAsComponents:(id)arg1;

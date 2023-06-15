@@ -6,11 +6,12 @@
 
 #import <SocialLayer/NSObject-Protocol.h>
 
-@class NSString;
+@class NSData, NSString, NSUUID;
 
 @protocol SLDShareableContentServiceProtocol <NSObject>
+- (void)shareCollaborationData:(NSData *)arg1 faceTimeConversationUUID:(NSUUID *)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)presentMessageComposeSheetForSourceIdentifier:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
-- (void)loadDataRepresentationFromSourceIdentifier:(NSString *)arg1 requestedTypeIdentifier:(NSString *)arg2 completionHandler:(void (^)(NSData *, NSError *))arg3;
-- (void)retrieveShareableContentMetadataWithCompletion:(void (^)(NSArray *, NSError *))arg1;
+- (void)loadRepresentationFromSourceIdentifier:(NSString *)arg1 requestedTypeIdentifier:(NSString *)arg2 completionHandler:(void (^)(SLShareableContentLoadResult *, NSError *))arg3;
+- (void)retrieveShareableContentMetadataMatchingBundleIdentifier:(NSString *)arg1 sceneIdentifier:(NSString *)arg2 completion:(void (^)(NSArray *, NSError *))arg3;
 @end
 

@@ -11,12 +11,13 @@
 @interface _TtC8NewsFeed18DebugFormatManager : _TtCs12_SwiftObject
 {
     MISSING_TYPE *lock;
-    MISSING_TYPE *cache;
+    MISSING_TYPE *packageCache;
     MISSING_TYPE *bindingCache;
-    MISSING_TYPE *mixinCache;
     MISSING_TYPE *service;
     MISSING_TYPE *fontManager;
+    MISSING_TYPE *cacheManager;
     MISSING_TYPE *$__lazy_storage_$_environment;
+    MISSING_TYPE *queue;
 }
 
 @end

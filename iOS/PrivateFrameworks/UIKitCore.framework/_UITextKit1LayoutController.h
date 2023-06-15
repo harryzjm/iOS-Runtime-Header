@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (struct _NSRange)rangeOfCharacterClusterAtIndex:(unsigned long long)arg1 type:(long long)arg2;
 - (id)positionWithOffset:(long long)arg1 affinity:(long long)arg2;
 - (id)textRangeForCharacterRange:(struct _NSRange)arg1;
+- (struct _NSRange)characterRangeForTextRange:(id)arg1 clippedToDocument:(_Bool)arg2;
 - (struct _NSRange)characterRangeForTextRange:(id)arg1;
 @property(readonly, nonatomic) _Bool canAccessLayoutManager;
 - (struct CGRect)boundingRectForRange:(id)arg1;
@@ -71,6 +72,8 @@ __attribute__((visibility("hidden")))
 - (long long)affinityForPosition:(id)arg1;
 - (long long)offsetFromPosition:(id)arg1 toPosition:(id)arg2;
 - (long long)comparePosition:(id)arg1 toPosition:(id)arg2;
+- (id)_visualSelectionRangeForExtent:(id)arg1 forPoint:(struct CGPoint)arg2 fromPosition:(id)arg3 inDirection:(long long)arg4;
+- (id)textRangeForTextKit2Ranges:(id)arg1;
 - (id)textRangeForLineEnclosingPosition:(id)arg1 effectiveAffinity:(long long)arg2;
 - (id)positionFromPosition:(id)arg1 offset:(long long)arg2 affinity:(long long)arg3;
 - (id)textRangeFromPosition:(id)arg1 toPosition:(id)arg2;

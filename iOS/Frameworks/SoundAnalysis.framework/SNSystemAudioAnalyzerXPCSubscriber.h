@@ -6,17 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, NSString;
-@protocol SNSystemAudioAnalyzerProtocol;
+@class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
 @interface SNSystemAudioAnalyzerXPCSubscriber : NSObject
 {
-    NSMutableDictionary *_remoteObservers;
-    id <SNSystemAudioAnalyzerProtocol> _receiver;
+    MISSING_TYPE *remoteObservers;
+    MISSING_TYPE *receiver;
 }
 
 - (void).cxx_destruct;
+- (id)init;
 - (void)xpcSetAudioConfiguration:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)xpcRemoveAllRequestsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)xpcRemoveRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -25,13 +25,6 @@ __attribute__((visibility("hidden")))
 - (void)removeAllRequests;
 - (void)removeRequest:(id)arg1;
 - (_Bool)addRequest:(id)arg1 withObserver:(id)arg2 error:(id *)arg3;
-- (id)init;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

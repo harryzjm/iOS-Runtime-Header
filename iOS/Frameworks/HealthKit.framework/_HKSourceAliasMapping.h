@@ -11,13 +11,15 @@
 __attribute__((visibility("hidden")))
 @interface _HKSourceAliasMapping : NSObject
 {
-    NSString *_bundleIdentifierForName;
+    NSString *_aliasName;
+    NSString *_bundleIdentifierForInstallationStatus;
     NSString *_bundleIdentifierForIcon;
 }
 
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSString *bundleIdentifierForIcon; // @synthesize bundleIdentifierForIcon=_bundleIdentifierForIcon;
-@property(copy, nonatomic) NSString *bundleIdentifierForName; // @synthesize bundleIdentifierForName=_bundleIdentifierForName;
+@property(copy, nonatomic) NSString *bundleIdentifierForInstallationStatus; // @synthesize bundleIdentifierForInstallationStatus=_bundleIdentifierForInstallationStatus;
+@property(copy, nonatomic) NSString *aliasName; // @synthesize aliasName=_aliasName;
 
 @end
 

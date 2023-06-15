@@ -28,17 +28,10 @@ __attribute__((visibility("hidden")))
 
 @property _Bool usingServerBasedLinks; // @synthesize usingServerBasedLinks=_usingServerBasedLinks;
 @property double primaryConnHealthAllowedDelay; // @synthesize primaryConnHealthAllowedDelay=_primaryConnHealthAllowedDelay;
-- (_Bool)isPrimaryConnectionImprovedFromHistory:(struct ConnectionStatsHistory *)arg1 withIndex:(int)arg2 remoteStatsHistory:(struct ConnectionStatsHistory *)arg3;
-- (_Bool)isHistoryImproved:(char *)arg1 currentIndex:(int)arg2;
-- (_Bool)isHistoryValid:(char *)arg1;
-- (void)updateRatiosForHistory:(struct ConnectionStatsHistory *)arg1 withIndex:(int)arg2;
-- (void)reportConnectionHealthWithStatsHistory:(struct ConnectionStatsHistory *)arg1 index:(int)arg2 isPeerStats:(_Bool)arg3;
 - (void)resetHistory:(struct ConnectionStatsHistory *)arg1;
-- (void)updateStatsHistory;
 - (void)resetConnectionStats:(_Bool)arg1;
 - (void)processPeerStatsBlob:(unsigned int)arg1;
 - (unsigned int)generateStatsBlob;
-- (void)updateReceiveStats;
 @property id <VCConnectionHealthMonitorDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)dealloc;
 - (id)init;

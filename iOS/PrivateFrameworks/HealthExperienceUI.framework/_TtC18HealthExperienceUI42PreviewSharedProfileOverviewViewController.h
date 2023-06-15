@@ -13,17 +13,15 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *providedPresentation;
     MISSING_TYPE *gradientView;
-    MISSING_TYPE *fadeView;
     MISSING_TYPE *gradientSubscriber;
-    MISSING_TYPE *profileGradientsProvider;
+    MISSING_TYPE *gradientColorProvider;
     MISSING_TYPE *$__lazy_storage_$_previewSummariesLabel;
 }
 
 - (void).cxx_destruct;
 - (id)initWithCollectionViewLayout:(id)arg1;
-- (void)traitCollectionDidChange:(id)arg1;
-- (void)scrollViewDidScroll:(id)arg1;
 - (void)doneButtonTapped:(id)arg1;
+- (void)viewWillLayoutSubviews;
 - (void)viewDidLoad;
 - (id)initWithCoder:(id)arg1;
 - (void)ttrButtonTapped;

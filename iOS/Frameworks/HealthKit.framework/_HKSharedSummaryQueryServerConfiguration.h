@@ -6,17 +6,21 @@
 
 #import "HKQueryServerConfiguration.h"
 
-@class HKSharedSummaryTransaction, NSString;
+@class HKSharedSummaryTransaction, NSSet, NSString;
 
 __attribute__((visibility("hidden")))
 @interface _HKSharedSummaryQueryServerConfiguration : HKQueryServerConfiguration
 {
     HKSharedSummaryTransaction *_transaction;
     NSString *_package;
+    NSSet *_includedIdentifiers;
+    NSSet *_includedObjectTypes;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSSet *includedObjectTypes; // @synthesize includedObjectTypes=_includedObjectTypes;
+@property(copy, nonatomic) NSSet *includedIdentifiers; // @synthesize includedIdentifiers=_includedIdentifiers;
 @property(copy, nonatomic) NSString *package; // @synthesize package=_package;
 @property(copy, nonatomic) HKSharedSummaryTransaction *transaction; // @synthesize transaction=_transaction;
 - (void)encodeWithCoder:(id)arg1;

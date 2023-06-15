@@ -6,11 +6,11 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class FBSDisplayConfigurationBuilder, FBSDisplayIdentity;
+@class FBSDisplayConfiguration, FBSDisplayConfigurationBuilder, FBSDisplayIdentity;
 @protocol SBSceneHostingDisplayControllerPolicy;
 
 @protocol SBSceneHostingDisplayControllerPolicyFactory <NSObject>
-- (void)transformDisplayForControllersWithBuilder:(FBSDisplayConfigurationBuilder *)arg1;
+- (void)transformDisplayConfiguration:(FBSDisplayConfiguration *)arg1 forControllersWithBuilder:(FBSDisplayConfigurationBuilder *)arg2;
 - (id <SBSceneHostingDisplayControllerPolicy>)policyForConnectingDisplay:(FBSDisplayIdentity *)arg1;
 @end
 

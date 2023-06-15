@@ -10,16 +10,17 @@
 
 @interface _TtC15SeymourServices16HealthDataSystem : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *$defaultActor;
     MISSING_TYPE *persistenceStore;
-    MISSING_TYPE *healthKitMindfulSessionDataStore;
-    MISSING_TYPE *healthKitWorkoutDataStore;
     MISSING_TYPE *syncCoordinator;
     MISSING_TYPE *eventHub;
     MISSING_TYPE *subscriptionToken;
     MISSING_TYPE *healthKitMindfulSessionService;
     MISSING_TYPE *healthKitWorkoutService;
     MISSING_TYPE *configurationDataStore;
+    MISSING_TYPE *estimatedCalories;
     MISSING_TYPE *platform;
+    MISSING_TYPE *lock;
 }
 
 @end

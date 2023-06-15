@@ -35,6 +35,8 @@ __attribute__((visibility("hidden")))
     unsigned short _ethnicityType;
     unsigned short _gazeType;
     int _trainingType;
+    float _gazeAngle;
+    float _gazeConfidence;
     NSString *_localIdentifier;
     NSString *_personLocalIdentifier;
     long long _sourceWidth;
@@ -53,6 +55,7 @@ __attribute__((visibility("hidden")))
     double _poseYaw;
     unsigned long long _algorithmVersion;
     long long _clusterSequenceNumber;
+    long long _vuObservationID;
     long long _qualityMeasure;
     double _gazeCenterX;
     double _gazeCenterY;
@@ -60,13 +63,24 @@ __attribute__((visibility("hidden")))
     VCPVNImageprintWrapper *_imageprintWrapper;
     double _roll;
     double _quality;
+    struct CGRect _gazeRect;
 }
 
 + (_Bool)_isColocatingAnimalObservation:(id)arg1 withFaceObservations:(id)arg2 orTorsoObservations:(id)arg3;
 + (double)_calculateIoUBetweenObservation:(id)arg1 andObservation:(id)arg2;
-+ (double)_calculateOverlappingBetweenFaceObservation:(id)arg1 andHumanObservation:(id)arg2;
++ (double)_calculateOverlappingBetweenFaceObservation:(id)arg1 andBodyObservation:(id)arg2;
 + (id)facesFromPHFetchResult:(id)arg1 copyOption:(long long)arg2;
 + (id)faceFromPHFace:(id)arg1 copyOption:(long long)arg2;
++ (id)facesFromFaceObservations:(id)arg1 humanObservations:(id)arg2 animalHeadObservations:(id)arg3 animalBodyObservations:(id)arg4 sourceWidth:(unsigned long long)arg5 sourceHeight:(unsigned long long)arg6 visionRequests:(id)arg7 blurScorePerFace:(id)arg8 exposureScorePerFace:(id)arg9 tooSmallFaceObservations:(id)arg10 processingVersion:(int)arg11 animalResults:(id *)arg12;
++ (id)_animalHeadsOnlyFromAnimalHeadObservations:(id)arg1 matchedHead:(set_a5418947)arg2 sourceWidth:(unsigned long long)arg3 sourceHeight:(unsigned long long)arg4 visionRequests:(id)arg5 processingVersion:(int)arg6;
++ (id)_animalBodiesOnlyFromAnimalBodyObservations:(id)arg1 matchedBody:(set_a5418947)arg2 sourceWidth:(unsigned long long)arg3 sourceHeight:(unsigned long long)arg4 visionRequests:(id)arg5 processingVersion:(int)arg6;
++ (id)_animalHeadsBodiesFromAnimalHeadObservations:(id)arg1 animalBodyObservations:(id)arg2 matchedHead:(void *)arg3 matchedBody:(void *)arg4 sourceWidth:(unsigned long long)arg5 sourceHeight:(unsigned long long)arg6 visionRequests:(id)arg7 processingVersion:(int)arg8;
++ (id)faceFromAnimalHeadObservation:(id)arg1 animalBodyObservation:(id)arg2 animalLabel:(id)arg3 sourceWidth:(unsigned long long)arg4 sourceHeight:(unsigned long long)arg5 visionRequests:(id)arg6 processingVersion:(int)arg7;
++ (id)_animalImageprintWrapperFromObservation:(id)arg1 visionRequests:(id)arg2 processingVersion:(int)arg3;
++ (id)_filterAnimalObservations:(id)arg1 colocatingWithFaceObservations:(id)arg2 orHumanObservations:(id)arg3;
++ (id)_peopleTorsosOnlyFromHumanObservations:(id)arg1 matchedTorso:(set_a5418947)arg2 sourceWidth:(unsigned long long)arg3 sourceHeight:(unsigned long long)arg4 visionRequests:(id)arg5 processingVersion:(int)arg6;
++ (id)_peopleFacesOnlyFromFaceObservations:(id)arg1 matchedFace:(set_a5418947)arg2 sourceWidth:(unsigned long long)arg3 sourceHeight:(unsigned long long)arg4 visionRequests:(id)arg5 blurScorePerFace:(id)arg6 exposureScorePerFace:(id)arg7 tooSmallFaceObservations:(id)arg8 processingVersion:(int)arg9;
++ (id)_peopleFacesTorsosFromFaceObservations:(id)arg1 humanObservations:(id)arg2 matchedFace:(void *)arg3 matchedTorso:(void *)arg4 sourceWidth:(unsigned long long)arg5 sourceHeight:(unsigned long long)arg6 visionRequests:(id)arg7 blurScorePerFace:(id)arg8 exposureScorePerFace:(id)arg9 tooSmallFaceObservations:(id)arg10 processingVersion:(int)arg11;
 + (id)facesFromFaceObservations:(id)arg1 humanObservations:(id)arg2 animalObservations:(id)arg3 sourceWidth:(unsigned long long)arg4 sourceHeight:(unsigned long long)arg5 visionRequests:(id)arg6 blurScorePerFace:(id)arg7 exposureScorePerFace:(id)arg8 tooSmallFaceObservations:(id)arg9 processingVersion:(int)arg10;
 + (id)faceFromFaceObservation:(id)arg1 humanObservation:(id)arg2 sourceWidth:(unsigned long long)arg3 sourceHeight:(unsigned long long)arg4 visionRequests:(id)arg5 processingVersion:(int)arg6 force:(_Bool)arg7 andError:(id *)arg8;
 + (id)faceWithLocalIdentifier:(id)arg1;
@@ -75,6 +89,9 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) double roll; // @synthesize roll=_roll;
 @property(retain, nonatomic) VCPVNImageprintWrapper *imageprintWrapper; // @synthesize imageprintWrapper=_imageprintWrapper;
 @property(copy, nonatomic) NSString *groupingIdentifier; // @synthesize groupingIdentifier=_groupingIdentifier;
+@property(nonatomic) float gazeConfidence; // @synthesize gazeConfidence=_gazeConfidence;
+@property(nonatomic) float gazeAngle; // @synthesize gazeAngle=_gazeAngle;
+@property(nonatomic) struct CGRect gazeRect; // @synthesize gazeRect=_gazeRect;
 @property(nonatomic) double gazeCenterY; // @synthesize gazeCenterY=_gazeCenterY;
 @property(nonatomic) double gazeCenterX; // @synthesize gazeCenterX=_gazeCenterX;
 @property(nonatomic) unsigned short gazeType; // @synthesize gazeType=_gazeType;
@@ -93,6 +110,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned short sexType; // @synthesize sexType=_sexType;
 @property(nonatomic) unsigned short ageType; // @synthesize ageType=_ageType;
 @property(nonatomic) long long qualityMeasure; // @synthesize qualityMeasure=_qualityMeasure;
+@property(nonatomic) long long vuObservationID; // @synthesize vuObservationID=_vuObservationID;
 @property(nonatomic) long long clusterSequenceNumber; // @synthesize clusterSequenceNumber=_clusterSequenceNumber;
 @property(nonatomic) unsigned long long algorithmVersion; // @synthesize algorithmVersion=_algorithmVersion;
 @property(nonatomic) double poseYaw; // @synthesize poseYaw=_poseYaw;
@@ -136,6 +154,7 @@ __attribute__((visibility("hidden")))
 - (long long)photosFaceRepresentationSourceWidth;
 - (long long)qualityMeasureWithCountOfFacesOnAsset:(unsigned long long)arg1;
 - (id)gist;
+- (struct CGRect)normalizedBodyRect;
 - (struct CGRect)normalizedFaceRect;
 - (_Bool)setCenterAndSizeFromNormalizedFaceRect:(struct CGRect)arg1;
 - (void)replaceCoordinatesAndFeaturesFromDetectedFace:(id)arg1;

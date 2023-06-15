@@ -24,8 +24,10 @@ __attribute__((visibility("hidden")))
     _Bool _controlAuthorizedOnce;
 }
 
+@property(retain, nonatomic) NSMutableDictionary *devices; // @synthesize devices=_devices;
 @property(retain, nonatomic) NSXPCConnection *managerConnection; // @synthesize managerConnection=_managerConnection;
 @property(retain) NSOperationQueue *deviceOperations; // @synthesize deviceOperations=_deviceOperationQueue;
+- (void)setDeviceOperationQueueMaxConcurrentOperationCount:(unsigned long long)arg1;
 - (void)setDeviceOperationQueueName:(id)arg1;
 - (void)resumeOperations;
 - (void)suspendOperations;
@@ -40,11 +42,13 @@ __attribute__((visibility("hidden")))
 - (void)ejectImp:(id)arg1;
 - (void)downloadFileImp:(id)arg1;
 - (void)deleteFileImp:(id)arg1;
+- (void)getSecurityScopedURLImp:(id)arg1;
 - (void)getFileDataImp:(id)arg1;
 - (void)getFileMetadataImp:(id)arg1;
 - (void)getFileThumbnailImp:(id)arg1;
 - (void)syncClockImp:(id)arg1;
 - (void)openDeviceImp:(id)arg1;
+- (long long)getSecurityScopedURL:(id)arg1 fromDevice:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (long long)ejectDevice:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (long long)unregisterDevice:(id)arg1 forImageCaptureEventNotifications:(id)arg2;
 - (long long)registerDevice:(id)arg1 forImageCaptureEventNotifications:(id)arg2;

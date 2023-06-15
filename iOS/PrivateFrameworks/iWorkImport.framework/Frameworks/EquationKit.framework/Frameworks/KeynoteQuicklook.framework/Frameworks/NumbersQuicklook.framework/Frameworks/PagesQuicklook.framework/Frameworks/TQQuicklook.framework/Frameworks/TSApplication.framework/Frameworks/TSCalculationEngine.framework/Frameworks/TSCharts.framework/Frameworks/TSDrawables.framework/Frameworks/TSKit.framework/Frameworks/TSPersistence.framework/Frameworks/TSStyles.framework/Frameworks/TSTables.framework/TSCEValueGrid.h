@@ -12,6 +12,8 @@
     struct TSCEGridCoord _topLeftCoord;
     struct TSCEGridDimensions _dimensions;
     struct unordered_map<TSCEGridCoord, TSCEValue, std::hash<TSCEGridCoord>, std::equal_to<TSCEGridCoord>, std::allocator<std::pair<const TSCEGridCoord, TSCEValue>>> _valueForCoord;
+    struct TSUIndexSet *_populatedColumns;
+    struct TSUIndexSet *_populatedRows;
 }
 
 - (id).cxx_construct;
@@ -48,6 +50,7 @@
 @property(readonly, nonatomic) struct TSCEGridDimensions dimensions;
 @property(readonly, nonatomic) unsigned long long count;
 @property(readonly, nonatomic) struct TSCEGridCoord topLeftCoord;
+- (void)dealloc;
 - (id)initWithValueVector:(const void *)arg1 dimensions:(const struct TSCEGridDimensions *)arg2;
 - (id)initWithValueVector:(const void *)arg1;
 - (id)initWithColumnRange:(struct _NSRange)arg1 rowRange:(struct _NSRange)arg2;

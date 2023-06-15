@@ -35,6 +35,7 @@
 - (void)_mapkit_insertSubview:(id)arg1 aboveSubview:(id)arg2;
 - (double)_mapkit_trailingMargin;
 - (double)_mapkit_leadingMargin;
+@property(readonly, nonatomic) long long _mapkit_userInterfaceDirection;
 - (_Bool)_mapkit_YCoordinate:(double)arg1 liesInDirection:(long long)arg2 startingFromYCoordinate:(double)arg3;
 - (double)_mapkit_YCoordinateAtDistance:(double)arg1 inDirection:(long long)arg2 fromYCoordinate:(double)arg3;
 - (struct CGRect)_mapkit_rectWithSize:(struct CGSize)arg1 XCoordinate:(double)arg2 atDistance:(double)arg3 inDirection:(long long)arg4 fromEdge:(long long)arg5;

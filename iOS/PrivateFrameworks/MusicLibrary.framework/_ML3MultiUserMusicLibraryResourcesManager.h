@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 @interface _ML3MultiUserMusicLibraryResourcesManager
 {
     NSString *_cachedLibraryContainerPath;
+    NSString *_cachedMusicContainerPath;
     NSObject<OS_dispatch_queue> *_serialQueue;
     id <MLMediaLibraryResourcesServiceProtocol> _libraryResourcesServices;
 }
@@ -22,6 +23,8 @@ __attribute__((visibility("hidden")))
 - (void)emergencyDisconnectWithCompletion:(CDUnknownBlockType)arg1;
 - (void)performDatabasePathChange:(id)arg1 completion:(CDUnknownBlockType)arg2;
 @property(copy, nonatomic) NSString *cachedLibraryContainerPath; // @synthesize cachedLibraryContainerPath=_cachedLibraryContainerPath;
+@property(copy, nonatomic) NSString *cachedMusicContainerPath; // @synthesize cachedMusicContainerPath=_cachedMusicContainerPath;
+- (id)musicAssetsContainerPath;
 - (id)libraryContainerPath;
 - (id)initWithLibraryResourcesService:(id)arg1;
 

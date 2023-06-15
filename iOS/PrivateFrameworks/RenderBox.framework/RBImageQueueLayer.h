@@ -9,13 +9,13 @@
 __attribute__((visibility("hidden")))
 @interface RBImageQueueLayer : CALayer
 {
-    struct cf_ptr<_CAImageQueue *> _queue;
+    struct objc_ptr<RBImageQueueContents *> _queue;
 }
 
 + (id)defaultValueForKey:(id)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)dealloc;
+- (id)actionForKey:(id)arg1;
 
 @end
 

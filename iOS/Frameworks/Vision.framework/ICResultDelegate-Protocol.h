@@ -9,6 +9,7 @@
 @protocol ICResultDelegate
 
 @optional
+- (void)ICReportL1Correction:(NSArray *)arg1 forPresentationTime:(CDStruct_1b6d18a9)arg2 withStats:(NSDictionary *)arg3;
 - (void)ICReportFrameAnalysis:(NSArray *)arg1 forPresentationTime:(CDStruct_1b6d18a9)arg2 withStats:(NSDictionary *)arg3;
 @end
 

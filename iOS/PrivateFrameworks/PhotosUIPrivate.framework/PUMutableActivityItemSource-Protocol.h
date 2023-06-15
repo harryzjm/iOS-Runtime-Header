@@ -7,7 +7,7 @@
 #import <PhotosUIPrivate/NSObject-Protocol.h>
 
 @protocol PUMutableActivityItemSource <NSObject>
-@property(nonatomic) CDStruct_516723a0 sharingPreferences;
+@property(nonatomic) CDStruct_5a73b017 sharingPreferences;
 @property(nonatomic) unsigned long long state;
 @end
 

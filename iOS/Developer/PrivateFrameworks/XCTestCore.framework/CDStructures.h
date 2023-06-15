@@ -38,6 +38,10 @@ struct exception_ptr {
     void *__ptr_;
 };
 
+struct os_unfair_lock_s {
+    unsigned int _os_unfair_lock_opaque;
+};
+
 struct time_value {
     int seconds;
     int microseconds;

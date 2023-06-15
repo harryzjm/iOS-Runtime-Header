@@ -8,5 +8,6 @@
 
 @interface SAUIAddViews (SRUIFDialogPhase)
 - (id)sruif_dialogPhase;
+- (long long)sruif_usefulUserResultType;
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIButton.h>
+#import <UIKitCore/UIButton.h>
 
 __attribute__((visibility("hidden")))
 @interface ASCAdTransparencyButtonView : UIButton
@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
 + (id)adTransparencyButtonImage;
 + (id)selectedTitleColor;
 + (id)titleColor;
-- (void)traitCollectionDidChange:(id)arg1;
+- (void)onPreferredContentSizeCategoryChange;
 - (void)updateInsets;
 - (void)updateFont;
 - (void)setLoading:(_Bool)arg1;

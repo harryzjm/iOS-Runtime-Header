@@ -9,6 +9,8 @@
 @class CNContact, NSString;
 
 @protocol AACNContactsManager <NSObject>
+- (void)idsStatusForHandle:(NSString *)arg1 completion:(void (^)(_Bool))arg2;
+- (CNContact *)contactForMe;
 - (CNContact *)contactForHandle:(NSString *)arg1;
 - (NSString *)contactIDForHandle:(NSString *)arg1;
 @end

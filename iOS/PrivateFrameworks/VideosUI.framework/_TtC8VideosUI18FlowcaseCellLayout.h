@@ -15,6 +15,7 @@
     MISSING_TYPE *$__lazy_storage_$_alphaImageLayout;
     MISSING_TYPE *$__lazy_storage_$_logoImageLayout;
     MISSING_TYPE *badgeLayout;
+    MISSING_TYPE *$__lazy_storage_$_scoreboardLayout;
 }
 
 @end

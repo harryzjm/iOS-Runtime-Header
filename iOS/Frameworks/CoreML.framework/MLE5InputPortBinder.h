@@ -6,20 +6,29 @@
 
 #import <objc/NSObject.h>
 
-@class MLFeatureValue, NSString;
+@class MLFeatureDescription, MLFeatureValue, MLPixelBufferPool, NSString;
 
 __attribute__((visibility("hidden")))
 @interface MLE5InputPortBinder : NSObject
 {
+    struct __CVBuffer *_temporarilyBoundPixelBuffer;
+    _Bool _boundFeatureDirectly;
+    MLPixelBufferPool *_pixelBufferPool;
     struct e5rt_io_port *_portHandle;
+    MLFeatureDescription *_featureDescription;
     MLFeatureValue *_featureValue;
 }
 
 - (void).cxx_destruct;
 @property(retain) MLFeatureValue *featureValue; // @synthesize featureValue=_featureValue;
+@property(readonly) MLFeatureDescription *featureDescription; // @synthesize featureDescription=_featureDescription;
 @property(readonly) struct e5rt_io_port *portHandle; // @synthesize portHandle=_portHandle;
-- (_Bool)bindFeatureValue:(id)arg1 error:(id *)arg2;
-- (id)initWithPort:(struct e5rt_io_port *)arg1;
+@property(readonly, nonatomic) _Bool boundFeatureDirectly; // @synthesize boundFeatureDirectly=_boundFeatureDirectly;
+@property(retain, nonatomic) MLPixelBufferPool *pixelBufferPool; // @synthesize pixelBufferPool=_pixelBufferPool;
+- (void)reset;
+- (_Bool)copyFeatureValueToPortAndReturnError:(id *)arg1;
+- (_Bool)bindMemoryObjectToPort:(id)arg1 error:(id *)arg2;
+- (id)initWithPort:(struct e5rt_io_port *)arg1 featureDescription:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

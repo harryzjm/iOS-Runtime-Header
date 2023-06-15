@@ -12,7 +12,7 @@
 {
     MISSING_TYPE *enumerator;
     MISSING_TYPE *handleToIDMap;
-    MISSING_TYPE *eventsToKeep;
+    MISSING_TYPE *mechanismsWithoutParticipantStatusToKeep;
 }
 
 @end

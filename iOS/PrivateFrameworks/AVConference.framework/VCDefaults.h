@@ -6,6 +6,8 @@
 
 #import <objc/NSObject.h>
 
+@class NSString;
+
 __attribute__((visibility("hidden")))
 @interface VCDefaults : NSObject
 {
@@ -34,12 +36,18 @@ __attribute__((visibility("hidden")))
 @property(readonly) _Bool forceWiFiAssistOutOfBudget; // @synthesize forceWiFiAssistOutOfBudget=_forceWiFiAssistOutOfBudget;
 @property(readonly) _Bool forceWiFiAssist; // @synthesize forceWiFiAssist=_forceWiFiAssist;
 @property(readonly) _Bool isFECVersion2Enabled; // @synthesize isFECVersion2Enabled=_isFECVersion2Enabled;
+- (_Bool)forceEnableAudioMockInputPathForAppleTV;
 - (_Bool)forceUseInternalRTPThreadingWithDefaultValue:(_Bool)arg1;
 @property(readonly) double remoteMediaStallTimeout;
 @property(readonly) unsigned int prominenceInactiveAccumulationThreshold;
 @property(readonly) unsigned int prominenceInactiveProbabilityThreshold;
 @property(readonly) unsigned int prominenceActiveAccumulationThreshold;
 @property(readonly) unsigned int prominenceActiveProbabilityThreshold;
+@property(readonly) NSString *virtualHardware;
+@property(readonly) _Bool useCannedVideoPackets;
+@property(readonly) unsigned char cannedVideoPacketMode;
+@property(readonly) _Bool useVirtualCapture;
+@property(readonly) _Bool forceDisableSSRCCollisionDetection;
 @property(readonly) _Bool forceDisableProcessSpecificRequirements;
 @property(readonly) _Bool forceDisableReporting;
 @property(readonly) _Bool forceDisableMessageEncryption;
@@ -118,6 +126,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) int forceVideoStreamTxMinBitrate;
 @property(readonly) int forceVideoStreamTxMaxBitrate;
 @property(readonly) int forceVideoStreamResolution;
+@property(readonly) _Bool offerAnetecCodecEnabled;
 @property(readonly) unsigned int aacBlockSize;
 @property(readonly) _Bool useSBR;
 @property(readonly) int forceRedMaxDelay;
@@ -137,6 +146,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) _Bool disableVAD;
 @property(readonly) _Bool canDecodeHD;
 @property(readonly) int encodingScore;
+@property(readonly) _Bool isTransmitterTestVerificationEnabled;
 @property(readonly) _Bool enableTxTimestampAlignmentLogs;
 @property(readonly) int extraPayloads;
 @property(readonly) _Bool enablePacketLogging;

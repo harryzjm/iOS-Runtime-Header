@@ -28,6 +28,8 @@
 - (id)_arrayDescription:(id)arg1 shouldRedact:(_Bool)arg2;
 - (id)_propertyDescriptionForProperty:(id)arg1 shouldRedact:(_Bool)arg2;
 - (void)addFlagsForKey:(id)arg1 flagsAndConditions:(id)arg2;
+- (void)addBooleanProperty:(id)arg1 value:(_Bool)arg2 defaultValue:(long long)arg3;
+- (void)addBooleanProperty:(id)arg1 value:(_Bool)arg2;
 - (void)_addProperty:(id)arg1 value:(id)arg2 shouldRedact:(_Bool)arg3;
 - (void)addPropertyIfExists:(id)arg1 value:(id)arg2 shouldRedact:(_Bool)arg3;
 - (void)addProperty:(id)arg1 value:(id)arg2 shouldRedact:(_Bool)arg3;

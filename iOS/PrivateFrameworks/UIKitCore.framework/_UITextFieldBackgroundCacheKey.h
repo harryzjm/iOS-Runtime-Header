@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UITextFieldBackgroundCacheKey : NSObject <NSCopying>
+@interface _UITextFieldBackgroundCacheKey : NSObject
 {
     NSString *_className;
     double _scale;

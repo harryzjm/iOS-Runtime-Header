@@ -11,7 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)captionButtonProperties;
++ (id)captionButtonPropertiesForOrders;
++ (id)captionButtonPropertiesForPasses;
 
 @end
 

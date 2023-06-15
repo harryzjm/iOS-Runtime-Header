@@ -21,8 +21,8 @@
 - (void)setClientFocusContext:(UIKBArbiterClientFocusContext *)arg1;
 - (void)setWantsFencing:(_Bool)arg1;
 - (void)setWindowContextID:(unsigned int)arg1 focusContext:(UIKBArbiterClientFocusContext *)arg2 windowState:(unsigned long long)arg3 withLevel:(double)arg4;
-- (void)startArbitrationWithExpectedState:(_UIKeyboardChangedInformation *)arg1 focusContext:(UIKBArbiterClientFocusContext *)arg2 hostingPIDs:(NSArray *)arg3 usingFence:(_Bool)arg4 withSuppression:(int)arg5 onConnected:(void (^)(_UIKeyboardChangedInformation *, long long, _Bool))arg6;
-- (void)startArbitrationWithExpectedState:(_UIKeyboardChangedInformation *)arg1 hostingPIDs:(NSArray *)arg2 usingFence:(_Bool)arg3 withSuppression:(int)arg4 onConnected:(void (^)(_UIKeyboardChangedInformation *, long long, _Bool))arg5;
+- (void)startArbitrationWithExpectedState:(_UIKeyboardChangedInformation *)arg1 focusContext:(UIKBArbiterClientFocusContext *)arg2 hostingPIDs:(NSArray *)arg3 usingFence:(_Bool)arg4 withSuppression:(int)arg5 onConnected:(void (^)(_UIKeyboardChangedInformation *, _UIKeyboardUIInformation *, long long, _Bool))arg6;
+- (void)startArbitrationWithExpectedState:(_UIKeyboardChangedInformation *)arg1 hostingPIDs:(NSArray *)arg2 usingFence:(_Bool)arg3 withSuppression:(int)arg4 onConnected:(void (^)(_UIKeyboardChangedInformation *, _UIKeyboardUIInformation *, long long, _Bool))arg5;
 - (void)setDeactivating:(_Bool)arg1;
 - (void)retrieveMoreDebugInformationWithCompletion:(void (^)(NSArray *))arg1;
 - (void)retrieveDebugInformation:(void (^)(NSString *))arg1;

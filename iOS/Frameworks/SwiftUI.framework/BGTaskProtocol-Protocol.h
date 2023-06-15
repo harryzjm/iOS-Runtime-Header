@@ -7,7 +7,7 @@
 #import <SwiftUI/NSObject-Protocol.h>
 
 @protocol BGTaskProtocol <NSObject>
+@property(copy) CDUnknownBlockType expirationHandler;
 - (void)setTaskCompletedWithSuccess:(_Bool)arg1;
-@property(nonatomic, copy) CDUnknownBlockType expirationHandler;
 @end
 

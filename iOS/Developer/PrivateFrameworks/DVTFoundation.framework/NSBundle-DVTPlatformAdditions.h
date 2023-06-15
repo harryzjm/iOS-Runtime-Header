@@ -22,9 +22,9 @@
 + (id)dvt_uncachedPathForResource:(id)arg1 ofType:(id)arg2 atBundlePath:(id)arg3;
 + (id)dvt_uncachedInfoAtPath:(id)arg1;
 + (id)dvt_uncachedInfoAtURL:(id)arg1;
-+ (id)_uncachedValueForKey:(const struct __CFString *)arg1 atURL:(id)arg2;
++ (id)_uncachedValueForKey:(struct __CFString *)arg1 atURL:(id)arg2;
 + (struct __CFBundle *)dvt_createUncachedBundleAtURL:(id)arg1;
-+ (id)_uncachedBundleStringForKey:(const struct __CFString *)arg1 AtURL:(id)arg2;
++ (id)_uncachedBundleStringForKey:(struct __CFString *)arg1 AtURL:(id)arg2;
 + (id)dvt_uncachedValueForKey:(id)arg1 inBundleAtPath:(id)arg2;
 + (id)dvt_uncachedExtensionInfoAtPath:(id)arg1;
 + (id)dvt_uncachedBundleExecutableAtPath:(id)arg1;

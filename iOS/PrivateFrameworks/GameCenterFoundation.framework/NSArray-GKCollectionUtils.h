@@ -7,7 +7,6 @@
 #import <Foundation/NSArray.h>
 
 @interface NSArray (GKCollectionUtils)
-+ (id)_gkArrayWithIndexSet:(id)arg1;
 - (id)_gkFoldWithInitialValue:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (id)_gkFirstObject;
 - (id)_gkDistinctValuesForKeyPath:(id)arg1;
@@ -18,7 +17,6 @@
 - (id)_gkFilterWithBlock:(CDUnknownBlockType)arg1;
 - (id)_gkMapWithBlock:(CDUnknownBlockType)arg1;
 - (id)_gkMapConcurrentlyWithBlock:(CDUnknownBlockType)arg1;
-- (id)_gkOrderedSet;
 - (id)_gkDescriptionWithChildren:(long long)arg1;
 - (void)_gkValidatePlayersForReturnFromAPI;
 - (id)_gkInternalsFromPlayers;

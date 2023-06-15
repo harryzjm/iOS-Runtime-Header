@@ -36,6 +36,9 @@ __attribute__((visibility("hidden")))
 - (void)handlePlaybackStateRequestWithCompletion:(CDUnknownBlockType)arg1;
 - (void)handleSupportedCommandsRequestWithCompletion:(CDUnknownBlockType)arg1;
 - (void)enqueuePlaybackQueueRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)updateSupportedCommandsIfUninitialized:(id)arg1;
+- (void)updatePlaybackStateIfUninitialized:(unsigned int)arg1;
+- (void)updatePlaybackQueueIfUninitialized:(id)arg1;
 - (void)updateContentItemArtwork:(id)arg1;
 - (void)updateContentItems:(id)arg1;
 @property(copy, nonatomic) MRPlayer *playerProperties;

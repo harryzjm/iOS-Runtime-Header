@@ -12,7 +12,6 @@
 {
     MISSING_TYPE *isMenuItemEnabled;
     MISSING_TYPE *isMenuItemBoundToEnabled;
-    MISSING_TYPE *meshesQuery;
 }
 
 @end

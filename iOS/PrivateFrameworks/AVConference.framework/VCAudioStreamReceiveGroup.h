@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class TimingCollection, VCAudioCaptionsCoordinator, VCAudioStreamGroupCommon;
+@class VCAudioStreamGroupCommon;
 @protocol VCMediaStreamSyncSource;
 
 __attribute__((visibility("hidden")))
@@ -18,12 +18,11 @@ __attribute__((visibility("hidden")))
     float _averageOutputPower;
     unsigned long long _speakerProcsCalled;
     unsigned long long _syncTargetCalled;
-    TimingCollection *_perfTimers;
     _Bool _haveReportedPerfTimers;
-    VCAudioCaptionsCoordinator *_captionsCoordinator;
+    _Bool _didRegisterAsAudioSessionObserver;
+    double _syncDestinationOutputLatency;
 }
 
-@property(retain, nonatomic) VCAudioCaptionsCoordinator *captionsCoordinator; // @synthesize captionsCoordinator=_captionsCoordinator;
 - (void)reportParticipantsPerfTimingsOnce;
 - (void)mediaStream:(id)arg1 didReceiveNewMediaKeyIndex:(id)arg2;
 - (void)vcMediaStream:(id)arg1 didReceiveFirstFrameWithTime:(CDStruct_1b6d18a9)arg2;
@@ -34,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (id)startCapture;
 @property(readonly) id <VCMediaStreamSyncSource> syncSource;
 - (void)setMuteOnStreams;
+- (void)dispatchedUpdateOutputLatencyForSyncDestinations:(double)arg1;
 - (_Bool)removeSyncDestination:(id)arg1;
 - (_Bool)addSyncDestination:(id)arg1;
 - (void)didStop;
@@ -45,6 +45,7 @@ __attribute__((visibility("hidden")))
 - (void)collectAndLogChannelMetrics:(CDStruct_b671a7c4 *)arg1;
 - (_Bool)configureStreams;
 @property(nonatomic, setter=setMuted:) _Bool isMuted;
+@property(nonatomic) unsigned int audioChannelIndex;
 @property(setter=setPowerSpectrumEnabled:) _Bool isPowerSpectrumEnabled;
 @property(readonly, nonatomic) int deviceRole;
 - (_Bool)setDeviceRole:(int)arg1 operatingMode:(int)arg2;

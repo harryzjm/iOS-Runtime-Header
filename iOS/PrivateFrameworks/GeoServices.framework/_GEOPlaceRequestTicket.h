@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-- (CDStruct_d1a7ebee)dataRequestKind;
+- (CDStruct_026435ec)dataRequestKind;
 - (id)resultSectionHeader;
 - (void)applyToPlaceInfo:(id)arg1;
 - (void)applyToCorrectedSearch:(id)arg1;

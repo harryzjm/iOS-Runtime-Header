@@ -11,6 +11,7 @@
 @property(readonly, nonatomic) struct CGSize backingSize;
 @property __weak id <GGLLayerDelegate> renderDelegate;
 - (void)didEnterBackground;
+- (void)onTimerFired:(double)arg1 presentAtTime:(double)arg2;
 - (void)onTimerFired:(double)arg1;
 @end
 

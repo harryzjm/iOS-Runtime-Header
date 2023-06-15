@@ -12,9 +12,11 @@ __attribute__((visibility("hidden")))
 @interface RBSEmbeddedAppProcessIdentity : RBSProcessIdentity
 {
     NSString *_embeddedApplicationIdentifier;
+    NSString *_personaString;
 }
 
 - (void).cxx_destruct;
+- (id)personaString;
 - (id)embeddedApplicationIdentifier;
 - (_Bool)treatedAsAnAppByFrontBoard:(id *)arg1;
 - (_Bool)supportsLaunchingDirectly;
@@ -28,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (id)debugDescription;
 - (_Bool)_matchesIdentity:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
+- (id)copyWithPersonaString:(id)arg1;
 - (id)copyWithAuid:(unsigned int)arg1;
 
 @end

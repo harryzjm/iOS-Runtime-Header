@@ -10,6 +10,8 @@
 @protocol AVOutputDeviceImplSupport;
 
 @protocol AVOutputDeviceImpl <NSObject>
+@property(readonly, nonatomic, getter=isConversationDetectionEnabled) _Bool conversationDetectionEnabled;
+@property(readonly, nonatomic) _Bool supportsConversationDetection;
 @property(readonly, nonatomic) NSString *currentBluetoothListeningMode;
 @property(readonly, nonatomic) NSArray *availableBluetoothListeningModes;
 @property(readonly, nonatomic, getter=isHeadTrackedSpatialAudioActive) _Bool headTrackedSpatialAudioActive;
@@ -33,6 +35,8 @@
 @property(readonly, copy, nonatomic) NSString *groupID;
 @property(readonly, nonatomic) _Bool canBeGrouped;
 @property(readonly) long long volumeControlType;
+@property(getter=isMuted) _Bool muted;
+@property(readonly) _Bool canMute;
 @property(readonly) _Bool canSetVolume;
 @property(readonly) float volume;
 @property(readonly, nonatomic) _Bool supportsBufferedAirPlay;
@@ -57,8 +61,6 @@
 @property(readonly, nonatomic) _Bool producesLowFidelityAudio;
 @property(readonly, nonatomic) NSString *clusterID;
 @property(readonly, nonatomic) _Bool isClusterLeader;
-@property(readonly, nonatomic) NSArray *allClusterMembers;
-@property(readonly, nonatomic) NSArray *activatedDeviceClusterMembers;
 @property(readonly, nonatomic) NSArray *clusteredDeviceDescriptions;
 @property(readonly, copy, nonatomic) NSData *identifyingMACAddress;
 @property(readonly, nonatomic) NSString *firmwareVersion;
@@ -75,8 +77,11 @@
 - (_Bool)supportsFitnessDataDestination;
 - (void)configureUsingBlock:(void (^)(id <AVOutputDeviceConfigurationModification>))arg1 options:(NSDictionary *)arg2 completionHandler:(void (^)(long long, id <AVOutputDeviceConfigurationRetrieval>, NSString *, NSError *))arg3;
 - (_Bool)setCurrentBluetoothListeningMode:(NSString *)arg1 error:(id *)arg2;
+- (_Bool)setConversationDetectionEnabled:(_Bool)arg1 error:(id *)arg2;
 - (_Bool)setHeadTrackedSpatialAudioMode:(NSString *)arg1 error:(id *)arg2;
 - (_Bool)setAllowsHeadTrackedSpatialAudio:(_Bool)arg1 error:(id *)arg2;
+- (float)volumeForActivatedDeviceClusterMembersWithRoomID:(NSString *)arg1;
+- (void)setActivatedDeviceClusterMembersVolume:(float)arg1 withRoomID:(NSString *)arg2;
 - (void)decreaseVolumeByCount:(long long)arg1;
 - (void)increaseVolumeByCount:(long long)arg1;
 - (void)setVolume:(float)arg1;

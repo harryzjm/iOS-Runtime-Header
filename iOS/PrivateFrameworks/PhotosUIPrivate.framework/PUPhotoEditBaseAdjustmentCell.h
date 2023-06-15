@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UICollectionViewCell.h>
+#import <UIKitCore/UICollectionViewCell.h>
 
 @class NSString, PUPhotoEditAdjustmentControl;
 
@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface PUPhotoEditBaseAdjustmentCell : UICollectionViewCell
 {
     NSString *_imageName;
+    _Bool _imageIsColor;
     _Bool _enabled;
     _Bool _isUserModifying;
     PUPhotoEditAdjustmentControl *_containerButton;
@@ -21,6 +22,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) PUPhotoEditAdjustmentControl *containerButton; // @synthesize containerButton=_containerButton;
 @property(nonatomic) _Bool isUserModifying; // @synthesize isUserModifying=_isUserModifying;
 @property(nonatomic, getter=isEnabled) _Bool enabled; // @synthesize enabled=_enabled;
+@property(nonatomic) _Bool imageIsColor; // @synthesize imageIsColor=_imageIsColor;
 @property(retain, nonatomic) NSString *imageName; // @synthesize imageName=_imageName;
 - (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
 - (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;

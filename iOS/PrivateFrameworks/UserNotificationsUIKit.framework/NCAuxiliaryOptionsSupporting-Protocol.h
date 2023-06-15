@@ -4,18 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UserNotificationsUIKit/NSObject-Protocol.h>
+#import <UserNotificationsUIKit/NCMaterialDisplaying-Protocol.h>
 
 @class NSArray, NSString, UIColor;
 
-@protocol NCAuxiliaryOptionsSupporting <NSObject>
+@protocol NCAuxiliaryOptionsSupporting <NCMaterialDisplaying>
 @property(readonly, nonatomic) NSArray *auxiliaryOptionButtons;
 @property(retain, nonatomic) NSArray *auxiliaryOptionActions;
 @property(copy, nonatomic) NSString *auxiliaryOptionsSummaryText;
 @property(nonatomic) _Bool auxiliaryOptionsVisible;
 
 @optional
-@property(copy, nonatomic) UIColor *auxiliaryOptionsTintColor;
 @property(copy, nonatomic) UIColor *auxiliaryOptionsTextColor;
 @end
 

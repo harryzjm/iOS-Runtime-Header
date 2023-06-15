@@ -7,9 +7,10 @@
 #import <UIKitCore/_UIViewServiceDeputy_UIViewServiceInterface-Protocol.h>
 #import <UIKitCore/_UIViewServiceUIBehaviorInterface-Protocol.h>
 
-@class BKSAnimationFenceHandle, BSMachPortSendRight, FBSDisplayConfiguration, FBSDisplayIdentity, NSArray, NSDate, NSDateInterval, NSString, UIColor, UITraitCollection, _UIBoundingPath, _UISheetPresentationControllerConfiguration, _UIViewControllerTransitionCoordinatorContextDescription, _UIViewServiceViewControllerOperatorCreateOptions;
+@class BKSAnimationFenceHandle, BSMachPortSendRight, FBSDisplayConfiguration, FBSDisplayIdentity, NSArray, NSDate, NSDateInterval, NSString, UIColor, UITraitCollection, _UIBoundingPath, _UIPhysicalButtonBSAction, _UIRemoteViewControllerSceneContext, _UISheetPresentationControllerConfiguration, _UIViewControllerTransitionCoordinatorContextDescription, _UIViewServiceViewControllerOperatorCreateOptions;
 
 @protocol _UIViewServiceViewControllerOperator_RemoteViewControllerInterface <_UIViewServiceDeputy_UIViewServiceInterface, _UIViewServiceUIBehaviorInterface>
+- (void)__hostDidReceivePhysicalButtonBSAction:(_UIPhysicalButtonBSAction *)arg1;
 - (void)__updateWithFrameSpecifierDate:(NSDate *)arg1 completion:(void (^)(void))arg2;
 - (void)__timelinesForDateInterval:(NSDateInterval *)arg1 completion:(void (^)(NSArray *))arg2;
 - (void)__cancelAlertActionWithToken:(long long)arg1;
@@ -49,6 +50,7 @@
 - (void)__setContentSize:(struct CGSize)arg1 boundingPath:(_UIBoundingPath *)arg2;
 - (void)__setSheetConfiguration:(_UISheetPresentationControllerConfiguration *)arg1;
 - (void)__setServiceInPopover:(_Bool)arg1;
+- (void)__hostDidUpdateSceneContext:(_UIRemoteViewControllerSceneContext *)arg1;
 - (void)__hostDidDetachDisplay:(FBSDisplayConfiguration *)arg1;
 - (void)__hostDidUpdateDisplay:(FBSDisplayConfiguration *)arg1;
 - (void)__hostDidAttachDisplay:(FBSDisplayConfiguration *)arg1;

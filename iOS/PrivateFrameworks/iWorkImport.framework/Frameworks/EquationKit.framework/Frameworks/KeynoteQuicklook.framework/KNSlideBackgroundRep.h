@@ -12,8 +12,6 @@
 {
     CALayer *_blackBackgroundLayer;
     _Bool _layerNeedsUpdate;
-    _Bool _showStaticFill;
-    _Bool _showMotionBackground;
 }
 
 + (id)magicMoveMatchesBetweenOutgoingObjects:(id)arg1 andIncomingObjects:(id)arg2 textureDescription:(id)arg3;

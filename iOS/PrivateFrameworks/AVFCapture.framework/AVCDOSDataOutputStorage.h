@@ -16,14 +16,13 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_synchronizedDataQueue;
     NSObject<OS_dispatch_queue> *_delegateOverrideCallbackQueue;
     NSMutableArray *_timestampAdjustmentsDataQueue;
-    NSMutableArray *_mdoTimeStampHistoryQueue;
 }
 
-@property(retain, nonatomic) NSMutableArray *mdoTimeStampHistoryQueue; // @synthesize mdoTimeStampHistoryQueue=_mdoTimeStampHistoryQueue;
 @property(retain, nonatomic) NSMutableArray *timestampAdjustmentsDataQueue; // @synthesize timestampAdjustmentsDataQueue=_timestampAdjustmentsDataQueue;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *delegateOverrideCallbackQueue; // @synthesize delegateOverrideCallbackQueue=_delegateOverrideCallbackQueue;
 @property(readonly, nonatomic) NSMutableArray *synchronizedDataQueue; // @synthesize synchronizedDataQueue=_synchronizedDataQueue;
 @property(readonly, nonatomic) AVCaptureOutput<AVCaptureDataOutputDelegateOverride> *dataOutput; // @synthesize dataOutput=_dataOutput;
+- (_Bool)hasAllExpectedSynchronizedDataForLeaderTimestamp:(CDStruct_1b6d18a9)arg1;
 @property(readonly, nonatomic, getter=isLive) _Bool live;
 - (void)dealloc;
 - (id)initWithDataOutput:(id)arg1;

@@ -10,7 +10,7 @@
 @protocol PXDisplayAsset, PXGDisplayAssetPixelBufferSource;
 
 @protocol PXGDisplayAssetPixelBufferSourcesProvider <NSObject>
-- (_Bool)shouldDisplayPreviousNonnullPixelBufferForPixelBufferSource:(id <PXGDisplayAssetPixelBufferSource>)arg1;
+- (_Bool)shouldDisplayPreviousNonNullPixelBufferForPixelBufferSource:(id <PXGDisplayAssetPixelBufferSource>)arg1;
 - (void)recyclePixelBufferSourceForDisplayAssets:(NSArray *)arg1;
 - (id <PXGDisplayAssetPixelBufferSource>)pixelBufferSourceForDisplayAsset:(id <PXDisplayAsset>)arg1 mediaProvider:(PXMediaProvider *)arg2 spriteReference:(PXGSpriteReference *)arg3;
 @end

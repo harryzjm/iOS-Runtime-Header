@@ -11,6 +11,7 @@
 @interface _TtC8VideosUI26LibSidebandBaseMediaEntity : _TtCs12_SwiftObject
 {
     MISSING_TYPE *id;
+    MISSING_TYPE *adamID;
     MISSING_TYPE *title;
     MISSING_TYPE *isDownloaded;
     MISSING_TYPE *contentDescription;

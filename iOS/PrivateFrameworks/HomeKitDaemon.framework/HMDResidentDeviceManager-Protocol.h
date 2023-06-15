@@ -10,10 +10,11 @@
 #import <HomeKitDaemon/NSObject-Protocol.h>
 
 @class HMDBackingStoreTransactionActions, HMDDevice, HMDHome, HMDMessageDispatcher, HMDResidentDevice, HMFFuture, NSArray, NSDictionary, NSUUID;
-@protocol HMDDevicePreferenceDataSource, HMDResidentDeviceManagerDelegate;
+@protocol HMDDevicePreferenceDataSource, HMDResidentDeviceManagerDelegate, HMDResidentDeviceManagerDiscoveryRequester;
 
 @protocol HMDResidentDeviceManager <NSObject, HMFLogging, HMDBackingStoreObjectProtocol, HMDHomeMessageReceiver>
 @property(nonatomic, getter=isResidentSupported) _Bool residentSupported;
+@property(readonly) NSUUID *primaryResidentGenerationID;
 @property(readonly) NSUUID *primaryResidentUUID;
 @property(readonly, nonatomic) _Bool hasTrustZoneCapableResident;
 @property(readonly, nonatomic) _Bool isResidentElectionV2Enabled;
@@ -21,6 +22,7 @@
 @property(readonly, nonatomic, getter=isCurrentDeviceConfirmedPrimaryResident) _Bool currentDeviceConfirmedPrimaryResident;
 @property(readonly, nonatomic, getter=isCurrentDevicePrimaryResident) _Bool currentDevicePrimaryResident;
 @property(readonly, nonatomic, getter=isCurrentDeviceAvailableResident) _Bool currentDeviceAvailableResident;
+@property(readonly, nonatomic) _Bool hasAnyResident;
 @property(readonly, nonatomic, getter=isResidentAvailable) _Bool residentAvailable;
 @property(readonly, copy, nonatomic) NSArray *availableResidentDevices;
 @property(readonly, copy, nonatomic) NSArray *residentDevices;
@@ -32,8 +34,9 @@
 - (void)invalidate;
 - (void)run;
 - (void)updatePrimaryResidentWithUUID:(NSUUID *)arg1 actions:(HMDBackingStoreTransactionActions *)arg2;
-- (HMFFuture *)foundNewPrimaryResident:(HMDDevice *)arg1;
-- (HMFFuture *)discoverPrimaryResident;
+- (void)sawGenerationID:(NSUUID *)arg1 forDevice:(HMDDevice *)arg2;
+- (HMFFuture *)foundNewPrimaryResident:(HMDDevice *)arg1 generationID:(NSUUID *)arg2;
+- (void)discoverPrimaryResidentForRequester:(id <HMDResidentDeviceManagerDiscoveryRequester>)arg1;
 - (void)confirmOnAvailability;
 - (void)confirmAsResident;
 - (void)electResidentDevice:(unsigned long long)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class AVCStatisticsCollector, NSArray, NSDictionary, NSMutableDictionary, NSObject, NSString, TimingCollection, VCNetworkFeedbackController, VCSecurityKeyManager;
+@class AVCStatisticsCollector, NSArray, NSDictionary, NSObject, NSString, TimingCollection, VCMediaKeyIndex, VCMediaRecorder, VCNetworkFeedbackController, VCSecurityKeyManager;
 @protocol OS_dispatch_queue, VCMediaCaptureController;
 
 __attribute__((visibility("hidden")))
@@ -13,12 +13,18 @@ __attribute__((visibility("hidden")))
     NSArray *_mediaStreamInfoArray;
     NSArray *_mediaStreams;
     NSDictionary *_streamIDToMediaStreamMap;
+    NSDictionary *_groupEntries;
     NSString *_participantUUID;
     NSString *_sessionUUID;
     NSObject<OS_dispatch_queue> *_stateQueue;
     VCNetworkFeedbackController *_networkFeedbackController;
+    AVCStatisticsCollector *_statisticsCollector;
     TimingCollection *_perfTimers;
     double _creationTime;
+    double _firstMediaPacketTime;
+    double _firstMediaKeyIndexTime;
+    _Bool _firstMediaFrameGapDetected;
+    VCMediaKeyIndex *_firstMediaKeyIndex;
     _Bool _areStreamsSuspended;
     id _delegate;
     NSObject<OS_dispatch_queue> *_delegateQueue;
@@ -26,19 +32,19 @@ __attribute__((visibility("hidden")))
     unsigned int _state;
     unsigned long long _idsParticipantID;
     unsigned int _rtpTimestampRate;
+    VCMediaRecorder *_mediaRecorder;
     unsigned int _streamGroupID;
     long long _streamToken;
     unsigned int _mediaType;
     unsigned int _mediaSubtype;
     unsigned int _syncGroupID;
-    NSMutableDictionary *_groupEntries;
     id _captureController;
     VCSecurityKeyManager *_securityKeyManager;
     _Bool _hasRepairedStreams;
-    AVCStatisticsCollector *_statisticsCollector;
     struct tagVCJBTargetEstimatorSynchronizer *_jbTargetEstimatorSynchronizer;
 }
 
+@property(retain, nonatomic) VCMediaRecorder *mediaRecorder; // @synthesize mediaRecorder=_mediaRecorder;
 @property(retain, nonatomic) AVCStatisticsCollector *statisticsCollector; // @synthesize statisticsCollector=_statisticsCollector;
 @property(readonly, nonatomic) _Bool hasRepairedStreams; // @synthesize hasRepairedStreams=_hasRepairedStreams;
 @property(nonatomic) _Bool encryptionInfoReceived; // @synthesize encryptionInfoReceived=_encryptionInfoReceived;
@@ -51,6 +57,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned int mediaType; // @synthesize mediaType=_mediaType;
 @property(readonly, nonatomic) unsigned int streamGroupID; // @synthesize streamGroupID=_streamGroupID;
 - (void)didReceiveRTCPPackets:(struct _RTCPPacketList *)arg1;
+- (void)mediaStream:(id)arg1 didReceiveRTPGapForMediaKeyIndex:(id)arg2;
 - (void)mediaStream:(id)arg1 didReceiveNewMediaKeyIndex:(id)arg2;
 - (void)unregisterMediaStreamNotificationDelegate;
 - (void)registerMediaStreamNotificationDelegate;
@@ -75,7 +82,11 @@ __attribute__((visibility("hidden")))
 - (id)stopMediaStreams;
 - (id)startMediaStreams;
 @property(nonatomic) id <VCMediaCaptureController> captureController;
-- (void)setPerfTimersWithMediaKeyIndex:(id)arg1 perfTimerIndexToStart:(int)arg2;
+- (void)finalizePerfTimersForFirstMediaFrameWithTime:(double)arg1;
+- (void)setupPerfTimersWithMediaKeyIndex:(id)arg1 perfTimerIndexToStart:(int)arg2;
+- (void)setTotalMediaStallSaveIntervalWithTime:(double)arg1;
+- (void)setFirstMKIToFirstMediaReceivedTimerForMKIReceivedTime;
+- (void)setParticipantJoinedToFirstMKITimer;
 - (_Bool)containsStreamWithIDSStreamID:(unsigned short)arg1;
 - (void)callDelegateWithBlock:(CDUnknownBlockType)arg1;
 - (void)collectAndLogChannelMetrics:(CDStruct_b671a7c4 *)arg1;

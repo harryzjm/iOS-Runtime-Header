@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 + (id)carPlayFontWithBoldWeightStyle:(id)arg1;
 + (id)carPlayFontWithMediumWeightStyle:(id)arg1;
 + (id)carPlayFontWithStyle:(id)arg1;
++ (id)boldFontWithFontDescriptor:(id)arg1;
 + (id)fontWithBoldWeightStyle:(id)arg1;
 + (id)carPlayNoContentViewSiriButtonFont;
 + (id)carPlayNoContentViewTitleFont;
@@ -40,6 +41,9 @@ __attribute__((visibility("hidden")))
 + (id)groupHeaderTitleFont;
 + (id)contactCardPhotoPickerActionButtonFont;
 + (id)contactCardPhotoPickerCaptionFont;
++ (id)contactCardStaticHeaderNicknameTaglineFont;
++ (id)contactCardStaticHeaderDefaultTaglineFont;
++ (id)contactCardStaticHeaderDefaultNameFont;
 + (id)contactCardWarningHeaderLabelFont;
 + (id)contactCardRecentBadgeFont;
 + (id)contactStyleDefaultBoldTextFont;

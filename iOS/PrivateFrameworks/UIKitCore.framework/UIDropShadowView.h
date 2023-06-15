@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 @interface UIDropShadowView : UIView
 {
     _Bool __hasGrabber;
+    _Bool __insetsContentViewForGrabber;
     _Bool _masksTopCornersOnly;
     _Bool _supportsShadow;
     UIView *_contentView;
@@ -42,6 +43,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool masksTopCornersOnly; // @synthesize masksTopCornersOnly=_masksTopCornersOnly;
 @property(nonatomic) __weak id <UIDropShadowViewDelegate> _delegate; // @synthesize _delegate=__delegate;
 @property(nonatomic) struct UIEdgeInsets contentTouchInsets; // @synthesize contentTouchInsets=_contentTouchInsets;
+@property(nonatomic, setter=_setInsetsContentViewForGrabber:) _Bool _insetsContentViewForGrabber; // @synthesize _insetsContentViewForGrabber=__insetsContentViewForGrabber;
 @property(nonatomic, setter=_setGrabberEdge:) long long _grabberEdge; // @synthesize _grabberEdge=__grabberEdge;
 @property(nonatomic, setter=_setGrabberSpacing:) double _grabberSpacing; // @synthesize _grabberSpacing=__grabberSpacing;
 @property(nonatomic, setter=_setGrabberAlpha:) double _grabberAlpha; // @synthesize _grabberAlpha=__grabberAlpha;
@@ -61,6 +63,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) UIView *deepestClippingView;
 - (void)_layoutGrabbers;
 - (void)layoutSubviews;
+@property(readonly, nonatomic) struct CGRect _contentViewFrame;
+@property(readonly, nonatomic) _Bool _effectiveInsetsContentViewForGrabber;
 - (id)initWithFrame:(struct CGRect)arg1 independentCorners:(long long)arg2 supportsShadow:(_Bool)arg3 stylesSheetsAsCards:(_Bool)arg4;
 
 @end

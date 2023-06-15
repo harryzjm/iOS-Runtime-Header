@@ -5,7 +5,5 @@
 //
 
 @interface (null) (ComplicationDisplay)
-- (void)transitionToMonochromeWithFraction:(double)arg1;
-- (void)updateMonochromeColor;
 @end
 

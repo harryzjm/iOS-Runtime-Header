@@ -11,6 +11,7 @@
 - (_Bool)_isEmptyMoveSummaryForSnapshot:(id)arg1;
 - (double)as_moveCompletionPercentage;
 - (id)as_pushesStringWithContext:(id)arg1;
+- (id)as_distanceStringWithContext:(id)arg1 formattingManager:(id)arg2 distanceUnitFormat:(id)arg3;
 - (id)as_distanceStringWithContext:(id)arg1 formattingManager:(id)arg2;
 - (id)as_stepsStringWithContext:(id)arg1;
 - (id)as_exerciseProgressStringWithContext:(id)arg1;

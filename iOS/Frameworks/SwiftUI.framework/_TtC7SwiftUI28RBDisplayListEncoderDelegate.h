@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MISSING_TYPE;
+@class MISSING_TYPE, RBEncoderSet;
 
 __attribute__((visibility("hidden")))
 @interface _TtC7SwiftUI28RBDisplayListEncoderDelegate : NSObject
@@ -16,8 +16,12 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)init;
+- (id)encodedFontSubsetData:(id)arg1 cgFont:(struct CGFont *)arg2 error:(id *)arg3;
+- (id)encodedFontData:(id)arg1 cgFont:(struct CGFont *)arg2 error:(id *)arg3;
+- (_Bool)shouldEncodeFontSubset:(struct CGFont *)arg1;
 - (id)encodedCGFontData:(struct CGFont *)arg1 error:(id *)arg2;
 - (id)encodedImageData:(CDStruct_27041886)arg1 error:(id *)arg2;
+@property(nonatomic, readonly) RBEncoderSet *encoderSet;
 
 @end
 

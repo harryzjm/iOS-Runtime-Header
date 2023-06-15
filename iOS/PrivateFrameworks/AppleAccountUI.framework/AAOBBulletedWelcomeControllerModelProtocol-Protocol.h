@@ -10,6 +10,7 @@
 @protocol AAOBBulletPointModelProtocol;
 
 @protocol AAOBBulletedWelcomeControllerModelProtocol <AAOBWelcomeControllerModelProtocol>
+@property(nonatomic) _Bool isWalrusEnabled;
 - (NSArray<AAOBBulletPointModelProtocol> *)bullets;
 @end
 

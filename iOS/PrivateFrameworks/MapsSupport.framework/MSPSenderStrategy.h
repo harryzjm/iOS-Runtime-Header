@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class GEOSharedNavState, MSPSharedTripGroupSession, NSMutableDictionary, NSMutableSet;
+@class GEOSharedNavState, MSPSharedTripGroupSession, NSMutableSet;
 
 __attribute__((visibility("hidden")))
 @interface MSPSenderStrategy : NSObject
@@ -14,19 +14,9 @@ __attribute__((visibility("hidden")))
     MSPSharedTripGroupSession *_groupSession;
     NSMutableSet *_participants;
     GEOSharedNavState *_state;
-    NSMutableDictionary *_destinationSentStates;
-    NSMutableDictionary *_etaSentStates;
-    NSMutableDictionary *_lastEtaUpdateDates;
-    NSMutableDictionary *_routeSentStates;
-    NSMutableDictionary *_trafficSentStates;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSMutableDictionary *trafficSentStates; // @synthesize trafficSentStates=_trafficSentStates;
-@property(retain, nonatomic) NSMutableDictionary *routeSentStates; // @synthesize routeSentStates=_routeSentStates;
-@property(retain, nonatomic) NSMutableDictionary *lastEtaUpdateDates; // @synthesize lastEtaUpdateDates=_lastEtaUpdateDates;
-@property(retain, nonatomic) NSMutableDictionary *etaSentStates; // @synthesize etaSentStates=_etaSentStates;
-@property(retain, nonatomic) NSMutableDictionary *destinationSentStates; // @synthesize destinationSentStates=_destinationSentStates;
 @property(copy, nonatomic) GEOSharedNavState *state; // @synthesize state=_state;
 @property(retain, nonatomic) NSMutableSet *participants; // @synthesize participants=_participants;
 - (void)sessionStopped:(id)arg1;
@@ -37,14 +27,6 @@ __attribute__((visibility("hidden")))
 - (void)routeUpdated:(id)arg1;
 - (void)waypointsUpdated:(id)arg1;
 - (void)etaUpdated:(id)arg1;
-- (void)_sendTrafficUpdate:(id)arg1 to:(id)arg2;
-- (void)_sendRouteUpdate:(id)arg1 to:(id)arg2;
-- (void)_sendETAUpdate:(id)arg1 to:(id)arg2;
-- (void)_sendStoppedUpdate:(id)arg1 to:(id)arg2;
-- (void)_sendResumingToNextDestinationUpdate:(id)arg1 to:(id)arg2;
-- (void)_sendDestinationReachedUpdate:(id)arg1 to:(id)arg2;
-- (void)_sendUpdatedWaypoints:(id)arg1 to:(id)arg2;
-- (void)_sendCompatibleInstancesOfState:(id)arg1 to:(id)arg2;
 - (_Bool)removeParticipant:(id)arg1;
 - (void)removeParticipants:(id)arg1;
 - (void)addParticipants:(id)arg1;

@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     unsigned long long _dataType;
 }
 
+- (_Bool)isEqual:(id)arg1;
 - (id)formattedDescription:(unsigned long long)arg1;
 - (void)setStructType:(id)arg1;
 - (void)setStructType:(id)arg1 doRetain:(_Bool)arg2;

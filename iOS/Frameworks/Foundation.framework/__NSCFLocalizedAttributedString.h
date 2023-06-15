@@ -17,8 +17,8 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)stringEncapsulatingBaseAttributedString:(id)arg1;
-+ (const struct __CFString *)createStringRequiringInflectionWithFormat:(struct __CFString *)arg1 formatOptions:(struct __CFDictionary *)arg2 arguments:(char *)arg3;
-+ (const struct __CFString *)copyStringWithMarkdown:(struct __CFString *)arg1 formatConfiguration:(struct __CFDictionary *)arg2 bundle:(struct __CFBundle *)arg3 tableURL:(struct __CFURL *)arg4;
++ (struct __CFString *)createStringRequiringInflectionWithFormat:(struct __CFString *)arg1 formatOptions:(struct __CFDictionary *)arg2 arguments:(char *)arg3;
++ (struct __CFString *)copyStringWithMarkdown:(struct __CFString *)arg1 formatConfiguration:(struct __CFDictionary *)arg2 bundle:(struct __CFBundle *)arg3 tableURL:(struct __CFURL *)arg4;
 - (const char *)_fastCStringContents:(_Bool)arg1;
 - (const unsigned short *)_fastCharacterContents;
 - (_Bool)isEqualToString:(id)arg1;

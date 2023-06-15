@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
     id <VKCImageBaseOverlayViewDelegate> _baseDelegate;
     VKCTextRecognitionResult *_recognitionResult;
     NSString *_customAnalyticsIdentifier;
+    long long _identifierIndex;
     struct CGRect _contentsRect;
     struct CGRect _normalizedVisibleRect;
 }
@@ -20,6 +21,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(nonatomic) struct CGRect normalizedVisibleRect; // @synthesize normalizedVisibleRect=_normalizedVisibleRect;
 @property(nonatomic) struct CGRect contentsRect; // @synthesize contentsRect=_contentsRect;
+@property(nonatomic) long long identifierIndex; // @synthesize identifierIndex=_identifierIndex;
 @property(copy, nonatomic) NSString *customAnalyticsIdentifier; // @synthesize customAnalyticsIdentifier=_customAnalyticsIdentifier;
 @property(retain, nonatomic) VKCTextRecognitionResult *recognitionResult; // @synthesize recognitionResult=_recognitionResult;
 @property(nonatomic) __weak id <VKCImageBaseOverlayViewDelegate> baseDelegate; // @synthesize baseDelegate=_baseDelegate;

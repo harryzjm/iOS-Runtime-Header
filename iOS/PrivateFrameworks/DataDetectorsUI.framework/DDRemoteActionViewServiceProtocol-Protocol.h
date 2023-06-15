@@ -6,8 +6,10 @@
 
 #import <DataDetectorsUI/NSObject-Protocol.h>
 
+@class DDRemoteActionContext;
+
 @protocol DDRemoteActionViewServiceProtocol <NSObject>
 - (void)enableUserInteraction:(_Bool)arg1;
-- (void)prepareViewControllerWithCompletionHandler:(void (^)(struct CGSize, _Bool))arg1;
+- (void)prepareViewControllerWithContext:(DDRemoteActionContext *)arg1 completionHandler:(void (^)(struct CGSize, _Bool))arg2;
 @end
 

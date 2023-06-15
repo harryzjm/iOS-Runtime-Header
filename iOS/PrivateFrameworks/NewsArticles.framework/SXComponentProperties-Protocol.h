@@ -6,18 +6,18 @@
 
 #import <NewsArticles/SXConditionalComponentProperties-Protocol.h>
 
-@class NSString, SXComponentClassification, SXComponentConditions;
+@class NSString, SXComponentClassification, SXComponentConditions, SXJSONArray, SXJSONDictionary;
 
 @protocol SXComponentProperties <SXConditionalComponentProperties>
-@property(nonatomic, readonly) _Bool requiresLinkedContent;
-@property(nonatomic, readonly) id additions;
-@property(nonatomic, readonly) SXComponentClassification *classification;
-@property(nonatomic, readonly) id analytics;
-@property(nonatomic, readonly) unsigned long long contentRelevance;
-@property(nonatomic, readonly) SXComponentConditions *conditions;
-@property(nonatomic, readonly) unsigned long long traits;
-@property(nonatomic, readonly) int role;
-@property(nonatomic, readonly) NSString *type;
-@property(nonatomic, readonly) NSString *identifier;
+@property(readonly, nonatomic) _Bool requiresLinkedContent;
+@property(readonly, nonatomic) SXJSONArray *additions;
+@property(readonly, nonatomic) SXComponentClassification *classification;
+@property(readonly, nonatomic) SXJSONDictionary *analytics;
+@property(readonly, nonatomic) unsigned long long contentRelevance;
+@property(readonly, nonatomic) SXComponentConditions *conditions;
+@property(readonly, nonatomic) unsigned long long traits;
+@property(readonly, nonatomic) int role;
+@property(readonly, nonatomic) NSString *type;
+@property(readonly, nonatomic) NSString *identifier;
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <FrontBoardServices/FBSSceneSpecification.h>
+#import <FrontBoard/FBSSceneSpecification.h>
 
 @class NSArray, NSDictionary, NSString;
 

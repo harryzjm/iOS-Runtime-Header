@@ -6,27 +6,34 @@
 
 #import <Foundation/NSURL.h>
 
-@class NSString;
+@class NSString, WBSPair;
 
 @interface NSURL (SafariSharedExtras)
++ (id)safari_readingListURL;
 + (id)safari_aboutBlankURL;
++ (id)safari_URLForReadingListItemWithUUIDString:(id)arg1;
 + (id)safari_URLWithDataAsString:(id)arg1 relativeToURL:(id)arg2;
 + (id)safari_URLWithDataAsString:(id)arg1;
 + (id)safari_URLWithUserTypedString:(id)arg1;
+@property(readonly, nonatomic) NSString *safari_readingListItemUUIDString;
+@property(readonly, nonatomic) _Bool safari_isReadingListURL;
+- (_Bool)safari_isEqualOrHasSameHighLevelDomainAsURL:(id)arg1;
+- (_Bool)safari_isEqualToURL:(id)arg1;
 @property(readonly, nonatomic) _Bool safari_isSharedTabGroupURL;
+@property(readonly, nonatomic) _Bool safari_isTelURL;
 @property(readonly, nonatomic) _Bool safari_isJavaScriptURL;
-@property(readonly, copy, nonatomic) NSString *safari_mailToURLStatusMessage;
+@property(readonly, copy, nonatomic) NSString *safari_defaultStatusMessageString;
+@property(readonly, copy, nonatomic) NSString *safari_mailtoURLStatusMessage;
 @property(readonly, nonatomic) NSString *safari_stringForListDisplay;
 - (id)safari_stringForListDisplayWithAdditionalSimplificationOptions:(unsigned long long)arg1;
 - (id)safari_relativePathToURL:(id)arg1;
 - (id)safari_wellKnownResponseCodeReliabilityURL;
-- (id)safari_wellKnownChangePasswordURL;
-- (_Bool)safari_isWellKnownChangePasswordURL;
 @property(readonly, nonatomic) _Bool safari_isURLTooLongToDisplay;
 - (id)safari_userVisibleStringConsideringLongURLs;
 - (_Bool)safari_shouldBeAssociatedWithFaviconFromRedirectedURL:(id)arg1;
 @property(readonly, nonatomic) _Bool safari_isTopLevelURL;
 - (id)safari_URLWithUniqueFilename;
+- (id)safari_userVisibleHostWithoutWWWSubdomainIfSecure;
 - (id)safari_userVisibleHostWithoutWWWSubdomain;
 @property(readonly, copy, nonatomic) NSString *safari_userVisibleHostOrExtensionDisplayName;
 - (id)safari_userVisibleHost;
@@ -39,10 +46,14 @@
 - (id)safari_URLByDeletingUserAndPassword;
 - (_Bool)safari_hasUserOrPassword;
 - (id)safari_URLByReplacingHostWithString:(id)arg1;
-- (id)safari_URLByRemovingUserAndPath;
+@property(readonly, nonatomic) _Bool safari_isOTPAuthMigrationURL;
 @property(readonly, nonatomic) _Bool safari_isOTPAuthURL;
 @property(readonly, nonatomic) _Bool safari_isEligibleToShowNotSecureWarning;
+@property(readonly, nonatomic) _Bool safari_isEligibleToBeOpenedByServiceWorkers;
 @property(readonly, nonatomic) _Bool safari_isLocalOrPrivateNetworkURL;
+- (id)safari_URLByNormalizingSafariSpecificURL;
+@property(readonly, nonatomic) _Bool safari_isSafariSpecificURL;
+@property(readonly, nonatomic) WBSPair *safari_composedIdentifierAndProfileIdentifierInSafariWebExtensionURL;
 @property(readonly, nonatomic) _Bool safari_isSafariExtensionURL;
 @property(readonly, nonatomic) _Bool safari_isSafariWebExtensionURL;
 @property(readonly, nonatomic) _Bool safari_isAboutBlankURL;

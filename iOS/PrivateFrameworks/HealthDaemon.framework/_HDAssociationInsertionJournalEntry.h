@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     NSUUID *_parentUUID;
     NSData *_childUUIDsData;
     long long _provenance;
+    long long _syncIdentity;
 }
 
 + (_Bool)supportsSecureCoding;

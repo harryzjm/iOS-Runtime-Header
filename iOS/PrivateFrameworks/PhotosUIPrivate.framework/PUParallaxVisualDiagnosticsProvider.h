@@ -6,21 +6,22 @@
 
 #import <objc/NSObject.h>
 
-@class PFParallaxLayerStack, PHAsset;
+@class PFWallpaperCompoundLayerStack, PHAsset;
 @protocol PISegmentationItem;
 
 __attribute__((visibility("hidden")))
 @interface PUParallaxVisualDiagnosticsProvider : NSObject
 {
     PHAsset *_asset;
-    PFParallaxLayerStack *_layerStack;
+    PFWallpaperCompoundLayerStack *_compoundLayerStack;
     id <PISegmentationItem> _segmentationItem;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) id <PISegmentationItem> segmentationItem; // @synthesize segmentationItem=_segmentationItem;
-@property(retain, nonatomic) PFParallaxLayerStack *layerStack; // @synthesize layerStack=_layerStack;
+@property(retain, nonatomic) PFWallpaperCompoundLayerStack *compoundLayerStack; // @synthesize compoundLayerStack=_compoundLayerStack;
 @property(retain, nonatomic) PHAsset *asset; // @synthesize asset=_asset;
+- (void)_addSegmentationItemProperties:(id)arg1;
 - (void)_addImagingGatingScores:(id)arg1;
 - (void)_addLayerStackProperties:(id)arg1;
 - (void)_addLayersTable:(id)arg1;

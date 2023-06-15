@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MKETAProvider, MKMapItem, MKUGCCallToActionViewAppearance, MUNearestStationRowView, MUPlaceFooterAttributionController, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, MUPlaceSectionView, MUPlaceVerticalCardContainerView, NSArray, NSString, UIView, UIViewController;
+@class MKETAProvider, MKMapItem, MUNearestStationRowView, MUPlaceCallToActionAppearance, MUPlaceFooterAttributionController, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, MUPlaceSectionView, MUPlaceVerticalCardContainerView, NSArray, NSString, UIView, UIViewController;
 @protocol MUInfoCardAnalyticsDelegate, MUNearestStationSectionControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -40,7 +40,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) UIViewController *sectionViewController;
 @property(readonly, nonatomic) NSArray *sectionViews;
-@property(retain, nonatomic) MKUGCCallToActionViewAppearance *submissionStatus;
+@property(retain, nonatomic) MUPlaceCallToActionAppearance *submissionStatus;
 @property(readonly) Class superclass;
 
 @end

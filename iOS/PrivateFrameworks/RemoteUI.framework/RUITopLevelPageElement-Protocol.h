@@ -6,10 +6,9 @@
 
 #import <RemoteUI/NSObject-Protocol.h>
 
-@class NSDictionary, NSString, RUIObjectModel, UILabel, UIView;
+@class NSString, RUIObjectModel, UILabel, UIView, UIViewController;
 
 @protocol RUITopLevelPageElement <NSObject>
-- (void)populatePostbackDictionary:(NSDictionary *)arg1;
 - (void)setObjectModel:(RUIObjectModel *)arg1;
 - (UIView *)view;
 
@@ -22,5 +21,6 @@
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
+- (UIViewController *)viewController;
 @end
 

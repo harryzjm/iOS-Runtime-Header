@@ -19,7 +19,6 @@
 - (_Bool)isNamedRemoteAlertServiceActive:(NSString *)arg1 controllerClassName:(NSString *)arg2;
 - (void)activateRemoteAlertService:(NSString *)arg1 options:(NSDictionary *)arg2;
 - (void)setMinimumBacklightLevel:(float)arg1 animated:(_Bool)arg2;
-- (void)notifyOnNextUserEvent;
 - (void)removeActiveInterfaceOrientationObserver:(id <SBUIActiveOrientationObserver>)arg1;
 - (void)addActiveInterfaceOrientationObserver:(id <SBUIActiveOrientationObserver>)arg1;
 - (void)activateModalBulletinAlert:(SBAlertItem *)arg1;

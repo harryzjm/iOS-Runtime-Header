@@ -54,13 +54,14 @@ __attribute__((visibility("hidden")))
         unsigned int offsetAdjustment:1;
         unsigned int percentPresented:1;
         unsigned int anyDescendantDragging:1;
+        unsigned int anyDescendantWantsFullScreen:1;
         unsigned int untransformedFrame:1;
         unsigned int hostedUntransformedFrame:1;
         unsigned int frameOfPresentedViewInContainerView:1;
         unsigned int touchInsets:1;
         unsigned int cornerRadii:1;
+        unsigned int hostedCornerRadii:1;
         unsigned int transform:1;
-        unsigned int zPosition:1;
         unsigned int percentDimmedFromOffset:1;
         unsigned int percentDimmed:1;
         unsigned int shadowOpacity:1;
@@ -87,6 +88,7 @@ __attribute__((visibility("hidden")))
     _Bool __functionallyFullScreen;
     _Bool __stacksWithChild;
     _Bool __anyDescendantDragging;
+    _Bool __anyDescendantWantsFullScreen;
     _Bool __interactionEnabled;
     _Bool __scrollInteractionEnabled;
     _Bool __shouldPresentedViewControllerControlStatusBarAppearance;
@@ -98,6 +100,7 @@ __attribute__((visibility("hidden")))
     _Bool __firstResponderRequiresKeyboard;
     _Bool __remoteContainsFirstResponder;
     _Bool __remoteFirstResponderRequiresKeyboard;
+    _Bool __shouldAdjustDetentsToAvoidKeyboard;
     _Bool __wantsFullScreen;
     _Bool __wantsEdgeAttached;
     _Bool __wantsEdgeAttachedInCompactHeight;
@@ -118,6 +121,7 @@ __attribute__((visibility("hidden")))
     _Bool __prefersScrollingExpandsToLargerDetentWhenScrolledToEdge;
     _Bool __dragging;
     _Bool __wantsGrabber;
+    _Bool __insetsContentViewForGrabber;
     NSArray *__ancestorSheetIDs;
     NSSet *__descendantHiddenAncestorSheetIDs;
     double __percentFullHeight;
@@ -141,7 +145,6 @@ __attribute__((visibility("hidden")))
     double __nonFullHeightOffset;
     double __offsetAdjustment;
     double __percentPresented;
-    double __zPosition;
     double __percentDimmedFromOffset;
     double __percentDimmed;
     double __confinedPercentDimmed;
@@ -171,6 +174,8 @@ __attribute__((visibility("hidden")))
     double __grabberSpacing;
     double __dismissCornerRadius;
     double __preferredCornerRadius;
+    double __remoteProposedDepthLevel;
+    double __hostParentDepthLevel;
     CDUnknownBlockType __currentOffsetGetter;
     _UISheetLayoutInfo *__parentLayoutInfo;
     _UISheetLayoutInfo *__childLayoutInfo;
@@ -197,12 +202,15 @@ __attribute__((visibility("hidden")))
     struct CGRect __frameOfPresentedViewInContainerView;
     struct UIEdgeInsets __touchInsets;
     struct UIRectCornerRadii __cornerRadii;
+    struct UIRectCornerRadii __hostedCornerRadii;
     struct CGRect __containerBounds;
     struct UIEdgeInsets __containerSafeAreaInsets;
     struct CGRect __sourceFrame;
     struct CGRect __keyboardFrame;
     struct CGRect __remoteKeyboardFrame;
     struct CGRect __dismissSourceFrame;
+    struct CGRect __hostParentStackAlignmentFrame;
+    struct CGRect __hostParentFullHeightUntransformedFrameForDepthLevel;
     struct CGAffineTransform __transform;
 }
 
@@ -217,9 +225,14 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic, setter=_setChildSheetLayoutInfo:) _UISheetLayoutInfo *_childLayoutInfo; // @synthesize _childLayoutInfo=__childLayoutInfo;
 @property(nonatomic, setter=_setParentSheetLayoutInfo:) __weak _UISheetLayoutInfo *_parentLayoutInfo; // @synthesize _parentLayoutInfo=__parentLayoutInfo;
 @property(copy, nonatomic, setter=_setCurrentOffsetGetter:) CDUnknownBlockType _currentOffsetGetter; // @synthesize _currentOffsetGetter=__currentOffsetGetter;
+@property(nonatomic, setter=_setHostParentDepthLevel:) double _hostParentDepthLevel; // @synthesize _hostParentDepthLevel=__hostParentDepthLevel;
+@property(nonatomic, setter=_setHostParentFullHeightUntransformedFrameForDepthLevel:) struct CGRect _hostParentFullHeightUntransformedFrameForDepthLevel; // @synthesize _hostParentFullHeightUntransformedFrameForDepthLevel=__hostParentFullHeightUntransformedFrameForDepthLevel;
+@property(nonatomic, setter=_setHostParentStackAlignmentFrame:) struct CGRect _hostParentStackAlignmentFrame; // @synthesize _hostParentStackAlignmentFrame=__hostParentStackAlignmentFrame;
+@property(nonatomic, setter=_setRemoteProposedDepthLevel:) double _remoteProposedDepthLevel; // @synthesize _remoteProposedDepthLevel=__remoteProposedDepthLevel;
 @property(nonatomic, setter=_setPreferredCornerRadius:) double _preferredCornerRadius; // @synthesize _preferredCornerRadius=__preferredCornerRadius;
 @property(nonatomic, setter=_setDismissCornerRadius:) double _dismissCornerRadius; // @synthesize _dismissCornerRadius=__dismissCornerRadius;
 @property(nonatomic, setter=_setDismissSourceFrame:) struct CGRect _dismissSourceFrame; // @synthesize _dismissSourceFrame=__dismissSourceFrame;
+@property(nonatomic, setter=_setInsetsContentViewForGrabber:) _Bool _insetsContentViewForGrabber; // @synthesize _insetsContentViewForGrabber=__insetsContentViewForGrabber;
 @property(nonatomic, setter=_setGrabberSpacing:) double _grabberSpacing; // @synthesize _grabberSpacing=__grabberSpacing;
 @property(nonatomic, setter=_setWantsGrabber:) _Bool _wantsGrabber; // @synthesize _wantsGrabber=__wantsGrabber;
 @property(nonatomic, getter=_isDragging, setter=_setDragging:) _Bool _dragging; // @synthesize _dragging=__dragging;
@@ -234,8 +247,8 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic, setter=_setFloatingAppearance:) _UISheetPresentationControllerAppearance *_floatingAppearance; // @synthesize _floatingAppearance=__floatingAppearance;
 @property(copy, nonatomic, setter=_setEdgeAttachedCompactHeightAppearance:) _UISheetPresentationControllerAppearance *_edgeAttachedCompactHeightAppearance; // @synthesize _edgeAttachedCompactHeightAppearance=__edgeAttachedCompactHeightAppearance;
 @property(copy, nonatomic, setter=_setStandardAppearance:) _UISheetPresentationControllerAppearance *_standardAppearance; // @synthesize _standardAppearance=__standardAppearance;
-@property(retain, nonatomic, setter=_setSelectedDetentIdentifier:) NSString *_selectedDetentIdentifier; // @synthesize _selectedDetentIdentifier=__selectedDetentIdentifier;
-@property(retain, nonatomic, setter=_setDetents:) NSArray *_detents; // @synthesize _detents=__detents;
+@property(copy, nonatomic, setter=_setSelectedDetentIdentifier:) NSString *_selectedDetentIdentifier; // @synthesize _selectedDetentIdentifier=__selectedDetentIdentifier;
+@property(copy, nonatomic, setter=_setDetents:) NSArray *_detents; // @synthesize _detents=__detents;
 @property(nonatomic, getter=_isDismissible, setter=_setDismissible:) _Bool _dismissible; // @synthesize _dismissible=__dismissible;
 @property(nonatomic, getter=_isHosting, setter=_setHosting:) _Bool _hosting; // @synthesize _hosting=__hosting;
 @property(nonatomic, setter=_setPeeksWhenFloating:) _Bool _peeksWhenFloating; // @synthesize _peeksWhenFloating=__peeksWhenFloating;
@@ -250,6 +263,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, setter=_setWantsEdgeAttachedInCompactHeight:) _Bool _wantsEdgeAttachedInCompactHeight; // @synthesize _wantsEdgeAttachedInCompactHeight=__wantsEdgeAttachedInCompactHeight;
 @property(nonatomic, setter=_setWantsEdgeAttached:) _Bool _wantsEdgeAttached; // @synthesize _wantsEdgeAttached=__wantsEdgeAttached;
 @property(nonatomic, setter=_setWantsFullScreen:) _Bool _wantsFullScreen; // @synthesize _wantsFullScreen=__wantsFullScreen;
+@property(nonatomic, setter=_setShouldAdjustDetentsToAvoidKeyboard:) _Bool _shouldAdjustDetentsToAvoidKeyboard; // @synthesize _shouldAdjustDetentsToAvoidKeyboard=__shouldAdjustDetentsToAvoidKeyboard;
 @property(nonatomic, setter=_setRemoteFirstResponderRequiresKeyboard:) _Bool _remoteFirstResponderRequiresKeyboard; // @synthesize _remoteFirstResponderRequiresKeyboard=__remoteFirstResponderRequiresKeyboard;
 @property(nonatomic, setter=_setRemoteContainsFirstResponder:) _Bool _remoteContainsFirstResponder; // @synthesize _remoteContainsFirstResponder=__remoteContainsFirstResponder;
 @property(nonatomic, setter=_setFirstResponderRequiresKeyboard:) _Bool _firstResponderRequiresKeyboard; // @synthesize _firstResponderRequiresKeyboard=__firstResponderRequiresKeyboard;
@@ -272,6 +286,9 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic, setter=_setContainerView:) UIView *_containerView; // @synthesize _containerView=__containerView;
 @property(retain, nonatomic, setter=_setPresentedViewController:) UIViewController *_presentedViewController; // @synthesize _presentedViewController=__presentedViewController;
 @property(nonatomic, setter=_setPresentingViewController:) __weak UIViewController *_presentingViewController; // @synthesize _presentingViewController=__presentingViewController;
+- (double)_maximumDepthLevelInChain;
+@property(readonly) double _invertedDepthLevel;
+@property(readonly) _Bool _hasParentSheet;
 @property(readonly) _Bool _hasChildSheet;
 - (id)_descendantDescription;
 @property(readonly, copy) NSString *description;
@@ -288,8 +305,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) double _confinedPercentDimmed; // @synthesize _confinedPercentDimmed=__confinedPercentDimmed;
 @property(readonly, nonatomic) double _percentDimmed; // @synthesize _percentDimmed=__percentDimmed;
 @property(readonly, nonatomic) double _percentDimmedFromOffset; // @synthesize _percentDimmedFromOffset=__percentDimmedFromOffset;
-@property(readonly, nonatomic) double _zPosition; // @synthesize _zPosition=__zPosition;
 @property(readonly, nonatomic) struct CGAffineTransform _transform; // @synthesize _transform=__transform;
+@property(readonly, nonatomic) struct UIRectCornerRadii _hostedCornerRadii; // @synthesize _hostedCornerRadii=__hostedCornerRadii;
 @property(readonly, nonatomic) struct UIRectCornerRadii _cornerRadii; // @synthesize _cornerRadii=__cornerRadii;
 @property(readonly, nonatomic) struct UIEdgeInsets _touchInsets; // @synthesize _touchInsets=__touchInsets;
 @property(readonly, nonatomic) struct CGRect _hostedDismissFrame;
@@ -308,6 +325,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) long long _indexOfCurrentActiveDetent; // @synthesize _indexOfCurrentActiveDetent=__indexOfCurrentActiveDetent;
 @property(readonly, nonatomic) NSArray *_activeDetents;
 @property(readonly, nonatomic) NSArray *_detentValues;
+@property(readonly, nonatomic) _Bool _anyDescendantWantsFullScreen; // @synthesize _anyDescendantWantsFullScreen=__anyDescendantWantsFullScreen;
 @property(readonly, nonatomic, getter=_isAnyDescendantDragging) _Bool _anyDescendantDragging; // @synthesize _anyDescendantDragging=__anyDescendantDragging;
 @property(readonly, nonatomic) double _percentPresented; // @synthesize _percentPresented=__percentPresented;
 @property(readonly, nonatomic) double _offsetAdjustment; // @synthesize _offsetAdjustment=__offsetAdjustment;
@@ -318,12 +336,14 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _UISheetPresentationControllerAppearance *_effectiveAppearance; // @synthesize _effectiveAppearance=__effectiveAppearance;
 @property(readonly, nonatomic) double _dismissOffset; // @synthesize _dismissOffset=__dismissOffset;
 @property(readonly, nonatomic) struct CGRect _fullHeightUntransformedFrameForDepthLevel; // @synthesize _fullHeightUntransformedFrameForDepthLevel=__fullHeightUntransformedFrameForDepthLevel;
+@property(readonly, nonatomic) struct CGRect _parentFullHeightUntransformedFrameForDepthLevel;
 @property(readonly, nonatomic) double _maximumDetentValue;
 @property(readonly, nonatomic) double maximumDetentValue;
 @property(readonly, nonatomic) struct CGRect _fullHeightPresentedViewFrame;
 @property(readonly, nonatomic) UITraitCollection *containerTraitCollection;
 @property(readonly, nonatomic) struct CGRect _fullHeightUntransformedFrame; // @synthesize _fullHeightUntransformedFrame=__fullHeightUntransformedFrame;
 @property(readonly, nonatomic) _Bool _stacksWithChild; // @synthesize _stacksWithChild=__stacksWithChild;
+@property(readonly, nonatomic) _Bool _stacksWithParent;
 @property(readonly, nonatomic) struct CGRect _stackAlignmentFrame; // @synthesize _stackAlignmentFrame=__stackAlignmentFrame;
 @property(readonly, nonatomic) struct CGRect _effectiveKeyboardFrame; // @synthesize _effectiveKeyboardFrame=__effectiveKeyboardFrame;
 @property(readonly, nonatomic) double _percentFullScreen; // @synthesize _percentFullScreen=__percentFullScreen;
@@ -335,6 +355,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic, getter=_isEdgeAttached) _Bool _edgeAttached; // @synthesize _edgeAttached=__edgeAttached;
 @property(readonly, nonatomic) _Bool _scalesDownBehindDescendants;
 @property(readonly) double _depthLevel; // @synthesize _depthLevel=__depthLevel;
+@property(readonly, nonatomic) double _parentDepthLevel;
 @property(readonly, nonatomic) double _proposedDepthLevel; // @synthesize _proposedDepthLevel=__proposedDepthLevel;
 @property(readonly, nonatomic) double _proposedDepthLevelIncrement; // @synthesize _proposedDepthLevelIncrement=__proposedDepthLevelIncrement;
 @property(readonly, nonatomic, getter=_isHidingUnderneathDescendantForDepthLevel) _Bool _hidingUnderneathDescendantForDepthLevel; // @synthesize _hidingUnderneathDescendantForDepthLevel=__hidingUnderneathDescendantForDepthLevel;

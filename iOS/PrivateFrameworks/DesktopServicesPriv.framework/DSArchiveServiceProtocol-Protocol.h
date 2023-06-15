@@ -13,6 +13,8 @@
 - (NSProgress *)unarchiveItemAtURL:(NSURL *)arg1 passphrase:(NSString *)arg2 destinationFolderURL:(NSURL *)arg3 completionHandler:(void (^)(NSURL *, NSError *))arg4;
 - (NSProgress *)archiveItemsWithURLs:(NSArray *)arg1 passphrase:(NSString *)arg2 addToKeychain:(_Bool)arg3 compressionFormat:(unsigned long long)arg4 destinationFolderURL:(NSURL *)arg5 completionHandler:(void (^)(NSURL *, NSString *, NSError *))arg6;
 - (NSProgress *)archiveItemsWithURLs:(NSArray *)arg1 compressionFormat:(unsigned long long)arg2 destinationFolderURL:(NSURL *)arg3 completionHandler:(void (^)(NSURL *, NSString *, NSError *))arg4;
+- (NSProgress *)unarchiveItemAtURL:(NSURL *)arg1 toURL:(NSURL *)arg2 options:(unsigned long long)arg3 acceptedFormats:(unsigned long long)arg4 passphrases:(NSArray *)arg5 completionHandler:(void (^)(NSURL *, NSError *))arg6;
+- (NSProgress *)archiveItemsAtURLs:(NSArray *)arg1 toURL:(NSURL *)arg2 options:(unsigned long long)arg3 compressionFormat:(unsigned long long)arg4 passphrase:(NSString *)arg5 completionHandler:(void (^)(NSURL *, NSError *))arg6;
 - (void)itemDescriptorsForItemAtURL:(NSURL *)arg1 passphrases:(NSArray *)arg2 completionHandler:(void (^)(NSArray *, NSError *))arg3;
 - (void)itemDescriptorsForItemAtURL:(NSURL *)arg1 passphrase:(NSString *)arg2 completionHandler:(void (^)(NSArray *, NSError *))arg3;
 @end

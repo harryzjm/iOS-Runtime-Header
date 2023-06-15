@@ -28,7 +28,7 @@ struct CLNotifierClientBase {
 
 struct CMMagicMountStateStruct {
     double timestamp;
-    _Bool mounted;
+    long long mountStatus;
 };
 
 struct CMMotionManagerStatsCollector;
@@ -43,11 +43,28 @@ struct CMSuppressionEventStruct {
     unsigned long long reason;
 };
 
+struct CMVector<float, 3UL> {
+    float elements[3];
+};
+
 struct Delegate;
 
 struct Dispatcher {
     CDUnknownFunctionPointerType *_field1;
     id _field2;
+};
+
+struct InertialOdometryData {
+    double timestampSecs;
+    struct {
+        unsigned long long timestamp;
+        CDStruct_03942939 position;
+        CDStruct_03942939 deltaVelocityCumSum;
+        unsigned long long timestampPositionRollOver;
+        unsigned long long timestampVelocityRollOver;
+        unsigned long long timestampDeltaPositionUnavailable[3];
+        unsigned long long timestampUninitialized;
+    } state;
 };
 
 struct Item;
@@ -127,14 +144,14 @@ struct deque<float, std::allocator<float>> {
 struct internal_state;
 
 struct map<unsigned long, int, std::less<unsigned long>, std::allocator<std::pair<const unsigned long, int>>> {
-    struct __tree<std::__value_type<unsigned long, int>, std::__map_value_compare<unsigned long, std::__value_type<unsigned long, int>, std::less<unsigned long>, true>, std::allocator<std::__value_type<unsigned long, int>>> {
+    struct __tree<std::__value_type<unsigned long, int>, std::__map_value_compare<unsigned long, std::__value_type<unsigned long, int>, std::less<unsigned long>>, std::allocator<std::__value_type<unsigned long, int>>> {
         void *__begin_node_;
         struct __compressed_pair<std::__tree_end_node<std::__tree_node_base<void *>*>, std::allocator<std::__tree_node<std::__value_type<unsigned long, int>, void *>>> {
             struct __tree_end_node<std::__tree_node_base<void *>*> {
                 void *__left_;
             } __value_;
         } __pair1_;
-        struct __compressed_pair<unsigned long, std::__map_value_compare<unsigned long, std::__value_type<unsigned long, int>, std::less<unsigned long>, true>> {
+        struct __compressed_pair<unsigned long, std::__map_value_compare<unsigned long, std::__value_type<unsigned long, int>, std::less<unsigned long>>> {
             unsigned long long __value_;
         } __pair3_;
     } __tree_;
@@ -256,6 +273,12 @@ typedef struct {
 } CDStruct_c3b9c2ee;
 
 typedef struct {
+    double _field1;
+    int _field2;
+    int _field3;
+} CDStruct_dce2ee30;
+
+typedef struct {
     float x;
     float y;
     float z;
@@ -320,6 +343,8 @@ typedef struct {
     int _field1;
     double _field2;
     double _field3;
+    float _field4;
+    float _field5;
     union {
         struct {
             CDStruct_03942939 _field1;
@@ -329,8 +354,8 @@ typedef struct {
             _Bool _field1;
             char _field2[282];
         } _field2;
-    } _field4;
-} CDStruct_8d89f794;
+    } _field6;
+} CDStruct_1ec9dfc5;
 
 // Template types
 typedef struct shared_ptr<CLConnectionMessage> {

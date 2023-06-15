@@ -6,9 +6,9 @@
 
 #import <EventKitUI/NSObject-Protocol.h>
 
-@class CalendarOccurrencesCollection, EKCalendarDate, EKDayView;
+@class CUIKOccurrencesCollection, EKCalendarDate, EKDayView;
 
 @protocol EKDayViewDataSource <NSObject>
-- (CalendarOccurrencesCollection *)dayView:(EKDayView *)arg1 eventsForStartDate:(EKCalendarDate *)arg2 endDate:(EKCalendarDate *)arg3;
+- (CUIKOccurrencesCollection *)dayView:(EKDayView *)arg1 eventsForStartDate:(EKCalendarDate *)arg2 endDate:(EKCalendarDate *)arg3;
 @end
 

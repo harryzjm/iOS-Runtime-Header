@@ -14,6 +14,7 @@
     MISSING_TYPE *configuration;
     MISSING_TYPE *player;
     MISSING_TYPE *camera;
+    MISSING_TYPE *personalizedAssetMaterial;
     MISSING_TYPE *token;
     MISSING_TYPE *timeObserverToken;
     MISSING_TYPE *textureCache;

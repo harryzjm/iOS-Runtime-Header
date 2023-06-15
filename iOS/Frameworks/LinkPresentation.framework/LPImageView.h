@@ -35,7 +35,7 @@ __attribute__((visibility("hidden")))
 - (void)updateBorder;
 - (void)updateShadowPath;
 - (void)updateCornerRadius;
-- (void)traitCollectionDidChange:(id)arg1;
+- (void)_userInterfaceStyleDidChange:(id)arg1;
 - (void)ensureImageView;
 - (long long)_filter;
 - (id)initWithHost:(id)arg1 image:(id)arg2 properties:(id)arg3 style:(id)arg4;

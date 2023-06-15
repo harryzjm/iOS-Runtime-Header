@@ -10,7 +10,7 @@
 
 @protocol HDSPSleepWidgetStateMachineInfoProvider <HKSPStateMachineInfoProvider>
 @property(readonly, nonatomic) _Bool isOnboarded;
-@property(readonly, nonatomic) _Bool inUserRequestedSleepMode;
+@property(readonly, nonatomic) _Bool inUnscheduledSleepMode;
 @property(readonly, nonatomic) unsigned long long sleepScheduleState;
 @property(readonly, nonatomic) HKSPSleepScheduleModel *sleepScheduleModel;
 @property(readonly, nonatomic) NSDate *currentDate;

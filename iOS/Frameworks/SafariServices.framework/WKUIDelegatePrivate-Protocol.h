@@ -6,18 +6,21 @@
 
 #import <SafariServices/WKUIDelegate-Protocol.h>
 
-@class NSArray, NSDictionary, NSString, NSURL, UIDragItem, UIDropProposal, UIGestureRecognizer, UIImage, UIScrollView, UITargetedDragPreview, UIView, UIViewController, WKContextMenuElementInfo, WKFrameInfo, WKNavigationAction, WKSecurityOrigin, WKWebView, WKWebViewConfiguration, WKWindowFeatures, _WKActivatedElementInfo, _WKAttachment, _WKFrameHandle, _WKHitTestResult, _WKModalContainerInfo, _WKWebAuthenticationPanel;
+@class NSArray, NSDictionary, NSNumber, NSString, NSURL, UIDragItem, UIDropProposal, UIGestureRecognizer, UIImage, UIScrollView, UITargetedDragPreview, UIView, UIViewController, WKContextMenuElementInfo, WKFrameInfo, WKNavigationAction, WKSecurityOrigin, WKWebView, WKWebViewConfiguration, WKWindowFeatures, _WKActivatedElementInfo, _WKAttachment, _WKFrameHandle, _WKHitTestResult, _WKWebAuthenticationPanel;
 @protocol NSSecureCoding, UIContextMenuInteractionCommitAnimating, UIDragSession, UIDropSession;
 
 @protocol WKUIDelegatePrivate <WKUIDelegate>
 
 @optional
+- (_Bool)_webView:(WKWebView *)arg1 gestureRecognizerCanBePreventedByTouchEvents:(UIGestureRecognizer *)arg2;
 - (_Bool)_webView:(WKWebView *)arg1 touchEventsMustRequireGestureRecognizerToFail:(UIGestureRecognizer *)arg2;
 - (_Bool)_webViewCanBecomeFocused:(WKWebView *)arg1;
 - (_Bool)_webView:(WKWebView *)arg1 gestureRecognizerCouldPinch:(UIGestureRecognizer *)arg2;
 - (void)_webView:(WKWebView *)arg1 didDismissFocusedElementViewController:(UIViewController *)arg2;
 - (void)_webView:(WKWebView *)arg1 didPresentFocusedElementViewController:(UIViewController *)arg2;
 - (void)_webView:(WKWebView *)arg1 didChangeSafeAreaShouldAffectObscuredInsets:(_Bool)arg2;
+- (void)_webViewUnlockScreenOrientation:(WKWebView *)arg1;
+- (_Bool)_webViewLockScreenOrientation:(WKWebView *)arg1 lockType:(long long)arg2;
 - (long long)_webView:(WKWebView *)arg1 dataOwnerForDragSession:(id <UIDragSession>)arg2;
 - (long long)_webView:(WKWebView *)arg1 dataOwnerForDropSession:(id <UIDropSession>)arg2;
 - (NSArray *)_webView:(WKWebView *)arg1 willPerformDropWithSession:(id <UIDropSession>)arg2;
@@ -58,10 +61,13 @@
 - (UIViewController *)_webView:(WKWebView *)arg1 previewViewControllerForURL:(NSURL *)arg2;
 - (_Bool)_webView:(WKWebView *)arg1 fileUploadPanelContentIsManagedWithInitiatingFrame:(WKFrameInfo *)arg2;
 - (void)_webView:(WKWebView *)arg1 requestGeolocationAuthorizationForURL:(NSURL *)arg2 frame:(WKFrameInfo *)arg3 decisionHandler:(void (^)(_Bool))arg4;
+- (void)_webView:(WKWebView *)arg1 setShouldKeepScreenAwake:(_Bool)arg2;
+- (void)_webViewStatusBarWasTapped:(WKWebView *)arg1;
 - (void)_webView:(WKWebView *)arg1 didNotHandleTapAsClickAtPoint:(struct CGPoint)arg2;
 - (NSArray *)_webView:(WKWebView *)arg1 actionsForElement:(_WKActivatedElementInfo *)arg2 defaultActions:(NSArray *)arg3;
 - (_Bool)_webView:(WKWebView *)arg1 shouldIncludeAppLinkActionsForElement:(_WKActivatedElementInfo *)arg2;
-- (void)_webView:(WKWebView *)arg1 decidePolicyForModalContainer:(_WKModalContainerInfo *)arg2 decisionHandler:(void (^)(long long))arg3;
+- (void)_webView:(WKWebView *)arg1 updatedClientBadge:(NSNumber *)arg2 fromSecurityOrigin:(WKSecurityOrigin *)arg3;
+- (void)_webView:(WKWebView *)arg1 updatedAppBadge:(NSNumber *)arg2 fromSecurityOrigin:(WKSecurityOrigin *)arg3;
 - (void)_webView:(WKWebView *)arg1 requestCookieConsentWithMoreInfoHandler:(void (^)(void))arg2 decisionHandler:(void (^)(_Bool))arg3;
 - (void)_webViewEndXRSession:(WKWebView *)arg1;
 - (void)_webView:(WKWebView *)arg1 requestNotificationPermissionForSecurityOrigin:(WKSecurityOrigin *)arg2 decisionHandler:(void (^)(_Bool))arg3;

@@ -25,7 +25,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *paidBundleConfigManager;
     MISSING_TYPE *configManager;
     MISSING_TYPE *personalizationService;
-    MISSING_TYPE *personalizationData;
+    MISSING_TYPE *aggregateStoreProvider;
     MISSING_TYPE *lazyPersistentStore;
     MISSING_TYPE *accessQueue;
     MISSING_TYPE *$__lazy_storage_$_lazyInitializingPromise;

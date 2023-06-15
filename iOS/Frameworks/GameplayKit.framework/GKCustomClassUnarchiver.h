@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface GKCustomClassUnarchiver : NSObject
 {
     NSMutableDictionary *_cache;
+    _Bool _linkedOnOrAfterSecureUnarchive;
 }
 
 - (void).cxx_destruct;

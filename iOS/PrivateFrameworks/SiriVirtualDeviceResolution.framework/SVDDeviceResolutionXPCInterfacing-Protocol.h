@@ -15,6 +15,8 @@
 - (void)logCrossDeviceCommandEnded:(NSString *)arg1 action:(NSNumber *)arg2 contextProximityPairs:(NSDictionary *)arg3;
 - (void)logCrossDeviceCommandStarted:(NSString *)arg1 action:(NSNumber *)arg2;
 - (void)logCrossDeviceRequestLink:(NSString *)arg1 halRequestId:(NSString *)arg2;
+- (void)meDeviceWithCompletion:(void (^)(SVDDeviceUnit *))arg1;
+- (void)pairedCompanionDeviceWithCompletion:(void (^)(SVDDeviceUnit *))arg1;
 - (void)getContextAndProximitySnapshotForCurrentRequestForDeviceUnits:(NSArray *)arg1 serviceContexts:(NSArray *)arg2 completion:(void (^)(NSDictionary *))arg3;
 - (void)getDevicesMatchingCapabilityDescriptions:(NSArray *)arg1 completion:(void (^)(NSDictionary *))arg2;
 - (void)getSourceDeviceForContextWithIdentifiers:(NSSet *)arg1 completion:(void (^)(NSDictionary *))arg2;

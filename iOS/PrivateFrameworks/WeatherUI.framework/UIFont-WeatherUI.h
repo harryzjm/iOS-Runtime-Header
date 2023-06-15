@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIFont.h>
+#import <UIKitCore/UIFont.h>
 
 @interface UIFont (WeatherUI)
++ (_Bool)wu_systemUsesExuberatedLineHeight;
+- (_Bool)wu_usesExuberatedLineHeight;
 - (double)wu_scaledValueForValue:(double)arg1;
 @end
 

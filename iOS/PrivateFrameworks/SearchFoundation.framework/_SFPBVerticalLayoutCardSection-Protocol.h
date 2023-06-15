@@ -10,6 +10,7 @@
 
 @protocol _SFPBVerticalLayoutCardSection <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
+@property(nonatomic) _Bool useAppIconMetrics;
 @property(retain, nonatomic) _SFPBRichText *thumbnailOverlayText;
 @property(nonatomic) _Bool contentsLeading;
 @property(retain, nonatomic) _SFPBRichText *footnote;

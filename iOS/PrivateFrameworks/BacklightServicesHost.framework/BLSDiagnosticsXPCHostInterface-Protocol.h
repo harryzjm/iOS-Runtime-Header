@@ -10,10 +10,10 @@
 @protocol __BLSDiagnosticFlipbookFrame__;
 
 @protocol BLSDiagnosticsXPCHostInterface <NSObject>
-- (oneway void)releaseFrameUUID:(NSUUID *)arg1;
-- (oneway void)releaseSurfaceForFrameUUID:(NSUUID *)arg1;
+- (void)rawSurfaceForFrameUUID:(NSUUID *)arg1 reply:(void (^)(NSObject<OS_xpc_object> *, NSError *))arg2;
 - (void)surfaceForFrameUUID:(NSUUID *)arg1 reply:(void (^)(NSObject<OS_xpc_object> *, NSError *))arg2;
 - (BLSDiagnosticFlipbookFrame *)frameOnGlassWhenFlipbookLastCancelled;
+- (BLSDiagnosticFlipbookFrame *)frameOnGlassNow;
 - (NSArray<__BLSDiagnosticFlipbookFrame__> *)allFlipbookFrames;
 @end
 

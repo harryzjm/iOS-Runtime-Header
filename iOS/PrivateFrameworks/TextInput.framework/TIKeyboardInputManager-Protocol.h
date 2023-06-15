@@ -6,9 +6,11 @@
 
 #import <TextInput/NSObject-Protocol.h>
 
-@class NSArray, NSDictionary, NSString, TICandidateRequestToken, TIKeyboardCandidate, TIKeyboardInput, TIKeyboardLayout, TIKeyboardState, TIKeyboardTouchEvent, TISupplementalLexicon;
+@class NSArray, NSDictionary, NSString, NSUUID, TICandidateRequestToken, TIKeyboardCandidate, TIKeyboardInput, TIKeyboardLayout, TIKeyboardState, TIKeyboardTouchEvent, TISupplementalLexicon;
 
 @protocol TIKeyboardInputManager <NSObject>
+- (void)stickerWithIdentifier:(NSUUID *)arg1 stickerRoles:(NSArray *)arg2 completionHandler:(void (^)(TISticker *))arg3;
+- (void)stickerRepresentationsWithStickerIdentifier:(NSUUID *)arg1 stickerRoles:(NSArray *)arg2 completionHandler:(void (^)(NSArray *))arg3;
 - (void)changingContextWithTrigger:(NSString *)arg1;
 - (void)acceptingCandidateWithTrigger:(NSString *)arg1;
 - (void)removeSupplementalLexiconWithIdentifier:(unsigned long long)arg1;
@@ -16,6 +18,7 @@
 - (void)writeTypologyLogWithCompletionHandler:(void (^)(NSURL *))arg1;
 - (void)logDiscoverabilityEvent:(int)arg1 userInfo:(NSDictionary *)arg2;
 - (void)lastAcceptedCandidateCorrected;
+- (void)registerLearning:(TIKeyboardCandidate *)arg1 fullCandidate:(TIKeyboardCandidate *)arg2 keyboardState:(TIKeyboardState *)arg3 mode:(NSString *)arg4;
 - (void)candidateRejected:(TIKeyboardCandidate *)arg1;
 - (void)textAccepted:(TIKeyboardCandidate *)arg1;
 - (void)textAccepted:(TIKeyboardCandidate *)arg1 completionHandler:(void (^)(TIKeyboardConfiguration *))arg2;
@@ -31,6 +34,7 @@
 - (void)generateReplacementsForString:(NSString *)arg1 keyLayout:(TIKeyboardLayout *)arg2 continuation:(void (^)(NSArray *))arg3;
 - (void)handleAcceptedCandidate:(TIKeyboardCandidate *)arg1 keyboardState:(TIKeyboardState *)arg2 completionHandler:(void (^)(TIKeyboardConfiguration *, TIKeyboardOutput *))arg3;
 - (void)generateCandidatesWithKeyboardState:(TIKeyboardState *)arg1 candidateRange:(struct _NSRange)arg2 completionHandler:(void (^)(TIKeyboardCandidateResultSet *))arg3;
+- (NSString *)generateInlineCompletions:(NSString *)arg1 withPrefix:(NSString *)arg2;
 - (void)generateAutocorrectionsWithKeyboardState:(TIKeyboardState *)arg1 candidateRange:(struct _NSRange)arg2 requestToken:(TICandidateRequestToken *)arg3 completionHandler:(void (^)(TIAutocorrectionList *))arg4;
 - (void)generateAutocorrectionsWithKeyboardState:(TIKeyboardState *)arg1 candidateRange:(struct _NSRange)arg2 completionHandler:(void (^)(TIAutocorrectionList *))arg3;
 - (void)generateAutocorrectionsWithKeyboardState:(TIKeyboardState *)arg1 completionHandler:(void (^)(TIAutocorrectionList *))arg2;

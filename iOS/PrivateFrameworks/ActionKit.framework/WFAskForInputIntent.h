@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 
 // Remaining properties
 @property(copy, nonatomic) NSNumber *allowsDecimalNumbers; // @dynamic allowsDecimalNumbers;
+@property(copy, nonatomic) NSNumber *allowsMultilineText; // @dynamic allowsMultilineText;
 @property(copy, nonatomic) NSNumber *allowsNegativeNumbers; // @dynamic allowsNegativeNumbers;
 @property(copy, nonatomic) NSDateComponents *dateAndTimeAnswer; // @dynamic dateAndTimeAnswer;
 @property(copy, nonatomic) NSDateComponents *dateAnswer; // @dynamic dateAnswer;

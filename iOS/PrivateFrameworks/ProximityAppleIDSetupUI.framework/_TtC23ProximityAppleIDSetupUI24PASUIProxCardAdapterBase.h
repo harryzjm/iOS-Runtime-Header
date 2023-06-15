@@ -10,7 +10,7 @@
 
 @interface _TtC23ProximityAppleIDSetupUI24PASUIProxCardAdapterBase : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *deviceProvider;
+    MISSING_TYPE *_deviceProvider;
     MISSING_TYPE *cancellables;
 }
 

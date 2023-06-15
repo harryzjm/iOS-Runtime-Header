@@ -8,7 +8,7 @@
 #import <SpringBoard/SBLayoutStateTransitionObserver-Protocol.h>
 #import <SpringBoard/SBSceneLayoutStatusBarAssertionProviding-Protocol.h>
 
-@class NSString, SBDeviceApplicationSceneHandle, SBFTraitsParticipant, SBHomeGrabberView, SBUIAnimationController, UIView;
+@class NSSet, NSString, SBDeviceApplicationSceneHandle, SBHomeGrabberView, SBUIAnimationController, TRAParticipant, UIView;
 @protocol SBApplicationSceneBackgroundView;
 
 @protocol SBDeviceApplicationSceneViewControlling <SBApplicationSceneViewControlling, SBSceneLayoutStatusBarAssertionProviding, SBLayoutStateTransitionObserver>
@@ -21,12 +21,12 @@
 @property(readonly, nonatomic) SBDeviceApplicationSceneHandle *sceneHandle;
 @property(retain, nonatomic) UIView<SBApplicationSceneBackgroundView> *backgroundView;
 - (void)conformsToProtocolSBDeviceApplicationSceneViewControlling;
-- (void)containerDidUpdateTraitsParticipant:(SBFTraitsParticipant *)arg1;
+- (void)containerDidUpdateTraitsParticipant:(TRAParticipant *)arg1;
 - (void)didRotateFromInterfaceOrientation:(long long)arg1 toInterfaceOrientation:(long long)arg2;
 - (SBUIAnimationController *)prepareForContentRotation;
 - (void)willRotateFromInterfaceOrientation:(long long)arg1 toInterfaceOrientation:(long long)arg2 alongsideContainerView:(UIView *)arg3 animated:(_Bool)arg4;
 - (double)currentStatusBarHeight;
-- (unsigned long long)styleOverridesToSuppress;
+- (NSSet *)backgroundActivitiesToSuppress;
 - (long long)trailingStatusBarStyle;
 - (long long)leadingStatusBarStyle;
 - (long long)bestHomeAffordanceOrientationForOrientation:(long long)arg1;

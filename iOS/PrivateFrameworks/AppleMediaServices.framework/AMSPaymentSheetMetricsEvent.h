@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)_timestamp;
++ (id)_propertyValueClassesForKnownProperties;
 + (id)dictionaryForUserAction:(long long)arg1 didBiometricsLockout:(_Bool)arg2;
 + (id)dictionaryForCancellationEvent:(unsigned long long)arg1 didBiometricsLockout:(_Bool)arg2;
 + (id)dictionaryForBiometricMatchState:(long long)arg1 didBiometricsLockout:(_Bool)arg2 biometricsType:(long long)arg3;

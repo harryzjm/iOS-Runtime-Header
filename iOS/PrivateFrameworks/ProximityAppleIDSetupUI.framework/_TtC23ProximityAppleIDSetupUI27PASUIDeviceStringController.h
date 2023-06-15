@@ -11,10 +11,10 @@
 @interface _TtC23ProximityAppleIDSetupUI27PASUIDeviceStringController : _TtCs12_SwiftObject
 {
     MISSING_TYPE *titleSubtitleView;
-    MISSING_TYPE *deviceProvider;
     MISSING_TYPE *cancellables;
     MISSING_TYPE *viewTitle;
     MISSING_TYPE *viewSubtitle;
+    MISSING_TYPE *_deviceProvider;
 }
 
 @end

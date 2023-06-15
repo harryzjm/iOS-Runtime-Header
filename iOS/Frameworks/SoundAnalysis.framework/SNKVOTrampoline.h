@@ -6,14 +6,18 @@
 
 #import <objc/NSObject.h>
 
+@class MISSING_TYPE;
+
 __attribute__((visibility("hidden")))
 @interface SNKVOTrampoline : NSObject
 {
-    CDUnknownBlockType _observeValue;
+    MISSING_TYPE *observeValue;
 }
 
 - (void).cxx_destruct;
+- (id)init;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+@property(nonatomic, copy) CDUnknownBlockType observeValue;
 
 @end
 

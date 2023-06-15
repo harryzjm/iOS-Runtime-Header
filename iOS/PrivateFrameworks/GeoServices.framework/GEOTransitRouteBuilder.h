@@ -9,7 +9,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)_buildLegsFromSteps:(id)arg1 andCoordinates:(id)arg2 andCustodian:(id)arg3;
++ (id)_buildLegsFromSteps:(id)arg1 segments:(id)arg2 andCoordinates:(id)arg3 andCustodian:(id)arg4;
 + (double)_buildPointSectionsInCollection:(id)arg1 pointRange:(struct _NSRange)arg2 stepIndex:(unsigned long long)arg3 transitLineColor:(id)arg4 startDistance:(double)arg5 andCoordinates:(id)arg6 fromSteps:(id)arg7 andSegments:(id)arg8;
 + (id)_buildPointSectionsFromSteps:(id)arg1 andSegments:(id)arg2 coordinates:(id)arg3 andTransitLineColor:(id)arg4;
 + (id)_buildSegmentsForGeometry:(id)arg1 andStepCount:(unsigned long long)arg2 andPointCount:(unsigned long long)arg3 andCustodian:(id)arg4;
@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
 + (double)_buildPointSectionsInCollection:(id)arg1 pointRange:(struct _NSRange)arg2 stepIndex:(unsigned long long)arg3 transitLineColor:(id)arg4 startDistance:(double)arg5 coordinates:(id)arg6 fromSteps:(id)arg7 andSegments:(id)arg8 andDecoderData:(id)arg9;
 + (_Bool)_shouldBreakPointSectionAtStep:(id)arg1 previousStep:(id)arg2;
 + (id)buildRouteSectionsForSuggestedRoute:(id)arg1 fromSteps:(id)arg2 andSegments:(id)arg3 andCoordinates:(id)arg4 andDecoderData:(id)arg5;
-+ (id)_segmentForSteps:(id)arg1 withRange:(struct _NSRange)arg2 andCustodian:(id)arg3 andDecoderData:(id)arg4 andSuggestedRoute:(id)arg5 andRideSelections:(id)arg6 andSectionOptions:(id)arg7 andUpdateTripCount:(unsigned long long *)arg8;
++ (id)_segmentForSteps:(id)arg1 withRange:(struct _NSRange)arg2 segmentIndex:(unsigned long long)arg3 andCustodian:(id)arg4 andDecoderData:(id)arg5 andSuggestedRoute:(id)arg6 andRideSelections:(id)arg7 andSectionOptions:(id)arg8 andUpdateTripCount:(unsigned long long *)arg9;
 + (id)_walkingStepForStepInfo:(id)arg1 withValidPointRange:(struct _NSRange)arg2 andStepCount:(unsigned long long)arg3 andCustodian:(id)arg4 andDecoderData:(id)arg5 andSuggestedRoute:(id)arg6;
 + (struct _NSRange)_validPointRangeForStepInfoIndex:(unsigned long long)arg1 andStepInfos:(id)arg2 withPointCount:(unsigned long long)arg3;
 + (id)_stepForStepInfoAtIndex:(unsigned long long)arg1 andStepInfos:(id)arg2 andSteps:(id)arg3 andCustodian:(id)arg4 withDecoderData:(id)arg5 andSuggestedRoute:(id)arg6 andPointCount:(unsigned long long)arg7;

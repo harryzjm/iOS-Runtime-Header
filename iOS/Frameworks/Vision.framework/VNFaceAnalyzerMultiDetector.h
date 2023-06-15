@@ -10,14 +10,13 @@ __attribute__((visibility("hidden")))
     struct shared_ptr<vision::mod::FaceFrontalizer> _mFaceFrontalizerImpl;
 }
 
-+ (id)espressoModelInputImageDimensionsBlobNameForConfigurationOptions:(id)arg1;
 + (unsigned int)networkRequiredInputImagePixelFormatForConfigurationOptions:(id)arg1;
 + (float)faceBoundingBoxScalingFactorForFaceObservation:(unsigned long long)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (_Bool)prepare_vImageBufferForCVPixelBuffer:(struct __CVBuffer *)arg1 vImageBuffer:(struct vImage_Buffer *)arg2 error:(id *)arg3;
+- (struct CGRect)calculateCropRectForInputFace:(id)arg1 imageBuffer:(id)arg2 options:(id)arg3 error:(id *)arg4;
 - (_Bool)_isFaceprintJunk:(shared_ptr_0a6daad2)arg1;
-- (id)processRegionOfInterest:(struct CGRect)arg1 croppedPixelBuffer:(const struct __CVBuffer *)arg2 options:(id)arg3 qosClass:(unsigned int)arg4 warningRecorder:(id)arg5 error:(id *)arg6 progressHandler:(CDUnknownBlockType)arg7;
-- (_Bool)createRegionOfInterestCrop:(struct CGRect)arg1 options:(id)arg2 warningRecorder:(id)arg3 pixelBuffer:(struct __CVBuffer **)arg4 error:(id *)arg5 progressHandler:(CDUnknownBlockType)arg6;
 - (_Bool)completeInitializationForSession:(id)arg1 error:(id *)arg2;
 
 @end

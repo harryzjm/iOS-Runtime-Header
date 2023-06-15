@@ -13,7 +13,7 @@
 
 - (void).cxx_destruct;
 - (void)renderLabelRenderInfo:(id)arg1;
-- (void)renderLabelsResourcesSessionWithResources:(id)arg1 expectedSize:(const void *)arg2 pipeline:(id)arg3 renderBlock:(CDUnknownBlockType)arg4;
+- (void)renderLabelsResourcesSessionWithResources:(id)arg1 expectedSize:(void *)arg2 pipeline:(id)arg3 renderBlock:(CDUnknownBlockType)arg4;
 - (void)dispatchElementLabelHandler:(CDUnknownBlockType)arg1;
 - (void)getSceneObjectElementsBounds:(id)arg1;
 - (void)getSelectionKnobsPositions:(id)arg1;

@@ -11,10 +11,11 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)safeSwiftOptionalStructForKey:(id)arg1;
-- (id)safeSwiftStructForKey:(id)arg1;
-- (id)safeSwiftObjectForKey:(id)arg1;
-- (id)safeSwiftOptionalArrayForKey:(id)arg1;
+- (id)safeSwiftEnumCase;
+- (id)safeSwiftEnumAssociatedObject;
+- (id)safeSwiftValueForKey:(id)arg1;
+- (id)safeSwiftDictionaryForKey:(id)arg1;
+- (id)safeSwiftSetForKey:(id)arg1;
 - (id)safeSwiftArrayForKey:(id)arg1;
 - (id)safeSwiftStringForKey:(id)arg1;
 - (id)safeSwiftOptionalCGRectForKey:(id)arg1;
@@ -51,6 +52,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)safeSwiftUIntForKey:(id)arg1;
 - (long long)safeSwiftIntForKey:(id)arg1;
 - (_Bool)safeSwiftBoolForKey:(id)arg1;
+- (id)_safeSwiftDebugPrintAllFields;
 
 @end
 

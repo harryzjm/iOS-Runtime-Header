@@ -24,6 +24,11 @@
     MISSING_TYPE *_filterConfigurations;
     MISSING_TYPE *_persistedHealthKitMindfulSessionThreshold;
     MISSING_TYPE *_guidedAudioWorkoutActivityTypeBehaviors;
+    MISSING_TYPE *_catalogSyncBoundaryTimeIntervalInSeconds;
+    MISSING_TYPE *_catalogSyncBoundaryTimeOffsetInSeconds;
+    MISSING_TYPE *_catalogSyncIntervalInSeconds;
+    MISSING_TYPE *_catalogTipMinimumRatioComplete;
+    MISSING_TYPE *_catalogTipUpsellConfiguration;
 }
 
 @end

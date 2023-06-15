@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UICollectionViewListCell.h>
+#import <UIKitCore/UICollectionViewListCell.h>
 
 @class CNAccountsAndGroupsCellTextView, CNAccountsAndGroupsItem, NSString;
 @protocol CNAccountsAndGroupsCellDelegate;

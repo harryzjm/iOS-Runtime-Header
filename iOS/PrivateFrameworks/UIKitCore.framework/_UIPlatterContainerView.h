@@ -15,9 +15,11 @@ __attribute__((visibility("hidden")))
     _UIPlatterView *_source;
     _UIPlatterView *_target;
     _UIPlatterView *_updatedTarget;
+    UIView *_platterContentView;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) UIView *platterContentView; // @synthesize platterContentView=_platterContentView;
 @property(retain, nonatomic) _UIPlatterView *updatedTarget; // @synthesize updatedTarget=_updatedTarget;
 @property(retain, nonatomic) _UIPlatterView *target; // @synthesize target=_target;
 @property(retain, nonatomic) _UIPlatterView *source; // @synthesize source=_source;
@@ -26,6 +28,8 @@ __attribute__((visibility("hidden")))
 - (void)setFrame:(struct CGRect)arg1;
 - (void)applyRotation:(double)arg1;
 - (void)applyTransform:(struct CGAffineTransform)arg1 withSize:(struct CGSize)arg2;
+- (void)installPreviewContainer:(id)arg1 overrideSourceView:(id)arg2;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

@@ -6,12 +6,12 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class SBDeviceApplicationSceneHandle, SBPIPSceneContentContainerAdapter, UIGestureRecognizer;
+@class SBDeviceApplicationSceneHandle, SBPIPSceneContentContainerAdapter, SBWindowScene, UIGestureRecognizer;
 
 @protocol SBPIPSceneContentContainerAdapterDelegate <NSObject>
 - (void)contentContainerAdapter:(SBPIPSceneContentContainerAdapter *)arg1 handleDestructionRequestForSceneHandle:(SBDeviceApplicationSceneHandle *)arg2;
 - (void)contentContainerAdapterPanGestureDidEnd:(SBPIPSceneContentContainerAdapter *)arg1;
-- (void)contentContainerAdapterDidEndInteraction:(SBPIPSceneContentContainerAdapter *)arg1;
+- (void)contentContainerAdapterDidEndInteraction:(SBPIPSceneContentContainerAdapter *)arg1 targetWindowScene:(SBWindowScene *)arg2;
 - (void)contentContainerAdapter:(SBPIPSceneContentContainerAdapter *)arg1 willBeginInteractionWithGestureRecognizer:(UIGestureRecognizer *)arg2;
 - (_Bool)contentContainerAdapterShouldUpdateUIForStashing:(SBPIPSceneContentContainerAdapter *)arg1;
 - (void)contentContainerAdapter:(SBPIPSceneContentContainerAdapter *)arg1 willUpdateStashState:(_Bool)arg2;

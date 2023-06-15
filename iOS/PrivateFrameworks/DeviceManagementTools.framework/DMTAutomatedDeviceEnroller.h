@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
     id <DMTPowerOffPrimitives> _powerOffPrimitives;
     NSString *_organizationName;
     long long _organizationType;
+    NSString *_mdmServerName;
     NSString *_networkName;
     long long _enrollmentState;
     NSError *_enrollmentError;
@@ -48,6 +49,7 @@ __attribute__((visibility("hidden")))
 @property(retain) NSError *enrollmentError; // @synthesize enrollmentError=_enrollmentError;
 @property long long enrollmentState; // @synthesize enrollmentState=_enrollmentState;
 @property(copy) NSString *networkName; // @synthesize networkName=_networkName;
+@property(copy) NSString *mdmServerName; // @synthesize mdmServerName=_mdmServerName;
 @property long long organizationType; // @synthesize organizationType=_organizationType;
 @property(copy) NSString *organizationName; // @synthesize organizationName=_organizationName;
 @property(readonly, nonatomic) id <DMTPowerOffPrimitives> powerOffPrimitives; // @synthesize powerOffPrimitives=_powerOffPrimitives;
@@ -85,7 +87,7 @@ __attribute__((visibility("hidden")))
 - (void)eraseAndShutDownWithExternalError:(id)arg1;
 - (void)eraseAndRestartWithExternalError:(id)arg1;
 - (void)beginAutomatedDeviceEnrollment;
-- (void)setNetworkCredential:(id)arg1 networkPayload:(id)arg2 enrollmentNonce:(id)arg3 postEnrollmentBehavior:(long long)arg4 organizationName:(id)arg5 organizationType:(long long)arg6 networkConfiguration:(long long)arg7;
+- (void)setNetworkCredential:(id)arg1 networkPayload:(id)arg2 enrollmentNonce:(id)arg3 postEnrollmentBehavior:(long long)arg4 organizationName:(id)arg5 organizationType:(long long)arg6 mdmServerName:(id)arg7 networkConfiguration:(long long)arg8;
 - (id)initWithEnrollmentPrimitives:(id)arg1 enrollmentInformationPrimitives:(id)arg2 reachabilityPrimitives:(id)arg3 activationPrimitives:(id)arg4 wifiPrimitives:(id)arg5 profileInstallationPrimitives:(id)arg6 destructiveErasePrimitives:(id)arg7 nonDestructiveErasePrimitives:(id)arg8 powerOffPrimitives:(id)arg9;
 
 // Remaining properties

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UICollectionViewCell.h>
+#import <UIKitCore/UICollectionViewCell.h>
 
 @class CKAvatarView, CKNicknameUpdate, NSLayoutConstraint, NSString, UIButton, UIImageView, UILabel, UIView;
 @protocol CKNicknameUpdatesCollectionViewCellDelegate;
@@ -46,9 +46,24 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak id <CKNicknameUpdatesCollectionViewCellDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_ignoreButtonTapped:(id)arg1;
 - (void)_updateButtonTapped:(id)arg1;
-- (void)updateInterfaceSelectedAction:(unsigned long long)arg1;
+- (void)updateInterfaceSelectedAction:(unsigned long long)arg1 forUpdate:(id)arg2;
+- (_Bool)_showsSeparators;
 - (void)updateSeparatorsForOrder:(unsigned long long)arg1;
 - (void)configureWithNicknameUpdate:(id)arg1 order:(unsigned long long)arg2;
+- (void)_activateStackedButtonConstraints;
+- (void)_activateStandardButtonConstraints;
+- (void)_activateCatalystButtonConstraints;
+- (void)_activateButtonConstraints;
+- (void)_activateSeparatorConstraints;
+- (void)_activateSubtitleConstraints;
+- (void)_activateTitleConstraints;
+- (void)_activateImageConstraints;
+- (void)_configureIgnoreButton;
+- (void)_configureUpdateButton;
+- (id)_generateButton;
+- (void)_configureContentView;
+- (_Bool)_shouldUseStackedButtonLayout;
+- (void)prepareForReuse;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 // Remaining properties

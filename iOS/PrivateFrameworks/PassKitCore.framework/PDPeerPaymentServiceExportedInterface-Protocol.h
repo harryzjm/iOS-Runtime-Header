@@ -6,9 +6,17 @@
 
 #import <PassKitCore/PDXPCServiceExportedInterface-Protocol.h>
 
-@class NSArray, NSData, NSDate, NSDecimalNumber, NSNumber, NSString, NSURL, PKCurrencyAmount, PKPaymentPass, PKPeerPaymentAccount, PKPeerPaymentPreferences, PKPeerPaymentWebServiceContext, PKRemoteRegistrationRequest;
+@class NSArray, NSData, NSDate, NSDecimalNumber, NSNumber, NSString, NSURL, PKCurrencyAmount, PKPaymentPass, PKPeerPaymentAccount, PKPeerPaymentPreferences, PKPeerPaymentRecurringPaymentMemo, PKPeerPaymentWebServiceContext, PKRemoteRegistrationRequest;
 
 @protocol PDPeerPaymentServiceExportedInterface <PDXPCServiceExportedInterface>
+- (void)updateAutoReloadAmount:(PKCurrencyAmount *)arg1 threshold:(PKCurrencyAmount *)arg2 identifier:(NSString *)arg3 completion:(void (^)(PKPeerPaymentRecurringPayment *))arg4;
+- (void)updateRecurringPaymentStatus:(unsigned long long)arg1 identifier:(NSString *)arg2 completion:(void (^)(PKPeerPaymentRecurringPayment *))arg3;
+- (void)updateRecurringPaymentMemo:(PKPeerPaymentRecurringPaymentMemo *)arg1 identifier:(NSString *)arg2 completion:(void (^)(PKPeerPaymentRecurringPayment *))arg3;
+- (void)performRecurringPaymentAction:(unsigned long long)arg1 identifier:(NSString *)arg2 completion:(void (^)(PKPeerPaymentRecurringPayment *, NSError *))arg3;
+- (void)deleteAllRecurringPaymentsWithCompletion:(void (^)(void))arg1;
+- (void)deleteRecurringPaymentsForIdentifiers:(NSArray *)arg1 completion:(void (^)(void))arg2;
+- (void)updateRecurringPaymentsWithCompletion:(void (^)(NSArray *, NSError *))arg1;
+- (void)recurringPaymentsWithCompletion:(void (^)(NSArray *))arg1;
 - (void)deletePeerPaymentPendingRequestsForPeerPaymentAccountWithCompletion:(void (^)(void))arg1;
 - (void)deletePeerPaymentPendingRequestsForRequestTokens:(NSArray *)arg1 completion:(void (^)(void))arg2;
 - (void)insertOrUpdatePeerPaymentPendingRequests:(NSArray *)arg1 shouldScheduleNotifications:(_Bool)arg2 completion:(void (^)(void))arg3;
@@ -27,7 +35,7 @@
 - (void)updateMessageReceivedDate:(NSDate *)arg1 forTransactionWithIdentifier:(NSString *)arg2 handler:(void (^)(void))arg3;
 - (void)receivedPeerPaymentMessageData:(NSData *)arg1 handler:(void (^)(void))arg2;
 - (void)presentPeerPaymentTermsAndConditionsWithTermsURL:(NSURL *)arg1 termsIdentifier:(NSString *)arg2 passUniqueID:(NSString *)arg3 orientation:(NSNumber *)arg4 completion:(void (^)(_Bool))arg5;
-- (void)presentRegistrationFlowWithAccount:(PKPeerPaymentAccount *)arg1 amount:(PKCurrencyAmount *)arg2 state:(unsigned long long)arg3 senderAddress:(NSString *)arg4 orientation:(NSNumber *)arg5 completion:(void (^)(_Bool))arg6;
+- (void)presentRegistrationFlowWithAccount:(PKPeerPaymentAccount *)arg1 amount:(PKCurrencyAmount *)arg2 state:(unsigned long long)arg3 senderAddress:(NSString *)arg4 orientation:(NSNumber *)arg5 hostSceneIdentifier:(NSString *)arg6 hostSceneBundleIdentifier:(NSString *)arg7 completion:(void (^)(_Bool))arg8;
 - (void)presentIdentityVerificationFlowWithResponseData:(NSData *)arg1 orientation:(NSNumber *)arg2 completion:(void (^)(_Bool))arg3;
 - (void)registrationStatusWithCompletion:(void (^)(unsigned long long))arg1;
 - (void)unregisterDeviceWithCompletion:(void (^)(_Bool, NSError *))arg1;

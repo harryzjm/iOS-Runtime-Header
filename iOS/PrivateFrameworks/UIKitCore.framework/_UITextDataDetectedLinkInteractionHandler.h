@@ -4,35 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
-@class NSString, UIAction, UIView, _UITextInteractableItem;
-@protocol _UITextContent;
-
 __attribute__((visibility("hidden")))
-@interface _UITextDataDetectedLinkInteractionHandler : NSObject
+@interface _UITextDataDetectedLinkInteractionHandler
 {
-    struct _NSRange _range;
     struct CGRect _rect;
-    UIView<_UITextContent> *_view;
-    _UITextInteractableItem *_item;
-    UIAction *_defaultAction;
 }
 
-- (void).cxx_destruct;
-- (unsigned long long)preferredContextMenuLayout;
-- (id)contextMenuConfiguration;
-- (id)actionSheetTitle;
-- (id)_defaultDDAction;
-- (id)defaultActionWithContextMenuInteraction:(id)arg1;
-- (struct CGRect)rectAtItemLocation;
-- (id)initWithItem:(id)arg1 inTextContentView:(id)arg2;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+@property(readonly, nonatomic) struct CGRect rect; // @synthesize rect=_rect;
+- (id)_defaultDataDetectorsPrimaryAction;
+- (id)_dataDetectorsRevealControllerAction;
+- (id)_defaultPrimaryActionForInteractableItem;
+- (id)_defaultContextMenuConfiguration;
+- (_Bool)_useDataDetectorsContextMenuConfiguration;
+- (id)initWithItem:(id)arg1 textContentView:(id)arg2;
 
 @end
 

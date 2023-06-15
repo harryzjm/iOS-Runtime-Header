@@ -11,12 +11,13 @@
 @interface _TtC7NewsUI227SportsManagementDataManager : _TtCs12_SwiftObject
 {
     MISSING_TYPE *delegate;
-    MISSING_TYPE *configManager;
+    MISSING_TYPE *sportsManagementConfigManager;
     MISSING_TYPE *sportsGraphManager;
     MISSING_TYPE *sportsOnboardingManager;
     MISSING_TYPE *subscriptionService;
     MISSING_TYPE *tagService;
     MISSING_TYPE *recommendationService;
+    MISSING_TYPE *configurationManager;
 }
 
 @end

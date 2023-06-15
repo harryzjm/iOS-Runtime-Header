@@ -7,6 +7,10 @@
 @class _TtC18MobileTimerSupport19MTAppIntentsManager;
 
 @protocol _TtP18MobileTimerSupport27MTAppIntentsManagerDelegate_
+- (void)didResetStopwatchWithManager:(_TtC18MobileTimerSupport19MTAppIntentsManager *)arg1;
+- (void)didLapStopwatchWithManager:(_TtC18MobileTimerSupport19MTAppIntentsManager *)arg1;
+- (void)didStopStopwatchWithManager:(_TtC18MobileTimerSupport19MTAppIntentsManager *)arg1;
+- (void)didStartStopwatchWithManager:(_TtC18MobileTimerSupport19MTAppIntentsManager *)arg1;
 - (void)didSelectTabWithManager:(_TtC18MobileTimerSupport19MTAppIntentsManager *)arg1 tab:(long long)arg2;
 @end
 

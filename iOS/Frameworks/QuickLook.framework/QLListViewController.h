@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UINavigationController.h>
+#import <UIKitCore/UINavigationController.h>
 
 @class NSArray, NSString, QLItem, QLListCellManager, QLPreviewItemStore, UIBarButtonItem, UIPopoverPresentationController, UITableViewController;
 @protocol QLListViewControllerDelegate;

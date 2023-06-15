@@ -47,6 +47,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIKBCacheToken *cacheToken; // @synthesize cacheToken=_cacheToken;
 @property(retain, nonatomic) UIKBTree *defaultKeyplane; // @synthesize defaultKeyplane=_defaultKeyplane;
 @property(retain, nonatomic) UIKBTree *keyplane; // @synthesize keyplane=_keyplane;
+- (_Bool)_shouldUseUnifiedKeyView:(id)arg1 forState:(int)arg2;
 @property(readonly, nonatomic) UIView *keyplaneMaskView; // @synthesize keyplaneMaskView=_keyplaneMaskView;
 - (void)_updateKeyplaneMaskView;
 - (void)purgeFactory;
@@ -58,8 +59,7 @@ __attribute__((visibility("hidden")))
 - (void)deactivateKeys;
 - (void)deactivateKey:(id)arg1 previousState:(int)arg2 keyView:(id)arg3;
 - (void)deactivateKey:(id)arg1 previousState:(int)arg2;
-- (void)retestForTouchUpSelectedVariantIndexForKey:(id)arg1 atPoint:(struct CGPoint)arg2;
-- (void)retestSelectedVariantIndexForKey:(id)arg1 atPoint:(struct CGPoint)arg2;
+- (_Bool)retestSelectedVariantIndexForKey:(id)arg1 atPoint:(struct CGPoint)arg2 phase:(long long)arg3;
 - (id)_existingVariantsKeyViewForKey:(id)arg1;
 - (void)orientKeyCapForKey:(id)arg1 orientation:(long long)arg2;
 - (void)hideKeyCaps:(_Bool)arg1 andControlKeysWithInteractionTypes:(id)arg2;

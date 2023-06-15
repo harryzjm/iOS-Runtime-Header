@@ -34,9 +34,9 @@
 - (void)p_setControlKnobPointForStarPoints:(struct CGPoint)arg1;
 - (struct CGPoint)p_getControlKnobPointForArrow;
 - (void)p_setControlKnobPointForArrow:(struct CGPoint)arg1;
-- (const struct CGPath *)p_newPlusPath;
-- (const struct CGPath *)p_newStarPath;
-- (const struct CGPath *)p_newArrowPath;
+- (struct CGPath *)p_newPlusPath;
+- (struct CGPath *)p_newStarPath;
+- (struct CGPath *)p_newArrowPath;
 - (id)mixedObjectWithFraction:(double)arg1 ofObject:(id)arg2;
 - (long long)mixingTypeWithObject:(id)arg1 context:(id)arg2;
 - (id)name;

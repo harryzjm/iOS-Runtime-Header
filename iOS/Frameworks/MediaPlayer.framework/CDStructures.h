@@ -31,8 +31,6 @@ struct DeviceLibrary;
 
 struct DeviceLibraryView;
 
-struct Entity;
-
 struct EntityCache;
 
 struct EntityQuery;
@@ -77,51 +75,39 @@ struct __tree_end_node<std::__tree_node_base<void *>*> {
 };
 
 struct map<MPModelStoreBrowseDetailedContentItemType, unsigned long, std::less<MPModelStoreBrowseDetailedContentItemType>, std::allocator<std::pair<const MPModelStoreBrowseDetailedContentItemType, unsigned long>>> {
-    struct __tree<std::__value_type<MPModelStoreBrowseDetailedContentItemType, unsigned long>, std::__map_value_compare<MPModelStoreBrowseDetailedContentItemType, std::__value_type<MPModelStoreBrowseDetailedContentItemType, unsigned long>, std::less<MPModelStoreBrowseDetailedContentItemType>, true>, std::allocator<std::__value_type<MPModelStoreBrowseDetailedContentItemType, unsigned long>>> {
+    struct __tree<std::__value_type<MPModelStoreBrowseDetailedContentItemType, unsigned long>, std::__map_value_compare<MPModelStoreBrowseDetailedContentItemType, std::__value_type<MPModelStoreBrowseDetailedContentItemType, unsigned long>, std::less<MPModelStoreBrowseDetailedContentItemType>>, std::allocator<std::__value_type<MPModelStoreBrowseDetailedContentItemType, unsigned long>>> {
         void *__begin_node_;
         struct __compressed_pair<std::__tree_end_node<std::__tree_node_base<void *>*>, std::allocator<std::__tree_node<std::__value_type<MPModelStoreBrowseDetailedContentItemType, unsigned long>, void *>>> {
             struct __tree_end_node<std::__tree_node_base<void *>*> __value_;
         } __pair1_;
-        struct __compressed_pair<unsigned long, std::__map_value_compare<MPModelStoreBrowseDetailedContentItemType, std::__value_type<MPModelStoreBrowseDetailedContentItemType, unsigned long>, std::less<MPModelStoreBrowseDetailedContentItemType>, true>> {
+        struct __compressed_pair<unsigned long, std::__map_value_compare<MPModelStoreBrowseDetailedContentItemType, std::__value_type<MPModelStoreBrowseDetailedContentItemType, unsigned long>, std::less<MPModelStoreBrowseDetailedContentItemType>>> {
             unsigned long long __value_;
         } __pair3_;
     } __tree_;
 };
 
 struct map<long long, unsigned long, std::less<long long>, std::allocator<std::pair<const long long, unsigned long>>> {
-    struct __tree<std::__value_type<long long, unsigned long>, std::__map_value_compare<long long, std::__value_type<long long, unsigned long>, std::less<long long>, true>, std::allocator<std::__value_type<long long, unsigned long>>> {
+    struct __tree<std::__value_type<long long, unsigned long>, std::__map_value_compare<long long, std::__value_type<long long, unsigned long>, std::less<long long>>, std::allocator<std::__value_type<long long, unsigned long>>> {
         void *__begin_node_;
         struct __compressed_pair<std::__tree_end_node<std::__tree_node_base<void *>*>, std::allocator<std::__tree_node<std::__value_type<long long, unsigned long>, void *>>> {
             struct __tree_end_node<std::__tree_node_base<void *>*> __value_;
         } __pair1_;
-        struct __compressed_pair<unsigned long, std::__map_value_compare<long long, std::__value_type<long long, unsigned long>, std::less<long long>, true>> {
+        struct __compressed_pair<unsigned long, std::__map_value_compare<long long, std::__value_type<long long, unsigned long>, std::less<long long>>> {
             unsigned long long __value_;
         } __pair3_;
     } __tree_;
 };
 
 struct map<long, MPIdentifierSet *, std::less<long>, std::allocator<std::pair<const long, MPIdentifierSet *>>> {
-    struct __tree<std::__value_type<long, MPIdentifierSet *>, std::__map_value_compare<long, std::__value_type<long, MPIdentifierSet *>, std::less<long>, true>, std::allocator<std::__value_type<long, MPIdentifierSet *>>> {
+    struct __tree<std::__value_type<long, MPIdentifierSet *>, std::__map_value_compare<long, std::__value_type<long, MPIdentifierSet *>, std::less<long>>, std::allocator<std::__value_type<long, MPIdentifierSet *>>> {
         void *__begin_node_;
         struct __compressed_pair<std::__tree_end_node<std::__tree_node_base<void *>*>, std::allocator<std::__tree_node<std::__value_type<long, MPIdentifierSet *>, void *>>> {
             struct __tree_end_node<std::__tree_node_base<void *>*> __value_;
         } __pair1_;
-        struct __compressed_pair<unsigned long, std::__map_value_compare<long, std::__value_type<long, MPIdentifierSet *>, std::less<long>, true>> {
+        struct __compressed_pair<unsigned long, std::__map_value_compare<long, std::__value_type<long, MPIdentifierSet *>, std::less<long>>> {
             unsigned long long __value_;
         } __pair3_;
     } __tree_;
-};
-
-struct map<std::string, mlcore::ModelPropertyBase *, std::less<std::string>, std::allocator<std::pair<const std::string, mlcore::ModelPropertyBase *>>> {
-    struct __tree<std::__value_type<std::string, mlcore::ModelPropertyBase *>, std::__map_value_compare<std::string, std::__value_type<std::string, mlcore::ModelPropertyBase *>, std::less<std::string>, true>, std::allocator<std::__value_type<std::string, mlcore::ModelPropertyBase *>>> {
-        void *_field1;
-        struct __compressed_pair<std::__tree_end_node<std::__tree_node_base<void *>*>, std::allocator<std::__tree_node<std::__value_type<std::string, mlcore::ModelPropertyBase *>, void *>>> {
-            struct __tree_end_node<std::__tree_node_base<void *>*> _field1;
-        } _field2;
-        struct __compressed_pair<unsigned long, std::__map_value_compare<std::string, std::__value_type<std::string, mlcore::ModelPropertyBase *>, std::less<std::string>, true>> {
-            unsigned long long _field1;
-        } _field3;
-    } _field1;
 };
 
 struct os_unfair_lock_s {
@@ -141,11 +127,6 @@ struct shared_ptr<mlcore::DeviceLibrary> {
 struct shared_ptr<mlcore::DeviceLibraryView> {
     struct DeviceLibraryView *__ptr_;
     struct __shared_weak_count *__cntrl_;
-};
-
-struct shared_ptr<mlcore::Entity> {
-    struct Entity *_field1;
-    struct __shared_weak_count *_field2;
 };
 
 struct shared_ptr<mlcore::EntityCache> {
@@ -174,8 +155,8 @@ struct shared_ptr<mlcore::PropertiesQuery> {
 };
 
 struct shared_ptr<mlcore::Query> {
-    struct Query *__ptr_;
-    struct __shared_weak_count *__cntrl_;
+    struct Query *_field1;
+    struct __shared_weak_count *_field2;
 };
 
 struct shared_ptr<mlcore::QueryResult> {
@@ -188,9 +169,37 @@ struct shared_ptr<std::map<long long, std::shared_ptr<mlcore::EntityQueryResult>
     struct __shared_weak_count *__cntrl_;
 };
 
-struct shared_ptr<std::map<std::string, mlcore::ModelPropertyBase *>> {
+struct shared_ptr<std::unordered_map<std::string, mlcore::ModelPropertyBase *>> {
     void *__ptr_;
     struct __shared_weak_count *__cntrl_;
+};
+
+struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, mlcore::ModelPropertyBase *>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, mlcore::ModelPropertyBase *>, void *>*>*>>> {
+    struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, mlcore::ModelPropertyBase *>, void *>*>**, std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, mlcore::ModelPropertyBase *>, void *>*>*>>> {
+        void **_field1;
+        struct __bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, mlcore::ModelPropertyBase *>, void *>*>*>> {
+            struct __compressed_pair<unsigned long, std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, mlcore::ModelPropertyBase *>, void *>*>*>> {
+                unsigned long long _field1;
+            } _field1;
+        } _field2;
+    } _field1;
+};
+
+struct unordered_map<std::string, mlcore::ModelPropertyBase *, std::hash<std::string>, std::equal_to<std::string>, std::allocator<std::pair<const std::string, mlcore::ModelPropertyBase *>>> {
+    struct __hash_table<std::__hash_value_type<std::string, mlcore::ModelPropertyBase *>, std::__unordered_map_hasher<std::string, std::__hash_value_type<std::string, mlcore::ModelPropertyBase *>, std::hash<std::string>, std::equal_to<std::string>>, std::__unordered_map_equal<std::string, std::__hash_value_type<std::string, mlcore::ModelPropertyBase *>, std::equal_to<std::string>, std::hash<std::string>>, std::allocator<std::__hash_value_type<std::string, mlcore::ModelPropertyBase *>>> {
+        struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, mlcore::ModelPropertyBase *>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, mlcore::ModelPropertyBase *>, void *>*>*>>> _field1;
+        struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, mlcore::ModelPropertyBase *>, void *>*>, std::allocator<std::__hash_node<std::__hash_value_type<std::string, mlcore::ModelPropertyBase *>, void *>>> {
+            struct __hash_node_base<std::__hash_node<std::__hash_value_type<std::string, mlcore::ModelPropertyBase *>, void *>*> {
+                void *_field1;
+            } _field1;
+        } _field2;
+        struct __compressed_pair<unsigned long, std::__unordered_map_hasher<std::string, std::__hash_value_type<std::string, mlcore::ModelPropertyBase *>, std::hash<std::string>, std::equal_to<std::string>>> {
+            unsigned long long _field1;
+        } _field3;
+        struct __compressed_pair<float, std::__unordered_map_equal<std::string, std::__hash_value_type<std::string, mlcore::ModelPropertyBase *>, std::equal_to<std::string>, std::hash<std::string>>> {
+            float _field1;
+        } _field4;
+    } _field1;
 };
 
 struct vector<long long, std::allocator<long long>> {
@@ -271,19 +280,14 @@ typedef struct {
     unsigned int _field1[8];
 } CDStruct_6ad76789;
 
-// Template types
-typedef struct map<std::string, mlcore::ModelPropertyBase *, std::less<std::string>, std::allocator<std::pair<const std::string, mlcore::ModelPropertyBase *>>> {
-    struct __tree<std::__value_type<std::string, mlcore::ModelPropertyBase *>, std::__map_value_compare<std::string, std::__value_type<std::string, mlcore::ModelPropertyBase *>, std::less<std::string>, true>, std::allocator<std::__value_type<std::string, mlcore::ModelPropertyBase *>>> {
-        void *_field1;
-        struct __compressed_pair<std::__tree_end_node<std::__tree_node_base<void *>*>, std::allocator<std::__tree_node<std::__value_type<std::string, mlcore::ModelPropertyBase *>, void *>>> {
-            struct __tree_end_node<std::__tree_node_base<void *>*> _field1;
-        } _field2;
-        struct __compressed_pair<unsigned long, std::__map_value_compare<std::string, std::__value_type<std::string, mlcore::ModelPropertyBase *>, std::less<std::string>, true>> {
-            unsigned long long _field1;
-        } _field3;
-    } _field1;
-} map_4ef4d36e;
+typedef struct {
+    long long _field1;
+    int _field2;
+    unsigned int _field3;
+    long long _field4;
+} CDStruct_198678f7;
 
+// Template types
 typedef struct shared_ptr<mlcore::DeviceLibrary> {
     struct DeviceLibrary *__ptr_;
     struct __shared_weak_count *__cntrl_;
@@ -293,11 +297,6 @@ typedef struct shared_ptr<mlcore::DeviceLibraryView> {
     struct DeviceLibraryView *__ptr_;
     struct __shared_weak_count *__cntrl_;
 } shared_ptr_6af3da69;
-
-typedef struct shared_ptr<mlcore::Entity> {
-    struct Entity *_field1;
-    struct __shared_weak_count *_field2;
-} shared_ptr_27513921;
 
 typedef struct shared_ptr<mlcore::EntityCache> {
     struct EntityCache *_field1;
@@ -325,9 +324,9 @@ typedef struct shared_ptr<mlcore::PropertiesQuery> {
 } shared_ptr_889ae36a;
 
 typedef struct shared_ptr<mlcore::Query> {
-    struct Query *__ptr_;
-    struct __shared_weak_count *__cntrl_;
-} shared_ptr_34add297;
+    struct Query *_field1;
+    struct __shared_weak_count *_field2;
+} shared_ptr_52fa41a5;
 
 typedef struct shared_ptr<mlcore::QueryResult> {
     struct QueryResult *_field1;
@@ -339,10 +338,27 @@ typedef struct shared_ptr<std::map<long long, std::shared_ptr<mlcore::EntityQuer
     struct __shared_weak_count *__cntrl_;
 } shared_ptr_e975541e;
 
-typedef struct shared_ptr<std::map<std::string, mlcore::ModelPropertyBase *>> {
+typedef struct shared_ptr<std::unordered_map<std::string, mlcore::ModelPropertyBase *>> {
     void *__ptr_;
     struct __shared_weak_count *__cntrl_;
-} shared_ptr_a9db792c;
+} shared_ptr_66289562;
+
+typedef struct unordered_map<std::string, mlcore::ModelPropertyBase *, std::hash<std::string>, std::equal_to<std::string>, std::allocator<std::pair<const std::string, mlcore::ModelPropertyBase *>>> {
+    struct __hash_table<std::__hash_value_type<std::string, mlcore::ModelPropertyBase *>, std::__unordered_map_hasher<std::string, std::__hash_value_type<std::string, mlcore::ModelPropertyBase *>, std::hash<std::string>, std::equal_to<std::string>>, std::__unordered_map_equal<std::string, std::__hash_value_type<std::string, mlcore::ModelPropertyBase *>, std::equal_to<std::string>, std::hash<std::string>>, std::allocator<std::__hash_value_type<std::string, mlcore::ModelPropertyBase *>>> {
+        struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, mlcore::ModelPropertyBase *>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, mlcore::ModelPropertyBase *>, void *>*>*>>> _field1;
+        struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, mlcore::ModelPropertyBase *>, void *>*>, std::allocator<std::__hash_node<std::__hash_value_type<std::string, mlcore::ModelPropertyBase *>, void *>>> {
+            struct __hash_node_base<std::__hash_node<std::__hash_value_type<std::string, mlcore::ModelPropertyBase *>, void *>*> {
+                void *_field1;
+            } _field1;
+        } _field2;
+        struct __compressed_pair<unsigned long, std::__unordered_map_hasher<std::string, std::__hash_value_type<std::string, mlcore::ModelPropertyBase *>, std::hash<std::string>, std::equal_to<std::string>>> {
+            unsigned long long _field1;
+        } _field3;
+        struct __compressed_pair<float, std::__unordered_map_equal<std::string, std::__hash_value_type<std::string, mlcore::ModelPropertyBase *>, std::equal_to<std::string>, std::hash<std::string>>> {
+            float _field1;
+        } _field4;
+    } _field1;
+} unordered_map_b48bc465;
 
 typedef struct vector<long long, std::allocator<long long>> {
     long long *__begin_;

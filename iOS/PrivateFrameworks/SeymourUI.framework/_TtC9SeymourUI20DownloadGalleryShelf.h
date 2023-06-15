@@ -18,7 +18,9 @@
     MISSING_TYPE *mediaTagStringBuilder;
     MISSING_TYPE *descriptorIdentifier;
     MISSING_TYPE *lazyLockupFetcher;
+    MISSING_TYPE *storefrontLocalizer;
     MISSING_TYPE *subscriptionToken;
+    MISSING_TYPE *galleryIcon;
     MISSING_TYPE *row;
 }
 

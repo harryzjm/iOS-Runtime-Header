@@ -9,6 +9,10 @@
 @class ACAccount, AMSBagValue, AMSProcessInfo, NSDate, NSString;
 
 @protocol AMSBagProtocol <NSObject>
+@property(readonly, copy, nonatomic) NSString *profileVersion;
+@property(readonly, copy, nonatomic) NSString *profile;
+@property(readonly, nonatomic) NSDate *expirationDate;
+@property(readonly, nonatomic, getter=isExpired) _Bool expired;
 - (AMSBagValue *)dictionaryForKey:(NSString *)arg1;
 - (AMSBagValue *)URLForKey:(NSString *)arg1;
 - (AMSBagValue *)stringForKey:(NSString *)arg1;
@@ -17,16 +21,9 @@
 - (void)createSnapshotWithCompletion:(void (^)(AMSSnapshotBag *, NSError *))arg1;
 - (AMSBagValue *)boolForKey:(NSString *)arg1;
 - (AMSBagValue *)arrayForKey:(NSString *)arg1;
-@property(nonatomic, readonly) NSString *profileVersion;
-@property(nonatomic, readonly) NSString *profile;
-@property(nonatomic, readonly) NSDate *expirationDate;
-- (_Bool)isExpired;
 
 @optional
+@property(readonly, copy, nonatomic) AMSProcessInfo *processInfo;
 - (AMSBagValue *)URLForKey:(NSString *)arg1 account:(ACAccount *)arg2;
-@property(nonatomic, readonly) AMSProcessInfo *processInfo;
-
-// Remaining properties
-@property(nonatomic, readonly) _Bool expired;
 @end
 

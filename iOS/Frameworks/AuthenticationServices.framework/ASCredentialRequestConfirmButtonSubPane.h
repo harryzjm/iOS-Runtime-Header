@@ -5,7 +5,7 @@
 //
 
 @class ASCredentialRequestButton, ASCredentialRequestPaneContext, LAUIAuthenticationView, NSObject, NSString, UILabel, UIStackView, UIView;
-@protocol ASCredentialRequestSubPaneConfirmButtonDelegate, OS_dispatch_group;
+@protocol ASCredentialRequestSubPaneConfirmButtonDelegate, OS_dispatch_group, OS_os_activity;
 
 __attribute__((visibility("hidden")))
 @interface ASCredentialRequestConfirmButtonSubPane
@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     UIView *_authorizationButtonContainerView;
     LAUIAuthenticationView *_biometricsView;
     ASCredentialRequestPaneContext *_paneContext;
+    NSObject<OS_os_activity> *_authorizationActivity;
     UILabel *_biometricLabel;
     CDUnknownBlockType _processingStateCompletionHandler;
     NSObject<OS_dispatch_group> *_processingStateGroup;
@@ -67,7 +68,7 @@ __attribute__((visibility("hidden")))
 - (void)_initializeAuthorizationButton;
 - (void)dealloc;
 @property(copy, nonatomic) NSString *buttonText;
-- (id)init;
+- (id)initWithActivity:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

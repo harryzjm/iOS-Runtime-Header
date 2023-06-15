@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIViewAnimationState.h"
+
 @class NSMutableDictionary, NSMutableSet;
 
 __attribute__((visibility("hidden")))
-@interface UIViewKeyframeAnimationState
+@interface UIViewKeyframeAnimationState : UIViewAnimationState
 {
     double _frameDuration;
     double _frameStartTime;

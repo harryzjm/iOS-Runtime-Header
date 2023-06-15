@@ -11,8 +11,9 @@
 @interface _TtC7NewsUI222TagFeedCurationService : _TtCs12_SwiftObject
 {
     MISSING_TYPE *headlineService;
+    MISSING_TYPE *cloudContext;
     MISSING_TYPE *tagFeedServiceConfigFetcher;
-    MISSING_TYPE *feedManager;
+    MISSING_TYPE *feedPersonalizationService;
 }
 
 @end

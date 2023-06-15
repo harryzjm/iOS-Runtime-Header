@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *automaticRetry;
     MISSING_TYPE *error;
     MISSING_TYPE *objectGraph;
+    MISSING_TYPE *isNavigationControllerEmbedded;
     MISSING_TYPE *retryAction;
     MISSING_TYPE *airplaneModeInquiry;
     MISSING_TYPE *cellularDataInquiry;

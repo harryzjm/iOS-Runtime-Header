@@ -9,6 +9,7 @@
 
 @protocol HKSeriesRenderingDelegate
 - (_Bool)measuringStartupTime;
+- (_Bool)seriesDrawingAsTopOverlay:(HKGraphSeries *)arg1;
 - (id <HKGraphSeriesAxisAnnotation>)axisAnnotationDelegateForSeries:(HKGraphSeries *)arg1;
 - (struct CGRect)screenRectForSeries:(HKGraphSeries *)arg1;
 - (struct CGPoint)seriesContentOffset;

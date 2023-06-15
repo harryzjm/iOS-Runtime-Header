@@ -21,6 +21,7 @@
 - (_Bool)_mapkit_isLocationAuthorizationError;
 - (long long)_mapkit_directionsErrorCode;
 - (_Bool)_mapkit_isDirectionsError;
+- (id)_mapkit_errorWithDirectionsError:(id)arg1 stringTokens:(id)arg2;
 - (id)_mapkit_errorWithDirectionsError:(id)arg1;
 @end
 

@@ -10,5 +10,6 @@
 + (id)ss_cgImageBackedImageFromImageSurface:(id)arg1;
 + (id)ss_imageFromImageSurface:(id)arg1;
 - (id)ss_imageSurfaceFromImage;
+- (id)ss_CGImageBacked;
 @end
 

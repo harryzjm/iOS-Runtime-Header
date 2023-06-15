@@ -7,14 +7,12 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (BRCBookmarkAdditions)
-+ (id)unsaltedBookmarkDataWithRelativePath:(id)arg1 serverZoneMangledID:(id)arg2;
-+ (id)bookmarkDataWithRelativePath:(id)arg1 serverZone:(id)arg2;
 + (id)bookmarkDataWithDocumentID:(id)arg1 serverZone:(id)arg2;
-+ (id)itemResolutionStringWithRelativePath:(id)arg1;
 + (id)itemResolutionStringWithDocumentID:(id)arg1;
 + (id)bookmarkDataWithItemResolutionString:(id)arg1 serverZone:(id)arg2;
 + (id)unsaltedBookmarkDataWithItemResolutionString:(id)arg1 serverZoneMangledID:(id)arg2;
 + (id)bookmarkDataWithItemResolutionString:(id)arg1 serverZoneMangledID:(id)arg2 saltAccountDSID:(id)arg3;
++ (id)_br_currentMobileDocumentsDirForLegacy;
 + (id)br_currentMobileDocumentsDirWithRefreshCache:(_Bool)arg1;
 + (id)br_currentMobileDocumentsDir;
 + (id)brc_locateUbiquityTokenSaltInOldAccountPath:(id)arg1;
@@ -25,6 +23,9 @@
 + (void)brc_addForcedPackageExtension:(id)arg1;
 + (void)brc_loadForcedPackageExtensionsForCurrentPersona;
 + (void)brc_closeForcedPackageExtensionsForPersona:(id)arg1;
++ (id)unsaltedBookmarkDataWithRelativePath:(id)arg1 serverZoneMangledID:(id)arg2;
++ (id)bookmarkDataWithRelativePath:(id)arg1 serverZone:(id)arg2;
++ (id)itemResolutionStringWithRelativePath:(id)arg1;
 - (_Bool)parseBookmarkDataWithAccountSession:(id)arg1 docID:(id *)arg2 itemID:(id *)arg3 mangledID:(id *)arg4 unsaltedBookmarkData:(id *)arg5 error:(id *)arg6;
 - (_Bool)parseUnsaltedBookmarkDataWithItemID:(id *)arg1 mangledID:(id *)arg2 error:(id *)arg3;
 - (id)brc_dataFromHexidecimalString;

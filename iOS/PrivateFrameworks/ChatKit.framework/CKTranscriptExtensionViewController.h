@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UINavigationController.h>
+#import <UIKitCore/UINavigationController.h>
 
 @class CKDetailsNavigationController, NSExtension, NSString, NSUUID;
 
@@ -23,8 +23,12 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSUUID *requestUUID; // @synthesize requestUUID=_requestUUID;
 - (void)presentDetailsNavigationController:(id)arg1;
 - (void)doneButtonPressedForChatController:(id)arg1;
+- (void)chatController:(id)arg1 didFinishDismissAnimationForSendMenuViewController:(id)arg2;
+- (void)chatController:(id)arg1 requestPresentSendMenu:(id)arg2 withPresentationContext:(id)arg3;
 - (void)prewarmCameraIfNecessaryForChatController:(id)arg1;
 - (void)chatController:(id)arg1 forwardComposition:(id)arg2;
+- (void)chatController:(id)arg1 requestRecoverJunkConversation:(id)arg2;
+- (void)chatController:(id)arg1 requestDeleteJunkConversation:(id)arg2;
 - (void)chatController:(id)arg1 didReportSpamForConversation:(id)arg2;
 - (void)chatController:(id)arg1 didSendCompositionInConversation:(id)arg2;
 - (void)chatController:(id)arg1 willSendComposition:(id)arg2 inConversation:(id)arg3;

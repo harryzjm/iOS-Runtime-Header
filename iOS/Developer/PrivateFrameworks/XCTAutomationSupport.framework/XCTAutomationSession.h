@@ -58,6 +58,7 @@
 - (id)_XCT_attributesForElement:(id)arg1 attributes:(id)arg2;
 - (id)_XCT_fetchMatchesForQuery:(id)arg1;
 - (id)_XCT_exchangeCapabilities:(id)arg1;
+- (void)detectRuntimeIssues;
 - (void)listenForRemoteConnectionViaSerializedTransportWrapper:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setMallocStackLoggingWithMode:(int)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)notifyWhenAnimationsAreIdle:(CDUnknownBlockType)arg1;

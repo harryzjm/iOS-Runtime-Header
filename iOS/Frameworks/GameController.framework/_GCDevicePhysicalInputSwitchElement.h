@@ -10,17 +10,20 @@
 __attribute__((visibility("hidden")))
 @interface _GCDevicePhysicalInputSwitchElement
 {
-    _Bool _canWrap;
-    _Bool _sequential;
-    struct _NSRange _positionRange;
-    long long _gamepadEventPositionField;
+    unsigned long long _sourcesSlot;
+    unsigned long long _canWrapSlot;
+    unsigned long long _isSequentialSlot;
+    unsigned long long _positionMinSlot;
+    unsigned long long _positionMaxSlot;
+    unsigned long long _positionFieldSlot;
     unsigned long long _positionChangedHandlerSlot;
     unsigned long long _positionSlot;
     unsigned long long _timestampSlot;
 }
 
-- (void)onCommitInvokeCallbacks:(unsigned long long)arg1;
-- (unsigned long long)handleGamepadEvent:(id)arg1 withTimestamp:(double)arg2;
++ (unsigned short)updateContextSize;
+- (_Bool)update:(void *)arg1 forGamepadEvent:(id)arg2 withTimestamp:(double)arg3;
+@property(readonly, copy) NSSet *sources;
 @property(readonly) double lastPositionLatency;
 @property(readonly) double lastPositionTimestamp;
 @property(readonly) _Bool canWrap;
@@ -31,15 +34,18 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *description;
 - (_Bool)isEqualToElement:(id)arg1;
 @property(readonly) id <GCSwitchPositionInput> positionInput;
-- (id)initWith:(id)arg1 context:(id)arg2;
-- (id)initWithIdentifier:(id)arg1 configuration:(id)arg2;
+- (void)postCommit:(const void *)arg1 sender:(id)arg2;
+- (void)preCommit:(const void *)arg1 sender:(id)arg2;
+- (_Bool)update:(void *)arg1 forUsages:(unsigned long long)arg2 with:(id)arg3;
+- (id)initWithTemplate:(id)arg1 context:(id)arg2;
+- (id)initWithParameters:(id)arg1;
 
 // Remaining properties
-@property(readonly) NSSet *aliases;
+@property(readonly, copy) NSSet *aliases;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly) unsigned long long hash;
-@property(readonly) NSString *localizedName;
-@property(readonly) NSString *sfSymbolsName;
+@property(readonly, copy) NSString *localizedName;
+@property(readonly, copy) NSString *sfSymbolsName;
 @property(readonly) Class superclass;
 
 @end

@@ -8,6 +8,6 @@
 
 @interface CKRecord (PCSPrivate)
 - (void)fillOutPCSMetadataInfo;
-@property(nonatomic) struct _OpaquePCSShareProtection *recordPCS;
+@property struct _OpaquePCSShareProtection *recordPCS;
 @end
 

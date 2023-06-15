@@ -9,6 +9,8 @@
 @class NSString;
 
 @protocol MPMutableIdentifierSet <NSObject>
+@property(copy, nonatomic) NSString *versionHash;
+@property(copy, nonatomic) NSString *opaqueID;
 @property(copy, nonatomic) NSString *vendorID;
 @property(nonatomic, getter=isPlaceholder) _Bool placeholder;
 @property(nonatomic) _Bool shouldExcludeFromShuffle;

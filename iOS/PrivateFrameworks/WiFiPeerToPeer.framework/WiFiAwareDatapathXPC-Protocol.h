@@ -9,6 +9,8 @@
 @class WiFiAwareDataSessionIssueReport;
 
 @protocol WiFiAwareDatapathXPC <NSObject>
+- (void)setWantsPeerRSSIUpdates:(_Bool)arg1 withCompletionHandler:(void (^)(long long))arg2;
+- (void)generateCurrentNetworkRecordForInternetSharingSession:(void (^)(long long, NSDictionary *))arg1;
 - (void)generateStatisticsReportWithCompletionHandler:(void (^)(long long, WiFiAwareDataSessionStatisticsReport *))arg1;
 - (void)updateLinkStatus:(long long)arg1;
 - (void)reportIssue:(WiFiAwareDataSessionIssueReport *)arg1;

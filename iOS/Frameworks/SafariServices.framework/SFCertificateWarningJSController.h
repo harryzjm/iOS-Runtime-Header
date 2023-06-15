@@ -15,6 +15,11 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+- (id)bypassFeatureIconPath;
+- (id)bypassFeatureButtonText;
+- (id)bypassFeatureWarningText;
+- (id)bypassFeatureTitleText;
+- (void)bypassFeatureVisitWebsite;
 - (void)goBackSelected;
 - (void)openClockSettings;
 - (void)showCertificateInformation;

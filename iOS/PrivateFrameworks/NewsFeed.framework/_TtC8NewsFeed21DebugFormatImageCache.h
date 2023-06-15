@@ -10,8 +10,9 @@
 
 @interface _TtC8NewsFeed21DebugFormatImageCache : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *placeholderImage;
     MISSING_TYPE *naImage;
+    MISSING_TYPE *placeholderImage;
+    MISSING_TYPE *$__lazy_storage_$_disabledPlaceholderImage;
     MISSING_TYPE *images;
 }
 

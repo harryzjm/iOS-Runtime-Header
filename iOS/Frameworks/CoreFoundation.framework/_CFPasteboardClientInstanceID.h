@@ -11,12 +11,12 @@
 __attribute__((visibility("hidden")))
 @interface _CFPasteboardClientInstanceID : NSObject
 {
-    const struct __CFUUID *_uuid;
+    struct __CFUUID *_uuid;
     NSObject<OS_xpc_object> *_conn;
 }
 
 @property(readonly) NSObject<OS_xpc_object> *connection; // @synthesize connection=_conn;
-@property(readonly) const struct __CFUUID *uuid; // @synthesize uuid=_uuid;
+@property(readonly) struct __CFUUID *uuid; // @synthesize uuid=_uuid;
 - (id)description;
 - (void)dealloc;
 - (id)initWithConnection:(id)arg1;

@@ -16,10 +16,10 @@
 + (_Bool)shouldAutoUpgradeWellKnownPhotoLibraryIdentifier:(long long)arg1;
 + (unsigned long long)libraryCreateOptionsForWellKnownLibraryIdentifier:(long long)arg1;
 + (NSURL *)photosLibrariesDataVaultPath;
++ (NSURL *)photosDataVaultPath;
 + (long long)wellKnownPhotoLibraryIdentifierForURL:(NSURL *)arg1;
 + (NSURL *)wellKnownPhotoLibraryURLForIdentifier:(long long)arg1;
 + (_Bool)isSystemPhotoLibraryURL:(NSURL *)arg1;
-+ (_Bool)isSystemLibraryURLDefined;
 + (_Bool)setSystemLibraryURL:(NSURL *)arg1 options:(unsigned short)arg2 error:(id *)arg3;
 + (NSString *)systemLibraryBaseDirectory;
 + (NSURL *)systemLibraryURL;

@@ -6,8 +6,13 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
+@class MISSING_TYPE;
+
 @interface _TtC16SiriVideoIntents27PlayLiveServiceFlowStrategy : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *deviceLoggingUtil;
+    MISSING_TYPE *liveServiceResolver;
+    MISSING_TYPE *remoteDevice;
 }
 
 @end

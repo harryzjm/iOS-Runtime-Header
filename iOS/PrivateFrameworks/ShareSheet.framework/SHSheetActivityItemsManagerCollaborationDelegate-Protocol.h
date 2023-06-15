@@ -9,6 +9,8 @@
 @class NSArray, NSString, SHSheetActivityItemsManager, UIActivity;
 
 @protocol SHSheetActivityItemsManagerCollaborationDelegate <NSObject>
+- (_Bool)activityItemsManager:(SHSheetActivityItemsManager *)arg1 collaborationSupportsPromiseURLsForActivity:(UIActivity *)arg2;
+- (_Bool)activityItemsManagerIsCollaborative:(SHSheetActivityItemsManager *)arg1;
 - (NSString *)activityItemsManager:(SHSheetActivityItemsManager *)arg1 subjectForActivity:(UIActivity *)arg2;
 - (NSArray *)activityItemsManager:(SHSheetActivityItemsManager *)arg1 collaborationActivityItemValuesForActivityItemValue:(NSArray *)arg2 activity:(UIActivity *)arg3;
 - (NSArray *)collaborationPlaceholderActivityItemsForActivityItemsManager:(SHSheetActivityItemsManager *)arg1;

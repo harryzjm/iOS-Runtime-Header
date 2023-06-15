@@ -34,7 +34,7 @@ __attribute__((visibility("hidden")))
 + (id)nonNameSingleValuePropertiesByKey;
 + (id)imageValuePropertyKeys;
 + (id)imageValuePropertiesByKey;
-+ (unsigned long long)indexOfPreferredContactForImage:(id)arg1;
++ (unsigned long long)indexOfPreferredContactForImage:(id)arg1 prefersSharedImage:(_Bool)arg2;
 
 @end
 

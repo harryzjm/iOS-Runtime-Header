@@ -6,7 +6,7 @@
 
 #import <Foundation/NSProxy.h>
 
-@class NSString, RCPEventSenderProperties, RPTInteractionOptions;
+@class CAMediaTimingFunction, NSString, RCPEventSenderProperties, RPTInteractionOptions;
 @protocol RCPEventStreamComposer;
 
 __attribute__((visibility("hidden")))
@@ -38,6 +38,7 @@ __attribute__((visibility("hidden")))
 - (void)pointerMoveToPointIfApplicable:(struct CGPoint)arg1;
 - (void)pointerMoveDelta:(struct CGPoint)arg1 duration:(double)arg2 frequency:(long long)arg3;
 - (void)pointerMoveToPoint:(struct CGPoint)arg1 duration:(double)arg2;
+- (void)_pointerOrFingerFlickAt:(struct CGPoint)arg1 byDelta:(struct CGVector)arg2 duration:(double)arg3;
 - (void)_pointerOrFingerScrollAt:(struct CGPoint)arg1 byDelta:(struct CGVector)arg2 duration:(double)arg3 touchDownAndLift:(_Bool)arg4;
 - (void)pointerOrFingerScrollAt:(struct CGPoint)arg1 byDelta:(struct CGVector)arg2 duration:(double)arg3;
 - (id)initFromWrapping:(id)arg1 interactionOptions:(id)arg2;
@@ -49,9 +50,12 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) double defaultRadius; // @dynamic defaultRadius;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(retain, nonatomic) CAMediaTimingFunction *pointerCurveFunction;
 @property(nonatomic) double pointerFrequency; // @dynamic pointerFrequency;
+@property(nonatomic) _Bool scalePointerPhaseScrollToPixels;
 @property(retain, nonatomic) RCPEventSenderProperties *senderProperties; // @dynamic senderProperties;
 @property(readonly) Class superclass;
+@property(retain, nonatomic) CAMediaTimingFunction *touchCurveFunction;
 @property(nonatomic) long long touchFrequency; // @dynamic touchFrequency;
 
 @end

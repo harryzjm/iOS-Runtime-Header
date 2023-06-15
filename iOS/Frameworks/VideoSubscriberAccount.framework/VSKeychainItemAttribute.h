@@ -14,13 +14,13 @@ __attribute__((visibility("hidden")))
     NSString *_name;
     unsigned long long _attributeType;
     NSString *_attributeValueClassName;
-    const struct __CFString *_secItemAttributeKey;
+    struct __CFString *_secItemAttributeKey;
     id _defaultValue;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) id defaultValue; // @synthesize defaultValue=_defaultValue;
-@property(nonatomic) const struct __CFString *secItemAttributeKey; // @synthesize secItemAttributeKey=_secItemAttributeKey;
+@property(nonatomic) struct __CFString *secItemAttributeKey; // @synthesize secItemAttributeKey=_secItemAttributeKey;
 @property(copy, nonatomic) NSString *attributeValueClassName; // @synthesize attributeValueClassName=_attributeValueClassName;
 @property(nonatomic) unsigned long long attributeType; // @synthesize attributeType=_attributeType;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;

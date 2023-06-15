@@ -21,7 +21,6 @@
 - (void)tearDownTransition:(_Bool)arg1;
 - (void)startTransitionWithSourceViewProvider:(QLTransitionContext *)arg1 transitionController:(id <QLTransitionControllerProtocol>)arg2 presenting:(_Bool)arg3 useInteractiveTransition:(_Bool)arg4 completionHandler:(void (^)(void))arg5;
 - (void)previewItemDisplayState:(id)arg1 wasAppliedToItemAtIndex:(unsigned long long)arg2;
-- (void)getCurrentPreviewActivityUserInfoWithCompletionHandler:(void (^)(NSDictionary *))arg1;
 - (void)notifyStateRestorationUserInfo:(NSDictionary *)arg1;
 - (void)notifyFirstTimeAppearanceWithActions:(unsigned long long)arg1;
 - (void)setAppearance:(QLAppearance *)arg1 animated:(_Bool)arg2;

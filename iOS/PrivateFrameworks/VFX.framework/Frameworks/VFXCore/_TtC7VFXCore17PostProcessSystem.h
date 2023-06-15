@@ -11,6 +11,7 @@
 @interface _TtC7VFXCore17PostProcessSystem : _TtCs12_SwiftObject
 {
     MISSING_TYPE *isMenuItemEnabled;
+    MISSING_TYPE *allCamerasQuery;
 }
 
 @end

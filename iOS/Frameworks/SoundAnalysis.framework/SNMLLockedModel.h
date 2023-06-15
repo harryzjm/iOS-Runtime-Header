@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)predictionFromFeatures:(id)arg1 options:(id)arg2 error:(id *)arg3;
 @property(readonly) MLModelDescription *modelDescription;
+- (id)initWithModel:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

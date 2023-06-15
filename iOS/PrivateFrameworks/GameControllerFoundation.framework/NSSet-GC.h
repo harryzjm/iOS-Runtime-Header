@@ -8,5 +8,6 @@
 
 @interface NSSet (GC)
 - (id)gc_setByRemovingObjectsFromSet:(id)arg1;
+- (id)gc_setByRemovingObject:(id)arg1;
 @end
 

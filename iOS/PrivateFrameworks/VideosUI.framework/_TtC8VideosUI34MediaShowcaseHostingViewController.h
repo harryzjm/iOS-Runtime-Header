@@ -15,6 +15,8 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *collectionImpressioner;
     MISSING_TYPE *isTabbarChild;
     MISSING_TYPE *hasViewDisappeared;
+    MISSING_TYPE *name;
+    MISSING_TYPE *$__lazy_storage_$_logPrefix;
     MISSING_TYPE *$__lazy_storage_$_paginatedMediaController;
     MISSING_TYPE *$__lazy_storage_$_toolBar;
     MISSING_TYPE *toolBarOffsetY;
@@ -23,21 +25,22 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *didSetupView;
     MISSING_TYPE *isPaused;
     MISSING_TYPE *isControlButtonsVisible;
+    MISSING_TYPE *$__lazy_storage_$_isAudioMuted;
     MISSING_TYPE *shouldShowMuteButton;
     MISSING_TYPE *hideMuteButtonTimer;
-    MISSING_TYPE *$__lazy_storage_$_tapGesture;
     MISSING_TYPE *$__lazy_storage_$_mediaShowcaseConfig;
     MISSING_TYPE *accountSettingViewModel;
 }
 
 - (void).cxx_destruct;
-- (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)vui_viewDidAppear:(_Bool)arg1;
 - (void)vui_viewWillDisappear:(_Bool)arg1;
 - (void)vui_viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)vui_loadView;
+- (id)initWithCoder:(id)arg1;
+- (id)init;
 
 @end
 

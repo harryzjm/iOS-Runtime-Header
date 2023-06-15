@@ -31,7 +31,6 @@
 @property(retain, nonatomic) NSNumber *itemType; // @synthesize itemType=_itemType;
 @property(retain, nonatomic) NSNumber *databaseScope; // @synthesize databaseScope=_databaseScope;
 @property(retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-- (id)description;
 
 @end
 

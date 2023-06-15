@@ -4,8 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class MISSING_TYPE;
+
 @interface _TtC15HealthRecordsUI16AccountLoginItem
 {
+    MISSING_TYPE *action;
+    MISSING_TYPE *$__lazy_storage_$_spinner;
+    MISSING_TYPE *$__lazy_storage_$_customAccessory;
 }
 
 @end

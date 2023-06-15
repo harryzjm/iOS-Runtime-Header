@@ -9,8 +9,8 @@
 @protocol SXNewsletterSubscriptionStatusObserving;
 
 @protocol SXNewsletterSubscriptionStatusProviding <NSObject>
+@property(readonly, nonatomic) unsigned long long newsletterSubscriptionStatus;
 - (void)removeObserver:(id <SXNewsletterSubscriptionStatusObserving>)arg1;
 - (void)addObserver:(id <SXNewsletterSubscriptionStatusObserving>)arg1;
-@property(nonatomic, readonly) unsigned long long newsletterSubscriptionStatus;
 @end
 

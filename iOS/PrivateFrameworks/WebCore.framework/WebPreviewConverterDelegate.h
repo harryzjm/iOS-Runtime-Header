@@ -9,7 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface WebPreviewConverterDelegate : NSObject
 {
-    struct WeakPtr<WebCore::PreviewPlatformDelegate, WTF::EmptyCounter> _delegate;
+    struct WeakPtr<WebCore::PreviewPlatformDelegate, WTF::DefaultWeakPtrImpl> _delegate;
 }
 
 - (id).cxx_construct;

@@ -11,6 +11,7 @@
 @protocol TRINamespaceFactorProviding <NSObject>
 - (void)dispose;
 - (NSArray *)factorLevels;
+- (void)cacheFactorLevels;
 - (TRILevel *)levelForFactor:(NSString *)arg1;
 - (NSString *)rolloutId;
 - (NSString *)treatmentId;

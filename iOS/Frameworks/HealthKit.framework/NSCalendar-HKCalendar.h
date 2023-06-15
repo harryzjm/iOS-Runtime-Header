@@ -42,6 +42,7 @@
 - (id)hk_startOfYearForDate:(id)arg1 addingYears:(long long)arg2;
 - (id)hk_startOfMonthForDate:(id)arg1 addingMonths:(long long)arg2;
 - (id)hk_startOfMonthForDate:(id)arg1;
+- (id)hk_startOfHourForDate:(id)arg1 moduloHours:(long long)arg2 addingModuloCount:(long long)arg3;
 - (id)hk_startOfHourForDate:(id)arg1 addingHours:(long long)arg2;
 - (id)hk_startOfMinuteForDate:(id)arg1 moduloMinutes:(long long)arg2 addingModuloCount:(long long)arg3;
 - (id)hk_weeksContainingInterval:(id)arg1 firstWeekday:(long long)arg2;

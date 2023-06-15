@@ -14,24 +14,19 @@
     NSMutableArray *_hardErrors;
     NSMutableArray *_softErrors;
     NSMutableArray *_issues;
-    NSMutableDictionary *_itemIssueMapping;
     _Bool _success;
-    NSArray *_issuesWithItemRemapping;
     NSMutableDictionary *_partialInfoPlist;
 }
 
 + (id)resultWithSingleError:(id)arg1;
 - (void).cxx_destruct;
 @property(retain) NSMutableDictionary *partialInfoPlist; // @synthesize partialInfoPlist=_partialInfoPlist;
-@property(copy, nonatomic) NSArray *issuesWithItemRemapping; // @synthesize issuesWithItemRemapping=_issuesWithItemRemapping;
 @property(copy, nonatomic) NSArray *issues; // @synthesize issues=_issues;
 @property(copy, nonatomic) NSArray *softErrors; // @synthesize softErrors=_softErrors;
 @property(copy, nonatomic) NSArray *hardErrors; // @synthesize hardErrors=_hardErrors;
 @property(copy, nonatomic) NSSet *outputFiles; // @synthesize outputFiles=_outputFiles;
 @property(nonatomic) _Bool success; // @synthesize success=_success;
 - (void)mergeResults:(id)arg1;
-- (id)mappedIssueIdentifierForReportedIssueItem:(id)arg1;
-- (void)mapIssuesGeneratedForItem:(id)arg1 toItem:(id)arg2;
 @property(readonly, copy) NSString *description;
 - (id)sortedOutputFiles;
 - (void)addOutputFiles:(id)arg1;

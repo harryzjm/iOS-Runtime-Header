@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import "NSObject-Protocol.h"
+#import <VectorKit/NSObject-Protocol.h>
 
 @class NSArray, VKMapView;
 
@@ -12,8 +12,8 @@
 - (void)updateAccessibilityElementsForMapView:(VKMapView *)arg1;
 - (double)yawForMapView:(VKMapView *)arg1;
 - (long long)orientationForMapView:(VKMapView *)arg1;
-- (CDStruct_2c43369c)centerForMapView:(VKMapView *)arg1;
-- (CDStruct_aca18c62)boundsForMapView:(VKMapView *)arg1;
+- (CDStruct_c3b9c2ee)centerForMapView:(VKMapView *)arg1;
+- (CDStruct_d2b197d1)boundsForMapView:(VKMapView *)arg1;
 - (NSArray *)accessibilityElementsForMapView:(VKMapView *)arg1;
 @end
 

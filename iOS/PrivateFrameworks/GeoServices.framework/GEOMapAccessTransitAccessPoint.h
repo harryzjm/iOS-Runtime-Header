@@ -25,7 +25,7 @@ __attribute__((visibility("hidden")))
 - (id)findGeometryWithCompletionHandler:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) long long polygonPointsCount;
 @property(readonly, nonatomic) CDStruct_c3b9c2ee *polygonPoints;
-@property(readonly, nonatomic) CDStruct_02837cd9 boundingRect;
+@property(readonly, nonatomic) CDStruct_90e2a262 boundingRect;
 @property(readonly, nonatomic) double boundingRadius;
 - (double)distanceInMetersFrom:(CDStruct_c3b9c2ee)arg1;
 @property(readonly, nonatomic) unsigned short accessType;

@@ -6,12 +6,13 @@
 
 #import <PassKitUI/NSObject-Protocol.h>
 
-@class NSArray, NSError, PKFeatureApplication, PKPasscodeUpgradeFlowController, UIViewController;
+@class NSArray, NSError, NSString, PKFeatureApplication, PKPasscodeUpgradeFlowController, UIViewController;
 
 @protocol PKPaymentSetupViewControllerDelegate <NSObject>
 - (void)viewControllerDidTerminateSetupFlow:(UIViewController *)arg1;
 
 @optional
+- (void)viewController:(UIViewController *)arg1 requestPresentPassUniqueIdentifier:(NSString *)arg2 completion:(void (^)(_Bool))arg3;
 - (void)viewController:(UIViewController *)arg1 entitlementSelectionDidChange:(NSArray *)arg2;
 - (_Bool)viewController:(UIViewController *)arg1 requestsReturnToPresentationMarker:(unsigned long long)arg2 reset:(_Bool)arg3;
 - (void)viewController:(UIViewController *)arg1 didFinishWithPasses:(NSArray *)arg2 error:(NSError *)arg3;

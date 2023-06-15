@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)configurationOptionKeysForDetectorKey;
++ (id)supportedComputeStageDevicesForOptions:(id)arg1 error:(id *)arg2;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long imageSignatureHashType; // @synthesize imageSignatureHashType=_imageSignatureHashType;
@@ -20,8 +21,6 @@ __attribute__((visibility("hidden")))
 - (shared_ptr_0a6daad2)_calculateImageSignatureHashDescriptorFrom:(const void *)arg1 options:(id)arg2 error:(id *)arg3;
 - (shared_ptr_0a6daad2)_calculateImageSignatureprintDescriptorFromOptions:(id)arg1 error:(id *)arg2;
 - (id)internalProcessUsingQualityOfServiceClass:(unsigned int)arg1 options:(id)arg2 regionOfInterest:(struct CGRect)arg3 warningRecorder:(id)arg4 error:(id *)arg5 progressHandler:(CDUnknownBlockType)arg6;
-- (_Bool)needsMetalContext;
-- (_Bool)supportsProcessingDevice:(id)arg1;
 - (_Bool)completeInitializationForSession:(id)arg1 error:(id *)arg2;
 
 @end

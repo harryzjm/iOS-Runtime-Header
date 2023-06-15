@@ -10,6 +10,7 @@ __attribute__((visibility("hidden")))
 @interface AMSUIWebFetchMetricsIdentifierAction
 {
     _Bool _crossDeviceSync;
+    _Bool _generateEventFields;
     ACAccount *_account;
     NSString *_bagNamespace;
     NSString *_bagProfile;
@@ -19,6 +20,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSString *identifierKey; // @synthesize identifierKey=_identifierKey;
+@property(nonatomic) _Bool generateEventFields; // @synthesize generateEventFields=_generateEventFields;
 @property(nonatomic) _Bool crossDeviceSync; // @synthesize crossDeviceSync=_crossDeviceSync;
 @property(retain, nonatomic) NSString *bagProfileVersion; // @synthesize bagProfileVersion=_bagProfileVersion;
 @property(retain, nonatomic) NSString *bagProfile; // @synthesize bagProfile=_bagProfile;

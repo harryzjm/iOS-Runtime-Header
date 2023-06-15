@@ -6,14 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class AVCaptureOutput, AVCaptureSynchronizedData, NSArray;
+@class NSArray;
 
 __attribute__((visibility("hidden")))
 @interface AVCaptureSynchronizedDataCollectionInternal : NSObject
 {
-    AVCaptureOutput *dataOutputs[4];
-    AVCaptureSynchronizedData *synchronizedData[4];
+    id *dataOutputs;
+    id *synchronizedData;
     BOOL count;
+    BOOL maxCount;
     unsigned long long changeSeed;
     CDStruct_1b6d18a9 creationTime;
     NSArray *possibleDataOutputs;

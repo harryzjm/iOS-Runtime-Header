@@ -10,6 +10,7 @@
 @protocol SFPeopleSuggestion;
 
 @protocol SHSheetPeopleSuggestionProxy <SHSheetProxy>
+@property(readonly, nonatomic) _Bool isTapToRadar;
 @property(readonly, nonatomic) unsigned int transportImageSlotID;
 @property(readonly, nonatomic) unsigned int avatarImageSlotID;
 @property(readonly, nonatomic) SFProxyText *subtitle;

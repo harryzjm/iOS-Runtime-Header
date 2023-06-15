@@ -9,6 +9,8 @@
 @interface NSFileManager (TRI)
 + (id)triArbitraryFileInDirWithPath:(id)arg1;
 + (_Bool)triIdempotentCreateDirectoryOrFaultWithPath:(id)arg1;
++ (_Bool)triRemoveFileProtectionIfPresentForPath:(id)arg1;
++ (_Bool)triHasFileProtection:(id)arg1;
 - (_Bool)triRemoveItemAtPath:(id)arg1 error:(id *)arg2;
 - (id)triCreateDirectoryForPath:(id)arg1 isDirectory:(_Bool)arg2 error:(id *)arg3;
 - (id)triPath:(id)arg1 relativeToParentPath:(id)arg2;

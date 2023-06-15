@@ -13,9 +13,8 @@
 @property(readonly) _Bool isWebClip;
 @property(readonly) _Bool isAppClip;
 - (void)copyBasePropertiesOverToResult:(id)arg1;
-- (void)setFeedbackPropertiesOnResultCopy:(id)arg1;
-- (_Bool)collectAnonymousFeatures;
 - (id)objectForFeedback;
+- (void)setFeedbackPropertiesOnResultCopy:(id)arg1;
 - (id)PRSRankingItemAdditions_correctedQuery;
 - (id)PRSRankingItemAdditions_completedQuery;
 - (id)PRSRankingItemAdditions_url;

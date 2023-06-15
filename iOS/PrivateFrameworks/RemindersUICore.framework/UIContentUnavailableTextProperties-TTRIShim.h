@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIContentUnavailableTextProperties.h>
+#import <UIKitCore/UIContentUnavailableTextProperties.h>
 
 @interface UIContentUnavailableTextProperties (TTRIShim)
 - (id)asTTRI;

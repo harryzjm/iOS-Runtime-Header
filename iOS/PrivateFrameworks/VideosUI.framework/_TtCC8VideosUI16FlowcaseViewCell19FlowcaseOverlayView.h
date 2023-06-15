@@ -15,6 +15,15 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *disableGradient;
     MISSING_TYPE *titleView;
     MISSING_TYPE *badgeView;
+    MISSING_TYPE *scorecardView;
+    MISSING_TYPE *originalScoreboardViewModel;
+    MISSING_TYPE *scoreboardViewModel;
+    MISSING_TYPE *backgroundImageForMaterial;
+    MISSING_TYPE *backgroundImageHasChanged;
+    MISSING_TYPE *scorecardViewBackgroundImage;
+    MISSING_TYPE *pendingOperation;
+    MISSING_TYPE *isOperationCancelledObserver;
+    MISSING_TYPE *isOperationFinishedObserver;
     MISSING_TYPE *verticalStackView;
     MISSING_TYPE *logoImageView;
     MISSING_TYPE *channelLogoView;
@@ -33,6 +42,16 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)vui_layoutSubviews:(struct CGSize)arg1 computationOnly:(_Bool)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)getJSContextDictionary;
+- (void)updateScoreboard:(id)arg1;
+- (int)backgroundBlendModeForScoreValueInRow:(long long)arg1 atIndex:(long long)arg2;
+- (id)backgroundImageForScorecardViewMaterial:(id)arg1;
+- (struct UIEdgeInsets)marginsForRow:(long long)arg1 atIndex:(long long)arg2;
+- (double)maximumWidthForScorecardView:(id)arg1;
+- (id)scoreValue:(id)arg1 inRow:(long long)arg2 atIndex:(long long)arg3;
+- (long long)numberOfScoreValuesForScorecardView:(id)arg1 inRow:(long long)arg2;
+- (long long)numberOfRowsInScorecardView:(id)arg1;
+- (long long)styleForScorecardView:(id)arg1;
 
 @end
 

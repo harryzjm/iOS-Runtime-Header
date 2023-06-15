@@ -13,7 +13,6 @@
     MISSING_TYPE *beaconManager;
     MISSING_TYPE *ownerSession;
     MISSING_TYPE *dataManager;
-    MISSING_TYPE *connectionManager;
     MISSING_TYPE *$__lazy_storage_$_pairingManager;
     MISSING_TYPE *pendingCommandFuturesUpdateQueue;
     MISSING_TYPE *pendingCommandFutures;

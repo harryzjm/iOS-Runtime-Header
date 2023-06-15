@@ -6,13 +6,11 @@
 
 #import <NotesShared/ICCloudSyncingObjectCryptoStrategy-Protocol.h>
 
-@class ICAccount, ICCloudSyncingObject, NSProgress, NSString;
+@class ICCloudSyncingObject, NSString;
 
 @protocol ICAccountCryptoStrategy <ICCloudSyncingObjectCryptoStrategy>
-- (_Bool)updateAllNotesWithOldPassphrase:(NSString *)arg1 toAccountPassphrase:(NSString *)arg2 progress:(NSProgress *)arg3;
 - (_Bool)hasSamePassphraseForObject:(ICCloudSyncingObject *)arg1;
 - (void)removePassphrase;
 - (_Bool)setPassphrase:(NSString *)arg1 hint:(NSString *)arg2;
-- (void)copyCryptoFieldsFromAccount:(ICAccount *)arg1;
 @end
 

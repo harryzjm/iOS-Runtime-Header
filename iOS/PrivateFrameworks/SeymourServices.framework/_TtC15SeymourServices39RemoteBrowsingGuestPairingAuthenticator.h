@@ -11,6 +11,7 @@
 @interface _TtC15SeymourServices39RemoteBrowsingGuestPairingAuthenticator : _TtCs12_SwiftObject
 {
     MISSING_TYPE *state;
+    MISSING_TYPE *analyticsReporter;
     MISSING_TYPE *connectionBrokerProvider;
     MISSING_TYPE *localDeviceProvider;
     MISSING_TYPE *platform;

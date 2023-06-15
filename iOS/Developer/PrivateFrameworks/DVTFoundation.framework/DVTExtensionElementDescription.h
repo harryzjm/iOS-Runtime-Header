@@ -30,6 +30,7 @@
 - (void)awakeFromPropertyList;
 - (id)initWithPropertyList:(id)arg1 owner:(id)arg2;
 - (id)initWithName:(id)arg1 plural:(id)arg2 minOccurs:(unsigned long long)arg3 maxOccurs:(unsigned long long)arg4 optional:(_Bool)arg5 attributes:(id)arg6 elements:(id)arg7;
+- (void)validateRequiredTypesArePresentForKeyPathPrefix:(id)arg1 failureHandler:(CDUnknownBlockType)arg2;
 
 @end
 

@@ -11,9 +11,11 @@
 @interface _TtC28SiriPrivateLearningAnalyticsP33_95987ADD223C83697EEA450CF0CC3A3519ScanTurnsSubscriber : NSObject
 {
     MISSING_TYPE *downstream;
+    MISSING_TYPE *turnsStartDateTime;
     MISSING_TYPE *innerSubscription;
     MISSING_TYPE *eventTables;
     MISSING_TYPE *endpointer;
+    MISSING_TYPE *previousTurnId;
 }
 
 - (void).cxx_destruct;

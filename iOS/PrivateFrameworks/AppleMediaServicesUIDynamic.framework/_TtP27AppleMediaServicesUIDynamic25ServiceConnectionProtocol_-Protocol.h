@@ -7,6 +7,7 @@
 @class ACAccount, AMSProcessInfo, NSData, NSURL;
 
 @protocol _TtP27AppleMediaServicesUIDynamic25ServiceConnectionProtocol_
+- (void)updateWithAccount:(ACAccount *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)tearDownWithCompletion:(void (^)(NSError *))arg1;
 - (void)setUpWithCompletion:(void (^)(NSError *))arg1;
 - (void)performWithRequestData:(NSData *)arg1 completion:(void (^)(NSData *, NSError *))arg2;

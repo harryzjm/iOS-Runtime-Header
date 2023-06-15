@@ -7,9 +7,8 @@
 #import <VoiceShortcutClient/WFWorkflowRunDescriptor.h>
 
 @interface WFWorkflowRunDescriptor (Conversion)
-- (void)donateRunInteractionWithDatabase:(id)arg1;
-- (void)createWorkflowWithEnvironment:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (id)workflowFileDataWithDatabase:(id)arg1 error:(id *)arg2;
+- (void)donateRunInteractionWithDatabase:(id)arg1 workflowReference:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)createWorkflowWithEnvironment:(long long)arg1 database:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)workflowReferenceWithDatabase:(id)arg1 error:(id *)arg2;
 @end
 

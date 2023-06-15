@@ -13,6 +13,7 @@
     MISSING_TYPE *baseURLAccessor;
     MISSING_TYPE *authTokenManager;
     MISSING_TYPE *networkMonitor;
+    MISSING_TYPE *appConfigurationManager;
 }
 
 @end

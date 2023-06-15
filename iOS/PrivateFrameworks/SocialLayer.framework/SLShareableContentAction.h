@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 - (void)failWithError:(id)arg1;
 - (void)fulfillWithResponse:(id)arg1;
 @property(readonly, copy, nonatomic) NSString *sceneIdentifier; // @synthesize sceneIdentifier=_sceneIdentifier;
+- (id)description;
 - (id)initWithSceneIdentifier:(id)arg1 responseHandler:(CDUnknownBlockType)arg2;
 - (id)initWithInfo:(id)arg1 responseHandler:(CDUnknownBlockType)arg2;
 - (id)initWithAction:(id)arg1;

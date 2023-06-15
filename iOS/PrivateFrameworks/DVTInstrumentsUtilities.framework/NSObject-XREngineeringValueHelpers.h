@@ -14,6 +14,7 @@
 - (void)enumerateTextBacktraceFrames:(CDUnknownBlockType)arg1;
 - (void)enumerateKeyValuePairs:(CDUnknownBlockType)arg1;
 - (id)uuidFromEngineeringValue;
+- (id)xr_stringArrayFromNSStringOrNSArray;
 - (id)xr_clipsStringRepresentation;
 - (_Bool)xr_isCLIPSSymbol;
 - (int)agentStopDiagnosticsTypeCode;

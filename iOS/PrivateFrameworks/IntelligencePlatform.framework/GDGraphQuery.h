@@ -8,7 +8,6 @@
 
 @class NSArray, NSString;
 
-__attribute__((visibility("hidden")))
 @interface GDGraphQuery : NSObject
 {
     NSString *_objectFTSTerm;

@@ -6,6 +6,8 @@
 
 #import <HomeKit/HMTimerTrigger.h>
 
+@class NSString;
+
 @interface HMTimerTrigger (NaturalLanguage)
 + (id)_hf_naturalLanguageDetailsSentenceElementsWithRecurrences:(id)arg1 withOptions:(id)arg2;
 + (id)hf_naturalLanguageDetailsWithRecurrences:(id)arg1 withOptions:(id)arg2;
@@ -15,9 +17,16 @@
 + (id)hf_recurrenceNaturalLanguageStringKeyWithOptions:(id)arg1 recurrences:(id)arg2;
 + (id)hf_naturalLanguageNameWithOptions:(id)arg1 significantEvent:(id)arg2 offset:(id)arg3 recurrences:(id)arg4;
 + (id)hf_naturalLanguageNameWithOptions:(id)arg1 fireDate:(id)arg2 recurrences:(id)arg3;
++ (id)hf_newTriggerWithBuilder:(id)arg1 inHome:(id)arg2;
 - (id)_hf_naturalLanguageDetailsSentenceElementsWithOptions:(id)arg1;
 - (id)hf_naturalLanguageNameWithOptions:(id)arg1;
 - (id)hf_naturalLanguageNameWithHome:(id)arg1 type:(unsigned long long)arg2;
 - (unsigned long long)hf_triggerType;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 @end
 

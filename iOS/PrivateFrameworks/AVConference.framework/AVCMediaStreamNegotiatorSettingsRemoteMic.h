@@ -7,6 +7,8 @@
 __attribute__((visibility("hidden")))
 @interface AVCMediaStreamNegotiatorSettingsRemoteMic
 {
+    int _preferredAudioPayload;
+    unsigned long long _channelCount;
 }
 
 - (unsigned long long)ptime;

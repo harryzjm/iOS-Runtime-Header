@@ -7,6 +7,7 @@
 #import <UIKit/UINavigationController.h>
 
 @class LAContext, NSString, _ASIncomingCallObserver, _SFAccountPickerTableViewController;
+@protocol SFAccountPickerViewControllerSystemAutoFillDelegate;
 
 __attribute__((visibility("hidden")))
 @interface SFAccountPickerViewController : UINavigationController
@@ -14,14 +15,19 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _completionHandler;
     _SFAccountPickerTableViewController *_accountPickerTableViewController;
     _ASIncomingCallObserver *_callObserver;
+    id <SFAccountPickerViewControllerSystemAutoFillDelegate> _systemAutoFillDelegate;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <SFAccountPickerViewControllerSystemAutoFillDelegate> systemAutoFillDelegate; // @synthesize systemAutoFillDelegate=_systemAutoFillDelegate;
 @property(retain, nonatomic) LAContext *authenticatedContext;
-- (void)accountPickerTableViewController:(id)arg1 didPickSavedAccount:(id)arg2;
+- (void)accountPickerTableViewController:(id)arg1 fillVerificationCode:(id)arg2;
+- (void)accountPickerTableViewController:(id)arg1 fillVerificationCodeForSavedAccount:(id)arg2;
+- (void)accountPickerTableViewController:(id)arg1 fillPasswordForSavedAccount:(id)arg2;
+- (void)accountPickerTableViewController:(id)arg1 fillUsernameForSavedAccount:(id)arg2;
+- (void)accountPickerTableViewController:(id)arg1 didPickSavedAccounts:(id)arg2;
 - (void)accountPickerTableViewControllerDidCancel:(id)arg1;
 - (void)_dismiss;
-- (void)_appDidEnterBackground:(id)arg1;
 - (void)dealloc;
 - (id)initWithConfiguration:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 

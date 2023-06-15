@@ -13,6 +13,7 @@
 - (id)AD_doubleDateTimeAsString;
 - (id)AD_universalDateTimeAsString;
 - (id)AD_localDateTimeAsString;
+- (int)AD_toSinceReferenceTime;
 - (int)AD_toServerTime;
 @end
 

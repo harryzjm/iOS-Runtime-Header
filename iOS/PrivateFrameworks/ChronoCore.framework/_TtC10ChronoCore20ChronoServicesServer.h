@@ -14,10 +14,12 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *timelineService;
     MISSING_TYPE *taskService;
     MISSING_TYPE *descriptorService;
+    MISSING_TYPE *deviceService;
     MISSING_TYPE *extensionService;
-    MISSING_TYPE *configurationService;
+    MISSING_TYPE *hostService;
     MISSING_TYPE *keybagStateProvider;
     MISSING_TYPE *powerlogSuggestionService;
+    MISSING_TYPE *keepAliveAssertionProvider;
     MISSING_TYPE *duetService;
     MISSING_TYPE *connectionListener;
     MISSING_TYPE *subscriptions;

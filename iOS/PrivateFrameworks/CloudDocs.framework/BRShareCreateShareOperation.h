@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 @property(copy) CDUnknownBlockType shareCreateCompletionBlock; // @synthesize shareCreateCompletionBlock=_shareCreateCompletionBlock;
 - (void)finishWithResult:(id)arg1 error:(id)arg2;
 - (void)main;
+- (id)initWithItemID:(id)arg1;
 
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIButton.h>
+#import <UIKitCore/UIButton.h>
 
 @interface _TtCC15HealthRecordsUI17UploadNewDataCellP33_6F80709EAB63D26AFFB2023EBC32517B17PassthroughButton : UIButton
 {

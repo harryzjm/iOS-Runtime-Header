@@ -18,7 +18,7 @@
 - (_Bool)supportsTimeRange;
 - (void)markAsynchronousLocalRenderAsOptionalForProgress:(NSProgress *)arg1;
 - (_Bool)canMarkAsynchronousLocalRenderAsOptionalForProgress:(NSProgress *)arg1;
-- (void)requestStreamingURLForResource:(id <PLResource>)arg1 asset:(PLManagedAsset *)arg2 intent:(unsigned long long)arg3 timeRange:(CDStruct_3c1748cc)arg4 streamingHints:(NSDictionary *)arg5 inContext:(NSManagedObjectContext *)arg6 clientBundleID:(NSString *)arg7 completion:(void (^)(NSURL *, NSData *, NSDate *, NSError *))arg8;
+- (void)requestStreamingURLForResource:(id <PLResource>)arg1 asset:(PLManagedAsset *)arg2 intent:(unsigned long long)arg3 timeRange:(CDStruct_3c1748cc)arg4 streamingHints:(NSDictionary *)arg5 inContext:(NSManagedObjectContext *)arg6 clientBundleID:(NSString *)arg7 completion:(void (^)(NSURL *, NSData *, NSDate *, NSString *, NSError *))arg8;
 - (_Bool)canStreamResource:(id <PLResource>)arg1;
 - (_Bool)videoResource:(id <PLResource>)arg1 matchesOrExceedsQualityLevel:(unsigned int)arg2;
 - (_Bool)dataStoreSubtypeIsDownloadable:(long long)arg1;
@@ -28,6 +28,7 @@
 - (_Bool)canStoreExternalResource:(PLValidatedExternalResource *)arg1;
 - (NSArray *)virtualResourcesForAsset:(PLManagedAsset *)arg1;
 - (NSSet *)updateDerivativeResourcesForAsset:(PLManagedAsset *)arg1 forLifecycleEvent:(unsigned int)arg2;
+- (NSURL *)expectedFileURLForResource:(id <PLResource>)arg1 asset:(PLManagedAsset *)arg2;
 - (NSURL *)resourceURLForKey:(id <PLResourceDataStoreKey>)arg1 assetID:(id <PLAssetID>)arg2;
 - (NSData *)resourceDataForKey:(id <PLResourceDataStoreKey>)arg1 assetID:(id <PLAssetID>)arg2;
 - (id <PLResourceDataStoreKey>)keyFromKeyStruct:(const void *)arg1;

@@ -9,6 +9,7 @@
 @class NSString, PKPeerPaymentActionController, UIViewController;
 
 @protocol PKPeerPaymentActionControllerDelegate <NSObject>
+- (NSString *)presentationSceneBundleIdentifierForPeerPaymentActionController:(PKPeerPaymentActionController *)arg1;
 - (NSString *)presentationSceneIdentifierForPeerPaymentActionController:(PKPeerPaymentActionController *)arg1;
 - (void)peerPaymentActionController:(PKPeerPaymentActionController *)arg1 requestPresentViewController:(UIViewController *)arg2 withTransition:(int)arg3;
 - (void)peerPaymentActionController:(PKPeerPaymentActionController *)arg1 requestPresentViewController:(UIViewController *)arg2;

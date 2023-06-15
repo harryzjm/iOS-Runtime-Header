@@ -10,8 +10,10 @@
 
 @interface _TtC7NewsUI223FeedAvailabilityService : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *cloudContext;
     MISSING_TYPE *tagController;
-    MISSING_TYPE *feedManager;
+    MISSING_TYPE *sportsEventController;
+    MISSING_TYPE *puzzleTypeController;
     MISSING_TYPE *appConfigurationManager;
 }
 

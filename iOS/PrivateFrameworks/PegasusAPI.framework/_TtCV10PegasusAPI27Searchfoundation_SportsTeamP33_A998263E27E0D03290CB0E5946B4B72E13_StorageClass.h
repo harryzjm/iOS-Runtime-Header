@@ -16,6 +16,7 @@
     MISSING_TYPE *_accessibilityDescription;
     MISSING_TYPE *_name;
     MISSING_TYPE *_button;
+    MISSING_TYPE *_isWinner;
 }
 
 @end

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MISSING_TYPE, NSString;
+@class MISSING_TYPE, NSIndexPath, NSString;
 
 __attribute__((visibility("hidden")))
 @interface _TtC12GameCenterUI18DashboardPresenter
@@ -16,6 +16,10 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *primarySections;
     MISSING_TYPE *secondarySections;
     MISSING_TYPE *game;
+    MISSING_TYPE *scrollToIndexPath;
+    MISSING_TYPE *didScrollToIndexPath;
+    MISSING_TYPE *scrollToActivityInfo;
+    MISSING_TYPE *onFriendRequestsCountChanged;
     MISSING_TYPE *sections;
     MISSING_TYPE *requiredData;
     MISSING_TYPE *requiredDataPresenter;
@@ -28,10 +32,12 @@ __attribute__((visibility("hidden")))
 - (void)loadMoreActivityFeedWithContinuationToken:(id)arg1;
 - (void)presentPlayerProfileFrom:(id)arg1 request:(id)arg2 animated:(_Bool)arg3;
 - (void)presentChallengesFrom:(id)arg1 gameRecord:(id)arg2 shouldShowPlayForChallenge:(_Bool)arg3;
-- (void)presentAchievementsFrom:(id)arg1 gameRecord:(id)arg2;
+- (void)presentAchievementsFrom:(id)arg1 request:(id)arg2 gameRecord:(id)arg3;
 - (void)presentLeaderboardsFrom:(id)arg1 request:(id)arg2 gameBundleID:(id)arg3;
 - (void)updateSnapshot;
 - (void)handleViewDidLoad;
+@property(nonatomic) _Bool didScrollToIndexPath; // @synthesize didScrollToIndexPath;
+@property(nonatomic, copy) NSIndexPath *scrollToIndexPath;
 @property(nonatomic) _Bool displayInSplitView;
 @property(nonatomic, readonly) NSString *title;
 @property(nonatomic) _Bool shouldUseLargeTitle; // @synthesize shouldUseLargeTitle;

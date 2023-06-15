@@ -7,6 +7,7 @@
 @class NSArray, NSString;
 
 @protocol PCSupportDaemonInterface
+- (void)fetchConfigurationForClass:(NSString *)arg1 completion:(void (^)(NSDictionary *))arg2;
 - (void)policiesToEnforce:(void (^)(NSArray *))arg1;
 - (void)policiesForContainerType:(NSString *)arg1 adType:(NSString *)arg2 adFormatType:(NSString *)arg3 completion:(void (^)(NSArray *))arg4;
 - (void)fetchGenderAndAgeGroupData:(void (^)(NSDictionary *))arg1;

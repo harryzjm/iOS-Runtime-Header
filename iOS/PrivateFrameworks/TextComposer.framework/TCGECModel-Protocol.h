@@ -7,7 +7,7 @@
 @class NSDictionary, NSString;
 
 @protocol TCGECModel
-- (void)enumerateIssuesForSentence:(NSString *)arg1 withBlock:(void (^)(unsigned long long, struct _NSRange, float, NSString *, NSArray *, _Bool *))arg2;
+- (void)enumerateIssuesForSentence:(NSString *)arg1 checkTermination:(_Bool)arg2 withBlock:(void (^)(unsigned long long, struct _NSRange, float, NSString *, NSArray *, _Bool *))arg3;
 - (id)initWithModelPath:(NSString *)arg1 OTABundlePath:(NSString *)arg2 options:(NSDictionary *)arg3;
 @end
 

@@ -11,12 +11,14 @@
 @protocol AMSURLHandling <NSObject>
 @property(nonatomic) __weak AMSURLSession *session;
 - (void)reconfigureNewRequest:(NSMutableURLRequest *)arg1 originalTask:(NSURLSessionTask *)arg2 redirect:(_Bool)arg3 error:(id *)arg4;
-- (AMSURLAction *)handleResponse:(NSURLResponse *)arg1 task:(NSURLSessionTask *)arg2;
-- (AMSURLAction *)handleCompletionWithTask:(NSURLSessionTask *)arg1 metrics:(NSURLSessionTaskMetrics *)arg2 decodedObject:(id)arg3;
+- (void)handleResponse:(NSURLResponse *)arg1 task:(NSURLSessionTask *)arg2 completionHandler:(void (^)(AMSURLAction *))arg3;
+- (void)handleCompletionWithTask:(NSURLSessionTask *)arg1 metrics:(NSURLSessionTaskMetrics *)arg2 decodedObject:(id)arg3 completionHandler:(void (^)(AMSURLAction *))arg4;
 - (void)didCreateTask:(NSURLSessionTask *)arg1 fromRequest:(NSURLRequest *)arg2 error:(id *)arg3;
 - (id)decodeData:(NSData *)arg1 task:(NSURLSessionTask *)arg2 error:(id *)arg3;
 
 @optional
+- (AMSURLAction *)handleCompletionWithTask:(NSURLSessionTask *)arg1 metrics:(NSURLSessionTaskMetrics *)arg2 decodedObject:(id)arg3;
+- (AMSURLAction *)handleResponse:(NSURLResponse *)arg1 task:(NSURLSessionTask *)arg2;
 - (id)decodeMutableData:(NSMutableData *)arg1 task:(NSURLSessionTask *)arg2 error:(id *)arg3;
 @end
 

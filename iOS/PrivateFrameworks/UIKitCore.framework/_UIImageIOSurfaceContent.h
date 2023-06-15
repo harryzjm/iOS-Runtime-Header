@@ -10,14 +10,16 @@ __attribute__((visibility("hidden")))
     struct __IOSurface *_surfaceRef;
 }
 
-- (_Bool)canEmitDrawingCommands;
-- (_Bool)canDrawImage;
+- (void)_drawWithSize:(struct CGSize)arg1 scale:(double)arg2 inContext:(struct CGContext *)arg3 effect:(id)arg4;
+- (void)_prepareForDrawingWithSize:(struct CGSize)arg1 scale:(double)arg2 inContext:(struct CGContext *)arg3;
+- (_Bool)prefersProvidingContentsDirectly;
 - (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (struct CGSize)sizeInPixels;
 - (_Bool)isIOSurface;
 - (struct __IOSurface *)IOSurface;
+- (id)typeName;
 - (void)dealloc;
 - (id)initWithScale:(double)arg1;
 - (id)initWithIOSurface:(struct __IOSurface *)arg1 scale:(double)arg2;

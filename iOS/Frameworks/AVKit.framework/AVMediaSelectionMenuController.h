@@ -29,8 +29,9 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSArray *audibleOptions; // @synthesize audibleOptions=_audibleOptions;
 - (void)_updateSelectionStateForMenu:(id)arg1 selectedIndex:(unsigned long long)arg2;
 - (id)_menuForOptions:(id)arg1 withIdentifier:(id)arg2;
-@property(readonly) UIMenu *legibleOptionsMenu;
-@property(readonly) UIMenu *audibleOptionsMenu;
+- (id)_displayNameForMediaSelectionOption:(id)arg1;
+@property(readonly, nonatomic) UIMenu *legibleOptionsMenu;
+@property(readonly, nonatomic) UIMenu *audibleOptionsMenu;
 - (id)initWithAudibleOptions:(id)arg1 legibleOptions:(id)arg2;
 
 @end

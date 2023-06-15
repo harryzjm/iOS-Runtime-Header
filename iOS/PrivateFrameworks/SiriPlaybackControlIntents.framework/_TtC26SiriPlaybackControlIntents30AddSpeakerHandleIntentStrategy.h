@@ -14,6 +14,7 @@
     MISSING_TYPE *deviceState;
     MISSING_TYPE *featureFlagProvider;
     MISSING_TYPE *playbackController;
+    MISSING_TYPE *analyticsService;
 }
 
 @end

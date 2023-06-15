@@ -29,7 +29,6 @@
 - (void)syncEngine:(CKSyncEngine *)arg1 willBeginFetchingChangesForZoneIDs:(NSArray *)arg2;
 - (void)syncEngineDidEndFetchingChanges:(CKSyncEngine *)arg1;
 - (void)syncEngineWillBeginFetchingChanges:(CKSyncEngine *)arg1;
-- (void)syncEngineDidBeginFetchingChanges:(CKSyncEngine *)arg1;
 - (void)syncEngine:(CKSyncEngine *)arg1 accountChangedFromUserRecordID:(CKRecordID *)arg2 toUserRecordID:(CKRecordID *)arg3;
 - (void)syncEngine:(CKSyncEngine *)arg1 zoneWithIDWasPurged:(CKRecordZoneID *)arg2;
 - (void)syncEngine:(CKSyncEngine *)arg1 zoneWithIDWasDeletedDueToUserEncryptedDataReset:(CKRecordZoneID *)arg2;

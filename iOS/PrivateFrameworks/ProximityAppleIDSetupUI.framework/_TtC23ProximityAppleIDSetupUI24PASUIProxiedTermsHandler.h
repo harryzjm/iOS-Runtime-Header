@@ -4,15 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <swiftCore/SwiftNativeNSObject.h>
+#import <objc/NSObject.h>
 
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC23ProximityAppleIDSetupUI24PASUIProxiedTermsHandler : SwiftNativeNSObject
+@interface _TtC23ProximityAppleIDSetupUI24PASUIProxiedTermsHandler : NSObject
 {
-    MISSING_TYPE *$defaultActor;
-    MISSING_TYPE *viewControllerProvider;
     MISSING_TYPE *authResults;
     MISSING_TYPE *proxiedDevice;
     MISSING_TYPE *acceptAction;
@@ -20,8 +18,10 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *proxiedTermsRemoteUI;
     MISSING_TYPE *acceptedTermsInfo;
     MISSING_TYPE *didAccept;
+    MISSING_TYPE *_viewControllerProvider;
 }
 
+- (void).cxx_destruct;
 - (id)init;
 
 @end

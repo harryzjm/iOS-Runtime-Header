@@ -10,7 +10,7 @@
 @class NSString, NSURL;
 
 @protocol SWLocation <NSObject, NSCopying>
-@property(nonatomic, readonly) NSURL *URL;
-@property(nonatomic, readonly) NSString *context;
+@property(readonly, copy, nonatomic) NSURL *URL;
+@property(readonly, copy, nonatomic) NSString *context;
 @end
 

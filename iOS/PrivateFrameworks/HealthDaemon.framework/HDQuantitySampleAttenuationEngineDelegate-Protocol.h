@@ -5,6 +5,6 @@
 //
 
 @protocol HDQuantitySampleAttenuationEngineDelegate
-- (long long)loadAttenuationSamples:(CDStruct_39925896 [1024])arg1 anchorTime:(double)arg2 errorOut:(id *)arg3;
+- (long long)loadAttenuationSamples:(CDStruct_e4bf3e73 [1024])arg1 anchorTime:(double)arg2 errorOut:(id *)arg3;
 @end
 

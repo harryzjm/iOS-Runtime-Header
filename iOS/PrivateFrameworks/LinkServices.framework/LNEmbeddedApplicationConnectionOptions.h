@@ -11,8 +11,12 @@ __attribute__((visibility("hidden")))
 {
     _Bool _suspended;
     _Bool _sceneless;
+    _Bool _allowsForegroundAppLaunchWhileInCarPlay;
+    long long _openApplicationPriority;
 }
 
+@property(nonatomic) _Bool allowsForegroundAppLaunchWhileInCarPlay; // @synthesize allowsForegroundAppLaunchWhileInCarPlay=_allowsForegroundAppLaunchWhileInCarPlay;
+@property(nonatomic) long long openApplicationPriority; // @synthesize openApplicationPriority=_openApplicationPriority;
 @property(nonatomic) _Bool sceneless; // @synthesize sceneless=_sceneless;
 @property(nonatomic) _Bool suspended; // @synthesize suspended=_suspended;
 - (_Bool)isEqual:(id)arg1;

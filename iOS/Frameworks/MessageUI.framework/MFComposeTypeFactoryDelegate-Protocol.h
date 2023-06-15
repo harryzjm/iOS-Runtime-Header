@@ -30,6 +30,7 @@
 
 @optional
 - (void)setHideMyEmailAddressForMailToURLAddressString:(NSString *)arg1;
+- (void)setIsQuickReply:(_Bool)arg1;
 - (void)setSendingEmailAddressAsHME:(NSString *)arg1 isComposeTypeReply:(_Bool)arg2;
 - (void)setOriginalMessageWasEncrypted:(_Bool)arg1;
 - (unsigned long long)contentVariationIndex;

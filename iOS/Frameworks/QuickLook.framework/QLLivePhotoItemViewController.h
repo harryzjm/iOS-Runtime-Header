@@ -38,6 +38,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (void)performFirstTimeAppearanceActions:(unsigned long long)arg1;
 - (_Bool)canPerformFirstTimeAppearanceActions:(unsigned long long)arg1;
+- (id)presentingViewControllerForImageAnalysisInteraction:(id)arg1;
 - (void)_updateImageAnalysisInteractionAnimated:(_Bool)arg1;
 - (void)didScroll:(id)arg1;
 - (void)didZoom:(id)arg1;

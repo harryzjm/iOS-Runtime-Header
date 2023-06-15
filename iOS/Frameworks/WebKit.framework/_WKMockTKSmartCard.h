@@ -9,12 +9,13 @@
 __attribute__((visibility("hidden")))
 @interface _WKMockTKSmartCard : TKSmartCard
 {
-    struct WeakPtr<WebKit::MockCcidService, WTF::EmptyCounter> m_service;
+    struct WeakPtr<WebKit::MockCcidService, WTF::DefaultWeakPtrImpl> m_service;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)transmitRequest:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)endSession;
 - (void)beginSessionWithReply:(CDUnknownBlockType)arg1;
 - (id)initWithService:(void *)arg1;
 

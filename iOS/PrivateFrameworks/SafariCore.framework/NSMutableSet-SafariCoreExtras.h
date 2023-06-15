@@ -7,6 +7,7 @@
 #import <Foundation/NSMutableSet.h>
 
 @interface NSMutableSet (SafariCoreExtras)
+- (void)safari_addObjectUnlessNil:(id)arg1;
 - (void)safari_setObject:(id)arg1;
 @end
 

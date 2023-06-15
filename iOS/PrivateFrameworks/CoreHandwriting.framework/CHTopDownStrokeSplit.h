@@ -22,7 +22,7 @@
     struct CGRect _groupBounds2;
 }
 
-+ (id)writingDirectionOrderedStrokes:(id)arg1 substrokesByStrokeIdentifier:(id)arg2;
++ (id)writingDirectionOrderedStrokes:(id)arg1 substrokesByStrokeIdentifier:(id)arg2 writingOrientation:(long long)arg3;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) long long substrokeCount2; // @synthesize substrokeCount2=_substrokeCount2;
 @property(readonly, nonatomic) long long substrokeCount1; // @synthesize substrokeCount1=_substrokeCount1;
@@ -35,7 +35,7 @@
 @property(readonly, nonatomic) NSArray *strokeGroup2; // @synthesize strokeGroup2=_strokeGroup2;
 @property(readonly, nonatomic) NSArray *strokeGroup1; // @synthesize strokeGroup1=_strokeGroup1;
 - (long long)_substrokeCountForStrokes:(id)arg1 substrokesByStrokeIdentifier:(id)arg2;
-- (id)initWithStrokes:(id)arg1 substrokesByStrokeIdentifier:(id)arg2 splitIndex:(long long)arg3;
+- (id)initWithStrokes:(id)arg1 substrokesByStrokeIdentifier:(id)arg2 splitIndex:(long long)arg3 writingOrientation:(long long)arg4;
 
 @end
 

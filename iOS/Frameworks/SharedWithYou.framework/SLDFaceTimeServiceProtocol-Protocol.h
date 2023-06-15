@@ -9,6 +9,7 @@
 @class NSString;
 
 @protocol SLDFaceTimeServiceProtocol <NSObject>
+- (void)refreshShareableContentMetadataInJoinedConversation;
 - (void)initiateTUConversationForAttributionIdentifier:(NSString *)arg1 videoEnabled:(_Bool)arg2 completion:(void (^)(_Bool))arg3;
 @end
 

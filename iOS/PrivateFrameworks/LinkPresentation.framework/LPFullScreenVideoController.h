@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class AVPlayer, AVPlayerController, LPAVPlayerViewController, LPVideoView, NSString, __AVPlayerLayerView;
+@class AVPlayer, AVPlayerController, LPAVPlayerViewController, LPVisualMediaView, NSString, __AVPlayerLayerView;
 
 __attribute__((visibility("hidden")))
 @interface LPFullScreenVideoController : NSObject
 {
-    LPVideoView *_sourceView;
+    LPVisualMediaView *_sourceView;
     LPAVPlayerViewController *_playerViewController;
     __AVPlayerLayerView *_playerLayerView;
     AVPlayerController *_playerController;

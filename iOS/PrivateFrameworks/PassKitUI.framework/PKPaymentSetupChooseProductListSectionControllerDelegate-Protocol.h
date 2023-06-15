@@ -7,6 +7,8 @@
 @class PKPaymentSetupChooseProductListItem;
 
 @protocol PKPaymentSetupChooseProductListSectionControllerDelegate
+- (void)deselectCells;
+- (void)reloadItem:(id)arg1 animated:(_Bool)arg2;
 - (void)didSelectPKPaymentSetupChooseProductListItem:(PKPaymentSetupChooseProductListItem *)arg1;
 @end
 

@@ -12,6 +12,8 @@
 {
     MISSING_TYPE *linkTable;
     MISSING_TYPE *eventTable;
+    MISSING_TYPE *globalDimensionsTable;
+    MISSING_TYPE *clocks;
 }
 
 @end

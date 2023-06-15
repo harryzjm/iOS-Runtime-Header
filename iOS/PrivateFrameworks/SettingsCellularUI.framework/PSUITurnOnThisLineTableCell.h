@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 - (id)detailTextLabel;
 - (id)textLabel;
 - (void)refreshCellContentsWithSpecifier:(id)arg1;
+- (void)_updateStatus:(id)arg1;
 - (void)_setTitle:(id)arg1 andStatus:(id)arg2;
 - (_Bool)canBeChecked;
 - (_Bool)canReload;

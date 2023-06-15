@@ -19,6 +19,7 @@
 @optional
 - (void)cdpContext:(CDPContext *)arg1 promptToInformUserOfAccountLockOutWithCompletion:(void (^)(void))arg2;
 - (void)cdpContext:(CDPContext *)arg1 promptToInformUserOfAccountUnlockWithCompletion:(void (^)(void))arg2;
+- (void)cdpContext:(CDPContext *)arg1 showResetCompletedAlertWithCompletion:(void (^)(unsigned long long, NSError *))arg2;
 - (void)cdpContext:(CDPContext *)arg1 showError:(NSError *)arg2 withDefaultIndex:(long long)arg3 withCompletion:(void (^)(long long))arg4;
 - (void)cdpContext:(CDPContext *)arg1 showError:(NSError *)arg2 withCompletion:(void (^)(long long))arg3;
 - (void)cdpContext:(CDPContext *)arg1 beginRemoteApprovalWithValidator:(CDPRemoteDeviceSecretValidator *)arg2;

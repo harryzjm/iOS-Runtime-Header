@@ -10,12 +10,12 @@
 
 @interface _TtC13TeaFoundation4Pool : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *identifier;
     MISSING_TYPE *depth;
     MISSING_TYPE *graph;
     MISSING_TYPE *singletonPool;
     MISSING_TYPE *containerSingletonPool;
     MISSING_TYPE *drainBlocks;
-    MISSING_TYPE *drainCopyPoolGraphBlocks;
     MISSING_TYPE *isGraphDrainingEnabled;
 }
 

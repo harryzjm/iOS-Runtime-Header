@@ -6,12 +6,12 @@
 
 #import <BacklightServices/NSObject-Protocol.h>
 
-@class BLSBacklightChangeRequest, NSError, NSNumber;
+@class BLSBacklightChangeRequest, BLSXPCBacklightProxyObserverMask, NSError, NSNumber;
 
 @protocol BLSXPCBacklightProxyHostInterface <NSObject>
-- (oneway void)endObservation;
-- (oneway void)beginObservation;
+- (oneway void)nowObservingWithMask:(BLSXPCBacklightProxyObserverMask *)arg1 completion:(void (^)(NSError *))arg2;
 - (NSError *)performChangeRequest:(BLSBacklightChangeRequest *)arg1;
+- (_Bool)deviceSupportsAlwaysOn;
 - (_Bool)isAlwaysOnEnabled;
 - (_Bool)isTransitioning;
 - (NSNumber *)getFlipbookState;

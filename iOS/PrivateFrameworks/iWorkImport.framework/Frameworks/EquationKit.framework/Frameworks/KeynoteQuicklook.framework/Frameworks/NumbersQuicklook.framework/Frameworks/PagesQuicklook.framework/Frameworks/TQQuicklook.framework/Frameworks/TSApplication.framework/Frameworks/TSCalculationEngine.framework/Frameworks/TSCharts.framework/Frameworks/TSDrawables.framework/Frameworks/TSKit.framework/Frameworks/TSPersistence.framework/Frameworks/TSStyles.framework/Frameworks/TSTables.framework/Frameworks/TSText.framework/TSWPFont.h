@@ -46,12 +46,12 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *creationBacktrace; // @synthesize creationBacktrace=_creationBacktrace;
 @property(retain) NSMutableDictionary *alternatePlatformFonts; // @synthesize alternatePlatformFonts=_alternatePlatformFonts;
-@property(nonatomic) _Bool isFallbackFont; // @synthesize isFallbackFont=_isFallbackFont;
 @property(nonatomic) unsigned long long hashValue; // @synthesize hashValue=_hashValue;
 @property(retain, nonatomic) UIFontDescriptor *platformFontDescriptor; // @synthesize platformFontDescriptor=_platformFontDescriptor;
 @property(retain, nonatomic) NSString *localizedFamilyName; // @synthesize localizedFamilyName=_localizedFamilyName;
 @property(retain, nonatomic) UIFont *platformFont; // @synthesize platformFont=_platformFont;
 @property(readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
+@property(nonatomic) _Bool isFallbackFont; // @synthesize isFallbackFont=_isFallbackFont;
 @property(retain, nonatomic) NSString *familyName; // @synthesize familyName=_familyName;
 @property(retain, nonatomic) NSString *postScriptName; // @synthesize postScriptName=_postScriptName;
 @property(readonly, nonatomic) NSString *desiredPostScriptName; // @synthesize desiredPostScriptName=_desiredPostScriptName;
@@ -66,10 +66,10 @@
 - (id)copyWithSize:(double)arg1 bold:(_Bool)arg2 italic:(_Bool)arg3 traits:(id)arg4;
 - (id)copyWithSize:(double)arg1 bold:(_Bool)arg2 italic:(_Bool)arg3;
 - (id)copyWithSize:(double)arg1;
-- (const struct __CTFont *)ctFontForSize:(double)arg1 bold:(_Bool)arg2 italic:(_Bool)arg3;
+- (struct __CTFont *)ctFontForSize:(double)arg1 bold:(_Bool)arg2 italic:(_Bool)arg3;
 - (struct __CTFont *)ctFontForSize:(double)arg1 bold:(_Bool)arg2 italic:(_Bool)arg3 traits:(id)arg4;
-- (const struct __CTFont *)ctFontForSize:(double)arg1;
-@property(readonly, nonatomic) const struct __CTFont *ctFont;
+- (struct __CTFont *)ctFontForSize:(double)arg1;
+@property(readonly, nonatomic) struct __CTFont *ctFont;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (_Bool)isBaseFontEqualToBaseFontFor:(id)arg1;

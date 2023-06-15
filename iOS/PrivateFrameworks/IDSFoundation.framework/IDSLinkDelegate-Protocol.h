@@ -9,15 +9,17 @@
 @class IDSQRProtoMaterial, IDSQRProtoMaterialInfo, NSArray, NSData, NSDictionary, NSNumber, NSString, NSUUID;
 
 @protocol IDSLinkDelegate <NSObject>
-- (_Bool)link:(id)arg1 didReceivePacket:(CDStruct_c2cb0b33 *)arg2 fromDeviceUniqueID:(NSString *)arg3 cbuuid:(NSString *)arg4;
+- (_Bool)link:(id)arg1 didReceivePacket:(CDStruct_ad679946 *)arg2 fromDeviceUniqueID:(NSString *)arg3 cbuuid:(NSString *)arg4;
 - (void)link:(id)arg1 didDisconnectForDeviceUniqueID:(NSString *)arg2 cbuuid:(NSString *)arg3;
 - (void)link:(id)arg1 didConnectForDeviceUniqueID:(NSString *)arg2 cbuuid:(NSString *)arg3;
 
 @optional
-- (void)link:(id)arg1 didReiceiveChildConnectionID:(NSUUID *)arg2 forLinkID:(BOOL)arg3;
+- (void)link:(id)arg1 didReceiveChildConnections:(NSDictionary *)arg2 forLinkID:(BOOL)arg3;
+- (void)linkTransactionIDMismatchDetected:(id)arg1;
 - (void)link:(id)arg1 didMitigateCollision:(_Bool)arg2;
 - (void)link:(id)arg1 didAddQREvent:(NSDictionary *)arg2;
 - (void)link:(id)arg1 didReceiveReportEvent:(NSDictionary *)arg2;
+- (void)link:(id)arg1 didReceiveReliableUnicastServerMaterial:(NSDictionary *)arg2;
 - (void)link:(id)arg1 didReceiveErrorIndicationWithCode:(unsigned int)arg2;
 - (void)link:(id)arg1 didReceiveEncryptedDataBlobs:(NSDictionary *)arg2;
 - (void)didReceiveBlockedIndicationForLink:(id)arg1 reason:(unsigned int)arg2;
@@ -28,6 +30,7 @@
 - (void)link:(id)arg1 didReceivePluginUnregistration:(unsigned long long)arg2 pluginName:(NSString *)arg3;
 - (void)link:(id)arg1 didReceivePluginRegistration:(unsigned long long)arg2 pluginName:(NSString *)arg3;
 - (void)link:(id)arg1 didReceiveParticipantUpdate:(NSDictionary *)arg2 status:(unsigned short)arg3;
+- (void)link:(id)arg1 didReceiveSessionStats:(NSDictionary *)arg2 relayGroupID:(NSString *)arg3 relaySessionID:(NSString *)arg4 success:(_Bool)arg5;
 - (void)link:(id)arg1 didReceiveSessionInfo:(NSDictionary *)arg2 relayGroupID:(NSString *)arg3 relaySessionID:(NSString *)arg4 status:(unsigned int)arg5;
 - (void)terminateCallDueToIdleClientForLink:(id)arg1;
 - (void)link:(id)arg1 didSoMaskChange:(unsigned int)arg2;

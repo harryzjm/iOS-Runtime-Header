@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     PBUnknownFields *_unknownFields;
     NSMutableArray *_resolvedItems;
     NSString *_sectionHeaderDisplayName;
+    NSString *_sectionSubHeaderDisplayNameWithEnrichment;
     NSString *_sectionSubHeaderDisplayName;
     GEOStyleAttributes *_styleAttributes;
     unsigned int _readerMarkPos;
@@ -28,6 +29,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_unknownFields:1;
         unsigned int read_resolvedItems:1;
         unsigned int read_sectionHeaderDisplayName:1;
+        unsigned int read_sectionSubHeaderDisplayNameWithEnrichment:1;
         unsigned int read_sectionSubHeaderDisplayName:1;
         unsigned int read_styleAttributes:1;
         unsigned int wrote_anyField:1;

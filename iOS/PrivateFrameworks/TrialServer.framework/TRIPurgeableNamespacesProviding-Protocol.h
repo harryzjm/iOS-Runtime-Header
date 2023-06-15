@@ -7,6 +7,6 @@
 #import <TrialServer/NSObject-Protocol.h>
 
 @protocol TRIPurgeableNamespacesProviding <NSObject>
-- (void)partitionPurgeableNamespacesForPurgeabilityLevel:(int)arg1 namespaceNamesPurgeableAtNamespaceLevel:(id *)arg2 eagerPurgeableFactorsByNamespaceName:(id *)arg3;
+- (void)partitionPurgeableNamespacesForPurgeabilityLevel:(int)arg1 namespaceNamesPurgeableAtNamespaceLevel:(id *)arg2 eagerPurgeableFactorsByNamespaceName:(id *)arg3 cacheDeleteableFactorsByNamespaceName:(id *)arg4;
 @end
 

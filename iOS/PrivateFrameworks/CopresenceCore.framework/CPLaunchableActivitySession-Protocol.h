@@ -9,8 +9,9 @@
 @class NSString, NSUUID, TUConversationActivity;
 
 @protocol CPLaunchableActivitySession <NSObject>
-@property(nonatomic, readonly) TUConversationActivity *activity;
-@property(nonatomic, readonly) NSUUID *UUID;
+@property(readonly, nonatomic) NSString *persistentSceneIdentifier;
+@property(readonly, nonatomic) TUConversationActivity *activity;
+@property(readonly, nonatomic) NSUUID *UUID;
 
 @optional
 - (void)associateSceneWithPersistentIdentifier:(NSString *)arg1;

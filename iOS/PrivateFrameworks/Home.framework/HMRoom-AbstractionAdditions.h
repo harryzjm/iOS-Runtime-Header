@@ -15,6 +15,7 @@
 @property(readonly, nonatomic) UIImage *hf_wallpaperImage;
 - (id)hf_accessoryRepresentableUsageCountsWithFilter:(CDUnknownBlockType)arg1;
 - (id)hf_allNonEmptyActionSets;
+- (id)hf_roomsSortDescriptorUsingDashboardSectionOrder;
 - (CDUnknownBlockType)hf_dashboardSectionReorderableUUIDStringComparator;
 - (id)hf_reorderableDashboardSectionList;
 - (id)hf_reorderableServicesList;
@@ -38,6 +39,8 @@
 @property(readonly, nonatomic) __weak HMCameraProfile *hf_unitaryCameraProfile;
 @property(readonly, nonatomic) NSArray *hf_allCameraProfiles;
 @property(readonly, nonatomic) NSArray *hf_demoModeAccessories;
+- (void)hf_updateApplicationData:(id)arg1 handleError:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_hf_updateApplicationData:(id)arg1;
 - (id)hf_updateDateAdded:(id)arg1;
 @property(readonly, copy, nonatomic) NSDate *hf_dateAdded;
 @property(readonly, copy, nonatomic) NSString *hf_displayName;

@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *gradientViews;
     MISSING_TYPE *maskLayer;
     MISSING_TYPE *backgroundBlurView;
+    MISSING_TYPE *maskLayout;
 }
 
 - (void).cxx_destruct;

@@ -6,20 +6,20 @@
 
 #import "CKDBackingAccount.h"
 
-@class CKTestAccount, CKTestDevice, NSString;
+@class NSString;
+@protocol CKDTestAccountProtocol, CKDTestDeviceProtocol;
 
 @interface CKDBackingMockAccount : CKDBackingAccount
 {
     NSString *_dsid;
-    CKTestAccount *_testAccount;
-    CKTestDevice *_testDevice;
+    id <CKDTestAccountProtocol> _testAccount;
+    id <CKDTestDeviceProtocol> _testDevice;
 }
 
 + (id)mockAccountWithTestAccount:(id)arg1 testDevice:(id)arg2;
 - (void).cxx_destruct;
-@property(retain, nonatomic) CKTestDevice *testDevice; // @synthesize testDevice=_testDevice;
-@property(retain, nonatomic) CKTestAccount *testAccount; // @synthesize testAccount=_testAccount;
-- (void)deviceCountWithCompletionHandler:(CDUnknownBlockType)arg1;
+@property(readonly, nonatomic) id <CKDTestDeviceProtocol> testDevice; // @synthesize testDevice=_testDevice;
+@property(readonly, nonatomic) id <CKDTestAccountProtocol> testAccount; // @synthesize testAccount=_testAccount;
 - (_Bool)isDataclassEnabledForCellular:(id)arg1;
 - (_Bool)isDataclassEnabled:(id)arg1;
 - (id)accountPropertiesForDataclass:(id)arg1;

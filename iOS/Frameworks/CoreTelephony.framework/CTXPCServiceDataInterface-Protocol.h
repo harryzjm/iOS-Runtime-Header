@@ -17,13 +17,14 @@
 - (void)getPreferredDataSubscriptionContext:(void (^)(CTXPCServiceSubscriptionContext *, NSError *))arg1;
 - (void)getCurrentDataSubscriptionContext:(void (^)(CTXPCServiceSubscriptionContext *, NSError *))arg1;
 - (void)simulateDataStall:(_Bool)arg1 pdp:(int)arg2 completion:(void (^)(NSError *))arg3;
+- (void)setCoalescing:(_Bool)arg1 udp:(_Bool)arg2 completion:(void (^)(NSError *))arg3;
 - (void)queryAnbrBitrate:(CTXPCServiceSubscriptionContext *)arg1 bitrate:(NSNumber *)arg2 direction:(int)arg3 completion:(void (^)(NSError *))arg4;
 - (void)getAnbrActivationState:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (void)isTetheringEditingSupported:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (void)getNATTKeepAliveOverCell:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(unsigned int, NSError *))arg2;
 - (void)getPublicNrFrequencyRange:(void (^)(unsigned int, NSError *))arg1;
 - (void)getPublicDataBearer:(void (^)(int, NSError *))arg1;
-- (void)getTrafficDescriptorsInfo:(CTXPCServiceSubscriptionContext *)arg1 connectionType:(int)arg2 completion:(void (^)(NSArray *, NSError *))arg3;
+- (void)getSliceTrafficDescriptorsInfo:(CTXPCServiceSubscriptionContext *)arg1 connectionType:(int)arg2 completion:(void (^)(NSArray *, NSError *))arg3;
 - (void)getDataStatus:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(CTDataStatus *, NSError *))arg2;
 - (void)getConnectionState:(CTXPCServiceSubscriptionContext *)arg1 connectionType:(int)arg2 completion:(void (^)(CTDataConnectionStatus *, NSError *))arg3;
 - (void)getActiveConnections:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;

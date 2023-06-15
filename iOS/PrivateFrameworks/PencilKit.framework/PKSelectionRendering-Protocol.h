@@ -11,7 +11,7 @@
 
 @protocol PKSelectionRendering <NSObject>
 - (NSArray *)_accessibilityUserTestingChildren;
-- (void)_renderLiveSelectionPath:(const struct CGPath *)arg1 forStrokes:(NSOrderedSet *)arg2 inDrawing:(PKDrawing *)arg3 liveScrollOffset:(struct CGPoint)arg4;
+- (void)_renderLiveSelectionPath:(struct CGPath *)arg1 forStrokes:(NSOrderedSet *)arg2 inDrawing:(PKDrawing *)arg3 liveScrollOffset:(struct CGPoint)arg4;
 - (UIBezierPath *)lassoPath;
 - (struct CGPoint)editMenuLocation;
 - (CALayer *)adornmentLayer;

@@ -21,6 +21,7 @@
 @property(nonatomic) double spotlightBackgroundWeighting;
 @property(readonly, nonatomic, getter=_sbDisplayConfiguration) FBSDisplayConfiguration *sbDisplayConfiguration;
 @property(readonly, nonatomic, getter=_sbWindowScene) SBWindowScene *sbWindowScene;
+- (id)sbsa_presentationModifierForCoreAnimationKeyPath:(id)arg1;
 - (id)sb_firstDescendantOfClassNamed:(id)arg1;
 - (id)sb_firstDescendantOfClass:(Class)arg1;
 - (id)sb_firstDescendantPassingTest:(CDUnknownBlockType)arg1;
@@ -32,7 +33,7 @@
 - (void)sb_printLayerHierarchy;
 - (void)_printLayer:(id)arg1 level:(int)arg2;
 - (_Bool)sb_hasActiveKeyboardOnScreen;
-@property(nonatomic, setter=sb_setID0CornerRadius:) double sb_ID0CornerRadius;
+@property(nonatomic, setter=setID0CornerRadius:) double ID0CornerRadius;
 @property(nonatomic, setter=SBPIP_setAllowsGroupBlending:) _Bool SBPIP_allowsGroupBlending;
 @property(nonatomic, setter=SBPIP_setAllowsEdgeAntialiasing:) _Bool SBPIP_allowsEdgeAntialiasing;
 - (void)SBPIP_recursivelyDisallowGroupBlending;

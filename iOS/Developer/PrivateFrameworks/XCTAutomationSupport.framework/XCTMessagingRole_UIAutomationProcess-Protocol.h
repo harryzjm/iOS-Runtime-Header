@@ -9,6 +9,7 @@
 @class NSArray, XCAccessibilityElement, XCTCapabilities, XCTElementQuery, XCTSerializedTransportWrapper2;
 
 @protocol XCTMessagingRole_UIAutomationProcess <NSObject>
+- (void)detectRuntimeIssues;
 - (void)listenForRemoteConnectionViaSerializedTransportWrapper:(XCTSerializedTransportWrapper2 *)arg1 completion:(void (^)(void))arg2;
 - (void)setMallocStackLoggingWithMode:(int)arg1 reply:(void (^)(NSError *))arg2;
 - (void)notifyWhenAnimationsAreIdle:(void (^)(NSError *))arg1;

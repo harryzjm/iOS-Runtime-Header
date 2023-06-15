@@ -6,10 +6,9 @@
 
 #import <HomePodSettings/NSObject-Protocol.h>
 
-@class HPSettingValue, NSString;
+@class NSString;
 
 @protocol HPSHomeSettingInterface <NSObject>
-- (void)deviceDidUpdateSetting:(NSString *)arg1 withValue:(HPSettingValue *)arg2;
 - (void)accessoryDidUpdateAttribute:(NSString *)arg1 withContext:(id)arg2;
 @end
 

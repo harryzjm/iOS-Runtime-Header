@@ -10,8 +10,10 @@
 
 @interface _TtC8VideosUI26SportsSubscriptionsManager : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *unsubscribeGracePeriod;
     MISSING_TYPE *activeSubscriptions;
     MISSING_TYPE *sportsManager;
+    MISSING_TYPE *notifications;
 }
 
 @end

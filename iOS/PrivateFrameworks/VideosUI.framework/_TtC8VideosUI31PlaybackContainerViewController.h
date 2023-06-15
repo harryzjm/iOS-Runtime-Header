@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
 @class MISSING_TYPE;
 @protocol VUIPlaybackContainerViewControllerDelegate;
@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *delegate;
     MISSING_TYPE *pipTargetView;
     MISSING_TYPE *postPlayViewController;
+    MISSING_TYPE *multiPlayerViewController;
     MISSING_TYPE *playerViewController;
     MISSING_TYPE *isPiPed;
     MISSING_TYPE *isAnimatingPiP;
@@ -29,6 +30,8 @@ __attribute__((visibility("hidden")))
 - (void)hidePictureInPictureWithCompletion:(CDUnknownBlockType)arg1;
 - (void)exitPictureInPictureWithCompletion:(CDUnknownBlockType)arg1;
 - (void)enterPictureInPicture;
+- (id)unembedMultiPlayerViewController;
+- (void)embedMultiPlayerViewController:(id)arg1;
 - (void)removePostPlayViewController;
 - (void)loadPostPlayForMediaItem:(id)arg1;
 - (void)presentPlayerViewController:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;

@@ -6,12 +6,16 @@
 
 #import "BCSActionPickerItem.h"
 
+@class UIImage;
+
 __attribute__((visibility("hidden")))
 @interface BCSWiFiConfigurationActionPickerItem : BCSActionPickerItem
 {
+    UIImage *_icon;
 }
 
-- (id)icon;
+- (void).cxx_destruct;
+@property(retain, nonatomic) UIImage *icon; // @synthesize icon=_icon;
 
 @end
 

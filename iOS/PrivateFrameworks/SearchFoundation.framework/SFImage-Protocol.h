@@ -6,11 +6,12 @@
 
 #import <SearchFoundation/NSObject-Protocol.h>
 
-@class NSData, NSDictionary, NSString;
+@class NSData, NSDictionary, NSString, SFImage;
 
 @protocol SFImage <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property(retain, nonatomic) SFImage *badgingImage;
 @property(copy, nonatomic) NSString *accessibilityLabel;
 @property(nonatomic) int cornerRoundingStyle;
 @property(nonatomic) int source;

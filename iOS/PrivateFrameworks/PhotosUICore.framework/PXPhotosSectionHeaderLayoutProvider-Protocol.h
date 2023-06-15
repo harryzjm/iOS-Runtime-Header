@@ -11,7 +11,7 @@
 
 @protocol PXPhotosSectionHeaderLayoutProvider <NSObject>
 - (void)sectionedLayout:(PXPhotosSectionedLayout *)arg1 headerLayout:(PXGLayout<PXPhotosSectionedLayoutHeader> *)arg2 didChangeDataSource:(PXAssetsDataSource *)arg3 sectionIndexPath:(struct PXSimpleIndexPath)arg4 hasSectionChanges:(_Bool)arg5;
-- (PXGLayout<PXPhotosSectionedLayoutHeader> *)createSectionHeaderLayoutForSectionedLayout:(PXPhotosSectionedLayout *)arg1 dataSource:(PXAssetsDataSource *)arg2 sectionIndexPath:(struct PXSimpleIndexPath)arg3 spec:(PXPhotosLayoutSpec *)arg4 outShouldFloat:(_Bool *)arg5;
+- (PXGLayout<PXPhotosSectionedLayoutHeader> *)createSectionHeaderLayoutForSectionedLayout:(PXPhotosSectionedLayout *)arg1 dataSource:(PXAssetsDataSource *)arg2 sectionIndexPath:(struct PXSimpleIndexPath)arg3 spec:(PXPhotosLayoutSpec *)arg4 outAlignment:(unsigned long long *)arg5;
 
 @optional
 @property(nonatomic) __weak id <PXPhotosSectionHeaderLayoutProviderInvalidationDelegate> topHeaderInvalidationDelegate;

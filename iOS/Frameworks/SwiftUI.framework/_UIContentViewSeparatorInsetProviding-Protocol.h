@@ -9,8 +9,7 @@
 @protocol _UIContentViewSeparatorInsetProviding <NSObject>
 
 @optional
-- (void)_setPreferredSeparatorInsetsDidChangeHandler:(void (^)(void))arg1;
-@property(nonatomic, copy) CDUnknownBlockType _preferredSeparatorInsetsDidChangeHandler;
+@property(copy, nonatomic, setter=_setPreferredSeparatorInsetsDidChangeHandler:) CDUnknownBlockType _preferredSeparatorInsetsDidChangeHandler;
 - (double)_preferredTrailingSeparatorInset;
 - (double)_preferredLeadingSeparatorInset;
 @end

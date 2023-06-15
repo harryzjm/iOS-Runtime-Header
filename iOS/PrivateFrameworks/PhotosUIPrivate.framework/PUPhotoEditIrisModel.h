@@ -21,12 +21,11 @@ __attribute__((visibility("hidden")))
     PICompositionController *_compositionController;
 }
 
-+ (void)updateChangeRequestForRevert:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool assetHasAdjustments; // @synthesize assetHasAdjustments=_assetHasAdjustments;
 @property(readonly, nonatomic) unsigned short assetVisibility; // @synthesize assetVisibility=_assetVisibility;
-@property(nonatomic) unsigned short editingVisibility; // @synthesize editingVisibility=_editingVisibility;
 @property(retain, nonatomic) PICompositionController *compositionController; // @synthesize compositionController=_compositionController;
+@property(nonatomic) unsigned short editingVisibility; // @synthesize editingVisibility=_editingVisibility;
 @property(nonatomic) _Bool ignoresUpdates; // @synthesize ignoresUpdates=_ignoresUpdates;
 @property(nonatomic, getter=isVideoEnabled) _Bool videoEnabled; // @synthesize videoEnabled=_videoEnabled;
 @property(readonly, nonatomic) id <PUEditableAsset> asset; // @synthesize asset=_asset;
@@ -36,7 +35,6 @@ __attribute__((visibility("hidden")))
 - (_Bool)_hasLegacyIrisConflicts;
 - (void)_updateAutoDisableStateIfNeeded;
 - (void)compositionDidChange;
-- (void)updateChangeRequestForSave:(id)arg1;
 @property(readonly, nonatomic) _Bool hasUnsavedChanges;
 - (_Bool)reenablingLivePhotoShouldRemoveEdits;
 - (void)notifyCannotSupportVideoEdits;

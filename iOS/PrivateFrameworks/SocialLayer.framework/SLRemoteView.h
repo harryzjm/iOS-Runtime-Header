@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIControl.h>
+#import <UIKitCore/UIControl.h>
 
 @class NSObject, SLDServiceProxy, UISSlotStyle, _UISlotView;
 @protocol OS_dispatch_queue, UISSlotAnyContent;

@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (id)_getTracker:(id)arg1;
 - (long long)_maximumTrackersOfType:(id)arg1;
 - (id)init;
+- (id)_supportedComputeDeviceTypesForTrackerType:(id)arg1 options:(id)arg2 error:(id *)arg3;
 
 @end
 

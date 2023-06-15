@@ -36,8 +36,8 @@ __attribute__((visibility("hidden")))
 - (void)addObserverForCapability:(id)arg1 inCluster:(id)arg2;
 - (void)unregisterCapability:(id)arg1;
 - (void)registerCapability:(id)arg1;
-- (void)addMesh:(id)arg1 forCluster:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (_Bool)_canRequestCreationOfCluster:(id)arg1;
+- (void)joinClusters:(id)arg1 usingMeshController:(id)arg2 withClusterIdentifier:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (_Bool)_applicableToCluster:(id)arg1;
 - (void)_addOnRemoved:(id)arg1;
 - (void)_addOnAdded:(id)arg1;
 - (void)_clientLost:(id)arg1;

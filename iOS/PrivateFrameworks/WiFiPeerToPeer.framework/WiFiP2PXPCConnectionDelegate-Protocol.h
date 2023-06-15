@@ -6,16 +6,16 @@
 
 #import <WiFiPeerToPeer/NSObject-Protocol.h>
 
-@class Protocol;
+@class NSXPCInterface;
 @protocol WiFiP2PXPCProtocol;
 
 @protocol WiFiP2PXPCConnectionDelegate <NSObject>
 - (void)startConnectionUsingProxy:(id <WiFiP2PXPCProtocol>)arg1 completionHandler:(void (^)(long long))arg2;
 
 @optional
-- (Protocol *)exportedInterface;
+- (NSXPCInterface *)exportedInterface;
 - (id)exportedObject;
-- (Protocol *)remoteObjectInterface;
+- (NSXPCInterface *)remoteObjectInterface;
 - (void)handleConnectionEstablishedWithProxy:(id)arg1;
 - (void)handleError:(long long)arg1;
 @end

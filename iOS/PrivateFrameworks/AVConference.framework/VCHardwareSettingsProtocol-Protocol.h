@@ -9,6 +9,14 @@
 @class NSArray;
 
 @protocol VCHardwareSettingsProtocol <NSObject>
+@property(readonly, nonatomic) _Bool isDeviceLargeScreen;
+@property(readonly, nonatomic) _Bool isMLEnhanceOneToOneSupported;
+@property(readonly, nonatomic) _Bool isMediaRecordingSupported;
+@property(readonly, nonatomic) _Bool supportsMultiway1080pStream;
+@property(readonly, nonatomic) _Bool supportsMultiway720pStream;
+@property(readonly, nonatomic) _Bool isExternalCameraSupported;
+@property(readonly, nonatomic) _Bool isSmartBrakeSupported;
+@property(readonly, nonatomic) _Bool isViewPointCorrectionSupported;
 @property(readonly, nonatomic) _Bool isSiriVoicePlayoutSupported;
 @property(readonly, nonatomic) _Bool isSiriVoiceTapSupported;
 @property(readonly, nonatomic) unsigned int maxActiveVideoDecoders;

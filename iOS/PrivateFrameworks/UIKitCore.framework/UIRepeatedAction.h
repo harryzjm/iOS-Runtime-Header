@@ -45,6 +45,7 @@ __attribute__((visibility("hidden")))
 - (void)_repeatedTimerFire;
 - (void)_invocationTimerFire;
 - (void)_preInvocationTimerFire;
+- (_Bool)_shouldInvokeRepeatedActionForPhase:(unsigned long long)arg1;
 - (void)_adjustInvocationForPhase:(unsigned long long)arg1;
 - (_Bool)invoke;
 - (void)scheduleWithTarget:(id)arg1 selector:(SEL)arg2 object:(id)arg3;

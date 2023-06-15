@@ -23,13 +23,13 @@
 @property(readonly, copy, nonatomic) NSString *accountDSID;
 - (void)importArtworkTokenForEntityPersistentID:(unsigned long long)arg1 entityType:(long long)arg2 artworkToken:(NSString *)arg3 artworkType:(long long)arg4 sourceType:(long long)arg5;
 - (_Bool)importOriginalArtworkFromImageData:(NSData *)arg1 withArtworkToken:(NSString *)arg2 artworkType:(long long)arg3 sourceType:(long long)arg4 mediaType:(unsigned long long)arg5;
-- (_Bool)recordPlayEventForPlaylistPersistentID:(long long)arg1;
-- (_Bool)recordPlayEventForAlbumPersistentID:(long long)arg1;
 - (void)addNonLibraryOwnedPlaylistsWithGlobalIDs:(NSArray *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
+- (void)addToLocalDeviceLibraryGlobalPlaylistWithID:(NSString *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)addGlobalPlaylistWithID:(NSString *)arg1 andAddToCloudLibrary:(_Bool)arg2 completion:(void (^)(NSError *))arg3;
 - (void)addPlaylistStoreItemsForLookupItems:(NSArray *)arg1 withCompletion:(void (^)(NSArray *, NSError *))arg2;
 - (void)addTracksToMyLibrary:(NSArray *)arg1;
 - (void)sdk_addItemWithOpaqueID:(NSString *)arg1 withCompletion:(void (^)(NSArray *, NSError *))arg2;
+- (void)performStoreAlbumArtistLibraryImport:(MPStoreItemLibraryImport *)arg1 withCompletion:(void (^)(NSArray *, NSError *))arg2;
 - (void)performStoreItemLibraryImport:(MPStoreItemLibraryImport *)arg1 withCompletion:(void (^)(NSArray *, NSError *))arg2;
 - (MIPMultiverseIdentifier *)multiverseIdentifierForCollectionWithPersistentID:(long long)arg1 groupingType:(long long)arg2;
 - (MIPMultiverseIdentifier *)multiverseIdentifierForTrackWithPersistentID:(long long)arg1;
@@ -71,6 +71,7 @@
 - (long long)itemPersistentIDForStoreID:(long long)arg1;
 - (_Bool)collectionExistsContainedWithinSyncIDs:(NSArray *)arg1 groupingType:(long long)arg2 existentPID:(unsigned long long *)arg3;
 - (_Bool)collectionExistsWithCloudUniversalLibraryID:(NSString *)arg1 groupingType:(long long)arg2 existentPID:(unsigned long long *)arg3;
+- (_Bool)collectionExistsWithCloudLibraryID:(NSString *)arg1 groupingType:(long long)arg2 existentPID:(unsigned long long *)arg3;
 - (_Bool)collectionExistsWithSagaID:(long long)arg1 groupingType:(long long)arg2 existentPID:(unsigned long long *)arg3;
 - (_Bool)collectionExistsWithStoreID:(long long)arg1 groupingType:(long long)arg2 existentPID:(unsigned long long *)arg3;
 - (_Bool)collectionExistsWithName:(NSString *)arg1 groupingType:(long long)arg2 existentPID:(unsigned long long *)arg3;

@@ -9,7 +9,6 @@
 @class CaptureMTLDevice, MTLDebugInstrumentationData, NSArray, NSString;
 @protocol MTLDevice, MTLDynamicLibrary, MTLDynamicLibrarySPI, MTLLibrary, OS_dispatch_data;
 
-__attribute__((visibility("hidden")))
 @interface CaptureMTLDynamicLibrary : NSObject
 {
     id <MTLDynamicLibrarySPI> _baseObject;

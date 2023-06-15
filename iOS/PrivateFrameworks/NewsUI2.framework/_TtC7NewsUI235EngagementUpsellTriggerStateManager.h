@@ -10,8 +10,11 @@
 
 @interface _TtC7NewsUI235EngagementUpsellTriggerStateManager : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *appVersion;
+    MISSING_TYPE *featureSettings;
     MISSING_TYPE *dateProvider;
     MISSING_TYPE *store;
+    MISSING_TYPE *presentationOperationManager;
     MISSING_TYPE *triggerVersions;
 }
 

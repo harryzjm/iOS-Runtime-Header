@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UITableViewCell.h>
+#import <UIKitCore/UITableViewCell.h>
 
 @class MISSING_TYPE;
 
@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *$__lazy_storage_$_iconView;
     MISSING_TYPE *$__lazy_storage_$_titleLabel;
+    MISSING_TYPE *baseAccessibilityIdentifier;
 }
 
 - (void).cxx_destruct;

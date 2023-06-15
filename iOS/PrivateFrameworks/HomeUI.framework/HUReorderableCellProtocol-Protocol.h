@@ -7,8 +7,7 @@
 #import <HomeUI/HUCellProtocol-Protocol.h>
 
 @protocol HUReorderableCellProtocol <HUCellProtocol>
-@property(nonatomic) _Bool rearranging;
-- (_Bool)isRearranging;
+@property(nonatomic, getter=isRearranging) _Bool rearranging;
 
 @optional
 @property(nonatomic) _Bool reorderable;

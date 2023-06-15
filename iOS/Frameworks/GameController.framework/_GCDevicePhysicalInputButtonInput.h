@@ -4,37 +4,45 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
+@class NSSet, NSString;
 
 __attribute__((visibility("hidden")))
 @interface _GCDevicePhysicalInputButtonInput
 {
-    _Bool _isAnalog;
-    float _pressedThreshold;
+    unsigned long long _sourcesSlot;
+    unsigned long long _isAnalogSlot;
+    unsigned long long _pressedThresholdSlot;
     unsigned long long _valueChangedHandlerSlot;
     unsigned long long _pressedChangedHandlerSlot;
     unsigned long long _valueSlot;
-    unsigned long long _timestampSlot;
+    unsigned long long _valueTimestampSlot;
+    unsigned long long _pressedTimestampSlot;
 }
 
++ (unsigned short)updateContextSize;
 @property(readonly) double lastPressedStateLatency;
 @property(readonly) double lastPressedStateTimestamp;
 @property(readonly, getter=isPressed) _Bool pressed;
 @property(copy) CDUnknownBlockType pressedDidChangeHandler;
-- (void)invokeCallbacksForInputChangedState:(unsigned char)arg1 withElement:(id)arg2;
+@property(readonly, copy) NSSet *sources;
 @property(readonly) double lastValueLatency;
 @property(readonly) double lastValueTimestamp;
 @property(readonly) _Bool canWrap;
 @property(readonly, getter=isAnalog) _Bool analog;
 @property(readonly) float value;
 @property(copy) CDUnknownBlockType valueDidChangeHandler;
+- (_Bool)_setPressedDidChangeHandler:(CDUnknownBlockType)arg1;
+- (CDUnknownBlockType)_pressedDidChangeHandler;
+@property(readonly, copy) NSString *description;
+- (void)postCommit:(const void *)arg1 sender:(id)arg2;
+- (void)preCommit:(const void *)arg1 sender:(id)arg2;
+- (_Bool)update:(void *)arg1 forUsages:(unsigned long long)arg2 with:(id)arg3;
+- (id)initWithTemplate:(id)arg1 context:(id)arg2;
+- (id)initWithParameters:(id)arg1;
 - (id)init;
-- (id)initWith:(id)arg1 context:(id)arg2;
-- (id)initWithParams:(struct _GCDevicePhysicalInputButtonInputParams)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

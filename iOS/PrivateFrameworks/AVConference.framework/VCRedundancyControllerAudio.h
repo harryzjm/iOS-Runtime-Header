@@ -25,7 +25,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)reportRedundancyPercentage:(unsigned int)arg1 redundancyInterval:(double)arg2;
-- (void)updateRedundancyStrategyWithNetworkStatistics:(CDStruct_7df19fcb)arg1;
+- (void)updateRedundancyStrategyWithNetworkStatistics:(struct tagVCStatisticsMessage)arg1;
 - (void)dealloc;
 - (void)unregisterStatistics;
 - (id)initWithDelegate:(id)arg1 statisticsCollector:(id)arg2 mode:(unsigned int)arg3;

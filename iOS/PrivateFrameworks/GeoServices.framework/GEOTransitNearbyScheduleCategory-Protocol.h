@@ -7,8 +7,10 @@
 #import <GeoServices/NSObject-Protocol.h>
 
 @class NSArray, NSString;
+@protocol GEOTransitArtworkDataSource;
 
 @protocol GEOTransitNearbyScheduleCategory <NSObject>
+@property(readonly, nonatomic) id <GEOTransitArtworkDataSource> artwork;
 @property(readonly, nonatomic) NSArray *groups;
 @property(readonly, nonatomic) NSString *displayName;
 @end

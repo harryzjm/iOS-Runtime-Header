@@ -9,6 +9,8 @@
 @class NSDictionary, NSNumber, NSString, NSURL;
 
 @protocol SKUIServiceProductPageViewController <NSObject>
+- (void)showErrorPageWithCompletion:(void (^)(void))arg1;
+- (void)showPageForLookupResult:(NSDictionary *)arg1 productID:(NSString *)arg2 parameters:(NSDictionary *)arg3 logKey:(NSString *)arg4 completion:(void (^)(void))arg5;
 - (void)dismissViewControllerAnimated:(NSNumber *)arg1;
 - (void)setUsageContext:(NSString *)arg1;
 - (void)setPresentationStyle:(NSNumber *)arg1;

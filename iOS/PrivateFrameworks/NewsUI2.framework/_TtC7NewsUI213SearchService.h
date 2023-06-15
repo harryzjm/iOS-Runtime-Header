@@ -14,6 +14,8 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *connection;
     MISSING_TYPE *configManager;
     MISSING_TYPE *configPromise;
+    MISSING_TYPE *searchEndpointConfigs;
+    MISSING_TYPE *searchEndpointConfigManager;
     MISSING_TYPE *purchaseProvider;
     MISSING_TYPE *bundleSubscriptionProvider;
     MISSING_TYPE *userInterfaceIdiom;

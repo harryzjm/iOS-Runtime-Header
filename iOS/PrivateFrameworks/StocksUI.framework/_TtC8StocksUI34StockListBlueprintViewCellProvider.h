@@ -20,6 +20,7 @@
     MISSING_TYPE *commandCenter;
     MISSING_TYPE *watchlistManager;
     MISSING_TYPE *watchlistPickerMenuProvider;
+    MISSING_TYPE *cellCornerRadius;
 }
 
 @end

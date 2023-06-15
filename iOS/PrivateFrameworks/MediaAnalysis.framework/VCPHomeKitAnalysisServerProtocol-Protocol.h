@@ -10,7 +10,6 @@
 - (void)cancelAllRequests;
 - (void)cancelRequest:(int)arg1;
 - (void)requestResidentMaintenance:(int)arg1 withOptions:(NSDictionary *)arg2 andReply:(void (^)(NSDictionary *, NSError *))arg3;
-- (void)requestIdentification:(int)arg1 forFaceCrop:(NSData *)arg2 withOptions:(NSDictionary *)arg3 andReply:(void (^)(NSString *, NSError *))arg4;
 - (void)requestAnalysis:(unsigned long long)arg1 ofFragmentSurface:(IOSurface *)arg2 withRequestID:(int)arg3 properties:(NSDictionary *)arg4 andReply:(void (^)(NSDictionary *, NSError *))arg5;
 - (void)requestAnalysis:(unsigned long long)arg1 ofFragmentData:(NSData *)arg2 withRequestID:(int)arg3 properties:(NSDictionary *)arg4 andReply:(void (^)(NSDictionary *, NSError *))arg5;
 @end

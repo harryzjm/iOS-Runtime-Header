@@ -11,7 +11,6 @@ __attribute__((visibility("hidden")))
 {
     struct MUPlaceHeaderMetrics _metrics;
     CDUnknownBlockType _updateHandler;
-    _Bool _hasPerformedLogoHiddenToVisibleTransition;
     long long _currentScrollDirection;
     double _expansionProgress;
 }
@@ -21,8 +20,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) long long currentScrollDirection; // @synthesize currentScrollDirection=_currentScrollDirection;
 @property(readonly, nonatomic) _Bool shouldBlurChromeHeaderButtons;
 @property(readonly, nonatomic) double interpolatedCoverPhotoToTitleSpacing;
-- (double)_logoImageAlphaForScrollDown;
-- (double)_logoImageAlphaForScrollUp;
+- (double)_logoImageAlphaForVerticalDrag;
 @property(readonly, nonatomic) double logoImageAlpha;
 - (void)_updateWithOldProgress:(double)arg1;
 - (double)coverPhotoHeightForProposedWidth:(double)arg1;

@@ -12,14 +12,16 @@ __attribute__((visibility("hidden")))
     NSArray *_finishWritingOperations;
     NSOperation *_transitionToTerminalStatusOperation;
     void *_figAssetWriterCallbackContextToken;
+    struct OpaqueFigAssetWriter *_figAssetWriter;
 }
 
 @property(readonly, nonatomic) NSOperation *transitionToTerminalStatusOperation; // @synthesize transitionToTerminalStatusOperation=_transitionToTerminalStatusOperation;
+- (_Bool)_isDefunct;
 - (long long)status;
 - (void)cancelWriting;
 - (void)_finishWritingOperationsDidFinish;
 - (void)dealloc;
-- (id)initWithConfigurationState:(id)arg1 finishWritingOperations:(id)arg2 figAssetWriterCallbackContextToken:(void *)arg3;
+- (id)initWithConfigurationState:(id)arg1 finishWritingOperations:(id)arg2 figAssetWriterCallbackContextToken:(void *)arg3 figAssetWriter:(struct OpaqueFigAssetWriter *)arg4;
 
 @end
 

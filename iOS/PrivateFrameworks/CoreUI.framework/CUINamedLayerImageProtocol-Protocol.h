@@ -7,6 +7,8 @@
 #import <CoreUI/NSObject-Protocol.h>
 
 @protocol CUINamedLayerImageProtocol <NSObject>
+@property(readonly, nonatomic) double scale;
+@property(readonly, nonatomic) struct CGImage *image;
 @property(nonatomic) _Bool fixedFrame;
 @property(readonly, nonatomic) int blendMode;
 @property(readonly, nonatomic) double opacity;

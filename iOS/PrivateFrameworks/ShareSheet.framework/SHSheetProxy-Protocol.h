@@ -5,10 +5,11 @@
 //
 
 #import <ShareSheet/NSObject-Protocol.h>
+#import <ShareSheet/NSSecureCoding-Protocol.h>
 
 @class NSUUID;
 
-@protocol SHSheetProxy <NSObject>
+@protocol SHSheetProxy <NSSecureCoding, NSObject>
 @property(readonly, nonatomic) _Bool isDisabled;
 @property(readonly, nonatomic) NSUUID *identifier;
 @end

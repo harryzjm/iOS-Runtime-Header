@@ -41,8 +41,10 @@ __attribute__((visibility("hidden")))
 - (_Bool)modelessTipShown;
 - (void)signalDictationInsertionTip:(id)arg1;
 - (void)signalDictationEmojiTip:(id)arg1;
+- (void)signalDictationSendMessageTip;
 - (void)finalizeSelectionTip;
 - (void)signalDictationSelectionTip:(id)arg1;
+- (void)signalDictationClearAllTip;
 - (long long)currentDeletionEventCount;
 - (void)addDeletionEventCount:(id)arg1 deletedTextRange:(struct _NSRange)arg2;
 - (void)resetDeletionEventCount;
@@ -54,7 +56,6 @@ __attribute__((visibility("hidden")))
 - (id)replaceEmojiInStringWithEmojiDictationCommand:(id)arg1;
 - (void)emitTipShowingInstrumentation:(long long)arg1;
 - (void)logDictationTipDimissialInstrumentation;
-- (void)simulateTipShowingInstrumentation:(long long)arg1;
 - (void)reset;
 - (void)markDictationTipPreferenceToShown:(long long)arg1;
 - (void)incrementDictationTipDisplayCount:(long long)arg1 stopFutureShowing:(_Bool)arg2;

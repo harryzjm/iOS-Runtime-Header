@@ -11,6 +11,7 @@
 @property(readonly) HMMediaDestination *committedDestination;
 @property(readonly) HMMediaDestination *destination;
 @property(readonly) NSUUID *identifier;
+- (void)mergeDestination:(HMMediaDestination *)arg1;
 - (void)requestToUpdateAudioGroupIdentifier:(NSUUID *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)stageAudioGroupIdentifier:(NSUUID *)arg1;
 @end

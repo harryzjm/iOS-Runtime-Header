@@ -9,11 +9,17 @@
 @class GKGameInternal, NSArray, NSData, NSDictionary, NSNumber, NSString, NSURL;
 
 @protocol GKUtilityService <NSObject>
-- (oneway void)notifyDashboardIsDismissedByGameController;
+- (oneway void)handleGameControllerHomeButtonPressed;
 - (oneway void)openDashboardAsRemoteAlertForGame:(GKGameInternal *)arg1 hostPID:(int)arg2 deeplink:(NSDictionary *)arg3;
-- (oneway void)completeMatchMakingRecording:(NSString *)arg1;
+- (oneway void)completeGameRecording;
+- (oneway void)recordGameStart;
+- (oneway void)completeMatchRecording:(NSString *)arg1 matchType:(NSString *)arg2;
+- (oneway void)recordSharePlayDevices:(NSNumber *)arg1;
 - (oneway void)recordActiveDevices:(NSNumber *)arg1;
-- (oneway void)recordMatchMakingStart:(NSString *)arg1 minPlayers:(NSNumber *)arg2 maxPlayers:(NSNumber *)arg3 server:(NSString *)arg4;
+- (oneway void)recordMatchServer:(NSString *)arg1;
+- (oneway void)recordMatchStart:(NSString *)arg1 minPlayers:(NSNumber *)arg2 maxPlayers:(NSNumber *)arg3;
+- (oneway void)reportPerformanceMetricsEvent:(NSDictionary *)arg1;
+- (oneway void)reportMetricsEventWithTopic:(NSString *)arg1 shouldFlush:(NSNumber *)arg2 impressionType:(NSString *)arg3 impressionIndex:(NSNumber *)arg4 element:(NSString *)arg5 parent:(NSString *)arg6;
 - (oneway void)reportMetricsEventWithTopic:(NSString *)arg1 shouldFlush:(NSNumber *)arg2 metricsFields:(NSDictionary *)arg3;
 - (oneway void)deleteCachedImageDataFromSubdirectory:(NSString *)arg1 withFileName:(NSString *)arg2 handler:(void (^)(void))arg3;
 - (oneway void)loadCachedImageDataFromSubdirectory:(NSString *)arg1 withFileName:(NSString *)arg2 handler:(void (^)(NSData *))arg3;

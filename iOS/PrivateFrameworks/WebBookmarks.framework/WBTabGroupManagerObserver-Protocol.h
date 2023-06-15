@@ -6,19 +6,27 @@
 
 #import <WebBookmarks/NSObject-Protocol.h>
 
-@class WBTab, WBTabGroup, WBTabGroupManager, WebBookmarkList;
+@class NSString, WBTabGroupManager, WebBookmarkList;
 
 @protocol WBTabGroupManagerObserver <NSObject>
 
 @optional
+- (void)tabGroupManager:(WBTabGroupManager *)arg1 activeParticipantsDidUpdateInTabWithUUID:(NSString *)arg2;
+- (void)tabGroupManager:(WBTabGroupManager *)arg1 activeParticipantsDidUpdateInTabGroupWithUUID:(NSString *)arg2;
+- (void)tabGroupManagerDidUpdateDevices:(WBTabGroupManager *)arg1;
+- (void)tabGroupManager:(WBTabGroupManager *)arg1 didRemoveProfileWithUUID:(NSString *)arg2;
+- (void)tabGroupManager:(WBTabGroupManager *)arg1 didUpdateProfileWithUUID:(NSString *)arg2;
+- (void)tabGroupManager:(WBTabGroupManager *)arg1 didInsertProfileWithUUID:(NSString *)arg2;
+- (void)tabGroupManagerDidUpdateProfiles:(WBTabGroupManager *)arg1;
+- (void)tabGroupManager:(WBTabGroupManager *)arg1 willReplaceTabWithUUID:(NSString *)arg2 withTabWithUUID:(NSString *)arg3;
 - (void)tabGroupManager:(WBTabGroupManager *)arg1 didUpdateScopedBookmarkList:(WebBookmarkList *)arg2;
 - (void)tabGroupManagerDidUpdateSyncableContent:(WBTabGroupManager *)arg1;
-- (void)tabGroupManager:(WBTabGroupManager *)arg1 didUpdateTab:(WBTab *)arg2 userDriven:(_Bool)arg3;
-- (void)tabGroupManager:(WBTabGroupManager *)arg1 didUpdateTabsInTabGroup:(WBTabGroup *)arg2;
-- (void)tabGroupManager:(WBTabGroupManager *)arg1 didUpdateTabGroup:(WBTabGroup *)arg2;
-- (void)tabGroupManager:(WBTabGroupManager *)arg1 didPerformBlockUpdatesForTabGroup:(WBTabGroup *)arg2;
-- (void)tabGroupManager:(WBTabGroupManager *)arg1 willPerformBlockUpdatesForTabGroup:(WBTabGroup *)arg2;
-- (void)tabGroupManager:(WBTabGroupManager *)arg1 didRemoveTabGroup:(WBTabGroup *)arg2;
+- (void)tabGroupManager:(WBTabGroupManager *)arg1 didUpdateTabWithUUID:(NSString *)arg2 userDriven:(_Bool)arg3;
+- (void)tabGroupManager:(WBTabGroupManager *)arg1 didUpdateTabsInTabGroupWithUUID:(NSString *)arg2;
+- (void)tabGroupManager:(WBTabGroupManager *)arg1 didUpdateTabGroupWithUUID:(NSString *)arg2;
+- (void)tabGroupManager:(WBTabGroupManager *)arg1 didPerformBlockUpdatesForTabGroupWithUUID:(NSString *)arg2;
+- (void)tabGroupManager:(WBTabGroupManager *)arg1 willPerformBlockUpdatesForTabGroupWithUUID:(NSString *)arg2;
+- (void)tabGroupManager:(WBTabGroupManager *)arg1 didRemoveTabGroupWithUUID:(NSString *)arg2;
 - (void)tabGroupManagerDidUpdateTabGroups:(WBTabGroupManager *)arg1;
 - (void)tabGroupManagerDidFinishSetup:(WBTabGroupManager *)arg1;
 @end

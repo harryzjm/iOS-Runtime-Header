@@ -47,10 +47,10 @@ __attribute__((visibility("hidden")))
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setHidden:(_Bool)arg1;
 - (void)tintColorDidChange;
-- (void)traitCollectionDidChange:(id)arg1;
 - (void)didMoveToSuperview;
 @property(readonly, nonatomic) double totalConsumedSpace;
 - (void)_updateHalo;
+- (void)_updateHaloForCurrentUserInterfaceStyle;
 - (void)_searchForFocusRegionsInContext:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 

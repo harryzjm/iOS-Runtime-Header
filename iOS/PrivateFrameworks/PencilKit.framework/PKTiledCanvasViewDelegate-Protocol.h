@@ -7,13 +7,17 @@
 #import <PencilKit/NSObject-Protocol.h>
 
 @class NSArray, PKDrawing, PKInk, PKStroke, PKTiledCanvasView, UITouch, UIView;
+@protocol UICoordinateSpace;
 
 @protocol PKTiledCanvasViewDelegate <NSObject>
 
 @optional
+- (id <UICoordinateSpace>)canvasViewContentCoordinateSpace:(PKTiledCanvasView *)arg1;
+- (_Bool)canvasViewShouldCombineStrokes:(PKTiledCanvasView *)arg1;
+- (_Bool)canvasView:(PKTiledCanvasView *)arg1 shouldDelayDrawingBeganWithTouch:(UITouch *)arg2;
 - (struct CGAffineTransform)canvasView:(PKTiledCanvasView *)arg1 transformForStroke:(PKStroke *)arg2;
 - (PKInk *)canvasView:(PKTiledCanvasView *)arg1 inkForStroke:(PKStroke *)arg2;
-- (void)replayCanvasViewDrawingMoved:(PKTiledCanvasView *)arg1 inputPoint:(CDStruct_fedef440)arg2;
+- (void)replayCanvasViewDrawingMoved:(PKTiledCanvasView *)arg1 inputPoint:(CDStruct_f37d75ce)arg2;
 - (_Bool)canvasViewShouldDisableShapeRecognition:(PKTiledCanvasView *)arg1;
 - (void)canvasViewInvalidateTiles:(PKTiledCanvasView *)arg1;
 - (void)canvasView:(PKTiledCanvasView *)arg1 didPresentWithCanvasOffset:(struct CGPoint)arg2;
@@ -29,11 +33,11 @@
 - (void)canvasViewDrawingMoved:(PKTiledCanvasView *)arg1 withTouch:(UITouch *)arg2;
 - (void)canvasViewDidBeginDrawing:(PKTiledCanvasView *)arg1;
 - (void)_canvasViewWillBeginDrawing:(PKTiledCanvasView *)arg1;
+- (void)canvasView:(PKTiledCanvasView *)arg1 endedStroke:(PKStroke *)arg2 shapeStrokes:(NSArray *)arg3;
 - (void)canvasView:(PKTiledCanvasView *)arg1 endedStroke:(PKStroke *)arg2;
 - (void)canvasView:(PKTiledCanvasView *)arg1 cancelledStroke:(PKStroke *)arg2;
 - (void)canvasView:(PKTiledCanvasView *)arg1 beganStroke:(PKStroke *)arg2;
-- (void)canvasViewWillBeginNewStroke:(PKTiledCanvasView *)arg1 location:(struct CGPoint)arg2;
-- (void)canvasViewWillBeginNewStroke:(PKTiledCanvasView *)arg1 withTouch:(UITouch *)arg2;
+- (void)canvasViewWillBeginNewStroke:(PKTiledCanvasView *)arg1 withTouch:(UITouch *)arg2 location:(struct CGPoint)arg3;
 - (void)canvasView:(PKTiledCanvasView *)arg1 drawingDidChange:(PKDrawing *)arg2;
 @end
 

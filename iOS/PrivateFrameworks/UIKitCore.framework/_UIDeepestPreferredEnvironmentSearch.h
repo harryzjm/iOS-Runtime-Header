@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) _UIDebugLogNode *debugLog; // @synthesize debugLog=_debugLog;
 @property(nonatomic) _Bool allowsOverridingPreferedFocusEnvironments; // @synthesize allowsOverridingPreferedFocusEnvironments=_allowsOverridingPreferedFocusEnvironments;
+- (void)_reportDidFindLockedFocusEnvironment:(id)arg1;
 - (void)_reportDidFindOverridingPreferredFocusEnvironment:(id)arg1 source:(id)arg2;
 - (void)_reportDidFinishEnumeratingPreferencesWithDeepestPreferredFocusableItem:(id)arg1;
 - (void)_reportFinishedEvaluatingAllPreferencesForEnvironmentInContext:(id)arg1 result:(long long)arg2;

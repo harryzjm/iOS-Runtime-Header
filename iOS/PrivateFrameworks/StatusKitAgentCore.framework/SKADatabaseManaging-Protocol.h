@@ -6,9 +6,16 @@
 
 #import <StatusKitAgentCore/NSObject-Protocol.h>
 
-@class NSArray, NSData, NSDate, NSManagedObjectContext, NSString, SKADatabaseChannel, SKADatabaseInvitedUser, SKADatabasePendingPublishRequest, SKADatabaseReceivedInvitation, SKADatabaseRemovedUser, SKADatabaseStatus, SKADatabaseSubscriptionAssertion, SKAGeneratedEncryptionKey, SKHandle, SKInvitationPayload;
+@class NSArray, NSData, NSDate, NSManagedObjectContext, NSString, SKADatabaseChannel, SKADatabaseInvitedUser, SKADatabasePendingPublishRequest, SKADatabaseReceivedInvitation, SKADatabaseRemovedUser, SKADatabaseStatus, SKADatabaseSubscribedLocalStatus, SKADatabaseSubscriptionAssertion, SKAGeneratedEncryptionKey, SKHandle, SKInvitationPayload;
 
 @protocol SKADatabaseManaging <NSObject>
+- (NSArray *)allSubscribedLocalStatusesInDatabaseContext:(NSManagedObjectContext *)arg1 error:(id *)arg2;
+- (_Bool)createOrUpdateOrDeleteSubscribedLocalStatus:(SKADatabaseSubscribedLocalStatus *)arg1 databaseContext:(NSManagedObjectContext *)arg2 error:(id *)arg3;
+- (_Bool)deletePublishedLocalStatusDevices:(NSArray *)arg1 databaseContext:(NSManagedObjectContext *)arg2 error:(id *)arg3;
+- (_Bool)createOrUpdatePublishedLocalStatusDevices:(NSArray *)arg1 databaseContext:(NSManagedObjectContext *)arg2 error:(id *)arg3;
+- (NSArray *)allPublishedLocalStatusDevicesInDatabaseContext:(NSManagedObjectContext *)arg1 error:(id *)arg2;
+- (_Bool)createOrUpdatePublishedLocalStatuses:(NSArray *)arg1 databaseContext:(NSManagedObjectContext *)arg2 error:(id *)arg3;
+- (NSArray *)allPublishedLocalStatusesInDatabaseContext:(NSManagedObjectContext *)arg1 error:(id *)arg2;
 - (void)deviceToDeviceEncryptedDatabaseCapableWithCompletion:(void (^)(_Bool))arg1;
 - (void)cleanupOldChannelsForHandle:(SKHandle *)arg1 statusTypeIdentifier:(NSString *)arg2 databaseContext:(NSManagedObjectContext *)arg3;
 - (void)cleanupDecommisionedChannelsWithDatabaseContext:(NSManagedObjectContext *)arg1;
@@ -35,6 +42,7 @@
 - (SKADatabaseStatus *)createStatusWithUniqueIdentifier:(NSString *)arg1 dateCreated:(NSDate *)arg2 datePublished:(NSDate *)arg3 dateReceived:(NSDate *)arg4 dateExpired:(NSDate *)arg5 rawData:(NSData *)arg6 channelIdentifier:(NSString *)arg7 databaseContext:(NSManagedObjectContext *)arg8;
 - (NSArray *)existingInvitedUsersForPersonalChannel:(SKADatabaseChannel *)arg1 databaseContext:(NSManagedObjectContext *)arg2;
 - (_Bool)deleteAllInvitedUsersForPersonalChannel:(SKADatabaseChannel *)arg1 databaseContext:(NSManagedObjectContext *)arg2;
+- (_Bool)deleteInvitedUserForHandle:(SKHandle *)arg1 presenceChannel:(SKADatabaseChannel *)arg2 databaseContext:(NSManagedObjectContext *)arg3;
 - (_Bool)deleteInvitedUserForHandle:(SKHandle *)arg1 personalChannel:(SKADatabaseChannel *)arg2 databaseContext:(NSManagedObjectContext *)arg3;
 - (_Bool)copyInvitedUsersFromChannel:(SKADatabaseChannel *)arg1 toChannel:(SKADatabaseChannel *)arg2 databaseContext:(NSManagedObjectContext *)arg3;
 - (SKADatabaseInvitedUser *)createInvitedUserWithHandle:(SKHandle *)arg1 senderHandle:(SKHandle *)arg2 invitationPayload:(SKInvitationPayload *)arg3 channel:(SKADatabaseChannel *)arg4 databaseContext:(NSManagedObjectContext *)arg5;
@@ -54,12 +62,12 @@
 - (SKADatabaseChannel *)updatePersonalChannel:(SKADatabaseChannel *)arg1 withCurrentOutgoingRatchetState:(NSData *)arg2 databaseContext:(NSManagedObjectContext *)arg3;
 - (SKADatabaseChannel *)createChannelForStatusTypeIdentifier:(NSString *)arg1 channelIdentifier:(NSString *)arg2 databaseContext:(NSManagedObjectContext *)arg3;
 - (_Bool)deletePersonalChannelForStatusTypeIdentifier:(NSString *)arg1 databaseContext:(NSManagedObjectContext *)arg2;
-- (SKADatabaseChannel *)createPresenceChannelForPresenceIdentifier:(NSString *)arg1 channelIdentifier:(NSString *)arg2 channelToken:(NSData *)arg3 peerKey:(NSData *)arg4 serverKey:(NSData *)arg5 membershipKey:(NSData *)arg6 databaseContext:(NSManagedObjectContext *)arg7;
+- (SKADatabaseChannel *)createPresenceChannelForPresenceIdentifier:(NSString *)arg1 channelIdentifier:(NSString *)arg2 channelToken:(NSData *)arg3 peerKey:(NSData *)arg4 serverKey:(NSData *)arg5 membershipKey:(NSData *)arg6 creationDate:(NSDate *)arg7 isPersonal:(_Bool)arg8 databaseContext:(NSManagedObjectContext *)arg9;
 - (SKADatabaseChannel *)createPersonalChannelForStatusTypeIdentifier:(NSString *)arg1 channelIdentifier:(NSString *)arg2 channelToken:(NSData *)arg3 databaseContext:(NSManagedObjectContext *)arg4;
 - (NSArray *)allExistingChannelsForStatusTypeIdentifier:(NSString *)arg1 includingPersonalChannel:(_Bool)arg2 databaseContext:(NSManagedObjectContext *)arg3;
 - (NSArray *)allExistingChannelsForHandle:(SKHandle *)arg1 statusTypeIdentifier:(NSString *)arg2 databaseContext:(NSManagedObjectContext *)arg3;
 - (SKADatabaseChannel *)existingChannelForHandle:(SKHandle *)arg1 statusTypeIdentifier:(NSString *)arg2 databaseContext:(NSManagedObjectContext *)arg3;
-- (SKADatabaseChannel *)existingChannelForPresenceIdentifier:(NSString *)arg1 databaseContext:(NSManagedObjectContext *)arg2;
+- (SKADatabaseChannel *)existingChannelForPresenceIdentifier:(NSString *)arg1 isPersonal:(_Bool)arg2 databaseContext:(NSManagedObjectContext *)arg3;
 - (SKADatabaseChannel *)existingChannelForSubscriptionIdentifier:(NSString *)arg1 databaseContext:(NSManagedObjectContext *)arg2;
 - (SKADatabaseChannel *)existingPersonalChannelForStatusTypeIdentifier:(NSString *)arg1 databaseContext:(NSManagedObjectContext *)arg2;
 - (NSManagedObjectContext *)newBackgroundContext;

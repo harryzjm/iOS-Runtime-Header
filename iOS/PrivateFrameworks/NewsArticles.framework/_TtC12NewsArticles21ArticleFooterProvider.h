@@ -11,6 +11,7 @@
 @interface _TtC12NewsArticles21ArticleFooterProvider : _TtCs12_SwiftObject
 {
     MISSING_TYPE *module;
+    MISSING_TYPE *featureAvailability;
 }
 
 @end

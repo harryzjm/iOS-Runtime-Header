@@ -68,17 +68,17 @@ struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<
 };
 
 struct unordered_map<unsigned int, MTLSimCommandBuffer *, std::hash<unsigned int>, std::equal_to<unsigned int>, std::allocator<std::pair<const unsigned int, MTLSimCommandBuffer *>>> {
-    struct __hash_table<std::__hash_value_type<unsigned int, MTLSimCommandBuffer *>, std::__unordered_map_hasher<unsigned int, std::__hash_value_type<unsigned int, MTLSimCommandBuffer *>, std::hash<unsigned int>, std::equal_to<unsigned int>, true>, std::__unordered_map_equal<unsigned int, std::__hash_value_type<unsigned int, MTLSimCommandBuffer *>, std::equal_to<unsigned int>, std::hash<unsigned int>, true>, std::allocator<std::__hash_value_type<unsigned int, MTLSimCommandBuffer *>>> {
+    struct __hash_table<std::__hash_value_type<unsigned int, MTLSimCommandBuffer *>, std::__unordered_map_hasher<unsigned int, std::__hash_value_type<unsigned int, MTLSimCommandBuffer *>, std::hash<unsigned int>, std::equal_to<unsigned int>>, std::__unordered_map_equal<unsigned int, std::__hash_value_type<unsigned int, MTLSimCommandBuffer *>, std::equal_to<unsigned int>, std::hash<unsigned int>>, std::allocator<std::__hash_value_type<unsigned int, MTLSimCommandBuffer *>>> {
         struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<unsigned int, MTLSimCommandBuffer *>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<unsigned int, MTLSimCommandBuffer *>, void *>*>*>>> __bucket_list_;
         struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<unsigned int, MTLSimCommandBuffer *>, void *>*>, std::allocator<std::__hash_node<std::__hash_value_type<unsigned int, MTLSimCommandBuffer *>, void *>>> {
             struct __hash_node_base<std::__hash_node<std::__hash_value_type<unsigned int, MTLSimCommandBuffer *>, void *>*> {
                 void *__next_;
             } __value_;
         } __p1_;
-        struct __compressed_pair<unsigned long, std::__unordered_map_hasher<unsigned int, std::__hash_value_type<unsigned int, MTLSimCommandBuffer *>, std::hash<unsigned int>, std::equal_to<unsigned int>, true>> {
+        struct __compressed_pair<unsigned long, std::__unordered_map_hasher<unsigned int, std::__hash_value_type<unsigned int, MTLSimCommandBuffer *>, std::hash<unsigned int>, std::equal_to<unsigned int>>> {
             unsigned long long __value_;
         } __p2_;
-        struct __compressed_pair<float, std::__unordered_map_equal<unsigned int, std::__hash_value_type<unsigned int, MTLSimCommandBuffer *>, std::equal_to<unsigned int>, std::hash<unsigned int>, true>> {
+        struct __compressed_pair<float, std::__unordered_map_equal<unsigned int, std::__hash_value_type<unsigned int, MTLSimCommandBuffer *>, std::equal_to<unsigned int>, std::hash<unsigned int>>> {
             float __value_;
         } __p3_;
     } __table_;

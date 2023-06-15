@@ -7,7 +7,6 @@
 #import <PassKitUI/NSObject-Protocol.h>
 
 @protocol PKDashboardLayout <NSObject>
-- (struct UIEdgeInsets)insetsForSection:(long long)arg1;
 
 @optional
 @property(nonatomic) _Bool fade;

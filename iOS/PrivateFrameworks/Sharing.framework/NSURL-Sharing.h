@@ -6,8 +6,13 @@
 
 #import <Foundation/NSURL.h>
 
+@class NSString;
+
 @interface NSURL (Sharing)
+- (id)issueSandboxExtensionData;
+- (void)coordinateReadingWithSaveToTempDir:(_Bool)arg1 options:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)coordinateReadingWithSaveToTempDir:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
+@property(readonly, nonatomic) NSString *fileName;
 @property(readonly, nonatomic) _Bool isiWorkDocument;
 @end
 

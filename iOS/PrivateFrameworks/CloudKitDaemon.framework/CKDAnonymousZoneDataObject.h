@@ -18,7 +18,7 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) int deleteType; // @synthesize deleteType=_deleteType;
 @property(readonly, nonatomic) int changeType; // @synthesize changeType=_changeType;
-@property(readonly, nonatomic) NSData *encryptedTupleData; // @synthesize encryptedTupleData=_encryptedTupleData;
+@property(readonly, copy, nonatomic) NSData *encryptedTupleData; // @synthesize encryptedTupleData=_encryptedTupleData;
 - (id)initWithEncryptedData:(id)arg1 changeType:(int)arg2 deleteType:(int)arg3;
 - (id)initWithEncryptedData:(id)arg1;
 

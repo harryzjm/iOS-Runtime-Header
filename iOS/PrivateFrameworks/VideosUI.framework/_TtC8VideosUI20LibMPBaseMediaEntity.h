@@ -11,6 +11,7 @@
 @interface _TtC8VideosUI20LibMPBaseMediaEntity : _TtCs12_SwiftObject
 {
     MISSING_TYPE *id;
+    MISSING_TYPE *adamID;
     MISSING_TYPE *title;
     MISSING_TYPE *isDownloaded;
     MISSING_TYPE *contentDescription;
@@ -19,6 +20,7 @@
     MISSING_TYPE *addedDate;
     MISSING_TYPE *releaseDate;
     MISSING_TYPE *isHomeSharingVideo;
+    MISSING_TYPE *mpMediaItem;
 }
 
 @end

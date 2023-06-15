@@ -21,11 +21,11 @@ __attribute__((visibility("hidden")))
 - (_Bool)passthroughScrollInteractionDidRecognize:(id)arg1;
 - (_Bool)passthroughScrollInteraction:(id)arg1 shouldInteractAtLocation:(struct CGPoint)arg2 withEvent:(id)arg3;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (void)_setOverrideAllowsHitTestingOnTouchFallbackView:(_Bool)arg1;
 - (void)_sendDelegateDimmingViewWasTapped;
 - (_Bool)_delegateAllowsInteraction;
 - (void)didMoveToWindow;
 - (void)willMoveToWindow:(id)arg1;
-- (id)initWithFrame:(struct CGRect)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -11,14 +11,13 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (void)forceSaveForTestingWithCompletion:(CDUnknownBlockType)arg1;
 - (void)performUpdateOfPersonasOfBundleID:(id)arg1 toPersonaUniqueStrings:(id)arg2 operationUUID:(id)arg3 reply:(CDUnknownBlockType)arg4;
-- (void)performPostUninstallationUnregistrationOfBundleID:(id)arg1 operationUUID:(id)arg2 unregisterType:(unsigned int)arg3 reply:(CDUnknownBlockType)arg4;
-- (void)performPostInstallationRegistration:(id)arg1 operationUUID:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)performPostUninstallationUnregistrationOfBundleID:(id)arg1 operationUUID:(id)arg2 unregisterType:(unsigned int)arg3 precondition:(id)arg4 reply:(CDUnknownBlockType)arg5;
+- (void)performPostInstallationRegistration:(id)arg1 personaUniqueStrings:(id)arg2 operationUUID:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (_Bool)clientIsEntitledForPostInstallationOperations;
 - (void)performShimmedUninstallOfApplicationWithIdentifier:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)performShimmedInstallOfArtifact:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)performUninstallCall:(id)arg1 withOptions:(id)arg2 uninstallType:(unsigned long long)arg3 reply:(CDUnknownBlockType)arg4;
-- (void)performInstallCall:(id)arg1 withOptions:(id)arg2 installType:(unsigned long long)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)setPreferenceValueForCallingApplication:(id)arg1 forKey:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setPreferenceValue:(id)arg1 forKey:(id)arg2 forApplicationAtURL:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)garbageCollectDatabaseWithCompletionHandler:(CDUnknownBlockType)arg1;

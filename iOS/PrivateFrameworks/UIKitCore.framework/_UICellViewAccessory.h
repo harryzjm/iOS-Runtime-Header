@@ -4,8 +4,6 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIView;
-
 __attribute__((visibility("hidden")))
 @interface _UICellViewAccessory
 {
@@ -16,7 +14,7 @@ __attribute__((visibility("hidden")))
 + (id)accessoryWithIdentifier:(id)arg1 view:(id)arg2 options:(long long)arg3;
 @property(nonatomic) long long options; // @synthesize options=_options;
 - (_Bool)alwaysNeedsLayout;
-@property(retain, nonatomic) UIView *view; // @dynamic view;
+- (void)setView:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 

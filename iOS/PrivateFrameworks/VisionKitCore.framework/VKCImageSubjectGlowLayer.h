@@ -6,24 +6,29 @@
 
 #import <QuartzCore/CALayer.h>
 
+@class NSMutableDictionary;
+
 __attribute__((visibility("hidden")))
 @interface VKCImageSubjectGlowLayer : CALayer
 {
     _Bool _active;
     CALayer *_glowLayer;
+    NSMutableDictionary *_subLayersMap;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableDictionary *subLayersMap; // @synthesize subLayersMap=_subLayersMap;
 @property(retain, nonatomic) CALayer *glowLayer; // @synthesize glowLayer=_glowLayer;
 @property(nonatomic) _Bool active; // @synthesize active=_active;
 - (id)animationGroupWithDuration:(double)arg1 beginTime:(double)arg2 animations:(id)arg3;
 - (id)animationWithKeyPath:(id)arg1 beginTime:(double)arg2 duration:(double)arg3;
 - (id)shapeLayerLineWidth:(double)arg1 opacity:(double)arg2 path:(struct CGPath *)arg3;
-- (void)renderGlowParameters:(id)arg1 path:(struct CGPath *)arg2 pathLength:(double)arg3 duration:(double)arg4 maxStrokeLengthFraction:(id)arg5;
-- (void)configureAnimationWithViewScale:(double)arg1 screenScale:(double)arg2 path:(id)arg3;
+- (void)renderGlowParameters:(id)arg1 path:(struct CGPath *)arg2 pathLength:(double)arg3 duration:(double)arg4 maxStrokeLengthFraction:(id)arg5 beginDelay:(double)arg6 identifier:(id)arg7;
+- (void)configureAnimationWithViewScale:(double)arg1 screenScale:(double)arg2 path:(id)arg3 index:(long long)arg4 count:(long long)arg5 identifier:(id)arg6;
+- (void)stopAnimationForIdentifier:(id)arg1 animated:(_Bool)arg2;
 - (void)hideGlow:(_Bool)arg1;
 - (void)stopAnimationAnimated:(_Bool)arg1;
-- (void)beginAnimationWithViewScale:(double)arg1 screenScale:(double)arg2 path:(id)arg3;
+- (void)beginAnimationWithViewScale:(double)arg1 screenScale:(double)arg2 path:(id)arg3 index:(long long)arg4 count:(long long)arg5 identifier:(id)arg6;
 - (id)thickGlowParametersWithViewScale:(double)arg1;
 - (id)thinGlowParametersWithScreenScale:(double)arg1 viewScale:(double)arg2;
 - (id)init;

@@ -10,6 +10,7 @@ __attribute__((visibility("hidden")))
 @interface _TtC12GameCenterUI18ProfilePrivacyView
 {
     MISSING_TYPE *delegate;
+    MISSING_TYPE *iconImage;
     MISSING_TYPE *isUnderage;
     MISSING_TYPE *primaryTrayButton;
     MISSING_TYPE *$__lazy_storage_$_tableData;

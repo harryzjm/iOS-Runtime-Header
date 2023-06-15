@@ -7,7 +7,7 @@
 @class NSArray, NSString;
 
 @protocol SecKeyProxyProtocol
-- (void)performOperation:(long long)arg1 algorithm:(NSString *)arg2 parameters:(NSArray *)arg3 reply:(void (^)(NSArray *, NSError *))arg4;
+- (void)performOperation:(long long)arg1 mode:(long long)arg2 algorithm:(NSString *)arg3 parameters:(NSArray *)arg4 reply:(void (^)(NSArray *, NSError *))arg5;
 - (void)getPublicKey:(void (^)(NSXPCListenerEndpoint *))arg1;
 - (void)getAlgorithmIDWithReply:(void (^)(long long))arg1;
 - (void)getDescriptionWithReply:(void (^)(NSString *))arg1;

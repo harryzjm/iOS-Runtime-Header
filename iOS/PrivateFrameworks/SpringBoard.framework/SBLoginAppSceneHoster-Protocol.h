@@ -18,6 +18,6 @@
 @property(nonatomic) __weak id <SBLoginAppSceneHosterDelegate> delegate;
 - (void)updateSettingsWithTransitionBlock:(FBSSceneTransitionContext * (^)(FBSMutableSceneSettings *))arg1;
 - (void)killLoginApp;
-- (void)launchLoginAppWithCompletion:(void (^)(_Bool, NSError *))arg1;
+- (void)launchLoginAppWithInitialOrientation:(long long)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 @end
 

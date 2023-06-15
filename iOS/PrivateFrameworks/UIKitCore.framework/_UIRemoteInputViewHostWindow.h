@@ -6,12 +6,17 @@
 
 #import "UIAutoRotatingWindow.h"
 
+@protocol _UIRemoteInputViewHostWindowDelegate;
+
 __attribute__((visibility("hidden")))
 @interface _UIRemoteInputViewHostWindow : UIAutoRotatingWindow
 {
+    id <_UIRemoteInputViewHostWindowDelegate> _hostWindowDelegate;
 }
 
 + (_Bool)_isSecure;
+- (void).cxx_destruct;
+@property(nonatomic) __weak id <_UIRemoteInputViewHostWindowDelegate> hostWindowDelegate; // @synthesize hostWindowDelegate=_hostWindowDelegate;
 - (_Bool)inhibitSetupOrientation;
 - (long long)_orientationForSceneTransform;
 - (long long)_orientationForRootTransform;
@@ -25,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (double)_adjustedWindowLevelFromLevel:(double)arg1;
 - (_Bool)canBecomeKeyWindow;
 - (_Bool)isInternalWindow;
+- (void)_didChangeKeyplaneWithContext:(id)arg1;
 - (id)initWithWindowScene:(id)arg1;
 
 @end

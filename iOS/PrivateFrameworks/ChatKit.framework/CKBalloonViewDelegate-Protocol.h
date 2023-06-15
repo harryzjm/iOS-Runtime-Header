@@ -6,13 +6,12 @@
 
 #import <ChatKit/NSObject-Protocol.h>
 
-@class CKBalloonTextView, CKBalloonView, NSString, UIView;
+@class CKBalloonTextView, CKBalloonView, NSString, UIPanGestureRecognizer, UIView;
 @protocol CKTranscriptPluginView;
 
 @protocol CKBalloonViewDelegate <NSObject>
 - (void)balloonViewShouldCopyToPasteboard:(CKBalloonView *)arg1;
 - (void)balloonView:(CKBalloonView *)arg1 userDidDragOutsideBalloonWithPoint:(struct CGPoint)arg2;
-- (void)audioBalloonScrubberDidChangeValue:(double)arg1;
 - (void)interactionStoppedFromPreviewItemControllerInBalloonView:(CKBalloonView *)arg1;
 - (void)interactionStartedFromPreviewItemControllerInBalloonView:(CKBalloonView *)arg1;
 - (void)liveBalloonTouched:(CKBalloonView *)arg1;
@@ -24,6 +23,11 @@
 - (void)balloonViewTapped:(CKBalloonView *)arg1 withModifierFlags:(long long)arg2 selectedText:(NSString *)arg3;
 
 @optional
+- (void)reloadLayoutForBalloonView:(CKBalloonView *)arg1;
+- (void)playbackSpeedDidChangeForAudioMessageBalloonView:(CKBalloonView *)arg1 playbackSpeed:(double)arg2;
+- (void)audioBalloonScrubberWithRecognizer:(UIPanGestureRecognizer *)arg1 didChangeValue:(double)arg2;
+- (void)audioBalloonScrubberDidChangeValue:(double)arg1;
+- (void)interactionStartedWithPluginBalloonView:(CKBalloonView *)arg1;
 - (void)balloonView:(CKBalloonView *)arg1 willInsertPluginViewAsSubview:(UIView<CKTranscriptPluginView> *)arg2;
 - (void)tuConversationBalloonJoinButtonTapped:(CKBalloonView *)arg1;
 @end

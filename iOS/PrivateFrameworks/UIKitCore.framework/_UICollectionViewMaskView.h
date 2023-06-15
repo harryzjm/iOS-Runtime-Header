@@ -9,6 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface _UICollectionViewMaskView : UIView
 {
+    unsigned long long _removalToken;
 }
 
 - (id)initWithFrame:(struct CGRect)arg1;

@@ -7,6 +7,22 @@
 @class NSNumber, NSString, UTType;
 
 @protocol PFMetadataMovie
+@property(readonly, nonatomic) _Bool hasHEVCProfileTierLevelInfo;
+@property(readonly, nonatomic) NSNumber *hevcLevel;
+@property(readonly, nonatomic) NSNumber *hevcTier;
+@property(readonly, nonatomic) NSNumber *hevcProfile;
+@property(readonly, nonatomic) NSString *outOfBandHintsBase64String;
+@property(readonly, nonatomic) NSNumber *apacAudioTrackBedChannelCount;
+@property(readonly, nonatomic) NSNumber *apacAudioTrackHoaChannelCount;
+@property(readonly, nonatomic) NSNumber *apacAudioTrackChannelCount;
+@property(readonly, nonatomic) _Bool isDecodable;
+@property(readonly, nonatomic) _Bool isPlayable;
+@property(readonly, nonatomic) NSNumber *livePhotoVitalityTransitionScore;
+@property(readonly, nonatomic) NSString *transferFunction;
+@property(readonly, nonatomic) NSString *colorPrimaries;
+@property(readonly, nonatomic) NSString *firstVideoTrackFullDebugDescription;
+@property(readonly, nonatomic) NSString *formatDebugDescription;
+@property(readonly, nonatomic) struct opaqueCMFormatDescription *videoTrackFormatDescription;
 @property(readonly, nonatomic) UTType *contentTypeFromFastModernizeVideoMedia;
 @property(readonly, nonatomic) _Bool isCinematicVideo;
 @property(readonly, nonatomic) NSNumber *livePhotoMinimumClientVersion;
@@ -14,12 +30,14 @@
 @property(readonly, nonatomic) NSString *montageString;
 @property(readonly, nonatomic) _Bool isProRes;
 @property(readonly, nonatomic) _Bool isSloMo;
+@property(readonly, nonatomic) _Bool isActionCam;
 @property(readonly, nonatomic) _Bool isTimelapse;
 @property(readonly, nonatomic) NSString *captureMode;
 @property(readonly, nonatomic) NSString *author;
 @property(readonly, nonatomic) NSString *videoCodecName;
 @property(readonly, nonatomic) NSNumber *videoDynamicRange;
-@property(readonly, nonatomic) NSString *codecFourCharCode;
+@property(readonly, nonatomic) NSString *firstVideoTrackCodecString;
+@property(readonly, nonatomic) unsigned int firstVideoTrackCodec;
 @property(readonly, nonatomic) NSNumber *audioTrackFormatFlags;
 @property(readonly, nonatomic) NSNumber *audioTrackFormat;
 @property(readonly, nonatomic) NSNumber *audioSampleRate;
@@ -28,10 +46,13 @@
 @property(readonly, nonatomic) NSNumber *nominalFrameRate;
 @property(readonly, nonatomic) NSNumber *durationTimeInterval;
 @property(readonly, nonatomic) CDStruct_198678f7 duration;
-@property(readonly, nonatomic) float livePhotoVitalityScore;
+@property(readonly, nonatomic) _Bool livePhotoVitalityLimitingAllowed;
+@property(readonly, nonatomic) _Bool hasVitality;
+@property(readonly, nonatomic) NSNumber *livePhotoVitalityScore;
 @property(readonly, nonatomic) _Bool isAutoLivePhoto;
 @property(readonly, nonatomic) _Bool isLongExposure;
 @property(readonly, nonatomic) _Bool isMirror;
+@property(readonly, nonatomic) _Bool isLoopingVideo;
 @property(readonly, nonatomic) _Bool isAutoloop;
 @end
 

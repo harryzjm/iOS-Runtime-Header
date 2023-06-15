@@ -4,44 +4,47 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableDictionary, _VNImageAnalyzerMultiDetectorSceneOperationPointsCache;
+@class VNRegionOfInterestTilingOptions, VisionCoreSceneNetInferenceNetworkDescriptor, _VNImageAnalyzerMultiDetectorSceneOperationPointsCache;
 
 __attribute__((visibility("hidden")))
 @interface VNImageAnalyzerMultiDetector
 {
+    VNRegionOfInterestTilingOptions *_inputImageTilingOptions;
+    int _customClassifierEspressoEngine;
+    int _customClassifierEspressoDeviceID;
     unsigned long long _model;
+    VisionCoreSceneNetInferenceNetworkDescriptor *_inferenceDescriptor;
+    unsigned int _cachedInferenceImagePixelFormatType;
     shared_ptr_eb20c8f2 _defaultSceneClassificationHierarchicalModel;
     struct shared_ptr<vision::mod::ImageAnalyzer> _imageAnalyzer;
-    struct map<unsigned long, std::shared_ptr<std::vector<std::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>>, std::less<unsigned long>, std::allocator<std::pair<const unsigned long, std::shared_ptr<std::vector<std::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>>>>> _imageAnalyzerJunkCustomClassifiers;
-    struct unique_ptr<vision::mod::ImageAnalyzer_PCA, std::default_delete<vision::mod::ImageAnalyzer_PCA>> _imageAnalyzerPCA256;
     _VNImageAnalyzerMultiDetectorSceneOperationPointsCache *_operationPointsCache;
-    struct map<unsigned long, std::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>, std::less<unsigned long>, std::allocator<std::pair<const unsigned long, std::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>>> _VNVYvzEtX1JlUdu8xx5qhDICustomClassifiers;
-    struct map<unsigned long, std::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>, std::less<unsigned long>, std::allocator<std::pair<const unsigned long, std::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>>> _potentialLandmarkCustomClassifiers;
-    struct map<unsigned long, std::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>, std::less<unsigned long>, std::allocator<std::pair<const unsigned long, std::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>>> _VN5kJNH3eYuyaLxNpZr5Z7ziCustomClassifiers;
-    struct map<unsigned long, std::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>, std::less<unsigned long>, std::allocator<std::pair<const unsigned long, std::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>>> _significantEventCustomClassifiers;
-    struct map<unsigned long, std::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>, std::less<unsigned long>, std::allocator<std::pair<const unsigned long, std::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>>> _cityNatureGatingCustomClassifiers;
+    struct shared_ptr<std::vector<std::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>> _junkCustomClassifiers_DO_NOT_ACCESS_DIRECTLY;
+    struct unique_ptr<vision::mod::ImageAnalyzer_PCA, std::default_delete<vision::mod::ImageAnalyzer_PCA>> _imageAnalyzerPCA256_DO_NOT_ACCESS_DIRECTLY;
+    struct shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier> _VNVYvzEtX1JlUdu8xx5qhDICustomClassifier;
+    struct shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier> _potentialLandmarkCustomClassifier_DO_NOT_ACCESS_DIRECTLY;
+    struct shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier> _VN5kJNH3eYuyaLxNpZr5Z7ziCustomClassifier;
+    struct shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier> _significantEventCustomClassifier_DO_NOT_ACCESS_DIRECTLY;
+    struct shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier> _cityNatureCustomClassifier_DO_NOT_ACCESS_DIRECTLY;
     struct os_unfair_lock_s _cachedAllSceneClassificationsFromLastAnalysisAccessLock;
     struct shared_ptr<const std::vector<std::tuple<std::string, float, bool>>> _cachedAllSceneClassificationsFromLastAnalysis;
-    NSMutableDictionary *_cachedSaliencyHeatmapBoundingBoxGenerators;
     _Bool _hasherInitialized;
 }
 
-+ (id)primaryInferenceNetworkDescriptorForVNInferenceNetworkIdentifierSceneNet_5_10_0;
-+ (id)primaryInferenceNetworkDescriptorForVNInferenceNetworkIdentifierSceneNetObjDetNetSliderNet_3_0_0;
-+ (id)availableVNInferenceNetworkIdentifierSceneNetObjDetNetSliderNetVersions;
-+ (id)primaryInferenceNetworkDescriptorForVNInferenceNetworkIdentifierSceneNet_3_0_0;
-+ (id)availableVNInferenceNetworkIdentifierSceneNetVersions;
-+ (id)inferenceNetworkIdentifiers;
 + (id)allPhotosAdjustmentKeysForOptions:(id)arg1 error:(id *)arg2;
 + (id)supportedImageSizeSetForOptions:(id)arg1 error:(id *)arg2;
 + (shared_ptr_eb20c8f2)createHierarchicalModelForMultiDetectorModel:(unsigned long long)arg1 error:(id *)arg2;
-+ (id)blacklistForModel:(unsigned long long)arg1;
++ (shared_ptr_eb20c8f2)createHierarchicalModelForInferenceDescriptor:(id)arg1 error:(id *)arg2;
++ (id)disallowedListForModel:(unsigned long long)arg1;
 + (unsigned long long)modelForRequestClass:(Class)arg1 revision:(unsigned long long)arg2;
 + (Class)detectorClassForConfigurationOptions:(id)arg1 error:(id *)arg2;
 + (id)configurationOptionKeysForDetectorKey;
 + (void)recordDefaultConfigurationOptionsInDictionary:(id)arg1;
-+ (id)_inputImageBlobNameForModel:(unsigned long long)arg1 configuredWithOptions:(id)arg2;
-+ (_Bool)_getAnalyzerName:(id *)arg1 version:(id *)arg2 forModel:(unsigned long long)arg3 configuredWithOptions:(id)arg4 error:(id *)arg5;
++ (id)supportedComputeStageDevicesForOptions:(id)arg1 error:(id *)arg2;
++ (id)computeStagesToBindForConfigurationOptions:(id)arg1;
++ (id)_newSaliencyHeatmapBoundingBoxGeneratorOptionsForOptions:(id)arg1;
++ (id)_saliencyHeatmapBoundingBoxGeneratorTypeForOriginatingRequestSpecifier:(id)arg1;
++ (id)_inferenceDescriptorForOptions:(id)arg1 error:(id *)arg2;
++ (id)_newInferenceDescriptorForModel:(unsigned long long)arg1 configuredWithOptions:(id)arg2 error:(id *)arg3;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)allCityNatureIdentifiersWithOptions:(id)arg1 error:(id *)arg2;
@@ -63,7 +66,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)shouldBeReplacedByDetectorOfClass:(Class)arg1 withConfiguration:(id)arg2;
 - (_Bool)canBehaveAsDetectorOfClass:(Class)arg1 withConfiguration:(id)arg2;
 - (unsigned long long)signPostAdditionalParameter;
-- (id)_junkObservationsForLastAnalysisWithOptions:(id)arg1 error:(id *)arg2;
+- (id)description;
 
 @end
 

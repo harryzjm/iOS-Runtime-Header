@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *accessQueue;
     MISSING_TYPE *lastRefreshDate;
     MISSING_TYPE *subscriptionService;
+    MISSING_TYPE *historyService;
     MISSING_TYPE *_persistedConfigurationDate;
 }
 

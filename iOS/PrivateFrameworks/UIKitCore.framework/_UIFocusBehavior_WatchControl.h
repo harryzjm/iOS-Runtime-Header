@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 + (id)sharedInstance;
 - (_Bool)supportsLinearMovementDebugOverlay;
 - (_Bool)shouldCallAccessibilityOverrides;
+- (_Bool)autoDismissesPopoverControllersOnFocusIntersection;
 - (_Bool)tabBasedMovementLoops;
 - (long long)skipKeyCommandsForKeyEvents;
 - (long long)deliverKeyEventsToFocusEngine;
@@ -45,9 +46,10 @@ __attribute__((visibility("hidden")))
 - (_Bool)defaultValueForSelectionFollowsFocusInCollectionView:(id)arg1;
 - (_Bool)preventsCellFocusabilityWhileEditing;
 - (long long)cellFocusability;
+- (_Bool)shouldUseAccessibilityCompareForFocusGroupsInExternallyPlacedWindows;
 - (_Bool)shouldUseAccessibilityCompareForItemGeometry;
 - (long long)scrollingMode;
-- (_Bool)useDifferentialScrollTrigger;
+- (unsigned long long)defaultFocusScrollOffsetResolver;
 - (_Bool)enforcesStrictTargetContentOffsetAdjustmentBehavior;
 - (unsigned long long)focusGroupContainmentBehavior;
 - (unsigned long long)focusGroupMovementBehavior;

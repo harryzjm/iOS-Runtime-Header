@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class MUDayRowViewModel, NSArray, NSString;
 @protocol MULabelViewProtocol;
@@ -27,7 +27,6 @@ __attribute__((visibility("hidden")))
 - (_Bool)shouldStackForProposedWidth:(double)arg1;
 - (void)_refreshHoursLabel;
 - (void)_updateFonts;
-- (void)traitCollectionDidChange:(id)arg1;
 - (void)_updateAppearance;
 - (id)_createHoursConstraints;
 - (void)_setupConstraints;

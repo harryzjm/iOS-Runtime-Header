@@ -27,3 +27,8 @@ typedef struct {
     unsigned char _field8;
 } CDStruct_80d302cf;
 
+typedef struct {
+    int width;
+    int height;
+} CDStruct_79c71658;
+

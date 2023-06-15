@@ -9,6 +9,7 @@
 #import <PhotosUI/NSSecureCoding-Protocol.h>
 
 @class NSPredicate;
+@protocol PUPickerFilter;
 
 @protocol PUPickerFilter <NSObject, NSCopying, NSSecureCoding>
 @property(readonly, nonatomic) _Bool allowsAlbums;
@@ -17,5 +18,6 @@
 - (unsigned long long)generatedRequiredAssetTypes;
 - (unsigned long long)generatedPossibleAssetTypes;
 - (NSPredicate *)generatedAssetPredicate;
+- (_Bool)containsFilter:(id <PUPickerFilter>)arg1;
 @end
 

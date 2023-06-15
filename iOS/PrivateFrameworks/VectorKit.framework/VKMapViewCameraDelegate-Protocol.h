@@ -12,7 +12,7 @@
 
 @optional
 - (void)mapLayerWasUnableToAnimate;
-- (void)mapLayerWillAnimateToLocation:(CDStruct_c3b9c2ee)arg1;
+- (void)mapLayerWillAnimateToLocation:(CDStruct_2c43369c)arg1;
 - (void)mapLayerNavigationCameraDidReturnToDefaultZoom;
 - (void)mapLayerNavigationCameraDidLeaveDefaultZoom;
 - (void)mapLayerNavigationCameraHasStoppedPanning;
@@ -24,6 +24,7 @@
 - (void)mapLayerDidBecomePitched:(_Bool)arg1;
 - (id <VKTrackableAnnotationPresentation>)mapLayerPresentationForAnnotation:(id <VKTrackableAnnotation>)arg1;
 - (void)mapLayerDidFinishInitialTrackingAnimation;
+- (void)mapLayerWillPerformZoomBounceAnimation;
 - (void)mapLayerDidChangeRegionAnimated:(_Bool)arg1;
 - (void)mapLayerWillChangeRegionAnimated:(_Bool)arg1;
 - (void)mapLayerDidChangeVisibleRegion;

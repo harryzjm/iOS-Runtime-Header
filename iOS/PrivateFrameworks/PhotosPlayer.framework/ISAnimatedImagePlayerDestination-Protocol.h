@@ -6,12 +6,14 @@
 
 #import <PhotosPlayer/NSObject-Protocol.h>
 
+@class ISAnimatedImagePlayer;
+
 @protocol ISAnimatedImagePlayerDestination <NSObject>
-- (void)frameDidChange;
-- (_Bool)isReadyToDisplay;
+- (void)animatedImagePlayerFrameDidChange:(ISAnimatedImagePlayer *)arg1;
+- (_Bool)animatedImagePlayerIsReadyToDisplay:(ISAnimatedImagePlayer *)arg1;
 
 @optional
-- (void)didEndAnimating;
-- (void)didBeginAnimating;
+- (void)animatedImagePlayerDidEndAnimating:(ISAnimatedImagePlayer *)arg1;
+- (void)animatedImagePlayerDidBeginAnimating:(ISAnimatedImagePlayer *)arg1;
 @end
 

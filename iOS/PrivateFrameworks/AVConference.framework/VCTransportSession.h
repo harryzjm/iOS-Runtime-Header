@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray, NSString, TimingCollection, VCConnectionManager;
+@class NSDictionary, NSMutableArray, NSString, TimingCollection, VCConnectionManager;
 @protocol OS_dispatch_queue, VCConnectionProtocol;
 
 __attribute__((visibility("hidden")))
@@ -28,10 +28,23 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_streams;
     struct _opaque_pthread_mutex_t _stateLock;
     id <VCConnectionProtocol> _registeredConnection;
+    NSDictionary *_qrExperiments;
+    struct os_unfair_lock_s _nwMonitorLock;
+    CDUnknownFunctionPointerType _notificationHandler;
+    CDUnknownFunctionPointerType _packetEventHandler;
+    void *_handlerContext;
+    struct tagVCNWConnectionMonitor *_monitor;
+    NSObject<OS_dispatch_queue> *_handlerQueue;
+    _Bool _shouldSetupNWMonitor;
+    _Bool _shouldIgnoreConnectionRefusedError;
 }
 
 + (int)vtpPacketTypeForStreamType:(unsigned int)arg1;
 + (unsigned int)trafficClassForStreamType:(unsigned int)arg1;
+@property(nonatomic) _Bool shouldIgnoreConnectionRefusedError; // @synthesize shouldIgnoreConnectionRefusedError=_shouldIgnoreConnectionRefusedError;
+@property(readonly, nonatomic) struct tagVCNWConnectionMonitor *nwMonitor; // @synthesize nwMonitor=_monitor;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *nwMonitorEventHandlerQueue; // @synthesize nwMonitorEventHandlerQueue=_handlerQueue;
+@property(nonatomic) _Bool shouldSetupNWMonitor; // @synthesize shouldSetupNWMonitor=_shouldSetupNWMonitor;
 @property(retain, nonatomic) id <VCConnectionProtocol> registeredConnection; // @synthesize registeredConnection=_registeredConnection;
 @property(retain, nonatomic) NSObject *connectionSetupPiggybackBlob; // @synthesize connectionSetupPiggybackBlob=_connectionSetupPiggybackBlob;
 @property(readonly, nonatomic) unsigned int basebandNotificationRegistrationToken; // @synthesize basebandNotificationRegistrationToken=_basebandNotificationRegistrationToken;
@@ -40,6 +53,11 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool useCompressedConnectionData; // @synthesize useCompressedConnectionData=_useCompressedConnectionData;
 @property(readonly, nonatomic) VCConnectionManager *connectionManager; // @synthesize connectionManager=_connectionManager;
 @property(copy, nonatomic) CDUnknownBlockType eventHandler; // @synthesize eventHandler=_eventHandler;
+- (struct tagVCNWConnectionMonitor *)createNWMonitor;
+- (void)setupNWMonitorPacketEventHandler;
+- (void)setupNWMonitorNotificationHandler;
+- (void)destroyNWMonitor;
+- (void)setupNWMonitor;
 @property(readonly) _Bool isIPv6;
 @property(readonly) unsigned int networkMTU;
 @property(readonly) int networkInterfaceType;
@@ -63,6 +81,7 @@ __attribute__((visibility("hidden")))
 - (void)stop;
 - (void)start;
 - (void)dealloc;
+- (id)initWithNotificationQueue:(id)arg1 reportingAgent:(struct opaqueRTCReporting *)arg2 notificationHandler:(CDUnknownFunctionPointerType)arg3 eventHandler:(CDUnknownFunctionPointerType)arg4 handlerQueue:(id)arg5 context:(void *)arg6;
 - (id)initWithNotificationQueue:(id)arg1 reportingAgent:(struct opaqueRTCReporting *)arg2;
 
 @end

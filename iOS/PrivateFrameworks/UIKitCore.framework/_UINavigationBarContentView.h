@@ -37,6 +37,7 @@ __attribute__((visibility("hidden")))
     _Bool _staticNavBarButtonTrailing;
     _Bool _leadingItemsSupplementBackItem;
     _Bool _allowLeadingAlignedLargeTitle;
+    _Bool _enableAlternatePopItem;
     double _backButtonMargin;
     id <_UINavigationBarContentViewDelegate> _delegate;
     id <_UINavigationBarContentViewVisualProvider> _visualProvider;
@@ -72,6 +73,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSDictionary *effectiveTitleAttributes; // @synthesize effectiveTitleAttributes=_effectiveTitleAttributes;
 @property(retain, nonatomic) UIDeferredMenuElement *additionalItems; // @synthesize additionalItems=_additionalItems;
+@property(nonatomic) _Bool enableAlternatePopItem; // @synthesize enableAlternatePopItem=_enableAlternatePopItem;
 @property(retain, nonatomic) UIAction *backAction; // @synthesize backAction=_backAction;
 @property(retain, nonatomic, setter=dci_setRenameHandler:) _UINavigationItemRenameHandler *dci_renameHandler; // @synthesize dci_renameHandler=_dci_renameHandler;
 @property(retain, nonatomic) UIDocumentProperties *documentProperties; // @synthesize documentProperties=_documentProperties;
@@ -131,6 +133,7 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)_overlayRectForView:(id)arg1 inTargetView:(id)arg2;
 - (void)_clearAssistants;
 - (void)_setAssistants;
+@property(readonly, nonatomic) double buttonBarMinimumInterGroupSpace;
 @property(readonly, nonatomic) double buttonBarMinimumInterItemSpace;
 @property(copy, nonatomic) _UIBarButtonItemData *backButtonAppearance;
 @property(copy, nonatomic) _UIBarButtonItemData *doneItemAppearance;
@@ -176,6 +179,7 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)intrinsicContentSize;
 - (double)_intrinsicHeight;
 - (void)_setupTitleView;
+- (_Bool)_useLeadingAlignedTitle;
 - (void)_setupTrailingButtonBarAnimated:(_Bool)arg1;
 - (void)_setupCenterButtonBar;
 - (void)_setupLeadingButtonBarAnimated:(_Bool)arg1;
@@ -202,6 +206,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool isNavItemContentLayoutGuideFlushLeading;
 @property(readonly, nonatomic) UILayoutGuide *navItemContentLayoutGuide;
 - (long long)_effectiveToolbarStyle;
+- (long long)effectiveStyleForStyle:(long long)arg1;
 @property(readonly, nonatomic) double currentHeight;
 - (_Bool)compactMetrics;
 @property(readonly, nonatomic) long long currentContentSize;

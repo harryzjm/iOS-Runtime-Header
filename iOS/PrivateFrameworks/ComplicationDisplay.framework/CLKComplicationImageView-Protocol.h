@@ -7,6 +7,6 @@
 @class CLKImageProvider;
 
 @protocol CLKComplicationImageView
-@property(nonatomic, retain) CLKImageProvider *imageProvider;
+@property(retain, nonatomic) CLKImageProvider *imageProvider;
 @end
 

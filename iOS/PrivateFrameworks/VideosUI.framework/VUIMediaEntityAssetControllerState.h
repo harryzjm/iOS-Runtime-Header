@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     _Bool _renewsOfflineKeysAutomatically;
     _Bool _performsKeyFetchOnly;
     _Bool _allowsCellular;
+    _Bool _downloadFailedDueToError;
     unsigned long long _status;
     double _downloadProgress;
     NSDate *_downloadExpirationDate;
@@ -27,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(nonatomic) unsigned long long bytesDownloaded; // @synthesize bytesDownloaded=_bytesDownloaded;
 @property(nonatomic) unsigned long long bytesToDownload; // @synthesize bytesToDownload=_bytesToDownload;
+@property(nonatomic) _Bool downloadFailedDueToError; // @synthesize downloadFailedDueToError=_downloadFailedDueToError;
 @property(nonatomic) _Bool allowsCellular; // @synthesize allowsCellular=_allowsCellular;
 @property(nonatomic) _Bool performsKeyFetchOnly; // @synthesize performsKeyFetchOnly=_performsKeyFetchOnly;
 @property(retain, nonatomic) NSDate *availabilityEndDate; // @synthesize availabilityEndDate=_availabilityEndDate;

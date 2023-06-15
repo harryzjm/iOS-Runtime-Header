@@ -18,7 +18,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak id <PUVideoListAssetExpungeActionPerformerDelegate> actionPerformerDelegate; // @synthesize actionPerformerDelegate=_actionPerformerDelegate;
 - (_Bool)shouldEnableActionType:(unsigned long long)arg1 onAllAssetsByAssetCollection:(id)arg2;
 - (id)actionPerformerForSimpleActionType:(unsigned long long)arg1 onAssetsByAssetCollection:(id)arg2;
-- (unsigned long long)preferredTrashActionTypeOnAssetsByAssetCollection:(id)arg1;
 - (_Bool)canPerformActionType:(unsigned long long)arg1 onAsset:(id)arg2 inAssetCollection:(id)arg3;
 
 @end

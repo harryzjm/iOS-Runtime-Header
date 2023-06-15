@@ -7,6 +7,6 @@
 #import <SafariShared/WBSFormDataController.h>
 
 @interface WBSFormDataController (SafariSharedUIExtras)
-- (void)bestUsernameSuggestionForUsernamePromptOnURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)bestUsernameSuggestionForUsernamePromptOnURL:(id)arg1 inContext:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 @end
 

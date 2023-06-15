@@ -17,10 +17,11 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)arrivalUpdaterDidArrive:(id)arg1 atEndOfLegAtIndex:(unsigned long long)arg2;
+- (void)arrivalUpdater:(id)arg1 didUpdateArrivalInfo:(id)arg2;
 - (void)updateLocation:(id)arg1;
 - (id)_matchedLocationForLocation:(id)arg1;
 - (void)stopTracking;
-- (void)startTrackingWithInitialLocation:(id)arg1;
+- (void)startTrackingWithInitialLocation:(id)arg1 targetLegIndex:(unsigned long long)arg2;
 - (id)matchedLocationForLocation:(id)arg1;
 - (void)resetForTracePlayerAtLocation:(id)arg1;
 - (int)transportType;

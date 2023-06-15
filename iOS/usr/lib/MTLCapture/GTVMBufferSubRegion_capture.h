@@ -8,7 +8,6 @@
 
 @class GTVMBuffer_capture, NSString;
 
-__attribute__((visibility("hidden")))
 @interface GTVMBufferSubRegion_capture : NSObject
 {
     GTVMBuffer_capture *_parent;

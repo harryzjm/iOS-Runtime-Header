@@ -4,10 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
-
 @protocol COStateManagerLegacyServiceInterface
-- (void)requestCompositionForCluster:(NSString *)arg1 withCallback:(void (^)(NSArray *, NSError *))arg2;
+- (void)requestCompositionForCluster:(id)arg1 withCallback:(void (^)(NSArray *, NSError *))arg2;
 - (void)unregisterForMediaSystemLeaderChange;
 - (void)registerForMediaSystemLeaderChange;
 - (void)isMediaSystemLeader:(void (^)(_Bool))arg1;

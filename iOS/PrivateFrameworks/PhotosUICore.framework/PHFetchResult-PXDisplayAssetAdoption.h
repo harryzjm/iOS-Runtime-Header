@@ -6,11 +6,12 @@
 
 #import <Photos/PHFetchResult.h>
 
-@class NSString;
+@class NSArray, NSString;
 @protocol PXDisplayAsset;
 
 @interface PHFetchResult (PXDisplayAssetAdoption)
 - (id)thumbnailAssetAtIndex:(unsigned long long)arg1;
+@property(readonly) NSArray *px_opaqueIdentifiers;
 - (void)px_safelyPrefetchObjectAtIndex:(long long)arg1;
 - (id)px_fetchedObjectIDsSortedByLocalIdentifiers:(id)arg1;
 - (id)px_fetchAssetSortDatesWithDateRangeEliminationBlock:(CDUnknownBlockType)arg1;

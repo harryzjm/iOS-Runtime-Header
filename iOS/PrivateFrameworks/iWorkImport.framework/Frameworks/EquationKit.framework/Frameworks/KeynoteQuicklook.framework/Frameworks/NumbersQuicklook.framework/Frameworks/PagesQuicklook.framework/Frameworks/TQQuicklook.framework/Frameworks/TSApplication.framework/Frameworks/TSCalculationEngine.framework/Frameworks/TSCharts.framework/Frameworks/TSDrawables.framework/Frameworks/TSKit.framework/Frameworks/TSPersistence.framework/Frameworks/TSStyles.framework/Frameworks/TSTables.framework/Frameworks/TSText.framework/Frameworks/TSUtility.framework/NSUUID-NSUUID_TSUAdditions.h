@@ -8,6 +8,11 @@
 
 @interface NSUUID (NSUUID_TSUAdditions)
 + (id)tsu_UUIDWithNamespaceUUID:(id)arg1 bytes:(const void *)arg2 size:(unsigned long long)arg3;
++ (id)tsu_UUIDWithNamespaceUUID:(id)arg1 integerValue:(long long)arg2;
++ (id)tsu_UUIDWithNamespaceUUID:(id)arg1 unsignedIntegerValue:(unsigned long long)arg2;
++ (id)tsu_UUIDWithNamespaceUUID:(id)arg1 doubleValue:(double)arg2;
++ (id)tsu_UUIDWithNamespaceUUID:(id)arg1 timeInterval:(double)arg2;
++ (id)tsu_UUIDWithNamespaceUUID:(id)arg1 UUID:(id)arg2;
 + (id)tsu_UUIDWithNamespaceUUID:(id)arg1 name:(id)arg2;
 - (long long)tsu_compare:(id)arg1;
 @end

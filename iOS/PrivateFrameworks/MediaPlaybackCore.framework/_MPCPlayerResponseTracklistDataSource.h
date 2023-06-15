@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSIndexPath *playingItemIndexPath; // @synthesize playingItemIndexPath=_playingItemIndexPath;
 @property(readonly, nonatomic) __weak MPCPlayerResponse *response; // @synthesize response=_response;
+- (id)_responseParticipantForParticipantItem:(id)arg1;
 - (id)itemAtIndexPath:(id)arg1;
 - (unsigned long long)numberOfItemsInSection:(unsigned long long)arg1;
 - (id)sectionAtIndex:(unsigned long long)arg1;

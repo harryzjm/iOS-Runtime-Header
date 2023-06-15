@@ -6,7 +6,7 @@
 
 #import <SearchFoundation/NSObject-Protocol.h>
 
-@class NSData, NSDictionary, NSString, _SFPBAppIconImage, _SFPBCalendarImage, _SFPBContactImage, _SFPBGraphicalFloat, _SFPBLocalImage, _SFPBMediaArtworkImage, _SFPBMonogramImage, _SFPBPhotosLibraryImage, _SFPBPointSize, _SFPBQuickLookThumbnailImage, _SFPBSymbolImage, _SFPBURLImage;
+@class NSData, NSDictionary, NSString, _SFPBAppIconImage, _SFPBCalendarImage, _SFPBContactImage, _SFPBGraphicalFloat, _SFPBImage, _SFPBLocalImage, _SFPBMediaArtworkImage, _SFPBMonogramImage, _SFPBPhotosLibraryImage, _SFPBPointSize, _SFPBQuickLookThumbnailImage, _SFPBSymbolImage, _SFPBURLImage;
 
 @protocol _SFPBImage <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
@@ -21,6 +21,7 @@
 @property(retain, nonatomic) _SFPBContactImage *contactImage;
 @property(retain, nonatomic) _SFPBURLImage *urlImage;
 @property(nonatomic) int type;
+@property(retain, nonatomic) _SFPBImage *badgingImage;
 @property(copy, nonatomic) NSString *accessibilityLabel;
 @property(nonatomic) int cornerRoundingStyle;
 @property(nonatomic) int source;

@@ -11,7 +11,7 @@
 @interface _TtC7VFXCore13TextureSystem : _TtCs12_SwiftObject
 {
     MISSING_TYPE *compileQueue;
-    MISSING_TYPE *allDirtyTextureFilesWithWatcher;
+    MISSING_TYPE *dirtyTextureLoadingOptions;
     MISSING_TYPE *allTextureFilesWithoutWatcher;
     MISSING_TYPE *allTextureFiles;
     MISSING_TYPE *allTextureFilesWithoutDoNotUpload;

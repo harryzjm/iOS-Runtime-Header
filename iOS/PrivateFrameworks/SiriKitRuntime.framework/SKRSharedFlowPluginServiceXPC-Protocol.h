@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, SKRConversationTurnDataXPC;
-@protocol SKRExecutionBridge;
+@class NSString, NSUUID, SKRConversationTurnDataXPC;
+@protocol SKRServiceBridge;
 
 @protocol SKRSharedFlowPluginServiceXPC
-- (void)loadFlowPluginWithBundleId:(NSString *)arg1 bundlePath:(NSString *)arg2 reply:(void (^)(id <SKRRemoteConversationXPC>))arg3;
-- (void)startTurnWithTurnData:(SKRConversationTurnDataXPC *)arg1 bridge:(id <SKRExecutionBridge>)arg2 reply:(void (^)(NSError *))arg3;
+- (void)endTurnWithReply:(void (^)(void))arg1;
+- (void)loadFlowPluginWithBundleId:(NSString *)arg1 bundlePath:(NSString *)arg2 rcId:(NSString *)arg3 hypothesisId:(NSUUID *)arg4 reply:(void (^)(id <SKRRemoteConversationXPC>))arg5;
+- (void)startTurnWithTurnData:(SKRConversationTurnDataXPC *)arg1 bridge:(id <SKRServiceBridge>)arg2 reply:(void (^)(NSError *))arg3;
 @end
 

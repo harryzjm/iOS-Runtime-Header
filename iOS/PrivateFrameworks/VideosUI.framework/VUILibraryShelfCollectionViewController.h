@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSString, UICollectionViewDiffableDataSource, VUILibraryLockupViewCell, VUIMediaEntitiesDataSource;
+@class NSArray, NSString, UICollectionViewDiffableDataSource, VUILibraryLockupViewCell, VUIMediaEntitiesDataSource, VUIMediaEntity;
 @protocol VUILibraryShelfCollectionViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -19,9 +19,11 @@ __attribute__((visibility("hidden")))
     VUIMediaEntitiesDataSource *_dataSource;
     long long _shelfType;
     UICollectionViewDiffableDataSource *_diffableDataSource;
+    VUIMediaEntity *_lastSelectedMediaEntity;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) VUIMediaEntity *lastSelectedMediaEntity; // @synthesize lastSelectedMediaEntity=_lastSelectedMediaEntity;
 @property(retain, nonatomic) UICollectionViewDiffableDataSource *diffableDataSource; // @synthesize diffableDataSource=_diffableDataSource;
 @property(nonatomic) long long shelfType; // @synthesize shelfType=_shelfType;
 @property(readonly, nonatomic) VUIMediaEntitiesDataSource *dataSource; // @synthesize dataSource=_dataSource;
@@ -30,6 +32,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool disableSeeAllButton; // @synthesize disableSeeAllButton=_disableSeeAllButton;
 @property(retain, nonatomic) NSString *headerSubtitle; // @synthesize headerSubtitle=_headerSubtitle;
 @property(retain, nonatomic) NSString *headerTitle; // @synthesize headerTitle=_headerTitle;
+- (void)_reloadMediaEntity:(id)arg1;
 - (void)_headerTapped:(id)arg1;
 - (id)_attributedHeaderTitle;
 - (void)_updateHeaderView;
@@ -46,6 +49,7 @@ __attribute__((visibility("hidden")))
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (void)updateWithDataSource:(id)arg1;
 - (void)setHeaderTitle:(id)arg1 andSubtitle:(id)arg2;
+- (void)viewWillAppear:(_Bool)arg1;
 - (id)initWithDataSource:(id)arg1;
 
 @end

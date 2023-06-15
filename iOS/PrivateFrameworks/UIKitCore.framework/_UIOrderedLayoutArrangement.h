@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSMapTable *customSpacings; // @synthesize customSpacings=_customSpacings;
 @property(nonatomic, setter=_setItemFittingSizeChanged:) _Bool _itemFittingSizeChanged; // @synthesize _itemFittingSizeChanged;
 @property(nonatomic, setter=_setItemOrderingChanged:) _Bool _itemOrderingChanged; // @synthesize _itemOrderingChanged;
+@property(readonly, copy) NSString *description;
 - (id)_baselineViewVendTallest:(_Bool)arg1 forFirstBaseline:(_Bool)arg2;
 - (id)_lastVisibleItem;
 - (id)_firstVisibleItem;
@@ -97,7 +98,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSSet *_newlyHiddenItems;
 @property(readonly, nonatomic) NSSet *_newlyUnhiddenItems;
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) NSSet *invalidBaselineConstraints;
 @property(readonly) Class superclass;

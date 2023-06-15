@@ -6,11 +6,12 @@
 
 #import <UIKitCore/UIMenuLeaf-Protocol.h>
 
-@class NSArray, NSAttributedString, NSString, _UIMenuLeafValidation;
+@class NSArray, NSAttributedString, NSString, UIImage, _UIMenuLeafValidation;
 @protocol UIPopoverPresentationControllerSourceItem, _UIMenuLeaf, _UIMenuLeafAlternate;
 
 @protocol _UIMenuLeaf <UIMenuLeaf>
 @property(readonly, nonatomic) id <UIPopoverPresentationControllerSourceItem> presentationSourceItem;
+@property(copy, nonatomic) UIImage *selectedImage;
 @property(readonly, nonatomic) _Bool keepsMenuPresented;
 @property(readonly, nonatomic) _Bool requiresAuthenticatedInput;
 @property(copy, nonatomic) NSAttributedString *attributedTitle;

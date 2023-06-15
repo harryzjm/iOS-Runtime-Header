@@ -18,7 +18,6 @@ __attribute__((visibility("hidden")))
     NSArray *_unfilteredElements;
     NSArray *_allElements;
     NSMutableSet *__displayedElementViews;
-    NSMutableSet *_displayedMRCPills;
     struct CGRect _boundsUsedToCalculateElementFrames;
     struct CGRect _contentsRectUsedToCalculateElementFrames;
 }
@@ -26,7 +25,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(nonatomic) struct CGRect contentsRectUsedToCalculateElementFrames; // @synthesize contentsRectUsedToCalculateElementFrames=_contentsRectUsedToCalculateElementFrames;
 @property(nonatomic) struct CGRect boundsUsedToCalculateElementFrames; // @synthesize boundsUsedToCalculateElementFrames=_boundsUsedToCalculateElementFrames;
-@property(retain, nonatomic) NSMutableSet *displayedMRCPills; // @synthesize displayedMRCPills=_displayedMRCPills;
 @property(retain, nonatomic) NSMutableSet *_displayedElementViews; // @synthesize _displayedElementViews=__displayedElementViews;
 @property(retain, nonatomic) NSArray *allElements; // @synthesize allElements=_allElements;
 @property(nonatomic) _Bool allowLongPressDDActivationOnly; // @synthesize allowLongPressDDActivationOnly=_allowLongPressDDActivationOnly;
@@ -43,9 +41,6 @@ __attribute__((visibility("hidden")))
 - (void)willDismissMenuForDataDetectorElementView:(id)arg1;
 - (void)willDisplayMenuForDataDetectorElementView:(id)arg1;
 - (_Bool)dataDetectorElementView:(id)arg1 shouldBeginAtPoint:(struct CGPoint)arg2;
-- (_Bool)highlightView:(id)arg1 needsToAdjustQuad:(id)arg2;
-- (id)currentViewSpaceQaudForHighlightView:(id)arg1;
-- (void)showMRCPills:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)setHighlightSelectableItems:(_Bool)arg1 animated:(_Bool)arg2;
 - (id)closestElementToPoint:(struct CGPoint)arg1 maxDistance:(double)arg2;
 - (id)viewSpaceQuadsForDataDetectorElement:(id)arg1;
@@ -54,6 +49,7 @@ __attribute__((visibility("hidden")))
 - (void)updateAllElementViewFrames;
 - (void)updateAllElementViewFramesIfNecessary;
 - (void)loadDataDetectorViewsFromDisplayedElements;
+- (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (_Bool)shouldFilterElementForSpecialCase:(id)arg1;
 - (void)updateDisplayedElements;
 - (void)activateLongPressDataDetectorAtPoint:(struct CGPoint)arg1 maxDistance:(double)arg2;

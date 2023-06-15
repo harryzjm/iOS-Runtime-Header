@@ -16,12 +16,12 @@
 - (void)dictationButtonPressed;
 - (void)textDidChange:(UITextField *)arg1;
 - (void)removeCompletionAndHighlightAsTyped:(_Bool)arg1;
-- (void)performWebSearch;
 - (_Bool)lastQueryKindSupportsOptionKey;
 - (void)textFieldDidReplaceTokensWithStringEquivalent:(UITextField *)arg1;
 - (void)switchToSuggestions;
 - (void)commitSearch;
 - (void)escapeKeyPressed;
 - (void)returnKeyPressed;
+- (void)backButtonPressed;
 @end
 

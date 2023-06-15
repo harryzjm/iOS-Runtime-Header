@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSNumber, NSString;
+@class NSArray, NSLocale, NSNumber, NSString;
 
 @interface IBImageConfiguration : NSObject
 {
@@ -14,10 +14,12 @@
     long long _renderingMode;
     NSNumber *_variableValue;
     NSArray *_colors;
+    NSLocale *_locale;
 }
 
-+ (id)configurationWithSymbolScale:(long long)arg1 renderingMode:(long long)arg2 variableValue:(id)arg3 colors:(id)arg4;
++ (id)configurationWithSymbolScale:(long long)arg1 renderingMode:(long long)arg2 variableValue:(id)arg3 colors:(id)arg4 locale:(id)arg5;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSLocale *locale; // @synthesize locale=_locale;
 @property(readonly, nonatomic) NSArray *colors; // @synthesize colors=_colors;
 @property(readonly, nonatomic) NSNumber *variableValue; // @synthesize variableValue=_variableValue;
 @property(readonly, nonatomic) long long renderingMode; // @synthesize renderingMode=_renderingMode;
@@ -40,7 +42,7 @@
 - (id)configurationWithVariableValue:(id)arg1;
 - (id)configurationWithSymbolScale:(long long)arg1;
 - (id)configurationWithRenderingMode:(long long)arg1;
-- (id)initWithSymbolScale:(long long)arg1 renderingMode:(long long)arg2 variableValue:(id)arg3 colors:(id)arg4;
+- (id)initWithSymbolScale:(long long)arg1 renderingMode:(long long)arg2 variableValue:(id)arg3 colors:(id)arg4 locale:(id)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

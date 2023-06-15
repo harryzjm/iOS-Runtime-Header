@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *offlineManager;
     MISSING_TYPE *visibilityPercentage;
     MISSING_TYPE *isBookmarkInProgress;
+    MISSING_TYPE *isViewTransitionInProcess;
     MISSING_TYPE *cover;
     MISSING_TYPE *cacheKey;
     MISSING_TYPE *data;

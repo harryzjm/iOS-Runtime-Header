@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray;
+@class NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
 @interface AVScheduledAudioParametersInternal : NSObject
 {
-    NSMutableArray *ramps;
+    NSMutableDictionary *parameterRamps;
 }
 
 @end

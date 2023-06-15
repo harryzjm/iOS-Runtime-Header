@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *healthStore;
     MISSING_TYPE *energyBurnedPerSession;
+    MISSING_TYPE *workoutIdentifierForSession;
 }
 
 @end

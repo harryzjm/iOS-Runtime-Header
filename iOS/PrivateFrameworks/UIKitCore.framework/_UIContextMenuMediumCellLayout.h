@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSLayoutConstraint, NSString, _UIContextMenuCellContentView;
+@class NSArray, NSLayoutConstraint, NSString, UIColor, _UIContextMenuCellContentView;
 
 __attribute__((visibility("hidden")))
 @interface _UIContextMenuMediumCellLayout : NSObject
@@ -14,22 +14,28 @@ __attribute__((visibility("hidden")))
     _UIContextMenuCellContentView *_contentView;
     NSArray *_managedConstraints;
     NSLayoutConstraint *_topConstraint;
-    NSLayoutConstraint *_iconCenterYConstraint;
+    NSLayoutConstraint *_primaryViewCenterYConstraint;
     NSLayoutConstraint *_bottomConstraint;
     NSLayoutConstraint *_fittingBottomConstraint;
+    NSLayoutConstraint *_minimumHeightConstraint;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSLayoutConstraint *minimumHeightConstraint; // @synthesize minimumHeightConstraint=_minimumHeightConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *fittingBottomConstraint; // @synthesize fittingBottomConstraint=_fittingBottomConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *bottomConstraint; // @synthesize bottomConstraint=_bottomConstraint;
-@property(retain, nonatomic) NSLayoutConstraint *iconCenterYConstraint; // @synthesize iconCenterYConstraint=_iconCenterYConstraint;
+@property(retain, nonatomic) NSLayoutConstraint *primaryViewCenterYConstraint; // @synthesize primaryViewCenterYConstraint=_primaryViewCenterYConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *topConstraint; // @synthesize topConstraint=_topConstraint;
 @property(retain, nonatomic) NSArray *managedConstraints; // @synthesize managedConstraints=_managedConstraints;
 @property(nonatomic) __weak _UIContextMenuCellContentView *contentView; // @synthesize contentView=_contentView;
+- (_Bool)_hasTitle;
 - (void)removeConstraints;
 - (void)updateConstraints;
 - (void)installConstraints;
-- (id)preferredTextStyleUsingBoldFont:(_Bool)arg1;
+@property(readonly, nonatomic) UIColor *preferredContentColorForCurrentState;
+- (id)preferredIconFontUsingBoldFont:(_Bool)arg1;
+@property(readonly, nonatomic) struct NSDirectionalEdgeInsets backgroundViewInsets;
+@property(readonly, nonatomic) _Bool allowsHighlightingOnHover;
 @property(readonly, nonatomic) unsigned long long labelMaximumNumberOfLines;
 @property(readonly, nonatomic) long long labelTextAlignment;
 @property(readonly, nonatomic) long long layoutSize;

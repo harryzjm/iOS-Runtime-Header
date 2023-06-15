@@ -22,7 +22,7 @@
 @property(nonatomic) _Bool hasCustomFormatsToPaste; // @synthesize hasCustomFormatsToPaste=_hasCustomFormatsToPaste;
 @property(readonly, nonatomic) void *cellUIDMap; // @synthesize cellUIDMap=_cellUIDMap;
 @property(nonatomic) _Bool upgradingToSubOwnerUIDs; // @synthesize upgradingToSubOwnerUIDs=_upgradingToSubOwnerUIDs;
-@property(readonly, nonatomic) __weak TSTTableInfo *tableInfo; // @synthesize tableInfo=_tableInfo;
+@property(readonly, nonatomic) TSTTableInfo *tableInfo; // @synthesize tableInfo=_tableInfo;
 - (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
 - (void)loadFromArchive:(const void *)arg1 unarchiver:(id)arg2;

@@ -7,6 +7,7 @@
 #import <CoreServices/NSUserActivity.h>
 
 @interface NSUserActivity (PhotosUICore)
++ (void)px_requestActivityWithActivityType:(id)arg1 titleProvider:(CDUnknownBlockType)arg2 completionBlock:(CDUnknownBlockType)arg3;
 + (_Bool)px_allowsDonationsForCurrentProcess;
 - (void)px_setPersistentIdentifierFromAssetCollection:(id)arg1;
 - (void)px_setPersistentIdentifierFromAsset:(id)arg1;

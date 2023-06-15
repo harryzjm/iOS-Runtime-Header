@@ -4,15 +4,28 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class VNMetalContext;
+@protocol MTLComputePipelineState;
+
 __attribute__((visibility("hidden")))
 @interface VNPersonSegmentationGeneratorLearnedMattingTiled
 {
+    VNMetalContext *_postProcessingMetalContext;
+    id <MTLComputePipelineState> _createTileWithScaleComputePipelineState;
+    id <MTLComputePipelineState> _pasteTileComputePipelineState;
 }
 
 + (_Bool)supportsTiling;
 + (id)espressoModelFileNameForConfigurationOptions:(id)arg1;
-- (struct BufferSize)calculateNumberOfTilesForNetworkInputImageSize:(struct BufferSize)arg1 networkInputMaskSize:(struct BufferSize)arg2 networkOutputMaskSize:(struct BufferSize)arg3 rotated:(_Bool)arg4;
++ (id)computeStagesToBindForConfigurationOptions:(id)arg1;
++ (id)supportedComputeStageDevicesForOptions:(id)arg1 error:(id *)arg2;
+- (void).cxx_destruct;
+- (id)_bindPixelBufferToTexture:(struct __CVBuffer *)arg1 error:(id *)arg2;
+- (optional_c07b8cc9)_processTiledImageBuffer:(id)arg1 inputMaskObservation:(id)arg2 options:(id)arg3 error:(id *)arg4;
+- (optional_c07b8cc9)processLockedImageBuffer:(struct __CVBuffer *)arg1 inputMaskObservation:(id)arg2 options:(id)arg3 error:(id *)arg4;
+- (struct BufferSize)_calculateNumberOfTilesForNetworkInputImageSize:(struct BufferSize)arg1 networkInputMaskSize:(struct BufferSize)arg2 networkOutputMaskSize:(struct BufferSize)arg3 rotated:(_Bool)arg4;
 - (struct BufferSize)outputMaskSize;
+- (_Bool)completeInitializationForSession:(id)arg1 error:(id *)arg2;
 
 @end
 

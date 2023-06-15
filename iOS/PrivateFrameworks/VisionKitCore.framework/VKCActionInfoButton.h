@@ -6,24 +6,28 @@
 
 #import <UIKit/UIButton.h>
 
-@class NSArray, NSString, UIImage, UIImageSymbolConfiguration, UIMenu, VKCBaseDataDetectorElement;
+@class DDUIAction, NSArray, NSString, UIImage, UIImageSymbolConfiguration, UIMenu, VKCBaseDataDetectorElement;
 @protocol VKCActionInfoButtonDelegate;
 
 __attribute__((visibility("hidden")))
 @interface VKCActionInfoButton : UIButton
 {
+    _Bool _isMoreButton;
     VKCBaseDataDetectorElement *_representedElement;
     NSArray *_allUnfilteredElements;
     NSString *_text;
     UIImage *_image;
     UIImage *_menuImage;
     id <VKCActionInfoButtonDelegate> _delegate;
+    DDUIAction *_defaultAction;
     UIImageSymbolConfiguration *_preferredSymbolConfiguration;
 }
 
 + (id)buttonWithImage:(id)arg1 text:(id)arg2;
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIImageSymbolConfiguration *preferredSymbolConfiguration; // @synthesize preferredSymbolConfiguration=_preferredSymbolConfiguration;
+@property(nonatomic) _Bool isMoreButton; // @synthesize isMoreButton=_isMoreButton;
+@property(retain, nonatomic) DDUIAction *defaultAction; // @synthesize defaultAction=_defaultAction;
 @property(nonatomic) __weak id <VKCActionInfoButtonDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) UIImage *menuImage; // @synthesize menuImage=_menuImage;
 @property(retain, nonatomic) UIImage *image; // @synthesize image=_image;
@@ -35,8 +39,10 @@ __attribute__((visibility("hidden")))
 - (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
 - (id)translucentSelectedButtonConfiguration;
 - (long long)overrideUserInterfaceStyle;
+- (id)defaultSymbolConfigurationForImage;
 - (id)translucentButtonConfiguration;
 - (id)filledButtonConfiguration;
+- (CDUnknownBlockType)buttonConfigurationTextAttributesTransformer;
 - (id)dataDetectorContext;
 - (void)performDefaultElementAction;
 @property(retain, nonatomic) UIMenu *customMenu;

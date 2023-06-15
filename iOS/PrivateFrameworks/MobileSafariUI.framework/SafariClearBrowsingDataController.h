@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray;
+@class NSArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface SafariClearBrowsingDataController : NSObject
@@ -16,10 +16,18 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(readonly) NSArray *availableIntervals; // @synthesize availableIntervals=_availableIntervals;
-- (void)_clearBrowsingDataAddedAfterDate:(id)arg1;
-- (void)clearAllBrowsingData;
-- (void)clearDataFromInterval:(id)arg1;
+- (void)clearHistoryVisitsAddedAfterDate:(id)arg1 beforeDate:(id)arg2 profileIdentifier:(id)arg3 clearAllProfiles:(_Bool)arg4 closeAllTabs:(_Bool)arg5;
+- (void)_clearBrowsingDataAddedAfterDate:(id)arg1 profileIdentifiers:(id)arg2 closeAllTabs:(_Bool)arg3;
+- (void)clearDataAddedAfterDate:(id)arg1 beforeDate:(id)arg2 profileIdentifier:(id)arg3 clearAllProfiles:(_Bool)arg4 closeTabs:(_Bool)arg5;
+- (long long)_analyticsClearBrowsingIntervalForDate:(id)arg1;
+- (void)showClearHistoryMenuFromViewController:(id)arg1;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

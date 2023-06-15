@@ -4,20 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import "_$s8VideosUI9ViewModelCN.h"
-
 @class MISSING_TYPE;
 
-@interface _TtC8VideosUI31UnifiedMessagingBannerViewModel : _$s8VideosUI9ViewModelCN
+@interface _TtC8VideosUI31UnifiedMessagingBannerViewModel
 {
-    MISSING_TYPE *delegate;
-    MISSING_TYPE *messageViewController;
-    MISSING_TYPE *placementId;
-    MISSING_TYPE *hasSetupViewModel;
     MISSING_TYPE *hasBannerDisplayed;
 }
-
-- (void)handleBannerDidUpdateWithNotification:(id)arg1;
 
 @end
 

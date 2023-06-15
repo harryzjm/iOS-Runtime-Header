@@ -21,6 +21,7 @@
 - (void).cxx_destruct;
 - (void)cullAllDiskStocksOnQueue:(id)arg1 afterDelay:(double)arg2 withCompletionBlock:(CDUnknownBlockType)arg3;
 - (void)cullAllDiskStocksOnQueue:(id)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
+- (void)cullAllDiskStocksSynchronously;
 - (void)cullDiskStockSynchronously:(id)arg1;
 - (id)diskStockForIdentifier:(id)arg1;
 - (id)registeredDiskStocks;

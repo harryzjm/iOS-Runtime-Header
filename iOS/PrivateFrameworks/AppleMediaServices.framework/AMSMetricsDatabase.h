@@ -15,12 +15,10 @@ __attribute__((visibility("hidden")))
     NSString *_containerId;
     AMSSQLiteConnection *_connection;
     NSObject<OS_dispatch_queue> *_internalQueue;
-    long long _keepAliveCount;
 }
 
 + (id)sharedDatabaseWithContainerId:(id)arg1;
 - (void).cxx_destruct;
-@property(nonatomic) long long keepAliveCount; // @synthesize keepAliveCount=_keepAliveCount;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *internalQueue; // @synthesize internalQueue=_internalQueue;
 @property(retain, nonatomic) AMSSQLiteConnection *connection; // @synthesize connection=_connection;
 @property(retain, nonatomic) NSString *containerId; // @synthesize containerId=_containerId;

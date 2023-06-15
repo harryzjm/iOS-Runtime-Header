@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HDDatabaseMigrationTransaction, HKProfileIdentifier, NSData, NSError, NSString;
+@class HDDatabaseMigrationTransaction, HKProfileIdentifier, NSArray, NSData, NSError, NSString, _HKBehavior;
 
 @protocol HDDatabaseMigrationTransactionDelegate
 @property(readonly, copy, nonatomic) HKProfileIdentifier *profileIdentifier;
@@ -12,5 +12,6 @@
 - (void)migrationTransaction:(HDDatabaseMigrationTransaction *)arg1 reportHFDMigrationStatus:(long long)arg2 schemaVersion:(long long)arg3 error:(NSError *)arg4;
 - (void)migrationTransaction:(HDDatabaseMigrationTransaction *)arg1 didEncounterDatabaseMismatchWithUnprotectedIdentifier:(NSData *)arg2 protectedIdentifier:(NSData *)arg3;
 - (void)migrationTransaction:(HDDatabaseMigrationTransaction *)arg1 didCreateDatabasesWithIdentifier:(NSData *)arg2;
+- (NSArray *)migrationTransaction:(HDDatabaseMigrationTransaction *)arg1 entityClassesWithBehavior:(_HKBehavior *)arg2;
 @end
 

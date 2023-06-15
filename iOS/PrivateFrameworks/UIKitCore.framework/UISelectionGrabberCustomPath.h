@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) double lineWidth; // @synthesize lineWidth=_lineWidth;
 @property(nonatomic) struct CGPoint bottomPoint; // @synthesize bottomPoint=_bottomPoint;
 @property(nonatomic) struct CGPoint topPoint; // @synthesize topPoint=_topPoint;
+- (id)bezierPathForHostView:(id)arg1 targetView:(id)arg2;
 - (id)description;
 - (id)summaryDescription;
 @property(readonly, nonatomic) struct CGRect boundingEdgeRect;

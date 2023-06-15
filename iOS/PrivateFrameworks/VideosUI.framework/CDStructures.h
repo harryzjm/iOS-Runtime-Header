@@ -222,6 +222,13 @@ typedef struct {
 } CDStruct_96a80611;
 
 typedef struct {
+    long long _field1;
+    int _field2;
+    unsigned int _field3;
+    long long _field4;
+} CDStruct_198678f7;
+
+typedef struct {
     struct UIEdgeInsets _field1;
     struct UIEdgeInsets _field2;
     struct UIEdgeInsets _field3;

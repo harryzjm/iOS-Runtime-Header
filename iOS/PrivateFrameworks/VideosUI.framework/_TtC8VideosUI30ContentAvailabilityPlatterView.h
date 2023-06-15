@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *layout;
     MISSING_TYPE *titleLabel;
     MISSING_TYPE *textLabel;
-    MISSING_TYPE *button;
+    MISSING_TYPE *buttonViews;
     MISSING_TYPE *vibrantEffectView;
 }
 

@@ -120,3 +120,9 @@ struct vector<unsigned int, std::allocator<unsigned int>> {
     } __end_cap_;
 };
 
+#pragma mark Typedef'd Structures
+
+typedef struct {
+    unsigned int val[8];
+} CDStruct_4c969caf;
+

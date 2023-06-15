@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
 @class MISSING_TYPE, NSArray;
 
@@ -20,12 +20,16 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *eventHub;
     MISSING_TYPE *gradientMaskLayer;
     MISSING_TYPE *layout;
+    MISSING_TYPE *platform;
+    MISSING_TYPE *storefrontLocalizer;
     MISSING_TYPE *timerProvider;
     MISSING_TYPE *artworkView;
     MISSING_TYPE *bottomBlurView;
     MISSING_TYPE *shroudView;
     MISSING_TYPE *titleLabel;
     MISSING_TYPE *subtitleLabel;
+    MISSING_TYPE *ellipsisButton;
+    MISSING_TYPE *menu;
     MISSING_TYPE *editorialLayout;
 }
 

@@ -14,8 +14,11 @@ __attribute__((visibility("hidden")))
     double _beganPitch;
     double _currentPitch;
     VKTimedAnimation *_zoomAnimation;
+    optional_fcefa02e _rubberbandZoomStartFactor;
+    optional_fcefa02e _zoomPreviousT;
 }
 
+- (id).cxx_construct;
 - (void).cxx_destruct;
 - (Matrix_6e1d3589)positionClampedToCameraRestriction:(Matrix_6e1d3589)arg1 delta:(Matrix_6e1d3589)arg2;
 - (Matrix_6e1d3589)positionClampedToCameraRestriction:(Matrix_6e1d3589)arg1;
@@ -25,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (void)beginPitch:(struct CGPoint)arg1;
 - (void)updateRotate:(double)arg1 atScreenPoint:(struct CGPoint)arg2;
 - (void)updatePan:(struct CGPoint)arg1 lastScreenPoint:(struct CGPoint)arg2;
+- (void)endZoom:(struct CGPoint)arg1;
 - (void)updateZoom:(struct CGPoint)arg1 oldFactor:(double)arg2 newFactor:(double)arg3;
 
 @end

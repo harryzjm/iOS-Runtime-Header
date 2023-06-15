@@ -6,7 +6,7 @@
 
 #import "UIView.h"
 
-@class NSArray, NSDate, NSIndexPath, NSString, NSTimer, UICollectionViewDiffableDataSource, UIHoverGestureRecognizer, UISelectionFeedbackGenerator, _UIContextMenuLinkedList, _UIContextMenuListView, _UIContextMenuNode, _UIContextMenuSelectionDelayGestureRecognizer, _UIContextMenuSelectionGestureRecognizer;
+@class NSArray, NSDate, NSIndexPath, NSString, NSTimer, UICollectionViewDiffableDataSource, UIHoverGestureRecognizer, UISelectionFeedbackGenerator, _UIContextMenuLinkedList, _UIContextMenuListView, _UIContextMenuNode, _UIContextMenuSelectionDelayGestureRecognizer, _UIContextMenuSelectionGestureRecognizer, _UIVelocityIntegrator;
 @protocol _UIContextMenuHierarchyLayout, _UIContextMenuViewDelegate;
 
 __attribute__((visibility("hidden")))
@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     _Bool _showsShadow;
     _Bool _reversesActionOrder;
     _Bool _scrubbingEnabled;
+    _Bool _allowsBackgroundViewInteraction;
     _Bool _isComputingPreferredSize;
     _Bool _retainHighlightOnMenuNavigation;
     _Bool _shouldAvoidInputViews;
@@ -33,15 +34,19 @@ __attribute__((visibility("hidden")))
     NSTimer *_autoNavigationTimer;
     NSTimer *_autoUnhighlightTimer;
     NSIndexPath *_unselectableIndexPath;
-    _UIContextMenuListView *_hoveredListView;
     id <_UIContextMenuHierarchyLayout> _layout;
+    _UIContextMenuNode *_hoveredNode;
+    _UIVelocityIntegrator *_hoverVelocityIntegrator;
+    NSTimer *_hoverAutoExitTimer;
     struct CGSize _visibleContentSize;
     struct CGSize _maxContainerSize;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSTimer *hoverAutoExitTimer; // @synthesize hoverAutoExitTimer=_hoverAutoExitTimer;
+@property(retain, nonatomic) _UIVelocityIntegrator *hoverVelocityIntegrator; // @synthesize hoverVelocityIntegrator=_hoverVelocityIntegrator;
+@property(retain, nonatomic) _UIContextMenuNode *hoveredNode; // @synthesize hoveredNode=_hoveredNode;
 @property(retain, nonatomic) id <_UIContextMenuHierarchyLayout> layout; // @synthesize layout=_layout;
-@property(retain, nonatomic) _UIContextMenuListView *hoveredListView; // @synthesize hoveredListView=_hoveredListView;
 @property(nonatomic) struct CGSize maxContainerSize; // @synthesize maxContainerSize=_maxContainerSize;
 @property(nonatomic) _Bool hasTrackingTouch; // @synthesize hasTrackingTouch=_hasTrackingTouch;
 @property(copy, nonatomic) NSIndexPath *unselectableIndexPath; // @synthesize unselectableIndexPath=_unselectableIndexPath;
@@ -61,6 +66,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned long long attachmentEdge; // @synthesize attachmentEdge=_attachmentEdge;
 @property(nonatomic) unsigned long long hierarchyStyle; // @synthesize hierarchyStyle=_hierarchyStyle;
 @property(nonatomic) struct CGSize visibleContentSize; // @synthesize visibleContentSize=_visibleContentSize;
+@property(nonatomic) _Bool allowsBackgroundViewInteraction; // @synthesize allowsBackgroundViewInteraction=_allowsBackgroundViewInteraction;
 @property(nonatomic) _Bool scrubbingEnabled; // @synthesize scrubbingEnabled=_scrubbingEnabled;
 @property(nonatomic) _Bool reversesActionOrder; // @synthesize reversesActionOrder=_reversesActionOrder;
 @property(nonatomic) _Bool showsShadow; // @synthesize showsShadow=_showsShadow;
@@ -79,6 +85,8 @@ __attribute__((visibility("hidden")))
 - (_Bool)_allowsChangingFirstResponderForFocusUpdateWithContext:(id)arg1;
 - (_Bool)canBecomeFirstResponder;
 - (id)preferredFocusEnvironments;
+- (void)_clearHoverAutoExitTimer;
+- (void)_setHoverAutoExitTimer;
 - (void)_clearAutoNavigationTimer;
 - (void)_setAutoNavigationTimerIfNecessaryForElement:(id)arg1;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
@@ -89,16 +97,18 @@ __attribute__((visibility("hidden")))
 - (_Bool)gestureRecognizer:(id)arg1 shouldRequireFailureOfGestureRecognizer:(id)arg2;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1;
-- (void)_updateSelectionGestureAllowableMovement;
+- (void)_updateSelectionGestureAllowableMovementForGestureBeginningAtIndexPath:(id)arg1;
 - (id)_newListViewWithMenu:(id)arg1 position:(unsigned long long)arg2;
 - (void)_displayMenu:(id)arg1 inPlaceOfMenu:(id)arg2 updateType:(unsigned long long)arg3 alongsideAnimations:(CDUnknownBlockType)arg4;
 - (void)displayMenu:(id)arg1 updateType:(unsigned long long)arg2 alongsideAnimations:(CDUnknownBlockType)arg3;
 - (void)replaceVisibleMenu:(id)arg1 withMenu:(id)arg2 alongsideAnimations:(CDUnknownBlockType)arg3;
 @property(readonly, nonatomic) NSArray *visibleMenus;
+- (id)hoveredListView;
 @property(readonly, nonatomic) _UIContextMenuListView *currentListView;
 - (void)layoutSubviews;
 - (struct CGSize)preferredContentSizeWithinContainerSize:(struct CGSize)arg1;
 - (struct CGRect)activeSubmenuFrameInCoordinateSpace:(id)arg1;
+- (void)didCompleteMenuAppearanceAnimation;
 - (void)flashScrollIndicators;
 - (void)scrollToFirstSignificantAction;
 - (_Bool)kickstartActionScrubbingWithGesture:(id)arg1;

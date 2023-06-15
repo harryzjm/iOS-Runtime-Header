@@ -8,7 +8,7 @@
 
 @interface USKNodeSiblingIterator : NSObject
 {
-    struct iterator_range<pxrInternal_v0_21__aapl__pxrReserved__::UsdPrimSiblingIterator> _range;
+    struct iterator_range<pxrInternal_v0_22__aapl__pxrReserved__::UsdPrimSiblingIterator> _range;
     struct UsdPrimSiblingIterator _it;
 }
 

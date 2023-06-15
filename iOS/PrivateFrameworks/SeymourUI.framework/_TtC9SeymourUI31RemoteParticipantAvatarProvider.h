@@ -6,13 +6,8 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
-@class MISSING_TYPE;
-
 @interface _TtC9SeymourUI31RemoteParticipantAvatarProvider : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *accountProvider;
-    MISSING_TYPE *familyAvatarProvider;
-    MISSING_TYPE *accountAvatarProvider;
 }
 
 @end

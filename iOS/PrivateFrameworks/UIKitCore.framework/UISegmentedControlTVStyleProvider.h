@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
 + (id)_tvDefaultTextColorSelected;
 - (id)fontColorForSegment:(id)arg1 enabled:(_Bool)arg2 selected:(_Bool)arg3 state:(unsigned long long)arg4;
 - (id)fontForControlSize:(int)arg1 selected:(_Bool)arg2;
-- (double)defaultHeightForControlSize:(int)arg1;
+- (double)defaultHeightForControlSize:(int)arg1 traitCollection:(id)arg2;
 - (double)cornerRadiusForControlSize:(int)arg1;
 - (double)dividerWidthForControlSize:(int)arg1;
 - (double)selectionIndicatorOverflowForControlSize:(int)arg1;

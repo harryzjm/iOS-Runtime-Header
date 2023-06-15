@@ -9,6 +9,7 @@
 @class NSString;
 
 @interface NSUserDefaults (DVTNSUserDefaultsAdditions)
+- (long long)dvt_integerForKey:(id)arg1 defaultValue:(long long)arg2;
 - (double)dvt_doubleForKey:(id)arg1 defaultValue:(double)arg2;
 - (_Bool)dvt_boolForKey:(id)arg1 defaultValue:(_Bool)arg2;
 - (void)dvt_setupDefaultsFromEnvironment;

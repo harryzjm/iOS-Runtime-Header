@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *lock;
     MISSING_TYPE *_lock_bufferedPresentationUpdate;
     MISSING_TYPE *_lock_pendingAck;
+    MISSING_TYPE *_lock_predicate;
 }
 
 - (void).cxx_destruct;

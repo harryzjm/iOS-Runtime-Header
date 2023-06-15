@@ -6,13 +6,11 @@
 
 #import <PhotosUIPrivate/NSObject-Protocol.h>
 
-@class NSString, PUMenuActionController, UIAction;
+@class NSString, PUMenuActionController;
 
 @protocol PUMenuActionControllerDelegate <NSObject>
 
 @optional
-- (UIAction *)menuActionControllerRemoveFromFeaturedPhotosAction:(PUMenuActionController *)arg1;
-- (void)menuActionController:(PUMenuActionController *)arg1 actionType:(NSString *)arg2 actionStartedFromActionsMenu:(_Bool)arg3;
 - (_Bool)menuActionControllerPreventRevealInMomentAction:(PUMenuActionController *)arg1;
 - (void)menuActionController:(PUMenuActionController *)arg1 didDismissWithActionIdentifier:(NSString *)arg2;
 @end

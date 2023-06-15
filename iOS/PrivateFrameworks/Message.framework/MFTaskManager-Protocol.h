@@ -18,7 +18,8 @@
 - (void)checkForNewLocalActions;
 - (void)stopBackFillingMessageBodyDownload;
 - (void)startBackFillingMessageBodyDownloadWithRequest:(id <MFBackFillingMessageBodyDownloadRequest>)arg1;
-- (void)fetchNow:(int)arg1 withMailboxes:(NSArray *)arg2 completion:(void (^)(void))arg3;
+- (void)closeAllConnections;
+- (void)fetchNow:(int)arg1 withMailboxes:(NSArray *)arg2 completion:(void (^)(NSDictionary *))arg3;
 - (void)fetchNow:(int)arg1;
 @end
 

@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 - (void)executeBlockForIDSDestination:(id)arg1 blockToExecute:(CDUnknownBlockType)arg2;
 - (id)datagramChannelWithChannelToken:(unsigned int)arg1;
 - (_Bool)setupDatagramChannel:(id)arg1 eventHandler:(CDUnknownBlockType)arg2 writeCompletionHandler:(CDUnknownBlockType)arg3 error:(id *)arg4;
+- (_Bool)isEmulatedDatagramChannelEnabledViaDefaults;
 - (id)setupEmulatedDatagramChannelWithDestination:(id)arg1 datagramChannel:(id)arg2;
 - (id)addDatagramChannelWithDestination:(id)arg1 eventHandler:(CDUnknownBlockType)arg2 writeCompletionHandler:(CDUnknownBlockType)arg3 dataPath:(int)arg4 error:(id *)arg5;
 - (id)addDatagramChannelWithDestination:(id)arg1 eventHandler:(CDUnknownBlockType)arg2 dataPath:(int)arg3 error:(id *)arg4;

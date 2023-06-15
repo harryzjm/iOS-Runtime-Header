@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIImage.h>
+#import <UIKitCore/UIImage.h>
 
 @interface UIImage (PBFUtilities)
-+ (id)pbf_galleryHeroSnapshotForExtensionBundleIdentifier:(id)arg1 descriptorIdentifier:(id)arg2 size:(struct CGSize)arg3;
++ (id)pbf_galleryHeroSnapshotForExtension:(id)arg1 descriptorIdentifier:(id)arg2 displayContext:(id)arg3;
 + (id)pbf_galleryPosterWithColor:(id)arg1 scale:(double)arg2;
 - (id)pbf_alphaOnlyImage;
 - (id)pbf_colorOfImage;

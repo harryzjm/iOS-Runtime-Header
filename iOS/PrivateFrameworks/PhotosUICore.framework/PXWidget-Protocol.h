@@ -34,6 +34,7 @@
 @property(readonly, nonatomic) long long contentViewAnchoringType;
 @property(readonly, nonatomic) NSObject<PXAnonymousView> *contentView;
 @property(readonly, nonatomic) _Bool hasLoadedContentData;
+@property(readonly, nonatomic) _Bool wantsNoSpaceAfterContentBottom;
 @property(readonly, nonatomic) double extraSpaceNeededAtContentBottom;
 @property(readonly, nonatomic) _Bool hasContentForCurrentInput;
 @property(retain, nonatomic) PXWidgetSpec *spec;

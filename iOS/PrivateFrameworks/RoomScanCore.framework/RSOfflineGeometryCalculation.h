@@ -26,9 +26,6 @@
 }
 
 - (void).cxx_destruct;
-- (void)reset;
-- (id)geometryMeta;
-- (void)run:(id)arg1;
 - (id)init;
 
 @end

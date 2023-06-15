@@ -10,9 +10,8 @@
 
 @interface _TtC7NewsUI219TagFeedModelFactory : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *headlineModelFactory;
+    MISSING_TYPE *feedModelFactory;
     MISSING_TYPE *feedDescriptor;
-    MISSING_TYPE *tagService;
 }
 
 @end

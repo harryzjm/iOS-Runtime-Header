@@ -10,8 +10,8 @@
 @protocol CHSWidgetPersonality;
 
 @protocol CHSWidgetPersonality <NSObject>
+@property(readonly, copy, nonatomic) NSString *kind;
+@property(readonly, copy, nonatomic) NSString *extensionBundleIdentifier;
 - (_Bool)matchesPersonality:(id <CHSWidgetPersonality>)arg1;
-@property(nonatomic, readonly) NSString *kind;
-@property(nonatomic, readonly) NSString *extensionBundleIdentifier;
 @end
 

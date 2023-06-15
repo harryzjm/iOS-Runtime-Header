@@ -10,6 +10,7 @@
 
 @protocol HMDAccountManager <NSObject>
 @property(readonly, nonatomic) HMDBackingStore *backingStore;
+- (_Bool)isCurrentDeviceDataOwnerForDevice:(HMDDevice *)arg1;
 - (_Bool)shouldDevice:(HMDDevice *)arg1 processModel:(HMDBackingStoreModelObject *)arg2 actions:(HMDBackingStoreTransactionActions *)arg3;
 - (_Bool)shouldAccount:(HMDAccount *)arg1 pushbackModel:(HMDBackingStoreModelObject *)arg2 actions:(HMDBackingStoreTransactionActions *)arg3;
 - (_Bool)shouldSyncDevice:(HMDDevice *)arg1;

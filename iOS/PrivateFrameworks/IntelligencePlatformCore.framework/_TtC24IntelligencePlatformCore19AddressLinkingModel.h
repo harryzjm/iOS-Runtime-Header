@@ -10,19 +10,17 @@
 
 @interface _TtC24IntelligencePlatformCore19AddressLinkingModel : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *embeddingCacheName;
     MISSING_TYPE *featureSize;
     MISSING_TYPE *padValue;
     MISSING_TYPE *threshold;
     MISSING_TYPE *version;
     MISSING_TYPE *name;
     MISSING_TYPE *embedderModelName;
-    MISSING_TYPE *aggregatorModelName;
     MISSING_TYPE *encoder;
-    MISSING_TYPE *aggregator;
     MISSING_TYPE *configName;
-    MISSING_TYPE *parameters;
-    MISSING_TYPE *vocabName;
-    MISSING_TYPE *indxVocabName;
+    MISSING_TYPE *charDictionary;
+    MISSING_TYPE *bpeTrieDictionary;
 }
 
 @end

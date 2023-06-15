@@ -10,6 +10,7 @@
 @protocol HMELastEventStoreReadHandle, HMELastEventStoreWriteHandle;
 
 @protocol HMDHomeRemoteEventRouterClientControllerDataSource <NSObject>
+- (void)discoverPrimaryResidentForEventRouterClientController:(HMDHomeRemoteEventRouterClientController *)arg1;
 - (_Bool)isMessagedHomepodSettingsEnabledForClientController:(HMDHomeRemoteEventRouterClientController *)arg1;
 - (HMDDevice *)deviceForPrimaryResidentForRemoteEventRouterClientController:(HMDHomeRemoteEventRouterClientController *)arg1;
 - (HMDDevice *)deviceForAccessoryUUID:(NSUUID *)arg1 forRemoteEventRouterClientController:(HMDHomeRemoteEventRouterClientController *)arg2;

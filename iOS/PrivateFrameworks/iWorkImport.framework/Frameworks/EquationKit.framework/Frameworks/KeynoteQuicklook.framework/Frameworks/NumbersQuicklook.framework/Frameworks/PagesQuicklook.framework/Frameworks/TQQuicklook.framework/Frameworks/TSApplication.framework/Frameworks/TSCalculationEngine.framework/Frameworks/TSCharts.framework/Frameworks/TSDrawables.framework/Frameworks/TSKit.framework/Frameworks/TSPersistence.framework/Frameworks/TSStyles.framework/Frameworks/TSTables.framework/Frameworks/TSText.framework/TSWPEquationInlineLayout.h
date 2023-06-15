@@ -10,13 +10,18 @@
     double _fontSizeAdjustedForXHeight;
 }
 
++ (double)fontSizeThatMatchesXHeightForFontName:(id)arg1 fontSize:(double)arg2;
 @property(readonly, nonatomic) double fontSizeAdjustedForXHeight; // @synthesize fontSizeAdjustedForXHeight=_fontSizeAdjustedForXHeight;
 @property(nonatomic) _Bool disableXHeightMatching; // @synthesize disableXHeightMatching=_disableXHeightMatching;
 - (id)p_layoutTarget;
-- (double)p_fontSizeThatMatchesXHeightForFontName:(id)arg1 fontSize:(double)arg2;
 - (id)computeInfoGeometryFromPureLayoutGeometry:(id)arg1;
 - (void)willLayoutInlineWithMaximumSize:(struct CGSize)arg1 textScale:(double)arg2;
+- (struct CGSize)unconstrainedSize;
+- (id)p_newLayoutContextWithMaximumSize:(struct CGSize)arg1 textScale:(double)arg2 returnFontSizeAdjustedForXHeight:(double *)arg3;
+- (id)p_textPropertiesForLayout;
 - (id)computeLayoutGeometry;
+- (_Bool)p_textIsVertical;
+- (double)p_textScale;
 - (struct CGSize)invalidEquationSize;
 - (id)layoutGeometryFromInfo;
 - (double)descentForInlineLayout;

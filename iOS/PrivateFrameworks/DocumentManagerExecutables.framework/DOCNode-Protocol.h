@@ -4,69 +4,72 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <DocumentManagerExecutables/NSCopying-Protocol.h>
 #import <DocumentManagerExecutables/NSObject-Protocol.h>
 
-@class FPItem, FPProviderDomain, NSArray, NSCoder, NSDate, NSError, NSNumber, NSPersonNameComponents, NSProgress, NSString, NSURL, UTType;
+@class FPItem, FPProviderDomain, NSArray, NSCoder, NSDate, NSError, NSNumber, NSObject, NSPersonNameComponents, NSProgress, NSString, NSURL, UTType;
 @protocol DOCNode;
 
-@protocol DOCNode <NSObject>
+@protocol DOCNode <NSObject, NSCopying>
+@property(readonly, nonatomic) NSArray *tags;
+@property(readonly, nonatomic) NSArray *itemDecorations;
+@property(readonly, nonatomic) NSPersonNameComponents *ownerNameComponents;
+@property(readonly, nonatomic) _Bool isTopLevelSharedItem;
+@property(readonly, nonatomic, getter=isSharedByCurrentUser) _Bool sharedByCurrentUser;
+@property(readonly, nonatomic, getter=isShared) _Bool shared;
+@property(readonly, nonatomic) _Bool doc_isCollaborationInvitation;
+@property(readonly, nonatomic, getter=isExcludedFromSync) _Bool excludedFromSync;
+@property(readonly, nonatomic) NSProgress *copyingProgress;
+@property(readonly, nonatomic) NSError *uploadingError;
+@property(readonly, nonatomic) NSProgress *uploadingProgress;
+@property(readonly, nonatomic, getter=isUploaded) _Bool uploaded;
+@property(readonly, nonatomic, getter=isUploading) _Bool uploading;
+@property(readonly, nonatomic) NSError *downloadingError;
+@property(readonly, nonatomic) NSProgress *downloadingProgress;
+@property(readonly, nonatomic, getter=isRecursivelyDownloaded) _Bool recursivelyDownloaded;
+@property(readonly, nonatomic, getter=isDownloaded) _Bool downloaded;
+@property(readonly, nonatomic, getter=isDownloading) _Bool downloading;
+@property(readonly, nonatomic, getter=isAnyParentTrashed) _Bool anyParentTrashed;
+@property(readonly, nonatomic, getter=isTrashed) _Bool trashed;
+@property(readonly, nonatomic) NSObject *contentVersion;
+@property(readonly, nonatomic) _Bool isRootItem;
+@property(readonly, nonatomic) _Bool isContainer;
+@property(readonly, nonatomic) _Bool isCloudItem;
+@property(readonly, nonatomic) _Bool isExternalDownloadPlaceholder;
+@property(readonly, nonatomic) _Bool isPending;
+@property(readonly, nonatomic) _Bool isWritable;
+@property(readonly, nonatomic) _Bool isReadable;
+@property(readonly, nonatomic) _Bool isActionable;
+@property(readonly, nonatomic) NSString *filename;
+@property(readonly, nonatomic) NSDate *dateForSortingByRecents;
+@property(readonly, nonatomic) NSDate *doc_lastUsedDate;
+@property(readonly, nonatomic) NSDate *doc_creationDate;
+@property(readonly, nonatomic) NSDate *modificationDate;
+@property(readonly, nonatomic) NSString *domainDisplayName;
+@property(readonly, nonatomic) FPProviderDomain *cachedDomain;
+@property(readonly, nonatomic) NSString *providerID;
+@property(readonly, nonatomic) NSString *providerDomainID;
+@property(readonly, nonatomic) NSNumber *deepItemCount;
+@property(readonly, nonatomic) NSNumber *childItemCount;
+@property(readonly, nonatomic) NSNumber *fileSize;
+@property(readonly, nonatomic) NSURL *nodeURL;
+@property(readonly, nonatomic) _Bool doc_isSMBSharepoint;
+@property(readonly, nonatomic) unsigned long long doc_folderIconType;
+@property(readonly, nonatomic) unsigned long long folderType;
+@property(readonly, nonatomic) _Bool isFolder;
+@property(readonly, nonatomic) NSString *typeIdentifier;
+@property(readonly, nonatomic) UTType *contentType;
+@property(readonly, nonatomic) _Bool supportsFileSystemEnumeration;
+@property(readonly, nonatomic) FPItem *fpfs_fpItem;
+@property(readonly, nonatomic) NSString *thumbnailIdentifier;
+@property(readonly, nonatomic) NSString *displayName;
+@property(readonly, nonatomic) id identifier;
+- (void)fetchFPItem:(void (^)(FPItem *, NSError *))arg1;
+- (void)fetchURL:(void (^)(NSURL *, NSError *))arg1;
+- (void)fetchParents:(void (^)(NSArray *, NSError *))arg1;
+- (void)fetchParent:(void (^)(id <DOCNode>, NSError *))arg1;
 - (void)encodeNodeWithCoder:(NSCoder *)arg1;
 - (long long)_doc_fileTypeCompare:(id <DOCNode>)arg1;
 - (long long)localizedStandardTagsCompareNode:(id <DOCNode>)arg1;
-@property(nonatomic, readonly) NSArray *tags;
-@property(nonatomic, readonly) NSArray *itemDecorations;
-@property(nonatomic, readonly) NSPersonNameComponents *ownerNameComponents;
-@property(nonatomic, readonly) _Bool isTopLevelSharedItem;
-- (_Bool)isSharedByCurrentUser;
-- (_Bool)isShared;
-- (_Bool)isExcludedFromSync;
-@property(nonatomic, readonly) NSProgress *copyingProgress;
-@property(nonatomic, readonly) NSError *uploadingError;
-@property(nonatomic, readonly) NSProgress *uploadingProgress;
-- (_Bool)isUploaded;
-- (_Bool)isUploading;
-@property(nonatomic, readonly) NSError *downloadingError;
-@property(nonatomic, readonly) NSProgress *downloadingProgress;
-- (_Bool)isDownloaded;
-- (_Bool)isDownloading;
-- (_Bool)isTrashed;
-@property(nonatomic, readonly) _Bool isRootItem;
-@property(nonatomic, readonly) _Bool isContainer;
-@property(nonatomic, readonly) _Bool isCloudItem;
-@property(nonatomic, readonly) _Bool isExternalDownloadPlaceholder;
-@property(nonatomic, readonly) _Bool isPending;
-@property(nonatomic, readonly) _Bool isWritable;
-@property(nonatomic, readonly) _Bool isReadable;
-@property(nonatomic, readonly) _Bool isActionable;
-@property(nonatomic, readonly) NSString *filename;
-@property(nonatomic, readonly) NSDate *dateForSortingByRecents;
-@property(nonatomic, readonly) NSDate *doc_lastUsedDate;
-@property(nonatomic, readonly) NSDate *doc_creationDate;
-@property(nonatomic, readonly) NSDate *modificationDate;
-@property(nonatomic, readonly) NSString *domainDisplayName;
-@property(nonatomic, readonly) FPProviderDomain *cachedDomain;
-@property(nonatomic, readonly) NSString *providerID;
-@property(nonatomic, readonly) NSString *providerDomainID;
-@property(nonatomic, readonly) NSNumber *childItemCount;
-@property(nonatomic, readonly) NSNumber *fileSize;
-@property(nonatomic, readonly) NSURL *nodeURL;
-@property(nonatomic, readonly) unsigned long long folderType;
-@property(nonatomic, readonly) _Bool isFolder;
-@property(nonatomic, readonly) NSString *typeIdentifier;
-@property(nonatomic, readonly) UTType *contentType;
-@property(nonatomic, readonly) _Bool supportsFileSystemEnumeration;
-@property(nonatomic, readonly) FPItem *fpfs_fpItem;
-@property(nonatomic, readonly) NSString *displayName;
-@property(nonatomic, readonly) id identifier;
-
-// Remaining properties
-@property(nonatomic, readonly) _Bool downloaded;
-@property(nonatomic, readonly) _Bool downloading;
-@property(nonatomic, readonly) _Bool excludedFromSync;
-@property(nonatomic, readonly) _Bool shared;
-@property(nonatomic, readonly) _Bool sharedByCurrentUser;
-@property(nonatomic, readonly) _Bool trashed;
-@property(nonatomic, readonly) _Bool uploaded;
-@property(nonatomic, readonly) _Bool uploading;
 @end
 

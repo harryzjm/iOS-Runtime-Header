@@ -4,12 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CKShare, CKShareMetadata, NSArray, NSData, NSDictionary, NSString, NSUUID, REMDistributedEvaluationCollectionOptions, REMFetchRequest, REMObjectID, REMStoreInvocation, REMStoreSwiftInvocation, REMTemplatePublicLinkConfiguration;
+@class CKShare, CKShareMetadata, NSArray, NSData, NSDictionary, NSNumber, NSSet, NSString, NSUUID, REMDistributedEvaluationCollectionOptions, REMFetchRequest, REMObjectID, REMStoreInvocation, REMStoreSwiftInvocation, REMTemplatePublicLinkConfiguration;
 
 @protocol REMXPCStorePerformer
+- (void)fetchMinimumSearchTermLengthByBaseLanguageWithCompletion:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)validatePhantomObjectsWith:(NSArray *)arg1 shouldRepair:(_Bool)arg2 completion:(void (^)(NSArray *, NSError *))arg3;
 - (void)requestToUpdateClientConnectionsWithShouldKeepAlive:(_Bool)arg1;
 - (void)MCIsManagedAccountWithObjectID:(REMObjectID *)arg1 completion:(void (^)(NSNumber *, NSError *))arg2;
+- (void)requestDownloadGroceryModelAssetsFromTrial;
 - (void)anchoredBubbleEnabledWithCompletion:(void (^)(_Bool, NSError *))arg1;
 - (void)uncachedSuggestedAttributesPerformerWithReason:(NSString *)arg1 completion:(void (^)(id <REMXPCSuggestedAttributesPerformer>, NSError *))arg2;
 - (void)requestToDeleteLocalDataWithCompletion:(void (^)(NSError *))arg1;
@@ -18,6 +20,11 @@
 - (void)removeOrphanedAccountWithCompletion:(void (^)(_Bool, NSError *))arg1;
 - (void)updateAccountWithACAccountID:(NSString *)arg1 restartDA:(_Bool)arg2 completion:(void (^)(_Bool, _Bool, NSError *))arg3;
 - (void)updateAccountsAndFetchMigrationState:(_Bool)arg1 completion:(void (^)(_Bool, _Bool, NSError *))arg2;
+- (void)fetchShouldSuggestConvertToGroceryWithObjectID:(REMObjectID *)arg1 usingGroceryClassifierWithGroceryLocaleID:(NSString *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
+- (void)fetchGroceryLocalCorrectionsOfListWithObjectID:(REMObjectID *)arg1 completion:(void (^)(REMTextMemberships *, NSError *))arg2;
+- (void)fetchSuggestedSectionsForRemindersWithReminderTitles:(NSSet *)arg1 fromGroceryClassifierWithGroceryLocaleID:(NSString *)arg2 maxSuggestionsCountPerReminderTitle:(NSNumber *)arg3 confidenceScoreThreshold:(NSNumber *)arg4 shouldUseGlobalCorrections:(_Bool)arg5 completion:(void (^)(REMGrocerySuggestions *, NSError *))arg6;
+- (void)fetchSuggestedSectionNamesFromGroceryClassifierWithGroceryLocaleID:(NSString *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
+- (void)clearGroceryLocalCorrectionsOfListsOwnedByCurrentUserWithCompletion:(void (^)(NSError *))arg1;
 - (void)downloadPublicTemplateWithPublicLinkURLUUID:(NSUUID *)arg1 completion:(void (^)(REMObjectID *, NSError *))arg2;
 - (void)revokePublicLinkForTemplateWithObjectID:(REMObjectID *)arg1 completion:(void (^)(REMObjectID *, NSError *))arg2;
 - (void)createPublicContentPreviewOfTemplateWithObjectID:(REMObjectID *)arg1 configuration:(REMTemplatePublicLinkConfiguration *)arg2 completion:(void (^)(REMObjectID *, NSError *))arg3;
@@ -32,7 +39,7 @@
 - (void)updateShare:(CKShare *)arg1 accountID:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)createShareForObjectWithID:(REMObjectID *)arg1 appIconData:(NSData *)arg2 completion:(void (^)(CKShare *, NSError *))arg3;
 - (void)fetchShareForObjectWithID:(REMObjectID *)arg1 completion:(void (^)(CKShare *, NSError *))arg2;
-- (void)saveAccountStorages:(NSArray *)arg1 listStorages:(NSArray *)arg2 smartListStorages:(NSArray *)arg3 templateStorages:(NSArray *)arg4 reminderStorages:(NSArray *)arg5 changedKeys:(NSDictionary *)arg6 replicaManagers:(NSDictionary *)arg7 author:(NSString *)arg8 mode:(unsigned long long)arg9 synchronously:(_Bool)arg10 syncToCloudKit:(_Bool)arg11 completion:(void (^)(NSError *))arg12;
+- (void)saveAccountStorages:(NSArray *)arg1 listStorages:(NSArray *)arg2 listSectionStorages:(NSArray *)arg3 smartListStorages:(NSArray *)arg4 smartListSectionStorages:(NSArray *)arg5 templateStorages:(NSArray *)arg6 templateSectionStorages:(NSArray *)arg7 reminderStorages:(NSArray *)arg8 changedKeys:(NSDictionary *)arg9 replicaManagers:(NSDictionary *)arg10 author:(NSString *)arg11 mode:(unsigned long long)arg12 synchronously:(_Bool)arg13 syncToCloudKit:(_Bool)arg14 completion:(void (^)(NSError *))arg15;
 - (void)compressedDistributedEvaluationDataWithOptions:(REMDistributedEvaluationCollectionOptions *)arg1 completion:(void (^)(NSData *, NSError *))arg2;
 - (void)fetchReplicaManagersForAccountID:(REMObjectID *)arg1 bundleID:(NSString *)arg2 completion:(void (^)(NSDictionary *, NSError *))arg3;
 - (void)fetchReplicaManagerForAccountID:(REMObjectID *)arg1 completion:(void (^)(REMReplicaManagerSerializedData *, NSError *))arg2;

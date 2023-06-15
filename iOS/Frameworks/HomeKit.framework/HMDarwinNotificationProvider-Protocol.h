@@ -10,6 +10,7 @@
 @protocol OS_dispatch_queue;
 
 @protocol HMDarwinNotificationProvider <NSObject>
+- (_Bool)notifyIsValidToken:(int)arg1;
 - (unsigned int)notifyPost:(const char *)arg1;
 - (unsigned int)notifyCancel:(int)arg1;
 - (unsigned int)notifySetState:(int)arg1 state:(unsigned long long)arg2;

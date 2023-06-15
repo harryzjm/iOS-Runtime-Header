@@ -28,20 +28,21 @@ __attribute__((visibility("hidden")))
     unsigned int _timestamp;
     double _hostTime;
     double _startHostTime;
-    _Bool _useSineWave;
 }
 
 + (id)newAudioTapWithCaptureContext:(struct __CFString *)arg1 audioFormat:(id)arg2;
 + (id)newAudioTapWithSessionType:(unsigned int)arg1 audioFormat:(id)arg2;
 + (unsigned int)audioTapSessionTypeForInternalSessionType:(unsigned int)arg1;
 + (id)newAudioTapWithProcessID:(int)arg1 audioFormat:(id)arg2;
-+ (_Bool)isValidConfiguration:(CDStruct_b94bc9bb *)arg1;
++ (_Bool)isValidConfiguration:(CDStruct_152ea226 *)arg1;
 - (void)setupCannedAudioInjection;
 - (id)newAudioTapWithAudioStreamBasicDescription:(struct AudioStreamBasicDescription *)arg1;
+- (int)getQueueState;
+- (void)setQueueState:(int)arg1;
 - (_Bool)stop;
 - (_Bool)start;
 - (void)dealloc;
-- (id)initWithConfiguration:(CDStruct_b94bc9bb *)arg1;
+- (id)initWithConfiguration:(CDStruct_152ea226 *)arg1;
 
 @end
 

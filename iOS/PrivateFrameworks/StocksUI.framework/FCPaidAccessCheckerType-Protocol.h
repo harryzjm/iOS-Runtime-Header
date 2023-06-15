@@ -7,8 +7,8 @@
 @protocol FCBundleSubscriptionProviderType, FCChannelProviding, FCPurchaseProviderType;
 
 @protocol FCPaidAccessCheckerType
-@property(nonatomic, readonly) id <FCPurchaseProviderType> purchaseProvider;
-@property(nonatomic, readonly) id <FCBundleSubscriptionProviderType> bundleSubscriptionProvider;
+@property(readonly, nonatomic) id <FCPurchaseProviderType> purchaseProvider;
+@property(readonly, nonatomic) id <FCBundleSubscriptionProviderType> bundleSubscriptionProvider;
 - (void)prepareForUseWithCompletion:(void (^)(void))arg1;
 - (_Bool)isPreparedForUse;
 - (_Bool)canGetBundleSubscriptionToChannel:(id <FCChannelProviding>)arg1;

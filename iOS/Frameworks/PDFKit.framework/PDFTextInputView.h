@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+- (id)editMenuForTextRange:(id)arg1 suggestedActions:(id)arg2;
 - (void)layoutSubviews;
 - (void)clearAllDecoratedFoundText;
 - (void)decorateFoundTextRange:(id)arg1 inDocument:(id)arg2 usingStyle:(long long)arg3;
@@ -84,6 +85,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *description;
 @property(nonatomic) _Bool enablesReturnKeyAutomatically;
 @property(readonly) unsigned long long hash;
+@property(nonatomic) long long inlinePredictionType;
 @property(readonly, nonatomic) id insertDictationResultPlaceholder;
 @property(nonatomic) long long keyboardAppearance;
 @property(nonatomic) long long keyboardType;

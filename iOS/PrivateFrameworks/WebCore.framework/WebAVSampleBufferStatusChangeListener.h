@@ -9,7 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface WebAVSampleBufferStatusChangeListener : NSObject
 {
-    struct WeakPtr<WebCore::LocalSampleBufferDisplayLayer, WTF::EmptyCounter> _parent;
+    struct WeakPtr<WebCore::LocalSampleBufferDisplayLayer, WTF::DefaultWeakPtrImpl> _parent;
 }
 
 - (id).cxx_construct;

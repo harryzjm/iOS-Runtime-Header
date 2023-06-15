@@ -16,7 +16,10 @@
     MISSING_TYPE *completionHandler;
     MISSING_TYPE *appContext;
     MISSING_TYPE *needsNavigationView;
+    MISSING_TYPE *routingViewFrame;
 }
+
+- (id)copyWithZone:(void *)arg1;
 
 @end
 

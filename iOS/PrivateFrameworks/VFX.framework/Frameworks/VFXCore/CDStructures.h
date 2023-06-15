@@ -4,11 +4,55 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#pragma mark Blocks
-
-typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
-
 #pragma mark Named Structures
+
+struct BindingsCache {
+    struct BufferAndOffset buffers[32];
+    id textures[32];
+    id samplers[16];
+};
+
+struct BufferAndOffset {
+    id buffer;
+    unsigned long long offset;
+};
+
+struct Cache {
+    id depthStencilStates;
+    id renderPipelineState;
+    unsigned long long winding;
+    unsigned long long cullMode;
+    unsigned long long fillMode;
+    unsigned long long clipMode;
+    _Bool windingChanged;
+    _Bool cullModeChanged;
+    _Bool fillModeChanged;
+    _Bool clipModeChanged;
+    _Bool inverseWinding;
+    unsigned int stencilReferenceValueFront;
+    unsigned int stencilReferenceValueBack;
+};
+
+struct ImDrawData {
+    _Bool _field1;
+    struct ImDrawList **_field2;
+    int _field3;
+    int _field4;
+    int _field5;
+    struct ImVec2 _field6;
+    struct ImVec2 _field7;
+    struct ImVec2 _field8;
+    struct ImGuiViewport *_field9;
+};
+
+struct ImDrawList;
+
+struct ImGuiViewport;
+
+struct ImVec2 {
+    float _field1;
+    float _field2;
+};
 
 struct MTLResourceID {
     unsigned long long _field1;

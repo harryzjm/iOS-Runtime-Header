@@ -6,8 +6,12 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
+@class MISSING_TYPE;
+
 @interface _TtC19_AppIntents_SwiftUI16AppSwiftUIBridge : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *lock;
+    MISSING_TYPE *interactionIdToEntityIdentifierTable;
 }
 
 @end

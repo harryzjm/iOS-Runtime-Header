@@ -34,6 +34,7 @@
 - (id)fp_annotatedErrorWithName:(id)arg1;
 - (id)fp_annotatedErrorWithName:(id)arg1 path:(id)arg2 variant:(id)arg3;
 - (id)fp_annotatedErrorWithItems:(id)arg1 variant:(id)arg2;
+@property(readonly, nonatomic) _Bool fp_isNameTooLongError;
 @property(readonly, nonatomic) _Bool fp_isNotPermittedError;
 @property(readonly, nonatomic) _Bool fp_isFeatureUnsupportedError;
 @property(readonly, nonatomic) _Bool fp_isSyncAnchorExpiredError;

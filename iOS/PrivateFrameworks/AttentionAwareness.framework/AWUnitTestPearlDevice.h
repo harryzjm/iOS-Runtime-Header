@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AWUnitTestFaceDetectOperation;
+@class AVFoundationUnitTestSession, AWUnitTestFaceDetectOperation, NSMutableArray;
 @protocol BKDevicePearlDelegate, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -15,8 +15,10 @@ __attribute__((visibility("hidden")))
     CDStruct_2c6bab44 _sampleStats;
     NSObject<OS_dispatch_queue> *_awQueue;
     AWUnitTestFaceDetectOperation *_lastOperation;
-    CDUnknownBlockType _displayCallback;
-    CDUnknownBlockType _smartCoverCallback;
+    NSMutableArray *_displayCallbacks;
+    NSMutableArray *_smarCoverCallbacks;
+    NSMutableArray *_carplayCallbacks;
+    AVFoundationUnitTestSession *_AVFoundationSession;
     _Bool _facePresent;
     _Bool _pearlError;
     id <BKDevicePearlDelegate> _delegate;
@@ -24,6 +26,7 @@ __attribute__((visibility("hidden")))
     CDStruct_2c6bab44 *_sampleStatsPtr;
 }
 
++ (id)sharedAVFoundationSession;
 + (id)sharedDevice;
 - (void).cxx_destruct;
 @property _Bool pearlError; // @synthesize pearlError=_pearlError;
@@ -33,6 +36,9 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak id <BKDevicePearlDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)setPearlErrorState:(_Bool)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)setPearlErrorState:(_Bool)arg1;
+- (void)setCarplayStateChangedCallback:(CDUnknownBlockType)arg1;
+- (void)setCarPlayConnected:(_Bool)arg1;
+- (void)setCarPlayConnected:(_Bool)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)setSmartCoverCallback:(CDUnknownBlockType)arg1;
 - (void)setSmartCoverClosed:(_Bool)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)setSmartCoverClosed:(_Bool)arg1;
@@ -48,6 +54,7 @@ __attribute__((visibility("hidden")))
 - (void)deliverPearlDeviceState:(long long)arg1;
 - (void)deliverPearlDeviceEvent:(long long)arg1;
 - (id)createPresenceDetectOperationWithError:(id *)arg1;
+- (id)AVFoundationSession;
 - (id)init;
 
 @end

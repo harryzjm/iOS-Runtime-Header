@@ -7,9 +7,9 @@
 @class CKTranscriptLayoutEnvironment, NSArray, NSCollectionLayoutEdgeSpacing, NSCollectionLayoutItem, NSString;
 
 @protocol CKTranscriptItemLayoutProvider
+@property(readonly, copy, nonatomic) NSString *layoutGroupIdentifier;
+@property(readonly, nonatomic) Class chatItemClass;
 - (NSCollectionLayoutEdgeSpacing *)layoutItemSpacingWithEnvironment:(CKTranscriptLayoutEnvironment *)arg1 datasourceItemIndex:(long long)arg2 allDatasourceItems:(NSArray *)arg3 supplementryItems:(NSArray *)arg4;
 - (NSCollectionLayoutItem *)layoutItemWithEnvironment:(CKTranscriptLayoutEnvironment *)arg1 datasourceItemIndex:(long long)arg2 allDatasourceItems:(NSArray *)arg3;
-@property(nonatomic, readonly) NSString *layoutGroupIdentifier;
-@property(nonatomic, readonly) Class chatItemClass;
 @end
 

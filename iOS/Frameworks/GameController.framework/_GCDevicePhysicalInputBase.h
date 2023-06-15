@@ -6,40 +6,52 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSString, _GCDevicePhysicalInputElementsArray, _GCDevicePhysicalInputElementsCollection, _GCDevicePhysicalInputFacade, _GCDevicePhysicalInputStateTable;
-@protocol GCDevice;
+@class NSDictionary, NSSet, NSString, _GCDevicePhysicalInput, _GCDevicePhysicalInputElementsArray, _GCDevicePhysicalInputElementsCollection, _GCDevicePhysicalInputFacade, _GCDevicePhysicalInputStateTable;
+@protocol GCDevice, _GCDevicePhysicalInputDataSource;
 
 __attribute__((visibility("hidden")))
 @interface _GCDevicePhysicalInputBase : NSObject
 {
     id <GCDevice> _device;
+    id <_GCDevicePhysicalInputDataSource> _dataSource;
     unsigned long long _elementCount;
     id *_indexedElements;
     NSDictionary *_elementIndexByAlias;
     struct __CFArray *_additionalViews;
     _GCDevicePhysicalInputElementsArray *_indexedElementViews;
     _GCDevicePhysicalInputElementsCollection *_elementCollection;
+    _GCDevicePhysicalInputStateTable *_viewConfiguration;
     _GCDevicePhysicalInputStateTable *_viewProperties;
     _GCDevicePhysicalInputStateTable *_viewState;
+    NSSet *_attributes;
     _GCDevicePhysicalInputFacade *_facade;
 }
 
++ (id)debugDescription;
++ (id)description;
+@property(readonly, copy) NSString *debugDescription;
+- (id)redactedDescription;
+@property(readonly, copy) NSString *description;
 - (id)view:(id)arg1 viewForSlot:(unsigned long long *)arg2;
+- (_Bool)view:(id)arg1 testAndSetObjectValue:(id)arg2 forSlot:(unsigned long long *)arg3 policy:(unsigned long long)arg4;
 - (void)view:(id)arg1 setObjectValue:(id)arg2 forSlot:(unsigned long long *)arg3 policy:(unsigned long long)arg4;
 - (id)view:(id)arg1 objectValueForSlot:(unsigned long long *)arg2;
+- (_Bool)view:(id)arg1 testAndSetPrimitiveValue:(unsigned long long)arg2 forSlot:(unsigned long long *)arg3;
 - (void)view:(id)arg1 setPrimitiveValue:(unsigned long long)arg2 forSlot:(unsigned long long *)arg3;
 - (unsigned long long)view:(id)arg1 primitiveValueForSlot:(unsigned long long *)arg2;
+- (id)_stateTableForSlot:(union SlotID)arg1;
 @property(readonly) double lastEventLatency;
 @property(readonly) double lastEventTimestamp;
 @property(readonly, getter=isSnapshot) _Bool snapshot;
+- (void)updateViewStateIfNeeded;
+@property(readonly) _GCDevicePhysicalInput *physicalInput;
+@property __weak id <_GCDevicePhysicalInputDataSource> dataSource;
 @property __weak id <GCDevice> device;
 - (void)dealloc;
 - (id)init;
-- (id)_initWithFacadeTemplate:(id)arg1 elementsTemplates:(id)arg2 context:(id)arg3;
+- (id)_initWithFacadeTemplate:(id)arg1 elementsTemplates:(id)arg2 attributes:(id)arg3 context:(id)arg4;
 
 // Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

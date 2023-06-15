@@ -13,11 +13,6 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (const void *)lmap;
-- (const void *)lmapOfWall;
-- (id)runWithSemanticImage:(id)arg1 geometryMeta:(id)arg2;
-- (id)convertLcnnResultTo3DSurface:(const void *)arg1 withSurfaceType:(unsigned char)arg2 scale:(float)arg3 shift: /* Error: Ran out of types for this method. */;
-- (id)initWithAllocedInput:(struct __CVBuffer *)arg1;
 
 @end
 

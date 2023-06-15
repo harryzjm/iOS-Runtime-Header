@@ -6,22 +6,25 @@
 
 #import "BRCLocalItem.h"
 
-@class BRCAliasItem, BRCDocumentItem, NSString;
+@class BRCAliasItem, BRCDocumentItem, NSNumber, NSString;
 
 __attribute__((visibility("hidden")))
 @interface BRCDirectoryItem : BRCLocalItem
 {
     long long _mtime;
+    _Bool _needsDeleteForItemIDTransfer;
+    NSNumber *_childItemCount;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) long long mtime; // @synthesize mtime=_mtime;
+- (_Bool)isCrossZoneMoveTombstone;
+- (void)markNeedsDeleteForItemIDTransfer;
 - (id)collaborationIdentifierIfComputable;
 - (id)asShareableItem;
 - (_Bool)isShareableItem;
-- (_Bool)startDownloadInTask:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
-- (_Bool)evictInTask:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
 - (void)prepareForSyncUpInZone:(id)arg1;
-- (_Bool)_deleteFromDB:(id)arg1 keepAliases:(_Bool)arg2 offline:(_Bool)arg3;
+- (_Bool)_deleteFromDB:(id)arg1 keepAliases:(_Bool)arg2;
 - (_Bool)_updateInDB:(id)arg1 diffs:(unsigned long long)arg2;
 - (_Bool)_insertInDB:(id)arg1 dbRowID:(unsigned long long)arg2;
 - (_Bool)_recomputeChildItemCount;
@@ -38,23 +41,27 @@ __attribute__((visibility("hidden")))
 - (void)transformIntoFSRoot;
 - (_Bool)containsPendingDeleteDocuments;
 - (_Bool)containsPendingUploadOrSyncUp;
-- (_Bool)containsPendingDownload;
-- (_Bool)containsFault;
 - (_Bool)containsDirFault;
 - (_Bool)containsOverQuotaItems;
 - (_Bool)isSharedToMeOrContainsSharedToMeItem;
 - (_Bool)isSharedByMeOrContainsSharedByMeItem;
 - (_Bool)possiblyContainsSharedItem;
+- (id)descriptionWithContext:(id)arg1;
+- (_Bool)isAppLibraryTrashFolder;
 - (void)_learnItemID:(id)arg1 serverItem:(id)arg2;
 - (void)updateItemMetadataFromServerItem:(id)arg1 appliedSharingPermission:(_Bool)arg2;
+- (id)_initWithLocalItem:(id)arg1;
 - (id)_initWithServerItem:(id)arg1 dbRowID:(unsigned long long)arg2;
 - (id)_initFromPQLResultSet:(id)arg1 session:(id)arg2 db:(id)arg3 error:(id *)arg4;
 - (_Bool)hasShareIDAndIsOwnedByMe;
 @property(readonly, nonatomic) BRCDirectoryItem *asDirectory;
+- (unsigned long long)diffAgainstLocalItem:(id)arg1;
 - (unsigned long long)diffAgainstServerItem:(id)arg1;
 - (_Bool)isDirectoryWithPackageName;
 - (_Bool)isDirectoryFault;
 - (_Bool)isDirectory;
+- (_Bool)startDownloadInTask:(id)arg1 options:(unsigned long long)arg2 etagIfLoser:(id)arg3 stageFileName:(id)arg4 error:(id *)arg5;
+- (_Bool)evictInTask:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
 - (_Bool)changedAtRelativePath:(id)arg1 scanPackage:(_Bool)arg2;
 - (void)markRemovedFromFilesystemForServerEdit:(_Bool)arg1;
 - (void)_markLostDirectoryAsAlmostDead;
@@ -65,6 +72,8 @@ __attribute__((visibility("hidden")))
 - (id)_initWithRelativePath:(id)arg1 parentGlobalID:(id)arg2;
 - (_Bool)updateLocationAndMetaFromFSAtPath:(id)arg1 parentGlobalID:(id)arg2;
 - (_Bool)updateFromFSAtPath:(id)arg1 parentGlobalID:(id)arg2;
+- (_Bool)containsPendingDownload;
+- (_Bool)containsFault;
 - (id)folderRootStructureRecord;
 
 // Remaining properties

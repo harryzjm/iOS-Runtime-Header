@@ -41,7 +41,6 @@
 @property(nonatomic) _Bool needsFormulaReset; // @synthesize needsFormulaReset=_needsFormulaReset;
 - (id)description;
 @property(nonatomic) _Bool shouldUseWideRows;
-- (void)copyPasteboardCustomFormatsFromTableModel:(id)arg1;
 - (id)mapReassigningPasteboardCustomFormatKeys:(id)arg1;
 - (void)addPasteboardCustomFormatsToDocumentAndUpdateCells;
 - (void)updateCustomFormatsAtKey:(id)arg1;
@@ -72,6 +71,8 @@
 - (unsigned long long)p_tableStyleAreaForCellCoord:(struct TSUModelCellCoord)arg1;
 - (unsigned char)p_ColumnCategoryLevelForCellCoord:(struct TSUModelCellCoord)arg1;
 - (unsigned char)p_RowCategoryLevelForCellCoord:(struct TSUModelCellCoord)arg1 isLabel:(_Bool *)arg2;
+- (void)replaceReferencedStylesUsingBlock:(CDUnknownBlockType)arg1;
+- (void)addReferencedStylesToSet:(id)arg1;
 - (void)adoptStylesheet:(id)arg1 withMapper:(id)arg2;
 @property(readonly, nonatomic) _Bool hasMigratableStylesInCells;
 - (void)enumerateCellsForSOSSerializationWithBlock:(CDUnknownBlockType)arg1;
@@ -100,6 +101,7 @@
 - (void)registerAllFormulasWithCalculationEngine:(id)arg1 wasCrossDocumentPaste:(_Bool)arg2;
 - (void)upgradeFormulasForGroupByUIDChange;
 - (void)upgradeDuringDocumentUpgradeIfNeeded:(unsigned long long)arg1;
+- (void)loadAllLazyReferences;
 - (void)saveToArchiver:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
 - (void)resetForCategoriesWithForce:(_Bool)arg1;

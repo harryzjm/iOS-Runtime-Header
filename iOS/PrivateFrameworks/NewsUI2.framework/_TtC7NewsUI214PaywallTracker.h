@@ -21,6 +21,7 @@
     MISSING_TYPE *articleExposureContextData;
     MISSING_TYPE *campaignData;
     MISSING_TYPE *adReferralData;
+    MISSING_TYPE *puzzleData;
 }
 
 @end

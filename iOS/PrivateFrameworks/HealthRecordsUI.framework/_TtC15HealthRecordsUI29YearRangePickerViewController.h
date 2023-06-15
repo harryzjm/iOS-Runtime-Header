@@ -12,9 +12,9 @@ __attribute__((visibility("hidden")))
 @interface _TtC15HealthRecordsUI29YearRangePickerViewController : HKTableViewController
 {
     MISSING_TYPE *defaultCellIdentifier;
-    MISSING_TYPE *delegate;
-    MISSING_TYPE *dataSource;
     MISSING_TYPE *selectedRow;
+    MISSING_TYPE *dataSource;
+    MISSING_TYPE *delegate;
 }
 
 - (void).cxx_destruct;

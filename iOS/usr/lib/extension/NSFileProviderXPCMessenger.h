@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)collectDebuggingInformationWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)movingItemAtURL:(id)arg1 requiresProvidingWithDestinationURL:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)movingItemAtURL:(id)arg1 withInfo:(id)arg2 fileName:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (oneway void)observeEndOfWriteAtURL:(id)arg1 forClaimWithID:(id)arg2 fromProcessWithIdentifier:(int)arg3;
 - (oneway void)observePresentationChangeOfKind:(id)arg1 forPresenterOfURL:(id)arg2 withInfo:(id)arg3;
 - (void)providePhysicalItemForURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

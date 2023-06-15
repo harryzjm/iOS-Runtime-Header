@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class ASCAuthorizationPresentationContext, ASCredentialRequestButtonContinue, NSLayoutConstraint, UIActivityIndicatorView, UILabel, UITextField;
+@class ASCAuthorizationPresentationContext, ASCredentialRequestButtonContinue, NSLayoutConstraint, NSString, UILabel, UITextField;
 @protocol ASPasswordAuthenticationPaneViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -17,7 +17,6 @@ __attribute__((visibility("hidden")))
     UILabel *_subtitleLabel;
     UITextField *_usernameField;
     UITextField *_secureTextField;
-    UIActivityIndicatorView *_signInButtonActivityIndicator;
     ASCredentialRequestButtonContinue *_signInButton;
     NSLayoutConstraint *_paneHeaderStackViewBottomKeyboardConstraint;
     id <ASPasswordAuthenticationPaneViewControllerDelegate> _authenticationDelegate;
@@ -25,20 +24,20 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <ASPasswordAuthenticationPaneViewControllerDelegate> authenticationDelegate; // @synthesize authenticationDelegate=_authenticationDelegate;
+- (_Bool)textFieldShouldReturn:(id)arg1;
 - (_Bool)canBecomeFirstResponder;
 - (_Bool)resignFirstResponder;
 - (_Bool)becomeFirstResponder;
-- (void)keyboardDidShow:(id)arg1;
-- (void)sizeToFitPaneContentAnimated:(_Bool)arg1;
+- (void)_keyboardHeightDidChange;
+- (void)_keyboardWillHide:(id)arg1;
+- (void)_keyboardWillShow:(id)arg1;
 - (void)_completeManualPasswordCredentialEntry;
 - (void)_textFieldChanged:(id)arg1;
 - (double)_intrinsicContentHeight;
-- (void)_stopAnimatingActivityIndicator;
-- (void)_startAnimatingActivityIndicator;
-- (id)_activateSecurityKeySubtitleText;
-- (id)_subtitleTextForPINValidationError:(id)arg1;
-- (void)_pinValidationFailedWithError:(id)arg1;
 - (void)_signInButtonTapped;
+- (id)_subtitleLabelFont;
+- (id)_titleLabelTextColor;
+- (id)_titleLabelFont;
 - (double)_secureTextFieldInsetMargin;
 - (double)_signInButtonInsetMargin;
 - (double)_containerViewHorizontalMargin;
@@ -54,6 +53,12 @@ __attribute__((visibility("hidden")))
 - (void)_createViews;
 - (void)viewDidLoad;
 - (id)initWithPersona:(unsigned long long)arg1 presentationContext:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

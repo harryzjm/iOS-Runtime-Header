@@ -6,43 +6,37 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMutableArray, NSMutableDictionary, NSMutableIndexSet, NSSet, NSString, NSUUID, UICollectionView, UICollectionViewData, _UICollectionViewFocusedItemState;
+@class NSArray, NSIndexSet, NSMutableArray, NSMutableDictionary, NSSet, NSString, NSUUID, UICollectionView, UICollectionViewData, _UICollectionViewFocusedItemState;
 
 __attribute__((visibility("hidden")))
 @interface UICollectionViewUpdate : NSObject
 {
-    UICollectionView *_collectionView;
     NSArray *_updateItems;
     UICollectionViewData *_oldModel;
     UICollectionViewData *_newModel;
-    struct CGRect _oldVisibleBounds;
-    struct CGRect _newVisibleBounds;
-    NSMutableIndexSet *_movedItems;
-    NSMutableIndexSet *_movedSections;
-    NSMutableIndexSet *_deletedSections;
-    NSMutableIndexSet *_insertedSections;
-    long long *_oldSectionMap;
-    long long *_newSectionMap;
-    long long *_oldGlobalItemMap;
-    long long *_newGlobalItemMap;
+    struct CGPoint _oldContentOffset;
+    struct CGPoint _newContentOffset;
+    NSIndexSet *_deletedSections;
+    NSIndexSet *_insertedSections;
     NSMutableArray *_deletedSupplementaryIndexesSectionArray;
     NSMutableArray *_insertedSupplementaryIndexesSectionArray;
     NSMutableDictionary *_deletedSupplementaryTopLevelIndexesDict;
     NSMutableDictionary *_insertedSupplementaryTopLevelIndexesDict;
     _UICollectionViewFocusedItemState *_oldFocusedItemState;
     _UICollectionViewFocusedItemState *_newFocusedItemState;
-    NSUUID *_identifier;
+    UICollectionView *_collectionView;
     NSSet *_itemAnchoredAuxiliaryElementKinds;
     NSSet *_moveItemSourceIndexPaths;
+    struct _UIDataSourceUpdateMaps _updateMaps;
     struct {
         unsigned int layoutPreparedForUpdates:1;
+        unsigned int animated:1;
     } _flags;
+    NSString *_invalidUpdatesErrorMessage;
+    NSUUID *_identifier;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
-- (void)setLayoutPreparedForUpdates;
-@property(readonly, nonatomic, getter=isLayoutPreparedForUpdates) _Bool layoutPreparedForUpdates;
 - (long long)finalSectionCount;
 - (long long)initialSectionCount;
 - (struct _NSRange)finalSectionGlobalItemRangeForSection:(long long)arg1;
@@ -55,19 +49,9 @@ __attribute__((visibility("hidden")))
 - (id)finalIndexPathForInitialIndexPath:(id)arg1;
 - (long long)initialGlobalIndexForFinalGlobalIndex:(long long)arg1;
 - (long long)finalGlobalIndexForInitialGlobalIndex:(long long)arg1;
-- (_Bool)hasMovedItemAtOldIndexPath:(id)arg1;
-- (_Bool)hasDeletedAuxiliaryElementOfKind:(id)arg1 atIndexPath:(id)arg2;
-- (_Bool)hasInsertedAuxiliaryElementOfKind:(id)arg1 atIndexPath:(id)arg2;
-- (id)validatedOldIndexPathForSupplementaryElementOfKind:(id)arg1 newIndexPath:(id)arg2;
-- (id)oldIndexPathForSupplementaryElementOfKind:(id)arg1 newIndexPath:(id)arg2;
-- (id)validatedNewIndexPathForSupplementaryElementOfKind:(id)arg1 oldIndexPath:(id)arg2;
-- (id)newIndexPathForSupplementaryElementOfKind:(id)arg1 oldIndexPath:(id)arg2;
-- (void)_computeAuxiliaryUpdates;
-- (void)_computeItemUpdates;
-- (void)_computeSectionUpdates;
 @property(readonly, copy) NSString *description;
 - (void)dealloc;
-- (id)initWithCollectionView:(id)arg1 updateItems:(id)arg2 moveItemSourceIndexPaths:(id)arg3 oldModel:(id)arg4 newModel:(id)arg5 oldVisibleBounds:(struct CGRect)arg6 newVisibleBounds:(struct CGRect)arg7;
+- (void)_generateUpdateMaps;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

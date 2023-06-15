@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <EventKitUI/EKUIAppReviewPrompter-Protocol.h>
 #import <EventKitUI/NSObject-Protocol.h>
 
 @class EKUIConfirmMultiPasteViewController;
 
-@protocol EKUIConfirmMultiPasteViewControllerDelegate <NSObject>
+@protocol EKUIConfirmMultiPasteViewControllerDelegate <NSObject, EKUIAppReviewPrompter>
 - (void)confirmMultiPasteViewController:(EKUIConfirmMultiPasteViewController *)arg1 finishedWithCancel:(_Bool)arg2;
 @end
 

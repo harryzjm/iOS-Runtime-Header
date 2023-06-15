@@ -15,6 +15,8 @@
     MISSING_TYPE *tagService;
     MISSING_TYPE *recommendationService;
     MISSING_TYPE *configManager;
+    MISSING_TYPE *sportsOnboardingManager;
+    MISSING_TYPE *sportsGraphManager;
 }
 
 @end

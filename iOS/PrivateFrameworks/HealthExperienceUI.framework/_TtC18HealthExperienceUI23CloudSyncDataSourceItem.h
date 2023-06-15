@@ -16,6 +16,7 @@
     MISSING_TYPE *action;
     MISSING_TYPE *animateCloudSync;
     MISSING_TYPE *reuseIdentifier;
+    MISSING_TYPE *baseIdentifier;
 }
 
 @end

@@ -9,20 +9,20 @@
 @class GDSQLGraphObjectRetriever, _PASSqliteDatabase;
 @protocol GDViewAccessAssertion;
 
-__attribute__((visibility("hidden")))
 @interface GDVisualIdentifierView : NSObject
 {
     id <GDViewAccessAssertion> _accessAssertion;
     _PASSqliteDatabase *_db;
     GDSQLGraphObjectRetriever *_personRetriever;
     GDSQLGraphObjectRetriever *_locationRetriever;
+    GDSQLGraphObjectRetriever *_softwareRetriever;
 }
 
 - (void).cxx_destruct;
 - (void)enumeratePeopleMatchingName:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)enumeratePeopleWithBlock:(CDUnknownBlockType)arg1;
 - (id)personForIdentifier:(id)arg1;
-- (void)linkLocationsForPerson:(id)arg1;
+- (void)linkEntitiesForPerson:(id)arg1;
 - (id)initWithAccessAssertion:(id)arg1 database:(id)arg2;
 
 @end

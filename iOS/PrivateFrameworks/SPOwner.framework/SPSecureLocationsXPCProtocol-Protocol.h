@@ -14,6 +14,7 @@
 - (void)isLocationPublishingDeviceWithCompletion:(void (^)(_Bool, NSError *))arg1;
 - (void)performKeyRollWithCompletion:(void (^)(NSError *))arg1;
 - (void)shareCurrentKeyWithId:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)shareCurrentKeyWithId:(NSString *)arg1 idsHandles:(NSArray *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)shouldStartLocationMonitorWithCompletion:(void (^)(_Bool, NSError *))arg1;
 - (void)receivedLocationCommand:(NSData *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)receivedLocationPayload:(NSData *)arg1 completion:(void (^)(NSError *))arg2;

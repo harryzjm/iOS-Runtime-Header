@@ -26,8 +26,14 @@
 - (struct CGRect)vk_cropRectZeroAlpha;
 - (id)vk_decodeInBackground;
 - (void)vk_decodeWithCompletion:(CDUnknownBlockType)arg1;
+- (void)vk_imageDataWithRequirements:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)vk_imageDataWithRequirements:(id)arg1;
 - (id)vk_imageDataWithUTType:(id)arg1 metadata:(id)arg2;
 - (id)vk_imageDataWithUTType:(id)arg1;
+- (id)vk_HEICDataLossless;
+- (id)vk_HEICData;
+- (id)vk_HEICDataWithCompressionQuality:(double)arg1 orientation:(long long)arg2;
+- (id)vk_HEICDataWithCompressionQuality:(double)arg1;
 - (id)vk_PNGDataWithOrientation:(long long)arg1;
 - (id)vk_PNGData;
 - (id)vk_JPEGDataWithOrientation:(long long)arg1;

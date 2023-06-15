@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (id)sectionIndexTitlesForTableView:(id)arg1;
 - (id)tableView:(id)arg1 indexPathForSectionIndexTitle:(id)arg2 atIndex:(long long)arg3;
+@property(readonly, nonatomic) long long cellAccessoryType;
 - (void)setNumberOfLinesForCell:(id)arg1 atIndexPath:(id)arg2;
 - (void)_scrollToTableHeaderView;
 - (id)_textColorForRowAtIndexPath:(id)arg1;

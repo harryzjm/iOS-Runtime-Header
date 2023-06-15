@@ -11,6 +11,7 @@
 @protocol AVVoiceControllerRecordDelegate <NSObject>
 
 @optional
+- (void)voiceControllerEventOccurred:(AVVoiceController *)arg1 forStream:(unsigned long long)arg2 error:(NSError *)arg3;
 - (void)voiceControllerStreamInvalidated:(AVVoiceController *)arg1 forStream:(unsigned long long)arg2;
 - (void)voiceControllerLPCMAudioCallback:(AVVoiceController *)arg1 forStream:(unsigned long long)arg2 buffer:(AVVCAudioBuffer *)arg3;
 - (void)voiceControllerAudioCallback:(AVVoiceController *)arg1 forStream:(unsigned long long)arg2 buffer:(AVVCAudioBuffer *)arg3;

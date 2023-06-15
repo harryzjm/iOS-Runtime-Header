@@ -6,7 +6,7 @@
 
 #import "SFCollaborationItem.h"
 
-@class CKContainerSetupInfo, LPLinkMetadata, NSArray, NSItemProvider, NSString, NSUUID, SFCollaborationCloudSharingResult, SFCollaborationMetadata, SFCollaborationShareOptions;
+@class CKContainerSetupInfo, LPLinkMetadata, NSArray, NSError, NSItemProvider, NSNumber, NSString, NSUUID, SFCollaborationCloudSharingResult, SFCollaborationMetadata, SFCollaborationShareOptions;
 
 __attribute__((visibility("hidden")))
 @interface _SFCKShareCollaborationItem : SFCollaborationItem
@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 // Remaining properties
 @property(readonly, nonatomic) id activityItem;
 @property(readonly, copy, nonatomic) NSString *additionalContentIdentifier;
+@property(readonly, nonatomic) NSNumber *canAddPeople;
 @property(retain, nonatomic) SFCollaborationCloudSharingResult *cloudSharingResult;
 @property(readonly, copy, nonatomic) NSString *contentIdentifier;
 @property(readonly, copy) NSString *debugDescription;
@@ -43,10 +44,12 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy, nonatomic) NSUUID *identifier;
 @property(readonly, nonatomic) NSItemProvider *itemProvider;
 @property(readonly, nonatomic) SFCollaborationMetadata *metadata;
+@property(readonly, nonatomic) NSError *metadataLoadError;
 @property(copy, nonatomic) NSArray *options;
 @property(readonly, nonatomic) id placeholderActivityItem;
 @property(readonly, copy, nonatomic) NSArray *sendCopyItemPlaceholderValues;
 @property(readonly, copy, nonatomic) NSArray *sendCopyItems;
+@property(readonly, nonatomic) id sendCopyRepresentation;
 @property(copy, nonatomic) SFCollaborationShareOptions *shareOptions;
 @property(readonly) Class superclass;
 @property(readonly, nonatomic) long long type;

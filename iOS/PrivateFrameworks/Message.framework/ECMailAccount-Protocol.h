@@ -11,10 +11,10 @@
 @class ACAccount, NSArray, NSString;
 
 @protocol ECMailAccount <NSObject, NSCopying, ECAccountPropertyProviding>
-@property(nonatomic, readonly) ACAccount *systemAccount;
-@property(nonatomic, readonly) NSString *identifier;
-@property(nonatomic, copy) NSString *password;
-@property(nonatomic, copy) NSString *hostname;
-@property(nonatomic, readonly) NSArray *emailAddressStrings;
+@property(readonly, nonatomic) ACAccount *systemAccount;
+@property(readonly, copy, nonatomic) NSString *identifier;
+@property(copy, nonatomic) NSString *password;
+@property(copy, nonatomic) NSString *hostname;
+@property(readonly, copy, nonatomic) NSArray *emailAddressStrings;
 @end
 

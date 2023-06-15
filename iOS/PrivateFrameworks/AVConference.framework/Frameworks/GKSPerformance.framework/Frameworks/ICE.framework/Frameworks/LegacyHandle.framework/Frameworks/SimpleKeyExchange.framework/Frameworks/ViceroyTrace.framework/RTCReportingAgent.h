@@ -6,8 +6,8 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDate, NSMutableDictionary, NSNumber, NSString, RTCReporting, VCAggregator;
-@protocol OS_dispatch_queue, OS_nw_activity, OS_os_transaction;
+@class NSArray, NSDate, NSDictionary, NSMutableDictionary, NSNumber, NSString, RTCReporting, VCAggregator;
+@protocol OS_dispatch_queue, OS_dispatch_semaphore, OS_dispatch_source, OS_nw_activity, OS_os_transaction;
 
 __attribute__((visibility("hidden")))
 @interface RTCReportingAgent : NSObject
@@ -16,10 +16,17 @@ __attribute__((visibility("hidden")))
     RTCReporting *_reportingObject;
     void *_symptomReporter;
     NSObject<OS_dispatch_queue> *_reportingQueue;
+    NSObject<OS_dispatch_queue> *_periodicTaskManagementQueue;
+    NSObject<OS_dispatch_queue> *_periodicTaskTelemetryCollectionQueue;
+    NSObject<OS_dispatch_source> *_periodicTimer;
+    NSMutableDictionary *_periodicServiceRegisteredBlocks;
+    int _periodicTimerIterationCounter;
+    NSObject<OS_dispatch_semaphore> *_reportingConfigurationCompleteSemaphore;
     NSArray *_backends;
     VCAggregator *_aggregator;
     struct os_unfair_lock_s _aggregatorLock;
     int _clientType;
+    struct tagVCReportingClientExperimentSettings _reportingClientExperimentSettings;
     NSString *_serviceName;
     int _nextUnassignedReportingModuleID;
     NSMutableDictionary *_userInfoMap;
@@ -30,13 +37,17 @@ __attribute__((visibility("hidden")))
     NSNumber *_subSessionId;
 }
 
-@property NSNumber *subSessionId; // @synthesize subSessionId=_subSessionId;
+@property(copy) NSNumber *subSessionId; // @synthesize subSessionId=_subSessionId;
+@property(readonly) NSDictionary *periodicServiceRegisteredBlocks; // @synthesize periodicServiceRegisteredBlocks=_periodicServiceRegisteredBlocks;
+@property(nonatomic) struct tagVCReportingClientExperimentSettings reportingClientExperimentSettings; // @synthesize reportingClientExperimentSettings=_reportingClientExperimentSettings;
+@property(readonly) NSObject<OS_dispatch_source> *periodicTimer; // @synthesize periodicTimer=_periodicTimer;
 @property(copy) NSString *serviceName; // @synthesize serviceName=_serviceName;
 @property(getter=isABCForceDisabled) _Bool forceDisableABC; // @synthesize forceDisableABC=_forceDisableABC;
 @property(readonly) NSMutableDictionary *userInfoMap; // @synthesize userInfoMap=_userInfoMap;
 @property int clientType; // @synthesize clientType=_clientType;
 @property(readonly) VCAggregator *aggregator; // @synthesize aggregator=_aggregator;
 @property(copy) NSArray *backends; // @synthesize backends=_backends;
+@property(readonly) NSObject<OS_dispatch_queue> *periodicTaskManagementQueue; // @synthesize periodicTaskManagementQueue=_periodicTaskManagementQueue;
 @property(readonly) NSObject<OS_dispatch_queue> *reportingQueue; // @synthesize reportingQueue=_reportingQueue;
 @property(readonly) RTCReporting *reportingObject; // @synthesize reportingObject=_reportingObject;
 - (int)learntBitrateForSegment:(id)arg1 defaultValue:(int)arg2;
@@ -53,14 +64,30 @@ __attribute__((visibility("hidden")))
 - (void)report:(id)arg1 segmentDirection:(int)arg2;
 - (unsigned short)reportingSegmentMethodForClientType:(int)arg1;
 - (void)reportingSetNetworkActivityReportingEnabled:(_Bool)arg1;
-- (void)initAdaptiveLearningWithParameters:(id)arg1;
+- (void)setupAdaptiveLearningWithParameters:(id)arg1;
 - (_Bool)sendMessageWithCategory:(unsigned short)arg1 type:(unsigned short)arg2 payload:(id)arg3 error:(id *)arg4;
+- (_Bool)unregisterPeriodTaskForModule:(unsigned int)arg1;
+- (_Bool)registerPeriodicTaskForModule:(unsigned int)arg1 needToUpdate:(_Bool)arg2 needToReport:(_Bool)arg3 serviceBlock:(CDUnknownBlockType)arg4;
+- (void)stopLogTimer;
+- (void)startLogTimerWithInterval:(int)arg1 reportingMultiplier:(int)arg2 category:(unsigned short)arg3 type:(unsigned short)arg4;
+- (void)periodicTaskRunner:(unsigned short)arg1 type:(unsigned short)arg2 intervalMultiplier:(int)arg3 updateTimeout:(unsigned long long)arg4;
+- (void)telemetryUpdate:(id)arg1 updateTimeout:(unsigned long long)arg2;
+- (void)telemetryReport:(unsigned short)arg1 type:(unsigned short)arg2 sortedKeys:(id)arg3 updateTimeout:(unsigned long long)arg4;
+- (void)reportPeriodicTelemetryWithCategory:(unsigned short)arg1 type:(unsigned short)arg2 payload:(id)arg3 lock:(struct _opaque_pthread_mutex_t *)arg4;
+- (void)collectTelemetryForService:(id)arg1 payload:(id)arg2 lock:(struct _opaque_pthread_mutex_t *)arg3;
+- (id)sortedServiceKeys;
 - (void)sendMessageWithCategory:(unsigned short)arg1 type:(unsigned short)arg2 payload:(id)arg3;
 - (void)finalizeAggregation;
-- (void)setAggregatorForClientType:(int)arg1;
-- (id)newAggregatorForClientType:(int)arg1 nwActivity:(id)arg2;
+- (void)setAggregatorForClientType:(int)arg1 isOneToOneEnabled:(_Bool)arg2;
+- (id)newAggregatorForClientType:(int)arg1 creationOptions:(CDStruct_e81a095d *)arg2;
+- (void)reportingAgentGetAlgosScores:(double *)arg1 newAlgosScore:(double *)arg2;
+- (void)releasePeriodicQueues;
+- (void)signalConfigurationCompleted;
+- (void)blockReportingQueueUntilReportingObjectInitialized;
+- (_Bool)setupConfigurationCompletionSemaphore:(CDStruct_408de76c *)arg1;
 - (void)dealloc;
-- (id)initWithConfig:(CDStruct_48bb2f2d)arg1;
+- (id)initWithConfig:(CDStruct_408de76c)arg1;
+- (id)getUserInfoFromReportingConfiguration:(CDStruct_408de76c)arg1;
 - (id)deriveFromParentHierarchyToken:(id)arg1;
 @property(readonly) int nextUnassignedReportingModuleID;
 

@@ -15,7 +15,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(readonly, nonatomic) UIColor *innerRingColor;
 @property(readonly, nonatomic) UIColor *outerRingColor;
-- (void)traitCollectionDidChange:(id)arg1;
 - (void)_updateRingColors;
 - (void)_updateInnerRingFrame;
 - (void)layoutSubviews;

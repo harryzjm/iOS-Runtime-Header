@@ -10,7 +10,7 @@ __attribute__((visibility("hidden")))
 @interface WKDownloadProgress : NSProgress
 {
     struct RetainPtr<NSURLSessionDownloadTask> m_task;
-    struct WeakPtr<WebKit::Download, WTF::EmptyCounter> m_download;
+    struct WeakPtr<WebKit::Download, WTF::DefaultWeakPtrImpl> m_download;
     RefPtr_585b44c9 m_sandboxExtension;
 }
 
@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)dealloc;
+- (void)_updateProgressExtendedAttributeOnProgressFile;
 - (void)unpublish;
 - (void)publish;
 - (id)initWithDownloadTask:(id)arg1 download:(void *)arg2 URL:(id)arg3 sandboxExtension:(RefPtr_585b44c9)arg4;

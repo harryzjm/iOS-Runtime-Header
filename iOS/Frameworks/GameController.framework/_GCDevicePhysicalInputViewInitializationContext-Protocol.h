@@ -5,11 +5,13 @@
 //
 
 @class _GCDevicePhysicalInputBase, _GCDevicePhysicalInputView;
+@protocol _GCDevicePhysicalInputViewDataSource;
 
 @protocol _GCDevicePhysicalInputViewInitializationContext
 @property(readonly) _GCDevicePhysicalInputBase *implementation;
-- (unsigned long long)view:(_GCDevicePhysicalInputView *)arg1 allocateObjectSlotForTransaction:(_Bool)arg2 withCopyOfValueFromView:(_GCDevicePhysicalInputView *)arg3 slot:(unsigned long long)arg4;
-- (unsigned long long)view:(_GCDevicePhysicalInputView *)arg1 allocatePrimitiveSlotForTransaction:(_Bool)arg2 withCopyOfValueFromView:(_GCDevicePhysicalInputView *)arg3 slot:(unsigned long long)arg4;
+- (unsigned long long)view:(_GCDevicePhysicalInputView *)arg1 allocateObjectSlot:(unsigned char)arg2 withCopyOfValueFromView:(_GCDevicePhysicalInputView *)arg3 slot:(unsigned long long)arg4;
+- (unsigned long long)view:(_GCDevicePhysicalInputView *)arg1 allocatePrimitiveSlot:(unsigned char)arg2 withCopyOfValueFromView:(_GCDevicePhysicalInputView *)arg3 slot:(unsigned long long)arg4;
 - (unsigned long long)view:(_GCDevicePhysicalInputView *)arg1 makeReferenceToView:(_GCDevicePhysicalInputView *)arg2;
+- (id <_GCDevicePhysicalInputViewDataSource>)viewDataSource:(_GCDevicePhysicalInputView *)arg1;
 @end
 

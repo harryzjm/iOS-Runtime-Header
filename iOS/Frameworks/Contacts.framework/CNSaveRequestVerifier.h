@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 + (_Bool)isSaveRequest:(id)arg1 authorizedForSavingWithContext:(id)arg2 error:(id *)arg3;
 + (_Bool)isValidSaveRequest:(id)arg1 error:(id *)arg2;
 + (id)insertedAndUpdatedContactsForSaveRequest:(id)arg1;
++ (id)os_log;
 
 @end
 

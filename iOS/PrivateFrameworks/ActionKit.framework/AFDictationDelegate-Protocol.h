@@ -11,6 +11,7 @@
 @protocol AFDictationDelegate <NSObject>
 
 @optional
+- (void)dictationConnection:(AFDictationConnection *)arg1 didRecognizeVoiceCommandCandidatePackage:(AFSpeechPackage *)arg2 nluResult:(AFDictationNLUResult *)arg3;
 - (void)dictationConnection:(AFDictationConnection *)arg1 didRecognizeFinalResultCandidatePackage:(AFSpeechPackage *)arg2;
 - (void)dictationConnectionDidPauseRecognition:(AFDictationConnection *)arg1;
 - (void)dictationConnection:(AFDictationConnection *)arg1 didRecognizePackage:(AFSpeechPackage *)arg2 nluResult:(AFDictationNLUResult *)arg3;
@@ -22,6 +23,7 @@
 - (void)dictationConnectionSpeechRecognitionDidSucceed:(AFDictationConnection *)arg1;
 - (void)dictationConnection:(AFDictationConnection *)arg1 didProcessAudioDuration:(double)arg2;
 - (void)dictationConnection:(AFDictationConnection *)arg1 didRecognizePartialResult:(SASSpeechPartialResult *)arg2;
+- (void)dictationConnection:(AFDictationConnection *)arg1 didRecognizePartialPackage:(AFSpeechPackage *)arg2 nluResult:(AFDictationNLUResult *)arg3 languageModel:(NSString *)arg4;
 - (void)dictationConnection:(AFDictationConnection *)arg1 didRecognizeTokens:(NSArray *)arg2 nluResult:(AFDictationNLUResult *)arg3 languageModel:(NSString *)arg4;
 - (void)dictationConnection:(AFDictationConnection *)arg1 didRecognizeTokens:(NSArray *)arg2 languageModel:(NSString *)arg3;
 - (void)dictationConnection:(AFDictationConnection *)arg1 didRecognizePhrases:(NSArray *)arg2 languageModel:(NSString *)arg3 correctionIdentifier:(id)arg4 replacingPreviousPhrasesCount:(unsigned long long)arg5;

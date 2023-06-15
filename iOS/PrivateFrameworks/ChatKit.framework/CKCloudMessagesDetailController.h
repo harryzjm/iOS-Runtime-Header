@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) id <IMDaemonMultiplexedConnectionManaging> daemonConnection; // @synthesize daemonConnection=_daemonConnection;
 @property(retain, nonatomic) UIProgressHUD *cloudKitProgressView; // @synthesize cloudKitProgressView=_cloudKitProgressView;
 @property(retain, nonatomic) STStoragePlugin *plugin; // @synthesize plugin=_plugin;
+- (_Bool)_isSyncingWithCloud;
 - (void)disconnectFromDaemon;
 - (void)connectToDaemon;
 - (void)setEnabledDidReturned:(id)arg1;

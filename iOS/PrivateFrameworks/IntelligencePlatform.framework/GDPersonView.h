@@ -9,7 +9,6 @@
 @class GDSQLGraphObjectRetriever, _PASSqliteDatabase;
 @protocol GDViewAccessAssertion;
 
-__attribute__((visibility("hidden")))
 @interface GDPersonView : NSObject
 {
     id <GDViewAccessAssertion> _accessAssertion;

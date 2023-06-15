@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (id)layerTreeForSize:(struct CGSize)arg1 scale:(double)arg2;
-- (id)blurRadius;
+- (id)hintedMaskRect;
 - (id)hintedBadgeRect;
 
 // Remaining properties

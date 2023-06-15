@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class DVTSimulatorRuntimeInfo, NSDate, NSDictionary, NSError, NSNumber, NSString;
+@class DVTSimulatorRuntimeInfo, NSDate, NSDictionary, NSError, NSNumber, NSString, NSURL;
 
 @interface DVTSimulatorInfo : NSObject
 {
     _Bool _canDelete;
     id _identifier;
     unsigned long long _kind;
+    NSURL *_imageURL;
     NSNumber *_sizeInBytes;
     NSDate *_lastUsedAt;
     unsigned long long _state;
@@ -31,9 +32,11 @@
 @property(readonly) unsigned long long state; // @synthesize state=_state;
 @property(readonly, nonatomic) NSDate *lastUsedAt; // @synthesize lastUsedAt=_lastUsedAt;
 @property(readonly) NSNumber *sizeInBytes; // @synthesize sizeInBytes=_sizeInBytes;
+@property(readonly) NSURL *imageURL; // @synthesize imageURL=_imageURL;
 @property(readonly) unsigned long long kind; // @synthesize kind=_kind;
 @property(readonly) id identifier; // @synthesize identifier=_identifier;
 - (id)description;
+- (id)initWithIdentifier:(id)arg1 kind:(unsigned long long)arg2 imageURL:(id)arg3 sizeInBytes:(id)arg4 lastUsedAt:(id)arg5 state:(unsigned long long)arg6 stateDisplayString:(id)arg7 unusableStateError:(id)arg8 canDelete:(_Bool)arg9 runtimeInfo:(id)arg10 userInfo:(id)arg11;
 - (id)initWithIdentifier:(id)arg1 kind:(unsigned long long)arg2 sizeInBytes:(id)arg3 lastUsedAt:(id)arg4 state:(unsigned long long)arg5 stateDisplayString:(id)arg6 unusableStateError:(id)arg7 canDelete:(_Bool)arg8 runtimeInfo:(id)arg9 userInfo:(id)arg10;
 
 @end

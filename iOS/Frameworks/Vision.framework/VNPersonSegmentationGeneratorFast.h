@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 
 + (_Bool)inputMaskRequired;
 + (_Bool)rotateImageToMatchNetworkOrientation;
++ (id)outputMaskBlobNameToRequestKey;
 + (id)outputMaskBlobNames;
 + (id)inputMaskBlobName;
 + (id)inputImageBlobName;

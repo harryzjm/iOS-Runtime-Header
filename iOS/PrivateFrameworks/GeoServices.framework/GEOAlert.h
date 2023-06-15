@@ -6,7 +6,7 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-@class NSString, PBDataReader, PBUnknownFields;
+@class GEOFormattedString, NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOAlert : PBCodable
@@ -14,6 +14,8 @@ __attribute__((visibility("hidden")))
     PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
     NSString *_content;
+    GEOFormattedString *_formattedContent;
+    GEOFormattedString *_formattedTitle;
     NSString *_title;
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
@@ -21,6 +23,8 @@ __attribute__((visibility("hidden")))
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_content:1;
+        unsigned int read_formattedContent:1;
+        unsigned int read_formattedTitle:1;
         unsigned int read_title:1;
         unsigned int wrote_anyField:1;
     } _flags;

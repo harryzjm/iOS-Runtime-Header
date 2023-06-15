@@ -15,20 +15,20 @@ __attribute__((visibility("hidden")))
     _Bool _hasStartedInteractiveReorder;
     _UIVelocityIntegrator *_velocityIntegrator;
     long long _reorderCount;
+    _UIDragMovementCadenceSettings *_reorderCadenceSettings;
     _UIDragDestinationControllerSessionState *_sessionState;
     UICollectionView *_collectionView;
     double _reorderBecamePossibleTime;
     long long _dragMovementPhase;
-    _UIDragMovementCadenceSettings *_reorderCadenceSettings;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) _UIDragMovementCadenceSettings *reorderCadenceSettings; // @synthesize reorderCadenceSettings=_reorderCadenceSettings;
 @property(nonatomic) long long dragMovementPhase; // @synthesize dragMovementPhase=_dragMovementPhase;
 @property(nonatomic) double reorderBecamePossibleTime; // @synthesize reorderBecamePossibleTime=_reorderBecamePossibleTime;
 @property(nonatomic) __weak UICollectionView *collectionView; // @synthesize collectionView=_collectionView;
 @property(retain, nonatomic) _UIDragDestinationControllerSessionState *sessionState; // @synthesize sessionState=_sessionState;
 @property(nonatomic) _Bool hasStartedInteractiveReorder; // @synthesize hasStartedInteractiveReorder=_hasStartedInteractiveReorder;
+@property(retain, nonatomic) _UIDragMovementCadenceSettings *reorderCadenceSettings; // @synthesize reorderCadenceSettings=_reorderCadenceSettings;
 @property(nonatomic) long long reorderCount; // @synthesize reorderCount=_reorderCount;
 @property(nonatomic) _Bool supportsLocalSessionReordering; // @synthesize supportsLocalSessionReordering=_supportsLocalSessionReordering;
 @property(retain, nonatomic) _UIVelocityIntegrator *velocityIntegrator; // @synthesize velocityIntegrator=_velocityIntegrator;

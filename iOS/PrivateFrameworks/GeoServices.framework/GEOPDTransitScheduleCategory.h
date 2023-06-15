@@ -6,7 +6,7 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-@class NSString, PBDataReader, PBUnknownFields;
+@class GEOPBTransitArtwork, NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDTransitScheduleCategory : PBCodable
@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
     CDStruct_9f2792e4 _groupIndexs;
+    GEOPBTransitArtwork *_artwork;
     NSString *_displayName;
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
@@ -21,6 +22,7 @@ __attribute__((visibility("hidden")))
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_groupIndexs:1;
+        unsigned int read_artwork:1;
         unsigned int read_displayName:1;
         unsigned int wrote_anyField:1;
     } _flags;

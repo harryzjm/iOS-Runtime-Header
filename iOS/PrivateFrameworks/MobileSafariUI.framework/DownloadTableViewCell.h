@@ -40,6 +40,7 @@ __attribute__((visibility("hidden")))
 - (void)_downloadURLChanged:(id)arg1;
 - (void)_downloadChanged:(id)arg1;
 - (void)_buttonPressed:(id)arg1;
+- (id)_buttonWithSymbolName:(id)arg1;
 - (void)didMoveToWindow;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)dealloc;

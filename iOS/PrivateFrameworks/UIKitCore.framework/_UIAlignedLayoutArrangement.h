@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 + (Class)_configurationHistoryClass;
 - (void).cxx_destruct;
 @property(nonatomic) unsigned long long alignment; // @synthesize alignment=_alignment;
+@property(readonly, copy) NSString *description;
 - (void)_clearAllConstraintsArrays;
 - (void)_updateArrangementConstraints;
 - (void)_addConstraintGroupsAsNecessary;
@@ -51,7 +52,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSSet *_newlyHiddenItems;
 @property(readonly, nonatomic) NSSet *_newlyUnhiddenItems;
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) NSSet *invalidBaselineConstraints;
 @property(readonly) Class superclass;

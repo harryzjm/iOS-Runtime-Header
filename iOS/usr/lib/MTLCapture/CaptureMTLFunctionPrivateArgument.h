@@ -9,7 +9,6 @@
 @class NSString;
 @protocol MTLFunctionPrivateArgumentSPI;
 
-__attribute__((visibility("hidden")))
 @interface CaptureMTLFunctionPrivateArgument : NSObject
 {
     NSObject<MTLFunctionPrivateArgumentSPI> *_baseObject;

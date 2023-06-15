@@ -27,12 +27,13 @@
 @property(copy, nonatomic) CDUnknownBlockType recordPostedBlock; // @synthesize recordPostedBlock=_recordPostedBlock;
 - (void)requestDidParseNodeFailure:(id)arg1;
 - (id)requestDidParseProtobufObject:(id)arg1;
-- (void)addSignatureForRequestOperation:(id)arg1;
 - (id)generateRequestOperations;
 - (_Bool)handlesAnonymousCKUserIDPropagation;
 - (int)isolationLevel;
 - (id)requestOperationClasses;
 - (id)zoneIDsToLock;
+- (void)fillOutRequestProperties:(id)arg1;
+- (id)equivalencyProperties;
 - (id)initWithOperation:(id)arg1 moveChanges:(id)arg2 sourceDatabaseScope:(long long)arg3 atomic:(_Bool)arg4;
 
 @end

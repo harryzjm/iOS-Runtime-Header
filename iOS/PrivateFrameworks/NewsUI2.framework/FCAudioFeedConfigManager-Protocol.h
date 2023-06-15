@@ -9,7 +9,7 @@
 @class NSData, NSString, OS_dispatch_queue;
 
 @protocol FCAudioFeedConfigManager <NSObject>
+@property(readonly, nonatomic) NSData *audioFeedConfigData;
 - (void)fetchAudioFeedConfigIfNeededWithCompletionQueue:(OS_dispatch_queue *)arg1 formatVersion:(NSString *)arg2 completion:(void (^)(NSData *, NSError *))arg3;
-@property(nonatomic, readonly) NSData *audioFeedConfigData;
 @end
 

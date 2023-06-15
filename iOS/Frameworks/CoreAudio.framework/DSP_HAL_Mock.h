@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (unsigned int)customPropertyCooldownMilliseconds;
 + (_Bool)hasTestHooks;
 + (void)setTestHooks:(void *)arg1;
 - (id)createFactory:(int)arg1;

@@ -14,6 +14,7 @@
 + (void)_addDerivedPublicKeyIfNecessaryForPrivateKey:(id)arg1 mutableDictionary:(id)arg2;
 + (id)hk_secureAttachmentCodingClasses;
 + (id)hk_acceptedAttachmentMetadataValueClasses;
+- (_Bool)hk_containsValuePassingTest:(CDUnknownBlockType)arg1;
 - (id)hk_map:(CDUnknownBlockType)arg1;
 - (id)hk_filter:(CDUnknownBlockType)arg1;
 - (id)hk_filteredDictionaryForKeys:(id)arg1;
@@ -22,6 +23,7 @@
 - (id)hk_sortedKeys;
 - (id)hk_dictionaryByAddingEntriesFromDictionary:(id)arg1;
 - (_Bool)_hk_validateMetadataValueContent:(id)arg1 forKey:(id)arg2 applicationSDKVersion:(unsigned int)arg3 error:(id *)arg4;
+- (_Bool)_hk_validateMetadataDawnValueContent:(id)arg1 forKey:(id)arg2 error:(id *)arg3;
 - (_Bool)_hk_validateMetadataSydneyValueContent:(id)arg1 forKey:(id)arg2 error:(id *)arg3;
 - (_Bool)_hk_validateMetadataSkyValueContent:(id)arg1 forKey:(id)arg2 error:(id *)arg3;
 - (_Bool)_hk_validateMetadataAzulValueContent:(id)arg1 forKey:(id)arg2 error:(id *)arg3;

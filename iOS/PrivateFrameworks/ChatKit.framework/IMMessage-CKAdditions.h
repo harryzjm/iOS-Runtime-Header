@@ -8,6 +8,8 @@
 
 @interface IMMessage (CKAdditions)
 - (_Bool)__ck_isAcknowledgmentMessage;
+- (id)__ck_criticalMessage;
+- (id)__ck_sosMessage;
 - (id)__ck_undowngradedMessage;
 - (id)__ck_downgradedMessage;
 - (id)__ck_mediaObjects;

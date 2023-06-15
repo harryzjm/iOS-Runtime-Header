@@ -13,6 +13,7 @@
 
 @optional
 - (void)shareStatusForURL:(NSURL *)arg1 completionHandler:(void (^)(long long, NSError *))arg2;
+- (void)isShareOwnerOrAdminForFileURL:(NSURL *)arg1 completionHandler:(void (^)(_Bool, _Bool))arg2;
 - (void)isShareOwnerForFileURL:(NSURL *)arg1 share:(CKShare *)arg2 completionHandler:(void (^)(_Bool))arg3;
 - (void)deleteSharingURL:(NSURL *)arg1 containerSetupInfo:(CKContainerSetupInfo *)arg2 completionHandler:(void (^)(_Bool, NSError *))arg3;
 - (void)createSharingURLForCollaborationRequest:(SFCollaborationCloudSharingRequest *)arg1 completionHandler:(void (^)(SFCollaborationCloudSharingResult *))arg2;

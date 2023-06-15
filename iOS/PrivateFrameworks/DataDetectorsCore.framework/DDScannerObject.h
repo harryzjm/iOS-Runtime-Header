@@ -19,13 +19,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) long long jobIdentifier; // @synthesize jobIdentifier=_jobIdentifier;
-- (void)cancel;
-- (int)type;
-- (id)scanString:(id)arg1 range:(CDStruct_912cb5d2)arg2 query:(struct __DDScanQuery *)arg3 configuration:(id)arg4 completionBlock:(CDUnknownBlockType)arg5;
-- (_Bool)hasBasicType;
 - (void)dealloc;
-- (id)initWithType:(int)arg1 enableParsec:(_Bool)arg2;
 
 @end
 

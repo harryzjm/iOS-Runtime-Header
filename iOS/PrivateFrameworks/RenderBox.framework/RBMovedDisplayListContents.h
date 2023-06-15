@@ -11,7 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface RBMovedDisplayListContents : NSObject
 {
-    struct unique_ptr<RB::DisplayList::Contents, RB::Destroy<RB::DisplayList::Contents>> _contents;
+    struct refcounted_ptr<RB::DisplayList::Contents> _contents;
     struct unique_ptr<RB::XML::Document, std::default_delete<RB::XML::Document>> _xml_document;
 }
 
@@ -19,18 +19,17 @@ __attribute__((visibility("hidden")))
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)encodedDataForDelegate:(id)arg1 error:(id *)arg2;
-- (const void *)_rbXmlDocument;
-- (const void *)_rbPredicate;
-- (const void *)_rbContents;
+@property(readonly, nonatomic) const void *_rb_xml_document;
+@property(readonly, nonatomic) const void *_rb_contents;
 @property(readonly, copy, nonatomic) NSString *xmlDescription;
 - (void)renderInContext:(struct CGContext *)arg1 options:(id)arg2;
+- (void)_drawInState:(struct _RBDrawingState *)arg1 alpha:(float)arg2;
 - (void)drawInState:(struct _RBDrawingState *)arg1;
+@property(readonly, copy) NSString *debugDescription;
 @property(readonly, nonatomic, getter=isEmpty) _Bool empty;
 @property(readonly, nonatomic) struct CGRect boundingRect;
-- (void)dealloc;
 
 // Remaining properties
-@property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;

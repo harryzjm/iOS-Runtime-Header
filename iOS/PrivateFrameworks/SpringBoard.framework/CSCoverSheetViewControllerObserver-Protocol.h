@@ -6,11 +6,15 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class CSBehavior, CSCoverSheetViewController;
+@class CSBehavior, CSCoverSheetViewController, FBSDisplayLayout;
 
 @protocol CSCoverSheetViewControllerObserver <NSObject>
 
 @optional
+- (void)coverSheetViewControllerDidObscureWallpaper:(CSCoverSheetViewController *)arg1 obscured:(_Bool)arg2;
+- (void)coverSheetViewController:(CSCoverSheetViewController *)arg1 didUpdateVisibleNotificationCount:(unsigned long long)arg2;
+- (void)coverSheetViewController:(CSCoverSheetViewController *)arg1 didUpdateLayout:(FBSDisplayLayout *)arg2;
+- (void)coverSheetViewControllerActivityItemsMayHaveChanged:(CSCoverSheetViewController *)arg1;
 - (void)coverSheetViewControllerDidAddNewSceneHostEnvironment:(CSCoverSheetViewController *)arg1;
 - (void)coverSheetViewControllerWillPresentPosterSwitcher:(CSCoverSheetViewController *)arg1;
 - (void)coverSheetViewControllerDidDismissPasscodeLockView:(CSCoverSheetViewController *)arg1;

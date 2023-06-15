@@ -11,7 +11,6 @@
 __attribute__((visibility("hidden")))
 @interface _TtC8VideosUI24SearchTemplateController : _$s8VideosUI17VUIViewControllerCN
 {
-    MISSING_TYPE *collectionImpressioner;
     MISSING_TYPE *internalCustomSearchFieldWidth;
     MISSING_TYPE *maxSearchFieldWidth;
     MISSING_TYPE *searchController;
@@ -25,6 +24,9 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *landingPageViewController;
     MISSING_TYPE *activeSearchState;
     MISSING_TYPE *pageMetrics;
+    MISSING_TYPE *pagePerformanceProvider;
+    MISSING_TYPE *collectionImpressioner;
+    MISSING_TYPE *loadingConfiguration;
 }
 
 - (void).cxx_destruct;

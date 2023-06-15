@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
 + (id)detectedObjectClassToRequestKey;
 + (Class)detectorClass;
 - (id)splitDetectedClassResultsIntoSubclasses:(id)arg1;
-- (_Bool)processDetectedObject:(id)arg1 originatingRequestSpecifier:(id)arg2 objectBoundingBox:(struct CGRect)arg3 imageBuffer:(id)arg4 qosClass:(unsigned int)arg5 warningRecorder:(id)arg6 detectedObjectResults:(id)arg7 error:(id *)arg8;
+- (_Bool)processDetectedObject:(id)arg1 originatingRequestSpecifier:(id)arg2 objectBoundingBox:(struct CGRect)arg3 objectGroupId:(id)arg4 imageBuffer:(id)arg5 qosClass:(unsigned int)arg6 warningRecorder:(id)arg7 detectedObjectResults:(id)arg8 error:(id *)arg9;
 - (_Bool)updateRuntimeParametersFromOptions:(id)arg1 error:(id *)arg2;
 
 @end

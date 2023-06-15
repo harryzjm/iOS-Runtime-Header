@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class NSLayoutConstraint;
 
@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
     UIView *_targetView;
     long long _instanceCount;
     double _replicationPaddingX;
-    double _widthConstant;
     NSLayoutConstraint *_widthConstraint;
     NSLayoutConstraint *_heightConstraint;
     NSLayoutConstraint *_targetViewLeadingConstraint;
@@ -27,14 +26,12 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSLayoutConstraint *targetViewLeadingConstraint; // @synthesize targetViewLeadingConstraint=_targetViewLeadingConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *heightConstraint; // @synthesize heightConstraint=_heightConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *widthConstraint; // @synthesize widthConstraint=_widthConstraint;
-@property(nonatomic) double widthConstant; // @synthesize widthConstant=_widthConstant;
 @property(nonatomic) double replicationPaddingX; // @synthesize replicationPaddingX=_replicationPaddingX;
 @property(nonatomic) long long instanceCount; // @synthesize instanceCount=_instanceCount;
 @property(retain, nonatomic) UIView *targetView; // @synthesize targetView=_targetView;
 - (void)updateConstraints;
 - (void)_updateReplicatorLayer;
 - (void)updateInstanceCount:(unsigned long long)arg1 replicationPaddingX:(double)arg2;
-- (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1 targetView:(id)arg2;
 
 @end

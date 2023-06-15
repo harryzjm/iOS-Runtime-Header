@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     UIViewRunningAnimationEntry *_animationEntry;
     id <UIVectorOperatable> _pendingTargetVelocity;
     id <UIVectorOperatable> _pendingVelocity;
+    struct os_unfair_lock_s _valueLock;
     _Bool _invalidated;
     _Bool _velocityUsableForVFD;
     int _ownershipCount;
@@ -35,14 +36,14 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak UIViewInProcessAnimationState *animationState; // @synthesize animationState=_animationState;
 @property(retain, nonatomic) id <UIViewAnimationComposing> composer; // @synthesize composer=_composer;
 @property(readonly, nonatomic, getter=isInvalidated) _Bool invalidated; // @synthesize invalidated=_invalidated;
-@property(retain) id presentationValue; // @synthesize presentationValue=_presentationValue;
-@property(retain) id value; // @synthesize value=_value;
 - (id)debugDescription;
 - (id)transformer;
 - (void)setTransformer:(id)arg1;
 - (void)invalidateAndStopImmediately:(_Bool)arg1;
 - (void)invalidate;
 - (_Bool)_performAnimationFromCurrentValue:(id)arg1;
+@property(retain) id presentationValue; // @synthesize presentationValue=_presentationValue;
+@property(retain) id value; // @synthesize value=_value;
 - (id)velocityTarget:(_Bool)arg1;
 @property(nonatomic) id velocity;
 - (void)setVelocity:(id)arg1 target:(_Bool)arg2;

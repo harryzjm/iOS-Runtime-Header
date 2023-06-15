@@ -64,6 +64,17 @@ struct SBIconImageInfo {
     double _field3;
 };
 
+struct SBIconListLayoutAnimationParameters {
+    struct CGPoint _field1;
+    double _field2;
+    struct SBIconImageInfo _field3;
+    _Bool _field4;
+    struct SBIconCoordinate _field5;
+    _Bool _field6;
+    _Bool _field7;
+    unsigned long long _field8;
+};
+
 struct SBPIPPositionGeometryContext {
     struct CGSize _field1;
     struct CGSize _field2;
@@ -94,6 +105,11 @@ struct SBSwitcherAsyncRenderingAttributes {
     _Bool _field2;
 };
 
+struct SBSwitcherContinuousExposeStripTongueAttributes {
+    unsigned long long _field1;
+    unsigned long long _field2;
+};
+
 struct SBSwitcherGradientWallpaperAttributes {
     double _field1;
     double _field2;
@@ -104,6 +120,11 @@ struct SBSwitcherShelfPresentationAttributes {
     struct CGRect _field2;
     unsigned long long _field3;
     unsigned long long _field4;
+};
+
+struct SBSystemApertureContainerRenderingConfiguration {
+    long long _field1;
+    long long _field2;
 };
 
 struct UIEdgeInsets {
@@ -152,7 +173,7 @@ typedef struct {
 } CDStruct_70511ce9;
 
 typedef struct {
-    _Bool _field1[45];
+    _Bool _field1[46];
     char _field2[64];
     char _field3[64];
     char _field4[256];
@@ -205,11 +226,12 @@ typedef struct {
     double _field31;
     unsigned int :1;
     unsigned int :1;
+    unsigned int :1;
     char _field32[100];
     char _field33[100];
     char _field34[256];
     char _field35[256];
-} CDStruct_d53647a2;
+} CDStruct_741028b1;
 
 typedef struct {
     long long _field1;
@@ -218,7 +240,7 @@ typedef struct {
 } CDStruct_8ff95007;
 
 typedef struct {
-    _Bool _field1[45];
+    _Bool _field1[46];
     unsigned int :1;
     unsigned int :1;
     unsigned int :1;
@@ -254,8 +276,8 @@ typedef struct {
     unsigned int :1;
     unsigned int :1;
     unsigned int :1;
-    CDStruct_d53647a2 _field3;
-} CDStruct_43a31ce7;
+    CDStruct_741028b1 _field3;
+} CDStruct_54204c8d;
 
 typedef struct {
     long long _field1;

@@ -9,6 +9,6 @@
 @protocol HFHomeKitObject;
 
 @protocol HFHomeKitItemProtocol <NSObject>
-@property(nonatomic, readonly) id <HFHomeKitObject> homeKitObject;
+@property(readonly, nonatomic) id <HFHomeKitObject> homeKitObject;
 @end
 

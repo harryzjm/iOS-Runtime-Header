@@ -97,7 +97,7 @@
 @property(readonly, nonatomic) _Bool isBlankNode;
 @property(readonly, nonatomic) _Bool isLeaf;
 - (void)encodeToArchive:(void *)arg1 backwardCompatOptions:(unsigned long long)arg2 archiver:(id)arg3;
-- (id)safeChildren;
+- (id)safeOrderedChildrenForArchiving;
 - (void)removeChildForKey:(id)arg1;
 - (void)addChild:(id)arg1 withKey:(id)arg2;
 - (void)dealloc;

@@ -6,9 +6,9 @@
 
 #import <PosterKit/NSObject-Protocol.h>
 
-@class PRComplicationDescriptor, PRComplicationGalleryDetailPageViewController;
+@class PRComplicationGalleryDetailPageViewController, SBIconView;
 
 @protocol PRComplicationGalleryDetailPageViewControllerDelegate <NSObject>
-- (void)complicationGalleryDetailPageViewController:(PRComplicationGalleryDetailPageViewController *)arg1 didAddComplication:(PRComplicationDescriptor *)arg2;
+- (void)complicationGalleryDetailPageViewController:(PRComplicationGalleryDetailPageViewController *)arg1 didSelectWidgetIconView:(SBIconView *)arg2;
 @end
 

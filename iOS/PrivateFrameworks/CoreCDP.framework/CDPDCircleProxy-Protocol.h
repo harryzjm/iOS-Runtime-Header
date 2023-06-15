@@ -9,6 +9,7 @@
 @class CDPContext, CDPCustodianRecoveryInfo, KCPairingChannel, NSDictionary, NSError, NSSet, NSString, OTClique;
 
 @protocol CDPDCircleProxy <NSObject>
++ (unsigned long long)syncingStatusForAltDSID:(NSString *)arg1;
 @property(readonly, nonatomic) CDPContext *cdpContext;
 - (void)recoverOctagonUsingCustodianInfo:(CDPCustodianRecoveryInfo *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)reportFailure:(NSError *)arg1;
@@ -39,8 +40,15 @@
 - (NSString *)peerId;
 - (int)cachedSOSCircleStatus:(id *)arg1;
 - (int)nonCachedSOSCircleStatus:(id *)arg1;
+- (long long)cliqueStatus:(id *)arg1;
 - (unsigned long long)cachedCliqueStatus:(id *)arg1;
 - (unsigned long long)combinedCachedCircleStatus:(id *)arg1;
 - (unsigned long long)combinedCircleStatus:(id *)arg1;
+
+@optional
+- (_Bool)platformSupportsSOS;
+- (unsigned long long)peerCount;
+- (_Bool)resetToOffering:(id *)arg1;
+- (_Bool)requestToResetSOSCircle:(id *)arg1;
 @end
 

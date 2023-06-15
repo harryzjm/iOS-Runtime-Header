@@ -9,6 +9,7 @@
 @class HKSourceListDataSource, NSString;
 
 @protocol WDSourceTableViewSection <NSObject>
+@property(nonatomic) _Bool shouldHideHeader;
 - (void)setRestorationSourceBundleIdentifier:(NSString *)arg1;
 - (void)setSourceListDataSource:(HKSourceListDataSource *)arg1;
 @end

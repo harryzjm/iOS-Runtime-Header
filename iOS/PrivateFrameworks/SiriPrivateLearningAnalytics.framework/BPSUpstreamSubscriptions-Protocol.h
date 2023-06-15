@@ -7,6 +7,6 @@
 @class NSArray;
 
 @protocol BPSUpstreamSubscriptions
-@property(nonatomic, readonly) NSArray *upstreamSubscriptions;
+@property(readonly, nonatomic) NSArray *upstreamSubscriptions;
 @end
 

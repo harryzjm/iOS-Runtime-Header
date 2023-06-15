@@ -6,13 +6,10 @@
 
 #import <CDMFoundation/NSObject-Protocol.h>
 
-@class CDMTokenChain, NSArray, NSString;
+@class CDMTokenChain, NSArray, NSDictionary;
 
 @protocol CDMProtoSpanMatcher <NSObject>
++ (NSDictionary *)getAssetFolderNamesByTrialFactorNames;
 - (NSArray *)matchSpansForTokenChain:(CDMTokenChain *)arg1;
-
-@optional
-+ (NSString *)trialFactorName;
-+ (NSArray *)assetFolderNames;
 @end
 

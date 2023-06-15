@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) _UIKeyShortcutHUDShortcutInputView *shortcutInputView; // @synthesize shortcutInputView=_shortcutInputView;
 @property(retain, nonatomic) _UIKeyShortcutHUDSearchButton *searchButton; // @synthesize searchButton=_searchButton;
+- (void)buildMenuWithBuilder:(id)arg1;
 - (_Bool)_suppressSoftwareKeyboard;
 - (id)preferredFocusEnvironments;
 - (struct CGRect)placeholderRectForBounds:(struct CGRect)arg1;

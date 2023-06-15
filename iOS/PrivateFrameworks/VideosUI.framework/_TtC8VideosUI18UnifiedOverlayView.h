@@ -10,17 +10,21 @@ __attribute__((visibility("hidden")))
 @interface _TtC8VideosUI18UnifiedOverlayView
 {
     MISSING_TYPE *overlayLayout;
+    MISSING_TYPE *isLockupSelected;
+    MISSING_TYPE *isLockupSelectionHidden;
     MISSING_TYPE *progressView;
     MISSING_TYPE *appImageView;
     MISSING_TYPE *logoImageView;
     MISSING_TYPE *textLabel;
     MISSING_TYPE *subtitleLabel;
     MISSING_TYPE *badgeView;
+    MISSING_TYPE *selectionView;
     MISSING_TYPE *textBadge;
     MISSING_TYPE *protectionView;
     MISSING_TYPE *unfocusedProtectionView;
     MISSING_TYPE *scorecardView;
     MISSING_TYPE *cornerRadius;
+    MISSING_TYPE *selectionViewModel;
     MISSING_TYPE *logoSize;
     MISSING_TYPE *backgroundImageForMaterial;
     MISSING_TYPE *isFilteredUpNext;
@@ -38,6 +42,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *isOperationFinishedObserver;
     MISSING_TYPE *gradientSizeHeightMultiplier;
     MISSING_TYPE *overlayUpdater;
+    MISSING_TYPE *shouldUpdateTextBadgeBackground;
 }
 
 - (void).cxx_destruct;
@@ -60,6 +65,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, retain) VUILabel *textLabel; // @synthesize textLabel;
 - (int)backgroundBlendModeForScoreValueInRow:(long long)arg1 atIndex:(long long)arg2;
 - (id)backgroundImageForScorecardViewMaterial:(id)arg1;
+- (struct UIEdgeInsets)marginsForRow:(long long)arg1 atIndex:(long long)arg2;
 - (double)maximumWidthForScorecardView:(id)arg1;
 - (id)scoreValue:(id)arg1 inRow:(long long)arg2 atIndex:(long long)arg3;
 - (long long)numberOfScoreValuesForScorecardView:(id)arg1 inRow:(long long)arg2;

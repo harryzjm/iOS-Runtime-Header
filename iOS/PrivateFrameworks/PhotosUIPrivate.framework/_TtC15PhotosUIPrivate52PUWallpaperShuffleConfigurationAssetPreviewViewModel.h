@@ -15,13 +15,15 @@
     MISSING_TYPE *scalesForSidePreviews;
     MISSING_TYPE *horizontalOffsetsForSidePreviews;
     MISSING_TYPE *previewAssetsUpdateQueue;
-    MISSING_TYPE *$__lazy_storage_$_deviceAspectRatio;
-    MISSING_TYPE *$__lazy_storage_$_maxPreviewSize;
+    MISSING_TYPE *maxPreviewSize;
     MISSING_TYPE *$__lazy_storage_$_imageProvider;
     MISSING_TYPE *$__lazy_storage_$_defaultImageRequestOptions;
     MISSING_TYPE *_previewAssets;
     MISSING_TYPE *_previewAssetCropRects;
+    MISSING_TYPE *previewAssetCropRectsAreLandscape;
+    MISSING_TYPE *assetClassifications;
     MISSING_TYPE *_lockscreenOverlayImage;
+    MISSING_TYPE *lockscreenOverlayImageIsLandscape;
 }
 
 @end

@@ -9,6 +9,7 @@
 @class NSString;
 
 @protocol BRTokenProtocol <BRFileCoordinationProvider>
+- (void)fetchGroupContainerPathForCurrentPersonaForFPFS:(_Bool)arg1 withReply:(void (^)(NSString *, NSError *))arg2;
 - (void)fetchGroupContainerPathForCurrentPersonaWithReply:(void (^)(NSString *, NSError *))arg1;
 - (void)fetchContainerPathForCurrentPersonaWithReply:(void (^)(NSString *, NSError *))arg1;
 - (void)getPrimaryiCloudAccountStatus:(void (^)(NSDictionary *, NSError *))arg1;

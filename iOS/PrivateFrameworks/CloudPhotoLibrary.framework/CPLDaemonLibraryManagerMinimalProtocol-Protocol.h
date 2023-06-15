@@ -61,6 +61,7 @@
 - (void)fetchExistingSharedLibraryScopeWithCompletionHandler:(void (^)(CPLScopeChange *, NSError *))arg1;
 - (void)acceptSharedScope:(CPLScopeChange *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)fetchSharedScopeFromShareURL:(NSURL *)arg1 completionHandler:(void (^)(CPLScopeChange *, NSError *))arg2;
+- (void)refreshScopeWithIdentifier:(NSString *)arg1 completionHandler:(void (^)(CPLScopeChange *, NSError *))arg2;
 - (void)deleteScopeWithIdentifier:(NSString *)arg1 forced:(_Bool)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)updateShareForScope:(CPLScopeChange *)arg1 completionHandler:(void (^)(CPLScopeChange *, NSError *))arg2;
 - (void)createScope:(CPLScopeChange *)arg1 completionHandler:(void (^)(CPLScopeChange *, NSError *))arg2;
@@ -68,7 +69,7 @@
 - (void)resolveLocalScopedIdentifiersForCloudScopedIdentifiers:(NSArray *)arg1 completionHandler:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)beginInMemoryDownloadOfResource:(CPLResource *)arg1 reply:(void (^)(NSString *))arg2;
 - (void)rampingRequestForResourceType:(unsigned long long)arg1 numRequested:(unsigned long long)arg2 completionHandler:(void (^)(_Bool, unsigned long long, NSError *))arg3;
-- (void)getStreamingURLForResource:(CPLResource *)arg1 intent:(unsigned long long)arg2 hints:(NSDictionary *)arg3 timeRange:(CDStruct_3c1748cc)arg4 clientBundleID:(NSString *)arg5 completionHandler:(void (^)(NSURL *, NSData *, NSDate *, NSError *))arg6;
+- (void)getStreamingURLForResource:(CPLResource *)arg1 intent:(unsigned long long)arg2 hints:(NSDictionary *)arg3 timeRange:(CDStruct_3c1748cc)arg4 clientBundleID:(NSString *)arg5 completionHandler:(void (^)(NSURL *, NSData *, NSDate *, NSString *, NSError *))arg6;
 - (void)beginDownloadForResource:(CPLResource *)arg1 clientBundleID:(NSString *)arg2 options:(CPLResourceTransferTaskOptions *)arg3 proposedTaskIdentifier:(NSString *)arg4 reply:(void (^)(NSString *))arg5;
 - (void)deactivateLibraryWithCompletionHandler:(void (^)(NSError *))arg1;
 - (void)closeLibraryWithCompletionHandler:(void (^)(NSError *))arg1;

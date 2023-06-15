@@ -11,6 +11,7 @@
 - (id)ic_stringValueForKey:(id)arg1;
 - (id)ic_dictionaryValueForKey:(id)arg1;
 - (id)ic_arrayValueForKey:(id)arg1;
+- (double)ic_doubleValueForKey:(id)arg1;
 - (_Bool)ic_boolValueForKey:(id)arg1;
 - (long long)ic_int64ValueForKey:(id)arg1;
 - (unsigned int)ic_uintValueForKey:(id)arg1;

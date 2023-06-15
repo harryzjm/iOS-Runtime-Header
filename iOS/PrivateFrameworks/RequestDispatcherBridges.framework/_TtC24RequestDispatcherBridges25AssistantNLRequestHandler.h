@@ -19,13 +19,19 @@
     MISSING_TYPE *referenceResolutionProxy;
     MISSING_TYPE *turnInputManager;
     MISSING_TYPE *turnInputsByRcId;
+    MISSING_TYPE *turnInputsByTcuId;
     MISSING_TYPE *nluRequestIdToResultCandidate;
     MISSING_TYPE *selectedRcId;
     MISSING_TYPE *didUpdateTurnContainer;
     MISSING_TYPE *instrumentationUtil;
     MISSING_TYPE *isMUXEnabled;
+    MISSING_TYPE *pullingEntitiesOnSiriPrompt;
     MISSING_TYPE *sessionUserId;
     MISSING_TYPE *userIdDict;
+    MISSING_TYPE *turnConstructionCandidateIdToTrpId;
+    MISSING_TYPE *trpIdToTcuIdMapping;
+    MISSING_TYPE *fallbackDisabledOverrideFlag;
+    MISSING_TYPE *turnConstructionCandidateIdToNLUResponse;
 }
 
 @end

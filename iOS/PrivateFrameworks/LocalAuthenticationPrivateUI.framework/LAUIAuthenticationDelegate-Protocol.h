@@ -17,6 +17,7 @@
 - (void)processAuthenticationSuccessWithCompletionHandler:(void (^)(void))arg1;
 - (void)processBiometricMatchWithCompletionHandler:(void (^)(void))arg1;
 - (NSString *)localizedSubTitleForMechanisms:(unsigned long long)arg1;
+- (void)biometryDidBecomeIdle;
 - (void)biometricNoMatch;
 - (void)authenticationResult:(NSDictionary *)arg1 error:(NSError *)arg2 context:(LAContext *)arg3;
 @end

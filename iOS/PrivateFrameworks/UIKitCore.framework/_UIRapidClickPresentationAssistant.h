@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, UITargetedPreview, UIView, UIViewController, _UIClickPresentation;
+@class NSString, UITargetedPreview, _UIClickPresentation;
 
 __attribute__((visibility("hidden")))
 @interface _UIRapidClickPresentationAssistant : NSObject
@@ -16,15 +16,11 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType lifecycleCompletion;
     _UIClickPresentation *presentation;
     UITargetedPreview *_sourcePreview;
-    UIViewController *_stashedParentViewController;
-    UIView *_stashedSuperView;
     id _keyboardSuppressionAssertion;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) id keyboardSuppressionAssertion; // @synthesize keyboardSuppressionAssertion=_keyboardSuppressionAssertion;
-@property(retain, nonatomic) UIView *stashedSuperView; // @synthesize stashedSuperView=_stashedSuperView;
-@property(retain, nonatomic) UIViewController *stashedParentViewController; // @synthesize stashedParentViewController=_stashedParentViewController;
 @property(retain, nonatomic) UITargetedPreview *sourcePreview; // @synthesize sourcePreview=_sourcePreview;
 @property(retain, nonatomic) _UIClickPresentation *presentation; // @synthesize presentation;
 @property(copy, nonatomic) CDUnknownBlockType lifecycleCompletion; // @synthesize lifecycleCompletion;
@@ -33,8 +29,6 @@ __attribute__((visibility("hidden")))
 - (double)transitionDuration:(id)arg1;
 - (id)animationControllerForDismissedController:(id)arg1;
 - (id)presentationControllerForPresentedViewController:(id)arg1 presentingViewController:(id)arg2 sourceViewController:(id)arg3;
-- (void)_applyStashedParentViewControllerIfNecessary;
-- (void)_stashParentViewControllerIfNecessary;
 - (void)_nonAnimatedDismissalWithReason:(unsigned long long)arg1 actions:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_animateDismissalWithReason:(unsigned long long)arg1 actions:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)dismissWithReason:(unsigned long long)arg1 alongsideActions:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;

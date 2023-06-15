@@ -4,11 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIImage.h>
+#import <UIKitCore/UIImage.h>
 
 @interface UIImage (NTKWorldClockMap)
 + (id)ntk_pregossamer_nightMaskForDate:(id)arg1 size:(struct CGSize)arg2;
-+ (id)ntk_gossamer_terminatorForDate:(id)arg1 size:(struct CGSize)arg2;
 + (id)ntk_gossamer_nightMaskForDate:(id)arg1 size:(struct CGSize)arg2;
 + (id)ntk_solarTerminatorStrokeColor;
 + (id)newImageForScreenCorner:(unsigned long long)arg1 screenScale:(double)arg2 cornerRadius:(double)arg3;

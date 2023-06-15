@@ -6,11 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSString;
+@class NSArray, NSLock, NSMutableArray, NSString;
 @protocol XCTestExpectationDelegate;
 
 @interface XCTestExpectation : NSObject
 {
+    struct atomic_flag _hasCleanedUp;
+    NSLock *_cleanupHandlersLock;
+    NSMutableArray *_cleanupHandlers;
     _Bool _fulfilled;
     _Bool _hasBeenWaitedOn;
     _Bool _inverted;
@@ -33,26 +36,23 @@
 @property(readonly) unsigned long long creationToken; // @synthesize creationToken=_creationToken;
 @property unsigned long long numberOfFulfillments; // @synthesize numberOfFulfillments=_numberOfFulfillments;
 @property(copy, setter=_setExpectationDescription:) NSString *_expectationDescription; // @synthesize _expectationDescription;
-- (void)cleanup;
+- (void)addCleanupHandler:(CDUnknownBlockType)arg1;
+- (void)cleanup:(_Bool)arg1;
 @property _Bool hasBeenWaitedOn; // @synthesize hasBeenWaitedOn=_hasBeenWaitedOn;
-- (void)on_queue_setHasBeenWaitedOn:(_Bool)arg1;
 @property __weak id <XCTestExpectationDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, copy) NSArray *fulfillCallStackReturnAddresses; // @synthesize fulfillCallStackReturnAddresses=_fulfillCallStackReturnAddresses;
-@property(readonly) _Bool on_queue_fulfilled;
 @property(readonly) _Bool fulfilled; // @synthesize fulfilled=_fulfilled;
 @property _Bool hasInverseBehavior;
 @property(getter=isInverted) _Bool inverted; // @synthesize inverted=_inverted;
-@property(readonly) _Bool on_queue_isInverted;
 @property(nonatomic) _Bool assertForOverFulfill; // @synthesize assertForOverFulfill=_assertForOverFulfill;
 @property(nonatomic) unsigned long long expectedFulfillmentCount; // @synthesize expectedFulfillmentCount=_expectedFulfillmentCount;
 @property(nonatomic) unsigned long long fulfillmentCount;
-@property(readonly) unsigned long long on_queue_fulfillmentToken;
 @property(readonly) unsigned long long fulfillmentToken; // @synthesize fulfillmentToken=_fulfillmentToken;
-- (_Bool)_queue_fulfillWithCallStackReturnAddresses:(id)arg1;
 - (void)fulfill;
 - (id)_generateExpectationDescription;
 @property(copy) NSString *expectationDescription;
 - (id)description;
+- (void)dealloc;
 - (id)initWithDescription:(id)arg1;
 - (id)init;
 

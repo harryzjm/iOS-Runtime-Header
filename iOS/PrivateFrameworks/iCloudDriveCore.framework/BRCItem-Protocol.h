@@ -5,15 +5,14 @@
 //
 
 #import <iCloudDriveCore/NSCopying-Protocol.h>
-#import <iCloudDriveCore/NSSecureCoding-Protocol.h>
 
-@class BRCAccountSession, BRCClientZone, BRCItemGlobalID, BRCItemID, BRCServerZone, BRCStatInfo, BRCUserRowID;
+@class BRCAccountSessionFPFS, BRCClientZone, BRCItemGlobalID, BRCItemID, BRCServerZone, BRCStatInfo, BRCUserRowID;
 
-@protocol BRCItem <NSCopying, NSSecureCoding>
+@protocol BRCItem <NSCopying>
 @property(nonatomic) unsigned long long sharingOptions;
 @property(readonly, nonatomic) BRCClientZone *clientZone;
 @property(readonly, nonatomic) BRCServerZone *serverZone;
-@property(readonly, nonatomic) BRCAccountSession *session;
+@property(readonly, nonatomic) BRCAccountSessionFPFS *session;
 @property(readonly, nonatomic) BRCUserRowID *ownerKey;
 @property(readonly, nonatomic) BRCStatInfo *st;
 @property(readonly, nonatomic) BRCItemGlobalID *itemGlobalID;

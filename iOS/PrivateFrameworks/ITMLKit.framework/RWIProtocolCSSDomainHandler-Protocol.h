@@ -17,6 +17,7 @@
 - (void)getSupportedCSSPropertiesWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(NSArray *))arg2;
 - (void)addRuleWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(RWIProtocolCSSRule *))arg2 styleSheetId:(NSString *)arg3 selector:(NSString *)arg4;
 - (void)createStyleSheetWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(NSString *))arg2 frameId:(NSString *)arg3;
+- (void)setGroupingHeaderTextWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(RWIProtocolCSSGrouping *))arg2 ruleId:(RWIProtocolCSSRuleId *)arg3 headerText:(NSString *)arg4;
 - (void)setRuleSelectorWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(RWIProtocolCSSRule *))arg2 ruleId:(RWIProtocolCSSRuleId *)arg3 selector:(NSString *)arg4;
 - (void)setStyleTextWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(RWIProtocolCSSStyle *))arg2 styleId:(RWIProtocolCSSStyleId *)arg3 text:(NSString *)arg4;
 - (void)setStyleSheetTextWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 styleSheetId:(NSString *)arg3 text:(NSString *)arg4;

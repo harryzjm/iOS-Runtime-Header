@@ -27,7 +27,7 @@
 - (int)geometryCount;
 - (unsigned int)geometryOffset;
 - (void)allocateArrays:(int)arg1;
-- (void)transformArrays:(const void *)arg1;
+- (void)transformArrays:(void *)arg1;
 - (void *)normalArrayPointer;
 - (void *)vertexArrayPointer;
 - (void *)normalArray;

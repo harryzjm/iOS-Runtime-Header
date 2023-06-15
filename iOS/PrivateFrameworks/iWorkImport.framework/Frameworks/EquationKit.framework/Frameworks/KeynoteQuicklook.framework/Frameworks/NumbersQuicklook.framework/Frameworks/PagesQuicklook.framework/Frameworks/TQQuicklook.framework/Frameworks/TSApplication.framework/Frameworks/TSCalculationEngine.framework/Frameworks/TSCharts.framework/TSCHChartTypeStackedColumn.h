@@ -8,6 +8,7 @@
 {
 }
 
+- (_Bool)supportsSummaryValueLabels;
 - (id)name;
 - (long long)userInterfaceTag;
 - (id)defaultSeriesType:(unsigned long long)arg1;

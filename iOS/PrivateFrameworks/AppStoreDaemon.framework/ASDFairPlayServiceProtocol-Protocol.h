@@ -11,7 +11,7 @@
 @protocol ASDFairPlayServiceProtocol <NSObject>
 - (void)importSubscriptionKeybag:(NSData *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)importKeybag:(NSData *)arg1 completionHandler:(void (^)(NSError *))arg2;
-- (void)generateSubscriptionRequestForDSID:(unsigned long long)arg1 completionHandler:(void (^)(NSError *))arg2;
-- (void)generateKeybagRequestForDSID:(unsigned long long)arg1 completionHandler:(void (^)(NSError *))arg2;
+- (void)generateSubscriptionRequestForDSID:(unsigned long long)arg1 completionHandler:(void (^)(NSData *, NSError *))arg2;
+- (void)generateKeybagRequestForDSID:(unsigned long long)arg1 completionHandler:(void (^)(NSData *, NSError *))arg2;
 @end
 

@@ -16,6 +16,8 @@
 - (void)siriDidDeactivate;
 
 @optional
+@property(nonatomic) _Bool isInAmbientInteractivity;
+@property(nonatomic) _Bool isInAmbient;
 @property(retain, nonatomic) NSUUID *instrumentationTurnIdentifier;
 - (void)configureForConversationStorable:(id <AFConversationStorable>)arg1;
 - (_Bool)hasSash;

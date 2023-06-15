@@ -6,9 +6,9 @@
 
 #import <StoreKit/NSObject-Protocol.h>
 
-@class NSDictionary;
+@class StorefrontInfo;
 
 @protocol SKStorefrontListenerProtocol <NSObject>
-- (void)storefrontChanged:(NSDictionary *)arg1;
+- (void)storefrontChanged:(StorefrontInfo *)arg1;
 @end
 

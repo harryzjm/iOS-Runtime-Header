@@ -6,9 +6,9 @@
 
 #import <AVFoundation/AVPlayerItem.h>
 
-@class AVPlayerItemTrack;
+@class TLAlertQueuePlayerItemHapticTracks;
 
 @interface AVPlayerItem (TLExtensions)
-@property(readonly, nonatomic) AVPlayerItemTrack *tl_hapticPlayerItemTrack;
+@property(readonly, nonatomic) TLAlertQueuePlayerItemHapticTracks *tl_hapticTracks;
 @end
 

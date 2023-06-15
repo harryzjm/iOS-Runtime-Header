@@ -18,14 +18,15 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(nonatomic) long long targetPage; // @synthesize targetPage=_targetPage;
 @property(retain, nonatomic) NSArray *pages; // @synthesize pages=_pages;
-- (double)_clampedPage:(double)arg1;
+- (double)clampedPageForPageProgress:(double)arg1;
 - (void)_prepareToPageWithHorizontalVelocity:(double)arg1 verticalVelocity:(double)arg2;
 - (void)scrollToTargetPageAnimated:(_Bool)arg1;
 - (void)decrementTargetPage;
 - (void)incrementTargetPage;
+- (void)resetTargetPage;
 - (double)viewWidthForPageProgress:(double)arg1;
 - (struct CGPoint)contentOffsetForPage:(long long)arg1;
-- (double)pageProgressForContentOffset:(struct CGPoint)arg1;
+- (double)pageProgressForContentOffset:(struct CGPoint)arg1 clamped:(_Bool)arg2;
 @property(readonly, nonatomic) double currentPage;
 
 @end

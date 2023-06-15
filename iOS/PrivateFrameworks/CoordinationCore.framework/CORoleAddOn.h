@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateCurrentDeviceState;
 - (void)_updateState;
 - (void)monitor:(id)arg1 defaultChanged:(unsigned long long)arg2;
+- (void)meshController:(id)arg1 willTransitionToState:(unsigned long long)arg2;
 - (void)didChangeNodesForMeshController:(id)arg1;
 - (void)meshController:(id)arg1 didTransitionToState:(unsigned long long)arg2;
 - (void)_enableForPairLegacySupport;

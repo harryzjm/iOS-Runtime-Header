@@ -9,6 +9,7 @@
 @class NSArray, NSDictionary, NSOrderedSet, NSString, NSUUID, WFCoercionOptions, WFContentAttributionSet, WFContentItem, WFContentPropertyBuilder, WFFileRepresentation, WFFileType, WFObjectRepresentation, WFObjectType, WFRepresentation, WFType;
 
 @protocol WFContentItemClass <NSObject>
++ (_Bool)canLowercaseTypeDescription;
 + (NSString *)countDescription;
 + (NSString *)localizedPluralFilterDescription;
 + (NSString *)pluralFilterDescription;
@@ -31,17 +32,19 @@
 + (_Bool)supportedTypeMustBeDeterminedByInstance:(WFType *)arg1;
 + (id)itemWithSerializedItem:(NSDictionary *)arg1 forType:(WFFileType *)arg2 named:(NSString *)arg3 attributionSet:(WFContentAttributionSet *)arg4 cachingIdentifier:(NSUUID *)arg5;
 + (NSOrderedSet *)ownedPasteboardTypes;
++ (NSArray *)coercions;
+@property(readonly, nonatomic) _Bool cachesSupportedTypes;
+@property(readonly, nonatomic) WFObjectType *preferredObjectType;
+@property(readonly, nonatomic) WFFileType *preferredFileType;
+@property(readonly, nonatomic) _Bool hasStringOutput;
+@property(readonly, nonatomic) _Bool includesFileRepresentationInSerializedItem;
+@property(readonly, nonatomic) NSDictionary *additionalRepresentationsForSerialization;
+@property(readonly, nonatomic) NSDictionary *metadataForSerialization;
+- (_Bool)alwaysEncodeUsingWFSerializableContent;
 - (Class)classForCopying;
 - (void)copyStateToItem:(WFContentItem *)arg1;
-- (_Bool)cachesSupportedTypes;
 - (_Bool)canGenerateRepresentationForType:(WFType *)arg1;
-- (WFObjectType *)preferredObjectType;
-- (WFFileType *)preferredFileType;
-- (_Bool)hasStringOutput;
-- (_Bool)includesFileRepresentationInSerializedItem;
 - (void)getFileRepresentationsForSerialization:(void (^)(NSArray *, NSError *))arg1;
-- (NSDictionary *)additionalRepresentationsForSerialization;
-- (NSDictionary *)metadataForSerialization;
 - (void)getPreferredFileSize:(void (^)(long long))arg1;
 - (void)getPreferredFileExtension:(void (^)(NSString *))arg1;
 - (void)generateFileRepresentations:(void (^)(NSArray *, NSError *))arg1 options:(WFCoercionOptions *)arg2 forType:(WFFileType *)arg3;

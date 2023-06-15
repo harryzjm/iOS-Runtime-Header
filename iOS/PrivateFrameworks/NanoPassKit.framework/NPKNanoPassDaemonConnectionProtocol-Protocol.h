@@ -9,6 +9,7 @@
 @class NSSet, NSString, PKAppletSubcredentialSharingInvitation, PKBarcodeEventMetadataRequest, PKPaymentPass, PKPaymentTransaction;
 
 @protocol NPKNanoPassDaemonConnectionProtocol <PDXPCServiceExportedInterface>
+- (void)fetchRelevantPassTuplesWithCompletion:(void (^)(NSArray *))arg1;
 - (void)canNotifyAboutExpressModeWithCompletion:(void (^)(_Bool))arg1;
 - (void)addUserNotificationOfType:(unsigned long long)arg1 passUniqueID:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)noteWillDeleteAccountsWithCompletion:(void (^)(void))arg1;

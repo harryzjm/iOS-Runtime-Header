@@ -12,10 +12,10 @@ __attribute__((visibility("hidden")))
 - (void)bedtimeReached;
 - (void)windDownReached;
 - (id)expirationDate;
-- (id)nextStateWithContext:(id *)arg1 forceUpdate:(_Bool)arg2;
+- (void)updateStateForcibly:(_Bool)arg1;
 - (void)significantScheduleChangeOccurred:(unsigned long long)arg1;
 - (void)wakeUpConfirmed;
-- (void)didExitWithNextState:(id)arg1 context:(id)arg2;
+- (void)didExit;
 - (unsigned long long)scheduleState;
 - (id)stateName;
 

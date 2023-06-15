@@ -11,6 +11,7 @@
 @interface _TtC7NewsUI222HeadlineNoiseGenerator : _TtCs12_SwiftObject
 {
     MISSING_TYPE *contentContext;
+    MISSING_TYPE *feedPersonalizer;
     MISSING_TYPE *appConfigManager;
     MISSING_TYPE *tagService;
     MISSING_TYPE *headlineService;

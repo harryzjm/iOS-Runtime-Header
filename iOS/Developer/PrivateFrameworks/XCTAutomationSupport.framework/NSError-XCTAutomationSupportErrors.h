@@ -13,6 +13,5 @@
 + (id)_xctas_error:(long long)arg1 description:(id)arg2;
 @property(readonly) _Bool xctas_isProcessStallError;
 @property(readonly) _Bool xctas_isUnknownElementError;
-@property(readonly) _Bool xctas_isNoMatchingElementError;
 @end
 

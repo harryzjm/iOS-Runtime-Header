@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
     struct CGDataConsumer *dataConsumer;
 }
 
-- (const struct __CFData *)pdfdata;
+- (struct __CFData *)pdfdata;
 - (void)flushRender;
 - (_Bool)setCanvasWidth:(unsigned int)arg1 height:(unsigned int)arg2;
 - (void)setFileTitle:(id)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIPasteboard.h>
+#import <UIKitCore/UIPasteboard.h>
 
 @interface UIPasteboard (CKComposition)
 + (id)__ck_pasteboardTypeListRTFD;

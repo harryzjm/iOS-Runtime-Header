@@ -6,7 +6,7 @@
 
 #import <QuartzCore/CAMetalLayer.h>
 
-@protocol GGLLayerDelegate;
+@protocol CAMetalDrawable, GGLLayerDelegate;
 
 __attribute__((visibility("hidden")))
 @interface MetalLayer : CAMetalLayer
@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     shared_ptr_94286ce0 _device;
     shared_ptr_479d1306 _texture;
     struct shared_ptr<ggl::SamplerState> _samplerState;
+    id <CAMetalDrawable> _prevDrawable;
     _Bool _sRGB;
     struct CGSize _backingSize;
 }

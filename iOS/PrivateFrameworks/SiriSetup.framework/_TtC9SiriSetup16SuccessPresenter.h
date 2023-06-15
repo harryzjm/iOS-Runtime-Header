@@ -12,8 +12,10 @@ __attribute__((visibility("hidden")))
 @interface _TtC9SiriSetup16SuccessPresenter : NSObject
 {
     MISSING_TYPE *dataSource;
+    MISSING_TYPE *dataSourceWriter;
     MISSING_TYPE *viewModel;
     MISSING_TYPE *viewStyle;
+    MISSING_TYPE *page;
     MISSING_TYPE *delegate;
     MISSING_TYPE *presentingViewController;
 }

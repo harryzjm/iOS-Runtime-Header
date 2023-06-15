@@ -10,7 +10,7 @@ __attribute__((visibility("hidden")))
 @interface WKAccessibilityWebPageObjectBase : NSObject
 {
     NakedPtr_895bc996 m_page;
-    struct ObjectIdentifier<WebCore::PageIdentifierType> m_pageID;
+    struct ObjectIdentifierGeneric<WebCore::PageIdentifierType, WTF::ObjectIdentifierMainThreadAccessTraits> m_pageID;
     struct RetainPtr<id> m_parent;
     _Bool m_hasMainFramePlugin;
 }

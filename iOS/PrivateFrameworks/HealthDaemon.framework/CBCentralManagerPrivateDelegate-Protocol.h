@@ -13,6 +13,7 @@
 @optional
 - (void)centralManager:(CBCentralManager *)arg1 didUpdateFindMyPeripherals:(NSArray *)arg2;
 - (NSArray *)retrieveConnectingPeripherals;
+- (void)centralManager:(CBCentralManager *)arg1 didChannelSoundingProcedureEvent:(CBPeripheral *)arg2 results:(NSDictionary *)arg3 error:(NSError *)arg4;
 - (void)centralManager:(CBCentralManager *)arg1 didUpdateUsageStatisticEvent:(CBPeripheral *)arg2 results:(NSDictionary *)arg3 error:(NSError *)arg4;
 - (void)centralManager:(CBCentralManager *)arg1 didUpdateRSSIStatisticsDetectionForPeripheral:(CBPeripheral *)arg2 results:(NSDictionary *)arg3 error:(NSError *)arg4;
 - (void)centralManager:(CBCentralManager *)arg1 didUpdateControllerBTClockDictForPeripheral:(CBPeripheral *)arg2 results:(NSDictionary *)arg3;

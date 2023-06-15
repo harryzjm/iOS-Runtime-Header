@@ -11,8 +11,8 @@
 __attribute__((visibility("hidden")))
 @interface WKURLSessionTaskDelegate : NSObject
 {
-    ObjectIdentifier_086a6a69 _identifier;
-    struct WeakPtr<WebKit::NetworkSessionCocoa, WTF::EmptyCounter> _session;
+    ObjectIdentifierGeneric_05e45345 _identifier;
+    struct WeakPtr<WebKit::NetworkSessionCocoa, WTF::DefaultWeakPtrImpl> _session;
 }
 
 - (id).cxx_construct;
@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
 - (void)URLSession:(id)arg1 task:(id)arg2 willPerformHTTPRedirection:(id)arg3 newRequest:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)URLSession:(id)arg1 task:(id)arg2 didReceiveChallenge:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void *)connection;
-- (id)initWithIdentifier:(ObjectIdentifier_086a6a69)arg1 session:(void *)arg2;
+- (id)initWithIdentifier:(ObjectIdentifierGeneric_05e45345)arg1 session:(void *)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

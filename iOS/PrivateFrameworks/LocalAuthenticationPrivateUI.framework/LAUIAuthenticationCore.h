@@ -39,9 +39,9 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned long long activeMechanisms; // @synthesize activeMechanisms=_activeMechanisms;
 @property(nonatomic) unsigned long long enabledMechanisms; // @synthesize enabledMechanisms=_enabledMechanisms;
 @property(readonly, nonatomic) long long biometryType; // @synthesize biometryType=_biometryType;
-@property(retain, nonatomic) UIView *view; // @synthesize view=_view;
+@property(nonatomic) __weak UIView *view; // @synthesize view=_view;
 @property(nonatomic) __weak NSObject<LAUIAuthenticationCoreDelegate> *delegate; // @synthesize delegate=_delegate;
-- (void)_biometricNoMatch;
+- (void)_biometricNoMatchWithBiolockoutError:(id)arg1;
 - (void)_biometryState:(long long)arg1;
 - (_Bool)_simpleStatusInParams:(id)arg1 touchId:(long long)arg2 faceId:(long long)arg3;
 - (void)event:(long long)arg1 params:(id)arg2 reply:(CDUnknownBlockType)arg3;

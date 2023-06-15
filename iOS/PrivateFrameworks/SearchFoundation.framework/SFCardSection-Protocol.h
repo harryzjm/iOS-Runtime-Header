@@ -11,6 +11,8 @@
 
 @protocol SFCardSection <NSSecureCoding, NSObject>
 @property(readonly) NSArray *embeddedCards;
+@property(copy, nonatomic) NSArray *trailingSwipeButtonItems;
+@property(copy, nonatomic) NSArray *leadingSwipeButtonItems;
 @property(retain, nonatomic) NSString *previewButtonItemsTitle;
 @property(retain, nonatomic) NSString *cardSectionDetail;
 @property(retain, nonatomic) NSString *commandDetail;
@@ -18,6 +20,7 @@
 @property(retain, nonatomic) SFCommand *previewCommand;
 @property(retain, nonatomic) SFCommand *command;
 @property(retain, nonatomic) SFUserReportRequest *userReportRequest;
+@property(nonatomic) _Bool shouldHideInAmbientMode;
 @property(retain, nonatomic) SFColor *backgroundColor;
 @property(copy, nonatomic) NSString *resultIdentifier;
 @property(copy, nonatomic) NSString *cardSectionId;

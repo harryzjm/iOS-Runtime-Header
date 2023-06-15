@@ -9,8 +9,6 @@
 @interface _TtC8VideosUI28MediaShowcasingButtonsLayout
 {
     MISSING_TYPE *$__lazy_storage_$_buttonLayout;
-    MISSING_TYPE *buttonsHorizontalSpacing;
-    MISSING_TYPE *buttonsVerticalSpacing;
 }
 
 @end

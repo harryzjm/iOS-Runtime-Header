@@ -7,7 +7,7 @@
 @class EDLensView, UIColor;
 
 @protocol EDLensViewDelegate
-- (void)lensViewDidDismiss:(EDLensView *)arg1;
+- (void)lensViewDidActivate:(EDLensView *)arg1;
 - (void)lensView:(EDLensView *)arg1 didSelectColor:(UIColor *)arg2;
 @end
 

@@ -24,7 +24,7 @@ __attribute__((visibility("hidden")))
 - (unsigned int)computeRedundancyWithBurstyLoss;
 - (unsigned int)computeRedundancyWithLossPercentage;
 - (void)updateBurstyLoss:(unsigned int)arg1;
-- (void)updateRedundancyStrategyWithNetworkStatistics:(CDStruct_7df19fcb)arg1;
+- (void)updateRedundancyStrategyWithNetworkStatistics:(struct tagVCStatisticsMessage)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

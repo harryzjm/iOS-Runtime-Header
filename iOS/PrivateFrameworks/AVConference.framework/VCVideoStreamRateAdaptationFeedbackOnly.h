@@ -22,14 +22,14 @@ __attribute__((visibility("hidden")))
 
 @property(nonatomic) _Bool didReceiveVideo; // @synthesize didReceiveVideo=_didReceiveVideo;
 - (double)owrd;
-- (void)updateRateControlInfoWithStatisticsMessage:(CDStruct_7df19fcb)arg1;
+- (void)updateRateControlInfoWithStatisticsMessage:(struct tagVCStatisticsMessage)arg1;
 - (void)updateRTPReceiveWithTimestamp:(unsigned int)arg1 sampleRate:(unsigned int)arg2 time:(double)arg3 size:(unsigned int)arg4 endOfFrame:(_Bool)arg5;
 - (void)sendRateControlFeedback;
 - (void)stopFeedbackSource;
 - (void)startFeedbackSource;
 - (void)setEnableRateAdaptation:(_Bool)arg1 maxBitrate:(unsigned int)arg2 minBitrate:(unsigned int)arg3 adaptationInterval:(double)arg4;
 - (void)dealloc;
-- (id)initWithRTPHandle:(struct tagHANDLE *)arg1 reportingAgent:(struct opaqueRTCReporting *)arg2 receiverStats:(id)arg3 dumpID:(unsigned int)arg4 reportingParentID:(int)arg5 statisticsCollector:(id)arg6 lowTimestampPrecision:(_Bool)arg7;
+- (id)initWithMediaStreamRateAdaptationParam:(const struct tagVCMediaStreamRateAdaptationParams *)arg1;
 
 @end
 

@@ -20,9 +20,11 @@ __attribute__((visibility("hidden")))
     NSString *_identifier;
 }
 
-+ (id)entitlementForGroupContainerClass:(unsigned long long)arg1;
++ (id)publicEntitlementForGroupContainerClass:(unsigned long long)arg1;
 + (id)systemGroupIdentifiersForIdentifier:(id)arg1 entitlements:(id)arg2;
 + (id)appGroupIdentifiersForIdentifier:(id)arg1 entitlements:(id)arg2;
++ (id)protectedAppGroupIdentifiersForIdentifier:(id)arg1 entitlements:(id)arg2;
++ (id)publicAppGroupIdentifiersForIdentifier:(id)arg1 entitlements:(id)arg2;
 + (id)copyGroupEntitlementForIdentifier:(id)arg1 entitlements:(id)arg2 groupKey:(id)arg3;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
@@ -30,6 +32,8 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSDictionary *rawEntitlements; // @synthesize rawEntitlements=_rawEntitlements;
 - (id)_setOfStringsFromArray:(id)arg1;
 - (id)copyEntitlementsDictionaryByAddingGroupContainerOfClass:(unsigned long long)arg1 groupIdentifier:(id)arg2;
+- (id)copyEntitlementsDictionaryByRemovingSystemGroupContainerWithIdentifier:(id)arg1;
+- (id)copyEntitlementsDictionaryByRemovingAppGroupContainerWithIdentifier:(id)arg1;
 - (id)copyEntitlementsDictionaryByRemovingGroupContainerOfClass:(unsigned long long)arg1 groupIdentifier:(id)arg2;
 - (void)prune;
 - (_Bool)isAllowedToChangeReferences;
@@ -53,14 +57,19 @@ __attribute__((visibility("hidden")))
 - (id)containerRequiredIdentifier;
 - (id)systemGroupIdentifiers;
 - (id)appGroupIdentifiers;
+- (id)protectedAppGroupIdentifiers;
+- (id)publicAppGroupIdentifiers;
 - (int)intendedDataProtectionClass;
+- (_Bool)isOwnerOfProtectedAppGroupContainerWithIdentifier:(id)arg1;
 - (_Bool)isOwnerOfContainerWithClass:(unsigned long long)arg1 identifier:(id)arg2;
+- (_Bool)isAllowedToLookupViaPrivateEntitlementWithClass:(unsigned long long)arg1 identifier:(id)arg2;
 - (id)lookupForContainerClass:(unsigned long long)arg1;
 - (_Bool)isAllowedToLookupGroupContainersOfClass:(unsigned long long)arg1 ownedByIdentifier:(id)arg2;
 - (_Bool)isAllowedToLookupContainerIdentity:(id)arg1;
 - (_Bool)isAllowedToLookupAllContainersOfClass:(unsigned long long)arg1;
 - (_Bool)isEntitledForLookupWithClass:(unsigned long long)arg1 identifier:(id)arg2;
 @property(readonly, nonatomic) NSDictionary *lookup; // @synthesize lookup=_lookup;
+@property(readonly, nonatomic) _Bool hasDaemonContainer;
 @property(readonly, nonatomic) _Bool canReadWriteReferences;
 @property(readonly, nonatomic) _Bool canReadReferences;
 @property(readonly, nonatomic) _Bool requestsNoContainer;

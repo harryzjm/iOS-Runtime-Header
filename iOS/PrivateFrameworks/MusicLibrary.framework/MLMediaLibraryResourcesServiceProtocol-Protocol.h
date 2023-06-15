@@ -9,6 +9,7 @@
 @class NSString;
 
 @protocol MLMediaLibraryResourcesServiceProtocol <NSObject>
+- (NSString *)musicContainerPathWithError:(id *)arg1;
 - (NSString *)libraryContainerPathWithError:(id *)arg1;
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
 @class MISSING_TYPE;
 
@@ -14,12 +14,18 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *delegate;
     MISSING_TYPE *$__lazy_storage_$_collectionView;
     MISSING_TYPE *$__lazy_storage_$_dataSource;
+    MISSING_TYPE *$__lazy_storage_$_profileView;
+    MISSING_TYPE *hasContentDisplayed;
+    MISSING_TYPE *$__lazy_storage_$_toolbar;
+    MISSING_TYPE *layoutContentInsets;
 }
 
 - (void).cxx_destruct;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)initWithCoder:(id)arg1;
+- (void)viewDidLayoutSubviews;
 - (void)viewDidAppear:(_Bool)arg1;
+- (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (id)init;
 

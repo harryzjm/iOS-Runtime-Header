@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSData, NSString, NSUUID;
+@class GTFileTransferOptions, NSArray, NSData, NSString;
 
 @protocol GTFileWriterService
-- (void)abortSession:(unsigned long long)arg1;
-- (void)finishSession:(unsigned long long)arg1;
-- (void)writeFileChunks:(NSArray *)arg1 withData:(NSData *)arg2 session:(unsigned long long)arg3 completionHandler:(void (^)(NSError *))arg4;
-- (void)beginTransferSessionWithFileEntries:(NSArray *)arg1 basePath:(NSString *)arg2 device:(NSUUID *)arg3 config:(CDStruct_32a7f38a)arg4 sessionID:(unsigned long long)arg5 completionHandler:(void (^)(NSError *))arg6;
-- (void)initiateTransfer:(NSArray *)arg1 basePath:(NSString *)arg2 device:(NSUUID *)arg3 config:(CDStruct_32a7f38a)arg4 completionHandler:(void (^)(NSError *))arg5;
+- (void)writeFileData:(NSData *)arg1 sessionID:(unsigned long long)arg2 completionHandler:(void (^)(NSError *))arg3;
+- (void)beginTransferSessionWithFileEntries:(NSArray *)arg1 basePath:(NSString *)arg2 toDevice:(NSString *)arg3 options:(GTFileTransferOptions *)arg4 sessionID:(unsigned long long)arg5 completionHandler:(void (^)(NSError *))arg6;
+- (void)initiateTransfer:(NSArray *)arg1 basePath:(NSString *)arg2 fromDevice:(NSString *)arg3 options:(GTFileTransferOptions *)arg4 completionHandler:(void (^)(NSError *))arg5;
 @end
 

@@ -11,6 +11,5 @@
 @interface FPItem (DocumentManagerExecutables)
 @property(nonatomic, readonly) NSString *effectiveParentItemIdentifier;
 @property(nonatomic, readonly) NSString *sourceIdentifier;
-@property(nonatomic, readonly) _Bool docIsCollaborationInvitation;
 @end
 

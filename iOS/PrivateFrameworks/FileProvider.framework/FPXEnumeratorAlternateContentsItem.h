@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)isContainerPristine;
 - (_Bool)isContainer;
 @property(readonly, copy) NSString *fp_domainIdentifier;
+@property(readonly, copy) NSString *fp_spotlightSubDomainIdentifier;
 @property(readonly, copy) NSString *fp_spotlightDomainIdentifier;
 @property(readonly, copy) NSString *sharingPermissions;
 - (id)providerID;
@@ -83,6 +84,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) unsigned long long hash;
 @property(readonly, getter=isHidden) _Bool hidden;
 @property(readonly) _Bool isCollaborationInvitation;
+@property(readonly, nonatomic) NSData *originatorInfo;
 @property(readonly, nonatomic) NSString *preformattedMostRecentEditorName;
 @property(readonly, nonatomic) NSString *preformattedOwnerName;
 @property(readonly, copy) NSString *providerIdentifier;

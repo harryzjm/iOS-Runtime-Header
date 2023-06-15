@@ -7,34 +7,42 @@
 #import <NewsPersonalization/FCCacheFlushing-Protocol.h>
 #import <NewsPersonalization/NSObject-Protocol.h>
 
-@class FCArticleController, FCAssetManager, FCContentManifest, FCFlintResourceManager, FCInterestToken, FCJSONRecordSourceSchema, FCNetworkBehaviorMonitor, FCTagController, NSArray, NSString, NSURL;
-@protocol FCAVAssetFactoryType, FCAVAssetPrewarming, FCBackgroundTaskable, FCCacheFlushing, FCCoreConfigurationManager, FCCoreConfigurationManager><FCNewsAppConfigurationManager, FCFeedDatabaseProtocol, FCJSONRecordSourceType, FCJSONRecordTreeSourceType, FCMagazinesConfigurationManager, FCNewsAppConfigurationManager, FCPPTContext;
+@class FCArticleController, FCAssetManager, FCContentManifest, FCFlintResourceManager, FCHeldRecords, FCInterestToken, FCJSONRecordSourceSchema, FCNetworkBehaviorMonitor, FCPuzzleController, FCPuzzleTypeController, FCSportsEventController, FCTagController, NSArray, NSString, NSURL;
+@protocol FCAVAssetFactoryType, FCAVAssetPrewarming, FCBackgroundTaskable, FCCacheFlushing, FCContentContextInternal, FCCoreConfigurationManager, FCCoreConfigurationManager><FCNewsAppConfigurationManager, FCFeedDatabaseProtocol, FCJSONRecordSourceType, FCJSONRecordTreeSourceType, FCMagazinesConfigurationManager, FCNewsAppConfigurationManager, FCPPTContext;
 
 @protocol FCContentContext <NSObject, FCCacheFlushing>
+@property(readonly, copy, nonatomic) NSString *contentEnvironmentToken;
+@property(readonly, nonatomic) id <FCFeedDatabaseProtocol> feedDatabase;
+@property(readonly, nonatomic) id <FCPPTContext> pptContext;
+@property(readonly, nonatomic) __weak id <FCBackgroundTaskable> backgroundTaskable;
+@property(readonly, nonatomic) id <FCContentContextInternal> internalContentContext;
+@property(readonly, copy, nonatomic) NSString *tabiModelsContentDirectory;
+@property(readonly, copy, nonatomic) NSString *tabiResourcesContentDirectory;
+@property(readonly, nonatomic) NSURL *assetCacheDirectoryURL;
+@property(readonly, copy, nonatomic) NSString *contentDirectory;
+@property(readonly, nonatomic) FCNetworkBehaviorMonitor *networkBehaviorMonitor;
+@property(readonly, nonatomic) FCFlintResourceManager *flintResourceManager;
+@property(readonly, nonatomic) FCPuzzleTypeController *puzzleTypeController;
+@property(readonly, nonatomic) FCPuzzleController *puzzleController;
+@property(readonly, nonatomic) FCSportsEventController *sportsEventController;
+@property(readonly, nonatomic) FCTagController *tagController;
+@property(readonly, nonatomic) FCArticleController *articleController;
+@property(readonly, nonatomic) id <FCAVAssetFactoryType> avAssetFactory;
+@property(readonly, nonatomic) id <FCAVAssetPrewarming> avAssetPrewarmer;
+@property(readonly, nonatomic) FCAssetManager *assetManager;
+@property(readonly, nonatomic) id <FCNewsAppConfigurationManager> appConfigurationManager;
+@property(readonly, nonatomic) id <FCCoreConfigurationManager> configurationManager;
+@property(readonly, copy, nonatomic) NSString *contentEnvironment;
+@property(readonly, copy, nonatomic) NSString *supportedContentStoreFrontID;
+@property(readonly, copy, nonatomic) NSString *contentStoreFrontID;
+- (FCHeldRecords *)convertRecords:(NSArray *)arg1;
 - (void)enableFlushingWithFlushingThreshold:(unsigned long long)arg1 exceptForFlusher:(id <FCCacheFlushing>)arg2;
 - (FCInterestToken *)interestTokenForContentManifest:(FCContentManifest *)arg1;
 - (id <FCJSONRecordTreeSourceType>)recordTreeSourceWithRecordSources:(NSArray *)arg1;
 - (id <FCJSONRecordSourceType>)recordSourceWithSchema:(FCJSONRecordSourceSchema *)arg1;
-@property(nonatomic, readonly) NSString *contentEnvironmentToken;
 - (void)ppt_prewarmFeedDatabase;
 - (void)ppt_overrideFeedEndpoint:(long long)arg1;
-@property(nonatomic, readonly) id <FCFeedDatabaseProtocol> feedDatabase;
-@property(nonatomic, readonly) id <FCPPTContext> pptContext;
-@property(nonatomic, readonly) id <FCBackgroundTaskable> backgroundTaskable;
-@property(nonatomic, readonly) NSURL *assetCacheDirectoryURL;
-@property(nonatomic, readonly) NSString *contentDirectory;
-@property(nonatomic, readonly) FCNetworkBehaviorMonitor *networkBehaviorMonitor;
-@property(nonatomic, readonly) FCFlintResourceManager *flintResourceManager;
-@property(nonatomic, readonly) FCTagController *tagController;
-@property(nonatomic, readonly) FCArticleController *articleController;
-@property(nonatomic, readonly) id <FCAVAssetFactoryType> avAssetFactory;
-@property(nonatomic, readonly) id <FCAVAssetPrewarming> avAssetPrewarmer;
-@property(nonatomic, readonly) FCAssetManager *assetManager;
 - (id <FCMagazinesConfigurationManager>)magazinesConfigurationManager;
 - (id <FCCoreConfigurationManager><FCNewsAppConfigurationManager>)news_core_ConfigurationManager;
-@property(nonatomic, readonly) id <FCNewsAppConfigurationManager> appConfigurationManager;
-@property(nonatomic, readonly) id <FCCoreConfigurationManager> configurationManager;
-@property(nonatomic, readonly) NSString *supportedContentStoreFrontID;
-@property(nonatomic, readonly) NSString *contentStoreFrontID;
 @end
 

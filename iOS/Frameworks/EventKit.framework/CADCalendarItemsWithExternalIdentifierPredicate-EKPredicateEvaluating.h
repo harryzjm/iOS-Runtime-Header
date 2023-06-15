@@ -7,6 +7,7 @@
 #import <CalendarDaemon/CADCalendarItemsWithExternalIdentifierPredicate.h>
 
 @interface CADCalendarItemsWithExternalIdentifierPredicate (EKPredicateEvaluating)
+- (void)expandWithObjectsPendingCommit:(id)arg1 deletedObjectIDs:(id)arg2 andResultArray:(id)arg3;
 - (_Bool)ekPredicateEvaluateWithObject:(id)arg1;
 @end
 

@@ -48,6 +48,7 @@ __attribute__((visibility("hidden")))
 - (void)hideCursor;
 - (_Bool)delegateWasEmpty;
 - (void)updatePosition;
+- (id)_currentTextInputView;
 - (void)drawRect:(struct CGRect)arg1;
 - (void)advanceLanding:(id)arg1;
 - (void)shrinkWithCompletion:(id)arg1;

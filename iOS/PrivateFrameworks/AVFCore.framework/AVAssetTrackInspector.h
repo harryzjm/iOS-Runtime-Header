@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)assetTrackInspectorWithAsset:(id)arg1 trackID:(int)arg2 trackIndex:(long long)arg3;
+@property(readonly, nonatomic, getter=_isDefunct) _Bool defunct;
 - (struct OpaqueFigSampleCursorService *)_getFigSampleCursorServiceReportingTimeAccuracy:(_Bool *)arg1;
 - (id)makeSampleCursorAtLastSampleInDecodeOrder;
 - (id)makeSampleCursorAtFirstSampleInDecodeOrder;
@@ -39,6 +40,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) CDStruct_e83c9415 gaplessSourceTimeRange;
 @property(readonly, nonatomic) _Bool segmentsExcludeAudioPrimingAndRemainderDurations;
 @property(readonly, copy, nonatomic) NSArray *segments;
+- (id)_segmentsForSegmentData:(id)arg1;
 @property(readonly, nonatomic) CDStruct_1b6d18a9 minSampleDuration;
 @property(readonly, nonatomic) float nominalFrameRate;
 @property(readonly, nonatomic) NSDictionary *loudnessInfo;

@@ -15,8 +15,10 @@ __attribute__((visibility("hidden")))
 
 + (void)determineCapabilitiesWithServiceInfo:(id)arg1 initInfo:(CDStruct_fc41fe5e *)arg2;
 + (void)populateInitInfo:(CDStruct_fc41fe5e *)arg1 forLogicalDevice:(id)arg2;
++ (id)logicalDevice:(id)arg1 makeControllerInputDescriptionWithIdentifier:(id)arg2 bindings:(id)arg3;
 + (id)logicalDevice:(id)arg1 makeControllerPhysicalInputProfileWithIdentifier:(id)arg2;
 + (id)logicalDeviceControllerProductCategory:(id)arg1;
++ (_Bool)logicalDeviceIsSonyBackbone:(id)arg1;
 + (void)physicalDevice:(id)arg1 setIndicatedPlayerIndex:(long long)arg2;
 + (long long)physicalDeviceGetIndicatedPlayerIndex:(id)arg1;
 + (_Bool)physicalDeviceUsesACHomeForMenu:(id)arg1;

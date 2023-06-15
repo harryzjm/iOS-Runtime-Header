@@ -21,6 +21,8 @@ __attribute__((visibility("hidden")))
     unsigned long long _countOfNotesWithOtherAttachments;
     unsigned long long _countOfNotesWithPaperKit;
     unsigned long long _countOfNotesWithDeepLink;
+    unsigned long long _countOfNotesWithNoteLink;
+    unsigned long long _countOfNotesWithFolderLink;
     unsigned long long _countOfNotesWithTags;
     unsigned long long _countOfNotesWithMentions;
     unsigned long long _scrapPaperCount;
@@ -77,6 +79,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned long long scrapPaperCount; // @synthesize scrapPaperCount=_scrapPaperCount;
 @property(nonatomic) unsigned long long countOfNotesWithMentions; // @synthesize countOfNotesWithMentions=_countOfNotesWithMentions;
 @property(nonatomic) unsigned long long countOfNotesWithTags; // @synthesize countOfNotesWithTags=_countOfNotesWithTags;
+@property(nonatomic) unsigned long long countOfNotesWithFolderLink; // @synthesize countOfNotesWithFolderLink=_countOfNotesWithFolderLink;
+@property(nonatomic) unsigned long long countOfNotesWithNoteLink; // @synthesize countOfNotesWithNoteLink=_countOfNotesWithNoteLink;
 @property(nonatomic) unsigned long long countOfNotesWithDeepLink; // @synthesize countOfNotesWithDeepLink=_countOfNotesWithDeepLink;
 @property(nonatomic) unsigned long long countOfNotesWithPaperKit; // @synthesize countOfNotesWithPaperKit=_countOfNotesWithPaperKit;
 @property(nonatomic) unsigned long long countOfNotesWithOtherAttachments; // @synthesize countOfNotesWithOtherAttachments=_countOfNotesWithOtherAttachments;

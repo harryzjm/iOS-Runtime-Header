@@ -25,9 +25,9 @@ __attribute__((visibility("hidden")))
 - (id)_texturedImageWithKey:(id)arg1;
 - (void)_setStructuredThemeStore:(id)arg1;
 - (id)mipLevels;
-- (id)_initWithCSIHeader:(const struct _csiheader *)arg1;
+- (id)_initWithCSIHeader:(const struct _csiheader *)arg1 version:(unsigned int)arg2;
 - (void)dealloc;
-- (id)initWithCSIData:(id)arg1 forKey:(const struct _renditionkeytoken *)arg2;
+- (id)initWithCSIData:(id)arg1 forKey:(const struct _renditionkeytoken *)arg2 version:(unsigned int)arg3;
 
 @end
 

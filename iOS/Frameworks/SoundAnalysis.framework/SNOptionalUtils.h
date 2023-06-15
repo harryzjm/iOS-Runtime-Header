@@ -11,5 +11,12 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (id)nullableObject:(id)arg1 orDefault:(id)arg2;
++ (id)optionalWithNullableObject:(id)arg1;
++ (id)dictionaryWithNullableOptionalObject:(id)arg1 key:(id)arg2;
++ (id)dictionaryWithNullableObject:(id)arg1 key:(id)arg2;
++ (id)dictionaryWithOptionalObject:(id)arg1 key:(id)arg2;
+- (id)init;
+
 @end
 

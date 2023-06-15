@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIBezierPath.h>
+#import <UIKitCore/UIBezierPath.h>
 
 @interface UIBezierPath (WKAdditions)
 + (id)wk_parallelogramInRect:(struct CGRect)arg1 stripeIndex:(long long)arg2 firstStripeBaseY:(double)arg3 stripeAngle:(double)arg4 stripeWidth:(double)arg5 sizeScaleFactor:(double)arg6;

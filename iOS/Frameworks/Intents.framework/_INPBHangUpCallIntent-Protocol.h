@@ -6,10 +6,12 @@
 
 #import <Intents/NSObject-Protocol.h>
 
-@class _INPBIntentMetadata;
+@class NSString, _INPBIntentMetadata;
 
 @protocol _INPBHangUpCallIntent <NSObject>
 @property(readonly, nonatomic) _Bool hasIntentMetadata;
 @property(retain, nonatomic) _INPBIntentMetadata *intentMetadata;
+@property(readonly, nonatomic) _Bool hasCallIdentifier;
+@property(copy, nonatomic) NSString *callIdentifier;
 @end
 

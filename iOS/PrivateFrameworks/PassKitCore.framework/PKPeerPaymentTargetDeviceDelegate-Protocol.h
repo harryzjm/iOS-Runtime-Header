@@ -7,6 +7,7 @@
 @class NSString, NSURL;
 
 @protocol PKPeerPaymentTargetDeviceDelegate
+- (void)updateAccountWithCompletion:(void (^)(PKPeerPaymentAccount *))arg1;
 - (void)downloadPassIfNecessaryWithCompletion:(void (^)(_Bool))arg1;
 - (void)registerDeviceWithRegistrationURL:(NSURL *)arg1 pushToken:(NSString *)arg2 forceReregister:(_Bool)arg3 completion:(void (^)(_Bool, NSError *))arg4;
 @end

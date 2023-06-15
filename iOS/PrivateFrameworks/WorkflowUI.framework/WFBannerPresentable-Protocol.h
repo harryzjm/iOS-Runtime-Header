@@ -8,14 +8,16 @@
 #import <WorkflowUI/BNPresentable-Protocol.h>
 #import <WorkflowUI/NSObject-Protocol.h>
 
-@class NSDictionary, WFWorkflowRunningContext;
+@class NSDictionary, UIViewController, WFWorkflowRunningContext;
 
 @protocol WFBannerPresentable <NSObject, BNHostedContentProviding, BNPresentable>
 @property(retain, nonatomic) WFWorkflowRunningContext *associatedRunningContext;
+- (UIViewController *)viewController;
 - (void)systemDismissedBanner;
 
 @optional
 - (NSDictionary *)postOptions;
+- (_Bool)shouldInstallBannerDimmingLayer;
 - (void)homeGestureDidPassThreshold;
 - (_Bool)hasCustomHomeGestureBehavior;
 - (_Bool)allowsInteractiveDismiss;

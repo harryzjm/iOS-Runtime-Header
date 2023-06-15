@@ -10,9 +10,5 @@
 
 @protocol UIActivityItemImageDataProvider <NSObject>
 - (NSData *)activityViewController:(UIActivityViewController *)arg1 thumbnailImageDataForActivityType:(NSString *)arg2 suggestedSize:(struct CGSize)arg3;
-
-@optional
-- (NSData *)activityViewControllerSuggestionFaceRecognitionData:(UIActivityViewController *)arg1;
-- (NSData *)activityViewControllerSuggestionImageData:(UIActivityViewController *)arg1;
 @end
 

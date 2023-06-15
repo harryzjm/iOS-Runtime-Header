@@ -9,11 +9,12 @@
 @class SBViewMorphAnimator;
 
 @protocol SBViewMorphAnimatorDataSource <NSObject>
+- (struct CGRect)sourceSubviewFrame:(struct CGRect)arg1 inScreenSpaceForAnimator:(SBViewMorphAnimator *)arg2;
 - (double)targetFinalCornerRadiusForAnimator:(SBViewMorphAnimator *)arg1;
 - (double)sourceBlackCurtainCornerRadiusForAnimator:(SBViewMorphAnimator *)arg1;
 - (double)sourceCornerRadiusForAnimator:(SBViewMorphAnimator *)arg1;
 - (struct CGRect)targetFinalFrameForAnimator:(SBViewMorphAnimator *)arg1;
 - (struct CGRect)sourceContentFrameForAnimator:(SBViewMorphAnimator *)arg1;
-- (struct CGRect)sourceAppLayoutFrameForAnimator:(SBViewMorphAnimator *)arg1;
+- (struct CGRect)sourceContentContainerFrameForAnimator:(SBViewMorphAnimator *)arg1;
 @end
 

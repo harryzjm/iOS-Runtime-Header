@@ -36,7 +36,7 @@
 - (tvec2_3b141483)p_currentModelSize;
 - (id)p_cache;
 - (void)p_updateFromCacheItem:(id)arg1;
-- (void)p_updateLayoutSize:(struct CGSize)arg1 chartBodyLayoutOffsetInChartAreaLayoutSpace:(const void *)arg2;
+- (void)p_updateLayoutSize:(struct CGSize)arg1 chartBodyLayoutOffsetInChartAreaLayoutSpace:(void *)arg2;
 - (void)p_updateBodyLayoutRect;
 - (struct CGRect)p_frameForSelectionPath:(id)arg1 sceneObjectClass:(Class)arg2;
 - (struct CGRect)titleFrame;

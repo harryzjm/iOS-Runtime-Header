@@ -6,7 +6,10 @@
 
 #import <MapsUI/NSObject-Protocol.h>
 
+@class UIControl;
+
 @protocol MUPlaceEnrichmentActionHandler <NSObject>
-- (void)performActionUsingArguments:(id)arg1 completion:(void (^)(_Bool))arg2;
+- (void)layoutActionsUsingArguments:(id)arg1 completion:(void (^)(_Bool))arg2;
+- (void)performActionUsingArguments:(id)arg1 contextMenu:(UIControl *)arg2 completion:(void (^)(_Bool))arg3;
 @end
 

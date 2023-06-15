@@ -12,9 +12,9 @@
 - (void)remote_willDeleteSignedClinicalDataRecordWithSyncIdentifier:(NSUUID *)arg1;
 - (void)remote_didUpdateSignedClinicalDataRecord:(HKSignedClinicalDataRecord *)arg1;
 - (void)remote_addCardToWalletForRecord:(HKSignedClinicalDataRecord *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
-- (void)remote_reverifySignatureForRecord:(HDHRSOriginalSignedClinicalDataRecord *)arg1 options:(unsigned long long)arg2 completion:(void (^)(HDHRSSignedClinicalDataParsingResult *, NSError *))arg3;
-- (void)remote_processOriginalSignedClinicalDataRecords:(NSArray *)arg1 options:(unsigned long long)arg2 completion:(void (^)(HDHRSSignedClinicalDataParsingResult *, NSError *))arg3;
-- (void)remote_handleSignedClinicalDataFeature:(HKClinicalGatewayFeature *)arg1 context:(HKClinicalIngestionContext *)arg2 completion:(void (^)(HDHRSSignedClinicalDataParsingResult *, NSError *))arg3;
-- (void)remote_parseSignedClinicalData:(HKSignedClinicalDataSource *)arg1 options:(unsigned long long)arg2 completion:(void (^)(HDHRSSignedClinicalDataParsingResult *, NSError *))arg3;
+- (void)remote_reverifySignatureForRecord:(HDHRSOriginalSignedClinicalDataRecord *)arg1 options:(unsigned long long)arg2 completion:(void (^)(HKSignedClinicalDataParsingResult *, NSError *))arg3;
+- (void)remote_processOriginalSignedClinicalDataRecords:(NSArray *)arg1 options:(unsigned long long)arg2 completion:(void (^)(HKSignedClinicalDataParsingResult *, NSError *))arg3;
+- (void)remote_handleSignedClinicalDataFeature:(HKClinicalGatewayFeature *)arg1 context:(HKClinicalIngestionContext *)arg2 completion:(void (^)(HKSignedClinicalDataParsingResult *, NSError *))arg3;
+- (void)remote_parseSignedClinicalData:(HKSignedClinicalDataSource *)arg1 options:(unsigned long long)arg2 completion:(void (^)(HKSignedClinicalDataParsingResult *, NSError *))arg3;
 @end
 

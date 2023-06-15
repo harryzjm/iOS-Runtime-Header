@@ -21,6 +21,7 @@
 - (_Bool)store:(RTPersistenceStore *)arg1 validateAppleIDs:(NSSet *)arg2;
 
 @optional
+@property(nonatomic) _Bool shouldResetCloudStore;
 - (void)persistenceMigrator:(RTPersistenceMigrator *)arg1 didFinishMigratingStore:(RTPersistenceStore *)arg2 withModelProvider:(id <RTPersistenceModelProvider>)arg3;
 - (void)persistenceMigrator:(RTPersistenceMigrator *)arg1 didStartMigratingStore:(RTPersistenceStore *)arg2 withModelProvider:(id <RTPersistenceModelProvider>)arg3;
 - (_Bool)importSourceStore:(RTPersistenceStore *)arg1 sourceCoordinator:(NSPersistentStoreCoordinator *)arg2 destinationStore:(RTPersistenceStore *)arg3 destinationCoordinator:(NSPersistentStoreCoordinator *)arg4 managedObjectModel:(NSManagedObjectModel *)arg5 configuration:(NSString *)arg6 error:(id *)arg7;

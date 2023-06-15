@@ -6,12 +6,14 @@
 
 #import <iTunesCloud/NSObject-Protocol.h>
 
-@class ICMusicLibraryAuthTokenStatus, ICMusicSubscriptionStatus, ICMusicUserStateCookies, NSString;
+@class ICLightweightMusicSubscriptionStatus, ICMusicLibraryAuthTokenStatus, ICMusicSubscriptionStatus, ICMusicUserProfile, ICMusicUserStateCookies, NSString;
 
 @protocol ICMutableMusicUserState <NSObject>
+@property(copy, nonatomic) ICMusicUserProfile *userProfile;
 @property(copy, nonatomic) ICMusicUserStateCookies *cookies;
 @property(nonatomic) _Bool usesListeningHistory;
 @property(nonatomic) long long cloudLibrarySyncStatus;
+@property(copy, nonatomic) ICLightweightMusicSubscriptionStatus *lightweightSubscriptionStatus;
 @property(copy, nonatomic) ICMusicSubscriptionStatus *subscriptionStatus;
 @property(copy, nonatomic) ICMusicLibraryAuthTokenStatus *libraryAuthTokenStatus;
 @property(copy, nonatomic) NSString *carrierBundleDeviceID;

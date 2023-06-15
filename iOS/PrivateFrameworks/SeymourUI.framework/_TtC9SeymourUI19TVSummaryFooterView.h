@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class MISSING_TYPE, NSArray;
 
@@ -15,13 +15,11 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *cooldownButton;
     MISSING_TYPE *onDoneButtonTap;
     MISSING_TYPE *onCooldownButtonTap;
-    MISSING_TYPE *focusedView;
 }
 
 - (void).cxx_destruct;
 - (void)cooldownButtonTapped;
 - (void)doneButtonTapped;
-- (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 @property(nonatomic, readonly) NSArray *preferredFocusEnvironments;

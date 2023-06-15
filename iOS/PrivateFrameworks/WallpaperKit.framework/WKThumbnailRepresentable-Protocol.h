@@ -9,7 +9,7 @@
 @class NSURL, UIImage;
 
 @protocol WKThumbnailRepresentable <NSCopying>
-@property(nonatomic, readonly) UIImage *thumbnailImage;
-@property(nonatomic, readonly) NSURL *thumbnailImageURL;
+@property(readonly, nonatomic) UIImage *thumbnailImage;
+@property(readonly, copy, nonatomic) NSURL *thumbnailImageURL;
 @end
 

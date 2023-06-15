@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UISlider.h>
+#import <UIKitCore/UISlider.h>
 
 @interface _TtC6HomeUIP33_924B9BACA428215473DADD2D3F844A0415TracklessSlider : UISlider
 {

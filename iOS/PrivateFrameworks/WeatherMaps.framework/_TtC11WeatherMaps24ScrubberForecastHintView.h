@@ -4,25 +4,27 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
 @interface _TtC11WeatherMaps24ScrubberForecastHintView : UIView
 {
-    MISSING_TYPE *delegate;
+    MISSING_TYPE *forecastHourCount;
     MISSING_TYPE *backgroundEffectView;
-    MISSING_TYPE *iconView;
     MISSING_TYPE *label;
     MISSING_TYPE *horizontalPadding;
     MISSING_TYPE *verticalPadding;
-    MISSING_TYPE *iconLabelSpacing;
+    MISSING_TYPE *cornerRadius;
+    MISSING_TYPE *arrowWidth;
+    MISSING_TYPE *arrowOffsetX;
+    MISSING_TYPE *borderLayer;
+    MISSING_TYPE *maskLayer;
 }
 
 - (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)didRecognizeTap;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)layoutSubviews;
 - (id)initWithCoder:(id)arg1;

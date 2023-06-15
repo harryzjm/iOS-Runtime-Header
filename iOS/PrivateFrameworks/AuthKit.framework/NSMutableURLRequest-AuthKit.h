@@ -17,10 +17,22 @@
 + (id)ak_timeZoneHeader;
 + (id)ak_localeHeader;
 + (id)ak_clientTimeHeader;
+- (void)ak_addHeaderForMDMOrganizationToken:(id)arg1;
+- (void)ak_addHeaderForDeviceManagementState:(id)arg1;
+- (void)ak_addTelemetryFlowID:(id)arg1;
+- (void)ak_addTelemetryDeviceSessionID:(id)arg1;
+- (void)ak_addHeaderForSourceAltDSID:(id)arg1;
+- (void)ak_addPasscodeAuthHeader;
+- (void)ak_addExperimentModeHeader;
+- (void)ak_addRequestContextHeader:(id)arg1;
+- (void)ak_addCustodianSyncActionHeader;
+- (void)ak_addDeviceModeHeader;
 - (void)ak_addPrivateEmailAppNameHeader:(id)arg1;
 - (void)ak_addPrivateEmailAppBundleIdHeader:(id)arg1;
 - (void)ak_addPrivateEmailOriginHeader:(id)arg1;
 - (void)ak_addPrivateEmailDomainHeader:(id)arg1;
+- (void)ak_addWalrusDeviceRegionHeader;
+- (void)ak_addWalrusStatusHeader;
 - (void)ak_addFidoRecoveryTokenHeader:(id)arg1;
 - (void)ak_addProxiedBundleIDHeader:(id)arg1;
 - (void)ak_addClientBundleIDHeader:(id)arg1;
@@ -48,6 +60,7 @@
 - (void)ak_addLocalUserHasAppleIDLoginHeader;
 - (void)ak_addICSCIntentHeader;
 - (void)ak_addProxiedDevicePRKRequestHeader;
+- (void)ak_addCKRequestHeader;
 - (void)ak_addPRKRequestHeader;
 - (void)ak_addTimeZoneHeaders;
 - (void)ak_addLocaleHeader;
@@ -84,6 +97,9 @@
 - (void)ak_addEphemeralAuthHeader;
 - (void)ak_addProxiedClientInfoHeader:(id)arg1;
 - (void)ak_addCompanionClientInfoHeader:(id)arg1;
+- (void)ak_addCircleStatusHeaderForCircleStatus:(_Bool)arg1;
+- (void)ak_addCDPStatusHeaderForDSID:(id)arg1;
+- (void)ak_addOTStatusHeaderForAltDSID:(id)arg1;
 - (void)ak_addCircleStatusHeader;
 - (void)ak_addClientTimeHeader;
 - (void)ak_addClientInfoHeader;
@@ -94,6 +110,7 @@
 - (void)ak_addAppleIDHeaderWithValue:(id)arg1;
 - (void)ak_addLocalUserUUIDHashHeader;
 - (void)ak_addFeatureMaskHeader;
+- (void)ak_addSeedBuildHeader;
 - (void)ak_addInternalBuildHeader;
 @end
 

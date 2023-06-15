@@ -7,18 +7,19 @@
 #import <objc/NSObject.h>
 
 @class HDSPEnvironment, NSMutableDictionary, NSString;
+@protocol HKSPMutexProvider;
 
 __attribute__((visibility("hidden")))
 @interface HDSPCFUserNotificationCenter : NSObject
 {
-    struct os_unfair_lock_s _notificationLock;
     HDSPEnvironment *_environment;
+    id <HKSPMutexProvider> _mutexProvider;
     NSMutableDictionary *_notifications;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSMutableDictionary *notifications; // @synthesize notifications=_notifications;
-@property(readonly, nonatomic) struct os_unfair_lock_s notificationLock; // @synthesize notificationLock=_notificationLock;
+@property(readonly, nonatomic) id <HKSPMutexProvider> mutexProvider; // @synthesize mutexProvider=_mutexProvider;
 @property(readonly, nonatomic) __weak HDSPEnvironment *environment; // @synthesize environment=_environment;
 @property(readonly, nonatomic) NSString *sourceIdentifier;
 - (void)tearDownNotifications;

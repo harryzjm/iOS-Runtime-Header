@@ -11,6 +11,7 @@
 @interface CKDDownloadAssetsOperationInfo : CKDatabaseOperationInfo
 {
     _Bool _shouldFetchAssetContentInMemory;
+    _Bool _shouldCloneFileInAssetCache;
     NSArray *_assetsToDownload;
     NSArray *_packageIndexSets;
     NSArray *_assetsToDownloadInMemory;
@@ -20,6 +21,7 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *assetURLInfosToFillOut; // @synthesize assetURLInfosToFillOut=_assetURLInfosToFillOut;
 @property(retain, nonatomic) NSArray *assetsToDownloadInMemory; // @synthesize assetsToDownloadInMemory=_assetsToDownloadInMemory;
+@property(nonatomic) _Bool shouldCloneFileInAssetCache; // @synthesize shouldCloneFileInAssetCache=_shouldCloneFileInAssetCache;
 @property(retain, nonatomic) NSArray *packageIndexSets; // @synthesize packageIndexSets=_packageIndexSets;
 @property(retain, nonatomic) NSArray *assetsToDownload; // @synthesize assetsToDownload=_assetsToDownload;
 @property(nonatomic) _Bool shouldFetchAssetContentInMemory; // @synthesize shouldFetchAssetContentInMemory=_shouldFetchAssetContentInMemory;

@@ -27,14 +27,15 @@ struct StreamRecordingData {
     unsigned long long _field9;
     id _field10;
     id _field11;
-    struct __CVPixelBufferPool *_field12;
+    id _field12;
     id _field13;
     id _field14;
     id _field15;
-    CDStruct_198678f7 _field16;
-    unsigned long long _field17;
-    id _field18;
-    long long _field19;
+    id _field16;
+    CDStruct_198678f7 _field17;
+    unsigned long long _field18;
+    id _field19;
+    long long _field20;
 };
 
 struct opaqueCMFormatDescription;

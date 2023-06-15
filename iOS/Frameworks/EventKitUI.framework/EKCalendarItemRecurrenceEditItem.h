@@ -12,7 +12,6 @@ __attribute__((visibility("hidden")))
     long long _repeatType;
     long long _originalRepeatType;
     NSDate *_repeatEnd;
-    NSDate *_minRecurrenceEndDate;
     NSDate *_originalRepeatEnd;
     NSString *_customRepeatDescription;
     UITableViewCell *_customCell;
@@ -38,6 +37,7 @@ __attribute__((visibility("hidden")))
 - (void)editor:(id)arg1 didSelectSubitem:(unsigned long long)arg2;
 - (void)presentCustomRecurrenceVC;
 - (_Bool)_validateRecurrenceType:(id)arg1;
+- (void)_updateMinRecurrenceEndDate;
 - (void)saveNewRepeatEndDate:(id)arg1;
 - (void)_datePickerChanged:(id)arg1;
 - (id)recurrenceRuleFromRepeatType:(long long)arg1;

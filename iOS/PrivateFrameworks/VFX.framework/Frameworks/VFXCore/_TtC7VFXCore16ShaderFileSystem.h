@@ -10,7 +10,6 @@
 
 @interface _TtC7VFXCore16ShaderFileSystem : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *compileQueue;
     MISSING_TYPE *dirtySharedFileQuery;
 }
 

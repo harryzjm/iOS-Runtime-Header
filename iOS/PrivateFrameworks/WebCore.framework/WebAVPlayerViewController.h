@@ -7,20 +7,21 @@
 #import <objc/NSObject.h>
 
 @class NSString;
-@protocol AVPlayerViewControllerDelegate_WebKitOnly;
 
 __attribute__((visibility("hidden")))
 @interface WebAVPlayerViewController : NSObject
 {
-    void *_fullscreenInterface;
+    struct ThreadSafeWeakPtr<WebCore::VideoFullscreenInterfaceAVKit> _fullscreenInterface;
     struct RetainPtr<AVPlayerViewController> _avPlayerViewController;
     struct RetainPtr<NSTimer> _startPictureInPictureTimer;
-    struct RetainPtr<AVObservationController> _avPlayerViewControllerObservationController;
-    id <AVPlayerViewControllerDelegate_WebKitOnly> _delegate;
+    struct WeakObjCPtr<WebAVPlayerViewControllerDelegate> _delegate;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) CDStruct_3707b61b *logChannel;
+@property(readonly, nonatomic) const void *loggerPtr;
+@property(readonly, nonatomic) const void *logIdentifier;
 - (void)removeFromParentViewController;
 - (id)avPlayerViewController;
 - (void)setPlayerController:(id)arg1;
@@ -37,6 +38,9 @@ __attribute__((visibility("hidden")))
 - (void)stopPictureInPicture;
 - (void)startPictureInPicture;
 - (void)tryToStartPictureInPicture;
+- (void)removeObserver;
+- (void)initObserver;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)exitFullScreenAnimated:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)enterFullScreenAnimated:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setWebKitOverrideRouteSharingPolicy:(unsigned long long)arg1 routingContextUID:(id)arg2;

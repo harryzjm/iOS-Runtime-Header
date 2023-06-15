@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 @class NSIndexPath, NSString, UICollectionReusableView;
 
 __attribute__((visibility("hidden")))
-@interface _UICollectionViewFocusedItemState : NSObject <NSCopying>
+@interface _UICollectionViewFocusedItemState : NSObject
 {
     UICollectionReusableView *_reusableView;
     NSIndexPath *_indexPath;

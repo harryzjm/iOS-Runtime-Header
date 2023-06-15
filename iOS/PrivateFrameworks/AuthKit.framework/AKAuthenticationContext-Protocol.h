@@ -15,6 +15,7 @@
 @property(copy, nonatomic) NSString *appProvidedContext;
 @property(copy, nonatomic) NSDictionary *appProvidedData;
 @property(copy, nonatomic, setter=_setProxiedAppName:) NSString *_proxiedAppName;
+@property(nonatomic) _Bool isMDMInformationRequired;
 @property(nonatomic) unsigned long long authenticationMode;
 @property(nonatomic) unsigned long long authenticationType;
 @property(nonatomic) long long serviceType;

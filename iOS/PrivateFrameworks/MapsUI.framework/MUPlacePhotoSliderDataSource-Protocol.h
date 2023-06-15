@@ -15,5 +15,8 @@
 - (UIView *)photoSliderViewHeaderViewForPhotoSlider:(MUPlacePhotoSliderView *)arg1;
 - (MUPhotoTileOverlay *)photoSliderView:(MUPlacePhotoSliderView *)arg1 photoOverlayForModel:(id <MUPhotoTileViewModel>)arg2;
 - (NSArray *)photoSliderViewRequestsViewModels:(MUPlacePhotoSliderView *)arg1;
+
+@optional
+- (_Bool)photoSliderView:(MUPlacePhotoSliderView *)arg1 shouldShowFullWidthForModel:(id <MUPhotoTileViewModel>)arg2;
 @end
 

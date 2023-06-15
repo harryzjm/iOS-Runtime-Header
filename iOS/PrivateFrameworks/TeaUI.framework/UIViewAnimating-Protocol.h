@@ -7,18 +7,14 @@
 #import <TeaUI/NSObject-Protocol.h>
 
 @protocol UIViewAnimating <NSObject>
+@property(nonatomic) double fractionComplete;
+@property(nonatomic, getter=isReversed) _Bool reversed;
+@property(readonly, nonatomic, getter=isRunning) _Bool running;
+@property(readonly, nonatomic) long long state;
 - (void)finishAnimationAtPosition:(long long)arg1;
 - (void)stopAnimation:(_Bool)arg1;
 - (void)pauseAnimation;
 - (void)startAnimationAfterDelay:(double)arg1;
 - (void)startAnimation;
-@property(nonatomic) double fractionComplete;
-@property(nonatomic) _Bool reversed;
-- (_Bool)isReversed;
-- (_Bool)isRunning;
-@property(nonatomic, readonly) long long state;
-
-// Remaining properties
-@property(nonatomic, readonly) _Bool running;
 @end
 

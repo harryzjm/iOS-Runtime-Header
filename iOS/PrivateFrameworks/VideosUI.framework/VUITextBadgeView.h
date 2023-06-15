@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (_Bool)_viewBackgroundImageNeedsUpdatingWithFrame:(struct CGRect)arg1 currentBackgroundImage:(id)arg2;
++ (id)badgeWithLayout:(id)arg1 existing:(id)arg2;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool backgroundImageForMaterialRenderingHasChanged; // @synthesize backgroundImageForMaterialRenderingHasChanged=_backgroundImageForMaterialRenderingHasChanged;
 @property(retain, nonatomic) NSOperationQueue *operationQueue; // @synthesize operationQueue=_operationQueue;
@@ -75,6 +76,10 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)reset;
 - (void)rentalExpirationLabelNeedsRelayout:(id)arg1;
+- (_Bool)isAccessibilityElement;
+- (id)accessibilityTitle;
+- (id)accessibilityLabel;
+- (void)_configureWithLayout:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 @class NSHashTable;
 
 __attribute__((visibility("hidden")))
-@interface _UISelectorSet : NSObject <NSCopying>
+@interface _UISelectorSet : NSObject
 {
     NSHashTable *_hash;
 }

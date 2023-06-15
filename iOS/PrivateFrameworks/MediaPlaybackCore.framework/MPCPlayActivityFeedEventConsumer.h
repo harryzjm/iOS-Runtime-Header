@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class ICPlayActivityController, NSArray, NSMutableArray, NSString;
+@class NSArray, NSMutableArray, NSString;
 @protocol MPCPlaybackEngineEventStreamSubscription;
 
 __attribute__((visibility("hidden")))
@@ -15,12 +15,10 @@ __attribute__((visibility("hidden")))
     NSArray *_allowedBundleIds;
     id <MPCPlaybackEngineEventStreamSubscription> _subscription;
     NSMutableArray *_radioPlayActivityEvents;
-    ICPlayActivityController *_playActivityController;
 }
 
 + (id)identifier;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) ICPlayActivityController *playActivityController; // @synthesize playActivityController=_playActivityController;
 @property(readonly, nonatomic) NSMutableArray *radioPlayActivityEvents; // @synthesize radioPlayActivityEvents=_radioPlayActivityEvents;
 @property(readonly, nonatomic) id <MPCPlaybackEngineEventStreamSubscription> subscription; // @synthesize subscription=_subscription;
 - (_Bool)_finalizePAFEvents:(id)arg1;
@@ -28,6 +26,8 @@ __attribute__((visibility("hidden")))
 - (void)_updatePAFEvent:(id)arg1 withSharedListeningInfoFromCursor:(id)arg2;
 - (void)_updatePAFEvent:(id)arg1 withAudioChangeEvent:(id)arg2;
 - (void)_updatePAFEvent:(id)arg1 withDeviceInfoFromCursor:(id)arg2;
+- (_Bool)_vocalControlIsOnForEvent:(id)arg1;
+- (void)_updatePAFEvent:(id)arg1 withVocalAttenuationInfoForEndEvent:(id)arg2 cursor:(id)arg3;
 - (void)_updatePAFEvent:(id)arg1 withEnqueuerAccountIdentifier:(id)arg2 queueAddEvent:(id)arg3 cursor:(id)arg4;
 - (void)_updatePAFEvent:(id)arg1 withAccountIdentifier:(id)arg2 cursor:(id)arg3;
 - (void)_updatePAFEvent:(id)arg1 withItemBeginEvent:(id)arg2 containerBeginPayload:(id)arg3 cursor:(id)arg4 forEventType:(id)arg5;
@@ -37,6 +37,7 @@ __attribute__((visibility("hidden")))
 - (id)_findRecentPlaybackStartFromTypes:(id)arg1 matchingPayload:(id)arg2 cursor:(id)arg3;
 - (id)_generateAggregateNoncatalogEndEventForCursor:(id)arg1;
 - (_Bool)_itemIsPlaceholderFromQueueSectionIdentifier:(id)arg1 itemIdentifier:(id)arg2 cursor:(id)arg3;
+- (_Bool)_itemWithinHLSTimedMetadataBeginFromQueueSection:(id)arg1 itemIdentifier:(id)arg2 cursor:(id)arg3;
 - (_Bool)_itemIsPlayingFromQueueSectionIdentifier:(id)arg1 itemIdentifier:(id)arg2 cursor:(id)arg3;
 - (_Bool)_handleApplicationTerminationEvent:(id)arg1 cursor:(id)arg2;
 - (id)_generatePlaybackEndEventFromEvent:(id)arg1 withQueueSectionIdentifier:(id)arg2 itemIdentifier:(id)arg3 cursor:(id)arg4;

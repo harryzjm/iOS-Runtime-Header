@@ -9,8 +9,11 @@
 @class NSString;
 
 @protocol GKAccountService <NSObject>
+- (oneway void)notifyWidgetPlayerAuthenticationUpdated;
 - (oneway void)getLastContactsIntegrationConsentVersionDisplayedForSignedInPlayerWithHandler:(void (^)(NSString *, NSError *))arg1;
 - (oneway void)setLastContactsIntegrationConsentVersionDisplayedForSignedInPlayer:(NSString *)arg1;
+- (oneway void)getLastFriendSuggestionsVersionDisplayedForSignedInPlayerWithHandler:(void (^)(NSString *, NSError *))arg1;
+- (oneway void)setLastFriendSuggestionsVersionDisplayedForSignedInPlayer:(NSString *)arg1;
 - (oneway void)getLastProfilePrivacyVersionDisplayedForSignedInPlayerWithHandler:(void (^)(NSString *, NSError *))arg1;
 - (oneway void)setLastProfilePrivacyVersionDisplayedForSignedInPlayer:(NSString *)arg1;
 - (oneway void)getLastPersonalizationVersionDisplayedForSignedInPlayerWithHandler:(void (^)(NSString *, NSError *))arg1;
@@ -20,7 +23,7 @@
 - (oneway void)getLastWelcomeWhatsNewCopyVersionDisplayedForSignedInPlayerWithHandler:(void (^)(unsigned long long, NSError *))arg1;
 - (oneway void)setLastWelcomeWhatsNewCopyVersionDisplayedForSignedInPlayer:(unsigned long long)arg1;
 - (oneway void)resetCredentialsWithHandler:(void (^)(NSError *))arg1;
-- (oneway void)signOutPlayerWithHandler:(void (^)(NSError *))arg1;
+- (oneway void)signOutPlayerWithOptOut:(_Bool)arg1 handler:(void (^)(NSError *))arg2;
 - (oneway void)authenticationWasCancelled;
 - (oneway void)fetchItemsForIdentityVerificationSignature:(void (^)(NSDictionary *, NSError *))arg1;
 - (oneway void)generateIdentityVerificationSignatureWithCompletionHandler:(void (^)(NSDictionary *, NSError *))arg1;

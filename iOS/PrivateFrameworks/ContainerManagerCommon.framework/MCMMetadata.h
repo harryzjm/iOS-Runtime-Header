@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MCMConcreteContainerIdentityForLibsystem, MCMContainerPath, MCMFSNode, MCMUserIdentity, NSArray, NSDictionary, NSNumber, NSString, NSURL, NSUUID;
+@class MCMConcreteContainerIdentityForLibsystem, MCMContainerPath, MCMFSNode, MCMUserIdentity, NSDictionary, NSNumber, NSString, NSURL, NSUUID;
 
 __attribute__((visibility("hidden")))
 @interface MCMMetadata
@@ -14,13 +14,9 @@ __attribute__((visibility("hidden")))
     NSString *_userManagedAssetsDirName;
     MCMFSNode *_fsNode;
     NSURL *_fileURL;
-    NSArray *_links;
-    NSDictionary *_identityLinkMap;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSDictionary *identityLinkMap; // @synthesize identityLinkMap=_identityLinkMap;
-@property(readonly, nonatomic) NSArray *links; // @synthesize links=_links;
 @property(readonly, nonatomic) NSURL *fileURL; // @synthesize fileURL=_fileURL;
 @property(readonly, nonatomic) int dataProtectionClass; // @synthesize dataProtectionClass=_dataProtectionClass;
 @property(readonly, nonatomic) MCMFSNode *fsNode; // @synthesize fsNode=_fsNode;
@@ -29,17 +25,12 @@ __attribute__((visibility("hidden")))
 - (_Bool)_writeFileURL:(id)arg1 dictionary:(id)arg2 options:(unsigned long long)arg3 error:(id *)arg4;
 - (_Bool)_persisted;
 - (void)_clearPersistedStatus;
-- (void)_initIdentityMap;
 @property(readonly, copy) NSString *description;
 @property(readonly, nonatomic) NSString *shortDescription;
 @property(readonly, copy) NSString *debugDescription;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)linkForContainerIdentity:(id)arg1;
 - (id)metadataBySettingUserManagedAssetsDirName:(id)arg1;
 - (id)metadataByChangingDataProtectionClass:(int)arg1;
-- (id)metadataByReplacingLinks:(id)arg1;
-- (id)metadataByRemovingLink:(id)arg1 attributes:(unsigned long long)arg2 updatedLink:(id *)arg3 error:(id *)arg4;
-- (id)metadataByAddingLink:(id)arg1 updatedLink:(id *)arg2 error:(id *)arg3;
 - (struct container_object_s *)createLibsystemContainerWithError:(id *)arg1;
 - (id)metadataBySettingInfoValue:(id)arg1 forKey:(id)arg2;
 - (_Bool)verifyWithError:(id *)arg1;
@@ -47,7 +38,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)writeMetadataToDiskWithError:(id *)arg1;
 - (_Bool)_initFromMetadataInDictionary:(id)arg1 containerPath:(id)arg2 userIdentity:(id)arg3 containerClass:(unsigned long long)arg4 fsNode:(id)arg5 fileURL:(id)arg6 userIdentityCache:(id)arg7 error:(id *)arg8;
 - (id)initByReadingAndValidatingMetadataAtFileURL:(id)arg1 containerPath:(id)arg2 userIdentity:(id)arg3 containerClass:(unsigned long long)arg4 userIdentityCache:(id)arg5 error:(id *)arg6;
-- (id)initWithContainerIdentity:(id)arg1 info:(id)arg2 containerPath:(id)arg3 userManagedAssetsDirName:(id)arg4 schemaVersion:(id)arg5 dataProtectionClass:(int)arg6 fsNode:(id)arg7 links:(id)arg8 userIdentityCache:(id)arg9;
+- (id)initWithContainerIdentity:(id)arg1 info:(id)arg2 containerPath:(id)arg3 userManagedAssetsDirName:(id)arg4 schemaVersion:(id)arg5 dataProtectionClass:(int)arg6 fsNode:(id)arg7 userIdentityCache:(id)arg8;
 - (id)initWithContainerIdentity:(id)arg1 info:(id)arg2 containerPath:(id)arg3 userManagedAssetsDirName:(id)arg4 schemaVersion:(id)arg5 dataProtectionClass:(int)arg6 userIdentityCache:(id)arg7;
 - (id)initWithContainerIdentity:(id)arg1 containerPath:(id)arg2 schemaVersion:(id)arg3 userIdentityCache:(id)arg4;
 

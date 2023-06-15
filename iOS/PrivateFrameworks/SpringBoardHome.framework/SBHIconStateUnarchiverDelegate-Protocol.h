@@ -6,11 +6,14 @@
 
 #import <SpringBoardHome/NSObject-Protocol.h>
 
-@class SBHIconStateUnarchiver;
+@class SBHIconStateUnarchiver, SBWidgetIcon;
 
 @protocol SBHIconStateUnarchiverDelegate <NSObject>
 
 @optional
+- (unsigned long long)iconStateUnarchiver:(SBHIconStateUnarchiver *)arg1 listsIconLayoutBehaviorForFolderClass:(Class)arg2;
+- (long long)iconStateUnarchiver:(SBHIconStateUnarchiver *)arg1 listsFixedIconLocationBehaviorForFolderClass:(Class)arg2;
+- (SBWidgetIcon *)iconStateUnarchiver:(SBHIconStateUnarchiver *)arg1 didUnarchiveWidgetIcon:(SBWidgetIcon *)arg2;
 - (unsigned long long)allowedGridSizeClassesForTodayListForIconStateUnarchiver:(SBHIconStateUnarchiver *)arg1;
 - (unsigned long long)allowedGridSizeClassesForDockForIconStateUnarchiver:(SBHIconStateUnarchiver *)arg1;
 - (unsigned long long)iconStateUnarchiver:(SBHIconStateUnarchiver *)arg1 allowedGridSizeClassesForFolderClass:(Class)arg2;

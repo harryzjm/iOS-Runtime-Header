@@ -6,22 +6,9 @@
 
 #import <objc/NSObject.h>
 
-@class MISSING_TYPE;
-
 @interface RSDoorWindowPostProcessor : NSObject
 {
 }
-
-- (void)merge_door_instances:(id)arg1 withWall:(id)arg2 mergedCloseDoors:(id)arg3 mergedOpenDoors:(id)arg4;
-- (id)make_merged_instance:(id)arg1 withFirstPoint:(float)arg2 withLastPoint:withConfidence: /* Error: Ran out of types for this method. */;
-- (void)make_corners_order_consistent_with_wall:(id)arg1 withWalls:(id)arg2;
-- (MISSING_TYPE *)getSurface_center:(id)arg1;
-- (float)getSurface_height:(id)arg1;
-- (float)getSurface_width:(id)arg1;
-- (MISSING_TYPE *)getSurface_e_height:(id)arg1;
-- (MISSING_TYPE *)getSurface_e_width:(id)arg1;
-- (void)merge_doors_on_same_wall:(id)arg1;
-- (id)mergeDoors:(id)arg1;
 
 @end
 

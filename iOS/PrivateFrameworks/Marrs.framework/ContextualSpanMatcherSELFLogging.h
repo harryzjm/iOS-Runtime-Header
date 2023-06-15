@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (_Bool)emitContextualSpanMatcherEndedEventWithResponse:(id)arg1 WithNlId:(id)arg2 andWithResultCandidateId:(id)arg3 andWithRequester:(int)arg4;
++ (_Bool)emitContextualSpanMatcherEndedEventWithResponse:(id)arg1 WithNlId:(id)arg2 andWithTrpId:(id)arg3 andWithResultCandidateId:(id)arg4 andWithRequester:(int)arg5;
 + (id)createContextualSpanMatcherEndedTier1Event:(id)arg1 withNLXMetadata:(id)arg2 andLinkId:(id)arg3;
 + (id)createContextualSpanMatcherEndedEvent:(id)arg1 withNLXMetadata:(id)arg2 andLinkId:(id)arg3;
 + (_Bool)emitEvent:(id)arg1;

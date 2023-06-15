@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     struct CGRect _lastTrackedBBox;
 }
 
++ (id)supportedComputeDevicesForOptions:(id)arg1 error:(id *)arg2;
 + (long long)VNTrackerOptionToTrackerType:(id)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;

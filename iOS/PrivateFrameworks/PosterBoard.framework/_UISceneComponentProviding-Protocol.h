@@ -9,8 +9,7 @@
 @class NSArray, UIScene;
 
 @protocol _UISceneComponentProviding <NSObject>
-- (void)_setScene:(UIScene *)arg1;
-@property(nonatomic) __weak UIScene *_scene;
+@property(nonatomic, getter=_scene, setter=_setScene:) __weak UIScene *_scene;
 - (id)initWithScene:(UIScene *)arg1;
 
 @optional

@@ -6,12 +6,17 @@
 
 #import "PUSessionInfo.h"
 
+@class PHCollectionList;
+
 __attribute__((visibility("hidden")))
 @interface PUImagePickerSessionInfo : PUSessionInfo
 {
     _Bool _isLimitedLibraryPicker;
+    PHCollectionList *_rootCollectionList;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) PHCollectionList *rootCollectionList; // @synthesize rootCollectionList=_rootCollectionList;
 - (_Bool)isLimitedLibraryPicker;
 - (_Bool)isForAssetPicker;
 - (_Bool)isSelectingAssets;

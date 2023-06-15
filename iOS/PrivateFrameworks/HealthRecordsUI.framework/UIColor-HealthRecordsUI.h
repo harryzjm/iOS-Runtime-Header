@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIColor.h>
+#import <UIKitCore/UIColor.h>
 
 @interface UIColor (HealthRecordsUI)
 + (id)hrui_carePlans;
@@ -19,6 +19,7 @@
 + (id)hrui_immunizations;
 + (id)hrui_medications;
 + (id)hrui_clinicalVitals;
++ (id)hrui_clinicalNotes;
 + (id)hrui_healthRecords;
 + (id)hrui_clinicalDocuments;
 + (id)hrui_tableViewCellHighlightColor;

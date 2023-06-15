@@ -8,5 +8,6 @@
 
 @interface LSApplicationRecord (FBSApplicationInfo)
 - (id)fbs_processIdentityForApplicationIdentity:(id)arg1;
+- (id)fbs_correspondingApplicationProxy;
 @end
 

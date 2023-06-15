@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_objectIDToRelationshipNameToExistingMTMKeys;
     NSMutableDictionary *_objectIDToChangedPropertyKeys;
     NSMutableSet *_invalidatedMTMKeys;
+    NSMutableSet *_mutableZoneIDs;
 }
 
 - (void)dealloc;

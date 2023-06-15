@@ -17,6 +17,7 @@
 - (void)processNewlyAddedWorkout:(NSUUID *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)updateRelevanceScoresWithReply:(void (^)(NSError *))arg1;
 - (void)forceProcessWorkoutsClearClusters:(_Bool)arg1 clearExistingDistanceMatrix:(_Bool)arg2 buildDistanceMatrix:(_Bool)arg3 syncClustersToHealhtKit:(_Bool)arg4 syncClustersToWatch:(_Bool)arg5 filteringDistanceThreshold:(double)arg6 topNWorkouts:(unsigned long long)arg7 isSchedulerTriggered:(_Bool)arg8 reply:(void (^)(NSError *))arg9;
+- (void)logSafetyCacheWithReply:(void (^)(NSError *))arg1;
 - (void)logDatabasesWithReply:(void (^)(NSError *))arg1;
 - (void)extendLifetimeOfVisitsWithIdentifiers:(NSSet *)arg1 toExpireOn:(NSDate *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)expireLifetimeOfVisitsWithIdentifiers:(NSSet *)arg1 expirationDate:(NSDate *)arg2 reply:(void (^)(NSError *))arg3;

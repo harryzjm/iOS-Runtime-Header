@@ -6,7 +6,7 @@
 
 #import <ChatKit/NSObject-Protocol.h>
 
-@class CKConversation, CKConversationList, CKConversationSearchResultsController, NSString;
+@class CKConversation, CKConversationList, CKSearchViewController, NSString, UISearchController;
 @protocol CKConversationListControllerDelegate;
 
 @protocol CKConversationListControllerProtocol <NSObject>
@@ -20,8 +20,10 @@
 - (void)reloadData;
 - (void)endHoldingConversationListUpdatesForPPTTests;
 - (void)beginHoldingConversationListUpdatesForPPTTests;
-- (CKConversationSearchResultsController *)searchResultsController;
+- (CKSearchViewController *)searchResultsController;
+- (UISearchController *)searchController;
 - (void)batchDeleteButtonTapped:(id)arg1;
+- (void)updateConversationSelectionToNewCompose;
 - (void)updateConversationSelection;
 - (void)showMeCardViewController;
 - (void)updateSyncProgressIfNeeded;
@@ -40,9 +42,10 @@
 - (void)selectDefaultConversationAnimated:(_Bool)arg1 removingPendingConversationCell:(_Bool)arg2;
 - (void)compositionSent;
 - (void)significantTimeChange;
+- (void)userRecoveredJunkConversationFromTranscript;
+- (void)userDeletedJunkConversationFromTranscript;
 - (void)updateConversationListForMessageSentToConversation:(CKConversation *)arg1;
 - (void)updateConversationList;
-- (void)noteUnreadCountsChanged;
 - (void)conversationWillBeMarkedRead:(CKConversation *)arg1;
 - (CKConversationList *)conversationList;
 @end

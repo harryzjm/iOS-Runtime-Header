@@ -6,7 +6,7 @@
 
 #import <PassKitCore/NSObject-Protocol.h>
 
-@class CNContact, NSError, NSString, PKAccountServicePaymentMethod, PKApplePayTrustSignature, PKAuthorizedPeerPaymentQuote, PKDisbursementVoucher, PKPayment, PKPaymentMethod, PKServiceProviderPurchase, PKShippingMethod;
+@class CNContact, NSError, NSString, PKAccountServicePaymentMethod, PKApplePayTrustSignature, PKAuthorizedPeerPaymentQuote, PKPayment, PKPaymentMethod, PKServiceProviderPurchase, PKShippingMethod;
 
 @protocol PKPaymentAuthorizationHostProtocol <NSObject>
 - (void)authorizationDidChangeCouponCode:(NSString *)arg1;
@@ -25,7 +25,6 @@
 - (void)authorizationDidPresent;
 - (void)authorizationDidUpdateAccountServicePaymentMethod:(PKAccountServicePaymentMethod *)arg1;
 - (void)authorizationDidAuthorizeApplePayTrustSignature:(PKApplePayTrustSignature *)arg1;
-- (void)authorizationDidAuthorizeDisbursement:(PKDisbursementVoucher *)arg1;
 - (void)authorizationDidAuthorizePeerPaymentQuote:(PKAuthorizedPeerPaymentQuote *)arg1;
 - (void)authorizationDidAuthorizeContext;
 @end

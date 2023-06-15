@@ -6,7 +6,7 @@
 
 #import <QuickLook/NSObject-Protocol.h>
 
-@class NSDictionary, UIImage, UIView;
+@class NSDictionary, UIImage, UIView, UIViewController, VKCImageAnalysisInteraction;
 
 @protocol QLImageAnalysisManagerDelegate <NSObject>
 @property(readonly, nonatomic) UIImage *imageForAnalysis;
@@ -14,6 +14,7 @@
 
 @optional
 @property(readonly, nonatomic) NSDictionary *clientPreviewOptions;
+- (UIViewController *)presentingViewControllerForImageAnalysisInteraction:(VKCImageAnalysisInteraction *)arg1;
 - (void)imageAnalysisInteractionDidDismissVisualSearchController;
 - (void)imageAnalysisInteractionWillPresentVisualSearchController;
 - (void)imageAnalyzerWantsUpdateOverlayViews;

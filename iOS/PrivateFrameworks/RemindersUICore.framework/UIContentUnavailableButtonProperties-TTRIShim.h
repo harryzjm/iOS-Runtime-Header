@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIContentUnavailableButtonProperties.h>
+#import <UIKitCore/UIContentUnavailableButtonProperties.h>
 
 @interface UIContentUnavailableButtonProperties (TTRIShim)
 - (id)asTTRI;

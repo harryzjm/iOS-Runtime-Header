@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIPopoverPresentationController.h>
+#import <UIKitCore/UIPopoverPresentationController.h>
 
 @interface UIPopoverPresentationController (WorkflowUICore)
 - (void)wf_forcePresentationInPresenterSceneIfNeeded;

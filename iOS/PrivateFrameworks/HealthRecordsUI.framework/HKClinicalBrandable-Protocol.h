@@ -9,8 +9,8 @@
 @class HKClinicalBrand, NSString;
 
 @protocol HKClinicalBrandable <NSObject>
-@property(nonatomic, readonly) HKClinicalBrand *brand;
-@property(nonatomic, readonly) NSString *subtitle;
-@property(nonatomic, readonly) NSString *title;
+@property(readonly, copy, nonatomic) HKClinicalBrand *brand;
+@property(readonly, copy, nonatomic) NSString *subtitle;
+@property(readonly, copy, nonatomic) NSString *title;
 @end
 

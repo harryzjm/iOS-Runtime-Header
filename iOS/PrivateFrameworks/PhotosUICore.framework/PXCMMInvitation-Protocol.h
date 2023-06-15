@@ -7,10 +7,16 @@
 #import <PhotosUICore/NSObject-Protocol.h>
 #import <PhotosUICore/PXMediaTypeAggregating-Protocol.h>
 
-@class NSDate, NSString, PXAssetCollectionActionManager, PXCMMContext;
-@protocol PXCMMInvitationParticipant, PXDisplayAsset, PXDisplayAssetCollection, PXUIImageProvider;
+@class NSDate, NSString, NSURL, PHPhotoLibrary, PXAssetCollectionActionManager, PXCMMContext, PXCMMSession, PXMomentShareStatusPresentation, PXPhotosViewConfiguration;
+@protocol PXCMMInvitationParticipant, PXDisplayAsset, PXDisplayAssetCollection, PXFastEnumeration, PXPresentationEnvironment, PXUIImageProvider;
 
 @protocol PXCMMInvitation <NSObject, PXMediaTypeAggregating>
++ (void)saveAllAssetsForInvitations:(id <PXFastEnumeration>)arg1 toDestinationPhotoLibrary:(PHPhotoLibrary *)arg2 completionHandler:(void (^)(_Bool, NSError *))arg3;
++ (_Bool)supportsSavingAssetsForInvitations:(id <PXFastEnumeration>)arg1 numberOfAssetsToSave:(unsigned long long *)arg2 assetsToSaveMediaType:(long long *)arg3;
++ (void)deleteInvitations:(id <PXFastEnumeration>)arg1 presentationEnvironment:(id <PXPresentationEnvironment>)arg2 completionHandler:(void (^)(_Bool, NSError *))arg3;
++ (NSString *)menuItemTitleForDeletingInvitations:(id <PXFastEnumeration>)arg1;
+@property(readonly, nonatomic) PXMomentShareStatusPresentation *statusPresentation;
+@property(readonly, nonatomic) PXPhotosViewConfiguration *assetViewConfiguration;
 @property(readonly, nonatomic) id <PXDisplayAssetCollection> assetCollection;
 @property(readonly, nonatomic) PXAssetCollectionActionManager *assetCollectionActionManager;
 @property(readonly, nonatomic) id <PXUIImageProvider> posterMediaProvider;
@@ -23,7 +29,10 @@
 @property(readonly, nonatomic) NSString *title;
 @property(readonly, nonatomic) NSString *identifier;
 @property(readonly, nonatomic) long long shareType;
+@property(readonly, nonatomic) NSURL *shareURL;
+- (void)requestNotificationOnUploadCompletion;
 - (void)acceptWithCompletionHandler:(void (^)(_Bool, NSError *))arg1;
+- (PXCMMSession *)sessionForActivityType:(unsigned long long)arg1;
 - (PXCMMContext *)contextForActivityType:(unsigned long long)arg1;
 @end
 

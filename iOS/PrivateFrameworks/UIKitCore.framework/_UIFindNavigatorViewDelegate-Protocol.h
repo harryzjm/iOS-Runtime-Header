@@ -9,6 +9,7 @@
 @class _UIFindNavigatorView;
 
 @protocol _UIFindNavigatorViewDelegate <NSObject>
+- (_Bool)findNavigatorShouldShowReplacementOption:(_UIFindNavigatorView *)arg1;
 - (void)findNavigatorDidInvalidateSearchSession:(_UIFindNavigatorView *)arg1;
 - (void)findNavigator:(_UIFindNavigatorView *)arg1 didInvokeReplaceReplacingAll:(_Bool)arg2;
 - (void)findNavigator:(_UIFindNavigatorView *)arg1 didInvokeNextResultInDirection:(long long)arg2;

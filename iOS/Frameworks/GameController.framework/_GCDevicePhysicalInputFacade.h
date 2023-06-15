@@ -4,15 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class GCPhysicalInputElementCollection, NSString, _GCDevicePhysicalInputBase;
-@protocol GCDevice;
+@class GCPhysicalInputElementCollection, NSObject, NSString;
+@protocol GCDevice, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface _GCDevicePhysicalInputFacade
 {
-    _GCDevicePhysicalInputBase *_impl;
 }
 
++ (_Bool)automaticallyNotifiesObserversOfQueue;
 - (id)changedElements;
 - (long long)changeForElement:(id)arg1;
 - (id)nextInputState;
@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 @property(copy) CDUnknownBlockType inputStateAvailableHandler;
 - (id)capture;
 @property(copy) CDUnknownBlockType elementValueDidChangeHandler;
+@property(retain) NSObject<OS_dispatch_queue> *queue;
 - (id)objectForKeyedSubscript:(id)arg1;
 @property(readonly) GCPhysicalInputElementCollection *dpads;
 @property(readonly) GCPhysicalInputElementCollection *switches;
@@ -29,8 +30,9 @@ __attribute__((visibility("hidden")))
 @property(readonly) double lastEventLatency;
 @property(readonly) double lastEventTimestamp;
 @property(readonly) __weak id <GCDevice> device;
-- (id)init;
-- (id)initWith:(id)arg1 context:(id)arg2;
+- (id)alternatePhysicalInputWithAttribute:(id)arg1;
+- (id)initWithTemplate:(id)arg1 context:(id)arg2;
+- (id)initWithParameters:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

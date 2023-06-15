@@ -11,14 +11,16 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (int)espressoStorageTypeForComputeDevice:(id)arg1;
++ (int)espressoEngineForComputeDevice:(id)arg1;
++ (int)espressoDeviceIDForComputeDevice:(id)arg1;
 + (_Bool)feedForwardEspressoBufferForNetwork:(CDStruct_2bc666a5 *)arg1 fromBufferWithName:(id)arg2 toBufferWithName:(id)arg3 firstFrame:(_Bool)arg4 error:(id *)arg5;
 + (unsigned long long)pixelValueSizeInBytesForBuffer:(const CDStruct_0a65202a *)arg1 error:(id *)arg2;
 + (_Bool)renderEspressoBufferImage:(const CDStruct_0a65202a *)arg1 intoCVPixelBuffer:(struct __CVBuffer *)arg2 error:(id *)arg3;
 + (struct __CVBuffer *)createCVPixelBufferWithPixelFormat:(unsigned int)arg1 fromImageInEspressoBuffer:(const CDStruct_0a65202a *)arg2 error:(id *)arg3;
-+ (_Bool)createSingleNetworkPlanFromResourceName:(id)arg1 usingProcessingDevice:(id)arg2 lowPriorityMode:(_Bool)arg3 inputBlobNames:(id)arg4 outputBlobNames:(id)arg5 networkConfiguration:(id)arg6 explicitNetworkLayersStorageType:(int)arg7 memoryPoolId:(unsigned long long)arg8 espressoResources:(id *)arg9 error:(id *)arg10;
-+ (_Bool)createSingleNetworkPlanFromResourceName:(id)arg1 usingProcessingDevice:(id)arg2 lowPriorityMode:(_Bool)arg3 inputBlobNames:(id)arg4 outputBlobNames:(id)arg5 networkConfiguration:(id)arg6 memoryPoolId:(unsigned long long)arg7 espressoResources:(id *)arg8 error:(id *)arg9;
++ (_Bool)createSingleNetworkPlanFromModelPath:(id)arg1 forComputeDevice:(id)arg2 lowPriorityMode:(_Bool)arg3 inputBlobNames:(id)arg4 outputBlobNames:(id)arg5 networkConfiguration:(id)arg6 explicitNetworkLayersStorageType:(int)arg7 memoryPoolId:(unsigned long long)arg8 espressoResources:(id *)arg9 error:(id *)arg10;
++ (_Bool)createSingleNetworkPlanFromModelPath:(id)arg1 forComputeDevice:(id)arg2 lowPriorityMode:(_Bool)arg3 inputBlobNames:(id)arg4 outputBlobNames:(id)arg5 networkConfiguration:(id)arg6 memoryPoolId:(unsigned long long)arg7 espressoResources:(id *)arg8 error:(id *)arg9;
 + (_Bool)getWidth:(unsigned long long *)arg1 height:(unsigned long long *)arg2 ofBlobNamed:(id)arg3 forNetworkModelFileWithPath:(id)arg4 error:(id *)arg5;
-+ (_Bool)getWidth:(unsigned long long *)arg1 height:(unsigned long long *)arg2 ofBlobNamed:(id)arg3 forNetworkModelFileWithName:(id)arg4 error:(id *)arg5;
 + (id)pathForEspressoNetworkModelFileWithName:(id)arg1 error:(id *)arg2;
 + (id)pathForEspressoResourceWithFilename:(id)arg1 error:(id *)arg2;
 + (id)pathForEspressoResource:(id)arg1 ofType:(id)arg2 error:(id *)arg3;

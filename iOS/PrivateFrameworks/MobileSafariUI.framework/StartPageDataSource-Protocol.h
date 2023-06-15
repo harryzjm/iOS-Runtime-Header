@@ -8,18 +8,22 @@
 #import <MobileSafariUI/_SFNavigationIntentHandling-Protocol.h>
 
 @class NSObject, NSString, StartPageController, UIViewController, WebBookmark, _SFNavigationIntent;
-@protocol TabGroupProvider, WBSTabItemSearchSupport;
+@protocol TabGroupProvider, WBSCloudTabDeviceProvider, WBSTabItemSearchSupport;
 
 @protocol StartPageDataSource <NSObject, _SFNavigationIntentHandling>
+@property(readonly, nonatomic) _Bool shouldShowWhatsNewInPrivateBrowsingSheet;
 @property(readonly, nonatomic) id <TabGroupProvider> tabGroupProvider;
+@property(readonly, copy, nonatomic) NSString *activeProfileUUID;
 @property(readonly, nonatomic) _Bool catalogPopoverIsShowing;
 @property(readonly, nonatomic) _Bool canShowSidebar;
+@property(readonly, nonatomic) id <WBSCloudTabDeviceProvider> cloudTabStore;
+- (_Bool)startPageControllerActiveTabIsBlank:(StartPageController *)arg1;
 - (long long)updatePolicyForStartPageController:(StartPageController *)arg1;
 - (_Bool)tabItem:(NSObject<WBSTabItemSearchSupport> *)arg1 matchesSearchText:(NSString *)arg2;
 - (_Bool)shouldIncreaseTopSpacingForStartPageController:(StartPageController *)arg1;
 - (void)setPresentingModalBookmarksController:(_Bool)arg1 withExclusiveCollection:(NSString *)arg2 bookmarkUUIDString:(NSString *)arg3 animated:(_Bool)arg4;
 - (void)presentCloudTabsPickerWithPrimaryDeviceUUID:(NSString *)arg1;
-- (void)presentPerTabGroupBookmarkPicker;
+- (void)presentBookmarkPickerWithImportHandler:(void (^)(WebBookmark *))arg1;
 - (void)presentPrivacyReport;
 - (_Bool)getContextForCurrentPageWithCompletionHandler:(void (^)(CKContextResponse *))arg1;
 - (void)editBookmark:(WebBookmark *)arg1;

@@ -28,12 +28,13 @@ __attribute__((visibility("hidden")))
 - (_Bool)_isSequentialSection:(id)arg1 withExclusiveAccessToken:(id)arg2;
 - (void)_enumerator:(id)arg1 didEncounterEntry:(id)arg2 withExclusiveAccessToken:(id)arg3;
 - (long long)itemCount;
-- (void)dataSourceReloadItem:(id)arg1 inSection:(id)arg2;
-- (void)dataSourceRemoveItem:(id)arg1 fromSection:(id)arg2;
+- (void)dataSourceReloadItems:(id)arg1 inSection:(id)arg2;
+- (void)dataSourceRemoveItems:(id)arg1 fromSection:(id)arg2;
 - (void)dataSourceInsertItemsAtTail:(id)arg1 inSection:(id)arg2;
 - (void)dataSourceInsertItems:(id)arg1 afterItem:(id)arg2 inSection:(id)arg3;
 - (void)dataSourceInsertItemsAtHead:(id)arg1 inSection:(id)arg2;
 - (void)addDataSourceAtEnd:(id)arg1 section:(id)arg2 sequentially:(_Bool)arg3;
+- (void)addDataSource:(id)arg1 section:(id)arg2 sequentially:(_Bool)arg3 beforeTailOfSection:(id)arg4;
 - (void)addDataSource:(id)arg1 section:(id)arg2 sequentially:(_Bool)arg3 afterTailOfSection:(id)arg4;
 - (void)addDataSource:(id)arg1 section:(id)arg2 sequentially:(_Bool)arg3 afterItem:(id)arg4 inSection:(id)arg5;
 - (void)addDataSourceAtStart:(id)arg1 section:(id)arg2 sequentially:(_Bool)arg3;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSNumber, NSString, VUIContentRating, VUIFamilySharingRelationships, VUIMediaEntityType, WLKOfferListing;
+@class NSDate, NSNumber, NSSet, NSString, VUIContentRating, VUIFamilySharingRelationships, VUIMediaEntityType, WLKOfferListing;
 
 __attribute__((visibility("hidden")))
 @interface VUIFamilySharingEntity : NSObject
@@ -27,9 +27,11 @@ __attribute__((visibility("hidden")))
     VUIFamilySharingRelationships *_relationships;
     WLKOfferListing *_offerListing;
     WLKOfferListing *_personalizedOfferListing;
+    NSSet *_capabilities;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSSet *capabilities; // @synthesize capabilities=_capabilities;
 @property(retain, nonatomic) WLKOfferListing *personalizedOfferListing; // @synthesize personalizedOfferListing=_personalizedOfferListing;
 @property(retain, nonatomic) WLKOfferListing *offerListing; // @synthesize offerListing=_offerListing;
 @property(retain, nonatomic) VUIFamilySharingRelationships *relationships; // @synthesize relationships=_relationships;

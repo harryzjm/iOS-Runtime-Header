@@ -10,7 +10,6 @@
 {
     MISSING_TYPE *sizeStyle;
     MISSING_TYPE *$__lazy_storage_$_scoreboardLayout;
-    MISSING_TYPE *scoreboardType;
     MISSING_TYPE *overlayLayoutType;
     MISSING_TYPE *titleLayout;
     MISSING_TYPE *subtitleLayout;
@@ -18,6 +17,7 @@
     MISSING_TYPE *logoImageLayout;
     MISSING_TYPE *textBadgeLayout;
     MISSING_TYPE *badgeLayout;
+    MISSING_TYPE *selectionLayout;
     MISSING_TYPE *progressBarLayout;
 }
 

@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIScrollView.h>
+#import <UIKitCore/UIScrollView.h>
 
 @interface UIScrollView (Bridge)
+- (void)ts_setZoomEnabled:(_Bool)arg1;
+- (_Bool)ts_isZoomEnabled;
 - (void)ts_setIndicatorInsetAdjustmentBehaviorAlways;
 - (void)ts_setIndicatorInsetAdjustmentBehaviorAutomatic;
 - (void)ts_setIndicatorInsetAdjustmentBehaviorNever;

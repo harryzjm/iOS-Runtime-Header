@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CTCellularPlanProvisioningOnDeviceActivationRequest, CTCellularPlanProvisioningRequest, CTDeviceIdentifier, CTPlan, CTPlanList, CTRemotePlanIdentifier, CTRemotePlanIdentifierList, CTSimSetupUsage, CTXPCServiceSubscriptionContext, CUMessageSession, NSArray, NSData, NSDictionary, NSString;
+@class CTCellularPlanProvisioningOnDeviceActivationRequest, CTCellularPlanProvisioningRequest, CTCellularPlanTransferCrossPlatformRequest, CTDeviceIdentifier, CTPlan, CTPlanList, CTPlanSetupDetails, CTRemotePlanIdentifier, CTRemotePlanIdentifierList, CTSimSetupUsage, CTXPCServiceSubscriptionContext, CUMessageSession, NSArray, NSData, NSDictionary, NSString;
 
 @protocol CTXPCServiceCellularPlanManagerInterface
+- (void)invalidateCrossPlatformPlanTransfer:(void (^)(NSError *))arg1;
+- (void)prepareCrossPlatformPlanTransfer:(CTCellularPlanTransferCrossPlatformRequest *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)resetProximityTransportExtension:(void (^)(NSError *))arg1;
 - (void)validateProximityTransfer:(unsigned long long)arg1 pin:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)invalidateProximityTransfer:(unsigned long long)arg1 force:(_Bool)arg2 completion:(void (^)(NSError *))arg3;
@@ -26,6 +28,9 @@
 - (void)isAnyPlanOfTransferCapability:(unsigned long long)arg1 availableForThisDeviceWithCompletion:(void (^)(_Bool, NSError *))arg2;
 - (void)bootstrapPlanTransferForEndpoint:(unsigned long long)arg1 usingMessageSession:(CUMessageSession *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)isAnyPlanTransferableFromThisDeviceWithCompletion:(void (^)(_Bool, NSError *))arg1;
+- (void)shouldShoweSIMTravelTipWithCompletion:(void (^)(_Bool))arg1;
+- (void)plansPendingCrossPlatformTransferWithCompletion:(void (^)(CTDisplayPlanList *, NSError *))arg1;
+- (void)submitPlanSetupDetails:(CTPlanSetupDetails *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)setUpeSIMLaunched:(void (^)(NSError *))arg1;
 - (void)registerSetUpeSIMLaunchedEvent:(void (^)(NSError *))arg1;
 - (void)needToLaunchSetUpeSIMWithCompletion:(void (^)(_Bool))arg1;
@@ -33,11 +38,11 @@
 - (void)disableRejectedIccid:(void (^)(NSError *))arg1;
 - (void)encryptDataWithCarrierIdentifiers:(NSString *)arg1 mnc:(NSString *)arg2 gid1:(NSString *)arg3 gid2:(NSString *)arg4 data:(NSString *)arg5 completion:(void (^)(NSString *, NSError *))arg6;
 - (void)encryptDataForPlan:(CTPlan *)arg1 data:(NSString *)arg2 completion:(void (^)(NSString *, NSData *, NSError *))arg3;
-- (void)websheetInfoForPlan:(CTPlan *)arg1 inBuddy:(_Bool)arg2 completion:(void (^)(NSString *, NSDictionary *, NSError *))arg3;
+- (void)websheetInfoForIccid:(NSString *)arg1 completion:(void (^)(NSString *, NSDictionary *, NSString *, NSError *))arg2;
+- (void)websheetInfoForPlan:(CTPlan *)arg1 completion:(void (^)(NSString *, NSDictionary *, NSString *, NSError *))arg2;
 - (void)getCarrierSetupWithCompletion:(void (^)(CTDisplayPlanList *, NSError *))arg1;
 - (void)submitSimSetupUsage:(CTSimSetupUsage *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)getDeviceInfo:(void (^)(NSDictionary *, NSError *))arg1;
-- (void)purchaseAddOnPlan:(CTPlan *)arg1 completion:(void (^)(NSString *, NSDictionary *, NSError *))arg2;
 - (void)getRemoteDevices:(void (^)(CTRemoteDeviceList *, NSError *))arg1;
 - (void)installPendingPlanList:(CTPlanList *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)installPendingPlan:(CTPlan *)arg1 completion:(void (^)(NSError *))arg2;

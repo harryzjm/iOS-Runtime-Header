@@ -9,6 +9,7 @@
 @class HMDCloudShareMessenger, HMDDevice, HMDUser, NSData;
 
 @protocol HMDCloudShareMessengerDelegate <NSObject>
+- (void)messengerDidReceiveShareAccessRevocation:(HMDCloudShareMessenger *)arg1;
 - (void)messenger:(HMDCloudShareMessenger *)arg1 didReceiveInvitationRequestFromUser:(HMDUser *)arg2 device:(HMDDevice *)arg3;
 - (void)messenger:(HMDCloudShareMessenger *)arg1 didReceiveInvitationData:(NSData *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 @end

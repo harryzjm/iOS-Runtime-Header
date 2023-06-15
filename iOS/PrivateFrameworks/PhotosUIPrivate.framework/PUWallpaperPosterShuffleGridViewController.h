@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
 @class NSOrderedSet, NSString, NSURL, PHPhotoLibrary, PXGView, PXMediaProvider, PXPhotosContentController, PXPhotosViewModel, PXUpdater, UIBarButtonItem;
-@protocol PUWallpaperPosterShuffleGridViewControllerDelegate;
+@protocol PUWallpaperPosterShuffleGridViewControllerDelegate, PXMemoryAssetsActionFactory;
 
 __attribute__((visibility("hidden")))
 @interface PUWallpaperPosterShuffleGridViewController : UIViewController
@@ -53,6 +53,7 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)preferredCropForAsset:(id)arg1 withAspectRatio:(double)arg2;
 - (_Bool)allowsContextMenuInteractionForPhotosViewController:(id)arg1;
 - (_Bool)photosViewController:(id)arg1 didPickAssetReference:(id)arg2;
+- (struct UIEdgeInsets)maskPaddingForContentController:(id)arg1;
 - (id)undoManagerForContentController:(id)arg1;
 - (id)presentingViewControllerForContentController:(id)arg1;
 - (_Bool)photosContentController:(id)arg1 pushViewController:(id)arg2;
@@ -77,6 +78,9 @@ __attribute__((visibility("hidden")))
 - (_Bool)_canAddMorePhotos;
 - (void)_createBarButtonItemsIfNeeded;
 - (void)setTungstenLayout:(id)arg1;
+- (void)viewDidDisappear:(_Bool)arg1;
+- (void)viewDidAppear:(_Bool)arg1;
+- (void)viewWillAppear:(_Bool)arg1;
 - (void)viewWillLayoutSubviews;
 - (id)initWithResourceManager:(id)arg1 posterMedia:(id)arg2;
 - (id)initWithCoder:(id)arg1;
@@ -86,6 +90,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) id <PXMemoryAssetsActionFactory> memoryAssetsActionFactory;
 @property(readonly) Class superclass;
 
 @end

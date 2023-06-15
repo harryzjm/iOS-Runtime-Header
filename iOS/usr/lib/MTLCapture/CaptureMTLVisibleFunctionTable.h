@@ -9,7 +9,6 @@
 @class NSArray, NSMutableArray, NSString;
 @protocol MTLBuffer, MTLComputePipelineState, MTLDevice, MTLHeap, MTLRenderPipelineState, MTLVisibleFunctionTable, MTLVisibleFunctionTableSPI><MTLResourceSPI;
 
-__attribute__((visibility("hidden")))
 @interface CaptureMTLVisibleFunctionTable : NSObject
 {
     id <MTLVisibleFunctionTableSPI><MTLResourceSPI> _baseObject;
@@ -32,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)doesAliasAnyResources:(const id *)arg1 count:(unsigned long long)arg2;
 - (_Bool)doesAliasAllResources:(const id *)arg1 count:(unsigned long long)arg2;
 - (void)dealloc;
+- (unsigned long long)bufferAddressAtIndex:(unsigned long long)arg1;
 @property(readonly) unsigned long long unfilteredResourceOptions;
 @property(readonly) unsigned long long storageMode;
 @property int responsibleProcess;
@@ -43,6 +43,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) unsigned long long hazardTrackingMode;
 @property(readonly) struct MTLResourceID gpuResourceID;
 @property(readonly) unsigned long long gpuHandle;
+@property(readonly, nonatomic) unsigned long long gpuAddress;
 @property(readonly) id <MTLDevice> device;
 @property(readonly) unsigned long long cpuCacheMode;
 @property(readonly) unsigned long long allocationID;

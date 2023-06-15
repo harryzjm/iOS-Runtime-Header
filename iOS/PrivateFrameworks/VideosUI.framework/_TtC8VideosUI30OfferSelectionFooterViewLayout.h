@@ -4,11 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MISSING_TYPE;
-
 @interface _TtC8VideosUI30OfferSelectionFooterViewLayout
 {
-    MISSING_TYPE *$__lazy_storage_$_buttonLayout;
 }
 
 @end

@@ -14,6 +14,8 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSString *referrerIdentifier; // @synthesize referrerIdentifier=_referrerIdentifier;
+- (id)_checkUpsellCardEnrollment;
+- (id)_checkCombinedAccount;
 - (id)runAction;
 - (id)initWithJSObject:(id)arg1 context:(id)arg2;
 

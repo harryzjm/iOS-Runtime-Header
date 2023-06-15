@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
 - (void)AMSURLSession:(id)arg1 task:(id)arg2 handleAuthenticateRequest:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)AMSURLSession:(id)arg1 task:(id)arg2 handleDialogRequest:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)reconfigureNewRequest:(id)arg1 originalTask:(id)arg2 redirect:(_Bool)arg3 error:(id *)arg4;
-- (id)handleCompletionWithTask:(id)arg1 metrics:(id)arg2 decodedObject:(id)arg3;
+- (void)handleCompletionWithTask:(id)arg1 metrics:(id)arg2 decodedObject:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)setSession:(id)arg1;
 
 // Remaining properties

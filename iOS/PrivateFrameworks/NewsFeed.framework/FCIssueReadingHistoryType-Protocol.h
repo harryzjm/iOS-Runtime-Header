@@ -8,13 +8,13 @@
 @protocol FCIssueReadingHistoryObserving;
 
 @protocol FCIssueReadingHistoryType
+@property(readonly, nonatomic) NSArray *allEngagedIssueIDs;
+@property(readonly, nonatomic) NSArray *recentlyEngagedIssueIDs;
+@property(readonly, nonatomic) NSArray *recentlyVisitedIssueIDs;
+@property(readonly, nonatomic) NSString *mostRecentlyVisitedIssueID;
 - (void)prepareForUseWithCompletion:(void (^)(void))arg1;
 - (void)removeObserver:(id <FCIssueReadingHistoryObserving>)arg1;
 - (void)addObserver:(id <FCIssueReadingHistoryObserving>)arg1;
-@property(nonatomic, readonly) NSArray *allEngagedIssueIDs;
-@property(nonatomic, readonly) NSArray *recentlyEngagedIssueIDs;
-@property(nonatomic, readonly) NSArray *recentlyVisitedIssueIDs;
-@property(nonatomic, readonly) NSString *mostRecentlyVisitedIssueID;
 - (NSDate *)lastRemovedFromMyMagazinesDateForIssueWithID:(NSString *)arg1;
 - (NSDate *)lastSeenDateForIssueWithID:(NSString *)arg1;
 - (NSDate *)lastEngagedDateForIssueWithID:(NSString *)arg1;

@@ -46,7 +46,6 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)_defaultLayoutForHeight:(double)arg1;
 - (_Bool)_heightDemandsCompactLayout;
 - (struct CGRect)_allowableContentRectForContentRect:(struct CGRect)arg1;
-- (void)traitCollectionDidChange:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

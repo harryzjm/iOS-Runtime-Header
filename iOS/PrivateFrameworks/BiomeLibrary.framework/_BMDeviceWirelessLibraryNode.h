@@ -19,9 +19,21 @@ __attribute__((visibility("hidden")))
 + (id)configurationForBluetoothGATTSession;
 + (id)syncPolicyForBluetoothGATTSession;
 + (id)storeConfigurationForBluetoothGATTSession;
++ (id)configurationForBluetoothPowerEnabled;
++ (id)syncPolicyForBluetoothPowerEnabled;
++ (id)storeConfigurationForBluetoothPowerEnabled;
 + (id)configurationForBluetooth;
 + (id)syncPolicyForBluetooth;
 + (id)storeConfigurationForBluetooth;
++ (id)configurationForBluetoothNearbyDevice;
++ (id)syncPolicyForBluetoothNearbyDevice;
++ (id)storeConfigurationForBluetoothNearbyDevice;
++ (id)configurationForBluetoothUseCase;
++ (id)syncPolicyForBluetoothUseCase;
++ (id)storeConfigurationForBluetoothUseCase;
++ (id)configurationForCellularDataEnabled;
++ (id)syncPolicyForCellularDataEnabled;
++ (id)storeConfigurationForCellularDataEnabled;
 + (id)configurationForWiFi;
 + (id)syncPolicyForWiFi;
 + (id)storeConfigurationForWiFi;
@@ -34,12 +46,20 @@ __attribute__((visibility("hidden")))
 + (id)configurationForAirplaneMode;
 + (id)syncPolicyForAirplaneMode;
 + (id)storeConfigurationForAirplaneMode;
++ (id)configurationForCellularAvailabilityStatus;
++ (id)syncPolicyForCellularAvailabilityStatus;
++ (id)storeConfigurationForCellularAvailabilityStatus;
 + (id)BluetoothGATTSession;
++ (id)BluetoothPowerEnabled;
 + (id)Bluetooth;
++ (id)BluetoothNearbyDevice;
++ (id)BluetoothUseCase;
++ (id)CellularDataEnabled;
 + (id)WiFi;
 + (id)NFCTag;
 + (id)DefaultPairedNearby;
 + (id)AirplaneMode;
++ (id)CellularAvailabilityStatus;
 
 @end
 

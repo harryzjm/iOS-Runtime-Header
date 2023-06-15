@@ -7,6 +7,7 @@
 #import <Foundation/NSAttributedString.h>
 
 @interface NSAttributedString (PhotosUICore)
++ (id)px_thumbnailVideoDurationAttributedString:(id)arg1 isRTL:(_Bool)arg2;
 + (id)px_stringWithFormat:(id)arg1 defaultAttributes:(id)arg2 arguments:(id)arg3;
 + (id)px_attributedStringWithHTMLString:(id)arg1 defaultAttributes:(id)arg2 emphasizedAttributes:(id)arg3 italicizedAttributes:(id)arg4;
 + (id)px_attributedStringWithHTMLString:(id)arg1 defaultAttributes:(id)arg2 emphasizedAttributes:(id)arg3;

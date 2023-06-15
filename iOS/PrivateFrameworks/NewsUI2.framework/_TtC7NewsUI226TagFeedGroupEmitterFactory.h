@@ -10,6 +10,7 @@
 
 @interface _TtC7NewsUI226TagFeedGroupEmitterFactory : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *featureAvailability;
     MISSING_TYPE *paywallFactory;
     MISSING_TYPE *formatService;
     MISSING_TYPE *weatherService;
@@ -24,11 +25,18 @@
     MISSING_TYPE *tagHighlightsService;
     MISSING_TYPE *sportsFavoritesService;
     MISSING_TYPE *sportsEventManager;
+    MISSING_TYPE *headlineService;
     MISSING_TYPE *promotedHeadlineService;
     MISSING_TYPE *sportsScoreSorter;
-    MISSING_TYPE *sportsStandingConfigurationManager;
+    MISSING_TYPE *sportsEmbedConfigurationManager;
     MISSING_TYPE *sportsNavigationTitleStringBuilder;
-    MISSING_TYPE *featureAvailability;
+    MISSING_TYPE *tagFeedCurationService;
+    MISSING_TYPE *sportsRecommendationService;
+    MISSING_TYPE *puzzleHistoryService;
+    MISSING_TYPE *puzzleService;
+    MISSING_TYPE *mySportsTagService;
+    MISSING_TYPE *cloudContext;
+    MISSING_TYPE *feedPersonalizer;
 }
 
 @end

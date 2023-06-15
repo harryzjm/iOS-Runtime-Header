@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
     struct RefPtr<WebCore::HistoryItem, WTF::RawPtrTraits<WebCore::HistoryItem>, WTF::DefaultRefDerefTraits<WebCore::HistoryItem>> _historyItem;
     double _lastVisitedTime;
-    struct unique_ptr<WTF::Vector<WTF::String, 0, WTF::CrashOnOverflow, 16>, std::default_delete<WTF::Vector<WTF::String, 0, WTF::CrashOnOverflow, 16>>> _redirectURLs;
+    struct unique_ptr<WTF::Vector<WTF::String>, std::default_delete<WTF::Vector<WTF::String>>> _redirectURLs;
 }
 
 - (id).cxx_construct;

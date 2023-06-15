@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)layoutSubviews;
 - (void)setReplaceFieldVisible:(_Bool)arg1;
+- (void)_setAndActivateConstraints;
 - (void)prepareForLayout;
 - (id)initWithFrame:(struct CGRect)arg1;
 

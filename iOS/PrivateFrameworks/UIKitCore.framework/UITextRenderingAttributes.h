@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 @class UIFont;
 
 __attribute__((visibility("hidden")))
-@interface UITextRenderingAttributes : NSObject <NSCopying>
+@interface UITextRenderingAttributes : NSObject
 {
     UIFont *_font;
     double _minimumFontSize;

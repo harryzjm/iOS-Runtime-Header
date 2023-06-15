@@ -6,9 +6,13 @@
 
 #import <SpringBoardHome/NSObject-Protocol.h>
 
+@class SBHWidgetMetricsProvider;
 @protocol SBIconListLayoutProvider;
 
 @protocol SBHWidgetMetricsProviderDelegate <NSObject>
 @property(readonly, nonatomic) id <SBIconListLayoutProvider> listLayoutProvider;
+
+@optional
+- (id <SBIconListLayoutProvider>)widgetMetricsProvider:(SBHWidgetMetricsProvider *)arg1 listLayoutProviderForScreenType:(unsigned long long)arg2;
 @end
 

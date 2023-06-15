@@ -12,8 +12,9 @@
 __attribute__((visibility("hidden")))
 @interface _UIDruidDestinationConnection : NSObject
 {
-    NSXPCConnection *_connection;
     id <_DUIServerSessionDestination> _serverSession;
+    NSXPCConnection *_connection;
+    _Bool _systemPolicy;
     unsigned int _sessionIdentifier;
     CDUnknownBlockType _connectionBlock;
     CDUnknownBlockType _dragEndBlock;
@@ -25,6 +26,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+@property(nonatomic, getter=isSystemPolicy) _Bool systemPolicy; // @synthesize systemPolicy=_systemPolicy;
 @property(nonatomic) long long state; // @synthesize state=_state;
 @property(copy, nonatomic) CDUnknownBlockType itemsAddedBlock; // @synthesize itemsAddedBlock=_itemsAddedBlock;
 @property(copy, nonatomic) CDUnknownBlockType dragPreviewProviderBlock; // @synthesize dragPreviewProviderBlock=_dragPreviewProviderBlock;
@@ -44,7 +46,9 @@ __attribute__((visibility("hidden")))
 - (void)takePotentialDrop:(id)arg1;
 - (void)sawDragEndEvent;
 - (void)dirtyItems:(id)arg1;
+- (void)connect;
 - (id)initWithSessionIdentifier:(unsigned int)arg1 systemPolicy:(_Bool)arg2;
+- (id)serverDestinationProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -10,6 +10,7 @@
 
 @protocol MSComposeBodyFieldController <NSObject>
 - (void)changeQuoteLevelBy:(long long)arg1 withUndoActionName:(NSString *)arg2;
+- (void)enableQuickReply:(_Bool)arg1;
 - (void)stripCustomBodyIdentifiers;
 - (void)removeRichLinkFromSelection;
 - (void)makeRichLinkFromSelection;

@@ -9,6 +9,6 @@
 @class NSSet;
 
 @protocol HFSymptomsVendor <NSObject>
-@property(nonatomic, readonly) NSSet *symptoms;
+@property(readonly, copy) NSSet *symptoms;
 @end
 

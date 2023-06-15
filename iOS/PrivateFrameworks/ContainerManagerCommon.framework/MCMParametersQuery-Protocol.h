@@ -7,13 +7,13 @@
 @class MCMUserIdentity, NSSet, NSUUID;
 
 @protocol MCMParametersQuery
+@property(readonly, nonatomic) _Bool includeUserManagedAssetsRelPath;
 @property(readonly, nonatomic) _Bool legacyExtensionPolicy;
 @property(readonly, nonatomic) _Bool legacyPersonaPolicy;
 @property(readonly, nonatomic) unsigned long long privateFlags;
 @property(readonly, nonatomic) NSUUID *internalUUID;
 @property(readonly, nonatomic) _Bool fuzzyMatchInternalUUID;
 @property(readonly, nonatomic) _Bool fuzzyMatchTransient;
-@property(readonly, nonatomic) _Bool includeLinks;
 @property(readonly, nonatomic) _Bool expectSingleResult;
 @property(readonly, nonatomic) _Bool includeUnowned;
 @property(readonly, nonatomic) _Bool transient;

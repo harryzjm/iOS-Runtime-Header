@@ -12,7 +12,9 @@
 __attribute__((visibility("hidden")))
 @interface NWConcrete_nw_h3_0rtt_storage_canvas : NSObject
 {
-    NSObject<OS_dispatch_data> *state;
+    NSObject<OS_dispatch_data> *settings_data;
+    NSObject<OS_dispatch_data> *quic_state;
+    NSObject<OS_dispatch_data> *tls_state;
     _Bool dirty;
 }
 

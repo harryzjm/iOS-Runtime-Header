@@ -4,30 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#pragma mark Blocks
-
-typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
-
-#pragma mark Named Structures
-
-struct in_addr {
-    unsigned int _field1;
-};
-
-struct sockaddr_in {
-    unsigned char _field1;
-    unsigned char _field2;
-    unsigned short _field3;
-    struct in_addr _field4;
-    char _field5[8];
-};
-
 #pragma mark Typedef'd Structures
 
 typedef struct {
-    long long value;
-    int timescale;
-    unsigned int flags;
-    long long epoch;
-} CDStruct_1b6d18a9;
+    long long _field1;
+    int _field2;
+    unsigned int _field3;
+    long long _field4;
+} CDStruct_198678f7;
 

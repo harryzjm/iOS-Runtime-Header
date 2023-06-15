@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 + (id)reverseNSData:(id)arg1;
 + (id)convertMacStringToNSData:(const void *)arg1;
 + (unsigned long long)NSDataToUInt64:(id)arg1;
-+ (basic_string_05660eb3)UIntToHexString:(unsigned long long)arg1 len:(unsigned long long)arg2;
++ (basic_string_b963e3c0)UIntToHexString:(unsigned long long)arg1 len:(unsigned long long)arg2;
 + (id)HexStringToNSDataMac:(const void *)arg1;
 + (id)UUIDStringToNSDataMac:(const void *)arg1 len:(unsigned long long)arg2;
 + (id)UUIDToNSDataMac:(id)arg1 len:(unsigned long long)arg2;

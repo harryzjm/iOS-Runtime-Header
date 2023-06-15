@@ -21,6 +21,11 @@
     MISSING_TYPE *buttonLayout;
     MISSING_TYPE *pageControlHeight;
     MISSING_TYPE *$__lazy_storage_$_gradientLayout;
+    MISSING_TYPE *$__lazy_storage_$_portableScoreboardLayout;
+    MISSING_TYPE *mediaShowcaseScoreboardLayout;
+    MISSING_TYPE *liveTextBadgeLayout;
+    MISSING_TYPE *timeTextBadgeLayout;
+    MISSING_TYPE *mediaTagsBottomMarginToTitleView;
 }
 
 @end

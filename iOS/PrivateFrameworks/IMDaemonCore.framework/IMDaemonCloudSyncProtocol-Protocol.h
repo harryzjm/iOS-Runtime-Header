@@ -32,7 +32,6 @@
 - (void)uploadDailyAnalyticstoCloudKit;
 - (void)broadcastCloudKitStateAfterFetchingAccountStatus;
 - (void)broadcastCloudKitState;
-- (void)initiateSync;
 - (void)tryToDisableAllDevices;
 - (void)performAdditionalStorageRequiredCheck;
 - (void)setCloudKitEnabled:(_Bool)arg1;
@@ -44,6 +43,7 @@
 - (void)writeExitRecord;
 - (void)loadDeletedMessagesWithLimit:(long long)arg1;
 - (void)loadDirtyMessagesWithLimit:(long long)arg1;
+- (void)initiateSync:(NSString *)arg1 forceRunNow:(_Bool)arg2 reply:(void (^)(_Bool, NSDictionary *))arg3;
 - (void)initiatePeriodicSync;
 - (void)syncMessages;
 - (void)deleteMessagesZone;

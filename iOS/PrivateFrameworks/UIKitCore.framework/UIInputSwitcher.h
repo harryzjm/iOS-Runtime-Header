@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, UIDelayedAction, UIInputSwitcherView;
+@class NSString, UIDelayedAction;
 
 __attribute__((visibility("hidden")))
 @interface UIInputSwitcher : NSObject
@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
     UIDelayedAction *m_showSwitcherDelay;
     UIDelayedAction *m_hideSwitcherDelay;
     int m_state;
-    UIInputSwitcherView *m_switcherView;
     double m_lastGlobeKeyUpTime;
     NSString *_newMode;
     _Bool _usingCapsLockLanguageSwitch;
@@ -28,6 +27,17 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool dismissingEmojiPopover; // @synthesize dismissingEmojiPopover=_dismissingEmojiPopover;
 @property(nonatomic) _Bool usingCapsLockLanguageSwitch; // @synthesize usingCapsLockLanguageSwitch=_usingCapsLockLanguageSwitch;
 @property(copy, nonatomic) NSString *loadedIdentifier; // @synthesize loadedIdentifier=_loadedIdentifier;
+- (void)dismissSwitcher:(_Bool)arg1;
+- (void)dismissSwitcherWithDelay:(double)arg1;
+- (_Bool)switchMode:(id)arg1 withHUD:(_Bool)arg2 withDelay:(_Bool)arg3;
+- (_Bool)isVisibleOrHiding;
+- (void)setShowingCapsLockSwitcher:(_Bool)arg1;
+- (id)previousInputMode;
+- (id)nextInputMode;
+- (void)setSelectedInputMode:(id)arg1;
+- (id)selectedInputMode;
+- (id)availableInputModes;
+- (void)reloadInputModes;
 - (_Bool)handleModifiersChangedEvent:(id)arg1;
 - (_Bool)needsFullHUD;
 - (_Bool)handleEmojiPicker;
@@ -35,13 +45,11 @@ __attribute__((visibility("hidden")))
 - (_Bool)handleGlobeKeyEvent:(id)arg1 switcherIsVisible:(_Bool)arg2;
 - (_Bool)handleSwitchingKeyEvent:(id)arg1;
 - (void)updateHardwareLayout;
-- (_Bool)switchMode:(id)arg1 withHUD:(_Bool)arg2 withDelay:(_Bool)arg3;
 - (_Bool)switchMode:(id)arg1 withHUD:(_Bool)arg2 withDelay:(_Bool)arg3 fromCapsLock:(_Bool)arg4;
 - (_Bool)handleSwitchCommand:(_Bool)arg1 withHUD:(_Bool)arg2 withDelay:(_Bool)arg3;
 - (_Bool)handleSwitchCommand:(_Bool)arg1;
-- (id)inputModeIdentifierWithNextFlag:(_Bool)arg1;
-- (_Bool)isVisibleOrHiding;
 - (void)hideSwitcherIfNeeded;
+- (id)inputModeIdentifierWithNextFlag:(_Bool)arg1;
 - (_Bool)isVisible;
 - (void)clearShowSwitcherTimer;
 - (void)cancelShowSwitcherTimer;
@@ -49,7 +57,6 @@ __attribute__((visibility("hidden")))
 - (void)showSwitcherWithoutAutoHide;
 - (void)showSwitcherWithAutoHide;
 - (void)showSwitcherShouldAutoHide:(_Bool)arg1;
-- (void)_showSwitcherViewAsHUD;
 - (void)clearHideSwitcherTimer;
 - (void)touchHideSwitcherTimer;
 - (void)cancelHideSwitcherTimer;

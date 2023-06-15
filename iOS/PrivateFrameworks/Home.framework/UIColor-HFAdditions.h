@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIColor.h>
+#import <UIKitCore/UIColor.h>
 
 @interface UIColor (HFAdditions)
++ (id)hf_alarmAndTimerControlCellSecondaryColor;
 + (id)hf_homePodControlCellBackgroundColor;
 + (id)hf_quickControlBackgroundGrayColor;
 + (id)hf_mediaPlatterBackgroundColor;

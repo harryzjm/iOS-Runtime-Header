@@ -5,6 +5,7 @@
 //
 
 @interface (null) (TranslationUI)
-- (void)airplaneModeChanged;
+- (id)excludedTypesForResult:(id)arg1;
+- (void)disambiguableResult:(id)arg1 didChangeResultForSentence:(id)arg2 withSelection:(id)arg3;
 @end
 

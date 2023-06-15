@@ -21,7 +21,7 @@
 - (id)generateWidthHeightCollection;
 - (double)widthOfColumn:(unsigned short)arg1 handleCacheMissUsingBlock:(CDUnknownBlockType)arg2;
 - (void)cacheWidth:(double)arg1 ofColumn:(unsigned short)arg2;
-- (id)init;
+- (id)initWithTableInfo:(id)arg1;
 
 @end
 

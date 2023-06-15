@@ -24,7 +24,10 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+- (void)stop;
+- (_Bool)start;
 - (void)dealloc;
+- (id)initWithFormat:(id)arg1 audioQueueConfiguration:(id)arg2 audioSession:(id)arg3 queue:(id)arg4 audioBufferHandler:(CDUnknownBlockType)arg5 interruptionHandler:(CDUnknownBlockType)arg6;
 - (id)init;
 
 @end

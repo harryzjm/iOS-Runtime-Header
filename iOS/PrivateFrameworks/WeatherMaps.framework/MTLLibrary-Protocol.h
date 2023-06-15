@@ -10,9 +10,11 @@
 @protocol MTLDevice, MTLFunction;
 
 @protocol MTLLibrary <NSObject>
-@property(nonatomic, readonly) NSString *installName;
-@property(nonatomic, readonly) long long type;
-@property(nonatomic, readonly) NSArray *functionNames;
+@property(readonly) NSString *installName;
+@property(readonly) long long type;
+@property(readonly) NSArray *functionNames;
+@property(readonly) id <MTLDevice> device;
+@property(copy) NSString *label;
 - (id <MTLFunction>)newIntersectionFunctionWithDescriptor:(MTLIntersectionFunctionDescriptor *)arg1 error:(id *)arg2;
 - (void)newIntersectionFunctionWithDescriptor:(MTLIntersectionFunctionDescriptor *)arg1 completionHandler:(void (^)(id <MTLFunction>, NSError *))arg2;
 - (id <MTLFunction>)newFunctionWithDescriptor:(MTLFunctionDescriptor *)arg1 error:(id *)arg2;
@@ -20,7 +22,5 @@
 - (void)newFunctionWithName:(NSString *)arg1 constantValues:(MTLFunctionConstantValues *)arg2 completionHandler:(void (^)(id <MTLFunction>, NSError *))arg3;
 - (id <MTLFunction>)newFunctionWithName:(NSString *)arg1 constantValues:(MTLFunctionConstantValues *)arg2 error:(id *)arg3;
 - (id <MTLFunction>)newFunctionWithName:(NSString *)arg1;
-@property(nonatomic, readonly) id <MTLDevice> device;
-@property(nonatomic, copy) NSString *label;
 @end
 

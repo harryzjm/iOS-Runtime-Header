@@ -21,9 +21,10 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain) NSObject<OS_dispatch_queue> *internalQueue; // @synthesize internalQueue=_internalQueue;
 @property(retain, nonatomic) LSSettingsStoreConfiguration *configuration; // @synthesize configuration=_configuration;
+- (_Bool)resetUserElectionsWithError:(id *)arg1;
 - (_Bool)setUserElection:(unsigned char)arg1 forExtensionKey:(id)arg2 error:(id *)arg3;
 - (unsigned char)userElectionForExtensionKey:(id)arg1;
-- (id)__internalQueue_xpcConnection;
+- (id)__internalQueue_xpcConnectionWithError:(id *)arg1;
 - (void)dealloc;
 - (id)init;
 

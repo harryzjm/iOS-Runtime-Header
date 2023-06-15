@@ -34,7 +34,7 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSData *leaseAssetIDData; // @synthesize leaseAssetIDData=_leaseAssetIDData;
 @property(copy, nonatomic) NSData *leaseCertificateData; // @synthesize leaseCertificateData=_leaseCertificateData;
 @property(copy, nonatomic) NSString *assetSourceStorefrontID; // @synthesize assetSourceStorefrontID=_assetSourceStorefrontID;
-- (id)_signpostRequestInfo;
+- (id)_analyticSignature;
 - (id)description;
 - (void)_populateItemIdentifiers:(id)arg1;
 - (id)_actionType;

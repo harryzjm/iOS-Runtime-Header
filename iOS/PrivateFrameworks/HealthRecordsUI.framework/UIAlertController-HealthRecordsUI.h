@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIAlertController.h>
+#import <UIKitCore/UIAlertController.h>
 
 @interface UIAlertController (HealthRecordsUI)
 + (id)basicAlertControllerWithTitle:(id)arg1 message:(id)arg2 internalError:(id)arg3;

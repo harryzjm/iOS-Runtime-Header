@@ -6,7 +6,7 @@
 
 #import <SoftwareUpdateServices/NSObject-Protocol.h>
 
-@class SUDescriptor, SUSpacePurgeOptions;
+@class NSNumber, SUDescriptor, SUSpacePurgeOptions;
 @protocol SUDownloadPolicy;
 
 @protocol SUDownloadPolicy <NSObject>
@@ -24,6 +24,8 @@
 - (_Bool)isDownloadAllowableForCellular;
 - (_Bool)isDownloadFreeForCellular;
 - (_Bool)isDownloadable;
+- (NSNumber *)minimumPowerRequirement;
+- (_Bool)batteryPolicySatisfied;
 - (_Bool)isPowerRequired;
 - (_Bool)hasEnoughDiskSpace;
 - (_Bool)isSamePolicy:(id <SUDownloadPolicy>)arg1;

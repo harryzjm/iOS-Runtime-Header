@@ -12,12 +12,15 @@
 @property(nonatomic) _Bool hksp_isRunningUnitTests;
 - (_Bool)hksp_demoMode;
 - (void)hksp_activePairedDeviceHasSleepAppInstalledWithCompletion:(CDUnknownBlockType)arg1;
+- (id)hksp_activePairedDeviceProductType;
 - (_Bool)hksp_activePairedDeviceHasHomeButton;
 - (_Bool)_hksp_activePairedDeviceSupportsCapability:(id)arg1;
+- (_Bool)hksp_activePairedDeviceSupportsSleepLauncherComplication;
 - (_Bool)hksp_activePairedDeviceSupportsFocusMode;
 - (_Bool)hksp_activePairedDeviceSupportsSleepStages;
 - (_Bool)hksp_activePairedDeviceSupportsSleep;
 - (_Bool)hksp_hasActivePairedDevice;
+- (_Bool)hksp_useDemoSleepData;
 - (_Bool)hksp_supportsDailyAnalytics;
 - (_Bool)hksp_supportsLegacySleepAlarms;
 - (_Bool)hksp_supportsSleepAlarms;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MISSING_TYPE;
+@class MISSING_TYPE, NSString;
 
 @interface _TtC11SessionCoreP33_F0FA238C64D38D6BA2E43F90C1B188B06Client : NSObject
 {
@@ -17,16 +17,20 @@
     MISSING_TYPE *activityAuthorizer;
     MISSING_TYPE *requester;
     MISSING_TYPE *backoffPolicy;
+    MISSING_TYPE *pushServer;
     MISSING_TYPE *backoffBudget;
     MISSING_TYPE *ephemeralActivityIdentifiers;
+    MISSING_TYPE *uuid;
 }
 
 - (void).cxx_destruct;
 - (id)init;
 - (void)dealloc;
+@property(nonatomic, readonly) NSString *description;
+- (void)mockPushForActivityIdentifier:(id)arg1 token:(id)arg2 processIdentifier:(id)arg3 environmentName:(id)arg4 payload:(id)arg5 pushPriority:(id)arg6 completionHandler:(CDUnknownBlockType)arg7;
+- (void)endActivityWithIdentifier:(id)arg1 payload:(id)arg2 options:(id)arg3;
+- (void)updateActivityWithIdentifier:(id)arg1 payload:(id)arg2;
 - (id)requestActivityWithRequest:(id)arg1 error:(id *)arg2;
-- (void)endActivityWithId:(id)arg1 payload:(id)arg2 options:(id)arg3;
-- (void)updateActivityWithId:(id)arg1 payload:(id)arg2;
 
 @end
 

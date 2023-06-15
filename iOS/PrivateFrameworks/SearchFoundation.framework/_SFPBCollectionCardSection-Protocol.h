@@ -10,6 +10,7 @@
 
 @protocol _SFPBCollectionCardSection <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
+@property(retain, nonatomic) _SFPBCommandButtonItem *titleButtonItem;
 @property(retain, nonatomic) _SFPBCollectionStyle *collectionStyle;
 @property(retain, nonatomic) _SFPBCommandButtonItem *buttonItem;
 @property(retain, nonatomic) _SFPBRichText *title;

@@ -4,8 +4,6 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDate;
-
 @protocol APPCMediaMetricsHelping
 - (void)mediaUserExitedArticle;
 - (void)mediaProgress:(long long)arg1;
@@ -21,7 +19,6 @@
 - (void)videoChosenWithVideoWidth:(float)arg1 videoHeight:(float)arg2;
 - (void)videoChosen;
 - (void)mediaLoaded;
-@property(nonatomic, copy) NSDate *videoRequestStartDate;
 @property(nonatomic, copy) CDUnknownBlockType visiblePercentageChanged;
 @property(nonatomic) long long visiblePercentage;
 @end

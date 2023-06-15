@@ -96,6 +96,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateNavigationTitle;
 - (void)_showContentOrNoContentView;
 - (_Bool)_shouldShowContentView;
+- (void)_updateMenusAndHomeSharesDatasource;
 - (void)_constructLibraryDataSourceAndUpdateActiveView;
 - (id)_menuItems;
 - (void)_updateViewIfFetchComplete;
@@ -117,10 +118,12 @@ __attribute__((visibility("hidden")))
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1;
 - (void)viewWillLayoutSubviews;
 - (void)viewDidLoad;
+- (void)willMoveToParentViewController:(id)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)loadView;
 - (void)dealloc;
+- (id)initWithMenuDataSource:(id)arg1 familyMember:(id)arg2;
 - (id)initWithMenuDataSource:(id)arg1;
 
 // Remaining properties

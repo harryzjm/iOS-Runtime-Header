@@ -51,6 +51,7 @@ __attribute__((visibility("hidden")))
 - (void)removeProgressPublisher:(id)arg1;
 - (void)addProgressPublisher:(id)arg1;
 - (id)urlOfSubitemAtPath:(id)arg1 plusPath:(id)arg2;
+- (id)name;
 - (id)standardizedURL;
 - (id)pathExceptPrivate;
 - (id)url;

@@ -43,6 +43,7 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_cachedItemAttributes;
     NSMutableDictionary *_cachedSupplementaryAttributes;
     NSMutableDictionary *_cachedDecorationAttributes;
+    unsigned long long _preUpdateCachedItemCount;
     NSArray *_globalSupplementaryItems;
     _UICollectionLayoutAuxillaryItemSolver *_globalSupplementarySolver;
     _UICollectionPreferredSizes *_globalSupplementaryPreferredSizes;

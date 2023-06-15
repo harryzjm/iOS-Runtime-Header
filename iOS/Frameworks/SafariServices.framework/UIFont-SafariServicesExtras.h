@@ -8,6 +8,7 @@
 
 @interface UIFont (SafariServicesExtras)
 + (id)_sf_highLegibilityAlternateFont:(id)arg1;
++ (id)_sf_roundedSystemFontOfSize:(unsigned long long)arg1 weight:(double)arg2;
 + (id)_sf_preferredFontForTextStyle:(id)arg1 weight:(double)arg2 compatibleWithTraitCollection:(id)arg3;
 + (id)_sf_preferredFontForTextStyle:(id)arg1 attributes:(id)arg2;
 + (id)_sf_preferredFontForTextStyle:(id)arg1 symbolicTraits:(unsigned int)arg2;

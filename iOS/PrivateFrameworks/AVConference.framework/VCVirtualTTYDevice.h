@@ -26,13 +26,14 @@ __attribute__((visibility("hidden")))
     struct opaqueCMSimpleQueue *_charQueue;
     struct tagVCMemoryPool *_characterPool;
     id _textStream;
+    unsigned int _audioSessionId;
 }
 
 @property(nonatomic) NSObject<VCMediaStreamDelegate> *delegate; // @synthesize delegate;
 @property int deviceRole; // @synthesize deviceRole;
 @property _Bool isValid; // @synthesize isValid;
 - (void)didUpdateBasebandCodec:(const struct _VCRemoteCodecInfo *)arg1;
-- (void)didServerDie;
+- (void)serverDidDie;
 - (void)didResumeAudioIO:(id)arg1;
 - (void)didSuspendAudioIO:(id)arg1;
 - (void)setCanProcessAudio:(_Bool)arg1;

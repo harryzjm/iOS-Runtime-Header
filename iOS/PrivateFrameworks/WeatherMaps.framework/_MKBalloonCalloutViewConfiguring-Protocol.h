@@ -9,30 +9,18 @@
 @class UIBlurEffect, UIColor, UIImage, UIView;
 
 @protocol _MKBalloonCalloutViewConfiguring <NSObject>
-- (UIImage *)_balloonImage;
-- (UIColor *)_balloonStrokeColor;
-- (UIColor *)_balloonTintColor;
-- (long long)_balloonCalloutStyle;
+@property(readonly, nonatomic, getter=_balloonImage) UIImage *balloonImage;
+@property(readonly, nonatomic, getter=_balloonStrokeColor) UIColor *balloonStrokeColor;
+@property(readonly, nonatomic, getter=_balloonTintColor) UIColor *balloonTintColor;
+@property(readonly, nonatomic, getter=_balloonCalloutStyle) long long balloonCalloutStyle;
 
 @optional
-- (UIBlurEffect *)_balloonMaterial;
-- (_Bool)_balloonCalloutShouldCenterWhenOffscreen;
-- (_Bool)_balloonCalloutShouldShowArrow;
-- (UIColor *)_balloonImageTintColor;
-- (UIColor *)_balloonInnerStrokeColor;
-- (UIView *)_balloonContentView;
+@property(readonly, nonatomic, getter=_balloonMaterial) UIBlurEffect *balloonMaterial;
+@property(readonly, nonatomic, getter=_balloonCalloutShouldCenterWhenOffscreen) _Bool balloonCalloutShouldCenterWhenOffscreen;
+@property(readonly, nonatomic, getter=_balloonCalloutShouldShowArrow) _Bool balloonCalloutShouldShowArrow;
+@property(readonly, nonatomic, getter=_balloonImageTintColor) UIColor *balloonImageTintColor;
+@property(readonly, nonatomic, getter=_balloonInnerStrokeColor) UIColor *balloonInnerStrokeColor;
+@property(readonly, nonatomic, getter=_balloonContentView) UIView *balloonContentView;
 - (_Bool)_balloonCalloutShouldOriginateFromSmallSize:(double *)arg1;
-
-// Remaining properties
-@property(nonatomic, readonly) _Bool balloonCalloutShouldCenterWhenOffscreen;
-@property(nonatomic, readonly) _Bool balloonCalloutShouldShowArrow;
-@property(nonatomic, readonly) long long balloonCalloutStyle;
-@property(nonatomic, readonly) UIView *balloonContentView;
-@property(nonatomic, readonly) UIImage *balloonImage;
-@property(nonatomic, readonly) UIColor *balloonImageTintColor;
-@property(nonatomic, readonly) UIColor *balloonInnerStrokeColor;
-@property(nonatomic, readonly) UIBlurEffect *balloonMaterial;
-@property(nonatomic, readonly) UIColor *balloonStrokeColor;
-@property(nonatomic, readonly) UIColor *balloonTintColor;
 @end
 

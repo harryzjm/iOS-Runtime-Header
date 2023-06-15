@@ -23,6 +23,8 @@
 + (id)_sanitizedLanguageIdentifierFromKeyboardLanguage:(id)arg1 currentLocale:(id)arg2;
 + (id)_sanitizedLanguageIdentifierFromKeyboardLanguage:(id)arg1;
 + (void)enableDefaultKeyboardForPreferredLanguages;
++ (id)_localeIdentifierForLanguage:(id)arg1 region:(id)arg2;
++ (id)_languageIdentifiersForLanguage:(id)arg1 region:(id)arg2;
 + (void)_setUsesTwelveHourClock:(_Bool)arg1;
 + (_Bool)_defaultUsesTwelveHourClock;
 + (_Bool)_usesTwelveHourClock;
@@ -34,7 +36,6 @@
 + (id)canonicalLocaleIdentifierWithValidCalendarForComponents:(id)arg1;
 + (void)setLocaleAfterRegionChange:(id)arg1;
 + (void)_insertFallbackLanguageIfNecessaryForRegion:(id)arg1;
-+ (id)localeIdentifierForRegionChange:(id)arg1;
 + (void)setLocaleAfterLanguageChange:(id)arg1;
 + (id)validateLocale:(id)arg1;
 + (void)resetCustomFormats;
@@ -48,10 +49,13 @@
 + (id)addLikelySubtagsForLocaleIdentifier:(id)arg1;
 + (id)canonicalLocaleIdentifierFromComponents:(id)arg1;
 + (id)canonicalLanguageAndScriptCodeIdentifierForIdentifier:(id)arg1;
-+ (id)canonicalLocaleIdentifier:(id)arg1 withNewLanguageIdentifier:(id)arg2;
 + (id)supportedCJLanguageIdentifiers;
 + (id)deviceLanguageIdentifier;
 + (id)deviceLanguageLocale;
++ (id)localeIdentifierForRegionChange:(id)arg1;
++ (id)_localeIdentifierForRegionChangeFrom:(id)arg1 to:(id)arg2;
++ (id)canonicalLocaleIdentifier:(id)arg1 withNewLanguageIdentifier:(id)arg2;
++ (_Bool)_language:(id)arg1 usesSameLocalizationAs:(id)arg2;
 - (id)defaultLanguagesForMultilingualSetup;
 - (id)languagesForMultilingualSetup;
 - (id)_languagesForMultilingualSetupWithKeyboardsIDs:(id)arg1;

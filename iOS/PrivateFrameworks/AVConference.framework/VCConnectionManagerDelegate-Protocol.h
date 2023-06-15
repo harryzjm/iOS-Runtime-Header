@@ -6,7 +6,7 @@
 
 #import <AVConference/VCLinkProbingHandlerDelegate-Protocol.h>
 
-@class NSNumber;
+@class NSDictionary, NSNumber;
 @protocol VCConnectionProtocol;
 
 @protocol VCConnectionManagerDelegate <VCLinkProbingHandlerDelegate>
@@ -17,7 +17,9 @@
 - (void)primaryConnectionChanged:(id <VCConnectionProtocol>)arg1 oldPrimaryConnection:(id <VCConnectionProtocol>)arg2 activeConnection:(id <VCConnectionProtocol>)arg3;
 
 @optional
+- (void)requestStatsWithOptions:(NSDictionary *)arg1;
 - (void)logSignalStrength;
+- (int)getSignalStrengthBars:(int *)arg1 displayBars:(int *)arg2 maxDisplayBars:(int *)arg3;
 - (void)setRemoteDeviceVersionIDS;
 - (void)handleRATChanged:(NSNumber *)arg1;
 - (void)optIntoExistingSubscribedStreamsForConnection:(id <VCConnectionProtocol>)arg1;
@@ -25,5 +27,6 @@
 - (void)resetParticipantGenerationCounter;
 - (void)updateParticipantGenerationCounter:(unsigned char)arg1;
 - (void)discardConnection:(id <VCConnectionProtocol>)arg1;
+- (void)didLocalNetworkQualityChange:(_Bool)arg1 isLocalNetworkQualityBad:(_Bool)arg2 isRemoteNetworkQualityBad:(_Bool)arg3;
 @end
 

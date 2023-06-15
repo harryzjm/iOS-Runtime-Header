@@ -10,11 +10,15 @@
 
 @interface _TtC8VideosUI23LibShowDetailsViewModel : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *libShowMediaEntity;
-    MISSING_TYPE *_showTitle;
-    MISSING_TYPE *_seasons;
+    MISSING_TYPE *showTitle;
     MISSING_TYPE *_isFetchDone;
     MISSING_TYPE *_canonicalID;
+    MISSING_TYPE *_seasonViewModels;
+    MISSING_TYPE *libShowMediaEntity;
+    MISSING_TYPE *showDownloadsOnly;
+    MISSING_TYPE *cancellables;
+    MISSING_TYPE *seasons;
+    MISSING_TYPE *eventSubject;
 }
 
 @end

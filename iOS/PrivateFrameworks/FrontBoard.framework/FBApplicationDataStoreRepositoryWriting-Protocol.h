@@ -6,7 +6,7 @@
 
 #import <FrontBoard/NSObject-Protocol.h>
 
-@class NSArray, NSString;
+@class NSArray, NSError, NSString;
 
 @protocol FBApplicationDataStoreRepositoryWriting <NSObject>
 - (void)endBatchedUpdate;
@@ -16,5 +16,6 @@
 - (void)removeObjectsForKeys:(NSArray *)arg1 forApplication:(NSString *)arg2;
 - (void)removeObjectForKey:(NSString *)arg1 forApplication:(NSString *)arg2;
 - (void)setObject:(id)arg1 forKey:(NSString *)arg2 forApplication:(NSString *)arg3;
+- (NSError *)migrateIdentifier:(NSString *)arg1 toIdentifier:(NSString *)arg2;
 @end
 

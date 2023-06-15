@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIColor.h>
+#import <UIKitCore/UIColor.h>
 
 @interface UIColor (ChatKitAdditions)
 + (id)_ckColor:(id)arg1 forUserInterfaceStyle:(long long)arg2;

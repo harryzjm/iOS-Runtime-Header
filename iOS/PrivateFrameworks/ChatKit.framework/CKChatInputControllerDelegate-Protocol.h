@@ -6,21 +6,29 @@
 
 #import <ChatKit/NSObject-Protocol.h>
 
-@class CKBrowserDragControllerTarget, CKChatInputController, CKComposition, IMBalloonPlugin, IMSticker, NSData, NSString, UIInputViewController, UIView, UIViewController;
-@protocol CKBrowserDragControllerTranscriptDelegate;
+@class CKBrowserDragControllerTarget, CKBrowserDraggedSticker, CKChatInputController, CKComposition, CKConversation, CKMessagePartChatItem, CKSendMenuPresentation, IMSticker, NSData, NSString, UIInputViewController, UIKeyboardLayoutGuide, UIView, UIViewController;
+@protocol CKBrowserDragControllerTranscriptDelegate, CKSceneOverlayPresentationContext;
 
 @protocol CKChatInputControllerDelegate <NSObject>
+@property(readonly, nonatomic, getter=isKeyboardVisible) _Bool keyboardVisible;
 - (unsigned long long)recipientsCount;
 - (long long)sceneInterfaceOrientation;
 - (void)stopForcingOrientation;
 - (void)updateSupportedInterfaceOrientations:(unsigned long long)arg1;
 - (_Bool)chatInputControllerShouldShowHandwriting:(CKChatInputController *)arg1;
+- (_Bool)isKeyboardSnapshotted;
+- (void)chatInputController:(CKChatInputController *)arg1 didFinishDismissAnimationForSendMenuViewController:(UIViewController *)arg2;
+- (void)chatInputController:(CKChatInputController *)arg1 requestPresentSendMenu:(UIViewController *)arg2 withPresentationContext:(id <CKSceneOverlayPresentationContext>)arg3;
 - (void)chatInputControllerDidSelectFunCamera:(CKChatInputController *)arg1;
 - (void)chatInputControllerCancelSelectFunCamera:(CKChatInputController *)arg1;
 - (void)chatInputControllerWillSelectFunCamera:(CKChatInputController *)arg1;
 - (void)showContactForHandle:(NSString *)arg1;
 - (void)sendCurrentLocation;
-- (void)chatInputControllerBrowserPluginChangingFromPlugin:(IMBalloonPlugin *)arg1 toPlugin:(IMBalloonPlugin *)arg2;
+- (void)chatInputControllerDidSelectRequestLocation:(CKChatInputController *)arg1;
+- (void)chatInputController:(CKChatInputController *)arg1 didPresentStickerPickerForChatItem:(CKMessagePartChatItem *)arg2;
+- (void)chatInputController:(CKChatInputController *)arg1 willPresentStickerPickerForChatItem:(CKMessagePartChatItem *)arg2;
+- (void)chatInputControllerRequestDismissKeyboardSnapshot:(CKChatInputController *)arg1;
+- (void)chatInputControllerRequestShowKeyboardSnapshot:(CKChatInputController *)arg1;
 - (void)chatInputControllerWillDismissCompactBrowserViewController:(CKChatInputController *)arg1;
 - (void)chatInputControllerDidDismissCompactBrowserViewController:(CKChatInputController *)arg1;
 - (void)chatInputControllerDidTransitionCollapsed:(CKChatInputController *)arg1;
@@ -46,11 +54,20 @@
 - (void)chatInputSentComposition:(CKComposition *)arg1;
 - (_Bool)keyboardIsVisibleForChatInputController:(CKChatInputController *)arg1;
 - (id <CKBrowserDragControllerTranscriptDelegate>)dragControllerTranscriptDelegate;
-- (void)sendSticker:(IMSticker *)arg1 withDragTarget:(CKBrowserDragControllerTarget *)arg2;
+- (void)sendAutomaticallyPlacedSticker:(IMSticker *)arg1 forChatItem:(CKMessagePartChatItem *)arg2 withDragTarget:(CKBrowserDragControllerTarget *)arg3 draggedSticker:(CKBrowserDraggedSticker *)arg4;
+- (void)sendAutomaticallyPlacedSticker:(IMSticker *)arg1 forChatItem:(CKMessagePartChatItem *)arg2 stickerFrame:(struct CGRect)arg3 completionHandler:(void (^)(void))arg4;
+- (void)sendSticker:(IMSticker *)arg1 withDragTarget:(CKBrowserDragControllerTarget *)arg2 draggedSticker:(CKBrowserDraggedSticker *)arg3;
 - (void)chatInputControllerRequestInputViewFocusFromFullscreen:(CKChatInputController *)arg1;
+- (void)appCardDidChangeEntryViewAlignmentHeight:(double)arg1 animated:(_Bool)arg2;
+- (void)updateActiveEntryViewPositioningGuide;
+- (UIKeyboardLayoutGuide *)keyboardLayoutGuideForAppCardPresentation;
 - (UIView *)viewForDragAndChatInputDropTarget;
+- (void)dismissKeyboard;
+- (void)enforceSendMenuOrderingInWindowSubviews;
 - (NSString *)chatInputTranscriptIdentifier;
 - (UIViewController *)viewControllerForChatInputModalPresentation;
+- (CKSendMenuPresentation *)activeSendMenuPresentationForChatInputController:(CKChatInputController *)arg1;
+- (CKConversation *)targetConversationForChatInputController:(CKChatInputController *)arg1;
 
 @optional
 - (void)chatInputDidSelectEmojiPicker;

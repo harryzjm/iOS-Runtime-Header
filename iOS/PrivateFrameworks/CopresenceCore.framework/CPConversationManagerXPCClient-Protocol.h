@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDictionary;
+@class NSDictionary, NSString, NSUUID, TUConversationActivity;
 
 @protocol CPConversationManagerXPCClient
+- (void)requestEndpointWith:(NSString *)arg1 activitySessionUUID:(NSUUID *)arg2 activity:(TUConversationActivity *)arg3 completion:(void (^)(NSXPCListenerEndpoint *))arg4;
 - (void)updateConversationContainersWithConversationContainersByGroupUUID:(NSDictionary *)arg1;
 @end
 

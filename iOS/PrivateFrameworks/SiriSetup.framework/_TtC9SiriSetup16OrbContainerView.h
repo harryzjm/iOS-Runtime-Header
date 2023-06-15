@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class MISSING_TYPE;
 
@@ -13,13 +13,14 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *orbView;
     MISSING_TYPE *checkMark;
+    MISSING_TYPE *fitsToSuperView;
 }
 
 - (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1;
+@property(nonatomic, readonly) struct CGSize intrinsicContentSize;
 - (void)updateConstraints;
 - (id)initWithCoder:(id)arg1;
-- (id)init;
 
 @end
 

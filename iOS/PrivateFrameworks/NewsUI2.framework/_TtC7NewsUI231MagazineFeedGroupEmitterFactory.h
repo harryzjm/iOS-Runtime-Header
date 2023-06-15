@@ -12,7 +12,8 @@
 {
     MISSING_TYPE *tagService;
     MISSING_TYPE *headlineService;
-    MISSING_TYPE *feedTopicClusteringService;
+    MISSING_TYPE *feedPersonalizer;
+    MISSING_TYPE *feedClusteringService;
     MISSING_TYPE *personalizationService;
     MISSING_TYPE *magazineCategoryService;
     MISSING_TYPE *magazineCategoryConfigService;
@@ -32,6 +33,7 @@
     MISSING_TYPE *myMagazinesStore;
     MISSING_TYPE *subscriptionList;
     MISSING_TYPE *offlineManager;
+    MISSING_TYPE *recommendedIssuesService;
 }
 
 @end

@@ -4,11 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "PUTileViewController.h"
+
 __attribute__((visibility("hidden")))
-@interface PUFilmstripIndicatorTileController
+@interface PUFilmstripIndicatorTileController : PUTileViewController
 {
 }
 
+- (void)applyLayoutInfo:(id)arg1;
 - (id)loadView;
 
 @end

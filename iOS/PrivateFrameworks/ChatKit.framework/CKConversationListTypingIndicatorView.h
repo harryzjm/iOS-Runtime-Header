@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
-@class IMConversationListTypingIndicatorLayer;
+@class CKConversationListTypingIndicatorLayer;
 
 __attribute__((visibility("hidden")))
 @interface CKConversationListTypingIndicatorView : UIView
@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
     _Bool _highlightedState;
     _Bool _flipForRTLLayout;
     _Bool _isDarkAqua;
-    IMConversationListTypingIndicatorLayer *_typingLayer;
+    CKConversationListTypingIndicatorLayer *_typingLayer;
     double _typingIndicatorScale;
 }
 
@@ -30,7 +30,7 @@ __attribute__((visibility("hidden")))
 - (void)startPulseAnimation;
 - (void)startGrowAnimation;
 - (void)destroyTypingLayer;
-@property(retain, nonatomic) IMConversationListTypingIndicatorLayer *typingLayer; // @synthesize typingLayer=_typingLayer;
+@property(retain, nonatomic) CKConversationListTypingIndicatorLayer *typingLayer; // @synthesize typingLayer=_typingLayer;
 - (id)init;
 
 @end

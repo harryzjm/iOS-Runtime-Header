@@ -6,8 +6,11 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
+@class MISSING_TYPE;
+
 @interface _TtCV7VFXCore18ParticleForceField9CPUSystem : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *fieldsQuery;
 }
 
 @end

@@ -28,12 +28,14 @@ __attribute__((visibility("hidden")))
     _Bool _anbrEnabled;
     long long _subscriptionSlot;
     _Bool _isLowLatency;
+    unsigned int _preferredMediaBitRate;
     _Bool _useWifiTiers;
     unsigned int _channelCount;
 }
 
 + (int)bundlingSchemeForAudioStreamMode:(long long)arg1 payloadType:(int)arg2;
 @property(nonatomic) _Bool useWifiTiers; // @synthesize useWifiTiers=_useWifiTiers;
+@property(nonatomic) unsigned int preferredMediaBitRate; // @synthesize preferredMediaBitRate=_preferredMediaBitRate;
 @property(readonly, nonatomic) _Bool useExternalIO; // @synthesize useExternalIO=_useExternalIO;
 @property(nonatomic) _Bool isLowLatency; // @synthesize isLowLatency=_isLowLatency;
 @property(nonatomic) long long subscriptionSlot; // @synthesize subscriptionSlot=_subscriptionSlot;

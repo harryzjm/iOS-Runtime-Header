@@ -13,8 +13,8 @@ __attribute__((visibility("hidden")))
     struct CGSize _frameSize;
 }
 
-@property(readonly) unsigned int pixelFormatType; // @synthesize pixelFormatType=_pixelFormatType;
-@property(readonly) struct CGSize frameSize; // @synthesize frameSize=_frameSize;
+@property(readonly, nonatomic) unsigned int pixelFormatType; // @synthesize pixelFormatType=_pixelFormatType;
+@property(readonly, nonatomic) struct CGSize frameSize; // @synthesize frameSize=_frameSize;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;

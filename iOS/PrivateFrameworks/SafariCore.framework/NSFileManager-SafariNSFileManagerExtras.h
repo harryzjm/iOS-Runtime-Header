@@ -7,6 +7,7 @@
 #import <Foundation/NSFileManager.h>
 
 @interface NSFileManager (SafariNSFileManagerExtras)
+- (id)safari_createTemporaryDirectoryAppropriateForURL:(id)arg1 error:(id *)arg2;
 - (void)safari_removeContentsOfDirectory:(id)arg1;
 - (_Bool)safari_removeDirectoryIfEmpty:(id)arg1;
 - (id)safari_frameworksDirectoryURLs;
@@ -19,6 +20,8 @@
 - (id)safari_autoFillQuirksDownloadDirectoryURL;
 - (id)safari_productionSafariSettingsDirectory;
 - (id)safari_nonContaineredSettingsDirectoryURL;
+- (id)safari_profileDirectoryURLWithID:(id)arg1;
+- (id)safari_profilesDirectoryURL;
 - (id)safari_settingsDirectoryURL;
 - (id)safari_settingsDirectoryForHomeDirectory:(id)arg1;
 - (id)safari_webExtensionsSettingsDirectoryURL;

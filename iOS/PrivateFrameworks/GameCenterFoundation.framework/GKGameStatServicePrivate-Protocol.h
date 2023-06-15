@@ -10,6 +10,8 @@
 
 @protocol GKGameStatServicePrivate <GKGameStatService>
 + (FriendsPlayedGameList *)currentFriendsPlayedList:(NSManagedObjectContext *)arg1;
+- (oneway void)clearAchievementsCacheWithHandler:(void (^)(NSError *))arg1;
+- (oneway void)clearLeaderboardsCacheWithHandler:(void (^)(NSError *))arg1;
 - (oneway void)getEntriesForLeaderboard:(GKLeaderboardInternal *)arg1 fetchOptions:(unsigned long long)arg2 gameDescriptor:(GKGameDescriptor *)arg3 localPlayer:(GKPlayerInternal *)arg4 playerScope:(long long)arg5 timeScope:(long long)arg6 range:(struct _NSRange)arg7 players:(NSArray *)arg8 handler:(void (^)(GKLeaderboardEntryInternal *, NSArray *, long long, NSError *))arg9;
 - (oneway void)getReengagementAchievements:(void (^)(GKAchievementInternal *, GKGameInternal *, NSError *))arg1;
 - (oneway void)getReengagementAchievement:(void (^)(GKAchievementInternal *, GKGameInternal *, NSError *))arg1;

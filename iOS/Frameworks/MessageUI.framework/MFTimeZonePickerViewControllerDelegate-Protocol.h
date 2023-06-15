@@ -6,9 +6,9 @@
 
 #import <MessageUI/NSObject-Protocol.h>
 
-@class MFTimeZonePickerViewController, NSTimeZone;
+@class MFTimeZonePickerViewController, NSString, NSTimeZone;
 
 @protocol MFTimeZonePickerViewControllerDelegate <NSObject>
-- (void)timeZonePickerViewController:(MFTimeZonePickerViewController *)arg1 chooseTimeZone:(NSTimeZone *)arg2;
+- (void)timeZonePickerViewController:(MFTimeZonePickerViewController *)arg1 chooseTimeZone:(NSTimeZone *)arg2 cityName:(NSString *)arg3;
 @end
 

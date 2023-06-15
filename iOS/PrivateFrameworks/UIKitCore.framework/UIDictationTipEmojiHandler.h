@@ -13,7 +13,6 @@ __attribute__((visibility("hidden")))
 
 - (id)replaceEmojiInStringWithEmojiDictationCommand:(id)arg1;
 - (id)init;
-- (id)localeWithEmojiKeywordBeforeDescription;
 
 @end
 

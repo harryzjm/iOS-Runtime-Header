@@ -7,6 +7,9 @@
 #import <UIKit/UIFont.h>
 
 @interface UIFont (MRUDefaults)
++ (id)mru_ambientTimeFont;
++ (id)mru_ambientSubtitleFont;
++ (id)mru_ambientTitleFont;
 + (id)mru_volumeButtonSubtitleFont;
 + (id)mru_volumeButtonTitleFont;
 + (id)mru_volumeTitleFont;
@@ -18,6 +21,10 @@
 + (id)mru_buttonFont;
 + (id)mru_timeFont;
 + (id)mru_routeFont;
++ (id)mru_activitySubtitleFont;
++ (id)mru_activityTitleFont;
++ (id)mru_controlCenterSubtitleFont;
++ (id)mru_controlCenterTitleFont;
 + (id)mru_subtitleFont;
 + (id)mru_titleFont;
 @end

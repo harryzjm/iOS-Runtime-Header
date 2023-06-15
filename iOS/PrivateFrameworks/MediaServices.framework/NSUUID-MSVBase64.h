@@ -10,7 +10,7 @@
 + (id)msv_uuidWithCFUUID:(struct __CFUUID *)arg1;
 + (id)msv_UUIDWithData:(id)arg1;
 + (id)uuidWithMSVBase64UUID:(id)arg1;
-- (const struct __CFUUID *)msv_copyCFUUID;
+- (struct __CFUUID *)msv_copyCFUUID;
 - (id)msv_UUIDData;
 - (id)MSVBase64UUIDString;
 - (id)initWithMSVBase64UUIDString:(id)arg1;

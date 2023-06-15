@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
     unsigned long long _stateCaptureHandle;
 }
 
-+ (id)balancerForRequester:(id)arg1 tileKeys:(id)arg2 priorities:(id)arg3;
++ (id)balancerForRequester:(id)arg1;
 + (void)setMaxRunningOperationsCount:(unsigned long long)arg1;
 + (unsigned long long)maxRunningOperationsCount;
 - (__wrap_iter_9a08789a)_next_requester;
@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (void)_removeRequester:(id)arg1;
 - (void)removeRequester:(id)arg1;
 - (void)_addRequester:(id)arg1 tileKeys:(id)arg2 priorities:(id)arg3;
+- (void)addRequester:(id)arg1 tileKeys:(id)arg2 priorities:(id)arg3;
 - (void *)requesters;
 - (void)dealloc;
 - (id)_initWithMaxRunningOperationsCount:(unsigned long long)arg1;

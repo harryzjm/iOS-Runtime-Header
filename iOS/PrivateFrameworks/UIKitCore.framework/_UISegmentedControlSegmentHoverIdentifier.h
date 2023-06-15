@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface _UISegmentedControlSegmentHoverIdentifier : NSObject <NSCopying>
+@interface _UISegmentedControlSegmentHoverIdentifier : NSObject
 {
     long long _index;
     _Bool _isSelected;

@@ -11,7 +11,7 @@
 @interface _TtCO24IntelligencePlatformCore14ViewGeneration25EmbeddingViewRecordLoader : _TtCs12_SwiftObject
 {
     MISSING_TYPE *inputStore;
-    MISSING_TYPE *dependencyTableNames;
+    MISSING_TYPE *dependencyStores;
     MISSING_TYPE *model;
 }
 

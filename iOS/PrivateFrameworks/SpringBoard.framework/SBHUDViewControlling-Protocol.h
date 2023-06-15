@@ -4,7 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class SBFPhysicalButtonSceneTargetSet;
+
 @protocol SBHUDViewControlling
+@property(readonly, copy, nonatomic) SBFPhysicalButtonSceneTargetSet *physicalButtonSceneTargets;
 - (void)dismissAnimatedWithCompletion:(void (^)(_Bool))arg1;
 - (_Bool)definesAnimatedDismissal;
 @end

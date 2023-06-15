@@ -25,6 +25,7 @@
 - (_Bool)isAllowedToReplaceContainers;
 - (_Bool)isAllowedToControlCaches;
 - (_Bool)isAllowedToWipePlugInDataContainerWithIdentifier:(NSString *)arg1;
+- (_Bool)isAllowedToLookupViaPrivateEntitlementWithClass:(unsigned long long)arg1 identifier:(NSString *)arg2;
 - (_Bool)isAllowedToLookupGroupContainersOfClass:(unsigned long long)arg1 ownedByIdentifier:(NSString *)arg2;
 - (_Bool)isAllowedToLookupContainerIdentity:(MCMContainerIdentityMinimal *)arg1;
 - (_Bool)isAllowedToLookupAllContainersOfClass:(unsigned long long)arg1;

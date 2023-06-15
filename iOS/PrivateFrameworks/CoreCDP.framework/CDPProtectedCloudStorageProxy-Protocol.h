@@ -6,9 +6,12 @@
 
 #import <CoreCDP/NSObject-Protocol.h>
 
-@class NSDictionary;
+@class NSDictionary, NSString;
 
 @protocol CDPProtectedCloudStorageProxy <NSObject>
+- (_Bool)setWalrusEnabled:(_Bool)arg1 accountIdentifier:(NSString *)arg2 options:(NSDictionary *)arg3 error:(id *)arg4;
+- (_Bool)repairWalrusWithAccountIdentifier:(NSString *)arg1 options:(NSDictionary *)arg2 error:(id *)arg3;
+- (_Bool)isWalrusEnabledWithOptions:(NSDictionary *)arg1 error:(id *)arg2;
 - (_Bool)pcsRestoreLocalBackup:(NSDictionary *)arg1 error:(id *)arg2;
 - (_Bool)pcsSynchronizeKeysWithInfo:(NSDictionary *)arg1 error:(id *)arg2;
 - (_Bool)pcsIdentityMigrateToiCDPWithInfo:(NSDictionary *)arg1 error:(id *)arg2;

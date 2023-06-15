@@ -10,7 +10,7 @@
 - (Class)_searchUIHorizontalViewClass;
 - (Class)_searchUIViewClass;
 - (Class)_searchUIHorizontallyScrollingButtonControllerClass;
-- (_Bool)searchUIHorizontallyScrollingSectionModel_useBackground;
+- (_Bool)_wantsHeaderSeparator;
 - (double)searchUIHorizontallyScrollingSectionModel_widthDimensionMultiplier;
 @end
 

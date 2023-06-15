@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *articlePrefetcher;
     MISSING_TYPE *articleAudioPrewarmer;
+    MISSING_TYPE *tagPrefetcher;
 }
 
 @end

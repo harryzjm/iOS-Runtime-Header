@@ -7,6 +7,7 @@
 #import <Foundation/NSURL.h>
 
 @interface NSURL (LPInternal)
+- (id)_lp_requestWithAttribution:(unsigned long long)arg1;
 - (_Bool)_lp_hasAllowedNonHTTPSchemeForMetadataDecoding;
 - (_Bool)_lp_hasWalletRelatedScheme;
 - (id)_lp_valueForQueryKey:(id)arg1;

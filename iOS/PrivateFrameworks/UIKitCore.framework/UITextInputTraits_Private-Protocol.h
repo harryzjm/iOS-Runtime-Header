@@ -19,6 +19,7 @@
 @property(nonatomic, getter=isDevicePasscodeEntry) _Bool devicePasscodeEntry;
 @property(nonatomic) _Bool disableHandwritingKeyboard;
 @property(nonatomic) _Bool hidePrediction;
+@property(nonatomic) long long inlineCompletionType;
 @property(nonatomic) _Bool disablePrediction;
 @property(retain, nonatomic) UIImage *supplementalLexiconAmbiguousItemIcon;
 @property(retain, nonatomic) _UISupplementalLexicon *supplementalLexicon;

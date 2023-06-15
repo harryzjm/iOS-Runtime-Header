@@ -27,10 +27,11 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;
-- (_Bool)isEqualToContainerIdentityForLinks:(id)arg1;
+- (_Bool)isEqualToContainerIdentity:(id)arg1;
 - (unsigned long long)hash;
 - (id)debugDescription;
 - (id)description;
+- (id)identityByChangingUserIdentity:(id)arg1;
 - (id)identityBySettingPlatform:(unsigned int)arg1;
 - (id)minimalIdentity;
 - (id)initWithVersion1PlistDictionary:(id)arg1 userIdentityCache:(id)arg2 error:(unsigned long long *)arg3;

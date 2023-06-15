@@ -8,5 +8,6 @@
 
 @interface SFHeroCardSection (SearchUIViewClass)
 - (Class)_searchUIViewClass;
+- (void)customizeSection:(id)arg1 isLeading:(_Bool)arg2;
 @end
 

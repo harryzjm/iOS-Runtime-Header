@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *articleAccessMap;
     MISSING_TYPE *paywallFactory;
+    MISSING_TYPE *newsPlusLabelConfigProvider;
 }
 
 @end

@@ -7,10 +7,12 @@
 #import <Portrait/MTLDevice-Protocol.h>
 
 @class MTLAccelerationStructureAllocationDescriptor, MTLAccelerationStructureDescriptor, MTLArchitecture, MTLBinaryArchiveDescriptor, MTLBufferDescriptor, MTLCommandQueueDescriptor, MTLComputePipelineDescriptor, MTLDynamicLibraryDescriptorSPI, MTLFunction, MTLFunctionDescriptor, MTLGPUBVHBuilder, MTLIndirectCommandBufferDescriptor, MTLIntersectionFunctionTableDescriptor, MTLMeshRenderPipelineDescriptor, MTLRasterizationRateMapDescriptor, MTLRenderPipelineDescriptor, MTLStitchedLibraryDescriptor, MTLStitchedLibraryDescriptorSPI, MTLStructType, MTLTargetDeviceArchitecture, MTLTextureDescriptor, MTLTileRenderPipelineDescriptor, MTLVisibleFunctionTableDescriptor, NSArray, NSData, NSDictionary, NSMutableDictionary, NSObject, NSString, NSURL, _MTLIndirectArgumentBufferLayout;
-@protocol MTLAccelerationStructure, MTLArgumentEncoder, MTLBinaryArchive, MTLBuffer, MTLCommandQueue, MTLComputePipelineState, MTLDeadlineProfile, MTLDeserializationContext, MTLDevice, MTLDeviceSPI, MTLDynamicLibrary, MTLFunction, MTLIndirectArgumentEncoder, MTLIndirectComputeCommandEncoder, MTLIndirectRenderCommandEncoder, MTLIntersectionFunctionTable, MTLLateEvalEvent, MTLLibrary, MTLPipelineLibrarySPI, MTLRasterizationRateMap, MTLRenderPipelineState, MTLResourceGroupSPI, MTLSharedEvent, MTLTexture, MTLTextureLayout, MTLVisibleFunctionTable, OS_dispatch_data;
+@protocol MTLAccelerationStructure, MTLArgumentEncoder, MTLBinaryArchive, MTLBuffer, MTLCommandQueue, MTLComputePipelineState, MTLDeadlineProfile, MTLDeserializationContext, MTLDevice, MTLDeviceSPI, MTLDynamicLibrary, MTLEvent, MTLFunction, MTLIndirectArgumentEncoder, MTLIndirectComputeCommandEncoder, MTLIndirectRenderCommandEncoder, MTLIntersectionFunctionTable, MTLLateEvalEvent, MTLLibrary, MTLPerformanceStateAssertion, MTLPipelineLibrarySPI, MTLRasterizationRateMap, MTLRenderPipelineState, MTLResourceGroupSPI, MTLSharedEvent, MTLTexture, MTLTextureLayout, MTLVisibleFunctionTable, OS_dispatch_data;
 
 @protocol MTLDeviceSPI <MTLDevice>
-+ (void)registerDevices;
+@property(readonly) _Bool requiresBFloat16Emulation;
+@property(readonly) unsigned long long maxAccelerationStructureTraversalDepth;
+@property(readonly, nonatomic) long long currentPerformanceState;
 @property(copy, nonatomic) NSDictionary *pluginData;
 @property(readonly) _Bool requiresRaytracingEmulation;
 @property(readonly) MTLGPUBVHBuilder *GPUBVHBuilder;
@@ -28,8 +30,8 @@
 @property(readonly) unsigned long long sharedMemorySize;
 @property(readonly) _Bool supportPriorityBand;
 @property(readonly) unsigned long long maxConstantBufferArguments;
+@property(readonly) unsigned long long maxAccelerationStructureLevels;
 @property(readonly) unsigned long long maxPredicatedNestingDepth;
-@property(readonly) unsigned long long maxIOCommandsInFlight;
 @property(readonly) unsigned long long maxComputeAttributes;
 @property(readonly) unsigned long long maxTextureBufferWidth;
 @property(readonly) unsigned long long maxVertexAmplificationCount;
@@ -96,7 +98,6 @@
 @property(readonly) unsigned long long doubleFPConfig;
 @property(readonly) unsigned long long singleFPConfig;
 @property(readonly) unsigned long long halfFPConfig;
-@property(readonly) MTLArchitecture *architecture;
 @property(readonly) MTLTargetDeviceArchitecture *targetDeviceArchitecture;
 @property(readonly) const struct MTLTargetDeviceArch *targetDeviceInfo;
 @property(readonly, getter=isBCTextureCompressionSupported) _Bool BCTextureCompressionSupported;
@@ -105,13 +106,16 @@
 @property(readonly) unsigned long long deviceCreationFlags;
 @property(readonly) unsigned long long bufferRobustnessSupport;
 @property(readonly, nonatomic) _Bool supportsExplicitVisibilityGroups;
+@property(readonly, nonatomic) _Bool supportsPerformanceStateAssertion;
 @property(readonly, nonatomic) _Bool supportsRayTracingICBs;
 @property(readonly, nonatomic) _Bool supportsStackOverflowErrorCode;
 @property(readonly, nonatomic) _Bool supportsCommandBufferJump;
+@property(readonly, nonatomic) _Bool supportsBfloat16Buffers;
 @property(readonly, nonatomic) _Bool supportsMeshShadersInICB;
 @property(readonly, nonatomic) _Bool supportsFunctionPointersFromMesh;
 @property(readonly, nonatomic) _Bool supportsMeshShaders;
 @property(readonly, nonatomic) _Bool supportsLossyCompression;
+@property(readonly, nonatomic) _Bool supportsAtomicUlongVoidMinMax;
 @property(readonly, nonatomic) _Bool supportsSparseDepthAttachments;
 @property(readonly, nonatomic) _Bool supportsBfloat16Format;
 @property(readonly, nonatomic) _Bool supportsSIMDShuffleAndFill;
@@ -136,8 +140,13 @@
 @property(readonly, nonatomic) _Bool supportsMirrorClampToEdgeSamplerMode;
 @property(readonly, nonatomic) _Bool supportsBlackOrWhiteSamplerBorderColors;
 @property(readonly, nonatomic) _Bool supportsShaderBarycentricCoordinates;
+@property(readonly, nonatomic) _Bool supportsRayTracingCurves;
+@property(readonly, nonatomic) _Bool supportsRayTracingGPUTableUpdateBuffers;
+@property(readonly, nonatomic) _Bool supportsRayTracingIndirectInstanceAccelerationStructureBuild;
+@property(readonly, nonatomic) _Bool supportsRayTracingMultiLevelInstancing;
 @property(readonly, nonatomic) _Bool supportsRayTracingAccelerationStructureCPUDeserialization;
 @property(readonly, nonatomic) _Bool supportsRayTracingBuffersFromTables;
+@property(readonly, nonatomic) _Bool supportsRayTracingTraversalMetrics;
 @property(readonly, nonatomic) _Bool supportsRayTracingPerPrimitiveData;
 @property(readonly, nonatomic) _Bool supportsHeapAccelerationStructureAllocation;
 @property(readonly, nonatomic) _Bool supportsRayTracingExtendedVertexFormats;
@@ -162,6 +171,7 @@
 @property(readonly, nonatomic) _Bool supportsSIMDShufflesAndBroadcast;
 @property(readonly, nonatomic) _Bool supportsShaderMinLODClamp;
 @property(readonly, nonatomic) _Bool supportsSIMDGroup;
+@property(readonly, nonatomic) _Bool supportsExtendedVertexFormats;
 @property(readonly, nonatomic) _Bool supportsUnalignedVertexFetch;
 @property(readonly, nonatomic) _Bool supportsFP32TessFactors;
 @property(readonly, nonatomic) _Bool supportsStencilFeedback;
@@ -173,6 +183,7 @@
 @property(readonly, nonatomic) _Bool supportsSeparateVisibilityAndShadingRate;
 @property(readonly, nonatomic) _Bool supportsNonSquareTileShaders;
 @property(readonly, nonatomic) _Bool supportsLinearTexture2DArray;
+@property(readonly, nonatomic) _Bool supportsDynamicAttributeStride;
 @property(readonly, nonatomic) _Bool supportsRasterOrderGroupsColorAttachment;
 @property(readonly, nonatomic) _Bool supportsRasterOrderGroups;
 @property(readonly, nonatomic) _Bool supportsRenderPassWithoutRenderTarget;
@@ -281,6 +292,9 @@
 @property(readonly, nonatomic) _Bool supportsRenderMemoryBarrier;
 @property(readonly, nonatomic) _Bool supportsComputeMemoryBarrier;
 @property(readonly, nonatomic) _Bool supportsBufferlessClientStorageTexture;
+- (_Bool)setCompilerProcessesCount:(int)arg1;
+- (struct MTLCompilerConnectionManager *)getCompilerConnectionManager:(int)arg1;
+- (id <MTLPerformanceStateAssertion>)newPerformanceStateAssertion:(long long)arg1 error:(id *)arg2;
 - (id <MTLDeadlineProfile>)newProfileWithExecutionSize:(unsigned long long)arg1;
 - (void)newRenderPipelineStateWithMeshDescriptor:(MTLMeshRenderPipelineDescriptor *)arg1 options:(unsigned long long)arg2 completionHandler:(void (^)(id <MTLRenderPipelineState>, MTLRenderPipelineReflection *, NSError *))arg3;
 - (void)newRenderPipelineStateWithMeshDescriptor:(MTLMeshRenderPipelineDescriptor *)arg1 completionHandler:(void (^)(id <MTLRenderPipelineState>, NSError *))arg2;
@@ -314,7 +328,8 @@
 - (id <MTLAccelerationStructure>)newAccelerationStructureWithSize:(unsigned long long)arg1 resourceIndex:(unsigned long long)arg2;
 - (id <MTLRasterizationRateMap>)newRasterizationRateMapWithDescriptor:(MTLRasterizationRateMapDescriptor *)arg1;
 - (_Bool)supportsRasterizationRateMapWithLayerCount:(unsigned long long)arg1;
-- (_Bool)setResourcesPurgeableState:(id *)arg1 newState:(unsigned long long)arg2 oldState:(unsigned long long *)arg3 count:(int)arg4;
+- (id <MTLSharedEvent>)newSharedEventWithOptions:(long long)arg1;
+- (id <MTLEvent>)newEventWithOptions:(long long)arg1;
 - (id <MTLSharedEvent>)newSharedEventWithMachPort:(unsigned int)arg1;
 - (id <MTLIndirectComputeCommandEncoder>)newIndirectComputeCommandEncoderWithBuffer:(id <MTLBuffer>)arg1;
 - (id <MTLIndirectRenderCommandEncoder>)newIndirectRenderCommandEncoderWithBuffer:(id <MTLBuffer>)arg1;
@@ -340,6 +355,7 @@
 - (NSString *)productName;
 - (NSString *)familyName;
 - (NSString *)vendorName;
+- (_Bool)isVendorSliceCompatibleWithDeploymentTarget:(unsigned int)arg1 platform:(unsigned int)arg2 sdkVersion:(unsigned int)arg3 compilerPluginVersion:(unsigned int)arg4;
 - (void)allowLibrariesFromOtherPlatforms;
 - (NSString *)reportLeaks;
 
@@ -362,8 +378,10 @@
 - (MTLStructType *)newStructTypeWithSerializedData:(NSObject<OS_dispatch_data> *)arg1;
 - (NSObject<OS_dispatch_data> *)serializeStructType:(MTLStructType *)arg1 version:(unsigned int)arg2;
 - (NSObject<OS_dispatch_data> *)serializeStructType:(MTLStructType *)arg1;
+- (MTLTileRenderPipelineDescriptor *)newTileRenderPipelineDescriptorWithSerializedData:(NSObject<OS_dispatch_data> *)arg1 deserializationContext:(id <MTLDeserializationContext>)arg2;
 - (MTLComputePipelineDescriptor *)newComputePipelineDescriptorWithSerializedData:(NSObject<OS_dispatch_data> *)arg1 deserializationContext:(id <MTLDeserializationContext>)arg2;
 - (MTLRenderPipelineDescriptor *)newRenderPipelineDescriptorWithSerializedData:(NSObject<OS_dispatch_data> *)arg1 deserializationContext:(id <MTLDeserializationContext>)arg2;
+- (NSObject<OS_dispatch_data> *)serializeTileRenderPipelineDescriptor:(MTLTileRenderPipelineDescriptor *)arg1;
 - (NSObject<OS_dispatch_data> *)serializeComputePipelineDescriptor:(MTLComputePipelineDescriptor *)arg1;
 - (NSObject<OS_dispatch_data> *)serializeRenderPipelineDescriptor:(MTLRenderPipelineDescriptor *)arg1;
 - (NSData *)endCollectingPipelineDescriptors;

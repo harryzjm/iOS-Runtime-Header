@@ -16,19 +16,22 @@ struct CC_SHA256state_st {
     unsigned int wbuf[16];
 };
 
-struct _HKLazyLoader<bool> {
-    _Bool _value;
-    _Bool _hasLoaded;
-    struct os_unfair_lock_s _loadLock;
-};
-
 struct _NSRange {
     unsigned long long _field1;
     unsigned long long _field2;
 };
 
+struct __SecKey {
+    struct __CFRuntimeBase {
+        unsigned long long _field1;
+        _Atomic unsigned long long _field2;
+    } _field1;
+    struct __SecKeyDescriptor *_field2;
+    void *_field3;
+};
+
 struct __wrap_iter<const float *> {
-    float *__i;
+    float *__i_;
 };
 
 struct os_unfair_lock_s {
@@ -57,6 +60,6 @@ typedef struct {
 
 // Template types
 typedef struct __wrap_iter<const float *> {
-    float *__i;
-} __wrap_iter_9551a0eb;
+    float *__i_;
+} __wrap_iter_589031b6;
 

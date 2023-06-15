@@ -10,6 +10,6 @@
 
 @protocol _HKAuthorizationPresentationController <NSObject>
 - (void)cancelPresentation;
-- (void)presentWithPresentationRequests:(NSArray *)arg1 authorizationRequestRecord:(HKAuthorizationRequestRecord *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
+- (void)presentWithPresentationRequests:(NSArray *)arg1 authorizationRequestRecord:(HKAuthorizationRequestRecord *)arg2 authorizationViewControllerPresenter:(id)arg3 completion:(void (^)(_Bool, NSError *))arg4;
 @end
 

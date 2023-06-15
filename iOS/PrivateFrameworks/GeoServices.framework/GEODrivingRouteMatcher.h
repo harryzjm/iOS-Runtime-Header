@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
 - (double)_courseWeightForLocation:(id)arg1 accuracyType:(long long)arg2;
 - (double)_maxMatchDistance:(double)arg1 routeCoordinate:(struct PolylineCoordinate)arg2 previousRouteMatch:(id)arg3 timeSinceTunnel:(double)arg4;
 - (id)_candidateForSegment:(id)arg1 location:(id)arg2 previousRouteMatch:(id)arg3;
-- (id)initWithRoute:(id)arg1;
+- (id)initWithRoute:(id)arg1 auditToken:(id)arg2;
 
 @end
 

@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface _UIActivityIndicatorViewArtworkCacheKey : NSObject <NSCopying>
+@interface _UIActivityIndicatorViewArtworkCacheKey : NSObject
 {
     long long _style;
     double _width;

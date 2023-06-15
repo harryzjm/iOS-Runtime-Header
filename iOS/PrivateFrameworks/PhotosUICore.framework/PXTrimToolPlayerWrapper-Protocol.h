@@ -23,7 +23,7 @@
 - (void)play;
 - (void)finishSeeking;
 - (void)invalidateComposition;
-- (void)requestPlayerItemWithCompletion:(void (^)(AVPlayerItem *))arg1;
+- (void)requestAssetWithCompletion:(void (^)(AVAsset *, AVVideoComposition *))arg1;
 - (void)applyTrimTimeRange:(CDStruct_3c1748cc)arg1;
 - (void)seekToTime:(CDStruct_198678f7)arg1 untrimmed:(_Bool)arg2 exact:(_Bool)arg3 forceSeek:(_Bool)arg4;
 - (void)seekToTime:(CDStruct_198678f7)arg1 untrimmed:(_Bool)arg2 exact:(_Bool)arg3;

@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
     _Bool _isChannelBanner;
     UIView *_imageView;
+    double _highestSubviewY;
     unsigned long long _configuredBlurInterfaceStyle;
     UIVisualEffectView *_blurEffectView;
     CAGradientLayer *_gradientLayer;
@@ -23,6 +24,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) CAGradientLayer *gradientLayer; // @synthesize gradientLayer=_gradientLayer;
 @property(retain, nonatomic) UIVisualEffectView *blurEffectView; // @synthesize blurEffectView=_blurEffectView;
 @property(nonatomic) unsigned long long configuredBlurInterfaceStyle; // @synthesize configuredBlurInterfaceStyle=_configuredBlurInterfaceStyle;
+@property(nonatomic) double highestSubviewY; // @synthesize highestSubviewY=_highestSubviewY;
 @property(retain, nonatomic) UIView *imageView; // @synthesize imageView=_imageView;
 @property(nonatomic) struct CGSize imageSize; // @synthesize imageSize=_imageSize;
 @property(nonatomic) _Bool isChannelBanner; // @synthesize isChannelBanner=_isChannelBanner;

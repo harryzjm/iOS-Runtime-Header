@@ -5,6 +5,7 @@
 //
 
 @interface (null) (_GroupActivities_UIKit)
-- (long long)adaptivePresentationStyleForPresentationController:(id)arg1 traitCollection:(id)arg2;
+- (void)didMoveToView:(id)arg1;
+- (void)willMoveToView:(id)arg1;
 @end
 

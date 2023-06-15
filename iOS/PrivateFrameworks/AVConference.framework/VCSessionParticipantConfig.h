@@ -44,10 +44,16 @@ __attribute__((visibility("hidden")))
     _Bool _isOneToOneModeEnabled;
     VCNetworkFeedbackController *_networkFeedbackController;
     VCAudioCaptionsCoordinator *_captionsCoordinator;
+    _Bool _isUplinkRetransmissionEnabled;
+    _Bool _screenControlEnabled;
+    _Bool _outOfProcessCodecsEnabled;
     NSObject<OS_nw_activity> *_nwActivity;
 }
 
 @property(nonatomic) _Bool isServerRTxEnabled; // @synthesize isServerRTxEnabled=_isServerRTxEnabled;
+@property(nonatomic) _Bool outOfProcessCodecsEnabled; // @synthesize outOfProcessCodecsEnabled=_outOfProcessCodecsEnabled;
+@property(nonatomic) _Bool screenControlEnabled; // @synthesize screenControlEnabled=_screenControlEnabled;
+@property(nonatomic) _Bool isUplinkRetransmissionEnabled; // @synthesize isUplinkRetransmissionEnabled=_isUplinkRetransmissionEnabled;
 @property(retain, nonatomic) VCAudioCaptionsCoordinator *captionsCoordinator; // @synthesize captionsCoordinator=_captionsCoordinator;
 @property(retain, nonatomic) VCNetworkFeedbackController *networkFeedbackController; // @synthesize networkFeedbackController=_networkFeedbackController;
 @property(nonatomic) _Bool isOneToOneModeEnabled; // @synthesize isOneToOneModeEnabled=_isOneToOneModeEnabled;

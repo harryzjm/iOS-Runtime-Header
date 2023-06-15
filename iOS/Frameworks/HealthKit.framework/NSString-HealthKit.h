@@ -24,6 +24,8 @@
 - (_Bool)hk_isCaseInsensitiveSubstringInString:(id)arg1;
 - (id)hk_stringByAppendingKeyPathComponent:(id)arg1;
 - (id)hk_stringByUnescapingJSONCharactersForDisplay;
+- (id)hk_stringByReplacingSpacesWithString:(id)arg1;
+- (id)hk_stringByNormalizingSpaces;
 - (id)hk_stringByRemovingCharactersInSet:(id)arg1;
 - (id)hk_trimWhitespaceAndNewlines;
 - (id)hk_stripLeadingTrailingWhitespace;

@@ -19,6 +19,6 @@
 - (void)reset;
 - (void)setAsset:(CSAsset *)arg1;
 - (void)startSmartSiriVolume;
-- (id)initWithSamplingRate:(float)arg1 asset:(CSAsset *)arg2;
+- (id)initWithSamplingRate:(float)arg1;
 @end
 

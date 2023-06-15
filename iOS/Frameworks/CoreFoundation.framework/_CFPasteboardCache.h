@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
     int changeCount;
 }
 
-@property(readonly) const struct __CFArray *orderedEntries; // @synthesize orderedEntries;
+@property(readonly) struct __CFArray *orderedEntries; // @synthesize orderedEntries;
 @property int changeCount; // @synthesize changeCount;
 @property(readonly) int generation; // @synthesize generation;
 - (void)bumpChangeCount;

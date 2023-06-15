@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class UIColor, _UIImageContentRendition;
+@class UIColor, _UIImageContentRBSymbolConfiguration, _UIImageContentRendition;
 
 __attribute__((visibility("hidden")))
 @interface _UIImageContentLayout : NSObject
@@ -24,19 +24,24 @@ __attribute__((visibility("hidden")))
     double _contentsScaleFactor;
     double _baselineOffsetFromTop;
     double _baselineOffsetFromBottom;
+    struct CGSize _contentsSize;
+    struct CGSize _renderSize;
     struct UIEdgeInsets _contentInsets;
     struct CGAffineTransform _contentsTransform;
 }
 
 + (id)layoutForSource:(id)arg1 inTarget:(id)arg2 withSize:(struct CGSize)arg3;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) struct CGSize renderSize; // @synthesize renderSize=_renderSize;
 @property(readonly, nonatomic) double baselineOffsetFromBottom; // @synthesize baselineOffsetFromBottom=_baselineOffsetFromBottom;
 @property(readonly, nonatomic) struct UIEdgeInsets contentInsets; // @synthesize contentInsets=_contentInsets;
+@property(readonly, nonatomic) struct CGSize contentsSize; // @synthesize contentsSize=_contentsSize;
 @property(readonly, nonatomic) double contentsScaleFactor; // @synthesize contentsScaleFactor=_contentsScaleFactor;
 @property(readonly, nonatomic) struct CGAffineTransform contentsTransform; // @synthesize contentsTransform=_contentsTransform;
 - (id)description;
 - (void)drawInContext:(struct CGContext *)arg1;
 - (_Bool)hasContents;
+@property(readonly, nonatomic) _UIImageContentRBSymbolConfiguration *rbSymbolConfiguration;
 @property(readonly, nonatomic) UIColor *contentsMultiplyColor;
 @property(readonly, nonatomic) id contents;
 

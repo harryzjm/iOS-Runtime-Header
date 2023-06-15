@@ -7,7 +7,7 @@
 #import <PhotosUICore/NSObject-Protocol.h>
 
 @class NSUndoManager, PXActionMenuController, PXActionPerformer, PXAssetCollectionActionPerformer, PXPhotoDetailsActionMenuController, UIViewController;
-@protocol PXDisplayAssetCollection;
+@protocol PXDisplayAssetCollection, PXPresentationEnvironment;
 
 @protocol PXPhotosDetailsActionMenuDelegate <NSObject>
 - (NSUndoManager *)undoManagerForActionMenuController:(PXActionMenuController *)arg1;
@@ -16,6 +16,7 @@
 
 @optional
 - (void)actionMenu:(PXPhotoDetailsActionMenuController *)arg1 assetCollectionActionPerformer:(PXAssetCollectionActionPerformer *)arg2 playMovieForAssetCollection:(id <PXDisplayAssetCollection>)arg3;
+- (id <PXPresentationEnvironment>)presentationEnvironmentForActionPerformer:(PXActionPerformer *)arg1;
 - (void)actionMenu:(PXActionMenuController *)arg1 actionPerformer:(PXActionPerformer *)arg2 didChangeState:(unsigned long long)arg3;
 @end
 

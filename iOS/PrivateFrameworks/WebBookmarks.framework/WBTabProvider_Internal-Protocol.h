@@ -10,7 +10,8 @@
 @class NSArray, NSString, WBMutableTab, WBMutableTabGroup, WBTabGroup;
 
 @protocol WBTabProvider_Internal <NSObject, WBTabProvider>
-@property(readonly, copy, nonatomic) NSArray *mutableTabGroups;
+@property(readonly, copy, nonatomic) NSArray *allMutableNamedTabGroupsUnsorted;
+@property(readonly, copy, nonatomic) NSArray *mutableNamedTabGroupsInDefaultProfile;
 - (NSArray *)mutableTabsForTabGroup:(WBTabGroup *)arg1;
 - (WBMutableTab *)mutableTabWithUUID:(NSString *)arg1;
 - (WBMutableTabGroup *)mutableTabGroupWithUUID:(NSString *)arg1;

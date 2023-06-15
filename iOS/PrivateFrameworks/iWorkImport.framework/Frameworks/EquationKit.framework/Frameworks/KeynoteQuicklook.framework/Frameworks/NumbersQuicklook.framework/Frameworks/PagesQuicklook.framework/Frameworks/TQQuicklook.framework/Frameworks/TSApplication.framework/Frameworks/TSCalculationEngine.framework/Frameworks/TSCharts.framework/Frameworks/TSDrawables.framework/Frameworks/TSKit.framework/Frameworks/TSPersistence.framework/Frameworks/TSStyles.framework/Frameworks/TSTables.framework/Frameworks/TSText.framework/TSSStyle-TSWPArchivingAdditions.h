@@ -15,7 +15,7 @@
 + (void)upgradeFontColorToIncludeCharacterFillInPropertyMap:(id)arg1 forOwningTSPObject:(id)arg2;
 + (id)validateFontInPropertyMap:(id)arg1 parentStyle:(id)arg2 checkedFontMap:(id)arg3;
 + (id)validateFontName:(id)arg1 size:(double)arg2 bold:(_Bool)arg3 italic:(_Bool)arg4 checkedFontMap:(id)arg5 newFontName:(id *)arg6 newBold:(_Bool *)arg7 newItalic:(_Bool *)arg8;
-+ (const struct __CTFont *)pCreateFontWithName:(id)arg1 fontSize:(double)arg2;
++ (struct __CTFont *)pCreateFontWithName:(id)arg1 fontSize:(double)arg2;
 + (id)pReplacementForMissingFontName:(id)arg1 outBold:(out int *)arg2 outItalic:(out int *)arg3 outQuiet:(out _Bool *)arg4;
 - (void)saveParagraphStylePropertiesToArchive:(void *)arg1 archiver:(id)arg2;
 - (void)saveCharacterStylePropertiesToArchive:(void *)arg1 archiver:(id)arg2 archivingForCommand:(_Bool)arg3;

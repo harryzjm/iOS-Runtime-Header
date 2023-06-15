@@ -10,7 +10,8 @@
 
 @protocol DEDClientProtocol <NSObject>
 - (void)didLoadTextDataForExtensions:(NSSet *)arg1 localization:(NSString *)arg2 session:(NSString *)arg3;
-- (void)uploadProgress:(unsigned long long)arg1 total:(unsigned long long)arg2 session:(NSString *)arg3;
+- (void)compressionProgress:(unsigned long long)arg1 total:(unsigned long long)arg2 sessionID:(NSString *)arg3;
+- (void)uploadProgress:(unsigned long long)arg1 total:(unsigned long long)arg2 sessionID:(NSString *)arg3;
 - (void)didAdoptFilesWithError:(NSError *)arg1 forSession:(NSString *)arg2;
 - (void)didGetState:(long long)arg1 info:(NSDictionary *)arg2 sessionID:(NSString *)arg3;
 - (void)hasCollected:(NSArray *)arg1 isCollecting:(NSArray *)arg2 withIdentifiers:(NSArray *)arg3 inSession:(NSString *)arg4;

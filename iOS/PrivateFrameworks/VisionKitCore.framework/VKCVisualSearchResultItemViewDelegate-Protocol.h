@@ -6,13 +6,14 @@
 
 #import <VisionKitCore/NSObject-Protocol.h>
 
-@class NSArray, NSData, NSString, VKCVisualSearchResultItemView;
+@class NSArray, NSData, NSString, RVItem, VKCVisualSearchResultItemView;
 
 @protocol VKCVisualSearchResultItemViewDelegate <NSObject>
+- (void)addMetadataToVSFeedbackItem:(RVItem *)arg1;
 - (void)triggerTapToRadar;
 - (struct CGRect)contentsRect;
 - (_Bool)visualSearchItemView:(VKCVisualSearchResultItemView *)arg1 shouldBeginAtPoint:(struct CGPoint)arg2;
-- (void)submitVisualSearchUserFeedbackForReportIdentifier:(NSString *)arg1 payload:(NSData *)arg2;
+- (void)submitVisualSearchUserFeedbackForReportIdentifier:(NSString *)arg1 userFeedbackPayload:(NSData *)arg2 sfReportData:(NSData *)arg3;
 - (void)generateVisualSearchResultForItems:(NSArray *)arg1 queryID:(unsigned long long)arg2 completionHandler:(void (^)(_Bool, VKCVisualSearchResult *, NSError *))arg3;
 - (void)visualSearchItemViewDidDismissController:(VKCVisualSearchResultItemView *)arg1;
 - (void)visualSearchItemView:(VKCVisualSearchResultItemView *)arg1 didTapVisualSearchIndicatorWithNormalizedBoundingBox:(struct CGRect)arg2;

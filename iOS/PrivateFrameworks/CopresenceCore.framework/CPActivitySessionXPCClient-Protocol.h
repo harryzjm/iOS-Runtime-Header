@@ -4,10 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSError, TUConversationActivity;
+@class NSData, NSError, TUConversationActivity, TUSandboxExtendedURL;
 @protocol CPDataCryptor;
 
 @protocol CPActivitySessionXPCClient
+- (void)receivedResourceAtURL:(TUSandboxExtendedURL *)arg1 withMetadata:(NSData *)arg2 fromParticipantWithIdentifier:(unsigned long long)arg3;
 - (void)setActivityWithActivity:(TUConversationActivity *)arg1;
 - (void)setDataCryptor:(id <CPDataCryptor>)arg1;
 - (void)setStateWithState:(long long)arg1 error:(NSError *)arg2;

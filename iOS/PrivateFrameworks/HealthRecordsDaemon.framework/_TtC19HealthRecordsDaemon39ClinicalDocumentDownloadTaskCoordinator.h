@@ -10,6 +10,7 @@
 
 @interface _TtC19HealthRecordsDaemon39ClinicalDocumentDownloadTaskCoordinator : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *logPrefix;
     MISSING_TYPE *documentStore;
     MISSING_TYPE *accountStore;
 }

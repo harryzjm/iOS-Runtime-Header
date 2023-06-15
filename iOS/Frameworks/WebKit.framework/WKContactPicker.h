@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
     struct WeakObjCPtr<WKWebView> _webView;
     struct WeakObjCPtr<id<WKContactPickerDelegate>> _delegate;
     struct Vector<WebCore::ContactProperty, 0UL, WTF::CrashOnOverflow, 16UL, WTF::FastMalloc> _properties;
-    struct CompletionHandler<void (std::optional<WTF::Vector<WebCore::ContactInfo, 0, WTF::CrashOnOverflow, 16>>&&)> _completionHandler;
+    struct CompletionHandler<void (std::optional<WTF::Vector<WebCore::ContactInfo>>&&)> _completionHandler;
     struct RetainPtr<WKCNContactPickerDelegate> _contactPickerDelegate;
     struct RetainPtr<CNContactPickerViewController> _contactPickerViewController;
 }

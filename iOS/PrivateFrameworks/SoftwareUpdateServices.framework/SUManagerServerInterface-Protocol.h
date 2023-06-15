@@ -4,13 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSDate, NSDictionary, NSString, NSUUID, SUAnalyticsEvent, SUDescriptor, SUDownloadMetadata, SUDownloadOptions, SUInstallOptions, SUKeybagOptions, SUPurgeOptions, SURollbackOptions, SUScanOptions;
+@class NSArray, NSDate, NSDictionary, NSString, NSUUID, SUAnalyticsEvent, SUDescriptor, SUDownloadMetadata, SUDownloadOptions, SUInstallOptions, SUKeybagOptions, SUPurgeOptions, SURollbackDescriptor, SURollbackOptions, SURollbackSuggestionInfo, SUScanOptions;
 
 @protocol SUManagerServerInterface
+- (void)isAnyClientInUserInteraction:(void (^)(_Bool, NSError *))arg1;
+- (void)networkMonitorDetectOverrides;
 - (void)submitSUAnalyticsEventsWithName:(NSString *)arg1;
 - (void)submitAllSUAnalyticsEvents;
 - (void)submitSUAnalyticsEvent:(SUAnalyticsEvent *)arg1;
 - (void)recordSUAnalyticsEvent:(SUAnalyticsEvent *)arg1;
+- (void)writeKeepAliveFile:(void (^)(_Bool, NSError *))arg1;
 - (void)setExclusiveControl:(_Bool)arg1;
 - (void)installServerConfiguration;
 - (void)registerCSInstallPredicatesOnDate:(NSDate *)arg1;
@@ -27,6 +30,7 @@
 - (void)softwareUpdatePathRestriction:(void (^)(unsigned long long, NSError *))arg1;
 - (void)slaVersion:(void (^)(NSNumber *, NSError *))arg1;
 - (void)setClientType:(int)arg1 withResult:(void (^)(_Bool, NSError *))arg2;
+- (void)userAskedToDeferInstall;
 - (void)installUpdateWithOptions:(NSArray *)arg1 withResult:(void (^)(_Bool, NSError *))arg2;
 - (void)installUpdateWithInstallOptions:(SUInstallOptions *)arg1 withResult:(void (^)(_Bool, NSError *))arg2;
 - (void)installUpdate:(void (^)(_Bool, NSError *))arg1;
@@ -41,6 +45,8 @@
 - (void)consentToAutoInstallOperation:(NSUUID *)arg1 withResult:(void (^)(_Bool, NSError *))arg2;
 - (void)cancelAutoInstallOperation:(NSUUID *)arg1 withResult:(void (^)(_Bool, NSError *))arg2;
 - (void)currentAutoInstallOperation:(_Bool)arg1 withResult:(void (^)(_SUAutoInstallOperationModel *, NSError *))arg2;
+- (void)securityResponseRollbackSuggested:(SURollbackSuggestionInfo *)arg1 withResult:(void (^)(_Bool, NSError *))arg2;
+- (void)setLastRollbackDescriptor:(SURollbackDescriptor *)arg1 withResult:(void (^)(_Bool, NSError *))arg2;
 - (void)scheduleRollbackRebootForLater:(void (^)(_Bool, NSError *))arg1;
 - (void)isRollingBack:(void (^)(_Bool, SURollbackDescriptor *, NSError *))arg1;
 - (void)previousRollback:(SURollbackOptions *)arg1 withResult:(void (^)(SURollbackDescriptor *, NSError *))arg2;

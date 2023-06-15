@@ -12,6 +12,7 @@
 @property(copy) NSArray *visibleMailboxObjectIDs;
 @property _Bool isRunningTests;
 @property _Bool isForeground;
+- (void)exitDaemon;
 - (void)setStateForDemoMode:(void (^)(_Bool, NSError *))arg1;
 - (NSProgress *)giveBoostWithCompletionBlock:(void (^)(void))arg1;
 @end

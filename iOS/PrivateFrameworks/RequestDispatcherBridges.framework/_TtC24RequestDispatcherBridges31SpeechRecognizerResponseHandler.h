@@ -21,8 +21,14 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)init;
+- (void)localSpeechRecognizerClient:(id)arg1 requestAttentionAssetDownload:(_Bool)arg2;
+- (void)localSpeechRecognizerClient:(id)arg1 receivedTRPCandidatePackage:(id)arg2;
+- (void)localSpeechRecognizerClient:(id)arg1 receivedTRPDetected:(id)arg2;
+- (void)localSpeechRecognizerClient:(id)arg1 receivedContinuityEndDetected:(id)arg2;
+- (void)localSpeechRecognizerClient:(id)arg1 receivedVoiceCommandCandidateWithRequestId:(id)arg2 speechPackage:(id)arg3 metadata:(id)arg4;
 - (void)localSpeechRecognizerClient:(id)arg1 receivedFinalResultCandidateWithRequestId:(id)arg2 speechPackage:(id)arg3;
 - (void)localSpeechRecognizerClient:(id)arg1 receivedFinalResultWithRequestId:(id)arg2 speechPackage:(id)arg3 metadata:(id)arg4;
+- (void)localSpeechRecognizerClient:(id)arg1 receivedPartialResultWithRequestId:(id)arg2 language:(id)arg3 speechPackage:(id)arg4 metadata:(id)arg5;
 - (void)localSpeechRecognizerClient:(id)arg1 receivedPartialResultWithRequestId:(id)arg2 language:(id)arg3 tokens:(id)arg4 metadata:(id)arg5;
 - (void)localSpeechRecognizerClient:(id)arg1 receivedVoiceIdScoreCard:(id)arg2;
 - (void)localSpeechRecognizerClient:(id)arg1 didAcceptedEagerResultWithRequestId:(id)arg2 rcId:(unsigned long long)arg3 mitigationSignal:(_Bool)arg4 featuresToLog:(id)arg5;

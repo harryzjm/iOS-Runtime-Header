@@ -10,6 +10,7 @@
 
 @interface IMBalloonPlugin (CKAppMenuItem)
 + (id)__ck_appIconFromPayloadDictionary:(id)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
++ (id)__ck_placeholderImageForInterfaceStyle:(long long)arg1;
 - (id)__ck_imageForTraitCollection:(id)arg1;
 @property(readonly, nonatomic) NSString *__ck_displayName;
 @property(readonly, nonatomic) id __ck_identifier;
@@ -20,18 +21,18 @@
 - (id)__ck_statusJPEGImageDataForTransportWithCompressionFactor:(double)arg1;
 - (id)__ck_statusImageForTransport;
 - (id)__ck_breadcrumbImage;
+- (void)__ck_generateStatusImage:(CDUnknownBlockType)arg1;
 - (id)__ck_statusImage;
 - (id)__ck_badgeImage;
 - (id)__ck_browserImageName:(_Bool *)arg1;
-- (id)__ck_browserImageGenerateSynchronously:(_Bool)arg1 interfaceStyle:(long long)arg2;
+- (id)__ck_browserImageGenerateSynchronously:(_Bool)arg1 interfaceStyle:(long long)arg2 allowPlaceholder:(_Bool)arg3;
 - (id)__ck_browserImageForInterfaceStyle:(long long)arg1;
 - (void)__ck_prefetchBrowserImageForInterfaceStyle:(long long)arg1;
-- (id)__ckImageForInterfaceStyle:(long long)arg1 generateSynchronously:(_Bool)arg2;
+- (id)__ckImageForInterfaceStyle:(long long)arg1 generateSynchronously:(_Bool)arg2 allowPlaceholder:(_Bool)arg3;
 - (id)__ck_generateIconForInterfaceStyle:(long long)arg1 notify:(_Bool)arg2;
 - (id)__ck_iconServicesIconForInterfaceStyle:(long long)arg1;
 - (id)__ck_generateAssetCatalogImageForInterfaceStyle:(long long)arg1;
 - (id)__ck_cachedAssetCatalogImageForInterfaceStyle:(long long)arg1;
-- (id)__ck_placeholderImageForInterfaceStyle:(long long)arg1;
 - (id)__ck_iconServicesDescriptor;
 - (id)__ck_iconServicesBundleIdentifier;
 - (_Bool)__ck_preferIconServices;

@@ -10,11 +10,11 @@
 @protocol MTLDevice;
 
 @protocol MTLCommandEncoder <NSObject>
+@property(copy) NSString *label;
+@property(readonly) id <MTLDevice> device;
 - (void)popDebugGroup;
 - (void)pushDebugGroup:(NSString *)arg1;
 - (void)insertDebugSignpost:(NSString *)arg1;
 - (void)endEncoding;
-@property(nonatomic, copy) NSString *label;
-@property(nonatomic, readonly) id <MTLDevice> device;
 @end
 

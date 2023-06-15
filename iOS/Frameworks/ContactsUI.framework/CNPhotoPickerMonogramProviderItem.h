@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSString *monogramText; // @synthesize monogramText=_monogramText;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
+- (id)generateFullscreenImageData;
 - (id)updatedProviderItemWithText:(id)arg1;
 - (id)contactImageForMetadataStore;
 - (id)createColorVariantItemsExcludingSelf;
@@ -40,6 +41,8 @@ __attribute__((visibility("hidden")))
 - (void)updateVisualIdentity:(id)arg1;
 - (void)updateWithMonogramData:(id)arg1;
 - (void)renderMonogramData;
+- (id)generateMonogramData;
+- (id)generateMonogramImage;
 - (id)generateThumbnailImageDataIfNeeded;
 - (id)thumbnailImageData;
 - (id)imageData;

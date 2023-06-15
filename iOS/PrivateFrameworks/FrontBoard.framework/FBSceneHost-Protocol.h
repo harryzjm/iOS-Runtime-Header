@@ -13,7 +13,7 @@
 @property(readonly, copy, nonatomic) FBSSceneSpecification *specification;
 @property(readonly, copy, nonatomic) FBSSceneDefinition *definition;
 @property(readonly, copy, nonatomic) FBSSceneIdentityToken *identityToken;
-- (void)client:(id <FBSceneClient>)arg1 didReceiveActions:(NSSet *)arg2;
+- (void)client:(id <FBSceneClient>)arg1 didReceiveActions:(NSSet *)arg2 forExtension:(Class)arg3;
 - (void)client:(id <FBSceneClient>)arg1 didUpdateClientSettings:(FBSSceneClientSettings *)arg2 withDiff:(FBSSceneClientSettingsDiff *)arg3 transitionContext:(FBSSceneTransitionContext *)arg4;
 @end
 

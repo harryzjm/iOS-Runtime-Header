@@ -20,9 +20,12 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *hintsCollectionViewModel;
     MISSING_TYPE *topResultsCollectionViewModel;
     MISSING_TYPE *resultCategoryIds;
-    MISSING_TYPE *loadingView;
     MISSING_TYPE *isShowingLoader;
+    MISSING_TYPE *loadingViewManager;
     MISSING_TYPE *$__lazy_storage_$_noContentView;
+    MISSING_TYPE *hintsPagePerformanceReporter;
+    MISSING_TYPE *searchResultsPagePerformanceReporter;
+    MISSING_TYPE *topResultsPagePerformanceReporter;
 }
 
 - (void).cxx_destruct;

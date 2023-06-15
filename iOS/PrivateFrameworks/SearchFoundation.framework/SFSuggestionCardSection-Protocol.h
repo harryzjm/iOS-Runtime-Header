@@ -6,25 +6,19 @@
 
 #import <SearchFoundation/SFCardSection-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString, SFColor, SFImage, SFRichText;
+@class NSData, NSDictionary, NSString, SFFormattedText, SFImage, SFRichText;
 
 @protocol SFSuggestionCardSection <SFCardSection>
 @property(readonly, nonatomic) NSData *jsonData;
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property(retain, nonatomic) SFFormattedText *trailingBottomText;
+@property(retain, nonatomic) SFFormattedText *trailingMiddleText;
 @property(retain, nonatomic) SFImage *thumbnail;
 @property(retain, nonatomic) SFRichText *detailText;
 @property(nonatomic) int suggestionType;
 @property(copy, nonatomic) NSString *scopedSearchSectionBundleIdentifier;
 @property(nonatomic) _Bool isContact;
 @property(retain, nonatomic) SFRichText *suggestionText;
-@property(retain, nonatomic) SFColor *backgroundColor;
-@property(nonatomic) int separatorStyle;
 @property(copy, nonatomic) NSString *type;
-@property(nonatomic) _Bool hasBottomPadding;
-@property(nonatomic) _Bool hasTopPadding;
-@property(nonatomic) _Bool canBeHidden;
-@property(copy, nonatomic) NSString *punchoutPickerDismissText;
-@property(copy, nonatomic) NSString *punchoutPickerTitle;
-@property(copy, nonatomic) NSArray *punchoutOptions;
 @end
 

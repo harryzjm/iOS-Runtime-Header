@@ -25,6 +25,7 @@
 - (void)drawInContext:(struct CGContext *)arg1;
 - (void)p_drawCellWarningBadgeInContext:(struct CGContext *)arg1;
 - (void)p_drawCellCommentBadgeInContext:(struct CGContext *)arg1;
+- (double)p_commentBrightnessFactor;
 - (void)p_drawCellErrorIndicatorInContext:(struct CGContext *)arg1;
 
 @end

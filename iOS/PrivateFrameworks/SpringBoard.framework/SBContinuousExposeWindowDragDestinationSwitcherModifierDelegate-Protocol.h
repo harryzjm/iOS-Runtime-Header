@@ -9,6 +9,6 @@
 @class SBContinuousExposeWindowDragDestinationSwitcherModifier;
 
 @protocol SBContinuousExposeWindowDragDestinationSwitcherModifierDelegate <NSObject>
-- (struct CGPoint)preferredCenterForSelectedItemInDestinationModifier:(SBContinuousExposeWindowDragDestinationSwitcherModifier *)arg1;
+- (struct CGPoint)preferredCenterForSelectedItemInDestinationModifier:(SBContinuousExposeWindowDragDestinationSwitcherModifier *)arg1 clippingToInitialStageArea:(_Bool)arg2;
 @end
 

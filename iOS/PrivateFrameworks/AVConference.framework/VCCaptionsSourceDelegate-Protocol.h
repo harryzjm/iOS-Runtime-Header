@@ -9,6 +9,7 @@
 @class NSError, VCCaptionsTranscription;
 
 @protocol VCCaptionsSourceDelegate <NSObject>
+- (void)streamToken:(long long)arg1 didDetectGibberish:(_Bool)arg2;
 - (void)streamToken:(long long)arg1 didUpdateCaptions:(VCCaptionsTranscription *)arg2;
 - (void)streamToken:(long long)arg1 didStopCaptioningWithReason:(unsigned char)arg2;
 - (void)streamToken:(long long)arg1 didStartCaptioningWithReason:(unsigned char)arg2;

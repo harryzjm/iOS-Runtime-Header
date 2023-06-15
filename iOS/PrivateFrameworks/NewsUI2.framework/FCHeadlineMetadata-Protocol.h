@@ -9,11 +9,11 @@
 @class NSDate, NSString;
 
 @protocol FCHeadlineMetadata <NSObject>
-@property(nonatomic, readonly) NSString *storyType;
-@property(nonatomic, readonly) NSDate *displayDate;
+@property(readonly, nonatomic) NSString *storyType;
+@property(readonly, nonatomic) NSDate *displayDate;
 
 @optional
-@property(nonatomic, readonly) NSString *shortExcerpt;
-@property(nonatomic, readonly) NSString *title;
+@property(readonly, nonatomic) NSString *shortExcerpt;
+@property(readonly, nonatomic) NSString *title;
 @end
 

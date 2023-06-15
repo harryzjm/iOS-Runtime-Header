@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMutableDictionary, NSString, VCMediaNegotiatorLocalConfiguration, VCMediaNegotiatorResults, VCMediaNegotiatorResultsAudio, VCMediaNegotiatorResultsFaceTimeSettings, VCMediaNegotiatorResultsMoments, VCMediaNegotiatorResultsVideo;
+@class NSArray, NSMutableDictionary, NSString, VCMediaNegotiatorLocalConfiguration, VCMediaNegotiatorResults, VCMediaNegotiatorResultsAudio, VCMediaNegotiatorResultsFaceTimeSettings, VCMediaNegotiatorResultsMediaRecorder, VCMediaNegotiatorResultsVideo;
 @protocol VCMediaNegotiatorProtocol;
 
 __attribute__((visibility("hidden")))
@@ -26,9 +26,10 @@ __attribute__((visibility("hidden")))
 + (id)mediaBlobForVersion:(int)arg1 negotiationData:(id)arg2;
 @property(readonly, nonatomic) VCMediaNegotiatorLocalConfiguration *localSettings; // @synthesize localSettings=_localSettings;
 - (unsigned int)remoteMaxBandwidthForOperatingMode:(int)arg1 connectionType:(int)arg2;
+- (id)negotiatedResultsForGroupID:(unsigned int)arg1;
 @property(readonly, nonatomic) NSArray *negotiatedStreamGroups;
 @property(readonly, nonatomic) VCMediaNegotiatorResultsFaceTimeSettings *negotiatedFaceTimeSettings;
-@property(readonly, nonatomic) VCMediaNegotiatorResultsMoments *negotiatedMomentsSettings;
+@property(readonly, nonatomic) VCMediaNegotiatorResultsMediaRecorder *negotiatedMediaRecorderSettings;
 @property(readonly, nonatomic) VCMediaNegotiatorResultsVideo *negotiatedScreenSettings;
 @property(readonly, nonatomic) VCMediaNegotiatorResultsVideo *negotiatedVideoSettings;
 @property(readonly, nonatomic) VCMediaNegotiatorResultsAudio *negotiatedAudioSettings;

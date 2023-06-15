@@ -22,6 +22,7 @@
 - (void)takePotentialDrop:(_DUIPotentialDrop *)arg1;
 - (void)sawDragEndEvent;
 - (void)dirtyItems:(NSArray *)arg1;
+- (void)connect;
 - (id)init;
 - (id)initWithSessionIdentifier:(unsigned int)arg1 systemPolicy:(_Bool)arg2;
 @end

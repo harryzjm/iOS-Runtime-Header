@@ -13,14 +13,12 @@ __attribute__((visibility("hidden")))
 {
     long long _idiom;
     long long _metrics;
-    _Bool _wantsLetterPress;
     _Bool _inPopover;
 }
 
 + (id)visualStyleForIdiom:(long long)arg1;
 @property(readonly, nonatomic) long long idiom; // @synthesize idiom=_idiom;
 @property(nonatomic) _Bool inPopover; // @synthesize inPopover=_inPopover;
-@property(nonatomic) _Bool wantsLetterPress; // @synthesize wantsLetterPress=_wantsLetterPress;
 @property(nonatomic) long long metrics; // @synthesize metrics=_metrics;
 @property(readonly, nonatomic) double _legacyButtonImagePadding;
 - (id)_legacyButtonFontForStyle:(long long)arg1;
@@ -56,7 +54,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) double rightImageMargin;
 @property(readonly, nonatomic) double rightTitleMargin;
 @property(readonly, nonatomic) double leftBackImageMargin;
-- (double)leftBackTitleMarginLetterpressPadding;
 @property(readonly, nonatomic) double leftBackTitleMargin;
 @property(readonly, nonatomic) double leftTitleMargin;
 @property(readonly, nonatomic) double buttonFontSize;

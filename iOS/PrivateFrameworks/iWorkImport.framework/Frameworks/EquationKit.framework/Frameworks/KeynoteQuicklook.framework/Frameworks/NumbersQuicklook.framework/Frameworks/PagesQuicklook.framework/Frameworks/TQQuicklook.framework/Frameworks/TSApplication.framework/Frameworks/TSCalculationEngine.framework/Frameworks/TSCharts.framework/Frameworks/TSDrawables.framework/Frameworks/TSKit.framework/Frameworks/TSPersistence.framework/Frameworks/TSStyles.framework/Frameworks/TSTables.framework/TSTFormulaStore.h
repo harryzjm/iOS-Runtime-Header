@@ -38,7 +38,9 @@
 - (id)formulaObjectAtIndex:(unsigned long long)arg1;
 - (void)registerAllFormulaToCalculationEngine;
 - (void)clearFormulaAtIndex:(unsigned long long)arg1;
+- (void)clearFormulaAtIndex:(unsigned long long)arg1 formulaReplacer:(id)arg2;
 - (void)setFormulaObject:(id)arg1 atIndex:(unsigned long long)arg2;
+- (void)setFormulaObject:(id)arg1 atIndex:(unsigned long long)arg2 formulaReplacer:(id)arg3;
 - (unsigned long long)appendIndexedFormula:(id)arg1;
 - (void)rollbackToMark:(unsigned long long)arg1;
 - (unsigned long long)markForRollback;

@@ -6,18 +6,19 @@
 
 #import <MediaRemote/NSObject-Protocol.h>
 
-@class MRAVEndpoint, MRAVOutputDevice, MRAVRoutingDiscoverySessionConfiguration, NSArray, NSData, NSError, NSString;
+@class MRAVEndpoint, MRAVOutputDevice, MRAVRoutingDiscoverySessionConfiguration, MRDeviceInfo, NSArray, NSData, NSError, NSString;
 
 @protocol MRAVDistantExternalDeviceClientProtocol <NSObject>
 - (void)discoveryOutputDevicesChanged:(NSArray *)arg1 forConfiguration:(MRAVRoutingDiscoverySessionConfiguration *)arg2;
-- (void)hostedExternalDeviceEndpoint:(MRAVEndpoint *)arg1 didRemoveOutputDevice:(MRAVOutputDevice *)arg2;
-- (void)hostedExternalDeviceEndpoint:(MRAVEndpoint *)arg1 didChangeOutputDevice:(MRAVOutputDevice *)arg2;
-- (void)hostedExternalDeviceEndpoint:(MRAVEndpoint *)arg1 didAddOutputDevice:(MRAVOutputDevice *)arg2;
-- (void)hostedExternalDeviceEndpoint:(MRAVEndpoint *)arg1 volumeDidChange:(float)arg2 forOutputDevice:(MRAVOutputDevice *)arg3;
-- (void)hostedExternalDeviceEndpoint:(MRAVEndpoint *)arg1 volumeCapabilitiesDidChange:(unsigned int)arg2 forOutputDevice:(MRAVOutputDevice *)arg3;
+- (void)hostedExternalDeviceDidRemoveOutputDevice:(MRAVOutputDevice *)arg1;
+- (void)hostedExternalDeviceDidChangeOutputDevice:(MRAVOutputDevice *)arg1;
+- (void)hostedExternalDeviceDidAddOutputDevice:(MRAVOutputDevice *)arg1;
+- (void)hostedExternalDeviceIsMutedDidChange:(_Bool)arg1 forOutputDevice:(MRAVOutputDevice *)arg2;
+- (void)hostedExternalDeviceVolumeDidChange:(float)arg1 forOutputDevice:(MRAVOutputDevice *)arg2;
+- (void)hostedExternalDeviceVolumeCapabilitiesDidChange:(unsigned int)arg1 forOutputDevice:(MRAVOutputDevice *)arg2;
 - (void)hostedExternalDeviceEndpointDidChange:(MRAVEndpoint *)arg1;
 - (void)hostedExternalDeviceDidReceiveCustomData:(NSData *)arg1 withName:(NSString *)arg2;
-- (void)hostedExternalDeviceNameDidChange:(NSString *)arg1;
+- (void)hostedExternalDeviceDeviceInfoDidChange:(MRDeviceInfo *)arg1;
 - (void)hostedExternalDeviceConnectionStateDidChange:(unsigned int)arg1 withError:(NSError *)arg2;
 @end
 

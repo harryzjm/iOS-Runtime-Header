@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <CoreML/MLModeling-Protocol.h>
 #import <CoreML/MLWritable-Protocol.h>
 
-@class MLModel, MLModelConfiguration, MLUpdateProgressHandlers, MLVersionInfo, NSDictionary, NSObject;
+@class MLModelConfiguration, MLUpdateProgressHandlers, MLVersionInfo, NSDictionary, NSObject;
 @protocol MLBatchProvider, MLUpdatable, OS_dispatch_queue;
 
-@protocol MLUpdatable <MLWritable>
-+ (MLModel<MLUpdatable> *)loadModelFromCompiledArchive:(void *)arg1 modelVersionInfo:(MLVersionInfo *)arg2 compilerVersionInfo:(MLVersionInfo *)arg3 configuration:(MLModelConfiguration *)arg4 error:(id *)arg5;
+@protocol MLUpdatable <MLModeling, MLWritable>
++ (id <MLUpdatable>)loadModelFromCompiledArchive:(void *)arg1 modelVersionInfo:(MLVersionInfo *)arg2 compilerVersionInfo:(MLVersionInfo *)arg3 configuration:(MLModelConfiguration *)arg4 error:(id *)arg5;
 - (void)cancelUpdate;
 - (void)resumeUpdate;
 - (void)resumeUpdateWithParameters:(NSDictionary *)arg1;

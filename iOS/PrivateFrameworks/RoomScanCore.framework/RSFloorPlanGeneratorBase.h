@@ -18,6 +18,7 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) RSFloorPlanRender *render; // @synthesize render=_render;
 - (void)clear;
+- (void)setUniformHeightPolygonEnable:(_Bool)arg1;
 - (void)setStandardizationEnable:(_Bool)arg1;
 - (void)setChairBeautificationEnable:(_Bool)arg1;
 - (void)setObjectBeautificationEnable:(_Bool)arg1;

@@ -49,6 +49,8 @@
 - (id)requestOperationClasses;
 - (id)zoneIDsToLock;
 - (_Bool)allowsAnonymousAccount;
+- (void)fillOutRequestProperties:(id)arg1;
+- (id)equivalencyProperties;
 @property(readonly, nonatomic) NSDictionary *resultsByRecordZoneID;
 @property(readonly, nonatomic) NSDictionary *zoneErrorsByZoneID;
 - (id)initWithOperation:(id)arg1 recordZoneIDs:(id)arg2 configurationsByRecordZoneID:(id)arg3;

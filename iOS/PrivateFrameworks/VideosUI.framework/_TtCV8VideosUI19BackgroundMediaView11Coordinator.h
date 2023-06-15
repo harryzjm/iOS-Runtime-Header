@@ -13,7 +13,9 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *parentController;
     MISSING_TYPE *backgroundPlaybackModel;
+    MISSING_TYPE *backgroundMediaImageModel;
     MISSING_TYPE *playbackObservers;
+    MISSING_TYPE *mediaImageObservers;
 }
 
 - (void).cxx_destruct;

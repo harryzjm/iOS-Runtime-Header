@@ -7,6 +7,7 @@
 @class INIntent;
 
 @protocol WFWidgetConfigurationServiceHostProtocol
+- (void)preferredCardSizeDidUpdate:(struct CGSize)arg1;
 - (void)intentWasConfigured:(INIntent *)arg1;
 @end
 

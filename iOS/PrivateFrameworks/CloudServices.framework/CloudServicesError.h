@@ -16,7 +16,6 @@
 + (id)errorWithCode:(long long)arg1 URL:(id)arg2 format:(id)arg3;
 + (id)errorWithCode:(long long)arg1 error:(id)arg2 format:(id)arg3;
 + (id)errorWithCode:(long long)arg1 format:(id)arg2;
-+ (id)sanitizedError:(id)arg1;
 + (long long)codeForErrno:(long long)arg1;
 + (long long)codeForNSError:(id)arg1;
 

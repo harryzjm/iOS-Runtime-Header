@@ -10,28 +10,43 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
+struct AUProcessingBlock_DSPGraph;
+
+struct AudioBuffer {
+    unsigned int _field1;
+    unsigned int _field2;
+    void *_field3;
+};
+
+struct AudioBufferList {
+    unsigned int _field1;
+    struct AudioBuffer _field2[1];
+};
+
 struct AudioStreamBasicDescription {
-    double mSampleRate;
-    unsigned int mFormatID;
-    unsigned int mFormatFlags;
-    unsigned int mBytesPerPacket;
-    unsigned int mFramesPerPacket;
-    unsigned int mBytesPerFrame;
-    unsigned int mChannelsPerFrame;
-    unsigned int mBitsPerChannel;
-    unsigned int mReserved;
+    double _field1;
+    unsigned int _field2;
+    unsigned int _field3;
+    unsigned int _field4;
+    unsigned int _field5;
+    unsigned int _field6;
+    unsigned int _field7;
+    unsigned int _field8;
+    unsigned int _field9;
 };
 
 struct Box;
 
 struct FormatAndBlockSize {
-    struct AudioStreamBasicDescription mFormat;
+    struct StreamDescription mFormat;
     unsigned int mBlockSize;
 };
 
 struct Graph;
 
 struct Interpreter;
+
+struct LogMelTransformer;
 
 struct ProcessingNode;
 
@@ -70,6 +85,18 @@ struct SNLogMelParameters {
     int normalizationStrategy;
 };
 
+struct StreamDescription {
+    double mSampleRate;
+    unsigned int mFormatID;
+    unsigned int mFormatFlags;
+    unsigned int mBytesPerPacket;
+    unsigned int mFramesPerPacket;
+    unsigned int mBytesPerFrame;
+    unsigned int mChannelsPerFrame;
+    unsigned int mBitsPerChannel;
+    unsigned int mReserved;
+};
+
 struct function<void (std::shared_ptr<DSPGraph::Graph>, unsigned long)> {
     struct __value_func<void (std::shared_ptr<DSPGraph::Graph>, unsigned long)> {
         struct type __buf_;
@@ -93,16 +120,6 @@ struct list<SoundAnalysis::FormatMatchingNode, std::allocator<SoundAnalysis::For
         void *__next_;
     } __end_;
     struct __compressed_pair<unsigned long, std::allocator<std::__list_node<SoundAnalysis::FormatMatchingNode, void *>>> {
-        unsigned long long __value_;
-    } __size_alloc_;
-};
-
-struct list<SoundAnalysis::MD5Hash, std::allocator<SoundAnalysis::MD5Hash>> {
-    struct __list_node_base<SoundAnalysis::MD5Hash, void *> {
-        void *__prev_;
-        void *__next_;
-    } __end_;
-    struct __compressed_pair<unsigned long, std::allocator<std::__list_node<SoundAnalysis::MD5Hash, void *>>> {
         unsigned long long __value_;
     } __size_alloc_;
 };
@@ -153,6 +170,12 @@ struct type {
     unsigned char __lx[24];
 };
 
+struct unique_ptr<AUProcessingBlock_DSPGraph, std::default_delete<AUProcessingBlock_DSPGraph>> {
+    struct __compressed_pair<AUProcessingBlock_DSPGraph *, std::default_delete<AUProcessingBlock_DSPGraph>> {
+        struct AUProcessingBlock_DSPGraph *__value_;
+    } __ptr_;
+};
+
 struct unique_ptr<DSPGraph::Graph, std::default_delete<DSPGraph::Graph>> {
     struct __compressed_pair<DSPGraph::Graph *, std::default_delete<DSPGraph::Graph>> {
         struct Graph *__value_;
@@ -165,32 +188,10 @@ struct unique_ptr<DSPGraph::Interpreter, std::default_delete<DSPGraph::Interpret
     } __ptr_;
 };
 
-struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<SoundAnalysis::MD5Hash, id<MLFeatureProvider>>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<SoundAnalysis::MD5Hash, id<MLFeatureProvider>>, void *>*>*>>> {
-    struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<SoundAnalysis::MD5Hash, id<MLFeatureProvider>>, void *>*>**, std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<SoundAnalysis::MD5Hash, id<MLFeatureProvider>>, void *>*>*>>> {
-        void **__value_;
-        struct __bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<SoundAnalysis::MD5Hash, id<MLFeatureProvider>>, void *>*>*>> {
-            struct __compressed_pair<unsigned long, std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<SoundAnalysis::MD5Hash, id<MLFeatureProvider>>, void *>*>*>> {
-                unsigned long long __value_;
-            } __data_;
-        } __value_;
+struct unique_ptr<LogMelTransformer, std::default_delete<LogMelTransformer>> {
+    struct __compressed_pair<LogMelTransformer *, std::default_delete<LogMelTransformer>> {
+        struct LogMelTransformer *__value_;
     } __ptr_;
-};
-
-struct unordered_map<SoundAnalysis::MD5Hash, id<MLFeatureProvider>, std::hash<SoundAnalysis::MD5Hash>, std::equal_to<SoundAnalysis::MD5Hash>, std::allocator<std::pair<const SoundAnalysis::MD5Hash, id<MLFeatureProvider>>>> {
-    struct __hash_table<std::__hash_value_type<SoundAnalysis::MD5Hash, id<MLFeatureProvider>>, std::__unordered_map_hasher<SoundAnalysis::MD5Hash, std::__hash_value_type<SoundAnalysis::MD5Hash, id<MLFeatureProvider>>, std::hash<SoundAnalysis::MD5Hash>, std::equal_to<SoundAnalysis::MD5Hash>, true>, std::__unordered_map_equal<SoundAnalysis::MD5Hash, std::__hash_value_type<SoundAnalysis::MD5Hash, id<MLFeatureProvider>>, std::equal_to<SoundAnalysis::MD5Hash>, std::hash<SoundAnalysis::MD5Hash>, true>, std::allocator<std::__hash_value_type<SoundAnalysis::MD5Hash, id<MLFeatureProvider>>>> {
-        struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<SoundAnalysis::MD5Hash, id<MLFeatureProvider>>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<SoundAnalysis::MD5Hash, id<MLFeatureProvider>>, void *>*>*>>> __bucket_list_;
-        struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<SoundAnalysis::MD5Hash, id<MLFeatureProvider>>, void *>*>, std::allocator<std::__hash_node<std::__hash_value_type<SoundAnalysis::MD5Hash, id<MLFeatureProvider>>, void *>>> {
-            struct __hash_node_base<std::__hash_node<std::__hash_value_type<SoundAnalysis::MD5Hash, id<MLFeatureProvider>>, void *>*> {
-                void *__next_;
-            } __value_;
-        } __p1_;
-        struct __compressed_pair<unsigned long, std::__unordered_map_hasher<SoundAnalysis::MD5Hash, std::__hash_value_type<SoundAnalysis::MD5Hash, id<MLFeatureProvider>>, std::hash<SoundAnalysis::MD5Hash>, std::equal_to<SoundAnalysis::MD5Hash>, true>> {
-            unsigned long long __value_;
-        } __p2_;
-        struct __compressed_pair<float, std::__unordered_map_equal<SoundAnalysis::MD5Hash, std::__hash_value_type<SoundAnalysis::MD5Hash, id<MLFeatureProvider>>, std::equal_to<SoundAnalysis::MD5Hash>, std::hash<SoundAnalysis::MD5Hash>, true>> {
-            float __value_;
-        } __p3_;
-    } __table_;
 };
 
 struct vector<float, std::allocator<float>> {
@@ -204,6 +205,13 @@ struct vector<float, std::allocator<float>> {
 #pragma mark Typedef'd Structures
 
 typedef struct {
+    unsigned long long _field1;
+    id *_field2;
+    unsigned long long *_field3;
+    unsigned long long _field4[5];
+} CDStruct_70511ce9;
+
+typedef struct {
     long long value;
     int timescale;
     unsigned int flags;
@@ -214,6 +222,11 @@ typedef struct {
     CDStruct_1b6d18a9 start;
     CDStruct_1b6d18a9 duration;
 } CDStruct_e83c9415;
+
+typedef struct {
+    CDStruct_e83c9415 _field1;
+    CDStruct_e83c9415 _field2;
+} CDStruct_3800d160;
 
 // Template types
 typedef struct shared_ptr<DSPGraph::Graph> {

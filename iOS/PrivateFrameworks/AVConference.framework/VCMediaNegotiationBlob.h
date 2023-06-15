@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface VCMediaNegotiationBlob : PBCodable
 {
     unsigned long long _ntpTime;
+    unsigned int _accessNetworkType;
     VCMediaNegotiationBlobAudioSettings *_audioSettings;
     NSMutableArray *_bandwidthSettings;
     NSString *_basebandCodec;
@@ -30,6 +31,7 @@ __attribute__((visibility("hidden")))
     _Bool _allowsContentsChangeWithAspectPreservation;
     struct {
         unsigned int ntpTime:1;
+        unsigned int accessNetworkType:1;
         unsigned int basebandCodecSampleRate:1;
         unsigned int blobVersion:1;
         unsigned int mediaControlInfoVersion:1;
@@ -66,6 +68,8 @@ __attribute__((visibility("hidden")))
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasAccessNetworkType;
+@property(nonatomic) unsigned int accessNetworkType; // @synthesize accessNetworkType=_accessNetworkType;
 @property(readonly, nonatomic) _Bool hasFaceTimeSettings;
 @property(nonatomic) _Bool hasMediaControlInfoVersion;
 @property(nonatomic) unsigned int mediaControlInfoVersion; // @synthesize mediaControlInfoVersion=_mediaControlInfoVersion;

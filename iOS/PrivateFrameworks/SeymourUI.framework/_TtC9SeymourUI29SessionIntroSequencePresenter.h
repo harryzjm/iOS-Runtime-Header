@@ -24,7 +24,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *sessionRouteCategory;
     MISSING_TYPE *audioSessionCategory;
     MISSING_TYPE *audioSessionMode;
-    MISSING_TYPE *watchConnectionState;
+    MISSING_TYPE *workoutDeviceConnection;
     MISSING_TYPE *platform;
     MISSING_TYPE *catalogWorkout;
 }

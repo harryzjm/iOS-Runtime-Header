@@ -41,6 +41,7 @@
     _Bool _allowParagraphMetrics;
     id <TPPageControllerDelegate> _delegate;
     TPBackgroundPaginationController *_backgroundPaginationController;
+    long long _withPageLayoutRecursionCount;
 }
 
 + (void)disownPaginatedPageControllerForDelegate:(id)arg1;
@@ -49,6 +50,7 @@
 + (id)paginatedPageControllerForDelegate:(id)arg1;
 + (void)initialize;
 - (void).cxx_destruct;
+@property(nonatomic) long long withPageLayoutRecursionCount; // @synthesize withPageLayoutRecursionCount=_withPageLayoutRecursionCount;
 @property(nonatomic) _Bool allowParagraphMetrics; // @synthesize allowParagraphMetrics=_allowParagraphMetrics;
 @property(readonly, nonatomic) TPBackgroundPaginationController *backgroundPaginationController; // @synthesize backgroundPaginationController=_backgroundPaginationController;
 @property(readonly, nonatomic) TSWPLayoutManager *bodyLayoutManager; // @synthesize bodyLayoutManager=_bodyLayoutManager;

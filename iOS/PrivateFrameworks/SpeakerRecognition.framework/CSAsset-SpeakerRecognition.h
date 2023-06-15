@@ -9,6 +9,7 @@
 @class NSString;
 
 @interface CSAsset (SpeakerRecognition)
+@property(readonly, nonatomic) _Bool useTDTIEnrollment;
 @property(readonly, nonatomic) _Bool useSpeakerRecognitionAsset;
 @property(readonly, nonatomic) _Bool containsMultiUserThresholds;
 @property(readonly, nonatomic) _Bool satImplicitTrainingEnabled;
@@ -26,11 +27,16 @@
 @property(readonly, nonatomic) float satImplicitProfileThreshold;
 @property(readonly, nonatomic) float psrCombinationWeight;
 @property(readonly, nonatomic) long long multiUserDeltaScoreThreshold;
+- (long long)multiUserDeltaScoreThresholdForPhId:(unsigned long long)arg1;
 @property(readonly, nonatomic) long long multiUserConfidentScoreThreshold;
+- (long long)multiUserConfidentScoreThresholdForPhId:(unsigned long long)arg1;
 @property(readonly, nonatomic) long long multiUserHighScoreThreshold;
+- (long long)multiUserHighScoreThresholdForPhId:(unsigned long long)arg1;
 @property(readonly, nonatomic) long long multiUserLowScoreThreshold;
+- (long long)multiUserLowScoreThresholdForPhId:(unsigned long long)arg1;
 @property(readonly, nonatomic) float satScoreThreshold;
 - (float)satScoreThresholdForPhId:(unsigned long long)arg1;
+- (id)getPhraseConfig:(unsigned long long)arg1;
 @property(readonly, nonatomic) _Bool containsSpeakerRecognitionCategory;
 @end
 

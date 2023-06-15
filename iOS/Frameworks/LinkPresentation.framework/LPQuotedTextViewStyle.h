@@ -24,7 +24,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIFont *longPullQuoteFont; // @synthesize longPullQuoteFont=_longPullQuoteFont;
 - (id)adjustedForString:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithPlatform:(long long)arg1 fontScalingFactor:(double)arg2;
+- (id)initWithPlatform:(long long)arg1 sizeClass:(unsigned long long)arg2 fontScalingFactor:(double)arg3;
 
 @end
 

@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDate, UIViewController;
+@class EKEventDetailTitleCell, NSArray, NSDate, UIView, UIViewController;
 
 @protocol EKEventDetailTitleCellDelegate
+- (void)titleCell:(EKEventDetailTitleCell *)arg1 requestPresentShareSheetWithActivityItems:(NSArray *)arg2 withPopoverSourceView:(UIView *)arg3;
+- (_Bool)titleCellShouldPresentShareSheet:(EKEventDetailTitleCell *)arg1;
 - (void)refreshForHeightChange;
 - (_Bool)showsDetectedConferenceItem;
 - (UIViewController *)owningViewController;

@@ -6,13 +6,19 @@
 
 #import <objc/NSObject.h>
 
+@class NSMutableDictionary;
+
 __attribute__((visibility("hidden")))
 @interface VUICloudClient : NSObject
 {
+    NSMutableDictionary *_artworkMap;
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableDictionary *artworkMap; // @synthesize artworkMap=_artworkMap;
 - (void)loadArtworkURLsForPurchaseHistoryIDs:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)init;
 
 @end
 

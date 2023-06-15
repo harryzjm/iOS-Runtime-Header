@@ -13,6 +13,7 @@
 - (id)hf_prettyFullDescription;
 - (id)hf_prettyExpensiveDescription;
 - (id)hf_prettyDescription;
+- (void)hf_fanOutAtIndex:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (id)hf_firstMostCommonObject;
 - (unsigned long long)computeHashFromContents;
 

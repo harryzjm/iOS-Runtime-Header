@@ -23,11 +23,12 @@ __attribute__((visibility("hidden")))
 - (id)modelPlayEventForItem:(id)arg1 inSection:(id)arg2;
 - (void)loadPlaybackContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (_Bool)supportsAutoPlayForItem:(id)arg1 inSection:(id)arg2;
-@property(readonly, nonatomic) _Bool containsTransportableContent;
+- (_Bool)containsTransportableContentWithReason:(id *)arg1;
 @property(readonly, nonatomic) _Bool containsLiveStream;
 - (id)init;
 
 // Remaining properties
+@property(readonly, nonatomic) _Bool containsRadioContent;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;

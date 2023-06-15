@@ -7,6 +7,7 @@
 #import <Foundation/NSBundle.h>
 
 @interface NSBundle (APSupportedClients)
++ (long long)product;
 + (_Bool)isNewsOrStocks;
 @end
 

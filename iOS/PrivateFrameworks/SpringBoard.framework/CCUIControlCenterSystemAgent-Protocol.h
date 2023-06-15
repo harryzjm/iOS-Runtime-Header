@@ -6,12 +6,16 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
+@class NSString;
+@protocol BSInvalidatable;
+
 @protocol CCUIControlCenterSystemAgent <NSObject>
 - (_Bool)isUILocked;
 - (_Bool)isOrientationLocked;
 - (void)unlockOrientation;
 - (void)lockOrientation;
-- (void)setRingerMuted:(_Bool)arg1;
+- (id <BSInvalidatable>)observeRingerMutedWithBlock:(void (^)(_Bool))arg1;
+- (void)setRingerMuted:(_Bool)arg1 reason:(NSString *)arg2;
 - (_Bool)isRingerMuted;
 @end
 

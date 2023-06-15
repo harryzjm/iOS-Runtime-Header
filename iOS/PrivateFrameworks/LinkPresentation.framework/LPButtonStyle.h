@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class LPPadding, LPPointUnit, UIColor, UIFont;
+@class LPPadding, LPPointUnit, UIColor, UIFont, UIImageSymbolConfiguration;
 
 __attribute__((visibility("hidden")))
 @interface LPButtonStyle : NSObject
@@ -14,13 +14,17 @@ __attribute__((visibility("hidden")))
     _Bool _ignoresInvertColors;
     _Bool _enableUserInteractionForDecorativeButton;
     _Bool _showsChevronForSingleAction;
+    _Bool _useSystemButtonAppearance;
+    _Bool _useSegmentedControl;
     UIColor *_foregroundColor;
     UIColor *_backgroundColor;
     UIColor *_menuBackgroundColor;
     UIFont *_font;
     UIFont *_menuFont;
+    UIImageSymbolConfiguration *_symbolConfiguration;
     LPPadding *_padding;
     LPPadding *_margin;
+    LPPointUnit *_imagePadding;
     LPPointUnit *_menuMinimumWidth;
     LPPointUnit *_minimumWidth;
     LPPointUnit *_minimumHeight;
@@ -31,6 +35,8 @@ __attribute__((visibility("hidden")))
 
 + (id)systemPillButtonStyleForPlatform:(long long)arg1;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool useSegmentedControl; // @synthesize useSegmentedControl=_useSegmentedControl;
+@property(nonatomic) _Bool useSystemButtonAppearance; // @synthesize useSystemButtonAppearance=_useSystemButtonAppearance;
 @property(nonatomic) _Bool showsChevronForSingleAction; // @synthesize showsChevronForSingleAction=_showsChevronForSingleAction;
 @property(nonatomic) _Bool enableUserInteractionForDecorativeButton; // @synthesize enableUserInteractionForDecorativeButton=_enableUserInteractionForDecorativeButton;
 @property(nonatomic) _Bool ignoresInvertColors; // @synthesize ignoresInvertColors=_ignoresInvertColors;
@@ -40,8 +46,10 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) LPPointUnit *minimumHeight; // @synthesize minimumHeight=_minimumHeight;
 @property(retain, nonatomic) LPPointUnit *minimumWidth; // @synthesize minimumWidth=_minimumWidth;
 @property(retain, nonatomic) LPPointUnit *menuMinimumWidth; // @synthesize menuMinimumWidth=_menuMinimumWidth;
+@property(retain, nonatomic) LPPointUnit *imagePadding; // @synthesize imagePadding=_imagePadding;
 @property(retain, nonatomic) LPPadding *margin; // @synthesize margin=_margin;
 @property(retain, nonatomic) LPPadding *padding; // @synthesize padding=_padding;
+@property(retain, nonatomic) UIImageSymbolConfiguration *symbolConfiguration; // @synthesize symbolConfiguration=_symbolConfiguration;
 @property(retain, nonatomic) UIFont *menuFont; // @synthesize menuFont=_menuFont;
 @property(retain, nonatomic) UIFont *font; // @synthesize font=_font;
 @property(retain, nonatomic) UIColor *menuBackgroundColor; // @synthesize menuBackgroundColor=_menuBackgroundColor;

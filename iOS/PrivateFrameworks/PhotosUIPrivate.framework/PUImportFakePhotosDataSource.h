@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 - (void)prefetchApproximateAssetsAtIndexPaths:(id)arg1 reverseOrder:(_Bool)arg2;
 - (long long)numberOfItemsInSection:(long long)arg1;
 - (long long)numberOfSections;
-- (id)initWithImportDataSource:(id)arg1;
+- (id)initWithImportDataSource:(id)arg1 photoLibrary:(id)arg2;
 
 @end
 

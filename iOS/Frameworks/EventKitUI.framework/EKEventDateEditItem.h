@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 {
     NSDateComponents *_startComponents;
     NSDateComponents *_endComponents;
+    _Bool _timedEventEndedAtMidnight;
     _Bool _allDay;
     NSTimeZone *_startTimeZone;
     NSTimeZone *_endTimeZone;
@@ -77,7 +78,8 @@ __attribute__((visibility("hidden")))
 - (void)_setEndTimeZone:(id)arg1;
 - (void)_setStartTimeZone:(id)arg1;
 - (void)_validateTimezones;
-- (void)_setAllDay:(_Bool)arg1;
+- (void)_adjustEndDateIfNeededAfterTogglingAllDay;
+- (void)_setAllDay:(_Bool)arg1 adjustAlarms:(_Bool)arg2;
 - (void)_setEndDate:(id)arg1;
 - (void)_setStartDate:(id)arg1;
 - (void)timeZoneViewControllerDidCancel:(id)arg1;
@@ -113,6 +115,7 @@ __attribute__((visibility("hidden")))
 - (long long)_rowForSubitem:(long long)arg1;
 - (_Bool)isInline;
 - (_Bool)forceRefreshLocationItemOnSave;
+- (_Bool)forceRefreshRecurrenceItemOnSave;
 - (_Bool)forceRefreshInviteesItemOnSave;
 - (_Bool)requiresReconfigurationOnSave;
 - (_Bool)prefersTargettedTableReloadOnSave;

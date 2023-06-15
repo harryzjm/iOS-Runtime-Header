@@ -71,6 +71,7 @@
 - (id)description;
 @property(readonly, copy) NSString *internalSDKName;
 @property(readonly, copy) NSString *sdkName;
+- (id)mappedOperatingSystemVersionForPlatformFamilyName:(id)arg1 version:(id)arg2 reverse:(_Bool)arg3;
 - (id)mappedOperatingSystemVersionForPlatformFamilyName:(id)arg1 version:(id)arg2;
 - (id)mappedOperatingSystemVersionForPlatformFamily:(id)arg1 version:(id)arg2;
 @property(readonly) DVTSDK *defaultSDKForPlatformInstallation;

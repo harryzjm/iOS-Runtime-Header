@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 @class UIColor;
 
 __attribute__((visibility("hidden")))
-@interface _UILabelConfigurationInternal : NSObject <NSCopying>
+@interface _UILabelConfigurationInternal : NSObject
 {
-    double _screenScale;
     double _lineSpacing;
     UIColor *_disabledTextColor;
     struct {
@@ -33,7 +30,6 @@ __attribute__((visibility("hidden")))
         unsigned int hasCustomized_usesSimpleTextEffects:1;
         unsigned int hasCustomized_cuiCatalog:1;
         unsigned int hasCustomized_cuiStyleEffectConfiguration:1;
-        unsigned int hasCustomized_screenScale:1;
         unsigned int hasCustomized_lineSpacing:1;
         unsigned int hasCustomized_hyphenationFactorIgnoredIfURLsDetected:1;
         unsigned int hasCustomized_baselineAdjustment:1;
@@ -42,6 +38,7 @@ __attribute__((visibility("hidden")))
         unsigned int hasCustomized_disabledTextColor:1;
     } _configurationFlags;
     _Bool __hasResolvedLabelTextAlignmentMirrored;
+    double __screenScale;
 }
 
 + (_Bool)supportsSecureCoding;

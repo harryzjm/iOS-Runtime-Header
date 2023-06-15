@@ -11,6 +11,7 @@
 @interface _TtC15SeymourServices27PrivacyPreferenceDataSource : _TtCs12_SwiftObject
 {
     MISSING_TYPE *persistenceStore;
+    MISSING_TYPE *_forceNeedsNoticePrivacyAcknowledgement;
 }
 
 @end

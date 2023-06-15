@@ -4,12 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSTextAttachment, PKAttachmentView;
+@class NSArray, NSTextAttachment, PKAttachmentView, UIView;
 
 @protocol PKTextAttachmentDrawingViewProviderView
 - (struct CGRect)drawingTextAttachmentBounds;
 - (PKAttachmentView *)topLevelAttachmentView;
 - (NSArray *)tiledViewAttachmentViews;
 - (id)initWithAttachment:(NSTextAttachment *)arg1 drawingClass:(Class)arg2 inserted:(_Bool)arg3;
+
+@optional
+- (struct CGRect)drawingTextAttachmentBoundsForContainerView:(UIView *)arg1;
 @end
 

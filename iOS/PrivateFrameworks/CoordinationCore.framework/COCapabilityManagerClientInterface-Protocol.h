@@ -6,9 +6,9 @@
 
 #import <CoordinationCore/NSObject-Protocol.h>
 
-@class NSString;
+@class COCluster, NSString;
 
 @protocol COCapabilityManagerClientInterface <NSObject>
-- (void)availabilityChanged:(_Bool)arg1 ofCapability:(NSString *)arg2 inCluster:(NSString *)arg3;
+- (void)availabilityChanged:(_Bool)arg1 ofCapability:(NSString *)arg2 inCluster:(COCluster *)arg3;
 @end
 

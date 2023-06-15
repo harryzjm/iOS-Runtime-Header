@@ -9,6 +9,7 @@
 @class HMDRemoteEventRouterClient, HMFMessageDestination, NSSet, NSUUID;
 
 @protocol HMDRemoteEventRouterClientDataSource <NSObject>
+- (void)discoverPrimaryResidentForEventRouterClient:(HMDRemoteEventRouterClient *)arg1;
 - (NSSet *)client:(HMDRemoteEventRouterClient *)arg1 forwardingTopicsForTopics:(NSSet *)arg2;
 - (_Bool)routerClientShouldRestrictMessagingToLocalOnly:(HMDRemoteEventRouterClient *)arg1;
 - (_Bool)isNetworkAvailable;

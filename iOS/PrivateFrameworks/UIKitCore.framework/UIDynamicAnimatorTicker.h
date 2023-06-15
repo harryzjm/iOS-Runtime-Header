@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property __weak UIDynamicAnimator *animator; // @synthesize animator=_animator;
+- (void)_uiUpdateSequenceTick:(double)arg1;
 - (void)_displayLinkTick:(id)arg1;
 
 @end

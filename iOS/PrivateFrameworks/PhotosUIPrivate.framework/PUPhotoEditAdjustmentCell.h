@@ -22,6 +22,8 @@ __attribute__((visibility("hidden")))
 - (void)setIsUserModifying:(_Bool)arg1;
 - (void)setEnabled:(_Bool)arg1;
 - (void)setSelected:(_Bool)arg1;
+- (void)reloadImage;
+- (void)setImageIsColor:(_Bool)arg1;
 - (void)setImageName:(id)arg1;
 - (void)_setupEventHandler;
 - (id)initWithCoder:(id)arg1;

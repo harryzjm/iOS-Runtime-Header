@@ -47,6 +47,7 @@
 - (id)hk_underlyingErrorWithDomain:(id)arg1;
 - (_Bool)hk_isErrorInDomain:(id)arg1 code:(long long)arg2;
 - (_Bool)hk_isHFDUnsupportedError;
+- (_Bool)hk_isOntologyConceptNotFoundError;
 - (_Bool)hk_isXPCConnectionInterruptedError;
 - (_Bool)hk_isXPCConnectionError;
 - (_Bool)hk_isCocoaFileExistsError;

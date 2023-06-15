@@ -17,7 +17,10 @@
 @property(copy, nonatomic) NSArray *serverUtterances;
 @property(copy, nonatomic) SRUIFSpeechRecognitionHypothesis *speechRecognitionHypothesis;
 @property(nonatomic) __weak id <SiriSharedUICompactConversationViewDelegate> delegate;
+- (void)setIsInAmbientInteractivity:(_Bool)arg1;
+- (void)setIsInAmbient:(_Bool)arg1;
 - (SiriSharedUIStandardView<SiriSharedUIStackableContent><SiriSharedUIStackableContentActionOffering> *)hostingView;
+- (void)snippetContentDidUpdateForHint;
 - (void)snippetContentDidUpdate;
 - (_Bool)transitionToExpandablePlatterStyle:(long long)arg1;
 - (void)animateAppearanceIfNeeded;

@@ -10,12 +10,13 @@
 @class UIButton, UIView;
 
 @protocol SVVideoAdProviding <SVVideoProviding, SVVideoAdEventTracker>
+@property(readonly, nonatomic) double prerollReadyToPlayTimeout;
+@property(readonly, nonatomic) _Bool hasAction;
+@property(readonly, nonatomic) unsigned long long skipThreshold;
 - (void)presentAction;
-@property(nonatomic, readonly) _Bool hasAction;
-@property(nonatomic, readonly) unsigned long long skipThreshold;
 
 @optional
-@property(nonatomic, readonly) UIButton *privacyMarker;
-@property(nonatomic, readonly) UIView *metricsView;
+@property(readonly, nonatomic) UIButton *privacyMarker;
+@property(readonly, nonatomic) UIView *metricsView;
 @end
 

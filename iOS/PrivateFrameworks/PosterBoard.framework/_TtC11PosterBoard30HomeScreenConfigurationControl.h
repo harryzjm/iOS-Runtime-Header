@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIControl.h>
+#import <UIKitCore/UIControl.h>
 
 @class MISSING_TYPE, UIView;
 
@@ -14,13 +14,15 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *previewContentView;
     MISSING_TYPE *title;
     MISSING_TYPE *showsSymbolWhenSelected;
+    MISSING_TYPE *maximumHorizontalTitleOutset;
     MISSING_TYPE *titleLabel;
     MISSING_TYPE *symbolImageView;
-    MISSING_TYPE *isEnabled;
 }
 
 - (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1;
+@property(nonatomic) _Bool enabled;
+- (_Bool)isEnabled;
 @property(nonatomic) _Bool highlighted;
 - (_Bool)isHighlighted;
 @property(nonatomic) _Bool selected;

@@ -6,11 +6,11 @@
 
 #import <GeoServices/NSObject-Protocol.h>
 
-@class NSObject, NSURL;
+@class NSObject;
 @protocol OS_dispatch_queue;
 
 @protocol GEOGeographicMetadataFetcher <NSObject>
-- (void)reportCorrupt:(NSURL *)arg1;
+- (void)reportCorrupt:(id)arg1;
 - (void)fetchMetadataWithResponseQueue:(NSObject<OS_dispatch_queue> *)arg1 block:(void (^)(NSDictionary *, NSError *))arg2;
 @end
 

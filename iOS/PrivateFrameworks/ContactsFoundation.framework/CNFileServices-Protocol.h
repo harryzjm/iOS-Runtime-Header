@@ -6,9 +6,11 @@
 
 #import <ContactsFoundation/NSObject-Protocol.h>
 
-@class NSString;
+@class NSString, NSURL;
 
 @protocol CNFileServices <NSObject>
+- (NSURL *)secureTemporarySubdirectoryWithName:(NSString *)arg1;
+- (NSURL *)secureTemporaryDirectory;
 - (NSString *)NSTemporaryDirectory;
 - (int)fcntl_flock:(int)arg1:(int)arg2:(struct flock *)arg3;
 - (int)flock:(int)arg1:(int)arg2;

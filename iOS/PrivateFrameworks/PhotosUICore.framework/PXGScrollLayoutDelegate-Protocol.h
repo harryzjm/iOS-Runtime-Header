@@ -12,7 +12,7 @@
 
 @optional
 - (void)scrollLayoutDidEndScrolling:(PXGScrollLayout *)arg1;
-- (void)scrollLayoutWillEndScrolling:(PXGScrollLayout *)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
+- (void)scrollLayoutWillEndScrolling:(PXGScrollLayout *)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3 currentContentOffset:(struct CGPoint)arg4;
 - (void)scrollLayoutDidScroll:(PXGScrollLayout *)arg1;
 - (void)scrollLayoutWillBeginScrolling:(PXGScrollLayout *)arg1;
 @end

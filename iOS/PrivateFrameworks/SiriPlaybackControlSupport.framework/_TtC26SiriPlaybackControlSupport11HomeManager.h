@@ -11,13 +11,13 @@
 __attribute__((visibility("hidden")))
 @interface _TtC26SiriPlaybackControlSupport11HomeManager : NSObject
 {
-    MISSING_TYPE *homeManagerInitTimeout;
+    MISSING_TYPE *homeManagerRefreshTimeout;
     MISSING_TYPE *hmHomeManager;
     MISSING_TYPE *hmHomeManagerOptions;
     MISSING_TYPE *homeData;
-    MISSING_TYPE *mgGroupQuery;
     MISSING_TYPE *readyGroup;
-    MISSING_TYPE *initializationSignpost;
+    MISSING_TYPE *homekitInitSignpostID;
+    MISSING_TYPE *homekitRefreshSignpostID;
     MISSING_TYPE *homeKitTracker;
     MISSING_TYPE *mediaGroupTracker;
 }

@@ -6,12 +6,15 @@
 
 #import <HomeKitDaemon/NSObject-Protocol.h>
 
-@class HMDResidentDevice;
+@class HMDResidentDevice, NSSet;
 @protocol HMDPrimaryResidentElectionAddOnDelegate;
 
 @protocol HMDPrimaryResidentElectionAddOn <NSObject>
 @property __weak id <HMDPrimaryResidentElectionAddOnDelegate> delegate;
+- (NSSet *)residentsInMesh;
 - (void)primaryResidentChanged:(HMDResidentDevice *)arg1 previousResidentDevice:(HMDResidentDevice *)arg2;
+- (_Bool)allowExternalUpdateOfPrimaryResidentTo:(HMDResidentDevice *)arg1;
+- (_Bool)residentIsPartOfTheCurrentMesh:(HMDResidentDevice *)arg1;
 - (void)registerForMessages;
 - (void)performElectionWithReason:(unsigned long long)arg1;
 - (void)performElection;

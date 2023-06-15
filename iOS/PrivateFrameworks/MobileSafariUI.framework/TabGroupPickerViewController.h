@@ -17,11 +17,14 @@ __attribute__((visibility("hidden")))
     UICollectionViewDiffableDataSource *_dataSource;
     UIBarButtonItem *_doneButton;
     _Bool _isReordering;
+    _Bool _needsReloadData;
 }
 
 - (void).cxx_destruct;
+- (void)tabGroupManager:(id)arg1 didUpdateProfileWithUUID:(id)arg2;
+- (void)tabGroupManagerDidUpdateProfiles:(id)arg1;
 - (void)tabGroupManagerDidUpdateTabGroups:(id)arg1;
-- (void)tabGroupManager:(id)arg1 didUpdateTabGroup:(id)arg2;
+- (void)tabGroupManager:(id)arg1 didUpdateTabGroupWithUUID:(id)arg2;
 - (long long)_collectionView:(id)arg1 dataOwnerForDropSession:(id)arg2 withDestinationIndexPath:(id)arg3;
 - (long long)_collectionView:(id)arg1 dataOwnerForDragSession:(id)arg2 atIndexPath:(id)arg3;
 - (void)collectionView:(id)arg1 performDropWithCoordinator:(id)arg2;
@@ -35,9 +38,14 @@ __attribute__((visibility("hidden")))
 - (id)_checkmarkAccessory;
 - (_Bool)_shouldShowCheckmarkForTabGroup:(id)arg1;
 - (void)_enumerateTabGroupSectionsWithBlock:(CDUnknownBlockType)arg1;
-- (void)reloadData;
+- (void)_reloadData;
+- (void)_reloadDataIfNeeded;
+- (void)setNeedsReloadData;
 - (void)doneButtonTapped;
+- (void)_removeDataUnrelatedToTabGroups;
 - (void)setEditing:(_Bool)arg1 animated:(_Bool)arg2;
+- (void)viewWillLayoutSubviews;
+- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)viewDidLoad;
 - (void)loadView;
 - (id)initWithTabGroupProvider:(id)arg1;

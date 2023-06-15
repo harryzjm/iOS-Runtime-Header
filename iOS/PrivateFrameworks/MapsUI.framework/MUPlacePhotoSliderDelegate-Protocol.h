@@ -11,8 +11,7 @@
 
 @protocol MUPlacePhotoSliderDelegate <NSObject>
 - (void)photoSliderViewDidTapHeaderView:(MUPlacePhotoSliderView *)arg1;
-- (void)photoSliderViewDidScroll:(MUPlacePhotoSliderView *)arg1;
 - (void)photoSliderView:(MUPlacePhotoSliderView *)arg1 didTapAttribution:(MUPunchoutViewModel *)arg2;
-- (void)photoSliderView:(MUPlacePhotoSliderView *)arg1 didTapViewModel:(id <MUPhotoTileViewModel>)arg2 atIndex:(unsigned long long)arg3;
+- (void)photoSliderView:(MUPlacePhotoSliderView *)arg1 didTapViewModel:(id <MUPhotoTileViewModel>)arg2;
 @end
 

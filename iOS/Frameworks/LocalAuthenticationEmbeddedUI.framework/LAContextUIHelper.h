@@ -11,14 +11,11 @@
 __attribute__((visibility("hidden")))
 @interface LAContextUIHelper : NSObject
 {
-    CDUnknownBlockType _pendingReply;
     LAAuthorizationViewController *_ui;
 }
 
 - (void).cxx_destruct;
 - (void)contextDidBecomeInvalid:(id)arg1;
-- (void)authorizationController:(id)arg1 didProvideAuthorizationRequirementWithReply:(CDUnknownBlockType)arg2;
-- (void)authorizationController:(id)arg1 didFinishWithError:(id)arg2;
 - (void)cancel;
 - (void)authenticateWithOptions:(id)arg1 availableMechanisms:(id)arg2 hostVC:(id)arg3 context:(id)arg4 reply:(CDUnknownBlockType)arg5;
 - (void)dealloc;

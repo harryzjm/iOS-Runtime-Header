@@ -14,10 +14,12 @@
     MISSING_TYPE *baseMapUserInterfaceStyle;
     MISSING_TYPE *labelPositions;
     MISSING_TYPE *overlay;
+    MISSING_TYPE *rendererContext;
     MISSING_TYPE *isLocatedInUnsupportedArea;
     MISSING_TYPE *animationPosition;
     MISSING_TYPE *framesMetadata;
     MISSING_TYPE *weatherTileOverlay;
+    MISSING_TYPE *effectTileOverlay;
     MISSING_TYPE *$__lazy_storage_$_dynamicTileOverlayRenderer;
 }
 

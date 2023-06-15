@@ -6,14 +6,13 @@
 
 #import <SpringBoardHome/SBHLegibility-Protocol.h>
 
-@class SBHSidebarVisualConfiguration, UIViewController, WGWidgetGroupViewController;
+@class SBHSidebarVisualConfiguration, UIViewController;
 @protocol SBHSidebarProviderDelegate;
 
 @protocol SBHSidebarProvider <SBHLegibility>
 @property(nonatomic) __weak id <SBHSidebarProviderDelegate> delegate;
 @property(nonatomic) unsigned long long layoutInsetsIgnoredEdges;
 @property(retain, nonatomic) SBHSidebarVisualConfiguration *sidebarVisualConfiguration;
-@property(retain, nonatomic) WGWidgetGroupViewController *widgetViewController;
 - (void)setEditingIcons:(_Bool)arg1;
 
 @optional

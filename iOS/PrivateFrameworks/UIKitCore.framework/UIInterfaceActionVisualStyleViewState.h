@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 @class UIColor, UIScreen, UITraitCollection;
 
 __attribute__((visibility("hidden")))
-@interface UIInterfaceActionVisualStyleViewState : NSObject <NSCopying>
+@interface UIInterfaceActionVisualStyleViewState : NSObject
 {
     UITraitCollection *_traitCollection;
     UIScreen *_screen;

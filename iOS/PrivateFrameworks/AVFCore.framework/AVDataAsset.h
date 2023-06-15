@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)referenceRestrictions;
 - (id)tracks;
 - (Class)_classForTrackInspectors;
-- (struct OpaqueFigFormatReader *)_formatReader;
+- (struct OpaqueFigFormatReader *)_copyFormatReader;
 - (id)_assetInspector;
 - (id)_assetInspectorLoader;
 - (void)dealloc;

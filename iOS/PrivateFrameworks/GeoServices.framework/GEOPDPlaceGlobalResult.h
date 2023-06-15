@@ -6,7 +6,7 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-@class GEOPDAddressObjectGeocodingResult, GEOPDAirportEntityPlaceLookupResult, GEOPDAllCollectionsViewResult, GEOPDAllGuidesLocationsViewResult, GEOPDAutocompleteResult, GEOPDBatchCategoryLookupResult, GEOPDBatchMerchantLookupBrandResult, GEOPDBatchPopularNearbySearchResult, GEOPDBatchReverseGeocodingResult, GEOPDBatchSpatialLookupResult, GEOPDBrandLookupResult, GEOPDCanonicalLocationSearchResult, GEOPDCategorySearchResult, GEOPDChildPlaceLookupByCategoryResult, GEOPDCollectionSuggestionResult, GEOPDExtendedGeoLookupResult, GEOPDExternalTransitLookupResult, GEOPDFeatureIdGeocodingResult, GEOPDGeocodingResult, GEOPDGroundViewLabelResult, GEOPDGuidesHomeResult, GEOPDIpGeoLookupResult, GEOPDLocationDirectedSearchResult, GEOPDMapsHomeResult, GEOPDMapsIdentifierPlaceLookupResult, GEOPDMapsSearchHomeResult, GEOPDMerchantLookupResult, GEOPDNearbySearchResult, GEOPDPlaceCollectionLookupResult, GEOPDPlaceGlobalCommonResult, GEOPDPlaceLookupResult, GEOPDPlaceRefinementResult, GEOPDPlacecardEnrichmentResult, GEOPDPoiAtAddressLookupResult, GEOPDPopularNearbySearchResult, GEOPDPublisherViewResult, GEOPDQueryUnderstandingResult, GEOPDReverseGeocodingResult, GEOPDSearchBrowseCategorySuggestionResult, GEOPDSearchFieldPlaceholderResult, GEOPDSearchResult, GEOPDSearchZeroKeywordCategorySuggestionResult, GEOPDSearchZeroKeywordWithSearchResultsSuggestionResult, GEOPDSiriSearchResult, GEOPDTerritoryLookupResult, GEOPDTransitScheduleLookupResult, GEOPDVendorSpecificPlaceRefinementResult, GEOPDWifiFingerprintResult, PBDataReader, PBUnknownFields;
+@class GEOPDAddressObjectGeocodingResult, GEOPDAirportEntityPlaceLookupResult, GEOPDAllCollectionsViewResult, GEOPDAllGuidesLocationsViewResult, GEOPDAutocompleteResult, GEOPDBatchCategoryLookupResult, GEOPDBatchMerchantLookupBrandResult, GEOPDBatchPopularNearbySearchResult, GEOPDBatchReverseGeocodingResult, GEOPDBatchSpatialLookupResult, GEOPDBrandLookupResult, GEOPDCanonicalLocationSearchResult, GEOPDCategorySearchResult, GEOPDChildPlaceLookupByCategoryResult, GEOPDCollectionSuggestionResult, GEOPDExtendedGeoLookupResult, GEOPDExternalTransitLookupResult, GEOPDFeatureIdGeocodingResult, GEOPDGeocodingResult, GEOPDGroundViewLabelResult, GEOPDGuidesHomeResult, GEOPDIpGeoLookupResult, GEOPDLocationDirectedSearchResult, GEOPDMapsHomeResult, GEOPDMapsIdentifierPlaceLookupResult, GEOPDMapsSearchHomeResult, GEOPDMerchantLookupResult, GEOPDNearbySearchResult, GEOPDOfflineRegionNameResult, GEOPDPlaceCollectionLookupResult, GEOPDPlaceGlobalCommonResult, GEOPDPlaceLookupResult, GEOPDPlaceRefinementResult, GEOPDPlacecardEnrichmentResult, GEOPDPoiAtAddressLookupResult, GEOPDPopularNearbySearchResult, GEOPDPublisherViewResult, GEOPDQueryUnderstandingResult, GEOPDReverseGeocodingResult, GEOPDSearchBrowseCategorySuggestionResult, GEOPDSearchCapabilitiesResult, GEOPDSearchFieldPlaceholderResult, GEOPDSearchResult, GEOPDSearchZeroKeywordCategorySuggestionResult, GEOPDSearchZeroKeywordWithSearchResultsSuggestionResult, GEOPDSiriSearchResult, GEOPDTerritoryLookupResult, GEOPDTransitScheduleLookupResult, GEOPDVendorSpecificPlaceRefinementResult, GEOPDWifiFingerprintResult, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDPlaceGlobalResult : PBCodable
@@ -42,6 +42,7 @@ __attribute__((visibility("hidden")))
     GEOPDMapsSearchHomeResult *_mapsSearchHomeResult;
     GEOPDMerchantLookupResult *_merchantLookupResult;
     GEOPDNearbySearchResult *_nearbySearchResult;
+    GEOPDOfflineRegionNameResult *_offlineRegionNameResult;
     GEOPDPlaceCollectionLookupResult *_placeCollectionLookupResult;
     GEOPDPlaceGlobalCommonResult *_placeGlobalCommonResult;
     GEOPDPlaceLookupResult *_placeLookupResult;
@@ -52,6 +53,7 @@ __attribute__((visibility("hidden")))
     GEOPDPublisherViewResult *_publisherViewResult;
     GEOPDQueryUnderstandingResult *_queryUnderstandingResult;
     GEOPDReverseGeocodingResult *_reverseGeocodingResult;
+    GEOPDSearchCapabilitiesResult *_searchCapabilitiesResult;
     GEOPDSearchFieldPlaceholderResult *_searchFieldPlaceholderResult;
     GEOPDSearchResult *_searchResult;
     GEOPDSearchZeroKeywordCategorySuggestionResult *_searchZeroKeywordCategorySuggestionResult;
@@ -95,6 +97,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_mapsSearchHomeResult:1;
         unsigned int read_merchantLookupResult:1;
         unsigned int read_nearbySearchResult:1;
+        unsigned int read_offlineRegionNameResult:1;
         unsigned int read_placeCollectionLookupResult:1;
         unsigned int read_placeGlobalCommonResult:1;
         unsigned int read_placeLookupResult:1;
@@ -105,6 +108,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_publisherViewResult:1;
         unsigned int read_queryUnderstandingResult:1;
         unsigned int read_reverseGeocodingResult:1;
+        unsigned int read_searchCapabilitiesResult:1;
         unsigned int read_searchFieldPlaceholderResult:1;
         unsigned int read_searchResult:1;
         unsigned int read_searchZeroKeywordCategorySuggestionResult:1;

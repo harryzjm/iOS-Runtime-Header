@@ -13,20 +13,25 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *featureAvailability;
     MISSING_TYPE *sportsDataService;
-    MISSING_TYPE *subscriptionService;
+    MISSING_TYPE *subscriptionController;
     MISSING_TYPE *syncService;
     MISSING_TYPE *tagService;
     MISSING_TYPE *userInfo;
     MISSING_TYPE *accessQueue;
-    MISSING_TYPE *$__lazy_storage_$_syncOperationQueue;
+    MISSING_TYPE *$__lazy_storage_$_operationQueue;
     MISSING_TYPE *appConfigurationManager;
+    MISSING_TYPE *_ignoreSyncingNewsChanges;
+    MISSING_TYPE *prepareSyncingGroup;
+    MISSING_TYPE *suspendSyncingGroup;
+    MISSING_TYPE *suspendedTokensLock;
+    MISSING_TYPE *suspendedTokens;
+    MISSING_TYPE *iTunesAccountStatusObservable;
+    MISSING_TYPE *iCloudAccountStatusObservable;
+    MISSING_TYPE *_syncMergedWithWatchlistAtLeastOnce;
 }
 
 - (void).cxx_destruct;
 - (id)init;
-- (void)updateSyncState;
-- (void)doSync;
-- (void)dealloc;
 
 @end
 

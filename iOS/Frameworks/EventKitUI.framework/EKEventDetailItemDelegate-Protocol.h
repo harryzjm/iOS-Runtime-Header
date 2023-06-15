@@ -6,12 +6,14 @@
 
 #import <EventKitUI/NSObject-Protocol.h>
 
-@class EKEventDetailItem, UIScrollView, UIViewController;
+@class EKEventDetailItem, NSArray, UIScrollView, UIView, UIViewController;
 @protocol CUIKEditor;
 
 @protocol EKEventDetailItemDelegate <NSObject>
 
 @optional
+- (void)eventDetailItem:(EKEventDetailItem *)arg1 requestPresentShareSheetWithActivityItems:(NSArray *)arg2 withPopoverSourceView:(UIView *)arg3;
+- (_Bool)eventDetailItemShouldPresentShareSheet:(EKEventDetailItem *)arg1;
 - (id <CUIKEditor>)editorForEventDetailItem:(EKEventDetailItem *)arg1;
 - (void)eventItem:(EKEventDetailItem *)arg1 wantsViewControllerPresented:(UIViewController *)arg2;
 - (_Bool)showsDetectedConferenceItem;

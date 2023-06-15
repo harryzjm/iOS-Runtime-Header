@@ -6,7 +6,7 @@
 
 #import "AVCaptureDevice.h"
 
-@class AVCaptureDeviceControlRequestQueue, AVCaptureDeviceFormat, AVCaptureSystemPressureState, AVWeakReference, NSArray, NSData, NSDictionary, NSMutableArray, NSMutableDictionary, NSObject, NSString;
+@class AVCaptureDeviceControlRequestQueue, AVCaptureDeviceFormat, AVCaptureSystemPressureState, AVWeakReference, NSArray, NSData, NSDictionary, NSMutableArray, NSMutableDictionary, NSObject, NSString, NSUUID, UTType;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -18,12 +18,17 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_devicePropsQueue;
     NSString *_fcsUID;
     long long _position;
+    unsigned int _specialDeviceType;
+    NSString *_creatorID;
+    unsigned int _deviceID;
+    NSString *_companionDeskViewCameraUUID;
     NSString *_localizedName;
     NSArray *_formats;
     AVCaptureDeviceFormat *_activeFormat;
     AVCaptureDeviceFormat *_activeDepthDataFormat;
     NSString *_activeSessionPreset;
     CDStruct_1b6d18a9 _activeDepthDataMinFrameDuration;
+    _Bool _widestFallbackPrimaryConstituentDeviceRemovedForDepthDataDelivery;
     CDStruct_1b6d18a9 _videoMinFrameDurationOverride;
     id _videoMinFrameDurationOverrideOwner;
     CDStruct_1b6d18a9 _activeMinFrameDuration;
@@ -87,6 +92,8 @@ __attribute__((visibility("hidden")))
     _Bool _torchAvailable;
     _Bool _isConnected;
     _Bool _isSuspended;
+    _Bool _isHidden;
+    _Bool _isReadyToUnhide;
     _Bool _subjectMonitoringEnabled;
     int _faceDrivenAEAFMode;
     struct CGRect _faceRectangle;
@@ -135,6 +142,7 @@ __attribute__((visibility("hidden")))
     _Bool _spatialOverCaptureEnabled;
     _Bool _nonDestructiveCropEnabled;
     long long _nonDestructiveCropAspectRatio;
+    struct CGSize _normalizedNonDestructiveCropSize;
     _Bool _geometricDistortionCorrectionEnabled;
     _Bool _globalToneMappingEnabled;
     _Bool _variableFrameRateVideoCaptureEnabled;
@@ -148,30 +156,78 @@ __attribute__((visibility("hidden")))
     _Bool _centerStageSupported;
     _Bool _centerStageActive;
     _Bool _centerStageAllowedByClient;
+    struct CGRect _centerStageRectOfInterest;
     _Bool _backgroundBlurSupported;
     _Bool _backgroundBlurActive;
     _Bool _backgroundBlurAllowedByClient;
     _Bool _studioLightingSupported;
     _Bool _studioLightingActive;
     _Bool _studioLightingAllowedByClient;
-    long long _deskViewCameraMode;
+    _Bool _reactionEffectsSupported;
+    _Bool _reactionEffectsActive;
+    _Bool _reactionEffectsAllowedByClient;
     long long _portraitEffectStudioLightQuality;
+    float _backgroundBlurAperture;
+    float _studioLightingIntensity;
+    _Bool _gesturesEnabled;
+    long long _deskViewCameraMode;
+    _Bool _panningStarted;
+    _Bool _centerStageFieldOfViewRestrictedToWide;
+    _Bool _manualFramingSupported;
+    _Bool _manualFramingEnabled;
+    float _manualFramingPanningAngleX;
+    float _manualFramingPanningAngleY;
+    double _manualFramingMinZoomFactor;
+    double _manualFramingMaxZoomFactor;
+    double _manualFramingDefaultZoomFactor;
+    NSMutableArray *_cmioActiveExtensionPropertyListenerHandlers;
+    NSUUID *_continuityDeviceUniqueID;
+    UTType *_hardwareUniformType;
 }
 
 + (_Bool)automaticallyNotifiesObserversForKey:(id)arg1;
 + (_Bool)_cameraAccessIsEnabled;
++ (id)_prioritizedDeviceList:(id)arg1;
++ (id)_defaultDeviceWithDeviceType:(id)arg1 mediaTypes:(id)arg2 position:(long long)arg3 cameraOverrideHistoryAllowed:(_Bool)arg4 cameraOverrideHistorySuspendedAllowed:(_Bool)arg5 wombatsMustBeMagic:(_Bool)arg6 userPreferredCameraHistorySuspendedAllowed:(_Bool)arg7 invalidSpecialDeviceTypes:(id)arg8;
++ (void)_initiateRefreshPreferredCameraProperties:(_Bool)arg1;
++ (void)_refreshPreferredCameraProperties:(_Bool)arg1;
++ (void)updateUserPreferredCameraOverride:(_Bool)arg1 cameraInfo:(id)arg2;
++ (id)cameraInfoForCreatorID:(id)arg1 uniqueID:(id)arg2 specialDeviceType:(unsigned int)arg3 centerStageSupported:(_Bool)arg4;
++ (void)updateUserPreferredCameraOverrideHistoryWithDevice:(id)arg1 setOverride:(_Bool)arg2;
++ (id)systemPreferredCamera;
++ (void)setUserPreferredCamera:(id)arg1 forClientPreferenceDomain:(id)arg2;
++ (void)setUserPreferredCamera:(id)arg1;
++ (id)userPreferredCamera;
++ (void)setAllowsSuspendedPreferredCameras:(_Bool)arg1;
++ (_Bool)allowsSuspendedPreferredCameras;
++ (void)_setUpCameraHistoryOnce;
++ (id)_userPreferredCameraHistoryKeyForClientPreferencesDomain:(id)arg1;
++ (id)_cameraHistoryDispatchQueue;
++ (id)_userPreferredCameraOverrideHistoryKey;
 + (void)_reconnectDevices:(id)arg1;
 + (id)_devicesWithPriorRegisteredDevices:(id)arg1;
 + (id)_devices;
 + (id)_newFigCaptureSources;
 + (void)initialize;
+- (void)resetFraming;
+- (void)performOneShotFraming;
+- (void)panWithTranslation:(struct CGPoint)arg1;
+- (void)startPanningAtPoint:(struct CGPoint)arg1;
+- (float)manualFramingPanningAngleY;
+- (void)setManualFramingPanningAngleY:(float)arg1;
+- (float)manualFramingPanningAngleX;
+- (void)setManualFramingPanningAngleX:(float)arg1;
+- (_Bool)isCenterStageFieldOfViewRestrictedToWide;
+- (void)setCenterStageFieldOfViewRestrictedToWide:(_Bool)arg1;
 - (_Bool)isDeskViewCameraModeSupported:(long long)arg1;
 - (long long)deskViewCameraMode;
 - (void)setDeskViewCameraMode:(long long)arg1;
+- (id)hardwareUniformType;
 - (_Bool)isOverheadCameraModeSupported:(long long)arg1;
 - (long long)overheadCameraMode;
 - (void)setOverheadCameraMode:(long long)arg1;
 - (id)companionDeskViewCamera;
+- (id)continuityDeviceUniqueID;
 - (_Bool)isContinuityCamera;
 - (void)setCinematicVideoFocusAtPoint:(struct CGPoint)arg1 objectID:(long long)arg2 isHardFocus:(_Bool)arg3 isFixedPlaneFocus:(_Bool)arg4;
 - (_Bool)isCinematicVideoFocusAtPointSupported;
@@ -181,6 +237,7 @@ __attribute__((visibility("hidden")))
 - (void)_drainManualControlRequestQueues;
 - (void)_handleManualControlCompletionForRequestQueue:(id)arg1 withPayload:(id)arg2;
 - (void)_handleNotification:(struct __CFString *)arg1 payload:(id)arg2;
+- (void)_handleCMIOExtensionPropertyChangeNotification:(id)arg1;
 - (void)_reconnectToFigCaptureSource:(struct OpaqueFigCaptureSource *)arg1;
 - (id)_copyFormatsArray;
 - (void)_restoreFigCaptureSourceProperties;
@@ -188,6 +245,7 @@ __attribute__((visibility("hidden")))
 - (int)_setFigCaptureSourceProperty:(struct __CFString *)arg1 withValue:(id)arg2 cacheOnly:(_Bool)arg3;
 - (id)_getFigCaptureSourceProperty:(struct __CFString *)arg1;
 - (id)_copyFigCaptureSourceProperty:(struct __CFString *)arg1;
+- (struct CGSize)normalizedNonDestructiveCropSize;
 - (void)setNonDestructiveCropAspectRatio:(long long)arg1;
 - (long long)nonDestructiveCropAspectRatio;
 - (void)setNonDestructiveCropEnabled:(_Bool)arg1;
@@ -204,6 +262,9 @@ __attribute__((visibility("hidden")))
 - (void)_populateSupportedFallbackPrimaryConstituentDevices;
 - (void)_setActivePrimaryConstituentDeviceSwitchingBehavior:(long long)arg1 restrictedSwitchingBehaviorConditions:(unsigned long long)arg2;
 - (id)preferredPrimaryConstituentDevice;
+- (int)_setFallbackPrimaryConstituentDevices:(id)arg1;
+- (void)_updateFallbackPrimaryConstituentDevicesForDepthDataDeliveryEnabled:(_Bool)arg1;
+- (id)fallbackPrimaryConstituentDevicesAsDeviceTypes;
 - (void)setFallbackPrimaryConstituentDevices:(id)arg1;
 - (id)fallbackPrimaryConstituentDevices;
 - (id)supportedFallbackPrimaryConstituentDevices;
@@ -228,7 +289,12 @@ __attribute__((visibility("hidden")))
 - (CDStruct_79c71658)maxH264VideoDimensions;
 - (CDStruct_79c71658)maxH264PhotoDimensions;
 - (id)AVVideoSettingsForSessionPreset:(id)arg1;
-- (id)deviceFormatForSessionPreset:(id)arg1 videoFormat:(unsigned int)arg2;
+- (void)enumerateCMIOExtensionPropertiesWithBlock:(CDUnknownBlockType)arg1;
+- (void)removeCMIOExtensionPropertyValueChangeHandler:(CDUnknownBlockType)arg1;
+- (_Bool)addCMIOExtensionPropertyValueChangeHandler:(CDUnknownBlockType)arg1;
+- (id)copyValueForCMIOExtensionProperty:(id)arg1 error:(id *)arg2;
+- (_Bool)setValue:(id)arg1 forCMIOExtensionProperty:(id)arg2 error:(id *)arg3;
+- (id)deviceFormatForSessionPreset:(id)arg1 sourceVideoFormat:(unsigned int)arg2;
 - (struct OpaqueCMClock *)deviceClock;
 - (id)availableBoxedMetadataFormatDescriptions;
 - (_Bool)smileDetectionEnabled;
@@ -271,16 +337,35 @@ __attribute__((visibility("hidden")))
 - (void)setAutomaticallyAdjustsVideoHDREnabled:(_Bool)arg1;
 - (_Bool)automaticallyAdjustsVideoHDREnabled;
 - (_Bool)isAutoRedEyeReductionSupported;
+- (void)_performReaction:(id)arg1;
+- (void)_updateGesturesEnabled:(_Bool)arg1;
+- (void)_setReactionEffectsAllowed:(_Bool)arg1;
+- (void)_updateReactionEffectsActiveForEnabled:(_Bool)arg1;
+- (_Bool)_reactionEffectsActiveForEnabled:(_Bool)arg1;
+- (_Bool)reactionEffectsActive;
+- (void)_updateStudioLightingIntensity:(float)arg1;
 - (void)_setStudioLightingAllowed:(_Bool)arg1;
 - (void)_updateStudioLightingActiveForEnabled:(_Bool)arg1;
 - (_Bool)_isStudioLightingActiveForEnabled:(_Bool)arg1;
 - (_Bool)isStudioLightingActive;
 - (_Bool)isStudioLightActive;
+- (void)_updateBackgroundBlurAperture:(float)arg1;
 - (void)_updatePortraitEffectStudioLightQuality:(long long)arg1;
 - (void)_updateBackgroundBlurActiveForEnabled:(_Bool)arg1;
 - (_Bool)_isBackgroundBlurActiveForEnabled:(_Bool)arg1;
 - (_Bool)isBackgroundBlurActive;
 - (_Bool)isPortraitEffectActive;
+- (double)manualFramingDefaultZoomFactor;
+- (double)manualFramingMaxZoomFactor;
+- (double)manualFramingMinZoomFactor;
+- (_Bool)isManualFramingEnabled;
+- (void)setManualFramingEnabled:(_Bool)arg1;
+- (_Bool)isManualFramingSupported;
+- (void)_setCenterStageFramingMode:(long long)arg1;
+- (_Bool)_centerStageRectOfInterestSupportedOnDevice;
+- (_Bool)isCenterStageRectOfInterestSupported;
+- (void)setCenterStageRectOfInterest:(struct CGRect)arg1;
+- (struct CGRect)centerStageRectOfInterest;
 - (void)_updateCenterStageActiveForEnabled:(_Bool)arg1 updateDependentProperties:(_Bool)arg2;
 - (_Bool)_isCenterStageActiveForEnabled:(_Bool)arg1;
 - (void)_setCenterStageAllowed:(_Bool)arg1;
@@ -290,6 +375,9 @@ __attribute__((visibility("hidden")))
 - (void)setGeometricDistortionCorrectionEnabled:(_Bool)arg1;
 - (_Bool)isGeometricDistortionCorrectionEnabled;
 - (_Bool)isGeometricDistortionCorrectionSupported;
+- (void)_updateMinMaxVideoZoomFactorsWithMinZoomFactorFromCameraSelection:(double)arg1;
+- (void)_updateMinMaxDefaultVideoZoomFactors;
+- (void)_computeMinVideoZoomFactorOut:(double *)arg1 maxVideoZoomFactorOut:(double *)arg2 defaultVideoZoomFactorOut:(double *)arg3 centerStageActiveOverride:(_Bool)arg4 resetZoomFactor:(_Bool)arg5;
 - (void)_setMaxAvailableVideoZoomFactor:(double)arg1;
 - (double)maxAvailableVideoZoomFactor;
 - (void)_setMinAvailableVideoZoomFactor:(double)arg1;
@@ -440,6 +528,11 @@ __attribute__((visibility("hidden")))
 - (int)_setFocusWithMode:(long long)arg1 lensPosition:(float)arg2 requestID:(int)arg3;
 - (_Bool)isFocusModeSupported:(long long)arg1;
 - (long long)position;
+- (void)unhide;
+- (_Bool)isReadyToUnhide;
+- (_Bool)isHidden;
+- (_Bool)isSuspended;
+- (void)_setConnected:(_Bool)arg1;
 - (_Bool)isConnected;
 - (void)_setDigitalFlashModeInternal:(long long)arg1;
 - (void)setDigitalFlashMode:(long long)arg1;
@@ -484,6 +577,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)isLockedForConfiguration;
 - (_Bool)supportsAVCaptureSessionPreset:(id)arg1;
 - (_Bool)hasMediaType:(id)arg1;
+- (int)figCaptureSourcePosition;
 - (int)figCaptureSourceDeviceType;
 - (_Bool)_isBravoVariant;
 - (_Bool)wideAngleCameraSourcesFromUltraWide;
@@ -491,6 +585,7 @@ __attribute__((visibility("hidden")))
 - (id)manufacturer;
 - (id)localizedName;
 - (id)modelID;
+- (unsigned int)specialDeviceType;
 - (id)uniqueID;
 - (void)_setFigCaptureSource:(struct OpaqueFigCaptureSource *)arg1 allowSendingWorkToMainThread:(_Bool)arg2;
 - (struct OpaqueFigCaptureSource *)figCaptureSource;
@@ -507,6 +602,11 @@ __attribute__((visibility("hidden")))
 - (id)_initWithFigCaptureSource:(struct OpaqueFigCaptureSource *)arg1;
 - (_Bool)_isAppleManufacturer;
 - (int)_orderInDevicesArray;
+- (id)_cameraInfo;
+- (void)updateStreamingDeviceHistory;
+- (void)updateUserPreferredCameraOverride:(_Bool)arg1;
+- (void)updateUserPreferredCameraHistoryForKey:(id)arg1;
+- (void)updateUserPreferredCameraHistory;
 
 @end
 

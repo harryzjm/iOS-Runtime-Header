@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 + (id)_extensionAuxiliaryHostProtocol;
 + (id)_extensionAuxiliaryVendorProtocol;
 - (void)enableUserInteraction:(_Bool)arg1;
-- (void)prepareViewControllerWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)prepareViewControllerWithContext:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)protocolService;
 
 // Remaining properties

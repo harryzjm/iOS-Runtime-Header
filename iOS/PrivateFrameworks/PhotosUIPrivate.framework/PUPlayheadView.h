@@ -4,17 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
+
+@class UIColor;
 
 __attribute__((visibility("hidden")))
 @interface PUPlayheadView : UIView
 {
     UIView *_line;
     UIView *_outline;
-    _Bool _tintColorForPlayhead;
+    UIColor *_preferredHighlightColor;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) UIColor *preferredHighlightColor; // @synthesize preferredHighlightColor=_preferredHighlightColor;
+- (void)_updateLineColor;
 - (void)layoutSubviews;
 - (void)tintColorDidChange;
 - (id)initWithFrame:(struct CGRect)arg1;

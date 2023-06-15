@@ -10,5 +10,7 @@
 + (id)dvt_stableDataWithPropertyList:(id)arg1 format:(unsigned long long)arg2 options:(unsigned long long)arg3 error:(id *)arg4;
 + (_Bool)dvt_writePropertyList:(id)arg1 toURL:(id)arg2 format:(unsigned long long)arg3 error:(id *)arg4;
 + (id)dvt_propertyListWithURL:(id)arg1 options:(unsigned long long)arg2 format:(unsigned long long *)arg3 error:(id *)arg4;
++ (id)defaultWriteErrorOrNonNilPassThru:(id)arg1;
++ (id)defaultReadErrorOrNonNilPassThru:(id)arg1 path:(id)arg2;
 @end
 

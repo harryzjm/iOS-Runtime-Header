@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UINavigationController.h>
+#import <UIKitCore/UINavigationController.h>
 
 @interface UINavigationController (PXDiagnosticsEnvironment)
 - (id)px_diagnosticsItemProvidersForPoint:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2;
@@ -19,6 +19,7 @@
 - (unsigned long long)routingOptionsForDestination:(id)arg1;
 - (void)px_navigateToStateAllowingTabSwitchingWithOptions:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (_Bool)px_allowsTabSwitching;
+- (id)px_childViewControllersForModalInPresentation;
 - (void)px_pushViewController:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)px_popToViewControllerPrecedingViewController:(id)arg1 animated:(_Bool)arg2;
 - (_Bool)px_preparePopToViewController:(id)arg1 forced:(_Bool)arg2;

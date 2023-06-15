@@ -18,7 +18,7 @@
     tmat4x4_3074befe _transform;
 }
 
-+ (id)pickedPointWithSceneObject:(id)arg1 element:(const void *)arg2 projection:(const void *)arg3 transform:(const void *)arg4 objectSpacePoint:(const void *)arg5 centerProjectionPoint:(const void *)arg6;
++ (id)pickedPointWithSceneObject:(id)arg1 element:(void *)arg2 projection:(void *)arg3 transform:(void *)arg4 objectSpacePoint:(void *)arg5 centerProjectionPoint:(void *)arg6;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(readonly, retain, nonatomic) TSCH3DSceneObject *sceneObject; // @synthesize sceneObject=_sceneObject;
@@ -29,7 +29,7 @@
 @property(readonly, nonatomic) tvec2_3b141483 element; // @synthesize element=_element;
 @property(readonly, nonatomic) tvec3_17f03ce0 cameraSpacePoint;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithSceneObject:(id)arg1 element:(const void *)arg2 projection:(const void *)arg3 transform:(const void *)arg4 objectSpacePoint:(const void *)arg5 centerProjectionPoint:(const void *)arg6;
+- (id)initWithSceneObject:(id)arg1 element:(void *)arg2 projection:(void *)arg3 transform:(void *)arg4 objectSpacePoint:(void *)arg5 centerProjectionPoint:(void *)arg6;
 
 @end
 

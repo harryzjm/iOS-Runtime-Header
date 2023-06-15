@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *lock;
     MISSING_TYPE *eventHub;
+    MISSING_TYPE *deviceRegistry;
     MISSING_TYPE *subscriptionToken;
     MISSING_TYPE *purgeableHandlers;
     MISSING_TYPE *purgeHandlers;

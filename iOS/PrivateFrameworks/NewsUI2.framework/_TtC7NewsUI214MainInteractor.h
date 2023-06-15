@@ -18,6 +18,8 @@
     MISSING_TYPE *engagementEventHandler;
     MISSING_TYPE *engagementViewControllerFactory;
     MISSING_TYPE *engagementOverlayManager;
+    MISSING_TYPE *engagementUpsellTriggerStateManager;
+    MISSING_TYPE *metricsBuilder;
 }
 
 @end

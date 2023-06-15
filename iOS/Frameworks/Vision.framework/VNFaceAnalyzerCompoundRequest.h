@@ -9,6 +9,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (unsigned long long)applicableRevisionForDependentRequestOfClass:(Class)arg1 beingPerformedByRevision:(unsigned long long)arg2;
 + (Class)configurationClass;
 + (id)compoundRequestsForOriginalRequests:(id)arg1 withPerformingContext:(id)arg2 error:(id *)arg3;
 + (const CDStruct_7d93034e *)revisionAvailability;

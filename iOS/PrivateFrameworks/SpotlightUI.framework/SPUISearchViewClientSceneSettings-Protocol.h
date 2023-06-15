@@ -7,6 +7,8 @@
 #import <SpotlightUI/NSObject-Protocol.h>
 
 @protocol SPUISearchViewClientSceneSettings <NSObject>
+@property(readonly) unsigned int searchHeaderBlurContextID;
+@property(readonly) unsigned long long searchHeaderBlurLayerRenderID;
 @property(readonly) double searchBarCornerRadius;
 @property(readonly) struct CGSize dockedSearchBarSize;
 @property(readonly) struct CGSize searchBarSize;

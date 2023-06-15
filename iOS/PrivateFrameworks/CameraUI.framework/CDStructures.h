@@ -4,10 +4,6 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#pragma mark Blocks
-
-typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
-
 #pragma mark Named Structures
 
 struct CGAffineTransform {
@@ -59,10 +55,4 @@ typedef struct {
     unsigned int _field3;
     long long _field4;
 } CDStruct_198678f7;
-
-typedef struct {
-    struct CGRect _field1;
-    struct CGPoint _field2;
-    struct CGAffineTransform _field3;
-} CDStruct_3b81988a;
 

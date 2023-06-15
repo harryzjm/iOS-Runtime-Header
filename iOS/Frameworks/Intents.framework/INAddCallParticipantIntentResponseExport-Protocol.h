@@ -7,7 +7,10 @@
 #import <Intents/JSExport-Protocol.h>
 #import <Intents/NSObject-Protocol.h>
 
+@class NSArray;
+
 @protocol INAddCallParticipantIntentResponseExport <NSObject, JSExport>
+@property(copy, nonatomic) NSArray *invites;
 @property(readonly, nonatomic) long long code;
 @end
 

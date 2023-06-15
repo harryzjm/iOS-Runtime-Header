@@ -11,6 +11,7 @@
 - (_Bool)isVideoFile;
 - (_Bool)isImageFile;
 - (long long)directoryCountFromRootPath:(id)arg1;
+- (id)objc_truncate:(long long)arg1;
 - (unsigned long long)visibleCharactersCount;
 - (id)snakeCaseString;
 - (id)truncate:(long long)arg1;

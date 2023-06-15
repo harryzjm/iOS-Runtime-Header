@@ -5,8 +5,9 @@
 //
 
 @interface (null) (WorkoutCore)
-- (void)connectionInvalidated;
-- (id)remoteInterface;
-- (id)exportedInterface;
+- (void)workoutSession:(id)arg1 didDisconnectFromRemoteDeviceWithError:(id)arg2;
+- (void)workoutSession:(id)arg1 didReceiveDataFromRemoteDevice:(id)arg2;
+- (void)workoutSession:(id)arg1 didFailWithError:(id)arg2;
+- (void)workoutSession:(id)arg1 didChangeToState:(long long)arg2 fromState:(long long)arg3 date:(id)arg4;
 @end
 

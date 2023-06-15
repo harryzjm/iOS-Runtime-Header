@@ -6,11 +6,12 @@
 
 #import <PeopleUIInternal/NSObject-Protocol.h>
 
-@class FBSSceneClientSettings, FBSSceneClientSettingsDiff, FBSSceneTransitionContext, FBScene, FBSceneClientHandle, FBSceneUpdateContext, NSError;
+@class FBSSceneClientSettings, FBSSceneClientSettingsDiff, FBSSceneTransitionContext, FBScene, FBSceneClientHandle, FBSceneUpdateContext, NSError, NSSet;
 
 @protocol FBSceneObserver <NSObject>
 
 @optional
+- (NSSet *)scene:(FBScene *)arg1 handleActions:(NSSet *)arg2;
 - (void)scene:(FBScene *)arg1 didUpdateClientSettingsWithDiff:(FBSSceneClientSettingsDiff *)arg2 oldClientSettings:(FBSSceneClientSettings *)arg3 transitionContext:(FBSSceneTransitionContext *)arg4;
 - (void)scene:(FBScene *)arg1 didCompleteUpdateWithContext:(FBSceneUpdateContext *)arg2 error:(NSError *)arg3;
 - (void)scene:(FBScene *)arg1 didApplyUpdateWithContext:(FBSceneUpdateContext *)arg2;

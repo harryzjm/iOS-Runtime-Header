@@ -6,12 +6,16 @@
 
 #import <PosterKit/PRMutablePosterPreferences-Protocol.h>
 
-@class NSDate, UIColor;
+@class NSDate, PRPosterLegibilitySettings, UIColor;
 
 @protocol PRMutablePosterRenderingPreferences <PRMutablePosterPreferences>
+@property(nonatomic) _Bool hideChrome;
+@property(nonatomic) _Bool userTapEventsRequested;
 @property(retain, nonatomic) NSDate *nextWakeDate;
 @property(nonatomic) unsigned long long significantEventTime;
+@property(nonatomic) _Bool handlesWakeAnimation;
 @property(nonatomic) unsigned long long significantEventOptions;
+@property(retain, nonatomic) PRPosterLegibilitySettings *desiredLegibilitySettings;
 @property(retain, nonatomic) UIColor *averageColor;
 @end
 

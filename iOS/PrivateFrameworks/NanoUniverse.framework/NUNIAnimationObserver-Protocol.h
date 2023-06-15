@@ -7,7 +7,6 @@
 @class NUNIAnimation;
 
 @protocol NUNIAnimationObserver
-- (void)universeAnimationRemoved:(NUNIAnimation *)arg1;
-- (void)universeAnimationFinished:(NUNIAnimation *)arg1;
+- (void)astronomyAnimationFinished:(NUNIAnimation *)arg1;
 @end
 

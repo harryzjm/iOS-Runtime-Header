@@ -6,11 +6,15 @@
 
 #import <ShareSheet/SHSheetActivityViewController-Protocol.h>
 #import <ShareSheet/SHSheetContentPresenter-Protocol.h>
+#import <ShareSheet/SHSheetTestingContent-Protocol.h>
 
 @class NSArray, NSString, SHSheetContext, UIActivity;
-@protocol SHSheetPresenterDelegate;
+@protocol SHSheetPresenterDelegate, _UIRemoteSheet;
 
-@protocol SHSheetPresenter <SHSheetContentPresenter, SHSheetActivityViewController>
+@protocol SHSheetPresenter <SHSheetContentPresenter, SHSheetActivityViewController, SHSheetTestingContent>
+@property(readonly, nonatomic) _Bool useRemoteUIService;
+@property(readonly, nonatomic) id <_UIRemoteSheet> remoteSheet;
+@property(readonly, nonatomic) _Bool isCollaborationSelected;
 @property(readonly, copy, nonatomic) NSString *sessionIdentifier;
 @property(readonly, nonatomic) UIActivity *currentActivity;
 @property(nonatomic) _Bool isContentManaged;

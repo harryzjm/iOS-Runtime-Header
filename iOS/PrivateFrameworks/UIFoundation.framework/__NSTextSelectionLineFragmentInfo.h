@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMapTable, NSSet, NSTextRange, NSTextSelectionNavigation;
+@class NSArray, NSMapTable, NSTextRange, NSTextSelectionNavigation;
 
 __attribute__((visibility("hidden")))
 @interface __NSTextSelectionLineFragmentInfo : NSObject
@@ -19,15 +19,19 @@ __attribute__((visibility("hidden")))
     CDStruct_5b583d96 *_carets;
     unsigned long long _numberOfCarets;
     NSMapTable *_primaryLocationTable;
-    NSSet *_secondaryLocationTable;
+    NSMapTable *_secondaryLocationTable;
     NSArray *_sortedLocations;
     NSArray *_otherLocations;
 }
 
 @property(readonly) NSTextSelectionNavigation *textSelectionNavigation; // @synthesize textSelectionNavigation=_navigation;
 @property(readonly) NSTextRange *textRange; // @synthesize textRange=_textRange;
-- (long long)indexForEdgeLocationInTextRanges:(id)arg1 leading:(_Bool)arg2;
-- (long long)indexForPrimaryLocation:(id)arg1;
+- (long long)caretIndexForEdgeLocationInTextRanges:(id)arg1 leftEdge:(_Bool)arg2;
+- (id)_locationForEdgeCaretAtIndex:(unsigned long long)arg1 leftEdge:(_Bool)arg2;
+- (long long)caretIndexForLocation:(id)arg1 inTextRanges:(id)arg2 secondaryCaretIndex:(long long *)arg3;
+- (_Bool)location:(id)arg1 isLeading:(out _Bool *)arg2 trailing:(out _Bool *)arg3 inTextRanges:(id)arg4;
+- (long long)caretIndexForSecondaryLocation:(id)arg1;
+- (long long)caretIndexForPrimaryLocation:(id)arg1;
 @property(readonly, getter=isMonotonicDirection) _Bool monotonicDirection; // @dynamic monotonicDirection;
 @property long long numberOfCaretPositions; // @dynamic numberOfCaretPositions;
 - (id)rangesBetweenStartingOffset:(double)arg1 endOffset:(double)arg2 continuous:(_Bool)arg3;
@@ -43,6 +47,7 @@ __attribute__((visibility("hidden")))
 - (void)_cache;
 - (void)_computeVisualDirection;
 - (void)_resolveTrailingEdges;
+- (id)_secondaryLocationTable;
 - (void)_fetchCaretOffsets;
 - (id)_findNextCaretLocationForLocation:(id)arg1;
 - (long long)_sortedLocationIndexForLocation:(id)arg1;

@@ -19,8 +19,8 @@ __attribute__((visibility("hidden")))
 - (id)gradient;
 - (double)gradientDrawingAngle;
 - (void)dealloc;
-- (id)_initWithCSIHeader:(const struct _csiheader *)arg1;
-- (id)initWithCSIData:(id)arg1 forKey:(const struct _renditionkeytoken *)arg2;
+- (id)_initWithCSIHeader:(const struct _csiheader *)arg1 version:(unsigned int)arg2;
+- (id)initWithCSIData:(id)arg1 forKey:(const struct _renditionkeytoken *)arg2 version:(unsigned int)arg3;
 
 @end
 

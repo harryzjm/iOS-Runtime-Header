@@ -6,11 +6,21 @@
 
 #import "UIView.h"
 
+@class _UICollectionViewSubviewRouter;
+
 __attribute__((visibility("hidden")))
 @interface _UICollectionSectionContainerView : UIView
 {
+    _UICollectionViewSubviewRouter *_subviewRouter;
 }
 
+- (void).cxx_destruct;
+- (void)dealloc;
+- (void)_willRemoveSubview:(id)arg1;
+- (void)exchangeSubviewAtIndex:(long long)arg1 withSubviewAtIndex:(long long)arg2;
+- (void)sendSubviewToBack:(id)arg1;
+- (void)bringSubviewToFront:(id)arg1;
+- (void)_addSubview:(id)arg1 positioned:(long long)arg2 relativeTo:(id)arg3;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

@@ -38,7 +38,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) VCAudioIO *audioIO; // @synthesize audioIO=_audioIO;
 @property(readonly, nonatomic) int processId; // @synthesize processId=_processId;
 @property(readonly, nonatomic) _Bool isMuted; // @synthesize isMuted=_muted;
-- (void)didServerDie;
+- (void)serverDidDie;
 - (void)didResumeAudioIO:(id)arg1;
 - (void)didSuspendAudioIO:(id)arg1;
 @property(retain, nonatomic) AVAudioDevice *outputDevice;

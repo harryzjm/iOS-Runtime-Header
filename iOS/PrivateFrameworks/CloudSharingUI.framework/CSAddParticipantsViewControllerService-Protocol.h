@@ -6,9 +6,10 @@
 
 #import <CloudSharingUI/NSObject-Protocol.h>
 
-@class CKContainerSetupInfo, CKShare, CSAddressingViewModel, NSArray, NSURL;
+@class CKContainerSetupInfo, CKShare, CNContact, CNContactProperty, CSAddressingViewModel, NSArray, NSURL;
 
 @protocol CSAddParticipantsViewControllerService <NSObject>
+- (void)userDidSelectContact:(CNContact *)arg1 contactProperty:(CNContactProperty *)arg2;
 - (void)setContainerSetupInfo:(CKContainerSetupInfo *)arg1;
 - (void)setFileURL:(NSURL *)arg1;
 - (void)setAddressingViewModel:(CSAddressingViewModel *)arg1;

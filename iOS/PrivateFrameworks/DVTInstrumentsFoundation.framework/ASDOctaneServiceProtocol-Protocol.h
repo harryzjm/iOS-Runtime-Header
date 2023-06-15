@@ -4,18 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSData, NSDictionary, NSString, NSUUID;
+#import <DVTInstrumentsFoundation/ASDOctaneAdNetworkProtocol-Protocol.h>
 
-@protocol ASDOctaneServiceProtocol
-- (void)developerPostbackURLForBundleID:(NSString *)arg1 completion:(void (^)(NSURL *))arg2;
-- (void)sendTestPingbackForBundleID:(NSString *)arg1 completion:(void (^)(NSDictionary *))arg2;
-- (void)retrieveTestPostbacksForBundleID:(NSString *)arg1 completion:(void (^)(NSArray *))arg2;
-- (void)addPostbacksFromDictionaries:(NSArray *)arg1 forBundleID:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
-- (void)validateSKAdNetworkImpression:(NSDictionary *)arg1 withPublicKey:(NSString *)arg2 forBundleID:(NSString *)arg3 completion:(void (^)(NSError *))arg4;
+@class NSArray, NSData, NSString, NSUUID;
+
+@protocol ASDOctaneServiceProtocol <ASDOctaneAdNetworkProtocol>
 - (void)setStringValue:(NSString *)arg1 forIdentifier:(unsigned long long)arg2 forBundleID:(NSString *)arg3 completion:(void (^)(NSError *))arg4;
 - (void)getStringValueForIdentifier:(unsigned long long)arg1 forBundleID:(NSString *)arg2 completion:(void (^)(NSError *, NSString *))arg3;
 - (void)setIntegerValue:(long long)arg1 forIdentifier:(unsigned long long)arg2 forBundleID:(NSString *)arg3 completion:(void (^)(NSError *, _Bool))arg4;
 - (void)getIntegerValueForIdentifier:(unsigned long long)arg1 forBundleID:(NSString *)arg2 completion:(void (^)(NSError *, long long))arg3;
+- (void)buyProductWithConfiguration:(NSData *)arg1 bundleID:(NSString *)arg2 completion:(void (^)(NSError *, NSString *))arg3;
+- (void)configurationDataForBundleID:(NSString *)arg1 completion:(void (^)(NSData *, NSError *))arg2;
+- (void)testingAppsWithCompletion:(void (^)(NSData *, NSError *))arg1;
+- (void)setStoreKitError:(long long)arg1 forCategory:(long long)arg2 bundleID:(NSString *)arg3 withReply:(void (^)(void))arg4;
+- (void)storeKitErrorForCategory:(long long)arg1 bundleID:(NSString *)arg2 withReply:(void (^)(long long))arg3;
 - (void)unregisterForEventWithIdentifier:(NSUUID *)arg1 forBundleID:(NSString *)arg2;
 - (void)registerForEventOfType:(long long)arg1 forBundleID:(NSString *)arg2 withFilterData:(NSData *)arg3 completion:(void (^)(NSUUID *))arg4;
 - (void)revokeEntitlementsForProductIdentifiers:(NSArray *)arg1 forBundleId:(NSString *)arg2 completion:(void (^)(NSError *))arg3;

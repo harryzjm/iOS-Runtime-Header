@@ -12,6 +12,6 @@
 - (void)bds_traverseBatchesOfSize:(unsigned long long)arg1 block:(CDUnknownBlockType)arg2;
 - (id)bds_arrayByRemovingNSNulls;
 - (id)bds_arrayByRemovingNSNullsInvokingBlockForNulls:(CDUnknownBlockType)arg1;
-- (id)bds_dictionaryUsingPropertyAsKey:(id)arg1;
+- (id)bds_dictionaryUsingPropertyAsKey:(id)arg1 uniquingKeysWith:(CDUnknownBlockType)arg2;
 @end
 

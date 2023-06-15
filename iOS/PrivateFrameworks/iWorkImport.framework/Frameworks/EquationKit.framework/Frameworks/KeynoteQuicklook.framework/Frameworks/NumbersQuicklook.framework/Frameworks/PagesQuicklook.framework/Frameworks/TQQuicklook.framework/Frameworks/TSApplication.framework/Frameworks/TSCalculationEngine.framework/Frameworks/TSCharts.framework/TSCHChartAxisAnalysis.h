@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray;
+@class NSArray, NSDictionary;
 
 @interface TSCHChartAxisAnalysis : NSObject
 {
@@ -21,11 +21,11 @@
     NSArray *_majorGridLocations;
     NSArray *_minorGridLocations;
     NSArray *_totals;
-    NSArray *_downsampledTotals;
+    NSDictionary *_seriesIndexToValueIndexesWhereSeriesIsLastSeries;
 }
 
 - (void).cxx_destruct;
-@property(copy, nonatomic) NSArray *downsampledTotals; // @synthesize downsampledTotals=_downsampledTotals;
+@property(copy, nonatomic) NSDictionary *seriesIndexToValueIndexesWhereSeriesIsLastSeries; // @synthesize seriesIndexToValueIndexesWhereSeriesIsLastSeries=_seriesIndexToValueIndexesWhereSeriesIsLastSeries;
 @property(copy, nonatomic) NSArray *totals; // @synthesize totals=_totals;
 @property(copy, nonatomic) NSArray *minorGridLocations; // @synthesize minorGridLocations=_minorGridLocations;
 @property(copy, nonatomic) NSArray *majorGridLocations; // @synthesize majorGridLocations=_majorGridLocations;

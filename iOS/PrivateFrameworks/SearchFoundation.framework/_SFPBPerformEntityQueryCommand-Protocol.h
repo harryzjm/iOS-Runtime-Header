@@ -6,10 +6,12 @@
 
 #import <SearchFoundation/NSObject-Protocol.h>
 
-@class NSData, NSDictionary, NSString, _SFPBSymbolImage;
+@class NSData, NSDictionary, NSString, _SFPBColor, _SFPBDrillDownMetadata, _SFPBSymbolImage;
 
 @protocol _SFPBPerformEntityQueryCommand <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
+@property(retain, nonatomic) _SFPBDrillDownMetadata *metadata;
+@property(retain, nonatomic) _SFPBColor *entityBackgroundColor;
 @property(copy, nonatomic) NSString *entityIdentifier;
 @property(nonatomic) int entityType;
 @property(retain, nonatomic) _SFPBSymbolImage *symbolImage;

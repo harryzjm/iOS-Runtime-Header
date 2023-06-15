@@ -10,12 +10,13 @@
 
 @interface VKRouteContext (MKRouteContextExtras)
 - (id)_routeInfoForRoute:(id)arg1;
-- (void)_updateChargingStationTexts;
+- (void)_updateWaypointCaptions;
 - (void)_setAlternateRouteContextAnnotationETAComparison:(unsigned char)arg1 forRoute:(id)arg2;
 - (void)_setRouteContextAnnotationFocus:(_Bool)arg1 forRoute:(id)arg2;
 - (void)_setRouteContextAnnotationTexts:(id)arg1 forLegsInRoute:(id)arg2;
 - (void)_setRouteContextAnnotationText:(id)arg1 advisoryStyleAttributes:(id)arg2 forRoute:(id)arg3;
 - (void)_setRouteContextAnnotationText:(id)arg1 tollCurrency:(unsigned char)arg2 forRoute:(id)arg3;
+- (void)_setRouteContextAnnotationText:(id)arg1 etaType:(long long)arg2 tollCurrency:(unsigned char)arg3 advisoryStyleAttributes:(id)arg4 forRoute:(id)arg5;
 - (void)_setRouteContextInspectedSegmentIndex:(unsigned long long)arg1 inspectedStepIndex:(unsigned long long)arg2;
 
 // Remaining properties

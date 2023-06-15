@@ -4,14 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
-@class NSString, VCHistogram;
+@class NSString, VCReportingHistogram;
 
 __attribute__((visibility("hidden")))
-@interface StreamGroupStats : NSObject
+@interface StreamGroupStats
 {
     _Bool _isVideoDegraded;
+    _Bool _currentDegradedVideoState;
     _Bool _isRTXTelemetryAvailable;
     unsigned int _videoDegradedTotalCounter;
     unsigned int _significantVideoStallCount;
@@ -31,6 +30,7 @@ __attribute__((visibility("hidden")))
     unsigned int _accumulatedMediaQueueFlushCount;
     unsigned int _totalMediaQueueSizeReportsCount;
     unsigned int _minVideoFrameRate;
+    unsigned int _videoFrameIncompleteNextTSCounter;
     double _videoDegradedTotalTime;
     double _videoDegradedStartTime;
     double _videoDegradedMaxLength;
@@ -43,6 +43,7 @@ __attribute__((visibility("hidden")))
     double _maxJBTargetSizeChanges;
     double _avgJBTargetSizeChanges;
     NSString *_firstMKIReceived;
+    NSString *_totalMediaStallSaveDelta;
     NSString *_firstMediaReceived;
     NSString *_firstRemoteVideoFrameDecoded;
     NSString *_timeToSeeFirstRemoteVideoFrame;
@@ -51,30 +52,76 @@ __attribute__((visibility("hidden")))
     unsigned long long _nacksFulfilledOnTime;
     double _accumulatedTotalMediaQueueSize;
     double _maxMediaQueueSize;
-    VCHistogram *_nacksRTXResponseTime;
-    VCHistogram *_nacksRTXLateTime;
-    VCHistogram *_nacksRTXMediaBitRate;
-    VCHistogram *_nacksRTXRetransmittedMediaBitRate;
-    VCHistogram *_nacksPLRWithRTX;
-    VCHistogram *_nacksPLRWithoutRTX;
+    VCReportingHistogram *_nacksRTXResponseTime;
+    VCReportingHistogram *_nacksRTXLateTime;
+    VCReportingHistogram *_nacksRTXMediaBitRate;
+    VCReportingHistogram *_nacksRTXRetransmittedMediaBitRate;
+    VCReportingHistogram *_nacksPLRWithRTX;
+    VCReportingHistogram *_nacksPLRWithoutRTX;
+    VCReportingHistogram *_JBTarget;
+    VCReportingHistogram *_JBUnclippedTarget;
+    unsigned long long _videoFrameReceivedCounter;
+    unsigned long long _videoFrameExpectedCounter;
+    unsigned long long _videoFrameCapturedCounter;
+    double _averageSendBitrateSum;
+    double _averageTargetBitrateSum;
+    double _averageFECSendBitrateSum;
+    double _averageMediaSendBitrateSum;
+    double _averageJitterQueueSize;
+    VCReportingHistogram *_videoStall;
+    double _lastVideoDegradedTime;
+    VCReportingHistogram *_poorConnection;
+    double _degradedVideoStartTime;
+    double _degradedVideoDuration;
+    double _poorConnectionMaxLength;
+    double _poorConnectionTotalLength;
+    double _decodedVideoFrameEnqueueCounter;
     unsigned long long _uniqueNacksSent;
     unsigned long long _lateFramesScheduledWithRTXCount;
     unsigned long long _assembledFramesWithRTXPacketsCount;
     unsigned long long _failedToAssembleFramesWithRTXPacketsCount;
+    VCReportingHistogram *_abnormalPLR;
+    VCReportingHistogram *_abnormalBPL;
+    VCReportingHistogram *_abnormalRTT;
+    VCReportingHistogram *_mlEnhanceFramePercent;
 }
 
+@property(readonly) VCReportingHistogram *mlEnhanceFramePercent; // @synthesize mlEnhanceFramePercent=_mlEnhanceFramePercent;
+@property(readonly) VCReportingHistogram *abnormalRTT; // @synthesize abnormalRTT=_abnormalRTT;
+@property(readonly) VCReportingHistogram *abnormalBPL; // @synthesize abnormalBPL=_abnormalBPL;
+@property(readonly) VCReportingHistogram *abnormalPLR; // @synthesize abnormalPLR=_abnormalPLR;
 @property unsigned long long failedToAssembleFramesWithRTXPacketsCount; // @synthesize failedToAssembleFramesWithRTXPacketsCount=_failedToAssembleFramesWithRTXPacketsCount;
 @property unsigned long long assembledFramesWithRTXPacketsCount; // @synthesize assembledFramesWithRTXPacketsCount=_assembledFramesWithRTXPacketsCount;
 @property unsigned long long lateFramesScheduledWithRTXCount; // @synthesize lateFramesScheduledWithRTXCount=_lateFramesScheduledWithRTXCount;
 @property unsigned long long uniqueNacksSent; // @synthesize uniqueNacksSent=_uniqueNacksSent;
 @property _Bool isRTXTelemetryAvailable; // @synthesize isRTXTelemetryAvailable=_isRTXTelemetryAvailable;
+@property double decodedVideoFrameEnqueueCounter; // @synthesize decodedVideoFrameEnqueueCounter=_decodedVideoFrameEnqueueCounter;
+@property unsigned int videoFrameIncompleteNextTSCounter; // @synthesize videoFrameIncompleteNextTSCounter=_videoFrameIncompleteNextTSCounter;
 @property unsigned int minVideoFrameRate; // @synthesize minVideoFrameRate=_minVideoFrameRate;
-@property(readonly) VCHistogram *nacksPLRWithoutRTX; // @synthesize nacksPLRWithoutRTX=_nacksPLRWithoutRTX;
-@property(readonly) VCHistogram *nacksPLRWithRTX; // @synthesize nacksPLRWithRTX=_nacksPLRWithRTX;
-@property(readonly) VCHistogram *nacksRTXRetransmittedMediaBitRate; // @synthesize nacksRTXRetransmittedMediaBitRate=_nacksRTXRetransmittedMediaBitRate;
-@property(readonly) VCHistogram *nacksRTXMediaBitRate; // @synthesize nacksRTXMediaBitRate=_nacksRTXMediaBitRate;
-@property(readonly) VCHistogram *nacksRTXLateTime; // @synthesize nacksRTXLateTime=_nacksRTXLateTime;
-@property(readonly) VCHistogram *nacksRTXResponseTime; // @synthesize nacksRTXResponseTime=_nacksRTXResponseTime;
+@property double poorConnectionTotalLength; // @synthesize poorConnectionTotalLength=_poorConnectionTotalLength;
+@property double poorConnectionMaxLength; // @synthesize poorConnectionMaxLength=_poorConnectionMaxLength;
+@property double degradedVideoDuration; // @synthesize degradedVideoDuration=_degradedVideoDuration;
+@property double degradedVideoStartTime; // @synthesize degradedVideoStartTime=_degradedVideoStartTime;
+@property _Bool currentDegradedVideoState; // @synthesize currentDegradedVideoState=_currentDegradedVideoState;
+@property(readonly) VCReportingHistogram *poorConnection; // @synthesize poorConnection=_poorConnection;
+@property double lastVideoDegradedTime; // @synthesize lastVideoDegradedTime=_lastVideoDegradedTime;
+@property(readonly) VCReportingHistogram *videoStall; // @synthesize videoStall=_videoStall;
+@property double averageJitterQueueSize; // @synthesize averageJitterQueueSize=_averageJitterQueueSize;
+@property double averageMediaSendBitrateSum; // @synthesize averageMediaSendBitrateSum=_averageMediaSendBitrateSum;
+@property double averageFECSendBitrateSum; // @synthesize averageFECSendBitrateSum=_averageFECSendBitrateSum;
+@property double averageTargetBitrateSum; // @synthesize averageTargetBitrateSum=_averageTargetBitrateSum;
+@property double averageSendBitrateSum; // @synthesize averageSendBitrateSum=_averageSendBitrateSum;
+@property unsigned long long videoFrameCapturedCounter; // @synthesize videoFrameCapturedCounter=_videoFrameCapturedCounter;
+@property unsigned long long videoFrameExpectedCounter; // @synthesize videoFrameExpectedCounter=_videoFrameExpectedCounter;
+@property unsigned long long videoFrameReceivedCounter; // @synthesize videoFrameReceivedCounter=_videoFrameReceivedCounter;
+@property(readonly) VCReportingHistogram *JBUnclippedTarget; // @synthesize JBUnclippedTarget=_JBUnclippedTarget;
+@property(readonly) VCReportingHistogram *JBTarget; // @synthesize JBTarget=_JBTarget;
+@property(readonly) VCReportingHistogram *nacksPLRWithoutRTX; // @synthesize nacksPLRWithoutRTX=_nacksPLRWithoutRTX;
+@property(readonly) VCReportingHistogram *nacksPLRWithRTX; // @synthesize nacksPLRWithRTX=_nacksPLRWithRTX;
+@property(readonly) VCReportingHistogram *nacksRTXRetransmittedMediaBitRate; // @synthesize nacksRTXRetransmittedMediaBitRate=_nacksRTXRetransmittedMediaBitRate;
+@property(readonly) VCReportingHistogram *nacksRTXMediaBitRate; // @synthesize nacksRTXMediaBitRate=_nacksRTXMediaBitRate;
+@property(readonly) VCReportingHistogram *nacksRTXLateTime; // @synthesize nacksRTXLateTime=_nacksRTXLateTime;
+@property(readonly) VCReportingHistogram *nacksRTXResponseTime; // @synthesize nacksRTXResponseTime=_nacksRTXResponseTime;
 @property double maxMediaQueueSize; // @synthesize maxMediaQueueSize=_maxMediaQueueSize;
 @property unsigned int totalMediaQueueSizeReportsCount; // @synthesize totalMediaQueueSizeReportsCount=_totalMediaQueueSizeReportsCount;
 @property double accumulatedTotalMediaQueueSize; // @synthesize accumulatedTotalMediaQueueSize=_accumulatedTotalMediaQueueSize;
@@ -86,6 +133,7 @@ __attribute__((visibility("hidden")))
 @property(retain) NSString *timeToSeeFirstRemoteVideoFrame; // @synthesize timeToSeeFirstRemoteVideoFrame=_timeToSeeFirstRemoteVideoFrame;
 @property(retain) NSString *firstRemoteVideoFrameDecoded; // @synthesize firstRemoteVideoFrameDecoded=_firstRemoteVideoFrameDecoded;
 @property(retain) NSString *firstMediaReceived; // @synthesize firstMediaReceived=_firstMediaReceived;
+@property(retain) NSString *totalMediaStallSaveDelta; // @synthesize totalMediaStallSaveDelta=_totalMediaStallSaveDelta;
 @property(retain) NSString *firstMKIReceived; // @synthesize firstMKIReceived=_firstMKIReceived;
 @property unsigned int audioStreamSwitchCount; // @synthesize audioStreamSwitchCount=_audioStreamSwitchCount;
 @property unsigned int videoStreamSwitchCount; // @synthesize videoStreamSwitchCount=_videoStreamSwitchCount;

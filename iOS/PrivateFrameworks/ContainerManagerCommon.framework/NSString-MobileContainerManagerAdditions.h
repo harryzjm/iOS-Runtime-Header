@@ -10,8 +10,8 @@
 + (id)stringWithFileSystemRepresentation:(const char *)arg1;
 + (id)stringWithFileSystemRepresentation:(const char *)arg1 length:(unsigned long long)arg2;
 - (_Bool)containsDotDotPathComponents;
-- (_Bool)hasPrefixFromArray:(id)arg1;
 - (id)stringByRedactingHomeContent:(id)arg1;
 - (_Bool)MCM_isEqualToString:(id)arg1 caseSensitive:(_Bool)arg2;
+- (_Bool)hasPrefixFromArray:(id)arg1;
 @end
 

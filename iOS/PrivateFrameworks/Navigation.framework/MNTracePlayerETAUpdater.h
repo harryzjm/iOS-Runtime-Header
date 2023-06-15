@@ -9,7 +9,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)_serverDisplayETAForResponseInfo:(id)arg1;
+- (void)_updateForETARoute:(id)arg1;
 - (void)resumeUpdateRequests;
 - (void)startUpdateRequestsForRoutes:(id)arg1 andNavigationType:(long long)arg2;
 - (void)playETAUpdate:(id)arg1;

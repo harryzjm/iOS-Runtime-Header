@@ -7,6 +7,7 @@
 #import <Foundation/NSUserDefaults.h>
 
 @interface NSUserDefaults (TelephonyUtilities)
++ (id)sb_defaults;
 + (id)tu_defaults;
 - (_Bool)boolForKey:(id)arg1 withDefault:(_Bool)arg2;
 @end

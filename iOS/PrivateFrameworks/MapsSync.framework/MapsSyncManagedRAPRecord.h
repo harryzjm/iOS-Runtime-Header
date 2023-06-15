@@ -6,7 +6,7 @@
 
 #import <CoreData/NSManagedObject.h>
 
-@class NSData, NSDate, NSString, NSUUID;
+@class MapsSyncManagedCommunityID, NSData, NSDate, NSString, NSUUID;
 
 __attribute__((visibility("hidden")))
 @interface MapsSyncManagedRAPRecord : NSManagedObject
@@ -17,12 +17,15 @@ __attribute__((visibility("hidden")))
 - (id)initWithEntity:(id)arg1 insertIntoManagedObjectContext:(id)arg2;
 
 // Remaining properties
+@property(nonatomic) short clientRevision; // @dynamic clientRevision;
+@property(nonatomic, retain) MapsSyncManagedCommunityID *communityID; // @dynamic communityID;
 @property(nonatomic, copy) NSData *contentData; // @dynamic contentData;
 @property(nonatomic, copy) NSString *countryCode; // @dynamic countryCode;
 @property(nonatomic, copy) NSDate *createTime; // @dynamic createTime;
 @property(nonatomic, copy) NSUUID *identifier; // @dynamic identifier;
 @property(nonatomic, copy) NSDate *modificationTime; // @dynamic modificationTime;
 @property(nonatomic) long long positionIndex; // @dynamic positionIndex;
+@property(nonatomic, copy) NSData *rapResponse; // @dynamic rapResponse;
 @property(nonatomic, copy) NSString *reportId; // @dynamic reportId;
 @property(nonatomic) short status; // @dynamic status;
 @property(nonatomic, copy) NSDate *statusLastUpdatedDate; // @dynamic statusLastUpdatedDate;

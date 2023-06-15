@@ -6,11 +6,14 @@
 
 #import <AVKit/NSObject-Protocol.h>
 
+@class AVMobileVolumeChromelessButtonControl;
+
 @protocol AVMobileVolumeChromlesButtonControlDelegate <NSObject>
 
 @optional
-- (void)volumeControlButtonDidEndPanning;
-- (void)volumeControlButtonPanningDidContinueWithXDelta:(double)arg1;
-- (void)volumeControlButtonDidBeginPanning;
+- (void)volumeControlButtonDidEndPanning:(AVMobileVolumeChromelessButtonControl *)arg1;
+- (void)volumeControlButton:(AVMobileVolumeChromelessButtonControl *)arg1 didContinuePanningWithXDelta:(double)arg2;
+- (void)volumeControlButtonDidBeginPanning:(AVMobileVolumeChromelessButtonControl *)arg1;
+- (_Bool)volumeControlButtonCanBeginPanning:(AVMobileVolumeChromelessButtonControl *)arg1;
 @end
 

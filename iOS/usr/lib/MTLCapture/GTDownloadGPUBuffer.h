@@ -8,7 +8,6 @@
 
 @protocol MTLBuffer;
 
-__attribute__((visibility("hidden")))
 @interface GTDownloadGPUBuffer : NSObject
 {
     _Atomic unsigned long long *_usedGPUMemory;

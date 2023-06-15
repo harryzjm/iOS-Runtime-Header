@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 @class MPMusicPlayerController, MusicKit_SoftLinking_MPMusicPlayerItem;
+@protocol MusicKit_SoftLinking_MPNowPlayingInfoAudioFormat;
 
 __attribute__((visibility("hidden")))
 @interface MusicKit_SoftLinking_MPMusicPlayerController : NSObject
@@ -39,7 +40,7 @@ __attribute__((visibility("hidden")))
 - (void)play;
 - (void)prepareToPlayWithCompletionHandler:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) _Bool isPreparedToPlay;
-@property(readonly, nonatomic) long long audioFormatBadging;
+@property(readonly, nonatomic) id <MusicKit_SoftLinking_MPNowPlayingInfoAudioFormat> nowPlayingAudioFormat;
 @property(nonatomic) long long shuffleMode;
 @property(nonatomic) long long repeatMode;
 @property(readonly, nonatomic) long long playbackState;

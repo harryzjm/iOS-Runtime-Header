@@ -11,5 +11,10 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (_Bool)checkEventHappenedWithinRecentDuration:(CDStruct_1b6d18a9)arg1 ofResult:(id)arg2 satisfyingThreshold:(double)arg3 resultToScalar:(CDUnknownBlockType)arg4 mostRecentTimeOfEvent:(id *)arg5;
++ (_Bool)checkEventHappenedWithinRecentDuration:(CDStruct_1b6d18a9)arg1 state:(_Bool)arg2 stateTime:(CDStruct_1b6d18a9)arg3 mostRecentTimeOfEvent:(id *)arg4;
++ (CDStruct_1b6d18a9)updateMostRecentTimeOfEvent:(CDStruct_1b6d18a9)arg1 state:(_Bool)arg2 stateTime:(CDStruct_1b6d18a9)arg3;
+- (id)init;
+
 @end
 

@@ -7,18 +7,20 @@
 #import <MobileSafariUI/NSObject-Protocol.h>
 #import <MobileSafariUI/TabGroupProvider-Protocol.h>
 
-@class NSArray, NSSet, NSString, NSUUID, SFTabStateData, TabDocument, UIView;
-@protocol TabCollectionView, UIDropSession;
+@class NSArray, NSSet, NSString, NSUUID, SFTabStateData, TabDocument;
+@protocol TabCollectionView, UIDragSession, UIDropSession;
 
 @protocol TabDocumentDragDropDataSource <TabGroupProvider, NSObject>
 @property(readonly, copy, nonatomic) NSArray *unpinnedTabDocuments;
 @property(readonly, copy, nonatomic) NSArray *currentTabDocuments;
 @property(readonly, nonatomic, getter=isPrivateBrowsingEnabled) _Bool privateBrowsingEnabled;
-@property(readonly, nonatomic) UIView<TabCollectionView> *tabCollectionView;
+@property(readonly, nonatomic) id <TabCollectionView> tabCollectionView;
 - (void)registerUndoWithName:(NSString *)arg1 actions:(void (^)(void))arg2;
 - (void)performBatchUpdatesWithBlock:(void (^)(void))arg1;
 - (void)didEndTrackingSession:(id <UIDropSession>)arg1;
 - (void)didBeginTrackingSession:(id <UIDropSession>)arg1;
+- (void)willEndDragSession:(id <UIDragSession>)arg1;
+- (void)willBeginDragSession:(id <UIDragSession>)arg1;
 - (void)unhideTabDocuments:(NSSet *)arg1;
 - (void)hideTabDocuments:(NSSet *)arg1;
 - (void)sortTabsWithMode:(long long)arg1;

@@ -13,6 +13,9 @@
     MISSING_TYPE *navigator;
     MISSING_TYPE *tracker;
     MISSING_TYPE *followingDataManager;
+    MISSING_TYPE *subscriptionController;
+    MISSING_TYPE *pushNotificationDataManager;
+    MISSING_TYPE *userNotificationService;
 }
 
 @end

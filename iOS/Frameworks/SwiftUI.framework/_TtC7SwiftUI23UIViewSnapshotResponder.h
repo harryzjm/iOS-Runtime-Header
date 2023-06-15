@@ -10,7 +10,9 @@
 {
     MISSING_TYPE *space;
     MISSING_TYPE *baseSize;
+    MISSING_TYPE *basePosition;
     MISSING_TYPE *baseTransform;
+    MISSING_TYPE *_transform;
     MISSING_TYPE *_allowsHitTesting;
     MISSING_TYPE *_displayList;
     MISSING_TYPE *displayListPosition;

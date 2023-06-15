@@ -11,6 +11,7 @@
 
 @protocol BLSBacklightSceneEnvironment_Private <BLSBacklightSceneEnvironment>
 @property(retain) id <BLSBacklightSceneEnvironmentUpdating> updater;
+@property(getter=isAnimatingVisualState) _Bool animatingVisualState;
 @property(retain) BLSAlwaysOnSession *alwaysOnSession;
 @property(readonly) NSDate *presentationDate;
 @end

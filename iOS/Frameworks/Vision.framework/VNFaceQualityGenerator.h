@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
 + (Class)detectorClassForConfigurationOptions:(id)arg1 error:(id *)arg2;
 + (unsigned long long)inputImageAspectRatioHandlingForConfigurationOptions:(id)arg1;
 + (unsigned int)networkRequiredInputImagePixelFormatForConfigurationOptions:(id)arg1;
-+ (id)configurationOptionKeysForDetectorKey;
 + (id)keyForDetectorWithConfigurationOptions:(id)arg1;
 + (id)espressoModelInputImageDimensionsBlobNameForConfigurationOptions:(id)arg1;
 - (id).cxx_construct;

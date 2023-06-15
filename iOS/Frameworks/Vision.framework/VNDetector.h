@@ -12,20 +12,28 @@ __attribute__((visibility("hidden")))
 @interface VNDetector : NSObject
 {
     struct os_unfair_lock_s _detectorMultiSessionAccessLock;
+    NSDictionary *_boundComputeStageDevices;
     NSDictionary *_configurationOptions;
     VNMetalContext *_metalContext;
     unsigned long long _backingStore;
     VNControlledCapacityTasksQueue *_synchronizationQueue;
 }
 
-+ (id)primaryInferenceNetworkDescriptorForIdentifier:(id)arg1 version:(id)arg2 error:(id *)arg3;
 + (unsigned int)VNClassCode;
++ (id)computeStageDevicesForConfigurationOptions:(id)arg1 error:(id *)arg2;
++ (id)computeDeviceForComputeStage:(id)arg1 configurationOptions:(id)arg2 error:(id *)arg3;
++ (id)computeDeviceForConfiguredProcessingDeviceBridge:(id)arg1 computeStage:(id)arg2 supportedComputeDevices:(id)arg3 error:(id *)arg4;
++ (id)computeStagesToBindForConfigurationOptions:(id)arg1;
 + (id)supportedImageSizeSetForOptions:(id)arg1 error:(id *)arg2;
++ (id)supportedComputeStageDevicesForOptions:(id)arg1 error:(id *)arg2;
 + (void)runSuccessReportingBlockSynchronously:(CDUnknownBlockType)arg1 detector:(id)arg2 qosClass:(unsigned int)arg3 error:(id *)arg4;
-+ (id)supportedImageSizeSetForEspressoModelWithName:(id)arg1 inputImageBlobName:(id)arg2 analysisPixelFormatType:(unsigned int)arg3 error:(id *)arg4;
++ (_Bool)loadedInstanceWithBoundComputeStageDevices:(id)arg1 canBeUsedForRequestedComputeStageDevices:(id)arg2;
++ (_Bool)loadedInstanceWithComputeDevice:(id)arg1 boundToComputeStage:(id)arg2 canBeUsedForProcessingDeviceBridge:(id)arg3;
++ (id)supportedImageSizeSetForEspressoModelAtPath:(id)arg1 inputImageBlobName:(id)arg2 analysisPixelFormatType:(unsigned int)arg3 error:(id *)arg4;
 + (id)detectorKeyComponentForDetectorConfigurationOptionKey:(id)arg1 value:(id)arg2;
 + (id)keyForDetectorWithConfigurationOptions:(id)arg1;
 + (id)configurationOptionKeysForDetectorKey;
++ (id)_computeStageDeviceBindingsForConfiguration:(id)arg1 error:(id *)arg2;
 + (id)detectorWithConfigurationOptions:(id)arg1 forSession:(id)arg2 error:(id *)arg3;
 + (Class)detectorClassForConfigurationOptions:(id)arg1 error:(id *)arg2;
 + (id)fullyPopulatedConfigurationOptionsWithOverridingOptions:(id)arg1;
@@ -35,6 +43,7 @@ __attribute__((visibility("hidden")))
 + (Class)detectorClassForDetectorType:(id)arg1 configuredWithOptions:(id)arg2 error:(id *)arg3;
 + (Class)detectorClassForDetectorType:(id)arg1 error:(id *)arg2;
 + (_Bool)isReentrant;
++ (id)detectorInternalProcessingAsyncTasksQueue;
 + (id)detectorCropProcessingAsyncTasksQueue;
 + (id)detectorCropCreationAsyncTasksQueue;
 - (void).cxx_destruct;
@@ -42,15 +51,17 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) unsigned long long backingStore; // @synthesize backingStore=_backingStore;
 @property(readonly, nonatomic) VNMetalContext *metalContext; // @synthesize metalContext=_metalContext;
 @property(readonly, copy) NSDictionary *configurationOptions; // @synthesize configurationOptions=_configurationOptions;
-- (id)inferenceNetworkIdentifiers;
+@property(readonly, copy) NSString *description;
 - (void)recordImageCropQuickLookInfoFromOptionsSafe:(id)arg1 toObservation:(id)arg2;
 - (void)recordImageCropQuickLookInfoToOptionsSafe:(id)arg1 cacheKey:(id)arg2 imageBuffer:(id)arg3;
 - (void)recordImageCropQuickLookInfoFromOptions:(id)arg1 toObservation:(id)arg2;
 - (void)recordImageCropQuickLookInfoToOptions:(id)arg1 cacheKey:(id)arg2 imageBuffer:(id)arg3;
-- (id)validatedProcessingDeviceInOptions:(id)arg1 error:(id *)arg2;
-- (_Bool)supportsProcessingDevice:(id)arg1;
+- (id)computeDeviceOfTypes:(unsigned long long)arg1 forComputeStage:(id)arg2 processingOptions:(id)arg3 error:(id *)arg4;
+- (id)computeDeviceForComputeStage:(id)arg1 processingOptions:(id)arg2 error:(id *)arg3;
 - (id)requiredCancellerInOptions:(id)arg1 error:(id *)arg2;
 - (_Bool)getOptionalCanceller:(id *)arg1 inOptions:(id)arg2 error:(id *)arg3;
+- (id)boundComputeDeviceForComputeStage:(id)arg1 error:(id *)arg2;
+@property(readonly, copy, nonatomic) NSDictionary *boundComputeStageDevices;
 - (id)newMetalContextForConfigurationOptions:(id)arg1 error:(id *)arg2;
 @property(readonly, nonatomic) unsigned long long signPostAdditionalParameter;
 - (_Bool)needsMetalContext;
@@ -71,7 +82,6 @@ __attribute__((visibility("hidden")))
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

@@ -9,8 +9,6 @@
 __attribute__((visibility("hidden")))
 @interface _TtC8VideosUI36UnifiedMessagingBannerViewController
 {
-    MISSING_TYPE *viewModel;
-    MISSING_TYPE *messageViewController;
     MISSING_TYPE *$__lazy_storage_$_containerView;
 }
 

@@ -6,7 +6,7 @@
 
 #import <PassKitUI/NSObject-Protocol.h>
 
-@class NSArray, NSCollectionLayoutSection, NSDiffableDataSourceSectionSnapshot, NSString, UICollectionReusableView, UICollectionViewCellRegistration;
+@class NSArray, NSCollectionLayoutSection, NSDiffableDataSourceSectionSnapshot, NSString, UICollectionReusableView, UICollectionViewCellRegistration, UIContextMenuConfiguration;
 @protocol NSCollectionLayoutEnvironment;
 
 @protocol PKDynamicSectionController <NSObject>
@@ -19,6 +19,7 @@
 - (void)willDisplayItem:(id)arg1;
 - (_Bool)shouldHighlightItem:(id)arg1;
 - (void)didSelectItem:(id)arg1;
+- (UIContextMenuConfiguration *)contextMenuConfigurationForItem:(id)arg1;
 - (void)configureSupplementaryRegistration:(UICollectionReusableView *)arg1 elementKind:(NSString *)arg2 sectionIdentifier:(NSString *)arg3;
 - (Class)supplementaryRegistrationClassForKind:(NSString *)arg1 sectionIdentifier:(NSString *)arg2;
 - (UICollectionViewCellRegistration *)cellRegistrationForItem:(id)arg1;

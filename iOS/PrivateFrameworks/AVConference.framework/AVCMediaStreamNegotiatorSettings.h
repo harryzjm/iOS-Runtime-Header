@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSSet, VCMediaNegotiatorAudioConfiguration, VCVideoRuleCollections;
+@class NSArray, NSDictionary, NSMutableSet, NSSet, VCMediaNegotiatorAudioConfiguration, VCVideoRuleCollections;
 
 __attribute__((visibility("hidden")))
 @interface AVCMediaStreamNegotiatorSettings : NSObject
@@ -15,22 +15,41 @@ __attribute__((visibility("hidden")))
     VCVideoRuleCollections *_screenRuleCollections;
     VCMediaNegotiatorAudioConfiguration *_audioConfiguration;
     unsigned int _localSSRC;
+    NSMutableSet *_hdrModesSupported;
+    long long _mediaStreamDirection;
+    _Bool _shouldSetJitterBufferMode;
+    long long _accessNetworkType;
+    NSArray *_hdrModePixelFormats;
+    long long _tilesPerFrame;
 }
 
-+ (unsigned long long)hdrModeWithOptions:(id)arg1;
++ (unsigned long long)hdrModeWithNegotiatorInitOptions:(id)arg1;
 + (id)negotiatorSettingsForMode:(long long)arg1 deviceRole:(unsigned char)arg2 options:(id)arg3 errorString:(id *)arg4;
+@property(readonly, nonatomic) long long tilesPerFrame; // @synthesize tilesPerFrame=_tilesPerFrame;
+@property(readonly, nonatomic) NSArray *hdrModePixelFormats; // @synthesize hdrModePixelFormats=_hdrModePixelFormats;
+@property(nonatomic) long long accessNetworkType; // @synthesize accessNetworkType=_accessNetworkType;
+@property(readonly, nonatomic) _Bool shouldSetJitterBufferMode; // @synthesize shouldSetJitterBufferMode=_shouldSetJitterBufferMode;
+@property(readonly, nonatomic) long long mediaStreamDirection; // @synthesize mediaStreamDirection=_mediaStreamDirection;
+@property(readonly, nonatomic) NSSet *hdrModesSupported; // @synthesize hdrModesSupported=_hdrModesSupported;
 @property(readonly, nonatomic) unsigned int localSSRC; // @synthesize localSSRC=_localSSRC;
 @property(readonly, nonatomic) VCMediaNegotiatorAudioConfiguration *audioConfiguration; // @synthesize audioConfiguration=_audioConfiguration;
 @property(readonly, nonatomic) VCVideoRuleCollections *screenRuleCollections; // @synthesize screenRuleCollections=_screenRuleCollections;
 @property(readonly, nonatomic) VCVideoRuleCollections *videoRuleCollections; // @synthesize videoRuleCollections=_videoRuleCollections;
+@property(readonly, nonatomic) int connectionType;
+@property(readonly, nonatomic) NSDictionary *featureListString;
+@property(readonly, nonatomic) unsigned char featureListStringType;
+@property(readonly, nonatomic) unsigned long long preferredMediaBitRate;
+@property(readonly, nonatomic) unsigned long long audioChannelCount;
+@property(readonly, nonatomic) unsigned int jitterBufferMode;
+@property(readonly, nonatomic) double rtcpSendInterval;
+@property(readonly, nonatomic) double rtcpTimeOutInterval;
+@property(readonly, nonatomic) _Bool rtcpTimeOutEnabled;
+@property(readonly, nonatomic) unsigned long long maxBandwidth;
 @property(readonly, nonatomic) unsigned long long minBandwidth;
 @property(readonly, nonatomic) unsigned long long ptime;
-@property(readonly, nonatomic) NSSet *hdrModesSupported;
-@property(readonly, nonatomic) NSArray *hdrModePixelFormats;
 @property(readonly, nonatomic) int preferredAudioCodec;
 @property(readonly, nonatomic) int operatingMode;
 @property(readonly, nonatomic) long long captureSource;
-@property(readonly, nonatomic) long long tilesPerFrame;
 @property(readonly, nonatomic) long long audioStreamMode;
 @property(readonly, nonatomic) long long videoStreamMode;
 - (void)dealloc;

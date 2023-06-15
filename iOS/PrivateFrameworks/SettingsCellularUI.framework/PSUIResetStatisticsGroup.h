@@ -6,15 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@class CHManager, PSConfirmationSpecifier, PSSpecifier;
+@class CHManager, PSConfirmationSpecifier, PSSpecifier, PSUICoreTelephonyDataCache;
 @protocol PSUIResetStatisticsGroupDelegate;
 
 __attribute__((visibility("hidden")))
 @interface PSUIResetStatisticsGroup : NSObject
 {
-    unsigned long long _policy;
     id <PSUIResetStatisticsGroupDelegate> _delegate;
+    PSUICoreTelephonyDataCache *_dataCache;
     PSSpecifier *_groupSpecifier;
+    PSSpecifier *_enableStatisticsSpecifier;
     PSConfirmationSpecifier *_resetButtonSpecifier;
     CHManager *_callHistoryManager;
 }
@@ -22,15 +23,21 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) CHManager *callHistoryManager; // @synthesize callHistoryManager=_callHistoryManager;
 @property(retain, nonatomic) PSConfirmationSpecifier *resetButtonSpecifier; // @synthesize resetButtonSpecifier=_resetButtonSpecifier;
+@property(retain, nonatomic) PSSpecifier *enableStatisticsSpecifier; // @synthesize enableStatisticsSpecifier=_enableStatisticsSpecifier;
 @property(retain, nonatomic) PSSpecifier *groupSpecifier; // @synthesize groupSpecifier=_groupSpecifier;
+@property(retain, nonatomic) PSUICoreTelephonyDataCache *dataCache; // @synthesize dataCache=_dataCache;
 @property(nonatomic) __weak id <PSUIResetStatisticsGroupDelegate> delegate; // @synthesize delegate=_delegate;
-@property(nonatomic) unsigned long long policy; // @synthesize policy=_policy;
 - (id)getLogger;
-- (void)clearStats:(id)arg1;
-- (void)_updateLastResetText;
+- (void)clearStats;
+- (void)clearStatsPressed:(id)arg1;
+- (id)statsEnabled:(id)arg1;
+- (void)setStatsEnabled:(id)arg1 specifier:(id)arg2;
+- (void)_updateFooterText;
 - (id)_lastUpdateDate;
 - (id)specifiers;
-- (id)initWithPolicy:(unsigned long long)arg1;
+- (id)_createResetConfirmationAlertDict;
+- (void)createSpecifiers;
+- (id)initWithDataCache:(id)arg1 callHistoryManager:(id)arg2 delegate:(id)arg3;
 
 @end
 

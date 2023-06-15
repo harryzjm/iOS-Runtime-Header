@@ -52,6 +52,8 @@
 - (_Bool)validateGeometry;
 - (void)invalidate;
 - (id)strokeLayerStackForStrokeType:(unsigned long long)arg1;
+- (void)enumerateLayerAndStackForGridColumnRange:(struct _NSRange)arg1 options:(unsigned long long)arg2 usingBlock:(CDUnknownBlockType)arg3;
+- (void)enumerateLayerAndStackForGridRowRange:(struct _NSRange)arg1 options:(unsigned long long)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (id)strokeLayerStackForRow:(unsigned int)arg1;
 - (id)strokeLayerStackForColumn:(unsigned int)arg1;
 - (id)strokeLayerForStrokeType:(unsigned long long)arg1;

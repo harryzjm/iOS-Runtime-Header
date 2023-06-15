@@ -60,14 +60,14 @@ __attribute__((visibility("hidden")))
 - (void)clearPayloads;
 @property(nonatomic) _Bool hasRtpSSRC;
 - (void)dealloc;
-- (_Bool)setupVideoRuleCollection:(id)arg1;
+- (_Bool)setupVideoRuleCollection:(id)arg1 encodeDecodeFeatures:(id)arg2;
 - (id)rulesForEncodeType:(unsigned char)arg1 paylaod:(int)arg2 videoRuleCollection:(id)arg3;
 - (void)printWithLogFile:(void *)arg1 prefix:(id)arg2 screenSize:(struct CGSize)arg3;
 @property(readonly, nonatomic) VCVideoRuleCollections *videoRuleCollections;
 - (_Bool)addVideoRules:(id)arg1 encodingType:(unsigned char)arg2 payload:(int)arg3 videoRuleCollections:(id)arg4;
 @property(readonly, nonatomic) struct CGSize orientationMismatchDisplayRatio;
 - (void)aspectRatioPortrait:(struct CGSize *)arg1 aspectRatioLandscape:(struct CGSize *)arg2 orientationMismatchAspectRatioLandscape:(struct CGSize *)arg3 orientationMismatchAspectRatioPortrait:(struct CGSize *)arg4 screenSize:(struct CGSize)arg5;
-- (id)initWithSSRC:(unsigned int)arg1 videoRuleCollections:(id)arg2 screenSize:(struct CGSize)arg3 aspectRatioPortrait:(struct CGSize)arg4 aspectRatioLandscape:(struct CGSize)arg5 orientationMismatchAspectRatioLandscape:(struct CGSize)arg6;
+- (id)initWithSSRC:(unsigned int)arg1 videoRuleCollections:(id)arg2 screenSize:(struct CGSize)arg3 aspectRatioPortrait:(struct CGSize)arg4 aspectRatioLandscape:(struct CGSize)arg5 orientationMismatchAspectRatioLandscape:(struct CGSize)arg6 encodeDecodeFeatures:(id)arg7;
 
 @end
 

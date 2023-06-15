@@ -14,6 +14,7 @@
 - (UITableViewCell *)cell;
 
 @optional
+- (void)setEnabled:(_Bool)arg1;
 - (double)gapToNextSection;
 @end
 

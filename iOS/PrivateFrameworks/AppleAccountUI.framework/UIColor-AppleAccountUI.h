@@ -4,10 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIColor.h>
+#import <UIKitCore/UIColor.h>
 
 @interface UIColor (AppleAccountUI)
-+ (id)aaui_contentBackgroundColor;
++ (id)aaui_secondaryContentBackgroundColor;
++ (id)aaui_primaryContentBackgroundColor;
 + (id)aaui_navigationBarColorForStyle:(long long)arg1;
 + (id)aaui_colorWithHexString:(id)arg1;
 @end

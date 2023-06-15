@@ -26,6 +26,8 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly, copy, nonatomic) NSString *highLevelDomain;
+@property(readonly, copy, nonatomic) NSString *effectiveTitleForSorting;
+@property(readonly, copy, nonatomic) NSString *effectiveTitle;
 - (id)initWithSavedAccount:(id)arg1 warning:(id)arg2 searchPattern:(id)arg3 savedAccountIsOnlySavedAccountForHighLevelDomain:(_Bool)arg4;
 
 @end

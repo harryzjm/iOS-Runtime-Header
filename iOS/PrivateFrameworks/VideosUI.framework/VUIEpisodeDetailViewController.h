@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
 @class NSString, UITapGestureRecognizer, VUIEpisodeDetailView, VUIMediaItem, VUIViewControllerContentPresenter;
 @protocol VUIEpisodeDetailViewControllerDelegate;
@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak id <VUIEpisodeDetailViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) VUIViewControllerContentPresenter *contentPresenter; // @synthesize contentPresenter=_contentPresenter;
 @property(retain, nonatomic) VUIMediaItem *mediaItem; // @synthesize mediaItem=_mediaItem;
+- (void)_isPlaybackUIBeingShownDidChange:(id)arg1;
 - (void)_configureNavigationBar;
 - (void)dismissPopover;
 - (void)didTapPlay;
@@ -38,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewDidLoad;
+- (void)dealloc;
 - (id)initWithMediaItem:(id)arg1;
 
 // Remaining properties

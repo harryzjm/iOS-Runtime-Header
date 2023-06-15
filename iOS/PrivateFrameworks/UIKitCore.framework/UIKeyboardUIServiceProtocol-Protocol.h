@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSNumber, UIKeyboardUISnapshot;
+@class NSNumber, NSUUID, UIKeyboardUISnapshot;
 
 @protocol UIKeyboardUIServiceProtocol
-- (void)setKeyboardAlpha:(NSNumber *)arg1;
+- (void)setKeyboardAlpha:(NSNumber *)arg1 force:(NSNumber *)arg2 sessionID:(NSUUID *)arg3;
 - (UIKeyboardUISnapshot *)snapshotForOptions:(NSNumber *)arg1;
 @end
 

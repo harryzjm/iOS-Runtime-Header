@@ -15,6 +15,9 @@
     MISSING_TYPE *$__lazy_storage_$_imageViewLayout;
     MISSING_TYPE *$__lazy_storage_$_appImageViewLayout;
     MISSING_TYPE *$__lazy_storage_$_buttonLayout;
+    MISSING_TYPE *$__lazy_storage_$_contextualButtonLayout;
+    MISSING_TYPE *$__lazy_storage_$_downloadIndicatorLayout;
+    MISSING_TYPE *$__lazy_storage_$_mediaTagsLayout;
     MISSING_TYPE *hideFloatingBackground;
     MISSING_TYPE *layoutType;
 }

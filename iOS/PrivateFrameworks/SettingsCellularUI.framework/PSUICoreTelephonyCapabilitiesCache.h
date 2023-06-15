@@ -15,10 +15,12 @@ __attribute__((visibility("hidden")))
     PSSimStatusCache *_simStatusCache;
     CTCapability *_volteCapability;
     CTCapability *_vonrCapability;
+    CTCapability *_turnOffCellularCapability;
 }
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+@property(retain) CTCapability *turnOffCellularCapability; // @synthesize turnOffCellularCapability=_turnOffCellularCapability;
 @property(retain) CTCapability *vonrCapability; // @synthesize vonrCapability=_vonrCapability;
 @property(retain) CTCapability *volteCapability; // @synthesize volteCapability=_volteCapability;
 @property(retain, nonatomic) PSSimStatusCache *simStatusCache; // @synthesize simStatusCache=_simStatusCache;
@@ -26,6 +28,9 @@ __attribute__((visibility("hidden")))
 - (id)getLogger;
 - (void)clearCache;
 - (void)context:(id)arg1 capabilitiesChanged:(id)arg2;
+- (void)setTurnOffCellular:(id)arg1 enabled:(_Bool)arg2;
+- (_Bool)getTurnOffCellular:(id)arg1;
+- (_Bool)canSetTurnOffCellular:(id)arg1;
 - (void)setCapabilityVoNR:(id)arg1 enabled:(_Bool)arg2;
 - (_Bool)capabilityEnabledVoNR:(id)arg1;
 - (_Bool)canSetCapabilityVoNR:(id)arg1;

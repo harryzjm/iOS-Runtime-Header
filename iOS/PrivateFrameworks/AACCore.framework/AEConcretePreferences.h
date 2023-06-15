@@ -16,6 +16,8 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+@property(nonatomic, getter=shouldRestrictMedia) _Bool restrictMedia;
+@property(nonatomic, getter=isPortalDemoModeActive) _Bool portalDemoModeActive;
 @property(nonatomic, getter=shouldDisableQuickNote) _Bool disableQuickNote;
 @property(nonatomic, getter=shouldDisableDictation) _Bool disableDictation;
 @property(nonatomic, getter=shouldElevateWindows) _Bool elevateWindows;
@@ -23,7 +25,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, getter=shouldDisableTrackpadLookup) _Bool disableTrackpadLookup;
 @property(nonatomic, getter=shouldRestrictContentCapture) _Bool restrictContentCapture;
 @property(nonatomic, getter=shouldStopAirplayBeforehand) _Bool stopAirPlayBeforehand;
-@property(nonatomic, getter=shouldPauseMedia) _Bool pauseMedia;
 @property(nonatomic, getter=shouldRestrictFrontmostApp) _Bool restrictFrontmostApp;
 @property(nonatomic, getter=shouldRestrictNetworkAccess) _Bool restrictNetworkAccess;
 @property(nonatomic, getter=shouldScrubPasteboard) _Bool scrubPasteboard;

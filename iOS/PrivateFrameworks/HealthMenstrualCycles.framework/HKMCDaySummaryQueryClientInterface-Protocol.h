@@ -9,6 +9,6 @@
 @class NSArray, NSNumber, NSUUID;
 
 @protocol HKMCDaySummaryQueryClientInterface <HKQueryClientInterface>
-- (void)client_deliverDaySummaries:(NSArray *)arg1 clearPending:(_Bool)arg2 isFinalBatch:(_Bool)arg3 analysisAnchor:(NSNumber *)arg4 queryUUID:(NSUUID *)arg5;
+- (void)client_deliverDaySummaries:(NSArray *)arg1 clearPending:(_Bool)arg2 isFinalBatch:(_Bool)arg3 daySummaryAnchor:(NSNumber *)arg4 queryUUID:(NSUUID *)arg5;
 @end
 

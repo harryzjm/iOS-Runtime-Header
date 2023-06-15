@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
 @class MISSING_TYPE, NSArray, UILabel;
 
@@ -18,6 +18,8 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *currentlyConnectingCell;
     MISSING_TYPE *titleLabel;
     MISSING_TYPE *indicatorView;
+    MISSING_TYPE *promptLabel;
+    MISSING_TYPE *promptIndicatorView;
     MISSING_TYPE *menuGestureRecognizer;
     MISSING_TYPE *playPauseGestureRecognizer;
 }

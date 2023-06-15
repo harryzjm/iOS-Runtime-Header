@@ -11,6 +11,7 @@
 @protocol PKListTextFieldContentViewDelegate <NSObject>
 
 @optional
+- (void)textFieldDidChangeSelection:(UITextField *)arg1 forContentView:(PKListTextFieldContentView *)arg2;
 - (void)textFieldDidEndEditing:(UITextField *)arg1 forContentView:(PKListTextFieldContentView *)arg2;
 - (void)textFieldDidBeginEditing:(UITextField *)arg1 forContentView:(PKListTextFieldContentView *)arg2;
 - (_Bool)textFieldShouldReturn:(UITextField *)arg1 forContentView:(PKListTextFieldContentView *)arg2;

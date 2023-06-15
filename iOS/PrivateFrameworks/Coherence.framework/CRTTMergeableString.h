@@ -15,7 +15,6 @@ __attribute__((visibility("hidden")))
     unsigned long long _editCount;
     _Bool _cacheInvalid;
     CRTTMergeableString *_renamedString;
-    _Bool _hasLocalChanges;
     NSObject *_context;
     ObjCVersion *_version;
     ObjCVersion *_addedByVersion;
@@ -40,14 +39,13 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) long long localCounter; // @synthesize localCounter=_localCounter;
 @property(readonly, nonatomic) struct TopoReplica replica; // @synthesize replica=_replica;
 @property(readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
-@property(nonatomic) _Bool hasLocalChanges; // @synthesize hasLocalChanges=_hasLocalChanges;
 @property(retain, nonatomic) id attributedString; // @synthesize attributedString=_attributedString;
 @property(retain, nonatomic) ObjCVersion *addedByVersion; // @synthesize addedByVersion=_addedByVersion;
 @property(retain, nonatomic) ObjCVersion *version; // @synthesize version=_version;
 @property(retain, nonatomic) NSObject *context; // @synthesize context=_context;
 - (void)finalizeTimestamps:(id)arg1;
 - (_Bool)needToFinalizeTimestamps;
-- (void)applyRenamesAndRetainOrRelease:(id)arg1 context:(id)arg2;
+- (void)applyRenamesAndRetainOrRelease:(id)arg1 context:(id)arg2 alsoApplyAllRenames:(_Bool)arg3;
 - (id)renamedIfAvailable;
 - (id)fullyRenamed:(id)arg1;
 - (id)temporaryConcurrentNames;
@@ -65,7 +63,7 @@ __attribute__((visibility("hidden")))
 - (void)sortSplitNodes;
 - (_Bool)deltaMerge:(id)arg1;
 - (_Bool)canDeltaMerge:(id)arg1;
-- (unsigned long long)mergeWithString:(id)arg1;
+- (unsigned long long)mergeWithString:(id)arg1 optimized:(_Bool)arg2;
 - (_Bool)hasDeltaTo:(id)arg1 compareElements:(CDUnknownBlockType)arg2;
 - (_Bool)canMergeString:(id)arg1;
 - (void)coalesce;
@@ -109,6 +107,7 @@ __attribute__((visibility("hidden")))
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)deleteAllSubstrings;
 - (void)dealloc;
+- (void)stealReplicaFrom:(id)arg1;
 - (id)initWithStorage:(id)arg1 uuid:(id)arg2 createInitialNodes:(_Bool)arg3;
 - (id)initWithStorage:(id)arg1 uuid:(id)arg2;
 - (_Bool)saveSubstrings:(void *)arg1 encoder:(id)arg2 error:(id *)arg3;
@@ -119,6 +118,7 @@ __attribute__((visibility("hidden")))
 - (void)deltaTo:(id)arg1 edited:(CDUnknownBlockType)arg2 unedited:(CDUnknownBlockType)arg3;
 - (id)undoCommandToChangeTo:(id)arg1 unedited:(CDUnknownBlockType)arg2;
 - (void)undeleteSubstrings:(void *)arg1;
+- (_Bool)hasAllIDsIn:(void *)arg1;
 
 @end
 

@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 - (void)_registerForAirPlayNotifications;
 - (void)tearDownForCompletion;
 - (void)performActivity;
+@property(readonly, nonatomic) NSString *localizedRouteUnavailabilityMessage;
 @property(readonly, nonatomic, getter=isRouteAvailable) _Bool routeAvailable;
 - (_Bool)canPerformWithActivityItems:(id)arg1;
 - (id)_systemImageName;

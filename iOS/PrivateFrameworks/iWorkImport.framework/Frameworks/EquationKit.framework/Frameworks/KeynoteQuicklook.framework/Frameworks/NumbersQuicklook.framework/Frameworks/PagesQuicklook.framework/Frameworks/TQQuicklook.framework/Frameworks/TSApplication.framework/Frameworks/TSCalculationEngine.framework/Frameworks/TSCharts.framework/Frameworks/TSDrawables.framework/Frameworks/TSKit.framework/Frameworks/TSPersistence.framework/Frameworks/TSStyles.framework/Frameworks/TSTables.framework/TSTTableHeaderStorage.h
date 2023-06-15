@@ -34,6 +34,7 @@
 - (void)updateHeaderAtIndex:(unsigned int)arg1 fromMetadata:(id)arg2;
 - (id)metadataAtIndex:(unsigned int)arg1 hidingAction:(unsigned char)arg2 defaultSize:(double)arg3 uuid:(struct TSKUIDStruct)arg4;
 - (void)updateStylesWithBlock:(CDUnknownBlockType)arg1;
+- (unsigned long long)defaultStyleHandlesAtIndex:(unsigned int)arg1 outCellStyleHandle:(id *)arg2 outTextStyleHandle:(id *)arg3;
 - (unsigned long long)defaultStylesAtIndex:(unsigned int)arg1 outCellStyle:(id *)arg2 outTextStyle:(id *)arg3;
 - (void)setTextStyle:(id)arg1 atIndex:(unsigned int)arg2;
 - (id)textStyleAtIndex:(unsigned int)arg1;

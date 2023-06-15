@@ -7,11 +7,11 @@
 @class NSString;
 
 @protocol BMIdentifiableContentEvent
-@property(nonatomic, readonly) double absoluteTimestamp;
-@property(nonatomic, readonly) NSString *uniqueId;
+@property(readonly, nonatomic) double absoluteTimestamp;
+@property(readonly, nonatomic) NSString *uniqueId;
 
 @optional
-@property(nonatomic, readonly) NSString *bundleId;
-@property(nonatomic, readonly) NSString *domainId;
+@property(readonly, nonatomic) NSString *bundleId;
+@property(readonly, nonatomic) NSString *domainId;
 @end
 

@@ -14,6 +14,8 @@
     MISSING_TYPE *_pegasusPerfMetrics;
     MISSING_TYPE *_latencyInfo;
     MISSING_TYPE *_pegasusClientEventLog;
+    MISSING_TYPE *_pegasusClientEventLogs;
+    MISSING_TYPE *_pegasusSelfOpaquePayloads;
 }
 
 @end

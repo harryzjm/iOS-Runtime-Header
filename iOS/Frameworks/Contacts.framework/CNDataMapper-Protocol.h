@@ -6,7 +6,7 @@
 
 #import <Contacts/NSObject-Protocol.h>
 
-@class CNAuthorizationContext, CNChangeHistoryClearRequest, CNChangeHistoryFetchRequest, CNChangeHistoryResult, CNContact, CNContactFetchRequest, CNContainer, CNDataMapperConfiguration, CNObservable, CNPolicy, CNPolicyDescription, CNResult, CNSaveRequest, NSArray, NSData, NSDictionary, NSNumber, NSPredicate, NSString;
+@class CNAuthorizationContext, CNChangeHistoryClearRequest, CNChangeHistoryFetchRequest, CNChangeHistoryResult, CNContact, CNContactFetchRequest, CNContainer, CNDataMapperConfiguration, CNExtensionCommand, CNObservable, CNPolicy, CNPolicyDescription, CNResult, CNSaveRequest, NSArray, NSData, NSDictionary, NSNumber, NSPredicate, NSString;
 @protocol CNCancelable, CNKeyDescriptor;
 
 @protocol CNDataMapper <NSObject>
@@ -30,9 +30,11 @@
 - (id)initWithConfiguration:(CNDataMapperConfiguration *)arg1;
 
 @optional
+@property(readonly, nonatomic) _Bool shouldCaptureMetricsForQueries;
 @property(readonly, nonatomic) _Bool shouldLogPrivacyAccountingAccessEvents;
 @property(retain, nonatomic) NSString *legacyTetheredSyncComputerAnchor;
 @property(retain, nonatomic) NSString *legacyTetheredSyncDeviceAnchor;
+- (id)requestExtensionCommand:(CNExtensionCommand *)arg1 error:(id *)arg2;
 - (_Bool)resetSortDataIfNeededWithError:(id *)arg1;
 - (_Bool)setDefaultAccountIdentifier:(NSString *)arg1 error:(id *)arg2;
 - (_Bool)writeFavoritesPropertyListData:(NSData *)arg1 toPath:(NSString *)arg2 error:(id *)arg3;

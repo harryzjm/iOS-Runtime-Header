@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)dataType;
 - (unsigned long long)offset;
 - (id)name;
+- (_Bool)isEqual:(id)arg1;
 - (id)formattedDescription:(unsigned long long)arg1;
 - (id)dataTypeDescription;
 - (_Bool)isMemberLayoutThreadSafeWith:(id)arg1;

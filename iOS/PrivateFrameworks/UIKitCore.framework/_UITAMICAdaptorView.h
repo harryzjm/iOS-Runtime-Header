@@ -27,8 +27,10 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) float sizingPriority; // @synthesize sizingPriority=_sizingPriority;
 @property(readonly, nonatomic) UIView *view; // @synthesize view=_view;
 - (void)layoutSubviews;
-- (void)_geometryChanged:(const CDStruct_f46536fb *)arg1 forAncestor:(id)arg2;
+- (void)_geometryChanged:(const CDStruct_c9afd433 *)arg1 forAncestor:(id)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1 withHorizontalFittingPriority:(float)arg2 verticalFittingPriority:(float)arg3;
+- (void)_updateTraitsAndLayoutSizeIfNecessary;
 - (void)updateForAvailableSize;
 - (void)didMoveToWindow;
 - (id)initWithView:(id)arg1;

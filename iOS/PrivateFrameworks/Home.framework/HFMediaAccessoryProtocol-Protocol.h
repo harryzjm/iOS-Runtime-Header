@@ -12,6 +12,10 @@
 @property(readonly, nonatomic) HFMediaAccessoryCommonSettingsManager *commonSettingsManager;
 - (NAFuture *)enableDoorbellChime:(_Bool)arg1;
 - (_Bool)isDoorbellChimeEnabled;
+- (NAFuture *)setEnableAudioAnalysis:(_Bool)arg1;
+- (_Bool)isAudioAnalysisEnabled;
+- (NAFuture *)setSiriDisabled:(_Bool)arg1;
+- (_Bool)isSiriDisabled;
 - (NAFuture *)setEnableAnnounce:(_Bool)arg1;
 - (_Bool)isAnnounceEnabled;
 - (_Bool)isSiriEndpointAccessory;

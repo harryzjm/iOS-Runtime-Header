@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
+@class GDKnosisRequest;
 
 @protocol GDKnosisXPCProtocol
-- (void)executeKGQ:(NSString *)arg1 withCompletion:(void (^)(GDKnosisResult *, NSError *))arg2;
+- (void)executeIntent:(GDKnosisRequest *)arg1 withCompletion:(void (^)(GDKnosisResult *, NSError *))arg2;
+- (void)executeKGQ:(GDKnosisRequest *)arg1 withCompletion:(void (^)(GDKnosisResult *, NSError *))arg2;
 @end
 

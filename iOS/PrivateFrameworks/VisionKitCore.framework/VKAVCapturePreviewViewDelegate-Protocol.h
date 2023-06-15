@@ -9,7 +9,6 @@
 @class VKAVCapturePreviewView;
 
 @protocol VKAVCapturePreviewViewDelegate <NSObject>
-- (void)didChangeInterfaceOrientationForPreviewView:(VKAVCapturePreviewView *)arg1;
 - (void)didChangeBoundsForPreviewView:(VKAVCapturePreviewView *)arg1;
 @end
 

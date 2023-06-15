@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIStepper.h>
+#import <UIKitCore/UIStepper.h>
 
 __attribute__((visibility("hidden")))
 @interface _TtC5TeaUI15SettingsStepper : UIStepper

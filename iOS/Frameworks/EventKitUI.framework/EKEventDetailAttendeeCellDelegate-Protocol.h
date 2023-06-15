@@ -6,9 +6,12 @@
 
 #import <EventKitUI/NSObject-Protocol.h>
 
+@class UITableViewCell;
+
 @protocol EKEventDetailAttendeeCellDelegate <NSObject>
 
 @optional
+- (void)eventDetailAttendeeCellDidCompleteLoad:(UITableViewCell *)arg1;
 - (void)eventDetailAttendeeCellWantsRefreshForHeightChange;
 @end
 

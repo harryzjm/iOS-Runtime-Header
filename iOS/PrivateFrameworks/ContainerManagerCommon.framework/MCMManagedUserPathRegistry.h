@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) MCMManagedPath *userLibrary; // @synthesize userLibrary=_userLibrary;
 @property(readonly, nonatomic) MCMManagedPath *userHome; // @synthesize userHome=_userHome;
 @property(readonly, nonatomic) MCMUserIdentity *userIdentity; // @synthesize userIdentity=_userIdentity;
-- (void)_initPathPropertiesWithUserHomeDirectoryURL:(id)arg1 clientUser:(id)arg2;
+- (void)_initPathPropertiesWithUserIdentity:(id)arg1;
 - (id)initWithUserIdentity:(id)arg1 daemonUser:(id)arg2;
 
 @end

@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     _Bool _invalidated;
     NSString *_identifier;
     MPCPlaybackEngineEventStream *_eventStream;
+    long long _type;
     NSString *_reason;
     MSVBlockGuard *_timeoutGuard;
 }
@@ -23,12 +24,13 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) MSVBlockGuard *timeoutGuard; // @synthesize timeoutGuard=_timeoutGuard;
 @property(readonly, nonatomic) _Bool invalidated; // @synthesize invalidated=_invalidated;
 @property(readonly, copy, nonatomic) NSString *reason; // @synthesize reason=_reason;
+@property(readonly, nonatomic) long long type; // @synthesize type=_type;
 @property(readonly, nonatomic) __weak MPCPlaybackEngineEventStream *eventStream; // @synthesize eventStream=_eventStream;
 @property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 - (void)invalidate;
 @property(readonly, copy) NSString *description;
 - (void)dealloc;
-- (id)initWithEventStream:(id)arg1 reason:(id)arg2 timeout:(double)arg3;
+- (id)initWithEventStream:(id)arg1 type:(long long)arg2 reason:(id)arg3 timeout:(double)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

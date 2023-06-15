@@ -16,9 +16,8 @@
 + (id)dc_queryItemsFromQueryString:(id)arg1;
 + (id)wf_savedShortcutStatesURL;
 + (id)wf_shortcutsDirectoryURL;
-+ (id)rootVolumeURL;
-+ (id)realLibraryDirectoryURL;
-+ (id)realHomeDirectoryURL;
++ (id)wf_realLibraryDirectoryURL;
++ (id)wf_realHomeDirectoryURL;
 @property(readonly, copy, nonatomic) NSString *wfName;
 - (_Bool)dc_matchesHost:(id)arg1;
 - (id)dc_fragmentQueryDictionary;
@@ -26,12 +25,13 @@
 - (id)wf_localizedDisplayName;
 - (id)wf_displayPath;
 - (id)wf_displayPathComponents;
+- (_Bool)wf_fileIsShortcutsOwned;
+- (_Bool)wf_fileIsOnSameVolumeAsURL:(id)arg1;
 - (_Bool)wf_proposedFileIsContainedByDirectoryAtURL:(id)arg1;
-- (_Bool)isContainedByDirectoryAtURL:(id)arg1;
+- (_Bool)wf_isContainedByDirectoryAtURL:(id)arg1;
 - (id)wf_relativePathFromURL:(id)arg1;
 - (long long)wf_relationshipToDirectoryAtURL:(id)arg1;
-- (id)volumeName;
-- (id)fileSize;
+- (id)wf_fileSize;
 - (_Bool)wf_fileHasExtendedAttribute:(id)arg1;
 - (_Bool)wf_sandboxAllowsWritingFileWithAuditToken:(CDStruct_6ad76789)arg1;
 - (_Bool)wf_sandboxAllowsReadingFileWithAuditToken:(CDStruct_6ad76789)arg1;
@@ -39,9 +39,9 @@
 - (_Bool)wf_sandboxAllowsReadingFile;
 - (_Bool)wf_sandboxAllowsOperation:(const char *)arg1 withAuditToken:(CDStruct_6ad76789)arg2;
 - (_Bool)wf_sandboxAllowsOperation:(const char *)arg1;
-- (_Bool)fileIsDirectory;
-- (_Bool)fileIsWritable;
-- (_Bool)fileIsReadable;
-- (_Bool)fileExists;
+- (_Bool)wf_fileIsDirectory;
+- (_Bool)wf_fileIsWritable;
+- (_Bool)wf_fileIsReadable;
+- (_Bool)wf_fileExists;
 @end
 

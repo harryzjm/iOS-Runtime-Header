@@ -10,8 +10,10 @@
 
 @protocol AXSpringBoardServerInstanceDelegate <NSObject>
 - (void)toggleDetectionModeWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
+- (NSArray *)jindoAppBundleIndentifiersWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (void)diminishJindoWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (void)presentNearbyDeviceControlPickerWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
+- (void)freezeClarityUILoadingScreenWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (NSArray *)visibleTripleClickItemsWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (void)launchVoiceOverImageExplorerViewServiceWithServerInstance:(_AXSpringBoardServerInstance *)arg1 forData:(NSDictionary *)arg2;
 - (void)launchVoiceOverQuickSettingsViewServiceWithServerInstance:(_AXSpringBoardServerInstance *)arg1 data:(NSDictionary *)arg2;
@@ -31,6 +33,8 @@
 - (int)purpleBuddyPIDWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (NSNumber *)focusedAppPIDWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (_Bool)isSystemAppShowingAnAlertWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
+- (int)nativeFocusedApplication;
+- (NSNumber *)displayIdentifierForSceneIdentifier:(NSString *)arg1 serverInstance:(_AXSpringBoardServerInstance *)arg2;
 - (void)toggleTorchWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (void)cancelSiriDismissalForAssistiveTouchWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (_Bool)currentDevicesHaveAssistiveTouchCustomActions;
@@ -54,6 +58,7 @@
 - (double)reachabilityOffsetWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (void)unlockDeviceWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (void)wakeUpDeviceIfNecessaryWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
+- (NSDictionary *)internalAppsWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (NSDictionary *)installedAppsWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (id)serverInstance:(_AXSpringBoardServerInstance *)arg1 appWithIdentifier:(NSString *)arg2;
 - (NSDictionary *)serverInstance:(_AXSpringBoardServerInstance *)arg1 springBoardSystemInfoQuery:(unsigned long long)arg2;
@@ -77,8 +82,14 @@
 - (_Bool)isPasscodeLockVisibleWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (_Bool)isShowingNonSystemAppWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (_Bool)isDockVisibleWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
+- (_Bool)isStageManagerSwitcherVisibleWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (_Bool)isShelfSwitcherVisibleWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (_Bool)isAppSwitcherVisibleWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
+- (_Bool)canLaunchAsFloatingApplicationForIconView:(id)arg1;
+- (_Bool)canLaunchAsPinnedApplicationForIconView:(id)arg1;
+- (void)launchFloatingApplication:(id)arg1;
+- (void)launchPinnedApplication:(id)arg1 onLeadingSide:(_Bool)arg2;
+- (void)launchApplication:(id)arg1;
 - (_Bool)isShowingHomescreenWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (_Bool)isSiriVisibleWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (_Bool)isControlCenterVisibleWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
@@ -112,7 +123,6 @@
 - (_Bool)isOrientationLockedWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (_Bool)isRingerMutedWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (void)setReachabilityActive:(_Bool)arg1;
-- (_Bool)isSideSwitchUsedForOrientationWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (double)volumeLevelWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (_Bool)handleToggleIncomingCallWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (_Bool)isVoiceControlRunningWithServerInstance:(_AXSpringBoardServerInstance *)arg1;

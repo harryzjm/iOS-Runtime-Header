@@ -6,11 +6,11 @@
 
 #import <TextRecognition/NSObject-Protocol.h>
 
-@class CRImage, CRNeuralRecognizerConfiguration, NSArray, NSObject;
+@class CRImage, CRMetalPolygonRectifier, CRNeuralRecognizerConfiguration, NSArray, NSObject;
 @protocol CRTextRecognizerModelInputProvider;
 
 @protocol CRRecognizerFeatureProviding <NSObject>
-- (void)enumerateInputsForImage:(CRImage *)arg1 textFeatures:(NSArray *)arg2 usingBlock:(void (^)(NSArray *, double, _Bool))arg3;
+- (void)enumerateInputsForImage:(CRImage *)arg1 lineRegions:(NSArray *)arg2 rectifier:(CRMetalPolygonRectifier *)arg3 usingBlock:(void (^)(NSArray *, double, _Bool))arg4;
 - (id)initWithConfiguration:(CRNeuralRecognizerConfiguration *)arg1 inputProvider:(NSObject<CRTextRecognizerModelInputProvider> *)arg2 error:(id *)arg3;
 @end
 

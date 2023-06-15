@@ -9,16 +9,16 @@
 @class AMSLookupItem, NSDictionary, NSNumber, NSString;
 
 @protocol SKProductPageExtensionServiceInterface <NSObject>
+- (void)clientLookupItemDidLoad:(AMSLookupItem *)arg1 parameters:(NSDictionary *)arg2;
 - (void)setPreview:(NSNumber *)arg1;
 - (void)setVisibleInClientWindow:(NSNumber *)arg1;
-- (void)setUsageContext:(NSString *)arg1;
-- (void)setAskToBuy:(_Bool)arg1;
-- (void)setPromptString:(NSString *)arg1;
-- (void)setShowsRightBarButton:(_Bool)arg1;
-- (void)setRightBarButtonTitle:(NSString *)arg1;
-- (void)setCancelButtonTitle:(NSString *)arg1;
-- (void)setShowsStoreButton:(_Bool)arg1;
-- (void)clientLookupItemDidLoad:(AMSLookupItem *)arg1 parameters:(NSDictionary *)arg2;
-- (void)setupWithClientBundleID:(NSString *)arg1 bagType:(long long)arg2;
+- (void)_setupWithClientBundleID:(NSString *)arg1 bagType:(long long)arg2;
+- (void)_setUsageContext:(NSString *)arg1;
+- (void)_setAskToBuy:(_Bool)arg1;
+- (void)_setPromptString:(NSString *)arg1;
+- (void)_setShowsRightBarButton:(_Bool)arg1;
+- (void)_setRightBarButtonTitle:(NSString *)arg1;
+- (void)_setCancelButtonTitle:(NSString *)arg1;
+- (void)_setShowsStoreButton:(_Bool)arg1;
 @end
 

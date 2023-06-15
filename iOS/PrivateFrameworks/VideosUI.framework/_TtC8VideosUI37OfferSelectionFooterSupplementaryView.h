@@ -9,8 +9,9 @@
 __attribute__((visibility("hidden")))
 @interface _TtC8VideosUI37OfferSelectionFooterSupplementaryView
 {
-    MISSING_TYPE *buttonView;
-    MISSING_TYPE *buttonLayout;
+    MISSING_TYPE *$__lazy_storage_$_separatorView;
+    MISSING_TYPE *components;
+    MISSING_TYPE *layout;
 }
 
 - (void).cxx_destruct;

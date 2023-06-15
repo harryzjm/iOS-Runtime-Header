@@ -6,7 +6,7 @@
 
 #import <ChatKit/NSObject-Protocol.h>
 
-@class CKAggregateAttachmentMessagePartChatItem, CKAttachmentMessagePartChatItem, CKBalloonView, CKBrowserItemPayload, CKChatItem, CKFullScreenEffect, CKMessageStatusChatItem, CKTranscriptStatusCell, CKViewController, IMSticker, NSArray, NSIndexPath, NSString, PXAssetReference, UIContextMenuConfiguration, UIContextMenuInteraction, UITargetedPreview, UITraitCollection, _UIContextMenuStyle;
+@class CKAggregateAttachmentMessagePartChatItem, CKAttachmentMessagePartChatItem, CKBalloonView, CKBrowserItemPayload, CKChatItem, CKComposition, CKConversation, CKFullScreenEffect, CKInlineReplyTransitionProperties, CKMessageStatusChatItem, CKTranscriptStatusCell, CKViewController, IMSticker, NSArray, NSIndexPath, NSIndexSet, NSString, PXAssetReference, UIContextMenuConfiguration, UIContextMenuInteraction, UITargetedPreview, UITraitCollection, UIView, _UIContextMenuStyle;
 @protocol CKCoreTranscriptControllerProtocol, CKSendAnimationContext, UIContextMenuInteractionAnimating, UIContextMenuInteractionCommitAnimating;
 
 @protocol CKTranscriptCollectionViewControllerDelegate <NSObject>
@@ -16,11 +16,14 @@
 - (void)transcriptCollectionViewController:(CKViewController<CKCoreTranscriptControllerProtocol> *)arg1 balloonView:(CKBalloonView *)arg2 didRequestPresentationStyle:(unsigned long long)arg3 forChatItem:(CKChatItem *)arg4 allowAllStyles:(_Bool)arg5;
 - (void)transcriptCollectionViewController:(CKViewController<CKCoreTranscriptControllerProtocol> *)arg1 didEndImpactEffectAnimationWithSendAnimationContext:(id <CKSendAnimationContext>)arg2;
 - (void)transcriptCollectionViewController:(CKViewController<CKCoreTranscriptControllerProtocol> *)arg1 willBeginImpactEffectAnimationWithSendAnimationContext:(id <CKSendAnimationContext>)arg2;
+- (UIView *)transcriptCollectionViewControllerOuterEffectPresentingView:(CKViewController<CKCoreTranscriptControllerProtocol> *)arg1;
 - (NSArray *)transcriptCollectionViewControllerAdditionalFullscreenEffectViews:(CKViewController<CKCoreTranscriptControllerProtocol> *)arg1;
 - (_Bool)transcriptCollectionViewController:(CKViewController<CKCoreTranscriptControllerProtocol> *)arg1 shouldCleanupFullscreenEffectUI:(CKFullScreenEffect *)arg2;
 - (_Bool)transcriptCollectionViewControllerShouldLayoutFullscreenEffects:(CKViewController<CKCoreTranscriptControllerProtocol> *)arg1;
 - (_Bool)transcriptCollectionViewController:(CKViewController<CKCoreTranscriptControllerProtocol> *)arg1 shouldSetupFullscreenEffectUI:(CKFullScreenEffect *)arg2;
 - (_Bool)transcriptCollectionViewControllerPlaybackForOutgoingEffectsIsAllowed:(CKViewController<CKCoreTranscriptControllerProtocol> *)arg1;
+- (void)transcriptCollectionViewController:(CKViewController<CKCoreTranscriptControllerProtocol> *)arg1 requestRecoverJunkConversation:(CKConversation *)arg2;
+- (void)transcriptCollectionViewController:(CKViewController<CKCoreTranscriptControllerProtocol> *)arg1 requestDeleteJunkConversation:(CKConversation *)arg2;
 - (void)transcriptCollectionViewController:(CKViewController<CKCoreTranscriptControllerProtocol> *)arg1 willDeleteChatItems:(NSArray *)arg2;
 - (void)transcriptCollectionViewController:(CKViewController<CKCoreTranscriptControllerProtocol> *)arg1 viewedCommSafetyItemWithIndexPath:(NSIndexPath *)arg2;
 - (void)transcriptCollectionViewController:(CKViewController<CKCoreTranscriptControllerProtocol> *)arg1 showMessageSomeoneForItemWithIndexPath:(NSIndexPath *)arg2;
@@ -32,6 +35,7 @@
 - (void)transcriptCollectionViewControllerReportSpamButtonTapped:(CKViewController<CKCoreTranscriptControllerProtocol> *)arg1;
 - (void)transcriptCollectionViewControllerBlockContactButtonTapped:(CKViewController<CKCoreTranscriptControllerProtocol> *)arg1;
 - (void)transcriptCollectionViewControllerWillScrollToBottom:(CKViewController<CKCoreTranscriptControllerProtocol> *)arg1;
+- (_Bool)transcriptCollectionViewControllerShouldShouldScrollToTopForStatusBarTap:(CKViewController<CKCoreTranscriptControllerProtocol> *)arg1;
 - (void)transcriptCollectionViewControllerRestingStateDidChange:(CKViewController<CKCoreTranscriptControllerProtocol> *)arg1;
 - (void)transcriptCollectionViewController:(CKViewController<CKCoreTranscriptControllerProtocol> *)arg1 collectionViewContentSizeDidChange:(struct CGSize)arg2;
 - (void)transcriptCollectionViewControllerPerformBatchUpdateCompleted:(CKViewController<CKCoreTranscriptControllerProtocol> *)arg1;
@@ -44,7 +48,7 @@
 - (void)transcriptCollectionViewController:(CKViewController<CKCoreTranscriptControllerProtocol> *)arg1 balloonViewTitleTappedForItemWithIndexPath:(NSIndexPath *)arg2;
 - (void)transcriptCollectionViewController:(CKViewController<CKCoreTranscriptControllerProtocol> *)arg1 didTapPluginStatusButtonForChatItem:(CKMessageStatusChatItem *)arg2;
 - (void)transcriptCollectionViewController:(CKViewController<CKCoreTranscriptControllerProtocol> *)arg1 didTapAttributionButtonForChatItem:(CKMessageStatusChatItem *)arg2;
-- (void)transcriptCollectionViewController:(CKViewController<CKCoreTranscriptControllerProtocol> *)arg1 balloonView:(CKBalloonView *)arg2 showInlineReplyForItemWithIndexPath:(NSIndexPath *)arg3;
+- (void)transcriptCollectionViewController:(CKViewController<CKCoreTranscriptControllerProtocol> *)arg1 balloonView:(CKBalloonView *)arg2 showInlineReplyForItemWithIndexPath:(NSIndexPath *)arg3 withReplyTransitionProperties:(CKInlineReplyTransitionProperties *)arg4;
 - (void)transcriptCollectionViewController:(CKViewController<CKCoreTranscriptControllerProtocol> *)arg1 balloonView:(CKBalloonView *)arg2 selectedItemAtIndexPath:(NSIndexPath *)arg3;
 - (void)transcriptCollectionViewController:(CKViewController<CKCoreTranscriptControllerProtocol> *)arg1 balloonView:(CKBalloonView *)arg2 doubleTappedItemAtIndexPath:(NSIndexPath *)arg3;
 - (void)transcriptCollectionViewController:(CKViewController<CKCoreTranscriptControllerProtocol> *)arg1 balloonView:(CKBalloonView *)arg2 longPressedForItemWithIndexPath:(NSIndexPath *)arg3;
@@ -54,6 +58,8 @@
 - (void)transcriptCollectionViewControllerNeedsChatItemLayoutInvalidation:(CKViewController<CKCoreTranscriptControllerProtocol> *)arg1;
 
 @optional
+- (void)transcriptCollectionViewController:(CKViewController<CKCoreTranscriptControllerProtocol> *)arg1 sendQuickReplyComposition:(CKComposition *)arg2 withSourceView:(UIView *)arg3;
+- (void)transcriptCollectionViewController:(CKViewController<CKCoreTranscriptControllerProtocol> *)arg1 didInsertChatItems:(NSIndexSet *)arg2 associatedChatItems:(NSIndexSet *)arg3;
 - (_Bool)transcriptCollectionViewControllerIsPresentedInModalInlineReply:(CKViewController<CKCoreTranscriptControllerProtocol> *)arg1;
 - (CKChatItem *)transcriptCollectionViewController:(CKViewController<CKCoreTranscriptControllerProtocol> *)arg1 chatItemForContextMenuWithConfiguration:(UIContextMenuConfiguration *)arg2;
 - (void)transcriptCollectionViewController:(CKViewController<CKCoreTranscriptControllerProtocol> *)arg1 willDisplayContextMenuWithConfiguration:(UIContextMenuConfiguration *)arg2 animator:(id <UIContextMenuInteractionAnimating>)arg3;
@@ -76,6 +82,6 @@
 - (void)transcriptCollectionViewController:(CKViewController<CKCoreTranscriptControllerProtocol> *)arg1 didTapReplyCountStatusButtonForChatItem:(CKMessageStatusChatItem *)arg2;
 - (_Bool)transcriptCollectionViewControllerShouldForceOpaqueMask:(CKViewController<CKCoreTranscriptControllerProtocol> *)arg1;
 - (void)transcriptCollectionViewController:(CKViewController<CKCoreTranscriptControllerProtocol> *)arg1 willDisplayStatusCell:(CKTranscriptStatusCell *)arg2;
-- (void)transcriptCollectionViewController:(CKViewController<CKCoreTranscriptControllerProtocol> *)arg1 willDisplayBalloonForGUID:(NSString *)arg2;
+- (void)transcriptCollectionViewController:(CKViewController<CKCoreTranscriptControllerProtocol> *)arg1 willDisplayBalloonForGUID:(NSString *)arg2 withIndexPath:(NSIndexPath *)arg3 withOriginY:(double)arg4;
 @end
 

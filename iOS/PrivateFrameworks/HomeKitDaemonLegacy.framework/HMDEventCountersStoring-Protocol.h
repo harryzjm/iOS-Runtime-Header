@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HomeKitDaemonLegacy/NSObject-Protocol.h>
-
 @class NSDictionary;
 
-@protocol HMDEventCountersStoring <NSObject>
+@protocol HMDEventCountersStoring
 - (NSDictionary *)unarchive;
 - (void)archiveDictionary:(NSDictionary *)arg1;
 @end

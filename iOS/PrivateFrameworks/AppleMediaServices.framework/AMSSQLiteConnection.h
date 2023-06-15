@@ -32,8 +32,8 @@ __attribute__((visibility("hidden")))
 - (_Bool)_resetAfterCorruptionError;
 - (id)_prepareStatement:(id)arg1 error:(id *)arg2;
 - (_Bool)_performResetAfterCorruptionError;
-- (_Bool)_openAndAllowRetry:(_Bool)arg1;
-- (_Bool)_open;
+- (_Bool)_openAndAllowRetry:(_Bool)arg1 error:(id *)arg2;
+- (_Bool)_openWithError:(id *)arg1;
 - (void)_flushAfterTransactionBlocks;
 - (void)_finalizeAllStatements;
 - (_Bool)_executeWithError:(id *)arg1 usingBlock:(CDUnknownBlockType)arg2;
@@ -44,7 +44,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)truncate;
 - (id)prepareStatement:(id)arg1 error:(id *)arg2;
 - (void)performTransaction:(CDUnknownBlockType)arg1;
-- (_Bool)open;
+- (_Bool)openWithError:(id *)arg1;
 @property(readonly, nonatomic) long long lastChangeCount;
 - (_Bool)finalizePreparedStatement:(id)arg1 error:(id *)arg2;
 - (_Bool)executeStatement:(id)arg1 error:(id *)arg2 bindings:(CDUnknownBlockType)arg3;

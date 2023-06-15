@@ -10,8 +10,9 @@
 
 @interface _TtC16WeatherAnalytics23TelemetryPrivacySampler : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *appConfigurationManager;
     MISSING_TYPE *privacySampler;
-    MISSING_TYPE *samplingRate;
+    MISSING_TYPE *$__lazy_storage_$_bypassSampling;
 }
 
 @end

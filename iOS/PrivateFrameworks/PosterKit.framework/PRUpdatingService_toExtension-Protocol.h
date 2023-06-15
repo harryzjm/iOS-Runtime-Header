@@ -6,9 +6,10 @@
 
 #import <PosterKit/NSObject-Protocol.h>
 
-@class NSArray, PRSPosterPath, PRSPosterUpdateSessionInfo;
+@class NSArray, PRPosterSnapshotRequest, PRSPosterPath, PRSPosterUpdateSessionInfo;
 
 @protocol PRUpdatingService_toExtension <NSObject>
+- (void)captureSnapshotForRequest:(PRPosterSnapshotRequest *)arg1 completion:(void (^)(PRPosterSnapshotterResult *, NSError *))arg2;
 - (oneway void)updateConfiguration:(PRSPosterPath *)arg1 sessionInfo:(PRSPosterUpdateSessionInfo *)arg2 completion:(void (^)(PRSPosterPathsAssertion *, NSError *))arg3;
 - (oneway void)updateDescriptors:(NSArray *)arg1 sessionInfo:(PRSPosterUpdateSessionInfo *)arg2 completion:(void (^)(PRSPosterPathsAssertion *, NSError *))arg3;
 @end

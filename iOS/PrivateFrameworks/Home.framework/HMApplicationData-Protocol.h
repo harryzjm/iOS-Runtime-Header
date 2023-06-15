@@ -9,7 +9,7 @@
 @class HMApplicationData;
 
 @protocol HMApplicationData <NSObject>
+@property(readonly, nonatomic) HMApplicationData *applicationData;
 - (void)updateApplicationData:(HMApplicationData *)arg1 completionHandler:(void (^)(NSError *))arg2;
-@property(nonatomic, readonly) HMApplicationData *applicationData;
 @end
 

@@ -18,10 +18,9 @@
 @property(readonly, copy) NSArray *subexpectations; // @synthesize subexpectations=_subexpectations;
 @property(readonly) unsigned long long logicalType; // @synthesize logicalType=_logicalType;
 - (void)didFulfillExpectation:(id)arg1;
-- (void)cleanup;
-- (_Bool)_queue_validateSubexpectationsFulfillment;
+- (void)cleanup:(_Bool)arg1;
+- (_Bool)_validateSubexpectationsFulfillment;
 - (void)_updateFulfilledState;
-- (void)dealloc;
 - (id)initWithLogicalType:(unsigned long long)arg1 subexpectations:(id)arg2;
 
 // Remaining properties

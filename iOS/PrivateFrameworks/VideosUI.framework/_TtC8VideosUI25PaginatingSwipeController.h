@@ -16,9 +16,11 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *metadataFadeInSpeed;
     MISSING_TYPE *containerView;
     MISSING_TYPE *$__lazy_storage_$_gesture;
+    MISSING_TYPE *isAutoSwiping;
     MISSING_TYPE *contentViews;
     MISSING_TYPE *transitionViews;
     MISSING_TYPE *$__lazy_storage_$_cachedTransitionViews;
+    MISSING_TYPE *currentView;
     MISSING_TYPE *leadingView;
     MISSING_TYPE *trailingView;
     MISSING_TYPE *$__lazy_storage_$_mediaShowcaseConfig;

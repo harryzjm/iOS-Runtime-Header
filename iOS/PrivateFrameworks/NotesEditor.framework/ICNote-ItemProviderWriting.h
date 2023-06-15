@@ -6,7 +6,7 @@
 
 #import <NotesShared/ICNote.h>
 
-@class NSArray, NSDictionary, NSString;
+@class NSArray, NSString;
 
 @interface ICNote (ItemProviderWriting)
 + (id)writableTypeIdentifiersForItemProvider;
@@ -19,7 +19,7 @@
 - (id)itemProviderIdentifier;
 @property(readonly, copy, nonatomic) NSArray *writableTypeIdentifiersForItemProvider;
 - (id)writableTypeIdentifiersForNoteContent;
-@property(nonatomic, readonly) NSDictionary *visibleAttachmentTextStorages;
+- (id)visibleAttachmentTextStoragesForTextLayoutManager:(id)arg1;
 - (id)textStoragesFor:(id)arg1;
 
 // Remaining properties

@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (_Bool)shouldPlayerTabsUseVerticalLayoutForSize:(struct CGSize)arg1 isPhoneSizeClass:(_Bool)arg2;
 + (_Bool)isSUIEnabled;
 + (struct CGRect)vuiRectCenteredXInRect:(struct CGRect)arg1 boundsToCenterIn:(struct CGRect)arg2 offset:(double)arg3;
 + (_Bool)isInRetailDemoMode;
@@ -18,6 +19,7 @@ __attribute__((visibility("hidden")))
 + (id)getOSVersion;
 + (double)imageCornerRadiusWithStyle:(long long)arg1;
 + (id)gradientLayerLocationsFromSpacings:(id)arg1 height:(double)arg2;
++ (_Bool)isTVApp;
 + (long long)interfaceStyleFromTheme:(id)arg1 defaultInterfaceStyle:(long long)arg2;
 + (id)colorFromHexStr:(id)arg1;
 + (id)colorFromRGBStr:(id)arg1;
@@ -30,7 +32,6 @@ __attribute__((visibility("hidden")))
 + (_Bool)isPortraitIgnoringFlatOrientation:(long long)arg1 viewSize:(struct CGSize)arg2;
 + (_Bool)isInFullscreenOrPipPlayback;
 + (id)VideosUIBundle;
-+ (_Bool)isTVApp;
 + (long long)textAlignmentWithSemanticContentAttribute:(long long)arg1;
 + (unsigned long long)minimumNumberOfItemsToEnableSeeAllButton;
 + (_Bool)isIpadPortrait;

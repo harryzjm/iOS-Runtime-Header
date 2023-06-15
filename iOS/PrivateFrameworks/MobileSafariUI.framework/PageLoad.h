@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
     long long _endRenderFrameCount;
     NSURL *_URL;
     NSURL *_redirectURL;
+    unsigned long long _uiProcessStartTime;
     NSDate *_uiProcessStartDate;
     NSDate *_webContentProcessStartLoadDate;
     NSDate *_endLoadDate;
@@ -58,6 +59,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSDate *endLoadDate; // @synthesize endLoadDate=_endLoadDate;
 @property(retain, nonatomic) NSDate *webContentProcessStartLoadDate; // @synthesize webContentProcessStartLoadDate=_webContentProcessStartLoadDate;
 @property(retain, nonatomic) NSDate *uiProcessStartDate; // @synthesize uiProcessStartDate=_uiProcessStartDate;
+@property(nonatomic) unsigned long long uiProcessStartTime; // @synthesize uiProcessStartTime=_uiProcessStartTime;
 @property(retain, nonatomic) NSError *error; // @synthesize error=_error;
 @property(retain, nonatomic) NSURL *redirectURL; // @synthesize redirectURL=_redirectURL;
 @property(retain, nonatomic) NSURL *URL; // @synthesize URL=_URL;

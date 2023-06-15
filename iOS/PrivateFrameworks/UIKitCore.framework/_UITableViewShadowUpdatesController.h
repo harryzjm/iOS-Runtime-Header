@@ -11,8 +11,8 @@
 __attribute__((visibility("hidden")))
 @interface _UITableViewShadowUpdatesController : NSObject
 {
-    UITableView *_tableView;
     NSMutableArray *_shadowUpdates;
+    UITableView *_tableView;
     _UIDataSourceSnapshotter *_initialSnapshot;
     _UIDataSourceUpdateMap *_updateMap;
 }
@@ -20,8 +20,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) _UIDataSourceUpdateMap *updateMap; // @synthesize updateMap=_updateMap;
 @property(retain, nonatomic) _UIDataSourceSnapshotter *initialSnapshot; // @synthesize initialSnapshot=_initialSnapshot;
-@property(retain, nonatomic) NSMutableArray *shadowUpdates; // @synthesize shadowUpdates=_shadowUpdates;
 @property(nonatomic) __weak UITableView *tableView; // @synthesize tableView=_tableView;
+@property(retain, nonatomic) NSMutableArray *shadowUpdates; // @synthesize shadowUpdates=_shadowUpdates;
 - (id)indexPathAfterShadowUpdates:(id)arg1 startingAtUpdate:(id)arg2;
 - (id)indexPathBeforeShadowUpdates:(id)arg1 startingBeforeUpdate:(id)arg2;
 - (id)indexPathsAfterShadowUpdates:(id)arg1 allowAppendingInsert:(_Bool)arg2;
@@ -152,6 +152,7 @@ __attribute__((visibility("hidden")))
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 cancelPrefetchingForRowsAtIndexPaths:(id)arg2;
 - (void)tableView:(id)arg1 prefetchRowsAtIndexPaths:(id)arg2;
+- (id)_tableView:(id)arg1 dragSessionPropertiesForSession:(id)arg2;
 - (_Bool)_tableView:(id)arg1 dragSessionSupportsSystemDrag:(id)arg2;
 - (long long)_tableView:(id)arg1 dataOwnerForDragSession:(id)arg2 atIndexPath:(id)arg3;
 - (_Bool)tableView:(id)arg1 dragSessionIsRestrictedToDraggingApplication:(id)arg2;

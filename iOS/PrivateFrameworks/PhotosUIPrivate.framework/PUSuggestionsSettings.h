@@ -6,22 +6,26 @@
 
 #import <PhotosUICore/PXSettings.h>
 
+@class PUWallpaperShortcutsPlaygroundSettings;
+
 __attribute__((visibility("hidden")))
 @interface PUSuggestionsSettings : PXSettings
 {
-    _Bool _isFeatureEnabled;
     _Bool _includeDebugLayers;
     _Bool _debugRoundTripLayerStack;
     _Bool _debugBackfillCompositing;
     _Bool _debugDisableFrameUpdates;
-    _Bool _enableColorWashStyles;
+    _Bool _enableFRCInAssetDetails;
     long long _viewMode;
     long long _sourceMode;
     double _parallaxAmount;
+    PUWallpaperShortcutsPlaygroundSettings *_shortcutsPlaygroundSettings;
 }
 
 + (id)sharedInstance;
-@property(nonatomic) _Bool enableColorWashStyles; // @synthesize enableColorWashStyles=_enableColorWashStyles;
+- (void).cxx_destruct;
+@property(retain, nonatomic) PUWallpaperShortcutsPlaygroundSettings *shortcutsPlaygroundSettings; // @synthesize shortcutsPlaygroundSettings=_shortcutsPlaygroundSettings;
+@property(nonatomic) _Bool enableFRCInAssetDetails; // @synthesize enableFRCInAssetDetails=_enableFRCInAssetDetails;
 @property(nonatomic) _Bool debugDisableFrameUpdates; // @synthesize debugDisableFrameUpdates=_debugDisableFrameUpdates;
 @property(nonatomic) _Bool debugBackfillCompositing; // @synthesize debugBackfillCompositing=_debugBackfillCompositing;
 @property(nonatomic) _Bool debugRoundTripLayerStack; // @synthesize debugRoundTripLayerStack=_debugRoundTripLayerStack;
@@ -29,13 +33,15 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) double parallaxAmount; // @synthesize parallaxAmount=_parallaxAmount;
 @property(nonatomic) long long sourceMode; // @synthesize sourceMode=_sourceMode;
 @property(nonatomic) long long viewMode; // @synthesize viewMode=_viewMode;
-@property(nonatomic) _Bool isFeatureEnabled; // @synthesize isFeatureEnabled=_isFeatureEnabled;
+@property(nonatomic) _Bool enableGreenScreenStyles;
 @property(nonatomic) _Bool enableCustomStyles;
 @property(nonatomic) _Bool disableSegmentationCache;
 @property(nonatomic) double manualGatingLenience;
 @property(nonatomic) _Bool disableSegmentation;
 @property(nonatomic) _Bool debugTintLayers;
 @property(nonatomic) long long infillMode;
+- (void)createChildren;
+- (void)performPostSaveActions;
 - (void)setDefaultValues;
 - (id)parentSettings;
 

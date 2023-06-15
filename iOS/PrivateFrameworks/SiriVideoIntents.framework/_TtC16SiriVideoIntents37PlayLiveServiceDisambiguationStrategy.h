@@ -13,6 +13,7 @@
     MISSING_TYPE *analyticsService;
     MISSING_TYPE *deviceState;
     MISSING_TYPE *videoDialogs;
+    MISSING_TYPE *remoteDevice;
 }
 
 @end

@@ -6,10 +6,11 @@
 
 #import <LocalAuthenticationEmbeddedUI/NSObject-Protocol.h>
 
-@class LAAuthorizationViewController, NSError;
+@class LAAuthorizationViewController;
 
 @protocol LAAuthorizationViewControllerDelegate <NSObject>
-- (void)authorizationController:(LAAuthorizationViewController *)arg1 didFinishWithError:(NSError *)arg2;
+
+@optional
 - (void)authorizationController:(LAAuthorizationViewController *)arg1 didProvideAuthorizationRequirementWithReply:(void (^)(NSError *))arg2;
 @end
 

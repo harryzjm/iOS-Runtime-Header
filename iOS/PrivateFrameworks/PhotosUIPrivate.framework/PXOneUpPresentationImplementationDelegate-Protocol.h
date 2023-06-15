@@ -14,6 +14,7 @@
 - (UIViewController *)previewViewControllerForOneUpPresentation:(PXOneUpPresentation *)arg1 allowingActions:(_Bool)arg2;
 - (void)oneUpPresentation:(PXOneUpPresentation *)arg1 stopAnimated:(_Bool)arg2;
 - (_Bool)oneUpPresentation:(PXOneUpPresentation *)arg1 startWithConfigurationHandler:(void (^)(id <PXOneUpPresentationConfiguration>))arg2;
+- (void)oneUpPresentation:(PXOneUpPresentation *)arg1 registerStateChangeHandler:(void (^)(long long))arg2;
 
 @optional
 - (PXAssetReference *)oneUpPresentationLastViewedAssetReference:(PXOneUpPresentation *)arg1;

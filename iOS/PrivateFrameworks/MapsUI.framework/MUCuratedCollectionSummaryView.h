@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class UIImageView, UILabel, UILayoutGuide;
 @protocol MUCuratedCollectionSummary;
@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) id <MUCuratedCollectionSummary> viewModel; // @synthesize viewModel=_viewModel;
-- (void)traitCollectionDidChange:(id)arg1;
+- (void)_updateImageViewForInterfaceStyle;
 - (id)publisherString;
 - (void)_contentSizeDidChange;
 - (id)_attributesWithFont:(id)arg1 color:(id)arg2;

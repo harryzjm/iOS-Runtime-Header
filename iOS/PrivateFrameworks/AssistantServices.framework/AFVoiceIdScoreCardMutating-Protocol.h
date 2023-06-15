@@ -9,6 +9,9 @@
 @class NSDictionary, NSNumber, NSString;
 
 @protocol AFVoiceIdScoreCardMutating <NSObject>
+- (void)setDeltaScoreThreshold:(NSNumber *)arg1;
+- (void)setConfidentScoreThreshold:(NSNumber *)arg1;
+- (void)setHighScoreThreshold:(NSNumber *)arg1;
 - (void)setLowScoreThreshold:(NSNumber *)arg1;
 - (void)setUserIdentityClassification:(long long)arg1;
 - (void)setUserClassified:(NSString *)arg1;

@@ -7,6 +7,8 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (PRUtilities)
+- (_Bool)pr_isSuitableForArabicJustification;
+- (_Bool)pr_isSuitableForVerticalLayout;
 - (id)pr_sha256Hash;
 @end
 

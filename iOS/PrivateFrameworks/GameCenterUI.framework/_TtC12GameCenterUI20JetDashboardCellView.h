@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class MISSING_TYPE, NSString, _TtC12GameCenterUI16DynamicTypeLabel;
 
@@ -13,21 +13,15 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *glyph;
     MISSING_TYPE *titleLabel;
-    MISSING_TYPE *highlightAccessoryLabel;
     MISSING_TYPE *subtitleLabel;
     MISSING_TYPE *chevronGlyph;
-    MISSING_TYPE *avatarView;
     MISSING_TYPE *state;
-    MISSING_TYPE *accessoryLabel;
     MISSING_TYPE *contentViewBackground;
-    MISSING_TYPE *artworkview;
-    MISSING_TYPE *timer;
     MISSING_TYPE *usingCustomHighlightView;
     MISSING_TYPE *isHighlighted;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic, readonly) _TtC12GameCenterUI16DynamicTypeLabel *accessibilityAccessoryeLabel;
 @property(nonatomic, readonly) _TtC12GameCenterUI16DynamicTypeLabel *accessibilitySubtitleLabel;
 @property(nonatomic, readonly) _TtC12GameCenterUI16DynamicTypeLabel *accessibilityTitleLabel;
 @property(nonatomic, copy) NSString *accessibilityLabel;

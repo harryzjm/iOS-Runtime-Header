@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class BRCAccountSession, BRCAppLibrary, BRCGenerationID, BRCItemGlobalID, NSData, NSString, NSURL;
+@class BRCAccountSessionFPFS, BRCAppLibrary, BRCGenerationID, BRCItemGlobalID, NSData, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
 @interface BRCImportObject : NSObject
@@ -15,14 +15,12 @@ __attribute__((visibility("hidden")))
     NSString *_logicalName;
     NSString *_symlinkContent;
     BRCGenerationID *_generationID;
-    int _deviceID;
-    BRCAccountSession *_session;
+    BRCAccountSessionFPFS *_session;
     BRCItemGlobalID *_parentItemGlobalID;
     BRCAppLibrary *_appLibrary;
     unsigned char _finderInfo[32];
     unsigned long long _fileID;
     unsigned short _mode;
-    unsigned int _nlink;
     struct timespec _birthtime;
     struct timespec _mtime;
     long long _size;
@@ -31,11 +29,9 @@ __attribute__((visibility("hidden")))
     unsigned char _itemScope;
     unsigned int _isExcluded:1;
     unsigned int _isInPackage:1;
-    unsigned int _isBundle:1;
     unsigned int _isPackageRoot:1;
     unsigned int _readFault:1;
     unsigned int _hasFinderTags:1;
-    unsigned int _isBusy:1;
     unsigned int _hasFinderInfoAliasBit:1;
     unsigned int _isBRAlias:1;
     unsigned int _qtnResolved:1;
@@ -55,19 +51,16 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) unsigned char itemScope; // @synthesize itemScope=_itemScope;
 @property(readonly, nonatomic) NSURL *fileURL; // @synthesize fileURL=_fileURL;
 @property(readonly, nonatomic) BRCItemGlobalID *parentItemGlobalID; // @synthesize parentItemGlobalID=_parentItemGlobalID;
-@property(readonly, nonatomic) BRCAccountSession *session; // @synthesize session=_session;
+@property(readonly, nonatomic) BRCAccountSessionFPFS *session; // @synthesize session=_session;
 @property(readonly, nonatomic) NSData *xattrs; // @synthesize xattrs=_xattrs;
 @property(readonly, nonatomic) NSData *quarantineInfo; // @synthesize quarantineInfo=_quarantineInfo;
-@property(readonly, nonatomic) unsigned int fsGenerationID; // @synthesize fsGenerationID=_fsGenerationID;
 @property(readonly, nonatomic) long long size; // @synthesize size=_size;
-@property(readonly, nonatomic) unsigned int hardlinkCount; // @synthesize hardlinkCount=_nlink;
 @property(readonly, nonatomic) unsigned long long fileID; // @synthesize fileID=_fileID;
-@property(readonly, nonatomic) int deviceID; // @synthesize deviceID=_deviceID;
 @property(readonly, nonatomic) NSString *symlinkContent; // @synthesize symlinkContent=_symlinkContent;
 @property(readonly, nonatomic) NSString *logicalName; // @synthesize logicalName=_logicalName;
 - (int)_resolveAgainstFileDescriptor:(int)arg1;
 - (id)initWithURL:(id)arg1 logicalName:(id)arg2 quarantineInfo:(id)arg3 parentItem:(id)arg4 error:(id *)arg5;
-- (id)initAsNewDirectoryWithLogicalName:(id)arg1 parentItem:(id)arg2 error:(id *)arg3;
+- (id)initAsNewDirectoryWithLogicalName:(id)arg1 parentItem:(id)arg2;
 - (void)_resolveParentBasedPropertiesWithParent:(id)arg1 logicalName:(id)arg2;
 - (id)initWithURL:(id)arg1 existingItem:(id)arg2 quarantineInfo:(id)arg3 error:(id *)arg4;
 - (id)initAsSymlinkWithTarget:(id)arg1 parentItem:(id)arg2 logicalName:(id)arg3 error:(id *)arg4;
@@ -75,7 +68,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool isBRAlias;
 @property(readonly, nonatomic) _Bool isFinderAlias;
 - (_Bool)isFileWithFinderInfoAliasBit;
-@property(readonly, nonatomic) _Bool isHiddenFile;
 @property(readonly, nonatomic) _Bool isHiddenExtension;
 @property(readonly, nonatomic) _Bool isExecutable;
 @property(readonly, nonatomic) _Bool isWritable;
@@ -83,13 +75,11 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) long long modificationTime;
 @property(readonly, nonatomic) long long birthTime;
 @property(readonly, nonatomic) _Bool hasFinderTags;
-@property(readonly, nonatomic) _Bool isBusy;
 @property(readonly, nonatomic) _Bool isSymLink;
 @property(readonly, nonatomic) _Bool isExcluded;
 @property(readonly, nonatomic) _Bool isPackageRoot;
 @property(readonly, nonatomic) _Bool isFile;
 @property(readonly, nonatomic) _Bool isUnixDir;
-@property(readonly, nonatomic) _Bool isBundle;
 @property(readonly, nonatomic) _Bool isFault;
 @property(readonly, nonatomic) _Bool isDocument;
 - (id)initWithURL:(id)arg1 packageRoot:(id)arg2 error:(id *)arg3;

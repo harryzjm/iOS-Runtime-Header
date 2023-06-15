@@ -33,8 +33,11 @@ __attribute__((visibility("hidden")))
 - (void)_keyboardWillHide:(id)arg1;
 - (void)_keyboardWillShow:(id)arg1;
 - (void)_textWidgetDone;
+- (void)textViewDidChange:(id)arg1;
 - (_Bool)textView:(id)arg1 shouldChangeTextInRange:(struct _NSRange)arg2 replacementText:(id)arg3;
 - (void)textViewDidEndEditing:(id)arg1;
+- (void)_commitTextFromTextView:(id)arg1;
+- (void)insertTextSuggestion:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (_Bool)becomeFirstResponder;
 - (void)removeFromSuperview;
 - (void)rotateByAngle:(double)arg1;

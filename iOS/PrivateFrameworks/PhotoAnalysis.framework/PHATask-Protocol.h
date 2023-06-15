@@ -6,16 +6,21 @@
 
 #import <PhotoAnalysis/NSObject-Protocol.h>
 
-@class MAProgressReporter, NSString, PGManager;
+@class MAProgressReporter, NSArray, NSString, PGGraphUpdate, PGManager;
 
 @protocol PHATask <NSObject>
 @property(readonly, nonatomic) double period;
 @property(readonly, nonatomic) NSString *name;
 - (_Bool)runWithGraphManager:(PGManager *)arg1 progressReporter:(MAProgressReporter *)arg2 error:(id *)arg3;
 - (_Bool)shouldRunWithGraphManager:(PGManager *)arg1;
+- (int)priority;
+- (NSArray *)taskClassDependencies;
+- (NSString *)incrementalKey;
 - (_Bool)currentPlatformIsSupported;
 
 @optional
 @property(readonly, nonatomic) unsigned long long version;
+- (_Bool)shouldRunIncrementallyWithGraphManager:(PGManager *)arg1 incrementalChange:(PGGraphUpdate *)arg2 timeIntervalSinceNonIncrementalRun:(double)arg3;
+- (_Bool)runWithGraphManager:(PGManager *)arg1 withIncrementalChange:(PGGraphUpdate *)arg2 progressReporter:(MAProgressReporter *)arg3 error:(id *)arg4;
 @end
 

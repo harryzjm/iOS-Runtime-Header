@@ -9,10 +9,18 @@
 __attribute__((visibility("hidden")))
 @interface MCMFileManager : NSObject
 {
-    CDUnknownFunctionPointerType _mkstemp_dprotected_np;
 }
 
 + (id)defaultManager;
+- (_Bool)_fixOwnershipOnFD:(int)arg1 FTSENT:(struct _ftsent *)arg2 stat:(struct stat *)arg3 statfs:(struct statfs *)arg4 uid:(unsigned int)arg5 gid:(unsigned int)arg6 error:(id *)arg7;
+- (_Bool)_fixFlagsOnFD:(int)arg1 FTSENT:(struct _ftsent *)arg2 stat:(struct stat *)arg3 error:(id *)arg4;
+- (_Bool)_fixPOSIXBitsOnFD:(int)arg1 FTSENT:(struct _ftsent *)arg2 stat:(struct stat *)arg3 error:(id *)arg4;
+- (_Bool)_fixPOSIXPermsOnFD:(int)arg1 FTSENT:(struct _ftsent *)arg2 stat:(struct stat *)arg3 error:(id *)arg4;
+- (_Bool)_fixACLOnFD:(int)arg1 removeACLFilesec:(struct _filesec *)arg2 denyDeleteFilesec:(struct _filesec *)arg3 denyDeleteText:(const char *)arg4 path:(const char *)arg5 error:(id *)arg6;
+- (_Bool)_withEveryoneDenyDeleteACLDoBlock:(CDUnknownBlockType)arg1;
+- (struct _filesec *)_denyDeleteACLFilesecWithACLText:(char **)arg1;
+- (struct _filesec *)_removeACLFilesec;
+- (_Bool)repairPermissionsAtURL:(id)arg1 uid:(unsigned int)arg2 gid:(unsigned int)arg3 options:(unsigned long long)arg4 error:(id *)arg5;
 - (id)fsSanitizedStringFromString:(id)arg1;
 - (id)fsNodeOfURL:(id)arg1 followSymlinks:(_Bool)arg2 error:(id *)arg3;
 - (id)copyDescriptionOfURL:(id)arg1;
@@ -32,11 +40,11 @@ __attribute__((visibility("hidden")))
 - (_Bool)_validateSymlink:(id)arg1 withStartingDepth:(unsigned int)arg2 andEndingDepth:(unsigned int *)arg3;
 - (id)_realPathForURL:(id)arg1 allowNonExistentPathComponents:(_Bool)arg2;
 - (id)_realPathWhatExistsInPath:(id)arg1;
-- (unsigned long long)diskUsageForURL:(id)arg1;
-- (unsigned long long)fastDiskUsageForURL:(id)arg1;
+- (CDStruct_4bcfbbae)diskUsageForURL:(id)arg1;
+- (CDStruct_4bcfbbae)fastDiskUsageForURL:(id)arg1;
 - (void)printDirectoryStructureAtURL:(id)arg1;
-- (_Bool)setDataProtectionClassOfItemAtURL:(id)arg1 toClass:(int)arg2 ifPredicate:(CDUnknownBlockType)arg3 error:(id *)arg4;
-- (_Bool)dataProtectionClassOfItemAtURL:(id)arg1 class:(int *)arg2 error:(id *)arg3;
+- (_Bool)setDataProtectionClassOfItemAtURL:(id)arg1 toDataProtectionClass:(int)arg2 ifPredicate:(CDUnknownBlockType)arg3 error:(id *)arg4;
+- (_Bool)dataProtectionClassOfItemAtURL:(id)arg1 dataProtectionClass:(int *)arg2 error:(id *)arg3;
 - (_Bool)itemDoesNotExistAtURL:(id)arg1;
 - (_Bool)itemAtURL:(id)arg1 followSymlinks:(_Bool)arg2 exists:(_Bool *)arg3 isDirectory:(_Bool *)arg4 fsNode:(id *)arg5 error:(id *)arg6;
 - (_Bool)itemAtURL:(id)arg1 followSymlinks:(_Bool)arg2 exists:(_Bool *)arg3 isDirectory:(_Bool *)arg4 error:(id *)arg5;
@@ -56,6 +64,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)_traverseDirectory:(id)arg1 error:(id *)arg2 withBlock:(CDUnknownBlockType)arg3;
 - (id)createTemporaryDirectoryInDirectoryURL:(id)arg1 error:(id *)arg2;
 - (id)createTemporaryDirectoryInDirectoryURL:(id)arg1 withNamePrefix:(id)arg2 error:(id *)arg3;
+- (_Bool)replaceItemAtDestinationURL:(id)arg1 withSourceURL:(id)arg2 swapped:(_Bool *)arg3 error:(id *)arg4;
 - (_Bool)moveItemAtURL:(id)arg1 toURL:(id)arg2 error:(id *)arg3;
 - (_Bool)copyItemAtURL:(id)arg1 toURL:(id)arg2 error:(id *)arg3;
 - (_Bool)moveItemIfExistsAtURL:(id)arg1 toURL:(id)arg2 error:(id *)arg3;
@@ -65,12 +74,11 @@ __attribute__((visibility("hidden")))
 - (id)targetOfSymbolicLinkAtURL:(id)arg1 error:(id *)arg2;
 - (_Bool)symbolicallyLinkURL:(id)arg1 toSymlinkTarget:(id)arg2 error:(id *)arg3;
 - (_Bool)createDirectoryAtURL:(id)arg1 withIntermediateDirectories:(_Bool)arg2 mode:(unsigned short)arg3 error:(id *)arg4;
-- (_Bool)createDirectoryAtURL:(id)arg1 withIntermediateDirectories:(_Bool)arg2 mode:(unsigned short)arg3 class:(int)arg4 error:(id *)arg5;
+- (_Bool)createDirectoryAtURL:(id)arg1 withIntermediateDirectories:(_Bool)arg2 mode:(unsigned short)arg3 dataProtectionClass:(int)arg4 error:(id *)arg5;
 - (_Bool)createDirectoryAtURL:(id)arg1 withIntermediateDirectories:(_Bool)arg2 mode:(unsigned short)arg3 owner:(id)arg4 error:(id *)arg5;
-- (_Bool)createDirectoryAtURL:(id)arg1 withIntermediateDirectories:(_Bool)arg2 mode:(unsigned short)arg3 owner:(id)arg4 class:(int)arg5 fsNode:(id *)arg6 error:(id *)arg7;
-- (_Bool)createDirectoryAtURL:(id)arg1 withIntermediateDirectories:(_Bool)arg2 mode:(unsigned short)arg3 owner:(id)arg4 class:(int)arg5 error:(id *)arg6;
+- (_Bool)createDirectoryAtURL:(id)arg1 withIntermediateDirectories:(_Bool)arg2 mode:(unsigned short)arg3 owner:(id)arg4 dataProtectionClass:(int)arg5 fsNode:(id *)arg6 error:(id *)arg7;
+- (_Bool)createDirectoryAtURL:(id)arg1 withIntermediateDirectories:(_Bool)arg2 mode:(unsigned short)arg3 owner:(id)arg4 dataProtectionClass:(int)arg5 error:(id *)arg6;
 - (_Bool)removeItemAtURL:(id)arg1 error:(id *)arg2;
-- (id)init;
 
 @end
 

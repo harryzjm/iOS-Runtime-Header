@@ -7,7 +7,7 @@
 #import <SecurityFoundation/SFDigestOperation-Protocol.h>
 
 @protocol SFDigestOperationInternal <SFDigestOperation>
-@property(readonly, nonatomic, getter=_secKeyECDSAAlgorithm) const struct __CFString *secKeyECDSAAlgorithm;
+@property(readonly, nonatomic, getter=_secKeyECDSAAlgorithm) struct __CFString *secKeyECDSAAlgorithm;
 
 @optional
 @property(readonly, nonatomic, getter=_ccDigestInfo) const struct ccdigest_info *ccDigestInfo;

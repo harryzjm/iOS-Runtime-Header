@@ -10,6 +10,8 @@
 @protocol BROperationClient;
 
 @protocol BRShareOperationFPFSProtocol <BRShareOperationProtocol>
+- (void)startOperation:(NSObject<BROperationClient> *)arg1 toCopyShortTokenWithReply:(void (^)(NSString *, NSError *))arg2;
+- (void)startOperation:(NSObject<BROperationClient> *)arg1 toCopySharingAccessTokenWithReply:(void (^)(NSData *, NSString *, NSError *))arg2;
 - (void)startOperation:(NSObject<BROperationClient> *)arg1 toProcessSubitemsWithMaxSubsharesFailures:(unsigned long long)arg2 processType:(unsigned long long)arg3 reply:(void (^)(NSError *))arg4;
 - (void)startOperation:(NSObject<BROperationClient> *)arg1 toPrepFolderForSharingWithReply:(void (^)(NSError *))arg2;
 - (void)startOperation:(NSObject<BROperationClient> *)arg1 toCopyParticipantTokenWithReply:(void (^)(NSString *, NSString *, NSError *))arg2;

@@ -11,7 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface WebCoreAVFMovieObserver : NSObject
 {
-    struct WeakPtr<WebCore::MediaPlayerPrivateAVFoundationObjC, WTF::EmptyCounter> m_player;
+    struct WeakPtr<WebCore::MediaPlayerPrivateAVFoundationObjC, WTF::DefaultWeakPtrImpl> m_player;
     int m_delayCallbacks;
     struct RefPtr<WTF::WorkQueue, WTF::RawPtrTraits<WTF::WorkQueue>, WTF::DefaultRefDerefTraits<WTF::WorkQueue>> m_backgroundQueue;
 }

@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *observers;
     MISSING_TYPE *offerManager;
+    MISSING_TYPE *didProcessInitialOffer;
 }
 
 - (void).cxx_destruct;

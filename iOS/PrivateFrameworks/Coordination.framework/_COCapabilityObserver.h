@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
     _Bool _notified;
     _Bool _lastValue;
     NSString *_capability;
-    NSString *_cluster;
+    id _cluster;
     CDUnknownBlockType _block;
 }
 
@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool lastValue; // @synthesize lastValue=_lastValue;
 @property(nonatomic) _Bool notified; // @synthesize notified=_notified;
 @property(readonly, copy, nonatomic) CDUnknownBlockType block; // @synthesize block=_block;
-@property(readonly, copy, nonatomic) NSString *cluster; // @synthesize cluster=_cluster;
+@property(readonly, copy, nonatomic) id cluster; // @synthesize cluster=_cluster;
 @property(readonly, copy, nonatomic) NSString *capability; // @synthesize capability=_capability;
 - (void)notify:(_Bool)arg1;
 - (id)description;

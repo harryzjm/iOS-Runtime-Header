@@ -19,6 +19,7 @@
 - (id)generateRequestOperations;
 - (id)requestOperationClasses;
 - (long long)databaseScope;
+- (id)equivalencyProperties;
 
 @end
 

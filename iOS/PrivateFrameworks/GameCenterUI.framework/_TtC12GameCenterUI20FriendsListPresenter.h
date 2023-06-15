@@ -4,25 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <swiftCore/_TtCs12_SwiftObject.h>
-
 @class MISSING_TYPE;
 
-@interface _TtC12GameCenterUI20FriendsListPresenter : _TtCs12_SwiftObject
+__attribute__((visibility("hidden")))
+@interface _TtC12GameCenterUI20FriendsListPresenter
 {
-    MISSING_TYPE *playerId;
+    MISSING_TYPE *pageMetricsPresenter;
     MISSING_TYPE *newFriendPlayerIds;
     MISSING_TYPE *friendType;
     MISSING_TYPE *requiredData;
     MISSING_TYPE *showAddFriendButton;
     MISSING_TYPE *gameCenterDataUpdatePresenter;
-    MISSING_TYPE *isUpdating;
     MISSING_TYPE *searchTerm;
-    MISSING_TYPE *snapshot;
-    MISSING_TYPE *onApplySnapshot;
+    MISSING_TYPE *metricsPayload;
     MISSING_TYPE *onShowPageOverlay;
-    MISSING_TYPE *onUpdatePhaseChange;
 }
+
+- (void).cxx_destruct;
 
 @end
 

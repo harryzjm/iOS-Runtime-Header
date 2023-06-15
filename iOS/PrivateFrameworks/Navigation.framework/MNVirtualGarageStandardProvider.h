@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, NSTimer, VGVirtualGarage;
+@class NSString, NSTimer, VGVirtualGarage, geo_isolater;
 @protocol MNVirtualGarageProviderDelegate, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -18,6 +18,9 @@ __attribute__((visibility("hidden")))
     NSTimer *_forceUpdateTimer;
     double _forcePeriodicUpdateInterval;
     VGVirtualGarage *_garage;
+    unsigned long long _vehiclesCount;
+    _Bool _assumesFullCharge;
+    geo_isolater *_garageIsolater;
 }
 
 - (void).cxx_destruct;
@@ -25,12 +28,16 @@ __attribute__((visibility("hidden")))
 - (void)virtualGarageDidUpdate:(id)arg1;
 - (void)_sendVirtualGarageUpdateForSelectedVehicle:(id)arg1;
 - (void)_forceVirtualGarageSyncWithHandler:(CDUnknownBlockType)arg1;
+- (id)_selectedVehicle;
+- (void)_updateCachedPropertiesForGarage:(id)arg1;
+- (void)_setVirtualGarage:(id)arg1;
 @property(readonly, nonatomic) _Bool assumesFullCharge;
 @property(readonly, nonatomic) unsigned long long vehiclesCount;
 - (void)updatedVehicleStateWithHandler:(CDUnknownBlockType)arg1;
 - (void)stopVirtualGarageUpdates;
 - (void)startVirtualGarageUpdates;
 - (void)dealloc;
+- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

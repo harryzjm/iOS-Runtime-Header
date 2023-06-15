@@ -16,6 +16,7 @@
     MISSING_TYPE *appLaunchFeatureFlags;
     MISSING_TYPE *responseGenerator;
     MISSING_TYPE *dialogResponseUtil;
+    MISSING_TYPE *referenceResolver;
 }
 
 @end

@@ -7,9 +7,12 @@
 __attribute__((visibility("hidden")))
 @interface NWOSApplicationServiceEndpoint
 {
-    char *apple_id;
+    char *alias;
     char *application_service;
     unsigned char service_identifier[16];
+    char *device_name;
+    char *device_model;
+    char *contact_id;
 }
 
 - (id)copyEndpoint;

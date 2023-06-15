@@ -9,12 +9,12 @@
 @protocol UICoordinateSpace;
 
 @protocol BNPanGestureProxy <NSObject>
+@property(readonly, nonatomic) _Bool didCrossDefaultThreshold;
+@property(copy, nonatomic) CDUnknownBlockType actionHandler;
+@property(readonly, nonatomic) long long state;
 - (struct CGPoint)velocityInCoordinateSpace:(id <UICoordinateSpace>)arg1;
 - (struct CGPoint)visualTranslationInCoordinateSpace:(id <UICoordinateSpace>)arg1;
 - (struct CGPoint)translationInCoordinateSpace:(id <UICoordinateSpace>)arg1;
 - (struct CGPoint)locationInCoordinateSpace:(id <UICoordinateSpace>)arg1;
-@property(nonatomic, readonly) _Bool didCrossDefaultThreshold;
-@property(nonatomic, copy) CDUnknownBlockType actionHandler;
-@property(nonatomic, readonly) long long state;
 @end
 

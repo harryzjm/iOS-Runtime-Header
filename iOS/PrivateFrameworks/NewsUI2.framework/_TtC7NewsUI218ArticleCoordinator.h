@@ -16,7 +16,6 @@
     MISSING_TYPE *issueSessionManager;
     MISSING_TYPE *channelDataFactory;
     MISSING_TYPE *scienceDataFactory;
-    MISSING_TYPE *externalEventSubmitter;
     MISSING_TYPE *newsActivityManager;
     MISSING_TYPE *articleModel;
     MISSING_TYPE *issue;

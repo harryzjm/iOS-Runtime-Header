@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSMutableSet, NSUUID, UIImage;
+@protocol TabSnapshotCacheEntryStateObserving;
 
 __attribute__((visibility("hidden")))
 @interface TabSnapshotCacheEntry : NSObject
@@ -19,9 +20,11 @@ __attribute__((visibility("hidden")))
     NSMutableSet *_groupMembers;
     UIImage *_snapshot;
     long long _state;
+    id <TabSnapshotCacheEntryStateObserving> _stateObserver;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <TabSnapshotCacheEntryStateObserving> stateObserver; // @synthesize stateObserver=_stateObserver;
 @property(nonatomic) _Bool fitsInCache; // @synthesize fitsInCache=_fitsInCache;
 @property(nonatomic) _Bool stateUpdateCancelled; // @synthesize stateUpdateCancelled=_stateUpdateCancelled;
 @property(nonatomic, getter=isUpdatingState) _Bool updatingState; // @synthesize updatingState=_updatingState;
@@ -30,6 +33,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSMutableSet *groupMembers; // @synthesize groupMembers=_groupMembers;
 @property(readonly, nonatomic, getter=isGroup) _Bool group; // @synthesize group=_group;
 @property(readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
+@property(readonly, nonatomic) _Bool isPendingUpdate;
 - (id)debugDescription;
 - (id)initWithIdentifier:(id)arg1 isGroup:(_Bool)arg2;
 

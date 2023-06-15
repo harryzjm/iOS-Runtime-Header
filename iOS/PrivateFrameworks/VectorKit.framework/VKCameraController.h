@@ -41,7 +41,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool staysCenteredDuringPinch; // @synthesize staysCenteredDuringPinch=_staysCenteredDuringPinch;
 - (_Bool)usesVKCamera;
 - (void)populateDebugNode:(void *)arg1 withOptions:(const void *)arg2;
-- (_Bool)centerCoordinate:(CDStruct_c3b9c2ee *)arg1 andDistanceFromCenter:(double *)arg2 forMapRegion:(id)arg3;
+- (_Bool)centerCoordinate:(CDStruct_2c43369c *)arg1 andDistanceFromCenter:(double *)arg2 forMapRegion:(id)arg3;
 - (void)updateWithTimestamp:(double)arg1 withContext:(void *)arg2;
 - (_Bool)wantsTimerTick;
 @property(readonly, nonatomic) double altitude;
@@ -51,7 +51,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) double presentationHeading;
 @property(nonatomic) double heading;
 @property(nonatomic) double distanceFromCenterCoordinate;
-@property(nonatomic) CDStruct_c3b9c2ee centerCoordinate;
+@property(nonatomic) CDStruct_2c43369c centerCoordinate;
 @property(readonly, nonatomic) GEOMapRegion *mapRegionIgnoringEdgeInsets;
 @property(readonly, nonatomic) GEOMapRegion *mapRegion;
 - (void)updateCameraToPositionOrientationLimits;

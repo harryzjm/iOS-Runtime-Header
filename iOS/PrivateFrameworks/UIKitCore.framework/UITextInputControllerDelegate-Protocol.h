@@ -6,11 +6,12 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class NSMutableAttributedString, NSString, UITextInputController;
+@class NSMutableAttributedString, NSString, UIColor, UITextInputController;
 
 @protocol UITextInputControllerDelegate <NSObject>
 
 @optional
+@property(retain, nonatomic) UIColor *tintColor;
 @property(readonly, nonatomic) _Bool isSingleLineDocument;
 - (void)textInputDidAnimatePaste:(UITextInputController *)arg1;
 - (void)textInputWillAnimatePaste:(UITextInputController *)arg1;

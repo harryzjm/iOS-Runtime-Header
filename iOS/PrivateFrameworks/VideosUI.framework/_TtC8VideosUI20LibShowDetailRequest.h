@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *domain;
     MISSING_TYPE *showId;
+    MISSING_TYPE *showDownloadsOnly;
     MISSING_TYPE *serviceRequest;
 }
 

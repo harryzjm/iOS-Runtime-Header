@@ -12,6 +12,7 @@
 + (id)ef_emptyStringIfNil:(id)arg1;
 + (id)ef_stringByIsolatingDirectionalityForString:(id)arg1;
 + (id)ef_UUID;
+- (id)ef_UTF8ConvertibleString;
 - (id)ef_pathByReplacingRelativePathWithFolderName:(id)arg1;
 - (id)ef_filenameWithExtensionForMimeType:(id)arg1;
 - (id)ef_sanitizedFileName;

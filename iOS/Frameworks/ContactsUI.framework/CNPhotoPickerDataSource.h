@@ -38,7 +38,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) CNVisualIdentity *visualIdentity; // @synthesize visualIdentity=_visualIdentity;
 - (id)uniqueEmojiSuggestionItems:(id)arg1;
 - (void)photoPickerProviderGroup:(id)arg1 didUpdateItem:(id)arg2;
-- (void)photoPickerProviderGroupDidUpdate:(id)arg1;
+- (void)photoPickerProviderGroupDidUpdate:(id)arg1 requiresFullReload:(_Bool)arg2;
 - (void)updateGroupCollapsedStateForSection:(long long)arg1;
 - (id)removeItem:(id)arg1;
 - (id)indexOfAddedItem:(id)arg1 inGroupOfType:(long long)arg2;
@@ -58,7 +58,9 @@ __attribute__((visibility("hidden")))
 - (long long)sectionIndexForProviderGroup:(id)arg1;
 - (long long)numberOfItemsInSection:(long long)arg1;
 - (long long)numberOfSections;
+- (void)setItemsPerRow:(unsigned long long)arg1 requiresFullReload:(_Bool)arg2;
 @property(nonatomic) unsigned long long itemsPerRow;
+- (unsigned long long)itemsPerRowForSection:(long long)arg1;
 - (void)loadProviderGroupsItemsForSize:(struct CGSize)arg1 itemsPerRow:(double)arg2 scale:(double)arg3 RTL:(_Bool)arg4;
 - (id)initWithVisualIdentity:(id)arg1 contactViewCache:(id)arg2 providerGroups:(id)arg3 avatarStore:(id)arg4;
 - (id)initWithVisualIdentity:(id)arg1 contactViewCache:(id)arg2 photoPickerConfiguration:(id)arg3;

@@ -8,7 +8,11 @@
 @protocol CKConversationListControllerProtocol;
 
 @protocol CKMessagesNavigationProviding
-- (void)showLockdownAlertForBusinessChat;
+@property(readonly, nonatomic) UIViewController *presentedViewController;
+@property(readonly, nonatomic) CKCoreChatController *chatController;
+@property(copy, nonatomic) CDUnknownBlockType deferredHandleURLBlock;
+@property(readonly, nonatomic) UIViewController<CKConversationListControllerProtocol> *conversationListController;
+- (void)showBusinessChatNotSupportedAlert;
 - (void)showSurfAppForCurrentConversationWithAmount:(double)arg1 currency:(NSString *)arg2;
 - (void)showStoreForURL:(NSURL *)arg1 fromSourceApplication:(NSString *)arg2;
 - (void)dismissViewControllerAnimated:(_Bool)arg1 completion:(void (^)(void))arg2;
@@ -32,6 +36,7 @@
 - (void)showConversationInNewWindow:(CKConversation *)arg1;
 - (void)cancelNewMessageCompositionAnimated:(_Bool)arg1;
 - (void)showNewMessageCompositionPanelAppendingToExistingDraft:(CKComposition *)arg1 animated:(_Bool)arg2;
+- (void)showNewMessageCompositionPanelWithRecipients:(NSArray *)arg1 composition:(CKComposition *)arg2 suggestedReplies:(NSArray *)arg3 animated:(_Bool)arg4 bizIntent:(NSDictionary *)arg5 launchPluginWithBundleID:(NSString *)arg6 pluginLaunchPayload:(NSDictionary *)arg7 simID:(NSString *)arg8 sendMessageHandler:(void (^)(void))arg9;
 - (void)showNewMessageCompositionPanelWithRecipients:(NSArray *)arg1 composition:(CKComposition *)arg2 suggestedReplies:(NSArray *)arg3 animated:(_Bool)arg4 bizIntent:(NSDictionary *)arg5 launchPluginWithBundleID:(NSString *)arg6 pluginLaunchPayload:(NSDictionary *)arg7 sendMessageHandler:(void (^)(void))arg8;
 - (void)showNewMessageCompositionPanelWithRecipients:(NSArray *)arg1 composition:(CKComposition *)arg2 suggestedReplies:(NSArray *)arg3 animated:(_Bool)arg4 sendMessageHandler:(void (^)(void))arg5;
 - (void)showNewMessageCompositionPanelWithRecipients:(NSArray *)arg1 composition:(CKComposition *)arg2 suggestedReplies:(NSArray *)arg3 animated:(_Bool)arg4;
@@ -39,9 +44,5 @@
 - (void)showNewMessageCompositionPanel;
 - (_Bool)isComposingMessage;
 - (_Bool)currentCompositionHasContent;
-@property(nonatomic, readonly) UIViewController *presentedViewController;
-@property(nonatomic, readonly) CKCoreChatController *chatController;
-@property(nonatomic, copy) CDUnknownBlockType deferredHandleURLBlock;
-@property(nonatomic, readonly) UIViewController<CKConversationListControllerProtocol> *conversationListController;
 @end
 

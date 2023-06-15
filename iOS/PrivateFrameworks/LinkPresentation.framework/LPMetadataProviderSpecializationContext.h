@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     _Bool _hasLoadedResource;
     _Bool _shouldFetchSubresources;
     NSURL *_URL;
+    NSURL *_postRedirectURL;
     NSString *_MIMEType;
     WKWebView *_webView;
     unsigned long long _allowedSpecializations;
@@ -29,9 +30,10 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool shouldFetchSubresources; // @synthesize shouldFetchSubresources=_shouldFetchSubresources;
 @property(readonly, nonatomic) _Bool hasLoadedResource; // @synthesize hasLoadedResource=_hasLoadedResource;
 @property(readonly, copy, nonatomic) NSString *MIMEType; // @synthesize MIMEType=_MIMEType;
+@property(readonly, copy, nonatomic) NSURL *postRedirectURL; // @synthesize postRedirectURL=_postRedirectURL;
 @property(readonly, copy, nonatomic) NSURL *URL; // @synthesize URL=_URL;
 - (void)ensureEventWithSpecialization:(unsigned long long)arg1;
-- (id)initWithURL:(id)arg1 MIMEType:(id)arg2 webView:(id)arg3 hasLoadedResource:(_Bool)arg4 shouldFetchSubresources:(_Bool)arg5 allowedSpecializations:(unsigned long long)arg6;
+- (id)initWithOriginalURL:(id)arg1 postRedirectURL:(id)arg2 MIMEType:(id)arg3 webView:(id)arg4 hasLoadedResource:(_Bool)arg5 shouldFetchSubresources:(_Bool)arg6 allowedSpecializations:(unsigned long long)arg7;
 
 @end
 

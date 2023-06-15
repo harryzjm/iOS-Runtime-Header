@@ -7,12 +7,6 @@
 #import <Foundation/NSDictionary.h>
 
 @interface NSDictionary (AuthKit)
-+ (id)ak_jsonDictionaryWithResponseData:(id)arg1;
-+ (id)ak_dictionaryWithResponseData:(id)arg1;
-- (id)ak_toJSONString;
-- (id)ak_urlQueryString;
-- (id)ak_mapObjectsNullable:(CDUnknownBlockType)arg1;
-- (id)ak_mapObjects:(CDUnknownBlockType)arg1;
 - (id)ak_redactedCopy;
 - (id)_ak_truncateTokenDict:(id)arg1;
 - (id)_ak_truncateTokenString:(id)arg1;

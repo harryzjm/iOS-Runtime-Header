@@ -11,12 +11,16 @@
 - (void)canvasViewDidBeginDrawing:(PKTiledView *)arg1;
 - (void)canvasViewDidEraseStrokes:(NSArray *)arg1;
 - (void)canvasView:(PKTiledView *)arg1 cancelledStroke:(PKStroke *)arg2;
-- (void)canvasView:(PKTiledView *)arg1 endedStroke:(PKStroke *)arg2;
 - (void)canvasView:(PKTiledView *)arg1 beganStroke:(PKStroke *)arg2;
 - (void)_canvasViewWillBeginDrawing:(PKTiledView *)arg1;
 - (_Bool)canvasView:(PKTiledView *)arg1 shouldBeginDrawingWithTouch:(UITouch *)arg2;
 
 @optional
+- (_Bool)canvasView:(PKTiledView *)arg1 hoverShouldBeActiveAt:(struct CGPoint)arg2;
+- (void)canvasView:(PKTiledView *)arg1 didChangeHiddenState:(_Bool)arg2;
+- (void)canvasView:(PKTiledView *)arg1 endedStroke:(PKStroke *)arg2 shapeStrokes:(NSArray *)arg3;
+- (void)canvasView:(PKTiledView *)arg1 endedStroke:(PKStroke *)arg2;
+- (_Bool)_canvasViewSnapshottingDisabled:(PKTiledView *)arg1;
 - (void)_canvasViewWillCreateSnapshot:(PKTiledView *)arg1;
 - (NSArray *)tiledViewAttachmentViews;
 @end

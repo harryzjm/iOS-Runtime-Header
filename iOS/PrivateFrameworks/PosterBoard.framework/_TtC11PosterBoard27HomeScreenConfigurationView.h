@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class MISSING_TYPE;
 
@@ -26,7 +26,11 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)toggleLegibilityBlur:(id)arg1;
 - (void)didSelectControl:(id)arg1;
-- (void)traitCollectionDidChange:(id)arg1;
+- (void)reloadLockPosterSnapshot;
+- (void)posterPairDidUpdateHomePosterAppearance:(id)arg1;
+- (void)posterPairDidUpdateLockPosterSnapshots:(id)arg1;
+- (void)posterPairDidUpdateLockPosterAppearance:(id)arg1;
+- (void)posterPairDidUpdateConfiguredProperties:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 

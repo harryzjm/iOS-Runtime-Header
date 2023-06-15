@@ -11,7 +11,12 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (id)getContentsOfArchiveAtURL:(id)arg1 log:(id)arg2 error:(id *)arg3;
++ (_Bool)unarchiveDataAtURL:(id)arg1 log:(id)arg2 inMemoryDataSizeThreshold:(unsigned long long)arg3 fileVisitor:(CDUnknownBlockType)arg4 error:(id *)arg5;
 + (_Bool)unarchiveDataAtURL:(id)arg1 toURL:(id)arg2 log:(id)arg3 error:(id *)arg4;
++ (_Bool)decompressGZipDataAtURL:(id)arg1 toURL:(id)arg2 log:(id)arg3 error:(id *)arg4;
++ (_Bool)decompressBZip2DataAtURL:(id)arg1 toURL:(id)arg2 log:(id)arg3 error:(id *)arg4;
++ (_Bool)decompressDataAtURL:(id)arg1 toURL:(id)arg2 log:(id)arg3 error:(id *)arg4;
 
 @end
 

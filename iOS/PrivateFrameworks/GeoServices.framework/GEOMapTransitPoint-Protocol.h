@@ -11,7 +11,7 @@
 @protocol GEOMapTransitPoint <NSObject>
 @property(readonly, nonatomic) long long polygonPointsCount;
 @property(readonly, nonatomic) CDStruct_c3b9c2ee *polygonPoints;
-@property(readonly, nonatomic) CDStruct_02837cd9 boundingRect;
+@property(readonly, nonatomic) CDStruct_90e2a262 boundingRect;
 @property(readonly, nonatomic) double boundingRadius;
 @property(readonly, nonatomic) NSString *internalName;
 @property(readonly, nonatomic) unsigned long long transitID;

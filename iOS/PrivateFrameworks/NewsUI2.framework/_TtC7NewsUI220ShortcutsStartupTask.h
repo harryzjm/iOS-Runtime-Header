@@ -13,7 +13,6 @@
     MISSING_TYPE *shortcutService;
     MISSING_TYPE *subscriptionController;
     MISSING_TYPE *shortcutsOnboardingManager;
-    MISSING_TYPE *sportsOnboardingManager;
     MISSING_TYPE *configurationManager;
     MISSING_TYPE *feedPersonalizing;
     MISSING_TYPE *featureAvailability;

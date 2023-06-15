@@ -37,6 +37,7 @@
 - (void)recoveredMessagesFromRecentlyDeletedForChatsWithGUIDs:(NSArray *)arg1;
 - (void)permanentlyDeletedRecoverableMessagesForChatsWithGUIDs:(NSArray *)arg1 deletedChatGUIDs:(NSArray *)arg2;
 - (void)permanentlyDeletedMessagesInChatsWithDeletedChatGUIDs:(NSArray *)arg1 queryID:(NSString *)arg2;
+- (void)permanentlyDeletedMessagesInChatsWithDeletedChatGUIDs:(NSArray *)arg1;
 - (void)loadedRecoverableMessagesMetadata:(NSDictionary *)arg1 queryID:(NSString *)arg2;
 - (void)recoveredMessagesWithQueryID:(NSString *)arg1;
 - (void)movedMessagesToRecentlyDeletedForChatsWithGUIDs:(NSArray *)arg1 queryID:(NSString *)arg2;
@@ -53,6 +54,8 @@
 - (void)chat:(NSString *)arg1 lastMessageTimeStampOnLoadUpdated:(double)arg2;
 - (void)chat:(NSString *)arg1 nicknamesUpdated:(NSDictionary *)arg2;
 - (void)chat:(NSString *)arg1 engramIDUpdated:(NSString *)arg2;
+- (void)chat:(NSString *)arg1 isDeletingIncomingMessagesUpdated:(_Bool)arg2;
+- (void)chat:(NSString *)arg1 isRecoveredUpdated:(_Bool)arg2;
 - (void)chat:(NSString *)arg1 isFilteredUpdated:(long long)arg2;
 - (void)chat:(NSString *)arg1 lastAddressedSIMIDUpdated:(NSString *)arg2;
 - (void)chat:(NSString *)arg1 lastAddressedHandleUpdated:(NSString *)arg2;

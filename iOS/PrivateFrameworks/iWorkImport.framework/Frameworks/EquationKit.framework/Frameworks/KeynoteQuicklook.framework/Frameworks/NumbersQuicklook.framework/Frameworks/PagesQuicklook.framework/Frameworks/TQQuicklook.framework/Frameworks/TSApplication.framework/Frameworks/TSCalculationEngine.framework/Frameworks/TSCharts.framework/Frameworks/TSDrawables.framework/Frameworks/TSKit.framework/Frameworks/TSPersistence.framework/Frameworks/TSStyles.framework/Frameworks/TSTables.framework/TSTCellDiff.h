@@ -6,33 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@class TSSMutablePropertySet, TSSPropertyMap;
+@class TSSPropertyMap;
 
 @interface TSTCellDiff : NSObject
 {
-    _Bool _hasCachedContainsCellStyleProperties;
-    _Bool _cachedContainsCellStyleProperties;
-    _Bool _hasCachedContainsTextStyleProperties;
-    _Bool _cachedContainsTextStyleProperties;
-    _Bool _hasCachedContainsStringProperties;
-    _Bool _cachedContainsStringProperties;
     TSSPropertyMap *_propertyMapToSet;
-    TSSMutablePropertySet *_propertySetToSet;
     TSSPropertyMap *_propertyMapToReset;
-    TSSMutablePropertySet *_propertySetToReset;
 }
 
++ (void)initialize;
 + (id)cellDiff;
 - (void).cxx_destruct;
-@property(nonatomic) _Bool cachedContainsStringProperties; // @synthesize cachedContainsStringProperties=_cachedContainsStringProperties;
-@property(nonatomic) _Bool hasCachedContainsStringProperties; // @synthesize hasCachedContainsStringProperties=_hasCachedContainsStringProperties;
-@property(nonatomic) _Bool cachedContainsTextStyleProperties; // @synthesize cachedContainsTextStyleProperties=_cachedContainsTextStyleProperties;
-@property(nonatomic) _Bool hasCachedContainsTextStyleProperties; // @synthesize hasCachedContainsTextStyleProperties=_hasCachedContainsTextStyleProperties;
-@property(nonatomic) _Bool cachedContainsCellStyleProperties; // @synthesize cachedContainsCellStyleProperties=_cachedContainsCellStyleProperties;
-@property(nonatomic) _Bool hasCachedContainsCellStyleProperties; // @synthesize hasCachedContainsCellStyleProperties=_hasCachedContainsCellStyleProperties;
-@property(retain, nonatomic) TSSMutablePropertySet *propertySetToReset; // @synthesize propertySetToReset=_propertySetToReset;
 @property(retain, nonatomic) TSSPropertyMap *propertyMapToReset; // @synthesize propertyMapToReset=_propertyMapToReset;
-@property(retain, nonatomic) TSSMutablePropertySet *propertySetToSet; // @synthesize propertySetToSet=_propertySetToSet;
 @property(retain, nonatomic) TSSPropertyMap *propertyMapToSet; // @synthesize propertyMapToSet=_propertyMapToSet;
 - (unsigned long long)estimatedByteSize;
 - (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
@@ -51,17 +36,19 @@
 - (void)setBoolValue:(_Bool)arg1 forProperty:(int)arg2;
 - (void)setIntValue:(int)arg1 forProperty:(int)arg2;
 - (void)setObject:(id)arg1 forProperty:(int)arg2;
-- (void)p_resetCachedFlags;
-@property(readonly, nonatomic) _Bool containsStringProperties;
+@property(readonly, nonatomic) _Bool containsParagraphStyleProperties;
 @property(readonly, nonatomic) _Bool containsTextStyleProperties;
+@property(readonly, nonatomic) _Bool containsCellStyleOrCellDiffCellStyleProperties;
 @property(readonly, nonatomic) _Bool containsCellStyleProperties;
 - (_Bool)containsAnyPropertiesInSet:(id)arg1;
 - (id)allProperties;
+- (void)collectPropertyKeysIntoIndexSet:(id)arg1;
 - (id)objectForResetProperty:(int)arg1;
 - (_Bool)doesResetAnyProperties:(id)arg1;
 - (_Bool)doesResetProperty:(int)arg1;
 - (_Bool)boolValueForSetProperty:(int)arg1;
 - (id)objectForSetProperty:(int)arg1;
+- (_Bool)containsProperty:(int)arg1;
 - (_Bool)doesSetAnyProperties:(id)arg1;
 - (_Bool)doesSetProperty:(int)arg1;
 @property(readonly, nonatomic, getter=isEmpty) _Bool empty;

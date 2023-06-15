@@ -8,6 +8,7 @@
 {
 }
 
+- (void)p_renderLabelsWithLabelCount:(unsigned long long)arg1 transforms:(struct CGAffineTransform *)arg2 clipRects:(struct CGRect *)arg3 strings:(id)arg4 context:(struct CGContext *)arg5 tLayerRect:(struct CGRect)arg6 textEngine:(id)arg7 paragraphStyle:(id)arg8 viewScale:(double)arg9;
 - (void)p_renderLabelsIntoContext:(struct CGContext *)arg1 seriesIndex:(unsigned long long)arg2 model:(id)arg3 modelCache:(id)arg4 bodyLayoutItem:(id)arg5 groupIndexSet:(id)arg6;
 - (void)p_renderIntoContext:(struct CGContext *)arg1 visible:(struct CGRect)arg2;
 - (void)p_finishContextAfterRendering:(struct CGContext *)arg1 modelCache:(id)arg2 didEnableTransparencyLayer:(_Bool)arg3;

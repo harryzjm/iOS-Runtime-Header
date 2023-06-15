@@ -10,6 +10,7 @@ __attribute__((visibility("hidden")))
 @interface _TtC12GameCenterUI22PlayerProfilePresenter
 {
     MISSING_TYPE *profileType;
+    MISSING_TYPE *pageContext;
     MISSING_TYPE *pageMericsPresenter;
     MISSING_TYPE *requiredDataPresenter;
     MISSING_TYPE *nicknamePresenter;
@@ -35,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (void)showRecentlyPlayedWithFriends;
 - (void)removeFriend;
 - (void)reportPlayer;
+- (void)addFriends;
 - (void)viewFriendRequests;
 @property(nonatomic, readonly) NSArray *rightBarButtonItems;
 - (id)contextMenuAction;

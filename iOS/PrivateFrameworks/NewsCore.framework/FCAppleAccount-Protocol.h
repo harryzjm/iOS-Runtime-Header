@@ -10,6 +10,7 @@
 @protocol FCAppleAccountObserver;
 
 @protocol FCAppleAccount <NSObject>
+@property(readonly, nonatomic) NSString *altDSID;
 @property(readonly, nonatomic) NSArray *allEmailAddresses;
 @property(readonly, nonatomic) NSString *appStoreEmailAddress;
 @property(readonly, nonatomic) NSString *primaryEmailAddress;

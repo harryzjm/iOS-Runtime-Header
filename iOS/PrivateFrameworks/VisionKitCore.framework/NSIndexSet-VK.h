@@ -9,6 +9,7 @@
 @class NSArray;
 
 @interface NSIndexSet (VK)
++ (id)vk_indexSetWithNSNumberIndex:(id)arg1;
 @property(readonly, nonatomic) NSArray *vk_rangeArray;
 @end
 

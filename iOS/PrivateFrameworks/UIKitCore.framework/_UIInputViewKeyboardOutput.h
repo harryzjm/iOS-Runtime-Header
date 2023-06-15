@@ -6,10 +6,8 @@
 
 #import <TextInput/TIKeyboardOutput.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface _UIInputViewKeyboardOutput : TIKeyboardOutput <NSCopying>
+@interface _UIInputViewKeyboardOutput : TIKeyboardOutput
 {
     _Bool _didBeginOutput;
 }

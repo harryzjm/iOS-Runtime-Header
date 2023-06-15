@@ -28,7 +28,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, retain, nonatomic) LPAudioPlayButtonTheme *defaultTheme; // @synthesize defaultTheme=_defaultTheme;
 @property(retain, nonatomic) LPPointUnit *glyphSize; // @synthesize glyphSize=_glyphSize;
 @property(retain, nonatomic) LPSize *size; // @synthesize size=_size;
-- (id)init;
+- (id)initWithPlatform:(long long)arg1;
 
 @end
 

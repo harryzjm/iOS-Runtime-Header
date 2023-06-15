@@ -7,6 +7,6 @@
 #import <AVConference/NSObject-Protocol.h>
 
 @protocol VCServerDelegate <NSObject>
-- (void)didServerDie;
+- (void)serverDidDie;
 @end
 

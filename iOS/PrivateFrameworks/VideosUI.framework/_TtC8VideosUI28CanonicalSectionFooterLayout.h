@@ -8,6 +8,7 @@
 
 @interface _TtC8VideosUI28CanonicalSectionFooterLayout
 {
+    MISSING_TYPE *sectionType;
     MISSING_TYPE *$__lazy_storage_$_descriptionLayout;
     MISSING_TYPE *$__lazy_storage_$_bodyTextLayout;
 }

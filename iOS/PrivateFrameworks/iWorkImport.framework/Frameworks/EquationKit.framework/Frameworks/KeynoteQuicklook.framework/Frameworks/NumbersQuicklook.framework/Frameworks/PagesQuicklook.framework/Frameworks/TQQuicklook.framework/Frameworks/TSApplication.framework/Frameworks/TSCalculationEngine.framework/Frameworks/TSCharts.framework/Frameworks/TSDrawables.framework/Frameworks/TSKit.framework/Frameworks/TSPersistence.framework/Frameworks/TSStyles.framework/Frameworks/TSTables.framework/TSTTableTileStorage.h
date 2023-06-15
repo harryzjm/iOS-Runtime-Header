@@ -23,7 +23,7 @@
 @property(nonatomic) _Bool shouldUseWideRows; // @synthesize shouldUseWideRows=_shouldUseWideRows;
 @property(readonly, nonatomic) _Bool upgradeRepairedTiles; // @synthesize upgradeRepairedTiles=_upgradeRepairedTiles;
 - (void)prepareToApplyConcurrentCellMap:(id)arg1;
-- (multimap_6050363c)makeStorageMap;
+- (multimap_46d3afcc)makeStorageMap;
 - (void)widenTilesForUpgrade;
 - (void)reset;
 - (_Bool)auditTilesForRowOverlapAndExtensionPastTableBounds:(struct TSUCellCoord)arg1 withDataStore:(id)arg2 result:(id *)arg3;
@@ -50,6 +50,7 @@
 - (void)enumerateRowsInRange:(struct _NSRange)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateRowsWithBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateTilesConcurrentlyUsingBlock:(CDUnknownBlockType)arg1;
+- (void)loadAllLazyReferences;
 - (void)_spliceRows:(id)arg1 atIndex:(unsigned int)arg2;
 - (id)_yankRowRange:(struct _NSRange)arg1;
 - (void)_removeRowsAtIndex:(unsigned int)arg1 count:(unsigned int)arg2;
@@ -64,6 +65,7 @@
 - (id)_createTileWithID:(unsigned long long)arg1;
 - (void)_setTile:(id)arg1 forID:(unsigned long long)arg2;
 - (id)_tileForID:(unsigned long long)arg1 createIfMissing:(_Bool)arg2;
+- (id)_tileFromGroupForTileID:(unsigned long long)arg1;
 - (id)_groupForTileID:(unsigned long long)arg1;
 @property(readonly, nonatomic) unsigned long long nextTileID;
 @property(readonly, nonatomic) unsigned long long archivingCompatibilityVersion; // @synthesize archivingCompatibilityVersion=_archivingCompatibilityVersion;

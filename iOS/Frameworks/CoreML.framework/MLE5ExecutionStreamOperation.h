@@ -6,44 +6,69 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, NSString, NSURL;
+@class IOSurfaceSharedEventListener, MLE5ProgramLibrary, MLModelConfiguration, MLModelDescription, MLPixelBufferPool, NSArray, NSError, NSMutableArray, NSString;
 @protocol MLFeatureProvider;
 
 __attribute__((visibility("hidden")))
 @interface MLE5ExecutionStreamOperation : NSObject
 {
+    struct unique_ptr<e5rt_async_event, MLE5ObjectDeleter<e5rt_async_event>> _cachedWaitEvent;
+    MLPixelBufferPool *_pixelBufferPool;
     id <MLFeatureProvider> _inputFeatures;
     struct e5rt_execution_stream_operation *_operationHandle;
     NSString *_debugLabel;
-    NSURL *_e5BundleURL;
+    NSError *_asyncSubmissionError;
     NSString *_functionName;
-    NSDictionary *_outputDescriptionsByName;
+    NSString *_shapeHash;
+    MLE5ProgramLibrary *_programLibrary;
+    MLModelDescription *_modelDescription;
+    MLModelConfiguration *_modelConfiguration;
     NSArray *_inputPorts;
     NSArray *_outputPorts;
     long long _state;
+    IOSurfaceSharedEventListener *_waitEventListener;
+    unsigned long long _modelSignpostId;
+    NSMutableArray *_inputPortsRequiringCopy;
 }
 
+- (id).cxx_construct;
 - (void).cxx_destruct;
-@property long long state; // @synthesize state=_state;
-@property(copy) NSArray *outputPorts; // @synthesize outputPorts=_outputPorts;
-@property(copy) NSArray *inputPorts; // @synthesize inputPorts=_inputPorts;
-@property(readonly) NSDictionary *outputDescriptionsByName; // @synthesize outputDescriptionsByName=_outputDescriptionsByName;
+@property(readonly, nonatomic) NSMutableArray *inputPortsRequiringCopy; // @synthesize inputPortsRequiringCopy=_inputPortsRequiringCopy;
+@property(readonly, nonatomic) unsigned long long modelSignpostId; // @synthesize modelSignpostId=_modelSignpostId;
+@property(readonly, nonatomic) IOSurfaceSharedEventListener *waitEventListener; // @synthesize waitEventListener=_waitEventListener;
+@property(nonatomic) long long state; // @synthesize state=_state;
+@property(copy, nonatomic) NSArray *outputPorts; // @synthesize outputPorts=_outputPorts;
+@property(copy, nonatomic) NSArray *inputPorts; // @synthesize inputPorts=_inputPorts;
+@property(readonly, nonatomic) MLModelConfiguration *modelConfiguration; // @synthesize modelConfiguration=_modelConfiguration;
+@property(readonly, nonatomic) MLModelDescription *modelDescription; // @synthesize modelDescription=_modelDescription;
+@property(readonly, nonatomic) MLE5ProgramLibrary *programLibrary; // @synthesize programLibrary=_programLibrary;
+@property(copy) NSString *shapeHash; // @synthesize shapeHash=_shapeHash;
 @property(readonly, copy) NSString *functionName; // @synthesize functionName=_functionName;
-@property(readonly, copy) NSURL *e5BundleURL; // @synthesize e5BundleURL=_e5BundleURL;
-@property(readonly, copy) NSString *debugLabel; // @synthesize debugLabel=_debugLabel;
-@property struct e5rt_execution_stream_operation *operationHandle; // @synthesize operationHandle=_operationHandle;
-@property(retain) id <MLFeatureProvider> inputFeatures; // @synthesize inputFeatures=_inputFeatures;
+@property(retain, nonatomic) NSError *asyncSubmissionError; // @synthesize asyncSubmissionError=_asyncSubmissionError;
+@property(readonly, copy, nonatomic) NSString *debugLabel; // @synthesize debugLabel=_debugLabel;
+@property(nonatomic) struct e5rt_execution_stream_operation *operationHandle; // @synthesize operationHandle=_operationHandle;
+@property(retain, nonatomic) id <MLFeatureProvider> inputFeatures; // @synthesize inputFeatures=_inputFeatures;
+@property(retain, nonatomic) MLPixelBufferPool *pixelBufferPool; // @synthesize pixelBufferPool=_pixelBufferPool;
 - (id)_outputPortNames;
 - (id)_inputPortNames;
-- (id)_newArrayOfBoundedOutputPortsUsingOutputBackings:(id)arg1 error:(id *)arg2;
-- (id)_newArrayOfInputPortsBoundToFeatures:(id)arg1 error:(id *)arg2;
-- (id)_newArrayOfUnboundedPortsForPortNames:(id)arg1 featureDescriptionsByName:(id)arg2 portFactoryFunction:(CDUnknownFunctionPointerType)arg3 error:(id *)arg4;
+- (void)_bindCompletionSyncPointDirectlyIfPossile:(id)arg1;
+- (_Bool)_bindOutputPortsWithOptions:(id)arg1 error:(id *)arg2;
+- (_Bool)_runInputPortCopiesAndReturnError:(id *)arg1;
+- (void)_bindWaitEventsWithCopies:(id)arg1;
+- (void)_bindWaitEventsDirectly:(id)arg1;
+- (_Bool)_bindInputFeaturesAndWaitEvents:(id)arg1 options:(id)arg2 error:(id *)arg3;
+- (_Bool)_bindInputPortsWithFeatures:(id)arg1 error:(id *)arg2;
+- (id)_newArrayOfUnboundedOutputPortsForPortNames:(id)arg1 featureDescriptionsByName:(id)arg2 error:(id *)arg3;
+- (id)_newArrayOfUnboundedInputPortsForPortNames:(id)arg1 featureDescriptionsByName:(id)arg2 error:(id *)arg3;
 - (struct e5rt_execution_stream_operation *)_createOperationAndReturnError:(id *)arg1;
+- (struct e5rt_execution_stream_operation *)_createOperationWithRetryCount:(long long)arg1 error:(id *)arg2;
 - (void)reset;
-@property(readonly) id <MLFeatureProvider> outputFeatures;
-- (_Bool)prepareAndReturnError:(id *)arg1;
+@property(readonly, nonatomic) id <MLFeatureProvider> outputFeatures;
+- (_Bool)prepareForAsyncSubmission:(id)arg1 error:(id *)arg2;
+- (_Bool)prepareWithOptions:(id)arg1 error:(id *)arg2;
+- (_Bool)preloadAndReturnError:(id *)arg1;
 - (void)dealloc;
-- (id)initWithContentsOfURL:(id)arg1 functionName:(id)arg2 outputDescriptionsByName:(id)arg3 debugLabel:(id)arg4;
+- (id)initWithProgramLibrary:(id)arg1 functionName:(id)arg2 modelDescription:(id)arg3 configuration:(id)arg4 debugLabel:(id)arg5 modelSignpostId:(unsigned long long)arg6;
 
 @end
 

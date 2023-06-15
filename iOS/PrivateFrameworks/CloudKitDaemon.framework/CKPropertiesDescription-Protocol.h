@@ -12,6 +12,8 @@
 - (void)CKDescribePropertiesUsing:(CKObjectDescription *)arg1;
 
 @optional
+- (_Bool)CKDescriptionShouldPrintPointer;
+- (NSString *)CKDescriptionClassName;
 - (NSString *)CKShortDescriptionRedact:(_Bool)arg1;
 @end
 

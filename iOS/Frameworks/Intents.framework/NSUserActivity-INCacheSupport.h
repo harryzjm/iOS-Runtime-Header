@@ -31,6 +31,8 @@
 - (_Bool)_hasInteraction;
 - (void)_setInteraction:(id)arg1 donate:(_Bool)arg2;
 @property(readonly, nonatomic) INInteraction *interaction;
+- (void)_setAppIntent:(id)arg1;
+- (id)_appIntent;
 - (id)_initWithIntent:(id)arg1;
 - (void)setInInteraction:(id)arg1;
 - (id)inInteraction;

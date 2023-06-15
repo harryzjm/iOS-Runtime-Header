@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *userInfo;
     MISSING_TYPE *featureAvailability;
     MISSING_TYPE *sportsSyncManager;
+    MISSING_TYPE *lastOnboardingState;
 }
 
 - (void).cxx_destruct;

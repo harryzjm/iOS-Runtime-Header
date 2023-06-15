@@ -6,9 +6,11 @@
 
 #import <CoreML/NSObject-Protocol.h>
 
-@class MLFeatureValue;
+@class MLFeatureValue, MLPixelBufferPool;
 
 @protocol MLE5PortBinder <NSObject>
+@property(retain, nonatomic) MLPixelBufferPool *pixelBufferPool;
 @property(readonly) MLFeatureValue *featureValue;
+- (void)reset;
 @end
 

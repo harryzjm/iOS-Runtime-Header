@@ -18,10 +18,18 @@
 @property(readonly, copy, nonatomic) NSString *ecemailaddress_trimmedAndQuotedLocalPart;
 @property(readonly, nonatomic) NSString *stringValue;
 @property(readonly, nonatomic) ECEmailAddress *emailAddressValue;
+@property(readonly) _Bool ec_isHorizontalSeparator;
+- (_Bool)ec_isSignature;
+- (_Bool)ec_isForwardSeparator;
+- (_Bool)ec_isAttributionPrefix;
+- (_Bool)ec_isAttribution;
+- (_Bool)ec_isWhitespace;
 @property(readonly, copy) NSString *ec_messageIDSubstring;
 - (id)ec_trimCommasSpacesQuotes;
 - (_Bool)ec_appearsToBeAnInitial;
 - (id)ec_personNameComponents;
+- (unsigned int)ec_parseHTMLEntityCharacter;
+- (id)ec_parseHTMLEntity;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

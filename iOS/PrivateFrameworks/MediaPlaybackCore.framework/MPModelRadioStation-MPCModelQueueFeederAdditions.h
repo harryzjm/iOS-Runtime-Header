@@ -8,5 +8,6 @@
 
 @interface MPModelRadioStation (MPCModelQueueFeederAdditions)
 + (id)mqf_requiredSectionPlaybackProperties;
+- (id)msp_shortDescription;
 @end
 

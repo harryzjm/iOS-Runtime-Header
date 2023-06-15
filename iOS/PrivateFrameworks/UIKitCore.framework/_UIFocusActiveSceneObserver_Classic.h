@@ -18,10 +18,12 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)descriptionBuilder;
 - (void)_keyWindowDidChangeNotification:(id)arg1;
+- (void)_screenUUIDDidChangeNotification:(id)arg1;
 - (void)observerDeliveryPolicyDidChange:(id)arg1;
 - (void)_windowDidDetachContext:(id)arg1;
 - (void)_windowDidAttachContext:(id)arg1;
 - (void)_removeDeliverObserverForWindow:(id)arg1;
+- (id)_resolvedDisplayForWindow:(id)arg1;
 - (void)_addDeliveryObserverForWindow:(id)arg1;
 - (_Bool)isActive;
 - (void)dealloc;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import "NSObject-Protocol.h"
+#import <ScreenTimeSettingsUI/NSObject-Protocol.h>
 
 @class NSIndexPath, UIColor, UIContextualAction, UIScrollView, UISwipeActionController, UISwipeActionsConfiguration, UIView;
 

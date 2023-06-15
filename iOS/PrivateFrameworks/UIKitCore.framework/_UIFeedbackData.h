@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     _UIFeedbackParameters *_hapticParameters;
     _UIFeedbackParameters *_audioParameters;
     unsigned long long _effectiveEnabledFeedbackTypes;
+    NSString *_libraryKey;
     NSURL *_fileURL;
     unsigned long long _fileFeedbackType;
 }
@@ -35,6 +36,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, setter=_setIsTransientHaptic:) _Bool isTransientHaptic; // @synthesize isTransientHaptic=_isTransientHaptic;
 @property(nonatomic, setter=_setFileFeedbackType:) unsigned long long fileFeedbackType; // @synthesize fileFeedbackType=_fileFeedbackType;
 @property(retain, nonatomic, setter=_setFileURL:) NSURL *fileURL; // @synthesize fileURL=_fileURL;
+@property(retain, nonatomic, setter=_setLibraryKey:) NSString *libraryKey; // @synthesize libraryKey=_libraryKey;
 @property(nonatomic, setter=_setEffectiveSystemSoundID:) unsigned int effectiveSystemSoundID; // @synthesize effectiveSystemSoundID=_effectiveSystemSoundID;
 @property(nonatomic, setter=_setEffectiveEnabledFeedbackTypes:) unsigned long long effectiveEnabledFeedbackTypes; // @synthesize effectiveEnabledFeedbackTypes=_effectiveEnabledFeedbackTypes;
 @property(retain, nonatomic, setter=_setAudioParameters:) _UIFeedbackParameters *audioParameters; // @synthesize audioParameters=_audioParameters;

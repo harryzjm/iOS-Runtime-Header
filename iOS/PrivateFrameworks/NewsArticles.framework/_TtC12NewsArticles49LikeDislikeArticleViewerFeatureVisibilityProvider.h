@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *pageBlueprintProvider;
     MISSING_TYPE *featureAvailability;
+    MISSING_TYPE *paidAccessChecker;
 }
 
 @end

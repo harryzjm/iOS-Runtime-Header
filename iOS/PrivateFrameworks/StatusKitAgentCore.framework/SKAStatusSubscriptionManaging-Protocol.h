@@ -10,6 +10,7 @@
 @protocol SKAClientConnectionRepresentable;
 
 @protocol SKAStatusSubscriptionManaging <NSObject>
+- (_Bool)activePresenceSubscriptionAssertionsExistForChannelIdentifier:(NSString *)arg1;
 - (void)allStatusSubscriptionIdentifiersWithActiveSubscriptionsWithCompletion:(void (^)(NSArray *))arg1;
 - (void)allSubscriptionIdentifiersWithActiveAssertionsForStatusTypeIdentifier:(NSString *)arg1 completion:(void (^)(NSArray *))arg2;
 - (void)updateRegisteredSubscriptionsForActiveAssertionsWithCompletion:(void (^)(NSError *))arg1;

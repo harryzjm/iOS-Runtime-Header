@@ -6,10 +6,10 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class UIPointerRegion, UIPointerStyle, UIView;
+@class UIPointerRegion, UIPointerRegionRequest, UIPointerStyle, UIView;
 
 @protocol SBSystemPointerInteractionDelegate <NSObject>
-- (_Bool)shouldBeginPointerInteractionAtLocation:(struct CGPoint)arg1 forView:(UIView *)arg2;
+- (_Bool)shouldBeginPointerInteractionRequest:(UIPointerRegionRequest *)arg1 atLocation:(struct CGPoint)arg2 forView:(UIView *)arg3;
 
 @optional
 - (UIPointerStyle *)styleForRegion:(UIPointerRegion *)arg1 forView:(UIView *)arg2;

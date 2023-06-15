@@ -6,9 +6,11 @@
 
 #import <DataDeliveryServices/NSObject-Protocol.h>
 
+@class NSString;
+
 @protocol DDSRemoteSyncStateDelegate <NSObject>
-- (void)remoteSyncStateRequestsReset;
-- (void)remoteSyncStateRequestsRetry;
-- (void)remoteSyncStateRequestsUpdate;
+- (void)remoteSyncStateRequestsResetForAssetType:(NSString *)arg1;
+- (void)remoteSyncStateRequestsRetryForAssetType:(NSString *)arg1;
+- (void)remoteSyncStateRequestsUpdateForAssetType:(NSString *)arg1;
 @end
 

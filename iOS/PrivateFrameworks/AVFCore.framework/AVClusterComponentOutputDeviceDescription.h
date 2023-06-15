@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSString;
+@class NSString;
 
 __attribute__((visibility("hidden")))
 @interface AVClusterComponentOutputDeviceDescription : NSObject
@@ -15,14 +15,10 @@ __attribute__((visibility("hidden")))
     long long _deviceSubType;
     _Bool _isClusterLeader;
     NSString *_modelID;
-    NSArray *_subComponents;
-    long long _clusterType;
     NSString *_deviceID;
     NSString *_deviceName;
 }
 
-@property(readonly, nonatomic) long long clusterType; // @synthesize clusterType=_clusterType;
-@property(readonly, nonatomic) NSArray *subComponents; // @synthesize subComponents=_subComponents;
 @property(readonly, nonatomic) NSString *modelID; // @synthesize modelID=_modelID;
 @property(readonly, nonatomic) _Bool isClusterLeader; // @synthesize isClusterLeader=_isClusterLeader;
 @property(readonly, nonatomic) long long deviceSubType; // @synthesize deviceSubType=_deviceSubType;
@@ -30,7 +26,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSString *deviceName; // @synthesize deviceName=_deviceName;
 @property(readonly, nonatomic) NSString *deviceID; // @synthesize deviceID=_deviceID;
 - (void)dealloc;
-- (id)initWithDeviceID:(id)arg1 deviceName:(id)arg2 deviceSubType:(long long)arg3 isClusterLeader:(_Bool)arg4 modelID:(id)arg5 clusterType:(long long)arg6 subComponents:(id)arg7;
 - (id)initWithDeviceID:(id)arg1 deviceName:(id)arg2 deviceSubType:(long long)arg3 isClusterLeader:(_Bool)arg4 modelID:(id)arg5;
 
 // Remaining properties

@@ -6,15 +6,14 @@
 
 #import <DigitalSeparationUI/NSObject-Protocol.h>
 
-@class DSSharingPermissions, LAContext, NSMutableDictionary, NSMutableSet;
+@class DSSharingPermissions, LAContext, NSMutableDictionary, NSMutableSet, NSString, UIViewController;
 
 @protocol DSNavigationDelegate <NSObject>
 @property(retain, nonatomic) LAContext *authContext;
 - (void)displayNetworkError;
 - (_Bool)isNetworkReachable;
 - (void)quickExit;
-- (void)learnMoreRestrictionsPressed;
-- (void)learnMorePressed;
+- (void)learnMorePressedForController:(UIViewController *)arg1 withURL:(NSString *)arg2;
 - (void)goToCustomizeSharing;
 - (void)startFlowWithType:(long long)arg1;
 - (void)pushNextPane;

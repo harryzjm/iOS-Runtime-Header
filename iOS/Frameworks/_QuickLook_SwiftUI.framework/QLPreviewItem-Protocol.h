@@ -9,9 +9,9 @@
 @class NSString, NSURL;
 
 @protocol QLPreviewItem <NSObject>
-@property(nonatomic, readonly) NSURL *previewItemURL;
+@property(readonly, nonatomic) NSURL *previewItemURL;
 
 @optional
-@property(nonatomic, readonly) NSString *previewItemTitle;
+@property(readonly, nonatomic) NSString *previewItemTitle;
 @end
 

@@ -7,9 +7,9 @@
 #import <GameCenterUI/NSObject-Protocol.h>
 
 @protocol NSCollectionLayoutContainer <NSObject>
-@property(nonatomic, readonly) struct NSDirectionalEdgeInsets effectiveContentInsets;
-@property(nonatomic, readonly) struct NSDirectionalEdgeInsets contentInsets;
-@property(nonatomic, readonly) struct CGSize effectiveContentSize;
-@property(nonatomic, readonly) struct CGSize contentSize;
+@property(readonly, nonatomic) struct NSDirectionalEdgeInsets effectiveContentInsets;
+@property(readonly, nonatomic) struct NSDirectionalEdgeInsets contentInsets;
+@property(readonly, nonatomic) struct CGSize effectiveContentSize;
+@property(readonly, nonatomic) struct CGSize contentSize;
 @end
 

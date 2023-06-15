@@ -17,9 +17,9 @@ __attribute__((visibility("hidden")))
     _Bool _isSourceTransformed;
     _Bool _usingViewForZoomTransition;
     UIView *_sourceView;
+    UIView *_sourceViewSnapshot;
     double _topNavigationOffset;
     double _hostNavigationOffset;
-    UIView *_sourceViewSnapshot;
     struct CGPoint _sourceCenter;
     struct CGSize _previewItemSize;
     struct CGRect _sourceFrame;
@@ -34,7 +34,6 @@ __attribute__((visibility("hidden")))
 + (_Bool)useZoomTransitionForPreviewController:(id)arg1;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(retain, nonatomic) UIView *sourceViewSnapshot; // @synthesize sourceViewSnapshot=_sourceViewSnapshot;
 @property struct CGSize previewItemSize; // @synthesize previewItemSize=_previewItemSize;
 @property _Bool usingViewForZoomTransition; // @synthesize usingViewForZoomTransition=_usingViewForZoomTransition;
 @property double hostNavigationOffset; // @synthesize hostNavigationOffset=_hostNavigationOffset;
@@ -45,6 +44,7 @@ __attribute__((visibility("hidden")))
 @property struct CGRect sourceBounds; // @synthesize sourceBounds=_sourceBounds;
 @property _Bool isSourceTransformed; // @synthesize isSourceTransformed=_isSourceTransformed;
 @property struct CGRect sourceFrame; // @synthesize sourceFrame=_sourceFrame;
+@property(retain, nonatomic) UIView *sourceViewSnapshot; // @synthesize sourceViewSnapshot=_sourceViewSnapshot;
 @property(retain, nonatomic) UIView *sourceView; // @synthesize sourceView=_sourceView;
 - (void)setUpTransitionSourceView;
 - (id)initWithQLPreviewController:(id)arg1 containerView:(id)arg2 toViewController:(id)arg3;

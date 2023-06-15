@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
     id <AVCallbackCancellation> playerCurrentItemKVOInvoker;
     NSMutableArray *loopingItemStatusKVOInvokers;
     AVWeakReference *weakReference;
+    _Bool existingItemsPrecede;
     _Bool listeningForItemFailedToPlayToEndTime;
 }
 

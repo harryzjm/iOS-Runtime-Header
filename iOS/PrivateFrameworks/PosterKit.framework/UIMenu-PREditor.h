@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIMenu.h>
+#import <UIKitCore/UIMenu.h>
 
 @interface UIMenu (PREditor)
 - (id)pr_menuByUpdatingItemMatchingItem:(id)arg1 updater:(CDUnknownBlockType)arg2;

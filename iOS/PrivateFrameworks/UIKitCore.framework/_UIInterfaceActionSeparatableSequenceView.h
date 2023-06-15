@@ -41,6 +41,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateRoundedCornerPositionForActionRepViews;
 - (void)_updateSeparatorConstantSizedAxis;
 - (long long)_separatorConstantSizedAxis;
+- (void)_updateActionSpacing;
 - (void)_addSeparatorToStackAndMutableArray:(id)arg1 preferSectionStyle:(_Bool)arg2;
 - (void)_reloadStackViewArrangement;
 - (long long)_dimensionAttributeToConstrainEqual;

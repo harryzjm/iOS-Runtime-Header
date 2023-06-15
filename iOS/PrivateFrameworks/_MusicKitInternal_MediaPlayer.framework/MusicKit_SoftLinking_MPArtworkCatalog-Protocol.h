@@ -10,15 +10,14 @@
 @protocol MusicKit_SoftLinking_MPArtworkColorAnalysis;
 
 @protocol MusicKit_SoftLinking_MPArtworkCatalog <NSObject>
+@property(nonatomic, setter=musicKit_setFittingSize:) struct CGSize musicKit_fittingSize;
+@property(readonly, nonatomic) id <MusicKit_SoftLinking_MPArtworkColorAnalysis> musicKit_existingColorAnalysis;
+@property(readonly, copy, nonatomic) NSString *musicKit_visualIdenticalityIdentifier;
+@property(readonly, copy, nonatomic) NSDictionary *musicKit_artworkDictionary;
+@property(readonly, copy, nonatomic) NSDictionary *musicKit_artworkTokenParameters;
+@property(readonly, copy, nonatomic) NSString *musicKit_artworkDataSourceIdentifier;
+@property(readonly, copy, nonatomic) NSString *musicKit_artworkDataSourceShortDescription;
 - (void)musicKit_requestColorAnalysisWithCompletionHandler:(void (^)(id <MusicKit_SoftLinking_MPArtworkColorAnalysis>))arg1;
 - (void)musicKit_requestImageDataWithCompletion:(void (^)(NSData *, NSError *))arg1;
-- (void)musicKit_setFittingSize:(struct CGSize)arg1;
-@property(nonatomic) struct CGSize musicKit_fittingSize;
-@property(nonatomic, readonly) id <MusicKit_SoftLinking_MPArtworkColorAnalysis> musicKit_existingColorAnalysis;
-@property(nonatomic, readonly) NSString *musicKit_visualIdenticalityIdentifier;
-@property(nonatomic, readonly) NSDictionary *musicKit_artworkDictionary;
-@property(nonatomic, readonly) NSDictionary *musicKit_artworkTokenParameters;
-@property(nonatomic, readonly) NSString *musicKit_artworkDataSourceIdentifier;
-@property(nonatomic, readonly) NSString *musicKit_artworkDataSourceShortDescription;
 @end
 

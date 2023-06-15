@@ -19,6 +19,7 @@
 + (id)selectionPathWithPathType:(id)arg1 arguments:(id)arg2 subSelection:(id)arg3;
 + (id)selectionPathWithPathType:(id)arg1 arguments:(id)arg2;
 + (id)selectionPathWithType:(id)arg1 name:(id)arg2 arguments:(id)arg3;
++ (id)seriesValueSummaryLabelSelectionPath;
 + (id)seriesValueLabelSelectionPathWithSeriesIndex:(unsigned long long)arg1;
 + (id)seriesSelectionPathWithSeriesIndex:(unsigned long long)arg1;
 + (id)seriesEditModeSelectionPath;

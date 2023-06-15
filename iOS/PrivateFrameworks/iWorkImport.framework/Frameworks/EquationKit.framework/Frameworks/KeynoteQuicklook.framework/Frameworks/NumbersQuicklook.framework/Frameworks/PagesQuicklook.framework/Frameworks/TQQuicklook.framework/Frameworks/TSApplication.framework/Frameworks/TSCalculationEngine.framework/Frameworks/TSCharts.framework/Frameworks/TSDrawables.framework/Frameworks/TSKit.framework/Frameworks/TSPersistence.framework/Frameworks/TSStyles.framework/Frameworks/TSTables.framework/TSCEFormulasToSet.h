@@ -43,7 +43,7 @@
 - (void)removeFormulasFromRange:(const struct TSCERangeRef *)arg1;
 - (void)removeAllFormulasFromOwner:(const struct TSKUIDStruct *)arg1;
 - (void)removeFormulasAt:(const void *)arg1 inOwner:(const struct TSKUIDStruct *)arg2 removeOutstandingReplaces:(_Bool)arg3;
-- (void)replaceFormulaAt:(const struct TSUCellCoord *)arg1 inOwner:(const struct TSKUIDStruct *)arg2 precedents:(id)arg3 replaceOptions:(const struct TSCEReplaceFormulaOptions *)arg4;
+- (void)replaceFormulaAt:(const struct TSUCellCoord *)arg1 inOwner:(const struct TSKUIDStruct *)arg2 precedents:(id)arg3 replaceOptions:(struct TSCEReplaceFormulaOptions)arg4;
 - (void)replaceFormula:(id)arg1 atCellCoord:(const struct TSUCellCoord *)arg2 inOwner:(const struct TSKUIDStruct *)arg3 replaceOptions:(struct TSCEReplaceFormulaOptions)arg4;
 - (void)waitForAllPrecedentsToLoad;
 - (void)replaceFormula:(id)arg1 atCellCoord:(const struct TSUCellCoord *)arg2 inOwner:(const struct TSKUIDStruct *)arg3;

@@ -13,6 +13,7 @@
 
 @interface XCAXClient_iOS : NSObject <XCUIAccessibilityInterface>
 {
+    _Bool _cachedSystemAppIsLoadedNotificationValue;
     id <XCUIApplicationProcessTracker> _applicationProcessTracker;
     id <XCUIRemoteAccessibilityInterface> _remoteAccessibilityInterface;
     id <XCUIDevice> _device;
@@ -23,6 +24,7 @@
 }
 
 - (void).cxx_destruct;
+@property(readonly) _Bool cachedSystemAppIsLoadedNotificationValue; // @synthesize cachedSystemAppIsLoadedNotificationValue=_cachedSystemAppIsLoadedNotificationValue;
 @property(readonly) NSMutableDictionary *cachedAccessibilityLoadedValuesForPIDs; // @synthesize cachedAccessibilityLoadedValuesForPIDs=_cachedAccessibilityLoadedValuesForPIDs;
 @property(readonly) NSMutableDictionary *oneShotUserTestingNotificationHandlers; // @synthesize oneShotUserTestingNotificationHandlers=_oneShotUserTestingNotificationHandlers;
 @property(readonly) NSMutableDictionary *userTestingNotificationHandlers; // @synthesize userTestingNotificationHandlers=_userTestingNotificationHandlers;
@@ -71,6 +73,7 @@
 - (id)_addUserTestNotificationHandler:(CDUnknownBlockType)arg1;
 - (void)_handleUserTestingNotificationFromElement:(id)arg1 withPayload:(id)arg2;
 - (id)hitTestElement:(id)arg1 withPoint:(struct CGPoint)arg2 error:(id *)arg3;
+- (_Bool)cachedSystemAppIsLoaded;
 - (_Bool)cachedAccessibilityLoadedValueForPID:(int)arg1;
 - (id)activeApplications;
 @property(readonly, nonatomic) XCAccessibilityElement *systemApplication;

@@ -45,6 +45,7 @@
 - (void)populateMutatorsToAddRequiredChildCounterparts:(id)arg1;
 - (void)manifestArchivist:(id)arg1 populateManifest:(id)arg2;
 - (void)manifestArchivist:(id)arg1 applyPropertiesFromManifest:(id)arg2 manifestFileData:(id)arg3;
+- (_Bool)providesBookmarkTitleForChild:(id)arg1;
 - (void)enumerateDescriptionAttributeComponents:(CDUnknownBlockType)arg1;
 - (void)populateIssues:(id)arg1 context:(id)arg2;
 - (id)requiredPixelSizeFromSlottedAssetCollectionForChild:(id)arg1;

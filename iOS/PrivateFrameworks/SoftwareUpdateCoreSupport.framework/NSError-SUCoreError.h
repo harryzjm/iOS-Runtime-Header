@@ -28,6 +28,7 @@
 - (id)checkedIndicationsSummary;
 - (long long)checkedIndicationsMatchingMask:(long long)arg1;
 - (long long)checkedIndications;
+- (_Bool)shouldFallbackToCustomerScan;
 - (unsigned long long)checkedSystemPartitionSize;
 - (id)checkedUserInfo;
 - (id)checkedDomain;

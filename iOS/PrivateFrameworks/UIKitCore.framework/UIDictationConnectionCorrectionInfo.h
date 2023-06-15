@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
 @interface UIDictationConnectionCorrectionInfo : NSObject
@@ -17,9 +17,15 @@ __attribute__((visibility("hidden")))
     int _characterDeletionCount;
     int _characterSubstitutionCount;
     NSString *_correctedText;
+    NSDictionary *_recognizedTextInfo;
+    NSDictionary *_userEditedTextInfo;
+    NSDictionary *_alternativesSelectedInfo;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSDictionary *alternativesSelectedInfo; // @synthesize alternativesSelectedInfo=_alternativesSelectedInfo;
+@property(copy, nonatomic) NSDictionary *userEditedTextInfo; // @synthesize userEditedTextInfo=_userEditedTextInfo;
+@property(copy, nonatomic) NSDictionary *recognizedTextInfo; // @synthesize recognizedTextInfo=_recognizedTextInfo;
 @property(copy, nonatomic) NSString *correctedText; // @synthesize correctedText=_correctedText;
 @property(nonatomic) int characterSubstitutionCount; // @synthesize characterSubstitutionCount=_characterSubstitutionCount;
 @property(nonatomic) int characterDeletionCount; // @synthesize characterDeletionCount=_characterDeletionCount;

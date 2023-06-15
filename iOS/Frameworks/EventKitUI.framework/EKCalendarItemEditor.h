@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UITableViewController.h>
+#import <UIKitCore/UITableViewController.h>
 
 @class EKCalendarItem, EKCalendarItemEditItem, EKChangeSet, EKEventStore, EKUIRecurrenceAlertController, NSArray, NSMutableSet, NSString, UIBarButtonItem, UIResponder, _UIAccessDeniedView;
 @protocol EKCalendarItemEditorDelegate;
@@ -16,6 +16,8 @@ __attribute__((visibility("hidden")))
     NSArray *_orderedEditItems;
     id _revertState;
     _Bool _showsTimeZone;
+    long long _lastAuthorizationStatus;
+    _Bool _shouldOverrideAuthorizationStatus;
     NSArray *_currentItems;
     EKUIRecurrenceAlertController *_recurrenceAlertController;
     EKCalendarItemEditItem *_currentEditItem;
@@ -25,16 +27,9 @@ __attribute__((visibility("hidden")))
     _Bool _isIgnoringCellHeightChange;
     _Bool _needsCellHeightChange;
     NSMutableSet *_editItemsDisablingDoneButton;
-    long long _lastAuthorizationStatus;
     _Bool _hasAppeared;
     UIBarButtonItem *_cancelButton;
     UIBarButtonItem *_doneButton;
-    UIBarButtonItem *_leftButtonSpacer;
-    UIBarButtonItem *_rightButtonSpacer;
-    double _leftButtonSpace;
-    double _rightButtonSpace;
-    _Bool _scrollToNotes;
-    _Bool _canHideDoneAndCancelButtons;
     _Bool _timeImplicitlySet;
     _Bool _isTextEditing;
     _Bool _pendingVideoConference;
@@ -61,14 +56,15 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool isTextEditing; // @synthesize isTextEditing=_isTextEditing;
 @property(nonatomic) _Bool timeImplicitlySet; // @synthesize timeImplicitlySet=_timeImplicitlySet;
 @property(readonly) EKCalendarItemEditItem *currentEditItem; // @synthesize currentEditItem=_currentEditItem;
-@property(nonatomic) _Bool canHideDoneAndCancelButtons; // @synthesize canHideDoneAndCancelButtons=_canHideDoneAndCancelButtons;
 @property(nonatomic) _Bool showsTimeZone; // @synthesize showsTimeZone=_showsTimeZone;
 @property(nonatomic) unsigned long long visibleSectionToRestoreOnAppearence; // @synthesize visibleSectionToRestoreOnAppearence=_visibleSectionToRestoreOnAppearence;
 @property(retain, nonatomic) UIResponder *responderToRestoreOnAppearence; // @synthesize responderToRestoreOnAppearence=_responderToRestoreOnAppearence;
-@property(nonatomic) _Bool scrollToNotes; // @synthesize scrollToNotes=_scrollToNotes;
 @property(retain, nonatomic) EKCalendarItem *calendarItem; // @synthesize calendarItem=_calendarItem;
 @property(retain, nonatomic) EKEventStore *store; // @synthesize store=_store;
 @property(nonatomic) __weak id <EKCalendarItemEditorDelegate> editorDelegate; // @synthesize editorDelegate=_editorDelegate;
+- (void)setTitle:(id)arg1;
+- (id)title;
+- (id)navigationItem;
 - (_Bool)canBecomeFirstResponder;
 - (_Bool)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (void)handleSaveKeyCommand;
@@ -133,20 +129,19 @@ __attribute__((visibility("hidden")))
 - (void)_revertEvent;
 - (void)_copyEventForPossibleRevert;
 - (id)_viewHierarchy;
-@property(nonatomic) double navBarRightContentInset;
-@property(nonatomic) double navBarLeftContentInset;
 - (void)_setWantsToEnableDoneButton:(_Bool)arg1;
-- (void)_setDoneAndCancelButtonVisible:(_Bool)arg1;
 - (void)_keyboardWillChangeFrame:(id)arg1;
 - (void)_keyboardWillHide;
 - (void)_pinKeyboard:(_Bool)arg1;
 - (struct CGSize)preferredContentSize;
-- (void)reloadTableViewSectionsForDates:(_Bool)arg1 invitees:(_Bool)arg2 location:(_Bool)arg3 alarm:(_Bool)arg4;
+- (void)reloadTableViewSectionsForDates:(_Bool)arg1 invitees:(_Bool)arg2 location:(_Bool)arg3;
+- (void)refreshRecurrence;
 - (void)refreshURL;
 - (void)refreshLocation;
 - (void)refreshInvitees;
 - (void)refreshStartAndEndDates;
-- (void)_setShowingAccessDeniedView:(_Bool)arg1 showSettingsInstructions:(_Bool)arg2;
+- (void)_updateAccessDeniedViewWithNewStatus:(long long)arg1;
+- (void)_refreshDataAndDismissViewControllerIfDeleted;
 - (void)storeChanged:(id)arg1;
 - (void)setupForEvent;
 - (unsigned long long)entityType;
@@ -158,6 +153,7 @@ __attribute__((visibility("hidden")))
 - (id)attachmentsModifiedEvent;
 - (_Bool)attachmentsModifiedOnRecurrence;
 - (_Bool)saveCalendarItemWithSpan:(long long)arg1 error:(id *)arg2;
+- (void)attemptDisplayReviewPrompt;
 - (void)prepareEditItems;
 - (void)_setCalendarItemOnEditItems;
 - (void)_configureVisibleItems;
@@ -171,7 +167,6 @@ __attribute__((visibility("hidden")))
 - (_Bool)willPresentDialogOnSave;
 - (void)completeAndSaveWithContinueBlock:(CDUnknownBlockType)arg1;
 - (void)completeAndSave;
-- (void)handleTapOutside;
 - (void)done:(id)arg1 withContinueBlock:(CDUnknownBlockType)arg2;
 - (void)done:(id)arg1;
 - (void)cancelEditingWithDelegateNotification:(_Bool)arg1 forceCancel:(_Bool)arg2;
@@ -193,6 +188,7 @@ __attribute__((visibility("hidden")))
 - (int)editItemVisibility;
 - (void)setEditItemVisibility:(int)arg1 animated:(_Bool)arg2;
 - (void)_updateCurrentEditItemsFromVisibility:(int)arg1 toVisibility:(int)arg2 animated:(_Bool)arg3;
+- (void)setShouldOverrideAuthorizationStatus:(_Bool)arg1 withRemoteUIStatus:(long long)arg2;
 - (void)_localeChanged;
 - (id)_orderedEditItems;
 - (id)_editItems;

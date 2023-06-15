@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 @class NSArray, NSString, NSURL, UIBarButtonItemGroup, UIImage, UISearchTextField;
 
 __attribute__((visibility("hidden")))
-@interface _UINavigationBarNSToolbarLayout : NSObject <NSCopying>
+@interface _UINavigationBarNSToolbarLayout : NSObject
 {
     _Bool _showSidebarToggle;
     long long _style;
@@ -19,6 +17,7 @@ __attribute__((visibility("hidden")))
     NSString *_customizationIdentifier;
     NSString *_title;
     NSURL *_representedURL;
+    CDUnknownBlockType _representedDragItemsProvider;
     NSArray *_leadingGroups;
     NSArray *_centerGroups;
     NSArray *_trailingGroups;
@@ -39,6 +38,7 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSArray *trailingGroups; // @synthesize trailingGroups=_trailingGroups;
 @property(copy, nonatomic) NSArray *centerGroups; // @synthesize centerGroups=_centerGroups;
 @property(copy, nonatomic) NSArray *leadingGroups; // @synthesize leadingGroups=_leadingGroups;
+@property(copy, nonatomic) CDUnknownBlockType representedDragItemsProvider; // @synthesize representedDragItemsProvider=_representedDragItemsProvider;
 @property(copy, nonatomic) NSURL *representedURL; // @synthesize representedURL=_representedURL;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property(copy, nonatomic) NSString *customizationIdentifier; // @synthesize customizationIdentifier=_customizationIdentifier;

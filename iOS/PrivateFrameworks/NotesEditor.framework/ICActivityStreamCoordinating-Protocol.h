@@ -6,16 +6,16 @@
 
 #import <NotesEditor/NSObject-Protocol.h>
 
-@class ICActivityStreamSelection, NSManagedObjectID;
+@class CKShareParticipant, ICActivityStreamSelection, NSManagedObjectID;
 
 @protocol ICActivityStreamCoordinating <NSObject>
+@property(readonly, nonatomic) _Bool showsAttributionHighlights;
+@property(readonly, nonatomic) _Bool showsActivityStream;
+- (void)showSelectionForParticipant:(CKShareParticipant *)arg1 noteObjectID:(NSManagedObjectID *)arg2;
 - (void)hideAttributionHighlights;
 - (void)showAttributionHighlightsForNoteWithObjectID:(NSManagedObjectID *)arg1 selection:(ICActivityStreamSelection *)arg2;
-- (void)flashAttributionHighlightsForNoteWithObjectID:(NSManagedObjectID *)arg1 selection:(ICActivityStreamSelection *)arg2;
-@property(nonatomic, readonly) _Bool showsAttributionHighlights;
 - (void)hideActivityStreamWithCompletion:(void (^)(void))arg1;
 - (void)showActivityStreamForObjectWithObjectID:(NSManagedObjectID *)arg1;
-@property(nonatomic, readonly) _Bool showsActivityStream;
 - (void)showRecentUpdatesForNoteWithObjectID:(NSManagedObjectID *)arg1;
 - (void)showObjectWithObjectID:(NSManagedObjectID *)arg1;
 @end

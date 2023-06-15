@@ -44,6 +44,7 @@ __attribute__((visibility("hidden")))
 - (void)viewSafeAreaInsetsDidChange;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
+- (void)viewDidLoad;
 - (void)loadView;
 - (id)initWithPresenter:(id)arg1;
 

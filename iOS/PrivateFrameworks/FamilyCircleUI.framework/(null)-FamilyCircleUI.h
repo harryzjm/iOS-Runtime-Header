@@ -5,7 +5,6 @@
 //
 
 @interface (null) (FamilyCircleUI)
-- (void)remoteUIController:(id)arg1 didReceiveHTTPResponse:(id)arg2 forRequest:(id)arg3;
-- (void)remoteUIController:(id)arg1 shouldLoadRequest:(id)arg2 redirectResponse:(id)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
+- (id)accountsForAccountManager:(id)arg1;
 @end
 

@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *_text;
     MISSING_TYPE *_isSearching;
     MISSING_TYPE *_searchButtonClicked;
+    MISSING_TYPE *recordMetricsForSubmit;
 }
 
 - (void).cxx_destruct;

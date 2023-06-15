@@ -7,18 +7,21 @@
 #import <objc/NSObject.h>
 
 @class NSMutableDictionary, NSXPCConnection;
+@protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface CAReportingClient : NSObject
 {
     NSXPCConnection *_connection;
     NSMutableDictionary *_clientReporters;
+    NSObject<OS_dispatch_queue> *_requestMessageQueue;
 }
 
 + (void)destroyClient;
 + (id)getClient;
 + (id)sharedInstance;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *requestMessageQueue; // @synthesize requestMessageQueue=_requestMessageQueue;
 @property(retain) NSMutableDictionary *clientReporters; // @synthesize clientReporters=_clientReporters;
 @property(retain) NSXPCConnection *connection; // @synthesize connection=_connection;
 - (void)dealloc;
@@ -32,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (void)startReporters:(id)arg1;
 - (id)listServerReporterIDs;
 - (id)listClientReporterIDs;
+- (void)requestMessageWithID:(long long)arg1 category:(unsigned int)arg2 type:(unsigned short)arg3 callback:(CDUnknownBlockType)arg4;
 - (void)destroyReporterWithID:(long long)arg1;
 - (void)addReporter:(id)arg1;
 - (id)reporterWithID:(long long)arg1;

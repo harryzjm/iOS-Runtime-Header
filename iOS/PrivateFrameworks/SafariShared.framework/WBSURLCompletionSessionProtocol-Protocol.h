@@ -7,6 +7,6 @@
 @class NSString, WBSSearchParameters;
 
 @protocol WBSURLCompletionSessionProtocol
-- (void)getBestMatchesForTypedString:(NSString *)arg1 limit:(unsigned long long)arg2 forQueryID:(long long)arg3 withSearchParameters:(WBSSearchParameters *)arg4 completionHandler:(void (^)(NSArray *, NSArray *, NSError *))arg5;
+- (void)getBestMatchesForTypedString:(NSString *)arg1 filterResultsUsingProfileUUIDString:(NSString *)arg2 limit:(unsigned long long)arg3 forQueryID:(long long)arg4 withSearchParameters:(WBSSearchParameters *)arg5 completionHandler:(void (^)(NSArray *, NSArray *, NSError *))arg6;
 @end
 

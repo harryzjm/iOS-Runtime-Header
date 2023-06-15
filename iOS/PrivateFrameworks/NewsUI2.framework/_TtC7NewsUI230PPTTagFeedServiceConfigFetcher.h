@@ -13,6 +13,8 @@
     MISSING_TYPE *contentConfigData;
     MISSING_TYPE *cloudContext;
     MISSING_TYPE *configurationManager;
+    MISSING_TYPE *subscriptionController;
+    MISSING_TYPE *sportsOnboardingManager;
 }
 
 @end

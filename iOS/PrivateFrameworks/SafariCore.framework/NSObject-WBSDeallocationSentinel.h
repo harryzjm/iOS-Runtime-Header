@@ -10,6 +10,7 @@
 - (void)safari_removeDeallocationSentinelForObserver:(id)arg1;
 - (void)safari_setDeallocationSentinelForObserver:(id)arg1 withContext:(id)arg2;
 - (void)safari_setDeallocationSentinelForObserver:(id)arg1;
+@property(readonly, nonatomic) _Bool safari_isNSBoolean;
 - (void)safari_postKVONotificationsForKey:(id)arg1 aroundBlock:(CDUnknownBlockType)arg2;
 @end
 

@@ -6,10 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class MISSING_TYPE, NSString;
+@class MISSING_TYPE, NSString, _TtC13DVTFoundation27DVTTeamCredentialComponents;
 
 @interface DVTJWTCredential : NSObject
 {
+    MISSING_TYPE *$__lazy_storage_$_credentialComponents;
     MISSING_TYPE *generator;
     MISSING_TYPE *autoRenew;
     MISSING_TYPE *lock;
@@ -20,7 +21,7 @@
 - (id)init;
 @property(nonatomic, readonly) NSString *debugDescription;
 - (id)tokenAndReturnError:(id *)arg1;
-@property(nonatomic, readonly) NSString *issuerID;
+@property(nonatomic, retain) _TtC13DVTFoundation27DVTTeamCredentialComponents *credentialComponents;
 
 @end
 

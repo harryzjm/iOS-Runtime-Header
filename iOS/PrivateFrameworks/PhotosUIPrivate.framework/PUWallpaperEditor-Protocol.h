@@ -26,5 +26,8 @@
 - (void)dismissViewControllerAnimated:(_Bool)arg1 completion:(void (^)(void))arg2;
 - (void)presentViewController:(UIViewController *)arg1 animated:(_Bool)arg2 completion:(void (^)(void))arg3;
 - (void)updateActions;
+
+@optional
+- (UIView *)viewForMenuElementIdentifier:(NSString *)arg1;
 @end
 

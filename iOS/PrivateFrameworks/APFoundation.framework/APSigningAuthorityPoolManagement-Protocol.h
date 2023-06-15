@@ -7,14 +7,12 @@
 #import <APFoundation/NSObject-Protocol.h>
 
 @class NSData;
-@protocol APSigningAuthorizable;
 
 @protocol APSigningAuthorityPoolManagement <NSObject>
-- (id <APSigningAuthorizable>)signingAuthority;
+@property(readonly, nonatomic) long long state;
 - (NSData *)signatureForRawData:(NSData *)arg1 error:(id *)arg2;
 - (NSData *)signatureForData:(NSData *)arg1 error:(id *)arg2;
-- (_Bool)isValidSignature:(NSData *)arg1 forData:(NSData *)arg2 error:(id *)arg3;
-- (void)rotate;
-- (id)initWithPoolSize:(long long)arg1;
+- (_Bool)rotateWithError:(id *)arg1;
+- (id)initWithPoolSize:(int)arg1;
 @end
 

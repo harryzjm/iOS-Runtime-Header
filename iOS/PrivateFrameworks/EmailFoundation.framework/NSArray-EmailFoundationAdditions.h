@@ -27,6 +27,7 @@
 - (id)ef_reduce:(CDUnknownBlockType)arg1;
 - (id)ef_flatMap:(CDUnknownBlockType)arg1;
 - (id)ef_compactMapSelector:(SEL)arg1;
+- (id)ef_compactMapItemsInRange:(struct _NSRange)arg1 usingTransform:(CDUnknownBlockType)arg2;
 - (id)ef_compactMap:(CDUnknownBlockType)arg1;
 - (id)ef_mapSelector:(SEL)arg1;
 - (id)ef_map:(CDUnknownBlockType)arg1;

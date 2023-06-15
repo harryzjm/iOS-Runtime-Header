@@ -14,6 +14,8 @@
     MISSING_TYPE *clickTopic;
     MISSING_TYPE *clickUnidentifiedTopic;
     MISSING_TYPE *clickIdentifiedTopic;
+    MISSING_TYPE *clickDiagnosticsTopic;
+    MISSING_TYPE *healthActivityTopic;
     MISSING_TYPE *musicTopic;
     MISSING_TYPE *identifierStore;
     MISSING_TYPE *privacyPreferenceDataSource;
@@ -21,7 +23,7 @@
     MISSING_TYPE *workoutTopic;
     MISSING_TYPE *healthStore;
     MISSING_TYPE *state;
-    MISSING_TYPE *_jetMetricsEnabled;
+    MISSING_TYPE *jetMetricsEnabled;
 }
 
 @end

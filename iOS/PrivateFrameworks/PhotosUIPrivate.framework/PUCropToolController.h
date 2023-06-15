@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CEKBadgeTextView, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSObject, NSString, NSTimer, NUComposition, NUCropModel, PLImageGeometry, PLPhotoEditRenderer, PUAdjustmentsViewController, PUCropAspect, PUCropAspectFlipperView, PUCropAspectViewController, PUCropHandleView, PUCropOverlayView, PUCropPerspectiveAdjustmentsDataSource, PUCropPerspectiveView, PUCropToolControllerSpec, PUEditActionActivity, PUVideoScrubberView, PXUIButton, UIButton, UIImage, UILongPressGestureRecognizer, UIView;
+@class CEKBadgeTextView, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSObject, NSString, NSTimer, NUComposition, NUCropModel, PLImageGeometry, PLPhotoEditRenderer, PUAdjustmentsViewController, PUCropAspect, PUCropAspectFlipperView, PUCropAspectViewController, PUCropHandleView, PUCropOverlayView, PUCropPerspectiveAdjustmentsDataSource, PUCropPerspectiveView, PUCropToolControllerSpec, PUPhotoEditToolActivationButton, PUPhotoEditToolbarButton, PUVideoScrubberView, UIButton, UIImage, UILongPressGestureRecognizer, UIView;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -34,23 +34,17 @@ __attribute__((visibility("hidden")))
     _Bool _hasRequestedPerspectiveSuggestion;
     _Bool _videoScrubberIsInteracting;
     _Bool _mediaViewLoadingInProgress;
-    _Bool _imageHasReframeData;
-    _Bool _imageHasOriginalCrop;
-    _Bool _imageIsUsingReframe;
-    _Bool _autoButtonInReframeMode;
-    _Bool _disableSourceSwitch;
     float _gainMapValue;
     long long _initialAction;
     struct CGImage *_gainMapImage;
     PUAdjustmentsViewController *_adjustmentsViewController;
     UIView *_containerView;
     UIView *_adjustmentPickerView;
-    PXUIButton *_autoButton;
+    PUPhotoEditToolActivationButton *_autoButton;
     long long _autoButtonMode;
-    PXUIButton *_rotateButton;
-    PXUIButton *_flipButton;
-    PXUIButton *_aspectButton;
-    PUEditActionActivity *_overcaptureSourceToggleActivity;
+    PUPhotoEditToolbarButton *_rotateButton;
+    PUPhotoEditToolbarButton *_flipButton;
+    PUPhotoEditToolbarButton *_aspectButton;
     PUCropPerspectiveView *_cropView;
     UIView *_cropCanvasView;
     PUCropOverlayView *_cropOverlayView;
@@ -99,11 +93,6 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSArray *toolKeyCommands; // @synthesize toolKeyCommands=_toolKeyCommands;
-@property(nonatomic) _Bool disableSourceSwitch; // @synthesize disableSourceSwitch=_disableSourceSwitch;
-@property(nonatomic) _Bool autoButtonInReframeMode; // @synthesize autoButtonInReframeMode=_autoButtonInReframeMode;
-@property(nonatomic) _Bool imageIsUsingReframe; // @synthesize imageIsUsingReframe=_imageIsUsingReframe;
-@property(nonatomic) _Bool imageHasOriginalCrop; // @synthesize imageHasOriginalCrop=_imageHasOriginalCrop;
-@property(nonatomic) _Bool imageHasReframeData; // @synthesize imageHasReframeData=_imageHasReframeData;
 @property(retain, nonatomic) CEKBadgeTextView *badgeView; // @synthesize badgeView=_badgeView;
 @property(retain, nonatomic) UILongPressGestureRecognizer *accessibilityLongPressGestureRecognizer; // @synthesize accessibilityLongPressGestureRecognizer=_accessibilityLongPressGestureRecognizer;
 @property(nonatomic) _Bool mediaViewLoadingInProgress; // @synthesize mediaViewLoadingInProgress=_mediaViewLoadingInProgress;
@@ -170,12 +159,11 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) PUCropOverlayView *cropOverlayView; // @synthesize cropOverlayView=_cropOverlayView;
 @property(retain, nonatomic) UIView *cropCanvasView; // @synthesize cropCanvasView=_cropCanvasView;
 @property(retain, nonatomic) PUCropPerspectiveView *cropView; // @synthesize cropView=_cropView;
-@property(retain, nonatomic) PUEditActionActivity *overcaptureSourceToggleActivity; // @synthesize overcaptureSourceToggleActivity=_overcaptureSourceToggleActivity;
-@property(retain, nonatomic) PXUIButton *aspectButton; // @synthesize aspectButton=_aspectButton;
-@property(retain, nonatomic) PXUIButton *flipButton; // @synthesize flipButton=_flipButton;
-@property(retain, nonatomic) PXUIButton *rotateButton; // @synthesize rotateButton=_rotateButton;
+@property(retain, nonatomic) PUPhotoEditToolbarButton *aspectButton; // @synthesize aspectButton=_aspectButton;
+@property(retain, nonatomic) PUPhotoEditToolbarButton *flipButton; // @synthesize flipButton=_flipButton;
+@property(retain, nonatomic) PUPhotoEditToolbarButton *rotateButton; // @synthesize rotateButton=_rotateButton;
 @property(nonatomic) long long autoButtonMode; // @synthesize autoButtonMode=_autoButtonMode;
-@property(retain, nonatomic) PXUIButton *autoButton; // @synthesize autoButton=_autoButton;
+@property(retain, nonatomic) PUPhotoEditToolActivationButton *autoButton; // @synthesize autoButton=_autoButton;
 @property(retain, nonatomic) UIView *adjustmentPickerView; // @synthesize adjustmentPickerView=_adjustmentPickerView;
 @property(retain, nonatomic) UIView *containerView; // @synthesize containerView=_containerView;
 @property(retain, nonatomic) PUAdjustmentsViewController *adjustmentsViewController; // @synthesize adjustmentsViewController=_adjustmentsViewController;
@@ -183,13 +171,15 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) struct CGImage *gainMapImage; // @synthesize gainMapImage=_gainMapImage;
 @property(nonatomic) long long initialAction; // @synthesize initialAction=_initialAction;
 @property(nonatomic) _Bool imageLoadingInProgress; // @synthesize imageLoadingInProgress=_imageLoadingInProgress;
+- (double)_currentEDRHeadroomForScreen:(id)arg1;
+- (double)_maximumEDRHeadroomForScreen:(id)arg1;
+- (_Bool)isHDREnabled;
 - (void)_accessibilityLongPressChanged:(id)arg1;
 - (void)_preferredContentSizeCategoryChanged;
 - (id)adjustmentsRenderer:(id)arg1;
 - (void)adjustmentsDataChanged:(id)arg1;
 - (void)cropAspectFlipperView:(id)arg1 cropOrientationSelected:(long long)arg2;
 - (void)cropAspectController:(id)arg1 cropAspectSelected:(id)arg2;
-- (void)_toggleOvercaptureSource;
 - (long long)toolControllerTag;
 - (void)_cropToggleTapped:(id)arg1;
 - (void)_aspectButtonTapped:(id)arg1;
@@ -201,7 +191,7 @@ __attribute__((visibility("hidden")))
 - (void)rotateAssetsClockwise:(id)arg1;
 - (void)rotateAssetsCounterclockwise:(id)arg1;
 - (void)editValuesCalculatorHasChangedGeometricValues:(id)arg1;
-- (_Bool)installTogglePreviewGestureRecognizer:(id)arg1;
+- (_Bool)installGestureRecognizer:(id)arg1 type:(unsigned long long)arg2;
 - (id)offlineKeyCommands;
 - (id)trailingToolbarViews;
 - (id)centerToolbarView;
@@ -231,6 +221,8 @@ __attribute__((visibility("hidden")))
 - (void)resetToDefaultValueAnimated:(_Bool)arg1;
 - (id)localizedResetToolActionTitle;
 - (_Bool)canResetToDefaultValue;
+- (id)selectedToolbarIconGlyphName;
+- (id)toolbarIconGlyphName;
 - (id)toolbarIcon;
 - (id)localizedName;
 - (void)prepareForToolTransitionWithCompletion:(CDUnknownBlockType)arg1;
@@ -279,15 +271,13 @@ __attribute__((visibility("hidden")))
 - (void)_updateCropViewsForInteraction;
 - (void)_updateCropToggleButton;
 - (void)_updateCropToggleButtonMode;
-- (void)_updateOvercaptureSourceSwitchActivity;
 - (void)_updateCropActionButtons;
 - (_Bool)_hasPerspectiveSuggestion;
 - (void)_loadPerspectiveSuggestionIfNeeded;
 - (void)_toggleCropAndPerspective;
 - (_Bool)_hasCropSuggestion;
-- (void)_applyReframeOrDynamicCrop;
 - (void)_applyCropAndPerspectiveSuggestion;
-- (void)_applyCropRect:(struct CGRect)arg1 straightenAngle:(double)arg2 pitchAngle:(double)arg3 yawAngle:(double)arg4 isAutoCrop:(_Bool)arg5 isSmartCrop:(_Bool)arg6 isOriginalCrop:(_Bool)arg7;
+- (void)_applyCropRect:(struct CGRect)arg1 straightenAngle:(double)arg2 pitchAngle:(double)arg3 yawAngle:(double)arg4 isAutoCrop:(_Bool)arg5;
 - (void)_autoApplyCropAndPerspectiveSuggestionIfNeeded;
 - (void)_loadCropSuggestionIfNeeded;
 - (void)basePhotoInvalidated;
@@ -323,9 +313,6 @@ __attribute__((visibility("hidden")))
 - (void)_loadMediaIfNeeded;
 - (void)_loadImageIfNeededWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_createRendererIfNeeded;
-- (void)_updateRendererWithCurrentComposition;
-- (_Bool)_overcaptureSourceUsed;
-- (_Bool)_forceOvercaptureSourceForCrop;
 - (void)_performLocalCropModelChanges:(CDUnknownBlockType)arg1;
 - (void)_performLocalModelChanges:(CDUnknownBlockType)arg1;
 - (void)setDelegate:(id)arg1;
@@ -340,7 +327,7 @@ __attribute__((visibility("hidden")))
 - (void)adjustmentsViewControllerToolDidEndScrubbing:(id)arg1;
 - (void)adjustmentsViewControllerToolWillBeginScrubbing:(id)arg1;
 - (void)adjustmentsViewControllerDidUpdateSelectedControl:(id)arg1;
-- (void)setupWithAsset:(id)arg1 compositionController:(id)arg2 editSource:(id)arg3 overcaptureEditSource:(id)arg4 valuesCalculator:(id)arg5;
+- (void)setupWithAsset:(id)arg1 compositionController:(id)arg2 editSource:(id)arg3 valuesCalculator:(id)arg4;
 - (void)updateViewConstraints;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidAppear:(_Bool)arg1;

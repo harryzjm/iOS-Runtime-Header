@@ -12,8 +12,44 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
+struct __CFDate;
+
+struct __CFString;
+
+struct _opaque_pthread_mutex_t {
+    long long _field1;
+    char _field2[56];
+};
+
 struct os_unfair_lock_s {
     unsigned int _os_unfair_lock_opaque;
+};
+
+struct tagVCAggregatorFaceTimeSegmentStatsBytes {
+    unsigned long long _field1;
+    unsigned long long _field2;
+    unsigned long long _field3;
+    unsigned long long _field4;
+    unsigned int _field5;
+    unsigned int _field6;
+    unsigned int _field7;
+    unsigned int _field8;
+};
+
+struct tagVCFECSegmentReportParameters {
+    id _field1;
+    id _field2;
+    id _field3;
+    id _field4;
+    unsigned int _field5;
+    unsigned int _field6;
+    unsigned int _field7;
+    unsigned int _field8;
+};
+
+struct tagVCReportingClientExperimentSettings {
+    _Bool networkConditionMonitoringClientExperimentEnabled;
+    _Bool motionBasedDuplicationClientExperimentEnabled;
 };
 
 #pragma mark Typedef'd Structures
@@ -26,12 +62,23 @@ typedef struct {
 } CDStruct_f2f7ecfd;
 
 typedef struct {
+    id _field1;
+    _Bool _field2;
+    struct __CFDate *_field3;
+} CDStruct_e81a095d;
+
+typedef struct {
     unsigned int _field1;
     struct __CFString *_field2;
     struct __CFDate *_field3;
     int _field4;
-    void *_field5;
-    id _field6;
-    CDUnknownBlockType _field7;
-} CDStruct_48bb2f2d;
+    _Bool _field5;
+    void *_field6;
+    id _field7;
+    struct __CFString *_field8;
+    struct __CFString *_field9;
+    struct __CFDictionary *_field10;
+    CDUnknownBlockType _field11;
+    id _field12;
+} CDStruct_408de76c;
 

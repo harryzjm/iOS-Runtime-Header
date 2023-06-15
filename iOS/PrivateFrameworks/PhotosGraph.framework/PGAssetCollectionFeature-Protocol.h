@@ -9,7 +9,7 @@
 @class NSString;
 
 @protocol PGAssetCollectionFeature <NSObject>
-@property(nonatomic, readonly) NSString *featureIdentifier;
-@property(nonatomic, readonly) unsigned long long featureType;
+@property(readonly, nonatomic) NSString *featureIdentifier;
+@property(readonly, nonatomic) unsigned long long featureType;
 @end
 

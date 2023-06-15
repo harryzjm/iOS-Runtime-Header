@@ -6,10 +6,11 @@
 
 #import <SpotlightUIInternal/SearchUIResultsViewDelegate-Protocol.h>
 
-@class SFSearchResult;
+@class SFSearchResult, UIViewController;
 
 @protocol SPUIResultsViewDelegate <SearchUIResultsViewDelegate>
-- (void)willUpdateFromResultsWithHighlightedResult:(SFSearchResult *)arg1;
+- (void)willUpdateFromResultsWithHighlightedResult:(SFSearchResult *)arg1 viewController:(UIViewController *)arg2;
+- (_Bool)isActiveViewController:(UIViewController *)arg1;
 
 @optional
 - (_Bool)optOutOfGoButton;

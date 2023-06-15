@@ -10,6 +10,8 @@
 
 @protocol _SFPBIndexState <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
+@property(nonatomic) int indexedMessageCount;
+@property(nonatomic) int totalMessageCount;
 @property(nonatomic) int searchIndex;
 @property(nonatomic) int percentAttachmentsIndexed;
 @property(nonatomic) int percentMessagesIndexed;

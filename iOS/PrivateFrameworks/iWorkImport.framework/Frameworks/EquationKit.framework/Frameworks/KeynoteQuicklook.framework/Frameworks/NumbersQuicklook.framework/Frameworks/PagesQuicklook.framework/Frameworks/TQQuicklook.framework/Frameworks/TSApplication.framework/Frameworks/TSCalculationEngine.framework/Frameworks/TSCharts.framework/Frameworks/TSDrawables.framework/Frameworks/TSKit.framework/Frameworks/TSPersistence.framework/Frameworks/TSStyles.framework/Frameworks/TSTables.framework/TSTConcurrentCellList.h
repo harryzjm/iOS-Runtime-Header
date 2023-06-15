@@ -21,7 +21,6 @@
     struct vector<TSUViewColumnIndex, std::allocator<TSUViewColumnIndex>> _viewColumns;
     struct vector<long, std::allocator<long>> _cellCountDiffsPerRow;
     struct vector<long, std::allocator<long>> _cellCountDiffsPerColumn;
-    struct vector<TSTNineKeyStructPreBNC, std::allocator<TSTNineKeyStructPreBNC>> _preBNCKeysList;
     vector_cdf5f6a1 _oldCells;
     _Bool _uidBased;
     NSArray *_interestingCells;
@@ -52,7 +51,6 @@
 - (void)p_enumerateCellsAddedAndRemovedForFormatsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)p_enumerateCellsAddedOfType:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)p_enumerateCellsAddedAndRemovedOfType:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
-- (void)p_enumerateNewAndOldCellsSeriallyUsingPreBNCBlock:(CDUnknownBlockType)arg1;
 - (void)p_enumerateNewAndOldCellsSeriallyUsingBlock:(CDUnknownBlockType)arg1;
 - (void)p_enumerateRowsOfCellsConcurrentlyUsingBlock:(CDUnknownBlockType)arg1;
 - (void)p_accumulateBordersConcurrentlyUsingBlock:(CDUnknownBlockType)arg1 accumulateCellsConcurrentlyUsingBlock:(CDUnknownBlockType)arg2;

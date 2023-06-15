@@ -10,6 +10,7 @@
 
 @protocol NPKCompanionServerProtocol <PDXPCServiceExportedInterface>
 - (void)trustedDeviceEnrollmentSignatureWithAccountDSID:(NSString *)arg1 sessionData:(NSData *)arg2 handler:(void (^)(NSString *, unsigned long long, NSData *, NSError *))arg3;
+- (void)isIssuerAppProvisioningSupported:(void (^)(_Bool))arg1;
 - (void)expressModeEnabledForPassIdentifier:(NSString *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (void)hasActiveExternallySharedPassesWithCompletion:(void (^)(_Bool, NSError *))arg1;
 - (void)presentStandaloneTransaction:(long long)arg1 forPassUniqueIdentifier:(NSString *)arg2 completion:(void (^)(_Bool))arg3;

@@ -9,6 +9,7 @@
 @class NSError, NSString;
 
 @protocol CDMCommand <NSObject>
++ (NSString *)commandName;
 @property(retain, nonatomic) NSError *cmdError;
 @property(readonly, nonatomic) NSString *commandName;
 @property(readonly, nonatomic) NSString *uuid;

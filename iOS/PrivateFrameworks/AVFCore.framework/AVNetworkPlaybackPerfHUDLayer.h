@@ -51,7 +51,7 @@ __attribute__((visibility("hidden")))
 - (void)readHudSettingsAndCallCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getHudSetting;
 - (void)setColor:(int)arg1;
-- (void)updateBounds:(struct CGRect)arg1;
+- (void)setBounds:(struct CGRect)arg1;
 - (id)init;
 - (_Bool)hudEnabled;
 

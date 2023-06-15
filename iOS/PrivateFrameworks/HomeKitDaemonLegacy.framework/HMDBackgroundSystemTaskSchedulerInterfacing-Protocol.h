@@ -10,7 +10,6 @@
 @protocol OS_dispatch_queue;
 
 @protocol HMDBackgroundSystemTaskSchedulerInterfacing <NSObject>
-- (void)getTaskStatusForIdentifier:(NSString *)arg1 completionHandler:(void (^)(_Bool, NSError *))arg2;
 - (_Bool)submitTaskRequest:(HMDBackgroundSystemTaskRequest *)arg1 error:(id *)arg2;
 - (_Bool)cancelTaskRequestWithIdentifier:(NSString *)arg1 error:(id *)arg2;
 - (HMDBackgroundSystemTaskRequest *)taskRequestForIdentifier:(NSString *)arg1;

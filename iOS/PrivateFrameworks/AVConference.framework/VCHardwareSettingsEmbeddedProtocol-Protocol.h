@@ -7,11 +7,10 @@
 #import <AVConference/VCHardwareSettingsProtocol-Protocol.h>
 
 @protocol VCHardwareSettingsEmbeddedProtocol <VCHardwareSettingsProtocol>
+@property(readonly, nonatomic) _Bool isVoiceProcessingAt24KSupported;
 @property(readonly, nonatomic) _Bool isHEVC444DecodeSupported;
 @property(readonly, nonatomic) _Bool isSecondDisplaySupportEnabled;
 @property(readonly, nonatomic) _Bool hasAppleNeuralEngine;
-@property(readonly, nonatomic) _Bool isDeviceLargeScreen;
-@property(readonly, nonatomic) _Bool supportsMultiway720pStream;
 @property(readonly, nonatomic) long long videoEncoderType;
 @property(readonly, nonatomic) long long chipId;
 @property(readonly, nonatomic) long long deviceClass;

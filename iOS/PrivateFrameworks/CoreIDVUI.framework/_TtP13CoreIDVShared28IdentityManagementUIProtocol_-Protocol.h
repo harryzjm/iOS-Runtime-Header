@@ -7,7 +7,9 @@
 @class NSData, NSString, _TtC13CoreIDVShared25IdentityProofingDocuments, _TtC13CoreIDVShared29IdentityProofingConfiguration, _TtC13CoreIDVShared32IdentityProofingLivenessVideoURL;
 
 @protocol _TtP13CoreIDVShared28IdentityManagementUIProtocol_
-- (void)saveFedStatsOptinConfirmation:(_Bool)arg1 state:(NSString *)arg2 proofingOptions:(unsigned long long)arg3 completion:(void (^)(NSError *))arg4;
+- (void)clearDataAfterTerminalProofingStateWithState:(NSString *)arg1 proofingOptions:(unsigned long long)arg2 completion:(void (^)(NSError *))arg3;
+- (void)fetchBiomeFedStatsUIWithCompletion:(void (^)(_TtC13CoreIDVShared24IdentityProofingUIConfig *, NSError *))arg1;
+- (void)saveIdentityProofingBiomeDataSharingUserConsent:(_Bool)arg1 state:(NSString *)arg2 proofingOptions:(unsigned long long)arg3 completion:(void (^)(NSError *))arg4;
 - (void)triggerAssetsUploadWithProofingOptions:(unsigned long long)arg1 canUploadOnExpensiveNetwork:(_Bool)arg2 completion:(void (^)(NSError *))arg3;
 - (void)fetchTermsAndConditionsWithCompletion:(void (^)(NSString *, NSError *))arg1;
 - (void)getLivenessConfigWithCompletion:(void (^)(_TtC13CoreIDVShared22IdentityLivenessConfig *, NSError *))arg1;

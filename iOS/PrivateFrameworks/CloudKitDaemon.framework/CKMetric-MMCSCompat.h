@@ -7,6 +7,7 @@
 #import <CloudKit/CKMetric.h>
 
 @interface CKMetric (MMCSCompat)
+- (void)addCKSpecificMetricsFromDaemonMetrics:(id)arg1;
 - (id)initWithMMCSOperationMetric:(id)arg1;
 @end
 

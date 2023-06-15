@@ -12,11 +12,8 @@
     long long _type;
 }
 
-@property(nonatomic) float score; // @synthesize score=_score;
-@property(nonatomic) long long type; // @synthesize type=_type;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
-- (id)initWithType:(long long)arg1 score:(float)arg2;
 
 @end
 

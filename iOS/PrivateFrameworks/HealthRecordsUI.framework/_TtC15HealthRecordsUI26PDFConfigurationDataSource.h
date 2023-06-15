@@ -11,18 +11,16 @@
 @interface _TtC15HealthRecordsUI26PDFConfigurationDataSource : _TtCs12_SwiftObject
 {
     MISSING_TYPE *selectedYearRange;
+    MISSING_TYPE *selectedYearRangeRow;
+    MISSING_TYPE *yearRangePickerDataSource;
     MISSING_TYPE *selectedAllYearsText;
+    MISSING_TYPE *allCategories;
     MISSING_TYPE *selectedCategories;
-    MISSING_TYPE *selectedAllCategories;
     MISSING_TYPE *selectedAllCategoriesText;
+    MISSING_TYPE *allAccounts;
     MISSING_TYPE *selectedAccounts;
-    MISSING_TYPE *selectedAllAccounts;
     MISSING_TYPE *selectedAllAccountsText;
-    MISSING_TYPE *shouldEnableAccountSelector;
     MISSING_TYPE *configuration;
-    MISSING_TYPE *yearRangePickerViewController;
-    MISSING_TYPE *categorySelectionViewController;
-    MISSING_TYPE *accountSelectionViewController;
 }
 
 @end

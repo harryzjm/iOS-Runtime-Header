@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
     struct nw_protocol *protocol_handle;
     NSObject<OS_nw_endpoint> *proxy_endpoint;
     NSObject<OS_xpc_object> *legacy_parameters;
-    char *log_id_str;
+    char log_id_str[84];
     unsigned short log_id_num;
     void *handle;
     _Bool override_stack_endpoint;

@@ -10,6 +10,7 @@
 + (_Bool)updateVirtualConference:(id)arg1 replacing:(id)arg2 with:(id)arg3;
 + (id)actionStringsPluralDisplayName;
 + (id)actionStringsDisplayName;
+- (id)CUIK_symbolName;
 - (_Bool)CUIK_deleteActionShouldDeclineEvent;
 - (void)fixInvalidatedVirtualConferenceURLs:(long long)arg1;
 - (_Bool)CUIKEditingContext_removeWithSpan:(long long)arg1 error:(id *)arg2;

@@ -7,6 +7,8 @@
 @class NSArray;
 
 @protocol BSNSXPCConnectionConfiguring
+- (void)setFaultOnSuspend;
+- (void)setActivateOnResume;
 - (void)setPerMessageAssertionAttributes:(NSArray *)arg1;
 @end
 

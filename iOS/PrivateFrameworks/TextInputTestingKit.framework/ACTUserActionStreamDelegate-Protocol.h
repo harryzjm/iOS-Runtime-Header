@@ -6,13 +6,18 @@
 
 #import <TextInputTestingKit/NSObject-Protocol.h>
 
-@class ACTKeyboardController, NSArray, NSLocale, NSString, TIKeyboardCandidate, TIKeyboardCandidateResultSet, TIPointError, UIKBTree;
+@class ACTKeyboardController, NSArray, NSLocale, NSMutableArray, NSString, TIKeyboardCandidate, TIKeyboardCandidateResultSet, TIPointError, UIKBTree;
 
 @protocol ACTUserActionStreamDelegate <NSObject>
+@property(readonly, nonatomic) NSArray *inlineCompletionCandidates;
 @property(readonly, nonatomic) NSArray *predictionBarCandidates;
 - (NSString *)splitDigraphsInString:(NSString *)arg1;
 - (NSString *)internalStringToExternal:(NSString *)arg1;
 - (NSString *)externalStringToInternal:(NSString *)arg1;
+- (NSString *)mergeHyphenatedWord:(NSMutableArray *)arg1 string:(NSString *)arg2;
+- (_Bool)postTokenisString:(NSArray *)arg1 i:(unsigned long long)arg2;
+- (_Bool)priorTokenisString:(NSArray *)arg1 i:(unsigned long long)arg2;
+- (NSArray *)inputSegmentsForContinuousPathString:(NSString *)arg1;
 - (NSArray *)inputSegmentsForString:(NSString *)arg1;
 - (TIKeyboardCandidateResultSet *)candidateResultSet;
 - (TIKeyboardCandidate *)autocorrection;
@@ -21,6 +26,7 @@
 - (struct CGPoint)pointForAttemptedTapOnKey:(UIKBTree *)arg1 withError:(TIPointError *)arg2;
 - (UIKBTree *)keyToAccessKeyplaneCloserToKeyString:(NSString *)arg1;
 - (UIKBTree *)shiftKeyToAccessKeyplaneCloserToKeyString:(NSString *)arg1;
+- (UIKBTree *)mapShiftedKeyToUnShiftedKeyExcludeCapitalization:(NSString *)arg1;
 - (ACTKeyboardController *)keyboardController;
 - (UIKBTree *)keyplane;
 - (UIKBTree *)keyboard;

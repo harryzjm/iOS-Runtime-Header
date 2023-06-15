@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIImage.h>
+#import <UIKitCore/UIImage.h>
 
 @interface UIImage (CNUI)
++ (id)cnui_roundedNavButtonPlatterImage;
 + (id)cnui_symbolImageNamed:(id)arg1 scale:(long long)arg2 weight:(long long)arg3 withColor:(id)arg4 useFixedSize:(_Bool)arg5 compatibleWithTextStyle:(id)arg6;
 + (id)cnui_symbolImageNamed:(id)arg1 scale:(long long)arg2 withColor:(id)arg3 useFixedSize:(_Bool)arg4 compatibleWithTextStyle:(id)arg5;
 + (id)cnui_symbolImageNamed:(id)arg1 scale:(long long)arg2 withColor:(id)arg3 useFixedSize:(_Bool)arg4;
@@ -16,11 +17,15 @@
 + (id)cnui_userActionOutlinedSymbolImageForActionType:(id)arg1 scale:(long long)arg2 withColor:(id)arg3;
 + (id)cnui_actionTypeForTransportType:(long long)arg1;
 + (id)cnui_symbolImageForTransportType:(long long)arg1 withColor:(id)arg2;
++ (id)cnui_symbolImageForContactCardMenuChevron;
 + (id)cnui_symbolImageForNavigationListChevron;
++ (id)cnui_symbolImageForDynamicallySizedContactCardChevron;
++ (id)cnui_symbolImageForContactCardChevronWithColor:(id)arg1;
 + (id)cnui_symbolImageForContactCardChevron;
 + (id)cnui_imageWithDataPreservingScale:(id)arg1;
 + (id)cnui_tintedImageNamed:(id)arg1 withTint:(id)arg2;
 + (id)cnui_imageNamed:(id)arg1;
 + (id)cnui_templateImageNamed:(id)arg1 withTint:(id)arg2;
+- (struct CGImage *)cnui_CGImageSnapshot;
 @end
 

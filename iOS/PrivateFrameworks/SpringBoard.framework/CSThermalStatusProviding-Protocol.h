@@ -6,7 +6,10 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
+@class UIImage;
+
 @protocol CSThermalStatusProviding <NSObject>
++ (UIImage *)thermometerGlyphForThermalStatus:(long long)arg1;
 @property(readonly, nonatomic) long long thermalStatus;
 @end
 

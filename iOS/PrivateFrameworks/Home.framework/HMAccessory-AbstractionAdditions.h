@@ -6,7 +6,7 @@
 
 #import <HomeKit/HMAccessory.h>
 
-@class HFAccessoryType, HFServiceNameComponents, HMHome, HMResidentDevice, HMRoom, HMSymptomsHandler, NAFuture, NSArray, NSDate, NSSet, NSString, NSUUID;
+@class HFAccessoryType, HFServiceNameComponents, HFUserNotificationServiceSettings, HMHome, HMResidentDevice, HMRoom, HMSymptomsHandler, NAFuture, NSArray, NSDate, NSSet, NSString, NSUUID;
 @protocol HFAccessoryLikeObjectRootHomeKitObjectProvider><HFAccessoryRepresentable><HFFavoritable><HFShowInHomeDashboard><HFIncludedContextProtocol, HFHomeKitObject;
 
 @interface HMAccessory (AbstractionAdditions)
@@ -33,6 +33,8 @@
 @property(readonly, nonatomic) _Bool hf_hasSetFavorite;
 @property(readonly, nonatomic) _Bool hf_isFavorite;
 - (id)hf_moveToRoom:(id)arg1;
+@property(readonly, nonatomic) _Bool hf_isIdentifiable;
+@property(readonly, nonatomic) _Bool hf_canSpanMultipleRooms;
 @property(readonly, nonatomic) HMRoom *hf_safeRoom;
 - (_Bool)hf_isInRoom:(id)arg1;
 @property(readonly, nonatomic) NSSet *hf_containedCharacteristics;
@@ -70,6 +72,7 @@
 @property(readonly, nonatomic) _Bool hf_needsSoftwareUpdateToSupportBeingAddedToMediaSystem;
 @property(readonly, nonatomic) unsigned long long hf_mediaAccessControlCapabilities;
 - (_Bool)hf_supportsMultiUserLanguage:(id)arg1;
+@property(readonly, nonatomic) _Bool hf_supportsRMVOnAppleTV;
 @property(readonly, nonatomic) _Bool hf_isSiriEndpoint;
 @property(readonly, nonatomic) _Bool hf_isAudioReceiver;
 @property(readonly, nonatomic) _Bool hf_isSpeaker;
@@ -127,6 +130,7 @@
 @property(readonly, nonatomic) _Bool hf_isSingleServiceLikeAccessory;
 @property(readonly, nonatomic) _Bool hf_isSingleServiceAccessory;
 @property(readonly, nonatomic) _Bool hf_areAllServicesInGroups;
+@property(readonly, nonatomic) _Bool hf_isAudioAnalysisSupportedDevice;
 @property(readonly, nonatomic) _Bool hf_isTelevision;
 @property(readonly, nonatomic) _Bool hf_isSprinkler;
 @property(readonly, nonatomic) _Bool hf_isRemoteControl;
@@ -147,7 +151,6 @@
 @property(readonly, nonatomic) _Bool hf_canSyncExternalSettings;
 @property(readonly, nonatomic) _Bool hf_supportsSuspendedState;
 @property(readonly, nonatomic) _Bool hf_isSuspended;
-@property(readonly, nonatomic) _Bool hf_isIdentifiable;
 @property(readonly, nonatomic) _Bool hf_requiresFirmwareUpdate;
 @property(readonly, nonatomic) NSSet *accessories;
 - (_Bool)_areAllSensorServices;
@@ -176,10 +179,19 @@
 - (_Bool)hf_isInstallingSoftwareUpdate;
 - (_Bool)hf_isDownloadingSoftwareUpdate;
 - (_Bool)hf_isReadyToInstallSoftwareUpdate;
+- (_Bool)hf_hasRequestedSoftwareUpdate;
+- (_Bool)hf_hasNewValidSoftwareUpdate;
 - (_Bool)hf_hasValidSoftwareUpdate;
 - (_Bool)hf_hasSoftwareUpdate;
+- (_Bool)hf_hasNewValidSoftwareOrFirmwareUpdate;
 - (_Bool)hf_hasValidSoftwareOrFirmwareUpdate;
 - (_Bool)hf_supportsSoftwareUpdate;
+- (id)_hf_audioAnalysisEventBulletinBoardNotification;
+- (id)hf_updateUserNotificationSettings:(id)arg1;
+@property(readonly, copy, nonatomic) HFUserNotificationServiceSettings *hf_userNotificationSettings;
+- (id)hf_bulletinNotifications;
+- (void)hf_updateApplicationData:(id)arg1 handleError:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_hf_didUpdateApplicationData:(id)arg1;
 @property(readonly, nonatomic) id <HFAccessoryLikeObjectRootHomeKitObjectProvider><HFAccessoryRepresentable><HFFavoritable><HFShowInHomeDashboard><HFIncludedContextProtocol> hf_rootAccessoryLikeHomeKitObject;
 - (id)hf_updateDateAdded:(id)arg1;
 @property(readonly, copy, nonatomic) NSDate *hf_dateAdded;

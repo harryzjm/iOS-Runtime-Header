@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIGestureRecognizer.h>
+#import <UIKitCore/UIGestureRecognizer.h>
 
 @interface UIGestureRecognizer (PhotosUICore)
 - (_Bool)px_isPanGestureRecognizerOfScrollView:(id *)arg1;

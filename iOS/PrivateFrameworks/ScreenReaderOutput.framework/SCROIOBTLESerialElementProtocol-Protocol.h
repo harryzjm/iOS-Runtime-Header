@@ -9,6 +9,7 @@
 @class CBCentralManager, CBPeripheral, NSString;
 
 @protocol SCROIOBTLESerialElementProtocol <SCROIOElementProtocol>
+@property(readonly, nonatomic) NSString *name;
 @property(readonly, nonatomic) NSString *address;
 @property(readonly, nonatomic) CBPeripheral *peripheral;
 @property(readonly, nonatomic) CBCentralManager *central;

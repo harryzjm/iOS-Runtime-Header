@@ -6,8 +6,8 @@
 
 #import <objc/NSObject.h>
 
-@class FPDDomain, FPDExtension, FPDProcessMonitor, FPGracePeriodTimer, NSCountedSet, NSExtension, NSMapTable, NSMutableDictionary, NSString, NSUUID, NSXPCConnection, RBSAssertion;
-@protocol OS_dispatch_queue;
+@class FPDDomain, FPDExtension, FPDProcessMonitor, FPGracePeriodTimer, NSCountedSet, NSExtension, NSMapTable, NSMutableDictionary, NSString, NSUUID, NSXPCConnection, RBSAssertion, _EXExtensionProcess;
+@protocol OS_dispatch_queue, OS_os_log;
 
 __attribute__((visibility("hidden")))
 @interface FPDExtensionSession : NSObject
@@ -22,6 +22,8 @@ __attribute__((visibility("hidden")))
     NSMapTable *_lifetimeExtenders;
     FPDExtension *_fpdExtension;
     FPDDomain *_domain;
+    NSString *_providerIdentifier;
+    NSObject<OS_os_log> *_log;
     FPGracePeriodTimer *_gracePeriodTimer;
     FPGracePeriodTimer *_networkingGracePeriodTimer;
     FPDProcessMonitor *_processMonitor;
@@ -29,6 +31,8 @@ __attribute__((visibility("hidden")))
     _Bool _invalidated;
     _Bool _isForeground;
     int _pid;
+    NSUUID *_sessionUUID;
+    _EXExtensionProcess *_sessionProcess;
     RBSAssertion *_foregroundAssertion;
     RBSAssertion *_backgroundAssertion;
     _Bool _hasFileProviderPresenceTCCAccess;
@@ -39,6 +43,7 @@ __attribute__((visibility("hidden")))
 - (void)dumpStateTo:(id)arg1;
 - (void)processMonitor:(id)arg1 didBecomeForeground:(_Bool)arg2;
 - (void)_evaluateExtensionForegroundness;
+- (void)assertionWasInvalidated:(id)arg1;
 - (id)newBackgroundAssertion;
 - (id)newForegroundAssertion;
 - (id)newAssertionWithAttributeName:(id)arg1 reason:(id)arg2;
@@ -60,8 +65,10 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool hasFileProviderAttributionMDMAccess;
 - (void)updatePresenceTCCWithAuditToken:(CDStruct_6ad76789)arg1;
 - (id)_connectionWithError:(id *)arg1;
+- (_Bool)_setUpPKConnectionWithError:(id *)arg1;
+- (_Bool)_setUpEXConnectionWithError:(id *)arg1;
 - (_Bool)_setUpConnectionWithError:(id *)arg1;
-- (_Bool)terminateExtensionWithError:(id *)arg1;
+- (_Bool)terminateExtensionWithReason:(id)arg1 error:(id *)arg2;
 - (id)_alternateContentsDictionary;
 - (void)__invalidate;
 - (void)_invalidate;

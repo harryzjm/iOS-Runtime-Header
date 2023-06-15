@@ -11,6 +11,9 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (_Bool)hk_validatePhysicalEffortEstimationTypeMetadataValue:(id)arg1 error:(id *)arg2;
++ (_Bool)hk_validateCyclingFTPTestTypeMetadataValue:(id)arg1 error:(id *)arg2;
++ (_Bool)hk_validateWaterSalinityMetadataValue:(id)arg1 error:(id *)arg2;
 + (_Bool)hk_validateUserMotionContextMetadataValue:(id)arg1 error:(id *)arg2;
 + (_Bool)hk_validateHeartRateRecoveryActivityTypeMetadataValue:(id)arg1 error:(id *)arg2;
 + (_Bool)hk_validateHeartRateRecoveryTestTypeMetadataValue:(id)arg1 error:(id *)arg2;

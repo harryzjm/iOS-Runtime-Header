@@ -6,24 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
-@protocol SNResourceCoordinatorXPCProtocol><NSXPCProxyCreating;
+@class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
 @interface SNResourceCoordinatorXPCPublisher : NSObject
 {
-    id <SNResourceCoordinatorXPCProtocol><NSXPCProxyCreating> _subscriber;
+    MISSING_TYPE *subscriber;
 }
 
 - (void).cxx_destruct;
-- (id)createSystemAudioAnalyzer;
 - (id)init;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (id)createSystemAudioAnalyzerWithError:(id *)arg1;
 
 @end
 

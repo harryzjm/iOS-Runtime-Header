@@ -4,20 +4,31 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIColor.h>
+#import <UIKitCore/UIColor.h>
 
 @class NSString;
 
 @interface UIColor (IC)
++ (id)ic_systemGray5Color;
++ (id)ic_systemGray4Color;
++ (id)ic_systemGray3Color;
++ (id)ic_systemGray2Color;
 + (id)ic_colorFromString:(id)arg1;
 + (id)ic_notePreviewBackgroundLightContent:(_Bool)arg1;
-+ (id)ic_gridThumbnailBackgroundLightContent:(_Bool)arg1;
-+ (id)ic_lightAttachmentBackground;
-+ (id)ic_attachmentBackground;
++ (id)ic_noteEditorPreviewColorForceLightContent:(_Bool)arg1;
++ (id)ic_noteEditorSecondaryLabelColor;
++ (id)ic_noteEditorLabelColor;
++ (id)ic_noteEditorBackgroundColor;
++ (id)ic_lightAttachmentBackgroundColor;
++ (id)ICBlockQuoteBackgroundColor;
++ (id)ICMonostyledBorderColor;
++ (id)ICMonostyledBackgroundColor;
++ (id)ic_attachmentBackgroundColor;
 + (id)ic_imageFromColor:(id)arg1 size:(struct CGSize)arg2;
 + (id)ICUnknownInlineAttachmentTextColor;
 + (id)ICMentionUnconfirmedColor;
 + (id)ICMentionAllColor;
++ (id)ICLinkColor;
 + (id)ICHashtagColor;
 + (id)ICHashtagUnconfirmedColor;
 + (id)ICLearnMoreLinkColor;
@@ -35,7 +46,7 @@
 + (id)preferredDefaultFontColor;
 + (id)ic_colorWith256Red:(double)arg1 green:(double)arg2 blue:(double)arg3 unitAlpha:(double)arg4;
 + (id)ic_colorWith256Red:(double)arg1 green:(double)arg2 blue:(double)arg3 alpha:(double)arg4;
-+ (id)ic_attachmentBackgroundForTraitCollection:(id)arg1;
++ (id)ic_attachmentBackgroundColorForTraitCollection:(id)arg1;
 + (id)ic_dynamicWhiteBlackColor;
 + (id)ICListTitleTextColor;
 + (id)ICDefaultFindBarColor;
@@ -56,6 +67,8 @@
 @property(readonly, nonatomic) _Bool ic_isWhite;
 @property(readonly, nonatomic) _Bool ic_isBlack;
 @property(readonly, copy, nonatomic) NSString *ic_colorString;
+@property(readonly, copy, nonatomic) UIColor *ic_resolvedColorForNoteEditor;
+@property(readonly, copy, nonatomic) UIColor *ic_resolvedColorForLightUserInterfaceStyle;
 @property(readonly, copy, nonatomic) UIColor *ic_resolvedColor;
 - (id)_icaxColorDescriptionForHue:(id)arg1 saturation:(id)arg2 lightness:(id)arg3;
 @property(readonly, nonatomic) NSString *icaxDescriptionWithLuma;

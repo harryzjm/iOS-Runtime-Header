@@ -30,20 +30,19 @@ __attribute__((visibility("hidden")))
     NSHashTable *_invalidatedAndDisconnectedScenes;
     NSMapTable *_pressesMapByScene;
     NSMapTable *_currentNudgePressTypeByScene;
-    NSMutableDictionary *_physicalButtonPressesMap;
+    NSMutableDictionary *_fallbackPressMap;
     NSMapTable *_currentTouchByScene;
     struct __CFDictionary *_touchMapsByWindow;
     long long _disableTouchCoalescingCount;
     NSMutableDictionary *_estimatedTouchRecordsByContextIDAndEstimationIndex;
     NSMutableArray *_estimatedTouchRecordsInIncomingOrder;
-    unsigned int _genericGestureFocusWindowContextID;
-    unsigned int _fallbackGenericGestureFocusWindowContextID;
+    unsigned int _pencilBarrelEventFocusWindowContextID;
+    unsigned int _fallbackPencilBarrelEventFocusWindowContextID;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableArray *eventQueue; // @synthesize eventQueue=_eventQueue;
 @property(nonatomic) UIApplication *application; // @synthesize application=_application;
-- (id)_hoverEventForWindow:(id)arg1;
 - (void)pointerLockStateDidChange:(id)arg1;
 - (void)sceneDidActivate:(id)arg1;
 - (void)sceneDidDisconnect:(id)arg1;

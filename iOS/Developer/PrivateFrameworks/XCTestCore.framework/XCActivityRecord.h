@@ -49,6 +49,7 @@
 @property(readonly, copy) NSArray *attachments;
 - (void)addAttachment:(id)arg1;
 - (void)_synchronized_addAttachment:(id)arg1;
+- (void)replaceAttachment:(id)arg1 withAttachment:(id)arg2;
 - (void)removeAttachmentsWithName:(id)arg1;
 - (id)attachmentForName:(id)arg1;
 - (void)addMemoryGraphData:(id)arg1;

@@ -15,6 +15,7 @@
     MISSING_TYPE *feedContextFactory;
     MISSING_TYPE *policyValidator;
     MISSING_TYPE *layoutCollectionProvider;
+    MISSING_TYPE *subscriptionList;
 }
 
 @end

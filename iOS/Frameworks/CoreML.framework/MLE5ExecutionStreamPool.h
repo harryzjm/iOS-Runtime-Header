@@ -13,15 +13,21 @@ __attribute__((visibility("hidden")))
 @interface MLE5ExecutionStreamPool : NSObject
 {
     NSMutableSet *_pool;
+    NSMutableSet *_allStreams;
     NSObject<OS_dispatch_queue> *_serialQueue;
+    unsigned long long _modelSignpostId;
 }
 
 - (void).cxx_destruct;
+@property(readonly) unsigned long long modelSignpostId; // @synthesize modelSignpostId=_modelSignpostId;
 @property(readonly) NSObject<OS_dispatch_queue> *serialQueue; // @synthesize serialQueue=_serialQueue;
+@property(readonly, nonatomic) NSMutableSet *allStreams; // @synthesize allStreams=_allStreams;
 @property(readonly) NSMutableSet *pool; // @synthesize pool=_pool;
+- (void)enableInstrumentsTracing;
+- (void)_emitMappingTracepointForStream:(id)arg1;
 - (void)putBack:(id)arg1;
 - (id)takeOut;
-- (id)init;
+- (id)initWithModelSignpostId:(unsigned long long)arg1;
 
 @end
 

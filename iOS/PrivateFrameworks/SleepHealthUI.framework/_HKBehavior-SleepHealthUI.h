@@ -7,6 +7,7 @@
 #import <HealthKit/_HKBehavior.h>
 
 @interface _HKBehavior (SleepHealthUI)
+- (id)hksp_systemImageNameForActivePairedDevice;
 - (id)hksp_systemImageNameForCurrentDevice;
 @end
 

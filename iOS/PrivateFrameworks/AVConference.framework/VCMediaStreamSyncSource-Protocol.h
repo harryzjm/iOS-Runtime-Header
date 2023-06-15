@@ -10,6 +10,7 @@
 
 @protocol VCMediaStreamSyncSource <NSObject>
 - (long long)getSyncSourceSampleRate;
-- (void)setSyncSourceDelegate:(id <VCMediaStreamSyncSourceDelegate>)arg1;
+- (void)removeSyncSourceDelegate:(id <VCMediaStreamSyncSourceDelegate>)arg1;
+- (void)addSyncSourceDelegate:(id <VCMediaStreamSyncSourceDelegate>)arg1;
 @end
 

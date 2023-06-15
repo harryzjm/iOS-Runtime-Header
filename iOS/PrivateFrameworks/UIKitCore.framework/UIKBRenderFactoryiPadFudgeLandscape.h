@@ -17,6 +17,8 @@ __attribute__((visibility("hidden")))
 - (struct CGPoint)deleteKeyOffset:(unsigned long long)arg1;
 - (struct CGPoint)iPadFudgeControlKeyOffset;
 - (double)stringKeyFontSize:(unsigned long long)arg1;
+- (double)dynamicBottomRowMultiplier;
+- (struct UIEdgeInsets)dynamicInsets;
 - (id)messagesWriteboardKeyImageName;
 - (double)keyCornerRadius;
 - (struct CGSize)defaultVariantGeometrySize;

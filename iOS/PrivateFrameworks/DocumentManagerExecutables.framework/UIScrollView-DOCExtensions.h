@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIScrollView.h>
+#import <UIKitCore/UIScrollView.h>
 
 @interface UIScrollView (DOCExtensions)
 - (double)doc_verticalOverlapIntoSafeAreaForView:(id)arg1 usingKeyboardInfo:(id)arg2;

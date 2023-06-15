@@ -11,8 +11,9 @@
 @interface _TtC17_MusicKit_SwiftUI13ArtworkLoader : _TtCs12_SwiftObject
 {
     MISSING_TYPE *_image;
-    MISSING_TYPE *lastParameters;
-    MISSING_TYPE *imageLoadingTask;
+    MISSING_TYPE *_lastParameters;
+    MISSING_TYPE *lastLoadingStatusHandler;
+    MISSING_TYPE *cachedCloudArtworkCatalog;
 }
 
 @end

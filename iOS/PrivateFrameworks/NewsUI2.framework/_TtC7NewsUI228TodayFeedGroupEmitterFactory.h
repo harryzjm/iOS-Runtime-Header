@@ -15,13 +15,11 @@
     MISSING_TYPE *formatService;
     MISSING_TYPE *audioHeadlineConverter;
     MISSING_TYPE *headlineService;
-    MISSING_TYPE *topicClusterService;
+    MISSING_TYPE *feedPersonalizer;
     MISSING_TYPE *featureAvailability;
     MISSING_TYPE *magazineFeedService;
     MISSING_TYPE *personalizationService;
-    MISSING_TYPE *subscriptionController;
-    MISSING_TYPE *readingHistory;
-    MISSING_TYPE *paidAccessChecker;
+    MISSING_TYPE *cloudContext;
     MISSING_TYPE *tagService;
     MISSING_TYPE *tagHighlightsService;
     MISSING_TYPE *suggestionClusteringService;
@@ -29,16 +27,16 @@
     MISSING_TYPE *engagementInlineViewManager;
     MISSING_TYPE *todayFeedEngagementEventHandler;
     MISSING_TYPE *engagementFeatureSettings;
-    MISSING_TYPE *configurationManager;
+    MISSING_TYPE *sharedItemManager;
     MISSING_TYPE *sportsTopicClusteringService;
     MISSING_TYPE *sportsDataService;
     MISSING_TYPE *sportsFavoritesService;
     MISSING_TYPE *sportsRecommendationService;
     MISSING_TYPE *sportsOnboardingManager;
     MISSING_TYPE *sportsGraphManager;
-    MISSING_TYPE *sportsEventManager;
     MISSING_TYPE *sportsSectionService;
     MISSING_TYPE *sportsScoreSorter;
+    MISSING_TYPE *mySportsTagService;
 }
 
 @end

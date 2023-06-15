@@ -21,7 +21,8 @@ __attribute__((visibility("hidden")))
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (struct JUMeasurements)measurementsWithFitting:(struct CGSize)arg1 in:(id)arg2;
-- (void)setEnabled:(_Bool)arg1;
+@property(nonatomic) _Bool enabled;
+- (_Bool)isEnabled;
 - (void)_setCornerRadius:(double)arg1;
 @property(nonatomic) double _cornerRadius;
 - (void)didTapButton:(id)arg1;

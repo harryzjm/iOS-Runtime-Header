@@ -10,6 +10,7 @@
 
 @interface NSLocale (WBSNSLocaleExtras)
 + (id)safari_localeIdentifiersForMostWidelyUsedLanguages;
+@property(readonly, copy, nonatomic) NSString *safari_localeStringInOfflineSearchModelFormat;
 @property(readonly, copy, nonatomic) NSString *safari_localeStringInWebExtensionFormat;
 @end
 

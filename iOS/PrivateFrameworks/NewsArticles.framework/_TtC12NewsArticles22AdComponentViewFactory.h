@@ -4,24 +4,28 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
+#import <Silex/SXComponentViewFactory.h>
 
 @class MISSING_TYPE, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _TtC12NewsArticles22AdComponentViewFactory : NSObject
+@interface _TtC12NewsArticles22AdComponentViewFactory : SXComponentViewFactory
 {
-    MISSING_TYPE *type;
-    MISSING_TYPE *role;
     MISSING_TYPE *resolver;
     MISSING_TYPE *bannerAdFactory;
+    MISSING_TYPE *viewManager;
+    MISSING_TYPE *requestManager;
+    MISSING_TYPE *bannerAdRenderer;
     MISSING_TYPE *integrator;
+    MISSING_TYPE *exposureMonitor;
+    MISSING_TYPE *journal;
+    MISSING_TYPE *trackerFactory;
 }
 
 - (void).cxx_destruct;
-- (id)init;
+- (id)initWithDOMObjectProvider:(id)arg1 viewport:(id)arg2 presentationDelegateProvider:(id)arg3 componentStyleRendererFactory:(id)arg4;
 - (id)componentViewForComponent:(id)arg1;
-@property(nonatomic, readonly) int role; // @synthesize role;
+@property(nonatomic, readonly) int role;
 @property(nonatomic, readonly) NSString *type;
 
 @end

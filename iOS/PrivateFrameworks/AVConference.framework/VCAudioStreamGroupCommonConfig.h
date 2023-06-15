@@ -6,6 +6,8 @@
 
 #import <objc/NSObject.h>
 
+@class VCAudioCaptionsCoordinator;
+
 __attribute__((visibility("hidden")))
 @interface VCAudioStreamGroupCommonConfig : NSObject
 {
@@ -20,8 +22,10 @@ __attribute__((visibility("hidden")))
     long long _powerSpectrumStreamToken;
     unsigned int _audioChannelIndex;
     unsigned long long _spatialAudioSourceID;
+    VCAudioCaptionsCoordinator *_captionsCoordinator;
 }
 
+@property(retain, nonatomic) VCAudioCaptionsCoordinator *captionsCoordinator; // @synthesize captionsCoordinator=_captionsCoordinator;
 @property(nonatomic) unsigned long long spatialAudioSourceID; // @synthesize spatialAudioSourceID=_spatialAudioSourceID;
 @property(nonatomic) unsigned int audioChannelIndex; // @synthesize audioChannelIndex=_audioChannelIndex;
 @property(nonatomic) long long powerSpectrumStreamToken; // @synthesize powerSpectrumStreamToken=_powerSpectrumStreamToken;

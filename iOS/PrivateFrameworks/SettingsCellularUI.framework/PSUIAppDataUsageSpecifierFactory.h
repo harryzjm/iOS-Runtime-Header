@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSString, PSBillingPeriodSelectorSpecifier, PSCellularManagementCache, PSDataUsageStatisticsCache, PSListController, PSUICallTimeGroup, PSUICarrierSpaceManager, PSUICellularUsageContentSpecifiers, PSUIResetStatisticsGroup, PSUITotalCellularUsageSubgroup;
+@class CHManager, NSArray, NSString, PSBillingPeriodSelectorSpecifier, PSCellularManagementCache, PSDataUsageStatisticsCache, PSListController, PSUICallTimeGroup, PSUICarrierSpaceManager, PSUICellularUsageContentSpecifiers, PSUICoreTelephonyDataCache, PSUIResetStatisticsGroup, PSUITotalCellularUsageSubgroup;
 @protocol PSAppCellularUsageSpecifierDelegate, PSBillingPeriodSelectorSpecifierDelegate, PSUIResetStatisticsGroupDelegate;
 
 __attribute__((visibility("hidden")))
@@ -14,6 +14,8 @@ __attribute__((visibility("hidden")))
 {
     PSCellularManagementCache *_managementCache;
     PSDataUsageStatisticsCache *_statisticsCache;
+    PSUICoreTelephonyDataCache *_dataCache;
+    CHManager *_callHistoryManager;
     PSUICarrierSpaceManager *_carrierSpaceManager;
     PSListController *_hostController;
     id <PSBillingPeriodSelectorSpecifierDelegate> _billingCycleDelegate;
@@ -43,6 +45,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak id <PSBillingPeriodSelectorSpecifierDelegate> billingCycleDelegate; // @synthesize billingCycleDelegate=_billingCycleDelegate;
 @property(nonatomic) __weak PSListController *hostController; // @synthesize hostController=_hostController;
 @property(retain, nonatomic) PSUICarrierSpaceManager *carrierSpaceManager; // @synthesize carrierSpaceManager=_carrierSpaceManager;
+@property(retain, nonatomic) CHManager *callHistoryManager; // @synthesize callHistoryManager=_callHistoryManager;
+@property(retain, nonatomic) PSUICoreTelephonyDataCache *dataCache; // @synthesize dataCache=_dataCache;
 @property(retain, nonatomic) PSDataUsageStatisticsCache *statisticsCache; // @synthesize statisticsCache=_statisticsCache;
 @property(retain, nonatomic) PSCellularManagementCache *managementCache; // @synthesize managementCache=_managementCache;
 - (id)getLogger;
@@ -52,7 +56,7 @@ __attribute__((visibility("hidden")))
 - (void)addLeadingSpecifiersToContentSpecifiers:(id)arg1;
 - (id)contentSpecifiers;
 - (id)headerSpecifiers;
-- (id)initWithGroupSpecifierTitle:(id)arg1 hostController:(id)arg2 managementCache:(id)arg3 statisticsCache:(id)arg4 carrierSpaceManager:(id)arg5 billingCycleDelegate:(id)arg6 policySpecifierDelegate:(id)arg7 resetStatisticsDelegate:(id)arg8;
+- (id)initWithGroupSpecifierTitle:(id)arg1 hostController:(id)arg2 managementCache:(id)arg3 statisticsCache:(id)arg4 dataCache:(id)arg5 callHistoryManager:(id)arg6 carrierSpaceManager:(id)arg7 billingCycleDelegate:(id)arg8 policySpecifierDelegate:(id)arg9 resetStatisticsDelegate:(id)arg10;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

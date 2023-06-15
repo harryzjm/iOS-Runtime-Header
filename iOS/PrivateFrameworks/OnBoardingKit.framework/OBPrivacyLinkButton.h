@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) UIImageView *iconView; // @synthesize iconView=_iconView;
 - (_Bool)_isButtonAboveCaptionText;
 - (void)traitCollectionDidChange:(id)arg1;
+- (id)buttonAttributes;
 - (id)labelText;
 - (id)_font;
 - (struct _NSRange)_rangeForButtonText;

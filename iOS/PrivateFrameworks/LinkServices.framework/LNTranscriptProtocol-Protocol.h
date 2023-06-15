@@ -6,12 +6,13 @@
 
 #import <LinkServices/NSObject-Protocol.h>
 
-@class LNTranscriptActionRecord, LNTranscriptMatchingPredicate;
+@class LNTranscriptActionRecord, LNTranscriptMatchingPredicate, NSData;
 
 @protocol LNTranscriptProtocol <NSObject>
 - (void)deleteAllRecordsWithReply:(void (^)(NSError *))arg1;
 - (void)deleteRecordsWithMatchingPredicate:(LNTranscriptMatchingPredicate *)arg1 reply:(void (^)(NSArray *, NSError *))arg2;
 - (void)requestReadAccessWithReply:(void (^)(NSSecurityScopedURLWrapper *, NSError *))arg1;
+- (void)donateActionRecordData:(NSData *)arg1 writeImmediately:(_Bool)arg2 reply:(void (^)(NSError *))arg3;
 - (void)donateWithActionRecord:(LNTranscriptActionRecord *)arg1 reply:(void (^)(NSError *))arg2;
 @end
 

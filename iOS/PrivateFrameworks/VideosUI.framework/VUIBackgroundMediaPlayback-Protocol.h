@@ -7,6 +7,23 @@
 @class NSArray, NSObject, NSString, TVPPlayer, VUIMediaInfo;
 
 @protocol VUIBackgroundMediaPlayback
+@property(nonatomic) struct UIEdgeInsets legibleContentInsets;
+@property(nonatomic) _Bool showsPlaybackControlsInForeground;
+@property(retain, nonatomic) NSString *videoGravity;
+@property(nonatomic) unsigned long long imageSwappingAnimationType;
+@property(nonatomic) double playbackStartDelay;
+@property(nonatomic) unsigned long long imageContentMode;
+@property(nonatomic) _Bool animateImageChange;
+@property(nonatomic) _Bool clearPreviousImageBeforeLoading;
+@property(nonatomic, getter=shouldStopPlayerWhenExitingFullScreen) _Bool stopPlayerWhenExitingFullScreen;
+@property(nonatomic, getter=shouldStopPlayerWhenViewDisappears) _Bool stopPlayerWhenViewDisappears;
+@property(nonatomic, getter=isPlaybackEnabled) _Bool playbackEnabled;
+@property(readonly, nonatomic, getter=isForeground) _Bool foreground;
+@property(readonly, nonatomic) unsigned long long state;
+@property(nonatomic) unsigned long long mediaInfoIndex;
+@property(copy, nonatomic) NSArray *mediaInfos;
+@property(readonly, copy, nonatomic) VUIMediaInfo *currentMediaInfo;
+@property(retain, nonatomic) TVPPlayer *player;
 - (NSObject *)notificationObject;
 - (void)setMediaInfo:(VUIMediaInfo *)arg1 atIndex:(unsigned long long)arg2 animated:(_Bool)arg3;
 - (void)setMediaInfos:(NSArray *)arg1 animated:(_Bool)arg2;
@@ -15,31 +32,10 @@
 - (void)stop;
 - (void)play;
 - (void)pause;
+- (void)setShowsVideoControls:(_Bool)arg1;
 - (void)setControlsVisible:(_Bool)arg1;
 - (void)transitionToFullScreenAnimated:(_Bool)arg1;
 - (void)transitionToForeground:(_Bool)arg1 withPlaybackControls:(_Bool)arg2 animated:(_Bool)arg3;
 - (void)transitionToForeground:(_Bool)arg1 animated:(_Bool)arg2;
-@property(nonatomic) _Bool showsPlaybackControlsInForeground;
-@property(nonatomic, copy) NSString *videoGravity;
-@property(nonatomic) unsigned long long imageSwappingAnimationType;
-@property(nonatomic) double playbackStartDelay;
-@property(nonatomic) unsigned long long imageContentMode;
-@property(nonatomic) _Bool animateImageChange;
-@property(nonatomic) _Bool clearPreviousImageBeforeLoading;
-@property(nonatomic) _Bool stopPlayerWhenExitingFullScreen;
-- (_Bool)shouldStopPlayerWhenExitingFullScreen;
-@property(nonatomic) _Bool stopPlayerWhenViewDisappears;
-- (_Bool)shouldStopPlayerWhenViewDisappears;
-@property(nonatomic) _Bool playbackEnabled;
-- (_Bool)isPlaybackEnabled;
-- (_Bool)isForeground;
-@property(nonatomic, readonly) unsigned long long state;
-@property(nonatomic) unsigned long long mediaInfoIndex;
-@property(nonatomic, copy) NSArray *mediaInfos;
-@property(nonatomic, readonly) VUIMediaInfo *currentMediaInfo;
-@property(nonatomic, retain) TVPPlayer *player;
-
-// Remaining properties
-@property(nonatomic, readonly) _Bool foreground;
 @end
 

@@ -6,7 +6,7 @@
 
 #import <BaseBoard/NSObject-Protocol.h>
 
-@class NSObject, NSString;
+@class NSDictionary, NSObject, NSString;
 @protocol NSFastEnumeration, OS_xpc_object;
 
 @protocol BSXPCEncoding <NSObject>
@@ -18,6 +18,7 @@
 - (void)encodeCGSize:(struct CGSize)arg1 forKey:(NSString *)arg2;
 - (void)encodeCGPoint:(struct CGPoint)arg1 forKey:(NSString *)arg2;
 - (void)encodeXPCObject:(NSObject<OS_xpc_object> *)arg1 forKey:(NSString *)arg2;
+- (void)encodeDictionary:(NSDictionary *)arg1 forKey:(NSString *)arg2;
 - (void)encodeCollection:(NSObject<NSFastEnumeration> *)arg1 forKey:(NSString *)arg2;
 - (void)encodeObject:(NSObject *)arg1 forKey:(NSString *)arg2;
 @end

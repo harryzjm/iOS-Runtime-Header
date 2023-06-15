@@ -9,6 +9,8 @@
 @class CSOpportuneSpeakEventMonitor;
 
 @protocol CSOpportuneSpeakEventMonitorDelegate <NSObject>
+
+@optional
 - (void)opportuneSpeakEventMonitor:(CSOpportuneSpeakEventMonitor *)arg1 didStreamStateChanged:(_Bool)arg2;
 @end
 

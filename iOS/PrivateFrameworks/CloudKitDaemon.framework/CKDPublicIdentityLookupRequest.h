@@ -14,12 +14,14 @@
     NSArray *_lookupInfosToFetch;
     NSMutableArray *_missingLookupInfos;
     _Bool _isCancelled;
+    _Bool _hasPerformed;
     unsigned long long _fetchBatchSize;
     CDUnknownBlockType _perLookupInfoProgressBlock;
     CDUnknownBlockType _lookupCompletionBlock;
 }
 
 - (void).cxx_destruct;
+@property _Bool hasPerformed; // @synthesize hasPerformed=_hasPerformed;
 @property(copy, nonatomic) CDUnknownBlockType lookupCompletionBlock; // @synthesize lookupCompletionBlock=_lookupCompletionBlock;
 @property(copy, nonatomic) CDUnknownBlockType perLookupInfoProgressBlock; // @synthesize perLookupInfoProgressBlock=_perLookupInfoProgressBlock;
 @property(nonatomic) unsigned long long fetchBatchSize; // @synthesize fetchBatchSize=_fetchBatchSize;

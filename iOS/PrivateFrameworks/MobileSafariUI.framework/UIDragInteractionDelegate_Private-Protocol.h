@@ -6,12 +6,13 @@
 
 #import <MobileSafariUI/UIDragInteractionDelegate-Protocol.h>
 
-@class NSArray, UIDragInteraction, UIDragItem, UIGestureRecognizer, UIView;
+@class NSArray, UIDragInteraction, UIDragItem, UIGestureRecognizer, UIView, _UIDragSessionProperties;
 @protocol UIDragSession, UIViewSpringAnimationBehaviorDescribing;
 
 @protocol UIDragInteractionDelegate_Private <UIDragInteractionDelegate>
 
 @optional
+- (_UIDragSessionProperties *)_dragInteraction:(UIDragInteraction *)arg1 sessionPropertiesForSession:(id <UIDragSession>)arg2;
 - (id <UIViewSpringAnimationBehaviorDescribing>)_dragInteraction:(UIDragInteraction *)arg1 customSpringAnimationBehaviorForCancellingItem:(UIDragItem *)arg2;
 - (_Bool)_dragInteraction:(UIDragInteraction *)arg1 sessionSupportsSystemDrag:(id <UIDragSession>)arg2;
 - (long long)_dragInteraction:(UIDragInteraction *)arg1 dataOwnerForAddingToSession:(id <UIDragSession>)arg2 withTouchAtPoint:(struct CGPoint)arg3;

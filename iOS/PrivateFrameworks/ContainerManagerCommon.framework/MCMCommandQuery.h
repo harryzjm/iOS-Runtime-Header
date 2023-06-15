@@ -16,11 +16,11 @@ __attribute__((visibility("hidden")))
     _Bool _transient;
     _Bool _includeUnowned;
     _Bool _expectSingleResult;
-    _Bool _includeLinks;
     _Bool _fuzzyMatchTransient;
     _Bool _fuzzyMatchInternalUUID;
     _Bool _legacyPersonaPolicy;
     _Bool _legacyExtensionPolicy;
+    _Bool _includeUserManagedAssetsRelPath;
     unsigned int _uid;
     unsigned int _platform;
     unsigned long long _explicitFlags;
@@ -36,13 +36,13 @@ __attribute__((visibility("hidden")))
 + (unsigned long long)command;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned int platform; // @synthesize platform=_platform;
+@property(readonly, nonatomic) _Bool includeUserManagedAssetsRelPath; // @synthesize includeUserManagedAssetsRelPath=_includeUserManagedAssetsRelPath;
 @property(readonly, nonatomic) _Bool legacyExtensionPolicy; // @synthesize legacyExtensionPolicy=_legacyExtensionPolicy;
 @property(readonly, nonatomic) _Bool legacyPersonaPolicy; // @synthesize legacyPersonaPolicy=_legacyPersonaPolicy;
 @property(readonly, nonatomic) unsigned long long privateFlags; // @synthesize privateFlags=_privateFlags;
 @property(readonly, nonatomic) NSUUID *internalUUID; // @synthesize internalUUID=_internalUUID;
 @property(readonly, nonatomic) _Bool fuzzyMatchInternalUUID; // @synthesize fuzzyMatchInternalUUID=_fuzzyMatchInternalUUID;
 @property(readonly, nonatomic) _Bool fuzzyMatchTransient; // @synthesize fuzzyMatchTransient=_fuzzyMatchTransient;
-@property(readonly, nonatomic) _Bool includeLinks; // @synthesize includeLinks=_includeLinks;
 @property(readonly, nonatomic) _Bool expectSingleResult; // @synthesize expectSingleResult=_expectSingleResult;
 @property(readonly, nonatomic) _Bool includeUnowned; // @synthesize includeUnowned=_includeUnowned;
 @property(readonly, nonatomic) _Bool transient; // @synthesize transient=_transient;
@@ -59,14 +59,13 @@ __attribute__((visibility("hidden")))
 - (id)_containerIdentifiersIncludingUnownedForContainerClass:(unsigned long long)arg1 canAccessAllContainers:(_Bool *)arg2 error:(id *)arg3;
 - (id)_setOfUserIdentities;
 - (id)_setOfUserIdentitiesForIdentifiers:(id)arg1 isGroupClass:(_Bool)arg2;
-- (id)_resolveLinksForContainers:(id)arg1;
 - (id)_queryPlanWithIdentifiers:(id)arg1 isGroupClass:(_Bool)arg2 clientIdentity:(id)arg3 error:(id *)arg4;
 - (_Bool)_executeQueryPlan:(id)arg1 resultContainers:(id)arg2 error:(id *)arg3;
 - (id)_executeQueryForContainerIdentity:(id)arg1 error:(id *)arg2;
 - (void)execute;
 - (_Bool)preflightClientAllowed;
 - (id)initWithMessage:(id)arg1 context:(id)arg2 reply:(id)arg3;
-- (id)initWithPlatform:(unsigned int)arg1 explicitFlags:(unsigned long long)arg2 identifiers:(id)arg3 containerClass:(unsigned long long)arg4 groupIdentifiers:(id)arg5 internalUUID:(id)arg6 createIfNecessary:(_Bool)arg7 includeInfoInResult:(_Bool)arg8 includePathInResult:(_Bool)arg9 issueSandboxExtensions:(_Bool)arg10 UID:(unsigned int)arg11 userIdentity:(id)arg12 transient:(_Bool)arg13 fuzzyMatchTransient:(_Bool)arg14 fuzzyMatchInternalUUID:(_Bool)arg15 includeUnowned:(_Bool)arg16 expectSingleResult:(_Bool)arg17 includeLinks:(_Bool)arg18 legacyPersonaPolicy:(_Bool)arg19 context:(id)arg20 resultPromise:(id)arg21;
+- (id)initWithPlatform:(unsigned int)arg1 explicitFlags:(unsigned long long)arg2 identifiers:(id)arg3 containerClass:(unsigned long long)arg4 groupIdentifiers:(id)arg5 internalUUID:(id)arg6 createIfNecessary:(_Bool)arg7 includeInfoInResult:(_Bool)arg8 includePathInResult:(_Bool)arg9 issueSandboxExtensions:(_Bool)arg10 UID:(unsigned int)arg11 userIdentity:(id)arg12 transient:(_Bool)arg13 fuzzyMatchTransient:(_Bool)arg14 fuzzyMatchInternalUUID:(_Bool)arg15 includeUnowned:(_Bool)arg16 expectSingleResult:(_Bool)arg17 legacyPersonaPolicy:(_Bool)arg18 includeUserManagedAssetsRelPath:(_Bool)arg19 context:(id)arg20 resultPromise:(id)arg21;
 
 @end
 

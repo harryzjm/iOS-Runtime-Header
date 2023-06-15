@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NRDevice, NSNumber, NSUUID;
-@protocol HDPairedDeviceCapabilityProvidingDelegate;
+@class NRDevice, NSNumber, NSObject, NSUUID;
+@protocol HDPairedDeviceCapabilityProvidingObserver, OS_dispatch_queue;
 
 @protocol HDPairedDeviceCapabilityProviding
-@property(nonatomic) __weak id <HDPairedDeviceCapabilityProvidingDelegate> delegate;
-- (void)startListeningForUpdates;
+- (void)unregisterObserver:(id <HDPairedDeviceCapabilityProvidingObserver>)arg1;
+- (void)registerObserver:(id <HDPairedDeviceCapabilityProvidingObserver>)arg1 queue:(NSObject<OS_dispatch_queue> *)arg2;
 - (_Bool)isCapabilitySupported:(NSUUID *)arg1 onDevice:(NRDevice *)arg2;
 - (NRDevice *)activePairedDevice;
 - (NSNumber *)isCapabilitySupportedOnActivePairedDevice:(NSUUID *)arg1 error:(id *)arg2;

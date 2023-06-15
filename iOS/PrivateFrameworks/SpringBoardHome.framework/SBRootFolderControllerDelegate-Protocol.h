@@ -6,8 +6,8 @@
 
 #import <SpringBoardHome/SBFolderControllerDelegate-Protocol.h>
 
-@class NSMutableDictionary, NSString, SBHAddWidgetSheetViewController, SBHIconImageCache, SBIcon, SBIconListView, SBIconView, SBRootFolderController, SBRootFolderViewPageManagementLayoutManager, SBViewControllerTransitionContext, SBWidgetIcon, UIView, UIViewController, UIViewPropertyAnimator, UIWindow, UIWindowScene;
-@protocol SBHWidgetSheetViewControllerPresenter, SBHWidgetSheetViewControlling, SBIconDragPreview, SBIconDragPreviewContaining, SBLeafIconDataSource, UIDropSession, UIViewImplicitlyAnimating;
+@class NSMutableDictionary, NSString, SBHAddWidgetSheetConfigurationManager, SBHAddWidgetSheetViewController, SBHAddWidgetSheetViewControllerBase, SBHIconImageCache, SBIcon, SBIconListView, SBIconView, SBRootFolderController, SBRootFolderViewPageManagementLayoutManager, SBViewControllerTransitionContext, SBWidgetIcon, UIView, UIViewController, UIViewPropertyAnimator, UIWindow, UIWindowScene;
+@protocol SBHMainAddSheetViewControlling, SBHWidgetSheetViewControllerPresenter, SBHWidgetSheetViewControlling, SBIconDragPreview, SBIconDragPreviewContaining, SBLeafIconDataSource, UIDropSession, UIViewImplicitlyAnimating;
 
 @protocol SBRootFolderControllerDelegate <SBFolderControllerDelegate>
 
@@ -18,6 +18,9 @@
 - (void)rootFolderControllerDidAcceptWidgetIntroduction:(SBRootFolderController *)arg1;
 - (SBHIconImageCache *)appIconImageCacheForRootFolderController:(SBRootFolderController *)arg1;
 - (NSString *)iconLocationForListsWithNonDefaultSizedIconsForRootFolderController:(SBRootFolderController *)arg1;
+- (unsigned long long)addWidgetSheetStyleForRootFolderController:(SBRootFolderController *)arg1;
+- (SBHAddWidgetSheetConfigurationManager *)addWidgetSheetConfigurationManagerForRootFolderController:(SBRootFolderController *)arg1;
+- (void)rootFolderController:(SBRootFolderController *)arg1 willPresentAddSheetViewController:(SBHAddWidgetSheetViewControllerBase<SBHMainAddSheetViewControlling> *)arg2;
 - (void)rootFolderController:(SBRootFolderController *)arg1 prepareAddSheetViewController:(SBHAddWidgetSheetViewController *)arg2;
 - (void)rootFolderController:(SBRootFolderController *)arg1 didDismissWidgetEditingViewController:(UIViewController<SBHWidgetSheetViewControlling> *)arg2;
 - (void)rootFolderController:(SBRootFolderController *)arg1 willDismissWidgetEditingViewController:(UIViewController<SBHWidgetSheetViewControlling> *)arg2;
@@ -37,7 +40,6 @@
 - (void)rootFolderController:(SBRootFolderController *)arg1 viewDidTransitionToSize:(struct CGSize)arg2;
 - (void)rootFolderControllerViewDidDisappear:(SBRootFolderController *)arg1;
 - (void)rootFolderControllerViewWillAppear:(SBRootFolderController *)arg1;
-- (NSString *)rootFolderController:(SBRootFolderController *)arg1 vendorNameForAppWithBundleIdentifiers:(NSString *)arg2;
 - (void)rootFolderController:(SBRootFolderController *)arg1 didEndOverscrollOnLastPageWithVelocity:(double)arg2 translation:(double)arg3;
 - (void)rootFolderController:(SBRootFolderController *)arg1 didOverscrollOnLastPageByAmount:(double)arg2;
 - (void)rootFolderController:(SBRootFolderController *)arg1 didEndOverscrollOnFirstPageWithVelocity:(double)arg2 translation:(double)arg3;
@@ -50,6 +52,7 @@
 - (void)rootFolderController:(SBRootFolderController *)arg1 statusBarInsetsDidChange:(struct UIEdgeInsets)arg2;
 - (UIView *)backgroundViewForEditingDoneButtonForRootFolderController:(SBRootFolderController *)arg1;
 - (UIView *)backgroundViewForDockForRootFolderController:(SBRootFolderController *)arg1;
+- (void)rootFolderController:(SBRootFolderController *)arg1 setSuppressesEditingStateForExternalDockListViews:(_Bool)arg2;
 - (double)preferredExternalDockVerticalMarginForRootFolderController:(SBRootFolderController *)arg1;
 - (double)externalDockHeightForRootFolderController:(SBRootFolderController *)arg1;
 - (double)maxExternalDockHeightForRootFolderController:(SBRootFolderController *)arg1;

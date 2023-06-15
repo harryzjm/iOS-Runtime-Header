@@ -6,19 +6,22 @@
 
 #import <UIKit/UIButton.h>
 
-@class UITableViewCell;
+@class UIButtonConfiguration, UITableViewCell;
 
 __attribute__((visibility("hidden")))
 @interface CompletionArrowView : UIButton
 {
+    _Bool _usesDownBackwardCompletionArrow;
     UITableViewCell *_parentCell;
+    UIButtonConfiguration *_buttonConfiguration;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) UIButtonConfiguration *buttonConfiguration; // @synthesize buttonConfiguration=_buttonConfiguration;
+@property(nonatomic) _Bool usesDownBackwardCompletionArrow; // @synthesize usesDownBackwardCompletionArrow=_usesDownBackwardCompletionArrow;
 @property(nonatomic) __weak UITableViewCell *parentCell; // @synthesize parentCell=_parentCell;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (_Bool)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
-- (id)init;
 
 @end
 

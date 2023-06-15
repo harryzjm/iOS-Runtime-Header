@@ -18,18 +18,7 @@
     CDStruct_14d5dc5e _pose;
 }
 
-@property(nonatomic) float camH; // @synthesize camH=_camH;
-@property(nonatomic) float camW; // @synthesize camW=_camW;
-@property(nonatomic) unsigned long long rawSize; // @synthesize rawSize=_rawSize;
-@property(nonatomic) unsigned long long size; // @synthesize size=_size;
-@property(nonatomic) CDStruct_8e0628e6 intrinsics; // @synthesize intrinsics=_intrinsics;
-@property(nonatomic) CDStruct_14d5dc5e pose; // @synthesize pose=_pose;
-@property(nonatomic) unsigned long long end; // @synthesize end=_end;
-@property(nonatomic) unsigned long long begin; // @synthesize begin=_begin;
 - (_Bool)isEqual:(id)arg1;
-- (_Bool)isEqualToRSSubPointsLUT:(id)arg1;
-- (id)dictionaryRepresentation;
-- (id)initWithDictionary:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 

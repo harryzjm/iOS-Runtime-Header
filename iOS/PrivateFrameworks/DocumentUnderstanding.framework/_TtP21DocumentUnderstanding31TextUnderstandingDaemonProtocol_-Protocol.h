@@ -4,7 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSArray, NSString;
+
 @protocol _TtP21DocumentUnderstanding31TextUnderstandingDaemonProtocol_
+- (void)triggerIncrementalPoemUpdate;
+- (void)triggerPoemOnBoarding;
+- (void)triggerSpotlightFileUpdateNoArgsWithReply:(void (^)(void))arg1;
+- (void)triggerSpotlightFileUpdateWithItems:(NSArray *)arg1 bundleID:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)pingWithReply:(void (^)(void))arg1;
 @end
 

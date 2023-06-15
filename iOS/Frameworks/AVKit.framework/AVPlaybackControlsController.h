@@ -20,8 +20,8 @@ __attribute__((visibility("hidden")))
     _Bool _entersFullScreenWhenPlaybackBegins;
     _Bool _allowsEnteringFullScreen;
     _Bool _showsMinimalPlaybackControlsWhenEmbeddedInline;
-    _Bool _inlinePlaybackControlsAlwaysShowLargePlayButtonWhenPaused;
     _Bool _volumeControlsCanShowSlider;
+    _Bool _showsVolumeControlsForContentWithNoAudio;
     _Bool _showsPictureInPictureButton;
     _Bool _showsPlaybackControls;
     _Bool _hasCustomPlaybackControls;
@@ -186,8 +186,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool showsPictureInPictureButton; // @synthesize showsPictureInPictureButton=_showsPictureInPictureButton;
 @property(copy, nonatomic) NSArray *transportBarCustomMenuItems; // @synthesize transportBarCustomMenuItems=_transportBarCustomMenuItems;
 @property(copy, nonatomic) NSArray *customControlItems; // @synthesize customControlItems=_customControlItems;
+@property(nonatomic) _Bool showsVolumeControlsForContentWithNoAudio; // @synthesize showsVolumeControlsForContentWithNoAudio=_showsVolumeControlsForContentWithNoAudio;
 @property(nonatomic) _Bool volumeControlsCanShowSlider; // @synthesize volumeControlsCanShowSlider=_volumeControlsCanShowSlider;
-@property(nonatomic) _Bool inlinePlaybackControlsAlwaysShowLargePlayButtonWhenPaused; // @synthesize inlinePlaybackControlsAlwaysShowLargePlayButtonWhenPaused=_inlinePlaybackControlsAlwaysShowLargePlayButtonWhenPaused;
 @property(nonatomic) _Bool showsMinimalPlaybackControlsWhenEmbeddedInline; // @synthesize showsMinimalPlaybackControlsWhenEmbeddedInline=_showsMinimalPlaybackControlsWhenEmbeddedInline;
 @property(nonatomic) _Bool allowsEnteringFullScreen; // @synthesize allowsEnteringFullScreen=_allowsEnteringFullScreen;
 @property(nonatomic) long long preferredUnobscuredArea; // @synthesize preferredUnobscuredArea=_preferredUnobscuredArea;
@@ -203,6 +203,8 @@ __attribute__((visibility("hidden")))
 - (void)_updateHasPlaybackBegunSincePlayerControllerBecameReadyToPlay:(_Bool)arg1 playing:(_Bool)arg2 userDidEndTappingProminentPlayButton:(_Bool)arg3;
 - (void)_updateVolumeControllerView;
 - (void)_updateVideoGravityButtonType;
+- (void)_updatePhotosensitivityRegions;
+- (void)_handlePhotosensitiveRegions;
 - (void)_updateScrubberAndTimeLabels;
 - (void)_updatePlaybackSpeedControlInclusion;
 - (void)_updateOrCreateTimeResolverIfNeeded;

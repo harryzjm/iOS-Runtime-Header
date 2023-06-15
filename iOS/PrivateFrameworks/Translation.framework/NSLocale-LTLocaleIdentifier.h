@@ -6,7 +6,11 @@
 
 #import <Foundation/NSLocale.h>
 
+@class NSString;
+
 @interface NSLocale (LTLocaleIdentifier)
++ (id)lt_localeWithLTIdentifier:(id)arg1;
+@property(readonly, nonatomic) NSString *lt_nlLanguageCode;
 - (_Bool)_ltEqual:(id)arg1;
 - (id)_vsLocaleIdentifier;
 - (id)_ltCsLocaleIdentifier;

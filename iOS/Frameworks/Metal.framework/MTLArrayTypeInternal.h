@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) unsigned long long pixelFormat; // @synthesize pixelFormat=_pixelFormat;
 - (unsigned long long)elementType;
 - (unsigned long long)dataType;
+- (_Bool)isEqual:(id)arg1;
 - (id)formattedDescription:(unsigned long long)arg1;
 - (id)elementTypeDescription;
 - (id)elementIndirectArgumentType;

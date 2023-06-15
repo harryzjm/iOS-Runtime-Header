@@ -9,6 +9,7 @@
 @class CKVDonateTask, CKVSettings, NSSet;
 
 @protocol CKVDonateTaskProvider <NSObject>
+- (CKVDonateTask *)verificationTaskForId:(unsigned short)arg1;
 - (CKVDonateTask *)derivativeTaskForId:(unsigned short)arg1 usingSettings:(CKVSettings *)arg2 modifiedItemIds:(NSSet *)arg3 deletedItemIds:(NSSet *)arg4;
 - (CKVDonateTask *)taskForId:(unsigned short)arg1 usingSettings:(CKVSettings *)arg2;
 - (void)enableSimulatedTasks:(_Bool)arg1;

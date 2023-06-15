@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIAccessibilityElement.h>
+#import <UIKitCore/UIAccessibilityElement.h>
 
 @class MISSING_TYPE, NSString;
 
@@ -15,6 +15,7 @@
 
 - (id)init;
 - (id)initWithAccessibilityContainer:(id)arg1;
+@property(nonatomic) struct CGPoint accessibilityActivationPoint;
 @property(nonatomic, copy) NSString *accessibilityLabel;
 @property(nonatomic) unsigned long long accessibilityTraits;
 @property(nonatomic) struct CGRect accessibilityFrame;

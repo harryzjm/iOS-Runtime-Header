@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AMSURLAction, AMSURLRequestProperties, AMSURLSession, NSData, NSError, NSMutableData, NSMutableSet, NSSet, NSURLResponse, NSURLSessionTask, NSURLSessionTaskMetrics;
+@class AMSContiguousActionPerformer, AMSURLAction, AMSURLRequestProperties, AMSURLSession, NSData, NSError, NSMutableData, NSMutableSet, NSSet, NSURLResponse, NSURLSessionTask, NSURLSessionTaskMetrics;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -24,10 +24,12 @@ __attribute__((visibility("hidden")))
     NSURLResponse *_response;
     long long _retryCount;
     AMSURLSession *_session;
+    NSURLResponse *_originalResponse;
     unsigned long long _signpostID;
     NSURLSessionTask *_task;
     struct os_unfair_recursive_lock_s _taskLock;
     NSObject<OS_dispatch_queue> *_taskQueue;
+    AMSContiguousActionPerformer *_contiguousActionPerformer;
 }
 
 + (id)sharedTaskQueue;
@@ -36,10 +38,18 @@ __attribute__((visibility("hidden")))
 + (id)createTaskInfoForTask:(id)arg1;
 + (id)taskInfoForTask:(id)arg1;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) AMSContiguousActionPerformer *contiguousActionPerformer; // @synthesize contiguousActionPerformer=_contiguousActionPerformer;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *taskQueue; // @synthesize taskQueue=_taskQueue;
 @property(readonly, nonatomic) struct os_unfair_recursive_lock_s taskLock; // @synthesize taskLock=_taskLock;
 @property(readonly, nonatomic) NSURLSessionTask *task; // @synthesize task=_task;
 @property(nonatomic) unsigned long long signpostID; // @synthesize signpostID=_signpostID;
+@property(retain, nonatomic) NSURLResponse *originalResponse; // @synthesize originalResponse=_originalResponse;
+- (void)setAccount:(id)arg1;
+- (void)_performDataAccessUsingBlock:(CDUnknownBlockType)arg1;
+- (void)finishContiguousAsyncActionWithIdentifier:(unsigned long long)arg1;
+- (void)continueContiguousAsyncActionWithIdentifier:(unsigned long long)arg1 block:(CDUnknownBlockType)arg2;
+- (unsigned long long)startContiguousAsyncActionWithInitialDataBlock:(CDUnknownBlockType)arg1;
+- (unsigned long long)startContiguousAsyncActionWithInitialBlock:(CDUnknownBlockType)arg1;
 - (void)performSyncBlockWithExclusiveAccess:(CDUnknownBlockType)arg1;
 - (void)performSyncBlock:(CDUnknownBlockType)arg1;
 - (void)performAsyncBlockWithData:(CDUnknownBlockType)arg1;

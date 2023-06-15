@@ -10,12 +10,13 @@
 
 @interface _TtC8VideosUI21ContextMenuController : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *_isReady;
+    MISSING_TYPE *presentingViewFrame;
     MISSING_TYPE *_itemMenuViewModels;
-    MISSING_TYPE *shareActionDataSourceKey;
     MISSING_TYPE *viewModel;
     MISSING_TYPE *menuViewModel;
     MISSING_TYPE *menuDocumentController;
+    MISSING_TYPE *prefetchMenuDocumentController;
+    MISSING_TYPE *isFetched;
     MISSING_TYPE *libContextMenuObserver;
 }
 

@@ -9,6 +9,7 @@
 @class NSArray, NSPredicate;
 
 @protocol IMDAttachmentQueries <NSObject>
+- (void)updateAttachmentsSyncStatusTo:(long long)arg1 forGUIDs:(NSArray *)arg2;
 - (void)fetchAttachmentRecordsFilteredUsingPredicate:(NSPredicate *)arg1 limit:(unsigned long long)arg2 completionHandler:(void (^)(NSArray *))arg3;
 - (void)deleteAttachmentsDirectWithPredicate:(NSPredicate *)arg1;
 - (void)coreSpotlightDeleteAttachmentGUIDs:(NSArray *)arg1;

@@ -9,6 +9,9 @@
 @class CKChatInputController, CKInlineReplyChatController;
 
 @protocol CKInlineReplyInteractionDelegate <NSObject>
+- (double)visibleInputViewHeightForInlineReplyController:(CKInlineReplyChatController *)arg1;
+- (void)inlineReplyController:(CKInlineReplyChatController *)arg1 appCardDidChangeEntryViewAlignmentHeight:(double)arg2 animated:(_Bool)arg3;
+- (void)updateActiveEntryViewPositioningGuideForInlineReplyController:(CKInlineReplyChatController *)arg1;
 - (void)inlineReplyController:(CKInlineReplyChatController *)arg1 setIsShowingPreview:(_Bool)arg2;
 - (void)inlineReplyControllerDidSendComposition:(CKInlineReplyChatController *)arg1;
 - (_Bool)inlineReplyController:(CKInlineReplyChatController *)arg1 containerWidth:(double *)arg2 offset:(double *)arg3;

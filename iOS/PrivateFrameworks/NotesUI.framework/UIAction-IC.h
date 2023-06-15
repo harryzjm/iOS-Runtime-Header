@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIAction.h>
+#import <UIKitCore/UIAction.h>
 
 @interface UIAction (IC)
 + (id)ic_centerWindowActionWithAppURL:(id)arg1;
@@ -20,8 +20,8 @@
 + (id)ic_moveActionWithHandler:(CDUnknownBlockType)arg1;
 + (id)ic_sendActionWithHandler:(CDUnknownBlockType)arg1;
 + (id)ic_showActivityStreamActionWithCloudSyncingObject:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
-+ (id)ic_collaborateGelatoActionWithCloudSyncingObject:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
-+ (id)ic_collaborateActionWithCloudSyncingObject:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
++ (id)ic_collaborateShareActionWithCloudSyncingObject:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
++ (id)ic_collaborateManageActionWithCloudSyncingObject:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 + (id)ic_lockNoteActionLocked:(_Bool)arg1 withHandler:(CDUnknownBlockType)arg2;
 + (id)ic_pinNoteActionPinned:(_Bool)arg1 numberOfElements:(unsigned long long)arg2 withHandler:(CDUnknownBlockType)arg3;
 + (id)ic_pinNoteActionPinned:(_Bool)arg1 withHandler:(CDUnknownBlockType)arg2;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSUUID;
+@class NSDictionary, NSSet, NSUUID;
 @protocol LSMIResultRegistrantStrategy;
 
 __attribute__((visibility("hidden")))
@@ -15,13 +15,14 @@ __attribute__((visibility("hidden")))
     id <LSMIResultRegistrantStrategy> _strategy;
     NSUUID *_uuid;
     NSDictionary *_miDict;
+    NSSet *_personas;
 }
 
 - (void).cxx_destruct;
 - (void)runWithCompletion:(CDUnknownBlockType)arg1;
-- (void)runPostProcessingForBundleID:(id)arg1 success:(_Bool)arg2 isSystemApp:(_Bool)arg3 isPlaceholder:(_Bool)arg4 notificationJournaller:(id)arg5;
+- (void)runPostProcessingForBundleID:(id)arg1 success:(_Bool)arg2 isSystemApp:(_Bool)arg3 isPlaceholder:(_Bool)arg4 registeredBothFullAppAndPlaceholder:(_Bool)arg5 notificationJournaller:(id)arg6;
 - (void)_replyWithError:(id)arg1 onQueue:(id)arg2 block:(CDUnknownBlockType)arg3;
-- (id)initWithContext:(id)arg1 operationUUID:(id)arg2 itemInfoDict:(id)arg3;
+- (id)initWithContext:(id)arg1 operationUUID:(id)arg2 itemInfoDict:(id)arg3 personas:(id)arg4;
 
 @end
 

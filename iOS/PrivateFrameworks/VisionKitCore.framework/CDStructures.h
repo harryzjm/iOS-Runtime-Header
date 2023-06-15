@@ -60,6 +60,11 @@ struct UIEdgeInsets {
     double right;
 };
 
+struct VKEdgeDistance {
+    double _field1;
+    double _field2;
+};
+
 struct VKQuadSideLength {
     double left;
     double right;
@@ -80,12 +85,21 @@ struct _NSRange {
     unsigned long long length;
 };
 
+struct os_unfair_lock_s {
+    unsigned int _os_unfair_lock_opaque;
+};
+
 #pragma mark Typedef'd Structures
 
 typedef struct {
-    long long _field1;
-    int _field2;
-    unsigned int _field3;
-    long long _field4;
-} CDStruct_198678f7;
+    long long value;
+    int timescale;
+    unsigned int flags;
+    long long epoch;
+} CDStruct_1b6d18a9;
+
+typedef struct {
+    CDStruct_1b6d18a9 _field1;
+    CDStruct_1b6d18a9 _field2;
+} CDStruct_5c5366e1;
 

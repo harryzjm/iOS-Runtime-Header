@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *styler;
     MISSING_TYPE *commandCenter;
+    MISSING_TYPE *transition;
 }
 
 @end

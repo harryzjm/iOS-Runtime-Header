@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UICollectionReusableView.h>
+#import <UIKitCore/UICollectionReusableView.h>
 
 __attribute__((visibility("hidden")))
 @interface _TtC8VideosUI26BaseCollectionReusableView : UICollectionReusableView

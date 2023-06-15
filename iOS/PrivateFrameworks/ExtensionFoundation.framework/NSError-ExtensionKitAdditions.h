@@ -7,6 +7,7 @@
 #import <Foundation/NSError.h>
 
 @interface NSError (ExtensionKitAdditions)
++ (id)_EX_errorWithCode:(long long)arg1 underlyingError:(id)arg2;
 + (id)_EX_parameterError;
 + (id)_EX_unimplementedError;
 @end

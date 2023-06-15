@@ -9,7 +9,6 @@
 @class NSMutableDictionary;
 @protocol MTLCommandQueue, MTLDeviceSPI, MTLSharedEvent, OS_dispatch_group, OS_dispatch_queue;
 
-__attribute__((visibility("hidden")))
 @interface GTResourceDownloader : NSObject
 {
     id <MTLDeviceSPI> _device;

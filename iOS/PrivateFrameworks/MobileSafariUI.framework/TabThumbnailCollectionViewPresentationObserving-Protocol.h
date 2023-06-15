@@ -6,16 +6,15 @@
 
 #import <MobileSafariUI/NSObject-Protocol.h>
 
-@class UIView;
 @protocol TabThumbnailCollectionView;
 
 @protocol TabThumbnailCollectionViewPresentationObserving <NSObject>
 
 @optional
-- (void)tabCollectionViewDidDismiss:(UIView<TabThumbnailCollectionView> *)arg1;
-- (void)tabCollectionViewDidCancelDismissal:(UIView<TabThumbnailCollectionView> *)arg1;
-- (void)tabCollectionViewWillDismiss:(UIView<TabThumbnailCollectionView> *)arg1;
-- (void)tabCollectionViewDidPresent:(UIView<TabThumbnailCollectionView> *)arg1;
-- (void)tabCollectionViewWillPresent:(UIView<TabThumbnailCollectionView> *)arg1;
+- (void)tabCollectionViewDidDismiss:(id <TabThumbnailCollectionView>)arg1;
+- (void)tabCollectionViewDidCancelDismissal:(id <TabThumbnailCollectionView>)arg1;
+- (void)tabCollectionViewWillDismiss:(id <TabThumbnailCollectionView>)arg1;
+- (void)tabCollectionViewDidPresent:(id <TabThumbnailCollectionView>)arg1;
+- (void)tabCollectionViewWillPresent:(id <TabThumbnailCollectionView>)arg1;
 @end
 

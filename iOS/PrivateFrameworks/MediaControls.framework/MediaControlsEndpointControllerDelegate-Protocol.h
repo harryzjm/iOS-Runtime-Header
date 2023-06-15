@@ -10,8 +10,10 @@
 
 @protocol MediaControlsEndpointControllerDelegate <NSObject>
 - (void)endpointControllerRouteDidUpdate:(MediaControlsEndpointController *)arg1;
-- (void)endpointControllerDidUpdateRoutingAvailability:(MediaControlsEndpointController *)arg1;
 - (void)endpointControllerDidChangeState:(MediaControlsEndpointController *)arg1;
 - (void)endpointController:(MediaControlsEndpointController *)arg1 didLoadNewResponse:(MPCPlayerResponse *)arg2;
+
+@optional
+- (void)endpointControllerDidUpdateRoutingAvailability:(MediaControlsEndpointController *)arg1;
 @end
 

@@ -9,7 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface WebCaptionUserPreferencesMediaAFWeakObserver : NSObject
 {
-    struct WeakPtr<WebCore::CaptionUserPreferencesMediaAF, WTF::EmptyCounter> m_weakPtr;
+    struct WeakPtr<WebCore::CaptionUserPreferencesMediaAF, WTF::DefaultWeakPtrImpl> m_weakPtr;
 }
 
 - (id).cxx_construct;

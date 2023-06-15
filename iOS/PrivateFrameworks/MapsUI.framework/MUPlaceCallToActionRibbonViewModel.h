@@ -4,17 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MKUGCCallToActionViewAppearance, MUPlaceRibbonItemViewModel;
+@class MUPlaceCallToActionAppearance, MUPlaceRibbonItemViewModel;
 
 __attribute__((visibility("hidden")))
 @interface MUPlaceCallToActionRibbonViewModel
 {
     MUPlaceRibbonItemViewModel *_callToActionViewModel;
-    MKUGCCallToActionViewAppearance *_submissionStatus;
+    MUPlaceCallToActionAppearance *_submissionStatus;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) MKUGCCallToActionViewAppearance *submissionStatus; // @synthesize submissionStatus=_submissionStatus;
+@property(retain, nonatomic) MUPlaceCallToActionAppearance *submissionStatus; // @synthesize submissionStatus=_submissionStatus;
 - (_Bool)isTappable;
 - (CDUnknownBlockType)valueStringProvider;
 - (CDUnknownBlockType)titleStringProvider;

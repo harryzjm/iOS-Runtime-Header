@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <UIKitCore/NSObject-Protocol.h>
+
 @class UIImage;
 
-@protocol _UIPageIndicatorStoreDelegate
+@protocol _UIPageIndicatorStoreDelegate <NSObject>
 - (unsigned long long)maxVisibleIndicators;
 - (struct CGSize)indicatorSizeForImage:(UIImage *)arg1;
 @end

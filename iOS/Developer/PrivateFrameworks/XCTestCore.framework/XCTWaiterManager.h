@@ -8,26 +8,20 @@
 
 #import <XCTestCore/XCTWaiterManager-Protocol.h>
 
-@class NSMutableArray, NSMutableSet, NSThread;
-@protocol OS_dispatch_queue;
+@class NSMutableArray, NSThread;
 
 @interface XCTWaiterManager : NSObject <XCTWaiterManager>
 {
     NSMutableArray *_waiterStack;
-    NSThread *_thread;
-    NSObject<OS_dispatch_queue> *_queue;
-    NSMutableSet *_interruptionCompletionHandlers;
+    NSMutableArray *_waitStack;
+    NSThread *_owningThread;
 }
 
 + (id)threadLocalManager;
 - (void).cxx_destruct;
-@property(readonly) NSMutableSet *interruptionCompletionHandlers; // @synthesize interruptionCompletionHandlers=_interruptionCompletionHandlers;
-@property(readonly) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-@property NSThread *thread; // @synthesize thread=_thread;
-@property(retain) NSMutableArray *waiterStack; // @synthesize waiterStack=_waiterStack;
-- (void)waiterDidFinishWaiting:(id)arg1;
-- (void)waiterTimedOutWhileWaiting:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (void)waiterWillBeginWaiting:(id)arg1;
+- (void)waiter:(id)arg1 didFinishWaitingForWait:(id)arg2;
+- (void)waiter:(id)arg1 timedOutWhileWaitingForWait:(id)arg2;
+- (void)waiter:(id)arg1 willBeginWaitingForWait:(id)arg2;
 - (id)init;
 - (void)dealloc;
 

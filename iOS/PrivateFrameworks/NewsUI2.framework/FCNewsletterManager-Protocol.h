@@ -10,6 +10,17 @@
 @protocol FCNewsletterSubscriptionObserver;
 
 @protocol FCNewsletterManager <NSObject>
+@property(readonly, nonatomic) long long includeOptions;
+@property(readonly, nonatomic) _Bool includeSportsVector;
+@property(readonly, nonatomic) _Bool includeBundleSubscribedVector;
+@property(readonly, nonatomic) _Bool includeUserVector;
+@property(readonly, nonatomic) _Bool canUnsubscribe;
+@property(readonly, nonatomic) _Bool canSubscribe;
+@property(readonly, nonatomic) _Bool isSubscribed;
+@property(readonly, nonatomic) NSString *cachedVector;
+@property(readonly, nonatomic) long long subscription;
+@property(readonly, nonatomic) long long activeNewsletter;
+@property(readonly, nonatomic) _Bool enabled;
 - (void)notifyObservers;
 - (void)removeObserver:(id <FCNewsletterSubscriptionObserver>)arg1;
 - (void)addObserver:(id <FCNewsletterSubscriptionObserver>)arg1;
@@ -17,27 +28,20 @@
 - (void)submitPersonalizationVector:(NTPBVersionedPersonalizationVector *)arg1 subscribedBundleChannelIDs:(NSSet *)arg2;
 - (_Bool)shouldSubmitPersonalizationVector;
 - (void)updateCacheWithNewsletterString:(NSString *)arg1 includeArray:(NSArray *)arg2;
+- (NFPromise *)getWebToken;
 - (NFPromise *)forceUpdateSubscription;
 - (NFPromise *)updateSubscription;
+- (void)optOutOfSports;
+- (void)optIntoSports;
 - (void)optOutOfIssues;
 - (void)unsubscribe;
-- (void)subscribe;
+- (void)subscribeFromPrivacyModalCTAWithCompletion:(void (^)(unsigned long long, NSError *))arg1;
+- (void)subscribeFromPrivacyModalCTA;
 - (_Bool)isOptedIntoIssues;
 - (_Bool)isEligibleForIssues;
 - (long long)issueOptinStatus;
 - (_Bool)isSignedIntoEmailAccount;
 - (_Bool)canSubscribeToNewsletter:(long long)arg1;
 - (long long)subscriptionStatusForNewsletter:(long long)arg1;
-@property(nonatomic, readonly) long long includeOptions;
-@property(nonatomic, readonly) _Bool includeSportsVector;
-@property(nonatomic, readonly) _Bool includeBundleSubscribedVector;
-@property(nonatomic, readonly) _Bool includeUserVector;
-@property(nonatomic, readonly) _Bool canUnsubscribe;
-@property(nonatomic, readonly) _Bool canSubscribe;
-@property(nonatomic, readonly) _Bool isSubscribed;
-@property(nonatomic, readonly) NSString *cachedVector;
-@property(nonatomic, readonly) long long subscription;
-@property(nonatomic, readonly) long long activeNewsletter;
-@property(nonatomic, readonly) _Bool enabled;
 @end
 

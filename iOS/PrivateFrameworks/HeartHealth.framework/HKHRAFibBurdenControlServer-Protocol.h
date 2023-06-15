@@ -6,9 +6,11 @@
 
 #import <HeartHealth/NSObject-Protocol.h>
 
-@class HKFeatureStatus, NSNumber, NSUUID;
+@class HKFeatureStatus, HKHRAFibBurdenNotificationMode, NSArray, NSNumber, NSUUID;
 
 @protocol HKHRAFibBurdenControlServer <NSObject>
+- (void)remote_sendNotificationWithMode:(HKHRAFibBurdenNotificationMode *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
+- (void)remote_injectBurdenValues:(NSArray *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (void)remote_performAnalysisForWeekContainingDayIndex:(long long)arg1 completion:(void (^)(HKHRAFibBurdenSevenDayAnalysisResults *, NSError *))arg2;
 - (void)remote_addTachogramsForStartDayIndex:(long long)arg1 endDayIndex:(long long)arg2 chanceOfAFib:(NSNumber *)arg3 chanceOfWrite:(NSNumber *)arg4 minutesBetweenSamples:(NSNumber *)arg5 startingHour:(NSNumber *)arg6 endingHour:(NSNumber *)arg7 completion:(void (^)(_Bool, NSError *))arg8;
 - (void)remote_queryEligibleTachogramsForPreviousSixWeeksForTimeOfDayBucket:(long long)arg1 completion:(void (^)(HKHRSampleClassificationCollectionCollection *, NSError *))arg2;

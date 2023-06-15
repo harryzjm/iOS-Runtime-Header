@@ -6,13 +6,12 @@
 
 #import <TextToSpeech/NSObject-Protocol.h>
 
-@class NSError, NSString, NSURL, TTSSpeechRequest;
-@protocol TTSSpeechService;
+@class NSError, NSString, TTSSpeechRequest;
+@protocol TTSMarker, TTSSpeechService;
 
 @protocol TTSSpeechRequestDelegate <NSObject>
-- (oneway void)speechRequest:(TTSSpeechRequest *)arg1 didSynthesizeSilentlyToURL:(NSURL *)arg2;
 - (oneway void)speechRequest:(TTSSpeechRequest *)arg1 didStopWithSuccess:(_Bool)arg2 phonemesSpoken:(NSString *)arg3 forService:(id <TTSSpeechService>)arg4 error:(NSError *)arg5;
-- (oneway void)speechRequest:(TTSSpeechRequest *)arg1 withMark:(long long)arg2 didStartForRange:(struct _NSRange)arg3 forService:(id <TTSSpeechService>)arg4;
+- (oneway void)speechRequest:(TTSSpeechRequest *)arg1 withMarker:(id <TTSMarker>)arg2 didStartForService:(id <TTSSpeechService>)arg3;
 - (oneway void)speechRequestDidContinue:(TTSSpeechRequest *)arg1 forService:(id <TTSSpeechService>)arg2;
 - (oneway void)speechRequestDidPause:(TTSSpeechRequest *)arg1 forService:(id <TTSSpeechService>)arg2;
 - (oneway void)speechRequestDidStart:(TTSSpeechRequest *)arg1 forService:(id <TTSSpeechService>)arg2;

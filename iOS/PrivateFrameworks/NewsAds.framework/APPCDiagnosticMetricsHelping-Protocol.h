@@ -10,5 +10,6 @@
 - (void)mediaPlaybackFailedWithReason:(NSString *)arg1;
 - (void)templateMetricWithName:(NSString *)arg1 argument:(NSString *)arg2;
 - (void)loadFailedWithReason:(NSString *)arg1 code:(long long)arg2;
+@property(nonatomic) unsigned long long networkType;
 @end
 

@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
     NSArray *_importOperations;
     NSCloudKitMirroringDelegateOptions *_mirroringOptions;
     NSURL *_fileBackedFuturesDirectory;
+    NSSet *_deletedShareRecordIDs;
 }
 
 - (void)dealloc;

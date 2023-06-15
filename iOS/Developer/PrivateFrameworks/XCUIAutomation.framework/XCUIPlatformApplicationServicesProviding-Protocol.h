@@ -6,13 +6,15 @@
 
 #import <XCUIAutomation/NSObject-Protocol.h>
 
-@class NSArray, NSDictionary, NSString, XCUIApplicationSpecifier;
+@class NSArray, NSDictionary, NSString, NSURL, XCUIApplicationSpecifier;
 @protocol XCUIApplicationPlatformServicesProviderDelegate;
 
 @protocol XCUIPlatformApplicationServicesProviding <NSObject>
 @property(readonly) _Bool providesClientStateUpdates;
 @property __weak id <XCUIApplicationPlatformServicesProviderDelegate> platformApplicationServicesProviderDelegate;
 - (void)requestApplicationSpecifierForPID:(int)arg1 reply:(void (^)(XCUIApplicationSpecifier *, NSError *))arg2;
+- (void)openURL:(NSURL *)arg1 usingApplication:(NSString *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
+- (void)openDefaultApplicationForURL:(NSURL *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (void)terminateApplicationWithBundleID:(NSString *)arg1 pid:(int)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 - (void)launchApplicationWithPath:(NSString *)arg1 bundleID:(NSString *)arg2 arguments:(NSArray *)arg3 environment:(NSDictionary *)arg4 completion:(void (^)(_Bool, NSError *))arg5;
 - (void)beginMonitoringApplicationWithSpecifier:(XCUIApplicationSpecifier *)arg1;

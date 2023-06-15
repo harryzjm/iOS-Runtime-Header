@@ -6,11 +6,11 @@
 
 #import <SafariShared/NSObject-Protocol.h>
 
-@class NSURL;
+@class NSString;
 
 @protocol WBSHistoryLoader <NSObject>
 - (void)waitForLoadingToComplete;
-- (void)startLoading;
-- (id)initWithURL:(NSURL *)arg1 itemCountLimit:(unsigned long long)arg2 historyAgeLimit:(double)arg3 historyItemClass:(Class)arg4;
+- (void)loadWithCompletionHandler:(void (^)(NSError *))arg1;
+- (id)initWithDatabaseID:(NSString *)arg1 itemCountLimit:(unsigned long long)arg2 historyAgeLimit:(double)arg3 historyItemClass:(Class)arg4;
 @end
 

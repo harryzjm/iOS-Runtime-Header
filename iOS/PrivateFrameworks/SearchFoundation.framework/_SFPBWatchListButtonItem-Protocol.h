@@ -10,6 +10,7 @@
 
 @protocol _SFPBWatchListButtonItem <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
+@property(nonatomic) unsigned long long uniqueId;
 @property(retain, nonatomic) _SFPBWatchListItem *watchListItem;
 - (id)initWithDictionary:(NSDictionary *)arg1;
 - (id)initWithJSON:(NSData *)arg1;

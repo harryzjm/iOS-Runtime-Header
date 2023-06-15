@@ -29,7 +29,7 @@ __attribute__((visibility("hidden")))
 + (id)createCCQRContextEvaluatedEvent:(struct QRResponse)arg1 withNLXMetadata:(id)arg2 andLinkId:(id)arg3;
 + (id)createRDContextEventWrapper:(id)arg1 withMetaData:(id)arg2;
 + (id)createCCQRContextEventWrapper:(id)arg1 withMetaData:(id)arg2;
-+ (id)createEventMetadataWithNlId:(id)arg1 andWithResultCandidateId:(id)arg2 andWithRequester:(int)arg3;
++ (id)createEventMetadataWithNlId:(id)arg1 andWithTrpId:(id)arg2 andWithResultCandidateId:(id)arg3 andWithRequester:(int)arg4;
 + (void)emitEvent:(id)arg1;
 
 @end

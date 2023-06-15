@@ -6,10 +6,9 @@
 
 #import <IMAssistantCore/NSObject-Protocol.h>
 
-@class CNContact, IMSPIHandle, INPerson;
+@class IMSPIHandle, INPerson;
 
 @protocol IMAssistantINMessageConverterPersonProvider <NSObject>
-- (INPerson *)personFromSPIHandle:(IMSPIHandle *)arg1 contact:(CNContact *)arg2;
 - (INPerson *)personFromSPIHandle:(IMSPIHandle *)arg1;
 @end
 

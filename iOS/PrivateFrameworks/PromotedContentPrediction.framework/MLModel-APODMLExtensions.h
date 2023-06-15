@@ -7,6 +7,6 @@
 #import <CoreML/MLModel.h>
 
 @interface MLModel (APODMLExtensions)
-+ (id)modelFromCompiledURL:(id)arg1;
++ (id)modelFromCompiledURL:(id)arg1 isCPUOnly:(_Bool)arg2;
 @end
 

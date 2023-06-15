@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *deferredOpenURL;
     MISSING_TYPE *openedByDeeplink;
+    MISSING_TYPE *isPresentingMultiOfferModal;
     MISSING_TYPE *_isFinished;
     MISSING_TYPE *isFinishedLock;
     MISSING_TYPE *_isLoadingSharedWatchURL;

@@ -13,6 +13,8 @@
     MISSING_TYPE *downloadURL;
     MISSING_TYPE *key;
     MISSING_TYPE *signature;
+    MISSING_TYPE *chunkReader;
+    MISSING_TYPE *range;
 }
 
 - (void).cxx_destruct;

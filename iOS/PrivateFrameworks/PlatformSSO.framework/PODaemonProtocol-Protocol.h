@@ -6,20 +6,23 @@
 
 #import <PlatformSSO/NSObject-Protocol.h>
 
-@class NSData, NSString, POUserConfiguration;
+@class NSData, NSDictionary, NSString, POUserConfiguration;
 
 @protocol PODaemonProtocol <NSObject>
-- (void)disablePlatformSSORuleForScreensaver:(void (^)(_Bool, NSError *))arg1;
-- (void)enablePlatformSSORuleForScreensaver:(void (^)(_Bool, NSError *))arg1;
+- (void)saveAppSSOConfiguration:(NSDictionary *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
+- (void)migrateConfiguration:(_Bool)arg1 completion:(void (^)(_Bool, NSError *))arg2;
+- (void)disablePlatformSSORules:(void (^)(_Bool, NSError *))arg1;
+- (void)enablePlatformSSORules:(void (^)(_Bool, NSError *))arg1;
 - (void)resetStoredConfigurationWithCompletion:(void (^)(_Bool, NSError *))arg1;
 - (void)removeUserConfigurationForIdentifier:(NSString *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
+- (void)saveUserConfigurationData:(NSData *)arg1 forIdentifier:(NSString *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 - (void)saveUserConfiguration:(POUserConfiguration *)arg1 forIdentifier:(NSString *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
-- (void)userConfigurationForIdentifier:(NSString *)arg1 passwordContext:(NSData *)arg2 completion:(void (^)(POUserConfiguration *, NSError *))arg3;
-- (void)removeLoginConfigurationForExtension:(NSString *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
-- (void)saveLoginConfiguration:(NSData *)arg1 forExtension:(NSString *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
-- (void)loginConfigurationForExtension:(NSString *)arg1 completion:(void (^)(NSData *, NSError *))arg2;
-- (void)removeDeviceConfigurationForExtension:(NSString *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
-- (void)saveDeviceConfiguration:(NSData *)arg1 forExtension:(NSString *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
-- (void)deviceConfigurationForExtension:(NSString *)arg1 completion:(void (^)(NSData *, NSError *))arg2;
+- (void)userConfigurationForIdentifier:(NSString *)arg1 completion:(void (^)(POUserConfiguration *, NSError *))arg2;
+- (void)removeLoginConfigurationForIdentifer:(NSString *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
+- (void)saveLoginConfiguration:(NSData *)arg1 identifer:(NSString *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
+- (void)loginConfigurationForIdentifer:(NSString *)arg1 completion:(void (^)(NSData *, NSError *))arg2;
+- (void)removeDeviceConfigurationForIdentifer:(NSString *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
+- (void)saveDeviceConfiguration:(NSData *)arg1 identifer:(NSString *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
+- (void)deviceConfigurationForIdentifer:(NSString *)arg1 completion:(void (^)(NSData *, NSError *))arg2;
 @end
 

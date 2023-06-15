@@ -13,6 +13,7 @@
     MISSING_TYPE *watchlistManager;
     MISSING_TYPE *priceDataManager;
     MISSING_TYPE *sparklineModelProvider;
+    MISSING_TYPE *watchlistSortingService;
     MISSING_TYPE *appConfiguration;
 }
 

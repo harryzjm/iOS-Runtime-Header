@@ -6,7 +6,7 @@
 
 #import "BROperation.h"
 
-@class NSFileProviderService, NSObject, NSURL;
+@class NSFileProviderService, NSObject, NSString, NSURL;
 @protocol BRShareOperationProtocol><NSXPCProxyCreating, OS_dispatch_group;
 
 __attribute__((visibility("hidden")))
@@ -16,14 +16,19 @@ __attribute__((visibility("hidden")))
     NSFileProviderService *_sharingService;
     id <BRShareOperationProtocol><NSXPCProxyCreating> _remoteObject;
     NSURL *_url;
+    NSString *_itemID;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *itemID; // @synthesize itemID=_itemID;
 @property(retain, nonatomic) NSURL *url; // @synthesize url=_url;
 - (id)remoteLegacyObject;
+- (id)directConnectionFPFSObject;
+- (_Bool)shouldUseDirectConnection;
 - (id)remoteFPFSObject;
 - (id)remoteObject;
 - (id)initWithURL:(id)arg1;
+- (id)initWithItemIdentifier:(id)arg1;
 - (id)initWithDirectConnection;
 - (id)initWithShare:(id)arg1;
 - (id)init;

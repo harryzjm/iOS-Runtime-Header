@@ -61,7 +61,7 @@ __attribute__((visibility("hidden")))
 - (void)_wheelChangedWithEvent:(id)arg1;
 - (_Bool)_handleRemoteControlReceivedWithEvent:(id)arg1;
 - (void)remoteControlReceivedWithEvent:(id)arg1;
-- (_Bool)_handlePhysicalButtonEvent:(id)arg1;
+- (_Bool)_handlePressesEvent:(id)arg1;
 - (void)pressesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)pressesEnded:(id)arg1 withEvent:(id)arg2;
 - (_Bool)_menuTapShouldExitVariants;
@@ -136,7 +136,6 @@ __attribute__((visibility("hidden")))
 - (void)setKeyboardAppearance:(long long)arg1;
 - (void)setKeyboardName:(id)arg1 appearance:(long long)arg2;
 - (void)showKeyboardWithInputTraits:(id)arg1 screenTraits:(id)arg2 splitTraits:(id)arg3;
-- (Class)keyViewAnimatorClassForCurrentKeyboardLayout;
 - (id)keyViewAnimator;
 - (void)configureFloatingContentViewsIfNeeded;
 - (unsigned long long)variantCountForKey:(id)arg1;

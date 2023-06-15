@@ -17,7 +17,7 @@
     MISSING_TYPE *analyticsService;
     MISSING_TYPE *aceServiceInvoker;
     MISSING_TYPE *contextService;
-    MISSING_TYPE *deviceResolutionAnalytics;
+    MISSING_TYPE *deviceLoggingUtil;
     MISSING_TYPE *moveToGroupDevices;
 }
 

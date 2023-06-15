@@ -26,10 +26,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_visibilities;
     NSString *_wideLogoUrl;
     _Bool _isVerified;
-    struct {
-        unsigned int phoneHash:1;
-        unsigned int isVerified:1;
-    } _has;
+    CDStruct_970aaa1e _has;
 }
 
 + (Class)visibilitiesType;

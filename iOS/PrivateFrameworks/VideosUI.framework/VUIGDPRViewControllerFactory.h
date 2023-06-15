@@ -11,8 +11,11 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (id)_tintedMLSCrestImageImageWithRenderingMode:(long long)arg1;
++ (id)_tintedPlayTVImageImageWithRenderingMode:(long long)arg1;
 + (id)_tintedSymbolNamed:(id)arg1;
-+ (id)_tintedAppleTVPlusImage;
++ (id)_tintedSportsCourtImageWithRenderingMode:(long long)arg1;
++ (id)_tintedAppleTVPlusImageWithRenderingMode:(long long)arg1;
 + (id)_tintedVUIGlyphNamed:(id)arg1;
 + (id)_appImage;
 + (id)_disclaimerFeature;

@@ -5,6 +5,7 @@
 //
 
 @protocol CTXPCServiceVinylInterface
+- (void)setVirtualSimMode:(_Bool)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (void)setVinylTestMode:(_Bool)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (void)isVinylTestModeEnabledWithCompletion:(void (^)(_Bool, NSError *))arg1;
 - (void)isVinylTapeSupportedWithCompletion:(void (^)(_Bool, NSError *))arg1;

@@ -21,11 +21,11 @@
     MISSING_TYPE *backoff;
     MISSING_TYPE *backoffTimer;
     MISSING_TYPE *backoffLoggingRateLimit;
+    MISSING_TYPE *checkForStallTimer;
     MISSING_TYPE *lastError;
-    MISSING_TYPE *lastStatus;
+    MISSING_TYPE *connectionStateDidChange;
     MISSING_TYPE *stateCapture;
     MISSING_TYPE *enqueuedEvents;
-    MISSING_TYPE *limits;
 }
 
 @end

@@ -11,12 +11,12 @@
 __attribute__((visibility("hidden")))
 @interface _WKAppInstallCoordinatorObserver : NSObject
 {
-    WeakPtr_f5a61163 _bundle;
+    WeakPtr_1a7fa434 _bundle;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property WeakPtr_f5a61163 bundle; // @synthesize bundle=_bundle;
+@property WeakPtr_1a7fa434 bundle; // @synthesize bundle=_bundle;
 - (void)coordinator:(id)arg1 canceledWithReason:(id)arg2 client:(unsigned long long)arg3;
 - (void)coordinatorDidCompleteSuccessfully:(id)arg1 forApplicationRecord:(id)arg2;
 - (id)initWithICAppBundle:(void *)arg1;

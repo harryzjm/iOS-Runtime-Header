@@ -6,24 +6,25 @@
 
 #import <JetEngine/NSObject-Protocol.h>
 
+@class AMSBagValue;
 @protocol AMSMescalBagContract, AMSMetricsBagContract;
 
 @protocol AMSURLBagContract <NSObject>
 
 @optional
-@property(nonatomic, readonly) id metricsURL;
-@property(nonatomic, readonly) id <AMSMetricsBagContract> metricsContract;
-@property(nonatomic, readonly) id trustedDomains;
-@property(nonatomic, readonly) id TFOSamplingSessionDuration;
-@property(nonatomic, readonly) id TFOSamplingPercentage;
-@property(nonatomic, readonly) id TLSSamplingSessionDuration;
-@property(nonatomic, readonly) id TLSSamplingPercentage;
-@property(nonatomic, readonly) id storefrontSuffix;
-@property(nonatomic, readonly) id <AMSMescalBagContract> mescalContract;
-@property(nonatomic, readonly) id guidSchemes;
-@property(nonatomic, readonly) id guidRegexes;
-@property(nonatomic, readonly) id apsAllowedProductTypes;
-@property(nonatomic, readonly) id apsSamplingPercent;
-@property(nonatomic, readonly) id apsEnabledPatterns;
+@property(readonly, nonatomic) AMSBagValue *metricsURL;
+@property(readonly, nonatomic) id <AMSMetricsBagContract> metricsContract;
+@property(readonly, nonatomic) AMSBagValue *trustedDomains;
+@property(readonly, nonatomic) AMSBagValue *TFOSamplingSessionDuration;
+@property(readonly, nonatomic) AMSBagValue *TFOSamplingPercentage;
+@property(readonly, nonatomic) AMSBagValue *TLSSamplingSessionDuration;
+@property(readonly, nonatomic) AMSBagValue *TLSSamplingPercentage;
+@property(readonly, nonatomic) AMSBagValue *storefrontSuffix;
+@property(readonly, nonatomic) id <AMSMescalBagContract> mescalContract;
+@property(readonly, nonatomic) AMSBagValue *guidSchemes;
+@property(readonly, nonatomic) AMSBagValue *guidRegexes;
+@property(readonly, nonatomic) AMSBagValue *apsAllowedProductTypes;
+@property(readonly, nonatomic) AMSBagValue *apsSamplingPercent;
+@property(readonly, nonatomic) AMSBagValue *apsEnabledPatterns;
 @end
 

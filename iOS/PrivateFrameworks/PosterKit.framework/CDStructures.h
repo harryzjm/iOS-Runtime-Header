@@ -25,6 +25,47 @@ struct CGSize {
     double _field2;
 };
 
+struct PRVariantWeightRange {
+    unsigned long long _field1;
+    unsigned long long _field2;
+};
+
+struct SBHIconGridSize {
+    unsigned short _field1;
+    unsigned short _field2;
+};
+
+struct SBHIconGridSizeClassSizes {
+    struct SBHIconGridSize _field1;
+    struct SBHIconGridSize _field2;
+    struct SBHIconGridSize _field3;
+    struct SBHIconGridSize _field4;
+    struct SBHIconGridSize _field5;
+};
+
+struct SBIconApproximateLayoutPosition {
+    unsigned long long _field1;
+    unsigned long long _field2;
+};
+
+struct SBIconCoordinate {
+    long long _field1;
+    long long _field2;
+};
+
+struct SBIconImageInfo {
+    struct CGSize _field1;
+    double _field2;
+    double _field3;
+};
+
+struct UIEdgeInsets {
+    double _field1;
+    double _field2;
+    double _field3;
+    double _field4;
+};
+
 #pragma mark Typedef'd Structures
 
 typedef struct {

@@ -7,8 +7,8 @@
 #import <PhotoLibraryServicesCore/PLPhotoLibraryPathManager.h>
 
 @interface PLPhotoLibraryPathManager (conveniences)
++ (id)defaultDeferredRenderFileFormatTypeIdentifierForHDR;
 + (id)defaultDeferredRenderFileFormatTypeIdentifier;
-- (id)pathToiPhotoLibraryMediaDir;
 - (id)temporaryRenderContentURLForInternalRendersWithExtension:(id)arg1;
 - (id)assetCreationHoldingDirectoryForAssetUUID:(id)arg1;
 - (id)assetCreationHoldingDirectory;
@@ -20,6 +20,9 @@
 - (id)directoryPathForInFlightComments:(_Bool)arg1;
 - (id)cloudServiceEnableLogFileURL;
 - (_Bool)removeCPLDataDirectory;
+- (id)_cplLocalModeEnabledMarkerFilePathCreateIfNeeded:(_Bool)arg1;
+- (id)cplLocalModeEnabledMarkerFilePathForWriting;
+- (id)cplLocalModeEnabledMarkerFilePathForReading;
 - (id)cplDownloadFinishedMarkerFilePath;
 - (id)cplEnableMarkerFilePath;
 - (id)wipeCPLOnOpenPath;
@@ -29,10 +32,17 @@
 - (id)enableICloudPhotosFilePath;
 - (id)cplDataDirectoryCreateIfNeeded:(_Bool)arg1;
 - (id)deletedMemoryUUIDsFilePath;
-- (id)searchMetadataStoreFilePath;
-- (id)zeroKeywordStoreFilePath;
-- (id)searchIndexManagerDatabaseFilePath;
-- (id)searchIndexManagerDatabaseDirectory;
+- (id)searchIndexStatusFilePath;
+- (id)searchIndexSpotlightPrivateIndexDirectory;
+- (id)searchIndexSpotlightProgressFilePath;
+- (id)searchIndexSynonymsFilePath;
+- (id)searchIndexGraphDataProgressFilePath;
+- (id)searchIndexZeroKeywordStoreFilePath;
+- (id)searchIndexProgressFilePath;
+- (id)searchIndexMetadataStoreFilePath;
+- (id)searchIndexSystemInfoFilePath;
+- (id)searchIndexDatabaseFilePath;
+- (id)searchIndexDirectory;
 - (id)photoStreamsDataDirectory;
 - (id)URLForMetadataWithExtension:(id)arg1 forMediaInMainDirectory:(id)arg2 withFilename:(id)arg3;
 - (id)assetPathForComputeDirectoryWithDirectory:(id)arg1 filename:(id)arg2;
@@ -41,7 +51,8 @@
 - (_Bool)isSystemPhotoLibraryPathManager;
 - (id)recordRebuildReason;
 - (long long)lastRebuildReason;
-- (void)setSqliteErrorForReason:(long long)arg1 allowsExit:(_Bool)arg2;
+- (void)setSqliteErrorForRebuildReason:(long long)arg1 allowsExit:(_Bool)arg2;
+- (void)_abortWithRebuildReasonPLRebuildReasonExcessiveOrphanedSceneClassifications;
 - (void)_abortWithRebuildReasonPLRebuildReasonPersonUUIDCorruption;
 - (void)_abortWithRebuildReasonPLRebuildReasonBackgroundMigration;
 - (void)_abortWithRebuildReasonPLRebuildReasonExcessivePersistentHistorySize;

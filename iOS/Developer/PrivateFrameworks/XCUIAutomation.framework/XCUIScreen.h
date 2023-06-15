@@ -8,7 +8,7 @@
 
 #import <XCUIAutomation/XCUIScreenshotProviding-Protocol.h>
 
-@class NSString, XCUIButtonConsole, XCUIKnobControl;
+@class NSString, NSUUID, XCUIButtonConsole, XCUIKnobControl;
 @protocol XCUIDevice, XCUIScreenDataSource;
 
 @interface XCUIScreen : NSObject <XCUIScreenshotProviding>
@@ -16,6 +16,7 @@
     _Bool _isMainScreen;
     XCUIKnobControl *_knobControl;
     XCUIButtonConsole *_buttonConsole;
+    NSUUID *_currentDiagnosticScreenRecordingUUID;
     id <XCUIDevice> _device;
     id <XCUIScreenDataSource> _screenDataSource;
     long long _displayID;
@@ -28,13 +29,17 @@
 @property(readonly) id <XCUIScreenDataSource> screenDataSource; // @synthesize screenDataSource=_screenDataSource;
 @property(readonly) __weak id <XCUIDevice> device; // @synthesize device=_device;
 @property(readonly) _Bool isMainScreen; // @synthesize isMainScreen=_isMainScreen;
+@property(retain, nonatomic) NSUUID *currentDiagnosticScreenRecordingUUID; // @synthesize currentDiagnosticScreenRecordingUUID=_currentDiagnosticScreenRecordingUUID;
 - (id)screenshotAttachmentWithName:(id)arg1 lifetime:(long long)arg2;
+- (id)screenshotAttachmentWithPreferredEncoding:(id)arg1 rect:(struct CGRect)arg2 options:(unsigned long long)arg3 error:(id *)arg4;
 - (id)screenshotWithPreferredEncoding:(id)arg1 rect:(struct CGRect)arg2 options:(unsigned long long)arg3 error:(id *)arg4;
 - (id)screenshotWithPreferredEncoding:(id)arg1 rect:(struct CGRect)arg2 error:(id *)arg3;
 - (id)screenshotWithEncoding:(id)arg1 options:(unsigned long long)arg2;
 - (id)screenshot;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
+- (void)stopDiagnosticRecording;
+- (id)startDiagnosticScreenRecording;
 - (id)makeDiagnosticScreenshotAttachment;
 @property(readonly) XCUIKnobControl *knobControl; // @synthesize knobControl=_knobControl;
 @property(readonly) XCUIButtonConsole *buttonConsole; // @synthesize buttonConsole=_buttonConsole;

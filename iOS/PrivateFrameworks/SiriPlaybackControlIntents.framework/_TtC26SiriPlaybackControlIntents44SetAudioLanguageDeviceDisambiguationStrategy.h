@@ -14,6 +14,7 @@
     MISSING_TYPE *dialogProvider;
     MISSING_TYPE *featureFlagProvider;
     MISSING_TYPE *encryptionProvider;
+    MISSING_TYPE *analyticsService;
     MISSING_TYPE *languageDialogProvider;
 }
 

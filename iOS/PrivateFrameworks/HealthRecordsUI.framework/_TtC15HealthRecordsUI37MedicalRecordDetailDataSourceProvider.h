@@ -16,6 +16,8 @@
     MISSING_TYPE *healthRecordsStore;
     MISSING_TYPE *conceptStore;
     MISSING_TYPE *formatter;
+    MISSING_TYPE *medicalAttachmentDataSource;
+    MISSING_TYPE *presentationContext;
     MISSING_TYPE *$__lazy_storage_$_signedClinicalDataStore;
     MISSING_TYPE *$__lazy_storage_$_walletIntegrationDataSource;
     MISSING_TYPE *$__lazy_storage_$_signedClinicalDataStatusDataSource;

@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     _Bool _skipValueTransformerValidation;
     _Bool _validateLegacyMetadataAttributes;
     NSCloudKitMirroringDelegateOptions *_options;
+    _Bool _supportsMergeableTransformable;
 }
 
 - (void)dealloc;

@@ -6,12 +6,10 @@
 
 #import <System/OS_object.h>
 
-#import <mdns/OS_mdns_object-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface OS_mdns_object : OS_object <OS_mdns_object>
+@interface OS_mdns_object : OS_object
 {
 }
 

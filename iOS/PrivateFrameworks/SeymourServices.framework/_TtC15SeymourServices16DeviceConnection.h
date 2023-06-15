@@ -19,6 +19,7 @@
     MISSING_TYPE *link;
     MISSING_TYPE *lock;
     MISSING_TYPE *disconnectHandler;
+    MISSING_TYPE *preferredCompression;
 }
 
 @end

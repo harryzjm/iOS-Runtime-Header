@@ -6,10 +6,15 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
+@protocol SAAutomaticallyInvalidatable;
+
 @protocol SBSystemApertureContextAccepting <NSObject>
 
 @optional
+@property(nonatomic) unsigned long long obstructionEdge;
+@property(nonatomic) _Bool elementProviderPrefersSuppression;
 @property(nonatomic, getter=isAlerting) _Bool alerting;
 @property(nonatomic, getter=isAffiliatedWithSessionMonitor) _Bool affiliatedWithSessionMonitor;
+- (id <SAAutomaticallyInvalidatable>)requestAlertingAssertion;
 @end
 

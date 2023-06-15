@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
     VKMapView *_mapView;
     double _mapModeStartTime;
     double _trafficStartTime;
-    _Bool _changingViewSize;
+    long long _changingViewSizeCount;
     _Bool _inactive;
     _Bool _hasRenderedSomething;
     _Bool _inBackground;
@@ -25,7 +25,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic, getter=isInBackground) _Bool inBackground; // @synthesize inBackground=_inBackground;
 @property(nonatomic) _Bool inactive; // @synthesize inactive=_inactive;
 @property(nonatomic) _Bool hasRenderedSomething; // @synthesize hasRenderedSomething=_hasRenderedSomething;
-@property(readonly, nonatomic, getter=isChangingViewSize) _Bool changingViewSize; // @synthesize changingViewSize=_changingViewSize;
 @property(nonatomic) double trafficStartTime; // @synthesize trafficStartTime=_trafficStartTime;
 @property(nonatomic) double mapModeStartTime; // @synthesize mapModeStartTime=_mapModeStartTime;
 @property(readonly, nonatomic) VKMapView *mapView; // @synthesize mapView=_mapView;
@@ -58,12 +57,16 @@ __attribute__((visibility("hidden")))
 - (void)addCalloutSubview:(id)arg1;
 @property(readonly, nonatomic) struct UIEdgeInsets edgeInsets;
 - (void)dealloc;
+- (id)initWithFrame:(struct CGRect)arg1 andGlobe:(_Bool)arg2 shouldRasterize:(_Bool)arg3 allowsAntialiasing:(_Bool)arg4 carDisplayType:(long long)arg5;
 - (id)initWithFrame:(struct CGRect)arg1 andGlobe:(_Bool)arg2 shouldRasterize:(_Bool)arg3 allowsAntialiasing:(_Bool)arg4;
 - (id)initWithFrame:(struct CGRect)arg1 andGlobe:(_Bool)arg2 shouldRasterize:(_Bool)arg3;
 - (void)_finishedSnapshot:(id)arg1;
 - (void)_didEnterBackground;
 - (void)_updateBackgroundState:(long long)arg1;
 - (void)_updateBackgroundState;
+- (void)_finishChangingViewSize;
+- (void)_beginChangingViewSize;
+@property(readonly, nonatomic, getter=isChangingViewSize) _Bool changingViewSize;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

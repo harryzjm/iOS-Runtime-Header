@@ -6,6 +6,6 @@
 
 @interface (null) (WeatherDaemon)
 - (_Bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
-- (void)generateTokenWithCompletion:(CDUnknownBlockType)arg1;
+- (void)generateTokenWithUrl:(id)arg1 completion:(CDUnknownBlockType)arg2;
 @end
 

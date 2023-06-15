@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ExtensionKit/NSObject-Protocol.h>
+#import <ExtensionFoundation/NSObject-Protocol.h>
 
 @class _EXSceneSessionConnectionRequest;
 

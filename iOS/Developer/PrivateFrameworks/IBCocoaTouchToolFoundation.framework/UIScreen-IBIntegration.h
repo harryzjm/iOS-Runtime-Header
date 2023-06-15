@@ -7,6 +7,8 @@
 #import <UIKit/UIScreen.h>
 
 @interface UIScreen (IBIntegration)
+- (void)ibSwizzled_setValue:(id)arg1 forUndefinedKey:(id)arg2;
+- (void)ibSwizzled_computeMetrics:(_Bool)arg1;
 - (struct CGRect)_mainSceneReferenceBounds;
 - (struct CGRect)_overrideReferenceBounds;
 - (void)ib_setReferenceBounds:(struct CGRect)arg1;

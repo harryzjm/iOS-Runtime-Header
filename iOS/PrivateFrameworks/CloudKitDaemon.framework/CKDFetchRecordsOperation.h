@@ -18,6 +18,7 @@
     _Bool _shouldFetchAssetContent;
     _Bool _shouldFetchAssetContentInMemory;
     _Bool _shouldFetchMergeableValues;
+    _Bool _shouldCloneFileInAssetCache;
     _Bool _shouldRollSharePCSOnFetch;
     NSArray *_fullRecordsToFetch;
     CDUnknownBlockType _recordFetchProgressBlock;
@@ -53,6 +54,7 @@
 @property(nonatomic) unsigned long long URLOptions; // @synthesize URLOptions=_URLOptions;
 @property(nonatomic) unsigned long long requestedTTL; // @synthesize requestedTTL=_requestedTTL;
 @property(retain, nonatomic) NSSet *assetFieldNamesToPublishURLs; // @synthesize assetFieldNamesToPublishURLs=_assetFieldNamesToPublishURLs;
+@property(nonatomic) _Bool shouldCloneFileInAssetCache; // @synthesize shouldCloneFileInAssetCache=_shouldCloneFileInAssetCache;
 @property(nonatomic) _Bool shouldFetchMergeableValues; // @synthesize shouldFetchMergeableValues=_shouldFetchMergeableValues;
 @property(nonatomic) _Bool shouldFetchAssetContentInMemory; // @synthesize shouldFetchAssetContentInMemory=_shouldFetchAssetContentInMemory;
 @property(nonatomic) _Bool shouldFetchAssetContent; // @synthesize shouldFetchAssetContent=_shouldFetchAssetContent;

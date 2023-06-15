@@ -11,7 +11,6 @@
 @interface _TtC8StocksUI24StockFeedQuoteViewStyler : _TtCs12_SwiftObject
 {
     MISSING_TYPE *exchangeFont;
-    MISSING_TYPE *addButtonStyler;
     MISSING_TYPE *baseStyler;
 }
 

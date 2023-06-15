@@ -12,6 +12,8 @@
 {
     MISSING_TYPE *commandCenter;
     MISSING_TYPE *navigator;
+    MISSING_TYPE *channelDataFactory;
+    MISSING_TYPE *purchaseController;
 }
 
 @end

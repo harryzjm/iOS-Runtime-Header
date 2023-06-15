@@ -11,6 +11,7 @@
 @interface _TtC24IntelligencePlatformCore17CUFeatureProvider : _TtCs12_SwiftObject
 {
     MISSING_TYPE *eventStore;
+    MISSING_TYPE *config;
 }
 
 @end

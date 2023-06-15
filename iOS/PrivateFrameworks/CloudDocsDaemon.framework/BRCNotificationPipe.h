@@ -56,14 +56,13 @@ __attribute__((visibility("hidden")))
 - (void)invalidateIfWatchingAppLibraryIDs:(id)arg1;
 - (void)_watchItem:(id)arg1 options:(unsigned short)arg2 gatherReply:(CDUnknownBlockType)arg3;
 - (void)watchScopes:(unsigned short)arg1 trustedAppLibraryIDs:(id)arg2 gatherReply:(CDUnknownBlockType)arg3;
+- (void)_performBlock:(CDUnknownBlockType)arg1 whenNotifsAreFullyFlushedInAppLibrary:(id)arg2 description:(id)arg3;
+- (void)__performBlockafterDBAndNotifFlush:(CDUnknownBlockType)arg1 session:(id)arg2 description:(id)arg3 error:(id)arg4;
 - (void)close;
 - (void)listOperation:(id)arg1 wasReplacedByOperation:(id)arg2;
 - (void)_stopWatchingItems;
 - (void)_gatherIfNeededAndFlushAsync;
 - (void)__flush;
-- (void)processProgressUpdates:(id)arg1;
-- (void)_processProgressUpdates:(id)arg1;
-- (void)_flushProgressUpdates;
 - (void)processUpdates:(id)arg1 withRank:(unsigned long long)arg2;
 - (void)_prepareForSecondGatherWithRank:(unsigned long long)arg1;
 - (void)_addIntraContainerUpdatesFromInterContainerUpdate:(id)arg1 toArray:(id)arg2;
@@ -83,6 +82,9 @@ __attribute__((visibility("hidden")))
 - (void)watchScopes:(unsigned short)arg1 gatherReply:(CDUnknownBlockType)arg2;
 - (void)watchScopes:(unsigned short)arg1 appLibraryIDs:(id)arg2 gatherReply:(CDUnknownBlockType)arg3;
 - (void)watchItemsNamesPrefixedBy:(id)arg1 inScopes:(unsigned short)arg2 appLibraryIDs:(id)arg3 gatherReply:(CDUnknownBlockType)arg4;
+- (void)processProgressUpdates:(id)arg1;
+- (void)_processProgressUpdates:(id)arg1;
+- (void)_flushProgressUpdates;
 - (void)watchItemInProcessAtURL:(id)arg1 options:(unsigned short)arg2 gatherReply:(CDUnknownBlockType)arg3;
 - (void)watchItemAtURL:(id)arg1 lookup:(id)arg2 options:(unsigned short)arg3 gatherReply:(CDUnknownBlockType)arg4;
 - (void)watchItemAtURL:(id)arg1 options:(unsigned short)arg2 gatherReply:(CDUnknownBlockType)arg3;

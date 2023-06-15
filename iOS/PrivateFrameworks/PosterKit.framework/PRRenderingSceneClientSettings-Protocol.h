@@ -6,13 +6,17 @@
 
 #import <PosterKit/PRSceneClientSettings-Protocol.h>
 
-@class UIColor;
+@class BSColor, PRPosterLegibilitySettings;
 
 @protocol PRRenderingSceneClientSettings <PRSceneClientSettings>
+@property(readonly, nonatomic) _Bool pr_hideChrome;
 @property(readonly, nonatomic) struct CGSize pr_contentSize;
+@property(readonly, nonatomic) _Bool pr_handlesWakeAnimation;
+@property(readonly, nonatomic) _Bool pr_userTapEventsRequested;
 @property(readonly, nonatomic) unsigned long long pr_significantEventOptions;
 @property(readonly, nonatomic) unsigned long long pr_significantEventTime;
 @property(readonly, nonatomic) _Bool pr_inExtendedRenderSession;
-@property(readonly, nonatomic) UIColor *pr_averageColor;
+@property(readonly, nonatomic) PRPosterLegibilitySettings *pr_desiredLegibilitySettings;
+@property(readonly, nonatomic) BSColor *pr_averageColor;
 @end
 

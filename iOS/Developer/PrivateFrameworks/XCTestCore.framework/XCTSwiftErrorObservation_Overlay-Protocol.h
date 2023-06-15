@@ -7,7 +7,7 @@
 @protocol XCTSwiftErrorObservation_Overlay
 
 @optional
-+ (XCTIssue * (^)(void))_observeErrors;
++ (XCTIssue * (^)(void))_observeErrorsInBlock:(void (^)(void))arg1;
 + (_Bool)_installErrorObserver;
 @end
 

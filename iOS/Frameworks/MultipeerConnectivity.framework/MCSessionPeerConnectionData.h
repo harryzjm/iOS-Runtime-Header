@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) long long encryptionPreference; // @synthesize encryptionPreference=_encryptionPreference;
 @property(retain, nonatomic) NSData *gckSessionConnectionData; // @synthesize gckSessionConnectionData=_gckSessionConnectionData;
 - (_Bool)parseConnectionDataBlob:(id)arg1;
-- (void)parseConnectionDataSegmentWithBytes:(char *)arg1 withLength:(unsigned long long)arg2;
+- (_Bool)parseConnectionDataSegmentWithBytes:(char *)arg1 withLength:(unsigned long long)arg2;
 - (void)dealloc;
 - (id)initWithConnectionDataBlob:(id)arg1;
 

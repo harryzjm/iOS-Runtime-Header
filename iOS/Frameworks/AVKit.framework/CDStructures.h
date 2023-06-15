@@ -4,15 +4,28 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSArray;
+
 #pragma mark Blocks
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
 
 #pragma mark Named Structures
 
-struct AVMobileChromelessControlsVisibilityState_st {
+struct AVMobileChromelessControlsLayoutConfiguration {
+    unsigned long long includedControls;
+    _Bool expanded;
+    double controlsPadding;
+    unsigned long long auxiliaryControlsPlacement;
+    NSArray *pinnedAuxiliaryControls;
+    _Bool contentTabPresented;
+    double contentTabPresentationHeight;
+};
+
+struct AVMobileChromelessControlsVisibilityState {
     unsigned long long visibleControls;
     _Bool backgroundGradientActive;
+    _Bool liveEdgeMarkContentTagVisible;
 };
 
 struct CGAffineTransform {

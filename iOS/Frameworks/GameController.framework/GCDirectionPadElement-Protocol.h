@@ -9,11 +9,11 @@
 @protocol GCAxisInput, GCLinearInput><GCPressedStateInput;
 
 @protocol GCDirectionPadElement <GCPhysicalInputElement>
-@property(nonatomic, readonly) id <GCLinearInput><GCPressedStateInput> right;
-@property(nonatomic, readonly) id <GCLinearInput><GCPressedStateInput> left;
-@property(nonatomic, readonly) id <GCLinearInput><GCPressedStateInput> down;
-@property(nonatomic, readonly) id <GCLinearInput><GCPressedStateInput> up;
-@property(nonatomic, readonly) id <GCAxisInput> yAxis;
-@property(nonatomic, readonly) id <GCAxisInput> xAxis;
+@property(readonly) id <GCLinearInput><GCPressedStateInput> right;
+@property(readonly) id <GCLinearInput><GCPressedStateInput> left;
+@property(readonly) id <GCLinearInput><GCPressedStateInput> down;
+@property(readonly) id <GCLinearInput><GCPressedStateInput> up;
+@property(readonly) id <GCAxisInput> yAxis;
+@property(readonly) id <GCAxisInput> xAxis;
 @end
 

@@ -6,23 +6,30 @@
 
 #import <SearchUI/NSObject-Protocol.h>
 
-@class AceObject, NSData, NSDictionary, NSString, PBCodable, SFCommand, VRXInstrumentationEvent;
+@class AceObject, NSArray, NSData, NSDictionary, NSString, PBCodable, SFCommand, VRXInstrumentationEvent;
 @protocol SAAceCommand;
 
 @protocol VRXInteractionDelegate <NSObject>
 
 @optional
+- (void)hideBackgroundBehindSiri;
+- (void)containsComponentWithAction;
+- (void)requestsKeyWindow;
+- (void)closeButtonTapped;
 - (void)restartSpeechSynthesis;
 - (void)cancelSpeechSynthesis;
 - (void)emitInstrumentationEvent:(VRXInstrumentationEvent *)arg1;
 - (void)emitInstrumentationEvent:(PBCodable *)arg1 requiresNewTurn:(_Bool)arg2;
 - (void)didEndEditing;
 - (void)willBeginEditing;
+- (void)recalculateLeadingInsetSeparator:(double)arg1;
+- (void)createButtons:(NSArray *)arg1:(void (^)(NSArray *))arg2;
 - (void)sharedStateDidUpdate:(NSDictionary *)arg1;
 - (void)performNextSnippetWithMachineUtterance:(NSString *)arg1;
 - (void)performNextSnippetWithResponseData:(NSData *)arg1;
 - (void)navigateWithSFCommand:(SFCommand *)arg1;
 - (void)navigateWithAceCommand:(AceObject<SAAceCommand> *)arg1;
+- (void)navigateWithPluginModelData:(NSData *)arg1 bundleName:(NSString *)arg2;
 - (void)navigateWithResponseData:(NSData *)arg1;
 - (void)performShowResponse:(NSData *)arg1;
 - (void)performSFCommand:(SFCommand *)arg1;

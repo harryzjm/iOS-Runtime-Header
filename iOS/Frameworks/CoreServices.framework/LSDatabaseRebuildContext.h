@@ -6,17 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@class NSError, NSMutableSet;
+@class LSRebuildStatisticsGatherer, NSError, NSMutableSet;
 
 __attribute__((visibility("hidden")))
 @interface LSDatabaseRebuildContext : NSObject
 {
+    LSRebuildStatisticsGatherer *_statsGatherer;
     NSMutableSet *_overriddenPlugins;
     NSError *_lastObservedError;
 }
 
 - (void).cxx_destruct;
-- (id)init;
+- (id)initWithStatsGatherer:(id)arg1;
 
 @end
 

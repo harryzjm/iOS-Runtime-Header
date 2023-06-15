@@ -16,9 +16,11 @@ __attribute__((visibility("hidden")))
     VUIAction *_cancelAction;
     long long _style;
     NSDictionary *_dialogMetrics;
+    Class _controllerClass;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) Class controllerClass; // @synthesize controllerClass=_controllerClass;
 @property(retain, nonatomic) NSDictionary *dialogMetrics; // @synthesize dialogMetrics=_dialogMetrics;
 @property(nonatomic) long long style; // @synthesize style=_style;
 @property(retain, nonatomic) VUIAction *cancelAction; // @synthesize cancelAction=_cancelAction;
@@ -27,7 +29,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSString *descriptionString; // @synthesize descriptionString=_descriptionString;
 @property(retain, nonatomic) NSString *title; // @synthesize title=_title;
 - (void)performWithTargetResponder:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (id)initWithContextData:(id)arg1 appContext:(id)arg2;
+- (id)initWithContextData:(id)arg1 appContext:(id)arg2 controllerClass:(Class)arg3;
 
 @end
 

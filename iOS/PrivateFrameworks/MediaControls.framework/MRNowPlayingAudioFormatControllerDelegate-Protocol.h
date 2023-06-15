@@ -6,7 +6,7 @@
 
 #import <MediaControls/NSObject-Protocol.h>
 
-@class MRNowPlayingAudioFormatContentInfo, MRNowPlayingAudioFormatController, NSString;
+@class MRNowPlayingAudioFormatApplication, MRNowPlayingAudioFormatContentInfo, MRNowPlayingAudioFormatController, NSString;
 
 @protocol MRNowPlayingAudioFormatControllerDelegate <NSObject>
 
@@ -17,5 +17,6 @@
 - (void)nowPlayingAudioFormatController:(MRNowPlayingAudioFormatController *)arg1 didChangeAudioFormatDescription:(NSString *)arg2;
 - (void)nowPlayingAudioFormatController:(MRNowPlayingAudioFormatController *)arg1 didChangeBundleID:(NSString *)arg2 displayName:(NSString *)arg3;
 - (void)nowPlayingAudioFormatController:(MRNowPlayingAudioFormatController *)arg1 didChangeAudioFormatContentInfo:(MRNowPlayingAudioFormatContentInfo *)arg2;
+- (void)nowPlayingAudioFormatController:(MRNowPlayingAudioFormatController *)arg1 didChangeAudioFormatApplication:(MRNowPlayingAudioFormatApplication *)arg2;
 @end
 

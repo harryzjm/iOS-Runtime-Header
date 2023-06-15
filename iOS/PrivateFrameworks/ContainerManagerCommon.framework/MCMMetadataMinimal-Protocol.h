@@ -22,6 +22,7 @@
 @property(readonly, nonatomic) NSNumber *schemaVersion;
 @property(readonly, nonatomic) MCMContainerPath *containerPath;
 - (struct container_object_s *)createLibsystemContainerWithError:(id *)arg1;
+- (id)metadataByChangingContainerIdentity:(MCMConcreteContainerIdentityForLibsystem *)arg1;
 - (id)metadataByChangingSchemaVersion:(NSNumber *)arg1;
 - (id)metadataByChangingUUID:(NSUUID *)arg1;
 - (id)metadataByChangingContainerPath:(MCMContainerPath *)arg1;

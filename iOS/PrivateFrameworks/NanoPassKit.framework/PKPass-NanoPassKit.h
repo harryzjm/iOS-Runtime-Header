@@ -13,6 +13,7 @@
 + (void)npkHandleTransitValuePendingAmount:(id)arg1 forBalanceField:(id)arg2 passWithUniqueID:(id)arg3;
 - (id)npkPendingAddValueStateExpireDateForBalanceFieldWithIdentifier:(id)arg1 currentBalance:(id)arg2;
 - (_Bool)npkIsAddValuePending;
+@property(readonly) _Bool npkIsDefaultPassEligible;
 @property(readonly) _Bool npkHasValidNFCPayload;
 @property(readonly) _Bool hasLogoImageSet;
 - (id)npkCompleteHashForWatchOSVersion:(unsigned long long)arg1;

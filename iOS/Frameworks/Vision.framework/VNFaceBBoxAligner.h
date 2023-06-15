@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)configurationOptionKeysForDetectorKey;
++ (id)supportedComputeStageDevicesForOptions:(id)arg1 error:(id *)arg2;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)processRegionOfInterest:(struct CGRect)arg1 croppedPixelBuffer:(const struct __CVBuffer *)arg2 options:(id)arg3 qosClass:(unsigned int)arg4 warningRecorder:(id)arg5 error:(id *)arg6 progressHandler:(CDUnknownBlockType)arg7;

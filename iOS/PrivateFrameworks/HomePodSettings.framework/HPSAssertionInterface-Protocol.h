@@ -9,6 +9,7 @@
 @class NSString;
 
 @protocol HPSAssertionInterface <NSObject>
+- (void)invalidateAssertionOfType:(unsigned long long)arg1 withCompletion:(void (^)(NSError *))arg2;
 - (void)takeAssertionWithIdentifier:(NSString *)arg1 forAssertion:(unsigned long long)arg2;
 @end
 

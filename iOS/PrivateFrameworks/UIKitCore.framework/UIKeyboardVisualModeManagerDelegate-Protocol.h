@@ -9,8 +9,13 @@
 @class UIKeyboardVisualModeManager;
 
 @protocol UIKeyboardVisualModeManagerDelegate <NSObject>
-- (_Bool)showingAccessoryViewOnly;
+- (void)visualModeManager:(UIKeyboardVisualModeManager *)arg1 observedEnhancedWindowingModeEnabledDidChange:(_Bool)arg2;
 - (void)visualModeManager:(UIKeyboardVisualModeManager *)arg1 didChangeToMode:(int)arg2;
+- (_Bool)showingAccessoryViewOnly;
+- (_Bool)textEntryFocusOnExternalDisplay;
+- (_Bool)expectedInputModeIsSpecialized;
+- (_Bool)expectedInputViewSetIsCustom;
 - (_Bool)enhancedWindowingModeIsEnabled;
+- (_Bool)enhancedWindowingModeIsAvailable;
 @end
 

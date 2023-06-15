@@ -11,7 +11,6 @@
 __attribute__((visibility("hidden")))
 @interface _TtC8NewsFeed22ShortcutCommandHandler : NSObject
 {
-    MISSING_TYPE *shortcutList;
     MISSING_TYPE *shortcutManager;
 }
 

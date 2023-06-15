@@ -9,15 +9,15 @@
 __attribute__((visibility("hidden")))
 @interface _VLStatistics : NSObject
 {
-    CDStruct_8259f036 _stats;
+    CDStruct_5dcdcb60 _stats;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(readonly, nonatomic) CDStruct_8259f036 *stats;
+@property(readonly, nonatomic) CDStruct_5dcdcb60 *stats;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithStats:(const CDStruct_8259f036 *)arg1;
+- (id)initWithStats:(const CDStruct_5dcdcb60 *)arg1;
 
 @end
 

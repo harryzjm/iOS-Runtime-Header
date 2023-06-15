@@ -10,8 +10,10 @@ __attribute__((visibility("hidden")))
     float _gazeHeatMapThreshold;
     float _minimumFaceDimension;
     float _commonGazeLocationRadius;
+    _Bool _resolveSomewhereElseDirection;
 }
 
+@property(nonatomic) _Bool resolveSomewhereElseDirection; // @synthesize resolveSomewhereElseDirection=_resolveSomewhereElseDirection;
 @property(nonatomic) float commonGazeLocationRadius; // @synthesize commonGazeLocationRadius=_commonGazeLocationRadius;
 @property(nonatomic) float minimumFaceDimension; // @synthesize minimumFaceDimension=_minimumFaceDimension;
 @property(nonatomic) float gazeHeatMapThreshold; // @synthesize gazeHeatMapThreshold=_gazeHeatMapThreshold;

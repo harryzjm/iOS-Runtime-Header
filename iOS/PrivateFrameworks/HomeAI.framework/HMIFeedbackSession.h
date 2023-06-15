@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) NSURLSession *session; // @synthesize session=_session;
 @property(readonly) NSOperationQueue *operationQueue; // @synthesize operationQueue=_operationQueue;
 @property(readonly) HMIHomeKitClient *homeKitClient; // @synthesize homeKitClient=_homeKitClient;
+- (void)URLSession:(id)arg1 didReceiveChallenge:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)init;
 
 // Remaining properties

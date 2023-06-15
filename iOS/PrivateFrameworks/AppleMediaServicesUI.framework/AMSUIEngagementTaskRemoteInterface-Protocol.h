@@ -6,9 +6,10 @@
 
 #import <AppleMediaServicesUI/NSObject-Protocol.h>
 
-@class AMSEngagementRequest, AMSProcessInfo, NSData;
+@class AMSEngagementRequest, AMSProcessInfo, NSData, NSValue;
 
 @protocol AMSUIEngagementTaskRemoteInterface <NSObject>
+- (void)setPreferredSize:(NSValue *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)presentEngagementRequest:(AMSEngagementRequest *)arg1 bagData:(NSData *)arg2 clientInfo:(AMSProcessInfo *)arg3 completion:(void (^)(NSError *))arg4;
 @end
 

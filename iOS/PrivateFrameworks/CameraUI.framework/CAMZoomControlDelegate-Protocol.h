@@ -6,12 +6,13 @@
 
 #import <CameraUI/NSObject-Protocol.h>
 
-@class CAMZoomControl;
+@class CAMZoomControl, NSArray;
 
 @protocol CAMZoomControlDelegate <NSObject>
 
 @optional
 - (void)zoomControlDidTapZoomButtonAccessory:(CAMZoomControl *)arg1;
+- (unsigned long long)zoomControl:(CAMZoomControl *)arg1 accessoryButtonTapIndexInDisplayZoomFactors:(NSArray *)arg2;
 - (void)zoomControlDidChangePlatterExpanded:(CAMZoomControl *)arg1;
 - (_Bool)zoomControlCanPlayHaptics:(CAMZoomControl *)arg1;
 - (_Bool)zoomControlShouldSnapDialToSwitchOverZoomFactors:(CAMZoomControl *)arg1;

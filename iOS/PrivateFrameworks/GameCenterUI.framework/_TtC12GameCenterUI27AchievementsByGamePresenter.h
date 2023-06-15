@@ -17,6 +17,7 @@
     MISSING_TYPE *sortOptions;
     MISSING_TYPE *snapshot;
     MISSING_TYPE *dataUpdatePresenter;
+    MISSING_TYPE *metricsPayload;
     MISSING_TYPE *onApplySnapshot;
     MISSING_TYPE *onUpdatePhaseChange;
     MISSING_TYPE *onShowPageOverlay;

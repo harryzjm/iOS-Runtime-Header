@@ -8,6 +8,8 @@
 @protocol FSFFeatureStoreStream;
 
 @protocol FSFFeatureStore
+- (_Bool)deleteAllStreams;
+- (_Bool)deleteStream:(NSString *)arg1;
 - (id <FSFFeatureStoreStream>)getStream:(NSString *)arg1;
 @end
 

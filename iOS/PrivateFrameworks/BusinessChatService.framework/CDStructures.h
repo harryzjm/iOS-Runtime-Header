@@ -22,6 +22,11 @@ typedef struct {
 } CDStruct_db572d93;
 
 typedef struct {
+    unsigned int phoneHash:1;
+    unsigned int isVerified:1;
+} CDStruct_970aaa1e;
+
+typedef struct {
     unsigned int isDefault:1;
 } CDStruct_d3bb80d3;
 

@@ -4,9 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@protocol GTMTLDiagnosticsServiceDelegate;
+@class NSString;
+@protocol GTMTLDiagnosticsServiceObserver;
 
 @protocol GTMTLDiagnosticsService
-- (void)setDelegate:(id <GTMTLDiagnosticsServiceDelegate>)arg1;
+- (void)deregisterObserver:(unsigned long long)arg1;
+- (unsigned long long)registerObserver:(id <GTMTLDiagnosticsServiceObserver>)arg1;
+- (void)raiseRuntimeIssue:(NSString *)arg1;
 @end
 

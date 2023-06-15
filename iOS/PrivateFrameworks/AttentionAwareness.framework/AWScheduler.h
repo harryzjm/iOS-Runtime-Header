@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AWAttentionSampler, AWAttentionStreamer, NSMutableArray, NSMutableDictionary;
+@class AWAttentionSampler, AWAttentionStreamer, NSMutableArray, NSMutableDictionary, NSUserDefaults;
 @protocol AWSchedulerObserver, OS_dispatch_queue, OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
@@ -20,6 +20,8 @@ __attribute__((visibility("hidden")))
     AWAttentionSampler *_attentionSampler;
     AWAttentionStreamer *_attentionStreamer;
     struct mach_timebase_info _timebase;
+    NSUserDefaults *_userDefaults;
+    _Bool _useAVFoundation;
     id <AWSchedulerObserver> _observer;
 }
 
@@ -28,17 +30,24 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(readonly, nonatomic) AWAttentionSampler *attentionSampler; // @synthesize attentionSampler=_attentionSampler;
 @property(nonatomic) __weak id <AWSchedulerObserver> observer; // @synthesize observer=_observer;
+- (_Bool)canRunMotionDetect;
 - (double)calculateTimeDelta:(unsigned long long)arg1 endTime:(unsigned long long)arg2 timebase:(struct mach_timebase_info)arg3;
+- (_Bool)shouldActivateMotionDetectForSampling;
+- (_Bool)shouldActivateEyeReliefForStreaming;
+- (_Bool)shouldActivateAttentionDetectForStreaming;
+- (_Bool)shouldActivateAttentionDetectionForSampling;
 - (void)setClientAsInterrupted:(id)arg1 forKey:(id)arg2;
 - (void)handleNotification:(unsigned long long)arg1;
 - (id)cancelFaceDetectStream:(id)arg1 withIdentifier:(id)arg2;
+- (id)streamFaceDetectEventsWithOptions:(CDStruct_3d581f42)arg1;
 - (id)streamFaceDetectEvents;
 - (void)removeStreamingClientwithIdentifier:(int)arg1;
 - (id)addStreamingClient:(id)arg1 withIdentifier:(int)arg2;
+- (unsigned long long)nextSamplingTimeForSamplingInterval:(unsigned long long)arg1;
 - (void)reevaluate;
 - (void)armEvents;
 - (void)setSmartCoverClosed:(_Bool)arg1;
-- (void)processHIDEvent:(struct __IOHIDEvent *)arg1 mask:(unsigned long long)arg2 timestamp:(unsigned long long)arg3;
+- (void)processHIDEvent:(struct __IOHIDEvent *)arg1 mask:(unsigned long long)arg2 timestamp:(unsigned long long)arg3 senderID:(unsigned long long)arg4 displayUUID:(id)arg5;
 - (void)removeInvalidClients;
 - (void)removeInvalidClientsWithConnection:(id)arg1;
 - (void)addClient:(id)arg1;

@@ -13,6 +13,7 @@
     MISSING_TYPE *analyticsServiceLogger;
     MISSING_TYPE *contextProvider;
     MISSING_TYPE *siriEnvironment;
+    MISSING_TYPE *playbackController;
 }
 
 @end

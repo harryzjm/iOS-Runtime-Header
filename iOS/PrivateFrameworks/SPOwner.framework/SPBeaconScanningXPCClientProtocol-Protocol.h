@@ -9,7 +9,7 @@
 @class NSError, SPScannedObject;
 
 @protocol SPBeaconScanningXPCClientProtocol <NSObject>
-- (void)discoveryFinished:(NSError *)arg1;
+- (void)discoveryFinished:(NSError *)arg1 completion:(void (^)(void))arg2;
 - (void)discoveredObject:(SPScannedObject *)arg1;
 @end
 

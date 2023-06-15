@@ -9,9 +9,9 @@
 @class NSString;
 
 @protocol APKRemoteInspectorResourceProtocol <NSObject>
-@property(nonatomic, copy) NSString *mimeType;
+@property(copy, nonatomic) NSString *mimeType;
 @property(nonatomic) long long type;
-@property(nonatomic, copy) NSString *url;
+@property(copy, nonatomic) NSString *url;
 - (id)initWithUrl:(NSString *)arg1 type:(long long)arg2 mimeType:(NSString *)arg3;
 @end
 

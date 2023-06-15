@@ -10,6 +10,7 @@
 {
     MISSING_TYPE *gestureRecognizer;
     MISSING_TYPE *hoverGestureRecognizer;
+    MISSING_TYPE *keyPressResponder;
 }
 
 @end

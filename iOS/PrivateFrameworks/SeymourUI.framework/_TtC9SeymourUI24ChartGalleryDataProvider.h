@@ -14,6 +14,23 @@
     MISSING_TYPE *metricPageCategory;
     MISSING_TYPE *metricPage;
     MISSING_TYPE *page;
+    MISSING_TYPE *archivedSessionClient;
+    MISSING_TYPE *assetClient;
+    MISSING_TYPE *bookmarkClient;
+    MISSING_TYPE *catalogClient;
+    MISSING_TYPE *configurationClient;
+    MISSING_TYPE *dependencies;
+    MISSING_TYPE *eventHub;
+    MISSING_TYPE *subscriptionCache;
+    MISSING_TYPE *subscriptionToken;
+    MISSING_TYPE *upNextQueueClient;
+    MISSING_TYPE *assetBundles;
+    MISSING_TYPE *bookmarks;
+    MISSING_TYPE *playlists;
+    MISSING_TYPE *resumableSessions;
+    MISSING_TYPE *upNextQueueItems;
+    MISSING_TYPE *configuration;
+    MISSING_TYPE *subscription;
     MISSING_TYPE *activationState;
 }
 

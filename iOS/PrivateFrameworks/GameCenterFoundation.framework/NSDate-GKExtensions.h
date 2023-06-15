@@ -13,7 +13,6 @@
 + (id)_gkDateFromScalarServerTimestamp:(unsigned long long)arg1;
 - (id)_gkFormattedWhenStringWithOptions:(unsigned long long)arg1;
 - (id)_gkFormattedDateForStyle:(unsigned long long)arg1 relative:(_Bool)arg2;
-- (id)_gkFormattedStringWithDateStyle:(unsigned long long)arg1 timeStyle:(unsigned long long)arg2;
 - (id)_gkServerTimestamp;
 @end
 

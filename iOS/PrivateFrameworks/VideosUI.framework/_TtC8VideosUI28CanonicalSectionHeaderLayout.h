@@ -8,6 +8,7 @@
 
 @interface _TtC8VideosUI28CanonicalSectionHeaderLayout
 {
+    MISSING_TYPE *sectionType;
     MISSING_TYPE *$__lazy_storage_$_titleLayout;
 }
 

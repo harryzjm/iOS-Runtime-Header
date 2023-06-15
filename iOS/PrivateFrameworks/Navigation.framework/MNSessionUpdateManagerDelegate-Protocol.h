@@ -9,6 +9,7 @@
 @class GEOETATrafficUpdateRequest, GEORecentLocationHistory, GEOTransitRouteUpdateResponse, MNActiveRouteInfo, MNLocation, MNSessionUpdateManager, MNSessionUpdateResponseInfo, NSError, NSSet;
 
 @protocol MNSessionUpdateManagerDelegate <NSObject>
+@property(readonly, nonatomic) int state;
 @property(readonly, nonatomic) unsigned long long targetLegIndex;
 - (GEORecentLocationHistory *)recentLocationHistoryForUpdateManager:(MNSessionUpdateManager *)arg1;
 - (MNLocation *)userLocationForUpdateManager:(MNSessionUpdateManager *)arg1;

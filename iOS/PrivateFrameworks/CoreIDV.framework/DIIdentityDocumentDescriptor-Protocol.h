@@ -9,7 +9,7 @@
 @class DIIdentityElement, DIIdentityIntentToStore, NSArray;
 
 @protocol DIIdentityDocumentDescriptor <NSObject>
-@property(readonly) NSArray *elements;
+@property(readonly, nonatomic) NSArray *elements;
 - (void)addElements:(NSArray *)arg1 withIntentToStore:(DIIdentityIntentToStore *)arg2;
 - (DIIdentityIntentToStore *)intentToStoreForElement:(DIIdentityElement *)arg1;
 @end

@@ -8,5 +8,6 @@
 
 @protocol MKCompassView <NSObject>
 @property(nonatomic) double mapHeading;
+- (void)setCompassViewSize:(long long)arg1 style:(long long)arg2;
 @end
 

@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class _UIVisualEffectViewEntry;
+#import "_UIVisualEffectViewEntry.h"
 
 __attribute__((visibility("hidden")))
-@interface _UIVisualEffectViewTransitioningEntry
+@interface _UIVisualEffectViewTransitioningEntry : _UIVisualEffectViewEntry
 {
     _UIVisualEffectViewEntry *_sourceEntry;
     _UIVisualEffectViewEntry *_destinationEntry;

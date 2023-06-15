@@ -23,6 +23,7 @@
 - (UIColor *)suggestionCategoryBackgroundColor;
 - (UIView *)suggestionCategoryImageSGView;
 - (long long)suggestionCategoryActionButtonType;
+- (_Bool)suggestionCategoryCoalesceImages;
 - (long long (^)(id, id))suggestionComparator;
 @end
 

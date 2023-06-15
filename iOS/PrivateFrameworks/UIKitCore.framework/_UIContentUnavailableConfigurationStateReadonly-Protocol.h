@@ -9,6 +9,6 @@
 @class NSString;
 
 @protocol _UIContentUnavailableConfigurationStateReadonly <NSObject>
-@property(readonly, nonatomic) NSString *searchControllerText;
+@property(readonly, nonatomic) NSString *searchText;
 @end
 

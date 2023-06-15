@@ -32,6 +32,9 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) VUIExtrasInfo *iTunesExtrasInfo; // @synthesize iTunesExtrasInfo=_iTunesExtrasInfo;
 @property(retain, nonatomic) NSString *previewArtworkURL; // @synthesize previewArtworkURL=_previewArtworkURL;
 @property(retain, nonatomic) NSString *artworkURL; // @synthesize artworkURL=_artworkURL;
+- (id)audioCapability;
+- (id)colorCapability;
+- (id)resolution;
 - (id)_itunesExtrasDictionary;
 - (id)_bestRedownloadOffer;
 - (id)_bestOffer;

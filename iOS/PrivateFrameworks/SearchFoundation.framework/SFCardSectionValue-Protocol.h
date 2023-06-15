@@ -6,11 +6,31 @@
 
 #import <SearchFoundation/NSObject-Protocol.h>
 
-@class NSData, NSDictionary, SFActivityIndicatorCardSection, SFAppLinkCardSection, SFAttributionFooterCardSection, SFAudioPlaybackCardSection, SFButtonCardSection, SFButtonListCardSection, SFCollectionCardSection, SFColorBarCardSection, SFCombinedCardSection, SFCommandRowCardSection, SFCompactRowCardSection, SFDescriptionCardSection, SFDetailedRowCardSection, SFFindMyCardSection, SFFlightCardSection, SFGridCardSection, SFHeroCardSection, SFHorizontalButtonCardSection, SFHorizontalScrollCardSection, SFImagesCardSection, SFInfoCardSection, SFKeyValueDataCardSection, SFLinkPresentationCardSection, SFListenToCardSection, SFMapCardSection, SFMapPlaceCardSection, SFMapsDetailedRowCardSection, SFMediaInfoCardSection, SFMediaPlayerCardSection, SFMediaRemoteControlCardSection, SFMessageCardSection, SFMetaInfoCardSection, SFMiniCardSection, SFNewsCardSection, SFNowPlayingCardSection, SFPersonHeaderCardSection, SFProductCardSection, SFResponseWrapperCardSection, SFRichTitleCardSection, SFRowCardSection, SFScoreboardCardSection, SFSectionHeaderCardSection, SFSelectableGridCardSection, SFSocialMediaPostCardSection, SFSplitCardSection, SFStockChartCardSection, SFStrokeAnimationCardSection, SFSuggestionCardSection, SFTableHeaderRowCardSection, SFTableRowCardSection, SFTextColumnsCardSection, SFTitleCardSection, SFTrackListCardSection, SFVerticalLayoutCardSection, SFWatchListCardSection, SFWatchNowCardSection, SFWebCardSection, SFWorldMapCardSection;
+@class NSData, NSDictionary, RFExpandableStandardCardSection, RFFactItemButtonCardSection, RFFactItemShortNumberCardSection, RFFactItemStandardCardSection, RFLongItemStandardCardSection, RFPrimaryHeaderRichCardSection, RFPrimaryHeaderStandardCardSection, RFReferenceFootnoteCardSection, RFReferenceRichCardSection, RFSimpleItemRichCardSection, RFSimpleItemStandardCardSection, RFSummaryItemAlignedTextCardSection, RFSummaryItemShortNumberCardSection, RFSummaryItemStandardCardSection, RFSummaryItemTextCardSection, SFActivityIndicatorCardSection, SFAppIconCardSection, SFAppLinkCardSection, SFArchiveViewCardSection, SFAttributionFooterCardSection, SFAudioPlaybackCardSection, SFButtonCardSection, SFButtonListCardSection, SFCollectionCardSection, SFColorBarCardSection, SFCombinedCardSection, SFCommandRowCardSection, SFCompactRowCardSection, SFDescriptionCardSection, SFDetailedRowCardSection, SFFindMyCardSection, SFFlightCardSection, SFGridCardSection, SFHeroCardSection, SFHeroTitleCardSection, SFHorizontalButtonCardSection, SFHorizontalScrollCardSection, SFImagesCardSection, SFInfoCardSection, SFKeyValueDataCardSection, SFLargeTitleDetailedRowCardSection, SFLeadingTrailingCardSection, SFLinkPresentationCardSection, SFListenToCardSection, SFMapCardSection, SFMapPlaceCardSection, SFMapsDetailedRowCardSection, SFMediaInfoCardSection, SFMediaPlayerCardSection, SFMediaRemoteControlCardSection, SFMessageCardSection, SFMetaInfoCardSection, SFMiniCardSection, SFNewsCardSection, SFNowPlayingCardSection, SFPersonHeaderCardSection, SFProductCardSection, SFResponseWrapperCardSection, SFRichTitleCardSection, SFRowCardSection, SFScoreboardCardSection, SFSectionHeaderCardSection, SFSelectableGridCardSection, SFSocialMediaPostCardSection, SFSplitCardSection, SFStockChartCardSection, SFStrokeAnimationCardSection, SFSuggestionCardSection, SFTableHeaderRowCardSection, SFTableRowCardSection, SFTextColumnsCardSection, SFTitleCardSection, SFTrackListCardSection, SFVerticalLayoutCardSection, SFWatchListCardSection, SFWatchNowCardSection, SFWebCardSection, SFWorldMapCardSection;
 
 @protocol SFCardSectionValue <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property(retain, nonatomic) RFFactItemButtonCardSection *rfFactItemButtonCardSection;
+@property(retain, nonatomic) RFExpandableStandardCardSection *rfExpandableStandardCardSection;
+@property(retain, nonatomic) RFSummaryItemAlignedTextCardSection *rfSummaryItemAlignedTextCardSection;
+@property(retain, nonatomic) RFSimpleItemStandardCardSection *rfSimpleItemStandardCardSection;
+@property(retain, nonatomic) RFSimpleItemRichCardSection *rfSimpleItemRichCardSection;
+@property(retain, nonatomic) RFReferenceRichCardSection *rfReferenceRichCardSection;
+@property(retain, nonatomic) RFReferenceFootnoteCardSection *rfReferenceFootnoteCardSection;
+@property(retain, nonatomic) RFPrimaryHeaderStandardCardSection *rfPrimaryHeaderStandardCardSection;
+@property(retain, nonatomic) RFPrimaryHeaderRichCardSection *rfPrimaryHeaderRichCardSection;
+@property(retain, nonatomic) RFLongItemStandardCardSection *rfLongItemStandardCardSection;
+@property(retain, nonatomic) RFFactItemStandardCardSection *rfFactItemStandardCardSection;
+@property(retain, nonatomic) RFFactItemShortNumberCardSection *rfFactItemShortNumberCardSection;
+@property(retain, nonatomic) RFSummaryItemStandardCardSection *rfSummaryItemStandardCardSection;
+@property(retain, nonatomic) RFSummaryItemTextCardSection *rfSummaryItemTextCardSection;
+@property(retain, nonatomic) RFSummaryItemShortNumberCardSection *rfSummaryItemShortNumberCardSection;
+@property(retain, nonatomic) SFLargeTitleDetailedRowCardSection *largeTitleDetailedRowCardSection;
+@property(retain, nonatomic) SFAppIconCardSection *appIconCardSection;
+@property(retain, nonatomic) SFArchiveViewCardSection *archiveViewCardSection;
+@property(retain, nonatomic) SFHeroTitleCardSection *heroTitleCardSection;
+@property(retain, nonatomic) SFLeadingTrailingCardSection *leadingTrailingCardSection;
 @property(retain, nonatomic) SFCommandRowCardSection *commandRowCardSection;
 @property(retain, nonatomic) SFButtonListCardSection *buttonListCardSection;
 @property(retain, nonatomic) SFStrokeAnimationCardSection *strokeAnimationCardSection;

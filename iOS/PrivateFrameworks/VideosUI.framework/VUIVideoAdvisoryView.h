@@ -4,23 +4,31 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
-@class NSArray, VUIVideoAdvisoryViewLayout, _TVImageView;
+@class NSArray, NSDictionary, NSTimer, UIImage, VUIImageView, VUIPhotoSensitivityView, VUIVideoAdvisoryViewLayout;
 
 __attribute__((visibility("hidden")))
 @interface VUIVideoAdvisoryView : UIView
 {
     VUIVideoAdvisoryViewLayout *_layout;
-    _TVImageView *_logoImageView;
+    VUIImageView *_logoImageView;
+    UIImage *_photoSensitivityImage;
     UIView *_dividerView;
     NSArray *_legendViews;
+    VUIPhotoSensitivityView *_photoSensitivityView;
+    NSDictionary *_photoSensitivityDictionary;
+    NSTimer *_photoSensitivityTimer;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSTimer *photoSensitivityTimer; // @synthesize photoSensitivityTimer=_photoSensitivityTimer;
+@property(retain, nonatomic) NSDictionary *photoSensitivityDictionary; // @synthesize photoSensitivityDictionary=_photoSensitivityDictionary;
+@property(retain, nonatomic) VUIPhotoSensitivityView *photoSensitivityView; // @synthesize photoSensitivityView=_photoSensitivityView;
 @property(copy, nonatomic) NSArray *legendViews; // @synthesize legendViews=_legendViews;
 @property(retain, nonatomic) UIView *dividerView; // @synthesize dividerView=_dividerView;
-@property(retain, nonatomic) _TVImageView *logoImageView; // @synthesize logoImageView=_logoImageView;
+@property(retain, nonatomic) UIImage *photoSensitivityImage; // @synthesize photoSensitivityImage=_photoSensitivityImage;
+@property(retain, nonatomic) VUIImageView *logoImageView; // @synthesize logoImageView=_logoImageView;
 @property(retain, nonatomic) VUIVideoAdvisoryViewLayout *layout; // @synthesize layout=_layout;
 - (void)_configureSubviewsWithDictionary:(id)arg1;
 - (struct UIEdgeInsets)_dividerMargin;
@@ -34,8 +42,10 @@ __attribute__((visibility("hidden")))
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (id)initWithAdvisoryInfoDictionary:(id)arg1;
-- (void)_hideWithAnimationWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_hideWithCoreAnimationWithCompletion:(CDUnknownBlockType)arg1;
+- (void)showPhotoSensitivity:(_Bool)arg1 image:(id)arg2 animated:(_Bool)arg3;
 - (void)_hideAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_showWithCoreAnimationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_showWithAnimationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_showAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)show:(_Bool)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;

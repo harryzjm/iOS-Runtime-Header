@@ -13,19 +13,23 @@ __attribute__((visibility("hidden")))
 {
     NSString *_identifier;
     CAShapeLayer *_shapeLayer;
+    CAShapeLayer *_debugHitLayer;
     struct CGRect _tapActionRegion;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) CAShapeLayer *debugHitLayer; // @synthesize debugHitLayer=_debugHitLayer;
 @property(retain, nonatomic) CAShapeLayer *shapeLayer; // @synthesize shapeLayer=_shapeLayer;
 @property(retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(nonatomic) struct CGRect tapActionRegion; // @synthesize tapActionRegion=_tapActionRegion;
 - (void)addAnimatitionIfNeeded;
 - (void)setupDictationAnimationButtonIfNeeded;
+- (_Bool)pointInsideTapActionRegion:(struct CGPoint)arg1;
 - (void)layoutSubviews;
 - (void)updateFillColor;
 - (void)setTintColor:(id)arg1;
 - (void)didMoveToSuperview;
+- (void)drawRect:(struct CGRect)arg1;
 - (struct CGRect)titleRectForContentRect:(struct CGRect)arg1;
 - (struct CGRect)imageRectForContentRect:(struct CGRect)arg1;
 - (struct CGRect)rectWithSize:(struct CGSize)arg1 forContentRect:(struct CGRect)arg2 withAlignmentRectInsets:(struct UIEdgeInsets)arg3;

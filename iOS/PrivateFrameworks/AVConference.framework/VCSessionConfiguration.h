@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSUUID;
+@class NSDate, NSString, NSUUID;
 @protocol NSCopying, OS_nw_activity;
 
 __attribute__((visibility("hidden")))
@@ -15,18 +15,24 @@ __attribute__((visibility("hidden")))
     long long _sessionMode;
     NSObject<NSCopying> *_reportingHierarchyToken;
     _Bool _oneToOneModeEnabled;
+    _Bool _remoteScreenControlEnabled;
     _Bool _isGKVoiceChat;
     NSUUID *_conversationID;
     NSDate *_conversationTimeBase;
     NSDate *_conversationTimeBaseTruncated;
     NSObject<OS_nw_activity> *_parentNWActivity;
+    NSString *_serviceName;
+    _Bool _outOfProcessCodecsEnabled;
 }
 
+@property(nonatomic) _Bool outOfProcessCodecsEnabled; // @synthesize outOfProcessCodecsEnabled=_outOfProcessCodecsEnabled;
+@property(copy, nonatomic) NSString *serviceName; // @synthesize serviceName=_serviceName;
 @property(nonatomic, setter=setParentNWActivity:) NSObject<OS_nw_activity> *parentNWActivity; // @synthesize parentNWActivity=_parentNWActivity;
 @property(copy, nonatomic) NSDate *conversationTimeBaseTruncated; // @synthesize conversationTimeBaseTruncated=_conversationTimeBaseTruncated;
 @property(copy, nonatomic) NSDate *conversationTimeBase; // @synthesize conversationTimeBase=_conversationTimeBase;
 @property(copy, nonatomic) NSUUID *conversationID; // @synthesize conversationID=_conversationID;
 @property(nonatomic) _Bool isGKVoiceChat; // @synthesize isGKVoiceChat=_isGKVoiceChat;
+@property(nonatomic, getter=isRemoteScreenControlEnabled) _Bool remoteScreenControlEnabled; // @synthesize remoteScreenControlEnabled=_remoteScreenControlEnabled;
 @property(nonatomic, getter=isOneToOneModeEnabled) _Bool oneToOneModeEnabled; // @synthesize oneToOneModeEnabled=_oneToOneModeEnabled;
 @property(retain, nonatomic) NSObject<NSCopying> *reportingHierarchyToken; // @synthesize reportingHierarchyToken=_reportingHierarchyToken;
 - (void)cleanupNwActivity;

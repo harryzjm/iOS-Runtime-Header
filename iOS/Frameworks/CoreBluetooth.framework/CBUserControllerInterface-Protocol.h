@@ -6,11 +6,20 @@
 
 #import <CoreBluetooth/NSObject-Protocol.h>
 
+@class CBControllerInfo, CBDevice, NSDictionary, NSString;
+
 @protocol CBUserControllerInterface <NSObject>
+- (void)recordEventWithStarting:(_Bool)arg1 useCase:(unsigned int)arg2;
+- (void)recordEventWithDeviceIdentifier:(NSString *)arg1 initiator:(_Bool)arg2 starting:(_Bool)arg3 useCase:(unsigned int)arg4;
+- (void)diagnosticShow:(NSDictionary *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
+- (void)getControllerInfoForDevice:(CBDevice *)arg1 completion:(void (^)(CBControllerInfo *, NSError *))arg2;
+- (void)getCloudPairedDevicesWithCompletionHandler:(void (^)(NSArray *, NSError *))arg1;
+- (void)storeControllerInfo:(CBControllerInfo *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)deleteControllerInfoForDevice:(CBDevice *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)getCurrentUserGivenNameWithCompletion:(void (^)(NSString *, NSError *))arg1;
-- (void)setDistributedLoggingStatus:(unsigned int)arg1 completion:(void (^)(NSError *))arg2;
-- (void)getDistributedLoggingStatusWithCompletion:(void (^)(unsigned int, NSError *))arg1;
 - (void)setAppleAudioAccessoryLimitedLogging:(_Bool)arg1 completion:(void (^)(NSError *))arg2;
 - (void)appleAudioAccessoryLimitedLoggingWithCompletion:(void (^)(_Bool, NSError *))arg1;
+- (void)setDistributedLoggingStatus:(unsigned int)arg1 completion:(void (^)(NSError *))arg2;
+- (void)getDistributedLoggingStatusWithCompletion:(void (^)(unsigned int, NSError *))arg1;
 @end
 

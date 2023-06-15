@@ -37,7 +37,7 @@
 @property(readonly, nonatomic) const void *spaces;
 - (_Bool)run;
 - (void)updateBounds;
-- (box_c9ef104e)p_extendLabelsBoundsToBounds:(const void *)arg1;
+- (box_c9ef104e)p_extendLabelsBoundsToBounds:(void *)arg1;
 - (void)updateLayoutBoundsIfNecessary;
 - (void)updateRenderBounds;
 - (void)calculateBoundsIfNecessary;

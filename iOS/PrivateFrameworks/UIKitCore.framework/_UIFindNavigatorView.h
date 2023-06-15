@@ -28,7 +28,6 @@ __attribute__((visibility("hidden")))
     _Bool _matchCase;
     _Bool _wholeWords;
     _Bool _usesOpaqueBackground;
-    _Bool _replacementEnabled;
     _Bool _replaceButtonEnabled;
     _Bool _intrinsicHeightDerivedFromAssistantBar;
     id <_UIFindNavigatorViewDelegate> _findNavigatorDelegate;
@@ -57,7 +56,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) UILabel *resultCountLabel; // @synthesize resultCountLabel=_resultCountLabel;
 @property(readonly, nonatomic) UIButton *settingsButton; // @synthesize settingsButton=_settingsButton;
 @property(readonly, nonatomic) UIButton *doneButton; // @synthesize doneButton=_doneButton;
-@property(nonatomic) _Bool replacementEnabled; // @synthesize replacementEnabled=_replacementEnabled;
 @property(nonatomic) unsigned long long visibleSeparatorEdges; // @synthesize visibleSeparatorEdges=_visibleSeparatorEdges;
 @property(nonatomic) _Bool usesOpaqueBackground; // @synthesize usesOpaqueBackground=_usesOpaqueBackground;
 @property(nonatomic) _Bool wholeWords; // @synthesize wholeWords=_wholeWords;
@@ -75,12 +73,13 @@ __attribute__((visibility("hidden")))
 - (void)_handleSearchMenuItem:(id)arg1;
 - (void)_invalidateSearchSession;
 - (id)suggestedFindMenuItems;
+- (_Bool)_replacementEnabled;
+- (void)_preferredBackgroundColorChanged;
 - (void)_navigatorHostingTypeChanged;
 - (void)willMoveToWindow:(id)arg1;
 - (void)safeAreaInsetsDidChange;
 - (void)_preferredContentSizeDidChange;
 - (void)traitCollectionDidChange:(id)arg1;
-- (id)traitCollection;
 - (id)_createNavigatorLayoutForTraitCollection:(id)arg1;
 - (void)_setNavigatorLayout:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

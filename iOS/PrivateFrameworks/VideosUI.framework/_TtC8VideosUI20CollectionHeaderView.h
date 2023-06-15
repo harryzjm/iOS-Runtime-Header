@@ -4,14 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UICollectionReusableView.h>
+#import <UIKitCore/UICollectionReusableView.h>
 
 @class MISSING_TYPE, UIView, VUIButton, VUIImageView;
 
 __attribute__((visibility("hidden")))
 @interface _TtC8VideosUI20CollectionHeaderView : UICollectionReusableView
 {
-    MISSING_TYPE *containerView;
     MISSING_TYPE *viewLayout;
     MISSING_TYPE *applySafeAreaInsets;
     MISSING_TYPE *titleView;
@@ -19,6 +18,9 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *imageView;
     MISSING_TYPE *buttonView;
     MISSING_TYPE *supplementaryViewModel;
+    MISSING_TYPE *containerView;
+    MISSING_TYPE *positionAdjustmentTransform;
+    MISSING_TYPE *contentPeekingTransform;
     MISSING_TYPE *rendersAsButton;
 }
 

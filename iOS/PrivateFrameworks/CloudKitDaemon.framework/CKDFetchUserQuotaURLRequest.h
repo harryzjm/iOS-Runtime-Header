@@ -17,6 +17,7 @@
 - (id)requestDidParseProtobufObject:(id)arg1;
 - (id)generateRequestOperations;
 - (id)requestOperationClasses;
+- (id)equivalencyProperties;
 
 @end
 

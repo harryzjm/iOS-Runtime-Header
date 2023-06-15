@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UITableView.h>
+#import <UIKitCore/UITableView.h>
 
 @class MISSING_TYPE;
 
@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *isSidebarStyle;
     MISSING_TYPE *cachedIdealSize;
     MISSING_TYPE *rowSpacing;
+    MISSING_TYPE *safeAreaTransitionState;
     MISSING_TYPE *visibleCellsUpdate;
     MISSING_TYPE *ignoreGraphUpdates;
     MISSING_TYPE *pendingGraphUpdate;

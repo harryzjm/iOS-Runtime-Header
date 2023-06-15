@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class MISSING_TYPE;
 
@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *thumbnailDimensions;
     MISSING_TYPE *thumbnailView;
     MISSING_TYPE *bookmarkButton;
+    MISSING_TYPE *shareButton;
     MISSING_TYPE *labels;
     MISSING_TYPE *layoutGuide;
     MISSING_TYPE *layoutGuideConstraints;
@@ -23,12 +24,14 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *thumbnailWidthConstraint;
     MISSING_TYPE *thumbnailHeightConstraint;
     MISSING_TYPE *onBookmarkTapped;
+    MISSING_TYPE *onShareButtonTapped;
 }
 
 - (void).cxx_destruct;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)layoutSubviews;
 - (id)initWithCoder:(id)arg1;
+- (void)shareButtonTapped;
 - (void)bookmarkButtonTapped;
 @property(nonatomic, readonly) struct CGSize intrinsicContentSize;
 - (void)updateConstraints;

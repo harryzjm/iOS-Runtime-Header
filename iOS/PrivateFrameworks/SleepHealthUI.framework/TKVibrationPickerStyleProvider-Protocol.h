@@ -9,25 +9,25 @@
 @class UIColor, UIFont, UIView;
 
 @protocol TKVibrationPickerStyleProvider <NSObject>
-@property(nonatomic, readonly) struct UIEdgeInsets vibrationPickerHeaderTextPaddingInsets;
-@property(nonatomic, readonly) struct UIOffset vibrationPickerHeaderTextShadowOffset;
-@property(nonatomic, readonly) UIColor *vibrationPickerHeaderTextShadowColor;
-@property(nonatomic, readonly) UIColor *vibrationPickerHeaderTextColor;
-@property(nonatomic, readonly) UIFont *vibrationPickerHeaderTextFont;
-@property(nonatomic, readonly) _Bool wantsCustomVibrationPickerHeaderView;
+@property(readonly, nonatomic) struct UIEdgeInsets vibrationPickerHeaderTextPaddingInsets;
+@property(readonly, nonatomic) struct UIOffset vibrationPickerHeaderTextShadowOffset;
+@property(readonly, nonatomic) UIColor *vibrationPickerHeaderTextShadowColor;
+@property(readonly, nonatomic) UIColor *vibrationPickerHeaderTextColor;
+@property(readonly, nonatomic) UIFont *vibrationPickerHeaderTextFont;
+@property(readonly, nonatomic) _Bool wantsCustomVibrationPickerHeaderView;
+@property(readonly, nonatomic) UIColor *vibrationPickerCellBackgroundColor;
+@property(readonly, nonatomic) UIColor *vibrationPickerCellHighlightedTextColor;
+@property(readonly, nonatomic) UIColor *vibrationPickerCellTextColor;
+@property(readonly, nonatomic) UIFont *vibrationPickerCellTextFont;
+@property(readonly, nonatomic) long long vibrationPickerTableViewSeparatorStyle;
+@property(readonly, nonatomic) _Bool vibrationPickerUsesOpaqueBackground;
 - (UIView *)newAccessoryDisclosureIndicatorViewForVibrationPickerCell;
 - (UIView *)newBackgroundViewForSelectedVibrationPickerCell:(_Bool)arg1;
-@property(nonatomic, readonly) UIColor *vibrationPickerCellBackgroundColor;
-@property(nonatomic, readonly) UIColor *vibrationPickerCellHighlightedTextColor;
-@property(nonatomic, readonly) UIColor *vibrationPickerCellTextColor;
-@property(nonatomic, readonly) UIFont *vibrationPickerCellTextFont;
-@property(nonatomic, readonly) long long vibrationPickerTableViewSeparatorStyle;
-@property(nonatomic, readonly) _Bool vibrationPickerUsesOpaqueBackground;
 
 @optional
-@property(nonatomic, readonly) _Bool vibrationPickerHeaderTextShouldBeUppercase;
-@property(nonatomic, readonly) long long vibrationPickerCustomTableSeparatorBackdropOverlayBlendMode;
-@property(nonatomic, readonly) UIColor *vibrationPickerCustomTableSeparatorColor;
-@property(nonatomic, readonly) UIColor *vibrationPickerCustomBackgroundColor;
+@property(readonly, nonatomic) _Bool vibrationPickerHeaderTextShouldBeUppercase;
+@property(readonly, nonatomic) long long vibrationPickerCustomTableSeparatorBackdropOverlayBlendMode;
+@property(readonly, nonatomic) UIColor *vibrationPickerCustomTableSeparatorColor;
+@property(readonly, nonatomic) UIColor *vibrationPickerCustomBackgroundColor;
 @end
 

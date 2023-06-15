@@ -6,11 +6,6 @@
 
 #pragma mark Named Structures
 
-struct CGSize {
-    double _field1;
-    double _field2;
-};
-
 struct MTLResourceID {
     unsigned long long _field1;
 };

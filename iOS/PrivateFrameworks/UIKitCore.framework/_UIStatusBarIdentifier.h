@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UIStatusBarIdentifier : NSObject <NSCopying>
+@interface _UIStatusBarIdentifier : NSObject
 {
     id _object;
     NSString *_string;

@@ -6,19 +6,21 @@
 
 #import <UIKit/UITableViewCell.h>
 
-@class NSTimer, UILabel, UIListContentView, UIStackView, WBSTOTPGenerator;
+@class NSTimer, UILabel, UIStackView, WBSTOTPGenerator;
 
 __attribute__((visibility("hidden")))
 @interface SFAccountDetailTOTPTableViewCell : UITableViewCell
 {
     UILabel *_subtitleLabel;
+    UILabel *_verificationCodeLabel;
+    UIStackView *_titleAndVerificationCodeStackView;
     WBSTOTPGenerator *_generator;
     NSTimer *_codeUpdateTimer;
-    UIListContentView *_verificationCodeContentView;
-    UIStackView *_labelStackView;
 }
 
 - (void).cxx_destruct;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)_updateTitleAndVerificationCodeStackView;
 - (id)_attributedSubtitleStringWithRemainingSeconds:(unsigned long long)arg1;
 - (id)_attributedSubtitleString;
 - (void)_startTOTPTimer;

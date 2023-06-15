@@ -7,7 +7,6 @@
 #import <Foundation/NSURL.h>
 
 @interface NSURL (BUAdditions)
-+ (id)bu_jsRootURL;
 + (id)bu_queryStringForDictionary:(id)arg1 escapedValues:(_Bool)arg2;
 + (id)bu_URLQueryParameterValueAllowedCharacterSet;
 + (id)bu_dictionaryForQueryString:(id)arg1 unescapedValues:(_Bool)arg2;

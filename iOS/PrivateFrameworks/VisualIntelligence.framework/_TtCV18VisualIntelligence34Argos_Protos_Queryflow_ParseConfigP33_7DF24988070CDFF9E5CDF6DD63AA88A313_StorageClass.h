@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <swiftCore/_TtCs12_SwiftObject.h>
+#import ".h"
 
 @class MISSING_TYPE;
 
-@interface _TtCV18VisualIntelligence34Argos_Protos_Queryflow_ParseConfigP33_7DF24988070CDFF9E5CDF6DD63AA88A313_StorageClass : _TtCs12_SwiftObject
+@interface _TtCV18VisualIntelligence34Argos_Protos_Queryflow_ParseConfigP33_7DF24988070CDFF9E5CDF6DD63AA88A313_StorageClass : 
 {
     MISSING_TYPE *_domainConfigs;
     MISSING_TYPE *_defaultBoxScoreThreshold;

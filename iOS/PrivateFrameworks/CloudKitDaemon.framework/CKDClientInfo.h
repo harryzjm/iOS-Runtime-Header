@@ -21,7 +21,7 @@
 @property(readonly, nonatomic) NSString *hostname;
 - (void)_refreshHostname;
 - (void)dealloc;
-- (id)_init;
+- (id)initInternal;
 - (id)init;
 
 @end

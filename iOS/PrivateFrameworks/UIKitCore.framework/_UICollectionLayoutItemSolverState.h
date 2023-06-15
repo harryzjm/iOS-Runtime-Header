@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, _UIRTree;
+@class NSArray, NSDictionary, NSString, _UIRTree;
 @protocol _UICollectionLayoutAuxillaryOffsets;
 
 __attribute__((visibility("hidden")))
@@ -20,7 +20,9 @@ __attribute__((visibility("hidden")))
     NSArray *_solutionFrames;
     long long _itemFrameCount;
     long long _supplementaryFrameCount;
-    NSArray *_availableLayoutSpaces;
+    NSArray *_preferredSizeGroupingRanges;
+    NSString *_errorDescription;
+    struct CGPoint _additionalOffsetForOutermostGroup;
     struct CGRect _solvedFittingFrame;
 }
 

@@ -9,7 +9,7 @@
 #import <HomeKitDaemonLegacy/HMFLogging-Protocol.h>
 #import <HomeKitDaemonLegacy/NSObject-Protocol.h>
 
-@class HMDBackingStoreTransactionActions, HMDDevice, HMDHome, HMDMessageDispatcher, HMDResidentDevice, HMFFuture, NSArray, NSDictionary, NSUUID;
+@class HMDBackingStoreTransactionActions, HMDDevice, HMDHome, HMDMessageDispatcher, HMDResidentDevice, NSArray, NSDictionary, NSUUID;
 @protocol HMDDevicePreferenceDataSource, HMDResidentDeviceManagerDelegate;
 
 @protocol HMDResidentDeviceManager <NSObject, HMFLogging, HMDBackingStoreObjectProtocol, HMDHomeMessageReceiver>
@@ -32,7 +32,7 @@
 - (void)invalidate;
 - (void)run;
 - (void)updatePrimaryResidentWithUUID:(NSUUID *)arg1 actions:(HMDBackingStoreTransactionActions *)arg2;
-- (HMFFuture *)foundNewPrimaryResident:(HMDDevice *)arg1;
+- (_Bool)wasTheHomeFetchedFromCloud;
 - (void)confirmOnAvailability;
 - (void)confirmAsResident;
 - (void)electResidentDevice:(unsigned long long)arg1;

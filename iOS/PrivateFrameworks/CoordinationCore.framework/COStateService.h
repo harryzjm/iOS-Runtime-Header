@@ -28,10 +28,12 @@ __attribute__((visibility("hidden")))
 - (void)_setIsWriting:(_Bool)arg1 forClient:(id)arg2;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)requestCompositionForCluster:(id)arg1 withCallback:(CDUnknownBlockType)arg2;
+- (void)compositionForCluster:(id)arg1 withCallback:(CDUnknownBlockType)arg2;
 - (void)unregisterForMediaSystemLeaderChange;
 - (void)registerForMediaSystemLeaderChange;
 - (void)isMediaSystemLeader:(CDUnknownBlockType)arg1;
 - (_Bool)isMediaSystemLeader;
+- (id)_stateSetByClientsForAddOn:(id)arg1;
 - (id)_stateSetByClientsForSuite:(id)arg1 cluster:(id)arg2;
 - (void)_informClientsOfUpdates:(id)arg1 removals:(id)arg2 inCluster:(id)arg3;
 - (void)_checkinClientWithSuite:(id)arg1 clusters:(id)arg2;
@@ -42,7 +44,7 @@ __attribute__((visibility("hidden")))
 - (void)addObserverWithPredicate:(id)arg1 suite:(id)arg2 interestClusters:(id)arg3;
 - (void)stateForAddOn:(id)arg1 withCallback:(CDUnknownBlockType)arg2;
 - (void)addOn:(id)arg1 receivedUpdates:(id)arg2 removals:(id)arg3;
-- (_Bool)_canRequestCreationOfCluster:(id)arg1;
+- (_Bool)_applicableToCluster:(id)arg1;
 - (void)_addOnRemoved:(id)arg1;
 - (void)_addOnAdded:(id)arg1;
 - (void)_configureServiceInterfacesOnConnection:(id)arg1;

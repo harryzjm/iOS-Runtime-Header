@@ -5,15 +5,17 @@
 //
 
 #import <StatusKitAgentCore/NSObject-Protocol.h>
+#import <StatusKitAgentCore/SKAIDSDeviceProviding-Protocol.h>
 
 @class NSArray, NSData, NSDictionary, NSString, SKHandle;
 @protocol SKAMessagingProvidingDelegate;
 
-@protocol SKAMessagingProviding <NSObject>
+@protocol SKAMessagingProviding <NSObject, SKAIDSDeviceProviding>
 @property(nonatomic) __weak id <SKAMessagingProvidingDelegate> delegate;
 - (void)verifySignedPayload:(NSData *)arg1 matchesPayload:(NSData *)arg2 fromTokenURI:(NSString *)arg3 completion:(void (^)(NSError *, _Bool))arg4;
 - (void)signPayload:(NSData *)arg1 completion:(void (^)(NSError *, NSData *))arg2;
 - (SKHandle *)resolveSenderHandleWithPreferredSenderHandle:(SKHandle *)arg1;
+- (_Bool)isFromIDFromSelfAccount:(NSString *)arg1;
 - (_Bool)isHandleAvailableToMessageFrom:(SKHandle *)arg1;
 - (void)isHandleMessageableForPresence:(SKHandle *)arg1 completion:(void (^)(_Bool))arg2;
 - (void)isHandleMessageable:(SKHandle *)arg1 completion:(void (^)(_Bool))arg2;
@@ -21,7 +23,8 @@
 - (NSData *)deviceTokenForTokenURI:(NSString *)arg1;
 - (NSData *)deviceToken;
 - (NSString *)tokenURI;
-- (_Bool)sendMessage:(NSDictionary *)arg1 toHandles:(NSArray *)arg2 fromHandle:(SKHandle *)arg3 limitToPresenceCapable:(_Bool)arg4 error:(id *)arg5;
-- (_Bool)sendMessage:(NSDictionary *)arg1 toHandle:(SKHandle *)arg2 fromHandle:(SKHandle *)arg3 limitToPresenceCapable:(_Bool)arg4 error:(id *)arg5;
+- (_Bool)sendMessageToSelfDevices:(NSDictionary *)arg1 limitToPresenceCapable:(_Bool)arg2 identifier:(id *)arg3 error:(id *)arg4;
+- (_Bool)sendMessage:(NSDictionary *)arg1 toHandles:(NSArray *)arg2 fromHandle:(SKHandle *)arg3 limitToPresenceCapable:(_Bool)arg4 identifier:(id *)arg5 error:(id *)arg6;
+- (_Bool)sendMessage:(NSDictionary *)arg1 toHandle:(SKHandle *)arg2 fromHandle:(SKHandle *)arg3 limitToPresenceCapable:(_Bool)arg4 identifier:(id *)arg5 error:(id *)arg6;
 @end
 

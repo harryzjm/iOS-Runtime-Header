@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class GEOComposedRoute, GEOComposedWaypoint, GEODirectionsRequest, GEODirectionsResponse, GEONavigationGuidanceState, MNActiveRouteInfo, MNBatteryChargeInfo, MNDisplayETAInfo, MNGuidanceLaneInfo, MNLocation, MNRouteDistanceInfo, NSArray, NSMapTable, NSMutableArray, NSMutableDictionary, NSString, geo_isolater;
+@class GEOComposedRoute, GEOComposedWaypoint, GEODirectionsRequest, GEODirectionsResponse, GEONavigationGuidanceState, GEOResumeRouteHandle, MNActiveRouteInfo, MNArrivalInfo, MNBatteryChargeInfo, MNDisplayETAInfo, MNGuidanceLaneInfo, MNLocation, MNRouteDistanceInfo, MNVehicleParkingInfo, NSArray, NSMapTable, NSMutableArray, NSMutableDictionary, NSString, geo_isolater;
 
 __attribute__((visibility("hidden")))
 @interface MNNavigationDetails : NSObject
@@ -22,14 +22,17 @@ __attribute__((visibility("hidden")))
     MNActiveRouteInfo *_currentRoute;
     NSArray *_previewRoutes;
     NSArray *_alternateRoutes;
+    unsigned long long _targetLegIndex;
     GEOComposedWaypoint *_originalOrigin;
     GEOComposedWaypoint *_originalDestination;
+    GEOResumeRouteHandle *_resumeRouteHandle;
     NSMapTable *_routeIDLookup;
     NSMutableDictionary *_routeLookup;
     NSMutableDictionary *_trafficIncidentAlerts;
     NSMutableArray *_spokenAnnouncements;
     geo_isolater *_routeLookupLock;
     _Bool _isResumingMultipointRoute;
+    _Bool _isApproachingWaypoint;
     _Bool _guidancePromptsEnabled;
     _Bool _isInPreArrivalState;
     _Bool _traceIsPlaying;
@@ -49,6 +52,9 @@ __attribute__((visibility("hidden")))
     double _timeUntilManeuver;
     NSString *_currentVoiceLanguage;
     MNGuidanceLaneInfo *_activeLaneInfo;
+    MNArrivalInfo *_arrivalInfo;
+    MNActiveRouteInfo *_backgroundWalkingRouteInfo;
+    MNVehicleParkingInfo *_vehicleParkingInfo;
     NSString *_tracePath;
     double _traceDuration;
     double _tracePosition;
@@ -65,7 +71,11 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) double traceDuration; // @synthesize traceDuration=_traceDuration;
 @property(nonatomic) _Bool traceIsPlaying; // @synthesize traceIsPlaying=_traceIsPlaying;
 @property(copy, nonatomic) NSString *tracePath; // @synthesize tracePath=_tracePath;
-@property(readonly, nonatomic) NSArray *spokenAnnouncements; // @synthesize spokenAnnouncements=_spokenAnnouncements;
+@property(retain, nonatomic) GEOResumeRouteHandle *resumeRouteHandle; // @synthesize resumeRouteHandle=_resumeRouteHandle;
+@property(retain, nonatomic) MNVehicleParkingInfo *vehicleParkingInfo; // @synthesize vehicleParkingInfo=_vehicleParkingInfo;
+@property(retain, nonatomic) MNActiveRouteInfo *backgroundWalkingRouteInfo; // @synthesize backgroundWalkingRouteInfo=_backgroundWalkingRouteInfo;
+@property(retain, nonatomic) MNArrivalInfo *arrivalInfo; // @synthesize arrivalInfo=_arrivalInfo;
+@property(retain, nonatomic) NSArray *spokenAnnouncements; // @synthesize spokenAnnouncements=_spokenAnnouncements;
 @property(retain, nonatomic) MNGuidanceLaneInfo *activeLaneInfo; // @synthesize activeLaneInfo=_activeLaneInfo;
 @property(retain, nonatomic) NSString *currentVoiceLanguage; // @synthesize currentVoiceLanguage=_currentVoiceLanguage;
 @property(nonatomic) double timeUntilManeuver; // @synthesize timeUntilManeuver=_timeUntilManeuver;
@@ -76,6 +86,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSString *displayString; // @synthesize displayString=_displayString;
 @property(nonatomic) double proceedToRouteDistance; // @synthesize proceedToRouteDistance=_proceedToRouteDistance;
 @property(nonatomic) unsigned long long displayedStepIndex; // @synthesize displayedStepIndex=_displayedStepIndex;
+@property(nonatomic) unsigned long long targetLegIndex; // @synthesize targetLegIndex=_targetLegIndex;
 @property(retain, nonatomic) GEOComposedWaypoint *originalDestination; // @synthesize originalDestination=_originalDestination;
 @property(retain, nonatomic) GEOComposedWaypoint *originalOrigin; // @synthesize originalOrigin=_originalOrigin;
 @property(readonly, nonatomic) unsigned long long selectedPreviewRouteIndex; // @synthesize selectedPreviewRouteIndex=_selectedPreviewRouteIndex;
@@ -90,6 +101,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) MNLocation *location; // @synthesize location=_location;
 @property(retain, nonatomic) GEODirectionsResponse *directionsResponse; // @synthesize directionsResponse=_directionsResponse;
 @property(retain, nonatomic) GEODirectionsRequest *directionsRequest; // @synthesize directionsRequest=_directionsRequest;
+@property(nonatomic) _Bool isApproachingWaypoint; // @synthesize isApproachingWaypoint=_isApproachingWaypoint;
 @property(nonatomic) _Bool isResumingMultipointRoute; // @synthesize isResumingMultipointRoute=_isResumingMultipointRoute;
 @property(nonatomic) int desiredTransportType; // @synthesize desiredTransportType=_desiredTransportType;
 @property(nonatomic) long long desiredNavigationType; // @synthesize desiredNavigationType=_desiredNavigationType;

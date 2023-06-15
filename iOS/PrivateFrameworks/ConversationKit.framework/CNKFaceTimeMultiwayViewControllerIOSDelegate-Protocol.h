@@ -5,6 +5,7 @@
 //
 
 @protocol CNKFaceTimeMultiwayViewControllerIOSDelegate
+- (void)unansweredCallUIDismissed;
 - (_Bool)wantsStandardControls;
 - (_Bool)isShownAboveCoverSheet;
 - (_Bool)isMultiwayViewControllerShowingInMiniWindow;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CTCellularPlanManager, NSString, PSListController, PSSpecifier, PSUIAddCellularPlanSpecifier, PSUICellularPlanManagerCache;
+@class CTCellularPlanManager, NSString, PSListController, PSSpecifier, PSUIAddCellularPlanSpecifier, PSUICellularPlanManagerCache, TSSIMSetupFlow;
 
 __attribute__((visibility("hidden")))
 @interface PSUICarrierItemGroup : NSObject
@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     CTCellularPlanManager *_ctCellularPlanManager;
     PSUIAddCellularPlanSpecifier *_addCellularPlanSpecifierEmbedded;
     PSUIAddCellularPlanSpecifier *_addCellularPlanSpecifierStandard;
+    TSSIMSetupFlow *_flow;
     PSSpecifier *_groupSpecifier;
     PSListController *_listController;
 }
@@ -23,10 +24,14 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak PSListController *listController; // @synthesize listController=_listController;
 @property(retain, nonatomic) PSSpecifier *groupSpecifier; // @synthesize groupSpecifier=_groupSpecifier;
 - (id)getLogger;
+- (void)simSetupFlowCompleted:(unsigned long long)arg1;
+- (void)turnOnLocationServicesPressed:(id)arg1;
+- (void)_addLocationFooterIfNecessary;
+- (void)_handleAddCarrierItem:(id)arg1 specifier:(id)arg2;
 - (void)carrierItemPressed:(id)arg1;
 - (id)specifiersForCarrierItems;
 - (_Bool)hasCarrierItems;
-- (id)getAddCellularPlanSpecifier:(_Bool)arg1;
+- (id)addCellularPlanSpecifier;
 - (id)specifiers;
 - (id)initWithListController:(id)arg1 groupSpecifier:(id)arg2 planManager:(id)arg3 ctPlanManager:(id)arg4;
 - (id)initWithListController:(id)arg1 groupSpecifier:(id)arg2;

@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *sessionClient;
     MISSING_TYPE *sessionToken;
     MISSING_TYPE *countdownState;
-    MISSING_TYPE *watchConnectionState;
+    MISSING_TYPE *workoutDeviceConnection;
     MISSING_TYPE *gymKitConnectionState;
 }
 

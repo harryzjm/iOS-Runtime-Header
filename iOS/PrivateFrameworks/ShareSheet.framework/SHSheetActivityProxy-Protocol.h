@@ -9,8 +9,6 @@
 @class NSString, SFProxyText;
 
 @protocol SHSheetActivityProxy <SHSheetProxy>
-@property(readonly, nonatomic) _Bool isUserDefaultsActivity;
-@property(readonly, nonatomic) _Bool isFavorite;
 @property(readonly, nonatomic) unsigned int iconImageSlotID;
 @property(readonly, copy, nonatomic) NSString *applicationBundleIdentifier;
 @property(readonly, nonatomic) SFProxyText *activityTitle;

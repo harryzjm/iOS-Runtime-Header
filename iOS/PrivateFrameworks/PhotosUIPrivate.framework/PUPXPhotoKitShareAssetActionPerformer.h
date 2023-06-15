@@ -7,6 +7,7 @@
 #import <PhotosUICore/PXPhotoKitAssetActionPerformer.h>
 
 @class NSString, PUActivitySharingController;
+@protocol PXMemoryAssetsActionFactory;
 
 __attribute__((visibility("hidden")))
 @interface PUPXPhotoKitShareAssetActionPerformer : PXPhotoKitAssetActionPerformer
@@ -37,6 +38,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) id <PXMemoryAssetsActionFactory> memoryAssetsActionFactory;
 @property(readonly) Class superclass;
 
 @end

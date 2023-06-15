@@ -11,6 +11,7 @@
 @interface _TtC15SeymourServices22RemoteBrowsingListener : _TtCs12_SwiftObject
 {
     MISSING_TYPE *xpcBroadcastConnection;
+    MISSING_TYPE *pairedCompanionConnection;
     MISSING_TYPE *remoteParticipantBroadcastConnection;
     MISSING_TYPE *remoteBrowsingSystem;
 }

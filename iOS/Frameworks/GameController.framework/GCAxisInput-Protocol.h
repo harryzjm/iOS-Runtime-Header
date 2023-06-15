@@ -6,7 +6,10 @@
 
 #import <GameController/NSObject-Protocol.h>
 
+@class NSSet;
+
 @protocol GCAxisInput <NSObject>
+@property(readonly, copy) NSSet *sources;
 @property(readonly) double lastValueLatency;
 @property(readonly) double lastValueTimestamp;
 @property(readonly) _Bool canWrap;

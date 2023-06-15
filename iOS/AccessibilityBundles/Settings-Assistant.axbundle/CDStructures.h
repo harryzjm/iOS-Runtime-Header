@@ -4,10 +4,3 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#pragma mark Named Structures
-
-struct CGPoint {
-    double _field1;
-    double _field2;
-};
-

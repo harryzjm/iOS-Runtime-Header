@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIImagePickerController.h>
+#import <UIKitCore/UIImagePickerController.h>
 
 @interface UIImagePickerController (MessageUI)
 + (id)mf_systemImagePickerWithSourceType:(long long)arg1;

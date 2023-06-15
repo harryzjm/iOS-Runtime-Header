@@ -9,6 +9,11 @@
 @class AVVisualAnalysisView;
 
 @protocol AVVisualAnalysisViewDelegate <NSObject>
+- (void)visualAnalysisViewDidTapVisualLookupIndicator:(AVVisualAnalysisView *)arg1;
+- (_Bool)shouldBeginTouchInteractionForVisualAnalysisView:(AVVisualAnalysisView *)arg1;
+- (void)visualAnalysisViewDidUpdateVisualLookupAvailability:(AVVisualAnalysisView *)arg1;
+- (void)visualAnalysisViewDidUpdateSubjectAvailability:(AVVisualAnalysisView *)arg1;
+- (void)visualAnalysisViewDidBeginInteraction:(_Bool)arg1;
 - (void)visualAnalysisView:(AVVisualAnalysisView *)arg1 didToggleAnalysisButtonVisibilityToVisible:(_Bool)arg2;
 - (void)visualAnalysisView:(AVVisualAnalysisView *)arg1 prepareForCalloutAction:(SEL)arg2 completion:(void (^)(void))arg3;
 - (void)visualAnalysisViewDidPressAnalysisButton:(AVVisualAnalysisView *)arg1;

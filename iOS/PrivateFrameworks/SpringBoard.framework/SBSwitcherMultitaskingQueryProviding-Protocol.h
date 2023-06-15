@@ -6,7 +6,7 @@
 
 #import <SpringBoard/SBSwitcherQueryProviding-Protocol.h>
 
-@class SBAppLayout, SBSwitcherScrollViewAttributes;
+@class NSArray, SBAppLayout, SBSwitcherScrollViewAttributes;
 
 @protocol SBSwitcherMultitaskingQueryProviding <SBSwitcherQueryProviding>
 - (void)resetAdjustedScrollingState;
@@ -18,5 +18,7 @@
 - (SBSwitcherScrollViewAttributes *)scrollViewAttributes;
 - (double)contentPageViewScaleForAppLayout:(SBAppLayout *)arg1 withScale:(double)arg2;
 - (double)snapshotScaleForAppLayout:(SBAppLayout *)arg1;
+- (NSArray *)adjustedContinuousExposeIdentifiersInStripFromPreviousIdentifiersInStrip:(NSArray *)arg1;
+- (NSArray *)adjustedContinuousExposeIdentifiersInSwitcherFromPreviousIdentifiersInSwitcher:(NSArray *)arg1 identifiersInStrip:(NSArray *)arg2;
 @end
 

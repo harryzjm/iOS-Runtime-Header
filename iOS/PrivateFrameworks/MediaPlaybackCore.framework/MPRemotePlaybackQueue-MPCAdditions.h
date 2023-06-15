@@ -7,8 +7,8 @@
 #import <MediaPlayer/MPRemotePlaybackQueue.h>
 
 @interface MPRemotePlaybackQueue (MPCAdditions)
-- (void)createPlaybackContextWithCompletion:(CDUnknownBlockType)arg1;
-- (void)getPlaybackContextWithCompletion:(CDUnknownBlockType)arg1;
++ (id)inProcessPlaybackContext:(id)arg1;
+- (id)asMusicPlaybackContextWithError:(id *)arg1;
 - (void)getRemoteRepresentationForPlayerPath:(id)arg1 completion:(CDUnknownBlockType)arg2;
 @end
 

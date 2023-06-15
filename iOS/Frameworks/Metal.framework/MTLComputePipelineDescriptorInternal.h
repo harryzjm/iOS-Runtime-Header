@@ -10,12 +10,9 @@ __attribute__((visibility("hidden")))
 @interface MTLComputePipelineDescriptorInternal : MTLComputePipelineDescriptor
 {
     struct MTLComputePipelineDescriptorPrivate _private;
-    struct FlatBufferBuilder _builder;
 }
 
-- (id).cxx_construct;
-- (void).cxx_destruct;
-- (const void *)getPipelineScript;
+- (id)newPipelineScript;
 - (id)newSerializedComputeDataWithFlags:(unsigned long long)arg1 options:(unsigned long long)arg2;
 - (id)newSerializedComputeData;
 - (void)validateWithDevice:(id)arg1;
@@ -60,6 +57,8 @@ __attribute__((visibility("hidden")))
 - (id)binaryLibraries;
 - (void)setBinaryArchives:(id)arg1;
 - (id)binaryArchives;
+- (void)setMaxAccelerationStructureTraversalDepth:(unsigned long long)arg1;
+- (unsigned long long)maxAccelerationStructureTraversalDepth;
 - (void)setMaxCallStackDepth:(unsigned long long)arg1;
 - (unsigned long long)maxCallStackDepth;
 - (void)setSupportAddingBinaryFunctions:(_Bool)arg1;
@@ -68,6 +67,8 @@ __attribute__((visibility("hidden")))
 - (id)linkedFunctions;
 - (void)setFunctionPointers:(id)arg1;
 - (id)functionPointers;
+- (id)gpuCompilerSPIOptions;
+- (void)setGpuCompilerSPIOptions:(id)arg1;
 - (id)driverCompilerOptions;
 - (void)setDriverCompilerOptions:(id)arg1;
 - (id)stageInputDescriptor;

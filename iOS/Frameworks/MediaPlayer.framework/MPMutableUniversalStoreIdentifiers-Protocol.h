@@ -9,6 +9,7 @@
 @class NSArray, NSString;
 
 @protocol MPMutableUniversalStoreIdentifiers <MPUniversalStoreIdentifiers>
+@property(nonatomic) long long lyricsAdamID;
 @property(nonatomic) long long assetAdamID;
 @property(nonatomic) long long reportingAdamID;
 @property(copy, nonatomic) NSString *informalStaticAssetID;

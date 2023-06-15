@@ -17,7 +17,7 @@
     MISSING_TYPE *metricPageName;
     MISSING_TYPE *delegate;
     MISSING_TYPE *catalogClient;
-    MISSING_TYPE *rootProperty;
+    MISSING_TYPE *filterRoot;
     MISSING_TYPE *modalityDetail;
 }
 

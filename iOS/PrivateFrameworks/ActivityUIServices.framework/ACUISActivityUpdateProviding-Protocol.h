@@ -6,12 +6,10 @@
 
 #import <ActivityUIServices/NSObject-Protocol.h>
 
-@class ACUISActivityHostViewController, ACUISActivityPresentationOptions, ACUISSystemApertureSceneHandle, NSString;
+@class ACActivityDescriptor, NSString;
 
 @protocol ACUISActivityUpdateProviding <NSObject>
-@property(readonly, nonatomic) ACUISSystemApertureSceneHandle *systemApertureSceneHandle;
-@property(readonly, nonatomic) ACUISActivityPresentationOptions *presentationOptions;
-@property(readonly, nonatomic) ACUISActivityHostViewController *platterHostViewController;
+@property(readonly, copy, nonatomic) ACActivityDescriptor *descriptor;
 @property(readonly, nonatomic) long long state;
 @property(readonly, copy, nonatomic) NSString *activityIdentifier;
 @end

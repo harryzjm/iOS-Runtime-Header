@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *id;
     MISSING_TYPE *title;
+    MISSING_TYPE *instrumentationKey;
     MISSING_TYPE *index;
     MISSING_TYPE *segue;
     MISSING_TYPE *impressionMetrics;

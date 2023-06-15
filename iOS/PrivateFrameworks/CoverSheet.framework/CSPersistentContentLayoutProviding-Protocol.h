@@ -9,7 +9,7 @@
 - (double)bottomContentInset;
 - (double)listMinY;
 - (double)dateBaselineToComplicationY;
-- (double)dateBaselineToListY;
+- (double)prominentBaselineToListY;
 - (double)timeLabelOffsetForScrollPercent:(double)arg1;
 - (double)timeToSubtitleLabelBaselineDifferenceY;
 - (double)timeLabelBaselineY;

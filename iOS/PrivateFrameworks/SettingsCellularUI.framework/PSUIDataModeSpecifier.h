@@ -15,11 +15,11 @@ __attribute__((visibility("hidden")))
     CTServiceDescriptor *_serviceDescriptor;
     CoreTelephonyClient *_ctClient;
     PSListController *_hostController;
-    _Bool _showDrillDown;
+    unsigned long long _showDataMode;
 }
 
 - (void).cxx_destruct;
-@property _Bool showDrillDown; // @synthesize showDrillDown=_showDrillDown;
+@property unsigned long long showDataMode; // @synthesize showDataMode=_showDataMode;
 - (id)getLogger;
 - (id)interfaceCostFromBool:(_Bool)arg1;
 - (id)lowDataModeFromBool:(_Bool)arg1;
@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (id)isLowDataModeEnabled:(id)arg1;
 - (void)setDataMode:(id)arg1 specifier:(id)arg2;
 - (id)getDataMode:(id)arg1;
+- (_Bool)isLowDataModeSupported;
 - (_Bool)isHighDataModeSupported;
 - (void)populateDrillDownSpecifiers;
 - (void)setFooterText;

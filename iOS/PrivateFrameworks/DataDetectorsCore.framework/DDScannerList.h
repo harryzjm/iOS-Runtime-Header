@@ -14,22 +14,14 @@ __attribute__((visibility("hidden")))
     _Bool _spotlightSuggestionsEnabled;
     int _type;
     NSString *_hash;
+    NSString *_language;
+    _Bool _languageHighConfidence;
     NSMutableArray *_waitQueue;
     NSMutableArray *_scannerCache;
     NSMutableArray *_activeScanners;
 }
 
 - (void).cxx_destruct;
-- (unsigned long long)busyCount;
-- (unsigned long long)totalCount;
-- (id)dequeueJob;
-- (void)enqueueJob:(CDUnknownBlockType)arg1 withIdentifier:(long long)arg2;
-- (void)pushBackScanner:(id)arg1;
-- (id)scannerCreate;
-- (_Bool)cancelJob:(long long)arg1;
-- (void)activateScanner:(id)arg1;
-- (id)getCachedScanner;
-- (id)initWithConfiguration:(id)arg1;
 
 @end
 

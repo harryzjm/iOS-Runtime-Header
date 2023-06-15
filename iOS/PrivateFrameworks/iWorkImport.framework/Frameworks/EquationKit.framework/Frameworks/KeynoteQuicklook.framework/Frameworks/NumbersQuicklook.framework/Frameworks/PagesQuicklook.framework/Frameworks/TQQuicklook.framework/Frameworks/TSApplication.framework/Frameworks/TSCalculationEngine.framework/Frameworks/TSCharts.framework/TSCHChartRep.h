@@ -25,9 +25,9 @@
     int _textureByGlyphStyle;
     TSCHSearchSelection *_selection;
     TSCHSelectionPath *_activeTextEditingPath;
+    NSArray *_renderers;
     CALayer *_downloadIndicatorLayer;
     NSMutableArray *_renderersWaitingForDownload;
-    NSArray *_renderers;
     long long _currentChunk;
     unsigned long long _inDynamicStandinOperation;
     unsigned long long _inDynamicStandinLayoutOperation;
@@ -54,12 +54,12 @@
 @property(nonatomic) int chunkPhase; // @synthesize chunkPhase=_chunkPhase;
 @property(nonatomic) _Bool buildingChunks; // @synthesize buildingChunks=_buildingChunks;
 @property(nonatomic) _Bool editorIsEditingInfo; // @synthesize editorIsEditingInfo=_editorIsEditingInfo;
-@property(retain, nonatomic) NSArray *renderers; // @synthesize renderers=_renderers;
 @property(retain, nonatomic) NSMutableArray *renderersWaitingForDownload; // @synthesize renderersWaitingForDownload=_renderersWaitingForDownload;
 @property(retain, nonatomic) CALayer *downloadIndicatorLayer; // @synthesize downloadIndicatorLayer=_downloadIndicatorLayer;
 @property(nonatomic) struct CGPoint lastSubselectionLayerRelativeReferencePosition; // @synthesize lastSubselectionLayerRelativeReferencePosition=_lastSubselectionLayerRelativeReferencePosition;
 @property(nonatomic) int renderPassChunkPhase; // @synthesize renderPassChunkPhase=_renderPassChunkPhase;
 @property(readonly, nonatomic) _Bool chartRepGoingAway; // @synthesize chartRepGoingAway=_chartRepGoingAway;
+@property(retain, nonatomic) NSArray *renderers; // @synthesize renderers=_renderers;
 @property(readonly, nonatomic) _Bool is2DRepFor3DChartRep; // @synthesize is2DRepFor3DChartRep=_is2DRepFor3DChartRep;
 @property(readonly, nonatomic) _Bool drawingSearchReference; // @synthesize drawingSearchReference=_drawingSearchReference;
 @property(readonly, nonatomic) TSCHSelectionPath *activeTextEditingPath; // @synthesize activeTextEditingPath=_activeTextEditingPath;
@@ -69,7 +69,7 @@
 @property(readonly, nonatomic) struct CGRect outerShadowFrame;
 - (void)p_removeOrShowAndPositionMessageOverlay;
 - (void)p_invalidateMessageOverlay;
-- (id)p_textImageForPath:(const struct CGPath *)arg1 renderer:(id)arg2 selection:(id)arg3 shouldPulsate:(_Bool)arg4;
+- (id)p_textImageForPath:(struct CGPath *)arg1 renderer:(id)arg2 selection:(id)arg3 shouldPulsate:(_Bool)arg4;
 - (_Bool)p_legendHitByLayoutPoint:(struct CGPoint)arg1;
 - (_Bool)shadowsEnabled;
 - (_Bool)buildShouldUseRenderer:(id)arg1;

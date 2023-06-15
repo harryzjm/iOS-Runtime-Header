@@ -22,13 +22,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (long long)_minAgeFromObject:(id)arg1;
-+ (id)_tokenResultFromTokenString:(id)arg1;
-+ (id)_tokenFromObject:(id)arg1;
 + (id)_requestDictFromMinimumAge:(long long)arg1 walletData:(id)arg2 nonce:(id)arg3;
-+ (id)_sessionWithBag:(id)arg1 account:(id)arg2 accountParameters:(id)arg3;
-+ (id)_encoderWithBag:(id)arg1 account:(id)arg2;
-+ (id)_promiseToFetchURLResponseForAccount:(id)arg1 accountParameters:(id)arg2 url:(id)arg3 bag:(id)arg4 requestBody:(id)arg5;
-+ (id)_accountToUseFromGivenAccount:(id)arg1 accountParameters:(id)arg2 accountStore:(id)arg3;
 + (id)_nonceFromString:(id)arg1;
 + (id)_identityRequestWithDescriptor:(id)arg1 nonce:(id)arg2;
 + (id)_identityController;
@@ -41,7 +35,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) id <AMSBagProtocol> bag; // @synthesize bag=_bag;
 @property(retain, nonatomic) NSDictionary *accountParameters; // @synthesize accountParameters=_accountParameters;
 @property(retain, nonatomic) ACAccount *account; // @synthesize account=_account;
-- (id)_promiseToPromptAfterFailure;
 - (id)_promiseToFetchIDCardTokenURL:(id)arg1 requestBody:(id)arg2;
 - (id)_promiseToLoadPVTURLWithBody:(id)arg1;
 - (id)_dataFromIDCardForMinimumAge:(long long)arg1 nonce:(id)arg2;

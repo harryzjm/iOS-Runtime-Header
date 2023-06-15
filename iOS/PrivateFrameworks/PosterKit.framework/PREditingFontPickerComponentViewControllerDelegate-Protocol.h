@@ -4,9 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class PREditingFontPickerComponentViewController, UIFont;
+#import <PosterKit/NSObject-Protocol.h>
 
-@protocol PREditingFontPickerComponentViewControllerDelegate
-- (void)fontPickerComponentViewController:(PREditingFontPickerComponentViewController *)arg1 didSelectFont:(UIFont *)arg2;
+@class PREditingFontPickerComponentViewController, PREditingFontPickerItem;
+
+@protocol PREditingFontPickerComponentViewControllerDelegate <NSObject>
+- (void)fontPickerComponentViewControllerDidChangeHeight:(PREditingFontPickerComponentViewController *)arg1;
+- (_Bool)fontPickerComponentViewControllerShouldShowWeightSliderForSelectedFont:(PREditingFontPickerComponentViewController *)arg1;
+- (void)fontPickerComponentViewController:(PREditingFontPickerComponentViewController *)arg1 didChangeFontWeight:(double)arg2;
+- (void)fontPickerComponentViewController:(PREditingFontPickerComponentViewController *)arg1 didSelectItem:(PREditingFontPickerItem *)arg2;
 @end
 

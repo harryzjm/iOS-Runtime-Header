@@ -11,7 +11,6 @@
 @protocol NCAuxiliaryOptionsProviding <NSObject>
 
 @optional
-@property(readonly, copy, nonatomic) UIColor *auxiliaryOptionsTintColor;
 @property(readonly, copy, nonatomic) UIColor *auxiliaryOptionsTextColor;
 @property(readonly, copy, nonatomic) NSArray *auxiliaryOptionActions;
 @property(readonly, copy, nonatomic) NSString *auxiliaryOptionsSummaryText;

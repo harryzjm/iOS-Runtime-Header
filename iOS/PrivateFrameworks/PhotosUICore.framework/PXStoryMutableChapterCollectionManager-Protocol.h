@@ -8,6 +8,7 @@
 @protocol NSCopying, PXDisplayAsset;
 
 @protocol PXStoryMutableChapterCollectionManager
+- (void)deleteAllChapters;
 - (void)deleteChapterWithIdentifier:(NSObject<NSCopying> *)arg1;
 - (void)insertChapterWithFirstAsset:(id <PXDisplayAsset>)arg1 configuration:(void (^)(id <PXStoryMutableChapter>))arg2;
 - (void)editChapterWithIdentifier:(NSObject<NSCopying> *)arg1 changeRequest:(void (^)(id <PXStoryMutableChapter>))arg2;

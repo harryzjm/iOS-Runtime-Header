@@ -7,15 +7,22 @@
 #import <objc/NSObject.h>
 
 @class AVObservationController, AVPlayer, AVValueTiming, NSArray;
+@protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface AVPlayerTimeController : NSObject
 {
+    NSObject<OS_dispatch_queue> *_seekQueue;
+    _Bool _pendingSeek;
+    CDStruct_1b6d18a9 _toleranceBefore;
+    CDStruct_1b6d18a9 _toleranceAfter;
+    _Bool _seekingInternal;
     AVPlayer *_player;
     AVValueTiming *_timing;
     AVValueTiming *_minTiming;
     AVValueTiming *_maxTiming;
     AVObservationController *_observationController;
+    CDStruct_1b6d18a9 _seekToTimeInternal;
 }
 
 + (id)keyPathsForValuesAffectingReadyToPlay;
@@ -26,6 +33,8 @@ __attribute__((visibility("hidden")))
 + (id)keyPathsForValuesAffectingMaxTime;
 + (id)keyPathsForValuesAffectingReversePlaybackEndTime;
 - (void).cxx_destruct;
+@property(nonatomic) CDStruct_1b6d18a9 seekToTimeInternal; // @synthesize seekToTimeInternal=_seekToTimeInternal;
+@property(nonatomic, getter=isSeekingInternal) _Bool seekingInternal; // @synthesize seekingInternal=_seekingInternal;
 @property(readonly, nonatomic) AVObservationController *observationController; // @synthesize observationController=_observationController;
 @property(retain, nonatomic) AVValueTiming *maxTiming; // @synthesize maxTiming=_maxTiming;
 @property(retain, nonatomic) AVValueTiming *minTiming; // @synthesize minTiming=_minTiming;
@@ -50,6 +59,8 @@ __attribute__((visibility("hidden")))
 - (void)stopTimingObservation;
 - (void)startTimingObservation;
 - (void)dealloc;
+- (void)_commonInit;
+- (id)initForIFramesWithPlayerItem:(id)arg1;
 - (id)initWithPlayer:(id)arg1;
 
 @end

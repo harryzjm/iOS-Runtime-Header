@@ -4,11 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, RBSLaunchContext, RBSProcessIdentity;
+@class NSObject, NSString, NSURL, RBSLaunchContext, RBSProcessIdentity;
+@protocol OS_xpc_object;
 
 @protocol RBContainerManaging
 - (NSString *)_retryLookupAfterCacheMissForIdentity:(RBSProcessIdentity *)arg1 context:(RBSLaunchContext *)arg2 persona:(NSString *)arg3 containerIdentifier:(NSString *)arg4;
 - (void)_probeCache:(const void *)arg1 withContainerIdentifier:(NSString *)arg2 persona:(NSString *)arg3 completionHandler:(void (^)(NSString *, NSError *))arg4;
+- (_Bool)containerRequiredForServiceDict:(NSObject<OS_xpc_object> *)arg1;
+- (NSURL *)sandboxContainerURLForExtensionContext:(RBSLaunchContext *)arg1 containerOverrideIdentifier:(NSString *)arg2;
 - (NSString *)containerPathForIdentity:(RBSProcessIdentity *)arg1 context:(RBSLaunchContext *)arg2 persona:(NSString *)arg3 error:(id *)arg4;
 @end
 

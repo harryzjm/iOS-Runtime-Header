@@ -62,6 +62,7 @@ struct Indexer {
     struct shared_ptr<skitbridge::Tokenizer> tokenizer;
     struct shared_ptr<skitbridge::Analyzer> analyzer;
     struct Alias alias;
+    unsigned char trial_factors;
 };
 
 struct Profile {
@@ -72,11 +73,38 @@ struct Searcher {
     struct ContextV2 context;
     struct IndexReader index_reader;
     struct Alias alias;
+    unsigned char trial_factors;
 };
 
 struct Tokenizer;
 
+struct __raw {
+    unsigned long long __words[3];
+};
+
 struct __shared_weak_count;
+
+struct basic_string<char, std::char_traits<char>, std::allocator<char>> {
+    struct __compressed_pair<std::basic_string<char>::__rep, std::allocator<char>> {
+        struct __rep {
+            union {
+                struct __long {
+                    char *__data_;
+                    unsigned long long __size_;
+                    unsigned int __cap_:63;
+                    unsigned int __is_long_:1;
+                } __l;
+                struct __short {
+                    char __data_[23];
+                    unsigned char __padding_[0];
+                    unsigned int __size_:7;
+                    unsigned int __is_long_:1;
+                } __s;
+                struct __raw __r;
+            } ;
+        } __value_;
+    } __r_;
+};
 
 struct basic_string<char16_t, std::char_traits<char16_t>, std::allocator<char16_t>> {
     struct __compressed_pair<std::basic_string<char16_t>::__rep, std::allocator<char16_t>> {
@@ -85,21 +113,23 @@ struct basic_string<char16_t, std::char_traits<char16_t>, std::allocator<char16_
                 struct __long {
                     unsigned short *__data_;
                     unsigned long long __size_;
-                    unsigned long long __cap_;
+                    unsigned int __cap_:63;
+                    unsigned int __is_long_:1;
                 } __l;
                 struct __short {
                     unsigned short __data_[11];
-                    struct {
-                        unsigned char __xx[1];
-                        unsigned char __size_;
-                    } ;
+                    unsigned char __padding_[1];
+                    unsigned int __size_:7;
+                    unsigned int __is_long_:1;
                 } __s;
-                struct __raw {
-                    unsigned long long __words[3];
-                } __r;
+                struct __raw __r;
             } ;
         } __value_;
     } __r_;
+};
+
+struct path {
+    struct basic_string<char, std::char_traits<char>, std::allocator<char>> __pn_;
 };
 
 struct shared_ptr<skit::internal::AliasImpl> {
@@ -119,6 +149,11 @@ struct shared_ptr<skit::internal::IndexReaderImpl> {
 
 struct shared_ptr<skitbridge::Analyzer> {
     struct Analyzer *__ptr_;
+    struct __shared_weak_count *__cntrl_;
+};
+
+struct shared_ptr<skitbridge::Searcher> {
+    struct Searcher *__ptr_;
     struct __shared_weak_count *__cntrl_;
 };
 
@@ -167,4 +202,12 @@ struct vector_downward {
     char *cur_;
     char *scratch_;
 };
+
+#pragma mark Typedef'd Structures
+
+// Template types
+typedef struct shared_ptr<skitbridge::Searcher> {
+    struct Searcher *__ptr_;
+    struct __shared_weak_count *__cntrl_;
+} shared_ptr_78177662;
 

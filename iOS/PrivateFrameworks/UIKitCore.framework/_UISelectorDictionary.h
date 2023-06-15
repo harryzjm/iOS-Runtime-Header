@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 @class NSArray, NSMapTable, _UISelectorSet;
 
 __attribute__((visibility("hidden")))
-@interface _UISelectorDictionary : NSObject <NSCopying>
+@interface _UISelectorDictionary : NSObject
 {
     NSMapTable *_map;
 }

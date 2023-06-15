@@ -10,6 +10,6 @@
 @class NSString;
 
 @protocol SXComponentState <NSObject, NSCopying>
-@property(nonatomic, readonly) NSString *identifier;
+@property(readonly, nonatomic) NSString *identifier;
 @end
 

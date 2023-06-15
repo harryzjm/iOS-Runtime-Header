@@ -25,6 +25,7 @@
 - (void)switcherContentController:(id <SBSwitcherContentViewControlling>)arg1 setPointerInteractionsEnabled:(_Bool)arg2;
 - (void)switcherContentController:(id <SBSwitcherContentViewControlling>)arg1 setContainerStatusBarHidden:(_Bool)arg2 partsHidden:(unsigned long long)arg3 animationDuration:(double)arg4;
 - (void)switcherContentController:(id <SBSwitcherContentViewControlling>)arg1 requestNewWindowForBundleIdentifier:(NSString *)arg2;
+- (void)switcherContentController:(id <SBSwitcherContentViewControlling>)arg1 setInterfaceOrientationFromUserResizing:(long long)arg2 forDisplayItem:(SBDisplayItem *)arg3;
 - (void)switcherContentController:(id <SBSwitcherContentViewControlling>)arg1 setWallpaperStyle:(long long)arg2;
 - (void)switcherContentController:(id <SBSwitcherContentViewControlling>)arg1 setWallpaperScale:(double)arg2 withAnimationMode:(long long)arg3 completion:(void (^)(_Bool, _Bool))arg4;
 - (void)switcherContentController:(id <SBSwitcherContentViewControlling>)arg1 setHomeScreenBackdropBlurMaterialRecipeName:(NSString *)arg2 withAnimationMode:(long long)arg3 completion:(void (^)(_Bool, _Bool))arg4;

@@ -16,9 +16,17 @@ __attribute__((visibility("hidden")))
 + (id)validKeyPaths;
 + (id)streamNames;
 + (id)identifier;
++ (id)configurationForNowPlaying;
++ (id)syncPolicyForNowPlaying;
++ (id)storeConfigurationForNowPlaying;
++ (id)configurationForRoute;
++ (id)syncPolicyForRoute;
++ (id)storeConfigurationForRoute;
 + (id)configurationForStreamingStats;
 + (id)syncPolicyForStreamingStats;
 + (id)storeConfigurationForStreamingStats;
++ (id)NowPlaying;
++ (id)Route;
 + (id)StreamingStats;
 
 @end

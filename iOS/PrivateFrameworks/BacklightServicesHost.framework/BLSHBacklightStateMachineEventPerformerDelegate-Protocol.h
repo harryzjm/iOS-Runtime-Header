@@ -6,12 +6,12 @@
 
 #import <BacklightServicesHost/NSObject-Protocol.h>
 
-@class BLSBacklightChangeEvent;
+@class NSArray;
 @protocol BLSHBacklightStateMachineEventPerforming;
 
 @protocol BLSHBacklightStateMachineEventPerformerDelegate <NSObject>
-- (void)eventPerformer:(id <BLSHBacklightStateMachineEventPerforming>)arg1 didUpdateDisplayStateForState:(long long)arg2 forEvent:(BLSBacklightChangeEvent *)arg3;
-- (void)eventPerformer:(id <BLSHBacklightStateMachineEventPerforming>)arg1 willUpdateDisplayStateForState:(long long)arg2 forEvent:(BLSBacklightChangeEvent *)arg3;
-- (void)eventPerformer:(id <BLSHBacklightStateMachineEventPerforming>)arg1 didUpdateVisualContentsToBeginTransitionToState:(long long)arg2 forEvent:(BLSBacklightChangeEvent *)arg3;
+@property(readonly, nonatomic, getter=isAlwaysOnSuppressed) _Bool alwaysOnSuppressed;
+- (void)eventPerformer:(id <BLSHBacklightStateMachineEventPerforming>)arg1 didUpdateDisplayStateForState:(long long)arg2 forEvents:(NSArray *)arg3 abortedEvents:(NSArray *)arg4;
+- (void)eventPerformer:(id <BLSHBacklightStateMachineEventPerforming>)arg1 didUpdateVisualContentsToBeginTransitionToState:(long long)arg2 forEvents:(NSArray *)arg3 abortedEvents:(NSArray *)arg4;
 @end
 

@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, QLItem, QLItemThumbnailGenerator, UIImage;
+@class NSString, QLItem, QLItemThumbnailGenerator, QLThumbnailRepresentation, QLThumbnailVersion;
 
 __attribute__((visibility("hidden")))
 @interface QLSingleItemThumbnailGenerator : NSObject
 {
-    UIImage *_thumbnail;
+    QLThumbnailRepresentation *_thumbnailRepresentation;
+    QLThumbnailVersion *_version;
     struct CGSize _thumbnailSize;
     _Bool _isRepresentative;
     QLItemThumbnailGenerator *_thumbnailGenerator;
@@ -24,10 +25,12 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) QLItemThumbnailGenerator *thumbnailGenerator; // @synthesize thumbnailGenerator=_thumbnailGenerator;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (void)_handleThumbnailGenerationFinishedWithThumbnail:(id)arg1 size:(struct CGSize)arg2 clientCompletionBlock:(CDUnknownBlockType)arg3;
+- (void)_handleThumbnailGenerationFinishedWithThumbnailRepresentation:(id)arg1 size:(struct CGSize)arg2 version:(id)arg3 clientCompletionBlock:(CDUnknownBlockType)arg4;
 - (id)genericIconWithSize:(struct CGSize)arg1;
-- (void)_provideThumbnailForUbiquitousURLWithSize:(struct CGSize)arg1 completionBlock:(CDUnknownBlockType)arg2;
+- (void)_generateUncachedThumbnailWithSize:(struct CGSize)arg1 contentMode:(unsigned long long)arg2 thumbnailVersion:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
+- (void)generateThumbnailWithSize:(struct CGSize)arg1 contentMode:(unsigned long long)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)generateThumbnailWithSize:(struct CGSize)arg1 completionBlock:(CDUnknownBlockType)arg2;
+- (void)_thumbnailVersionForItem:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (id)initWithItem:(id)arg1;
 
 // Remaining properties

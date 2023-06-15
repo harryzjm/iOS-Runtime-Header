@@ -7,6 +7,7 @@
 #import <CoverSheet/CSCoverSheetViewTransitioning-Protocol.h>
 
 @protocol CSCoverSheetViewDelegate <CSCoverSheetViewTransitioning>
+- (void)setRestrictsTouchesForRemoteView:(_Bool)arg1;
 - (_Bool)interpretsTouchLocationAsContentInListRestrictedRect:(struct CGPoint)arg1;
 - (_Bool)shouldModifyPageScrolling;
 @end

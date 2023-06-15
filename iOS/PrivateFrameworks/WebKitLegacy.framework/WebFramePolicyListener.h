@@ -11,9 +11,9 @@
 __attribute__((visibility("hidden")))
 @interface WebFramePolicyListener : NSObject
 {
-    struct RefPtr<WebCore::Frame, WTF::RawPtrTraits<WebCore::Frame>, WTF::DefaultRefDerefTraits<WebCore::Frame>> _frame;
-    struct PolicyCheckIdentifier _identifier;
-    struct Function<void (WebCore::PolicyAction, WebCore::PolicyCheckIdentifier)> _policyFunction;
+    struct RefPtr<WebCore::LocalFrame, WTF::RawPtrTraits<WebCore::LocalFrame>, WTF::DefaultRefDerefTraits<WebCore::LocalFrame>> _frame;
+    ProcessQualified_bb72c1c6 _identifier;
+    struct Function<void (WebCore::PolicyAction, WebCore::ProcessQualified<WTF::ObjectIdentifierGeneric<WebCore::PolicyCheckIdentifierType, WTF::ObjectIdentifierMainThreadAccessTraits>>)> _policyFunction;
     struct RetainPtr<NSURL> _appLinkURL;
     unsigned char _defaultPolicy;
 }
@@ -28,8 +28,8 @@ __attribute__((visibility("hidden")))
 - (void)receivedPolicyDecision:(unsigned char)arg1;
 - (void)dealloc;
 - (void)invalidate;
-- (id)initWithFrame:(NakedPtr_4ac97545)arg1 identifier:(struct PolicyCheckIdentifier)arg2 policyFunction:(void *)arg3 defaultPolicy:(unsigned char)arg4 appLinkURL:(id)arg5;
-- (id)initWithFrame:(NakedPtr_4ac97545)arg1 identifier:(struct PolicyCheckIdentifier)arg2 policyFunction:(void *)arg3 defaultPolicy:(unsigned char)arg4;
+- (id)initWithFrame:(NakedPtr_9be60511)arg1 identifier:(ProcessQualified_bb72c1c6)arg2 policyFunction:(void *)arg3 defaultPolicy:(unsigned char)arg4 appLinkURL:(id)arg5;
+- (id)initWithFrame:(NakedPtr_9be60511)arg1 identifier:(ProcessQualified_bb72c1c6)arg2 policyFunction:(void *)arg3 defaultPolicy:(unsigned char)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

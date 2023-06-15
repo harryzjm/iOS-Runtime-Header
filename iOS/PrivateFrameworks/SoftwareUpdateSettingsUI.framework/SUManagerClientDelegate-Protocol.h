@@ -6,7 +6,7 @@
 
 #import <SoftwareUpdateSettingsUI/NSObject-Protocol.h>
 
-@class NSError, NSUUID, SUDescriptor, SUDownload, SUInstallPolicy, SUManagerClient, SURollbackDescriptor, SURollbackOptions, SUScanOptions, SUScanResults;
+@class NSError, NSUUID, SUDescriptor, SUDownload, SUInstallPolicy, SUManagerClient, SURollbackDescriptor, SURollbackOptions, SURollbackSuggestionInfo, SUScanOptions, SUScanResults;
 
 @protocol SUManagerClientDelegate <NSObject>
 
@@ -14,10 +14,13 @@
 - (void)client:(SUManagerClient *)arg1 downloadWasInvalidatedForNewUpdateAvailable:(SUDescriptor *)arg2;
 - (void)client:(SUManagerClient *)arg1 scanDidCompleteWithNewUpdateAvailable:(SUDescriptor *)arg2 error:(NSError *)arg3;
 - (void)client:(SUManagerClient *)arg1 scanRequestDidFinishForOptions:(SUScanOptions *)arg2 update:(SUDescriptor *)arg3 error:(NSError *)arg4;
+- (void)client:(SUManagerClient *)arg1 inUserInteraction:(void (^)(_Bool, NSError *))arg2;
+- (void)client:(SUManagerClient *)arg1 presentingRecommendedUpdate:(SUDescriptor *)arg2 shouldPresent:(_Bool)arg3;
 - (void)automaticUpdateV2EnabledDidChange:(SUManagerClient *)arg1;
 - (void)client:(SUManagerClient *)arg1 managedInstallationRequested:(SUInstallPolicy *)arg2;
 - (void)client:(SUManagerClient *)arg1 installTonightScheduled:(_Bool)arg2 operationID:(NSUUID *)arg3;
-- (void)deviceBootedAfterSplatOnlyRollback:(SUManagerClient *)arg1;
+- (void)deviceBootedAfterSplatOnlyRollback:(SUManagerClient *)arg1 rollbackDescriptor:(SURollbackDescriptor *)arg2;
+- (void)client:(SUManagerClient *)arg1 rollbackSuggested:(SUDescriptor *)arg2 info:(SURollbackSuggestionInfo *)arg3;
 - (void)client:(SUManagerClient *)arg1 scheduledRollbackReadyForReboot:(SURollbackDescriptor *)arg2;
 - (void)client:(SUManagerClient *)arg1 rollbackDidFinish:(SURollbackDescriptor *)arg2;
 - (void)client:(SUManagerClient *)arg1 rollbackDidFail:(SURollbackDescriptor *)arg2 withError:(NSError *)arg3;
@@ -28,9 +31,11 @@
 - (void)client:(SUManagerClient *)arg1 installDidFinish:(SUDescriptor *)arg2;
 - (void)client:(SUManagerClient *)arg1 installDidFail:(SUDescriptor *)arg2 withError:(NSError *)arg3;
 - (void)client:(SUManagerClient *)arg1 installDidStart:(SUDescriptor *)arg2;
+- (void)client:(SUManagerClient *)arg1 installWantsToStart:(SUDescriptor *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
+- (void)userWantsToDeferInstall:(SUManagerClient *)arg1;
 - (void)client:(SUManagerClient *)arg1 clearingSpaceForDownload:(SUDownload *)arg2 clearingSpace:(_Bool)arg3;
-- (void)client:(SUManagerClient *)arg1 downloadDidFinish:(SUDownload *)arg2 withInstallPolicy:(SUInstallPolicy *)arg3;
 - (void)client:(SUManagerClient *)arg1 downloadDidFinish:(SUDownload *)arg2;
+- (void)client:(SUManagerClient *)arg1 downloadDidFinish:(SUDownload *)arg2 withInstallPolicy:(SUInstallPolicy *)arg3;
 - (void)client:(SUManagerClient *)arg1 downloadDidFail:(SUDownload *)arg2 withError:(NSError *)arg3;
 - (void)client:(SUManagerClient *)arg1 downloadProgressDidChange:(SUDownload *)arg2;
 - (void)client:(SUManagerClient *)arg1 downloadDidStart:(SUDownload *)arg2;

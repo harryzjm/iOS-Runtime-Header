@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 @class UIStatusBarForegroundStyleAttributes, UIStatusBarStyleRequest;
 
 __attribute__((visibility("hidden")))
-@interface UIStatusBarStyleAttributes : NSObject <NSCopying>
+@interface UIStatusBarStyleAttributes : NSObject
 {
     UIStatusBarStyleRequest *_request;
     UIStatusBarForegroundStyleAttributes *_foregroundStyle;

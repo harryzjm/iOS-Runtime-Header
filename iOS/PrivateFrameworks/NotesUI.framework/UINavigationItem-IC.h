@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UINavigationItem.h>
+#import <UIKitCore/UINavigationItem.h>
 
 @interface UINavigationItem (IC)
 - (void)ic_setTitle:(id)arg1 andSubtitle:(id)arg2;

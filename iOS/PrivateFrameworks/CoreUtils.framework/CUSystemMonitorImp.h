@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
     CLLocationManager *_locationManager;
     unsigned int _locationVisitsFlags;
     _Bool _manateeAvailable;
+    int _manateeState;
     _Bool _manateeObserving;
     int _fmfDevicesChangedToken;
     int _meDeviceChangedToken;
@@ -143,6 +144,8 @@ __attribute__((visibility("hidden")))
 - (void)_meDeviceCheckStart:(_Bool)arg1;
 - (void)_meDeviceMonitorStop;
 - (void)_meDeviceMonitorStart;
+- (void)_forceManateeStateRefresh;
+- (void)_manateeRead;
 - (void)_manateeChanged:(id)arg1;
 - (void)_manateeMonitorStop;
 - (void)_manateeMonitorStart;

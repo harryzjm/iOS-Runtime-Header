@@ -6,31 +6,46 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSString, _UIAsyncInvocation, _UIHostedWindow;
+@class NSArray, NSString, NSUUID, _UIAsyncInvocation, _UIHostedWindow, _UITouchesBeganObserverGestureRecognizer, _UIViewServiceSessionActivityRecord;
 
 __attribute__((visibility("hidden")))
 @interface _UIViewServiceTextEffectsOperator : NSObject
 {
     id _remoteViewControllerProxy;
+    NSUUID *_sessionIdentifier;
     _Bool _wasInvalidated;
     _UIAsyncInvocation *_prepareForDisconnectionInvocation;
     _UIAsyncInvocation *_invalidationInvocation;
     _UIHostedWindow *_hostedWindow;
-    struct CGPoint _windowOffset;
+    struct CGPoint _windowOrigin;
     struct UIEdgeInsets _safeAreaInsets;
-    struct CGSize _sceneSize;
+    struct CGSize _hostedViewSize;
+    struct CGRect _hostedViewReference;
     _Bool _canRestoreInputViews;
     _Bool _isRestoringInputViews;
     _Bool _didResignForDisappear;
     _Bool _localVCDisablesAutomaticBehaviors;
     NSArray *_allowedNotifications;
+    _UIViewServiceSessionActivityRecord *_sessionActivityRecord;
+    _UITouchesBeganObserverGestureRecognizer *_hostedTEWActivityObserverGesture;
+    _UITouchesBeganObserverGestureRecognizer *_hostedRemoteKeyboardWindowActivityObserverGesture;
 }
 
 + (id)XPCInterface;
 + (void)initialize;
 + (_Bool)_shouldAddServiceOperator;
-+ (id)operatorWithRemoteViewControllerProxy:(id)arg1 hostPID:(int)arg2;
++ (id)operatorWithRemoteViewControllerProxy:(id)arg1 hostPID:(int)arg2 sessionIdentifier:(id)arg3;
 - (void).cxx_destruct;
+- (void)_handleRemoteKeyboardActivityObserverGesture:(id)arg1;
+- (void)_handleTEWActivityObserverGesture:(id)arg1;
+- (void)_uninstallActivityObserverGesturesFromKeyboardWindowIfNeeded;
+- (void)_installActivityObserverGesturesInKeyboardWindowIfNeeded;
+- (void)_uninstallActivityObserverGestureIfNeeded;
+- (void)_installActivityObserverGestureIfNeeded;
+- (void)_inputResponderReloaded:(id)arg1;
+- (void)_windowDidBecomeApplicationKey:(id)arg1;
+@property(readonly, nonatomic) NSUUID *_sessionIdentifier;
+@property(readonly, nonatomic) unsigned long long _providerType;
 - (void)finishRotationFromInterfaceOrientation:(long long)arg1;
 - (void)rotateToInterfaceOrientation:(long long)arg1 duration:(double)arg2;
 - (void)willRotateToInterfaceOrientation:(long long)arg1 duration:(double)arg2;
@@ -40,6 +55,8 @@ __attribute__((visibility("hidden")))
 - (id)invalidate;
 - (void)__prepareForDisconnectionWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)__hostDidReceiveGestureDirection:(long long)arg1 authenticationMessage:(id)arg2;
+- (void)_removeTextEffectsWindowMatchAnimations;
+- (void)__setRemoteTextEffectsWindowMatchesLayerWithContextId:(unsigned int)arg1 renderId:(unsigned long long)arg2;
 - (void)__hostViewWillDisappear:(_Bool)arg1;
 - (void)__hostViewWillAppear:(_Bool)arg1;
 - (void)_viewServiceHostWillEnterForeground:(id)arg1;
@@ -48,13 +65,15 @@ __attribute__((visibility("hidden")))
 - (void)__hostDidEnterBackground;
 - (void)__setHostAllowedNotifications:(id)arg1;
 - (void)__setNextAutomaticOrderOutDirection:(int)arg1 duration:(double)arg2;
-- (void)__setSceneSize:(struct CGSize)arg1;
-- (void)_resetSceneSize;
+- (void)__setHostedViewReference:(struct CGRect)arg1;
+- (void)__setHostedViewSize:(struct CGSize)arg1;
+- (void)_resetHostedViewSize;
 - (void)__setSafeAreaInsets:(struct UIEdgeInsets)arg1;
 - (void)_reloadSafeInsets;
 - (void)__setWindowOffset:(struct CGPoint)arg1;
+- (void)_screenInterfaceOrientationDidChange:(id)arg1;
+- (void)__hostViewDidMoveToScreenWithNewHostingHandleReplyHandler:(CDUnknownBlockType)arg1;
 - (void)__createHostedTextEffectsWithReplyHandler:(CDUnknownBlockType)arg1;
-- (void)hostedWindow:(id)arg1 didSetResponderTargetForCalloutBar:(id)arg2;
 - (void)hostedWindow:(id)arg1 didSetFirstResponder:(id)arg2;
 - (void)makeHostWindowKey;
 - (void)dealloc;

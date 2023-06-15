@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)performPrimitiveOperationUsingObject:(id)arg1 andObject:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (SEL)selector;
+- (unsigned long long)operatorType;
 - (id)symbol;
 
 @end

@@ -18,6 +18,7 @@
 @property(nonatomic) long long returnKeyType;
 @property(nonatomic) long long keyboardAppearance;
 @property(nonatomic) long long keyboardType;
+@property(nonatomic) long long inlinePredictionType;
 @property(nonatomic) long long smartInsertDeleteType;
 @property(nonatomic) long long smartDashesType;
 @property(nonatomic) long long smartQuotesType;

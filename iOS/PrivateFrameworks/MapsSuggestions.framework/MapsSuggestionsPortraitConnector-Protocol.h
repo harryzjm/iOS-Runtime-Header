@@ -6,9 +6,10 @@
 
 #import <MapsSuggestions/NSObject-Protocol.h>
 
-@class NSArray, NSDate, NSString, PPConnectionsCriteria, PPFeedback, PPLocationQuery, PPNamedEntityQuery;
+@class NSArray, NSDate, NSString, PPConnectionsCriteria, PPFeedback, PPLocationQuery, PPNamedEntityQuery, PPTripEventQuery;
 
 @protocol MapsSuggestionsPortraitConnector <NSObject>
+- (_Bool)iterScoredEventsWithQuery:(PPTripEventQuery *)arg1 error:(id *)arg2 block:(void (^)(PPScoredEvent *, _Bool *))arg3;
 - (NSArray *)rankedNamedEntitiesWihQuery:(PPNamedEntityQuery *)arg1 error:(id *)arg2;
 - (_Bool)iterRecentLocationsForConsumer:(unsigned long long)arg1 criteria:(PPConnectionsCriteria *)arg2 limit:(unsigned long long)arg3 client:(NSString *)arg4 error:(id *)arg5 block:(void (^)(PPConnectionsLocation *, _Bool *))arg6;
 - (void)connectionsStore_registerFeedback:(PPFeedback *)arg1 clientIdentifier:(NSString *)arg2 completion:(void (^)(_Bool, NSError *))arg3;

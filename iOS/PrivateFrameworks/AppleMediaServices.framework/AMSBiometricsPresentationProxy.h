@@ -7,15 +7,18 @@
 #import <objc/NSObject.h>
 
 @class AMSURLSession, NSString, NSURLSessionTask;
+@protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface AMSBiometricsPresentationProxy : NSObject
 {
     AMSURLSession *_session;
     NSURLSessionTask *_task;
+    NSObject<OS_dispatch_queue> *_delegateQueue;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
 @property(readonly, nonatomic) NSURLSessionTask *task; // @synthesize task=_task;
 @property(readonly, nonatomic) AMSURLSession *session; // @synthesize session=_session;
 - (void)handleDialogRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;

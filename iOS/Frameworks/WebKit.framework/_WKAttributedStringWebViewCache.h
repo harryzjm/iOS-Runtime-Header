@@ -16,6 +16,9 @@ __attribute__((visibility("hidden")))
 + (void)resetPurgeDelay;
 + (void)cacheWebView:(id)arg1;
 + (RetainPtr_15a4d79f)retrieveOrCreateWebView;
++ (void)maybeConsumeBundlePaths:(id)arg1;
++ (void)validateEntry:(id)arg1;
++ (void)clearConfigurationAndRaiseExceptionIfNecessary:(id)arg1;
 + (void)clearConfiguration;
 + (id)configuration;
 + (id)cache;

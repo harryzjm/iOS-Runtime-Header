@@ -10,6 +10,7 @@ __attribute__((visibility("hidden")))
 @interface WKTextSelectionRectCustomHandleInfo : UITextSelectionRectCustomHandleInfo
 {
     struct FloatQuad _quad;
+    _Bool _isHorizontal;
 }
 
 - (id).cxx_construct;
@@ -17,7 +18,7 @@ __attribute__((visibility("hidden")))
 - (struct CGPoint)bottomRight;
 - (struct CGPoint)topLeft;
 - (struct CGPoint)bottomLeft;
-- (id)initWithFloatQuad:(const struct FloatQuad *)arg1;
+- (id)initWithFloatQuad:(const struct FloatQuad *)arg1 isHorizontal:(_Bool)arg2;
 
 @end
 

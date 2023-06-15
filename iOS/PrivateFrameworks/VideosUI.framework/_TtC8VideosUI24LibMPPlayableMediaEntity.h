@@ -21,6 +21,7 @@
     MISSING_TYPE *allowsManualDownloadRenewal;
     MISSING_TYPE *renewsOfflineKeysAutomatically;
     MISSING_TYPE *redownloadParams;
+    MISSING_TYPE *isFullyWatched;
     MISSING_TYPE *contentRating;
 }
 

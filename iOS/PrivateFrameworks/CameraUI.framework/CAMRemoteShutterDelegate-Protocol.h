@@ -11,6 +11,7 @@
 @protocol CAMRemoteShutterDelegate <NSObject>
 - (_Bool)remoteShutterShouldSuspendApp:(CAMRemoteShutterController *)arg1;
 - (void)remoteShutter:(CAMRemoteShutterController *)arg1 setCaptureDevice:(long long)arg2;
+- (void)remoteShutter:(CAMRemoteShutterController *)arg1 setZoomFactor:(double)arg2;
 - (void)remoteShutter:(CAMRemoteShutterController *)arg1 setZoomAmount:(double)arg2;
 - (void)remoteShutter:(CAMRemoteShutterController *)arg1 setSharedLibraryMode:(long long)arg2;
 - (void)remoteShutter:(CAMRemoteShutterController *)arg1 setIrisMode:(long long)arg2;

@@ -6,13 +6,14 @@
 
 #import <MobileSafariUI/NSObject-Protocol.h>
 
-@class NSURL, _SFFormAutoFillController;
+@class NSURL, WBSSavedAccountContext, _SFFormAutoFillController;
 
 @protocol SFFormAutoFillControllerDelegate <NSObject>
 - (NSURL *)formAutoFillControllerURLForFormAutoFill:(_SFFormAutoFillController *)arg1;
 - (_Bool)formAutoFillControllerCanPrefillForm:(_SFFormAutoFillController *)arg1;
 
 @optional
+- (WBSSavedAccountContext *)currentSavedAccountContextForFormAutoFillController:(_SFFormAutoFillController *)arg1;
 - (void)formAutoFillControllerUserChoseToUseGeneratedPassword:(_SFFormAutoFillController *)arg1;
 - (_Bool)formAutoFillControllerDidUserDeclineAutomaticStrongPasswordForCurrentDomain:(_SFFormAutoFillController *)arg1;
 - (_Bool)formAutoFillControllerShouldShowIconsInPasswordPicker:(_SFFormAutoFillController *)arg1;

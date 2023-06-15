@@ -13,6 +13,7 @@
 - (void)moreOptionsViewControllerDidToggleAutoHide:(PKPaletteMoreOptionsViewController *)arg1;
 
 @optional
+- (void)moreOptionsViewControllerDidToggleHoverPreview:(PKPaletteMoreOptionsViewController *)arg1;
 - (void)moreOptionsViewControllerDidSelectTapToRadar:(PKPaletteMoreOptionsViewController *)arg1;
 - (void)moreOptionsViewControllerDidSelectOpenPencilSettings:(PKPaletteMoreOptionsViewController *)arg1;
 @end

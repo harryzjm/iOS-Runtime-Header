@@ -6,11 +6,12 @@
 
 #import <BacklightServices/NSObject-Protocol.h>
 
-@class NSArray;
-@protocol BLSRenderedFlipbookFrame;
+@class BLSDiagnosticFlipbookFrame, NSArray, NSUUID;
 
 @protocol BLSFlipbookDiagnosticsProviding <NSObject>
-- (id <BLSRenderedFlipbookFrame>)frameOnGlassWhenFlipbookLastCancelled;
+- (BLSDiagnosticFlipbookFrame *)frameOnGlassWhenFlipbookLastCancelled;
+- (BLSDiagnosticFlipbookFrame *)frameOnGlassNow;
+- (BLSDiagnosticFlipbookFrame *)frameWithUUID:(NSUUID *)arg1;
 - (NSArray *)allFlipbookFrames;
 @end
 

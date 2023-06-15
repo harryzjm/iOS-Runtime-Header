@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     PFPosterMedia *_posterMedia;
     PFPosterEditConfiguration *_editConfiguration;
     PIParallaxStyle *_style;
+    PIParallaxStyle *_persistedStyle;
     NSURL *_sourceDirectory;
     NSURL *_exportDirectory;
     unsigned long long _options;
@@ -30,6 +31,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned long long options; // @synthesize options=_options;
 @property(retain, nonatomic) NSURL *exportDirectory; // @synthesize exportDirectory=_exportDirectory;
 @property(retain, nonatomic) NSURL *sourceDirectory; // @synthesize sourceDirectory=_sourceDirectory;
+@property(retain, nonatomic) PIParallaxStyle *persistedStyle; // @synthesize persistedStyle=_persistedStyle;
 @property(retain, nonatomic) PIParallaxStyle *style; // @synthesize style=_style;
 @property(copy, nonatomic) PFPosterEditConfiguration *editConfiguration; // @synthesize editConfiguration=_editConfiguration;
 @property(copy, nonatomic) PFPosterMedia *posterMedia; // @synthesize posterMedia=_posterMedia;

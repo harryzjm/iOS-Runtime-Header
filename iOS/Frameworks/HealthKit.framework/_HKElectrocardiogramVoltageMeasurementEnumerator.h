@@ -15,14 +15,14 @@ __attribute__((visibility("hidden")))
     double _samplingHertz;
     HKUnit *_microvoltsUnit;
     long long _index;
-    __wrap_iter_9551a0eb _current;
-    __wrap_iter_9551a0eb _end;
+    __wrap_iter_589031b6 _current;
+    __wrap_iter_589031b6 _end;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)nextObject;
-- (id)initWithElectrocardiogram:(id)arg1 leadIMicroVoltsBegin:(__wrap_iter_9551a0eb)arg2 end:(__wrap_iter_9551a0eb)arg3;
+- (id)initWithElectrocardiogram:(id)arg1 leadIMicroVoltsBegin:(__wrap_iter_589031b6)arg2 end:(__wrap_iter_589031b6)arg3;
 
 @end
 

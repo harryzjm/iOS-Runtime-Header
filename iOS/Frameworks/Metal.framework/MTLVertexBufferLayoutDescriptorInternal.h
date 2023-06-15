@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)stepRate;
 - (void)setStepFunction:(unsigned long long)arg1;
 - (unsigned long long)stepFunction;
+- (_Bool)isStrideDynamic;
 - (void)setStride:(unsigned long long)arg1;
 - (unsigned long long)stride;
 - (id)copyWithZone:(struct _NSZone *)arg1;

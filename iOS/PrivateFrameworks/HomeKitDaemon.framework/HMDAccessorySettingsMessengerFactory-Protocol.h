@@ -7,9 +7,9 @@
 #import <HomeKitDaemon/NSObject-Protocol.h>
 
 @class HMDAccessorySettingsLocalMessageHandler, HMDAccessorySettingsMessenger, HMFMessageDispatcher, NSUUID;
-@protocol HMDMessageRouter;
+@protocol HMDMessageRouter, HMMLogEventSubmitting;
 
 @protocol HMDAccessorySettingsMessengerFactory <NSObject>
-- (HMDAccessorySettingsMessenger *)createAccessorySettingsMessengerWithMessageTargetUUID:(NSUUID *)arg1 messageDispatcher:(HMFMessageDispatcher *)arg2 messageRouter:(id <HMDMessageRouter>)arg3 messageHandler:(HMDAccessorySettingsLocalMessageHandler *)arg4;
+- (HMDAccessorySettingsMessenger *)createAccessorySettingsMessengerWithMessageTargetUUID:(NSUUID *)arg1 messageDispatcher:(HMFMessageDispatcher *)arg2 messageRouter:(id <HMDMessageRouter>)arg3 messageHandler:(HMDAccessorySettingsLocalMessageHandler *)arg4 logEventSubmitter:(id <HMMLogEventSubmitting>)arg5;
 @end
 

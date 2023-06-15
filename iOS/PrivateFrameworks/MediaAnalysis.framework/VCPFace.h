@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     long long _yaw;
     VNFaceObservation *_observation;
     struct CGRect _bounds;
+    struct CGRect _torsoBounds;
 }
 
 - (void).cxx_destruct;
@@ -31,6 +32,7 @@ __attribute__((visibility("hidden")))
 @property _Bool smile; // @synthesize smile=_smile;
 @property _Bool rightEyeClosed; // @synthesize rightEyeClosed=_rightEyeClosed;
 @property _Bool leftEyeClosed; // @synthesize leftEyeClosed=_leftEyeClosed;
+@property struct CGRect torsoBounds; // @synthesize torsoBounds=_torsoBounds;
 @property struct CGRect bounds; // @synthesize bounds=_bounds;
 - (struct CGRect)faceBoundsWithTransform:(unsigned long long)arg1 height:(unsigned long long)arg2 transform:(struct CGAffineTransform)arg3;
 - (struct CGRect)faceBounds:(unsigned long long)arg1 height:(unsigned long long)arg2;

@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class AMSBagNetworkTask, AMSBagNetworkTaskResult, AMSObserver, AMSProcessInfo, AMSTimeout, NSDate, NSError, NSMutableDictionary, NSString;
-@protocol OS_dispatch_queue;
+@protocol AMSBagAccountProvider, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface AMSBagNetworkDataSource : NSObject
@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     NSString *_profile;
     NSString *_profileVersion;
     AMSObserver *_accountsChangedObserver;
+    id <AMSBagAccountProvider> _accountProvider;
     AMSBagNetworkTaskResult *_cachedResult;
     struct os_unfair_recursive_lock_s _cachedDataAccessLock;
     NSObject<OS_dispatch_queue> *_completionQueue;
@@ -29,38 +30,43 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_processAccountStoreDidChangeNotificationQueue;
 }
 
-+ (_Bool)_shouldProcessChangedAccount:(id)arg1 forMediaType:(id)arg2;
-+ (_Bool)_isDataDictionary:(id)arg1 equalToDataDictionary:(id)arg2;
++ (void)_valueForURLVariable:(id)arg1 account:(id)arg2 clientInfo:(id)arg3 sync:(_Bool)arg4 completion:(CDUnknownBlockType)arg5;
 + (id)valueForURLVariable:(id)arg1 account:(id)arg2 clientInfo:(id)arg3;
++ (id)requestPartialIdentifierForClientInfo:(id)arg1 profile:(id)arg2 profileVersion:(id)arg3;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *processAccountStoreDidChangeNotificationQueue; // @synthesize processAccountStoreDidChangeNotificationQueue=_processAccountStoreDidChangeNotificationQueue;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *processAccountStoreDidChangeNotificationQueue; // @synthesize processAccountStoreDidChangeNotificationQueue=_processAccountStoreDidChangeNotificationQueue;
 @property(readonly, nonatomic) AMSTimeout *activeFailureTimeout; // @synthesize activeFailureTimeout=_activeFailureTimeout;
 @property(retain, nonatomic) NSMutableDictionary *defaultValues; // @synthesize defaultValues=_defaultValues;
 @property(retain, nonatomic) AMSBagNetworkTask *currentLoadTask; // @synthesize currentLoadTask=_currentLoadTask;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *completionQueue; // @synthesize completionQueue=_completionQueue;
 @property(readonly, nonatomic) struct os_unfair_recursive_lock_s cachedDataAccessLock; // @synthesize cachedDataAccessLock=_cachedDataAccessLock;
 @property(retain, nonatomic) AMSBagNetworkTaskResult *cachedResult; // @synthesize cachedResult=_cachedResult;
+@property(readonly, nonatomic) id <AMSBagAccountProvider> accountProvider; // @synthesize accountProvider=_accountProvider;
 @property(retain, nonatomic) AMSObserver *accountsChangedObserver; // @synthesize accountsChangedObserver=_accountsChangedObserver;
 @property(readonly, copy, nonatomic) NSString *profileVersion; // @synthesize profileVersion=_profileVersion;
 @property(readonly, copy, nonatomic) NSString *profile; // @synthesize profile=_profile;
 @property(readonly, copy, nonatomic) AMSProcessInfo *processInfo; // @synthesize processInfo=_processInfo;
-@property(copy, nonatomic) CDUnknownBlockType dataSourceDataInvalidatedHandler; // @synthesize dataSourceDataInvalidatedHandler=_dataSourceDataInvalidatedHandler;
-@property(copy, nonatomic) CDUnknownBlockType dataSourceChangedHandler; // @synthesize dataSourceChangedHandler=_dataSourceChangedHandler;
 - (void)_updateCachedResult:(id)arg1;
+- (id)_newCompletionQueue;
 - (void)_invalidateCacheNotification:(id)arg1;
 - (id)_fetchBag;
 - (void)_accountStoreDidChange;
+- (void)valueForURLVariable:(id)arg1 account:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)valueForURLVariable:(id)arg1 account:(id)arg2;
 - (void)setDefaultValue:(id)arg1 forKey:(id)arg2;
 - (void)loadWithCompletion:(CDUnknownBlockType)arg1;
+@property(readonly, copy, nonatomic) NSString *bagLoadingPartialIdentifier;
 - (id)defaultValueForKey:(id)arg1;
 @property(readonly, copy) NSString *description;
 @property(retain, nonatomic) NSString *descriptionExtended;
+@property(copy, nonatomic) CDUnknownBlockType dataSourceDataInvalidatedHandler; // @synthesize dataSourceDataInvalidatedHandler=_dataSourceDataInvalidatedHandler;
+@property(copy, nonatomic) CDUnknownBlockType dataSourceChangedHandler; // @synthesize dataSourceChangedHandler=_dataSourceChangedHandler;
 @property(retain, nonatomic) NSString *cachedStorefront; // @synthesize cachedStorefront=_cachedStorefront;
 @property(retain, nonatomic) NSError *activeFailure; // @synthesize activeFailure=_activeFailure;
 @property(readonly, nonatomic, getter=isLoaded) _Bool loaded;
 @property(readonly, nonatomic) NSDate *expirationDate;
 - (void)dealloc;
+- (id)initWithProfile:(id)arg1 profileVersion:(id)arg2 processInfo:(id)arg3 accountProvider:(id)arg4;
 - (id)initWithProfile:(id)arg1 profileVersion:(id)arg2 processInfo:(id)arg3;
 
 // Remaining properties

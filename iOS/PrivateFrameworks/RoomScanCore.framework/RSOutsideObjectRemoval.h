@@ -10,7 +10,5 @@
 {
 }
 
-- (id)runWithFloorPlan:(id)arg1 objects:(id)arg2 keyframes:(id)arg3;
-
 @end
 

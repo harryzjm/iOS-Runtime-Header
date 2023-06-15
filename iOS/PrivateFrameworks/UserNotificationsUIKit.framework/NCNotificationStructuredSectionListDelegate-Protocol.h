@@ -10,6 +10,8 @@
 @protocol NCAuxiliaryOptionsProviding;
 
 @protocol NCNotificationStructuredSectionListDelegate <NCNotificationListComponentDelegate>
+- (void)notificationStructuredSectionListDidClearAllNotificationRequests:(NCNotificationStructuredSectionList *)arg1;
+- (void)notificationStructuredSectionListRequestsClearingSection:(NCNotificationStructuredSectionList *)arg1;
 - (void)notificationStructuredSectionList:(NCNotificationStructuredSectionList *)arg1 transitionedGroupedStateIsGrouped:(_Bool)arg2;
 - (_Bool)notificationStructuredSectionList:(NCNotificationStructuredSectionList *)arg1 areNotificationsLoadedForSectionIdentifier:(NSString *)arg2;
 - (_Bool)notificationStructuredSectionList:(NCNotificationStructuredSectionList *)arg1 shouldFilterNotificationRequest:(NCNotificationRequest *)arg2;

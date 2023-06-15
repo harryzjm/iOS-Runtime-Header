@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     NSString *_remoteServiceName;
     NSString *_localServiceName;
     _Bool _connected;
+    _Bool _connectionClosed;
     NSMutableData *_dataReceived;
     NSInputStream *_inputStream;
     NSOutputStream *_outputStream;
@@ -24,6 +25,7 @@ __attribute__((visibility("hidden")))
     unsigned int _currentSequenceNumber;
     NSMutableData *_dataToSendHoldingQueue;
     NSMutableArray *_receivedDataHoldingQueue;
+    NSMutableArray *_receivedDataContentHoldingQueue;
     NSMutableArray *_messageReceiptHandlerList;
     NSMutableArray *_messageReceiptHandlerHoldingQueue;
     CDUnknownBlockType _receiveDataHandler;

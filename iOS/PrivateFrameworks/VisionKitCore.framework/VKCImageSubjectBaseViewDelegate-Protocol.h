@@ -4,13 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <VisionKitCore/NSObject-Protocol.h>
+
 @class VKAnalyticsSubjectEvent, VKCImageSubjectBaseView;
 
-@protocol VKCImageSubjectBaseViewDelegate
+@protocol VKCImageSubjectBaseViewDelegate <NSObject>
 - (void)subjectBaseView:(VKCImageSubjectBaseView *)arg1 analyticsEventOccurred:(VKAnalyticsSubjectEvent *)arg2;
 - (void)subjectBaseViewGlowLayerActiveDidChange:(VKCImageSubjectBaseView *)arg1;
 - (void)subjectBaseViewViewDidCompletePath:(VKCImageSubjectBaseView *)arg1;
 - (void)subjectBaseViewViewDidCompleteSubjectAnalysis:(VKCImageSubjectBaseView *)arg1;
-- (void)subjectBaseViewViewDidBeginSubjectAnalysis:(VKCImageSubjectBaseView *)arg1;
+- (void)subjectBaseViewDidBeginSubjectAnalysis:(VKCImageSubjectBaseView *)arg1;
 @end
 

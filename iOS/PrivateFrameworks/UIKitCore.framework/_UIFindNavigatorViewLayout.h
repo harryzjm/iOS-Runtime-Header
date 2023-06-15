@@ -6,13 +6,15 @@
 
 #import "UIView.h"
 
-@class NSString, UIButton, UIFont;
+@class NSString, UIButton, UIColor, UIFont, UIImageSymbolConfiguration;
 
 __attribute__((visibility("hidden")))
 @interface _UIFindNavigatorViewLayout : UIView
 {
     _Bool _replaceFieldVisible;
     _Bool _usesAssistantBarHeight;
+    _Bool _usesSymbolForDoneButton;
+    _Bool _usesNextAndPreviousArrows;
     UIButton *_nextResultButton;
     UIButton *_previousResultButton;
     UIButton *_doneButton;
@@ -23,6 +25,8 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool usesNextAndPreviousArrows; // @synthesize usesNextAndPreviousArrows=_usesNextAndPreviousArrows;
+@property(readonly, nonatomic) _Bool usesSymbolForDoneButton; // @synthesize usesSymbolForDoneButton=_usesSymbolForDoneButton;
 @property(nonatomic) long long assistantBarStyle; // @synthesize assistantBarStyle=_assistantBarStyle;
 @property(nonatomic) _Bool usesAssistantBarHeight; // @synthesize usesAssistantBarHeight=_usesAssistantBarHeight;
 @property(nonatomic) _Bool replaceFieldVisible; // @synthesize replaceFieldVisible=_replaceFieldVisible;
@@ -32,11 +36,19 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIButton *doneButton; // @synthesize doneButton=_doneButton;
 @property(retain, nonatomic) UIButton *previousResultButton; // @synthesize previousResultButton=_previousResultButton;
 @property(retain, nonatomic) UIButton *nextResultButton; // @synthesize nextResultButton=_nextResultButton;
-- (id)commonButtonConfigWithImageName:(id)arg1;
+- (void)_setAndActivateConstraints;
+- (void)applyStyleToFieldIfNeeded:(id)arg1;
+- (void)addMaterialToViewIfNeeded:(id)arg1;
+- (id)commonButtonConfigWithImageName:(id)arg1 isAccessory:(_Bool)arg2;
 - (id)commonButtonConfigWithTitle:(id)arg1;
 - (id)commonButtonConfig:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) _Bool showsReplaceInOptionsMenu;
+@property(readonly, nonatomic) double preferredVerticalPadding;
+@property(readonly, nonatomic) double preferredHorizontalPadding;
+@property(readonly, nonatomic) double preferredCornerRadius;
+@property(readonly, nonatomic) UIColor *preferredOpaqueBackgroundColor;
 @property(readonly, nonatomic) UIFont *preferredTextFieldFont;
+@property(readonly, nonatomic) UIImageSymbolConfiguration *preferredSymbolConfigurationForImageForTextFields;
 @property(readonly, nonatomic) NSString *preferredMaximumContentSizeCategory;
 @property(readonly, nonatomic) struct CGSize preferredContentSize;
 - (_Bool)isEqual:(id)arg1;

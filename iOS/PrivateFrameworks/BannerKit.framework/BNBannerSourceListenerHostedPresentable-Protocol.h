@@ -14,6 +14,9 @@
 @protocol BNBannerSourceListenerHostedPresentable <BNBannerSourceListenerPresentable, BNHostedContentProviding, FBSceneDelegate>
 @property(readonly, nonatomic) FBScene *scene;
 @property(readonly, nonatomic, getter=isHostedContent) _Bool hostedContent;
+- (id)initWithSpecification:(id <BNPresentableSpecifying>)arg1 serviceDomain:(NSString *)arg2 scene:(FBScene *)arg3 readyCompletion:(void (^)(id <BNBannerSourceListenerPresentable>, NSError *))arg4;
+
+@optional
 - (id)initWithWithSpecification:(id <BNPresentableSpecifying>)arg1 serviceDomain:(NSString *)arg2 scene:(FBScene *)arg3 readyCompletion:(void (^)(id <BNBannerSourceListenerPresentable>, NSError *))arg4;
 @end
 

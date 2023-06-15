@@ -14,7 +14,7 @@
 }
 
 - (void).cxx_destruct;
-- (id)initWithParameter:(id)arg1 initialState:(id)arg2 initialArrayState:(id)arg3 arrayIndex:(long long)arg4 processing:(_Bool)arg5;
+- (id)initWithParameter:(id)arg1 arrayIndex:(long long)arg2 processing:(_Bool)arg3;
 - (id)stateByReplacingVariableFromCurrentState:(id)arg1 withVariable:(id)arg2;
 - (void)cancelEditingWithCompletionHandler:(void (^)(void))arg1;
 - (void)beginEditingSlotWithIdentifier:(id)arg1 presentationAnchor:(id)arg2;

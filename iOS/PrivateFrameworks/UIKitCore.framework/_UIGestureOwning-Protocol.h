@@ -18,6 +18,7 @@
 - (long long)_depthComparison:(id <_UIGestureOwning>)arg1;
 - (void)removeGestureRecognizer:(UIGestureRecognizer *)arg1;
 - (void)addGestureRecognizer:(UIGestureRecognizer *)arg1;
+- (unsigned long long)indexOfGestureRecognizer:(UIGestureRecognizer *)arg1;
 - (_Bool)_isGestureOwningType:(long long)arg1;
 @end
 

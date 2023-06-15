@@ -12,7 +12,6 @@
 + (id)internalMessageWithName:(id)arg1 destination:(id)arg2 messagePayload:(id)arg3;
 + (id)internalMessageWithName:(id)arg1 messagePayload:(id)arg2 responseHandler:(CDUnknownBlockType)arg3;
 + (id)internalMessageWithName:(id)arg1 messagePayload:(id)arg2;
-- (void)setLocalFallback;
 - (void)setRequiresWalletKeyEntitlement;
 - (void)setSendPolicy:(id)arg1;
 - (void)setRequiresPersonManagerEntitlement;

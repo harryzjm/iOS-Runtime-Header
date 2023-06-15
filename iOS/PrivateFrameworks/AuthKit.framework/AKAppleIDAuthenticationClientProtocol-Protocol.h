@@ -6,9 +6,13 @@
 
 #import <AuthKit/AKAnisetteProvisioningClientProtocol-Protocol.h>
 
-@class AKAccountRecoveryContext, AKAppleIDAuthenticationContext, AKFidoContext, AKServerRequestConfiguration, NSDictionary, NSError, NSString, NSUUID;
+@class AKAccountRecoveryContext, AKAppleIDAuthenticationContext, AKFidoContext, AKServerRequestConfiguration, CUMessageSession, NSDictionary, NSError, NSString, NSUUID;
 
 @protocol AKAppleIDAuthenticationClientProtocol <AKAnisetteProvisioningClientProtocol>
+- (void)activateProximitySession:(CUMessageSession *)arg1 context:(AKAppleIDAuthenticationContext *)arg2 completion:(void (^)(NSDictionary *, NSError *))arg3;
+- (void)dismissProximityPairingUIForContext:(AKAppleIDAuthenticationContext *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
+- (void)presentProximityPairingUIForContext:(AKAppleIDAuthenticationContext *)arg1 verificationCode:(NSString *)arg2 completion:(void (^)(NSDictionary *, NSError *))arg3;
+- (void)presentProximityBroadcastUIForContext:(AKAppleIDAuthenticationContext *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)shouldContinueWithAuthenticationResults:(NSDictionary *)arg1 error:(NSError *)arg2 forContextID:(NSUUID *)arg3 completion:(void (^)(_Bool, NSDictionary *))arg4;
 - (void)presentFidoAuthForContext:(AKAppleIDAuthenticationContext *)arg1 fidoContext:(AKFidoContext *)arg2 completion:(void (^)(AKFidoAuthenticationResponse *, NSError *))arg3;
 - (void)launchOutOfProcessAuthentication:(AKAppleIDAuthenticationContext *)arg1 surrogateID:(NSUUID *)arg2 withErrorHandler:(void (^)(NSError *))arg3;

@@ -26,13 +26,13 @@ __attribute__((visibility("hidden")))
 - (void)setLastPrimaryConnectionInUse:(id)arg1;
 - (void)setConnectionForDuplication:(id)arg1;
 - (void)setSecondaryConnection:(id)arg1;
-- (void)setPrimaryConnection:(id)arg1;
 - (id)lastPrimaryConnectionInUse;
 - (id)connectionForDuplication;
 - (id)secondaryConnection;
-- (id)primaryConnection;
 - (void)updateConnectionSelectionPolicyWithPreferE2E:(_Bool)arg1;
 - (CDStruct_155bd25f *)getConnectionSelectionPolicy;
+- (void)didReceiveStatsResponse:(_Bool)arg1;
+- (void)requestStatsWithOptions:(id)arg1;
 - (void)didLinkProbingLockdownEnd;
 - (void)didUpdateLinkPreferenceOrder:(id)arg1;
 - (void)flushLinkProbingStatusWithOptions:(id)arg1;
@@ -43,8 +43,8 @@ __attribute__((visibility("hidden")))
 - (_Bool)shouldUpdateServerBasedConnection:(id)arg1;
 - (_Bool)shouldDropCurrentPrimaryConnectionWithConnectionStats:(CDStruct_50492349 *)arg1;
 - (void)useConnectionAsPrimary:(id)arg1;
+- (void)reportCurrentPrimaryConnection;
 - (void)reportConnection:(id)arg1 isInitialConnection:(_Bool)arg2;
-- (void)sourceDestinationInfo:(struct tagVCSourceDestinationInfo *)arg1 isSourceOnCellular:(_Bool *)arg2 isSourceIPv6:(_Bool *)arg3;
 - (void)updateNegotiatedSettingsOnetoOne:(id)arg1;
 - (void)updateDuplicationStateWithConnectionOperation:(int)arg1 isLocalOnWiFi:(_Bool)arg2 isRemoteOnWiFi:(_Bool)arg3;
 - (void)removeFromConnectionArray:(id)arg1;
@@ -52,17 +52,16 @@ __attribute__((visibility("hidden")))
 - (_Bool)shouldReplaceConnection:(id)arg1 withConnection:(id)arg2;
 - (_Bool)shouldKeepAllConnections;
 - (void)resetPacketCountAndByteCountWithConnection:(id)arg1;
-- (void)addLinkProbingTelemetry:(id)arg1;
 - (void)addDuplicationConnectionUpdateTelemetryWithSuggestedLinkTypeCombo:(id)arg1 payload:(id)arg2;
-- (void)updateConnectionForDuplication;
+- (void)updateStatResponseResult:(id)arg1;
 - (void)updateSessionStats:(unsigned short)arg1;
-- (id)copyConnectionWithSourceDestinationInfo:(struct tagVCSourceDestinationInfo *)arg1 isPrimary:(_Bool *)arg2;
 - (_Bool)shouldAcceptDataFromSourceDestinationInfo:(struct tagVCSourceDestinationInfo *)arg1;
 - (void)setPreferredRemoteInterfaceForDuplication:(unsigned char)arg1;
 - (void)setPreferredLocalInterfaceForDuplication:(unsigned char)arg1;
 - (void)internalUpdateOneToOneBitrateCapsForConnection:(id)arg1;
 - (void)updateOneToOneBitrateCapsForConnection:(id)arg1;
 - (void)updateCellularTech:(int)arg1 forLocalInterface:(_Bool)arg2;
+- (void)updateAllBitrateCapsForConnectionInternal:(id)arg1;
 - (void)updateAllBitrateCapsForConnection:(id)arg1;
 - (void)updateCellularMTU:(int)arg1;
 - (id)getSecondaryConnectionToBeCompared;
@@ -71,8 +70,6 @@ __attribute__((visibility("hidden")))
 - (unsigned int)getPacketCountWithIndex:(unsigned char)arg1 isOutgoing:(_Bool)arg2;
 - (void)optOutAllStreamsForNonPrimaryConnections;
 - (void)resetParticipantGenerationCounter;
-- (void)synchronizeParticipantGenerationCounter:(unsigned char)arg1;
-- (void)updatePacketCountAndByteCountWithIndex:(unsigned char)arg1 packetSize:(int)arg2 numOfStreamId:(int)arg3 isPriorityIncluded:(_Bool)arg4 isOutgoing:(_Bool)arg5;
 - (int)removeConnection:(id)arg1;
 - (void)handleSecondaryConnectionRemoved;
 - (void)reselectPrimaryConnection;
@@ -87,6 +84,7 @@ __attribute__((visibility("hidden")))
 - (void)reportActiveConnectionOneToOne:(id)arg1 isAudioOnly:(_Bool)arg2;
 - (void)dealloc;
 - (id)initWithMultiwayEnabled:(_Bool)arg1;
+- (void)setUpVTable;
 
 @end
 

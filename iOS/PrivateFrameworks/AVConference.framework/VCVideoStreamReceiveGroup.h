@@ -25,8 +25,8 @@ __attribute__((visibility("hidden")))
     _Bool _isMediaSuspended;
     double _lastVideoExpectationSwitch;
     _Bool _isVideoExpected;
-    _Bool _shouldEnableMLEnhance;
     _Bool _didReportExtendedPoorConnection;
+    double _displayLatency;
     _Bool _shouldConvertSourceRTPTimestamp;
     unsigned long long _syncUpdateCalled;
     _Bool _remoteVideoEnabled;
@@ -34,7 +34,6 @@ __attribute__((visibility("hidden")))
 
 @property(nonatomic, getter=isRemoteVideoEnabled) _Bool remoteVideoEnabled; // @synthesize remoteVideoEnabled=_remoteVideoEnabled;
 @property(nonatomic) unsigned int visibilityIndex; // @synthesize visibilityIndex=_visibilityIndex;
-@property(nonatomic) _Bool shouldEnableMLEnhance; // @synthesize shouldEnableMLEnhance=_shouldEnableMLEnhance;
 @property(nonatomic) _Bool isRemoteMediaStalled; // @synthesize isRemoteMediaStalled=_isRemoteMediaStalled;
 @property(nonatomic) unsigned char videoQuality; // @synthesize videoQuality=_videoQuality;
 @property(nonatomic, getter=isRemoteVideoPaused) _Bool remoteVideoPaused; // @synthesize remoteVideoPaused=_remoteVideoPaused;
@@ -51,6 +50,7 @@ __attribute__((visibility("hidden")))
 - (void)redundancyController:(id)arg1 redundancyVectorDidChange:(CDStruct_d7e2e0ee)arg2;
 - (void)redundancyController:(id)arg1 redundancyIntervalDidChange:(double)arg2;
 - (void)redundancyController:(id)arg1 redundancyPercentageDidChange:(unsigned int)arg2;
+- (void)setShouldEnableMLEnhance:(_Bool)arg1 streamID:(unsigned short)arg2;
 @property(readonly, nonatomic) unsigned int lastDisplayedFrameRTPTimestamp;
 - (void)setVideoDegraded:(_Bool)arg1;
 - (void)setMediaSuspended:(_Bool)arg1 forStreamToken:(id)arg2;
@@ -59,6 +59,7 @@ __attribute__((visibility("hidden")))
 - (void)updateVideoPriority:(unsigned char)arg1;
 - (void)setupVideoPriority;
 - (id)willStart;
+- (void)setVideoStreamDelegate:(id)arg1 delegateFunctions:(const struct tagVCVideoStreamDelegateRealtimeInstanceVTable *)arg2;
 - (_Bool)setSyncSource:(id)arg1;
 - (void)updateShouldEnableFaceZoom;
 - (void)setShouldEnableFaceZoom:(_Bool)arg1;

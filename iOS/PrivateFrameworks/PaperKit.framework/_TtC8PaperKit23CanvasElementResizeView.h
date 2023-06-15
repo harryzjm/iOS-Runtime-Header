@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class MISSING_TYPE;
 
@@ -24,9 +24,11 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *dragGestureRecognizer;
     MISSING_TYPE *rotationGestureRecognizer;
     MISSING_TYPE *tapGestureRecognizer;
+    MISSING_TYPE *doubleTapGestureRecognizer;
     MISSING_TYPE *dragLocation;
     MISSING_TYPE *draggedImage;
-    MISSING_TYPE *resizingCanvasElements;
+    MISSING_TYPE *isResizing;
+    MISSING_TYPE *selection;
     MISSING_TYPE *editingCanvasElements;
     MISSING_TYPE *hasContextMenuInteractionVisible;
     MISSING_TYPE *hasDraggingCanvasElement;
@@ -42,7 +44,9 @@ __attribute__((visibility("hidden")))
 - (void)contextMenuInteraction:(id)arg1 willPerformPreviewActionForMenuWithConfiguration:(id)arg2 animator:(id)arg3;
 - (id)contextMenuInteraction:(id)arg1 previewForHighlightingMenuWithConfiguration:(id)arg2;
 - (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint)arg2;
+- (void)doubleTapped:(id)arg1;
 - (void)tapped:(id)arg1;
+- (_Bool)gestureRecognizer:(id)arg1 shouldBeRequiredToFailByGestureRecognizer:(id)arg2;
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1;
 - (void)rotateFromResizeHandle:(id)arg1;
 - (void)rotate:(id)arg1;

@@ -13,6 +13,7 @@
     MISSING_TYPE *actionEnabled;
     MISSING_TYPE *text;
     MISSING_TYPE *attributedText;
+    MISSING_TYPE *accessibilityIdentifier;
 }
 
 @end

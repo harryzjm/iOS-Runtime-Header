@@ -19,13 +19,13 @@
 - (double)renderedWidth;
 - (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
 - (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2;
-- (const struct CGPath *)pathToStrokeFromCGPath:(const struct CGPath *)arg1;
+- (struct CGPath *)pathToStrokeFromCGPath:(struct CGPath *)arg1;
 - (_Bool)prefersToApplyToShapeRenderableDuringManipulation;
 - (_Bool)canApplyToShapeRenderable;
-- (void)paintPath:(const struct CGPath *)arg1 wantsInteriorStroke:(_Bool)arg2 inContext:(struct CGContext *)arg3 useFastDrawing:(_Bool)arg4 parameterized:(_Bool)arg5 shouldReverseDrawOrder:(_Bool)arg6;
-- (const struct CGPath *)manipulatePath:(const struct CGPath *)arg1 withLineWidth:(double)arg2;
+- (void)paintPath:(struct CGPath *)arg1 wantsInteriorStroke:(_Bool)arg2 inContext:(struct CGContext *)arg3 useFastDrawing:(_Bool)arg4 parameterized:(_Bool)arg5 shouldReverseDrawOrder:(_Bool)arg6;
+- (struct CGPath *)manipulatePath:(struct CGPath *)arg1 withLineWidth:(double)arg2;
 - (id)strokeLineEnd:(id)arg1;
-- (const struct CGPath *)strokedPath:(const struct CGPath *)arg1 withLineWidth:(double)arg2 insideStroke:(_Bool)arg3;
+- (struct CGPath *)strokedPath:(struct CGPath *)arg1 withLineWidth:(double)arg2 insideStroke:(_Bool)arg3;
 - (void)seedRandom;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

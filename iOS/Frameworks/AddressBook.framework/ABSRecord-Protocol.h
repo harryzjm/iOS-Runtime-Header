@@ -19,7 +19,7 @@
 @property(readonly, nonatomic) int id;
 - (void)replaceRecordStorageWithCNObject:(id <ABSCNImplementation>)arg1;
 - (_Bool)removeProperty:(int)arg1 withError:(id *)arg2;
-- (_Bool)setValue:(const void *)arg1 forProperty:(int)arg2 withError:(struct __CFError **)arg3;
-- (const void *)copyValueForProperty:(int)arg1;
+- (_Bool)setValue:(void *)arg1 forProperty:(int)arg2 withError:(struct __CFError **)arg3;
+- (void *)copyValueForProperty:(int)arg1;
 @end
 

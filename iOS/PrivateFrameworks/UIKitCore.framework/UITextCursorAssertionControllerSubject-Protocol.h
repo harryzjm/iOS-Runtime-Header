@@ -10,5 +10,9 @@
 @property(nonatomic) _Bool ghostAppearance;
 @property(nonatomic) _Bool cursorVisible;
 @property(nonatomic) _Bool cursorBlinks;
+
+@optional
+@property(nonatomic) unsigned long long activeIndicators;
+- (void)setActiveIndicators:(unsigned long long)arg1 animationStyle:(long long)arg2;
 @end
 

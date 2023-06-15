@@ -7,6 +7,7 @@
 @class UIMenuElement, _UIEditMenuListView;
 
 @protocol _UIEditMenuListViewDelegate
+- (_Bool)wantsPasteTouchAuthenticationInEditMenuListView:(_UIEditMenuListView *)arg1;
 - (void)contentSizeCategoryDidChangeInEditMenuListView:(_UIEditMenuListView *)arg1;
 - (void)editMenuListView:(_UIEditMenuListView *)arg1 didSelectMenuElement:(UIMenuElement *)arg2;
 @end

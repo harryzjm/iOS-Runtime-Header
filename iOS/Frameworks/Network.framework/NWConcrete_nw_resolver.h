@@ -31,6 +31,8 @@ __attribute__((visibility("hidden")))
     void *query_timer;
     void *delayed_reporting_timer;
     NSObject<OS_nw_array> *endpoint_array;
+    NSObject<OS_nw_array> *non_preferred_endpoint_array;
+    void *non_preferred_timer;
     CDUnknownBlockType alternative_handler;
     NSObject<OS_nw_array> *services;
     NSObject<OS_nw_array> *alternative_endpoints;
@@ -38,11 +40,13 @@ __attribute__((visibility("hidden")))
     NSObject<OS_nw_path> *path;
     NSObject<OS_nw_interface> *path_required_interface;
     NWConcrete_nw_resolver *internally_retained_object;
+    char *extended_dns_error_extra_text;
     unsigned char selected_resolver_config[16];
     int result_protocol;
     int result_provider;
     char log_str[84];
     unsigned int unique_id;
+    unsigned short extended_dns_error_code;
     unsigned int is_custom_resolver:1;
     unsigned int used_local_cache:1;
     unsigned int ipv4_used_resolver_cache:1;
@@ -58,6 +62,7 @@ __attribute__((visibility("hidden")))
     unsigned int has_oblivious_config:1;
     unsigned int config_allows_failover:1;
     unsigned int oblivious_config_fell_back:1;
+    unsigned int has_completed_preferred_weighting:1;
 }
 
 - (void).cxx_destruct;

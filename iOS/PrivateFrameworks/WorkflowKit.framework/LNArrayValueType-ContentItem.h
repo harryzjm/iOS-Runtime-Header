@@ -7,7 +7,7 @@
 #import <LinkMetadata/LNArrayValueType.h>
 
 @interface LNArrayValueType (ContentItem)
-- (id)wf_contentCollectionFromLinkValue:(id)arg1 metadata:(id)arg2 valueNamespace:(id)arg3;
-- (Class)wf_contentItemClassWithMetadata:(id)arg1 valueNamespace:(id)arg2;
+- (id)wf_contentCollectionFromLinkValue:(id)arg1 appBundleIdentifier:(id)arg2 displayedBundleIdentifier:(id)arg3;
+- (Class)wf_contentItemClassWithAppBundleIdentifier:(id)arg1;
 @end
 

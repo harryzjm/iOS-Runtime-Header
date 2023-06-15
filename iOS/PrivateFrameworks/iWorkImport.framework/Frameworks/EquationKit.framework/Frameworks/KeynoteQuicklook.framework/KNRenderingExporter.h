@@ -38,7 +38,6 @@
     _Bool _printingRuledLines;
     _Bool _printingComments;
     _Bool _printingPageMargins;
-    _Bool _isPrintingCommentsSidebar;
     long long _printLayout;
     double _viewScaleForPageCount;
     NSString *_printTitle;
@@ -47,7 +46,6 @@
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSString *printTitle; // @synthesize printTitle=_printTitle;
-@property(readonly, nonatomic) _Bool isPrintingCommentsSidebar; // @synthesize isPrintingCommentsSidebar=_isPrintingCommentsSidebar;
 @property(nonatomic) double viewScaleForPageCount; // @synthesize viewScaleForPageCount=_viewScaleForPageCount;
 @property(nonatomic) struct CGRect unscaledClipRectForPageCount; // @synthesize unscaledClipRectForPageCount=_unscaledClipRectForPageCount;
 @property(nonatomic) id printView; // @synthesize printView=_printView;
@@ -71,12 +69,14 @@
 @property(retain, nonatomic) KNSlideNode *currentSlideNode; // @synthesize currentSlideNode=_currentSlideNode;
 @property(nonatomic) unsigned long long slidesPerPage; // @synthesize slidesPerPage=_slidesPerPage;
 @property(retain, nonatomic) KNOffscreenController *offscreenController; // @synthesize offscreenController=_offscreenController;
-- (_Bool)isCanvasDrawingIntoPDF:(id)arg1;
-- (_Bool)shouldShowTextCommentHighlightsForCanvas:(id)arg1;
-- (_Bool)shouldShowCommentsForCanvas:(id)arg1;
-- (_Bool)shouldSuppressBackgrounds;
-- (_Bool)isPrintingCanvas;
-- (id)documentRoot;
+- (void)endPageInContext:(struct CGContext *)arg1 createPage:(_Bool)arg2;
+- (struct CGRect)beginPageInContext:(struct CGContext *)arg1 viewScale:(double)arg2 unscaledClipRect:(struct CGRect)arg3 createPage:(_Bool)arg4;
+@property(readonly, nonatomic) _Bool useWhiteBackground;
+- (struct CGRect)rectBySubtractingDefaultPageMarginsFromRect:(struct CGRect)arg1;
+- (struct CGRect)scaledClipRectForPageCount;
+- (struct CGRect)scaledClipRectMinusBottomSpace:(struct CGRect)arg1;
+@property(readonly, nonatomic) _Bool documentLayoutIsLTR;
+@property(readonly, nonatomic) _Bool isPrintingCommentsSidebar;
 - (_Bool)supportsPrintingComments;
 - (id)p_slideNumberStringForSlideNode:(id)arg1 buildIndex:(unsigned long long)arg2;
 - (unsigned long long)p_slideNumberForSlideNode:(id)arg1;
@@ -91,12 +91,13 @@
 @property(readonly, nonatomic) _Bool usesViewForDrawing;
 @property(readonly, nonatomic) unsigned long long currentSlideNumber;
 - (void)addAnchorPointForSlide:(id)arg1 context:(struct CGContext *)arg2;
-- (_Bool)drawImageForSlideNode:(id)arg1 event:(unsigned long long)arg2 slideSize:(struct CGSize)arg3 intoRect:(struct CGRect)arg4 annotationFlagsScale:(double)arg5 context:(struct CGContext *)arg6 createPage:(_Bool)arg7;
+- (_Bool)drawImageForSlideNode:(id)arg1 event:(unsigned long long)arg2 slideSize:(struct CGSize)arg3 intoRect:(struct CGRect)arg4 annotationFlagsScale:(double)arg5 context:(struct CGContext *)arg6;
 - (void)drawSlideNumberForNode:(id)arg1 buildIndex:(unsigned long long)arg2 forRect:(struct CGRect)arg3 context:(struct CGContext *)arg4 position:(long long)arg5;
 - (void)drawNSStringDateForRect:(struct CGRect)arg1 context:(struct CGContext *)arg2;
 - (void)drawDateForRect:(struct CGRect)arg1 context:(struct CGContext *)arg2;
-@property(readonly, nonatomic) double spaceForBottomText;
-@property(readonly, nonatomic) double heightOfPrintedText;
+@property(readonly, nonatomic) double bottomTextVerticalSpace;
+@property(readonly, nonatomic) double bottomTextVerticalPosition;
+- (struct TSWPFontHeightInfo)bottomTextFontHeightInfo;
 - (double)progressForCurrentPage;
 - (void)drawBorderForRect:(struct CGRect)arg1 context:(struct CGContext *)arg2;
 - (id)p_sourceNodes;
@@ -113,6 +114,16 @@
 - (_Bool)exportToURL:(id)arg1 pageNumber:(unsigned long long)arg2 delegate:(id)arg3 error:(id *)arg4;
 - (_Bool)exportToURL:(id)arg1 delegate:(id)arg2 error:(id *)arg3;
 - (id)initWithDocumentRoot:(id)arg1;
+- (_Bool)isCanvasDrawingIntoPDF:(id)arg1;
+- (_Bool)shouldShowTextCommentHighlightsForCanvas:(id)arg1;
+- (_Bool)shouldShowCommentsForCanvas:(id)arg1;
+- (_Bool)shouldSuppressBackgrounds;
+- (_Bool)isPrintingCanvas;
+- (id)documentRoot;
+- (_Bool)drawMonoPageInContext:(struct CGContext *)arg1 viewScale:(double)arg2 unscaledClipRect:(struct CGRect)arg3 createPage:(_Bool)arg4 helper:(id)arg5;
+- (_Bool)drawMonoPageExtraContentInContext:(struct CGContext *)arg1 scaledClipRect:(struct CGRect)arg2;
+- (struct CGRect)monoSlideRectFromScaledClipRect:(struct CGRect)arg1 outScaledClipRect:(struct CGRect *)arg2;
+- (_Bool)monoShouldPrintComments;
 
 // Remaining properties
 @property(readonly, nonatomic) id <TSDCanvasProxyDelegate> canvasProxyDelegate;

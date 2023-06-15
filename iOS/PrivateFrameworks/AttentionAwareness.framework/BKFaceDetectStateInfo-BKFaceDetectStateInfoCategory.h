@@ -6,7 +6,13 @@
 
 #import <BiometricKit/BKFaceDetectStateInfo.h>
 
+@class NSNumber;
+
 @interface BKFaceDetectStateInfo (BKFaceDetectStateInfoCategory)
 - (id)init;
+
+// Remaining properties
+@property(retain, nonatomic) NSNumber *distance; // @dynamic distance;
+@property(nonatomic) unsigned long long eyeReliefStatus; // @dynamic eyeReliefStatus;
 @end
 

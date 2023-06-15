@@ -9,8 +9,7 @@
 @class BLSDiagnosticFlipbookFrame;
 
 @protocol BLSDiagnosticFlipbookFrameSurfaceProvider <NSObject>
-- (void)releaseFrame:(BLSDiagnosticFlipbookFrame *)arg1;
-- (void)releaseSurfaceForFrame:(BLSDiagnosticFlipbookFrame *)arg1;
+- (struct __IOSurface *)rawSurfaceForFrame:(BLSDiagnosticFlipbookFrame *)arg1;
 - (struct __IOSurface *)surfaceForFrame:(BLSDiagnosticFlipbookFrame *)arg1;
 @end
 

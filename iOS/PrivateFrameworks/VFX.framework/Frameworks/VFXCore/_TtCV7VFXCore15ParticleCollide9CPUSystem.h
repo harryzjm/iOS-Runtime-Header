@@ -14,13 +14,6 @@
     MISSING_TYPE *particleQuery;
     MISSING_TYPE *emitterProperties;
     MISSING_TYPE *emitter_from_world;
-    MISSING_TYPE *world_from_emitter;
-    MISSING_TYPE *planeColliderQuery;
-    MISSING_TYPE *sphereColliderQuery;
-    MISSING_TYPE *boxColliderQuery;
-    MISSING_TYPE *cylinderColliderQuery;
-    MISSING_TYPE *sdfColliderQuery;
-    MISSING_TYPE *meshColliderQuery;
 }
 
 @end

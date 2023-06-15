@@ -6,9 +6,11 @@
 
 #import <EventKitUI/NSObject-Protocol.h>
 
-@class EKEventDetailConferenceCell, UIViewController;
+@class EKEventDetailConferenceCell, NSArray, UIView, UIViewController;
 
 @protocol ConferenceCellDelegate <NSObject>
+- (void)conferenceCell:(EKEventDetailConferenceCell *)arg1 requestPresentShareSheetWithActivityItems:(NSArray *)arg2 withPopoverSourceView:(UIView *)arg3;
+- (_Bool)conferenceCellShouldPresentShareSheet:(EKEventDetailConferenceCell *)arg1;
 - (void)conferenceCellUpdated:(EKEventDetailConferenceCell *)arg1;
 - (UIViewController *)owningViewController;
 @end

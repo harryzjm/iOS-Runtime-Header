@@ -10,24 +10,7 @@
 
 @interface _TtC9ChronoKit15WidgetExtension : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *identifier;
-    MISSING_TYPE *version;
-    MISSING_TYPE *isInternal;
-    MISSING_TYPE *isDevelopmentExtension;
-    MISSING_TYPE *pluginUUID;
-    MISSING_TYPE *lastModifiedDate;
-    MISSING_TYPE *bundleURL;
-    MISSING_TYPE *containerBundleURL;
-    MISSING_TYPE *containerBundleVersion;
-    MISSING_TYPE *containerBundleIdentifier;
-    MISSING_TYPE *dataContainerURL;
-    MISSING_TYPE *systemDataContainerURL;
-    MISSING_TYPE *wantsLocation;
-    MISSING_TYPE *availableLocalizations;
-    MISSING_TYPE *allowsMixedLocalizations;
-    MISSING_TYPE *hasEventServiceEntitlement;
-    MISSING_TYPE *requestedDataProtection;
-    MISSING_TYPE *nominatedContainingBundleIdentifiers;
+    MISSING_TYPE *info;
     MISSING_TYPE *nsExtension;
     MISSING_TYPE *_preferredLanguageChangeLock;
     MISSING_TYPE *_preferredLanguageChangeUpdateInitial;

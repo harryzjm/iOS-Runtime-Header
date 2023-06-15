@@ -4,57 +4,48 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIControl.h>
+#import <UIKit/UISlider.h>
 
-@class MRUVisualStylingProvider, NSString, UIImpactFeedbackGenerator, UIView;
+@class MRUVisualStylingProvider, NSHashTable, NSString, _UISliderFluidConfiguration;
 
 __attribute__((visibility("hidden")))
-@interface MRUSlider : UIControl
+@interface MRUSlider : UISlider
 {
+    _Bool _minimumTrackVisible;
     _Bool _dimmed;
-    float _value;
-    float _minimumValue;
-    float _maximumValue;
-    float _trackingStartNormalizedValue;
+    _Bool _equalizing;
+    _Bool _isFluidTracking;
     MRUVisualStylingProvider *_stylingProvider;
-    double _animationHeight;
-    UIView *_clipView;
-    UIView *_minTrack;
-    UIView *_maxTrack;
-    UIImpactFeedbackGenerator *_feedbackGenerator;
-    double _trackingTouchStartNormalized;
+    CDUnknownBlockType _animations;
+    _UISliderFluidConfiguration *_configuration;
+    NSHashTable *_observers;
     struct UIEdgeInsets _hitRectInset;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) double trackingTouchStartNormalized; // @synthesize trackingTouchStartNormalized=_trackingTouchStartNormalized;
-@property(nonatomic) float trackingStartNormalizedValue; // @synthesize trackingStartNormalizedValue=_trackingStartNormalizedValue;
-@property(retain, nonatomic) UIImpactFeedbackGenerator *feedbackGenerator; // @synthesize feedbackGenerator=_feedbackGenerator;
-@property(retain, nonatomic) UIView *maxTrack; // @synthesize maxTrack=_maxTrack;
-@property(retain, nonatomic) UIView *minTrack; // @synthesize minTrack=_minTrack;
-@property(retain, nonatomic) UIView *clipView; // @synthesize clipView=_clipView;
+@property(retain, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
+@property(nonatomic) _Bool isFluidTracking; // @synthesize isFluidTracking=_isFluidTracking;
+@property(retain, nonatomic) _UISliderFluidConfiguration *configuration; // @synthesize configuration=_configuration;
+@property(copy, nonatomic) CDUnknownBlockType animations; // @synthesize animations=_animations;
+@property(nonatomic, getter=isEqualizing) _Bool equalizing; // @synthesize equalizing=_equalizing;
 @property(nonatomic, getter=isDimmed) _Bool dimmed; // @synthesize dimmed=_dimmed;
-@property(nonatomic) double animationHeight; // @synthesize animationHeight=_animationHeight;
+@property(nonatomic) _Bool minimumTrackVisible; // @synthesize minimumTrackVisible=_minimumTrackVisible;
 @property(nonatomic) struct UIEdgeInsets hitRectInset; // @synthesize hitRectInset=_hitRectInset;
-@property(nonatomic) float maximumValue; // @synthesize maximumValue=_maximumValue;
-@property(nonatomic) float minimumValue; // @synthesize minimumValue=_minimumValue;
-@property(nonatomic) float value; // @synthesize value=_value;
 @property(retain, nonatomic) MRUVisualStylingProvider *stylingProvider; // @synthesize stylingProvider=_stylingProvider;
-- (double)valueForTouch:(id)arg1;
-- (double)locationForTouch:(id)arg1;
-- (void)updateVisibility;
 - (void)updateVisualStyling;
+- (_Bool)acuis_wantsPriorityOverTargetOfGestureRecognizer:(id)arg1;
 - (void)visualStylingProviderDidChange:(id)arg1;
-- (void)endTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
-- (_Bool)continueTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
-- (_Bool)beginTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (_Bool)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (struct CGRect)hitRect;
-- (void)setTracking:(_Bool)arg1;
-- (void)setEnabled:(_Bool)arg1;
-- (void)setValue:(float)arg1 animated:(_Bool)arg2;
-- (_Bool)gestureRecognizerShouldBegin:(id)arg1;
-- (void)layoutSubviews;
+- (void)_sliderFluidInteractionWillEnd:(id)arg1;
+- (void)_sliderFluidInteractionWillExtend:(id)arg1 insets:(struct UIEdgeInsets)arg2;
+- (void)_sliderFluidInteractionWillContinue:(id)arg1 withLocation:(struct CGPoint)arg2;
+- (void)_sliderFluidInteractionWillBegin:(id)arg1 withLocation:(struct CGPoint)arg2;
+- (void)removeObserver:(id)arg1;
+- (void)addObserver:(id)arg1;
+@property(nonatomic) double expansionFactor;
+- (_Bool)isTracking;
+- (struct CGRect)trackRectForBounds:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 // Remaining properties

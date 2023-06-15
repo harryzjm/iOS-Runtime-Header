@@ -4,37 +4,58 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class AVButton, AVMobileChromelessControlsStyleSheet;
+@class AVMobileChromelessControlsStyleSheet, AVMobileChromelessPlaybackControlButton, NSString;
 @protocol AVMobileChromelessPlaybackControlsViewDelegate;
 
 __attribute__((visibility("hidden")))
 @interface AVMobileChromelessPlaybackControlsView
 {
-    AVButton *_leftSecondaryButton;
-    AVButton *_rightSecondaryButton;
-    AVButton *_playPauseButton;
+    AVMobileChromelessPlaybackControlButton *_playPauseButton;
     _Bool _playPauseButtonShowsPlayIcon;
+    _Bool _showsPlayPauseButton;
+    _Bool _showsBackwardSecondaryPlaybackButton;
+    _Bool _showsForwardSecondaryPlaybackButton;
+    _Bool _backwardSecondaryControlEnabled;
+    _Bool _forwardSecondaryControlEnabled;
     AVMobileChromelessControlsStyleSheet *_styleSheet;
-    unsigned long long _leftSecondaryControlIcon;
-    unsigned long long _rightSecondaryControlIcon;
+    unsigned long long _backwardSecondaryControlIcon;
+    unsigned long long _forwardSecondaryControlIcon;
     id <AVMobileChromelessPlaybackControlsViewDelegate> _delegate;
+    AVMobileChromelessPlaybackControlButton *_backwardSecondaryButton;
+    AVMobileChromelessPlaybackControlButton *_forwardSecondaryButton;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) AVMobileChromelessPlaybackControlButton *forwardSecondaryButton; // @synthesize forwardSecondaryButton=_forwardSecondaryButton;
+@property(readonly, nonatomic) AVMobileChromelessPlaybackControlButton *backwardSecondaryButton; // @synthesize backwardSecondaryButton=_backwardSecondaryButton;
 @property __weak id <AVMobileChromelessPlaybackControlsViewDelegate> delegate; // @synthesize delegate=_delegate;
-@property(nonatomic) unsigned long long rightSecondaryControlIcon; // @synthesize rightSecondaryControlIcon=_rightSecondaryControlIcon;
-@property(nonatomic) unsigned long long leftSecondaryControlIcon; // @synthesize leftSecondaryControlIcon=_leftSecondaryControlIcon;
+@property(nonatomic) unsigned long long forwardSecondaryControlIcon; // @synthesize forwardSecondaryControlIcon=_forwardSecondaryControlIcon;
+@property(nonatomic) unsigned long long backwardSecondaryControlIcon; // @synthesize backwardSecondaryControlIcon=_backwardSecondaryControlIcon;
+@property(nonatomic) _Bool forwardSecondaryControlEnabled; // @synthesize forwardSecondaryControlEnabled=_forwardSecondaryControlEnabled;
+@property(nonatomic) _Bool backwardSecondaryControlEnabled; // @synthesize backwardSecondaryControlEnabled=_backwardSecondaryControlEnabled;
+@property(nonatomic) _Bool showsForwardSecondaryPlaybackButton; // @synthesize showsForwardSecondaryPlaybackButton=_showsForwardSecondaryPlaybackButton;
+@property(nonatomic) _Bool showsBackwardSecondaryPlaybackButton; // @synthesize showsBackwardSecondaryPlaybackButton=_showsBackwardSecondaryPlaybackButton;
+@property(nonatomic) _Bool showsPlayPauseButton; // @synthesize showsPlayPauseButton=_showsPlayPauseButton;
 @property(nonatomic) _Bool playPauseButtonShowsPlayIcon; // @synthesize playPauseButtonShowsPlayIcon=_playPauseButtonShowsPlayIcon;
 @property(retain, nonatomic) AVMobileChromelessControlsStyleSheet *styleSheet; // @synthesize styleSheet=_styleSheet;
-- (void)_updateRightSecondaryControlIcon;
-- (void)_updateLeftSecondaryControlIcon;
+- (void)_updateForwardSecondaryControlIcon;
+- (void)_updateBackwardSecondaryControlIcon;
 - (void)_addPlaybackControlViews:(id)arg1;
-- (void)rightSecondaryControlWasPressed;
-- (void)leftSecondaryControlWasPressed;
+- (void)forwardSecondaryControlWasPressed;
+- (void)backwardsSecondaryControlWasPressed;
 - (void)playPauseButtonWasPressed;
 - (void)layoutSubviews;
 - (struct CGSize)intrinsicContentSize;
+- (void)didMoveToWindow;
+- (void)avkit_intrinsicContentSizeOfSubviewWasInvalidated:(id)arg1;
+- (void)setBackwardsSecondaryControlEnabled:(_Bool)arg1;
 - (id)initWithStyleSheet:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

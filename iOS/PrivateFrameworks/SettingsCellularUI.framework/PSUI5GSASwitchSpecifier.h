@@ -6,7 +6,7 @@
 
 #import <Preferences/PSSpecifier.h>
 
-@class CTNRStatus, CTXPCServiceSubscriptionContext, NSString, PSConfirmationSpecifier, PSListController, PSUICoreTelephonyCarrierBundleCache;
+@class CTNRStatus, CTXPCServiceSubscriptionContext, NSString, PSListController, PSUICoreTelephonyCarrierBundleCache;
 
 __attribute__((visibility("hidden")))
 @interface PSUI5GSASwitchSpecifier : PSSpecifier
@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
     CTXPCServiceSubscriptionContext *_subscriptionContext;
     PSListController *_listController;
     PSUICoreTelephonyCarrierBundleCache *_carrierBundleCache;
-    PSConfirmationSpecifier *_enableSAAlert;
     CTNRStatus *_nrStatus;
     NSString *_instance;
 }
@@ -23,12 +22,10 @@ __attribute__((visibility("hidden")))
 - (id)getLogger;
 - (void)refreshSpecifiersInHostController;
 - (void)checkNRStatusAndDisableIfNeeded;
+- (_Bool)shouldAddCoverageExtensionFooterText;
+- (_Bool)shouldAddDefaultOffCarrierFooterText;
 - (id)groupFooterText;
 - (void)set5GSAEnabled:(_Bool)arg1;
-- (void)disable5GSA;
-- (void)enable5GSA;
-- (void)setUp5GSAAlertSpecifierIfNeeded;
-- (void)show5GStandaloneExperimentalAlert;
 - (void)set5GSASwitch:(id)arg1 specifier:(id)arg2;
 - (id)is5GSAEnabled;
 - (id)initWithHostController:(id)arg1 parentSpecifier:(id)arg2 carrierBundleCache:(id)arg3;

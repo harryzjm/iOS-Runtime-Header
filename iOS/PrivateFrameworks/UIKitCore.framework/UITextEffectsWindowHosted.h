@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)_isTextEffectsWindowNotificationOwner;
 - (_Bool)_isTextEffectsWindowHosting;
 - (void)_sceneBoundsDidChange;
+- (void)adjustTextEffectsWindowSizeIfNecessary;
 - (_Bool)_isFullscreen;
 - (struct CGRect)actualSceneBounds;
 - (struct CGRect)actualSceneBoundsForLandscape:(_Bool)arg1;

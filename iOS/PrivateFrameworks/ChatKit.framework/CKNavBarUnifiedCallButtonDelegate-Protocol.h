@@ -13,5 +13,8 @@
 - (void)buttonRequestsStartTelephonyCall:(CKNavBarUnifiedCallButton *)arg1;
 - (void)buttonRequestsStartFaceTimeAudio:(CKNavBarUnifiedCallButton *)arg1;
 - (void)buttonRequestsStartFaceTimeVideo:(CKNavBarUnifiedCallButton *)arg1;
+
+@optional
+- (void)buttonRequestsLeaveJoinedCall:(CKNavBarUnifiedCallButton *)arg1;
 @end
 

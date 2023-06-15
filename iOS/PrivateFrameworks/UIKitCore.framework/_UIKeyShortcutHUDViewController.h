@@ -6,7 +6,7 @@
 
 #import "UIViewController.h"
 
-@class NSLayoutConstraint, NSMutableDictionary, NSString, UIKeyCommand, UIKeyShortcutHUDMetrics, UITapGestureRecognizer, UITextInputPasswordRules, UIView, UIViewPropertyAnimator, _UIKeyShortcutHUDCollectionViewManager, _UIKeyShortcutHUDConfiguration, _UIKeyShortcutHUDMenuViewController, _UIKeyShortcutHUDToolbarViewController, _UIKeyShortcutHUDWindow;
+@class NSLayoutConstraint, NSMutableDictionary, NSString, UIKeyCommand, UIKeyShortcutHUDMetrics, UITextInputPasswordRules, UIView, UIViewPropertyAnimator, _UIKeyShortcutHUDCollectionViewManager, _UIKeyShortcutHUDConfiguration, _UIKeyShortcutHUDMenuViewController, _UIKeyShortcutHUDToolbarViewController, _UIKeyShortcutHUDWindow, _UIPassthroughScrollInteraction;
 @protocol UIKeyShortcutHUDMetricsProvider, _UIKeyShortcutHUDViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -36,8 +36,8 @@ __attribute__((visibility("hidden")))
     NSLayoutConstraint *_toolbarPreferredWidthConstraint;
     _UIKeyShortcutHUDCollectionViewManager *_collectionViewManager;
     UIKeyShortcutHUDMetrics *_metrics;
-    UITapGestureRecognizer *_tapGestureRecognizer;
-    NSMutableDictionary *_hudToAppKeyCommandsMap;
+    _UIPassthroughScrollInteraction *_passthroughScrollInteraction;
+    NSMutableDictionary *_hudToModelKeyCommandsMap;
     UIKeyCommand *_showShortcutsKeyCommand;
     UIViewPropertyAnimator *_hudAppearanceAnimator;
     UIViewPropertyAnimator *_menuPanelAnimator;
@@ -51,8 +51,8 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIViewPropertyAnimator *menuPanelAnimator; // @synthesize menuPanelAnimator=_menuPanelAnimator;
 @property(retain, nonatomic) UIViewPropertyAnimator *hudAppearanceAnimator; // @synthesize hudAppearanceAnimator=_hudAppearanceAnimator;
 @property(nonatomic) __weak UIKeyCommand *showShortcutsKeyCommand; // @synthesize showShortcutsKeyCommand=_showShortcutsKeyCommand;
-@property(retain, nonatomic) NSMutableDictionary *hudToAppKeyCommandsMap; // @synthesize hudToAppKeyCommandsMap=_hudToAppKeyCommandsMap;
-@property(retain, nonatomic) UITapGestureRecognizer *tapGestureRecognizer; // @synthesize tapGestureRecognizer=_tapGestureRecognizer;
+@property(retain, nonatomic) NSMutableDictionary *hudToModelKeyCommandsMap; // @synthesize hudToModelKeyCommandsMap=_hudToModelKeyCommandsMap;
+@property(retain, nonatomic) _UIPassthroughScrollInteraction *passthroughScrollInteraction; // @synthesize passthroughScrollInteraction=_passthroughScrollInteraction;
 @property(retain, nonatomic) UIKeyShortcutHUDMetrics *metrics; // @synthesize metrics=_metrics;
 @property(retain, nonatomic) _UIKeyShortcutHUDCollectionViewManager *collectionViewManager; // @synthesize collectionViewManager=_collectionViewManager;
 @property(retain, nonatomic) NSLayoutConstraint *toolbarPreferredWidthConstraint; // @synthesize toolbarPreferredWidthConstraint=_toolbarPreferredWidthConstraint;
@@ -95,6 +95,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool hasText;
 - (void)deleteBackward;
 - (void)insertText:(id)arg1;
+- (_Bool)_canChangeFirstResponder:(id)arg1 toResponder:(id)arg2;
 - (_Bool)canBecomeFirstResponder;
 - (void)_setSearching:(_Bool)arg1 animated:(_Bool)arg2 initialSearchText:(id)arg3;
 - (void)_setSearching:(_Bool)arg1 animated:(_Bool)arg2;
@@ -104,16 +105,17 @@ __attribute__((visibility("hidden")))
 - (id)preferredFocusEnvironments;
 - (void)_setDisplayedMenu:(id)arg1 animated:(_Bool)arg2;
 - (void)setDisplayedMenu:(id)arg1;
-- (void)handleAppKeyCommand:(id)arg1;
+- (void)handleModelKeyCommand:(id)arg1;
 - (void)handleShowShortcutsKeyCommand:(id)arg1;
 - (void)showHelp:(id)arg1;
 - (void)handleEscapeKeyCommand:(id)arg1;
-- (void)handleHUDTap:(id)arg1;
+- (_Bool)passthroughScrollInteractionDidRecognize:(id)arg1;
+- (_Bool)passthroughScrollInteraction:(id)arg1 shouldInteractAtLocation:(struct CGPoint)arg2 withEvent:(id)arg3;
 - (_Bool)shouldDismissHUDForModifierKeyTap;
 - (void)_hudWillBecomeHidden:(_Bool)arg1;
 - (void)setHidden:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)setupPassthroughScrollInteraction;
 - (void)_setupHUDKeyCommands;
-- (void)_setupGestureRecognizers;
 - (void)_setupInitialViewState;
 - (void)_setupCollectionViewManagement;
 - (void)_setupLayout;
@@ -131,6 +133,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *description;
 @property(nonatomic) _Bool enablesReturnKeyAutomatically;
 @property(readonly) unsigned long long hash;
+@property(nonatomic) long long inlinePredictionType;
 @property(nonatomic) long long keyboardAppearance;
 @property(nonatomic) long long keyboardType;
 @property(copy, nonatomic) UITextInputPasswordRules *passwordRules;

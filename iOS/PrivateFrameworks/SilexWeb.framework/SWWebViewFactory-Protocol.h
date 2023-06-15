@@ -6,9 +6,9 @@
 
 #import <SilexWeb/NSObject-Protocol.h>
 
-@class SWScrollSettings, WKWebView, WKWebViewConfiguration;
+@class SWScrollSettings, SWWebView, WKWebViewConfiguration;
 
 @protocol SWWebViewFactory <NSObject>
-- (WKWebView *)createWebViewWithWebViewConfiguration:(WKWebViewConfiguration *)arg1 scrollSettings:(SWScrollSettings *)arg2;
+- (SWWebView *)createWebViewWithWebViewConfiguration:(WKWebViewConfiguration *)arg1 scrollSettings:(SWScrollSettings *)arg2;
 @end
 

@@ -6,18 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@class CaptureMTLDevice, MTLDebugInstrumentationData, MTLMeshRenderPipelineDescriptor, MTLRenderPipelineDescriptor, MTLTileRenderPipelineDescriptor, NSMapTable, NSString;
+@class CaptureMTLDevice, MTLDebugInstrumentationData, MTLMeshRenderPipelineDescriptor, MTLRenderPipelineDescriptor, MTLRenderPipelineReflection, MTLTileRenderPipelineDescriptor, NSMapTable, NSString;
 @protocol MTLDevice, MTLRenderPipelineState, MTLRenderPipelineStateSPI;
 
-__attribute__((visibility("hidden")))
 @interface CaptureMTLRenderPipelineState : NSObject
 {
     id <MTLRenderPipelineStateSPI> _baseObject;
     CaptureMTLDevice *_captureDevice;
+    CaptureMTLRenderPipelineState *_capturePipelineState;
     struct GTTraceContext *_traceContext;
     struct GTTraceStream *_traceStream;
     NSMapTable *_functionHandleMap;
     MTLRenderPipelineDescriptor *_descriptor;
+    MTLRenderPipelineReflection *_reflection;
     MTLTileRenderPipelineDescriptor *_tileDescriptor;
     MTLMeshRenderPipelineDescriptor *_meshDescriptor;
 }
@@ -25,12 +26,12 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(copy, nonatomic) MTLMeshRenderPipelineDescriptor *meshDescriptor; // @synthesize meshDescriptor=_meshDescriptor;
 @property(copy, nonatomic) MTLTileRenderPipelineDescriptor *tileDescriptor; // @synthesize tileDescriptor=_tileDescriptor;
+@property(retain, nonatomic) MTLRenderPipelineReflection *reflection; // @synthesize reflection=_reflection;
 @property(copy, nonatomic) MTLRenderPipelineDescriptor *descriptor; // @synthesize descriptor=_descriptor;
 - (id)objectFunctionHandleWithFunction:(id)arg1;
 - (id)newVertexShaderDebugInfo;
 - (id)newTileRenderPipelineStateWithAdditionalBinaryFunctions:(id)arg1 error:(id *)arg2;
 - (id)newRenderPipelineStateWithAdditionalBinaryFunctions:(id)arg1 fragmentAdditionalBinaryFunctions:(id)arg2 error:(id *)arg3;
-- (id)newRenderPipelineStateWithAdditionalBinaryFunctions:(id)arg1 error:(id *)arg2;
 - (id)newFragmentShaderDebugInfo;
 - (id)meshFunctionHandleWithFunction:(id)arg1;
 - (unsigned long long)imageblockMemoryLengthForDimensions:(CDStruct_14f26992)arg1;
@@ -51,6 +52,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) struct MTLResourceID gpuResourceID;
 @property(readonly) unsigned long long gpuHandle;
 @property(readonly, nonatomic) unsigned long long gpuAddress;
+@property(readonly, nonatomic) unsigned int explicitVisibilityGroupID;
 @property(readonly) id <MTLDevice> device;
 @property(readonly, nonatomic) unsigned long long allocatedSize;
 - (_Bool)conformsToProtocol:(id)arg1;
@@ -62,6 +64,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) struct GTTraceContext *traceContext;
 - (void)touch;
 - (id)originalObject;
+- (id)newRenderPipelineStateWithAdditionalBinaryFunctions:(id)arg1 error:(id *)arg2;
 - (id)functionHandleWithFunction:(id)arg1 stage:(unsigned long long)arg2;
 - (id)fragmentFunctionHandleWithFunction:(id)arg1;
 - (id)vertexFunctionHandleWithFunction:(id)arg1;
@@ -82,11 +85,11 @@ __attribute__((visibility("hidden")))
 - (id)functionHandleMap;
 @property(readonly) id <MTLRenderPipelineState> baseObject;
 - (void)swapObject:(id)arg1;
+- (id)initWithBaseObject:(id)arg1 capturePipelineState:(id)arg2;
 - (id)initWithBaseObject:(id)arg1 captureDevice:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, nonatomic) unsigned int explicitVisibilityGroupID;
 @property(readonly, retain, nonatomic) MTLDebugInstrumentationData *fragmentDebugInstrumentationData;
 @property(readonly) unsigned long long hash;
 @property(readonly, retain, nonatomic) MTLDebugInstrumentationData *meshDebugInstrumentationData;

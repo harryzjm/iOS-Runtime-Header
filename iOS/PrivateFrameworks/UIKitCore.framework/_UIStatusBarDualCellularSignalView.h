@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool rounded; // @synthesize rounded=_rounded;
 @property(readonly) _UIStatusBarCellularSignalView *bottomSignalView; // @synthesize bottomSignalView=_bottomSignalView;
 @property(readonly) _UIStatusBarCellularSignalView *topSignalView; // @synthesize topSignalView=_topSignalView;
+@property(readonly, nonatomic) UIAccessibilityHUDItem *accessibilityHUDRepresentation;
 - (struct CGSize)intrinsicContentSize;
 - (void)applyStyleAttributes:(id)arg1;
 - (id)viewForLastBaselineLayout;
@@ -38,7 +39,6 @@ __attribute__((visibility("hidden")))
 - (void)_commonInit;
 
 // Remaining properties
-@property(readonly, nonatomic) UIAccessibilityHUDItem *accessibilityHUDRepresentation;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;

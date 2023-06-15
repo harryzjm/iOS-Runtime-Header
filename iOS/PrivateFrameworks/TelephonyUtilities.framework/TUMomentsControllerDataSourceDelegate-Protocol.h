@@ -6,11 +6,13 @@
 
 #import <TelephonyUtilities/NSObject-Protocol.h>
 
-@class NSString, NSURL, TUMomentDescriptor, TUMomentsCapabilities;
+@class NSError, NSString, NSURL, TUMomentDescriptor, TUMomentsCapabilities, TUMomentsRawVideoMessageDescriptor;
 @protocol TUMomentsControllerDataSource;
 
 @protocol TUMomentsControllerDataSourceDelegate <NSObject>
 - (void)serverDiedForDataSource:(id <TUMomentsControllerDataSource>)arg1;
+- (void)dataSource:(id <TUMomentsControllerDataSource>)arg1 didReceiveMessageRecordingError:(NSError *)arg2;
+- (void)dataSource:(id <TUMomentsControllerDataSource>)arg1 didFinishProcessingRawVideoMessage:(TUMomentsRawVideoMessageDescriptor *)arg2;
 - (void)dataSource:(id <TUMomentsControllerDataSource>)arg1 requestSandboxExtensionForURL:(NSURL *)arg2 reply:(void (^)(TUSandboxExtendedURL *, NSError *))arg3;
 - (void)dataSource:(id <TUMomentsControllerDataSource>)arg1 didReceiveLocallyRequestedMomentDescriptor:(TUMomentDescriptor *)arg2;
 - (void)dataSource:(id <TUMomentsControllerDataSource>)arg1 willCaptureRemoteRequestFromRequesterID:(NSString *)arg2;

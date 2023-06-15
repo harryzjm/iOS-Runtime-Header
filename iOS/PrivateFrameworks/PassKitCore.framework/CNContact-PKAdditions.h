@@ -6,7 +6,7 @@
 
 #import <Contacts/CNContact.h>
 
-@class CRRecentContact;
+@class CRRecentContact, NSString;
 
 @interface CNContact (PKAdditions)
 + (id)pk_predicateForContactsMatchingPhoneNumber:(id)arg1;
@@ -18,6 +18,7 @@
 + (id)contactWithABRecordRef:(void *)arg1;
 + (id)pkPassbookRequiredKeys;
 - (void *)ABPerson;
+- (_Bool)representsContact:(id)arg1 forContactKeys:(id)arg2;
 - (id)pkDeconstructContactUsingKey:(id)arg1 substring:(id)arg2;
 - (id)pkDeconstructContactUsingKey:(id)arg1;
 - (id)pk_displayName;
@@ -31,6 +32,9 @@
 - (id)pkPhoneticName;
 - (id)pkFullName;
 - (id)pkFullyQualifiedName;
+@property(nonatomic) _Bool isHideMyEmail;
+@property(nonatomic) unsigned long long formattingConstrained;
+@property(copy, nonatomic) NSString *valueSource;
 @property(nonatomic) _Bool recentFromContactInformation;
 - (_Bool)isSubsetOfMeCard;
 @property(nonatomic) unsigned long long contactSource;

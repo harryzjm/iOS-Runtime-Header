@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UICollectionView.h>
+#import <UIKitCore/UICollectionView.h>
 
 @class MISSING_TYPE;
 
@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *forceLayoutOnNextSizeChange;
     MISSING_TYPE *safeAreaTransitionState;
+    MISSING_TYPE *helper;
     MISSING_TYPE *cachedIdealSize;
     MISSING_TYPE *visibleCellsUpdate;
     MISSING_TYPE *postUpdateInvalidations;
@@ -26,17 +27,23 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-- (id)initWithCoder:(id)arg1;
-- (id)initWithFrame:(struct CGRect)arg1 collectionViewLayout:(id)arg2;
 @property(nonatomic, readonly) _Bool _wantsConstraintBasedLayout;
+- (void)didMoveToWindow;
 @property(nonatomic, readonly) _Bool canBecomeFirstResponder;
 - (void)safeAreaInsetsDidChange;
 - (void)performBatchUpdates:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)layoutSubviews;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithFrame:(struct CGRect)arg1 collectionViewLayout:(id)arg2;
 @property(nonatomic) struct CGSize contentSize;
 @property(nonatomic) struct CGRect frame;
 @property(nonatomic) struct CGRect bounds;
-- (void)layoutBelowIfNeeded;
+- (id)accessibilityElementForRow:(long long)arg1 andColumn:(long long)arg2;
+- (id)accessibilityHeaderElementsForColumn:(long long)arg1;
+- (id)accessibilityHeaderElementsForRow:(long long)arg1;
+- (long long)accessibilityColumnCount;
+- (long long)accessibilityRowCount;
+- (id)accessibilityDataTableCellElementForRow:(long long)arg1 column:(long long)arg2;
 
 @end
 

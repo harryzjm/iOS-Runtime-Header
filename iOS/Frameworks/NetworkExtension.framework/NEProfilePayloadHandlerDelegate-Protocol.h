@@ -25,6 +25,7 @@
 - (_Bool)setPayloadInfoCommon:(NSString *)arg1 payloadOrganization:(NSString *)arg2;
 - (_Bool)setPayloadInfoIdentity:(id <NEProfilePayloadBaseDelegate>)arg1;
 - (NSArray *)getCertificates;
+- (_Bool)setCertificates:(NSDictionary *)arg1 keyRefs:(NSDictionary *)arg2 specs:(NSDictionary *)arg3;
 - (_Bool)setCertificates:(NSDictionary *)arg1;
 - (NSDictionary *)getPendingCertificateInfo:(id <NEProfilePayloadBaseDelegate>)arg1;
 - (NSDictionary *)getPendingCertificateUUIDs:(id <NEProfilePayloadBaseDelegate>)arg1;

@@ -7,7 +7,6 @@
 #import <Foundation/NSRunLoop.h>
 
 @interface NSRunLoop (DVTNSRunLoopAdditions)
-+ (void)dvt_initializeRunLoopAdditions;
 - (void)dvt_spinRunLoopInMode:(id)arg1 waitingForGroup:(id)arg2;
 - (void)dvt_spinRunLoopInMode:(id)arg1 waitingForSemaphore:(id)arg2;
 - (void)dvt_spinRunLoopInMode:(id)arg1 whileBlockExecutesConcurrently:(CDUnknownBlockType)arg2;

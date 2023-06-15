@@ -13,14 +13,27 @@
     MISSING_TYPE *backgroundArtworkDelegate;
     MISSING_TYPE *delegate;
     MISSING_TYPE *page;
+    MISSING_TYPE *archivedSessionClient;
+    MISSING_TYPE *assetClient;
+    MISSING_TYPE *bookmarkClient;
+    MISSING_TYPE *catalogClient;
+    MISSING_TYPE *configurationClient;
     MISSING_TYPE *dependencies;
     MISSING_TYPE *eventHub;
-    MISSING_TYPE *topShelf;
-    MISSING_TYPE *catalogClient;
+    MISSING_TYPE *subscriptionCache;
     MISSING_TYPE *subscriptionToken;
+    MISSING_TYPE *upNextQueueClient;
+    MISSING_TYPE *topShelf;
     MISSING_TYPE *activationState;
     MISSING_TYPE *editorialCollectionDetail;
     MISSING_TYPE *editorialCollectionIdentifier;
+    MISSING_TYPE *assetBundles;
+    MISSING_TYPE *bookmarks;
+    MISSING_TYPE *configuration;
+    MISSING_TYPE *playlists;
+    MISSING_TYPE *resumableSessions;
+    MISSING_TYPE *subscription;
+    MISSING_TYPE *upNextQueueItems;
 }
 
 @end

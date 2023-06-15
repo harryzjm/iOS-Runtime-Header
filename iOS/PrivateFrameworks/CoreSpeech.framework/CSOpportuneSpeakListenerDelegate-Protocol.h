@@ -11,7 +11,7 @@
 @protocol CSOpportuneSpeakListenerDelegate <NSObject>
 
 @optional
-- (void)opportuneSpeakListener:(CSOpportuneSpeakListener *)arg1 didStopUnexpectly:(_Bool)arg2;
+- (void)opportuneSpeakListener:(CSOpportuneSpeakListener *)arg1 didStopUnexpectedly:(_Bool)arg2;
 - (void)opportuneSpeakListener:(CSOpportuneSpeakListener *)arg1 hasVADAvailable:(_Bool)arg2 withHostTime:(float)arg3;
 - (void)opportuneSpeakListener:(CSOpportuneSpeakListener *)arg1 hasVADAvailable:(_Bool)arg2;
 - (void)opportuneSpeakListener:(CSOpportuneSpeakListener *)arg1 hasRemoteVADAvailable:(_Bool)arg2;

@@ -11,7 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface AVAudioSessionSpecification : NSObject
 {
-    unsigned int siblingID;
+    unsigned int sourceSessionID;
     unsigned long long sessionType;
     NSString *clientIdentifier;
     CDStruct_4c969caf _clientAuditToken;
@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier;
-@property(nonatomic) unsigned int siblingID; // @synthesize siblingID;
+@property(nonatomic) unsigned int sourceSessionID; // @synthesize sourceSessionID;
 @property(nonatomic) CDStruct_4c969caf clientAuditToken; // @synthesize clientAuditToken=_clientAuditToken;
 @property(nonatomic) unsigned long long sessionType; // @synthesize sessionType;
 - (id)initWithCoder:(id)arg1;

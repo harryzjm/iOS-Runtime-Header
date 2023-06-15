@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
 @class CNAccountsAndGroupsActionsProvider, CNAccountsAndGroupsAuthorizationContext, CNAccountsAndGroupsDataSource, CNContainerDataSource, CNManagedConfiguration, CNUIEditAuthorizationController, CNUIGroupsAndContainersSaveManager, CNUIUserActivityManager, NSString, UIBarButtonItem, UICollectionView, UICollectionViewDiffableDataSource, UIKeyCommand, _UIDiffableDataSourceOutlineSectionController;
 @protocol CNAccountsAndGroupsViewControllerDelegate;
@@ -17,7 +17,6 @@ __attribute__((visibility("hidden")))
     _Bool _allowsDone;
     _Bool _needsReload;
     _Bool _isVisible;
-    _Bool _contextMenuShouldSetCellEditing;
     CNAccountsAndGroupsDataSource *_dataSource;
     CNManagedConfiguration *_managedConfiguration;
     id <CNAccountsAndGroupsViewControllerDelegate> _delegate;
@@ -46,7 +45,6 @@ __attribute__((visibility("hidden")))
 @property(retain) _UIDiffableDataSourceOutlineSectionController *sectionController; // @synthesize sectionController=_sectionController;
 @property(retain) UICollectionView *collectionView; // @synthesize collectionView=_collectionView;
 @property(retain, nonatomic) UIViewController *potentiallyPresentedViewController; // @synthesize potentiallyPresentedViewController=_potentiallyPresentedViewController;
-@property(nonatomic) _Bool contextMenuShouldSetCellEditing; // @synthesize contextMenuShouldSetCellEditing=_contextMenuShouldSetCellEditing;
 @property(retain, nonatomic) UIKeyCommand *addGroupKeyCommand; // @synthesize addGroupKeyCommand=_addGroupKeyCommand;
 @property(nonatomic) long long buttonBehavior; // @synthesize buttonBehavior=_buttonBehavior;
 @property(readonly, nonatomic) CNUIUserActivityManager *activityManager; // @synthesize activityManager=_activityManager;
@@ -83,7 +81,6 @@ __attribute__((visibility("hidden")))
 - (id)collectionView:(id)arg1 dropSessionDidUpdate:(id)arg2 withDestinationIndexPath:(id)arg3;
 - (_Bool)collectionView:(id)arg1 canHandleDropSession:(id)arg2;
 - (id)multitaskingDragExclusionRects;
-- (void)contextMenuDidSelectRenameAction;
 - (void)collectionView:(id)arg1 willEndContextMenuInteractionWithConfiguration:(id)arg2 animator:(id)arg3;
 - (id)collectionView:(id)arg1 contextMenuConfiguration:(id)arg2 dismissalPreviewForItemAtIndexPath:(id)arg3;
 - (id)collectionView:(id)arg1 contextMenuConfiguration:(id)arg2 highlightPreviewForItemAtIndexPath:(id)arg3;
@@ -112,17 +109,19 @@ __attribute__((visibility("hidden")))
 - (void)setEditingForGroupItem:(id)arg1;
 - (void)restoreCurrentlyEditingGroupIfNeeded;
 - (id)currentlySelectedItem;
-- (void)selectCurrentItemIfNeeded;
+- (void)updateSelectionIfNeeded;
 - (void)resignAllFirstRespondersSavingCurrentlyEditing:(_Bool)arg1;
 - (void)expandSectionForAccountWithIdentifier:(id)arg1;
 - (void)reloadData;
 - (void)reloadCollectionViewForSectionWithIdentifier:(id)arg1 settingFilterForEditingItem:(_Bool)arg2 allowsReloadWhenEditing:(_Bool)arg3;
 - (void)reloadCollectionViewAddingPlaceholderItem:(id)arg1 inSectionWithIdentifier:(id)arg2;
+- (void)removePlaceholderCellsIfNeededInSection:(id)arg1 animated:(_Bool)arg2;
 - (void)cleanUpItemIfNeeded:(id)arg1;
 - (void)reloadCollectionViewDeletingItem:(id)arg1;
 - (void)cancel:(id)arg1;
 - (void)updateToolbarVisibility;
 - (void)updateNavigationButtons;
+- (void)clearNavigationButtonsIfNeeded;
 - (_Bool)shouldShowCancelButton;
 - (id)menuForContainers;
 - (void)reloadAddGroupButton;
@@ -138,6 +137,7 @@ __attribute__((visibility("hidden")))
 - (void)viewWillDisappear:(_Bool)arg1;
 - (_Bool)shouldSetFirstResponder;
 - (void)viewDidAppear:(_Bool)arg1;
+- (void)viewIsAppearing:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;

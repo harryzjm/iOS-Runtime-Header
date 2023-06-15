@@ -11,6 +11,7 @@
 @protocol SFCommandButtonItem <SFButtonItem>
 @property(readonly, nonatomic) NSData *jsonData;
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property(nonatomic) _Bool isDestructive;
 @property(copy, nonatomic) NSArray *previewButtonItems;
 @property(retain, nonatomic) SFCommand *command;
 @property(copy, nonatomic) NSString *title;

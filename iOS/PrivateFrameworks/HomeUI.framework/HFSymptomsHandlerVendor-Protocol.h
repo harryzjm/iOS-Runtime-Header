@@ -9,6 +9,6 @@
 @class HMSymptomsHandler;
 
 @protocol HFSymptomsHandlerVendor <NSObject>
-@property(nonatomic, readonly) HMSymptomsHandler *symptomsHandler;
+@property(readonly, nonatomic) HMSymptomsHandler *symptomsHandler;
 @end
 

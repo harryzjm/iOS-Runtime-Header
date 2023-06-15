@@ -26,7 +26,7 @@
 - (void)ams_addMescalHeaderWithType:(long long)arg1 bag:(id)arg2 logKey:(id)arg3;
 - (void)ams_addIssuingProcessHeader;
 - (void)ams_addIdentifierHeadersForAccount:(id)arg1;
-- (void)ams_addGUIDParameterUsingBag:(id)arg1;
+- (void)ams_addGUIDParameterUsingBag:(id)arg1 preservingQueryEncoding:(_Bool)arg2;
 - (void)ams_addGSTokenForAccount:(id)arg1 identifier:(id)arg2;
 - (void)ams_addCookiesForAccount:(id)arg1 clientInfo:(id)arg2 bag:(id)arg3 cleanupGlobalCookies:(_Bool)arg4;
 - (void)ams_addCookiesForAccount:(id)arg1 clientInfo:(id)arg2 bag:(id)arg3;
@@ -36,7 +36,7 @@
 - (void)ams_addClientVersionsForClient:(id)arg1;
 - (void)ams_addClientIdentifierHeaderForClient:(id)arg1;
 - (void)ams_addCachePolicyHeader;
-- (void)ams_addCacheBusterParameter;
+- (void)ams_addCacheBusterParameterWithPreservedQueryEncoding:(_Bool)arg1;
 - (void)ams_addBiometricsHeadersForAccount:(id)arg1 options:(id)arg2;
 - (void)ams_addAuthorizationHeaderForAccount:(id)arg1;
 - (void)ams_addAuthKitHeaders;

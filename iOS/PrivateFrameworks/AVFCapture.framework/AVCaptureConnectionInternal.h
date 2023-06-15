@@ -34,8 +34,8 @@ __attribute__((visibility("hidden")))
     _Bool videoMirroringSupported;
     _Bool automaticallyAdjustsVideoMirroring;
     _Bool videoMirrored;
-    _Bool videoOrientationSupported;
-    long long videoOrientation;
+    _Bool videoRotationSupported;
+    double videoRotationAngle;
     CDStruct_1b6d18a9 videoMinFrameDuration;
     CDStruct_1b6d18a9 videoMaxFrameDuration;
     double videoMaxScaleAndCropFactor;

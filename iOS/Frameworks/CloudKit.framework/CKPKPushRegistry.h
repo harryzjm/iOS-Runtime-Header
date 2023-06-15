@@ -16,13 +16,13 @@
 
 + (id)sharedPushRegistry;
 - (void).cxx_destruct;
-@property(retain, nonatomic) PKPushRegistry *pushRegistry; // @synthesize pushRegistry=_pushRegistry;
-@property(retain, nonatomic) NSHashTable *delegates; // @synthesize delegates=_delegates;
+@property(readonly, nonatomic) PKPushRegistry *pushRegistry; // @synthesize pushRegistry=_pushRegistry;
+@property(readonly, nonatomic) NSHashTable *delegates; // @synthesize delegates=_delegates;
 - (void)pushRegistry:(id)arg1 didReceiveIncomingPushWithPayload:(id)arg2 forType:(id)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
 - (void)pushRegistry:(id)arg1 didUpdatePushCredentials:(id)arg2 forType:(id)arg3;
 - (void)removeDelegate:(id)arg1;
 - (void)addDelegate:(id)arg1;
-- (id)_init;
+- (id)initInternal;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -11,6 +11,7 @@
 - (_Bool)aa_appearsToBePhoneNumber;
 - (id)_phoneNumberDetector;
 - (_Bool)aa_appearsToBeEmail;
+- (id)trim;
 - (id)aa_base64String;
 @end
 

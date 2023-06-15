@@ -11,6 +11,7 @@
 @protocol PKPaymentOptionsProtocol <NSObject>
 @property(retain, nonatomic) CNContact *defaultContactName;
 @property(retain, nonatomic) CNContact *defaultContactPhone;
+@property(nonatomic) _Bool useHideMyEmail;
 @property(retain, nonatomic) CNContact *defaultContactEmail;
 @property(readonly, nonatomic) NSDictionary *defaultBillingAddresses;
 @property(retain, nonatomic) CNContact *defaultShippingAddress;

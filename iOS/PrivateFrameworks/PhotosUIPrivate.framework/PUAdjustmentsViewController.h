@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
 @class CEKSlider, NSIndexPath, NSString, PUAdjustmentInfo, PUAdjustmentsViewFlowLayout, PUPhotoEditAutoAdjustmentCell, PUSelectionFeedbackGenerator, PXUISnappingController, UICollectionView, UIImage;
 @protocol PUAdjustmentViewControllerDelegate, PUAdjustmentsViewDataSource;
@@ -94,7 +94,6 @@ __attribute__((visibility("hidden")))
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)_updateViewLayout;
-- (long long)preferredUserInterfaceStyle;
 - (void)viewDidLoad;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 

@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSNotificationCenter, NSRecursiveLock, NSString, VNMTLDeviceWisdomParameters, _VNWeakSessionsCollection;
+@class NSArray, NSNotificationCenter, NSRecursiveLock, NSString, VNMTLDeviceWisdomParameters, VisionCoreObjectCache, _VNWeakSessionsCollection;
 @protocol NSLocking;
 
 __attribute__((visibility("hidden")))
 @interface VNFrameworkManager : NSObject
 {
     NSNotificationCenter *_notificationCenter;
+    VisionCoreObjectCache *_detectorDescriptorsCache;
     NSRecursiveLock *_detectorAccessingLock;
     NSRecursiveLock *_trackerResourcesAccessingLock;
     struct os_unfair_lock_s _sessionsAccessLock;
@@ -23,6 +24,7 @@ __attribute__((visibility("hidden")))
 
 + (id)manager;
 - (void).cxx_destruct;
+@property(readonly) VisionCoreObjectCache *detectorDescriptorsCache; // @synthesize detectorDescriptorsCache=_detectorDescriptorsCache;
 - (void)legacyForcedCleanupOfJunkPipelineWithLevel:(id)arg1;
 - (void)legacyForcedCleanupOfSmartCamPipelineWithLevel:(id)arg1;
 - (void)legacyForcedCleanupOfScenePipelineWithLevel:(id)arg1;

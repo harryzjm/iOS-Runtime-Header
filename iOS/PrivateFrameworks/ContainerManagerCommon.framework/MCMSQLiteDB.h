@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSURL;
-@protocol MCMSQLiteDBCodeSigningPeerageDelegate;
+@protocol MCMSQLiteDBCodeSigningPeerageDelegate, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface MCMSQLiteDB : NSObject
@@ -15,14 +15,17 @@ __attribute__((visibility("hidden")))
     id <MCMSQLiteDBCodeSigningPeerageDelegate> _peerageDelegate;
     struct sqlite3 *_db;
     NSURL *_url;
+    NSObject<OS_dispatch_queue> *_queue;
 }
 
-+ (struct sqlite3 *)openDBWithURL:(id)arg1 error:(id *)arg2;
-+ (_Bool)moveDBWithURL:(id)arg1 toURL:(id)arg2 error:(id *)arg3;
++ (struct sqlite3 *)openDBWithURL:(id)arg1 queue:(id)arg2 error:(id *)arg3;
++ (_Bool)moveDBWithURL:(id)arg1 toURL:(id)arg2 queue:(id)arg3 error:(id *)arg4;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(retain, nonatomic) NSURL *url; // @synthesize url=_url;
 @property(nonatomic) struct sqlite3 *db; // @synthesize db=_db;
 @property(nonatomic) __weak id <MCMSQLiteDBCodeSigningPeerageDelegate> peerageDelegate; // @synthesize peerageDelegate=_peerageDelegate;
+- (_Bool)deleteAllInvalidPluginCodeSigningEntriesWithNumChanges:(int *)arg1 error:(id *)arg2;
 - (id)childParentMapWithError:(id *)arg1;
 - (_Bool)deleteAllAdvanceCopiesOfCodeSigningEntriesWithError:(id *)arg1;
 - (id)parentIdentifierForChildIdentifier:(id)arg1 error:(id *)arg2;
@@ -47,7 +50,7 @@ __attribute__((visibility("hidden")))
 - (void)closeDB;
 - (_Bool)_sqliteExec:(id)arg1 error:(id *)arg2;
 - (void)dealloc;
-- (id)initWithURL:(id)arg1 error:(id *)arg2;
+- (id)initWithURL:(id)arg1 queue:(id)arg2 error:(id *)arg3;
 
 @end
 

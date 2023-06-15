@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     MTLStructTypeInternal *_meshPrimitiveStruct;
 }
 
+- (_Bool)isEqual:(id)arg1;
 - (id)meshPrimitiveStruct;
 - (id)meshVertexStruct;
 - (unsigned long long)meshTopologyType;

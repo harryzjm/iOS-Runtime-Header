@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class PKBannerServiceRequest;
+@class PKBannerHandleRequest, PKBannerHandleState;
 
 @protocol PKBannerService_Server
+- (void)detachWithReply:(void (^)(NSError *))arg1;
 - (void)displayWithReply:(void (^)(NSError *))arg1;
-- (oneway void)configureForRequest:(PKBannerServiceRequest *)arg1 withDidStartReply:(void (^)(NSError *))arg2;
+- (oneway void)updateState:(PKBannerHandleState *)arg1 withReply:(void (^)(NSError *))arg2;
+- (oneway void)configureForRequest:(PKBannerHandleRequest *)arg1 withState:(PKBannerHandleState *)arg2 didStartReply:(void (^)(NSError *))arg3;
 @end
 

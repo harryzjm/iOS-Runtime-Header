@@ -13,6 +13,8 @@
     MISSING_TYPE *inferredModeEvent;
     MISSING_TYPE *inferredModeConfidenceThreshold;
     MISSING_TYPE *inferredModeStream;
+    MISSING_TYPE *filteringEnabledInDataProviders;
+    MISSING_TYPE *includeLastOngoingEventInSessions;
 }
 
 - (id)featureValueForName:(id)arg1;

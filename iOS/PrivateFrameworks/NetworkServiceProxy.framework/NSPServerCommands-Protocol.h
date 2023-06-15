@@ -11,17 +11,21 @@
 @protocol NSPServerCommands <NSObject>
 
 @optional
+- (void)setPrivacyProxyTokenEventsProactiveTokenFetchParams:(NSString *)arg1 lowerTokenCountThresholdStr:(NSString *)arg2 lowerTokenCountProbabilityStr:(NSString *)arg3 statsDurationStr:(NSString *)arg4 upperLWMCountThresholdStr:(NSString *)arg5 upperLWMCountProbabilityOffsetStr:(NSString *)arg6 completionHandler:(void (^)(NSError *))arg7;
+- (void)dumpPrivacyProxyTokenEventsWithCompletionHandler:(NSString *)arg1 mostRecent:(_Bool)arg2 limit:(unsigned long long)arg3 dumpStats:(_Bool)arg4 completionHandler:(void (^)(NSArray *))arg5;
 - (void)getPrivacyProxyDomainFilters:(void (^)(NSDictionary *))arg1;
 - (void)setPreferredPathRoutingEnabled:(_Bool)arg1 completionHandler:(void (^)(NSError *))arg2;
+- (void)setInProcessFlowDivert:(_Bool)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)privateAccessTokensAllowTools:(_Bool)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)stopProxyToMPTCPConverterProxyWithCompletionHandler:(void (^)(NSError *))arg1;
 - (void)startProxyToMPTCPConverterProxyWithCompletionHandler:(void (^)(NSError *))arg1;
 - (void)getPrivateAccessTokensEnabledWithCompletionHandler:(void (^)(_Bool, NSError *))arg1;
 - (void)setPrivateAccessTokensEnabled:(_Bool)arg1 completionHandler:(void (^)(NSError *))arg2;
+- (_Bool)checkOriginAllowedAsThirdParty:(NSString *)arg1;
 - (void)fetchPrivateAccessTokenWithFetcher:(NSPPrivateAccessTokenFetcher *)arg1 completionHandler:(void (^)(NSData *, NSError *))arg2;
 - (void)sendRTCReport:(long long)arg1 errorCode:(long long)arg2 url:(NSString *)arg3 completionHandler:(void (^)(NSError *))arg4;
 - (void)getPrivacyProxyEffectiveUserTierWithCompletionHandler:(void (^)(unsigned long long, NSError *))arg1;
-- (void)getPrivacyProxyAccountTypeWithCompletionHandler:(void (^)(unsigned long long, NSError *))arg1;
+- (void)getPrivacyProxyAccountTypeWithCompletionHandler:(void (^)(unsigned long long, unsigned long long, NSError *))arg1;
 - (void)setGeohashOverride:(NSString *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)getGeohashSharingPreferenceWithCompletionHandler:(void (^)(_Bool, NSError *))arg1;
 - (void)setGeohashSharingPreference:(_Bool)arg1 completionHandler:(void (^)(NSError *))arg2;
@@ -32,6 +36,9 @@
 - (void)getPreferredResolverWithCompletionHandler:(void (^)(NSString *, NSError *))arg1;
 - (void)overridePreferredResolver:(NSString *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)getPreferredProxyWithCompletionHandler:(void (^)(NSString *, NSError *))arg1;
+- (void)setProxiedContentMapDoHBootstrapEnabled:(_Bool)arg1 completionHandler:(void (^)(NSError *))arg2;
+- (void)getOverrideProxiedContentMapEnabled:(NSString *)arg1 completionHandler:(void (^)(_Bool, NSError *))arg2;
+- (void)overrideProxiedContentMap:(NSString *)arg1 enabled:(_Bool)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)overridePreferredProxy:(NSString *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)getPrivacyProxyInfoWithCompletionHandler:(void (^)(PrivacyProxyInfo *, NSError *))arg1;
 - (void)stopLocationMonitor;
@@ -44,11 +51,14 @@
 - (void)getPrivacyProxyPolicyWithCompletionHandler:(void (^)(NSDictionary *))arg1;
 - (void)getPrivacyProxyTrafficStateWithCompletionHandler:(void (^)(unsigned long long, NSError *))arg1;
 - (void)setPrivacyProxyTrafficState:(unsigned long long)arg1 proxyTraffic:(unsigned long long)arg2 completionHandler:(void (^)(NSError *))arg3;
-- (void)getPrivacyProxyUserTierWithCompletionHandler:(void (^)(unsigned long long, NSError *))arg1;
+- (void)setFreeUserTierUntilTomorrowWithCompletionHandler:(void (^)(NSError *))arg1;
+- (void)getPrivacyProxyUserTierWithCompletionHandler:(void (^)(unsigned long long, _Bool, NSError *))arg1;
 - (void)setPrivacyProxyUserTier:(unsigned long long)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)reportPrivacyProxyNetworkStatus:(PrivacyProxyNetworkStatus *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)reportPrivacyProxyServiceStatus:(unsigned long long)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)getPrivacyProxyServiceStatusTimelineWithCompletionHandler:(void (^)(NSArray *, NSError *))arg1;
+- (void)setPrivacyProxyAppStatus:(unsigned long long)arg1 bundleIdentifier:(NSString *)arg2 path:(NSString *)arg3 completionHandler:(void (^)(NSError *))arg4;
+- (void)getPrivacyProxyAppStatusesWithCompletionHandler:(void (^)(NSArray *, NSDate *, NSError *))arg1;
 - (void)getPrivacyProxyServiceStatusWithCompletionHandler:(void (^)(PrivacyProxyServiceStatus *, NSError *))arg1;
 - (void)getPrivacyProxyStatusWithCompletionHandler:(void (^)(_Bool, NSError *))arg1;
 - (void)setPrivacyProxyStatus:(_Bool)arg1 completionHandler:(void (^)(NSError *))arg2;

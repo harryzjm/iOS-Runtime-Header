@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     NSTimer *_pendingResponderChangedTimer;
     _Bool _postedSwitchFromEmojiNotification;
     _Bool _isInputAssistantItemEmpty;
+    _Bool _isButtonBarItemsInlineVisible;
     _Bool _showsRemoteInputDashViewController;
     _Bool _assistantEnabledPreference;
     _Bool _assistantOniPhonePreference;
@@ -44,7 +45,10 @@ __attribute__((visibility("hidden")))
     UIRemoteInputViewInfo *_remoteAssistantViewInfo;
 }
 
++ (_Bool)shouldShowSystemInputAssistantItems;
 + (double)_defaultPreferredHeightForTraitCollection:(id)arg1;
++ (long long)keyboardOrientation;
++ (double)_defaultPreferredHeightForTraitCollection:(id)arg1 interfaceOrientation:(long long)arg2;
 + (_Bool)_requiresProxyInterface;
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIRemoteInputViewInfo *remoteAssistantViewInfo; // @synthesize remoteAssistantViewInfo=_remoteAssistantViewInfo;
@@ -84,6 +88,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)_usesCustomBackground;
 - (_Bool)shouldUseCustomBackground:(id)arg1;
 - (void)updateAssistantBarStyle:(long long)arg1;
+- (void)setOverrideSafeAreaInsets;
 - (id)styleFromAssistantBarStyle:(long long)arg1;
 - (id)layoutFromAssistantBarStyle:(long long)arg1;
 - (void)autocorrectionControllerDidClearAutocorrections:(id)arg1;
@@ -114,6 +119,7 @@ __attribute__((visibility("hidden")))
 - (void)_willChangeTextEffectsRotationNotification:(id)arg1;
 - (void)_applicationDidBecomeActiveNotification:(id)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
+- (void)_updateCenterViewWidthAndRenderConfig;
 - (void)_registerForAssistantViewNotifications;
 - (_Bool)_shouldShowExpandableButtonBarItemsForResponder:(id)arg1;
 - (_Bool)_allowedToShowBarButtonItemsInline:(id)arg1;
@@ -146,6 +152,7 @@ __attribute__((visibility("hidden")))
 - (void)_candidatesChanged;
 - (void)_showCandidates;
 - (_Bool)layoutHasBuiltinAssistantView;
+- (double)preferredHeightForTraitCollection:(id)arg1 orientation:(long long)arg2;
 - (double)preferredHeightForTraitCollection:(id)arg1;
 - (_Bool)_shouldCollapseEmojiSearchView;
 - (_Bool)shouldShowEmojiSearchViewControllerForInputDelegate:(id)arg1;

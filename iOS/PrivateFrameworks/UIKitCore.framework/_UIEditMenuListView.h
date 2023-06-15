@@ -6,7 +6,7 @@
 
 #import "UIView.h"
 
-@class CAShapeLayer, NSIndexPath, NSString, UICollectionViewDiffableDataSource, UIMenu, _UIContextMenuSelectionGestureRecognizer, _UIEditMenuCollectionView, _UIEditMenuPageButton;
+@class CAShapeLayer, NSIndexPath, NSString, UICollectionViewDiffableDataSource, UIMenu, _UIContextMenuSelectionGestureRecognizer, _UIDiffuseShadowView, _UIEditMenuCollectionView, _UIEditMenuPageButton;
 @protocol _UIEditMenuListViewDelegate;
 
 __attribute__((visibility("hidden")))
@@ -24,7 +24,9 @@ __attribute__((visibility("hidden")))
     long long _axis;
     UIView *_titleView;
     UIMenu *_displayedMenu;
+    UIView *_customBackgroundPlatterView;
     UIView *_backgroundView;
+    _UIDiffuseShadowView *_shadowView;
     CAShapeLayer *_maskLayer;
     UIView *_menuContainerView;
     _UIEditMenuCollectionView *_collectionView;
@@ -39,7 +41,7 @@ __attribute__((visibility("hidden")))
     NSIndexPath *_scrubbedIndexPath;
 }
 
-+ (double)minimumRequiredWidthForArrowInRoundedListViewForAxis:(long long)arg1;
++ (double)minimumRequiredWidthForArrowInRoundedListViewForAxis:(long long)arg1 traitCollection:(id)arg2;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSIndexPath *scrubbedIndexPath; // @synthesize scrubbedIndexPath=_scrubbedIndexPath;
 @property(retain, nonatomic) NSIndexPath *hoveredIndexPath; // @synthesize hoveredIndexPath=_hoveredIndexPath;
@@ -53,13 +55,16 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _UIEditMenuCollectionView *collectionView; // @synthesize collectionView=_collectionView;
 @property(readonly, nonatomic) UIView *menuContainerView; // @synthesize menuContainerView=_menuContainerView;
 @property(readonly, nonatomic) CAShapeLayer *maskLayer; // @synthesize maskLayer=_maskLayer;
+@property(readonly, nonatomic) _UIDiffuseShadowView *shadowView; // @synthesize shadowView=_shadowView;
 @property(readonly, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
+@property(readonly, nonatomic) UIView *customBackgroundPlatterView; // @synthesize customBackgroundPlatterView=_customBackgroundPlatterView;
 @property(readonly, nonatomic) UIMenu *displayedMenu; // @synthesize displayedMenu=_displayedMenu;
 @property(readonly, nonatomic) UIView *titleView; // @synthesize titleView=_titleView;
 @property(nonatomic) long long axis; // @synthesize axis=_axis;
 @property(nonatomic) long long arrowDirection; // @synthesize arrowDirection=_arrowDirection;
-@property(nonatomic) __weak id <_UIEditMenuListViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property(readonly, nonatomic) __weak id <_UIEditMenuListViewDelegate> delegate; // @synthesize delegate=_delegate;
 - (id)backgroundMaterialGroupName;
+- (_Bool)hasShadow;
 - (void)_updateMaskingLayerWithFrame:(struct CGRect)arg1;
 - (void)_updateArrowEdgeInsets;
 - (void)_unhighlightCurrentlyHighlightedItem;
@@ -72,6 +77,7 @@ __attribute__((visibility("hidden")))
 - (void)_handleHoverGesture:(id)arg1;
 - (void)_handleSelectionGesture:(id)arg1;
 - (id)_indexPathForGestureRecognizer:(id)arg1;
+- (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)collectionView:(id)arg1 willDisplayCell:(id)arg2 forItemAtIndexPath:(id)arg3;
 - (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
 - (void)scrollViewDidScroll:(id)arg1;
@@ -83,12 +89,14 @@ __attribute__((visibility("hidden")))
 - (void)setScrubbingEnabled:(_Bool)arg1;
 @property(readonly, nonatomic) _Bool scrubbingEnabled;
 - (void)layoutSubviews;
+- (void)_contentSizeCategoryDidChange;
 - (void)setBounds:(struct CGRect)arg1;
+- (_Bool)_hasPasteAuthentication;
 - (void)_reloadMenuAnimated:(_Bool)arg1;
 - (void)_createDataSource;
-- (void)traitCollectionDidChange:(id)arg1;
 - (void)_createViewHierarchy;
 - (struct CGSize)arrowSizeForDirection:(long long)arg1;
+- (double)_minimumRequiredWidthForArrowInRoundedListViewForAxis:(long long)arg1;
 - (struct CGSize)_verticalMenuContentSizeFittingContainerSize:(struct CGSize)arg1 traits:(id)arg2;
 - (struct CGSize)_intrinsicVerticalContentSizeForContainer:(id)arg1 containerSize:(struct CGSize)arg2;
 - (struct CGSize)_intrinsicHorizontalContentSizeForTraitCollection:(id)arg1 containerSize:(struct CGSize)arg2;
@@ -96,7 +104,7 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)_titleViewSizeForFittingWidth:(double)arg1;
 - (_Bool)_hasDisplayedMenu;
 - (void)reloadWithMenu:(id)arg1 titleView:(id)arg2 animated:(_Bool)arg3;
-- (id)initWithMenu:(id)arg1 titleView:(id)arg2;
+- (id)initWithDelegate:(id)arg1 menu:(id)arg2 titleView:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

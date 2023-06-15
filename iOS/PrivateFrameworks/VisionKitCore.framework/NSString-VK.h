@@ -19,7 +19,9 @@
 - (id)vk_stringByReplacingCharactersInStringMap:(id)arg1;
 - (id)vk_stringByReplacingCharactersInSet:(id)arg1 withString:(id)arg2;
 - (id)vk_stringByReplacingNewlineCharactersWithWhiteSpace;
+- (id)vk_checkedSubstringWithVKRange:(id)arg1;
 - (id)vk_checkedSubstringWithRange:(struct _NSRange)arg1;
+- (id)vk_substringWithVKRange:(id)arg1;
 - (id)vk_substringWithRange:(struct _NSRange)arg1;
 - (id)vk_substringToIndex:(unsigned long long)arg1;
 - (id)vk_substringFromIndex:(unsigned long long)arg1;

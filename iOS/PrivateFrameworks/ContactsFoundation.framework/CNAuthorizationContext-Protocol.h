@@ -7,6 +7,7 @@
 #import <ContactsFoundation/NSObject-Protocol.h>
 
 @protocol CNAuthorizationContext <NSObject>
+@property(readonly) _Bool isAddressingGrammarAccessGranted;
 @property(readonly) _Bool isNotesAccessGranted;
 @end
 

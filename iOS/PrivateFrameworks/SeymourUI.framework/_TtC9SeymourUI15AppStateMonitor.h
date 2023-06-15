@@ -10,10 +10,10 @@
 
 @interface _TtC9SeymourUI15AppStateMonitor : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *monitor;
     MISSING_TYPE *eventHub;
 }
 
+- (void)publishSignificantTimeChanged;
 - (void)publishAppWillTerminate;
 - (void)publishAppDidEnterBackground;
 - (void)publishAppWillResignActive;

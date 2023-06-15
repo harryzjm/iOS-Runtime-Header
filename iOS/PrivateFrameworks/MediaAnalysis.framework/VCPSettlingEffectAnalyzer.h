@@ -9,10 +9,13 @@ __attribute__((visibility("hidden")))
 {
     _Bool _processAborted;
     _Bool _cancelled;
+    CDStruct_e83c9415 _adjustedTimeRange;
 }
 
++ (CDStruct_e83c9415)getSettlingEffectTimeRange:(id)arg1 withOptions:(id)arg2;
 @property(nonatomic) _Bool cancelled; // @synthesize cancelled=_cancelled;
 @property(readonly) _Bool processAborted; // @synthesize processAborted=_processAborted;
+@property(readonly) CDStruct_e83c9415 adjustedTimeRange; // @synthesize adjustedTimeRange=_adjustedTimeRange;
 - (int)finishAnalysisPass:(CDStruct_e83c9415)arg1 withStillImageBuffer:(struct __CVBuffer *)arg2;
 - (id)initWithTimestamps:(id)arg1 andTrack:(id)arg2;
 

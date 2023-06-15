@@ -19,6 +19,7 @@
 - (void).cxx_destruct;
 @property(readonly, retain, nonatomic) TSCECalculationEngine *calcEngine; // @synthesize calcEngine=_calcEngine;
 - (id)description;
+- (void)resetCellsUsingFunction:(unsigned short)arg1;
 - (void)dirtyCellsUsingFunction:(unsigned short)arg1;
 - (void)addFunctionUsesInFormula:(id)arg1 atCellRef:(const struct TSCECellRef *)arg2 outContainsVolatileFunction:(_Bool *)arg3;
 - (void)addUseOfFunctions:(const void *)arg1 atCellRef:(const struct TSCECellRef *)arg2;

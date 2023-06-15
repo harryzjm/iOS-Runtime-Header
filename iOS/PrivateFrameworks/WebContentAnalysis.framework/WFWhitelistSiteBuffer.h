@@ -6,16 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary;
+@class NSMutableDictionary, WCRURLList;
 
 __attribute__((visibility("hidden")))
 @interface WFWhitelistSiteBuffer : NSObject
 {
     NSMutableDictionary *_siteTree;
+    WCRURLList *_urlList;
     unsigned long long _maxSize;
 }
 
 @property unsigned long long maxSize; // @synthesize maxSize=_maxSize;
+@property(retain) WCRURLList *urlList; // @synthesize urlList=_urlList;
 @property(retain) NSMutableDictionary *siteTree; // @synthesize siteTree=_siteTree;
 - (_Bool)containsURLString:(id)arg1;
 - (_Bool)treeContainsURLString:(id)arg1;

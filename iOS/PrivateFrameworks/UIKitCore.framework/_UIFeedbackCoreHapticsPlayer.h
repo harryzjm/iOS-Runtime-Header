@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (id)_internal_createEventsForTransientHapticData:(id)arg1;
 - (id)_internal_createEventsForLegacyFeedbackData:(id)arg1;
 - (id)_internal_createEventsForFileFeedbackData:(id)arg1 engine:(id)arg2 parameters:(id *)arg3 parameterCurves:(id *)arg4;
+- (id)_internal_createEventsForLibraryFeedbackData:(id)arg1 engine:(id)arg2 parameters:(id *)arg3 parameterCurves:(id *)arg4;
 - (id)_internal_createPlayerWithPattern:(id)arg1;
 - (id)initWithEngine:(id)arg1;
 

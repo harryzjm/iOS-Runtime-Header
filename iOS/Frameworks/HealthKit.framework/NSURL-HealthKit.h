@@ -24,7 +24,6 @@
 - (_Bool)hk_isRewrittenEUDigitalCOVIDCertificateQRCodeURL;
 - (_Bool)hk_isRewrittenHealthCardQRCodeURL;
 - (_Bool)hk_isValidSafariViewControllerURL;
-- (_Bool)hk_hasBaseURL:(id)arg1 error:(id *)arg2;
 - (id)hk_valueForFirstInstanceOfParameterNamed:(id)arg1;
 - (id)_hk_extractEncodedHKProfileIdentifier;
 @end

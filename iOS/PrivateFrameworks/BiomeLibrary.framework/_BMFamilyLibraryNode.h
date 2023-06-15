@@ -17,6 +17,10 @@ __attribute__((visibility("hidden")))
 + (id)streamNames;
 + (id)identifier;
 + (id)ScreenTime;
++ (id)configurationForAskToBuy;
++ (id)syncPolicyForAskToBuy;
++ (id)storeConfigurationForAskToBuy;
++ (id)AskToBuy;
 
 @end
 

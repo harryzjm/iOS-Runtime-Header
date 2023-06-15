@@ -6,10 +6,9 @@
 
 #import <Pegasus/NSObject-Protocol.h>
 
-@class NSArray, NSDictionary, NSString, PGHostedWindowHostingHandle, UIImage;
+@class NSArray, NSDictionary, NSString, PGHostedWindowHostingHandle;
 
 @protocol PGPictureInPictureRemoteObjectInterface <NSObject>
-- (oneway void)setScreenSharingTitle:(NSString *)arg1 avatar:(UIImage *)arg2;
 - (oneway void)stopPictureInPictureAndRestoreUserInterface;
 - (oneway void)setActivitySessionIdentifier:(NSString *)arg1;
 - (oneway void)updateMenuItems:(NSArray *)arg1;

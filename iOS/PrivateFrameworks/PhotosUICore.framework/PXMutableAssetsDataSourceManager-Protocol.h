@@ -11,6 +11,7 @@
 @protocol PXDisplayAssetCollection;
 
 @protocol PXMutableAssetsDataSourceManager <NSObject, PXMutableSectionedDataSourceManager>
+@property(copy, nonatomic) NSArray *sortDescriptors;
 @property(retain, nonatomic) NSPredicate *filterPredicate;
 @property(nonatomic) long long backgroundFetchOriginSection;
 - (void)setFilteringDisabled:(_Bool)arg1 forAssetCollection:(id <PXDisplayAssetCollection>)arg2;
@@ -27,5 +28,6 @@
 - (_Bool)forceAccurateSectionsIfNeeded:(NSIndexSet *)arg1;
 - (_Bool)forceAccurateAllSectionsIfNeeded;
 - (void)setCurationEnabled:(_Bool)arg1 forAssetCollection:(id <PXDisplayAssetCollection>)arg2;
+- (void)setCurationEnabledForAllCollections:(_Bool)arg1 collectionsToDiff:(NSSet *)arg2;
 @end
 

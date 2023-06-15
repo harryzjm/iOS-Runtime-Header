@@ -6,7 +6,7 @@
 
 #import "SFCollaborationItem.h"
 
-@class LPLinkMetadata, NSArray, NSItemProvider, NSString, NSURL, NSUUID, SFCollaborationCloudSharingResult, SFCollaborationMetadata, SFCollaborationShareOptions;
+@class LPLinkMetadata, NSArray, NSError, NSItemProvider, NSNumber, NSString, NSURL, NSUUID, SFCollaborationCloudSharingResult, SFCollaborationMetadata, SFCollaborationShareOptions;
 
 __attribute__((visibility("hidden")))
 @interface _SFFPShareCollaborationItem : SFCollaborationItem
@@ -18,9 +18,11 @@ __attribute__((visibility("hidden")))
     _Bool _isInSharedFolder;
     NSURL *_fileURL;
     NSURL *_sendCopyRepresentationURL;
+    NSURL *_managedFileURL;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSURL *managedFileURL; // @synthesize managedFileURL=_managedFileURL;
 @property(retain, nonatomic) NSURL *sendCopyRepresentationURL; // @synthesize sendCopyRepresentationURL=_sendCopyRepresentationURL;
 @property(readonly, nonatomic) _Bool isInSharedFolder; // @synthesize isInSharedFolder=_isInSharedFolder;
 @property(readonly, nonatomic) _Bool isShared; // @synthesize isShared=_isShared;
@@ -32,12 +34,14 @@ __attribute__((visibility("hidden")))
 - (id)_defaultLoadingOptionsSummary;
 @property(readonly, nonatomic) _Bool hasSeparateSendCopyRepresentation;
 @property(readonly, nonatomic) _Bool isCollaborativeURL;
+- (void)_loadSendCopyRepresentationIfNeeded;
 - (void)_loadMetadataIfNeeded;
 @property(readonly, copy, nonatomic) NSString *additionalContentIdentifier;
-- (id)initWithFileURL:(id)arg1 itemProvider:(id)arg2 activityItem:(id)arg3 defaultCollaboration:(_Bool)arg4;
+- (id)initWithFileURL:(id)arg1 itemProvider:(id)arg2 activityItem:(id)arg3 defaultCollaboration:(_Bool)arg4 managedFileURL:(id)arg5;
 
 // Remaining properties
 @property(readonly, nonatomic) id activityItem;
+@property(readonly, nonatomic) NSNumber *canAddPeople;
 @property(retain, nonatomic) SFCollaborationCloudSharingResult *cloudSharingResult;
 @property(readonly, copy, nonatomic) NSString *contentIdentifier;
 @property(readonly, copy) NSString *debugDescription;
@@ -49,10 +53,12 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSItemProvider *itemProvider;
 @property(readonly, nonatomic) LPLinkMetadata *linkMetadata;
 @property(readonly, nonatomic) SFCollaborationMetadata *metadata;
+@property(readonly, nonatomic) NSError *metadataLoadError;
 @property(copy, nonatomic) NSArray *options;
 @property(readonly, nonatomic) id placeholderActivityItem;
 @property(readonly, copy, nonatomic) NSArray *sendCopyItemPlaceholderValues;
 @property(readonly, copy, nonatomic) NSArray *sendCopyItems;
+@property(readonly, nonatomic) id sendCopyRepresentation;
 @property(copy, nonatomic) SFCollaborationShareOptions *shareOptions;
 @property(readonly) Class superclass;
 @property(readonly, nonatomic) long long type;

@@ -9,8 +9,7 @@
 @class NSString;
 
 @interface CALayer (NTKDialMarkerView)
-- (double)alpha;
-- (void)setAlpha:(double)arg1;
+@property(nonatomic) double alpha;
 - (void)removeFromParent;
 - (void)addToParentView:(id)arg1;
 

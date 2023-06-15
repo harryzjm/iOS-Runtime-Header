@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class NSIndexPath, NSMutableDictionary, NSString, PUBrowsingSession, PUScrubberTilingLayout, PUTilingView, PUTouchingGestureRecognizer, PXSectionedSelectionManager, PXVideoScrubberController, UIScrollView, UITapGestureRecognizer;
 @protocol PUScrubberViewDelegate;

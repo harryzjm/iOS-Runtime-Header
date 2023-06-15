@@ -6,13 +6,14 @@
 
 #import <Metal/MTLCaptureDescriptor.h>
 
-__attribute__((visibility("hidden")))
 @interface MTLCaptureDescriptorInternal : MTLCaptureDescriptor
 {
     _Bool _apiTriggeredCapture;
     _Bool toolTriggeredCapture;
     _Bool ignoreUnusedResources;
     _Bool suspendAfterCapture;
+    _Bool includeBacktrace;
+    unsigned long long sessionID;
     unsigned long long captureMode;
     unsigned long long triggerHitsToStart;
     unsigned long long triggerHitsToEnd;
@@ -20,6 +21,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool includeBacktrace; // @synthesize includeBacktrace;
 @property(copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler;
 @property(nonatomic) _Bool suspendAfterCapture; // @synthesize suspendAfterCapture;
 @property(nonatomic) _Bool ignoreUnusedResources; // @synthesize ignoreUnusedResources;
@@ -28,6 +30,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned long long triggerHitsToEnd; // @synthesize triggerHitsToEnd;
 @property(nonatomic) unsigned long long triggerHitsToStart; // @synthesize triggerHitsToStart;
 @property(nonatomic) unsigned long long captureMode; // @synthesize captureMode;
+@property(nonatomic) unsigned long long sessionID; // @synthesize sessionID;
 - (id)init;
 
 @end

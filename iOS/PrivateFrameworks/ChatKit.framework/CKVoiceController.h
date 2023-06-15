@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (void)stopUpdatingPower;
 - (void)startUpdatingPower;
 - (void)voiceControllerDidStopRecordingForClientError;
+- (float)averagePower;
 - (void)voiceControllerStreamInvalidated:(id)arg1 forStream:(unsigned long long)arg2;
 - (void)voiceControllerDidStopRecording:(id)arg1 forStream:(unsigned long long)arg2 forReason:(long long)arg3;
 - (void)voiceControllerAudioCallback:(id)arg1 forStream:(unsigned long long)arg2 buffer:(id)arg3;

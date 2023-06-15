@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (id)boundsDescription;
 - (id)treeDescription;
+- (_Bool)containsCoordinate:(CDStruct_39925896)arg1;
 - (void)traverseWithHandler:(CDUnknownBlockType)arg1;
 - (id)leafSectionsIntersectingSection:(id)arg1 paddingMapPoints:(double)arg2;
 @property(readonly, nonatomic) _Bool isLeaf;

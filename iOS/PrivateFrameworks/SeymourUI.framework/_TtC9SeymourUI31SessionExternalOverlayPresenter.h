@@ -12,8 +12,10 @@
 {
     MISSING_TYPE *coordinator;
     MISSING_TYPE *nodeBuilder;
+    MISSING_TYPE *sessionRouteMonitor;
     MISSING_TYPE *eventHub;
     MISSING_TYPE *subscriptionToken;
+    MISSING_TYPE *currentRouteCategory;
     MISSING_TYPE *_scottyFeatures;
 }
 

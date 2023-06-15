@@ -11,7 +11,9 @@
 @interface _TtC9JetEngine26MTStandardIDServiceWrapper : _TtCs12_SwiftObject
 {
     MISSING_TYPE *idService;
-    MISSING_TYPE *topic;
+    MISSING_TYPE *bag;
+    MISSING_TYPE *configuration;
+    MISSING_TYPE *perfEventRecorder;
 }
 
 @end

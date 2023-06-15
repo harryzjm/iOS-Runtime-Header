@@ -9,15 +9,12 @@
 @class OS_dispatch_queue;
 
 @protocol AVQueuedSampleBufferRendering <NSObject>
-@property(nonatomic, readonly) _Bool hasSufficientMediaDataForReliablePlaybackStart;
+@property(readonly, nonatomic) _Bool hasSufficientMediaDataForReliablePlaybackStart;
+@property(readonly, getter=isReadyForMoreMediaData) _Bool readyForMoreMediaData;
+@property(readonly, retain) struct OpaqueCMTimebase *timebase;
 - (void)stopRequestingMediaData;
 - (void)requestMediaDataWhenReadyOnQueue:(OS_dispatch_queue *)arg1 usingBlock:(void (^)(void))arg2;
-- (_Bool)isReadyForMoreMediaData;
 - (void)flush;
 - (void)enqueueSampleBuffer:(struct opaqueCMSampleBuffer *)arg1;
-@property(nonatomic, readonly) struct OpaqueCMTimebase *timebase;
-
-// Remaining properties
-@property(nonatomic, readonly) _Bool readyForMoreMediaData;
 @end
 

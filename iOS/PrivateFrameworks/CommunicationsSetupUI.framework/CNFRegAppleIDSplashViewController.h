@@ -32,7 +32,9 @@ __attribute__((visibility("hidden")))
 - (id)_imService;
 - (void)continueRegisteringAccount:(id)arg1;
 - (void)willBeginAuthWithContext:(id)arg1;
+- (id)navigationItem;
 - (void)viewWillAppear:(_Bool)arg1;
+- (void)viewDidLoad;
 - (id)serviceIcon;
 - (id)serviceFooter;
 - (id)serviceDescription;

@@ -9,6 +9,6 @@
 @class NSString;
 
 @protocol SXSubscriptionButtonTextProviding <NSObject>
-@property(nonatomic, readonly) NSString *title;
+@property(readonly, nonatomic) NSString *title;
 @end
 

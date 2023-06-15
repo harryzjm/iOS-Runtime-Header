@@ -6,9 +6,12 @@
 
 #import <PassKitUI/NSObject-Protocol.h>
 
-@class PKBillPaymentRingView, PKBillPaymentSuggestedAmount;
+@class NSDecimalNumber, PKBillPaymentRingView, PKBillPaymentSuggestedAmount;
 
 @protocol PKBillPaymentRingViewDelegate <NSObject>
 - (void)billPaymentRingView:(PKBillPaymentRingView *)arg1 selectedSuggestedAmount:(PKBillPaymentSuggestedAmount *)arg2 selectedSuggestedAmountIsTarget:(_Bool)arg3 userInitiatedChange:(_Bool)arg4;
+
+@optional
+- (void)billPaymentRingView:(PKBillPaymentRingView *)arg1 amountChanged:(NSDecimalNumber *)arg2;
 @end
 

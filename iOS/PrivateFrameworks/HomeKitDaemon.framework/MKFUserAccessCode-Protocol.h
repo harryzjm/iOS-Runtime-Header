@@ -14,6 +14,5 @@
 @property(readonly) id <MKFHome> home;
 @property(readonly, copy, nonatomic) MKFUserAccessCodeDatabaseID *databaseID;
 @property(readonly, retain, nonatomic) id <MKFUser> user;
-@property(retain, nonatomic) id <MKFUser> changedByUser;
 @end
 

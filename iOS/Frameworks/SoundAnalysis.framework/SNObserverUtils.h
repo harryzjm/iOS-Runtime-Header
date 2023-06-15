@@ -11,5 +11,33 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (id)prependHandlersToObserver:(id)arg1 retainObserverWeakly:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
++ (id)prependHandlersToObserver:(id)arg1 retainObserverWeakly:(_Bool)arg2 resultsHandler:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;
++ (CDUnknownBlockType)ignoredObserverResultsHandler;
++ (CDUnknownBlockType)ignoredObserverCompletionHandler;
++ (CDUnknownBlockType)ignoredResultsHandler;
++ (CDUnknownBlockType)ignoredCompletionHandler;
++ (CDUnknownBlockType)observerResultsHandlerForObserver:(id)arg1 retainObserverWeakly:(_Bool)arg2;
++ (CDUnknownBlockType)observerResultsHandlerForStronglyRetainedObserver:(id)arg1;
++ (CDUnknownBlockType)observerResultsHandlerForWeaklyRetainedObserver:(id)arg1;
++ (CDUnknownBlockType)observerCompletionHandlerForObserver:(id)arg1 retainObserverWeakly:(_Bool)arg2;
++ (CDUnknownBlockType)observerCompletionHandlerForStronglyRetainedObserver:(id)arg1;
++ (CDUnknownBlockType)observerCompletionHandlerForWeaklyRetainedObserver:(id)arg1;
++ (CDUnknownBlockType)appendToObserverResultsHandler:(CDUnknownBlockType)arg1 other:(CDUnknownBlockType)arg2;
++ (CDUnknownBlockType)appendToObserverCompletionHandler:(CDUnknownBlockType)arg1 other:(CDUnknownBlockType)arg2;
++ (CDUnknownBlockType)resultsHandlerForRequest:(id)arg1 observer:(id)arg2 retainObserverWeakly:(_Bool)arg3;
++ (CDUnknownBlockType)resultsHandlerForRequest:(id)arg1 stronglyRetainedObserver:(id)arg2;
++ (CDUnknownBlockType)resultsHandlerForRequest:(id)arg1 weaklyRetainedObserver:(id)arg2;
++ (CDUnknownBlockType)completionHandlerForRequest:(id)arg1 observer:(id)arg2 retainObserverWeakly:(_Bool)arg3;
++ (CDUnknownBlockType)completionHandlerForRequest:(id)arg1 stronglyRetainedObserver:(id)arg2;
++ (CDUnknownBlockType)completionHandlerForRequest:(id)arg1 weaklyRetainedObserver:(id)arg2;
++ (CDUnknownBlockType)appendToResultsHandler:(CDUnknownBlockType)arg1 other:(CDUnknownBlockType)arg2;
++ (CDUnknownBlockType)appendToCompletionHandler:(CDUnknownBlockType)arg1 other:(CDUnknownBlockType)arg2;
++ (void)sendTerminationWithOptionalError:(id)arg1 forRequest:(id)arg2 toObserver:(id)arg3;
++ (void)sendCompletionForRequest:(id)arg1 toObserver:(id)arg2;
++ (void)sendError:(id)arg1 toObservers:(id)arg2;
++ (void)sendError:(id)arg1 forRequest:(id)arg2 toObserver:(id)arg3;
+- (id)init;
+
 @end
 

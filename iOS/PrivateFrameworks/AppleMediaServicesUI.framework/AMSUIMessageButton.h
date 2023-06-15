@@ -22,19 +22,26 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned long long messageStyle; // @synthesize messageStyle=_messageStyle;
 @property(retain, nonatomic) UIFont *preferredFont; // @synthesize preferredFont=_preferredFont;
 @property(readonly, nonatomic) AMSDialogAction *dialogAction; // @synthesize dialogAction=_dialogAction;
-- (id)_defaultTextFont;
-- (id)_defaultIconColor;
-- (id)_defaultContentColor;
+- (void)_axSettingsDidUpdate:(id)arg1;
 @property(retain, nonatomic) UIColor *preferredBackgroundColor;
 @property(retain, nonatomic) UIColor *preferredForegroundColor;
 - (id)_closeImage;
 - (id)_chevronImage;
 - (id)_symbolConfiguration;
 - (_Bool)isDefaultCloseButton;
+- (void)_setAXSettings;
 - (void)setFooterStyle;
 - (void)_setImagePadding;
+- (id)_appendChevronToString:(id)arg1;
+- (void)_endObservations;
+- (void)_startObservations;
+- (void)_refresh;
+- (void)_setAccessibilityIdentifier;
 - (void)_setupWithDialogAction:(id)arg1;
+- (void)_setLocalOverrideTraitCollection:(id)arg1;
+- (_Bool)canBecomeFocused;
 - (void)layoutSubviews;
+- (void)dealloc;
 - (id)initWithDialogAction:(id)arg1 messageStyle:(unsigned long long)arg2;
 
 @end

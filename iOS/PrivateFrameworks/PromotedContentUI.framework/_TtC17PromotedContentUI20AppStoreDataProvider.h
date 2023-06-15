@@ -13,6 +13,7 @@
     MISSING_TYPE *metadataExpirationTimer;
     MISSING_TYPE *storeFront;
     MISSING_TYPE *storeFrontLocale;
+    MISSING_TYPE *metaFields;
     MISSING_TYPE *theLock;
     MISSING_TYPE *subsequentRequestsDisabled;
     MISSING_TYPE *session;

@@ -11,11 +11,11 @@
 @class NSArray, NSData, NSDate, NSDictionary, NSNumber, NSString;
 
 @protocol DVTPropertyListValue <NSObject, NSSecureCoding, NSCopying>
-@property(readonly) NSDictionary *dictionaryValue;
-@property(readonly) NSArray *arrayValue;
-@property(readonly) NSDate *dateValue;
-@property(readonly) NSNumber *numberValue;
-@property(readonly) NSData *dataValue;
-@property(readonly) NSString *stringValue;
+@property(readonly) NSDictionary *dvt_plistDictionaryValue;
+@property(readonly) NSArray *dvt_plistArrayValue;
+@property(readonly) NSDate *dvt_plistDateValue;
+@property(readonly) NSNumber *dvt_plistNumberValue;
+@property(readonly) NSData *dvt_plistDataValue;
+@property(readonly) NSString *dvt_plistStringValue;
 @end
 

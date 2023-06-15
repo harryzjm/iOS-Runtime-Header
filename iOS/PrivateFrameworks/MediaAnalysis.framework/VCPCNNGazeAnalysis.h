@@ -13,9 +13,11 @@ __attribute__((visibility("hidden")))
 {
     float *_inputData;
     VCPCNNModelEspresso *_modelEspresso;
+    struct Scaler _scaler;
 }
 
 + (id)sharedModel:(id)arg1;
+- (id).cxx_construct;
 - (void).cxx_destruct;
 - (int)detectEyeOpennessForFace:(struct CGRect)arg1 inBuffer:(struct __CVBuffer *)arg2 eyeOpenness:(_Bool *)arg3;
 - (int)createInput:(float *)arg1 withBuffer:(struct __CVBuffer *)arg2 cnnInputHeight:(int)arg3 cnnInputWidth:(int)arg4 faceBounds:(struct CGRect)arg5;

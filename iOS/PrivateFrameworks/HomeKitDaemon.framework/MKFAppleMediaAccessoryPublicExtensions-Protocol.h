@@ -5,10 +5,10 @@
 //
 
 @class NSManagedObjectContext, NSUUID;
-@protocol MKFAnalysisEventBulletinRegistration, MKFHome;
+@protocol MKFAnalysisEventBulletinRegistration, MKFHome, MKFUser;
 
 @protocol MKFAppleMediaAccessoryPublicExtensions
 + (NSUUID *)modelIDForParentRelationshipTo:(id <MKFHome>)arg1;
-- (id <MKFAnalysisEventBulletinRegistration>)analysisBulletinRegistrationWithDeviceIdsIdentifier:(NSUUID *)arg1 context:(NSManagedObjectContext *)arg2;
+- (id <MKFAnalysisEventBulletinRegistration>)analysisBulletinRegistrationWithDeviceIdsIdentifier:(NSUUID *)arg1 user:(id <MKFUser>)arg2 context:(NSManagedObjectContext *)arg3;
 @end
 

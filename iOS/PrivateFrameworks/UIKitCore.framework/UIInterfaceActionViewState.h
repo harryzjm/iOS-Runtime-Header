@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 @class UIInterfaceAction;
 
 __attribute__((visibility("hidden")))
-@interface UIInterfaceActionViewState <NSCopying>
+@interface UIInterfaceActionViewState
 {
     _Bool _isHighlighted;
     _Bool _isPressed;

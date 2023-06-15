@@ -13,6 +13,7 @@
 - (void)externalizedContextWithReply:(void (^)(NSData *, NSError *))arg1;
 
 @optional
+- (void)forciblyInvalidate;
 - (NSData *)synchronousExternalizedContextWithError:(id *)arg1;
 @end
 

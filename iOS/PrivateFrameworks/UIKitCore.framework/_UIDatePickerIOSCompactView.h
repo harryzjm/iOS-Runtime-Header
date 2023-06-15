@@ -76,13 +76,13 @@ __attribute__((visibility("hidden")))
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1;
 - (void)_didReceivePanGestureRecognizer:(id)arg1;
 - (void)updateConstraints;
-- (void)traitCollectionDidChange:(id)arg1;
 - (void)tintColorDidChange;
 @property(readonly, nonatomic) _Bool alignConstraintsToLayoutGuide;
 - (void)_updateDateViewTextAlignment;
 - (void)_updateEnabledStyling;
 - (void)_updateUI;
 - (void)_updateDateBeforeTimeValue;
+- (void)_contentSizeCategoryDidChange:(id)arg1 previousTraits:(id)arg2;
 - (void)willMoveToSuperview:(id)arg1;
 - (void)willMoveToWindow:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

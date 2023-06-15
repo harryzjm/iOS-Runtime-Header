@@ -15,9 +15,11 @@ __attribute__((visibility("hidden")))
     struct CGPoint _containerOrigin;
     struct CGSize _containerSize;
     struct CGRect _clipRect;
+    struct CGRect _clipFrame;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) struct CGRect clipFrame; // @synthesize clipFrame=_clipFrame;
 @property(nonatomic) struct CGRect clipRect; // @synthesize clipRect=_clipRect;
 @property(nonatomic) struct CGSize containerSize; // @synthesize containerSize=_containerSize;
 @property(nonatomic) struct CGPoint containerOrigin; // @synthesize containerOrigin=_containerOrigin;
@@ -26,7 +28,6 @@ __attribute__((visibility("hidden")))
 - (void)drawRect:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)enumerateTextAttachmentViewsUsingBlock:(CDUnknownBlockType)arg1;
-@property(readonly, nonatomic) struct CGRect clipFrame;
 - (void)performChanges:(CDUnknownBlockType)arg1;
 - (void)_updateGeometry;
 - (id)initWithLayoutFragment:(id)arg1 containerOrigin:(struct CGPoint)arg2 containerSize:(struct CGSize)arg3 clipRect:(struct CGRect)arg4;

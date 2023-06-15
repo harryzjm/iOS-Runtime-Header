@@ -12,5 +12,8 @@
 - (void)_groupDidUpdateVisibility:(UIBarButtonItemGroup *)arg1;
 - (void)_groupDidUpdateRepresentative:(UIBarButtonItemGroup *)arg1 fromRepresentative:(UIBarButtonItem *)arg2;
 - (void)_groupDidUpdateItems:(UIBarButtonItemGroup *)arg1 removedItems:(NSArray *)arg2;
+
+@optional
+- (void)_groupNeedsNSToolbarUpdate:(UIBarButtonItemGroup *)arg1;
 @end
 

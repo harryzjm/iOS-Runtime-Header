@@ -13,9 +13,10 @@
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) CKEncryptedData *encryptedChainPCSPrivateKey; // @synthesize encryptedChainPCSPrivateKey=_encryptedChainPCSPrivateKey;
+@property(retain, nonatomic) CKEncryptedData *encryptedChainPCSPrivateKey; // @synthesize encryptedChainPCSPrivateKey=_encryptedChainPCSPrivateKey;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)CKPropertiesDescription;
 - (id)initWithPCSData:(id)arg1 encryptedPrivateKey:(id)arg2;
 

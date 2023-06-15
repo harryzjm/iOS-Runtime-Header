@@ -14,6 +14,7 @@
 @property(readonly) struct _CSTypeRef symbolicator;
 @property(readonly) VMUVMRegionTracker *regionTracker;
 @property(readonly) _Bool coldestFrameIsNotThreadId;
+@property(readonly) _Bool usesCoreFile;
 @property(readonly) _Bool usesLiteMode;
 @property(readonly) _Bool inspectingLiveProcess;
 @property(readonly) _Bool is64bit;
@@ -41,6 +42,7 @@
 - (void)streamFullStackLogsToBlock:(int (^)(void *, unsigned long long))arg1;
 - (CDStruct_69d7cc99)liteMSLPayloadforVMregionAddress:(unsigned long long)arg1;
 - (CDStruct_69d7cc99)liteMSLPayloadforMallocAddress:(unsigned long long)arg1 size:(unsigned long long)arg2;
+- (unsigned long long)timestampForNode:(unsigned int)arg1;
 - (unsigned long long)stackIDForNode:(unsigned int)arg1;
 @end
 

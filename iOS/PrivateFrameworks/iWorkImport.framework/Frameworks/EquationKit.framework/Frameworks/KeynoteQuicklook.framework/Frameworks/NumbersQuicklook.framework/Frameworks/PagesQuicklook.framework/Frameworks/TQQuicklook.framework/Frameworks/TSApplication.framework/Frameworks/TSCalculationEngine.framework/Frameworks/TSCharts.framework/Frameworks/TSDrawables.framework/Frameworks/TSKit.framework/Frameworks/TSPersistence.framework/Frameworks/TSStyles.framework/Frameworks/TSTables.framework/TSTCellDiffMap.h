@@ -26,6 +26,7 @@
 @property(retain, nonatomic) TSTCellUIDList *cellUIDList; // @synthesize cellUIDList=_cellUIDList;
 @property(retain, nonatomic) TSTCellDiffArray *cellDiffArray; // @synthesize cellDiffArray=_cellDiffArray;
 @property(nonatomic, getter=isUIDBased) _Bool uidBased; // @synthesize uidBased=_uidBased;
+- (unsigned long long)estimatedMemoryCost;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)saveToArchiver:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;

@@ -18,13 +18,13 @@ __attribute__((visibility("hidden")))
 }
 
 @property(readonly) int dataPath; // @synthesize dataPath=_dataPath;
-@property(readonly) unsigned int token; // @synthesize token=_token;
 @property(readonly) NSString *destination; // @synthesize destination=_destination;
 - (int)setupVTPSocketWithFileDescriptor:(int)arg1;
 @property(readonly) NSArray *connectedLinks;
 @property(readonly) IDSDataChannelLinkContext *defaultLink;
 - (void)invalidate;
 - (int)start;
+- (void)requestStatsWithOptions:(id)arg1;
 - (void)optOutStreamIDs:(id)arg1;
 - (void)optInStreamIDs:(id)arg1;
 - (void)requestSessionInfoWithOptions:(id)arg1;

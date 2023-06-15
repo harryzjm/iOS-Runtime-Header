@@ -11,6 +11,7 @@
 - (void)remote_submitDailyAnalyticsWithCompletion:(void (^)(_Bool, NSError *))arg1;
 - (void)remote_gatherQueryDiagnosticsWithOptions:(unsigned long long)arg1 date:(NSDate *)arg2 completion:(void (^)(NSURL *, NSError *))arg3;
 - (void)remote_scheduleSharingHealthDataWithReason:(long long)arg1 completion:(void (^)(_Bool, NSError *))arg2;
+- (void)remote_uploadDAIIfNeededWithOptions:(unsigned long long)arg1 reason:(long long)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 - (void)remote_shareHealthDataWithOptions:(unsigned long long)arg1 reason:(long long)arg2 date:(NSDate *)arg3 completion:(void (^)(NSArray *, NSError *))arg4;
 @end
 

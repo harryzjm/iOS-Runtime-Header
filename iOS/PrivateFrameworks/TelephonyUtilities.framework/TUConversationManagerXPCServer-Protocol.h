@@ -7,7 +7,7 @@
 #import <TelephonyUtilities/TUConversationMediaControllerXPCServer-Protocol.h>
 #import <TelephonyUtilities/TUConversationMessagesGroupProviderXPCServer-Protocol.h>
 
-@class NSDate, NSSet, NSString, NSURL, NSUUID, TUConversationActivity, TUConversationActivitySession, TUConversationLink, TUConversationMember, TUJoinConversationRequest, TUScreenShareAttributes;
+@class NSDate, NSSet, NSString, NSURL, NSUUID, TUConversationActivity, TUConversationActivitySession, TUConversationHandoffContext, TUConversationLink, TUConversationMember, TUJoinConversationRequest, TUScreenShareAttributes;
 @protocol TUConversationManagerXPCClient;
 
 @protocol TUConversationManagerXPCServer <TUConversationMediaControllerXPCServer, TUConversationMessagesGroupProviderXPCServer>
@@ -43,12 +43,9 @@
 - (oneway void)updateMessagesGroupName:(NSString *)arg1 onConversationWithUUID:(NSUUID *)arg2;
 - (oneway void)kickMember:(TUConversationMember *)arg1 conversationUUID:(NSUUID *)arg2;
 - (oneway void)buzzMember:(TUConversationMember *)arg1 conversationUUID:(NSUUID *)arg2;
-- (oneway void)setVideoEnabled:(_Bool)arg1 forRemoteParticipantWithIdentifier:(unsigned long long)arg2 conversationUUID:(NSUUID *)arg3;
-- (oneway void)setAudioEnabled:(_Bool)arg1 forRemoteParticipantWithIdentifier:(unsigned long long)arg2 conversationUUID:(NSUUID *)arg3;
 - (oneway void)setDownlinkMuted:(_Bool)arg1 forRemoteParticipantsInConversationWithUUID:(NSUUID *)arg2;
 - (oneway void)setUsingAirplay:(_Bool)arg1 onActivitySession:(TUConversationActivitySession *)arg2 onConversationWithUUID:(NSUUID *)arg3;
-- (oneway void)launchApplicationForActivitySessionUUID:(NSUUID *)arg1 forceBackground:(_Bool)arg2 completionHandler:(void (^)(NSError *))arg3;
-- (oneway void)launchApplicationForActivitySessionUUID:(NSUUID *)arg1 completionHandler:(void (^)(NSError *))arg2;
+- (oneway void)launchApplicationForActivitySessionUUID:(NSUUID *)arg1 authorizedExternally:(_Bool)arg2 forceBackground:(_Bool)arg3 completionHandler:(void (^)(NSError *))arg4;
 - (oneway void)leaveConversationWithUUID:(NSUUID *)arg1;
 - (oneway void)joinConversationWithRequest:(TUJoinConversationRequest *)arg1;
 - (oneway void)setAutoSharePlayEnabled:(_Bool)arg1;
@@ -57,8 +54,9 @@
 - (oneway void)presentDismissalAlertForActivitySessionWithUUID:(NSUUID *)arg1 onConversationWithUUID:(NSUUID *)arg2;
 - (oneway void)endActivitySession:(TUConversationActivitySession *)arg1 onConversationWithUUID:(NSUUID *)arg2;
 - (oneway void)leaveActivitySession:(TUConversationActivitySession *)arg1 onConversationWithUUID:(NSUUID *)arg2;
+- (oneway void)prepareConversationWithUUID:(NSUUID *)arg1 withHandoffContext:(TUConversationHandoffContext *)arg2;
 - (oneway void)addRemoteMembers:(NSSet *)arg1 otherInvitedHandles:(NSSet *)arg2 toConversationWithUUID:(NSUUID *)arg3;
-- (oneway void)activatedConversationLinks:(void (^)(NSSet *))arg1;
+- (oneway void)activatedConversationLinks:(void (^)(NSArray *))arg1;
 - (oneway void)activityAuthorizedBundleIdentifierState:(void (^)(NSDictionary *))arg1;
 - (oneway void)pseudonymsByCallUUID:(void (^)(NSDictionary *))arg1;
 - (oneway void)incomingPendingConversationsByGroupUUID:(void (^)(NSDictionary *))arg1;

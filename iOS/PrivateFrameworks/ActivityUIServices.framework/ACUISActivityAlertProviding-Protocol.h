@@ -11,6 +11,7 @@
 @protocol ACUISActivityAlertProviding <NSObject>
 @property(readonly, nonatomic) ACUISActivityAlertOptions *options;
 @property(readonly, nonatomic) long long action;
+@property(readonly, copy, nonatomic) NSString *payloadIdentifier;
 @property(readonly, copy, nonatomic) NSString *activityIdentifier;
 @end
 

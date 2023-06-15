@@ -9,6 +9,7 @@
 @class AVAudioPCMBuffer, NSArray, NSDate, NSDictionary, NSSecurityScopedURLWrapper, NSString, NSURL, RCSSavedRecordingAccessToken;
 
 @protocol RCSSavedRecordingServiceProtocol <NSObject>
+- (oneway void)valueForServiceKey:(NSString *)arg1 completion:(void (^)(id, NSError *))arg2;
 - (oneway void)updateSearchMetadataWithRecordingURIsToInsert:(NSArray *)arg1 recordingURIsToUpdate:(NSArray *)arg2 recordingURIsToDelete:(NSArray *)arg3 completionBlock:(void (^)(NSError *))arg4;
 - (oneway void)clearAndReloadSearchMetadataWithCompletionBlock:(void (^)(NSError *))arg1;
 - (oneway void)reloadExistingSearchMetadataWithCompletionBlock:(void (^)(NSError *))arg1;

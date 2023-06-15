@@ -18,11 +18,13 @@
 - (void)requestDebuggingApplicationsInstallation:(NSArray *)arg1 requiredEntitlements:(NSArray *)arg2 completionHandler:(void (^)(_Bool, NSError *))arg3;
 - (NSString *)notificationNameForApplicationWillTerminate;
 - (void)dismissEnrollmentScene;
+- (void)showInstallingEnrollmentProfileScene;
 - (void)suggestRestoreForAccountWithUsername:(NSString *)arg1 personaID:(NSString *)arg2 completionHandler:(void (^)(_Bool))arg3;
 - (void)requestiCloudSignInConfirmationWithCompletionHandler:(void (^)(_Bool))arg1;
 - (void)showiCloudPromotionPageWithiCloudQuotaString:(NSString *)arg1 completionHandler:(void (^)(void))arg2;
 - (void)displayManagementDetailsOverviewWithProfileData:(NSData *)arg1 managedAppleID:(NSString *)arg2 completionHandler:(void (^)(_Bool))arg3;
 - (void)requestUserConsentWithProfileData:(NSData *)arg1 managedAppleID:(NSString *)arg2 completionHandler:(void (^)(_Bool))arg3;
+- (void)requestDevicePasscodeDataWithCompletionHandler:(void (^)(NSData *, unsigned long long, _Bool))arg1;
 - (void)requestDevicePasscodeWithCompletionHandler:(void (^)(NSString *, _Bool))arg1;
 - (void)requestSilentMAIDAuthenticationWithAuthenticationResults:(NSMutableDictionary *)arg1 personaID:(NSString *)arg2 requireAppleMAID:(_Bool)arg3 completionHandler:(void (^)(NSMutableDictionary *, _Bool, NSError *))arg4;
 - (void)requestMAIDAuthenticationWithManagedAppleID:(NSString *)arg1 personaID:(NSString *)arg2 ephemeral:(_Bool)arg3 requireAppleMAID:(_Bool)arg4 completionHandler:(void (^)(NSMutableDictionary *, _Bool, NSError *))arg5;

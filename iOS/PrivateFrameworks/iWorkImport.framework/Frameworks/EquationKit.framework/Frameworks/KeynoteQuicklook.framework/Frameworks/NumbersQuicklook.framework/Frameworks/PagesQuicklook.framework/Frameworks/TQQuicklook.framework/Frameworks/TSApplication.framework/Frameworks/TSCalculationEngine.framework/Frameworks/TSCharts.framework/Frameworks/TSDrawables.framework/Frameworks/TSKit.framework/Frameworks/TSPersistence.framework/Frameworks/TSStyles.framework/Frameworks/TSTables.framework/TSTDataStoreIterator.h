@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, TSTCell, TSTCellRegion, TSTTableDataListCache, TSTTableDataStore, TSTTableInfo, TSTTableModel, TSTTableTile, TSTTableTileRowInfo;
+@class NSString, TSTCellRegion, TSTTableDataListCache, TSTTableDataStore, TSTTableInfo, TSTTableModel, TSTTableTile, TSTTableTileRowInfo;
 @protocol TSTCellRegionIterating;
 
 @interface TSTDataStoreIterator : NSObject
@@ -23,7 +23,6 @@
     struct TSUCellCoord _curCellID;
     TSTTableTile *_curTile;
     TSTTableTileRowInfo *_curRow;
-    TSTCell *_cell;
     struct _NSRange _curTileRange;
     struct TSTPerformanceLoggingToken _logToken;
 }
@@ -33,7 +32,6 @@
 @property(nonatomic) struct TSTPerformanceLoggingToken logToken; // @synthesize logToken=_logToken;
 @property(nonatomic) _Bool terminated; // @synthesize terminated=_terminated;
 @property(nonatomic) _Bool columnOrderReversed; // @synthesize columnOrderReversed=_columnOrderReversed;
-@property(readonly, nonatomic) TSTCell *cell; // @synthesize cell=_cell;
 @property(nonatomic) unsigned int curRowIndex; // @synthesize curRowIndex=_curRowIndex;
 @property(retain, nonatomic) TSTTableTileRowInfo *curRow; // @synthesize curRow=_curRow;
 @property(nonatomic) struct _NSRange curTileRange; // @synthesize curTileRange=_curTileRange;

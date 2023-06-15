@@ -13,7 +13,12 @@
     MISSING_TYPE *aceService;
     MISSING_TYPE *deviceState;
     MISSING_TYPE *dialogProvider;
-    MISSING_TYPE *locUtil;
+    MISSING_TYPE *liveTuneInDialogs;
+    MISSING_TYPE *deviceLoggingUtil;
+    MISSING_TYPE *analyticsService;
+    MISSING_TYPE *moveToGroupDevices;
+    MISSING_TYPE *contextService;
+    MISSING_TYPE *remoteDevice;
 }
 
 @end

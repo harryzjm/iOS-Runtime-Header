@@ -19,6 +19,6 @@
 - (double)initialAlphaForAccessory:(_UICellAccessory *)arg1;
 - (struct CGRect)finalFrameForAccessory:(_UICellAccessory *)arg1;
 - (struct CGRect)initialFrameForAccessory:(_UICellAccessory *)arg1;
-- (void)prepareLayoutForAccessories:(NSArray *)arg1 previousAccessories:(NSArray *)arg2 configurationIdentifier:(NSString *)arg3;
+- (void)prepareLayoutForAccessories:(NSArray *)arg1 previousAccessories:(NSArray *)arg2 configurationIdentifier:(NSString *)arg3 animated:(_Bool)arg4;
 @end
 

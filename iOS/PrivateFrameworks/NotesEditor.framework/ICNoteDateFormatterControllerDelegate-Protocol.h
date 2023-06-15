@@ -9,12 +9,12 @@
 @class ICNoteDateFormatterController, NSDictionary, NSString, UIImage;
 
 @protocol ICNoteDateFormatterControllerDelegate <NSObject>
-- (void)formatter:(ICNoteDateFormatterController *)arg1 iconImageDidChange:(UIImage *)arg2;
-- (void)formatter:(ICNoteDateFormatterController *)arg1 iconHiddenDidChange:(_Bool)arg2;
 - (void)formatter:(ICNoteDateFormatterController *)arg1 textDidChange:(NSString *)arg2;
+- (void)formatter:(ICNoteDateFormatterController *)arg1 iconHiddenDidChange:(_Bool)arg2;
 
 @optional
 - (double)dateViewMaximumWidth;
 - (NSDictionary *)dateViewAttributes;
+- (void)formatter:(ICNoteDateFormatterController *)arg1 iconImageDidChange:(UIImage *)arg2;
 @end
 

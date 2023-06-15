@@ -6,8 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CALayer, MISSING_TYPE;
-@protocol _TtP12CoreAudioKit27CAAUViewParameterDataSource_;
+@class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
 @interface _TtC12CoreAudioKit17CAAUFilterControl : NSObject
@@ -37,11 +36,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)init;
 - (void)layoutSublayersOfLayer:(id)arg1;
-- (void)setWithColor:(id)arg1;
-@property(nonatomic) _Bool bypassed; // @synthesize bypassed;
-@property(nonatomic) _Bool enabled; // @synthesize enabled;
-@property(nonatomic, retain) CALayer *controlLayer; // @synthesize controlLayer;
-@property(nonatomic, readonly) id <_TtP12CoreAudioKit27CAAUViewParameterDataSource_> dataSource; // @synthesize dataSource;
 
 @end
 

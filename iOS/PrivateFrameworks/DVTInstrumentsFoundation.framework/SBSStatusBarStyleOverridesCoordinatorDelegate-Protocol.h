@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <DVTInstrumentsFoundation/NSObject-Protocol.h>
+#import <DVTInstrumentsFoundation/SBSBackgroundActivityCoordinatorDelegate-Protocol.h>
 
 @class NSError, SBSStatusBarStyleOverridesCoordinator;
 @protocol SBSStatusBarTapContext;
 
-@protocol SBSStatusBarStyleOverridesCoordinatorDelegate <NSObject>
+@protocol SBSStatusBarStyleOverridesCoordinatorDelegate <SBSBackgroundActivityCoordinatorDelegate>
 - (void)statusBarCoordinator:(SBSStatusBarStyleOverridesCoordinator *)arg1 invalidatedRegistrationWithError:(NSError *)arg2;
 
 @optional

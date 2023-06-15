@@ -8,5 +8,7 @@
 
 @interface AMSEngagementRequest (AMSUIWeb)
 - (id)generateWebExportWithContext:(id)arg1;
+- (id)loadViewControllerForEngagementController:(id)arg1;
+- (_Bool)isPresentationRequest;
 @end
 

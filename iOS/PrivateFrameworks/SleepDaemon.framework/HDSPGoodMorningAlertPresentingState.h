@@ -13,10 +13,10 @@ __attribute__((visibility("hidden")))
 
 - (void)sleepScheduleStateChangedToBedtime;
 - (id)stateName;
-- (void)stateDidExpireWithContext:(id)arg1;
-- (id)nextStateWithContext:(id *)arg1;
-- (void)didExitWithNextState:(id)arg1 context:(id)arg2;
-- (void)didEnterWithPreviousState:(id)arg1 context:(id)arg2;
+- (void)stateDidExpire;
+- (void)updateState;
+- (void)didExit;
+- (void)didEnter;
 - (_Bool)schedulesExpiration;
 - (double)expirationDuration;
 

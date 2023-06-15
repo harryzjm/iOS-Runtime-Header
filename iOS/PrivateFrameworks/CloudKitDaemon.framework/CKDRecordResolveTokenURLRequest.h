@@ -35,6 +35,7 @@
 - (id)applicationBundleIdentifierForNetworkAttribution;
 - (id)applicationBundleIdentifierForContainerAccess;
 - (id)requestOperationClasses;
+- (id)equivalencyProperties;
 - (id)initWithOperation:(id)arg1 shortTokenLookupInfos:(id)arg2;
 
 @end

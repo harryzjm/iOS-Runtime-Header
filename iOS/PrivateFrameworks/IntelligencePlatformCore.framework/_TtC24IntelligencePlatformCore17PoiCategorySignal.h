@@ -11,7 +11,6 @@
 @interface _TtC24IntelligencePlatformCore17PoiCategorySignal : _TtCs12_SwiftObject
 {
     MISSING_TYPE *poiCategoryStream;
-    MISSING_TYPE *numPoiCategoriesLimit;
 }
 
 - (id)featureValueForName:(id)arg1;

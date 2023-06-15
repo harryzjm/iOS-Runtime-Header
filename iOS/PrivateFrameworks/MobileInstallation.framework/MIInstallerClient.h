@@ -42,8 +42,10 @@ __attribute__((visibility("hidden")))
 - (_Bool)getTestModeEnabled:(_Bool *)arg1 outError:(id *)arg2;
 - (_Bool)endTestMode:(id *)arg1;
 - (_Bool)setTestMode:(id *)arg1;
+- (id)raiseException;
 - (void)dieForTesting;
 - (int)pidForTesting;
+- (void)referencesForBundleWithIdentifier:(id)arg1 inDomain:(unsigned long long)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)createSerializedPlaceholderForInstalledAppWithBundeID:(id)arg1 personaUniqueString:(id)arg2 atResultURL:(id)arg3 withCompletion:(CDUnknownBlockType)arg4;
 - (void)waitForSystemAppMigratorWithCompletion:(CDUnknownBlockType)arg1;
 - (void)waitForSystemAppMigratorToComplete:(CDUnknownBlockType)arg1;
@@ -53,10 +55,9 @@ __attribute__((visibility("hidden")))
 - (void)getAppMetadataForApp:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)updatePlaceholderMetadataForApp:(id)arg1 installType:(unsigned long long)arg2 failureReason:(unsigned long long)arg3 underlyingError:(id)arg4 failureSource:(unsigned long long)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)checkCapabilities:(id)arg1 withOptions:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)listSafeHarborsOfType:(unsigned long long)arg1 withOptions:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)removeSafeHarborForIdentifier:(id)arg1 ofType:(unsigned long long)arg2 withOptions:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)registerSafeHarborAtPath:(id)arg1 forIdentifier:(id)arg2 ofType:(unsigned long long)arg3 withOptions:(id)arg4 completion:(CDUnknownBlockType)arg5;
-- (void)fetchDiskUsageForIdentifiers:(id)arg1 withOptions:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)listSafeHarborsOfType:(unsigned long long)arg1 forPersona:(id)arg2 withOptions:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)removeSafeHarborForIdentity:(id)arg1 ofType:(unsigned long long)arg2 withOptions:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)registerSafeHarborAtPath:(id)arg1 forIdentity:(id)arg2 ofType:(unsigned long long)arg3 withOptions:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)updateiTunesMetadataForIXWithIdentifier:(id)arg1 options:(id)arg2 plistData:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)updateiTunesMetadataForLSWithIdentifier:(id)arg1 options:(id)arg2 plistData:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)updateSinfForIXWithIdentifier:(id)arg1 withOptions:(id)arg2 sinfData:(id)arg3 completion:(CDUnknownBlockType)arg4;

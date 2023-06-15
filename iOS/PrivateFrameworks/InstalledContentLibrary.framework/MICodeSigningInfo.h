@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithDictionaryRepresentation:(id)arg1 fromSource:(unsigned long long)arg2;
 - (id)initWithDictionaryRepresentation:(id)arg1;
 - (id)initWithSignerIdentity:(id)arg1 signerOrganization:(id)arg2 codeInfoIdentifier:(id)arg3 teamIdentifier:(id)arg4 signatureVersion:(id)arg5 entitlements:(id)arg6 signerType:(unsigned long long)arg7 profileType:(unsigned long long)arg8 signingInfoSource:(unsigned long long)arg9;
+- (id)initForTesting;
 
 @end
 

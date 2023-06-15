@@ -21,6 +21,9 @@ __attribute__((visibility("hidden")))
 - (void)configureUsingBlock:(CDUnknownBlockType)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (_Bool)setCurrentBluetoothListeningMode:(id)arg1 error:(id *)arg2;
 @property(readonly, nonatomic) NSString *currentBluetoothListeningMode;
+- (_Bool)setConversationDetectionEnabled:(_Bool)arg1 error:(id *)arg2;
+@property(readonly, nonatomic, getter=isConversationDetectionEnabled) _Bool conversationDetectionEnabled;
+@property(readonly, nonatomic) _Bool supportsConversationDetection;
 @property(readonly, nonatomic) NSArray *availableBluetoothListeningModes;
 @property(readonly, nonatomic, getter=isHeadTrackedSpatialAudioActive) _Bool headTrackedSpatialAudioActive;
 - (_Bool)setHeadTrackedSpatialAudioMode:(id)arg1 error:(id *)arg2;
@@ -44,6 +47,10 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy, nonatomic) NSString *proposedGroupID;
 @property(readonly, copy, nonatomic) NSString *groupID;
 @property(readonly, nonatomic) _Bool canBeGrouped;
+@property(getter=isMuted) _Bool muted;
+@property(readonly) _Bool canMute;
+- (float)volumeForActivatedDeviceClusterMembersWithRoomID:(id)arg1;
+- (void)setActivatedDeviceClusterMembersVolume:(float)arg1 withRoomID:(id)arg2;
 - (void)decreaseVolumeByCount:(long long)arg1;
 - (void)increaseVolumeByCount:(long long)arg1;
 - (void)setVolume:(float)arg1;
@@ -74,9 +81,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSNumber *batteryLevel;
 @property(readonly, nonatomic) NSString *clusterID;
 @property(readonly, nonatomic) _Bool isClusterLeader;
-@property(readonly, nonatomic) NSArray *allClusterMembers;
-@property(readonly, nonatomic) NSArray *activatedDeviceClusterMembers;
-- (id)deviceClusterMembers;
 @property(readonly, nonatomic) NSArray *clusteredDeviceDescriptions;
 @property(readonly, copy, nonatomic) NSData *identifyingMACAddress;
 @property(readonly, nonatomic) NSString *firmwareVersion;

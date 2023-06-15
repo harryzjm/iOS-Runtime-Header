@@ -15,13 +15,14 @@ __attribute__((visibility("hidden")))
     NSString *_title;
     NSString *_subtitle;
     struct CGSize _naturalTextSize;
+    _Bool _finance;
 }
 
 - (void).cxx_destruct;
 - (struct CGSize)preferredContentSize;
 - (double)preferredWidth;
 - (id)view;
-- (id)initWithTitle:(id)arg1 subTitle:(id)arg2;
+- (id)initWithTitle:(id)arg1 subTitle:(id)arg2 finance:(_Bool)arg3;
 
 @end
 

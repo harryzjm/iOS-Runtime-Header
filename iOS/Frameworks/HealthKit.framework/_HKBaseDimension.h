@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 + (id)_uniquedDefinedDimensionWithName:(id)arg1;
 + (id)_uniquedDimensionWithName:(id)arg1 configuration:(CDUnknownBlockType)arg2;
 + (id)nullDimension;
++ (id)illuminance;
 + (id)angle;
 + (id)prismDiopter;
 + (id)diopter;

@@ -11,11 +11,13 @@
 __attribute__((visibility("hidden")))
 @interface _TtC8VideosUI23AlertTemplateController : _$s8VideosUI17VUIViewControllerCN
 {
-    MISSING_TYPE *delegate;
+    MISSING_TYPE *contextMenuDelegate;
+    MISSING_TYPE *dynamicButtons;
     MISSING_TYPE *templateViewModel;
     MISSING_TYPE *collectionViewModels;
     MISSING_TYPE *lastFocusedIndexPath;
     MISSING_TYPE *updateAutoHighlight;
+    MISSING_TYPE *collectionTableItems;
 }
 
 - (void).cxx_destruct;

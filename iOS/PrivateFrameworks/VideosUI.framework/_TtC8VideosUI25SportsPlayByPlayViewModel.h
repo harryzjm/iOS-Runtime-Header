@@ -11,7 +11,12 @@
 @interface _TtC8VideosUI25SportsPlayByPlayViewModel : _$s8VideosUI9ViewModelCN
 {
     MISSING_TYPE *onTapPlay;
+    MISSING_TYPE *supportsPlayGroups;
+    MISSING_TYPE *squarePlusEnabled;
+    MISSING_TYPE *teamColorProvider;
     MISSING_TYPE *_plays;
+    MISSING_TYPE *_playGroup;
+    MISSING_TYPE *_inningTransition;
     MISSING_TYPE *_displayErrors;
 }
 

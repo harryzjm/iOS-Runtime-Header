@@ -45,7 +45,7 @@ __attribute__((visibility("hidden")))
 - (RigidTransform_b9386d13)arCameraTransform;
 - (void)trasitionToARModeFromCameraFrame:(const void *)arg1 withDuration:(double)arg2 completion:(CDUnknownBlockType)arg3;
 - (CameraFrame_b765d6d7)cameraFrame;
-- (void)trasitionToARModeAtCoordinate:(CDStruct_c3b9c2ee)arg1 withDuration:(double)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)trasitionToARModeAtCoordinate:(CDStruct_2c43369c)arg1 withDuration:(double)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_setupPounceAnimation:(const void *)arg1 duration:(double)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_updateBaseTransform;
 - (void)_updateARContext;
@@ -63,7 +63,7 @@ __attribute__((visibility("hidden")))
 - (double)heading;
 - (double)altitude;
 - (double)distanceFromCenterCoordinate;
-- (CDStruct_c3b9c2ee)centerCoordinate;
+- (CDStruct_2c43369c)centerCoordinate;
 - (id)mapRegionIgnoringEdgeInsets;
 - (id)mapRegion;
 - (Matrix_6e1d3589)_intersectAndResolveWorldCollision:(const void *)arg1;

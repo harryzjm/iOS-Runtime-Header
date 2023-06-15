@@ -9,8 +9,10 @@
 @class NIBluetoothSample, NIConfiguration, NIDiscoveryToken, NIVisionInput, NSData, NSDictionary, NSError;
 
 @protocol UWBSessionServerProtocol <NSObject>
+- (void)generateDiscoveryToken;
 - (void)pause:(void (^)(NSError *))arg1;
 - (void)runWithConfiguration:(NIConfiguration *)arg1 reply:(void (^)(NSError *))arg2;
+- (void)activate:(void (^)(NSDictionary *, NSError *))arg1;
 
 @optional
 - (void)_provideTruthTag:(NSDictionary *)arg1;
@@ -33,7 +35,6 @@
 - (void)_removeObject:(NIDiscoveryToken *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)_addObject:(NIDiscoveryToken *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)notifySystemShutdownWithReason:(long long)arg1 reply:(void (^)(NSError *))arg2;
-- (void)activate:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)queryDeviceCapabilities:(void (^)(NSDictionary *))arg1;
 @end
 

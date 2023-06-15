@@ -8,7 +8,6 @@
 
 @class _PASSqliteDatabase;
 
-__attribute__((visibility("hidden")))
 @interface GDSQLFeatureRetriever : NSObject
 {
     _PASSqliteDatabase *_db;

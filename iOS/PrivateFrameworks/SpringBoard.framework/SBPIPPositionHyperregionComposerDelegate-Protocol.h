@@ -6,11 +6,13 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
+@class SBWindowScene;
 @protocol SBPIPPositionHyperregionComposing;
 
 @protocol SBPIPPositionHyperregionComposerDelegate <NSObject>
+- (SBWindowScene *)targetWindowSceneForRegionComposer:(id <SBPIPPositionHyperregionComposing>)arg1;
+- (struct SBPIPPositionGeometryContext)regionComposer:(id <SBPIPPositionHyperregionComposing>)arg1 transformGeometryContext:(struct SBPIPPositionGeometryContext)arg2 toWindowScene:(SBWindowScene *)arg3;
 - (void)positionRegionComposerNeedsUpdate:(id <SBPIPPositionHyperregionComposing>)arg1 behavior:(int)arg2;
 - (void)positionRegionComposerDidInvalidate:(id <SBPIPPositionHyperregionComposing>)arg1;
-- (void)addPositionRegionComposer:(id <SBPIPPositionHyperregionComposing>)arg1;
 @end
 

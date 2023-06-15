@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class NSString, VUILabel, VUIVideoAdvisoryViewLayout;
 
@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSString *legendName;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (struct CGSize)legendDescriptionSizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)legendNameSizeThatFits:(struct CGSize)arg1;
 - (id)initWithLayout:(id)arg1;
 

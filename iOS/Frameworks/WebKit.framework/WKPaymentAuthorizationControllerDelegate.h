@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 - (void)paymentAuthorizationController:(id)arg1 didRequestMerchantSession:(CDUnknownBlockType)arg2;
 - (void)paymentAuthorizationController:(id)arg1 willFinishWithError:(id)arg2;
 - (void)paymentAuthorizationController:(id)arg1 didChangeCouponCode:(id)arg2 handler:(CDUnknownBlockType)arg3;
+- (id)presentationWindowForPaymentAuthorizationController:(id)arg1;
 - (void)paymentAuthorizationController:(id)arg1 didSelectPaymentMethod:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)paymentAuthorizationController:(id)arg1 didSelectShippingContact:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)paymentAuthorizationController:(id)arg1 didSelectShippingMethod:(id)arg2 handler:(CDUnknownBlockType)arg3;

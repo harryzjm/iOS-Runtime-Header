@@ -15,7 +15,8 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *liveContentView;
     MISSING_TYPE *liveFloatingView;
     MISSING_TYPE *isFloatingLayerInlined;
-    MISSING_TYPE *isComplicationRowHidden;
+    MISSING_TYPE *isComplicationContainerHiddenInFullscreenLayout;
+    MISSING_TYPE *displayedComplicationLocation;
     MISSING_TYPE *lockVibrancyConfiguration;
     MISSING_TYPE *editingSceneViewController;
     MISSING_TYPE *displayDate;

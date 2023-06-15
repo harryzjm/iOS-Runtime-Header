@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
     CDStruct_1b6d18a9 _samplesBeforeReadyTotalDuration;
     NSMutableDictionary *_trackDecryptorsByTrackID;
     NSMutableDictionary *_trackFormatDescriptionsByTrackID;
+    _Bool _preferSandboxedParsing;
 }
 
 @end

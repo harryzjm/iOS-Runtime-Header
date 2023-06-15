@@ -6,7 +6,7 @@
 
 #import <HomeKit/HMEventTrigger.h>
 
-@class HMDurationEvent, NSString;
+@class HMDurationEvent, NSArray, NSString;
 
 @interface HMEventTrigger (HFDebugging)
 + (id)_hf_naturalLanguageDetailsSentenceElementsWithRecurrences:(id)arg1 conditions:(id)arg2 endEvents:(id)arg3 withOptions:(id)arg4;
@@ -35,6 +35,7 @@
 + (id)hf_representativeTriggerValueForCharacteristic:(id)arg1 similarToValue:(id)arg2;
 + (_Bool)_hf_valueIsValidForCharacteristic:(id)arg1 value:(id)arg2;
 + (id)hf_allTriggerValuesForCharacteristic:(id)arg1 similarToValue:(id)arg2;
++ (id)hf_newTriggerWithBuilder:(id)arg1 inHome:(id)arg2;
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
 - (id)_hf_naturalLanguageDetailsSentenceElementsWithOptions:(id)arg1;
 - (id)hf_naturalLanguageNameWithOptions:(id)arg1;
@@ -47,7 +48,10 @@
 - (id)hf_markTriggerAsHomeAppCreated;
 - (_Bool)hf_isHomeAppCreatedTrigger;
 - (unsigned long long)hf_triggerType;
+@property(readonly, nonatomic) NSArray *hf_effectiveRecurrences;
 @property(readonly, nonatomic) HMDurationEvent *hf_durationEndEvent;
+- (id)hf_updateWithBuilder:(id)arg1;
+- (id)hf_copyAsBuilder;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

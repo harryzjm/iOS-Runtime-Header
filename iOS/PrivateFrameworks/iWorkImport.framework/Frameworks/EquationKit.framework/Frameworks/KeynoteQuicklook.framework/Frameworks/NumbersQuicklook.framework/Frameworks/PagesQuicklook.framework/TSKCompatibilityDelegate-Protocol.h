@@ -13,6 +13,7 @@
 - (NSString *)needNewerVersionIndexXmlContentString;
 - (NSString *)indexXmlFilename;
 - (_Bool)isTextOnlyType:(NSString *)arg1;
+- (_Bool)isNotesDocumentType:(NSString *)arg1;
 - (_Bool)isIBADocumentType:(NSString *)arg1;
 - (_Bool)isSageDocumentType:(NSString *)arg1;
 - (_Bool)isTCMessageExceptionErrorDomain:(NSString *)arg1;

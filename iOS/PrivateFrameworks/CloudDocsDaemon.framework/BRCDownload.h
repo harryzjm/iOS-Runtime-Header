@@ -40,6 +40,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) CKRecord *secondaryRecord;
 @property(readonly, nonatomic) CKRecordID *secondaryRecordID;
 @property(readonly, nonatomic) NSNumber *transferID;
+@property(readonly, nonatomic) NSString *etagIfLoser;
 @property(readonly, nonatomic) int kind;
 
 @end

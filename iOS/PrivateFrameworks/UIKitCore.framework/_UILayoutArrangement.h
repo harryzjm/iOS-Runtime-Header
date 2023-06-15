@@ -41,6 +41,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic, setter=_setMutableItems:) NSMutableArray *_mutableItems; // @synthesize _mutableItems;
 @property(readonly, nonatomic) _Bool _awaitingAnimationLayoutPass; // @synthesize _awaitingAnimationLayoutPass;
 @property(retain, nonatomic, setter=_setUnanimatedConfigurationTarget:) _UILAConfigurationHistory *_unanimatedConfigurationTarget; // @synthesize _unanimatedConfigurationTarget;
+@property(readonly, copy) NSString *description;
 - (void)_updateCanvasConnectionConstraintsIfNecessary;
 - (_Bool)_configurationRequiresCanvasConnectionFittingConstraint;
 - (_Bool)_usesCenteringConnectionConstraint;
@@ -102,7 +103,6 @@ __attribute__((visibility("hidden")))
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

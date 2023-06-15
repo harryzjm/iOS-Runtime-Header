@@ -6,15 +6,15 @@
 
 #import "_UIStatusBarItem.h"
 
-@class _UIBatteryView, _UIStaticBatteryView, _UIStatusBarImageView, _UIStatusBarStringView;
+@class _UIStatusBarBatteryView, _UIStatusBarImageView, _UIStatusBarStaticBatteryView, _UIStatusBarStringView;
 
 __attribute__((visibility("hidden")))
 @interface _UIStatusBarBatteryItem : _UIStatusBarItem
 {
     _Bool _highlighted;
     _Bool _usesCondensedPercentageDisplay;
-    _UIBatteryView *_batteryView;
-    _UIStaticBatteryView *_staticBatteryView;
+    _UIStatusBarBatteryView *_batteryView;
+    _UIStatusBarStaticBatteryView *_staticBatteryView;
     _UIStatusBarImageView *_chargingView;
     _UIStatusBarStringView *_percentView;
 }
@@ -26,8 +26,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) _UIStatusBarStringView *percentView; // @synthesize percentView=_percentView;
 @property(retain, nonatomic) _UIStatusBarImageView *chargingView; // @synthesize chargingView=_chargingView;
-@property(retain, nonatomic) _UIStaticBatteryView *staticBatteryView; // @synthesize staticBatteryView=_staticBatteryView;
-@property(retain, nonatomic) _UIBatteryView *batteryView; // @synthesize batteryView=_batteryView;
+@property(retain, nonatomic) _UIStatusBarStaticBatteryView *staticBatteryView; // @synthesize staticBatteryView=_staticBatteryView;
+@property(retain, nonatomic) _UIStatusBarBatteryView *batteryView; // @synthesize batteryView=_batteryView;
 @property(nonatomic) _Bool usesCondensedPercentageDisplay; // @synthesize usesCondensedPercentageDisplay=_usesCondensedPercentageDisplay;
 @property(nonatomic) _Bool highlighted; // @synthesize highlighted=_highlighted;
 - (id)viewForIdentifier:(id)arg1;

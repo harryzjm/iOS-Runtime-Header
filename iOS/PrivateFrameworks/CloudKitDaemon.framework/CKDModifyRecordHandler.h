@@ -19,6 +19,7 @@
     int _saveAttempts;
     CKDModifyRecordsOperation *_operation;
     CKRecord *_record;
+    CKRecordID *_recordID;
     NSObject<OS_dispatch_group> *_pcsGroup;
     CKDRecordPCSData *_recordPCSData;
     CKDSharePCSData *_sharePCSData;
@@ -31,7 +32,6 @@
     long long _batchRank;
     CKDZonePCSData *_sharedZonePCSData;
     NSDictionary *_assetUUIDToExpectedProperties;
-    CKRecordID *_recordID;
 }
 
 + (id)_stringForState:(unsigned long long)arg1;
@@ -39,7 +39,6 @@
 + (id)modifyHandlerWithRecord:(id)arg1 operation:(id)arg2;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool didRollRecordPCSMasterKey; // @synthesize didRollRecordPCSMasterKey=_didRollRecordPCSMasterKey;
-@property(retain, nonatomic) CKRecordID *recordID; // @synthesize recordID=_recordID;
 @property(copy, nonatomic) NSDictionary *assetUUIDToExpectedProperties; // @synthesize assetUUIDToExpectedProperties=_assetUUIDToExpectedProperties;
 @property(nonatomic) _Bool didAttemptZoneWideShareKeyRoll; // @synthesize didAttemptZoneWideShareKeyRoll=_didAttemptZoneWideShareKeyRoll;
 @property(retain, nonatomic) CKDZonePCSData *sharedZonePCSData; // @synthesize sharedZonePCSData=_sharedZonePCSData;
@@ -57,6 +56,7 @@
 @property(retain, nonatomic) CKDSharePCSData *sharePCSData; // @synthesize sharePCSData=_sharePCSData;
 @property(retain, nonatomic) CKDRecordPCSData *recordPCSData; // @synthesize recordPCSData=_recordPCSData;
 @property(retain, nonatomic) NSObject<OS_dispatch_group> *pcsGroup; // @synthesize pcsGroup=_pcsGroup;
+@property(retain, nonatomic) CKRecordID *recordID; // @synthesize recordID=_recordID;
 @property(retain, nonatomic) CKRecord *record; // @synthesize record=_record;
 @property(nonatomic) __weak CKDModifyRecordsOperation *operation; // @synthesize operation=_operation;
 - (void)_clearRecordProtectionDataForRecord;

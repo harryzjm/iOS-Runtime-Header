@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CloudKitDaemon/NSObject-Protocol.h>
-
 @class NSFileHandle;
 
-@protocol CKLParsedObject <NSObject>
+@protocol CKLParsedObject
 - (void)CKLogToFileHandle:(NSFileHandle *)arg1;
 @end
 

@@ -10,7 +10,7 @@
 
 @interface _TtC10StocksCore16WatchlistManager : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *observableActiveWatchlist;
+    MISSING_TYPE *activeWatchlistSubject;
     MISSING_TYPE *lazyPrewarm;
     MISSING_TYPE *userDefaults;
     MISSING_TYPE *accessLock;
@@ -20,7 +20,8 @@
     MISSING_TYPE *watchlistService;
     MISSING_TYPE *metadataManager;
     MISSING_TYPE *observers;
-    MISSING_TYPE *featureAvailability;
+    MISSING_TYPE *timer;
+    MISSING_TYPE *cancellables;
 }
 
 @end

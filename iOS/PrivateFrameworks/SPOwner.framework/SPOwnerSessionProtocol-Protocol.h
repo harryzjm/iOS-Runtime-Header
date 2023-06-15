@@ -6,7 +6,7 @@
 
 #import <SPOwner/NSObject-Protocol.h>
 
-@class FMFuture, NSArray, NSData, NSSet, NSString, NSUUID, SPBeacon, SPCommand, SPLocationFetchContext, SPOwnerSessionState;
+@class FMFuture, NSArray, NSData, NSSet, NSString, NSUUID, SPBeacon, SPCommand, SPLocationFetchContext, SPOwnerSessionState, SPSimpleBeaconContext;
 
 @protocol SPOwnerSessionProtocol <NSObject>
 @property(readonly, copy, nonatomic) NSSet *allBeacons;
@@ -21,7 +21,9 @@
 - (void)disconnectFromMACAddress:(NSData *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)connectUsingMACAddress:(NSData *)arg1 longTermKey:(NSData *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)readAISMetadataFromBeaconIdentifier:(NSUUID *)arg1 completion:(void (^)(SPDiscoveredAccessoryMetadata *, NSError *))arg2;
+- (void)readRawAISMetadataFromBeaconIdentifier:(NSUUID *)arg1 completion:(void (^)(SPRawAccessoryMetadata *, NSError *))arg2;
 - (void)readAISMetadataFromMACAddress:(NSData *)arg1 useOwnerControlPoint:(_Bool)arg2 completion:(void (^)(SPDiscoveredAccessoryMetadata *, NSError *))arg3;
+- (void)readRawAISMetadataFromMACAddress:(NSData *)arg1 useOwnerControlPoint:(_Bool)arg2 completion:(void (^)(SPRawAccessoryMetadata *, NSError *))arg3;
 - (void)fetchUnauthorizedEncryptedPayload:(NSUUID *)arg1 completion:(void (^)(NSURL *))arg2;
 - (void)isUTAppAlertDisabled:(void (^)(_Bool))arg1;
 - (void)disableUTAppAlert:(_Bool)arg1 completion:(void (^)(NSError *))arg2;
@@ -47,6 +49,8 @@
 - (void)locationForContext:(SPLocationFetchContext *)arg1 completion:(void (^)(SPLocationFetchResult *, NSError *))arg2;
 - (void)locationsForBeacons:(NSArray *)arg1 completion:(void (^)(NSDictionary *))arg2;
 - (void)unacceptedBeaconsWithCompletion:(void (^)(NSSet *))arg1;
+- (void)stopUpdatingApplicationBeaconsWithCompletion:(void (^)(_Bool, NSError *))arg1;
+- (void)startUpdatingApplicationBeaconsWithContext:(SPSimpleBeaconContext *)arg1 collectionDifference:(void (^)(NSOrderedCollectionDifference *, NSError *))arg2 completion:(void (^)(_Bool, NSError *))arg3;
 - (void)allBeaconsWithCompletion:(void (^)(NSSet *))arg1;
 - (void)stopRefreshing;
 - (void)startRefreshingBeacons:(NSArray *)arg1;

@@ -14,6 +14,7 @@
 @property(readonly, nonatomic) _Bool inCollapsingToProposedTopColumnCallback;
 @property(readonly, nonatomic) _Bool lockedForDelegateCallback;
 @property(readonly, nonatomic) long long style;
+@property(nonatomic, setter=_setPrimaryOffscreenGestureMode:) long long _primaryOffscreenGestureMode;
 @property(nonatomic) long long primaryBackgroundStyle;
 @property(nonatomic, getter=_usesExtraWidePrimaryColumn, setter=_setUsesExtraWidePrimaryColumn:) _Bool usesExtraWidePrimaryColumn;
 @property(copy, nonatomic, setter=_setDisplayModeButtonItemTitle:) NSString *_displayModeButtonItemTitle;
@@ -67,6 +68,7 @@
 - (void)willAnimateRotationToInterfaceOrientation:(long long)arg1 duration:(double)arg2;
 - (void)willRotateToInterfaceOrientation:(long long)arg1 duration:(double)arg2;
 - (_Bool)shouldAutorotateToInterfaceOrientation:(long long)arg1;
+- (unsigned long long)preferredScreenEdgesDeferringSystemGestures;
 - (UIViewController *)childViewControllerForStatusBarStyle;
 - (long long)preferredCenterStatusBarStyle;
 - (long long)preferredTrailingStatusBarStyle;
@@ -80,6 +82,7 @@
 - (void)willTransitionToTraitCollection:(UITraitCollection *)arg1 withTransitionCoordinator:(id <UIViewControllerTransitionCoordinator>)arg2;
 - (struct CGSize)sizeForChildContentContainer:(id <UIContentContainer>)arg1 withParentContainerSize:(struct CGSize)arg2;
 - (void)viewDidLayoutSubviews;
+- (void)viewWillLayoutSubviews;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;

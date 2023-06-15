@@ -21,13 +21,13 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSMutableDictionary *requestHandlers; // @synthesize requestHandlers=_requestHandlers;
 @property(readonly, nonatomic) _COMessagingServiceMeter *meter; // @synthesize meter=_meter;
 @property(retain, nonatomic) NSMutableDictionary *connectedClients; // @synthesize connectedClients=_connectedClients;
-- (_Bool)_canRequestCreationOfCluster:(id)arg1;
+- (_Bool)_applicableToCluster:(id)arg1;
 - (void)_addOnRemoved:(id)arg1;
 - (void)_addOnAdded:(id)arg1;
 - (void)addOn:(id)arg1 receivedRequest:(id)arg2 callback:(CDUnknownBlockType)arg3;
 - (void)sessionEndedForSubTopic:(id)arg1;
 - (void)sessionStartedForSubTopic:(id)arg1 withMember:(id)arg2 produced:(_Bool)arg3;
-- (void)sendRequestWithPayload:(id)arg1 payloadType:(id)arg2 requestType:(long long)arg3 requestID:(unsigned int)arg4 members:(id)arg5;
+- (void)sendRequestWithPayload:(id)arg1 payloadType:(id)arg2 requestType:(long long)arg3 requestID:(unsigned int)arg4 members:(id)arg5 activityToken:(id)arg6;
 - (void)_completeActivationForClient:(id)arg1;
 - (void)activateMessageChannelForTopic:(id)arg1 cluster:(id)arg2 handlers:(id)arg3 withCompletion:(CDUnknownBlockType)arg4;
 - (void)_clientLost:(id)arg1;

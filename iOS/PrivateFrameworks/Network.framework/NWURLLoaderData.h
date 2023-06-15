@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSString, NSURL;
-@protocol OS_dispatch_data, OS_nw_connection;
+@protocol OS_dispatch_data, OS_nw_connection, OS_sec_trust;
 
 __attribute__((visibility("hidden")))
 @interface NWURLLoaderData : NSObject
@@ -21,13 +21,15 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSObject<OS_nw_connection> *underlyingConnection;
+- (void)responseIsMixed;
 - (void)writeData:(id)arg1 complete:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 @property(readonly, nonatomic) _Bool allowsWrite;
+@property(readonly, nonatomic) NSObject<OS_sec_trust> *peerTrust;
 - (void)readDataOfMinimumIncompleteLength:(unsigned long long)arg1 maximumLength:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)readResponse:(CDUnknownBlockType)arg1;
 - (void)updateClient:(id)arg1;
 - (void)stop;
-- (void)start;
+- (void)start:(CDUnknownBlockType)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

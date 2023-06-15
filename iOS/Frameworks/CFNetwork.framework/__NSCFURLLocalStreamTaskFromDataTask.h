@@ -33,6 +33,8 @@
 - (void)connectionWillFinishLoading:(id)arg1;
 - (void)connection:(id)arg1 willCacheResponse:(id)arg2 responseCallback:(CDUnknownBlockType)arg3;
 - (void)connection:(id)arg1 didReceiveResponse:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)connection:(id)arg1 didReceiveInformationalResponse:(id)arg2;
+- (void)connection:(id)arg1 request:(id)arg2 needsNewBodyStreamFromOffset:(long long)arg3 callback:(CDUnknownBlockType)arg4;
 - (void)connection:(id)arg1 request:(id)arg2 needsNewBodyStreamCallback:(CDUnknownBlockType)arg3;
 - (void)connection:(id)arg1 wasRedirected:(id)arg2 newRequest:(id)arg3 responseCallback:(CDUnknownBlockType)arg4;
 - (void)dealloc;

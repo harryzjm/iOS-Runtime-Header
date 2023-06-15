@@ -41,7 +41,7 @@
 - (void)_onqueue_completeInitialization;
 - (int)openItemForPath:(id)arg1 mode:(int)arg2;
 - (void)dealloc;
-- (const struct __CFDictionary *)_copySocketStreamProperties;
+- (struct __CFDictionary *)_copySocketStreamProperties;
 - (void)set_keepDownloadTaskFile:(_Bool)arg1;
 - (_Bool)_keepDownloadTaskFile;
 

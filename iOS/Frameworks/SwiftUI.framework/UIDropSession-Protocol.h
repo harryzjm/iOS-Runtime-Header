@@ -11,8 +11,8 @@
 @protocol UIDragSession;
 
 @protocol UIDropSession <UIDragDropSession, NSProgressReporting>
-- (NSProgress *)loadObjectsOfClass:(Class)arg1 completion:(void (^)(NSArray *))arg2;
 @property(nonatomic) unsigned long long progressIndicatorStyle;
-@property(nonatomic, readonly) id <UIDragSession> localDragSession;
+@property(readonly, nonatomic) id <UIDragSession> localDragSession;
+- (NSProgress *)loadObjectsOfClass:(Class)arg1 completion:(void (^)(NSArray *))arg2;
 @end
 

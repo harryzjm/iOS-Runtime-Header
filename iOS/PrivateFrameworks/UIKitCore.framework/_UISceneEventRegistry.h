@@ -6,21 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class UIHoverEvent, UIMoveEvent, UIPencilEvent, UIPhysicalKeyboardEvent, UIPressesEvent, UIScrollEvent, UITouchesEvent, UITransformEvent, UIWheelEvent, _UIGameControllerEvent;
+@class NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
 @interface _UISceneEventRegistry : NSObject
 {
-    UIMoveEvent *_moveEvent;
-    UITouchesEvent *_touchesEvent;
-    UIPressesEvent *_pressesEvent;
-    UIWheelEvent *_wheelEvent;
-    _UIGameControllerEvent *_gameControllerEvent;
-    UIPhysicalKeyboardEvent *_physicalKeyboardEvent;
-    UIPencilEvent *_pencilEvent;
-    UIScrollEvent *_scrollEvent;
-    UIHoverEvent *_hoverEvent;
-    UITransformEvent *_transformEvent;
+    NSMutableDictionary *_eventsByType;
 }
 
 - (void).cxx_destruct;

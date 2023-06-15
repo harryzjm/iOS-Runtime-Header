@@ -6,10 +6,13 @@
 
 #import <AssistantUI/AFUISiriSessionListener-Protocol.h>
 
-@class AFUISiriSession, NSString, SAUIAppPunchOut, SAUIDelayedActionCancelCommand, SAUIDelayedActionCommand, SAUISetUpdateMask, SAUITakeScreenshot;
+@class AFAnalyticsTurnBasedInstrumentationContext, AFUISiriSession, NSString, SADeviceControlStartScreenRecording, SADeviceControlStopScreenRecording, SAUIAppPunchOut, SAUIDelayedActionCancelCommand, SAUIDelayedActionCommand, SAUISetUpdateMask, SAUITakeScreenshot;
 
 @protocol AFUISiriSessionLocalDelegate <AFUISiriSessionListener>
+- (void)siriSession:(AFUISiriSession *)arg1 initialBringupProcessedWithTurnIdentifier:(AFAnalyticsTurnBasedInstrumentationContext *)arg2;
 - (void)siriSessionDidReceiveSetUpdateMaskCommand:(SAUISetUpdateMask *)arg1 completion:(void (^)(AceObject<SAAceCommand> *))arg2;
+- (void)siriSessionDidReceiveStopScreenRecordingCommand:(SADeviceControlStopScreenRecording *)arg1 completion:(void (^)(AceObject<SAAceCommand> *))arg2;
+- (void)siriSessionDidReceiveStartScreenRecordingCommand:(SADeviceControlStartScreenRecording *)arg1 completion:(void (^)(AceObject<SAAceCommand> *))arg2;
 - (void)siriSessionDidReceiveTakeScreenshotCommand:(SAUITakeScreenshot *)arg1 completion:(void (^)(AceObject<SAAceCommand> *))arg2;
 - (void)siriSessionImmersiveExperienceRequested;
 - (void)siriSessionAudioOutputDidChangePowerLevel:(float)arg1;
@@ -32,5 +35,6 @@
 @optional
 - (void)handlePunchoutCommand:(SAUIAppPunchOut *)arg1 completion:(void (^)(_Bool))arg2;
 - (_Bool)shouldNonLocalDelegateHandlePunchouts;
+- (_Bool)headphonesAuthenticated;
 @end
 

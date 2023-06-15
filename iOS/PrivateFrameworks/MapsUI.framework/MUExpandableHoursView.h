@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     NSArray *_dayRowViews;
     MUStackLayout *_summaryAndHoursStackLayout;
     MUBusinessHoursConfiguration *_config;
+    NSArray *_dayRowViewModels;
     _Bool _stacked;
     _Bool _expanded;
     id <MUExpandableHoursViewDelegate> _delegate;
@@ -30,9 +31,11 @@ __attribute__((visibility("hidden")))
 - (void)_invokeChildrenOfStackingChange;
 - (_Bool)shouldStackForProposedWidth:(double)arg1;
 - (void)_updateHoursVisibilityAnimated:(_Bool)arg1;
-- (void)_buildContent;
 - (void)_setExpanded:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)_setupStackView;
+- (void)_addDayRowViewsToStackViewIfNeeded;
+- (void)_createDayRowViewsIfNeeded;
+- (void)_buildDayRowViewModels;
 - (id)initWithBusinessHoursConfiguration:(id)arg1;
 
 // Remaining properties

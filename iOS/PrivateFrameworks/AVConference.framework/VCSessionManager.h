@@ -16,10 +16,12 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_xpcCommandQueue;
     NSObject<OS_dispatch_queue> *_sessionQueue;
     _Bool _sharingEnabled;
+    _Bool _screenAndCameraMixingEnabled;
 }
 
 + (void)addNSError:(id)arg1 toXPCArgumentDictionary:(id)arg2;
 + (id)sharedInstance;
+@property(nonatomic) _Bool screenAndCameraMixingEnabled; // @synthesize screenAndCameraMixingEnabled=_screenAndCameraMixingEnabled;
 @property(nonatomic) _Bool sharingEnabled; // @synthesize sharingEnabled=_sharingEnabled;
 @property(readonly, nonatomic) NSMutableDictionary *sessions; // @synthesize sessions=_sessions;
 - (void)releaseSession:(id)arg1;
@@ -27,8 +29,10 @@ __attribute__((visibility("hidden")))
 - (void)deregisterBlocksForService;
 - (void)registerBlocksForService;
 - (void)vcSession:(id)arg1 participantID:(id)arg2 didDetectError:(id)arg3;
+- (void)vcSession:(id)arg1 participantID:(id)arg2 reactionDidStart:(id)arg3;
 - (void)vcSession:(id)arg1 participantID:(id)arg2 didChangeMediaPriority:(unsigned char)arg3 description:(id)arg4;
 - (void)vcSessionShouldReconnect:(id)arg1;
+- (void)vcSession:(id)arg1 participantID:(id)arg2 mixingDidChangeForMediaType:(unsigned int)arg3 mixingMediaType:(unsigned int)arg4;
 - (void)vcSession:(id)arg1 participantID:(id)arg2 remoteMediaStateDidChange:(unsigned int)arg3 forMediaType:(unsigned int)arg4;
 - (void)vcSession:(id)arg1 participantID:(id)arg2 mediaStateDidChange:(unsigned int)arg3 forMediaType:(unsigned int)arg4 didSucceed:(_Bool)arg5 error:(id)arg6;
 - (void)vcSession:(id)arg1 participantID:(id)arg2 remoteVideoPausedDidChange:(_Bool)arg3;

@@ -4,10 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <FrontBoard/FBSSceneClientSettingsDiff.h>
+#import <FrontBoardServices/FBSSceneClientSettingsDiff.h>
 
 @interface FBSSceneClientSettingsDiff (PRRenderingScene)
+- (_Bool)pr_hideChromeDidChange;
+- (_Bool)pr_handlesWakeAnimationDidChange;
 - (_Bool)pr_extendedRenderSessionDidChange;
+- (_Bool)pr_desiredLegibilitySettingsDidChange;
 - (_Bool)pr_contentSizeDidChange;
 - (_Bool)pr_significantEventTimeDidChange;
 - (_Bool)pr_significantEventsDidChange;

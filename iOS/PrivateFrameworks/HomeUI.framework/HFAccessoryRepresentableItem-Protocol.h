@@ -10,6 +10,6 @@
 
 @protocol HFAccessoryRepresentableItem <HFHomeKitItemProtocol>
 + (id)itemWithAccessoryRepresentableObject:(id <HFAccessoryRepresentable>)arg1 valueSource:(id <HFCharacteristicValueSource>)arg2;
-@property(nonatomic, readonly) id <HFAccessoryRepresentable> accessoryRepresentableObject;
+@property(readonly, nonatomic) id <HFAccessoryRepresentable> accessoryRepresentableObject;
 @end
 

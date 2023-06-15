@@ -6,9 +6,11 @@
 
 #import <PassKitUI/NSObject-Protocol.h>
 
-@class UIViewController;
+@class UIViewController, UIWindow;
 
 @protocol PKPaymentVerificationControllerDelegate <NSObject>
+- (UIWindow *)presentationContext;
+- (void)dismissVerificationViewControllerAnimated:(_Bool)arg1;
 - (void)presentVerificationViewController:(UIViewController *)arg1 animated:(_Bool)arg2;
 
 @optional

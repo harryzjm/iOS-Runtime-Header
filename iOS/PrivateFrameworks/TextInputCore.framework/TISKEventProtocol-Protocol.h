@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, TIKeyboardTouchEvent, TISKEvent, TISKSessionSamples;
+@class NSString, TIKeyboardTouchEvent, TISKEvent, TISKSessionStats;
 
 @protocol TISKEventProtocol
-- (void)reportInterKeyTiming:(TISKSessionSamples *)arg1 previousEvent:(TISKEvent *)arg2;
-- (void)reportToSession:(TISKSessionSamples *)arg1;
+- (void)reportInterKeyTiming:(TISKSessionStats *)arg1 previousEvent:(TISKEvent *)arg2;
+- (void)reportToSession:(TISKSessionStats *)arg1;
 - (NSString *)privateDescription;
 - (NSString *)description;
 - (double)touchUpTimestamp;

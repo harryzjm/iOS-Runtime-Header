@@ -17,6 +17,8 @@
     MISSING_TYPE *_groupActivity;
     MISSING_TYPE *_remoteParticipantDeviceType;
     MISSING_TYPE *_badgingCounts;
+    MISSING_TYPE *_topicRoutingBehavior;
+    MISSING_TYPE *_metadata;
 }
 
 @end

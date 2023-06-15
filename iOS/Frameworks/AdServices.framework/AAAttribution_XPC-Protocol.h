@@ -6,8 +6,10 @@
 
 #import <AdServices/NSObject-Protocol.h>
 
+@class NSDate;
+
 @protocol AAAttribution_XPC <NSObject>
 - (void)attributionAnalytics:(unsigned long long)arg1 end:(unsigned long long)arg2 Handler:(void (^)(_Bool, NSError *))arg3;
-- (void)attributionTokenCompletionHandler:(void (^)(_Bool, NSString *, NSError *))arg1;
+- (void)attributionTokenRequestTimestamp:(NSDate *)arg1 completionHandler:(void (^)(_Bool, NSString *, NSError *))arg2;
 @end
 

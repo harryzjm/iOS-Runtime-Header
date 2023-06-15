@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/_UIRemoteViewController.h>
+#import <UIKitCore/_UIRemoteViewController.h>
 
 @protocol WFWidgetConfigurationRemoteViewControllerDelegate;
 
@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 - (void)intentWasConfigured:(id)arg1;
 - (void)requestViewControllerDismissal;
 - (void)setConfigurationCardViewFrame:(struct CGRect)arg1;
+- (void)startConfigurationWithRequest:(id)arg1;
 
 @end
 

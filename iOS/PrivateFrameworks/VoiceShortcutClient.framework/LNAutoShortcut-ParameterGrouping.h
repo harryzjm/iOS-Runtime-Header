@@ -7,6 +7,7 @@
 #import <LinkServices/LNAutoShortcut.h>
 
 @interface LNAutoShortcut (ParameterGrouping)
+- (id)primaryPhrases;
 - (id)allGroupedPhrases;
 @end
 

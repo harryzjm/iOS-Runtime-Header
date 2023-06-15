@@ -9,6 +9,7 @@
 @class AFUISiriCompactView;
 
 @protocol AFUISiriCompactViewDelegate <NSObject>
+- (_Bool)compactViewRequestAttendingState:(AFUISiriCompactView *)arg1;
 - (void)compactView:(AFUISiriCompactView *)arg1 blurVisibilityDidChange:(_Bool)arg2;
 - (void)compactView:(AFUISiriCompactView *)arg1 bottomContentInsetDidChange:(double)arg2;
 @end

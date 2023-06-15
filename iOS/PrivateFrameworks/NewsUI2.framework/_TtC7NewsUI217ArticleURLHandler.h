@@ -19,7 +19,9 @@
     MISSING_TYPE *contextBuilder;
     MISSING_TYPE *prefetchedArticlesService;
     MISSING_TYPE *tracker;
+    MISSING_TYPE *articleLinkBehaviorConfigManager;
     MISSING_TYPE *feedViewContextFactory;
+    MISSING_TYPE *appURLHandler;
 }
 
 @end

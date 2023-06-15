@@ -23,7 +23,8 @@ __attribute__((visibility("hidden")))
         unsigned int _constrained:1;
         unsigned int _backedByTrigger:1;
         unsigned int _isDerivedAttribute:1;
-        unsigned int _reservedFlags:11;
+        unsigned int _isNestedColumn:1;
+        unsigned int _reservedFlags:10;
     } _flags;
 }
 

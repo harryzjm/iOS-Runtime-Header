@@ -25,8 +25,9 @@
     MISSING_TYPE *configuration;
     MISSING_TYPE *termsAndConditionsViewController;
     MISSING_TYPE *unorderedUI;
-    MISSING_TYPE *featureEnablementConfig;
     MISSING_TYPE *idType;
+    MISSING_TYPE *biomeFedStatsUIConfig;
+    MISSING_TYPE *featureEnablementConfig;
     MISSING_TYPE *attributeMessages;
     MISSING_TYPE *messageReplacements;
     MISSING_TYPE *state;
@@ -44,7 +45,6 @@
     MISSING_TYPE *analyticsReporter;
     MISSING_TYPE *cardArtData;
     MISSING_TYPE *_termsAndConditions;
-    MISSING_TYPE *proofingStatus;
 }
 
 @end

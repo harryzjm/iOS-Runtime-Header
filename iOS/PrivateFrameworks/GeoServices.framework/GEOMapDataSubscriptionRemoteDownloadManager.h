@@ -6,8 +6,8 @@
 
 #import <objc/NSObject.h>
 
-@class NSMapTable, NSString, geo_isolater;
-@protocol GEOMapDataSubscriptionDownloadManagerDelegate, OS_dispatch_queue, OS_xpc_object;
+@class GEOXPCConnection, NSMapTable, NSString, geo_isolater;
+@protocol GEOMapDataSubscriptionDownloadManagerDelegate, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface GEOMapDataSubscriptionRemoteDownloadManager : NSObject
@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
     int _geodLaunchedNotifyToken;
     struct GEOOnce_s _configuredConnection;
     NSObject<OS_dispatch_queue> *_incomingMessageQueue;
-    NSObject<OS_xpc_object> *_connection;
+    GEOXPCConnection *_connection;
     geo_isolater *_statesLock;
     NSMapTable *_states;
 }
@@ -28,8 +28,11 @@ __attribute__((visibility("hidden")))
 - (void)_startObservingStateForIdentifier:(id)arg1;
 - (void)_reconnectIfNecessary;
 - (void)fetchStateForSubscriptionWithIdentifier:(id)arg1 callbackQueue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)determineEstimatedSizeForSubscriptionWithRegion:(id)arg1 dataTypes:(unsigned long long)arg2 queue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)fetchLastUpdatedDateForOfflineSubscriptionsWithQueue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)forceUpdateForUserInitiatedSubscriptionsForDataType:(unsigned long long)arg1 mode:(long long)arg2;
 - (void)cancelDownloadForSubscriptionIdentifiers:(id)arg1;
-- (void)startDownloadForSubscriptionIdentifiers:(id)arg1;
+- (void)startDownloadForSubscriptionIdentifiers:(id)arg1 mode:(long long)arg2;
 - (void)_handleEvent:(id)arg1;
 - (id)_connection;
 - (void)dealloc;

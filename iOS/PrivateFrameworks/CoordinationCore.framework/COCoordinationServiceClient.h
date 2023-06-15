@@ -11,11 +11,13 @@
 __attribute__((visibility("hidden")))
 @interface COCoordinationServiceClient : NSObject
 {
+    struct os_unfair_lock_s _lock;
     NSXPCConnection *_connection;
 }
 
 - (void).cxx_destruct;
-@property(readonly, retain, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
+@property(readonly, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
+- (void)_withLock:(CDUnknownBlockType)arg1;
 @property(readonly, copy, nonatomic) NSString *clientBundleIdentifier;
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;

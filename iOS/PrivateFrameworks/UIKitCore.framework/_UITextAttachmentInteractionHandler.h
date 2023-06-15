@@ -4,29 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
-@class NSString, NSTextAttachment;
+@class NSTextAttachment;
 
 __attribute__((visibility("hidden")))
-@interface _UITextAttachmentInteractionHandler : NSObject
+@interface _UITextAttachmentInteractionHandler
 {
     NSTextAttachment *_textAttachment;
 }
 
 - (void).cxx_destruct;
-- (id)_image;
-- (void)_saveToCameraRoll;
-- (void)_copyImage;
-- (id)contextMenuConfiguration;
-- (id)defaultActionWithContextMenuInteraction:(id)arg1;
-- (id)initWithTextAttachment:(id)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+@property(readonly, nonatomic) NSTextAttachment *textAttachment; // @synthesize textAttachment=_textAttachment;
+- (_Bool)_canPresentMenuWithoutPrimaryAction;
+- (id)_defaultMenuForInteractableItem;
+- (id)initWithAttachmentItem:(id)arg1 textContentView:(id)arg2;
 
 @end
 

@@ -35,6 +35,8 @@
 - (void)displayedDiscoveryEngagementMessageWithIdentifier:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)updateDiscoveryEngagementMessageWithIdentifier:(NSString *)arg1 forAction:(long long)arg2 completion:(void (^)(NSError *))arg3;
 - (void)updateDiscoveryItemWithIdentifier:(NSString *)arg1 forAction:(long long)arg2 completion:(void (^)(NSError *))arg3;
+- (void)dialogRequestsForPlacement:(NSString *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
+- (void)dismissedDiscoveryItems:(void (^)(NSArray *, NSError *))arg1;
 - (void)discoveryEngagementMessagesForPassUniqueIdentifier:(NSString *)arg1 active:(unsigned long long)arg2 completion:(void (^)(NSArray *, NSError *))arg3;
 - (void)processDiscoveryItemsAndMessagesWithCompletion:(void (^)(NSError *))arg1;
 - (void)manifestAllowsMiniCardsWithCompletion:(void (^)(NSError *, _Bool))arg1;

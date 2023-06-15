@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface _UIShadowViewImageCacheKey : NSObject <NSCopying>
+@interface _UIShadowViewImageCacheKey : NSObject
 {
     double _scale;
     double _size;

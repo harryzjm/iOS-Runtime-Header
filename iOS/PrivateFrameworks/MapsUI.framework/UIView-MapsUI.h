@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class NSString;
 
@@ -23,6 +23,7 @@
 - (void)_mapsui_layoutIfNeeded;
 - (struct CGSize)_mapsui_fittingSize;
 - (void)_mapsui_disableTranslatesAutoresizingMaskIntoConstraints;
+@property(readonly, nonatomic) NSString *_mapsui_recursiveLayoutMarginsDescription;
 @property(readonly, nonatomic) NSString *_mapsui_preservedLayoutMarginsDescription;
 @property(readonly, nonatomic) NSString *_mapsui_layoutMarginsDescription;
 - (void)_mapsui_resetLayoutMarginsWithPreservesSuperview:(_Bool)arg1 insetsFromSafeArea:(_Bool)arg2;

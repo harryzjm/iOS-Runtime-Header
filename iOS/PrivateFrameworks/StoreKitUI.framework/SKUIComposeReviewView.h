@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class NSString, SKUIComposeReviewHeaderView, SKUIReviewMetadata, SULoadingView, SUTextContentView, UIScrollView;
+@class NSString, SKUIComposeReviewHeaderView, SKUIComposeTextView, SKUIReviewMetadata, SULoadingView, SUTextContentView, UIScrollView;
 @protocol SKUIComposeReviewViewDelegate;
 
 __attribute__((visibility("hidden")))
@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     UIScrollView *_scrollView;
     long long _style;
     SUTextContentView *_textContentView;
+    SKUIComposeTextView *_textContentViewAlt;
 }
 
 - (void).cxx_destruct;
@@ -39,6 +40,8 @@ __attribute__((visibility("hidden")))
 - (id)_body;
 - (void)_remoteKeyboardVisibilityDidChangeNotification:(id)arg1;
 - (void)_keyboardVisibilityDidChangeNotification:(id)arg1;
+- (_Bool)_composeReviewTextViewShouldChangeTextInRange:(struct _NSRange)arg1 replacementText:(id)arg2;
+- (_Bool)textView:(id)arg1 shouldChangeTextInRange:(struct _NSRange)arg2 replacementText:(id)arg3;
 - (void)textContentViewDidChange:(id)arg1;
 - (_Bool)textContentView:(id)arg1 shouldScrollForPendingContentSize:(struct CGSize)arg2;
 - (_Bool)textContentView:(id)arg1 shouldChangeTextInRange:(struct _NSRange)arg2 replacementText:(id)arg3;
@@ -55,6 +58,7 @@ __attribute__((visibility("hidden")))
 - (void)setFrame:(struct CGRect)arg1;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)layoutSubviews;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1 style:(long long)arg2;
 

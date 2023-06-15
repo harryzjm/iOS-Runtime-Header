@@ -12,13 +12,13 @@
 @property(copy, nonatomic) CDUnknownBlockType viewDidUpdateHandler;
 @property(copy, nonatomic) CDUnknownBlockType viewWillUpdateHandler;
 - (long long)numberOfSections;
-- (UINavigationController *)navigationController;
-- (struct CGRect)scrollToIndexPath:(NSIndexPath *)arg1;
 - (void)toggleShowMoreForSection:(unsigned long long)arg1;
+- (UINavigationController *)navigationController;
+- (void)performScrollTestWithHandlerForFirstScrollCompletion:(void (^)(void))arg1 completion:(void (^)(void))arg2;
+- (void)performScrollTestWithCompletion:(void (^)(void))arg1;
+- (struct CGRect)scrollToIndexPath:(NSIndexPath *)arg1;
 - (void)tapAtIndexPath:(NSIndexPath *)arg1;
 - (void)iterateIndexPaths:(void (^)(SFResultSection *, SFSearchResult *, SFCardSection *, NSIndexPath *))arg1;
 - (void)performRecapScrollTestWithTestName:(NSString *)arg1 completion:(void (^)(void))arg2;
-- (void)performScrollTestWithHandlerForFirstScrollCompletion:(void (^)(void))arg1 completion:(void (^)(void))arg2;
-- (void)performScrollTestWithCompletion:(void (^)(void))arg1;
 @end
 

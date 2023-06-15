@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface _UICGColorCacheKey : NSObject <NSCopying>
+@interface _UICGColorCacheKey : NSObject
 {
     struct __CFArray *_colors;
 }

@@ -42,6 +42,7 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)preferredPlatterSize;
 - (struct CGSize)preferredContentSize;
 - (void)layoutSubviews;
+- (void)updateConstraints;
 - (void)replaceDatePicker:(id)arg1;
 - (id)initWithDatePicker:(id)arg1 accessoryView:(id)arg2;
 

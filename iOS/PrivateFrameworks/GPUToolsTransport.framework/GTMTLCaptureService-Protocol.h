@@ -4,15 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class GTCaptureDescriptor, GTCaptureObjects;
-@protocol GTMTLCaptureServiceDelegate;
+@class GTCaptureDescriptor, GTCaptureRequestBatch, GTCaptureRequestToken;
+@protocol GTMTLCaptureServiceObserver;
 
 @protocol GTMTLCaptureService
+- (void)deregisterObserver:(unsigned long long)arg1;
+- (unsigned long long)registerObserver:(id <GTMTLCaptureServiceObserver>)arg1;
 - (void)stop;
-- (void)startWithCompletedHandler:(void (^)(GTCaptureCompletionState *, NSError *))arg1;
-- (void)setupWithDescriptor:(GTCaptureDescriptor *)arg1;
-- (GTCaptureObjects *)allCaptureObjects;
-- (void)setDelegate:(id <GTMTLCaptureServiceDelegate>)arg1;
-- (void)signalInterposeSemaphore;
+- (GTCaptureRequestToken *)startWithDescriptor:(GTCaptureDescriptor *)arg1 completionHandler:(void (^)(GTCaptureCompletionState *))arg2;
+- (GTCaptureRequestToken *)update:(GTCaptureRequestBatch *)arg1;
+- (GTCaptureRequestToken *)query:(GTCaptureRequestBatch *)arg1;
 @end
 

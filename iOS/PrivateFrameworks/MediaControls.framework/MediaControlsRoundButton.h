@@ -6,37 +6,39 @@
 
 #import <UIKit/UIControl.h>
 
-@class CCUICAPackageView, MRUShadowView, MRUVisualStylingProvider, NSString, UILabel;
+@class MRUAsset, MRUAssetView, MRUShadowView, MRUVisualStylingProvider, NSString, UIImageSymbolConfiguration, UILabel;
 
 __attribute__((visibility("hidden")))
 @interface MediaControlsRoundButton : UIControl
 {
     _Bool _labelHidden;
-    NSString *_title;
-    NSString *_packageName;
+    MRUAsset *_asset;
     NSString *_glyphState;
+    NSString *_title;
     MRUVisualStylingProvider *_stylingProvider;
+    UIImageSymbolConfiguration *_imageSymbolConfiguration;
     long long _axis;
-    CCUICAPackageView *_packageView;
+    MRUAssetView *_assetView;
     UILabel *_titleLabel;
     MRUShadowView *_shadowView;
-    struct CGSize _imageSize;
+    struct CGSize _assetSize;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) MRUShadowView *shadowView; // @synthesize shadowView=_shadowView;
 @property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
-@property(retain, nonatomic) CCUICAPackageView *packageView; // @synthesize packageView=_packageView;
+@property(retain, nonatomic) MRUAssetView *assetView; // @synthesize assetView=_assetView;
 @property(nonatomic, getter=isLabelHidden) _Bool labelHidden; // @synthesize labelHidden=_labelHidden;
-@property(nonatomic) struct CGSize imageSize; // @synthesize imageSize=_imageSize;
+@property(nonatomic) struct CGSize assetSize; // @synthesize assetSize=_assetSize;
 @property(nonatomic) long long axis; // @synthesize axis=_axis;
+@property(retain, nonatomic) UIImageSymbolConfiguration *imageSymbolConfiguration; // @synthesize imageSymbolConfiguration=_imageSymbolConfiguration;
 @property(retain, nonatomic) MRUVisualStylingProvider *stylingProvider; // @synthesize stylingProvider=_stylingProvider;
-@property(copy, nonatomic) NSString *glyphState; // @synthesize glyphState=_glyphState;
-@property(copy, nonatomic) NSString *packageName; // @synthesize packageName=_packageName;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
+@property(retain, nonatomic) NSString *glyphState; // @synthesize glyphState=_glyphState;
+@property(retain, nonatomic) MRUAsset *asset; // @synthesize asset=_asset;
 - (void)updateContentSizeCategory;
-- (void)updatePackageVisualStyling;
 - (void)updateLabelVisualStyling;
+- (void)updateAssetVisualStyling;
 - (void)visualStylingProviderDidChange:(id)arg1;
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1;
 - (unsigned long long)accessibilityTraits;
@@ -47,8 +49,7 @@ __attribute__((visibility("hidden")))
 - (void)setEnabled:(_Bool)arg1;
 - (void)setSelected:(_Bool)arg1;
 - (void)setHighlighted:(_Bool)arg1;
-@property(readonly, nonatomic) struct CGRect imageFrame;
-- (void)traitCollectionDidChange:(id)arg1;
+@property(readonly, nonatomic) struct CGRect assetFrame;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1;

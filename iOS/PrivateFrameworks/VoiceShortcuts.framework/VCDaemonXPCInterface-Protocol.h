@@ -5,13 +5,8 @@
 //
 
 #import <VoiceShortcuts/VCVoiceShortcutManagerXPCInterface-Protocol.h>
+#import <VoiceShortcuts/WFDatabaseProxyHost-Protocol.h>
 
-@class WFWorkflowCollection, WFWorkflowQuery;
-
-@protocol VCDaemonXPCInterface <VCVoiceShortcutManagerXPCInterface>
-- (void)getSortedVisibleFoldersWithCompletion:(void (^)(NSArray *, NSError *))arg1;
-- (void)getSortedWorkflowsWithQuery:(WFWorkflowQuery *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
-- (void)getSortedVisibleWorkflowsInCollection:(WFWorkflowCollection *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
-- (void)getSortedVisibleWorkflowsByNameWithCompletion:(void (^)(NSArray *, NSError *))arg1;
+@protocol VCDaemonXPCInterface <VCVoiceShortcutManagerXPCInterface, WFDatabaseProxyHost>
 @end
 

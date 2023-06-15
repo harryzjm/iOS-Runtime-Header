@@ -10,19 +10,18 @@
 @class INCallRecord, INCallRecordFilter, NSArray, NSNumber, NSString;
 
 @protocol INStartCallIntentExport <NSObject, JSExport>
-@property(nonatomic, copy) NSString *faceTimeLink;
-@property(nonatomic, copy) NSString *notificationThreadIdentifier;
-@property(nonatomic, copy) NSArray *callGroups;
-@property(nonatomic, copy) NSNumber *isGroupCall;
+@property(copy, nonatomic) NSString *faceTimeLink;
+@property(copy, nonatomic) NSString *notificationThreadIdentifier;
+@property(copy, nonatomic) NSArray *callGroups;
+@property(copy, nonatomic) NSNumber *isGroupCall;
 @property(nonatomic) long long callCapability;
-- (void)setTTYType:(long long)arg1;
-@property(nonatomic) long long ttyType;
-@property(nonatomic, copy) NSArray *contacts;
+@property(nonatomic, setter=setTTYType:) long long ttyType;
+@property(copy, nonatomic) NSArray *contacts;
 @property(nonatomic) long long preferredCallProvider;
 @property(nonatomic) long long destinationType;
 @property(nonatomic) long long audioRoute;
-@property(nonatomic, copy) INCallRecord *callRecordToCallBack;
-@property(nonatomic, copy) INCallRecordFilter *callRecordFilter;
+@property(copy, nonatomic) INCallRecord *callRecordToCallBack;
+@property(copy, nonatomic) INCallRecordFilter *callRecordFilter;
 - (id)init;
 @end
 

@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
     id _exportedObject;
 }
 
++ (id)createOneShotConnectionAndResume:(_Bool)arg1;
 - (void).cxx_destruct;
 @property(retain) id exportedObject; // @synthesize exportedObject=_exportedObject;
 @property(readonly) NSUUID *sessionID; // @synthesize sessionID=_sessionID;
@@ -47,8 +48,12 @@ __attribute__((visibility("hidden")))
 - (void)_removeObject:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)_addObject:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)notifySystemShutdownWithReason:(long long)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)generateDiscoveryToken;
+- (void)pauseOnQueue:(CDUnknownBlockType)arg1;
 - (void)pause:(CDUnknownBlockType)arg1;
+- (void)runWithConfigurationOnQueue:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)runWithConfiguration:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)activateOnQueue:(CDUnknownBlockType)arg1;
 - (void)activate:(CDUnknownBlockType)arg1;
 - (void)_createAndActivateXPCConnectionToSimulatorIfNeededWithReply:(CDUnknownBlockType)arg1;
 - (id)generateDiscoveryTokenData;

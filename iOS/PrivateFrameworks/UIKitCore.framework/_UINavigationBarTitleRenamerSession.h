@@ -6,24 +6,38 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, UINavigationItem, _UINavigationBarTitleRenamer, _UINavigationItemRenameHandler;
+@class LPLinkMetadata, NSString, NSUUID, UIView, _UINavigationBarTitleRenamer;
+@protocol _UINavigationBarTitleRenamerContentView;
 
 __attribute__((visibility("hidden")))
 @interface _UINavigationBarTitleRenamerSession : NSObject
 {
+    UIView<_UINavigationBarTitleRenamerContentView> *_renamerContentView;
     _UINavigationBarTitleRenamer *_attachedRenamer;
     NSString *_title;
-    _UINavigationItemRenameHandler *_renameHandler;
+    LPLinkMetadata *_iconMetadata;
+    id _context;
+    NSUUID *_sessionIdentifier;
 }
 
++ (_Bool)supportsBSXPCSecureCoding;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) _UINavigationItemRenameHandler *renameHandler; // @synthesize renameHandler=_renameHandler;
+@property(readonly, nonatomic) NSUUID *sessionIdentifier; // @synthesize sessionIdentifier=_sessionIdentifier;
+@property(nonatomic) __weak id context; // @synthesize context=_context;
+@property(readonly, nonatomic) LPLinkMetadata *iconMetadata; // @synthesize iconMetadata=_iconMetadata;
 @property(retain, nonatomic) NSString *title; // @synthesize title=_title;
-@property(nonatomic) __weak _UINavigationBarTitleRenamer *attachedRenamer; // @synthesize attachedRenamer=_attachedRenamer;
-@property(readonly, nonatomic) __weak UINavigationItem *navigationItem;
-- (id)_sanitizedTitleForTitle:(id)arg1;
-- (id)initWithRenameHandler:(id)arg1 suggestedTitle:(id)arg2;
-- (void)_willBeginRenamingWithTextField:(id)arg1;
+@property(readonly, nonatomic) __weak _UINavigationBarTitleRenamer *attachedRenamer; // @synthesize attachedRenamer=_attachedRenamer;
+- (id)initWithBSXPCCoder:(id)arg1;
+- (void)encodeWithBSXPCCoder:(id)arg1;
+- (void)cancelSession;
+- (void)sessionDidEnd;
+- (void)sessionDidStartInRenamer:(id)arg1;
+@property(readonly, nonatomic) UIView<_UINavigationBarTitleRenamerContentView> *renamerContentView; // @synthesize renamerContentView=_renamerContentView;
+- (id)createRenamerContentView;
+- (id)existingRenamerContentView;
+- (id)_sanitizedTitleForText:(id)arg1;
+- (id)initWithSuggestedTitle:(id)arg1;
+- (id)initWithSuggestedTitle:(id)arg1 iconMetadata:(id)arg2;
 - (void)_textFieldDidEndEditingWithText:(id)arg1;
 - (_Bool)_textFieldShouldEndEditingWithText:(id)arg1;
 - (id)_willBeginRenamingWithText:(id)arg1 selectedRange:(inout struct _NSRange *)arg2;

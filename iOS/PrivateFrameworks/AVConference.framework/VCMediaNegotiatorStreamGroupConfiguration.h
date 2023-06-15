@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableOrderedSet, NSOrderedSet;
+@class NSMutableOrderedSet, NSOrderedSet, VCMediaNegotiatorStreamGroupU1Configuration;
 
 __attribute__((visibility("hidden")))
 @interface VCMediaNegotiatorStreamGroupConfiguration : NSObject
@@ -16,11 +16,13 @@ __attribute__((visibility("hidden")))
     unsigned int _mediaSubtype;
     unsigned int _syncGroupID;
     unsigned int _cipherSuite;
+    VCMediaNegotiatorStreamGroupU1Configuration *_u1Config;
     NSMutableOrderedSet *_streamConfigs;
     NSMutableOrderedSet *_codecConfigs;
 }
 
 + (id)streamGroupConfigWithGroupID:(unsigned int)arg1 mediaType:(unsigned int)arg2 subtype:(unsigned int)arg3 syncGroupID:(unsigned int)arg4 cipherSuite:(unsigned int)arg5;
+@property(retain, nonatomic) VCMediaNegotiatorStreamGroupU1Configuration *u1Config; // @synthesize u1Config=_u1Config;
 @property(nonatomic) unsigned int syncGroupID; // @synthesize syncGroupID=_syncGroupID;
 @property(readonly, nonatomic) NSOrderedSet *codecConfigs; // @synthesize codecConfigs=_codecConfigs;
 @property(readonly, nonatomic) NSOrderedSet *streamConfigs; // @synthesize streamConfigs=_streamConfigs;

@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property _Bool shouldForceReactivation; // @synthesize shouldForceReactivation=_shouldForceReactivation;
+- (id)proxyServiceEndpointFromSource:(id)arg1 serviceIdentifier:(id)arg2 error:(id *)arg3;
 - (void)fetchProxyServiceEndpointFromSource:(id)arg1 serviceIdentifier:(id)arg2 endpointHandler:(CDUnknownBlockType)arg3 errorHandler:(CDUnknownBlockType)arg4;
 - (id)initWithHealthStore:(id)arg1 query:(id)arg2 configuration:(id)arg3 queryUUID:(id)arg4;
 

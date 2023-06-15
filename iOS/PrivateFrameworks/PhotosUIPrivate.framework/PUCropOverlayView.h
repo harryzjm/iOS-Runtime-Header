@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class NSArray, PUCropMaskView;
 
@@ -14,10 +14,10 @@ __attribute__((visibility("hidden")))
     _Bool _cropGridVisible;
     _Bool _straightenGridVisible;
     _Bool _maskedContentVisible;
+    UIView *_cropWindowView;
     NSArray *_oneThirdCropLines;
     NSArray *_oneNinthCropLines;
     NSArray *_maskViews;
-    UIView *_cropWindowView;
     PUCropMaskView *_topMask;
     PUCropMaskView *_bottomMask;
     PUCropMaskView *_leftMask;
@@ -32,10 +32,10 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) PUCropMaskView *bottomMask; // @synthesize bottomMask=_bottomMask;
 @property(retain, nonatomic) PUCropMaskView *topMask; // @synthesize topMask=_topMask;
 @property(nonatomic) struct CGRect cropRectInLocalCoordinateSpace; // @synthesize cropRectInLocalCoordinateSpace=_cropRectInLocalCoordinateSpace;
-@property(retain, nonatomic) UIView *cropWindowView; // @synthesize cropWindowView=_cropWindowView;
 @property(retain, nonatomic) NSArray *maskViews; // @synthesize maskViews=_maskViews;
 @property(retain, nonatomic) NSArray *oneNinthCropLines; // @synthesize oneNinthCropLines=_oneNinthCropLines;
 @property(retain, nonatomic) NSArray *oneThirdCropLines; // @synthesize oneThirdCropLines=_oneThirdCropLines;
+@property(retain, nonatomic) UIView *cropWindowView; // @synthesize cropWindowView=_cropWindowView;
 @property(nonatomic, getter=isMaskedContentVisible) _Bool maskedContentVisible; // @synthesize maskedContentVisible=_maskedContentVisible;
 @property(nonatomic, getter=isStraightenGridVisible) _Bool straightenGridVisible; // @synthesize straightenGridVisible=_straightenGridVisible;
 @property(nonatomic, getter=isCropGridVisible) _Bool cropGridVisible; // @synthesize cropGridVisible=_cropGridVisible;

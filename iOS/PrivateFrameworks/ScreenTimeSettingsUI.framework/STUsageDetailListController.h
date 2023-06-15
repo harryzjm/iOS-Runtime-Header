@@ -22,6 +22,11 @@ __attribute__((visibility("hidden")))
     NSLayoutConstraint *_datePickerBottomConstraint;
 }
 
++ (void)_setSelectedDeviceIdentifier:(id)arg1 coordinator:(id)arg2;
++ (id)_getUIActionForDevice:(id)arg1 deviceIndentifier:(id)arg2 coordinator:(id)arg3 weakSelf:(id)arg4;
++ (id)_getDevicesDropDownMenuWithCoordinator:(id)arg1 viewController:(id)arg2;
++ (void)_setSelectedUsageReportType:(unsigned long long)arg1 user:(id)arg2;
++ (void)selectedUsageReportDidChangeFrom:(id)arg1 to:(id)arg2 datePickerBar:(id)arg3 coordinator:(id)arg4;
 - (void).cxx_destruct;
 @property(retain) NSLayoutConstraint *datePickerBottomConstraint; // @synthesize datePickerBottomConstraint=_datePickerBottomConstraint;
 @property(retain) NSLayoutConstraint *datePickerTopConstraint; // @synthesize datePickerTopConstraint=_datePickerTopConstraint;
@@ -37,13 +42,6 @@ __attribute__((visibility("hidden")))
 - (void)_reportCoreAnalyticsEventWithUser:(id)arg1 currentDate:(id)arg2 calendar:(id)arg3;
 @property(getter=isDatePickerHidden) _Bool datePickerHidden;
 - (void)scrollViewDidScroll:(id)arg1;
-- (void)_rightDatePickerBarButtonTapped:(id)arg1;
-- (void)_leftDatePickerBarButtonTapped:(id)arg1;
-- (void)_setSelectedDeviceIdentifier:(id)arg1;
-- (id)_getUIActionForDevice:(id)arg1 deviceIndentifier:(id)arg2 weakSelf:(id)arg3;
-- (id)_getDevicesDropDownMenu;
-- (void)_setSelectedUsageReportType:(unsigned long long)arg1;
-- (void)_selectedUsageReportDidChangeFrom:(id)arg1 to:(id)arg2;
 - (void)_devicesDidChangeFrom:(id)arg1 to:(id)arg2;
 - (void)_hasUsageDataDidChange:(_Bool)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;

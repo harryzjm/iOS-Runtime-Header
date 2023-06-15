@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     struct RetainPtr<UIEvent> _currentHoverEvent;
     struct RetainPtr<UITouch> _currentTouch;
     _Bool _touching;
+    _Bool _cancelledOrExited;
     unique_ptr_8861e41c _lastEvent;
     optional_dc4c3092 _lastLocation;
     struct optional<long> _pressedButtonMask;
@@ -30,7 +31,7 @@ __attribute__((visibility("hidden")))
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
-- (unique_ptr_8861e41c)createMouseEventWithType:(int)arg1 wasCancelled:(_Bool)arg2;
+- (unique_ptr_8861e41c)createMouseEventWithType:(BOOL)arg1 wasCancelled:(_Bool)arg2;
 - (void)reset;
 - (id)mouseTouch;
 - (optional_dc4c3092)lastMouseLocation;

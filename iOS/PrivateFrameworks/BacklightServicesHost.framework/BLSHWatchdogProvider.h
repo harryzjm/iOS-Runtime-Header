@@ -6,23 +6,46 @@
 
 #import <objc/NSObject.h>
 
+@class BLSHTailspinLogWriter, BLSHWatchdogAbortParameters, BSAbsoluteMachTimer;
+@protocol BSInvalidatable;
+
 __attribute__((visibility("hidden")))
 @interface BLSHWatchdogProvider : NSObject
 {
+    BSAbsoluteMachTimer *_lock_fireRetryTimer;
+    BLSHWatchdogAbortParameters *_lock_waitingAbortParams;
+    _Bool _lock_waitingForTailspin;
+    _Bool _lock_startedTailspin;
+    _Bool _lock_waitingForWatchdogCompletion;
+    BLSHTailspinLogWriter *_lock_tailspinWriter;
+    id <BSInvalidatable> _lock_forceOverdueAbortTimer;
+    struct os_unfair_lock_s _lock;
     _Bool _watchdogEnabled;
 }
 
-+ (void)fileRadarForWatchdog:(id)arg1 buildVersion:(id)arg2 debugLogsEnabled:(_Bool)arg3;
-+ (void)showWatchdogDidFireAlert:(id)arg1 buildVersion:(id)arg2 debugLogsEnabled:(_Bool)arg3;
++ (void)showWatchdogDidFireAlert:(id)arg1;
 + (void)resetWatchdogDidFire;
 + (_Bool)checkForWatchdogDidFire:(_Bool)arg1;
-+ (void)markWatchdogDidFire;
++ (void)markWatchdogDidFire:(id)arg1 abortReason:(id)arg2;
++ (_Bool)ignoreWatchdogAborts;
++ (void)setIgnoreWatchdogAborts:(_Bool)arg1;
+- (void).cxx_destruct;
 @property(getter=isWatchdogEnabled) _Bool watchdogEnabled; // @synthesize watchdogEnabled=_watchdogEnabled;
+- (void)_startWritingTailspin;
+- (void)setWaitingwaitingPastFireForCompletionAndTailspin:(id)arg1;
+- (id)waitingPastFireForCompletionAndTailspinAbortParams;
+- (void)_clearIsWaitingForWatchdogCompletion;
+- (_Bool)isWaitingwaitingPastFireForCompletionAndTailspin;
 - (void)didDetectSignificantUserInteraction;
-- (void)clearWatchdogWithExplanation:(id)arg1 timeout:(double)arg2 elapsedTime:(double)arg3;
+- (void)clearWatchdogWithExplanation:(id)arg1 reason:(unsigned long long)arg2 timeout:(double)arg3 elapsedTime:(double)arg4;
+- (void)_giveUpWaitingForWatchdogCompletionAbortWhileWaitingPastFire:(id)arg1;
+- (void)_checkForReadyToAbortAfterWaitingPastFire;
+- (void)_abortForWatchdogFire:(id)arg1;
+- (void)_fireWatchdogWithTimer:(id)arg1 delegate:(id)arg2 timeout:(double)arg3 elapsedTime:(double)arg4 abortContext:(id)arg5 explanation:(id)arg6 remainingRetries:(unsigned long long)arg7;
 - (void)fireWatchdogWithTimer:(id)arg1 delegate:(id)arg2 timeout:(double)arg3 elapsedTime:(double)arg4;
 - (id)scheduleWatchdogWithDelegate:(id)arg1 explanation:(id)arg2 timeout:(double)arg3;
 - (void)registerHandlersForService:(id)arg1;
+- (void)dealloc;
 - (id)init;
 
 @end

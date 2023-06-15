@@ -9,6 +9,7 @@
 @class MSVArtworkServiceRequest;
 
 @protocol MSVArtworkServiceInterface <NSObject>
+- (void)processArtworkColorAnalysisRequest:(MSVArtworkServiceRequest *)arg1 withReply:(void (^)(MSVArtworkColorAnalysis *, NSError *))arg2;
 - (void)processArtworkRequest:(MSVArtworkServiceRequest *)arg1 completionHandler:(void (^)(NSError *))arg2;
 @end
 

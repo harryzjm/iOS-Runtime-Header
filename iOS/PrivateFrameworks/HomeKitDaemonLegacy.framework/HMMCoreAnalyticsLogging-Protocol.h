@@ -4,17 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HomeKitDaemonLegacy/NSObject-Protocol.h>
+
 @class NSDictionary, NSString, NSUUID;
 
-@protocol HMMCoreAnalyticsLogging
-@property(readonly, nonatomic) NSDictionary *serializedEvent;
-@property(readonly, nonatomic) NSString *eventName;
+@protocol HMMCoreAnalyticsLogging <NSObject>
+@property(readonly, nonatomic) unsigned long long coreAnalyticsEventOptions;
+@property(readonly, nonatomic) NSDictionary *coreAnalyticsEventDictionary;
+@property(readonly, nonatomic) NSString *coreAnalyticsEventName;
 
 @optional
-+ (_Bool)submitEventWithDurationInMilliseconds;
 + (_Bool)submitEventWithHistogrammedAggregateHomeDataCommonDimensions;
-@property(readonly, nonatomic) _Bool logEventWithAppendedCommonDimensions;
 @property(readonly, nonatomic) NSString *accessoryIdentifier;
+@property(readonly, nonatomic) NSUUID *homeUUID;
 - (NSUUID *)submitEventWithHistogrammedHomeDataCommonDimensionsForSpecifiedHome;
 @end
 

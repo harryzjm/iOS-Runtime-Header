@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDictionary, NSObject, NSString;
+@class AVAudioSession, NSDictionary, NSObject, NSString, VCAudioIOControllerClient;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -12,6 +12,8 @@ __attribute__((visibility("hidden")))
 {
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     _Bool _running;
+    VCAudioIOControllerClient *_client;
+    AVAudioSession *_avAudioSession;
     struct tagVCSystemAudioCaptureControllerConfig _configuration;
     _Bool _useScreenCaptureKitForAudio;
 }
@@ -22,7 +24,7 @@ __attribute__((visibility("hidden")))
 + (id)captureServerConfigForAudioConfig:(struct tagVCSystemAudioCaptureControllerConfig *)arg1 forClient:(id)arg2;
 + (_Bool)isValidConfiguration:(const struct tagVCSystemAudioCaptureControllerConfig *)arg1;
 - (void)didUpdateBasebandCodec:(const struct _VCRemoteCodecInfo *)arg1;
-- (void)updateClient:(id)arg1 direction:(unsigned char)arg2;
+- (void)updateClient:(id)arg1 settings:(const struct tagVCAudioIOControllerClientSettings *)arg2;
 - (void)stopClient:(id)arg1;
 - (void)startClient:(id)arg1;
 - (id)dispatchQueueNameWithConfig:(const struct tagVCSystemAudioCaptureControllerConfig *)arg1;

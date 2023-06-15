@@ -26,6 +26,7 @@
 - (_Bool)fc_isNewsTagURL;
 - (_Bool)fc_isFeldsparInterstitialPreviewURL;
 - (_Bool)_isFeldsparOldArticleURL;
+- (_Bool)fc_isStocksURL;
 - (_Bool)fc_isNewsURL;
 - (id)fc_NewsIssueID;
 - (id)fc_NewsArticleIDs;

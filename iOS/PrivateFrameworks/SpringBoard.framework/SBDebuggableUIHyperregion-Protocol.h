@@ -6,9 +6,7 @@
 
 #import <SpringBoard/_UIHyperregion-Protocol.h>
 
-@class UIView;
-
 @protocol SBDebuggableUIHyperregion <_UIHyperregion>
-- (UIView *)sb_debugView;
+@property(readonly, nonatomic) struct CGRect sb_debugFrame;
 @end
 

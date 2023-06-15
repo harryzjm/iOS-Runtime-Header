@@ -6,15 +6,13 @@
 
 #import <MediaPlaybackCore/NSObject-Protocol.h>
 
-@class MPAVItem, MPCQueueController, MPPlaybackContext, NSString;
+@class MPCQueueController, NSString;
 
 @protocol MPCQueueControllerDelegate <NSObject>
+- (void)queueControllerDidReachUnexpectedEndOfQueue:(MPCQueueController *)arg1;
+- (void)queueController:(MPCQueueController *)arg1 didDetectMismatchForActiveContentItemID:(NSString *)arg2 targetContentItemID:(NSString *)arg3;
 - (void)queueController:(MPCQueueController *)arg1 didIncrementVersionForSegment:(NSString *)arg2;
-- (void)queueController:(MPCQueueController *)arg1 didChangeActionAtQueueEnd:(long long)arg2;
-- (void)queueController:(MPCQueueController *)arg1 didChangeShuffleType:(long long)arg2;
-- (void)queueController:(MPCQueueController *)arg1 didChangeRepeatType:(long long)arg2;
-- (void)queueController:(MPCQueueController *)arg1 didChangeContentsWithReplacementPlaybackContext:(MPPlaybackContext *)arg2;
-- (void)queueController:(MPCQueueController *)arg1 failedToLoadItem:(MPAVItem *)arg2;
+- (void)queueController:(MPCQueueController *)arg1 didChangeTargetContentItemID:(NSString *)arg2;
 - (void)queueControllerDidChangeContents:(MPCQueueController *)arg1;
 @end
 

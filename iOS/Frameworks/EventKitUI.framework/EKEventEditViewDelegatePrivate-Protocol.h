@@ -5,10 +5,8 @@
 //
 
 #import <EventKitUI/EKEventEditViewDelegate-Protocol.h>
+#import <EventKitUI/EKUIAppReviewPrompter-Protocol.h>
 
-@class EKEventEditViewController, EKUIPasteboardManager;
-
-@protocol EKEventEditViewDelegatePrivate <EKEventEditViewDelegate>
-- (EKUIPasteboardManager *)pasteboardManagerForEventEditViewController:(EKEventEditViewController *)arg1;
+@protocol EKEventEditViewDelegatePrivate <EKEventEditViewDelegate, EKUIAppReviewPrompter>
 @end
 

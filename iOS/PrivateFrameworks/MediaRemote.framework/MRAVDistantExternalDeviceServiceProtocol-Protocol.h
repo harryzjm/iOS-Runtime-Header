@@ -6,7 +6,7 @@
 
 #import <MediaRemote/NSObject-Protocol.h>
 
-@class MRAVRoutingDiscoverySessionConfiguration, NSArray, NSData, NSDictionary, NSError, NSString;
+@class MRAVRoutingDiscoverySessionConfiguration, MRRequestDetails, NSArray, NSData, NSDictionary, NSError, NSString;
 
 @protocol MRAVDistantExternalDeviceServiceProtocol <NSObject>
 @property(copy, nonatomic) NSArray *subscribedPlayerPaths;
@@ -16,19 +16,18 @@
 - (void)sendCustomData:(NSData *)arg1 withName:(NSString *)arg2;
 - (void)createHostedEndpointWithOutputDeviceUIDs:(NSArray *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 - (void)modifyByAddingDeviceUIDs:(NSArray *)arg1 removingDeviceUIDs:(NSArray *)arg2 settingDeviceUIDs:(NSArray *)arg3 addingClusterDeviceUIDs:(NSArray *)arg4 removingClusterDeviceUIDs:(NSArray *)arg5 settingClusterDeviceUIDs:(NSArray *)arg6 completion:(void (^)(NSError *))arg7;
+- (void)setConversationDetectionEnabled:(_Bool)arg1 outputDeviceUID:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)setListeningMode:(NSString *)arg1 outputDeviceUID:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
-- (void)outputDeviceVolumeControlCapabilities:(NSString *)arg1 withCompletion:(void (^)(unsigned int, NSError *))arg2;
-- (void)setOutputDeviceVolume:(float)arg1 forOutputDevice:(NSString *)arg2 withCompletion:(void (^)(NSError *))arg3;
-- (void)outputDeviceVolume:(NSString *)arg1 withCompletion:(void (^)(float, NSError *))arg2;
-- (void)unpair;
+- (void)muteOutputDeviceVolume:(_Bool)arg1 outputDeviceUID:(NSString *)arg2 details:(MRRequestDetails *)arg3 completion:(void (^)(NSError *))arg4;
+- (void)adjustOutputDeviceVolume:(long long)arg1 outputDeviceUID:(NSString *)arg2 details:(MRRequestDetails *)arg3 completion:(void (^)(NSError *))arg4;
+- (void)setOutputDeviceVolume:(float)arg1 outputDeviceUID:(NSString *)arg2 details:(MRRequestDetails *)arg3 completion:(void (^)(NSError *))arg4;
 - (void)disconnect:(NSError *)arg1;
-- (void)connectWithOptions:(unsigned int)arg1 userInfo:(NSDictionary *)arg2;
-- (void)getConnectionStateWithCompletion:(void (^)(unsigned int, NSError *))arg1;
+- (void)connectWithOptions:(unsigned int)arg1 userInfo:(NSDictionary *)arg2 completion:(void (^)(NSError *))arg3;
+- (void)getDeviceInfoWithCompletion:(void (^)(MRDeviceInfo *))arg1;
+- (void)getExternalOutputContextWithCompletion:(void (^)(MRExternalOutputContextDataSource *))arg1;
 - (void)getCustomOriginDataWithCompletion:(void (^)(NSData *, NSError *))arg1;
-- (void)getExternalDeviceIsPairedWithCompletion:(void (^)(_Bool, NSError *))arg1;
-- (void)getExternalDeviceMetadataWithCompletion:(void (^)(MRAVDistantExternalDeviceMetadata *, NSError *))arg1;
+- (void)getPersonalOutputDevices:(void (^)(NSArray *))arg1;
 - (void)setNotifications:(unsigned long long)arg1;
 - (void)setRegisteredCallbacks:(unsigned long long)arg1;
-- (void)getPersonalOutputDevices:(void (^)(NSArray *))arg1;
 @end
 

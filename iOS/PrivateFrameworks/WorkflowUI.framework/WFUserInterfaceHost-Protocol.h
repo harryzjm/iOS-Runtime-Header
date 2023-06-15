@@ -6,28 +6,21 @@
 
 #import <WorkflowUI/NSObject-Protocol.h>
 
-@class INAppDescriptor, INIntent, INInteraction, LNAction, LNActionMetadata, LNActionParameterMetadata, LNConfirmationActionName, LNSuccessResult, LNViewSnippet, NSArray, NSDictionary, NSString, NSURL, NSUserActivity, NSXPCConnection, WFAlert, WFContentCollection, WFDialogTransformer, WFSmartPromptConfiguration, WFWorkflowAuthorizationConfiguration;
+@class INAppDescriptor, INIntent, INInteraction, LNActionMetadata, LNActionParameterMetadata, LNConfirmationActionName, LNSuccessResult, LNViewSnippet, NSArray, NSDictionary, NSNumber, NSString, NSURL, WFAlert, WFContentCollection, WFDialogTransformer, WFSiriActionRequest, WFSmartPromptConfiguration, WFWorkflowAuthorizationConfiguration;
 
 @protocol WFUserInterfaceHost <NSObject>
+@property(readonly, nonatomic) NSString *userInterfaceType;
 - (_Bool)isRunningInSiri;
 - (void)presentAlert:(WFAlert *)arg1;
-@property(nonatomic, readonly) NSString *userInterfaceType;
 
 @optional
-- (void)punchOutRequestedWithCompletionHandler:(void (^)(_Bool))arg1;
-- (_Bool)executeLinkAction:(LNAction *)arg1 inApplication:(NSString *)arg2 withNameOverride:(NSString *)arg3 completionHandler:(void (^)(LNActionOutput *, NSError *))arg4;
-- (_Bool)executeLinkAction:(LNAction *)arg1 inApplication:(NSString *)arg2 completionHandler:(void (^)(LNActionOutput *, NSError *))arg3;
-- (_Bool)openApp:(NSString *)arg1 completionHandler:(void (^)(_Bool, NSError *))arg2;
+@property(readonly, nonatomic) long long executionContext;
+@property(readonly, copy, nonatomic) NSArray *airPlayRouteIDs;
+- (void)willBeginExecutingShortcutStep:(NSNumber *)arg1;
 - (void)configureIntent:(INIntent *)arg1;
-- (_Bool)executeIntent:(INIntent *)arg1 completionHandler:(void (^)(INInteraction *, NSError *))arg2;
-- (_Bool)openUserActivity:(NSUserActivity *)arg1 bundleIdentifier:(NSString *)arg2 completionHandler:(void (^)(_Bool, NSError *))arg3;
-- (_Bool)openInteractionInApp:(INInteraction *)arg1 completionHandler:(void (^)(_Bool, NSError *))arg2;
-- (_Bool)speakText:(NSString *)arg1 completionHandler:(void (^)(_Bool, NSError *))arg2;
-@property(nonatomic, readonly) long long executionContext;
-@property(nonatomic, readonly) NSArray *airPlayRouteIDs;
-- (NSXPCConnection *)daemonConnection;
+- (_Bool)performSiriRequest:(WFSiriActionRequest *)arg1 completionHandler:(void (^)(WFSiriActionResponse *))arg2;
 - (void)resolveDescriptor:(INAppDescriptor *)arg1 completionHandler:(void (^)(INAppDescriptor *))arg2;
-- (_Bool)openURL:(NSURL *)arg1 withBundleIdentifier:(NSString *)arg2 completionHandler:(void (^)(_Bool))arg3;
+- (void)openURL:(NSURL *)arg1 withBundleIdentifier:(NSString *)arg2 completionHandler:(void (^)(_Bool, NSError *))arg3;
 - (WFDialogTransformer *)dialogTransformer;
 - (_Bool)shouldNotHandoff;
 - (void)requestFileAccessForURLs:(NSArray *)arg1 workflowName:(NSString *)arg2 workflowID:(NSString *)arg3 completionHandler:(void (^)(_Bool, NSError *))arg4;
@@ -39,10 +32,11 @@
 - (void)getPreferredSizeForLinkViewSnippetWithCompletion:(void (^)(NSValue *))arg1;
 - (void)getEnvironmentForLinkViewSnippetWithCompletion:(void (^)(LNSnippetEnvironment *))arg1;
 - (void)showLinkResult:(LNSuccessResult *)arg1 completionHandler:(void (^)(unsigned long long))arg2;
-- (void)showLinkActionConfirmationWithActionMetadata:(LNActionMetadata *)arg1 dialogString:(NSString *)arg2 viewSnippet:(LNViewSnippet *)arg3 confirmationActionName:(LNConfirmationActionName *)arg4 completionHandler:(void (^)(unsigned long long))arg5;
+- (void)showLinkActionConfirmationWithActionMetadata:(LNActionMetadata *)arg1 showPrompt:(_Bool)arg2 dialogString:(NSString *)arg3 viewSnippet:(LNViewSnippet *)arg4 confirmationActionName:(LNConfirmationActionName *)arg5 completionHandler:(void (^)(unsigned long long))arg6;
 - (void)showLinkParameterConfirmationWithActionMetadata:(LNActionParameterMetadata *)arg1 dialogString:(NSString *)arg2 viewSnippet:(LNViewSnippet *)arg3 completionHandler:(void (^)(unsigned long long))arg4;
 - (void)showHandleInteraction:(INInteraction *)arg1 prompt:(NSString *)arg2 completionHandler:(void (^)(unsigned long long))arg3;
 - (void)showConfirmInteraction:(INInteraction *)arg1 prompt:(NSString *)arg2 requireAuthentication:(_Bool)arg3 completionHandler:(void (^)(unsigned long long))arg4;
+- (_Bool)requestedInHomeResident;
 - (_Bool)requestedFromAnotherDevice;
 @end
 

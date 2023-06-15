@@ -9,6 +9,6 @@
 @class NSProgress;
 
 @protocol NSProgressReporting <NSObject>
-@property(nonatomic, readonly) NSProgress *progress;
+@property(readonly) NSProgress *progress;
 @end
 

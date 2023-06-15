@@ -25,7 +25,7 @@
     MISSING_TYPE *metricsPreference;
     MISSING_TYPE *progressPreference;
     MISSING_TYPE *activityMoveRing;
-    MISSING_TYPE *watchConnectionState;
+    MISSING_TYPE *workoutDeviceConnection;
 }
 
 @end

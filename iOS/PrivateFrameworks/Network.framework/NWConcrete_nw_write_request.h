@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSString, NWConcrete_nw_connection;
-@protocol OS_dispatch_data, OS_nw_content_context;
+@protocol OS_dispatch_data, OS_nw_content_context, OS_nw_fd_wrapper;
 
 __attribute__((visibility("hidden")))
 @interface NWConcrete_nw_write_request : NSObject
@@ -15,10 +15,15 @@ __attribute__((visibility("hidden")))
     NWConcrete_nw_write_request *next;
     NWConcrete_nw_write_request *tail;
     CDUnknownBlockType completion;
+    CDUnknownBlockType file_handler;
     NWConcrete_nw_connection *connection;
     unsigned int qos_class;
     NSObject<OS_dispatch_data> *data;
     NSObject<OS_nw_content_context> *context;
+    NSObject<OS_nw_fd_wrapper> *fd;
+    void *progress_timer_source;
+    unsigned int progress_msecs;
+    unsigned long long num_bytes;
     NSObject<OS_nw_content_context> *original_message;
     unsigned long long consumed_bytes;
     double relative_priority;
@@ -26,6 +31,8 @@ __attribute__((visibility("hidden")))
     unsigned int reported:1;
     unsigned int idempotent:1;
     unsigned int write_close:1;
+    unsigned int file_finished:1;
+    unsigned int file_progress_started:1;
 }
 
 - (void).cxx_destruct;

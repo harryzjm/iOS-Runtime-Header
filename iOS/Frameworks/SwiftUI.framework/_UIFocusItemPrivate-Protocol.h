@@ -9,7 +9,7 @@
 @protocol _UIFocusItemPrivate <UIFocusItem>
 
 @optional
+@property(readonly, nonatomic) long long _focusItemDeferralMode;
 - (long long)_focusedSound;
-@property(nonatomic, readonly) long long _focusItemDeferralMode;
 @end
 

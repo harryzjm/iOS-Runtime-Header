@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)init;
+- (void)textSelectionDidChangeForImageAnalysisInteraction:(id)arg1;
 - (void)imageAnalysisInteraction:(id)arg1 highlightSelectedItemsValueDidChange:(_Bool)arg2;
 - (void)imageAnalysisInteraction:(id)arg1 liveTextButtonDidChangeToVisible:(_Bool)arg2;
 - (id)presentingViewControllerForImageAnalysisInteraction:(id)arg1;

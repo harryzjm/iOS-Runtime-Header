@@ -10,7 +10,6 @@
 
 @protocol PXAudioSessionState <NSObject>
 @property(readonly, nonatomic) float targetLoudnessInLKFS;
-@property(readonly, nonatomic) _Bool isAtEnd;
 @property(readonly, nonatomic) _Bool isReadyToPlay;
 @property(readonly, nonatomic) long long status;
 @property(readonly, nonatomic) NSError *error;

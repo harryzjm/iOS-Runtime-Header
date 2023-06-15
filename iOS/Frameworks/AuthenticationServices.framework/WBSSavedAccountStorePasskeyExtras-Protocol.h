@@ -7,7 +7,8 @@
 @class NSArray, NSData, NSString, WBSPair, WBSPublicKeyCredentialIdentifier;
 
 @protocol WBSSavedAccountStorePasskeyExtras
-+ (NSArray *)allPasskeysData;
++ (NSArray *)recentlyDeletedPasskeysData;
++ (NSArray *)passkeysData;
 + (NSString *)importPasskeyCredential:(WBSPair *)arg1;
 + (WBSPair *)exportPasskeyCredentialWithID:(NSString *)arg1;
 + (void)deletePasskeyWithIdentifier:(WBSPublicKeyCredentialIdentifier *)arg1;

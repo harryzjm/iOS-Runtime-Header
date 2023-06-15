@@ -12,9 +12,11 @@
 {
     MISSING_TYPE *wakeIdentifier;
     MISSING_TYPE *identity;
+    MISSING_TYPE *hostIdentifier;
     MISSING_TYPE *cost;
     MISSING_TYPE *reason;
     MISSING_TYPE *remainingBudget;
+    MISSING_TYPE *executionTime;
 }
 
 - (id)copyWithZone:(void *)arg1;

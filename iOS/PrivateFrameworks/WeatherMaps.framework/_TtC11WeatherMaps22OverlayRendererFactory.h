@@ -11,7 +11,7 @@
 @interface _TtC11WeatherMaps22OverlayRendererFactory : _TtCs12_SwiftObject
 {
     MISSING_TYPE *overlayRenderContextFactory;
-    MISSING_TYPE *tileResourcesManager;
+    MISSING_TYPE *tileLoaderFactory;
 }
 
 @end

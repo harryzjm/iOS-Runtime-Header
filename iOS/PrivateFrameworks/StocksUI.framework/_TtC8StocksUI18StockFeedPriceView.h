@@ -4,14 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
 @interface _TtC8StocksUI18StockFeedPriceView : UIView
 {
-    MISSING_TYPE *addStockButton;
     MISSING_TYPE *quoteSummaryView;
     MISSING_TYPE *exchangeLabel;
 }

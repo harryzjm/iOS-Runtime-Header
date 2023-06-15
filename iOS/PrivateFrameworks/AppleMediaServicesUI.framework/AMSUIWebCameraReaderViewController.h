@@ -46,6 +46,7 @@ __attribute__((visibility("hidden")))
 - (id)_outputForCreditCardReaderObjects:(id)arg1;
 - (void)_setCameraToggleButton;
 - (void)_setRedeemButton;
+- (void)_setCancelButton;
 - (void)_setupCameraToggle;
 - (void)_setupNavigationModel;
 - (void)_commitNavigationBarModel;
@@ -55,7 +56,6 @@ __attribute__((visibility("hidden")))
 - (void)_setupInfoView;
 - (void)_setupPage;
 - (void)_setChild:(id)arg1;
-- (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewWillLayoutSubviews;
 - (void)loadView;

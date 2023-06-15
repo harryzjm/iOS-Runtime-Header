@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
 {
     NSArray *audioTracks;
     AVAudioMix *audioMix;
-    NSMutableDictionary *audioVolumeCurvesForTracks;
+    NSMutableDictionary *audioCurvesForTracks;
     NSMutableDictionary *audioTimePitchAlgorithmsForTracks;
     NSMutableDictionary *audioTapProcessorsForTracks;
     AVAudioOutputSettings *audioOutputSettings;

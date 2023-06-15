@@ -7,6 +7,7 @@
 #import <UIKit/UIColor.h>
 
 @interface UIColor (MobileSafariExtras)
++ (id)safari_labelColorFromNumber:(id)arg1;
 + (id)sf_colorNamed:(id)arg1;
 + (id)sf_alternateSecondaryLabelColor;
 + (id)sf_alternateLabelColor;

@@ -11,6 +11,6 @@
 - (_Bool)ef_matchesNothing;
 - (_Bool)ef_matchesEverything;
 - (id)ef_publicDescription;
-- (id)predicateNodeFromPropertyMapper:(id)arg1;
+- (id)predicateNodeFromPropertyMapper:(id)arg1 addingTablesUsed:(id)arg2;
 @end
 

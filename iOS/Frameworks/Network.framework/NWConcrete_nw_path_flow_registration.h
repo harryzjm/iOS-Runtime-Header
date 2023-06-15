@@ -7,11 +7,14 @@
 #import <objc/NSObject.h>
 
 @class NSString, NWConcrete_nw_path_evaluator;
+@protocol OS_nw_array;
 
 __attribute__((visibility("hidden")))
 @interface NWConcrete_nw_path_flow_registration : NSObject
 {
     NWConcrete_nw_path_evaluator *parent_evaluator;
+    NSObject<OS_nw_array> *subflow_registrations;
+    NSObject<OS_nw_array> *override_extra_interface_options;
     unsigned char registration_id[16];
     unsigned char nexus_agent[16];
     struct necp_all_stats *flow_stats_area;
@@ -32,6 +35,7 @@ __attribute__((visibility("hidden")))
     unsigned int override_uses_wifi:1;
     unsigned int override_uses_cellular:1;
     unsigned int override_reason:1;
+    unsigned int specific_use_only:1;
 }
 
 - (void).cxx_destruct;

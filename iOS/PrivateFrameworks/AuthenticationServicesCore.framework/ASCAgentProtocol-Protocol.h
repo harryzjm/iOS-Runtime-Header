@@ -9,10 +9,17 @@
 @class ASCCredentialRequestContext, NSString, NSURL;
 
 @protocol ASCAgentProtocol <NSObject>
+- (void)openVerificationCodeAppSettingsWithCompletionHandler:(void (^)(NSError *))arg1;
+- (void)openCredentialProviderAppSettingsWithCompletionHandler:(void (^)(NSError *))arg1;
+- (void)getPasskeysDataForRelyingParty:(NSString *)arg1 withCompletionHandler:(void (^)(NSArray *))arg2;
+- (void)getCanCurrentProcessAccessPasskeysForRelyingParty:(NSString *)arg1 withCompletionHandler:(void (^)(_Bool))arg2;
+- (void)browserPasskeysForRelyingParty:(NSString *)arg1 completionHandler:(void (^)(NSArray *))arg2;
 - (void)openCABLEURL:(NSURL *)arg1 fromSourceApplication:(NSString *)arg2 withCompletionHandler:(void (^)(NSError *))arg3;
+- (void)getArePasskeysDisallowedForRelyingParty:(NSString *)arg1 withCompletionHandler:(void (^)(_Bool))arg2;
 - (void)getShouldUseAlternateCredentialStoreWithCompletionHandler:(void (^)(_Bool))arg1;
 - (void)clearAllPlatformPublicKeyCredentialsWithCompletionHandler:(void (^)(void))arg1;
 - (void)cancelCurrentRequest;
+- (void)performSilentAuthorizationRequestsForContext:(ASCCredentialRequestContext *)arg1 withCompletionHandler:(void (^)(id <ASCCredentialProtocol>, NSError *))arg2;
 - (void)performAuthorizationRequestsForContext:(ASCCredentialRequestContext *)arg1 withCompletionHandler:(void (^)(id <ASCCredentialProtocol>, NSError *))arg2;
 @end
 

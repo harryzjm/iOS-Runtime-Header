@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *_navigationBarViewModel;
     MISSING_TYPE *_titleOpacity;
+    MISSING_TYPE *_navBarOpacity;
 }
 
 @end

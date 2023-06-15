@@ -8,7 +8,6 @@
 
 @class _PASSqliteStatement;
 
-__attribute__((visibility("hidden")))
 @interface GDLazyGraphTripleRowCursor : NSObject
 {
     char _colMap[9];

@@ -6,11 +6,13 @@
 
 #import <SearchUI/NSObject-Protocol.h>
 
-@class NSString, SFCollectionCardSection, SFResultSection;
+@class NSString, SFResultSection, SearchUISectionModel;
 
 @protocol SearchUITableHeaderViewDelegate <NSObject>
 @property(readonly) NSString *queryString;
-- (void)toggleExpansionForCollectionCardSection:(SFCollectionCardSection *)arg1;
+- (void)toggleExpansionForSectionModel:(SearchUISectionModel *)arg1;
+
+@optional
 - (void)toggleExpansionForSection:(SFResultSection *)arg1;
 @end
 

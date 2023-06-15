@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, VCAudioIO, VCAudioPowerSpectrumSource;
+@class NSString, VCAudioCaptionsCoordinator, VCAudioIO, VCAudioPowerSpectrumSource;
 
 __attribute__((visibility("hidden")))
 @interface VCAudioStreamGroupCommon
@@ -24,11 +24,14 @@ __attribute__((visibility("hidden")))
     unsigned long long _spatialAudioSourceID;
     _Bool _isMuted;
     long long _powerSpectrumStreamToken;
+    long long _parentStreamGroupToken;
     unsigned int _streamGroupID;
     NSString *_participantUUID;
     unsigned char _direction;
     unsigned int _audioChannelIndex;
     unsigned int _maxChannelCount;
+    _Bool _isMediaPriorityEnabled;
+    _Bool _isVoiceActivityEnabled;
     void *_context;
     CDUnknownFunctionPointerType _callback;
     VCAudioPowerSpectrumSource *_audioPowerSpectrumSource;
@@ -36,15 +39,18 @@ __attribute__((visibility("hidden")))
     unsigned int _processedFramesCount;
     struct opaqueCMSimpleQueue *_syncDestinationChangeEventQueue;
     struct tagVCMemoryPool *_syncDestinationChangeEventPool;
+    VCAudioCaptionsCoordinator *_captionsCoordinator;
 }
 
 + (_Bool)isSupportedDirection:(unsigned char)arg1;
+@property(nonatomic) void *context; // @synthesize context=_context;
+@property(nonatomic) CDUnknownFunctionPointerType callback; // @synthesize callback=_callback;
 @property unsigned int audioChannelIndex; // @synthesize audioChannelIndex=_audioChannelIndex;
 @property(readonly) VCAudioIO *audioIO; // @synthesize audioIO=_audioIO;
 @property(readonly, nonatomic) int deviceRole; // @synthesize deviceRole=_deviceRole;
 @property(nonatomic, setter=setMuted:) _Bool isMuted; // @synthesize isMuted=_isMuted;
 - (void)cleanupSyncDestinations;
-- (void)didServerDie;
+- (void)serverDidDie;
 - (void)didUpdateBasebandCodec:(const struct _VCRemoteCodecInfo *)arg1;
 - (void)sendAudioPowerSpectrumSourceRegistration:(_Bool)arg1;
 - (void)audioPowerSpectrumSinkDidUnregister;
@@ -59,6 +65,7 @@ __attribute__((visibility("hidden")))
 - (id)getAudioDumpName;
 - (id)stopCapture;
 - (id)startCapture;
+- (void)updateVoiceActivityEnabled:(_Bool)arg1 isMediaPriorityEnabled:(_Bool)arg2;
 - (_Bool)removeSyncDestination:(id)arg1 shouldSchedule:(_Bool)arg2;
 - (_Bool)addSyncDestination:(id)arg1 shouldSchedule:(_Bool)arg2;
 - (_Bool)reconfigureAudioIOIfNeededWithDeviceRole:(int)arg1 operatingMode:(int)arg2;
@@ -73,11 +80,11 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)flushSyncDestinationUpdatesEventQueue;
 - (unsigned int)audioTypeForCaptureSource:(int)arg1;
+@property(readonly, copy) NSString *description;
 - (id)initWithConfig:(id)arg1 audioCallback:(CDUnknownFunctionPointerType)arg2 context:(void *)arg3 audioDirection:(unsigned char)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

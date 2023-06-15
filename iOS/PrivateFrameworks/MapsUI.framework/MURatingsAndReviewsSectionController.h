@@ -6,7 +6,7 @@
 
 #import "MUPlaceSectionController.h"
 
-@class MKUGCCallToActionViewAppearance, MUPlaceRatingReviewTitleBuilder, MUPlaceReviewAvatarGenerator, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, MUPlaceSectionView, MUScrollableStackView, NSArray, NSMutableArray, NSString, UIView, UIViewController;
+@class MUPlaceCallToActionAppearance, MUPlaceRatingReviewTitleBuilder, MUPlaceReviewAvatarGenerator, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, MUPlaceSectionView, MUScrollableStackView, NSArray, NSString, UIView, UIViewController;
 @protocol MUInfoCardAnalyticsDelegate, MURatingsAndReviewsSectionControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -15,7 +15,6 @@ __attribute__((visibility("hidden")))
     MUScrollableStackView *_contentStackView;
     MUPlaceSectionView *_sectionView;
     MUPlaceReviewAvatarGenerator *_avatarGenerator;
-    NSMutableArray *_focusItems;
     MUPlaceRatingReviewTitleBuilder *_titleBuilder;
     MUPlaceSectionHeaderViewModel *_sectionHeaderViewModel;
     id <MURatingsAndReviewsSectionControllerDelegate> _actionDelegate;
@@ -48,7 +47,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) MUPlaceSectionFooterViewModel *sectionFooterViewModel;
 @property(readonly, nonatomic) UIViewController *sectionViewController;
 @property(readonly, nonatomic) NSArray *sectionViews;
-@property(retain, nonatomic) MKUGCCallToActionViewAppearance *submissionStatus;
+@property(retain, nonatomic) MUPlaceCallToActionAppearance *submissionStatus;
 @property(readonly) Class superclass;
 
 @end

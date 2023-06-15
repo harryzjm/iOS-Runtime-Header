@@ -6,9 +6,15 @@
 
 #import <Translation/_LTTextTranslationService-Protocol.h>
 
-@class NSArray, NSData, NSLocale, NSString, _LTInstallRequest, _LTLocalePair, _LTTaskContext, _LTTranslationContext, _LTTranslationFeedback, _LTTranslationParagraph;
+@class NSArray, NSData, NSError, NSLocale, NSString, NSUUID, _LTInstallRequest, _LTLocalePair, _LTSELFLoggingInvocationOptions, _LTSELFLoggingUserTypingEndedDescription, _LTTaskContext, _LTTranslationContext, _LTTranslationFeedback, _LTTranslationParagraph;
 
 @protocol _LTTranslationService <_LTTextTranslationService>
+- (void)selfLoggingAppBackgroundedWithInvocationId:(NSUUID *)arg1 payload:(NSString *)arg2 localePair:(_LTLocalePair *)arg3;
+- (void)selfLoggingUserEndedTypingWithInvocationId:(NSUUID *)arg1 description:(_LTSELFLoggingUserTypingEndedDescription *)arg2;
+- (void)selfLoggingCancelInvocationWithInvocationId:(NSUUID *)arg1 reason:(NSString *)arg2 qssSessionId:(NSUUID *)arg3;
+- (void)selfLoggingEndWithInvocationId:(NSUUID *)arg1 error:(NSError *)arg2 qssSessionId:(NSUUID *)arg3;
+- (void)selfLoggingEndSuccessfullyWithInvocationId:(NSUUID *)arg1 qssSessionId:(NSUUID *)arg2;
+- (void)selfLoggingStartInvocationWithInvocationId:(NSUUID *)arg1 options:(_LTSELFLoggingInvocationOptions *)arg2;
 - (void)logWithRequestData:(NSData *)arg1;
 - (void)configInfoForLocale:(NSLocale *)arg1 otherLocale:(NSLocale *)arg2 completion:(void (^)(NSDictionary *))arg3;
 - (void)additionalLikelyPreferredLocalesForLocale:(NSLocale *)arg1 completion:(void (^)(NSArray *))arg2;
@@ -23,9 +29,12 @@
 - (void)_purgeAllAssets:(void (^)(NSError *))arg1;
 - (void)_purgeAssetForLanguagePair:(_LTLocalePair *)arg1 userInitiated:(_Bool)arg2 completion:(void (^)(NSError *))arg3;
 - (void)_downloadAssetForLanguagePair:(_LTLocalePair *)arg1 userInitiated:(_Bool)arg2 completion:(void (^)(NSError *))arg3;
-- (void)_offlineLanguageStatus:(void (^)(NSArray *))arg1;
+- (void)_offlineLanguageStatus:(void (^)(NSArray *, NSError *))arg1;
+- (void)setLanguageAssets:(NSArray *)arg1 options:(unsigned long long)arg2 completion:(void (^)(NSArray *, NSError *))arg3;
+- (void)languageAssetsWithOptions:(unsigned long long)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)cleanup;
 - (void)speak:(NSString *)arg1 withContext:(_LTTranslationContext *)arg2 completion:(void (^)(NSURL *, NSError *))arg3;
+- (void)autoDetectSpeechUnsupportedPairsWithCompletion:(void (^)(NSArray *))arg1;
 - (void)languagesForText:(NSArray *)arg1 completion:(void (^)(_LTTextLanguageDetectionResult *))arg2;
 - (void)languageForText:(NSString *)arg1 completion:(void (^)(_LTLanguageDetectionResult *))arg2;
 - (void)clearCaches;

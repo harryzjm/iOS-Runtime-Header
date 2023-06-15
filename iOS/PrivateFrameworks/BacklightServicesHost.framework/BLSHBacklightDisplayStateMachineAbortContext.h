@@ -19,24 +19,32 @@ __attribute__((visibility("hidden")))
     _Bool _showingBlankingWindow;
     _Bool _isCABlanked;
     _Bool _displayIsOff;
+    _Bool _sleepRequested;
+    _Bool _sleepImminent;
+    double _timeInSleepImminent;
+    _Bool _hasEnsureFlipbookCurrent;
     unsigned int _payloadSize;
     unsigned long long _abortReason;
     const void *_payload;
 }
 
+@property(readonly, nonatomic) _Bool hasEnsureFlipbookCurrent; // @synthesize hasEnsureFlipbookCurrent=_hasEnsureFlipbookCurrent;
 @property(readonly, nonatomic) unsigned int payloadSize; // @synthesize payloadSize=_payloadSize;
 @property(readonly, nonatomic) const void *payload; // @synthesize payload=_payload;
 @property(readonly, nonatomic) unsigned long long abortReason; // @synthesize abortReason=_abortReason;
 - (void)dealloc;
 @property(readonly, copy) NSString *description;
 - (void)_populatePayload;
+@property(readonly, nonatomic) _Bool wantsPanic;
+- (void)setSleepImminentAbortReason;
 @property(readonly, copy, nonatomic) NSString *abortReasonString;
-- (id)initWithDisplayMode:(long long)arg1 transitioningToDisplayMode:(long long)arg2 lastSteadyStateDisplayMode:(long long)arg3 isFlipbookEnabled:(_Bool)arg4 showingBlankingWindow:(_Bool)arg5 backlightFactor:(long long)arg6 isCABlanked:(_Bool)arg7 displayIsOff:(_Bool)arg8;
+- (id)initWithDisplayMode:(long long)arg1 transitioningToDisplayMode:(long long)arg2 lastSteadyStateDisplayMode:(long long)arg3 isFlipbookEnabled:(_Bool)arg4 showingBlankingWindow:(_Bool)arg5 backlightFactor:(long long)arg6 isCABlanked:(_Bool)arg7 displayIsOff:(_Bool)arg8 sleepRequested:(_Bool)arg9 sleepImminent:(_Bool)arg10 timeInSleepImminent:(double)arg11 hasEnsureFlipbookCurrent:(_Bool)arg12;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
+@property(readonly, nonatomic, getter=isWaitingPastFireForCompletionAndTailspin) _Bool waitingPastFireForCompletionAndTailspin;
 
 @end
 

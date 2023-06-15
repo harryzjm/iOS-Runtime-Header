@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MADAnalyticsManager, NSDate, NSDateFormatter, NSMutableDictionary, NSOperationQueue, NSURL, NSURLSession, NSURLSessionConfiguration, PallasResponseVerifier;
+@class MADAnalyticsManager, NSDate, NSDateFormatter, NSMutableDictionary, NSOperationQueue, NSString, NSURL, NSURLSession, NSURLSessionConfiguration, PallasResponseVerifier;
 @protocol NSURLSessionDelegate, OS_dispatch_queue, OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
@@ -16,6 +16,10 @@ __attribute__((visibility("hidden")))
     _Bool _currentlyBatchingSplunk;
     _Bool _haveSyncedSplunkState;
     _Bool _timerRunning;
+    _Bool _checkMadeForBeforeFirstUnlock;
+    _Bool _deviceBeforeFirstUnlock;
+    _Bool _performingNSURLSessionSync;
+    NSString *_brainVersion;
     NSMutableDictionary *_downloadTasksInFlight;
     NSMutableDictionary *_cachedMetaDataForAssetType;
     NSURLSessionConfiguration *_backgroundDiscretionaryConfiguration;
@@ -40,12 +44,19 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_source> *_timer;
     NSDate *_previousTimeEstimatePoint;
     CDUnknownBlockType _timerHandler;
-    MADAnalyticsManager *_analytics;
+    NSObject<OS_dispatch_queue> *_deviceStatusQueue;
+    NSObject<OS_dispatch_queue> *_dedupNSURLSessionSyncQueue;
 }
 
++ (_Bool)isDeviceBeforeFirstUnlock;
++ (id)pathToCatalogLookupServer:(id)arg1 usingDownloadOptions:(id)arg2;
 + (int)triggerVPN;
 - (void).cxx_destruct;
-@property(retain, nonatomic) MADAnalyticsManager *analytics; // @synthesize analytics=_analytics;
+@property(nonatomic) _Bool performingNSURLSessionSync; // @synthesize performingNSURLSessionSync=_performingNSURLSessionSync;
+@property(nonatomic) _Bool deviceBeforeFirstUnlock; // @synthesize deviceBeforeFirstUnlock=_deviceBeforeFirstUnlock;
+@property(nonatomic) _Bool checkMadeForBeforeFirstUnlock; // @synthesize checkMadeForBeforeFirstUnlock=_checkMadeForBeforeFirstUnlock;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *dedupNSURLSessionSyncQueue; // @synthesize dedupNSURLSessionSyncQueue=_dedupNSURLSessionSyncQueue;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *deviceStatusQueue; // @synthesize deviceStatusQueue=_deviceStatusQueue;
 @property(copy, nonatomic) CDUnknownBlockType timerHandler; // @synthesize timerHandler=_timerHandler;
 @property(nonatomic) _Bool timerRunning; // @synthesize timerRunning=_timerRunning;
 @property(retain, nonatomic) NSDate *previousTimeEstimatePoint; // @synthesize previousTimeEstimatePoint=_previousTimeEstimatePoint;
@@ -74,6 +85,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSURLSessionConfiguration *backgroundDiscretionaryConfiguration; // @synthesize backgroundDiscretionaryConfiguration=_backgroundDiscretionaryConfiguration;
 @property(retain, nonatomic) NSMutableDictionary *cachedMetaDataForAssetType; // @synthesize cachedMetaDataForAssetType=_cachedMetaDataForAssetType;
 @property(retain, nonatomic) NSMutableDictionary *downloadTasksInFlight; // @synthesize downloadTasksInFlight=_downloadTasksInFlight;
+@property(retain, nonatomic) NSString *brainVersion; // @synthesize brainVersion=_brainVersion;
 - (void)activityNotification:(id)arg1 ofStatusChange:(unsigned long long)arg2 withReason:(id)arg3;
 - (id)lastModifiedDateFromResponse:(id)arg1;
 - (void)indicateDownloadJobFinished:(int)arg1 usingXPCConnection:(id)arg2 withXPCMessage:(id)arg3 performingAutoAssetJob:(id)arg4 ofJobType:(id)arg5;
@@ -102,6 +114,7 @@ __attribute__((visibility("hidden")))
 - (void)startDownloadAndUpdateState:(id)arg1 for:(id)arg2 startingAt:(id)arg3 withLength:(id)arg4 extractWith:(id)arg5 modified:(id)arg6 options:(id)arg7 downloadSize:(long long)arg8 using:(id)arg9 with:(id)arg10 clientName:(id)arg11 autoAssetJob:(id)arg12 ofJobType:(id)arg13 notify:(unsigned long long)arg14;
 - (id)MACopyDawToken:(id)arg1;
 - (_Bool)downloadNeedsSSO:(id)arg1 taskDescriptor:(id)arg2 url:(id)arg3;
+- (id)copyDawTokenFileName;
 - (void)assessDownloadCompletion:(id)arg1 originalUrl:(id)arg2 taskDescription:(id)arg3 taskId:(id)arg4 error:(id)arg5 moveFile:(_Bool)arg6 extractorExists:(_Bool)arg7;
 - (void)addLiveServerRequest:(id)arg1 forAssetType:(id)arg2 withPurpose:(id)arg3 audience:(id)arg4 pallasUrl:(id)arg5 using:(id)arg6 with:(id)arg7 clientName:(id)arg8 autoAssetJobID:(id)arg9 task:(id)arg10 options:(id)arg11;
 - (void)startDownloadAndUpdateState:(id)arg1 for:(id)arg2 modified:(id)arg3 options:(id)arg4 using:(id)arg5 with:(id)arg6 clientName:(id)arg7 autoAssetJob:(id)arg8 ofJobType:(id)arg9;
@@ -118,8 +131,10 @@ __attribute__((visibility("hidden")))
 - (id)addSUOptions:(id)arg1 options:(id)arg2;
 - (id)newAssetAudience:(_Bool)arg1 assetType:(id)arg2;
 - (_Bool)getPallasEnabledForAssetType:(id)arg1;
-- (void)checkSplunkStatus:(id)arg1 failureReason:(id)arg2 productVersion:(id)arg3 sessionId:(id)arg4 nonce:(id)arg5 url:(id)arg6 statusCode:(long long)arg7 assetAudience:(id)arg8 version:(id)arg9 receiptResults:(id)arg10 baseUrl:(id)arg11;
-- (id)newDefaultEventDictionary:(id)arg1 sessionId:(id)arg2 nonce:(id)arg3 url:(id)arg4 statusCode:(long long)arg5 assetAudience:(id)arg6 uuid:(id)arg7 assetType:(id)arg8 version:(id)arg9 receiptResults:(id)arg10 baseUrl:(id)arg11;
+- (void)setPreviousBatchedFailureEvent:(id)arg1 inSendEventsByUUID:(id)arg2;
+- (void)augmentSplunkEvent:(id)arg1 withResultForHTTPStatusCode:(long long)arg2;
+- (void)checkSplunkStatus:(id)arg1 failureReason:(id)arg2 productVersion:(id)arg3 sessionId:(id)arg4 nonce:(id)arg5 url:(id)arg6 statusCode:(long long)arg7 assetAudience:(id)arg8 version:(id)arg9 receiptResults:(id)arg10 baseUrl:(id)arg11 discretionary:(_Bool)arg12;
+- (id)newDefaultEventDictionary:(id)arg1 sessionId:(id)arg2 nonce:(id)arg3 url:(id)arg4 statusCode:(long long)arg5 assetAudience:(id)arg6 uuid:(id)arg7 assetType:(id)arg8 version:(id)arg9 receiptResults:(id)arg10 baseUrl:(id)arg11 discretionary:(_Bool)arg12;
 - (void)isDownloading:(id)arg1 then:(CDUnknownBlockType)arg2;
 - (void)cancelAllDownloading:(id)arg1 withPurpose:(id)arg2 includingAssets:(_Bool)arg3 includingCatalog:(_Bool)arg4 includingOther:(_Bool)arg5 clientName:(id)arg6 then:(CDUnknownBlockType)arg7;
 - (void)allDownloading:(CDUnknownBlockType)arg1;
@@ -128,6 +143,7 @@ __attribute__((visibility("hidden")))
 - (void)sendDownloadResult:(id)arg1 with:(long long)arg2 extraInfo:(id)arg3;
 - (void)reportDownloadAttemptResult:(id)arg1 with:(long long)arg2;
 - (void)sendDownloadCannotStartResult:(long long)arg1 assetType:(id)arg2 connection:(id)arg3 requestMessage:(id)arg4 clientName:(id)arg5 autoAssetJobID:(id)arg6 ofJobType:(id)arg7;
+- (void)cancelAssetDownloadTask:(id)arg1;
 - (void)cancelAssetDownloadJob:(id)arg1 forAssetType:(id)arg2 withPurpose:(id)arg3 matchingAssetId:(id)arg4 forAutoAssetName:(id)arg5;
 - (void)configAssetDownload:(id)arg1 withPurpose:(id)arg2 matchingAssetId:(id)arg3 usingDownloadConfig:(id)arg4 usingXPCConnection:(id)arg5 withXPCMessage:(id)arg6 performingAutoAssetJob:(id)arg7 asClientName:(id)arg8;
 - (void)configAssetDownloadJob:(id)arg1 forAssetType:(id)arg2 withPurpose:(id)arg3 matchingAssetId:(id)arg4 usingDownloadConfig:(id)arg5 forAutoAssetName:(id)arg6;
@@ -139,6 +155,8 @@ __attribute__((visibility("hidden")))
 - (void)updateEstimateInfo:(double)arg1;
 - (void)startDownloadTimer;
 - (void)stopTimerIfNoDownloadsInProgress;
+@property(readonly, nonatomic) MADAnalyticsManager *analytics;
+- (id)getUserAgentStringForClient:(id)arg1 withAssetType:(id)arg2;
 - (id)init;
 
 @end

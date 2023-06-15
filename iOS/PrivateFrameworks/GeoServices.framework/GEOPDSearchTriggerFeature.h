@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     PBDataReader *_reader;
     CDStruct_95bda58d _completionSourceTypes;
     NSString *_canonicalName;
+    long long _densityScore;
     NSString *_displayName;
     NSString *_entityId;
     long long _globalEntityPopularity;
@@ -22,7 +23,9 @@ __attribute__((visibility("hidden")))
     double _lng;
     long long _localPopularity;
     long long _localEntityPopularity;
+    NSMutableArray *_modernToLegacyIdMappings;
     NSMutableArray *_prefCategorys;
+    NSMutableArray *_relatedCategories;
     double _similarityScore;
     NSString *_trigger;
     double _w2vSimilarityScore;
@@ -34,6 +37,7 @@ __attribute__((visibility("hidden")))
     int _tag;
     _Bool _isUseShowOnMapHighlightExtra;
     struct {
+        unsigned int has_densityScore:1;
         unsigned int has_globalEntityPopularity:1;
         unsigned int has_globalPopularity:1;
         unsigned int has_lat:1;
@@ -50,7 +54,9 @@ __attribute__((visibility("hidden")))
         unsigned int read_canonicalName:1;
         unsigned int read_displayName:1;
         unsigned int read_entityId:1;
+        unsigned int read_modernToLegacyIdMappings:1;
         unsigned int read_prefCategorys:1;
+        unsigned int read_relatedCategories:1;
         unsigned int read_trigger:1;
         unsigned int wrote_anyField:1;
     } _flags;

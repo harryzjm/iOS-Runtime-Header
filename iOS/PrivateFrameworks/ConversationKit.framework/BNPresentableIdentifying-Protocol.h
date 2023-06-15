@@ -9,7 +9,7 @@
 @class NSString;
 
 @protocol BNPresentableIdentifying <NSObject>
-@property(nonatomic, readonly) NSString *requestIdentifier;
-@property(nonatomic, readonly) NSString *requesterIdentifier;
+@property(readonly, copy, nonatomic) NSString *requestIdentifier;
+@property(readonly, copy, nonatomic) NSString *requesterIdentifier;
 @end
 

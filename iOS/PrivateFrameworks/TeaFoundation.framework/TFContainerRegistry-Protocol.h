@@ -9,8 +9,8 @@
 @protocol TFCallbackRegistration, TFRegistrationContainer;
 
 @protocol TFContainerRegistry <NSObject>
-@property(nonatomic, readonly) id <TFCallbackRegistration> callback;
-@property(nonatomic, readonly) id <TFRegistrationContainer> privateContainer;
-@property(nonatomic, readonly) id <TFRegistrationContainer> publicContainer;
+@property(readonly, nonatomic) id <TFCallbackRegistration> callback;
+@property(readonly, nonatomic) id <TFRegistrationContainer> privateContainer;
+@property(readonly, nonatomic) id <TFRegistrationContainer> publicContainer;
 @end
 

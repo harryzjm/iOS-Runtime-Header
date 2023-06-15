@@ -19,6 +19,8 @@
     MISSING_TYPE *_displayStyle;
     MISSING_TYPE *_titleTags;
     MISSING_TYPE *_subtitleTags;
+    MISSING_TYPE *_canonicalIdentifier;
+    MISSING_TYPE *_galleryDescriptionTags;
 }
 
 @end

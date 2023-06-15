@@ -10,9 +10,18 @@
 @protocol MTLArgumentEncoder, MTLFunction, MTLFunctionHandle, MTLPipelineLibrary;
 
 @protocol MTLFunctionSPI <MTLFunction>
-@property(nonatomic, copy) NSArray *relocations;
-@property(nonatomic, readonly) id <MTLFunctionHandle> functionHandle;
-@property(nonatomic, readonly) MTLDebugInstrumentationData *debugInstrumentationData;
+@property(copy, nonatomic) NSArray *relocations;
+@property(readonly, nonatomic) id <MTLFunctionHandle> functionHandle;
+@property(readonly, nonatomic) MTLDebugInstrumentationData *debugInstrumentationData;
+@property(readonly) NSArray *importedLibraries;
+@property(readonly) NSArray *importedSymbols;
+@property(readonly) NSArray *bindings;
+@property(readonly) NSArray *arguments;
+@property(readonly) MTLType *returnType;
+@property(readonly) unsigned long long renderTargetArrayIndexType;
+@property(readonly, copy) NSString *unpackedFilePath;
+@property(readonly) long long lineNumber;
+@property(readonly, copy) NSString *filePath;
 - (id <MTLFunction>)newFunctionWithPluginData:(NSData *)arg1 bitcodeType:(unsigned char)arg2;
 - (NSData *)bitcodeData;
 - (const CDStruct_5af0f983 *)bitCodeHash;
@@ -23,13 +32,5 @@
 - (MTLFunctionReflection *)reflectionWithOptions:(unsigned long long)arg1 binaryArchives:(NSArray *)arg2;
 - (MTLFunctionReflection *)reflectionWithOptions:(unsigned long long)arg1 pipelineLibrary:(id <MTLPipelineLibrary>)arg2;
 - (MTLFunctionReflection *)reflectionWithOptions:(unsigned long long)arg1;
-@property(nonatomic, readonly) NSArray *importedLibraries;
-@property(nonatomic, readonly) NSArray *importedSymbols;
-@property(nonatomic, readonly) NSArray *arguments;
-@property(nonatomic, readonly) MTLType *returnType;
-@property(nonatomic, readonly) unsigned long long renderTargetArrayIndexType;
-@property(nonatomic, readonly) NSString *unpackedFilePath;
-@property(nonatomic, readonly) long long lineNumber;
-@property(nonatomic, readonly) NSString *filePath;
 @end
 

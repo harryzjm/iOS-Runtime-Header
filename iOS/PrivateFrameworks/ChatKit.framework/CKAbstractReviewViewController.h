@@ -6,14 +6,13 @@
 
 #import <Preferences/PSViewController.h>
 
-@class NSString, UIBarButtonItem, UINavigationItem, UITableView, UIView;
+@class NSString, UIBarButtonItem, UITableView, UIView;
 
 __attribute__((visibility("hidden")))
 @interface CKAbstractReviewViewController : PSViewController
 {
     UITableView *_tableView;
     UIView *_topLineView;
-    UINavigationItem *_navItem;
     UIBarButtonItem *_cancelEditingBarButtonItem;
     UIBarButtonItem *_deleteBarButtonItem;
 }
@@ -21,7 +20,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIBarButtonItem *deleteBarButtonItem; // @synthesize deleteBarButtonItem=_deleteBarButtonItem;
 @property(retain, nonatomic) UIBarButtonItem *cancelEditingBarButtonItem; // @synthesize cancelEditingBarButtonItem=_cancelEditingBarButtonItem;
-@property(retain, nonatomic) UINavigationItem *navItem; // @synthesize navItem=_navItem;
 @property(retain, nonatomic) UIView *topLineView; // @synthesize topLineView=_topLineView;
 @property(retain, nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;
 - (void)_updateNavigationItemState;
@@ -33,8 +31,8 @@ __attribute__((visibility("hidden")))
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (void)setEditing:(_Bool)arg1 animated:(_Bool)arg2;
-- (id)navigationItem;
 - (void)viewWillLayoutSubviews;
+- (void)viewWillAppear:(_Bool)arg1;
 - (void)loadView;
 - (void)dealloc;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;

@@ -4,19 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIImage.h>
-
-@class NSString;
+#import <UIKitCore/UIImage.h>
 
 @interface UIImage (MailUI)
 + (id)mui_imageWithSystemSymbolName:(id)arg1;
 + (id)mui_imageFromSuggestionToken:(id)arg1;
-+ (id)log;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
++ (id)mf_imageForChevronType:(long long)arg1;
 @end
 

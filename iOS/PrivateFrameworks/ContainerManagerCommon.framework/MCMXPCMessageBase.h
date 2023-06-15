@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSString;
-@protocol MCMContext, OS_xpc_object;
+@protocol MCMCommandContext, OS_xpc_object;
 
 __attribute__((visibility("hidden")))
 @interface MCMXPCMessageBase : NSObject
@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
     unsigned int _platform;
     struct container_client *_proxy;
     NSObject<OS_xpc_object> *_xpcObject;
-    id <MCMContext> _context;
+    id <MCMCommandContext> _context;
     unsigned long long _command;
 }
 
@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
 + (id)userIdentityForContainerIdentifier:(id)arg1 clientIdentity:(id)arg2 containerClass:(unsigned long long)arg3 error:(unsigned long long *)arg4;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long command; // @synthesize command=_command;
-@property(readonly, nonatomic) id <MCMContext> context; // @synthesize context=_context;
+@property(readonly, nonatomic) id <MCMCommandContext> context; // @synthesize context=_context;
 @property(readonly, nonatomic) NSObject<OS_xpc_object> *xpcObject; // @synthesize xpcObject=_xpcObject;
 @property(readonly, nonatomic) unsigned int platform; // @synthesize platform=_platform;
 @property(readonly, nonatomic) struct container_client *proxy; // @synthesize proxy=_proxy;
@@ -31,11 +31,8 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)initWithXPCObject:(id)arg1 context:(id)arg2 error:(unsigned long long *)arg3;
 - (id)initWithContext:(id)arg1;
-- (id)concreteContainerIdentityFromXPCObject:(id)arg1 identifierKey:(const char *)arg2 classKey:(const char *)arg3 UUIDKey:(const char *)arg4 personaUniqueStringKey:(const char *)arg5 context:(id)arg6 error:(unsigned long long *)arg7;
-- (id)containerIdentityFromXPCObject:(id)arg1 identifierKey:(const char *)arg2 classKey:(const char *)arg3 transientKey:(const char *)arg4 context:(id)arg5 error:(unsigned long long *)arg6;
-- (id)userIdentityFromXPCObject:(id)arg1 key:(const char *)arg2 containerClass:(unsigned long long)arg3 clientIdentity:(id)arg4 error:(unsigned long long *)arg5;
 - (id)userIdentityFromClientPersonaUniqueString:(id)arg1 clientIdentity:(id)arg2 error:(unsigned long long *)arg3;
-- (id)nsObjectFromXPCObject:(id)arg1 key:(const char *)arg2;
+- (id)nsObjectFromXPCObject:(id)arg1 key:(const char *)arg2 error:(unsigned long long *)arg3;
 - (id)nsUUIDValueFromXPCObject:(id)arg1 key:(const char *)arg2;
 - (id)identifierFromXPCObject:(id)arg1 elseClientIdentifier:(id)arg2;
 - (id)nsStringValueFromXPCObject:(id)arg1 key:(const char *)arg2;

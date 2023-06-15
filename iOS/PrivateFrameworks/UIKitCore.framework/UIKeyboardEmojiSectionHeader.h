@@ -6,15 +6,19 @@
 
 #import "UICollectionReusableView.h"
 
-@class NSString, UIColor, UILabel;
+@class NSString, UIColor, UILabel, UIVisualEffect, UIVisualEffectView;
 
 __attribute__((visibility("hidden")))
 @interface UIKeyboardEmojiSectionHeader : UICollectionReusableView
 {
     UILabel *_emojiSectionHeader;
+    UIVisualEffectView *_backdropView;
+    struct UIEdgeInsets _insets;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) struct UIEdgeInsets insets; // @synthesize insets=_insets;
+@property(copy, nonatomic) UIVisualEffect *effect;
 @property(nonatomic) _Bool useVibrantBlend;
 @property(nonatomic) double headerOpacity;
 @property(nonatomic) double headerFontSize;

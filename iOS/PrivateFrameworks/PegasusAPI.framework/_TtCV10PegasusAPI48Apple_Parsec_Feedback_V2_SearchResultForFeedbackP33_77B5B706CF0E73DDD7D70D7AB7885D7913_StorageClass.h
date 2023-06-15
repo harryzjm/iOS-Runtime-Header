@@ -46,6 +46,8 @@
     MISSING_TYPE *_card;
     MISSING_TYPE *_inlineCard;
     MISSING_TYPE *_compactCard;
+    MISSING_TYPE *_containsPersonalResult;
+    MISSING_TYPE *_didRerankPersonalResult;
 }
 
 @end

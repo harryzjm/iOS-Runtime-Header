@@ -9,6 +9,8 @@
 @class CABackdropLayer, NSArray, NSString, UIView;
 
 @protocol CKSendAnimationContext <NSObject>
+@property(readonly, nonatomic) _Bool shouldUseQuickReplySourceRect;
+@property(nonatomic) struct CGRect quickReplySourceRect;
 @property(retain, nonatomic) CABackdropLayer *backdropLayer;
 @property(retain, nonatomic) NSArray *messages;
 @property(nonatomic) _Bool beginAnimationFromTranscriptPresentedState;

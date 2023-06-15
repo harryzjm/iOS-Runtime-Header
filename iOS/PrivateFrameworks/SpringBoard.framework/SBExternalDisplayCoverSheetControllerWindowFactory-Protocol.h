@@ -9,7 +9,6 @@
 @class SBWindowScene, UIWindow;
 
 @protocol SBExternalDisplayCoverSheetControllerWindowFactory <NSObject>
-- (UIWindow *)newBlankingWindowForScene:(SBWindowScene *)arg1;
 - (UIWindow *)newCoverSheetWindowForScene:(SBWindowScene *)arg1;
 @end
 

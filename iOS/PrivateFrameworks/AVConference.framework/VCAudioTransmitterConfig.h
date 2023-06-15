@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
     int _reportingParentID;
     VCTransportSession *_transportSession;
     _Bool _ignoreSilence;
+    int _ratType;
     _Bool _shouldCreateRedundancyController;
     _Bool _useChannelDataFormat;
     _Bool _shouldUseRedAsBoolean;
@@ -58,11 +59,20 @@ __attribute__((visibility("hidden")))
     struct tagVCCryptor *_sframeCryptor;
     _Bool _audioIssueDetectorEnabled;
     unsigned int _packetExpirationTime;
+    _Bool _audioDumpEnabled;
+    unsigned char _tierPickerMode;
+    _Bool _ramStadSRCEnabled;
     _Bool _shouldApplyRedAsBoolean;
     _Bool _supportsCodecBandwidthUpdate;
+    _Bool _targetBitrateIsAudioOnly;
 }
 
+@property(nonatomic) unsigned char tierPickerMode; // @synthesize tierPickerMode=_tierPickerMode;
+@property(nonatomic) _Bool audioDumpEnabled; // @synthesize audioDumpEnabled=_audioDumpEnabled;
+@property(nonatomic) _Bool targetBitrateIsAudioOnly; // @synthesize targetBitrateIsAudioOnly=_targetBitrateIsAudioOnly;
 @property(nonatomic) _Bool audioIssueDetectorEnabled; // @synthesize audioIssueDetectorEnabled=_audioIssueDetectorEnabled;
+@property(nonatomic) _Bool ramStadSRCEnabled; // @synthesize ramStadSRCEnabled=_ramStadSRCEnabled;
+@property(nonatomic) int ratType; // @synthesize ratType=_ratType;
 @property(nonatomic) _Bool supportsCodecBandwidthUpdate; // @synthesize supportsCodecBandwidthUpdate=_supportsCodecBandwidthUpdate;
 @property(nonatomic) unsigned int packetExpirationTime; // @synthesize packetExpirationTime=_packetExpirationTime;
 @property(nonatomic) struct tagVCCryptor *sframeCryptor; // @synthesize sframeCryptor=_sframeCryptor;

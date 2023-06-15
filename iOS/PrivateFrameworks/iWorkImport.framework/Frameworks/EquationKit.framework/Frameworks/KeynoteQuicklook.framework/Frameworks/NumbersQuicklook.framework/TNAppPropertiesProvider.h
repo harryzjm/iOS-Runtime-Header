@@ -28,6 +28,7 @@
 - (id)templateTypeDisplayName;
 - (id)documentTypeDisplayNameForSharingInvitation;
 - (id)documentTypeDisplayName;
+- (id)documentShareURLScheme;
 - (unsigned long long)applicationType;
 - (id)applicationDisplayName;
 - (id)applicationName;

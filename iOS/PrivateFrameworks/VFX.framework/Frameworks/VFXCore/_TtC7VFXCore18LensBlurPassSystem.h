@@ -6,8 +6,11 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
+@class MISSING_TYPE;
+
 @interface _TtC7VFXCore18LensBlurPassSystem : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *allCamerasQuery;
 }
 
 @end

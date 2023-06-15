@@ -16,9 +16,11 @@ __attribute__((visibility("hidden")))
     id <SNTimeConverting> _timeConverter;
     CDUnknownBlockType _resultsHandler;
     CDUnknownBlockType _completionHandler;
+    struct unique_ptr<AUProcessingBlock_DSPGraph, std::default_delete<AUProcessingBlock_DSPGraph>> _processingBlockServer;
     long long _requestState;
 }
 
+- (id).cxx_construct;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) shared_ptr_f6ac7592 graph;
 - (_Bool)adaptToSystemConfiguration:(id)arg1 error:(id *)arg2;

@@ -9,25 +9,30 @@
 __attribute__((visibility("hidden")))
 @interface _GCDevicePhysicalInputElement
 {
+    unsigned long long _localizedNameSlot;
+    unsigned long long _symbolSlot;
     NSString *_identifier;
     NSSet *_aliases;
-    NSString *_localizedName;
-    NSString *_sfSymbolsName;
 }
 
++ (unsigned short)updateContextSize;
 - (void).cxx_destruct;
-@property(readonly) NSString *sfSymbolsName; // @synthesize sfSymbolsName=_sfSymbolsName;
-@property(readonly) NSString *localizedName; // @synthesize localizedName=_localizedName;
-@property(readonly) NSSet *aliases; // @synthesize aliases=_aliases;
-@property(readonly, copy) NSString *identifier; // @synthesize identifier=_identifier;
+@property(readonly, copy) NSSet *aliases; // @synthesize aliases=_aliases;
+@property(readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property(readonly, copy) NSString *sfSymbolsName;
+- (id)symbol;
+@property(readonly, copy) NSString *localizedName;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqualToElement:(id)arg1;
+- (void)postCommit:(const void *)arg1 sender:(id)arg2;
+- (void)preCommit:(const void *)arg1 sender:(id)arg2;
+- (_Bool)update:(void *)arg1 forUsages:(unsigned long long)arg2 with:(id)arg3;
+- (id)initWithTemplate:(id)arg1 context:(id)arg2;
+- (id)initWithParameters:(id)arg1;
 - (id)init;
-- (id)initWith:(id)arg1 context:(id)arg2;
-- (id)initWithIdentifier:(id)arg1 configuration:(id)arg2;
-- (void)onCommitInvokeCallbacks:(unsigned long long)arg1;
-- (unsigned long long)handleGamepadEvent:(id)arg1 withTimestamp:(double)arg2;
+- (_Bool)update:(void *)arg1 forMouseEvent:(CDStruct_f61ac39c)arg2 withTimestamp:(double)arg3;
+- (_Bool)update:(void *)arg1 forGamepadEvent:(id)arg2 withTimestamp:(double)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

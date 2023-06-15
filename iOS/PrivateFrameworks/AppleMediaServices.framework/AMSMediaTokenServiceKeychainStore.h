@@ -16,10 +16,11 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSString *keychainAccessGroup; // @synthesize keychainAccessGroup=_keychainAccessGroup;
-@property(readonly, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
-- (void)_removeTokenFromKeychain;
+@property(copy, nonatomic) NSString *keychainAccessGroup; // @synthesize keychainAccessGroup=_keychainAccessGroup;
+@property(readonly, copy, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
+- (_Bool)_removeTokenFromKeychain;
 - (struct __CFDictionary *)_copyKeychainQuery;
+- (_Bool)deleteToken;
 - (_Bool)storeToken:(id)arg1;
 - (id)retrieveToken;
 - (id)initWithClientIdentifier:(id)arg1 keychainAccessGroup:(id)arg2;

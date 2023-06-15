@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_UIVisibilityPropagationView.h"
+
 @class FBSSceneSettings, FBSSceneSettingsDiffInspector, FBScene, NSHashTable, NSString, UIScenePresentationContext, UIView, _UISceneLayerHostContainerView, _UIScenePresenter;
 @protocol UIScenePresenter;
 
 __attribute__((visibility("hidden")))
-@interface _UIScenePresentationView
+@interface _UIScenePresentationView : _UIVisibilityPropagationView
 {
     _UIScenePresenter *_presenter;
     FBScene *_scene;

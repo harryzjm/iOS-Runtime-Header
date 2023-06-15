@@ -41,6 +41,7 @@
 - (id)effectiveImageRepGivenCandidates:(CDUnknownBlockType)arg1 scale:(id)arg2;
 - (id)effectiveFrameGivenImageRepCandidates:(CDUnknownBlockType)arg1 scale:(id)arg2;
 - (id)effectiveFrameSizeGivenImageRepCandidates:(CDUnknownBlockType)arg1 scale:(id)arg2;
+- (_Bool)providesBookmarkTitleForChild:(id)arg1;
 - (id)parent;
 - (void)enumerateDescriptionAttributeComponents:(CDUnknownBlockType)arg1;
 - (_Bool)manifestArchivist:(id)arg1 childHasDataToRecordInManifest:(id)arg2;

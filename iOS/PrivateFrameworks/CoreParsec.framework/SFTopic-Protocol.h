@@ -11,6 +11,6 @@
 @class NSString;
 
 @protocol SFTopic <NSObject, NSSecureCoding, NSCopying>
-@property(nonatomic, readonly) NSString *identifier;
+@property(readonly, nonatomic) NSString *identifier;
 @end
 

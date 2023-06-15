@@ -9,10 +9,11 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)stateName;
-- (unsigned long long)defaultChangeReason;
+- (void)_automationTurnedOnSleepModeWithReason:(unsigned long long)arg1;
 - (void)sleepModeTurnedOnForUnknownReason;
 - (void)automationTurnedOnSleepModeWithReason:(unsigned long long)arg1;
+- (id)stateName;
+- (unsigned long long)defaultChangeReason;
 
 @end
 

@@ -12,6 +12,6 @@
 - (_Bool)lockPurgeableResourcesAddToSet:(NSMutableSet *)arg1;
 - (_Bool)needsCompute;
 - (unsigned long long)cacheCost;
-- (_Bool)isCompatibleWithInk:(PKInk *)arg1;
+- (_Bool)isCompatibleWithInk:(PKInk *)arg1 renderZoomFactor:(long long)arg2;
 @end
 

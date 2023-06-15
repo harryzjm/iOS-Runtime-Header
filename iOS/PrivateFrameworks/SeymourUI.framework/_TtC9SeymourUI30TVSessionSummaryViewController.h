@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
 @class MISSING_TYPE, NSArray;
 
@@ -21,9 +21,20 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *separatorView;
     MISSING_TYPE *burnBarView;
     MISSING_TYPE *activityRingsView;
+    MISSING_TYPE *upNextSummaryView;
+    MISSING_TYPE *queueCompleteView;
+    MISSING_TYPE *topPaddingLayoutGuide;
+    MISSING_TYPE *bottomPaddingLayoutGuide;
     MISSING_TYPE *gridViewWidthConstraint;
+    MISSING_TYPE *gridViewBottomConstraint;
+    MISSING_TYPE *gridViewTopConstraint;
     MISSING_TYPE *activityRingsTopPinningConstraint;
     MISSING_TYPE *activityRingsBottomPinningConstraint;
+    MISSING_TYPE *burnBarTrailingConstraint;
+    MISSING_TYPE *burnBarLeadingConstraint;
+    MISSING_TYPE *burnBarTopConstraint;
+    MISSING_TYPE *activityRingsTopConstraint;
+    MISSING_TYPE *activityRingsTrailingConstraint;
     MISSING_TYPE *summary;
     MISSING_TYPE *additionalMetadata;
 }
@@ -33,7 +44,6 @@ __attribute__((visibility("hidden")))
 - (void)menuButtonTapped;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
-- (void)viewDidLoad;
 - (id)initWithCoder:(id)arg1;
 @property(nonatomic, readonly) NSArray *preferredFocusEnvironments;
 

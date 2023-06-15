@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UITableViewController.h>
+#import <UIKitCore/UITableViewController.h>
 
 @class EKICSPreviewModel, NSMutableArray;
 @protocol EKICSPreviewListDelegate;
@@ -35,7 +35,6 @@ __attribute__((visibility("hidden")))
 - (void)buildSections;
 - (id)_timeZone;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)_showWeekNumbersPreferenceChanged:(id)arg1;
 - (void)importAllPressed:(id)arg1;
 - (void)updateImportButton;
 - (void)viewDidLoad;

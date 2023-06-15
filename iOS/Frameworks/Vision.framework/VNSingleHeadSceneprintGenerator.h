@@ -9,16 +9,11 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)primaryInferenceNetworkDescriptorForVNInferenceNetworkIdentifierStandaloneSceneprint_3_0_0;
-+ (id)availableVNInferenceNetworkIdentifierStandaloneSceneprintVersions;
-+ (id)inferenceNetworkIdentifiers;
 + (unsigned long long)inputImageAspectRatioHandlingForConfigurationOptions:(id)arg1;
 + (unsigned int)networkRequiredInputImagePixelFormatForConfigurationOptions:(id)arg1;
 + (id)espressoModelInputImageDimensionsBlobNameForConfigurationOptions:(id)arg1;
-+ (id)espressoModelFileNameForConfigurationOptions:(id)arg1;
-+ (id)configurationOptionKeysForDetectorKey;
-+ (void)fullyPopulateConfigurationOptions:(id)arg1;
-+ (void)recordDefaultConfigurationOptionsInDictionary:(id)arg1;
++ (id)espressoModelPathForConfigurationOptions:(id)arg1 error:(id *)arg2;
++ (id)_inferenceDescriptorForModelConfiguredWithOptions:(id)arg1 error:(id *)arg2;
 - (id)processRegionOfInterest:(struct CGRect)arg1 croppedPixelBuffer:(const struct __CVBuffer *)arg2 options:(id)arg3 qosClass:(unsigned int)arg4 warningRecorder:(id)arg5 error:(id *)arg6 progressHandler:(CDUnknownBlockType)arg7;
 - (_Bool)createRegionOfInterestCrop:(struct CGRect)arg1 options:(id)arg2 warningRecorder:(id)arg3 pixelBuffer:(struct __CVBuffer **)arg4 error:(id *)arg5 progressHandler:(CDUnknownBlockType)arg6;
 

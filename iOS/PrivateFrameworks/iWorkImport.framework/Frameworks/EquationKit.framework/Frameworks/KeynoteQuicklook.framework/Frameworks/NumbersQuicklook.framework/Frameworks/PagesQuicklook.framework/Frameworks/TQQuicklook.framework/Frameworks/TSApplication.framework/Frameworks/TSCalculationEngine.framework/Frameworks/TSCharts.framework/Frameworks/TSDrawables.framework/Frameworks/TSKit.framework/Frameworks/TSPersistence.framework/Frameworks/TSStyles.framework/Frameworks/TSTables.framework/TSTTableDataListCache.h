@@ -6,23 +6,29 @@
 
 #import <objc/NSObject.h>
 
-@class TSTTableDataListItemCache, TSTTableDataStore, TSULocale;
+@class TSTTableDataListItemCache, TSTTableDataStore, TSUIntegerKeyDictionary, TSULocale;
 
 @interface TSTTableDataListCache : NSObject
 {
     TSTTableDataStore *_dataStore;
     TSULocale *_locale;
     TSTTableDataListItemCache *_formats;
-    TSTTableDataListItemCache *_styles;
+    TSTTableDataListItemCache *_cellStyleHandles;
+    TSTTableDataListItemCache *_textStyleHandles;
+    TSUIntegerKeyDictionary *_strings;
 }
 
 + (id)cacheWithDataStore:(id)arg1;
 - (void).cxx_destruct;
-@property(retain, nonatomic) TSTTableDataListItemCache *styles; // @synthesize styles=_styles;
+@property(retain, nonatomic) TSUIntegerKeyDictionary *strings; // @synthesize strings=_strings;
+@property(retain, nonatomic) TSTTableDataListItemCache *textStyleHandles; // @synthesize textStyleHandles=_textStyleHandles;
+@property(retain, nonatomic) TSTTableDataListItemCache *cellStyleHandles; // @synthesize cellStyleHandles=_cellStyleHandles;
 @property(retain, nonatomic) TSTTableDataListItemCache *formats; // @synthesize formats=_formats;
 @property(retain, nonatomic) TSULocale *locale; // @synthesize locale=_locale;
 @property(retain, nonatomic) TSTTableDataStore *dataStore; // @synthesize dataStore=_dataStore;
-- (id)styleForKey:(unsigned int)arg1;
+- (id)stringForKey:(unsigned int)arg1 shouldWrap:(_Bool *)arg2;
+- (id)textStyleHandleForKey:(unsigned int)arg1;
+- (id)cellStyleHandleForKey:(unsigned int)arg1;
 - (id)formatForKey:(unsigned int)arg1;
 - (id)initWithDataStore:(id)arg1;
 

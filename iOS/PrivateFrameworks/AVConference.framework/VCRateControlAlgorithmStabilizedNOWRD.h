@@ -4,6 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class VCRateControlSmartBrake;
+
 __attribute__((visibility("hidden")))
 @interface VCRateControlAlgorithmStabilizedNOWRD
 {
@@ -15,13 +17,7 @@ __attribute__((visibility("hidden")))
     unsigned int _lastRateChangeCounter;
     unsigned int _newOWRDSampleCollected;
     _Bool _isRemoteBandwidthEstimationStable;
-    struct {
-        double owrd;
-        double roundTripTime;
-        double roundTripTimeMinEnvelope;
-        double packetLossRate;
-        int tierIndex;
-    } _history[500];
+    struct tagVCRateControlHistoryElement _history[500];
     int _currentHistorySize;
     int _currentHistoryIndex;
     double _previousNOWRD;
@@ -43,6 +39,8 @@ __attribute__((visibility("hidden")))
     double _rampUpSettleDuration;
     _Bool _shouldSuppressRampDown;
     unsigned int _rampDownSuppressionBitrateThreshold;
+    unsigned int _additionalTierForRampDown;
+    double _ecnCERatio;
     double _basebandNotificationArrivalTime;
     unsigned int _basebandAverageBitrate;
     unsigned int _basebandTotalQueueDepth;
@@ -64,56 +62,17 @@ __attribute__((visibility("hidden")))
     double _lastNetworkUnstableTime;
     _Bool _withBTCoex;
     _Bool _abnormalNetworkDetected;
+    VCRateControlSmartBrake *_smartBrake;
+    struct tagVCRateControlSmartBrakeInput _smartBrakeInput;
+    struct tagVCRateControlSmartBrakeOutput _smartBrakeOutput;
+    double _lastSmartBrakeEngageTime;
 }
 
-- (void)printRateControlInfoToLogDump;
-- (void)checkStabilizationWithEchoedTimestamp:(unsigned short)arg1 queuingDelay:(unsigned short)arg2;
-- (void)checkMediaQueueBitrates;
-- (unsigned int)getRampDownSuppressionBitrateThresholdWithRTT;
-- (_Bool)updateParametersForRampDownSuppression;
-- (void)checkAbnormalNetworkCondition;
-- (void)checkCongestionStatus;
-- (void)calculatePacketLossWithReceivedPacketCount:(unsigned int)arg1 receivedPacketCountVideo:(unsigned int)arg2 packetBurstLoss:(unsigned short)arg3 packetLossSample:(double)arg4;
-- (void)calculateRoundTripTimeWithSample:(double)arg1;
-- (void)calculateCongestionMetricsFromOWRD:(double)arg1 time:(double)arg2;
-- (int)basebandAdditionalTiersForRampUp;
-- (_Bool)isBasebandNotificationOutOfKeyFrameCoolDownTime;
-- (_Bool)shouldRampUpDueToBaseband;
-- (_Bool)shouldUnblockRampUpAfterTimeOut;
-- (_Bool)shouldRampDownDueToBaseband;
-- (_Bool)shouldRampDownDueToNOWRDAcc;
-- (_Bool)shouldRampDownDueToNOWRD;
-- (_Bool)shouldRampDown;
-- (_Bool)shouldRampUp;
-- (_Bool)shouldBlockRampUpDueToNetworkUnstable;
-- (_Bool)checkNetworkSaturationWithRoundTripTime:(double)arg1 minRoundTripTime:(double)arg2 packetLossRate:(double)arg3 owrd:(double)arg4;
-- (_Bool)isRoundTripTimeDecreasingOrLessThanMinEnvelope;
-- (_Bool)isNetworkSaturated;
-- (_Bool)isBitrateOscillatingWithCurrentTierIndex:(int)arg1;
-- (void)setBitrateUnstable;
-- (int)rampDownTierDueToBaseband:(double)arg1;
-- (int)rampDownTier;
-- (int)rampUpTier;
-- (void)stateEnter;
-- (void)stateExit;
-- (_Bool)shouldFastRampUp;
-- (double)getRampUpFrozenDuration;
-- (double)getRampUpSettleDuration;
-- (void)resetRampingStatus;
-- (void)updateVCRateControlHistory;
-- (void)updateInternalStatus;
-- (_Bool)updateInternalStatistics:(CDStruct_7df19fcb)arg1;
-- (void)runRateControlStateTransition;
 - (unsigned int)worstRecentBurstLoss;
 - (double)worstRecentRoundTripTime;
 - (void)setLocalBandwidthEstimation:(unsigned int)arg1;
-- (_Bool)shouldEnableBasebandAdaptationWithBasebandStatistics:(CDStruct_f0a7dbac)arg1 previousBasebandRAT:(int)arg2;
-- (_Bool)isBasebandRATGreaterOrSameAsLTE:(int)arg1;
-- (_Bool)doRateControlWithBasebandStatistics:(CDStruct_7df19fcb)arg1;
-- (_Bool)doRateControlWithNWStatistics:(CDStruct_7df19fcb)arg1;
-- (_Bool)doRateControlWithVCRCStatistics:(CDStruct_7df19fcb)arg1;
-- (_Bool)doRateControlWithStatistics:(CDStruct_7df19fcb)arg1;
-- (void)configure:(struct VCRateControlAlgorithmConfig)arg1 restartRequired:(_Bool)arg2;
+- (_Bool)setUpVTable;
+- (void)dealloc;
 - (id)init;
 
 @end

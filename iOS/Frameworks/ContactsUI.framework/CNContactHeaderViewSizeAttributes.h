@@ -10,31 +10,45 @@ __attribute__((visibility("hidden")))
 @interface CNContactHeaderViewSizeAttributes : NSObject
 {
     double _photoMinHeight;
+    double _photoMaxHeight;
     double _photoMinTopMargin;
+    double _photoMaxTopMargin;
     double _photoMinBottomMargin;
+    double _photoMaxBottomMargin;
     double _minNavbarTitleOffset;
     double _maxNavbarTitleOffset;
+    double _headerBottomMargin;
+    double _posterMaxHeight;
+    double _photoMaxHeightPhoneLandscape;
+    double _photoMinBottomMarginPhoneLandscape;
     double __minHeight;
     double __maxHeight;
-    double _photoMaxHeight;
-    double _photoMaxTopMargin;
-    double _photoMaxBottomMargin;
 }
 
++ (id)staticEditingAttributesWithNavBar;
++ (id)staticCollapsedDisplayAttributesWithNavBar;
++ (id)staticDisplayAttributesWithNavBar;
 + (id)displayAttributesWithNavBar;
 + (id)editingAttributesWithNavBar;
++ (id)staticEditingAttributes;
++ (id)staticCollapsedDisplayAttributes;
++ (id)staticDisplayAttributes;
 + (id)editingAttributes;
 + (id)displayAttributes;
 + (id)defaultAttributes;
-@property(nonatomic) double photoMaxBottomMargin; // @synthesize photoMaxBottomMargin=_photoMaxBottomMargin;
-@property(nonatomic) double photoMaxTopMargin; // @synthesize photoMaxTopMargin=_photoMaxTopMargin;
-@property(nonatomic) double photoMaxHeight; // @synthesize photoMaxHeight=_photoMaxHeight;
 @property(nonatomic) double _maxHeight; // @synthesize _maxHeight=__maxHeight;
 @property(nonatomic) double _minHeight; // @synthesize _minHeight=__minHeight;
+@property(nonatomic) double photoMinBottomMarginPhoneLandscape; // @synthesize photoMinBottomMarginPhoneLandscape=_photoMinBottomMarginPhoneLandscape;
+@property(nonatomic) double photoMaxHeightPhoneLandscape; // @synthesize photoMaxHeightPhoneLandscape=_photoMaxHeightPhoneLandscape;
+@property(nonatomic) double posterMaxHeight; // @synthesize posterMaxHeight=_posterMaxHeight;
+@property(nonatomic) double headerBottomMargin; // @synthesize headerBottomMargin=_headerBottomMargin;
 @property(nonatomic) double maxNavbarTitleOffset; // @synthesize maxNavbarTitleOffset=_maxNavbarTitleOffset;
 @property(nonatomic) double minNavbarTitleOffset; // @synthesize minNavbarTitleOffset=_minNavbarTitleOffset;
+@property(nonatomic) double photoMaxBottomMargin; // @synthesize photoMaxBottomMargin=_photoMaxBottomMargin;
 @property(nonatomic) double photoMinBottomMargin; // @synthesize photoMinBottomMargin=_photoMinBottomMargin;
+@property(nonatomic) double photoMaxTopMargin; // @synthesize photoMaxTopMargin=_photoMaxTopMargin;
 @property(nonatomic) double photoMinTopMargin; // @synthesize photoMinTopMargin=_photoMinTopMargin;
+@property(nonatomic) double photoMaxHeight; // @synthesize photoMaxHeight=_photoMaxHeight;
 @property(nonatomic) double photoMinHeight; // @synthesize photoMinHeight=_photoMinHeight;
 - (double)navbarTitleOffsetWithPercentMax:(double)arg1;
 - (double)photoBottomMarginWithPercentMax:(double)arg1;

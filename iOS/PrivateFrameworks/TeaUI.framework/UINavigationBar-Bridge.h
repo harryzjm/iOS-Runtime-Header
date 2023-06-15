@@ -4,12 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UINavigationBar.h>
+#import <UIKitCore/UINavigationBar.h>
 
 @interface UINavigationBar (Bridge)
 + (_Bool)ts_chromelessBarsEnabled;
+- (id)fetchRegularTitleViewInView:(id)arg1;
+- (id)fetchCustomTitleViewInView:(id)arg1;
 - (void)syncOpacityForBarButtonItems:(id)arg1;
 - (id)ts_fetchTitleView;
+- (id)ts_fetchCompressibleTitleView;
 - (void)ts_resetButtonTransforms;
 - (void)ts_setBackgroundEffects:(id)arg1;
 - (id)ts_contentView;

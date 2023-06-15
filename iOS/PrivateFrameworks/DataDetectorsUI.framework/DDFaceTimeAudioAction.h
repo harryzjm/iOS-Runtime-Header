@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (_Bool)isAvailable;
++ (id)matchingScheme;
 - (id)notificationTitle;
 - (id)notificationIconBundleIdentifier;
 - (int)interactionType;

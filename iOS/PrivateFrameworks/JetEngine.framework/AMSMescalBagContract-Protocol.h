@@ -6,14 +6,16 @@
 
 #import <JetEngine/AMSURLBagContract-Protocol.h>
 
+@class AMSBagValue;
+
 @protocol AMSMescalBagContract <AMSURLBagContract>
-@property(nonatomic, readonly) id mescalSetupURL;
-@property(nonatomic, readonly) id mescalCertificateURL;
+@property(readonly, nonatomic) AMSBagValue *mescalSetupURL;
+@property(readonly, nonatomic) AMSBagValue *mescalCertificateURL;
 
 @optional
-@property(nonatomic, readonly) id mescalSignSapResponses;
-@property(nonatomic, readonly) id mescalSignSapRequests;
-@property(nonatomic, readonly) id mescalSignedActions;
-@property(nonatomic, readonly) id mescalPrimingURL;
+@property(readonly, nonatomic) AMSBagValue *mescalSignSapResponses;
+@property(readonly, nonatomic) AMSBagValue *mescalSignSapRequests;
+@property(readonly, nonatomic) AMSBagValue *mescalSignedActions;
+@property(readonly, nonatomic) AMSBagValue *mescalPrimingURL;
 @end
 

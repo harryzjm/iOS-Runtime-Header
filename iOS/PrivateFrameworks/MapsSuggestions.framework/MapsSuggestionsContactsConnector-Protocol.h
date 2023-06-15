@@ -6,9 +6,11 @@
 
 #import <MapsSuggestions/MapsSuggestionsObject-Protocol.h>
 
-@class CNContact, CNPostalAddress, MapsSuggestionsContacts, NSArray, NSString;
+@class CNContact, CNPostalAddress, MapsSuggestionsContacts, NSArray, NSData, NSString;
 
 @protocol MapsSuggestionsContactsConnector <MapsSuggestionsObject>
+- (NSData *)dataForContactWithIdentifier:(NSString *)arg1;
+- (NSData *)imageDataForIdentifier:(NSString *)arg1;
 - (CNContact *)contactForIdentifier:(NSString *)arg1;
 - (NSString *)singleLineStringFromPostalAddress:(CNPostalAddress *)arg1 addCountryName:(_Bool)arg2;
 - (CNContact *)_crossPlatformUnifiedMeContactWithKeysToFetch:(NSArray *)arg1 error:(id *)arg2;

@@ -20,12 +20,14 @@
 
 @optional
 @property __weak id <CSIndexExtensionDelegate> extensionDelegate;
+- (void)transferDeleteJournalsForProtectionClass:(NSString *)arg1 toDirectory:(int)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)rewriteQueryWithQueryString:(NSString *)arg1 context:(CSSearchQueryContext *)arg2 matchInfo:(NSDictionary *)arg3 rewriteHandler:(void (^)(NSArray *, NSError *))arg4;
 - (void)deleteActionsWithIdentifiers:(NSArray *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)deleteActionsBeforeTime:(double)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)deleteAllInteractionsWithBundleID:(NSString *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)deleteAllUserActivities:(NSString *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)deleteAllSearchableItemsWithBundleID:(NSString *)arg1 protectionClass:(NSString *)arg2 shouldGC:(_Bool)arg3 completionHandler:(void (^)(NSError *))arg4;
+- (NSArray *)fileProviderDomainFilterQueries;
 - (void)queryPreheat:(NSArray *)arg1;
 - (void)recordEngagementForBundleID:(NSString *)arg1 uniqueIdentifier:(NSString *)arg2 protectionClass:(NSString *)arg3 userQuery:(NSString *)arg4 date:(NSDate *)arg5;
 - (void)startQueryTask:(SPCoreSpotlightTask *)arg1;

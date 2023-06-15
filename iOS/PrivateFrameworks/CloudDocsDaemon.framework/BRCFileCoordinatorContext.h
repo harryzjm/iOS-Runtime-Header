@@ -15,15 +15,15 @@ __attribute__((visibility("hidden")))
     int _startTracingCode;
     int _endTracingCode;
     brc_task_tracker *_tracker;
-    unsigned long long _sections;
     NSObject<OS_dispatch_queue> *_queue;
+    CDStruct_5b54e0e2 _sections;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(nonatomic) int endTracingCode; // @synthesize endTracingCode=_endTracingCode;
 @property(nonatomic) int startTracingCode; // @synthesize startTracingCode=_startTracingCode;
-@property(nonatomic) unsigned long long sections; // @synthesize sections=_sections;
+@property(nonatomic) CDStruct_5b54e0e2 sections; // @synthesize sections=_sections;
 @property(retain, nonatomic) brc_task_tracker *tracker; // @synthesize tracker=_tracker;
 - (id)initWithTracker:(id)arg1 queue:(id)arg2 startCode:(int)arg3 endCode:(int)arg4;
 

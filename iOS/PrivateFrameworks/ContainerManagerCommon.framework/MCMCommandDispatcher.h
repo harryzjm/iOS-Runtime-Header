@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSMutableDictionary *messageToCommandClassMap; // @synthesize messageToCommandClassMap=_messageToCommandClassMap;
-- (void)_ifNeededRelayMessage:(id)arg1 reply:(id)arg2 context:(id)arg3;
+- (id)_ifNeededRelayMessage:(id)arg1 context:(id)arg2;
 - (id)_commandFromCommandClass:(Class)arg1 message:(id)arg2 context:(id)arg3 reply:(id)arg4 error:(id *)arg5;
 - (id)_messageFromCommandClass:(Class)arg1 xpcMessage:(id)arg2 context:(id)arg3 error:(id *)arg4;
 - (Class)_commandClassFromXPCMessage:(id)arg1 context:(id)arg2 error:(id *)arg3;

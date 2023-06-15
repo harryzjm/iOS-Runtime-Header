@@ -15,6 +15,8 @@
     DTOSLogStackReferenceWrapper *prefix;
     DTOSLogStackReferenceWrapper *name;
     DTOSLogStackReferenceWrapper *tmpArgStruct;
+    unsigned short typeID;
+    _Bool skipped;
 }
 
 - (void).cxx_destruct;

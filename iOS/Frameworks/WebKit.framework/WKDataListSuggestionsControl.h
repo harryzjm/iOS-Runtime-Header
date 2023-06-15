@@ -11,7 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface WKDataListSuggestionsControl : NSObject
 {
-    struct WeakPtr<WebKit::WebDataListSuggestionsDropdownIOS, WTF::EmptyCounter> _dropdown;
+    struct WeakPtr<WebKit::WebDataListSuggestionsDropdownIOS, WTF::DefaultWeakPtrImpl> _dropdown;
     struct Vector<WebCore::DataListSuggestion, 0UL, WTF::CrashOnOverflow, 16UL, WTF::FastMalloc> _suggestions;
     _Bool _isShowingSuggestions;
     WKContentView *_view;

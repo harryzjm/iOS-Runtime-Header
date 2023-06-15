@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIControl.h>
+#import <UIKitCore/UIControl.h>
 
-@class AVMicaPackage, NSString, UIImageView, UIView;
+@class AVMicaPackage, NSString, UIImageView, UIPointerInteraction, UIView;
 @protocol AVMobileVolumeChromlesButtonControlDelegate;
 
 __attribute__((visibility("hidden")))
@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 {
     struct CGPoint _startPoint;
     _Bool _hasStartedPanning;
+    UIPointerInteraction *_micaPackageContainerPointerInteraction;
     NSString *_volumeIconState;
     id <AVMobileVolumeChromlesButtonControlDelegate> _delegate;
     AVMicaPackage *_micaPackage;
@@ -32,16 +33,25 @@ __attribute__((visibility("hidden")))
 - (void)_volumeControlButtonDidEndPanning;
 - (void)_volumeControlButtonPanningDidContinueWithXDelta:(double)arg1;
 - (void)_volumeControlButtonDidBeginPanning;
+- (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
 - (_Bool)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)layoutSubviews;
 - (struct CGSize)intrinsicContentSize;
 - (struct CGRect)hitRect;
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1;
+- (void)didMoveToWindow;
 - (void)cancelTrackingWithEvent:(id)arg1;
 - (void)endTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (_Bool)continueTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (_Bool)beginTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     _Bool _onScreen;
     _Bool _dimmed;
     _Bool _hasAppeared;
+    _Bool _delayArtworkChange;
     unsigned long long _context;
     MRUWaveformController *_controller;
     MRUWaveformSettings *_settings;
@@ -21,6 +22,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool delayArtworkChange; // @synthesize delayArtworkChange=_delayArtworkChange;
 @property(nonatomic) _Bool hasAppeared; // @synthesize hasAppeared=_hasAppeared;
 @property(retain, nonatomic) MRUWaveformData *waveformData; // @synthesize waveformData=_waveformData;
 @property(retain, nonatomic) MRUWaveformSettings *settings; // @synthesize settings=_settings;
@@ -31,6 +33,8 @@ __attribute__((visibility("hidden")))
 - (void)waveformController:(id)arg1 remoteRouteSymbolNameDidChange:(id)arg2;
 - (void)waveformController:(id)arg1 artworkImageDidChange:(id)arg2;
 - (void)waveformController:(id)arg1 waveformDidChange:(id)arg2;
+- (void)waveformControllerTrackDidChange:(id)arg1;
+- (void)updateState;
 - (struct CAFrameRateRange)framerateRangeForData:(id)arg1;
 - (void)updateWaveformWithData:(id)arg1;
 - (void)updateVisibility;
@@ -40,6 +44,7 @@ __attribute__((visibility("hidden")))
 - (void)loadView;
 - (_Bool)_canShowWhileLocked;
 - (id)initWithContext:(unsigned long long)arg1 waveformController:(id)arg2;
+- (id)initWithContext:(unsigned long long)arg1 waveformController:(id)arg2 settings:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

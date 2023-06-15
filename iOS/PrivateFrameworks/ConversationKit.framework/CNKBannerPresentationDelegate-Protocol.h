@@ -4,18 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CNKBannerPresentationManager, NSUUID;
+#import <ConversationKit/CNKSystemApertureProviderDelegate-Protocol.h>
 
-@protocol CNKBannerPresentationDelegate
-- (void)bannerPresentationManagerShowFullscreenUI:(CNKBannerPresentationManager *)arg1;
-- (void)bannerPresentationManager:(CNKBannerPresentationManager *)arg1 avUpgradedCallUUID:(NSUUID *)arg2;
-- (void)bannerPresentationManager:(CNKBannerPresentationManager *)arg1 updatedControlsManagerCallUUID:(NSUUID *)arg2;
-- (void)bannerPresentationManager:(CNKBannerPresentationManager *)arg1 requestToPresentBanner:(void (^)(_Bool))arg2;
-@property(nonatomic, readonly) _Bool isAlertAvailable;
-@property(nonatomic, readonly) _Bool hasPresentedFullScreenCallUI;
+@class NSUUID;
+
+@protocol CNKBannerPresentationDelegate <CNKSystemApertureProviderDelegate>
+@property(readonly, nonatomic) _Bool isAlertAvailable;
+@property(readonly, nonatomic) _Bool isPresentingFullScreenCallUI;
+@property(readonly, nonatomic) _Bool hasPresentedFullScreenCallUI;
+- (void)bannerPresentationManagerShowFullscreenUI;
+- (void)bannerPresentationManagerBannerPresentationManagerAVUpgradedCallUUID:(NSUUID *)arg1;
+- (void)bannerPresentationManagerUpdatedControlsManagerCallUUID:(NSUUID *)arg1;
+- (void)bannerPresentationManagerRequestToPresentBanner:(void (^)(_Bool))arg1;
 
 @optional
-- (void)bannerPresentationManagerShowFullscreenCallDetailsView:(CNKBannerPresentationManager *)arg1;
-- (void)bannerPresentationManager:(CNKBannerPresentationManager *)arg1 avDowngradedGroupUUID:(NSUUID *)arg2;
+- (_Bool)bannerPresentationManagerWantsSpringBoardIsLockedStatus;
+- (void)bannerPresentationManagerDidDismissBanner;
+- (void)bannerPresentationManagerShowFullscreenCallDetailsView;
+- (void)bannerPresentationManagerAVDowngradedGroupUUID:(NSUUID *)arg1;
 @end
 

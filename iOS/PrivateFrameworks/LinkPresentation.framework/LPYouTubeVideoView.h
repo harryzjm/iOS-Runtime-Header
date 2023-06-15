@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class LPYouTubePlayerView, NSString;
+@class LPVideo, LPYouTubePlayerView, NSString;
 
 __attribute__((visibility("hidden")))
 @interface LPYouTubeVideoView
@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) LPVideo *media; // @dynamic media;
 @property(readonly) Class superclass;
 
 @end

@@ -7,7 +7,6 @@
 @class NSData, NSObject;
 @protocol GTVMBuffer, OS_dispatch_queue, OS_dispatch_semaphore;
 
-__attribute__((visibility("hidden")))
 @interface GTBaseStreamTransport_capture
 {
     struct dy_transport_message_unpack_s *_tmu;

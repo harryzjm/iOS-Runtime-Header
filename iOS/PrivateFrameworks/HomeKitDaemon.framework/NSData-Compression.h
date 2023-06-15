@@ -13,9 +13,6 @@
 + (id)dataWithSQLite3ColumnNoCopy:(struct sqlite3_stmt *)arg1 column:(int)arg2;
 @property(readonly, copy) NSData *hmd_uncompressedData;
 @property(readonly, copy) NSData *hmd_compressedData;
-- (id)hm_generateSHA256;
-- (id)hm_generateSHA1;
-- (id)hm_stringInHexFormat;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

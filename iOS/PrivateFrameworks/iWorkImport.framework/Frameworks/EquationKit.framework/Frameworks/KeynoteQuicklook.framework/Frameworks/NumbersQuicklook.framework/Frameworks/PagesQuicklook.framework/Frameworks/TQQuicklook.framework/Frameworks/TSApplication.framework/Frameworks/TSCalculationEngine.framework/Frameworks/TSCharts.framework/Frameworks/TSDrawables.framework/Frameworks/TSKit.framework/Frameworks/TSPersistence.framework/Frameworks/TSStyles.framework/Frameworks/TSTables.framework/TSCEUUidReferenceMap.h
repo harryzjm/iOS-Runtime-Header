@@ -17,7 +17,6 @@
 - (void).cxx_destruct;
 - (void)encodeToArchive:(void *)arg1 alsoSave31Format:(_Bool)arg2 archiver:(id)arg3;
 - (void)upgradeForOwners:(id)arg1;
-- (_Bool)tooManyCellRefsFor31FormatArchive;
 - (id)initFromArchive:(const void *)arg1 dependencyTracker:(void *)arg2;
 - (void)getCellRefs:(void *)arg1 referringToUuids:(const void *)arg2;
 - (void)removeAllCellRefsInOwner:(unsigned short)arg1;

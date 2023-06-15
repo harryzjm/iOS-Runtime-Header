@@ -7,10 +7,10 @@
 __attribute__((visibility("hidden")))
 @interface _UITextInputSessionReplaceWithCandidateAction
 {
-    long long _type;
+    long long _replaceWithCandidateType;
 }
 
-@property(nonatomic) long long type; // @synthesize type=_type;
+@property(nonatomic) long long replaceWithCandidateType; // @synthesize replaceWithCandidateType=_replaceWithCandidateType;
 - (_Bool)changedContent;
 
 @end

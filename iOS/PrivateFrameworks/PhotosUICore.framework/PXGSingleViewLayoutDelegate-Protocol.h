@@ -13,6 +13,7 @@
 - (struct CGSize)singleViewLayout:(PXGSingleViewLayout *)arg1 desiredSizeForReferenceSize:(struct CGSize)arg2;
 
 @optional
+- (void)appearStateDidChangeForSingleViewLayout:(PXGSingleViewLayout *)arg1;
 - (PXGHitTestResult *)singleViewLayout:(PXGSingleViewLayout *)arg1 hitTestResultForSpriteReference:(PXGSpriteReference *)arg2;
 - (id <PXGSingleViewLayoutConfiguration>)configurationForSingleViewLayout:(PXGSingleViewLayout *)arg1;
 @end

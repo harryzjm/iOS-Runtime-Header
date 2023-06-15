@@ -26,6 +26,8 @@
 
 - (void).cxx_destruct;
 - (void)flushWithCompletion:(CDUnknownBlockType)arg1;
+- (void)logCompletionOfTestIdentifier:(id)arg1;
+- (void)logAnalyticsForCompletionOfTestIdentifier:(id)arg1;
 - (void)logUsageOfFunction:(id)arg1;
 - (void)logUsageOfClass:(id)arg1 method:(id)arg2;
 - (void)logEventWithName:(id)arg1;

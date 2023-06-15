@@ -6,13 +6,12 @@
 
 #import <PhotosUICore/NSObject-Protocol.h>
 
-@class NSMutableOrderedSet, NSNumber, NSSet, NSString, PXAssetCollectionReference, PXAssetReference, PXContentFilterState, PXLibraryFilterState;
+@class NSMutableOrderedSet, NSNumber, NSSet, NSString, PXAssetCollectionReference, PXAssetReference, PXContentFilterState;
 @protocol PXTapbackStatusManager;
 
 @protocol PXMutablePhotosViewModel <NSObject>
 @property(readonly, nonatomic) NSMutableOrderedSet *visibleAssetCollections;
 @property(copy, nonatomic) PXContentFilterState *contentFilterState;
-@property(copy, nonatomic) PXLibraryFilterState *libraryFilterState;
 @property(copy, nonatomic) CDUnknownBlockType effectProvider;
 @property(nonatomic) _Bool showLoadingPlaceholderWhenEmpty;
 @property(nonatomic) _Bool shouldAlwaysRespectToolbarActionPlacementPreference;
@@ -26,11 +25,13 @@
 @property(nonatomic, getter=isShowingAlternateContent) _Bool showingAlternateContent;
 @property(nonatomic, getter=isContentBelowTitle) _Bool contentBelowTitle;
 @property(nonatomic) _Bool footerHasImportantInformation;
+@property(nonatomic) long long footerVisibilityStyle;
 @property(nonatomic) _Bool wantsContentFilterIndicatorVisible;
 @property(nonatomic) _Bool wantsContentFilterVisible;
 @property(retain, nonatomic) id <PXTapbackStatusManager> tapbackStatusManager;
 @property(retain, nonatomic) PXAssetReference *dropTargetAssetReference;
 @property(copy, nonatomic) NSSet *draggedAssetReferences;
+@property(nonatomic, getter=isFaceModeEnabled) _Bool faceModeEnabled;
 @property(copy, nonatomic) NSNumber *userWantsAspectFitContent;
 @property(nonatomic) long long numberOfZoomSteps;
 @property(retain, nonatomic) Class cplActionManagerClass;

@@ -11,18 +11,13 @@
 @protocol _UIFocusEnvironmentPrivate <UIFocusEnvironment>
 
 @optional
-- (void)_setNeedsNonDeferredFocusUpdate;
-- (NSArray *)_linearFocusMovementSequences;
-- (long long)_preferredFocusMovementStyle;
-- (_Bool)_isEligibleForFocusOcclusion;
-- (_Bool)_isEligibleForFocusInteraction;
-- (_Bool)_allowsFocusToLeaveViaHeading:(unsigned long long)arg1;
+@property(readonly, copy, nonatomic, getter=_linearFocusMovementSequences) NSArray *linearFocusMovementSequences;
+@property(readonly, nonatomic, getter=_preferredFocusMovementStyle) long long preferredFocusMovementStyle;
+@property(readonly, nonatomic, getter=_isEligibleForFocusOcclusion) _Bool eligibleForFocusOcclusion;
+@property(readonly, nonatomic, getter=_isEligibleForFocusInteraction) _Bool eligibleForFocusInteraction;
 @property(nonatomic) _Bool areChildrenFocused;
-
-// Remaining properties
-@property(nonatomic, readonly) _Bool eligibleForFocusInteraction;
-@property(nonatomic, readonly) _Bool eligibleForFocusOcclusion;
-@property(nonatomic, readonly) NSArray *linearFocusMovementSequences;
-@property(nonatomic, readonly) long long preferredFocusMovementStyle;
+- (long long)_rotaryFocusMovementAxis;
+- (void)_setNeedsNonDeferredFocusUpdate;
+- (_Bool)_allowsFocusToLeaveViaHeading:(unsigned long long)arg1;
 @end
 

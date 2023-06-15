@@ -24,9 +24,8 @@
     XCTActivityRecordStack *_activityRecordStack;
 }
 
-+ (_Bool)hasContextInThread:(id)arg1;
-+ (id)currentContextInThread:(id)arg1;
-+ (id)_currentContextInThread:(id)arg1;
++ (_Bool)hasCurrentContext;
++ (id)currentContextIfAvailable;
 + (void)_runInChildOfContext:(id)arg1 forTestCase:(id)arg2 markAsReportingBase:(_Bool)arg3 block:(CDUnknownBlockType)arg4;
 + (void)runInContextForTestCase:(id)arg1 markAsReportingBase:(_Bool)arg2 block:(CDUnknownBlockType)arg3;
 + (void)runInContextForTestCase:(id)arg1 block:(CDUnknownBlockType)arg2;

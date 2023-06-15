@@ -9,7 +9,8 @@
 @class NSString, NSURL;
 
 @protocol IMAssistantCommSafetyManager <NSObject>
-@property(readonly, nonatomic) _Bool checkSensitivePhotos;
-- (void)isSensitiveImage:(NSURL *)arg1 withChatID:(NSString *)arg2 completionHandler:(void (^)(_Bool, NSError *))arg3;
+@property(readonly, nonatomic) _Bool checksForSensitivityOnReceive;
+@property(readonly, nonatomic) _Bool checksForSensitivityOnSend;
+- (void)isSensitiveContent:(NSURL *)arg1 withChatID:(NSString *)arg2 completionHandler:(void (^)(_Bool, NSError *))arg3;
 @end
 

@@ -31,12 +31,13 @@ __attribute__((visibility("hidden")))
 - (void)_dismissConfirmationAlertController;
 - (void)_handleAppDidEnterBackgroundNotification:(id)arg1;
 - (void)_checkForAccountSignInWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)_startDownloadIfPossibleRemovingFromUIOnCancellationOrFailure:(_Bool)arg1;
+- (void)_startDownloadIfPossibleRemovingFromUIOnCancellationOrFailure:(_Bool)arg1 preferEnhancedDownload:(_Bool)arg2;
 - (_Bool)_shouldShowRenewalOption;
 - (id)_renewalAlertAction;
 - (void)_showDownloadingInfoDialog;
 - (void)_askUserAndDeleteIfNeeded;
 - (_Bool)ignoreDownloadActionIfInRetailDemoMode;
+- (void)performAction:(_Bool)arg1 confirmBeforeStopDownloading:(_Bool)arg2 preferEnhancedDownload:(_Bool)arg3;
 - (void)performAction:(_Bool)arg1 confirmBeforeStopDownloading:(_Bool)arg2;
 - (id)initWithViewModel:(id)arg1;
 

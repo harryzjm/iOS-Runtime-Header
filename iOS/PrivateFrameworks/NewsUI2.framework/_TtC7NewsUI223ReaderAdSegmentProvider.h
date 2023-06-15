@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *needsUpdate;
     MISSING_TYPE *appConfigurationManager;
-    MISSING_TYPE *personalizationData;
+    MISSING_TYPE *aggregateStoreProvider;
     MISSING_TYPE *readerAdSegmentLastUpdatedKey;
 }
 

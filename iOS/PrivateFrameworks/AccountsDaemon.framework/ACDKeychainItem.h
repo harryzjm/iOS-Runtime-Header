@@ -13,12 +13,12 @@ __attribute__((visibility("hidden")))
 {
     NSMutableDictionary *_properties;
     NSMutableSet *_dirtyProperties;
-    const struct __CFData *_persistentRef;
+    struct __CFData *_persistentRef;
 }
 
 + (id)new;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) const struct __CFData *persistentRef; // @synthesize persistentRef=_persistentRef;
+@property(readonly, nonatomic) struct __CFData *persistentRef; // @synthesize persistentRef=_persistentRef;
 - (id)debugDescription;
 - (id)description;
 - (void)_reloadProperties;
@@ -41,8 +41,8 @@ __attribute__((visibility("hidden")))
 - (_Bool)save:(id *)arg1;
 - (void)reload;
 - (void)dealloc;
-- (id)initWithPersistentRef:(const struct __CFData *)arg1 properties:(id)arg2;
-- (id)initWithPersistentRef:(const struct __CFData *)arg1;
+- (id)initWithPersistentRef:(struct __CFData *)arg1 properties:(id)arg2;
+- (id)initWithPersistentRef:(struct __CFData *)arg1;
 - (id)init;
 
 @end

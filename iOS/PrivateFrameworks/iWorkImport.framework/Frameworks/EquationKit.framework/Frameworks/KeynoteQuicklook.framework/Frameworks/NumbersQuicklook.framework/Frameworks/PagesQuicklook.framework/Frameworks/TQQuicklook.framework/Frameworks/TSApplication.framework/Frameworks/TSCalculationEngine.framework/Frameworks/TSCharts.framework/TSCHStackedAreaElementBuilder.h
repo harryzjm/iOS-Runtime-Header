@@ -8,6 +8,7 @@
 {
 }
 
+- (unsigned long long)countOfSummaryLabelsForGroups:(id)arg1 forBodyLayout:(id)arg2 outNewTransforms:(struct CGAffineTransform **)arg3 outNewElementSizes:(struct CGSize **)arg4 outNewClipRects:(struct CGRect **)arg5 outNewStrings:(id *)arg6;
 - (_Bool)p_addBottomStroke:(CDStruct_1cb6887c *)arg1 toPath:(struct CGPath *)arg2 seriesIndex:(unsigned long long)arg3 withPointsArray:(CDStruct_460b8ffe *)arg4 withCount:(unsigned long long)arg5;
 - (CDStruct_40a92360 *)p_centerPointsForSeries:(id)arg1 groupIndexSet:(id)arg2 nullsUseIntercept:(_Bool)arg3 plotAreaFrame:(struct CGRect)arg4;
 - (CDStruct_460b8ffe *)p_createPointArrayForSeries:(id)arg1 inAreaFrame:(struct CGRect)arg2 groupIndexSet:(id)arg3 outCount:(unsigned long long *)arg4;

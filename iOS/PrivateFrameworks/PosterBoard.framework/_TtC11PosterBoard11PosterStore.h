@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *posterFilter;
     MISSING_TYPE *currentSelectionIndex;
+    MISSING_TYPE *significantEventsCounter;
     MISSING_TYPE *glue;
     MISSING_TYPE *allPosters;
     MISSING_TYPE *observers;
@@ -27,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (void)posterExtensionDataStore:(id)arg1 didUpdateSelectedConfiguration:(id)arg2 associatedConfiguration:(id)arg3;
 - (void)posterExtensionDataStore:(id)arg1 posterConfiguration:(id)arg2 didUpdateAssociatedHomeScreenPosterConfigurationTo:(id)arg3;
 - (void)posterExtensionDataStore:(id)arg1 didUpdateConfiguration:(id)arg2;
+- (void)posterExtensionDataStore:(id)arg1 didUpdateSwitcherConfiguration:(id)arg2;
 - (void)posterExtensionDataStore:(id)arg1 didDeleteConfiguration:(id)arg2;
 - (void)posterExtensionDataStore:(id)arg1 didAddConfiguration:(id)arg2;
 - (void)posterExtensionDataStoreDidUpdateConfigurations:(id)arg1;

@@ -16,6 +16,7 @@
     MISSING_TYPE *store;
     MISSING_TYPE *userNotificationCenter;
     MISSING_TYPE *softwareLibrary;
+    MISSING_TYPE *launchServicesBundleRecord;
 }
 
 @end

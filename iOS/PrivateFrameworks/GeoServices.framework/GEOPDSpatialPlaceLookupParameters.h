@@ -24,9 +24,11 @@ __attribute__((visibility("hidden")))
     struct os_unfair_lock_s _readerLock;
     int _count;
     int _radius;
+    int _spatialPlaceLookupRequestVersion;
     struct {
         unsigned int has_count:1;
         unsigned int has_radius:1;
+        unsigned int has_spatialPlaceLookupRequestVersion:1;
         unsigned int read_unknownFields:1;
         unsigned int read_categoryFilters:1;
         unsigned int read_excludeIconCategoryFilters:1;

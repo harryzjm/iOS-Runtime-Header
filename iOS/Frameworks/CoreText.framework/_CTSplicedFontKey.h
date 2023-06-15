@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     NSString *_name;
     NSString *_language;
     double _lineHeightRatio;
+    double _lineSpacingOverride;
     long long _legibilityWeight;
     unsigned long long _sizeCategory;
     NSString *_design;
@@ -35,6 +36,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned long long sizeCategory; // @synthesize sizeCategory=_sizeCategory;
 @property(nonatomic) _Bool ignoreLegibilityWeight; // @synthesize ignoreLegibilityWeight=_ignoreLegibilityWeight;
 @property(nonatomic) long long legibilityWeight; // @synthesize legibilityWeight=_legibilityWeight;
+@property(nonatomic) double lineSpacingOverride; // @synthesize lineSpacingOverride=_lineSpacingOverride;
 @property(nonatomic) double lineHeightRatio; // @synthesize lineHeightRatio=_lineHeightRatio;
 @property(retain, nonatomic) NSString *language; // @synthesize language=_language;
 @property(retain, nonatomic) NSString *name; // @synthesize name=_name;

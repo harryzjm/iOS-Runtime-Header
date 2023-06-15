@@ -21,9 +21,13 @@
     unsigned long long _pageIndex;
     unsigned long long _internalPageCount;
     TPPaginatedPageController *_pageController;
+    unsigned long long _startPageIndex;
+    unsigned long long _lastPageIndex;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long lastPageIndex; // @synthesize lastPageIndex=_lastPageIndex;
+@property(nonatomic) unsigned long long startPageIndex; // @synthesize startPageIndex=_startPageIndex;
 @property(nonatomic) _Bool tornDown; // @synthesize tornDown=_tornDown;
 @property(retain, nonatomic) TPPaginatedPageController *pageController; // @synthesize pageController=_pageController;
 @property(nonatomic) unsigned long long internalPageCount; // @synthesize internalPageCount=_internalPageCount;
@@ -41,6 +45,7 @@
 - (void)teardown;
 - (void)setup;
 - (void)setupPencilAnnotationsAndHyperlinks;
+- (void)invalidateOutputPageList;
 - (id)initWithDocumentRoot:(id)arg1;
 - (unsigned long long)pageCount;
 - (double)progressForCurrentPage;
@@ -50,6 +55,7 @@
 - (id)currentInfos;
 - (struct CGRect)unscaledClipRect;
 - (struct CGRect)boundsRect;
+- (void)setOptions:(id)arg1;
 
 @end
 

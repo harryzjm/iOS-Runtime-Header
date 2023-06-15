@@ -18,6 +18,8 @@
 - (_MTLIndirectDispatchThreadsArguments *)dispatchThreadsArguments;
 - (_MTLIndirectDispatchThreadgroupsArguments *)dispatchThreadgroupsArguments;
 - (unsigned long long)getCommandType;
+- (unsigned long long)getKernelBufferAddressAtIndex:(unsigned long long)arg1;
+- (unsigned long long)getKernelAttributeStrideAtIndex:(unsigned long long)arg1;
 - (void *)getKernelBufferAtIndex:(unsigned long long)arg1;
 @end
 

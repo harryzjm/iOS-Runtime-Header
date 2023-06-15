@@ -6,11 +6,12 @@
 
 #import <SpringBoardUIServices/BKOperationDelegate-Protocol.h>
 
-@class BKFaceDetectStateInfo, BKOperation;
+@class BKFaceDetectStateInfo, BKMotionDetectStateInfo, BKOperation;
 
 @protocol BKFaceDetectOperationDelegate <BKOperationDelegate>
 
 @optional
+- (void)operation:(BKOperation *)arg1 motionDetectStateChanged:(BKMotionDetectStateInfo *)arg2;
 - (void)operation:(BKOperation *)arg1 faceDetectStateChanged:(BKFaceDetectStateInfo *)arg2;
 @end
 

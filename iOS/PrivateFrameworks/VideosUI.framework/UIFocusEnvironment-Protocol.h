@@ -10,17 +10,17 @@
 @protocol UIFocusEnvironment, UIFocusItemContainer;
 
 @protocol UIFocusEnvironment <NSObject>
+@property(readonly, nonatomic) id <UIFocusItemContainer> focusItemContainer;
+@property(readonly, nonatomic) __weak id <UIFocusEnvironment> parentFocusEnvironment;
+@property(readonly, copy, nonatomic) NSArray *preferredFocusEnvironments;
 - (void)didUpdateFocusInContext:(UIFocusUpdateContext *)arg1 withAnimationCoordinator:(UIFocusAnimationCoordinator *)arg2;
 - (_Bool)shouldUpdateFocusInContext:(UIFocusUpdateContext *)arg1;
 - (void)updateFocusIfNeeded;
 - (void)setNeedsFocusUpdate;
-@property(nonatomic, readonly) id <UIFocusItemContainer> focusItemContainer;
-@property(nonatomic, readonly) id <UIFocusEnvironment> parentFocusEnvironment;
-@property(nonatomic, readonly) NSArray *preferredFocusEnvironments;
 
 @optional
-@property(nonatomic, readonly) NSString *focusGroupIdentifier;
-@property(nonatomic, readonly) UIView *preferredFocusedView;
+@property(readonly, copy, nonatomic) NSString *focusGroupIdentifier;
+@property(readonly, nonatomic) __weak UIView *preferredFocusedView;
 - (NSString *)soundIdentifierForFocusUpdateInContext:(UIFocusUpdateContext *)arg1;
 @end
 

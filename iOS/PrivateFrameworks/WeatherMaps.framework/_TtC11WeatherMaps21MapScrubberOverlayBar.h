@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIControl.h>
+#import <UIKitCore/UIControl.h>
 
 @class MISSING_TYPE;
 
@@ -25,7 +25,10 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *overlappingLabelInsets;
     MISSING_TYPE *nowLabel;
     MISSING_TYPE *todayLabel;
+    MISSING_TYPE *lastBounds;
+    MISSING_TYPE *forceNeedsLayout;
     MISSING_TYPE *$__lazy_storage_$_gestureRecognizer;
+    MISSING_TYPE *accessibilityDateFormatter;
     MISSING_TYPE *model;
     MISSING_TYPE *current;
 }

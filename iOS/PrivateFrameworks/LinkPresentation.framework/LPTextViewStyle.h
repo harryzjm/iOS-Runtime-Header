@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     _Bool _shouldScaleMaximumLinesWithDynamicType;
     float _hyphenationFactor;
     unsigned int _maximumLines;
+    unsigned int _maximumLinesWithMedia;
     unsigned int _maximumCharacters;
     UIColor *_color;
     UIFont *_font;
@@ -39,6 +40,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) LPPointUnit *firstLineLeading; // @synthesize firstLineLeading=_firstLineLeading;
 @property(nonatomic) long long textAlignment; // @synthesize textAlignment=_textAlignment;
 @property(nonatomic) unsigned int maximumCharacters; // @synthesize maximumCharacters=_maximumCharacters;
+@property(nonatomic) unsigned int maximumLinesWithMedia; // @synthesize maximumLinesWithMedia=_maximumLinesWithMedia;
 @property(nonatomic) unsigned int maximumLines; // @synthesize maximumLines=_maximumLines;
 @property(nonatomic) float hyphenationFactor; // @synthesize hyphenationFactor=_hyphenationFactor;
 @property(retain, nonatomic) NSString *compositingFilter; // @synthesize compositingFilter=_compositingFilter;

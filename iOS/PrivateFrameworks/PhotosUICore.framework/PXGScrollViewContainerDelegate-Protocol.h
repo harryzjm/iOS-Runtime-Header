@@ -13,7 +13,7 @@
 @optional
 - (NSArray *)focusItemsForScrollViewContainer:(PXGScrollViewContainer *)arg1 inRect:(struct CGRect)arg2;
 - (void)scrollViewContainerDidEndScrolling:(PXGScrollViewContainer *)arg1;
-- (void)scrollViewContainerWillEndScrolling:(PXGScrollViewContainer *)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
+- (void)scrollViewContainerWillEndScrolling:(PXGScrollViewContainer *)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3 currentContentOffset:(struct CGPoint)arg4;
 - (void)scrollViewContainerDidScroll:(PXGScrollViewContainer *)arg1;
 - (void)scrollViewContainerWillBeginScrolling:(PXGScrollViewContainer *)arg1;
 @end

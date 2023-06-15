@@ -8,6 +8,7 @@
 @protocol FCAudioPlaylistObserving;
 
 @protocol FCAudioPlaylistType
+@property(readonly, nonatomic) NSArray *articleIDs;
 - (void)save;
 - (void)removeObserver:(id <FCAudioPlaylistObserving>)arg1;
 - (void)addObserver:(id <FCAudioPlaylistObserving>)arg1;
@@ -16,6 +17,5 @@
 - (void)insertArticleID:(NSString *)arg1 atIndex:(unsigned long long)arg2;
 - (NSDate *)dateAddedForArticleID:(NSString *)arg1;
 - (_Bool)containsArticleID:(NSString *)arg1;
-@property(nonatomic, readonly) NSArray *articleIDs;
 @end
 

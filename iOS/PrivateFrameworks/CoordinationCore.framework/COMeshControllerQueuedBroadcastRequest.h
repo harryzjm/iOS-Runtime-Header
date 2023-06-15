@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property(readonly, nonatomic) COMeshNode *destination; // @synthesize destination=_destination;
 @property(readonly, nonatomic) COMeshRequest *request; // @synthesize request=_request;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)invokeCallbackWithError:(id)arg1;
 - (id)command;
 - (id)initWithRequest:(id)arg1 destination:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;

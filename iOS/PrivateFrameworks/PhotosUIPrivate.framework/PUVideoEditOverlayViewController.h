@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
 @class CALayer, NSString, NUMediaView, PXUISubjectTrackingView;
 @protocol PUVideoEditOverlayViewControllerDelegate;
@@ -12,6 +12,7 @@
 __attribute__((visibility("hidden")))
 @interface PUVideoEditOverlayViewController : UIViewController
 {
+    _Bool _disabledForCinematographyScriptLoad;
     id <PUVideoEditOverlayViewControllerDelegate> _overlayControllerDelegate;
     PXUISubjectTrackingView *_trackingView;
     NUMediaView *_mediaView;
@@ -19,6 +20,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool disabledForCinematographyScriptLoad; // @synthesize disabledForCinematographyScriptLoad=_disabledForCinematographyScriptLoad;
 @property(retain, nonatomic) CALayer *safeAreaMask; // @synthesize safeAreaMask=_safeAreaMask;
 @property(retain, nonatomic) NUMediaView *mediaView; // @synthesize mediaView=_mediaView;
 @property(retain, nonatomic) PXUISubjectTrackingView *trackingView; // @synthesize trackingView=_trackingView;
@@ -43,6 +45,7 @@ __attribute__((visibility("hidden")))
 - (void)trackingWasEdited;
 - (CDStruct_1b6d18a9)unadjustedTimeForPlayerTime:(CDStruct_1b6d18a9)arg1;
 - (void)setNeedsUpdateTrackingFrame;
+- (void)enableUIForCinematographyScriptLoad:(_Bool)arg1;
 - (void)setHidden:(_Bool)arg1 animated:(_Bool)arg2;
 @property(nonatomic, getter=isHidden) _Bool hidden;
 - (void)scriptDidUpdate;

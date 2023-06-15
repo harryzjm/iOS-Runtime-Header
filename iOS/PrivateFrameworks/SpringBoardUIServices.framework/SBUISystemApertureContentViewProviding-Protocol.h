@@ -7,8 +7,10 @@
 #import <SpringBoardUIServices/NSObject-Protocol.h>
 
 @class UIView;
+@protocol SBUISystemApertureContentViewContaining;
 
 @protocol SBUISystemApertureContentViewProviding <NSObject>
+@property(nonatomic) __weak id <SBUISystemApertureContentViewContaining> contentContainer;
 @property(readonly, nonatomic) UIView *providedView;
 @end
 

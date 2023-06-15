@@ -9,8 +9,7 @@
 @class UIButton;
 
 @protocol _UIContentViewPopupMenuButtonProviding <NSObject>
-- (void)_setPopupMenuButtonDidChangeHandler:(void (^)(void))arg1;
-@property(nonatomic, copy) CDUnknownBlockType _popupMenuButtonDidChangeHandler;
-@property(nonatomic, readonly) UIButton *_popupMenuButton;
+@property(copy, nonatomic, setter=_setPopupMenuButtonDidChangeHandler:) CDUnknownBlockType _popupMenuButtonDidChangeHandler;
+@property(readonly, nonatomic) UIButton *_popupMenuButton;
 @end
 

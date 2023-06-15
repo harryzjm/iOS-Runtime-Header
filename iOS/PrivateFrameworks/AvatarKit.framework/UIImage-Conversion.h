@@ -7,12 +7,12 @@
 #import <UIKit/UIImage.h>
 
 @interface UIImage (Conversion)
-+ (id)avt_animatedImageWithDataRepresentation:(id)arg1 ofType:(struct __CFString *)arg2;
++ (id)avt_animatedImageWithDataRepresentation:(id)arg1 ofType:(id)arg2;
 + (id)animatedImageWithAPNGRepresentation:(id)arg1;
 + (id)animatedImageWithHEICSRepresentation:(id)arg1;
 + (id)animatedImageWithHEICRepresentation:(id)arg1;
 - (id)copyByReorderingImagesWithFirstImageAtTime:(double)arg1;
-- (id)avt_dataRepresentationForType:(struct __CFString *)arg1;
+- (id)avt_dataRepresentationForTypeIdentifier:(id)arg1;
 - (id)APNGRepresentation;
 - (id)HEICSRepresentation;
 - (id)HEICRepresentation;

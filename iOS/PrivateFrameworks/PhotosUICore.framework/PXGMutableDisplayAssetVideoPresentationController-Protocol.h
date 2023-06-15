@@ -21,7 +21,7 @@
 @property(nonatomic) CDStruct_3c1748cc playbackTimeRange;
 @property(nonatomic) long long desiredPlayState;
 @property(nonatomic) _Bool shouldDisableAutomaticPixelBufferUpdates;
-@property(nonatomic) _Bool shouldDisplayPreviousNonnullPixelBuffer;
+@property(nonatomic) _Bool shouldDisplayPreviousNonNullPixelBuffer;
 - (void)stopObservingBoundaryTime:(CDStruct_198678f7)arg1;
 - (void)startObservingBoundaryTime:(CDStruct_198678f7)arg1;
 - (void)synchronouslySeekToDesiredTime:(CDStruct_198678f7)arg1 updatePixelBufferSource:(_Bool)arg2;

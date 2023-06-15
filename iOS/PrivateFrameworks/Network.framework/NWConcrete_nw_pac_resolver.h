@@ -19,6 +19,9 @@ __attribute__((visibility("hidden")))
     struct __CFString *pacScript;
     struct __CFData *auditToken;
     struct __CFString *bundleIdentifier;
+    struct __CFRunLoopSource *pacResolver;
+    struct __CFRunLoopTimer *timeoutTimer;
+    struct os_unfair_lock_s runloopLock;
     char logging_id_str[75];
     unsigned int https_is_opaque:1;
     unsigned int use_tls:1;

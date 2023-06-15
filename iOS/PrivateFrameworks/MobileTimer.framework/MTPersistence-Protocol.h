@@ -9,6 +9,8 @@
 @class NSString;
 
 @protocol MTPersistence <NSObject>
+- (void)synchronize;
+- (void)removeObjectForKey:(NSString *)arg1;
 - (void)setFloat:(float)arg1 forKey:(NSString *)arg2;
 - (void)setObject:(id)arg1 forKey:(NSString *)arg2;
 - (float)floatForKey:(NSString *)arg1;

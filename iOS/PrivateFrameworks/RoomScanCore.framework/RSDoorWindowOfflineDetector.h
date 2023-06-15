@@ -11,11 +11,10 @@
 @interface RSDoorWindowOfflineDetector : NSObject
 {
     RSOrthographicDetector *_doorWindowDetector;
+    _Bool _isCurvedWindowDoorEnabled;
 }
 
 - (void).cxx_destruct;
-- (void)setBeautificationEnable:(_Bool)arg1;
-- (id)runWithPointCloud:(id)arg1 floorPlan:(id)arg2 lcnnOpenings:(id)arg3;
 - (id)init;
 
 @end

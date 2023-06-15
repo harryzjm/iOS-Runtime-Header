@@ -7,6 +7,7 @@
 #import <Foundation/NSLocale.h>
 
 @interface NSLocale (CRKAdditions)
++ (_Bool)crk_canShowGivenNameFamilyInitial;
 + (_Bool)crk_showPhoneticNames;
 @end
 

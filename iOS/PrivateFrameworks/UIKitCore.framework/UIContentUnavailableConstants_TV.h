@@ -10,6 +10,25 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)sharedConstants;
+- (long long)defaultUserInterfaceRenderingMode;
+- (struct NSDirectionalEdgeInsets)defaultDirectionalLayoutMarginsForTraitCollection:(id)arg1;
+- (double)defaultEmptyButtonToSecondaryButtonPaddingForTraitCollection:(id)arg1;
+- (double)defaultEmptyTextToButtonPaddingForTraitCollection:(id)arg1;
+- (double)defaultEmptyTextToSecondaryTextPaddingForTraitCollection:(id)arg1;
+- (double)defaultLoadingImageToTextPaddingForTraitCollection:(id)arg1;
+- (double)defaultEmptyImageToTextPaddingForTraitCollection:(id)arg1;
+- (_Bool)prefersSideBySideButtonAndSecondaryButton;
+- (id)defaultButtonConfigurationForTraitCollection:(id)arg1;
+- (id)defaultSecondaryTextColor;
+- (id)defaultEmptySecondaryTextFontForTraitCollection:(id)arg1;
+- (id)defaultLoadingTextColor;
+- (id)defaultEmptyTextColorForTraitCollection:(id)arg1;
+- (id)defaultLoadingTextFontForTraitCollection:(id)arg1;
+- (id)defaultEmptyTextFontForTraitCollection:(id)arg1;
+- (id)defaultLoadingImageTintColor;
+- (id)defaultEmptyImageTintColor;
+- (id)defaultLoadingImageSymbolConfigurationForTraitCollection:(id)arg1;
+- (id)defaultEmptyImageSymbolConfigurationForTraitCollection:(id)arg1;
 
 @end
 

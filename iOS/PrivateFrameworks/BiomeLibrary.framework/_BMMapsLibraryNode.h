@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 + (id)validKeyPaths;
 + (id)streamNames;
 + (id)identifier;
++ (id)Suggestions;
 + (id)ShareEta;
 
 @end

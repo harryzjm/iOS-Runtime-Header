@@ -11,6 +11,8 @@
 @protocol AAUISignInViewControllerDelegate <NSObject>
 
 @optional
+- (void)signInViewControllerDidSelectChildSignIn:(AAUISignInViewController *)arg1;
+- (void)signInViewControllerDidSkip:(AAUISignInViewController *)arg1;
 - (void)signInViewControllerDidCancel:(AAUISignInViewController *)arg1;
 - (void)signInViewController:(AAUISignInViewController *)arg1 didCompleteWithAuthenticationResults:(NSDictionary *)arg2;
 @end

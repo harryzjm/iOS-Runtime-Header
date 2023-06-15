@@ -15,6 +15,7 @@
 @property(nonatomic) _Bool systemShellManagesKeyboardFocus;
 @property(nonatomic) __weak id <_UIEventDeferringSystemShellBehaviorDelegate> systemShellBehaviorDelegate;
 - (_Bool)shouldAllowFallbackWindowForEnvironment:(BKSHIDEventDeferringEnvironment *)arg1;
+- (_Bool)wantsSystemKeyCommandOverlayRules;
 - (long long)compareRemoteRuleOwningElement:(id <_UIEventDeferringRuleOwning>)arg1 toElement:(id <_UIEventDeferringRuleOwning>)arg2 inEnvironment:(BKSHIDEventDeferringEnvironment *)arg3;
 - (_Bool)shouldSuppressRemoteRuleForOwningElement:(id <_UIEventDeferringRuleOwning>)arg1 inEnvironment:(BKSHIDEventDeferringEnvironment *)arg2;
 - (_Bool)shouldDisableRemoteViewControllerEventDeferringForKeyboardKeyWindowChanges;

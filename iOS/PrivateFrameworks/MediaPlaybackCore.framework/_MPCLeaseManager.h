@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (void)beginIgnoringLeaseEndEventsForReason:(id)arg1;
 - (void)prepareForPlaybackWithAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getHasPreparedLeaseForAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)dealloc;
 - (id)initWithPlaybackEngine:(id)arg1;
 
 // Remaining properties

@@ -27,6 +27,7 @@
 @property(readonly, nonatomic, getter=_sectionFooterToLastRowPadding) double sectionFooterToLastRowPadding;
 @property(readonly, nonatomic, getter=_sectionHeaderToFirstRowPadding) double sectionHeaderToFirstRowPadding;
 @property(readonly, nonatomic, getter=_paddingAboveSectionHeaders) double paddingAboveSectionHeaders;
+@property(readonly, nonatomic, getter=_paddingAboveFirstSectionHeader) double paddingAboveFirstSectionHeader;
 @property(readonly, nonatomic, getter=_tableContentInset) struct UIEdgeInsets tableContentInset;
 @property(readonly, nonatomic, getter=_contentInset) struct UIEdgeInsets _contentInset;
 @property(readonly, nonatomic, getter=_sidePadding) double sidePadding;

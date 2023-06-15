@@ -148,8 +148,8 @@
 @property(readonly, nonatomic) NSArray *footerStorages;
 @property(readonly, nonatomic) NSArray *headerStorages;
 - (id)p_storagesForHeaderType:(long long)arg1;
-- (long long)headerFragmentIndexForModel:(id)arg1;
-- (long long)headerFooterTypeForModel:(id)arg1;
+- (long long)headerFragmentIndexForStorage:(id)arg1;
+- (long long)headerFooterTypeForStorage:(id)arg1;
 - (_Bool)isHeaderFooterEmpty:(long long)arg1 fragmentAtIndex:(long long)arg2;
 - (_Bool)isHeaderFooterEmpty:(long long)arg1;
 - (id)headerFooter:(long long)arg1 fragmentAtIndex:(long long)arg2;

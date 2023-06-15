@@ -6,9 +6,11 @@
 
 #import <HomeKitDaemonLegacy/NSObject-Protocol.h>
 
-@class HMDAppleMediaAccessory, HMDMediaGroupsAggregator, HMDRoom, NSArray, NSString;
+@class HMDAppleMediaAccessory, HMDMediaGroupsAggregator, HMDRoom, NSArray, NSString, NSUUID;
+@protocol HMDMediaDestinationManager;
 
 @protocol HMDMediaGroupsAggregatorDataSource <NSObject>
+- (id <HMDMediaDestinationManager>)destinationManagerWithIdentifier:(NSUUID *)arg1 mediaGroupsAggregator:(HMDMediaGroupsAggregator *)arg2;
 - (NSArray *)roomsForMediaGroupsAggregator:(HMDMediaGroupsAggregator *)arg1;
 - (HMDRoom *)roomForAllDestinationParentIdentifiers:(NSArray *)arg1 mediaGroupsAggregator:(HMDMediaGroupsAggregator *)arg2;
 - (NSArray *)appleMediaAccessoriesForMediaGroupsAggregator:(HMDMediaGroupsAggregator *)arg1;

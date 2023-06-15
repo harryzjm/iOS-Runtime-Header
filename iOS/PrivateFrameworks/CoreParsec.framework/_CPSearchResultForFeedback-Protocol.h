@@ -13,6 +13,8 @@
 @property(readonly, nonatomic) unsigned long long whichSectionbundleid;
 @property(readonly, nonatomic) unsigned long long whichResultbundleidentifier;
 @property(readonly, nonatomic) NSData *jsonData;
+@property(nonatomic) _Bool didRerankPersonalResult;
+@property(nonatomic) _Bool containsPersonalResult;
 @property(retain, nonatomic) _CPCardForFeedback *compactCard;
 @property(retain, nonatomic) _CPCardForFeedback *inlineCard;
 @property(retain, nonatomic) _CPCardForFeedback *card;

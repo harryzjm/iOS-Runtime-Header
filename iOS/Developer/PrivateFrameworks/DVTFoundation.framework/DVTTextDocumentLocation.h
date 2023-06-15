@@ -16,6 +16,9 @@
 }
 
 + (_Bool)supportsSecureCoding;
++ (void)assertValidityOfStartingColumnNumber:(long long)arg1 endingColumnNumber:(long long)arg2 startingLineNumber:(long long)arg3 endingLineNumber:(long long)arg4 characterRange:(struct _NSRange)arg5 locationEncoding:(long long)arg6;
++ (_Bool)validateStartingColumnNumber:(long long)arg1 endingColumnNumber:(long long)arg2 startingLineNumber:(long long)arg3 endingLineNumber:(long long)arg4 characterRange:(struct _NSRange)arg5 locationEncoding:(long long)arg6 error:(id *)arg7;
++ (id)validateFailureMessageForStartingColumnNumber:(long long)arg1 endingColumnNumber:(long long)arg2 startingLineNumber:(long long)arg3 endingLineNumber:(long long)arg4 characterRange:(struct _NSRange)arg5 locationEncoding:(long long)arg6;
 - (void).cxx_destruct;
 @property(retain) id representedObject; // @synthesize representedObject=_representedObject;
 @property(readonly) long long locationEncoding; // @synthesize locationEncoding=_locationEncoding;
@@ -24,8 +27,10 @@
 @property(readonly) long long startingLineNumber; // @synthesize startingLineNumber=_startingLineNumber;
 @property(readonly) long long endingColumnNumber; // @synthesize endingColumnNumber=_endingColumnNumber;
 @property(readonly) long long startingColumnNumber; // @synthesize startingColumnNumber=_startingColumnNumber;
-- (id)dvt_persistableStringRepresentation;
-- (id)dvt_initFromPersistableStringRepresentation:(id)arg1 error:(out id *)arg2;
+- (id)pasteboardRepresentation;
+- (_Bool)_populateLocationParameters:(id)arg1 decodableClassName:(id *)arg2 error:(id *)arg3;
+- (void)populateLocationParameters:(id)arg1;
+- (id)initWithURL:(id)arg1 locationParameters:(id)arg2 error:(id *)arg3;
 - (id)copyWithURL:(id)arg1;
 - (long long)compare:(id)arg1;
 - (unsigned long long)hash;

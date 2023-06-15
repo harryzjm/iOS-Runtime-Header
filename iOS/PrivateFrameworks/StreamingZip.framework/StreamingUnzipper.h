@@ -12,13 +12,17 @@
 __attribute__((visibility("hidden")))
 @interface StreamingUnzipper : NSObject
 {
+    _Bool _hasConnection;
+    struct {
+        unsigned int val[8];
+    } _auditToken;
     long long _sandboxToken;
     void *_decompressionOutputBuffer;
     StreamingUnzipState *_currentState;
     NSObject<OS_os_transaction> *_sessionTransaction;
     int _activeDelegateMethods;
     double _lastExtractionProgressSent;
-    NSXPCConnection *xpcConnection;
+    NSXPCConnection *_xpcConnection;
     id <StreamingUnzipDelegateProtocol> inProcessExtractorDelegate;
     NSObject<OS_dispatch_queue> *inProcessDelegateQueue;
 }
@@ -26,7 +30,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *inProcessDelegateQueue; // @synthesize inProcessDelegateQueue;
 @property(nonatomic) __weak id <StreamingUnzipDelegateProtocol> inProcessExtractorDelegate; // @synthesize inProcessExtractorDelegate;
-@property(nonatomic) __weak NSXPCConnection *xpcConnection; // @synthesize xpcConnection;
+@property(nonatomic) __weak NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
+- (void)getPidForTestingWithReply:(CDUnknownBlockType)arg1;
 - (void)terminateStreamWithReply:(CDUnknownBlockType)arg1;
 - (void)finishStreamWithReply:(CDUnknownBlockType)arg1;
 - (void)suspendStreamWithReply:(CDUnknownBlockType)arg1;
@@ -40,7 +45,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)setActiveDelegateMethods:(int)arg1;
 - (void)setupUnzipperWithOutputPath:(id)arg1 sandboxExtensionToken:(char *)arg2 options:(id)arg3 withReply:(CDUnknownBlockType)arg4;
-- (id)initForClient:(id)arg1;
+- (id)initForClient:(id)arg1 connection:(id)arg2;
 
 @end
 

@@ -6,13 +6,18 @@
 
 #import "HMFObject.h"
 
+@class HMFWiFiManager;
+
 __attribute__((visibility("hidden")))
 @interface _HMFNetManagerWoWAssertion : HMFObject
 {
+    HMFWiFiManager *_manager;
 }
 
+- (void).cxx_destruct;
+@property(readonly, nonatomic) HMFWiFiManager *manager; // @synthesize manager=_manager;
 - (void)dealloc;
-- (id)init;
+- (id)initWithWifiManager:(id)arg1;
 
 @end
 

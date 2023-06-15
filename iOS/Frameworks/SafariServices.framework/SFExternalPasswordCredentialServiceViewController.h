@@ -4,26 +4,32 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, _ASPasswordCredentialAuthenticationViewController, _SFAuthenticationContext;
+@class NSString, WBSAuthenticationServicesAgentProxy, WBSGlobalFrameIdentifier, _ASCredentialAuthenticationViewController, _SFAuthenticationContext;
 
 __attribute__((visibility("hidden")))
 @interface SFExternalPasswordCredentialServiceViewController
 {
     _SFAuthenticationContext *_authenticationContext;
-    _ASPasswordCredentialAuthenticationViewController *_extensionController;
+    _ASCredentialAuthenticationViewController *_extensionController;
     long long _completionAction;
     CDUnknownBlockType _getCredentialCompletion;
+    WBSAuthenticationServicesAgentProxy *_authenticationServicesAgentProxy;
+    WBSGlobalFrameIdentifier *_frameIdentifier;
 }
 
 + (id)_remoteViewControllerInterface;
 + (id)_exportedInterface;
 - (void).cxx_destruct;
-- (void)passwordCredentialAuthenticationViewController:(id)arg1 didFinishWithCredential:(id)arg2 error:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)credentialAuthenticationViewController:(id)arg1 didFinishWithPasskeyRegistrationCredential:(id)arg2 error:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)credentialAuthenticationViewController:(id)arg1 didFinishWithPasskeyAssertionCredential:(id)arg2 error:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)credentialAuthenticationViewController:(id)arg1 didFinishWithCredential:(id)arg2 error:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)presentUIForPasswordCredentialAuthenticationViewController:(id)arg1;
 - (void)credentialProviderExtensionManagerExtensionListDidChange:(id)arg1;
 - (void)_finishRequestToReturnCredential:(id)arg1 extensionShowedUI:(_Bool)arg2 error:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)getCredentialForCredentialIdentity:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_finishRequestToAutoFillCredential:(id)arg1 extensionShowedUI:(_Bool)arg2 error:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_autoFillWithCredentialIdentity:(id)arg1 pageID:(id)arg2 frameID:(id)arg3;
+- (void)autoFillWithCredentialIdentity:(id)arg1 pageID:(id)arg2 frameID:(id)arg3;
 - (void)autoFillWithCredentialIdentity:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (_Bool)contextShouldAllowMultipleBiometricFailures:(id)arg1;

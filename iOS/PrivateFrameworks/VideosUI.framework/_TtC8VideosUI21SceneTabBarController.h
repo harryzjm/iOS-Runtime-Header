@@ -13,11 +13,13 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *_tabBarInfo;
     MISSING_TYPE *previousSelectedIndex;
+    MISSING_TYPE *hasSetTabbarIndex;
 }
 
 - (void).cxx_destruct;
-- (void)configureDebugUIGestureWithHandler:(CDUnknownBlockType)arg1;
-- (void)updateWithTabBarItems:(id)arg1 setSelectedIndexFromDefaults:(_Bool)arg2 appContext:(id)arg3;
+- (void)willTerminate:(id)arg1;
+- (void)willResignActive:(id)arg1;
+- (void)updateWithTabBarItems:(id)arg1 setSelectedIdentifierFromDefaults:(_Bool)arg2 appContext:(id)arg3;
 - (void)setSelectedIndexForTabBarItemIdentifier:(id)arg1;
 - (id)init;
 @property(nonatomic) _Bool tabBarHidden;

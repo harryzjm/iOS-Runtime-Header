@@ -6,7 +6,7 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-@class NSData, NSString;
+@class NSData, NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FPSearchableItemValue : PBCodable
@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     double _doubleValue;
     long long _integerValue;
     double _timeIntervalSinceReferenceDateValue;
+    NSMutableArray *_arrayOfStringsValues;
     NSData *_nameComponents;
     NSString *_stringValue;
     struct {
@@ -23,9 +24,12 @@ __attribute__((visibility("hidden")))
     } _has;
 }
 
++ (Class)arrayOfStringsValueType;
 + (id)objectFromString:(id)arg1;
++ (id)stringArrayFromObject:(id)arg1;
 + (id)stringFromObject:(id)arg1;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableArray *arrayOfStringsValues; // @synthesize arrayOfStringsValues=_arrayOfStringsValues;
 @property(retain, nonatomic) NSData *nameComponents; // @synthesize nameComponents=_nameComponents;
 @property(nonatomic) double timeIntervalSinceReferenceDateValue; // @synthesize timeIntervalSinceReferenceDateValue=_timeIntervalSinceReferenceDateValue;
 @property(nonatomic) long long integerValue; // @synthesize integerValue=_integerValue;
@@ -40,6 +44,10 @@ __attribute__((visibility("hidden")))
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (id)arrayOfStringsValueAtIndex:(unsigned long long)arg1;
+- (unsigned long long)arrayOfStringsValuesCount;
+- (void)addArrayOfStringsValue:(id)arg1;
+- (void)clearArrayOfStringsValues;
 @property(readonly, nonatomic) _Bool hasNameComponents;
 @property(nonatomic) _Bool hasTimeIntervalSinceReferenceDateValue;
 @property(nonatomic) _Bool hasIntegerValue;

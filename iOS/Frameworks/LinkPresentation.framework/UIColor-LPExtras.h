@@ -7,16 +7,11 @@
 #import <UIKit/UIColor.h>
 
 @interface UIColor (LPExtras)
-+ (id)_lp_linkColor;
 + (id)_lp_secondarySystemFillColor;
 + (id)_lp_systemFillColor;
 + (id)_lp_quinaryLabelColor;
-+ (id)_lp_quaternaryLabelColor;
-+ (id)_lp_tertiaryLabelColor;
-+ (id)_lp_secondaryLabelColor;
-+ (id)_lp_labelColor;
-+ (id)_lp_colorNamed:(id)arg1;
 + (id)_lp_colorWithDynamicProvider:(CDUnknownBlockType)arg1;
++ (id)_lp_colorWithDynamicProvider:(CDUnknownBlockType)arg1 name:(id)arg2;
 - (id)_lp_HTMLAttributeText;
 - (id)_lp_colorForcingUserInterfaceStyle:(long long)arg1;
 - (id)_lp_CSSTextHexFormatForcingUserInterfaceStyle:(long long)arg1;

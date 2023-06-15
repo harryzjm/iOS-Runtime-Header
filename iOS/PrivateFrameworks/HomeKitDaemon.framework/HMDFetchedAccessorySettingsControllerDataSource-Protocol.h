@@ -6,11 +6,12 @@
 
 #import <HomeKitDaemon/NSObject-Protocol.h>
 
-@class HMDFetchedAccessorySettingsController, HMFActivity, NSString;
+@class HMDCurrentAccessorySetupMetricDispatcher, HMDFetchedAccessorySettingsController, HMFActivity, NSString;
 @protocol HMEEventForwarder, HMELastEventStoreReadHandle, HMMLogEventSubmitting;
 
 @protocol HMDFetchedAccessorySettingsControllerDataSource <NSObject>
 @property(readonly, nonatomic) id <HMMLogEventSubmitting> logEventSubmitter;
+@property(readonly) HMDCurrentAccessorySetupMetricDispatcher *currentAccessorySetupMetricDispatcher;
 @property(readonly) HMFActivity *setupActivity;
 @property double setupStartTimestamp;
 @property(readonly) id <HMELastEventStoreReadHandle> eventStoreReadHandle;

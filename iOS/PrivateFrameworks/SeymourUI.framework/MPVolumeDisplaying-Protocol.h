@@ -11,13 +11,9 @@
 @protocol MPVolumeDisplaying <NSObject>
 
 @optional
-- (_Bool)isOnScreen;
-@property(nonatomic, readonly) NSString *volumeAudioCategory;
-- (_Bool)isOnScreenForVolumeDisplay;
-@property(nonatomic, readonly) UIWindowScene *windowSceneForVolumeDisplay;
-
-// Remaining properties
-@property(nonatomic, readonly) _Bool onScreen;
-@property(nonatomic, readonly) _Bool onScreenForVolumeDisplay;
+@property(readonly, nonatomic, getter=isOnScreen) _Bool onScreen;
+@property(readonly, nonatomic) NSString *volumeAudioCategory;
+@property(readonly, nonatomic, getter=isOnScreenForVolumeDisplay) _Bool onScreenForVolumeDisplay;
+@property(readonly, nonatomic) UIWindowScene *windowSceneForVolumeDisplay;
 @end
 

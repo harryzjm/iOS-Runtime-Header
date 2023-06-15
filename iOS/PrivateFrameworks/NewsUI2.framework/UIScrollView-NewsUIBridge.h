@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIScrollView.h>
+#import <UIKitCore/UIScrollView.h>
 
 @interface UIScrollView (NewsUIBridge)
 - (void)ts_performScrollTest:(id)arg1 iterations:(long long)arg2 length:(double)arg3 completion:(CDUnknownBlockType)arg4;

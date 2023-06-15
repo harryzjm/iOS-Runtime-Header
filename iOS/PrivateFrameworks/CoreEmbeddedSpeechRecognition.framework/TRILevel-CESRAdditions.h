@@ -7,6 +7,7 @@
 #import <TrialProto/TRILevel.h>
 
 @interface TRILevel (CESRAdditions)
+- (_Bool)_cesr_isPreinstalled;
 - (_Bool)_cesr_preferOverServer;
 @end
 

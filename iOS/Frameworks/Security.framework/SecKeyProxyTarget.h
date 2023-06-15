@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-- (void)performOperation:(long long)arg1 algorithm:(id)arg2 parameters:(id)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)performOperation:(long long)arg1 mode:(long long)arg2 algorithm:(id)arg3 parameters:(id)arg4 reply:(CDUnknownBlockType)arg5;
 - (void)getPublicKey:(CDUnknownBlockType)arg1;
 - (void)getAlgorithmIDWithReply:(CDUnknownBlockType)arg1;
 - (void)getDescriptionWithReply:(CDUnknownBlockType)arg1;

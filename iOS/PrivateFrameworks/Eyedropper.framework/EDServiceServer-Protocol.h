@@ -6,9 +6,11 @@
 
 #import <Eyedropper/NSObject-Protocol.h>
 
+@class NSString;
+
 @protocol EDServiceServer <NSObject>
 - (void)floatEyeDropper;
 - (void)cancelShowingEyeDropper;
-- (void)beginShowingEyeDropper;
+- (void)beginShowingEyeDropper:(NSString *)arg1;
 @end
 

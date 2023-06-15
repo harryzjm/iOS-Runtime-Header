@@ -4,10 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class ICAttachment, UITouch;
+@class ICAttachment, ICAttachmentView, UITouch;
 
 @protocol ICAttachmentViewDelegate
-- (_Bool)shouldRespondToPanGestureTouch:(UITouch *)arg1 forAttachment:(ICAttachment *)arg2;
-- (void)presentAttachment:(ICAttachment *)arg1;
+- (_Bool)attachmentView:(ICAttachmentView *)arg1 shouldRespondToPanGestureTouch:(UITouch *)arg2 forAttachment:(ICAttachment *)arg3;
+- (void)attachmentView:(ICAttachmentView *)arg1 shouldShareAttachment:(ICAttachment *)arg2;
+- (void)attachmentView:(ICAttachmentView *)arg1 shouldPresentAttachment:(ICAttachment *)arg2;
 @end
 

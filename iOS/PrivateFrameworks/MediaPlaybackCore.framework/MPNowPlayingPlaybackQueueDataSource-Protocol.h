@@ -15,6 +15,7 @@
 
 @optional
 - (MPNowPlayingContentItem *)contentItemForOffset:(long long)arg1;
+- (NSArray *)participantsForNowPlayingInfoCenter:(MPNowPlayingInfoCenter *)arg1;
 - (void)nowPlayingInfoCenter:(MPNowPlayingInfoCenter *)arg1 didEndMigrationWithIdentifier:(NSString *)arg2 error:(NSError *)arg3;
 - (void)nowPlayingInfoCenter:(MPNowPlayingInfoCenter *)arg1 willBeginSessionMigrationWithIdentifier:(NSString *)arg2;
 - (void)nowPlayingInfoCenter:(MPNowPlayingInfoCenter *)arg1 getTransportablePlaybackSessionRepresentationForRequest:(id <MPNowPlayingInfoTransportableSessionRequest>)arg2 completion:(void (^)(MPNowPlayingInfoTransportableSessionResponse *, NSError *))arg3;

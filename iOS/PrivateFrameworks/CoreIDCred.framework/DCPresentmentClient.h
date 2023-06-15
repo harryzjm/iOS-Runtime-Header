@@ -18,9 +18,9 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-@property(retain) DCXPCDisconnectHandler *disconnectionHandler; // @synthesize disconnectionHandler=_disconnectionHandler;
-@property(retain) id <DCPresentmentXPCProtocol> remoteObjectProxy; // @synthesize remoteObjectProxy=_remoteObjectProxy;
-@property(retain) NSXPCConnection *serverConnection; // @synthesize serverConnection=_serverConnection;
+@property(retain, nonatomic) DCXPCDisconnectHandler *disconnectionHandler; // @synthesize disconnectionHandler=_disconnectionHandler;
+@property(retain, nonatomic) id <DCPresentmentXPCProtocol> remoteObjectProxy; // @synthesize remoteObjectProxy=_remoteObjectProxy;
+@property(retain, nonatomic) NSXPCConnection *serverConnection; // @synthesize serverConnection=_serverConnection;
 - (void)invalidate;
 - (void)buildErrorResponseWithStatus:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)buildCredentialResponseForSelection:(id)arg1 completion:(CDUnknownBlockType)arg2;

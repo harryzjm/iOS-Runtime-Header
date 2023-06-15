@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *_started;
     MISSING_TYPE *_didEngageWithArticle;
     MISSING_TYPE *__userIsAuthenticatedToAppStore;
+    MISSING_TYPE *_appReviewRequestLastSeenDate;
     MISSING_TYPE *$__lazy_storage_$_appReviewPromptConfig;
 }
 

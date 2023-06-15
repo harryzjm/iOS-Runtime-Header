@@ -7,6 +7,6 @@
 #import <NewsArticles/NSObject-Protocol.h>
 
 @protocol SXHostable <NSObject>
-@property(nonatomic, readonly) unsigned long long viewingLocation;
+@property(readonly, nonatomic) unsigned long long viewingLocation;
 @end
 

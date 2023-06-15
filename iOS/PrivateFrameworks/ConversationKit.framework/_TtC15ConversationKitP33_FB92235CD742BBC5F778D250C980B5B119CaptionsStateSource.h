@@ -12,7 +12,7 @@
 {
     MISSING_TYPE *_callName;
     MISSING_TYPE *_groupImage;
-    MISSING_TYPE *_contacts;
+    MISSING_TYPE *_participants;
     MISSING_TYPE *_sections;
     MISSING_TYPE *_maximumAge;
     MISSING_TYPE *_isMinimized;

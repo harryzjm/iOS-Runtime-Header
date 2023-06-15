@@ -7,6 +7,7 @@
 #import <SpringBoard/NSObject-Protocol.h>
 
 @protocol CSTouchEnvironmentStatusProviding <NSObject>
+@property(readonly, nonatomic) _Bool tapToWakeEnabled;
 @property(readonly, nonatomic) _Bool expectsPocketTouches;
 @end
 

@@ -6,12 +6,12 @@
 
 #import <iMessageApps/NSObject-Protocol.h>
 
-@class CKBrowserDragControllerTarget, CKBrowserItemPayload, IMSticker, NSString, NSURL;
+@class CKBrowserDragControllerTarget, CKBrowserDraggedSticker, CKBrowserItemPayload, IMSticker, NSString, NSURL;
 @protocol CKBrowserDragControllerTranscriptDelegate;
 
 @protocol CKBrowserViewControllerSendDelegate <NSObject>
-- (void)commitSticker:(IMSticker *)arg1 withDragTarget:(CKBrowserDragControllerTarget *)arg2;
-- (void)commitSticker:(IMSticker *)arg1;
+- (void)commitSticker:(IMSticker *)arg1 withDragTarget:(CKBrowserDragControllerTarget *)arg2 draggedSticker:(CKBrowserDraggedSticker *)arg3;
+- (void)commitSticker:(IMSticker *)arg1 stickerFrame:(struct CGRect)arg2;
 - (id <CKBrowserDragControllerTranscriptDelegate>)dragControllerTranscriptDelegate;
 - (void)dismissToKeyboard:(_Bool)arg1;
 - (void)presentAlertWithTitle:(NSString *)arg1 message:(NSString *)arg2 buttonTitle:(NSString *)arg3 completion:(void (^)(void))arg4;
@@ -26,6 +26,11 @@
 - (void)commitPayload:(CKBrowserItemPayload *)arg1;
 
 @optional
+- (void)showBrowserForPluginIdentifier:(NSString *)arg1 style:(unsigned long long)arg2 completion:(void (^)(void))arg3;
+- (void)canShowBrowserForPluginIdentifier:(NSString *)arg1 completion:(void (^)(_Bool))arg2;
+- (void)stickerDruidDragEndedWithIMSticker:(IMSticker *)arg1;
+- (void)stickerDruidDragStarted;
+- (void)didBeginDraggingSticker:(IMSticker *)arg1;
 - (void)setEntryViewHidden:(_Bool)arg1;
 - (void)eagerUploadCancelIdentifier:(NSString *)arg1;
 - (void)eagerUploadPayload:(CKBrowserItemPayload *)arg1 identifier:(NSString *)arg2 replace:(_Bool)arg3;
@@ -38,8 +43,8 @@
 - (void)startEditingPayload:(CKBrowserItemPayload *)arg1 dismiss:(_Bool)arg2 forPlugin:(NSString *)arg3;
 - (void)dismissAndPresentPhotosApp;
 - (void)dismissAndReloadInputViews:(_Bool)arg1 forPlugin:(NSString *)arg2;
-- (void)commitSticker:(IMSticker *)arg1 forPlugin:(NSString *)arg2;
-- (void)commitSticker:(IMSticker *)arg1 atScreenCoordinate:(struct CGPoint)arg2 scale:(double)arg3 rotation:(double)arg4;
+- (void)commitSticker:(IMSticker *)arg1 forPlugin:(NSString *)arg2 stickerFrame:(struct CGRect)arg3;
+- (void)commitSticker:(IMSticker *)arg1 atScreenCoordinate:(struct CGPoint)arg2 scale:(double)arg3 rotation:(double)arg4 stickerFrame:(struct CGRect)arg5;
 - (_Bool)commitPayload:(CKBrowserItemPayload *)arg1 forPlugin:(NSString *)arg2 allowAllCommits:(_Bool)arg3 error:(id *)arg4;
 @end
 

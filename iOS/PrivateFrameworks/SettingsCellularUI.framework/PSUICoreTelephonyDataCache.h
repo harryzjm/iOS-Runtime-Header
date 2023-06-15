@@ -14,16 +14,22 @@ __attribute__((visibility("hidden")))
     _Bool _cellularDataSetting;
     _Bool _cellularDataSettingInitialized;
     _Bool _privacyProxySettingsFetched;
+    _Bool _cellularStatisticsSetting;
+    _Bool _cellularStatisticsSettingFetched;
     CDStruct_7152cabe _privacyProxySetting;
     CoreTelephonyClient *_client;
     struct __CTServerConnection *_ctConnection;
     NSMutableDictionary *_dataStatusDict;
     NSMutableDictionary *_intlDataAccessStatus;
     RadiosPreferences *_radioPreferences;
+    NSMutableDictionary *_isPrivateNetworkSIM;
 }
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+@property _Bool cellularStatisticsSettingFetched; // @synthesize cellularStatisticsSettingFetched=_cellularStatisticsSettingFetched;
+@property _Bool cellularStatisticsSetting; // @synthesize cellularStatisticsSetting=_cellularStatisticsSetting;
+@property(retain) NSMutableDictionary *isPrivateNetworkSIM; // @synthesize isPrivateNetworkSIM=_isPrivateNetworkSIM;
 @property _Bool privacyProxySettingsFetched; // @synthesize privacyProxySettingsFetched=_privacyProxySettingsFetched;
 @property CDStruct_7152cabe privacyProxySetting; // @synthesize privacyProxySetting=_privacyProxySetting;
 @property _Bool cellularDataSettingInitialized; // @synthesize cellularDataSettingInitialized=_cellularDataSettingInitialized;
@@ -34,8 +40,13 @@ __attribute__((visibility("hidden")))
 @property struct __CTServerConnection *ctConnection; // @synthesize ctConnection=_ctConnection;
 @property(retain, nonatomic) CoreTelephonyClient *client; // @synthesize client=_client;
 - (id)getLogger;
+- (void)setCellularUsageStatisticsEnabled:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
+- (_Bool)isCellularUsageStatisticsEnabled;
+- (void)fetchCellularUsageStatisticsSetting;
 - (void)eraseCellularDataUsageRecords;
-- (struct __CFDate *)copyStartDateOfCellularDataUsageRecords;
+- (id)copyStartDateOfCellularDataUsageRecords;
+- (_Bool)isPrivateNetworkSIM:(id)arg1;
+- (void)fetchIsPrivateNetworkSIM:(id)arg1;
 - (void)setPrivacyProxy:(id)arg1 enabled:(_Bool)arg2;
 - (_Bool)isPrivacyProxyEnabled:(id)arg1;
 - (_Bool)isUserSubscribedToPrivacyProxy:(id)arg1;

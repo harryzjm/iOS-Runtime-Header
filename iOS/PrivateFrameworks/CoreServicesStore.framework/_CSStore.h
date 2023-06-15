@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 - (void)encodeWithCoder:(id)arg1;
 - (id)description;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1 error:(id *)arg2;
+@property(nonatomic, getter=isReadOnly, setter=setReadOnly:) _Bool readOnly;
 - (void)setExpectedAccessQueue:(id)arg1;
 - (id)initWithContentsOfURL:(id)arg1 error:(id *)arg2;
 - (id)initWithError:(id *)arg1;

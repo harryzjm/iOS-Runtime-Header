@@ -6,12 +6,14 @@
 
 #import <MediaControls/NSObject-Protocol.h>
 
-@class MRUListeningMode, MRUListeningModeController;
+@class MRUListeningModeController, NSArray, NSString;
 
 @protocol MRUListeningModeControllerDelegate <NSObject>
-- (void)listeningModeController:(MRUListeningModeController *)arg1 didChangePrimaryListeningMode:(MRUListeningMode *)arg2;
+- (void)listeningModeController:(MRUListeningModeController *)arg1 didChangePrimaryListeningMode:(NSString *)arg2;
+- (void)listeningModeController:(MRUListeningModeController *)arg1 didChangeAvailablePrimaryListeningMode:(NSArray *)arg2;
 
 @optional
-- (void)listeningModeController:(MRUListeningModeController *)arg1 didChangeSecondaryListeningMode:(MRUListeningMode *)arg2;
+- (void)listeningModeController:(MRUListeningModeController *)arg1 didChangeSecondaryListeningMode:(NSString *)arg2;
+- (void)listeningModeController:(MRUListeningModeController *)arg1 didChangeAvailableSecondaryListeningModes:(NSArray *)arg2;
 @end
 

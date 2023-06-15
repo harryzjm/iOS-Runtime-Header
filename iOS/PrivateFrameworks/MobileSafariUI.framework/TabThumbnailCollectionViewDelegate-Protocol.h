@@ -10,25 +10,25 @@
 @protocol TabCollectionItem, TabThumbnailCollectionView;
 
 @protocol TabThumbnailCollectionViewDelegate <TabCollectionViewDelegate>
-- (NSUndoManager *)undoManagerForTabCollectionView:(UIView<TabThumbnailCollectionView> *)arg1;
-- (_Bool)tabCollectionView:(UIView<TabThumbnailCollectionView> *)arg1 cloudTab:(WBSCloudTab *)arg2 matchesSearchText:(NSString *)arg3;
-- (_Bool)tabCollectionView:(UIView<TabThumbnailCollectionView> *)arg1 item:(id <TabCollectionItem>)arg2 matchesSearchText:(NSString *)arg3;
-- (void)tabCollectionView:(UIView<TabThumbnailCollectionView> *)arg1 closeCloudTab:(WBSCloudTab *)arg2 onDevice:(WBSCloudTabDevice *)arg3;
-- (void)tabCollectionView:(UIView<TabThumbnailCollectionView> *)arg1 relinquishBorrowedContentView:(UIView *)arg2 forItem:(id <TabCollectionItem>)arg3;
-- (UIView *)tabCollectionView:(UIView<TabThumbnailCollectionView> *)arg1 borrowContentViewForItem:(id <TabCollectionItem>)arg2 withTopBackdropView:(id *)arg3 ofHeight:(double)arg4;
-- (struct UIEdgeInsets)effectiveSafeAreaInsetsForTabCollectionView:(UIView<TabThumbnailCollectionView> *)arg1;
-- (double)tabCollectionViewItemHeaderHeight:(UIView<TabThumbnailCollectionView> *)arg1;
-- (void)tabCollectionViewDidUpdateItemVisibilityOrder:(UIView<TabThumbnailCollectionView> *)arg1;
-- (UIImage *)tabCollectionView:(UIView<TabThumbnailCollectionView> *)arg1 snapshotForItem:(id <TabCollectionItem>)arg2;
-- (_Bool)tabCollectionView:(UIView<TabThumbnailCollectionView> *)arg1 validSnapshotExistsForItem:(id <TabCollectionItem>)arg2;
-- (void)tabCollectionViewEndIgnoringUserInteraction:(UIView<TabThumbnailCollectionView> *)arg1 reason:(NSString *)arg2;
-- (void)tabCollectionViewBeginIgnoringUserInteraction:(UIView<TabThumbnailCollectionView> *)arg1 reason:(NSString *)arg2;
-- (void)tabCollectionViewDidDismiss:(UIView<TabThumbnailCollectionView> *)arg1;
-- (void)tabCollectionViewWillDismiss:(UIView<TabThumbnailCollectionView> *)arg1;
-- (void)tabCollectionViewDidPresent:(UIView<TabThumbnailCollectionView> *)arg1;
-- (void)tabCollectionViewWillPresent:(UIView<TabThumbnailCollectionView> *)arg1;
+- (NSUndoManager *)undoManagerForTabCollectionView:(id <TabThumbnailCollectionView>)arg1;
+- (_Bool)tabCollectionView:(id <TabThumbnailCollectionView>)arg1 cloudTab:(WBSCloudTab *)arg2 matchesSearchText:(NSString *)arg3;
+- (_Bool)tabCollectionView:(id <TabThumbnailCollectionView>)arg1 item:(id <TabCollectionItem>)arg2 matchesSearchText:(NSString *)arg3;
+- (void)tabCollectionView:(id <TabThumbnailCollectionView>)arg1 closeCloudTab:(WBSCloudTab *)arg2 onDevice:(WBSCloudTabDevice *)arg3;
+- (void)tabCollectionView:(id <TabThumbnailCollectionView>)arg1 relinquishBorrowedContentView:(UIView *)arg2 forItem:(id <TabCollectionItem>)arg3;
+- (UIView *)tabCollectionView:(id <TabThumbnailCollectionView>)arg1 borrowContentViewForItem:(id <TabCollectionItem>)arg2 withTopBackdropView:(id *)arg3 ofHeight:(double)arg4;
+- (struct UIEdgeInsets)effectiveSafeAreaInsetsForTabCollectionView:(id <TabThumbnailCollectionView>)arg1;
+- (double)tabCollectionViewItemHeaderHeight:(id <TabThumbnailCollectionView>)arg1;
+- (void)tabCollectionViewDidUpdateItemVisibilityOrder:(id <TabThumbnailCollectionView>)arg1;
+- (UIImage *)tabCollectionView:(id <TabThumbnailCollectionView>)arg1 snapshotForItem:(id <TabCollectionItem>)arg2;
+- (_Bool)tabCollectionView:(id <TabThumbnailCollectionView>)arg1 validSnapshotExistsForItem:(id <TabCollectionItem>)arg2;
+- (void)tabCollectionViewEndIgnoringUserInteraction:(id <TabThumbnailCollectionView>)arg1 reason:(NSString *)arg2;
+- (void)tabCollectionViewBeginIgnoringUserInteraction:(id <TabThumbnailCollectionView>)arg1 reason:(NSString *)arg2;
+- (void)tabCollectionViewDidDismiss:(id <TabThumbnailCollectionView>)arg1;
+- (void)tabCollectionViewWillDismiss:(id <TabThumbnailCollectionView>)arg1;
+- (void)tabCollectionViewDidPresent:(id <TabThumbnailCollectionView>)arg1;
+- (void)tabCollectionViewWillPresent:(id <TabThumbnailCollectionView>)arg1;
 
 @optional
-- (void)tabCollectionViewDidCancelDismissal:(UIView<TabThumbnailCollectionView> *)arg1;
+- (void)tabCollectionViewDidCancelDismissal:(id <TabThumbnailCollectionView>)arg1;
 @end
 

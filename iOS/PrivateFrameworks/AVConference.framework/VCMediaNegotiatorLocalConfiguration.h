@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSMutableOrderedSet, NSMutableSet, NSSet, NSString, VCMediaNegotiatorAudioConfiguration, VCVideoRuleCollections;
+@class NSData, NSDictionary, NSMutableOrderedSet, NSMutableSet, NSSet, NSString, VCMediaNegotiatorAudioConfiguration, VCVideoRuleCollections;
 
 __attribute__((visibility("hidden")))
 @interface VCMediaNegotiatorLocalConfiguration : NSObject
@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     unsigned int _videoSSRC;
     unsigned int _screenSSRC;
     VCMediaNegotiatorAudioConfiguration *_audioConfiguration;
+    VCMediaNegotiatorAudioConfiguration *_systemAudioConfiguration;
     VCVideoRuleCollections *_videoRuleCollections;
     VCVideoRuleCollections *_screenRuleCollections;
     NSDictionary *_videoFeatureStrings;
@@ -27,8 +28,8 @@ __attribute__((visibility("hidden")))
     union tagNTP _creationTime;
     NSMutableOrderedSet *_multiwayAudioStreams;
     NSMutableOrderedSet *_multiwayVideoStreams;
-    NSSet *_momentsVideoCodecs;
-    NSSet *_momentsImageTypes;
+    NSSet *_mediaRecorderVideoCodecs;
+    NSSet *_mediaRecorderImageTypes;
     unsigned char _mediaControlInfoVersion;
     _Bool _SIPDisabled;
     _Bool _secureMessagingRequired;
@@ -48,6 +49,10 @@ __attribute__((visibility("hidden")))
     struct CGSize _aspectRatioLandscape;
     struct CGSize _aspectRatioPortrait;
     struct CGSize _mismatchedLandscapeAspectRatio;
+    NSData *_videoCodecFeatureBitfield;
+    int accessNetworkType;
+    _Bool _fecEnabled;
+    _Bool _rtxEnabled;
     _Bool _alwaysOnAudRedEnabled;
     _Bool _alwaysOnAudioRedundancyEnabled;
     _Bool _highFecEnabled;
@@ -60,6 +65,7 @@ __attribute__((visibility("hidden")))
     _Bool _duplicateImportantPktsEnabled;
     unsigned int _customVideoWidth;
     unsigned int _customVideoHeight;
+    int _accessNetworkType;
     struct CGSize _orientationMismatchAspectRatioLandscape;
 }
 
@@ -75,6 +81,10 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool alwaysOnAudRedEnabled; // @synthesize alwaysOnAudRedEnabled=_alwaysOnAudRedEnabled;
 @property(nonatomic) int deviceRole; // @synthesize deviceRole=_deviceRole;
 @property(nonatomic) int preferredAudioCodec; // @synthesize preferredAudioCodec=_preferredAudioCodec;
+@property(nonatomic) _Bool rtxEnabled; // @synthesize rtxEnabled=_rtxEnabled;
+@property(nonatomic) _Bool fecEnabled; // @synthesize fecEnabled=_fecEnabled;
+@property(nonatomic) int accessNetworkType; // @synthesize accessNetworkType=_accessNetworkType;
+@property(retain, nonatomic) NSData *videoCodecFeatureBitfield; // @synthesize videoCodecFeatureBitfield=_videoCodecFeatureBitfield;
 @property(readonly, nonatomic) struct CGSize orientationMismatchAspectRatioLandscape; // @synthesize orientationMismatchAspectRatioLandscape=_orientationMismatchAspectRatioLandscape;
 @property(readonly, nonatomic) struct CGSize aspectRatioPortrait; // @synthesize aspectRatioPortrait=_aspectRatioPortrait;
 @property(readonly, nonatomic) struct CGSize aspectRatioLandscape; // @synthesize aspectRatioLandscape=_aspectRatioLandscape;
@@ -92,8 +102,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned int faceTimeSwitches; // @synthesize faceTimeSwitches=_faceTimeSwitches;
 @property(nonatomic) _Bool secureMessagingRequired; // @synthesize secureMessagingRequired=_secureMessagingRequired;
 @property(nonatomic) _Bool SIPDisabled; // @synthesize SIPDisabled=_SIPDisabled;
-@property(retain, nonatomic) NSSet *momentsVideoCodecs; // @synthesize momentsVideoCodecs=_momentsVideoCodecs;
-@property(retain, nonatomic) NSSet *momentsImageTypes; // @synthesize momentsImageTypes=_momentsImageTypes;
+@property(retain, nonatomic) NSSet *mediaRecorderVideoCodecs; // @synthesize mediaRecorderVideoCodecs=_mediaRecorderVideoCodecs;
+@property(retain, nonatomic) NSSet *mediaRecorderImageTypes; // @synthesize mediaRecorderImageTypes=_mediaRecorderImageTypes;
 @property(retain, nonatomic) NSMutableOrderedSet *multiwayVideoStreams; // @synthesize multiwayVideoStreams=_multiwayVideoStreams;
 @property(retain, nonatomic) NSMutableOrderedSet *multiwayAudioStreams; // @synthesize multiwayAudioStreams=_multiwayAudioStreams;
 @property(nonatomic) unsigned char mediaControlInfoVersion; // @synthesize mediaControlInfoVersion=_mediaControlInfoVersion;
@@ -111,11 +121,13 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSDictionary *videoFeatureStrings; // @synthesize videoFeatureStrings=_videoFeatureStrings;
 @property(retain, nonatomic) VCVideoRuleCollections *screenRuleCollections; // @synthesize screenRuleCollections=_screenRuleCollections;
 @property(retain, nonatomic) VCVideoRuleCollections *videoRuleCollections; // @synthesize videoRuleCollections=_videoRuleCollections;
+@property(retain, nonatomic) VCMediaNegotiatorAudioConfiguration *systemAudioConfiguration; // @synthesize systemAudioConfiguration=_systemAudioConfiguration;
 @property(retain, nonatomic) VCMediaNegotiatorAudioConfiguration *audioConfiguration; // @synthesize audioConfiguration=_audioConfiguration;
 - (_Bool)isEqual:(id)arg1;
+- (_Bool)isEqualVideoCodecFeautureBitfield:(id)arg1;
 - (_Bool)isEqualFaceTimeSettings:(id)arg1;
-- (_Bool)isEqualMomentsVideoCodecs:(id)arg1;
-- (_Bool)isEqualMomentsImageTypes:(id)arg1;
+- (_Bool)isEqualMediaRecorderVideoCodecs:(id)arg1;
+- (_Bool)isEqualMediaRecorderImageTypes:(id)arg1;
 - (_Bool)isEqualFeatureStrings:(id)arg1;
 - (_Bool)isEqualStreamGroupConfigs:(id)arg1;
 - (_Bool)isEqualMultiwayVideoStreamSet:(id)arg1;

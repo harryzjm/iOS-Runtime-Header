@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *notificationSettingsProvider;
     MISSING_TYPE *subscriptionToken;
     MISSING_TYPE *platform;
+    MISSING_TYPE *privacyPreferenceDataSource;
     MISSING_TYPE *_migrationEnabled;
     MISSING_TYPE *state;
 }

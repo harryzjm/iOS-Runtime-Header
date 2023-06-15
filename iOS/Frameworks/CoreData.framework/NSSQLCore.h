@@ -42,7 +42,8 @@ __attribute__((visibility("hidden")))
         unsigned int _debugRequestsHandling:1;
         unsigned int historyBatchUpdateModProperties:1;
         unsigned int indexTracking:1;
-        unsigned int _RESERVED:14;
+        unsigned int memoryObserverSuspended:1;
+        unsigned int _RESERVED:13;
     } _sqlCoreFlags;
     NSSQLiteConnection *_queryGenerationTrackingConnection;
     _PFMutex *_writerSerializationMutex;

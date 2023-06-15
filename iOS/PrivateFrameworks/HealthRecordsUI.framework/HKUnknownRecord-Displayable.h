@@ -9,6 +9,7 @@
 @interface HKUnknownRecord (Displayable)
 - (void)fetchConceptRoomItemsWithHealthRecordsStore:(id)arg1 conceptStore:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)fetchDetailItemsWithHealthRecordsStore:(id)arg1 conceptStore:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)meaningfulDateString;
 - (id)titleDisplayStringForDetailViewController;
 - (id)title;
 @end

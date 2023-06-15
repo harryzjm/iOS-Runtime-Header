@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)operationPointsAndReturnError:(id *)arg1;
+- (_Bool)isEqual:(id)arg1;
 - (id)initWithOperationPoints:(id)arg1;
 
 @end

@@ -25,6 +25,7 @@
 - (void)rootFolderView:(SBRootFolderView *)arg1 didOverscrollOnFirstPageByAmount:(double)arg2;
 - (UIView *)backgroundViewForEditingDoneButtonForRootFolderView:(SBRootFolderView *)arg1;
 - (UIView *)backgroundViewForDockForRootFolderView:(SBRootFolderView *)arg1;
+- (void)rootFolderViewDidChangeSuppressesEditingStateForListViews:(SBRootFolderView *)arg1;
 - (double)preferredExternalDockVerticalMarginForRootFolderView:(SBRootFolderView *)arg1;
 - (double)externalDockHeightForRootFolderView:(SBRootFolderView *)arg1;
 - (double)maxExternalDockHeightForRootFolderView:(SBRootFolderView *)arg1;

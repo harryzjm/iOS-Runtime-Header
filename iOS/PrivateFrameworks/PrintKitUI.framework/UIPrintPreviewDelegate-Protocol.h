@@ -6,10 +6,7 @@
 
 #import <PrintKitUI/NSObject-Protocol.h>
 
-@class UICollectionView;
-
 @protocol UIPrintPreviewDelegate <NSObject>
-- (UICollectionView *)previewCollectionView;
 - (_Bool)canShowMenuBar;
 - (void)addAllPages:(id)arg1;
 - (_Bool)canAddAllPages:(id)arg1;
@@ -24,5 +21,6 @@
 - (void)pageBadgeTapped:(long long)arg1;
 - (_Bool)pageIndexIsInRange:(long long)arg1;
 - (_Bool)canModifyPageRange;
+- (_Bool)showingPageView;
 @end
 

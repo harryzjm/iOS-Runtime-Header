@@ -8,5 +8,6 @@
 
 @interface UTType (FPCaching)
 + (id)fp_cachedTypeWithIdentifier:(id)arg1;
++ (id)fp_cachedTypeWithIdentifier:(id)arg1 alreadyAvailableType:(id)arg2;
 @end
 

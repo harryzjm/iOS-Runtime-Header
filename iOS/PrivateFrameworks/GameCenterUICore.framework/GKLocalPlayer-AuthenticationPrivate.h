@@ -18,19 +18,15 @@
 - (void)startLegacyAuthenticationWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_showViewControllerForLegacyApps:(id)arg1;
 - (void)applicationDidEnterBackground:(id)arg1;
+- (void)sharePlayEligibilityChanged:(id)arg1;
 - (void)applicationWillEnterForeground:(id)arg1;
 - (void)showAuthenticateViewControllerForGameCenter;
-- (void)validateAccountWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)cancelAuthentication;
 - (void)authenticationDidCompleteWithError:(id)arg1;
 - (void)startAuthenticationForExistingPrimaryPlayer;
 - (void)_showWelcomeBanner;
 - (_Bool)isAuthenticating;
 - (_Bool)alertUserInStoreDemoModeEnabled;
-- (void)showSignInAccountRestrictedAlert;
-- (void)showEditAccountRestrictedAlert;
-- (void)showCreateAccountRestrictedAlert;
-- (void)_showActionRestrictedAlertWithTitle:(id)arg1 message:(id)arg2;
 - (void)showCancelledAlertForPlayer:(id)arg1;
 - (void)removeActiveViewControllerAnimated:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)showViewController:(id)arg1 usingPresentingViewController:(id)arg2 wrapInNavController:(_Bool)arg3;
@@ -40,9 +36,9 @@
 - (_Bool)shouldShowAnyOnboardingScreen;
 - (_Bool)shouldShowProfileCreatedScreen;
 - (_Bool)shouldShowContactsIntegrationConsentScreen;
+- (_Bool)shouldShowFriendSuggestionsScreen;
 - (_Bool)hasAcknowledgedLatestGDPR;
 - (_Bool)shouldShowProfilePrivacyScreen;
 - (_Bool)shouldShowPersonalizationScreen;
-- (_Bool)shouldUseWelcomeOnboardingCopy;
 @end
 

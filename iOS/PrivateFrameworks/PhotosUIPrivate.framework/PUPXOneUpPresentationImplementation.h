@@ -13,26 +13,29 @@ __attribute__((visibility("hidden")))
 {
     PUOneUpPresentationHelper *__helper;
     PXOneUpPresentation *__oneUpPresentation;
+    CDUnknownBlockType _stateChangeHandler;
 }
 
 + (id)implementationForOneUpPresentation:(id)arg1;
 - (void).cxx_destruct;
+@property(copy, nonatomic) CDUnknownBlockType stateChangeHandler; // @synthesize stateChangeHandler=_stateChangeHandler;
 @property(readonly, nonatomic) __weak PXOneUpPresentation *_oneUpPresentation; // @synthesize _oneUpPresentation=__oneUpPresentation;
 @property(readonly, nonatomic) PUOneUpPresentationHelper *_helper; // @synthesize _helper=__helper;
 - (void)oneUpPresentationHelper:(id)arg1 shouldHideAssetReferences:(id)arg2;
 - (void)oneUpPresentationHelper:(id)arg1 scrollAssetReferenceToVisible:(id)arg2;
 - (id)oneUpPresentationHelper:(id)arg1 currentImageForAssetReference:(id)arg2;
 - (id)oneUpPresentationHelper:(id)arg1 regionOfInterestForAssetReference:(id)arg2 cropInsets:(struct UIEdgeInsets *)arg3;
-- (id)oneUpPresentationHelperAssetUUIDsAllowedToHighlightText:(id)arg1;
-- (id)oneUpPresentationHelperTextsToHighlight:(id)arg1;
+- (id)oneUpPresentationHelperSearchQueryMatchInfo:(id)arg1;
 - (_Bool)oneUpPresentationHelperShouldLeaveContentOnSecondScreen:(id)arg1;
 - (id)oneUpPresentationHelperScrollView:(id)arg1;
 - (id)oneUpPresentationHelperViewHostingTilingView:(id)arg1;
+- (void)oneUpPresentationHelperStateDidChange:(id)arg1;
 - (unsigned long long)oneUpPresentationHelperAdditionalOptions:(id)arg1;
 - (_Bool)oneUpPresentationHelperWantsShowInLibraryButton:(id)arg1;
 - (_Bool)oneUpPresentationHelperPreventRevealInMomentAction:(id)arg1;
 - (_Bool)oneUpPresentationHelperShouldAutoPlay:(id)arg1;
 - (long long)oneUpPresentationOrigin:(id)arg1;
+- (id)oneUpPresentationHelperOriginalViewController:(id)arg1;
 - (id)oneUpPresentationHelperViewController:(id)arg1;
 - (id)regionOfInterestForAssetReference:(id)arg1;
 - (_Bool)handlePresentingPinchGestureRecognizer:(id)arg1;
@@ -45,6 +48,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)startWithConfigurationHandler:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) PXAssetReference *lastViewedAssetReference;
 - (_Bool)canStartAnimated:(_Bool)arg1;
+- (void)registerStateChangeHandler:(CDUnknownBlockType)arg1;
 - (void)presentingViewControllerViewDidDisappear:(_Bool)arg1;
 - (void)presentingViewControllerViewWillDisappear:(_Bool)arg1;
 - (void)presentingViewControllerViewDidAppear:(_Bool)arg1;

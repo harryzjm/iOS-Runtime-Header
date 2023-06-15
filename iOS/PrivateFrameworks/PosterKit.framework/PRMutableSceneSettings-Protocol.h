@@ -9,10 +9,15 @@
 @class BSColor, NSString, PRPosterConfigurableOptions, PRPosterConfiguredProperties, PRSServerPosterPath;
 
 @protocol PRMutableSceneSettings <PRSceneSettings>
+@property(nonatomic, setter=pr_setVerticalTitleBoundingRect:) struct CGRect pr_verticalTitleBoundingRect;
+@property(nonatomic, setter=pr_setHorizontalTitleBoundingRect:) struct CGRect pr_horizontalTitleBoundingRect;
+@property(nonatomic, getter=pr_isWallpaperObscured, setter=pr_setWallpaperObscured:) _Bool pr_wallpaperObscured;
+@property(copy, nonatomic, setter=pr_setSnapshotDefinitionIdentifier:) NSString *pr_snapshotDefinitionIdentifier;
 @property(copy, nonatomic, setter=pr_setSnapshotLogIdentifier:) NSString *pr_snapshotLogIdentifier;
 @property(nonatomic, setter=pr_setShowsComplications:) _Bool pr_showsComplications;
 @property(nonatomic, setter=pr_setShowsHeaderElements:) _Bool pr_showsHeaderElements;
 @property(nonatomic, getter=pr_isAlternateDateEnabled, setter=pr_setAlternateDateEnabled:) _Bool pr_alternateDateEnabled;
+@property(nonatomic, getter=pr_isComplicationSidebarConfigured, setter=pr_setComplicationSidebarConfigured:) _Bool pr_complicationSidebarConfigured;
 @property(nonatomic, getter=pr_isComplicationRowConfigured, setter=pr_setComplicationRowConfigured:) _Bool pr_complicationRowConfigured;
 @property(nonatomic, getter=pr_isInlineComplicationConfigured, setter=pr_setInlineComplicationConfigured:) _Bool pr_inlineComplicationConfigured;
 @property(nonatomic, getter=pr_isParallaxDisallowed, setter=pr_setParallaxDisallowed:) _Bool pr_parallaxDisallowed;
@@ -21,6 +26,7 @@
 @property(retain, nonatomic, setter=pr_setPosterConfiguredProperties:) PRPosterConfiguredProperties *pr_posterConfiguredProperties;
 @property(retain, nonatomic, setter=pr_setPosterConfigurableOptions:) PRPosterConfigurableOptions *pr_posterConfigurableOptions;
 @property(retain, nonatomic, setter=pr_setPosterContents:) PRSServerPosterPath *pr_posterContents;
+@property(nonatomic, setter=pr_setDeviceOrientation:) long long pr_deviceOrientation;
 @property(nonatomic, setter=pr_setUserInterfaceStyle:) long long pr_userInterfaceStyle;
 @property(retain, nonatomic, setter=pr_setCaseColor:) BSColor *pr_caseColor;
 @property(copy, nonatomic, setter=pr_setPreviewIdentifier:) NSString *pr_previewIdentifier;

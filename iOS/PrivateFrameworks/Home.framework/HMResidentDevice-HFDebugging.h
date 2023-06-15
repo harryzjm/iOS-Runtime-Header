@@ -10,7 +10,8 @@
 
 @interface HMResidentDevice (HFDebugging)
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
-- (_Bool)isiPadDevice;
+- (_Bool)hf_isResidentAppleTV;
+- (_Bool)hf_isResidentiPad;
 - (_Bool)hf_isReachable;
 @property(readonly, nonatomic) NSString *hf_displayName;
 @property(readonly, nonatomic) HMAccessory *hf_linkedAccessory;

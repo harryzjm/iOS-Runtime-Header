@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *chartService;
     MISSING_TYPE *cache;
+    MISSING_TYPE *observers;
     MISSING_TYPE *lock;
     MISSING_TYPE *deduper;
 }

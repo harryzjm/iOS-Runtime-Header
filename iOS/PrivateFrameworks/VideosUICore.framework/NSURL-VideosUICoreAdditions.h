@@ -12,6 +12,7 @@
 - (_Bool)vuicore_isAppIconURL;
 - (id)vuicore_symbolName;
 - (id)vuicore_resourceName;
+- (_Bool)vuicore_isResourceOrSymbolURL;
 - (_Bool)vuicore_isSymbolURL;
 - (_Bool)vuicore_isResourceURL;
 @end

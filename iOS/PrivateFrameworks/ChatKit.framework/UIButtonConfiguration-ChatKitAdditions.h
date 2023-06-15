@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIButtonConfiguration.h>
+#import <UIKitCore/UIButtonConfiguration.h>
 
 @interface UIButtonConfiguration (ChatKitAdditions)
 + (id)ckCreateButtonConfigurationWithType:(long long)arg1 withImage:(id)arg2 withTitle:(id)arg3 withFont:(id)arg4;

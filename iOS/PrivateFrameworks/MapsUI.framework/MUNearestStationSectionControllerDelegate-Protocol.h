@@ -6,9 +6,10 @@
 
 #import <MapsUI/NSObject-Protocol.h>
 
-@class MKMapItem, MUNearestStationSectionController;
+@class MKMapItem, MUNearestStationSectionController, NSURL;
 
 @protocol MUNearestStationSectionControllerDelegate <NSObject>
+- (void)nearestStationSectionController:(MUNearestStationSectionController *)arg1 didSelectStationAttributionURL:(NSURL *)arg2;
 - (void)nearestStationSectionController:(MUNearestStationSectionController *)arg1 didTapStationItem:(MKMapItem *)arg2;
 @end
 

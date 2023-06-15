@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class BSUIEmojiLabelView, CCUICAPackageView, MRUOutputDeviceAsset, MRUVisualStylingProvider, NSString, UIImageView;
+@class BSUIEmojiLabelView, MRUAssetView, MRUOutputDeviceAsset, MRUVisualStylingProvider, NSString;
 
 __attribute__((visibility("hidden")))
 @interface MRUOutputDeviceAssetView : UIView
@@ -16,13 +16,11 @@ __attribute__((visibility("hidden")))
     NSString *_glyphState;
     MRUVisualStylingProvider *_stylingProvider;
     BSUIEmojiLabelView *_titleLabel;
-    UIImageView *_imageView;
-    CCUICAPackageView *_packageView;
+    MRUAssetView *_assetView;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) CCUICAPackageView *packageView; // @synthesize packageView=_packageView;
-@property(retain, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
+@property(retain, nonatomic) MRUAssetView *assetView; // @synthesize assetView=_assetView;
 @property(retain, nonatomic) BSUIEmojiLabelView *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property(retain, nonatomic) MRUVisualStylingProvider *stylingProvider; // @synthesize stylingProvider=_stylingProvider;
 @property(retain, nonatomic) NSString *glyphState; // @synthesize glyphState=_glyphState;

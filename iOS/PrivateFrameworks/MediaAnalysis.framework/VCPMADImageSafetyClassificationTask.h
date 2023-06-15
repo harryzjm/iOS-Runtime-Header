@@ -15,12 +15,15 @@ __attribute__((visibility("hidden")))
     VCPMADServiceImageAsset *_imageAsset;
     NSString *_signpostPayload;
     struct atomic<bool> _canceled;
+    struct Scaler _scaler;
 }
 
 + (id)dependencies;
 + (id)taskWithRequest:(id)arg1 imageAsset:(id)arg2 andSignpostPayload:(id)arg3;
+- (id).cxx_construct;
 - (void).cxx_destruct;
 - (int)run;
+- (int)createUprightPixelBuffer:(struct __CVBuffer **)arg1 fromSourceBuffer:(struct __CVBuffer *)arg2 andOrientation:(unsigned int)arg3;
 - (void)logMemoryWithMessage:(id)arg1;
 - (void)cancel;
 - (_Bool)autoCancellable;

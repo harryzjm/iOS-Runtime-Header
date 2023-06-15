@@ -12,52 +12,6 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
-struct BRBouncesTypesMatrix {
-    union {
-        unsigned long long matrix;
-        struct {
-            unsigned int dirToLnk:1;
-            unsigned int dirToAls:1;
-            unsigned int dirToPkg:1;
-            unsigned int dirToDoc:1;
-            unsigned int lnkToDir:1;
-            unsigned int lnkToAls:1;
-            unsigned int lnkToPkg:1;
-            unsigned int lnkToDoc:1;
-            unsigned int alsToDir:1;
-            unsigned int alsToLnk:1;
-            unsigned int alsToPkg:1;
-            unsigned int alsToDoc:1;
-            unsigned int pkgToDir:1;
-            unsigned int pkgToLnk:1;
-            unsigned int pkgToAls:1;
-            unsigned int pkgToDoc:1;
-            unsigned int docToDir:1;
-            unsigned int docToLnk:1;
-            unsigned int docToAls:1;
-            unsigned int docToPkg:1;
-            unsigned int sameType:1;
-        } ;
-    } ;
-};
-
-struct BRTypesField {
-    union {
-        int types;
-        struct {
-            unsigned int doc:1;
-            unsigned int alias:1;
-            unsigned int symlink:1;
-            unsigned int folder:1;
-            unsigned int fault:1;
-            unsigned int root:1;
-            unsigned int bookmark:1;
-            unsigned int bookmarkfault:1;
-            unsigned int shareacceptfault:1;
-        } ;
-    } ;
-};
-
 struct CC_SHA1state_st {
     unsigned int h0;
     unsigned int h1;
@@ -157,6 +111,12 @@ typedef struct {
     unsigned long long *_field3;
     unsigned long long _field4[5];
 } CDStruct_70511ce9;
+
+typedef struct {
+    unsigned long long sectionID;
+    char *function;
+    int line;
+} CDStruct_5b54e0e2;
 
 typedef struct {
     unsigned int val[8];

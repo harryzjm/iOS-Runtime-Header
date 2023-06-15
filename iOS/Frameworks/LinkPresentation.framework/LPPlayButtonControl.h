@@ -31,7 +31,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic, getter=isIndeterminate) _Bool indeterminate; // @synthesize indeterminate=_indeterminate;
 @property(retain, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
 - (id)playable;
-- (void)traitCollectionDidChange:(id)arg1;
+- (void)_traitAffectingColorAppearanceDidChange:(id)arg1;
 - (void)_updateEnabledState;
 - (void)_updateInnerProgressLayerStroke;
 - (void)_toggleToPlayState;

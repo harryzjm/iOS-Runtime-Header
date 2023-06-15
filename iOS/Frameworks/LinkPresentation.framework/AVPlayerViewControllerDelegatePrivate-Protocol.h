@@ -6,12 +6,16 @@
 
 #import <LinkPresentation/AVPlayerViewControllerDelegate-Protocol.h>
 
-@class AVPlayerViewController, UIView;
+@class AVMediaSelectionOption, AVPlayerViewController, NSDate, NSString, UIView;
 @protocol AVPlayerViewControllerAnimationCoordinator, UIViewControllerTransitionCoordinator;
 
 @protocol AVPlayerViewControllerDelegatePrivate <AVPlayerViewControllerDelegate>
 
 @optional
+- (_Bool)playerViewControllerShouldHandleDoneButtonTap:(AVPlayerViewController *)arg1;
+- (void)playerViewController:(AVPlayerViewController *)arg1 willResumePlaybackAfterUserNavigatedFromDate:(NSDate *)arg2 toDate:(NSDate *)arg3;
+- (void)dismissPlayerViewController:(AVPlayerViewController *)arg1;
+- (NSString *)playerViewController:(AVPlayerViewController *)arg1 displayNameForMediaSelectionOption:(AVMediaSelectionOption *)arg2;
 - (void)playerViewControllerWillPerformAnalysisCalloutAction:(AVPlayerViewController *)arg1;
 - (_Bool)playerViewControllerShouldMuteVolumeForFullScreenDismissalTransition:(AVPlayerViewController *)arg1;
 - (void)playerViewController:(AVPlayerViewController *)arg1 contentViewWillTransitionToSize:(struct CGSize)arg2 withTransitionCoordinator:(id <UIViewControllerTransitionCoordinator>)arg3;

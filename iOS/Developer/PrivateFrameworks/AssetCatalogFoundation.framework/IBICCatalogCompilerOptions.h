@@ -13,6 +13,7 @@
     NSMutableSet *_impliedIdiomIdentifiers;
     NSMutableDictionary *_universalIconSpecializedIdiomsByPlatformIdentifier;
     _Bool _compressPNGs;
+    _Bool _shouldEnableLAR;
     _Bool _enableOnDemandResources;
     _Bool _enableIncrementalDistill;
     _Bool _targetingAppStoreDeployment;
@@ -22,6 +23,7 @@
     _Bool _includeLocalizationsInInfoPlist;
     _Bool _supportsResizableImages;
     _Bool _supportsTemplateRenderingIntent;
+    NSString *_larTraceFile;
     long long _appIconOutputLocation;
     long long _alternateAppIconOutputLocation;
     long long _optimization;
@@ -56,6 +58,15 @@
     NSString *_xcodeProductVersion;
     NSString *_developmentLanguage;
     NSNumber *_agentWaitDuration;
+    NSString *_generateSwiftAssetSymbols;
+    NSString *_generateObjCAssetSymbols;
+    NSString *_generateSwiftAssetSymbolExtensions;
+    NSArray *_generateAssetSymbolFrameworkSupportStrings;
+    NSString *_generateAssetSymbolWarnings;
+    NSString *_generateAssetSymbolErrors;
+    NSString *_generateAssetSymbolBackwardsDeploymentSupport;
+    NSString *_bundleIdentifier;
+    NSArray *_targetDeviceStrings;
     NSString *_issueTextForResizableImage;
     NSString *_issueTextForTemplateRenderingIntent;
     IBICDeviceThinningTraits *_filterForDeviceTraits;
@@ -73,6 +84,15 @@
 @property _Bool supportsTemplateRenderingIntent; // @synthesize supportsTemplateRenderingIntent=_supportsTemplateRenderingIntent;
 @property(copy) NSString *issueTextForResizableImage; // @synthesize issueTextForResizableImage=_issueTextForResizableImage;
 @property _Bool supportsResizableImages; // @synthesize supportsResizableImages=_supportsResizableImages;
+@property(copy, nonatomic) NSArray *targetDeviceStrings; // @synthesize targetDeviceStrings=_targetDeviceStrings;
+@property(copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
+@property(copy, nonatomic) NSString *generateAssetSymbolBackwardsDeploymentSupport; // @synthesize generateAssetSymbolBackwardsDeploymentSupport=_generateAssetSymbolBackwardsDeploymentSupport;
+@property(copy, nonatomic) NSString *generateAssetSymbolErrors; // @synthesize generateAssetSymbolErrors=_generateAssetSymbolErrors;
+@property(copy, nonatomic) NSString *generateAssetSymbolWarnings; // @synthesize generateAssetSymbolWarnings=_generateAssetSymbolWarnings;
+@property(copy, nonatomic) NSArray *generateAssetSymbolFrameworkSupportStrings; // @synthesize generateAssetSymbolFrameworkSupportStrings=_generateAssetSymbolFrameworkSupportStrings;
+@property(copy, nonatomic) NSString *generateSwiftAssetSymbolExtensions; // @synthesize generateSwiftAssetSymbolExtensions=_generateSwiftAssetSymbolExtensions;
+@property(copy, nonatomic) NSString *generateObjCAssetSymbols; // @synthesize generateObjCAssetSymbols=_generateObjCAssetSymbols;
+@property(copy, nonatomic) NSString *generateSwiftAssetSymbols; // @synthesize generateSwiftAssetSymbols=_generateSwiftAssetSymbols;
 @property(copy, nonatomic) NSNumber *agentWaitDuration; // @synthesize agentWaitDuration=_agentWaitDuration;
 @property(nonatomic) _Bool includeLocalizationsInInfoPlist; // @synthesize includeLocalizationsInInfoPlist=_includeLocalizationsInInfoPlist;
 @property(copy, nonatomic) NSString *developmentLanguage; // @synthesize developmentLanguage=_developmentLanguage;
@@ -115,6 +135,8 @@
 @property(nonatomic) long long alternateAppIconOutputLocation; // @synthesize alternateAppIconOutputLocation=_alternateAppIconOutputLocation;
 @property(nonatomic) long long appIconOutputLocation; // @synthesize appIconOutputLocation=_appIconOutputLocation;
 @property _Bool enableOnDemandResources; // @synthesize enableOnDemandResources=_enableOnDemandResources;
+@property(copy, nonatomic) NSString *larTraceFile; // @synthesize larTraceFile=_larTraceFile;
+@property _Bool shouldEnableLAR; // @synthesize shouldEnableLAR=_shouldEnableLAR;
 @property _Bool compressPNGs; // @synthesize compressPNGs=_compressPNGs;
 - (id)failureIssueTextForName:(id)arg1;
 - (void)setFailureIssueText:(id)arg1 forName:(id)arg2;

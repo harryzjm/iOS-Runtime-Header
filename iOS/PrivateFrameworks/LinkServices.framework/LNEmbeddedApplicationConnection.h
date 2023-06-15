@@ -6,34 +6,27 @@
 
 #import "LNApplicationConnection.h"
 
-@class LNWatchdogTimer, NSMapTable, NSString, RBSProcessMonitor;
+@class FBSOpenApplicationService, NSString;
 
 __attribute__((visibility("hidden")))
 @interface LNEmbeddedApplicationConnection : LNApplicationConnection
 {
-    RBSProcessMonitor *_processMonitor;
-    NSMapTable *_assertionsMapTable;
-    LNWatchdogTimer *_connectionTimer;
+    FBSOpenApplicationService *_openApplicationService;
 }
 
-+ (id)optionsForAction:(id)arg1 interactionMode:(long long)arg2;
++ (id)sharedOpenApplicationOperationQueue;
++ (id)defaultOptions;
++ (id)optionsForAction:(id)arg1 interactionMode:(long long)arg2 source:(unsigned short)arg3;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) LNWatchdogTimer *connectionTimer; // @synthesize connectionTimer=_connectionTimer;
-@property(readonly, nonatomic) NSMapTable *assertionsMapTable; // @synthesize assertionsMapTable=_assertionsMapTable;
-@property(readonly, nonatomic) RBSProcessMonitor *processMonitor; // @synthesize processMonitor=_processMonitor;
-- (void)connectionOperation:(id)arg1 didFinishWithError:(id)arg2;
-- (void)connectionOperationWillStart:(id)arg1;
-- (void)assertion:(id)arg1 didInvalidateWithError:(id)arg2;
+@property(readonly, nonatomic) FBSOpenApplicationService *openApplicationService; // @synthesize openApplicationService=_openApplicationService;
+- (void)resumeOpenApplicationOperationQueue;
+- (void)enqueueOpenApplicationOperation:(CDUnknownBlockType)arg1;
+- (_Bool)isSupportedInCarPlay;
+- (id)dashboardApplicationServiceWithConnectionOptions:(id)arg1 error:(id *)arg2;
 - (void)openApplicationWithOptions:(id)arg1 connectionAction:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)dealloc;
-- (void)invalidateAssertionsForConnectionOperation:(id)arg1;
-- (void)acquireAssertionsForConnectionOperation:(id)arg1;
-- (id)defaultOptions;
-- (void)extendTimeoutForOperationWithIdentifier:(id)arg1;
-- (void)cancelTimeoutForOperationWithIdentifier:(id)arg1;
-- (void)refreshWithOptions:(id)arg1;
+- (_Bool)refreshWithOptions:(id)arg1;
 - (void)connectWithOptions:(id)arg1;
-- (id)initWithBundleIdentifier:(id)arg1 metadataVersion:(long long)arg2 error:(id *)arg3;
+- (id)initWithBundleIdentifier:(id)arg1 appBundleIdentifier:(id)arg2 error:(id *)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

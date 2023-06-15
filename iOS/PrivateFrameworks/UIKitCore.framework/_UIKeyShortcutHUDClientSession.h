@@ -6,19 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class UIWindowScene, _UIKeyShortcutHUDConfiguration;
+@class _UIKeyShortcutHUDConfiguration;
 
 __attribute__((visibility("hidden")))
 @interface _UIKeyShortcutHUDClientSession : NSObject
 {
+    _Bool _textEditingSessionWasTornDown;
     _UIKeyShortcutHUDConfiguration *_configuration;
-    UIWindowScene *_keyWindowScene;
-    long long _remainingInitialHeldModifierFlags;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) long long remainingInitialHeldModifierFlags; // @synthesize remainingInitialHeldModifierFlags=_remainingInitialHeldModifierFlags;
-@property(nonatomic) __weak UIWindowScene *keyWindowScene; // @synthesize keyWindowScene=_keyWindowScene;
+@property(nonatomic) _Bool textEditingSessionWasTornDown; // @synthesize textEditingSessionWasTornDown=_textEditingSessionWasTornDown;
 @property(retain, nonatomic) _UIKeyShortcutHUDConfiguration *configuration; // @synthesize configuration=_configuration;
 
 @end

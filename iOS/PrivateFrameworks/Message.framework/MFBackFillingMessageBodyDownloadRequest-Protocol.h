@@ -7,6 +7,7 @@
 #import <Message/NSObject-Protocol.h>
 
 @protocol MFBackFillingMessageBodyDownloadRequest <NSObject>
+@property(readonly) _Bool shouldDefer;
 - (void)completeWithStatus:(int)arg1;
 @end
 

@@ -15,7 +15,6 @@ __attribute__((visibility("hidden")))
     _Bool _toneInjectionEnabled;
     _Bool _forceNetworkCellular;
     _Bool _enableLoopbackInterface;
-    _Bool _enableOneToOneMode;
     _Bool _enableAudioPowerSpectrumReport;
     double _emulatedRxPLR;
     int _forcedTargetBitrate;
@@ -24,11 +23,12 @@ __attribute__((visibility("hidden")))
     NSNumber *_initialMemoryUsage;
     NSObject<OS_dispatch_queue> *_xpcCommandQueue;
     NSObject<OS_dispatch_queue> *_xpcCallbackQueue;
+    _Bool _enableOneToOneMode;
 }
 
 + (id)sharedManager;
-@property(nonatomic) _Bool enableAudioPowerSpectrumReport; // @synthesize enableAudioPowerSpectrumReport=_enableAudioPowerSpectrumReport;
 @property(nonatomic) _Bool enableOneToOneMode; // @synthesize enableOneToOneMode=_enableOneToOneMode;
+@property(nonatomic) _Bool enableAudioPowerSpectrumReport; // @synthesize enableAudioPowerSpectrumReport=_enableAudioPowerSpectrumReport;
 @property(retain, nonatomic) NSString *emulatedNetworkConfigPath; // @synthesize emulatedNetworkConfigPath=_emulatedNetworkConfigPath;
 @property(nonatomic) int forcedCapBitrate; // @synthesize forcedCapBitrate=_forcedCapBitrate;
 @property(nonatomic) int forcedTargetBitrate; // @synthesize forcedTargetBitrate=_forcedTargetBitrate;

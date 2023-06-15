@@ -7,6 +7,7 @@
 #import <Foundation/NSDictionary.h>
 
 @interface NSDictionary (HDCodingSupport)
++ (id)hk_dictionaryOrNilWithCodableMetadata:(id)arg1;
 + (id)hk_dictionaryWithCodableMetadata:(id)arg1;
 + (id)hd_dictionaryFromXPCObject:(id)arg1;
 - (id)hk_codableMetadata;

@@ -7,6 +7,7 @@
 @class NSArray, NSData, NSUUID;
 
 @protocol HMDCloudManagerDelegate
+- (void)makeSureWeAreRunningInRightEnvironment:(_Bool)arg1;
 - (void)schedulePostFetch;
 - (void)fetchHomeFromCloudZone:(NSUUID *)arg1 cloudConflict:(_Bool)arg2 withDelay:(double)arg3;
 - (void)notifyZonesCloudZoneReady:(NSArray *)arg1;

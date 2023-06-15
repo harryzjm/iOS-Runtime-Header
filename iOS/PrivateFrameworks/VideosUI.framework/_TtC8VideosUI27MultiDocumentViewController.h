@@ -23,8 +23,9 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *documentInteractors;
     MISSING_TYPE *interactorObservers;
     MISSING_TYPE *selectedDocumentIndex;
+    MISSING_TYPE *multiLoadingViewManager;
+    MISSING_TYPE *internalPerformanceReporters;
     MISSING_TYPE *templateViewControllers;
-    MISSING_TYPE *$__lazy_storage_$_spinnerView;
     MISSING_TYPE *$__lazy_storage_$_pinningHeaderView;
     MISSING_TYPE *$__lazy_storage_$_statusBarView;
     MISSING_TYPE *allowsDocumentSelection;

@@ -13,28 +13,30 @@ __attribute__((visibility("hidden")))
 @interface MSPSharedTripStorageController : NSObject
 {
     id <MSPSharedTripStorageDelegate> _delegate;
-    MSPGroupSessionStorage *_senderSession;
+    MSPGroupSessionStorage *_senderSessionStorage;
     NSMutableDictionary *_sharedTripGroupSessionInfo;
     NSMutableDictionary *_receiverRules;
     NSMutableDictionary *_senderRules;
 }
 
++ (void)removeFilesFromBackupsIfNeeded;
++ (id)_sentNotificationRulesPath;
++ (id)_senderSessionStoragePath;
++ (id)_receivedNotificationRulesPath;
++ (id)_receivedSessionsPath;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *senderRules; // @synthesize senderRules=_senderRules;
 @property(retain, nonatomic) NSMutableDictionary *receiverRules; // @synthesize receiverRules=_receiverRules;
 @property(retain, nonatomic) NSMutableDictionary *sharedTripGroupSessionInfo; // @synthesize sharedTripGroupSessionInfo=_sharedTripGroupSessionInfo;
-@property(retain, nonatomic) MSPGroupSessionStorage *senderSession; // @synthesize senderSession=_senderSession;
+@property(retain, nonatomic) MSPGroupSessionStorage *senderSessionStorage; // @synthesize senderSessionStorage=_senderSessionStorage;
 @property(nonatomic) __weak id <MSPSharedTripStorageDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_saveSendingRules;
 - (void)_saveSenderSession;
 - (void)_loadSenderSession;
-- (id)_senderRulesPath;
-- (id)_storingSenderPath;
 - (void)_saveReceivingRules;
 - (void)_saveStoredSessions;
+- (id)_identifiersOfStaleSessions:(id)arg1;
 - (void)_loadStoredSessions;
-- (id)_rulesPath;
-- (id)_storingPath;
 - (void)sendingRulesTouched;
 - (id)sendingRulesForIdentifier:(id)arg1;
 - (void)receivingRulesTouched;

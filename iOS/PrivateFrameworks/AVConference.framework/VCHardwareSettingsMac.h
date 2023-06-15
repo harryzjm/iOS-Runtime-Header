@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     unsigned int _screenWidth;
     unsigned int _screenHeight;
     unsigned long long _maxScreenEncodingSizeSupported;
+    _Bool _supportsFilteredScreenCapture;
     NSString *_modelName;
     unsigned int _modelVersion;
     unsigned int _modelRevision;
@@ -31,12 +32,21 @@ __attribute__((visibility("hidden")))
 
 + (long long)deviceClass;
 + (id)sharedInstance;
++ (id)virtualHardwareSettings:(id)arg1;
+@property(readonly, nonatomic) _Bool isMLEnhanceOneToOneSupported;
+@property(readonly, nonatomic) _Bool isExternalCameraSupported;
+@property(readonly, nonatomic) _Bool isSmartBrakeSupported;
+@property(readonly, nonatomic) _Bool isViewPointCorrectionSupported;
+@property(readonly, nonatomic) _Bool isMediaRecordingSupported;
+@property(readonly, nonatomic) _Bool isRemoteCameraSenderSupported;
 @property(readonly, nonatomic) _Bool isCellularTappingSupported;
 - (_Bool)preferPresentationTimestamp;
 - (_Bool)supportsPortraitCameraCapture;
 @property(readonly, nonatomic) long long screenShareCapabilities;
 - (_Bool)disableMLScalarDuringSharing;
 - (_Bool)supportsDedicatedSystemAudioStream;
+- (_Bool)supportsSystemAudioTap;
+- (_Bool)supportsScreenCapture;
 - (_Bool)limitCameraDownlinkBitrateDuringSharing;
 @property(readonly, nonatomic) NSArray *supportedVideoPayloads;
 - (id)queryBoardId;
@@ -44,6 +54,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) unsigned int maxFrameRateSupportedScreenShare;
 @property(readonly, nonatomic) unsigned int maxActiveScreenEncoders;
 @property(readonly, nonatomic) unsigned long long maxScreenEncodingSizeSupported;
+- (_Bool)supportsFilteredScreenCapture;
 - (double)previewPreferredAspectRatio;
 - (unsigned int)screenHeightForDisplayID:(unsigned int)arg1;
 @property(readonly, nonatomic) unsigned int screenHeight;
@@ -51,6 +62,7 @@ __attribute__((visibility("hidden")))
 - (unsigned int)screenWidthForDisplayID:(unsigned int)arg1;
 @property(readonly, nonatomic) unsigned int screenWidth;
 - (void)_initializeScreenDimension;
+@property(readonly, nonatomic) _Bool supportsMultiway1080pStream;
 @property(readonly, nonatomic) _Bool supportsAVFCapture;
 - (unsigned int)maxFpsCameraCaptureDuringSharing;
 - (unsigned int)maxRemoteParticipants30fps;
@@ -90,6 +102,7 @@ __attribute__((visibility("hidden")))
 - (int)_getCPUFamilyType;
 - (void)setupMachineName;
 - (void)dealloc;
+- (id)initForDevice:(id)arg1;
 - (id)init;
 
 // Remaining properties

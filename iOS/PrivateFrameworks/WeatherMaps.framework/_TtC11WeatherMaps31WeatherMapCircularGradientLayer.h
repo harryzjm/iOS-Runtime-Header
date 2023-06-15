@@ -14,12 +14,9 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *bottomMargin;
     MISSING_TYPE *circleRadius;
     MISSING_TYPE *circleStrokeWidth;
-    MISSING_TYPE *colors;
-    MISSING_TYPE *colorStops;
     MISSING_TYPE *indicatorValue;
     MISSING_TYPE *indicatorColor;
     MISSING_TYPE *scaleRange;
-    MISSING_TYPE *segments;
     MISSING_TYPE *showIndicator;
     MISSING_TYPE *colorsWithStops;
 }

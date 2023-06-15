@@ -9,9 +9,9 @@
 @class BMDSL, NSString;
 
 @protocol ContextSyncManaging <NSObject>
-- (void)unregisterForUpdates:(BMDSL *)arg1 withIdentifier:(NSString *)arg2 forDeviceTypes:(long long)arg3 withHandler:(void (^)(_Bool))arg4;
-- (void)unregisterForUpdates:(BMDSL *)arg1 withIdentifier:(NSString *)arg2 forDeviceTypes:(long long)arg3 withErrorHandler:(void (^)(_Bool, NSError *))arg4;
-- (void)registerForUpdates:(BMDSL *)arg1 withIdentifier:(NSString *)arg2 shouldWake:(_Bool)arg3 forDeviceTypes:(long long)arg4 withHandler:(void (^)(_Bool))arg5;
-- (void)registerForUpdates:(BMDSL *)arg1 withIdentifier:(NSString *)arg2 shouldWake:(_Bool)arg3 forDeviceTypes:(long long)arg4 withErrorHandler:(void (^)(_Bool, NSError *))arg5;
+- (void)unregisterForUpdates:(BMDSL *)arg1 withIdentifier:(NSString *)arg2 forUseCase:(NSString *)arg3 forDeviceTypes:(long long)arg4 withHandler:(void (^)(_Bool))arg5;
+- (void)unregisterForUpdates:(BMDSL *)arg1 withIdentifier:(NSString *)arg2 forUseCase:(NSString *)arg3 forDeviceTypes:(long long)arg4 withErrorHandler:(void (^)(_Bool, NSError *))arg5;
+- (void)registerForUpdates:(BMDSL *)arg1 withIdentifier:(NSString *)arg2 forUseCase:(NSString *)arg3 shouldWake:(_Bool)arg4 forDeviceTypes:(long long)arg5 withHandler:(void (^)(_Bool))arg6;
+- (void)registerForUpdates:(BMDSL *)arg1 withIdentifier:(NSString *)arg2 forUseCase:(NSString *)arg3 shouldWake:(_Bool)arg4 forDeviceTypes:(long long)arg5 withErrorHandler:(void (^)(_Bool, NSError *))arg6;
 @end
 

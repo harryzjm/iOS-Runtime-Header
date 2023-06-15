@@ -17,6 +17,8 @@
 - (void)_itemCustomViewDidChange:(UIBarButtonItem *)arg1 fromView:(UIView *)arg2;
 
 @optional
+- (_Bool)_itemHostedInNSToolbar:(UIBarButtonItem *)arg1;
+- (void)_itemNeedsNSToolbarUpdate:(UIBarButtonItem *)arg1;
 - (_Bool)_itemDidUpdateMenu:(UIBarButtonItem *)arg1 fromMenu:(UIMenu *)arg2;
 @end
 

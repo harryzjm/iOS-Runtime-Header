@@ -6,7 +6,7 @@
 
 #import <CallKit/CXProviderDelegate-Protocol.h>
 
-@class CXEnableVideoCallAction, CXJoinCallAction, CXProvider, CXPullCallAction, CXSendMMIOrUSSDCodeAction, CXSetRelayingCallAction, CXSetScreenShareAttributesCallAction, CXSetSendingVideoCallAction, CXSetSharingScreenCallAction, CXSetTTYTypeCallAction, CXSetVideoPresentationSizeCallAction, CXSetVideoPresentationStateCallAction;
+@class CXEnableVideoCallAction, CXJoinCallAction, CXProvider, CXPullCallAction, CXSendMMIOrUSSDCodeAction, CXSetRelayingCallAction, CXSetScreenShareAttributesCallAction, CXSetScreeningCallAction, CXSetSendingVideoCallAction, CXSetSharingScreenCallAction, CXSetTTYTypeCallAction, CXSetVideoPresentationSizeCallAction, CXSetVideoPresentationStateCallAction;
 
 @protocol CXProviderDelegatePrivate <CXProviderDelegate>
 
@@ -14,6 +14,7 @@
 - (void)provider:(CXProvider *)arg1 performSetVideoPresentationStateCallAction:(CXSetVideoPresentationStateCallAction *)arg2;
 - (void)provider:(CXProvider *)arg1 performSetVideoPresentationSizeCallAction:(CXSetVideoPresentationSizeCallAction *)arg2;
 - (void)provider:(CXProvider *)arg1 performPullCallAction:(CXPullCallAction *)arg2;
+- (void)provider:(CXProvider *)arg1 performSetScreeningCallAction:(CXSetScreeningCallAction *)arg2;
 - (void)provider:(CXProvider *)arg1 performSetRelayingCallAction:(CXSetRelayingCallAction *)arg2;
 - (void)provider:(CXProvider *)arg1 performEnableVideoCallAction:(CXEnableVideoCallAction *)arg2;
 - (void)provider:(CXProvider *)arg1 performSetScreenShareAttributesCallAction:(CXSetScreenShareAttributesCallAction *)arg2;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIAction.h>
+#import <UIKitCore/UIAction.h>
 
 @interface _TtC7SwiftUIP33_BF747AB022DCE7FC5B6AD0F035BC8E0D11UIKitAction : UIAction
 {

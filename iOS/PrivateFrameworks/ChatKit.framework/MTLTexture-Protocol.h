@@ -9,41 +9,38 @@
 @protocol MTLBuffer, MTLResource, MTLTexture;
 
 @protocol MTLTexture <MTLResource>
+@property(readonly, nonatomic) CDStruct_a06f635e swizzle;
+@property(readonly) struct MTLResourceID gpuResourceID;
+@property(readonly) long long compressionType;
+@property(readonly) _Bool allowGPUOptimizedContents;
+@property(readonly) _Bool isSparse;
+@property(readonly) unsigned long long tailSizeInBytes;
+@property(readonly) unsigned long long firstMipmapInTail;
+@property(readonly, getter=isFramebufferOnly) _Bool framebufferOnly;
+@property(readonly) unsigned long long usage;
+@property(readonly) unsigned long long arrayLength;
+@property(readonly) unsigned long long sampleCount;
+@property(readonly) unsigned long long mipmapLevelCount;
+@property(readonly) unsigned long long depth;
+@property(readonly) unsigned long long height;
+@property(readonly) unsigned long long width;
+@property(readonly) unsigned long long pixelFormat;
+@property(readonly) unsigned long long textureType;
+@property(readonly) unsigned long long iosurfacePlane;
+@property(readonly) struct __IOSurface *iosurface;
+@property(readonly) unsigned long long bufferBytesPerRow;
+@property(readonly) unsigned long long bufferOffset;
+@property(readonly) id <MTLBuffer> buffer;
+@property(readonly) unsigned long long parentRelativeSlice;
+@property(readonly) unsigned long long parentRelativeLevel;
+@property(readonly) id <MTLTexture> parentTexture;
+@property(readonly) id <MTLResource> rootResource;
 - (id <MTLTexture>)newTextureViewWithPixelFormat:(unsigned long long)arg1 textureType:(unsigned long long)arg2 levels:(struct _NSRange)arg3 slices:(struct _NSRange)arg4 swizzle:(CDStruct_a06f635e)arg5;
-@property(nonatomic, readonly) CDStruct_a06f635e swizzle;
 - (id <MTLTexture>)newTextureViewWithPixelFormat:(unsigned long long)arg1 textureType:(unsigned long long)arg2 levels:(struct _NSRange)arg3 slices:(struct _NSRange)arg4;
 - (id <MTLTexture>)newTextureViewWithPixelFormat:(unsigned long long)arg1;
 - (void)replaceRegion:(CDStruct_4c96eda1)arg1 mipmapLevel:(unsigned long long)arg2 withBytes:(const void *)arg3 bytesPerRow:(unsigned long long)arg4;
 - (void)getBytes:(void *)arg1 bytesPerRow:(unsigned long long)arg2 fromRegion:(CDStruct_4c96eda1)arg3 mipmapLevel:(unsigned long long)arg4;
 - (void)replaceRegion:(CDStruct_4c96eda1)arg1 mipmapLevel:(unsigned long long)arg2 slice:(unsigned long long)arg3 withBytes:(const void *)arg4 bytesPerRow:(unsigned long long)arg5 bytesPerImage:(unsigned long long)arg6;
 - (void)getBytes:(void *)arg1 bytesPerRow:(unsigned long long)arg2 bytesPerImage:(unsigned long long)arg3 fromRegion:(CDStruct_4c96eda1)arg4 mipmapLevel:(unsigned long long)arg5 slice:(unsigned long long)arg6;
-@property(nonatomic, readonly) struct MTLResourceID gpuResourceID;
-@property(nonatomic, readonly) long long compressionType;
-@property(nonatomic, readonly) _Bool allowGPUOptimizedContents;
-@property(nonatomic, readonly) _Bool isSparse;
-@property(nonatomic, readonly) long long tailSizeInBytes;
-@property(nonatomic, readonly) long long firstMipmapInTail;
-- (_Bool)isFramebufferOnly;
-@property(nonatomic, readonly) unsigned long long usage;
-@property(nonatomic, readonly) long long arrayLength;
-@property(nonatomic, readonly) long long sampleCount;
-@property(nonatomic, readonly) long long mipmapLevelCount;
-@property(nonatomic, readonly) long long depth;
-@property(nonatomic, readonly) long long height;
-@property(nonatomic, readonly) long long width;
-@property(nonatomic, readonly) unsigned long long pixelFormat;
-@property(nonatomic, readonly) unsigned long long textureType;
-@property(nonatomic, readonly) long long iosurfacePlane;
-@property(nonatomic, readonly) struct __IOSurface *iosurface;
-@property(nonatomic, readonly) long long bufferBytesPerRow;
-@property(nonatomic, readonly) long long bufferOffset;
-@property(nonatomic, readonly) id <MTLBuffer> buffer;
-@property(nonatomic, readonly) long long parentRelativeSlice;
-@property(nonatomic, readonly) long long parentRelativeLevel;
-@property(nonatomic, readonly) id <MTLTexture> parentTexture;
-@property(nonatomic, readonly) id <MTLResource> rootResource;
-
-// Remaining properties
-@property(nonatomic, readonly) _Bool framebufferOnly;
 @end
 

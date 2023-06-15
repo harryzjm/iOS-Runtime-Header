@@ -6,13 +6,14 @@
 
 #import <RunningBoard/NSObject-Protocol.h>
 
-@class LASSProperties4RB, NSArray, NSObject, NSString, OSLaunchdDomain;
-@protocol OSLaunchdJobProtocol, OS_xpc_object;
+@class LASSProperties4RB, NSArray, NSDictionary, NSObject, NSString, OSLaunchdDomain;
+@protocol OSLaunchdJobInstancePropertiesProtocol, OSLaunchdJobProtocol, OS_xpc_object;
 
 @protocol RBLaunchdInterfacing <NSObject>
+- (id <OSLaunchdJobInstancePropertiesProtocol>)instancePropertiesFromOverlay:(NSDictionary *)arg1;
 - (LASSProperties4RB *)propertiesForJob:(id <OSLaunchdJobProtocol>)arg1 error:(out id *)arg2;
 - (LASSProperties4RB *)propertiesForPid:(int)arg1 error:(out id *)arg2;
-- (id <OSLaunchdJobProtocol>)forJob:(id <OSLaunchdJobProtocol>)arg1 createInstance:(unsigned char [16])arg2 error:(out id *)arg3;
+- (id <OSLaunchdJobProtocol>)forJob:(id <OSLaunchdJobProtocol>)arg1 createInstance:(unsigned char [16])arg2 properties:(id <OSLaunchdJobInstancePropertiesProtocol>)arg3 error:(out id *)arg4;
 - (NSArray *)copyJobsManagedBy:(NSString *)arg1 error:(out id *)arg2;
 - (id <OSLaunchdJobProtocol>)copyJobWithPid:(int)arg1;
 - (id <OSLaunchdJobProtocol>)copyJobWithLabel:(NSString *)arg1 domain:(OSLaunchdDomain *)arg2;

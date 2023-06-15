@@ -11,36 +11,33 @@
 @protocol ECMailAccount, ECMailbox, ECMessageHeaders, ECMimeBody;
 
 @protocol ECMessage <NSCopying, NSObject>
-@property(nonatomic, readonly) ECAngleBracketIDHash *listIDHash;
-@property(nonatomic, readonly) long long numberOfAttachments;
-@property(nonatomic, readonly) NSUUID *documentID;
-@property(nonatomic, readonly) NSArray *references;
-@property(nonatomic, readonly) id <ECMessageHeaders> headers;
-@property(nonatomic, readonly) id <ECMailAccount> account;
-@property(nonatomic, readonly) NSSet *labels;
-@property(nonatomic, readonly) ECAngleBracketIDHash *messageIDHeaderHash;
-@property(nonatomic, readonly) NSString *messageIDHeader;
-@property(nonatomic, readonly) NSDictionary *headersDictionary;
-@property(nonatomic, readonly) id <ECMimeBody> mimeBody;
-- (_Bool)isPartOfExistingThread;
-@property(nonatomic, readonly) ECMessageFlags *flags;
-@property(nonatomic, readonly) _Bool isServerSearchResult;
-@property(nonatomic, readonly) long long conversationID;
-@property(nonatomic, readonly) id <ECMailbox> mailbox;
-@property(nonatomic, readonly) NSString *remoteID;
-@property(nonatomic, readonly) NSArray *listUnsubscribe;
-@property(nonatomic, readonly) NSDate *dateSent;
-@property(nonatomic, readonly) NSDate *dateReceived;
-@property(nonatomic, readonly) NSArray *senders;
-@property(nonatomic, readonly) NSArray *bcc;
-@property(nonatomic, readonly) NSArray *cc;
-@property(nonatomic, readonly) NSArray *to;
-@property(nonatomic, readonly) NSArray *from;
-@property(nonatomic, readonly) ECSubject *subject;
-@property(nonatomic, readonly) NSString *persistentID;
+@property(readonly, nonatomic) ECAngleBracketIDHash *listIDHash;
+@property(readonly, nonatomic) unsigned long long numberOfAttachments;
+@property(readonly, copy, nonatomic) NSUUID *documentID;
+@property(readonly, copy, nonatomic) NSArray *references;
+@property(readonly, nonatomic) id <ECMessageHeaders> headers;
+@property(readonly, nonatomic) id <ECMailAccount> account;
+@property(readonly) NSSet *labels;
+@property(readonly, nonatomic) ECAngleBracketIDHash *messageIDHeaderHash;
+@property(readonly, copy, nonatomic) NSString *messageIDHeader;
+@property(readonly, copy, nonatomic) NSDictionary *headersDictionary;
+@property(readonly, nonatomic) id <ECMimeBody> mimeBody;
+@property(readonly, nonatomic, getter=isPartOfExistingThread) _Bool partOfExistingThread;
+@property(readonly, nonatomic) ECMessageFlags *flags;
+@property(readonly, nonatomic) _Bool isServerSearchResult;
+@property(readonly, nonatomic) long long conversationID;
+@property(readonly, nonatomic) id <ECMailbox> mailbox;
+@property(readonly, copy, nonatomic) NSString *remoteID;
+@property(readonly, copy, nonatomic) NSArray *listUnsubscribe;
+@property(readonly, nonatomic) NSDate *dateSent;
+@property(readonly, nonatomic) NSDate *dateReceived;
+@property(readonly, copy, nonatomic) NSArray *senders;
+@property(readonly, copy, nonatomic) NSArray *bcc;
+@property(readonly, copy, nonatomic) NSArray *cc;
+@property(readonly, copy, nonatomic) NSArray *to;
+@property(readonly, copy, nonatomic) NSArray *from;
+@property(readonly, copy, nonatomic) ECSubject *subject;
+@property(readonly, copy, nonatomic) NSString *persistentID;
 - (NSString *)bestAlternativePart:(_Bool *)arg1;
-
-// Remaining properties
-@property(nonatomic, readonly) _Bool partOfExistingThread;
 @end
 

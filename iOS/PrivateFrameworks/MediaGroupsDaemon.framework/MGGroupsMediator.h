@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MGGroupsQueryAgent, NSArray, NSDictionary;
+@class MGGroupsQueryAgent, NSArray, NSDictionary, NSUUID;
 
 __attribute__((visibility("hidden")))
 @interface MGGroupsMediator : NSObject
@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     struct os_unfair_lock_s _lock;
     NSDictionary *_groups;
     _Bool _pendingChanges;
+    NSUUID *_identifier;
     MGGroupsQueryAgent *_queryAgent;
     NSArray *_activities;
 }
@@ -22,6 +23,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, getter=hasPendingChanges) _Bool pendingChanges; // @synthesize pendingChanges=_pendingChanges;
 @property(copy, nonatomic) NSArray *activities; // @synthesize activities=_activities;
 @property(readonly, nonatomic) __weak MGGroupsQueryAgent *queryAgent; // @synthesize queryAgent=_queryAgent;
+@property(readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 - (void)removeGroupWithIdentifier:(id)arg1;
 - (id)group:(id)arg1 removeMember:(id)arg2;
 - (id)group:(id)arg1 addMember:(id)arg2;
@@ -37,6 +39,8 @@ __attribute__((visibility("hidden")))
 - (void)removeGroup:(id)arg1 ifExists_unsafe:(_Bool *)arg2;
 - (void)upsertGroup_unsafe:(id)arg1;
 - (id)groups_unsafe;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)dealloc;
 - (id)initWithGroupsQueryAgent:(id)arg1;
 
 @end

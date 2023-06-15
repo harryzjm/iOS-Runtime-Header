@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSArray, NSMutableArray, NSMutableDictionary, NSNumber, NSString, TSCHChartDrawableInfo, TSCHChartLayoutCache, TSCHChartMediator, TSCHChartModel, TSCHChartNonStyle, TSCHChartStyle, TSCHChartStylePreset, TSCHChartStyleState, TSCHChartType, TSCHLegendModel, TSCHLegendNonStyle, TSCHLegendStyle, TSCHReferenceLineStyle, TSDInfoGeometry, TSKCustomFormatList, TSKDocumentRoot, TSPLazyReference, TSSStylesheet;
+@protocol TSCHDataFormatter;
 
 @interface TSCHChartInfo : NSObject
 {
@@ -58,6 +59,7 @@
     _Bool _appearancePreservedForPreset;
     _Bool _displayMessageOnRepCreation;
     TSDInfoGeometry *_nonInfoGeometry;
+    id <TSCHDataFormatter> _summaryLabelDataFormatter;
 }
 
 + (_Bool)updateInitialLabelExplosionIfNeededForChartType:(id)arg1 seriesNonStyles:(inout id *)arg2 stylePreset:(id)arg3 rowCount:(unsigned long long)arg4 columnCount:(unsigned long long)arg5;
@@ -100,6 +102,7 @@
 @property(nonatomic) _Bool appearancePreservedForPreset; // @synthesize appearancePreservedForPreset=_appearancePreservedForPreset;
 @property(nonatomic) double informationalMessageDuration; // @synthesize informationalMessageDuration=_informationalMessageDuration;
 @property(copy, nonatomic) NSString *informationalMessageString; // @synthesize informationalMessageString=_informationalMessageString;
+@property(readonly, nonatomic) id <TSCHDataFormatter> summaryLabelDataFormatter; // @synthesize summaryLabelDataFormatter=_summaryLabelDataFormatter;
 @property(nonatomic) _Bool horizontalUseSeparator; // @synthesize horizontalUseSeparator=_horizontalUseSeparator;
 @property(copy, nonatomic) NSString *horizontalSuffix; // @synthesize horizontalSuffix=_horizontalSuffix;
 @property(copy, nonatomic) NSString *horizontalPrefix; // @synthesize horizontalPrefix=_horizontalPrefix;
@@ -142,6 +145,7 @@
 - (_Bool)isEquivalentForCrossDocumentPasteMasterComparison:(id)arg1;
 - (void)performDeferredUpgradeAndImportOperations;
 @property(readonly, nonatomic) _Bool wantsDeferredUpgradeOrImport;
+- (void)upgradeStackedSummaryLabelPropertiesWithTitleParagraphStyleIndex:(unsigned long long)arg1;
 - (void)upgradeChartRoundedCornerRadiusWithValue:(double)arg1;
 - (void)upgradeAxisLabelFormatWithValuePrefix:(id)arg1 valueSuffix:(id)arg2 valueUseSeparator:(_Bool)arg3 horizontalPrefix:(id)arg4 horizontalSuffix:(id)arg5 horizontalUseSeparator:(_Bool)arg6;
 - (void)upgradeWithHorizontalMin:(id)arg1 horizontalMax:(id)arg2 valueMin:(id)arg3 valueMax:(id)arg4;
@@ -208,6 +212,7 @@
 - (void)p_designUpdateCategoryMajorGridlineStrokeWithCategoryAxisStyles:(id)arg1 valueAxisStyles:(id)arg2;
 - (id)newChartStylePresetByExampleWithPresetIndex:(unsigned long long)arg1 withSeriesCount:(unsigned long long)arg2 forTheme:(id)arg3;
 - (id)fontNameForInspectors;
+- (id)transformedTuplesWithTuple:(id)arg1;
 - (id)swapTuplesForParagraphStyleMutations:(id)arg1 forReferencingProperty:(int)arg2;
 - (id)swapTuplesForMutations:(id)arg1 forImport:(_Bool)arg2;
 - (id)p_swapTuplesForMutations:(id)arg1;
@@ -271,6 +276,9 @@
 - (id)initForPresetImportWithChartType:(id)arg1;
 - (id)initWithChartType:(id)arg1 legendShowing:(id)arg2 chartBodyFrame:(id)arg3 chartAreaFrame:(id)arg4 circumscribingFrame:(id)arg5 legendFrame:(id)arg6 stylePreset:(id)arg7 privateSeriesStyles:(id)arg8 chartNonStyle:(id)arg9 legendNonStyle:(id)arg10 valueAxisNonStyles:(id)arg11 categoryAxisNonStyles:(id)arg12 seriesNonStyles:(id)arg13 refLineNonStylesMap:(id)arg14 refLineStylesMap:(id)arg15 forDocumentLocale:(id)arg16;
 - (id)p_init;
+- (int)adjustedSummaryLabelNumberFormatType;
+- (_Bool)hasSummaryLabelCustomFormatForGridValueType:(int)arg1;
+- (id)summaryLabelCustomFormatForGridValueType:(int)arg1;
 - (id)allStylesAndNonStylesThatCanHaveCustomNumberFormats;
 - (void)updateAfterPaste;
 - (void)reassignPasteboardCustomFormatKeys;
@@ -287,6 +295,9 @@
 @property(readonly, nonatomic) _Bool supportsRoundedCorners;
 @property(readonly, nonatomic) _Bool hasRoundedCorners;
 @property(readonly, nonatomic) _Bool supportsAndHasRoundedCorners;
+@property(readonly, nonatomic) _Bool hasStackedSummaryLabels;
+@property(readonly, nonatomic) _Bool supportsStackedSummaryLabels;
+@property(readonly, nonatomic) _Bool supportsAndHasStackedSummaryLabels;
 - (id)getSeriesNonstyleForSeriesIndex:(unsigned long long)arg1;
 - (id)getSeriesStyleForSeriesIndex:(unsigned long long)arg1;
 - (_Bool)p_containsCalloutLinesWithModelSync:(_Bool)arg1;
@@ -297,6 +308,7 @@
 @property(readonly, nonatomic) float maximumExplosion;
 - (float)radiusForFrame:(struct CGRect)arg1 withMaxExplosion:(float)arg2;
 - (float)minFrameDimensionForRadius:(float)arg1 withMaxExplosion:(float)arg2;
+- (id)p_summaryLabelDataFormatterFromCurrentModel;
 - (_Bool)supportsRoundedCornersWithoutModelSync;
 - (_Bool)containsCalloutLinesWithoutModelSync;
 @property(readonly, nonatomic) NSArray *categoryAxisNonStyles;
@@ -337,6 +349,7 @@
 - (void)saveToUnityArchive:(void *)arg1 persistentChartInfo:(id)arg2 archiver:(id)arg3;
 - (void)p_upgradeLineChartsFor10;
 - (void)p_applySeriesTuplesWithThemeSeriesStyles:(id)arg1 privateSeriesStyles:(id)arg2 propertyDictionary:(id)arg3;
+- (_Bool)p_isDownsampledStackedChart;
 - (void)loadFromUnityArchive:(const void *)arg1 unarchiver:(id)arg2 persistentChartInfo:(id)arg3;
 - (id)p_swapTuplesForApplyingPreset:(id)arg1 preservingAppearance:(_Bool)arg2;
 - (id)p_swapTuplesForApplyingPresetRemovingOverrides:(id)arg1;

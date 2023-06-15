@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CalendarModel, UITableViewCell;
+@class CUIKCalendarModel, UITableViewCell;
 
 __attribute__((visibility("hidden")))
 @interface EKEventProposeNewTimeItem
 {
     UITableViewCell *_cell;
     _Bool _cellNeedsUpdate;
-    CalendarModel *_model;
+    CUIKCalendarModel *_model;
 }
 
 + (_Bool)eventShowsProposeTime:(id)arg1;

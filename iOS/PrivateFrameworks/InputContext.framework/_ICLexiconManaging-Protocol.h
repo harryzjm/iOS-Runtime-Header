@@ -14,6 +14,8 @@
 - (NSArray *)loadLexicons;
 - (NSArray *)loadLexiconsUsingFilter:(NSString * (^)(NSString *))arg1;
 - (NSArray *)loadLexicons:(NSString * (^)(NSString *))arg1;
+- (void)removeNamedEntitiesUpdateObserver:(void (^)(void))arg1;
+- (void (^)(void))addNamedEntitiesUpdateObserver:(void (^)(void))arg1;
 - (void)removeContactObserver:(void (^)(NSDictionary *))arg1;
 - (void (^)(NSDictionary *))addContactObserver:(void (^)(NSDictionary *))arg1;
 @end

@@ -24,8 +24,10 @@ __attribute__((visibility("hidden")))
     _Bool _disableIOFencing;
     _Bool _enableLowLatencySignalSharedEvent;
     _Bool _enableLowLatencyWaitSharedEvent;
+    _Bool _lockParameterBufferSizeToMax;
 }
 
+@property(nonatomic) _Bool lockParameterBufferSizeToMax; // @synthesize lockParameterBufferSizeToMax=_lockParameterBufferSizeToMax;
 @property(nonatomic) _Bool enableLowLatencyWaitSharedEvent; // @synthesize enableLowLatencyWaitSharedEvent=_enableLowLatencyWaitSharedEvent;
 @property(nonatomic) _Bool enableLowLatencySignalSharedEvent; // @synthesize enableLowLatencySignalSharedEvent=_enableLowLatencySignalSharedEvent;
 @property(nonatomic) _Bool disableIOFencing; // @synthesize disableIOFencing=_disableIOFencing;

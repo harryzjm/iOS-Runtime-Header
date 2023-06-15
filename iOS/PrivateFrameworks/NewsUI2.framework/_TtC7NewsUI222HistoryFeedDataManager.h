@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *delegate;
     MISSING_TYPE *clearReadingHistoryManager;
     MISSING_TYPE *newsletterManager;
+    MISSING_TYPE *userActivityManager;
     MISSING_TYPE *personalizationData;
     MISSING_TYPE *readingHistory;
     MISSING_TYPE *dataProvider;

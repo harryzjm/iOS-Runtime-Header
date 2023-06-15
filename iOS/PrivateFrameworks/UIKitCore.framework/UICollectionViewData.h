@@ -6,26 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@class NSMapTable, NSMutableArray, NSMutableDictionary, NSMutableIndexSet, UICollectionView, UICollectionViewLayout;
+@class NSArray, NSMutableDictionary, NSMutableIndexSet, UICollectionView, UICollectionViewLayout, _UICollectionViewDataAttributesMap;
 
 __attribute__((visibility("hidden")))
 @interface UICollectionViewData : NSObject
 {
     UICollectionView *_collectionView;
     UICollectionViewLayout *_layout;
-    NSMapTable *_screenPageMap;
     NSMutableIndexSet *_globalIndexesOfItemsAwaitingValidation;
     NSMutableDictionary *_supplementaryLayoutAttributes;
     NSMutableDictionary *_decorationLayoutAttributes;
     NSMutableDictionary *_invalidatedSupplementaryIndexPaths;
     NSMutableDictionary *_invalidatedDecorationIndexPaths;
-    struct CGRect _validLayoutRect;
     long long _lastSectionTestedForNumberOfItemsBeforeSection;
     long long _lastResultForNumberOfItemsBeforeSection;
     struct CGSize _contentSize;
-    NSMutableArray *_clonedCellAttributes;
-    NSMutableArray *_clonedSupplementaryAttributes;
-    NSMutableArray *_clonedDecorationAttributes;
     struct {
         unsigned int contentSizeIsValid:1;
         unsigned int itemCountsAreValid:1;
@@ -35,11 +30,14 @@ __attribute__((visibility("hidden")))
     } _collectionViewDataFlags;
     struct vector<long, std::allocator<long>> _sectionItemCounts;
     struct unordered_map<long, UICollectionViewLayoutAttributes *, std::hash<long>, std::equal_to<long>, std::allocator<std::pair<const long, UICollectionViewLayoutAttributes *>>> _globalItemMap;
-    NSMutableIndexSet *_indexesOfUnmappedItems;
     long long _totalItemCount;
+    _UICollectionViewDataAttributesMap *_attributesMap;
+    unsigned long long _preUpdateCachedItemCount;
+    NSArray *_clonedCellAttributes;
+    NSArray *_clonedSupplementaryAttributes;
+    NSArray *_clonedDecorationAttributes;
 }
 
-+ (void)initialize;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (struct CGRect)_TEST_validLayoutRect;

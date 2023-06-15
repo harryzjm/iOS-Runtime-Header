@@ -9,15 +9,11 @@
 @interface RSOnlineOfflineAssociation : NSObject
 {
     struct RSOnlineOfflineAssociationCore _rsOnlineOfflineAssociationCore;
+    _Bool _isCurveEnabled;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)reset;
-- (id)runWithOnlineFloorplan:(id)arg1 offlineFloorplan:(id)arg2 camDensity2D:(id)arg3 geoMetryMeta:(id)arg4;
-- (void)validateParentIdentifierOfWalls:(id)arg1;
-- (void)deduplicateSurfaceUUIDInFloorPlan:(id)arg1;
-- (void)deduplicateUUIDInSurfaces:(id)arg1 uuidSet:(id)arg2;
 - (id)init;
 
 @end

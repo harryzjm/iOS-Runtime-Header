@@ -6,7 +6,7 @@
 
 #import <CoreHAP/NSObject-Protocol.h>
 
-@class HAPAccessoryInfo, HAPAccessoryServer, HMFOSTransaction, NSArray, NSData, NSError, NSNumber, NSString, NSUUID;
+@class HAP2AccessorySessionInfo, HAPAccessoryInfo, HAPAccessoryServer, HMFOSTransaction, NSArray, NSData, NSError, NSNumber, NSString, NSUUID;
 
 @protocol HAPAccessoryServerDelegate <NSObject>
 - (void)accessoryServerNeedsOwnershipToken:(HAPAccessoryServer *)arg1;
@@ -28,6 +28,8 @@
 - (void)accessoryServer:(HAPAccessoryServer *)arg1 promptUserForPasswordWithType:(unsigned long long)arg2;
 
 @optional
+- (void)accessoryServer:(HAPAccessoryServer *)arg1 didUpdateConnectionState:(_Bool)arg2 sessionInfo:(HAP2AccessorySessionInfo *)arg3 linkLayerType:(long long)arg4 withError:(NSError *)arg5;
+- (void)accessoryServer:(HAPAccessoryServer *)arg1 didUpdateConnectionState:(_Bool)arg2 linkLayerType:(long long)arg3 withError:(NSError *)arg4;
 - (void)accessoryServer:(HAPAccessoryServer *)arg1 didUpdateWakeNumber:(NSNumber *)arg2;
 - (void)accessoryServer:(HAPAccessoryServer *)arg1 didDisconnectWithError:(NSError *)arg2;
 @end

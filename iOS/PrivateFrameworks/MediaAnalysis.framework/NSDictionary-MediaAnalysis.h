@@ -9,6 +9,7 @@
 @interface NSDictionary (MediaAnalysis)
 + (id)vcp_exifFromImageURL:(id)arg1;
 - (id)vcp_queryActionResultForPHFace:(id)arg1;
+- (id)vcp_actionsAggregated;
 - (_Bool)vcp_streamedVideo;
 - (_Bool)vcp_degraded;
 - (id)vcp_fingerprint;

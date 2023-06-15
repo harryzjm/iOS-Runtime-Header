@@ -4,11 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <FrontBoard/FBSSceneSettings.h>
+#import <FrontBoardServices/FBSSceneSettings.h>
 
-@class BSColor, NSString, PRPosterConfigurableOptions, PRPosterConfiguredProperties, PRSServerPosterPath;
+@class BSColor, NSArray, NSDate, NSString, PRPosterConfigurableOptions, PRPosterConfiguredProperties, PRSServerPosterPath;
 
 @interface FBSSceneSettings (PREditingScene)
+@property(readonly, nonatomic) long long pr_deviceOrientation;
+@property(readonly, nonatomic) NSDate *pr_overrideDate;
+@property(readonly, copy, nonatomic) NSString *pr_titleString;
 @property(readonly, nonatomic, getter=pr_areComplicationsDisallowed) _Bool pr_complicationsDisallowed;
 @property(readonly, nonatomic, getter=pr_areControlsHidden) _Bool pr_controlsHidden;
 @property(readonly, nonatomic) long long pr_focusedComplicationElement;
@@ -20,22 +23,32 @@
 @property(readonly, nonatomic) long long pr_editingAcceptButtonType;
 @property(readonly, nonatomic, getter=pr_isCoveredByModalPresentation) _Bool pr_coveredByModalPresentation;
 - (long long)pr_adjustedLuminance;
+@property(readonly, nonatomic) NSArray *pr_sceneAttachments;
+@property(readonly, nonatomic) unsigned long long pr_titleAlignment;
+@property(readonly, nonatomic) unsigned long long pr_userTapEventsCounter;
+@property(readonly, nonatomic) struct CGPoint pr_userTapLocation;
 @property(readonly, nonatomic) unsigned long long pr_significantEventsCounter;
 @property(readonly, nonatomic) _Bool pr_wakeSourceIsSwipeToUnlock;
 @property(readonly, nonatomic) double pr_unlockProgress;
 @property(readonly, nonatomic, getter=pr_isFloatingLayerSnapshot) _Bool pr_floatingLayerSnapshot;
 @property(readonly, nonatomic, getter=pr_isSnapshot) _Bool pr_snapshot;
+@property(readonly, nonatomic) unsigned long long pr_previewContent;
 @property(readonly, nonatomic) long long pr_content;
 @property(readonly, nonatomic) long long pr_mode;
+@property(readonly, nonatomic) struct CGRect pr_verticalTitleBoundingRect;
+@property(readonly, nonatomic) struct CGRect pr_horizontalTitleBoundingRect;
+@property(readonly, nonatomic, getter=pr_isWallpaperObscured) _Bool pr_wallpaperObscured;
 @property(readonly, nonatomic) _Bool pr_showsComplications;
 @property(readonly, nonatomic) _Bool pr_showsHeaderElements;
 @property(readonly, nonatomic, getter=pr_isAlternateDateEnabled) _Bool pr_alternateDateEnabled;
+@property(readonly, nonatomic, getter=pr_isComplicationSidebarConfigured) _Bool pr_complicationSidebarConfigured;
 @property(readonly, nonatomic, getter=pr_isComplicationRowConfigured) _Bool pr_complicationRowConfigured;
 @property(readonly, nonatomic, getter=pr_isInlineComplicationConfigured) _Bool pr_inlineComplicationConfigured;
 @property(readonly, nonatomic, getter=pr_isParallaxEffectivelyEnabled) _Bool pr_parallaxEffectivelyEnabled;
 @property(readonly, nonatomic, getter=pr_isParallaxDisallowed) _Bool pr_parallaxDisallowed;
 @property(readonly, nonatomic, getter=pr_isParallaxEnabled) _Bool pr_parallaxEnabled;
 @property(readonly, nonatomic, getter=pr_isDepthEffectDisallowed) _Bool pr_depthEffectDisallowed;
+@property(readonly, copy, nonatomic) NSString *pr_snapshotDefinitionIdentifier;
 @property(readonly, copy, nonatomic) NSString *pr_snapshotLogIdentifier;
 @property(readonly, nonatomic) PRPosterConfiguredProperties *pr_posterConfiguredProperties;
 @property(readonly, nonatomic) PRPosterConfigurableOptions *pr_posterConfigurableOptions;

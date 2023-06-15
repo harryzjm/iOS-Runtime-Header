@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class NSString, UIColor;
 
@@ -17,7 +17,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIColor *color; // @synthesize color=_color;
 - (void)updateBorderColor;
-- (void)traitCollectionDidChange:(id)arg1;
 @property(nonatomic) unsigned long long cornerMask;
 @property(retain, nonatomic) NSString *cornerCurve;
 @property(nonatomic) double cornerRadius;

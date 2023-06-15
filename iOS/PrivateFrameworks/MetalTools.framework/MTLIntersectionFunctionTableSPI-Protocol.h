@@ -10,6 +10,7 @@
 
 @protocol MTLIntersectionFunctionTableSPI <MTLIntersectionFunctionTable>
 @property(readonly) unsigned long long gpuHandle;
+- (unsigned long long)bufferAddressAtIndex:(unsigned long long)arg1;
 
 @optional
 @property(nonatomic) unsigned long long globalBufferOffset;

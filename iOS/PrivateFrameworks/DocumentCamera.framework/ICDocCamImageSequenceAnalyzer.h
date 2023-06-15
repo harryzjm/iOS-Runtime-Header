@@ -25,7 +25,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)finish;
-- (void)addFrame:(struct __CVBuffer *)arg1 metaData:(id)arg2 frameOptions:(id)arg3 rectangleRequest:(id)arg4 pixelFocalLength:(float)arg5 cameraIntrinsicData:(const struct __CFData *)arg6;
+- (void)addFrame:(struct __CVBuffer *)arg1 metaData:(id)arg2 frameOptions:(id)arg3 rectangleRequest:(id)arg4 pixelFocalLength:(float)arg5 cameraIntrinsicData:(struct __CFData *)arg6;
 - (void)dealloc;
 - (id)initWithOptions:(id)arg1 callback:(CDUnknownBlockType)arg2;
 

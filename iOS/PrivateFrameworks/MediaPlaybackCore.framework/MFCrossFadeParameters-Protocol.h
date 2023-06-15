@@ -5,6 +5,6 @@
 //
 
 @protocol MFCrossFadeParameters
-@property(readonly, nonatomic) double duration;
+@property(nonatomic, readonly) double duration;
 @end
 

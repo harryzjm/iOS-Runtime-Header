@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, SFSectionModel, SFStartPageCollectionViewController;
+@class NSString, SFStartPageCollectionViewController, WBSStartPageSection;
 
 __attribute__((visibility("hidden")))
 @interface SFStartPageSingleSectionDataSource : NSObject
 {
     SFStartPageCollectionViewController *_collectionViewController;
-    SFSectionModel *_section;
+    WBSStartPageSection *_section;
     CDUnknownBlockType _reloadHandler;
     CDUnknownBlockType _navigationItemHandler;
 }

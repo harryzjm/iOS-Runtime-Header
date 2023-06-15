@@ -6,20 +6,9 @@
 
 #import <HealthKit/HKDiagnosticTestResult.h>
 
-@class NSString;
-
 @interface HKDiagnosticTestResult (HKDistinctableObject)
 + (_Bool)supportsDistinctByKeyPath:(id)arg1;
-+ (id)createWithCodable:(id)arg1;
 + (Class)hd_dataEntityClass;
 - (id)uniqueIdentifierForDistinctByKeyPath:(id)arg1 error:(id *)arg2;
-- (_Bool)addCodableRepresentationToCollection:(id)arg1;
-- (id)codableRepresentationForSync;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 @end
 

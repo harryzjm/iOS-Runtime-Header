@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIKeyboardPopoverController.h"
+
 @class NSLayoutConstraint, NSMutableArray, NSString, UILabel, UIResponder, UITextView, UIView;
 @protocol UITextInput;
 
 __attribute__((visibility("hidden")))
-@interface UIDictationPopoverController
+@interface UIDictationPopoverController : UIKeyboardPopoverController
 {
     UIResponder<UITextInput> *_inputDelegate;
     NSMutableArray *_scrollViews;
@@ -41,7 +43,7 @@ __attribute__((visibility("hidden")))
 - (void)movePopoverView:(struct CGRect)arg1 editMenuFrame:(id)arg2;
 - (void)movePopoverView:(struct CGRect)arg1;
 - (void)_observeScrollViewDidScroll:(id)arg1;
-- (void)_geometryChanged:(const CDStruct_f46536fb *)arg1 forAncestor:(id)arg2;
+- (void)_geometryChanged:(const CDStruct_c9afd433 *)arg1 forAncestor:(id)arg2;
 - (void)keyboardDidChange:(id)arg1;
 - (void)textDidChange:(id)arg1;
 - (long long)overrideUserInterfaceStyle;

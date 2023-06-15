@@ -24,6 +24,7 @@
 - (void)coverSheetSlidingViewControllerPrepareForRubberBandedPresentationTransition:(SBCoverSheetSlidingViewController *)arg1;
 - (void)coverSheetSlidingViewController:(SBCoverSheetSlidingViewController *)arg1 committingToEndPresented:(_Bool)arg2;
 - (void)coverSheetSlidingViewControllerUserPresentGestureBegan:(SBCoverSheetSlidingViewController *)arg1;
+- (void)coverSheetSlidingViewControllerDidEndTransition:(SBCoverSheetSlidingViewController *)arg1;
 - (void)coverSheetSlidingViewControllerCleanupDismissalTransition:(SBCoverSheetSlidingViewController *)arg1;
 - (void)coverSheetSlidingViewController:(SBCoverSheetSlidingViewController *)arg1 prepareForDismissalTransitionForReversingTransition:(_Bool)arg2 forUserGesture:(_Bool)arg3;
 - (void)coverSheetSlidingViewControllerCleanupPresentationTransition:(SBCoverSheetSlidingViewController *)arg1;

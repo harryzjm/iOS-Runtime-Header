@@ -6,7 +6,7 @@
 
 #import <PassKitUI/NSObject-Protocol.h>
 
-@class NSIndexPath, NSString, PKDashboardFooterTextItem, PKDashboardHeaderTextItem;
+@class NSArray, NSIndexPath, NSString, PKDashboardFooterTextItem, PKDashboardHeaderTextItem;
 @protocol PKDashboardDataSourceDelegate, PKDashboardItem;
 
 @protocol PKDashboardDataSource <NSObject>
@@ -19,5 +19,9 @@
 @optional
 - (NSString *)navigationBarTitle;
 - (void)setDataSourceDelegate:(id <PKDashboardDataSourceDelegate>)arg1;
+- (void)deleteItems:(NSArray *)arg1;
+- (void)deleteItem:(id <PKDashboardItem>)arg1 completionHandler:(void (^)(_Bool))arg2;
+- (_Bool)canDeleteItem:(id <PKDashboardItem>)arg1;
+- (_Bool)isListLayoutForSection:(unsigned long long)arg1;
 @end
 

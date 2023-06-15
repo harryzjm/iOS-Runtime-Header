@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 + (id)textMarkerWithCharacterOffset:(struct CharacterOffset *)arg1 cache:(void *)arg2;
 + (id)textMarkerWithVisiblePosition:(void *)arg1 cache:(void *)arg2;
 - (id).cxx_construct;
+- (struct TextMarkerData)textMarkerData;
 - (id)description;
 - (void *)accessibilityObject;
 - (_Bool)isIgnored;
@@ -25,7 +26,7 @@ __attribute__((visibility("hidden")))
 - (id)dataRepresentation;
 - (id)initWithData:(id)arg1 accessibilityObject:(id)arg2;
 - (id)initWithData:(id)arg1 cache:(void *)arg2;
-- (id)initWithTextMarker:(void *)arg1 cache:(void *)arg2;
+- (id)initWithTextMarker:(struct TextMarkerData *)arg1 cache:(void *)arg2;
 
 @end
 

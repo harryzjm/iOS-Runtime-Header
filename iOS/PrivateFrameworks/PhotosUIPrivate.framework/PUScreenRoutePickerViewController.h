@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/_UIScreenRoutePickerViewController.h>
+#import <UIKitCore/_UIScreenRoutePickerViewController.h>
 
 __attribute__((visibility("hidden")))
 @interface PUScreenRoutePickerViewController : _UIScreenRoutePickerViewController

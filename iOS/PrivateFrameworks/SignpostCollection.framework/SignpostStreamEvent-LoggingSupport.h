@@ -7,6 +7,6 @@
 #import <SignpostSupport/SignpostStreamEvent.h>
 
 @interface SignpostStreamEvent (LoggingSupport)
-- (id)initWithOSLogEventProxy:(id)arg1 serialNumber:(unsigned long long)arg2 shouldCollectFrameInfo:(_Bool)arg3 timeoutInSec:(unsigned long long)arg4 timeoutHandlingQueue:(id)arg5 timeoutHandlingBlock:(CDUnknownBlockType)arg6;
+- (id)initWithOSLogEventProxy:(id)arg1 shouldCompose:(_Bool)arg2 serialNumber:(unsigned long long)arg3 shouldCollectFrameInfo:(_Bool)arg4 timeoutInSec:(unsigned long long)arg5 timeoutHandlingQueue:(id)arg6 timeoutHandlingBlock:(CDUnknownBlockType)arg7;
 @end
 

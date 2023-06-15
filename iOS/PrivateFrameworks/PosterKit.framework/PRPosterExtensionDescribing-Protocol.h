@@ -4,20 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <PosterKit/BSInvalidatable-Protocol.h>
+#import <PosterKit/PRSPosterExtensionDescribing-Protocol.h>
 
-@class LSPropertyList, NSBundle, NSData, NSString, PRUpdatingService, RBSProcessIdentity;
+@class NSArray, NSOperation, NSSet, NSString, PRUpdatingService;
 
-@protocol PRPosterExtensionDescribing <BSInvalidatable>
-@property(readonly, nonatomic) NSBundle *pr_posterExtensionBundle;
-@property(readonly, nonatomic) NSData *pr_persistentIdentifier;
-@property(readonly, nonatomic) LSPropertyList *pr_posterExtensionEntitlementsPlist;
-@property(readonly, nonatomic) LSPropertyList *pr_posterExtensionInfoPlist;
-@property(readonly, nonatomic) NSString *pr_posterExtensionContainerBundleIdentifier;
-@property(readonly, nonatomic) NSString *pr_localizedName;
-@property(readonly, nonatomic) NSString *pr_posterExtensionBundleIdentifier;
-@property(readonly, nonatomic) RBSProcessIdentity *pr_processIdentity;
-- (void)clearUpdatingService;
+@protocol PRPosterExtensionDescribing <PRSPosterExtensionDescribing>
+@property(readonly, nonatomic) NSSet *pr_supportedRoles;
+- (void)pr_addRefreshConfigurationOperation:(NSOperation *)arg1 waitUntilFinished:(_Bool)arg2;
+- (NSArray *)pr_refreshConfigurationOperations;
+- (void)pr_addReloadDescriptorOperation:(NSOperation *)arg1;
+- (NSArray *)pr_reloadDescriptorOperations;
+- (void)clearUpdatingServiceForReason:(NSString *)arg1;
 - (PRUpdatingService *)pr_assetUpdaterWithError:(id *)arg1;
 @end
 

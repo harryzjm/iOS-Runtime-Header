@@ -13,12 +13,12 @@ __attribute__((visibility("hidden")))
 {
     _Bool _isVolatile;
     UIColor *_color;
-    NSString *_colorspace;
+    NSString *_colorSpace;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool isVolatile; // @synthesize isVolatile=_isVolatile;
-@property(retain, nonatomic) NSString *colorspace; // @synthesize colorspace=_colorspace;
+@property(retain, nonatomic) NSString *colorSpace; // @synthesize colorSpace=_colorSpace;
 @property(retain, nonatomic) UIColor *color; // @synthesize color=_color;
 
 @end

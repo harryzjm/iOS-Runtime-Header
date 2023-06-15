@@ -10,7 +10,6 @@
 
 @interface _TtC7NewsUI218ChannelHeroService : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *promotedHeadlineService;
     MISSING_TYPE *personalizer;
     MISSING_TYPE *paidAccessChecker;
 }

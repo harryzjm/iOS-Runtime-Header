@@ -4,7 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSString;
+
 @protocol SRSensorKitServiceServerDebugging
+- (void)fetchEligibilityStatusForBundleIdentifier:(NSString *)arg1 sensor:(NSString *)arg2 reply:(void (^)(_Bool, NSError *))arg3;
 - (void)dumpDefaultsWithReply:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)dumpConfigurationsWithReply:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)listDatastoreWithReply:(void (^)(NSString *, NSError *))arg1;

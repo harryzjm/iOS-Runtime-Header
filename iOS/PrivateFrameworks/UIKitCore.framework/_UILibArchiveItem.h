@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_UIArchiveItem.h"
+
 __attribute__((visibility("hidden")))
-@interface _UILibArchiveItem
+@interface _UILibArchiveItem : _UIArchiveItem
 {
     struct ui_archive_entry *_underlyingArchiveEntry;
     struct ui_archive *_underlyingArchive;

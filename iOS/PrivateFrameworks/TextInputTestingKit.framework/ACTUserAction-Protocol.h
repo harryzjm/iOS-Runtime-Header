@@ -6,10 +6,11 @@
 
 #import <TextInputTestingKit/NSObject-Protocol.h>
 
-@class TIKeyboardTyper, TITypingLog;
+@class NSString, TIKeyboardTyper, TITypingLog;
 
 @protocol ACTUserAction <NSObject>
 @property(nonatomic) unsigned long long inputSegment;
+- (NSString *)shortDescription;
 - (void)applyWithTyper:(TIKeyboardTyper *)arg1 log:(TITypingLog *)arg2;
 @end
 

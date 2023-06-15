@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class MISSING_TYPE;
 
@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *colorWidth;
     MISSING_TYPE *colorLabelSpacing;
     MISSING_TYPE *stepPadding;
+    MISSING_TYPE *backgroundEffectManager;
     MISSING_TYPE *$__lazy_storage_$_stepHeight;
     MISSING_TYPE *point;
 }

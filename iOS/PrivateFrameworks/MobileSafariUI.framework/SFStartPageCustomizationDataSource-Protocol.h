@@ -7,15 +7,17 @@
 #import <MobileSafariUI/NSObject-Protocol.h>
 
 @class NSArray, NSItemProvider, NSURL, SFStartPageCustomizationViewController;
+@protocol TabGroupProvider;
 
 @protocol SFStartPageCustomizationDataSource <NSObject>
+- (id <TabGroupProvider>)tabGroupProviderForCustomizationViewController:(SFStartPageCustomizationViewController *)arg1;
 - (void)startPageCustomizationViewController:(SFStartPageCustomizationViewController *)arg1 didSelectBuiltInBackgroundImageAtURL:(NSURL *)arg2 precomputedLuminance:(double)arg3;
 - (void)startPageCustomizationViewController:(SFStartPageCustomizationViewController *)arg1 didSelectCustomBackgroundImage:(NSItemProvider *)arg2;
 - (void)startPageCustomizationViewController:(SFStartPageCustomizationViewController *)arg1 didModifyBackgroundImageEnabled:(_Bool)arg2;
 - (NSItemProvider *)backgroundImageForStartPageCustomizationViewController:(SFStartPageCustomizationViewController *)arg1;
 - (_Bool)isBackgroundImageEnabledForStartPageCustomizationViewController:(SFStartPageCustomizationViewController *)arg1;
-- (void)startPageCustomizationViewController:(SFStartPageCustomizationViewController *)arg1 didCustomizeItems:(NSArray *)arg2 forSectionsWithKind:(long long)arg3;
-- (NSArray *)startPageCustomizationViewController:(SFStartPageCustomizationViewController *)arg1 customizationItemsForSectionsWithKind:(long long)arg2;
+- (void)startPageCustomizationViewController:(SFStartPageCustomizationViewController *)arg1 didCustomizeItems:(NSArray *)arg2 withVariant:(long long)arg3;
+- (NSArray *)startPageCustomizationViewController:(SFStartPageCustomizationViewController *)arg1 customizationItemsForCustomizationVariant:(long long)arg2;
 - (void)startPageCustomizationViewControllerDidEnableCloudSync:(SFStartPageCustomizationViewController *)arg1 withPreference:(long long)arg2;
 - (void)startPageCustomizationViewControllerDidDisableCloudSync:(SFStartPageCustomizationViewController *)arg1;
 - (_Bool)isCloudSyncEnabledForStartPageCustomizationViewController:(SFStartPageCustomizationViewController *)arg1;

@@ -11,8 +11,17 @@
 __attribute__((visibility("hidden")))
 @interface WKSecureCodingArchivingDelegate : NSObject
 {
+    _Bool rewriteMutableArray;
+    _Bool rewriteMutableData;
+    _Bool rewriteMutableDictionary;
+    _Bool rewriteMutableString;
 }
 
+@property(nonatomic) _Bool rewriteMutableString; // @synthesize rewriteMutableString;
+@property(nonatomic) _Bool rewriteMutableDictionary; // @synthesize rewriteMutableDictionary;
+@property(nonatomic) _Bool rewriteMutableData; // @synthesize rewriteMutableData;
+@property(nonatomic) _Bool rewriteMutableArray; // @synthesize rewriteMutableArray;
+- (id)init;
 - (id)unarchiver:(id)arg1 didDecodeObject:(id)arg2;
 - (id)archiver:(id)arg1 willEncodeObject:(id)arg2;
 

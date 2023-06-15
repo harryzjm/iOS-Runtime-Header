@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 @interface MKOverlayContainerView : UIView
 {
     NSMutableOrderedSet *_overlays[2];
+    NSMapTable *_internalOverlayToProvider;
     NSMapTable *_overlayToDrawable[2];
     NSMutableArray *_drawables[2];
     NSMutableArray *_vkOverlays[2];
@@ -27,9 +28,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak MKMapView *mapView; // @synthesize mapView=_mapView;
 @property(nonatomic) double mapZoomScale; // @synthesize mapZoomScale=_mapZoomScale;
 @property(nonatomic) __weak id <MKOverlayContainerViewDelegate> delegate; // @synthesize delegate=_delegate;
-- (_Bool)_allOverlaysSupportElevation;
-- (_Bool)_anyOverlayRequiresModernMap;
-- (_Bool)_overlayRequiresModernMap:(id)arg1;
+- (id)_allOverlays;
 - (_Bool)_overlaySpansGlobeAndReplacesMapContent;
 - (void)_updateShowsAppleLogoIfNeeded;
 - (void)_unFlexTerrainIfNeeded;
@@ -58,6 +57,7 @@ __attribute__((visibility("hidden")))
 - (void)addOverlays:(id)arg1;
 - (void)addOverlay:(id)arg1;
 - (void)addOverlays:(id)arg1 level:(long long)arg2;
+- (void)addInternalOverlay:(id)arg1 level:(long long)arg2 provider:(id)arg3;
 - (void)addOverlay:(id)arg1 level:(long long)arg2;
 - (void)addAndRemoveOverlayViews;
 - (id)_considerAddingDrawable:(id)arg1 inAddRect:(CDStruct_02837cd9)arg2 level:(long long)arg3;

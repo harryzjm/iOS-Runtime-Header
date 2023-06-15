@@ -9,19 +9,19 @@
 #import <Sleep/NSObject-Protocol.h>
 #import <Sleep/NSSecureCoding-Protocol.h>
 
-@class NSDate, NSDictionary, NSSet;
+@class NSDate, NSSet;
 @protocol HKSPMutableObject, HKSPObject;
 
 @protocol HKSPObject <NSObject, NSSecureCoding, NSCopying, NSMutableCopying>
++ (NSSet *)propertiesForEquivalence;
++ (NSSet *)allProperties;
 @property(readonly, nonatomic) unsigned long long version;
 - (id <HKSPMutableObject>)mutableCopy;
 - (_Bool)isEquivalentTo:(id <HKSPObject>)arg1;
-- (void)copyFromObject:(id <HKSPObject>)arg1;
 - (id)initFromObject:(id <HKSPObject>)arg1;
 
 @optional
-@property(readonly, nonatomic) NSDictionary *relationshipChanges;
-@property(readonly, nonatomic) NSSet *significantChanges;
++ (NSSet *)significantProperties;
 @property(readonly, copy, nonatomic) NSDate *lastModifiedDate;
 @end
 

@@ -6,11 +6,19 @@
 
 #import <PosterBoardServices/NSObject-Protocol.h>
 
-@class ATXFaceGalleryConfiguration, NSData, NSNumber, NSString, NSUUID, PRSPosterConfiguration, PRSPosterSnapshotCollection, PRSPosterSnapshotRequest, PRSPosterUpdateSessionInfo, PRSServerPosterPath;
+@class ATXFaceGalleryConfiguration, NSArray, NSData, NSNumber, NSString, NSURL, NSUUID, PRSActivePosterConfiguration, PRSDataStoreArchiveConfiguration, PRSPosterConfiguration, PRSPosterSnapshotCollection, PRSPosterSnapshotRequest, PRSPosterUpdateSessionInfo, PRSServerPosterPath;
+@protocol __PRSPosterUpdate__;
 
 @protocol PRSClientToServerInterface <NSObject>
+- (void)exportCurrentDataStoreToURL:(NSURL *)arg1 options:(PRSDataStoreArchiveConfiguration *)arg2 sandboxToken:(NSData *)arg3 error:(out id *)arg4;
+- (oneway void)exportArchivedDataStoreNamed:(NSString *)arg1 completion:(void (^)(NSData *, NSError *))arg2;
+- (oneway void)deleteArchivedDataStoreNamed:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
+- (oneway void)stashCurrentDataStoreWithName:(NSString *)arg1 options:(PRSDataStoreArchiveConfiguration *)arg2 completion:(void (^)(NSError *))arg3;
+- (oneway void)restoreArchivedDataStoreNamed:(NSString *)arg1 backupExistingDataStore:(NSNumber *)arg2 completion:(void (^)(NSError *))arg3;
+- (oneway void)fetchArchivedDataStoreNamesWithCompletion:(void (^)(NSArray<__NSString__> *, NSError *))arg1;
 - (oneway void)clearMigrationFlags:(void (^)(NSNumber *, NSError *))arg1;
 - (oneway void)runMigration:(NSNumber *)arg1 completion:(void (^)(NSError *))arg2;
+- (oneway void)notifyActiveChargerIdentifierDidUpdate:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (oneway void)notifyFocusModeDidChange:(NSUUID *)arg1 completion:(void (^)(NSError *))arg2;
 - (oneway void)refreshSnapshotForGalleryItemsMatchingDescriptorIdentifier:(NSString *)arg1 extensionIdentifier:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (oneway void)gatherDataFreshnessState:(void (^)(NSString *, NSError *))arg1;
@@ -18,30 +26,33 @@
 - (oneway void)prewarmWithCompletion:(void (^)(NSError *))arg1;
 - (oneway void)retrieveGallery:(void (^)(ATXFaceGalleryConfiguration *, NSDate *, NSError *))arg1;
 - (oneway void)fetchGallery:(void (^)(ATXFaceGalleryConfiguration *, NSDate *, NSError *))arg1;
-- (oneway void)pushToProactiveWithCompletion:(void (^)(NSError *))arg1;
 - (oneway void)pushPosterGalleryUpdate:(ATXFaceGalleryConfiguration *)arg1 completion:(void (^)(NSError *))arg2;
+- (oneway void)pushToProactiveWithCompletion:(void (^)(NSError *))arg1;
 - (oneway void)removeAllFocusConfigurationsMatchingFocusUUID:(NSUUID *)arg1 completion:(void (^)(NSError *))arg2;
 - (oneway void)fetchFocusUUIDForConfiguration:(PRSServerPosterPath *)arg1 completion:(void (^)(NSUUID *, NSError *))arg2;
-- (oneway void)fetchActivePosterConfiguration:(void (^)(PRSServerPosterPath *, PRSServerPosterPath *, NSError *))arg1;
-- (oneway void)fetchActiveConfiguration:(void (^)(PRSServerPosterPath *, NSError *))arg1;
-- (oneway void)fetchSelectedConfiguration:(void (^)(PRSServerPosterPath *, NSError *))arg1;
-- (oneway void)updateToSelectedConfigurationMatchingUUID:(NSUUID *)arg1 completion:(void (^)(NSError *))arg2;
+- (oneway void)fetchPosterConfigurationsForExtension:(NSString *)arg1 completion:(void (^)(NSArray<__PRSServerPosterPath__> *, NSError *))arg2;
+- (oneway void)fetchPosterConfigurationsForRole:(NSString *)arg1 completion:(void (^)(NSArray<__PRSServerPosterPath__> *, NSError *))arg2;
+- (oneway void)updateToSelectedPosterMatchingUUID:(NSUUID *)arg1 role:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
+- (PRSActivePosterConfiguration *)fetchActivePosterForRole:(NSString *)arg1 error:(out id *)arg2;
+- (oneway void)fetchActivePosterForRole:(NSString *)arg1 completion:(void (^)(PRSServerPosterPath *, PRSServerPosterPath *, NSError *))arg2;
+- (oneway void)fetchSelectedPosterForRole:(NSString *)arg1 completion:(void (^)(PRSServerPosterPath *, NSError *))arg2;
 - (oneway void)fetchLimitedOcclusionBoundsForPosterConfiguration:(PRSPosterConfiguration *)arg1 orientation:(NSNumber *)arg2 completion:(void (^)(NSValue *, NSError *))arg3;
 - (oneway void)fetchObscurableBoundsForPosterConfiguration:(PRSPosterConfiguration *)arg1 orientation:(NSNumber *)arg2 completion:(void (^)(NSValue *, NSError *))arg3;
 - (oneway void)fetchContentCutoutBoundsForPosterConfiguration:(PRSPosterConfiguration *)arg1 orientation:(NSNumber *)arg2 completion:(void (^)(NSValue *, NSError *))arg3;
 - (oneway void)fetchMaximalContentCutoutBoundsForOrientation:(NSNumber *)arg1 completion:(void (^)(NSValue *, NSError *))arg2;
 - (oneway void)fetchContentObstructionBoundsForPosterConfiguration:(PRSPosterConfiguration *)arg1 orientation:(NSNumber *)arg2 completion:(void (^)(NSArray<__NSValue__> *, NSError *))arg3;
+- (oneway void)updatePosterConfiguration:(PRSPosterConfiguration *)arg1 updates:(NSArray<__PRSPosterUpdate__> *)arg2 completion:(void (^)(PRSServerPosterPath *, NSArray<__PRSPosterUpdateResult__> *, NSError *))arg3;
+- (oneway void)updatePosterConfigurationMatchingUUID:(NSUUID *)arg1 updates:(NSArray<__PRSPosterUpdate__> *)arg2 completion:(void (^)(PRSServerPosterPath *, NSArray<__PRSPosterUpdateResult__> *, NSError *))arg3;
 - (oneway void)fetchAssociatedHomeScreenPosterConfigurationUUID:(NSUUID *)arg1 completion:(void (^)(PRSServerPosterPath *, NSError *))arg2;
 - (oneway void)refreshSnapshotForPosterConfigurationMatchUUID:(NSUUID *)arg1 completion:(void (^)(NSError *))arg2;
-- (oneway void)importPosterConfigurationFromArchiveData:(NSData *)arg1 completion:(void (^)(NSUUID *, NSError *))arg2;
+- (oneway void)importPosterConfigurationFromArchiveData:(NSData *)arg1 completion:(void (^)(PRSServerPosterPath *, NSError *))arg2;
 - (oneway void)exportPosterConfigurationMatchingUUID:(NSUUID *)arg1 completion:(void (^)(NSData *, NSError *))arg2;
 - (oneway void)deletePosterConfigurationsMatchingUUID:(NSUUID *)arg1 completion:(void (^)(NSError *))arg2;
 - (oneway void)ingestSnapshotCollection:(PRSPosterSnapshotCollection *)arg1 forPosterConfigurationUUID:(NSUUID *)arg2 completion:(void (^)(NSError *))arg3;
 - (oneway void)fetchPosterSnapshotsWithRequest:(PRSPosterSnapshotRequest *)arg1 completion:(void (^)(PRSPosterSnapshotResponse *, NSError *))arg2;
-- (oneway void)fetchPosterConfigurations:(void (^)(NSArray<__PRSServerPosterPath__> *, NSError *))arg1;
 - (oneway void)associateConfigurationMatchingUUID:(NSUUID *)arg1 focusModeActivityUUID:(NSUUID *)arg2 completion:(void (^)(NSError *))arg3;
 - (oneway void)refreshPosterConfigurationMatchingUUID:(NSUUID *)arg1 sessionInfo:(PRSPosterUpdateSessionInfo *)arg2 completion:(void (^)(PRSServerPosterPath *, NSError *))arg3;
-- (oneway void)createPosterConfigurationForProviderIdentifier:(NSString *)arg1 posterDescriptorIdentifier:(NSString *)arg2 completion:(void (^)(PRSServerPosterPath *, NSError *))arg3;
+- (oneway void)createPosterConfigurationForProviderIdentifier:(NSString *)arg1 posterDescriptorIdentifier:(NSString *)arg2 role:(NSString *)arg3 completion:(void (^)(PRSServerPosterPath *, NSError *))arg4;
 - (oneway void)deletePosterDescriptorsForExtension:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (oneway void)refreshPosterDescriptorsForExtension:(NSString *)arg1 sessionInfo:(PRSPosterUpdateSessionInfo *)arg2 completion:(void (^)(NSArray<__PRSServerPosterPath__> *, NSError *))arg3;
 - (oneway void)fetchStaticPosterDescriptorsForExtension:(NSString *)arg1 completion:(void (^)(NSArray<__PRSServerPosterPath__> *, NSError *))arg2;
@@ -51,6 +62,9 @@
 - (oneway void)deleteSnapshots:(NSNumber *)arg1 completion:(void (^)(NSError *))arg2;
 - (oneway void)deleteTransientDataWithCompletion:(void (^)(NSError *))arg1;
 - (oneway void)notifyPosterBoardOfApplicationUpdatesWithCompletion:(void (^)(NSError *))arg1;
+- (oneway void)terminate;
+- (oneway void)invalidateDataStoreWithCompletion:(void (^)(NSError *))arg1;
+- (oneway void)resetRole:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (oneway void)deleteDataStoreWithCompletion:(void (^)(NSError *))arg1;
 @end
 

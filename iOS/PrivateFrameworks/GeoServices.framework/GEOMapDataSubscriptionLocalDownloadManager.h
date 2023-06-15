@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class GEOMapDataSubscriptionDownloader, GEOResourceManifestManager, GEOTileDB, NSMutableArray, NSMutableDictionary, NSString, geo_isolater;
+@class GEOMapDataSubscriptionDownloadGroup, GEOMapDataSubscriptionDownloader, GEOMapDataSubscriptionUpdateSession, GEOOfflineDataConfiguration, GEOOfflineDataSizeEstimationServiceRequester, GEOResourceManifestManager, GEOTileDB, GEOXPCActivity, NSMutableArray, NSMutableDictionary, NSString, geo_isolater;
 @protocol GEOMapDataSubscriptionDownloadManagerDelegate, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -15,7 +15,15 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_workQueue;
     id <GEOMapDataSubscriptionDownloadManagerDelegate> _delegate;
     GEOResourceManifestManager *_manifestManager;
+    GEOOfflineDataConfiguration *_dataConfiguration;
+    GEOXPCActivity *_offlineUpdateActivity;
+    GEOXPCActivity *_offlineInexpensiveDownloadActivity;
+    GEOMapDataSubscriptionDownloadGroup *_offlineInexpensiveDownloadGroup;
+    GEOXPCActivity *_offlineRetryFailedActivity;
+    GEOMapDataSubscriptionDownloadGroup *_offlineRetryFailedDownloadGroup;
+    GEOOfflineDataSizeEstimationServiceRequester *_offlineDataSizeEstimationRequester;
     GEOTileDB *_tileDB;
+    GEOMapDataSubscriptionUpdateSession *_currentUpdateSession;
     NSMutableArray *_pendingSubscriptionsToLoad;
     GEOMapDataSubscriptionDownloader *_currentDownloader;
     geo_isolater *_isolation;
@@ -23,20 +31,31 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_subscriptionStates;
 }
 
++ (Class)_xpcActivityClass;
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <GEOMapDataSubscriptionDownloadManagerDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)offlineDataConfiguration:(id)arg1 didChangeUpdateAvailability:(_Bool)arg2;
+- (void)subscriptionDownloadGroupDidDefer:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)subscriptionDownloader:(id)arg1 didFinishWithError:(id)arg2;
-- (id)_createDownloaderForSubscription:(id)arg1;
+- (void)subscriptionDownloader:(id)arg1 willUseOfflineDataVersions:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)_createDownloaderForSubscription:(id)arg1 mode:(long long)arg2;
 - (void)cancelDownloadForSubscriptionIdentifiers:(id)arg1;
-- (void)startDownloadForSubscriptionIdentifiers:(id)arg1;
+- (void)forceUpdateForUserInitiatedSubscriptionsForDataType:(unsigned long long)arg1 mode:(long long)arg2;
+- (void)startDownloadForSubscriptionIdentifiers:(id)arg1 mode:(long long)arg2;
 - (void)externallyManagedDownloaderDidFinish:(id)arg1 withError:(id)arg2;
 - (void)registerExternallyManagedDownloader:(id)arg1;
+- (void)fetchLastUpdatedDateForOfflineSubscriptionsWithQueue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchStateForSubscriptionWithIdentifier:(id)arg1 callbackQueue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)determineEstimatedSizeForSubscriptionWithRegion:(id)arg1 dataTypes:(unsigned long long)arg2 queue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)didRemoveSubscriptionWithIdentifier:(id)arg1;
+- (void)didAddSubscription:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)didAddSubscription:(id)arg1;
+- (void)runRetryOfflineDownloadXPCActivity:(_Bool)arg1;
+- (void)runAutomaticOfflineDataXPCActivity;
 - (id)captureStatePlistWithHints:(struct os_state_hints_s *)arg1;
 - (void)dealloc;
-- (id)initWithTileDB:(id)arg1;
+- (id)initWithTileDB:(id)arg1 dataConfiguration:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

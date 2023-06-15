@@ -25,6 +25,7 @@
 - (void)removeAllTestIdentifiers;
 - (void)removeTestIdentifier:(id)arg1;
 - (void)addTestIdentifier:(id)arg1;
+- (id)anyTestIdentifier;
 - (_Bool)containsTestIdentifier:(id)arg1;
 @property(readonly) XCTTestIdentifierSet *testIdentifierSet;
 @property(readonly) unsigned long long count;

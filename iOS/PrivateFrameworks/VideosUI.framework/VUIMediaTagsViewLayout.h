@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSShadow, NSString, UIColor, VUITextLayout;
+@class NSArray, NSShadow, NSString, UIColor, VUITextBadgeLayout, VUITextLayout;
 
 __attribute__((visibility("hidden")))
 @interface VUIMediaTagsViewLayout : NSObject
@@ -18,6 +18,8 @@ __attribute__((visibility("hidden")))
     _Bool _groupActivityTagEnabled;
     unsigned long long _type;
     VUITextLayout *_textLayout;
+    VUITextBadgeLayout *_liveTextBadgeLayout;
+    VUITextBadgeLayout *_timeTextBadgeLayout;
     VUITextLayout *_rentalExpirationTextLayout;
     UIColor *_backgroundColor;
     NSShadow *_shadow;
@@ -31,10 +33,12 @@ __attribute__((visibility("hidden")))
     struct UIEdgeInsets _commonSenseMargin;
     struct UIEdgeInsets _tomatoMeterMargin;
     struct UIEdgeInsets _badgeMargin;
+    struct UIEdgeInsets _textBadgeMargin;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic, getter=isGroupActivityTagEnabled) _Bool groupActivityTagEnabled; // @synthesize groupActivityTagEnabled=_groupActivityTagEnabled;
+@property(nonatomic) struct UIEdgeInsets textBadgeMargin; // @synthesize textBadgeMargin=_textBadgeMargin;
 @property(retain, nonatomic) UIColor *badgeTintColor; // @synthesize badgeTintColor=_badgeTintColor;
 @property(nonatomic) struct UIEdgeInsets badgeMargin; // @synthesize badgeMargin=_badgeMargin;
 @property(nonatomic) double badgeMaxHeight; // @synthesize badgeMaxHeight=_badgeMaxHeight;
@@ -52,6 +56,8 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property(nonatomic) struct UIEdgeInsets margin; // @synthesize margin=_margin;
 @property(readonly, nonatomic) VUITextLayout *rentalExpirationTextLayout; // @synthesize rentalExpirationTextLayout=_rentalExpirationTextLayout;
+@property(retain, nonatomic) VUITextBadgeLayout *timeTextBadgeLayout; // @synthesize timeTextBadgeLayout=_timeTextBadgeLayout;
+@property(retain, nonatomic) VUITextBadgeLayout *liveTextBadgeLayout; // @synthesize liveTextBadgeLayout=_liveTextBadgeLayout;
 @property(readonly, nonatomic) VUITextLayout *textLayout; // @synthesize textLayout=_textLayout;
 @property(nonatomic) unsigned long long type; // @synthesize type=_type;
 - (id)initWithType:(unsigned long long)arg1;

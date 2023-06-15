@@ -45,6 +45,8 @@
 - (_Bool)requestGETPreAuth;
 - (_Bool)allowsAnonymousAccount;
 - (id)requestOperationClasses;
+- (void)fillOutRequestProperties:(id)arg1;
+- (id)equivalencyProperties;
 - (id)initWithOperation:(id)arg1 query:(id)arg2 cursor:(id)arg3 limit:(unsigned long long)arg4 requestedFields:(id)arg5 zoneID:(id)arg6;
 
 // Remaining properties

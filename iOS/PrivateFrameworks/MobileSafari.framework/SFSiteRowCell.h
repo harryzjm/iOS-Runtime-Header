@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 
 + (id)reuseIdentifier;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSString *title;
+@property(copy, nonatomic) NSString *title;
 - (void)setHighlighted:(_Bool)arg1;
 - (void)_updateVibrancy;
 - (void)traitCollectionDidChange:(id)arg1;

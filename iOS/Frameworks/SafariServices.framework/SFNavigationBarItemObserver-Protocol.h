@@ -11,7 +11,6 @@
 @protocol SFNavigationBarItemObserver <NSObject>
 
 @optional
-- (void)navigationBarItemDidUpdateLockdownModeAnnotation:(SFNavigationBarItem *)arg1;
 - (void)navigationBarItemDidUpdateSecurityAnnotation:(SFNavigationBarItem *)arg1;
 - (void)navigationBarItemDidUpdateExtensionButtonConfiguration:(SFNavigationBarItem *)arg1;
 - (void)navigationBarItemDidUpdateNeedsExtensionBadge:(SFNavigationBarItem *)arg1;
@@ -20,7 +19,6 @@
 - (void)navigationBarItemDidUpdateShowsTranslationButton:(SFNavigationBarItem *)arg1;
 - (void)navigationBarItemDidUpdateShowsTranslationIcon:(SFNavigationBarItem *)arg1;
 - (void)navigationBarItemDidUpdateCustomPlaceholderText:(SFNavigationBarItem *)arg1;
-- (void)navigationBarItemDidUpdateProgressView:(SFNavigationBarItem *)arg1;
 - (void)navigationBarItemDidUpdateMediaStateIcon:(SFNavigationBarItem *)arg1;
 - (void)navigationBarItemDidUpdateShowsReaderButton:(SFNavigationBarItem *)arg1;
 - (void)navigationBarItemDidUpdateShowsPageFormatButton:(SFNavigationBarItem *)arg1;

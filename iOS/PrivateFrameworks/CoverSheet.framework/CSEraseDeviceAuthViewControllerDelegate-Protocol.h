@@ -10,6 +10,7 @@
 
 @protocol CSEraseDeviceAuthViewControllerDelegate <NSObject>
 - (void)cancelButtonTapped;
-- (void)authViewController:(CSEraseDeviceAuthViewController *)arg1 didAuthenticateWithResults:(NSMutableDictionary *)arg2;
+- (void)authViewControllerDidCancelToEraseDeviceAfterAuthentication:(CSEraseDeviceAuthViewController *)arg1;
+- (void)authViewController:(CSEraseDeviceAuthViewController *)arg1 didConfirmEraseAfterAuthenticationWithResults:(NSMutableDictionary *)arg2 shouldEraseDataPlan:(_Bool)arg3;
 @end
 

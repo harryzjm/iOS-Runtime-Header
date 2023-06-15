@@ -13,11 +13,13 @@
     MISSING_TYPE *title;
     MISSING_TYPE *isCompleted;
     MISSING_TYPE *isFlagged;
+    MISSING_TYPE *isTagged;
     MISSING_TYPE *temporalEventTrigger;
     MISSING_TYPE *spatialEventTrigger;
     MISSING_TYPE *contactTrigger;
     MISSING_TYPE *createdDate;
     MISSING_TYPE *modifiedDate;
+    MISSING_TYPE *isTitleLong;
     MISSING_TYPE *calendar;
     MISSING_TYPE *isAllDay;
     MISSING_TYPE *location;

@@ -12,7 +12,6 @@
 __attribute__((visibility("hidden")))
 @interface ControlManager : NSObject
 {
-    _Bool _beforeFirstUnlock;
     _Bool _reclaimSpace;
     int _notifyToken;
     int _reclaimUrgency;
@@ -85,7 +84,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool reclaimSpace; // @synthesize reclaimSpace=_reclaimSpace;
 @property(nonatomic) int notifyToken; // @synthesize notifyToken=_notifyToken;
 @property(retain, nonatomic) NSDictionary *managedPrefs; // @synthesize managedPrefs=_managedPrefs;
-@property(nonatomic) _Bool beforeFirstUnlock; // @synthesize beforeFirstUnlock=_beforeFirstUnlock;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *analyticsQueue; // @synthesize analyticsQueue=_analyticsQueue;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *assetQueue; // @synthesize assetQueue=_assetQueue;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *metaDataQueue; // @synthesize metaDataQueue=_metaDataQueue;
@@ -93,6 +91,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) MADAnalyticsManager *analytics; // @synthesize analytics=_analytics;
 @property(readonly, nonatomic) DownloadManager *downloadManager; // @synthesize downloadManager=_downloadManager;
 - (void)activityNotification:(id)arg1 ofStatusChange:(unsigned long long)arg2 withReason:(id)arg3;
+- (long long)handleInstallAsset:(id)arg1 forType:(id)arg2;
 - (void)handleUpdateMABrain:(id)arg1 message:(id)arg2 clientName:(id)arg3;
 - (void)handleGetMABrainInfo:(id)arg1 message:(id)arg2 clientName:(id)arg3;
 - (void)moveAssetIntoRepo:(id)arg1 forType:(id)arg2 forAsset:(id)arg3 cleanUp:(id)arg4 with:(id)arg5;
@@ -108,7 +107,6 @@ __attribute__((visibility("hidden")))
 - (void)handleClientCommand:(id)arg1;
 - (void)handleCommandGarbageCollect:(id)arg1;
 - (void)handleCommandDumpClidentUsage:(id)arg1;
-- (void)handleCommandDumpCodeCoverage:(id)arg1;
 - (void)handleCommandNSURLStateDump:(id)arg1;
 - (void)handleCommandRepairState:(id)arg1;
 - (void)handleCommandOverrideGC:(id)arg1;
@@ -173,7 +171,6 @@ __attribute__((visibility("hidden")))
 - (void)removeAssetDir:(id)arg1 assetType:(id)arg2 clientName:(id)arg3 using:(id)arg4;
 - (long long)removeDirectoryAtPath:(id)arg1 firstRenamingWithExtension:(id)arg2;
 - (void)cancelDownload:(id)arg1 using:(id)arg2 for:(id)arg3 assetType:(id)arg4 purpose:(id)arg5 withExtension:(id)arg6;
-- (void)handleCoverageDump:(id)arg1 using:(id)arg2;
 - (id)newExtractor:(id)arg1 downloadOptions:(id)arg2 sessionID:(id)arg3 error:(id *)arg4;
 - (id)hashToString:(id)arg1;
 - (void)checkAndInitiateDownloadForAssetType:(id)arg1 message:(id)arg2 forClientName:(id)arg3 usingConnection:(id)arg4 requiringClientExtractor:(_Bool)arg5;
@@ -224,6 +221,8 @@ __attribute__((visibility("hidden")))
 - (id)newCatalogLoad:(id)arg1 withPurpose:(id)arg2;
 - (void)sendQueryResults:(id)arg1 assetType:(id)arg2 purpose:(id)arg3 catalogInfo:(id)arg4 returnTypes:(long long)arg5 postedDate:(id)arg6 lastFetchedDate:(id)arg7 result:(long long)arg8 isFiltered:(_Bool)arg9 requireSpecificAsset:(_Bool)arg10 connection:(id)arg11 message:(id)arg12 clientName:(id)arg13;
 - (void)sendPmvResults:(id)arg1 pmvInfo:(id)arg2 postedDate:(id)arg3 lastFetchedDate:(id)arg4 result:(long long)arg5 connection:(id)arg6 message:(id)arg7;
+- (_Bool)beforeFirstUnlock;
+- (void)analyticsInitialization;
 - (id)init;
 - (void)loadAssetTypeDescriptors;
 - (void)applyDataVaults;

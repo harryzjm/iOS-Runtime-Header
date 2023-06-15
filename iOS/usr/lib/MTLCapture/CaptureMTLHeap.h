@@ -9,7 +9,6 @@
 @class CaptureMTLDevice, NSString;
 @protocol MTLDevice, MTLHeap, MTLHeapSPI;
 
-__attribute__((visibility("hidden")))
 @interface CaptureMTLHeap : NSObject
 {
     id <MTLHeapSPI> _baseObject;
@@ -20,7 +19,6 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (unsigned long long)setPurgeableState:(unsigned long long)arg1;
-- (id)newTextureWithDescriptor:(id)arg1;
 - (id)newBufferWithLength:(unsigned long long)arg1 options:(unsigned long long)arg2 offset:(unsigned long long)arg3;
 - (id)newBufferWithLength:(unsigned long long)arg1 options:(unsigned long long)arg2;
 - (id)newAccelerationStructureWithSize:(unsigned long long)arg1 resourceIndex:(unsigned long long)arg2;
@@ -51,6 +49,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) struct GTTraceContext *traceContext;
 - (void)touch;
 - (id)originalObject;
+- (id)newTextureWithDescriptor:(id)arg1;
 - (void)dealloc;
 - (id)newTextureWithDescriptor:(id)arg1 offset:(unsigned long long)arg2;
 @property(readonly) unsigned long long currentAllocatedSize;

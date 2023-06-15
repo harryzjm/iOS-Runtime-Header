@@ -11,7 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface WKSOSecretDelegate : NSObject
 {
-    struct WeakPtr<WebKit::PopUpSOAuthorizationSession, WTF::EmptyCounter> _session;
+    struct ThreadSafeWeakPtr<WebKit::PopUpSOAuthorizationSession> _weakSession;
     _Bool _isFirstNavigation;
 }
 

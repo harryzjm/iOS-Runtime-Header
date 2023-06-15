@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)_isSupportedPlaybackIntent:(id)arg1 forRemotePlayer:(_Bool)arg2 atInsertionPosition:(int)arg3;
 - (id)_createRadioStationCommandRequest;
 - (id)_insertWithOptions:(id)arg1;
+- (id)insertAtEndOfUpNextWithPlaybackIntent:(id)arg1;
 - (id)insertAtEndOfTracklistWithPlaybackIntent:(id)arg1;
 - (id)insertPlaybackIntent:(id)arg1 afterItem:(id)arg2;
 - (id)insertAfterPlayingItemWithPlaybackIntent:(id)arg1;

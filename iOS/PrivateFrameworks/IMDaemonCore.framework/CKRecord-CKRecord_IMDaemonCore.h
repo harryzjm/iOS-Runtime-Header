@@ -8,6 +8,14 @@
 
 @interface CKRecord (CKRecord_IMDaemonCore)
 - (id)copyEncodedSystemFields;
+- (id)assetURLForKey:(id)arg1;
+- (id)arrayForKey:(id)arg1;
+- (id)dictForKey:(id)arg1;
+- (id)numberForKey:(id)arg1;
+- (id)stringForKey:(id)arg1;
+- (id)sourceRecordChangeTag;
+- (id)sourceRecordName;
+- (id)sourceRecordType;
 - (id)_assetForKey:(id)arg1;
 - (id)_arrayForKey:(id)arg1;
 - (id)_dataForKey:(id)arg1;

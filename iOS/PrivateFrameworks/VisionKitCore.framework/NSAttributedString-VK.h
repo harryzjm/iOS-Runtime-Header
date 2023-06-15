@@ -11,6 +11,7 @@
 - (id)vk_attributedStringByReplacingNewlineCharactersWithWhiteSpace;
 - (void)vk_enumerateUnclampedAttribute:(id)arg1 inRange:(struct _NSRange)arg2 options:(unsigned long long)arg3 usingBlock:(CDUnknownBlockType)arg4;
 - (void)vk_enumerateClampedAttribute:(id)arg1 inRange:(struct _NSRange)arg2 options:(unsigned long long)arg3 usingBlock:(CDUnknownBlockType)arg4;
+- (id)vk_attributedSubstringFromVKRange:(id)arg1;
 - (id)vk_attributedSubstringFromRange:(struct _NSRange)arg1;
 @property(readonly, nonatomic) struct _NSRange vk_range;
 @end

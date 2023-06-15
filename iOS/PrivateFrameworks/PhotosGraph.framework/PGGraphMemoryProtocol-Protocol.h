@@ -9,10 +9,10 @@
 @class PGGraph, PGGraphFeatureNodeCollection, PGGraphMomentNodeCollection;
 
 @protocol PGGraphMemoryProtocol <NSObject>
+@property(readonly, nonatomic) _Bool generatedWithFallbackRequirements;
+@property(readonly, nonatomic) PGGraphMomentNodeCollection *memoryMomentNodes;
+@property(readonly, nonatomic) unsigned long long memoryCategorySubcategory;
+@property(readonly, nonatomic) unsigned long long memoryCategory;
 - (PGGraphFeatureNodeCollection *)memoryFeatureNodesInGraph:(PGGraph *)arg1;
-@property(nonatomic, readonly) _Bool generatedWithFallbackRequirements;
-@property(nonatomic, readonly) PGGraphMomentNodeCollection *memoryMomentNodes;
-@property(nonatomic, readonly) unsigned long long memoryCategorySubcategory;
-@property(nonatomic, readonly) unsigned long long memoryCategory;
 @end
 

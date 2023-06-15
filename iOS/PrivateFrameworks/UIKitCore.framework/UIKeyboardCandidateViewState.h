@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 @class NSString, UIKeyboardCandidateViewStyle;
 
 __attribute__((visibility("hidden")))
-@interface UIKeyboardCandidateViewState : NSObject <NSCopying>
+@interface UIKeyboardCandidateViewState : NSObject
 {
     _Bool _hasBackdrop;
     _Bool _candidateNumberEnabled;

@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) double horizontalToolBottomSpacing; // @synthesize horizontalToolBottomSpacing=_horizontalToolBottomSpacing;
 @property(nonatomic) double horizontalToolTopSpacing; // @synthesize horizontalToolTopSpacing=_horizontalToolTopSpacing;
 @property(nonatomic) double toolParentViewEdgeSpacing; // @synthesize toolParentViewEdgeSpacing=_toolParentViewEdgeSpacing;
+@property(readonly, nonatomic) double interToolVerticalSpacing;
 @property(readonly, nonatomic) double interToolSpacing;
 - (id)init;
 

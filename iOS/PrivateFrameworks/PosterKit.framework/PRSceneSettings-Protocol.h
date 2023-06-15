@@ -7,10 +7,15 @@
 @class BSColor, NSString, PRPosterConfigurableOptions, PRPosterConfiguredProperties, PRSServerPosterPath;
 
 @protocol PRSceneSettings
+@property(readonly, nonatomic) struct CGRect pr_verticalTitleBoundingRect;
+@property(readonly, nonatomic) struct CGRect pr_horizontalTitleBoundingRect;
+@property(readonly, nonatomic, getter=pr_isWallpaperObscured) _Bool pr_wallpaperObscured;
+@property(readonly, copy, nonatomic) NSString *pr_snapshotDefinitionIdentifier;
 @property(readonly, copy, nonatomic) NSString *pr_snapshotLogIdentifier;
 @property(readonly, nonatomic) _Bool pr_showsComplications;
 @property(readonly, nonatomic) _Bool pr_showsHeaderElements;
 @property(readonly, nonatomic, getter=pr_isAlternateDateEnabled) _Bool pr_alternateDateEnabled;
+@property(readonly, nonatomic, getter=pr_isComplicationSidebarConfigured) _Bool pr_complicationSidebarConfigured;
 @property(readonly, nonatomic, getter=pr_isComplicationRowConfigured) _Bool pr_complicationRowConfigured;
 @property(readonly, nonatomic, getter=pr_isInlineComplicationConfigured) _Bool pr_inlineComplicationConfigured;
 @property(readonly, nonatomic, getter=pr_isParallaxEffectivelyEnabled) _Bool pr_parallaxEffectivelyEnabled;
@@ -20,6 +25,7 @@
 @property(readonly, nonatomic) PRPosterConfiguredProperties *pr_posterConfiguredProperties;
 @property(readonly, nonatomic) PRPosterConfigurableOptions *pr_posterConfigurableOptions;
 @property(readonly, nonatomic) PRSServerPosterPath *pr_posterContents;
+@property(readonly, nonatomic) long long pr_deviceOrientation;
 @property(readonly, nonatomic) long long pr_userInterfaceStyle;
 @property(readonly, nonatomic) BSColor *pr_caseColor;
 @property(readonly, copy, nonatomic) NSString *pr_previewIdentifier;

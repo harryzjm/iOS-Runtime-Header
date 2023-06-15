@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class FPItem, FPItemID, NSArray, NSError, NSProgress, NSSet, NSString;
+@class FPItem, FPItemID, NSArray, NSDictionary, NSError, NSProgress, NSSet, NSString;
 @protocol FPOperationClient;
 
 @protocol FPXOperationService
@@ -26,5 +26,6 @@
 - (void)deleteItemsWithIDs:(NSArray *)arg1 baseVersions:(NSArray *)arg2 options:(unsigned long long)arg3 reply:(void (^)(NSError *))arg4;
 - (void)preflightReparentItemIDs:(NSArray *)arg1 underParentID:(FPItemID *)arg2 reply:(void (^)(NSArray *))arg3;
 - (void)startOperation:(id <FPOperationClient>)arg1 toFetchThumbnailsForItemIdentifiers:(NSArray *)arg2 size:(struct CGSize)arg3 completionHandler:(void (^)(NSError *))arg4;
+- (void)startOperation:(id <FPOperationClient>)arg1 toFetchThumbnailsWithDictionary:(NSDictionary *)arg2 size:(struct CGSize)arg3 completionHandler:(void (^)(NSError *))arg4;
 @end
 

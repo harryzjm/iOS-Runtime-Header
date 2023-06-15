@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
-@class NSString, UIButton, UILabel;
+@class NSString, PHPhotoLibrary, UIButton, UILabel;
 @protocol PUImportAddToAlbumsToolbarViewDelegate;
 
 __attribute__((visibility("hidden")))
@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     NSString *_destinationDescriptionTitle;
     UIButton *_destinationButton;
     id <PUImportAddToAlbumsToolbarViewDelegate> _delegate;
+    PHPhotoLibrary *_photoLibrary;
     UILabel *_titleLabel;
     UILabel *_destinationLabel;
 }
@@ -22,6 +23,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) UILabel *destinationLabel; // @synthesize destinationLabel=_destinationLabel;
 @property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
+@property(retain, nonatomic) PHPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
 @property(nonatomic) __weak id <PUImportAddToAlbumsToolbarViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) UIButton *destinationButton; // @synthesize destinationButton=_destinationButton;
 @property(retain, nonatomic) NSString *destinationDescriptionTitle; // @synthesize destinationDescriptionTitle=_destinationDescriptionTitle;
@@ -40,6 +42,7 @@ __attribute__((visibility("hidden")))
 - (id)_destinationDescription;
 - (void)_setupSubviews;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithFrame:(struct CGRect)arg1 photoLibrary:(id)arg2;
 
 @end
 

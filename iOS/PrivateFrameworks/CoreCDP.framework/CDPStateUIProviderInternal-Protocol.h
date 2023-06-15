@@ -22,5 +22,8 @@
 - (void)cdpContext:(CDPContext *)arg1 beginRemoteApprovalWithValidator:(id <CDPRemoteDeviceSecretValidatorProtocol>)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 - (void)cdpContext:(CDPContext *)arg1 promptForLocalSecretWithHandler:(id <CDPLocalDeviceSecretHandlerProtocol>)arg2;
 - (void)cdpContext:(CDPContext *)arg1 promptForLocalSecretWithCompletion:(void (^)(CDPLocalSecret *, NSError *))arg2;
+
+@optional
+- (void)cdpContext:(CDPContext *)arg1 showResetCompletedAlertWithCompletion:(void (^)(unsigned long long, NSError *))arg2;
 @end
 

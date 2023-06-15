@@ -14,7 +14,7 @@
     MISSING_TYPE *duetObserver;
     MISSING_TYPE *publisher;
     MISSING_TYPE *requestStore;
-    MISSING_TYPE *screenLockProvider;
+    MISSING_TYPE *lockStateProvider;
     MISSING_TYPE *state;
 }
 

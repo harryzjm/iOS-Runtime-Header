@@ -7,6 +7,6 @@
 @class NSSet;
 
 @protocol FCOfflineArticleManagerType
-@property(nonatomic, readonly) NSSet *downloadedArticleIDs;
+@property(readonly, nonatomic) NSSet *downloadedArticleIDs;
 @end
 

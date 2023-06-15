@@ -36,6 +36,7 @@
     MISSING_TYPE *_buttonItems;
     MISSING_TYPE *_trailingThumbnail;
     MISSING_TYPE *_buttonItemsAreTrailing;
+    MISSING_TYPE *_topText;
 }
 
 @end

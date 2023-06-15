@@ -14,23 +14,24 @@ __attribute__((visibility("hidden")))
     AVPlaybackControlsController *_playbackControlsController;
     AVMobileChromeControlsStyleSheet *_styleSheet;
     _Bool _prefersCompactFullScreenControls;
+    NSValue *_embeddedInlineLayoutMargins;
     AVPlaybackControlsView *_playbackControlsView;
     AVTurboModePlaybackControlsPlaceholderView *_turboModeControlsView;
-    NSValue *_embeddedInlineLayoutMargins;
     struct CGAffineTransform _transformForProminentPlayButton;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) struct CGAffineTransform transformForProminentPlayButton; // @synthesize transformForProminentPlayButton=_transformForProminentPlayButton;
-@property(retain, nonatomic) NSValue *embeddedInlineLayoutMargins; // @synthesize embeddedInlineLayoutMargins=_embeddedInlineLayoutMargins;
 @property(readonly, nonatomic) AVTurboModePlaybackControlsPlaceholderView *turboModeControlsView; // @synthesize turboModeControlsView=_turboModeControlsView;
 @property(readonly, nonatomic) AVPlaybackControlsView *playbackControlsView; // @synthesize playbackControlsView=_playbackControlsView;
 @property(nonatomic) _Bool prefersCompactFullScreenControls; // @synthesize prefersCompactFullScreenControls=_prefersCompactFullScreenControls;
+@property(retain, nonatomic) NSValue *embeddedInlineLayoutMargins; // @synthesize embeddedInlineLayoutMargins=_embeddedInlineLayoutMargins;
 - (void)_updateStyleSheet;
 - (void)viewDidLoad;
 - (void)loadView;
 - (void)toggleVisibility:(id)arg1;
 - (void)flashControlsWithDuration:(double)arg1;
+- (id)controlsViewControllerIfChromed;
 - (_Bool)showsFullScreenControl;
 - (void)setShowsFullScreenControl:(_Bool)arg1;
 - (id)volumeControlsLayoutItem;
@@ -41,8 +42,8 @@ __attribute__((visibility("hidden")))
 - (void)setIncludedControls:(unsigned long long)arg1;
 - (id)displayModeControlsLayoutItem;
 - (void)setRoutingConfiguration:(id)arg1;
-- (void)setControlItems:(id)arg1;
 @property(readonly, nonatomic) AVPlaybackControlsController *playbackControlsController;
+- (void)setControlItems:(id)arg1;
 - (void)dealloc;
 - (id)initWithPlayerViewController:(id)arg1;
 

@@ -39,6 +39,17 @@ struct PREditingSceneViewControllerTopButtonLayout {
     struct CGRect _field2;
 };
 
+struct SBIconApproximateLayoutPosition {
+    unsigned long long _field1;
+    unsigned long long _field2;
+};
+
+struct SBIconImageInfo {
+    struct CGSize _field1;
+    double _field2;
+    double _field3;
+};
+
 struct UIEdgeInsets {
     double _field1;
     double _field2;

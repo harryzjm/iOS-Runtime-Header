@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import "LNConnectionOperation.h"
-
 @class LNQueryOutput, NSString;
 
 __attribute__((visibility("hidden")))
-@interface LNPerformSuggestedResultsQueryOperation : LNConnectionOperation
+@interface LNPerformSuggestedResultsQueryOperation
 {
     NSString *_entityType;
     NSString *_entityMangledTypeName;
@@ -24,8 +22,8 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSString *entityType; // @synthesize entityType=_entityType;
 - (void)finishWithError:(id)arg1;
 - (void)start;
-- (id)initWithConnectionInterface:(id)arg1 entityType:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (id)initWithConnectionInterface:(id)arg1 entityMangledTypeName:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)initWithConnectionInterface:(id)arg1 entityType:(id)arg2 queue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (id)initWithConnectionInterface:(id)arg1 entityMangledTypeName:(id)arg2 queue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 
 @end
 

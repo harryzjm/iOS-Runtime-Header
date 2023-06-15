@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     MUVendorLinkSorter *_vendorLinkSorter;
     MUPlaceExtensionDiscoveryManager *_extensionDiscoveryManager;
     MUAMSResultProvider *_amsResultProvider;
+    _Bool _supportsMultipleVendorSelection;
     int _singleVendorAnalyticsTarget;
     int _multipleVendorAnalyticsTarget;
     GEOPlaceExternalAction *_externalAction;
@@ -26,6 +27,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool supportsMultipleVendorSelection; // @synthesize supportsMultipleVendorSelection=_supportsMultipleVendorSelection;
 @property(nonatomic) long long source; // @synthesize source=_source;
 @property(nonatomic) long long analyticsModuleType; // @synthesize analyticsModuleType=_analyticsModuleType;
 @property(nonatomic) int multipleVendorAnalyticsTarget; // @synthesize multipleVendorAnalyticsTarget=_multipleVendorAnalyticsTarget;
@@ -33,14 +35,14 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) GEOPlaceExternalAction *externalAction; // @synthesize externalAction=_externalAction;
 - (void)captureGroupedMenuRevealAnalyticsIfNeededWithIsQuickAction:(_Bool)arg1;
 @property(readonly, nonatomic) int resolvedAnalyticsTarget;
-@property(readonly, nonatomic) _Bool hasMultipleVendors;
+@property(readonly, nonatomic) _Bool hasMultipleVendorsForAnalytics;
 - (void)_openMapsExtensionUsingExtensionParams:(id)arg1 handlingOptions:(id)arg2;
 - (id)_viewModelsWithSortApplied;
 - (void)_executeBestIntegrationForProvider:(id)arg1 index:(unsigned long long)arg2;
 - (void)openFirstPartnerAction;
 - (void)openPartnerActionUsingViewModel:(id)arg1;
 - (void)fetchProviderLockupsWithCompletion:(CDUnknownBlockType)arg1;
-- (id)initWithGroupedExternalAction:(id)arg1 amsResultProvider:(id)arg2 actionHandler:(id)arg3 analyticsHandler:(id)arg4;
+- (id)initWithGroupedExternalAction:(id)arg1 amsResultProvider:(id)arg2 supportsMultipleVendorSelection:(_Bool)arg3 actionHandler:(id)arg4 analyticsHandler:(id)arg5;
 
 @end
 

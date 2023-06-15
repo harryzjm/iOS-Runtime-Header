@@ -41,6 +41,7 @@ __attribute__((visibility("hidden")))
 - (void)_showContactCardForEntity:(id)arg1 sourceView:(id)arg2;
 - (void)composeRecipientView:(id)arg1 disambiguateRecipientForAtom:(id)arg2;
 - (id)composeRecipientView:(id)arg1 contextMenuConfigurationForAtom:(id)arg2;
+- (_Bool)shouldShowVerifiedIconForRecipient:(id)arg1;
 - (unsigned long long)_atomPresentationOptionsForRecipient:(id)arg1;
 - (unsigned long long)presentationOptionsForRecipient:(id)arg1;
 - (void)contactsManagerViewModelsDidChange:(id)arg1;

@@ -6,12 +6,17 @@
 
 #import <PosterBoard/NSObject-Protocol.h>
 
-@class PBFPosterGalleryPreviewView;
-@protocol PBFPosterPreview;
+@class NSAttributedString, NSString, PBFPosterGalleryPreviewView, UIView;
 
 @protocol PBFPosterGalleryCollectionViewCell <NSObject>
-@property(nonatomic) unsigned long long index;
-@property(retain, nonatomic) id <PBFPosterPreview> posterPreview;
+@property(readonly, nonatomic) _Bool supportsPosterDescription;
+@property(readonly, nonatomic) _Bool supportsPosterTitle;
 @property(readonly, nonatomic) PBFPosterGalleryPreviewView *posterPreviewView;
+- (void)updatePreviewType:(NSString *)arg1 scale:(double)arg2 posterPreviewView:(UIView *)arg3 layoutOrientation:(long long)arg4 index:(unsigned long long)arg5;
+
+@optional
+@property(copy, nonatomic) NSString *posterDescription;
+@property(copy, nonatomic) NSAttributedString *attributedPosterTitle;
+@property(copy, nonatomic) NSString *posterTitle;
 @end
 

@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     long long _computedAxisConstraint;
     struct {
         unsigned int visibleCellsDirtied:1;
+        unsigned int prewarmingCellCache:1;
     } _flags;
     UICollectionView *_collectionView;
     UIMultiSelectInteraction *_multiSelectInteraction;
@@ -41,6 +42,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)_testTouchPolicyAtPoint:(struct CGPoint)arg1 withVelocity:(struct CGPoint)arg2;
 - (_Bool)_allowsPanningAcrossConstrainedAxisToBeginMultiSelectInteractionAtPoint:(struct CGPoint)arg1;
 - (_Bool)shouldBeginMultiSelectInteraction:(id)arg1 ofType:(long long)arg2 atPoint:(struct CGPoint)arg3 withVelocity:(struct CGPoint)arg4;
+- (void)_performWithPrewarmingCache:(CDUnknownBlockType)arg1;
 - (void)willBeginMultiSelectInteraction:(id)arg1 atPoint:(struct CGPoint)arg2 keepCurrentSelection:(_Bool)arg3;
 - (_Bool)interaction:(id)arg1 shouldAutomaticallyTransitionToMultiSelectModeAtPoint:(struct CGPoint)arg2 withVelocity:(struct CGPoint)arg3;
 - (_Bool)_shouldBeginInteractionAtIndexPath:(id)arg1;

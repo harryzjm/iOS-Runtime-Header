@@ -17,11 +17,13 @@ __attribute__((visibility("hidden")))
     unsigned int _sourceFrameCount;
     unsigned int _lastDestinationFrameCount;
     _Bool _isThrottling;
-    id _delegate;
+    id _convertedFrameHandlerContext;
+    CDUnknownFunctionPointerType _convertedFrameHandler;
 }
 
 @property(nonatomic) unsigned int destinationFramerate; // @synthesize destinationFramerate=_destinationFramerate;
 @property(nonatomic) unsigned int sourceFramerate; // @synthesize sourceFramerate=_sourceFramerate;
+- (void)reactionDidStart:(id)arg1;
 - (void)cameraAvailabilityDidChange:(_Bool)arg1;
 - (void)thermalLevelDidChange:(int)arg1;
 - (id)clientCaptureRule;
@@ -30,9 +32,8 @@ __attribute__((visibility("hidden")))
 - (_Bool)onVideoFrame:(struct opaqueCMSampleBuffer *)arg1 frameTime:(CDStruct_1b6d18a9)arg2 attribute:(CDStruct_51555cf6)arg3;
 - (void)updateThrottleRate;
 - (_Bool)processFrame:(struct opaqueCMSampleBuffer *)arg1;
-- (id)delegate;
 - (void)dealloc;
-- (id)initWithDelegate:(id)arg1;
+- (id)initWithConvertedFrameHandler:(CDUnknownFunctionPointerType)arg1 context:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

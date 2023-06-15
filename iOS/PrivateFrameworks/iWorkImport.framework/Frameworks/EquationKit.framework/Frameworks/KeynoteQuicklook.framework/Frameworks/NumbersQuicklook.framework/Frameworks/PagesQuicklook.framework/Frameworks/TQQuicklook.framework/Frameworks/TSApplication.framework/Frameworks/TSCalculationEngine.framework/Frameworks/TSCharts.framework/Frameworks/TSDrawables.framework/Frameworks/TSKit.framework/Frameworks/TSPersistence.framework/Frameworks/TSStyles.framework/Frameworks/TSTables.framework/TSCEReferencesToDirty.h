@@ -54,6 +54,7 @@
 - (_Bool)hasPrecedentCountUpdatesPending;
 - (void)updatePrecedentCountForCellRef:(const struct TSCEInternalCellReference *)arg1;
 - (void)dirtyCellRefsInReferenceSet:(id)arg1;
+- (void)dirtyInternalCellRefsVector:(const void *)arg1;
 - (void)dirtyInternalCellRefs:(const void *)arg1;
 - (void)dirtyCellRefs:(const void *)arg1;
 - (void)dirtyCoords:(const void *)arg1 inOwnerId:(unsigned short)arg2;

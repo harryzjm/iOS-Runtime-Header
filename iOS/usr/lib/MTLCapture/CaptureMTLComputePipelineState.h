@@ -6,10 +6,9 @@
 
 #import <objc/NSObject.h>
 
-@class CaptureMTLDevice, MTLComputePipelineDescriptor, MTLDebugInstrumentationData, NSMapTable, NSString;
+@class CaptureMTLDevice, MTLComputePipelineDescriptor, MTLComputePipelineReflection, MTLDebugInstrumentationData, NSMapTable, NSString;
 @protocol MTLComputePipelineState, MTLComputePipelineStateSPI, MTLDevice, MTLFunction;
 
-__attribute__((visibility("hidden")))
 @interface CaptureMTLComputePipelineState : NSObject
 {
     id <MTLComputePipelineStateSPI> _baseObject;
@@ -20,9 +19,11 @@ __attribute__((visibility("hidden")))
     NSMapTable *_functionHandleMap;
     id <MTLFunction> _function;
     MTLComputePipelineDescriptor *_descriptor;
+    MTLComputePipelineReflection *_reflection;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) MTLComputePipelineReflection *reflection; // @synthesize reflection=_reflection;
 @property(copy, nonatomic) MTLComputePipelineDescriptor *descriptor; // @synthesize descriptor=_descriptor;
 @property(retain, nonatomic) id <MTLFunction> function; // @synthesize function=_function;
 - (unsigned long long)imageblockMemoryLengthForDimensions:(CDStruct_14f26992)arg1;
@@ -49,12 +50,11 @@ __attribute__((visibility("hidden")))
 @property(readonly) struct GTTraceContext *traceContext;
 - (void)touch;
 - (id)originalObject;
+- (id)newComputePipelineStateWithAdditionalBinaryFunctions:(id)arg1 error:(id *)arg2;
 - (id)newIntersectionFunctionTableWithDescriptor:(id)arg1;
 - (id)newVisibleFunctionTableWithDescriptor:(id)arg1;
 - (id)functionHandleWithFunction:(id)arg1;
-- (id)newComputePipelineStateWithAdditionalBinaryFunctions:(id)arg1 error:(id *)arg2;
 @property(readonly) id <MTLComputePipelineState> baseObject;
-- (void)swapObject:(id)arg1;
 - (_Bool)newFunctionHandle:(out id *)arg1 associatedWithBaseFunctionHandle:(id)arg2 captureFunction:(id)arg3;
 - (id)functionHandleMap;
 - (id)initWithBaseObject:(id)arg1 captureComputePipelineState:(id)arg2;

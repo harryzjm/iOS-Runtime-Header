@@ -11,13 +11,16 @@
 __attribute__((visibility("hidden")))
 @interface _PUWallpaperRenderingDebugTransition : NSObject
 {
+    double _pu_Duration;
 }
 
+@property(nonatomic) double pu_Duration; // @synthesize pu_Duration=_pu_Duration;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
+
 @end
 

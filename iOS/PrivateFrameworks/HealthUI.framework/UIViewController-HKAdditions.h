@@ -4,11 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
 @interface UIViewController (HKAdditions)
+- (void)hk_presentModalCardViewController:(id)arg1 fullScreen:(_Bool)arg2 animated:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 - (_Bool)_viewIsHidden:(id)arg1;
 - (_Bool)hk_viewIsHidden;
 - (id)hk_window;
+- (void)showAdaptively:(id)arg1 sender:(id)arg2 animated:(_Bool)arg3;
+- (void)showAdaptively:(id)arg1 sender:(id)arg2;
+- (void)_hk_showAdaptively:(id)arg1 sender:(id)arg2 animated:(_Bool)arg3 modalPresentationStyle:(long long)arg4;
 @end
 

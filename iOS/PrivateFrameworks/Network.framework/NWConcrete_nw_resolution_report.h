@@ -13,21 +13,25 @@ __attribute__((visibility("hidden")))
 @interface NWConcrete_nw_resolution_report : NSObject
 {
     unsigned long long milliseconds;
+    char *provider_name;
+    char *extended_dns_error_extra_text;
     NSObject<OS_nw_endpoint> *successful_endpoint;
     NSObject<OS_nw_endpoint> *preferred_endpoint;
     NSObject<OS_nw_array> *resolved_endpoints;
     unsigned int endpoint_count;
     int source;
     int protocol;
+    unsigned short extended_dns_error_code;
+    unsigned int received_svcb:1;
 }
 
 - (void).cxx_destruct;
+@property(readonly, copy) NSString *description;
 - (void)dealloc;
 - (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

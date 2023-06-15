@@ -33,7 +33,9 @@
 - (_Bool)requestGETPreAuth;
 - (id)requestOperationClasses;
 - (long long)databaseScope;
+- (id)additionalHeaderValues;
 - (_Bool)allowsAnonymousAccount;
+- (id)equivalencyProperties;
 - (id)initWithOperation:(id)arg1 serviceName:(id)arg2 functionName:(id)arg3 serializedParameters:(id)arg4 attestationEntropy:(id)arg5 pccWrappedInvocationKeys:(id)arg6 trustedTargetWrappedInvocationKey:(id)arg7;
 
 @end

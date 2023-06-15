@@ -9,7 +9,6 @@
 @class CaptureMTLDevice, NSString;
 @protocol MTLDevice, MTLEvent;
 
-__attribute__((visibility("hidden")))
 @interface CaptureMTLEvent : NSObject
 {
     CaptureMTLDevice *_captureDevice;

@@ -6,7 +6,7 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class SBTransientOverlayViewController;
+@class NSString, SBTransientOverlayViewController;
 
 @protocol SBTransientOverlayViewControllerDelegate <NSObject>
 - (void)transientOverlayViewControllerNeedsWindowHitTestingUpdate:(SBTransientOverlayViewController *)arg1;
@@ -25,5 +25,9 @@
 - (_Bool)defaultShouldAutorotateForTransientOverlayViewController:(SBTransientOverlayViewController *)arg1;
 - (long long)defaultPreferredInterfaceOrientationForPresentationForTransientOverlayViewController:(SBTransientOverlayViewController *)arg1;
 - (unsigned long long)defaultSupportedInterfaceOrientationsForTransientOverlayViewController:(SBTransientOverlayViewController *)arg1;
+
+@optional
+- (void)transientOverlayViewController:(SBTransientOverlayViewController *)arg1 requestZStackParticipantPreferencesUpdateWithReason:(NSString *)arg2;
+- (_Bool)transientOverlayViewControllerIsForegroundActive:(SBTransientOverlayViewController *)arg1;
 @end
 

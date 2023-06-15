@@ -9,8 +9,8 @@
 @class NSURL;
 
 @protocol SXHost <NSObject>
+@property(readonly, nonatomic) _Bool active;
 - (_Bool)canOpenURL:(NSURL *)arg1;
 - (void)openURL:(NSURL *)arg1 completion:(void (^)(_Bool))arg2;
-@property(nonatomic, readonly) _Bool active;
 @end
 

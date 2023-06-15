@@ -15,6 +15,11 @@
     MISSING_TYPE *dialogProvider;
     MISSING_TYPE *sportsTuneInDialogs;
     MISSING_TYPE *locUtil;
+    MISSING_TYPE *remoteDevice;
+    MISSING_TYPE *deviceLoggingUtil;
+    MISSING_TYPE *analyticsService;
+    MISSING_TYPE *utsProvider;
+    MISSING_TYPE *moveToGroupDevices;
 }
 
 @end

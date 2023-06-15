@@ -16,6 +16,8 @@ __attribute__((visibility("hidden")))
 - (void)_XCT_receivedSignpost:(id)arg1 withToken:(id)arg2;
 - (void)_XCT_receivedAccessibilityNotification:(int)arg1 fromElement:(id)arg2 payload:(id)arg3;
 - (void)_XCT_receivedAccessibilityNotification:(int)arg1 withPayload:(id)arg2;
+- (void)_XCT_interfaceOrientationDidChange:(long long)arg1;
+- (void)_XCT_deviceOrientationDidChange:(long long)arg1;
 - (void)_XCT_applicationDidUpdateState:(id)arg1;
 - (void)_XCT_applicationWithBundleID:(id)arg1 didUpdatePID:(int)arg2 andState:(unsigned long long)arg3;
 

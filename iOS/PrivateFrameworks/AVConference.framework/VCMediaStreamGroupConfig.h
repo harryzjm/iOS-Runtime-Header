@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMutableArray, NSString, VCNetworkFeedbackController, VCSecurityKeyManager;
+@class NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSString, VCNetworkFeedbackController, VCSecurityKeyManager;
 @protocol OS_dispatch_queue, VCMediaCaptureController, VCMediaStreamGroupDelegate;
 
 __attribute__((visibility("hidden")))
@@ -21,12 +21,19 @@ __attribute__((visibility("hidden")))
     long long _streamToken;
     id <VCMediaCaptureController> _captureController;
     NSMutableArray *_mediaStreamInfoArray;
+    NSArray *_mediaStreams;
+    NSDictionary *_streamIDToMediaStreamMap;
+    NSMutableDictionary *_groupEntries;
+    _Bool _hasRepairedStreams;
+    unsigned int _rtpTimestampRate;
     VCSecurityKeyManager *_securityKeyManager;
     NSString *_participantUUID;
     unsigned long long _idsParticipantID;
     struct tagVCJBTargetEstimatorSynchronizer *_jbTargetEstimatorSynchronizer;
     NSString *_sessionUUID;
     VCNetworkFeedbackController *_networkFeedbackController;
+    struct _opaque_pthread_mutex_t _mutex;
+    _Bool _shouldSetupStreams;
     unsigned int _syncGroupID;
     int _captureSource;
 }
@@ -47,7 +54,15 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned int mediaType; // @synthesize mediaType=_mediaType;
 @property(nonatomic) unsigned int streamGroupID; // @synthesize streamGroupID=_streamGroupID;
 @property(nonatomic) struct tagVCJBTargetEstimatorSynchronizer *jbTargetEstimatorSynchronizer;
+- (void)setupStreams;
+@property(readonly, nonatomic) unsigned int rtpTimestampRate; // @synthesize rtpTimestampRate=_rtpTimestampRate;
+@property(readonly, nonatomic) _Bool hasRepairedStreams; // @synthesize hasRepairedStreams=_hasRepairedStreams;
+@property(readonly, nonatomic) NSDictionary *groupEntries; // @synthesize groupEntries=_groupEntries;
+@property(readonly, nonatomic) NSDictionary *streamIDToMediaStreamMap; // @synthesize streamIDToMediaStreamMap=_streamIDToMediaStreamMap;
+@property(readonly, nonatomic) NSArray *mediaStreams; // @synthesize mediaStreams=_mediaStreams;
 - (_Bool)addMediaStreamInfo:(id)arg1;
+- (void)unlock;
+- (void)lock;
 - (void)dealloc;
 - (id)init;
 

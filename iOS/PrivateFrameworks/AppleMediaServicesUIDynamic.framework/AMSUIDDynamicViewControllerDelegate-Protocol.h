@@ -6,12 +6,13 @@
 
 #import <AppleMediaServicesUIDynamic/NSObject-Protocol.h>
 
-@class AMSCarrierLinkResult, AMSPurchaseResult, AMSUIDDynamicViewController, NSDictionary, NSError, UIView, UIViewController;
+@class AMSCarrierLinkResult, AMSDelegateAction, AMSPurchaseResult, AMSUIDDynamicViewController, NSDictionary, NSError, UIView, UIViewController;
 @protocol AMSUIDDynamicContentViewProtocol;
 
 @protocol AMSUIDDynamicViewControllerDelegate <NSObject>
 
 @optional
+- (_Bool)dynamicViewController:(AMSUIDDynamicViewController *)arg1 handleDelegateAction:(AMSDelegateAction *)arg2 completionHandler:(void (^)(id, NSError *))arg3;
 - (_Bool)dynamicViewControllerShouldDismiss:(AMSUIDDynamicViewController *)arg1;
 - (void)dynamicViewController:(AMSUIDDynamicViewController *)arg1 didResolveWithResult:(NSDictionary *)arg2 error:(NSError *)arg3;
 - (void)dynamicViewController:(AMSUIDDynamicViewController *)arg1 didFinishCarrierLinkingWithResult:(AMSCarrierLinkResult *)arg2 error:(NSError *)arg3;

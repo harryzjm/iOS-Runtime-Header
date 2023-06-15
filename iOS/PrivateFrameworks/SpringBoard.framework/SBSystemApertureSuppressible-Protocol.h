@@ -13,6 +13,7 @@
 @optional
 @property(nonatomic, getter=isSuppressed) _Bool suppressed;
 - (_Bool)requiresSuppressionFromSystemAperture;
+- (_Bool)shouldIgnoreSystemChromeSuppression;
 - (_Bool)shouldSuppressElementWhileOtherElementsPresent;
 - (_Bool)shouldSuppressElementWhileOnCoversheet;
 - (_Bool)shouldSuppressElementWhilePresentingAppWithBundleId:(NSString *)arg1;

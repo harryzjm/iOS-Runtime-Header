@@ -19,8 +19,10 @@ __attribute__((visibility("hidden")))
 }
 
 + (void)shareMediaWithShareSheet:(id)arg1;
-+ (void)shareMediaItem:(id)arg1 title:(id)arg2 subtitle:(id)arg3 imageURLStr:(id)arg4 groupActivityMetadata:(id)arg5 sourceView:(id)arg6;
-+ (void)shareMediaItem:(id)arg1 title:(id)arg2 subtitle:(id)arg3 imageURLStr:(id)arg4 sharedWatchId:(id)arg5 sharedWatchUrl:(id)arg6 sourceView:(id)arg7;
++ (void)shareMediaItem:(id)arg1 title:(id)arg2 subtitle:(id)arg3 imageURLStr:(id)arg4 groupActivityMetadata:(id)arg5 sourceView:(id)arg6 sourceRect:(struct CGRect)arg7 completionHandler:(CDUnknownBlockType)arg8;
++ (void)shareMediaItem:(id)arg1 title:(id)arg2 subtitle:(id)arg3 imageURLStr:(id)arg4 groupActivityMetadata:(id)arg5 sourceRect:(struct CGRect)arg6 completionHandler:(CDUnknownBlockType)arg7;
++ (void)shareMediaItem:(id)arg1 title:(id)arg2 subtitle:(id)arg3 imageURLStr:(id)arg4 groupActivityMetadata:(id)arg5 sourceView:(id)arg6 completionHandler:(CDUnknownBlockType)arg7;
++ (void)shareMediaItem:(id)arg1 title:(id)arg2 subtitle:(id)arg3 imageURLStr:(id)arg4 sharedWatchId:(id)arg5 sharedWatchUrl:(id)arg6 sourceView:(id)arg7 completionHandler:(CDUnknownBlockType)arg8;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSString *itemSubtitle; // @synthesize itemSubtitle=_itemSubtitle;
 @property(retain, nonatomic) NSString *itemTitle; // @synthesize itemTitle=_itemTitle;

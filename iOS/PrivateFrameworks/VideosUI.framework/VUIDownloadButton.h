@@ -68,17 +68,17 @@ __attribute__((visibility("hidden")))
 - (void)_startObservingViewModel:(id)arg1;
 - (void)_configureProgressIndicatorWithProperties:(id)arg1;
 - (void)_insertProgressIndicatorWithFrame:(struct CGRect)arg1;
-- (id)_buttonPropertiesForState:(unsigned long long)arg1 downloadExpirationDate:(id)arg2;
+- (id)_buttonPropertiesForState:(unsigned long long)arg1 downloadExpirationDate:(id)arg2 hasFailed:(_Bool)arg3;
 - (void)_updateDownloadProgress:(double)arg1 animated:(_Bool)arg2;
 - (void)_updateImageViewTintColorWithDownloadState:(unsigned long long)arg1;
 - (void)_updateButtonToDownloadedWithProperties:(id)arg1;
 - (void)_updateButtonToDownloadingWithProperties:(id)arg1;
 - (void)_updateButtonToConnectingWithProperties:(id)arg1;
 - (void)_updateButtonToNotDownloadedWithProperties:(id)arg1;
-- (void)_updateButtonToState:(unsigned long long)arg1 downloadExpirationDate:(id)arg2;
+- (void)_updateButtonToState:(unsigned long long)arg1 downloadExpirationDate:(id)arg2 hasFailed:(_Bool)arg3;
 - (void)_updateButtonToState:(unsigned long long)arg1 oldState:(unsigned long long)arg2;
-- (id)_badgeImageForDownloadState:(unsigned long long)arg1 downloadExpirationDate:(id)arg2;
-- (id)_imageForDownloadState:(unsigned long long)arg1 downloadExpirationDate:(id)arg2;
+- (id)_badgeImageForDownloadState:(unsigned long long)arg1 downloadExpirationDate:(id)arg2 hasFailed:(_Bool)arg3;
+- (id)_imageForDownloadState:(unsigned long long)arg1 downloadExpirationDate:(id)arg2 hasFailed:(_Bool)arg3;
 - (id)_expiredBadgeImage;
 - (id)_expiredDownloadImage;
 - (id)_pausedImage;
@@ -100,7 +100,6 @@ __attribute__((visibility("hidden")))
 - (void)updateWithPlayable:(id)arg1 textLayout:(id)arg2;
 - (void)updateWithAssetController:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (struct CGSize)vui_sizeThatFits:(struct CGSize)arg1;
 - (void)vui_didMoveToWindow;
 - (struct CGSize)vui_layoutSubviews:(struct CGSize)arg1 computationOnly:(_Bool)arg2;
 - (void)revertTintColor;
@@ -111,6 +110,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)initWithMediaEntity:(id)arg1 type:(unsigned long long)arg2;
 - (id)initWithAssetController:(id)arg1 type:(unsigned long long)arg2;
+- (id)initWithDownloadButtonViewModel:(id)arg1 type:(unsigned long long)arg2;
 - (id)initWithPlayable:(id)arg1 type:(unsigned long long)arg2 textLayout:(id)arg3;
 
 @end

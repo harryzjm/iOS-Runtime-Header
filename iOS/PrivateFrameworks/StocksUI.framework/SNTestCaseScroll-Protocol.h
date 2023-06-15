@@ -9,12 +9,12 @@
 @class SNTestContext, UIScrollView;
 
 @protocol SNTestCaseScroll <SNTestCase>
-@property(nonatomic, readonly) long long offset;
-@property(nonatomic, readonly) long long iterations;
+@property(readonly, nonatomic) long long offset;
+@property(readonly, nonatomic) long long iterations;
 - (UIScrollView *)scrollViewWithContext:(SNTestContext *)arg1;
 
 @optional
-@property(nonatomic, readonly) long long numberOfScreens;
-@property(nonatomic, readonly) unsigned long long scrollDirection;
+@property(readonly, nonatomic) long long numberOfScreens;
+@property(readonly, nonatomic) unsigned long long scrollDirection;
 @end
 

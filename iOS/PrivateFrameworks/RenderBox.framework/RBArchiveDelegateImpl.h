@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class NSString, RBEncoderSet;
 
 __attribute__((visibility("hidden")))
 @interface RBArchiveDelegateImpl : NSObject
@@ -17,9 +17,13 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (id)decodedShaderLibraryWithData:(id)arg1 error:(id *)arg2;
+- (id)encodedShaderLibraryData:(id)arg1 error:(id *)arg2;
 - (struct CGFont *)decodedCGFontWithData:(id)arg1 error:(id *)arg2;
+- (id)encodedFontSubsetData:(id)arg1 cgFont:(struct CGFont *)arg2 error:(id *)arg3;
+- (_Bool)shouldEncodeFontSubset:(struct CGFont *)arg1;
 - (id)encodedCGFontData:(struct CGFont *)arg1 error:(id *)arg2;
-- (const void *)decodedImageContentsWithData:(id)arg1 type:(int *)arg2 error:(id *)arg3;
+- (void *)decodedImageContentsWithData:(id)arg1 type:(int *)arg2 error:(id *)arg3;
 - (id)encodedImageData:(CDStruct_27041886)arg1 error:(id *)arg2;
 - (void)decodedMetadata:(id)arg1;
 - (id)encodedMetadata;
@@ -28,6 +32,7 @@ __attribute__((visibility("hidden")))
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) RBEncoderSet *encoderSet;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

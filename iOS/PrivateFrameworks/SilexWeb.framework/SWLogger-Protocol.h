@@ -10,6 +10,7 @@
 
 @protocol SWLogger <NSObject>
 - (void)logSensitive:(NSString *)arg1;
+- (void)logError:(NSString *)arg1;
 - (void)log:(NSString *)arg1;
 - (void)bindValue:(NSString *)arg1 forKey:(NSString *)arg2;
 @end

@@ -13,10 +13,11 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-@property(retain) NSArray *authorizationRecords; // @synthesize authorizationRecords=_authorizationRecords;
+@property(copy) NSArray *authorizationRecords; // @synthesize authorizationRecords=_authorizationRecords;
 - (id)isFamilyControlsEnabled:(id)arg1;
 - (void)setFamilyControlsEnabled:(id)arg1 forSpecifier:(id)arg2;
 - (long long)getAuthorizationStatusForRecordIdentifier:(id)arg1 fromRecords:(id)arg2;
+- (void)_updateSpecifiersWithAuthorizationRecords;
 - (id)init;
 
 @end

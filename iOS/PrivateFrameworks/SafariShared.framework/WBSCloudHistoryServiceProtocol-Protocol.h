@@ -9,6 +9,7 @@
 @class NSDictionary;
 
 @protocol WBSCloudHistoryServiceProtocol <NSObject>
+- (void)updateProfileLocalIdentifiersToServerIdentifiersMap:(NSDictionary *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)saveChangesBypassingThrottler:(_Bool)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)fetchAndMergeChangesBypassingThrottler:(_Bool)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)fetchDateOfNextPermittedSaveChangesAttemptWithCompletionHandler:(void (^)(NSDate *, NSError *))arg1;

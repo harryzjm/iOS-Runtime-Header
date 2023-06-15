@@ -8,7 +8,7 @@
 
 @interface CNContactTypeDescription (ABSExtentions)
 - (id)CNValueFromABSValue:(void *)arg1;
-- (const void *)ABSValueFromCNValue:(id)arg1;
+- (void *)ABSValueFromCNValue:(id)arg1;
 - (unsigned int)absPropertyType;
 - (_Bool)absPropertyID:(int *)arg1;
 @end

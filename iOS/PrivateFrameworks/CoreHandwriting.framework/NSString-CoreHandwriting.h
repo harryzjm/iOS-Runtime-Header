@@ -7,6 +7,7 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (CoreHandwriting)
+- (_Bool)isAllUppercase;
 - (unsigned long long)cursorPositionAtIndex:(unsigned long long)arg1 usingBlockToSelectSide:(CDUnknownBlockType)arg2;
 - (_Bool)isAbbreviation;
 - (void)enumerateCodepointsInRange:(struct _NSRange)arg1 reverse:(_Bool)arg2 usingBlock:(CDUnknownBlockType)arg3;

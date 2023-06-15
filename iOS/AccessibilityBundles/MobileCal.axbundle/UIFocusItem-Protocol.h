@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import "UIFocusEnvironment-Protocol.h"
+#import <MobileCal/UIFocusEnvironment-Protocol.h>
 
 @class UIFocusEffect, UIFocusMovementHint;
 

@@ -4,27 +4,29 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class ASCABLELoginChoice, ASCAuthorizationPresentationContext;
+@class ASCABLELoginChoice, ASCAuthorizationPresentationContext, NSObject;
+@protocol OS_os_activity;
 
 __attribute__((visibility("hidden")))
 @interface ASCredentialRequestCABLEClientViewController
 {
     ASCAuthorizationPresentationContext *_presentationContext;
     ASCABLELoginChoice *_loginChoice;
+    NSObject<OS_os_activity> *_authorizationActivity;
 }
 
 - (void).cxx_destruct;
+- (void)_useSecurityKeyButtonTapped;
 - (id)_qrCodeMessage;
 - (void)_addBelowQRCodeSpacerView;
-- (void)_addAboveIconSpacerView;
-- (double)_marginAboveIcon;
+- (double)_marginBelowSecurityKeyButton;
 - (double)_marginBelowQRCode;
 - (id)_titleText;
+- (void)_setUpSecurityKeyButtonViewIfNeeded;
 - (void)_setUpQRCodeView;
 - (void)_setUpTitleView;
-- (void)_setUpIconView;
 - (void)viewDidLoad;
-- (id)initWithPresentationContext:(id)arg1 loginChoice:(id)arg2;
+- (id)initWithPresentationContext:(id)arg1 loginChoice:(id)arg2 activity:(id)arg3;
 
 @end
 

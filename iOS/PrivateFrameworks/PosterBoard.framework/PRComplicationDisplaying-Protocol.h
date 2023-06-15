@@ -7,9 +7,8 @@
 #import <PosterBoard/NSObject-Protocol.h>
 
 @protocol PRComplicationDisplaying <NSObject>
+@property(nonatomic, getter=isComplicationUserInteractionEnabled) _Bool complicationUserInteractionEnabled;
 - (void)complicationsDidEndDisplaying;
 - (void)complicationsWillDisplay;
-@property(nonatomic) _Bool complicationUserInteractionEnabled;
-- (_Bool)isComplicationUserInteractionEnabled;
 @end
 

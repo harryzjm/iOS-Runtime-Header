@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UICollectionViewFlowLayout.h>
+#import <UIKitCore/UICollectionViewFlowLayout.h>
 
 @interface _TtC7SwiftUIP33_8825076C2763A50452A210CBE1FA4AF012PagingLayout : UICollectionViewFlowLayout
 {

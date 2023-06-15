@@ -18,7 +18,7 @@
     double _labelIndent;
     double _labelTypographicExtent;
     TSDImageProvider *_imageProvider;
-    const struct __CTLine *_textLine;
+    struct __CTLine *_textLine;
     double _ascent;
     double _descent;
     unsigned long long _listNumber;
@@ -32,7 +32,7 @@
 @property(readonly, nonatomic) unsigned long long listNumber; // @synthesize listNumber=_listNumber;
 @property(readonly, nonatomic) double descent; // @synthesize descent=_descent;
 @property(readonly, nonatomic) double ascent; // @synthesize ascent=_ascent;
-@property(readonly, nonatomic) const struct __CTLine *textLine; // @synthesize textLine=_textLine;
+@property(readonly, nonatomic) struct __CTLine *textLine; // @synthesize textLine=_textLine;
 @property(readonly, nonatomic) TSDImageProvider *imageProvider; // @synthesize imageProvider=_imageProvider;
 @property(nonatomic) _Bool isLabelRTL; // @synthesize isLabelRTL=_isLabelRTL;
 @property(nonatomic) double labelTypographicExtent; // @synthesize labelTypographicExtent=_labelTypographicExtent;
@@ -41,7 +41,7 @@
 @property(readonly, nonatomic) double baselineOffset; // @synthesize baselineOffset=_baselineOffset;
 @property(readonly, nonatomic) struct CGSize size; // @synthesize size=_size;
 @property(readonly, nonatomic) unsigned long long labelType; // @synthesize labelType=_labelType;
-@property(readonly, nonatomic) const struct __CTFont *labelFont;
+@property(readonly, nonatomic) struct __CTFont *labelFont;
 @property(readonly, nonatomic) struct CGSize naturalImageSize;
 @property(readonly, nonatomic) double height;
 @property(readonly, nonatomic) double width;

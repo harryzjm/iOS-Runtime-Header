@@ -10,7 +10,6 @@
 @protocol RCFolderIdentifier, RCRecording;
 
 @protocol RCFolder <NSFetchRequestResult>
-@property(readonly, nonatomic) _Bool isEncrypted;
 @property(readonly, nonatomic) NSString *uuid;
 @property(readonly, nonatomic) long long folderType;
 @property(readonly, nonatomic) long long rank;

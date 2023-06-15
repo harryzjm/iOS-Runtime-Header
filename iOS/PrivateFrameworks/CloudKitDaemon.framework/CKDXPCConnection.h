@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CKCoalescer, CKDProcessScopedClientProxy, NSArray, NSHashTable, NSMutableDictionary, NSMutableSet, NSOperationQueue, NSPointerArray, NSString, NSXPCConnection;
+@class CKCoalescer, CKDProcessScopedClientProxy, NSArray, NSHashTable, NSMutableDictionary, NSOperationQueue, NSPointerArray, NSString, NSXPCConnection;
 
 @interface CKDXPCConnection : NSObject
 {
@@ -16,7 +16,6 @@
     unsigned long long _keepAlive;
     CKCoalescer *_activityCoalescer;
     NSMutableDictionary *_logicalDeviceScopedClientProxiesByDeviceReference;
-    NSMutableSet *_allDeviceContexts;
     NSPointerArray *_allContainerPointers;
     NSOperationQueue *_systemAvailableQueue;
 }
@@ -24,7 +23,6 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSOperationQueue *systemAvailableQueue; // @synthesize systemAvailableQueue=_systemAvailableQueue;
 @property(retain, nonatomic) NSPointerArray *allContainerPointers; // @synthesize allContainerPointers=_allContainerPointers;
-@property(retain, nonatomic) NSMutableSet *allDeviceContexts; // @synthesize allDeviceContexts=_allDeviceContexts;
 @property(retain, nonatomic) NSMutableDictionary *logicalDeviceScopedClientProxiesByDeviceReference; // @synthesize logicalDeviceScopedClientProxiesByDeviceReference=_logicalDeviceScopedClientProxiesByDeviceReference;
 @property(readonly, nonatomic) CKCoalescer *activityCoalescer; // @synthesize activityCoalescer=_activityCoalescer;
 @property(nonatomic) unsigned long long keepAlive; // @synthesize keepAlive=_keepAlive;
@@ -36,9 +34,9 @@
 - (void)tearDown;
 @property(readonly, nonatomic) NSArray *allContainers;
 - (id)logicalDeviceScopedClientProxyForDeviceContext:(id)arg1;
-- (void)getTestAdminDaemonProxyCreatorWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)getDaemonTestServerManagerProxyCreatorWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getProcessScopedDaemonProxyCreatorWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)getLogicalDeviceScopedDaemonProxyCreatorForTestDeviceReference:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)getLogicalDeviceScopedDaemonProxyCreatorForTestDeviceReferenceProtocol:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getContainerScopedDaemonProxyCreatorForSetupInfo:(id)arg1 containerScopedClientProxy:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)noteClientProcessScopedMetadata:(id)arg1;
 - (_Bool)systemAvailabilityChanged:(unsigned long long)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSURLSession.h>
+#import <CFNetwork/NSURLSession.h>
 
 @interface NSURLSession (MSVTaskCapturingCompletion)
 - (id)msv_downloadTaskWithRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (oneway void)release;
 - (unsigned long long)retainCount;
 - (id)retain;
+- (unsigned long long)expressionType;
 
 @end
 

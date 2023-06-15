@@ -6,11 +6,12 @@
 
 #import <SearchFoundation/SFCardSection-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString, SFActionItem, SFColor, SFMediaItem, SFRichText;
+@class NSArray, NSData, NSDictionary, NSString, SFActionItem, SFMediaItem, SFRichText;
 
 @protocol SFMediaInfoCardSection <SFCardSection>
 @property(readonly, nonatomic) NSData *jsonData;
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property(nonatomic) int watchListItemType;
 @property(retain, nonatomic) SFRichText *specialOfferButtonLabel;
 @property(nonatomic) _Bool isMediaContainer;
 @property(copy, nonatomic) NSString *watchListConfirmationText;
@@ -21,14 +22,6 @@
 @property(retain, nonatomic) SFActionItem *playAction;
 @property(copy, nonatomic) NSArray *details;
 @property(retain, nonatomic) SFMediaItem *mediaItem;
-@property(retain, nonatomic) SFColor *backgroundColor;
-@property(nonatomic) int separatorStyle;
 @property(copy, nonatomic) NSString *type;
-@property(nonatomic) _Bool hasBottomPadding;
-@property(nonatomic) _Bool hasTopPadding;
-@property(nonatomic) _Bool canBeHidden;
-@property(copy, nonatomic) NSString *punchoutPickerDismissText;
-@property(copy, nonatomic) NSString *punchoutPickerTitle;
-@property(copy, nonatomic) NSArray *punchoutOptions;
 @end
 

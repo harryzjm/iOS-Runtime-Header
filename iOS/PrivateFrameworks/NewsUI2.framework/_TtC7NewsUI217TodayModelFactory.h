@@ -10,9 +10,7 @@
 
 @interface _TtC7NewsUI217TodayModelFactory : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *headlineModelFactory;
-    MISSING_TYPE *issueModelFactory;
-    MISSING_TYPE *tagService;
+    MISSING_TYPE *feedModelFactory;
 }
 
 @end

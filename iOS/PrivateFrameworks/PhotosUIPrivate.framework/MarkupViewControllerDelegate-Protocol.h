@@ -6,20 +6,24 @@
 
 #import <PhotosUIPrivate/NSObject-Protocol.h>
 
-@class MarkupViewController, NSArray, NSURL, PDFPage;
+@class NSArray, NSURL, PDFPage;
+@protocol MarkupViewControllerPrivateProtocol;
 
 @protocol MarkupViewControllerDelegate <NSObject>
 
 @optional
-- (void)markupViewController:(MarkupViewController *)arg1 didChangeShowingSignaturesUI:(_Bool)arg2;
+- (_Bool)controllerCanShowWhileLocked:(id <MarkupViewControllerPrivateProtocol>)arg1;
+- (void)controllerDidChangeContent:(id <MarkupViewControllerPrivateProtocol>)arg1;
+- (_Bool)controllerCanBecomeFirstResponder:(id <MarkupViewControllerPrivateProtocol>)arg1;
+- (void)markupViewController:(id <MarkupViewControllerPrivateProtocol>)arg1 didChangeShowingSignaturesUI:(_Bool)arg2;
 - (NSArray *)menuElementsForPage:(PDFPage *)arg1;
 - (struct UIEdgeInsets)customSketchOverlayInsets;
 - (struct UIEdgeInsets)customEdgeInsets;
-- (void)controller:(MarkupViewController *)arg1 willWriteCGPDFDocument:(struct CGPDFDocument *)arg2 toContext:(struct CGContext *)arg3;
-- (void)controller:(MarkupViewController *)arg1 didReadCGPDFDocument:(struct CGPDFDocument *)arg2;
-- (void)controller:(MarkupViewController *)arg1 didChangeToPDFPageIndex:(unsigned long long)arg2;
-- (void)controllerWantsToShowShareSheet:(MarkupViewController *)arg1;
-- (_Bool)controller:(MarkupViewController *)arg1 shouldOpenLinkAtURL:(NSURL *)arg2;
-- (NSArray *)controller:(MarkupViewController *)arg1 willSetToolbarItems:(NSArray *)arg2;
+- (void)controller:(id <MarkupViewControllerPrivateProtocol>)arg1 willWriteCGPDFDocument:(struct CGPDFDocument *)arg2 toContext:(struct CGContext *)arg3;
+- (void)controller:(id <MarkupViewControllerPrivateProtocol>)arg1 didReadCGPDFDocument:(struct CGPDFDocument *)arg2;
+- (void)controller:(id <MarkupViewControllerPrivateProtocol>)arg1 didChangeToPDFPageIndex:(unsigned long long)arg2;
+- (void)controllerWantsToShowShareSheet:(id <MarkupViewControllerPrivateProtocol>)arg1;
+- (_Bool)controller:(id <MarkupViewControllerPrivateProtocol>)arg1 shouldOpenLinkAtURL:(NSURL *)arg2;
+- (NSArray *)controller:(id <MarkupViewControllerPrivateProtocol>)arg1 willSetToolbarItems:(NSArray *)arg2;
 @end
 

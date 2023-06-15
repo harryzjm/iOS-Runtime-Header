@@ -7,6 +7,6 @@
 #import <HealthDaemon/HDFeatureAvailabilityManager.h>
 
 @interface HDFeatureAvailabilityManager (HDHRIrregularRhythmNotificationsV2FeatureAvailabilityManager)
-+ (id)hdhr_irregularRhythmNotificationsV2FeatureAvailabilityManagerWithProfile:(id)arg1 pairedDeviceCapabilityProvider:(id)arg2 disableAndExpiryProvider:(id)arg3 pairedFeaturePropertiesSyncManager:(id)arg4;
++ (id)hdhr_irregularRhythmNotificationsV2FeatureAvailabilityManagerWithProfile:(id)arg1 disableAndExpiryProvider:(id)arg2 pairedFeaturePropertiesSyncManager:(id)arg3;
 @end
 

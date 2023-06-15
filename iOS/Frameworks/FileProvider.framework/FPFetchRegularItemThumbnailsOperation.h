@@ -6,13 +6,13 @@
 
 #import "FPOperation.h"
 
-@class FPItemManager, NSArray;
+@class FPItemManager, NSDictionary;
 @protocol FPOperationProgressDelegate;
 
 __attribute__((visibility("hidden")))
 @interface FPFetchRegularItemThumbnailsOperation : FPOperation
 {
-    NSArray *_itemIDs;
+    NSDictionary *_dictionary;
     struct CGSize _desiredSizeToScale;
     FPItemManager *_itemManager;
     id <FPOperationProgressDelegate> _delegate;
@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak id <FPOperationProgressDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)operationDidProgressWithInfo:(id)arg1 error:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)main;
-- (id)initWithRegularItems:(id)arg1 desiredSizeToScale:(struct CGSize)arg2 itemManager:(id)arg3;
+- (id)initWithDictionary:(id)arg1 desiredSizeToScale:(struct CGSize)arg2 itemManager:(id)arg3;
 
 @end
 

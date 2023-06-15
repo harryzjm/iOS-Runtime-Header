@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     IKAppContext *_appContext;
     id <VSApplicationDelegate> _delegate;
     VSAuditToken *_auditToken;
+    NSString *_vendorIdentifier;
     VSStateMachine *_stateMachine;
     VSAppDeviceConfig *_appDeviceConfig;
     NSHTTPCookieStorage *_cookieStorage;
@@ -28,6 +29,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSHTTPCookieStorage *cookieStorage; // @synthesize cookieStorage=_cookieStorage;
 @property(retain, nonatomic) VSAppDeviceConfig *appDeviceConfig; // @synthesize appDeviceConfig=_appDeviceConfig;
 @property(retain, nonatomic) VSStateMachine *stateMachine; // @synthesize stateMachine=_stateMachine;
+@property(copy, nonatomic) NSString *vendorIdentifier; // @synthesize vendorIdentifier=_vendorIdentifier;
 @property(nonatomic) _Bool shouldAllowRemoteInspection; // @synthesize shouldAllowRemoteInspection=_shouldAllowRemoteInspection;
 @property(copy, nonatomic) VSAuditToken *auditToken; // @synthesize auditToken=_auditToken;
 @property(nonatomic) __weak id <VSApplicationDelegate> delegate; // @synthesize delegate=_delegate;
@@ -39,7 +41,6 @@ __attribute__((visibility("hidden")))
 - (id)userDefaultsStorage;
 - (id)vendorStorage;
 - (id)localStorage;
-- (id)vendorIdentifier;
 - (id)appIdentifier;
 - (id)appJSURL;
 - (_Bool)shouldIgnoreJSValidation;

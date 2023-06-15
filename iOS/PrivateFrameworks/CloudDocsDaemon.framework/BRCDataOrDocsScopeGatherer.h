@@ -20,11 +20,13 @@ __attribute__((visibility("hidden")))
     NSString *_gatheringNamePrefix;
     BRCAccountSession *_session;
     _Bool _includesDeadItems;
+    _Bool _invalidated;
     BRCItemGlobalID *_gatheredChildrenItemGlobalID;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) BRCItemGlobalID *gatheredChildrenItemGlobalID; // @synthesize gatheredChildrenItemGlobalID=_gatheredChildrenItemGlobalID;
+- (void)dealloc;
 - (void)invalidate;
 - (void)done;
 - (CDUnknownBlockType)_popGatherReply;

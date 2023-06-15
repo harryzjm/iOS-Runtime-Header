@@ -9,5 +9,6 @@
 @interface NSString (PBFUtilities)
 + (id)pbf_bootInstanceIdentifier;
 - (id)pbf_sha256Hash;
+- (id)pbf_valueForSQLiteQuery;
 @end
 

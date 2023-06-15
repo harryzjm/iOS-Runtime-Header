@@ -13,7 +13,7 @@
     long long _endLimit;
 }
 
-- (void)mapFromVertexArray:(const void *)arg1 normalArray:(const void *)arg2 normalMatrix:(const void *)arg3 numVertices:(long long)arg4 destination:(void *)arg5;
+- (void)mapFromVertexArray:(const void *)arg1 normalArray:(const void *)arg2 normalMatrix:(void *)arg3 numVertices:(long long)arg4 destination:(void *)arg5;
 - (id)initWithWallOffset:(long long)arg1 crossSectionCount:(long long)arg2 spineCount:(long long)arg3 beginLimit:(long long)arg4 endLimit:(long long)arg5;
 
 @end

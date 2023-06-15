@@ -22,9 +22,11 @@
 - (void)inputSession:(RTIInputSystemSession *)arg1 documentStateDidChange:(RTIDocumentState *)arg2;
 - (void)inputSession:(RTIInputSystemSession *)arg1 documentTraitsDidChange:(RTIDocumentTraits *)arg2;
 - (void)inputSessionDidDie:(RTIInputSystemSession *)arg1;
+- (void)inputSessionDidEnd:(RTIInputSystemSession *)arg1 options:(RTISessionOptions *)arg2 completion:(void (^)(void))arg3;
 - (void)inputSessionDidEnd:(RTIInputSystemSession *)arg1 options:(RTISessionOptions *)arg2;
 - (void)inputSessionDidEnd:(RTIInputSystemSession *)arg1;
 - (void)inputSessionDidBegin:(RTIInputSystemSession *)arg1 options:(RTISessionOptions *)arg2;
 - (void)inputSessionDidBegin:(RTIInputSystemSession *)arg1;
+- (void)prepareForInputSession:(RTIInputSystemSession *)arg1 options:(RTISessionOptions *)arg2;
 @end
 

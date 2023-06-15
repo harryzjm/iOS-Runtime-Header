@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (void)autoInstallOperationIsReadyToInstall:(id)arg1 withResponse:(CDUnknownBlockType)arg2;
 - (void)autoInstallOperationDidConsent:(id)arg1;
 - (void)autoInstallOperationWasCancelled:(id)arg1;
+- (void)client:(id)arg1 inUserInteraction:(CDUnknownBlockType)arg2;
 - (void)client:(id)arg1 rollbackDidFail:(id)arg2 withError:(id)arg3;
 - (void)client:(id)arg1 rollbackDidFinish:(id)arg2;
 - (void)client:(id)arg1 rollbackDidStart:(id)arg2;

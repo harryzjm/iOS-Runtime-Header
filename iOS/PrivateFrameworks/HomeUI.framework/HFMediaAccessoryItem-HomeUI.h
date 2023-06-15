@@ -10,5 +10,7 @@
 
 @interface HFMediaAccessoryItem (HomeUI)
 @property(nonatomic, readonly) UIColor *hu_tintColor;
+- (id)hu_containedAccessories;
+- (id)hu_containedServices;
 @end
 

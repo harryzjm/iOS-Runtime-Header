@@ -6,7 +6,7 @@
 
 #import <SafariServices/NSObject-Protocol.h>
 
-@class _SFSettingsAlertItem;
+@class NSAttributedString, NSString, UIImage, _SFSettingsAlertItem;
 @protocol SFSettingsAlertItemViewDelegate;
 
 @protocol SFSettingsAlertItemView <NSObject>
@@ -15,6 +15,12 @@
 @property(nonatomic) long long defaultBackgroundMode;
 @property(nonatomic) _Bool hidesSeparator;
 @property(nonatomic, getter=isEnabled) _Bool enabled;
+@property(nonatomic, getter=isSelected) _Bool selected;
+@property(retain, nonatomic) UIImage *image;
+@property(copy, nonatomic) NSAttributedString *attributedDetailText;
+@property(copy, nonatomic) NSString *detailText;
+@property(copy, nonatomic) NSAttributedString *attributedText;
+@property(copy, nonatomic) NSString *text;
 @property(nonatomic) __weak _SFSettingsAlertItem *item;
 @end
 

@@ -9,20 +9,19 @@
 @class CaptureMTLDevice, MTLCompileOptions, NSArray, NSData, NSString, NSUUID;
 @protocol MTLDevice, MTLLibrary, MTLLibrarySPI;
 
-__attribute__((visibility("hidden")))
 @interface CaptureMTLLibrary : NSObject
 {
     id <MTLLibrarySPI> _baseObject;
     CaptureMTLDevice *_captureDevice;
     struct GTTraceContext *_traceContext;
     struct GTTraceStream *_traceStream;
+    NSArray *_dagFunctions;
     MTLCompileOptions *options;
 }
 
 - (void).cxx_destruct;
 @property(copy, nonatomic) MTLCompileOptions *options; // @synthesize options;
 - (_Bool)serializeToURL:(id)arg1 error:(id *)arg2;
-- (id)newFunctionWithName:(id)arg1 constantValues:(id)arg2 pipelineLibrary:(id)arg3 error:(id *)arg4;
 - (id)newFunctionWithDescriptor:(id)arg1 destinationArchive:(id)arg2 error:(id *)arg3;
 @property(readonly) long long type;
 @property(nonatomic) _Bool shaderValidationEnabled;
@@ -47,12 +46,14 @@ __attribute__((visibility("hidden")))
 - (id)newIntersectionFunctionWithDescriptor:(id)arg1 error:(id *)arg2;
 - (void)newFunctionWithDescriptor:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)newFunctionWithDescriptor:(id)arg1 error:(id *)arg2;
+- (void)newFunctionWithName:(id)arg1 constantValues:(id)arg2 pipelineLibrary:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (id)newFunctionWithName:(id)arg1 constantValues:(id)arg2 pipelineLibrary:(id)arg3 error:(id *)arg4;
 - (id)newFunctionWithName:(id)arg1 constantValues:(id)arg2 error:(id *)arg3;
 - (void)newFunctionWithName:(id)arg1 constantValues:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)newFunctionWithName:(id)arg1;
 - (id)newExternFunctionWithName:(id)arg1;
 - (void)dealloc;
-- (void)swapObject:(id)arg1;
+- (id)initWithBaseObject:(id)arg1 captureDevice:(id)arg2 captureDAGFunctions:(id)arg3;
 - (id)initWithBaseObject:(id)arg1 captureDevice:(id)arg2;
 @property(readonly) id <MTLLibrary> baseObject;
 

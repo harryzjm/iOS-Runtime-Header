@@ -10,6 +10,7 @@
 @protocol HAP2AccessoryServerDelegate;
 
 @protocol HAP2AccessoryServer <HAP2AccessoryServerMetadata>
+@property(readonly, nonatomic) double sessionCheckInterval;
 @property(readonly, copy, nonatomic) NSString *reachabilityChangedReason;
 @property(readonly, nonatomic) _Bool hasDiscoveryAdvertisement;
 @property(readonly, nonatomic) unsigned long long connectionState;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIScreen.h>
+#import <UIKitCore/UIScreen.h>
 
 @interface UIScreen (IC)
 + (double)ic_scale;

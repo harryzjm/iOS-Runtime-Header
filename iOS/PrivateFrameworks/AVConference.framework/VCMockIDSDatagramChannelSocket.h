@@ -11,7 +11,6 @@ __attribute__((visibility("hidden")))
     struct sockaddr_in _localAddress;
 }
 
-- (void)setParticipantIDOnOptions:(CDStruct_9bf45fcd *)arg1;
 - (void)setIsHopByHopEncryptedOnOptions:(CDStruct_9bf45fcd *)arg1;
 - (void)setAllSubscribedStreamIDsOnOptions:(CDStruct_9bf45fcd *)arg1;
 - (int)readyToRead;

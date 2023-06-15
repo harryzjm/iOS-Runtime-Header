@@ -6,7 +6,7 @@
 
 #import <SpringBoard/SBLayoutStateTransitionObserver-Protocol.h>
 
-@class NSArray, NSString, SBAppLayout, UIView;
+@class NSString, SBAppLayout, SBSwitcherCoordinatedLayoutStateTransitionContext, UIView;
 @protocol SBSwitcherLiveContentOverlayCoordinatorDelegate;
 
 @protocol SBSwitcherLiveContentOverlayCoordinating <SBLayoutStateTransitionObserver>
@@ -14,6 +14,8 @@
 @property(nonatomic) long long containerOrientation;
 @property(nonatomic, getter=areLiveContentOverlayUpdatesSuspended) _Bool liveContentOverlayUpdatesSuspended;
 - (void)invalidate;
+- (void)cleanUpAfterCoordinatedLayoutStateTransitionWithContext:(SBSwitcherCoordinatedLayoutStateTransitionContext *)arg1;
+- (void)prepareForCoordinatedLayoutStateTransitionWithContext:(SBSwitcherCoordinatedLayoutStateTransitionContext *)arg1;
 - (void)didRotateFromInterfaceOrientation:(long long)arg1 toInterfaceOrientation:(long long)arg2;
 - (void)willRotateFromInterfaceOrientation:(long long)arg1 toInterfaceOrientation:(long long)arg2 alongsideContainerView:(UIView *)arg3 animated:(_Bool)arg4;
 - (_Bool)wantsHomeAffordanceAutoHideForAppLayout:(SBAppLayout *)arg1;
@@ -22,7 +24,6 @@
 - (void)appLayoutDidBecomeHidden:(SBAppLayout *)arg1;
 - (void)appLayoutWillBecomeVisible:(SBAppLayout *)arg1;
 - (_Bool)performSwitcherKeyboardShortcutAction:(long long)arg1;
-- (NSArray *)liveAppLayoutsMatchingKeyboardFocusedApp:(_Bool)arg1 foundAtIndex:(long long *)arg2;
 - (SBAppLayout *)appLayoutForKeyboardFocusedScene;
 - (void)noteKeyboardFocusDidChangeToSceneID:(NSString *)arg1;
 @end

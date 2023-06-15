@@ -25,7 +25,9 @@
 + (id)hf_sharedTimeZone;
 + (id)hf_sharedCalendar;
 @property(readonly, nonatomic) NSNumber *hf_analyticsTimestamp;
+- (_Bool)_uses24HourTimeForLocale;
 - (_Bool)hf_isBetweenStartDate:(id)arg1 endDate:(id)arg2;
+- (_Bool)hf_isSingularHour;
 - (_Bool)hf_isMidnight;
 - (_Bool)hf_isFirstHourOfDay;
 - (_Bool)hf_isWithinOneSecondOfDate:(id)arg1;

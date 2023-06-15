@@ -6,8 +6,6 @@
 
 #import <objc/NSObject.h>
 
-@class MISSING_TYPE;
-
 @interface RSMajorViewInfo : NSObject
 {
     struct vector<float __attribute__((ext_vector_type(3))), std::allocator<float __attribute__((ext_vector_type(3)))>> _major_convex_hull;
@@ -18,30 +16,7 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)cleanMajorViews;
-- (void)apppendMajorViews: /* Error: Ran out of types for this method. */;
-- (void)assignMajorViews:(const MISSING_TYPE **)arg1 withSize:(unsigned long long)arg2;
-- (void)cleanMajorViewLine;
-- (void)apppendMajorViewLine: /* Error: Ran out of types for this method. */;
-- (void)assignMajorViewLine:(const MISSING_TYPE **)arg1 withSize:(unsigned long long)arg2;
-- (void)cleanMajorConvexHullBuffer;
-- (void)apppendMajorConvexHullBuffer: /* Error: Ran out of types for this method. */;
-- (void)assignMajorConvexHullBuffer:(const MISSING_TYPE **)arg1 withSize:(unsigned long long)arg2;
-- (void)cleanMajorConvexHull;
-- (void)apppendMajorConvexHull: /* Error: Ran out of types for this method. */;
-- (void)assignMajorConvexHull:(const MISSING_TYPE **)arg1 withSize:(unsigned long long)arg2;
-- (id)dictionaryRepresentation;
-@property(readonly, nonatomic) unsigned long long sz_major_views;
-@property(readonly, nonatomic) const MISSING_TYPE **major_views;
-@property(readonly, nonatomic) unsigned long long sz_major_view_line;
-@property(readonly, nonatomic) const MISSING_TYPE **major_view_line;
-@property(readonly, nonatomic) unsigned long long sz_major_convex_hull_buffer;
-@property(readonly, nonatomic) const MISSING_TYPE **major_convex_hull_buffer;
-@property(readonly, nonatomic) unsigned long long sz_major_convex_hull;
-@property(readonly, nonatomic) const MISSING_TYPE **major_convex_hull;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithDictionary:(id)arg1;
-- (void)reset;
 - (id)init;
 
 @end

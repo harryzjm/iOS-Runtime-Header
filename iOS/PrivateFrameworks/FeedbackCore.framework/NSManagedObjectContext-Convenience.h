@@ -14,6 +14,5 @@
 - (id)findFeedbackObjectWithEntityName:(id)arg1 remoteID:(id)arg2;
 - (id)createFeedbackObjectWithEntityName:(id)arg1 remoteID:(id)arg2;
 - (id)feedbackObjectWithEntityName:(id)arg1 remoteID:(id)arg2 creatingIfNeeded:(_Bool)arg3;
-- (id)addObjectsDidChangeNotificationObserver:(CDUnknownBlockType)arg1;
 @end
 

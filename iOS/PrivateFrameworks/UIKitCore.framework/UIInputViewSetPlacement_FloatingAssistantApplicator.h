@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 - (void)invalidate;
 - (_Bool)shouldApplyOriginChange;
 - (void)applyChanges:(id)arg1;
+- (void)setupHostViewIfNeeded;
 - (void)prepare;
 
 @end

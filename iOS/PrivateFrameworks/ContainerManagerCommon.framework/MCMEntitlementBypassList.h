@@ -6,12 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSSet;
+@class NSDictionary;
 
 __attribute__((visibility("hidden")))
 @interface MCMEntitlementBypassList : NSObject
 {
-    NSSet *_bypassListedLookupByContainer[15];
     NSDictionary *_bypassListedLookupByCodeSignIdentifier;
     NSDictionary *_systemEntitlementBypassList;
     NSDictionary *_systemGroupEntitlementBypassList;
@@ -32,7 +31,7 @@ __attribute__((visibility("hidden")))
 - (id)wellknownSystemContainers;
 - (_Bool)systemContainerIdIsWellknown:(id)arg1;
 - (id)wellknownSystemContainerForId:(id)arg1;
-- (id)initWithSystemContainerMapping:(id)arg1 systemGroupContainerMapping:(id)arg2 bypassListedContainerMapping:(id)arg3 bypassListedCodeSignIdentifierMapping:(id)arg4;
+- (id)initWithSystemContainerMapping:(id)arg1 systemGroupContainerMapping:(id)arg2 bypassListedCodeSignIdentifierMapping:(id)arg3;
 
 @end
 

@@ -6,12 +6,11 @@
 
 #import <MediaPlayer/MPAsyncOperation.h>
 
-@class ICPlayActivityController, ICRadioGetTracksRequest, NSString;
+@class ICRadioGetTracksRequest, NSString;
 
 __attribute__((visibility("hidden")))
 @interface MPCModelRadioGetTracksOperation : MPAsyncOperation
 {
-    ICPlayActivityController *_playActivityController;
     ICRadioGetTracksRequest *_request;
     NSString *_siriAssetInfo;
     void *_radioQueueFeederPointerForLogging;
@@ -23,7 +22,7 @@ __attribute__((visibility("hidden")))
 - (void)_runStep:(id)arg1 withFinishHandler:(CDUnknownBlockType)arg2;
 - (id)_cacheTracksForStep:(id)arg1;
 - (void)execute;
-- (id)initWithGetTracksRequest:(id)arg1 siriAssetInfo:(id)arg2 playActivityController:(id)arg3 radioQueueFeeder:(id)arg4;
+- (id)initWithGetTracksRequest:(id)arg1 siriAssetInfo:(id)arg2 radioQueueFeeder:(id)arg3;
 
 @end
 

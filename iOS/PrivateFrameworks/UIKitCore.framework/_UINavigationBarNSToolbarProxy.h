@@ -12,11 +12,12 @@ __attribute__((visibility("hidden")))
 @interface _UINavigationBarNSToolbarProxy : NSObject
 {
     NSString *_title;
-    NSString *_subtitle;
     NSURL *_representedURL;
+    CDUnknownBlockType _representedDragItemsProvider;
     NSMutableSet *_registeredParticipants;
     struct {
         unsigned int needsUpdate:1;
+        unsigned int needsRefresh:1;
     } _flags;
     UITitlebar *_owningTitlebar;
 }
@@ -29,8 +30,8 @@ __attribute__((visibility("hidden")))
 - (void)unregisterToolbarParticipant:(id)arg1;
 - (void)registerToolbarParticipant:(id)arg1;
 - (void)setNeedsUpdate;
+@property(readonly, copy, nonatomic) CDUnknownBlockType representedDragItemsProvider;
 @property(readonly, nonatomic) NSURL *representedURL;
-@property(readonly, copy, nonatomic) NSString *subtitle;
 @property(readonly, copy, nonatomic) NSString *title;
 @property(readonly, nonatomic) NSToolbar *toolbar;
 - (id)initWithTitlebar:(id)arg1;

@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSCalendar *calendar; // @synthesize calendar=_calendar;
 @property(copy, nonatomic) NSLocale *locale; // @synthesize locale=_locale;
 - (void)_deriveEffectiveLocaleAndCalendarIfNeeded;
+@property(readonly, nonatomic) NSTimeZone *effectiveTimeZone;
 @property(readonly, nonatomic) NSLocale *effectiveLocale; // @synthesize effectiveLocale=_effectiveLocale;
 @property(readonly, nonatomic) NSCalendar *effectiveCalendar; // @synthesize effectiveCalendar=_effectiveCalendar;
 - (id)init;

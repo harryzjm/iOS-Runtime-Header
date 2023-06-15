@@ -11,7 +11,10 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (id)NINearbyObjectUpdateRateToString:(long long)arg1;
 + (id)NISessionBackgroundModeToString:(long long)arg1;
++ (_Bool)nearbyObjectUpdateRate:(long long)arg1 isGreaterThan:(long long)arg2;
++ (_Bool)isIntValidNearbyObjectUpdateRate:(long long)arg1;
 + (_Bool)isIntValidAntennaDiversityOverride:(long long)arg1;
 + (id)AntennaDiversityOverrideToString:(long long)arg1;
 + (_Bool)isIntValidRelationshipSpecifier:(long long)arg1;

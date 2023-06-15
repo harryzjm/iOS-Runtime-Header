@@ -7,29 +7,25 @@
 @class NSAttributedString, NSString, UIColor;
 
 @protocol SMUTVFocusableTextView
-@property(nonatomic, copy) CDUnknownBlockType playHandler;
-@property(nonatomic, copy) CDUnknownBlockType selectionHandler;
+@property(copy, nonatomic) CDUnknownBlockType playHandler;
+@property(copy, nonatomic) CDUnknownBlockType selectionHandler;
 @property(nonatomic) double maximumLineWidth;
 @property(nonatomic) _Bool disableFocus;
-@property(nonatomic) _Bool alwaysFocusable;
-- (_Bool)isAlwaysFocusable;
+@property(nonatomic, getter=isAlwaysFocusable) _Bool alwaysFocusable;
 @property(nonatomic) unsigned long long focusSizeIncrease;
 @property(nonatomic) _Bool alwaysShowBackground;
 @property(nonatomic) struct UIEdgeInsets padding;
 @property(nonatomic) _Bool trackHorizontal;
-@property(nonatomic, copy) NSString *moreLabelText;
-@property(nonatomic, retain) UIColor *moreLabelTextColor;
+@property(retain, nonatomic) NSString *moreLabelText;
+@property(retain, nonatomic) UIColor *moreLabelTextColor;
 @property(nonatomic) _Bool moreLabelOnNewLine;
 @property(nonatomic) double moreHighlightPadding;
-- (_Bool)isTextTruncating;
+@property(readonly, nonatomic, getter=isTextTruncating) _Bool textTruncating;
 @property(nonatomic) unsigned long long maximumNumberOfLines;
-@property(nonatomic, retain) UIColor *highlightBackgroundColor;
+@property(retain, nonatomic) UIColor *highlightBackgroundColor;
 @property(nonatomic) long long descriptionTextAlignment;
-@property(nonatomic, retain) UIColor *descriptionTextHighlightColor;
-@property(nonatomic, retain) UIColor *descriptionTextColor;
-@property(nonatomic, retain) NSAttributedString *descriptionText;
-
-// Remaining properties
-@property(nonatomic, readonly) _Bool textTruncating;
+@property(retain, nonatomic) UIColor *descriptionTextHighlightColor;
+@property(retain, nonatomic) UIColor *descriptionTextColor;
+@property(retain, nonatomic) NSAttributedString *descriptionText;
 @end
 

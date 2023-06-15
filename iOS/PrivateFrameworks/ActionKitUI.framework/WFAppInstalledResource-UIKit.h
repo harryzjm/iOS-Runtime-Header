@@ -6,15 +6,12 @@
 
 #import <WorkflowKit/WFAppInstalledResource.h>
 
-@class NSString, SKStoreProductViewController;
+@class NSString;
 
 @interface WFAppInstalledResource (UIKit)
 - (void)appSearchViewController:(id)arg1 didFinishWithApp:(id)arg2;
 - (void)appSearchViewControllerDidCancel:(id)arg1;
-- (void)productViewControllerDidFinish:(id)arg1;
-- (void)showAppStoreForApp:(id)arg1 userInterface:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)attemptRecoveryFromError:(id)arg1 optionIndex:(unsigned long long)arg2 userInterface:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-@property(retain, nonatomic) SKStoreProductViewController *viewController;
 @property(copy, nonatomic) CDUnknownBlockType recoveryCompletionHandler;
 
 // Remaining properties

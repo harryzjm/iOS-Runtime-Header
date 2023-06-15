@@ -6,14 +6,14 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 @class NSString, UIColor, UIFont, UIImage;
 
 __attribute__((visibility("hidden")))
-@interface UIKeyboardCandidateViewStyle : NSObject <NSCopying>
+@interface UIKeyboardCandidateViewStyle : NSObject
 {
     _Bool _doNotClipToBounds;
+    _Bool _hasShadow;
+    _Bool _roundsArrowButtonEdge;
     _Bool _shouldJustifyRow;
     _Bool _darkBackdrop;
     _Bool _scrollDisabled;
@@ -42,6 +42,7 @@ __attribute__((visibility("hidden")))
     UIColor *_backgroundColor;
     UIColor *_cellBackgroundColor;
     UIColor *_arrowButtonBackgroundColor;
+    UIColor *_arrowButtonColor;
     UIColor *_gridBackgroundColor;
     UIColor *_highlightedBackgroundColor;
     UIColor *_highlightedRowBackgroundColor;
@@ -130,6 +131,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned long long maxNumberOfProactiveCells; // @synthesize maxNumberOfProactiveCells=_maxNumberOfProactiveCells;
 @property(nonatomic) unsigned long long columnsCount; // @synthesize columnsCount=_columnsCount;
 @property(nonatomic) long long layoutOrientation; // @synthesize layoutOrientation=_layoutOrientation;
+@property(nonatomic) _Bool roundsArrowButtonEdge; // @synthesize roundsArrowButtonEdge=_roundsArrowButtonEdge;
+@property(nonatomic) _Bool hasShadow; // @synthesize hasShadow=_hasShadow;
 @property(nonatomic) _Bool doNotClipToBounds; // @synthesize doNotClipToBounds=_doNotClipToBounds;
 @property(nonatomic) double backgroundOpacity; // @synthesize backgroundOpacity=_backgroundOpacity;
 @property(nonatomic) double foregroundOpacity; // @synthesize foregroundOpacity=_foregroundOpacity;
@@ -158,6 +161,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIColor *highlightedRowBackgroundColor; // @synthesize highlightedRowBackgroundColor=_highlightedRowBackgroundColor;
 @property(retain, nonatomic) UIColor *highlightedBackgroundColor; // @synthesize highlightedBackgroundColor=_highlightedBackgroundColor;
 @property(retain, nonatomic) UIColor *gridBackgroundColor; // @synthesize gridBackgroundColor=_gridBackgroundColor;
+@property(retain, nonatomic) UIColor *arrowButtonColor; // @synthesize arrowButtonColor=_arrowButtonColor;
 @property(retain, nonatomic) UIColor *arrowButtonBackgroundColor; // @synthesize arrowButtonBackgroundColor=_arrowButtonBackgroundColor;
 @property(retain, nonatomic) UIColor *cellBackgroundColor; // @synthesize cellBackgroundColor=_cellBackgroundColor;
 @property(retain, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;

@@ -16,6 +16,7 @@
 }
 
 - (void).cxx_destruct;
+- (void)update:(long long)arg1 withListOfCountryCodes:(id)arg2;
 - (void)clearStatusSharedWithPeers;
 - (void)shareStatusWithPeers;
 - (void)clearDataCache;

@@ -11,6 +11,8 @@
 @protocol TIAssetManaging <NSObject>
 @property(copy, nonatomic) CDUnknownBlockType preferencesProviderBlock;
 @property(copy, nonatomic) CDUnknownBlockType enabledInputModeIdentifiersProviderBlock;
+- (void)updateAssetForInputModeIdentifier:(NSString *)arg1 callback:(void (^)(_Bool, NSError *))arg2;
+- (void)fetchAssetUpdateStatusForInputModeIdentifier:(NSString *)arg1 callback:(void (^)(long long, NSError *))arg2;
 - (NSArray *)topActiveRegions;
 - (NSArray *)enabledInputModes;
 - (void)removeLinguisticAssetsAssertionWithIdentifier:(NSString *)arg1 forClientID:(NSString *)arg2 withHandler:(void (^)(NSError *))arg3;

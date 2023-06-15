@@ -4,10 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSDictionary, NSObject, NSSet, NSString, NSURL, TRIClientNamespaceMetadata, TRIDownloadOptions, TRIFactorsState, TRIRolloutDeployment;
+@class NSArray, NSDictionary, NSObject, NSSet, NSString, NSURL, TRIClientNamespaceMetadata, TRIDownloadOptions, TRIFactorsState, TRIMetric, TRIRolloutDeployment;
 @protocol OS_dispatch_queue, TRIFactorPackId;
 
 @protocol TRINamespaceManagementProtocol
+- (TRIMetric *)bmltCustomTargetingMetric:(id *)arg1;
 - (NSArray *)activeRolloutInformation:(id *)arg1;
 - (unsigned long long)statusOfDownloadForFactors:(NSArray *)arg1 withNamespace:(NSString *)arg2 factorsState:(TRIFactorsState *)arg3 notificationKey:(id *)arg4 error:(id *)arg5;
 - (_Bool)promoteFactorPackId:(NSString<TRIFactorPackId> *)arg1 forNamespaceName:(NSString *)arg2 rolloutDeployment:(TRIRolloutDeployment *)arg3 error:(id *)arg4;

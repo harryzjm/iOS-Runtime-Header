@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIImage.h>
+#import <UIKitCore/UIImage.h>
 
 @interface UIImage (ChatKitAdditions)
-+ (id)__ck_actionImageForSubscriptionShortName:(id)arg1 maxSubscriptionLabelWidth:(double)arg2 isFilled:(_Bool)arg3;
-+ (id)__ck_actionImageForSubscriptionShortName:(id)arg1 maxSubscriptionLabelWidth:(double)arg2;
++ (id)__ck_actionImageForSubscriptionShortName:(id)arg1 isFilled:(_Bool)arg2;
++ (id)__ck_actionImageForSubscriptionShortName:(id)arg1;
 + (id)ckTemplateImageNamed:(id)arg1;
 + (id)ckImageNamed:(id)arg1 withTintColor:(id)arg2;
 + (id)ckImageWithData:(id)arg1;
@@ -25,10 +25,15 @@
 - (struct CGRect)__ck_contentsCenter;
 - (id)__ck_imageWithOrientation:(long long)arg1;
 - (id)__ck_resizableBalloonWithBalloonDescriptor:(struct CKBalloonDescriptor_t)arg1 framed:(_Bool)arg2;
+- (id)__ck_pngImageData;
+- (_Bool)__ck_writePNGToURL:(id)arg1 error:(id *)arg2;
+- (_Bool)__ck_writePNGToFilePath:(id)arg1 error:(id *)arg2;
+- (id)__ck_imageWithTrimmedTransparency;
 - (_Bool)isContentDiscarded;
 - (void)discardContentIfPossible;
 - (void)endContentAccess;
 - (_Bool)beginContentAccess;
 - (id)iconForInterfaceStyle:(long long)arg1;
+- (id)__ck_imageScaledToFillSize:(struct CGSize)arg1;
 @end
 

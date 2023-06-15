@@ -11,9 +11,6 @@
 @interface _TtC11WeatherMaps24OverlayTileLoaderFactory : _TtCs12_SwiftObject
 {
     MISSING_TYPE *dataManager;
-    MISSING_TYPE *lock;
-    MISSING_TYPE *dataProviders;
-    MISSING_TYPE *$__lazy_storage_$_useFrameBasedEndpoints;
 }
 
 @end

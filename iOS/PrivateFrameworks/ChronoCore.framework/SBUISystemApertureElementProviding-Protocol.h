@@ -10,9 +10,9 @@
 @protocol SBUISystemApertureElement;
 
 @protocol SBUISystemApertureElementProviding <NSObject>
-@property(nonatomic, readonly) UIViewController<SBUISystemApertureElement> *systemApertureElementViewController;
+@property(readonly, nonatomic) UIViewController<SBUISystemApertureElement> *systemApertureElementViewController;
 
 @optional
-@property(nonatomic, readonly) id <SBUISystemApertureElement> systemApertureElement;
+@property(readonly, nonatomic) __weak id <SBUISystemApertureElement> systemApertureElement;
 @end
 

@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     UIImageView *_imageView;
 }
 
++ (double)defaultButtonSize;
 + (id)backgroundColor;
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIImage *image;

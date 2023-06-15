@@ -9,7 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface _WKSmartCardSlotObserver : NSObject
 {
-    struct WeakPtr<WebKit::CcidService, WTF::EmptyCounter> m_service;
+    struct WeakPtr<WebKit::CcidService, WTF::DefaultWeakPtrImpl> m_service;
 }
 
 - (id).cxx_construct;

@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
     char *ciphersuite_configuration_string;
     char *experiment_identifier;
     boringssl_concrete_boringssl_identity *identity;
+    boringssl_concrete_boringssl_identity *old_identity;
     CDUnknownBlockType verify_block;
     NSObject<OS_dispatch_queue> *verify_queue;
     CDUnknownBlockType challenge_block;
@@ -61,6 +62,8 @@ __attribute__((visibility("hidden")))
     struct __SecTrust *peer_trust_ref;
     struct __CFArray *server_raw_public_key_certificates;
     struct __CFArray *client_raw_public_key_certificates;
+    unsigned char new_session_ticket_request;
+    unsigned char resumed_session_ticket_request;
     boringssl_concrete_boringssl_session_state *session_state;
     struct ssl_st *ssl_session;
     struct ssl_ctx_st *ssl_ctx;

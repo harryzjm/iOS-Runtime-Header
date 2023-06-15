@@ -46,11 +46,11 @@ __attribute__((visibility("hidden")))
 - (void)setSemanticContentAttribute:(long long)arg1;
 - (id)traitCollectionForChild:(id)arg1 baseTraitCollection:(id)arg2;
 - (void)traitCollectionDidChange:(id)arg1;
-- (void)setBackgroundTransitionProgress:(double)arg1 forceUpdate:(_Bool)arg2;
+- (void)setBackgroundTransitionProgress:(double)arg1 forceUpdate:(_Bool)arg2 animated:(_Bool)arg3;
 - (void)setBackgroundTransitionProgress:(double)arg1;
 - (void)layoutSubviews;
 - (void)updateBackgroundGroupName;
-- (void)_updateBackground;
+- (void)_updateBackgroundAnimated:(_Bool)arg1;
 - (void)_updateBackgroundModern;
 - (void)_updateBackgroundLegacy;
 - (void)_layoutTabBarItems;

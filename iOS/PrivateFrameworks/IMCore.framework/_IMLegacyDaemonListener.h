@@ -52,14 +52,16 @@
 - (void)simSubscriptionsDidChange;
 - (void)_resetPostedSetupCompleted;
 - (void)oneTimeCodesDidChange:(id)arg1;
-- (void)pendingNicknamesOrHandledNicknamesDidChange;
 - (void)updatePersonalNickname:(id)arg1;
+- (void)updateIgnoredNicknameRecords:(id)arg1;
+- (void)updateActiveNicknameRecords:(id)arg1;
+- (void)updateTransitionedNicknameHandles:(id)arg1;
 - (void)updateNicknameHandlesForSharing:(id)arg1 blocked:(id)arg2;
-- (void)handlesSharingNicknamesDidChange;
-- (void)updatePendingNicknameUpdates:(id)arg1 handledNicknameUpdates:(id)arg2;
+- (void)updatePendingNicknameUpdates:(id)arg1 handledNicknames:(id)arg2 archivedNicknames:(id)arg3;
 - (void)updateNicknameData:(id)arg1;
 - (void)nicknameRequestResponse:(id)arg1 encodedNicknameData:(id)arg2;
 - (void)receivedUrgentRequestForMessages:(id)arg1;
+- (void)updateCloudKitProgressWithDictionary:(id)arg1;
 - (void)updateCloudKitStateWithDictionary:(id)arg1;
 - (void)updateCloudKitState;
 - (void)didAttemptToDisableAllDevicesResult:(_Bool)arg1;
@@ -103,7 +105,7 @@
 - (void)fileTransferHighQualityDownloadFailed:(id)arg1;
 - (void)fileTransfer:(id)arg1 highQualityDownloadSucceededWithPath:(id)arg2;
 - (void)fileTransfer:(id)arg1 updatedWithCurrentBytes:(unsigned long long)arg2 totalBytes:(unsigned long long)arg3 averageTransferRate:(unsigned long long)arg4;
-- (void)fileTransfer:(id)arg1 updatedWithProperties:(id)arg2 forceNotify:(_Bool)arg3;
+- (void)fileTransfer:(id)arg1 updatedWithProperties:(id)arg2;
 - (void)fileTransfers:(id)arg1 createdWithLocalPaths:(id)arg2;
 - (void)fileTransfer:(id)arg1 createdWithProperties:(id)arg2;
 - (void)account:(id)arg1 chat:(id)arg2 style:(unsigned char)arg3 chatProperties:(id)arg4 messagesReceived:(id)arg5;

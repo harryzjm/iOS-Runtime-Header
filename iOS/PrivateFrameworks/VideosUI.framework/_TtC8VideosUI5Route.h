@@ -11,21 +11,24 @@
 @interface _TtC8VideosUI5Route : _TtCs12_SwiftObject
 {
     MISSING_TYPE *id;
-    MISSING_TYPE *viewModel;
     MISSING_TYPE *transaction;
-    MISSING_TYPE *localizationManager;
     MISSING_TYPE *isNavigationActiveDidChange;
     MISSING_TYPE *isPresentingDidChange;
+    MISSING_TYPE *viewMetricsRecorder;
+    MISSING_TYPE *document;
     MISSING_TYPE *isRoutable;
     MISSING_TYPE *_isPresentingPopover;
     MISSING_TYPE *_isNavigationActive;
     MISSING_TYPE *_isPresentingSheet;
     MISSING_TYPE *_isPresentingFullscreenCover;
     MISSING_TYPE *_isPresentingAlert;
-    MISSING_TYPE *alertPresentationContext;
+    MISSING_TYPE *dismissPresentedRouteCompletionHandler;
+    MISSING_TYPE *eventViewModel;
     MISSING_TYPE *eventDataSource;
-    MISSING_TYPE *documentDataSource;
     MISSING_TYPE *nextEventType;
+    MISSING_TYPE *destinationContext;
+    MISSING_TYPE *nextRoute;
+    MISSING_TYPE *isHandlingRoutingEvent;
 }
 
 @end

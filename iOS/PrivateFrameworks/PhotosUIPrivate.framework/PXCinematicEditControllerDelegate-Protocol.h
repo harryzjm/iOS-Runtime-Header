@@ -11,6 +11,7 @@
 @protocol PXCinematicEditControllerDelegate <NSObject>
 - (void)cineScriptCouldNotInitializeWithError:(NSError *)arg1;
 - (void)cineScriptBecameAvailable:(PTCinematographyScript *)arg1;
+- (void)disableCinematicUIForLoadingAsset;
 - (PICompositionController *)compositionController;
 
 @optional

@@ -20,10 +20,12 @@
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(readonly, nonatomic) double scale; // @synthesize scale=_scale;
+- (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
 - (id)initWithScale:(double)arg1 name:(id)arg2;
 - (id)initWithScale:(double)arg1;
 

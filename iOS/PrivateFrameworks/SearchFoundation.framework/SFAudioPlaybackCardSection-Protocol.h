@@ -6,7 +6,7 @@
 
 #import <SearchFoundation/SFCardSection-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString, SFColor, SFImage, SFRichText;
+@class NSArray, NSData, NSDictionary, NSString, SFImage, SFRichText;
 
 @protocol SFAudioPlaybackCardSection <SFCardSection>
 @property(readonly, nonatomic) NSData *jsonData;
@@ -18,14 +18,6 @@
 @property(copy, nonatomic) NSArray *stopCommands;
 @property(copy, nonatomic) NSArray *playCommands;
 @property(nonatomic) int state;
-@property(retain, nonatomic) SFColor *backgroundColor;
-@property(nonatomic) int separatorStyle;
 @property(copy, nonatomic) NSString *type;
-@property(nonatomic) _Bool hasBottomPadding;
-@property(nonatomic) _Bool hasTopPadding;
-@property(nonatomic) _Bool canBeHidden;
-@property(copy, nonatomic) NSString *punchoutPickerDismissText;
-@property(copy, nonatomic) NSString *punchoutPickerTitle;
-@property(copy, nonatomic) NSArray *punchoutOptions;
 @end
 

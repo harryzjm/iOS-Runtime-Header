@@ -7,9 +7,10 @@
 #import <UserManagement/NSObject-Protocol.h>
 
 @class NSObject;
-@protocol UMLibInfoProviding;
+@protocol UMLibInfoProviding, UMLibNotifyProviding;
 
 @protocol UMSideEffectsProviding <NSObject>
+@property(readonly, nonatomic) NSObject<UMLibNotifyProviding> *libNotify;
 @property(readonly, nonatomic) NSObject<UMLibInfoProviding> *libInfo;
 @end
 

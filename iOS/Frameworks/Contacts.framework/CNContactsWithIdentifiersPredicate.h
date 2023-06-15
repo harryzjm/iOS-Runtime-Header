@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSArray *identifiers; // @synthesize identifiers=_identifiers;
+- (_Bool)cn_hasHighSpecificity;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly, copy) NSString *description;

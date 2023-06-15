@@ -6,22 +6,25 @@
 
 #import <ScreenTimeSettingsUI/NSObject-Protocol.h>
 
-@class NSNumber, NSObject, NSString, STRootViewModel, STUIUser;
-@protocol STCommunicationSafetyViewModelCoordinator, STContentPrivacyViewModelCoordinator, STTimeAllowancesViewModelCoordinator, STUsageDetailsViewModelCoordinator;
+@class NSNumber, NSObject, NSString, STIntroductionViewModel, STRootViewModel, STUIUser;
+@protocol STCommunicationSafetyViewModelCoordinator, STContentPrivacyViewModelCoordinator, STEyeReliefViewModelCoordinator, STTimeAllowancesViewModelCoordinator, STUsageDetailsViewModelCoordinator;
 
 @protocol STRootViewModelCoordinator <NSObject>
 @property(readonly, nonatomic, getter=isPasscodeEnabled) _Bool passcodeEnabled;
 @property(nonatomic) _Bool hasAlreadyEnteredPINForSession;
 @property(nonatomic) _Bool hasShownMiniBuddy;
+@property(readonly) NSObject<STEyeReliefViewModelCoordinator> *eyeReliefCoordinator;
 @property(readonly) NSObject<STCommunicationSafetyViewModelCoordinator> *communicationSafetyCoordinator;
 @property(readonly) NSObject<STTimeAllowancesViewModelCoordinator> *timeAllowancesCoordinator;
 @property(readonly) NSObject<STUsageDetailsViewModelCoordinator> *usageDetailsCoordinator;
 @property(readonly) NSObject<STContentPrivacyViewModelCoordinator> *contentPrivacyCoordinator;
 @property(readonly, nonatomic) STRootViewModel *viewModel;
+- (void)applyIntroductionViewModel:(STIntroductionViewModel *)arg1 withCompletionHandler:(void (^)(NSError *))arg2;
 - (void)setShareWebUsageEnabled:(_Bool)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)setScreenTimeSyncingEnabled:(_Bool)arg1 completionHandler:(void (^)(NSError *))arg2;
+- (void)setManagementEnabled:(_Bool)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)setScreenTimeEnabled:(_Bool)arg1 completionHandler:(void (^)(NSError *))arg2;
-- (void)enableScreenTimeWithPIN:(NSString *)arg1 recoveryAltDSID:(NSString *)arg2 completionHandler:(void (^)(NSError *))arg3;
+- (void)enableManagementWithPIN:(NSString *)arg1 recoveryAltDSID:(NSString *)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)setPIN:(NSString *)arg1 recoveryAltDSID:(NSString *)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)setPIN:(NSString *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (_Bool)validatePIN:(NSString *)arg1;

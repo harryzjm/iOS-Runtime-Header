@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, NSXPCConnection, _UIAsyncInvocation, _UIViewServiceDeputyManager, _UIViewServiceSessionManager;
+@class NSString, NSUUID, NSXPCConnection, _UIAsyncInvocation, _UIViewServiceDeputyManager, _UIViewServiceSessionManager;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -18,10 +18,12 @@ __attribute__((visibility("hidden")))
     _UIViewServiceDeputyManager *_deputyManager;
     _UIAsyncInvocation *_invalidationInvocation;
     CDUnknownBlockType _terminationHandler;
+    NSUUID *_uniqueIdentifier;
 }
 
 + (id)sessionWithConnection:(id)arg1 manager:(id)arg2;
 + (void)initialize;
+@property(readonly, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 @property(copy, nonatomic) CDUnknownBlockType terminationHandler; // @synthesize terminationHandler=_terminationHandler;
 @property(readonly) __weak _UIViewServiceSessionManager *manager; // @synthesize manager=_manager;
 - (id)mainStoryboardNameForViewControllerOperator:(id)arg1;

@@ -10,20 +10,19 @@
 
 @interface _TtC11EmojiPoster23NewSpiralLayoutProvider : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *screenSize;
+    MISSING_TYPE *deviceType;
     MISSING_TYPE *itemTemplateSize;
     MISSING_TYPE *itemCount;
-    MISSING_TYPE *templateDeviceWidth;
-    MISSING_TYPE *templateScreenScale;
+    MISSING_TYPE *$__lazy_storage_$_maxRadius;
     MISSING_TYPE *revolution;
     MISSING_TYPE *minRadius;
-    MISSING_TYPE *maxRadius;
     MISSING_TYPE *radiusArc;
     MISSING_TYPE *maxScale;
     MISSING_TYPE *minScale;
     MISSING_TYPE *scaleArc;
     MISSING_TYPE *spin;
     MISSING_TYPE *rotate;
-    MISSING_TYPE *screenSize;
 }
 
 @end

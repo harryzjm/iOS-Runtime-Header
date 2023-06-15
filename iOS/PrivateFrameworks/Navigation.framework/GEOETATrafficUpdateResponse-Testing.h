@@ -7,7 +7,6 @@
 #import <GeoServices/GEOETATrafficUpdateResponse.h>
 
 @interface GEOETATrafficUpdateResponse (Testing)
-- (void)addFakeTrafficIncidentAlert:(unsigned long long)arg1 mainRouteInfo:(id)arg2 alternateRouteInfo:(id)arg3;
-- (void)_addDebugArguments:(id)arg1;
+- (void)addFakeTrafficIncidentAlert:(unsigned long long)arg1 mainRouteInfo:(id)arg2 alternateRouteInfo:(id)arg3 incidentDistance:(unsigned int)arg4;
 @end
 

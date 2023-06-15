@@ -15,7 +15,9 @@ __attribute__((visibility("hidden")))
     NSArray *_sections;
 }
 
-+ (id)shareableCardProperties;
++ (id)shareableCardPropertiesForContacts:(id)arg1;
++ (_Bool)isSharingMeContactForContacts:(id)arg1;
++ (_Bool)canSharePronounsForContacts:(id)arg1;
 + (id)shareableNamePropertiesForContact:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSArray *sections; // @synthesize sections=_sections;

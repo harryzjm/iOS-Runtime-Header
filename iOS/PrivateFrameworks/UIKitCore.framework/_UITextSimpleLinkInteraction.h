@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)interaction_gestureRecognizerShouldBegin:(id)arg1;
 - (void)highlight:(id)arg1;
 - (void)linkTapped:(id)arg1;
+- (void)_removeInteractableItemFromCache:(id)arg1;
 - (id)textLinkInteractableView;
 - (id)itemInteractableView;
 - (id)gesturesForFailureRequirements;

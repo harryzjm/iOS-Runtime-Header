@@ -7,13 +7,11 @@
 #import <NanoTimeKit/NSObject-Protocol.h>
 
 @class NSDiffableDataSourceSnapshot;
-@protocol NTKComplicationItem, NTKComplicationPickerListProviderListener;
+@protocol NTKComplicationItem;
 
 @protocol NTKComplicationPickerListProvider <NSObject>
 @property(readonly, nonatomic) _Bool pickerListProviderSlotIsRich;
 @property(readonly, nonatomic) id <NTKComplicationItem> pickerSelectedItem;
 @property(readonly, nonatomic) NSDiffableDataSourceSnapshot *pickerListDataSourceSnapshot;
-- (void)removeListProviderListener:(id <NTKComplicationPickerListProviderListener>)arg1;
-- (void)addListProviderListener:(id <NTKComplicationPickerListProviderListener>)arg1;
 @end
 

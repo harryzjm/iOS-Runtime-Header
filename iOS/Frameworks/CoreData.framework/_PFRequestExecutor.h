@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 
 - (void)requestFinished;
 - (_Bool)wait;
+- (_Bool)executeRequest:(id)arg1 onMirroringDelegate:(id)arg2 error:(id *)arg3;
 - (_Bool)executeRequest:(id)arg1 inContext:(id)arg2 error:(id *)arg3;
 - (void)dealloc;
 - (id)init;

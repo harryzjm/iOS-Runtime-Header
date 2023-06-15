@@ -10,12 +10,5 @@
 {
 }
 
-- (vector_22100960)boxes3dFromDictionary:(id)arg1;
-- (id)pointCloudFromDictionary:(id)arg1;
-- (struct Box3d)box3dFromDictionary:(id)arg1;
-- (id)dictionaryFromBoxes3dPointCloud:(vector_22100960)arg1 pointCloud:(id)arg2;
-- (id)dictionaryFromBoxes3d:(vector_22100960)arg1;
-- (id)dictionaryFromBox3d:(struct Box3d)arg1;
-
 @end
 

@@ -12,6 +12,7 @@
 @protocol VCSessionDelegate <NSObject, VCRateAdaptationDelegate>
 - (void)vcSessionShouldReconnect:(VCSession *)arg1;
 - (void)vcSession:(VCSession *)arg1 participantID:(NSString *)arg2 didDetectError:(NSError *)arg3;
+- (void)vcSession:(VCSession *)arg1 participantID:(NSString *)arg2 reactionDidStart:(NSString *)arg3;
 - (void)vcSession:(VCSession *)arg1 participantID:(NSString *)arg2 didChangeMediaPriority:(unsigned char)arg3 description:(NSString *)arg4;
 - (void)vcSession:(VCSession *)arg1 participantID:(NSString *)arg2 remoteVideoPausedDidChange:(_Bool)arg3;
 - (void)vcSession:(VCSession *)arg1 participantID:(NSString *)arg2 remoteAudioPausedDidChange:(_Bool)arg3;
@@ -20,6 +21,7 @@
 - (void)vcSession:(VCSession *)arg1 participantID:(NSString *)arg2 remoteScreenEnabledDidChange:(_Bool)arg3;
 - (void)vcSession:(VCSession *)arg1 participantID:(NSString *)arg2 remoteVideoEnabledDidChange:(_Bool)arg3;
 - (void)vcSession:(VCSession *)arg1 participantID:(NSString *)arg2 remoteAudioEnabledDidChange:(_Bool)arg3;
+- (void)vcSession:(VCSession *)arg1 participantID:(NSString *)arg2 mixingDidChangeForMediaType:(unsigned int)arg3 mixingMediaType:(unsigned int)arg4;
 - (void)vcSession:(VCSession *)arg1 participantID:(NSString *)arg2 remoteMediaStateDidChange:(unsigned int)arg3 forMediaType:(unsigned int)arg4;
 - (void)vcSession:(VCSession *)arg1 participantID:(NSString *)arg2 mediaStateDidChange:(unsigned int)arg3 forMediaType:(unsigned int)arg4 didSucceed:(_Bool)arg5 error:(NSError *)arg6;
 - (void)vcSession:(VCSession *)arg1 participantID:(NSString *)arg2 screenEnabled:(_Bool)arg3 didSucceed:(_Bool)arg4 error:(NSError *)arg5;

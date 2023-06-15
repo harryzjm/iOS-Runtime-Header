@@ -8,7 +8,7 @@
 @protocol CKArchiveRecordsOperationCallbacks, CKCompleteParticipantVettingOperationCallbacks, CKDeserializeRecordModificationsOperationCallbacks, CKFetchArchivedRecordsOperationCallbacks, CKFetchMergeableDeltaMetadataOperationCallbacks, CKFetchMergeableDeltasOperationCallbacks, CKFetchRecordVersionsOperationCallbacks, CKFetchRegisteredBundleIDsOperationCallbacks, CKFetchShareParticipantKeyOperationCallbacks, CKFetchUserQuotaOperationCallbacks, CKFetchWhitelistedBundleIDsOperationCallbacks, CKInitiateParticipantVettingOperationCallbacks, CKMarkAssetBrokenOperationCallbacks, CKModifyRecordAccessOperationCallbacks, CKModifyWebSharingOperationCallbacks, CKOperationCallbacks, CKPublishAssetsOperationCallbacks, CKRepairAssetsOperationCallbacks, CKRepairZonePCSOperationCallbacks, CKReplaceMergeableDeltasOperationCallbacks, CKSerializeRecordModificationsOperationCallbacks, CKUploadMergeableDeltasOperationCallbacks;
 
 @protocol CKXPCContainerScopedDaemonSPI
-- (void)deviceCountWithCompletionHandler:(void (^)(long long, _Bool, NSError *))arg1;
+- (void)lastKnownDeviceCountWithCompletionHandler:(void (^)(long long))arg1;
 - (void)tossConfigWithCompletionHandler:(void (^)(NSError *))arg1;
 - (void)performRepairZonePCSOperation:(CKRepairZonePCSOperationInfo *)arg1 clientOperationCallbackProxy:(id <CKRepairZonePCSOperationCallbacks>)arg2 withBlock:(void (^)(void))arg3;
 - (void)getRecordPCSDiagnosticsForZonesWithCompletionHandler:(void (^)(NSArray *))arg1;
@@ -22,6 +22,8 @@
 - (void)dropDetachedContainersWithCompletionHandler:(void (^)(NSError *))arg1;
 - (void)getOutstandingOperationCountWithCompletionHandler:(void (^)(unsigned long long, NSError *))arg1;
 - (void)clearInvalidatedPCSCacheEntriesIfNeeded;
+- (void)fetchPCSFromCacheForRecordWithRecordID:(CKRecordID *)arg1 databaseScope:(long long)arg2 completionHandler:(void (^)(CKDPCSData *, NSError *))arg3;
+- (void)fetchPCSFromCacheForShareWithRecordID:(CKRecordID *)arg1 databaseScope:(long long)arg2 completionHandler:(void (^)(CKDPCSData *, NSError *))arg3;
 - (void)fetchPCSFromCacheForZoneWithZoneID:(CKRecordZoneID *)arg1 databaseScope:(long long)arg2 completionHandler:(void (^)(CKDPCSData *, NSError *))arg3;
 - (void)clearCachesForZoneWithZoneID:(CKRecordZoneID *)arg1 databaseScope:(long long)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)clearCachesForRecordWithRecordID:(CKRecordID *)arg1 databaseScope:(long long)arg2 completionHandler:(void (^)(NSError *))arg3;

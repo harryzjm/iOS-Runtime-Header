@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     int _trackID;
     unsigned int _mediaType;
     AVWeakReference *_weakReferenceToAsset;
+    _Bool _prefersNominalDurations;
 }
 
 - (unsigned long long)hash;
@@ -30,8 +31,9 @@ __attribute__((visibility("hidden")))
 - (id)availableMetadataFormats;
 - (id)commonMetadata;
 - (CDStruct_1b6d18a9)latentBaseDecodeTimeStampOfFirstTrackFragment;
-- (id)segmentForTrackTime:(CDStruct_1b6d18a9)arg1;
+- (id)segmentsAsPresented;
 - (id)segments;
+- (id)_segmentsPreferringNominalDurations:(_Bool)arg1;
 - (CDStruct_1b6d18a9)minSampleDuration;
 - (float)nominalFrameRate;
 - (id)loudnessInfo;

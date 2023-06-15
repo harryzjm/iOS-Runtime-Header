@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSOperationQueue;
+@protocol OS_dispatch_queue;
 
 @interface CMMagicMountManagerInternal : NSObject
 {
@@ -14,9 +15,18 @@
     CDUnknownBlockType _magicMountStateHandler;
     NSOperationQueue *_magicMountStateQueue;
     struct Dispatcher *_magicMountStateDispatcher;
+    void *_connection;
+    NSObject<OS_dispatch_queue> *_connectionQueue;
+    _Bool _serviceEnabled;
+    _Bool _apWakesAllowed;
 }
 
 - (id).cxx_construct;
+- (void)sendAPWakesRequestPrivate;
+- (void)sendServiceRequestPrivate;
+- (void)connect;
+- (void)teardownPrivate;
+- (void)dealloc;
 - (id)init;
 
 @end

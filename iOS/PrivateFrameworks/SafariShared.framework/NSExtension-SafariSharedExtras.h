@@ -15,6 +15,7 @@
 @property(readonly, nonatomic) _Bool safari_containingAppIsTestFlightApp;
 @property(readonly, nonatomic) NSString *safari_containingAppAdamID;
 - (id)_safari_containingAppRecord;
+@property(readonly, nonatomic) NSString *safari_launchServicesDeveloperIdentifier;
 @property(readonly, nonatomic) NSString *safari_localizedContainingAppDisplayName;
 @property(readonly, nonatomic) NSString *safari_displayVersion;
 @property(readonly, nonatomic) NSString *safari_localizedDisplayName;

@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (id)initWithRequest:(id)arg1 bag:(id)arg2 account:(id)arg3;
 - (id)initWithRequest:(id)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 

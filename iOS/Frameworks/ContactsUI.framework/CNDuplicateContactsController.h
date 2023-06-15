@@ -42,7 +42,7 @@ __attribute__((visibility("hidden")))
 - (void)didSelectIgnoreAllDuplicates:(id)arg1 signaturesIgnored:(id)arg2;
 - (void)didSelectMergeAllDuplicates:(id)arg1 signaturesToMerge:(id)arg2;
 - (void)didPerformDuplicatesMerge;
-- (void)willPerformDuplicatesMerge;
+- (void)willPerformDuplicatesMerge:(_Bool)arg1;
 - (void)duplicatesDidChange;
 - (void)performIgnoreAll;
 - (void)performMerge:(id)arg1;

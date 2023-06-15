@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HKDataMetadataDeletionSection;
+@class HKDataMetadataDeletionSection, NSString;
 
 @protocol HKDataMetadataDeletionSectionDelegate
+- (NSString *)accessibilityIdentifier;
 - (void)deletionSectionDidSelectRow:(HKDataMetadataDeletionSection *)arg1;
 @end
 

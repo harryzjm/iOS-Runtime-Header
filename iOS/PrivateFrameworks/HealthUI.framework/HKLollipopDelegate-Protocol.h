@@ -7,10 +7,10 @@
 #import <HealthUI/NSObject-Protocol.h>
 
 @class NSArray, UIColor;
-@protocol HKInteractiveChartAnnotationViewDataSource;
+@protocol HKInteractiveChartAnnotationViewDataSourceProtocol;
 
 @protocol HKLollipopDelegate <NSObject>
-- (void)updateAnnotationDataSource:(id <HKInteractiveChartAnnotationViewDataSource>)arg1 pointContexts:(NSArray *)arg2;
+- (void)updateAnnotationDataSource:(id <HKInteractiveChartAnnotationViewDataSourceProtocol>)arg1 pointContexts:(NSArray *)arg2;
 
 @optional
 - (double)lollipopExtensionWidth;

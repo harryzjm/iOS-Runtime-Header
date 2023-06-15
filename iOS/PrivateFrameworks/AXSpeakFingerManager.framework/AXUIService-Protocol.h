@@ -15,6 +15,7 @@
 + (NSSet *)possibleRequiredEntitlementsForProcessingMessageWithIdentifier:(unsigned long long)arg1;
 + (NSString *)requiredEntitlementForProcessingMessageWithIdentifier:(unsigned long long)arg1;
 + (id)sharedInstance;
+- (int)serviceTypeForClientWithIdentifier:(NSString *)arg1;
 - (void)connectionWillBeInterruptedForClientWithIdentifier:(NSString *)arg1;
 - (void)serviceWasFullyInitialized;
 - (void)processInitializationMessage:(NSDictionary *)arg1;

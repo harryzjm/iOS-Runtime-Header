@@ -14,6 +14,7 @@
     MISSING_TYPE *headlines;
     MISSING_TYPE *scores;
     MISSING_TYPE *standings;
+    MISSING_TYPE *brackets;
     MISSING_TYPE *content;
     MISSING_TYPE *nativeAdInsertionLocation;
     MISSING_TYPE *debugCandidates;

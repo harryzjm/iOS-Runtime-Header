@@ -10,8 +10,8 @@
 
 @interface _TtC7VFXCore13RenderBuckets : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *drawList;
     MISSING_TYPE *renderContext;
+    MISSING_TYPE *drawList;
 }
 
 @end

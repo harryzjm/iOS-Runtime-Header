@@ -8,6 +8,7 @@
 
 @class KVItemBuilder, NSNumber, NSString;
 
+__attribute__((visibility("hidden")))
 @interface KMMapper_LSApplicationRecord : NSObject
 {
     KVItemBuilder *_builder;
@@ -17,6 +18,7 @@
 + (Class)externalObjectClass;
 - (void).cxx_destruct;
 - (id)itemsFromExternalObject:(id)arg1 additionalFields:(id)arg2 error:(id *)arg3;
+- (_Bool)addAlternativeNamesFor:(id)arg1 forLanguage:(id)arg2 error:(id *)arg3;
 - (long long)targetItemType;
 - (id)init;
 

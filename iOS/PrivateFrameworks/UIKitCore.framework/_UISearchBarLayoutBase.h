@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface _UISearchBarLayoutBase : NSObject <NSCopying>
+@interface _UISearchBarLayoutBase : NSObject
 {
     _Bool _isLayoutValid;
     _Bool _layoutRTL;

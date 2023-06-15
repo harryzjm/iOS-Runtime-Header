@@ -41,6 +41,7 @@ __attribute__((visibility("hidden")))
     _Bool _hasDeferredLightweightMigration;
     _Bool _forcedMigration;
     NSString *_destinationConfigurationForCloudKitValidation;
+    NSString *_stageLabel;
 }
 
 + (void)_setAnnotatesMigrationMetadata:(_Bool)arg1;

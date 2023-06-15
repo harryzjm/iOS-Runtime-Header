@@ -10,13 +10,13 @@
 
 @interface _TtC15SeymourServices20RecommendationSystem : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *catalogDataStore;
     MISSING_TYPE *dataStore;
     MISSING_TYPE *eventHub;
     MISSING_TYPE *persistenceStore;
     MISSING_TYPE *platform;
     MISSING_TYPE *scriptClient;
     MISSING_TYPE *subscriptionToken;
-    MISSING_TYPE *xpcBroadcastConnection;
 }
 
 @end

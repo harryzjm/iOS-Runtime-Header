@@ -10,9 +10,9 @@
 @protocol CPAudioPolicyStateObserver;
 
 @protocol CPAudioRoutePolicyManager <NSObject>
+@property(readonly, nonatomic) TURoute *pickedRoute;
+@property(readonly, nonatomic) _Bool sharePlaySupported;
 - (void)addObserver:(id <CPAudioPolicyStateObserver>)arg1 withQueue:(OS_dispatch_queue *)arg2;
 - (void)switchToSpeakerRouteIfNecessary;
-@property(nonatomic, readonly) TURoute *pickedRoute;
-@property(nonatomic, readonly) _Bool sharePlaySupported;
 @end
 

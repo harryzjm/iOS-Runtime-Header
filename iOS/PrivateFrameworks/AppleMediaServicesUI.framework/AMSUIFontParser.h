@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 + (id)weightForString:(id)arg1;
 + (id)systemDesignForString:(id)arg1;
 + (id)fontTextStyleForString:(id)arg1;
++ (id)fontWithDictionary:(id)arg1 compatibleWith:(id)arg2;
 + (id)fontWithDictionary:(id)arg1;
 
 @end

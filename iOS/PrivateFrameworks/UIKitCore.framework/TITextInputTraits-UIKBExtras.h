@@ -7,6 +7,7 @@
 #import <TextInput/TITextInputTraits.h>
 
 @interface TITextInputTraits (UIKBExtras)
++ (unsigned long long)translateToTextInputInlineCompletionType:(long long)arg1;
 + (id)translateToTextInputRecentInputIdentifier:(id)arg1;
 + (_Bool)translateToTextInputSmartInsertDeleteEnabled:(long long)arg1;
 + (_Bool)translateToTextInputSmartDashesEnabled:(long long)arg1;

@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 @interface VUIMonogramDescription : NSObject
 {
     _Bool _shouldFallBackToSilhouette;
+    _Bool _isUsingLibraryImageLoader;
     _Bool _optimizedImageRendering;
     NSString *_firstName;
     NSString *_lastName;
@@ -43,6 +44,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak id <VUINetworkRequestLoader> requestLoader; // @synthesize requestLoader=_requestLoader;
 @property(retain, nonatomic) UIColor *borderColor; // @synthesize borderColor=_borderColor;
 @property(nonatomic) double borderWidth; // @synthesize borderWidth=_borderWidth;
+@property(nonatomic) _Bool isUsingLibraryImageLoader; // @synthesize isUsingLibraryImageLoader=_isUsingLibraryImageLoader;
 @property(nonatomic) _Bool shouldFallBackToSilhouette; // @synthesize shouldFallBackToSilhouette=_shouldFallBackToSilhouette;
 @property(retain, nonatomic) UIColor *gradientEndColor; // @synthesize gradientEndColor=_gradientEndColor;
 @property(retain, nonatomic) UIColor *gradientStartColor; // @synthesize gradientStartColor=_gradientStartColor;

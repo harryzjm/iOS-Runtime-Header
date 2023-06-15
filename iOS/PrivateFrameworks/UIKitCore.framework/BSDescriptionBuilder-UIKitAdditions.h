@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <BaseBoard/BSDescriptionBuilder.h>
+#import <FrontBoard/BSDescriptionBuilder.h>
 
 @interface BSDescriptionBuilder (UIKitAdditions)
+- (id)ui_appendReferenceDisplayModeStatus:(long long)arg1 withName:(id)arg2 skipIfNotSupported:(_Bool)arg3;
+- (id)ui_appendReferenceDisplayModeStatus:(long long)arg1 withName:(id)arg2;
 - (id)ui_appendUserInterfaceIdiom:(long long)arg1 withName:(id)arg2 skipIfEmpty:(_Bool)arg3;
 - (id)ui_appendUserInterfaceIdiom:(long long)arg1 withName:(id)arg2;
 - (id)ui_appendInterfaceOrientationMask:(unsigned long long)arg1 withName:(id)arg2 skipIfEmpty:(_Bool)arg3;

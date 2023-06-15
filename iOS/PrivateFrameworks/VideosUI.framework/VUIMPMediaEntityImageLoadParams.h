@@ -19,8 +19,8 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) MPArtworkCatalog *artworkCatalog; // @synthesize artworkCatalog=_artworkCatalog;
 @property(nonatomic) _Bool calculatedIdentifier; // @synthesize calculatedIdentifier=_calculatedIdentifier;
+@property(retain, nonatomic) MPArtworkCatalog *artworkCatalog; // @synthesize artworkCatalog=_artworkCatalog;
 @property(retain, nonatomic) MPMediaItem *mediaItem; // @synthesize mediaItem=_mediaItem;
 @property(readonly, nonatomic) unsigned long long imageType; // @synthesize imageType=_imageType;
 @property(readonly, copy) NSString *description;

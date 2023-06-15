@@ -64,6 +64,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)postVertexDumpStride;
 - (id)vertexBuiltInArguments;
 - (CDStruct_7ce1aa5b)usageFlags;
+- (void)setConstantSamplerDescriptorsFromBitmasks:(unsigned long long *)arg1 stride:(unsigned int)arg2 count:(unsigned long long)arg3;
 - (void)setConstantSamplerDescriptorsFromBitmasks:(unsigned long long *)arg1 count:(unsigned long long)arg2;
 - (void)setConstantSamplerUniqueIdentifiers:(id)arg1;
 - (id)constantSamplerDescriptors;

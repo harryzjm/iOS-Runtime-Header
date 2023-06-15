@@ -8,7 +8,6 @@
 
 @class NSString, NSURL;
 
-__attribute__((visibility("hidden")))
 @interface _GDViewAccessAssertion : NSObject
 {
     long long _handle;

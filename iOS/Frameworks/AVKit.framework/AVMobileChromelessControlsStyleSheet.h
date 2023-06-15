@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
     UIFont *_prominentContentTagFont;
     UIFont *_secondaryPlaybackControlsFont;
     UIFont *_playPauseButtonFont;
+    UIFont *_contentTabLabelFont;
 }
 
 - (void).cxx_destruct;
@@ -30,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (struct UIEdgeInsets)embeddedInlineInsets;
 - (struct UIEdgeInsets)portraitFullscreenInsets;
 - (struct UIEdgeInsets)landscapeFullscreenInsets;
+@property(readonly, nonatomic) UIFont *contentTabLabelFont;
 @property(readonly, nonatomic) UIFont *secondaryPlaybackControlsFont;
 @property(readonly, nonatomic) UIFont *playPauseButtonFont;
 @property(readonly, nonatomic) UIFont *titleFont;

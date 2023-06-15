@@ -13,9 +13,6 @@ __attribute__((visibility("hidden")))
 
 + (_Bool)automaticallyNotifiesObserversForKey:(id)arg1;
 + (id)allocWithZone:(struct _NSZone *)arg1;
-- (void)_setDoesNotRequireSpecialCaseHandling;
-- (unsigned char)_doesNotRequireSpecialCaseHandling;
-- (id)_prefForKey:(id)arg1;
 - (id)initWithLocaleIdentifier:(id)arg1;
 - (id)displayNameForKey:(id)arg1 value:(id)arg2;
 - (id)objectForKey:(id)arg1;

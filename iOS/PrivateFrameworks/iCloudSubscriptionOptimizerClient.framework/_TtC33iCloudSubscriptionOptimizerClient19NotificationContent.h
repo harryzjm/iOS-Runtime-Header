@@ -6,11 +6,12 @@
 
 #import "ISONotificationContent.h"
 
-@class NSString;
+@class MISSING_TYPE, NSString;
 
 __attribute__((visibility("hidden")))
 @interface _TtC33iCloudSubscriptionOptimizerClient19NotificationContent : ISONotificationContent
 {
+    MISSING_TYPE *context;
 }
 
 - (void).cxx_destruct;

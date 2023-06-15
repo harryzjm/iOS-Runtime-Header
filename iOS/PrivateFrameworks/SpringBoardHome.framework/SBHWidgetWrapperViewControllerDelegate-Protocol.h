@@ -13,6 +13,7 @@
 - (UIView *)backgroundViewMatchingMaterialBeneathWrapperViewController:(SBHWidgetWrapperViewController *)arg1;
 
 @optional
+- (void)iconTapped:(SBHWidgetWrapperViewController *)arg1;
 - (void)wrapperViewControllerSelectedSizeClassChanged:(SBHWidgetWrapperViewController *)arg1;
 @end
 

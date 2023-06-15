@@ -6,11 +6,12 @@
 
 #import <SearchFoundation/SFButtonItem-Protocol.h>
 
-@class NSData, NSDictionary, NSString;
+@class NSData, NSDictionary, NSString, SFPerson;
 
 @protocol SFContactButtonItem <SFButtonItem>
 @property(readonly, nonatomic) NSData *jsonData;
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property(retain, nonatomic) SFPerson *person;
 @property(copy, nonatomic) NSString *contactIdentifier;
 @end
 

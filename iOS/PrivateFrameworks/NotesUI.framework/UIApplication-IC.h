@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIApplication.h>
+#import <UIKitCore/UIApplication.h>
 
 @interface UIApplication (IC)
++ (void)ic_openSettings;
 + (void)ic_openICloudStorageSettings;
++ (_Bool)ic_isExtension;
 @end
 

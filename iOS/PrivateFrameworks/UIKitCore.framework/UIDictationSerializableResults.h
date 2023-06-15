@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 @class NSArray, NSIndexPath;
 
 __attribute__((visibility("hidden")))
-@interface UIDictationSerializableResults : NSObject <NSCopying>
+@interface UIDictationSerializableResults : NSObject
 {
     _Bool _fromKeyboard;
     _Bool _showMultilingualAlternatives;
@@ -19,19 +17,21 @@ __attribute__((visibility("hidden")))
     _Bool _useServerCapitalization;
     _Bool _addTrailingSpace;
     _Bool _allowsAlternatives;
+    _Bool _isFinalResult;
     NSArray *_phrases;
     NSArray *_multilingualAlternatives;
-    const struct __CFString *_transform;
+    struct __CFString *_transform;
     NSIndexPath *_indexPathOfInterpretations;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool isFinalResult; // @synthesize isFinalResult=_isFinalResult;
 @property(readonly, nonatomic) _Bool allowsAlternatives; // @synthesize allowsAlternatives=_allowsAlternatives;
 @property(retain, nonatomic) NSIndexPath *indexPathOfInterpretations; // @synthesize indexPathOfInterpretations=_indexPathOfInterpretations;
 @property(nonatomic) _Bool addTrailingSpace; // @synthesize addTrailingSpace=_addTrailingSpace;
 @property(nonatomic) _Bool useServerCapitalization; // @synthesize useServerCapitalization=_useServerCapitalization;
-@property(nonatomic) const struct __CFString *transform; // @synthesize transform=_transform;
+@property(nonatomic) struct __CFString *transform; // @synthesize transform=_transform;
 @property(nonatomic) _Bool lowConfidenceAboutLanguageDetection; // @synthesize lowConfidenceAboutLanguageDetection=_lowConfidenceAboutLanguageDetection;
 @property(nonatomic) _Bool showMultilingualAlternatives; // @synthesize showMultilingualAlternatives=_showMultilingualAlternatives;
 @property(nonatomic) _Bool fromKeyboard; // @synthesize fromKeyboard=_fromKeyboard;

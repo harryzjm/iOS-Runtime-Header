@@ -9,8 +9,8 @@
 @class NSString, SFFeedback;
 
 @protocol VIAEvent <NSObject>
+@property(readonly, copy, nonatomic) NSString *originatingApplication;
+@property(readonly, nonatomic) unsigned long long queryID;
 - (SFFeedback *)feedback;
-@property(nonatomic, readonly) NSString *originatingApplication;
-@property(nonatomic, readonly) unsigned long long queryID;
 @end
 

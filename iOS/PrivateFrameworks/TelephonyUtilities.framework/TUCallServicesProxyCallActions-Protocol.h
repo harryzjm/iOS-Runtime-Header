@@ -32,6 +32,7 @@
 - (oneway void)pullHostedCallsFromPairedHostDevice;
 - (oneway void)pushHostedCallsToDestination:(IDSDestination *)arg1;
 - (oneway void)pushRelayingCallsToHostWithSourceIdentifier:(NSString *)arg1;
+- (oneway void)pullRelayingGFTCallsFromClientIfNecessary;
 - (oneway void)pullRelayingCallsFromClient;
 - (oneway void)setTTYType:(int)arg1 forCallWithUniqueProxyIdentifier:(NSString *)arg2;
 - (oneway void)disconnectAllCalls;

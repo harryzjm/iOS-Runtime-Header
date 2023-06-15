@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIControl.h>
+#import <UIKitCore/UIControl.h>
 
 @class NSShadow, NSString, UIColor, UIView, UIVisualEffectView, VUIImageView, VUILabel;
 
@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
     double _width;
     double _height;
     unsigned long long _buttonType;
+    unsigned long long _buttonShape;
     UIColor *_buttonBackgroundColor;
     UIColor *_highlightColor;
     double _cornerRadius;
@@ -30,6 +31,7 @@ __attribute__((visibility("hidden")))
     double _maxHeight;
     NSShadow *_shadow;
     VUILabel *_textContentView;
+    VUILabel *_subtitleContentView;
     VUIImageView *_imageView;
     double _imageMaxWidth;
     double _imageMaxHeight;
@@ -60,6 +62,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) double imageMaxHeight; // @synthesize imageMaxHeight=_imageMaxHeight;
 @property(nonatomic) double imageMaxWidth; // @synthesize imageMaxWidth=_imageMaxWidth;
 @property(retain, nonatomic) VUIImageView *imageView; // @synthesize imageView=_imageView;
+@property(retain, nonatomic) VUILabel *subtitleContentView; // @synthesize subtitleContentView=_subtitleContentView;
 @property(retain, nonatomic) VUILabel *textContentView; // @synthesize textContentView=_textContentView;
 @property(retain, nonatomic) NSShadow *shadow; // @synthesize shadow=_shadow;
 @property(nonatomic) double maxHeight; // @synthesize maxHeight=_maxHeight;
@@ -70,6 +73,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIColor *highlightColor; // @synthesize highlightColor=_highlightColor;
 @property(retain, nonatomic) UIColor *buttonBackgroundColor; // @synthesize buttonBackgroundColor=_buttonBackgroundColor;
 @property(nonatomic) struct UIEdgeInsets padding; // @synthesize padding=_padding;
+@property(nonatomic) unsigned long long buttonShape; // @synthesize buttonShape=_buttonShape;
 @property(nonatomic) unsigned long long buttonType; // @synthesize buttonType=_buttonType;
 @property(nonatomic) double height; // @synthesize height=_height;
 @property(nonatomic) double width; // @synthesize width=_width;
@@ -79,16 +83,16 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIVisualEffectView *backdropView; // @synthesize backdropView=_backdropView;
 @property(retain, nonatomic) UIView *backgroundImageView; // @synthesize backgroundImageView=_backgroundImageView;
 - (void)setScrolledNonUberPercentage:(double)arg1;
-- (void)_setupBarButtonItem;
 - (_Bool)scalesLargeContentImage;
 - (id)largeContentImage;
 - (id)largeContentTitle;
 - (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
 - (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
 - (struct CGRect)_pointerShapeRect;
+- (void)_setupBarButtonItem;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)vui_traitCollectionDidChange:(id)arg1;
-- (void)_setupPrimaryWithUberBackdropView;
+- (void)_setupBlurEffectBackdropView;
 - (struct CGPoint)_centerWithViewSize:(struct CGSize)arg1 withParentSize:(struct CGSize)arg2;
 - (void)_updateLayout;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
@@ -97,6 +101,9 @@ __attribute__((visibility("hidden")))
 - (_Bool)_hasBackgroundImage;
 - (_Bool)_hasImage;
 - (_Bool)_hasTitle;
+- (_Bool)_hasSubtitle;
+- (struct CGSize)_calculateContentSizeForImageThatFit:(struct CGSize)arg1;
+- (struct CGSize)_calculateContentSizeForPrimaryButtonThatFit:(struct CGSize)arg1;
 - (struct CGSize)_computeSizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)_imageSizeThatFits:(struct CGSize)arg1;
 - (double)bottomMarginWithBaselineMargin:(double)arg1;

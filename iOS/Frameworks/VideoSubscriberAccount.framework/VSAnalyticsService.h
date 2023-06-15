@@ -4,15 +4,61 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
+#import "VSServiceListener.h"
+
+@class AMSBag, MTMetricsKit, NSMutableArray, NSObject, NSString, VSPreferences;
+@protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface VSAnalyticsService
+@interface VSAnalyticsService : VSServiceListener
 {
+    _Bool _didBuddyComplete;
+    _Bool _optedIn;
+    MTMetricsKit *_mainMetricsKit;
+    AMSBag *_bag;
+    NSMutableArray *_eventCache;
+    NSObject<OS_dispatch_queue> *_eventQueue;
+    VSPreferences *_preferences;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) VSPreferences *preferences; // @synthesize preferences=_preferences;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *eventQueue; // @synthesize eventQueue=_eventQueue;
+@property _Bool optedIn; // @synthesize optedIn=_optedIn;
+@property _Bool didBuddyComplete; // @synthesize didBuddyComplete=_didBuddyComplete;
+@property(retain, nonatomic) NSMutableArray *eventCache; // @synthesize eventCache=_eventCache;
+@property(retain, nonatomic) AMSBag *bag; // @synthesize bag=_bag;
+@property(retain, nonatomic) MTMetricsKit *mainMetricsKit; // @synthesize mainMetricsKit=_mainMetricsKit;
+- (id)capacitySystemAvailable:(id)arg1;
+- (id)capacityDisk:(id)arg1;
+- (id)capacityDataAvailable:(id)arg1;
+- (id)capacitySystem:(id)arg1;
+- (id)capacityData:(id)arg1;
+- (id)isSignedIn:(id)arg1;
+- (id)clientId:(id)arg1;
+- (id)xpSendMethod:(id)arg1;
+- (id)xpPostFrequency:(id)arg1;
+- (id)windowOuterHeight:(id)arg1;
+- (id)windowOuterWidth:(id)arg1;
+- (id)windowInnerHeight:(id)arg1;
+- (id)windowInnerWidth:(id)arg1;
+- (id)screenHeight:(id)arg1;
+- (id)screenWidth:(id)arg1;
+- (id)resourceRevNum:(id)arg1;
+- (id)pixelRatio:(id)arg1;
+- (id)hardwareModel:(id)arg1;
+- (id)connection:(id)arg1;
+- (id)pageUrl:(id)arg1;
+- (id)dsId:(id)arg1;
+- (void)profileConnectionSettingsChanged:(id)arg1;
+- (void)publishMetricsKitEventWithData:(id)arg1;
+- (void)recordMetricsCenterExitEventWithPage:(id)arg1 pageType:(id)arg2 data:(id)arg3;
+- (void)recordMetricsCenterEnterEventWithPage:(id)arg1 pageType:(id)arg2 data:(id)arg3;
+- (void)recordMetricsCenterClickEventWithPage:(id)arg1 pageType:(id)arg2 data:(id)arg3;
+- (void)recordMetricsCenterFlexibleEventWithName:(id)arg1 data:(id)arg2;
 - (void)recordNowPlayingBrokenEventWithBundleID:(id)arg1;
 - (void)recordFederatedPunchoutEventWithError:(id)arg1 metadata:(id)arg2;
+- (void)onBuddyComplete;
 - (id)init;
 
 // Remaining properties

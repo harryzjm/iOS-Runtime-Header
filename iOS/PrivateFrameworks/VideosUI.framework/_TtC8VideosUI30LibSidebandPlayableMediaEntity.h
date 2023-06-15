@@ -8,6 +8,7 @@
 
 @interface _TtC8VideosUI30LibSidebandPlayableMediaEntity
 {
+    MISSING_TYPE *videoManagedObject;
     MISSING_TYPE *genre;
     MISSING_TYPE *duration;
     MISSING_TYPE *assetType;
@@ -21,6 +22,7 @@
     MISSING_TYPE *allowsManualDownloadRenewal;
     MISSING_TYPE *renewsOfflineKeysAutomatically;
     MISSING_TYPE *redownloadParams;
+    MISSING_TYPE *isFullyWatched;
     MISSING_TYPE *contentRating;
 }
 

@@ -6,11 +6,14 @@
 
 #import <Foundation/NSError.h>
 
+@class XCTSkippedTestContext;
+
 @interface NSError (XCTTestRunSession)
 - (id)xct_initWithTestSuiteConstructionException:(id)arg1 orDescription:(id)arg2;
 - (id)xct_initWithTestSuiteConstructionException:(id)arg1;
 @property(readonly) _Bool xct_isFutureTimeout;
 @property(readonly) _Bool xct_isFutureCancelation;
+@property(readonly) XCTSkippedTestContext *xct_skippedTestContext;
 @property(readonly) _Bool xct_shouldBeRecordedAsTestFailure;
 @end
 

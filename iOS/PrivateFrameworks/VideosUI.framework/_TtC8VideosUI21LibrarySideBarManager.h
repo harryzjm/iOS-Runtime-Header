@@ -17,8 +17,6 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *deviceMediaLibrary;
     MISSING_TYPE *initialFetchFinished;
     MISSING_TYPE *cachedLibraryCategoriesLoaded;
-    MISSING_TYPE *isLibraryOnlyCountryResolved;
-    MISSING_TYPE *libraryOnlyCountry;
     MISSING_TYPE *stopped;
     MISSING_TYPE *$__lazy_storage_$_downloadItem;
     MISSING_TYPE *promptCategories;

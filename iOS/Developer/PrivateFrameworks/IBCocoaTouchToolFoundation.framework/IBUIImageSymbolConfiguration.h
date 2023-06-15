@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class IBUIFontDescription, NSString;
+@class IBUIFontDescription, NSLocale, NSString;
 
 @interface IBUIImageSymbolConfiguration : NSObject
 {
@@ -15,10 +15,12 @@
     long long _weight;
     long long _scale;
     IBUIFontDescription *_fontDescription;
+    NSLocale *_locale;
 }
 
 + (id)unspecifiedConfiguration;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSLocale *locale; // @synthesize locale=_locale;
 @property(retain, nonatomic) IBUIFontDescription *fontDescription; // @synthesize fontDescription=_fontDescription;
 @property(nonatomic) long long scale; // @synthesize scale=_scale;
 @property(nonatomic) long long weight; // @synthesize weight=_weight;
@@ -36,13 +38,14 @@
 - (void)encodeWithBinaryArchiver:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)configurationBySettingLocale:(id)arg1;
 - (id)configurationBySettingFontDescription:(id)arg1;
 - (id)configurationBySettingScale:(long long)arg1;
 - (id)configurationBySettingWeight:(long long)arg1;
 - (id)configurationBySettingPointSize:(double)arg1;
 - (id)configurationBySettingConfigurationType:(long long)arg1;
 @property(readonly, nonatomic) IBUIImageSymbolConfiguration *configurationForDocumentArchiving;
-- (_Bool)allUnspecified;
+@property(readonly, nonatomic) _Bool allUnspecified;
 - (id)initWithUnspecifiedConfiguration;
 
 // Remaining properties

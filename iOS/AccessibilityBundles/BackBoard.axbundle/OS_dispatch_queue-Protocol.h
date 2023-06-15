@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import "OS_dispatch_object-Protocol.h"
+#import <BackBoard/OS_dispatch_object-Protocol.h>
 
 @protocol OS_dispatch_queue <OS_dispatch_object>
 @end

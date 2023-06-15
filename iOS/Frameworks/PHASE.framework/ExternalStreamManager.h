@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     AVAudioFormat *_engineFormat;
     unsigned int _maximumFramesToRender;
     _Bool _enableAudioIssueDetector;
+    struct ExternalStreamSessionCommandExecutor _sessionCommandExecutor;
     struct unordered_map<unsigned long long, void (^)(NSUUID *, NSUUID *, bool), std::hash<unsigned long long>, std::equal_to<unsigned long long>, std::allocator<std::pair<const unsigned long long, void (^)(NSUUID *, NSUUID *, bool)>>> _controllerPauseStateCallbacks;
     unsigned long long _controllerPauseStateCallbackCounter;
 }
@@ -37,9 +38,11 @@ __attribute__((visibility("hidden")))
 - (void)abandonControlOfExternalStreamGroupID:(id)arg1 withCallback:(CDUnknownBlockType)arg2;
 - (void)claimControlOfExternalStreamGroupID:(id)arg1 attributedTo:(id)arg2 stateChangeBlock:(CDUnknownBlockType)arg3 withCallback:(CDUnknownBlockType)arg4;
 - (void)setPauseExternalInputStreamGroupID:(id)arg1 streamID:(id)arg2 isPaused:(_Bool)arg3;
+- (void)executeSessionCommands;
+- (unsigned long long)setExternalInputStreamSessionMute:(unsigned int)arg1 isMuted:(_Bool)arg2 fadeTimeInSeconds:(float)arg3;
 - (void)setMuteExternalInputStreamGroupID:(id)arg1 streamID:(id)arg2 isMuted:(_Bool)arg3;
 - (void)removeExternalInputStreamGroupID:(id)arg1 streamID:(id)arg2;
-- (void)addExternalInputStreamGroupID:(id)arg1 streamID:(id)arg2 attributedTo:(id)arg3 definition:(id)arg4 isPaused:(_Bool)arg5;
+- (void)addExternalInputStreamGroupID:(id)arg1 streamID:(id)arg2 attributedTo:(id)arg3 definition:(id)arg4 isPaused:(_Bool)arg5 canRecord:(_Bool)arg6 fader:(shared_ptr_4516cf1a)arg7;
 - (void)addExternalOutputStreamGroupID:(id)arg1 streamID:(id)arg2 attributedTo:(id)arg3 definition:(id)arg4 startsPaused:(_Bool)arg5 renderBlock:(CDUnknownBlockType)arg6 withCallback:(CDUnknownBlockType)arg7;
 - (void)removeAllResourcesAttributedToClientID:(id)arg1;
 - (id)initWithTaskManager:(void *)arg1 engineMode:(long long)arg2 engineFormat:(id)arg3 maximumFramesToRender:(unsigned int)arg4 enableAudioIssueDetector:(_Bool)arg5;

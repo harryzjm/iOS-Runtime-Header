@@ -6,16 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@class KVItemBuilder, NSDictionary, NSNumber, NSString;
+@class KVItemBuilder, NSNumber, NSString;
 
+__attribute__((visibility("hidden")))
 @interface KMMapper_INVocabularyItem : NSObject
 {
     KVItemBuilder *_builder;
     unsigned int _itemCounter;
-    NSDictionary *_intentSlotToFieldTypeMap;
     NSNumber *_intentSlotNameKey;
 }
 
++ (long long)fieldTypeForIntentSlotName:(id)arg1;
++ (id)_fieldTypeNumberForIntentSlotName:(id)arg1;
 + (Class)externalObjectClass;
 - (void).cxx_destruct;
 - (id)itemsFromExternalObject:(id)arg1 additionalFields:(id)arg2 error:(id *)arg3;

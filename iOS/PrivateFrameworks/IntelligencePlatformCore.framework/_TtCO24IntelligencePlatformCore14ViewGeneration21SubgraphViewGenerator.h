@@ -11,8 +11,6 @@
 @interface _TtCO24IntelligencePlatformCore14ViewGeneration21SubgraphViewGenerator : _TtCs12_SwiftObject
 {
     MISSING_TYPE *outputArtifact;
-    MISSING_TYPE *inputStore;
-    MISSING_TYPE *filters;
 }
 
 @end

@@ -6,7 +6,7 @@
 
 #import "MUPlaceSectionController.h"
 
-@class MKLookAroundContainerView, MKLookAroundView, MKUGCCallToActionViewAppearance, MUPhotoSliderTileProvider, MUPlacePhotoGalleryViewController, MUPlacePhotoSectionControllerConfiguration, MUPlacePhotoSliderView, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, MUPlaceSectionView, MUPunchoutViewModel, MUUserSubmittedPhoto, NSArray, NSString, UIImageView, UIView, UIViewController;
+@class MKLookAroundContainerView, MKLookAroundView, MUPhotoSliderTileProvider, MUPlaceCallToActionAppearance, MUPlacePhotoGalleryViewController, MUPlacePhotoSectionControllerConfiguration, MUPlacePhotoSliderView, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, MUPlaceSectionView, MUPunchoutViewModel, MUUserSubmittedPhoto, NSArray, NSString, UIImageView, UIView, UIViewController;
 @protocol MUInfoCardAnalyticsDelegate, MUPlacePhotoSectionControllerDelegate, MUPlacePhotoSectionControllerLookAroundDelegate, MUUserInformationProvider;
 
 __attribute__((visibility("hidden")))
@@ -46,7 +46,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)isImpressionable;
 - (int)analyticsModuleType;
 - (void)_capturePhotoGallerySwipeUserAction:(int)arg1 atIndex:(unsigned long long)arg2;
-- (void)_captureSliderInstrumentationWithAction:(int)arg1 eventValue:(id)arg2;
+- (void)_captureSliderInstrumentationWithAction:(int)arg1 eventValue:(id)arg2 actionRichProviderId:(id)arg3;
 - (void)_captureSliderInstrumentationWithAction:(int)arg1;
 - (void)performInstrumentationForScrollRight;
 - (void)performInstrumentationForScrollLeft;
@@ -76,12 +76,12 @@ __attribute__((visibility("hidden")))
 - (id)attributionViewModelsForPhotoSliderView:(id)arg1;
 - (id)photoSliderView:(id)arg1 photoOverlayForModel:(id)arg2;
 - (void)updateWithUserSubmittedPhotos:(_Bool)arg1;
+- (_Bool)photoSliderView:(id)arg1 shouldShowFullWidthForModel:(id)arg2;
 - (id)photoSliderViewRequestsViewModels:(id)arg1;
-- (void)photoSliderViewDidScroll:(id)arg1;
 - (void)_update;
-- (void)_routeAlbumTapWithIndex:(unsigned long long)arg1;
-- (void)_routeFlatListTapWithViewModel:(id)arg1 index:(unsigned long long)arg2;
-- (void)photoSliderView:(id)arg1 didTapViewModel:(id)arg2 atIndex:(unsigned long long)arg3;
+- (void)_routeAlbumTapWithViewModel:(id)arg1;
+- (void)_routeFlatListTapWithViewModel:(id)arg1;
+- (void)photoSliderView:(id)arg1 didTapViewModel:(id)arg2;
 @property(readonly, nonatomic) UIViewController *presentingViewController;
 @property(readonly, nonatomic) MUPlaceSectionHeaderViewModel *sectionHeaderViewModel;
 @property(readonly, nonatomic) _Bool hasContent;
@@ -97,7 +97,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) MUPlaceSectionFooterViewModel *sectionFooterViewModel;
 @property(readonly, nonatomic) UIViewController *sectionViewController;
 @property(readonly, nonatomic) NSArray *sectionViews;
-@property(retain, nonatomic) MKUGCCallToActionViewAppearance *submissionStatus;
+@property(retain, nonatomic) MUPlaceCallToActionAppearance *submissionStatus;
 @property(readonly) Class superclass;
 
 @end

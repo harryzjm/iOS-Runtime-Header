@@ -10,6 +10,7 @@
 @protocol TabGroupProvider;
 
 @protocol BookmarksBarViewDelegate <NSObject>
+@property(nonatomic, getter=isPrivateBrowsingEnabled) _Bool privateBrowsingEnabled;
 
 @optional
 @property(readonly, nonatomic) id <TabGroupProvider> tabGroupProvider;

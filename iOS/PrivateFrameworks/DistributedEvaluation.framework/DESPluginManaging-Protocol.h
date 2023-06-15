@@ -7,6 +7,7 @@
 #import <DistributedEvaluation/NSObject-Protocol.h>
 
 @class DESInternalDodMLTask, DESInternalDodMLTaskResult, DESRecordSet, MLRInternalTrialTask, MLRInternalTrialTaskResult, NSDictionary, NSString, NSURL;
+@protocol MLRInternalTaskRepresenting;
 
 @protocol DESPluginManaging <NSObject>
 @property(readonly, nonatomic) NSString *bundleIdentifier;
@@ -16,6 +17,7 @@
 - (DESInternalDodMLTaskResult *)performDodMLTask:(DESInternalDodMLTask *)arg1 outError:(id *)arg2;
 
 @optional
+- (id)performTask:(id <MLRInternalTaskRepresenting>)arg1 error:(id *)arg2;
 - (MLRInternalTrialTaskResult *)performTrialTask:(MLRInternalTrialTask *)arg1 outError:(id *)arg2;
 @end
 

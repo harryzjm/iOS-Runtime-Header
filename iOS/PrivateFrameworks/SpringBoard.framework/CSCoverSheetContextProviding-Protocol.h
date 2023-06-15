@@ -7,12 +7,13 @@
 #import <SpringBoard/NSObject-Protocol.h>
 
 @class NSArray, NSString;
-@protocol CSAppHostConfiguring, CSApplicationInforming, CSAuthenticationManaging, CSCarPlayStatusProviding, CSDeviceOrientationProviding, CSHomeAffordanceControlling, CSLegibilityProviding, CSMagSafeAccessoryStatusProviding, CSMediaControlling, CSModalHomeAffordanceControlling, CSNotificationPresenting, CSOverlayProviding, CSPlatterHomeGestureManaging, CSPowerStatusProviding, CSProximitySensorProviding, CSReachabilityControlling, CSResetRestoreStatusProviding, CSScreenStateProviding, CSStatusBarControlling, CSSystemPointerInteractionManaging, CSTelephonyStatusProviding, CSThermalStatusProviding, CSTouchEnvironmentStatusProviding, CSUnlockRequesting, CSUserSessionControlling, CSWallpaperLogging, CSWallpaperProviding, CSWallpaperSnapshotUpdating, SBFActionProviding, SBFAuthenticationAssertionProviding, SBFAuthenticationStatusProvider, SBFDateProviding, SBFLockOutStatusProvider, SBFPasscodeFieldChangeObserver, SBFScreenWakeAnimationControlling, SBUIBiometricResource;
+@protocol CSAppHostConfiguring, CSApplicationInforming, CSAuthenticationManaging, CSCarPlayStatusProviding, CSDeviceOrientationProviding, CSHomeAffordanceControlling, CSLegibilityProviding, CSMagSafeAccessoryStatusProviding, CSMediaControlling, CSModalHomeAffordanceControlling, CSNotificationPresenting, CSOverlayProviding, CSPlatterHomeGestureManaging, CSPowerStatusProviding, CSProximitySensorProviding, CSReachabilityControlling, CSResetRestoreStatusProviding, CSScreenStateProviding, CSStatusBarControlling, CSSystemPointerInteractionManaging, CSTelephonyStatusProviding, CSThermalStatusProviding, CSTouchEnvironmentStatusProviding, CSTraitAwareAppHostConfiguring, CSUnlockRequesting, CSUserSessionControlling, CSWallpaperLogging, CSWallpaperProviding, CSWallpaperSnapshotUpdating, SBFActionProviding, SBFAuthenticationAssertionProviding, SBFAuthenticationStatusProvider, SBFDateProviding, SBFLockOutStatusProvider, SBFPasscodeFieldChangeObserver, SBFScreenWakeAnimationControlling, SBUIBiometricResource;
 
 @protocol CSCoverSheetContextProviding <NSObject>
 @property(readonly, nonatomic) id <CSDeviceOrientationProviding> deviceOrientationProvider;
 @property(readonly, nonatomic) id <CSProximitySensorProviding> proximitySensorProvider;
 @property(readonly, nonatomic) id <CSSystemPointerInteractionManaging> systemPointerInteractionManager;
+@property(readonly, nonatomic) id <CSTraitAwareAppHostConfiguring> traitsAwareAppHosting;
 @property(readonly, nonatomic) id <CSAppHostConfiguring> appHostConfiguring;
 @property(readonly, nonatomic) id <CSOverlayProviding> homeScreenOverlayProvider;
 @property(readonly, nonatomic) id <CSCarPlayStatusProviding> carPlayStatusProvider;

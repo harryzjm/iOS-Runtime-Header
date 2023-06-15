@@ -6,12 +6,13 @@
 
 #import <iTunesStoreUI/SUViewController.h>
 
-@class NSString, SKUIComposeReviewView, SKUIReviewMetadata;
+@class NSString, SKUIBarButtonItemSubmitWithAnimation, SKUIComposeReviewView, SKUIReviewMetadata;
 @protocol SKUIComposeReviewFormDelegate;
 
 __attribute__((visibility("hidden")))
 @interface SKUIComposeReviewFormViewController : SUViewController
 {
+    SKUIBarButtonItemSubmitWithAnimation *_submitNavButton;
     SKUIComposeReviewView *_composeView;
     id <SKUIComposeReviewFormDelegate> _delegate;
     SKUIReviewMetadata *_review;
@@ -22,6 +23,7 @@ __attribute__((visibility("hidden")))
 - (void)_submit;
 - (void)_cancel;
 - (void)composeReviewViewValidityChanged:(id)arg1;
+- (void)showSendAnimationInNavigationBarWithCompletion:(CDUnknownBlockType)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)loadView;
 - (void)setRating:(float)arg1;

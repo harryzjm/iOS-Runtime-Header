@@ -10,7 +10,7 @@
 @protocol MTLDevice;
 
 @protocol MTLDepthStencilState <NSObject>
-@property(nonatomic, readonly) id <MTLDevice> device;
-@property(nonatomic, readonly) NSString *label;
+@property(readonly) id <MTLDevice> device;
+@property(readonly) NSString *label;
 @end
 

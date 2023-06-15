@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDictionary, NSString;
+@class NSArray, NSDictionary, NSString;
 
 @protocol PLPhotoAnalysisJobServiceProtocol
-- (void)reportTurboEnabledWithContext:(NSDictionary *)arg1 reply:(void (^)(NSNumber *, NSError *))arg2;
 - (void)setJobProcessingConstraintsWithValues:(NSString *)arg1 mask:(NSString *)arg2 context:(NSDictionary *)arg3 reply:(void (^)(NSString *, NSError *))arg4;
+- (void)writeQALog:(NSString *)arg1;
+- (void)cancelOperationsWithIdentifiers:(NSArray *)arg1 context:(NSDictionary *)arg2 reply:(void (^)(NSDictionary *))arg3;
+- (void)dumpAnalysisStatusWithContext:(NSDictionary *)arg1 reply:(void (^)(NSDictionary *, NSError *))arg2;
 @end
 

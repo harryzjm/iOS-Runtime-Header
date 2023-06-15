@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CKDCancelTokenGroup, NSArray, NSMapTable, NSMutableArray, NSMutableDictionary, NSObject;
+@class CKDCancelTokenGroup, CKDMMCS, NSArray, NSMapTable, NSMutableArray, NSMutableDictionary, NSObject;
 @protocol OS_dispatch_queue;
 
 @interface CKDDownloadAssetsOperation
 {
+    _Bool _shouldCloneFileInAssetCache;
     CDUnknownBlockType _downloadPreparationBlock;
     CDUnknownBlockType _downloadProgressBlock;
     CDUnknownBlockType _downloadCommandBlock;
@@ -27,9 +28,11 @@
     NSMapTable *_downloadTasksByPackages;
     CKDCancelTokenGroup *_cancelTokens;
     unsigned long long _maxPackageDownloadsPerBatch;
+    CKDMMCS *_mmcs;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) CKDMMCS *mmcs; // @synthesize mmcs=_mmcs;
 @property(nonatomic) unsigned long long maxPackageDownloadsPerBatch; // @synthesize maxPackageDownloadsPerBatch=_maxPackageDownloadsPerBatch;
 @property(retain, nonatomic) CKDCancelTokenGroup *cancelTokens; // @synthesize cancelTokens=_cancelTokens;
 @property(retain, nonatomic) NSMapTable *downloadTasksByPackages; // @synthesize downloadTasksByPackages=_downloadTasksByPackages;
@@ -48,6 +51,7 @@
 @property(copy, nonatomic) CDUnknownBlockType downloadCommandBlock; // @synthesize downloadCommandBlock=_downloadCommandBlock;
 @property(copy, nonatomic) CDUnknownBlockType downloadProgressBlock; // @synthesize downloadProgressBlock=_downloadProgressBlock;
 @property(copy, nonatomic) CDUnknownBlockType downloadPreparationBlock; // @synthesize downloadPreparationBlock=_downloadPreparationBlock;
+@property(nonatomic) _Bool shouldCloneFileInAssetCache; // @synthesize shouldCloneFileInAssetCache=_shouldCloneFileInAssetCache;
 - (void)_downloadTranscodedAsset:(id)arg1 inMemory:(_Bool)arg2;
 - (_Bool)shouldDownloadAssetFromTranscoder:(id)arg1;
 - (_Bool)supportsClearAssetEncryption;
@@ -82,6 +86,7 @@
 - (_Bool)makeStateTransition;
 - (id)CKStatusReportLogGroups;
 - (id)activityCreate;
+- (id)initWithOperationInfo:(id)arg1 mmcs:(id)arg2;
 - (id)initWithOperationInfo:(id)arg1 container:(id)arg2;
 
 // Remaining properties

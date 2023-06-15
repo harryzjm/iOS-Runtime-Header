@@ -32,5 +32,8 @@
 @property(readonly, nonatomic) NSSet *noteCellKeyPaths;
 @property(readonly, nonatomic) _Bool isModernNote;
 @property(readonly, nonatomic) _Bool isSearchIndexableNote;
+
+@optional
+@property(readonly, copy, nonatomic) NSString *widgetInfoText;
 @end
 

@@ -13,6 +13,7 @@
 @property(readonly, nonatomic, getter=isActive) _Bool active;
 @property(readonly, nonatomic) _Bool shouldAnimateLift;
 @property(readonly, nonatomic) struct CGPoint initialLocationInWindow;
+@property(readonly, copy, nonatomic) CDUnknownBlockType itemUpdater;
 @property(copy, nonatomic) NSArray *allowedTouchTypes;
 @property(nonatomic) _Bool automaticallyAddsFailureRelationships;
 @property(nonatomic) _Bool cancellationTimerEnabled;

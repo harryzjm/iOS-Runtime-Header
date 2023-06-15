@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 - (id)actionIcon;
 - (_Bool)isWiFiAction;
 - (id)actionPickerItems;
+- (_Bool)_startAirplaySetupIfNeeded;
 - (void)performDefaultActionWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)performDefaultAction;
 - (id)debugDescriptionExtraInfoDictionary;

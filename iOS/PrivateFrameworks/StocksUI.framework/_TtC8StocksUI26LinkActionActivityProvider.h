@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *handler;
     MISSING_TYPE *linkedContentProvider;
     MISSING_TYPE *commandCenter;
+    MISSING_TYPE *watchlistManager;
 }
 
 - (void).cxx_destruct;

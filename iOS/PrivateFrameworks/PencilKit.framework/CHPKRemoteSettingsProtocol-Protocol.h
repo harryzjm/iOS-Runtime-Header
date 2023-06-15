@@ -13,6 +13,8 @@
 - (void)setGlobalPrefersPencilOnlyDrawing:(_Bool)arg1;
 
 @optional
+- (void)setGlobalPrefersPencilHoverPreviewEnabled:(_Bool)arg1 withCompletion:(void (^)(void))arg2;
+- (void)getGlobalPrefersPencilHoverPreviewEnabledWithCompletion:(void (^)(_Bool))arg1;
 - (void)setCurrentScribbleLanguageIdentifiers:(NSArray *)arg1;
 - (void)setCurrentScribbleLanguageIdentifier:(NSString *)arg1;
 @end

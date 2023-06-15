@@ -6,7 +6,7 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class NSURL, _UIFeedbackParameters;
+@class NSString, NSURL, _UIFeedbackParameters;
 
 @protocol _UIFeedbackData <NSObject>
 @property(readonly, nonatomic) _Bool canReuseCoreHapticsPlayer;
@@ -16,6 +16,7 @@
 @property(readonly, nonatomic) _Bool isTransientHaptic;
 @property(readonly, nonatomic) unsigned long long fileFeedbackType;
 @property(readonly, nonatomic) NSURL *fileURL;
+@property(readonly, nonatomic) NSString *libraryKey;
 @property(readonly, nonatomic) unsigned int effectiveSystemSoundID;
 @property(readonly, nonatomic) unsigned long long effectiveEnabledFeedbackTypes;
 @property(readonly, nonatomic) _UIFeedbackParameters *audioParameters;

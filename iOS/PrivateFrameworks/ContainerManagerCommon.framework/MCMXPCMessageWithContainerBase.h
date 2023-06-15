@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(readonly, nonatomic) MCMContainerIdentity *containerIdentity; // @synthesize containerIdentity=_containerIdentity;
 @property(readonly, nonatomic) unsigned int disposition;
+- (id)containerIdentityFromXPCObject:(id)arg1 context:(id)arg2 error:(unsigned long long *)arg3;
 - (id)initWithXPCObject:(id)arg1 context:(id)arg2 error:(unsigned long long *)arg3;
 
 // Remaining properties

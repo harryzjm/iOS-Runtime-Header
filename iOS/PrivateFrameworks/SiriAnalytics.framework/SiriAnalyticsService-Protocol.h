@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class DUSchemaDUEvent, NSString, NSUUID, SISchemaTopLevelUnionType;
+@class DUSchemaDUEvent, NSString, NSUUID, SISchemaTopLevelUnionType, SiriAnalyticsTagShim;
 
 @protocol SiriAnalyticsService
+- (void)createTag:(SiriAnalyticsTagShim *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (void)sensitiveCondition:(int)arg1 endedAt:(unsigned long long)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 - (void)sensitiveCondition:(int)arg1 startedAt:(unsigned long long)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 - (void)enqueueLargeMessageObjectFromPath:(NSString *)arg1 dataUploadEvent:(DUSchemaDUEvent *)arg2 completion:(void (^)(_Bool, NSError *))arg3;

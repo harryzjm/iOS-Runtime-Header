@@ -31,8 +31,10 @@ __attribute__((visibility("hidden")))
     _Bool _tracking;
     NSNumber *_timeOfInterest;
     _Bool _sampleFlag;
+    struct Scaler _scaler;
 }
 
+- (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)results;
 - (int)finishAnalysisPass:(CDStruct_e83c9415)arg1;

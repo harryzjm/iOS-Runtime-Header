@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)initWithSize:(struct CGSize)arg1 cornerRadius:(double)arg2 scaleFactor:(double)arg3 fontStyle:(long long)arg4 safeAreaInsets:(struct CHSEdgeInsets)arg5;
+- (id)initWithSize:(struct CGSize)arg1 cornerRadius:(double)arg2 scaleFactor:(double)arg3 fontStyle:(long long)arg4 margins:(id)arg5 supportsDynamicText:(unsigned long long)arg6;
 - (id)initWithCoder:(id)arg1;
 
 @end

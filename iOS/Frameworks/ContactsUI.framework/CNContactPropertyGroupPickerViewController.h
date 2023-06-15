@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
-@class NSArray, NSString, UITableView;
+@class CNContact, NSArray, NSString, UITableView;
 @protocol CNContactGroupPickerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -16,13 +16,16 @@ __attribute__((visibility("hidden")))
     UITableView *_tableView;
     NSArray *_prohibitedPropertyKeys;
     id <CNContactGroupPickerDelegate> _groupPickerDelegate;
+    CNContact *_contact;
 }
 
-+ (id)pickableGroupsWithPickedGroups:(id)arg1 policy:(id)arg2 prohibitedPropertyKeys:(id)arg3;
++ (id)pickableGroupsWithPickedGroups:(id)arg1 policy:(id)arg2 prohibitedPropertyKeys:(id)arg3 contact:(id)arg4;
 + (id)propertySections;
++ (_Bool)propertiesLeftToPickWithPickedGroups:(id)arg1 policy:(id)arg2 prohibitedPropertyKeys:(id)arg3 contact:(id)arg4;
 + (_Bool)propertiesLeftToPickWithPickedGroups:(id)arg1 policy:(id)arg2 prohibitedPropertyKeys:(id)arg3;
 + (_Bool)propertiesLeftToPickWithPickedGroups:(id)arg1 policy:(id)arg2;
 - (void).cxx_destruct;
+@property(retain, nonatomic) CNContact *contact; // @synthesize contact=_contact;
 @property(nonatomic) __weak id <CNContactGroupPickerDelegate> groupPickerDelegate; // @synthesize groupPickerDelegate=_groupPickerDelegate;
 @property(retain, nonatomic) NSArray *prohibitedPropertyKeys; // @synthesize prohibitedPropertyKeys=_prohibitedPropertyKeys;
 - (id)_loadPickableGroupsWithPickedGroups:(id)arg1 policy:(id)arg2;

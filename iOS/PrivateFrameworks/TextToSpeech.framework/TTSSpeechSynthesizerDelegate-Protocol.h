@@ -6,12 +6,13 @@
 
 #import <TextToSpeech/NSObject-Protocol.h>
 
-@class NSError, NSString, NSURL, TTSSpeechRequest, TTSSpeechSynthesizer;
+@class NSError, NSString, TTSSpeechRequest, TTSSpeechSynthesizer;
+@protocol TTSMarker;
 
 @protocol TTSSpeechSynthesizerDelegate <NSObject>
 
 @optional
-- (void)speechSynthesizer:(TTSSpeechSynthesizer *)arg1 didSynthesizeSilentlyToURL:(NSURL *)arg2 forRequest:(TTSSpeechRequest *)arg3;
+- (void)speechSynthesizer:(TTSSpeechSynthesizer *)arg1 didEncounterMarker:(id <TTSMarker>)arg2 forRequest:(TTSSpeechRequest *)arg3;
 - (void)speechSynthesizer:(TTSSpeechSynthesizer *)arg1 willSpeakRangeOfSpeechString:(struct _NSRange)arg2 forRequest:(TTSSpeechRequest *)arg3;
 - (void)speechSynthesizer:(TTSSpeechSynthesizer *)arg1 didContinueSpeakingRequest:(TTSSpeechRequest *)arg2;
 - (void)speechSynthesizer:(TTSSpeechSynthesizer *)arg1 didPauseSpeakingRequest:(TTSSpeechRequest *)arg2;

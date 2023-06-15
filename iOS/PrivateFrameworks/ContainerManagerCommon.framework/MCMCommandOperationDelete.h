@@ -4,57 +4,49 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MCMXPCMessageOperationDelete, NSArray, NSMutableDictionary;
+@class MCMXPCMessageOperationDelete, NSArray, NSMutableSet;
 
 __attribute__((visibility("hidden")))
 @interface MCMCommandOperationDelete
 {
-    _Bool _traverseLinks;
     _Bool _waitForDiskSpaceReclaim;
     _Bool _removeAllCodeSignInfo;
-    _Bool _runFromManifests;
     NSArray *_concreteContainerIdentities;
-    CDUnknownBlockType _onError;
     NSArray *_containerIdentities;
     MCMXPCMessageOperationDelete *_message;
-    NSMutableDictionary *_referenceCounts;
+    NSMutableSet *_manifests;
 }
 
-+ (id)_materializeContainerIdentityFromManifestPlistV1:(id)arg1 userIdentityCache:(id)arg2 error:(id *)arg3;
-+ (id)_materializeContainerIdentityFromManifestPlist:(id)arg1 userIdentityCache:(id)arg2 error:(id *)arg3;
-+ (id)_materializeContainerIdentityFromManifestAtURL:(id)arg1 userIdentityCache:(id)arg2 error:(id *)arg3;
 + (Class)incomingMessageClass;
 + (unsigned long long)command;
-+ (id)commandForOperationDeleteFromManifestsRemoveAllCodeSignInfo:(_Bool)arg1 context:(id)arg2 resultPromise:(id)arg3 onError:(CDUnknownBlockType)arg4;
-+ (id)commandForOperationDeleteWithContainerIdentities:(id)arg1 removeAllCodeSignInfo:(_Bool)arg2 context:(id)arg3 resultPromise:(id)arg4 onError:(CDUnknownBlockType)arg5;
++ (_Bool)deleteContainerRootURL:(id)arg1 userIdentity:(id)arg2 containerClass:(unsigned long long)arg3 containerPathIdentifier:(id)arg4 preferDirectDelete:(_Bool)arg5 error:(id *)arg6;
++ (id)commandForOperationDeleteWithContainerIdentities:(id)arg1 removeAllCodeSignInfo:(_Bool)arg2 context:(id)arg3 resultPromise:(id)arg4;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) _Bool runFromManifests; // @synthesize runFromManifests=_runFromManifests;
-@property(readonly, nonatomic) NSMutableDictionary *referenceCounts; // @synthesize referenceCounts=_referenceCounts;
+@property(readonly, nonatomic) NSMutableSet *manifests; // @synthesize manifests=_manifests;
 @property(readonly, nonatomic) MCMXPCMessageOperationDelete *message; // @synthesize message=_message;
 @property(readonly, nonatomic) _Bool removeAllCodeSignInfo; // @synthesize removeAllCodeSignInfo=_removeAllCodeSignInfo;
 @property(readonly, nonatomic) NSArray *containerIdentities; // @synthesize containerIdentities=_containerIdentities;
-@property(copy, nonatomic) CDUnknownBlockType onError; // @synthesize onError=_onError;
 @property(readonly, nonatomic) _Bool waitForDiskSpaceReclaim; // @synthesize waitForDiskSpaceReclaim=_waitForDiskSpaceReclaim;
-@property(readonly, nonatomic) _Bool traverseLinks; // @synthesize traverseLinks=_traverseLinks;
 @property(readonly, nonatomic) NSArray *concreteContainerIdentities; // @synthesize concreteContainerIdentities=_concreteContainerIdentities;
-- (id)_stableFileNameForDataOperationPlistWithContainerIdentity:(id)arg1;
-- (_Bool)_removeDeleteManifestIfExistsForContainerIdentity:(id)arg1 error:(id *)arg2;
-- (id)_urlForDeleteManifestWithContainerIdentity:(id)arg1;
-- (_Bool)_writeDeleteManifestForItem:(id)arg1 error:(id *)arg2;
 - (_Bool)_writeDeleteManifestsForItems:(id)arg1 error:(id *)arg2;
-- (void)_setManifestURLsForItems:(id)arg1;
-- (id)_groupContainersToDeleteWhenReconcilingRemovalOfContainer:(id)arg1;
-- (unsigned long long)_preflightReferenceCountAfterRemovingRefererenceToIdentifier:(id)arg1 containerClass:(unsigned long long)arg2;
-- (id)_preflightReferenceCountsForContainerClass:(unsigned long long)arg1;
-- (id)_replyFromRelayToDaemonWithContainerIdentities:(id)arg1;
-- (void)_removeLinksTargetingItems:(id)arg1;
+- (void)_deleteManifestForContainerIdentity:(id)arg1;
+- (id)_deleteManifest:(id)arg1;
+- (id)_getOrCreateManifestWithContainerIdentity:(id)arg1;
+- (id)_getManifestWithContainerIdentity:(id)arg1;
+- (id)_groupContainersToDeleteWhenReconcilingRemovalOfIdentifiers:(id)arg1;
 - (id)_deleteItems:(id)arg1 directDelete:(_Bool)arg2 error:(id *)arg3;
-- (id)_containerIdentitiesToDeleteTransitivelyFromMetadata:(id)arg1;
 - (id)_containersToDeleteRecursivelyStartingWithContainerIdentities:(id)arg1 error:(id *)arg2;
+- (id)_codeSignIdentifiersToRemoveFor:(id)arg1 amendingCumulativeIdentifiers:(id)arg2;
+- (id)_containerIdentities;
+- (id)_replyFromRelayToDaemonWithContainerIdentities:(id)arg1;
+- (void)_routeContainersToHandle:(id *)arg1 toRelay:(id *)arg2;
+- (void)_relayContainerIdentities:(id)arg1 andAmendResult:(id)arg2;
 - (void)execute;
 - (_Bool)preflightClientAllowed;
 - (id)initWithMessage:(id)arg1 context:(id)arg2 reply:(id)arg3;
-- (id)initWithContainerIdentities:(id)arg1 traverseLinks:(_Bool)arg2 waitForDiskSpaceReclaim:(_Bool)arg3 removeAllCodeSignInfo:(_Bool)arg4 runFromManifests:(_Bool)arg5 context:(id)arg6 resultPromise:(id)arg7 onError:(CDUnknownBlockType)arg8;
+- (id)_initWithContainerIdentities:(id)arg1 manifests:(id)arg2 waitForDiskSpaceReclaim:(_Bool)arg3 removeAllCodeSignInfo:(_Bool)arg4 context:(id)arg5 resultPromise:(id)arg6;
+- (id)initWithManifests:(id)arg1 waitForDiskSpaceReclaim:(_Bool)arg2 removeAllCodeSignInfo:(_Bool)arg3 context:(id)arg4 resultPromise:(id)arg5;
+- (id)initWithContainerIdentities:(id)arg1 waitForDiskSpaceReclaim:(_Bool)arg2 removeAllCodeSignInfo:(_Bool)arg3 context:(id)arg4 resultPromise:(id)arg5;
 
 @end
 

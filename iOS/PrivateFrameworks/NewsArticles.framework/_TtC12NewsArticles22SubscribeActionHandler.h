@@ -30,6 +30,8 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *onboardingPrewarmer;
     MISSING_TYPE *bundleSubscriptionDetectionManager;
     MISSING_TYPE *postPurchaseRoutingInProgress;
+    MISSING_TYPE *networkReachability;
+    MISSING_TYPE *paidBundleViaOfferFeatureAvailability;
 }
 
 - (void).cxx_destruct;

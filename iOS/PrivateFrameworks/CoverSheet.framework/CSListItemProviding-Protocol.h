@@ -6,16 +6,21 @@
 
 #import <CoverSheet/NSObject-Protocol.h>
 
-@class CSListItemSection, NSArray;
+@class CSListItemSection, NSArray, UIViewController;
 @protocol CSListItemManaging;
 
 @protocol CSListItemProviding <NSObject>
-+ (CSListItemSection *)section;
+@property(readonly, copy, nonatomic) CSListItemSection *section;
 @property(readonly, nonatomic) unsigned long long itemCount;
 @property(retain, nonatomic) id <CSListItemManaging> itemManager;
 
 @optional
+@property(readonly, nonatomic) CDUnknownBlockType itemsViewControllerSortComparator;
+@property(readonly, nonatomic) CDUnknownBlockType itemsGroupSortComparator;
 @property(nonatomic) _Bool listHasAdditionalContent;
+- (void)restrictsTouchesOnAllHostedScenes:(_Bool)arg1;
+- (void)restrictsTouches:(_Bool)arg1 onHostedSceneInViewController:(UIViewController *)arg2;
+- (void)willPresentPosterSwitcher;
 - (void)handleRemovedItems:(NSArray *)arg1;
 @end
 

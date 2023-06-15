@@ -6,28 +6,31 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, NSURL;
-@protocol OS_dispatch_io, OS_dispatch_queue, OS_nw_connection;
+@class NSError, NSNumber, NSString, NSURL;
+@protocol OS_dispatch_io, OS_dispatch_queue, OS_nw_connection, OS_sec_trust;
 
 __attribute__((visibility("hidden")))
 @interface NWURLLoaderFile : NSObject
 {
-    int _error;
     NSURL *_URL;
     NSObject<OS_dispatch_queue> *_queue;
+    NSNumber *_expectedDevice;
     unsigned long long _fileSize;
     NSObject<OS_dispatch_io> *_io;
+    NSError *_error;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSObject<OS_nw_connection> *underlyingConnection;
+- (void)responseIsMixed;
 - (void)writeData:(id)arg1 complete:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 @property(readonly, nonatomic) _Bool allowsWrite;
+@property(readonly, nonatomic) NSObject<OS_sec_trust> *peerTrust;
 - (void)readDataOfMinimumIncompleteLength:(unsigned long long)arg1 maximumLength:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)readResponse:(CDUnknownBlockType)arg1;
 - (void)updateClient:(id)arg1;
 - (void)stop;
-- (void)start;
+- (void)start:(CDUnknownBlockType)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

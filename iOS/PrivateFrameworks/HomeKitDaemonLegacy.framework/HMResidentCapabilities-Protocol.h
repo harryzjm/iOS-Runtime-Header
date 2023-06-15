@@ -7,10 +7,13 @@
 #import <HomeKitDaemonLegacy/NSObject-Protocol.h>
 
 @protocol HMResidentCapabilities <NSObject>
+@property(readonly, nonatomic) _Bool supportsEventLog;
+@property(readonly, nonatomic) _Bool supportsMatterSharedAdminPairing;
 @property(readonly, nonatomic) _Bool supportsThreadNetworkCredentialSharing;
 @property(readonly, nonatomic) _Bool supportsResidentFirstAccessoryCommunication;
 @property(readonly, nonatomic) _Bool supportsHomeHub;
 @property(readonly, nonatomic) _Bool supportsUnifiedMediaNotifications;
+@property(readonly, nonatomic) _Bool supportsCustomMediaApplicationDestination;
 @property(readonly, nonatomic) _Bool supportsSiriEndpointSetup;
 @property(readonly, nonatomic) _Bool supportsThreadBorderRouter;
 @property(readonly, nonatomic) _Bool supportsCHIP;

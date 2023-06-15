@@ -9,6 +9,7 @@
 @protocol PLPhotoAnalysisPresentationServiceProtocol
 - (void)cacheCPAnalyticsPropertiesWithContext:(NSDictionary *)arg1 reply:(void (^)(_Bool, NSError *))arg2;
 - (void)recordFeatureUsageFromCounts:(NSDictionary *)arg1 context:(NSDictionary *)arg2 reply:(void (^)(_Bool, NSError *))arg3;
-- (void)reloadWidgetTimelineWithContext:(NSDictionary *)arg1 reply:(void (^)(_Bool, NSError *))arg2;
+- (void)reloadAlbumWidgetTimelineWithContext:(NSDictionary *)arg1 reply:(void (^)(_Bool, NSError *))arg2;
+- (void)reloadForYouWidgetTimelineWithContext:(NSDictionary *)arg1 reply:(void (^)(_Bool, NSError *))arg2;
 @end
 

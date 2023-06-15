@@ -23,14 +23,12 @@
 - (void)conversation:(TUConversation *)arg1 buzzedMember:(TUConversationMember *)arg2;
 - (void)conversation:(TUConversation *)arg1 addedMembersLocally:(NSSet *)arg2;
 - (void)conversation:(TUConversation *)arg1 participant:(TUConversationParticipant *)arg2 addedNotice:(TUConversationNotice *)arg3;
-- (void)conversation:(TUConversation *)arg1 remoteParticipantWithIdentifier:(unsigned long long)arg2 updatedVideoEnabled:(_Bool)arg3;
-- (void)conversation:(TUConversation *)arg1 remoteParticipantWithIdentifier:(unsigned long long)arg2 updatedAudioEnabled:(_Bool)arg3;
 - (void)conversationManagerDataSource:(id <TUConversationManagerDataSource>)arg1 messagesGroupDetailsForMessagesGroupId:(NSUUID *)arg2 completionHandler:(void (^)(NSString *, NSString *, NSError *))arg3;
 - (void)conversationManagerDataSource:(id <TUConversationManagerDataSource>)arg1 didChangeActivatedConversationLinks:(NSArray *)arg2;
 - (void)activityAuthorizationsChangedForDataSource:(id <TUConversationManagerDataSource>)arg1 oldActivityAuthorizedBundleIdentifiers:(NSDictionary *)arg2;
 - (void)serverDisconnectedForDataSource:(id <TUConversationManagerDataSource>)arg1 oldConversationsByGroupUUID:(NSDictionary *)arg2;
 - (void)conversation:(TUConversation *)arg1 receivedActivitySessionEvent:(TUConversationActivityEvent *)arg2;
 - (void)conversationsChangedForDataSource:(id <TUConversationManagerDataSource>)arg1 updatedIncomingPendingConversationsByGroupUUID:(NSDictionary *)arg2;
-- (void)conversationsChangedForDataSource:(id <TUConversationManagerDataSource>)arg1 oldConversationsByGroupUUID:(NSDictionary *)arg2;
+- (void)conversationsChangedForDataSource:(id <TUConversationManagerDataSource>)arg1 conversationsByGroupUUID:(NSDictionary *)arg2 oldConversationsByGroupUUID:(NSDictionary *)arg3;
 @end
 

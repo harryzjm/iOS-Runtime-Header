@@ -13,6 +13,7 @@
 @property(readonly, nonatomic) id <HKSPObject> originalObject;
 @property(readonly, nonatomic) HKSPChangeSet *changeSet;
 @property(copy, nonatomic) NSDate *lastModifiedDate;
+- (void)revert;
 - (void)freeze;
 @end
 

@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *deviceState;
     MISSING_TYPE *user;
+    MISSING_TYPE *person;
 }
 
 @end

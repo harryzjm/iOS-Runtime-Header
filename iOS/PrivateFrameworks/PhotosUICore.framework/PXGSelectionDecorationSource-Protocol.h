@@ -10,6 +10,7 @@
 
 @protocol PXGSelectionDecorationSource <PXGLayoutContentSource>
 - (long long)overallSelectionOrderAtSpriteIndex:(unsigned int)arg1 inLayout:(PXGLayout *)arg2;
+- (CDStruct_818bb265)overlayInsetsForSpriteIndex:(unsigned int)arg1 inLayout:(PXGLayout *)arg2;
 - (NSIndexSet *)selectedSpriteIndexesInLayout:(PXGLayout *)arg1;
 - (unsigned long long)selectionDecorationAdditionsInLayout:(PXGLayout *)arg1;
 - (long long)selectionDecorationStyleInLayout:(PXGLayout *)arg1;

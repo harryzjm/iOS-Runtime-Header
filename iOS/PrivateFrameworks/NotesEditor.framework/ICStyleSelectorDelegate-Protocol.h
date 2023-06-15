@@ -9,6 +9,9 @@
 @class ICStyleSelectorViewController, UIViewController;
 
 @protocol ICStyleSelectorDelegate <NSObject>
+@property(readonly, nonatomic) _Bool isEditingOnSystemPaperOnPad;
+@property(readonly, nonatomic) _Bool isBlockQuoteEnabled;
+- (void)toggleBlockQuote;
 - (void)styleSelector:(ICStyleSelectorViewController *)arg1 presentViewController:(UIViewController *)arg2 animated:(_Bool)arg3 completion:(void (^)(void))arg4;
 - (void)styleSelectorDidCancel:(ICStyleSelectorViewController *)arg1;
 - (void)styleSelectorDidIndentRight:(ICStyleSelectorViewController *)arg1;

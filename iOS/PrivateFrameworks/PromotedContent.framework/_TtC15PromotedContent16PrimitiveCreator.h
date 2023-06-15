@@ -20,7 +20,7 @@
 
 - (void).cxx_destruct;
 - (id)init;
-- (void)recordMetric:(long long)arg1 forRoute:(long long)arg2 properties:(id)arg3 internalProperties:(id)arg4 options:(long long)arg5;
+- (void)recordMetric:(long long)arg1 forPurpose:(long long)arg2 properties:(id)arg3 internalProperties:(id)arg4 options:(long long)arg5;
 
 @end
 

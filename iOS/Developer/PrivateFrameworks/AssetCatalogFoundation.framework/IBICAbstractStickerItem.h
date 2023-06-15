@@ -9,6 +9,7 @@
 }
 
 + (id)classNameComponents;
+- (_Bool)providesBookmarkTitleForChild:(id)arg1;
 
 @end
 

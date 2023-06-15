@@ -9,14 +9,13 @@
 @class NSArray, NSString, NSUUID, SFTabEntity, UIScene, WBTabGroupManager, WebBookmarkCollection;
 
 @protocol SFBrowserApplicationProxy <NSObject>
+@property(readonly, copy, nonatomic) NSArray *tabEntitiesForAutomation;
+@property(readonly, nonatomic) WebBookmarkCollection *bookmarkCollection;
+@property(readonly, nonatomic) WBTabGroupManager *tabGroupManager;
+@property(readonly, nonatomic) UIScene *currentScene;
 - (UIScene *)sceneForTabGroupWithUUIDString:(NSString *)arg1;
-- (_Bool)isTabActiveWithUUID:(NSUUID *)arg1;
-- (UIScene *)sceneForTabWithUUID:(NSUUID *)arg1;
+- (void)sceneForTabWithUUID:(NSUUID *)arg1 completionHandler:(void (^)(UIScene *))arg2;
 - (SFTabEntity *)tabEntityWithUUID:(NSUUID *)arg1;
 - (void)tabEntitiesMatchingQuery:(NSString *)arg1 completionHandler:(void (^)(NSArray *))arg2;
-@property(nonatomic, readonly) NSArray *tabEntitiesForAutomation;
-@property(nonatomic, readonly) WebBookmarkCollection *bookmarkCollection;
-@property(nonatomic, readonly) WBTabGroupManager *tabGroupManager;
-@property(nonatomic, readonly) UIScene *currentScene;
 @end
 

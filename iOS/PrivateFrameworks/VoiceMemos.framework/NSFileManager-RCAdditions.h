@@ -7,7 +7,10 @@
 #import <Foundation/NSFileManager.h>
 
 @interface NSFileManager (RCAdditions)
+- (_Bool)rc_path:(id)arg1 isSubpathOf:(id)arg2;
+- (void)rc_cleanUpM4AsInDirectory:(id)arg1;
 - (void)rc_cleanUpTemporaryDirectory;
+- (_Bool)rc_moveToTempAndMarkAsPurgeable:(id)arg1 error:(id *)arg2;
 - (_Bool)rc_fileExistsAndIsInValidRecordingURL:(id)arg1;
 - (id)rc_uniqueFileSystemURLWithPreferredURL:(id)arg1;
 @end

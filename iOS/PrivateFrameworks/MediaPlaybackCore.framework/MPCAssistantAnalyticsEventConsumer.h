@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(readonly, nonatomic) id <MPCPlaybackEngineEventStreamSubscription> subscription; // @synthesize subscription=_subscription;
 @property(readonly, nonatomic) __weak MPCPlaybackEngine *playbackEngine; // @synthesize playbackEngine=_playbackEngine;
-- (id)_contextWithEvent:(id)arg1;
+- (id)_validateAndBuildContextWithEvent:(id)arg1;
 - (void)_handleAssetLoadEnd:(id)arg1 cursor:(id)arg2;
 - (void)unsubscribeFromEventStream:(id)arg1;
 - (void)subscribeToEventStream:(id)arg1;

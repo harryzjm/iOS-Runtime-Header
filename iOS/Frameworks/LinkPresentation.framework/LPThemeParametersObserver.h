@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 + (id)shared;
 - (void).cxx_destruct;
 - (void)didChangeThemeParameters;
+- (void)removeClient:(id)arg1;
 - (void)addClient:(id)arg1;
 - (void)didChangeDarkenColorsStatus:(id)arg1;
 - (void)dealloc;

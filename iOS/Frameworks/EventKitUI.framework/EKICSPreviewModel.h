@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class EKEventStore, NSArray, NSData, NSMutableArray;
+@class EKEventStore, NSArray, NSData, NSMutableArray, NSMutableSet;
 
 __attribute__((visibility("hidden")))
 @interface EKICSPreviewModel : NSObject
@@ -18,12 +18,14 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_unimportedEvents;
     unsigned long long _options;
     unsigned long long _actionsState;
-    _Bool _shouldUpdate;
+    NSMutableSet *_eventsAllowingUpdate;
+    NSMutableSet *_eventsAllowingDelete;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) _Bool shouldUpdate; // @synthesize shouldUpdate=_shouldUpdate;
-- (id)importAllIntoCalendar:(id)arg1;
+- (_Bool)shouldAllowUpdateEvent:(id)arg1;
+- (_Bool)shouldAllowDeleteEvent:(id)arg1;
+- (void)importAllIntoCalendar:(id)arg1;
 - (id)importEvent:(id)arg1 intoCalendar:(id)arg2;
 @property(readonly, nonatomic) NSArray *allEvents;
 @property(readonly, nonatomic) NSArray *unimportedEvents;

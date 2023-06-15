@@ -74,6 +74,8 @@
 - (_Bool)containsPeripheralWithUUID:(NSString *)arg1;
 - (_Bool)hasConnection;
 - (_Bool)isConnected;
+- (_Bool)isRightConnected;
+- (_Bool)isLeftConnected;
 - (_Bool)rightAvailable;
 - (_Bool)leftAvailable;
 - (void)disconnectAndUnpair:(_Bool)arg1;

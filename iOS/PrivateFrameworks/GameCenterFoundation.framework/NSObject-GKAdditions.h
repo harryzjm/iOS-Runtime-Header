@@ -7,7 +7,6 @@
 #import <objc/NSObject.h>
 
 @interface NSObject (GKAdditions)
-+ (id)_gkDefaultKeymap;
 - (id)_gkInvokeSelector:(SEL)arg1 withNullableObject:(id)arg2;
 - (id)_gkInvokeSelector:(SEL)arg1 withObject:(id)arg2;
 - (id)_gkInvokeSelector:(SEL)arg1;
@@ -15,9 +14,6 @@
 - (void)_gkPerformSelector:(SEL)arg1 withNullableObject:(id)arg2;
 - (void)_gkPerformSelector:(SEL)arg1 withObject:(id)arg2;
 - (void)_gkPerformSelector:(SEL)arg1;
-- (void)_gkPopulateWithObject:(id)arg1 keymap:(id)arg2;
-- (id)_gkViewDebuggingChildren;
-- (id)_gkViewDebuggingChildKeys;
 - (id)_gkRecursiveDescription;
 - (id)_gkDescriptionWithChildren:(long long)arg1;
 - (id)_gkDescription;

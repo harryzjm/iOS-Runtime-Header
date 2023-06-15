@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (struct OpaqueFigSampleBufferAudioRenderer *)createAudioRendererWithAllocator:(const struct __CFAllocator *)arg1 options:(const struct __CFDictionary *)arg2 error:(id *)arg3;
+- (struct OpaqueFigSampleBufferAudioRenderer *)createAudioRendererWithAllocator:(struct __CFAllocator *)arg1 options:(struct __CFDictionary *)arg2 error:(id *)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

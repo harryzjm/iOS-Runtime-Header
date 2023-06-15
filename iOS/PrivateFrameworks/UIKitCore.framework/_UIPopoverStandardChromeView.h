@@ -48,6 +48,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)isRightArrowPinnedToTop;
 - (double)maxNonPinnedOffset;
 - (double)minNonPinnedOffset;
+- (_Bool)usesImagesForShapeMasking;
 - (_Bool)wouldPinForOffset:(double)arg1;
 - (_Bool)isPinned;
 - (id)initWithFrame:(struct CGRect)arg1;

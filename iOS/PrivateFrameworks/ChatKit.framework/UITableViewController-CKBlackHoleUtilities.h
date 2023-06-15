@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UITableViewController.h>
+#import <UIKitCore/UITableViewController.h>
 
 @interface UITableViewController (CKBlackHoleUtilities)
 - (void)_confirmDeleteConversationFromView:(id)arg1 alertTitle:(id)arg2 forMultipleConversations:(_Bool)arg3 withReportSpamHander:(CDUnknownBlockType)arg4 withNotReportSpamHandler:(CDUnknownBlockType)arg5 withCancelHandler:(CDUnknownBlockType)arg6;

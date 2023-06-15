@@ -6,22 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@class NSCache, UIImage;
+@class UIImage;
 
 __attribute__((visibility("hidden")))
 @interface _UIImageSystemImageVisualStyle : NSObject
 {
-    UIImage *_closeImage;
-    UIImage *_cameraImage;
     UIImage *_actionsImage;
+    UIImage *_addImage;
+    UIImage *_removeImage;
     UIImage *_checkmarkImage;
     UIImage *_strokedCheckmarkImage;
-    NSCache *__systemImageCache;
 }
 
 - (void).cxx_destruct;
-- (void)_contentSizeCategoryChanged;
-- (id)init;
 
 @end
 

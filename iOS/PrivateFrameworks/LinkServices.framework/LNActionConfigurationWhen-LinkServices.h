@@ -7,6 +7,8 @@
 #import <LinkMetadata/LNActionConfigurationWhen.h>
 
 @interface LNActionConfigurationWhen (LinkServices)
+- (id)valueForAction:(id)arg1 context:(id)arg2;
+- (id)actionConfigurationByEvaluatingAction:(id)arg1 context:(id)arg2;
 - (id)actionConfigurationByEvaluatingAction:(id)arg1;
 @end
 

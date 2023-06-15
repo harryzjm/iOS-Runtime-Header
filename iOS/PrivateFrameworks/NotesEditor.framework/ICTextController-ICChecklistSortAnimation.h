@@ -40,6 +40,7 @@
 - (_Bool)canMoveListItemInDirection:(unsigned long long)arg1 inTextView:(id)arg2 forRange:(struct _NSRange)arg3;
 - (_Bool)moveListItemInDirection:(unsigned long long)arg1 inTextView:(id)arg2 forRange:(struct _NSRange)arg3;
 - (void)removeChecklistItemsMarkedCompleted:(_Bool)arg1 inTextView:(id)arg2 forRanges:(id)arg3;
+- (_Bool)containsOnlyChecklistItemsInTextView:(id)arg1 forRange:(struct _NSRange)arg2;
 - (_Bool)checklistItemExistsMarkedCompleted:(_Bool)arg1 inTextView:(id)arg2 forRanges:(id)arg3;
 - (void)markAllChecklistItemsCompleted:(_Bool)arg1 inTextview:(id)arg2 forSelectedRanges:(id)arg3;
 - (void)sendTextDidChangeNotificationForTextView:(id)arg1;

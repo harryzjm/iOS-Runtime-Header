@@ -18,7 +18,6 @@ __attribute__((visibility("hidden")))
 - (id)allObjects;
 - (void)decrementReferenceForObject:(id)arg1 invalidationHandler:(CDUnknownBlockType)arg2;
 - (void)incrementReferenceForObject:(id)arg1;
-- (id)init;
 
 @end
 

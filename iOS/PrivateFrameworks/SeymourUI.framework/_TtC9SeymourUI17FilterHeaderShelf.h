@@ -15,7 +15,7 @@
     MISSING_TYPE *eventHub;
     MISSING_TYPE *storefrontLocalizer;
     MISSING_TYPE *subscriptionToken;
-    MISSING_TYPE *rootProperty;
+    MISSING_TYPE *filterRoot;
     MISSING_TYPE *sortModes;
     MISSING_TYPE *activeSortMode;
     MISSING_TYPE *row;

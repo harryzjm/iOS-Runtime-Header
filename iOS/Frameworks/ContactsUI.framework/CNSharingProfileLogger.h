@@ -39,8 +39,11 @@ __attribute__((visibility("hidden")))
 - (void)logOnboardingUpdatingContactWithIdentifier:(id)arg1;
 - (void)logOnboardingAddingContact;
 - (void)logOnboardingSavingContact:(id)arg1;
+- (void)logOnboardingErrorSavingMeCardPosterToRecentsWithDescription:(id)arg1;
 - (void)logOnboardingErrorSavingMeCardImageToRecentsWithDescription:(id)arg1;
+- (void)logOnboardingSuccessSavingMeCardPosterToRecents;
 - (void)logOnboardingSuccessSavingMeCardImageToRecents;
+- (void)logOnboardingSavingMeCardPosterToRecentsForIdentifier:(id)arg1;
 - (void)logOnboardingSavingMeCardImageToRecentsForIdentifier:(id)arg1;
 - (id)init;
 

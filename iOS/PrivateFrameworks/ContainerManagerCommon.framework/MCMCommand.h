@@ -6,30 +6,28 @@
 
 #import <objc/NSObject.h>
 
-@class MCMContext, NSString;
+@class MCMCommandContext, NSString;
 @protocol MCMReply, MCMResultPromise;
 
 __attribute__((visibility("hidden")))
 @interface MCMCommand : NSObject
 {
-    MCMContext *_context;
+    MCMCommandContext *_context;
     id <MCMResultPromise> _resultPromise;
     id <MCMReply> _reply;
 }
 
-+ (void)relayToPrivilegedDaemonMessage:(id)arg1 reply:(id)arg2 context:(id)arg3;
-+ (void)relayToPrivilegedDaemonMessage:(id)arg1 reply:(id)arg2 context:(id)arg3 resultPromise:(id)arg4;
++ (id)relayToPrivilegedDaemonMessage:(id)arg1 context:(id)arg2;
 + (Class)incomingMessageClass;
 + (unsigned long long)command;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) id <MCMReply> reply; // @synthesize reply=_reply;
 @property(readonly, nonatomic) id <MCMResultPromise> resultPromise; // @synthesize resultPromise=_resultPromise;
-@property(readonly, nonatomic) MCMContext *context; // @synthesize context=_context;
+@property(readonly, nonatomic) MCMCommandContext *context; // @synthesize context=_context;
 - (void)execute;
 - (_Bool)preflightClientAllowed;
 - (id)initWithMessage:(id)arg1 context:(id)arg2 reply:(id)arg3;
 - (id)initWithContext:(id)arg1 resultPromise:(id)arg2;
-- (id)userIdentityForContainerIdentifier:(id)arg1 containerClass:(unsigned long long)arg2 error:(unsigned long long *)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

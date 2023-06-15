@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
 - (void)connectionInvalidated;
 - (id)remoteInterface;
 - (id)exportedInterface;
-- (void)_triggerNanoSync;
+- (void)_triggerImmediateSync;
 - (_Bool)_queue_deleteSamplesOfType:(id)arg1 onDayIndex:(long long)arg2 calendarCache:(id)arg3 error:(id *)arg4;
 - (void)_queue_updateLastLoggedInExperienceDate;
 - (_Bool)_queue_insertSamplesWithClientSource:(id)arg1 creationDate:(id)arg2 error:(id *)arg3;

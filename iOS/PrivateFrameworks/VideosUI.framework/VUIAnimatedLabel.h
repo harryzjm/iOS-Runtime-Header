@@ -51,6 +51,7 @@ __attribute__((visibility("hidden")))
 - (void)setMarqueeRunning:(_Bool)arg1;
 - (void)setMarqueeEnabled:(_Bool)arg1;
 - (void)_startMarqueeIfNeeded;
+@property(readonly, nonatomic) double animationDuration;
 - (_Bool)_shouldCycle;
 - (void)_prepareNextMarqueeWithDelay:(double)arg1;
 - (id)_rasterizedTextWithMarquee:(_Bool)arg1;

@@ -11,7 +11,6 @@
 
 @protocol KGGraphImplementation <NSObject>
 @property(readonly, nonatomic) NSUUID *graphIdentifier;
-@property(readonly, nonatomic) id <KGEntityFactory> entityFactory;
 - (NSArray *)edgeChangesAfterToken:(KGTransactionToken *)arg1 transactionLimit:(long long)arg2 edgeFilter:(KGEdgeFilter *)arg3 error:(id *)arg4;
 - (NSArray *)nodeChangesAfterToken:(KGTransactionToken *)arg1 transactionLimit:(long long)arg2 nodeFilter:(KGNodeFilter *)arg3 error:(id *)arg4;
 - (NSArray *)changesAfterToken:(KGTransactionToken *)arg1 transactionLimit:(long long)arg2 error:(id *)arg3;
@@ -30,14 +29,15 @@
 - (NSArray *)edgeIdentifiers:(KGElementIdentifierSet *)arg1 sortedByFloatPropertyForName:(NSString *)arg2 ascending:(_Bool)arg3 limit:(long long)arg4 error:(id *)arg5;
 - (NSArray *)edgeIdentifiers:(KGElementIdentifierSet *)arg1 sortedByIntegerPropertyForName:(NSString *)arg2 ascending:(_Bool)arg3 limit:(long long)arg4 error:(id *)arg5;
 - (NSArray *)edgeIdentifiers:(KGElementIdentifierSet *)arg1 sortedByStringPropertyForName:(NSString *)arg2 ascending:(_Bool)arg3 limit:(long long)arg4 error:(id *)arg5;
+- (NSArray *)nodeIdentifiers:(KGElementIdentifierSet *)arg1 sortedByUnsignedIntegerPropertyForName:(NSString *)arg2 ascending:(_Bool)arg3 limit:(long long)arg4 error:(id *)arg5;
 - (NSArray *)nodeIdentifiers:(KGElementIdentifierSet *)arg1 sortedByFloatPropertyForName:(NSString *)arg2 ascending:(_Bool)arg3 limit:(long long)arg4 error:(id *)arg5;
 - (NSArray *)nodeIdentifiers:(KGElementIdentifierSet *)arg1 sortedByIntegerPropertyForName:(NSString *)arg2 ascending:(_Bool)arg3 limit:(long long)arg4 error:(id *)arg5;
 - (NSArray *)nodeIdentifiers:(KGElementIdentifierSet *)arg1 sortedByStringPropertyForName:(NSString *)arg2 ascending:(_Bool)arg3 limit:(long long)arg4 error:(id *)arg5;
 - (KGElementIdentifierSet *)edgeIdentifiersMatchingFilter:(KGEdgeFilter *)arg1 intersectingIdentifiers:(KGElementIdentifierSet *)arg2 error:(id *)arg3;
 - (KGElementIdentifierSet *)nodeIdentifiersMatchingFilter:(KGNodeFilter *)arg1 intersectingIdentifiers:(KGElementIdentifierSet *)arg2 error:(id *)arg3;
-- (NSArray *)orderedArrayOfEdgesWithIdentifiers:(NSArray *)arg1 error:(id *)arg2;
-- (NSArray *)orderedArrayOfNodesWithIdentifiers:(NSArray *)arg1 error:(id *)arg2;
-- (NSArray *)arrayOfEdgesWithIdentifiers:(KGElementIdentifierSet *)arg1 error:(id *)arg2;
-- (NSArray *)arrayOfNodesWithIdentifiers:(KGElementIdentifierSet *)arg1 error:(id *)arg2;
+- (NSArray *)orderedArrayOfEdgesWithIdentifiers:(NSArray *)arg1 entityFactory:(id <KGEntityFactory>)arg2 error:(id *)arg3;
+- (NSArray *)orderedArrayOfNodesWithIdentifiers:(NSArray *)arg1 entityFactory:(id <KGEntityFactory>)arg2 error:(id *)arg3;
+- (NSArray *)arrayOfEdgesWithIdentifiers:(KGElementIdentifierSet *)arg1 entityFactory:(id <KGEntityFactory>)arg2 error:(id *)arg3;
+- (NSArray *)arrayOfNodesWithIdentifiers:(KGElementIdentifierSet *)arg1 entityFactory:(id <KGEntityFactory>)arg2 error:(id *)arg3;
 @end
 

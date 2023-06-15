@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (unsigned char)tileProviderIdentifier;
-- (CDStruct_d1a7ebee)kindForTileKey:(const struct _GEOTileKey *)arg1;
+- (CDStruct_026435ec)kindForTileKey:(const struct _GEOTileKey *)arg1;
 - (id)urlForTileKey:(const struct _GEOTileKey *)arg1;
 - (_Bool)downloadsDataToDisk;
 - (id)activeTileSetForKey:(const struct _GEOTileKey *)arg1;

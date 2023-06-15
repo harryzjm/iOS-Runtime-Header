@@ -9,7 +9,7 @@
 @class GEODataRequestThrottlerToken;
 
 @protocol GEOMapServiceThrottlableTicket <NSObject>
-@property(readonly, nonatomic) CDStruct_d1a7ebee dataRequestKind;
+@property(readonly, nonatomic) CDStruct_026435ec dataRequestKind;
 - (void)setThrottlerToken:(GEODataRequestThrottlerToken *)arg1;
 @end
 

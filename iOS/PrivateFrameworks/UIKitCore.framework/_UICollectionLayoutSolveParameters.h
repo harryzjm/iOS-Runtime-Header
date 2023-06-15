@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 @class NSMutableDictionary, NSMutableIndexSet;
 
 __attribute__((visibility("hidden")))
-@interface _UICollectionLayoutSolveParameters : NSObject <NSCopying>
+@interface _UICollectionLayoutSolveParameters : NSObject
 {
     NSMutableIndexSet *_invalidatedIndexes;
     NSMutableDictionary *_invalidatedAuxillaryDict;

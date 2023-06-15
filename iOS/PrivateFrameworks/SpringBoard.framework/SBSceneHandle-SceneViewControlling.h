@@ -9,7 +9,7 @@
 @interface SBSceneHandle (SceneViewControlling)
 - (id)newSceneViewController;
 - (id)newScenePlaceholderContentContextWithActivationSettings:(id)arg1;
-- (id)newSceneViewWithReferenceSize:(struct CGSize)arg1 orientation:(long long)arg2 hostRequester:(id)arg3;
+- (id)newSceneViewWithReferenceSize:(struct CGSize)arg1 contentOrientation:(long long)arg2 containerOrientation:(long long)arg3 hostRequester:(id)arg4;
 - (_Bool)isDeviceApplicationSceneHandle;
 @property(readonly, nonatomic, getter=isEffectivelyForeground) _Bool effectivelyForeground;
 @end

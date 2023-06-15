@@ -9,11 +9,12 @@
 @class NSArray, NSString;
 
 @protocol MSPSharedTripXPCServer <NSObject>
+- (void)purgeExpiredBlockedTripIdentifiers;
+- (void)clearBlockedTripIdentifiers;
 - (void)blockSharedTrip:(NSString *)arg1;
 - (void)fetchSharedTripsWithCompletion:(void (^)(NSArray *))arg1;
 - (void)unsubscribeFromSharedTripUpdatesWithIdentifier:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)subscribeToSharedTripUpdatesWithIdentifier:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
-- (void)fetchArchivedSharingStateWithCompletion:(void (^)(MSPSharingRestorationStorage *))arg1;
 - (void)fetchActiveHandlesWithCompletion:(void (^)(NSArray *))arg1;
 - (void)stopSharingTrip;
 - (void)stopSharingTripWithMessagesGroup:(NSString *)arg1;

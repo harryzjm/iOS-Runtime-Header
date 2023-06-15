@@ -6,11 +6,16 @@
 
 #import <RenderBox/NSObject-Protocol.h>
 
-@class NSData;
+@class NSData, RBEncoderSet, RBShaderLibrary;
 
 @protocol RBEncoderDelegate <NSObject>
 
 @optional
+@property(readonly, nonatomic) RBEncoderSet *encoderSet;
+- (NSData *)encodedFontSubsetData:(NSData *)arg1 cgFont:(struct CGFont *)arg2 error:(id *)arg3;
+- (NSData *)encodedShaderLibraryData:(RBShaderLibrary *)arg1 error:(id *)arg2;
+- (NSData *)encodedFontData:(NSData *)arg1 cgFont:(struct CGFont *)arg2 error:(id *)arg3;
+- (_Bool)shouldEncodeFontSubset:(struct CGFont *)arg1;
 - (NSData *)encodedCGFontData:(struct CGFont *)arg1 error:(id *)arg2;
 - (NSData *)encodedImageData:(CDStruct_27041886)arg1 error:(id *)arg2;
 - (NSData *)encodedMetadata;

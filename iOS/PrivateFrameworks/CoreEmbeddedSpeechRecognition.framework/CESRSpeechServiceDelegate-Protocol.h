@@ -18,8 +18,10 @@
 - (oneway void)speechServiceDidSelectRecognitionModelWithModelProperties:(CESRModelProperties *)arg1;
 
 @optional
+- (oneway void)speechServiceDidRecognizeVoiceCommandCandidatePackage:(AFSpeechPackage *)arg1 withMetadata:(AFSpeechInfoPackage *)arg2;
 - (oneway void)speechServiceDidRecognizeFinalResultCandidatePackage:(AFSpeechPackage *)arg1;
 - (oneway void)speechServiceDidRecognizePackage:(AFSpeechPackage *)arg1 withMetadata:(AFSpeechInfoPackage *)arg2;
+- (oneway void)speechServiceDidRecognizePartialPackage:(AFSpeechPackage *)arg1 withMetadata:(AFSpeechInfoPackage *)arg2;
 - (oneway void)speechServiceDidRecognizeTokens:(NSArray *)arg1 withMetadata:(AFSpeechInfoPackage *)arg2;
 - (oneway void)speechServiceDidProduceLoggablePackage:(AFSpeechPackage *)arg1;
 @end

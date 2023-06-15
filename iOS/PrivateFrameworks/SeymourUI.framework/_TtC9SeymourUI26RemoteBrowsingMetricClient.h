@@ -11,7 +11,7 @@
 @interface _TtC9SeymourUI26RemoteBrowsingMetricClient : _TtCs12_SwiftObject
 {
     MISSING_TYPE *metricClient;
-    MISSING_TYPE *remoteBrowsingSource;
+    MISSING_TYPE *remoteBrowsingSourceCoordinator;
     MISSING_TYPE *serviceSubscriptionCache;
 }
 

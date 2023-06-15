@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 
 - (void)systemDidBecomeReady;
 - (id)_nextSystemReadyState;
-- (id)nextStateWithContext:(id *)arg1;
+- (void)updateState;
 - (id)stateName;
 
 @end

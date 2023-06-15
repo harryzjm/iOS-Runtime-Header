@@ -8,6 +8,8 @@
 
 @protocol SFCredentialProviderExtensionHelperProtocol
 - (void)removeCredentialIdentityStoreForApplication:(NSString *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
+- (void)fetchAllPaskeyCredentialIdentitiesWithCompletion:(void (^)(SFCredentialProviderExtensionState *, NSArray *))arg1;
+- (void)fetchPasskeyCredentialIdentitiesMatchingDomains:(NSArray *)arg1 completion:(void (^)(SFCredentialProviderExtensionState *, NSArray *))arg2;
 - (void)fetchCredentialIdentitiesMatchingDomains:(NSArray *)arg1 completion:(void (^)(SFCredentialProviderExtensionState *, NSArray *))arg2;
 - (void)replaceCredentialIdentitiesWithIdentities:(NSArray *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (void)removeAllCredentialIdentitiesWithCompletion:(void (^)(_Bool, NSError *))arg1;

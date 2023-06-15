@@ -18,14 +18,11 @@ __attribute__((visibility("hidden")))
 @property(retain) NSDictionary *iconDictionary; // @synthesize iconDictionary=_iconDictionary;
 @property(retain) NSURL *bundleURL; // @synthesize bundleURL=_bundleURL;
 @property(retain) NSString *templateType; // @synthesize templateType=_templateType;
-- (_Bool)onlySupportsGraphicIcons;
-- (_Bool)supportsGraphicIcons;
+- (id)description;
 - (_Bool)_isAppleResource;
 - (id)symbol;
 - (id)resourceNamed:(id)arg1;
 - (id)iconResource;
-- (unsigned long long)iconShape;
-- (id)customRecipe;
 - (void)resolveResources;
 - (id)initWithBundle:(id)arg1 options:(unsigned long long)arg2;
 - (id)initWithBundleURL:(id)arg1 iconDictionary:(id)arg2 options:(unsigned long long)arg3;

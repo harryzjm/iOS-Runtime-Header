@@ -13,6 +13,8 @@
 - (_Bool)saveCalendar:(EKCalendar *)arg1 error:(id *)arg2;
 - (void)deleteEvents:(NSSet *)arg1 span:(long long)arg2;
 - (_Bool)deleteEvent:(EKEvent *)arg1 span:(long long)arg2 error:(id *)arg3;
+- (_Bool)commitEventForOOPModificationRecording:(EKEvent *)arg1 error:(id *)arg2;
+- (_Bool)saveEventForOOPModificationRecording:(EKEvent *)arg1 span:(long long)arg2 error:(id *)arg3;
 - (_Bool)saveEvent:(EKEvent *)arg1 span:(long long)arg2 error:(id *)arg3;
 - (void)saveChangesToEvents:(NSSet *)arg1 span:(long long)arg2;
 - (_Bool)saveNewEvents:(NSSet *)arg1 commit:(_Bool)arg2 error:(id *)arg3;

@@ -4,21 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <NeutrinoCore/NSCopying-Protocol.h>
 #import <NeutrinoCore/NSObject-Protocol.h>
 
-@class NSDictionary, NSString, NSURL;
+@class NSDictionary, NSString, NSURL, NUColorSpace;
 @protocol NURAWImageProperties;
 
-@protocol NUImageProperties <NSObject>
+@protocol NUImageProperties <NSObject, NSCopying>
+@property(readonly) double gainMapHeadroom;
+@property(readonly) _Bool hasGainMap;
+@property(readonly) _Bool isHDR;
 @property(readonly) id <NURAWImageProperties> rawProperties;
 @property(readonly) NSDictionary *auxiliaryImagesProperties;
-@property(readonly) _Bool isFusedOvercapture;
 @property(readonly) long long componentInfo;
 @property(readonly) long long alphaInfo;
 @property(readonly) NSString *fileUTI;
 @property(readonly) long long orientation;
 @property(readonly) CDStruct_912cb5d2 size;
-@property(readonly) struct CGColorSpace *colorSpace;
+@property(readonly) NUColorSpace *colorSpace;
 @property(readonly) NSDictionary *metadata;
 @property(readonly) NSURL *url;
 @end

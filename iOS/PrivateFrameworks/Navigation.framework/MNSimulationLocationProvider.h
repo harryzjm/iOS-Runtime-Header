@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MNSimulatedLocationGenerator, NSBundle, NSMutableArray, NSString, NSTimer;
+@class GEOApplicationAuditToken, MNSimulatedLocationGenerator, NSBundle, NSMutableArray, NSString, NSTimer;
 @protocol MNLocationProviderDelegate;
 
 __attribute__((visibility("hidden")))
@@ -50,6 +50,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) double speedOverride;
 - (void)updatePosition:(double)arg1;
 - (void)updateWithRouteInfo:(id)arg1;
+@property(retain, nonatomic) NSString *requestingAppIdentifier;
+@property(retain, nonatomic) GEOApplicationAuditToken *auditToken;
 - (void)dealloc;
 - (id)initWithSimulationType:(long long)arg1 routeInfo:(id)arg2;
 - (id)initWithSimulationType:(long long)arg1 routeInfo:(id)arg2 alternateRouteInfos:(id)arg3;

@@ -9,24 +9,28 @@
 __attribute__((visibility("hidden")))
 @interface _UIFindNavigatorSearchTextField : UISearchTextField
 {
+    _Bool _keyboardDidAppear;
 }
 
 + (id)_newlineImageForSize:(struct CGSize)arg1 withTraitCollection:(id)arg2;
+@property(nonatomic) _Bool keyboardDidAppear; // @synthesize keyboardDidAppear=_keyboardDidAppear;
 - (id)text;
 - (void)insertNewline;
+- (void)layoutSubviews;
+- (struct CGRect)_availableTextRectForBounds:(struct CGRect)arg1 forEditing:(_Bool)arg2 accountForRightView:(_Bool)arg3;
 - (struct CGRect)_availableTextRectForBounds:(struct CGRect)arg1 forEditing:(_Bool)arg2;
+- (_Bool)_isTextRectWideEnoughForRightView:(struct CGRect)arg1;
 - (struct CGRect)rightViewRectForBounds:(struct CGRect)arg1;
 - (struct CGRect)_baselineLeftViewRectForBounds:(struct CGRect)arg1;
 - (struct CGRect)_applyRightViewOffsetIfApplicable:(struct CGRect)arg1;
 - (_Bool)_showsClearButtonWhenNonEmpty:(_Bool)arg1;
 - (_Bool)_delegateShouldScrollToVisibleWhenBecomingFirstResponder;
-- (id)_window;
 - (id)undoManager;
 - (long long)keyboardAppearance;
 - (_Bool)canResignFirstResponder;
 - (_Bool)_canResignIfContainsFirstResponder;
-- (id)selectionContainerView;
 - (struct CGRect)visibleRect;
+- (void)willMoveToWindow:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

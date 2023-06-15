@@ -10,6 +10,7 @@
 
 @protocol PRPosterContents <NSObject>
 @property(readonly, copy, nonatomic) NSURL *assetDirectory;
+@property(readonly, copy, nonatomic) NSString *role;
 @property(readonly, copy, nonatomic) NSString *descriptorIdentifier;
 - (id)objectForUserInfoKey:(NSString *)arg1;
 - (NSDictionary *)loadUserInfoWithError:(out id *)arg1;

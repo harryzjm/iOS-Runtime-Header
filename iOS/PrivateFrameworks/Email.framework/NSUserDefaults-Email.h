@@ -7,6 +7,10 @@
 #import <Foundation/NSUserDefaults.h>
 
 @interface NSUserDefaults (Email)
++ (void)em_resetLinesOfPreview;
++ (long long)em_linesOfPreview;
++ (long long)_em_linesOfPreviewShouldReset:(_Bool)arg1;
++ (_Bool)em_lockdownModeEnabled;
 + (_Bool)em_defaultExistsForKey:(id)arg1;
 + (void)em_migrateDefault:(id)arg1;
 + (id)em_userDefaults;

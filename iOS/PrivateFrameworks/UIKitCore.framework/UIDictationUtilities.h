@@ -11,6 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (_Bool)shouldAddDeleteMenuElement;
++ (_Bool)shouldLogCorrectionInfoForCurrentBundleId;
 + (id)trackingPunctuations;
 + (unsigned long long)maxLoggableLengthOfInsertionBySubstitution:(id)arg1;
 + (unsigned long long)maxLoggableLengthOfInsertionWithDeletion:(id)arg1;
@@ -35,8 +37,9 @@ __attribute__((visibility("hidden")))
 + (_Bool)needsLeadingSpaceForText:(id)arg1 secureInput:(_Bool)arg2;
 + (_Bool)needsLeadingSpaceForPhrases:(id)arg1 secureInput:(_Bool)arg2;
 + (id)metadataDictionaryForCorrectionIdentifier:(id)arg1;
++ (id)dictationVoiceCommandParametersFromAFVoiceCommandGrammarParseCandidate:(id)arg1;
 + (id)voiceCommandParameterFromAFVoiceCommandGrammarParamMatch:(id)arg1;
-+ (id)attributedStringForDictationResult:(id)arg1 andCorrectionIdentifier:(id)arg2;
++ (id)attributedStringForDictationResult:(id)arg1 andCorrectionIdentifier:(id)arg2 capturePrefixAndPostfixWordCount:(unsigned long long)arg3;
 + (id)bestInterpretationForPhrases:(id)arg1;
 + (id)bestInterpretationForDictationResult:(id)arg1;
 + (id)dictationPhrasesFromPhraseArray:(id)arg1;

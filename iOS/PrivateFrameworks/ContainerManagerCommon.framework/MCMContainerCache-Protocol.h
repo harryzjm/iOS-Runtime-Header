@@ -11,11 +11,11 @@
 
 @protocol MCMContainerCache <NSObject>
 @property(readonly, nonatomic) MCMUserIdentityCache *userIdentityCache;
-- (id <MCMContainerCacheEntry>)updateLinksOnContainerCacheEntry:(id <MCMContainerCacheEntry>)arg1 error:(id *)arg2;
 - (id <MCMContainerClassCache>)classCacheForContainerIdentity:(MCMContainerIdentity *)arg1;
 - (void)flushCacheForUserIdentity:(MCMUserIdentity *)arg1 containerClass:(unsigned long long)arg2 transient:(_Bool)arg3;
 - (_Bool)removeContainerForUserIdentity:(MCMUserIdentity *)arg1 contentClass:(unsigned long long)arg2 identifier:(NSString *)arg3 transient:(_Bool)arg4 error:(id *)arg5;
 - (id <MCMContainerCacheEntry>)addContainerMetadata:(id <MCMMetadataMinimal>)arg1 error:(id *)arg2;
+- (long long)countContainersForOtherUserIdentitiesWithIdentity:(MCMContainerIdentity *)arg1 error:(id *)arg2;
 - (NSArray *)entriesForUserIdentities:(NSSet *)arg1 contentClass:(unsigned long long)arg2 transient:(_Bool)arg3 error:(id *)arg4;
 - (id <MCMContainerCacheEntry>)entryForContainerIdentity:(MCMContainerIdentity *)arg1 error:(id *)arg2;
 - (id <MCMContainerCacheEntry>)entryForContainerIdentity:(MCMContainerIdentity *)arg1 classCache:(id <MCMContainerClassCache>)arg2 error:(id *)arg3;

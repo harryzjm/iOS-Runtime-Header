@@ -45,28 +45,15 @@ __attribute__((visibility("hidden")))
     void *_logBWEDump;
 }
 
+@property(nonatomic) double estimatedBandwidthUncapped; // @synthesize estimatedBandwidthUncapped=_estimatedBandwidthUncapped;
+@property(nonatomic) double estimatedBandwidth; // @synthesize estimatedBandwidth=_estimatedBandwidth;
 @property(readonly, nonatomic) double lastProbingArrivalTime; // @synthesize lastProbingArrivalTime=_referencePacketArrivalTime;
 @property(retain, nonatomic) VCRateControlServerBag *serverBag; // @synthesize serverBag=_serverBag;
-@property(nonatomic) _Bool fastSuddenBandwidthDetectionEnabled; // @synthesize fastSuddenBandwidthDetectionEnabled=_fastSuddenBandwidthDetectionEnabled;
+@property(readonly, nonatomic) _Bool fastSuddenBandwidthDetectionEnabled; // @synthesize fastSuddenBandwidthDetectionEnabled=_fastSuddenBandwidthDetectionEnabled;
 @property(readonly, nonatomic) int bandwidthEstimationState; // @synthesize bandwidthEstimationState=_bandwidthEstimationState;
 @property(nonatomic) unsigned int mode; // @synthesize mode=_mode;
 @property(nonatomic) unsigned int radioAccessTechnology; // @synthesize radioAccessTechnology=_radioAccessTechnology;
-@property(nonatomic) double estimatedBandwidthUncapped; // @synthesize estimatedBandwidthUncapped=_estimatedBandwidthUncapped;
-@property(nonatomic) double estimatedBandwidth; // @synthesize estimatedBandwidth=_estimatedBandwidth;
-- (void)updateBandwidthDivergeCountAtArrivalTime:(double)arg1 suddenChangeAbove:(_Bool)arg2 suddenChangeBelow:(_Bool)arg3;
-- (_Bool)isSuddenChangeDurationMetAtArrivalTime:(double)arg1;
-- (void)compensateSuddenChangeBandwidths;
-- (void)recordSuddenChangeBandwidth:(double)arg1;
-- (void)detectSuddenChangeWithBandwidth:(double)arg1 suddenChangeAbove:(_Bool *)arg2 suddenChangeBelow:(_Bool *)arg3;
-- (void)updateInitialBandwidthEstimationForCellularAtTime:(double)arg1 bandwidth:(double)arg2;
-- (void)initializeBandwidthEstimationAtTime:(double)arg1 mediaTimestamp:(unsigned int)arg2 probingSequence:(_Bool)arg3 probingSequenceID:(unsigned int)arg4;
-- (double)updateBandwidthEstimation:(double)arg1 arrivalTime:(double)arg2;
-- (double)resetBandwidthWithParameters:(double)arg1 probingSequenceDuration:(double)arg2 probingSequenceSize:(unsigned int)arg3 packetsInProbingSequence:(unsigned int)arg4;
-- (_Bool)isPacketProcessedLateWithArrivalTime:(double)arg1;
-- (void)updateQualificationParameters;
 - (void)enableBWELogDump:(void *)arg1;
-- (void)calculateBandwidthEstimationForBandwidthSample:(double)arg1 arrivalTime:(double)arg2;
-- (void)calculateBandwidthEstimationAtTime:(double)arg1 mediaTimestamp:(unsigned int)arg2 mediaDataSize:(unsigned int)arg3 probingSequence:(_Bool)arg4 probingSequenceID:(unsigned int)arg5;
 - (void)dealloc;
 - (id)init;
 

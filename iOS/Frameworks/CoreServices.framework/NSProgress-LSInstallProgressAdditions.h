@@ -15,6 +15,7 @@
 + (id)childProgressForBundleID:(id)arg1 andPhase:(unsigned long long)arg2;
 - (id)_LSDescription;
 - (void)_LSResume;
+@property(nonatomic, setter=ls_setExpectedFinalInstallPhase:) unsigned long long ls_expectedFinalInstallPhase;
 @property(readonly, nonatomic) NSString *installPhaseString;
 @property(nonatomic) unsigned long long installPhase;
 @property(nonatomic) unsigned long long installState;

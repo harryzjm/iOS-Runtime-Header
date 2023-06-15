@@ -6,19 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@class TabDocument, UIView;
+@class TabDocument;
 @protocol TabCollectionView;
 
 __attribute__((visibility("hidden")))
 @interface TabDocumentDragMetadata : NSObject
 {
-    UIView<TabCollectionView> *_sourceTabView;
+    id <TabCollectionView> _sourceTabView;
     TabDocument *_tabDocument;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) TabDocument *tabDocument; // @synthesize tabDocument=_tabDocument;
-@property(readonly, nonatomic) __weak UIView<TabCollectionView> *sourceTabView; // @synthesize sourceTabView=_sourceTabView;
+@property(readonly, nonatomic) __weak id <TabCollectionView> sourceTabView; // @synthesize sourceTabView=_sourceTabView;
 - (id)initWithTabDocument:(id)arg1 sourceTabView:(id)arg2;
 
 @end

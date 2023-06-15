@@ -19,10 +19,11 @@ __attribute__((visibility("hidden")))
     _MKUserTrackingButton *_button;
     UIActivityIndicatorView *_activityIndicatorView;
     unsigned long long _buttonBehavior;
+    unsigned long long _controlSize;
 }
 
-+ (double)_symbolPointSize;
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long controlSize; // @synthesize controlSize=_controlSize;
 @property(nonatomic) unsigned long long buttonBehavior; // @synthesize buttonBehavior=_buttonBehavior;
 @property(readonly, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
 @property(nonatomic) long long state; // @synthesize state=_state;
@@ -40,6 +41,7 @@ __attribute__((visibility("hidden")))
 - (void)_authorizationStatusChanged:(id)arg1;
 - (id)_activityIndicatorView;
 - (void)dealloc;
+- (double)_symbolPointSize;
 - (void)_updatePreferredSymbolConfiguration;
 - (id)initWithTarget:(id)arg1 userTrackingView:(id)arg2 imageView:(id)arg3 button:(id)arg4;
 

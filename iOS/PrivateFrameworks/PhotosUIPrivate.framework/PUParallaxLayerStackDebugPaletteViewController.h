@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
 @class PUParallaxLayerStackDebugPaletteView, UISegmentedControl;
 
@@ -15,11 +15,15 @@ __attribute__((visibility("hidden")))
     PUParallaxLayerStackDebugPaletteView *_colorBGPaletteView;
     PUParallaxLayerStackDebugPaletteView *_colorWashSinglePaletteView;
     PUParallaxLayerStackDebugPaletteView *_colorWashDuotonePaletteView;
+    PUParallaxLayerStackDebugPaletteView *_greenScreenMutedPaletteView;
+    PUParallaxLayerStackDebugPaletteView *_greenScreenVibrantPaletteView;
     PUParallaxLayerStackDebugPaletteView *_customPaletteView;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) PUParallaxLayerStackDebugPaletteView *customPaletteView; // @synthesize customPaletteView=_customPaletteView;
+@property(retain, nonatomic) PUParallaxLayerStackDebugPaletteView *greenScreenVibrantPaletteView; // @synthesize greenScreenVibrantPaletteView=_greenScreenVibrantPaletteView;
+@property(retain, nonatomic) PUParallaxLayerStackDebugPaletteView *greenScreenMutedPaletteView; // @synthesize greenScreenMutedPaletteView=_greenScreenMutedPaletteView;
 @property(retain, nonatomic) PUParallaxLayerStackDebugPaletteView *colorWashDuotonePaletteView; // @synthesize colorWashDuotonePaletteView=_colorWashDuotonePaletteView;
 @property(retain, nonatomic) PUParallaxLayerStackDebugPaletteView *colorWashSinglePaletteView; // @synthesize colorWashSinglePaletteView=_colorWashSinglePaletteView;
 @property(retain, nonatomic) PUParallaxLayerStackDebugPaletteView *colorBGPaletteView; // @synthesize colorBGPaletteView=_colorBGPaletteView;

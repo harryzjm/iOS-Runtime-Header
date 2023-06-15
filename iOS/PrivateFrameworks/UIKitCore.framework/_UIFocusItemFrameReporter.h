@@ -22,7 +22,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, getter=isEnabled) _Bool enabled; // @synthesize enabled=_enabled;
 @property(nonatomic) __weak UIFocusSystem *focusSystem; // @synthesize focusSystem=_focusSystem;
 - (struct CGRect)_globalFrameForFocusedItemInSystem:(id)arg1;
-- (struct CGRect)_clampRect:(struct CGRect)arg1 insideRect:(struct CGRect)arg2;
 - (_Bool)_rect:(struct CGRect)arg1 differsFromRect:(struct CGRect)arg2 lowerThreshold:(double)arg3 upperThreshold:(double)arg4;
 - (void)_cancelRepeatingFrameUpdate;
 - (void)_scheduleRepeatingFrameUpdate;

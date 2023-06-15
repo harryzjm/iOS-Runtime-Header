@@ -9,6 +9,7 @@
 @class NSDictionary, VCEmulatedPacket;
 
 @protocol VCEmulatedNetworkAlgorithm <NSObject>
+@property int packetCountBytesInNetworkQueue;
 @property unsigned int packetCountInNetworkQueue;
 @property(readonly, nonatomic) double expectedProcessEndTime;
 - (void)updateSettingsAtTime:(double)arg1 impairments:(NSDictionary *)arg2;

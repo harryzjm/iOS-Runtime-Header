@@ -43,6 +43,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)addStateReference:(id)arg1;
 - (_Bool)addResourceReference:(id)arg1 isWrite:(_Bool)arg2;
 - (id)resourceStateCommandEncoder;
+- (void)encodeSignalEvent:(id)arg1 value:(unsigned long long)arg2 agentMask:(unsigned long long)arg3;
 - (void)encodeWaitForEvent:(id)arg1 value:(unsigned long long)arg2;
 - (void)encodeWaitForEvent:(id)arg1 value:(unsigned long long)arg2 timeout:(unsigned int)arg3;
 - (void)encodeSignalEvent:(id)arg1 value:(unsigned long long)arg2;

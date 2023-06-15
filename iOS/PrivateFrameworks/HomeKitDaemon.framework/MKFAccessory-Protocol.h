@@ -43,12 +43,16 @@
 @property(readonly, copy, nonatomic) NSUUID *modelID;
 @property(copy, nonatomic) NSString *model;
 @property(copy, nonatomic) NSString *manufacturer;
+@property(copy, nonatomic) NSNumber *lowBattery;
+@property(copy, nonatomic) NSDate *lastSeenDate;
 @property(copy, nonatomic) NSNumber *lastNetworkAccessViolationResetSince1970;
 @property(copy, nonatomic) NSNumber *lastNetworkAccessViolationOccurrenceSince1970;
 @property(copy, nonatomic) NSString *initialModel;
 @property(copy, nonatomic) NSString *initialManufacturer;
 @property(copy, nonatomic) NSNumber *initialCategoryIdentifier;
 @property(copy, nonatomic) NSString *identifier;
+@property(copy, nonatomic) NSString *groupName;
+@property(copy, nonatomic) NSUUID *groupIdentifier;
 @property(copy, nonatomic) NSString *firmwareVersion;
 @property(copy, nonatomic) NSNumber *currentNetworkProtectionMode;
 @property(copy, nonatomic) NSString *configuredName;

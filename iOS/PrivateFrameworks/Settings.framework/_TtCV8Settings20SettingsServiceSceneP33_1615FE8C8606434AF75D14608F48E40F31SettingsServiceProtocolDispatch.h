@@ -18,6 +18,7 @@
 - (void)isAvailable:(CDUnknownBlockType)arg1;
 - (void)getSidebarSections:(CDUnknownBlockType)arg1;
 - (void)getSidebarItems:(CDUnknownBlockType)arg1;
+- (void)openURL:(id)arg1;
 @property(nonatomic, retain) id <_TtP8Settings27SettingsHostServiceProvider_> serviceHost;
 
 @end

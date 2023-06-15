@@ -7,9 +7,8 @@
 #import <objc/NSObject.h>
 
 @class CaptureMTLDevice, CaptureMTLLibrary, MTLDebugInstrumentationData, MTLType, NSArray, NSDictionary, NSString;
-@protocol MTLDevice, MTLFunction, MTLFunctionHandle, MTLFunctionSPI;
+@protocol MTLDevice, MTLFunction, MTLFunctionHandle, MTLFunctionSPI, MTLLibrary;
 
-__attribute__((visibility("hidden")))
 @interface CaptureMTLFunction : NSObject
 {
     id <MTLFunctionSPI> _baseObject;
@@ -20,6 +19,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+@property(readonly) id <MTLLibrary> captureLibrary; // @synthesize captureLibrary=_captureLibrary;
 - (id)reflectionWithOptions:(unsigned long long)arg1 pipelineLibrary:(id)arg2;
 - (id)reflectionWithOptions:(unsigned long long)arg1;
 - (id)newArgumentEncoderWithBufferIndex:(unsigned long long)arg1 pipelineLibrary:(id)arg2;
@@ -62,11 +62,11 @@ __attribute__((visibility("hidden")))
 - (id)newArgumentEncoderWithBufferIndex:(unsigned long long)arg1 reflection:(id *)arg2;
 @property(readonly) id <MTLFunction> baseObject;
 - (void)dealloc;
-- (void)swapObject:(id)arg1;
 - (id)initWithBaseObject:(id)arg1 captureDevice:(id)arg2;
 - (id)initWithBaseObject:(id)arg1 captureLibrary:(id)arg2;
 
 // Remaining properties
+@property(readonly) NSArray *bindings;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, nonatomic) MTLDebugInstrumentationData *debugInstrumentationData;
 @property(readonly) unsigned long long hash;

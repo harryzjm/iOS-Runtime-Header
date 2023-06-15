@@ -9,6 +9,8 @@
 @class UIImage;
 
 @protocol QLItemThumbnailGeneratorProtocolInternal <NSObject>
+- (UIImage *)genericIconWithSize:(struct CGSize)arg1 contentMode:(unsigned long long)arg2;
+- (void)generateThumbnailWithSize:(struct CGSize)arg1 contentMode:(unsigned long long)arg2 completionBlock:(void (^)(UIImage *, _Bool))arg3;
 - (UIImage *)genericIconWithSize:(struct CGSize)arg1;
 - (void)generateThumbnailWithSize:(struct CGSize)arg1 completionBlock:(void (^)(UIImage *, _Bool))arg2;
 @end

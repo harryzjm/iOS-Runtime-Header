@@ -4,16 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class IDSAccount, IMDAccount, IMDChat, IMMessageItem, IMSyndicationAction, NSArray, NSAttributedString, NSData, NSDictionary, NSNumber, NSString, NSURL;
+@class IDSAccount, IDSService, IMDAccount, IMDChat, IMMessageItem, IMSyndicationAction, NSArray, NSAttributedString, NSData, NSDictionary, NSNumber, NSString, NSURL;
 
 @protocol IMServiceSessionProtocol
 
 @optional
 - (void)requestGroupPhotoIfNecessary:(IMDChat *)arg1 incomingGroupPhotoCreationTime:(NSNumber *)arg2 toIdentifier:(NSString *)arg3 fromIdentifier:(NSString *)arg4 messageIsFromStorage:(_Bool)arg5;
-- (void)_blastDoorProcessingWithIMMessageItem:(IMMessageItem *)arg1 chat:(IMDChat *)arg2 account:(IMDAccount *)arg3 fromToken:(NSData *)arg4 fromIDSID:(NSString *)arg5 fromIdentifier:(NSString *)arg6 toIdentifier:(NSString *)arg7 participants:(NSArray *)arg8 groupName:(NSString *)arg9 groupID:(NSString *)arg10 isEncrypted:(_Bool)arg11 isFromMe:(_Bool)arg12 isLastFromStorage:(_Bool)arg13 isFromStorage:(_Bool)arg14 hideLockScreenNotification:(_Bool)arg15 wantsCheckpointing:(_Bool)arg16 needsDeliveryReceipt:(NSNumber *)arg17 messageBalloonPayloadAttachmentDictionary:(NSDictionary *)arg18 inlineAttachments:(NSDictionary *)arg19 attributionInfoArray:(NSArray *)arg20 nicknameDictionary:(NSDictionary *)arg21 availabilityVerificationRecipientChannelIDPrefix:(NSString *)arg22 availabilityVerificationRecipientEncryptionValidationToken:(NSString *)arg23 messageContext:(id)arg24 completionBlock:(void (^)(void))arg25;
+- (void)_blastDoorProcessingWithIMMessageItem:(IMMessageItem *)arg1 chat:(IMDChat *)arg2 account:(IMDAccount *)arg3 fromToken:(NSData *)arg4 fromIDSID:(NSString *)arg5 fromIdentifier:(NSString *)arg6 toIdentifier:(NSString *)arg7 participants:(NSArray *)arg8 groupName:(NSString *)arg9 groupID:(NSString *)arg10 isEncrypted:(_Bool)arg11 isFromMe:(_Bool)arg12 isLastFromStorage:(_Bool)arg13 isFromStorage:(_Bool)arg14 hideLockScreenNotification:(_Bool)arg15 wantsCheckpointing:(_Bool)arg16 needsDeliveryReceipt:(NSNumber *)arg17 messageBalloonPayloadAttachmentDictionary:(NSDictionary *)arg18 inlineAttachments:(NSDictionary *)arg19 attributionInfoArray:(NSArray *)arg20 nicknameDictionary:(NSDictionary *)arg21 availabilityVerificationRecipientChannelIDPrefix:(NSString *)arg22 availabilityVerificationRecipientEncryptionValidationToken:(NSString *)arg23 idsService:(IDSService *)arg24 messageContext:(id)arg25 isFromTrustedSender:(_Bool)arg26 completionBlock:(void (^)(void))arg27;
 - (void)sendDeliveryReceiptForMessageID:(NSString *)arg1 toID:(NSString *)arg2 deliveryContext:(NSDictionary *)arg3 needsDeliveryReceipt:(NSNumber *)arg4 callerID:(NSString *)arg5 account:(IDSAccount *)arg6;
 - (_Bool)reflectMarkUnreadToPeerDevicesForMessageGUID:(NSString *)arg1;
-- (void)sendNicknameInfoToChatID:(NSString *)arg1;
+- (void)sendNicknameInfoToURIs:(NSArray *)arg1 chatGUID:(NSString *)arg2;
 - (_Bool)sendNicknameUpdatesToPeerDevices:(NSDictionary *)arg1 toDestinations:(NSArray *)arg2;
 - (void)closeSessionChatID:(NSString *)arg1 identifier:(NSString *)arg2 style:(unsigned char)arg3;
 - (void)enrollSelfDeviceInSMSRelay;
@@ -33,6 +33,7 @@
 - (void)cancelVCRequestWithPerson:(NSString *)arg1 properties:(NSDictionary *)arg2 conference:(NSString *)arg3 reason:(NSNumber *)arg4;
 - (void)respondToVCInvitationWithPerson:(NSString *)arg1 properties:(NSDictionary *)arg2 conference:(NSString *)arg3;
 - (void)requestVCWithPerson:(NSString *)arg1 properties:(NSDictionary *)arg2 conference:(NSString *)arg3;
+- (_Bool)reflectRecoverChatToPeerDevicesForMessageGUID:(NSString *)arg1;
 - (void)sendRecoverCommand:(NSDictionary *)arg1 forChatGUID:(NSString *)arg2;
 - (void)sendDeleteCommand:(NSDictionary *)arg1 forChatGUID:(NSString *)arg2;
 - (void)sendCommand:(NSNumber *)arg1 withProperties:(NSDictionary *)arg2 toPerson:(NSString *)arg3 toChatID:(NSString *)arg4 identifier:(NSString *)arg5 style:(unsigned char)arg6;
@@ -46,7 +47,6 @@
 - (void)setProperties:(NSDictionary *)arg1 ofParticipant:(NSString *)arg2 inChatID:(NSString *)arg3 identifier:(NSString *)arg4 style:(unsigned char)arg5;
 - (void)sendSyndicationAction:(IMSyndicationAction *)arg1 toChatsWithIdentifiers:(NSArray *)arg2;
 - (void)sendEditedMessage:(IMMessageItem *)arg1 previousMessage:(IMMessageItem *)arg2 partIndex:(long long)arg3 editType:(unsigned long long)arg4 toChatIdentifier:(NSString *)arg5 style:(unsigned char)arg6 account:(NSString *)arg7 backwardCompatabilityText:(NSAttributedString *)arg8;
-- (void)noteMessagesMarkedAsReadForChatWithGUID:(NSString *)arg1;
 - (void)sendSavedReceiptForMessage:(IMMessageItem *)arg1 toChatID:(NSString *)arg2 identifier:(NSString *)arg3 style:(unsigned char)arg4;
 - (void)sendPlayedReceiptForMessage:(IMMessageItem *)arg1 toChatID:(NSString *)arg2 identifier:(NSString *)arg3 style:(unsigned char)arg4;
 - (void)sendNotifyRecipientCommandForMessage:(IMMessageItem *)arg1 toChatGuid:(NSString *)arg2 identifier:(NSString *)arg3 style:(unsigned char)arg4;

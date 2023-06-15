@@ -9,6 +9,6 @@
 @class NSString;
 
 @protocol MRUIContextServerXPCProtocol <NSObject>
-- (void)contextForSessionIdentifier:(NSString *)arg1 reply:(void (^)(NSString *))arg2;
+- (void)contextForActivityIdentifier:(NSString *)arg1 reply:(void (^)(NSString *))arg2;
 @end
 

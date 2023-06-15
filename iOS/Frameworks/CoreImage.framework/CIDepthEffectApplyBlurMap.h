@@ -21,9 +21,11 @@ __attribute__((visibility("hidden")))
     id inputAuxDataMetadata;
     NSString *inputShape;
     NSNumber *inputDraftMode;
+    NSString *inputCaptureFolderMiscPath;
 }
 
 + (id)customAttributes;
+@property(retain, nonatomic) NSString *inputCaptureFolderMiscPath; // @synthesize inputCaptureFolderMiscPath;
 @property(retain, nonatomic) NSNumber *inputDraftMode; // @synthesize inputDraftMode;
 @property(retain, nonatomic) NSString *inputShape; // @synthesize inputShape;
 @property(retain, nonatomic) id inputAuxDataMetadata; // @synthesize inputAuxDataMetadata;

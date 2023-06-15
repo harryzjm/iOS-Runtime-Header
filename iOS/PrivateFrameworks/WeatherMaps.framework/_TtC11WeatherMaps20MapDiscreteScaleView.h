@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class MISSING_TYPE;
 
@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *steps;
     MISSING_TYPE *minimumSize;
     MISSING_TYPE *stepSpacing;
+    MISSING_TYPE *backgroundEffectManager;
     MISSING_TYPE *scale;
 }
 

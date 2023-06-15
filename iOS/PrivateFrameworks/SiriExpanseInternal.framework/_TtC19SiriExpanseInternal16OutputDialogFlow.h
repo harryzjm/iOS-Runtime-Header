@@ -10,8 +10,9 @@
 
 @interface _TtC19SiriExpanseInternal16OutputDialogFlow : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *pattern;
-    MISSING_TYPE *patternExecutor;
+    MISSING_TYPE *exitValue;
+    MISSING_TYPE *response;
+    MISSING_TYPE *responseExecutor;
     MISSING_TYPE *outputPublisher;
 }
 

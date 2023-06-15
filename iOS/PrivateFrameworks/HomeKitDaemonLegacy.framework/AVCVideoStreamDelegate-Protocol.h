@@ -18,6 +18,7 @@
 - (void)stream:(AVCVideoStream *)arg1 downlinkQualityDidChange:(NSDictionary *)arg2;
 - (void)stream:(AVCVideoStream *)arg1 didGetLastDecodedFrame:(NSData *)arg2;
 - (void)stream:(AVCVideoStream *)arg1 didReceiveRTCPPackets:(NSArray *)arg2;
+- (void)streamDidRecoverFromRTCPTimeOut:(AVCVideoStream *)arg1;
 - (void)streamDidRTCPTimeOut:(AVCVideoStream *)arg1;
 - (void)streamDidRTPTimeOut:(AVCVideoStream *)arg1;
 - (void)stream:(AVCVideoStream *)arg1 didUpdateVideoConfiguration:(_Bool)arg2 error:(NSError *)arg3;

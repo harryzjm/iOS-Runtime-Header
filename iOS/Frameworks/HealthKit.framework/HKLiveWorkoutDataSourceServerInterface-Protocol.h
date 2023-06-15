@@ -9,6 +9,7 @@
 @class HKWorkoutDataSourceConfiguration;
 
 @protocol HKLiveWorkoutDataSourceServerInterface <NSObject>
+- (void)remote_synchronizeWithCompletion:(void (^)(_Bool, NSError *))arg1;
 - (void)remote_setDataSourceConfiguration:(HKWorkoutDataSourceConfiguration *)arg1;
 - (void)remote_startTaskServerIfNeeded;
 @end

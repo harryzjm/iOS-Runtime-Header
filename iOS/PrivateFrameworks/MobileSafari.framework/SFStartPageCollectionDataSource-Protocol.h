@@ -6,13 +6,13 @@
 
 #import <MobileSafari/NSObject-Protocol.h>
 
-@class NSArray, SFSectionModel, SFStartPageCollectionViewController;
+@class NSArray, SFStartPageCollectionViewController, WBSStartPageSection;
 
 @protocol SFStartPageCollectionDataSource <NSObject>
 - (long long)customizationControlPolicyForStartPageCollectionViewController:(SFStartPageCollectionViewController *)arg1;
 - (void)startPageCollectionViewControllerWillUpdateNavigationBar:(SFStartPageCollectionViewController *)arg1;
-- (_Bool)startPageCollectionViewController:(SFStartPageCollectionViewController *)arg1 isSectionExpanded:(SFSectionModel *)arg2;
-- (void)startPageCollectionViewController:(SFStartPageCollectionViewController *)arg1 toggleSectionExpanded:(SFSectionModel *)arg2;
+- (_Bool)startPageCollectionViewController:(SFStartPageCollectionViewController *)arg1 isSectionExpanded:(WBSStartPageSection *)arg2;
+- (void)startPageCollectionViewController:(SFStartPageCollectionViewController *)arg1 toggleSectionExpanded:(WBSStartPageSection *)arg2;
 - (NSArray *)sectionsForStartPageCollectionViewController:(SFStartPageCollectionViewController *)arg1;
 @end
 

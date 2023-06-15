@@ -6,8 +6,8 @@
 
 #import <objc/NSObject.h>
 
-@class MPAVEndpointRoute, MPArtworkCatalog, MRNowPlayingController, MRUAudioAnalyzer, MRUNowPlayingController, MRUWaveformData, NSString, UIImage;
-@protocol MRUWaveformControllerDelegate, OS_dispatch_queue;
+@class MPAVEndpointRoute, MRNowPlayingController, MRUAudioAnalyzer, MRUNowPlayingController, MRUWaveformData, NSString, UIImage;
+@protocol MRUWaveformControllerDelegate;
 
 __attribute__((visibility("hidden")))
 @interface MRUWaveformController : NSObject
@@ -15,52 +15,45 @@ __attribute__((visibility("hidden")))
     _Bool _playing;
     _Bool _remoteRoute;
     _Bool _visible;
-    _Bool _requestArtworkImage;
     _Bool _isAnalyzingAudio;
     int _nowPlayingPID;
     MRUWaveformData *_waveform;
-    MPArtworkCatalog *_artworkCatalog;
-    UIImage *_artworkImage;
     NSString *_remoteRouteSymbolName;
+    UIImage *_artworkImage;
     MRUNowPlayingController *_nowPlayingController;
     id <MRUWaveformControllerDelegate> _delegate;
     MRUAudioAnalyzer *_audioAnalyzer;
     MRNowPlayingController *_mrNowPlayingController;
     MPAVEndpointRoute *_endpointRoute;
-    NSObject<OS_dispatch_queue> *_artworkQueue;
+    NSString *_trackIdentifier;
     struct CGSize _artworkFittingSize;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) int nowPlayingPID; // @synthesize nowPlayingPID=_nowPlayingPID;
+@property(retain, nonatomic) NSString *trackIdentifier; // @synthesize trackIdentifier=_trackIdentifier;
 @property(nonatomic) struct CGSize artworkFittingSize; // @synthesize artworkFittingSize=_artworkFittingSize;
 @property(nonatomic) _Bool isAnalyzingAudio; // @synthesize isAnalyzingAudio=_isAnalyzingAudio;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *artworkQueue; // @synthesize artworkQueue=_artworkQueue;
 @property(retain, nonatomic) MPAVEndpointRoute *endpointRoute; // @synthesize endpointRoute=_endpointRoute;
 @property(retain, nonatomic) MRNowPlayingController *mrNowPlayingController; // @synthesize mrNowPlayingController=_mrNowPlayingController;
 @property(retain, nonatomic) MRUAudioAnalyzer *audioAnalyzer; // @synthesize audioAnalyzer=_audioAnalyzer;
 @property(nonatomic) __weak id <MRUWaveformControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) MRUNowPlayingController *nowPlayingController; // @synthesize nowPlayingController=_nowPlayingController;
-@property(nonatomic) _Bool requestArtworkImage; // @synthesize requestArtworkImage=_requestArtworkImage;
 @property(nonatomic, getter=isVisible) _Bool visible; // @synthesize visible=_visible;
+@property(retain, nonatomic) UIImage *artworkImage; // @synthesize artworkImage=_artworkImage;
 @property(readonly, nonatomic) NSString *remoteRouteSymbolName; // @synthesize remoteRouteSymbolName=_remoteRouteSymbolName;
 @property(readonly, nonatomic, getter=isRemoteRoute) _Bool remoteRoute; // @synthesize remoteRoute=_remoteRoute;
 @property(readonly, nonatomic, getter=isPlaying) _Bool playing; // @synthesize playing=_playing;
-@property(readonly, nonatomic) UIImage *artworkImage; // @synthesize artworkImage=_artworkImage;
-@property(readonly, nonatomic) MPArtworkCatalog *artworkCatalog; // @synthesize artworkCatalog=_artworkCatalog;
 @property(readonly, nonatomic) MRUWaveformData *waveform; // @synthesize waveform=_waveform;
 - (void)nowPlayingController:(id)arg1 endpointController:(id)arg2 didChangeRoute:(id)arg3;
 - (void)nowPlayingController:(id)arg1 metadataController:(id)arg2 didChangeNowPlayingInfo:(id)arg3;
-- (void)nowPlayingController:(id)arg1 metadataController:(id)arg2 didChangeArtwork:(id)arg3;
 - (_Bool)nowPlayingControllerShouldAutomaticallyUpdateResponse:(id)arg1;
 - (void)controller:(id)arg1 playerPathDidChange:(id)arg2;
 - (void)audioAnalyzer:(id)arg1 didUpdateWaveform:(id)arg2;
-- (void)setImage:(id)arg1;
-- (void)updateArtworkImage;
-- (void)updateArtworkWithCatalog:(id)arg1;
+- (void)artworkView:(id)arg1 didChangeArtworkImage:(id)arg2;
+- (void)updateImage:(id)arg1;
 - (void)updateRoute:(id)arg1;
 - (void)routeDidUpdateNotification:(id)arg1;
-- (void)setArtworkImage:(id)arg1;
 - (void)setRemoteRouteSymbolName:(id)arg1;
 - (void)setRemoteRoute:(_Bool)arg1;
 - (void)setWaveform:(id)arg1;

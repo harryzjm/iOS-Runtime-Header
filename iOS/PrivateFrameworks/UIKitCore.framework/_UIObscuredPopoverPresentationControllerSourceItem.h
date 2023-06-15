@@ -19,6 +19,9 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (struct CGRect)_sourceRectForPresentationInWindow:(id)arg1;
 - (id)_sourceViewForPresentationInWindow:(id)arg1;
+- (id)_nearestViewController;
+- (struct CGRect)_frameInCoordinateSpace:(id)arg1 window:(id)arg2;
+- (struct CGRect)frameInView:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

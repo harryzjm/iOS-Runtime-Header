@@ -8,7 +8,7 @@
 
 @protocol APMetricNotificationRegister <NSObject>
 - (void)removeHandlerWithIdentifier:(long long)arg1;
-- (long long)registerHandlerForRoute:(long long)arg1 andMetric:(long long)arg2 closure:(void (^)(id <APMetricProtocol>))arg3;
-- (long long)registerHandlerForRoute:(long long)arg1 closure:(void (^)(id <APMetricProtocol>))arg2;
+- (long long)registerHandlerForPurpose:(long long)arg1 andMetric:(long long)arg2 closure:(void (^)(id <APMetricProtocol>))arg3;
+- (long long)registerHandlerForPurpose:(long long)arg1 closure:(void (^)(id <APMetricProtocol>))arg2;
 @end
 

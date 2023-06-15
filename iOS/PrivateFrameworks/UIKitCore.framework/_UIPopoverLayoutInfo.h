@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 @class NSMutableArray;
 
 __attribute__((visibility("hidden")))
-@interface _UIPopoverLayoutInfo : NSObject <NSCopying>
+@interface _UIPopoverLayoutInfo : NSObject
 {
     struct UIEdgeInsets _contentInset;
     double _arrowHeight;

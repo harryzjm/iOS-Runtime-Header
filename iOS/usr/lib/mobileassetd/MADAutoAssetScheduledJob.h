@@ -12,6 +12,8 @@ __attribute__((visibility("hidden")))
 @interface MADAutoAssetScheduledJob : NSObject
 {
     _Bool _pushedJob;
+    _Bool _requiringRetry;
+    _Bool _setJob;
     MAAutoAssetSelector *_assetSelector;
     long long _intervalSecs;
     long long _remainingSecs;
@@ -19,15 +21,19 @@ __attribute__((visibility("hidden")))
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool setJob; // @synthesize setJob=_setJob;
+@property(nonatomic) _Bool requiringRetry; // @synthesize requiringRetry=_requiringRetry;
 @property(nonatomic) _Bool pushedJob; // @synthesize pushedJob=_pushedJob;
 @property(nonatomic) long long remainingSecs; // @synthesize remainingSecs=_remainingSecs;
 @property(nonatomic) long long intervalSecs; // @synthesize intervalSecs=_intervalSecs;
-@property(readonly, retain, nonatomic) MAAutoAssetSelector *assetSelector; // @synthesize assetSelector=_assetSelector;
+@property(retain, nonatomic) MAAutoAssetSelector *assetSelector; // @synthesize assetSelector=_assetSelector;
 - (id)summary;
 - (id)description;
 - (id)copy;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initForAssetSelector:(id)arg1 withActivityInterval:(long long)arg2 forPushedJob:(_Bool)arg3 forSetJob:(_Bool)arg4 requiringRetry:(_Bool)arg5;
+- (id)initForAssetSelector:(id)arg1 withActivityInterval:(long long)arg2 forPushedJob:(_Bool)arg3 requiringRetry:(_Bool)arg4;
 - (id)initForAssetSelector:(id)arg1 withActivityInterval:(long long)arg2 forPushedJob:(_Bool)arg3;
 
 @end

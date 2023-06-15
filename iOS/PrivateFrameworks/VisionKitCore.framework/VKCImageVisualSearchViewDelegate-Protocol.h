@@ -6,9 +6,12 @@
 
 #import <VisionKitCore/VKCVisualSearchResultItemViewDelegate-Protocol.h>
 
-@class VKAnalyticsEvent, VKCImageVisualSearchView;
+@class NSArray, RVItem, UIBezierPath, VKAnalyticsEvent, VKCImageVisualSearchView, VKCVisualSearchResultItem;
 
 @protocol VKCImageVisualSearchViewDelegate <VKCVisualSearchResultItemViewDelegate>
+- (_Bool)visualSearchView:(VKCImageVisualSearchView *)arg1 shouldShowDotForItem:(VKCVisualSearchResultItem *)arg2 allItems:(NSArray *)arg3;
+- (void)addMetadataToVSFeedbackItem:(RVItem *)arg1;
+- (UIBezierPath *)visualSearchView:(VKCImageVisualSearchView *)arg1 normalizedPathForSubjectAtNormalizedPoint:(struct CGPoint)arg2;
 - (void)visualSearchView:(VKCImageVisualSearchView *)arg1 analyticsEventOccured:(VKAnalyticsEvent *)arg2;
 @end
 

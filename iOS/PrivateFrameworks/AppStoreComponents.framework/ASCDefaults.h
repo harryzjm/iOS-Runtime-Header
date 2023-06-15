@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
+@property(copy, nonatomic) NSString *jsVersion;
 @property(nonatomic) _Bool preferInternalJS;
 @property(copy, nonatomic) NSString *debugPackageURL;
 @property(nonatomic) _Bool forceStandaloneWatch;

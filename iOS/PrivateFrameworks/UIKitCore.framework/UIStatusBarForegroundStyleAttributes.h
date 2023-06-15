@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 @class NSMutableDictionary, NSString, UIColor;
 
 __attribute__((visibility("hidden")))
-@interface UIStatusBarForegroundStyleAttributes : NSObject <NSCopying>
+@interface UIStatusBarForegroundStyleAttributes : NSObject
 {
     double _height;
     long long _legibilityStyle;

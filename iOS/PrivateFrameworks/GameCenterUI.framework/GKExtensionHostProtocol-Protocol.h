@@ -6,10 +6,9 @@
 
 #import <GameCenterUI/NSObject-Protocol.h>
 
-@class GKGame, NSData;
+@class NSData;
 
 @protocol GKExtensionHostProtocol <NSObject>
-@property(retain, nonatomic) GKGame *game;
 - (void)messageFromExtension:(NSData *)arg1;
 
 @optional

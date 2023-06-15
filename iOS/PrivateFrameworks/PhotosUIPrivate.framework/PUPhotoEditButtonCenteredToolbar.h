@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, UIView;
+@class NSArray, UILayoutGuide, UIView;
 
 __attribute__((visibility("hidden")))
 @interface PUPhotoEditButtonCenteredToolbar
@@ -15,9 +15,11 @@ __attribute__((visibility("hidden")))
     NSArray *_leadingLayoutConstraints;
     NSArray *_trailingLayoutConstraints;
     NSArray *_centerLayoutConstraints;
+    UILayoutGuide *_buttonAreaLayoutGuide;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) UILayoutGuide *buttonAreaLayoutGuide; // @synthesize buttonAreaLayoutGuide=_buttonAreaLayoutGuide;
 - (void)_invalidateAllConstraints;
 - (void)_addCenterConstraintsWithMetrics:(id)arg1 verticalLayout:(_Bool)arg2;
 - (void)_addTrailingConstraintsWithMetrics:(id)arg1 verticalLayout:(_Bool)arg2;

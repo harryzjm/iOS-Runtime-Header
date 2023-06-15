@@ -9,6 +9,7 @@
 @class AMSAuthenticateRequest, AMSDialogRequest, AMSEngagementRequest, ICQPurchase;
 
 @protocol ICQPurchaseDelegate <NSObject>
+- (_Bool)isLiftUIFlow;
 - (void)handleEngagementRequest:(AMSEngagementRequest *)arg1 purchase:(ICQPurchase *)arg2 completion:(void (^)(AMSEngagementResult *, NSError *))arg3;
 - (void)handleDialogRequest:(AMSDialogRequest *)arg1 purchase:(ICQPurchase *)arg2 completion:(void (^)(AMSDialogResult *, NSError *))arg3;
 - (void)handleAuthenticateRequest:(AMSAuthenticateRequest *)arg1 purchase:(ICQPurchase *)arg2 completion:(void (^)(AMSAuthenticateResult *, NSError *))arg3;

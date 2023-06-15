@@ -17,6 +17,7 @@
     MISSING_TYPE *name;
     MISSING_TYPE *identifiers;
     MISSING_TYPE *utteranceAlignments;
+    MISSING_TYPE *entitySpans;
 }
 
 @end

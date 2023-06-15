@@ -10,7 +10,6 @@
 
 @protocol MNGuidanceManagerDelegate <NSObject>
 @property(readonly, nonatomic) int navigationState;
-- (double)durationForAnnouncement:(NSString *)arg1;
 - (_Bool)isCurrentlySpeaking;
 - (_Bool)guidanceManagerIsRerouting;
 - (void)guidanceManager:(MNGuidanceManager *)arg1 updatedGuidanceEventFeedback:(MNGuidanceEventFeedback *)arg2;

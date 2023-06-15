@@ -13,14 +13,16 @@ __attribute__((visibility("hidden")))
 {
     _GCDevicePhysicalInputBase *_implementation;
     struct __CFArray *_views;
+    id _viewConfiguration;
     id _viewProperties;
     id _viewState;
 }
 
 @property(readonly) _GCDevicePhysicalInputBase *implementation; // @synthesize implementation=_implementation;
-- (unsigned long long)view:(id)arg1 allocateObjectSlotForTransaction:(_Bool)arg2 withCopyOfValueFromView:(id)arg3 slot:(unsigned long long)arg4;
-- (unsigned long long)view:(id)arg1 allocatePrimitiveSlotForTransaction:(_Bool)arg2 withCopyOfValueFromView:(id)arg3 slot:(unsigned long long)arg4;
+- (unsigned long long)view:(id)arg1 allocateObjectSlot:(unsigned char)arg2 withCopyOfValueFromView:(id)arg3 slot:(unsigned long long)arg4;
+- (unsigned long long)view:(id)arg1 allocatePrimitiveSlot:(unsigned char)arg2 withCopyOfValueFromView:(id)arg3 slot:(unsigned long long)arg4;
 - (unsigned long long)view:(id)arg1 makeReferenceToView:(id)arg2;
+- (id)viewDataSource:(id)arg1;
 - (void)dealloc;
 - (id)init;
 

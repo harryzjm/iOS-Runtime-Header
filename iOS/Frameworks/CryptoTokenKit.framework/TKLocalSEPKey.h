@@ -32,9 +32,9 @@ __attribute__((visibility("hidden")))
 - (id)publicKeyWithError:(id *)arg1;
 - (_Bool)deleteWithError:(id *)arg1;
 - (id)objectID;
-- (id)_initWithKeyType:(id)arg1 keySize:(long long)arg2 accessControl:(struct __SecAccessControl *)arg3 options:(id)arg4 authContext:(id)arg5 caller:(id)arg6 error:(id *)arg7;
+- (id)_initWithKeyType:(id)arg1 keySize:(long long)arg2 accessControl:(struct __SecAccessControl *)arg3 options:(id)arg4 authContext:(id)arg5 caller:(id)arg6 forceSystemSession:(_Bool)arg7 error:(id *)arg8;
 - (struct __SecAccessControl *)accessControl;
-- (id)_initWithObjectID:(id)arg1 authContext:(id)arg2 caller:(id)arg3 error:(id *)arg4;
+- (id)_initWithObjectID:(id)arg1 authContext:(id)arg2 caller:(id)arg3 forceSystemSession:(_Bool)arg4 error:(id *)arg5;
 - (_Bool)systemKey;
 - (id)keyType;
 - (long long)keySize;

@@ -19,6 +19,7 @@
     MISSING_TYPE *createdDate;
     MISSING_TYPE *cache;
     MISSING_TYPE *cacheLock;
+    MISSING_TYPE *footerContext;
 }
 
 @end

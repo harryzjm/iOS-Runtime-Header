@@ -12,8 +12,12 @@
 - (void)getSecurityServiceProxyWithDelegate:(id <AMSSecurityClientInterface>)arg1 replyHandler:(void (^)(id <AMSSecurityServiceInterface>, NSError *))arg2;
 - (void)getPushNotificationServiceProxyWithReplyHandler:(void (^)(id <AMSPushNotificationServiceInterface>, NSError *))arg1;
 - (void)getPurchaseServiceProxyWithReplyHandler:(void (^)(id <AMSPurchaseServiceInterface>, NSError *))arg1;
+- (void)getKeychainServiceProxyWithReplyHandler:(void (^)(id <AMSKeychainServiceInterface>, NSError *))arg1;
 - (void)getFraudReportServiceProxyWithReplyHandler:(void (^)(id <AMSFraudReportServiceInterface>, NSError *))arg1;
+- (void)getDismissQRDialogServiceProxyWithReplyHandler:(void (^)(id <AMSDismissQRDialogServiceInterface>, NSError *))arg1;
 - (void)getDeviceMessengerServiceProxyWithDelegate:(id <AMSDeviceMessengerClientInterface>)arg1 replyHandler:(void (^)(id <AMSDeviceMessengerServiceInterface>, NSError *))arg2;
 - (void)getCookieServiceProxyWithReplyHandler:(void (^)(id <AMSCookieServiceInterface>, NSError *))arg1;
+- (void)getAccountSignOutServiceProxyWithReplyHandler:(void (^)(id <AMSAccountSignOutServiceInterface>, NSError *))arg1;
+- (void)getAccountCachedServerDataServiceProxyWithReplyHandler:(void (^)(id <AMSAccountCachedServerDataServiceInterface>, NSError *))arg1;
 @end
 

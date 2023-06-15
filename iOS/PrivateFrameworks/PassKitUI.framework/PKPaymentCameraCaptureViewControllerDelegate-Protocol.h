@@ -6,10 +6,11 @@
 
 #import <PassKitUI/NSObject-Protocol.h>
 
-@class NSArray, PKPaymentCameraCaptureViewController;
+@class NSArray, UIViewController;
 
 @protocol PKPaymentCameraCaptureViewControllerDelegate <NSObject>
-- (void)cameraCaptureViewController:(PKPaymentCameraCaptureViewController *)arg1 didRecognizeObjects:(NSArray *)arg2;
-- (void)cameraCaptureViewControllerDidFail:(PKPaymentCameraCaptureViewController *)arg1;
+- (void)cameraCaptureViewControllerDidSelectManualEntry:(UIViewController *)arg1;
+- (void)cameraCaptureViewController:(UIViewController *)arg1 didRecognizeObjects:(NSArray *)arg2;
+- (void)cameraCaptureViewControllerDidFail:(UIViewController *)arg1;
 @end
 

@@ -7,9 +7,9 @@
 @protocol MFCrossFadeParameters, MFGaplessParameters, MFQueuePlayerItem;
 
 @protocol MFTransitionInformationProviding
-@property(readonly, nonatomic) id <MFCrossFadeParameters> crossFadeParameters;
-@property(readonly, nonatomic) id <MFGaplessParameters> gaplessParameters;
 - (_Bool)shouldPerformGaplessTransitionWith:(id <MFQueuePlayerItem>)arg1;
 - (_Bool)shouldPerformCrossFadeTransitionWith:(id <MFQueuePlayerItem>)arg1;
+@property(nonatomic, readonly) id <MFCrossFadeParameters> crossFadeParameters;
+@property(nonatomic, readonly) id <MFGaplessParameters> gaplessParameters;
 @end
 

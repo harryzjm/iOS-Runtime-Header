@@ -8,6 +8,7 @@
 
 @protocol PGGraphFeatureExtractorProtocol <NSObject>
 + (id)featureExtractorWithError:(id *)arg1;
+@property(readonly, nonatomic) unsigned long long featureLength;
 - (id)initWithError:(id *)arg1;
 @end
 

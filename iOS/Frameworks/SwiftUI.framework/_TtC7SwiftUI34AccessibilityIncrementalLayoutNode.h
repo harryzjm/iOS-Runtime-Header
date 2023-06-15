@@ -4,10 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSArray;
+
 __attribute__((visibility("hidden")))
 @interface _TtC7SwiftUI34AccessibilityIncrementalLayoutNode
 {
 }
+
+@property(nonatomic, copy) NSArray *accessibilityElements;
+- (id)_accessibilitySupplementaryFooterViews;
+- (id)_accessibilitySupplementaryHeaderViews;
 
 @end
 

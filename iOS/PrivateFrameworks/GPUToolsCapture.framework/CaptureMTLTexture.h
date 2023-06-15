@@ -9,7 +9,6 @@
 @class NSString;
 @protocol MTLBuffer, MTLDevice, MTLHeap, MTLResource, MTLTexture, MTLTextureSPI><MTLResourceSPI;
 
-__attribute__((visibility("hidden")))
 @interface CaptureMTLTexture : NSObject
 {
     id <MTLTextureSPI><MTLResourceSPI> _baseObject;

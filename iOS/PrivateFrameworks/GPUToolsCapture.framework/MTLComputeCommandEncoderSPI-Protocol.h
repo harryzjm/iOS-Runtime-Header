@@ -11,6 +11,8 @@
 @protocol MTLBuffer, MTLResourceGroupSPI;
 
 @protocol MTLComputeCommandEncoderSPI <MTLCommandEncoderSPI, MTLComputeCommandEncoder>
+- (void)setThreadgroupDistributionModeWithClusterGroupIndex:(unsigned int)arg1;
+- (void)setThreadgroupDistributionMode:(long long)arg1;
 - (void)setThreadgroupPackingDisabled:(_Bool)arg1;
 - (NSData *)newKernelDebugInfo;
 

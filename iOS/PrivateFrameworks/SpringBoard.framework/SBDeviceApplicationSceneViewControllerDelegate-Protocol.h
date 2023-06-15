@@ -11,5 +11,8 @@
 @protocol SBDeviceApplicationSceneViewControllerDelegate <NSObject>
 - (void)applicationSceneViewControllerDidUpdateHomeAffordanceSupportedOrientations:(SBDeviceApplicationSceneViewController *)arg1;
 - (void)applicationSceneViewController:(SBDeviceApplicationSceneViewController *)arg1 statusBarTapped:(UITapGestureRecognizer *)arg2 tapActionType:(long long)arg3;
+
+@optional
+- (_Bool)applicationSceneViewControllerIsInNonrotatingWindow:(SBDeviceApplicationSceneViewController *)arg1;
 @end
 

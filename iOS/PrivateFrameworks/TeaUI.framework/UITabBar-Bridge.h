@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UITabBar.h>
+#import <UIKitCore/UITabBar.h>
 
 @interface UITabBar (Bridge)
 - (void)ts_setBackgroundView:(id)arg1;

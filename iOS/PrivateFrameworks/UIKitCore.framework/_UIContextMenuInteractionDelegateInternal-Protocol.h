@@ -7,12 +7,13 @@
 #import <UIKitCore/UIContextMenuInteractionDelegate-Protocol.h>
 
 @class UIContextMenuConfiguration, UIContextMenuInteraction, UITargetedPreview;
-@protocol _UIClickHighlightEffect;
+@protocol UIMenuLeaf, _UIClickHighlightEffect;
 
 @protocol _UIContextMenuInteractionDelegateInternal <UIContextMenuInteractionDelegate>
 
 @optional
+- (void)_contextMenuInteraction:(UIContextMenuInteraction *)arg1 didPerformMenuLeaf:(id <UIMenuLeaf>)arg2 target:(id)arg3;
 - (_Bool)_contextMenuInteraction:(UIContextMenuInteraction *)arg1 shouldAttemptToPresentConfiguration:(UIContextMenuConfiguration *)arg2;
-- (id <_UIClickHighlightEffect>)_contextMenuInteraction:(UIContextMenuInteraction *)arg1 interactionEffectForTargetedPreview:(UITargetedPreview *)arg2;
+- (id <_UIClickHighlightEffect>)_contextMenuInteraction:(UIContextMenuInteraction *)arg1 configuration:(UIContextMenuConfiguration *)arg2 interactionEffectForTargetedPreview:(UITargetedPreview *)arg3;
 @end
 

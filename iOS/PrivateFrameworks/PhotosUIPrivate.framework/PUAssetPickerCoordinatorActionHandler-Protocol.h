@@ -6,12 +6,9 @@
 
 #import <PhotosUIPrivate/NSObject-Protocol.h>
 
-@class NSNumber, NSOrderedSet, PUAssetPickerCoordinator;
+@class NSOrderedSet, PUAssetPickerCoordinator, PUPickerAdditionalSelectionState;
 
 @protocol PUAssetPickerCoordinatorActionHandler <NSObject>
-- (void)coordinator:(PUAssetPickerCoordinator *)arg1 didFinishPicking:(NSOrderedSet *)arg2 downscalingTargetDimension:(NSNumber *)arg3;
-
-@optional
-- (void)coordinatorDidRequestEmbeddableLayout:(PUAssetPickerCoordinator *)arg1;
+- (void)coordinator:(PUAssetPickerCoordinator *)arg1 didFinishPicking:(NSOrderedSet *)arg2 additionalSelectionState:(PUPickerAdditionalSelectionState *)arg3;
 @end
 

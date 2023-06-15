@@ -6,23 +6,34 @@
 
 #import <objc/NSObject.h>
 
-@class VNRequest;
+@class NSNumber, NSString, VNRequest;
 
 __attribute__((visibility("hidden")))
 @interface VCPVideoProcessorNode : NSObject
 {
     VNRequest *_request;
+    CDUnknownBlockType _frameProcessor;
     unsigned long long _frameInterval;
+    NSNumber *_frameLimit;
+    unsigned long long _processedFrameCount;
     CDStruct_1b6d18a9 _timeInterval;
 }
 
++ (id)nodeWithFrameProcessor:(CDUnknownBlockType)arg1 andConfiguration:(id)arg2;
 + (id)nodeWithRequest:(id)arg1 andConfiguration:(id)arg2;
 + (_Bool)validateConfiguration:(id)arg1 withError:(id *)arg2;
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long processedFrameCount; // @synthesize processedFrameCount=_processedFrameCount;
+@property(readonly, nonatomic) NSNumber *frameLimit; // @synthesize frameLimit=_frameLimit;
 @property(readonly, nonatomic) unsigned long long frameInterval; // @synthesize frameInterval=_frameInterval;
 @property(readonly, nonatomic) CDStruct_1b6d18a9 timeInterval; // @synthesize timeInterval=_timeInterval;
+@property(readonly, nonatomic) CDUnknownBlockType frameProcessor; // @synthesize frameProcessor=_frameProcessor;
 @property(readonly, nonatomic) VNRequest *request; // @synthesize request=_request;
+- (_Bool)finished;
+- (id)initWithFrameProcessor:(CDUnknownBlockType)arg1 andConfiguration:(id)arg2;
 - (id)initWithRequest:(id)arg1 andConfiguration:(id)arg2;
+- (void)_processConfiguration:(id)arg1;
+@property(readonly, nonatomic) NSString *typeDescription;
 
 @end
 

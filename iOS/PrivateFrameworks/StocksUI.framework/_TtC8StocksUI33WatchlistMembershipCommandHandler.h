@@ -11,6 +11,7 @@
 @interface _TtC8StocksUI33WatchlistMembershipCommandHandler : _TtCs12_SwiftObject
 {
     MISSING_TYPE *watchlistManager;
+    MISSING_TYPE *commandCenter;
 }
 
 @end

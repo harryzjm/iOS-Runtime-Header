@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
 @class NSString, QLAppearance, QLItemViewController, QLPageViewController, QLPinchRotationTracker, QLPreviewItemStore, QLSwipeDownTracker, QLTransitionContext, QLTransitionDriver, UIPanGestureRecognizer, UIPinchGestureRecognizer, UIRotationGestureRecognizer, UISwipeGestureRecognizer, UITapGestureRecognizer, UIView;
 @protocol QLPreviewControllerStateProtocol><QLPreviewControllerStateProtocol_UIKit, QLTransitionControllerProtocol;
@@ -95,6 +95,7 @@ __attribute__((visibility("hidden")))
 - (void)previewItemViewControllerWantsUpdatePrinter:(id)arg1;
 - (void)previewItemViewControllerDidUpdatePreferredContentSize:(id)arg1;
 - (void)previewItemViewControllerDidUpdateTitle:(id)arg1;
+- (void)previewItemViewController:(id)arg1 requestsTemporaryEditDirectoryWithCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)previewItemViewControllerWantsToShowNoInternetConnectivityAlert:(id)arg1;
 - (void)previewItemViewControllerWantsUpdateKeyCommands:(id)arg1;
 - (void)previewItemViewControllerWantsUpdateOverlay:(id)arg1 animated:(_Bool)arg2;
@@ -145,6 +146,11 @@ __attribute__((visibility("hidden")))
 - (void)keyCommandWasPerformed:(id)arg1;
 - (id)_defaultKeyCommands;
 - (void)keyCommandsWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)forwardKeyPressToHostIfNeeded:(id)arg1 serviceCommands:(id)arg2;
+- (_Bool)isFirstResponderKeyInput;
+- (_Bool)isFirstResponderTextEntry;
+- (void)forwardPressesToHostIfNeeded:(id)arg1;
+- (void)pressesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)saveIntoPhotoLibraryMediaWithURLWrapper:(id)arg1 previewItemType:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)requestLockForCurrentItem;
 - (void)shouldDisplayLockActivityWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -157,7 +163,6 @@ __attribute__((visibility("hidden")))
 - (void)saveCurrentPreviewEditsSynchronously:(_Bool)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)toolbarButtonPressedWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)toolbarButtonsForTraitCollection:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
-- (void)getCurrentPreviewActivityUserInfoWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)notifyStateRestorationUserInfo:(id)arg1;
 - (void)notifyFirstTimeAppearanceWithActions:(unsigned long long)arg1;
 - (void)setAppearance:(id)arg1 animated:(_Bool)arg2;

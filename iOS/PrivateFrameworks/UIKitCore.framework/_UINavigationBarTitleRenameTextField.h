@@ -6,26 +6,36 @@
 
 #import "UITextField.h"
 
-@class NSString, _UINavigationBarTitleRenamerSession, _UIPassthroughScrollInteraction;
+@class FBSSceneIdentityToken, NSLayoutConstraint, NSString, _UINavigationBarTitleRenamerSession, _UIPassthroughScrollInteraction;
 
 __attribute__((visibility("hidden")))
 @interface _UINavigationBarTitleRenameTextField : UITextField
 {
+    FBSSceneIdentityToken *_layeringSceneIdentity;
+    CDUnknownBlockType _horizontalTextInsetDidChangeCallback;
     _UINavigationBarTitleRenamerSession *_session;
+    NSLayoutConstraint *_iconHeightConstraint;
     _UIPassthroughScrollInteraction *_passthroughInteraction;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) _UIPassthroughScrollInteraction *passthroughInteraction; // @synthesize passthroughInteraction=_passthroughInteraction;
+@property(readonly, nonatomic) NSLayoutConstraint *iconHeightConstraint; // @synthesize iconHeightConstraint=_iconHeightConstraint;
 @property(readonly, nonatomic) _UINavigationBarTitleRenamerSession *session; // @synthesize session=_session;
+@property(copy, nonatomic) CDUnknownBlockType horizontalTextInsetDidChangeCallback; // @synthesize horizontalTextInsetDidChangeCallback=_horizontalTextInsetDidChangeCallback;
+@property(retain, nonatomic, setter=_setLayeringSceneIdentity:) FBSSceneIdentityToken *_layeringSceneIdentity; // @synthesize _layeringSceneIdentity;
+@property(readonly, nonatomic) double horizontalTextInset;
 - (_Bool)passthroughScrollInteractionDidRecognize:(id)arg1;
 - (_Bool)passthroughScrollInteraction:(id)arg1 shouldInteractAtLocation:(struct CGPoint)arg2 withEvent:(id)arg3;
 - (void)didMoveToWindow;
 - (void)willMoveToWindow:(id)arg1;
-- (_Bool)resignFirstResponder;
+- (void)_resignFirstResponder;
 - (_Bool)canResignFirstResponder;
-- (_Bool)becomeFirstResponder;
+- (void)_becomeFirstResponder;
 - (_Bool)_shouldEndEditingOnReturn;
+- (_Bool)supportsImagePaste;
+- (void)layoutSubviews;
+- (void)_setupIconViewIfNecessary;
 - (id)initWithSession:(id)arg1;
 
 // Remaining properties
@@ -33,6 +43,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
+@property(nonatomic) long long textAlignment;
 
 @end
 

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 @class NSOrderedSet;
 
 __attribute__((visibility("hidden")))
-@interface _UICommandDiffv1 : NSObject <NSCopying>
+@interface _UICommandDiffv1 : NSObject
 {
     NSOrderedSet *_changes;
 }

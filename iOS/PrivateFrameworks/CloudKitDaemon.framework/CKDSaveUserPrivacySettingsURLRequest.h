@@ -6,23 +6,19 @@
 
 #import "CKDURLRequest.h"
 
-@class NSString;
-
 @interface CKDSaveUserPrivacySettingsURLRequest : CKDURLRequest
 {
-    NSString *_bundleID;
     long long _discoverableTrinary;
 }
 
-- (void).cxx_destruct;
 @property(nonatomic) long long discoverableTrinary; // @synthesize discoverableTrinary=_discoverableTrinary;
-@property(copy, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
 - (id)requestDidParseProtobufObject:(id)arg1;
 - (id)generateRequestOperations;
 - (_Bool)requiresTokenRegistration;
 - (id)requestOperationClasses;
 - (long long)databaseScope;
 - (void)setDiscoverable:(_Bool)arg1;
+- (id)equivalencyProperties;
 - (id)initWithOperation:(id)arg1;
 
 @end

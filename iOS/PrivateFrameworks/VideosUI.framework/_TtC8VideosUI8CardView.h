@@ -16,6 +16,8 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *overlayView;
     MISSING_TYPE *labelViews;
     MISSING_TYPE *button;
+    MISSING_TYPE *downloadIndicator;
+    MISSING_TYPE *bottomSeparatorView;
 }
 
 - (void).cxx_destruct;

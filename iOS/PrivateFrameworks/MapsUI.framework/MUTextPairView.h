@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class MUTextPairViewModel, NSArray, NSString, UILabel;
 
@@ -21,7 +21,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) MUTextPairViewModel *viewModel; // @synthesize viewModel=_viewModel;
 @property(nonatomic, getter=isStacked) _Bool stacked; // @synthesize stacked=_stacked;
-- (void)traitCollectionDidChange:(id)arg1;
 - (void)_contentSizeDidChange;
 - (void)_updateAppearance;
 - (void)_updateConstraints;

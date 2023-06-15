@@ -8,7 +8,6 @@
 
 @class NSISO8601DateFormatter;
 
-__attribute__((visibility("hidden")))
 @interface MDDateFormatter : NSObject
 {
     NSISO8601DateFormatter *_formatter;

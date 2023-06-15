@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 @class NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface UIInterfaceActionSection : NSObject <NSCopying>
+@interface UIInterfaceActionSection : NSObject
 {
     NSArray *_actions;
     NSString *_sectionID;

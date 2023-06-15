@@ -7,7 +7,10 @@
 #import <Foundation/NSDate.h>
 
 @interface NSDate (TransparencyDate)
++ (id)kt_dateFromString:(id)arg1;
 + (double)kt_currentTimeMs;
+- (id)kt_toISO_8601_UTCString;
+- (id)kt_dateToString;
 - (_Bool)kt_isEqualWithinOneMillisecond:(id)arg1;
 @end
 

@@ -17,6 +17,8 @@ __attribute__((visibility("hidden")))
     NSString *_scheme;
     NSString *_secureScheme;
     NSString *_accountMediaType;
+    NSString *_proxyAppBundleID;
+    NSString *_userAgentSuffix;
 }
 
 + (id)_clientVersionFromProcessInfo:(id)arg1 clientName:(id)arg2;
@@ -27,6 +29,8 @@ __attribute__((visibility("hidden")))
 + (id)bundleInfoForProcessInfo:(id)arg1;
 + (id)accountMediaTypeInfoForProcessInfo:(id)arg1;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *userAgentSuffix; // @synthesize userAgentSuffix=_userAgentSuffix;
+@property(retain, nonatomic) NSString *proxyAppBundleID; // @synthesize proxyAppBundleID=_proxyAppBundleID;
 @property(retain, nonatomic) NSString *accountMediaType; // @synthesize accountMediaType=_accountMediaType;
 @property(retain, nonatomic) NSString *secureScheme; // @synthesize secureScheme=_secureScheme;
 @property(retain, nonatomic) NSString *scheme; // @synthesize scheme=_scheme;

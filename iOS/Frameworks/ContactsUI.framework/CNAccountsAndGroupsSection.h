@@ -12,18 +12,18 @@ __attribute__((visibility("hidden")))
 @interface CNAccountsAndGroupsSection : NSObject
 {
     _Bool _isAllContactsGlobalSection;
+    NSString *_title;
     NSArray *_items;
     CDUnknownBlockType _titleProvider;
-    NSString *_title;
     NSString *_identifier;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property(retain, nonatomic) NSString *title; // @synthesize title=_title;
 @property(copy, nonatomic) CDUnknownBlockType titleProvider; // @synthesize titleProvider=_titleProvider;
 @property(retain, nonatomic) NSArray *items; // @synthesize items=_items;
 @property(nonatomic) _Bool isAllContactsGlobalSection; // @synthesize isAllContactsGlobalSection=_isAllContactsGlobalSection;
+@property(retain, nonatomic) NSString *title; // @synthesize title=_title;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 

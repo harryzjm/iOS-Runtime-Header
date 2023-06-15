@@ -6,10 +6,11 @@
 
 #import <SafariShared/WBSHistoryLoaderDelegate-Protocol.h>
 
-@class NSArray, WBSHistoryDeletionPlan;
+@class NSArray, NSString, WBSHistoryDeletionPlan, WBSHistoryItem;
 @protocol WBSHistoryStore;
 
 @protocol WBSHistoryStoreDelegate <WBSHistoryLoaderDelegate>
+- (WBSHistoryItem *)historyStore:(id <WBSHistoryStore>)arg1 itemForURLString:(NSString *)arg2 createIfNeeded:(_Bool)arg3;
 - (void)historyStoreWasCleared:(id <WBSHistoryStore>)arg1;
 - (void)historyStore:(id <WBSHistoryStore>)arg1 didRemoveHostnames:(NSArray *)arg2;
 - (void)historyStore:(id <WBSHistoryStore>)arg1 didRemoveHighLevelDomains:(NSArray *)arg2;

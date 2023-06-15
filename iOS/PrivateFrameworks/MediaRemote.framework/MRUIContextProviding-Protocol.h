@@ -7,6 +7,6 @@
 @class NSString;
 
 @protocol MRUIContextProviding
-- (NSString *)contextForSessionIdentifier:(NSString *)arg1;
+- (NSString *)contextForActivityIdentifier:(NSString *)arg1;
 @end
 

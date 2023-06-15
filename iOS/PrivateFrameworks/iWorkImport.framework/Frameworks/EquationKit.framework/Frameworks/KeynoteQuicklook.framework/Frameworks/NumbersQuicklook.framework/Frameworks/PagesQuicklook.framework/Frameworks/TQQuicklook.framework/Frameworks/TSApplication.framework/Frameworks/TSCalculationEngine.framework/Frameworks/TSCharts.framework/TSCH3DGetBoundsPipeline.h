@@ -19,7 +19,7 @@
 - (void)setObjectRenderMode:(int)arg1;
 - (void)set2DProjectedRenderingMode:(_Bool)arg1;
 - (_Bool)useIndividualBounds;
-- (void)extend2DProjectedBounds:(const void *)arg1;
+- (void)extend2DProjectedBounds:(void *)arg1;
 - (void)resetBounds;
 @property(readonly, nonatomic) const void *bounds;
 - (id)boundsProcessor;

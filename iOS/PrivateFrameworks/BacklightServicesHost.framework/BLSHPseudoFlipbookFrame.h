@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class BLSHPresentationDateSpecifier, NSString;
+@class BLSHPresentationDateSpecifier, NSString, NSUUID;
 
 __attribute__((visibility("hidden")))
 @interface BLSHPseudoFlipbookFrame : NSObject
@@ -25,7 +25,10 @@ __attribute__((visibility("hidden")))
 - (id)bls_shortLoggingString;
 - (id)bls_loggingString;
 @property(readonly, copy) NSString *description;
-- (void)releaseSurface;
+@property(readonly, nonatomic) NSUUID *bls_uuid;
+@property(readonly, nonatomic, getter=isInverted) _Bool inverted;
+@property(readonly, nonatomic) struct CGRect rawSurfaceFrame;
+@property(readonly, nonatomic) struct __IOSurface *rawSurface;
 @property(readonly, nonatomic) struct __IOSurface *surface;
 @property(readonly, nonatomic) float aplDimming;
 @property(readonly, nonatomic) float apl;

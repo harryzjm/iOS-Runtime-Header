@@ -10,10 +10,10 @@
 }
 
 + (float)perspectiveness;
-+ (tvec2_84d5962d)adjustLabelWrapSize:(const void *)arg1;
++ (tvec2_84d5962d)adjustLabelWrapSize:(void *)arg1;
 - (id).cxx_construct;
-- (tvec2_84d5962d)updateResizerFromRequestedSize:(const void *)arg1 startingSize:(void *)arg2;
-- (tvec2_84d5962d)updateDirectionsFromRequestedSize:(const void *)arg1 startingSize:(void *)arg2;
+- (tvec2_84d5962d)updateResizerFromRequestedSize:(void *)arg1 startingSize:(void *)arg2;
+- (tvec2_84d5962d)updateDirectionsFromRequestedSize:(void *)arg1 startingSize:(void *)arg2;
 - (tvec2_84d5962d)squareSize:(const void *)arg1;
 - (tvec3_17f03ce0)adjust:(void *)arg1 by:(float)arg2;
 - (void)setScale:(void *)arg1;

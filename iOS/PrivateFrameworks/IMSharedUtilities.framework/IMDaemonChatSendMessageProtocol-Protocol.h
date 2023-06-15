@@ -9,6 +9,7 @@
 @class IMMessageItem, NSArray, NSAttributedString, NSDictionary, NSString;
 
 @protocol IMDaemonChatSendMessageProtocol <NSObject>
+- (void)cancelScheduledMessageWithGUID:(NSString *)arg1;
 - (void)removePersonInfoFromiMessageChat:(NSDictionary *)arg1 chatID:(NSString *)arg2 identifier:(NSString *)arg3 style:(unsigned char)arg4 account:(NSString *)arg5;
 - (void)removePersonInfo:(NSDictionary *)arg1 chatID:(NSString *)arg2 identifier:(NSString *)arg3 style:(unsigned char)arg4 account:(NSString *)arg5;
 - (void)retryGroupPhotoUpload:(NSString *)arg1 toChatID:(NSString *)arg2 identifier:(NSString *)arg3 style:(unsigned char)arg4 account:(NSString *)arg5;

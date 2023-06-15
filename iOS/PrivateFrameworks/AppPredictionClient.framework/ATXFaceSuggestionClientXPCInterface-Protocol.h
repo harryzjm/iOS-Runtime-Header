@@ -11,6 +11,7 @@
 - (void)logFaceGalleryItemsSeenInGalleryWithOutcomes:(NSDictionary *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)logComplicationsSeenInGalleryWithEngagements:(NSDictionary *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)logPosterSwitch:(ATXPosterSwitch *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)logPosterEditUIViewedWithCompletion:(void (^)(NSError *))arg1;
 - (void)logPosterEdit:(ATXPosterEdit *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)logFaceGalleryDidAppearWithFaceGalleryConfiguration:(ATXFaceGalleryConfiguration *)arg1;
 - (void)fetchComplicationSuggestionsModelDescriptionWithCompletion:(void (^)(NSString *, NSError *))arg1;
@@ -21,6 +22,7 @@
 - (void)fetchScoredComplicationDescriptionWithCompletion:(void (^)(NSString *, NSError *))arg1;
 - (void)refreshComplicationsCacheWithCompletion:(void (^)(NSError *))arg1;
 - (void)fetchInlineComplicationSetForFaceGalleryItem:(ATXFaceGalleryItem *)arg1 completion:(void (^)(ATXComplicationSet *, NSError *))arg2;
+- (void)fetchLandscapeComplicationSetsForFaceGalleryItem:(ATXFaceGalleryItem *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)fetchComplicationSetsForFaceGalleryItem:(ATXFaceGalleryItem *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)fetchPosterConfigurationsWithCompletion:(void (^)(NSArray *, NSError *))arg1;
 - (void)fetchRankedPosterDescriptors:(void (^)(NSArray *, NSError *))arg1;

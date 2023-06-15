@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(readonly) MLModelDescription *modelDescription; // @synthesize modelDescription=_modelDescription;
 - (id)predictionFromFeatures:(id)arg1 options:(id)arg2 error:(id *)arg3;
+- (id)initWithMLCustomModel:(id)arg1 modelDescription:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class BRCDataOrDocsScopeGatherer, BRCItemGlobalID, BRCListDirectoryContentsOperation, BRCNotificationManager, BRCXPCClient, BRFileObjectID, BRNotificationQueue, NSHashTable, NSMutableDictionary, NSMutableSet, NSSet, NSString;
+@class BRCDataOrDocsScopeGatherer, BRCItemGlobalID, BRCListDirectoryContentsOperation, BRCNotificationManager, BRCXPCClient, BRFileObjectID, BRNotificationQueue, NSHashTable, NSMutableSet, NSSet, NSString;
 @protocol BRCNotificationPipeDelegate, BRItemNotificationReceiving, OS_dispatch_group, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -23,9 +23,6 @@ __attribute__((visibility("hidden")))
     BRCDataOrDocsScopeGatherer *_gatherer;
     NSObject<OS_dispatch_group> *_gatherGroup;
     _Bool _hasUpdatesInFlight;
-    _Bool _volumeIsCaseSensitive;
-    NSMutableDictionary *_pendingProgressUpdatesByID;
-    _Bool _hasProgressUpdatesInFlight;
     unsigned long long _initialGatherMaxRank;
     unsigned long long _secondaryGatherMaxRank;
     BRCNotificationManager *_manager;
@@ -56,14 +53,14 @@ __attribute__((visibility("hidden")))
 - (void)invalidateIfWatchingAppLibraryIDs:(id)arg1;
 - (void)_watchItem:(id)arg1 options:(unsigned short)arg2 gatherReply:(CDUnknownBlockType)arg3;
 - (void)watchScopes:(unsigned short)arg1 trustedAppLibraryIDs:(id)arg2 gatherReply:(CDUnknownBlockType)arg3;
+- (void)_performBlock:(CDUnknownBlockType)arg1 whenNotifsAreFullyFlushedInAppLibrary:(id)arg2 description:(id)arg3;
+- (void)_performBlock:(CDUnknownBlockType)arg1 whenNotifsAreFullyFlushedInClientZone:(id)arg2 description:(id)arg3;
+- (void)__performBlockafterDBAndNotifFlush:(CDUnknownBlockType)arg1 session:(id)arg2 description:(id)arg3 error:(id)arg4;
 - (void)close;
 - (void)listOperation:(id)arg1 wasReplacedByOperation:(id)arg2;
 - (void)_stopWatchingItems;
 - (void)_gatherIfNeededAndFlushAsync;
 - (void)__flush;
-- (void)processProgressUpdates:(id)arg1;
-- (void)_processProgressUpdates:(id)arg1;
-- (void)_flushProgressUpdates;
 - (void)processUpdates:(id)arg1 withRank:(unsigned long long)arg2;
 - (void)_prepareForSecondGatherWithRank:(unsigned long long)arg1;
 - (void)_addIntraContainerUpdatesFromInterContainerUpdate:(id)arg1 toArray:(id)arg2;
@@ -77,7 +74,6 @@ __attribute__((visibility("hidden")))
 - (void)_registerAsWatcherIfNeeded;
 - (void)dealloc;
 - (oneway void)invalidate;
-- (void)_triggerImmediateReadOfDocumentIfNeeded;
 - (void)watchItemWithFileObjectID:(id)arg1 options:(unsigned short)arg2 gatherReply:(CDUnknownBlockType)arg3;
 - (void)boostPriority:(CDUnknownBlockType)arg1;
 - (void)watchScopes:(unsigned short)arg1 gatherReply:(CDUnknownBlockType)arg2;

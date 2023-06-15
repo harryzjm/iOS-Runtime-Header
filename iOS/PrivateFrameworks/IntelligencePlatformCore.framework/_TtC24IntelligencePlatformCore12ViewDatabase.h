@@ -13,6 +13,7 @@
     MISSING_TYPE *url;
     MISSING_TYPE *config;
     MISSING_TYPE *pool;
+    MISSING_TYPE *configCache;
 }
 
 @end

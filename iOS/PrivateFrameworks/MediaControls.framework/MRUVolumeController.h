@@ -22,6 +22,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak id <MRUVolumeControllerCoordinationDelegate> coordinationDelegate; // @synthesize coordinationDelegate=_coordinationDelegate;
 @property(retain, nonatomic) NSNumber *optimisticValue; // @synthesize optimisticValue=_optimisticValue;
 - (void)restoreDelegate;
+- (void)finishEqualization;
+- (void)beginEqualization;
 - (void)setVolumeValue:(float)arg1;
 - (float)volumeValue;
 @property(nonatomic) __weak id <MRUVolumeControllerDelegate> delegate; // @dynamic delegate;

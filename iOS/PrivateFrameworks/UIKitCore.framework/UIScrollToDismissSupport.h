@@ -18,7 +18,9 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-- (void)_updateKeyboardLayoutGuideForInteractiveScrollWithSize:(struct CGSize)arg1;
+- (void)_updateKeyboardLayoutGuideForScrollTransitionWithSize:(struct CGSize)arg1 duration:(double)arg2;
+- (struct CGRect)addPaddingToFrame:(struct CGRect)arg1 inView:(id)arg2;
+- (id)_infoForMatchMove;
 - (void)scrollView:(id)arg1 didFinishPanGesture:(id)arg2;
 - (void)scrollView:(id)arg1 didPanWithGesture:(id)arg2;
 - (void)completeKeyboardDismiss:(unsigned long long)arg1 withDuration:(double)arg2;

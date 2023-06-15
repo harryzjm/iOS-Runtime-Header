@@ -4,8 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class GEOTileData, GEOURLWithHeaders, NSArray, NSData, NSError, NSObject, NSString, _GEOSimpleTileRequesterOperation;
-@protocol OS_xpc_object;
+@class GEOTileData, GEOURLWithHeaders, NSArray, NSData, NSError, NSString, _GEOSimpleTileRequesterOperation;
 
 @protocol GEOSimpleTileRequesterSubclass
 - (GEOURLWithHeaders *)urlForTileKey:(const struct _GEOTileKey *)arg1;
@@ -25,11 +24,10 @@
 - (NSData *)mergeBaseTile:(NSData *)arg1 withLocalizationTile:(NSData *)arg2;
 - (CDUnion_20bcf645)tileSetForKey:(const struct _GEOTileKey *)arg1;
 - (unsigned int)tileEditionForKey:(const struct _GEOTileKey *)arg1;
-- (NSObject<OS_xpc_object> *)newXPCDataRequestForTileKey:(const struct _GEOTileKey *)arg1;
 - (_Bool)shouldAllowEmptyDataForTileKey:(const struct _GEOTileKey *)arg1;
 - (int)checksumMethodForIncomingTileDataWithKey:(const struct _GEOTileKey *)arg1;
 - (_Bool)needsLocalizationForKey:(const struct _GEOTileKey *)arg1;
 - (GEOURLWithHeaders *)localizationURLForTileKey:(const struct _GEOTileKey *)arg1;
-- (CDStruct_d1a7ebee)kindForTileKey:(const struct _GEOTileKey *)arg1;
+- (CDStruct_026435ec)kindForTileKey:(const struct _GEOTileKey *)arg1;
 @end
 

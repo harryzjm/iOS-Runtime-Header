@@ -7,29 +7,43 @@
 #import <objc/NSObject.h>
 
 @class NSString, _GCDevicePhysicalInputBase;
-@protocol _GCDevicePhysicalInputViewState;
+@protocol _GCDevicePhysicalInputViewDataSource;
 
 __attribute__((visibility("hidden")))
 @interface _GCDevicePhysicalInputView : NSObject
 {
-    id <_GCDevicePhysicalInputViewState> _storage;
+    id <_GCDevicePhysicalInputViewDataSource> _dataSource;
+    _Bool _isPartOfPhysicalInput;
+    _Bool _isSnapshot;
+    _Atomic _Bool _isObserved;
 }
 
++ (unsigned short)updateContextSize;
++ (id)withParameters:(id)arg1;
++ (id)withTemplate:(id)arg1 context:(id)arg2;
 - (_Bool)allowsWeakReference;
 - (_Bool)retainWeakReference;
 - (unsigned long long)retainCount;
 - (oneway void)release;
 - (id)retain;
+- (void)addObserver:(id)arg1 forKeyPath:(id)arg2 options:(unsigned long long)arg3 context:(void *)arg4;
+- (void)postCommit:(const void *)arg1 sender:(id)arg2;
+- (void)preCommit:(const void *)arg1 sender:(id)arg2;
+- (_Bool)update:(void *)arg1 forUsages:(unsigned long long)arg2 with:(id)arg3;
 - (void)dealloc;
 - (id)init;
-- (id)initWith:(id)arg1 context:(id)arg2;
-- (unsigned long long)view:(id)arg1 allocateObjectSlotForTransaction:(_Bool)arg2 withCopyOfValueFromView:(id)arg3 slot:(unsigned long long)arg4;
-- (unsigned long long)view:(id)arg1 allocatePrimitiveSlotForTransaction:(_Bool)arg2 withCopyOfValueFromView:(id)arg3 slot:(unsigned long long)arg4;
+- (id)initWithParameters:(id)arg1;
+- (id)initWithTemplate:(id)arg1 context:(id)arg2;
+- (unsigned long long)view:(id)arg1 allocateObjectSlot:(unsigned char)arg2 withCopyOfValueFromView:(id)arg3 slot:(unsigned long long)arg4;
+- (unsigned long long)view:(id)arg1 allocatePrimitiveSlot:(unsigned char)arg2 withCopyOfValueFromView:(id)arg3 slot:(unsigned long long)arg4;
 - (unsigned long long)view:(id)arg1 makeReferenceToView:(id)arg2;
+- (id)viewDataSource:(id)arg1;
 @property(readonly) _GCDevicePhysicalInputBase *implementation;
 - (id)view:(id)arg1 viewForSlot:(unsigned long long *)arg2;
+- (_Bool)view:(id)arg1 testAndSetObjectValue:(id)arg2 forSlot:(unsigned long long *)arg3 policy:(unsigned long long)arg4;
 - (void)view:(id)arg1 setObjectValue:(id)arg2 forSlot:(unsigned long long *)arg3 policy:(unsigned long long)arg4;
 - (id)view:(id)arg1 objectValueForSlot:(unsigned long long *)arg2;
+- (_Bool)view:(id)arg1 testAndSetPrimitiveValue:(unsigned long long)arg2 forSlot:(unsigned long long *)arg3;
 - (void)view:(id)arg1 setPrimitiveValue:(unsigned long long)arg2 forSlot:(unsigned long long *)arg3;
 - (unsigned long long)view:(id)arg1 primitiveValueForSlot:(unsigned long long *)arg2;
 

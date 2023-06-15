@@ -49,6 +49,7 @@
 - (id)_localizedNameWithContext:(struct LSContext *)arg1 tableID:(unsigned int)arg2 unitID:(unsigned int)arg3 unitBytes:(const struct LSBundleBaseData *)arg4;
 @property(readonly) NSString *_fallbackLocalizedName;
 @property(readonly) NSDictionary *groupContainerURLs;
+- (id)_getGroupContainersCreatingIfNecessary:(_Bool)arg1 checkNonContainerizedBundles:(_Bool)arg2;
 - (id)_cachedDataContainerURL;
 - (void)_LSRecord_resolve__dataContainerURLFromDatabase;
 @property(readonly) NSURL *_dataContainerURLFromDatabase;
@@ -71,6 +72,9 @@
 - (struct LSVersionNumber)_bundleVersionWithContext:(struct LSContext *)arg1 tableID:(unsigned int)arg2 unitID:(unsigned int)arg3 unitBytes:(const struct LSBundleBaseData *)arg4;
 @property(readonly, nonatomic) const CDStruct_4c969caf *_auditToken;
 - (id)_initWithNode:(id)arg1 bundleIdentifier:(id)arg2 context:(struct LSContext *)arg3 tableID:(unsigned int)arg4 unitID:(unsigned int)arg5 bundleBaseData:(const struct LSBundleBaseData *)arg6 error:(id *)arg7;
+- (void)_LSRecord_resolve_isAppleInternal;
+@property(readonly) _Bool isAppleInternal;
+- (_Bool)isAppleInternalWithContext:(struct LSContext *)arg1 tableID:(unsigned int)arg2 unitID:(unsigned int)arg3 unitBytes:(const struct LSBundleData *)arg4;
 - (void)_LSRecord_resolve_isLinkEnabled;
 @property(readonly) _Bool isLinkEnabled;
 - (_Bool)isLinkEnabledWithContext:(struct LSContext *)arg1 tableID:(unsigned int)arg2 unitID:(unsigned int)arg3 unitBytes:(const struct LSBundleData *)arg4;
@@ -117,6 +121,8 @@
 - (void)_LSRecord_resolve_entitlements;
 @property(readonly) LSPropertyList *entitlements;
 - (id)entitlementsWithContext:(struct LSContext *)arg1 tableID:(unsigned int)arg2 unitID:(unsigned int)arg3 unitBytes:(const struct LSBundleBaseData *)arg4;
+- (id)groupContainerIdentifiers;
+- (id)getGroupContainersCreatingIfNecessary:(_Bool)arg1;
 - (_Bool)getDataContainerURL:(id *)arg1 error:(id *)arg2;
 @property(readonly) NSURL *dataContainerURL;
 - (id)localizedUsageDescriptionForFeature:(unsigned long long)arg1 preferredLocalizations:(id)arg2;
@@ -138,7 +144,10 @@
 - (void)_LSRecord_resolve_signerOrganization;
 @property(readonly) NSString *signerOrganization;
 - (id)signerOrganizationWithContext:(struct LSContext *)arg1 tableID:(unsigned int)arg2 unitID:(unsigned int)arg3 unitBytes:(const struct LSBundleBaseData *)arg4;
+- (_Bool)personaIsApplicable:(id)arg1;
+@property(readonly) NSArray *associatedPersonas;
 @property(readonly) NSArray *managedPersonas;
+@property(readonly) NSArray *privacyTrackingDomains;
 @property(readonly) NSString *accentColorName;
 @property(readonly) NSArray *UIBackgroundModes;
 @property(readonly) _Bool supportsNowPlaying;

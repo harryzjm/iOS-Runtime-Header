@@ -9,6 +9,5 @@
 @protocol CKXReaderWriterProtocol
 - (unsigned long long)valueSizeForField:(unsigned long long)arg1;
 - (CKXSchema *)schema;
-- (_Bool)size:(unsigned long long *)arg1 error:(id *)arg2;
 @end
 

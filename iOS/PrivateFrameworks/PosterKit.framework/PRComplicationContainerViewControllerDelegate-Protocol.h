@@ -4,15 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class PRComplicationContainerViewController, PRComplicationDescriptor;
+@class NSDictionary, PRComplicationContainerViewController, PRComplicationDescriptor;
 
 @protocol PRComplicationContainerViewControllerDelegate
 - (void)complicationContainerViewController:(PRComplicationContainerViewController *)arg1 didCancelDropOperationForComplication:(PRComplicationDescriptor *)arg2;
-- (void)complicationContainerViewController:(PRComplicationContainerViewController *)arg1 didRemoveComplication:(PRComplicationDescriptor *)arg2;
+- (void)complicationContainerViewController:(PRComplicationContainerViewController *)arg1 didUpdateIconLayout:(NSDictionary *)arg2 forLocation:(long long)arg3;
+- (void)complicationContainerViewController:(PRComplicationContainerViewController *)arg1 didRemoveComplication:(PRComplicationDescriptor *)arg2 forLocation:(long long)arg3;
 - (void)complicationContainerViewController:(PRComplicationContainerViewController *)arg1 didDropComplication:(PRComplicationDescriptor *)arg2 atIndex:(long long)arg3;
 - (void)complicationContainerViewController:(PRComplicationContainerViewController *)arg1 didEditComplication:(PRComplicationDescriptor *)arg2;
 - (void)complicationContainerViewControllerDidTapInlineGallery:(PRComplicationContainerViewController *)arg1;
-- (void)complicationContainerViewControllerDidTapAdd:(PRComplicationContainerViewController *)arg1;
-- (_Bool)complicationContainerViewController:(PRComplicationContainerViewController *)arg1 canAddGraphicComplication:(PRComplicationDescriptor *)arg2;
+- (void)complicationContainerViewControllerDidTapAdd:(PRComplicationContainerViewController *)arg1 forLocation:(long long)arg2;
+- (_Bool)complicationContainerViewController:(PRComplicationContainerViewController *)arg1 canAddComplication:(PRComplicationDescriptor *)arg2 forLocation:(long long)arg3;
 @end
 

@@ -11,6 +11,7 @@
 @class NSDictionary;
 
 @protocol MDMUserXPCProtocol <NSObject, MDMSharedXPCProtocol, MDMClientProtocol>
+- (void)isAwaitingUserConfiguredWithCompletion:(void (^)(_Bool, NSError *))arg1;
 - (void)processUserRequest:(NSDictionary *)arg1 encodeResponse:(_Bool)arg2 completion:(void (^)(NSError *, NSDictionary *, NSData *))arg3;
 @end
 

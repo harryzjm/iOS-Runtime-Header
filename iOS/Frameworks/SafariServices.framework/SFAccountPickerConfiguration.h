@@ -6,16 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSString, WBSGlobalFrameIdentifier;
+@class NSArray, NSString, NSURL, WBSGlobalFrameIdentifier, WBSSavedAccountContext;
 
 __attribute__((visibility("hidden")))
 @interface SFAccountPickerConfiguration : NSObject
 {
     _Bool _forUserNamesOnly;
     _Bool _shouldShowIcons;
+    _Bool _shouldShowPasskeysInAccountPicker;
     _Bool _shouldShowAutoFillPasskeys;
     _Bool _hasAuditToken;
     _Bool _shouldEnableAddingNewPasswordsIfPossible;
+    _Bool _isForFillingIndividualAccountFields;
+    _Bool _shouldShowReceivedVerificationCodes;
+    _Bool _shouldHideCreatePasswordsInSettingsHint;
+    NSString *_title;
     NSString *_prompt;
     NSString *_promptWhenPasskeysAreAvailable;
     NSArray *_serviceNameHintStrings;
@@ -23,16 +28,26 @@ __attribute__((visibility("hidden")))
     unsigned long long _minimumNumberOfCredentialsToShowLikelyMatchesSection;
     WBSGlobalFrameIdentifier *_currentWebFrameIdentifierForAutoFillPasskeys;
     NSString *_addPasswordSuggestedDomain;
+    NSString *_appIDForReceivedVerificationCodes;
+    NSURL *_websiteURLForReceivedVerificationCodes;
+    WBSSavedAccountContext *_savedAccountContext;
     CDStruct_4c969caf _connectedAppAuditToken;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) WBSSavedAccountContext *savedAccountContext; // @synthesize savedAccountContext=_savedAccountContext;
+@property(nonatomic) _Bool shouldHideCreatePasswordsInSettingsHint; // @synthesize shouldHideCreatePasswordsInSettingsHint=_shouldHideCreatePasswordsInSettingsHint;
+@property(copy, nonatomic) NSURL *websiteURLForReceivedVerificationCodes; // @synthesize websiteURLForReceivedVerificationCodes=_websiteURLForReceivedVerificationCodes;
+@property(copy, nonatomic) NSString *appIDForReceivedVerificationCodes; // @synthesize appIDForReceivedVerificationCodes=_appIDForReceivedVerificationCodes;
+@property(nonatomic) _Bool shouldShowReceivedVerificationCodes; // @synthesize shouldShowReceivedVerificationCodes=_shouldShowReceivedVerificationCodes;
+@property(nonatomic) _Bool isForFillingIndividualAccountFields; // @synthesize isForFillingIndividualAccountFields=_isForFillingIndividualAccountFields;
 @property(copy, nonatomic) NSString *addPasswordSuggestedDomain; // @synthesize addPasswordSuggestedDomain=_addPasswordSuggestedDomain;
 @property(nonatomic) _Bool shouldEnableAddingNewPasswordsIfPossible; // @synthesize shouldEnableAddingNewPasswordsIfPossible=_shouldEnableAddingNewPasswordsIfPossible;
 @property(readonly, nonatomic) _Bool hasAuditToken; // @synthesize hasAuditToken=_hasAuditToken;
 @property(nonatomic) CDStruct_4c969caf connectedAppAuditToken; // @synthesize connectedAppAuditToken=_connectedAppAuditToken;
 @property(copy, nonatomic) WBSGlobalFrameIdentifier *currentWebFrameIdentifierForAutoFillPasskeys; // @synthesize currentWebFrameIdentifierForAutoFillPasskeys=_currentWebFrameIdentifierForAutoFillPasskeys;
 @property(nonatomic) _Bool shouldShowAutoFillPasskeys; // @synthesize shouldShowAutoFillPasskeys=_shouldShowAutoFillPasskeys;
+@property(nonatomic) _Bool shouldShowPasskeysInAccountPicker; // @synthesize shouldShowPasskeysInAccountPicker=_shouldShowPasskeysInAccountPicker;
 @property(nonatomic) _Bool shouldShowIcons; // @synthesize shouldShowIcons=_shouldShowIcons;
 @property(nonatomic) _Bool forUserNamesOnly; // @synthesize forUserNamesOnly=_forUserNamesOnly;
 @property(nonatomic) unsigned long long minimumNumberOfCredentialsToShowLikelyMatchesSection; // @synthesize minimumNumberOfCredentialsToShowLikelyMatchesSection=_minimumNumberOfCredentialsToShowLikelyMatchesSection;
@@ -40,6 +55,7 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSArray *serviceNameHintStrings; // @synthesize serviceNameHintStrings=_serviceNameHintStrings;
 @property(copy, nonatomic) NSString *promptWhenPasskeysAreAvailable; // @synthesize promptWhenPasskeysAreAvailable=_promptWhenPasskeysAreAvailable;
 @property(copy, nonatomic) NSString *prompt; // @synthesize prompt=_prompt;
+@property(copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property(readonly, nonatomic) _Bool shouldAllowAddingNewPasswords;
 
 @end

@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)contains:(id)arg1;
 - (id)copy;
 - (_Bool)isEqual:(id)arg1;
+- (long long)compareTo:(id)arg1;
 - (_Bool)hasDeltaTo:(id)arg1;
 @property(nonatomic, readonly) NSArray *sortedUUIDs;
 - (id)temporaryComponentsWithExcluding:(id)arg1;

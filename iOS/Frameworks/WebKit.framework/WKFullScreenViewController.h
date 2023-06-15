@@ -15,14 +15,18 @@ __attribute__((visibility("hidden")))
     struct RetainPtr<UILongPressGestureRecognizer> _touchGestureRecognizer;
     struct RetainPtr<UIView> _animatingView;
     struct RetainPtr<UIStackView> _stackView;
+    struct RetainPtr<UIStackView> _banner;
+    struct RetainPtr<_WKInsetLabel> _bannerLabel;
     struct RetainPtr<_WKExtrinsicButton> _cancelButton;
     struct RetainPtr<_WKExtrinsicButton> _pipButton;
     struct RetainPtr<UIButton> _locationButton;
     struct RetainPtr<UILayoutGuide> _topGuide;
     struct RetainPtr<NSLayoutConstraint> _topConstraint;
+    struct String _location;
     struct FullscreenTouchSecheuristic _secheuristic;
     struct WKFullScreenViewControllerPlaybackSessionModelClient _playbackClient;
     double _nonZeroStatusBarHeight;
+    struct optional<unsigned long> _supportedOrientations;
     _Bool _prefersStatusBarHidden;
     _Bool _prefersHomeIndicatorAutoHidden;
     _Bool _playing;
@@ -30,7 +34,6 @@ __attribute__((visibility("hidden")))
     _Bool _animating;
     id _target;
     SEL _exitFullScreenAction;
-    NSString *_location;
     WKWebView *__webView;
 }
 
@@ -40,7 +43,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, getter=isAnimating) _Bool animating; // @synthesize animating=_animating;
 @property(nonatomic, getter=isPictureInPictureActive) _Bool pictureInPictureActive; // @synthesize pictureInPictureActive=_pictureInPictureActive;
 @property(nonatomic, getter=isPlaying) _Bool playing; // @synthesize playing=_playing;
-@property(copy, nonatomic) NSString *location; // @synthesize location=_location;
 @property(nonatomic) SEL exitFullScreenAction; // @synthesize exitFullScreenAction=_exitFullScreenAction;
 @property(retain, nonatomic) id target; // @synthesize target=_target;
 @property(nonatomic) _Bool prefersHomeIndicatorAutoHidden; // @synthesize prefersHomeIndicatorAutoHidden=_prefersHomeIndicatorAutoHidden;
@@ -50,7 +52,7 @@ __attribute__((visibility("hidden")))
 - (void)_touchDetected:(id)arg1;
 - (void)_togglePiPAction:(id)arg1;
 - (void)_cancelAction:(id)arg1;
-@property(readonly, nonatomic) RectEdges_84c51beb _effectiveFullscreenInsets; // @dynamic _effectiveFullscreenInsets;
+@property(readonly, nonatomic) RectEdges_cec980bd _effectiveFullscreenInsets; // @dynamic _effectiveFullscreenInsets;
 @property(readonly, nonatomic) void *_manager; // @dynamic _manager;
 - (_Bool)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
@@ -60,10 +62,16 @@ __attribute__((visibility("hidden")))
 - (void)viewDidLayoutSubviews;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)loadView;
+@property(copy, nonatomic) NSString *location;
 - (void)setAnimatingViewAlpha:(double)arg1;
 - (void)videoControlsManagerDidChange;
+- (void)hideBanner;
+- (void)showBanner;
 - (void)hideUI;
 - (void)showUI;
+- (unsigned long long)supportedInterfaceOrientations;
+- (void)resetSupportedOrientations;
+- (void)setSupportedOrientations:(unsigned long long)arg1;
 - (void)dealloc;
 - (void)invalidate;
 - (id)initWithWebView:(id)arg1;

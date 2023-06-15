@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 + (id)standardUserDefaults;
 - (void).cxx_destruct;
 - (void)_handlePreferredResolutionsDidChangeNotification:(id)arg1;
+@property(readonly, nonatomic) _Bool isPrivateListeningEnabled;
 @property(readonly, nonatomic) long long preferredVideoLowBandwidthResolution;
 @property(readonly, nonatomic) long long preferredMusicLowBandwidthResolution;
 - (void)dealloc;

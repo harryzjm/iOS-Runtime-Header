@@ -8,5 +8,9 @@
 
 @interface NSDictionary (SU)
 - (id)safeObjectForKey:(id)arg1 ofClass:(Class)arg2;
+- (_Bool)areRequirementsMetByBrainFeatures:(id)arg1 missingRequirements:(id *)arg2 error:(id *)arg3;
+- (_Bool)areRequirementsMetByBrainFeatures:(id)arg1;
+- (_Bool)areRequirementsMetByBrain:(id *)arg1 error:(id *)arg2;
+- (_Bool)areRequirementsMetByBrain;
 @end
 

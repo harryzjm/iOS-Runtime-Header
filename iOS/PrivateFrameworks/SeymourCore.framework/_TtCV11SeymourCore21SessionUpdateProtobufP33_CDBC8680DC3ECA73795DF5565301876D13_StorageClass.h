@@ -24,7 +24,7 @@
     MISSING_TYPE *_scoreMetric;
     MISSING_TYPE *_userMassMetric;
     MISSING_TYPE *_distanceMetric;
-    MISSING_TYPE *_watchConnection;
+    MISSING_TYPE *_workoutDeviceConnection;
     MISSING_TYPE *_gymKitConnection;
     MISSING_TYPE *_displayPreferences;
     MISSING_TYPE *_unitPreferences;

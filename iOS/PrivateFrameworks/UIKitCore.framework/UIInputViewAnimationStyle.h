@@ -6,10 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
+@class NSMutableArray;
 
 __attribute__((visibility("hidden")))
-@interface UIInputViewAnimationStyle : NSObject <NSCopying>
+@interface UIInputViewAnimationStyle : NSObject
 {
     _Bool animated;
     double duration;
@@ -19,12 +19,15 @@ __attribute__((visibility("hidden")))
     _Bool force;
     _Bool _dontMerge;
     _Bool _forAssertion;
+    NSMutableArray *_propertyAnimators;
 }
 
 + (id)animationStyleAnimated:(_Bool)arg1 duration:(double)arg2;
 + (id)animationStyleDefault;
 + (id)animationStyleImmediate;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool forAssertion; // @synthesize forAssertion=_forAssertion;
+@property(retain, nonatomic) NSMutableArray *propertyAnimators; // @synthesize propertyAnimators=_propertyAnimators;
 @property(nonatomic) _Bool dontMerge; // @synthesize dontMerge=_dontMerge;
 @property(nonatomic) _Bool interactivelyCancelled; // @synthesize interactivelyCancelled;
 @property(nonatomic) unsigned long long extraOptions; // @synthesize extraOptions;
@@ -38,6 +41,9 @@ __attribute__((visibility("hidden")))
 - (id)endPlacementForInputViewSet:(id)arg1;
 - (id)startPlacementForInputViewSet:(id)arg1 currentPlacement:(id)arg2;
 - (id)controllerForStartPlacement:(id)arg1 endPlacement:(id)arg2;
+- (void)removePropertyAnimators;
+- (void)cancelInterruptibleAnimations;
+- (void)addAnimationToCurrentAnimations:(CDUnknownBlockType)arg1;
 - (void)launchAnimation:(CDUnknownBlockType)arg1 afterStarted:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3 forHost:(id)arg4 fromCurrentPosition:(_Bool)arg5;
 @property(readonly, nonatomic) _Bool isAnimationCompleted;
 - (id)description;

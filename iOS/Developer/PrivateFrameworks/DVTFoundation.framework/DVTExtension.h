@@ -35,7 +35,7 @@
 @property(readonly) DVTPlugInManager *plugInManager; // @synthesize plugInManager=_plugInManager;
 @property(readonly, copy) NSString *name; // @synthesize name=_name;
 @property(readonly, copy) NSString *identifier; // @synthesize identifier=_identifier;
-- (_Bool)_fireExtensionFaultAssertingOnError:(_Bool)arg1 error:(id *)arg2;
+- (_Bool)_fireExtensionFaultAssertingOnBundleLoadError:(_Bool)arg1 error:(id *)arg2;
 - (void)_adjustClassReferencesInParameterData:(id)arg1 usingSchema:(id)arg2;
 - (void)_adjustElementClassAttributes:(id)arg1 forKey:(id)arg2 inParameterData:(id)arg3;
 - (void)_adjustClassAttribute:(id)arg1 forKey:(id)arg2 inParameterData:(id)arg3;
@@ -50,6 +50,7 @@
 - (Class)requiredClassForKey:(id)arg1 inheritsFrom:(Class)arg2;
 - (Class)classForKey:(id)arg1 inheritsFrom:(Class)arg2;
 - (id)requiredClassNameForKey:(id)arg1;
+- (id)classNameForKey:(id)arg1;
 - (Class)requiredClassForKey:(id)arg1;
 - (Class)classForKey:(id)arg1 error:(id *)arg2;
 - (long long)integerForKey:(id)arg1;

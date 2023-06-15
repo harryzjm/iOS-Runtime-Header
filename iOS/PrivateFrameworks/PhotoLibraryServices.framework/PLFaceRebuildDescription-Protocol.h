@@ -18,6 +18,7 @@
 @property(readonly, nonatomic) double size;
 @property(readonly, nonatomic) double centerY;
 @property(readonly, nonatomic) double centerX;
+- (_Bool)isTorsoOnly;
 - (id <PLDetectionAdditionalDescription>)additionalDescription;
 @end
 

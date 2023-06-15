@@ -7,9 +7,10 @@
 #import <SafariServices/NSObject-Protocol.h>
 
 @class NSURL, UIViewController, _SFAdaptivePreviewViewController;
+@protocol _SFBrowserViewProviding;
 
 @protocol _SFAdaptivePreviewViewControllerDelegate <NSObject>
-- (UIViewController *)adaptivePreviewViewController:(_SFAdaptivePreviewViewController *)arg1 requestLinkPreviewViewControllerWithURL:(NSURL *)arg2;
+- (UIViewController<_SFBrowserViewProviding> *)adaptivePreviewViewController:(_SFAdaptivePreviewViewController *)arg1 requestLinkPreviewViewControllerWithURL:(NSURL *)arg2;
 
 @optional
 - (void)adaptivePreviewViewControllerWillDisableLinkPreview:(_SFAdaptivePreviewViewController *)arg1;

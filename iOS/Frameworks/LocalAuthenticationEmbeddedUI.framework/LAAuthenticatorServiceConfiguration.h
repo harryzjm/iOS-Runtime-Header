@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class LAContext, NSString, UIImage;
+@class LAContext, NSString;
 
 __attribute__((visibility("hidden")))
 @interface LAAuthenticatorServiceConfiguration : NSObject
@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
     _Bool _headerHidden;
     _Bool _requiresIntent;
     NSString *_title;
-    UIImage *_appIcon;
+    NSString *_bundleIdentifier;
     NSString *_subtitle;
     NSString *_prompt;
     NSString *_verifyPrompt;
@@ -43,16 +43,17 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSString *verifyPrompt; // @synthesize verifyPrompt=_verifyPrompt;
 @property(retain, nonatomic) NSString *prompt; // @synthesize prompt=_prompt;
 @property(retain, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
-@property(retain, nonatomic) UIImage *appIcon; // @synthesize appIcon=_appIcon;
+@property(retain, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property(retain, nonatomic) NSString *title; // @synthesize title=_title;
+- (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (id)validateConfiguration;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initWithCustomPasswordConfiguration:(id)arg1 context:(id)arg2;
 - (id)initWithContext:(id)arg1 requirement:(unsigned long long)arg2 options:(id)arg3;
 - (id)initWithContext:(id)arg1 requirement:(unsigned long long)arg2;
 - (id)initWithContext:(id)arg1;
+- (id)initWithCustomPasswordConfiguration:(id)arg1 context:(id)arg2;
 
 @end
 

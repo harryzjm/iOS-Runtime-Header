@@ -8,6 +8,7 @@
 
 @class KVItemBuilder, NSMutableArray, NSString;
 
+__attribute__((visibility("hidden")))
 @interface KMMapper_MPMediaEntity : NSObject
 {
     KVItemBuilder *_builder;

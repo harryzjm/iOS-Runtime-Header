@@ -25,6 +25,7 @@
 - (NSData *)symbolicatorSignatureForPid:(NSNumber *)arg1 trackingSelector:(NSString *)arg2;
 - (NSData *)deepSymbolOwnerSignatureForPid:(NSNumber *)arg1 uuid:(NSUUID *)arg2;
 - (NSString *)machKernelName;
+- (NSDictionary *)runningProcessWithPid:(NSNumber *)arg1;
 - (NSNumber *)isRunningPid:(NSNumber *)arg1;
 - (NSString *)execnameForPid:(NSNumber *)arg1;
 - (NSString *)nameForGID:(NSNumber *)arg1;

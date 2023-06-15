@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class HDProfile, HKSPSleepStore, HKSPThrottler, NSString;
+@class HDProfile, HKSPSleepStore, HKSPThrottler, INRelevantShortcutStore, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     HDProfile *_profile;
     HKSPThrottler *_reloadThrottler;
     HKSPSleepStore *_sleepStore;
+    INRelevantShortcutStore *_shortcutStore;
     NSObject<OS_dispatch_queue> *_queue;
 }
 
@@ -22,6 +23,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)samplesAdded:(id)arg1 anchor:(id)arg2;
 - (void)daemonReady:(id)arg1;
+- (void)_donateRelevanceShortcuts;
 - (void)_reloadWidgetsWithReasons:(unsigned long long)arg1;
 - (void)_stopObservingSleep;
 - (void)_startObservingSleep;

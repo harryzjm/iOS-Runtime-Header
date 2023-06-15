@@ -6,10 +6,11 @@
 
 #import <ContactsUI/NSObject-Protocol.h>
 
-@class CNContactListActionHelper, NSArray, UIViewController;
+@class CNContactListActionHelper, NSArray, UIContextMenuInteraction, UIViewController;
 @protocol CNContactListAction;
 
 @protocol CNContactListActionHelperDelegate <NSObject>
+- (UIContextMenuInteraction *)contextMenuInteraction;
 - (UIViewController *)presentingViewControllerForActions;
 - (void)actionDidFinish:(id <CNContactListAction>)arg1;
 - (void)action:(id <CNContactListAction>)arg1 presentViewController:(UIViewController *)arg2;

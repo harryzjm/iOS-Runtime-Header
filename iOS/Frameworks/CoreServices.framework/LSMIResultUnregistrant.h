@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, NSUUID;
+@class LSPrecondition, NSString, NSUUID;
 @protocol LSMIResultRegistrantStrategy;
 
 __attribute__((visibility("hidden")))
@@ -15,12 +15,13 @@ __attribute__((visibility("hidden")))
     id <LSMIResultRegistrantStrategy> _strategy;
     NSUUID *_uuid;
     NSString *_bundleID;
+    LSPrecondition *_precondition;
     unsigned int _type;
 }
 
 - (void).cxx_destruct;
 - (void)runWithCompletion:(CDUnknownBlockType)arg1;
-- (id)initWithContext:(id)arg1 operationUUID:(id)arg2 bundleIdentifier:(id)arg3 type:(unsigned int)arg4;
+- (id)initWithContext:(id)arg1 operationUUID:(id)arg2 bundleIdentifier:(id)arg3 precondition:(id)arg4 type:(unsigned int)arg5;
 
 @end
 

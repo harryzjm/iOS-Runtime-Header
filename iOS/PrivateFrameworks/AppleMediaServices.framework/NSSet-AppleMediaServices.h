@@ -13,5 +13,6 @@
 - (id)ams_mapWithTransform:(CDUnknownBlockType)arg1;
 - (id)ams_firstObjectPassingTest:(CDUnknownBlockType)arg1;
 - (id)ams_filterUsingTest:(CDUnknownBlockType)arg1;
+- (_Bool)ams_allWithTest:(CDUnknownBlockType)arg1;
 @end
 

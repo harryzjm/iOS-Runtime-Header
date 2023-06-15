@@ -4,16 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "LibraryItemController.h"
+
 @class UIViewController;
 
 __attribute__((visibility("hidden")))
-@interface SharedWithYouLibraryItemController
+@interface SharedWithYouLibraryItemController : LibraryItemController
 {
     UIViewController *_viewController;
 }
 
 - (void).cxx_destruct;
 - (id)viewController;
+- (id)accessibilityIdentifier;
 - (_Bool)isSelected;
 - (void)didSelectItem;
 - (void)updateListContentConfiguration:(id)arg1;

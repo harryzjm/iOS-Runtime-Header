@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 @interface VCVideoReceiverBase : NSObject
 {
     int _remoteVideoOrientation;
+    struct tagVCVideoReceiverDelegateRealtimeInstanceVTable _delegateFunctions;
     id <VCVideoReceiverDelegate> _delegate;
     id <VCMediaStreamSyncSource> _syncSource;
     double _roundTripTime;
@@ -24,6 +25,7 @@ __attribute__((visibility("hidden")))
     float _lastLastVideoStallDuration;
 }
 
+@property(nonatomic) struct tagVCVideoReceiverDelegateRealtimeInstanceVTable delegateFunctions; // @synthesize delegateFunctions=_delegateFunctions;
 @property(readonly) float lastLastVideoStallDuration; // @synthesize lastLastVideoStallDuration=_lastLastVideoStallDuration;
 @property(readonly) double lastReceivedVideoRTCPPacketTime; // @synthesize lastReceivedVideoRTCPPacketTime=_lastReceivedVideoRTCPPacketTime;
 @property(readonly) double lastReceivedVideoRTPPacketTime; // @synthesize lastReceivedVideoRTPPacketTime=_lastReceivedVideoRTPPacketTime;
@@ -31,7 +33,9 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) id <VCMediaStreamSyncSource> syncSource; // @synthesize syncSource=_syncSource;
 @property int remoteVideoOrientation; // @synthesize remoteVideoOrientation=_remoteVideoOrientation;
 @property(nonatomic) id <VCVideoReceiverDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)setJitterBufferMode:(int)arg1;
 - (void)handleActiveConnectionChange:(id)arg1;
+- (void)setShouldEnableMLEnhance:(_Bool)arg1 streamID:(unsigned short)arg2;
 @property(readonly, nonatomic) unsigned int lastDisplayedFrameRTPTimestamp;
 - (void)setTargetStreamID:(unsigned short)arg1;
 - (void)collectChannelMetrics:(CDStruct_b671a7c4 *)arg1 interval:(float)arg2;
@@ -46,7 +50,7 @@ __attribute__((visibility("hidden")))
 - (void)setEnableRateAdaptation:(_Bool)arg1 maxBitrate:(unsigned int)arg2 minBitrate:(unsigned int)arg3 adaptationInterval:(double)arg4;
 - (void)setEnableCVO:(_Bool)arg1 cvoExtensionID:(unsigned long long)arg2;
 - (void)dealloc;
-- (id)init;
+- (id)initWithDelegate:(id)arg1 delegateFunctions:(const struct tagVCVideoReceiverDelegateRealtimeInstanceVTable *)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

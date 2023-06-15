@@ -28,7 +28,6 @@ __attribute__((visibility("hidden")))
 - (id)initWithBase64EncodedData:(id)arg1 options:(unsigned long long)arg2;
 - (id)initWithBase64EncodedString:(id)arg1 options:(unsigned long long)arg2;
 - (id)initWithContentsOfMappedFile:(id)arg1;
-- (id)initWithContentsOfURL:(id)arg1 options:(unsigned long long)arg2 maxLength:(long long)arg3 error:(id *)arg4;
 - (id)initWithContentsOfMappedFile:(id)arg1 error:(id *)arg2;
 - (id)initWithContentsOfFile:(id)arg1 error:(id *)arg2;
 - (id)initWithCoder:(id)arg1;

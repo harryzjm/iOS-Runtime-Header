@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     _UIActionWhenIdle *_idleAction;
 }
 
++ (_Bool)enabledForTraitCollection:(id)arg1;
 + (_Bool)enabled;
 + (id)sharedInstance;
 - (void).cxx_destruct;
@@ -30,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (id)displayImagesForView:(id)arg1 fromLayout:(id)arg2 imageFlags:(id)arg3;
 - (void)drawCachedImage:(id)arg1 alpha:(double)arg2 inContext:(struct CGContext *)arg3;
 - (struct CGImage *)cachedCompositeImageForCacheKeys:(id)arg1 fromLayout:(id)arg2 opacities:(id)arg3;
+- (struct CGImage *)cachedImageForKey:(id)arg1 fromLayout:(id)arg2 traitCollection:(id)arg3;
 - (struct CGImage *)cachedImageForKey:(id)arg1 fromLayout:(id)arg2;
 - (void)purge;
 - (void)clearNonPersistentCache;

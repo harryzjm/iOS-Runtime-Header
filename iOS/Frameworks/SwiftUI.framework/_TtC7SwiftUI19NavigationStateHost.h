@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *navigationState;
     MISSING_TYPE *pendingRequests;
+    MISSING_TYPE *initializedNavState;
 }
 
 @end

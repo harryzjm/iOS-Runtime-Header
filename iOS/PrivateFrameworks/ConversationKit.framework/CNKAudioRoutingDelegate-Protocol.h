@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <ConversationKit/NSObject-Protocol.h>
+
 @class TURoute, UIImage, UIMenu;
 
-@protocol CNKAudioRoutingDelegate
-@property(nonatomic, readonly) UIImage *audioRouteGlyphForDevice;
+@protocol CNKAudioRoutingDelegate <NSObject>
+@property(readonly, nonatomic) UIImage *audioRouteGlyphForDevice;
 - (UIImage *)audioRouteGlyphFor:(TURoute *)arg1;
 - (UIMenu *)audioRouteMenu;
 @end

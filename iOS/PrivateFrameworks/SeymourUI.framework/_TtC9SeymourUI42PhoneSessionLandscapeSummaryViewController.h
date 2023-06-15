@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
 @class MISSING_TYPE;
 
@@ -14,17 +14,19 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *presenter;
     MISSING_TYPE *eventHub;
     MISSING_TYPE *storefrontLocalizer;
+    MISSING_TYPE *contentSummaryView;
     MISSING_TYPE *stringBuilder;
     MISSING_TYPE *backgroundView;
     MISSING_TYPE *scrollView;
     MISSING_TYPE *scrollViewSizingView;
     MISSING_TYPE *leadingStackView;
-    MISSING_TYPE *contentSummaryView;
     MISSING_TYPE *gridView;
+    MISSING_TYPE *upNextSummaryView;
+    MISSING_TYPE *queueCompleteView;
     MISSING_TYPE *trailingStackView;
     MISSING_TYPE *doneButton;
-    MISSING_TYPE *shareButton;
     MISSING_TYPE *cooldownButton;
+    MISSING_TYPE *stateOfMindLoggingButton;
     MISSING_TYPE *ttrButton;
     MISSING_TYPE *activityRingsView;
     MISSING_TYPE *activityRingsToScrollViewBottomConstraint;
@@ -35,6 +37,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *burnBarToGridViewTopConstraint;
     MISSING_TYPE *burnBarToScrollViewBottomConstraint;
     MISSING_TYPE *burnBarConstraints;
+    MISSING_TYPE *trailingStackViewTopConstraint;
     MISSING_TYPE *gridViewHeight;
     MISSING_TYPE *gridViewWidth;
     MISSING_TYPE *gridViewTopSpacing;
@@ -45,9 +48,9 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)updateViewConstraints;
+- (void)viewDidLayoutSubviews;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
-- (void)viewDidLoad;
 - (id)initWithCoder:(id)arg1;
 
 @end

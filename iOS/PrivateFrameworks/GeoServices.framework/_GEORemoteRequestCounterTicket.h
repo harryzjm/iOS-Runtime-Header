@@ -14,9 +14,9 @@ __attribute__((visibility("hidden")))
     GEORequestCounterRemoteProxy *_remoteProxy;
 }
 
-+ (id)requestCounterTicketForType:(CDStruct_d1a7ebee)arg1 appId:(id)arg2 remoteProxy:(id)arg3;
++ (id)requestCounterTicketForType:(CDStruct_026435ec)arg1 auditToken:(id)arg2 traits:(id)arg3 remoteProxy:(id)arg4;
 - (void).cxx_destruct;
-- (void)_incrementForApp:(id)arg1 startTime:(id)arg2 endTime:(id)arg3 requestType:(CDStruct_d1a7ebee)arg4 result:(unsigned char)arg5 xmitBytes:(long long)arg6 recvBytes:(long long)arg7 usedInterfaces:(unsigned long long)arg8;
+- (void)_incrementForApp:(id)arg1 offlineCohortId:(id)arg2 requestMode:(int)arg3 startTime:(id)arg4 endTime:(id)arg5 requestType:(CDStruct_026435ec)arg6 result:(unsigned char)arg7 error:(id)arg8 xmitBytes:(long long)arg9 recvBytes:(long long)arg10 usedInterfaces:(unsigned long long)arg11;
 
 @end
 

@@ -4,34 +4,38 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class VNProcessingDevice;
-@protocol MTLComputePipelineState;
-
 __attribute__((visibility("hidden")))
 @interface VNSegmentationGenerator
 {
-    VNProcessingDevice *_processingDevice;
-    unsigned int _outputMaskPixelFormat;
     struct BufferSize _espressoMaskInputBufferSize;
     struct unordered_map<NSString *, espresso_buffer_t, std::hash<NSString *>, std::equal_to<NSString *>, std::allocator<std::pair<NSString *const, espresso_buffer_t>>> _espressoMaskOutputBuffers;
     struct unordered_map<NSString *, apple::vision::BufferSize, std::hash<NSString *>, std::equal_to<NSString *>, std::allocator<std::pair<NSString *const, apple::vision::BufferSize>>> _espressoMaskOutputBufferSizes;
     struct BufferSize _espressoInputImageSize;
     struct BufferSize _espressoInputMaskSize;
-    id <MTLComputePipelineState> _createTileWithScaleComputePipelineState;
-    id <MTLComputePipelineState> _pasteTileComputePipelineState;
 }
 
 + (_Bool)supportsTiling;
++ (id)outputConfidenceBlobNames;
++ (id)outputMaskBlobNameToFeatureName;
 + (id)configurationOptionKeysForDetectorKey;
 + (Class)detectorClassForConfigurationOptions:(id)arg1 error:(id *)arg2;
++ (id)requestKeyToRequestInfo;
++ (id)requestInfoForRequest:(id)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (struct BufferSize)calculateNumberOfTilesForNetworkInputImageSize:(struct BufferSize)arg1 networkInputMaskSize:(struct BufferSize)arg2 networkOutputMaskSize:(struct BufferSize)arg3 rotated:(_Bool)arg4;
+@property(readonly) const void *espressoMaskOutputBufferSizes; // @synthesize espressoMaskOutputBufferSizes=_espressoMaskOutputBufferSizes;
+@property(readonly) const void *espressoMaskOutputBuffers; // @synthesize espressoMaskOutputBuffers=_espressoMaskOutputBuffers;
+- (void)initializeOutputConfidenceBuffers:(void *)arg1;
+- (_Bool)bindOutputConfidenceBuffersAndReturnError:(id *)arg1;
+- (_Bool)validateMaskForBlobName:(id)arg1 options:(id)arg2 maskConfidence:(float *)arg3 maskAcceptable:(_Bool *)arg4 error:(id *)arg5;
+- (struct __CVBuffer *)renderCIImage:(id)arg1 width:(unsigned long long)arg2 height:(unsigned long long)arg3 format:(unsigned int)arg4 computeDevice:(id)arg5 error:(id *)arg6;
+- (optional_c07b8cc9)processLockedImageBuffer:(struct __CVBuffer *)arg1 inputMaskObservation:(id)arg2 options:(id)arg3 error:(id *)arg4;
 @property(readonly, nonatomic) struct BufferSize outputMaskSize;
 - (id)processRegionOfInterest:(struct CGRect)arg1 croppedPixelBuffer:(const struct __CVBuffer *)arg2 options:(id)arg3 qosClass:(unsigned int)arg4 warningRecorder:(id)arg5 error:(id *)arg6 progressHandler:(CDUnknownBlockType)arg7;
 - (_Bool)createRegionOfInterestCrop:(struct CGRect)arg1 options:(id)arg2 warningRecorder:(id)arg3 pixelBuffer:(struct __CVBuffer **)arg4 error:(id *)arg5 progressHandler:(CDUnknownBlockType)arg6;
 - (_Bool)completeInitializationForSession:(id)arg1 error:(id *)arg2;
-- (_Bool)needsMetalContext;
+@property(readonly) const struct BufferSize *espressoInputMaskSize;
+@property(readonly) const struct BufferSize *espressoInputImageSize;
 
 @end
 

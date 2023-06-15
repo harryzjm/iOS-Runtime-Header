@@ -4,56 +4,74 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
-@class CIContext, NSArray, NSMapTable, NSString, UIImage, UIImageSymbolConfiguration, UIImageView, UILayoutGuide, UIView, _UIImageLoader;
-@protocol _UIImageViewLoadingDelegate;
+@class UIImageSymbolConfiguration, UILayoutGuide, _UIImageViewAnimationProperties, _UIImageViewImageLoadingProperties, _UIImageViewImageProperties, _UIImageViewUncommonProperties;
 
 __attribute__((visibility("hidden")))
-@interface _UIImageViewExtendedStorage : NSObject
+@interface _UIImageViewExtendedStorage
 {
-    UIImageView *_imageView;
-    UIImage *_image;
-    UIImage *_highlightedImage;
-    UIImage *_configuredImage;
-    UIImage *_configuredHighlightedImage;
-    UIImageSymbolConfiguration *_preferredSymbolConfiguration;
-    UIImageSymbolConfiguration *_overridingSymbolConfiguration;
-    NSArray *_animationImages;
-    NSArray *_highlightedAnimationImages;
-    double _animationDuration;
-    long long _animationRepeatCount;
-    long long _defaultRenderingMode;
-    unsigned long long _templateImageRenderingEffects;
-    UIImage *_displayedImage;
-    UIImage *_displayedHighlightedImage;
-    CIContext *_CIContext;
-    UILayoutGuide *_imageContentGuide;
-    NSMapTable *_layouts;
-    unsigned int _drawMode;
-    _UIImageLoader *_imageLoader;
-    id <_UIImageViewLoadingDelegate> _loadingDelegate;
-    UIImage *_imageBeingSetByLoader;
-    UIView *_placeholderView;
-    struct {
-        unsigned int highlighted:1;
-        unsigned int masksTemplateImages:1;
-        unsigned int adjustsImageSizeForAccessibilityContentSizeCategory:1;
-        unsigned int startingLoad:1;
-        unsigned int enqueueingLoad:1;
-        unsigned int stoppingLoad:1;
-    } _flags;
+    _UIImageViewImageProperties *_highlightedImageProperties;
+    _UIImageViewAnimationProperties *_animationProperties;
+    _UIImageViewImageLoadingProperties *_imageLoadingProperties;
+    _UIImageViewUncommonProperties *_uncommonProperties;
+    _Bool highlighted;
+    _Bool masksTemplateImages;
+    _Bool adjustsImageSizeForAccessibilityContentSizeCategory;
+    UIImageSymbolConfiguration *preferredSymbolConfiguration;
+    UILayoutGuide *imageContentGuide;
 }
 
++ (id)storageFromSimpleStorage:(id)arg1;
 - (void).cxx_destruct;
-- (void)animationDidStop:(id)arg1 finished:(_Bool)arg2;
-- (id)initForImageView:(id)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (void)setAdjustsImageSizeForAccessibilityContentSizeCategory:(_Bool)arg1;
+- (_Bool)adjustsImageSizeForAccessibilityContentSizeCategory;
+- (void)setMasksTemplateImages:(_Bool)arg1;
+- (_Bool)masksTemplateImages;
+- (void)setHighlighted:(_Bool)arg1;
+- (_Bool)isHighlighted;
+- (void)setImageContentGuide:(id)arg1;
+- (id)imageContentGuide;
+- (void)setPreferredSymbolConfiguration:(id)arg1;
+- (id)preferredSymbolConfiguration;
+- (void)setStoppingLoad:(_Bool)arg1;
+- (_Bool)isStoppingLoad;
+- (void)setEnqueueingLoad:(_Bool)arg1;
+- (_Bool)isEnqueueingLoad;
+- (void)setStartingLoad:(_Bool)arg1;
+- (_Bool)isStartingLoad;
+- (void)setPlaceholderView:(id)arg1;
+- (id)placeholderView;
+- (void)setImageBeingSetByLoader:(id)arg1;
+- (id)imageBeingSetByLoader;
+- (void)setLoadingDelegate:(id)arg1;
+- (id)loadingDelegate;
+- (void)setImageLoader:(id)arg1;
+- (id)imageLoader;
+- (void)setDrawMode:(unsigned int)arg1;
+- (unsigned int)drawMode;
+- (void)setCIContext:(id)arg1;
+- (id)CIContext;
+- (void)setTemplateImageRenderingEffects:(unsigned long long)arg1;
+- (unsigned long long)templateImageRenderingEffects;
+- (void)setDefaultRenderingMode:(long long)arg1;
+- (long long)defaultRenderingMode;
+- (void)setOverridingSymbolConfiguration:(id)arg1;
+- (id)overridingSymbolConfiguration;
+- (void)setAnimationRepeatCount:(long long)arg1;
+- (long long)animationRepeatCount;
+- (void)setAnimationDuration:(double)arg1;
+- (double)animationDuration;
+- (void)setHighlightedAnimationImages:(id)arg1;
+- (id)highlightedAnimationImages;
+- (void)setAnimationImages:(id)arg1;
+- (id)animationImages;
+- (void)setResolvedHighlightedImage:(id)arg1;
+- (id)resolvedHighlightedImage;
+- (void)setHighlightedImage:(id)arg1;
+- (id)highlightedImage;
+- (id)uncommonProperties;
+- (id)imageLoadingProperties;
+- (id)animationProperties;
+- (id)highlightedImageProperties;
 
 @end
 

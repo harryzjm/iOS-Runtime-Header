@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface _TtC7NewsUI218TagFeedDataManager : NSObject
 {
     MISSING_TYPE *delegate;
+    MISSING_TYPE *feedDescriptor;
     MISSING_TYPE *feedServiceConfigFetcher;
     MISSING_TYPE *feedService;
     MISSING_TYPE *feedPluginManager;
@@ -20,9 +21,14 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *appConfigManager;
     MISSING_TYPE *tagService;
     MISSING_TYPE *subscriptionService;
-    MISSING_TYPE *feedDescriptor;
+    MISSING_TYPE *historyService;
+    MISSING_TYPE *puzzleHistoryService;
     MISSING_TYPE *backgroundPluginFactory;
     MISSING_TYPE *backgroundPlugin;
+    MISSING_TYPE *sportsSyncManager;
+    MISSING_TYPE *sportsSyncToken;
+    MISSING_TYPE *sportsOnboardingManager;
+    MISSING_TYPE *$__lazy_storage_$_ensurePrewarmPromise;
 }
 
 - (void).cxx_destruct;

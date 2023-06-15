@@ -9,6 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface VSCuratedViewModel
 {
+    _Bool logoFinishedLoading;
     _Bool _beginValidationButtonEnabled;
     _Bool _showFooter;
     NSItemProvider *_logoProvider;
@@ -30,6 +31,7 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSString *beginValidationButtonTitle; // @synthesize beginValidationButtonTitle=_beginValidationButtonTitle;
 @property(nonatomic, getter=isBeginValidationButtonEnabled) _Bool beginValidationButtonEnabled; // @synthesize beginValidationButtonEnabled=_beginValidationButtonEnabled;
 @property(copy, nonatomic) NSString *logoAccessibilityLabel; // @synthesize logoAccessibilityLabel=_logoAccessibilityLabel;
+@property(nonatomic) _Bool logoFinishedLoading; // @synthesize logoFinishedLoading;
 @property(retain, nonatomic) UIImage *logo; // @synthesize logo=_logo;
 @property(retain, nonatomic) NSItemProvider *logoProvider; // @synthesize logoProvider=_logoProvider;
 - (void)configureWithRequest:(id)arg1;

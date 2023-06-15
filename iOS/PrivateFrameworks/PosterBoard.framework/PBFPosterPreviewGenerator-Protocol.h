@@ -6,13 +6,15 @@
 
 #import <PosterBoard/NSObject-Protocol.h>
 
-@class NSMapTable, UIImage;
-@protocol PBFPosterPreview;
+@class NSMapTable, PBFPosterSnapshotDefinition, UIImage;
+@protocol BSInvalidatable, PBFDisplayContext, PBFPosterPreview;
 
 @protocol PBFPosterPreviewGenerator <NSObject>
 - (void)fetchComplicationPreviewImagesForPreview:(id <PBFPosterPreview>)arg1 complicationSnapshotReceivedHandler:(void (^)(PBFComplicationSnapshotRequest *, UIImage *))arg2 errorHandler:(void (^)(PBFComplicationSnapshotRequest *, NSError *))arg3 completion:(void (^)(NSError *))arg4;
 - (NSMapTable *)preparedComplicationPreviewImagesForPreview:(id <PBFPosterPreview>)arg1;
-- (void)fetchSnapshotForPosterPreview:(id <PBFPosterPreview>)arg1 completion:(void (^)(UIImage *, NSError *))arg2;
-- (UIImage *)preparedSnapshotForPosterPreview:(id <PBFPosterPreview>)arg1;
+- (id <BSInvalidatable>)fetchSnapshotForPosterPreview:(id <PBFPosterPreview>)arg1 context:(id <PBFDisplayContext>)arg2 definition:(PBFPosterSnapshotDefinition *)arg3 completion:(void (^)(UIImage *, NSError *))arg4;
+- (UIImage *)preparedSnapshotForPosterPreview:(id <PBFPosterPreview>)arg1 context:(id <PBFDisplayContext>)arg2 definition:(PBFPosterSnapshotDefinition *)arg3;
+- (id <BSInvalidatable>)fetchSnapshotForPosterPreview:(id <PBFPosterPreview>)arg1 context:(id <PBFDisplayContext>)arg2 completion:(void (^)(UIImage *, NSError *))arg3;
+- (UIImage *)preparedSnapshotForPosterPreview:(id <PBFPosterPreview>)arg1 context:(id <PBFDisplayContext>)arg2;
 @end
 

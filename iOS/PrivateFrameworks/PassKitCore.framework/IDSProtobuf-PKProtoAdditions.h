@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <IDS/IDSProtobuf.h>
+#import <IDSFoundation/IDSProtobuf.h>
 
 @interface IDSProtobuf (PKProtoAdditions)
 - (id)pkDescription;

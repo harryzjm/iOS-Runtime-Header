@@ -12,6 +12,7 @@
 @protocol SBHHomeScreenUsageMonitorObserver <NSObject>
 
 @optional
+- (void)homeScreenUsageAggregatorAddWidgetSheetWillPresent:(SBHHomeScreenUsageMonitor *)arg1;
 - (void)homeScreenUsageAggregatorWidgetDiscoverabilityDidEnterEditingMode:(SBHHomeScreenUsageMonitor *)arg1;
 - (void)homeScreenUsageAggregator:(SBHHomeScreenUsageMonitor *)arg1 widgetDiscoverabilityDidRejectSuggestion:(NSArray *)arg2;
 - (void)homeScreenUsageAggregator:(SBHHomeScreenUsageMonitor *)arg1 widgetDiscoverabilityDidAcceptSuggestion:(NSArray *)arg2;

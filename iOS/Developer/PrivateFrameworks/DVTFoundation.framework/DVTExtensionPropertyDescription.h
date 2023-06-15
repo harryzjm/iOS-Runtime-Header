@@ -10,17 +10,18 @@
 
 @interface DVTExtensionPropertyDescription : NSObject
 {
+    _Bool _optional;
     NSString *_name;
-    _Bool _isOptional;
 }
 
 - (void).cxx_destruct;
-@property(getter=isOptional) _Bool optional; // @synthesize optional=_isOptional;
+@property(getter=isOptional) _Bool optional; // @synthesize optional=_optional;
 @property(copy) NSString *name; // @synthesize name=_name;
 - (void)encodeIntoPropertyList:(id)arg1;
 - (void)awakeFromPropertyList;
 - (id)initWithPropertyList:(id)arg1 owner:(id)arg2;
 - (id)initWithName:(id)arg1 isOptional:(_Bool)arg2;
+- (void)validateRequiredTypesArePresentForKeyPathPrefix:(id)arg1 failureHandler:(CDUnknownBlockType)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

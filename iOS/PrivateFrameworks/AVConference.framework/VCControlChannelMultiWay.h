@@ -59,8 +59,9 @@ __attribute__((visibility("hidden")))
 - (_Bool)addActiveParticipant:(unsigned long long)arg1 participantUUID:(id)arg2 withConfiguration:(CDStruct_c24deb19 *)arg3;
 - (void)sendUnreliableMessage:(id)arg1 withTopic:(id)arg2 participantID:(unsigned long long)arg3;
 - (void)sendReliableMessage:(id)arg1 withTopic:(id)arg2 participantID:(unsigned long long)arg3;
+- (_Bool)sendReliableMessage:(id)arg1 withTopic:(id)arg2 participantID:(unsigned long long)arg3 timeout:(unsigned int)arg4 withOptions:(id)arg5 completion:(CDUnknownBlockType)arg6;
 - (_Bool)sendReliableMessage:(id)arg1 withTopic:(id)arg2 participantID:(unsigned long long)arg3 timeout:(unsigned int)arg4 completion:(CDUnknownBlockType)arg5;
-- (_Bool)sendReliableMessageAndWait:(id)arg1 withTopic:(id)arg2 participantID:(unsigned long long)arg3 timeout:(id)arg4;
+- (_Bool)sendReliableMessageAndWait:(id)arg1 withTopic:(id)arg2 participantID:(unsigned long long)arg3 timeout:(id)arg4 withOptions:(id)arg5;
 - (id)copyDialogForParticipantID:(id)arg1;
 - (_Bool)sendReliableMessageAndWait:(id)arg1 withTopic:(id)arg2 participantID:(unsigned long long)arg3;
 - (void)messageReceived:(id)arg1 participantInfo:(struct tagVCIDSChannelDataFormat *)arg2;

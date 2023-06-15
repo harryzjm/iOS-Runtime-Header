@@ -17,14 +17,14 @@
     TSCHChartModel *_model;
     unsigned long long _seriesIndex;
     TSCHChartSeriesType *_seriesType;
+    TSCHTrendLineData *_trendLineData;
+    TSCHErrorBarData *_errorBarData;
     NSObject *_seriesStorage;
     unsigned long long _barGapIndex;
     TSCHChartModel *_chartModel;
     TSUIntegerKeyDictionary *_axisTable;
     TSCHChartGridAdapter *_nameAdapter;
     id <TSCHStyleActAlike> _nonStyle;
-    TSCHTrendLineData *_trendLineData;
-    TSCHErrorBarData *_errorBarData;
     TSUFastReadInvalidatingCache *_downsampleDataCache;
 }
 
@@ -36,8 +36,6 @@
 - (void).cxx_destruct;
 @property(nonatomic) _Bool isFakeSeriesForHiddenDataExport; // @synthesize isFakeSeriesForHiddenDataExport=_isFakeSeriesForHiddenDataExport;
 @property(retain, nonatomic) TSUFastReadInvalidatingCache *downsampleDataCache; // @synthesize downsampleDataCache=_downsampleDataCache;
-@property(retain, nonatomic) TSCHErrorBarData *errorBarData; // @synthesize errorBarData=_errorBarData;
-@property(retain, nonatomic) TSCHTrendLineData *trendLineData; // @synthesize trendLineData=_trendLineData;
 @property(nonatomic) _Bool styleIsPrivate; // @synthesize styleIsPrivate=_styleIsPrivate;
 @property(retain, nonatomic) id <TSCHStyleActAlike> nonStyle; // @synthesize nonStyle=_nonStyle;
 @property(retain, nonatomic) TSCHChartGridAdapter *nameAdapter; // @synthesize nameAdapter=_nameAdapter;
@@ -45,6 +43,8 @@
 @property(nonatomic) __weak TSCHChartModel *chartModel; // @synthesize chartModel=_chartModel;
 @property(nonatomic) unsigned long long barGapIndex; // @synthesize barGapIndex=_barGapIndex;
 @property(retain, nonatomic) NSObject *seriesStorage; // @synthesize seriesStorage=_seriesStorage;
+@property(retain, nonatomic) TSCHErrorBarData *errorBarData; // @synthesize errorBarData=_errorBarData;
+@property(retain, nonatomic) TSCHTrendLineData *trendLineData; // @synthesize trendLineData=_trendLineData;
 @property(retain, nonatomic) TSCHChartSeriesType *seriesType; // @synthesize seriesType=_seriesType;
 @property(nonatomic) unsigned long long seriesIndex; // @synthesize seriesIndex=_seriesIndex;
 @property(readonly, nonatomic) __weak TSCHChartModel *model; // @synthesize model=_model;
@@ -55,6 +55,7 @@
 @property(readonly, nonatomic) unsigned long long numberOfGroups;
 - (id)p_downsampleDataFromCurrentModel;
 - (id)p_seriesNonStyleOrDefaultNonStyle;
+- (id)transformedTuplesWithTuple:(id)arg1;
 - (id)operationPropertyNameFromGenericProperty:(int)arg1;
 - (id)defaultProperties;
 - (id)nonstyle;

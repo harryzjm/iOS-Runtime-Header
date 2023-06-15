@@ -9,9 +9,12 @@
 __attribute__((visibility("hidden")))
 @interface VCPCNNPetsDetector : NSObject
 {
+    struct Scaler _scaler;
 }
 
 + (id)detector:(int)arg1;
+- (id).cxx_construct;
+- (void).cxx_destruct;
 - (int)petsDetection:(struct __CVBuffer *)arg1 petsRegions:(id)arg2 petsFaceRegions:(id)arg3 cancel:(CDUnknownBlockType)arg4;
 - (int)postProcBoxes:(id)arg1 maxNumRegions:(int)arg2;
 - (int)generatePetsRegions:(float *)arg1 outHeight:(int)arg2 outWidth:(int)arg3 boxes:(id)arg4 faceBoxes:(id)arg5 maxNumRegions:(int)arg6;

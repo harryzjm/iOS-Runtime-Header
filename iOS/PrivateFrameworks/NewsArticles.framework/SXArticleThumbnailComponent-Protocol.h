@@ -9,7 +9,7 @@
 @class NSString;
 
 @protocol SXArticleThumbnailComponent <SXComponent>
-@property(nonatomic, readonly) _Bool showLayeredThumbnail;
-@property(nonatomic, readonly) NSString *articleIdentifier;
+@property(readonly, nonatomic) _Bool showLayeredThumbnail;
+@property(readonly, nonatomic) NSString *articleIdentifier;
 @end
 

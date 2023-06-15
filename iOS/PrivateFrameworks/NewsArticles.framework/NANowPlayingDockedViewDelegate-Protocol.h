@@ -7,6 +7,7 @@
 @class NANowPlayingDockedView;
 
 @protocol NANowPlayingDockedViewDelegate
+- (void)nowPlayingDockedViewDidTapClose:(NANowPlayingDockedView *)arg1;
 - (void)nowPlayingDockedViewDidTapPlay:(NANowPlayingDockedView *)arg1;
 - (void)nowPlayingDockedViewDidTapPause:(NANowPlayingDockedView *)arg1;
 - (void)nowPlayingDockedViewDidTapRewind:(NANowPlayingDockedView *)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class AMSUIWebLoadingPageModel, AMSUIWebNavigationBarModel, NSDictionary, NSString;
+@class AMSUIWebClientContext, AMSUIWebLoadingPageModel, AMSUIWebNavigationBarModel, NSDictionary, NSString;
 @protocol AMSUIWebPageProvider;
 
 __attribute__((visibility("hidden")))
@@ -43,6 +43,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithContext:(id)arg1;
 
 // Remaining properties
+@property(readonly, nonatomic) AMSUIWebClientContext *context;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;

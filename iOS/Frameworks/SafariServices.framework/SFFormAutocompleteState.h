@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, NSString, SFCreditCardFillingViewController, SFFormAutoFillFrameHandle, UIView, WBSAuthenticationServicesAgentProxy, WBSFormAutoFillMetadataCorrector, WBSFormControlMetadata, WBSFormMetadata, WBSHideMyEmailRecord, WBSMultiRoundAutoFillManager, _ASPasswordCredentialAuthenticationViewController, _SFFormAutoFillController, _SFFormAutoFillInputSession, _SFFormDataController;
+@class NSArray, NSDictionary, NSString, SFCreditCardFillingViewController, SFFormAutoFillFrameHandle, UIView, WBSAuthenticationServicesAgentProxy, WBSFormAutoFillMetadataCorrector, WBSFormControlMetadata, WBSFormMetadata, WBSHideMyEmailRecord, WBSMultiRoundAutoFillManager, _ASCredentialAuthenticationViewController, _SFFormAutoFillController, _SFFormAutoFillInputSession, _SFFormDataController;
 
 __attribute__((visibility("hidden")))
 @interface SFFormAutocompleteState : NSObject
@@ -34,19 +34,20 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _creditCardCaptureCompletionHandler;
     WBSFormAutoFillMetadataCorrector *_metadataCorrector;
     NSArray *_cachedExternalCredentialIdentities;
-    _ASPasswordCredentialAuthenticationViewController *_externalCredentialViewController;
+    _ASCredentialAuthenticationViewController *_externalCredentialViewController;
     CDUnknownBlockType _externalCredentialListCompletionHandler;
     _Bool _submitExternalCredential;
     _Bool _performingPageLevelAutoFill;
     WBSHideMyEmailRecord *_hideMyEmailRecord;
     SFCreditCardFillingViewController *_creditCardViewController;
     WBSAuthenticationServicesAgentProxy *_authenticationServicesAgentProxy;
+    long long _quickTypeBarTrailingButtonPurpose;
     WBSMultiRoundAutoFillManager *_multiRoundAutoFillManager;
     SFFormAutoFillFrameHandle *_frame;
     WBSFormControlMetadata *_textFieldMetadata;
 }
 
-+ (_Bool)_shouldSaveCredentialsInProtectionSpace:(id)arg1;
++ (_Bool)_shouldSaveCredentialsInProtectionSpace:(id)arg1 savedAccountContext:(id)arg2;
 + (void)_getMatchesFromFormProtectionSpace:(id)arg1 matchesFromOtherProtectionSpaces:(id)arg2 withFormURL:(id)arg3 credentialMatches:(id)arg4 lastGeneratedPassword:(id)arg5 currentUser:(id)arg6 currentPassword:(id)arg7 forUserNamesOnly:(_Bool)arg8;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) WBSFormControlMetadata *textFieldMetadata; // @synthesize textFieldMetadata=_textFieldMetadata;
@@ -54,13 +55,15 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) WBSMultiRoundAutoFillManager *multiRoundAutoFillManager; // @synthesize multiRoundAutoFillManager=_multiRoundAutoFillManager;
 @property(readonly, nonatomic) _SFFormAutoFillInputSession *inputSession; // @synthesize inputSession=_inputSession;
 @property(nonatomic) long long action; // @synthesize action=_action;
-- (void)passwordCredentialAuthenticationViewController:(id)arg1 didFinishWithCredential:(id)arg2 error:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)credentialAuthenticationViewController:(id)arg1 didFinishWithPasskeyRegistrationCredential:(id)arg2 error:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)credentialAuthenticationViewController:(id)arg1 didFinishWithPasskeyAssertionCredential:(id)arg2 error:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)credentialAuthenticationViewController:(id)arg1 didFinishWithCredential:(id)arg2 error:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)presentUIForPasswordCredentialAuthenticationViewController:(id)arg1;
 - (void)credentialListViewController:(id)arg1 didFinishWithCredential:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_presentCredentialListForExtension:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)_actionForPresentingPasswordManagerExtension:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_fillASPasswordCredential:(id)arg1 needsAuthentication:(_Bool)arg2 setAutoFilled:(_Bool)arg3 submitForm:(_Bool)arg4;
-- (void)_fillPasswordCredentialIdentity:(id)arg1 submitForm:(_Bool)arg2;
+- (void)_fillCredentialIdentity:(id)arg1 submitForm:(_Bool)arg2;
 - (_Bool)_shouldAllowExternalPasswordAutoFillOnURL:(id)arg1;
 - (id)_textSuggestionForExternalCredentialIdentity:(id)arg1 submitForm:(_Bool)arg2;
 - (id)externalCredentialIdentities;
@@ -96,6 +99,8 @@ __attribute__((visibility("hidden")))
 - (void)_performPageLevelContactAutoFill;
 - (void)_performPageLevelCredentialAutoFill;
 - (void)performPageLevelAutoFill;
+- (id)_createCreditCardHeaderViewControllerForEscapeHatchAlertControllerForCard:(id)arg1;
+- (void)_clearAutoFilledCreditCardFieldsAndShowAllCreditCards;
 - (void)_autoFillSingleCreditCardData:(long long)arg1;
 - (void)captureCreditCardDataWithCameraAndFill;
 - (void)presentUnavailableVirtualCardAlert;
@@ -122,10 +127,12 @@ __attribute__((visibility("hidden")))
 - (void)showAllPasswordsButtonTapped;
 - (id)_textSuggestionForCredentialDisplayData:(id)arg1 submitForm:(_Bool)arg2;
 - (void)_getMatchingKeychainCredentialsIncludingCredentialsWithEmptyUsernames:(_Bool)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)_addPasswordsAutoFillSuggestionToSuggestions:(id)arg1 forPurpose:(long long)arg2;
 - (void)_suggestLoginCredentialsShowingQuickTypeKey:(_Bool)arg1;
 - (void)_fillOneTimeCodeAfterAuthenticationIfNeeded:(id)arg1 inFrame:(id)arg2 shouldSubmit:(_Bool)arg3;
 - (void)_fillCredentialAfterAuthenticationIfNeeded:(id)arg1 setAsDefaultCredential:(_Bool)arg2 submitForm:(_Bool)arg3;
 - (void)_fillSavedAccountMatchAfterAuthenticationIfNeeded:(id)arg1 setAsDefaultCredential:(_Bool)arg2 submitForm:(_Bool)arg3;
+- (void)_offerToAutoFillFromAvailableOneTimeCodes;
 - (void)_offerToAutoFillFromPotentialCredentialMatches;
 - (void)_fillCredential:(id)arg1 setAutoFilled:(_Bool)arg2 setAsDefaultCredential:(_Bool)arg3 focusFieldAfterFilling:(_Bool)arg4 submitForm:(_Bool)arg5;
 - (void)_fillSavedAccount:(id)arg1 setAutoFilled:(_Bool)arg2 setAsDefaultCredential:(_Bool)arg3 focusFieldAfterFilling:(_Bool)arg4 submitForm:(_Bool)arg5;
@@ -143,7 +150,6 @@ __attribute__((visibility("hidden")))
 - (void)_autoFillFormWithUsername:(id)arg1;
 - (_Bool)_suggestUsernamesForRegistrationIfPossible:(unsigned long long)arg1;
 - (_Bool)_textFieldIsEmptyPasswordField;
-@property(readonly, nonatomic) NSString *titleOfAutoFillButton;
 - (void)updateAutoFillButton;
 - (void)updateCachedFormMetadataAfterFilling:(id)arg1;
 - (void)_textDidChangeInForm:(id)arg1 textField:(id)arg2;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <iCloudDriveCore/PQLValuable-Protocol.h>
-
 @class BRCALRowID, NSString;
 
 __attribute__((visibility("hidden")))
-@interface BRCItemID_v9 : NSObject <PQLValuable>
+@interface BRCItemID_v9 : NSObject
 {
     BRCALRowID *_appLibraryRowID;
     unsigned char _kind;

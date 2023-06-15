@@ -14,6 +14,7 @@
 @property(readonly, nonatomic) SHSheetActivityPerformer *activityPerformer;
 @property(readonly, nonatomic) id <SHSheetSession> session;
 @property(nonatomic) __weak id <SHSheetInteractorDelegate> delegate;
+- (void)invalidateRemoteSession;
 - (void)applicationWillEnterForeground;
 - (void)applicationDidEnterBackground;
 - (void)preheatActivitiesIfNeeded;
@@ -21,7 +22,7 @@
 - (void)performActivityWithRequest:(UISUIActivityExtensionItemDataRequest *)arg1 forExtension:(NSExtension *)arg2 completion:(void (^)(UISUIActivityExtensionItemData *))arg3;
 - (void)performPeopleSuggestion:(id <SHSheetUIPeopleSuggestion>)arg1;
 - (void)performActivity:(UIActivity *)arg1;
-- (void)requestSessionConfigurationUpdateAsynchronously:(_Bool)arg1;
+- (void)requestServiceUpdate;
 - (void)stopSession;
 - (void)startSession;
 - (void)updateSessionWithContext:(SHSheetContext *)arg1;

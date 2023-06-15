@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 @protocol UIVectorOperatable;
 
 __attribute__((visibility("hidden")))
-@interface _UIViewPropertyInfo : NSObject <NSCopying>
+@interface _UIViewPropertyInfo : NSObject
 {
     id <UIVectorOperatable> _previousValue;
     id <UIVectorOperatable> _value;

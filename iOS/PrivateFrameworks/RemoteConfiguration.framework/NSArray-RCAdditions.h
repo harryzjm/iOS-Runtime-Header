@@ -7,6 +7,7 @@
 #import <Foundation/NSArray.h>
 
 @interface NSArray (RCAdditions)
+- (id)rc_description;
 - (id)rc_arrayByTransformingWithBlock:(CDUnknownBlockType)arg1;
 - (id)rc_arrayByTransformingWithBlockWithIndex:(CDUnknownBlockType)arg1;
 - (_Bool)rc_containsObjectPassingTest:(CDUnknownBlockType)arg1;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MKUGCCallToActionViewAppearance, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, NSArray, NSString, UIView, UIViewController;
+@class MUPlaceCallToActionAppearance, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, NSArray, NSString, UIView, UIViewController;
 @protocol GEOTransitLineItem, MUInfoCardAnalyticsDelegate;
 
 __attribute__((visibility("hidden")))
@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
 {
     _Bool _active;
     UIView *_sectionView;
-    MKUGCCallToActionViewAppearance *_submissionStatus;
+    MUPlaceCallToActionAppearance *_submissionStatus;
     id <MUInfoCardAnalyticsDelegate> _analyticsDelegate;
     id <GEOTransitLineItem> _lineItem;
 }
@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(readonly, nonatomic) id <GEOTransitLineItem> lineItem; // @synthesize lineItem=_lineItem;
 @property(nonatomic) __weak id <MUInfoCardAnalyticsDelegate> analyticsDelegate; // @synthesize analyticsDelegate=_analyticsDelegate;
-@property(retain, nonatomic) MKUGCCallToActionViewAppearance *submissionStatus; // @synthesize submissionStatus=_submissionStatus;
+@property(retain, nonatomic) MUPlaceCallToActionAppearance *submissionStatus; // @synthesize submissionStatus=_submissionStatus;
 @property(nonatomic, getter=isActive) _Bool active; // @synthesize active=_active;
 - (id)revealedAnalyticsModule;
 - (id)analyticsModule;

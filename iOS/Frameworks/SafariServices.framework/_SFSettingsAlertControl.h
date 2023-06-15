@@ -6,7 +6,7 @@
 
 #import <UIKit/UIControl.h>
 
-@class NSString, _SFSettingsAlertItem, _SFSettingsAlertItemBackgroundView;
+@class NSAttributedString, NSString, UIImage, _SFSettingsAlertItem, _SFSettingsAlertItemBackgroundView;
 @protocol SFSettingsAlertItemViewDelegate;
 
 __attribute__((visibility("hidden")))
@@ -31,11 +31,17 @@ __attribute__((visibility("hidden")))
 - (id)initWithFrame:(struct CGRect)arg1;
 
 // Remaining properties
+@property(copy, nonatomic) NSAttributedString *attributedDetailText; // @dynamic attributedDetailText;
+@property(copy, nonatomic) NSAttributedString *attributedText; // @dynamic attributedText;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(copy, nonatomic) NSString *detailText; // @dynamic detailText;
 @property(nonatomic, getter=isEnabled) _Bool enabled;
 @property(readonly) unsigned long long hash;
+@property(retain, nonatomic) UIImage *image; // @dynamic image;
+@property(nonatomic, getter=isSelected) _Bool selected;
 @property(readonly) Class superclass;
+@property(copy, nonatomic) NSString *text; // @dynamic text;
 
 @end
 

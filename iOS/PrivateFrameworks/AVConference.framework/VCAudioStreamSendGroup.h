@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class AVCBasebandCongestionDetector, VCAudioStreamGroupCommon, VCRedundancyControllerAudio, VCSystemAudioCaptureSession;
+@class AVCBasebandCongestionDetector, VCAudioStreamGroupCommon, VCSystemAudioCaptureSession;
 
 __attribute__((visibility("hidden")))
 @interface VCAudioStreamSendGroup
@@ -25,19 +25,21 @@ __attribute__((visibility("hidden")))
     unsigned char _forcedAudioPriorityValue;
     double _forcedAudioPriorityLastUpdateTime;
     struct opaqueVCVoiceDetector *_voiceDetector;
-    VCRedundancyControllerAudio *_redundancyController;
     VCSystemAudioCaptureSession *_systemAudioCaptureSession;
     struct tagVCAudioDucker *_audioDucker;
     _Bool _shouldScheduleMediaQueue;
     float _averageInputPower;
 }
 
+@property(readonly) VCAudioStreamGroupCommon *common; // @synthesize common=_common;
 @property(nonatomic) unsigned int cellularUniqueTag; // @synthesize cellularUniqueTag=_cellularUniqueTag;
 @property(retain, nonatomic) AVCBasebandCongestionDetector *basebandCongestionDetector; // @synthesize basebandCongestionDetector=_basebandCongestionDetector;
 @property(nonatomic, setter=setCurrentDTXEnabled:) _Bool isCurrentDTXEnabled; // @synthesize isCurrentDTXEnabled=_isCurrentDTXEnabled;
 @property(nonatomic, setter=setVADFilteringEnabled:) _Bool isVADFilteringEnabled; // @synthesize isVADFilteringEnabled=_isVADFilteringEnabled;
-- (id)checkStreamsForAudioOptIn:(id)arg1;
-- (id)setupRedundancyController;
+- (void)didReceiveCustomReportPacket:(struct tagRTCPPACKET *)arg1 arrivalNTPTime:(union tagNTP)arg2;
+- (void)didReceiveReportPacket:(struct tagRTCPPACKET *)arg1 arrivalNTPTime:(union tagNTP)arg2;
+- (id)checkStreamsForAdditionalOptIn:(id)arg1;
+- (id)setupRedundancyControllerForMode:(unsigned int)arg1;
 - (void)setMuteOnStreams;
 - (void)stopDynamicDucker;
 - (void)startDynamicDucker;
@@ -54,19 +56,21 @@ __attribute__((visibility("hidden")))
 - (id)startCapture;
 - (_Bool)removeSyncDestination:(id)arg1;
 - (_Bool)addSyncDestination:(id)arg1;
-- (void)setPeerSubscribedStreams:(id)arg1;
 - (id)activeStreamKeys;
-- (void)updateActiveMediaStreamIDs:(id)arg1 withTargetBitrate:(unsigned int)arg2 mediaBitrates:(id)arg3;
+- (void)dispatchedUpdateActiveMediaStreamIDs:(id)arg1 withTargetBitrate:(unsigned int)arg2 mediaBitrates:(id)arg3 rateChangeCounter:(unsigned int)arg4;
 - (void)setReportingAgent:(struct opaqueRTCReporting *)arg1;
 - (void)collectAndLogChannelMetrics:(CDStruct_b671a7c4 *)arg1;
 - (_Bool)configureStreams;
 @property(nonatomic, setter=setMuted:) _Bool isMuted;
 - (void)didStop;
 - (id)willStart;
+- (void)updateVoiceActivityEnabled:(_Bool)arg1 isMediaPriorityEnabled:(_Bool)arg2;
 - (void)updateActiveVoiceOnly:(_Bool)arg1;
 @property(setter=setPowerSpectrumEnabled:) _Bool isPowerSpectrumEnabled;
 @property(readonly, nonatomic) int deviceRole;
+- (_Bool)configureAudioStreams:(id)arg1 deviceRole:(int)arg2 operatingMode:(int)arg3;
 - (_Bool)setDeviceRole:(int)arg1 operatingMode:(int)arg2;
+- (_Bool)setupStreamGroupWithConfig:(id)arg1;
 - (void)dealloc;
 - (id)initWithConfig:(id)arg1;
 

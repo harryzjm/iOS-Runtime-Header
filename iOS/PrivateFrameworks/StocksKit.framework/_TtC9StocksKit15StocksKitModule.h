@@ -10,9 +10,8 @@
 
 @interface _TtC9StocksKit15StocksKitModule : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *resolver;
-    MISSING_TYPE *singletonPool;
-    MISSING_TYPE *objcSingletonPool;
+    MISSING_TYPE *container;
+    MISSING_TYPE *$__lazy_storage_$_resolver;
 }
 
 @end

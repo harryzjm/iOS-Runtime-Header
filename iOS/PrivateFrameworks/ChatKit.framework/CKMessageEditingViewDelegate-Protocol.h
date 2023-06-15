@@ -11,6 +11,7 @@
 @protocol CKMessageEditingViewDelegate <NSObject>
 - (void)messageEditingViewDidUpdateBalloonViewContent:(CKMessageEditingView *)arg1;
 - (void)messageEditingViewDidUpdateBalloonViewFrame:(CKMessageEditingView *)arg1;
+- (BOOL)messageEditingColor;
 - (_Bool)messageEditingViewBalloonHasTail;
 - (struct UIEdgeInsets)messageEditingViewDismissAnimationContentInsets;
 - (double)messageEditingViewDismissAnimationBalloonMaxWidth;

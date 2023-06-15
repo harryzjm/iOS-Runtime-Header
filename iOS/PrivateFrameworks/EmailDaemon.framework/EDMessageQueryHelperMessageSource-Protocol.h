@@ -4,10 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class EFQuery, NSArray;
+@class EMQuery, NSArray;
 
 @protocol EDMessageQueryHelperMessageSource
-@property(readonly, nonatomic) EFQuery *query;
+@property(readonly, nonatomic) EMQuery *query;
+- (NSArray *)sortableMessagesWithAdditionalPredicates:(NSArray *)arg1 limit:(long long)arg2;
 - (NSArray *)messagesWithAdditionalPredicates:(NSArray *)arg1 limit:(long long)arg2;
 @end
 

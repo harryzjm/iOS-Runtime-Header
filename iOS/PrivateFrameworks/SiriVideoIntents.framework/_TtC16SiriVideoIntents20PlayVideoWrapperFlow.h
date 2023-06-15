@@ -17,7 +17,6 @@
     MISSING_TYPE *flowFactory;
     MISSING_TYPE *deviceResolutionProvider;
     MISSING_TYPE *deviceSelectionDonationProvider;
-    MISSING_TYPE *featureFlagService;
     MISSING_TYPE *deviceResolutionAnalytics;
     MISSING_TYPE *aceServiceInvoker;
     MISSING_TYPE *analyticsService;

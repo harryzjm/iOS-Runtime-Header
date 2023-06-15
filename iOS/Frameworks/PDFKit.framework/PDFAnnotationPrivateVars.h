@@ -55,6 +55,7 @@ __attribute__((visibility("hidden")))
         _Bool didGenerate;
         NSString *contentType;
     } textContentType;
+    unsigned long long formContentType;
     _Bool restoreLinePoints;
     _Bool restoreQuadPoints;
     struct CGPoint startPoint;

@@ -15,7 +15,6 @@
     NSOrderedSet *_allAccounts;
 }
 
-+ (id)keyPathsForValuesAffectingServerAccounts;
 + (id)keyPathsForValuesAffectingDeveloperAccounts;
 + (id)sharedAccountManager;
 - (void).cxx_destruct;
@@ -26,9 +25,7 @@
 - (void)addAccountsFromArray:(id)arg1;
 - (void)removeAccountWithUsernameIfPresent:(id)arg1;
 - (void)removeAccount:(id)arg1;
-- (void)addServerAccount:(id)arg1;
 - (void)addDeveloperAccount:(id)arg1;
-@property(readonly, nonatomic) NSOrderedSet *serverAccounts;
 @property(readonly, nonatomic) NSOrderedSet *developerAccounts;
 - (void)loadAccountsWithCallback:(CDUnknownBlockType)arg1;
 - (void)notifyAndUpdateAccountSessionObservers;

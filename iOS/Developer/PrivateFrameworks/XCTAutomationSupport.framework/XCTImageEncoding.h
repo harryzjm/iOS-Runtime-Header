@@ -22,11 +22,13 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) double compressionQuality; // @synthesize compressionQuality=_compressionQuality;
 @property(readonly, copy, nonatomic) NSString *uniformTypeIdentifier; // @synthesize uniformTypeIdentifier=_uniformTypeIdentifier;
+- (id)dictionaryRepresentation;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
 - (id)initWithUniformTypeIdentifier:(id)arg1 compressionQuality:(double)arg2;
 
 @end

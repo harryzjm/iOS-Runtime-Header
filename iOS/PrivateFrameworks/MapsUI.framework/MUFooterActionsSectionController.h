@@ -6,25 +6,25 @@
 
 #import <objc/NSObject.h>
 
-@class MKUGCCallToActionViewAppearance, MUActionGroupSectionView, MUPlaceActionManager, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, MUPlaceSectionView, NSArray, NSString, UIView, UIViewController;
-@protocol MUInfoCardAnalyticsDelegate;
+@class MUActionGroupSectionView, MUPlaceCallToActionAppearance, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, MUPlaceSectionView, NSArray, NSString, UIView, UIViewController;
+@protocol MKPlaceActionManagerProtocol><MKPlaceActionItemFooterBuilder, MUInfoCardAnalyticsDelegate;
 
 __attribute__((visibility("hidden")))
 @interface MUFooterActionsSectionController : NSObject
 {
     MUPlaceSectionView *_sectionView;
-    MUPlaceActionManager *_actionManager;
+    id <MKPlaceActionManagerProtocol><MKPlaceActionItemFooterBuilder> _actionManager;
     MUActionGroupSectionView *_footerView;
     NSArray *_footerActions;
     _Bool _active;
     MUPlaceSectionHeaderViewModel *_sectionHeaderViewModel;
-    MKUGCCallToActionViewAppearance *_submissionStatus;
+    MUPlaceCallToActionAppearance *_submissionStatus;
     id <MUInfoCardAnalyticsDelegate> _analyticsDelegate;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <MUInfoCardAnalyticsDelegate> analyticsDelegate; // @synthesize analyticsDelegate=_analyticsDelegate;
-@property(retain, nonatomic) MKUGCCallToActionViewAppearance *submissionStatus; // @synthesize submissionStatus=_submissionStatus;
+@property(retain, nonatomic) MUPlaceCallToActionAppearance *submissionStatus; // @synthesize submissionStatus=_submissionStatus;
 @property(readonly, nonatomic) MUPlaceSectionHeaderViewModel *sectionHeaderViewModel; // @synthesize sectionHeaderViewModel=_sectionHeaderViewModel;
 @property(nonatomic, getter=isActive) _Bool active; // @synthesize active=_active;
 - (id)revealedAnalyticsModule;

@@ -10,6 +10,7 @@
 
 @interface CKRecordZoneID (WBSCKRecordZoneIDExtras)
 + (id)safari_tabGroupSecondaryRecordZoneIDWithRootRecordName:(id)arg1;
++ (id)safari_tabGroupSecondaryRecordZoneNameWithRootRecordName:(id)arg1;
 + (id)safari_tabGroupsRecordZoneID;
 + (id)safari_bookmarksRecordZoneID;
 @property(readonly, nonatomic) _Bool safari_isInPrivateDatabase;

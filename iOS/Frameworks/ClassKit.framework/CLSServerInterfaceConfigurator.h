@@ -13,7 +13,6 @@
     NSXPCInterface *_interface;
     NSSet *_contextsSet;
     NSSet *_arraySet;
-    NSSet *_sortDescriptorsSet;
 }
 
 - (void).cxx_destruct;

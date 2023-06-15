@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (long long)numberOfRows;
 - (double)itemHeightForItemWidth:(double)arg1;
 - (double)itemWidthForWidth:(double)arg1;
+- (_Bool)acuis_wantsPriorityOverTargetOfGestureRecognizer:(id)arg1;
 - (void)updateCollectionViewLayout;
 - (void)setFrame:(struct CGRect)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

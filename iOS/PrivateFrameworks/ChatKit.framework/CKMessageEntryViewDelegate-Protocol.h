@@ -6,14 +6,17 @@
 
 #import <ChatKit/NSObject-Protocol.h>
 
-@class CKMediaObject, CKMessageEntryView, IMPluginPayload, NSArray, UITextView;
+@class CKMediaObject, CKMessageEntryView, CKSendMenuPresentation, IMPluginPayload, NSArray, UITextView, UIWindow;
 
 @protocol CKMessageEntryViewDelegate <NSObject>
+- (CKSendMenuPresentation *)messageEntryViewActiveSendMenuPresentation:(CKMessageEntryView *)arg1;
 - (struct CGSize)messageEntryViewMaxShelfPluginViewSize:(CKMessageEntryView *)arg1;
 - (double)messageEntryViewMaxHeight:(CKMessageEntryView *)arg1;
 - (void)messageEntryViewRaiseGestureAutoSend:(CKMessageEntryView *)arg1;
 - (void)messageEntryViewSendButtonHitWhileDisabled:(CKMessageEntryView *)arg1;
 - (void)messageEntryViewSendButtonHit:(CKMessageEntryView *)arg1;
+- (void)messageEntryView:(CKMessageEntryView *)arg1 didMoveToWindow:(UIWindow *)arg2;
+- (void)messageEntryViewSafeAreaInsetsDidChange:(CKMessageEntryView *)arg1;
 - (void)messageEntryView:(CKMessageEntryView *)arg1 didInsertPluginPayload:(IMPluginPayload *)arg2;
 - (void)messageEntryView:(CKMessageEntryView *)arg1 didTapMediaObject:(CKMediaObject *)arg2;
 - (_Bool)messageEntryView:(CKMessageEntryView *)arg1 shouldInsertMediaObjects:(NSArray *)arg2;
@@ -21,13 +24,14 @@
 - (void)messageEntryViewDidBeginEditingNotAlreadyActive:(CKMessageEntryView *)arg1;
 - (_Bool)messageEntryViewShouldBeginEditing:(CKMessageEntryView *)arg1;
 - (void)messageEntryViewRecordingDidChange:(CKMessageEntryView *)arg1;
-- (void)messageEntryViewDidChange:(CKMessageEntryView *)arg1;
+- (void)messageEntryViewDidChange:(CKMessageEntryView *)arg1 isTextChange:(_Bool)arg2;
 
 @optional
 - (void)messageEntryViewPopulateNextSentMessage:(CKMessageEntryView *)arg1;
 - (void)messageEntryViewPopulatePreviousSentMessage:(CKMessageEntryView *)arg1;
 - (void)sendCurrentLocationMessage:(CKMessageEntryView *)arg1;
 - (UITextView *)textViewOnscreenWithEntryView;
+- (void)messageEntryViewDidTakeFocus:(CKMessageEntryView *)arg1;
 - (void)enableRotationAfterRecording;
 - (void)disableRotationWhileRecordingAudioMessage;
 - (void)messageEntryViewDidBeginEditing:(CKMessageEntryView *)arg1;

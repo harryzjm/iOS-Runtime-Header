@@ -19,7 +19,11 @@ __attribute__((visibility("hidden")))
 + (id)configurationForChildState;
 + (id)syncPolicyForChildState;
 + (id)storeConfigurationForChildState;
++ (id)configurationForRequest;
++ (id)syncPolicyForRequest;
++ (id)storeConfigurationForRequest;
 + (id)ChildState;
++ (id)Request;
 
 @end
 

@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
     unsigned long long _originatingHeading;
 }
 
-+ (id)_movementWithHeading:(unsigned long long)arg1 linearHeading:(unsigned long long)arg2 originatingHeading:(unsigned long long)arg3 isInitial:(_Bool)arg4;
++ (id)_movementWithHeading:(unsigned long long)arg1 linearHeading:(unsigned long long)arg2 originatingHeading:(unsigned long long)arg3 isInitial:(_Bool)arg4 inputType:(unsigned long long)arg5;
 @property(nonatomic) unsigned long long originatingHeading; // @synthesize originatingHeading=_originatingHeading;
 
 @end

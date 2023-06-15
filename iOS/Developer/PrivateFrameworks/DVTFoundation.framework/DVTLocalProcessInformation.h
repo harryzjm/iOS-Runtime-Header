@@ -19,7 +19,6 @@
 + (id)currentProcessInformationsUnfiltered;
 + (id)currentProcessInformations;
 + (id)_processInformationsFilteredBy:(CDUnknownBlockType)arg1;
-+ (id)_archNameForExecutableArchitecture:(int)arg1;
 - (void).cxx_destruct;
 - (id)_procTableName;
 - (_Bool)_isLaunchCFMApp;

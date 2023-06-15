@@ -14,6 +14,17 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
+struct NWURLSessionConnectionTiming {
+    unsigned long long domainLookupStartMS;
+    unsigned long long domainLookupDurationMS;
+    unsigned long long connectStartTimeMS;
+    unsigned long long connectDurationMS;
+    unsigned long long secureConnectionDurationMS;
+    _Bool secure;
+    _Bool valid;
+    unsigned char __pad[6];
+};
+
 struct description_cache {
     struct retained_ptr<NSString *> description;
     struct unfair_mutex mutex;
@@ -125,6 +136,7 @@ struct necp_extra_quic_metadata {
     unsigned int _field7;
     unsigned int _field8;
     unsigned char _field9[16];
+    struct necp_connection_probe_status _field10;
 };
 
 struct necp_extra_tcp_metadata {
@@ -318,15 +330,15 @@ struct nw_connection_report_s {
     unsigned long long _field14;
     unsigned long long _field15;
     unsigned long long _field16;
-    unsigned int _field17;
-    unsigned int _field18;
-    unsigned int _field19;
-    unsigned int _field20;
-    unsigned int _field21;
-    unsigned int _field22;
-    unsigned int _field23;
-    unsigned int _field24;
-    unsigned int _field25;
+    unsigned long long _field17;
+    unsigned long long _field18;
+    unsigned long long _field19;
+    unsigned long long _field20;
+    unsigned long long _field21;
+    unsigned long long _field22;
+    unsigned long long _field23;
+    unsigned long long _field24;
+    unsigned long long _field25;
     unsigned int _field26;
     unsigned int _field27;
     unsigned int _field28;
@@ -345,25 +357,36 @@ struct nw_connection_report_s {
     unsigned int _field41;
     unsigned int _field42;
     unsigned int _field43;
-    int _field44;
-    int _field45;
-    int _field46;
-    int _field47;
-    int _field48;
-    int _field49;
-    int _field50;
-    int _field51;
-    int _field52;
+    unsigned int _field44;
+    unsigned int _field45;
+    unsigned int _field46;
+    unsigned int _field47;
+    unsigned int _field48;
+    unsigned int _field49;
+    unsigned int _field50;
+    unsigned int _field51;
+    unsigned int _field52;
     int _field53;
-    unsigned char _field54;
-    unsigned char _field55;
-    unsigned char _field56;
-    unsigned char _field57[16];
-    unsigned char _field58[16];
-    unsigned char _field59[50][16];
-    char _field60[256];
-    char _field61[256];
-    unsigned char _field62;
+    int _field54;
+    int _field55;
+    int _field56;
+    int _field57;
+    int _field58;
+    int _field59;
+    int _field60;
+    int _field61;
+    int _field62;
+    unsigned char _field63;
+    unsigned char _field64;
+    unsigned char _field65;
+    unsigned char _field66[16];
+    unsigned char _field67[16];
+    unsigned char _field68[50][16];
+    char _field69[256];
+    char _field70[256];
+    unsigned char _field71;
+    int _field72;
+    int _field73;
     unsigned int :1;
     unsigned int :1;
     unsigned int :1;
@@ -405,11 +428,13 @@ struct nw_connection_report_s {
     unsigned int :1;
     unsigned int :1;
     unsigned int :1;
-    unsigned int :7;
-    unsigned char _field63[2];
-    struct nw_connection_protocol_establishment_report_s _field64[10];
-    struct nw_connection_proxy_hop_s _field65[2];
-    unsigned char _field66[0];
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :5;
+    unsigned char _field74[2];
+    struct nw_connection_protocol_establishment_report_s _field75[10];
+    struct nw_connection_proxy_hop_s _field76[2];
+    unsigned char _field77[0];
 };
 
 struct nw_connection_throughput_monitor_s {
@@ -491,14 +516,22 @@ struct nw_data_transfer_path_report {
 
 struct nw_data_transfer_path_report_value {
     unsigned long long received_ip_packet_count;
+    unsigned long long received_ip_ect1_packet_count;
+    unsigned long long received_ip_ect0_packet_count;
+    unsigned long long received_ip_ce_packet_count;
     unsigned long long sent_ip_packet_count;
     unsigned long long received_transport_byte_count;
     unsigned long long received_transport_duplicate_byte_count;
     unsigned long long received_transport_out_of_order_byte_count;
     unsigned long long sent_transport_byte_count;
     unsigned long long sent_transport_retransmitted_byte_count;
+    unsigned long long sent_transport_ecn_capable_packet_count;
+    unsigned long long sent_transport_ecn_capable_acked_packet_count;
+    unsigned long long sent_transport_ecn_capable_marked_packet_count;
+    unsigned long long sent_transport_ecn_capable_lost_packet_count;
     unsigned long long transport_smoothed_rtt_milliseconds;
     unsigned long long transport_minimum_rtt_milliseconds;
+    unsigned long long transport_current_rtt_milliseconds;
     unsigned long long transport_rtt_variance;
     unsigned long long transport_congestion_window;
     unsigned long long transport_slow_start_threshold;
@@ -523,6 +556,14 @@ struct nw_data_transfer_snapshot {
     unsigned long long _field13;
     unsigned long long _field14;
     unsigned long long _field15;
+    unsigned long long _field16;
+    unsigned long long _field17;
+    unsigned long long _field18;
+    unsigned long long _field19;
+    unsigned long long _field20;
+    unsigned long long _field21;
+    unsigned long long _field22;
+    unsigned long long _field23;
 };
 
 struct nw_endpoint_alterative_s {
@@ -559,9 +600,10 @@ struct nw_flow_protocol {
     NSObject *single_input_context;
     struct nw_frame_array_s pending_input_frames;
     struct nw_hash_table *candidate_output_handlers;
-    NSObject *fast_open_frame;
+    struct nw_frame_array_s fast_open_frames;
     NSObject *final_read_list;
     NSObject *last_error;
+    unsigned int fast_open_frame_finalized_count;
     unsigned int initialized:1;
     unsigned int last_output_context_pending:1;
     unsigned int servicing_reads:1;
@@ -573,9 +615,8 @@ struct nw_flow_protocol {
     unsigned int flow_disconnected:1;
     unsigned int waiting_for_connected:1;
     unsigned int in_fast_open:1;
-    unsigned int fast_open_frame_finalized:1;
-    unsigned int unused:4;
-    unsigned char __pad[6];
+    unsigned int unused:5;
+    unsigned char __pad[2];
 };
 
 struct nw_frame;
@@ -595,6 +636,7 @@ struct nw_interface_details {
     unsigned int tso_max_segment_size_v6;
     unsigned int ipv4_netmask;
     unsigned int ipv4_broadcast;
+    unsigned int hwcsum_flags;
     unsigned char radio_type;
     unsigned int expensive:1;
     unsigned int constrained:1;
@@ -651,11 +693,14 @@ struct nw_parameters_extended_objects {
     id _field15;
     id _field16;
     id _field17;
+    id _field18;
 };
 
 struct nw_parameters_joinable_path_value {
     unsigned char attribution;
+    int multipath_service;
     unsigned char fallback_mode;
+    unsigned int discretionary:1;
     unsigned int no_proxy:1;
     unsigned int no_transform:1;
     unsigned int use_awdl:1;
@@ -674,28 +719,32 @@ struct nw_parameters_joinable_path_value {
     unsigned int known_tracker:1;
     unsigned int third_party_web_content:1;
     unsigned int approved_app_domain:1;
-    unsigned int __pad_bits:6;
+    unsigned int enhanced_privacy:1;
+    unsigned int web_search_content:1;
+    unsigned int __pad_bits:3;
 };
 
 struct nw_parameters_path_value {
-    unsigned char proc_uuid[16];
-    unsigned char e_proc_uuid[16];
-    unsigned long long delegated_upid;
     unsigned int traffic_class;
-    int pid;
-    unsigned int uid;
     int required_interface_type;
     int required_interface_subtype;
-    int multipath_service;
     int companion_preference;
     int companion_link_upgrade_preference;
+    int companion_proxy_required_interface_type;
     unsigned int prohibit_expensive_paths:1;
     unsigned int prohibit_constrained_paths:1;
     unsigned int prohibit_roaming:1;
-    unsigned int discretionary:1;
     unsigned int allow_socket_access:1;
     unsigned int only_primary_requires_type:1;
-    unsigned int __pad_bits:2;
+    unsigned int __pad_bits:3;
+};
+
+struct nw_parameters_process_path_value {
+    unsigned char proc_uuid[16];
+    unsigned char e_proc_uuid[16];
+    unsigned long long delegated_upid;
+    int pid;
+    unsigned int uid;
 };
 
 struct nw_path_necp_result {
@@ -816,8 +865,13 @@ struct nw_protocol_definition_extended_state {
     CDUnknownFunctionPointerType _field25;
     CDUnknownFunctionPointerType _field26;
     CDUnknownFunctionPointerType _field27;
-    unsigned int _field28;
-    unsigned int _field29;
+    CDUnknownFunctionPointerType _field28;
+    CDUnknownFunctionPointerType _field29;
+    CDUnknownFunctionPointerType _field30;
+    CDUnknownFunctionPointerType _field31;
+    CDUnknownFunctionPointerType _field32;
+    unsigned int _field33;
+    unsigned int _field34;
 };
 
 struct nw_protocol_entry;
@@ -830,19 +884,6 @@ struct nw_protocol_identifier {
     char name[32];
     int level;
     int mapping;
-};
-
-struct nw_protocol_plugin_definition {
-    CDUnknownFunctionPointerType _field1;
-    CDUnknownFunctionPointerType _field2;
-    CDUnknownFunctionPointerType _field3;
-    CDUnknownFunctionPointerType _field4;
-    id _field5;
-    CDUnknownFunctionPointerType _field6;
-    CDUnknownFunctionPointerType _field7;
-    CDUnknownFunctionPointerType _field8;
-    CDUnknownFunctionPointerType _field9;
-    CDUnknownFunctionPointerType _field10;
 };
 
 struct nw_shoes_statistics {
@@ -1052,6 +1093,12 @@ struct tcp_info {
     unsigned int _field54;
     unsigned long long _field55;
     unsigned int _field56;
+    unsigned int _field57;
+    unsigned int _field58;
+    unsigned long long _field59;
+    unsigned long long _field60;
+    unsigned long long _field61;
+    unsigned long long _field62;
 };
 
 struct unfair_mutex {

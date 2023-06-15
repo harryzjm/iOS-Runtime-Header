@@ -10,5 +10,8 @@
 - (void)updateExtraButtonVisibilityAnimated:(_Bool)arg1;
 - (_Bool)isDisplayingEditingButtons;
 - (unsigned long long)presenterType;
+
+@optional
+- (_Bool)cannotRemoveLastWidgetInWidgetSheet;
 @end
 

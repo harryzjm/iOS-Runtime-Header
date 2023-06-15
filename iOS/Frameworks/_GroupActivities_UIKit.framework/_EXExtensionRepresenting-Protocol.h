@@ -9,18 +9,18 @@
 @class ISIcon, NSArray, NSDictionary, NSString, NSUUID, NSXPCConnection;
 
 @protocol _EXExtensionRepresenting <NSObject>
+@property(readonly) _Bool requiresLegacyInfrastructure;
+@property(readonly) ISIcon *icon;
+@property(readonly) NSArray *roles;
+@property(readonly) NSDictionary *attributes;
+@property(readonly) _Bool requiresSceneHosting;
+@property(readonly) _Bool requiresMacCatalystBehavior;
+@property(readonly) _Bool presentsUserInterface;
+@property(readonly) NSString *localizedName;
+@property(readonly) NSUUID *uniqueIdentifier;
+@property(readonly) NSString *bundleIdentifier;
+@property(readonly) NSString *extensionPointIdentifier;
 - (NSXPCConnection *)makeXPCConnectionWithError:(id *)arg1;
 - (id)entitlementNamed:(NSString *)arg1 ofClass:(Class)arg2;
-@property(nonatomic, readonly) _Bool requiresLegacyInfrastructure;
-@property(nonatomic, readonly) ISIcon *icon;
-@property(nonatomic, readonly) NSArray *roles;
-@property(nonatomic, readonly) NSDictionary *attributes;
-@property(nonatomic, readonly) _Bool requiresSceneHosting;
-@property(nonatomic, readonly) _Bool requiresMacCatalystBehavior;
-@property(nonatomic, readonly) _Bool presentsUserInterface;
-@property(nonatomic, readonly) NSString *localizedName;
-@property(nonatomic, readonly) NSUUID *uniqueIdentifier;
-@property(nonatomic, readonly) NSString *bundleIdentifier;
-@property(nonatomic, readonly) NSString *extensionPointIdentifier;
 @end
 

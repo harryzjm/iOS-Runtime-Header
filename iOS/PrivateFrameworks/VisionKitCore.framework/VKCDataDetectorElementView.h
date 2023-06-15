@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CAShapeLayer, NSArray, NSDictionary, NSString, UIBezierPath, UIContextMenuInteraction, UITapGestureRecognizer, VKCBaseDataDetectorElement, VKCMRCDataDetectorElement, VKQuad;
+@class CAShapeLayer, NSArray, NSDictionary, NSString, UIBezierPath, UIContextMenuInteraction, UIPointerInteraction, UITapGestureRecognizer, VKCBaseDataDetectorElement, VKCMRCDataDetectorElement, VKQuad;
 @protocol VKCDataDetectorElementViewDelegate;
 
 __attribute__((visibility("hidden")))
@@ -21,9 +21,11 @@ __attribute__((visibility("hidden")))
     UIContextMenuInteraction *_menuInteraction;
     NSDictionary *_dataDetectorContext;
     UITapGestureRecognizer *_tapGestureRecognizer;
+    UIPointerInteraction *_pointerInteraction;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) UIPointerInteraction *pointerInteraction; // @synthesize pointerInteraction=_pointerInteraction;
 @property(retain, nonatomic) UITapGestureRecognizer *tapGestureRecognizer; // @synthesize tapGestureRecognizer=_tapGestureRecognizer;
 @property(retain, nonatomic) NSDictionary *dataDetectorContext; // @synthesize dataDetectorContext=_dataDetectorContext;
 @property(retain, nonatomic) UIContextMenuInteraction *menuInteraction; // @synthesize menuInteraction=_menuInteraction;
@@ -39,6 +41,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)isAccessibilityElement;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityIdentifier;
+- (void)highlighter:(id)arg1 shouldHighlight:(_Bool)arg2;
 - (id)_contextMenuInteraction:(id)arg1 overrideSuggestedActionsForConfiguration:(id)arg2;
 - (id)_contextMenuInteraction:(id)arg1 styleForMenuWithConfiguration:(id)arg2;
 - (void)contextMenuInteraction:(id)arg1 willPerformPreviewActionForMenuWithConfiguration:(id)arg2 animator:(id)arg3;
@@ -54,6 +57,8 @@ __attribute__((visibility("hidden")))
 - (id)analyticsEventWithDDType:(long long)arg1;
 - (void)sendAnalyticsEventIfNecessaryForDDType:(long long)arg1;
 - (void)manuallyActivateLongPressMenuInteraction;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
+- (_Bool)ignoresHitTest;
 - (void)didTap:(id)arg1;
 @property(readonly, nonatomic) VKQuad *boundingQuadInBoundsCoordinates;
 @property(readonly, nonatomic) NSArray *subQuadsInBoundsCoordinates;

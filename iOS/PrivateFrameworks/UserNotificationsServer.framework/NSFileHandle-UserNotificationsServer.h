@@ -8,6 +8,5 @@
 
 @interface NSFileHandle (UserNotificationsServer)
 - (id)uns_secureFileURL;
-- (id)uns_secureFileURL;
 @end
 

@@ -6,14 +6,13 @@
 
 #import <CalDAV/NSObject-Protocol.h>
 
-@class CalDAVRecurrenceSplitAction, CoreDAVAction, NSArray, NSDictionary, NSError, NSSet, NSString, NSTimeZone, NSURL;
+@class CalDAVRecurrenceSplitAction, CalDAVReportJunkAction, CoreDAVAction, NSArray, NSDictionary, NSError, NSSet, NSString, NSTimeZone, NSURL;
 @protocol CalDAVPrincipal;
 
 @protocol CalDAVCalendar <NSObject>
 @property(readonly, nonatomic) NSSet *allItemURLs;
 @property(readonly, nonatomic) NSDictionary *hrefsToModDeleteActions;
 @property(readonly, nonatomic) NSDictionary *uuidsToAddActions;
-@property(readonly, nonatomic) NSArray *itemsToReportAsJunk;
 @property(readonly, nonatomic) NSArray *shareeActions;
 @property(readonly, nonatomic) NSArray *syncActions;
 @property(readonly, nonatomic) _Bool needsPublishUpdate;
@@ -67,9 +66,13 @@
 
 @optional
 @property(retain, nonatomic) NSString *lastSyncTitle;
+@property(readonly, nonatomic) _Bool becameDefaultSchedulingCalendar;
 @property(readonly, nonatomic) _Bool needsIsAffectingAvailabilityUpdate;
 @property(nonatomic) long long maxAttendees;
+@property(readonly, nonatomic) NSArray *itemsToReportAsJunk;
+@property(readonly, nonatomic) NSArray *reportJunkActions;
 @property(readonly, nonatomic) NSArray *recurrenceSplitActions;
+- (void)reportJunkAction:(CalDAVReportJunkAction *)arg1 completedWithError:(NSError *)arg2;
 - (void)recurrenceSplitActionsCompletedWithError:(NSError *)arg1;
 - (void)recurrenceSplitAction:(CalDAVRecurrenceSplitAction *)arg1 failedWithError:(NSError *)arg2;
 - (void)recurrenceSplitAction:(CalDAVRecurrenceSplitAction *)arg1 completedWithUpdatedETag:(NSString *)arg2 updatedScheduleTag:(NSString *)arg3 createdURL:(NSURL *)arg4 createdETag:(NSString *)arg5 createdScheduleTag:(NSString *)arg6;

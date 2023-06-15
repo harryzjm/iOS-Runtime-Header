@@ -12,6 +12,7 @@
 @property(readonly, nonatomic) NSArray *contexts;
 - (void)addDoubleToTransientCounter:(double)arg1 forKey:(NSString *)arg2 andCandidateLength:(int)arg3 andContext:(TIAnalyticsMetricsContext *)arg4;
 - (void)addIntegerToTransientCounter:(int)arg1 forKey:(NSString *)arg2 andCandidateLength:(int)arg3 andContext:(TIAnalyticsMetricsContext *)arg4;
+- (void)resetDurableCounterForKey:(NSString *)arg1;
 - (void)addToDurableCounter:(int)arg1 forKey:(NSString *)arg2;
 - (TIUserModelValues *)valuesFromContext:(TIAnalyticsMetricsContext *)arg1;
 @end

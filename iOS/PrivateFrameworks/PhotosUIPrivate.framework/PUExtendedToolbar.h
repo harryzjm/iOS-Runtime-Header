@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIToolbar.h>
+#import <UIKitCore/UIToolbar.h>
 
 @class NSArray, NSMutableSet, NSString, PUToolbarViewModel, UIView;
 
@@ -23,7 +23,6 @@ __attribute__((visibility("hidden")))
     UIView *__accessoryView;
     double __containedToolbarHeight;
     double __accessoryViewTopOutset;
-    double __minimumBackgroundHeight;
     UIToolbar *__containedToolbar;
     UIView *__accessoryViewContainer;
     NSMutableSet *__accessoryViewContainers;
@@ -33,7 +32,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSMutableSet *_accessoryViewContainers; // @synthesize _accessoryViewContainers=__accessoryViewContainers;
 @property(retain, nonatomic, setter=_setAccessoryViewContainer:) UIView *_accessoryViewContainer; // @synthesize _accessoryViewContainer=__accessoryViewContainer;
 @property(retain, nonatomic, setter=_setContainedToolbar:) UIToolbar *_containedToolbar; // @synthesize _containedToolbar=__containedToolbar;
-@property(nonatomic, setter=_setMinimumBackgroundHeight:) double _minimumBackgroundHeight; // @synthesize _minimumBackgroundHeight=__minimumBackgroundHeight;
 @property(nonatomic, setter=_setAccessoryViewTopOutset:) double _accessoryViewTopOutset; // @synthesize _accessoryViewTopOutset=__accessoryViewTopOutset;
 @property(nonatomic, setter=_setContainedToolbarHeight:) double _containedToolbarHeight; // @synthesize _containedToolbarHeight=__containedToolbarHeight;
 @property(retain, nonatomic, setter=_setAccessoryView:) UIView *_accessoryView; // @synthesize _accessoryView=__accessoryView;

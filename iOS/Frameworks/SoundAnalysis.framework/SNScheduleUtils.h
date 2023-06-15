@@ -11,5 +11,10 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (_Bool)startStopServiceWithClientCount:(long long)arg1 serviceIsRunning:(_Bool)arg2 startAction:(CDUnknownBlockType)arg3 stopAction:(CDUnknownBlockType)arg4;
++ (_Bool)scheduleOntoBudgetedQueue:(id)arg1 block:(CDUnknownBlockType)arg2 blockCost:(long long)arg3 queueFundsSpent:(void *)arg4 queueFundsEarned:(void *)arg5 queueStopped:(void *)arg6;
++ (CDStruct_1b6d18a9)updateHeartbeatTime:(CDStruct_1b6d18a9)arg1 givenCurrentAudioTime:(id)arg2 heartbeatIntervalSeconds:(double)arg3 preferredIntervalTimescale:(int)arg4 reanchor:(CDUnknownBlockType)arg5 action:(CDUnknownBlockType)arg6 error:(id *)arg7;
+- (id)init;
+
 @end
 

@@ -6,6 +6,10 @@
 
 @protocol PXGMutableScrollViewModel
 @property(nonatomic) _Bool draggingPerformsScroll;
+@property(nonatomic) double horizontalInterPageSpacing;
+@property(nonatomic) struct UIEdgeInsets hitTestContentInsets;
+@property(nonatomic) _Bool alwaysBounceVertical;
+@property(nonatomic) _Bool alwaysBounceHorizontal;
 @property(nonatomic) _Bool showsVerticalScrollIndicator;
 @property(nonatomic) _Bool showsHorizontalScrollIndicator;
 @property(nonatomic) _Bool clipsToBounds;

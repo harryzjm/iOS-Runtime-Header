@@ -27,6 +27,7 @@
     MISSING_TYPE *_trialPeriod;
     MISSING_TYPE *_trialPeriodIdentifier;
     MISSING_TYPE *_vendorOfferIdentifier;
+    MISSING_TYPE *_productCode;
 }
 
 @end

@@ -36,7 +36,9 @@ __attribute__((visibility("hidden")))
 - (void)_setupNotifications;
 - (id)_libraryContainerPathForDSID:(id)arg1;
 @property(copy, nonatomic) NSString *currentActiveAccountDSID; // @synthesize currentActiveAccountDSID=_currentActiveAccountDSID;
+- (id)_blockingCurrentActiveAccountDSID;
 - (id)libraryContainerPath;
+- (id)musicAssetsContainerPath;
 - (void)dealloc;
 - (id)initWithAccountInfo:(id)arg1 accountChangeObserver:(id)arg2;
 

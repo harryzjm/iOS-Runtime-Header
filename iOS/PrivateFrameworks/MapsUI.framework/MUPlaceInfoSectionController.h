@@ -6,7 +6,7 @@
 
 #import "MUPlaceSectionController.h"
 
-@class GEOPlaceDetailsModuleConfiguration, MKUGCCallToActionViewAppearance, MUPlaceDataAvailability, MUPlaceFooterAttributionController, MUPlaceHoursSectionViewConfiguration, MUPlaceInfoSectionView, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, NSArray, NSString, UIView, UIViewController;
+@class GEOPlaceDetailsModuleConfiguration, MUContactsViewModelGenerator, MUDisclosureActionRowView, MUPlaceCallToActionAppearance, MUPlaceDataAvailability, MUPlaceFooterAttributionController, MUPlaceHoursSectionViewConfiguration, MUPlaceInfoSectionView, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, NSArray, NSMutableArray, NSString, UIView, UIViewController;
 @protocol MKPlaceActionManagerProtocol, MUInfoCardAnalyticsDelegate, MUPlaceInfoSectionControllerDelegate, MUUserInformationProvider, _MKPlaceItem;
 
 __attribute__((visibility("hidden")))
@@ -16,9 +16,14 @@ __attribute__((visibility("hidden")))
     id <MKPlaceActionManagerProtocol> _actionDelegate;
     MUPlaceDataAvailability *_availability;
     GEOPlaceDetailsModuleConfiguration *_moduleConfig;
-    MUPlaceInfoSectionView *_sectionStackView;
+    MUContactsViewModelGenerator *_contactsViewModelGenerator;
+    NSMutableArray *_sectionStackViews;
     NSArray *_sectionViews;
     MUPlaceFooterAttributionController *_footerAttributionController;
+    UIView *_hoursContentView;
+    MUDisclosureActionRowView *_rapStatusContentView;
+    MUPlaceInfoSectionView *_placeInfoSectionView;
+    _Bool _needsUpdate;
     MUPlaceSectionFooterViewModel *_sectionFooterViewModel;
     id <MUPlaceInfoSectionControllerDelegate> _placeInfoDelegate;
     id <MUUserInformationProvider> _userInfoProvider;
@@ -52,7 +57,12 @@ __attribute__((visibility("hidden")))
 - (void)_handleFactoidTap:(id)arg1 withReference:(id)arg2;
 - (id)_createAddressItem;
 @property(readonly, nonatomic) NSArray *sectionViews;
-- (void)_setupRowItems;
+- (id)_loadRAPStatusViewIfNeeded;
+- (id)_loadViewWithContactMetadata:(id)arg1;
+- (id)_loadPlaceInfoAddress:(id)arg1 contact:(id)arg2;
+- (id)_loadPlaceInfoContentIfNeeded;
+- (id)_loadHoursContentViewIfNeeded;
+- (void)_buildSections;
 - (void)refreshContents;
 - (id)initWithPlaceItem:(id)arg1 moduleConfiguration:(id)arg2 availability:(id)arg3 actionDelegate:(id)arg4 hoursConfiguration:(id)arg5;
 
@@ -64,7 +74,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) UIView *sectionView;
 @property(readonly, nonatomic) UIViewController *sectionViewController;
-@property(retain, nonatomic) MKUGCCallToActionViewAppearance *submissionStatus;
+@property(retain, nonatomic) MUPlaceCallToActionAppearance *submissionStatus;
 @property(readonly) Class superclass;
 
 @end

@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface _UIModernSwitchVisualElementCacheKey : NSObject <NSCopying>
+@interface _UIModernSwitchVisualElementCacheKey : NSObject
 {
     unsigned long long _mask;
     struct CGColor *_color;

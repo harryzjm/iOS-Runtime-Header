@@ -8,7 +8,6 @@
 
 @class GTTransport_capture, NSData, NSDictionary;
 
-__attribute__((visibility("hidden")))
 @interface GTTransportMessage_capture : NSObject
 {
     NSData *_payload;

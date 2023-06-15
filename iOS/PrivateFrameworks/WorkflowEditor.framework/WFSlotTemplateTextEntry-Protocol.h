@@ -10,11 +10,11 @@
 @class NSAttributedString, UIFont;
 
 @protocol WFSlotTemplateTextEntry <WFInputViewMutable, UITextInput>
+@property(nonatomic) struct _NSRange selectedRange;
+@property(readonly, nonatomic) NSAttributedString *attributedText;
+@property(readonly, nonatomic) UIFont *font;
+@property(nonatomic) _Bool clearsZeroWhenTyping;
 - (void)wf_replaceRange:(struct _NSRange)arg1 withAttributedText:(NSAttributedString *)arg2;
 - (void)insertAttributedText:(NSAttributedString *)arg1;
-@property(nonatomic) struct _NSRange selectedRange;
-@property(nonatomic, readonly) NSAttributedString *attributedText;
-@property(nonatomic, readonly) UIFont *font;
-@property(nonatomic) _Bool clearsZeroWhenTyping;
 @end
 

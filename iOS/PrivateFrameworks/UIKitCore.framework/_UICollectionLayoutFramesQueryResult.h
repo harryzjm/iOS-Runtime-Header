@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 @class NSCollectionLayoutItem, NSUUID;
 
 __attribute__((visibility("hidden")))
-@interface _UICollectionLayoutFramesQueryResult : NSObject <NSCopying>
+@interface _UICollectionLayoutFramesQueryResult : NSObject
 {
     _Bool _isFrameAdjustedForPinning;
     long long _index;

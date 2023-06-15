@@ -7,6 +7,7 @@
 #import <SAObjects/SAUIDisambiguationList.h>
 
 @interface SAUIDisambiguationList (SiriUIFoundationAdditions)
+- (_Bool)sruif_hasButton;
 - (id)_speakableFinalDelimiterForSpeakableString:(id)arg1 usingParser:(id)arg2;
 - (id)_speakableStringFromString:(id)arg1 usingParser:(id)arg2;
 - (id)sruif_combinedSpeakableText;

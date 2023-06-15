@@ -18,6 +18,7 @@
     MISSING_TYPE *ageRating;
     MISSING_TYPE *storeLink;
     MISSING_TYPE *productTypeCode;
+    MISSING_TYPE *mappedProductType;
 }
 
 @end

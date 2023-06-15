@@ -20,10 +20,14 @@ __attribute__((visibility("hidden")))
     _Bool _hasCustomErrorScore;
 }
 
++ (id)omissionCandidateWithBuffer:(char *)arg1 encoding:(unsigned int)arg2 transform:(unsigned long long)arg3 replacementRange:(struct _NSRange)arg4 intendedPrecedingCharacter:(unsigned short)arg5 omittedCharacter:(unsigned short)arg6 intendedFollowingCharacter:(unsigned short)arg7 errorModel:(id)arg8 capitalizationDictionaryArray:(id)arg9;
++ (id)insertionCandidateWithBuffer:(char *)arg1 encoding:(unsigned int)arg2 transform:(unsigned long long)arg3 replacementRange:(struct _NSRange)arg4 intendedPrecedingCharacter:(unsigned short)arg5 insertedCharacter:(unsigned short)arg6 intendedFollowingCharacter:(unsigned short)arg7 errorModel:(id)arg8 capitalizationDictionaryArray:(id)arg9;
 + (id)transpositionCandidateWithBuffer:(char *)arg1 encoding:(unsigned int)arg2 transform:(unsigned long long)arg3 replacementRange:(struct _NSRange)arg4 intendedFirstCharacter:(unsigned short)arg5 intendedSecondCharacter:(unsigned short)arg6 errorModel:(id)arg7 capitalizationDictionaryArray:(id)arg8;
 + (id)replacementCandidateWithBuffer:(char *)arg1 encoding:(unsigned int)arg2 transform:(unsigned long long)arg3 replacementRange:(struct _NSRange)arg4 intendedCharacter:(unsigned short)arg5 actualCharacter:(unsigned short)arg6 errorModel:(id)arg7 capitalizationDictionaryArray:(id)arg8;
 + (id)candidateWithBuffer:(char *)arg1 encoding:(unsigned int)arg2 transform:(unsigned long long)arg3 replacementRange:(struct _NSRange)arg4 errorType:(unsigned long long)arg5 errorModel:(id)arg6 capitalizationDictionaryArray:(id)arg7;
 + (id)candidateWithBuffer:(char *)arg1 encoding:(unsigned int)arg2 transform:(unsigned long long)arg3 replacementRange:(struct _NSRange)arg4 errorScore:(double)arg5 capitalizationDictionaryArray:(id)arg6;
++ (id)omissionCandidateWithString:(id)arg1 replacementRange:(struct _NSRange)arg2 intendedPrecedingCharacter:(unsigned short)arg3 omittedCharacter:(unsigned short)arg4 intendedFollowingCharacter:(unsigned short)arg5 errorModel:(id)arg6;
++ (id)insertionCandidateWithString:(id)arg1 replacementRange:(struct _NSRange)arg2 intendedPrecedingCharacter:(unsigned short)arg3 insertedCharacter:(unsigned short)arg4 intendedFollowingCharacter:(unsigned short)arg5 errorModel:(id)arg6;
 + (id)transpositionCandidateWithString:(id)arg1 replacementRange:(struct _NSRange)arg2 intendedFirstCharacter:(unsigned short)arg3 intendedSecondCharacter:(unsigned short)arg4 errorModel:(id)arg5;
 + (id)replacementCandidateWithString:(id)arg1 replacementRange:(struct _NSRange)arg2 intendedCharacter:(unsigned short)arg3 actualCharacter:(unsigned short)arg4 errorModel:(id)arg5;
 + (id)candidateWithString:(id)arg1 replacementRange:(struct _NSRange)arg2 errorType:(unsigned long long)arg3 errorModel:(id)arg4;

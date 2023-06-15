@@ -43,6 +43,10 @@ __attribute__((visibility("hidden")))
 - (_Bool)_mapIsSimpleInsertMoveSequence;
 - (_Bool)_isSectionOnlyIndexPath:(id)arg1;
 - (id)_sectionIndexPathForSection:(long long)arg1;
+- (id)_newGlobalItemMapDescription;
+- (id)_oldGlobalItemMapDescription;
+- (id)_newSectionMapDescription;
+- (id)_oldSectionMapDescription;
 - (id)description;
 - (id)initialUpdateForFinalUpdate:(id)arg1;
 - (id)finalUpdateForInitialUpdate:(id)arg1;

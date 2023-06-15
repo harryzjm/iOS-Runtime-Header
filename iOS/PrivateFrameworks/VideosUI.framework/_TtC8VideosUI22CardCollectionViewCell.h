@@ -9,6 +9,9 @@
 __attribute__((visibility("hidden")))
 @interface _TtC8VideosUI22CardCollectionViewCell
 {
+    MISSING_TYPE *isLockupSelected;
+    MISSING_TYPE *isLockupSelectionHidden;
+    MISSING_TYPE *isLockupOutlined;
     MISSING_TYPE *cardViewLayout;
     MISSING_TYPE *imageViewModel;
     MISSING_TYPE *cardView;

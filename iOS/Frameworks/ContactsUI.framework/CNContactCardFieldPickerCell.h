@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UITableViewCell.h>
+#import <UIKitCore/UITableViewCell.h>
 
 @class CNContactCardFieldItem;
 
@@ -15,10 +15,11 @@ __attribute__((visibility("hidden")))
     CNContactCardFieldItem *_item;
 }
 
++ (double)estimatedHeightDisplayingValue:(_Bool)arg1;
 - (void).cxx_destruct;
 @property(retain, nonatomic) CNContactCardFieldItem *item; // @synthesize item=_item;
 @property(nonatomic) _Bool displaysValue; // @synthesize displaysValue=_displaysValue;
-- (id)attributedDisplayValueForItem:(id)arg1;
+- (id)attributedDisplayText;
 - (void)setConfiguration;
 - (void)setSelected:(_Bool)arg1 animated:(_Bool)arg2;
 - (id)init;

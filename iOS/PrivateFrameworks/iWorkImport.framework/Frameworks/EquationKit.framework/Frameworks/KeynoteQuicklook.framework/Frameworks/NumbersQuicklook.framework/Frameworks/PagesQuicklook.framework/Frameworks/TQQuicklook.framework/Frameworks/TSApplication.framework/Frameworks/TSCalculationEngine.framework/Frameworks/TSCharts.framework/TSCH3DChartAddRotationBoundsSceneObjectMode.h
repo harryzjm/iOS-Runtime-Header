@@ -11,8 +11,8 @@
 
 @property(nonatomic) int rotationType; // @synthesize rotationType=_rotationType;
 - (void)getBounds:(id)arg1;
-- (void)p_submitGeometryForChartBounds:(const void *)arg1 pivot:(const void *)arg2 thicknessIndex:(unsigned long long)arg3 pipeline:(id)arg4;
-- (double)p_radiusFromBounds:(const void *)arg1 pivot:(const void *)arg2;
+- (void)p_submitGeometryForChartBounds:(void *)arg1 pivot:(void *)arg2 thicknessIndex:(unsigned long long)arg3 pipeline:(id)arg4;
+- (double)p_radiusFromBounds:(void *)arg1 pivot:(void *)arg2;
 
 @end
 

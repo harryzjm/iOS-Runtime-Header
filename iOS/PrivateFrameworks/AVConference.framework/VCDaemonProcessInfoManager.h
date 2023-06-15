@@ -16,7 +16,8 @@ __attribute__((visibility("hidden")))
 
 + (id)copyProcessInfo;
 + (id)sharedManager;
-- (id)copyProcessInfo;
+- (id)copyAuditTokenInfo;
+- (id)copyUniquePidInfo;
 - (void)deregisterBlocksForService;
 - (void)registerBlocksForService;
 - (id)autorelease;

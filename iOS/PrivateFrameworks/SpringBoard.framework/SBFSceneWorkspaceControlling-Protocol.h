@@ -6,15 +6,15 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class FBSSceneIdentityToken, FBSWorkspaceSceneRequestOptions, FBScene, NSArray, NSString, RBSProcessIdentity;
+@class FBSSceneIdentityToken, FBScene, NSArray, NSString, RBSProcessIdentity, UISceneRequestOptions;
 @protocol SBFSceneWorkspaceControlling;
 
 @protocol SBFSceneWorkspaceControlling <NSObject>
-- (void)destroyScenesWithPersistentIdentifiers:(NSArray *)arg1 processIdentity:(RBSProcessIdentity *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
-- (void)createSceneForProcessIdentity:(RBSProcessIdentity *)arg1 withOptions:(FBSWorkspaceSceneRequestOptions *)arg2 completion:(void (^)(FBScene *, NSError *))arg3;
-- (_Bool)enumerateScenesWithBlock:(void (^)(FBScene *, _Bool *))arg1;
 - (id <SBFSceneWorkspaceControlling>)sceneWorkspaceControllerForProcessIdentity:(RBSProcessIdentity *)arg1;
+- (_Bool)enumerateScenesWithBlock:(void (^)(FBScene *, _Bool *))arg1;
 - (FBScene *)sceneFromIdentityTokenStringRepresentation:(NSString *)arg1;
 - (FBScene *)sceneFromIdentityToken:(FBSSceneIdentityToken *)arg1;
+- (void)destroyScenesWithPersistentIdentifiers:(NSArray *)arg1 processIdentity:(RBSProcessIdentity *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
+- (void)activateSceneForProcessIdentity:(RBSProcessIdentity *)arg1 withOptions:(UISceneRequestOptions *)arg2 completion:(void (^)(FBScene *, NSError *))arg3;
 @end
 

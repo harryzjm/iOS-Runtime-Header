@@ -16,9 +16,11 @@
 @property(readonly, copy, nonatomic) NSArray *actionProxies;
 @property(readonly, copy, nonatomic) NSArray *shareProxies;
 @property(readonly, copy, nonatomic) NSArray *peopleSuggestionProxies;
+@property(readonly, nonatomic) NSNumber *customViewControllerSectionHeightWrapper;
 @property(readonly, nonatomic) NSNumber *customViewControllerVerticalInsetWrapper;
 @property(readonly, nonatomic) UIViewController *customViewController;
 @property(readonly, nonatomic) SLCollaborationFooterViewModel *collaborationFooterViewModel;
+@property(readonly, nonatomic) NSString *collaborationModeTitle;
 @property(readonly, nonatomic) _Bool isCollaborative;
 @property(readonly, nonatomic) _Bool supportsSendCopy;
 @property(readonly, nonatomic) _Bool supportsCollaboration;
@@ -27,7 +29,9 @@
 @property(readonly, nonatomic) _Bool showCustomHeaderButton;
 @property(readonly, copy, nonatomic) NSString *customOptionsTitle;
 @property(readonly, nonatomic) _Bool showOptions;
+@property(readonly, copy, nonatomic) NSArray *urlSandboxExtensions;
 @property(readonly, copy, nonatomic) NSArray *urlRequests;
+@property(readonly, nonatomic) _Bool isLoadingMetadata;
 @property(readonly, copy, nonatomic) NSArray *metadataValues;
 @property(readonly, nonatomic) _Bool isSharingExpanded;
 @end

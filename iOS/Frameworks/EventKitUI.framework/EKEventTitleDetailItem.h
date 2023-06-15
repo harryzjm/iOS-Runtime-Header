@@ -4,15 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class EKEventDetailTitleCell, NSDate, NSObject, UIColor, UIView;
+@class EKEventDetailTitleCell, NSDate, NSObject, UIView;
 @protocol EKEventTitleDetailItemDelegate;
 
 __attribute__((visibility("hidden")))
 @interface EKEventTitleDetailItem
 {
     EKEventDetailTitleCell *_cell;
-    UIColor *_color;
-    _Bool _showDot;
     _Bool _cellNeedsUpdate;
     _Bool _hidesTopSeparator;
     _Bool _hidesBottomSeparator;
@@ -29,6 +27,8 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSDate *proposedTime; // @synthesize proposedTime=_proposedTime;
 @property(nonatomic) _Bool hidesBottomSeparator; // @synthesize hidesBottomSeparator=_hidesBottomSeparator;
 @property(nonatomic) _Bool hidesTopSeparator; // @synthesize hidesTopSeparator=_hidesTopSeparator;
+- (void)titleCell:(id)arg1 requestPresentShareSheetWithActivityItems:(id)arg2 withPopoverSourceView:(id)arg3;
+- (_Bool)titleCellShouldPresentShareSheet:(id)arg1;
 - (void)refreshForHeightChange;
 - (_Bool)showsDetectedConferenceItem;
 - (id)owningViewController;
@@ -43,6 +43,7 @@ __attribute__((visibility("hidden")))
 - (double)titleHeight;
 - (void)_updateCellIfNeededForWidth:(double)arg1;
 - (void)setCellPosition:(int)arg1;
+- (void)setEvent:(id)arg1 store:(id)arg2;
 - (_Bool)configureWithCalendar:(id)arg1 preview:(_Bool)arg2;
 - (void)reset;
 

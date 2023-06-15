@@ -6,7 +6,8 @@
 
 #import <NotesShared/ICAttachment.h>
 
-@class ICDocCamImageQuad, ICNotePasteboardData, LPLinkMetadata, NSString, UIImage;
+@class ICDocCamImageQuad, ICNotePasteboardData, LPLinkMetadata, NSObject, NSString, UIImage;
+@protocol OS_dispatch_queue;
 
 @interface ICAttachment (PDFGalleryVersion)
 + (id)imageCache;
@@ -15,26 +16,25 @@
 @property(readonly, nonatomic) long long docCamPDFVersion;
 - (id)dataForTypeIdentifier:(id)arg1;
 - (id)fileURLForTypeIdentifier:(id)arg1;
-- (id)fallbackMapMetadata;
-- (id)fallbackWebMetadata;
-- (id)mapPreviewGenerationQueue;
-- (id)webPreviewGenerationQueue;
-- (id)filePreviewGenerationQueue;
+@property(readonly, nonatomic) LPLinkMetadata *fallbackMapMetadata;
+@property(readonly, nonatomic) LPLinkMetadata *fallbackWebMetadata;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *mapPreviewGenerationQueue;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *webPreviewGenerationQueue;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *filePreviewGenerationQueue;
 - (id)archiveLinkmetadata:(id)arg1;
+- (id)lpImageFromFallbackPDF;
 - (id)lpImageFromPreviewImage:(id)arg1;
-@property(readonly, nonatomic) NSString *quotedText;
 - (void)requestFileMetadataIfNecessary;
-@property(readonly, nonatomic) LPLinkMetadata *loadingAttachmentsMetadata;
+- (id)loadingAttachmentsMetadata;
 - (void)requestRemoteMetadata;
-@property(readonly, nonatomic) LPLinkMetadata *plainURLMetadata;
-@property(readonly, nonatomic) LPLinkMetadata *fallbackRemoteAttachmentMetadata;
-@property(readonly, nonatomic) LPLinkMetadata *synapseBasedMetadata;
-@property(readonly, nonatomic) LPLinkMetadata *fileMetadata;
-@property(readonly, nonatomic) LPLinkMetadata *scannedDocumentsMetadata;
+- (id)plainURLMetadata;
+- (id)fallbackRemoteAttachmentMetadata;
+- (id)fileMetadata;
+- (id)scannedDocumentsMetadata;
 - (void)addPreviewImageToMetadata:(id)arg1;
-@property(readonly, nonatomic) _Bool alwaysUsesSmallSize;
-@property(readonly, nonatomic) _Bool usesLinkPresentation;
-@property(readonly, nonatomic) _Bool metadataExists;
+- (_Bool)alwaysUsesSmallSize;
+- (_Bool)usesLinkPresentation;
+- (_Bool)metadataExists;
 - (void)persistLinkMetadata:(id)arg1;
 - (id)retrieveLinkMetadata;
 - (void)redactAuthorAttributionsToCurrentUser;
@@ -58,7 +58,7 @@
 @property(readonly, nonatomic) UIImage *unprocessedDocumentImage;
 @property(readonly, nonatomic) UIImage *image;
 @property(readonly, nonatomic) _Bool isUnsupportedOnCurrentPlatform;
-- (id)inlineAttachmentWithTTAttachment:(id)arg1;
+- (id)inlineAttachmentWithICTTAttachment:(id)arg1;
 - (id)inlineAttachmentFromObject:(id)arg1 createIfNecessary:(_Bool)arg2;
 - (void)filterInlineAttachmentsInTableColumnTextStorage:(id)arg1 range:(struct _NSRange)arg2;
 @end

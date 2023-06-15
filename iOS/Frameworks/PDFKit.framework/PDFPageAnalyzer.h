@@ -20,18 +20,21 @@ __attribute__((visibility("hidden")))
     struct mutex _requestedPagesMutex;
     double _imageScale;
     _Bool _drawQuads;
-    NSObject<OS_dispatch_queue> *_callbackQueue;
 }
 
 + (id)sharedInstance;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(retain) NSObject<OS_dispatch_queue> *callbackQueue; // @synthesize callbackQueue=_callbackQueue;
+- (void)_addFormElementsUsingDetectorToPage:(id)arg1 displayBox:(long long)arg2;
+- (void)_addFormElementsFromAnalysis:(id)arg1 bounds:(struct CGRect)arg2 toPage:(id)arg3;
+- (id)_detectedAnnotationWithBounds:(struct CGRect)arg1 intersectsAnnotationOnPage:(id)arg2;
+- (id)_createFreeTextAnnotationWithBounds:(struct CGRect)arg1 font:(id)arg2 formContentType:(unsigned long long)arg3;
 - (struct UIEdgeInsets)_computeEdgeInsetsForQuad:(id)arg1 inImage:(struct CGImage *)arg2 background:(unsigned char)arg3 glyphCount:(unsigned long long)arg4;
 - (struct CGPoint)_testPixelsFromPoint:(struct CGPoint)arg1 toPoint:(struct CGPoint)arg2 compare:(CDUnknownBlockType)arg3;
 - (void)_drawTextFromAnalysis:(id)arg1 ofImage:(id)arg2 intoContext:(struct CGContext *)arg3 withBounds:(struct CGRect)arg4;
 - (void)_addTextFromAnalysis:(id)arg1 ofImage:(id)arg2 toPDFPage:(id)arg3;
-- (void)processPage:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)_callCompletionBlock:(CDUnknownBlockType)arg1 onQueue:(id)arg2 analysis:(id)arg3 error:(id)arg4;
+- (void)analyzePage:(id)arg1 analysisTypes:(unsigned long long)arg2 completionQueue:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
 - (id)init;
 
 @end

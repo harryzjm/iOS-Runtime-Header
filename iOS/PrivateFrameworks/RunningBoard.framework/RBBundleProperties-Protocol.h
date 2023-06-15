@@ -20,6 +20,7 @@
 @property(readonly, nonatomic) _Bool supportsBackgroundNetworkAuthentication;
 @property(readonly, nonatomic) _Bool supportsBackgroundContentFetching;
 @property(readonly, nonatomic) NSDictionary *environmentVariables;
+@property(readonly, nonatomic) NSString *containerOverrideIdentifier;
 @property(readonly, nonatomic) NSURL *dataContainerURL;
 @property(readonly, copy, nonatomic) NSString *extensionPointIdentifier;
 @property(readonly, copy, nonatomic) NSString *executablePath;

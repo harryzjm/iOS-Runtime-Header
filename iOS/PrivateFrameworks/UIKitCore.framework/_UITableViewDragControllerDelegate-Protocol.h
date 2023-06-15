@@ -6,11 +6,11 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class NSArray, NSIndexPath, NSOrderedSet, UIDragPreviewParameters, UITableViewCell, _UITableViewDropAnimationContainerView;
+@class NSArray, NSIndexPath, NSOrderedSet, UIDragPreviewParameters, UITableViewCell, _UIDragSessionProperties, _UITableViewDropAnimationContainerView;
 @protocol UIDragSession;
 
 @protocol _UITableViewDragControllerDelegate <NSObject>
-- (_Bool)_dragSessionAllowsSystemDrag:(id <UIDragSession>)arg1;
+- (_UIDragSessionProperties *)_dragSessionPropertiesForSession:(id <UIDragSession>)arg1;
 - (_Bool)_dragSessionIsRestrictedToDraggingApplication:(id <UIDragSession>)arg1;
 - (_Bool)_dragSessionAllowsMoveOperation:(id <UIDragSession>)arg1;
 - (void)_endAnimatingDropOfCell:(UITableViewCell *)arg1;

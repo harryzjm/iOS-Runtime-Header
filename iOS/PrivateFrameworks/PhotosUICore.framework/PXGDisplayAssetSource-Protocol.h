@@ -6,14 +6,17 @@
 
 #import <PhotosUICore/PXGLayoutContentSource-Protocol.h>
 
-@class PXGDisplayAssetVideoPresentationController, PXGLayout;
-@protocol PXDisplayAsset, PXDisplayAssetFetchResult, PXGDisplayAssetAdjustment, PXGDisplayAssetRequestObserver;
+@class PXGDisplayAssetVideoPresentationController, PXGLayout, PXMediaProvider;
+@protocol PXDisplayAsset, PXDisplayAssetFetchResult, PXGDisplayAssetAdjustment, PXGDisplayAssetPixelBufferSourcesProvider, PXGDisplayAssetRequestObserver;
 
 @protocol PXGDisplayAssetSource <PXGLayoutContentSource>
 - (unsigned long long)desiredPlaceholderStyleInLayout:(PXGLayout *)arg1;
 - (id <PXDisplayAssetFetchResult>)displayAssetFetchResultForSpritesInRange:(struct _PXGSpriteIndexRange)arg1 inLayout:(PXGLayout *)arg2;
 
 @optional
+- (_Bool)useLowMemoryDecodeInLayout:(PXGLayout *)arg1;
+- (id <PXGDisplayAssetPixelBufferSourcesProvider>)customPixelBufferSourcesProviderForDisplayAssetsInLayout:(PXGLayout *)arg1;
+- (PXMediaProvider *)customMediaProviderForDisplayAssetsInLayout:(PXGLayout *)arg1;
 - (unsigned long long)presentationIntentForSpritesInRange:(struct _PXGSpriteIndexRange)arg1 inLayout:(PXGLayout *)arg2;
 - (id <PXGDisplayAssetAdjustment>)adjustmentForDisplayAsset:(id <PXDisplayAsset>)arg1 spriteIndex:(unsigned int)arg2 inLayout:(PXGLayout *)arg3;
 - (PXGDisplayAssetVideoPresentationController *)videoPresentationControllerForDisplayAsset:(id <PXDisplayAsset>)arg1 spriteIndex:(unsigned int)arg2 inLayout:(PXGLayout *)arg3;

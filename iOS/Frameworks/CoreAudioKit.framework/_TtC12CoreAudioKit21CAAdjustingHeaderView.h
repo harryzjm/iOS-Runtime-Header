@@ -11,9 +11,6 @@ __attribute__((visibility("hidden")))
 
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)adjustViewIfHorizontallyCompressed:(struct CGSize)arg1;
-- (void)setColorForParameterWithId:(unsigned int)arg1 color:(id)arg2;
-- (void)clear;
 
 @end
 

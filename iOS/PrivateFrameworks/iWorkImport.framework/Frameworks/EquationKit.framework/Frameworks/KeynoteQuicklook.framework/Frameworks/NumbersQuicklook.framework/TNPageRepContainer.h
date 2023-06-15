@@ -9,7 +9,7 @@
 @interface TNPageRepContainer : TSWPPageRep
 {
     struct CGRect _shadowPathRect;
-    const struct CGPath *_shadowPath;
+    struct CGPath *_shadowPath;
 }
 
 - (_Bool)shouldBeginScribbleAtPoint:(struct CGPoint)arg1;

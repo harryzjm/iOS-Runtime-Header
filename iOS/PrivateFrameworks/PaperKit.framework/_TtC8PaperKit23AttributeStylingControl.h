@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIControl.h>
+#import <UIKitCore/UIControl.h>
 
 @class MISSING_TYPE;
 
@@ -17,7 +17,6 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *titleLabel;
     MISSING_TYPE *imageView;
     MISSING_TYPE *titleLabelFont;
-    MISSING_TYPE *isEnabled;
     MISSING_TYPE *title;
     MISSING_TYPE *font;
     MISSING_TYPE *image;
@@ -28,6 +27,8 @@ __attribute__((visibility("hidden")))
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 @property(nonatomic, readonly) struct CGSize intrinsicContentSize;
+@property(nonatomic) _Bool enabled;
+- (_Bool)isEnabled;
 @property(nonatomic) _Bool highlighted;
 - (_Bool)isHighlighted;
 @property(nonatomic) _Bool selected;

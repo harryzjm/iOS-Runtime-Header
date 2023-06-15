@@ -64,6 +64,7 @@
 - (id)newReadChannelForComponentLocator:(id)arg1 compressionAlgorithm:(long long)arg2 isStoredOutsideObjectArchive:(_Bool)arg3 error:(id *)arg4;
 - (id)newCompressionReadChannelWithReadChannel:(id)arg1 compressionAlgorithm:(long long)arg2;
 - (id)packageEntryInfoForComponentLocator:(id)arg1 isStoredOutsideObjectArchive:(_Bool)arg2;
+- (id)componentLocators;
 @property(readonly) TSUZipFileArchive *componentZipArchive;
 @property(readonly) NSError *lastReloadError;
 - (_Bool)didReloadZipArchive:(id)arg1 packageURL:(id)arg2 error:(id *)arg3;

@@ -7,6 +7,6 @@
 @class NSString;
 
 @protocol HKChartOverlayVersionProviding
-@property(nonatomic, readonly) NSString *chartOverlayVersion;
+@property(readonly, nonatomic) NSString *chartOverlayVersion;
 @end
 

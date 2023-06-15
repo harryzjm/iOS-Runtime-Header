@@ -10,13 +10,14 @@ __attribute__((visibility("hidden")))
     int _modelDrop;
 }
 
++ (id)sceneLabelsFilePathForConfiguration:(id)arg1 error:(id *)arg2;
++ (_Bool)providesSceneLabelsForConfiguration:(id)arg1;
 + (unsigned int)analysisPixelFormatTypeForConfiguration:(id)arg1;
 + (id)inputImageBlobNameForConfiguration:(id)arg1;
-+ (id)modelNameForConfiguration:(id)arg1;
++ (id)modelPathForConfiguration:(id)arg1 error:(id *)arg2;
 + (id)configurationOptionKeysForDetectorKey;
 - (id)observationsForLastAnalysisOfImageAnalyzer:(void *)arg1 processOptions:(id)arg2 originatingRequestSpecifier:(id)arg3 qosClass:(unsigned int)arg4 error:(id *)arg5;
 - (unsigned int)analysisTypesForProcessOptions:(id)arg1;
-- (id)sceneLabelsFileName;
 - (_Bool)configureImageAnalyzerOptions:(void *)arg1 error:(id *)arg2;
 - (_Bool)completeInitializationForSession:(id)arg1 error:(id *)arg2;
 - (id)supportedIdentifiersWithOptions:(id)arg1 error:(id *)arg2;

@@ -11,6 +11,10 @@
 @protocol CSAttSiriServiceDelegate <NSObject>
 
 @optional
+- (void)attSiriDidDetectContinuousConversation;
+- (void)attSiriDidStartAttending:(_Bool)arg1 useLegacyModel:(_Bool)arg2;
+- (void)attSiriDidStartAttending:(_Bool)arg1;
+- (void)attSiriDidStartAttending;
 - (void)attSiriAttendingFailed;
 - (void)attSiriAttendingTimeoutTriggered;
 - (void)attSiriDidDetectAttendingTrigger:(CSAttSiriAttendingTriggerEventInfo *)arg1;

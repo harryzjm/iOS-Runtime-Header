@@ -20,6 +20,8 @@
     MISSING_TYPE *precipitationRadarHashPixelMap;
     MISSING_TYPE *temperatureColorMap;
     MISSING_TYPE *temperaturePixelMap;
+    MISSING_TYPE *windIntensityColorMap;
+    MISSING_TYPE *windIntensityPixelMap;
     MISSING_TYPE *lock;
 }
 

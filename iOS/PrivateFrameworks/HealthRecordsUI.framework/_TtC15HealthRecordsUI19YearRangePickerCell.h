@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UITableViewCell.h>
+#import <UIKitCore/UITableViewCell.h>
 
 @class MISSING_TYPE;
 
@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface _TtC15HealthRecordsUI19YearRangePickerCell : UITableViewCell
 {
     MISSING_TYPE *dataSource;
+    MISSING_TYPE *baseAccessibilityIdentifier;
     MISSING_TYPE *pickerView;
 }
 

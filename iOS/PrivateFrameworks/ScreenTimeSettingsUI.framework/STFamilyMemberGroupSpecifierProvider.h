@@ -4,16 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
+@class NSString, UIViewController;
 
 __attribute__((visibility("hidden")))
 @interface STFamilyMemberGroupSpecifierProvider
 {
     _Bool _presentedAsModal;
+    UIViewController *_rootViewController;
 }
 
 + (id)providerWithCoordinator:(id)arg1 presentedAsModal:(_Bool)arg2;
++ (id)providerWithCoordinator:(id)arg1 rootViewController:(id)arg2;
+- (void).cxx_destruct;
+@property __weak UIViewController *rootViewController; // @synthesize rootViewController=_rootViewController;
 @property(nonatomic) _Bool presentedAsModal; // @synthesize presentedAsModal=_presentedAsModal;
+- (void)showChildRootViewController:(id)arg1;
+- (void)showChildOnboardingFlow:(id)arg1;
+- (void)showChildOnboardingOrChildRootViewController:(id)arg1;
 - (id)totalChildUsageTime:(id)arg1;
 - (void)imageDidUpdate:(id)arg1;
 - (id)familySpecifiers;

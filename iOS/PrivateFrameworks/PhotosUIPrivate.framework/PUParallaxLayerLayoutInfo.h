@@ -10,12 +10,14 @@ __attribute__((visibility("hidden")))
 @interface PUParallaxLayerLayoutInfo : NSObject
 {
     _Bool _canApplyParallax;
+    long long _deviceOrientation;
     double _parallaxAmount;
     double _visibilityAmount;
     unsigned long long _visibilityEdge;
     struct CGPoint _parallaxVector;
     struct CGRect _containerFrame;
     struct CGRect _visibleFrame;
+    struct CGRect _settlingEffectFrame;
 }
 
 @property(readonly, nonatomic) unsigned long long visibilityEdge; // @synthesize visibilityEdge=_visibilityEdge;
@@ -23,11 +25,16 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) double parallaxAmount; // @synthesize parallaxAmount=_parallaxAmount;
 @property(readonly, nonatomic) struct CGPoint parallaxVector; // @synthesize parallaxVector=_parallaxVector;
 @property(readonly, nonatomic) _Bool canApplyParallax; // @synthesize canApplyParallax=_canApplyParallax;
+@property(readonly, nonatomic) struct CGRect settlingEffectFrame; // @synthesize settlingEffectFrame=_settlingEffectFrame;
 @property(readonly, nonatomic) struct CGRect visibleFrame; // @synthesize visibleFrame=_visibleFrame;
 @property(readonly, nonatomic) struct CGRect containerFrame; // @synthesize containerFrame=_containerFrame;
+@property(readonly, nonatomic) long long deviceOrientation; // @synthesize deviceOrientation=_deviceOrientation;
+- (id)description;
+@property(readonly, nonatomic) struct CGAffineTransform additionalContentTransform;
+@property(readonly, nonatomic) struct CGAffineTransform additionalTransform;
 - (struct CGRect)viewFrameForLayerFrame:(struct CGRect)arg1;
 - (_Bool)isEqual:(id)arg1;
-- (id)initWithVisibleFrame:(struct CGRect)arg1 containerFrame:(struct CGRect)arg2 canApplyParallax:(_Bool)arg3 parallaxVector:(struct CGPoint)arg4 parallaxAmount:(double)arg5 visibilityAmount:(double)arg6 visibilityEdge:(unsigned long long)arg7;
+- (id)initWithDeviceOrientation:(long long)arg1 containerFrame:(struct CGRect)arg2 visibleFrame:(struct CGRect)arg3 settlingEffectFrame:(struct CGRect)arg4 canApplyParallax:(_Bool)arg5 parallaxVector:(struct CGPoint)arg6 parallaxAmount:(double)arg7 visibilityAmount:(double)arg8 visibilityEdge:(unsigned long long)arg9;
 
 @end
 

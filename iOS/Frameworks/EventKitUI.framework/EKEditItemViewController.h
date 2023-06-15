@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
-@class EKUIRecurrenceAlertController;
-@protocol EKEditItemViewControllerDelegate, EKStyleProvider;
+@class EKUIRecurrenceAlertController, NSString;
+@protocol EKEditItemViewControllerDelegate, EKStyleProvider, EKViewControllerRemoteUIDelegate;
 
 __attribute__((visibility("hidden")))
 @interface EKEditItemViewController : UIViewController
@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     id <EKEditItemViewControllerDelegate> _editDelegate;
     EKUIRecurrenceAlertController *_recurrenceAlertController;
     _Bool _showsDoneButton;
+    id <EKViewControllerRemoteUIDelegate> _remoteUIDelegate;
 }
 
 + (id)preferredViewControllerForPresentationsFromViewController:(id)arg1;
@@ -26,6 +27,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool showsDoneButton; // @synthesize showsDoneButton=_showsDoneButton;
 @property(nonatomic) _Bool modal; // @synthesize modal=_modal;
 @property(nonatomic) unsigned long long subitem; // @synthesize subitem=_subitem;
+@property(nonatomic) __weak id <EKViewControllerRemoteUIDelegate> remoteUIDelegate; // @synthesize remoteUIDelegate=_remoteUIDelegate;
 @property(nonatomic) __weak id <EKEditItemViewControllerDelegate> editDelegate; // @synthesize editDelegate=_editDelegate;
 - (double)tableView:(id)arg1 heightForFooterInSection:(long long)arg2;
 - (double)tableView:(id)arg1 heightForHeaderInSection:(long long)arg2;
@@ -49,8 +51,12 @@ __attribute__((visibility("hidden")))
 - (id)initWithFrame:(struct CGRect)arg1 styleProvider:(id)arg2;
 
 // Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
 @property(nonatomic) _Bool editItemShouldBeAskedForInjectableViewController;
+@property(readonly) unsigned long long hash;
 @property(nonatomic) _Bool presentModally;
+@property(readonly) Class superclass;
 @property(nonatomic) _Bool useCustomBackButton;
 
 @end

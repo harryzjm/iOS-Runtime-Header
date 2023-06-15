@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)cn_triageWithLog:(id)arg1 serialNumber:(unsigned long long)arg2;
+- (_Bool)cn_hasHighSpecificity;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)shortDebugDescription;

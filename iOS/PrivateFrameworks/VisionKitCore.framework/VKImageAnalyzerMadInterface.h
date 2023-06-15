@@ -41,7 +41,7 @@ __attribute__((visibility("hidden")))
 - (void)didLeaveVisualSearchHints;
 - (void)didShowVisualSearchCachedResultsForQueryID:(unsigned long long)arg1 cachedResultQueryID:(unsigned long long)arg2;
 - (void)didShowVisualSearchHintsForRequest:(id)arg1;
-- (void)submitVisualIntelligenceUserFeedbackForRequest:(id)arg1 reportIdentifier:(id)arg2 payload:(id)arg3;
+- (void)submitVisualIntelligenceUserFeedbackForRequest:(id)arg1 reportIdentifier:(id)arg2 userFeedbackPayload:(id)arg3 sfReportData:(id)arg4;
 - (void)generateTextualVisualSearchResultForAnalysis:(id)arg1 queryInfo:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)generateVisualSearchResultForRequest:(id)arg1 analysis:(id)arg2 items:(id)arg3 payload:(id)arg4 queryID:(unsigned long long)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (id)VNRequestHandlerForRequest:(id)arg1;

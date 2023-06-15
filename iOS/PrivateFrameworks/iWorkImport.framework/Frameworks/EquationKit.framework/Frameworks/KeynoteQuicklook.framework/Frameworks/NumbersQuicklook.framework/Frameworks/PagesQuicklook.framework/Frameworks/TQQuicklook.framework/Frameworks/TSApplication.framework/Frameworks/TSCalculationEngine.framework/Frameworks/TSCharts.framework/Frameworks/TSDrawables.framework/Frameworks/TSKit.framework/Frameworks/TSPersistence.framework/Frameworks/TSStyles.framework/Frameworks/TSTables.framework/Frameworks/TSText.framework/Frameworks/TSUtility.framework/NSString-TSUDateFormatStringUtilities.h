@@ -44,6 +44,7 @@
 - (id)tsu_stringByRemovingEscapedCharactersFromNumberFormatPattern;
 - (id)tsu_newRangesOfEscapedCharactersInNumberFormatPattern;
 - (_Bool)tsu_isNumberFormatPattern;
+- (id)tsu_stringWithoutNonbreakingSpaces;
 - (void)tsu_appendJSONStringToString:(id)arg1;
 - (id)tsu_stringWithFirstStrongIsolation;
 - (id)tsu_stringWithoutBidiControls;
@@ -67,6 +68,12 @@
 - (id)tsu_stringByMakingFirstCharacterUppercase;
 - (id)tsu_stringByMakingFirstCharacterLowercase;
 - (id)tsu_encodeStringBase64;
+- (id)tsu_regexForTitleParsingWithLocalizedCopyString:(id)arg1 isFirstCopyFormatString:(_Bool)arg2;
+- (id)tsu_stringByApplyingSubstitutions:(id)arg1;
+- (id)tsu_parseBaseTitleWithLocalizedCopyString:(id)arg1 firstCopyFormatString:(id)arg2 generalCopyFormatString:(id)arg3 outNumber:(unsigned long long *)arg4;
+- (id)tsu_stringByIncrementingCounterAfterDuplicateTitleModifierWithLocalizedCopyString:(id)arg1 firstCopyFormatString:(id)arg2 generalCopyFormatString:(id)arg3 numberFormatter:(id)arg4 uniquenessTest:(CDUnknownBlockType)arg5;
+- (id)tsu_stringByIncrementingCounterAfterDuplicateTitleModifierWithUniquenessTest:(CDUnknownBlockType)arg1;
+- (_Bool)tsu_isTaggedPointer;
 - (id)tsu_stringByTrimmingCharactersInSetFromFront:(id)arg1;
 - (id)tsu_stringWithPathRelativeTo:(id)arg1 allowBacktracking:(_Bool)arg2;
 - (id)tsu_stringWithPathRelativeTo:(id)arg1;

@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *$__lazy_storage_$_inspection;
     MISSING_TYPE *cloudContext;
+    MISSING_TYPE *feedPersonalizer;
     MISSING_TYPE *tagService;
     MISSING_TYPE *feedItems;
     MISSING_TYPE *deduplicateItemIdentifiers;

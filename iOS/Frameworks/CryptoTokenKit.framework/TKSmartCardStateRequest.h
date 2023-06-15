@@ -9,13 +9,17 @@
 __attribute__((visibility("hidden")))
 @interface TKSmartCardStateRequest : NSObject
 {
+    unsigned long long _activeStateNotifications;
     long long _stateWhenRequested;
-    CDUnknownBlockType _reply;
+    CDUnknownBlockType _replyNextState;
+    CDUnknownBlockType _replyFlushedState;
 }
 
 - (void).cxx_destruct;
-@property(copy) CDUnknownBlockType reply; // @synthesize reply=_reply;
+@property(copy) CDUnknownBlockType replyFlushedState; // @synthesize replyFlushedState=_replyFlushedState;
+@property(copy) CDUnknownBlockType replyNextState; // @synthesize replyNextState=_replyNextState;
 @property long long stateWhenRequested; // @synthesize stateWhenRequested=_stateWhenRequested;
+@property unsigned long long activeStateNotifications; // @synthesize activeStateNotifications=_activeStateNotifications;
 
 @end
 

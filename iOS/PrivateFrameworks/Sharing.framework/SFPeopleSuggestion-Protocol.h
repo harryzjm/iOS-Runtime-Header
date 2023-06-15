@@ -10,11 +10,14 @@
 @class INImage, NSArray, NSString;
 
 @protocol SFPeopleSuggestion <NSObject, NSSecureCoding>
+@property(readonly, nonatomic) _Bool isTapToRadar;
+@property(readonly, nonatomic) _Bool isPlaceholder;
 @property(readonly, nonatomic) _Bool isGroup;
 @property(readonly, nonatomic) _Bool isRestricted;
 @property(readonly, nonatomic) INImage *donatedImage;
 @property(readonly, copy, nonatomic) NSArray *formattedHandles;
 @property(readonly, copy, nonatomic) NSArray *contacts;
+@property(readonly, copy, nonatomic) NSString *deviceModelIdentifier;
 @property(readonly, copy, nonatomic) NSString *transportBundleIdentifier;
 @property(readonly, copy, nonatomic) NSString *displayName;
 @property(readonly, copy, nonatomic) NSString *identifier;

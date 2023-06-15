@@ -17,6 +17,7 @@
 @property(readonly, nonatomic) _Bool isCurrentSleepWindDownShortcutsOnboardingCompleted;
 @property(readonly, nonatomic) _Bool isCurrentSleepTrackingOnboardingCompleted;
 @property(readonly, nonatomic) _Bool isCurrentSleepCoachingOnboardingCompleted;
+- (id)copy;
 - (_Bool)isEqualToModel:(id <HKSPOnboardingModel>)arg1;
 @end
 

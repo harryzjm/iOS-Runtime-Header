@@ -9,8 +9,8 @@
 @class NSIndexPath, UIDragItem;
 
 @protocol UICollectionViewDropItem <NSObject>
-@property(nonatomic, readonly) struct CGSize previewSize;
-@property(nonatomic, readonly) NSIndexPath *sourceIndexPath;
-@property(nonatomic, readonly) UIDragItem *dragItem;
+@property(readonly, nonatomic) struct CGSize previewSize;
+@property(readonly, nonatomic) NSIndexPath *sourceIndexPath;
+@property(readonly, nonatomic) UIDragItem *dragItem;
 @end
 

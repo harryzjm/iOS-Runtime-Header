@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface _UITextFieldClearButtonCacheKey : NSObject <NSCopying>
+@interface _UITextFieldClearButtonCacheKey : NSObject
 {
     int _variant;
     struct CGColor *_color;

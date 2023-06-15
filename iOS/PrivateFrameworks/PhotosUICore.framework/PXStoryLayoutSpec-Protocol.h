@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDictionary, NSShadow, PXExploreLayoutMetrics, PXStoryChromeButtonSpec, UIColor;
+@class NSDictionary, NSShadow, PXExploreLayoutMetrics, PXStoryChromeButtonSpec, PXStoryDetailsViewButtonSpec, UIColor;
 
 @protocol PXStoryLayoutSpec
 @property(readonly, nonatomic) double bottomTitleContentOffset;
@@ -25,10 +25,13 @@
 @property(readonly, nonatomic) _Bool styleSwitcherShowsRestartButton;
 @property(readonly, nonatomic) double styleSwitcherChromeButtonHorizontalMargin;
 @property(readonly, nonatomic) PXStoryChromeButtonSpec *styleSwitcherChromeButtonSpec;
-@property(readonly, nonatomic) _Bool thumbnailMenuPrefersFeatureLessActionDisambiguationSubmenu;
+@property(readonly, nonatomic) _Bool canScaleWhenPressed;
+@property(readonly, nonatomic) _Bool thumbnailMenuIncludesFeatureLessAction;
 @property(readonly, nonatomic) _Bool thumbnailMenuIncludesFavoriteAction;
 @property(readonly, nonatomic) _Bool thumbnailChromeShowsFavoriteButton;
 @property(readonly, nonatomic) _Bool thumbnailChromeShowsActionMenuButton;
+@property(readonly, nonatomic) struct CGSize thumbnailChromeDetailsViewButtonPadding;
+@property(readonly, nonatomic) PXStoryDetailsViewButtonSpec *thumbnailChromeDetailsViewButtonSpec;
 @property(readonly, nonatomic) struct CGSize thumbnailPlayButtonPadding;
 @property(readonly, nonatomic) _Bool thumbnailChromeShowsPlayButton;
 @property(readonly, nonatomic) PXStoryChromeButtonSpec *thumbnailChromePlayButtonSpec;

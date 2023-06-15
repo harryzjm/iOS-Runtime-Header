@@ -18,8 +18,8 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)writeToData:(id)arg1;
 @property(readonly) NSArray *meshKeys;
 - (id)modelAsset;
-- (id)_initWithCSIHeader:(const struct _csiheader *)arg1;
-- (id)initWithCSIData:(id)arg1 forKey:(const struct _renditionkeytoken *)arg2;
+- (id)_initWithCSIHeader:(const struct _csiheader *)arg1 version:(unsigned int)arg2;
+- (id)initWithCSIData:(id)arg1 forKey:(const struct _renditionkeytoken *)arg2 version:(unsigned int)arg3;
 - (void)dealloc;
 - (id)initForArchiving:(id)arg1 withMeshRenditionKeys:(id)arg2;
 

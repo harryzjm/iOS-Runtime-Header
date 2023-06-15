@@ -30,7 +30,7 @@
 - (void)updateModelMinMaxForErrorBarsOnSeries:(id)arg1 axisID:(id)arg2 analysis:(id)arg3;
 - (void)updateMultiDataModelAxisAnalysis:(id)arg1;
 - (void)updateModelAxisAnalysis:(id)arg1;
-- (double)totalForIndex:(unsigned long long)arg1 useDownsampledTotals:(_Bool)arg2;
+- (double)totalForValueIndex:(unsigned long long)arg1;
 - (double)totalForGroupIndex:(unsigned long long)arg1 series:(id)arg2;
 - (id)userMin;
 - (id)userMax;

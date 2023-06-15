@@ -33,11 +33,12 @@ __attribute__((visibility("hidden")))
 - (double)preferredHeightForTraitCollection:(id)arg1;
 - (_Bool)isVisibleForInputDelegate:(id)arg1 inputViews:(id)arg2;
 - (_Bool)allowsCompactAssistantBar;
+- (_Bool)findNavigatorShouldShowReplacementOption:(id)arg1;
 - (void)findNavigatorDidInvalidateSearchSession:(id)arg1;
 - (void)findNavigator:(id)arg1 didInvokeNextResultInDirection:(long long)arg2;
 - (void)findNavigator:(id)arg1 didInvokeReplaceReplacingAll:(_Bool)arg2;
 - (void)findNavigator:(id)arg1 didChangeMode:(long long)arg2;
-- (void)updateResultCountDisplay;
+- (void)updateViewForActiveFindSession;
 - (void)_replaceFieldDidChange:(id)arg1;
 - (void)_didEnterReplacementString:(id)arg1;
 - (void)_searchTextFieldChanged:(id)arg1;
@@ -59,7 +60,7 @@ __attribute__((visibility("hidden")))
 - (void)findAndReplace:(id)arg1;
 - (void)find:(id)arg1;
 - (void)_textViewDidChangeNotification:(id)arg1;
-- (void)_willChangeToFirstResponder:(id)arg1;
+- (void)_windowDidChangeToFirstResponder:(id)arg1;
 - (void)_finishSearchingOnResignIfNecessary;
 - (void)resignFirstResponderAndFinishSearching;
 - (_Bool)_canShowWhileLocked;
@@ -68,6 +69,7 @@ __attribute__((visibility("hidden")))
 - (id)keyCommands;
 - (id)undoManager;
 - (id)traitCollection;
+- (id)parentFocusEnvironment;
 - (id)nextResponder;
 - (void)setAssistantBarStyle:(long long)arg1;
 @property(readonly, nonatomic) _Bool hostedInKeyboard;

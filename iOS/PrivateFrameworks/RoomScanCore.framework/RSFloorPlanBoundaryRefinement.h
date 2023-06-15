@@ -19,9 +19,6 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)reset;
-- (id)runWithFloorPlan:(id)arg1 rsFrame:(id)arg2;
-- (void)setupRefinementProcessor:(id)arg1;
 - (id)init;
 
 @end

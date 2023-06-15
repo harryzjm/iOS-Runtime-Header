@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIScrollView.h>
+#import <UIKitCore/UIScrollView.h>
 
 @class AVPlaybackContentContainerView, NSString, UIWindow;
 
@@ -36,8 +36,10 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)_contentRectForScale:(double)arg1;
 - (struct CGSize)_contentSizeForScale:(double)arg1;
 - (void)layoutSubviews;
+- (void)didMoveToWindow;
 - (void)willMoveToWindow:(id)arg1;
 - (void)setFrame:(struct CGRect)arg1;
+- (void)_boundingPathMayHaveChangedForView:(id)arg1 relativeToBoundsOriginOnly:(_Bool)arg2;
 - (struct CGSize)scrollView:(id)arg1 contentSizeForZoomScale:(double)arg2 withProposedSize:(struct CGSize)arg3;
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1;
 - (void)scrollViewDidZoom:(id)arg1;

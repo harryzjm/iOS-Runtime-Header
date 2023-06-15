@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <CoreML/NSObject-Protocol.h>
+
 @protocol MLFeatureProvider;
 
-@protocol MLNeuralNetwork
+@protocol MLNeuralNetwork <NSObject>
 - (id <MLFeatureProvider>)evaluate:(id <MLFeatureProvider>)arg1 error:(id *)arg2;
 @end
 

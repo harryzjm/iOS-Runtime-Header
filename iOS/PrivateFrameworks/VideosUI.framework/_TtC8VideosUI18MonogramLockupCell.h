@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)vui_setHighlighted:(_Bool)arg1;
 - (struct CGSize)vui_layoutSubviews:(struct CGSize)arg1 computationOnly:(_Bool)arg2;
+@property(nonatomic) _Bool isAccessibilityElement;
 
 @end
 

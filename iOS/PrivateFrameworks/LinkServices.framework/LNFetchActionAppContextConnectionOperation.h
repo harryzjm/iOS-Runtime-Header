@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import "LNConnectionOperation.h"
-
 @class LNAction, LNFocusConfigurationAppContext;
 
 __attribute__((visibility("hidden")))
-@interface LNFetchActionAppContextConnectionOperation : LNConnectionOperation
+@interface LNFetchActionAppContextConnectionOperation
 {
     LNAction *_action;
     LNFocusConfigurationAppContext *_result;
@@ -22,7 +20,7 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) LNAction *action; // @synthesize action=_action;
 - (void)finishWithError:(id)arg1;
 - (void)start;
-- (id)initWithConnectionInterface:(id)arg1 action:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)initWithConnectionInterface:(id)arg1 action:(id)arg2 queue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 
 @end
 

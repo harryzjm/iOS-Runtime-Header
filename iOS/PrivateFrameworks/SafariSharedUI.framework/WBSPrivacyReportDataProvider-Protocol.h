@@ -16,6 +16,8 @@
 @property(copy, nonatomic) NSArray *trackedFirstPartiesSortDescriptors;
 @property(readonly, nonatomic) NSArray *trackedFirstParties;
 @property(copy, nonatomic) NSArray *knownTrackersSortDescriptors;
+@property(readonly, nonatomic) NSArray *blockedKnownTrackers;
+@property(readonly, nonatomic) NSArray *preventedKnownTrackers;
 @property(readonly, nonatomic) NSArray *knownTrackers;
 - (void)loadDataFromStartDate:(NSDate *)arg1 toEndDate:(NSDate *)arg2 withCompletionHandler:(void (^)(void))arg3;
 - (void)loadDataWithCompletionHandler:(void (^)(void))arg1;

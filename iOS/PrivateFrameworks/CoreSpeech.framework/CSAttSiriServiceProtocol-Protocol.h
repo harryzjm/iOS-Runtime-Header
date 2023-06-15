@@ -6,11 +6,16 @@
 
 #import <CoreSpeech/NSObject-Protocol.h>
 
-@class CSAttSiriRequestContext;
+@class CSAttSiriRequestContext, NSDictionary;
 
 @protocol CSAttSiriServiceProtocol <NSObject>
+- (void)gazeTrackerFaceTrackingMetaDataUpdate:(NSDictionary *)arg1 atMachAbsTime:(unsigned long long)arg2;
+- (void)updateSiriOrbLocation:(struct CGRect)arg1;
 - (void)siriRequestProcessingCompleted;
 - (void)stopAttendingWithContext:(CSAttSiriRequestContext *)arg1;
 - (void)startAttendingWithContext:(CSAttSiriRequestContext *)arg1;
+
+@optional
+- (void)gazeEstimates:(struct CGPoint)arg1 landmarks:(NSDictionary *)arg2;
 @end
 

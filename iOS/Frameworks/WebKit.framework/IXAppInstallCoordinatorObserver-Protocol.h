@@ -18,6 +18,7 @@
 - (void)coordinatorDidCompleteSuccessfully:(IXAppInstallCoordinator *)arg1 forApplicationRecord:(LSApplicationRecord *)arg2;
 - (void)coordinatorDidCompleteSuccessfully:(IXAppInstallCoordinator *)arg1 forAppAtURL:(NSURL *)arg2;
 - (void)coordinatorDidCompleteSuccessfully:(IXAppInstallCoordinator *)arg1;
+- (void)coordinatorShouldBeginPostProcessing:(IXAppInstallCoordinator *)arg1 forApplicationRecord:(LSApplicationRecord *)arg2;
 - (void)coordinator:(IXAppInstallCoordinator *)arg1 didUpdateProgress:(double)arg2 forPhase:(unsigned long long)arg3 overallProgress:(double)arg4;
 - (void)coordinatorDidInstallPlaceholder:(IXAppInstallCoordinator *)arg1 forApplicationRecord:(LSApplicationRecord *)arg2;
 - (void)coordinatorDidInstallPlaceholder:(IXAppInstallCoordinator *)arg1 atURL:(NSURL *)arg2;

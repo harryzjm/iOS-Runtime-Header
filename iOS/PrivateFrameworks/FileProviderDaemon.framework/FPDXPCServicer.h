@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(nonatomic) __weak NSXPCConnection *connection; // @synthesize connection=_connection;
 @property(nonatomic) __weak FPDServer *server; // @synthesize server=_server;
+- (void)_test_queryDiskImportSchedulerLabel:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_test_resetCounters:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_test_getCountersArray:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_test_getRootSupportDirURLForDomainURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -46,7 +47,6 @@ __attribute__((visibility("hidden")))
 - (void)reindexAllSearchableItemsWithAcknowledgementHandler:(CDUnknownBlockType)arg1;
 - (void)waitForStabilizationOfDomainWithID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)waitForChangesOnItemsBelowItemWithID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)getSyncedRootsURLs:(CDUnknownBlockType)arg1;
 - (void)copyDatabaseForFPCKStartingAtPath:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)createDatabaseCopyOutputPathForDomain:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getPersonaForProvider:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -55,10 +55,14 @@ __attribute__((visibility("hidden")))
 - (void)appHasNonUploadedFiles:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchAlternateContentsURLForDocumentURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setAlternateContentsURL:(id)arg1 onDocumentURL:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)calculateNonPurgeableSpaceUsageOfDomain:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)dumpDatabaseAt:(id)arg1 fullDump:(_Bool)arg2 writeTo:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)runFPCKForDomainWithID:(id)arg1 databasesBackupsPath:(id)arg2 url:(id)arg3 options:(unsigned long long)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)runFPCKForDomainWithID:(id)arg1 databasesBackupsPath:(id)arg2 options:(unsigned long long)arg3 reason:(unsigned long long)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)stateForDomainWithID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)importProgressForDomainWithID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)forceUpdateBlockedProcessNamesFromDomain:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)reimportItemsBelowItemWithID:(id)arg1 removeCachedItems:(_Bool)arg2 markItemDataless:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)setHiddenByUser:(_Bool)arg1 forDomainIdentifier:(id)arg2 providerIdentifier:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)setEnabled:(_Bool)arg1 forDomainIdentifier:(id)arg2 providerIdentifier:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)getDomainsForProviderIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)removeAllDomainsForProviderIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -66,10 +70,12 @@ __attribute__((visibility("hidden")))
 - (void)removeDomain:(id)arg1 mode:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)removeDomainWithID:(id)arg1 mode:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)removeDomainAndPreserveDataWithID:(id)arg1 mode:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)addDomain:(id)arg1 forProviderIdentifier:(id)arg2 byImportingDirectoryAtURL:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)addDomain:(id)arg1 forProviderIdentifier:(id)arg2 byImportingDirectoryAtURL:(id)arg3 nonWrappedURL:(id)arg4 knownFolders:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (void)listRemoteVersionsOfItemAtURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)resolveConflictAtURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)restoreUserURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)backUpUserURL:(id)arg1 outputUserURL:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)fetchPathComponentsForURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateBlockedProcessNamesForProvider:(id)arg1 processNames:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)getURLForContainerWithItemID:(id)arg1 inDataScopeDomainWithIdentifier:(id)arg2 documentsScopeDomainIdentifier:(id)arg3 documentsFolderItemIdentifier:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)makeTopologicallySortedItemsOnDisk:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -83,7 +89,6 @@ __attribute__((visibility("hidden")))
 - (void)updateLastUsedDate:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchProviderForShareURL:(id)arg1 fallbackIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)trashItemAtURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)fetchIndexPropertiesForItemAtURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchFSItemsForItemIdentifiers:(id)arg1 providerIdentifier:(id)arg2 domainIdentifier:(id)arg3 materializingIfNeeded:(_Bool)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)itemForURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchAccessServicer:(CDUnknownBlockType)arg1;
@@ -95,9 +100,13 @@ __attribute__((visibility("hidden")))
 - (void)_forceIngestionForItemID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)documentURLFromItemID:(id)arg1 creatingPlaceholderIfMissing:(_Bool)arg2 ignoreAlternateContentsURL:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)documentURLFromBookmarkableString:(id)arg1 creatingPlaceholderIfMissing:(_Bool)arg2 ignoreAlternateContentsURL:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (id)tryTransformItemIDAfterMigration:(id)arg1;
 - (void)providerDomainForURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)providerDomainForIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)providerDomainsCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)attachItemWithID:(id)arg1 options:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)importDetachedFolder:(id)arg1 parentID:(id)arg2 logicalName:(id)arg3 options:(unsigned long long)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)detachItemWithID:(id)arg1 relocatingAtURL:(id)arg2 options:(unsigned long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)unpinItemWithID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)pinItemWithID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)evictItemWithID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

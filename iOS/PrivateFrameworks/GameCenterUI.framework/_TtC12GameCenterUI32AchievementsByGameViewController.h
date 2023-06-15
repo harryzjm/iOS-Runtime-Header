@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *bootstrapPresenter;
     MISSING_TYPE *statePresenter;
+    MISSING_TYPE *pageMetricsPresenter;
     MISSING_TYPE *compositionalLayout;
     MISSING_TYPE *diffableDataSource;
     MISSING_TYPE *components;
@@ -27,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)collectionView:(id)arg1 shouldHighlightItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didEndDisplayingCell:(id)arg2 forItemAtIndexPath:(id)arg3;
 - (void)collectionView:(id)arg1 willDisplayCell:(id)arg2 forItemAtIndexPath:(id)arg3;
+- (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewDidLoad;

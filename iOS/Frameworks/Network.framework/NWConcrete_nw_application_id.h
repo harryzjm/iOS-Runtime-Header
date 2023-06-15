@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     unsigned char uuid[16];
     char *originating_process;
     char *bundle_id;
+    _Bool is_bundle_id_external;
     CDStruct_4c969caf audit_token;
     int pid;
     int system_service;

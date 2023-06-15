@@ -6,36 +6,42 @@
 
 #import <objc/NSObject.h>
 
-@class AMSMediaToken, AMSMediaTokenServiceKeychainStore, AMSMediaTokenServiceUserDefaultsStore, NSString;
+@class AMSMediaToken, AMSMediaTokenServiceKeychainStore, NSString;
 
 __attribute__((visibility("hidden")))
 @interface AMSMediaTokenServiceStore : NSObject
 {
+    _Bool _usingAccessControlIdentifier;
     struct os_unfair_lock_s _accessLock;
     NSString *_clientIdentifier;
     NSString *_keychainAccessGroup;
     AMSMediaToken *_memoryMediaToken;
     AMSMediaTokenServiceKeychainStore *_keychainStore;
-    AMSMediaTokenServiceUserDefaultsStore *_userDefaultsStore;
+    NSString *_notificationObject;
 }
 
++ (_Bool)_hasAppleGroupEnabled;
 - (void).cxx_destruct;
-@property(retain, nonatomic) AMSMediaTokenServiceUserDefaultsStore *userDefaultsStore; // @synthesize userDefaultsStore=_userDefaultsStore;
-@property(retain, nonatomic) AMSMediaTokenServiceKeychainStore *keychainStore; // @synthesize keychainStore=_keychainStore;
+@property(readonly, nonatomic) NSString *notificationObject; // @synthesize notificationObject=_notificationObject;
+@property(readonly, nonatomic) AMSMediaTokenServiceKeychainStore *keychainStore; // @synthesize keychainStore=_keychainStore;
 @property(retain, nonatomic) AMSMediaToken *memoryMediaToken; // @synthesize memoryMediaToken=_memoryMediaToken;
 @property(readonly, nonatomic) struct os_unfair_lock_s accessLock; // @synthesize accessLock=_accessLock;
-@property(retain, nonatomic) NSString *keychainAccessGroup; // @synthesize keychainAccessGroup=_keychainAccessGroup;
-@property(readonly, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
+@property(readonly, nonatomic) _Bool usingAccessControlIdentifier; // @synthesize usingAccessControlIdentifier=_usingAccessControlIdentifier;
+@property(copy, nonatomic) NSString *keychainAccessGroup; // @synthesize keychainAccessGroup=_keychainAccessGroup;
+@property(readonly, copy, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
 - (void)_teardownKeychainNotifications;
 - (void)_setupKeychainNotifications;
-- (void)_postMediaTokenChangedNotification;
-- (void)_mediaTokenChanged;
+- (void)_mediaTokenChanged:(id)arg1;
 - (id)_mediaTokenChangedNotificationName;
+- (void)_deleteMediaTokenFromUserDefaultsIfPresent;
+- (id)_mediaTokenFromUserDefaults;
 - (id)_keychainAccessGroup;
-- (_Bool)_hasAppleGroupEnabled;
 - (void)dealloc;
+- (void)deleteToken;
 - (void)storeToken:(id)arg1;
 - (id)retrieveToken;
+- (id)initWithClientIdentifier:(id)arg1 keychainAccessGroup:(id)arg2 usingAccessControlIdentifier:(_Bool)arg3;
+- (id)initWithClientIdentifier:(id)arg1 keychainStore:(id)arg2;
 - (id)initWithClientIdentifier:(id)arg1 keychainAccessGroup:(id)arg2;
 
 @end

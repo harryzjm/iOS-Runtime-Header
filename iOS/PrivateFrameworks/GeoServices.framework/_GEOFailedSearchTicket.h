@@ -25,7 +25,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic, getter=isChainResultSet) _Bool chainResultSet;
 @property(readonly, nonatomic) GEOResolvedItem *clientResolvedResult;
 @property(readonly, nonatomic) NSArray *collectionResults;
-@property(readonly, nonatomic) CDStruct_d1a7ebee dataRequestKind;
+@property(readonly, nonatomic) CDStruct_026435ec dataRequestKind;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, nonatomic) GEORelatedSearchSuggestion *defaultRelatedSuggestion;
 @property(readonly, copy) NSString *description;

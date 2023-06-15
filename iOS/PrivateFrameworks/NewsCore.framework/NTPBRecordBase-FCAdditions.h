@@ -7,6 +7,7 @@
 #import <NewsTransport/NTPBRecordBase.h>
 
 @interface NTPBRecordBase (FCAdditions)
+- (_Bool)fc_isNewerThan:(id)arg1;
 - (_Bool)fc_isCachedAgeLessThan:(double)arg1;
 - (_Bool)fc_isCachedAgeGreaterThan:(double)arg1;
 @end

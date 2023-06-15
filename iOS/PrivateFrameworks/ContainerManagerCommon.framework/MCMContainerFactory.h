@@ -21,11 +21,13 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) MCMUserIdentityCache *userIdentityCache; // @synthesize userIdentityCache=_userIdentityCache;
 @property(readonly, nonatomic) MCMClientIdentity *clientIdentity; // @synthesize clientIdentity=_clientIdentity;
 @property(readonly, nonatomic) id <MCMContainerCache> cache; // @synthesize cache=_cache;
+- (id)_containerPathIdentifierForContainerIdentity:(id)arg1;
+- (id)_generateConcreteContainerIdentityFromContainerIdentity:(id)arg1 error:(id *)arg2;
 - (id)_createContainerForContainerIdentity:(id)arg1 error:(id *)arg2;
-- (_Bool)isAppropriatePersonaForContainerClass:(unsigned long long)arg1;
-- (_Bool)deleteURL:(id)arg1 reclaimSoon:(_Bool)arg2 error:(id *)arg3;
-- (_Bool)deleteURL:(id)arg1 error:(id *)arg2;
-- (id)containerForContainerIdentity:(id)arg1 createIfNecessary:(_Bool)arg2 updateLinks:(_Bool)arg3 error:(id *)arg4;
+- (_Bool)deleteURL:(id)arg1 forUserIdentity:(id)arg2 reclaimSoon:(_Bool)arg3 error:(id *)arg4;
+- (_Bool)deleteURL:(id)arg1 forUserIdentity:(id)arg2 error:(id *)arg3;
+- (id)containerForContainerIdentity:(id)arg1 createIfNecessary:(_Bool)arg2 error:(id *)arg3;
+- (id)createStagedContainerForContainerIdentity:(id)arg1 finalContainerPath:(id *)arg2 dataProtectionClass:(int)arg3 error:(id *)arg4;
 - (id)initWithContainerCache:(id)arg1 clientIdentity:(id)arg2 userIdentityCache:(id)arg3;
 - (_Bool)upgradeContainer:(id)arg1 clientIdentity:(id)arg2 error:(id *)arg3;
 

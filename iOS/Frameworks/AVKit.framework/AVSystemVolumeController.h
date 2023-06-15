@@ -55,6 +55,7 @@ __attribute__((visibility("hidden")))
 - (id)_requestSharedSystemController;
 - (void)_postNotificationForNameIfFullyInitialized:(id)arg1 userInfo:(id)arg2;
 - (id)currentSystemController;
+- (void)setVolume:(float)arg1 shouldShowHUD:(_Bool)arg2;
 - (void)setSystemVolumeHUDEnabled:(_Bool)arg1 forWindowSceneSessionIdentifier:(id)arg2;
 - (void)setSystemVolumeHUDEnabled:(_Bool)arg1 forSceneVolumeHudAssertion:(id)arg2;
 - (void)_removeVolumeHUDAssertionsForClientID:(id)arg1;

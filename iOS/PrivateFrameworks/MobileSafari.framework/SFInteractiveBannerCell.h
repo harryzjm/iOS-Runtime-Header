@@ -29,7 +29,7 @@ __attribute__((visibility("hidden")))
 - (void)setHighlighted:(_Bool)arg1;
 - (void)_updateVibrancy;
 - (void)traitCollectionDidChange:(id)arg1;
-- (void)setModel:(id)arg1;
+- (void)configureUsingBanner:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

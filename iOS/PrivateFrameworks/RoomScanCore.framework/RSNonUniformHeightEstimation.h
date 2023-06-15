@@ -8,16 +8,12 @@
 
 @interface RSNonUniformHeightEstimation : NSObject
 {
-    struct vector<float __attribute__((ext_vector_type(3))), std::allocator<float __attribute__((ext_vector_type(3)))>> _camera_positions;
-    struct NonUniformHeightEstimation _heightEstimation;
+    struct HeightCoreEspV1 _height_estimator;
     _Bool _isNonUniformHeightEnabled;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)reset;
-- (void)setNonUniformHeightEnable:(_Bool)arg1;
-- (id)runWithFloorPlan:(id)arg1 semanticImage:(id)arg2 heightImage:(id)arg3 geometryMeta:(id)arg4 temporalMeta:(id)arg5;
 - (id)init;
 
 @end

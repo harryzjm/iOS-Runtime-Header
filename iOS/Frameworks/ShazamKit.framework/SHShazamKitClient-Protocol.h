@@ -6,7 +6,8 @@
 
 #import <ShazamKit/SHMatcherDelegate-Protocol.h>
 #import <ShazamKit/SHMediaLibrarySyncDelegate-Protocol.h>
+#import <ShazamKit/SHSpectralOutputDelegate-Protocol.h>
 
-@protocol SHShazamKitClient <SHMatcherDelegate, SHMediaLibrarySyncDelegate>
+@protocol SHShazamKitClient <SHMatcherDelegate, SHMediaLibrarySyncDelegate, SHSpectralOutputDelegate>
 @end
 

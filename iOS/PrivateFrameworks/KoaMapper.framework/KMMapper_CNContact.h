@@ -8,6 +8,7 @@
 
 @class KVItemBuilder, NSNumber, NSString;
 
+__attribute__((visibility("hidden")))
 @interface KMMapper_CNContact : NSObject
 {
     KVItemBuilder *_builder;

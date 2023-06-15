@@ -6,17 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, PUSessionInfo;
+@class NSString, PHPhotoLibrary, PUSessionInfo;
 
 __attribute__((visibility("hidden")))
 @interface PUPXGridPresentation : NSObject
 {
     PUSessionInfo *_sessionInfo;
+    PHPhotoLibrary *_photoLibrary;
     long long _userInterfaceIdiom;
 }
 
 - (void).cxx_destruct;
-@property long long userInterfaceIdiom; // @synthesize userInterfaceIdiom=_userInterfaceIdiom;
+@property(readonly, nonatomic) long long userInterfaceIdiom; // @synthesize userInterfaceIdiom=_userInterfaceIdiom;
+@property(readonly, nonatomic) PHPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
 @property(retain, nonatomic) PUSessionInfo *sessionInfo; // @synthesize sessionInfo=_sessionInfo;
 - (void)_customizePhotosViewConfiguationForAssetPicker:(id)arg1 assetCollection:(id)arg2;
 - (id)createDuplicatesGridViewControllerWithCollection:(id)arg1;
@@ -31,7 +33,6 @@ __attribute__((visibility("hidden")))
 - (id)createViewControllerForAssetCollection:(id)arg1 existingAssetsFetchResult:(id)arg2;
 - (id)createViewControllerForAssetCollection:(id)arg1;
 - (_Bool)_isEmpty:(id)arg1;
-- (void)createGridViewControllerWithAssets:(id)arg1 photoLibrary:(id)arg2 withTitle:(id)arg3 hideTabBar:(_Bool)arg4 gridPresentationContext:(long long)arg5 containerViewController:(id)arg6 barsUpdateDelegate:(id)arg7 andCompletion:(CDUnknownBlockType)arg8;
 - (id)initWithUserInterfaceIdiom:(long long)arg1;
 - (id)init;
 

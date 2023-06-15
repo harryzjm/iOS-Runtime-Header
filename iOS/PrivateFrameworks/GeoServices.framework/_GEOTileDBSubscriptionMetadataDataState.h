@@ -13,6 +13,8 @@ __attribute__((visibility("hidden")))
     unsigned int _dataType;
     unsigned int _dataSubtype;
     _Bool _fullyLoaded;
+    unsigned long long _associatedDataCount;
+    unsigned long long _associatedDataSize;
 }
 
 @end

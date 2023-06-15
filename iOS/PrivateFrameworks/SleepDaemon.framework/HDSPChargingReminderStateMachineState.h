@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
 - (void)batteryLevelChanged:(float)arg1;
 - (_Bool)_inMonitoringWindow;
 - (_Bool)isChargingReminderDisabled;
-- (id)nextStateWithContext:(id *)arg1;
+- (void)updateState;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

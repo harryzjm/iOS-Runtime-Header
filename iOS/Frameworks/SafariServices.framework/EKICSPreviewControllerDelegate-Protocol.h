@@ -4,15 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <SafariServices/EKUIAppReviewPrompter-Protocol.h>
 #import <SafariServices/NSObject-Protocol.h>
 
-@class EKICSPreviewController, NSArray;
+@class EKICSPreviewController;
 
-@protocol EKICSPreviewControllerDelegate <NSObject>
+@protocol EKICSPreviewControllerDelegate <NSObject, EKUIAppReviewPrompter>
 
 @optional
 - (void)icsPreviewControllerWantsDismissal:(EKICSPreviewController *)arg1;
-- (void)icsPreviewController:(EKICSPreviewController *)arg1 importDidImportEvents:(NSArray *)arg2;
+- (void)icsPreviewControllerImportDidImportEvents:(EKICSPreviewController *)arg1;
 - (void)icsPreviewControllerImportDidFail:(EKICSPreviewController *)arg1;
 - (void)icsPreviewControllerImportDidStart:(EKICSPreviewController *)arg1;
 @end

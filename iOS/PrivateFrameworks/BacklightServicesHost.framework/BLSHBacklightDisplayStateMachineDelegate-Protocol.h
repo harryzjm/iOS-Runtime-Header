@@ -9,6 +9,7 @@
 @class BLSHBacklightDisplayStateMachine;
 
 @protocol BLSHBacklightDisplayStateMachineDelegate <NSObject>
+- (_Bool)hasEnsureFlipbookCurrent;
 - (void)displayState:(BLSHBacklightDisplayStateMachine *)arg1 didUpdateToBrightnessCurve:(long long)arg2;
 - (void)displayState:(BLSHBacklightDisplayStateMachine *)arg1 didUpdateToMode:(long long)arg2;
 @end

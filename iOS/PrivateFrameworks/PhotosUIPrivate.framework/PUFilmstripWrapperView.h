@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class NSNumber, PUFilmstripView;
 
@@ -15,18 +15,24 @@ __attribute__((visibility("hidden")))
     _Bool _isExpanded;
     PUFilmstripView *_filmstripView;
     NSNumber *_anchoredLeft;
+    UIView *_clippingView;
+    UIView *_backgroundView;
     struct CGSize _expandedSize;
     struct CGRect _visibleRect;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
+@property(readonly, nonatomic) UIView *clippingView; // @synthesize clippingView=_clippingView;
 @property(copy, nonatomic) NSNumber *anchoredLeft; // @synthesize anchoredLeft=_anchoredLeft;
 @property(nonatomic, setter=setExpandedSize:) struct CGSize expandedSize; // @synthesize expandedSize=_expandedSize;
 @property(nonatomic, setter=setExpanded:) _Bool isExpanded; // @synthesize isExpanded=_isExpanded;
 @property(retain, nonatomic) PUFilmstripView *filmstripView; // @synthesize filmstripView=_filmstripView;
 @property(nonatomic) struct CGRect visibleRect; // @synthesize visibleRect=_visibleRect;
 @property(nonatomic, setter=setAnimating:) _Bool isAnimating; // @synthesize isAnimating=_isAnimating;
+- (void)setFilmstripView:(id)arg1 leavingPreviousViewInPlace:(_Bool)arg2;
 - (void)layoutSubviews;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

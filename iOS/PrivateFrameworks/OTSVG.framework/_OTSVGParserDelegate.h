@@ -16,12 +16,12 @@ __attribute__((visibility("hidden")))
     unsigned int unitsPerEm;
     void *root;
     vector_feaf3631 stack;
-    unordered_map_823f4523 namespaces;
+    unordered_map_6e369bb9 namespaces;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property unordered_map_823f4523 namespaces; // @synthesize namespaces;
+@property unordered_map_6e369bb9 namespaces; // @synthesize namespaces;
 @property vector_feaf3631 stack; // @synthesize stack;
 @property void *root; // @synthesize root;
 @property unsigned int unitsPerEm; // @synthesize unitsPerEm;

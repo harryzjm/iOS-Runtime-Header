@@ -9,7 +9,8 @@
 @class PGManager, PHPhotoLibrary;
 
 @protocol PHAMusicJob <NSObject>
+@property(readonly, nonatomic) double periodicity;
 - (_Bool)shouldRunForLibrary:(PHPhotoLibrary *)arg1;
-- (void)runWithGraphManager:(PGManager *)arg1 progressBlock:(void (^)(double, _Bool *))arg2 completionHandler:(void (^)(void))arg3;
+- (void)runWithGraphManager:(PGManager *)arg1 progressBlock:(void (^)(double, _Bool *))arg2 completionHandler:(void (^)(NSError *))arg3;
 @end
 

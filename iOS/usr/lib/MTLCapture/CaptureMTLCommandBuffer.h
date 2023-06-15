@@ -9,7 +9,6 @@
 @class CaptureMTLCommandQueue, NSDictionary, NSError, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString;
 @protocol MTLCommandBuffer, MTLCommandBufferSPI, MTLCommandQueue, MTLDeadlineProfile, MTLDevice, MTLLogContainer, MTLSharedEvent;
 
-__attribute__((visibility("hidden")))
 @interface CaptureMTLCommandBuffer : NSObject
 {
     CaptureMTLCommandQueue *_captureCommandQueue;
@@ -19,11 +18,13 @@ __attribute__((visibility("hidden")))
     struct _opaque_pthread_mutex_t _retainMutex;
     struct apr_pool_t *_pool;
     id <MTLSharedEvent> _downloadEvent;
+    id <MTLSharedEvent> _accelerationStructureDescriptorProcessEvent;
+    unsigned long long _accelerationStructureDescriptorCopyEventValue;
     NSMutableArray *_downloadPoints;
     NSMutableArray *_scheduledDispatchArray;
     NSMutableArray *_completedDispatchArray;
     _Bool _presentDrawableUsed;
-    unsigned long long _layer;
+    unsigned long long _layerRef;
     _Bool _isCapturing;
     _Bool _isCommited;
     NSMutableSet *_retainedObjects;
@@ -48,10 +49,12 @@ __attribute__((visibility("hidden")))
 - (void)presentDrawable:(id)arg1 options:(id)arg2;
 - (void)popDebugGroup;
 - (id)parallelRenderCommandEncoderWithDescriptor:(id)arg1;
+- (void)encodeSignalEvent:(id)arg1 value:(unsigned long long)arg2 agentMask:(unsigned long long)arg3;
 - (void)encodeSignalEvent:(id)arg1 value:(unsigned long long)arg2;
 - (void)encodeDashboardTagForResourceGroup:(id)arg1;
 - (void)encodeDashboardFinalizeForResourceGroup:(id)arg1 dashboard:(unsigned long long)arg2 values:(const unsigned long long *)arg3 indices:(const unsigned long long *)arg4 count:(unsigned long long)arg5;
 - (void)encodeDashboardFinalizeForResourceGroup:(id)arg1 dashboard:(unsigned long long)arg2 value:(unsigned long long)arg3 forIndex:(unsigned long long)arg4;
+- (void)encodeConditionalAbortEvent:(id)arg1;
 - (void)encodeCacheHintTag:(unsigned long long)arg1 resourceGroups:(const id *)arg2 count:(unsigned long long)arg3;
 - (void)encodeCacheHintFinalize:(unsigned long long)arg1 resourceGroups:(const id *)arg2 count:(unsigned long long)arg3;
 - (void)dropResourceGroups:(const id *)arg1 count:(unsigned long long)arg2;
@@ -63,8 +66,6 @@ __attribute__((visibility("hidden")))
 - (id)blitCommandEncoder;
 - (void)addPurgedResource:(id)arg1;
 - (void)addPurgedHeap:(id)arg1;
-- (id)accelerationStructureCommandEncoderWithDescriptor:(id)arg1;
-- (id)accelerationStructureCommandEncoder;
 @property(readonly, nonatomic) NSMutableDictionary *userDictionary;
 @property(readonly) unsigned long long status;
 @property(readonly) _Bool retainedReferences;
@@ -92,6 +93,9 @@ __attribute__((visibility("hidden")))
 @property(readonly) struct GTTraceContext *traceContext;
 - (void)touch;
 - (id)originalObject;
+- (id)accelerationStructureCommandEncoderWithDescriptor:(id)arg1;
+- (id)accelerationStructureCommandEncoder;
+- (unsigned long long)accelerationStructureCommandEncoderPreamble;
 - (id)debugCommandEncoder;
 - (void)addCompletedHandler:(CDUnknownBlockType)arg1;
 - (void)presentDrawable:(id)arg1 atTime:(double)arg2;
@@ -111,6 +115,8 @@ __attribute__((visibility("hidden")))
 - (void)encodeWaitForEvent:(id)arg1 value:(unsigned long long)arg2 timeout:(unsigned int)arg3;
 - (void)unionRetainSet:(id)arg1;
 - (void)dealloc;
+@property(readonly) id <MTLSharedEvent> accelerationStructureDescriptorProcessEvent; // @synthesize accelerationStructureDescriptorProcessEvent=_accelerationStructureDescriptorProcessEvent;
+@property(readonly) CaptureMTLCommandQueue *captureCommandQueue;
 - (id)initWithBaseObject:(id)arg1 captureCommandQueue:(id)arg2 funcRef:(struct GTTraceFuncRef)arg3;
 - (void)_encodeDownloadPoint;
 @property(readonly) id <MTLCommandBuffer> baseObject;

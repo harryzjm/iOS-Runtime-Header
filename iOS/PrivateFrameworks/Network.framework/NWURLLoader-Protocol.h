@@ -7,16 +7,18 @@
 #import <Network/NSObject-Protocol.h>
 
 @class NSObject;
-@protocol NWURLLoaderClient, OS_dispatch_data, OS_nw_connection;
+@protocol NWURLLoaderClient, OS_dispatch_data, OS_nw_connection, OS_sec_trust;
 
 @protocol NWURLLoader <NSObject>
 @property(readonly, nonatomic) NSObject<OS_nw_connection> *underlyingConnection;
 @property(readonly, nonatomic) _Bool allowsWrite;
+@property(readonly, nonatomic) NSObject<OS_sec_trust> *peerTrust;
+- (void)responseIsMixed;
 - (void)writeData:(NSObject<OS_dispatch_data> *)arg1 complete:(_Bool)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)readDataOfMinimumIncompleteLength:(unsigned long long)arg1 maximumLength:(unsigned long long)arg2 completionHandler:(void (^)(NSObject<OS_dispatch_data> *, _Bool, NSError *))arg3;
 - (void)readResponse:(void (^)(NSURLResponse *, NSError *))arg1;
 - (void)updateClient:(id <NWURLLoaderClient>)arg1;
 - (void)stop;
-- (void)start;
+- (void)start:(void (^)(void))arg1;
 @end
 

@@ -12,6 +12,12 @@ __attribute__((visibility("hidden")))
 }
 
 + (void)clearCachedResources;
++ (id)appleMusicKeyColor;
++ (id)weiboBackgroundColor;
++ (id)tweetBackgroundColor;
++ (id)tapToLoadHighlightColor;
++ (id)linkMediaBackgroundColor;
++ (id)linkBackgroundColor;
 + (id)appClipIcon;
 + (id)closeQuote;
 + (id)openQuote;
@@ -26,7 +32,11 @@ __attribute__((visibility("hidden")))
 + (id)textIcon;
 + (id)fileIcon;
 + (id)safariAppIcon;
++ (id)safariAppIconBadge;
++ (id)_safariAppIconForSize:(double)arg1;
++ (id)freeformIcon;
 + (id)faceTimeIcon;
++ (id)arKitButton;
 + (id)unmuteButton;
 + (id)muteButton;
 + (id)pauseButton;

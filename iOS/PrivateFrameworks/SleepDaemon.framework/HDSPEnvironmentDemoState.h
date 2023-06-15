@@ -9,7 +9,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (void)didEnterWithPreviousState:(id)arg1 context:(id)arg2;
+- (void)didEnter;
 - (id)stateName;
 
 @end

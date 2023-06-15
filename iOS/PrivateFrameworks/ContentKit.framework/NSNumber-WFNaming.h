@@ -10,6 +10,7 @@
 
 @interface NSNumber (WFNaming)
 + (id)objectWithWFSerializedRepresentation:(id)arg1;
+- (id)wfNameWithMaximumFractionDigits:(id)arg1;
 @property(readonly, copy, nonatomic) NSString *wfName;
 - (id)wfSerializedRepresentation;
 

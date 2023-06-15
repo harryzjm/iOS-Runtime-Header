@@ -6,10 +6,21 @@
 
 #import <ManagedConfiguration/NSObject-Protocol.h>
 
-@class NSArray, NSData, NSDate, NSDictionary, NSNumber, NSString;
+@class NSArray, NSData, NSDate, NSDictionary, NSNumber, NSSet, NSString, NSUUID;
 
 @protocol MCXPCProtocol <NSObject>
 - (void)debugRescheduleBackgroundActivity:(long long)arg1 startDate:(NSDate *)arg2 gracePeriod:(NSNumber *)arg3 repeatingInterval:(NSNumber *)arg4 completion:(void (^)(NSError *))arg5;
+- (void)effectiveValuesForWatchUnionSetting:(NSString *)arg1 pairingID:(NSUUID *)arg2 pairingDataStore:(NSString *)arg3 completion:(void (^)(NSArray *, NSError *))arg4;
+- (void)effectiveValuesForWatchIntersectionSetting:(NSString *)arg1 pairingID:(NSUUID *)arg2 pairingDataStore:(NSString *)arg3 completion:(void (^)(NSArray *, NSError *))arg4;
+- (void)effectiveValueForWatchSetting:(NSString *)arg1 pairingID:(NSUUID *)arg2 pairingDataStore:(NSString *)arg3 completion:(void (^)(NSNumber *, NSError *))arg4;
+- (void)effectiveBoolValueForWatchSetting:(NSString *)arg1 pairingID:(NSUUID *)arg2 pairingDataStore:(NSString *)arg3 completion:(void (^)(NSNumber *, NSError *))arg4;
+- (void)updateMDMEnrollmentInfoForPairingWatch:(NSDictionary *)arg1 completion:(void (^)(NSData *, NSError *))arg2;
+- (void)applyPairingWatchMDMEnrollmentData:(NSData *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)fetchStagedMDMEnrollmentDeclarationKeysForPairingWatchWithCompletion:(void (^)(NSSet *, NSError *))arg1;
+- (void)fetchStagedMDMEnrollmentDataForPairingWatchWithPairingToken:(NSData *)arg1 completion:(void (^)(NSData *, NSError *))arg2;
+- (void)fetchStagedMDMEnrollmentDataForPairingWatchWithCompletion:(void (^)(NSData *, NSError *))arg1;
+- (void)unstageMDMEnrollmentInfoForPairingWatchWithCompletion:(void (^)(NSError *))arg1;
+- (void)stageMDMEnrollmentInfoForPairingWatchWithProfileData:(NSData *)arg1 orServiceURL:(NSString *)arg2 anchorCertificates:(NSArray *)arg3 supervised:(_Bool)arg4 declarationKeys:(NSSet *)arg5 declarationConfiguration:(NSDictionary *)arg6 completion:(void (^)(NSError *))arg7;
 - (void)managingOrganizationInformationWithCompletion:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)createMDMUnlockTokenIfNeededWithPasscode:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)isPasscodeCompliantWithNamedPolicy:(NSString *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
@@ -28,7 +39,7 @@
 - (void)createActivationLockBypassCodeWithCompletion:(void (^)(NSString *, NSError *))arg1;
 - (void)restoreCloudConfigAndMDMProfileFromSetAsideDataWithCompletion:(void (^)(NSError *))arg1;
 - (void)cloudConfigurationStoreDetails:(NSDictionary *)arg1 completion:(void (^)(NSError *))arg2;
-- (void)cloudConfigurationMachineInfoDataWithCompletion:(void (^)(NSData *, NSError *))arg1;
+- (void)cloudConfigurationMachineInfoDataWithAdditionalInfo:(NSDictionary *)arg1 completion:(void (^)(NSData *, NSError *))arg2;
 - (void)reducedMachineInfoDataWithCompletion:(void (^)(NSData *, NSError *))arg1;
 - (void)rereadManagedAppAttributesWithCompletion:(void (^)(NSError *))arg1;
 - (void)markStoredProfileForPurposeAsInstalled:(int)arg1 completion:(void (^)(NSError *))arg2;
@@ -41,6 +52,7 @@
 - (void)recomputeUserComplianceWarningWithCompletion:(void (^)(NSError *))arg1;
 - (void)notifyHaveSeenComplianceMessageWithLastLockDate:(NSDate *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)notifyStartComplianceTimer:(NSDate *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)areBundlesBlocked:(NSArray *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)isBundleBlocked:(NSString *)arg1 completion:(void (^)(_Bool, NSData *, NSNumber *, NSError *))arg2;
 - (void)removeProvisioningProfileWithUUID:(NSString *)arg1 managingProfileIdentifier:(NSString *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 - (void)installProvisioningProfileData:(NSData *)arg1 managingProfileIdentifier:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
@@ -56,7 +68,8 @@
 - (void)removeOrphanedClientRestrictionsWithCompletion:(void (^)(NSError *))arg1;
 - (void)resetPasscodeMetadataWithCompletion:(void (^)(NSError *))arg1;
 - (void)clearPasscodeWithEscrowKeybagData:(NSData *)arg1 secret:(NSData *)arg2 completion:(void (^)(NSError *))arg3;
-- (void)changePasscode:(NSString *)arg1 oldPasscode:(NSString *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
+- (void)changePasscode:(NSString *)arg1 oldPasscode:(NSString *)arg2 isRecovery:(_Bool)arg3 skipRecovery:(_Bool)arg4 completion:(void (^)(_Bool, NSError *))arg5;
+- (void)clearRecoveryPasscodeWithCompletion:(void (^)(NSError *))arg1;
 - (void)applyRestrictionDictionary:(NSDictionary *)arg1 appsAndOptions:(NSArray *)arg2 clientType:(NSString *)arg3 clientUUID:(NSString *)arg4 localizedClientDescription:(NSString *)arg5 localizedWarningMessage:(NSString *)arg6 completion:(void (^)(_Bool, _Bool, NSError *))arg7;
 - (void)removeProtectedProfileWithIdentifier:(NSString *)arg1 installationType:(long long)arg2 completion:(void (^)(NSError *))arg3;
 - (void)removeUninstalledProfileWithIdentifier:(NSString *)arg1 installationType:(long long)arg2 targetDeviceType:(unsigned long long)arg3 completion:(void (^)(NSError *))arg4;

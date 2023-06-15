@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIPageViewController.h>
+#import <UIKitCore/UIPageViewController.h>
 
 @interface UIPageViewController (IC)
 - (void)ic_setAutoscrollEnabled:(_Bool)arg1;

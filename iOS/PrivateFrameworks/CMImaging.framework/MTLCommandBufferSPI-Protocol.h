@@ -7,13 +7,15 @@
 #import <CMImaging/MTLCommandBuffer-Protocol.h>
 
 @class MTLComputePassDescriptor, MTLRenderPassDescriptor, NSArray, NSDictionary, NSMutableDictionary;
-@protocol MTLComputeCommandEncoder, MTLDeadlineProfile, MTLDebugCommandEncoder, MTLDrawable, MTLEvent, MTLHeap, MTLRenderCommandEncoder, MTLResource, MTLResourceGroupSPI;
+@protocol MTLComputeCommandEncoder, MTLDeadlineProfile, MTLDebugCommandEncoder, MTLDrawable, MTLEvent, MTLHeap, MTLRenderCommandEncoder, MTLResource, MTLResourceGroupSPI, MTLSharedEvent;
 
 @protocol MTLCommandBufferSPI <MTLCommandBuffer>
 @property(readonly, retain) id <MTLDeadlineProfile> deadlineProfile;
 @property(readonly, nonatomic) NSMutableDictionary *userDictionary;
 @property(readonly) NSDictionary *profilingResults;
 @property(getter=isProfilingEnabled) _Bool profilingEnabled;
+- (void)encodeConditionalAbortEvent:(id <MTLSharedEvent>)arg1;
+- (void)encodeSignalEvent:(id <MTLSharedEvent>)arg1 value:(unsigned long long)arg2 agentMask:(unsigned long long)arg3;
 - (void)presentDrawable:(id <MTLDrawable>)arg1 options:(NSDictionary *)arg2;
 - (void)setLogs:(NSArray *)arg1;
 - (_Bool)commitAndWaitUntilSubmittedWithDeadline:(unsigned long long)arg1;
@@ -27,6 +29,7 @@
 @optional
 @property(readonly) unsigned long long globalTraceObjectID;
 @property(readonly, nonatomic, getter=getListIndex) unsigned long long listIndex;
+- (void)encodeSignalEventScheduled:(id <MTLSharedEvent>)arg1 value:(unsigned long long)arg2;
 - (void)encodeCacheHintFinalize:(unsigned long long)arg1 resourceGroups:(const id *)arg2 count:(unsigned long long)arg3;
 - (void)encodeCacheHintTag:(unsigned long long)arg1 resourceGroups:(const id *)arg2 count:(unsigned long long)arg3;
 - (void)dropResourceGroups:(const id *)arg1 count:(unsigned long long)arg2;

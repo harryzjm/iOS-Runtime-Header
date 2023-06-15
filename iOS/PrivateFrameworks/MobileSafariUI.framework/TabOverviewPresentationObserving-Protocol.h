@@ -11,6 +11,7 @@
 @protocol TabOverviewPresentationObserving <TabThumbnailCollectionViewPresentationObserving>
 
 @optional
+- (void)tabOverview:(TabOverview *)arg1 didUpdateScalePercentageForActiveItem:(double)arg2;
 - (void)tabOverviewWillShiftScrollPositionForBoundsChange:(TabOverview *)arg1;
 - (void)tabOverviewWillEndInteractivePresentation:(TabOverview *)arg1;
 - (void)tabOverviewDidUpdateInteractivePresentation:(TabOverview *)arg1;

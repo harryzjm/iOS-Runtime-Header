@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface _TtC8StoreKit19TransactionReceiver : SwiftNativeNSObject
 {
     MISSING_TYPE *$defaultActor;
+    MISSING_TYPE *continuation;
     MISSING_TYPE *logKey;
 }
 

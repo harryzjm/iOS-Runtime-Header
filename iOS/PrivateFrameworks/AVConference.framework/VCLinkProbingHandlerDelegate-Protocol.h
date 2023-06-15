@@ -15,6 +15,8 @@
 - (void)startActiveProbingWithOptions:(NSDictionary *)arg1;
 
 @optional
+- (void)didReceiveStatsResponse:(_Bool)arg1;
+- (void)requestStatsWithOptions:(NSDictionary *)arg1;
 - (void)didLinkProbingLockdownEnd;
 - (void)didUpdateLinkPreferenceOrder:(NSArray *)arg1;
 @end

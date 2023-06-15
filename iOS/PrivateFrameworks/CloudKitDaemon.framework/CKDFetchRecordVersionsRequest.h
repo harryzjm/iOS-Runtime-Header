@@ -32,6 +32,8 @@
 - (id)generateRequestOperations;
 - (id)requestOperationClasses;
 - (id)zoneIDsToLock;
+- (void)fillOutRequestProperties:(id)arg1;
+- (id)equivalencyProperties;
 - (id)initWithOperation:(id)arg1 recordIDs:(id)arg2 desiredKeys:(id)arg3 minimumVersionETag:(id)arg4;
 
 @end

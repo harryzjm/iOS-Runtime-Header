@@ -14,7 +14,6 @@
     MISSING_TYPE *backgroundColor;
     MISSING_TYPE *tagModel;
     MISSING_TYPE *allowFollowing;
-    MISSING_TYPE *nativeAdData;
 }
 
 @end

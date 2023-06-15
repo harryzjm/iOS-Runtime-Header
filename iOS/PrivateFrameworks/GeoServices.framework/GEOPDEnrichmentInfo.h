@@ -6,14 +6,17 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-@class NSString, PBDataReader, PBUnknownFields;
+@class NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDEnrichmentInfo : PBCodable
 {
     PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
+    NSMutableArray *_poiNames;
     NSString *_showcaseId;
+    NSMutableArray *_showcaseImageUrls;
+    NSMutableArray *_showcaseTitles;
     NSString *_sourceId;
     NSString *_sourceName;
     unsigned int _readerMarkPos;
@@ -21,7 +24,10 @@ __attribute__((visibility("hidden")))
     struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
+        unsigned int read_poiNames:1;
         unsigned int read_showcaseId:1;
+        unsigned int read_showcaseImageUrls:1;
+        unsigned int read_showcaseTitles:1;
         unsigned int read_sourceId:1;
         unsigned int read_sourceName:1;
         unsigned int wrote_anyField:1;

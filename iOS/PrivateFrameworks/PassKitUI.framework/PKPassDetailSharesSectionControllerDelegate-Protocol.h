@@ -6,11 +6,10 @@
 
 #import <PassKitUI/NSObject-Protocol.h>
 
-@class NSArray, NSString, PKPassDetailSharesSectionController;
+@class NSArray, PKPassDetailSharesSectionController;
 
 @protocol PKPassDetailSharesSectionControllerDelegate <NSObject>
 - (void)sharesSectionControllerDidSelectViewEntitlements:(PKPassDetailSharesSectionController *)arg1;
-- (void)reloadSectionIdentifier:(NSString *)arg1;
-- (void)recomputeMappedSectionsAndReloadSections:(NSArray *)arg1;
+- (void)reloadSectionIdentifiers:(NSArray *)arg1;
 @end
 

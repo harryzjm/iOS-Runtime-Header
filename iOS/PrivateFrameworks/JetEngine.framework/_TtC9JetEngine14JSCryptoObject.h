@@ -11,9 +11,9 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)init;
 - (id)hash:(id)arg1:(id)arg2;
 - (_Bool)supports:(id)arg1;
+- (id)init;
 
 @end
 

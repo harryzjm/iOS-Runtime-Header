@@ -6,20 +6,26 @@
 
 #import "LNConnection.h"
 
-@class _EXExtensionProcess;
+@class NSXPCConnection, _EXExtensionProcess;
 
 __attribute__((visibility("hidden")))
 @interface LNExtensionConnection : LNConnection
 {
     _EXExtensionProcess *_extensionProcess;
+    NSXPCConnection *_mediatorXPCConnection;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSXPCConnection *mediatorXPCConnection; // @synthesize mediatorXPCConnection=_mediatorXPCConnection;
 @property(retain, nonatomic) _EXExtensionProcess *extensionProcess; // @synthesize extensionProcess=_extensionProcess;
 - (id)extensionIdentityWithExtensionPointIdentifier:(id)arg1 error:(id *)arg2;
-- (void)connectionOperationWillStart:(id)arg1;
+- (void)connectUsingListenerEndpoint:(id)arg1;
+- (void)connectUsingMediatorWithOptions:(id)arg1;
+- (void)connectDirectlyWithOptions:(id)arg1;
 - (void)dealloc;
-- (void)refreshWithOptions:(id)arg1;
+- (void)invalidateExtensionProcess;
+- (void)invalidateMediatorXPCConnection;
+- (_Bool)refreshWithOptions:(id)arg1;
 - (void)connectWithOptions:(id)arg1;
 
 @end

@@ -4,14 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HMDDevice, HMFProductInfo, HMFSystemInfo, NSOperation, NSString;
+@class HAP2AccessoryServerDiscoveryBonjour, HMDDevice, HMFProductInfo, HMFSystemInfo, NSOperation, NSString;
 @protocol HMFCancellable;
 
 @protocol HMDMediaBrowserDataSource
+@property(readonly) HAP2AccessoryServerDiscoveryBonjour *airPlayBonjourBrowser;
 @property(readonly) unsigned long long appleMediaAccessoryVariant;
 @property(readonly) HMDDevice *currentDevice;
 @property(readonly) HMFProductInfo *productInfo;
 @property(readonly) HMFSystemInfo *systemInfo;
+@property(readonly) _Bool requiresHomePod2ndGenPairing;
 @property(readonly) unsigned long long supportedStereoPairVersions;
 @property(readonly) _Bool requiresHomePodMiniPairing;
 @property(readonly) _Bool isAppleMediaAccessory;

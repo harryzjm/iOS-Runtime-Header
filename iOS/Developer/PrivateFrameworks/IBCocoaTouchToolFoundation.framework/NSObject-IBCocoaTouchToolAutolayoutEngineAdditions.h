@@ -44,5 +44,6 @@
 - (id)transformAfterMarshalling;
 - (id)ibMKMapConfigurationRuntimeObject;
 - (void)ibIgnoreKeyIfNeeded:(id)arg1 ignoredKeys:(id)arg2 radarToRemove:(long long)arg3;
+@property(readonly, nonatomic) _Bool ibShouldEncodeUniquedByValue;
 @end
 

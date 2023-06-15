@@ -6,13 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSNumber, NSString;
+@class MLPredictionEventMetric, NSNumber, NSString;
+@protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface MLPredictionEvent : NSObject
 {
-    unsigned long long _featuresPredictionCountSoFar;
-    double _featuresPredictionDuration;
+    NSObject<OS_dispatch_queue> *_predictionEventQueue;
+    long long _featuresPredictionCountSoFar;
+    unsigned long long _epochIndex;
+    MLPredictionEventMetric *_lastReportedMetric;
+    struct mach_timebase_info _timebaseInfo;
     NSString *_bundleIdentifier;
     NSString *_modelName;
     NSNumber *_firstPartyExecutable;
@@ -24,19 +28,9 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSNumber *firstPartyExecutable; // @synthesize firstPartyExecutable=_firstPartyExecutable;
 @property(copy, nonatomic) NSString *modelName; // @synthesize modelName=_modelName;
 @property(copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
-@property(readonly) NSDictionary *dictionaryRepresentation;
+- (id)lastReportedMetric;
 - (void)maybeLogPredictionEvent:(unsigned long long)arg1;
-@property(readonly) NSString *name;
 - (id)init;
-- (id)featuresPredictionDuration;
-- (id)featuresPredictionCountSoFar;
-- (id)predictionEventQueue;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

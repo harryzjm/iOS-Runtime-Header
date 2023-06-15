@@ -6,12 +6,13 @@
 
 #import <SpringBoard/SBSystemServiceServerDelegate-Protocol.h>
 
-@class SBSystemServiceServer;
+@class NSString, SBSystemServiceServer;
 @protocol FBSServiceFacilityClientHandle;
 
 @protocol SBSystemServiceServerStateDumpDelegate <SBSystemServiceServerDelegate>
 - (void)systemServiceServer:(SBSystemServiceServer *)arg1 client:(id <FBSServiceFacilityClientHandle>)arg2 disableRemoteStateDumpWithCompletion:(void (^)(_Bool, NSString *))arg3;
 - (void)systemServiceServer:(SBSystemServiceServer *)arg1 client:(id <FBSServiceFacilityClientHandle>)arg2 enableRemoteStateDumpWithTimeout:(long long)arg3 completion:(void (^)(_Bool, NSString *))arg4;
+- (void)systemServiceServer:(SBSystemServiceServer *)arg1 client:(id <FBSServiceFacilityClientHandle>)arg2 requestStateDump:(unsigned long long)arg3 toTextFileAtPath:(NSString *)arg4;
 - (void)systemServiceServer:(SBSystemServiceServer *)arg1 client:(id <FBSServiceFacilityClientHandle>)arg2 requestStateDump:(unsigned long long)arg3 withCompletion:(void (^)(_Bool, NSString *, NSString *))arg4;
 @end
 

@@ -11,6 +11,10 @@
 @protocol GKMatchmakerHostProtocol <GKExtensionHostProtocol>
 
 @optional
+- (void)disconnectFromMatch;
+- (void)presentSharePlaySharingController;
+- (void)endGroupActivities;
+- (void)activateGroupActivities;
 - (void)setBrowsingForNearbyPlayers:(_Bool)arg1;
 - (void)cancelMatching;
 - (void)sendData:(NSData *)arg1;

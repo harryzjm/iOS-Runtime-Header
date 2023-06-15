@@ -7,6 +7,8 @@
 #import <HomeKitDaemon/NSObject-Protocol.h>
 
 @protocol HMDMobileGestaltClient <NSObject>
+@property(readonly) _Bool homeSafetySecurityEnabled;
+@property(readonly) _Bool supportsReceivingARCStreamOverAirPlay;
 @property(readonly) _Bool supportsSiriHub;
 @end
 

@@ -7,12 +7,16 @@
 __attribute__((visibility("hidden")))
 @interface _UITextInputSessionDeletionAction
 {
-    unsigned long long _deletionCount;
+    unsigned long long _removedTextLength;
+    unsigned long long _removedEmojiCount;
     unsigned long long _options;
 }
 
 @property(nonatomic) unsigned long long options; // @synthesize options=_options;
-@property(nonatomic) unsigned long long deletionCount; // @synthesize deletionCount=_deletionCount;
+@property(nonatomic) unsigned long long removedEmojiCount; // @synthesize removedEmojiCount=_removedEmojiCount;
+@property(nonatomic) unsigned long long removedTextLength; // @synthesize removedTextLength=_removedTextLength;
+- (long long)inputActionCount;
+- (id)description;
 - (_Bool)changedContent;
 - (long long)mergeActionIfPossible:(id)arg1;
 

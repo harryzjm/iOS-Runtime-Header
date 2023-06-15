@@ -6,7 +6,7 @@
 
 #import "UIView.h"
 
-@class NSIndexPath, NSString, UIBezierPath, UICollectionView, UICollectionViewDiffableDataSource, UIMenu, UIVisualEffectView, _UICutoutShadowView;
+@class NSIndexPath, NSMutableArray, NSString, UIBezierPath, UICollectionView, UICollectionViewDiffableDataSource, UIMenu, UIVisualEffectView, _UICutoutShadowView;
 
 __attribute__((visibility("hidden")))
 @interface _UIContextMenuListView : UIView
@@ -14,7 +14,9 @@ __attribute__((visibility("hidden")))
     _Bool _reversesActionOrder;
     _Bool _emphasized;
     _Bool _allowsFocus;
+    _Bool _allowsBackgroundViewInteraction;
     _Bool _hasValidContentSize;
+    _Bool _portalingFocusedView;
     NSString *_backgroundMaterialGroupName;
     UICollectionView *_collectionView;
     UIMenu *_displayedMenu;
@@ -28,20 +30,35 @@ __attribute__((visibility("hidden")))
     UIView *_clippingView;
     UIVisualEffectView *_backgroundView;
     UICollectionViewDiffableDataSource *_collectionViewDataSource;
+    UICollectionView *_outgoingCollectionView;
     UICollectionViewDiffableDataSource *_outgoingCollectionViewDataSource;
     double _emphasisAlphaMultiplier;
     UIBezierPath *_hoverZone;
+    NSMutableArray *_portals;
+    UIView *_portalContainerView;
+    UIView *_cvBackgroundView;
+    UIView *_borderView;
     struct CGSize _nativeContentSize;
     struct CGSize _visibleContentSize;
     struct NSDirectionalEdgeInsets _contentMargins;
+    struct NSDirectionalEdgeInsets _headerMargins;
+    struct NSDirectionalEdgeInsets _menuTitleMargins;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) UIView *borderView; // @synthesize borderView=_borderView;
+@property(retain, nonatomic) UIView *cvBackgroundView; // @synthesize cvBackgroundView=_cvBackgroundView;
+@property(retain, nonatomic) UIView *portalContainerView; // @synthesize portalContainerView=_portalContainerView;
+@property(retain, nonatomic) NSMutableArray *portals; // @synthesize portals=_portals;
+@property(nonatomic) _Bool portalingFocusedView; // @synthesize portalingFocusedView=_portalingFocusedView;
+@property(nonatomic) struct NSDirectionalEdgeInsets menuTitleMargins; // @synthesize menuTitleMargins=_menuTitleMargins;
+@property(nonatomic) struct NSDirectionalEdgeInsets headerMargins; // @synthesize headerMargins=_headerMargins;
 @property(nonatomic) struct NSDirectionalEdgeInsets contentMargins; // @synthesize contentMargins=_contentMargins;
 @property(retain, nonatomic) UIBezierPath *hoverZone; // @synthesize hoverZone=_hoverZone;
 @property(nonatomic) _Bool hasValidContentSize; // @synthesize hasValidContentSize=_hasValidContentSize;
 @property(nonatomic) double emphasisAlphaMultiplier; // @synthesize emphasisAlphaMultiplier=_emphasisAlphaMultiplier;
 @property(retain, nonatomic) UICollectionViewDiffableDataSource *outgoingCollectionViewDataSource; // @synthesize outgoingCollectionViewDataSource=_outgoingCollectionViewDataSource;
+@property(retain, nonatomic) UICollectionView *outgoingCollectionView; // @synthesize outgoingCollectionView=_outgoingCollectionView;
 @property(retain, nonatomic) UICollectionViewDiffableDataSource *collectionViewDataSource; // @synthesize collectionViewDataSource=_collectionViewDataSource;
 @property(retain, nonatomic) UIVisualEffectView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property(retain, nonatomic) UIView *clippingView; // @synthesize clippingView=_clippingView;
@@ -52,6 +69,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) double shadowAlpha; // @synthesize shadowAlpha=_shadowAlpha;
 @property(nonatomic) unsigned long long roundedEdges; // @synthesize roundedEdges=_roundedEdges;
 @property(copy, nonatomic) NSIndexPath *highlightedIndexPath; // @synthesize highlightedIndexPath=_highlightedIndexPath;
+@property(nonatomic) _Bool allowsBackgroundViewInteraction; // @synthesize allowsBackgroundViewInteraction=_allowsBackgroundViewInteraction;
 @property(nonatomic) _Bool allowsFocus; // @synthesize allowsFocus=_allowsFocus;
 @property(nonatomic) _Bool emphasized; // @synthesize emphasized=_emphasized;
 @property(nonatomic) _Bool reversesActionOrder; // @synthesize reversesActionOrder=_reversesActionOrder;
@@ -59,17 +77,22 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned long long parentHierarchyStyle; // @synthesize parentHierarchyStyle=_parentHierarchyStyle;
 @property(retain, nonatomic) UIMenu *displayedMenu; // @synthesize displayedMenu=_displayedMenu;
 @property(retain, nonatomic) UICollectionView *collectionView; // @synthesize collectionView=_collectionView;
+- (void)_removeAllPortals;
+- (void)_portalCellIfNeeded:(id)arg1;
+- (void)_updateCellPortalingWithUpdateFocusInContext:(id)arg1 inCollectionView:(id)arg2;
+- (void)_updateCellPortalingWithCell:(id)arg1;
+- (void)_tearDownCellPortalingIfNeeded;
+- (void)_setupCellPortalingIfNeeded;
+- (void)_updatePlatterHairline;
 - (void)_updateContentMargins;
 - (id)_platformMetrics;
 - (double)_clampedCornerRadius;
 @property(readonly, nonatomic) NSString *backgroundMaterialGroupName; // @synthesize backgroundMaterialGroupName=_backgroundMaterialGroupName;
-- (_Bool)pointIsInsideHoverZone:(struct CGPoint)arg1;
-- (void)updateHoverZoneWithParentElementRect:(struct CGRect)arg1;
 - (void)_configureCell:(id)arg1 forElement:(id)arg2 section:(id)arg3 size:(long long)arg4;
 - (id)_dataSourceForCollectionView:(id)arg1;
 - (id)_headerIndexPath;
 - (id)_viewAtIndexPath:(id)arg1;
-- (void)_highlightItemAtIndexPath:(id)arg1;
+- (void)highlightItemAtIndexPath:(id)arg1 forHover:(_Bool)arg2;
 - (void)highlightItemAtIndexPath:(id)arg1;
 - (void)unHighlightItemAtIndexPath:(id)arg1;
 - (id)cellForElement:(id)arg1;
@@ -80,9 +103,12 @@ __attribute__((visibility("hidden")))
 - (void)scrollToFirstSignificantAction;
 - (_Bool)collectionView:(id)arg1 canFocusItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didUpdateFocusInContext:(id)arg2 withAnimationCoordinator:(id)arg3;
+- (void)collectionView:(id)arg1 willDisplayCell:(id)arg2 forItemAtIndexPath:(id)arg3;
 - (id)preferredFocusEnvironments;
 - (void)didCompleteInPlaceMenuTransition;
+- (void)willStartInPlaceMenuTransition;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)didCompleteMenuAppearanceAnimation;
 - (void)_updateShadowAlpha;
 - (void)_updateCollectionViewAlpha;
 - (void)_updateCornerRadius;
@@ -91,7 +117,7 @@ __attribute__((visibility("hidden")))
 - (void)layoutSubviews;
 - (struct CGSize)preferredContentSizeWithinContainerSize:(struct CGSize)arg1;
 - (void)setSubmenuTitleViewExpanded:(_Bool)arg1 withMaterialGroupName:(id)arg2 numberOfTitleLines:(unsigned long long)arg3 highlighted:(_Bool)arg4;
-@property(readonly, nonatomic) struct CGVector scrubGestureAllowableMovement;
+- (struct CGVector)selectionGestureAllowableMovementForGestureBeginningAtIndexPath:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 // Remaining properties

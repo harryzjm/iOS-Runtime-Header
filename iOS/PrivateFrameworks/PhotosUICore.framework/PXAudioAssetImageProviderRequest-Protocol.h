@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class PHImageRequestOptions;
+@class PXImageRequestOptions;
 @protocol PXDisplayAsset;
 
 @protocol PXAudioAssetImageProviderRequest
 @property(readonly, nonatomic) CDUnknownBlockType resultHandler;
-@property(readonly, nonatomic) PHImageRequestOptions *options;
+@property(readonly, nonatomic) PXImageRequestOptions *options;
 @property(readonly, nonatomic) long long contentMode;
 @property(readonly, nonatomic) struct CGSize targetSize;
 @property(readonly, nonatomic) id <PXDisplayAsset> asset;

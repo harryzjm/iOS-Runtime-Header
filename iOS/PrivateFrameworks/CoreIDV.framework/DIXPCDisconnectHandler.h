@@ -24,14 +24,14 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-@property(readonly) NSObject<OS_os_log> *logger; // @synthesize logger=_logger;
-@property long long disconnectErrorCode; // @synthesize disconnectErrorCode=_disconnectErrorCode;
-@property(retain) NSString *disconnectErrorDomain; // @synthesize disconnectErrorDomain=_disconnectErrorDomain;
-@property(retain) NSMutableDictionary *disconnectOptionCallbacks; // @synthesize disconnectOptionCallbacks=_disconnectOptionCallbacks;
-@property(retain) NSMutableDictionary *disconnectResultCallbacks; // @synthesize disconnectResultCallbacks=_disconnectResultCallbacks;
-@property(retain) NSMutableDictionary *disconnectCallbacks; // @synthesize disconnectCallbacks=_disconnectCallbacks;
-@property(retain) NSString *name; // @synthesize name=_name;
-@property _Bool isDisconnected; // @synthesize isDisconnected=_isDisconnected;
+@property(readonly, nonatomic) NSObject<OS_os_log> *logger; // @synthesize logger=_logger;
+@property(nonatomic) long long disconnectErrorCode; // @synthesize disconnectErrorCode=_disconnectErrorCode;
+@property(retain, nonatomic) NSString *disconnectErrorDomain; // @synthesize disconnectErrorDomain=_disconnectErrorDomain;
+@property(retain, nonatomic) NSMutableDictionary *disconnectOptionCallbacks; // @synthesize disconnectOptionCallbacks=_disconnectOptionCallbacks;
+@property(retain, nonatomic) NSMutableDictionary *disconnectResultCallbacks; // @synthesize disconnectResultCallbacks=_disconnectResultCallbacks;
+@property(retain, nonatomic) NSMutableDictionary *disconnectCallbacks; // @synthesize disconnectCallbacks=_disconnectCallbacks;
+@property(retain, nonatomic) NSString *name; // @synthesize name=_name;
+@property(nonatomic) _Bool isDisconnected; // @synthesize isDisconnected=_isDisconnected;
 - (id)randomCallbackIdentifier;
 - (id)createDaemonDisconnectedError;
 - (void)handleInterruption;

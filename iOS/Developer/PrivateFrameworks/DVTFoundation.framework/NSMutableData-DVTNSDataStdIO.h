@@ -7,7 +7,7 @@
 #import <Foundation/NSMutableData.h>
 
 @interface NSMutableData (DVTNSDataStdIO)
-- (struct __sFILE *)openForWriting;
-- (struct __sFILE *)openForReading;
+- (struct __sFILE *)dvt_openForWriting;
+- (struct __sFILE *)dvt_openForReading;
 @end
 

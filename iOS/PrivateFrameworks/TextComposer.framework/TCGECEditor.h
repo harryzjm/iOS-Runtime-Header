@@ -6,21 +6,30 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray, NSMutableDictionary;
-@protocol TCGECModel;
+@class NSDictionary, NSMutableArray, NSMutableDictionary;
+@protocol OS_dispatch_queue, TCGECModel;
 
 @interface TCGECEditor : NSObject
 {
+    NSDictionary *_options;
     NSObject<TCGECModel> *_model;
     NSMutableDictionary *_cachedGrammarDetailsDictionary;
     NSMutableArray *_cachedSentenceArray;
+    NSObject<OS_dispatch_queue> *_serialQueue;
+    unsigned long long _modelLoadingState;
 }
 
 - (void).cxx_destruct;
 - (void)checkString:(id)arg1 range:(struct _NSRange)arg2 tagger:(id)arg3 offset:(unsigned long long)arg4 options:(id)arg5 mutableResults:(id)arg6;
-- (void)checkSentence:(id)arg1 locale:(id)arg2 offset:(unsigned long long)arg3 options:(id)arg4 mutableResults:(id)arg5;
-- (id)grammarDetailsForSentence:(id)arg1 locale:(id)arg2;
-- (id)computedGrammarDetailsForSentence:(id)arg1 locale:(id)arg2;
+- (void)checkSentence:(id)arg1 locale:(id)arg2 offset:(unsigned long long)arg3 options:(id)arg4 requireResult:(_Bool)arg5 mutableResults:(id)arg6;
+- (id)grammarDetailsForSentence:(id)arg1 locale:(id)arg2 options:(id)arg3;
+- (id)computedGrammarDetailsForSentence:(id)arg1 locale:(id)arg2 options:(id)arg3;
+- (void)resetModels;
+- (void)loadModelsInBackground:(_Bool)arg1;
+- (id)modelUsingBackgroundLoading:(_Bool)arg1;
+- (id)_loadModel;
+- (long long)modelTypeWithOptions:(id)arg1;
+- (id)backgroundLoadingQueue;
 - (id)initWithOptions:(id)arg1;
 - (id)OTABundlePath;
 

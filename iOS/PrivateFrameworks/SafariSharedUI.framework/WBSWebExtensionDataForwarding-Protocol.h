@@ -32,6 +32,8 @@
 @property(readonly, nonatomic) NSSet *currentPermissions;
 @property(nonatomic) _Bool requestedOptionalAccessToAllHosts;
 @property(readonly, nonatomic) _Bool requestsAccessToAllHosts;
+@property(readonly, nonatomic) _Bool hasDeclarativeNetRequestHostAccessPermission;
+@property(readonly, nonatomic) _Bool hasDeclarativeNetRequestPermission;
 @property(readonly, nonatomic) _Bool usesManifestVersion3;
 @property(readonly, nonatomic) long long manifestVersion;
 @property(readonly, nonatomic) _Bool hasAction;
@@ -43,6 +45,8 @@
 @property(readonly, nonatomic) NSSet *externallyConnectableMatchPatterns;
 @property(readonly, nonatomic) NSArray *externallyConnectableMatchPatternStrings;
 @property(readonly, nonatomic) NSArray *injectedContentData;
+@property(readonly, nonatomic) _Bool hasAbilityToInjectContentIntoWebpages;
+@property(readonly, nonatomic) _Bool backgroundPageUsesModules;
 @property(readonly, nonatomic) _Bool backgroundPageIsServiceWorker;
 @property(readonly, nonatomic) _Bool backgroundPageIsPersistent;
 @property(readonly, nonatomic) NSString *generatedBackgroundPageContent;
@@ -69,7 +73,6 @@
 - (long long)permissionStateForURL:(NSURL *)arg1;
 - (_Bool)hasPermissionToAccessURL:(NSURL *)arg1;
 - (_Bool)hasPermissions:(NSSet *)arg1 origins:(NSSet *)arg2;
-- (_Bool)hasDeclarativeNetRequestPermission;
 - (_Bool)hasPermission:(NSString *)arg1;
 - (_Bool)shouldShowToolbarItemForTab:(id <WBSWebExtensionTab>)arg1;
 - (_Bool)hasInjectedContentDataForURL:(NSURL *)arg1;

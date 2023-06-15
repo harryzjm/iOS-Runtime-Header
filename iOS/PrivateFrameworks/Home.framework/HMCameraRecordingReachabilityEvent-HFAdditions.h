@@ -13,6 +13,7 @@
 - (id)videoAssetRequiredHTTPHeaders;
 - (id)encryptionKey;
 - (double)targetFragmentDuration;
+- (_Bool)hf_hasInsufficientAnalysis;
 - (_Bool)hf_isPlayable;
 - (id)hf_dateInterval;
 - (id)hf_endDate;
@@ -20,6 +21,7 @@
 - (_Bool)isComplete;
 - (double)hf_duration;
 - (double)duration;
+- (id)hf_stateDumpBuilderWithContext:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSDate *dateOfOccurrence;

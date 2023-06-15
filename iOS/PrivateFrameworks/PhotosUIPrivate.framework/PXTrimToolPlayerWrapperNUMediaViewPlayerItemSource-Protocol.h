@@ -9,6 +9,6 @@
 @class NSArray, PXTrimToolPlayerWrapperNUMediaView;
 
 @protocol PXTrimToolPlayerWrapperNUMediaViewPlayerItemSource <NSObject>
-- (void)trimToolPlayerWrapper:(PXTrimToolPlayerWrapperNUMediaView *)arg1 requestPlayerItemWithFilters:(NSArray *)arg2 completion:(void (^)(AVPlayerItem *))arg3;
+- (void)trimToolPlayerWrapper:(PXTrimToolPlayerWrapperNUMediaView *)arg1 requestAssetWithFilters:(NSArray *)arg2 completion:(void (^)(AVAsset *, AVVideoComposition *))arg3;
 @end
 

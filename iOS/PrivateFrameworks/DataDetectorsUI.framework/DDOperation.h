@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     NSDictionary *_context;
     long long _jobIdentifier;
     _Bool _ignoreSignatures;
+    NSArray *_scannerResults;
 }
 
 + (_Bool)_needsFullScannerForDetectionTypes:(unsigned long long)arg1;
@@ -30,6 +31,7 @@ __attribute__((visibility("hidden")))
 + (CDUnknownBlockType)shouldUrlifyBlockForTypes:(unsigned long long)arg1;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool ignoreSignatures; // @synthesize ignoreSignatures=_ignoreSignatures;
+@property(retain, nonatomic) NSArray *scannerResults; // @synthesize scannerResults=_scannerResults;
 @property(retain, nonatomic) NSDictionary *context; // @synthesize context=_context;
 @property _Bool isDiscarded; // @synthesize isDiscarded=_isDiscarded;
 @property(nonatomic) unsigned long long detectionTypes; // @synthesize detectionTypes=_types;

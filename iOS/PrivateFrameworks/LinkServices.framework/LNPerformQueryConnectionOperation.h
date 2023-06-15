@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import "LNConnectionOperation.h"
-
 @class LNQueryOutput, LNQueryRequest;
 
 __attribute__((visibility("hidden")))
-@interface LNPerformQueryConnectionOperation : LNConnectionOperation
+@interface LNPerformQueryConnectionOperation
 {
     LNQueryRequest *_queryRequest;
     CDUnknownBlockType _completionHandler;
@@ -22,7 +20,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) LNQueryRequest *queryRequest; // @synthesize queryRequest=_queryRequest;
 - (void)finishWithError:(id)arg1;
 - (void)start;
-- (id)initWithConnectionInterface:(id)arg1 query:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)initWithConnectionInterface:(id)arg1 query:(id)arg2 queue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 
 @end
 

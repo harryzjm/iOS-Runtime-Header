@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *accessQueue;
     MISSING_TYPE *feedServiceConfigFetcher;
     MISSING_TYPE *feedService;
+    MISSING_TYPE *historyService;
 }
 
 - (void).cxx_destruct;

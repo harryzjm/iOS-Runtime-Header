@@ -21,10 +21,9 @@
 - (void)paymentSessionDidReceiveTransactionError:(NPKQuickPaymentSession *)arg1;
 - (void)paymentSessionDidReceiveActivationError:(NPKQuickPaymentSession *)arg1;
 - (void)paymentSessionDidReceiveAuthorizationTimeout:(NPKQuickPaymentSession *)arg1;
-- (void)paymentSession:(NPKQuickPaymentSession *)arg1 didCompleteTransactionWithContext:(PKContactlessInterfaceTransactionContext *)arg2;
 - (void)paymentSessionDidExitField:(NPKQuickPaymentSession *)arg1;
 - (void)paymentSessionDidEnterField:(NPKQuickPaymentSession *)arg1;
-- (void)paymentSession:(NPKQuickPaymentSession *)arg1 didCompleteForReason:(unsigned long long)arg2 withTransactionContext:(PKContactlessInterfaceTransactionContext *)arg3;
+- (void)paymentSession:(NPKQuickPaymentSession *)arg1 didCompleteTransactionForReason:(unsigned long long)arg2 withTransactionContext:(PKContactlessInterfaceTransactionContext *)arg3 shouldCleanupSession:(_Bool)arg4;
 - (void)paymentSession:(NPKQuickPaymentSession *)arg1 didFailTransactionForPass:(PKPass *)arg2 withValueAddedServiceTransactions:(NSArray *)arg3 forValueAddedServicePasses:(NSArray *)arg4;
 - (void)paymentSession:(NPKQuickPaymentSession *)arg1 didActivatePass:(PKPass *)arg2;
 - (void)paymentSession:(NPKQuickPaymentSession *)arg1 willActivatePass:(PKPass *)arg2;

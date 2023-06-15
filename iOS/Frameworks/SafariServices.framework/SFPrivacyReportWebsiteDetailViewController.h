@@ -6,19 +6,24 @@
 
 #import <UIKit/UITableViewController.h>
 
-@class WBSTrackedFirstParty;
+@class NSArray, WBSTrackedFirstParty;
 
 __attribute__((visibility("hidden")))
 @interface SFPrivacyReportWebsiteDetailViewController : UITableViewController
 {
     WBSTrackedFirstParty *_website;
+    NSArray *_sections;
+    _Bool _separatesBlockedTrackers;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool separatesBlockedTrackers; // @synthesize separatesBlockedTrackers=_separatesBlockedTrackers;
+- (void)_loadSections;
 - (_Bool)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
+- (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)viewDidLoad;
 - (id)initWithWebsite:(id)arg1;
 

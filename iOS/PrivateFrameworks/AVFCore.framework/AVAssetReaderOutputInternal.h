@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     _Bool extractionCompleteForCurrentConfiguration;
     int finished;
     _Bool maximizePowerEfficiency;
+    _Bool disablesMultithreadedAndAsyncVideoDecompression;
 }
 
 @end

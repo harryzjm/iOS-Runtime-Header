@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CalendarModel, EKEventDetailAttendeesCell, NSArray, NSMutableDictionary, NSString, UITableViewCell;
+@class CUIKCalendarModel, EKEventDetailAttendeesCell, NSArray, NSMutableDictionary, NSString, UITableViewCell;
 
 __attribute__((visibility("hidden")))
 @interface EKEventAttendeesDetailItem
@@ -12,7 +12,8 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_attendeesCells;
     UITableViewCell *_titleCell;
     EKEventDetailAttendeesCell *_cell;
-    CalendarModel *_model;
+    CUIKCalendarModel *_model;
+    EKEventDetailAttendeesCell *_oldCell;
     long long _status;
     NSArray *_attendees;
 }
@@ -20,6 +21,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *attendees; // @synthesize attendees=_attendees;
 @property(nonatomic) long long status; // @synthesize status=_status;
+- (void)eventDetailAttendeeCellDidCompleteLoad:(id)arg1;
 - (void)eventDetailAttendeesCell:(id)arg1 requestViewControllerPresentation:(id)arg2;
 - (void)eventDetailAttendeeCellWantsRefreshForHeightChange;
 - (id)detailViewControllerWithFrame:(struct CGRect)arg1 forSubitemAtIndex:(unsigned long long)arg2;

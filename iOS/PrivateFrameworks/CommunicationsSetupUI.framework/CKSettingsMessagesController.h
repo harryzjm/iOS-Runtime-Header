@@ -6,7 +6,7 @@
 
 #import "CNFRegListController.h"
 
-@class CKFilteringListController, CKMultipleCTSubscriptionsController, CKNSExtension, CKOnboardingController, IMCTXPCServiceSubscriptionInfo, NSString, PSSystemPolicyForApp, UIViewController;
+@class CKFilteringListController, CKMultipleCTSubscriptionsController, CKNSExtension, CKOnboardingController, CKSettingsiMessageAppManager, IMCTXPCServiceSubscriptionInfo, NSString, PSSystemPolicyForApp, UIViewController;
 @protocol PSController;
 
 __attribute__((visibility("hidden")))
@@ -17,8 +17,8 @@ __attribute__((visibility("hidden")))
     CKFilteringListController *_filteringController;
     id _beginMappingID;
     PSSystemPolicyForApp *_systemPolicy;
+    CKSettingsiMessageAppManager *_iMessageAppManager;
     CKMultipleCTSubscriptionsController *_mmsMessagingController;
-    CKMultipleCTSubscriptionsController *_mmsAllowsGroupMessagingController;
     IMCTXPCServiceSubscriptionInfo *_ctSubscriptionInfo;
     CKOnboardingController *_onboardingController;
     UIViewController<PSController> *_blackholeConversationListViewController;
@@ -31,13 +31,15 @@ __attribute__((visibility("hidden")))
 + (id)getDefaultExtension;
 + (int)currentMessageAutoKeepOptionForType:(int)arg1;
 + (_Bool)currentMessageAutoKeepForType:(int)arg1;
++ (void)setSyncedSettingsManager:(id)arg1;
++ (id)syncedSettingsManager;
 - (void).cxx_destruct;
 @property(retain, nonatomic) CKNSExtension *ckExtension; // @synthesize ckExtension=_ckExtension;
 @property(retain, nonatomic) UIViewController<PSController> *blackholeConversationListViewController; // @synthesize blackholeConversationListViewController=_blackholeConversationListViewController;
 @property(retain, nonatomic) CKOnboardingController *onboardingController; // @synthesize onboardingController=_onboardingController;
 @property(retain, nonatomic) IMCTXPCServiceSubscriptionInfo *ctSubscriptionInfo; // @synthesize ctSubscriptionInfo=_ctSubscriptionInfo;
-@property(retain, nonatomic) CKMultipleCTSubscriptionsController *mmsAllowsGroupMessagingController; // @synthesize mmsAllowsGroupMessagingController=_mmsAllowsGroupMessagingController;
 @property(retain, nonatomic) CKMultipleCTSubscriptionsController *mmsMessagingController; // @synthesize mmsMessagingController=_mmsMessagingController;
+@property(retain, nonatomic) CKSettingsiMessageAppManager *iMessageAppManager; // @synthesize iMessageAppManager=_iMessageAppManager;
 @property(retain, nonatomic) PSSystemPolicyForApp *systemPolicy; // @synthesize systemPolicy=_systemPolicy;
 @property(retain) id beginMappingID; // @synthesize beginMappingID=_beginMappingID;
 @property(retain, nonatomic) CKFilteringListController *filteringController; // @synthesize filteringController=_filteringController;
@@ -55,7 +57,6 @@ __attribute__((visibility("hidden")))
 - (void)_showMadridSetupIfNecessary:(_Bool)arg1;
 - (void)_showSignInController;
 - (_Bool)authenticationController:(id)arg1 shouldContinueWithAuthenticationResults:(id)arg2 error:(id)arg3 forContext:(id)arg4;
-- (void)_showAuthKitSignInIfNecessary;
 - (void)setKeepMessages:(id)arg1 specifier:(id)arg2;
 - (id)getKeepMessages:(id)arg1;
 - (id)getSMSRelayDevicesSummary:(id)arg1;
@@ -66,10 +67,16 @@ __attribute__((visibility("hidden")))
 - (id)madridSigninSpecifiers;
 - (_Bool)shouldShowMadridSignin;
 - (id)getAccountSummaryForSpecifier:(id)arg1;
-- (id)madridAccountsSpecifierIdentifiers;
+- (id)madridEnabledSpecifierIdentifiers;
 - (_Bool)shouldShowMadridAccounts;
+- (_Bool)_isMessagesInICloudEnabled;
+- (id)getMessagesInICloudEnabledSpecifier:(id)arg1;
+- (void)showMessagesInICloudSettings:(id)arg1;
 - (id)sendAsSMSIdentifiers;
 - (_Bool)shouldShowSendAsSMS;
+- (id)_iMessageAppsViewController;
+- (id)iMessageAppsIdentifiers;
+- (_Bool)shouldShowiMessageApps;
 - (void)setJunkFilteringReceiptsEnabled:(id)arg1 specifier:(id)arg2;
 - (id)areJunkFilteringReceiptsEnabled:(id)arg1;
 - (_Bool)shouldShowJunkFilteringReceipts;
@@ -85,6 +92,9 @@ __attribute__((visibility("hidden")))
 - (void)sharingSettingsViewController:(id)arg1 didSelectSharingAudience:(unsigned long long)arg2;
 - (void)sharingSettingsViewController:(id)arg1 didUpdateSharingState:(_Bool)arg2;
 - (void)sharingSettingsViewControllerDidUpdateContact:(id)arg1;
+- (id)getCheckInLocationHistorySetting:(id)arg1;
+- (id)checkInLocationHistorySettingsSpecifierIdentifiers;
+- (_Bool)shouldShowCheckInLocationHistorySettings;
 - (id)_sharedWithYouViewController;
 - (_Bool)_sharedWithYouEnabled;
 - (id)getSharedWithYouForSpecifier:(id)arg1;
@@ -99,10 +109,11 @@ __attribute__((visibility("hidden")))
 - (void)showMeCardViewControllerWithNickname:(id)arg1;
 - (void)onboardingControllerDidFinish:(id)arg1;
 - (id)presentingViewControllerForOnboardingController:(id)arg1;
+- (void)showNicknameOnboardingOrEditFlowController;
 - (void)showNicknameOnboardingController;
 - (void)nameAndPhotoSharingForSpecifier:(id)arg1;
-- (void)showMultiplePhoneNumbersAlerForNicknames;
-- (void)showAccountsMismatchedAlertForNicknames;
+- (void)showMultiplePhoneNumbersAlertForNicknames;
+- (void)showiCloudNotSignedInAlertForNicknames;
 - (_Bool)shouldShowNicknames;
 - (id)nameAndPhotoSharingSpecifiers;
 - (id)contactPhotoSettingsSpecifierIdentifiers;
@@ -150,7 +161,6 @@ __attribute__((visibility("hidden")))
 - (id)getAudioMessageAutoKeep:(id)arg1;
 - (void)setRaiseToListenEnabled:(id)arg1 specifier:(id)arg2;
 - (id)getRaiseToListenEnabled:(id)arg1;
-- (void)setWillSendGroupMMS:(id)arg1 specifier:(id)arg2;
 - (id)willSendGroupMMS:(id)arg1;
 - (void)setMMSEnabled:(id)arg1 specifier:(id)arg2;
 - (id)isMMSEnabled:(id)arg1;
@@ -185,6 +195,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)bundle;
 - (id)init;
+- (void)_syncedSettingsDidChange:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

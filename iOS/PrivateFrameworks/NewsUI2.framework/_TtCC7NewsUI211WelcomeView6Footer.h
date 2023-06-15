@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIVisualEffectView.h>
+#import <UIKitCore/UIVisualEffectView.h>
 
 @class MISSING_TYPE;
 
@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *continueButton;
     MISSING_TYPE *activityIndicator;
     MISSING_TYPE *offlineMessage;
+    MISSING_TYPE *privacyIcon;
     MISSING_TYPE *privacyLink;
 }
 

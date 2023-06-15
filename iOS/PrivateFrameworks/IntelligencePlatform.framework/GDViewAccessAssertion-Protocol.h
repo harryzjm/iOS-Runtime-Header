@@ -9,8 +9,8 @@
 @class NSString, NSURL;
 
 @protocol GDViewAccessAssertion <NSObject>
-@property(nonatomic, readonly) NSString *viewArtifactTableName;
-@property(nonatomic, readonly) NSURL *viewArtifactURL;
-@property(nonatomic, readonly) NSString *viewName;
+@property(readonly, nonatomic) NSString *viewArtifactTableName;
+@property(readonly, nonatomic) NSURL *viewArtifactURL;
+@property(readonly, nonatomic) NSString *viewName;
 @end
 

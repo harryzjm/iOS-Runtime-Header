@@ -15,6 +15,14 @@
     MISSING_TYPE *_clockVoiceOverText;
     MISSING_TYPE *_finalScoreVoiceOverText;
     MISSING_TYPE *_headerVoiceOverText;
+    MISSING_TYPE *competitors;
+    MISSING_TYPE *voiceOverUtility;
+    MISSING_TYPE *runningClockViewModel;
+    MISSING_TYPE *voiceOverTimer;
+    MISSING_TYPE *cancellables;
+    MISSING_TYPE *timerQueued;
+    MISSING_TYPE *clockErrorActive;
+    MISSING_TYPE *$__lazy_storage_$_announcementQueue;
 }
 
 @end

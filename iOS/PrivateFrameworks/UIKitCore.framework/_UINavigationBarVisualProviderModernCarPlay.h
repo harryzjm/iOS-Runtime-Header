@@ -86,6 +86,7 @@ __attribute__((visibility("hidden")))
 - (void)navigationItemUpdatedCanvasView:(id)arg1;
 - (void)navigationItemUpdatedBottomPalette:(id)arg1 oldPalette:(id)arg2;
 - (void)navigationItemUpdatedBackgroundAppearance:(id)arg1;
+- (_Bool)shouldSearchControllerDeferPresentationTransitionForNavigationItem:(id)arg1;
 - (void)navigationItemSearchControllerReadyForDeferredAutomaticShowsScopeBar:(id)arg1;
 - (void)navigationItemUpdatedRightBarButtonItems:(id)arg1 animated:(_Bool)arg2;
 - (void)navigationItemUpdatedLeftBarButtonItems:(id)arg1 animated:(_Bool)arg2;

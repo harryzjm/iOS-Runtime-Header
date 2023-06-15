@@ -13,7 +13,7 @@
     MISSING_TYPE *delegate;
     MISSING_TYPE *dataManager;
     MISSING_TYPE *sportsSyncManager;
-    MISSING_TYPE *userInfo;
+    MISSING_TYPE *appConfigManager;
 }
 
 @end

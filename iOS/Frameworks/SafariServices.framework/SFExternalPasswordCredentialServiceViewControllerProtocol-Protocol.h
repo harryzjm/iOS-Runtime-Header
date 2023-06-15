@@ -6,10 +6,11 @@
 
 #import <SafariServices/NSObject-Protocol.h>
 
-@class SFPasswordCredentialIdentity;
+@class NSNumber, SFCredentialIdentity;
 
 @protocol SFExternalPasswordCredentialServiceViewControllerProtocol <NSObject>
-- (void)getCredentialForCredentialIdentity:(SFPasswordCredentialIdentity *)arg1 completion:(void (^)(SFSafariCredential *, _Bool, NSError *))arg2;
-- (void)autoFillWithCredentialIdentity:(SFPasswordCredentialIdentity *)arg1;
+- (void)getCredentialForCredentialIdentity:(SFCredentialIdentity *)arg1 completion:(void (^)(SFSafariCredential *, _Bool, NSError *))arg2;
+- (void)autoFillWithCredentialIdentity:(SFCredentialIdentity *)arg1 pageID:(NSNumber *)arg2 frameID:(NSNumber *)arg3;
+- (void)autoFillWithCredentialIdentity:(SFCredentialIdentity *)arg1;
 @end
 

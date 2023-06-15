@@ -10,11 +10,11 @@
 
 @protocol UIDynamicItem <NSObject>
 @property(nonatomic) struct CGAffineTransform transform;
-@property(nonatomic, readonly) struct CGRect bounds;
+@property(readonly, nonatomic) struct CGRect bounds;
 @property(nonatomic) struct CGPoint center;
 
 @optional
-@property(nonatomic, readonly) UIBezierPath *collisionBoundingPath;
-@property(nonatomic, readonly) unsigned long long collisionBoundsType;
+@property(readonly, nonatomic) UIBezierPath *collisionBoundingPath;
+@property(readonly, nonatomic) unsigned long long collisionBoundsType;
 @end
 

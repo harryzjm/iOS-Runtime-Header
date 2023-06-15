@@ -13,12 +13,12 @@
 + (id)CKDataWithHexString:(id)arg1;
 + (id)CKDataWithHexString:(id)arg1 stringIsUppercase:(_Bool)arg2;
 - (const void *)cksqlcs_blobBindingValue:(unsigned long long *)arg1 destructor:(CDUnknownFunctionPointerType *)arg2 error:(id *)arg3;
+- (long long)CKCompare:(id)arg1;
 - (id)CKSHA256;
 - (id)CKBase64URLSafeString;
 - (id)CKUppercaseHexStringWithoutSpaces;
 - (id)CKLowercaseHexStringWithoutSpaces;
 - (id)CKHexString;
-- (id)CKHashedDescription;
 - (id)CKDescriptionPropertiesWithPublic:(_Bool)arg1 private:(_Bool)arg2 shouldExpand:(_Bool)arg3;
 - (void)ck_bindInStatement:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)CKDescribePropertiesUsing:(id)arg1;

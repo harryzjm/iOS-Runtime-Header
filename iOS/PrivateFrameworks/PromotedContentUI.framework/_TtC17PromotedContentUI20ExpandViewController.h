@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
 @class MISSING_TYPE;
 
@@ -18,6 +18,9 @@
     MISSING_TYPE *navigationCoordinator;
     MISSING_TYPE *webProcessDelegate;
     MISSING_TYPE *actionDelegate;
+    MISSING_TYPE *notificationObserver;
+    MISSING_TYPE *notificationOpenObserver;
+    MISSING_TYPE *backgroundedTime;
     MISSING_TYPE *$__lazy_storage_$_closeButtonPadding;
 }
 
@@ -27,6 +30,7 @@
 - (void)closeButtonTappedWithSender:(id)arg1;
 - (void)viewWillLayoutSubviews;
 - (void)viewDidDisappear:(_Bool)arg1;
+- (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (void)dealloc;

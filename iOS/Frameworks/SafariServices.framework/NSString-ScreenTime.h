@@ -10,7 +10,6 @@
 + (id)_sf_safeBrowsingPreferencesPlistPath;
 - (id)_sf_bestURLForUserTypedString;
 - (id)_sf_ensurePathExtension:(id)arg1;
-- (id)sf_lastPathComponentWithoutZipExtension;
 - (id)sf_stringByReplacingLastOccurrenceOfWhitespaceWithANonBreakingSpace;
 - (id)sf_stringByReplacingMarkupCharactersWithHTMLEntities;
 @property(readonly, nonatomic) NSString *sf_stringByAddingSoftBreaksBeforePeriods;

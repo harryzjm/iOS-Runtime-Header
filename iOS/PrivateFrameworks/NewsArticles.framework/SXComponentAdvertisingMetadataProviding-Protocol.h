@@ -6,7 +6,9 @@
 
 #import <NewsArticles/NSObject-Protocol.h>
 
+@class SXJSONDictionary;
+
 @protocol SXComponentAdvertisingMetadataProviding <NSObject>
-@property(nonatomic, readonly) id advertising;
+@property(readonly, nonatomic) SXJSONDictionary *advertising;
 @end
 

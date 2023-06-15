@@ -46,6 +46,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned int gameControllerInputMode; // @synthesize gameControllerInputMode=_gameControllerInputMode;
 @property(copy, nonatomic) CDUnknownBlockType gameControllerInputModeCallback; // @synthesize gameControllerInputModeCallback=_gameControllerInputModeCallback;
 @property(readonly, nonatomic) _Bool hiliteMode; // @synthesize hiliteMode=_hiliteMode;
+- (void)performDocumentRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)handleTextActionPayload:(id)arg1;
 - (void)wake;
 - (void)exitHiliteMode;

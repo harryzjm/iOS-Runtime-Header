@@ -21,3 +21,21 @@ struct MusicKit_SoftLinking_MPLibraryActiveKeepLocalStatus {
     double _field3;
 };
 
+struct os_unfair_lock_s {
+    unsigned int _os_unfair_lock_opaque;
+};
+
+#pragma mark Typedef'd Structures
+
+typedef struct {
+    double _field1;
+    double _field2;
+    double _field3;
+    double _field4;
+    double _field5;
+    float _field6;
+    float _field7;
+    _Bool _field8;
+    _Bool _field9;
+} CDStruct_1c9ae071;
+

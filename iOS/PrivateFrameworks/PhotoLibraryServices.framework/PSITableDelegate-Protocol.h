@@ -10,8 +10,8 @@
 - (long long)lastInsertedRowID;
 - (void)unbindMatchingIds;
 - (void)bindMatchingIds:(const long long *)arg1 numberOfMatchingIds:(unsigned long long)arg2;
-- (void)bindMatchingIds:(const struct __CFArray *)arg1 range:(struct _NSRange)arg2;
-- (void)bindMatchingIds:(const struct __CFSet *)arg1;
+- (void)bindMatchingIds:(struct __CFArray *)arg1 range:(struct _NSRange)arg2;
+- (void)bindMatchingIds:(struct __CFSet *)arg1;
 - (void)unprepareMatchingIds;
 - (void)prepareForNumberOfMatchingIds:(unsigned long long)arg1;
 - (void)executeStatement:(PSIStatement *)arg1 withResultEnumerationBlock:(void (^)(PSIStatement *, _Bool *))arg2;

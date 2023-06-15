@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSData, NSDictionary;
+@class NSArray, NSData, NSDictionary, NSURL;
 
 @protocol _NSAttributedStringAgentProtocol
-- (void)renderHTML:(NSData *)arg1 options:(NSDictionary *)arg2 withReply:(void (^)(NSDictionary *, NSAttributedString *, NSError *))arg3;
+- (void)readFromData:(NSData *)arg1 orFileURL:(NSURL *)arg2 options:(NSDictionary *)arg3 extensionTokens:(NSArray *)arg4 withReply:(void (^)(NSAttributedString *, NSDictionary *, NSError *))arg5;
+- (void)renderHTML:(NSData *)arg1 options:(NSDictionary *)arg2 extensionTokens:(NSArray *)arg3 withReply:(void (^)(NSDictionary *, NSAttributedString *, NSError *))arg4;
+- (void)startWithReply:(void (^)(void))arg1;
 @end
 

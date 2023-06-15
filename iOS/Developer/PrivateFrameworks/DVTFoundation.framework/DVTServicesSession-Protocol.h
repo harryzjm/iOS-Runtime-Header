@@ -8,14 +8,14 @@
 @protocol DVTServicesSession;
 
 @protocol DVTServicesSession
+@property(readonly) DVTLogAspect *logAspect;
+@property(readonly) NSString *portalServiceBasePath;
+@property(readonly) NSNumber *portalServicePort;
+@property(readonly) NSString *portalServiceScheme;
+@property(readonly) NSString *portalServiceHostname;
+@property(readonly) long long executionContext;
 - (id <DVTServicesSession>)sessionWithAdditionalLogAspect:(DVTLogAspect *)arg1;
 - (void)updateWithResponseHeaders:(NSDictionary *)arg1;
 - (NSDictionary *)authenticationHeadersForRequest:(NSURLRequest *)arg1;
-@property(nonatomic, readonly) DVTLogAspect *logAspect;
-@property(nonatomic, readonly) NSString *portalServiceBasePath;
-@property(nonatomic, readonly) NSNumber *portalServicePort;
-@property(nonatomic, readonly) NSString *portalServiceScheme;
-@property(nonatomic, readonly) NSString *portalServiceHostname;
-@property(nonatomic, readonly) long long executionContext;
 @end
 

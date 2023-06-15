@@ -9,8 +9,8 @@
 @protocol SXOfferUpsellScenarioObserving;
 
 @protocol SXOfferUpsellScenarioProviding <NSObject>
+@property(readonly, nonatomic) long long offerUpsellScenario;
 - (void)removeObserver:(id <SXOfferUpsellScenarioObserving>)arg1;
 - (void)addObserver:(id <SXOfferUpsellScenarioObserving>)arg1;
-@property(nonatomic, readonly) long long offerUpsellScenario;
 @end
 

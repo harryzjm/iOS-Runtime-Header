@@ -4,15 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class VKCImageAnalysisResult;
+#import <VisionKitCore/NSObject-Protocol.h>
 
-@protocol VKAnalysisDebugInfoProvider
+@class VKCImageAnalysisResult, VKCImageSubjectContext, VKTextRange;
+
+@protocol VKAnalysisDebugInfoProvider <NSObject>
+@property(readonly, nonatomic) VKCImageSubjectContext *subjectContext;
+@property(readonly, nonatomic) _Bool isSubjectAnalysisComplete;
+@property(readonly, nonatomic) unsigned long long subjectRequestStatus;
+@property(readonly, nonatomic) unsigned long long activeInteractionTypes;
 @property(readonly, nonatomic) struct VKVisibleTextAreaInfo visibleTextAreaInfo;
 @property(readonly, nonatomic) double totalBoundingBoxTextArea;
 @property(readonly, nonatomic) double totalQuadTextArea;
-@property(readonly, nonatomic) struct _NSRange selectedRange;
+@property(readonly, nonatomic) VKTextRange *selectedRange;
 @property(readonly, nonatomic) struct CGRect visibleImageRect;
 @property(readonly, nonatomic) struct CGRect contentsRect;
 @property(readonly) VKCImageAnalysisResult *analysisResult;
+@property(readonly, nonatomic) id delegate;
 @end
 

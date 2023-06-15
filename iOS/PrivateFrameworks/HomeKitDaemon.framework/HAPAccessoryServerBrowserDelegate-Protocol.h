@@ -26,5 +26,7 @@
 
 @optional
 - (void)accessoryServerBrowser:(HAPAccessoryServerBrowser *)arg1 getThreadNetworkCredentialsForAccessoryWithIdentifier:(NSString *)arg2 withCompletion:(void (^)(HAPThreadNetworkMetadata *, NSError *))arg3;
+- (void)accessoryServerBrowser:(HAPAccessoryServerBrowser *)arg1 didFinishPairingForAccessoryServer:(HAPAccessoryServer *)arg2;
+- (void)accessoryServerBrowser:(HAPAccessoryServerBrowser *)arg1 getCommissioningCertificatesForNodeID:(NSNumber *)arg2 fabricID:(NSNumber *)arg3 publicKey:(NSData *)arg4 completion:(void (^)(NSData *, NSData *, NSNumber *, NSData *, NSError *))arg5;
 @end
 

@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CDPContext, CDPDCircleController, CDPDSecureChannelContext;
+@class CDPContext, CDPDSecureChannelContext;
+@protocol CDPDCircleControl;
 
 @protocol CDPDCircleDelegate
-- (CDPDSecureChannelContext *)secureChannelContextForController:(CDPDCircleController *)arg1;
-- (CDPContext *)contextForController:(CDPDCircleController *)arg1;
-- (void)circleController:(CDPDCircleController *)arg1 secureBackupRecordsArePresentWithCompletion:(void (^)(_Bool, _Bool, NSError *))arg2;
+- (CDPDSecureChannelContext *)secureChannelContextForController:(id <CDPDCircleControl>)arg1;
+- (CDPContext *)contextForController:(id <CDPDCircleControl>)arg1;
+- (void)circleController:(id <CDPDCircleControl>)arg1 secureBackupRecordsArePresentWithCompletion:(void (^)(_Bool, _Bool, NSError *))arg2;
 @end
 

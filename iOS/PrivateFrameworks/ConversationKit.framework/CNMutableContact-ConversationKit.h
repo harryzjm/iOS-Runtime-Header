@@ -9,5 +9,7 @@
 @interface CNMutableContact (ConversationKit)
 - (id)initWithHandle:(id)arg1;
 - (id)initWithConversationMember:(id)arg1;
+- (id)_initWithHandle:(id)arg1;
+- (id)_initWithConversationMember:(id)arg1;
 @end
 

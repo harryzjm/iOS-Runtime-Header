@@ -7,7 +7,11 @@
 #import <MediaPlayer/MPAVRoute.h>
 
 @interface MPAVRoute (MediaControls)
-@property(readonly, nonatomic, getter=isLocalDeviceOrHeadphone) _Bool localDeviceOrHeadphone;
+- (_Bool)isHostedGroupSession;
+- (_Bool)isActiveGroupSession;
+- (_Bool)isDiscoveredGroupSession;
+- (_Bool)isGroupSession;
+- (_Bool)isLocalDeviceOrHeadphone;
 - (id)routingPairedDeviceText;
 - (id)routingBatteryTextWithFormatter:(id)arg1;
 @end

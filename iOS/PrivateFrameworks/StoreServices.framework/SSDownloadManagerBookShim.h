@@ -15,13 +15,11 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-- (void)__book_sendDownloadsChanged:(id)arg1 filterBooks:(_Bool)arg2;
 - (id)__book_downloadsForStati:(id)arg1 overrideFinished:(_Bool)arg2 overrideFailed:(_Bool)arg3;
 - (id)__book_getAllDownloads;
 - (void)__book_resumeDownloads:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)__book_pauseDownloads:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)__book_cancelDownloads:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
-- (void)_sendDownloadsChanged:(id)arg1;
 - (void)_pauseDownloads:(id)arg1 forced:(_Bool)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (id)bookDownloads;
 - (id)_copyDownloadsForMessage:(long long)arg1 downloadIDs:(id)arg2;

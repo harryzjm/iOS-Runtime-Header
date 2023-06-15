@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 - (void)service_startAdvertisingCarPlayControlForUSBWithReply:(CDUnknownBlockType)arg1;
 - (void)service_startAdvertisingCarPlayControlForWiFiUUID:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)service_stoppedSessionWithHostIdentifier:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)service_startSessionWithHost:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)service_startSessionWithHost:(id)arg1 requestIdentifier:(id)arg2 reply:(CDUnknownBlockType)arg3;
 
 @end
 

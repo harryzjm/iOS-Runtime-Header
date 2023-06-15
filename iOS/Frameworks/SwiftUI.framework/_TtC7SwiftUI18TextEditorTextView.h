@@ -4,14 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UITextView.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC7SwiftUI18TextEditorTextView : UITextView
+@interface _TtC7SwiftUI18TextEditorTextView
 {
     MISSING_TYPE *findContext;
+    MISSING_TYPE *$__lazy_storage_$_helper;
 }
 
 - (void).cxx_destruct;

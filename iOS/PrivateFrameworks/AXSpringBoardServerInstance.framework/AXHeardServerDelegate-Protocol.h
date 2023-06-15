@@ -9,6 +9,9 @@
 @class HCServer;
 
 @protocol AXHeardServerDelegate <NSObject>
+
+@optional
+- (void)hearingServerIsReady;
 - (void)hearingServerDidDie:(HCServer *)arg1;
 @end
 

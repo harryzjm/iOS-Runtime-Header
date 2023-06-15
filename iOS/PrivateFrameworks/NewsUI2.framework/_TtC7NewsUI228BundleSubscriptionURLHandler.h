@@ -14,6 +14,7 @@
     MISSING_TYPE *magazineActivityNavigator;
     MISSING_TYPE *configurationManager;
     MISSING_TYPE *landingPageDecider;
+    MISSING_TYPE *offerManager;
 }
 
 @end

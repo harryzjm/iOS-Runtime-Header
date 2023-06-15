@@ -15,7 +15,10 @@
 - (void)getStringValueForIdentifier:(unsigned long long)arg1 forBundleID:(NSString *)arg2 withReply:(void (^)(NSString *))arg3;
 - (void)setIntegerValue:(long long)arg1 forIdentifier:(unsigned long long)arg2 forBundleID:(NSString *)arg3 withReply:(void (^)(NSError *))arg4;
 - (void)getIntegerValueForIdentifier:(unsigned long long)arg1 forBundleID:(NSString *)arg2 withReply:(void (^)(long long))arg3;
-- (void)validateSKAdNetworkSignature:(NSString *)arg1 withPublicKey:(NSString *)arg2 andParameters:(NSDictionary *)arg3 forBundleID:(NSString *)arg4 withReply:(void (^)(NSError *))arg5;
+- (void)buyProductWithConfiguration:(NSData *)arg1 withReply:(void (^)(NSError *, NSString *))arg2;
+- (void)setStoreKitError:(long long)arg1 forCategory:(long long)arg2 bundleID:(NSString *)arg3 withReply:(void (^)(void))arg4;
+- (void)storeKitErrorForCategory:(long long)arg1 bundleID:(NSString *)arg2 withReply:(void (^)(long long))arg3;
+- (void)validateSKAdNetworkSignature:(NSString *)arg1 withPublicKey:(NSString *)arg2 source:(long long)arg3 andParameters:(NSDictionary *)arg4 forBundleID:(NSString *)arg5 withReply:(void (^)(NSError *))arg6;
 - (void)generateSKANPostbackSignature:(NSDictionary *)arg1 withReply:(void (^)(NSString *))arg2;
 - (void)completePriceConsentRequestWithResponse:(_Bool)arg1 transactionIdentifier:(unsigned long long)arg2 forBundleID:(NSString *)arg3 withReply:(void (^)(NSError *))arg4;
 - (void)startPriceIncreaseForTransactionID:(unsigned long long)arg1 bundleID:(NSString *)arg2 needsConsent:(_Bool)arg3 withReply:(void (^)(NSError *))arg4;

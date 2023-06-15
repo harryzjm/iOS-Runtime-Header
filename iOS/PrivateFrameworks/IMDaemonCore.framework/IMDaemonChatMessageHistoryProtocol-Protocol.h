@@ -6,7 +6,7 @@
 
 #import <IMDaemonCore/NSObject-Protocol.h>
 
-@class NSArray, NSDate, NSString;
+@class NSArray, NSData, NSDate, NSString;
 
 @protocol IMDaemonChatMessageHistoryProtocol <NSObject>
 - (void)loadUncachedAttachmentCountForIDs:(NSArray *)arg1 style:(unsigned char)arg2 onServices:(NSArray *)arg3 chatID:(NSString *)arg4 queryID:(NSString *)arg5;
@@ -16,16 +16,19 @@
 - (void)markAsSpamForIDs:(NSArray *)arg1 style:(unsigned char)arg2 onServices:(NSArray *)arg3 chatID:(NSString *)arg4 queryID:(NSString *)arg5 autoReport:(_Bool)arg6;
 - (void)loadPagedHistoryForGUID:(NSString *)arg1 chatIdentifiers:(NSArray *)arg2 style:(unsigned char)arg3 onServices:(NSArray *)arg4 numberOfMessagesBefore:(long long)arg5 numberOfMessagesAfter:(long long)arg6 threadIdentifier:(NSString *)arg7 chatID:(NSString *)arg8 queryID:(NSString *)arg9;
 - (void)loadHistoryForIDs:(NSArray *)arg1 style:(unsigned char)arg2 onServices:(NSArray *)arg3 limit:(long long)arg4 beforeGUID:(NSString *)arg5 afterGUID:(NSString *)arg6 threadIdentifier:(NSString *)arg7 chatID:(NSString *)arg8 queryID:(NSString *)arg9;
+- (void)fetchEarliestMessageDateForChatsWithGUIDs:(NSArray *)arg1 completion:(void (^)(NSDictionary *))arg2;
 - (void)permanentlyDeleteRecoverableMessagesInChatsWithGUIDs:(NSArray *)arg1 queryID:(NSString *)arg2;
 - (void)loadRecoverableMessagesMetadataWithQueryID:(NSString *)arg1;
 - (void)recoverMessagesWithChatGUIDs:(NSArray *)arg1 queryID:(NSString *)arg2;
 - (void)moveMessagesInChatsWithGUIDsToRecentlyDeleted:(NSArray *)arg1 deleteDate:(NSDate *)arg2 queryID:(NSString *)arg3;
 - (void)moveMessagesWithGUIDsToRecentlyDeleted:(NSArray *)arg1 deleteDate:(NSDate *)arg2 queryID:(NSString *)arg3;
 - (void)updateUnformattedID:(NSString *)arg1 forBuddyID:(NSString *)arg2 onService:(NSString *)arg3;
+- (void)upgradeCompleteMyMomentLinkToStackWithMessageGUID:(NSString *)arg1 chatGUID:(NSString *)arg2;
 - (void)cleanupAttachments;
 - (void)purgeAttachmentsForChatGUID:(NSString *)arg1;
+- (void)updatePluginMessageWithGUID:(NSString *)arg1 newPayloadData:(NSData *)arg2 completion:(void (^)(_Bool))arg3;
 - (void)retractNotificationsForReadMessagesWithGUIDs:(NSArray *)arg1;
-- (void)markChatAsSpamWithGUID:(NSString *)arg1 chatIdentifiers:(NSArray *)arg2 style:(unsigned char)arg3 services:(NSArray *)arg4 isAutoReport:(_Bool)arg5 reply:(void (^)(unsigned long long))arg6;
+- (void)markChatAsSpamWithGUID:(NSString *)arg1 chatIdentifiers:(NSArray *)arg2 style:(unsigned char)arg3 services:(NSArray *)arg4 isAutoReport:(_Bool)arg5 isJunkReportedToCarrier:(_Bool)arg6 reply:(void (^)(unsigned long long))arg7;
 - (void)clearHistoryForIDs:(NSArray *)arg1 style:(unsigned char)arg2 onServices:(NSArray *)arg3 beforeGUID:(NSString *)arg4 afterGUID:(NSString *)arg5 chatID:(NSString *)arg6 queryID:(NSString *)arg7;
 - (void)deleteMessageWithGUIDs:(NSArray *)arg1 queryID:(NSString *)arg2;
 - (void)loadUncachedAttachmentCountForChatWithGUID:(NSString *)arg1 chatIdentifiers:(NSArray *)arg2 style:(unsigned char)arg3 services:(NSArray *)arg4 reply:(void (^)(unsigned long long))arg5;

@@ -11,6 +11,7 @@
 @protocol ACUISActivityHostViewControllerDelegate <NSObject>
 
 @optional
+- (void)activityHostViewController:(ACUISActivityHostViewController *)arg1 didSetIdleTimerDisabled:(_Bool)arg2;
 - (void)activityHostViewControllerSignificantUserInteractionEnded:(ACUISActivityHostViewController *)arg1;
 - (void)activityHostViewControllerSignificantUserInteractionBegan:(ACUISActivityHostViewController *)arg1;
 - (void)activityHostViewControllerHostShouldCancelTouches:(ACUISActivityHostViewController *)arg1;

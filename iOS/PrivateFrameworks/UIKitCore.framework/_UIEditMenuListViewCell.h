@@ -43,14 +43,16 @@ __attribute__((visibility("hidden")))
 - (void)_hideContents;
 - (void)_overlaySlotView:(id)arg1;
 - (unsigned int)_secureName;
+- (_Bool)_wantsPasteSlotView;
 - (void)_setupSlotView;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)_updateLayoutMargins;
 - (void)_updateFont;
 - (void)_updateConstraints;
+- (void)_contentSizeCategoryDidChange;
 - (void)_createViewHierarchy;
+- (void)_updateBackgroundForCurrentState;
 - (void)setHighlighted:(_Bool)arg1;
-- (void)traitCollectionDidChange:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 

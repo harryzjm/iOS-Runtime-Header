@@ -13,6 +13,7 @@
     MISSING_TYPE *featureSettings;
     MISSING_TYPE *offerManager;
     MISSING_TYPE *triggerStateManager;
+    MISSING_TYPE *paidBundleViaOfferFeatureAvailability;
 }
 
 @end

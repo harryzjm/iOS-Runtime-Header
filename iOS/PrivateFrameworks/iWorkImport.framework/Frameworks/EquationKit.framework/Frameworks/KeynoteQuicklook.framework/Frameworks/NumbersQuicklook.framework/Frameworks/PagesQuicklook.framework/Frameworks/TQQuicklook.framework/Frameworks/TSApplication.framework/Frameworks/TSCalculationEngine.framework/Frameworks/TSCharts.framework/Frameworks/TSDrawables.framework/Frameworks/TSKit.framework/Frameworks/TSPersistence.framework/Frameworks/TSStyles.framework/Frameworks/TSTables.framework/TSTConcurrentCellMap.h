@@ -35,6 +35,7 @@
 @property(nonatomic) _Bool mayModifyValuesReferencedByFormulas; // @synthesize mayModifyValuesReferencedByFormulas=_mayModifyValuesReferencedByFormulas;
 @property(nonatomic) _Bool mayModifyFormulasInCells; // @synthesize mayModifyFormulasInCells=_mayModifyFormulasInCells;
 @property(nonatomic, getter=isUIDBased) _Bool uidBased; // @synthesize uidBased=_uidBased;
+- (unsigned long long)estimatedMemoryCost;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)saveToArchiver:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
@@ -50,13 +51,12 @@
 - (void)enumerateCustomFormatsBeingAddedUsingReplacementBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateRowCellCountDiffUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateColumnCellCountDiffUsingBlock:(CDUnknownBlockType)arg1;
-- (void)updateDataListsConcurrentlyUsingCommentStorageBlock:(CDUnknownBlockType)arg1 conditionalStyleSetBlock:(CDUnknownBlockType)arg2 controlCellSpecBlock:(CDUnknownBlockType)arg3 formulaBlock:(CDUnknownBlockType)arg4 formulaErrorBlock:(CDUnknownBlockType)arg5 importWarningSetBlock:(CDUnknownBlockType)arg6 richTextBlock:(CDUnknownBlockType)arg7 stringBlock:(CDUnknownBlockType)arg8 styleBlock:(CDUnknownBlockType)arg9 customFormatBlock:(CDUnknownBlockType)arg10 formatBlock:(CDUnknownBlockType)arg11 preBNCBlock:(CDUnknownBlockType)arg12;
+- (void)updateDataListsConcurrentlyUsingCommentStorageBlock:(CDUnknownBlockType)arg1 conditionalStyleSetBlock:(CDUnknownBlockType)arg2 controlCellSpecBlock:(CDUnknownBlockType)arg3 formulaBlock:(CDUnknownBlockType)arg4 formulaErrorBlock:(CDUnknownBlockType)arg5 importWarningSetBlock:(CDUnknownBlockType)arg6 richTextBlock:(CDUnknownBlockType)arg7 stringBlock:(CDUnknownBlockType)arg8 styleBlock:(CDUnknownBlockType)arg9 customFormatBlock:(CDUnknownBlockType)arg10 formatBlock:(CDUnknownBlockType)arg11;
 - (void)enumerateRowsOfCellsConcurrentlyUsingBlock:(CDUnknownBlockType)arg1;
 - (void)gatherRowState:(CDUnknownBlockType)arg1;
 - (void)p_enumerateCellsAddedAndRemovedForFormatsWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateCellsAddedOfType:(unsigned long long)arg1 withOptions:(unsigned long long)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (void)enumerateCellsAddedAndRemovedOfType:(unsigned long long)arg1 withOptions:(unsigned long long)arg2 usingBlock:(CDUnknownBlockType)arg3;
-- (void)p_enumerateNewAndOldCellsSeriallyUsingPreBNCBlock:(CDUnknownBlockType)arg1;
 - (void)p_enumerateNewAndOldCellsSeriallyUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateSeriallyUsingBlock:(CDUnknownBlockType)arg1;
 - (id)cellRegionWithTableInfo:(id)arg1 passingTest:(CDUnknownBlockType)arg2;

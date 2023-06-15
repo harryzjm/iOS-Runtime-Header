@@ -10,9 +10,13 @@
 @protocol NSObject, PXAnonymousViewController;
 
 @protocol PXPresentationEnvironment <NSObject>
+@property(readonly, nonatomic) _Bool canPushViewController;
+@property(readonly, nonatomic) NSObject<PXAnonymousViewController> *presentingViewController;
 - (void)dismissAlertWithToken:(id <NSObject>)arg1 completionHandler:(void (^)(void))arg2;
 - (id <NSObject>)presentAlertWithConfigurationHandler:(void (^)(PXAlertConfiguration *))arg1;
-- (void)dismissViewController:(NSObject<PXAnonymousViewController> *)arg1 completionHandler:(void (^)(void))arg2;
-- (void)presentViewController:(NSObject<PXAnonymousViewController> *)arg1;
+- (_Bool)popToViewController:(NSObject<PXAnonymousViewController> *)arg1 animated:(_Bool)arg2;
+- (_Bool)pushViewController:(NSObject<PXAnonymousViewController> *)arg1 animated:(_Bool)arg2;
+- (void)dismissViewController:(NSObject<PXAnonymousViewController> *)arg1 animated:(_Bool)arg2 completionHandler:(void (^)(void))arg3;
+- (void)presentViewController:(NSObject<PXAnonymousViewController> *)arg1 animated:(_Bool)arg2 completionHandler:(void (^)(void))arg3;
 @end
 

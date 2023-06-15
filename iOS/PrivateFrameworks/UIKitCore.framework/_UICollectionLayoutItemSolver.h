@@ -6,26 +6,26 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
-@class NSCollectionLayoutItem, NSString, UITraitCollection, _UICollectionLayoutItemSolverState, _UICollectionLayoutSupplementaryEnroller;
-@protocol NSCollectionLayoutContainer, _UICollectionPreferredSizes;
+@class NSCollectionLayoutItem, NSString, UITraitCollection, _UICollectionLayoutItemSolverState, _UICollectionLayoutSupplementaryEnroller, _UICollectionPreferredSizes;
+@protocol NSCollectionLayoutContainer;
 
 __attribute__((visibility("hidden")))
-@interface _UICollectionLayoutItemSolver : NSObject <NSCopying>
+@interface _UICollectionLayoutItemSolver : NSObject
 {
     _Bool _layoutRTL;
+    _Bool _solvingConsumedDirtyPreferredSizes;
     NSCollectionLayoutItem *_item;
     id <NSCollectionLayoutContainer> _container;
     UITraitCollection *_traitCollection;
-    NSString *_errorDescription;
     unsigned long long _containerSizeDependentLayoutAxes;
     _UICollectionLayoutItemSolverState *_solveResult;
-    id <_UICollectionPreferredSizes> _preferredSizes;
+    _UICollectionPreferredSizes *_preferredSizes;
     _UICollectionLayoutSupplementaryEnroller *_supplementaryEnroller;
     long long _solutionRecursionDepth;
     long long _maxFrameCount;
     unsigned long long _layoutAxis;
+    struct CGSize _largestKnownItemSize;
+    struct CGRect _uncommittedSolvedItemFrame;
 }
 
 - (void).cxx_destruct;

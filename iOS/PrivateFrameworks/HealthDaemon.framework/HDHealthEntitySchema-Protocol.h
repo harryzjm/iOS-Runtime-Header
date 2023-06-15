@@ -6,9 +6,12 @@
 
 #import <HealthDaemon/HDSQLiteEntitySchema-Protocol.h>
 
-@class HDProfile, NSDate, NSNumber;
+@class HDProfile, NSArray, NSDate, NSNumber, NSString, _HKBehavior;
 
 @protocol HDHealthEntitySchema <HDSQLiteEntitySchema>
++ (NSArray *)triggersWithBehavior:(_HKBehavior *)arg1;
++ (NSArray *)indicesWithBehavior:(_HKBehavior *)arg1;
++ (NSString *)createTableSQLWithBehavior:(_HKBehavior *)arg1;
 + (long long)protectionClass;
 
 @optional

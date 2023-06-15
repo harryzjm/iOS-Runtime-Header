@@ -24,7 +24,7 @@
     MISSING_TYPE *_scoreMetrics;
     MISSING_TYPE *_userMassMetric;
     MISSING_TYPE *_distanceMetric;
-    MISSING_TYPE *_watchConnection;
+    MISSING_TYPE *_workoutDeviceConnection;
     MISSING_TYPE *_gymKitConnection;
     MISSING_TYPE *_workoutActivityType;
     MISSING_TYPE *_hostAppBundleIdentifier;
@@ -38,6 +38,7 @@
     MISSING_TYPE *_alternate;
     MISSING_TYPE *_multiUserSession;
     MISSING_TYPE *_multiUserSessionIdentities;
+    MISSING_TYPE *_queueIdentifier;
 }
 
 @end

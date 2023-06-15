@@ -5,6 +5,14 @@
 //
 
 @interface (null) (WorkflowKit)
-- (void)addCompletionHandlerIfRunning:(CDUnknownBlockType)arg1;
++ (id)deletedFolders;
++ (id)sortedFolders;
++ (id)sortedGroupings;
++ (id)sortedWorkflowsWithQuery:(id)arg1 hasTombstonedConflicts:(_Bool)arg2;
++ (id)sortedWorkflowsWithQuery:(id)arg1 sortByName:(_Bool)arg2 nameEqualing:(id)arg3;
++ (id)sortedWorkflowsWithQuery:(id)arg1 sortByName:(_Bool)arg2 nameContaining:(id)arg3 limit:(long long)arg4;
++ (id)sortedWorkflowsWithQuery:(id)arg1 sortByName:(_Bool)arg2 associatedAppBundleIdentifier:(id)arg3;
++ (id)sortedWorkflowsWithQuery:(id)arg1 sortByName:(_Bool)arg2 limit:(long long)arg3;
++ (id)sortedWorkflowsWithQuery:(id)arg1;
 @end
 

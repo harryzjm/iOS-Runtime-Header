@@ -29,7 +29,7 @@ __attribute__((visibility("hidden")))
     _Bool _blocksReturnToFullscreenFromPictureInPicture;
     struct CGRect _initialFrame;
     struct CGRect _finalFrame;
-    struct CGRect _originalWindowFrame;
+    struct CGSize _originalWindowSize;
     struct RetainPtr<NSString> _EVOrganizationName;
     _Bool _EVOrganizationNameIsValid;
     _Bool _inInteractiveDismiss;
@@ -43,6 +43,7 @@ __attribute__((visibility("hidden")))
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(nonatomic) __weak WKWebView *_webView; // @synthesize _webView=__webView;
+- (void)_applicationDidBecomeActive:(id)arg1;
 - (void)_interactivePinchDismissChanged:(id)arg1;
 - (void)_interactiveDismissChanged:(id)arg1;
 - (void)_dismissFullscreenViewController;
@@ -70,9 +71,11 @@ __attribute__((visibility("hidden")))
 - (void)beganExitFullScreenWithInitialFrame:(struct CGRect)arg1 finalFrame:(struct CGRect)arg2;
 - (void)exitFullScreen;
 - (void)requestExitFullScreen;
-- (void)requestEnterFullScreen;
+- (void)requestRestoreFullScreen;
 - (void)beganEnterFullScreenWithInitialFrame:(struct CGRect)arg1 finalFrame:(struct CGRect)arg2;
-- (void)enterFullScreen;
+- (void)enterFullScreen:(struct CGSize)arg1;
+- (void)resetSupportedOrientations;
+- (void)setSupportedOrientations:(unsigned long long)arg1;
 @property(readonly, retain, nonatomic) UIView *webViewPlaceholder;
 @property(readonly, nonatomic) _Bool isFullScreen;
 - (void)dealloc;

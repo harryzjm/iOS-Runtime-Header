@@ -13,6 +13,7 @@
 - (void)paymentAuthorizationCoordinator:(PKPaymentAuthorizationCoordinator *)arg1 didAuthorizePayment:(PKPayment *)arg2 handler:(void (^)(PKPaymentAuthorizationResult *))arg3;
 
 @optional
+- (NSString *)presentationSceneBundleIdentifierForPaymentAuthorizationCoordinator:(PKPaymentAuthorizationCoordinator *)arg1;
 - (NSString *)presentationSceneIdentifierForPaymentAuthorizationCoordinator:(PKPaymentAuthorizationCoordinator *)arg1;
 - (void)paymentAuthorizationCoordinator:(PKPaymentAuthorizationCoordinator *)arg1 didSelectPaymentMethod:(PKPaymentMethod *)arg2 completion:(void (^)(NSArray *))arg3;
 - (void)paymentAuthorizationCoordinator:(PKPaymentAuthorizationCoordinator *)arg1 didSelectShippingAddress:(CNContact *)arg2 completion:(void (^)(long long, NSArray *, NSArray *))arg3;

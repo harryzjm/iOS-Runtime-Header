@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     unsigned int _rtcpIPPortLength;
     VCNetworkAddress *_remoteAddress;
     int _networkInterfaceType;
+    char _networkInterfaceName[16];
     _Bool _isIPv6;
     unsigned int _networkMTU;
 }
@@ -27,8 +28,10 @@ __attribute__((visibility("hidden")))
 - (_Bool)isIPv6;
 - (unsigned int)networkMTU;
 - (int)networkInterfaceType;
+- (struct tagVCNWConnectionMonitor *)createNWMonitor;
 - (int)initializeNetworkInfoWithSocket:(int)arg1;
 - (void)initializeInterfaceTypeWithSocket:(int)arg1;
+- (void)stop;
 - (void)start;
 - (int)createVFD:(int *)arg1 forStreamType:(unsigned int)arg2;
 - (int)createAndConfigureVFDForSocket:(int)arg1 packetType:(int)arg2 remoteIP:(struct sockaddr_storage *)arg3 remoteIPLength:(unsigned int)arg4 vfd:(int *)arg5;
@@ -44,9 +47,10 @@ __attribute__((visibility("hidden")))
 - (id)streams;
 - (int)createVFD:(int *)arg1 realSocket:(int)arg2 sockAddr:(struct sockaddr_storage *)arg3 length:(unsigned int *)arg4 isUsable:(_Bool *)arg5;
 - (void)dealloc;
-- (id)initWithRTPSocket:(int)arg1 RTCPSocket:(int)arg2;
+- (id)initWithRTPSocket:(int)arg1 RTCPSocket:(int)arg2 notificationHandler:(CDUnknownFunctionPointerType)arg3 eventHandler:(CDUnknownFunctionPointerType)arg4 handlerQueue:(id)arg5 context:(void *)arg6;
 - (id)initWithSharedSocket:(int)arg1;
-- (id)initWithSocketDictionary:(id)arg1;
+- (id)initWithRTPSocket:(int)arg1 RTCPSocket:(int)arg2;
+- (id)initWithSocketDictionary:(id)arg1 notificationHandler:(CDUnknownFunctionPointerType)arg2 eventHandler:(CDUnknownFunctionPointerType)arg3 handlerQueue:(id)arg4 context:(void *)arg5;
 
 @end
 

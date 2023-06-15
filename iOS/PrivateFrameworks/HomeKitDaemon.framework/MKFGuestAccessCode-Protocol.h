@@ -7,12 +7,13 @@
 #import <HomeKitDaemon/MKFGuestAccessCodePublicExtensions-Protocol.h>
 #import <HomeKitDaemon/MKFHomeAccessCode-Protocol.h>
 
-@class MKFGuestAccessCodeDatabaseID, NSString, NSUUID;
+@class MKFGuestAccessCodeDatabaseID, NSNumber, NSString, NSUUID;
 @protocol MKFHome;
 
 @protocol MKFGuestAccessCode <MKFHomeAccessCode, MKFGuestAccessCodePublicExtensions>
 @property(readonly, copy, nonatomic) MKFGuestAccessCodeDatabaseID *databaseID;
 @property(readonly, retain, nonatomic) id <MKFHome> home;
+@property(copy, nonatomic) NSNumber *userUniqueIDForAccessories;
 @property(copy, nonatomic) NSString *label;
 @property(copy, nonatomic) NSUUID *hh2ModelID;
 @end

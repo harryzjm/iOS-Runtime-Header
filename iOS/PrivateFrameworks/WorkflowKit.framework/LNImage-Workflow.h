@@ -6,7 +6,18 @@
 
 #import <LinkMetadata/LNImage.h>
 
+@class NSString;
+
 @interface LNImage (Workflow)
+- (id)serializedRepresentation;
+- (id)initWithSerializedRepresentation:(id)arg1 variableProvider:(id)arg2 parameter:(id)arg3;
+- (unsigned long long)wfImageDisplayStyleFromLNImageDisplayStyle:(unsigned long long)arg1;
 - (id)wf_image;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 @end
 

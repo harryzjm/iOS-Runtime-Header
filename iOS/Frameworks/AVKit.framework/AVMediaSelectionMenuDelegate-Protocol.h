@@ -6,9 +6,12 @@
 
 #import <AVKit/NSObject-Protocol.h>
 
-@class AVMediaSelectionMenuController, AVMediaSelectionOption;
+@class AVMediaSelectionMenuController, AVMediaSelectionOption, NSString;
 
 @protocol AVMediaSelectionMenuDelegate <NSObject>
 - (void)mediaSelectionMenuController:(AVMediaSelectionMenuController *)arg1 didSelectOption:(AVMediaSelectionOption *)arg2 atIndex:(unsigned long long)arg3;
+
+@optional
+- (NSString *)mediaSelectionMenuController:(AVMediaSelectionMenuController *)arg1 displayNameForMediaSelectionOption:(AVMediaSelectionOption *)arg2;
 @end
 

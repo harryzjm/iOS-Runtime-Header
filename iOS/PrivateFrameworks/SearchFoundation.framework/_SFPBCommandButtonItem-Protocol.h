@@ -10,6 +10,8 @@
 
 @protocol _SFPBCommandButtonItem <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
+@property(nonatomic) unsigned long long uniqueId;
+@property(nonatomic) _Bool isDestructive;
 @property(copy, nonatomic) NSArray *previewButtonItems;
 @property(retain, nonatomic) _SFPBCommand *command;
 @property(copy, nonatomic) NSString *title;

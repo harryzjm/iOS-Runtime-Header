@@ -20,7 +20,7 @@
 
 - (void).cxx_destruct;
 - (id)init;
-- (_Bool)subscribeToActivityProminenceMatching:(id)arg1 error:(id *)arg2;
+- (_Bool)subscribeToActivityProminenceMatchingPredicate:(id)arg1 error:(id *)arg2;
 
 @end
 

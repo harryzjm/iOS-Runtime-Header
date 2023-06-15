@@ -11,7 +11,6 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)fetchRequest;
 
 // Remaining properties
 @property(copy, nonatomic) NSNumber *episodeNumberInSeason; // @dynamic episodeNumberInSeason;
@@ -19,6 +18,5 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSNumber *fractionalEpisodeNumberInSeason; // @dynamic fractionalEpisodeNumberInSeason;
 @property(retain, nonatomic) VUITVSeasonManagedObject *season; // @dynamic season;
 @property(retain, nonatomic) VUITVSeriesManagedObject *series; // @dynamic series;
-
 @end
 

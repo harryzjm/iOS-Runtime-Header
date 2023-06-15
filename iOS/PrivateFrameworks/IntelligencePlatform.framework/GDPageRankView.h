@@ -9,7 +9,6 @@
 @class _PASSqliteDatabase;
 @protocol GDViewAccessAssertion;
 
-__attribute__((visibility("hidden")))
 @interface GDPageRankView : NSObject
 {
     id <GDViewAccessAssertion> _accessAssertion;

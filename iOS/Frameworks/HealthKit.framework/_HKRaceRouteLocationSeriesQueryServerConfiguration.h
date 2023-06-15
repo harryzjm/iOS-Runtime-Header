@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
     NSUUID *_clusterUUID;
     unsigned long long _workoutSelection;
+    NSUUID *_workoutUUID;
     double _timestampAnchor;
     unsigned long long _limit;
 }
@@ -21,6 +22,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(nonatomic) unsigned long long limit; // @synthesize limit=_limit;
 @property(nonatomic) double timestampAnchor; // @synthesize timestampAnchor=_timestampAnchor;
+@property(copy, nonatomic) NSUUID *workoutUUID; // @synthesize workoutUUID=_workoutUUID;
 @property(nonatomic) unsigned long long workoutSelection; // @synthesize workoutSelection=_workoutSelection;
 @property(copy, nonatomic) NSUUID *clusterUUID; // @synthesize clusterUUID=_clusterUUID;
 - (void)encodeWithCoder:(id)arg1;

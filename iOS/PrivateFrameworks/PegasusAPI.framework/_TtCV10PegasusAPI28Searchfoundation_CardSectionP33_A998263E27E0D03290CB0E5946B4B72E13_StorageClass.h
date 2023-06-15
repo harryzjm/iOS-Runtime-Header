@@ -23,6 +23,17 @@
     MISSING_TYPE *_previewButtonItems;
     MISSING_TYPE *_cardSectionDetail;
     MISSING_TYPE *_previewButtonItemsTitle;
+    MISSING_TYPE *_backgroundColor;
+    MISSING_TYPE *_shouldHideInAmbientMode;
+    MISSING_TYPE *_leadingSwipeButtonItems;
+    MISSING_TYPE *_trailingSwipeButtonItems;
+    MISSING_TYPE *_punchoutOptions;
+    MISSING_TYPE *_punchoutPickerTitle;
+    MISSING_TYPE *_punchoutPickerDismissText;
+    MISSING_TYPE *_canBeHidden;
+    MISSING_TYPE *_hasTopPadding_p;
+    MISSING_TYPE *_hasBottomPadding_p;
+    MISSING_TYPE *_separatorStyle;
 }
 
 @end

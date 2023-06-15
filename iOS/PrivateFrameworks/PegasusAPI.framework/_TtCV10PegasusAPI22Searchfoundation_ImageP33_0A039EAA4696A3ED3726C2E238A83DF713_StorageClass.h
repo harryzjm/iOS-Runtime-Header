@@ -22,6 +22,7 @@
     MISSING_TYPE *_source;
     MISSING_TYPE *_cornerRoundingStyle;
     MISSING_TYPE *_accessibilityLabel;
+    MISSING_TYPE *_badgingImage;
     MISSING_TYPE *_type;
     MISSING_TYPE *_urlImage;
     MISSING_TYPE *_contactImage;

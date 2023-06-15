@@ -4,15 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "LibraryItemController.h"
+
 @class NSString, ReadingListViewController;
 
 __attribute__((visibility("hidden")))
-@interface ReadingListLibraryItemController
+@interface ReadingListLibraryItemController : LibraryItemController
 {
     ReadingListViewController *_viewController;
 }
 
 - (void).cxx_destruct;
+- (id)accessibilityIdentifier;
 - (void)performDropWithProposal:(id)arg1 session:(id)arg2;
 - (long long)dropIntentForSession:(id)arg1;
 - (unsigned long long)dropOperationForSession:(id)arg1;
@@ -20,6 +23,7 @@ __attribute__((visibility("hidden")))
 - (void)readingListViewController:(id)arg1 updateUnreadFilterShowingAllBookmarks:(_Bool)arg2;
 - (void)readingListViewController:(id)arg1 setBookmark:(id)arg2 asRead:(_Bool)arg3;
 - (id)readingListViewControllerCurrentReadingListItem:(id)arg1;
+- (_Bool)panelViewControllerShouldUseSearchControllerInNavigationItem:(id)arg1;
 - (id)_bookmarksNavigationControllerDelegate;
 - (_Bool)selectionFollowsFocus;
 - (id)viewController;

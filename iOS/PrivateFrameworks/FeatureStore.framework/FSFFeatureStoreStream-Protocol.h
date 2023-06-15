@@ -8,6 +8,7 @@
 @protocol FSFFeature;
 
 @protocol FSFFeatureStoreStream
+- (_Bool)deleteCurrentStream;
 - (NSArray *)retrieveEvents:(NSArray *)arg1 startDate:(NSDate *)arg2 endDate:(NSDate *)arg3;
 - (NSMutableArray *)retrieve:(NSArray *)arg1;
 - (_Bool)insert:(id <FSFFeature>)arg1 withInteractionId:(NSString *)arg2 atTime:(double)arg3;

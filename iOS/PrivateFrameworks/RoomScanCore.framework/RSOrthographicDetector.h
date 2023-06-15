@@ -34,6 +34,8 @@
     NSMutableArray *_doors;
     NSMutableArray *_openings;
     NSMutableArray *_opendoors;
+    NSMutableArray *_curvedWindows;
+    NSMutableArray *_curvedDoors;
     const float *_filterThresholds;
     _Bool _isOnline;
     _Bool normalizedOutput;
@@ -41,30 +43,6 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(nonatomic) _Bool normalizedOutput; // @synthesize normalizedOutput;
-- (id)removeOpenDoorPanelFpWithOpenDoors:(id)arg1 andCloseDoors:(id)arg2;
-- (id)postprocessWithNetInput:(id)arg1;
-- (void)removeOpenDoorPanelFp;
-- (float)detectDepthOnSurface:(id)arg1 withPointCloud:(id)arg2;
-- (void)normalizeSizesOfSurfaces:(id)arg1 withLowerWidthThreshold:(float)arg2 higherWidthThreshold:(float)arg3;
-- (_Bool)projectDetectBoxesTo3dOnSurface:(id)arg1 withPointCloud:(id)arg2;
-- (id)removeMultiDetectionAcrossClassesWithOverlapOffline:(id)arg1;
-- (void)cutOverlap:(struct CGRect *)arg1 withRect:(struct CGRect *)arg2 withIntersecRect:(struct CGRect)arg3 withUnionRect:(struct CGRect)arg4;
-- (id)removeMultiDetectionAcrossClassesWithOverlap:(id)arg1;
-- (id)clipBoxes:(id)arg1;
-- (id)filterBoxes:(id)arg1;
-- (id)nmsBoxes:(id)arg1;
-- (id)parseNetOut;
-- (void)generateAnchors;
-- (void)postprocess;
-- (void)infer;
-- (void)preprocessOnSurface:(id)arg1 withPointCloud:(id)arg2;
-- (id)extendSurface:(id)arg1 byLength:(float)arg2;
-- (void)runPipelineOnSurface:(id)arg1 withPointCloud:(id)arg2;
-- (_Bool)isValidSurface:(id)arg1;
-- (_Bool)isValidOpening:(id)arg1;
-- (id)detectWithPointCloud:(id)arg1 walls:(id)arg2 lcnnOpenings:(id)arg3;
-- (id)detectWithPointCloud:(id)arg1 walls:(id)arg2 lcnnOpenings:(id)arg3 isOnline:(_Bool)arg4;
 - (void)dealloc;
 - (id)init;
 

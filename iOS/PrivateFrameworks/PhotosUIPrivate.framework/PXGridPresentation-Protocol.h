@@ -6,8 +6,7 @@
 
 #import <PhotosUIPrivate/NSObject-Protocol.h>
 
-@class NSString, PHAssetCollection, PHCollection, PHCollectionList, PHFetchResult, PHPhotoLibrary, PXPhotosUIViewController, UIViewController;
-@protocol NSFastEnumeration, PXGridPresentationBarsUpdateDelegate;
+@class PHAssetCollection, PHCollection, PHCollectionList, PHFetchResult, PXPhotosUIViewController, UIViewController;
 
 @protocol PXGridPresentation <NSObject>
 
@@ -20,6 +19,5 @@
 - (UIViewController *)createAlbumListViewControllerWithCollectionList:(PHCollectionList *)arg1;
 - (UIViewController *)createViewControllerForAssetCollection:(PHAssetCollection *)arg1 existingAssetsFetchResult:(PHFetchResult *)arg2;
 - (UIViewController *)createViewControllerForAssetCollection:(PHAssetCollection *)arg1;
-- (void)createGridViewControllerWithAssets:(id <NSFastEnumeration>)arg1 photoLibrary:(PHPhotoLibrary *)arg2 withTitle:(NSString *)arg3 hideTabBar:(_Bool)arg4 gridPresentationContext:(long long)arg5 containerViewController:(UIViewController *)arg6 barsUpdateDelegate:(id <PXGridPresentationBarsUpdateDelegate>)arg7 andCompletion:(void (^)(UIViewController *))arg8;
 @end
 

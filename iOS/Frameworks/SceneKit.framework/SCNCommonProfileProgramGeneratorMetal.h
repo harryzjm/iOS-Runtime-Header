@@ -13,11 +13,13 @@ __attribute__((visibility("hidden")))
     _Bool _useFunctionConstants;
     NSString *_originalSourceCode;
     NSArray *_injectionPointRanges;
+    struct _NSRange _commonProfileIORange;
     NSString *_originalLightingSourceCode;
     NSArray *_lightingInjectionPointRanges;
 }
 
-- (void)collectShaderForProgram:(struct __C3DFXMetalProgram *)arg1 newVertexFunctionName:(id)arg2 newFragmentFunctionName:(id)arg3 sourceCodeBlock:(CDUnknownBlockType)arg4 additionalFileBlock:(CDUnknownBlockType)arg5;
+- (void)collectShaderForProgram:(struct __C3DFXMetalProgram *)arg1 hashCode:(id)arg2 newVertexFunctionName:(id)arg3 newFragmentFunctionName:(id)arg4 sourceCodeBlock:(CDUnknownBlockType)arg5 additionalFileBlock:(CDUnknownBlockType)arg6;
+- (id)splitInputOutputStructsIfNeededForSourceCode:(id)arg1 generatedFromReplacementStrings:(id)arg2 perPixelLighting:(_Bool)arg3 clipDistanceCount:(unsigned long long)arg4;
 - (struct __C3DFXProgram *)_newProgramWithHashCode:(struct __C3DProgramHashCode *)arg1 engineContext:(struct __C3DEngineContext *)arg2 introspectionDataPtr:(void *)arg3;
 - (struct __C3DFXProgram *)_newProgramWithHashCodeWithFunctionConstants:(struct __C3DProgramHashCode *)arg1 engineContext:(struct __C3DEngineContext *)arg2 introspectionDataPtr:(void *)arg3;
 - (void)dealloc;

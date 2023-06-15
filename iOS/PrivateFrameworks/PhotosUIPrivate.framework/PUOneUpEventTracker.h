@@ -36,9 +36,12 @@ __attribute__((visibility("hidden")))
     long long _currentlyPlayingVideoSignpost;
     long long _currentlyPlayingStreamedVideoSignpost;
     long long _currentlyPlayingStreamedVideoStartSignpost;
+    long long _currentlyShowingInfoPanelSignpost;
 }
 
++ (void)_sendMapSelectionEventToBiomeWithAssetUUID:(id)arg1;
 - (void).cxx_destruct;
+@property(nonatomic) long long currentlyShowingInfoPanelSignpost; // @synthesize currentlyShowingInfoPanelSignpost=_currentlyShowingInfoPanelSignpost;
 @property(nonatomic) long long currentlyPlayingStreamedVideoStartSignpost; // @synthesize currentlyPlayingStreamedVideoStartSignpost=_currentlyPlayingStreamedVideoStartSignpost;
 @property(nonatomic) long long currentlyPlayingStreamedVideoSignpost; // @synthesize currentlyPlayingStreamedVideoSignpost=_currentlyPlayingStreamedVideoSignpost;
 @property(nonatomic) long long currentlyPlayingVideoSignpost; // @synthesize currentlyPlayingVideoSignpost=_currentlyPlayingVideoSignpost;
@@ -65,6 +68,15 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) PUBrowsingViewModel *viewModel; // @synthesize viewModel=_viewModel;
 - (void)viewModel:(id)arg1 didChange:(id)arg2;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
+- (void)_logInfoPanelChangeEventsIfNeededWithChange:(id)arg1;
+- (void)logInfoPanelClosedBy:(long long)arg1;
+- (void)logInfoPanelOpenedBy:(long long)arg1;
+- (void)logTipPresentedForType:(long long)arg1;
+- (void)logInfoPanelShownAndSwipeToNewAsset;
+- (void)endLoggingTimeInterval:(long long)arg1 event:(id)arg2;
+- (long long)startLoggingTimeInterval;
+- (void)logInfoPanelRotatedToHorizontalView;
+- (void)logViewControllerDidAppear:(id)arg1;
 - (void)_logWillEndPlaybackOfStreamedVideoAsset:(id)arg1;
 - (void)_logDidStartActualPlaybackOfStreamedVideoAsset:(id)arg1;
 - (void)_logDidStartPlaybackOfStreamedVideoAsset:(id)arg1;
@@ -81,6 +93,8 @@ __attribute__((visibility("hidden")))
 - (void)logDidEndViewingMedia:(id)arg1 mediaKind:(long long)arg2 duration:(double)arg3;
 - (void)logDidStartViewingMedia:(id)arg1 mediaKind:(long long)arg2;
 - (void)setDisplayedAsset:(id)arg1;
+- (void)_updateOneUpInfoPanelShowingSignpost;
+- (void)_invalidateOneUpInfoPanelShowingSignpost;
 - (void)_updateCurrentVideoProperties;
 - (void)_invalidateCurrentVideoProperties;
 - (void)_updateCurrentVideoPlayer;

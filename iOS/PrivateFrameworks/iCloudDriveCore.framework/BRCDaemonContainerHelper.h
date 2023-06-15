@@ -7,16 +7,20 @@
 #import <objc/NSObject.h>
 
 @class NSSet, NSString;
+@protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface BRCDaemonContainerHelper : NSObject
 {
     NSSet *_disabledBundleIDs;
     NSSet *_knownBundleIDs;
+    int _TCCAccessChangedNotificationToken;
+    NSObject<OS_dispatch_queue> *_queue;
 }
 
++ (id)sharedHelper;
 - (void).cxx_destruct;
-- (id)queryPathsForPersona:(id)arg1 withError:(id *)arg2;
+- (void)dealloc;
 - (id)itemIDForURL:(id)arg1 error:(id *)arg2;
 - (unsigned short)br_capabilityToMoveFromURL:(id)arg1 toNewParent:(id)arg2 error:(id *)arg3;
 - (unsigned short)br_capabilityToMoveFromLocalItem:(id)arg1 toNewParent:(id)arg2 session:(id)arg3 error:(id *)arg4;
@@ -24,7 +28,8 @@ __attribute__((visibility("hidden")))
 - (id)fetchContainerForMangledID:(id)arg1 personaID:(id)arg2;
 - (id)fetchAllContainersByIDWithError:(id *)arg1;
 - (_Bool)canFetchAllContainersByID;
-- (id)init;
+- (void)_computeTCCEnabledDisabledBundleIdentifiers;
+- (id)_init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

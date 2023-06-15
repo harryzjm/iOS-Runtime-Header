@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIBezierPath.h>
+#import <UIKitCore/UIBezierPath.h>
 
 @interface UIBezierPath (Bridge)
 + (id)ts_bezierPathWithPillRect:(struct CGRect)arg1 cornerRadius:(double)arg2;

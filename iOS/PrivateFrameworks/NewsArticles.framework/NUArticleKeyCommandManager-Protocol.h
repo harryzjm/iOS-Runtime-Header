@@ -9,10 +9,10 @@
 @class NSArray, NSString, UIKeyCommand, UIScrollView;
 
 @protocol NUArticleKeyCommandManager <NSObject>
+@property(readonly, nonatomic) _Bool hasBeenTraversed;
 - (void)registerScrollView:(UIScrollView *)arg1;
 - (void)handleKey:(NSString *)arg1 flags:(long long)arg2;
 - (void)handleKeyCommand:(UIKeyCommand *)arg1;
 - (NSArray *)keyCommandsWithSelector:(SEL)arg1;
-@property(nonatomic, readonly) _Bool hasBeenTraversed;
 @end
 

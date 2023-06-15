@@ -9,10 +9,10 @@
     tvec3_17f03ce0 _normalBias;
 }
 
-+ (id)mapperWithNormalBias:(const void *)arg1;
++ (id)mapperWithNormalBias:(void *)arg1;
 - (id).cxx_construct;
-- (void)mapFromVertexArray:(const void *)arg1 normalArray:(const void *)arg2 normalMatrix:(const void *)arg3 numVertices:(long long)arg4 destination:(void *)arg5;
-- (id)initWithNormalBias:(const void *)arg1;
+- (void)mapFromVertexArray:(const void *)arg1 normalArray:(const void *)arg2 normalMatrix:(void *)arg3 numVertices:(long long)arg4 destination:(void *)arg5;
+- (id)initWithNormalBias:(void *)arg1;
 
 @end
 

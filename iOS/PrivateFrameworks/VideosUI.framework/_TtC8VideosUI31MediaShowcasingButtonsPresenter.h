@@ -10,8 +10,17 @@
 
 @interface _TtC8VideosUI31MediaShowcasingButtonsPresenter : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *_alpha;
     MISSING_TYPE *_metadataViewModel;
-    MISSING_TYPE *_isFullscreenButtonVisible;
+    MISSING_TYPE *metadataViewModelIndex;
+    MISSING_TYPE *_autoPlayButtonState;
+    MISSING_TYPE *countdownButtonShown;
+    MISSING_TYPE *postPlayDidAppearObserver;
+    MISSING_TYPE *autoPlayDuration;
+    MISSING_TYPE *autoPlayButtonTriggered;
+    MISSING_TYPE *onPlayPressed;
+    MISSING_TYPE *$__lazy_storage_$_countDownButton;
+    MISSING_TYPE *$__lazy_storage_$_playTrailerButton;
 }
 
 @end

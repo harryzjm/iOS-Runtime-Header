@@ -10,6 +10,7 @@
 
 @protocol _SFPBNewsCardSection <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
+@property(nonatomic) _Bool overlayTextInImage;
 @property(retain, nonatomic) _SFPBRichText *providerTitle;
 @property(retain, nonatomic) _SFPBImage *providerImage;
 @property(retain, nonatomic) _SFPBImage *thumbnail;

@@ -9,6 +9,8 @@
 @class NSData, NSDictionary, NSNumber, NSString, NSUUID;
 
 @protocol NSSCompanionServerProtocol <NSSServerProtocol>
+- (void)updateBetaEnrollmentStatus:(NSData *)arg1 requiresUnenroll:(_Bool)arg2 withCompletion:(void (^)(_Bool, NSError *))arg3;
+- (void)fetchBetaEnrollmentStatus:(void (^)(NSData *, NSError *))arg1;
 - (void)setWatchFaceIdentifier:(NSUUID *)arg1 forFocusModeIdentifier:(NSString *)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)getWatchFaces:(void (^)(NSArray *, NSError *))arg1;
 - (void)recordSoftwareUpdateSpaceFailure:(NSNumber *)arg1 osBeingUpdatedTo:(NSString *)arg2 completion:(void (^)(NSError *))arg3;

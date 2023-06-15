@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 - (double)expandedIconScale;
 - (double)normalIconScale;
 - (double)lowerExpandedBaselineOffset;
+- (struct CGSize)expandedPillSize;
 - (struct CGSize)pillSize;
 - (double)itemSpacing;
 

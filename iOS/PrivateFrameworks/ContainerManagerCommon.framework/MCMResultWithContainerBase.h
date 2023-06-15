@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MCMError, MCMPOSIXUser, NSArray, NSDictionary, NSString, NSURL, NSUUID;
+@class MCMError, MCMPOSIXUser, NSDictionary, NSString, NSURL, NSUUID;
 
 __attribute__((visibility("hidden")))
 @interface MCMResultWithContainerBase
@@ -20,12 +20,12 @@ __attribute__((visibility("hidden")))
     char *_sandboxToken;
     NSURL *_url;
     NSDictionary *_info;
-    NSArray *_resolvedLinks;
+    NSString *_userManagedAssetsRelPath;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *userManagedAssetsRelPath; // @synthesize userManagedAssetsRelPath=_userManagedAssetsRelPath;
 @property(readonly, nonatomic) _Bool transient; // @synthesize transient=_transient;
-@property(readonly, nonatomic) NSArray *resolvedLinks; // @synthesize resolvedLinks=_resolvedLinks;
 @property(readonly, nonatomic) NSDictionary *info; // @synthesize info=_info;
 @property(readonly, nonatomic) NSURL *url; // @synthesize url=_url;
 @property(readonly, nonatomic) _Bool existed; // @synthesize existed=_existed;
@@ -37,9 +37,9 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSString *containerPathIdentifier; // @synthesize containerPathIdentifier=_containerPathIdentifier;
 @property(readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 - (void)dealloc;
-- (id)initWithMetadata:(id)arg1 sandboxToken:(const char *)arg2 includePath:(_Bool)arg3 includeInfo:(_Bool)arg4 resolvedLinks:(id)arg5;
+- (id)initWithMetadata:(id)arg1 sandboxToken:(const char *)arg2 includePath:(_Bool)arg3 includeInfo:(_Bool)arg4 includeUserManagedAssetsRelPath:(_Bool)arg5;
 - (id)initWithContainerPath:(id)arg1 containerIdentity:(id)arg2 uuid:(id)arg3 sandboxToken:(const char *)arg4 includePath:(_Bool)arg5;
-- (id)initWithUUID:(id)arg1 containerPathIdentifier:(id)arg2 identifier:(id)arg3 containerClass:(unsigned long long)arg4 POSIXUser:(id)arg5 personaUniqueString:(id)arg6 sandboxToken:(const char *)arg7 existed:(_Bool)arg8 url:(id)arg9 info:(id)arg10 resolvedLinks:(id)arg11 transient:(_Bool)arg12;
+- (id)initWithUUID:(id)arg1 containerPathIdentifier:(id)arg2 identifier:(id)arg3 containerClass:(unsigned long long)arg4 POSIXUser:(id)arg5 personaUniqueString:(id)arg6 sandboxToken:(const char *)arg7 existed:(_Bool)arg8 url:(id)arg9 info:(id)arg10 transient:(_Bool)arg11 userManagedAssetsRelPath:(id)arg12;
 - (_Bool)encodeResultOntoReply:(id)arg1;
 
 // Remaining properties

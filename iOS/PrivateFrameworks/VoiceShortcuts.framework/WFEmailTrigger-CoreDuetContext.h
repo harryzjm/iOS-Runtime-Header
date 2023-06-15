@@ -7,9 +7,10 @@
 #import <WorkflowKit/WFEmailTrigger.h>
 
 @interface WFEmailTrigger (CoreDuetContext)
-- (_Bool)requiresEventInfoAsInput;
 - (unsigned int)contextStoreQualityOfService;
 - (id)contextStorePredicate;
 - (id)contextStoreKeyPathForCurrentState;
+- (id)contentCollectionWithEventInfo:(id)arg1;
+- (_Bool)requiresEventInfoAsInput;
 @end
 

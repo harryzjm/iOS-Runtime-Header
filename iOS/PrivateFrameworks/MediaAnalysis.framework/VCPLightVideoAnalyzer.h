@@ -17,9 +17,11 @@ __attribute__((visibility("hidden")))
     NSArray *_metaTracks;
     NSMutableDictionary *_publicMutableResults;
     NSMutableDictionary *_privateMutableResults;
+    float _photoOffset;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) float photoOffset; // @synthesize photoOffset=_photoOffset;
 @property(readonly, nonatomic) NSDictionary *privateResults;
 @property(readonly, nonatomic) NSDictionary *publicResults;
 - (int)analyzeAsset:(CDUnknownBlockType)arg1 flags:(unsigned long long *)arg2;

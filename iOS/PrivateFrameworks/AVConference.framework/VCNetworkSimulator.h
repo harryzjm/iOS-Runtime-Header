@@ -16,16 +16,19 @@ __attribute__((visibility("hidden")))
     _Bool _isStarted;
     struct tagVCRealTimeThread *_thread;
     struct _opaque_pthread_mutex_t _mutex;
-    struct _opaque_pthread_cond_t _condition;
+    struct _opaque_pthread_cond_t _packetPushedCondition;
+    struct _opaque_pthread_cond_t _queueEmptyCondition;
+    _Bool _isQueueEmpty;
 }
 
 + (id)sharedInstance;
 @property(readonly, nonatomic) VCEmulatedNetwork *network; // @synthesize network=_network;
+- (int)waitForCondition:(struct _opaque_pthread_cond_t *)arg1 withTimeout:(double)arg2 conditionPredicate:(_Bool *)arg3;
 - (int)processNetwork;
 - (void)stop;
 - (void)start;
 - (void)setupNetwork;
-- (id)loadPoliciesFromJsonFile;
+- (id)loadPoliciesFromJson;
 - (id)createDefaultPolicies;
 - (void)dealloc;
 - (id)init;

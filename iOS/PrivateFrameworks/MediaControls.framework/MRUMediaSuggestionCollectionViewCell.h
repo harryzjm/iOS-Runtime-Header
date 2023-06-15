@@ -6,31 +6,42 @@
 
 #import <UIKit/UICollectionViewCell.h>
 
-@class MRUArtworkView, MRUVisualStylingProvider, NSString, UIActivityIndicatorView, UILabel;
+@class BSUIEmojiLabelView, MRUArtworkView, MRUShadowView, MRUVisualStylingProvider, NSString, UIActivityIndicatorView, UIImage, UIImageView, UILabel;
 
 __attribute__((visibility("hidden")))
 @interface MRUMediaSuggestionCollectionViewCell : UICollectionViewCell
 {
-    MRUArtworkView *_artworkView;
+    NSString *_suggestionIdentifier;
+    UIImage *_artworkImage;
+    UIImage *_iconImage;
     NSString *_title;
     NSString *_subtitle;
     MRUVisualStylingProvider *_stylingProvider;
     long long _layout;
+    MRUArtworkView *_artworkView;
+    UIImageView *_iconView;
+    MRUShadowView *_iconShadowView;
     UIActivityIndicatorView *_activityView;
     UILabel *_titleLabel;
-    UILabel *_subtitleLabel;
+    BSUIEmojiLabelView *_subtitleLabel;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) UILabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
+@property(retain, nonatomic) BSUIEmojiLabelView *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
 @property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property(retain, nonatomic) UIActivityIndicatorView *activityView; // @synthesize activityView=_activityView;
+@property(retain, nonatomic) MRUShadowView *iconShadowView; // @synthesize iconShadowView=_iconShadowView;
+@property(retain, nonatomic) UIImageView *iconView; // @synthesize iconView=_iconView;
+@property(retain, nonatomic) MRUArtworkView *artworkView; // @synthesize artworkView=_artworkView;
 @property(nonatomic) long long layout; // @synthesize layout=_layout;
 @property(retain, nonatomic) MRUVisualStylingProvider *stylingProvider; // @synthesize stylingProvider=_stylingProvider;
 @property(copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
-@property(readonly, nonatomic) MRUArtworkView *artworkView; // @synthesize artworkView=_artworkView;
+@property(retain, nonatomic) UIImage *iconImage; // @synthesize iconImage=_iconImage;
+@property(retain, nonatomic) UIImage *artworkImage; // @synthesize artworkImage=_artworkImage;
+@property(copy, nonatomic) NSString *suggestionIdentifier; // @synthesize suggestionIdentifier=_suggestionIdentifier;
 - (void)updateVisiblity;
+- (void)updateIconView;
 - (void)updateContentSizeCategory;
 - (void)updateVisualStyling;
 - (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
@@ -38,7 +49,6 @@ __attribute__((visibility("hidden")))
 - (void)visualStylingProviderDidChange:(id)arg1;
 - (void)setSelected:(_Bool)arg1;
 - (void)setHighlighted:(_Bool)arg1;
-- (void)prepareForReuse;
 - (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1;
 

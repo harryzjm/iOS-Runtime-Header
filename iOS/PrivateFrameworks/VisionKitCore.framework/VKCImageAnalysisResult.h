@@ -6,12 +6,13 @@
 
 #import "VKCTextRecognitionResult.h"
 
-@class NSArray, UIMenu, UIViewController, VKCImageAnalyzerRequest, VKCVisualSearchResult;
+@class NSArray, UIMenu, UIViewController, VKCImageAnalyzerRequest, VKCImageSubjectContext, VKCVisualSearchResult;
 
 __attribute__((visibility("hidden")))
 @interface VKCImageAnalysisResult : VKCTextRecognitionResult
 {
     int _analysisRequestID;
+    VKCImageSubjectContext *_cachedSubjectContext;
     VKCVisualSearchResult *_visualSearchResult;
     VKCImageAnalyzerRequest *_request;
     double _totalBoundingBoxTextArea;
@@ -25,6 +26,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) int analysisRequestID; // @synthesize analysisRequestID=_analysisRequestID;
 @property(retain, nonatomic) VKCImageAnalyzerRequest *request; // @synthesize request=_request;
 @property(retain, nonatomic) VKCVisualSearchResult *visualSearchResult; // @synthesize visualSearchResult=_visualSearchResult;
+@property(retain, nonatomic) VKCImageSubjectContext *cachedSubjectContext; // @synthesize cachedSubjectContext=_cachedSubjectContext;
 @property(readonly, nonatomic) NSArray *appClipDataDetectorElements;
 @property(readonly, nonatomic) NSArray *mrcDataDetectorElements;
 @property(readonly, nonatomic) NSArray *textDataDetectorElements;

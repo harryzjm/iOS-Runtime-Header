@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIButton.h>
+#import <UIKitCore/UIButton.h>
 
 @interface UIButton (HUClipScrubberAdditions)
 + (void)hu_microphoneButton:(id)arg1 forTalkingState:(_Bool)arg2 usingStandardSymbolConfiguration:(_Bool)arg3;

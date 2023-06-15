@@ -29,6 +29,8 @@ __attribute__((visibility("hidden")))
     int cancelledRequestIDThreshold;
     NSObject<OS_dispatch_queue> *generateImagesAsyncQueue;
     _Bool prefersStandardDynamicRange;
+    _Bool allowsProfessionalVideoWorkflowVideoDecoders;
+    _Bool useSWDecoderForAV1;
 }
 
 @end

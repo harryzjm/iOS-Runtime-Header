@@ -11,19 +11,26 @@
 @interface _TtC15SeymourServices32RemoteBrowsingEnvironmentBuilder : _TtCs12_SwiftObject
 {
     MISSING_TYPE *accountProvider;
+    MISSING_TYPE *analyticsReporter;
     MISSING_TYPE *archivedSessionDataStore;
     MISSING_TYPE *bookmarkDataStore;
     MISSING_TYPE *catalogDataStore;
     MISSING_TYPE *contactService;
     MISSING_TYPE *contentRestrictionObserver;
     MISSING_TYPE *configurationDataStore;
-    MISSING_TYPE *engagementDataStore;
     MISSING_TYPE *displayPreferenceDataStore;
+    MISSING_TYPE *engagementDataStore;
+    MISSING_TYPE *upNextQueueDataStore;
+    MISSING_TYPE *healthStore;
     MISSING_TYPE *metricIdentifierProvider;
     MISSING_TYPE *persistenceStore;
     MISSING_TYPE *privacyPreferenceDataSource;
     MISSING_TYPE *recommendationScriptClient;
     MISSING_TYPE *serviceSubscriptionProviderBroker;
+    MISSING_TYPE *workoutPlanDataStore;
+    MISSING_TYPE *workoutPlanSummaryBuilder;
+    MISSING_TYPE *state;
+    MISSING_TYPE *environment;
 }
 
 @end

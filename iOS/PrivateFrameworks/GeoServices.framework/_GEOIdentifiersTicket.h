@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)cancel;
-- (CDStruct_d1a7ebee)dataRequestKind;
+- (CDStruct_026435ec)dataRequestKind;
 - (void)submitWithHandler:(CDUnknownBlockType)arg1 auditToken:(id)arg2 timeout:(long long)arg3 networkActivity:(CDUnknownBlockType)arg4;
 - (id)description;
 - (id)initWithIdentifiers:(id)arg1 resultProviderID:(int)arg2 contentProvider:(id)arg3 traits:(id)arg4 options:(unsigned long long)arg5;

@@ -10,6 +10,11 @@
 @protocol MAGraphProxy;
 
 @protocol MAElement <NSObject>
+@property(readonly, nonatomic) float weight;
+@property(readonly, nonatomic) unsigned short domain;
+@property(readonly, copy, nonatomic) NSString *label;
+@property(readonly, nonatomic) unsigned long long identifier;
+@property(readonly, nonatomic) id <MAGraphProxy> graph;
 - (NSString *)visualString;
 - (void)enumeratePropertiesUsingBlock:(void (^)(NSString *, id, _Bool *))arg1;
 - (NSDictionary *)propertyDictionary;
@@ -20,10 +25,5 @@
 - (_Bool)hasProperties:(NSDictionary *)arg1;
 - (id)propertyForKey:(NSString *)arg1 kindOfClass:(Class)arg2;
 - (id)propertyForKey:(NSString *)arg1;
-@property(nonatomic, readonly) float weight;
-@property(nonatomic, readonly) unsigned short domain;
-@property(nonatomic, readonly) NSString *label;
-@property(nonatomic, readonly) unsigned long long identifier;
-@property(nonatomic, readonly) id <MAGraphProxy> graph;
 @end
 

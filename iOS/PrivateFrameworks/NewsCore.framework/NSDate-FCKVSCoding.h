@@ -17,6 +17,7 @@
 + (id)fc_laterDateAllowingNilWithDate:(id)arg1 andDate:(id)arg2;
 + (id)fc_earlierDateAllowingNilWithDate:(id)arg1 andDate:(id)arg2;
 + (id)fc_dateWithMillisecondTimeIntervalSince1970:(unsigned long long)arg1;
++ (id)fc_dateWithTimeIntervalBeforeNow:(double)arg1;
 + (id)fc_dateFromStringWithHTTPHeaderFormat:(id)arg1;
 + (id)fc_dateFromStringWithISO8601Format:(id)arg1;
 + (id)fc_dateFromString:(id)arg1 possibleFormats:(id)arg2;
@@ -36,6 +37,7 @@
 - (_Bool)isToday;
 - (long long)fc_GregorianCalendarDaysSinceDate:(id)arg1;
 - (id)fc_dateOfEarliestGregorianCalendarDay;
+- (unsigned long long)fc_millisecondTimeIntervalUntilNow;
 - (unsigned long long)fc_millisecondTimeIntervalSinceDate:(id)arg1;
 - (unsigned long long)fc_millisecondTimeIntervalSince1970;
 - (id)fc_dateBySubtractingTimeInterval:(double)arg1;

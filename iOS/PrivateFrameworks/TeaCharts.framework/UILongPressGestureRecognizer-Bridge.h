@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UILongPressGestureRecognizer.h>
+#import <UIKitCore/UILongPressGestureRecognizer.h>
 
 @interface UILongPressGestureRecognizer (Bridge)
 @property(readonly, nonatomic) struct CGPoint tc_startPoint;

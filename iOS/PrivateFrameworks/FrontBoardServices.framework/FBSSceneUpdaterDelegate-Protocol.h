@@ -11,7 +11,7 @@
 
 @protocol FBSSceneUpdaterDelegate <NSObject>
 - (void)updater:(id <FBSSceneUpdater>)arg1 didReceiveMessage:(FBSSceneMessage *)arg2 withResponse:(void (^)(FBSSceneMessage *))arg3;
-- (void)updater:(id <FBSSceneUpdater>)arg1 didReceiveActions:(NSSet *)arg2;
+- (void)updater:(id <FBSSceneUpdater>)arg1 didReceiveActions:(NSSet *)arg2 forExtension:(Class)arg3;
 - (void)updater:(id <FBSSceneUpdater>)arg1 didUpdateSettings:(FBSSceneSettings *)arg2 withDiff:(FBSSceneSettingsDiff *)arg3 transitionContext:(FBSSceneTransitionContext *)arg4 completion:(void (^)(FBSWorkspaceSceneUpdateResponse *))arg5;
 @end
 

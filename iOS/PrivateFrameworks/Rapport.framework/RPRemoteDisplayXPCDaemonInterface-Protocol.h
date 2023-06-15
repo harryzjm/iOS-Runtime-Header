@@ -4,11 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDictionary, NSNumber, NSString, RPRemoteDisplayDiscovery, RPRemoteDisplayServer, RPRemoteDisplaySession;
+@class NSDictionary, NSNumber, NSString, RPRemoteDisplayDiscovery, RPRemoteDisplayPerson, RPRemoteDisplayServer, RPRemoteDisplaySession;
 
 @protocol RPRemoteDisplayXPCDaemonInterface
+- (void)remoteDisplayChangeDiscoverySessionStateForDevice:(NSString *)arg1 reason:(NSString *)arg2;
+- (void)remoteDisplayPersonSelected:(RPRemoteDisplayPerson *)arg1;
 - (void)remoteDisplaySendRequestID:(NSString *)arg1 request:(NSDictionary *)arg2 options:(NSDictionary *)arg3 responseHandler:(void (^)(NSDictionary *, NSDictionary *, NSError *))arg4;
 - (void)remoteDisplaySendEventID:(NSString *)arg1 event:(NSDictionary *)arg2 options:(NSDictionary *)arg3 completion:(void (^)(NSError *))arg4;
+- (void)remoteDisplayStopPairingServer;
+- (void)remoteDisplayStartPairingServerWithCompletion:(void (^)(NSData *, NSError *))arg1;
 - (void)remoteDisplayTryPassword:(NSString *)arg1;
 - (void)remoteDisplayInvalidateSessionID:(NSNumber *)arg1;
 - (void)remoteDisplayActivateSession:(RPRemoteDisplaySession *)arg1 completion:(void (^)(NSError *))arg2;

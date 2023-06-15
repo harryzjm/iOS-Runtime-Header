@@ -8,12 +8,14 @@
 
 typedef struct {
     unsigned int _field1;
-    float _field2;
-    float _field3;
-    unsigned int _field4;
-    unsigned int _field5;
+    unsigned int _field2;
+    unsigned int _field3;
+    float _field4;
+    float _field5;
     float _field6;
     float _field7;
-    unsigned char _field8[4];
-} CDStruct_0adfc866;
+    float _field8;
+    float _field9;
+    unsigned char _field10[4];
+} CDStruct_64ffe1fa;
 

@@ -7,10 +7,14 @@
 #import <AuthenticationServices/NSObject-Protocol.h>
 
 @class ASPasswordCredentialIdentity, NSArray;
+@protocol ASCredentialRequest;
 
 @protocol _ASCredentialProviderExtensionContextProtocol <NSObject>
 - (void)prepareInterfaceForExtensionConfiguration;
+- (void)prepareInterfaceForPasskeyRegistration:(id <ASCredentialRequest>)arg1 completionHandler:(void (^)(void))arg2;
+- (void)prepareInterfaceToProvideCredentialForRequest:(id <ASCredentialRequest>)arg1 completionHandler:(void (^)(void))arg2;
 - (void)prepareInterfaceToProvideCredentialForIdentity:(ASPasswordCredentialIdentity *)arg1 completionHandler:(void (^)(void))arg2;
+- (void)provideCredentialWithoutUserInteractionForRequest:(id <ASCredentialRequest>)arg1;
 - (void)provideCredentialWithoutUserInteractionForIdentity:(ASPasswordCredentialIdentity *)arg1;
 - (void)prepareCredentialListForServiceIdentifiers:(NSArray *)arg1 completionHandler:(void (^)(void))arg2;
 @end

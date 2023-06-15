@@ -9,5 +9,6 @@
 @interface UIAction (SafariServicesExtras)
 + (id)_sf_debugKillWebProcessActionForWebView:(id)arg1;
 + (id)_sf_openInNewTabActionWithHandler:(CDUnknownBlockType)arg1;
++ (id)safari_actionWithTarget:(id)arg1 selector:(SEL)arg2;
 @end
 

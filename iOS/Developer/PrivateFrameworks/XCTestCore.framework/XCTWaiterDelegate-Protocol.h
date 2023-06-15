@@ -9,6 +9,8 @@
 @class NSArray, XCTWaiter, XCTestExpectation;
 
 @protocol XCTWaiterDelegate <NSObject>
+
+@optional
 - (void)nestedWaiter:(XCTWaiter *)arg1 wasInterruptedByTimedOutWaiter:(XCTWaiter *)arg2;
 - (void)waiter:(XCTWaiter *)arg1 didFulfillInvertedExpectation:(XCTestExpectation *)arg2;
 - (void)waiter:(XCTWaiter *)arg1 fulfillmentDidViolateOrderingConstraintsForExpectation:(XCTestExpectation *)arg2 requiredExpectation:(XCTestExpectation *)arg3;

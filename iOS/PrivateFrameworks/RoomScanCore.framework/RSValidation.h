@@ -10,10 +10,5 @@
 {
 }
 
-+ (_Bool)validateFloorPlan:(id)arg1;
-+ (_Bool)checkChildNodeGeometryConstraint:(id)arg1;
-+ (_Bool)checkParentIdentifierIsValid:(id)arg1;
-+ (_Bool)checkSurfaceUuidIsUnique:(id)arg1;
-
 @end
 

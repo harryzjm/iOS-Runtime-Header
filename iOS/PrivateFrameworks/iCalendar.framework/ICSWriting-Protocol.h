@@ -10,7 +10,7 @@
 @protocol ICSWriting
 - (NSSet *)propertiesToHide;
 - (_Bool)shouldObscureValue;
-- (NSSet *)parametersToObscure;
+- (_Bool)shouldObscureParameter:(NSString *)arg1;
 - (NSSet *)propertiesToObscure;
 - (NSSet *)propertiesThatIfPresentExcludeThisComponentFromChecksummingForVersion:(int)arg1;
 - (NSSet *)parametersToIncludeForChecksumVersion:(int)arg1;

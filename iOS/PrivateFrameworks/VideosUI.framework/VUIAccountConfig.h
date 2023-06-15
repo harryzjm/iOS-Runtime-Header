@@ -10,8 +10,10 @@ __attribute__((visibility("hidden")))
 @interface VUIAccountConfig : NSObject
 {
     _Bool _showAccountSettingButtonOnLibraryTab;
+    _Bool _showAccountSettingOnSidebar;
 }
 
+@property(nonatomic) _Bool showAccountSettingOnSidebar; // @synthesize showAccountSettingOnSidebar=_showAccountSettingOnSidebar;
 @property(nonatomic) _Bool showAccountSettingButtonOnLibraryTab; // @synthesize showAccountSettingButtonOnLibraryTab=_showAccountSettingButtonOnLibraryTab;
 - (id)init;
 

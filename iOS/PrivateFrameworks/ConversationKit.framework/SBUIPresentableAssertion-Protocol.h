@@ -9,6 +9,6 @@
 @class NSString;
 
 @protocol SBUIPresentableAssertion <BSInvalidatable>
-@property(nonatomic, readonly) NSString *reason;
+@property(readonly, copy, nonatomic) NSString *reason;
 @end
 

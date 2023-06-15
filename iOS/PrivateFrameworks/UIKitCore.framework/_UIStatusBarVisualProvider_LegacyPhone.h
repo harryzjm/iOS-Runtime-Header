@@ -68,6 +68,7 @@ __attribute__((visibility("hidden")))
 - (id)_animationForSingleLineDualCarrier;
 - (id)willUpdateWithData:(id)arg1;
 - (void)actionable:(id)arg1 highlighted:(_Bool)arg2 initialPress:(_Bool)arg3;
+- (double)animatedTypeDisplayItemSpacingFactorForCellularType:(long long)arg1;
 - (id)condensedFontForCellularType:(long long)arg1 defaultFont:(id)arg2 baselineOffset:(double *)arg3;
 - (id)stringForCellularType:(long long)arg1 condensed:(_Bool)arg2;
 - (void)itemCreated:(id)arg1;

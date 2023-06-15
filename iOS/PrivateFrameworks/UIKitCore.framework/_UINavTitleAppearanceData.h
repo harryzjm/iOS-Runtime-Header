@@ -18,7 +18,6 @@ __attribute__((visibility("hidden")))
 
 + (id)decodeFromCoder:(id)arg1 prefix:(id)arg2;
 + (id)standardTitleDataForIdiom:(long long)arg1;
-+ (id)standardTitleData;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSDictionary *largeTitleTextAttributes;
 @property(nonatomic) struct UIOffset titlePositionAdjustment;

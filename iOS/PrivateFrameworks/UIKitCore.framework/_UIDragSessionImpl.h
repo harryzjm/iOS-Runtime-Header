@@ -32,7 +32,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) id localContext; // @synthesize localContext=_localContext;
 - (id)_setDownAnimation:(id)arg1 customSpringAnimationBehaviorForSetDownOfDragItem:(id)arg2;
 - (_Bool)_setDownAnimation:(id)arg1 shouldDelaySetDownOfDragItem:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_setDownAnimation:(id)arg1 willAnimateSetDownOfDragItem:(id)arg2 withAnimator:(id)arg3;
+- (void)_setDownAnimation:(id)arg1 willAnimateSetDownOfDragItem:(id)arg2 withAnimator:(id)arg3 preview:(id)arg4;
 - (id)_setDownAnimation:(id)arg1 prepareForSetDownOfDragItem:(id)arg2 visibleDroppedItem:(id)arg3;
 - (id)_windowForSetDownOfDragItem:(id)arg1;
 - (void)draggingSessionDidTransferItems:(id)arg1;

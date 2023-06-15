@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
     id <GGLRenderQueueSource> _renderSource;
     struct unique_ptr<ggl::IOSurfaceTexture, std::default_delete<ggl::IOSurfaceTexture>> _flippedSurfaceTexture;
     struct unique_ptr<ggl::RenderTarget, std::default_delete<ggl::RenderTarget>> _flippedRenderTarget;
-    struct unique_ptr<(anonymous namespace)::YFlipPass, std::default_delete<(anonymous namespace)::YFlipPass>> _yFlipPass;
+    struct unique_ptr<md::YFlipPass, std::default_delete<md::YFlipPass>> _yFlipPass;
     struct RenderTargetFormat _sRGBFormat;
     struct RenderTargetFormat _resolvedRenderTargetFormat;
     struct unique_ptr<ggl::Renderer, std::default_delete<ggl::Renderer>> _renderer;
@@ -35,14 +35,13 @@ __attribute__((visibility("hidden")))
     struct unique_ptr<ggl::RenderTarget, std::default_delete<ggl::RenderTarget>> _linearRenderTarget;
     struct shared_ptr<ggl::Texture2DAbstract> _linearColorBuffer;
     struct array<std::shared_ptr<ggl::RenderBuffer>, 3UL> _linearColorTextures;
-    struct unique_ptr<ggl::RenderTarget, std::default_delete<ggl::RenderTarget>> _blitRenderTarget;
-    struct RenderTargetFormat _blitFormat;
     _Bool _useMultisampling;
     struct shared_ptr<ggl::Texture> _msaaResolveBuffer;
     unsigned long long _signpostId;
     void *_mdDevice;
     struct mutex _debugConsoleManagerCreationLock;
     struct unique_ptr<md::DebugConsoleManager, std::default_delete<md::DebugConsoleManager>> _debugConsoleManager;
+    void *_services;
 }
 
 - (id).cxx_construct;
@@ -57,14 +56,12 @@ __attribute__((visibility("hidden")))
 - (void *)debugConsoleForId:(int)arg1;
 - (void)didDrawView;
 - (void)willDrawView;
-- (void)renderWithTimestamp:(double)arg1 completion:(function_ffe40f9b)arg2;
+-     // Error parsing type: {function<void (std::function<std::future<void> (std::function<void ()>)>, std::function<std::future<void> (std::function<void ()>)>)>={__value_func<void (std::function<std::future<void> (std::function<void ()>)>, std::function<std::future<void> (std::function<void ()>)>)>={type=[24C]}^v}}128@0:8d16d24{LayoutSceneTaskModule={function<ggl::RenderQueue *()>={__value_func<ggl::RenderQueue *()>={type=[24C]}^v}}{function<void ()>={__value_func<void ()>={type=[24C]}^v}}{function<void ()>={__value_func<void ()>={type=[24C]}^v}}}32, name: prepareRenderTask:presentAtTime:taskModule:
 - (_Bool)hasRenderTarget;
 - (void)destroyRenderTarget;
 - (void)createRenderTarget;
 - (struct __IOSurface *)flipImage;
 @property(readonly, nonatomic) void *renderer;
-@property(readonly, nonatomic) const struct RenderTargetFormat *blitFormat;
-@property(readonly, nonatomic) void *blitRenderTarget;
 @property(readonly, nonatomic) const struct RenderTargetFormat *linearFormat;
 @property(readonly, nonatomic) void *linearRenderTarget;
 @property(readonly, nonatomic) const struct RenderTargetFormat *format;
@@ -72,7 +69,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) void *imageTexture;
 @property(readonly, nonatomic) _Bool shouldRasterize;
 - (void)dealloc;
-- (id)initWithSize:(struct CGSize)arg1 scale:(double)arg2 useMultisampling:(_Bool)arg3 extraColorFormats:(const void *)arg4 taskContext:(const void *)arg5 device:(void *)arg6 signpostId:(unsigned long long)arg7;
+- (id)initWithSize:(struct CGSize)arg1 scale:(double)arg2 useMultisampling:(_Bool)arg3 extraColorFormats:(const void *)arg4 taskContext:(const void *)arg5 device:(void *)arg6 services:(void *)arg7 signpostId:(unsigned long long)arg8;
 - (void *)_internalRenderTarget;
 @property(readonly, nonatomic) void *finalRenderTarget;
 @property(readonly, nonatomic) struct CGSize sizeInPixels;

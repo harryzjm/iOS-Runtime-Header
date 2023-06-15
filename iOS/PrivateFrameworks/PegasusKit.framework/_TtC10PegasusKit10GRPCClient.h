@@ -23,7 +23,7 @@
     MISSING_TYPE *warmupInterval;
     MISSING_TYPE *warmupSpans;
     MISSING_TYPE *warmupQueue;
-    MISSING_TYPE *debugParameters;
+    MISSING_TYPE *parsecDefaults;
     MISSING_TYPE *feedbackEventStream;
     MISSING_TYPE *sharedSession;
 }

@@ -14,8 +14,9 @@
     DVTPlugInManager *_plugInManager;
     DVTExtensionElementDescription *_extensionSchema;
     DVTExtensionPoint *_parentExtensionPoint;
-    NSMutableSet *_directExtensions;
     NSMutableSet *_childExtensionPoints;
+    NSSet *_frozenDirectExtensions;
+    NSMutableSet *_mutableDirectExtensions;
     NSString *_identifier;
     NSString *_name;
     DVTPlugIn *_plugIn;
@@ -29,6 +30,7 @@
 @property(readonly, copy) NSString *name; // @synthesize name=_name;
 @property(readonly, copy) NSString *identifier; // @synthesize identifier=_identifier;
 - (void)_registerChildExtensionPoint:(id)arg1;
+- (void)_freezePlugInObjectGraph;
 - (void)_registerExtension:(id)arg1;
 - (id)_directExtensions;
 @property(readonly, copy) NSSet *extensions;

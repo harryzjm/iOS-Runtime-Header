@@ -6,46 +6,53 @@
 
 #import "MUPlaceSectionController.h"
 
-@class MKTransitDeparturesViewController, MKUGCCallToActionViewAppearance, MUFixedHeightAwareViewController, MUPlaceFooterAttributionController, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, NSArray, NSString, UIView, UIViewController;
-@protocol MUInfoCardAnalyticsDelegate;
+@class MUPlaceCallToActionAppearance, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, MUTransitDeparturesDataSource, MUTransitDeparturesSectionViewProvider, NSArray, NSString, UIView, UIViewController;
+@protocol MUInfoCardAnalyticsDelegate, MUTransitDeparturesSectionControllerDelegate;
 
 __attribute__((visibility("hidden")))
 @interface MUTransitDeparturesSectionController : MUPlaceSectionController
 {
-    MUFixedHeightAwareViewController *_fixedHeightVC;
-    MKTransitDeparturesViewController *_departuresVC;
-    UIView *_sectionView;
-    MUPlaceFooterAttributionController *_footerAttributionController;
+    MUTransitDeparturesSectionViewProvider *_viewProvider;
+    MUTransitDeparturesDataSource *_dataSource;
+    _Bool _active;
+    id <MUTransitDeparturesSectionControllerDelegate> _departuresDelegate;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <MUTransitDeparturesSectionControllerDelegate> departuresDelegate; // @synthesize departuresDelegate=_departuresDelegate;
+@property(nonatomic, getter=isActive) _Bool active; // @synthesize active=_active;
+- (void)transitDeparturesDataSourceWantsReload:(id)arg1;
+- (id)traitsForDeparturesDataSource:(id)arg1;
+- (void)sectionViewProvider:(id)arg1 didSelectIncidents:(id)arg2;
+- (void)sectionViewProvider:(id)arg1 didSelect:(id)arg2 using:(id)arg3;
+- (void)sectionViewProvider:(id)arg1 didSelectDepartureSequence:(id)arg2 using:(id)arg3;
+- (void)sectionViewProvider:(id)arg1 didSelectConnectionInfo:(id)arg2;
+- (void)sectionViewProvider:(id)arg1 didSelectAttribution:(id)arg2;
+- (_Bool)sectionViewProvider:(id)arg1 canSelect:(id)arg2 using:(id)arg3;
 - (_Bool)isImpressionable;
 - (int)analyticsModuleType;
-- (void)infoCardAnalyticsDidSelectAction:(int)arg1 target:(int)arg2 eventValue:(id)arg3 moduleMetadata:(id)arg4 feedbackDelegateSelector:(int)arg5;
+- (void)infoCardAnalyticsDidSelectAction:(int)arg1 target:(int)arg2 eventValue:(id)arg3 moduleMetadata:(id)arg4 feedbackDelegateSelector:(int)arg5 actionRichProviderId:(id)arg6;
 - (void)infoCardTransitAnalyticsDidSelectionAction:(int)arg1 resultIndex:(long long)arg2 targetID:(unsigned long long)arg3 transitSystem:(id)arg4 transitDepartureSequence:(id)arg5 transitCardCategory:(int)arg6 transitIncident:(id)arg7 feedbackDelegateSelector:(int)arg8;
-- (void)infoCardAnalyticsDidSelectAction:(int)arg1 target:(int)arg2 eventValue:(id)arg3 actionURL:(id)arg4 photoID:(id)arg5 moduleMetadata:(id)arg6 feedbackDelegateSelector:(int)arg7;
-- (void)infoCardAnalyticsDidSelectAction:(int)arg1 target:(int)arg2 eventValue:(id)arg3 feedbackDelegateSelector:(int)arg4;
+- (void)infoCardAnalyticsDidSelectAction:(int)arg1 target:(int)arg2 eventValue:(id)arg3 actionURL:(id)arg4 photoID:(id)arg5 moduleMetadata:(id)arg6 feedbackDelegateSelector:(int)arg7 actionRichProviderId:(id)arg8;
+- (void)infoCardAnalyticsDidSelectAction:(int)arg1 target:(int)arg2 eventValue:(id)arg3 feedbackDelegateSelector:(int)arg4 actionRichProviderId:(id)arg5;
+- (void)infoCardAnalyticsDidSelectAction:(int)arg1 eventValue:(id)arg2 feedbackDelegateSelector:(int)arg3 actionRichProviderId:(id)arg4;
 - (void)infoCardAnalyticsDidSelectAction:(int)arg1 eventValue:(id)arg2 feedbackDelegateSelector:(int)arg3;
-- (id)infoCardChildUnactionableUIElements;
-- (id)infoCardChildPossibleActions;
-- (void)_handleAttributionTap;
-@property(readonly, nonatomic) MUPlaceSectionFooterViewModel *sectionFooterViewModel;
 - (id)draggableContent;
-@property(readonly, nonatomic) UIViewController *sectionViewController;
-@property(readonly, nonatomic) UIView *sectionView;
-- (void)_setupDeparturesVCWithDelegate:(id)arg1;
-- (id)initWithMapItem:(id)arg1 allowTransitLineSelection:(_Bool)arg2 transitDelegate:(id)arg3;
+@property(readonly, nonatomic) NSArray *sectionViews;
+- (void)_setupSections;
+- (id)initWithMapItem:(id)arg1 allowTransitLineSelection:(_Bool)arg2 departuresDelegate:(id)arg3;
 
 // Remaining properties
-@property(nonatomic, getter=isActive) _Bool active;
 @property(nonatomic) __weak id <MUInfoCardAnalyticsDelegate> analyticsDelegate;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly, nonatomic) _Bool hasContent;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) MUPlaceSectionFooterViewModel *sectionFooterViewModel;
 @property(readonly, nonatomic) MUPlaceSectionHeaderViewModel *sectionHeaderViewModel;
-@property(readonly, nonatomic) NSArray *sectionViews;
-@property(retain, nonatomic) MKUGCCallToActionViewAppearance *submissionStatus;
+@property(readonly, nonatomic) UIView *sectionView;
+@property(readonly, nonatomic) UIViewController *sectionViewController;
+@property(retain, nonatomic) MUPlaceCallToActionAppearance *submissionStatus;
 @property(readonly) Class superclass;
 
 @end

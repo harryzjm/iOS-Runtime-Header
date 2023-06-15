@@ -42,7 +42,6 @@ __attribute__((visibility("hidden")))
 - (void)_updateMonthYearLabel;
 - (void)tintColorDidChange;
 - (void)didMoveToWindow;
-- (void)traitCollectionDidChange:(id)arg1;
 - (void)didUpdateDateRange;
 - (void)didUpdateFontDesign;
 - (void)didUpdateVisibleMonth;

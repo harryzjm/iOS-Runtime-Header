@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
 - (void)dataSource:(id)arg1 didChangeSceneID:(unsigned char)arg2;
 - (void)dataSource:(id)arg1 didChangeSceneState:(unsigned char)arg2;
 - (void)globalFeaturesDidChangeForDataSource:(id)arg1;
-- (void)dataSource:(id)arg1 featuresDidChangeForRect:(CDStruct_90e2a262)arg2;
+- (void)dataSource:(id)arg1 featuresDidChangeForRect:(CDStruct_2f492f29)arg2;
 - (void)clearObserver;
 - (void)dealloc;
 - (id)initWithDataSource:(id)arg1 observer:(void *)arg2;

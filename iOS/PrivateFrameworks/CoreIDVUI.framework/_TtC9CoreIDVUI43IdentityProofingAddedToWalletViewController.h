@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)primaryButtonClicked;
-- (void)traitCollectionDidChange:(id)arg1;
+- (void)configureFonts;
 - (void)viewDidLoad;
 
 @end

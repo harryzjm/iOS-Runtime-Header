@@ -10,14 +10,11 @@
 
 @interface SESWrapper : NSObject
 {
-    _Bool _useCKVR;
     _Bool _recoveryPassphraseMutable;
     int _reqVersion;
     NSString *_decodedLabel;
     NSDate *_escrowDate;
     NSData *_recoveryBlob;
-    struct ccses_crypto_t *_ccses;
-    struct ccsrp_ctx *_srp;
     struct ckvr_srp_context *_ckvr;
     NSString *_dsid;
     NSString *_recoveryPassphrase;
@@ -37,9 +34,6 @@
 @property(copy, nonatomic) NSString *dsid; // @synthesize dsid=_dsid;
 @property(readonly, nonatomic) struct ckvr_srp_context *ckvr; // @synthesize ckvr=_ckvr;
 @property(nonatomic) int reqVersion; // @synthesize reqVersion=_reqVersion;
-@property(readonly, nonatomic) _Bool useCKVR; // @synthesize useCKVR=_useCKVR;
-@property(readonly, nonatomic) struct ccsrp_ctx *srp; // @synthesize srp=_srp;
-@property(readonly, nonatomic) struct ccses_crypto_t *ccses; // @synthesize ccses=_ccses;
 @property(retain) NSData *recoveryBlob; // @synthesize recoveryBlob=_recoveryBlob;
 @property(copy, nonatomic) NSDate *escrowDate; // @synthesize escrowDate=_escrowDate;
 @property(copy, nonatomic) NSString *decodedLabel; // @synthesize decodedLabel=_decodedLabel;
@@ -53,9 +47,8 @@
 - (unsigned long long)srpPublicKeySize;
 - (unsigned long long)srpKeySize;
 - (id)srpInitBlob;
-- (id)initWithDSID:(id)arg1 escrowRecordContents:(id)arg2 recoveryPassphrase:(id)arg3 recordID:(id)arg4 recordLabel:(id)arg5 ckvrFlag:(_Bool)arg6 reqVersion:(int)arg7;
+- (id)initWithDSID:(id)arg1 escrowRecordContents:(id)arg2 recoveryPassphrase:(id)arg3 recordID:(id)arg4 recordLabel:(id)arg5 reqVersion:(int)arg6;
 - (id)initWithDSID:(id)arg1 escrowRecordContents:(id)arg2 recoveryPassphrase:(id)arg3 recordID:(id)arg4 recordLabel:(id)arg5;
-- (id)initWithRequest:(id)arg1 ckvrFlag:(_Bool)arg2 reqVersion:(int)arg3;
 - (id)initWithRequest:(id)arg1 reqVersion:(int)arg2;
 - (id)initWithRequest:(id)arg1;
 

@@ -4,9 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class IOSurface, NSArray, NSData, NSDictionary, NSString, NSURL, UTType;
+@class IOSurface, NSArray, NSData, NSDictionary, NSIndexSet, NSString, NSURL, UTType;
 
 @protocol VCPMediaAnalysisServerProtocol
+- (void)requestStaticStickerScoring:(int)arg1 photoLibraryURL:(NSURL *)arg2 options:(NSDictionary *)arg3 reply:(void (^)(NSError *))arg4;
+- (void)downloadVideoEncoderIfNeededWithReply:(void (^)(NSError *))arg1;
+- (void)queryAssetsPendingDeferredProcessingWithPhotoLibraryURL:(NSURL *)arg1 andReply:(void (^)(NSDictionary *, NSError *))arg2;
+- (void)requestForceDeferredProcessing:(int)arg1 andReply:(void (^)(NSError *))arg2;
+- (void)requestDeferredProcessingTypes:(NSIndexSet *)arg1 forAssetsWithLocalIdentifiers:(NSArray *)arg2 withPhotoLibraryURL:(NSURL *)arg3 andReply:(void (^)(NSError *))arg4;
 - (void)requestProcessingTypes:(unsigned long long)arg1 forAssetsWithLocalIdentifiers:(NSArray *)arg2 fromPhotoLibraryWithURL:(NSURL *)arg3 withRequestID:(int)arg4 andReply:(void (^)(NSError *))arg5;
 - (void)requestIdentificationOfFacesWithLocalIdentifiers:(NSArray *)arg1 fromPhotoLibraryWithURL:(NSURL *)arg2 withRequestID:(int)arg3 andReply:(void (^)(NSDictionary *, NSError *))arg4;
 - (void)requestAutoCounterSIMLValidation:(int)arg1 withPhotoLibraryURL:(NSURL *)arg2 simlGroundTruthURL:(NSURL *)arg3 andReply:(void (^)(NSDictionary *, NSError *))arg4;
@@ -33,17 +38,24 @@
 - (void)cancelBackgroundActivityWithReply:(void (^)(NSError *))arg1;
 - (void)cancelAllRequests;
 - (void)cancelRequest:(int)arg1;
+- (void)requestRecentsProcessing:(int)arg1 withTaskID:(unsigned long long)arg2 photoLibraryWithURL:(NSURL *)arg3 reply:(void (^)(NSError *))arg4;
 - (void)requestWallpaperUpgrade:(int)arg1 atSourceURL:(NSURL *)arg2 toDestinationURL:(NSURL *)arg3 withOptions:(NSDictionary *)arg4 sandboxTokens:(NSArray *)arg5 andReply:(void (^)(NSDictionary *, NSError *))arg6;
 - (void)requestAssetProcessing:(int)arg1 withTaskID:(unsigned long long)arg2 forLocalIdentifiers:(NSArray *)arg3 fromPhotoLibraryWithURL:(NSURL *)arg4 withOptions:(NSDictionary *)arg5 andReply:(void (^)(NSDictionary *, NSError *))arg6;
 - (void)requestLibraryProcessing:(int)arg1 withTaskID:(unsigned long long)arg2 forPhotoLibraryURL:(NSURL *)arg3 withOptions:(NSDictionary *)arg4 andReply:(void (^)(NSError *))arg5;
 - (void)requestAssetAnalysis:(int)arg1 forPhotoLibraryURL:(NSURL *)arg2 withLocalIdentifiers:(NSArray *)arg3 realTime:(_Bool)arg4 withReply:(void (^)(NSDictionary *, NSError *))arg5;
 - (void)requestAssetAnalysis:(int)arg1 forLocalIdentifiers:(NSArray *)arg2 fromPhotoLibraryWithURL:(NSURL *)arg3 withOptions:(NSDictionary *)arg4 analysisTypes:(unsigned long long)arg5 withReply:(void (^)(NSDictionary *, NSError *))arg6;
 - (void)requestURLAssetAnalysis:(int)arg1 forAssetWithResourcePaths:(NSArray *)arg2 withOptions:(NSDictionary *)arg3 analysisTypes:(unsigned long long)arg4 sandboxTokens:(NSArray *)arg5 withReply:(void (^)(NSDictionary *, NSError *))arg6;
+- (void)requestVideoFramesProcessing:(int)arg1 withTaskID:(unsigned long long)arg2 frames:(NSArray *)arg3 options:(NSDictionary *)arg4 andReply:(void (^)(NSDictionary *, NSError *))arg5;
 - (void)endEntryPoint;
+- (void)cacheHitWithQueryID:(unsigned long long)arg1 cachedResultQueryID:(unsigned long long)arg2 engagementSuggestionType:(NSString *)arg3;
 - (void)cacheHitWithQueryID:(unsigned long long)arg1 cachedResultQueryID:(unsigned long long)arg2;
+- (void)startEntryPointWithQueryID:(unsigned long long)arg1 andEvent:(unsigned long long)arg2;
 - (void)startEntryPointWithQueryID:(unsigned long long)arg1;
+- (void)queryUserSafetyEnablement:(void (^)(NSNumber *, NSError *))arg1;
 - (void)resetPerformanceMeasurements;
 - (void)queryPerformanceMeasurementsWithReply:(void (^)(NSDictionary *))arg1;
+- (void)requestVideoProcessing:(NSArray *)arg1 assetIdentifier:(NSString *)arg2 identifierType:(unsigned long long)arg3 photoLibraryURL:(NSURL *)arg4 requestID:(int)arg5 isIncremental:(_Bool)arg6 reply:(void (^)(NSArray *, NSError *))arg7;
+- (void)requestVideoProcessing:(NSArray *)arg1 assetURL:(NSURL *)arg2 sandboxToken:(NSString *)arg3 identifier:(NSString *)arg4 requestID:(int)arg5 reply:(void (^)(NSArray *, NSError *))arg6;
 - (void)requestImageProcessingWithCloudIdentifierRequests:(NSDictionary *)arg1 requestID:(int)arg2 andReply:(void (^)(NSDictionary *, NSError *))arg3;
 - (void)requestImageProcessing:(NSArray *)arg1 forAssetWithCloudIdentifier:(NSString *)arg2 requestID:(int)arg3 andReply:(void (^)(NSArray *, NSError *))arg4;
 - (void)requestImageProcessing:(NSArray *)arg1 forIOSurface:(IOSurface *)arg2 withOrientation:(unsigned int)arg3 assetLocalIdentifier:(NSString *)arg4 photoLibraryURL:(NSURL *)arg5 requestID:(int)arg6 andReply:(void (^)(NSArray *, NSError *))arg7;

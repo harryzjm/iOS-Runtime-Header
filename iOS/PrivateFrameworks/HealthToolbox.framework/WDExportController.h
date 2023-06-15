@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSURL, UIViewController, WDExportManager;
+@class NSURL, UIView, UIViewController, WDExportManager;
 
 __attribute__((visibility("hidden")))
 @interface WDExportController : NSObject
@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     unsigned long long _exportResult;
     NSURL *_exportFileURL;
     _Bool _isExporting;
+    UIView *_exportSourceView;
     UIViewController *_exportPresentingViewController;
 }
 
@@ -23,7 +24,7 @@ __attribute__((visibility("hidden")))
 - (void)_cleanUpExport;
 - (void)_shareExportFileAndCleanUp;
 - (void)_beginExport;
-- (void)verifyExportWithPresentingViewController:(id)arg1;
+- (void)verifyExportWithPresentingViewController:(id)arg1 shareSheetSourceView:(id)arg2;
 - (_Bool)exportInProgress;
 - (id)initWithProfile:(id)arg1;
 

@@ -14,9 +14,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) long long identifier; // @synthesize identifier=_identifier;
-@property(readonly, nonatomic) CDUnknownBlockType block; // @synthesize block=_block;
-- (id)initWithBlock:(CDUnknownBlockType)arg1 identifier:(long long)arg2;
 
 @end
 

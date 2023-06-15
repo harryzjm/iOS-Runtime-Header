@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (void)getIsBeingPresentedInPopover:(CDUnknownBlockType)arg1;
 - (void)actionDidFinishShouldDismiss:(_Bool)arg1;
 - (void)actionCanBeCancelledExternally:(_Bool)arg1;
+- (struct CGSize)preferredContentSize;
 - (void)adaptForPresentationInPopover:(_Bool)arg1;
 - (void)viewServiceDidTerminateWithError:(id)arg1;
 - (void)viewControllerReady;

@@ -6,10 +6,9 @@
 
 #import <XCTestCore/XCTMessagingRole_ProcessMonitoring-Protocol.h>
 #import <XCTestCore/XCTMessagingRole_TestExecution-Protocol.h>
-#import <XCTestCore/XCTMessagingRole_TestExecution_Legacy-Protocol.h>
 #import <XCTestCore/_XCTMessaging_VoidProtocol-Protocol.h>
 
-@protocol XCTMessagingChannel_IDEToRunner <XCTMessagingRole_TestExecution, XCTMessagingRole_TestExecution_Legacy, XCTMessagingRole_ProcessMonitoring, _XCTMessaging_VoidProtocol>
+@protocol XCTMessagingChannel_IDEToRunner <XCTMessagingRole_TestExecution, XCTMessagingRole_ProcessMonitoring, _XCTMessaging_VoidProtocol>
 
 @optional
 - (void)__dummy_method_to_work_around_68987191;

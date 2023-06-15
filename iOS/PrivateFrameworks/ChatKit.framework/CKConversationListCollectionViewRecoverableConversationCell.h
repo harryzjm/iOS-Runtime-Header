@@ -12,10 +12,10 @@ __attribute__((visibility("hidden")))
 + (id)reuseIdentifierForAXFontSize:(_Bool)arg1;
 + (id)reuseIdentifiers;
 + (id)reuseIdentifier;
+- (_Bool)shouldAlwaysHideAvatar;
+- (_Bool)shouldAlwaysHideUnreadIndicatorForConversation:(id)arg1;
 - (_Bool)shouldAppearAsRecoverableConversation;
 - (unsigned long long)_daysUntilDeletion:(id)arg1;
-- (id)_attributedStringForRecoverableSummaryLabelWithText:(id)arg1;
-- (void)updateSummaryLabel:(id)arg1 conversation:(id)arg2 fastPreview:(_Bool)arg3;
 - (void)updateDateLabel:(id)arg1 conversation:(id)arg2;
 
 @end

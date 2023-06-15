@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UITableViewCell.h>
+#import <UIKitCore/UITableViewCell.h>
 
 @interface _TtC7NewsAdsP33_A99154E0B157F7AABBF809DECDAD491230DebugJournalValueTableViewCell : UITableViewCell
 {

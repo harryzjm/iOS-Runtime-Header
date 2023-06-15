@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIAccessibilityElement.h>
+#import <UIKitCore/UIAccessibilityElement.h>
 
 @interface UIAccessibilityElement (AccessibilityBridging_Sonification)
 - (id)_accessibilityDataSeriesValueDescriptionForPosition:(double)arg1 axis:(long long)arg2;

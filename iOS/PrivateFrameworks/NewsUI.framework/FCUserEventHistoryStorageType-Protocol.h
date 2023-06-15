@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <NewsUI/FCClearableReadingHistory-Protocol.h>
 #import <NewsUI/NSObject-Protocol.h>
 
 @class FCUserEventHistoryMetadata, NSArray, NSData, NSDate, NSString, NSURL;
 
-@protocol FCUserEventHistoryStorageType <NSObject>
+@protocol FCUserEventHistoryStorageType <NSObject, FCClearableReadingHistory>
 @property(readonly, nonatomic) FCUserEventHistoryMetadata *metadata;
 @property(readonly, nonatomic) NSURL *baseDirectoryURL;
 @property(readonly, nonatomic) unsigned long long prunedSessionSize;
@@ -17,7 +18,7 @@
 @property(readonly, nonatomic) NSDate *earliestSessionDate;
 @property(readonly, nonatomic) NSArray *sessions;
 @property(readonly, nonatomic) NSArray *sessionIDs;
-- (void)setMetadataWithAggregateStoreGenerationTime:(long long)arg1 aggregateTotalCount:(long long)arg2 meanCountOfEvents:(double)arg3 standardDeviationOfEvents:(double)arg4 totalEventsCount:(long long)arg5;
+- (void)setMetadataWithAggregateStoreGenerationTime:(long long)arg1 aggregateTotalCount:(long long)arg2 meanCountOfEvents:(double)arg3 standardDeviationOfEvents:(double)arg4 totalEventsCount:(long long)arg5 headlineEventCount:(long long)arg6 headlinesWithValidTitleEmbeddingsEventCount:(long long)arg7 headlinesWithInvalidTitleEmbeddingsEventCount:(long long)arg8 headlinesWithValidBodyEmbeddingsEventCount:(long long)arg9 headlinesWithInvalidBodyEmbeddingsEventCount:(long long)arg10;
 - (void)writeJSON:(NSData * (^)(FCUserEventHistorySession *))arg1;
 - (void)clearAllSessions;
 - (void)storeSessionID:(NSString *)arg1 sessionData:(NSData *)arg2;

@@ -390,21 +390,6 @@ struct tracev3_subchunk_timezone_s {
     char _field1[48];
 };
 
-struct uuiddb_dsc_header_s;
-
-struct uuiddb_dsc_map_s {
-    _Atomic struct uuiddb_dsc_map_s *_field1;
-    struct uuiddb_dsc_header_s *_field2;
-    struct uuiddb_dsc_range_entry_v2_s *_field3;
-    struct uuiddb_dsc_uuid_entry_v2_s *_field4;
-    unsigned char _field5[16];
-    unsigned int _field6;
-};
-
-struct uuiddb_dsc_range_entry_v2_s;
-
-struct uuiddb_dsc_uuid_entry_v2_s;
-
 #pragma mark Typedef'd Structures
 
 typedef struct {

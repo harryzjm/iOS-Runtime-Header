@@ -17,6 +17,7 @@
     MISSING_TYPE *headlineNoiseGenerator;
     MISSING_TYPE *fuzzedGroups;
     MISSING_TYPE *inFlightGroupSessions;
+    MISSING_TYPE *sportsGroupTypes;
 }
 
 @end

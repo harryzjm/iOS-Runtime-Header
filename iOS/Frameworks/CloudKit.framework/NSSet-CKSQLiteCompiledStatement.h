@@ -6,9 +6,21 @@
 
 #import <Foundation/NSSet.h>
 
+@class NSString;
+
 @interface NSSet (CKSQLiteCompiledStatement)
 - (id)cksqlcs_appendSQLConstantValueToString:(id)arg1;
 - (void)CKAssignToContainerWithID:(id)arg1;
+- (id)CKFilter:(CDUnknownBlockType)arg1;
+- (id)CKCompactMap:(CDUnknownBlockType)arg1;
 - (id)CKMap:(CDUnknownBlockType)arg1;
+- (id)CKDeepCopyWithLeafNodeCopyBlock:(CDUnknownBlockType)arg1;
+- (id)CKDeepCopy;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 @end
 

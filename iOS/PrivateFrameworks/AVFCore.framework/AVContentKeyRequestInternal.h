@@ -35,7 +35,8 @@ __attribute__((visibility("hidden")))
     AVContentKey *contentKey;
     NSData *contentIdentifier;
     struct OpaqueFigCFWeakReferenceHolder *weakContentKeyBoss;
-    long long requestID;
+    _Bool useContentKeyBoss;
+    unsigned long long requestID;
     struct FigContentKeySpecifier *keySpecifier;
 }
 

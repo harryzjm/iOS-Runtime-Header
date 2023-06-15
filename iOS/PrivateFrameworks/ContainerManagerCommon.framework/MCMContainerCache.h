@@ -26,10 +26,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(readonly, nonatomic) id <MCMChildParentMapCache> childParentMapCache; // @synthesize childParentMapCache=_childParentMapCache;
 @property(readonly, nonatomic) MCMUserIdentityCache *userIdentityCache; // @synthesize userIdentityCache=_userIdentityCache;
-- (_Bool)_shouldApplyImplicitLinksToMetadata:(id)arg1;
-- (_Bool)_applyImplicitLinkOnBundleIdentity:(id)arg1 dataIdentity:(id)arg2 matchingIdentifier:(id)arg3 dataContainerClass:(unsigned long long)arg4 userIdentity:(id)arg5;
-- (void)_applyImplicitLinksToMetadata:(id)arg1;
-- (void)_checkAndRepairLinksToMetadata:(id)arg1 recursively:(_Bool)arg2;
 - (void)_queue_setContainerClassCache:(id)arg1;
 - (id)_containerClassPathForUserIdentity:(id)arg1 containerClass:(unsigned long long)arg2 transient:(_Bool)arg3;
 - (id)_queue_containerClassCacheForUserIdentity:(id)arg1 containerClass:(unsigned long long)arg2 transient:(_Bool)arg3;
@@ -43,7 +39,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)removeContainerForUserIdentity:(id)arg1 contentClass:(unsigned long long)arg2 identifier:(id)arg3 transient:(_Bool)arg4 error:(id *)arg5;
 - (id)addContainerMetadata:(id)arg1 error:(id *)arg2;
 - (id)entriesForUserIdentities:(id)arg1 contentClass:(unsigned long long)arg2 transient:(_Bool)arg3 error:(id *)arg4;
-- (id)updateLinksOnContainerCacheEntry:(id)arg1 error:(id *)arg2;
+- (long long)countContainersForOtherUserIdentitiesWithIdentity:(id)arg1 error:(id *)arg2;
 - (id)entryForContainerIdentity:(id)arg1 error:(id *)arg2;
 - (id)entryForContainerIdentity:(id)arg1 classCache:(id)arg2 error:(id *)arg3;
 - (id)classCacheForContainerIdentity:(id)arg1;

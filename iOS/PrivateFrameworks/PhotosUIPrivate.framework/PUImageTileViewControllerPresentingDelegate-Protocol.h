@@ -11,6 +11,8 @@
 @protocol PUImageTileViewControllerPresentingDelegate <NSObject>
 
 @optional
+- (_Bool)ppt_imageTileViewControllerShouldSignalDeferredProcessingDoneAndFinalImageDisplayed:(PUImageTileViewController *)arg1;
+- (_Bool)imageTileViewControllerShouldEnableSubjectLiftingForVisualIntelligenceOverlay:(PUImageTileViewController *)arg1;
 - (_Bool)imageTileViewControllerShouldShowVisualIntelligenceOverlay:(PUImageTileViewController *)arg1;
 - (UIViewController *)imageTileViewControllerPresentingViewController:(PUImageTileViewController *)arg1;
 @end

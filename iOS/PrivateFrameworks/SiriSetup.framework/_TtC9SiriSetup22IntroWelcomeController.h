@@ -13,10 +13,12 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *delegate;
     MISSING_TYPE *orbView;
+    MISSING_TYPE *viewModel;
 }
 
 - (void).cxx_destruct;
 - (id)initWithTitle:(id)arg1 detailText:(id)arg2 icon:(id)arg3 contentLayout:(long long)arg4;
+- (id)initWithTitle:(id)arg1 detailText:(id)arg2 symbolName:(id)arg3 contentLayout:(long long)arg4;
 - (void)skipTapped;
 - (void)continueTapped;
 

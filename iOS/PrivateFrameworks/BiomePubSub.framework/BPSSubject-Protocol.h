@@ -12,5 +12,9 @@
 - (void)sendValue:(id)arg1;
 - (void)sendSubscription:(BPSSubscription *)arg1;
 - (void)sendCompletion:(BPSCompletion *)arg1;
+
+@optional
+- (void)sendEvent:(id)arg1;
+- (void)sendCompletion;
 @end
 

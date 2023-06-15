@@ -6,13 +6,14 @@
 
 #import <Preferences/PSListController.h>
 
-@class NSString, NSURL, PSSpecifier, UITextField;
+@class NSNumber, NSString, NSTimer, NSURL, PSSpecifier, UITextField;
 
 __attribute__((visibility("hidden")))
 @interface VUIAccountSettingsViewController : PSListController
 {
     _Bool _authenticationInProgress;
-    long long _watchListAppsCount;
+    long long _installedWatchListAppCount;
+    long long _connectedWatchListAppCount;
     PSSpecifier *_credentialsAppleIDSpecifier;
     PSSpecifier *_credentialsPasswordSpecifier;
     PSSpecifier *_signInSpecifier;
@@ -20,11 +21,17 @@ __attribute__((visibility("hidden")))
     PSSpecifier *_syncMySportsSpecifier;
     UITextField *_credentialsAppleIDTextField;
     UITextField *_credentialsPasswordTextField;
+    long long _notifAuthStatus;
+    NSNumber *__syncMySportsEnabled;
+    NSTimer *_syncMySportsDebouncer;
     NSURL *_addFundsUrl;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSURL *addFundsUrl; // @synthesize addFundsUrl=_addFundsUrl;
+@property(retain, nonatomic) NSTimer *syncMySportsDebouncer; // @synthesize syncMySportsDebouncer=_syncMySportsDebouncer;
+@property(retain, nonatomic) NSNumber *_syncMySportsEnabled; // @synthesize _syncMySportsEnabled=__syncMySportsEnabled;
+@property(nonatomic) long long notifAuthStatus; // @synthesize notifAuthStatus=_notifAuthStatus;
 @property(retain, nonatomic) UITextField *credentialsPasswordTextField; // @synthesize credentialsPasswordTextField=_credentialsPasswordTextField;
 @property(retain, nonatomic) UITextField *credentialsAppleIDTextField; // @synthesize credentialsAppleIDTextField=_credentialsAppleIDTextField;
 @property(retain, nonatomic) PSSpecifier *syncMySportsSpecifier; // @synthesize syncMySportsSpecifier=_syncMySportsSpecifier;
@@ -32,14 +39,22 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) PSSpecifier *signInSpecifier; // @synthesize signInSpecifier=_signInSpecifier;
 @property(retain, nonatomic) PSSpecifier *credentialsPasswordSpecifier; // @synthesize credentialsPasswordSpecifier=_credentialsPasswordSpecifier;
 @property(retain, nonatomic) PSSpecifier *credentialsAppleIDSpecifier; // @synthesize credentialsAppleIDSpecifier=_credentialsAppleIDSpecifier;
-@property(nonatomic) long long watchListAppsCount; // @synthesize watchListAppsCount=_watchListAppsCount;
+@property(nonatomic) long long connectedWatchListAppCount; // @synthesize connectedWatchListAppCount=_connectedWatchListAppCount;
+@property(nonatomic) long long installedWatchListAppCount; // @synthesize installedWatchListAppCount=_installedWatchListAppCount;
 @property(nonatomic) _Bool authenticationInProgress; // @synthesize authenticationInProgress=_authenticationInProgress;
+- (void)_promptForNotificationsAuth;
+- (void)_handleNotificationsOff;
+- (id)_createAxIdFromTableCell:(id)arg1;
 - (void)_dismissViewController;
 - (void)_handleAccountSettingsEventWithUrl:(id)arg1 amsBagKey:(id)arg2 useAMSWebView:(_Bool)arg3;
+- (void)_parseUrl:(id)arg1;
+- (void)_handleAccountSettingsEventWithAmsWebView:(id)arg1 storeServicesBagKey:(id)arg2 storeServicesUrl:(id)arg3;
+- (void)_handleAccountSettingsEventWithAmsWebView:(id)arg1;
 - (long long)_alertStyle;
 - (_Bool)textFieldShouldReturn:(id)arg1;
 - (_Bool)textField:(id)arg1 shouldChangeCharactersInRange:(struct _NSRange)arg2 replacementString:(id)arg3;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
+- (id)_notificationGroupSpecifierIdentifier;
 - (void)_recordDialogClick:(id)arg1;
 - (id)_dialogMetricsData;
 - (id)_getConnectedAppsCountString;
@@ -47,10 +62,10 @@ __attribute__((visibility("hidden")))
 - (void)_checkConnectedAppsWithDispatchGroup:(id)arg1;
 - (void)_loadDynamicIdentifiers;
 - (void)_setSyncMySportsEnabled:(id)arg1;
-- (id)_syncMySportsEnabled;
 - (void)_syncMySportsSettingDidChange:(id)arg1;
 - (void)_openiForgotAppleURL;
 - (void)_clearPlayHistory:(id)arg1;
+- (void)_presentSignInFailure;
 - (void)_didSelectSpecifier:(id)arg1;
 - (id)_createAccountSpecifiers;
 - (id)_signInSpecifiers;
@@ -59,10 +74,12 @@ __attribute__((visibility("hidden")))
 - (void)_showPrivacySheet:(id)arg1;
 - (void)_addPrivacyFooterToGroup:(id)arg1;
 - (id)_mySportsSpecifiers;
+- (id)_notificationSpecifiers;
 - (id)_clearHistorySpecifiers;
 - (id)_externalSpecifiers;
 - (id)_sourcesSpecifiers;
 - (id)_accountSpecifiers;
+- (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (id)specifiers;
 - (id)init;

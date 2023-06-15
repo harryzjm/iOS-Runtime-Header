@@ -11,16 +11,15 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (_Bool)getOptionalExplicitProcessingDevice:(id *)arg1 inOptions:(id)arg2 error:(id *)arg3;
-+ (id)requiredProcessingDeviceInOptions:(id)arg1 error:(id *)arg2;
-+ (_Bool)getOptionalOriginatingRequestSpecifier:(id *)arg1 forKey:(id)arg2 inOptions:(id)arg3 specifyingSupportedRevisionsForRequestClass:(Class)arg4 error:(id *)arg5;
-+ (id)originatingRequestSpecifierForKey:(id)arg1 inOptions:(id)arg2 specifyingSupportedRevisionsForRequestClass:(Class)arg3 error:(id *)arg4;
-+ (id)originatingRequestSpecifierInOptions:(id)arg1 specifyingSupportedRevisionsForRequestClass:(Class)arg2 error:(id *)arg3;
++ (_Bool)getOptionalOriginatingRequestSpecifier:(id *)arg1 forKey:(id)arg2 inOptions:(id)arg3 specifyingRequestClass:(Class)arg4 error:(id *)arg5;
++ (id)originatingRequestSpecifierForKey:(id)arg1 inOptions:(id)arg2 specifyingRequestClass:(Class)arg3 error:(id *)arg4;
++ (id)originatingRequestSpecifierInOptions:(id)arg1 specifyingRequestClass:(Class)arg2 error:(id *)arg3;
 + (id)originatingRequestSpecifierForKey:(id)arg1 inOptions:(id)arg2 error:(id *)arg3;
 + (id)originatingRequestSpecifierInOptions:(id)arg1 error:(id *)arg2;
 + (id)requiredSessionInOptions:(id)arg1 error:(id *)arg2;
 + (id)requiredDetectedObjectObservationInOptions:(id)arg1 withOptionName:(id)arg2 forObservationClass:(Class)arg3 error:(id *)arg4;
-+ (id)faceObservationsInOptions:(id)arg1 withOptionName:(id)arg2 error:(id *)arg3;
++ (_Bool)getOptionalFaceObservations:(id *)arg1 inOptions:(id)arg2 withOptionName:(id)arg3 error:(id *)arg4;
++ (id)requiredFaceObservationsInOptions:(id)arg1 withOptionName:(id)arg2 error:(id *)arg3;
 + (id)requiredFaceObservationInOptions:(id)arg1 withOptionName:(id)arg2 error:(id *)arg3;
 + (id)requiredArrayForKey:(id)arg1 inOptions:(id)arg2 withElementsOfClass:(Class)arg3 error:(id *)arg4;
 + (_Bool)getOptionalArray:(id *)arg1 forKey:(id)arg2 inOptions:(id)arg3 withElementsOfClass:(Class)arg4 error:(id *)arg5;
@@ -40,11 +39,14 @@ __attribute__((visibility("hidden")))
 + (_Bool)getNSUIntegerValue:(unsigned long long *)arg1 forKey:(id)arg2 inOptions:(id)arg3 withDefaultValue:(unsigned long long)arg4 error:(id *)arg5;
 + (_Bool)getNSIntegerValue:(long long *)arg1 forKey:(id)arg2 inOptions:(id)arg3 withDefaultValue:(long long)arg4 error:(id *)arg5;
 + (_Bool)getNSUIntegerValue:(unsigned long long *)arg1 forKey:(id)arg2 inOptions:(id)arg3 error:(id *)arg4;
++ (_Bool)getNSIntegerValue:(long long *)arg1 forKey:(id)arg2 inOptions:(id)arg3 error:(id *)arg4;
 + (_Bool)getBOOLValue:(_Bool *)arg1 forKey:(id)arg2 inOptions:(id)arg3 withDefaultValue:(_Bool)arg4 error:(id *)arg5;
 + (_Bool)getBOOLValue:(_Bool *)arg1 forKey:(id)arg2 inOptions:(id)arg3 error:(id *)arg4;
++ (id)requiredObjectConformingToProtocol:(id)arg1 forKey:(id)arg2 inOptions:(id)arg3 error:(id *)arg4;
 + (id)requiredObjectOfClass:(Class)arg1 forKey:(id)arg2 inOptions:(id)arg3 error:(id *)arg4;
 + (_Bool)getOptionalObject:(id *)arg1 ofClass:(Class)arg2 forKey:(id)arg3 inOptions:(id)arg4 error:(id *)arg5;
 + (_Bool)validateAsyncStatusResults:(id)arg1 error:(id *)arg2;
++ (_Bool)validateNonNilOptionsDictionary:(id)arg1 selector:(SEL)arg2 error:(id *)arg3;
 + (_Bool)validateAsyncStatusResult:(id)arg1 error:(id *)arg2;
 + (_Bool)validateAsyncStatusState:(id)arg1 error:(id *)arg2;
 + (_Bool)validateScoreRange:(float)arg1 error:(id *)arg2;

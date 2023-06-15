@@ -24,6 +24,7 @@
 - (id)requestDidParseProtobufObject:(id)arg1;
 - (id)generateRequestOperations;
 - (id)requestOperationClasses;
+- (id)equivalencyProperties;
 - (id)initWithOperation:(id)arg1 notificationIDsToMarkRead:(id)arg2;
 
 @end

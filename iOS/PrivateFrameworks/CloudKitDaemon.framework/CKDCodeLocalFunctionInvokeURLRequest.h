@@ -28,6 +28,7 @@
 - (Class)expectedResponseClass;
 - (Class)requestMessageClass;
 - (id)requestBodyStream;
+- (void)prepareRequestOperationsForRequest:(id)arg1;
 - (_Bool)parsingStandaloneMessage;
 - (_Bool)shouldCompressBody;
 - (id)additionalHeaderValues;
@@ -37,6 +38,7 @@
 - (long long)partitionType;
 - (_Bool)allowsAnonymousAccount;
 - (_Bool)requestGETPreAuth;
+- (id)equivalencyProperties;
 - (id)initWithOperation:(id)arg1 serviceName:(id)arg2 functionName:(id)arg3 serializedParameters:(id)arg4 resolvedBaseURL:(id)arg5;
 
 @end

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSMutableArray, NSMutableDictionary, VCPCNNPoseEstimator, VCPCNNSmileDetector, VCPFrameAnalysisStats;
+@class NSArray, NSMutableArray, NSMutableDictionary, NSString, VCPCNNPoseEstimator, VCPCNNSmileDetector, VCPFrameAnalysisStats;
 
 __attribute__((visibility("hidden")))
 @interface VCPVideoFullFaceDetector
@@ -16,10 +16,13 @@ __attribute__((visibility("hidden")))
     VCPFrameAnalysisStats *_frameStats;
     float _latestFrameArea;
     CDStruct_1b6d18a9 _timeLastTracking;
+    NSString *_vipModelFilepath;
     NSMutableDictionary *_faceTrackers;
     NSMutableDictionary *_keyFaces;
+    NSMutableArray *_allTorsos;
     NSMutableArray *_reservedIDs;
     NSMutableDictionary *_facePrints;
+    NSMutableDictionary *_torsoPrints;
     NSMutableArray *_allFaces;
     NSMutableDictionary *_faceRanges;
     NSMutableArray *_frameFaceResults;
@@ -31,14 +34,14 @@ __attribute__((visibility("hidden")))
 - (int)clusterFaces;
 - (id)frameFaceResults;
 - (int)analyzeFrame:(struct __CVBuffer *)arg1 withTimestamp:(CDStruct_1b6d18a9)arg2 andDuration:(CDStruct_1b6d18a9)arg3 flags:(unsigned long long *)arg4;
-- (int)detectTrackFacesInFrame:(struct __CVBuffer *)arg1 withTimestamp:(CDStruct_1b6d18a9)arg2 faces:(id)arg3;
+- (int)detectTrackFacesInFrame:(struct __CVBuffer *)arg1 withTimestamp:(CDStruct_1b6d18a9)arg2 faces:(id)arg3 torsos:(id)arg4;
 - (_Bool)locationChange:(struct CGRect)arg1 relativeTo:(struct CGRect)arg2 landscape:(_Bool)arg3;
 - (_Bool)compareFace:(id)arg1 withFace:(id)arg2;
 - (void)removeSmallestKeyFace;
 - (float)minProcessTimeIntervalInSecs;
-- (int)detectFaces:(struct __CVBuffer *)arg1 faces:(id)arg2;
+- (int)detectFaces:(struct __CVBuffer *)arg1 faces:(id)arg2 torsos:(id)arg3;
 - (void)dealloc;
-- (id)initWithTransform:(struct CGAffineTransform)arg1 withExistingFaceprints:(id)arg2 frameStats:(id)arg3;
+- (id)initWithTransform:(struct CGAffineTransform)arg1 vipModelFilepath:(id)arg2 withExistingFaceprints:(id)arg3 frameStats:(id)arg4;
 - (id)initWithTransform:(struct CGAffineTransform)arg1;
 - (id)faceRanges;
 

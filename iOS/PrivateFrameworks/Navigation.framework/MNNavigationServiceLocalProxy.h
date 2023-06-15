@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <MNNavigationServiceClientInterface> delegate; // @synthesize delegate=_delegate;
+- (void)navigationSessionManager:(id)arg1 didSendNavigationServiceCallback:(id)arg2;
 - (void)navigationSessionManager:(id)arg1 didReceiveTransitAlert:(id)arg2;
 - (void)navigationSessionManager:(id)arg1 didReceiveTransitUpdates:(id)arg2;
 - (void)navigationSessionManager:(id)arg1 willSendTransitUpdateRequestForRouteIDs:(id)arg2;
@@ -56,27 +57,28 @@ __attribute__((visibility("hidden")))
 - (void)navigationSessionManager:(id)arg1 didSwitchToNewTransportType:(int)arg2 newRoute:(id)arg3;
 - (void)navigationSessionManager:(id)arg1 didUpdateRouteWithNewRideSelection:(id)arg2;
 - (void)navigationSessionManagerDidCancelReroute:(id)arg1;
-- (void)navigationSessionManager:(id)arg1 didRerouteWithRoute:(id)arg2 location:(id)arg3 withAlternateRoutes:(id)arg4;
+- (void)navigationSessionManager:(id)arg1 didRerouteWithRoute:(id)arg2 location:(id)arg3 withAlternateRoutes:(id)arg4 rerouteReason:(unsigned long long)arg5;
 - (void)navigationSessionManagerWillReroute:(id)arg1;
 - (void)navigationSessionManager:(id)arg1 didUpdatePreviewRoutes:(id)arg2 withSelectedRouteIndex:(unsigned long long)arg3;
 - (void)navigationSessionManager:(id)arg1 didUpdateMotionType:(unsigned long long)arg2 confidence:(unsigned long long)arg3;
 - (void)navigationSessionManager:(id)arg1 didUpdateHeading:(double)arg2 accuracy:(double)arg3;
 - (void)navigationSessionManager:(id)arg1 didUpdateETAResponseForRoute:(id)arg2;
-- (void)navigationSessionManager:(id)arg1 didUpdateDisplayETA:(id)arg2 remainingDistance:(id)arg3 batteryChargeInfo:(id)arg4;
 - (void)navigationSessionManager:(id)arg1 didReceiveRouteSignalStrength:(unsigned long long)arg2;
 - (void)navigationSessionManagerWillResumeFromPause:(id)arg1;
 - (void)navigationSessionManagerWillPause:(id)arg1;
 - (void)navigationSessionManagerDidArrive:(id)arg1;
 - (void)navigationSessionManagerDidEnterPreArrivalState:(id)arg1;
+- (void)navigationSessionManager:(id)arg1 didUpdateTargetLegIndex:(unsigned long long)arg2;
 - (void)navigationSessionManager:(id)arg1 didResumeNavigatingFromWaypoint:(id)arg2 endOfLegIndex:(unsigned long long)arg3 reason:(unsigned long long)arg4;
 - (void)navigationSessionManager:(id)arg1 didArriveAtWaypoint:(id)arg2 endOfLegIndex:(unsigned long long)arg3;
 - (void)navigationSessionManager:(id)arg1 didEnterPreArrivalStateForWaypoint:(id)arg2 endOfLegIndex:(unsigned long long)arg3;
+- (void)navigationSessionManager:(id)arg1 isApproachingEndOfLeg:(unsigned long long)arg2;
+- (void)navigationSessionManagerDidFinishLocationUpdate:(id)arg1;
 - (void)navigationSessionManager:(id)arg1 currentStepIndex:(unsigned long long)arg2 didUpdateDistanceUntilManeuver:(double)arg3 timeUntilManeuver:(double)arg4;
 - (void)navigationSessionManager:(id)arg1 didUpdateDisplayedStepIndex:(unsigned long long)arg2 segmentIndex:(unsigned long long)arg3;
-- (void)navigationSessionManager:(id)arg1 didUpdateStepIndex:(unsigned long long)arg2 segmentIndex:(unsigned long long)arg3;
-- (void)navigationSessionManager:(id)arg1 didUpdateLocation:(id)arg2;
 - (void)navigationSessionManager:(id)arg1 didChangeNavigationState:(int)arg2;
 - (void)navigationSessionManager:(id)arg1 didFailWithError:(id)arg2;
+- (void)navigationSessionManager:(id)arg1 didUpdateResumeRouteHandle:(id)arg2;
 - (void)navigationSessionManager:(id)arg1 shouldEndWithReason:(unsigned long long)arg2;
 - (void)navigationSessionManager:(id)arg1 didStopWithReason:(unsigned long long)arg2;
 - (void)navigationSessionManager:(id)arg1 willStopWithReason:(unsigned long long)arg2;
@@ -97,6 +99,7 @@ __attribute__((visibility("hidden")))
 - (void)setTracePlaybackSpeed:(double)arg1;
 - (void)setTraceIsPlaying:(_Bool)arg1;
 - (void)acceptReroute:(_Bool)arg1 forTrafficIncidentAlert:(id)arg2;
+- (void)changeOfflineState:(unsigned long long)arg1;
 - (void)enableNavigationCapability:(unsigned long long)arg1;
 - (void)disableNavigationCapability:(unsigned long long)arg1;
 - (void)setJunctionViewImageWidth:(double)arg1 height:(double)arg2;
@@ -111,6 +114,7 @@ __attribute__((visibility("hidden")))
 - (void)repeatCurrentGuidanceWithReply:(CDUnknownBlockType)arg1;
 - (void)changeUserOptions:(id)arg1;
 - (void)setGuidanceType:(unsigned long long)arg1;
+- (void)changeTransportType:(int)arg1 route:(id)arg2;
 - (void)switchToRoute:(id)arg1;
 - (void)forceReroute;
 - (void)resumeOriginalDestination;

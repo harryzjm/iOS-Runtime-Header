@@ -6,7 +6,7 @@
 
 #import <Foundation/NSEnumerator.h>
 
-@class NSDictionary, NSString, _EXExtensionPoint;
+@class NSDictionary, NSMutableDictionary, NSString, _EXExtensionPoint;
 @protocol EXEnumeratorConfig;
 
 __attribute__((visibility("hidden")))
@@ -18,15 +18,13 @@ __attribute__((visibility("hidden")))
     NSEnumerator *_extensionPointsKeyEnumerator;
     _EXExtensionPoint *_currentExtensionPoint;
     NSString *_currentIdentifier;
-    NSDictionary *_currentNativeSDKDictionary;
-    NSDictionary *_currentCatalystSDKDictionary;
+    NSMutableDictionary *_currentSDKDictionaryForPlatform;
 }
 
 + (id)translateAppexptDictionary:(id)arg1 definitionURL:(id)arg2 isCatalyst:(_Bool)arg3;
 + (void)enumerateExtensionPointsInDirectoryAtURL:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
-@property(readonly) NSDictionary *currentCatalystSDKDictionary; // @synthesize currentCatalystSDKDictionary=_currentCatalystSDKDictionary;
-@property(readonly) NSDictionary *currentNativeSDKDictionary; // @synthesize currentNativeSDKDictionary=_currentNativeSDKDictionary;
+@property(readonly) NSMutableDictionary *currentSDKDictionaryForPlatform; // @synthesize currentSDKDictionaryForPlatform=_currentSDKDictionaryForPlatform;
 @property(readonly) NSString *currentIdentifier; // @synthesize currentIdentifier=_currentIdentifier;
 @property(readonly) _EXExtensionPoint *currentExtensionPoint; // @synthesize currentExtensionPoint=_currentExtensionPoint;
 @property(readonly) NSEnumerator *extensionPointsKeyEnumerator; // @synthesize extensionPointsKeyEnumerator=_extensionPointsKeyEnumerator;

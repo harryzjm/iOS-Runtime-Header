@@ -6,7 +6,7 @@
 
 #import <CoreSuggestionsUI/NSObject-Protocol.h>
 
-@class NSArray, NSAttributedString, NSLayoutXAxisAnchor, NSString, SGBannerDividerParameter, SGSuggestionAction, SGSuggestionStore, UIColor, UIVisualEffectView;
+@class NSArray, NSAttributedString, NSString, SGBannerDividerParameter, SGSuggestionAction, SGSuggestionStore, UIColor, UIVisualEffectView;
 @protocol SGSuggestion, SGSuggestionDelegate;
 
 @protocol SGBannerProtocol <NSObject>
@@ -25,7 +25,6 @@
 @property(copy, nonatomic) SGBannerDividerParameter *bannerDivider;
 @property(copy, nonatomic) UIColor *backgroundColor;
 @property(nonatomic) double closeButtonXAnchorOffset;
-@property(retain, nonatomic) NSLayoutXAxisAnchor *closeButtonCenterXAnchor;
 @property(copy, nonatomic) UIVisualEffectView *backgroundVisualEffectView;
 @property(nonatomic) _Bool suggestionCategorySupportsBatchDismissal;
 @property(nonatomic) long long actionButtonType;

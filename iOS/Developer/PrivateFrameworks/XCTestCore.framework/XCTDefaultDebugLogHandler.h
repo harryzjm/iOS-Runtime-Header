@@ -10,23 +10,21 @@
 #import <XCTestCore/XCTASDebugLogDelegate-Protocol.h>
 
 @class NSMutableArray, NSString;
-@protocol OS_dispatch_queue;
 
 @interface XCTDefaultDebugLogHandler : NSObject <XCTASDebugLogDelegate, XCDebugLogDelegate>
 {
+    struct os_unfair_lock_s _lock;
     NSMutableArray *_logSinks;
     NSMutableArray *_debugMessageBuffer;
-    NSObject<OS_dispatch_queue> *_queue;
 }
 
 + (id)sharedHandler;
 - (void).cxx_destruct;
-@property(readonly) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(readonly) NSMutableArray *debugMessageBuffer; // @synthesize debugMessageBuffer=_debugMessageBuffer;
 - (void)logDebugMessage:(id)arg1;
 - (void)removeLogSink:(id)arg1;
 - (void)addLogSink:(id)arg1;
-- (void)_queue_flushDebugMessageBufferWithBlock:(CDUnknownBlockType)arg1;
+- (void)_locked_flushDebugMessageBufferWithBlock:(CDUnknownBlockType)arg1;
 - (void)printBufferedDebugMessages;
 - (void)logStartupInfo;
 - (id)init;

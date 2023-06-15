@@ -18,6 +18,8 @@
 + (id)newErrorModel;
 - (void).cxx_destruct;
 @property(retain, nonatomic) CHSpellCheckerErrorModel *errorModel; // @synthesize errorModel=_errorModel;
+- (id)topCorrectionsForRecognition:(id)arg1 contextBeforeToken:(id)arg2 contextSeparator:(id)arg3 shouldUseErrorModel:(_Bool)arg4 forLocale:(id)arg5 minScore:(double)arg6;
+- (id)topCorrectionForRecognition:(id)arg1 contextBeforeToken:(id)arg2 contextSeparator:(id)arg3 shouldUseErrorModel:(_Bool)arg4 forLocale:(id)arg5 minScore:(double)arg6;
 - (id)correctionsForString:(id)arg1 shouldUseErrorModel:(_Bool)arg2 forLocale:(id)arg3;
 - (id)topCorrectionForString:(id)arg1 contextBeforeToken:(id)arg2 contextSeparator:(id)arg3 shouldUseErrorModel:(_Bool)arg4 forLanguage:(id)arg5;
 - (_Bool)isWordInUserDictionaries:(id)arg1 caseSensitive:(_Bool)arg2;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class LSAppLink, NSData, NSDictionary, NSString, NSURL, NSUUID, _LSAppLinkOpenState;
+@class LSAppLink, NSData, NSDictionary, NSFileHandle, NSString, NSURL, NSUUID, _LSAppLinkOpenState;
 @protocol LSOpenResourceOperationDelegate;
 
 @protocol _LSDOpenProtocol
@@ -14,8 +14,8 @@
 - (void)getURLOverrideForURL:(NSURL *)arg1 completionHandler:(void (^)(NSURL *, NSError *))arg2;
 - (void)canOpenURL:(NSURL *)arg1 publicSchemes:(_Bool)arg2 privateSchemes:(_Bool)arg3 completionHandler:(void (^)(_Bool, NSError *))arg4;
 - (void)openUserActivityWithUniqueIdentifier:(NSUUID *)arg1 activityData:(NSData *)arg2 activityType:(NSString *)arg3 bundleIdentifier:(NSString *)arg4 options:(NSDictionary *)arg5 completionHandler:(void (^)(_Bool, NSError *))arg6;
-- (void)openURL:(NSURL *)arg1 options:(NSDictionary *)arg2 completionHandler:(void (^)(_Bool, NSError *))arg3;
+- (void)openURL:(NSURL *)arg1 fileHandle:(NSFileHandle *)arg2 options:(NSDictionary *)arg3 completionHandler:(void (^)(_Bool, NSError *))arg4;
 - (void)openApplicationWithIdentifier:(NSString *)arg1 options:(NSDictionary *)arg2 useClientProcessHandle:(_Bool)arg3 completionHandler:(void (^)(_Bool, NSError *))arg4;
-- (void)performOpenOperationWithURL:(NSURL *)arg1 bundleIdentifier:(NSString *)arg2 documentIdentifier:(NSString *)arg3 isContentManaged:(_Bool)arg4 sourceAuditToken:(const CDStruct_4c969caf *)arg5 userInfo:(NSDictionary *)arg6 options:(NSDictionary *)arg7 delegate:(id <LSOpenResourceOperationDelegate>)arg8 completionHandler:(void (^)(_Bool, NSError *))arg9;
+- (void)performOpenOperationWithURL:(NSURL *)arg1 fileHandle:(NSFileHandle *)arg2 bundleIdentifier:(NSString *)arg3 documentIdentifier:(NSString *)arg4 isContentManaged:(_Bool)arg5 sourceAuditToken:(const CDStruct_4c969caf *)arg6 userInfo:(NSDictionary *)arg7 options:(NSDictionary *)arg8 delegate:(id <LSOpenResourceOperationDelegate>)arg9 completionHandler:(void (^)(_Bool, NSError *))arg10;
 @end
 

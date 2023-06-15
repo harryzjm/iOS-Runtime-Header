@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (void)fetchGroupContainerPathForCurrentPersonaForFPFS:(_Bool)arg1 withReply:(CDUnknownBlockType)arg2;
 - (void)fetchGroupContainerPathForCurrentPersonaWithReply:(CDUnknownBlockType)arg1;
 - (void)fetchContainerPathForCurrentPersonaWithReply:(CDUnknownBlockType)arg1;
 - (void)getPrimaryiCloudAccountStatus:(CDUnknownBlockType)arg1;

@@ -9,8 +9,9 @@
 __attribute__((visibility("hidden")))
 @interface _TtC10ChronoCore21ActivitySceneDelegate
 {
-    MISSING_TYPE *cancellables;
+    MISSING_TYPE *_cancellables;
     MISSING_TYPE *viewController;
+    MISSING_TYPE *viewModel;
 }
 
 - (void).cxx_destruct;

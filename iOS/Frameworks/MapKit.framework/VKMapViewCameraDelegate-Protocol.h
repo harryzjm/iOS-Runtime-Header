@@ -24,6 +24,7 @@
 - (void)mapLayerDidBecomePitched:(_Bool)arg1;
 - (id <VKTrackableAnnotationPresentation>)mapLayerPresentationForAnnotation:(id <VKTrackableAnnotation>)arg1;
 - (void)mapLayerDidFinishInitialTrackingAnimation;
+- (void)mapLayerWillPerformZoomBounceAnimation;
 - (void)mapLayerDidChangeRegionAnimated:(_Bool)arg1;
 - (void)mapLayerWillChangeRegionAnimated:(_Bool)arg1;
 - (void)mapLayerDidChangeVisibleRegion;

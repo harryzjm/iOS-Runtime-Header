@@ -12,6 +12,10 @@
 
 @optional
 @property(retain, nonatomic) WBSSavedAccount *savedAccountToRemoveAfterCompletedUpgradeInDetailView;
+- (void)accountDetailViewController:(SFAccountDetailViewController *)arg1 fillVerificationCodeForSavedAccount:(WBSSavedAccount *)arg2;
+- (void)accountDetailViewController:(SFAccountDetailViewController *)arg1 fillPasswordForSavedAccount:(WBSSavedAccount *)arg2;
+- (void)accountDetailViewController:(SFAccountDetailViewController *)arg1 fillUsernameForSavedAccount:(WBSSavedAccount *)arg2;
+- (void)accountDetailViewController:(SFAccountDetailViewController *)arg1 didMoveSavedAccountToRecentlyDeleted:(WBSSavedAccount *)arg2;
 - (void)accountDetailViewController:(SFAccountDetailViewController *)arg1 didDeleteAccountWithWarning:(WBSPasswordWarning *)arg2;
 - (void)accountDetailViewController:(SFAccountDetailViewController *)arg1 didHideWarning:(WBSPasswordWarning *)arg2;
 - (WBSPasswordGenerationManager *)passwordGeneratorForAccountDetailViewController:(SFAccountDetailViewController *)arg1;

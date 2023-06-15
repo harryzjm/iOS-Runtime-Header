@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UICollectionViewCompositionalLayout.h>
+#import <UIKitCore/UICollectionViewCompositionalLayout.h>
 
 @interface UICollectionViewCompositionalLayout (HomeUI)
 - (CDUnknownBlockType)_animationForReusableView:(id)arg1 toLayoutAttributes:(id)arg2 type:(unsigned long long)arg3;

@@ -16,7 +16,6 @@
     MISSING_TYPE *contextBuilder;
     MISSING_TYPE *navigator;
     MISSING_TYPE *magazineMoreActionsFactory;
-    MISSING_TYPE *isImprovedBlockingBehaviorEnabled;
 }
 
 @end

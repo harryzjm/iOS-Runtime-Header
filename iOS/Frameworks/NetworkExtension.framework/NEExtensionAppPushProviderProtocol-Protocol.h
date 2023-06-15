@@ -11,6 +11,7 @@
 @protocol NEExtensionAppPushProviderProtocol <NEExtensionProviderProtocol>
 - (void)sendTimerEvent;
 - (void)sendOutgoingCallMessage:(NSDictionary *)arg1 completionHandler:(void (^)(NSError *))arg2;
+- (void)reportPushToTalkMessage:(NSDictionary *)arg1;
 - (void)reportIncomingCall:(NSDictionary *)arg1;
 - (void)setProviderConfiguration:(NSDictionary *)arg1;
 - (void)stopWithReason:(int)arg1 completionHandler:(void (^)(void))arg2;

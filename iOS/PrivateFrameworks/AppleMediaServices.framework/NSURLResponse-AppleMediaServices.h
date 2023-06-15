@@ -10,9 +10,9 @@
 
 @interface NSURLResponse (AppleMediaServices)
 - (_Bool)_getCacheControlMaxAge:(double *)arg1;
-- (id)ams_valueForHTTPHeader:(id)arg1;
+- (id)ams_valueForHTTPHeaderField:(id)arg1;
 @property(readonly, nonatomic) long long ams_statusCode;
-@property(readonly, nonatomic) NSDictionary *ams_headers;
+@property(readonly, nonatomic) NSDictionary *ams_allHeaderFields;
 @property(readonly, nonatomic) double ams_expirationInterval;
 @end
 

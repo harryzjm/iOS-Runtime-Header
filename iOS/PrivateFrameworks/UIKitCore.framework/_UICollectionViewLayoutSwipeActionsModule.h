@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
     struct {
         unsigned int layoutUpdateOrRefreshPending:1;
+        unsigned int hasDeferredLayoutUpdateOrRefresh:1;
         unsigned int preserveExistingLayoutAttributesForSwipedViews:1;
     } _flags;
     UICollectionViewLayout *_host;
@@ -27,7 +28,8 @@ __attribute__((visibility("hidden")))
 - (void)_transformLayoutAttributes:(id)arg1 ofSeparatorAtBottom:(_Bool)arg2 forSwipeOccurrence:(id)arg3 isDisappearing:(_Bool)arg4;
 - (void)transformDecorationLayoutAttributes:(id)arg1 isDisappearing:(_Bool)arg2;
 - (void)transformCellLayoutAttributes:(id)arg1 isDisappearing:(_Bool)arg2;
-- (void)updateWithUpdateItems:(id)arg1;
+- (void)finalizeCollectionViewUpdate:(id)arg1;
+- (void)updateWithDataSourceTranslator:(id)arg1;
 - (void)_invalidateSwipeActionsLayoutRefreshingActiveConfigurations:(_Bool)arg1;
 - (_Bool)_canIgnoreInvalidationContext:(id)arg1;
 - (void)processLayoutInvalidationWithContext:(id)arg1 updateConfigurations:(_Bool)arg2;

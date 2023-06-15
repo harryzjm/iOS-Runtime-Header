@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface _UIStatusBarSignalViewCacheKey : NSObject <NSCopying>
+@interface _UIStatusBarSignalViewCacheKey : NSObject
 {
     Class _classType;
     struct CGSize _size;

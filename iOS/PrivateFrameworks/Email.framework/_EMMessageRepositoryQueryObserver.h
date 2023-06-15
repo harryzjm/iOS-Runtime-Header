@@ -6,14 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class EFCancelationToken, EFQuery, EMMessageRepository, EMObjectID, NSString;
+@class EFCancelationToken, EMMessageRepository, EMObjectID, EMQuery, NSString;
 @protocol EFCancelable, EFScheduler, EMQueryResultsObserver;
 
 __attribute__((visibility("hidden")))
 @interface _EMMessageRepositoryQueryObserver : NSObject
 {
     EMMessageRepository *_repository;
-    EFQuery *_query;
+    EMQuery *_query;
     EMObjectID *_observationIdentifier;
     id <EMQueryResultsObserver> _observer;
     EFCancelationToken *_token;
@@ -38,9 +38,10 @@ __attribute__((visibility("hidden")))
 - (void)observer:(id)arg1 matchedAddedObjectIDs:(id)arg2 before:(id)arg3 extraInfo:(id)arg4;
 - (void)observer:(id)arg1 wasUpdated:(id)arg2;
 - (void)_performQueryWithRemoteConnection:(id)arg1 forRecovery:(_Bool)arg2;
-- (void)recoverQueryWithRemoteConnection:(id)arg1;
+- (void)recoverWithRemoteConnection:(id)arg1;
 - (void)refreshQueryWithRemoteConnection:(id)arg1;
-- (void)performQueryWithRemoteConnection:(id)arg1;
+- (void)performWithRemoteConnection:(id)arg1;
+- (id)trampoliningObserver;
 - (void)cancel;
 - (void)dealloc;
 - (id)initWithRepository:(id)arg1 query:(id)arg2 observer:(id)arg3;

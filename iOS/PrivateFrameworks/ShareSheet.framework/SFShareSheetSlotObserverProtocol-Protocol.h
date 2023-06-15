@@ -6,6 +6,9 @@
 
 #import <ShareSheet/SFShareSheetSlotManagerDelegate-Protocol.h>
 
+@class NSArray, NSError, NSUUID;
+
 @protocol SFShareSheetSlotObserverProtocol <SFShareSheetSlotManagerDelegate>
+- (void)didPerformInServiceActivityWithIdentifier:(NSUUID *)arg1 completed:(_Bool)arg2 items:(NSArray *)arg3 error:(NSError *)arg4;
 @end
 

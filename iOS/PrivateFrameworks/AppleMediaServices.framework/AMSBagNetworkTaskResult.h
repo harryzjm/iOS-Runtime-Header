@@ -11,17 +11,23 @@
 __attribute__((visibility("hidden")))
 @interface AMSBagNetworkTaskResult : NSObject
 {
+    NSString *_accountIdentifier;
     NSDictionary *_data;
     NSDate *_expirationDate;
+    NSString *_loadedBagIdentifier;
+    NSString *_loadedBagPartialIdentifier;
     NSString *_storefront;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSString *storefront; // @synthesize storefront=_storefront;
-@property(retain, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
-@property(retain, nonatomic) NSDictionary *data; // @synthesize data=_data;
+@property(readonly, nonatomic) NSString *storefront; // @synthesize storefront=_storefront;
+@property(readonly, nonatomic) NSString *loadedBagPartialIdentifier; // @synthesize loadedBagPartialIdentifier=_loadedBagPartialIdentifier;
+@property(readonly, nonatomic) NSString *loadedBagIdentifier; // @synthesize loadedBagIdentifier=_loadedBagIdentifier;
+@property(readonly, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
+@property(readonly, nonatomic) NSDictionary *data; // @synthesize data=_data;
+@property(readonly, nonatomic) NSString *accountIdentifier; // @synthesize accountIdentifier=_accountIdentifier;
 @property(readonly, nonatomic) _Bool expired;
-- (id)initWithData:(id)arg1;
+- (id)initWithData:(id)arg1 expirationDate:(id)arg2 loadedBagIdentifier:(id)arg3 loadedBagPartialIdentifier:(id)arg4 storefront:(id)arg5 accountIdentifier:(id)arg6;
 
 @end
 

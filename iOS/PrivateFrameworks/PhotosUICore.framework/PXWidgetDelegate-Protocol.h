@@ -7,9 +7,10 @@
 #import <PhotosUICore/NSObject-Protocol.h>
 
 @class NSObject, NSUndoManager, PXBasicTileAnimationOptions, PXExtendedTraitCollection, PXScrollViewController;
-@protocol PXAnonymousView, PXAnonymousViewController, PXWidget;
+@protocol PXAnonymousView, PXAnonymousViewController, PXPresentationEnvironment, PXWidget;
 
 @protocol PXWidgetDelegate <NSObject>
+- (id <PXPresentationEnvironment>)presentationEnvironmentForWidget:(id <PXWidget>)arg1;
 - (_Bool)widget:(id <PXWidget>)arg1 requestViewControllerDismissalAnimated:(_Bool)arg2;
 - (_Bool)widget:(id <PXWidget>)arg1 transitionToViewController:(NSObject<PXAnonymousViewController> *)arg2 withTransitionType:(long long)arg3;
 - (long long)widgetDefaultContentViewAnchoringTypeForDisclosureHeightChange:(id <PXWidget>)arg1;

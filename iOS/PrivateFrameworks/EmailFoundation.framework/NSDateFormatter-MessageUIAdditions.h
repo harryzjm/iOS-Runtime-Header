@@ -7,7 +7,9 @@
 #import <Foundation/NSDateFormatter.h>
 
 @interface NSDateFormatter (MessageUIAdditions)
++ (id)ef_formatDate:(id)arg1 style:(long long)arg2 formattingContext:(long long)arg3;
 + (id)ef_formatDate:(id)arg1 style:(long long)arg2;
++ (id)ef_isoDateFormatter;
 + (id)ef_formatterForStyle:(long long)arg1;
 + (id)ef_formatDate:(id)arg1 shortStyle:(_Bool)arg2;
 @end

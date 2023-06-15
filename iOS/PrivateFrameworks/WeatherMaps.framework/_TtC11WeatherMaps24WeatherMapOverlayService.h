@@ -12,10 +12,16 @@
 {
     MISSING_TYPE *appConfigurationManager;
     MISSING_TYPE *networkMonitor;
+    MISSING_TYPE *isTestingPerformance;
     MISSING_TYPE *lazyURLSession;
     MISSING_TYPE *$__lazy_storage_$_session;
+    MISSING_TYPE *maxRetryAttempts;
+    MISSING_TYPE *lock;
     MISSING_TYPE *source;
     MISSING_TYPE *authenticator;
+    MISSING_TYPE *$__lazy_storage_$_forceUseSeparateRadarEndpoints;
+    MISSING_TYPE *reachabilityMonitor;
+    MISSING_TYPE *networkActivityProvider;
 }
 
 @end

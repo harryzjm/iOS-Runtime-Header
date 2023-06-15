@@ -9,7 +9,7 @@
 @class NSAttributedString, NSString;
 
 @protocol AXDataAxisDescriptor <NSCopying>
-@property(nonatomic, copy) NSAttributedString *attributedTitle;
-@property(nonatomic, copy) NSString *title;
+@property(copy, nonatomic) NSAttributedString *attributedTitle;
+@property(copy, nonatomic) NSString *title;
 @end
 

@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import "ISIcon.h"
+#import "ISCodableIcon.h"
 
 @class ISImageCache, NSUUID;
 
 __attribute__((visibility("hidden")))
-@interface ISConcreteIcon : ISIcon
+@interface ISConcreteIcon : ISCodableIcon
 {
     NSUUID *_digest;
     ISImageCache *_imageCache;

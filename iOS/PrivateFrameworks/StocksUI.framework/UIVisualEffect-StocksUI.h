@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIVisualEffect.h>
+#import <UIKitCore/UIVisualEffect.h>
 
 @interface UIVisualEffect (StocksUI)
 + (id)su_visualEffectsForBarWithBackgroundColor:(id)arg1;

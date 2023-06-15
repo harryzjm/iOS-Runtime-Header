@@ -6,15 +6,19 @@
 
 #import <TelephonyUtilities/NSObject-Protocol.h>
 
-@class NSUUID, TUNearbyDeviceHandle;
+@class NSUUID, TUNearbyDeviceHandle, TUNearbySuggestionResult;
 @protocol TUNeighborhoodActivityConduitXPCClient;
 
 @protocol TUNeighborhoodActivityConduitXPCServer <NSObject>
 - (void)unregisterClient:(id <TUNeighborhoodActivityConduitXPCClient>)arg1;
 - (void)registerClient:(id <TUNeighborhoodActivityConduitXPCClient>)arg1;
+- (void)pullConversation:(NSUUID *)arg1 fromTVDevice:(TUNearbyDeviceHandle *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
+- (void)handoffConversation:(NSUUID *)arg1 toTVDevice:(TUNearbyDeviceHandle *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 - (void)registerSplitSessionApprovalEnabled:(_Bool)arg1;
+- (void)respondToSuggestionWithResult:(TUNearbySuggestionResult *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (void)disconnectTVDevice:(TUNearbyDeviceHandle *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (void)inviteTVDevice:(TUNearbyDeviceHandle *)arg1 toConversation:(NSUUID *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
+- (void)suggestionWithCompletion:(void (^)(TUNearbySuggestion *, NSError *))arg1;
 - (void)activeSplitSessionTVDeviceWithCompletion:(void (^)(TUNearbyDeviceHandle *, NSError *))arg1;
 - (void)nearbyTVDevicesWithCompletion:(void (^)(NSSet *, NSError *))arg1;
 @end

@@ -6,6 +6,8 @@
 
 #import <HealthKit/HKObject.h>
 
+@class HDDataOriginProvenance;
+
 @interface HKObject (HDCodingSupport)
 + (id)hd_allObjectsToInsertWithObjects:(id)arg1;
 + (Class)hd_dataEntityClass;
@@ -14,8 +16,9 @@
 - (_Bool)addCodableRepresentationToCollection:(id)arg1;
 - (id)codableRepresentationForSync;
 - (_Bool)hd_insertRelatedDataWithPersistentID:(id)arg1 insertionContext:(id)arg2 profile:(id)arg3 transaction:(id)arg4 error:(id *)arg5;
-- (id)hd_relatedJournalEntries;
+- (id)hd_relatedJournalEntriesWithProfile:(id)arg1;
 - (long long)entityType;
+@property(readonly, nonatomic) HDDataOriginProvenance *hd_dataOriginProvenance;
 - (id)hd_associatedSampleTypes;
 - (id)hd_associatedObjects;
 - (Class)hd_dataEntityClass;

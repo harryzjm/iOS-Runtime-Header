@@ -15,15 +15,16 @@
     MISSING_TYPE *clickTopic;
     MISSING_TYPE *clickUnidentifiedTopic;
     MISSING_TYPE *clickIdentifiedTopic;
+    MISSING_TYPE *clickDiagnosticsTopic;
     MISSING_TYPE *workoutTopic;
     MISSING_TYPE *musicTopic;
-    MISSING_TYPE *privacyPreferenceDataSource;
-    MISSING_TYPE *serviceSubscriptionProviderBroker;
+    MISSING_TYPE *healthActivityTopic;
+    MISSING_TYPE *recordingContextBuilder;
     MISSING_TYPE *identifierStore;
     MISSING_TYPE *platform;
     MISSING_TYPE *bag;
     MISSING_TYPE *healthStore;
-    MISSING_TYPE *referrerURLHost;
+    MISSING_TYPE *referrerURL;
     MISSING_TYPE *sourceApplication;
 }
 

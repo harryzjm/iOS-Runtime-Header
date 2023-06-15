@@ -6,7 +6,9 @@
 
 #import <ChatKit/NSObject-Protocol.h>
 
+@class CKNicknameUpdate;
+
 @protocol CKNicknameUpdateInterface <NSObject>
-- (void)updateInterfaceSelectedAction:(unsigned long long)arg1;
+- (void)updateInterfaceSelectedAction:(unsigned long long)arg1 forUpdate:(CKNicknameUpdate *)arg2;
 @end
 

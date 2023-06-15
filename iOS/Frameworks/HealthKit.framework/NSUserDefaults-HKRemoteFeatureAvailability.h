@@ -20,6 +20,8 @@
 @property(nonatomic, getter=hk_electrocardiogramWatchAppInstallHasBeenAllowed, setter=hk_setElectrocardiogramWatchAppInstallIsAllowed:) _Bool hk_electrocardiogramWatchAppInstallIsAllowed;
 @property(readonly, nonatomic) _Bool hk_hfeModeEnabled;
 @property(retain, nonatomic, setter=hk_setDemoResultKeys:) NSArray *hk_demoResultKeys;
+- (_Bool)hk_hasCompletedThirdPartyAuthSyncWithBooleanValue;
+- (void)hk_setHasCompletedThirdPartyAuthSyncWithBooleanValue:(_Bool)arg1;
 - (id)hk_dateForKey:(id)arg1;
 - (_Bool)hk_boolForKey:(id)arg1 defaultValue:(_Bool)arg2;
 - (void)hk_removeObjectsForKeysWithPrefix:(id)arg1;

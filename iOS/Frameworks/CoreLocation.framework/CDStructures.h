@@ -49,6 +49,7 @@ struct _CLLocationManagerStateTrackerState {
     _Bool fusionInfoEnabled;
     _Bool courtesyPromptNeeded;
     _Bool isAuthorizedForWidgetUpdates;
+    _Bool trackRunInfoEnabled;
 };
 
 struct os_state_hints_s {
@@ -102,6 +103,46 @@ typedef struct {
 
 typedef struct {
     double _field1;
+    int _field2;
+    int _field3;
+} CDStruct_dce2ee30;
+
+typedef struct {
+    float _field1;
+    float _field2;
+    float _field3;
+} CDStruct_869f9c67;
+
+typedef struct {
+    int padding1;
+    int suitability;
+    CDStruct_2c43369c coordinate;
+    double horizontalAccuracy;
+    double altitude;
+    double verticalAccuracy;
+    double padding2;
+    double padding3;
+    double speed;
+    double speedAccuracy;
+    double course;
+    double courseAccuracy;
+    double timestamp;
+    int confidence;
+    double lifespan;
+    int type;
+    CDStruct_2c43369c rawCoordinate;
+    double rawCourse;
+    int floor;
+    unsigned int integrity;
+    int referenceFrame;
+    int rawReferenceFrame;
+    int signalEnvironmentType;
+    double ellipsoidalAltitude;
+    _Bool fromSimulationController;
+} CDStruct_2fb123db;
+
+typedef struct {
+    double _field1;
     double _field2;
     double _field3;
     double _field4;
@@ -132,20 +173,43 @@ typedef struct {
         double _field10;
     } _field16;
     struct {
-        double _field1;
-        double _field2;
+        struct {
+            int _field1;
+            double _field2;
+            double _field3;
+            double _field4;
+            double _field5;
+            double _field6;
+            struct {
+                double _field1;
+                double _field2;
+            } _field7;
+            double _field8;
+            double _field9;
+        } _field1;
+        int _field2;
+        unsigned long long _field3;
+        int _field4;
+        int _field5;
+        int _field6;
+        int _field7;
+        double _field8;
+        _Bool _field9;
     } _field17;
-    int _field18;
-    float _field19;
     struct {
         double _field1;
         double _field2;
-    } _field20;
-    double _field21;
+    } _field18;
+    int _field19;
+    float _field20;
+    struct {
+        double _field1;
+        double _field2;
+    } _field21;
     double _field22;
-    int _field23;
-    _Bool _field24;
-    double _field25;
+    double _field23;
+    int _field24;
+    _Bool _field25;
     double _field26;
     double _field27;
     double _field28;
@@ -153,51 +217,49 @@ typedef struct {
     double _field30;
     double _field31;
     double _field32;
-    _Bool _field33;
+    double _field33;
     _Bool _field34;
+    _Bool _field35;
     struct {
         double _field1;
         double _field2;
-    } _field35;
-    double _field36;
-    int _field37;
-    double _field38;
+    } _field36;
+    double _field37;
+    int _field38;
     double _field39;
     double _field40;
     double _field41;
-    int _field42;
-    double _field43;
+    double _field42;
+    int _field43;
     double _field44;
-    int _field45;
-} CDStruct_47914287;
+    double _field45;
+    int _field46;
+    struct {
+        unsigned int _field1;
+    } _field47;
+    struct {
+        int _field1;
+        float _field2;
+    } _field48;
+} CDStruct_ff8cecf3;
 
 typedef struct {
-    int padding1;
-    int suitability;
-    CDStruct_2c43369c coordinate;
-    double horizontalAccuracy;
-    double altitude;
-    double verticalAccuracy;
-    double padding2;
-    double padding3;
-    double speed;
-    double speedAccuracy;
-    double course;
-    double courseAccuracy;
-    double timestamp;
-    int confidence;
-    double lifespan;
-    int type;
-    CDStruct_2c43369c rawCoordinate;
-    double rawCourse;
-    int floor;
-    unsigned int integrity;
-    int referenceFrame;
-    int rawReferenceFrame;
-    int signalEnvironmentType;
-    double ellipsoidalAltitude;
-    _Bool fromSimulationController;
-} CDStruct_2fb123db;
+    int _field1;
+    double _field2;
+    double _field3;
+    float _field4;
+    float _field5;
+    union {
+        struct {
+            CDStruct_869f9c67 _field1;
+            CDStruct_869f9c67 _field2;
+        } _field1;
+        struct {
+            _Bool _field1;
+            char _field2[282];
+        } _field2;
+    } _field6;
+} CDStruct_6fc73bc8;
 
 // Ambiguous groups
 typedef struct {

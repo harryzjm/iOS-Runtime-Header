@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateColorIfNeeded;
 - (void)_invalidateColorWithAnimatorBlock:(CDUnknownBlockType)arg1;
 - (void)_invalidateColor;
+- (void)becomeReusable;
 - (void)applyLayoutInfo:(id)arg1;
 - (void)viewDidLoad;
 - (id)initWithReuseIdentifier:(id)arg1;

@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     struct os_unfair_lock_s _readerLock;
     unsigned int _distanceDisplayThreshold;
     int _requestedShortAddressType;
+    int _taxonomyTypeForClientization;
     _Bool _enableChildPoisWithoutAcRank;
     _Bool _enableLookInsideActionForVenuePois;
     _Bool _isDefaultName;
@@ -34,6 +35,7 @@ __attribute__((visibility("hidden")))
     struct {
         unsigned int has_distanceDisplayThreshold:1;
         unsigned int has_requestedShortAddressType:1;
+        unsigned int has_taxonomyTypeForClientization:1;
         unsigned int has_enableChildPoisWithoutAcRank:1;
         unsigned int has_enableLookInsideActionForVenuePois:1;
         unsigned int has_isDefaultName:1;

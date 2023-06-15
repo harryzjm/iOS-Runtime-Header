@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import "_HMDAccountIdentifier.h"
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _HMDIDSAccountIdentifier : _HMDAccountIdentifier
+@interface _HMDIDSAccountIdentifier
 {
     NSString *_identifierString;
 }

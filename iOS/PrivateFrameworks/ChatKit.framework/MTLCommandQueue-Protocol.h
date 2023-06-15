@@ -10,11 +10,11 @@
 @protocol MTLCommandBuffer, MTLDevice;
 
 @protocol MTLCommandQueue <NSObject>
+@property(readonly) id <MTLDevice> device;
+@property(copy) NSString *label;
 - (void)insertDebugCaptureBoundary;
 - (id <MTLCommandBuffer>)commandBufferWithUnretainedReferences;
 - (id <MTLCommandBuffer>)commandBufferWithDescriptor:(MTLCommandBufferDescriptor *)arg1;
 - (id <MTLCommandBuffer>)commandBuffer;
-@property(nonatomic, readonly) id <MTLDevice> device;
-@property(nonatomic, copy) NSString *label;
 @end
 

@@ -6,8 +6,8 @@
 
 #import <SpringBoardHome/NSObject-Protocol.h>
 
-@class NSArray, NSDate, NSIndexPath, NSString, NSUUID, SBFolder, SBFolderIcon, SBHIconModel, SBHWidgetInsertionRippleIconAnimator, SBIcon, SBIconDragManager, SBIconListView, SBIconView, SBRootFolder, SBRootFolderController, SBWidgetIcon, UIView, UIWindow, UIWindowScene;
-@protocol SBHIconLaunchContext, SBIconDragPreview, SBIconDragPreviewContaining, SBIconViewDelegate, SBIconViewQuerying, UIDragDropSession, UIDragSession, UIDropSession;
+@class NSArray, NSDate, NSIndexPath, NSString, NSUUID, SBFolder, SBFolderIcon, SBHIconModel, SBHWidgetInsertionRippleIconAnimator, SBIcon, SBIconDragManager, SBIconListView, SBIconView, SBRootFolder, SBRootFolderController, SBWidgetIcon, UIDragItem, UIDragPreviewParameters, UITargetedDragPreview, UIView, UIWindow, UIWindowScene;
+@protocol SBHIconLaunchContext, SBHIconLayoutHiding, SBHUndoProviding, SBIconDragPreview, SBIconDragPreviewContaining, SBIconViewDelegate, SBIconViewQuerying, UIDragDropSession, UIDragSession, UIDropSession;
 
 @protocol SBIconDragManagerDelegate <NSObject>
 - (SBRootFolder *)rootFolderForIconDragManager:(SBIconDragManager *)arg1;
@@ -21,6 +21,11 @@
 @property(nonatomic, getter=isScrolling) _Bool scrolling;
 @property(nonatomic, getter=isEditing) _Bool editing;
 @property(readonly, nonatomic) SBHIconModel *iconModel;
+- (_Bool)shouldNonDefaultGridSizeClassesUseClusterAnimationForIconDragManager:(SBIconDragManager *)arg1;
+- (id <SBHUndoProviding>)undoProviderForIconDragManager:(SBIconDragManager *)arg1;
+- (_Bool)iconDragManager:(SBIconDragManager *)arg1 canSnapIconsToGridInLocation:(NSString *)arg2;
+- (_Bool)allowsSnappingIconsToGridForIconDragManager:(SBIconDragManager *)arg1;
+- (id <SBHIconLayoutHiding>)iconLayoutHiderForIconDragManager:(SBIconDragManager *)arg1;
 - (unsigned long long)listGridCellInfoOptionsForIconDragManager:(SBIconDragManager *)arg1;
 - (_Bool)iconDragManager:(SBIconDragManager *)arg1 doesIconViewRepresentRealIconPosition:(SBIconView *)arg2;
 - (id <SBIconViewQuerying>)iconViewQueryableForIconDragManager:(SBIconDragManager *)arg1;
@@ -47,6 +52,7 @@
 - (void)iconDragManager:(SBIconDragManager *)arg1 didAddItemsToIconDragWithUniqueIdentifier:(NSUUID *)arg2 numberOfDraggedItems:(unsigned long long)arg3;
 - (void)iconDragManager:(SBIconDragManager *)arg1 willBeginIconDragWithUniqueIdentifier:(NSUUID *)arg2 numberOfDraggedItems:(unsigned long long)arg3;
 - (UIWindow<SBIconDragPreviewContaining> *)windowForIconDragPreviewsForIconDragManager:(SBIconDragManager *)arg1 forWindowScene:(UIWindowScene *)arg2;
+- (UITargetedDragPreview *)iconDragManager:(SBIconDragManager *)arg1 targetedDragPreviewForIconView:(SBIconView *)arg2 item:(UIDragItem *)arg3 session:(id <UIDragSession>)arg4 previewParameters:(UIDragPreviewParameters *)arg5;
 - (UIView<SBIconDragPreview> *)iconDragManager:(SBIconDragManager *)arg1 dragPreviewForIconView:(SBIconView *)arg2;
 - (void)iconDragManagerMultiItemIconDraggingDidChange:(SBIconDragManager *)arg1;
 - (void)iconDragManagerIconDraggingDidChange:(SBIconDragManager *)arg1;
@@ -61,6 +67,7 @@
 - (SBIconListView *)iconListViewForIndexPath:(NSIndexPath *)arg1;
 - (void)setEditing:(_Bool)arg1 fromIconView:(SBIconView *)arg2;
 - (void)setEditing:(_Bool)arg1 fromIconListView:(SBIconListView *)arg2;
+- (_Bool)isEditingForIconListView:(SBIconListView *)arg1;
 - (_Bool)isEditingAllowedForIconView:(SBIconView *)arg1;
 - (_Bool)isEditingAllowedForIconListView:(SBIconListView *)arg1;
 @end

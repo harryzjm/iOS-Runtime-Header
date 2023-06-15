@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) unsigned long long hash;
 - (void)installationFailedForApplication:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)installationEndedForApplication:(id)arg1 withState:(unsigned long long)arg2;
+- (void)setProgressProportionsByPhase:(id)arg1 forInstallOfApplicationWithIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)sendNotification:(int)arg1 forApplicationWithBundleIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)sendNotification:(int)arg1 forApplications:(id)arg2 withPlugins:(_Bool)arg3;
 - (void)createInstallProgressForApplication:(id)arg1 withPhase:(unsigned long long)arg2 andPublishingString:(id)arg3 reply:(CDUnknownBlockType)arg4;

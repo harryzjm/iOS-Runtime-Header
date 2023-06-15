@@ -6,7 +6,7 @@
 
 #import "CKInvisibleInkEffectView.h"
 
-@class CAEmitterLayer, CALayer, CKTextBalloonView, NSArray, NSString, UITextView;
+@class CAEmitterLayer, CALayer, CKTextBalloonView, NSArray, NSString, UIColor, UITextView;
 
 __attribute__((visibility("hidden")))
 @interface CKInvisibleInkTextEffectView : CKInvisibleInkEffectView
@@ -49,9 +49,13 @@ __attribute__((visibility("hidden")))
 - (void)animationDidStop:(id)arg1 finished:(_Bool)arg2;
 - (void)endDrawEmitterEffects;
 - (void)didMoveToWindow;
+- (void)_configureInvisibleInkEmitterUsingTextKit1;
+- (void)_configureInvisibleInkEmitterUsingTextKit2;
+- (id)_newEmitterForCharacterRects:(id)arg1 lineBounds:(struct CGRect)arg2;
 - (void)layoutSubviews;
-- (id)dustEmitter;
+- (id)makeDustEmitter;
 - (id)createDrawEmitter;
+@property(readonly) UIColor *currentDustColor;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 // Remaining properties

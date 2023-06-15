@@ -7,6 +7,7 @@
 @protocol PXMockMutableExtendedTraitCollection
 @property(nonatomic) unsigned long long visibleChromeElements;
 @property(nonatomic) long long formFactor;
+@property(nonatomic) long long contentSizeCategory;
 @property(nonatomic) struct UIEdgeInsets safeAreaInsets;
 @property(nonatomic) double displayScale;
 @property(nonatomic) long long windowOrientation;

@@ -39,7 +39,8 @@ __attribute__((visibility("hidden")))
 - (void)environmentMonitorDidChangeNetworkReachability:(id)arg1;
 - (void)unsubscribeFromEventStream:(id)arg1;
 - (void)subscribeToEventStream:(id)arg1;
-- (void)engine:(id)arg1 didChangeAccounts:(id)arg2;
+- (void)accountManager:(id)arg1 didChangeAccounts:(id)arg2;
+- (void)dealloc;
 - (id)initWithPlaybackEngine:(id)arg1;
 
 // Remaining properties

@@ -9,6 +9,8 @@
 @class XCTApplicationStateSnapshot;
 
 @protocol XCUIApplicationPlatformServicesProviderDelegate <NSObject>
+- (void)updatedInterfaceOrientation:(long long)arg1;
+- (void)updatedDeviceOrientation:(long long)arg1;
 - (void)updatedApplicationStateSnapshot:(XCTApplicationStateSnapshot *)arg1;
 @end
 

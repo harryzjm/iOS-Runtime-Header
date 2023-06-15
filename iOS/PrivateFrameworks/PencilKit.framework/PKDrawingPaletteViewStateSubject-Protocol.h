@@ -6,10 +6,13 @@
 
 #import <PencilKit/PKPaletteViewStateSubject-Protocol.h>
 
-@class NSArray, PKTool, UIMenu;
+@class NSArray, NSString, PKTool, UIMenu;
 
 @protocol PKDrawingPaletteViewStateSubject <PKPaletteViewStateSubject>
+@property(readonly, nonatomic) _Bool wantsScrollableTools;
+@property(readonly, nonatomic) _Bool shouldHideHoverPreviewToggle;
 @property(readonly, nonatomic) double _toolsContainerWidth;
+@property(readonly, nonatomic) NSString *lassoToolEditingViewIdentifier;
 @property(readonly, nonatomic) _Bool showsLassoToolEditingView;
 @property(readonly, nonatomic) _Bool prefersLargeContextualEditingUI;
 @property(readonly, nonatomic) _Bool colorSwatchesVisible;

@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     _Bool _actionFirst;
     NSArray *_documentDataSources;
     VUIAction *_action;
+    VUIAction *_postAction;
     NSString *_tabIdentifier;
     NSDictionary *_localLibraryLink;
     NSString *_nativePageName;
@@ -25,6 +26,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSString *nativePageName; // @synthesize nativePageName=_nativePageName;
 @property(copy, nonatomic) NSDictionary *localLibraryLink; // @synthesize localLibraryLink=_localLibraryLink;
 @property(retain, nonatomic) NSString *tabIdentifier; // @synthesize tabIdentifier=_tabIdentifier;
+@property(retain, nonatomic) VUIAction *postAction; // @synthesize postAction=_postAction;
 @property(retain, nonatomic) VUIAction *action; // @synthesize action=_action;
 @property(copy, nonatomic) NSArray *documentDataSources; // @synthesize documentDataSources=_documentDataSources;
 

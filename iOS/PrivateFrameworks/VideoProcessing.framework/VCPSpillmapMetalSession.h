@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MPSImageBilinearScale, MTLTextureDescriptor, NSDictionary;
+@class MPSImageBilinearScale, MPSImageGaussianBlur, MTLTextureDescriptor, NSDictionary;
 @protocol MTLCommandQueue, MTLComputePipelineState, MTLDevice;
 
 @interface VCPSpillmapMetalSession : NSObject
@@ -23,6 +23,8 @@
     struct CF<__CVMetalTextureCache *> _textureCacheSpillmap;
     NSDictionary *_readAttributes;
     NSDictionary *_readWriteAttributes;
+    MTLTextureDescriptor *_intermediateImageDescriptor;
+    MPSImageGaussianBlur *_gaussianBlur;
     MTLTextureDescriptor *_bgraTextureDescriptor;
     id <MTLComputePipelineState> _colorspaceConversion;
     struct CF<__CVMetalTextureCache *> _textureCacheLuma;
@@ -34,6 +36,7 @@
 - (int)calculateDrmSpillmapMetal:(struct __CVBuffer *)arg1 emitSpillmap:(struct __CVBuffer **)arg2 setLayout:(int)arg3;
 - (int)convertYuv420:(struct __CVBuffer *)arg1 withCommandBuffer:(id)arg2 outTexture:(id)arg3;
 - (id)loadTexture:(struct __CVBuffer *)arg1 withAttributes:(id)arg2 forPlane:(unsigned int)arg3 withCache:(struct __CVMetalTextureCache *)arg4 withFormat:(unsigned long long)arg5;
+- (int)configureIntermediateTextureProcessing:(int)arg1 setHeight:(int)arg2 setSigma:(float)arg3;
 - (int)configureSession:(struct __IOSurface *)arg1 setWidth:(int)arg2 setHeight:(int)arg3;
 - (int)configureGPU;
 - (id)init;

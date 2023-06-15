@@ -8,6 +8,7 @@
 
 @class KVItemBuilder, NSDictionary, NSMutableArray, NSString;
 
+__attribute__((visibility("hidden")))
 @interface KMMapper_AppIntentVocabulary : NSObject
 {
     KVItemBuilder *_builder;

@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     _Bool _supportsCustomViewMenuElements;
     _Bool _useSenderAsResponderSender;
     _Bool _supportsHeaderView;
+    _Bool _tracksSelection;
     id _preparer;
     UIResponder *_firstResponderTarget;
     id <UIDeferredMenuElementDelegate> _deferredElementDelegate;
@@ -23,6 +24,7 @@ __attribute__((visibility("hidden")))
 
 + (id)contextWithPreparer:(id)arg1 firstResponderTarget:(id)arg2;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool tracksSelection; // @synthesize tracksSelection=_tracksSelection;
 @property(nonatomic) _Bool supportsHeaderView; // @synthesize supportsHeaderView=_supportsHeaderView;
 @property(nonatomic) _Bool useSenderAsResponderSender; // @synthesize useSenderAsResponderSender=_useSenderAsResponderSender;
 @property(nonatomic) _Bool supportsCustomViewMenuElements; // @synthesize supportsCustomViewMenuElements=_supportsCustomViewMenuElements;
@@ -30,6 +32,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak id <UIDeferredMenuElementDelegate> deferredElementDelegate; // @synthesize deferredElementDelegate=_deferredElementDelegate;
 @property(readonly, nonatomic) __weak UIResponder *firstResponderTarget; // @synthesize firstResponderTarget=_firstResponderTarget;
 @property(readonly, nonatomic) __weak id preparer; // @synthesize preparer=_preparer;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 
 @end
 

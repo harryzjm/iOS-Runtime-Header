@@ -6,46 +6,30 @@
 
 #import <objc/NSObject.h>
 
-@class MPCPlaybackEngine, MPCPlayerPath, MPNowPlayingInfoCenter, MPRemoteCommandCenter, NSMutableArray, NSMutableDictionary, NSString;
+@class MPCPlaybackEngine, NSMutableArray, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface _MPCPlaybackEngineSessionManager : NSObject
 {
+    _Bool _stateRestorationSupported;
     MPCPlaybackEngine *_playbackEngine;
     NSObject<OS_dispatch_queue> *_serialQueue;
-    MPNowPlayingInfoCenter *_infoCenter;
-    MPRemoteCommandCenter *_commandCenter;
     NSMutableArray *_sessionArchives;
     NSMutableDictionary *_sessionIdentifierArchiveMap;
-    NSMutableDictionary *_stagedQueueControllers;
 }
 
 + (id)archivesAtURL:(id)arg1;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSMutableDictionary *stagedQueueControllers; // @synthesize stagedQueueControllers=_stagedQueueControllers;
 @property(readonly, nonatomic) NSMutableDictionary *sessionIdentifierArchiveMap; // @synthesize sessionIdentifierArchiveMap=_sessionIdentifierArchiveMap;
 @property(readonly, nonatomic) NSMutableArray *sessionArchives; // @synthesize sessionArchives=_sessionArchives;
-@property(readonly, nonatomic) MPRemoteCommandCenter *commandCenter; // @synthesize commandCenter=_commandCenter;
-@property(readonly, nonatomic) MPNowPlayingInfoCenter *infoCenter; // @synthesize infoCenter=_infoCenter;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *serialQueue; // @synthesize serialQueue=_serialQueue;
+@property(nonatomic, getter=isStateRestorationSupported) _Bool stateRestorationSupported; // @synthesize stateRestorationSupported=_stateRestorationSupported;
 @property(readonly, nonatomic) __weak MPCPlaybackEngine *playbackEngine; // @synthesize playbackEngine=_playbackEngine;
 - (id)_playbackSessionsDirectory;
-- (id)_cachesDirectory;
-- (id)nowPlayingInfoCenter:(id)arg1 artworkForContentItem:(id)arg2 size:(struct CGSize)arg3 completion:(CDUnknownBlockType)arg4;
-- (id)nowPlayingInfoCenter:(id)arg1 contentItemForID:(id)arg2;
-- (id)nowPlayingInfoCenter:(id)arg1 contentItemIDForOffset:(long long)arg2;
-- (void)_performCommandEvent:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)stagedQueueControllerIdentifiers;
-- (id)queueControllerForIdentifier:(id)arg1;
-- (void)stageQueueController:(id)arg1 forIdentifier:(id)arg2;
-- (_Bool)unstageQueueControllerForIdentifier:(id)arg1;
 @property(retain, nonatomic) NSString *stateRestorationSessionIdentifier;
 - (void)deleteSessionWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)saveSessionWithCompletion:(CDUnknownBlockType)arg1;
-- (void)loadSessionWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)publishIfNeeded;
-@property(readonly, nonatomic) MPCPlayerPath *playerPath;
 - (id)initWithPlaybackEngine:(id)arg1;
 
 // Remaining properties

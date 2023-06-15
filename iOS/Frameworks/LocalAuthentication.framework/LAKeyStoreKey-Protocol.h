@@ -12,16 +12,16 @@
 @property(readonly, nonatomic) NSData *publicKeyHash;
 @property(readonly, nonatomic) NSData *acl;
 @property(readonly, nonatomic) NSString *identifier;
-- (_Bool)canVerifyUsingSecKeyAlgorithm:(const struct __CFString *)arg1;
-- (void)verifyData:(NSData *)arg1 signature:(NSData *)arg2 secKeyAlgorithm:(const struct __CFString *)arg3 completion:(void (^)(NSError *))arg4;
-- (_Bool)canEncryptUsingSecKeyAlgorithm:(const struct __CFString *)arg1;
-- (void)encryptData:(NSData *)arg1 secKeyAlgorithm:(const struct __CFString *)arg2 completion:(void (^)(NSData *, NSError *))arg3;
-- (_Bool)canExchangeKeysUsingSecKeyAlgorithm:(const struct __CFString *)arg1;
-- (void)exchangeKeysWithPublicKey:(NSData *)arg1 secKeyAlgorithm:(const struct __CFString *)arg2 secKeyParameters:(NSDictionary *)arg3 context:(LAContext *)arg4 completion:(void (^)(NSData *, NSError *))arg5;
-- (_Bool)canDecryptUsingSecKeyAlgorithm:(const struct __CFString *)arg1;
-- (void)decryptData:(NSData *)arg1 secKeyAlgorithm:(const struct __CFString *)arg2 context:(LAContext *)arg3 completion:(void (^)(NSData *, NSError *))arg4;
-- (_Bool)canSignUsingSecKeyAlgorithm:(const struct __CFString *)arg1;
-- (void)signData:(NSData *)arg1 secKeyAlgorithm:(const struct __CFString *)arg2 context:(LAContext *)arg3 completion:(void (^)(NSData *, NSError *))arg4;
+- (_Bool)canVerifyUsingSecKeyAlgorithm:(struct __CFString *)arg1;
+- (void)verifyData:(NSData *)arg1 signature:(NSData *)arg2 secKeyAlgorithm:(struct __CFString *)arg3 completion:(void (^)(NSError *))arg4;
+- (_Bool)canEncryptUsingSecKeyAlgorithm:(struct __CFString *)arg1;
+- (void)encryptData:(NSData *)arg1 secKeyAlgorithm:(struct __CFString *)arg2 completion:(void (^)(NSData *, NSError *))arg3;
+- (_Bool)canExchangeKeysUsingSecKeyAlgorithm:(struct __CFString *)arg1;
+- (void)exchangeKeysWithPublicKey:(NSData *)arg1 secKeyAlgorithm:(struct __CFString *)arg2 secKeyParameters:(NSDictionary *)arg3 context:(LAContext *)arg4 completion:(void (^)(NSData *, NSError *))arg5;
+- (_Bool)canDecryptUsingSecKeyAlgorithm:(struct __CFString *)arg1;
+- (void)decryptData:(NSData *)arg1 secKeyAlgorithm:(struct __CFString *)arg2 context:(LAContext *)arg3 completion:(void (^)(NSData *, NSError *))arg4;
+- (_Bool)canSignUsingSecKeyAlgorithm:(struct __CFString *)arg1;
+- (void)signData:(NSData *)arg1 secKeyAlgorithm:(struct __CFString *)arg2 context:(LAContext *)arg3 completion:(void (^)(NSData *, NSError *))arg4;
 - (void)exportBytesWithCompletion:(void (^)(NSData *, NSError *))arg1;
 @end
 

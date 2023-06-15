@@ -6,16 +6,20 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray, NSMutableDictionary, NSString, NSUUID, RTIDocumentState, RTIDocumentTraits, RTIInputSourceState, RTIInputSystemClient, TIKeyboardOutput, UIKeyboardTaskExecutionContext;
+@class NSDictionary, NSMutableArray, NSMutableDictionary, NSNumber, NSString, NSUUID, RTIDocumentState, RTIDocumentTraits, RTIInputSourceState, RTIInputSystemClient, TIKeyboardOutput, UIKeyboardTaskExecutionContext, UIKeyboardTaskSubqueue;
 @protocol UIKBRTIPartnerDelegate;
 
 __attribute__((visibility("hidden")))
 @interface UIKBRTIPartner : NSObject
 {
     RTIDocumentTraits *_remoteDocumentTraits;
+    NSNumber *_cachedHasPreviousKeyResponder;
+    NSNumber *_cachedHasNextKeyResponder;
     struct __CFStringTokenizer *_wkRectTokenizer;
-    _Bool _suppressUpdateTextInputTraits;
+    struct os_unfair_lock_s _lock;
     UIKeyboardTaskExecutionContext *_waitingRTIOutputOperationResponseContext;
+    UIKeyboardTaskSubqueue *_keyboardTaskSubqueue;
+    NSDictionary *_pendingDisableBecomeFirstResponderParameters;
     _Bool _inputSystemClientEnabled;
     _Bool _isNotifyingDelegateOfRemoteOutputOperation;
     _Bool _applicationStateIsActiveForRTI;
@@ -30,6 +34,7 @@ __attribute__((visibility("hidden")))
     RTIInputSourceState *_rtiInputSourceState;
     TIKeyboardOutput *_pendingOutputOperation;
     NSUUID *_currentSessionIdentifier;
+    NSMutableDictionary *_rtiSessionMarkers;
     NSMutableDictionary *_supplementalLexicons;
     NSMutableDictionary *_textSuggestions;
     NSMutableArray *_queuedSupplementalLexiconOperations;
@@ -41,6 +46,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSMutableArray *queuedSupplementalLexiconOperations; // @synthesize queuedSupplementalLexiconOperations=_queuedSupplementalLexiconOperations;
 @property(retain, nonatomic) NSMutableDictionary *textSuggestions; // @synthesize textSuggestions=_textSuggestions;
 @property(retain, nonatomic) NSMutableDictionary *supplementalLexicons; // @synthesize supplementalLexicons=_supplementalLexicons;
+@property(retain, nonatomic) NSMutableDictionary *rtiSessionMarkers; // @synthesize rtiSessionMarkers=_rtiSessionMarkers;
 @property(nonatomic) _Bool cacheHitTestsAsOpaque; // @synthesize cacheHitTestsAsOpaque=_cacheHitTestsAsOpaque;
 @property(nonatomic) _Bool isObservingGeometry; // @synthesize isObservingGeometry=_isObservingGeometry;
 @property(copy, nonatomic) NSUUID *currentSessionIdentifier; // @synthesize currentSessionIdentifier=_currentSessionIdentifier;
@@ -55,7 +61,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool inputSystemClientEnabled; // @synthesize inputSystemClientEnabled=_inputSystemClientEnabled;
 @property(nonatomic) __weak id <UIKBRTIPartnerDelegate> partnerDelegate; // @synthesize partnerDelegate=_partnerDelegate;
 - (id)insertionPointColor;
-- (void)_geometryChanged:(const CDStruct_f46536fb *)arg1 forAncestor:(id)arg2;
+- (void)_geometryChanged:(const CDStruct_c9afd433 *)arg1 forAncestor:(id)arg2;
 - (void)_updateGeometryObserverIfNecessary;
 - (struct CGRect)convertRect:(struct CGRect)arg1 from:(id)arg2;
 - (void)_queryUIKitDocumentRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -67,6 +73,7 @@ __attribute__((visibility("hidden")))
 - (long long)_uiTextGranularityForRTITextGranularity:(long long)arg1;
 - (void)_queryDocumentRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)performDocumentRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_performDocumentRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)defaultDocumentRequestDidChange:(id)arg1;
 - (unsigned int)_performKeyboardOutputOperations:(id)arg1;
 - (void)_queued_performTextOperations:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
@@ -93,8 +100,9 @@ __attribute__((visibility("hidden")))
 - (id)inputDelegateView;
 - (id)inputDelegate;
 - (_Bool)_updateRTITraitsIfNecessary;
-- (void)updateStateWithCompletion:(CDUnknownBlockType)arg1;
+- (void)updateStateWithCompletion:(CDUnknownBlockType)arg1 updateTraits:(_Bool)arg2;
 - (void)restartCurrentSession;
+- (void)endAllowingRemoteTextInput:(id)arg1 waitForReply:(_Bool)arg2;
 - (void)endAllowingRemoteTextInput:(id)arg1;
 - (void)beginAllowingRemoteTextInput:(id)arg1;
 - (void)ensureRTIConnection;
@@ -102,6 +110,7 @@ __attribute__((visibility("hidden")))
 - (void)_createRTIClient;
 - (void)_didCreateRTIClient:(id)arg1;
 - (id)_newRTIConnection;
+- (id)_newInputSystemAutoFillUIClient;
 - (id)_newInputSystemUIClient;
 - (id)_defaultRTIMachNames;
 - (void)_updateRTIAllowedAndNotify:(_Bool)arg1 withReason:(id)arg2;
@@ -116,6 +125,13 @@ __attribute__((visibility("hidden")))
 - (void)addTextSuggestions:(id)arg1;
 - (void)updateTextSuggestionsIfNecessary:(id)arg1;
 - (void)textSuggestionsChanged:(id)arg1;
+- (void)forwardGrammarCorrectionEntries:(id)arg1;
+- (void)forwardTyplogyLogURL:(id)arg1;
+- (void)forwardKeyboardOperation:(SEL)arg1 object:(id)arg2;
+- (void)forwardAutofillPayload:(id)arg1 toPayloadDelegate:(id)arg2;
+- (id)payloadDelegate;
+- (id)autofillPayloadDelegate;
+- (id)textOperation_insertAutofillContent:(id)arg1;
 - (id)textOperation_insertionPointExitedTextWithSupplementalItems;
 - (id)textOperation_insertionPointEnteredText:(id)arg1 withSupplementalCandidate:(id)arg2;
 - (id)textOperation_cancelChooseSupplementalItemToInsert;
@@ -125,7 +141,7 @@ __attribute__((visibility("hidden")))
 - (void)forwardEventCallbackToRemoteSource_didChooseSupplementalItem:(id)arg1 toReplaceText:(id)arg2;
 - (void)forwardKeyboardCameraEvent_startCameraInput:(id)arg1;
 - (void)forwardSelectorToUIHost:(SEL)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)forwardUserInteractionEventToUIHost:(SEL)arg1;
+- (void)forwardInputDestinationEventToUIHost:(SEL)arg1;
 - (void)forwardDictationEventToUIHost:(SEL)arg1 withOptionalObject:(id)arg2;
 - (_Bool)synchronousForwardKeyInputMethodCommandEventToUIHost:(id)arg1 canHandleAppKeyCommand:(_Bool)arg2;
 - (_Bool)synchronousForwardKeyCommandsToUIHost:(id)arg1;
@@ -133,10 +149,12 @@ __attribute__((visibility("hidden")))
 - (void)forwardKeyboardEventToUIHost:(id)arg1;
 - (void)forwardClearForwardingInputDelegateAndResign:(_Bool)arg1;
 - (void)forwardKeyboardInputMode:(id)arg1;
-- (void)forwardKeyboardSuppressionAndSuppressAssistantBar:(_Bool)arg1;
+- (void)forwardApplicationOperation:(SEL)arg1 object:(id)arg2;
+- (void)forwardKeyboardSuppression:(_Bool)arg1 suppressAssistantBar:(_Bool)arg2;
 - (void)performInputOperation:(id)arg1;
 - (void)documentStateChanged:(_Bool)arg1;
 - (void)documentStateChanged;
+- (void)endInputSessionWithIdentifier:(id)arg1 shouldResign:(_Bool)arg2 waitForReply:(_Bool)arg3;
 - (void)endInputSessionWithIdentifier:(id)arg1 shouldResign:(_Bool)arg2;
 - (void)endInputSessionWithIdentifier:(id)arg1;
 - (void)beginInputSessionWithIdentifier:(id)arg1;
@@ -145,11 +163,15 @@ __attribute__((visibility("hidden")))
 - (id)delegate;
 - (void)_screenModeDidChange:(id)arg1;
 - (void)_applicationDidRemoveDeactivationReason:(id)arg1;
+- (void)endInputSessionOnSwitchingApps;
 - (void)_applicationWillAddDeactivationReason:(id)arg1;
+- (unsigned int)_ignoredReasonsForAutoFill;
+- (unsigned int)_ignoredReasonsForKeyboard;
 - (void)_viewServiceHostDidBecomeActive:(id)arg1;
 - (void)_viewServiceHostWillResignActive:(id)arg1;
 - (void)_applicationWillSuspend:(id)arg1;
 - (void)_macWindowChangedKey:(id)arg1;
+@property(retain, nonatomic) UIKeyboardTaskSubqueue *keyboardTaskSubqueue;
 - (void)dealloc;
 - (id)init;
 

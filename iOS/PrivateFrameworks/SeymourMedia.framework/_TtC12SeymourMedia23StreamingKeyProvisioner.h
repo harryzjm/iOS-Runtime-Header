@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *workoutIdentifier;
     MISSING_TYPE *asset;
+    MISSING_TYPE *analyticsReporter;
     MISSING_TYPE *assetClient;
     MISSING_TYPE *certificate;
     MISSING_TYPE *backoffIntervalProvider;

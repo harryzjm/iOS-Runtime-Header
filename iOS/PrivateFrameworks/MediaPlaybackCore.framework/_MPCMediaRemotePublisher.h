@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MPCPlayPerfMetrics, MPCPlaybackEngine, MPCPlayerPath, MPLibraryAddStatusObserver, MPNowPlayingInfoCenter, MPRemoteCommandCenter, NSArray, NSString, NSUserDefaults;
+@class MPCPlaybackEngine, MPLibraryAddStatusObserver, MPNowPlayingInfoCenter, MPRemoteCommandCenter, MSVBlockGuard, NSArray, NSDictionary, NSString, NSUserDefaults, _MPCMediaRemotePublisher_Swift;
 @protocol OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
@@ -24,44 +24,52 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_source> *_nextPreviousTrackCooldownTimer;
     long long _deferredTrackChangeDelta;
     NSArray *_lastCommandDescriptions;
+    MSVBlockGuard *_setPlaybackQueueExtendedTimeGuard;
     _Bool _initializedSupportedCommands;
     _Bool _engineRestoringState;
     _Bool _mediaServerAvailable;
     MPCPlaybackEngine *_playbackEngine;
     MPNowPlayingInfoCenter *_infoCenter;
     MPRemoteCommandCenter *_commandCenter;
-    MPCPlayPerfMetrics *_lastPerformanceMetrics;
+    _MPCMediaRemotePublisher_Swift *_swift;
+    NSDictionary *_lastPerformanceMetrics;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) MPCPlayPerfMetrics *lastPerformanceMetrics; // @synthesize lastPerformanceMetrics=_lastPerformanceMetrics;
+@property(retain, nonatomic) NSDictionary *lastPerformanceMetrics; // @synthesize lastPerformanceMetrics=_lastPerformanceMetrics;
 @property(nonatomic, getter=isMediaServerAvailable) _Bool mediaServerAvailable; // @synthesize mediaServerAvailable=_mediaServerAvailable;
 @property(nonatomic, getter=isEngineRestoringState) _Bool engineRestoringState; // @synthesize engineRestoringState=_engineRestoringState;
+@property(readonly, nonatomic) _MPCMediaRemotePublisher_Swift *swift; // @synthesize swift=_swift;
 @property(readonly, nonatomic) MPRemoteCommandCenter *commandCenter; // @synthesize commandCenter=_commandCenter;
 @property(readonly, nonatomic) MPNowPlayingInfoCenter *infoCenter; // @synthesize infoCenter=_infoCenter;
 @property(nonatomic, getter=hasInitializedSupportedCommands) _Bool initializedSupportedCommands; // @synthesize initializedSupportedCommands=_initializedSupportedCommands;
 @property(readonly, nonatomic) __weak MPCPlaybackEngine *playbackEngine; // @synthesize playbackEngine=_playbackEngine;
+- (void)performSetQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)performSetQueueWithIntent:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_performCommandEvent:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)_homeAccessorySettingsPrivateListeningOverride:(id)arg1;
+- (void)_beginBackgroundTaskUntilPlayCommandWithCommand:(id)arg1 timeout:(double)arg2;
 - (void)_performDebugEvent:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (_Bool)_canInsertPlaybackContext:(id)arg1 forUser:(id)arg2;
-- (_Bool)_isRestrictedSubscriptionUser:(id)arg1;
 - (void)_updateSupportedCommands;
-- (_Bool)_playbackStateIsIdle:(long long)arg1;
 - (void)_updateLaunchCommands;
 - (id)_supportedSessionTypes;
 - (id)_exportableSessionTypes;
 - (void)_enqueueFallbackIntentIfNeededForCommandEvent:(id)arg1 play:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_becomeActiveIfNeededWithCompletion:(CDUnknownBlockType)arg1;
+- (void)becomeActiveIfNeededWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_likedStateChangedNotification:(id)arg1;
 - (void)_durationAvailableNotification:(id)arg1;
-- (void)_disableQueueModificationsChangedNotification:(id)arg1;
 - (void)_commandEventDidTimeoutNotification:(id)arg1;
 - (void)nowPlayingInfoCenter:(id)arg1 didEndLyricsEvent:(id)arg2;
 - (void)nowPlayingInfoCenter:(id)arg1 didBeginLyricsEvent:(id)arg2;
+- (void)invalidateSessionTypesWithReason:(id)arg1;
+- (void)invalidateQueueTypesWithReason:(id)arg1;
+- (void)engine:(id)arg1 didChangeQueueController:(id)arg2;
+- (void)engine:(id)arg1 didReceivePickedRouteChange:(id)arg2;
+- (void)engineDidUnblockVocalAttenuation:(id)arg1;
+- (void)engineDidBlockVocalAttenuation:(id)arg1;
+- (void)engineDidChangeVocalAttenuationLevel:(id)arg1;
+- (void)engineDidChangeVocalAttenuationState:(id)arg1;
 - (void)engineDidResetMediaServices:(id)arg1;
 - (void)engineDidLoseMediaServices:(id)arg1;
-- (void)engine:(id)arg1 didChangeAccounts:(id)arg2;
 - (void)engineDidEndStateRestoration:(id)arg1;
 - (void)engineWillBeginStateRestoration:(id)arg1;
 - (void)engine:(id)arg1 didChangeCurrentItemVariantID:(id)arg2;
@@ -70,24 +78,27 @@ __attribute__((visibility("hidden")))
 - (void)engine:(id)arg1 didChangeRepeatType:(long long)arg2;
 - (void)engine:(id)arg1 didChangeQueueWithReason:(id)arg2;
 - (void)engine:(id)arg1 didChangeToState:(unsigned long long)arg2;
+- (void)engine:(id)arg1 didAchieveLikelyToKeepUpWithItem:(id)arg2;
 - (void)engine:(id)arg1 didChangeToItem:(id)arg2;
+- (void)accountManager:(id)arg1 didChangeAccounts:(id)arg2;
 - (void)updatePlaybackMetrics:(id)arg1;
 - (void)leaveSharedSessionWithCommandID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getShouldRestoreStateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)reportUserBackgroundedApplication;
 - (void)publishIfNeeded;
-@property(readonly, nonatomic) MPCPlayerPath *playerPath;
 - (void)becomeActive;
+- (void)dealloc;
 - (id)initWithPlaybackEngine:(id)arg1;
+- (id)participantsForNowPlayingInfoCenter:(id)arg1;
 - (void)nowPlayingInfoCenter:(id)arg1 didEndMigrationWithIdentifier:(id)arg2 error:(id)arg3;
 - (void)nowPlayingInfoCenter:(id)arg1 willBeginSessionMigrationWithIdentifier:(id)arg2;
 - (void)nowPlayingInfoCenter:(id)arg1 getTransportablePlaybackSessionRepresentationForRequest:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)nowPlayingInfoCenter:(id)arg1 lyricsForContentItem:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)nowPlayingInfoCenter:(id)arg1 artworkCatalogForContentItem:(id)arg2;
+- (id)nowPlayingInfoCenter:(id)arg1 infoForContentItem:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)nowPlayingInfoCenter:(id)arg1 artworkForContentItem:(id)arg2 size:(struct CGSize)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)nowPlayingInfoCenter:(id)arg1 contentItemForID:(id)arg2;
 - (id)nowPlayingInfoCenter:(id)arg1 contentItemIDsFromOffset:(long long)arg2 toOffset:(long long)arg3 nowPlayingIndex:(long long *)arg4;
-- (_Bool)respondsToSelector:(SEL)arg1;
 - (id)nowPlayingInfoCenter:(id)arg1 contentItemIDForOffset:(long long)arg2;
 - (id)playbackQueueIdentifierForNowPlayingInfoCenter:(id)arg1;
 

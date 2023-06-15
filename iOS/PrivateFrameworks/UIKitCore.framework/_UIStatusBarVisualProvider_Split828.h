@@ -24,13 +24,13 @@ __attribute__((visibility("hidden")))
 + (double)nativeDisplayWidth;
 + (double)height;
 - (double)condensedPointSizeForCellularType:(long long)arg1 defaultPointSize:(double)arg2 baselineOffset:(double *)arg3;
-- (_Bool)supportsCondensedBatteryPercentage;
 - (id)stringForCellularType:(long long)arg1 condensed:(_Bool)arg2;
 - (double)expandedIconScale;
 - (double)normalIconScale;
 - (double)bottomLeadingTopOffset;
 - (double)lowerExpandedBaselineOffset;
 - (double)baselineBottomInset;
+- (struct CGSize)expandedPillSize;
 - (struct CGSize)smallPillSize;
 - (struct CGSize)pillSize;
 - (double)leadingItemSpacing;

@@ -13,19 +13,19 @@
 
 @interface XCTImage : NSObject <NSCopying, NSSecureCoding>
 {
+    UIImage *_platformImage;
     XCTImageMetadata *_metadata;
     NSData *_data;
     XCTImageEncoding *_encoding;
-    UIImage *_platformImage;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)emptyImageWithSize:(struct CGSize)arg1;
 - (void).cxx_destruct;
-@property(retain, nonatomic) UIImage *platformImage; // @synthesize platformImage=_platformImage;
 @property(readonly, copy, nonatomic) XCTImageEncoding *encoding; // @synthesize encoding=_encoding;
 @property(readonly, nonatomic) NSData *data; // @synthesize data=_data;
 @property(readonly, nonatomic) XCTImageMetadata *metadata; // @synthesize metadata=_metadata;
+@property(retain, nonatomic) UIImage *platformImage; // @synthesize platformImage=_platformImage;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)debugQuickLookObject;

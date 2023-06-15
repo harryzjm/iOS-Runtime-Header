@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 + (id)XPCInterface;
 + (Class)clientClass;
 + (unsigned short)connectionType;
+- (id)initWithXPCListener:(id)arg1;
 
 @end
 

@@ -18,6 +18,10 @@ __attribute__((visibility("hidden")))
     _Bool _shouldIncludeMonogram;
     _Bool _contactIsFromFullPhotoPicker;
     _Bool _useRTL;
+    CNSharingProfileAvatarItem *_silhouetteItem;
+    CNSharingProfileAvatarItem *_animojiItem;
+    CNSharingProfileAvatarItem *_photoItem;
+    CNSharingProfileAvatarItem *_monogramItem;
     CNSharingProfileAvatarItemProviderConfiguration *_configuration;
     CNSharingProfileLogger *_logger;
     CNContact *_contact;
@@ -27,10 +31,6 @@ __attribute__((visibility("hidden")))
     NSArray *_items;
     CNSharingProfileAvatarItem *_previousAnimojiItem;
     CNSharingProfileAvatarItem *_previousPhotoItem;
-    CNSharingProfileAvatarItem *_silhouetteItem;
-    CNSharingProfileAvatarItem *_animojiItem;
-    CNSharingProfileAvatarItem *_photoItem;
-    CNSharingProfileAvatarItem *_monogramItem;
     CNPhotoPickerColorVariant *_animojiColor;
 }
 
@@ -42,10 +42,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) CNPhotoPickerColorVariant *animojiColor; // @synthesize animojiColor=_animojiColor;
 @property(nonatomic) _Bool useRTL; // @synthesize useRTL=_useRTL;
-@property(retain, nonatomic) CNSharingProfileAvatarItem *monogramItem; // @synthesize monogramItem=_monogramItem;
-@property(retain, nonatomic) CNSharingProfileAvatarItem *photoItem; // @synthesize photoItem=_photoItem;
-@property(retain, nonatomic) CNSharingProfileAvatarItem *animojiItem; // @synthesize animojiItem=_animojiItem;
-@property(retain, nonatomic) CNSharingProfileAvatarItem *silhouetteItem; // @synthesize silhouetteItem=_silhouetteItem;
 @property(retain, nonatomic) CNSharingProfileAvatarItem *previousPhotoItem; // @synthesize previousPhotoItem=_previousPhotoItem;
 @property(retain, nonatomic) CNSharingProfileAvatarItem *previousAnimojiItem; // @synthesize previousAnimojiItem=_previousAnimojiItem;
 @property(nonatomic) _Bool contactIsFromFullPhotoPicker; // @synthesize contactIsFromFullPhotoPicker=_contactIsFromFullPhotoPicker;
@@ -56,6 +52,10 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) CNContact *contact; // @synthesize contact=_contact;
 @property(retain, nonatomic) CNSharingProfileLogger *logger; // @synthesize logger=_logger;
 @property(retain, nonatomic) CNSharingProfileAvatarItemProviderConfiguration *configuration; // @synthesize configuration=_configuration;
+@property(retain, nonatomic) CNSharingProfileAvatarItem *monogramItem; // @synthesize monogramItem=_monogramItem;
+@property(retain, nonatomic) CNSharingProfileAvatarItem *photoItem; // @synthesize photoItem=_photoItem;
+@property(retain, nonatomic) CNSharingProfileAvatarItem *animojiItem; // @synthesize animojiItem=_animojiItem;
+@property(retain, nonatomic) CNSharingProfileAvatarItem *silhouetteItem; // @synthesize silhouetteItem=_silhouetteItem;
 @property(nonatomic) _Bool shouldIncludeMonogram; // @synthesize shouldIncludeMonogram=_shouldIncludeMonogram;
 @property(nonatomic) _Bool shouldIncludePhoto; // @synthesize shouldIncludePhoto=_shouldIncludePhoto;
 @property(nonatomic) _Bool shouldIncludeAnimoji; // @synthesize shouldIncludeAnimoji=_shouldIncludeAnimoji;

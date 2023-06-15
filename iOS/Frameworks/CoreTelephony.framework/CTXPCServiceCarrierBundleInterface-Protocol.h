@@ -7,6 +7,7 @@
 @class CTBundle, CTBundleMatchingInfo, CTXPCServiceSubscriptionContext, NSArray, NSDictionary, NSObject, NSString;
 
 @protocol CTXPCServiceCarrierBundleInterface
+- (void)getCountryBundleLocationForMatchingInfo:(CTBundleMatchingInfo *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 - (void)checkForUpdatedBundlesWithAutoInstall:(_Bool)arg1 completion:(void (^)(NSError *))arg2;
 - (void)copyBundleLocation:(CTXPCServiceSubscriptionContext *)arg1 bundleType:(CTBundle *)arg2 completion:(void (^)(NSString *, NSError *))arg3;
 - (void)getEnglishCarrierNameFor:(NSString *)arg1 completion:(void (^)(NSString *, NSError *))arg2;

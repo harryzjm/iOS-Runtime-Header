@@ -9,16 +9,22 @@
 __attribute__((visibility("hidden")))
 @interface VUIActionBundleOffer
 {
+    _Bool _isMultiOfferDynamicVC;
     NSString *_offerURLString;
     NSString *_offerDomain;
     NSString *_notificationTitle;
     NSString *_notificationBundleTitle;
     NSString *_notificationBody;
+    NSString *_secondaryOfferNotificationTitle;
+    NSString *_secondaryOfferNotificationBody;
     NSDictionary *_offerMetrics;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSDictionary *offerMetrics; // @synthesize offerMetrics=_offerMetrics;
+@property(retain, nonatomic) NSString *secondaryOfferNotificationBody; // @synthesize secondaryOfferNotificationBody=_secondaryOfferNotificationBody;
+@property(retain, nonatomic) NSString *secondaryOfferNotificationTitle; // @synthesize secondaryOfferNotificationTitle=_secondaryOfferNotificationTitle;
+@property(nonatomic) _Bool isMultiOfferDynamicVC; // @synthesize isMultiOfferDynamicVC=_isMultiOfferDynamicVC;
 @property(retain, nonatomic) NSString *notificationBody; // @synthesize notificationBody=_notificationBody;
 @property(retain, nonatomic) NSString *notificationBundleTitle; // @synthesize notificationBundleTitle=_notificationBundleTitle;
 @property(retain, nonatomic) NSString *notificationTitle; // @synthesize notificationTitle=_notificationTitle;

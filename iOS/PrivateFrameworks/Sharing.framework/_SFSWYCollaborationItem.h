@@ -6,22 +6,25 @@
 
 #import "SFCollaborationItem.h"
 
-@class LPLinkMetadata, NSArray, NSItemProvider, NSString, NSUUID, SFCollaborationCloudSharingResult, SFCollaborationMetadata, SFCollaborationShareOptions, SFPendingCollaboration;
+@class LPLinkMetadata, NSArray, NSError, NSItemProvider, NSNumber, NSString, NSUUID, SFCollaborationCloudSharingResult, SFCollaborationMetadata, SFCollaborationShareOptions, SFPendingCollaboration;
 
 __attribute__((visibility("hidden")))
 @interface _SFSWYCollaborationItem : SFCollaborationItem
 {
+    _Bool _isURLProviderSupported;
     SFPendingCollaboration *_pendingCollaboration;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool isURLProviderSupported; // @synthesize isURLProviderSupported=_isURLProviderSupported;
 @property(readonly, nonatomic) SFPendingCollaboration *pendingCollaboration; // @synthesize pendingCollaboration=_pendingCollaboration;
 - (void)_loadOptionsIfNeeded;
-- (id)initWithItemProvider:(id)arg1 activityItem:(id)arg2;
+- (id)initWithItemProvider:(id)arg1 activityItem:(id)arg2 isURLProviderSupported:(_Bool)arg3;
 
 // Remaining properties
 @property(readonly, nonatomic) id activityItem;
 @property(readonly, copy, nonatomic) NSString *additionalContentIdentifier;
+@property(readonly, nonatomic) NSNumber *canAddPeople;
 @property(retain, nonatomic) SFCollaborationCloudSharingResult *cloudSharingResult;
 @property(readonly, copy, nonatomic) NSString *contentIdentifier;
 @property(readonly, copy) NSString *debugDescription;
@@ -33,10 +36,12 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSItemProvider *itemProvider;
 @property(readonly, nonatomic) LPLinkMetadata *linkMetadata;
 @property(readonly, nonatomic) SFCollaborationMetadata *metadata;
+@property(readonly, nonatomic) NSError *metadataLoadError;
 @property(copy, nonatomic) NSArray *options;
 @property(readonly, nonatomic) id placeholderActivityItem;
 @property(readonly, copy, nonatomic) NSArray *sendCopyItemPlaceholderValues;
 @property(readonly, copy, nonatomic) NSArray *sendCopyItems;
+@property(readonly, nonatomic) id sendCopyRepresentation;
 @property(copy, nonatomic) SFCollaborationShareOptions *shareOptions;
 @property(readonly) Class superclass;
 @property(readonly, nonatomic) long long type;

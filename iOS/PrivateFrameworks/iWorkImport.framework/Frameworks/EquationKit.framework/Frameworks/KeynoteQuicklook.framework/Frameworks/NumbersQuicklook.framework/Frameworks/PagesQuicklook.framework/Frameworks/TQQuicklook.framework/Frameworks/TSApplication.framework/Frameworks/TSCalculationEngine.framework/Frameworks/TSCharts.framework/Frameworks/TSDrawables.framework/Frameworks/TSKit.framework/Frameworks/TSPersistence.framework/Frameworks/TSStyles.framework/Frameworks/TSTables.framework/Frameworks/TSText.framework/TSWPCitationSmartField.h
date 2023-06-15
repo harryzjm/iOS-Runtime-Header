@@ -20,7 +20,6 @@
 - (void).cxx_destruct;
 @property(nonatomic) id <TSWPCitationSmartFieldEditing> editingDelegate; // @synthesize editingDelegate=_editingDelegate;
 - (void)willBeRemovedFromDocumentRoot:(id)arg1;
-- (id)bibliographySmartField;
 - (id)copyWithContext:(id)arg1;
 - (void)saveToArchiver:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;

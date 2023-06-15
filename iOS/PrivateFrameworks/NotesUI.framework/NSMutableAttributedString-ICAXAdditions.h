@@ -8,6 +8,7 @@
 
 @interface NSMutableAttributedString (ICAXAdditions)
 - (void)icaxApplyLowerPitchTokenToRange:(struct _NSRange)arg1;
+- (_Bool)ic_containsTextAttachment:(id)arg1;
 - (void)ic_addForegroundColorInRangesWhereNoColorAlreadyExists:(id)arg1;
 - (void)ic_setParagraphStyleForWritingDirection:(long long)arg1 andAlignment:(_Bool)arg2;
 - (void)ic_convertParagraphStyleToBodyInRange:(struct _NSRange)arg1;

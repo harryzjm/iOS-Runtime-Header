@@ -11,5 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (id)containerWithIdentifier:(id)arg1 options:(id)arg2;
+- (id)containerWithIdentifier:(id)arg1;
+
 @end
 

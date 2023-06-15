@@ -6,7 +6,7 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class BLSHFlipbookSpecification, NSString;
+@class BLSHFlipbookSpecification;
 @protocol BLSHBacklightEnvironmentSessionProviding, BLSHBacklightPlatformProviderObserver, BLSHFlipbookTelemetry;
 
 @protocol BLSHBacklightPlatformProvider <NSObject>
@@ -14,7 +14,6 @@
 @property(readonly, nonatomic) id <BLSHBacklightEnvironmentSessionProviding> sessionProvider;
 @property(readonly, nonatomic) double backlightFadeOutDuration;
 @property(readonly, nonatomic) double backlightFadeInDuration;
-- (void)criticalAssertDidFail:(NSString *)arg1 resetFailure:(void (^)(void))arg2;
 - (void)removeObserver:(id <BLSHBacklightPlatformProviderObserver>)arg1;
 - (void)addObserver:(id <BLSHBacklightPlatformProviderObserver>)arg1;
 - (void)showBlankingWindow:(_Bool)arg1 withFadeDuration:(double)arg2;

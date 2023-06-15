@@ -14,7 +14,10 @@ __attribute__((visibility("hidden")))
 {
     unsigned long long handshake_milliseconds;
     unsigned long long handshake_rtt_milliseconds;
+    int client_accurate_ecn_state;
+    int server_accurate_ecn_state;
     NSObject<OS_nw_protocol_definition> *protocol;
+    unsigned int l4s_enabled:1;
 }
 
 - (void).cxx_destruct;

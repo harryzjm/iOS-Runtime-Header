@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIControl.h>
+#import <UIKitCore/UIControl.h>
 
-@class NSArray, NSMutableArray, UIView, UIVisualEffect, UIVisualEffectView;
+@class NSArray, NSMutableArray, NSString, UIPointerInteraction, UIView, UIVisualEffect, UIVisualEffectView;
 @protocol AVMobileChromelessSliderDelegate;
 
 __attribute__((visibility("hidden")))
@@ -22,8 +22,10 @@ __attribute__((visibility("hidden")))
     UIVisualEffect *_enabledUnfilledBarViewEffect;
     UIVisualEffect *_disabledFilledBarViewEffect;
     UIVisualEffect *_disabledUnfilledBarViewEffect;
+    UIPointerInteraction *_sliderPointerInteraction;
     float _minimumValue;
     float _maximumValue;
+    float _totalValue;
     float _value;
     double _barHeight;
     NSArray *_sliderMarks;
@@ -34,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <AVMobileChromelessSliderDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) float value; // @synthesize value=_value;
+@property(nonatomic) float totalValue; // @synthesize totalValue=_totalValue;
 @property(nonatomic) unsigned long long tintState; // @synthesize tintState=_tintState;
 @property(retain, nonatomic) NSArray *sliderMarks; // @synthesize sliderMarks=_sliderMarks;
 @property(nonatomic) float maximumValue; // @synthesize maximumValue=_maximumValue;
@@ -47,14 +50,23 @@ __attribute__((visibility("hidden")))
 - (void)endTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (_Bool)continueTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (_Bool)beginTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
+- (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
 - (_Bool)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)layoutSubviews;
 - (struct CGSize)intrinsicContentSize;
 - (struct CGRect)hitRect;
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1;
 - (void)didMoveToWindow;
+- (struct CGRect)frameForSliderMark:(id)arg1;
 - (void)_updateBarTintStateAlpha;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class KTLoggableData, NSArray, NSData, NSDictionary, NSError, NSNumber, NSString, NSURL, NSUUID;
+@class KTLoggableData, KTOptInStateRequest, KTSelfVerificationInfo, NSArray, NSData, NSDate, NSDictionary, NSError, NSNumber, NSString, NSURL, NSUUID, TransparencyIDSRegistrationRequest;
 
 @protocol transparencyd_protocol
 - (void)logMetric:(NSNumber *)arg1 withName:(NSString *)arg2;
@@ -14,6 +14,21 @@
 - (void)logSoftFailureForEventNamed:(NSString *)arg1 withAttributes:(NSDictionary *)arg2;
 - (void)logHardFailureForEventNamed:(NSString *)arg1 withAttributes:(NSDictionary *)arg2;
 - (void)logSuccessForEventNamed:(NSString *)arg1;
+- (void)accountChanged:(NSString *)arg1 to:(NSString *)arg2;
+- (void)replaySelfValidate:(KTSelfVerificationInfo *)arg1 application:(NSString *)arg2 pcsAccountKey:(NSData *)arg3 queryRequest:(NSData *)arg4 queryResponse:(NSData *)arg5 responseTime:(NSDate *)arg6 completionHandler:(void (^)(unsigned long long, KTSelfValidationDiagnostics *, NSError *))arg7;
+- (void)transparencyTriggerOperation:(NSString *)arg1 complete:(void (^)(NSError *))arg2;
+- (void)transparencyIDSRegistration:(void (^)(IDSKTRegistrationStatusProvider *))arg1;
+- (void)transparencyCheckIDSHealth:(void (^)(NSString *, NSError *))arg1;
+- (void)transparencyTriggerCheckIDSRegistration:(void (^)(NSError *))arg1;
+- (void)transparencyTriggerPublicKeyFetch:(void (^)(NSError *))arg1;
+- (void)performAndWaitForSelfValidate:(void (^)(unsigned long long, KTSelfValidationDiagnostics *, NSError *))arg1;
+- (void)transparencyTriggerFetchSelf:(void (^)(NSError *))arg1;
+- (void)transparencyTriggerSelfValidate:(void (^)(NSError *))arg1;
+- (void)transparencyTriggerIDMSFetch:(void (^)(NSError *))arg1;
+- (void)transparencySysDiagnose:(void (^)(NSDictionary *))arg1;
+- (void)transparencyIDSRepair:(void (^)(NSError *))arg1;
+- (void)fetchBatchQuery:(NSArray *)arg1 application:(NSString *)arg2 userInitiated:(_Bool)arg3 completionHandler:(void (^)(NSDictionary *, NSError *))arg4;
+- (void)clearPeerState:(NSString *)arg1 uris:(NSArray *)arg2 block:(void (^)(NSError *))arg3;
 - (void)copyApplicationTranscript:(NSString *)arg1 block:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)copyDaemonState:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)copyDataStoreStatistics:(void (^)(NSDictionary *, NSError *))arg1;
@@ -26,8 +41,11 @@
 - (void)copyLogClientConfiguration:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)copyApplicationState:(NSString *)arg1 block:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)forceApplicationConfig:(NSString *)arg1 block:(void (^)(NSError *))arg2;
+- (void)copyDeviceStatus:(NSString *)arg1 complete:(void (^)(NSArray *, NSError *))arg2;
+- (void)updateCloudConfigurationStore:(void (^)(NSError *))arg1;
 - (void)forceApplicationKeysDownload:(NSString *)arg1 block:(void (^)(NSError *))arg2;
 - (void)forceApplicationKeysFetch:(NSString *)arg1 block:(void (^)(NSData *, NSError *))arg2;
+- (void)configurationBagFetch:(void (^)(NSError *))arg1;
 - (void)forceConfigUpdate:(void (^)(NSError *))arg1;
 - (void)resetRequestToPending:(NSUUID *)arg1 block:(void (^)(NSError *))arg2;
 - (void)forceValidateUUID:(NSUUID *)arg1 uri:(NSString *)arg2 completionBlock:(void (^)(NSString *, unsigned long long, _Bool, NSArray *, NSError *))arg3;
@@ -36,19 +54,35 @@
 - (void)getReportsForUUIDs:(NSArray *)arg1 completionBlock:(void (^)(NSArray *, NSError *))arg2;
 - (void)ignoreFailedEvents:(NSArray *)arg1 completionBlock:(void (^)(NSError *))arg2;
 - (void)errorsForFailedEvents:(NSArray *)arg1 completionBlock:(void (^)(unsigned long long, NSArray *, NSError *))arg2;
-- (void)getKTStatus:(NSString *)arg1 completionBlock:(void (^)(_Bool, NSArray *, NSError *))arg2;
+- (void)getKTStatus:(NSString *)arg1 completionBlock:(void (^)(KTStatusResult *, NSError *))arg2;
+- (void)clearOptInStateForURI:(NSString *)arg1 application:(NSString *)arg2 complete:(void (^)(_Bool, NSError *))arg3;
+- (void)getOptInStateForApplication:(NSString *)arg1 complete:(void (^)(KTOptInState *, NSError *))arg2;
+- (void)getAllOptInStates:(void (^)(NSArray *, NSError *))arg1;
+- (void)setOptInForURI:(NSString *)arg1 application:(NSString *)arg2 state:(_Bool)arg3 smtTimestamp:(NSDate *)arg4 complete:(void (^)(_Bool, NSError *))arg5;
+- (void)getOptInForURI:(NSString *)arg1 application:(NSString *)arg2 complete:(void (^)(KTOptInState *, NSError *))arg3;
+- (void)getKTOptInState:(KTOptInStateRequest *)arg1 completion:(void (^)(KTOptInState *, NSError *))arg2;
 - (void)setKTOptInState:(_Bool)arg1 application:(NSString *)arg2 completionBlock:(void (^)(unsigned long long, NSArray *, NSError *))arg3;
-- (void)getKTOptInState:(NSString *)arg1 sync:(_Bool)arg2 completionblock:(void (^)(_Bool, NSDate *, NSError *))arg3;
 - (void)sthsReceivedFromPeers:(NSArray *)arg1 completionBlock:(void (^)(NSError *))arg2;
 - (void)retrieveCurrentVerifiedTLTSTH:(void (^)(NSData *, NSError *))arg1;
+- (void)transparencyCloudDeviceRemove:(NSData *)arg1 clientData:(NSData *)arg2 complete:(void (^)(NSError *))arg3;
+- (void)transparencyCloudDeviceAdd:(NSData *)arg1 clientData:(NSData *)arg2 complete:(void (^)(NSError *))arg3;
+- (void)transparencyCloudDevices:(void (^)(NSArray *, NSError *))arg1;
+- (void)transparencyPerformRegistrationSignature:(void (^)(TransparencyIDSRegistrationResponse *, NSError *))arg1;
+- (void)transparencyDumpKTRegistrationData:(void (^)(TransparencyIDSRegistrationResponse *, NSError *))arg1;
+- (void)transparencyGetKTSignatures:(TransparencyIDSRegistrationRequest *)arg1 complete:(void (^)(TransparencyIDSRegistrationResponse *, NSError *))arg2;
+- (void)accountKey:(NSString *)arg1 complete:(void (^)(NSData *, NSError *))arg2;
 - (void)rollKeyForApplication:(NSString *)arg1 completionBlock:(void (^)(NSData *, NSError *))arg2;
-- (void)signData:(NSData *)arg1 application:(NSString *)arg2 completionBlock:(void (^)(NSData *, NSData *, NSError *))arg3;
+- (void)signData:(NSData *)arg1 application:(NSString *)arg2 completionBlock:(void (^)(NSData *, NSData *, NSDate *, NSError *))arg3;
+- (void)clearPeerCache:(NSArray *)arg1 application:(NSString *)arg2 completionBlock:(void (^)(NSError *))arg3;
+- (void)markFailureSeenForResults:(NSArray *)arg1 application:(NSString *)arg2 completionBlock:(void (^)(NSError *))arg3;
+- (void)ignoreFailureForResults:(NSArray *)arg1 application:(NSString *)arg2 completionBlock:(void (^)(NSError *))arg3;
 - (void)ignoreFailure:(NSString *)arg1 uuid:(NSUUID *)arg2 completionBlock:(void (^)(NSError *))arg3;
-- (void)convertToSelfRequest:(NSUUID *)arg1 serverDatas:(NSArray *)arg2 syncedDatas:(NSArray *)arg3 accountKey:(NSData *)arg4 queryRequest:(NSData *)arg5 queryResponse:(NSData *)arg6 updateCompletionBlock:(void (^)(NSUUID *, NSError *))arg7;
 - (void)validateEnrollmentResult:(NSString *)arg1 uuid:(NSUUID *)arg2 completionBlock:(void (^)(NSString *, unsigned long long, _Bool, NSArray *, NSError *))arg3;
 - (void)validateEnrollmentUri:(NSString *)arg1 application:(NSString *)arg2 accountKey:(NSData *)arg3 loggableData:(KTLoggableData *)arg4 queryRequest:(NSData *)arg5 queryResponse:(NSData *)arg6 promiseCompletionBlock:(void (^)(NSString *, NSUUID *, NSError *))arg7;
-- (void)validateSelfResult:(NSString *)arg1 uuid:(NSUUID *)arg2 syncedDatas:(NSArray *)arg3 completionBlock:(void (^)(NSString *, unsigned long long, _Bool, NSArray *, NSError *))arg4;
 - (void)getLoggableDataForDeviceId:(NSData *)arg1 application:(NSString *)arg2 completionBlock:(void (^)(KTLoggableData *, NSError *))arg3;
+- (void)getCachedValidatePeerResults:(NSArray *)arg1 application:(NSString *)arg2 completionBlock:(void (^)(NSArray *))arg3;
+- (void)validatePeers:(NSDictionary *)arg1 application:(NSString *)arg2 fetchNow:(_Bool)arg3 completionBlock:(void (^)(NSArray *))arg4;
+- (void)initiateQueryForUris:(NSArray *)arg1 application:(NSString *)arg2 completionBlock:(void (^)(NSError *))arg3;
 - (void)validatePeerResult:(NSString *)arg1 uuid:(NSUUID *)arg2 fetchNow:(_Bool)arg3 completionBlock:(void (^)(KTVerifierResult *, NSError *))arg4;
 - (void)validatePeerUri:(NSString *)arg1 application:(NSString *)arg2 accountKey:(NSData *)arg3 loggableDatas:(NSArray *)arg4 queryRequest:(NSData *)arg5 queryResponse:(NSData *)arg6 promiseCompletionBlock:(void (^)(NSString *, NSUUID *, NSError *))arg7;
 @end

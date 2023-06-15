@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 @class UIKBTouchState;
 
 __attribute__((visibility("hidden")))
-@interface UIKBTouchStateTask : NSObject <NSCopying>
+@interface UIKBTouchStateTask : NSObject
 {
     UIKBTouchState *_touchState;
     CDUnknownBlockType _task;

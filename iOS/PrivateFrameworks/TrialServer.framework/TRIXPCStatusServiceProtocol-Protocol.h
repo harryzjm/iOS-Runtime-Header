@@ -9,7 +9,9 @@
 @protocol TRIXPCStatusServiceProtocol
 - (void)rolloutAllocationStatusWithPrivacyFilterPolicy:(unsigned char)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)rolloutRecordsWithCompletion:(void (^)(NSArray *, NSError *))arg1;
+- (void)bmltRecordsWithCompletion:(void (^)(NSArray *, NSError *))arg1;
 - (void)evaluationHistoryRecordsForMLRuntimeWithLimit:(unsigned long long)arg1 newerThanDate:(NSDate *)arg2 completion:(void (^)(NSArray *, NSError *))arg3;
+- (void)activeEvaluationsForBMLTWithCompletion:(void (^)(NSArray *, NSError *))arg1;
 - (void)activeEvaluationsForMLRuntimeWithCompletion:(void (^)(NSArray *, NSError *))arg1;
 - (void)experimentRecordsWithDeploymentEnvironments:(NSSet *)arg1 privacyFilterPolicy:(unsigned char)arg2 completion:(void (^)(NSArray *, NSError *))arg3;
 - (void)experimentHistoryRecordsWithLimit:(unsigned long long)arg1 newerThanDate:(NSDate *)arg2 privacyFilterPolicy:(unsigned char)arg3 deploymentEnvironment:(int)arg4 completion:(void (^)(NSArray *, NSError *))arg5;

@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)espressoModelInputImageDimensionsBlobNameForConfigurationOptions:(id)arg1;
++ (float)_animalBoundingBoxScalingFactorForAnimalDetectorRevision:(unsigned long long)arg1;
 + (Class)detectorClassForConfigurationOptions:(id)arg1 error:(id *)arg2;
 + (const void *)modelVersionForOptions:(id)arg1;
 - (id).cxx_construct;

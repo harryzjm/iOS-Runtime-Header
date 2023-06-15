@@ -6,22 +6,20 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary;
+@class Trie;
 
 __attribute__((visibility("hidden")))
 @interface TrieNode : NSObject
 {
-    NSMutableDictionary *_childNodes;
-    id _object;
+    int _node;
+    int _offset;
+    Trie *_trie;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) id object; // @synthesize object=_object;
-@property(retain, nonatomic) NSMutableDictionary *childNodes; // @synthesize childNodes=_childNodes;
-- (id)objectForKeyedSubscript:(id)arg1;
-- (id)objectForKey:(id)arg1;
-- (id)objectForKey:(id)arg1 create:(_Bool)arg2;
-- (id)init;
+@property(nonatomic) int offset; // @synthesize offset=_offset;
+@property(nonatomic) int node; // @synthesize node=_node;
+@property(nonatomic) __weak Trie *trie; // @synthesize trie=_trie;
 
 @end
 

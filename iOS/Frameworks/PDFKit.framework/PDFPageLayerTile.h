@@ -6,7 +6,7 @@
 
 #import <QuartzCore/CALayer.h>
 
-@class PDFPageLayer, PDFTileSurface;
+@class PDFPageLayer, PDFRenderingProperties, PDFTileSurface;
 
 __attribute__((visibility("hidden")))
 @interface PDFPageLayerTile : CALayer
@@ -17,13 +17,18 @@ __attribute__((visibility("hidden")))
     PDFTileSurface *pageSurface;
     int generationID;
     _Atomic _Bool isWorking;
+    _Atomic _Bool hasContent;
     struct CGRect originalFrame;
+    PDFRenderingProperties *_renderingProperties;
     struct CGRect _rootViewFrame;
 }
 
 - (void).cxx_destruct;
 @property struct CGRect rootViewFrame; // @synthesize rootViewFrame=_rootViewFrame;
+@property(retain) PDFRenderingProperties *renderingProperties; // @synthesize renderingProperties=_renderingProperties;
+- (void)drawInContext:(struct CGContext *)arg1;
 - (void)recievePDFTileSurface:(id)arg1;
+- (_Bool)hasContent;
 - (_Bool)isWorking;
 - (void)hasStartedWork;
 - (void)dealloc;

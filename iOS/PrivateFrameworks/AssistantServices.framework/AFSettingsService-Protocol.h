@@ -6,7 +6,7 @@
 
 #import <AssistantServices/NSObject-Protocol.h>
 
-@class AFAudioPlaybackRequest, AFCompanionDeviceInfo, AFDeleteSiriHistoryContext, AFMyriadAdvertisementContext, AFRequestInfo, AFSpeechRecognition, AFVoiceInfo, NSArray, NSData, NSDate, NSDictionary, NSNumber, NSString, NSURL, NSUUID;
+@class AFAudioPlaybackRequest, AFBluetoothDeviceInfo, AFCompanionDeviceInfo, AFDeleteSiriHistoryContext, AFMyriadAdvertisementContext, AFRequestInfo, AFSpeechRecognition, AFVoiceInfo, NSArray, NSData, NSDate, NSDictionary, NSNumber, NSString, NSURL, NSUUID;
 
 @protocol AFSettingsService <NSObject>
 - (oneway void)readSyncTokenForAceHost:(NSString *)arg1 completion:(void (^)(NSString *))arg2;
@@ -17,6 +17,9 @@
 - (oneway void)areSiriUODAssetsAvailable:(void (^)(_Bool, NSError *))arg1;
 - (oneway void)postTestResultSelectedWithRcId:(NSString *)arg1;
 - (oneway void)postTestResultCandidateWithRcId:(NSString *)arg1 recognitionSausage:(AFSpeechRecognition *)arg2;
+- (void)JSCapableHomeDevices:(void (^)(NSArray *))arg1;
+- (oneway void)setAllowJustSiriHomeKitSetting:(_Bool)arg1 withCompletion:(void (^)(NSError *))arg2;
+- (oneway void)isJustSiriEnabledInTheHome:(void (^)(_Bool))arg1;
 - (oneway void)setRecognizeMyVoiceEnabled:(_Bool)arg1;
 - (oneway void)getCurrentAccessoryInfoWithCompletion:(void (^)(AFHomeAccessoryInfo *))arg1;
 - (oneway void)setAllowExplicitContent:(_Bool)arg1;
@@ -31,20 +34,23 @@
 - (oneway void)siriDesignModeIsEnabled:(void (^)(_Bool))arg1;
 - (oneway void)setSiriDesignModeEnabled:(_Bool)arg1 completion:(void (^)(void))arg2;
 - (oneway void)setOnDeviceDictationAvailableAlertPresented:(_Bool)arg1;
+- (oneway void)setSiriDataSharingOptInStatus:(long long)arg1 completion:(void (^)(void))arg2;
+- (oneway void)deleteSiriHistoryWithContext:(AFDeleteSiriHistoryContext *)arg1 withCompletion:(void (^)(NSError *))arg2;
 - (oneway void)sendSampledAudioToServerWithCompletion:(void (^)(NSError *))arg1;
 - (oneway void)setIsHomePodInHH2Mode:(_Bool)arg1 completion:(void (^)(void))arg2;
 - (oneway void)setSiriDataSharingHomePodSetupDeviceIsValid:(_Bool)arg1 completion:(void (^)(void))arg2;
-- (oneway void)deleteSiriHistoryWithContext:(AFDeleteSiriHistoryContext *)arg1 withCompletion:(void (^)(NSError *))arg2;
 - (oneway void)shouldSuppressSiriDataSharingOptInAlertWithCompletion:(void (^)(_Bool))arg1;
 - (oneway void)setSiriDataSharingOptInAlertPresented:(_Bool)arg1 completion:(void (^)(void))arg2;
-- (oneway void)setSiriDataSharingOptInStatus:(long long)arg1 propagateToHomeAccessories:(_Bool)arg2 source:(long long)arg3 reason:(NSString *)arg4 completion:(void (^)(NSError *))arg5;
 - (oneway void)getSiriDataSharingOptInStatusWithCompletion:(void (^)(long long))arg1;
-- (oneway void)setSiriDataSharingOptInStatus:(long long)arg1 completion:(void (^)(void))arg2;
+- (oneway void)setSiriDataSharingOptInStatus:(long long)arg1 propagateToHomeAccessories:(_Bool)arg2 source:(long long)arg3 reason:(NSString *)arg4 completion:(void (^)(NSError *))arg5;
 - (oneway void)handleCommand:(NSDictionary *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
 - (oneway void)getAudioSessionCoordinationSnapshotWithCompletion:(void (^)(AFAudioSessionCoordinationSnapshot *))arg1;
 - (oneway void)getCurrentNWActivityIDWithCompletion:(void (^)(NSUUID *))arg1;
 - (oneway void)clearOpportuneSpeakingEdgeDetectorSignalOverride;
 - (oneway void)setOpportuneSpeakingEdgeDetectorSignalOverride:(long long)arg1;
+- (oneway void)clearShowAppsBehindSiriInCarPlayEnabled;
+- (oneway void)setShowAppsBehindSiriInCarPlayEnabled:(_Bool)arg1;
+- (oneway void)getShowAppsBehindSiriInCarPlayEnabledWithCompletion:(void (^)(_Bool))arg1;
 - (oneway void)clearMessageWithoutConfirmationHeadphonesEnabled;
 - (oneway void)setMessageWithoutConfirmationHeadphonesEnabled:(_Bool)arg1;
 - (oneway void)getMessageWithoutConfirmationHeadphonesEnabledWithCompletion:(void (^)(_Bool))arg1;
@@ -79,6 +85,7 @@
 - (oneway void)setNanoAlwaysShowRecognizedSpeech:(_Bool)arg1 withCompletion:(void (^)(void))arg2;
 - (oneway void)setNanoSiriResponseShouldAlwaysPrint:(_Bool)arg1 withCompletion:(void (^)(void))arg2;
 - (oneway void)setNanoSiriDataSharingOptInStatus:(long long)arg1 withCompletion:(void (^)(void))arg2;
+- (oneway void)setNanoMessageWithoutConfirmationEnabled:(_Bool)arg1 withCompletion:(void (^)(void))arg2;
 - (oneway void)setNanoCrownActivationEnabled:(_Bool)arg1 withCompletion:(void (^)(void))arg2;
 - (oneway void)setNanoLanguage:(NSString *)arg1 withCompletion:(void (^)(void))arg2;
 - (oneway void)setNanoOutputVoice:(AFVoiceInfo *)arg1 withCompletion:(void (^)(void))arg2;
@@ -107,6 +114,12 @@
 - (oneway void)removeMultiUserUserWithSharedUserId:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (oneway void)removeMultiUserUser:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (oneway void)addMultiUserUser:(NSString *)arg1 sharedId:(NSString *)arg2 loggableSharedId:(NSString *)arg3 iCloudAltDSID:(NSString *)arg4 enrollmentName:(NSString *)arg5 isPrimary:(_Bool)arg6 completion:(void (^)(NSError *))arg7;
+- (oneway void)multiUserCompanionDeviceIdentifiers:(void (^)(NSArray *))arg1;
+- (oneway void)getPersonalMultiUserDeviceIdentifiers:(void (^)(NSArray *))arg1;
+- (oneway void)postJSDiscoveryNotificationForBTDeviceWithInfo:(AFBluetoothDeviceInfo *)arg1 withCompletion:(void (^)(NSError *))arg2;
+- (oneway void)stopObservingBluetoothInEarDetectionStateForObserverID:(unsigned long long)arg1;
+- (oneway void)startObservingBluetoothInEarDetectionStateForBTAddress:(NSString *)arg1 forObserverID:(unsigned long long)arg2;
+- (oneway void)getInEarDetectionStateForBTAddress:(NSString *)arg1 withCompletion:(void (^)(AFBluetoothHeadphoneInEarDetectionState *))arg2;
 - (oneway void)stopObservingBluetoothWirelessSplitterSession;
 - (oneway void)startObservingBluetoothWirelessSplitterSession;
 - (oneway void)getBluetoothWirelessSplitterSessionInfoWithCompletion:(void (^)(AFBluetoothWirelessSplitterSessionInfo *))arg1;
@@ -156,6 +169,7 @@
 - (oneway void)getPeerIdentifiers:(void (^)(NSArray *))arg1;
 - (oneway void)startRemoteRequest:(AFRequestInfo *)arg1 onPeer:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (oneway void)startUIMockServerRequestWithReplayFileURL:(NSURL *)arg1 completion:(void (^)(NSError *))arg2;
+- (oneway void)dumpAssistantState:(void (^)(NSDictionary *))arg1;
 - (oneway void)dismissUI;
 - (oneway void)startMultiUserUIRequestWithText:(NSString *)arg1 expectedSpeakerSharedUserID:(NSString *)arg2 expectedSpeakerConfidenceScore:(unsigned long long)arg3 nonspeakerConfidenceScores:(NSDictionary *)arg4 completion:(void (^)(NSError *))arg5;
 - (oneway void)startUIRequestWithSpeechAudioFileURL:(NSURL *)arg1;
@@ -173,12 +187,15 @@
 - (oneway void)_runServiceMaintenance;
 - (void)_setSyncVerificationNeededAndFullReportNeeded:(_Bool)arg1 shouldPostNotification:(_Bool)arg2 completion:(void (^)(NSArray *))arg3;
 - (oneway void)_fetchPeerData:(void (^)(void))arg1;
+- (oneway void)_isDisablingDictationOnlySyncSupported:(void (^)(_Bool))arg1;
+- (oneway void)_isSiriVocabularyNotificationForAddressBookSyncSupported:(void (^)(_Bool))arg1;
 - (oneway void)_syncDataWithAnchorKeys:(NSArray *)arg1 forceReset:(_Bool)arg2 reason:(NSString *)arg3 reply:(void (^)(NSArray *))arg4;
 - (oneway void)_clearSyncNeededForKey:(NSString *)arg1;
 - (oneway void)_setSyncNeededForReason:(NSString *)arg1;
 - (oneway void)barrierWithReply:(void (^)(void))arg1;
 - (oneway void)_killDaemon;
 - (oneway void)_shutdownSessionIfIdle;
+- (oneway void)suppressLowStorageNotificationForLanguage:(NSString *)arg1 suppress:(_Bool)arg2;
 - (oneway void)setDictationAutoPunctuationEnabled:(_Bool)arg1;
 - (oneway void)setDictationEnabled:(_Bool)arg1;
 - (oneway void)setAssistantEnabled:(_Bool)arg1;

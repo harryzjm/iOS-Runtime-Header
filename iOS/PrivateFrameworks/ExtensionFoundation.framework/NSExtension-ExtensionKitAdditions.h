@@ -6,12 +6,13 @@
 
 #import <Foundation/NSExtension.h>
 
-@class NSArray, NSString, NSUUID;
+@class NSArray, NSString, NSURL, NSUUID;
 
 @interface NSExtension (ExtensionKitAdditions)
 + (id)extensionInfoForCurrentProcess;
 + (id)extensionWithIdentity:(id)arg1 error:(id *)arg2;
 + (id)extensionRepresentedBy:(id)arg1 error:(id *)arg2;
+@property(readonly) NSURL *URL; // @dynamic URL;
 @property(readonly) NSUUID *uuid; // @dynamic uuid;
 @property(readonly, copy) NSArray *_personas; // @dynamic _personas;
 - (void)beginExtensionRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;

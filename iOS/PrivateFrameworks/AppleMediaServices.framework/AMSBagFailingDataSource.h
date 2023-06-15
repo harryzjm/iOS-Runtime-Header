@@ -28,8 +28,10 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
 - (void)setDefaultValue:(id)arg1 forKey:(id)arg2;
 - (id)defaultValueForKey:(id)arg1;
+- (void)valueForURLVariable:(id)arg1 account:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)valueForURLVariable:(id)arg1 account:(id)arg2;
 - (void)loadWithCompletion:(CDUnknownBlockType)arg1;
+@property(readonly, copy, nonatomic) NSString *bagLoadingPartialIdentifier;
 @property(readonly, nonatomic, getter=isLoaded) _Bool loaded;
 - (id)initWithProfile:(id)arg1 profileVersion:(id)arg2 error:(id)arg3 delay:(double)arg4;
 

@@ -9,7 +9,6 @@
 @class CaptureMTLDevice, NSMutableSet, NSString;
 @protocol MTLDevice, MTLResourceStateCommandEncoder, MTLResourceStateCommandEncoderSPI;
 
-__attribute__((visibility("hidden")))
 @interface CaptureMTLResourceStateCommandEncoder : NSObject
 {
     id <MTLResourceStateCommandEncoderSPI> _baseObject;

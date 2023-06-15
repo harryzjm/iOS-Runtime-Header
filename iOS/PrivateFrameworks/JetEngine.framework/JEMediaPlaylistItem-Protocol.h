@@ -11,8 +11,8 @@
 @protocol JEMediaPlaylistItem <NSObject>
 
 @optional
-@property(nonatomic, readonly) NSArray *eventData;
-@property(nonatomic, readonly) unsigned long long startPosition;
-@property(nonatomic, readonly) unsigned long long startOverallPosition;
+@property(readonly, nonatomic) NSArray *eventData;
+@property(readonly, nonatomic) unsigned long long startPosition;
+@property(readonly, nonatomic) unsigned long long startOverallPosition;
 @end
 

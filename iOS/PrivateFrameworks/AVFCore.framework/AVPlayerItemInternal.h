@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AVAsset, AVAudioMix, AVCustomVideoCompositorSession, AVMediaSelection, AVPlayerConnection, AVPlayerItem, AVPlayerItemInterstitialEventCollector, AVPlayerPlaybackCoordinator, AVVideoComposition, AVWeakReference, NSArray, NSDate, NSDictionary, NSError, NSMutableArray, NSMutableDictionary, NSString, NSURL;
+@class AVAsset, AVAudioMix, AVCustomVideoCompositorSession, AVMediaSelection, AVPlayerConnection, AVPlayerItem, AVPlayerItemInterstitialEventCollector, AVPlayerPlaybackCoordinator, AVVideoComposition, AVWeakReference, NSArray, NSDate, NSDictionary, NSError, NSMutableArray, NSMutableDictionary, NSPointerArray, NSString, NSURL;
 @protocol AVLoggingIdentifier, AVPlayerItemDelegate, NSObject><NSCopying, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -30,7 +30,7 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *stateDispatchQueue;
     NSArray *cachedTracks;
     NSArray *tracks;
-    NSMutableArray *syncLayers;
+    NSPointerArray *weakSyncLayers;
     NSArray *itemOutputs;
     NSMutableArray *itemVideoOutputs;
     NSMutableDictionary *itemLegibleOutputsForKeys;
@@ -77,11 +77,16 @@ __attribute__((visibility("hidden")))
     NSMutableArray *itemMetadataCollectors;
     AVPlayerItemInterstitialEventCollector *interstitialEventCollector;
     unsigned int RTCReportingFlags;
+    NSString *reportingCategory;
     NSDictionary *gaplessInfo;
     float soundCheckVolumeNormalization;
     float volumeAdjustment;
     NSDictionary *loudnessInfo;
     struct opaqueMTAudioProcessingTap *audioProcessingTap;
+    _Bool adjustTargetLevelWasSet;
+    float adjustTargetLevel;
+    _Bool adjustCompressionProfileWasSet;
+    unsigned int adjustCompressionProfile;
     _Bool initialLimitReadAhead;
     unsigned long long restrictions;
     NSString *mediaKind;
@@ -119,7 +124,7 @@ __attribute__((visibility("hidden")))
     _Bool initialAlwaysMonitorsPlayability;
     long long initialPlaybackLikelyToKeepUpTrigger;
     _Bool savesDownloadedDataToDiskWhenDone;
-    _Bool networkUsuallyExceedsMaxBitRate;
+    _Bool savesDownloadedDataToDiskWhenDoneWasSet;
     _Bool allowProgressiveSwitchUp;
     _Bool allowProgressiveStartup;
     _Bool allowProgressiveResume;
@@ -161,6 +166,7 @@ __attribute__((visibility("hidden")))
     NSString *serviceIdentifier;
     _Bool needToSeekAfterCreatingFigPlaybackItem;
     CDStruct_1b6d18a9 initialTime;
+    _Bool isInitialTimeDefault;
     unsigned int initialSetTimeFlags;
     CDStruct_1b6d18a9 initialMinSnapTime;
     CDStruct_1b6d18a9 initialMaxSnapTime;
@@ -176,6 +182,7 @@ __attribute__((visibility("hidden")))
     AVCustomVideoCompositorSession *customVideoCompositorSession;
     void *figVideoCompositor;
     AVPlayerItem *interstitialTemplate;
+    NSString *interstitialEventID;
     int eqPreset;
     NSDictionary *rampInOutInfo;
     NSDictionary *audibleDRMInfo;

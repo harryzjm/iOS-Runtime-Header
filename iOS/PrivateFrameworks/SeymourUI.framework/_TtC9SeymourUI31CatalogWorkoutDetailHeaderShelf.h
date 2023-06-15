@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *delegate;
     MISSING_TYPE *identifier;
+    MISSING_TYPE *canonicalIdentifier;
     MISSING_TYPE *mediaTagStringBuilder;
     MISSING_TYPE *row;
     MISSING_TYPE *artwork;

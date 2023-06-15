@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UICollectionReusableView.h>
+#import <UIKitCore/UICollectionReusableView.h>
 
 @class MISSING_TYPE, UIButton;
 
@@ -18,11 +18,11 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-@property(nonatomic, retain) UIButton *deleteButton; // @synthesize deleteButton;
 - (void)layoutSubviews;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)prepareForReuse;
+@property(nonatomic, retain) UIButton *deleteButton; // @synthesize deleteButton;
 
 @end
 

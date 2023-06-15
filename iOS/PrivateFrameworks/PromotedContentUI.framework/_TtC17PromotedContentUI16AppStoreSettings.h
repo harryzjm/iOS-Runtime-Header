@@ -16,6 +16,7 @@
     MISSING_TYPE *configs;
     MISSING_TYPE *storeFront;
     MISSING_TYPE *storeFrontLocale;
+    MISSING_TYPE *defaultAppRequestMetaFields;
 }
 
 @end

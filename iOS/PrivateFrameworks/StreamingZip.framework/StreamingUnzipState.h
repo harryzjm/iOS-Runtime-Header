@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, NSMutableData, NSString;
+@class NSArray, NSDictionary, NSMutableData, NSNumber, NSString;
 
 __attribute__((visibility("hidden")))
 @interface StreamingUnzipState : NSObject
@@ -19,6 +19,8 @@ __attribute__((visibility("hidden")))
     unsigned long long _totalFileSizeWritten;
     NSString *_unzipPath;
     NSArray *_hashes;
+    NSNumber *_overrideUID;
+    NSNumber *_overrideGID;
     unsigned long long _currentLFRecordAllocationSize;
     CDStruct_6e7ce3cd _hashContext;
     NSDictionary *_streamInfoDict;
@@ -45,6 +47,8 @@ __attribute__((visibility("hidden")))
 
 + (id)unzipStateWithPath:(id)arg1 options:(id)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSNumber *overrideGID; // @synthesize overrideGID=_overrideGID;
+@property(readonly, nonatomic) NSNumber *overrideUID; // @synthesize overrideUID=_overrideUID;
 @property(nonatomic) _Bool performingExtraction; // @synthesize performingExtraction=_performingExtraction;
 @property(nonatomic) _Bool performCachedWrites; // @synthesize performCachedWrites=_performCachedWrites;
 @property(nonatomic) _Bool denyInvalidSymlinks; // @synthesize denyInvalidSymlinks=_denyInvalidSymlinks;
@@ -73,6 +77,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) CDStruct_6e7ce3cd hashContext; // @synthesize hashContext=_hashContext;
 @property(readonly, nonatomic) NSString *unzipPath; // @synthesize unzipPath=_unzipPath;
 - (id)initWithPath:(id)arg1 options:(id)arg2 error:(id *)arg3;
+- (_Bool)resolveOwnershipWithExtraField:(CDStruct_388cbe1a *)arg1 outUID:(unsigned int *)arg2 outGID:(unsigned int *)arg3;
 - (_Bool)openCurrentOutputFDForPath:(id)arg1 withOpenFlags:(int)arg2 mode:(unsigned short)arg3 error:(id *)arg4;
 - (id)finishStream;
 - (id)updateHashFromOffset:(unsigned long long)arg1 withBytes:(const void *)arg2 length:(unsigned long long)arg3;

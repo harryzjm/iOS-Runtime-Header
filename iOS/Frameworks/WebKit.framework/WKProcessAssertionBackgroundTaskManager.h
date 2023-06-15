@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
 {
     struct RetainPtr<RBSAssertion> _backgroundTask;
     struct atomic<bool> _backgroundTaskWasInvalidated;
-    struct WeakHashSet<WebKit::ProcessAndUIAssertion, WTF::EmptyCounter, WTF::EnableWeakPtrThreadingAssertions::Yes> _assertionsNeedingBackgroundTask;
+    struct ThreadSafeWeakHashSet<WebKit::ProcessAndUIAssertion> _assertionsNeedingBackgroundTask;
     CDUnknownBlockType _pendingTaskReleaseTask;
     struct unique_ptr<WebKit::ProcessStateMonitor, std::default_delete<WebKit::ProcessStateMonitor>> m_processStateMonitor;
 }

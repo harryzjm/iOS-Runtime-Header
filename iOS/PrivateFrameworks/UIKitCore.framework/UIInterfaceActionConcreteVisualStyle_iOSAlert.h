@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 - (id)_preferredActionFont;
 - (id)_regularActionFont;
 - (id)newActionBackgroundViewForViewState:(id)arg1;
+- (double)actionSectionSpacing;
 - (struct CGSize)minimumActionContentSize;
 
 @end

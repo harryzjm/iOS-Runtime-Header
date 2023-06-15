@@ -23,6 +23,8 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 - (void)layoutSubviews;
 - (void)configureCellIconForCollapsedState:(_Bool)arg1;
+- (id)standardConstraints;
+- (id)constraintsForAccessibility;
 - (void)addConstraints;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2 participants:(id)arg3;

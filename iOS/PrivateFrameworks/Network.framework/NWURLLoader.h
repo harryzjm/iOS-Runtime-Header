@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSError, NSString, NSURLCache, NSURLProtocol, NSURLRequest, NSURLResponse, NWURLSessionReadRequest, NWURLSessionTaskConfiguration;
-@protocol NWURLLoaderClient, OS_dispatch_data, OS_dispatch_queue, OS_nw_connection;
+@protocol NWURLLoaderClient, OS_dispatch_data, OS_dispatch_queue, OS_nw_connection, OS_sec_trust;
 
 __attribute__((visibility("hidden")))
 @interface NWURLLoader : NSObject
@@ -39,13 +39,15 @@ __attribute__((visibility("hidden")))
 - (void)URLProtocol:(id)arg1 cachedResponseIsValid:(id)arg2;
 - (void)URLProtocol:(id)arg1 wasRedirectedToRequest:(id)arg2 redirectResponse:(id)arg3;
 @property(readonly, nonatomic) NSObject<OS_nw_connection> *underlyingConnection;
+- (void)responseIsMixed;
 - (void)writeData:(id)arg1 complete:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 @property(readonly, nonatomic) _Bool allowsWrite;
+@property(readonly, nonatomic) NSObject<OS_sec_trust> *peerTrust;
 - (void)readDataOfMinimumIncompleteLength:(unsigned long long)arg1 maximumLength:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)readResponse:(CDUnknownBlockType)arg1;
 - (void)updateClient:(id)arg1;
 - (void)stop;
-- (void)start;
+- (void)start:(CDUnknownBlockType)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -6,12 +6,23 @@
 
 #import <WebKit/WKWebsiteDataStore.h>
 
+@class NSString;
+
 @interface WKWebsiteDataStore (SafariSharedExtras)
 + (id)safari_dataStoreWithConfiguration:(id)arg1;
 + (id)safari_defaultDataStore;
 + (id)safari_nonPersistentDataStore;
++ (id)_newDataStoreForProfileUUIDString:(id)arg1;
++ (id)_dataStoresByProfileUUIDString;
++ (id)safari_allPersistentDataStores;
++ (void)safari_removeDataStoreForProfileWithUUID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
++ (id)safari_dataStoreForProfileWithUUIDIfExists:(id)arg1;
++ (id)safari_dataStoreWithoutCachingForProfileWithIdentifier:(id)arg1;
++ (id)safari_dataStoreForProfileWithUUID:(id)arg1;
++ (id)_safari_dataStoreForProfileWithUUID:(id)arg1 createIfNecessary:(_Bool)arg2 cacheNewDataStoreInMemory:(_Bool)arg3;
 + (void)safari_setCommonProperties:(id)arg1;
 + (void)safari_clearHSTSSuperCookies;
 + (id)safari_allDataTypes;
+@property(readonly, nonatomic) NSString *safari_profileIdentifier;
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CARSessionRequestHost, NSString;
+@class CARSessionRequestHost, NSString, NSUUID;
 
 @protocol CARSessionRequestService
 - (void)service_cancelRequestsWithReply:(void (^)(_Bool, NSError *))arg1;
@@ -12,6 +12,6 @@
 - (void)service_startAdvertisingCarPlayControlForWiFiUUID:(NSString *)arg1 reply:(void (^)(_Bool, NSError *))arg2;
 - (void)service_startAdvertisingCarPlayControlForUSBWithReply:(void (^)(_Bool, NSError *))arg1;
 - (void)service_stoppedSessionWithHostIdentifier:(NSString *)arg1 reply:(void (^)(_Bool, NSError *))arg2;
-- (void)service_startSessionWithHost:(CARSessionRequestHost *)arg1 reply:(void (^)(_Bool, NSError *))arg2;
+- (void)service_startSessionWithHost:(CARSessionRequestHost *)arg1 requestIdentifier:(NSUUID *)arg2 reply:(void (^)(_Bool, NSError *))arg3;
 @end
 

@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 @interface UITableViewCountView : UILabel
 {
     NSString *_countString;
-    int _count;
+    long long _count;
 }
 
 - (void).cxx_destruct;

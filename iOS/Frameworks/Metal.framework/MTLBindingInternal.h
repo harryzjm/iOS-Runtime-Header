@@ -18,7 +18,6 @@ __attribute__((visibility("hidden")))
     _Bool _isUsed;
     unsigned long long _arrayLength;
     MTLType *_typeInfo;
-    _Bool _used;
     _Bool _argument;
     _Bool _aliasImplicitImageBlock;
     _Bool _vertexDescriptorBuffer;
@@ -42,14 +41,15 @@ __attribute__((visibility("hidden")))
 @property(readonly) unsigned long long imageBlockKind; // @synthesize imageBlockKind=_imageBlockKind;
 @property(readonly) unsigned long long builtInDataType; // @synthesize builtInDataType=_builtInDataType;
 @property(readonly) unsigned long long builtInType; // @synthesize builtInType=_builtInType;
-@property _Bool isUsed; // @synthesize isUsed=_isUsed;
-@property(readonly, getter=isUsed) _Bool used; // @synthesize used=_used;
 @property(getter=isArgument, setter=setIsArgument:) _Bool argument; // @synthesize argument=_argument;
 @property(readonly) unsigned long long arrayLength; // @synthesize arrayLength=_arrayLength;
 @property(readonly) unsigned long long index; // @synthesize index=_index;
 @property(readonly) unsigned long long access; // @synthesize access=_access;
 @property(readonly) long long type; // @synthesize type=_type;
 @property(readonly) NSString *name; // @synthesize name=_name;
+- (_Bool)isEqual:(id)arg1;
+@property _Bool isUsed;
+@property(readonly, getter=isUsed) _Bool used;
 @property(readonly, getter=isActive) _Bool active;
 @property(readonly, copy) NSString *description;
 - (id)formattedDescription:(unsigned long long)arg1;

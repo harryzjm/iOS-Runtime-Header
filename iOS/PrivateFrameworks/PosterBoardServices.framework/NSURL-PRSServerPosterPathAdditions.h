@@ -18,5 +18,6 @@
 + (id)prs_posterPathTypeURLForProviderURL:(id)arg1 type:(long long)arg2;
 - (_Bool)prs_storeToPlist:(id)arg1 error:(out id *)arg2;
 - (id)prs_loadFromPlistWithError:(out id *)arg1;
+- (_Bool)prs_isPosterSnapshot;
 @end
 

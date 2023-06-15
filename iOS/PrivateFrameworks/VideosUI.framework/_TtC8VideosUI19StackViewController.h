@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface _TtC8VideosUI19StackViewController : _$s8VideosUI17VUIViewControllerCN
 {
     MISSING_TYPE *peekingEnabled;
+    MISSING_TYPE *logForCellGhosting;
     MISSING_TYPE *collectionImpressioner;
     MISSING_TYPE *stackType;
     MISSING_TYPE *$__lazy_storage_$_collectionView;
@@ -28,8 +29,10 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *cellConfigurator;
     MISSING_TYPE *cellActionInterceptor;
     MISSING_TYPE *shouldOverrideScrollToTopBehavior;
+    MISSING_TYPE *isDragAndDropEnabled;
     MISSING_TYPE *sectionMetrics;
     MISSING_TYPE *_showcasePercentage;
+    MISSING_TYPE *showcasePercentageContentTopAdjustment;
     MISSING_TYPE *_showcaseHeight;
     MISSING_TYPE *verticalPaginationMonitor;
     MISSING_TYPE *contextMenuInteractor;
@@ -43,6 +46,13 @@ __attribute__((visibility("hidden")))
 - (void)vui_viewDidAppear:(_Bool)arg1;
 - (void)vui_viewDidLoad;
 - (id)initWithCoder:(id)arg1;
+- (id)collectionView:(id)arg1 dropSessionDidUpdate:(id)arg2 withDestinationIndexPath:(id)arg3;
+- (void)collectionView:(id)arg1 performDropWithCoordinator:(id)arg2;
+- (id)collectionView:(id)arg1 dropPreviewParametersForItemAtIndexPath:(id)arg2;
+- (id)collectionView:(id)arg1 dragPreviewParametersForItemAtIndexPath:(id)arg2;
+- (_Bool)collectionView:(id)arg1 dragSessionAllowsMoveOperation:(id)arg2;
+- (_Bool)collectionView:(id)arg1 dragSessionIsRestrictedToDraggingApplication:(id)arg2;
+- (id)collectionView:(id)arg1 itemsForBeginningDragSession:(id)arg2 atIndexPath:(id)arg3;
 
 @end
 

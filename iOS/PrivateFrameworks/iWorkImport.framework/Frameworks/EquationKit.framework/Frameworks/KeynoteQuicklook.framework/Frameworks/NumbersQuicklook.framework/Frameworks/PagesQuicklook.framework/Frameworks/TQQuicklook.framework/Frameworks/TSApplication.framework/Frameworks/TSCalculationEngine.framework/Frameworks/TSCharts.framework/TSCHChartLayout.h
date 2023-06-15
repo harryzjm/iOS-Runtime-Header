@@ -29,7 +29,7 @@
 @property struct CGRect legendModelGeometryFrame; // @synthesize legendModelGeometryFrame=_legendModelGeometryFrame;
 @property(nonatomic) __weak id <TSWPStyleProviding> styleProvidingSource; // @synthesize styleProvidingSource=_styleProvidingSource;
 @property(retain, nonatomic) TSCHChartInfo *chartInfo; // @synthesize chartInfo=_chartInfo;
-- (const struct CGPath *)newDragAndDropHighlightPathForSelection:(id)arg1;
+- (struct CGPath *)newDragAndDropHighlightPathForSelection:(id)arg1;
 - (id)subselectionHaloPositionsForSelections:(id)arg1;
 - (id)subselectionKnobPositionsForSelection:(id)arg1;
 - (id)hitChartElements:(struct CGPoint)arg1 passingTest:(CDUnknownBlockType)arg2;

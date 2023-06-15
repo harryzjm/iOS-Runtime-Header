@@ -6,17 +6,16 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 @class NSIndexPath, UITableViewHeaderFooterView;
 @protocol UITable_RowDataSource;
 
 __attribute__((visibility("hidden")))
-@interface UITableViewRowData : NSObject <NSCopying>
+@interface UITableViewRowData : NSObject
 {
     id <UITable_RowDataSource> _tableView;
     UITableViewHeaderFooterView *_headerFooterViewUsedForMeasurements;
     double _tableViewWidth;
+    struct UIEdgeInsets _sectionContentInset;
     long long _numSections;
     _Bool _estimatesHeights;
     long long _sectionRowDataCapacity;
@@ -46,6 +45,7 @@ __attribute__((visibility("hidden")))
     double _draggedRowHeight;
 }
 
++ (int)sectionLocationForRow:(long long)arg1 inSection:(long long)arg2 numRows:(unsigned long long)arg3 gapIndexPath:(id)arg4 rowSpacing:(double)arg5;
 - (void).cxx_destruct;
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;

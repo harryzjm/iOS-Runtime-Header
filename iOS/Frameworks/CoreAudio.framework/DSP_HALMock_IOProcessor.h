@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (id)negotiateConfigurationChange:(id)arg1 error:(id *)arg2;
 - (id)basic_negotiateConfigurationChange:(void *)arg1 error:(id *)arg2;
 - (id)conference_negotiateConfigurationChange:(void *)arg1 error:(id *)arg2;
+- (id)spatial_negotiateConfigurationChange:(void *)arg1 error:(id *)arg2;
 - (id)retrieveFormats:(id)arg1 error:(id *)arg2;
 - (void)dealloc;
 - (id)init;

@@ -12,6 +12,7 @@
 @property(readonly, nonatomic) NSString *alphanumericStrongPassword;
 @property(readonly, nonatomic) NSString *defaultStrongPassword;
 @property(readonly, nonatomic) NSString *currentStrongPassword;
+- (void)copyCurrentStrongPassword;
 - (void)makeStrongPasswordFieldViewableAndEditable:(_Bool)arg1;
 - (void)replaceCurrentPasswordWithPassword:(NSString *)arg1;
 @end

@@ -6,7 +6,7 @@
 
 #import <NotesShared/ICNote.h>
 
-@class ICCollaborationColorManager, NSArray, NSString, PKInk, TTTextStorage;
+@class ICCollaborationColorManager, ICTTTextContentStorage, ICTTTextStorage, NSArray, NSString, PKInk;
 
 @interface ICNote (HTML)
 + (id)hexStringForColor:(id)arg1;
@@ -30,8 +30,8 @@
 + (void)removeUsageOfHashtag:(id)arg1;
 + (id)thumbnailImageForAttachment:(id)arg1 minSize:(struct CGSize)arg2 scale:(double)arg3 appearanceType:(unsigned long long)arg4 requireAppearance:(_Bool)arg5 imageScaling:(unsigned long long *)arg6 showAsFileIcon:(_Bool *)arg7 isMovie:(_Bool *)arg8 movieDuration:(CDStruct_198678f7 *)arg9;
 + (void)redactNote:(id)arg1;
-+ (id)createNoteFromNote:(id)arg1 inFolder:(id)arg2 isPasswordProtected:(_Bool)arg3 removingOriginalNote:(_Bool)arg4;
-+ (id)createNoteFromNote:(id)arg1 isPasswordProtected:(_Bool)arg2 removingOriginalNote:(_Bool)arg3;
++ (id)duplicateNote:(id)arg1 intoFolder:(id)arg2 isPasswordProtected:(_Bool)arg3 removeOriginalNote:(_Bool)arg4;
++ (id)duplicateNote:(id)arg1 isPasswordProtected:(_Bool)arg2 removeOriginalNote:(_Bool)arg3;
 + (id)newNoteWithString:(id)arg1 inFolder:(id)arg2 error:(id *)arg3;
 + (id)newNoteWithAttributedString:(id)arg1 inFolder:(id)arg2 error:(id *)arg3;
 + (void)createNoteForAirDropDocument:(id)arg1 legacyContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -39,6 +39,7 @@
 - (id)htmlStringWithAttachmentConversionHandler:(CDUnknownBlockType)arg1;
 - (id)htmlStringWithAttachments:(_Bool)arg1;
 - (id)htmlString;
+- (id)searchableItemViewAttributeSet;
 - (unsigned long long)ic_characterCountIncludingSpaces:(_Bool)arg1;
 - (unsigned long long)ic_wordCount;
 - (unsigned long long)ic_lineCount;
@@ -65,7 +66,6 @@
 - (void)textStorage:(id)arg1 willProcessEditing:(unsigned long long)arg2 range:(struct _NSRange)arg3 changeInLength:(long long)arg4;
 - (void)filterAttachmentsInTextStorage:(id)arg1 range:(struct _NSRange)arg2;
 - (void)createMissingAttachmentsInTextStorage;
-- (void)textStorageWillProcessEditing:(id)arg1;
 @property(nonatomic) _Bool isDrawingStroke;
 - (void)updateModificationDateAndChangeCountAndSaveImmediately;
 - (void)updateModificationDateAndChangeCountAndSaveAfterDelay;
@@ -86,6 +86,8 @@
 - (id)attachmentFromObject:(id)arg1 createIfNecessary:(_Bool)arg2;
 - (void)_updateTextViewToPaperIfNecessary;
 - (void)redactAuthorAttributionsToCurrentUser;
+@property(readonly, nonatomic) unsigned long long preventLockReason;
+- (id)attributedStringForUTI:(id)arg1 inRange:(struct _NSRange)arg2;
 - (_Bool)appendAttributedString:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
 - (_Bool)appendAttributedString:(id)arg1 error:(id *)arg2;
 - (id)attachmentActivityItemsForSharingForRange:(struct _NSRange)arg1;
@@ -94,19 +96,22 @@
 - (id)noteActivityItemsForSharingWithNoteExporter:(id)arg1;
 @property(readonly, nonatomic) long long primaryWritingDirection;
 - (id)uiAttributedString;
-@property(readonly, nonatomic) TTTextStorage *textStorageWithoutCreating;
-@property(readonly, nonatomic) TTTextStorage *textStorage;
+@property(readonly, nonatomic) ICTTTextStorage *textStorageWithoutCreating;
+@property(readonly, nonatomic) ICTTTextStorage *textStorage;
+- (id)textContentStorageCreateIfNeeded;
+@property(readonly, nonatomic) ICTTTextContentStorage *textContentStorage;
 - (_Bool)hasMentionForParticipant:(id)arg1;
 @property(readonly, nonatomic) _Bool ic_hasLightBackground;
 @property(readonly, retain, nonatomic) ICCollaborationColorManager *collaborationColorManager;
-- (void)didMergeNoteDocument:(id)arg1 withUserInfo:(id)arg2;
+- (void)noteDidMergeNoteDocumentWithUserInfo:(id)arg1;
 - (id)rangesModifiedAfterTimestamp:(id)arg1 inTextStorage:(id)arg2;
-- (void)willMergeNoteDocument:(id)arg1 withUserInfo:(id)arg2;
+- (void)noteWillMergeDocumentWithUserInfo:(id)arg1;
 - (void)noteDidReplaceDocument;
 - (void)noteDidSaveAndClearDecryptedData;
 - (void)noteWillReleaseTextStorage;
 - (_Bool)shouldReleaseTextStorageWhenTurningIntoFault;
 - (void)noteWillTurnIntoFault;
+@property(nonatomic) _Bool isFastSyncSessionActive;
 - (id)dataForTypeIdentifier:(id)arg1;
 
 // Remaining properties

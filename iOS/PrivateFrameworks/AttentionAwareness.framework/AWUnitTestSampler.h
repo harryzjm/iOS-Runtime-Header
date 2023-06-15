@@ -17,8 +17,12 @@ __attribute__((visibility("hidden")))
 
 + (id)sharedSampler;
 - (void).cxx_destruct;
+- (id)AVFoundationSession;
 - (void)setPearlErrorState:(_Bool)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)setCarplayStateChangedCallback:(CDUnknownBlockType)arg1;
 - (void)setPearlErrorState:(_Bool)arg1;
+- (void)setCarPlayConnected:(_Bool)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)setCarPlayConnected:(_Bool)arg1;
 - (void)setSmartCoverCallback:(CDUnknownBlockType)arg1;
 - (void)setSmartCoverClosed:(_Bool)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)setSmartCoverClosed:(_Bool)arg1;

@@ -12,14 +12,17 @@
 {
     MISSING_TYPE *connection;
     MISSING_TYPE *authorizationManager;
+    MISSING_TYPE *cancellables;
 }
 
 - (void).cxx_destruct;
 - (id)init;
-- (_Bool)areActivitiesEnabledForBundleId:(id)arg1;
+- (_Bool)areFrequentPushesEnabledForBundleIdentifier:(id)arg1;
+- (_Bool)areFrequentPushesEnabledForCurrentProcess;
+- (_Bool)areActivitiesEnabledForBundleIdentifier:(id)arg1;
 - (_Bool)areActivitiesEnabledForCurrentProcess;
-- (_Bool)setActivitiesAuthorizationFor:(id)arg1 with:(id)arg2 error:(id *)arg3;
-- (_Bool)supportsActivitiesForBundleId:(id)arg1;
+- (_Bool)setFrequentPushesEnabledForBundleIdentifier:(id)arg1 options:(id)arg2 error:(id *)arg3;
+- (_Bool)setActivitiesAuthorizationForBundleIdentifier:(id)arg1 options:(id)arg2 error:(id *)arg3;
 
 @end
 

@@ -11,6 +11,7 @@
 @protocol AVCCaptionsClientDelegate <NSObject>
 
 @optional
+- (void)captionsClient:(AVCCaptionsClient *)arg1 didDetectGibberish:(_Bool)arg2;
 - (void)captionsServerDidDie:(AVCCaptionsClient *)arg1;
 - (void)captionsClient:(AVCCaptionsClient *)arg1 didUpdateCaptions:(AVCCaptionsResult *)arg2 source:(int)arg3;
 - (void)captionsClient:(AVCCaptionsClient *)arg1 didStopCaptioningWithReason:(unsigned char)arg2;

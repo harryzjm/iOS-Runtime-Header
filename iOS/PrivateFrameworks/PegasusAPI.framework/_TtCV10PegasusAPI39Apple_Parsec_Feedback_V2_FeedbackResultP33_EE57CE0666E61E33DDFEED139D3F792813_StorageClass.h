@@ -45,6 +45,7 @@
     MISSING_TYPE *_qid;
     MISSING_TYPE *_suppressedSuggestion;
     MISSING_TYPE *_selectedExperience;
+    MISSING_TYPE *_kginformation;
 }
 
 @end

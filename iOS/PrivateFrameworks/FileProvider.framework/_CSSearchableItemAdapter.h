@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic, getter=isMostRecentVersionDownloaded) _Bool mostRecentVersionDownloaded;
 - (_Bool)isRecursivelyDownloaded;
 @property(readonly, nonatomic, getter=isDownloaded) _Bool downloaded;
+@property(readonly, nonatomic) NSData *originatorInfo;
 @property(readonly) _Bool isCollaborationInvitation;
 - (id)formerIdentifier;
 @property(readonly, copy) NSString *fp_parentDomainIdentifier;
@@ -69,7 +70,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy, nonatomic) NSString *displayName;
 @property(readonly, copy, nonatomic) NSString *parentItemIdentifier;
 @property(readonly, copy) NSString *fp_domainIdentifier;
-@property(readonly, copy) NSString *fp_spotlightDomainIdentifier;
 @property(readonly, copy, nonatomic) NSString *itemIdentifier;
 @property(readonly, nonatomic) CSSearchableItemAttributeSet *attributeSet;
 - (id)initWithSearchableItem:(id)arg1;
@@ -88,6 +88,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSURL *fileURL;
 @property(readonly, copy) NSSet *fp_cloudContainerClientBundleIdentifiers;
 @property(readonly) _Bool fp_isCloudDocsContainer;
+@property(readonly, copy) NSString *fp_spotlightDomainIdentifier;
+@property(readonly, copy) NSString *fp_spotlightSubDomainIdentifier;
 @property(readonly, copy) NSNumber *hasUnresolvedConflicts;
 @property(readonly) unsigned long long hash;
 @property(readonly, getter=isHidden) _Bool hidden;

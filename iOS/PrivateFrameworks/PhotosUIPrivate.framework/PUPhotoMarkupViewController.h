@@ -4,16 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
-@class MarkupViewController, NSString, NSURL, PUMediaProvider, PUObserverRegistry, PUReviewAsset;
+@class NSString, NSURL, PUMediaProvider, PUObserverRegistry, PUReviewAsset;
+@protocol MarkupViewControllerPrivateProtocol;
 
 __attribute__((visibility("hidden")))
 @interface PUPhotoMarkupViewController : UIViewController
 {
     PUReviewAsset *_reviewAsset;
     PUMediaProvider *_mediaProvider;
-    MarkupViewController *__markupViewController;
+    UIViewController<MarkupViewControllerPrivateProtocol> *__markupViewController;
     PUObserverRegistry *__observerRegistry;
     long long __sourceImageVersion;
     NSURL *__workaroundInputWriteURL;
@@ -23,7 +24,7 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic, setter=_setWorkaroundInputWriteURL:) NSURL *_workaroundInputWriteURL; // @synthesize _workaroundInputWriteURL=__workaroundInputWriteURL;
 @property(nonatomic, setter=_setSourceImageVersion:) long long _sourceImageVersion; // @synthesize _sourceImageVersion=__sourceImageVersion;
 @property(readonly, nonatomic) PUObserverRegistry *_observerRegistry; // @synthesize _observerRegistry=__observerRegistry;
-@property(readonly, nonatomic) MarkupViewController *_markupViewController; // @synthesize _markupViewController=__markupViewController;
+@property(readonly, nonatomic) UIViewController<MarkupViewControllerPrivateProtocol> *_markupViewController; // @synthesize _markupViewController=__markupViewController;
 @property(readonly, nonatomic) PUMediaProvider *mediaProvider; // @synthesize mediaProvider=_mediaProvider;
 @property(readonly, nonatomic) PUReviewAsset *reviewAsset; // @synthesize reviewAsset=_reviewAsset;
 - (id)controller:(id)arg1 willSetToolbarItems:(id)arg2;

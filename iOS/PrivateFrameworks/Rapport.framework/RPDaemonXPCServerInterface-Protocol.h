@@ -11,6 +11,7 @@
 - (void)serverCreateDeviceMappingInternal:(int)arg1 applicationService:(NSString *)arg2 deviceID:(NSString *)arg3 endpointID:(NSUUID *)arg4 completion:(void (^)(NSUUID *, NSError *))arg5;
 - (void)primaryAccountSignedOutWithCompletion:(void (^)(NSError *))arg1;
 - (void)primaryAccountSignedInWithCompletion:(void (^)(NSError *))arg1;
+- (void)regenerateTemporarySelfIdentityWithCompletion:(void (^)(NSError *))arg1;
 - (void)getIdentitiesWithFlags:(unsigned int)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)diagnosticShow:(NSString *)arg1 level:(int)arg2 completion:(void (^)(NSString *))arg3;
 - (void)diagnosticLogControl:(NSString *)arg1 completion:(void (^)(NSString *))arg2;

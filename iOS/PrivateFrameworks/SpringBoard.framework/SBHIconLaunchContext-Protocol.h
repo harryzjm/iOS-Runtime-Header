@@ -6,11 +6,12 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class SBIconView;
+@class NSSet, SBIconView;
 
 @protocol SBHIconLaunchContext <NSObject>
 
 @optional
+@property(copy, nonatomic) NSSet *actions;
 @property(retain, nonatomic) SBIconView *iconView;
 @end
 

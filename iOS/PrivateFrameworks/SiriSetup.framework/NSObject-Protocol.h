@@ -7,7 +7,9 @@
 @class NSString, Protocol;
 
 @protocol NSObject
-@property(nonatomic, readonly) NSString *description;
+@property(readonly, copy) NSString *description;
+@property(readonly) Class superclass;
+@property(readonly) unsigned long long hash;
 - (struct _NSZone *)zone;
 - (unsigned long long)retainCount;
 - (id)autorelease;
@@ -23,11 +25,9 @@
 - (id)performSelector:(SEL)arg1;
 - (id)self;
 - (Class)class;
-@property(nonatomic, readonly) Class superclass;
-@property(nonatomic, readonly) long long hash;
 - (_Bool)isEqual:(id)arg1;
 
 @optional
-@property(nonatomic, readonly) NSString *debugDescription;
+@property(readonly, copy) NSString *debugDescription;
 @end
 

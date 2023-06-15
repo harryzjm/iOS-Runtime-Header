@@ -16,10 +16,10 @@ __attribute__((visibility("hidden")))
 + (id)validKeyPaths;
 + (id)streamNames;
 + (id)identifier;
-+ (id)configurationForDisplayLayout;
-+ (id)syncPolicyForDisplayLayout;
-+ (id)storeConfigurationForDisplayLayout;
-+ (id)DisplayLayout;
++ (id)configurationForDisplayElement;
++ (id)syncPolicyForDisplayElement;
++ (id)storeConfigurationForDisplayElement;
++ (id)DisplayElement;
 
 @end
 

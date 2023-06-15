@@ -9,6 +9,7 @@
 @class _UISheetPresentationController;
 
 @interface UIViewController (MobileSafariFrameworkExtras)
+@property(readonly, nonatomic) _Bool _sf_canEditFields;
 @property(readonly, nonatomic) _Bool _sf_isPKAddPassesViewController;
 @property(readonly, nonatomic) _Bool _sf_isMFMailComposeViewController;
 - (void)_sf_animateAlongsideTransitionOrPerform:(CDUnknownBlockType)arg1;

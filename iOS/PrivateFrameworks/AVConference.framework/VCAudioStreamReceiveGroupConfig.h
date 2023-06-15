@@ -4,16 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, VCAudioCaptionsCoordinator, VCAudioStreamGroupCommonConfig;
+@class NSString, VCAudioStreamGroupCommonConfig;
 
 __attribute__((visibility("hidden")))
 @interface VCAudioStreamReceiveGroupConfig
 {
     VCAudioStreamGroupCommonConfig *_audioStreamGroupConfig;
-    VCAudioCaptionsCoordinator *_captionsCoordinator;
 }
 
-@property(retain, nonatomic) VCAudioCaptionsCoordinator *captionsCoordinator; // @synthesize captionsCoordinator=_captionsCoordinator;
 @property(retain) VCAudioStreamGroupCommonConfig *audioStreamGroupConfig; // @synthesize audioStreamGroupConfig=_audioStreamGroupConfig;
 - (void)dealloc;
 - (id)init;

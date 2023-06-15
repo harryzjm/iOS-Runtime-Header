@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
 - (id)externalID;
 - (id)UUID;
 - (id)title;
-- (long long)sourceType;
+- (long long)sourceTypeRaw;
 @property(readonly, nonatomic) NSString *sourceIdentifier;
 - (id)meltedObjectInStore:(id)arg1;
 @property(readonly, nonatomic) REMAccount *remAccount;

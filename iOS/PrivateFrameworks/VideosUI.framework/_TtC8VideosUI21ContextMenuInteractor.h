@@ -11,18 +11,22 @@
 __attribute__((visibility("hidden")))
 @interface _TtC8VideosUI21ContextMenuInteractor : NSObject
 {
-    MISSING_TYPE *collectionViewModel;
+    MISSING_TYPE *delegate;
+    MISSING_TYPE *selectedViewModel;
     MISSING_TYPE *originatorViewModel;
     MISSING_TYPE *indexPath;
-    MISSING_TYPE *selectedViewModel;
+    MISSING_TYPE *hasShownPreActionContextMenu;
     MISSING_TYPE *documentController;
-    MISSING_TYPE *shareActionDataSourceKey;
+    MISSING_TYPE *preDocumentController;
+    MISSING_TYPE *downloads;
+    MISSING_TYPE *downloadStateObservation;
     MISSING_TYPE *presentingView;
-    MISSING_TYPE *completionHandler;
+    MISSING_TYPE *deferredMenuHandler;
     MISSING_TYPE *previewController;
-    MISSING_TYPE *actions;
-    MISSING_TYPE *dynamicActions;
+    MISSING_TYPE *defaultPreviewCardWidth;
+    MISSING_TYPE *itemViewModels;
     MISSING_TYPE *currentContextMenuConfiguration;
+    MISSING_TYPE *currentMenuInteraction;
 }
 
 - (void).cxx_destruct;

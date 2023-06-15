@@ -30,9 +30,12 @@ __attribute__((visibility("hidden")))
 + (id)keyPathsForValuesAffectingForceParentalControls;
 + (id)keyPathsForValuesAffectingCanViewAskForTimeRequests;
 + (id)keyPathsForValuesAffectingCanSetUpFamily;
++ (id)keyPathsForValuesAffectingCanEditScreenTimePasscode;
 + (id)keyPathsForValuesAffectingCanToggleCloudSyncData;
 + (id)keyPathsForValuesAffectingCanSignIn;
 + (id)keyPathsForValuesAffectingIsRemotelyManagedUserWithPasscode;
++ (id)keyPathsForValuesAffectingIsLocalOrRemotelyManagedUserWithScreenTimeDisabled;
++ (id)keyPathsForValuesAffectingIsLocalOrRemotelyManagedUser;
 + (id)keyPathsForValuesAffectingWebUsageEnabled;
 + (id)keyPathsForValuesAffectingIsSharingUsageData;
 + (id)keyPathsForValuesAffectingCanStopSharingScreenTime;
@@ -58,9 +61,12 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool forceParentalControls;
 @property(readonly, nonatomic) _Bool canViewAskForTimeRequests;
 @property(readonly, nonatomic) _Bool canSetUpFamily;
+@property(readonly, nonatomic) _Bool canEditScreenTimePasscode;
 @property(readonly, nonatomic) _Bool canToggleCloudSyncData;
 @property(readonly, nonatomic) _Bool canSignIn;
 @property(readonly, nonatomic) _Bool isRemotelyManagedUserWithPasscode;
+@property(readonly, nonatomic) _Bool isLocalOrRemotelyManagedUserWithScreenTimeDisabled;
+@property(readonly, nonatomic) _Bool isLocalOrRemotelyManagedUser;
 @property(readonly, nonatomic, getter=isWebUsageEnabled) _Bool webUsageEnabled;
 @property(readonly, nonatomic) _Bool isSharingUsageData;
 @property(readonly, nonatomic) _Bool canStopSharingScreenTime;

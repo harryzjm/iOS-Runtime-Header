@@ -19,7 +19,6 @@ __attribute__((visibility("hidden")))
     NSArray *_deniedBundleIdentifiers;
     long long _screenLockedBehavior;
     long long _pssoAuthenticationMethod;
-    NSString *_pssoRegistrationToken;
 }
 
 + (_Bool)supportsSecureCoding;
@@ -27,7 +26,6 @@ __attribute__((visibility("hidden")))
 + (id)stringWithScreenLockedBehavior:(long long)arg1;
 + (id)stringWithProfileType:(long long)arg1;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSString *pssoRegistrationToken; // @synthesize pssoRegistrationToken=_pssoRegistrationToken;
 @property(nonatomic) long long pssoAuthenticationMethod; // @synthesize pssoAuthenticationMethod=_pssoAuthenticationMethod;
 @property(nonatomic) long long screenLockedBehavior; // @synthesize screenLockedBehavior=_screenLockedBehavior;
 @property(retain, nonatomic) NSArray *deniedBundleIdentifiers; // @synthesize deniedBundleIdentifiers=_deniedBundleIdentifiers;

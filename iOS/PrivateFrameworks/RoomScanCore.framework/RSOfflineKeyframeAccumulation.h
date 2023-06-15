@@ -15,11 +15,6 @@
 }
 
 - (void).cxx_destruct;
-- (id)temporalMeta;
-- (id)pointCloud;
-- (void)reset;
-- (void)run:(id)arg1;
-- (id)sortKeyframesByTimestamp:(id)arg1;
 - (id)init;
 
 @end

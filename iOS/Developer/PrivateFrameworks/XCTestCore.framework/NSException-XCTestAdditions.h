@@ -9,6 +9,8 @@
 @class NSString;
 
 @interface NSException (XCTestAdditions)
++ (id)xct_unavailableExceptionWithReason:(id)arg1;
++ (id)_xct_unavailableException;
 @property(readonly, copy) NSString *xct_formattedDescription;
 @end
 

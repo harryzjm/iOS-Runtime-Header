@@ -67,7 +67,7 @@
 - (id)metadataForColumnIndex:(struct TSUViewColumnIndex)arg1;
 - (id)textStyleAtCellID:(struct TSUViewCellCoord)arg1 isDefault:(out _Bool *)arg2;
 - (id)cellStyleAtCellID:(struct TSUViewCellCoord)arg1 isDefault:(out _Bool *)arg2;
-- (void)defaultStylesForCellID:(struct TSUViewCellCoord)arg1 useSoftDefault:(_Bool)arg2 outCellStyle:(id *)arg3 outTextStyle:(id *)arg4;
+- (void)defaultStyleHandlesForCellID:(struct TSUViewCellCoord)arg1 useSoftDefault:(_Bool)arg2 styleDefaultsCache:(id)arg3 outCellStyleHandle:(id *)arg4 outTextStyleHandle:(id *)arg5;
 - (id)defaultTextStyleForCellID:(struct TSUViewCellCoord)arg1 useSoftDefault:(_Bool)arg2 outSource:(out unsigned long long *)arg3;
 - (id)defaultCellStyleForCellID:(struct TSUViewCellCoord)arg1 useSoftDefault:(_Bool)arg2 outSource:(out unsigned long long *)arg3;
 - (int)p_applyViewCellCoord:(struct TSUViewCellCoord)arg1 toSummaryUsingBlock:(CDUnknownBlockType)arg2 toBaseUsingBlock:(CDUnknownBlockType)arg3;

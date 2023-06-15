@@ -6,11 +6,16 @@
 
 #import "UICollectionReusableView.h"
 
+@class UIView;
+
 __attribute__((visibility("hidden")))
 @interface _UIContextMenuReusableSeparatorView : UICollectionReusableView
 {
+    UIView *_separatorView;
 }
 
+- (void).cxx_destruct;
+- (void)applyLayoutAttributes:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

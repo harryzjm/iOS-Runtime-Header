@@ -11,6 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface _TtC17HoverTextServices27HoverTextServiceAXUIService : NSObject
 {
+    MISSING_TYPE *hoverTextEnabled;
     MISSING_TYPE *_client;
 }
 

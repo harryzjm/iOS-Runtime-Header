@@ -9,8 +9,10 @@
 @class NSString;
 
 @interface AXElement (AXFocusEngine)
+- (_Bool)hasNativeFocusElements;
 - (_Bool)moveFocusWithHeading:(unsigned long long)arg1 withQueryString:(id)arg2;
 - (_Bool)moveFocusWithHeading:(unsigned long long)arg1 byGroup:(_Bool)arg2;
+- (void)didFocus;
 - (void)disableFocus;
 - (void)enableFocus;
 - (void)focusOnApplication;

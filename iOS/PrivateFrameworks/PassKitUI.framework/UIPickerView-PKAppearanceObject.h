@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIPickerView.h>
+#import <UIKitCore/UIPickerView.h>
 
 @interface UIPickerView (PKAppearanceObject)
 - (void)pk_applyAppearance:(id)arg1;

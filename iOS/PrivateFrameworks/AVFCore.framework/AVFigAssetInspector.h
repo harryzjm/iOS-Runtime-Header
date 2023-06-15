@@ -10,8 +10,6 @@ __attribute__((visibility("hidden")))
 @interface AVFigAssetInspector
 {
     struct OpaqueFigAsset *_figAsset;
-    struct OpaqueFigFormatReader *_formatReader;
-    AVDispatchOnce *_formatReaderOnce;
     AVDispatchOnce *_checkIsStreamingOnce;
     AVDispatchOnce *_makeDisplayCriteriaOnce;
     AVDisplayCriteria *_displayCriteria;
@@ -24,7 +22,9 @@ __attribute__((visibility("hidden")))
 - (id)availableVideoDynamicRanges;
 - (struct CGSize)maximumVideoResolution;
 - (id)makePropertyListForProxyWithOptions:(id)arg1;
+- (_Bool)_isDefunct;
 - (id)propertyListForProxy;
+- (long long)_moovAtomSize;
 - (id)_nameForProxy;
 - (id)_assetAnalysisMessages;
 - (_Bool)supportsAnalysisReporting;
@@ -56,6 +56,7 @@ __attribute__((visibility("hidden")))
 - (id)commonMetadata;
 - (id)lyrics;
 - (id)creationDate;
+- (id)_localizedMediaSelectionOptionDisplayNames;
 - (id)_mediaSelectionGroupDictionaries;
 - (id)trackReferences;
 - (id)alternateTrackGroups;
@@ -74,7 +75,7 @@ __attribute__((visibility("hidden")))
 - (id)identifyingTag;
 - (id)identifyingTagClass;
 - (void *)_valueAsCFTypeForProperty:(struct __CFString *)arg1;
-@property(readonly, nonatomic, getter=_formatReader) struct OpaqueFigFormatReader *formatReader;
+- (struct OpaqueFigFormatReader *)_copyFormatReader;
 @property(readonly, nonatomic, getter=_figAsset) struct OpaqueFigAsset *figAsset;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;

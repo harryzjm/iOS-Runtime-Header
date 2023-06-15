@@ -6,10 +6,9 @@
 
 #import <PhotoLibraryServices/NSObject-Protocol.h>
 
-@class NSArray, NSNumber;
+@class NSNumber;
 
 @protocol PLDetectionAdditionalDescription <NSObject>
-@property(readonly, nonatomic) NSArray *detectionTraits;
 @property(readonly, nonatomic) NSNumber *detectionType;
 @property(readonly, nonatomic) double bodyHeight;
 @property(readonly, nonatomic) double bodyWidth;

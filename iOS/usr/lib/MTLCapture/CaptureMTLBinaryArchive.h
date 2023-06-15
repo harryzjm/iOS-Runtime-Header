@@ -9,7 +9,6 @@
 @class CaptureMTLDevice, NSArray, NSString;
 @protocol MTLBinaryArchive, MTLBinaryArchiveSPI, MTLDevice;
 
-__attribute__((visibility("hidden")))
 @interface CaptureMTLBinaryArchive : NSObject
 {
     id <MTLBinaryArchiveSPI> _baseObject;
@@ -26,9 +25,6 @@ __attribute__((visibility("hidden")))
 - (_Bool)serializeToURL:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
 - (_Bool)serializeToURL:(id)arg1 error:(id *)arg2;
 - (struct MTLPipelineCollection *)pipelineCollection;
-- (id)getBinaryDataForKey:(id)arg1;
-- (id)getArchiveIDWithError:(id *)arg1;
-- (id)getArchiveDataForKey:(const CDStruct_5af0f983 *)arg1;
 - (id)formattedDescription:(unsigned long long)arg1;
 - (_Bool)enumerateArchivesFromPipelineCollection:(CDUnknownBlockType)arg1;
 - (_Bool)enumerateArchivesFromBackingFile:(CDUnknownBlockType)arg1;
@@ -43,8 +39,6 @@ __attribute__((visibility("hidden")))
 - (_Bool)addFunctionWithDescriptor:(id)arg1 library:(id)arg2 error:(id *)arg3;
 - (_Bool)addComputePipelineFunctionsWithDescriptor:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
 - (_Bool)addComputePipelineFunctionsWithDescriptor:(id)arg1 error:(id *)arg2;
-- (void)addBinaryEntry:(id)arg1 forKey:(id)arg2;
-- (void)addArchiveEntry:(id)arg1 forKey:(const CDStruct_5af0f983 *)arg2;
 @property(readonly) unsigned long long options;
 @property(copy) NSString *label;
 @property(readonly) NSArray *keys;

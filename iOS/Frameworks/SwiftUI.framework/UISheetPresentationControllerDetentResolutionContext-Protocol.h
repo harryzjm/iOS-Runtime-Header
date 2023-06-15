@@ -9,7 +9,7 @@
 @class UITraitCollection;
 
 @protocol UISheetPresentationControllerDetentResolutionContext <NSObject>
-@property(nonatomic, readonly) double maximumDetentValue;
-@property(nonatomic, readonly) UITraitCollection *containerTraitCollection;
+@property(readonly, nonatomic) double maximumDetentValue;
+@property(readonly, nonatomic) UITraitCollection *containerTraitCollection;
 @end
 

@@ -19,7 +19,7 @@ struct BtProxData {
 struct Estimator;
 
 struct NeighborMeasurements {
-    basic_string_05660eb3 _field1;
+    basic_string_b963e3c0 _field1;
     double _field2;
     _Bool _field3;
     _Bool _field4;
@@ -82,13 +82,14 @@ struct basic_string<char, std::char_traits<char>, std::allocator<char>> {
                 struct __long {
                     char *_field1;
                     unsigned long long _field2;
-                    unsigned long long _field3;
+                    unsigned int :63;
+                    unsigned int :1;
                 } _field1;
                 struct __short {
                     char _field1[23];
-                    struct {
-                        unsigned char _field1;
-                    } _field2;
+                    unsigned char _field2[0];
+                    unsigned int :7;
+                    unsigned int :1;
                 } _field2;
                 struct __raw {
                     unsigned long long _field1[3];
@@ -164,13 +165,14 @@ typedef struct basic_string<char, std::char_traits<char>, std::allocator<char>> 
                 struct __long {
                     char *_field1;
                     unsigned long long _field2;
-                    unsigned long long _field3;
+                    unsigned int :63;
+                    unsigned int :1;
                 } _field1;
                 struct __short {
                     char _field1[23];
-                    struct {
-                        unsigned char _field1;
-                    } _field2;
+                    unsigned char _field2[0];
+                    unsigned int :7;
+                    unsigned int :1;
                 } _field2;
                 struct __raw {
                     unsigned long long _field1[3];
@@ -178,5 +180,5 @@ typedef struct basic_string<char, std::char_traits<char>, std::allocator<char>> 
             } _field1;
         } _field1;
     } _field1;
-} basic_string_05660eb3;
+} basic_string_b963e3c0;
 

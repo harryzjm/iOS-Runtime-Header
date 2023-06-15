@@ -17,7 +17,7 @@
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(copy, nonatomic) NSString *ckAnonymousShareHashIdentifier; // @synthesize ckAnonymousShareHashIdentifier=_ckAnonymousShareHashIdentifier;
+@property(copy) NSString *ckAnonymousShareHashIdentifier; // @synthesize ckAnonymousShareHashIdentifier=_ckAnonymousShareHashIdentifier;
 @property(readonly, nonatomic) CKRecordID *shareID; // @synthesize shareID=_shareID;
 @property(readonly, nonatomic) CKRecordZoneID *zoneID; // @synthesize zoneID=_zoneID;
 - (id)copyWithZone:(struct _NSZone *)arg1;

@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *locale;
     MISSING_TYPE *storeFront;
+    MISSING_TYPE *contentEnvironment;
 }
 
 @end

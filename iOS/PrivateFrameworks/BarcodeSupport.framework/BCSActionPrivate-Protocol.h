@@ -9,6 +9,9 @@
 @class CPSClipMetadataRequest, NSArray, NSDictionary, NSString;
 
 @protocol BCSActionPrivate <BCSAction>
+@property(readonly, nonatomic) _Bool isContinuityCameraAction;
+@property(readonly, nonatomic) _Bool isAirplayPairingAction;
+@property(readonly, nonatomic) _Bool isLiveCameraOnlyAction;
 @property(readonly, nonatomic) _Bool isPasskeyRegistrationAction;
 @property(readonly, nonatomic) _Bool isPasskeyAssertionAction;
 @property(readonly, nonatomic) _Bool isPasskeyAction;

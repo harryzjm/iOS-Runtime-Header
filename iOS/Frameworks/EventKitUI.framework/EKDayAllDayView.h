@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
-@class EKDayOccurrenceView, EKEvent, EKUIVisualEffectView, NSMutableArray, NSMutableDictionary, UIColor, UILabel, UIScrollView;
+@class EKDayOccurrenceView, EKEvent, EKUIVisualEffectView, NSMutableArray, NSMutableDictionary, NSString, UIColor, UILabel, UIScrollView;
 @protocol EKDayAllDayViewDelegate;
 
 __attribute__((visibility("hidden")))
@@ -64,6 +64,7 @@ __attribute__((visibility("hidden")))
 - (void)setAllDayLabelHighlighted:(_Bool)arg1;
 @property(readonly, nonatomic) double naturalHeight;
 - (double)_height;
+- (void)attemptDisplayReviewPrompt;
 - (id)selectedEventsForEditMenu;
 - (id)presentationControllerForEditMenu;
 - (void)dayOccurrenceViewSelected:(id)arg1 source:(unsigned long long)arg2;
@@ -79,6 +80,7 @@ __attribute__((visibility("hidden")))
 - (void)configureOccurrenceViewForGestureController:(id)arg1;
 - (double)_borderLineWidth;
 - (double)_allDayAreaHeightForEventCount:(long long)arg1;
+- (double)_languageAwareAllDayEventHeight:(id)arg1;
 - (void)removeAllOccurrenceViews;
 - (void)_smallTextSettingChanged;
 - (void)setOrientation:(long long)arg1;
@@ -100,6 +102,12 @@ __attribute__((visibility("hidden")))
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1 sizeClass:(long long)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

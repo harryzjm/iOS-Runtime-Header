@@ -8,5 +8,9 @@
 
 @protocol CNMeCardSharingAvatarProvider <NSObject>
 - (void)generateAvatarImageOfSize:(struct CGSize)arg1 imageHandler:(void (^)(UIImage *, NSError *))arg2;
+
+@optional
+- (void)generatePosterAnimationControllerWithHandler:(void (^)(UIViewController *, NSError *))arg1;
+- (void)generatePosterImageWithHandler:(void (^)(UIImage *, NSError *))arg1;
 @end
 

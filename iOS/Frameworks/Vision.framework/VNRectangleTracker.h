@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 + (id)_trackingRectAroundPoint:(struct CGPoint)arg1 trackingRectSize:(struct CGSize)arg2;
 + (id)trackedCorners;
 + (Class)trackerObservationClass;
++ (id)supportedComputeDevicesForOptions:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
 - (id)_convertCornerObservationsToRectangleObservation:(id)arg1 error:(id *)arg2;
 - (id)_parseInputObservations:(id)arg1 imageBuffer:(id)arg2 error:(id *)arg3;

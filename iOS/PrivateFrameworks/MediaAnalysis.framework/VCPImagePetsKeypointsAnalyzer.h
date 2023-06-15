@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableArray, VCPCNNPetsDetector, VCPCNNPetsKeypointsDetector;
+@class NSMutableArray, VCPCNNPetsDetectorV2, VCPCNNPetsKeypointsDetector;
 
 __attribute__((visibility("hidden")))
 @interface VCPImagePetsKeypointsAnalyzer
@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
     int _maxNumRegions;
     int _inputWidth;
     int _inputHeight;
-    VCPCNNPetsDetector *_petsDetector;
+    VCPCNNPetsDetectorV2 *_petsDetector;
     VCPCNNPetsKeypointsDetector *_petsKeypointsDetector;
     NSMutableArray *_results;
 }
@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (int)analyzePixelBuffer:(struct __CVBuffer *)arg1 flags:(unsigned long long *)arg2 results:(id *)arg3 cancel:(CDUnknownBlockType)arg4;
 - (int)analyzePixelBuffer:(struct __CVBuffer *)arg1 flags:(unsigned long long *)arg2 petsDetections:(id)arg3 results:(id *)arg4 cancel:(CDUnknownBlockType)arg5;
+- (int)preferredInputFormat:(int *)arg1 height:(int *)arg2 format:(unsigned int *)arg3;
 - (id)initWithMaxNumRegions:(int)arg1 forceCPU:(_Bool)arg2 sharedModel:(_Bool)arg3;
 
 @end

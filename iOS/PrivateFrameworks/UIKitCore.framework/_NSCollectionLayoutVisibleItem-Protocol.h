@@ -5,8 +5,7 @@
 //
 
 #import <UIKitCore/NSCollectionLayoutVisibleItem-Protocol.h>
-#import <UIKitCore/_UICollectionLayoutVisibleItem-Protocol.h>
 
-@protocol _NSCollectionLayoutVisibleItem <NSCollectionLayoutVisibleItem, _UICollectionLayoutVisibleItem>
+@protocol _NSCollectionLayoutVisibleItem <NSCollectionLayoutVisibleItem>
 @end
 

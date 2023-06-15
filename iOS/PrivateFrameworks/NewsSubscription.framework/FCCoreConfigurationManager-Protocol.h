@@ -10,10 +10,10 @@
 @protocol FCCoreConfiguration, FCCoreConfigurationObserving;
 
 @protocol FCCoreConfigurationManager <NSObject>
+@property(readonly, nonatomic) id <FCCoreConfiguration> configuration;
 - (void)removeObserver:(id <FCCoreConfigurationObserving>)arg1;
 - (void)addObserver:(id <FCCoreConfigurationObserving>)arg1;
 - (void)fetchConfigurationIfNeededWithCompletionQueue:(OS_dispatch_queue *)arg1 completion:(void (^)(id <FCCoreConfiguration>, NSError *))arg2;
 - (void)fetchConfigurationIfNeededWithCompletion:(void (^)(id <FCCoreConfiguration>, NSError *))arg1;
-@property(nonatomic, readonly) id <FCCoreConfiguration> configuration;
 @end
 

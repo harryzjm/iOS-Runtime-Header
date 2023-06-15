@@ -9,12 +9,11 @@
 @class GEOComposedRoute, GEOStyleAttributes, NSArray, NSString;
 
 @protocol MKMapViewRouteContextUpdates <NSObject>
-- (void)_updateChargingStationTexts;
+- (void)_updateWaypointCaptions;
 - (void)_setRouteContextAnnotationFocus:(_Bool)arg1 forRoute:(GEOComposedRoute *)arg2;
 - (void)_setAlternateRouteContextAnnotationETAComparison:(unsigned char)arg1 forRoute:(GEOComposedRoute *)arg2;
 - (void)_setRouteContextAnnotationTexts:(NSArray *)arg1 forLegsInRoute:(GEOComposedRoute *)arg2;
-- (void)_setRouteContextAnnotationText:(NSString *)arg1 advisoryStyleAttributes:(GEOStyleAttributes *)arg2 forRoute:(GEOComposedRoute *)arg3;
-- (void)_setRouteContextAnnotationText:(NSString *)arg1 tollCurrency:(unsigned char)arg2 forRoute:(GEOComposedRoute *)arg3;
+- (void)_setRouteContextAnnotationText:(NSString *)arg1 etaType:(long long)arg2 tollCurrency:(unsigned char)arg3 advisoryStyleAttributes:(GEOStyleAttributes *)arg4 forRoute:(GEOComposedRoute *)arg5;
 - (void)_setRouteContextInspectedSegmentIndex:(unsigned long long)arg1 inspectedStepIndex:(unsigned long long)arg2;
 @end
 

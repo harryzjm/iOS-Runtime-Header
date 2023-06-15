@@ -7,6 +7,6 @@
 @protocol _GCExternalAccessory
 
 @optional
-- (long long)getGlyphSetOverride;
+- (unsigned long long)getGlyphFlags;
 @end
 

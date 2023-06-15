@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary;
+@class NSArray, NSDictionary, NSURL;
 
 @interface XCUIApplicationOpenRequest : NSObject
 {
@@ -16,13 +16,15 @@
     _Bool _disableAccessibility;
     NSArray *_launchArguments;
     NSDictionary *_environmentVariables;
+    NSURL *_launchUrl;
 }
 
 + (id)activationRequestFromLaunchRequest:(id)arg1;
 + (id)activationRequestWithLaunchArguments:(id)arg1 environmentVariables:(id)arg2 usePlatformLauncher:(_Bool)arg3;
-+ (id)launchRequestWithLaunchArguments:(id)arg1 environmentVariables:(id)arg2 usePlatformLauncher:(_Bool)arg3 disableAccessibility:(_Bool)arg4;
++ (id)launchRequestWithLaunchArguments:(id)arg1 environmentVariables:(id)arg2 launchURL:(id)arg3 usePlatformLauncher:(_Bool)arg4 disableAccessibility:(_Bool)arg5;
 + (id)launchRequestWithLaunchArguments:(id)arg1 environmentVariables:(id)arg2 usePlatformLauncher:(_Bool)arg3;
 - (void).cxx_destruct;
+@property(retain) NSURL *launchUrl; // @synthesize launchUrl=_launchUrl;
 @property(copy) NSDictionary *environmentVariables; // @synthesize environmentVariables=_environmentVariables;
 @property(copy) NSArray *launchArguments; // @synthesize launchArguments=_launchArguments;
 @property _Bool disableAccessibility; // @synthesize disableAccessibility=_disableAccessibility;

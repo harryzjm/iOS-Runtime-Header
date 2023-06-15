@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UITableViewCell.h>
+#import <UIKitCore/UITableViewCell.h>
 
 @interface _TtC8NewsFeedP33_2FB8A530414BB0820D2722FB0DC9856830DebugFormatValue1TableViewCell : UITableViewCell
 {

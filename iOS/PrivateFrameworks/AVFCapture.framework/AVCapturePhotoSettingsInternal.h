@@ -50,7 +50,7 @@ __attribute__((visibility("hidden")))
     NSArray *adjustedPhotoFilters;
     unsigned int shutterSound;
     unsigned long long userInitiatedPhotoRequestTime;
-    _Bool autoDeferredProcessingEnabled;
+    _Bool autoDeferredPhotoDeliveryEnabled;
     NSURL *HEICSFileURL;
     NSURL *videoFileURL;
     NSDictionary *videoFormat;
@@ -70,7 +70,6 @@ __attribute__((visibility("hidden")))
     _Bool autoContentAwareDistortionCorrectionEnabled;
     AVSemanticStyle *semanticStyle;
     _Bool previewPhotoFormatDimensionsLimitedToDisplayDimensions;
-    _Bool prefersStillImageShiftedToMatchSpatialOverCapturePreview;
     CDStruct_79c71658 maxPhotoDimensions;
     NSString *livePhotoContentIdentifier;
     NSString *livePhotoContentIdentifierForOriginalPhoto;

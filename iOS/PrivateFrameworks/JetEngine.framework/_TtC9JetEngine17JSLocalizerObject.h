@@ -21,9 +21,11 @@ __attribute__((visibility("hidden")))
 - (id)formattedDateWithContext:(id)arg1:(id)arg2:(id)arg3;
 - (id)fileSize:(id)arg1;
 - (id)formattedCount:(id)arg1;
-- (id)stringWithCount:(id)arg1:(id)arg2:(id)arg3;
+- (id)stringWithCount:(id)arg1:(id)arg2:(id)arg3:(id)arg4;
+- (id)integer:(id)arg1:(id)arg2;
+- (id)percentage:(id)arg1:(id)arg2:(id)arg3:(id)arg4;
 - (id)decimal:(id)arg1:(id)arg2:(id)arg3:(id)arg4;
-- (id)string:(id)arg1:(id)arg2;
+- (id)string:(id)arg1:(id)arg2:(id)arg3;
 
 @end
 

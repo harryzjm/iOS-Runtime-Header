@@ -10,8 +10,10 @@ __attribute__((visibility("hidden")))
 @interface _TtC8VideosUI24MediaShowcaseHostingView
 {
     MISSING_TYPE *widthThresholdForIpadLayout;
+    MISSING_TYPE *viewModel;
 }
 
+- (void).cxx_destruct;
 - (struct CGSize)vui_layoutSubviews:(struct CGSize)arg1 computationOnly:(_Bool)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

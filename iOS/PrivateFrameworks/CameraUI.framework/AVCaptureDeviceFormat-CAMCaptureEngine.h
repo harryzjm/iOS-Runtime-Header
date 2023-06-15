@@ -16,8 +16,8 @@
 - (_Bool)cam_supportsPanoramaConfiguration:(id)arg1;
 - (_Bool)cam_supportsFrameDuration:(CDStruct_198678f7)arg1;
 - (_Bool)cam_supportsFrameRate:(double)arg1;
-- (_Bool)cam_supportsFrameRate:(double)arg1 width:(long long)arg2 height:(long long)arg3 colorSpace:(long long)arg4 enableHDR10BitVideo:(_Bool)arg5 enableProResVideo:(_Bool)arg6;
-- (_Bool)cam_supportsVideoConfiguration:(long long)arg1 colorSpace:(long long)arg2 enableHDR10BitVideo:(_Bool)arg3 enableProResVideo:(_Bool)arg4;
+- (_Bool)cam_supportsFrameRate:(double)arg1 width:(long long)arg2 height:(long long)arg3 colorSpace:(long long)arg4 enableProResVideo:(_Bool)arg5;
+- (_Bool)cam_supportsVideoConfiguration:(long long)arg1 colorSpace:(long long)arg2 enableProResVideo:(_Bool)arg3;
 - (CDStruct_1ef3fb1f)_expectedVideoDimensionsForVideoConfiguration:(long long)arg1;
 - (CDStruct_198678f7)cam_frameDurationForVideoConfiguration:(long long)arg1;
 - (double)cam_frameRateForVideoConfiguration:(long long)arg1;

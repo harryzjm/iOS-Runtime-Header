@@ -6,14 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class CKContainer, CKDatabase, CKSubscription;
+@class CKContainer, CKDatabase, NSString;
 
 @interface CKSubscriptionInfo : NSObject
 {
-    CKSubscription *_subscription;
     CKDatabase *_database;
     CKContainer *_container;
-    CDUnknownBlockType _handler;
+    CDUnknownBlockType _idHandler;
+    NSString *_subscriptionID;
 }
 
 - (void).cxx_destruct;

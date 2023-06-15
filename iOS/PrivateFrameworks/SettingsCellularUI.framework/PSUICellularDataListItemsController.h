@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 - (id)getLogger;
 - (void)setSpecifier:(id)arg1;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
+- (_Bool)_isDataSwitchAutomatic:(id)arg1;
 - (id)specifiers;
 - (void)reloadCache;
 - (void)airplaneModeChanged;

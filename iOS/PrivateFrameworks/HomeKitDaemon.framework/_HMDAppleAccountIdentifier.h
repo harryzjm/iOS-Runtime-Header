@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import "_HMDAccountIdentifier.h"
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _HMDAppleAccountIdentifier : _HMDAccountIdentifier
+@interface _HMDAppleAccountIdentifier
 {
     struct os_unfair_lock_s _lock;
     NSString *_identifierString;

@@ -9,10 +9,11 @@
 @class NSString;
 
 @protocol MKAnnotation <NSObject>
-@property(nonatomic, readonly) struct CLLocationCoordinate2D coordinate;
+@property(readonly, nonatomic) struct CLLocationCoordinate2D coordinate;
 
 @optional
-@property(nonatomic, readonly) NSString *subtitle;
-@property(nonatomic, readonly) NSString *title;
+@property(readonly, copy, nonatomic) NSString *subtitle;
+@property(readonly, copy, nonatomic) NSString *title;
+- (void)setCoordinate:(struct CLLocationCoordinate2D)arg1;
 @end
 

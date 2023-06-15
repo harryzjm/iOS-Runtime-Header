@@ -6,9 +6,10 @@
 
 #import <GeoServices/NSObject-Protocol.h>
 
-@class GEOMapItemIdentifier, NSString;
+@class GEOColor, GEOMapItemIdentifier, NSString;
 
 @protocol GEOFactoid <NSObject>
+@property(readonly, nonatomic) GEOColor *color;
 @property(readonly, nonatomic) _Bool canBeDisplayedInPlaceSummary;
 @property(readonly, nonatomic) GEOMapItemIdentifier *placeIdentifier;
 @property(readonly, nonatomic) NSString *symbolName;

@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *_useSeparateRadarEndpoints;
     MISSING_TYPE *_enableMapLocationAccessibilityModels;
+    MISSING_TYPE *_enableMapOverlaySonification;
 }
 
 @end

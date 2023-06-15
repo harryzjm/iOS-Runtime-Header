@@ -19,10 +19,6 @@
 @property(readonly, getter=hmd_isForRemoteTransportOnSameAccount) _Bool hmd_forRemoteTransportOnSameAccount;
 @property(readonly, getter=hmd_isForRemoteTransport) _Bool hmd_forRemoteTransport;
 @property(readonly, getter=hmd_isForLocalStore) _Bool hmd_forLocalStore;
-- (id)hm_decodeSetOfConditionalObjects:(Class)arg1 forKey:(id)arg2;
-- (void)hm_encodeSetOfConditionalObjects:(id)arg1 forKey:(id)arg2;
-- (id)hm_decodeArrayOfConditionalObjects:(Class)arg1 forKey:(id)arg2;
-- (void)hm_encodeArrayOfConditionalObjects:(id)arg1 forKey:(id)arg2;
 @property(readonly, getter=hmd_isForXPCTransportEntitledForHomeLocationFeedbackAccess) _Bool hmd_isForXPCTransportEntitledForHomeLocationFeedbackAccess;
 @property(readonly, getter=hmd_isForXPCTransportEntitledForAssistantIdentifiers) _Bool hmd_forXPCTransportEntitledForAssistantIdentifiers;
 @property(readonly, getter=hmd_isForXPCTransportEntitledForHomeLocationAccess) _Bool hmd_forXPCTransportEntitledForHomeLocationAccess;

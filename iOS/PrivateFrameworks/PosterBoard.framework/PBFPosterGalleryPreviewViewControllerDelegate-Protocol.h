@@ -10,7 +10,6 @@
 @protocol PBFPosterPreview, UIViewControllerAnimatedTransitioning;
 
 @protocol PBFPosterGalleryPreviewViewControllerDelegate <PREditingSceneViewControllerDelegate>
-- (void)galleryViewController:(PBFPosterGalleryPreviewViewController *)arg1 willDisplayPreview:(id <PBFPosterPreview>)arg2;
 - (void)galleryViewController:(PBFPosterGalleryPreviewViewController *)arg1 didSelectPreview:(id <PBFPosterPreview>)arg2 fromPreviewView:(PBFPosterGalleryPreviewView *)arg3;
 
 @optional

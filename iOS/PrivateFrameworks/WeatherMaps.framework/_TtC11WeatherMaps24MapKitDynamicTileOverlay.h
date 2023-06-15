@@ -15,9 +15,11 @@
     MISSING_TYPE *lock;
     MISSING_TYPE *overlayRenderer;
     MISSING_TYPE *timeConfiguration;
+    MISSING_TYPE *fetchesTiles;
     MISSING_TYPE *blendMode;
     MISSING_TYPE *opacity;
     MISSING_TYPE *colorMap;
+    MISSING_TYPE *purpose;
 }
 
 - (void).cxx_destruct;

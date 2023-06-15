@@ -8,6 +8,7 @@
 
 @interface CALayer (SwiftUIAdditions)
 - (void)setNoAnimationDelegate;
+@property(nonatomic) unsigned long long swiftUI_viewTestProperties;
 @property(nonatomic) long long swiftUI_displayListID;
 @end
 

@@ -9,10 +9,14 @@
 @class NSString, TIContextTokens;
 
 @protocol TIRevisionHistoryDelegate <NSObject>
+- (void)fillReversedConversationHistoryInContext:(TIContextTokens *)arg1;
 - (struct TITokenID)addWord:(NSString *)arg1 contextTokens:(TIContextTokens *)arg2 surfaceFormPtr:(id *)arg3;
 - (struct TITokenID)findTokenIDForWord:(NSString *)arg1 contextTokens:(TIContextTokens *)arg2 tokenLookupMode:(unsigned int)arg3;
 - (struct TITokenID)findTokenIDForWord:(NSString *)arg1 contextTokens:(TIContextTokens *)arg2 tokenLookupMode:(unsigned int)arg3 surfaceFormPtr:(id *)arg4 hasCaseInsensitiveStaticVariant:(_Bool *)arg5;
-- (void)registerNegativeEvidence:(NSString *)arg1 tokenID:(struct TITokenID)arg2 contextTokens:(TIContextTokens *)arg3 intendedTokenID:(struct TITokenID *)arg4 hint:(int)arg5;
+- (void)registerRevisionFrom:(NSString *)arg1 to:(NSString *)arg2 contextTokens:(TIContextTokens *)arg3;
+- (void)registerNegativeEvidence:(NSString *)arg1 tokenID:(struct TITokenID)arg2 contextTokens:(TIContextTokens *)arg3 intended:(NSString *)arg4 intendedTokenID:(struct TITokenID)arg5 hint:(int)arg6;
+- (void)softLearningRegisterDeleted:(NSString *)arg1;
+- (void)softLearningRegisterAccepted:(NSString *)arg1 typed:(NSString *)arg2;
 - (void)decrementLanguageModelCount:(NSString *)arg1 tokenID:(struct TITokenID)arg2 contextTokens:(TIContextTokens *)arg3;
 - (void)incrementLanguageModelCount:(NSString *)arg1 tokenID:(struct TITokenID)arg2 contextTokens:(TIContextTokens *)arg3 saveToDifferentialPrivacy:(int)arg4;
 - (_Bool)isStringBasedModel;

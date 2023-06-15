@@ -10,6 +10,6 @@
 @protocol GEOXPCRequest <NSObject, GEOXPCSerializable>
 + (Class)replyClass;
 - (_Bool)isValid;
-- (_Bool)expectsReply;
+- (unsigned long long)reply;
 @end
 

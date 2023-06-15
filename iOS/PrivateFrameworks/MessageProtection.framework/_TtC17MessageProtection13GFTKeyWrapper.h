@@ -12,7 +12,10 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)wrapSeed:(id)arg1 to:(id)arg2 legacy:(_Bool)arg3 error:(id *)arg4;
++ (id)decrypt:(id)arg1 using:(struct __SecKey *)arg2 error:(id *)arg3;
++ (id)encrypt:(id)arg1 to:(struct __SecKey *)arg2 error:(id *)arg3;
 + (id)unwrapWrappedSeed:(id)arg1 legacy:(_Bool)arg2 using:(struct __SecKey *)arg3 error:(id *)arg4;
+- (void).cxx_destruct;
 - (id)init;
 
 @end

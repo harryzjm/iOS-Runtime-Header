@@ -5,13 +5,14 @@
 //
 
 #import <ShazamKit/SHEventSignalling-Protocol.h>
-#import <ShazamKit/SHMatcher-Protocol.h>
+#import <ShazamKit/SHMatcherDelegate-Protocol.h>
 #import <ShazamKit/SHMediaItemProvider-Protocol.h>
-#import <ShazamKit/SHMediaLibrary-Protocol.h>
+#import <ShazamKit/SHPreparableMatcher-Protocol.h>
+#import <ShazamKit/SHRemoteMediaLibrary-Protocol.h>
 
 @class NSString, SHMatcherRequest, SHMediaLibrarySnapshot;
 
-@protocol SHShazamKitService <SHMatcher, SHMediaLibrary, SHMediaItemProvider, SHEventSignalling>
+@protocol SHShazamKitService <SHPreparableMatcher, SHMatcherDelegate, SHRemoteMediaLibrary, SHMediaItemProvider, SHEventSignalling>
 
 @optional
 - (void)synchronizeSnapshot:(SHMediaLibrarySnapshot *)arg1 startCondition:(NSString *)arg2 completionHandler:(void (^)(void))arg3;

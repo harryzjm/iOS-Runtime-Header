@@ -9,8 +9,8 @@
 @class NSData, UVPropertyList;
 
 @protocol UVDaemonServiceProtocol <NSObject>
-- (oneway void)grantExecutePermissionToAgentIdentifierPayload:(UVPropertyList *)arg1 usingData:(NSData *)arg2 replyHandler:(void (^)(NSError *))arg3;
-- (oneway void)copyURLToAgentIdentifierPayload:(UVPropertyList *)arg1 usingData:(NSData *)arg2 replyHandler:(void (^)(NSString *, NSError *))arg3;
+- (oneway void)grantExecutePermissionToAgentDescriptorPayload:(UVPropertyList *)arg1 usingData:(NSData *)arg2 replyHandler:(void (^)(NSError *))arg3;
+- (oneway void)copyURLToAgentDescriptorPayload:(UVPropertyList *)arg1 usingData:(NSData *)arg2 replyHandler:(void (^)(NSString *, NSError *))arg3;
 - (oneway void)sendPreviewServiceMessage:(UVPropertyList *)arg1 replyHandler:(void (^)(UVPropertyList *, NSError *))arg2;
 @end
 

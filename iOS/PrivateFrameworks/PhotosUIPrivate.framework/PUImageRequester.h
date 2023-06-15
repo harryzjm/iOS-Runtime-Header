@@ -6,8 +6,8 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSData, NSHashTable, NSURL, PUImageRequesterChange, PUMediaProvider, UIImage;
-@protocol PUDisplayAsset;
+@class NSArray, NSData, NSDate, NSError, NSHashTable, NSURL, PUMediaProvider, UIImage;
+@protocol PUDisplayAsset, PUImageRequesterResult;
 
 __attribute__((visibility("hidden")))
 @interface PUImageRequester : NSObject
@@ -16,53 +16,57 @@ __attribute__((visibility("hidden")))
     _Bool _useLowMemoryMode;
     _Bool _networkAccessAllowed;
     _Bool _requiresFullQualityImage;
-    _Bool _imageIsFullQuality;
-    _Bool _imageIsHigherQuality;
     _Bool _highPriorityRequest;
     _Bool _includeGainMap;
+    _Bool _requestHDR;
     _Bool _imageIsPlaceholder;
+    _Bool _imageIsFullQuality;
     _Bool __needsUpdate;
-    _Bool __hasRequestedFullsizeImageData;
-    _Bool __hasCurrentIncompleteRequest;
-    _Bool __shouldUpdateImageOnCurrentRequestCompletion;
+    _Bool __hasRequestedFullSizeImageData;
     float _gainMapValue;
-    int __currentFullsizeImageDataRequestID;
+    int __currentFullSizeImageDataRequestID;
     int __currentImageRequestID;
     PUMediaProvider *_mediaProvider;
     id <PUDisplayAsset> _asset;
     NSArray *_requestFullSizeImageDataUTTypes;
+    NSData *_fullSizeImageData;
+    NSURL *_fullSizeImageURL;
+    id <PUImageRequesterResult> _result;
+    NSError *_error;
     UIImage *_image;
-    NSData *_fullsizeImageData;
-    NSURL *_fullsizeImageURL;
+    id <PUDisplayAsset> _imageAsset;
     struct CGImage *_gainMapImage;
-    NSHashTable *__observers;
+    NSHashTable *_observers;
     long long __changeCount;
-    PUImageRequesterChange *__currentChange;
+    NSDate *_currentRequestStartDate;
     struct CGSize _targetSize;
+    struct CGSize _imageTargetSize;
     struct CGSize __lastRequestedImageSize;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic, setter=_setShouldUpdateImageOnCurrentRequestCompletion:) _Bool _shouldUpdateImageOnCurrentRequestCompletion; // @synthesize _shouldUpdateImageOnCurrentRequestCompletion=__shouldUpdateImageOnCurrentRequestCompletion;
+@property(retain, nonatomic) NSDate *currentRequestStartDate; // @synthesize currentRequestStartDate=_currentRequestStartDate;
 @property(nonatomic, setter=_setCurrentImageRequestID:) int _currentImageRequestID; // @synthesize _currentImageRequestID=__currentImageRequestID;
 @property(nonatomic, setter=_setLastRequestedImageSize:) struct CGSize _lastRequestedImageSize; // @synthesize _lastRequestedImageSize=__lastRequestedImageSize;
-@property(nonatomic, setter=_setCurrentIncompleteRequest:) _Bool _hasCurrentIncompleteRequest; // @synthesize _hasCurrentIncompleteRequest=__hasCurrentIncompleteRequest;
-@property(nonatomic, setter=_setCurrentFullsizeImageDataRequestID:) int _currentFullsizeImageDataRequestID; // @synthesize _currentFullsizeImageDataRequestID=__currentFullsizeImageDataRequestID;
-@property(nonatomic, setter=_setHasRequestedFullsizeImageData:) _Bool _hasRequestedFullsizeImageData; // @synthesize _hasRequestedFullsizeImageData=__hasRequestedFullsizeImageData;
+@property(nonatomic, setter=_setCurrentFullSizeImageDataRequestID:) int _currentFullSizeImageDataRequestID; // @synthesize _currentFullSizeImageDataRequestID=__currentFullSizeImageDataRequestID;
+@property(nonatomic, setter=_setHasRequestedFullSizeImageData:) _Bool _hasRequestedFullSizeImageData; // @synthesize _hasRequestedFullSizeImageData=__hasRequestedFullSizeImageData;
 @property(nonatomic, setter=_setNeedsUpdate:) _Bool _needsUpdate; // @synthesize _needsUpdate=__needsUpdate;
-@property(retain, nonatomic, setter=_setCurrentChange:) PUImageRequesterChange *_currentChange; // @synthesize _currentChange=__currentChange;
 @property(nonatomic, setter=_setChangeCount:) long long _changeCount; // @synthesize _changeCount=__changeCount;
-@property(retain, nonatomic, setter=_setObserver:) NSHashTable *_observers; // @synthesize _observers=__observers;
-@property(nonatomic, setter=_setImageIsPlaceholder:) _Bool imageIsPlaceholder; // @synthesize imageIsPlaceholder=_imageIsPlaceholder;
-@property(nonatomic, setter=_setGainMapValue:) float gainMapValue; // @synthesize gainMapValue=_gainMapValue;
-@property(retain, nonatomic, setter=_setGainMapImage:) struct CGImage *gainMapImage; // @synthesize gainMapImage=_gainMapImage;
+@property(retain, nonatomic, setter=_setObserver:) NSHashTable *observers; // @synthesize observers=_observers;
+@property(nonatomic) _Bool imageIsFullQuality; // @synthesize imageIsFullQuality=_imageIsFullQuality;
+@property(nonatomic) _Bool imageIsPlaceholder; // @synthesize imageIsPlaceholder=_imageIsPlaceholder;
+@property(nonatomic) float gainMapValue; // @synthesize gainMapValue=_gainMapValue;
+@property(nonatomic) struct CGImage *gainMapImage; // @synthesize gainMapImage=_gainMapImage;
+@property(nonatomic) struct CGSize imageTargetSize; // @synthesize imageTargetSize=_imageTargetSize;
+@property(retain, nonatomic) id <PUDisplayAsset> imageAsset; // @synthesize imageAsset=_imageAsset;
+@property(retain, nonatomic) UIImage *image; // @synthesize image=_image;
+@property(retain, nonatomic) NSError *error; // @synthesize error=_error;
+@property(retain, nonatomic) id <PUImageRequesterResult> result; // @synthesize result=_result;
+@property(nonatomic) _Bool requestHDR; // @synthesize requestHDR=_requestHDR;
 @property(nonatomic) _Bool includeGainMap; // @synthesize includeGainMap=_includeGainMap;
 @property(nonatomic) _Bool highPriorityRequest; // @synthesize highPriorityRequest=_highPriorityRequest;
-@property(retain, nonatomic, setter=_setFullsizeImageURL:) NSURL *fullsizeImageURL; // @synthesize fullsizeImageURL=_fullsizeImageURL;
-@property(retain, nonatomic, setter=_setFullsizeImageData:) NSData *fullsizeImageData; // @synthesize fullsizeImageData=_fullsizeImageData;
-@property(readonly, nonatomic) _Bool imageIsHigherQuality; // @synthesize imageIsHigherQuality=_imageIsHigherQuality;
-@property(nonatomic, setter=_setImageIsFullQuality:) _Bool imageIsFullQuality; // @synthesize imageIsFullQuality=_imageIsFullQuality;
-@property(retain, nonatomic, setter=_setImage:) UIImage *image; // @synthesize image=_image;
+@property(retain, nonatomic) NSURL *fullSizeImageURL; // @synthesize fullSizeImageURL=_fullSizeImageURL;
+@property(retain, nonatomic) NSData *fullSizeImageData; // @synthesize fullSizeImageData=_fullSizeImageData;
 @property(readonly, nonatomic) _Bool requiresFullQualityImage; // @synthesize requiresFullQualityImage=_requiresFullQualityImage;
 @property(nonatomic, getter=isNetworkAccessAllowed) _Bool networkAccessAllowed; // @synthesize networkAccessAllowed=_networkAccessAllowed;
 @property(retain, nonatomic) NSArray *requestFullSizeImageDataUTTypes; // @synthesize requestFullSizeImageDataUTTypes=_requestFullSizeImageDataUTTypes;
@@ -71,15 +75,16 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) struct CGSize targetSize; // @synthesize targetSize=_targetSize;
 @property(readonly, nonatomic) id <PUDisplayAsset> asset; // @synthesize asset=_asset;
 @property(readonly, nonatomic) PUMediaProvider *mediaProvider; // @synthesize mediaProvider=_mediaProvider;
-- (void)_handleResultOfFullsizeImageDataRequestWithID:(int)arg1 imageData:(id)arg2 imageURL:(id)arg3 dataUTI:(id)arg4 orientation:(long long)arg5 info:(id)arg6;
-- (void)_handleResultOfImageRequestWithID:(int)arg1 image:(id)arg2 info:(id)arg3;
+- (void)_produceDebugImage;
+- (void)_handleResultOfFullSizeImageDataRequestWithID:(int)arg1 imageData:(id)arg2 imageURL:(id)arg3 dataUTI:(id)arg4 orientation:(long long)arg5 info:(id)arg6;
+- (void)_handleResultOfImageRequestWithID:(int)arg1 asset:(id)arg2 targetSize:(struct CGSize)arg3 image:(id)arg4 info:(id)arg5;
 - (void)cancelAllImageRequests;
+- (void)_updateResult;
 - (void)_update;
-- (void)_setImageIsHigherQuality:(_Bool)arg1;
+- (void)_invalidateResult;
 - (void)handlePreloadedImage:(id)arg1;
 - (void)setAsset:(id)arg1;
 - (void)_assertInsideChangesBlock;
-- (void)_publishChange:(id)arg1;
 - (void)_didChange;
 - (void)_willChange;
 - (void)updateIfNeeded;

@@ -34,6 +34,7 @@
 - (_Bool)_detailRange:(struct _NSRange)arg1 inSentence:(id)arg2 matchesRange:(struct _NSRange)arg3 inString:(id)arg4 sentenceRange:(struct _NSRange)arg5;
 - (void)controlRepeatedAutocorrectionResultsForString:(id)arg1 range:(struct _NSRange)arg2 tagger:(id)arg3 offset:(unsigned long long)arg4 mutableResults:(id)arg5;
 - (void)_controlRepeatedAutocorrectionResultsForSentence:(id)arg1 offset:(unsigned long long)arg2 mutableResults:(id)arg3;
+- (void)retrieveCachedResultsForString:(id)arg1 range:(struct _NSRange)arg2 tagger:(id)arg3 offset:(unsigned long long)arg4 ignoreTermination:(_Bool)arg5 mutableResults:(id)arg6 remainingRange:(struct _NSRange *)arg7;
 - (void)retrieveCachedResultsForString:(id)arg1 range:(struct _NSRange)arg2 tagger:(id)arg3 offset:(unsigned long long)arg4 mutableResults:(id)arg5 remainingRange:(struct _NSRange *)arg6;
 - (_Bool)_retrieveCachedResultsForSentence:(id)arg1 offset:(unsigned long long)arg2 mutableResults:(id)arg3;
 @property(readonly) unsigned long long capacity;

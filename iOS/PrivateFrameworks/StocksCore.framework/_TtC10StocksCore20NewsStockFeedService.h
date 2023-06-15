@@ -14,7 +14,7 @@
     MISSING_TYPE *feedLookupService;
     MISSING_TYPE *newsUserProfileProvider;
     MISSING_TYPE *appConfigurationManager;
-    MISSING_TYPE *accessChecker;
+    MISSING_TYPE *newsConfigurationManager;
     MISSING_TYPE *languageSettings;
 }
 

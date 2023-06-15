@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/_UIRemoteViewController.h>
+#import <UIKitCore/_UIRemoteViewController.h>
 
 __attribute__((visibility("hidden")))
 @interface PUPickerRemoteViewController : _UIRemoteViewController
 {
 }
 
-+ (void)requestViewControllerForExtension:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
++ (void)requestViewControllerForExtension:(id)arg1 proposedSize:(struct CGSize)arg2 completionHandler:(CDUnknownBlockType)arg3;
 
 @end
 

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSLayoutConstraint, NSString, _UIContextMenuCellContentView;
+@class NSArray, NSLayoutConstraint, NSString, UIColor, _UIContextMenuCellContentView;
 
 __attribute__((visibility("hidden")))
 @interface _UIContextMenuLargeCellLayout : NSObject
@@ -36,7 +36,10 @@ __attribute__((visibility("hidden")))
 - (void)removeConstraints;
 - (void)updateConstraints;
 - (void)installConstraints;
-- (id)preferredTextStyleUsingBoldFont:(_Bool)arg1;
+@property(readonly, nonatomic) UIColor *preferredContentColorForCurrentState;
+- (id)preferredIconFontUsingBoldFont:(_Bool)arg1;
+@property(readonly, nonatomic) struct NSDirectionalEdgeInsets backgroundViewInsets;
+@property(readonly, nonatomic) _Bool allowsHighlightingOnHover;
 @property(readonly, nonatomic) unsigned long long labelMaximumNumberOfLines;
 @property(readonly, nonatomic) long long labelTextAlignment;
 @property(readonly, nonatomic) long long layoutSize;

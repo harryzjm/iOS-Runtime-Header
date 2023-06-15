@@ -4,20 +4,31 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class UIKeyboardScenePresentationModeManager;
+
 __attribute__((visibility("hidden")))
 @interface _UIKeyboardArbiterClientInputUIHost
 {
     _Bool _showing;
+    _Bool _inputDestinationInWindowedMode;
+    UIKeyboardScenePresentationModeManager *_presentationModeManager;
     struct CGRect _keyboardFrameIncludingRemoteIAV;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool inputDestinationInWindowedMode; // @synthesize inputDestinationInWindowedMode=_inputDestinationInWindowedMode;
+@property(readonly, nonatomic) UIKeyboardScenePresentationModeManager *presentationModeManager; // @synthesize presentationModeManager=_presentationModeManager;
 @property(nonatomic) _Bool showing; // @synthesize showing=_showing;
 @property(readonly, nonatomic) struct CGRect keyboardFrameIncludingRemoteIAV; // @synthesize keyboardFrameIncludingRemoteIAV=_keyboardFrameIncludingRemoteIAV;
+- (void)scenePresentationModeManager:(id)arg1 didChangeToMode:(unsigned long long)arg2;
 - (void)queue_sceneBecameFocused:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_layoutKeyboardViews:(id)arg1;
 - (void)completeKeyboardChange;
 - (void)keyboardVisibilityDidChangeWithFrame:(struct CGRect)arg1 visible:(_Bool)arg2 tracking:(_Bool)arg3;
+- (void)keyboardSendNotification:(unsigned long long)arg1 withInfo:(id)arg2 isStart:(_Bool)arg3;
 - (void)applicationKeyWindowWillChange:(id)arg1;
+- (void)inputSessionDidEndUnexpectedly;
+- (void)_updateKeyboardUIScenePresentationMode;
 - (_Bool)shouldSnapshot;
 - (void)resetSnapshotWithWindowCheck:(_Bool)arg1;
 - (void)snapsShotKeyboard;

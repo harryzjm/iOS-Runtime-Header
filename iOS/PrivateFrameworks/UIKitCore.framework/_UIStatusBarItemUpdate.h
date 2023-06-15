@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 @class NSDictionary, _UIStatusBarData, _UIStatusBarStyleAttributes;
 
 __attribute__((visibility("hidden")))
-@interface _UIStatusBarItemUpdate : NSObject <NSCopying>
+@interface _UIStatusBarItemUpdate : NSObject
 {
     _Bool _enabilityChanged;
     _Bool _enabled;

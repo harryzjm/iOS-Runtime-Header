@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
 @class CNPhotoPickerDataSource, CNVisualIdentityAvatarStyleEditorViewController, NSString, UISegmentedControl;
 @protocol CNVisualIdentityItemEditorViewControllerDelegate;
@@ -38,6 +38,7 @@ __attribute__((visibility("hidden")))
 - (void)setupSegmentedControl;
 - (void)updateDoneButtonEnabledState;
 - (void)setupBarButtonItems;
+- (void)viewDidAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (id)_newStyleEditorWithItem:(id)arg1;
 - (id)initWithProviderItem:(id)arg1 dataSource:(id)arg2;

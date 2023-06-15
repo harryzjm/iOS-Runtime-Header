@@ -11,13 +11,15 @@
 __attribute__((visibility("hidden")))
 @interface VSAppSettingsViewModelResult : NSObject
 {
-    NSArray *_channelAppViewModels;
+    NSArray *_availableAppViewModels;
     NSArray *_nonChannelAppViewModels;
+    NSArray *_subscribedAppViewModels;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSArray *subscribedAppViewModels; // @synthesize subscribedAppViewModels=_subscribedAppViewModels;
 @property(copy, nonatomic) NSArray *nonChannelAppViewModels; // @synthesize nonChannelAppViewModels=_nonChannelAppViewModels;
-@property(copy, nonatomic) NSArray *channelAppViewModels; // @synthesize channelAppViewModels=_channelAppViewModels;
+@property(copy, nonatomic) NSArray *availableAppViewModels; // @synthesize availableAppViewModels=_availableAppViewModels;
 - (id)init;
 
 @end

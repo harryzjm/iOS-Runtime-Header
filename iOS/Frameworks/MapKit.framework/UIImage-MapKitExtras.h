@@ -11,6 +11,7 @@
 @interface UIImage (MapKitExtras)
 + (id)_mapkit_imageNamed:(id)arg1 compatibleWithTraitCollection:(id)arg2;
 + (id)_mapkit_imageNamed:(id)arg1;
++ (id)_mapkit_systemImageNamed:(id)arg1;
 + (id)_mapkit_liveTransitIndicatorImageUsingDarkMode:(_Bool)arg1;
 + (id)_mapkit_liveTransitIndicatorImageApplyingColorForStatus:(long long)arg1 darkMode:(_Bool)arg2;
 + (id)_mapkit_imageFromVKImage:(id)arg1;
@@ -23,6 +24,7 @@
 - (id)_mapkit_dimmedImage;
 - (id)badgeImageToDisplayWithScreenScale:(double)arg1 nightMode:(_Bool)arg2;
 - (id)imageToDisplayWithScreenScale:(double)arg1 nightMode:(_Bool)arg2;
+- (id)_mapkit_imageWithSymbolConfiguration:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -4,15 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <Email/EMBaseMessageListItemBuilder-Protocol.h>
 #import <Email/EMMutableContentItem-Protocol.h>
-#import <Email/EMMutableMessageListItem-Protocol.h>
 
-@class NSArray, NSUUID;
-@protocol ECEmailAddressConvertible;
+@class NSUUID;
 
-@protocol EMMessageBuilder <EMMutableContentItem, EMMutableMessageListItem>
+@protocol EMMessageBuilder <EMMutableContentItem, EMBaseMessageListItemBuilder>
 @property(copy, nonatomic) NSUUID *documentID;
-@property(copy, nonatomic) NSArray *bccList;
-@property(retain, nonatomic) id <ECEmailAddressConvertible> senderAddress;
 @end
 

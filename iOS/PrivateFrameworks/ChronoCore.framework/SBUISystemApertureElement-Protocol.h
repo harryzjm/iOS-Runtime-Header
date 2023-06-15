@@ -6,34 +6,38 @@
 
 #import <ChronoCore/NSObject-Protocol.h>
 
-@class NSString, NSURL, UIColor, UIView;
+@class BSAction, NSSet, NSString, NSURL, UIColor, UIView;
 @protocol SBUISystemApertureAccessoryView, UIViewControllerTransitionCoordinator;
 
 @protocol SBUISystemApertureElement <NSObject>
-@property(nonatomic, readonly) long long maximumLayoutMode;
-@property(nonatomic, readonly) long long preferredLayoutMode;
-@property(nonatomic, readonly) long long contentRole;
+@property(readonly, nonatomic) long long maximumLayoutMode;
+@property(readonly, nonatomic) long long preferredLayoutMode;
+@property(readonly, nonatomic) long long contentRole;
 @property(nonatomic) long long activeLayoutMode;
 
 @optional
+@property(readonly, nonatomic) _Bool attachedMinimalViewRequiresZeroPadding;
 @property(nonatomic) _Bool canRequestAlertingAssertion;
+@property(readonly, nonatomic) UIView<SBUISystemApertureAccessoryView> *detachedMinimalView;
 @property(nonatomic) unsigned long long minimalViewLayoutAxis;
-@property(nonatomic, readonly) UIColor *keyColor;
-@property(nonatomic, readonly) unsigned long long presentationBehaviors;
-@property(nonatomic, readonly) long long preferredCustomLayout;
-@property(nonatomic, readonly) struct CGSize preferredCustomAspectRatio;
-@property(nonatomic, readonly) unsigned long long statusBarStyleOverridesToSuppress;
-@property(nonatomic, readonly) UIView<SBUISystemApertureAccessoryView> *minimalView;
-@property(nonatomic, readonly) UIView<SBUISystemApertureAccessoryView> *trailingView;
-@property(nonatomic, readonly) UIView<SBUISystemApertureAccessoryView> *leadingView;
-@property(nonatomic, readonly) long long minimumLayoutMode;
-@property(nonatomic, readonly) _Bool preventsAutomaticDismissal;
-@property(nonatomic, readonly) _Bool preventsInteractiveDismissal;
-@property(nonatomic, readonly) NSURL *launchURL;
-@property(nonatomic, readonly) NSString *associatedScenePersistenceIdentifier;
-@property(nonatomic, readonly) NSString *associatedAppBundleIdentifier;
-@property(nonatomic, readonly) NSString *elementIdentifier;
-@property(nonatomic, readonly) double preferredHeightForBottomSafeArea;
+@property(readonly, copy, nonatomic) UIColor *keyColor;
+@property(readonly, nonatomic) unsigned long long presentationBehaviors;
+@property(readonly, nonatomic) long long preferredCustomLayout;
+@property(readonly, nonatomic) struct CGSize preferredCustomAspectRatio;
+@property(readonly, copy, nonatomic) NSSet *backgroundActivitiesToSuppress;
+@property(readonly, nonatomic) unsigned long long statusBarStyleOverridesToSuppress;
+@property(readonly, nonatomic) UIView<SBUISystemApertureAccessoryView> *minimalView;
+@property(readonly, nonatomic) UIView<SBUISystemApertureAccessoryView> *trailingView;
+@property(readonly, nonatomic) UIView<SBUISystemApertureAccessoryView> *leadingView;
+@property(readonly, nonatomic) long long minimumLayoutMode;
+@property(readonly, nonatomic) _Bool preventsAutomaticDismissal;
+@property(readonly, nonatomic) _Bool preventsInteractiveDismissal;
+@property(readonly, nonatomic) BSAction *launchAction;
+@property(readonly, copy, nonatomic) NSURL *launchURL;
+@property(readonly, copy, nonatomic) NSString *associatedScenePersistenceIdentifier;
+@property(readonly, copy, nonatomic) NSString *associatedAppBundleIdentifier;
+@property(readonly, copy, nonatomic) NSString *elementIdentifier;
+@property(readonly, nonatomic) double preferredHeightForBottomSafeArea;
 - (void)viewWillLayoutSubviewsWithTransitionCoordinator:(id <UIViewControllerTransitionCoordinator>)arg1;
 @end
 

@@ -6,10 +6,10 @@
 
 #import <NewsArticles/NSObject-Protocol.h>
 
-@class FCArticle, FCIssue, NUArticleContext, NUArticleHostViewController, NUArticleViewController;
+@class FCArticle, FCIssue, NSHashTable, NUArticleContext, NUArticleHostViewController, NUArticleViewController;
 
 @protocol NUArticleViewControllerFactory <NSObject>
+@property(readonly, nonatomic) NSHashTable *loadingListeners;
 - (NUArticleViewController *)createArticleViewControllerWithArticle:(FCArticle *)arg1 issue:(FCIssue *)arg2 context:(NUArticleContext *)arg3 relativePriority:(long long)arg4 articleHostViewController:(NUArticleHostViewController *)arg5;
-@property(nonatomic, readonly) id loadingListeners;
 @end
 

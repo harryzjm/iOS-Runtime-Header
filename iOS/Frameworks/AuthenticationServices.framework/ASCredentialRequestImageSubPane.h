@@ -10,14 +10,20 @@ __attribute__((visibility("hidden")))
 @interface ASCredentialRequestImageSubPane
 {
     UIImageView *_imageView;
+    long long _imageStyle;
 }
 
-+ (id)_imageViewWithImage:(id)arg1;
++ (id)_systemIconViewWithImage:(id)arg1;
++ (id)_customIconViewWithImage:(id)arg1;
++ (id)_appIconViewWithImage:(id)arg1;
++ (id)_imageViewWithImage:(id)arg1 imageStyle:(long long)arg2;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) long long imageStyle; // @synthesize imageStyle=_imageStyle;
 @property(readonly, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
 - (void)addToStackView:(id)arg1 withCustomSpacingAfter:(double)arg2 context:(id)arg3;
 - (void)setImage:(id)arg1;
 - (id)initWithImage:(id)arg1;
+- (id)initWithImage:(id)arg1 imageStyle:(long long)arg2;
 
 @end
 

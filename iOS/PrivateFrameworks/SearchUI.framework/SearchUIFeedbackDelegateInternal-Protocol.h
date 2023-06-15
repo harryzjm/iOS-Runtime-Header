@@ -6,7 +6,7 @@
 
 #import <SearchUI/SearchUIFeedbackDelegate-Protocol.h>
 
-@class NSString, SFCardSection, SFSearchResult, SearchUICommandEnvironment, SearchUIRowModel;
+@class NSString, SFCardSection, SFSearchResult, SearchUICommandEnvironment, SearchUIRowModel, SearchUISectionModel;
 
 @protocol SearchUIFeedbackDelegateInternal <SearchUIFeedbackDelegate>
 
@@ -15,7 +15,9 @@
 - (void)didUpdateKeyboardFocusToResult:(SFSearchResult *)arg1 cardSection:(SFCardSection *)arg2;
 - (SearchUICommandEnvironment *)searchUICommandEnvironment;
 - (NSString *)queryString;
-- (void)removeRowModel:(SearchUIRowModel *)arg1;
+- (void)removeSectionModel:(SearchUISectionModel *)arg1 completion:(void (^)(_Bool))arg2;
+- (void)removeSectionContainingRowModel:(SearchUIRowModel *)arg1 completion:(void (^)(_Bool))arg2;
+- (void)removeRowModel:(SearchUIRowModel *)arg1 completion:(void (^)(_Bool))arg2;
 - (void)resignTextField;
 @end
 

@@ -9,6 +9,7 @@
 @class NSString, _EMContactsCache;
 
 @interface CNContactStore (EmailContactUtilities)
++ (id)em_authorizedContactStore;
 + (id)log;
 @property(readonly, nonatomic) _EMContactsCache *em_cache;
 - (id)allContactEmailAddressesWithError:(id *)arg1;

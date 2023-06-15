@@ -9,6 +9,6 @@
 @protocol PLAssetsdDemoServiceProtocol <NSObject>
 - (void)hasCompletedMomentAnalysisWithReply:(void (^)(_Bool))arg1;
 - (void)hasCompletedRestorePostProcessingWithReply:(void (^)(_Bool))arg1;
-- (void)cleanupForStoreDemoMode;
+- (void)cleanupForStoreDemoModeByStagingTemplateOrResettingLibrary:(void (^)(_Bool, NSError *))arg1;
 @end
 

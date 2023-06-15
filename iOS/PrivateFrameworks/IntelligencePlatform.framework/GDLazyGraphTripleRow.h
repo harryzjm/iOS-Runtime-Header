@@ -8,7 +8,6 @@
 
 @class GDLazyGraphTripleRowCursor, NSNumber, NSString;
 
-__attribute__((visibility("hidden")))
 @interface GDLazyGraphTripleRow : NSObject
 {
     NSString *_subjectOverride;

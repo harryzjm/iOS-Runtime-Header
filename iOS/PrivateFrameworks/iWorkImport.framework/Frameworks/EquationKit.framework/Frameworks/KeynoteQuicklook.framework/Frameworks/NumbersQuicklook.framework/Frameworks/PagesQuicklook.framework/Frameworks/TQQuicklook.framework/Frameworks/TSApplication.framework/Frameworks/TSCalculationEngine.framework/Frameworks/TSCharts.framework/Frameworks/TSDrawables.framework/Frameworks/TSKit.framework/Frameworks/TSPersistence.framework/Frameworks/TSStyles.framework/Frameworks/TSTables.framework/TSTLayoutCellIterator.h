@@ -27,6 +27,7 @@
     struct TSUCellRect _layoutRange;
 }
 
++ (_Bool)isNeededWithLayoutEngine:(id)arg1 andRange:(struct TSUCellRect)arg2;
 - (void).cxx_destruct;
 @property(retain, nonatomic) TSTMutableCellIteratorData *layoutCellData; // @synthesize layoutCellData=_layoutCellData;
 @property(nonatomic) _Bool isDynamicallyRemovingText; // @synthesize isDynamicallyRemovingText=_isDynamicallyRemovingText;

@@ -4,11 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UITextView.h>
+#import <UIKitCore/UITextView.h>
 
 @class NSArray, PKSelectionInteraction, PKTiledView;
 
 @interface UITextView (IC)
+- (void)ic_invalidateLayoutForRange:(id)arg1;
+- (void)ic_scrollRectToVisible:(struct CGRect)arg1 animated:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)ic_scrollRangeToVisible:(struct _NSRange)arg1 animated:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 @property(readonly, nonatomic) struct CGPoint ic_textContainerOrigin;
 @property(readonly, nonatomic) PKSelectionInteraction *ic_pkSelectionInteraction;
 @property(readonly, nonatomic) PKTiledView *ic_pkTiledView;

@@ -6,8 +6,8 @@
 
 #import <objc/NSObject.h>
 
-@class NSCollectionLayoutSection, NSIndexSet, NSString, UITraitCollection, _UICollectionLayoutAuxillaryItemSolver, _UICollectionLayoutSolutionState, _UICollectionLayoutSupplementaryEnroller;
-@protocol NSCollectionLayoutContainer, _UICollectionPreferredSizes;
+@class NSCollectionLayoutSection, NSIndexSet, NSString, UITraitCollection, _UICollectionLayoutAuxillaryItemSolver, _UICollectionLayoutSolutionState, _UICollectionLayoutSupplementaryEnroller, _UICollectionPreferredSizes;
+@protocol NSCollectionLayoutContainer;
 
 __attribute__((visibility("hidden")))
 @interface _UICollectionLayoutSectionEstimatedSolver : NSObject
@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
     UITraitCollection *_traitCollection;
     unsigned long long _layoutAxis;
     long long _frameCount;
-    id <_UICollectionPreferredSizes> _preferredSizes;
+    _UICollectionPreferredSizes *_preferredSizes;
     NSString *_errorDescription;
     unsigned long long _containerSizeDependentAxes;
     _UICollectionLayoutAuxillaryItemSolver *_sectionSupplementarySolution;
@@ -62,14 +62,14 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)_adjustContentFrameForLastPartialSolutionIfNeededForContentFrame:(struct CGRect)arg1 bookmarks:(id)arg2;
 - (void)_updateSolutionAuxillaryRangeIndexerKindDict:(id)arg1 fromBookmark:(id)arg2;
 - (id)_sectionContainer;
-- (id)_indexesOfBookmarksAffectedByResolveItems:(id)arg1;
+- (struct _NSRange)_rangeOfBookmarksAffectedByResolveItems:(id)arg1;
 - (id)_solveWithParameters:(id)arg1;
 - (double)_dimensionForRootGroupAlongAxis:(unsigned long long)arg1;
 - (void)_configureInitialOrthogonalPrefetchingUnitVector;
-- (void)_setOrthogonalOffset:(struct CGPoint)arg1;
+- (struct _NSRange)preferredSizeGroupingRangeForItemAtIndex:(long long)arg1;
 @property(readonly, nonatomic) NSIndexSet *pinnedSupplementaryIndexes;
-@property(readonly, nonatomic) struct CGRect effectiveContentFrame;
-@property(readonly, nonatomic) struct CGSize contentSize;
+@property(readonly, nonatomic) struct CGRect primaryContentFrame;
+@property(readonly, nonatomic) struct CGRect contentFrameIncludingAuxiliaries;
 - (id)visualDescription;
 - (id)sectionSupplementaryFrameWithKind:(id)arg1 index:(long long)arg2;
 - (long long)sectionSupplementaryKindIndexForEnrollmentIdentifier:(id)arg1;

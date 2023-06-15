@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIFont.h>
+#import <UIKitCore/UIFont.h>
 
 @interface UIFont (IC)
 + (id)ic_preferredFontForStyle:(unsigned int)arg1 contentSizeCategory:(id)arg2 isForPrint:(_Bool)arg3;
@@ -53,6 +53,8 @@
 + (id)ic_preferredFontForHeadingText;
 + (id)ic_preferredFontForTitleText;
 + (id)ic_preferredSingleLineAFontForTextStyle:(id)arg1;
+- (id)ic_fontWithRoundedDesign;
+- (id)ic_fontWithSymbolicBoldTrait;
 - (id)ic_fontByAddingSymbolicTraits:(unsigned int)arg1;
 - (_Bool)ic_hasSymbolicTrait:(unsigned int)arg1;
 - (_Bool)ic_hasSymbolicItalicTrait;

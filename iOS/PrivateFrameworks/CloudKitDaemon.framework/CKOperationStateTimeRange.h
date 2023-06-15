@@ -17,7 +17,7 @@
 
 - (void).cxx_destruct;
 @property(readonly) double duration; // @synthesize duration=_duration;
-@property(retain) NSDate *startDate; // @synthesize startDate=_startDate;
+@property(readonly) NSDate *startDate; // @synthesize startDate=_startDate;
 @property(readonly) unsigned long long operationState; // @synthesize operationState=_operationState;
 @property(readonly, copy) NSString *description;
 - (id)CKPropertiesDescription;

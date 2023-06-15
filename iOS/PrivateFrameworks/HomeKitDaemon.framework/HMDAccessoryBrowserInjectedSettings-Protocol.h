@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HAPAccessoryServerBrowser, HAPAccessoryServerBrowserBTLE, HAPAccessoryServerBrowserIP, HMDAuthServer, HMDHAP2Storage, NSObject;
+@class HAPAccessoryServerBrowser, HAPAccessoryServerBrowserBTLE, HAPAccessoryServerBrowserIP, HMDAuthServer, HMDHAP2Storage, HMMTRAccessoryServerBrowser, NSObject;
 @protocol HMDAuthServerDelegate, OS_dispatch_queue;
 
 @protocol HMDAccessoryBrowserInjectedSettings
 - (HMDAuthServer *)createAuthServerWithDelegate:(id <HMDAuthServerDelegate>)arg1;
+- (HMMTRAccessoryServerBrowser *)createCHIPAccessoryBrowser;
 - (HAPAccessoryServerBrowser *)createHap2AccessoryBrowserWithStorage:(HMDHAP2Storage *)arg1;
 - (HAPAccessoryServerBrowserBTLE *)createBtleAccessoryBrowser;
 - (HAPAccessoryServerBrowserIP *)createIpAccessoryBrowser;

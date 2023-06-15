@@ -40,9 +40,11 @@
     NSArray *_keyCommands;
     unsigned long long _edgesForExtendedLayout;
     NSArray *_childControllerCreationSelectorNames;
+    NSString *_interactionActivityTrackingBaseName;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *interactionActivityTrackingBaseName; // @synthesize interactionActivityTrackingBaseName=_interactionActivityTrackingBaseName;
 @property(nonatomic) _Bool ibRequiresClassSwapper; // @synthesize ibRequiresClassSwapper=_ibRequiresClassSwapper;
 @property(copy, nonatomic) NSArray *childControllerCreationSelectorNames; // @synthesize childControllerCreationSelectorNames=_childControllerCreationSelectorNames;
 @property(nonatomic) _Bool automaticallyAdjustsScrollViewInsets; // @synthesize automaticallyAdjustsScrollViewInsets=_automaticallyAdjustsScrollViewInsets;

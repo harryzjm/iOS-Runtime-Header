@@ -10,7 +10,7 @@ __attribute__((visibility("hidden")))
 @interface MediaControlsActiveEndpointController
 {
     _Bool _isDeferred;
-    long long _routeType;
+    long long _endpointType;
     NSString *_activeRouteUID;
     MPCFuture *_deferredPlayerPathFuture;
     id _deferredPlayerPathInvalidationToken;
@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) id deferredPlayerPathInvalidationToken; // @synthesize deferredPlayerPathInvalidationToken=_deferredPlayerPathInvalidationToken;
 @property(retain, nonatomic) MPCFuture *deferredPlayerPathFuture; // @synthesize deferredPlayerPathFuture=_deferredPlayerPathFuture;
 @property(readonly, nonatomic) NSString *activeRouteUID; // @synthesize activeRouteUID=_activeRouteUID;
-@property(nonatomic) long long routeType; // @synthesize routeType=_routeType;
+@property(nonatomic) long long endpointType; // @synthesize endpointType=_endpointType;
 - (void)_activeSystemRouteDidChangeWithChangeType:(long long)arg1;
 - (void)_fetchActiveSystemRoute:(CDUnknownBlockType)arg1;
 - (void)_maybeUpdateActiveSystemRoute;
@@ -41,7 +41,7 @@ __attribute__((visibility("hidden")))
 - (void)routingControllerAvailableRoutesDidChange:(id)arg1;
 - (void)setDeviceUnlocked:(_Bool)arg1;
 - (void)setOnScreen:(_Bool)arg1;
-- (id)initWithActiveRouteType:(long long)arg1;
+- (id)initWithActiveEndpointType:(long long)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

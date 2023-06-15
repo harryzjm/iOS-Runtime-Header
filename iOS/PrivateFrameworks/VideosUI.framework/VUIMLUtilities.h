@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (long long)gridStyleForCSSStyle:(id)arg1;
++ (long long)gridStyleConsideringAX:(long long)arg1;
 
 @end
 

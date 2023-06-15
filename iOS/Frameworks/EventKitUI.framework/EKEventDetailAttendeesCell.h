@@ -19,12 +19,14 @@ __attribute__((visibility("hidden")))
     EKEventDetailAttendeesListView *_attendeesListView;
     NSArray *_cachedAttendeesWithoutOrganizerAndLocations;
     NSObject<OS_dispatch_queue> *_sortAttendeesQueue;
+    _Bool _loadingAttendees;
     UIViewController *_viewController;
     NSObject<EKEventDetailAttendeeCellDelegate> *_attendeeCellDelegate;
 }
 
 + (_Bool)requiresConstraintBasedLayout;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool loadingAttendees; // @synthesize loadingAttendees=_loadingAttendees;
 @property __weak NSObject<EKEventDetailAttendeeCellDelegate> *attendeeCellDelegate; // @synthesize attendeeCellDelegate=_attendeeCellDelegate;
 @property __weak UIViewController *viewController; // @synthesize viewController=_viewController;
 - (void)layoutForWidth:(double)arg1 position:(int)arg2;

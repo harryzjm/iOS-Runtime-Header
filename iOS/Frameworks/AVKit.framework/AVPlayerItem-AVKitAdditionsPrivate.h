@@ -6,9 +6,11 @@
 
 #import <AVFoundation/AVPlayerItem.h>
 
-@class AVEditBehaviorContext, AVMusicAppBehaviorContext, NSString;
+@class AVEditBehaviorContext, AVMediaContentRating, AVMusicAppBehaviorContext, NSAttributedString, NSString;
 
 @interface AVPlayerItem (AVKitAdditionsPrivate)
+@property(retain, nonatomic) NSAttributedString *contentSubtitle; // @dynamic contentSubtitle;
+@property(retain, nonatomic) NSAttributedString *contentTitle; // @dynamic contentTitle;
 - (id)avkit_data;
 - (id)avkit_dataOrNil;
 - (void)setExternalMetadata:(id)arg1;
@@ -27,5 +29,6 @@
 - (void)avkit_setCurrentEditBehaviorContext:(id)arg1;
 @property(readonly, nonatomic) __weak AVEditBehaviorContext *avkit_currentEditBehaviorContext;
 @property(readonly, nonatomic) NSString *avkitACMIdentifier;
+@property(readonly, nonatomic) AVMediaContentRating *mediaContentRating;
 @end
 

@@ -16,9 +16,11 @@ __attribute__((visibility("hidden")))
     NSString *_symbolName;
 }
 
++ (id)defaultResource;
++ (id)graphicSymbolResourceWithConfiguration:(id)arg1 symbolName:(id)arg2 url:(id)arg3;
 + (id)graphicSymbolResourceWithRecipe:(id)arg1 url:(id)arg2;
 - (void).cxx_destruct;
-@property(readonly) NSString *symbolName; // @synthesize symbolName=_symbolName;
+@property(retain) NSString *symbolName; // @synthesize symbolName=_symbolName;
 @property(readonly) NSURL *url; // @synthesize url=_url;
 @property(retain) IFGraphicSymbolDescriptor *descriptor; // @synthesize descriptor=_descriptor;
 - (void)updateDescriptorWithImageDescriptor:(id)arg1;

@@ -13,7 +13,6 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)fetchRequest;
 
 // Remaining properties
 @property(nonatomic) double canonicalHeight; // @dynamic canonicalHeight;
@@ -21,6 +20,5 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) VUIImageDataManagedObject *imageData; // @dynamic imageData;
 @property(nonatomic) long long imageType; // @dynamic imageType;
 @property(copy, nonatomic) NSString *urlFormat; // @dynamic urlFormat;
-
 @end
 

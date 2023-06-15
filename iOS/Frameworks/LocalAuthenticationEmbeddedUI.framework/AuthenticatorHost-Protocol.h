@@ -10,6 +10,6 @@
 
 @protocol AuthenticatorHost <NSObject>
 - (void)authenticatorServiceDidObtainAuthenticationWithReply:(void (^)(NSError *))arg1;
-- (void)authenticatorServiceDidFinishWithError:(NSError *)arg1;
+- (void)authenticatorServiceDidFinishWithError:(NSError *)arg1 reply:(void (^)(void))arg2;
 @end
 

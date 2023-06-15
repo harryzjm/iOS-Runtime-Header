@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *dataSource;
     MISSING_TYPE *delegate;
     MISSING_TYPE *viewModel;
+    MISSING_TYPE *shouldDisableImplicitAnimations;
     MISSING_TYPE *axBalloonContentView;
     MISSING_TYPE *mapAnnotation;
     MISSING_TYPE *$__lazy_storage_$_locationLabel;

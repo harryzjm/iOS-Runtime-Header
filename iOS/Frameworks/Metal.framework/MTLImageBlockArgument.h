@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     unsigned int _aliasImplicitImageBlockRenderTarget;
 }
 
+- (_Bool)isEqual:(id)arg1;
 - (void)setStructType:(id)arg1;
 - (unsigned long long)aliasImplicitImageBlockRenderTarget;
 - (_Bool)aliasImplicitImageBlock;

@@ -13,6 +13,7 @@
     MISSING_TYPE *titleViewLayoutAttributesFactory;
     MISSING_TYPE *footerViewLayoutAttributesFactory;
     MISSING_TYPE *tagViewLayoutAttributesFactory;
+    MISSING_TYPE *buttonViewLayoutAttributesFactory;
 }
 
 @end

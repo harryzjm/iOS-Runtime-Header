@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 @class NSArray, NSMapTable, _UIFocusGroup;
 @protocol UICoordinateSpace;
 
 __attribute__((visibility("hidden")))
-@interface _UIFocusGroupMap : NSObject <NSCopying>
+@interface _UIFocusGroupMap : NSObject
 {
     NSMapTable *_environmentToGroupMap;
     NSMapTable *_identifierToGroupMap;

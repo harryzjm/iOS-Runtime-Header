@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class VNProcessingDevice;
+@class NSDictionary, NSMutableDictionary, VNProcessingDevice;
 
 __attribute__((visibility("hidden")))
 @interface VNRequestConfiguration : NSObject
 {
+    NSMutableDictionary *_computeStageDeviceAssignments;
     _Bool _preferBackgroundProcessing;
     Class _requestClass;
     unsigned long long _resolvedRevision;
@@ -28,14 +29,16 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned long long modelFileBackingStore; // @synthesize modelFileBackingStore=_modelFileBackingStore;
 @property(nonatomic) _Bool preferBackgroundProcessing; // @synthesize preferBackgroundProcessing=_preferBackgroundProcessing;
 @property(nonatomic) unsigned long long metalContextPriority; // @synthesize metalContextPriority=_metalContextPriority;
-@property(retain, nonatomic) VNProcessingDevice *processingDevice; // @synthesize processingDevice=_processingDevice;
 @property(nonatomic) unsigned long long detectionLevel; // @synthesize detectionLevel=_detectionLevel;
 @property(nonatomic) unsigned long long resolvedRevision; // @synthesize resolvedRevision=_resolvedRevision;
 @property(readonly, nonatomic) Class requestClass; // @synthesize requestClass=_requestClass;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
-@property(readonly, copy, nonatomic) VNProcessingDevice *resolvedProcessingDevice;
-- (id)_allPropertyNames;
+@property(readonly, copy, nonatomic) NSDictionary *resolvedComputeStageDeviceAssignments;
+@property(copy, nonatomic) NSDictionary *computeStageDeviceAssignments;
+- (void)setComputeDevice:(id)arg1 forComputeStage:(id)arg2;
+- (id)computeDeviceForComputeStage:(id)arg1;
+@property(copy, nonatomic) VNProcessingDevice *processingDevice; // @synthesize processingDevice=_processingDevice;
 - (id)initWithRequestClass:(Class)arg1;
 
 @end

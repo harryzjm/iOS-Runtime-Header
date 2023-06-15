@@ -7,6 +7,7 @@
 @class NSArray, NSString;
 
 @protocol EMContentRequestOptionsBuilder
+@property(nonatomic) _Bool includeCachedMetadataJSON;
 @property(copy, nonatomic) NSArray *requestedHeaderKeys;
 @property(nonatomic) _Bool requestAllHeaders;
 @property(nonatomic) long long includeSuggestionItems;

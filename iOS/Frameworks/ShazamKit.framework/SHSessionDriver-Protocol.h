@@ -11,7 +11,7 @@
 
 @protocol SHSessionDriver <SHMatcherDelegate>
 @property(readonly, nonatomic) NSUUID *matchingSignatureID;
-@property(nonatomic) __weak id <SHSessionDriverDelegate> sessionDelegate;
+@property(nonatomic) __weak id <SHSessionDriverDelegate> sessionDriverDelegate;
 - (void)flow:(AVAudioPCMBuffer *)arg1 time:(AVAudioTime *)arg2;
 @end
 

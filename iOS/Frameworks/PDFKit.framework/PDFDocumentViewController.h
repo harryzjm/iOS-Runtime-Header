@@ -6,10 +6,12 @@
 
 #import <UIKit/UIPageViewController.h>
 
+#import <PDFKit/UIScrollViewDelegate-Protocol.h>
+
 @class NSString, PDFDocumentViewControllerPrivate;
 
 __attribute__((visibility("hidden")))
-@interface PDFDocumentViewController : UIPageViewController
+@interface PDFDocumentViewController : UIPageViewController <UIScrollViewDelegate>
 {
     PDFDocumentViewControllerPrivate *_private;
 }

@@ -6,13 +6,23 @@
 
 #import <Messages/NSObject-Protocol.h>
 
-@class MSMessage, NSDictionary, NSNumber, NSString, NSValue, _MSConversationState, _MSPresentationState;
+@class MSMessage, NSArray, NSDictionary, NSNumber, NSString, NSUUID, NSValue, _MSConversationState, _MSPresentationState;
 
 @protocol _MSMessageComposeExtensionProtocol <NSObject>
+- (void)_animatedStickerCreationProgressChanged:(NSDictionary *)arg1 progress:(double)arg2;
+- (void)_prepareForAddStickerFromSubjectLift;
+- (void)_didRemoveStickerPreview;
+- (void)_addStickerAnimationDidFinishWithCompletion:(void (^)(void))arg1;
+- (void)_addStickerToStoreWithRepresentations:(NSArray *)arg1 sourceRect:(struct CGRect)arg2 completion:(void (^)(NSArray *, NSError *))arg3;
+- (void)_addStickerToStoreWithRepresentations:(NSArray *)arg1 completionWithStickerIDs:(void (^)(struct CGRect, NSArray *, NSError *))arg2;
+- (void)_addStickerToStoreWithRepresentations:(NSArray *)arg1 completionHandler:(void (^)(struct CGRect, NSError *))arg2;
+- (void)_setPluginIdentifierToShow:(NSString *)arg1 completion:(void (^)(void))arg2;
 - (void)_volumeButtonPressed:(_Bool)arg1;
 - (void)_didRemoveAssetArchiveWithIdentifier:(NSString *)arg1;
 - (void)_prepareForPresentationWithCompletionHandler:(void (^)(_Bool))arg1;
 - (void)_handleTextInputPayload:(NSDictionary *)arg1 withPayloadID:(NSString *)arg2 completion:(void (^)(_Bool))arg3;
+- (void)_requestPresentationWithStickerType:(NSString *)arg1 identifier:(NSUUID *)arg2;
+- (void)_requestStickerExtensionMetadataDictionary:(void (^)(NSDictionary *))arg1;
 - (void)endDisablingUserInteraction;
 - (void)beginDisablingUserInteraction;
 - (void)_hostDidBeginDeferredTeardown;
@@ -20,6 +30,7 @@
 - (void)_didCancelSendingMessage:(MSMessage *)arg1 conversationState:(_MSConversationState *)arg2;
 - (void)_didStartSendingMessage:(MSMessage *)arg1 conversationState:(_MSConversationState *)arg2;
 - (void)_didReceiveMessage:(MSMessage *)arg1 conversationState:(_MSConversationState *)arg2;
+- (void)_didUpdateMessage:(MSMessage *)arg1 conversationState:(_MSConversationState *)arg2;
 - (void)_presentationDidChangeToPresentationState:(_MSPresentationState *)arg1;
 - (void)_presentationWillChangeToPresentationState:(_MSPresentationState *)arg1;
 - (void)_conversationDidChangeWithConversationState:(_MSConversationState *)arg1;

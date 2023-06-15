@@ -25,6 +25,7 @@
 - (void)fc_splitArrayWithTest:(CDUnknownBlockType)arg1 result:(CDUnknownBlockType)arg2;
 - (struct _NSRange)fc_expandIndex:(unsigned long long)arg1 toIncludeAdjacentObjectsPassingTest:(CDUnknownBlockType)arg2;
 - (id)fc_uniqueByValueBlock:(CDUnknownBlockType)arg1;
+- (unsigned long long)fc_distanceFromArray:(id)arg1;
 - (unsigned long long)fc_uniqueCount;
 - (id)fc_arrayByReversingObjects;
 - (double)fc_reduceArrayWithDouble:(double)arg1 block:(CDUnknownBlockType)arg2;
@@ -62,6 +63,7 @@
 - (id)fc_arrayByRemovingFirstObject;
 - (id)fc_arrayByReplacingObjectAtIndex:(unsigned long long)arg1 withObject:(id)arg2;
 - (id)fc_arrayByReplacingObjectIdenticalTo:(id)arg1 withObject:(id)arg2;
+- (id)fc_arrayByRemovingKeysInDictionary:(id)arg1;
 - (id)fc_arrayByRemovingObjectsInArray:(id)arg1;
 - (id)fc_arrayByRemovingObjectIdenticalTo:(id)arg1;
 - (id)fc_arrayByRemovingObject:(id)arg1;

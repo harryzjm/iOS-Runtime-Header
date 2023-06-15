@@ -8,6 +8,8 @@
 @protocol WFPropertyListObject;
 
 @protocol WFVariableDataSource
+- (void)setEnvironmentValue:(id)arg1 forKey:(NSString *)arg2;
+- (id)environmentValueForKey:(NSString *)arg1;
 - (void)requestAccessToFileAtURLs:(NSArray *)arg1 completionHandler:(void (^)(_Bool, NSError *))arg2;
 - (void)requestAccessToFileAtLocations:(NSArray *)arg1 completionHandler:(void (^)(_Bool, NSError *))arg2;
 - (void)captureFileRepresentation:(WFFileRepresentation *)arg1;

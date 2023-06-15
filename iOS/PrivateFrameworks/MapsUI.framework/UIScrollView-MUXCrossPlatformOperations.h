@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIScrollView.h>
+#import <UIKitCore/UIScrollView.h>
 
 @interface UIScrollView (MUXCrossPlatformOperations)
 - (void)_mapsui_scrollToContentOffset:(struct CGPoint)arg1 animated:(_Bool)arg2;

@@ -10,7 +10,7 @@
 }
 
 + (id)bufferWithCapacityDimension:(const void *)arg1;
-+ (id)bufferWithCapacitySize:(const void *)arg1 components:(unsigned long long)arg2;
++ (id)bufferWithCapacitySize:(void *)arg1 components:(unsigned long long)arg2;
 - (id).cxx_construct;
 @property(readonly, nonatomic) struct DataBuffer2DDimension dimension; // @synthesize dimension=_dimension;
 - (struct DataBufferLevelData)dataAtLevel:(unsigned long long)arg1;

@@ -29,20 +29,19 @@ __attribute__((visibility("hidden")))
     struct __CVBuffer *_lastReceivedPixelBuffer;
     struct __CVBuffer *_lastReceivedDepthBuffer;
     int _thermalPressureLevel;
+    struct opaqueVCRemoteImageQueue *_senderQueue;
 }
 
 + (id)sharedManager;
+@property(readonly, nonatomic) struct opaqueVCRemoteImageQueue *senderQueue; // @synthesize senderQueue=_senderQueue;
 @property(retain) NSMutableArray *effectsArray; // @synthesize effectsArray=_effectsArray;
 - (void)effectsRegistered:(_Bool)arg1;
 - (void)encodeProcessedPixelBuffer:(struct __CVBuffer *)arg1 time:(CDStruct_1b6d18a9)arg2 imageData:(id)arg3 processTime:(id)arg4;
-- (_Bool)checkEffectsHealth;
 - (void)resetEffectsLogging;
-- (void)capturedPixelBuffer:(struct __CVBuffer *)arg1 depthBuffer:(struct __CVBuffer *)arg2 time:(CDStruct_1b6d18a9)arg3 imageData:(id)arg4 toClient:(id)arg5;
-- (void)renderPixelBuffer:(struct __CVBuffer *)arg1 time:(CDStruct_1b6d18a9)arg2;
-- (void)capturedPixelBuffer:(struct __CVBuffer *)arg1 depthDataPixelBuffer:(struct __CVBuffer *)arg2 time:(CDStruct_1b6d18a9)arg3 imageData:(id)arg4;
+- (void)flushRemoteQueue;
+- (void)tearDownRemoteQueues;
 - (void)updateThermalLevel:(int)arg1;
 - (_Bool)isFaceMeshTrackingEnabled;
-- (_Bool)isEffectsOn;
 - (void)registerBlocksForService;
 @property(nonatomic) id <VCEffectsManagerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)releaseAllocators;

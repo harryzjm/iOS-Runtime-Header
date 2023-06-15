@@ -10,8 +10,9 @@
 
 @interface XCUIAccessibilityAuditIssue : NSObject
 {
-    NSString *_longDescription;
-    NSString *_shortDescription;
+    NSString *_compactDescription;
+    NSString *_detailedDescription;
+    unsigned long long _auditType;
     XCAccessibilityElement *_axElement;
     XCUIApplication *_application;
 }
@@ -19,10 +20,12 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) XCUIApplication *application; // @synthesize application=_application;
 @property(readonly, nonatomic) XCAccessibilityElement *axElement; // @synthesize axElement=_axElement;
-@property(copy, nonatomic) NSString *shortDescription; // @synthesize shortDescription=_shortDescription;
-@property(copy, nonatomic) NSString *longDescription; // @synthesize longDescription=_longDescription;
+@property(readonly, nonatomic) unsigned long long auditType; // @synthesize auditType=_auditType;
+@property(copy, nonatomic) NSString *detailedDescription; // @synthesize detailedDescription=_detailedDescription;
+@property(copy, nonatomic) NSString *compactDescription; // @synthesize compactDescription=_compactDescription;
+- (unsigned long long)_xcuiAuditTypeForXCAXAuditType:(id)arg1;
 - (id)description;
-@property(readonly, nonatomic) XCUIElement *element; // @dynamic element;
+@property(readonly, nonatomic) XCUIElement *element;
 - (id)initWithResult:(id)arg1 forApplication:(id)arg2;
 
 @end

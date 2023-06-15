@@ -6,10 +6,10 @@
 
 #import <Foundation/NSFileCoordinationDebugInfoXPCInterface-Protocol.h>
 
-@class NSFileProviderPresenterInfo, NSFileProvidingInfo, NSString, NSURL;
+@class NSFileProviderMovingInfo, NSFileProviderPresenterInfo, NSFileProvidingInfo, NSString, NSURL;
 
 @protocol NSFileProviderXPCInterface <NSFileCoordinationDebugInfoXPCInterface>
-- (void)movingItemAtURL:(NSURL *)arg1 requiresProvidingWithDestinationURL:(NSURL *)arg2 completionHandler:(void (^)(_Bool))arg3;
+- (void)movingItemAtURL:(NSURL *)arg1 withInfo:(NSFileProviderMovingInfo *)arg2 fileName:(NSString *)arg3 completionHandler:(void (^)(NSFileProviderMovingResponse *))arg4;
 - (oneway void)observeEndOfWriteAtURL:(NSURL *)arg1 forClaimWithID:(NSString *)arg2 fromProcessWithIdentifier:(int)arg3;
 - (oneway void)observePresentationChangeOfKind:(NSString *)arg1 forPresenterOfURL:(NSURL *)arg2 withInfo:(NSFileProviderPresenterInfo *)arg3;
 - (void)providePhysicalItemForURL:(NSURL *)arg1 completionHandler:(void (^)(NSURL *))arg2;

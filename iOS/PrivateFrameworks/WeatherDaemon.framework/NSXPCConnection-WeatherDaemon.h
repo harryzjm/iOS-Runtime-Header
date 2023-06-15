@@ -9,6 +9,7 @@
 @class NSString;
 
 @interface NSXPCConnection (WeatherDaemon)
+@property(readonly, nonatomic) NSString *wd_codesigningIdentifier;
 @property(readonly, nonatomic) NSString *wd_bundleIdentifier;
 - (id)wd_valueForEntitlement:(id)arg1;
 @end

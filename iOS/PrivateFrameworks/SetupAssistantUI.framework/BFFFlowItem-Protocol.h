@@ -10,6 +10,7 @@
 @protocol BFFFlowItemDelegate, BYEnvironment;
 
 @protocol BFFFlowItem <NSObject>
++ (unsigned long long)applicableDispositions;
 + (NSString *)cloudConfigSkipKey;
 - (void)setDelegate:(id <BFFFlowItemDelegate>)arg1;
 - (id)init;
@@ -22,7 +23,6 @@
 + (void)skippedByCloudConfigWithEnvironment:(id <BYEnvironment>)arg1;
 + (void)skippedByCloudConfig;
 + (_Bool)controllerAffectedByTapFreeSetup;
-+ (NSString *)internalSkipKey;
 - (void)flowItemDidAppear:(_Bool)arg1;
 - (NSString *)displayLanguage;
 - (_Bool)shouldStopInactivityTimer;
@@ -45,6 +45,5 @@
 - (_Bool)shouldSuppressExtendedInitializationActivityIndicator;
 - (void)performExtendedInitializationWithCompletion:(void (^)(_Bool))arg1;
 - (_Bool)controllerNeedsToRun;
-- (void)didReceiveInternalSkipInfo;
 @end
 

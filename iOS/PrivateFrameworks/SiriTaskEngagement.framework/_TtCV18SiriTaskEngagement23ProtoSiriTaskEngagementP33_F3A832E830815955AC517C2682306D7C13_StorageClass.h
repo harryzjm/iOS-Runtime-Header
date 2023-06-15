@@ -17,6 +17,9 @@
     MISSING_TYPE *_followupTimeWindowInMs;
     MISSING_TYPE *_followupUserInitatedEngagements;
     MISSING_TYPE *_nextTaskID;
+    MISSING_TYPE *_previousTaskID;
+    MISSING_TYPE *_engagementType;
+    MISSING_TYPE *_domainType;
 }
 
 @end

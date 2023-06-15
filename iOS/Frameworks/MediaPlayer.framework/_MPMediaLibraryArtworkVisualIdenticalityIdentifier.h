@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSString *fetchableArtworkToken; // @synthesize fetchableArtworkToken=_fetchableArtworkToken;
 @property(readonly, nonatomic) NSString *availableArtworkToken; // @synthesize availableArtworkToken=_availableArtworkToken;
 @property(readonly, nonatomic) long long artworkType; // @synthesize artworkType=_artworkType;
+- (id)colorToHex:(id)arg1;
 - (id)stringRepresentation;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;

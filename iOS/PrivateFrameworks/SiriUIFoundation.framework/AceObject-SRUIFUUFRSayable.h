@@ -9,6 +9,7 @@
 @interface AceObject (SRUIFUUFRSayable)
 - (id)sruif__uufrSaid;
 - (id)_uufrShownRequestedByInstrumentationManager:(id)arg1;
+- (long long)sruif_usefulUserResultType;
 - (id)sruif_insertionContext;
 - (_Bool)sruif_waitsForConfirmation;
 - (_Bool)sruif_isUserUtterance;

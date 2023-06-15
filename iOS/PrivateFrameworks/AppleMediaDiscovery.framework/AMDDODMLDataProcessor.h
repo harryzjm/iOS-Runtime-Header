@@ -38,6 +38,7 @@ __attribute__((visibility("hidden")))
 - (id)ifStatement:(id)arg1 error:(id *)arg2 errorDomain:(id)arg3;
 - (id)hashAdamIdsToIndices:(id)arg1 error:(id *)arg2 errorDomain:(id)arg3;
 - (id)hashFromCoreDictionary:(id)arg1 error:(id *)arg2 errorDomain:(id)arg3;
+- (id)getCurrentTime:(id)arg1 error:(id *)arg2 errorDomain:(id)arg3;
 - (id)filterArrayOnNumber:(id)arg1 error:(id *)arg2 errorDomain:(id)arg3;
 - (id)constantValueMathFunction:(id)arg1 error:(id *)arg2 errorDomain:(id)arg3;
 - (id)downSampleData:(id)arg1 error:(id *)arg2 errorDomain:(id)arg3;

@@ -6,18 +6,16 @@
 
 #import <AVConference/NSObject-Protocol.h>
 
-@class NSString, VideoAttributes;
+@class NSString;
 
 @protocol VCRemoteVideoManagerDelegate <NSObject>
+- (void)networkQualityDidDegrade:(_Bool)arg1 isLocalNetworkQualityDegraded:(_Bool)arg2 streamToken:(long long)arg3;
 - (void)connectionDidChangeWithLocalInterfaceType:(NSString *)arg1 remoteInterfaceType:(NSString *)arg2 streamToken:(long long)arg3;
 - (void)releaseQueueForStreamToken:(long long)arg1;
 - (void)remoteVideoDidSuspend:(_Bool)arg1 streamToken:(long long)arg2;
 - (void)remoteVideoDidDegrade:(_Bool)arg1 streamToken:(long long)arg2;
 - (void)remoteMediaDidStall:(_Bool)arg1 streamToken:(long long)arg2;
 - (void)remoteVideoDidPause:(_Bool)arg1 streamToken:(long long)arg2;
-- (void)remoteVideoAttributesDidChange:(VideoAttributes *)arg1 streamToken:(long long)arg2;
-- (void)remoteScreenAttributesDidChange:(VideoAttributes *)arg1 streamToken:(long long)arg2;
-- (void)didReceiveFirstRemoteFrameForStreamToken:(long long)arg1;
 
 @optional
 - (void)remoteVideoServerDidDie;

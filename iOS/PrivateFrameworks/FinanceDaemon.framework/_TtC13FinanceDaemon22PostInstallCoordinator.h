@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *$defaultActor;
     MISSING_TYPE *store;
+    MISSING_TYPE *taskSource;
     MISSING_TYPE *isPerformingPostInstallTasks;
 }
 

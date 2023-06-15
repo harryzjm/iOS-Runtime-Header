@@ -10,6 +10,7 @@
 - (void)vk_addKey:(id)arg1 forNonNilObject:(id)arg2;
 - (void)vk_setNonNilObject:(id)arg1 forNonNilKey:(id)arg2;
 - (void)vk_setNonNilObject:(id)arg1 forKey:(id)arg2;
+- (void)vk_addEntriesFromNonNilDictionary:(id)arg1;
 - (void)vk_removeObjectForNonNilKey:(id)arg1;
 @end
 

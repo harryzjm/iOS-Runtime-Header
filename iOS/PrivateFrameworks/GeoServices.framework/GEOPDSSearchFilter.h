@@ -6,7 +6,7 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-@class GEOPDPoiIconCategoryFilter, GEOPDSBrandFilter, GEOPDSCategoryFilter, GEOPDSSearchVenueFilter, PBDataReader, PBUnknownFields;
+@class GEOPDPoiIconCategoryFilter, GEOPDSBrandFilter, GEOPDSCategoryFilter, GEOPDSImplicitQueryCategoryFilter, GEOPDSSearchVenueFilter, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDSSearchFilter : PBCodable
@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     PBUnknownFields *_unknownFields;
     GEOPDSBrandFilter *_brandFilter;
     GEOPDSCategoryFilter *_categoryFilter;
+    GEOPDSImplicitQueryCategoryFilter *_implictQueryCategoryFilter;
     GEOPDPoiIconCategoryFilter *_poiIconCategoryFilter;
     GEOPDSSearchVenueFilter *_venueFilter;
     unsigned int _readerMarkPos;
@@ -26,6 +27,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_unknownFields:1;
         unsigned int read_brandFilter:1;
         unsigned int read_categoryFilter:1;
+        unsigned int read_implictQueryCategoryFilter:1;
         unsigned int read_poiIconCategoryFilter:1;
         unsigned int read_venueFilter:1;
         unsigned int wrote_anyField:1;

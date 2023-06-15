@@ -14,6 +14,8 @@
     NSString *_developerUsrPath;
 }
 
++ (id)_uncachedDeveloperFolderPath;
++ (id)developerDirectoryPath;
 + (id)pathsWithDeveloperFolderPath:(id)arg1 developerUsrPath:(id)arg2;
 + (id)defaultPathsIfAvailableWithError:(id *)arg1;
 + (id)defaultPaths;
@@ -23,7 +25,6 @@
 + (void)initializeApplicationDirectoryName:(id)arg1;
 + (id)applicationDirectoryName;
 - (void).cxx_destruct;
-- (id)cacheDirectoryForXcodeServerApplication;
 @property(readonly) DVTFilePath *developerPlatformsDirectory;
 @property(readonly) DVTSearchPath *toolchainSearchPath;
 @property(readonly) DVTFilePath *embeddedApplicationsDirectory;

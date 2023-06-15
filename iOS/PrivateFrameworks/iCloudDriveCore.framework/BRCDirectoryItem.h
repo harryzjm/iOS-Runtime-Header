@@ -6,22 +6,30 @@
 
 #import "BRCLocalItem.h"
 
-@class BRCAliasItem, BRCDocumentItem, NSString;
+@class BRCAliasItem, BRCDocumentItem, BRCItemGlobalID, NSNumber, NSString;
 
 __attribute__((visibility("hidden")))
 @interface BRCDirectoryItem : BRCLocalItem
 {
+    BRCItemGlobalID *_prevZoneGlobalID;
     long long _mtime;
+    _Bool _needsDeleteForItemIDTransfer;
+    NSNumber *_childItemCount;
 }
 
+- (void).cxx_destruct;
+@property(readonly, nonatomic) BRCItemGlobalID *prevZoneGlobalID; // @synthesize prevZoneGlobalID=_prevZoneGlobalID;
 @property(nonatomic) long long mtime; // @synthesize mtime=_mtime;
+- (void)_crossZoneMoveToParent:(id)arg1;
+- (void)_insertZombieForCrossZoneMove;
+- (void)_markZombieForCrossZoneMove;
+- (_Bool)isCrossZoneMoveTombstone;
+- (void)markNeedsDeleteForItemIDTransfer;
 - (id)collaborationIdentifierIfComputable;
 - (id)asShareableItem;
 - (_Bool)isShareableItem;
-- (_Bool)startDownloadInTask:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
-- (_Bool)evictInTask:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
 - (void)prepareForSyncUpInZone:(id)arg1;
-- (_Bool)_deleteFromDB:(id)arg1 keepAliases:(_Bool)arg2 offline:(_Bool)arg3;
+- (_Bool)_deleteFromDB:(id)arg1 keepAliases:(_Bool)arg2;
 - (_Bool)_updateInDB:(id)arg1 diffs:(unsigned long long)arg2;
 - (_Bool)_insertInDB:(id)arg1 dbRowID:(unsigned long long)arg2;
 - (_Bool)_recomputeChildItemCount;
@@ -38,27 +46,34 @@ __attribute__((visibility("hidden")))
 - (void)transformIntoFSRoot;
 - (_Bool)containsPendingDeleteDocuments;
 - (_Bool)containsPendingUploadOrSyncUp;
-- (_Bool)containsPendingDownload;
-- (_Bool)containsFault;
 - (_Bool)containsDirFault;
 - (_Bool)containsOverQuotaItems;
 - (_Bool)isSharedToMeOrContainsSharedToMeItem;
 - (_Bool)isSharedByMeOrContainsSharedByMeItem;
 - (_Bool)possiblyContainsSharedItem;
+- (id)descriptionWithContext:(id)arg1;
+- (_Bool)isAppLibraryTrashFolder;
 - (void)_learnItemID:(id)arg1 serverItem:(id)arg2;
 - (void)updateItemMetadataFromServerItem:(id)arg1 appliedSharingPermission:(_Bool)arg2;
-- (void)updateFromServerItem:(id)arg1;
+- (id)_initWithLocalItem:(id)arg1;
 - (id)_initWithServerItem:(id)arg1 dbRowID:(unsigned long long)arg2;
 - (id)_initFromPQLResultSet:(id)arg1 session:(id)arg2 db:(id)arg3 error:(id *)arg4;
 - (_Bool)hasShareIDAndIsOwnedByMe;
 @property(readonly, nonatomic) BRCDirectoryItem *asDirectory;
+- (unsigned long long)diffAgainstLocalItem:(id)arg1;
 - (unsigned long long)diffAgainstServerItem:(id)arg1;
 - (_Bool)isDirectoryWithPackageName;
 - (_Bool)isDirectoryFault;
 - (_Bool)isDirectory;
 - (id)folderRootStructureRecord;
+- (_Bool)updateFromServerItem:(id)arg1;
+- (_Bool)handlePathMatchConflictForDirectoryCreationIfNecessary;
 - (void)updateWithContentModificationDate:(id)arg1;
+- (void)markChildPropagationComplete;
+- (void)markCrossZoneProgagationComplete;
 - (void)markRemovedFromFilesystemRecursively:(_Bool)arg1;
+- (void)documentsDirectoryUpdatedDocumentsScopePublic;
+- (void)_signalPropagationToChildren;
 
 // Remaining properties
 @property(readonly, nonatomic) BRCAliasItem *asBRAlias; // @dynamic asBRAlias;

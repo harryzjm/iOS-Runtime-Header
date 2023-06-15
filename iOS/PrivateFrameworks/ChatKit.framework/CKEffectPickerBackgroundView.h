@@ -4,21 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
-@class CABackdropLayer, CALayer, UIVisualEffectView;
+@class UIVisualEffectView;
 
 __attribute__((visibility("hidden")))
 @interface CKEffectPickerBackgroundView : UIView
 {
     UIVisualEffectView *_effectView;
-    CALayer *_blueContrastLayer;
-    CABackdropLayer *_backdrop;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) CABackdropLayer *backdrop; // @synthesize backdrop=_backdrop;
-@property(retain, nonatomic) CALayer *blueContrastLayer; // @synthesize blueContrastLayer=_blueContrastLayer;
 @property(retain, nonatomic) UIVisualEffectView *effectView; // @synthesize effectView=_effectView;
 - (void)updateBackgroundVisualEffect;
 - (id)initWithFrame:(struct CGRect)arg1;

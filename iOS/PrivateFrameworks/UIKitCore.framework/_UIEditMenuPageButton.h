@@ -6,12 +6,12 @@
 
 #import "UIButton.h"
 
-@class NSString, UIVisualEffectView, _UIContextMenuSeparatorView;
+@class UIVisualEffectView;
 
 __attribute__((visibility("hidden")))
 @interface _UIEditMenuPageButton : UIButton
 {
-    _UIContextMenuSeparatorView *_separatorView;
+    UIVisualEffectView *_separatorView;
     UIVisualEffectView *_backgroundView;
     UIVisualEffectView *_selectedBackgroundView;
     struct NSDirectionalEdgeInsets _defaultInsets;
@@ -25,10 +25,9 @@ __attribute__((visibility("hidden")))
 - (void)layoutSubviews;
 - (id)selectedBackgroundView;
 - (id)backgroundView;
-- (void)_configureButton;
+- (void)_configureButtonWithGroupName:(id)arg1;
 - (id)_imageNameForCurrentDirection;
-@property(retain, nonatomic) NSString *backgroundGroupName;
-- (id)initWithDirection:(long long)arg1;
+- (id)initWithDirection:(long long)arg1 backgroundGroupName:(id)arg2;
 
 @end
 

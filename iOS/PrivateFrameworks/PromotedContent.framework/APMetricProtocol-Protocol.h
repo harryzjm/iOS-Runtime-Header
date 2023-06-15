@@ -8,31 +8,41 @@
 #import <PromotedContent/NSObject-Protocol.h>
 #import <PromotedContent/NSSecureCoding-Protocol.h>
 
-@class NSDate, NSDictionary, NSString;
+@class NSArray, NSDate, NSDictionary, NSString;
 @protocol APMetricProtocol, NSSecureCoding;
 
 @protocol APMetricProtocol <NSObject, NSCopying, NSSecureCoding>
-- (void)addInternalPropertyValue:(id <NSSecureCoding>)arg1 forKey:(NSString *)arg2;
-@property(nonatomic, readonly) _Bool areNetworkDates;
-@property(nonatomic, readonly) NSDictionary *serverDictionaryRepresentation;
-@property(nonatomic, readonly) long long options;
-@property(nonatomic, readonly) NSDictionary *internalProperties;
-@property(nonatomic, readonly) NSDictionary *properties;
-@property(nonatomic, readonly) NSString *userIdentifier;
-@property(nonatomic, readonly) NSString *deviceIdentifier;
-@property(nonatomic, readonly) NSString *clientIdentifier;
-@property(nonatomic, readonly) NSString *bundleIdentifier;
-@property(nonatomic, readonly) NSString *deviceModel;
-@property(nonatomic, readonly) NSString *osBuild;
-@property(nonatomic, readonly) NSString *osVersion;
-@property(nonatomic, readonly) NSString *os;
-@property(nonatomic, readonly) NSString *identifier;
-@property(nonatomic, readonly) NSString *contextIdentifier;
-@property(nonatomic, readonly) NSString *contentIdentifier;
-@property(nonatomic, readonly) NSDate *timestamp;
-@property(nonatomic, readonly) long long metric;
-@property(nonatomic, readonly) long long route;
+@property(readonly, nonatomic) _Bool areNetworkDates;
+@property(readonly, nonatomic) long long options;
+@property(readonly, nonatomic) NSDictionary *internalProperties;
+@property(readonly, nonatomic) NSDictionary *properties;
+@property(readonly, nonatomic) NSString *userIdentifier;
+@property(readonly, nonatomic) NSString *deviceIdentifier;
+@property(readonly, nonatomic) NSString *clientIdentifier;
+@property(readonly, nonatomic) NSString *bundleIdentifier;
+@property(readonly, nonatomic) NSString *deviceModel;
+@property(readonly, nonatomic) NSString *osBuild;
+@property(readonly, nonatomic) NSString *osVersion;
+@property(readonly, nonatomic) NSString *os;
+@property(readonly, nonatomic) NSString *identifier;
+@property(readonly, nonatomic) NSString *contextIdentifier;
+@property(readonly, nonatomic) NSString *contentIdentifier;
+@property(readonly, nonatomic) NSDate *timestamp;
+@property(readonly, nonatomic) long long metric;
+@property(readonly, nonatomic) long long purpose;
 - (id <APMetricProtocol>)duplicateMetricReplacingIdentifier:(NSString *)arg1;
-- (id <APMetricProtocol>)initWithRoute:(long long)arg1 metric:(long long)arg2 contentIdentifier:(NSString *)arg3 contextIdentifier:(NSString *)arg4 identifier:(NSString *)arg5 properties:(NSDictionary *)arg6 internalProperties:(NSDictionary *)arg7 options:(long long)arg8;
+- (id <APMetricProtocol>)initWithPurpose:(long long)arg1 metric:(long long)arg2 contentIdentifier:(NSString *)arg3 contextIdentifier:(NSString *)arg4 identifier:(NSString *)arg5 branches:(NSArray *)arg6 properties:(NSDictionary *)arg7 internalProperties:(NSDictionary *)arg8 relayData:(NSDictionary *)arg9 environment:(NSString *)arg10 order:(long long)arg11 options:(long long)arg12;
+- (id <APMetricProtocol>)initWithPurpose:(long long)arg1 metric:(long long)arg2 contentIdentifier:(NSString *)arg3 contextIdentifier:(NSString *)arg4 identifier:(NSString *)arg5 properties:(NSDictionary *)arg6 internalProperties:(NSDictionary *)arg7 options:(long long)arg8;
+
+@optional
+@property(nonatomic) unsigned int source;
+@property(retain, nonatomic) NSString *environment;
+@property(readonly, nonatomic) NSDictionary *relayData;
+@property(retain, nonatomic) NSArray *branches;
+@property(retain, nonatomic) NSString *trace;
+@property(readonly, nonatomic) long long order;
+@property(retain, nonatomic) NSString *handle;
+- (void)updatePurpose:(long long)arg1;
+- (void)addInternalPropertyValue:(id <NSSecureCoding>)arg1 forKey:(NSString *)arg2;
 @end
 

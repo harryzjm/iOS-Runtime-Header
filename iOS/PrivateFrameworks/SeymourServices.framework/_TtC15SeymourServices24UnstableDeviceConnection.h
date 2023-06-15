@@ -15,8 +15,9 @@
     MISSING_TYPE *destination;
     MISSING_TYPE *device;
     MISSING_TYPE *networkInterface;
-    MISSING_TYPE *transportPriority;
+    MISSING_TYPE *preferredCompression;
     MISSING_TYPE *service;
+    MISSING_TYPE *transportPriority;
     MISSING_TYPE *topic;
     MISSING_TYPE *linkProvider;
     MISSING_TYPE *queue;

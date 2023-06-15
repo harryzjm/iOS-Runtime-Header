@@ -12,6 +12,7 @@
 @protocol AFAssistantUIService <NSObject>
 
 @optional
+- (void)assistantConnection:(AFConnection *)arg1 didUpdateResponseMode:(NSString *)arg2;
 - (void)assistantConnection:(AFConnection *)arg1 appLaunchFailedWithBundleIdentifier:(NSString *)arg2;
 - (void)assistantConnection:(AFConnection *)arg1 willProcessAppLaunchWithBundleIdentifier:(NSString *)arg2;
 - (void)assistantConnection:(AFConnection *)arg1 audioSessionDidBecomeActive:(_Bool)arg2;

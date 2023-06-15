@@ -11,8 +11,3 @@ struct StackReference {
     unsigned short _reference;
 };
 
-struct mach_timebase_info {
-    unsigned int numer;
-    unsigned int denom;
-};
-

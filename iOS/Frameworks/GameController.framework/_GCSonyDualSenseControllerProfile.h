@@ -26,7 +26,9 @@ __attribute__((visibility("hidden")))
 + (void)physicalDevice:(id)arg1 setLight:(id)arg2;
 + (void)physicalDevice:(id)arg1 getLightWithReply:(CDUnknownBlockType)arg2;
 + (id)logicalDevice:(id)arg1 makeControllerMotionWithIdentifier:(id)arg2;
++ (id)logicalDevice:(id)arg1 makeControllerInputDescriptionWithIdentifier:(id)arg2 bindings:(id)arg3;
 + (id)logicalDevice:(id)arg1 makeControllerPhysicalInputProfileWithIdentifier:(id)arg2;
++ (id)logicalDeviceControllerDetailedProductCategory:(id)arg1;
 + (id)logicalDeviceControllerProductCategory:(id)arg1;
 + (void)deviceManager:(id)arg1 prepareLogicalDevice:(id)arg2;
 + (void)deviceManager:(id)arg1 willPublishPhysicalDevice:(id)arg2;

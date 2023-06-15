@@ -9,5 +9,8 @@
 @protocol VCVideoSink <NSObject>
 - (_Bool)onVideoFrame:(struct opaqueCMSampleBuffer *)arg1 frameTime:(CDStruct_1b6d18a9)arg2 attribute:(CDStruct_51555cf6)arg3;
 - (void)sourceFrameRateDidChange:(unsigned int)arg1;
+
+@optional
+- (_Bool (^)(struct opaqueCMSampleBuffer *, struct, struct *))copyOnVideoFrameBlock;
 @end
 

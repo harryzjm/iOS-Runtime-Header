@@ -6,15 +6,17 @@
 
 #import "AMSTask.h"
 
-@class AMSProcessInfo, AMSURLSession, NSString;
+@class AMSLazyPromise, AMSProcessInfo, NSString;
+@protocol AMSBagAccountProvider;
 
 __attribute__((visibility("hidden")))
 @interface AMSBagNetworkTask : AMSTask
 {
+    AMSLazyPromise *_URLSessionPromise;
     AMSProcessInfo *_clientInfo;
     NSString *_profile;
     NSString *_profileVersion;
-    AMSURLSession *_URLSession;
+    id <AMSBagAccountProvider> _accountProvider;
     NSString *_logKey;
 }
 
@@ -22,26 +24,28 @@ __attribute__((visibility("hidden")))
 + (_Bool)_shouldReloadDataForOriginalCookies:(id)arg1 newCookies:(id)arg2;
 + (void)_setURLCookieNames:(id)arg1 forProfile:(id)arg2;
 + (id)_defaultURLCookieNames;
++ (id)_cookiesForNames:(id)arg1 clientInfo:(id)arg2 account:(id)arg3;
 + (id)_setStorefrontFromURLResponse:(id)arg1 bagData:(id)arg2;
-+ (id)_OSBuildTypeString;
-+ (id)_deviceString;
-+ (id)bagStorefrontPromiseForAccountMediaType:(id)arg1;
-+ (id)bagStorefrontForAccountMediaType:(id)arg1;
-+ (id)bagAccountPromiseForAccountMediaType:(id)arg1;
-+ (id)bagAccountForAccountMediaType:(id)arg1;
++ (id)_requestIdentifierForQueryItems:(id)arg1 prefix:(id)arg2;
++ (id)_requestIdentifierForQueryItems:(id)arg1;
++ (id)_queryItemsForClientInfo:(id)arg1 profile:(id)arg2 profileVersion:(id)arg3 cookieNames:(id)arg4 accountProvider:(id)arg5;
++ (id)_queryItemsForClientInfo:(id)arg1 profile:(id)arg2 profileVersion:(id)arg3 cookieNames:(id)arg4 account:(id)arg5 storefront:(id)arg6;
++ (id)_bagDataByApplyingOverridesToBagData:(id)arg1;
++ (id)requestPartialIdentifierForClientInfo:(id)arg1 profile:(id)arg2 profileVersion:(id)arg3;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSString *logKey; // @synthesize logKey=_logKey;
-@property(retain, nonatomic) AMSURLSession *URLSession; // @synthesize URLSession=_URLSession;
+@property(readonly, nonatomic) NSString *logKey; // @synthesize logKey=_logKey;
+@property(readonly, nonatomic) id <AMSBagAccountProvider> accountProvider; // @synthesize accountProvider=_accountProvider;
 @property(retain, nonatomic) NSString *profileVersion; // @synthesize profileVersion=_profileVersion;
 @property(retain, nonatomic) NSString *profile; // @synthesize profile=_profile;
 @property(retain, nonatomic) AMSProcessInfo *clientInfo; // @synthesize clientInfo=_clientInfo;
-- (id)_cookiesForNames:(id)arg1;
+@property(readonly, nonatomic) AMSLazyPromise *URLSessionPromise; // @synthesize URLSessionPromise=_URLSessionPromise;
 - (void)_updateStorefrontSuffixIfNecessaryWithBagData:(id)arg1;
-- (_Bool)_shouldRetryForResult:(id)arg1 cookieNames:(id)arg2 urlCookies:(id)arg3 newStorefront:(id)arg4;
-- (id)_createRequestWithCookieNames:(id)arg1 storefront:(id)arg2;
+- (_Bool)_shouldRetryForResult:(id)arg1 cookieNames:(id)arg2 urlCookies:(id)arg3 responseStorefront:(id)arg4;
+- (id)_createRequestWithQueryItems:(id)arg1;
 - (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveResponse:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)performFetch;
-- (id)initWithClientInfo:(id)arg1 profile:(id)arg2 profileVersion:(id)arg3;
+- (id)_performFetchWithAttemptedCount:(unsigned long long)arg1 account:(id)arg2 storefront:(id)arg3;
+- (id)initWithClientInfo:(id)arg1 profile:(id)arg2 profileVersion:(id)arg3 accountProvider:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

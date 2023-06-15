@@ -9,13 +9,13 @@
 #import <NewsUI/NFCopying-Protocol.h>
 #import <NewsUI/NSObject-Protocol.h>
 
-@class FCArticleAudioTrack, FCArticleContent, FCAssetHandle, FCColor, FCCoverArt, FCHeadlineExperimentalTitleMetadata, FCHeadlineThumbnail, FCIssue, FCTopStoriesStyleConfiguration, NSArray, NSData, NSDate, NSSet, NSString, NSURL;
+@class FCArticleAudioTrack, FCArticleContent, FCAssetHandle, FCColor, FCCoverArt, FCHeadlineExperimentalTitleMetadata, FCHeadlineThumbnail, FCIssue, FCTopStoriesStyleConfiguration, NSArray, NSData, NSDate, NSString, NSURL;
 @protocol FCChannelProviding, FCContentContext, FCHeadlineMetadata, FCHeadlineStocksFields, FCNativeAdProviding;
 
 @protocol FCHeadlineProviding <NSObject, NFCopying, FCClassifiable, FCFeedTransformationItem>
+@property(readonly, nonatomic) NSURL *routeURL;
 @property(readonly, nonatomic) _Bool isFullTrackAvailableToAll;
 @property(readonly, nonatomic) NSArray *publisherSpecifiedArticleIDs;
-@property(readonly, nonatomic) NSString *articleRecirculationConfigJSON;
 @property(readonly, copy, nonatomic) NSString *nativeAdCampaignData;
 @property(readonly, nonatomic) id <FCNativeAdProviding> associatedAd;
 @property(readonly, nonatomic) _Bool showPublisherLogo;
@@ -30,18 +30,20 @@
 @property(readonly, nonatomic) unsigned long long topStoryType;
 @property(readonly, nonatomic) _Bool isTopStory;
 @property(readonly, nonatomic) double tileProminenceScore;
-@property(readonly, copy, nonatomic) NSSet *surfacedByTagIDs;
 @property(readonly, copy, nonatomic) NSString *surfacedByBinID;
 @property(readonly, copy, nonatomic) NSString *surfacedByTopicID;
 @property(readonly, copy, nonatomic) NSString *surfacedByChannelID;
 @property(readonly, copy, nonatomic) NSString *surfacedBySectionID;
 @property(readonly, nonatomic, getter=isHiddenFromFeeds) _Bool hiddenFromFeeds;
 @property(readonly, nonatomic, getter=isBoundToContext) _Bool boundToContext;
+@property(readonly, nonatomic) _Bool disablePrerollAds;
 @property(readonly, nonatomic, getter=isHiddenFromAutoFavorites) _Bool hiddenFromAutoFavorites;
 @property(readonly, nonatomic, getter=isPressRelease) _Bool pressRelease;
-@property(readonly, nonatomic) _Bool showMinimalChrome;
+@property(readonly, nonatomic) _Bool disableTapToChannel;
 @property(readonly, nonatomic) _Bool needsRapidUpdates;
 @property(readonly, copy, nonatomic) NSString *language;
+@property(readonly, copy, nonatomic) NSArray *sportsEventIDs;
+@property(readonly, copy, nonatomic) NSString *videoType;
 @property(readonly, copy, nonatomic) NSURL *videoCallToActionURL;
 @property(readonly, copy, nonatomic) NSString *videoCallToActionTitle;
 @property(readonly, nonatomic) FCCoverArt *coverArt;
@@ -59,7 +61,6 @@
 @property(readonly, copy, nonatomic) NSArray *iAdCategories;
 @property(readonly, copy, nonatomic) NSString *sponsoredBy;
 @property(readonly, nonatomic, getter=isDisplayingAsNativeAd) _Bool displayAsNativeAd;
-@property(readonly, nonatomic, getter=isSponsored) _Bool sponsored;
 @property(readonly, nonatomic, getter=isFeatureCandidate) _Bool featureCandidate;
 @property(readonly, nonatomic) double videoDuration;
 @property(readonly, nonatomic) FCAssetHandle *videoStillImage;
@@ -99,12 +100,14 @@
 
 @optional
 @property(readonly, copy, nonatomic) id <FCHeadlineMetadata> appliedOverrideMetadata;
+@property(readonly, nonatomic) NSData *thumbnailPerceptualHash;
 @property(readonly, nonatomic) FCColor *thumbnailImageAccentColor;
 @property(readonly, nonatomic) FCColor *thumbnailImageTextColor;
 @property(readonly, nonatomic) FCColor *thumbnailImageBackgroundColor;
 @property(readonly, nonatomic) FCColor *thumbnailImagePrimaryColor;
 @property(readonly, nonatomic) double layeredThumbnailAspectRatio;
 @property(readonly, nonatomic) NSString *layeredThumbnailJSON;
+@property(readonly, nonatomic) FCAssetHandle *articleRecirculationConfigAssetHandle;
 @property(readonly, copy, nonatomic) NSString *surfacedByArticleListID;
 @property(readonly, nonatomic) NSString *narrativeTrackPreferredUpsellVariantID;
 @property(readonly, copy, nonatomic) NSArray *narrativeTrackBuddyArticleIDs;
@@ -116,7 +119,7 @@
 @property(readonly, copy, nonatomic) NSArray *linkedIssueIDs;
 @property(readonly, copy, nonatomic) NSArray *linkedArticleIDs;
 @property(readonly, nonatomic, getter=isIssueOnly) _Bool issueOnly;
-@property(readonly, copy, nonatomic) FCIssue *masterIssue;
+@property(readonly, copy, nonatomic) FCIssue *parentIssue;
 @property(readonly, nonatomic) _Bool webConverted;
 @property(readonly, nonatomic) _Bool reduceVisibility;
 @property(readonly, nonatomic) _Bool hideModalCloseButton;

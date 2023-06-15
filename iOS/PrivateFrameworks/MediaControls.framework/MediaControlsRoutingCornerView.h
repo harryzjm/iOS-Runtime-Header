@@ -19,8 +19,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, getter=isRouting) _Bool routing; // @synthesize routing=_routing;
 @property(nonatomic, getter=routesAreAvailable) _Bool routesAvailable; // @synthesize routesAvailable=_routesAvailable;
 @property(nonatomic) long long deviceType; // @synthesize deviceType=_deviceType;
-- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2 modifiers:(long long)arg3;
-- (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
+- (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
 - (void)_updateGlyph;
 - (id)initWithFrame:(struct CGRect)arg1;
 

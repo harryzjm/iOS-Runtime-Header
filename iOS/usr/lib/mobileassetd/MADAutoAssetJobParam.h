@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MAAutoAssetInfoControl, MAAutoAssetProgress, MAAutoAssetSelector, MADAutoAssetClientRequest, MADAutoAssetDescriptor, NSDictionary, NSError, NSString;
+@class MAAutoAssetProgress, MAAutoAssetSelector, MADAutoAssetClientRequest, MADAutoAssetDescriptor, MANAutoAssetInfoControl, NSDictionary, NSError, NSString;
 
 __attribute__((visibility("hidden")))
 @interface MADAutoAssetJobParam : NSObject
@@ -22,12 +22,12 @@ __attribute__((visibility("hidden")))
     NSString *_assetTargetOSVersion;
     NSString *_assetTargetBuildVersion;
     MADAutoAssetDescriptor *_autoAssetDescriptor;
-    MAAutoAssetInfoControl *_controlInformation;
+    MANAutoAssetInfoControl *_controlInformation;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(readonly, retain, nonatomic) MAAutoAssetInfoControl *controlInformation; // @synthesize controlInformation=_controlInformation;
+@property(readonly, retain, nonatomic) MANAutoAssetInfoControl *controlInformation; // @synthesize controlInformation=_controlInformation;
 @property(readonly, retain, nonatomic) MADAutoAssetDescriptor *autoAssetDescriptor; // @synthesize autoAssetDescriptor=_autoAssetDescriptor;
 @property(readonly, retain, nonatomic) NSString *assetTargetBuildVersion; // @synthesize assetTargetBuildVersion=_assetTargetBuildVersion;
 @property(readonly, retain, nonatomic) NSString *assetTargetOSVersion; // @synthesize assetTargetOSVersion=_assetTargetOSVersion;

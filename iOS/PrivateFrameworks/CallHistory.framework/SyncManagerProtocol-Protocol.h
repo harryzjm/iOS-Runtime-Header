@@ -32,5 +32,6 @@
 - (unsigned long long)fetchCallCountWithPredicate:(NSPredicate *)arg1 sortDescriptors:(NSArray *)arg2;
 - (long long)deleteCallsWithPredicate:(NSPredicate *)arg1 error:(id *)arg2;
 - (long long)setRead:(_Bool)arg1 forCallsWithPredicate:(NSPredicate *)arg2 error:(id *)arg3;
+- (NSPredicate *)predicateForLimits:(NSDictionary *)arg1;
 @end
 

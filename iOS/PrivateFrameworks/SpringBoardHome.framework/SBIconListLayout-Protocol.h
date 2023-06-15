@@ -15,6 +15,10 @@
 - (unsigned long long)numberOfColumnsForOrientation:(long long)arg1;
 
 @optional
+@property(readonly, nonatomic) _Bool widgetsSupportDynamicText;
+@property(readonly, nonatomic) struct UIEdgeInsets widgetContentMarginsWithBackgroundRemoved;
+@property(readonly, nonatomic) struct UIEdgeInsets widgetContentMargins;
+@property(readonly, nonatomic) double widgetScaleFactor;
 @property(readonly, nonatomic) _Bool usesAlternateLayout;
 @property(readonly, nonatomic) unsigned long long supportedIconGridSizeClasses;
 @property(readonly, nonatomic) struct SBHIconGridSizeClassSizes iconGridSizeClassSizes;

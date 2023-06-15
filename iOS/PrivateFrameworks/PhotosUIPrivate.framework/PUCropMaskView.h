@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 __attribute__((visibility("hidden")))
 @interface PUCropMaskView : UIView
@@ -14,6 +14,8 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) UIView *opaqueView; // @synthesize opaqueView=_opaqueView;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)_updateColor;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSAttributedString, NSDictionary, NSLock, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, PDFAKPageAdaptor, PDFAnnotation, PDFDetectedForm, PDFDetectedFormField, PDFDocument, PDFView;
+@class NSAttributedString, NSDictionary, NSLock, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, PDFAKPageAdaptor, PDFDetectedForm, PDFDocument, PDFView;
 
 __attribute__((visibility("hidden")))
 @interface PDFPagePrivate : NSObject
@@ -31,7 +31,7 @@ __attribute__((visibility("hidden")))
     _Atomic _Bool loadedAnnotations;
     NSLock *lock_getAnnotations;
     NSLock *lock_accessAnnotations;
-    NSMutableArray *scannedAnnotations;
+    NSMutableArray *detectedAnnotations;
     long long rotation;
     struct CGRect mediaBox;
     struct CGRect cropBox;
@@ -56,11 +56,12 @@ __attribute__((visibility("hidden")))
     BOOL candidateForOCR;
     _Bool requestedOCR;
     _Bool textFromOCR;
+    _Bool didPerformOCR;
+    BOOL candidateForFormDetection;
+    _Bool didPerformFormDetection;
+    unsigned long long detectedFormFieldsRecognitionConfidence;
     PDFDetectedForm *detectedForm;
-    struct os_unfair_lock_s searchForTextFieldsLock;
-    PDFAnnotation *firstTextField;
-    PDFDetectedFormField *firstDetectedFormField;
-    _Bool didSearchForTextFields;
+    NSMutableDictionary *persistentApplicationData;
 }
 
 - (void).cxx_destruct;

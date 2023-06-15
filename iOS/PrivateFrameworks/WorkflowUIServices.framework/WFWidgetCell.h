@@ -54,10 +54,11 @@ __attribute__((visibility("hidden")))
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 - (_Bool)touchesContainNonIndirectTouch:(id)arg1;
 - (_Bool)touchIsInView:(id)arg1 event:(id)arg2;
-- (void)configureWithWorkflow:(id)arg1 cornerRadius:(double)arg2 family:(long long)arg3;
+- (void)configureWithWorkflow:(id)arg1 cornerRadius:(double)arg2 widgetType:(long long)arg3 family:(long long)arg4;
 - (id)description;
 - (_Bool)isMultiline;
 @property(readonly, nonatomic) _Bool isRTL;
+- (void)dealloc;
 - (id)init;
 
 @end

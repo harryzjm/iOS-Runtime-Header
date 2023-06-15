@@ -7,6 +7,7 @@
 #import <Foundation/NSMutableDictionary.h>
 
 @interface NSMutableDictionary (AppleMediaServices)
+- (void)ams_setValue:(id)arg1 forKeyPath:(id)arg2;
 - (void)ams_setNullableObject:(id)arg1 forKey:(id)arg2;
 @end
 

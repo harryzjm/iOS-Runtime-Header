@@ -6,7 +6,10 @@
 
 #import <WorkflowKit/WFWorkflow.h>
 
+@class NSString;
+
 @interface WFWorkflow (WorkflowUI)
 @property(nonatomic, readonly) _Bool isReportable;
+@property(nonatomic, readonly) NSString *appBundleIdentifier;
 @end
 

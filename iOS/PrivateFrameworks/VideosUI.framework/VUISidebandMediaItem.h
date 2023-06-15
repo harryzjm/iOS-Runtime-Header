@@ -6,17 +6,18 @@
 
 #import "VUIMediaItem.h"
 
-@class VUISidebandMediaItemAssetController, VUIVideoManagedObject;
+@class NSObject, VUIVideoManagedObject;
+@protocol VUIMediaEntityAssetController;
 
 __attribute__((visibility("hidden")))
 @interface VUISidebandMediaItem : VUIMediaItem
 {
     VUIVideoManagedObject *_videoManagedObject;
-    VUISidebandMediaItemAssetController *_assetController;
+    NSObject<VUIMediaEntityAssetController> *_assetController;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) VUISidebandMediaItemAssetController *assetController; // @synthesize assetController=_assetController;
+@property(retain, nonatomic) NSObject<VUIMediaEntityAssetController> *assetController; // @synthesize assetController=_assetController;
 @property(retain, nonatomic) VUIVideoManagedObject *videoManagedObject; // @synthesize videoManagedObject=_videoManagedObject;
 - (void)_videoManagedObjectPlaybackExpirationWillChange:(id)arg1;
 - (id)imageLoadParamsWithImageType:(unsigned long long)arg1;
@@ -48,6 +49,7 @@ __attribute__((visibility("hidden")))
 - (id)title;
 - (_Bool)markedAsDeleted;
 - (id)canonicalID;
+- (id)assetType;
 - (void)dealloc;
 - (id)initWithMediaLibrary:(id)arg1 videoManagedObject:(id)arg2 requestedProperties:(id)arg3;
 

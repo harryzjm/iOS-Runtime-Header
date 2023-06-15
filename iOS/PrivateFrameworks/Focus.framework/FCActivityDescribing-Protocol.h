@@ -20,6 +20,7 @@
 @property(readonly, copy, nonatomic) NSString *activityColorName;
 @property(readonly, copy, nonatomic) NSString *activitySymbolImageName;
 @property(readonly, copy, nonatomic) NSString *activityDisplayName;
+@property(readonly, nonatomic) long long activitySemanticType;
 @property(readonly, copy, nonatomic) NSUUID *activityUniqueIdentifier;
 @property(readonly, copy, nonatomic) NSString *activityIdentifier;
 @end

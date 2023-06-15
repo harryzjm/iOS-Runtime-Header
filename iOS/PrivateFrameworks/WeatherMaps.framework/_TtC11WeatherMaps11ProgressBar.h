@@ -4,14 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
 @interface _TtC11WeatherMaps11ProgressBar : UIView
 {
-    MISSING_TYPE *barLayer;
+    MISSING_TYPE *barView;
+    MISSING_TYPE *barEffectView;
     MISSING_TYPE *progressObserver;
     MISSING_TYPE *progressReport;
     MISSING_TYPE *previousFrame;
@@ -20,9 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)traitCollectionDidChange:(id)arg1;
 - (void)layoutSublayersOfLayer:(id)arg1;
-- (void)didMoveToSuperview;
 - (id)initWithCoder:(id)arg1;
 
 @end

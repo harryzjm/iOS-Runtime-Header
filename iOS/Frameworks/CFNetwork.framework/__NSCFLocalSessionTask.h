@@ -53,11 +53,13 @@
 - (void)connection:(id)arg1 sentBodyBytes:(id)arg2 totalBytes:(id)arg3 expectedBytes:(id)arg4;
 - (void)connection:(id)arg1 didReceiveData:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)connection:(id)arg1 challenged:(id)arg2 authCallback:(CDUnknownBlockType)arg3;
+- (void)connection:(id)arg1 request:(id)arg2 needsNewBodyStreamFromOffset:(long long)arg3 callback:(CDUnknownBlockType)arg4;
 - (void)connection:(id)arg1 request:(id)arg2 needsNewBodyStreamCallback:(CDUnknownBlockType)arg3;
 - (void)connection:(id)arg1 didFinishLoadingWithError:(id)arg2;
 - (void)connectionWillFinishLoading:(id)arg1;
 - (void)connection:(id)arg1 willCacheResponse:(id)arg2 responseCallback:(CDUnknownBlockType)arg3;
 - (void)connection:(id)arg1 didReceiveResponse:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)connection:(id)arg1 didReceiveInformationalResponse:(id)arg2;
 - (void)connection:(id)arg1 wasRedirected:(id)arg2 newRequest:(id)arg3 responseCallback:(CDUnknownBlockType)arg4;
 - (void)set_timeoutIntervalForResource:(double)arg1;
 - (void)_didSendMetrics;
@@ -71,7 +73,6 @@
 - (void)_onqueue_completeInitialization;
 - (void)cancel_with_error:(id)arg1;
 - (void)_onSessionQueue_disavow;
-- (void)didReceiveInformationalResponse:(id)arg1;
 - (void)_onqueue_expectedProgressTargetChanged;
 - (void)_onqueue_adjustBytesPerSecondLimit:(long long)arg1;
 - (void)_onqueue_adjustPriorityHint:(float)arg1 incremental:(_Bool)arg2;
@@ -86,6 +87,7 @@
 - (void)_onqueue_conditionalRequirementsChanged:(_Bool)arg1;
 - (void)_onqueue_connectionWaitingWithReason:(long long)arg1;
 - (void)_onqueue_willSendRequestForEstablishedConnection:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)_onqueue_needNewBodyStream:(id)arg1 fromOffset:(long long)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)_onqueue_needNewBodyStream:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_task_onqueue_didReceiveDispatchData:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_onqueue_didReceiveDispatchData:(id)arg1 completion:(CDUnknownBlockType)arg2;

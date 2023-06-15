@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class MISSING_TYPE;
 
@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 @interface _TtC9SnippetUI18VisualResponseView : UIView
 {
     MISSING_TYPE *context;
-    MISSING_TYPE *responseView;
+    MISSING_TYPE *anyRootView;
     MISSING_TYPE *hostingViewController;
 }
 

@@ -8,12 +8,11 @@
 #import <APFoundation/NSObject-Protocol.h>
 #import <APFoundation/NSSecureCoding-Protocol.h>
 
-@class NSDate, NSDictionary, NSString;
+@class NSArray, NSDate, NSDictionary, NSString;
 @protocol APMetricProtocol, NSSecureCoding;
 
 @protocol APMetricProtocol <NSObject, NSCopying, NSSecureCoding>
 @property(readonly, nonatomic) _Bool areNetworkDates;
-@property(readonly, nonatomic) NSDictionary *serverDictionaryRepresentation;
 @property(readonly, nonatomic) long long options;
 @property(readonly, nonatomic) NSDictionary *internalProperties;
 @property(readonly, nonatomic) NSDictionary *properties;
@@ -30,9 +29,20 @@
 @property(readonly, nonatomic) NSString *contentIdentifier;
 @property(readonly, nonatomic) NSDate *timestamp;
 @property(readonly, nonatomic) long long metric;
-@property(readonly, nonatomic) long long route;
-- (void)addInternalPropertyValue:(id <NSSecureCoding>)arg1 forKey:(NSString *)arg2;
+@property(readonly, nonatomic) long long purpose;
 - (id <APMetricProtocol>)duplicateMetricReplacingIdentifier:(NSString *)arg1;
-- (id <APMetricProtocol>)initWithRoute:(long long)arg1 metric:(long long)arg2 contentIdentifier:(NSString *)arg3 contextIdentifier:(NSString *)arg4 identifier:(NSString *)arg5 properties:(NSDictionary *)arg6 internalProperties:(NSDictionary *)arg7 options:(long long)arg8;
+- (id <APMetricProtocol>)initWithPurpose:(long long)arg1 metric:(long long)arg2 contentIdentifier:(NSString *)arg3 contextIdentifier:(NSString *)arg4 identifier:(NSString *)arg5 branches:(NSArray *)arg6 properties:(NSDictionary *)arg7 internalProperties:(NSDictionary *)arg8 relayData:(NSDictionary *)arg9 environment:(NSString *)arg10 order:(long long)arg11 options:(long long)arg12;
+- (id <APMetricProtocol>)initWithPurpose:(long long)arg1 metric:(long long)arg2 contentIdentifier:(NSString *)arg3 contextIdentifier:(NSString *)arg4 identifier:(NSString *)arg5 properties:(NSDictionary *)arg6 internalProperties:(NSDictionary *)arg7 options:(long long)arg8;
+
+@optional
+@property(nonatomic) unsigned int source;
+@property(retain, nonatomic) NSString *environment;
+@property(readonly, nonatomic) NSDictionary *relayData;
+@property(retain, nonatomic) NSArray *branches;
+@property(retain, nonatomic) NSString *trace;
+@property(readonly, nonatomic) long long order;
+@property(retain, nonatomic) NSString *handle;
+- (void)updatePurpose:(long long)arg1;
+- (void)addInternalPropertyValue:(id <NSSecureCoding>)arg1 forKey:(NSString *)arg2;
 @end
 

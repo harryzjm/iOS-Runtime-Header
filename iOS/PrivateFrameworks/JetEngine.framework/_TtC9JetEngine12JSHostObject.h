@@ -13,7 +13,6 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)init;
 - (_Bool)isOSAtLeast:(id)arg1:(id)arg2:(id)arg3;
 @property(nonatomic, readonly) NSString *clientVersion;
 @property(nonatomic, readonly) NSString *clientIdentifier;
@@ -23,6 +22,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, readonly) NSString *deviceModel;
 @property(nonatomic, readonly) NSString *osBuild;
 @property(nonatomic, readonly) NSString *platform;
+- (id)init;
 
 @end
 

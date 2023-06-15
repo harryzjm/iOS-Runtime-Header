@@ -15,14 +15,14 @@ __attribute__((visibility("hidden")))
     double _averageConfidenceScore;
 }
 
-+ (id)serializedInterpretationFromTokens:(id)arg1 transform:(const struct __CFString *)arg2;
++ (id)serializedInterpretationFromTokens:(id)arg1 transform:(struct __CFString *)arg2;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(nonatomic) double averageConfidenceScore; // @synthesize averageConfidenceScore=_averageConfidenceScore;
 @property(readonly, nonatomic) NSArray *tokens; // @synthesize tokens=_tokens;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
-- (id)serializedInterpretationWithTransform:(const struct __CFString *)arg1;
+- (id)serializedInterpretationWithTransform:(struct __CFString *)arg1;
 @property(readonly, nonatomic) _Bool removeSpaceAfter;
 @property(readonly, nonatomic) _Bool removeSpaceBefore;
 - (void)encodeWithCoder:(id)arg1;

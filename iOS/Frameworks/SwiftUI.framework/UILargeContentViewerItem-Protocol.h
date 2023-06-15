@@ -9,10 +9,10 @@
 @class NSString, UIImage;
 
 @protocol UILargeContentViewerItem <NSObject>
-@property(nonatomic, readonly) struct UIEdgeInsets largeContentImageInsets;
-@property(nonatomic, readonly) _Bool scalesLargeContentImage;
-@property(nonatomic, readonly) UIImage *largeContentImage;
-@property(nonatomic, readonly) NSString *largeContentTitle;
-@property(nonatomic, readonly) _Bool showsLargeContentViewer;
+@property(readonly, nonatomic) struct UIEdgeInsets largeContentImageInsets;
+@property(readonly, nonatomic) _Bool scalesLargeContentImage;
+@property(readonly, nonatomic) UIImage *largeContentImage;
+@property(readonly, copy, nonatomic) NSString *largeContentTitle;
+@property(readonly, nonatomic) _Bool showsLargeContentViewer;
 @end
 

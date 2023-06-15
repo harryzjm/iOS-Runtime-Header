@@ -21,12 +21,6 @@ __attribute__((visibility("hidden")))
     UIViewController *_viewController;
 }
 
-+ (id)_tokenResultFromTokenString:(id)arg1;
-+ (id)_tokenFromObject:(id)arg1;
-+ (_Bool)_isCardOnFileOnStack:(id)arg1;
-+ (id)_sessionWithBag:(id)arg1 account:(id)arg2 accountParameters:(id)arg3;
-+ (id)_encoderWithBag:(id)arg1 account:(id)arg2;
-+ (id)_promiseToFetchURLResponseForAccount:(id)arg1 accountParameters:(id)arg2 url:(id)arg3 bag:(id)arg4;
 + (id)_accountToUseFromGivenAccount:(id)arg1 accountParameters:(id)arg2 activeiTunesAccount:(id)arg3;
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIViewController *viewController; // @synthesize viewController=_viewController;

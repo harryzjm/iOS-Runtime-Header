@@ -8,6 +8,9 @@
 {
 }
 
+- (id)groupIndexesWhereSeriesIsLastSeries:(id)arg1 fromRenderGroupIndexSet:(id)arg2;
+- (double)totalForValueIndex:(unsigned long long)arg1;
+- (double)totalForGroupIndex:(unsigned long long)arg1;
 - (double)interceptForAxis:(id)arg1;
 - (double)doubleAxisToModelValue:(double)arg1;
 - (double)doubleModelToAxisValue:(double)arg1 forSeries:(id)arg2;
@@ -17,6 +20,7 @@
 - (void)updateMultiDataModelAxisAnalysis:(id)arg1;
 - (void)updateModelAxisAnalysis:(id)arg1;
 - (id)p_orthogonalAxisForSeries:(id)arg1;
+- (_Bool)supportsSummaryValueLabels;
 - (_Bool)supportsReferenceLines;
 
 @end

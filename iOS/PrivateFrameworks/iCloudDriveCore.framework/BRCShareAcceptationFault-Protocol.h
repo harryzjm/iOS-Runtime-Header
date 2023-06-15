@@ -4,11 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
-
 @protocol BRCShareAcceptationFault
 - (void)markNeedsTransformIntoNormalFault;
-- (void)stageShareAcceptationFaultWithName:(NSString *)arg1;
 - (void)deleteShareAcceptationFault;
 @end
 

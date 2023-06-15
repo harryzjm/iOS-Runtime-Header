@@ -6,7 +6,7 @@
 
 #import <MediaPlayer/MPAVItem.h>
 
-@class ICAVAssetDownloadURLSession, ICContentKeySession, ICMusicSubscriptionLeaseSession, ICMusicSubscriptionLeaseStatus, ICStoreRequestContext, ICURLRequest, MPCAudioAssetTypeSelection, MPCModelGenericAVItemTimedMetadataRequest, MPCModelGenericAVItemTimedMetadataResponse, MPCModelGenericAVItemUserIdentityPropertySet, MPCPlaybackEngineEventStream, MPCPlaybackRequestEnvironment, MPCPlayerAudioFormat, MPCPlayerAudioRoute, MPCSuzeLeaseSession, MPGaplessInfo, MPMediaLibrary, MPModelGenericObject, MPPropertySet, MPSubscriptionStatusPlaybackInformation, NSArray, NSData, NSDictionary, NSNumber, NSObject, NSOperationQueue, NSString, NSURL;
+@class ICAVAssetDownloadURLSession, ICContentKeySession, ICMusicSubscriptionLeaseSession, ICMusicSubscriptionLeaseStatus, ICStoreRequestContext, ICURLRequest, MPCAudioAssetTypeSelection, MPCAudioAssetTypeSelector, MPCDeferrableTask, MPCModelGenericAVItemTimedMetadataRequest, MPCModelGenericAVItemTimedMetadataResponse, MPCModelGenericAVItemUserIdentityPropertySet, MPCPlaybackEngineEventStream, MPCPlaybackRequestEnvironment, MPCPlayerAudioFormat, MPCPlayerAudioRoute, MPCSuzeLeaseSession, MPGaplessInfo, MPMediaLibrary, MPModelGenericObject, MPPropertySet, MPSubscriptionStatusPlaybackInformation, NSArray, NSData, NSDictionary, NSNumber, NSObject, NSOperationQueue, NSString, NSURL;
 @protocol MPCModelPlaybackAssetCacheProviding, MPCReportingIdentityPropertiesLoading, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
 {
     NSObject<OS_dispatch_queue> *_accessQueue;
     _Bool _allowsAirPlayFromCloud;
-    NSNumber *_bookmarkTime;
     _Bool _hasLoadedSubscriptionLeaseSession;
     NSObject<OS_dispatch_queue> *_subscriptionLeaseSessionLoadQueue;
     ICMusicSubscriptionLeaseSession *_subscriptionLeaseSession;
@@ -53,11 +52,13 @@ __attribute__((visibility("hidden")))
     struct os_unfair_lock_s _genericObjectLock;
     _Bool _mediaItemNeedsLoading;
     NSURL *_tempFileURLToCleanup;
+    MPCDeferrableTask *_deferredLeaseAcquisitionTask;
     _Bool _radioPlayback;
     _Bool _radioStreamPlayback;
     _Bool _subscriptionRequired;
     _Bool _hlsAsset;
     _Bool _downloadedAsset;
+    _Bool _prioritizeStartupOverQuality;
     long long _leasePlaybackPreventionState;
     ICMusicSubscriptionLeaseStatus *_leaseStatus;
     NSDictionary *_audioFormatsDictionary;
@@ -81,6 +82,8 @@ __attribute__((visibility("hidden")))
     NSArray *_alternateFormats;
     NSArray *_availableSortedFormats;
     MPCPlayerAudioRoute *_audioRoute;
+    NSString *_previousQueueItemID;
+    MPCAudioAssetTypeSelector *_audioAssetTypeSelector;
     long long _loadedAudioAssetType;
 }
 
@@ -90,9 +93,12 @@ __attribute__((visibility("hidden")))
 + (_Bool)_prefersHighQualityAudioContentForNetworkType:(long long)arg1;
 + (long long)_unwrapPlaybackError:(id)arg1;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool prioritizeStartupOverQuality; // @synthesize prioritizeStartupOverQuality=_prioritizeStartupOverQuality;
 @property(readonly, nonatomic, getter=isDownloadedAsset) _Bool downloadedAsset; // @synthesize downloadedAsset=_downloadedAsset;
 @property(readonly, nonatomic, getter=isHLSAsset) _Bool hlsAsset; // @synthesize hlsAsset=_hlsAsset;
 @property(readonly, nonatomic) long long loadedAudioAssetType; // @synthesize loadedAudioAssetType=_loadedAudioAssetType;
+@property(retain, nonatomic) MPCAudioAssetTypeSelector *audioAssetTypeSelector; // @synthesize audioAssetTypeSelector=_audioAssetTypeSelector;
+@property(copy, nonatomic) NSString *previousQueueItemID; // @synthesize previousQueueItemID=_previousQueueItemID;
 @property(retain, nonatomic) MPCPlayerAudioRoute *audioRoute; // @synthesize audioRoute=_audioRoute;
 @property(retain, nonatomic) NSArray *availableSortedFormats; // @synthesize availableSortedFormats=_availableSortedFormats;
 @property(retain, nonatomic) NSArray *alternateFormats; // @synthesize alternateFormats=_alternateFormats;
@@ -122,28 +128,25 @@ __attribute__((visibility("hidden")))
 - (void)reevaluateType;
 - (void)_removeFromDownloadCompletionPendingItems;
 - (void)_addToDownloadCompletionPendingItems;
+- (_Bool)supportsVocalAttenuation;
 - (void)resumeContentKeySession;
 - (void)pauseContentKeySession;
 - (id)analyticsFormatType;
 - (id)analyticsContentType;
 - (void)_updatePreventionStatusWithLeaseSession:(id)arg1;
 - (void)_updateJingleTimedMetadata;
-- (void)_updateBookmarkTime:(double)arg1 isCheckpoint:(_Bool)arg2;
 - (void)_updateAutomaticSubscriptionLeaseRefresh;
 - (id)_storeUbiquitousIdentifier;
 - (id)_stopTime;
 - (double)_startTime;
 - (id)_storeRequestContext;
-- (_Bool)_shouldRememberBookmarkTime;
+- (_Bool)usesBookmarking;
 - (id)_rtcReportingServiceIdentifierWithAssetURL:(id)arg1;
 - (id)_rtcReportingMediaIdentifierWithAssetLoadProperties:(id)arg1;
 - (id)_radioStation;
 - (void)_postInvalidationNotifications;
 - (id)_modelPlaybackPosition;
-- (id)_isPrivateListeningEnabled;
-- (void)_invalidateContentItem;
-- (void)_updateHasBeenPlayedWithElapsedTime:(double)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_handlePlaybackFinishedTime:(double)arg1 didFinishByHittingEnd:(_Bool)arg2;
+- (void)_invalidateContentItemForTimedMetadataChangesChangingRevisionID:(_Bool)arg1;
 - (void)_getUnverifiedSubscriptionLeaseSessionWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_getSubscriptionLeasePropertiesWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_bookmarkTime;
@@ -169,7 +172,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSData *trackInfoData;
 - (id)mpcReporting_trackInfo;
 - (id)mpcReporting_siriInitiated;
-- (id)mpcReporting_privateListeningEnabled;
 - (_Bool)mpcReporting_shouldReportPlayEventsToStore;
 - (_Bool)mpcReporting_shouldUseRelativeTimePositions;
 - (id)mpcReporting_requestingBundleVersion;
@@ -188,13 +190,9 @@ __attribute__((visibility("hidden")))
 - (void)_handleUpdatedLikedState:(long long)arg1 forUserIdentity:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_currentPlaybackRateDidChange:(float)arg1;
 - (_Bool)usesSubscriptionLease;
-- (id)useListeningHistory;
 - (id)storeFrontIdentifier;
 - (id)storeAccountID;
 - (_Bool)shouldPreventPlayback;
-- (void)setPlaybackStoppedTime:(double)arg1;
-- (void)setPlaybackFinishedTime:(double)arg1;
-- (void)setPlaybackCheckpointCurrentTime:(double)arg1;
 - (void)resolvePlaybackError:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (_Bool)requiresLoadedAssetForAirPlayProperties;
 - (id)bookmarkTime;
@@ -213,6 +211,8 @@ __attribute__((visibility("hidden")))
 - (_Bool)hasStoreLyrics;
 - (id)libraryLyrics;
 - (_Bool)supportsLikedState;
+- (long long)lyricsAdamID;
+- (long long)reportingAdamID;
 - (long long)storeSubscriptionAdamID;
 - (long long)storeItemInt64ID;
 - (long long)stationProviderID;
@@ -222,6 +222,7 @@ __attribute__((visibility("hidden")))
 - (long long)stationID;
 @property(readonly, nonatomic) _Bool shouldReportPlayEventsToStore;
 - (void)setRating:(float)arg1;
+- (void)_prepareLeaseWithShouldRequireLeaseAcquisition:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)prepareForRate:(float)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (_Bool)prefersSeekOverSkip;
 - (_Bool)shouldShowComposer;
@@ -245,6 +246,7 @@ __attribute__((visibility("hidden")))
 - (id)mediaItem;
 - (id)mainTitle;
 - (void)updatePlayerItemMetadata;
+- (void)_emitNetworkOperationWithPerformanceMetrics:(id)arg1 operationType:(long long)arg2 reason:(id)arg3 blocksPlayback:(_Bool)arg4;
 - (void)_emitAudioAssetTypeSelection:(id)arg1;
 - (void)_emitAudioFormatChangeEvent;
 - (void)_updateActiveFormatJustification:(long long)arg1;
@@ -298,6 +300,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)albumTrackNumber;
 - (long long)artistStoreID;
 - (long long)albumStoreID;
+- (long long)storeAlbumArtistID;
 - (id)albumArtist;
 - (long long)albumYear;
 - (id)album;

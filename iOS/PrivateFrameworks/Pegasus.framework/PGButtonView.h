@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, UIFont, UIImage, UIPointerInteraction, UIViewPropertyAnimator, _PGButton;
+@class NSString, UIColor, UIFont, UIImage, UIPointerInteraction, UIViewPropertyAnimator, _PGButton;
 @protocol BSInvalidatable, PGButtonViewDelegate;
 
 __attribute__((visibility("hidden")))
@@ -27,7 +27,6 @@ __attribute__((visibility("hidden")))
 
 + (id)buttonWithDelegate:(id)arg1;
 + (id)disabledTintColor;
-+ (id)enabledTintColor;
 + (Class)layerClass;
 - (void).cxx_destruct;
 @property(nonatomic) __weak UIPointerInteraction *pointerInteraction; // @synthesize pointerInteraction=_pointerInteraction;
@@ -48,6 +47,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateGlyphConfigurationIfNeeded;
 - (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
 - (void)didMoveToWindow;
+@property(readonly, nonatomic) UIColor *enabledTintColor;
 @property(nonatomic, getter=isEnabled) _Bool enabled;
 - (void)sizeToFit;
 - (_Bool)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;

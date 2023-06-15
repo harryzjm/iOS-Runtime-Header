@@ -15,13 +15,13 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)assetProxyWithPropertyList:(id)arg1;
-+ (id)makePropertyListForMovieProxyHeader:(id)arg1 name:(id)arg2;
++ (id)makePropertyListForMovieProxyHeader:(id)arg1 name:(id)arg2 prefersNominalDurations:(_Bool)arg3;
 - (id)tracks;
 - (Class)_classForTrackInspectors;
 - (id)_assetInspector;
 - (id)_assetInspectorLoader;
 - (struct OpaqueFigPlaybackItem *)_playbackItem;
-- (struct OpaqueFigFormatReader *)_formatReader;
+- (struct OpaqueFigFormatReader *)_copyFormatReader;
 - (struct OpaqueFigAsset *)_figAsset;
 - (_Bool)isProxy;
 - (void)dealloc;

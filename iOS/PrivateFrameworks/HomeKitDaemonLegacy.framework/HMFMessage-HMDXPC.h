@@ -49,9 +49,6 @@
 @property(readonly, nonatomic) _Bool requiresSPIEntitlement;
 @property(readonly) NSString *clientName;
 @property(readonly) HMDBackingStoreTransactionActions *transactionResult;
-- (_Bool)_supportsFeature:(unsigned long long)arg1 forCapabilitiesKey:(id)arg2;
-- (_Bool)supportsRequestedFeature:(unsigned long long)arg1;
-- (_Bool)supportsRequiredFeature:(unsigned long long)arg1;
 @property(readonly, nonatomic, getter=isInternal) _Bool internal;
 @property(readonly, nonatomic, getter=requiresHomeLocationEntitlement) _Bool homeLocationEntitlementRequired;
 @property(readonly, nonatomic, getter=isLocationAuthorized) _Bool locationAuthorized;

@@ -18,6 +18,7 @@
 + (id)valueWithCGPoint:(struct CGPoint)arg1;
 + (id)valueWithUIKBHandwritingPoint:(struct)arg1;
 + (id)ui_valueWithPlatformPoint:(struct CGPoint)arg1;
++ (id)_valueWithPressTrigger:(struct _UIPressTrigger)arg1;
 + (id)ui_valueWithPlatformSize:(struct CGSize)arg1;
 @property(readonly, nonatomic) struct UIOffset UIOffsetValue;
 @property(readonly, nonatomic) struct NSDirectionalEdgeInsets directionalEdgeInsetsValue;

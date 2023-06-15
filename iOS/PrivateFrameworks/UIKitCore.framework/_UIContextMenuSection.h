@@ -13,6 +13,8 @@ __attribute__((visibility("hidden")))
 {
     NSUUID *_identifier;
     _Bool _isRoot;
+    _Bool _wantsSectionSeparator;
+    _Bool _isMultiColorPalette;
     NSString *_title;
     long long _preferredCellSize;
     unsigned long long _preferredActionLineLimit;
@@ -20,9 +22,11 @@ __attribute__((visibility("hidden")))
 
 + (id)sectionWithMenu:(id)arg1;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool isMultiColorPalette; // @synthesize isMultiColorPalette=_isMultiColorPalette;
 @property(readonly, nonatomic) unsigned long long preferredActionLineLimit; // @synthesize preferredActionLineLimit=_preferredActionLineLimit;
 @property(readonly, nonatomic) long long preferredCellSize; // @synthesize preferredCellSize=_preferredCellSize;
 @property(readonly, nonatomic) NSString *title; // @synthesize title=_title;
+@property(nonatomic) _Bool wantsSectionSeparator; // @synthesize wantsSectionSeparator=_wantsSectionSeparator;
 @property(nonatomic) _Bool isRoot; // @synthesize isRoot=_isRoot;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;

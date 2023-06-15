@@ -6,11 +6,13 @@
 
 #import <AccessibilityUIService/NSObject-Protocol.h>
 
-@class UIViewController, UIWindowScene;
+@class NSString, UIViewController, UIWindowScene;
 
 @protocol AXUIContentViewControllerDelegate <NSObject>
 
 @optional
+- (void)externalDisplaySceneDisconnected:(UIWindowScene *)arg1 forSceneClientIdentifier:(NSString *)arg2;
+- (void)externalDisplaySceneConnected:(UIWindowScene *)arg1 forSceneClientIdentifier:(NSString *)arg2;
 - (void)externalDisplaySceneDisconnected:(UIWindowScene *)arg1;
 - (void)externalDisplaySceneConnected:(UIWindowScene *)arg1;
 - (_Bool)shouldPreventAutorotatingAllContentViewControllers;

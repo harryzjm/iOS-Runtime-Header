@@ -19,7 +19,9 @@ __attribute__((visibility("hidden")))
     _Bool automaticallyConfiguresOutputBufferDimensions;
     _Bool deliversPreviewSizedOutputBuffers;
     _Bool sceneStabilityMetadataEnabled;
+    NSArray *requestedBufferAttachments;
     _Bool videoSettingsDimensionsOverrideEnabled;
+    _Bool videoSettingsDimensionsOverrideEnabledByClient;
     NSArray *availableVideoCVPixelFormatTypes;
     AVCaptureDataOutputDelegateCallbackHelper *delegateCallbackHelper;
 }

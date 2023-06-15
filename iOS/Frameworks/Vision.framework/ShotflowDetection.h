@@ -18,10 +18,18 @@ __attribute__((visibility("hidden")))
     float _yawAngle;
     float _pitchAngle;
     int _label;
+    float _petFaceScore;
+    float _associatedX;
+    float _associatedY;
+    int _groupId;
     struct CGRect _box;
     struct CGRect _defaultBox;
 }
 
+@property(nonatomic) int groupId; // @synthesize groupId=_groupId;
+@property(nonatomic) float associatedY; // @synthesize associatedY=_associatedY;
+@property(nonatomic) float associatedX; // @synthesize associatedX=_associatedX;
+@property(nonatomic) float petFaceScore; // @synthesize petFaceScore=_petFaceScore;
 @property(nonatomic) int label; // @synthesize label=_label;
 @property(nonatomic) _Bool hasLabel; // @synthesize hasLabel=_hasLabel;
 @property(nonatomic) float pitchAngle; // @synthesize pitchAngle=_pitchAngle;
@@ -41,6 +49,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) float smartDistance;
 @property(readonly, nonatomic) float distanceToDefaultBox;
 @property(readonly, nonatomic) struct CGPoint boxCenter;
+- (id)initWithBox:(struct CGRect)arg1 defaultBox:(struct CGRect)arg2 confidence:(float)arg3 scale:(int)arg4 rotationAngle:(float)arg5 yawAngle:(float)arg6 pitchAngle:(float)arg7 mergesCount:(int)arg8 hasLabel:(_Bool)arg9 label:(int)arg10 petFaceScore:(float)arg11 associatedX:(float)arg12 associatedY:(float)arg13 groupId:(int)arg14;
+- (id)initWithBox:(struct CGRect)arg1 defaultBox:(struct CGRect)arg2 confidence:(float)arg3 scale:(int)arg4 rotationAngle:(float)arg5 yawAngle:(float)arg6 pitchAngle:(float)arg7 hasLabel:(_Bool)arg8 label:(int)arg9 petFaceScore:(float)arg10 associatedX:(float)arg11 associatedY:(float)arg12;
 - (id)initWithBox:(struct CGRect)arg1 defaultBox:(struct CGRect)arg2 confidence:(float)arg3 scale:(int)arg4 rotationAngle:(float)arg5 yawAngle:(float)arg6 pitchAngle:(float)arg7 mergesCount:(int)arg8 hasLabel:(_Bool)arg9 label:(int)arg10;
 - (id)initWithBox:(struct CGRect)arg1 defaultBox:(struct CGRect)arg2 confidence:(float)arg3 scale:(int)arg4 rotationAngle:(float)arg5 yawAngle:(float)arg6 mergesCount:(int)arg7 hasLabel:(_Bool)arg8 label:(int)arg9;
 - (id)initWithBox:(struct CGRect)arg1 defaultBox:(struct CGRect)arg2 confidence:(float)arg3 scale:(int)arg4 rotationAngle:(float)arg5 yawAngle:(float)arg6 pitchAngle:(float)arg7 hasLabel:(_Bool)arg8 label:(int)arg9;

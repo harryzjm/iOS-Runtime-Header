@@ -16,16 +16,19 @@ __attribute__((visibility("hidden")))
     unsigned int _bitrate;
     int _bandwidth;
     _Bool _shouldReset;
+    _Bool _ramStadSRCEnabled;
 }
 
 @property(readonly, nonatomic) int bandwidth; // @synthesize bandwidth=_bandwidth;
 @property(readonly, nonatomic) unsigned int bitrate; // @synthesize bitrate=_bitrate;
 @property(readonly, nonatomic) VCAudioPayloadConfig *config; // @synthesize config=_config;
+- (void)setRamStadSRCEnabled:(_Bool)arg1;
 - (id)description;
 - (_Bool)getMagicCookie:(char *)arg1 withLength:(unsigned int *)arg2;
 - (void)setCurrentDTXEnable:(_Bool)arg1;
 - (_Bool)setCodecModeRequest:(struct _VCAudioCodecModeChangeEvent)arg1;
 - (_Bool)setBandwidth:(int)arg1;
+- (_Bool)setEVSRFParams:(struct EVSRFParams *)arg1;
 - (_Bool)setBitrate:(unsigned int)arg1;
 - (void)resetEncoderWithSampleBuffer:(char *)arg1 numBytes:(int)arg2;
 - (void)resetEncoder;

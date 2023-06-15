@@ -31,9 +31,11 @@
     _Bool _preload;
     _Bool _isLoaded;
     _Bool _isLoading;
+    _Bool _validateClassValues;
 }
 
 - (void).cxx_destruct;
+@property(readonly) _Bool validateClassValues; // @synthesize validateClassValues=_validateClassValues;
 @property(readonly) NSDictionary *_extensionPointsByIdentifier; // @synthesize _extensionPointsByIdentifier;
 @property(readonly) NSDictionary *_extensionsByIdentifier; // @synthesize _extensionsByIdentifier;
 @property(readonly, getter=isLoading) _Bool loading; // @synthesize loading=_isLoading;
@@ -63,6 +65,10 @@
 - (void)assertAutoIdentifierRulesAreSatisfied;
 - (void)_configureToUsePath:(id)arg1 andBundle:(id)arg2 rawInfoPlist:(id)arg3;
 - (id)initWithPlugInData:(id)arg1 plugInManager:(id)arg2;
+- (void)afterLoading_enumerateValidationErrorsInClassesReferencedByExtensionOrParameter:(id)arg1 inExtension:(id)arg2 againstSchema:(id)arg3 extensionPoint:(id)arg4 usingBlock:(CDUnknownBlockType)arg5;
+- (void)afterLoading_enumerateExtensionValidationErrorUsingBlock:(CDUnknownBlockType)arg1;
+- (void)afterLoading_enumerateExtensionPointValidationErrorUsingBlock:(CDUnknownBlockType)arg1;
+- (void)afterLoading_checkForValidationErrors;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

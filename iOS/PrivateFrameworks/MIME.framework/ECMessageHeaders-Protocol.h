@@ -15,7 +15,7 @@
 @property(readonly, nonatomic) NSArray *listUnsubscribeCommands;
 - (NSString *)firstSenderAddress;
 - (NSString *)firstAddressForKey:(NSString *)arg1;
-- (id)firstHeaderForKey:(NSString *)arg1;
+- (NSString *)firstHeaderForKey:(NSString *)arg1;
 - (NSArray *)headersForKey:(NSString *)arg1;
 - (NSArray *)allHeaderKeys;
 @end

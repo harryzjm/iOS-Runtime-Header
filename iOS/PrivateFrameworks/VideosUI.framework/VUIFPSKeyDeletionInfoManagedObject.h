@@ -13,7 +13,6 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)fetchRequest;
 
 // Remaining properties
 @property(retain, nonatomic) NSData *additionalFPSRequestParamsJSONData; // @dynamic additionalFPSRequestParamsJSONData;
@@ -25,6 +24,5 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSData *keyData; // @dynamic keyData;
 @property(copy, nonatomic) NSURL *keyURI; // @dynamic keyURI;
 @property(copy, nonatomic) NSDate *playbackExpirationStartDate; // @dynamic playbackExpirationStartDate;
-
 @end
 

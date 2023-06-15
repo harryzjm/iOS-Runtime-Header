@@ -35,6 +35,7 @@
 - (void)cancelAuthenticationChallenge:(id)arg1;
 - (void)continueWithoutCredentialForAuthenticationChallenge:(id)arg1;
 - (void)useCredential:(id)arg1 forAuthenticationChallenge:(id)arg2;
+- (void)_needNewBodyStreamFromOffset:(long long)arg1;
 - (void)_needNewBodyStream;
 - (void)_didReceiveChallenge:(id)arg1;
 - (void)_redirectRequest:(id)arg1 redirectResponse:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -46,6 +47,7 @@
 - (void)_didSendBodyData:(struct UploadProgressInfo)arg1;
 - (void)_didReceiveData:(id)arg1;
 - (void)_didReceiveResponse:(id)arg1 sniff:(_Bool)arg2;
+- (void)_didReceiveInformationalResponse:(id)arg1;
 - (void)_didUseCachedResponse;
 - (void)_ackBytes:(long long)arg1;
 - (void)expectedProgressTargetChanged;

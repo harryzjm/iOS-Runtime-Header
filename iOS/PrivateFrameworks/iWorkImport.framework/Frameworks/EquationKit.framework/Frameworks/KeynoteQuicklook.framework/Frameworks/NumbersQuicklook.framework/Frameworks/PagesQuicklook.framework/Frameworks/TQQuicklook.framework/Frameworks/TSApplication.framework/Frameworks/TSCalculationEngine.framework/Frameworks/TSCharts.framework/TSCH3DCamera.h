@@ -34,8 +34,8 @@
 @property(nonatomic) float viewportScale; // @synthesize viewportScale=_viewportScale;
 @property(retain, nonatomic) TSCH3DLens *lens; // @synthesize lens=_lens;
 - (void)calculateCullingPlanes:(void *)arg1;
-- (id)narrowedByViewport:(const void *)arg1 samples:(long long)arg2;
-- (id)pixelAlignedForScaledViewport:(const void *)arg1 viewportScale:(float)arg2 samples:(float)arg3 correspondingNoramlizedBounds:(const void *)arg4;
+- (id)narrowedByViewport:(void *)arg1 samples:(long long)arg2;
+- (id)pixelAlignedForScaledViewport:(void *)arg1 viewportScale:(float)arg2 samples:(float)arg3 correspondingNoramlizedBounds:(void *)arg4;
 - (id)shiftedByPixels:(void *)arg1;
 - (id)shiftByPixels:(void *)arg1;
 - (id)narrowedByViewport:(void *)arg1;
@@ -48,7 +48,7 @@
 @property(readonly, nonatomic) tmat4x4_3074befe normalizedProjection;
 @property(readonly, nonatomic) tmat4x4_3074befe projection;
 @property(readonly, nonatomic) tmat4x4_3074befe space;
-- (tvec3_17f03ce0)backProjectCameraSpacePoint:(const void *)arg1;
+- (tvec3_17f03ce0)backProjectCameraSpacePoint:(void *)arg1;
 - (tvec3_17f03ce0)fastProjectNormalizedPoint:(void *)arg1 planeDistance:(float)arg2;
 - (tvec3_17f03ce0)projectNormalizedPoint:(void *)arg1 planeDistance:(float)arg2;
 - (id)frustumSliceAtDistance:(float)arg1;
@@ -56,7 +56,7 @@
 @property(readonly, nonatomic) tvec3_17f03ce0 position;
 - (void)setDirection:(tvec3_17f03ce0)arg1;
 @property(readonly, nonatomic) tvec3_17f03ce0 direction;
-- (void)setContainingViewportSize:(const void *)arg1;
+- (void)setContainingViewportSize:(void *)arg1;
 - (id)matrixDescription;
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;

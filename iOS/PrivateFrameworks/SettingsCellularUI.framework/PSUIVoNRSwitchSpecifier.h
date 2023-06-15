@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
     CTXPCServiceSubscriptionContext *_subscriptionContext;
     PSListController *_listController;
     PSConfirmationSpecifier *_phoneCallWillEndWarning;
-    PSConfirmationSpecifier *_vonrUnoptimizedWarning;
     PSUICoreTelephonyCallCache *_callCache;
     PSUICoreTelephonyCapabilitiesCache *_capabilitiesCache;
     PSUICoreTelephonyCarrierBundleCache *_carrierBundleCache;
@@ -24,20 +23,15 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)getLogger;
+- (_Bool)shouldAddVoNRUnoptimizedWarning;
 - (id)groupFooterText;
 - (void)reloadSelfInListController;
 - (void)setVoNROff;
-- (void)setVoNROn;
 - (void)setVoNREnabled:(_Bool)arg1;
-- (void)setUpVoNRUnoptimizedSpecifierIfNeeded;
-- (void)showVoNRUnoptimizedWarning;
-- (_Bool)shouldShowVoNRUnoptimizedWarning;
-- (_Bool)showEnableVoNRWarningsIfNeeded;
 - (void)setUpPhoneCallWillEndWarningSpecifier;
 - (void)showPhoneCallWillEndWarning;
 - (_Bool)shouldShowCallWillEndWarning;
 - (_Bool)showDisableVoNRWarningsIfNeeded;
-- (_Bool)showWarningsIfNeededForEnableState:(_Bool)arg1;
 - (void)setVoNREnabled:(id)arg1 specifier:(id)arg2;
 - (id)getVoNREnabled;
 - (_Bool)shouldEnableVoNRSwitchCell;

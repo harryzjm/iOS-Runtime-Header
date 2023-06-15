@@ -9,7 +9,6 @@
 @class CaptureMTLDevice, NSString;
 @protocol MTLDepthStencilState, MTLDepthStencilStateSPI, MTLDevice;
 
-__attribute__((visibility("hidden")))
 @interface CaptureMTLDepthStencilState : NSObject
 {
     id <MTLDepthStencilStateSPI> _baseObject;

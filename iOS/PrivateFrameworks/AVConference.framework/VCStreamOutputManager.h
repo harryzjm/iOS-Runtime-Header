@@ -20,11 +20,9 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)sharedInstance;
-- (void)remoteVideoAttributesDidChange:(id)arg1 streamToken:(long long)arg2;
-- (void)remoteScreenAttributesDidChange:(id)arg1 streamToken:(long long)arg2;
 - (void)releaseQueueForStreamToken:(long long)arg1;
-- (void)didReceiveFirstRemoteFrameForStreamToken:(long long)arg1;
 - (void)connectionDidChangeWithLocalInterfaceType:(id)arg1 remoteInterfaceType:(id)arg2 streamToken:(long long)arg3;
+- (void)networkQualityDidDegrade:(_Bool)arg1 isLocalNetworkQualityDegraded:(_Bool)arg2 streamToken:(long long)arg3;
 - (void)remoteVideoDidDegrade:(_Bool)arg1 streamToken:(long long)arg2;
 - (void)remoteVideoDidSuspend:(_Bool)arg1 streamToken:(long long)arg2;
 - (void)remoteVideoDidPause:(_Bool)arg1 streamToken:(long long)arg2;
@@ -35,7 +33,6 @@ __attribute__((visibility("hidden")))
 - (void)dispatchedRemoteMediaDidStall:(_Bool)arg1 streamToken:(long long)arg2;
 - (void)deregisterBlocksForService;
 - (void)registerBlocksForService;
-- (id)serviceHandlerStreamOutputSetTimeSyncOffsetWithArguments:(id)arg1 error:(id *)arg2;
 - (id)serviceHandlerStreamOutputTerminateWithArguments:(id)arg1 error:(id *)arg2;
 - (id)serviceHandlerStreamOutputNotifyCacheWithArguments:(id)arg1 error:(id *)arg2;
 - (id)serviceHandlerStreamOutputInitializeWithArguments:(id)arg1 error:(id *)arg2;

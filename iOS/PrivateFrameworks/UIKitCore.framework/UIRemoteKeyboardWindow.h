@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 + (id)remoteKeyboardWindowForScreen:(id)arg1 create:(_Bool)arg2;
 + (_Bool)_isHostedInAnotherProcess;
 - (void).cxx_destruct;
+- (void)_configureAlphaIfNecessary;
 - (_Bool)_isEligibleForFocusOcclusion;
 - (_Bool)isTransparentFocusItem;
 - (void)dealloc;

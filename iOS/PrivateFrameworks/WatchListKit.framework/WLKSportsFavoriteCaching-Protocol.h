@@ -9,14 +9,14 @@
 @class NSArray;
 
 @protocol WLKSportsFavoriteCaching <NSObject>
-- (void)setOptInStatus:(_Bool)arg1 completion:(void (^)(NSError *))arg2;
-- (void)isOptedIn:(void (^)(_Bool))arg1;
+- (void)setOptInStatus:(_Bool)arg1 overrideLastModifiedDate:(_Bool)arg2 completion:(void (^)(NSError *))arg3;
+- (void)isOptedIn:(void (^)(_Bool, NSDate *))arg1;
 - (void)hasFavoritesSyncEnabledKey:(void (^)(_Bool))arg1;
 - (void)invalidate;
-- (void)removeFavorites:(NSArray *)arg1 completion:(void (^)(NSArray *))arg2;
-- (void)addFavorites:(NSArray *)arg1 completion:(void (^)(NSArray *))arg2;
-- (void)getFavoritesWithCompletion:(void (^)(NSArray *))arg1;
-- (void)setCache:(NSArray *)arg1 completion:(void (^)(NSArray *))arg2;
+- (void)removeFavorites:(NSArray *)arg1 completion:(void (^)(NSArray *, NSDate *))arg2;
+- (void)addFavorites:(NSArray *)arg1 completion:(void (^)(NSArray *, NSDate *))arg2;
+- (void)getFavoritesWithCompletion:(void (^)(NSArray *, NSDate *))arg1;
+- (void)setCache:(NSArray *)arg1 overrideLastModifiedDate:(_Bool)arg2 completion:(void (^)(NSArray *, NSDate *))arg3;
 - (_Bool)hasCache;
 @end
 

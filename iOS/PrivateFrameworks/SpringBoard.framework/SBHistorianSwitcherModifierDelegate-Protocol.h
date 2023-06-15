@@ -6,9 +6,10 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class SBHistorianSwitcherModifier, SBSwitcherModifierTimelineEntry;
+@class SBHistorianSwitcherModifier, SBSwitcherModifierEvent, SBSwitcherModifierTimelineEntry;
 
 @protocol SBHistorianSwitcherModifierDelegate <NSObject>
 - (void)historianModifier:(SBHistorianSwitcherModifier *)arg1 didRecordEntry:(SBSwitcherModifierTimelineEntry *)arg2;
+- (_Bool)historianModifier:(SBHistorianSwitcherModifier *)arg1 shouldRecordEvent:(SBSwitcherModifierEvent *)arg2;
 @end
 

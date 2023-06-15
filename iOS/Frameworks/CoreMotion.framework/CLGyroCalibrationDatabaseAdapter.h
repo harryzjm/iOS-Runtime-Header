@@ -21,7 +21,8 @@
 - (double)syncgetLastMiniCalibration;
 - (_Bool)syncgetSupportsMiniCalibration;
 - (int)syncgetNonFactoryRoundCount;
-- (_Bool)syncgetBiasFit:(CDStruct_8d89f794 *)arg1;
+- (void)getBiasFitWithReply:(CDUnknownBlockType)arg1;
+- (_Bool)syncgetBiasFit:(CDStruct_1ec9dfc5 *)arg1;
 - (void)startFactoryGYTT;
 - (int)syncgetMaxDynamicTemperature;
 - (_Bool)syncgetGyroStatsWithBias:(CDStruct_03942939 *)arg1 slope:(CDStruct_03942939 *)arg2 l2Error:(CDStruct_03942939 *)arg3 isDynamic:(_Bool)arg4 deltaBias:(CDStruct_03942939 *)arg5 deltaSlope:(CDStruct_03942939 *)arg6 deltaError:(CDStruct_03942939 *)arg7 isDeltaDynamic:(_Bool)arg8;

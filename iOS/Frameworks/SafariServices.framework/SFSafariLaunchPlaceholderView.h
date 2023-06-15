@@ -6,22 +6,32 @@
 
 #import <UIKit/UIView.h>
 
-@class NSString, UINavigationBar, UIToolbar;
+@class NSString, UIBarButtonItem, UIButton, UIImageView, UILabel, UINavigationBar, UIToolbar;
 
 __attribute__((visibility("hidden")))
 @interface SFSafariLaunchPlaceholderView : UIView
 {
-    UINavigationBar *_topNavigationBar;
     UIToolbar *_bottomToolbar;
+    UIImageView *_browserIconView;
+    CDUnknownBlockType _dismissalHandler;
+    UILabel *_linkCaptionLabel;
+    UILabel *_linkTitleLabel;
+    UINavigationBar *_topNavigationBar;
+    UIBarButtonItem *_dismissButton;
+    UIButton *_largeDismissButton;
     double _topLayoutGuideInset;
 }
 
++ (id)compatibilityPlaceholderWithAppName:(id)arg1 destinationURL:(id)arg2 forAuthentication:(_Bool)arg3 dismissalHandler:(CDUnknownBlockType)arg4;
++ (id)blankPlaceholder;
 - (void).cxx_destruct;
 @property(nonatomic) double topLayoutGuideInset; // @synthesize topLayoutGuideInset=_topLayoutGuideInset;
+- (void)_dismissTapped:(id)arg1;
+- (void)updateDismissButtonStyle:(long long)arg1;
+- (void)updateControlTintColor:(id)arg1;
 - (void)updateBarTintColor:(id)arg1;
 - (long long)positionForBar:(id)arg1;
 - (void)layoutSubviews;
-- (id)initWithFrame:(struct CGRect)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

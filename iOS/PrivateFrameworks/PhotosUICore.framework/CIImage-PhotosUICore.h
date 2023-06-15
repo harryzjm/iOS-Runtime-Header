@@ -7,7 +7,7 @@
 #import <CoreImage/CIImage.h>
 
 @interface CIImage (PhotosUICore)
-- (id)px_imageByApplyingPreferredOrientationTranform:(struct CGAffineTransform)arg1;
+- (id)px_imageByApplyingPreferredOrientationTransform:(struct CGAffineTransform)arg1;
 - (id)px_imageByApplyingScale:(double)arg1;
 - (id)px_imageByApplyingRotation:(double)arg1;
 - (id)px_imageByApplyingAlpha:(double)arg1;

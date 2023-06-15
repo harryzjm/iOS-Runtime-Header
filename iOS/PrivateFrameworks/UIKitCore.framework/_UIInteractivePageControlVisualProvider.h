@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CADisplayLink, CAMediaTimingFunction, NSString, UIDelayedAction, UIImpactFeedbackGenerator, UILongPressGestureRecognizer, UISelectionFeedbackGenerator, UITapGestureRecognizer, UIViewFloatAnimatableProperty, UIVisualEffectView, _UIPageControlContentView, _UIPageControlIndicatorContentView, _UIPageControlInteractor, _UIPageIndicatorFeed, _UIPageIndicatorStore;
+@class CADisplayLink, CAMediaTimingFunction, NSString, UIDelayedAction, UIImpactFeedbackGenerator, UILongPressGestureRecognizer, UISelectionFeedbackGenerator, UITapGestureRecognizer, UIView, UIViewFloatAnimatableProperty, _UIPageControlContentView, _UIPageControlIndicatorContentView, _UIPageControlInteractor, _UIPageIndicatorFeed, _UIPageIndicatorStore;
 
 __attribute__((visibility("hidden")))
 @interface _UIInteractivePageControlVisualProvider
@@ -22,9 +22,9 @@ __attribute__((visibility("hidden")))
     double _panDistance;
     double _indicatorPaddingOffset;
     double _continuousStartIndex;
+    UIView *_backgroundView;
     _UIPageControlContentView *_contentView;
     _UIPageControlIndicatorContentView *_indicatorContentView;
-    UIVisualEffectView *_backgroundView;
     CADisplayLink *_displayLink;
     UITapGestureRecognizer *_tapGestureRecognizer;
     UILongPressGestureRecognizer *_scrubbingGestureRecognizer;
@@ -58,11 +58,10 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UILongPressGestureRecognizer *scrubbingGestureRecognizer; // @synthesize scrubbingGestureRecognizer=_scrubbingGestureRecognizer;
 @property(retain, nonatomic) UITapGestureRecognizer *tapGestureRecognizer; // @synthesize tapGestureRecognizer=_tapGestureRecognizer;
 @property(retain, nonatomic) CADisplayLink *displayLink; // @synthesize displayLink=_displayLink;
-@property(retain, nonatomic) UIVisualEffectView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property(retain, nonatomic) _UIPageControlIndicatorContentView *indicatorContentView; // @synthesize indicatorContentView=_indicatorContentView;
 @property(retain, nonatomic) _UIPageControlContentView *contentView; // @synthesize contentView=_contentView;
-@property(nonatomic) _Bool isPlatterExpanded;
-@property(nonatomic) _Bool isScrubbing;
+@property(nonatomic, getter=isPlatterExpanded) _Bool platterExpanded;
+@property(nonatomic, getter=isScrubbing) _Bool scrubbing;
 - (void)displayLinkTicked:(id)arg1;
 - (void)didScrubPageControl:(id)arg1;
 - (void)didTapPageControl:(id)arg1;
@@ -79,25 +78,30 @@ __attribute__((visibility("hidden")))
 - (void)setCustomIndicatorImage:(id)arg1 forPage:(long long)arg2;
 - (id)customIndicatorImageForPage:(long long)arg1;
 - (void)configureIndicator:(id)arg1 atPage:(long long)arg2;
-- (id)indicatorImageForPage:(long long)arg1;
+- (void)configureIndicatorImagesForIndicator:(id)arg1 atPage:(long long)arg2;
 - (unsigned long long)maxVisibleIndicators;
 - (struct CGSize)indicatorSizeForImage:(id)arg1;
 - (struct CGRect)indicatorFrameForPage:(long long)arg1;
 - (struct CGSize)sizeForNumberOfPages:(long long)arg1;
 - (void)invalidateIndicators;
 - (void)layoutSubviews;
+- (id)backgroundView;
+- (void)setBackgroundView:(id)arg1;
 - (void)setIndicatorOpacity:(double)arg1;
 - (double)indicatorOpacity;
 - (void)updateDisplayedPageToCurrentPage;
 - (void)didUpdateCurrentPageIndicatorTintColor;
 - (void)didUpdatePageIndicatorTintColor;
 - (void)didUpdateInteractionTypeAvailability;
+- (void)didUpdateCurrentPageProgress;
+- (void)didUpdatePageProgress;
 - (void)didUpdateCustomLayoutValues;
 - (void)didUpdateBackgroundEffect;
 - (void)didUpdateBackgroundStyle;
 - (void)didUpdateNumberOfPages;
 - (void)traitCollectionDidChangeOnSubtree:(id)arg1;
 - (void)didUpdateLayoutDirection;
+- (void)setPage:(long long)arg1 interactionState:(long long)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (_Bool)shouldDisableTouchTracking;

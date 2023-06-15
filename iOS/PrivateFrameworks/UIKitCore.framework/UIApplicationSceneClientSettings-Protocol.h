@@ -6,13 +6,15 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class FBSDisplayConfigurationRequest, FBSDisplayMode, NSArray, NSData, NSDictionary, NSString;
+@class FBSDisplayConfigurationRequest, FBSDisplayMode, NSArray, NSData, NSDictionary, NSString, _UIPhysicalButtonConfigurationSet;
 
 @protocol UIApplicationSceneClientSettings <NSObject>
 @property(readonly, nonatomic) _Bool discardSessionOnUserDisconnect;
+@property(readonly, nonatomic) _Bool containsSearchView;
 @property(readonly, nonatomic) long long playbackControlsState;
 @property(readonly, nonatomic) unsigned long long _debugValidationOrientationMask;
 @property(readonly, nonatomic) NSArray *multitaskingDragExclusionRects;
+@property(readonly, copy, nonatomic) _UIPhysicalButtonConfigurationSet *physicalButtonConfigurations;
 @property(readonly, nonatomic) long long preferredPointerLockStatus;
 @property(readonly, nonatomic) struct CGRect screenFocusedFrame;
 @property(readonly, nonatomic) long long sceneActivationBias;

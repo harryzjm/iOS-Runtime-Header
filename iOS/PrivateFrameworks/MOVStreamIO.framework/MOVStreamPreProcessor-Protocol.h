@@ -9,8 +9,8 @@
 @protocol MOVStreamPreProcessor <NSObject>
 - (unsigned int)encodedPixelFormatFromStreamData:(struct StreamRecordingData *)arg1;
 - (unsigned int)inputPixelFormatFromStreamData:(struct StreamRecordingData *)arg1;
-- (const struct opaqueCMFormatDescription *)formatDescriptionForPixelBuffer:(struct __CVBuffer *)arg1 streamData:(struct StreamRecordingData *)arg2;
-- (const struct opaqueCMFormatDescription *)createTrackFormatDescriptionFromStreamData:(struct StreamRecordingData *)arg1;
+- (struct opaqueCMFormatDescription *)formatDescriptionForPixelBuffer:(struct __CVBuffer *)arg1 streamData:(struct StreamRecordingData *)arg2;
+- (struct opaqueCMFormatDescription *)createTrackFormatDescriptionFromStreamData:(struct StreamRecordingData *)arg1;
 - (struct __CVBuffer *)processedPixelBufferCopyOf:(struct __CVBuffer *)arg1 streamData:(struct StreamRecordingData *)arg2 error:(id *)arg3;
 @end
 

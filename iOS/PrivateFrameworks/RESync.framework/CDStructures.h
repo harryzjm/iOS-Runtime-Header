@@ -72,7 +72,7 @@ struct DynamicArray<re::IDSInvite *> {
     struct IDSInvite **m_data;
 };
 
-struct DynamicArray<re::Pair<bool, re::Event<re::IDSSessionService, re::SharedPtr<re::DiscoveryInvite>, re::SharedPtr<re::DiscoveryIdentity>>::Subscription, true>> {
+struct DynamicArray<re::Pair<bool, re::Event<re::IDSSessionService, re::SharedPtr<re::DiscoveryInvite>, re::SharedPtr<re::DiscoveryIdentity>>::Subscription>> {
     struct Allocator *m_allocator;
     unsigned long long m_capacity;
     unsigned long long m_size;
@@ -80,7 +80,7 @@ struct DynamicArray<re::Pair<bool, re::Event<re::IDSSessionService, re::SharedPt
     void *m_data;
 };
 
-struct DynamicArray<re::Pair<bool, re::Event<re::IDSSessionService, re::SharedPtr<re::DiscoveryInvite>, re::SharedPtr<re::DiscoveryIdentity>>::SubscriptionLegacy, true>> {
+struct DynamicArray<re::Pair<bool, re::Event<re::IDSSessionService, re::SharedPtr<re::DiscoveryInvite>, re::SharedPtr<re::DiscoveryIdentity>>::SubscriptionLegacy>> {
     struct Allocator *m_allocator;
     unsigned long long m_capacity;
     unsigned long long m_size;
@@ -88,7 +88,7 @@ struct DynamicArray<re::Pair<bool, re::Event<re::IDSSessionService, re::SharedPt
     void *m_data;
 };
 
-struct DynamicArray<re::Pair<bool, re::Event<re::IDSSessionService, re::SharedPtr<re::DiscoveryInvite>>::Subscription, true>> {
+struct DynamicArray<re::Pair<bool, re::Event<re::IDSSessionService, re::SharedPtr<re::DiscoveryInvite>>::Subscription>> {
     struct Allocator *m_allocator;
     unsigned long long m_capacity;
     unsigned long long m_size;
@@ -96,7 +96,7 @@ struct DynamicArray<re::Pair<bool, re::Event<re::IDSSessionService, re::SharedPt
     void *m_data;
 };
 
-struct DynamicArray<re::Pair<bool, re::Event<re::IDSSessionService, re::SharedPtr<re::DiscoveryInvite>>::SubscriptionLegacy, true>> {
+struct DynamicArray<re::Pair<bool, re::Event<re::IDSSessionService, re::SharedPtr<re::DiscoveryInvite>>::SubscriptionLegacy>> {
     struct Allocator *m_allocator;
     unsigned long long m_capacity;
     unsigned long long m_size;
@@ -129,17 +129,17 @@ struct DynamicString {
 
 struct Event<re::IDSSessionService, re::SharedPtr<re::DiscoveryInvite>, re::SharedPtr<re::DiscoveryIdentity>> {
     struct DynamicArray<re::Event<re::IDSSessionService, re::SharedPtr<re::DiscoveryInvite>, re::SharedPtr<re::DiscoveryIdentity>>::Subscription> m_subscriptions;
-    struct DynamicArray<re::Pair<bool, re::Event<re::IDSSessionService, re::SharedPtr<re::DiscoveryInvite>, re::SharedPtr<re::DiscoveryIdentity>>::Subscription, true>> m_deferred;
+    struct DynamicArray<re::Pair<bool, re::Event<re::IDSSessionService, re::SharedPtr<re::DiscoveryInvite>, re::SharedPtr<re::DiscoveryIdentity>>::Subscription>> m_deferred;
     struct DynamicArray<re::Event<re::IDSSessionService, re::SharedPtr<re::DiscoveryInvite>, re::SharedPtr<re::DiscoveryIdentity>>::SubscriptionLegacy> m_subscriptionsLegacy;
-    struct DynamicArray<re::Pair<bool, re::Event<re::IDSSessionService, re::SharedPtr<re::DiscoveryInvite>, re::SharedPtr<re::DiscoveryIdentity>>::SubscriptionLegacy, true>> m_deferredLegacy;
+    struct DynamicArray<re::Pair<bool, re::Event<re::IDSSessionService, re::SharedPtr<re::DiscoveryInvite>, re::SharedPtr<re::DiscoveryIdentity>>::SubscriptionLegacy>> m_deferredLegacy;
     int m_raiseLevel;
 };
 
 struct Event<re::IDSSessionService, re::SharedPtr<re::DiscoveryInvite>> {
     struct DynamicArray<re::Event<re::IDSSessionService, re::SharedPtr<re::DiscoveryInvite>>::Subscription> m_subscriptions;
-    struct DynamicArray<re::Pair<bool, re::Event<re::IDSSessionService, re::SharedPtr<re::DiscoveryInvite>>::Subscription, true>> m_deferred;
+    struct DynamicArray<re::Pair<bool, re::Event<re::IDSSessionService, re::SharedPtr<re::DiscoveryInvite>>::Subscription>> m_deferred;
     struct DynamicArray<re::Event<re::IDSSessionService, re::SharedPtr<re::DiscoveryInvite>>::SubscriptionLegacy> m_subscriptionsLegacy;
-    struct DynamicArray<re::Pair<bool, re::Event<re::IDSSessionService, re::SharedPtr<re::DiscoveryInvite>>::SubscriptionLegacy, true>> m_deferredLegacy;
+    struct DynamicArray<re::Pair<bool, re::Event<re::IDSSessionService, re::SharedPtr<re::DiscoveryInvite>>::SubscriptionLegacy>> m_deferredLegacy;
     int m_raiseLevel;
 };
 

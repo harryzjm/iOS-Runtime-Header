@@ -18,14 +18,21 @@ __attribute__((visibility("hidden")))
     BLSHWatchdogProvider *_provider;
     double _lock_timeout;
     double _lock_watchdogStart;
+    _Bool _lock_sleepImminentSinceScheduled;
     struct os_unfair_lock_s _lock;
     _Bool _lock_invalidated;
+    _Bool _sleepImminentWhenScheduled;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic, getter=wasSleepImminentWhenScheduled) _Bool sleepImminentWhenScheduled; // @synthesize sleepImminentWhenScheduled=_sleepImminentWhenScheduled;
+- (void)systemSleepMonitorDidWakeFromSleep:(id)arg1;
+- (void)systemSleepMonitorWillWakeFromSleep:(id)arg1;
+- (void)systemSleepMonitorSleepRequestAborted:(id)arg1;
+@property(nonatomic, getter=hasSleepBeenImminentSinceScheduled) _Bool sleepImminentSinceScheduled;
 @property(readonly, copy, nonatomic) NSString *explanation;
 @property(readonly, nonatomic, getter=isInvalidated) _Bool invalidated;
-- (void)invalidate;
+- (void)invalidate:(unsigned long long)arg1;
 - (void)timerFired;
 - (void)scheduleWithTimeout:(double)arg1;
 - (void)dealloc;

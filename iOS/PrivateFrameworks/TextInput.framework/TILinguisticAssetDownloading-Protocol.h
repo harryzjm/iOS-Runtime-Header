@@ -7,6 +7,8 @@
 @class NSDictionary, NSString;
 
 @protocol TILinguisticAssetDownloading
+- (void)updateAssetForInputModeIdentifier:(NSString *)arg1 callback:(void (^)(_Bool, NSError *))arg2;
+- (void)fetchAssetUpdateStatusForInputModeIdentifier:(NSString *)arg1 callback:(void (^)(long long, NSError *))arg2;
 - (void)removeLinguisticAssetsAssertionWithIdentifier:(NSString *)arg1 forClientID:(NSString *)arg2 withHandler:(void (^)(NSError *))arg3;
 - (void)addLinguisticAssetsAssertionForLanguage:(NSString *)arg1 assertionID:(NSString *)arg2 region:(NSDictionary *)arg3 clientID:(NSString *)arg4 withHandler:(void (^)(NSError *))arg5;
 - (void)requestLinguisticAssetsForLanguage:(NSString *)arg1 completion:(void (^)(long long, NSError *))arg2;

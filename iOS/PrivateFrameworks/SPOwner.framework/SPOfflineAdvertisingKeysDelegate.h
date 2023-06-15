@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CBPeripheralManager, FMXPCServiceDescription, FMXPCSession, NSString, SPBeaconManager;
+@class CBPeripheralManager, FMXPCServiceDescription, FMXPCSession, NSString, SPLocalBeaconManager;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
 {
     _Bool _inLowPowerMode;
     NSObject<OS_dispatch_queue> *_queue;
-    SPBeaconManager *_beaconManager;
+    SPLocalBeaconManager *_beaconManager;
     CBPeripheralManager *_peripheralManager;
     FMXPCServiceDescription *_serviceDescription;
     FMXPCSession *_session;
@@ -25,7 +25,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) FMXPCSession *session; // @synthesize session=_session;
 @property(retain, nonatomic) FMXPCServiceDescription *serviceDescription; // @synthesize serviceDescription=_serviceDescription;
 @property(retain, nonatomic) CBPeripheralManager *peripheralManager; // @synthesize peripheralManager=_peripheralManager;
-@property(retain, nonatomic) SPBeaconManager *beaconManager; // @synthesize beaconManager=_beaconManager;
+@property(retain, nonatomic) SPLocalBeaconManager *beaconManager; // @synthesize beaconManager=_beaconManager;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 - (void)peripheralManager:(id)arg1 offlineAdvPayloadRequestedWithReason:(long long)arg2;
 - (void)processKeyResponse:(id)arg1;

@@ -7,6 +7,7 @@
 #import <UIKit/UIImage.h>
 
 @interface UIImage (SKUIExtensions)
++ (id)resizeImage:(id)arg1 toSize:(struct CGSize)arg2;
 + (id)singlePointImageWithColor:(id)arg1;
 @end
 

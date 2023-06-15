@@ -7,11 +7,10 @@
 #import <MobileSafariUI/TabCollectionView-Protocol.h>
 #import <MobileSafariUI/TabSnapshotSizing-Protocol.h>
 
-@class NSArray, NSString, UIButton;
-@protocol TabCollectionItem, TabThumbnailCollectionViewDelegate;
+@class NSArray, NSString, TabOverviewToolbar;
+@protocol TabCollectionItem, TabThumbnailCollectionViewDelegate, TabThumbnailCollectionViewPresentationObserving;
 
 @protocol TabThumbnailCollectionView <TabCollectionView, TabSnapshotSizing>
-@property(retain, nonatomic) UIButton *sidebarButton;
 @property(readonly, nonatomic) NSArray *itemsMatchingSearchTerm;
 @property(readonly, nonatomic, getter=isSearching) _Bool searching;
 @property(copy, nonatomic) NSString *searchTerm;
@@ -19,11 +18,16 @@
 @property(nonatomic) _Bool defersActivation;
 @property(retain, nonatomic) id <TabCollectionItem> itemToActivate;
 @property(readonly, nonatomic) NSArray *itemsFullyInView;
+@property(readonly, nonatomic) TabOverviewToolbar *toolbar;
 @property(nonatomic) __weak id <TabThumbnailCollectionViewDelegate> delegate;
 - (void)endSearching;
 - (void)beginSearching;
 - (void)dismissAnimated:(_Bool)arg1;
 - (void)presentAnimated:(_Bool)arg1;
 - (void)enumerateItemsOrderedByVisibility:(void (^)(id <TabCollectionItem>))arg1;
+
+@optional
+- (void)removePresentationObserver:(id <TabThumbnailCollectionViewPresentationObserving>)arg1;
+- (void)addPresentationObserver:(id <TabThumbnailCollectionViewPresentationObserving>)arg1;
 @end
 

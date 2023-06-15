@@ -13,6 +13,7 @@
 @interface XCTestCase (UIAutomationDelegate) <XCTestCaseIssueHandlingUIAutomationDelegate>
 + (id)testRunConfigurationInputsForUITesting;
 + (_Bool)runsForEachTargetApplicationUIConfiguration;
+- (void)tearDownSequence;
 - (void)startingTestWithActivity:(id)arg1;
 - (void)performingTestAfterInvokingTest;
 - (id)_issueWithFailureScreenshotAttachedToIssue:(id)arg1;

@@ -7,7 +7,7 @@
 #import <PassKitUI/NSObject-Protocol.h>
 
 @class NSArray, UIView, UIViewController;
-@protocol PKHorizontalScrollingChildViewControllerProtocol, PKHorizontalScrollingFooterViewProtocol><PKHorizontalScrollingFooterViewComparator;
+@protocol PKHorizontalScrollingChildViewControllerProtocol, PKHorizontalScrollingFooterViewProtocol;
 
 @protocol PKHorizontalScrollingViewControllerDataSource <NSObject>
 - (void)didMoveToPrimaryIndex:(long long)arg1;
@@ -19,7 +19,7 @@
 - (long long)startingIndex;
 - (long long)numberOfItems;
 - (double)footerViewContentHeight;
-- (UIView<PKHorizontalScrollingFooterViewProtocol><PKHorizontalScrollingFooterViewComparator> *)footerView;
+- (UIView<PKHorizontalScrollingFooterViewProtocol> *)footerView;
 - (NSArray *)emptyViewControllers;
 @end
 

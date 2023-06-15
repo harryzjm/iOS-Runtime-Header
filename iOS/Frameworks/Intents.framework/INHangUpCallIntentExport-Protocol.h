@@ -7,7 +7,10 @@
 #import <Intents/JSExport-Protocol.h>
 #import <Intents/NSObject-Protocol.h>
 
+@class NSString;
+
 @protocol INHangUpCallIntentExport <NSObject, JSExport>
+@property(copy, nonatomic) NSString *callIdentifier;
 - (id)init;
 @end
 

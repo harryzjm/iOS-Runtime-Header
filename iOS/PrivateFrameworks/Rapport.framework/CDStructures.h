@@ -16,6 +16,29 @@ struct CC_SHA256state_st {
     unsigned int wbuf[16];
 };
 
+struct LogCategory {
+    int _field1;
+    int _field2;
+    char *_field3;
+    unsigned int _field4;
+    char *_field5;
+    char *_field6;
+    int _field7;
+    struct LogCategory *_field8;
+    struct LogOutput *_field9;
+    struct LogOutput *_field10;
+    unsigned long long _field11;
+    unsigned long long _field12;
+    unsigned int _field13;
+    unsigned int _field14;
+    char *_field15;
+    struct LogCategoryPrivate *_field16;
+};
+
+struct LogCategoryPrivate;
+
+struct LogOutput;
+
 struct os_unfair_lock_s {
     unsigned int _os_unfair_lock_opaque;
 };

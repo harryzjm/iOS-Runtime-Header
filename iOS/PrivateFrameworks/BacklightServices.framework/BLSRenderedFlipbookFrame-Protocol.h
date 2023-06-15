@@ -6,10 +6,14 @@
 
 #import <BacklightServices/NSObject-Protocol.h>
 
-@class NSString;
+@class NSString, NSUUID;
 @protocol BLSPresentationDateSpecifying;
 
 @protocol BLSRenderedFlipbookFrame <NSObject>
+@property(readonly, nonatomic) NSUUID *bls_uuid;
+@property(readonly, nonatomic, getter=isInverted) _Bool inverted;
+@property(readonly, nonatomic) struct CGRect rawSurfaceFrame;
+@property(readonly, nonatomic) struct __IOSurface *rawSurface;
 @property(readonly, nonatomic) struct __IOSurface *surface;
 @property(readonly, nonatomic) id <BLSPresentationDateSpecifying> bls_specifier;
 @property(readonly, nonatomic) unsigned long long memoryUsage;
@@ -19,6 +23,5 @@
 @property(readonly, nonatomic) unsigned long long presentationTime;
 - (NSString *)bls_shortLoggingString;
 - (NSString *)bls_loggingString;
-- (void)releaseSurface;
 @end
 

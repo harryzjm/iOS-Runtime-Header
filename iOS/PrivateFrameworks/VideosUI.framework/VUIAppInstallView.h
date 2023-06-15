@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class NSString, UIImage, UIImageView, VUISBIconProgressView;
 
@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
     UIImageView *_appIconImageView;
     UIView *_backgroundKnockoutView;
+    double _imageBorderWidth;
     CDUnknownBlockType _completion;
     VUISBIconProgressView *_progressView;
     UIImage *_appIcon;
@@ -25,6 +26,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(nonatomic) double installProgress; // @synthesize installProgress=_installProgress;
 @property(retain, nonatomic) UIImage *appIcon; // @synthesize appIcon=_appIcon;
+- (void)_makeImageBorderVisible:(_Bool)arg1;
 - (void)setWaiting;
 - (void)finishInstallationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)progressViewCanBeRemoved:(id)arg1;

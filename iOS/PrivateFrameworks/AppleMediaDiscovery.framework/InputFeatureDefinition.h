@@ -11,8 +11,10 @@
 __attribute__((visibility("hidden")))
 @interface InputFeatureDefinition : NSObject
 {
+    NSString *_columnName;
     NSArray *_featureValues;
     NSString *_featureId;
+    NSString *_featureType;
     NSString *_mapOp;
     NSNumber *_size;
     NSArray *_shape;
@@ -26,8 +28,10 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSArray *shape; // @synthesize shape=_shape;
 @property(retain, nonatomic) NSNumber *size; // @synthesize size=_size;
 @property(retain, nonatomic) NSString *mapOp; // @synthesize mapOp=_mapOp;
+@property(retain, nonatomic) NSString *featureType; // @synthesize featureType=_featureType;
 @property(retain, nonatomic) NSString *featureId; // @synthesize featureId=_featureId;
 @property(retain, nonatomic) NSArray *featureValues; // @synthesize featureValues=_featureValues;
+@property(retain, nonatomic) NSString *columnName; // @synthesize columnName=_columnName;
 - (_Bool)isValid;
 - (id)initWithDictionary:(id)arg1;
 

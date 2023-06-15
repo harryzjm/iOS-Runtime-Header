@@ -8,7 +8,9 @@
 
 @protocol CADAccessInterface
 - (void)CADDatabaseResetWithReply:(void (^)(int))arg1;
-- (void)CADDatabaseGetAccess:(void (^)(int, _Bool, _Bool))arg1;
+- (void)CADDatabaseRequestAccessForEntityType:(unsigned long long)arg1 desiredFullAccess:(_Bool)arg2 isBlockingUIThread:(_Bool)arg3 reason:(long long)arg4 reply:(void (^)(int, long long))arg5;
+- (void)CADDatabaseCheckAccessForEntityType:(unsigned long long)arg1 reply:(void (^)(int, long long))arg2;
+- (void)CADDatabaseGetAccess:(void (^)(int, int, _Bool))arg1;
 - (void)CADDatabaseSetInitializationOptions:(CADDatabaseInitializationOptions *)arg1 reply:(void (^)(int, int))arg2;
 @end
 

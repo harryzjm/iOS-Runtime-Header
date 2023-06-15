@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIAlertController.h>
+#import <UIKitCore/UIAlertController.h>
 
 @class NSString;
 
 @interface UIAlertController (AppleAccountUI)
 + (id)alertWithTitle:(id)arg1 message:(id)arg2 cancelButtonTitle:(id)arg3 defaultButtonTitle:(id)arg4;
++ (id)alertWithTitle:(id)arg1 message:(id)arg2 cancelButtonTitle:(id)arg3 destructiveButtonTitle:(id)arg4 actionHandler:(CDUnknownBlockType)arg5;
 + (id)alertWithTitle:(id)arg1 message:(id)arg2 cancelButtonTitle:(id)arg3 defaultButtonTitle:(id)arg4 actionHandler:(CDUnknownBlockType)arg5;
 + (id)alertWithTitle:(id)arg1 message:(id)arg2 buttonTitle:(id)arg3;
 + (id)alertWithTitle:(id)arg1 message:(id)arg2 buttonTitle:(id)arg3 actionHandler:(CDUnknownBlockType)arg4;

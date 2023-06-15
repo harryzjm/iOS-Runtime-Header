@@ -12,7 +12,6 @@
 @protocol FBSystemServiceDelegate <NSObject>
 
 @optional
-- (void)systemServicePrepareForShutdown:(FBSystemService *)arg1 andReboot:(_Bool)arg2;
 - (void)systemServicePrepareForExit:(FBSystemService *)arg1 andRelaunch:(_Bool)arg2;
 - (void)systemServicePrepareForShutdown:(FBSystemService *)arg1 withOptions:(unsigned long long)arg2;
 - (void)systemService:(FBSystemService *)arg1 prepareForShutdownWithOptions:(FBSShutdownOptions *)arg2 origin:(BSProcessHandle *)arg3;

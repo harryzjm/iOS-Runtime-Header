@@ -22,7 +22,7 @@
 - (_Bool)hasStatusToReport;
 - (void)relinquishLocksForWaiter:(id)arg1 deferRelinquish:(_Bool)arg2;
 - (void)registerWaiter:(id)arg1 forZoneIDs:(id)arg2 expectDelayBeforeRequestBegins:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (id)_init;
+- (id)initInternal;
 
 @end
 

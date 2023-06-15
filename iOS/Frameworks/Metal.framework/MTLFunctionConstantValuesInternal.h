@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
     void *_constantStorage;
 }
 
+- (id)newConstantScriptForFunction:(id)arg1 name:(id)arg2 specializedName:(id)arg3 errorMessage:(id *)arg4;
 - (const void *)constantValueWithFunctionConstant:(id)arg1;
 - (void *)serializedConstantDataForFunction:(id)arg1 dataSize:(unsigned long long *)arg2 errorMessage:(id *)arg3;
 - (id)description;

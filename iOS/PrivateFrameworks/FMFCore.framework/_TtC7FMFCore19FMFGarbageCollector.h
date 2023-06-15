@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *garbageCollectorIdentityKey;
     MISSING_TYPE *accountStore;
+    MISSING_TYPE *shouldRemoveFiles;
     MISSING_TYPE *isAccountVerificationPending;
     MISSING_TYPE *fmfAccountIdentifier;
     MISSING_TYPE *identifierQueue;

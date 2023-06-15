@@ -6,9 +6,17 @@
 
 #import <BiomePubSub/NSObject-Protocol.h>
 
+@class NSArray, NSError;
 @protocol BPSSubscriber;
 
 @protocol BPSPublisher <NSObject>
 - (void)subscribe:(id <BPSSubscriber>)arg1;
+
+@optional
+- (void)reset;
+- (_Bool)completed;
+- (id)nextEvent;
+- (NSError *)startWithSubscriber:(id <BPSSubscriber>)arg1;
+- (NSArray *)upstreamPublishers;
 @end
 

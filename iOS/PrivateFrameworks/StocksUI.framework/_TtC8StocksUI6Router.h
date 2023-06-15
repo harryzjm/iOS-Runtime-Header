@@ -14,6 +14,8 @@
     MISSING_TYPE *splitViewController;
     MISSING_TYPE *cardContainerController;
     MISSING_TYPE *articleOfflineManager;
+    MISSING_TYPE *featureAvailability;
+    MISSING_TYPE *stockListSelection;
 }
 
 @end

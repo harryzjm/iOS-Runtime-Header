@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     MPMusicPlayerQueueDescriptor *_preparingDescriptor;
     CDUnknownBlockType _prepareCompletionHandler;
     _Bool _skipWaitingForLikelyToKeepUp;
+    _Bool _waitingForAdditionalPlaybackContexts;
     _Bool _resumed;
     NSUUID *_settingMultiplePlaybackContextsUUID;
     MPCPlaybackEngine *_playbackEngine;
@@ -44,13 +45,14 @@ __attribute__((visibility("hidden")))
 - (void)engine:(id)arg1 didChangeToItem:(id)arg2;
 - (void)engine:(id)arg1 didChangeQueueWithReason:(id)arg2;
 - (void)engine:(id)arg1 didChangeToState:(unsigned long long)arg2;
+- (void)setDisableShuffle:(_Bool)arg1;
+- (void)setDisableRepeat:(_Bool)arg1;
+- (void)setDisableAutoPlay:(_Bool)arg1;
 - (void)setDisableAutomaticCanBeNowPlaying:(_Bool)arg1;
 - (void)setRelativeVolume:(float)arg1;
 - (void)beginPlaybackAtHostTime:(id)arg1;
 - (void)prerollWithCompletion:(CDUnknownBlockType)arg1;
 - (void)performQueueModifications:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)setUserQueueModificationsDisabled:(_Bool)arg1;
-- (void)getUserQueueModificationsDisabledWithReply:(CDUnknownBlockType)arg1;
 - (void)setPlaybackRate:(float)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setElapsedTime:(double)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getShuffleModeWithReply:(CDUnknownBlockType)arg1;

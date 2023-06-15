@@ -14,13 +14,15 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *footerView;
     MISSING_TYPE *itemViews;
     MISSING_TYPE *prototypeItemHeaderLabel;
+    MISSING_TYPE *focusableTextViews;
 }
 
 - (void).cxx_destruct;
-- (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 @property(nonatomic, readonly) VUILabel *accessibilityHeaderView;
 - (struct CGSize)vui_layoutSubviews:(struct CGSize)arg1 computationOnly:(_Bool)arg2;
+- (id)initWithCoder:(id)arg1;
+- (id)init;
 
 @end
 

@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray;
+@class NSArray, NSSet;
 
 __attribute__((visibility("hidden")))
 @interface AVCaptureSynchronizedMetadataObjectDataInternal : NSObject
 {
     NSArray *metadataObjects;
+    NSSet *handledMetadataObjectTypes;
 }
 
 @end

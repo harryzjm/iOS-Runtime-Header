@@ -10,6 +10,10 @@
 + (id)safari_arrayWithObjectsUnlessNil:(id)arg1;
 + (id)safari_arrayWithPropertyListData:(id)arg1 options:(unsigned long long)arg2;
 + (id)safari_arrayFromDictionaryOfObjectsByIndex:(id)arg1;
++ (id)safari_arrayWithArray:(id)arg1 copyAction:(long long)arg2;
+- (id)_safari_generatePermutations:(id)arg1 withPosition:(unsigned long long)arg2 permutationsArray:(id)arg3;
+@property(readonly, nonatomic) NSArray *safari_allPermutations;
+- (id)safari_dictionaryOfArraysByMappingObjectsToKeysUsingBlock:(CDUnknownBlockType)arg1;
 - (id)safari_dictionaryByMappingObjectsAsKeysToObjectsUsingBlock:(CDUnknownBlockType)arg1;
 - (id)safari_dictionaryByMappingObjectsToKeysUsingBlock:(CDUnknownBlockType)arg1;
 - (id)safari_longestIncreasingSubsequenceUsingValues:(CDUnknownBlockType)arg1;
@@ -37,6 +41,7 @@
 - (id)safari_mapObjectsUsingBlock:(CDUnknownBlockType)arg1;
 - (id)safari_orderedSetByApplyingBlock:(CDUnknownBlockType)arg1;
 - (id)safari_setByApplyingBlock:(CDUnknownBlockType)arg1;
+- (void)safari_enumerateAsynchronouslyOnQueue:(id)arg1 enumerationBlock:(CDUnknownBlockType)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)safari_enumerateOutwardFromIndex:(unsigned long long)arg1 otherIndex:(unsigned long long)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (void)safari_enumerateOutwardFromIndex:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)safari_enumerateZippedValuesWithArray:(id)arg1 withBlock:(CDUnknownBlockType)arg2;

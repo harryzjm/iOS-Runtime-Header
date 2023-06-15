@@ -6,12 +6,12 @@
 
 @interface CHCyrillicAddAlternativeScriptCandidatesStep
 {
-    const struct _LXLexicon *_staticLexicon;
-    const struct _LXLexicon *_customLexicon;
+    struct _LXLexicon *_staticLexicon;
+    struct _LXLexicon *_customLexicon;
 }
 
-@property(nonatomic) const struct _LXLexicon *customLexicon; // @synthesize customLexicon=_customLexicon;
-@property(nonatomic) const struct _LXLexicon *staticLexicon; // @synthesize staticLexicon=_staticLexicon;
+@property(nonatomic) struct _LXLexicon *customLexicon; // @synthesize customLexicon=_customLexicon;
+@property(nonatomic) struct _LXLexicon *staticLexicon; // @synthesize staticLexicon=_staticLexicon;
 - (id)process:(id)arg1 options:(id)arg2;
 - (id)initWithStaticLexicon:(struct _LXLexicon *)arg1 customLexicon:(struct _LXLexicon *)arg2;
 

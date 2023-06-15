@@ -32,7 +32,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic, getter=_balloonTintColor) UIColor *balloonTintColor;
 - (_Bool)_balloonCalloutShouldOriginateFromSmallSize:(double *)arg1;
 @property(readonly, nonatomic, getter=_balloonCalloutStyle) long long balloonCalloutStyle;
-- (void)traitCollectionDidChange:(id)arg1;
+- (void)traitEnvironment:(id)arg1 didChangeTraitCollection:(id)arg2;
 - (void)_resolveBalloonAttributesIfNecessary;
 - (void)prepareForReuse;
 - (id)initWithAnnotation:(id)arg1 reuseIdentifier:(id)arg2;

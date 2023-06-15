@@ -6,7 +6,7 @@
 
 #import <SpringBoardUIServices/NSObject-Protocol.h>
 
-@class NSString, NSURL, UIColor, UIView;
+@class BSAction, NSSet, NSString, NSURL, UIColor, UIView;
 @protocol SBUISystemApertureAccessoryView, UIViewControllerTransitionCoordinator;
 
 @protocol SBUISystemApertureElement <NSObject>
@@ -16,12 +16,15 @@
 @property(nonatomic) long long activeLayoutMode;
 
 @optional
+@property(readonly, nonatomic) _Bool attachedMinimalViewRequiresZeroPadding;
 @property(nonatomic) _Bool canRequestAlertingAssertion;
+@property(readonly, nonatomic) UIView<SBUISystemApertureAccessoryView> *detachedMinimalView;
 @property(nonatomic) unsigned long long minimalViewLayoutAxis;
 @property(readonly, copy, nonatomic) UIColor *keyColor;
 @property(readonly, nonatomic) unsigned long long presentationBehaviors;
 @property(readonly, nonatomic) long long preferredCustomLayout;
 @property(readonly, nonatomic) struct CGSize preferredCustomAspectRatio;
+@property(readonly, copy, nonatomic) NSSet *backgroundActivitiesToSuppress;
 @property(readonly, nonatomic) unsigned long long statusBarStyleOverridesToSuppress;
 @property(readonly, nonatomic) UIView<SBUISystemApertureAccessoryView> *minimalView;
 @property(readonly, nonatomic) UIView<SBUISystemApertureAccessoryView> *trailingView;
@@ -29,6 +32,7 @@
 @property(readonly, nonatomic) long long minimumLayoutMode;
 @property(readonly, nonatomic) _Bool preventsAutomaticDismissal;
 @property(readonly, nonatomic) _Bool preventsInteractiveDismissal;
+@property(readonly, nonatomic) BSAction *launchAction;
 @property(readonly, copy, nonatomic) NSURL *launchURL;
 @property(readonly, copy, nonatomic) NSString *associatedScenePersistenceIdentifier;
 @property(readonly, copy, nonatomic) NSString *associatedAppBundleIdentifier;

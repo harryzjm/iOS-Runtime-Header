@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool messagesWriteboardFromSwitcher; // @synthesize messagesWriteboardFromSwitcher=_messagesWriteboardFromSwitcher;
 @property(copy, nonatomic) CDUnknownBlockType finishSplitTransitionBlock; // @synthesize finishSplitTransitionBlock=m_finishSplitTransitionBlock;
 @property(readonly, nonatomic) NSArray *inputModes; // @synthesize inputModes=m_inputModes;
+- (id)buttonPressed:(id)arg1 withEvent:(id)arg2 location:(struct CGPoint)arg3 isLocationInsideViewHitArea:(_Bool)arg4 isForDictation:(_Bool)arg5 tapAction:(CDUnknownBlockType)arg6;
 - (id)buttonPressed:(id)arg1 withEvent:(id)arg2 location:(struct CGPoint)arg3 isForDictation:(_Bool)arg4 tapAction:(CDUnknownBlockType)arg5;
 - (_Bool)didHitDockItemWithinTypingWindow;
 - (_Bool)_isHandBiasSwitchVisible;

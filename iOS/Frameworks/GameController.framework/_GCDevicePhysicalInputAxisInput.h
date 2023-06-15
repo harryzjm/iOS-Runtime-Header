@@ -4,28 +4,33 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
+@class NSSet, NSString;
 
 __attribute__((visibility("hidden")))
 @interface _GCDevicePhysicalInputAxisInput
 {
-    _Bool _isAnalog;
-    _Bool _canWrap;
+    unsigned long long _sourcesSlot;
+    unsigned long long _isAnalogSlot;
+    unsigned long long _canWrapSlot;
     unsigned long long _valueChangedHandlerSlot;
     unsigned long long _valueSlot;
-    unsigned long long _timestampSlot;
+    unsigned long long _valueTimestampSlot;
 }
 
-- (void)invokeCallbacksForInputChangedState:(unsigned char)arg1 withElement:(id)arg2;
++ (unsigned short)updateContextSize;
+@property(readonly, copy) NSSet *sources;
 @property(readonly) double lastValueLatency;
 @property(readonly) double lastValueTimestamp;
 @property(readonly) _Bool canWrap;
 @property(readonly, getter=isAnalog) _Bool analog;
 @property(readonly) float value;
 @property(copy) CDUnknownBlockType valueDidChangeHandler;
+- (void)postCommit:(const void *)arg1 sender:(id)arg2;
+- (void)preCommit:(const void *)arg1 sender:(id)arg2;
+- (_Bool)update:(void *)arg1 forUsages:(unsigned long long)arg2 with:(id)arg3;
+- (id)initWithTemplate:(id)arg1 context:(id)arg2;
+- (id)initWithParameters:(id)arg1;
 - (id)init;
-- (id)initWith:(id)arg1 context:(id)arg2;
-- (id)initWithParams:(struct _GCDevicePhysicalInputAxisInputParams)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

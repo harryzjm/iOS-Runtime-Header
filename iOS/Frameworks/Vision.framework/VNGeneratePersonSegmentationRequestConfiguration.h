@@ -10,9 +10,11 @@ __attribute__((visibility("hidden")))
     _Bool _useTiling;
     _Bool _keepRawOutputMask;
     unsigned int _outputPixelFormat;
+    float _minimumConfidence;
     unsigned long long _qualityLevel;
 }
 
+@property(nonatomic) float minimumConfidence; // @synthesize minimumConfidence=_minimumConfidence;
 @property(nonatomic) _Bool keepRawOutputMask; // @synthesize keepRawOutputMask=_keepRawOutputMask;
 @property(nonatomic) _Bool useTiling; // @synthesize useTiling=_useTiling;
 @property(nonatomic) unsigned int outputPixelFormat; // @synthesize outputPixelFormat=_outputPixelFormat;

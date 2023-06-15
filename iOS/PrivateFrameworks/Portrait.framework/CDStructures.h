@@ -4,16 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#pragma mark Named Structures
+@class MISSING_TYPE;
 
-struct CGAffineTransform {
-    double _field1;
-    double _field2;
-    double _field3;
-    double _field4;
-    double _field5;
-    double _field6;
-};
+#pragma mark Named Structures
 
 struct CGPoint {
     double x;
@@ -180,6 +173,10 @@ typedef struct {
     unsigned long long _field1;
     unsigned long long _field2;
 } CDStruct_4bcfbbae;
+
+typedef struct {
+    MISSING_TYPE *_field1[3];
+} CDStruct_d80e62f2;
 
 typedef struct {
     float _field1;

@@ -10,7 +10,8 @@
 
 @interface _TtC9JetEngine19OperationTranscript : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *_buffer;
+    MISSING_TYPE *buffer;
+    MISSING_TYPE *bufferLock;
 }
 
 @end

@@ -11,6 +11,7 @@
 - (id)SBUI_systemApertureDescription;
 @property(readonly, nonatomic) unsigned long long SBUISA_minimalViewLayoutAxis;
 @property(readonly, nonatomic) struct CGRect SBUISA_obstructedAreaLayoutFrame;
+@property(readonly, nonatomic) struct CGRect SBUISA_resolvedDetachedMinimalViewFrame;
 @property(readonly, nonatomic) struct CGRect SBUISA_resolvedMinimalViewFrame;
 @property(readonly, nonatomic) struct CGRect SBUISA_resolvedTrailingViewFrame;
 @property(readonly, nonatomic) struct CGRect SBUISA_resolvedLeadingViewFrame;

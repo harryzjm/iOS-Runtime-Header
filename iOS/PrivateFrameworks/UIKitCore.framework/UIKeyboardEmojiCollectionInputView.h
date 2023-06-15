@@ -56,6 +56,10 @@ __attribute__((visibility("hidden")))
 @property(readonly) _Bool isDraggingInputView; // @synthesize isDraggingInputView=_isDraggingInputView;
 @property __weak UIKeyboardEmojiCategory *category; // @synthesize category=_category;
 - (long long)updateToCategoryWithOffsetPercentage:(double)arg1;
+- (double)scrollingEndPoint;
+- (double)scrollingStartPoint;
+- (double)distanceInScrollingDirection:(struct CGSize)arg1;
+- (double)pointInScrollingDirection:(struct CGPoint)arg1;
 - (void)updateOffsetForSearchResults;
 - (void)updateToCategory:(long long)arg1;
 - (void)didMoveToWindow;
@@ -100,6 +104,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)handleKeyEvent:(id)arg1;
 - (long long)emojiCategoryTypeForSection:(long long)arg1;
 - (_Bool)showingRecents;
+- (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 referenceSizeForHeaderInSection:(long long)arg3;
 - (id)collectionView:(id)arg1 viewForSupplementaryElementOfKind:(id)arg2 atIndexPath:(id)arg3;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;

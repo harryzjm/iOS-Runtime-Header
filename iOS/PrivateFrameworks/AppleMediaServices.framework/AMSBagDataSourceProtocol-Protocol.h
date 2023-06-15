@@ -13,11 +13,13 @@
 @property(readonly, copy, nonatomic) NSString *profileVersion;
 @property(readonly, copy, nonatomic) NSString *profile;
 @property(readonly, copy, nonatomic) AMSProcessInfo *processInfo;
+@property(readonly, copy, nonatomic) NSString *bagLoadingPartialIdentifier;
 @property(readonly, nonatomic, getter=isLoaded) _Bool loaded;
 @property(readonly, nonatomic) NSDate *expirationDate;
+- (void)valueForURLVariable:(NSString *)arg1 account:(ACAccount *)arg2 completion:(void (^)(NSString *))arg3;
 - (NSString *)valueForURLVariable:(NSString *)arg1 account:(ACAccount *)arg2;
 - (void)setDefaultValue:(id <NSObject>)arg1 forKey:(NSString *)arg2;
-- (void)loadWithCompletion:(void (^)(NSDictionary *, NSError *))arg1;
+- (void)loadWithCompletion:(void (^)(AMSBagDataSourceLoadResult *, NSError *))arg1;
 - (id <NSObject>)defaultValueForKey:(NSString *)arg1;
 
 @optional

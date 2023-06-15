@@ -13,12 +13,15 @@
     long long _tokenExpiration;
     CKDPAsset *_asset;
     NSString *_token;
+    _Bool _duplicateAsset;
     struct {
         unsigned int tokenExpiration:1;
+        unsigned int duplicateAsset:1;
     } _has;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool duplicateAsset; // @synthesize duplicateAsset=_duplicateAsset;
 @property(nonatomic) long long tokenExpiration; // @synthesize tokenExpiration=_tokenExpiration;
 @property(retain, nonatomic) CKDPAsset *asset; // @synthesize asset=_asset;
 @property(retain, nonatomic) NSString *token; // @synthesize token=_token;
@@ -31,6 +34,7 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasDuplicateAsset;
 @property(nonatomic) _Bool hasTokenExpiration;
 @property(readonly, nonatomic) _Bool hasAsset;
 @property(readonly, nonatomic) _Bool hasToken;

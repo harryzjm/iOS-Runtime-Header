@@ -6,12 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class GDEntityIdentifier, GDSubEntityIdentifier, NSString;
+@class GDEntityIdentifier, GDRelationshipIdentifier, NSString;
 
-__attribute__((visibility("hidden")))
 @interface GDLocationLink : NSObject
 {
-    GDSubEntityIdentifier *_subEntityIdentifier;
+    GDRelationshipIdentifier *_relationshipIdentifier;
     GDEntityIdentifier *_locationEntityIdentifier;
     NSString *_label;
 }
@@ -19,7 +18,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *label; // @synthesize label=_label;
 @property(readonly, nonatomic) GDEntityIdentifier *locationEntityIdentifier; // @synthesize locationEntityIdentifier=_locationEntityIdentifier;
-@property(readonly, nonatomic) GDSubEntityIdentifier *subEntityIdentifier; // @synthesize subEntityIdentifier=_subEntityIdentifier;
+@property(readonly, nonatomic) GDRelationshipIdentifier *relationshipIdentifier; // @synthesize relationshipIdentifier=_relationshipIdentifier;
 - (id)initWithRelationshipIdTriplesIterator:(id)arg1;
 
 @end

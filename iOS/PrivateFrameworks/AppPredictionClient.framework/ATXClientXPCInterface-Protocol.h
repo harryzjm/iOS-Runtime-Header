@@ -7,6 +7,10 @@
 @class ATXResponse, INIntent, NSArray, NSString;
 
 @protocol ATXClientXPCInterface
+- (void)getWebsitePredictionsForContextType:(NSString *)arg1 limit:(unsigned long long)arg2 reply:(void (^)(NSArray *))arg3;
+- (void)shouldPredictBundleIdForShortcuts:(NSString *)arg1 action:(NSString *)arg2 forPrimaryShortcuts:(_Bool)arg3 reply:(void (^)(_Bool, NSError *))arg4;
+- (void)shouldPredictAppBundleId:(NSString *)arg1 reply:(void (^)(_Bool, NSError *))arg2;
+- (void)approvedSiriKitIntentsWithReply:(void (^)(NSArray *, NSError *))arg1;
 - (void)sortAppsByLaunches:(NSArray *)arg1 reply:(void (^)(NSArray *))arg2;
 - (void)getAppPredictorAssetMappingDescriptionWithReply:(void (^)(NSString *, _Bool))arg1;
 - (void)generateNewAppPredictionsForConsumerSubType:(unsigned char)arg1 intent:(INIntent *)arg2 candidateBundleIdentifiers:(NSArray *)arg3 candidateIntentTypeIdentifiers:(NSArray *)arg4 reply:(void (^)(_Bool))arg5;

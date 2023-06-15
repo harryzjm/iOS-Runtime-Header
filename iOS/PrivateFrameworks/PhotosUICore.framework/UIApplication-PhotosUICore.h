@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIApplication.h>
+#import <UIKitCore/UIApplication.h>
 
 @class UIWindow;
 @protocol PXNotificationSuppressionContextManager;
 
 @interface UIApplication (PhotosUICore)
++ (id)px_sharedApplication;
 - (void)_px_navigateToURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)px_navigateToOneUpShowingAsset:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)px_navigateToRevealDroppedAsset:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

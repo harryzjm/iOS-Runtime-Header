@@ -10,6 +10,7 @@
 
 @interface CKDPAssetUploadTokenRetrieveRequest : PBRequest
 {
+    unsigned long long _options;
     NSMutableArray *_assets;
     NSData *_authPutRequest;
     int _authPutType;
@@ -18,6 +19,7 @@
     CKDPRecordType *_type;
     NSMutableArray *_uploads;
     struct {
+        unsigned int options:1;
         unsigned int authPutType:1;
     } _has;
 }
@@ -27,6 +29,7 @@
 + (Class)assetsType;
 + (id)options;
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long options; // @synthesize options=_options;
 @property(retain, nonatomic) NSData *authPutRequest; // @synthesize authPutRequest=_authPutRequest;
 @property(retain, nonatomic) NSMutableArray *contentRequestHeaders; // @synthesize contentRequestHeaders=_contentRequestHeaders;
 @property(retain, nonatomic) NSMutableArray *uploads; // @synthesize uploads=_uploads;
@@ -44,6 +47,7 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasOptions;
 - (int)StringAsAuthPutType:(id)arg1;
 - (id)authPutTypeAsString:(int)arg1;
 @property(nonatomic) _Bool hasAuthPutType;

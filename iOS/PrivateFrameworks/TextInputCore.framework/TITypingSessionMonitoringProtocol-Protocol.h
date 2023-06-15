@@ -6,10 +6,12 @@
 
 #import <TextInputCore/TIKeyboardInteractionProtocol-Protocol.h>
 
-@class TITypingSessionParams;
+@class NSArray, NSDate, TITypingSession, TITypingSessionParams;
 
 @protocol TITypingSessionMonitoringProtocol <TIKeyboardInteractionProtocol>
+@property(readonly, nonatomic) TITypingSession *currentTypingSession;
 - (void)tearDown;
-- (void)keyboardDidSuspendWithSessionParams:(TITypingSessionParams *)arg1;
+- (void)endSessionWithInteractionObservers:(NSArray *)arg1 sessionParams:(TITypingSessionParams *)arg2 timestamp:(NSDate *)arg3;
+- (NSArray *)resetInteractionObserversForNextSession;
 @end
 

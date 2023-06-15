@@ -6,7 +6,10 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
+@class UIRepeatedAction;
+
 @protocol UIRepeatedActionDelegate <NSObject>
-- (id)repeatedActionWillInvokeWithObject:(id)arg1 forPhase:(unsigned long long)arg2;
+- (id)repeatedAction:(UIRepeatedAction *)arg1 willInvokeWithObject:(id)arg2 forPhase:(unsigned long long)arg3;
+- (_Bool)shouldInvokeRepeatedAction:(UIRepeatedAction *)arg1 forPhase:(unsigned long long)arg2;
 @end
 

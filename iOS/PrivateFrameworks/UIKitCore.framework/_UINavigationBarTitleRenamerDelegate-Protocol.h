@@ -6,11 +6,14 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class _UINavigationBarTitleRenamer, _UINavigationBarTitleRenamerSession;
+@class NSError, NSString, NSURL, _UINavigationBarTitleRenamer, _UINavigationBarTitleRenamerSession;
 
 @protocol _UINavigationBarTitleRenamerDelegate <NSObject>
-- (void)titleRenamer:(_UINavigationBarTitleRenamer *)arg1 didEndSession:(_UINavigationBarTitleRenamerSession *)arg2;
-- (void)titleRenamer:(_UINavigationBarTitleRenamer *)arg1 willEndSession:(_UINavigationBarTitleRenamerSession *)arg2;
-- (void)titleRenamer:(_UINavigationBarTitleRenamer *)arg1 willStartSession:(_UINavigationBarTitleRenamerSession *)arg2;
+- (void)titleRenamer:(_UINavigationBarTitleRenamer *)arg1 session:(_UINavigationBarTitleRenamerSession *)arg2 fileRenameDidFail:(NSError *)arg3;
+- (void)titleRenamer:(_UINavigationBarTitleRenamer *)arg1 session:(_UINavigationBarTitleRenamerSession *)arg2 fileRenameDidEnd:(NSURL *)arg3;
+- (void)titleRenamer:(_UINavigationBarTitleRenamer *)arg1 didCancelSession:(_UINavigationBarTitleRenamerSession *)arg2;
+- (void)titleRenamer:(_UINavigationBarTitleRenamer *)arg1 session:(_UINavigationBarTitleRenamerSession *)arg2 didEndRenamingWithTitle:(NSString *)arg3;
+- (_Bool)titleRenamer:(_UINavigationBarTitleRenamer *)arg1 session:(_UINavigationBarTitleRenamerSession *)arg2 shouldEndRenamingWithTitle:(NSString *)arg3;
+- (NSString *)titleRenamer:(_UINavigationBarTitleRenamer *)arg1 session:(_UINavigationBarTitleRenamerSession *)arg2 willBeginRenamingWithTitle:(NSString *)arg3 selectedRange:(inout struct _NSRange *)arg4;
 @end
 

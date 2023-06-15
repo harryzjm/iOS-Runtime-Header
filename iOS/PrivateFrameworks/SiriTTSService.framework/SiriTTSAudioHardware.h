@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
     _Bool _isBluetooth;
     _Bool _isAppleProduct;
+    float _volume;
     NSString *_routeType;
     long long _vendorId;
     long long _productId;
@@ -20,6 +21,7 @@ __attribute__((visibility("hidden")))
 
 + (id)defaultOutput;
 - (void).cxx_destruct;
+@property(readonly) float volume; // @synthesize volume=_volume;
 @property(readonly) long long productId; // @synthesize productId=_productId;
 @property(readonly) long long vendorId; // @synthesize vendorId=_vendorId;
 @property(readonly) _Bool isAppleProduct; // @synthesize isAppleProduct=_isAppleProduct;

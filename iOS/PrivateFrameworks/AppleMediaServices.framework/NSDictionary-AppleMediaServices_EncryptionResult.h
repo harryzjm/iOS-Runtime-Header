@@ -6,11 +6,22 @@
 
 #import <Foundation/NSDictionary.h>
 
-@class NSString;
+@class NSNumber, NSString;
 
 @interface NSDictionary (AppleMediaServices_EncryptionResult)
 + (id)ams_dictionaryWithEncryptionResult:(CDStruct_0f015c83)arg1;
 - (CDStruct_0f015c83)ams_encryptionResult;
+@property(readonly, nonatomic) NSString *ams_secureToken;
+@property(readonly, nonatomic) NSDictionary *ams_privacyAcknowledgement;
+@property(readonly, nonatomic) NSString *ams_lastName;
+@property(readonly, nonatomic) _Bool ams_isManagedAppleID;
+@property(readonly, nonatomic) NSString *ams_firstName;
+@property(readonly, nonatomic) long long ams_errorCode;
+@property(readonly, nonatomic) NSNumber *ams_DSID;
+@property(readonly, nonatomic) NSString *ams_creditsString;
+@property(readonly, nonatomic) NSString *ams_altDSID;
+@property(readonly, nonatomic) NSString *ams_username;
+@property(readonly, nonatomic) NSDictionary *ams_accountFlags;
 - (id)ams_dictionaryRemovingKeys:(id)arg1;
 - (id)ams_objectForKey:(id)arg1 defaultValue:(id)arg2;
 - (id)ams_objectForCaseInsensitiveKey:(id)arg1;
@@ -24,6 +35,7 @@
 - (id)ams_arrayUsingTransform:(CDUnknownBlockType)arg1;
 - (id)ams_sanitizedForSecureCoding;
 @property(readonly, nonatomic) NSString *hashedDescription;
+- (id)ams_keysForChangedValuesComparedToDictionary:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

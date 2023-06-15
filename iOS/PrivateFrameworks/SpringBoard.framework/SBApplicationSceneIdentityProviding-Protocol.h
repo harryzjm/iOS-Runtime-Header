@@ -14,7 +14,7 @@
 - (FBSSceneIdentity *)sceneIdentityForApplication:(SBApplication *)arg1 uniqueIdentifier:(NSString *)arg2 targetContentIdentifier:(NSString *)arg3;
 - (FBSSceneIdentity *)sceneIdentityForApplication:(SBApplication *)arg1 excludingIdentifiers:(NSSet *)arg2;
 - (FBSSceneIdentity *)sceneIdentityForApplication:(SBApplication *)arg1 uniqueIdentifier:(NSString *)arg2;
-- (FBSSceneIdentity *)sceneIdentityForApplication:(SBApplication *)arg1 targetContentIdentifier:(NSString *)arg2 allowCanMatches:(_Bool)arg3 preferNewScene:(_Bool)arg4 allowSceneCreation:(_Bool)arg5 visibleIdentifiers:(NSSet *)arg6 preferedDisplay:(FBSDisplayIdentity *)arg7;
+- (FBSSceneIdentity *)sceneIdentityForApplication:(SBApplication *)arg1 targetContentIdentifier:(NSString *)arg2 allowCanMatches:(_Bool)arg3 preferNewScene:(_Bool)arg4 allowSceneCreation:(_Bool)arg5 visibleIdentifiers:(NSSet *)arg6 preferredDisplay:(FBSDisplayIdentity *)arg7;
 - (FBSSceneIdentity *)sceneIdentityForApplication:(SBApplication *)arg1 targetContentIdentifier:(NSString *)arg2 allowCanMatches:(_Bool)arg3 preferNewScene:(_Bool)arg4 visibleIdentifiers:(NSSet *)arg5;
 - (FBSSceneIdentity *)sceneIdentityForApplication:(SBApplication *)arg1 targetContentIdentifier:(NSString *)arg2;
 - (FBSSceneIdentity *)sceneIdentityForApplication:(SBApplication *)arg1;

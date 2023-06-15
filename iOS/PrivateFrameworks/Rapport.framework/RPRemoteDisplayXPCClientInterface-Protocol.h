@@ -9,6 +9,7 @@
 @protocol RPRemoteDisplayXPCClientInterface
 
 @optional
+- (void)remoteDisplayNotifyDiscoverySessionState:(unsigned char)arg1 forDevice:(NSString *)arg2 startReason:(unsigned char)arg3;
 - (void)remoteDisplayReceivedRequestID:(NSString *)arg1 request:(NSDictionary *)arg2 options:(NSDictionary *)arg3 responseHandler:(void (^)(NSDictionary *, NSDictionary *, NSError *))arg4 sessionID:(NSNumber *)arg5;
 - (void)remoteDisplayReceivedRequestID:(NSString *)arg1 request:(NSDictionary *)arg2 options:(NSDictionary *)arg3 responseHandler:(void (^)(NSDictionary *, NSDictionary *, NSError *))arg4;
 - (void)remoteDisplayReceivedEventID:(NSString *)arg1 event:(NSDictionary *)arg2 options:(NSDictionary *)arg3 sessionID:(NSNumber *)arg4;
@@ -20,6 +21,7 @@
 - (void)remoteDisplayChangedDevice:(RPRemoteDisplayDevice *)arg1 changes:(unsigned int)arg2;
 - (void)remoteDisplayLostDevice:(RPRemoteDisplayDevice *)arg1;
 - (void)remoteDisplayFoundDevice:(RPRemoteDisplayDevice *)arg1;
+- (void)remoteDisplayDeviceSelected:(RPRemoteDisplayDevice *)arg1;
 - (void)remoteDisplayAuthCompleted:(NSError *)arg1;
 - (void)remoteDisplayPromptForPasswordWithFlags:(unsigned int)arg1 throttleSeconds:(int)arg2;
 - (void)remoteDisplayHidePasswordWithFlags:(unsigned int)arg1;

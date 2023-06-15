@@ -11,19 +11,21 @@
 @interface _TtC15SeymourServices13CatalogSystem : _TtCs12_SwiftObject
 {
     MISSING_TYPE *archivedSessionDataStore;
-    MISSING_TYPE *assetBundleProgressPublisher;
     MISSING_TYPE *assetDataStore;
-    MISSING_TYPE *bookmarkDataStore;
+    MISSING_TYPE *bagConsumer;
     MISSING_TYPE *calendar;
     MISSING_TYPE *catalogDataStore;
+    MISSING_TYPE *catalogLockupBuilder;
     MISSING_TYPE *catalogScriptClient;
+    MISSING_TYPE *catalogSyncCoordinator;
     MISSING_TYPE *configurationDataStore;
     MISSING_TYPE *contentRestrictionObserver;
-    MISSING_TYPE *deviceRegistry;
     MISSING_TYPE *eventHub;
     MISSING_TYPE *persistenceStore;
     MISSING_TYPE *platform;
     MISSING_TYPE *serviceSubscriptionProviderBroker;
+    MISSING_TYPE *storefrontObserver;
+    MISSING_TYPE *syncCoordinator;
     MISSING_TYPE *subscriptionToken;
 }
 

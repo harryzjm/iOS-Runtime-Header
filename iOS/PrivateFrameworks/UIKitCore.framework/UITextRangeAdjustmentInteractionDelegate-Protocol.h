@@ -6,8 +6,8 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class UITextRangeAdjustmentInteraction;
-@protocol UICoordinateSpace;
+@class UITextRangeAdjustmentInteraction, UIView;
+@protocol UICoordinateSpace, _UITextSelectionWidgetAnimating;
 
 @protocol UITextRangeAdjustmentInteractionDelegate <NSObject>
 - (void)cancelAutoscroll;
@@ -18,7 +18,8 @@
 - (void)textRangeAdjustmentInteraction:(UITextRangeAdjustmentInteraction *)arg1 didEndAtPoint:(struct CGPoint)arg2;
 - (void)textRangeAdjustmentInteraction:(UITextRangeAdjustmentInteraction *)arg1 selectionMoved:(struct CGPoint)arg2 withTouchPoint:(struct CGPoint)arg3;
 - (void)textRangeAdjustmentInteraction:(UITextRangeAdjustmentInteraction *)arg1 didBeginAtPoint:(struct CGPoint)arg2;
-- (struct CGRect)endEdge;
-- (struct CGRect)startEdge;
+- (UIView<_UITextSelectionWidgetAnimating> *)textRangeAdjustmentViewForEdge:(unsigned long long)arg1;
+- (struct CGRect)paddedTextRangeAdjustmentHitRegionForEdge:(unsigned long long)arg1 precision:(unsigned long long)arg2;
+- (struct CGRect)textRangeAdjustmentRectForEdge:(unsigned long long)arg1;
 @end
 

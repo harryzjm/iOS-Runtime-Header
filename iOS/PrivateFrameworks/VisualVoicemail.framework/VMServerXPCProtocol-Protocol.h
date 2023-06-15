@@ -8,9 +8,10 @@
 #import <VisualVoicemail/VMGreetingManagerXPCServer-Protocol.h>
 #import <VisualVoicemail/VMMessageManagerXPCServer-Protocol.h>
 
-@class NSArray, NSProgress, NSString;
+@class NSArray, NSProgress, NSString, VMVoicemail;
 
 @protocol VMServerXPCProtocol <VMAccountManagerXPCServer, VMGreetingManagerXPCServer, VMMessageManagerXPCServer>
+- (void)insertVoicemail:(VMVoicemail *)arg1;
 - (void)obliterate;
 - (void)reportTranscriptionRatedAccurate:(_Bool)arg1 forIdentifier:(long long)arg2;
 - (void)reportTranscriptionProblemForIdentifier:(long long)arg1;
@@ -27,5 +28,6 @@
 - (void)synchronize;
 - (NSProgress *)requestTranscriptionProgress:(void (^)(_Bool))arg1;
 - (void)requestInitialState:(void (^)(VMVoicemailCapabilities *, NSOrderedSet *, _Bool, _Bool, _Bool, _Bool))arg1;
+- (void)ping:(void (^)(_Bool))arg1;
 @end
 

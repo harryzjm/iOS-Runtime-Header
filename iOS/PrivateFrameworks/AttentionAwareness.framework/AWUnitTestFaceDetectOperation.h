@@ -15,19 +15,24 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_awQueue;
     NSObject<OS_dispatch_source> *_awInitTimer;
     NSObject<OS_dispatch_source> *_deadlineTimer;
+    NSObject<OS_dispatch_source> *_streamingTimer;
     _Bool _started;
     _Bool _finished;
+    _Bool _errorState;
     AWUnitTestPearlDevice *_unitTestDevice;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak AWUnitTestPearlDevice *unitTestDevice; // @synthesize unitTestDevice=_unitTestDevice;
-- (void)awSetFaceDetectError;
+- (void)awSetFaceDetectError:(_Bool)arg1;
 - (void)awSetFaceFound;
 - (void)cancel;
 - (void)awDeliverFaceFound;
 - (void)awFinishWithReason:(long long)arg1;
 - (void)startWithReply:(CDUnknownBlockType)arg1;
+- (void)awDeliverStreamingEvent;
+- (void)setErrorState:(_Bool)arg1;
+- (_Bool)startStreamWithError:(id *)arg1;
 - (_Bool)startWithError:(id *)arg1;
 - (long long)state;
 - (void)dealloc;

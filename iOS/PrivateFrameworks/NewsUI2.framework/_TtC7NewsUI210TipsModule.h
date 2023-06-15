@@ -12,9 +12,11 @@
 {
     MISSING_TYPE *resolver;
     MISSING_TYPE *appConfigurationManager;
+    MISSING_TYPE *newsPlusLabelConfigProvider;
     MISSING_TYPE *notificationService;
     MISSING_TYPE *featureAvailability;
     MISSING_TYPE *userInfo;
+    MISSING_TYPE *subscriptionController;
     MISSING_TYPE *authorizationStatus;
 }
 

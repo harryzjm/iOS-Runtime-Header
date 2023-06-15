@@ -31,7 +31,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak id <_HMMediaSessionDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly) HMAudioControl *audioControl; // @synthesize audioControl=_audioControl;
 @property(readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
-- (_Bool)_mergeWithNewObject:(id)arg1;
+- (_Bool)mergeFromNewObject:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
 - (void)_handleSessionRouteUIDUpdated:(id)arg1;

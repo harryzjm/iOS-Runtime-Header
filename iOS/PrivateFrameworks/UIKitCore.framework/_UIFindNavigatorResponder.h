@@ -68,6 +68,8 @@ __attribute__((visibility("hidden")))
 - (_Bool)_disallowsPresentationOfKeyboardShortcutHUD;
 - (void)_didChangeInputModes:(id)arg1;
 - (void)_willChangeInputModes:(id)arg1;
+- (id)textInputMode;
+- (id)textInputContextIdentifier;
 - (id)nextFirstResponder;
 - (void)becomeFirstResponderAndFocusFindField;
 - (id)inputAccessoryViewController;
@@ -110,6 +112,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool hasDefaultContents;
 @property(readonly) unsigned long long hash;
 @property(nonatomic) _Bool hidePrediction;
+@property(nonatomic) long long inlineCompletionType;
+@property(nonatomic) long long inlinePredictionType;
 @property(retain, nonatomic) UIInputContextHistory *inputContextHistory;
 @property(readonly, nonatomic) id insertDictationResultPlaceholder;
 @property(retain, nonatomic) UIColor *insertionPointColor;

@@ -6,9 +6,9 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class NSDictionary, SBDisplayAssertionCoordinator;
+@class FBSDisplayIdentity, SBDisplayAssertionCoordinator, SBDisplayAssertionPreferences;
 
 @protocol SBDisplayAssertionCoordinatorDelegate <NSObject>
-- (void)assertionCoordinator:(SBDisplayAssertionCoordinator *)arg1 activeAssertionPreferencesHaveChanged:(NSDictionary *)arg2;
+- (void)assertionCoordinator:(SBDisplayAssertionCoordinator *)arg1 updatedAssertionPreferences:(SBDisplayAssertionPreferences *)arg2 oldPreferences:(SBDisplayAssertionPreferences *)arg3 forDisplay:(FBSDisplayIdentity *)arg4;
 @end
 

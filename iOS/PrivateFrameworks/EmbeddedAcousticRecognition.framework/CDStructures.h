@@ -24,13 +24,14 @@ struct basic_string<char, std::char_traits<char>, std::allocator<char>> {
                 struct __long {
                     char *__data_;
                     unsigned long long __size_;
-                    unsigned long long __cap_;
+                    unsigned int __cap_:63;
+                    unsigned int __is_long_:1;
                 } __l;
                 struct __short {
                     char __data_[23];
-                    struct {
-                        unsigned char __size_;
-                    } ;
+                    unsigned char __padding_[0];
+                    unsigned int __size_:7;
+                    unsigned int __is_long_:1;
                 } __s;
                 struct __raw {
                     unsigned long long __words[3];
@@ -53,7 +54,7 @@ struct mersenne_twister_engine<unsigned int, 32UL, 624UL, 397UL, 31UL, 256748361
 struct optional<std::string> {
     union {
         char _field1;
-        basic_string_0ec669f3 _field2;
+        basic_string_5909a4e2 _field2;
     } _field1;
     _Bool _field2;
 };
@@ -105,13 +106,14 @@ typedef struct basic_string<char, std::char_traits<char>, std::allocator<char>> 
                 struct __long {
                     char *__data_;
                     unsigned long long __size_;
-                    unsigned long long __cap_;
+                    unsigned int __cap_:63;
+                    unsigned int __is_long_:1;
                 } __l;
                 struct __short {
                     char __data_[23];
-                    struct {
-                        unsigned char __size_;
-                    } ;
+                    unsigned char __padding_[0];
+                    unsigned int __size_:7;
+                    unsigned int __is_long_:1;
                 } __s;
                 struct __raw {
                     unsigned long long __words[3];
@@ -119,7 +121,7 @@ typedef struct basic_string<char, std::char_traits<char>, std::allocator<char>> 
             } ;
         } __value_;
     } __r_;
-} basic_string_0ec669f3;
+} basic_string_5909a4e2;
 
 typedef struct basic_string_view<char, std::char_traits<char>> {
     char *_field1;
@@ -129,10 +131,10 @@ typedef struct basic_string_view<char, std::char_traits<char>> {
 typedef struct optional<std::string> {
     union {
         char _field1;
-        basic_string_0ec669f3 _field2;
+        basic_string_5909a4e2 _field2;
     } _field1;
     _Bool _field2;
-} optional_bb4384b7;
+} optional_4b90f83f;
 
 typedef struct shared_ptr<EARContinuousListeningResultHelper> {
     struct EARContinuousListeningResultHelper *__ptr_;

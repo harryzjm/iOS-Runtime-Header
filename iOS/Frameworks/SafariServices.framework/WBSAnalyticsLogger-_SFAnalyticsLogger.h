@@ -7,25 +7,11 @@
 #import <SafariSharedUI/WBSAnalyticsLogger.h>
 
 @interface WBSAnalyticsLogger (_SFAnalyticsLogger)
+- (void)_sf_reportPrivateWindowStatus:(long long)arg1;
 - (void)_sf_didPerformFormatMenuAction:(long long)arg1 provenance:(long long)arg2;
 - (void)_sf_reportCapsuleLayoutStyle:(long long)arg1 backgroundColorInTabBarEnabled:(_Bool)arg2;
-- (void)_sf_performExtensionsReportIfNecessary;
+- (void)_sf_performExtensionsReportIfNecessaryWithExtensionsController:(id)arg1;
 - (void)_sf_didAddFavoriteFromShareSheet;
-- (void)_sf_didCloseTabsAutomaticallyWithCount:(unsigned long long)arg1 tabClosingInterval:(id)arg2;
-- (void)_sf_reportAutomaticTabClosingInterval:(id)arg1;
-- (void)_sf_didChooseIntervalFromAutomaticTabClosingFirstTimeExperiencePrompt:(id)arg1;
 - (void)_sf_didBeginDownloadWithMIMEType:(id)arg1 uti:(id)arg2 downloadType:(long long)arg3 promptType:(long long)arg4 browserPersona:(long long)arg5;
-- (void)_sf_didTerminateWebProcessBeforeNavigationForReason:(int)arg1;
-- (void)_sf_activatedHomeScreenQuickAction:(int)arg1;
-- (void)_sf_authenticatedForAutoFillWithCategory:(int)arg1 onPageLoad:(_Bool)arg2 status:(int)arg3 error:(id)arg4 client:(int)arg5;
-- (void)_sf_authenticatedForAutoFillWithCategory:(int)arg1 onPageLoad:(_Bool)arg2 status:(int)arg3 client:(int)arg4;
-- (void)_sf_reportAutoFillRequiresAuthenticationPreference:(_Bool)arg1;
-- (void)_sf_launchedOrResumedSafariWhileInPrivateBrowsing:(_Bool)arg1;
-- (void)_sf_safariViewControllerDidPresentFromHostApp:(id)arg1;
-- (void)_sf_safariViewControllerDidDismissWithMethod:(int)arg1;
-- (void)_sf_longTappedOnSafariViewControllerToolbarButton:(int)arg1;
-- (void)_sf_longTappedOnSafariToolbarButton:(int)arg1;
-- (void)_sf_twoFingerTappedLinkWithOutcome:(int)arg1;
-- (void)_sf_enteredTwoUpUsingMethod:(int)arg1;
 @end
 

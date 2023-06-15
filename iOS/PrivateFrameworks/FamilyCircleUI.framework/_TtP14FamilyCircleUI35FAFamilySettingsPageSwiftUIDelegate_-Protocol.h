@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class FAFamilyMember, NSURL;
+@class FAFamilyMember, NSString, NSURL;
 
 @protocol _TtP14FamilyCircleUI35FAFamilySettingsPageSwiftUIDelegate_
+- (void)didTapAddRemoteGuardianFor:(FAFamilyMember *)arg1;
 - (void)pendingFamilyMemberWasTapped:(FAFamilyMember *)arg1;
 - (void)addFamilyMemberButtonWasTapped;
 - (void)stopFamilySharing;
-- (void)didSelectSubscriptionWithURLMemberDetails:(NSURL *)arg1 familyMemberDSID:(long long)arg2 completion:(void (^)(void))arg3;
+- (void)didSelectSubscriptionWithURLMemberDetails:(NSURL *)arg1 familyMemberDSID:(NSString *)arg2 serviceName:(long long)arg3 completion:(void (^)(void))arg4;
 - (void)didSelectSubscriptionWithURL:(NSURL *)arg1 completion:(void (^)(void))arg2;
 @end
 

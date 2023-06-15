@@ -45,7 +45,7 @@
 @property(readonly, nonatomic) struct CGAffineTransform layoutToMaskTransform;
 @property(readonly, nonatomic) struct CGAffineTransform layoutToImageTransform;
 - (struct CGSize)sizeOfFrameRectIncludingCoverage;
-@property(readonly, nonatomic) const struct CGPath *pathToStroke;
+@property(readonly, nonatomic) struct CGPath *pathToStroke;
 @property(readonly, nonatomic) _Bool hasMaskingPath;
 @property(readonly, nonatomic) TSDLayoutGeometry *imageGeometryInRoot;
 @property(readonly, nonatomic) TSDLayoutGeometry *originalImageGeometry;

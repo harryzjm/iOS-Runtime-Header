@@ -7,15 +7,15 @@
 #import <HomeKitDaemon/MKFTimerTriggerPublicExtensions-Protocol.h>
 #import <HomeKitDaemon/MKFTrigger-Protocol.h>
 
-@class MKFTimerTriggerDatabaseID, NSData, NSDate, NSNumber, NSString;
+@class MKFTimerTriggerDatabaseID, NSDate, NSDateComponents, NSNumber, NSString, NSTimeZone;
 
 @protocol MKFTimerTrigger <MKFTrigger, MKFTimerTriggerPublicExtensions>
 @property(readonly, copy, nonatomic) MKFTimerTriggerDatabaseID *databaseID;
 @property(copy, nonatomic) NSNumber *significantEventOffsetSeconds;
 @property(copy, nonatomic) NSString *significantEvent;
 @property(copy, nonatomic) NSNumber *recurrenceDays;
-@property(retain, nonatomic) NSData *fireRepeatInterval;
-@property(retain, nonatomic) NSData *fireDateTimeZone;
+@property(retain, nonatomic) NSDateComponents *fireRepeatInterval;
+@property(retain, nonatomic) NSTimeZone *fireDateTimeZone;
 @property(copy, nonatomic) NSDate *fireDate;
 @end
 

@@ -4,12 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class MISSING_TYPE;
+
 @interface RSKeyframeMetaExtend
 {
-    CDStruct_b6daec9f _samplePoints;
+    struct {
+        MISSING_TYPE *points[30];
+    } _samplePoints;
 }
-
-@property CDStruct_b6daec9f samplePoints; // @synthesize samplePoints=_samplePoints;
 
 @end
 

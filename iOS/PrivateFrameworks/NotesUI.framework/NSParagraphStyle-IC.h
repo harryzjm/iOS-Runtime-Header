@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/NSParagraphStyle.h>
+#import <UIKitCore/NSParagraphStyle.h>
 
 @interface NSParagraphStyle (IC)
 + (id)ic_mutableDefaultParagraphStyle;

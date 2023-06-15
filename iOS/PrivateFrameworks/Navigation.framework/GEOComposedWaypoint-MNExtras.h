@@ -25,6 +25,7 @@
 - (id)navDisplayName;
 - (id)navDisplayAddress;
 - (id)directionsListAddress;
-@property(readonly, nonatomic) int waypointCategory;
+- (id)bestSpokenName;
+- (id)bestDisplayName:(_Bool)arg1;
 @end
 

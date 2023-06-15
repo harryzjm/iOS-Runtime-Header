@@ -6,10 +6,10 @@
 
 #import <FeedbackCore/NSObject-Protocol.h>
 
-@class FBKUserLoginInfo;
+@class FBKSUserLoginInfo;
 
 @protocol FBKLoginManagerDelegate <NSObject>
 - (void)didLogOutWithCompletion:(void (^)(void))arg1;
-- (void)didLogInWithLoginUserInfo:(FBKUserLoginInfo *)arg1 completion:(void (^)(void))arg2;
+- (void)didLogInWithLoginUserInfo:(FBKSUserLoginInfo *)arg1 completion:(void (^)(void))arg2;
 @end
 

@@ -12,6 +12,7 @@
 - (_Bool)_shouldSuppressForDelegate:(UIResponder *)arg1;
 
 @optional
+- (_Bool)_shouldSuppressAssistantBarLeadingItemsForDelegate:(UIResponder *)arg1;
 - (_Bool)_shouldSuppressAssistantBarForDelegate:(UIResponder *)arg1;
 @end
 

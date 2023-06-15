@@ -12,13 +12,14 @@
 - (id)SBUISA_UIColorForSetting:(unsigned long long)arg1;
 - (unsigned long long)SBUISA_presentationBehaviorsForSetting:(unsigned long long)arg1;
 - (long long)SBUISA_customLayoutModeforSetting:(unsigned long long)arg1;
-- (unsigned long long)SBUISA_statusBarStyleOverridesForSetting:(unsigned long long)arg1;
+- (id)SBUISA_backgroundActivityIdentifiersForSetting:(unsigned long long)arg1;
 - (struct NSDirectionalEdgeInsets)SBUISA_directionalEdgeInsetsforSetting:(unsigned long long)arg1;
 - (unsigned long long)SBUISA_renderingIdforSetting:(unsigned long long)arg1;
 - (unsigned int)SBUISA_contextIdforSetting:(unsigned long long)arg1;
 - (long long)SBUISA_layoutModeforSetting:(unsigned long long)arg1;
 - (struct CGSize)SBUISA_CGSizeforSetting:(unsigned long long)arg1;
 - (struct CGRect)SBUISA_CGRectforSetting:(unsigned long long)arg1;
+- (id)SBUISA_BSActionforSetting:(unsigned long long)arg1;
 - (id)SBUISA_URLforSetting:(unsigned long long)arg1;
 - (id)SBUISA_stringforSetting:(unsigned long long)arg1;
 - (long long)SBUISA_contentRoleforSetting:(unsigned long long)arg1;

@@ -32,6 +32,7 @@
 - (void)_stopObservingAnnotation;
 - (void)_startObservingAnnotation;
 - (void)_addHandleSublayerAtPoint:(struct CGPoint)arg1 withStyle:(unsigned long long)arg2;
+- (id)handleSublayerWithStyle:(unsigned long long)arg1;
 - (void)updateSublayersWithScale:(double)arg1;
 - (void)updateAdornmentElements;
 - (void)updatePixelAlignment;

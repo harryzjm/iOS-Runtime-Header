@@ -24,6 +24,8 @@ __attribute__((visibility("hidden")))
     _UINavigationBarLargeTitleViewLayout *_fromLargeTitleLayout;
     _UINavigationBarLargeTitleViewLayout *_toLargeTitleLayout;
     double _backgroundAlpha;
+    double _twoPartAnimationBaseDuration;
+    double _twoPartAnimationOverlapDuration;
     int _largeTitleTransitionType;
     long long _apiVersion;
     struct {

@@ -11,10 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)fetchRequest;
 
 // Remaining properties
 @property(retain, nonatomic) VUIVideoManagedObject *video; // @dynamic video;
-
 @end
 

@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)init;
-- (id)stringForLocation:(id)arg1;
+- (id)stringForLocation:(id)arg1 formatterForStepSize:(id)arg2;
 
 @end
 

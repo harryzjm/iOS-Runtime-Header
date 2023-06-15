@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class MUPlaceTileCellConfiguration, NSString, UIImageView;
 @protocol MULabelViewProtocol, MUPlaceTileViewModel;
@@ -20,11 +20,10 @@ __attribute__((visibility("hidden")))
 }
 
 + (struct CGSize)_preferredSizeForViewModel:(id)arg1 cellConfiguration:(id)arg2 maximumMeasurements:(id)arg3;
-+ (struct CGSize)preferredSizeForViewModels:(id)arg1 cellConfiguration:(id)arg2;
++ (struct CGSize)preferredSizeForViewModels:(id)arg1 cellConfiguration:(id)arg2 usingMeasurements:(id)arg3;
 - (void).cxx_destruct;
 @property(retain, nonatomic) id <MUPlaceTileViewModel> viewModel; // @synthesize viewModel=_viewModel;
 - (void)_updateFonts;
-- (void)traitCollectionDidChange:(id)arg1;
 - (void)_updateAppearance;
 - (void)_setupConstraints;
 - (void)_setupSubviews;

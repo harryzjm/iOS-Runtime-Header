@@ -34,9 +34,11 @@ __attribute__((visibility("hidden")))
     long long _initialMovieFragmentSequenceNumber;
     _Bool _producesCombinableFragments;
     _Bool _usesVirtualCaptureCard;
+    _Bool _requiresInProcessOperation;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool requiresInProcessOperation; // @synthesize requiresInProcessOperation=_requiresInProcessOperation;
 @property(nonatomic) _Bool usesVirtualCaptureCard; // @synthesize usesVirtualCaptureCard=_usesVirtualCaptureCard;
 @property(nonatomic) _Bool producesCombinableFragments; // @synthesize producesCombinableFragments=_producesCombinableFragments;
 @property(nonatomic) long long initialMovieFragmentSequenceNumber; // @synthesize initialMovieFragmentSequenceNumber=_initialMovieFragmentSequenceNumber;

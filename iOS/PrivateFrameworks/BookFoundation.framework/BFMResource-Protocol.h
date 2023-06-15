@@ -9,6 +9,6 @@
 @class NSString;
 
 @protocol BFMResource <NSObject>
-@property(nonatomic, readonly) NSString *id;
+@property(readonly, nonatomic) NSString *id;
 @end
 

@@ -10,6 +10,7 @@
 
 @protocol SBUILockStateProvider <NSObject>
 - (void)coverSheetPresentationManager:(SBCoverSheetPresentationManager *)arg1 unlockWithRequest:(SBLockScreenUnlockRequest *)arg2 completion:(void (^)(_Bool))arg3;
+- (_Bool)isLockScreenPresentationPending;
 - (_Bool)isUILocked;
 @end
 

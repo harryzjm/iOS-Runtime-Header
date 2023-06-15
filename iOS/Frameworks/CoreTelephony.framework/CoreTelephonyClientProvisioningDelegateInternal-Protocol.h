@@ -15,5 +15,7 @@
 - (void)dedicatedBearedRemoved:(NSString *)arg1;
 - (void)dedicatedBearerAdded:(NSString *)arg1 success:(_Bool)arg2;
 - (void)dedicatedBearerSupportChanged:(_Bool)arg1;
+- (void)transportKeysChanged;
+- (void)stewieSupportChanged;
 @end
 

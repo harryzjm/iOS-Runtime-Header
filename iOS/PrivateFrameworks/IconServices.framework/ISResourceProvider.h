@@ -7,55 +7,63 @@
 #import <objc/NSObject.h>
 
 @class IFSymbol, ISCustomRecipe, NSArray, NSData, NSDictionary, NSMutableDictionary, NSString, NSUUID;
-@protocol ISCompositorResource;
+@protocol ISCompositorRecipe, ISCompositorResource;
 
 __attribute__((visibility("hidden")))
 @interface ISResourceProvider : NSObject
 {
     _Bool _isGenericProvider;
     _Bool _placeholder;
-    _Bool _supportsGraphicIcons;
-    _Bool _onlySupportsGraphicIcons;
+    _Bool _resolved;
     unsigned long long _lsDatabaseSequenceNumber;
     NSUUID *_lsDatabaseUUID;
     NSData *_resourceToken;
+    NSArray *_sourceRecordIdentifiers;
     id <ISCompositorResource> _templateIconResource;
     NSDictionary *_decorationResources;
-    unsigned long long _iconShape;
-    NSArray *_sourceRecordIdentifiers;
     unsigned long long _options;
+    id <ISCompositorRecipe> _suggestedRecipe;
+    unsigned long long _platform;
+    unsigned long long _resourceType;
     NSMutableDictionary *_resourcesByResourceKey;
     ISCustomRecipe *_customRecipe;
 }
 
 + (id)resourceProviderWithTypeIdentifier:(id)arg1 options:(unsigned long long)arg2;
-+ (id)resourceProviderWithLSIconReource:(id)arg1;
 + (id)resourceProviderWithRecord:(id)arg1 options:(unsigned long long)arg2;
-+ (id)defaultIconResourceProvider;
++ (id)defaultAppIconResourceProvider;
 + (id)resourceWithTypeCode:(unsigned int)arg1 options:(unsigned long long)arg2;
 + (id)resourceWithTypeIdentifier:(id)arg1 options:(unsigned long long)arg2;
 + (id)resourceWithBundleURL:(id)arg1 iconDictionary:(id)arg2 options:(unsigned long long)arg3;
 + (id)resourceWithRecord:(id)arg1 options:(unsigned long long)arg2;
 - (void).cxx_destruct;
+@property _Bool resolved; // @synthesize resolved=_resolved;
 @property(retain) ISCustomRecipe *customRecipe; // @synthesize customRecipe=_customRecipe;
 @property(readonly) NSMutableDictionary *resourcesByResourceKey; // @synthesize resourcesByResourceKey=_resourcesByResourceKey;
-@property(readonly) _Bool onlySupportsGraphicIcons; // @synthesize onlySupportsGraphicIcons=_onlySupportsGraphicIcons;
-@property(readonly) _Bool supportsGraphicIcons; // @synthesize supportsGraphicIcons=_supportsGraphicIcons;
-@property _Bool placeholder; // @synthesize placeholder=_placeholder;
+@property unsigned long long resourceType; // @synthesize resourceType=_resourceType;
+@property unsigned long long platform; // @synthesize platform=_platform;
+@property(retain) id <ISCompositorRecipe> suggestedRecipe; // @synthesize suggestedRecipe=_suggestedRecipe;
 @property unsigned long long options; // @synthesize options=_options;
-@property(retain) NSArray *sourceRecordIdentifiers; // @synthesize sourceRecordIdentifiers=_sourceRecordIdentifiers;
+@property _Bool placeholder; // @synthesize placeholder=_placeholder;
 @property _Bool isGenericProvider; // @synthesize isGenericProvider=_isGenericProvider;
-@property unsigned long long iconShape; // @synthesize iconShape=_iconShape;
 @property(retain) NSDictionary *decorationResources; // @synthesize decorationResources=_decorationResources;
 @property(readonly) id <ISCompositorResource> templateIconResource; // @synthesize templateIconResource=_templateIconResource;
+@property(retain) NSArray *sourceRecordIdentifiers; // @synthesize sourceRecordIdentifiers=_sourceRecordIdentifiers;
 @property(retain) NSData *resourceToken; // @synthesize resourceToken=_resourceToken;
 @property(retain) NSUUID *lsDatabaseUUID; // @synthesize lsDatabaseUUID=_lsDatabaseUUID;
 @property unsigned long long lsDatabaseSequenceNumber; // @synthesize lsDatabaseSequenceNumber=_lsDatabaseSequenceNumber;
+- (void)resolveIconResource;
+- (void)setPlatformWithBundle:(id)arg1;
+- (_Bool)_findTextResourceWithIconDictionary:(id)arg1;
+- (_Bool)_findCustomRecipeWithIconDictionary:(id)arg1 bundle:(id)arg2;
+- (_Bool)_findBackgroundResourceWithIconDictionary:(id)arg1 bundle:(id)arg2;
+- (_Bool)_findBadgeResourceWithIconDictionary:(id)arg1 bundle:(id)arg2;
 - (_Bool)_isAppleResource;
 @property(readonly) IFSymbol *symbol; // @dynamic symbol;
 @property(readonly) NSData *validationToken; // @dynamic validationToken;
 - (id)resourceNamed:(id)arg1;
 - (id)resourceForKey:(id)arg1;
+@property(retain) id <ISCompositorResource> badgeResource;
 @property(retain) id <ISCompositorResource> iconResource; // @dynamic iconResource;
 - (id)initWithResources:(id)arg1;
 - (id)initWithResource:(id)arg1 templateResource:(id)arg2;

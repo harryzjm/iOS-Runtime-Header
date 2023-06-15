@@ -6,17 +6,17 @@
 
 #import <PhotosGraph/NSObject-Protocol.h>
 
-@class CLLocation, NSDate, NSString, PGGraphMeaningNodeCollection, PGGraphMomentNodeCollection, PGGraphSceneNodeCollection;
+@class CLLocation, NSDate, NSString, PGGraphFeatureNodeCollection, PGGraphMeaningNodeCollection, PGGraphMomentNodeCollection, PGGraphPersonNodeCollection, PGGraphSceneNodeCollection;
 
 @protocol PGUpNextMatchingInfo <NSObject>
-@property(nonatomic, readonly) NSString *debugInfo;
-@property(nonatomic, readonly) NSDate *representativeDate;
-@property(nonatomic, readonly) CLLocation *representativeLocation;
-@property(nonatomic, readonly) _Bool isTripMemory;
-@property(nonatomic, readonly) id memoryFeatureNodes;
-@property(nonatomic, readonly) PGGraphMeaningNodeCollection *meaningNodes;
-@property(nonatomic, readonly) PGGraphSceneNodeCollection *sceneNodes;
-@property(nonatomic, readonly) id personNodes;
-@property(nonatomic, readonly) PGGraphMomentNodeCollection *momentNodes;
+@property(readonly, nonatomic) NSString *debugInfo;
+@property(readonly, nonatomic) NSDate *representativeDate;
+@property(readonly, nonatomic) CLLocation *representativeLocation;
+@property(readonly, nonatomic) _Bool isTripMemory;
+@property(readonly, nonatomic) PGGraphFeatureNodeCollection *memoryFeatureNodes;
+@property(readonly, nonatomic) PGGraphMeaningNodeCollection *meaningNodes;
+@property(readonly, nonatomic) PGGraphSceneNodeCollection *sceneNodes;
+@property(readonly, nonatomic) PGGraphPersonNodeCollection *personNodes;
+@property(readonly, nonatomic) PGGraphMomentNodeCollection *momentNodes;
 @end
 

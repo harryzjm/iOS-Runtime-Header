@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @interface UIView (Workflow)
 - (id)wf_addConstraintsToFillLayoutGuide:(id)arg1 insets:(struct NSDirectionalEdgeInsets)arg2;

@@ -14,7 +14,7 @@
 + (id)cacheTableGroupInDatabase:(id)arg1 containerID:(id)arg2 accountOverrideInfo:(id)arg3;
 + (id)groupIdentifierForContainerID:(id)arg1 accountOverrideInfo:(id)arg2;
 - (id)cacheTable;
-- (id)createTables;
+- (id)createTables:(id *)arg1;
 
 @end
 

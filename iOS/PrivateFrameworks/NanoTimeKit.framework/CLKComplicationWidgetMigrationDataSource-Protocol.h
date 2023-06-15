@@ -7,7 +7,7 @@
 @class CLKComplicationDescriptor, CLKComplicationWidgetMigrationConfiguration, NSString;
 
 @protocol CLKComplicationWidgetMigrationDataSource
-- (void)loadWidgetMigrationsForClientIdentifier:(NSString *)arg1 descriptor:(CLKComplicationDescriptor *)arg2 completion:(void (^)(CLKComplicationWidgetMigrationConfiguration *))arg3;
-- (CLKComplicationWidgetMigrationConfiguration *)cachedWidgetMigrationForClientIdentifier:(NSString *)arg1 descriptor:(CLKComplicationDescriptor *)arg2;
+- (void)loadWidgetMigrationsForAppIdentifier:(NSString *)arg1 descriptor:(CLKComplicationDescriptor *)arg2 completion:(void (^)(CLKComplicationWidgetMigrationConfiguration *, NSError *))arg3;
+- (CLKComplicationWidgetMigrationConfiguration *)cachedWidgetMigrationForAppIdentifier:(NSString *)arg1 descriptor:(CLKComplicationDescriptor *)arg2;
 @end
 

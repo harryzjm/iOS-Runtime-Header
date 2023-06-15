@@ -25,12 +25,12 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) TSCH3DCamera *camera; // @synthesize camera=_camera;
 @property(retain, nonatomic) TSCH3DScene *scene; // @synthesize scene=_scene;
-- (tvec3_17f03ce0)projectPoint:(const void *)arg1;
-- (const void *)p_projector;
+- (tvec3_17f03ce0)projectPoint:(void *)arg1;
+- (void *)p_projector;
 - (tvec3_17f03ce0)samples;
-- (const void *)unitToWorld;
-- (const void *)worldToStage;
-- (const void *)p_stageToWorld;
+- (void *)unitToWorld;
+- (void *)worldToStage;
+- (void *)p_stageToWorld;
 - (id)accessor;
 - (void)resetWithScene:(id)arg1 camera:(id)arg2;
 

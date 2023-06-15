@@ -12,7 +12,6 @@
 @property(retain, nonatomic) NSString *roadName;
 @property(nonatomic) _Bool suppressNames;
 @property(readonly, nonatomic) long long context;
-- (NSArray *)instructionForStage:(unsigned long long)arg1 distance:(double)arg2;
 - (NSArray *)instructionWithShorterAlternatives;
 - (NSString *)instruction;
 - (NSString *)stringForDistance:(double)arg1;

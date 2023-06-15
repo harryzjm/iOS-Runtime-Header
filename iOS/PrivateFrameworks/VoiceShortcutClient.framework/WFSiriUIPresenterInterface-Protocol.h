@@ -6,18 +6,11 @@
 
 #import <VoiceShortcutClient/NSObject-Protocol.h>
 
-@class INIntent, INInteraction, LNAction, NSData, NSString, NSURL, WFDialogRequest;
+@class NSNumber, WFSiriActionRequest;
 
 @protocol WFSiriUIPresenterInterface <NSObject>
-- (void)punchOutRequestedWithCompletionHandler:(void (^)(_Bool))arg1;
-- (void)executeLinkAction:(LNAction *)arg1 inApplication:(NSString *)arg2 withNameOverride:(NSString *)arg3 completionHandler:(void (^)(LNActionOutput *, NSError *))arg4;
-- (void)executeLinkAction:(LNAction *)arg1 inApplication:(NSString *)arg2 completionHandler:(void (^)(LNActionOutput *, NSError *))arg3;
-- (void)openApp:(NSString *)arg1 completionHandler:(void (^)(_Bool, NSError *))arg2;
-- (void)openInteractionInApp:(INInteraction *)arg1 completionHandler:(void (^)(_Bool, NSError *))arg2;
-- (void)showDialogRequest:(WFDialogRequest *)arg1 completionHandler:(void (^)(WFDialogResponse *))arg2;
-- (void)executeIntent:(INIntent *)arg1 completionHandler:(void (^)(INInteraction *, NSError *))arg2;
-- (void)handleUserActivityData:(NSData *)arg1 withBundleIdentifier:(NSString *)arg2 completionHandler:(void (^)(_Bool, NSError *))arg3;
-- (void)openUrl:(NSURL *)arg1 withBundleIdentifier:(NSString *)arg2 completionHandler:(void (^)(_Bool))arg3;
-- (void)speakTextWithUtterance:(NSString *)arg1 completionHandler:(void (^)(_Bool, NSError *))arg2;
+- (void)performSiriRequest:(WFSiriActionRequest *)arg1 completionHandler:(void (^)(WFSiriActionResponse *))arg2;
+- (void)willBeginExecutingShortcutStep:(NSNumber *)arg1;
+- (void)willBeginExecutingShortcutWithActionCount:(NSNumber *)arg1;
 @end
 

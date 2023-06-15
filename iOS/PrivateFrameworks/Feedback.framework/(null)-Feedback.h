@@ -12,8 +12,5 @@
 - (void)feedbackDidBeginSubmission;
 - (void)draftDirtyStateUpdated:(_Bool)arg1;
 - (void)didRequestViewDismissalWithSaved:(_Bool)arg1;
-- (void)hostViewController:(id)arg1 didFailToHost:(id)arg2 error:(id)arg3;
-- (void)hostViewController:(id)arg1 didBeginHosting:(id)arg2;
-- (void)observerDidUpdate:(id)arg1;
 @end
 

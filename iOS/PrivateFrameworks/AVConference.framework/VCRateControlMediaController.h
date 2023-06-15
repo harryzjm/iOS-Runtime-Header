@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     id _mediaControllerDelegate;
     AVCStatisticsCollector *_statisticsCollector;
     struct tagHANDLE *_hMediaQueue;
+    struct tagVCMediaQueue *_vcMediaQueue;
     unsigned int _videoSendingBitrate;
     unsigned int _audioSendingBitrate;
     unsigned int _minTargetBitrate;
@@ -67,18 +68,18 @@ __attribute__((visibility("hidden")))
     void *_logBasebandDump;
     void *_logBWEDump;
     unsigned int _afrcRemoteEstimatedBandwidth;
+    _Bool _fromSmartBrake;
 }
 
+@property(nonatomic) double lastBasebandFlushCountChangeTime; // @synthesize lastBasebandFlushCountChangeTime=_lastBasebandFlushCountChangeTime;
+@property(nonatomic) struct tagVCMediaQueue *vcMediaQueue; // @synthesize vcMediaQueue=_vcMediaQueue;
 @property(nonatomic) struct tagHANDLE *mediaQueue; // @synthesize mediaQueue=_hMediaQueue;
 @property(retain, nonatomic) VCRateControlServerBag *serverBag; // @synthesize serverBag=_serverBag;
 @property(nonatomic) _Bool enableAggressiveProbingSequence; // @synthesize enableAggressiveProbingSequence=_enableAggressiveProbingSequence;
 @property(readonly, nonatomic) double lastVideoRefreshFrameTime; // @synthesize lastVideoRefreshFrameTime=_lastVideoRefreshFrameTime;
-@property(readonly, nonatomic) double lastVideoKeyFrameTime; // @synthesize lastVideoKeyFrameTime=_lastVideoKeyFrameTime;
-@property(nonatomic) int audioFractionTier; // @synthesize audioFractionTier=_audioFractionTier;
+@property(readonly, nonatomic) int audioFractionTier; // @synthesize audioFractionTier=_audioFractionTier;
 @property(nonatomic) _Bool isRTPFlushBasebandFromVCRateControl; // @synthesize isRTPFlushBasebandFromVCRateControl=_isRTPFlushBasebandFromVCRateControl;
 @property(nonatomic) unsigned int afrcRemoteEstimatedBandwidth; // @synthesize afrcRemoteEstimatedBandwidth=_afrcRemoteEstimatedBandwidth;
-@property(nonatomic) _Bool shouldDisableLargeFrameRequestsWhenInitialRampUp; // @synthesize shouldDisableLargeFrameRequestsWhenInitialRampUp=_shouldDisableLargeFrameRequestsWhenInitialRampUp;
-@property(nonatomic) _Bool isRateLimitedMaxTimeExceeded; // @synthesize isRateLimitedMaxTimeExceeded=_isRateLimitedMaxTimeExceeded;
 @property(nonatomic) _Bool allowVideoStop; // @synthesize allowVideoStop=_allowVideoStop;
 @property(nonatomic) _Bool isRemoteAudioPaused; // @synthesize isRemoteAudioPaused=_isRemoteAudioPaused;
 @property(readonly, nonatomic) _Bool isInThrottlingMode; // @synthesize isInThrottlingMode=_isInThrottlingMode;
@@ -87,11 +88,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool isVideoStoppedByVCRateControl; // @synthesize isVideoStoppedByVCRateControl=_isVideoStoppedByVCRateControl;
 @property(readonly, nonatomic) int basebandFlushedAudioCount; // @synthesize basebandFlushedAudioCount=_basebandFlushedAudioCount;
 @property(readonly, nonatomic) int basebandFlushedVideoCount; // @synthesize basebandFlushedVideoCount=_basebandFlushedVideoCount;
-@property(nonatomic) double lastBasebandFlushCountChangeTime; // @synthesize lastBasebandFlushCountChangeTime=_lastBasebandFlushCountChangeTime;
 @property(nonatomic) int basebandFlushCount; // @synthesize basebandFlushCount=_basebandFlushCount;
-@property(nonatomic) unsigned int targetBitrate; // @synthesize targetBitrate=_targetBitrate;
-@property(nonatomic) unsigned int minTargetBitrate; // @synthesize minTargetBitrate=_minTargetBitrate;
-@property(nonatomic) unsigned int audioSendingBitrate; // @synthesize audioSendingBitrate=_audioSendingBitrate;
+@property(readonly, nonatomic) unsigned int targetBitrate; // @synthesize targetBitrate=_targetBitrate;
 @property(nonatomic) unsigned int videoSendingBitrate; // @synthesize videoSendingBitrate=_videoSendingBitrate;
 @property(retain, nonatomic) AVCStatisticsCollector *statisticsCollector; // @synthesize statisticsCollector=_statisticsCollector;
 - (void)updateLargeFrameSizeWithBandwidth:(unsigned int)arg1;
@@ -99,7 +97,6 @@ __attribute__((visibility("hidden")))
 - (_Bool)isProbingLargeFrameRequiredAtTime:(double)arg1;
 - (void)printLargeFrameStatsAtTime:(double)arg1 timestamp:(unsigned int)arg2 timeSinceLastProbingSequence:(double)arg3 frameSize:(unsigned int)arg4 wastedBytes:(unsigned int)arg5 fecRatio:(double)arg6 isFrameRequested:(_Bool)arg7;
 - (void)scheduleProbingSequenceAtTime:(double)arg1;
-- (void)increaseBasebandFlushCountInternallyWithSuggestion:(struct VCRateControlMediaSuggestion *)arg1;
 - (_Bool)increaseFlushCountForVideoRefresh:(int)arg1 transactionID:(unsigned short)arg2;
 - (void)recordVideoRefreshFrameWithTimestamp:(unsigned int)arg1 payloadType:(unsigned char)arg2 packetCount:(unsigned int)arg3 isKeyFrame:(_Bool)arg4;
 - (void)scheduleProbingSequenceWithFrameSize:(unsigned int)arg1 paddingBytes:(unsigned int)arg2 timestamp:(unsigned int)arg3 fecRatio:(double)arg4 isProbingSequenceScheduled:(_Bool *)arg5;
@@ -107,19 +104,10 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) unsigned int probingSequencePacketCount; // @synthesize probingSequencePacketCount=_probingSequencePacketCount;
 @property(readonly, nonatomic) unsigned int probingLargeFrameSize; // @synthesize probingLargeFrameSize=_probingLargeFrameSize;
 - (_Bool)rampUpAudioFraction;
-- (_Bool)rampDownAudioFraction;
+- (void)setTargetBitrate:(unsigned int)arg1;
 - (_Bool)didMediaGetFlushedWithPayloadType:(unsigned char)arg1 transactionID:(unsigned short)arg2 packetDropped:(unsigned short)arg3 sequenceNumberArray:(unsigned short *)arg4;
 - (void)decreaseFlushCount:(int)arg1;
-@property(readonly, nonatomic) _Bool isVideoStopped;
-- (void)resumeVideoByVCRateControl;
-- (void)stopVideoByVCRateControl;
 - (void)pauseVideoByUser:(_Bool)arg1;
-- (void)updateAudioStallInMediaSuggestion:(struct VCRateControlMediaSuggestion *)arg1 isSuggestionNeeded:(_Bool *)arg2 atTime:(double)arg3;
-- (void)updateBasebandSuggestionWithStatistics:(CDStruct_7df19fcb)arg1;
-- (void)computePacketLossWithRemoteInfo:(struct VCRCMediaPLPFromRemoteInfo *)arg1;
-- (void)getMediaQueueRateChangeCounter:(unsigned int *)arg1 rateChangeTime:(double *)arg2;
-- (void)getMediaQueueInVideoBitrate:(double *)arg1 outVideoBitrate:(double *)arg2 inAudioBitrate:(double *)arg3 outAudioBitrate:(double *)arg4;
-- (void)enableBWELogDump:(void *)arg1;
 - (void)enableBasebandLogDump:(void *)arg1;
 - (void)dealloc;
 - (id)initWithMediaQueue:(struct tagHANDLE *)arg1 delegate:(id)arg2;

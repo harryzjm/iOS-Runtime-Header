@@ -11,8 +11,6 @@
 + (id)platformDisplayString:(id)arg1;
 + (void)preloadIconsForGames:(id)arg1 style:(long long)arg2 handler:(CDUnknownBlockType)arg3;
 + (struct CGSize)serverImageSizeForIconStyle:(long long)arg1;
-+ (void)launchAppStoreWithGameCenterGames;
-+ (void)gameCenterGamePurchasedWithBundleIdentifier:(id)arg1;
 - (id)logoImageWithMaximumSize:(struct CGSize)arg1;
 - (id)loadIconForStyle:(long long)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (id)loadIconForSize:(struct CGSize)arg1 scale:(double)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
@@ -24,8 +22,10 @@
 - (id)macBrushForIconStyle:(long long)arg1;
 - (id)imageSourceForiOSIconStyle:(long long)arg1;
 - (id)_imageURLForIconStyle:(long long)arg1;
-- (void)productViewControllerDidFinish:(id)arg1;
-- (void)launchAppOrPresentStoreSheetFromViewController:(id)arg1;
-- (void)presentStoreSheetFromViewController:(id)arg1 context:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)localImageSourceWithName:(id)arg1 imageBrush:(id)arg2;
+- (id)networkImageSourceWithName:(id)arg1 imageBrush:(id)arg2;
+- (id)utilityService;
+@property(readonly, nonatomic, getter=isInstalled) _Bool installedGame;
+- (void)openAppStorePage;
 @end
 

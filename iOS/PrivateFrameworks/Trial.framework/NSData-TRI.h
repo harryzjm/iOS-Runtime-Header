@@ -7,6 +7,7 @@
 #import <Foundation/NSData.h>
 
 @interface NSData (TRI)
++ (id)triVerifiedMappedDataWithFile:(id)arg1 error:(id *)arg2;
 - (id)triHexlify;
 - (id)triSha256Base64String;
 - (id)triSha256;

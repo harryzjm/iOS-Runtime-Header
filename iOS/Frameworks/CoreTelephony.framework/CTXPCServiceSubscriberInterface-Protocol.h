@@ -4,9 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CTServiceDescriptor, CTSubscriberAuthDataHolder, CTSubscriberAuthRequest, CTXPCServiceSubscriptionContext, NSObject, NSString;
+@class CTServiceDescriptor, CTSubscriberAuthDataHolder, CTSubscriberAuthRequest, CTXPCServiceSubscriptionContext, NSArray, NSObject, NSString;
 
 @protocol CTXPCServiceSubscriberInterface
+- (void)isSimMatching:(CTServiceDescriptor *)arg1 carrierDescriptors:(NSArray *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
+- (void)isAnySimReadyWithCompletion:(void (^)(_Bool, NSError *))arg1;
+- (void)copyMccOrPlmnsListForIso3CountryCode:(NSString *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)supportsEmbeddedSIMWithCompletion:(void (^)(_Bool))arg1;
 - (void)checkEmbeddedSimHealthWithCompletion:(void (^)(_Bool, NSError *))arg1;
 - (void)copyMobileSubscriberIso3CountryCode:(NSString *)arg1 MNC:(NSString *)arg2 completion:(void (^)(NSArray *, NSError *))arg3;
@@ -32,7 +35,7 @@
 - (void)unlockPIN:(CTXPCServiceSubscriptionContext *)arg1 pin:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)saveSIMLockValue:(CTXPCServiceSubscriptionContext *)arg1 enabled:(_Bool)arg2 pin:(NSString *)arg3 completion:(void (^)(NSError *))arg4;
 - (void)fetchSIMLockValue:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSNumber *, NSError *))arg2;
-- (void)shouldAllowSimLockFor:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSNumber *))arg2;
+- (void)shouldAllowSimLockFor:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSNumber *, NSError *))arg2;
 - (void)copyGid2:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 - (void)copyGid1:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 - (void)copyMobileSubscriberNetworkCode:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
@@ -49,7 +52,7 @@
 - (void)context:(CTXPCServiceSubscriptionContext *)arg1 isProtectedIdentitySupported:(NSString *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 - (void)copyMobileSubscriberIdentity:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 - (void)copySIMIdentity:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
-- (void)copyFirmwareUpdateInfo:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
+- (void)copyFirmwareUpdateInfo:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)getTypeAllocationCode:(CTServiceDescriptor *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 - (void)copyMobileEquipmentInfo:(void (^)(CTMobileEquipmentInfoList *, NSError *))arg1;
 - (void)isEmbeddedSIMOnlyConfig:(void (^)(NSNumber *, NSError *))arg1;

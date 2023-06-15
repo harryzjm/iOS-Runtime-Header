@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
 @class MISSING_TYPE;
 
@@ -17,9 +17,9 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *sections;
     MISSING_TYPE *tableView;
     MISSING_TYPE *groupViewController;
-    MISSING_TYPE *versionLabel;
     MISSING_TYPE *coverViewManager;
     MISSING_TYPE *$__lazy_storage_$_uploadBarButtonItem;
+    MISSING_TYPE *$__lazy_storage_$_versionBarButtonItem;
     MISSING_TYPE *$__lazy_storage_$_updatedLabel;
     MISSING_TYPE *styler;
     MISSING_TYPE *editor;

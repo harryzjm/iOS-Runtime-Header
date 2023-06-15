@@ -6,14 +6,20 @@
 
 #import <objc/NSObject.h>
 
+@class MISSING_TYPE;
+
 __attribute__((visibility("hidden")))
 @interface SNAudioQueueConfiguration : NSObject
 {
-    unsigned int _creationFlags;
-    CDUnknownBlockType _configureAudioQueue;
+    MISSING_TYPE *creationFlags;
+    MISSING_TYPE *configureAudioQueue;
 }
 
 - (void).cxx_destruct;
+- (id)initWithCreationFlags:(unsigned int)arg1 configureAudioQueue:(CDUnknownBlockType)arg2;
+- (id)init;
+@property(nonatomic, copy) CDUnknownBlockType configureAudioQueue;
+@property(nonatomic) unsigned int creationFlags; // @synthesize creationFlags;
 
 @end
 

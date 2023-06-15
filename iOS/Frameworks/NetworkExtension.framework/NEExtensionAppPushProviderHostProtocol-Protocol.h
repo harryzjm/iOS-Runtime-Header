@@ -9,6 +9,7 @@
 @class NSDictionary;
 
 @protocol NEExtensionAppPushProviderHostProtocol <NEExtensionProviderHostProtocol>
+- (void)reportPushToTalkMessage:(NSDictionary *)arg1;
 - (void)reportIncomingCall:(NSDictionary *)arg1;
 @end
 

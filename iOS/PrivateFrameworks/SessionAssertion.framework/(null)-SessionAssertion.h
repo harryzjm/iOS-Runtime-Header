@@ -5,7 +5,7 @@
 //
 
 @interface (null) (SessionAssertion)
+- (void)didInvalidate:(id)arg1;
 - (void)didConnect;
-- (void)didInvalidateWithInvalidationMessage:(id)arg1;
 @end
 

@@ -7,9 +7,12 @@
 #import <PosterBoardServices/NSObject-Protocol.h>
 
 @class NSArray;
-@protocol __PRSWallpaperObserverPathUpdate__;
+@protocol __PRSPosterRoleCollectionObserverUpdate__, __PRSRoleActivePosterObserverUpdate__, __PRSWallpaperObserverPathUpdate__, __PRSWallpaperObserverSnapshotUpdate__;
 
 @protocol PRSWallpaperObserving <NSObject>
+- (oneway void)notifyRolePosterCollectionUpdates:(NSArray<__PRSPosterRoleCollectionObserverUpdate__> *)arg1;
+- (oneway void)notifyRoleActivePosterUpdates:(NSArray<__PRSRoleActivePosterObserverUpdate__> *)arg1;
+- (oneway void)notifySnapshotUpdates:(NSArray<__PRSWallpaperObserverSnapshotUpdate__> *)arg1;
 - (oneway void)notifyWallpaperUpdates:(NSArray<__PRSWallpaperObserverPathUpdate__> *)arg1;
 @end
 

@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (void)_setLocalOverrideTraitCollection:(id)arg1;
 - (_Bool)_layoutHeightDependsOnWidth;
 - (unsigned long long)_axesForDerivingIntrinsicContentSizeFromLayoutSize;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

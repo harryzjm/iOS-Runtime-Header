@@ -16,11 +16,14 @@ __attribute__((visibility("hidden")))
     int _dataPath;
     _Bool _useIDSLinkSuggestionFeatureFlag;
     unsigned int _linkPreferSuggestionFromDefaults;
+    _Bool _sessionBasedServerExperimentsProcessed;
 }
 
 @property(nonatomic) int socket; // @synthesize socket=_socket;
 @property(copy, nonatomic) NSString *destination; // @synthesize destination=_destination;
+- (void)handleStatResponse:(id)arg1;
 - (void)handleReportingBlob:(id)arg1;
+- (void)processSessionBasedServerExperiments:(id)arg1;
 - (void)handleLinkPreferSuggestion:(id)arg1;
 - (void)setQuickRelayServerProvider:(int)arg1;
 - (void)handleChannelInfoReport:(id)arg1;
@@ -48,6 +51,7 @@ __attribute__((visibility("hidden")))
 - (void)start;
 - (unsigned int)remoteDeviceVersionIDS;
 - (void)dispatchedProcessDatagramChannelEventInfo:(id)arg1;
+- (void)datagramChannelEventLogForInfo:(id)arg1 eventInfo:(id)arg2;
 - (void)processDatagramChannelEventInfo:(id)arg1;
 - (_Bool)getConnectionSetupData:(id *)arg1 withOptions:(id)arg2 error:(id *)arg3;
 - (id)datagramChannel;

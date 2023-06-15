@@ -7,8 +7,10 @@
 #import <BiomeFoundation/BMPublicStreamUtilities.h>
 
 @interface BMPublicStreamUtilities (Storage)
++ (id)storeConfigurationForStream:(long long)arg1 protectionClass:(unsigned long long)arg2 streamType:(unsigned long long)arg3;
 + (id)storeConfigurationForStream:(long long)arg1 protectionClass:(unsigned long long)arg2;
 + (id)storeConfigurationForStream:(long long)arg1;
++ (id)storeConfigurationForPreMigrationStream:(long long)arg1;
 + (id)streamPathForStream:(long long)arg1;
 @end
 

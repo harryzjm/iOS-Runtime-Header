@@ -11,7 +11,11 @@
 @protocol FCUserInfoObserving <NSObject>
 
 @optional
+- (void)userInfoDidChangeDateLastPuzzleNotifications:(FCUserInfo *)arg1 fromCloud:(_Bool)arg2;
+- (void)userInfoDidChangePuzzleNotificationsEnabled:(FCUserInfo *)arg1 fromCloud:(_Bool)arg2;
+- (void)userInfo:(FCUserInfo *)arg1 didChangePuzzleTypeSettingsForPuzzleTypeID:(NSString *)arg2;
 - (void)userInfoDidChangeDateLastViewedSharedWithYou:(FCUserInfo *)arg1 fromCloud:(_Bool)arg2;
+- (void)userInfoDidChangeSportsTopicNotificationsEnabledState:(FCUserInfo *)arg1 fromCloud:(_Bool)arg2;
 - (void)userInfoDidChangeEndOfAudioTrackNotificationsEnabled:(FCUserInfo *)arg1 fromCloud:(_Bool)arg2;
 - (void)userInfoDidChangeNewIssueNotificationsEnabled:(FCUserInfo *)arg1 fromCloud:(_Bool)arg2;
 - (void)userInfoDidChangeMarketingNotificationsEnabled:(FCUserInfo *)arg1 fromCloud:(_Bool)arg2;

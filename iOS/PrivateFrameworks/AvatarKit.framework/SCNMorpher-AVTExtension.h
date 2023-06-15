@@ -8,5 +8,8 @@
 
 @interface SCNMorpher (AVTExtension)
 - (void)avt_buildInternalSupportForCorrectivesWithBlock:(CDUnknownBlockType)arg1;
+
+// Remaining properties
+@property(nonatomic, setter=avt_setSimdContentsTransform:) CDStruct_14d5dc5e avt_simdContentsTransform;
 @end
 

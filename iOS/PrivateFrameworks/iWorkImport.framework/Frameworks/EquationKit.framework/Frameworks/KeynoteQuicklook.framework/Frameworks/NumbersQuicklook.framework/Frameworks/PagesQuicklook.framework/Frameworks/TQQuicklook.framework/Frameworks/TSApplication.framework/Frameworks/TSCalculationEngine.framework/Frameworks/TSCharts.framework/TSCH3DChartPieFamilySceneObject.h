@@ -12,7 +12,7 @@
 + (id)createBoundsForSeries:(id)arg1;
 + (id)wholePieBoundsResource;
 + (id)p_wholePieBounds;
-+ (id)p_boundsDataBufferWithDepthFactor:(float)arg1 angleRange:(const void *)arg2 includeEndPoints:(_Bool)arg3;
++ (id)p_boundsDataBufferWithDepthFactor:(float)arg1 angleRange:(void *)arg2 includeEndPoints:(_Bool)arg3;
 + (unsigned long long)p_boundsStepsForAngle:(double)arg1;
 + (float)calculateHalfAngleForSeries:(id)arg1;
 + (id)createGeometryWithStartAngle:(float)arg1 endAngle:(float)arg2 bevel:(_Bool)arg3 bevelEdges:(_Bool)arg4;
@@ -22,8 +22,8 @@
 + (float)geometrySpaceRadius;
 - (void)sortElements:(id *)arg1 pipeline:(id)arg2;
 - (_Bool)transparencyDepthMask;
-- (void)setExplosion:(float)arg1 atElementIndex:(const void *)arg2 forScene:(id)arg3;
-- (float)explosionAtElementIndex:(const void *)arg1 forScene:(id)arg2;
+- (void)setExplosion:(float)arg1 atElementIndex:(void *)arg2 forScene:(id)arg3;
+- (float)explosionAtElementIndex:(void *)arg1 forScene:(id)arg2;
 - (void)updateElementEffectsStates:(id)arg1 depthToWidthRatio:(float)arg2;
 - (void)updateTilingEffect:(void *)arg1 properties:(id)arg2 textureTiling:(id)arg3 depth:(float)arg4 percentOfTotal:(float)arg5;
 - (_Bool)shouldRenderEachValue;

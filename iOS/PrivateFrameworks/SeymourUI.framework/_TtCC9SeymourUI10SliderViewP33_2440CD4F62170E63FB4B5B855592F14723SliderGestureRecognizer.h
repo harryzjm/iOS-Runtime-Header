@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIPanGestureRecognizer.h>
+#import <UIKitCore/UIPanGestureRecognizer.h>
 
 @interface _TtCC9SeymourUI10SliderViewP33_2440CD4F62170E63FB4B5B855592F14723SliderGestureRecognizer : UIPanGestureRecognizer
 {

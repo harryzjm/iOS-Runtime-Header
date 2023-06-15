@@ -20,7 +20,9 @@
     MISSING_TYPE *videoViewPool;
     MISSING_TYPE *micaViewPool;
     MISSING_TYPE *progressViewPool;
+    MISSING_TYPE *progressPieViewPool;
     MISSING_TYPE *shineViewPool;
+    MISSING_TYPE *splitViewPool;
     MISSING_TYPE *gradientViewPool;
     MISSING_TYPE *issueCoverViewWithImagePool;
     MISSING_TYPE *issueCoverViewWithLayeredMediaPool;

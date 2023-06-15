@@ -15,24 +15,28 @@ __attribute__((visibility("hidden")))
     struct os_unfair_lock_s _lock;
     id <MGGroupsQueryAgentDelegate> _delegate;
     NSOperationQueue *_queue;
-    NSDictionary *_queries;
     NSDictionary *_operations;
+    NSDictionary *_groupsByMediator;
     NSDictionary *_groups;
     MGGroupIdentifier *_currentIdentifier;
     NSDictionary *_containers;
     NSDictionary *_variables;
+    NSDictionary *_queries;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSDictionary *queries; // @synthesize queries=_queries;
 @property(copy, nonatomic) NSDictionary *variables; // @synthesize variables=_variables;
 @property(copy, nonatomic) NSDictionary *containers; // @synthesize containers=_containers;
 @property(copy, nonatomic) MGGroupIdentifier *currentIdentifier; // @synthesize currentIdentifier=_currentIdentifier;
 @property(copy, nonatomic) NSDictionary *groups; // @synthesize groups=_groups;
+@property(copy, nonatomic) NSDictionary *groupsByMediator; // @synthesize groupsByMediator=_groupsByMediator;
 @property(copy, nonatomic) NSDictionary *operations; // @synthesize operations=_operations;
-@property(copy, nonatomic) NSDictionary *queries; // @synthesize queries=_queries;
 @property(readonly, nonatomic) NSOperationQueue *queue; // @synthesize queue=_queue;
 @property(readonly, nonatomic) __weak id <MGGroupsQueryAgentDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)groupsMediatorRemoved:(id)arg1;
 - (void)groupsMediator:(id)arg1 didUpdateGroups:(id)arg2;
+- (id)outstandingQueryForIdentifier:(id)arg1;
 - (void)removeOutstandingQuery:(id)arg1;
 - (void)addOutstandingQuery:(id)arg1;
 - (void)_queryOperation:(id)arg1 didFindGroups:(id)arg2;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AWSampleLogger;
+@class AWSampleLogger, NSMutableArray;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -27,10 +27,20 @@ __attribute__((visibility("hidden")))
     double _lastYaw;
     double _lastRoll;
     unsigned long long _lastOrientation;
+    double _lastDistance;
+    unsigned long long _lastFaceState;
+    double _lastFrameNumber;
+    unsigned long long _lastMetadataType;
+    NSMutableArray *_lastMotionData;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableArray *lastMotionData; // @synthesize lastMotionData=_lastMotionData;
 @property(readonly, nonatomic) _Bool unitTestSampling; // @synthesize unitTestSampling=_unitTestSampling;
+@property(nonatomic) unsigned long long lastMetadataType; // @synthesize lastMetadataType=_lastMetadataType;
+@property(nonatomic) double lastFrameNumber; // @synthesize lastFrameNumber=_lastFrameNumber;
+@property(nonatomic) unsigned long long lastFaceState; // @synthesize lastFaceState=_lastFaceState;
+@property(nonatomic) double lastDistance; // @synthesize lastDistance=_lastDistance;
 @property(nonatomic) unsigned long long lastOrientation; // @synthesize lastOrientation=_lastOrientation;
 @property(nonatomic) double lastRoll; // @synthesize lastRoll=_lastRoll;
 @property(nonatomic) double lastYaw; // @synthesize lastYaw=_lastYaw;
@@ -43,12 +53,12 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) int currentState; // @synthesize currentState=_currentState;
 @property(copy) CDUnknownBlockType stateChangedCallback; // @synthesize stateChangedCallback=_stateChangedCallback;
 @property(retain, nonatomic) AWSampleLogger *sampleLogger; // @synthesize sampleLogger=_sampleLogger;
-- (id)initWithMask:(unsigned long long)arg1;
+- (id)initWithOptions:(id)arg1;
 - (void)setSmartCoverClosed:(_Bool)arg1;
-- (void)shouldSample:(_Bool)arg1 withDeadline:(unsigned long long)arg2 withOptions:(union)arg3;
+- (void)shouldSample:(_Bool)arg1 withDeadline:(unsigned long long)arg2 withOptions:(CDStruct_3d581f42)arg3;
 - (unsigned long long)minimumAttentionSamplerErrorRetryTime;
-- (unsigned long long)nextSampleTimeForSamplingInterval:(unsigned long long)arg1;
-- (void)finishDeadlineComputationWithOptions:(union)arg1;
+- (unsigned long long)nextSampleTimeForSamplingInterval:(unsigned long long)arg1 ignoreDisplayState:(_Bool)arg2;
+- (void)finishDeadlineComputationWithOptions:(CDStruct_3d581f42)arg1;
 - (void)updateSamplingDeadline:(unsigned long long)arg1 forClient:(id)arg2;
 - (void)startDeadlineComputation;
 - (void)setUnitTestMode;

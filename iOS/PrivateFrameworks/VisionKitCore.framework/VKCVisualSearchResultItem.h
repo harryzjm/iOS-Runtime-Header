@@ -23,13 +23,21 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) MADVIVisualSearchResultItem *searchItem; // @synthesize searchItem=_searchItem;
 @property(retain, nonatomic) MADVIVisualSearchGatingResultItem *resultItem; // @synthesize resultItem=_resultItem;
 @property(readonly, nonatomic) UIMenu *debugMenu;
+@property(readonly, nonatomic) NSString *label;
 @property(readonly, nonatomic) NSString *glyphName;
+@property(readonly, nonatomic) _Bool hasFocalPoint;
 @property(readonly, nonatomic) _Bool shouldPlaceInCorner;
 - (_Bool)_hasFocalPoint;
 @property(readonly, nonatomic) struct CGPoint normalizedIconLocation;
 @property(readonly, nonatomic) struct CGRect normalizedBoundingBox;
 - (id)initWithSearchResultItem:(id)arg1;
 - (id)initWithGatingResultItem:(id)arg1 domain:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

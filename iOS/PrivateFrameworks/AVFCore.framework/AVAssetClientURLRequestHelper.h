@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 
 @property(copy, nonatomic) CDUnknownBlockType figAssetProvider; // @synthesize figAssetProvider=_figAssetProvider;
 @property(nonatomic) __weak AVAssetResourceLoader *resourceLoader;
-@property(readonly, nonatomic) const struct OpaqueFigAsset *figAsset;
+@property(readonly, nonatomic) struct OpaqueFigAsset *figAsset;
 - (id)URLAsset;
 - (void)dealloc;
 - (id)initWithAsset:(id)arg1;

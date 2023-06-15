@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIHoverGestureRecognizer.h>
+#import <UIKitCore/UIHoverGestureRecognizer.h>
 
 @interface UIHoverGestureRecognizer (MapsUILayout)
 - (_Bool)_mapsui_isHovering;

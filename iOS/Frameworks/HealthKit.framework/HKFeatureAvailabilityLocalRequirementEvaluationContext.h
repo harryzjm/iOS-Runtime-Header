@@ -14,12 +14,18 @@ __attribute__((visibility("hidden")))
     long long __unitTest_cacheHits;
     NSMutableDictionary *_eligibilityByFeatureIdentifier;
     NSMutableDictionary *_onboardingRecordByFeatureIdentifier;
+    NSMutableDictionary *_watchAppInstallationStateByBundleIdentifier;
+    NSMutableDictionary *_featureStatusByIdentifierAndContext;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableDictionary *featureStatusByIdentifierAndContext; // @synthesize featureStatusByIdentifierAndContext=_featureStatusByIdentifierAndContext;
+@property(retain, nonatomic) NSMutableDictionary *watchAppInstallationStateByBundleIdentifier; // @synthesize watchAppInstallationStateByBundleIdentifier=_watchAppInstallationStateByBundleIdentifier;
 @property(retain, nonatomic) NSMutableDictionary *onboardingRecordByFeatureIdentifier; // @synthesize onboardingRecordByFeatureIdentifier=_onboardingRecordByFeatureIdentifier;
 @property(retain, nonatomic) NSMutableDictionary *eligibilityByFeatureIdentifier; // @synthesize eligibilityByFeatureIdentifier=_eligibilityByFeatureIdentifier;
 @property(nonatomic) long long _unitTest_cacheHits; // @synthesize _unitTest_cacheHits=__unitTest_cacheHits;
+- (id)featureStatusForFeatureWithIdentifier:(id)arg1 context:(id)arg2 error:(id *)arg3;
+- (id)isWatchAppInstalledWithBundleIdentifier:(id)arg1 error:(id *)arg2;
 - (id)onboardingRecordForFeatureWithIdentifier:(id)arg1 error:(id *)arg2;
 - (id)onboardingEligibilityForFeatureWithIdentifier:(id)arg1 error:(id *)arg2;
 

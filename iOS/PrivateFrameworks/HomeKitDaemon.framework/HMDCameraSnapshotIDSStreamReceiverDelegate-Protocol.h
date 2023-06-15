@@ -9,6 +9,6 @@
 @class HMDCameraSnapshotIDSStreamReceiver, NSError;
 
 @protocol HMDCameraSnapshotIDSStreamReceiverDelegate <NSObject>
-- (void)relayReceiver:(HMDCameraSnapshotIDSStreamReceiver *)arg1 didReceiveFile:(NSError *)arg2;
+- (void)streamReceiver:(HMDCameraSnapshotIDSStreamReceiver *)arg1 didReceiveFileWithError:(NSError *)arg2;
 @end
 

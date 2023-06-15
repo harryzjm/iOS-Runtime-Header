@@ -12,6 +12,8 @@
 - (NSString *)pathForBaseLocationPath:(long long)arg1;
 - (NSString *)pathForResourceFileOrFolder:(int)arg1 basePath:(NSString *)arg2 relativeToBase:(_Bool)arg3 createParentFolderIfNecessary:(_Bool)arg4;
 - (NSString *)pathForResourceFileOrFolder:(int)arg1;
+- (NSString *)musicAssetsContainerPath;
+- (NSString *)mediaFolderRelativePath:(NSString *)arg1;
 - (NSString *)libraryContainerRelativePath:(NSString *)arg1;
 - (NSString *)libraryContainerPathByAppendingPathComponent:(NSString *)arg1;
 - (NSString *)libraryContainerPath;

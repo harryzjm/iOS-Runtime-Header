@@ -9,15 +9,12 @@
 @protocol AEDObservation;
 
 @protocol AEDWindow <NSObject>
+@property(readonly, nonatomic, getter=isVisible) _Bool visible;
+@property(readonly, nonatomic) struct CGRect frame;
+@property(readonly, nonatomic) long long windowNumber;
 - (id <AEDObservation>)observeWindowResizeEventsWithHandler:(void (^)(void))arg1;
-- (int)excludeRegionFromContentCapture:(struct CGRect)arg1;
+- (int)setRestrictsContentCapture:(_Bool)arg1;
 - (int)refresh;
 - (void)close;
-- (_Bool)isVisible;
-@property(nonatomic, readonly) struct CGRect frame;
-@property(nonatomic, readonly) long long windowNumber;
-
-// Remaining properties
-@property(nonatomic, readonly) _Bool visible;
 @end
 

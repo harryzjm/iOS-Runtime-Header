@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class UIImage, UIPageControl;
+@class UIImage, UIPageControl, UIView;
 
 __attribute__((visibility("hidden")))
 @interface _UIPageControlVisualProvider : NSObject
@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIImage *preferredActiveIndicatorImage; // @synthesize preferredActiveIndicatorImage=_preferredActiveIndicatorImage;
 @property(nonatomic) long long interactionState; // @synthesize interactionState=_interactionState;
+@property(retain, nonatomic) UIView *backgroundView;
 - (struct CGRect)indicatorFrameForPage:(long long)arg1;
 @property(nonatomic) double indicatorOpacity;
 - (id)customActiveIndicatorImageForPage:(long long)arg1;
@@ -35,6 +36,8 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)intrinsicContentSize;
 - (struct CGSize)sizeForNumberOfPages:(long long)arg1;
 - (void)didEndTrackingWithTouch:(id)arg1;
+- (void)didUpdateCurrentPageProgress;
+- (void)didUpdatePageProgress;
 - (void)didUpdateBackgroundEffect;
 - (void)didUpdateLayoutDirection;
 - (void)didUpdateCustomLayoutValues;
@@ -43,6 +46,7 @@ __attribute__((visibility("hidden")))
 - (void)didUpdateCurrentPageIndicatorTintColor;
 - (void)didUpdatePageIndicatorTintColor;
 - (void)didUpdateNumberOfPages;
+- (void)setPage:(long long)arg1 interactionState:(long long)arg2;
 @property(readonly, nonatomic) long long displayedPage;
 - (_Bool)shouldDisableTouchTracking;
 - (void)pruneArchivedSubviews:(id)arg1;

@@ -9,7 +9,5 @@
 @interface CTNRStatus (SettingsCellular)
 - (_Bool)isDisabledReasonRelevantTo5GRATModeCellsUserInteractableState;
 - (_Bool)are5GRATModeCellsUserInteractable;
-- (_Bool)isDisabledReasonRelevantTo5GSASwitchUserInteractableState;
-- (_Bool)is5GSASwitchUserInteractable;
 @end
 

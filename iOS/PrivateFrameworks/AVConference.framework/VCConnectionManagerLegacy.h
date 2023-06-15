@@ -26,15 +26,10 @@ __attribute__((visibility("hidden")))
 - (void)stopActiveProbingWithOptions:(id)arg1;
 - (void)startActiveProbingWithOptions:(id)arg1;
 - (void)reportLinkProbingStatsWithDuplicationJustStarted:(_Bool)arg1;
-- (void)updateConnectionForDuplication;
 - (unsigned int)getByteCountWithIndex:(unsigned char)arg1 isOutgoing:(_Bool)arg2;
 - (unsigned int)getPacketCountWithIndex:(unsigned char)arg1 isOutgoing:(_Bool)arg2;
-- (void)synchronizeParticipantGenerationCounter:(unsigned char)arg1;
-- (void)updatePacketCountAndByteCountWithIndex:(unsigned char)arg1 packetSize:(int)arg2 numOfStreamId:(int)arg3 isPriorityIncluded:(_Bool)arg4 isOutgoing:(_Bool)arg5;
 - (void)updateSessionStats:(unsigned short)arg1;
-- (id)copyConnectionWithSourceDestinationInfo:(struct tagVCSourceDestinationInfo *)arg1 isPrimary:(_Bool *)arg2;
 - (_Bool)shouldAcceptDataFromSourceDestinationInfo:(struct tagVCSourceDestinationInfo *)arg1;
-- (void)sourceDestinationInfo:(struct tagVCSourceDestinationInfo *)arg1 isSourceOnCellular:(_Bool *)arg2 isSourceIPv6:(_Bool *)arg3;
 - (void)updateCellularTech:(int)arg1 forLocalInterface:(_Bool)arg2;
 - (void)updateCellularMTU:(int)arg1;
 - (id)getSecondaryConnectionToBeCompared;
@@ -51,6 +46,7 @@ __attribute__((visibility("hidden")))
 - (int)shouldNominateCandidatePair:(struct tagCANDIDATEPAIR *)arg1 interfaceMask:(int)arg2 nominated:(int *)arg3 demote:(int *)arg4 connectionPriority:(int *)arg5 replaceOnly:(int *)arg6;
 - (void)dealloc;
 - (id)init;
+- (void)setUpVTable;
 
 @end
 

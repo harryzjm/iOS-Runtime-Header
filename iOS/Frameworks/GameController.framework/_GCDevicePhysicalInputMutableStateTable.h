@@ -18,8 +18,10 @@ __attribute__((visibility("hidden")))
 }
 
 @property(readonly) unsigned short magic; // @synthesize magic=_magic;
+- (_Bool)testAndSetObjectValue:(id)arg1 atIndex:(unsigned int)arg2 policy:(unsigned long long)arg3 compareObjects:(_Bool)arg4 previous:(id *)arg5;
 - (void)setObjectValue:(id)arg1 atIndex:(unsigned int)arg2 policy:(unsigned long long)arg3;
 - (id)objectValueAtIndex:(unsigned int)arg1;
+- (_Bool)testAndSetPrimitiveValue:(unsigned long long)arg1 atIndex:(unsigned int)arg2 previous:(unsigned long long *)arg3;
 - (void)setPrimitiveValue:(unsigned long long)arg1 atIndex:(unsigned int)arg2;
 - (unsigned long long)primitiveValueAtIndex:(unsigned int)arg1;
 @property(readonly) unsigned int objectSlotCount;

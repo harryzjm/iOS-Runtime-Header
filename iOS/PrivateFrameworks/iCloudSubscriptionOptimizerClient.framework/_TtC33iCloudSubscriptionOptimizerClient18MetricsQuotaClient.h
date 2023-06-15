@@ -17,6 +17,8 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)init;
+- (void)logFailsafeEvent:(id)arg1;
+- (id)failsafeDelayedOfferJsonContext;
 - (id)parseNotification:(id)arg1;
 - (id)parseDelayedOfferFromJson:(id)arg1;
 - (id)parseDelayedOffer:(id)arg1;

@@ -8,10 +8,13 @@
 #import <CarPlay/NSObject-Protocol.h>
 #import <CarPlay/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSString;
+@class NSArray, NSDictionary, NSString;
 
 @protocol CPAccNavUpdateProtocol <NSObject, NSCopying, NSSecureCoding>
++ (NSDictionary *)accNavParameterKeysIndexed;
++ (NSDictionary *)accNavParametersIndexed;
 + (NSArray *)accNavParameters;
+- (void)clearValueForKey:(NSString *)arg1;
 - (void)setValue:(id)arg1 forKey:(NSString *)arg2;
 - (id)valueForKey:(NSString *)arg1;
 @end

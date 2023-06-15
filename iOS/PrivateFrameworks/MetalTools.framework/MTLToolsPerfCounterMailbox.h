@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
     void *_requester;
     struct vector<std::pair<NSData *, unsigned long>, std::allocator<std::pair<NSData *, unsigned long>>> _data;
     struct __wrap_iter<std::pair<NSData *, unsigned long>*> {
-        void *__i;
+        void *__i_;
     } _iterator;
 }
 

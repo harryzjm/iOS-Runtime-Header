@@ -10,5 +10,8 @@
 
 @protocol SAElementHosting <NSObject>
 - (void)elementRequestsNegativeResponse:(id <SAElement>)arg1;
+
+@optional
+- (void)elementRequestsSignificantUpdateTransition:(id <SAElement>)arg1;
 @end
 

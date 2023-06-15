@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
+#import "MPSGraphObject.h"
 
 @protocol MTLSharedEvent;
 
-@interface MPSGraphSignalEvent : NSObject
+@interface MPSGraphSignalEvent : MPSGraphObject
 {
     id <MTLSharedEvent> _event;
     unsigned long long _executionStage;

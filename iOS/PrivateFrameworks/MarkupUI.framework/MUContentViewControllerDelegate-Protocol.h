@@ -16,6 +16,10 @@
 
 @optional
 @property(readonly, copy, nonatomic) NSString *originalImageDescription;
+- (void)contentControllerDidUnlockDocument:(MUPDFContentViewController *)arg1;
+- (_Bool)allowsEditing;
+- (_Bool)canShowPageViewLabel;
+- (void)updateThumbnailView;
 - (NSArray *)getMenuElementsForPage:(PDFPage *)arg1;
 - (struct CGSize)adjustedSourceImageSize;
 - (UIViewController *)popoverPresentingViewControllerForAnnotationController:(AKController *)arg1;

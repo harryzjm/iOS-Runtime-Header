@@ -14,6 +14,7 @@
     MISSING_TYPE *searchSubject;
     MISSING_TYPE *searchCancellable;
     MISSING_TYPE *resultsController;
+    MISSING_TYPE *topHitSuggestionsResults;
     MISSING_TYPE *siriSuggestionsResults;
 }
 

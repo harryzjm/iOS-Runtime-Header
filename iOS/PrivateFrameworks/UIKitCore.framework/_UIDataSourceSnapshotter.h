@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UIDataSourceSnapshotter : NSObject <NSCopying>
+@interface _UIDataSourceSnapshotter : NSObject
 {
     struct vector<_NSRange, std::allocator<_NSRange>> _sectionRanges;
 }

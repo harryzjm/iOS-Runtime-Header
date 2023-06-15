@@ -6,11 +6,13 @@
 
 #import <SearchFoundation/SFCommand-Protocol.h>
 
-@class NSData, NSDictionary, NSString, SFSymbolImage;
+@class NSData, NSDictionary, NSString, SFColor, SFDrillDownMetadata, SFSymbolImage;
 
 @protocol SFPerformEntityQueryCommand <SFCommand>
 @property(readonly, nonatomic) NSData *jsonData;
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property(retain, nonatomic) SFDrillDownMetadata *metadata;
+@property(retain, nonatomic) SFColor *entityBackgroundColor;
 @property(copy, nonatomic) NSString *entityIdentifier;
 @property(nonatomic) int entityType;
 @property(retain, nonatomic) SFSymbolImage *symbolImage;

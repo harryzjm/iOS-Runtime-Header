@@ -4,22 +4,39 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSError, NSURL;
+@class NSError, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
 @interface FPDDiskIterator
 {
     NSURL *_rootURL;
+    NSString *_basePath;
     _Bool _stopAccessingRoot;
-    _Bool _sentRoot;
     _Bool _lastItemWasPackage;
-    _Bool _done;
+    _Bool _isFile;
+    int _state;
     NSError *_error;
     unsigned long long _numFoldersPopped;
-    struct __CFURLEnumerator *_enumerator;
+    struct {
+        struct _ftsent *_field1;
+        struct _ftsent *_field2;
+        struct _ftsent **_field3;
+        int _field4;
+        char *_field5;
+        int _field6;
+        int _field7;
+        int _field8;
+        union {
+            CDUnknownFunctionPointerType _field1;
+            CDUnknownBlockType _field2;
+        } _field9;
+        int _field10;
+    } *_fts;
+    struct _ftsent *_entry;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSURL *rootURL; // @synthesize rootURL=_rootURL;
 - (void)dealloc;
 - (unsigned long long)numFoldersPopped;
 - (_Bool)done;

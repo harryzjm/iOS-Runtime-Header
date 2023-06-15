@@ -19,7 +19,7 @@
 - (_Bool)hasServiceRef:(struct __IOHIDServiceClient *)arg1;
 - (void)addServiceRef:(_GCHIDServiceInfo *)arg1;
 - (void)addServiceRefsWithDevice:(id <GCDeviceLegacy>)arg1;
-- (void)handleEvent:(struct __IOHIDEvent *)arg1;
+- (void)_legacy_handleEvent:(struct __IOHIDEvent *)arg1;
 - (id)initWithServiceRef:(struct __IOHIDServiceClient *)arg1;
 @end
 

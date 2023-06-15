@@ -22,8 +22,11 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(nonatomic) __weak UITableViewUpdateGap *gap; // @synthesize gap=_gap;
 @property(readonly, nonatomic) _Bool isDecomposedFromReload;
+- (long long)compareIndexPathsForMoves:(id)arg1;
 - (long long)inverseCompareIndexPaths:(id)arg1;
 - (long long)compareIndexPaths:(id)arg1;
+- (id)description;
+- (id)_moveDestinationDescription;
 @property(readonly, nonatomic) UICollectionViewUpdateItem *collectionViewUpdateItem;
 
 @end

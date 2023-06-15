@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 
 + (_Bool)sqliteDatabaseExistsAtURL:(id)arg1;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSString *requiredStorefront; // @synthesize requiredStorefront=_requiredStorefront;
+@property(readonly, copy, nonatomic) NSString *requiredStorefront; // @synthesize requiredStorefront=_requiredStorefront;
 @property(readonly, nonatomic) long long clusterType; // @synthesize clusterType=_clusterType;
 @property(readonly, nonatomic) NSURL *databaseFilePathURL; // @synthesize databaseFilePathURL=_databaseFilePathURL;
 @property(readonly, nonatomic) double databaseMaxAge; // @synthesize databaseMaxAge=_databaseMaxAge;

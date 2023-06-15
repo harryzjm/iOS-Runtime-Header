@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
 @class CNPhotoPickerProviderItem, CNPhotoPickerVariantsManager, CNVisualIdentityEditablePrimaryAvatarViewController, CNVisualIdentityItemEditorSegmentedControl, NSArray, NSLayoutConstraint, NSString, UICollectionView, UIView;
 @protocol CNVisualIdentityItemEditorViewControllerDelegate;
@@ -12,7 +12,9 @@
 __attribute__((visibility("hidden")))
 @interface CNVisualIdentityItemEditorViewController : UIViewController
 {
+    _Bool _canCancel;
     id <CNVisualIdentityItemEditorViewControllerDelegate> _delegate;
+    NSString *_doneButtonTitle;
     CNVisualIdentityEditablePrimaryAvatarViewController *_editableAvatarViewController;
     CNVisualIdentityItemEditorSegmentedControl *_segmentedControl;
     NSLayoutConstraint *_avatarViewSizeConstraint;
@@ -36,6 +38,8 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSLayoutConstraint *avatarViewSizeConstraint; // @synthesize avatarViewSizeConstraint=_avatarViewSizeConstraint;
 @property(retain, nonatomic) CNVisualIdentityItemEditorSegmentedControl *segmentedControl; // @synthesize segmentedControl=_segmentedControl;
 @property(retain, nonatomic) CNVisualIdentityEditablePrimaryAvatarViewController *editableAvatarViewController; // @synthesize editableAvatarViewController=_editableAvatarViewController;
+@property(nonatomic) _Bool canCancel; // @synthesize canCancel=_canCancel;
+@property(retain, nonatomic) NSString *doneButtonTitle; // @synthesize doneButtonTitle=_doneButtonTitle;
 @property(nonatomic) __weak id <CNVisualIdentityItemEditorViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (double)styleContainerTopMargin;
 - (double)segmentedControlTopMargin;

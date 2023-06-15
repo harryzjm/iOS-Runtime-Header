@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class BRCAccountSession, BRCCreateZoneAndSubscribeOperation, BRCDeadlineSource, BRCFetchRecentAndFavoriteDocumentsOperation, BRCItemID, BRCPQLConnection, BRCServerZone, BRCSyncBudgetThrottle, BRCSyncDownOperation, BRCSyncOperationBackoffRatio, BRCSyncOperationThrottle, BRCSyncUpOperation, BRCThrottle, BRCThrottleBase, BRCZoneRowID, BRMangledID, CKOperationGroup, NSArray, NSDate, NSDictionary, NSError, NSMutableArray, NSMutableDictionary, NSMutableIndexSet, NSMutableSet, NSSet, NSString, brc_task_tracker;
+@class BRCAccountSessionFPFS, BRCCreateZoneAndSubscribeOperation, BRCDeadlineSource, BRCFetchRecentAndFavoriteDocumentsOperation, BRCItemID, BRCPQLConnection, BRCServerZone, BRCSyncBudgetThrottle, BRCSyncDownOperation, BRCSyncOperationBackoffRatio, BRCSyncOperationThrottle, BRCSyncUpOperation, BRCThrottle, BRCThrottleBase, BRCZoneRowID, BRMangledID, CKOperationGroup, NSArray, NSDate, NSDictionary, NSError, NSMutableArray, NSMutableDictionary, NSMutableIndexSet, NSSet, NSString, brc_task_tracker;
 @protocol BRCClientZoneDelegate, NSObject, OS_dispatch_queue, OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
 @interface BRCClientZone : NSObject
 {
-    BRCAccountSession *_session;
+    BRCAccountSessionFPFS *_session;
     BRCServerZone *_serverZone;
     id <BRCClientZoneDelegate> _delegate;
     BRCZoneRowID *_dbRowID;
@@ -46,6 +46,7 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_fetchParentOperations;
     NSMutableDictionary *_locateRecordOperations;
     BRCFetchRecentAndFavoriteDocumentsOperation *_fetchRecentsOperation;
+    _Bool _invokeFetchRecentsOperation;
     BRCThrottle *_serverStitchingOperationThrottle;
     NSMutableIndexSet *_appliedTombstoneRanks;
     long long _lastInsertedRank;
@@ -54,14 +55,11 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_source> *_resetTimer;
     NSMutableDictionary *_syncDownBlockToPerformForBookmarkData;
     _Bool _shouldShowiCloudDriveAppInstallationNotification;
-    NSMutableSet *_itemIDsBlockedFromSyncForCZMProcessing;
-    NSMutableDictionary *_itemsBlockedByAssociationForCZMProcessing;
-    NSMutableArray *_blocksWaitingOnCrossZoneMoveProcessing;
+    NSMutableArray *_faultsLiveBarriers;
     NSMutableDictionary *_onDiskBlockToPerformForItemID;
     NSMutableDictionary *_downloadedBlockToPerformForItemID;
     NSMutableDictionary *_syncDownBlockToPerformForItemID;
     NSMutableDictionary *_locateBlocksToPerformForRecordID;
-    NSMutableDictionary *_parentsOfCZMFaults;
     NSMutableArray *_nextSyncDownBarriers;
     NSMutableArray *_currentSyncDownBarriers;
     id <NSObject> _hasWorkDidUpdateObserver;
@@ -76,6 +74,8 @@ __attribute__((visibility("hidden")))
     unsigned long long _requestID;
     NSArray *_syncThrottles;
     NSString *_osNameRequiredToSync;
+    NSSet *_itemIDsBlockedFromSyncForCZMProcessing;
+    NSDictionary *_parentsOfCZMFaults;
 }
 
 - (void).cxx_destruct;
@@ -86,7 +86,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSString *osNameRequiredToSync; // @synthesize osNameRequiredToSync=_osNameRequiredToSync;
 @property(retain, nonatomic) BRCServerZone *serverZone; // @synthesize serverZone=_serverZone;
 @property(readonly, nonatomic) BRCDeadlineSource *syncDeadlineSource; // @synthesize syncDeadlineSource=_syncDeadlineSource;
-@property(retain, nonatomic) BRCAccountSession *session; // @synthesize session=_session;
+@property(retain, nonatomic) BRCAccountSessionFPFS *session; // @synthesize session=_session;
 @property(readonly, nonatomic) long long lastInsertedRank; // @synthesize lastInsertedRank=_lastInsertedRank;
 @property(readonly, nonatomic) unsigned long long currentRequestID; // @synthesize currentRequestID=_requestID;
 @property(readonly, nonatomic) NSString *zoneName; // @synthesize zoneName=_zoneName;
@@ -99,14 +99,6 @@ __attribute__((visibility("hidden")))
 - (void)resetSyncUpBackoffRatio;
 - (float)syncUpBackoffRatio;
 - (float)syncUpBackoffDelay;
-- (void)waitForCrossZoneMoveProcessingWithCompletion:(CDUnknownBlockType)arg1;
-- (void)itemCrossZoneMoved:(id)arg1 withLookup:(id)arg2;
-- (void)itemMovedIntoShareInThisZone:(id)arg1 associatedItemID:(id)arg2;
-- (void)_startDownloadingItemForCrossZoneMoveIfNecessary:(id)arg1;
-- (void)_removeItemAndProcessForCrossZoneMove:(id)arg1;
-- (void)_finishedProcessingItemThatMovedToThisZone:(id)arg1;
-- (void)_removeItemFromCZMProcessingIfNotAssociated:(id)arg1;
-- (id)_refreshItemFromDB:(id)arg1;
 - (_Bool)shouldSyncMangledID:(id)arg1;
 - (_Bool)dumpActivityToContext:(id)arg1 includeExpensiveActivity:(_Bool)arg2 error:(id *)arg3;
 - (_Bool)_dumpItemsToContext:(id)arg1 includeAllItems:(_Bool)arg2 error:(id *)arg3;
@@ -148,6 +140,7 @@ __attribute__((visibility("hidden")))
 - (id)itemByItemID:(id)arg1;
 - (id)serverHiddenChildCountWithParentID:(id)arg1 db:(id)arg2;
 - (id)serverQuotaUsageWithParentID:(id)arg1 db:(id)arg2;
+- (_Bool)containsNonRejectedChildWithParentID:(id)arg1 db:(id)arg2;
 - (id)clientChildCountWithParentID:(id)arg1 db:(id)arg2;
 - (id)serverChildCountWithParentID:(id)arg1 db:(id)arg2;
 - (id)serverItemByRowID:(unsigned long long)arg1 db:(id)arg2;
@@ -158,15 +151,19 @@ __attribute__((visibility("hidden")))
 - (id)serverItemByRank:(long long)arg1;
 - (long long)serverRankByItemID:(id)arg1;
 - (id)itemsParentedToThisZoneButLivingInAnOtherZone;
+- (id)allItemsSortedByDepthDescending:(_Bool)arg1;
 - (id)allItems;
 - (_Bool)_resetItemsTable;
 - (_Bool)dumpTablesToContext:(id)arg1 includeAllItems:(_Bool)arg2 error:(id *)arg3;
 - (_Bool)dumpStatusToContext:(id)arg1 error:(id *)arg2;
+- (void)fetchRecentAndFavoriteDocuments:(_Bool)arg1;
 - (void)fetchRecentAndFavoriteDocuments;
+- (void)clearAndRefetchRecentAndFavoriteDocuments;
 - (id)locateRecordIfNecessaryForRecordID:(id)arg1 isUserWaiting:(_Bool)arg2;
 - (id)fetchParentChainIfNecessaryWithParentItemID:(id)arg1 isUserWaiting:(_Bool)arg2;
 - (id)fetchRecursiveDirectoryContentsIfNecessary:(id)arg1 isUserWaiting:(_Bool)arg2 rescheduleApply:(_Bool)arg3;
 - (id)fetchDirectoryContentsIfNecessary:(id)arg1 isUserWaiting:(_Bool)arg2 rescheduleApplyScheduler:(_Bool)arg3;
+- (_Bool)_isSideSyncOperationBlockedWithName:(id)arg1 isListDirectoryOp:(_Bool)arg2;
 - (_Bool)_isSideSyncOperationBlockedWithName:(id)arg1;
 - (id)cancelLocateRecordOperationAndReschedule:(id)arg1;
 - (void)_registerLocateRecordOperation:(id)arg1;
@@ -191,7 +188,10 @@ __attribute__((visibility("hidden")))
 - (void)listedUpToRank:(long long)arg1;
 - (void)_fixupMissingCrossMovedItems;
 - (void)syncDownOperation:(id)arg1 didFinishWithError:(id)arg2 status:(long long)arg3;
+- (void)notifyClient:(id)arg1 whenIdle:(CDUnknownBlockType)arg2;
 - (void)notifyClient:(id)arg1 afterNextSyncDown:(CDUnknownBlockType)arg2;
+- (void)_flushIdleBlocksIfNeeded;
+- (_Bool)_isIdle;
 @property(readonly, nonatomic) NSArray *syncThrottles; // @synthesize syncThrottles=_syncThrottles;
 - (void)_syncUpOfRecords:(id)arg1 createdAppLibraryNames:(id)arg2 didFinishWithError:(id)arg3 errorWasOnPCSChainedItem:(_Bool)arg4;
 - (void)learnCKInfosFromSavedRecords:(id)arg1 isOutOfBandModifyRecords:(_Bool)arg2;
@@ -221,22 +221,17 @@ __attribute__((visibility("hidden")))
 - (id)_faultsEnumeratorFromRow:(unsigned long long)arg1 batchSize:(unsigned long long)arg2;
 - (void)_enumerateFaultsWithBlock:(CDUnknownBlockType)arg1 rowID:(unsigned long long)arg2 batchSize:(unsigned long long)arg3;
 - (void)enumerateFaultsAsyncWithBlock:(CDUnknownBlockType)arg1 batchSize:(unsigned long long)arg2;
-- (id)documentsNotIdleEnumeratorWithDB:(id)arg1;
+- (id)documentsNotIdleEnumeratorWithDB:(id)arg1 startingRowID:(unsigned long long)arg2 batchSize:(unsigned long long)arg3;
 - (_Bool)hasItemsWithInFlightDiffs;
 - (id)itemsWithInFlightDiffsEnumerator;
 - (_Bool)hasItems;
 - (id)itemsEnumeratorWithDB:(id)arg1;
 - (BOOL)serverItemTypeByItemID:(id)arg1 db:(id)arg2;
-- (_Bool)existsByParentID:(id)arg1 andCaseInsensitiveLogicalName:(id)arg2 excludingItemID:(id)arg3 db:(id)arg4;
-- (_Bool)existsByParentID:(id)arg1 andCaseInsensitiveLogicalName:(id)arg2 db:(id)arg3;
-- (_Bool)existsByParentID:(id)arg1 andCaseInsensitiveLogicalName:(id)arg2 excludingItemID:(id)arg3;
 - (_Bool)existsByParentID:(id)arg1 andCaseInsensitiveLogicalName:(id)arg2;
-- (id)faultByParentID:(id)arg1 andPhysicalName:(id)arg2 db:(id)arg3;
-- (id)faultByParentID:(id)arg1 andPhysicalName:(id)arg2;
-- (id)faultByParentID:(id)arg1 andLogicalName:(id)arg2 db:(id)arg3;
-- (id)faultByParentID:(id)arg1 andLogicalName:(id)arg2;
-- (id)reservedItemByParentID:(id)arg1 andLogicalName:(id)arg2 db:(id)arg3;
-- (id)reservedItemByParentID:(id)arg1 andLogicalName:(id)arg2;
+- (_Bool)existsByParentID:(id)arg1 andLogicalName:(id)arg2 excludingItemID:(id)arg3 db:(id)arg4;
+- (_Bool)existsByParentID:(id)arg1 andLogicalName:(id)arg2 db:(id)arg3;
+- (_Bool)existsByParentID:(id)arg1 andLogicalName:(id)arg2 excludingItemID:(id)arg3;
+- (_Bool)existsByParentID:(id)arg1 andLogicalName:(id)arg2;
 - (id)itemByParentID:(id)arg1 andPhysicalName:(id)arg2;
 - (id)itemByParentID:(id)arg1 andPhysicalName:(id)arg2 db:(id)arg3;
 - (id)itemByParentID:(id)arg1 andLogicalName:(id)arg2 db:(id)arg3;
@@ -296,13 +291,26 @@ __attribute__((visibility("hidden")))
 - (void)_performAfterResetServerAndClientSharedTruthsAndUnlinkData:(CDUnknownBlockType)arg1;
 - (void)_performAfterResetServerAndClientPrivateTruthsAndUnlinkData:(CDUnknownBlockType)arg1;
 - (void)_performResetAndWantsUnlink:(_Bool)arg1 clientTruthBlock:(CDUnknownBlockType)arg2 completionBlock:(CDUnknownBlockType)arg3;
+- (_Bool)_postHardResetHandlingWithDB:(id)arg1 completionBlock:(CDUnknownBlockType)arg2 error:(id *)arg3;
+- (_Bool)_performHardResetOnClientItemsAndWantsUnlink:(_Bool)arg1 db:(id)arg2 error:(id *)arg3;
+- (_Bool)_deleteRelevantPackageItemsWithDB:(id)arg1 error:(id *)arg2;
+- (void)_postSoftResetHandlingAndWantsUnlink:(_Bool)arg1 completionBlock:(CDUnknownBlockType)arg2;
+- (void)_performSoftResetOnItems:(id)arg1 wantsUnlink:(_Bool)arg2;
+- (void)_hanldeSoftResetOfLocalItem:(id)arg1 wantsUnlink:(_Bool)arg2;
+- (id)_getRelevantClientTruthItemEnumerator;
+- (void)_deleteJobsMatchingServerZone;
+- (void)_resetAndDeleteServerTruthData;
 - (_Bool)supportsKeepingClientItemsDuringReset;
 - (void)_reset:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)scheduleReset:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)scheduleReset:(unsigned long long)arg1;
 - (void)cancelReset;
-- (id)itemEnumeratorByParentID:(id)arg1 andCaseInsensitiveLogicalName:(id)arg2;
+- (void)notifyClient:(id)arg1 whenFaultingIsDone:(CDUnknownBlockType)arg2;
+- (void)signalFaultingWatchersWithError:(id)arg1;
+- (void)itemMovedIntoShareInThisZone:(id)arg1 associatedItemID:(id)arg2;
+- (id)deadItemByParentID:(id)arg1 andUnbouncedLogicalName:(id)arg2;
 - (id)liveItemByParentID:(id)arg1 andCaseInsensitiveLogicalName:(id)arg2 excludingItemID:(id)arg3;
+- (id)liveItemByParentID:(id)arg1 andLogicalName:(id)arg2 excludingItemID:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

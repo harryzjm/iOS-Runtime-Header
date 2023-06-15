@@ -14,9 +14,9 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *observers;
     MISSING_TYPE *shortcutList;
     MISSING_TYPE *subscriptionController;
-    MISSING_TYPE *sportsOnboardingManager;
     MISSING_TYPE *configurationManager;
-    MISSING_TYPE *_orderedShortcuts;
+    MISSING_TYPE *unsafeOrderedShortcuts;
+    MISSING_TYPE *lock;
 }
 
 - (void).cxx_destruct;

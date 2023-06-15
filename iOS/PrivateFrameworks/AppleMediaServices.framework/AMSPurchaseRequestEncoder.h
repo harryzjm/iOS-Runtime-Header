@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
 + (id)_parametersFromPurchaseInfo:(id)arg1 error:(id *)arg2;
 + (id)bagURLFromPurchaseInfo:(id)arg1 bag:(id)arg2 error:(id *)arg3;
 + (id)_bagURLKeysFromPurchaseInfo:(id)arg1;
-+ (id)_bagURLKeysForPurchaseType:(long long)arg1 withProductType:(id)arg2 prefix:(id)arg3;
++ (id)_bagURLKeysForPurchaseType:(long long)arg1 withProductType:(id)arg2 purchase:(id)arg3 prefix:(id)arg4;
 + (id)_buyProductURLKeysForProductType:(id)arg1 prefix:(id)arg2;
 + (long long)_anisetteTypeFromAccount:(id)arg1;
 + (_Bool)isRedirectBagURLOverrideEnabled;

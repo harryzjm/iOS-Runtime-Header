@@ -10,8 +10,8 @@
 
 @protocol BMStoreData <NSObject>
 + (id)eventWithData:(NSData *)arg1 dataVersion:(unsigned int)arg2;
+@property(readonly, nonatomic) unsigned int dataVersion;
 - (NSData *)serialize;
-@property(nonatomic, readonly) unsigned int dataVersion;
 
 @optional
 - (NSDictionary *)jsonDict;

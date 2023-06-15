@@ -64,8 +64,6 @@ __attribute__((visibility("hidden")))
 - (void)_updateActionsForPropertyItems:(id)arg1 category:(id)arg2 propertyActionClass:(Class)arg3;
 - (id)_addActionForPropertyItem:(id)arg1 category:(id)arg2 propertyActionClass:(Class)arg3;
 - (void)_addAction:(id)arg1;
-- (id)_hybridActionsFromOrderedActionsByCategories:(id)arg1 totalNumberOfActions:(unsigned long long)arg2;
-- (id)_expandedActionsFromOrderedActionsByCategories:(id)arg1 totalNumberOfActions:(unsigned long long)arg2;
 - (id)_hierarchicalActionsForCategory:(id)arg1 fromActions:(id)arg2 askDelegate:(_Bool)arg3;
 - (id)_groupedActionsFromOrderedActionsByCategories:(id)arg1;
 - (_Bool)_shouldGroupActionsInCategory:(id)arg1;

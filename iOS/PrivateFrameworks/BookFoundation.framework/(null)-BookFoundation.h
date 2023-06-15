@@ -4,16 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSString, NSURL, _TtC14BookFoundation12MResourceSet;
+@class NSString;
 
 @interface (null) (BookFoundation)
-@property(nonatomic, readonly) NSURL *url;
-@property(nonatomic, readonly) _Bool isOrdered;
-@property(nonatomic, readonly) NSString *name;
-@property(nonatomic, readonly) _TtC14BookFoundation12MResourceSet *assetsResourceSet;
-- (void)fetchAllAssetsWithCompletionHandler:(void (^)(NSError *))arg1;
-- (void)fetchNextAssetsWithCompletionHandler:(void (^)(NSError *))arg1;
-@property(nonatomic, readonly) NSArray *_assets;
-@property(nonatomic, readonly) NSArray *assets;
+@property(nonatomic, readonly) NSString *parentName;
+@property(nonatomic, readonly) NSString *parentId;
 @end
 

@@ -6,7 +6,7 @@
 
 #import <Accounts/ACAccount.h>
 
-@class NSArray, NSDictionary, NSNumber, NSString;
+@class AMSAccountIdentity, NSArray, NSDictionary, NSNumber, NSString;
 
 @interface ACAccount (AppleMediaServices)
 + (_Bool)_isAccountFlagWritable:(id)arg1;
@@ -42,6 +42,9 @@
 - (id)_archivedCookieDataAtPath:(id)arg1 error:(id *)arg2;
 - (_Bool)_updateCookiesWithCookiesToAdd:(id)arg1 cookiesToRemove:(id)arg2 error:(id *)arg3;
 - (id)_cookiesMatchingProperties:(id)arg1;
+@property(readonly, nonatomic, getter=ams_isLocalOrSandboxAccount) _Bool ams_isLocalOrSandboxAccount;
+- (void)_ams_setAccountFlagsShimmed:(id)arg1;
+- (id)_ams_getAccountFlagsShimmedWithError:(id *)arg1;
 - (_Bool)_ams_migrateCookieProperties:(id)arg1 intoCookies:(id)arg2 error:(id *)arg3;
 - (_Bool)_ams_setCookieProperties:(id)arg1;
 - (id)_ams_cookieProperties;
@@ -72,6 +75,8 @@
 - (void)ams_setActive:(_Bool)arg1 forMediaType:(id)arg2;
 - (void)ams_setAccountFlagValue:(id)arg1 forAccountFlag:(id)arg2;
 - (long long)ams_mergePrivacyAcknowledgement:(id)arg1;
+- (_Bool)ams_isInRestrictedRegionWithBag:(id)arg1 shouldWaitForSync:(_Bool)arg2;
+- (id)ams_isInRestrictedRegionWithBag:(id)arg1 waitForSync:(_Bool)arg2;
 - (_Bool)ams_isDuplicate:(id)arg1;
 - (_Bool)ams_isActiveForMediaType:(id)arg1;
 - (_Bool)ams_encryptAccountFlags;
@@ -129,11 +134,14 @@
 @property(readonly, nonatomic) NSArray *ams_cookies;
 @property(readonly, nonatomic) NSArray *ams_automaticDownloadKinds;
 @property(readonly, nonatomic) NSString *ams_altDSID;
+@property(readonly, nonatomic) AMSAccountIdentity *ams_accountID;
 - (id)ams_accountFlags;
 - (_Bool)ams_setAccountFlagOverrideValue:(id)arg1 forAccountFlag:(id)arg2;
 - (id)ams_accountFlagOverrideValueForAccountFlag:(id)arg1;
 - (_Bool)ams_migrateCookiePropertiesWithError:(id *)arg1;
 - (_Bool)ams_copyStorefrontFromAccount:(id)arg1;
+- (id)ams_cookieDatabasePath;
+@property(retain, nonatomic, setter=ams_setLastRestrictedRegionSyncTimestamp:) NSNumber *ams_lastRestrictedRegionSyncTimestamp;
 @property(retain, nonatomic, getter=ams_isBundleOwner, setter=ams_setIsBundleOwner:) NSNumber *ams_isBundleOwner;
 @property(nonatomic, getter=ams_isDemoAccount, setter=ams_setDemoAccount:) _Bool ams_demoAccount;
 @property(nonatomic, setter=ams_setBiometricsState:) long long ams_biometricsState;

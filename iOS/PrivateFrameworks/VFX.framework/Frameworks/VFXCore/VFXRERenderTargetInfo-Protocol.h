@@ -11,5 +11,9 @@
 @property(nonatomic, readonly) unsigned long long depthStencilPixelFormat;
 @property(nonatomic, readonly) long long sampleCount;
 @property(nonatomic, readonly) _Bool vrrEnabled;
+
+@optional
+@property(nonatomic, readonly) unsigned long long stencilPixelFormat;
+@property(nonatomic, readonly) unsigned long long depthPixelFormat;
 @end
 

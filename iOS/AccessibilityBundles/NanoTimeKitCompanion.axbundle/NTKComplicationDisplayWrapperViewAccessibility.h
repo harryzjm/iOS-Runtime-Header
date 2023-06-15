@@ -23,6 +23,7 @@
 - (id)accessibilityHint;
 - (id)accessibilityValue;
 - (id)accessibilityLabel;
+- (id)_accessibilityUserTestingChildren;
 - (id)accessibilityIdentifier;
 - (_Bool)_accessibilityFKAShouldProcessChildren;
 - (_Bool)isAccessibilityElement;

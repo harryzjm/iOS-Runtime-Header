@@ -9,6 +9,7 @@
 @protocol CKBalloonTextViewInteractionDelegate;
 
 @protocol CKBalloonTextViewProtocol <NSObject>
+@property(nonatomic) _Bool shouldAdjustInsetsForMinimumSize;
 @property(nonatomic, getter=isFakeSelected) _Bool fakeSelected;
 @property(nonatomic) __weak id <CKBalloonTextViewInteractionDelegate> interactionDelegate;
 - (void)setBalloonTextSelectedRange:(struct _NSRange)arg1;

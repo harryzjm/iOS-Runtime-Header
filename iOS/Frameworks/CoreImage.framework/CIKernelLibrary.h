@@ -12,6 +12,7 @@
 __attribute__((visibility("hidden")))
 @interface CIKernelLibrary : NSObject
 {
+    unsigned long long _digest;
     NSObject<OS_dispatch_data> *_data;
     id <MTLLibrary> _library;
     NSSet *_extern_function_names;
@@ -19,20 +20,22 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)libraryWithSource:(id)arg1 error:(id *)arg2;
++ (id)libraryWithURL:(id)arg1 error:(id *)arg2;
 + (id)libraryWithData:(id)arg1 error:(id *)arg2;
 + (id)coreImageDylibWithDevice:(id)arg1;
 + (id)internalLibraryWithName:(id)arg1 device:(id)arg2;
+@property(readonly) unsigned long long digest; // @synthesize digest=_digest;
 - (void)initFunctionNames;
 - (id)newSpecializedFunctionWithName:(id)arg1 constants:(void *)arg2;
+- (id)newSpecializedFunctionWithDescriptor:(id)arg1;
 - (id)newFunctionWithName:(id)arg1;
 - (id)functionWithName:(id)arg1;
 - (id)functionNames;
 @property(readonly) unsigned long long functionCount;
 - (void)dealloc;
+- (id)initWithURL:(id)arg1 error:(id *)arg2;
 - (id)initWithData:(id)arg1 error:(id *)arg2;
 - (id)initWithSource:(id)arg1 error:(id *)arg2;
-- (id)newMTLLibraryWithSource:(id)arg1 source:(id)arg2 error:(id *)arg3;
-- (id)newMTLLibraryWithData:(id)arg1 data:(id)arg2 error:(id *)arg3;
 
 @end
 

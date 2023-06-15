@@ -24,6 +24,7 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly, nonatomic) NSString *uri;
 - (id)initWithURI:(id)arg1;
 - (id)initWithURIObject:(id)arg1 isLightWeight:(_Bool)arg2;

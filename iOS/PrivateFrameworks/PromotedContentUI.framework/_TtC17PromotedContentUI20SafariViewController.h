@@ -12,6 +12,8 @@
 {
     MISSING_TYPE *notificationObserver;
     MISSING_TYPE *notificationCloseObserver;
+    MISSING_TYPE *notificationOpenObserver;
+    MISSING_TYPE *backgroundedTime;
     MISSING_TYPE *actionDelegate;
 }
 

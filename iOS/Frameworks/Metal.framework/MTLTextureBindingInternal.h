@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     unsigned short _textureDataType;
 }
 
+- (_Bool)isEqual:(id)arg1;
 - (id)formattedDescription:(unsigned long long)arg1;
 @property(readonly) unsigned long long textureDataType;
 @property(readonly, getter=isDepthTexture) _Bool depthTexture;

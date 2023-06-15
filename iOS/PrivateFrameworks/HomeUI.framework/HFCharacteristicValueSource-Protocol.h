@@ -17,7 +17,7 @@
 - (NAFuture *)readValuesForCharacteristics:(NSSet *)arg1;
 
 @optional
-@property(nonatomic, readonly) id <HFCharacteristicOperationContextProviding> contextProvider;
+@property(readonly, nonatomic) id <HFCharacteristicOperationContextProviding> contextProvider;
 - (NSError *)cachedErrorForWriteToCharacteristic:(HMCharacteristic *)arg1;
 - (NSError *)cachedErrorForExecutionOfActionSet:(HMActionSet *)arg1;
 - (void)executeActionSet:(HMActionSet *)arg1 completionHandler:(void (^)(NSError *))arg2;

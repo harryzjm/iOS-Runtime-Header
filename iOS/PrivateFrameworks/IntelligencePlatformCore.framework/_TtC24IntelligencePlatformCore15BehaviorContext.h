@@ -11,8 +11,8 @@
 @interface _TtC24IntelligencePlatformCore15BehaviorContext : _TtCs12_SwiftObject
 {
     MISSING_TYPE *date;
-    MISSING_TYPE *location;
     MISSING_TYPE *motionState;
+    MISSING_TYPE *cachedContextIntervals;
     MISSING_TYPE *$__lazy_storage_$_cachedLastBehaviorByTypes;
 }
 

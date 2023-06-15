@@ -6,7 +6,7 @@
 
 #import <AVConference/NSObject-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSError, NSString;
+@class NSArray, NSDictionary, NSError, NSString;
 @protocol VCMediaStreamProtocol;
 
 @protocol VCMediaStreamDelegate <NSObject>
@@ -25,11 +25,11 @@
 - (void)vcMediaStreamDidInterruptionEnd:(id <VCMediaStreamProtocol>)arg1;
 - (void)vcMediaStreamDidInterruptionBegin:(id <VCMediaStreamProtocol>)arg1;
 - (void)vcMediaStream:(id <VCMediaStreamProtocol>)arg1 didSwitchToAudioStreamWithID:(unsigned short)arg2;
-- (void)vcMediaStream:(id <VCMediaStreamProtocol>)arg1 updateFrequencyLevel:(NSData *)arg2 isInputMeter:(_Bool)arg3;
 - (void)vcMediaStream:(id <VCMediaStreamProtocol>)arg1 didReceiveDTMFEventWithDigit:(BOOL)arg2;
 - (void)vcMediaStreamDidDecryptionTimeOutForMKMRecovery:(id <VCMediaStreamProtocol>)arg1;
 - (void)vcMediaStreamDidDecryptionTimeOut:(id <VCMediaStreamProtocol>)arg1;
 - (void)vcMediaStream:(id <VCMediaStreamProtocol>)arg1 didReceiveRTCPPackets:(NSArray *)arg2;
+- (void)vcMediaStreamDidRecoverFromRTCPTimeOut:(id <VCMediaStreamProtocol>)arg1;
 - (void)vcMediaStreamDidRTCPTimeOut:(id <VCMediaStreamProtocol>)arg1;
 - (void)vcMediaStreamDidRTPTimeOut:(id <VCMediaStreamProtocol>)arg1;
 - (void)vcMediaStream:(id <VCMediaStreamProtocol>)arg1 remoteMediaStalled:(_Bool)arg2 duration:(double)arg3;

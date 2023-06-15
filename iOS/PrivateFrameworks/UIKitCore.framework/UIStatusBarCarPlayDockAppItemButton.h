@@ -6,12 +6,10 @@
 
 #import "UIButton.h"
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 @class NSLayoutConstraint, NSString, UIImageView;
 
 __attribute__((visibility("hidden")))
-@interface UIStatusBarCarPlayDockAppItemButton : UIButton <NSCopying>
+@interface UIStatusBarCarPlayDockAppItemButton : UIButton
 {
     NSLayoutConstraint *_heightConstraint;
     NSLayoutConstraint *_widthConstraint;

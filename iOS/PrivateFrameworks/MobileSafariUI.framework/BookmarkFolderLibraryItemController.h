@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "LibraryItemController.h"
+
 @class BookmarksTableViewController, NSObject, NSString, UIBarButtonItem, WebBookmark, WebBookmarkCollection;
 @protocol LinkPreviewProvider, OS_dispatch_queue, TabGroupProvider, WBBookmarkProvider, _SFNavigationIntentHandling;
 
 __attribute__((visibility("hidden")))
-@interface BookmarkFolderLibraryItemController
+@interface BookmarkFolderLibraryItemController : LibraryItemController
 {
     BookmarksTableViewController *_viewController;
     UIBarButtonItem *_createFolderButtonItem;
@@ -34,9 +36,10 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) id <WBBookmarkProvider> bookmarkProvider; // @synthesize bookmarkProvider=_bookmarkProvider;
 @property(retain, nonatomic) WebBookmarkCollection *collection; // @synthesize collection=_collection;
 @property(readonly, nonatomic) WebBookmark *folder; // @synthesize folder=_folder;
+- (id)accessibilityIdentifier;
 - (void)tabGroupManager:(id)arg1 didUpdateScopedBookmarkList:(id)arg2;
-- (void)tabGroupManager:(id)arg1 didUpdateTabGroup:(id)arg2;
-- (void)tabGroupManager:(id)arg1 didRemoveTabGroup:(id)arg2;
+- (void)tabGroupManager:(id)arg1 didUpdateTabGroupWithUUID:(id)arg2;
+- (void)tabGroupManager:(id)arg1 didRemoveTabGroupWithUUID:(id)arg2;
 - (void)tabGroupManagerDidUpdateTabGroups:(id)arg1;
 - (void)performDropWithProposal:(id)arg1 session:(id)arg2;
 - (long long)dropIntentForSession:(id)arg1;
@@ -48,10 +51,11 @@ __attribute__((visibility("hidden")))
 - (void)bookmarksTableViewControllerWillDisappear:(id)arg1;
 - (_Bool)bookmarksTableViewIsReadOnly:(id)arg1;
 - (_Bool)bookmarksTableViewShouldDispatchNavigationIntent:(id)arg1 forSelectedBookmark:(id)arg2;
-- (void)bookmarksTableViewControllerDidEndEditing:(id)arg1;
-- (void)bookmarksTableViewControllerDidBeginEditing:(id)arg1;
 - (struct UIEdgeInsets)contentInsetForBookmarksTableViewController:(id)arg1;
 - (struct UIEdgeInsets)separatorInsetForBookmarksTableViewController:(id)arg1;
+- (void)panelViewControllerDidEndEditing:(id)arg1;
+- (void)panelViewControllerDidBeginEditing:(id)arg1;
+- (_Bool)panelViewControllerShouldUseSearchControllerInNavigationItem:(id)arg1;
 - (_Bool)bookmarkInfoViewControllerShouldUseTranslucentAppearance:(id)arg1;
 - (void)_setEditingFromToolbarButton:(_Bool)arg1;
 - (void)_updateToolbarItemsForViewController:(id)arg1 animated:(_Bool)arg2;

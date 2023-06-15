@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (void)dropIndexWithCompletion:(CDUnknownBlockType)arg1;
+- (void)dropIndexForDomainRemoval:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)indexOneBatchWithCompletionHandler:(CDUnknownBlockType)arg1;
 
 @end

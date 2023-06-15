@@ -7,8 +7,10 @@
 #import <PhotosUICore/PXBarsControllerDelegate-Protocol.h>
 
 @class PXPhotosBarsController;
+@protocol PXPresentationEnvironment, UIPopoverPresentationControllerSourceItem;
 
 @protocol PXPhotosBarsControllerDelegate <PXBarsControllerDelegate>
+- (id <PXPresentationEnvironment>)presentationEnvironmentForPhotosBarsController:(PXPhotosBarsController *)arg1 withSourceItem:(id <UIPopoverPresentationControllerSourceItem>)arg2;
 - (void)photosBarsController:(PXPhotosBarsController *)arg1 didRequestDismissWithSender:(id)arg2;
 - (void)photosBarsControllerDidUpdateNavigationItemAppearance:(PXPhotosBarsController *)arg1;
 - (void)photosBarsControllerDidUpdateBars:(PXPhotosBarsController *)arg1;

@@ -9,11 +9,11 @@
 __attribute__((visibility("hidden")))
 @interface BRCPrivateClientZone
 {
+    NSMutableArray *_faultsLiveBarriers;
     NSMutableArray *_syncBarriers;
     BRCServerZoneHealthState *_zoneHealthState;
     BRCProblemReport *_problemReport;
     NSMutableArray *_lastResets;
-    NSMutableArray *_faultsLiveBarriers;
     NSMutableSet *_appLibraries;
     BRCAppLibrary *_defaultAppLibrary;
     NSMapTable *_pcsChainFolderOperations;
@@ -27,10 +27,7 @@ __attribute__((visibility("hidden")))
 - (void)_checkResultSetIsEmpty:(id)arg1 logToFile:(struct __sFILE *)arg2 reason:(id)arg3 result:(_Bool *)arg4;
 - (_Bool)dumpActivityToContext:(id)arg1 includeExpensiveActivity:(_Bool)arg2 error:(id *)arg3;
 @property(readonly, nonatomic) _Bool isDocumentScopePublic;
-- (id)resolveClashOfAlias:(id)arg1 atPath:(id)arg2 withAlias:(id)arg3 atPath:(id)arg4;
 - (id)serverAliasByUnsaltedBookmarkData:(id)arg1;
-- (void)signalFaultingWatchersWithError:(id)arg1;
-- (void)notifyClient:(id)arg1 whenFaultingIsDone:(CDUnknownBlockType)arg2;
 - (_Bool)recomputeAppSyncBlockState;
 @property(readonly, nonatomic) _Bool zoneHealthNeedsSyncUp;
 - (void)zoneHealthWasReset;
@@ -62,6 +59,9 @@ __attribute__((visibility("hidden")))
 - (id)unchainedItemInfoInServerTruthEnumeratorParentedTo:(id)arg1;
 - (_Bool)parentIDHasLiveUnchainedChildren:(id)arg1;
 - (unsigned int)pcsChainStateForItem:(id)arg1;
+- (void)notifyClient:(id)arg1 whenFaultingIsDone:(CDUnknownBlockType)arg2;
+- (void)signalFaultingWatchersWithError:(id)arg1;
+- (id)resolveClashOfAlias:(id)arg1 atPath:(id)arg2 withAlias:(id)arg3 atPath:(id)arg4;
 
 // Remaining properties
 @property(readonly, nonatomic) _Bool isSharedZone; // @dynamic isSharedZone;

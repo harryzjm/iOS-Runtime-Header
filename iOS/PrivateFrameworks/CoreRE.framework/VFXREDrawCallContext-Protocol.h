@@ -11,6 +11,9 @@
 
 @protocol VFXREDrawCallContext <NSObject>
 @property(readonly, nonatomic) id <VFXRERenderTargetInfo> renderTargetInfo;
+@property(readonly, nonatomic) _Bool isDrawingBlur;
+@property(readonly, nonatomic) _Bool isDrawingDepthOnly;
+- (void)setLateLatchingPatchHandler:(void (^)(struct *, int))arg1;
 - (void)viewports:(const void **)arg1:(long long *)arg2;
 - (_Bool)constantOffsetAndSize:(int)arg1:(NSString *)arg2:(long long *)arg3:(long long *)arg4;
 - (const char *)constantData:(int)arg1;

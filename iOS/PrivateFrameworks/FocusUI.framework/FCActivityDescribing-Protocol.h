@@ -10,20 +10,18 @@
 @class NSArray, NSDate, NSString, NSURL, NSUUID;
 
 @protocol FCActivityDescribing <NSObject, NSCopying>
-- (_Bool)isPlaceholder;
-@property(nonatomic, readonly) NSURL *activitySetupURL;
-@property(nonatomic, readonly) NSURL *activitySettingsURL;
-@property(nonatomic, readonly) NSString *activityLifetimesAlternativeDescription;
-@property(nonatomic, readonly) NSArray *activityLifetimeDescriptions;
-@property(nonatomic, readonly) NSString *activityDetailText;
-@property(nonatomic, readonly) NSDate *activityCreationDate;
-@property(nonatomic, readonly) NSString *activityColorName;
-@property(nonatomic, readonly) NSString *activitySymbolImageName;
-@property(nonatomic, readonly) NSString *activityDisplayName;
-@property(nonatomic, readonly) NSUUID *activityUniqueIdentifier;
-@property(nonatomic, readonly) NSString *activityIdentifier;
-
-// Remaining properties
-@property(nonatomic, readonly) _Bool placeholder;
+@property(readonly, nonatomic, getter=isPlaceholder) _Bool placeholder;
+@property(readonly, copy, nonatomic) NSURL *activitySetupURL;
+@property(readonly, copy, nonatomic) NSURL *activitySettingsURL;
+@property(readonly, copy, nonatomic) NSString *activityLifetimesAlternativeDescription;
+@property(readonly, copy, nonatomic) NSArray *activityLifetimeDescriptions;
+@property(readonly, copy, nonatomic) NSString *activityDetailText;
+@property(readonly, copy, nonatomic) NSDate *activityCreationDate;
+@property(readonly, copy, nonatomic) NSString *activityColorName;
+@property(readonly, copy, nonatomic) NSString *activitySymbolImageName;
+@property(readonly, copy, nonatomic) NSString *activityDisplayName;
+@property(readonly, nonatomic) long long activitySemanticType;
+@property(readonly, copy, nonatomic) NSUUID *activityUniqueIdentifier;
+@property(readonly, copy, nonatomic) NSString *activityIdentifier;
 @end
 

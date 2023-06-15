@@ -11,6 +11,7 @@
 @protocol HFHomeObserver <HMHomeDelegatePrivate>
 
 @optional
+- (void)home:(HMHome *)arg1 didUpdateSiriTriggerPhraseOptions:(unsigned long long)arg2;
 - (void)home:(HMHome *)arg1 didFailAccessorySetupWithError:(NSError *)arg2;
 - (void)home:(HMHome *)arg1 remoteAccessStateDidChange:(unsigned long long)arg2;
 - (void)home:(HMHome *)arg1 didUpdateWallpaperForRoom:(HMRoom *)arg2;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIActivityItemsConfiguration.h>
+#import <UIKitCore/UIActivityItemsConfiguration.h>
 
 @interface UIActivityItemsConfiguration (Bridge)
 - (void)ts_setExcludedActivityTypes:(id)arg1;

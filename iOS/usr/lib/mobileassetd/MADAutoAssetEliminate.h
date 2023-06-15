@@ -6,15 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@class MAAutoAssetSelector, MADAutoAssetClientRequest, NSMutableDictionary;
+@class MAAutoAssetSelector, MADAutoAssetClientRequest, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
 @interface MADAutoAssetEliminate : NSObject
 {
+    _Bool _eliminatingSet;
     _Bool _awaitingSchedulerAck;
     _Bool _awaitingStagerAck;
     MADAutoAssetClientRequest *_clientRequest;
     MAAutoAssetSelector *_assetSelector;
+    NSString *_clientDomainName;
+    NSString *_assetSetIdentifier;
     NSMutableDictionary *_activeJobsByUUID;
 }
 
@@ -23,13 +26,16 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSMutableDictionary *activeJobsByUUID; // @synthesize activeJobsByUUID=_activeJobsByUUID;
 @property(nonatomic) _Bool awaitingStagerAck; // @synthesize awaitingStagerAck=_awaitingStagerAck;
 @property(nonatomic) _Bool awaitingSchedulerAck; // @synthesize awaitingSchedulerAck=_awaitingSchedulerAck;
+@property(nonatomic) _Bool eliminatingSet; // @synthesize eliminatingSet=_eliminatingSet;
+@property(readonly, retain, nonatomic) NSString *assetSetIdentifier; // @synthesize assetSetIdentifier=_assetSetIdentifier;
+@property(readonly, retain, nonatomic) NSString *clientDomainName; // @synthesize clientDomainName=_clientDomainName;
 @property(readonly, retain, nonatomic) MAAutoAssetSelector *assetSelector; // @synthesize assetSelector=_assetSelector;
 @property(readonly, retain, nonatomic) MADAutoAssetClientRequest *clientRequest; // @synthesize clientRequest=_clientRequest;
 - (id)summary;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithClientRequest:(id)arg1 withAssetSelector:(id)arg2;
+- (id)initWithClientRequest:(id)arg1 withAssetSelector:(id)arg2 forClientDomain:(id)arg3 forSetIdentifier:(id)arg4;
 - (id)initWithAssetSelector:(id)arg1;
 - (id)initWithClientRequest:(id)arg1;
 

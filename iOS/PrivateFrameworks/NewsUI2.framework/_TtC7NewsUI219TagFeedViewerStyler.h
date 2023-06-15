@@ -12,7 +12,9 @@
 {
     MISSING_TYPE *baseStyler;
     MISSING_TYPE *titleViewStyler;
-    MISSING_TYPE *titleViewAnimator;
+    MISSING_TYPE *symbolImageConfiguration;
+    MISSING_TYPE *backgroundImageProviderFactory;
+    MISSING_TYPE *imageRendererCache;
 }
 
 @end

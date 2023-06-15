@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UICollectionViewCell.h>
+#import <UIKitCore/UICollectionViewCell.h>
 
 @class MUPlaceTileCellConfiguration, NSString, UIImageView, UIView;
 @protocol MUPlaceTileTemplateView, MUPlaceTileViewModel;
@@ -16,10 +16,10 @@ __attribute__((visibility("hidden")))
     MUPlaceTileCellConfiguration *_cellConfiguration;
 }
 
-+ (struct CGSize)preferredSizeForViewModels:(id)arg1 cellConfiguration:(id)arg2;
++ (struct CGSize)preferredSizeForViewModels:(id)arg1 cellConfiguration:(id)arg2 usingMeasurements:(id)arg3;
 + (id)reuseIdentifier;
 - (void).cxx_destruct;
-@property(nonatomic) MUPlaceTileCellConfiguration *cellConfiguration; // @synthesize cellConfiguration=_cellConfiguration;
+@property(retain, nonatomic) MUPlaceTileCellConfiguration *cellConfiguration; // @synthesize cellConfiguration=_cellConfiguration;
 - (void)_updateTemplateViewWithOldCellConfiguration:(id)arg1;
 @property(retain, nonatomic) id <MUPlaceTileViewModel> viewModel;
 @property(readonly, nonatomic) UIImageView *tileImageView;

@@ -11,6 +11,7 @@
 }
 
 + (_Bool)isForegroundApp;
++ (_Bool)isManagedByRunningBoard;
 + (id)getShared;
 - (int)unregisterBackgroundNotificationForContext:(void *)arg1;
 - (int)registerBackgroundNotificationHandlerForContext:(void *)arg1 handler:(CDUnknownBlockType)arg2;

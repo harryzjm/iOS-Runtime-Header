@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 - (long long)_effectiveRenderingModeForSource:(id)arg1 symbolConfiguration:(id)arg2;
 - (id)_renditionForSource:(id)arg1 size:(struct CGSize)arg2 symbolConfiguration:(id)arg3 withRenditionResult:(id)arg4 lazy:(_Bool)arg5;
 - (id)_effectForRenderingSource:(id)arg1;
+@property(readonly, nonatomic) _Bool _supportsContents;
 @property(readonly, nonatomic) _Bool _hasContentGravity;
 @property(readonly, nonatomic) long long contentMode;
 @property(readonly, nonatomic) long long semanticContentAttribute;

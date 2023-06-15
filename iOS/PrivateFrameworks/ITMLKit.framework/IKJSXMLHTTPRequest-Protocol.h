@@ -10,6 +10,7 @@
 @class IKDOMDocument, JSValue, NSDictionary, NSNumber, NSString;
 
 @protocol IKJSXMLHTTPRequest <IKJSEventListenerObject, JSExport>
+@property(nonatomic) _Bool requireSystemTrust;
 @property(readonly) NSDictionary *metrics;
 @property(readonly) id response;
 @property(retain) NSString *responseType;

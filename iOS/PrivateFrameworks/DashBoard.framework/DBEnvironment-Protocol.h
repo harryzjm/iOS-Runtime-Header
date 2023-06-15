@@ -20,6 +20,7 @@
 - (UIWindow *)systemGestureWindow;
 - (UIWindow *)focusWindow;
 - (DBWorkspace *)workspace;
+- (_Bool)preflightRequiredForApplicationInfo:(DBApplicationInfo *)arg1;
 - (DBApplicationInfo *)applicationInfoForScene:(FBScene *)arg1;
 - (struct UIEdgeInsets)safeAreaInsetsForAppInfo:(DBApplicationInfo *)arg1 proxyAppInfo:(DBApplicationInfo *)arg2;
 - (struct UIEdgeInsets)safeAreaInsetsForAppInfo:(DBApplicationInfo *)arg1;

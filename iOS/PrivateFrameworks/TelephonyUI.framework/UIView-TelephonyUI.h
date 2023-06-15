@@ -4,10 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @interface UIView (TelephonyUI)
 + (void)tpSetSemanticContentAttribute_recursive:(long long)arg1 startingAtView:(id)arg2;
+- (void)tp_setCHCRPriority:(float)arg1;
 @property(readonly, nonatomic) long long tp_userInterfaceLayoutDirection;
 @end
 

@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
     struct CGRect _maskViewFrame;
     struct CGRect _textViewFrame;
     struct CGRect _mainContentFrame;
+    struct CGRect _lastMessageViewFrame;
     struct CGRect _footerContainerViewFrame;
 }
 
@@ -36,6 +37,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) struct CGSize textViewContentHuggingSize; // @synthesize textViewContentHuggingSize=_textViewContentHuggingSize;
 @property(retain, nonatomic) NSMutableArray *footerButtonFramesPreFlatten; // @synthesize footerButtonFramesPreFlatten=_footerButtonFramesPreFlatten;
 @property(nonatomic) struct CGRect footerContainerViewFrame; // @synthesize footerContainerViewFrame=_footerContainerViewFrame;
+@property(nonatomic) struct CGRect lastMessageViewFrame; // @synthesize lastMessageViewFrame=_lastMessageViewFrame;
 @property(nonatomic) struct CGRect mainContentFrame; // @synthesize mainContentFrame=_mainContentFrame;
 @property(nonatomic) struct CGSize lastSize; // @synthesize lastSize=_lastSize;
 @property(nonatomic) struct CGSize lastFittingSize; // @synthesize lastFittingSize=_lastFittingSize;
@@ -54,20 +56,26 @@ __attribute__((visibility("hidden")))
 - (_Bool)isImageViewHidden;
 @property(readonly, nonatomic) double accessorySpacing;
 @property(readonly, nonatomic) _Bool shouldUseStackedLayout;
+- (_Bool)_shouldTextViewTextFillUnderCloseButton;
+- (_Bool)_shouldOffsetFooterButtonFromMainContentView;
 - (double)_scaledUIValueForValue:(double)arg1;
-- (double)_labelSpacing;
 - (_Bool)_isTextOnlyBanner;
 - (_Bool)_isSymbolImage;
+- (_Bool)_isFooterButtonPartOfContentFrame;
+- (_Bool)_isIconImageTopAligned;
 - (_Bool)_isAccessoryViewLeading;
 - (double)_interitemSpacing;
+- (double)_imageToLabelSpacing;
 - (double)_imageLength;
-- (double)_footerHeight;
+- (struct CGRect)_effectiveTextViewFrame;
+- (double)_footerMinimumHeight;
+- (double)_footerButtonSpacing;
 - (unsigned long long)effectiveImageStyle;
 - (double)_bannerMaxTextWidth;
 - (struct CGSize)_makeImageViewSize;
 @property(readonly, nonatomic) struct NSDirectionalEdgeInsets contentLayoutMargins;
 - (void)_calculateFooterButtonFrames;
-- (void)calculateTextViewExlcusionFrame;
+- (void)calculateTextViewExclusionFrame;
 - (void)calculateTextViewSizeInFrame:(struct CGRect)arg1 dirty:(_Bool)arg2;
 - (void)calculateMainContentFrameRootFrame:(struct CGRect)arg1;
 - (void)calculateAccessorySecondaryViewSize;

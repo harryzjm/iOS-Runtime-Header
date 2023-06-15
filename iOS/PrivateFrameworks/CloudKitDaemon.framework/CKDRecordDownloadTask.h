@@ -11,6 +11,7 @@
 
 @interface CKDRecordDownloadTask : NSObject
 {
+    _Bool _shouldCloneFileInAssetCache;
     CKRecord *_record;
     NSError *_error;
     NSMutableArray *_assetsToDownload;
@@ -22,6 +23,7 @@
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool shouldCloneFileInAssetCache; // @synthesize shouldCloneFileInAssetCache=_shouldCloneFileInAssetCache;
 @property(retain, nonatomic) CKDProgressTracker *progressTracker; // @synthesize progressTracker=_progressTracker;
 @property(retain, nonatomic) NSObject<OS_dispatch_group> *group; // @synthesize group=_group;
 @property(retain, nonatomic) NSMutableArray *assetURLInfosToFillOut; // @synthesize assetURLInfosToFillOut=_assetURLInfosToFillOut;

@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 + (id)_stagingComponent;
 + (id)_globalStagingComponent;
 + (id)stagingURLWithUserIdentity:(id)arg1;
-+ (id)stagingGlobalURLWithUserIdentity:(id)arg1;
++ (id)stagingGlobalURL;
 + (id)containerPathForUserIdentity:(id)arg1 containerClass:(unsigned long long)arg2;
 
 @end

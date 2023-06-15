@@ -14,6 +14,7 @@
     MISSING_TYPE *personalizationService;
     MISSING_TYPE *historyService;
     MISSING_TYPE *issueService;
+    MISSING_TYPE *eslInventory;
 }
 
 @end

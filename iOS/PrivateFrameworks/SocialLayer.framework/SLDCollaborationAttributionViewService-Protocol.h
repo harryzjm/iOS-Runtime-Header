@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSString, UISSlotStyle;
+@class NSArray, NSString, SLDImageSymbolConfiguration, UISSlotStyle;
 
 @protocol SLDCollaborationAttributionViewService
-- (void)collaborationAttributionViewForTitle:(NSString *)arg1 attributionIdentifiers:(NSArray *)arg2 style:(UISSlotStyle *)arg3 maxWidth:(double)arg4 variant:(long long)arg5 layerContextID:(unsigned long long)arg6 reply:(void (^)(UISSlotRemoteContent *))arg7;
+- (void)accessibilityLabelForAttributionIdentifiers:(NSArray *)arg1 reply:(void (^)(NSString *))arg2;
+- (void)collaborationAttributionViewForTitle:(NSString *)arg1 attributionIdentifiers:(NSArray *)arg2 style:(UISSlotStyle *)arg3 placeholderGlyphConfiguration:(SLDImageSymbolConfiguration *)arg4 maxWidth:(double)arg5 variant:(long long)arg6 layerContextID:(unsigned long long)arg7 reply:(void (^)(UISSlotRemoteContent *))arg8;
 @end
 

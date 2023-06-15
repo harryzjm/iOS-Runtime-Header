@@ -6,9 +6,12 @@
 
 #import <Rapport/NSObject-Protocol.h>
 
-@class RTIDataPayload;
+@class RTIDataPayload, RTIDocumentRequest;
 
 @protocol RTIInputSystemPayloadDelegate <NSObject>
 - (void)handleTextActionPayload:(RTIDataPayload *)arg1;
+
+@optional
+- (void)performDocumentRequest:(RTIDocumentRequest *)arg1 completion:(void (^)(RTIDocumentState *))arg2;
 @end
 

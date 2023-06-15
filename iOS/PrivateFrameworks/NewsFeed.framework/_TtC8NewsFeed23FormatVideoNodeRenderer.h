@@ -12,7 +12,7 @@
 {
     MISSING_TYPE *assetManager;
     MISSING_TYPE *imageCache;
-    MISSING_TYPE *appliedViewAssets;
+    MISSING_TYPE *creationQueue;
 }
 
 @end

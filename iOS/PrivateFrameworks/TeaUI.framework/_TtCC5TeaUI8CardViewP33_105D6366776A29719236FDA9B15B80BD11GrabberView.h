@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/_UIGrabber.h>
+#import <UIKitCore/_UIGrabber.h>
 
 @interface _TtCC5TeaUI8CardViewP33_105D6366776A29719236FDA9B15B80BD11GrabberView : _UIGrabber
 {

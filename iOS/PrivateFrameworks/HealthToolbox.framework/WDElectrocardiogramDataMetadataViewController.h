@@ -33,6 +33,9 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) long long activeAlgorithmVersion; // @synthesize activeAlgorithmVersion=_activeAlgorithmVersion;
 @property(nonatomic) _Bool firstViewDidLayoutSubviews; // @synthesize firstViewDidLayoutSubviews=_firstViewDidLayoutSubviews;
 @property(retain, nonatomic) HKElectrocardiogram *sample; // @synthesize sample=_sample;
+- (void)viewControllerDidLeaveAdaptiveModal;
+- (void)viewControllerDidEnterAdaptiveModal;
+- (id)featureVersionFromUpdateVersion:(id)arg1;
 - (long long)sampleAlgorithmVersion;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)deleteSampleTriggeredBySection:(id)arg1;
@@ -42,6 +45,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)electrocardiogramMetadataViewShouldShowShareRow:(id)arg1;
 - (id)electrocardiogramMetadataView:(id)arg1 regulatedBodyTextForSample:(id)arg2;
 - (void)electrocardiogramMetadataViewDidTapDetailButton:(id)arg1;
+- (id)accessibilityIdentifier;
 - (void)deletionSectionDidSelectRow:(id)arg1;
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
@@ -57,6 +61,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)supportedInterfaceOrientations;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
+- (id)identifierBundle;
 - (void)_localeOrDisplayTypeChange:(id)arg1;
 - (long long)_fetchActiveAlgorithmVersionWithHealthStore:(id)arg1;
 - (void)dealloc;

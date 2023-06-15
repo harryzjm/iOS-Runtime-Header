@@ -21,6 +21,7 @@
 - (void)configurationInteractionWillBegin:(id <SBHIconViewConfigurationInteraction>)arg1;
 - (UIView *)homeScreenContentViewForConfigurationInteraction:(id <SBHIconViewConfigurationInteraction>)arg1;
 - (struct CGRect)contentBoundingRectForConfigurationInteraction:(id <SBHIconViewConfigurationInteraction>)arg1;
+- (UIView *)containerViewForConfigurationInteraction:(id <SBHIconViewConfigurationInteraction>)arg1;
 - (SBIconView *)referenceIconViewForConfigurationInteraction:(id <SBHIconViewConfigurationInteraction>)arg1;
 @end
 

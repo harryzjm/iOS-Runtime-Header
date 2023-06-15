@@ -8,7 +8,7 @@
 
 @interface CKRecordZone (PCSPrivate)
 - (void)fillOutPCSMetadataInfo;
-@property(nonatomic) struct _OpaquePCSShareProtection *zoneishPCS;
-@property(nonatomic) struct _OpaquePCSShareProtection *zonePCS;
+@property struct _OpaquePCSShareProtection *zoneishPCS;
+@property struct _OpaquePCSShareProtection *zonePCS;
 @end
 

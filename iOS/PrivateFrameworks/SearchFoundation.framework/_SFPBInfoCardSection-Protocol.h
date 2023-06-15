@@ -10,6 +10,7 @@
 
 @protocol _SFPBInfoCardSection <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
+@property(nonatomic) unsigned long long initiallyVisibleTuples;
 @property(copy, nonatomic) NSArray *infoTuples;
 @property(retain, nonatomic) _SFPBColor *backgroundColor;
 @property(nonatomic) int separatorStyle;

@@ -16,6 +16,7 @@
 - (void)selectionInteraction:(PKSelectionInteraction *)arg1 contextMenuInteraction:(UIContextMenuInteraction *)arg2 willDisplayMenuForConfiguration:(UIContextMenuConfiguration *)arg3 animator:(id <UIContextMenuInteractionAnimating>)arg4 forElement:(id)arg5 inAttachment:(PKAttachmentView *)arg6;
 - (UITargetedPreview *)selectionInteraction:(PKSelectionInteraction *)arg1 contextMenuInteraction:(UIContextMenuInteraction *)arg2 previewForHighlightingMenuWithConfiguration:(UIContextMenuConfiguration *)arg3 forElement:(id)arg4 inAttachment:(PKAttachmentView *)arg5;
 - (UIContextMenuConfiguration *)selectionInteraction:(PKSelectionInteraction *)arg1 contextMenuInteraction:(UIContextMenuInteraction *)arg2 configurationForElement:(id)arg3 inAttachment:(PKAttachmentView *)arg4;
+- (_Bool)selectionInteraction:(PKSelectionInteraction *)arg1 handleDoubleTapOnCanvasAtLocation:(struct CGPoint)arg2;
 - (void)selectionInteraction:(PKSelectionInteraction *)arg1 didDropItemProvider:(NSItemProvider *)arg2 inAttachment:(PKAttachmentView *)arg3 withCompletion:(void (^)(NSArray *))arg4;
 - (void)selectionInteraction:(PKSelectionInteraction *)arg1 dragInteractionWillEndForElements:(NSArray *)arg2 withOperation:(unsigned long long)arg3 inAttachment:(PKAttachmentView *)arg4;
 - (void)selectionInteraction:(PKSelectionInteraction *)arg1 dragInteractionWillBeginForElements:(NSArray *)arg2 inAttachment:(PKAttachmentView *)arg3;
@@ -32,10 +33,13 @@
 - (NSArray *)selectionInteraction:(PKSelectionInteraction *)arg1 pasteboardRepresentationsForElements:(NSArray *)arg2 strokes:(NSSet *)arg3 inAttachment:(PKAttachmentView *)arg4;
 - (_Bool)selectionInteraction:(PKSelectionInteraction *)arg1 canPerformAction:(SEL)arg2 withSender:(id)arg3 inAttachment:(PKAttachmentView *)arg4;
 - (void)selectionInteraction:(PKSelectionInteraction *)arg1 didClearSelectionForElements:(NSArray *)arg2 inAttachment:(PKAttachmentView *)arg3;
+- (void)selectionInteraction:(PKSelectionInteraction *)arg1 didEndInsertSpaceInAttachment:(PKAttachmentView *)arg2;
+- (void)selectionInteraction:(PKSelectionInteraction *)arg1 insertSpaceDidMove:(double)arg2 inAttachment:(PKAttachmentView *)arg3;
+- (void)selectionInteraction:(PKSelectionInteraction *)arg1 willBeginInsertSpaceInAttachment:(PKAttachmentView *)arg2;
 - (void)selectionInteraction:(PKSelectionInteraction *)arg1 didEndDraggingElements:(NSArray *)arg2 inAttachment:(PKAttachmentView *)arg3;
 - (void)selectionInteraction:(PKSelectionInteraction *)arg1 didDragElements:(NSArray *)arg2 withTransform:(struct CGAffineTransform)arg3 inAttachment:(PKAttachmentView *)arg4;
 - (void)selectionInteraction:(PKSelectionInteraction *)arg1 didSelectElements:(NSArray *)arg2 inAttachment:(PKAttachmentView *)arg3;
-- (const struct CGPath *)selectionInteraction:(PKSelectionInteraction *)arg1 pathForElement:(id)arg2 inAttachment:(PKAttachmentView *)arg3;
+- (struct CGPath *)selectionInteraction:(PKSelectionInteraction *)arg1 pathForElement:(id)arg2 inAttachment:(PKAttachmentView *)arg3;
 - (NSArray *)selectionInteraction:(PKSelectionInteraction *)arg1 requestElementsInPath:(UIBezierPath *)arg2 inAttachment:(PKAttachmentView *)arg3;
 - (NSArray *)selectionInteraction:(PKSelectionInteraction *)arg1 requestElementsInRect:(struct CGRect)arg2 inAttachment:(PKAttachmentView *)arg3;
 - (_Bool)selectionInteractionShouldForwardToElements:(PKSelectionInteraction *)arg1 atPoint:(struct CGPoint)arg2 forEvent:(UIEvent *)arg3;

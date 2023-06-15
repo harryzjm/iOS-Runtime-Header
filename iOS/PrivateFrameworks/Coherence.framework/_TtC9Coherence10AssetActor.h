@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *$defaultActor;
     MISSING_TYPE *assetProviders;
+    MISSING_TYPE *name;
     MISSING_TYPE *_streamContinuation;
     MISSING_TYPE *_task;
 }

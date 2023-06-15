@@ -7,10 +7,11 @@
 #import <NewsCore/FCCacheFlushing-Protocol.h>
 #import <NewsCore/NSObject-Protocol.h>
 
-@class FCAVAssetDownloadManager, FCArticleListRecordSource, FCArticleRecordSource, FCAudioConfigRecordSource, FCCKContentDatabase, FCChannelMembershipController, FCFeedDatabase, FCForYouConfigRecordSource, FCIssueListRecordSource, FCIssueRecordSource, FCPurchaseLookupRecordSource, FCResourceRecordSource, FCTagListRecordSource, FCTagRecordSource, FCWidgetSectionConfigRecordSource, NSArray;
+@class FCAVAssetDownloadManager, FCArticleListRecordSource, FCArticleRecordSource, FCAudioConfigRecordSource, FCCKContentDatabase, FCChannelMembershipController, FCFeedDatabase, FCFeedPrewarmer, FCForYouConfigRecordSource, FCIssueListRecordSource, FCIssueRecordSource, FCPurchaseLookupRecordSource, FCResourceRecordSource, FCTagListRecordSource, FCTagRecordSource, FCWidgetSectionConfigRecordSource, NSArray;
 @protocol FCAVAssetCacheType, FCAVAssetFactoryType, FCAVAssetKeyCacheType, FCAssetKeyCacheType, FCAssetKeyManagerType;
 
 @protocol FCContentContextInternal <NSObject, FCCacheFlushing>
+@property(readonly, nonatomic) FCFeedPrewarmer *feedPrewarmer;
 @property(readonly, nonatomic) FCAVAssetDownloadManager *avAssetDownloadManager;
 @property(readonly, nonatomic) id <FCAVAssetFactoryType> avAssetFactory;
 @property(readonly, nonatomic) id <FCAVAssetKeyCacheType> avAssetKeyCache;

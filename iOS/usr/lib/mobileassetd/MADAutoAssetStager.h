@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MAAutoAssetControlStatisticsByCommand, MAAutoAssetControlStatisticsBySize, MADAutoAssetClientRequest, MADAutoAssetDescriptor, MADAutoAssetPersisted, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSString, SUCoreFSM, SUCoreLog;
+@class MADAutoAssetClientRequest, MADAutoAssetDescriptor, MADAutoAssetPersisted, MANAutoAssetControlStatisticsByCommand, MANAutoAssetControlStatisticsBySize, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSString, SUCoreFSM, SUCoreLog;
 
 __attribute__((visibility("hidden")))
 @interface MADAutoAssetStager : NSObject
@@ -33,13 +33,14 @@ __attribute__((visibility("hidden")))
     long long _overallStagedDownloadedSoFarBytes;
     NSMutableDictionary *_eliminationSelectors;
     NSMutableDictionary *_eliminationSelectorsAcknowledged;
-    MAAutoAssetControlStatisticsByCommand *_statisticsClientRepliesSuccess;
-    MAAutoAssetControlStatisticsByCommand *_statisticsClientRepliesFailure;
-    MAAutoAssetControlStatisticsBySize *_statisticsStaged;
-    MAAutoAssetControlStatisticsBySize *_statisticsUnstaged;
+    MANAutoAssetControlStatisticsByCommand *_statisticsClientRepliesSuccess;
+    MANAutoAssetControlStatisticsByCommand *_statisticsClientRepliesFailure;
+    MANAutoAssetControlStatisticsBySize *_statisticsStaged;
+    MANAutoAssetControlStatisticsBySize *_statisticsUnstaged;
 }
 
 + (id)migrateMismatchedPersistedStateVersion:(id)arg1 forEntryID:(id)arg2 withMismatchedState:(id)arg3;
++ (long long)persistedStagedCount;
 + (void)resumeFromPersisted;
 + (void)extendSummaryWithStagedAssets:(id)arg1 basedOnControl:(id)arg2;
 + (void)extendSummaryWithStagingAssets:(id)arg1 basedOnControl:(id)arg2;
@@ -61,10 +62,10 @@ __attribute__((visibility("hidden")))
 + (id)autoAssetStager;
 + (id)_getAutoAssetStagerStateTable;
 - (void).cxx_destruct;
-@property(retain, nonatomic) MAAutoAssetControlStatisticsBySize *statisticsUnstaged; // @synthesize statisticsUnstaged=_statisticsUnstaged;
-@property(retain, nonatomic) MAAutoAssetControlStatisticsBySize *statisticsStaged; // @synthesize statisticsStaged=_statisticsStaged;
-@property(retain, nonatomic) MAAutoAssetControlStatisticsByCommand *statisticsClientRepliesFailure; // @synthesize statisticsClientRepliesFailure=_statisticsClientRepliesFailure;
-@property(retain, nonatomic) MAAutoAssetControlStatisticsByCommand *statisticsClientRepliesSuccess; // @synthesize statisticsClientRepliesSuccess=_statisticsClientRepliesSuccess;
+@property(retain, nonatomic) MANAutoAssetControlStatisticsBySize *statisticsUnstaged; // @synthesize statisticsUnstaged=_statisticsUnstaged;
+@property(retain, nonatomic) MANAutoAssetControlStatisticsBySize *statisticsStaged; // @synthesize statisticsStaged=_statisticsStaged;
+@property(retain, nonatomic) MANAutoAssetControlStatisticsByCommand *statisticsClientRepliesFailure; // @synthesize statisticsClientRepliesFailure=_statisticsClientRepliesFailure;
+@property(retain, nonatomic) MANAutoAssetControlStatisticsByCommand *statisticsClientRepliesSuccess; // @synthesize statisticsClientRepliesSuccess=_statisticsClientRepliesSuccess;
 @property(retain, nonatomic) NSMutableDictionary *eliminationSelectorsAcknowledged; // @synthesize eliminationSelectorsAcknowledged=_eliminationSelectorsAcknowledged;
 @property(retain, nonatomic) NSMutableDictionary *eliminationSelectors; // @synthesize eliminationSelectors=_eliminationSelectors;
 @property(nonatomic) long long overallStagedDownloadedSoFarBytes; // @synthesize overallStagedDownloadedSoFarBytes=_overallStagedDownloadedSoFarBytes;
@@ -90,11 +91,16 @@ __attribute__((visibility("hidden")))
 - (id)_updateLatestSummary;
 - (id)summary;
 - (id)description;
-- (void)_persistRemoveAll;
-- (void)_removeDescrptorFromSuccessfullyStaged:(id)arg1;
+- (void)_logPersistedTableOfContents:(id)arg1;
+- (void)_logPersistedRemovedEntry:(id)arg1 removedDescriptor:(id)arg2 message:(id)arg3;
+- (void)_logPersistedEntry:(id)arg1 operation:(id)arg2 persistingDescriptor:(id)arg3 withRepresentation:(long long)arg4 message:(id)arg5;
+- (void)_logPersistedConfigSet:(id)arg1 message:(id)arg2;
+- (void)_logPersistedConfigLoad:(id)arg1 lastStagingFromOSVersion:(id)arg2 lastStagingFromBuildVersion:(id)arg3 assetTargetOSVersion:(id)arg4 assetTargetBuildVersion:(id)arg5 candidateAssetCount:(unsigned long long)arg6 determinedAvailableAssetCount:(unsigned long long)arg7 activelyStagingAssetCount:(unsigned long long)arg8 awaitingStagingAssetCount:(unsigned long long)arg9 stagedAssetCount:(unsigned long long)arg10 stagedAssetTotalContentBytes:(unsigned long long)arg11 message:(id)arg12;
+- (void)_persistRemoveAll:(id)arg1 message:(id)arg2 flushing:(_Bool)arg3;
+- (void)_removeDescriptorFromSuccessfullyStaged:(id)arg1 message:(id)arg2;
 - (void)_trackReloadedDescriptorAvailableForStaging:(id)arg1;
 - (id)_persistRebuildTrackingForFollowupEvent:(id)arg1;
-- (long long)_persistDescriptor:(id)arg1 withRepresentation:(long long)arg2;
+- (long long)_persistDescriptor:(id)arg1 operation:(id)arg2 persistingDescriptor:(id)arg3 withRepresentation:(long long)arg4 message:(id)arg5;
 - (void)_persistLastStagingFrom;
 - (void)_acknowledgeEliminatedForCurrentJob;
 - (void)_removeEliminatedFromStaged;
@@ -104,7 +110,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)_doesSelectorMatchCurrentJob:(id)arg1;
 - (_Bool)_isAssetTypeInvolvedInStaging:(id)arg1;
 - (void)_maintainLatestCandidate:(id)arg1 candidateDescriptor:(id)arg2;
-- (void)_removeStagedAssetFromFilesystem:(id)arg1;
+- (void)_removeStagedAssetFromFilesystem:(id)arg1 forHistoryOperation:(long long)arg2;
 - (void)_removeAllStagedContent;
 - (void)_setupAwaitingStagingAndBeginFirstDownload;
 - (void)_acknowlegdeAndClearAllEliminations;

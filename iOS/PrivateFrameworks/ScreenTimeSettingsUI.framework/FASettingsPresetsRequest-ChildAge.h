@@ -7,6 +7,6 @@
 #import <FamilyCircle/FASettingsPresetsRequest.h>
 
 @interface FASettingsPresetsRequest (ChildAge)
-+ (id)childPresetRequestWithAge:(id)arg1;
+- (void)st_fetchCachedPresetsWithCompletion:(CDUnknownBlockType)arg1;
 @end
 

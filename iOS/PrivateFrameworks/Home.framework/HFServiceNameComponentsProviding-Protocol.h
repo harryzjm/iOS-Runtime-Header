@@ -7,6 +7,6 @@
 @class HFServiceNameComponents;
 
 @protocol HFServiceNameComponentsProviding
-@property(nonatomic, readonly) HFServiceNameComponents *hf_serviceNameComponents;
+@property(readonly, nonatomic) HFServiceNameComponents *hf_serviceNameComponents;
 @end
 

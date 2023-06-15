@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 @class NSArray, UIView, _UIFocusRegion;
 @protocol UIFocusItem;
 
 __attribute__((visibility("hidden")))
-@interface _UIFocusItemInfo : NSObject <NSCopying>
+@interface _UIFocusItemInfo : NSObject
 {
     struct {
         unsigned int hasResolvedFocusSound:1;
@@ -20,6 +18,7 @@ __attribute__((visibility("hidden")))
         unsigned int hasResolvedFocusTouchSensitivityStyle:1;
         unsigned int hasResolvedFocusMovementFlippedHorizontally:1;
         unsigned int hasResolvedFocusedRegion:1;
+        unsigned int hasResolvedRotaryFocusMovementAxis:1;
         unsigned int useFallbackAncestorScroller:1;
     } _flags;
     _Bool _focusMovementFlippedHorizontally;
@@ -27,6 +26,7 @@ __attribute__((visibility("hidden")))
     long long _inheritedFocusMovementStyle;
     long long _focusSound;
     long long _focusTouchSensitivityStyle;
+    long long _rotaryFocusMovementAxis;
     _UIFocusRegion *_focusedRegion;
     id <UIFocusItem> _item;
     UIView *_containingView;
@@ -38,12 +38,15 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(readonly, nonatomic) __weak UIView *containingView; // @synthesize containingView=_containingView;
 @property(readonly, nonatomic) __weak id <UIFocusItem> item; // @synthesize item=_item;
+- (id)shortDescription;
 - (id)description;
 - (void)invalidateFocusedRegion;
 - (struct CGRect)focusedRectInCoordinateSpace:(id)arg1;
 - (id)_createFocusedRegion;
 @property(readonly, nonatomic) _UIFocusRegion *focusedRegion; // @synthesize focusedRegion=_focusedRegion;
+@property(readonly, nonatomic) _Bool useFallbackAncestorScroller;
 @property(readonly, nonatomic, getter=isFocusMovementFlippedHorizontally) _Bool focusMovementFlippedHorizontally; // @synthesize focusMovementFlippedHorizontally=_focusMovementFlippedHorizontally;
+@property(readonly, nonatomic) long long rotaryFocusMovementAxis; // @synthesize rotaryFocusMovementAxis=_rotaryFocusMovementAxis;
 @property(readonly, nonatomic) long long focusTouchSensitivityStyle; // @synthesize focusTouchSensitivityStyle=_focusTouchSensitivityStyle;
 @property(readonly, nonatomic) long long focusSound; // @synthesize focusSound=_focusSound;
 @property(readonly, nonatomic) long long inheritedFocusMovementStyle; // @synthesize inheritedFocusMovementStyle=_inheritedFocusMovementStyle;

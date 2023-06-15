@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @interface _TtCC11PosterBoard34HomeScreenPosterCollectionViewCellP33_C8A19B11FAAC5FF8675EAB2737D1E84631LockPosterClippingContainerView : UIView
 {

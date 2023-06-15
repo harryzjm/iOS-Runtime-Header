@@ -40,7 +40,7 @@ __attribute__((visibility("hidden")))
 - (void)finishedInsertingTracepointsWithNextMajorTime:(unsigned long long)arg1 options:(unsigned int)arg2;
 - (void)insertTracepoints:(struct tracev3_chunk_s *)arg1 subchunk:(id)arg2 options:(unsigned int)arg3;
 - (void)insertStatedumpChunk:(struct tracev3_chunk_s *)arg1 subchunk:(id)arg2;
-- (void)insertSimpleChunk:(struct tracev3_chunk_s *)arg1 subchunk:(id)arg2;
+- (void)insertSimpleChunk:(struct tracev3_chunk_s *)arg1 subchunk:(id)arg2 options:(unsigned int)arg3;
 - (void)insertChunk:(struct tracev3_chunk_s *)arg1 timestamp:(unsigned long long)arg2 subchunk:(id)arg3;
 - (void)insertNonsparsePoint:(unsigned long long)arg1 uuid:(unsigned char [16])arg2 ttl:(unsigned char)arg3 inMemory:(_Bool)arg4;
 - (void)insertTimesyncPoints:(struct _os_timesync_db_s *)arg1 forBoot:(unsigned char [16])arg2 oldestContinuousTime:(unsigned long long)arg3;

@@ -19,6 +19,7 @@
 - (UIViewController<HUConfigurationViewController> *)processUserInput:(NSMutableDictionary *)arg1;
 
 @optional
+@property(retain, nonatomic) NAFuture *readyFuture;
 - (void)checkIfStillRequiredFromCurrentResults:(NSMutableDictionary *)arg1;
 @end
 

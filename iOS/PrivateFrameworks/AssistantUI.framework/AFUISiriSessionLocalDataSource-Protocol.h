@@ -9,6 +9,7 @@
 @class AFUISiriSession, NSArray;
 
 @protocol AFUISiriSessionLocalDataSource <NSObject>
+- (_Bool)getUIViewModeIsUIFreeForCurrentRequest;
 - (_Bool)isPPTAvailable;
 - (long long)carPlayEnhancedVoiceTriggerModeForSiriSession:(AFUISiriSession *)arg1;
 - (unsigned long long)lockStateForSiriSession:(AFUISiriSession *)arg1;

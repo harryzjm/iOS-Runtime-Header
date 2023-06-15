@@ -7,6 +7,8 @@
 #import <IMCore/IMChat.h>
 
 @interface IMChat (CKAdditions)
++ (id)waterMarkTimeCache;
++ (id)waterMarkMessageIDCache;
 + (id)configureMessageSummaryInfoForChatItem:(id)arg1;
 + (unsigned char)associatedMessageContentTypeFromCKMediaType:(int)arg1;
 - (void)__ck_setSendReadReceipts:(_Bool)arg1;

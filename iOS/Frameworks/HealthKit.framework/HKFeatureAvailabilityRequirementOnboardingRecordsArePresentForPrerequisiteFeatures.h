@@ -18,7 +18,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy, nonatomic) NSArray *prerequisiteFeatureIdentifiers; // @synthesize prerequisiteFeatureIdentifiers=_prerequisiteFeatureIdentifiers;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (void)unregisterObserver:(id)arg1 fromDataSource:(id)arg2;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class CAShapeLayer, UIColor;
 
@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) double minValue; // @synthesize minValue=_minValue;
 @property(nonatomic) double currentValue; // @synthesize currentValue=_currentValue;
 @property(nonatomic) double thickness; // @synthesize thickness=_thickness;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)resetToDefaults;
 - (void)_updateProgressLayer;
 @property(retain, nonatomic) UIColor *ringColor;

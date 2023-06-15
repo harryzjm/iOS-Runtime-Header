@@ -37,7 +37,6 @@ __attribute__((visibility("hidden")))
     id <_UIKeyboardUIStateDelegate> _kbUIStateDelegate;
     UIInputWindowController *_inputWindowRootViewController;
     long long _lastEventSource;
-    double _iavHeight;
     id <_UIKBArbiterClientKeyboardChangeDelegate> _changeInfoDelegate;
     NSXPCConnection *_connection;
     UIView *_keyboardSnapshot;
@@ -46,6 +45,7 @@ __attribute__((visibility("hidden")))
     unsigned long long _hostedCount;
     _UIRemoteKeyboardsEventObserver *_eventObserver;
     FBSScene *_requiredScene;
+    double _heightForRemoteIAVPlaceholderIfNecessary;
 }
 
 + (id)mainBundleIdentifier;
@@ -54,6 +54,7 @@ __attribute__((visibility("hidden")))
 + (id)automaticSharedArbiterClient;
 + (_Bool)enabled;
 - (void).cxx_destruct;
+@property(nonatomic) double heightForRemoteIAVPlaceholderIfNecessary; // @synthesize heightForRemoteIAVPlaceholderIfNecessary=_heightForRemoteIAVPlaceholderIfNecessary;
 @property(nonatomic) _Bool handlingKeyboardTransition; // @synthesize handlingKeyboardTransition=_handlingKeyboardTransition;
 @property(retain, nonatomic) FBSScene *requiredScene; // @synthesize requiredScene=_requiredScene;
 @property(nonatomic) _Bool deactivatedBySystemGesture; // @synthesize deactivatedBySystemGesture=_deactivatedBySystemGesture;
@@ -75,7 +76,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool disableBecomeFirstResponder; // @synthesize disableBecomeFirstResponder=_disableBecomeFirstResponder;
 @property(nonatomic) __weak id <_UIKBArbiterClientKeyboardChangeDelegate> changeInfoDelegate; // @synthesize changeInfoDelegate=_changeInfoDelegate;
 @property(nonatomic) _Bool handlingRemoteEvent; // @synthesize handlingRemoteEvent=_handlingRemoteEvent;
-@property(nonatomic) double iavHeight; // @synthesize iavHeight=_iavHeight;
 @property(nonatomic) _Bool snapshotting; // @synthesize snapshotting=_snapshotting;
 @property(nonatomic) long long lastEventSource; // @synthesize lastEventSource=_lastEventSource;
 @property(retain, nonatomic) UIInputWindowController *inputWindowRootViewController; // @synthesize inputWindowRootViewController=_inputWindowRootViewController;
@@ -85,8 +85,8 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) _UIKeyboardChangedInformation *currentClientState; // @synthesize currentClientState=_currentClientState;
 - (id)prepareForHostedWindowWithScene:(id)arg1;
 - (void)finishWithHostedWindow;
-- (void)removeWindowHostingPID:(int)arg1;
-- (void)addWindowHostingPID:(int)arg1;
+- (void)removeWindowHostingPID:(int)arg1 callerID:(id)arg2;
+- (void)addWindowHostingPID:(int)arg1 callerID:(id)arg2;
 - (void)setSuppressingKeyboard:(_Bool)arg1 forScene:(id)arg2;
 - (void)peekApplicationEvent:(id)arg1;
 - (void)willResume:(id)arg1;
@@ -105,13 +105,12 @@ __attribute__((visibility("hidden")))
 - (void)keyboardChangedCompleted;
 - (unsigned long long)localSceneCount;
 - (void)signalToProxyKeyboardChanged:(id)arg1 onCompletion:(CDUnknownBlockType)arg2;
-- (void)releaseIgnoreLayoutNotificationsAssertion;
-- (void)assertIgnoreLayoutNotifications;
 - (void)ignoreLayoutNotifications:(CDUnknownBlockType)arg1;
 - (void)controllerDidLayoutSubviews:(id)arg1;
 - (void)_layoutKeyboardViews:(id)arg1;
 - (_Bool)shouldAllowInputViewsRestoredForId:(id)arg1;
 - (void)restorePreservedInputViewsIfNecessary;
+- (void)performOnLocalDistributedControllers:(CDUnknownBlockType)arg1;
 - (void)performOnDistributedControllers:(CDUnknownBlockType)arg1;
 - (void)_performOnDistributedControllersExceptSelf:(CDUnknownBlockType)arg1;
 - (void)performOnExistingControllers:(CDUnknownBlockType)arg1;
@@ -119,11 +118,16 @@ __attribute__((visibility("hidden")))
 - (void)unregisterController:(id)arg1;
 - (void)registerController:(id)arg1;
 - (void)cleanSuppression;
+- (void)updateEventSource:(long long)arg1 options:(unsigned long long)arg2 responder:(id)arg3;
 - (void)updateEventSource:(long long)arg1 options:(unsigned long long)arg2;
+- (void)_updateEventSource:(long long)arg1 options:(unsigned long long)arg2 responder:(id)arg3;
 - (void)_updateEventSource:(long long)arg1 options:(unsigned long long)arg2;
-- (void)_postInputSourceDidChangeNotification;
+- (void)_postInputSourceDidChangeNotificationForResponder:(id)arg1;
 - (void)queue_sceneBecameFocused:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)queue_getDebugInfoWithCompletion:(CDUnknownBlockType)arg1;
+- (void)verifyPlacement;
+- (void)setDisableBecomeFirstResponder:(_Bool)arg1 forSuppressionAssertion:(_Bool)arg2 updatePlacement:(_Bool)arg3;
+- (void)setDisableBecomeFirstResponder:(_Bool)arg1 forSuppressionAssertion:(_Bool)arg2;
 - (void)queue_keyboardTransition:(id)arg1 event:(unsigned long long)arg2 withInfo:(id)arg3 onComplete:(CDUnknownBlockType)arg4;
 - (void)queue_keyboardIAVChanged:(double)arg1 onComplete:(CDUnknownBlockType)arg2;
 - (void)queue_keyboardChangedWithCompletion:(CDUnknownBlockType)arg1;
@@ -144,7 +148,9 @@ __attribute__((visibility("hidden")))
 @property(readonly) _Bool remoteKeyboardUndocked;
 @property(readonly) _Bool keyboardActive;
 - (_Bool)hasWindowHostingPID:(int)arg1;
+- (_Bool)hasWindowHostingCallerID:(id)arg1;
 - (_Bool)hasAnyHostedViews;
+- (_Bool)isHostedInAnotherProcess;
 - (_Bool)isOnScreenRotating;
 @property(readonly) _Bool keyboardVisible;
 - (void)checkState;

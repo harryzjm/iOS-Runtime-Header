@@ -11,6 +11,7 @@
 @interface _TtC7NewsUI243PostPurchaseOnboardingViewControllerFactory : _TtCs12_SwiftObject
 {
     MISSING_TYPE *resolver;
+    MISSING_TYPE *featureAvailability;
 }
 
 @end

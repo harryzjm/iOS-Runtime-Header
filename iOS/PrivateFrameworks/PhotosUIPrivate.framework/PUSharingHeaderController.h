@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     LPImage *_placeholderImage;
     id <PXDisplayAsset> _sharingHeaderFrontAsset;
     id <PXDisplayAsset> _sharingHeaderBackAsset;
+    _Bool _showingUnmodifiedOriginalThumbnail;
     id <PUSharingHeaderDataProvider> _dataProvider;
     LPLinkMetadata *_linkMetadata;
 }

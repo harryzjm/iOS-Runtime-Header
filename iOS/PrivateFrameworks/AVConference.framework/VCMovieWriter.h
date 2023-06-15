@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
-@class AVAssetWriter, AVAssetWriterInput, AVAssetWriterInputMetadataAdaptor, NSString, NSURL;
+@class AVAssetWriter, AVAssetWriterInput, AVAssetWriterInputMetadataAdaptor, NSObject, NSString, NSURL;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface VCMovieWriter : NSObject
+@interface VCMovieWriter
 {
     NSString *_transactionID;
     CDStruct_1b6d18a9 _lastVideoPresentationTime;
@@ -26,7 +24,6 @@ __attribute__((visibility("hidden")))
     AVAssetWriterInputMetadataAdaptor *_adapter;
     NSURL *_outputURL;
     unsigned char _writerMode;
-    _Bool _isVideoStarted;
     _Bool _isEndRTPTimestampSet;
     unsigned int _startRTPTimeStamp;
     unsigned int _endRTPTimeStamp;
@@ -36,12 +33,14 @@ __attribute__((visibility("hidden")))
     struct opaqueCMBufferQueue *_remoteAudioQueue;
     NSObject<OS_dispatch_queue> *_serializationQueue;
     CDUnknownBlockType _completionHandler;
-    struct CGRect _contectRect;
     double _visibleWidth;
     double _visibleHeight;
     struct __CVPixelBufferPool *_bufferPool;
     struct OpaqueVTPixelTransferSession *_transferSession;
     unsigned int _codec;
+    unsigned int _mediaState;
+    _Bool _hasStillImageMetadataTrack;
+    double _keyFrameIntervalDuration;
 }
 
 @property(retain, nonatomic) NSURL *outputURL; // @synthesize outputURL=_outputURL;
@@ -53,7 +52,13 @@ __attribute__((visibility("hidden")))
 - (void)appendMetaData;
 - (void)processSampleQueue:(struct opaqueCMBufferQueue *)arg1 input:(id)arg2 lastPresentationTime:(CDStruct_1b6d18a9 *)arg3;
 - (void)setupInput:(id)arg1 queue:(struct opaqueCMBufferQueue *)arg2 dispatchGroup:(id)arg3 lastPresentationTime:(CDStruct_1b6d18a9 *)arg4;
+- (void)cleanupAssetWriter;
+- (id)setupAudioAssetWriterWithTransactionID:(id)arg1;
 - (id)setupAssetWriterWithWidth:(int)arg1 height:(int)arg2 transactionID:(id)arg3;
+- (id)addStillImageMetadataTrackWithTransactionID:(id)arg1;
+- (id)addVideoTrackWithWidth:(int)arg1 height:(int)arg2;
+- (id)addAudioTrackForLocalAudio:(_Bool)arg1;
+- (id)setupLivePhotoAssetWithTransactionID:(id)arg1;
 - (void)finishWritingWithHandler:(CDUnknownBlockType)arg1;
 - (void)setStillImageTime:(CDStruct_1b6d18a9)arg1;
 - (_Bool)shouldFinishWritingSampleBuffer:(struct opaqueCMSampleBuffer *)arg1 RTPtimeStamp:(unsigned int)arg2 mediaType:(unsigned char)arg3;
@@ -61,10 +66,10 @@ __attribute__((visibility("hidden")))
 - (void)setEndRTPTimestampWithTimestamp:(unsigned int)arg1;
 - (void)appendAudioSampleBuffer:(struct opaqueCMSampleBuffer *)arg1 mediaType:(unsigned char)arg2;
 - (void)appendVideoSampleBuffer:(struct opaqueCMSampleBuffer *)arg1 cameraStatus:(unsigned char)arg2 mediaType:(unsigned char)arg3;
-- (void)setupContectRect:(struct CGRect)arg1 withCaptureHeight:(int)arg2;
+- (void)setupVisibleRect:(struct CGRect)arg1 withCaptureHeight:(int)arg2;
 - (void)setupWriterWithMode:(unsigned char)arg1;
 - (void)dealloc;
-- (id)initWithOutputURL:(id)arg1 transactionID:(id)arg2 videoCodec:(unsigned int)arg3;
+- (id)initWithOutputURL:(id)arg1 transactionID:(id)arg2 videoCodec:(unsigned int)arg3 keyFrameIntervalDuration:(double)arg4;
 
 @end
 

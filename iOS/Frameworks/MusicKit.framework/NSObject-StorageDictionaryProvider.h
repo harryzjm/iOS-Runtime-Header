@@ -17,13 +17,18 @@
 - (id)_musicKit_modelObjectRawStorageDictionary;
 @property(readonly, nonatomic) id musicKit_innerModelObject;
 - (id)_musicKit_innerModelObject;
+@property(readonly, nonatomic) long long musicKit_nowPlayingInfoAudioFormat_badging;
+- (id)_musicKit_self_nowPlayingInfoAudioFormat;
+- (_Bool)intersectsSet:(id)arg1;
 @property(readonly, nonatomic) _Bool musicKit_hasValidIdentifier;
+@property(readonly, copy, nonatomic) NSString *musicKit_playbackID;
 @property(readonly, copy, nonatomic) MusicKit_SoftLinking_DeviceLocalID *musicKit_deviceLocalID;
 @property(readonly, copy, nonatomic) NSString *musicKit_purchasedAdamID;
 @property(readonly, copy, nonatomic) NSString *musicKit_libraryID;
 @property(readonly, copy, nonatomic) NSString *musicKit_cloudID;
 @property(readonly, copy, nonatomic) MusicKit_SoftLinking_CatalogID *musicKit_catalogID;
 - (id)_musicKit_self_identifierSet;
+@property(readonly, nonatomic) struct CGColor *musicKit_tertiaryTextColor;
 @property(readonly, nonatomic) struct CGColor *musicKit_secondaryTextColor;
 @property(readonly, nonatomic) struct CGColor *musicKit_primaryTextColor;
 @property(readonly, nonatomic) struct CGColor *musicKit_backgroundColor;

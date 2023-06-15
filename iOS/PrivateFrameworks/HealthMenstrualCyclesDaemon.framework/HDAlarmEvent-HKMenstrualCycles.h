@@ -6,9 +6,12 @@
 
 #import <HealthDaemon/HDAlarmEvent.h>
 
+@class HKNotificationInstruction;
+
 @interface HDAlarmEvent (HKMenstrualCycles)
 - (long long)hdmc_fertileWindowDayShift;
 - (long long)hdmc_fertileWindowEndDayIndex;
 - (id)hdmc_categoryIdentifier;
+@property(readonly, copy, nonatomic) HKNotificationInstruction *hdmc_notificationHoldInstruction;
 @end
 

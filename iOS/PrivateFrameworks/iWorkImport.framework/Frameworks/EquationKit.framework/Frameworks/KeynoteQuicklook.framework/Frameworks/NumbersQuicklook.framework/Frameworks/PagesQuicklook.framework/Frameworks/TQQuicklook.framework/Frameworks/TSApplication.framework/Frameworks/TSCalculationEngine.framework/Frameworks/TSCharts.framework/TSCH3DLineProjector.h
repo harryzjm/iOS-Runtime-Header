@@ -11,7 +11,7 @@
 
 - (id).cxx_construct;
 @property(nonatomic) line_e1962432 line; // @synthesize line=_line;
-- (_Bool)projectPoint:(const void *)arg1 returningPoint:(void *)arg2;
+- (_Bool)projectPoint:(void *)arg1 returningPoint:(void *)arg2;
 
 @end
 

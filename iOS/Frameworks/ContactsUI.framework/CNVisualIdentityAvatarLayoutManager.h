@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (void)updateLayer:(id)arg1 forItemCount:(long long)arg2 atIndex:(long long)arg3 inView:(id)arg4 withLayoutType:(unsigned long long)arg5;
 - (void)updateAvatarLayersForItemCount:(long long)arg1 inView:(id)arg2 withLayoutType:(unsigned long long)arg3;
 - (void)updateAvatarLayersForItemCount:(long long)arg1 inView:(id)arg2;
+- (id)initWithLayoutType:(unsigned long long)arg1;
 - (id)init;
 
 @end

@@ -12,6 +12,6 @@
 - (void)openDevice:(NSString *)arg1 withReply:(void (^)(NSMutableDictionary *))arg2;
 - (void)notifyRemovedDevice:(NSDictionary *)arg1;
 - (void)notifyAddedDevice:(NSDictionary *)arg1;
-- (void)requestDeviceListWithReply:(void (^)(NSMutableDictionary *))arg1;
+- (void)requestDeviceListWithOptions:(NSDictionary *)arg1 reply:(void (^)(NSMutableDictionary *))arg2;
 @end
 

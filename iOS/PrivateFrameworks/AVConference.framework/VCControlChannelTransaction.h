@@ -20,8 +20,8 @@ __attribute__((visibility("hidden")))
     id <VCControlChannelTransactionDelegate> _weakTransactionDelegate;
 }
 
-+ (_Bool)sendUnreliableMessage:(id)arg1 sessionID:(unsigned int)arg2 participantID:(id)arg3 transactionID:(id)arg4 transactionDelegate:(id)arg5;
-- (_Bool)sendReliableMessage:(id)arg1 sessionID:(unsigned int)arg2 participantID:(id)arg3 timeout:(id)arg4 useFastRetries:(_Bool)arg5;
++ (_Bool)sendUnreliableMessage:(id)arg1 sessionID:(unsigned int)arg2 participantID:(id)arg3 transactionID:(id)arg4 transactionDelegate:(id)arg5 withOptions:(id)arg6;
+- (_Bool)sendReliableMessage:(id)arg1 sessionID:(unsigned int)arg2 participantID:(id)arg3 timeout:(id)arg4 useFastRetries:(_Bool)arg5 withOptions:(id)arg6;
 - (float)retryTimeoutForRetryAttempt:(unsigned int)arg1 usingFastRetries:(_Bool)arg2;
 - (unsigned int)retryCountUsingFastRetries:(_Bool)arg1;
 - (void)confirmedTransactionByParticipantID:(id)arg1 sessionID:(unsigned int)arg2;

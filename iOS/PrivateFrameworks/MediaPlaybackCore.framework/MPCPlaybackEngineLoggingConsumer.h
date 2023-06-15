@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) MPCPlaybackEngineEvent *lastTimeControlStatusEvent; // @synthesize lastTimeControlStatusEvent=_lastTimeControlStatusEvent;
 @property(readonly, nonatomic) id <MPCPlaybackEngineEventStreamSubscription> subscription; // @synthesize subscription=_subscription;
+- (id)_playbackBarWithElapsedTime:(double)arg1 duration:(double)arg2;
 - (_Bool)_logAccountEvent:(id)arg1 subscription:(id)arg2 cursor:(id)arg3;
 - (void)unsubscribeFromEventStream:(id)arg1;
 - (void)subscribeToEventStream:(id)arg1;

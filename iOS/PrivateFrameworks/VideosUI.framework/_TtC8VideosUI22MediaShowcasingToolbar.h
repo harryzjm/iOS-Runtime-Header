@@ -4,23 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
 @interface _TtC8VideosUI22MediaShowcasingToolbar : UIView
 {
-    MISSING_TYPE *onFullscreenPressed;
     MISSING_TYPE *onMutePressed;
     MISSING_TYPE *isMuted;
-    MISSING_TYPE *shouldShowFullScreenButton;
     MISSING_TYPE *upNextButton;
     MISSING_TYPE *accountSettingButton;
     MISSING_TYPE *$__lazy_storage_$_accountSettingButtonLayout;
-    MISSING_TYPE *$__lazy_storage_$_fullScreenButton;
     MISSING_TYPE *$__lazy_storage_$_muteButton;
-    MISSING_TYPE *fullScreenImageName;
     MISSING_TYPE *audioOnImageName;
     MISSING_TYPE *audioOffImageName;
     MISSING_TYPE *$__lazy_storage_$_stackView;
@@ -28,9 +24,9 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-- (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

@@ -6,19 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class MPCLyricsReportingController, MPCPlaybackEngine, MPCPlaybackHistoryController;
+@class MPCLyricsReportingController, MPCPlaybackEngine;
 
 __attribute__((visibility("hidden")))
 @interface _MPCReportingController : NSObject
 {
     MPCPlaybackEngine *_playbackEngine;
-    MPCPlaybackHistoryController *_playbackHistoryController;
     MPCLyricsReportingController *_lyricsReportingController;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) MPCLyricsReportingController *lyricsReportingController; // @synthesize lyricsReportingController=_lyricsReportingController;
-@property(retain, nonatomic) MPCPlaybackHistoryController *playbackHistoryController; // @synthesize playbackHistoryController=_playbackHistoryController;
 @property(readonly, nonatomic) __weak MPCPlaybackEngine *playbackEngine; // @synthesize playbackEngine=_playbackEngine;
 - (void)recordLyricsViewEvent:(id)arg1;
 - (id)initWithPlaybackEngine:(id)arg1;

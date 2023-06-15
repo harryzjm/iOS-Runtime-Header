@@ -43,6 +43,7 @@
 @property(retain) XCTRunnerIDESession *ideSession; // @synthesize ideSession=_ideSession;
 - (id)testWorkerForIDESession:(id)arg1;
 - (void)IDESessionDidDisconnect:(id)arg1;
+- (id)harnessEventReporter;
 - (Class)_declaredPrincipalClassFromTestBundle:(id)arg1;
 - (void)_createTestBundlePrincipalClassInstance;
 - (id)_loadTestBundleFromURL:(id)arg1 error:(id *)arg2;

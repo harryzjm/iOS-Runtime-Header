@@ -9,6 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface _TtC8VideosUI15ChannelLogoView
 {
+    MISSING_TYPE *logoViewLayout;
     MISSING_TYPE *$__lazy_storage_$_appleTvImageView;
     MISSING_TYPE *channelImageView;
     MISSING_TYPE *viewModel;

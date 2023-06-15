@@ -6,7 +6,7 @@
 
 #import <UIKit/UIViewController.h>
 
-@class MPAVOutputDeviceRoutingDataSource, MPMediaControlsConfiguration, MRUNowPlayingController, MRURoutingViewController, MRUVendorSpecificDeviceManager, MRUViewServiceRoutingView, MRUVisualStylingProvider, MediaControlsEndpointsManager, NSMutableDictionary, NSString, UITableViewDiffableDataSource;
+@class MPMediaControlsConfiguration, MRUNowPlayingController, MRUOutputDeviceRoutingDataSource, MRURoutingViewController, MRUVendorSpecificDeviceManager, MRUViewServiceRoutingView, MRUVisualStylingProvider, MediaControlsEndpointsManager, NSMutableDictionary, NSString, UITableViewDiffableDataSource;
 @protocol MRUViewServiceRoutingViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
     id <MRUViewServiceRoutingViewControllerDelegate> _delegate;
     MediaControlsEndpointsManager *_endpointsManager;
     MRURoutingViewController *_routingViewController;
-    MPAVOutputDeviceRoutingDataSource *_outputDeviceRoutingDataSource;
+    MRUOutputDeviceRoutingDataSource *_outputDeviceRoutingDataSource;
     UITableViewDiffableDataSource *_dataSource;
     NSMutableDictionary *_nowPlayingControllers;
     MRUNowPlayingController *_selectedNowPlayingController;
@@ -39,7 +39,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) MRUNowPlayingController *selectedNowPlayingController; // @synthesize selectedNowPlayingController=_selectedNowPlayingController;
 @property(retain, nonatomic) NSMutableDictionary *nowPlayingControllers; // @synthesize nowPlayingControllers=_nowPlayingControllers;
 @property(retain, nonatomic) UITableViewDiffableDataSource *dataSource; // @synthesize dataSource=_dataSource;
-@property(retain, nonatomic) MPAVOutputDeviceRoutingDataSource *outputDeviceRoutingDataSource; // @synthesize outputDeviceRoutingDataSource=_outputDeviceRoutingDataSource;
+@property(retain, nonatomic) MRUOutputDeviceRoutingDataSource *outputDeviceRoutingDataSource; // @synthesize outputDeviceRoutingDataSource=_outputDeviceRoutingDataSource;
 @property(retain, nonatomic) MRURoutingViewController *routingViewController; // @synthesize routingViewController=_routingViewController;
 @property(retain, nonatomic) MediaControlsEndpointsManager *endpointsManager; // @synthesize endpointsManager=_endpointsManager;
 @property(nonatomic) __weak id <MRUViewServiceRoutingViewControllerDelegate> delegate; // @synthesize delegate=_delegate;

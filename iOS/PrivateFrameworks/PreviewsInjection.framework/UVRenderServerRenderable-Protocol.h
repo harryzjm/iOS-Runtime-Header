@@ -5,6 +5,6 @@
 //
 
 @protocol UVRenderServerRenderable
-@property(readonly, nonatomic) const void *buffer;
+@property(readonly, nonatomic) void *buffer;
 @end
 

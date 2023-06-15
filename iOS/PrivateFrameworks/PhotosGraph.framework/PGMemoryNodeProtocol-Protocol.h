@@ -6,10 +6,10 @@
 
 #import <PhotosGraph/PGGraphMemoryProtocol-Protocol.h>
 
-@class NSString;
+@class NSString, PGGraphFeatureNodeCollection;
 
 @protocol PGMemoryNodeProtocol <PGGraphMemoryProtocol>
-@property(nonatomic, readonly) NSString *uniqueMemoryIdentifier;
-@property(nonatomic, readonly) id memoryFeatureNodes;
+@property(readonly, nonatomic) NSString *uniqueMemoryIdentifier;
+@property(readonly, nonatomic) PGGraphFeatureNodeCollection *memoryFeatureNodes;
 @end
 

@@ -9,9 +9,11 @@
 @class NSArray, NSDictionary, NSError, NSURL, NSUUID;
 
 @protocol EXExtensionContextHosting <NSObject>
-- (void)_openURL:(NSURL *)arg1 completion:(void (^)(_Bool))arg2;
+
+@optional
 - (void)_loadPreviewImageForPayload:(NSDictionary *)arg1 contextIdentifier:(NSUUID *)arg2 completionHandler:(void (^)(id, NSError *))arg3;
 - (void)_loadItemForPayload:(NSDictionary *)arg1 contextIdentifier:(NSUUID *)arg2 completionHandler:(void (^)(id, NSError *))arg3;
+- (void)_openURL:(NSURL *)arg1 completion:(void (^)(_Bool))arg2;
 - (void)_cancelRequestWithError:(NSError *)arg1 forExtensionContextWithUUID:(NSUUID *)arg2 completion:(void (^)(void))arg3;
 - (void)_completeRequestReturningItems:(NSArray *)arg1 forExtensionContextWithUUID:(NSUUID *)arg2 completion:(void (^)(void))arg3;
 @end

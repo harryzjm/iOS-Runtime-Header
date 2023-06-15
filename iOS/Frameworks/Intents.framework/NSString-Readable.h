@@ -7,6 +7,7 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (Readable)
++ (id)intents_makeFromWidgetPlistableRepresentation:(id)arg1;
 + (id)_intents_decodeWithJSONDecoder:(id)arg1 codableDescription:(id)arg2 from:(id)arg3;
 + (id)deferredLocalizedIntentsStringWithFormat:(id)arg1 fromTable:(id)arg2 bundle:(id)arg3;
 + (id)deferredLocalizedIntentsStringWithFormat:(id)arg1 fromTable:(id)arg2 arguments:(char *)arg3;
@@ -14,6 +15,7 @@
 + (id)deferredLocalizedIntentsStringWithFormat:(id)arg1;
 - (id)_intents_localizedCopyWithLocalizer:(id)arg1;
 - (id)_intents_readableTitleWithLocalizer:(id)arg1 metadata:(id)arg2;
+- (id)intents_encodeForPlistRepresentation;
 - (id)localizeForLanguage:(id)arg1;
 - (id)_intents_encodeWithJSONEncoder:(id)arg1 codableDescription:(id)arg2;
 - (id)_intents_allowedUnarchiverClassesForProto;

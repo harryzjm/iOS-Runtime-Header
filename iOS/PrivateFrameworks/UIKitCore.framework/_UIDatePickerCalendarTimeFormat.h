@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 @class NSDate, NSLocale, NSNumberFormatter, NSString, NSTimeZone;
 
 __attribute__((visibility("hidden")))
-@interface _UIDatePickerCalendarTimeFormat : NSObject <NSCopying>
+@interface _UIDatePickerCalendarTimeFormat : NSObject
 {
     _Bool _wantsDoubleDigitHours;
     _Bool _forceDoubleDigitHours;

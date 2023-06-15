@@ -11,6 +11,7 @@
 @interface _TtC10StocksCore27StubAppConfigurationManager : _TtCs12_SwiftObject
 {
     MISSING_TYPE *observableAppConfiguration;
+    MISSING_TYPE *asyncObservableAppConfiguration;
     MISSING_TYPE *simulateError;
     MISSING_TYPE *refreshDelay;
     MISSING_TYPE *refreshHandler;

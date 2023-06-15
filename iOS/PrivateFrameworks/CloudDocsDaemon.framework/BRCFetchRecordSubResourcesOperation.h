@@ -54,6 +54,7 @@ __attribute__((visibility("hidden")))
 - (void)_prepareToSaveRecords;
 - (void)_createSubResourceGroupsFromPendingChangesStreamIfNecessary;
 - (void)_scheduleXattrFetch;
+- (void)_dump;
 - (_Bool)_markSubResourceRecordAsFetchedIfNecessary:(id)arg1;
 - (void)_scheduleDeserialize;
 - (_Bool)_willFetchRecordForDeserialize:(id)arg1;

@@ -9,6 +9,7 @@
 @class NSString;
 
 @interface NSError (BaseBoard)
++ (id)bs_errorWithDomain:(id)arg1 code:(long long)arg2 configuration:(CDUnknownBlockType)arg3;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)succinctDescriptionBuilder;

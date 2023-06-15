@@ -6,12 +6,13 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class NSDictionary, UINavigationBar, UIPanelController, UISlidingBarState, UISlidingBarStateRequest, UIViewController;
+@class NSDictionary, UIColor, UINavigationBar, UIPanelController, UISlidingBarState, UISlidingBarStateRequest, UIViewController;
 @protocol UIViewControllerTransitionCoordinator;
 
 @protocol UIPanelControllerDelegate <NSObject>
 
 @optional
+@property(readonly) UIColor *primaryBackgroundColor;
 - (UINavigationBar *)panelController:(UIPanelController *)arg1 navigationBarForViewController:(UIViewController *)arg2;
 - (void)panelController:(UIPanelController *)arg1 willBeginAnimationToPrimarySize:(struct CGSize)arg2 supplementarySize:(struct CGSize)arg3 secondarySize:(struct CGSize)arg4;
 - (void)panelControllerDidExpand:(UIPanelController *)arg1;

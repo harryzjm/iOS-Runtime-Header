@@ -6,7 +6,7 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-@class GEOPDChildActionDirections, GEOPDChildActionFlyover, GEOPDChildActionGuides, GEOPDChildActionSearch, PBDataReader, PBUnknownFields;
+@class GEOPDChildActionDirections, GEOPDChildActionDownloadOfflineMap, GEOPDChildActionFlyover, GEOPDChildActionGuides, GEOPDChildActionSearch, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDChildAction : PBCodable
@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
     GEOPDChildActionDirections *_childActionDirections;
+    GEOPDChildActionDownloadOfflineMap *_childActionDownloadOfflineMap;
     GEOPDChildActionFlyover *_childActionFlyover;
     GEOPDChildActionGuides *_childActionGuides;
     GEOPDChildActionSearch *_childActionSearch;
@@ -25,6 +26,7 @@ __attribute__((visibility("hidden")))
         unsigned int has_childActionType:1;
         unsigned int read_unknownFields:1;
         unsigned int read_childActionDirections:1;
+        unsigned int read_childActionDownloadOfflineMap:1;
         unsigned int read_childActionFlyover:1;
         unsigned int read_childActionGuides:1;
         unsigned int read_childActionSearch:1;

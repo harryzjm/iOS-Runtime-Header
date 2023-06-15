@@ -16,7 +16,10 @@ __attribute__((visibility("hidden")))
     NSOperationQueue *_outputQueue;
     long long _policy;
     int _state;
-    struct _opaque_pthread_mutex_t _lock;
+    struct _opaque_pthread_mutex_t {
+        long long __sig;
+        char __opaque[56];
+    } _lock;
     NSMutableArray *_dequeue;
     unsigned long long _maxCount;
     CDUnknownBlockType _bufferFullHandler;

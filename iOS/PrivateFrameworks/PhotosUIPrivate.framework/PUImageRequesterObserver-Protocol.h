@@ -6,9 +6,11 @@
 
 #import <PhotosUIPrivate/NSObject-Protocol.h>
 
-@class PUImageRequester, PUImageRequesterChange;
+@class PUImageRequester;
+@protocol PUImageRequesterResult;
 
 @protocol PUImageRequesterObserver <NSObject>
-- (void)imageRequester:(PUImageRequester *)arg1 didChange:(PUImageRequesterChange *)arg2;
+- (void)imageRequesterDidUpdateFullSizeImageData:(PUImageRequester *)arg1;
+- (void)imageRequester:(PUImageRequester *)arg1 didProduceResult:(id <PUImageRequesterResult>)arg2;
 @end
 

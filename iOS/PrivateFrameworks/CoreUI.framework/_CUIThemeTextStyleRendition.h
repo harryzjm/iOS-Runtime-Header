@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (const struct _csitextstyle *)csiTextStyle;
-- (id)_initWithCSIHeader:(const struct _csiheader *)arg1;
+- (id)_initWithCSIHeader:(const struct _csiheader *)arg1 version:(unsigned int)arg2;
 
 @end
 

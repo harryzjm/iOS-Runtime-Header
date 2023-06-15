@@ -6,15 +6,19 @@
 
 #import "BLSHBacklightOSTimerProvider.h"
 
-@class BLSHSuppressionEvent, BLSHWatchdogProvider, BSContinuousMachTimer, CMSuppressionManager, NSDate, NSString;
-@protocol BLSCBDisplayStateDelegate, BLSHBacklightPlatformProvider;
+@class BLSHCriticalAssertProvider, BLSHSuppressionEvent, BLSHWatchdogProvider, BSContinuousMachTimer, CBDisplayStateClient, CMSuppressionManager, NSDate, NSMutableDictionary, NSMutableSet, NSObject, NSString;
+@protocol BLSCBDisplayStateDelegate, BLSHBacklightPlatformProvider, BLSHWatchdogInvalidatable, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface BLSHBacklightOSInterfaceProvider : BLSHBacklightOSTimerProvider
 {
     id <BLSHBacklightPlatformProvider> _platformProvider;
     BLSHWatchdogProvider *_watchdogProvider;
+    BLSHCriticalAssertProvider *_criticalAssertProvider;
+    NSMutableDictionary *_lock_sceneObservers;
+    NSMutableSet *_lock_sceneWorkspaces;
     BLSHSuppressionEvent *_lock_lastSuppressionEvent;
+    CBDisplayStateClient *_displayStateClient;
     CMSuppressionManager *_suppressionManager;
     BSContinuousMachTimer *_setCBDisplayModeTimer;
     struct os_unfair_lock_s _lock;
@@ -27,14 +31,30 @@ __attribute__((visibility("hidden")))
     _Bool _lock_flipbookTransparent;
     _Bool _deviceSupportsAlwaysOn;
     _Bool _lock_kernelSpecialMode;
-    _Bool _supportsFlipbookState;
+    _Bool _displayStateClientSupported;
     float _backlightDimmedFactor;
+    id <BLSHWatchdogInvalidatable> _lock_watchdogTimer;
+    unsigned long long _lock_watchdogType;
+    unsigned long long _flipbookDiagnosticHistoryFrameLimit;
+    unsigned long long _flipbookDiagnosticHistoryMemoryLimit;
     id <BLSCBDisplayStateDelegate> _cbDisplayStateDelegate;
 }
 
++ (void)setSharedProvider:(id)arg1;
++ (id)sharedProvider;
 - (void).cxx_destruct;
 @property(retain, setter=setCBDisplayStateDelegate:) id <BLSCBDisplayStateDelegate> cbDisplayStateDelegate; // @synthesize cbDisplayStateDelegate=_cbDisplayStateDelegate;
+@property(readonly, nonatomic) unsigned long long flipbookDiagnosticHistoryMemoryLimit; // @synthesize flipbookDiagnosticHistoryMemoryLimit=_flipbookDiagnosticHistoryMemoryLimit;
+@property(readonly, nonatomic) unsigned long long flipbookDiagnosticHistoryFrameLimit; // @synthesize flipbookDiagnosticHistoryFrameLimit=_flipbookDiagnosticHistoryFrameLimit;
+- (id)identifier;
+- (id)osInterfaceProvider;
+- (id)abortContext;
 @property(nonatomic, getter=isFlipbookTransparent) _Bool flipbookTransparent;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *delegateQueue;
+- (void)didCompleteSwitchToFlipbookState:(long long)arg1 withError:(id)arg2;
+- (void)didCompleteTransitionToDisplayMode:(long long)arg1 withError:(id)arg2;
+- (id)removeSceneObserver:(id)arg1 forSceneIdentityToken:(id)arg2;
+- (id)addSceneObserver:(id)arg1 forSceneIdentityToken:(id)arg2;
 - (void)didDetectSignificantUserInteraction;
 - (void)endSuppressionService;
 - (void)startSuppressionServiceWithHandler:(CDUnknownBlockType)arg1;
@@ -44,8 +64,8 @@ __attribute__((visibility("hidden")))
 - (id)observeSignificantTimeChangeWithIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (id)systemSleepMonitor;
 - (id)createFlipbook;
-- (id)acquireSystemActivityAssertionWithIdentifier:(id)arg1 timeout:(double)arg2 handler:(CDUnknownBlockType)arg3;
-- (id)acquirePowerAssertionWithIdentifier:(id)arg1 timeout:(double)arg2;
+- (id)createSystemActivityAssertionWithIdentifier:(id)arg1;
+- (id)createPowerAssertionWithIdentifier:(id)arg1;
 - (id)scheduleWatchdogWithDelegate:(id)arg1 explanation:(id)arg2 timeout:(double)arg3;
 - (void)willUnblank;
 - (void)setShowingBlankingWindow:(_Bool)arg1 fadeDuration:(double)arg2;
@@ -55,10 +75,14 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool supportsFlipbookState;
 - (void)transitionToDisplayMode:(long long)arg1 withDuration:(double)arg2;
 @property(readonly, nonatomic) long long cbDisplayMode;
+- (void)dispatchToMainQueueAfterSecondsDelay:(double)arg1 identifier:(id)arg2 block:(CDUnknownBlockType)arg3;
 @property(nonatomic, getter=isKernelAlwaysOnMode) _Bool kernelAlwaysOnMode;
 @property(nonatomic, getter=isCAFlipbookSuppressed, setter=setCAFlipbookSuppressed:) _Bool caFlipbookSuppressed;
 @property(nonatomic, getter=isCAFlipbookEnabled, setter=setCAFlipbookEnabled:) _Bool caFlipbookEnabled;
 @property(nonatomic, getter=isCABlanked, setter=setCABlanked:) _Bool caBlanked;
+- (id)sceneWithIdentityToken:(id)arg1;
+- (void)deregisterSceneWorkspace:(id)arg1;
+- (void)registerSceneWorkspace:(id)arg1;
 - (void)registerHandlersForService:(id)arg1;
 - (id)initWithPlatformProvider:(id)arg1;
 

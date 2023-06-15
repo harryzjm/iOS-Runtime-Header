@@ -11,8 +11,6 @@
 @interface NSDate (HMDCameraUtilities)
 + (id)hmd_dateFromSnapshotFileName:(id)arg1;
 + (id)hmd_snapshotFileNameDateFormatter;
-+ (id)hm_iso8601dateFromString:(id)arg1;
-+ (unsigned char)hm_dayOfTheWeek;
 @property(readonly, copy) NSString *hmd_snapshotFileName;
 
 // Remaining properties

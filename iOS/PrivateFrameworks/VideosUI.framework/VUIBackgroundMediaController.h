@@ -4,14 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class AVPlayerViewController, NSArray, NSDate, NSLayoutConstraint, NSNumber, NSString, NSTimer, TVPPlayer, TVPStateMachine, TVPVideoView, UIViewController, VUIImageProxy, VUIImageView, VUIMediaInfo, VUIMediaInfoFetchController;
+@class AVPlayerViewController, NSArray, NSDate, NSLayoutConstraint, NSNumber, NSString, NSTimer, TVPPlayer, TVPStateMachine, TVPVideoView, UIViewController, VUIImageProxy, VUIImageView, VUIMediaInfo, VUIMediaInfoFetchController, VUIPlayer;
 
 __attribute__((visibility("hidden")))
 @interface VUIBackgroundMediaController
 {
+    _Bool _didAVPlayerControllerEnterFullscreen;
     _Bool _playbackEnabled;
+    _Bool _loadsPlayerWithFullscreenPlayback;
     _Bool _stopPlayerWhenViewDisappears;
     _Bool _stopPlayerWhenExitingFullScreen;
+    _Bool _exitsFullscreenWhenPlaybackEnds;
     _Bool _clearPreviousImageBeforeLoading;
     _Bool _animateImageChange;
     _Bool _animateVideoChange;
@@ -23,14 +26,17 @@ __attribute__((visibility("hidden")))
     _Bool _shouldPauseAtEnd;
     _Bool _shouldShowImageAndStopAfterPausingAtEnd;
     _Bool _showsPlaybackControlsInForeground;
+    _Bool _shouldDisableSubtitle;
     _Bool _shouldAnimateOverlayView;
     _Bool _automaticPlaybackStart;
     _Bool _automaticPlaybackStop;
     _Bool _shouldPlayAfterAppBecomesActive;
-    _Bool _didAVPlayerControllerEnterFullscreen;
+    _Bool _shouldPlayAfterFullplaybackUIDidEnd;
+    _Bool _hasViewAppeared;
     _Bool _didWeCreatePlayer;
     _Bool _observingPictureInPictureActive;
     _Bool _showsVideoControls;
+    _Bool _observingInitialMediaItemHasCompletedInitialLoading;
     float _backgroundVolume;
     float _foregroundVolume;
     float _fullscreenTransitionVolumeAnimationChanges;
@@ -76,10 +82,17 @@ __attribute__((visibility("hidden")))
     NSLayoutConstraint *_proxyImageHeightConstraint;
     NSLayoutConstraint *_proxyImageCenterXConstraint;
     NSLayoutConstraint *_proxyImageCenterYConstraint;
+    VUIPlayer *_activePIPingPlayer;
+    unsigned long long _lastMediaInfoIndex;
+    NSString *_lastMediaEventActionType;
     struct UIEdgeInsets _legibleContentInsets;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *lastMediaEventActionType; // @synthesize lastMediaEventActionType=_lastMediaEventActionType;
+@property(nonatomic) _Bool observingInitialMediaItemHasCompletedInitialLoading; // @synthesize observingInitialMediaItemHasCompletedInitialLoading=_observingInitialMediaItemHasCompletedInitialLoading;
+@property(nonatomic) unsigned long long lastMediaInfoIndex; // @synthesize lastMediaInfoIndex=_lastMediaInfoIndex;
+@property(retain, nonatomic) VUIPlayer *activePIPingPlayer; // @synthesize activePIPingPlayer=_activePIPingPlayer;
 @property(retain, nonatomic) NSLayoutConstraint *proxyImageCenterYConstraint; // @synthesize proxyImageCenterYConstraint=_proxyImageCenterYConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *proxyImageCenterXConstraint; // @synthesize proxyImageCenterXConstraint=_proxyImageCenterXConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *proxyImageHeightConstraint; // @synthesize proxyImageHeightConstraint=_proxyImageHeightConstraint;
@@ -90,7 +103,8 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSString *titleForLogging; // @synthesize titleForLogging=_titleForLogging;
 @property(nonatomic) _Bool observingPictureInPictureActive; // @synthesize observingPictureInPictureActive=_observingPictureInPictureActive;
 @property(nonatomic) _Bool didWeCreatePlayer; // @synthesize didWeCreatePlayer=_didWeCreatePlayer;
-@property(nonatomic) _Bool didAVPlayerControllerEnterFullscreen; // @synthesize didAVPlayerControllerEnterFullscreen=_didAVPlayerControllerEnterFullscreen;
+@property(nonatomic) _Bool hasViewAppeared; // @synthesize hasViewAppeared=_hasViewAppeared;
+@property(nonatomic) _Bool shouldPlayAfterFullplaybackUIDidEnd; // @synthesize shouldPlayAfterFullplaybackUIDidEnd=_shouldPlayAfterFullplaybackUIDidEnd;
 @property(nonatomic) _Bool shouldPlayAfterAppBecomesActive; // @synthesize shouldPlayAfterAppBecomesActive=_shouldPlayAfterAppBecomesActive;
 @property(nonatomic) unsigned long long vpafPlaybackStopReason; // @synthesize vpafPlaybackStopReason=_vpafPlaybackStopReason;
 @property(nonatomic, getter=isAutomaticPlaybackStop) _Bool automaticPlaybackStop; // @synthesize automaticPlaybackStop=_automaticPlaybackStop;
@@ -114,6 +128,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIViewController *playbackContainerController; // @synthesize playbackContainerController=_playbackContainerController;
 @property(retain, nonatomic) VUIImageProxy *alphaImageProxy; // @synthesize alphaImageProxy=_alphaImageProxy;
 @property(retain, nonatomic) VUIImageView *alphaProxyImageView; // @synthesize alphaProxyImageView=_alphaProxyImageView;
+@property(nonatomic) _Bool shouldDisableSubtitle; // @synthesize shouldDisableSubtitle=_shouldDisableSubtitle;
 @property(nonatomic) struct UIEdgeInsets legibleContentInsets; // @synthesize legibleContentInsets=_legibleContentInsets;
 @property(nonatomic) _Bool showsPlaybackControlsInForeground; // @synthesize showsPlaybackControlsInForeground=_showsPlaybackControlsInForeground;
 @property(nonatomic) double imageVideoTransitionAnimationDuration; // @synthesize imageVideoTransitionAnimationDuration=_imageVideoTransitionAnimationDuration;
@@ -138,10 +153,13 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool animateVideoChange; // @synthesize animateVideoChange=_animateVideoChange;
 @property(nonatomic) _Bool animateImageChange; // @synthesize animateImageChange=_animateImageChange;
 @property(nonatomic) _Bool clearPreviousImageBeforeLoading; // @synthesize clearPreviousImageBeforeLoading=_clearPreviousImageBeforeLoading;
+@property(nonatomic) _Bool exitsFullscreenWhenPlaybackEnds; // @synthesize exitsFullscreenWhenPlaybackEnds=_exitsFullscreenWhenPlaybackEnds;
 @property(nonatomic, getter=shouldStopPlayerWhenExitingFullScreen) _Bool stopPlayerWhenExitingFullScreen; // @synthesize stopPlayerWhenExitingFullScreen=_stopPlayerWhenExitingFullScreen;
 @property(nonatomic, getter=shouldStopPlayerWhenViewDisappears) _Bool stopPlayerWhenViewDisappears; // @synthesize stopPlayerWhenViewDisappears=_stopPlayerWhenViewDisappears;
+@property(nonatomic) _Bool loadsPlayerWithFullscreenPlayback; // @synthesize loadsPlayerWithFullscreenPlayback=_loadsPlayerWithFullscreenPlayback;
 @property(nonatomic, getter=isPlaybackEnabled) _Bool playbackEnabled; // @synthesize playbackEnabled=_playbackEnabled;
 @property(readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property(nonatomic) _Bool didAVPlayerControllerEnterFullscreen; // @synthesize didAVPlayerControllerEnterFullscreen=_didAVPlayerControllerEnterFullscreen;
 @property(nonatomic) unsigned long long state; // @synthesize state=_state;
 @property(nonatomic) unsigned long long mediaInfoIndex; // @synthesize mediaInfoIndex=_mediaInfoIndex;
 @property(retain, nonatomic) NSString *videoGravity; // @synthesize videoGravity=_videoGravity;
@@ -155,7 +173,7 @@ __attribute__((visibility("hidden")))
 - (void)_configureAudioSession;
 - (void)_stateDidChangeFromState:(id)arg1 toState:(id)arg2 onEvent:(id)arg3 context:(id)arg4 userInfo:(id)arg5;
 - (void)_didPlayMediaItemToEnd:(id)arg1;
-- (void)_recordBgAutoPlayMediaEvent;
+- (void)_recordBgAutoPlayMediaEventForPlaybackState:(id)arg1;
 - (double)_computedPlaybackDelayInterval;
 - (void)_showPlaybackIfPossible;
 - (void)_updateAVPlayerViewControllerWithAVPlayerForPlayer:(id)arg1;
@@ -197,6 +215,15 @@ __attribute__((visibility("hidden")))
 - (_Bool)_canPause;
 - (void)_unregisterPlayerNotifications;
 - (void)_registerPlayerNotifications;
+- (void)_audioSessionSilentSecondaryAudioDidChange:(id)arg1;
+- (void)_registerAudioSessionNotification;
+- (void)_pipPlaybackDidChangeMutedState;
+- (void)_pipPlaybackStateChanged:(id)arg1;
+- (void)updateAudioMuteWithPIPingPlayback;
+- (void)_enablePlaybackWhenFullScreenPlaybackEnd;
+- (void)_disablePlaybackWhenShowingFullScreenUIIfneeded;
+- (void)playBackManagerFullscreenPlaybackUIDidChangeNotification:(id)arg1;
+- (void)_registerPlaybackManagerNotification;
 - (void)_applicationDidRemoveDeactivationReason:(id)arg1;
 - (void)_applicationWillAddDeactivationReason:(id)arg1;
 - (_Bool)_shouldPausePlaybackDueToDeactivationReasons;
@@ -204,6 +231,7 @@ __attribute__((visibility("hidden")))
 - (void)_handleApplicationDidEnterBackgroundNotification:(id)arg1;
 - (void)_handleApplicationWillResignActiveNotification:(id)arg1;
 - (void)_registerForApplicationStateNotifications;
+- (_Bool)_autoPlayEnabled;
 - (void)setPlaybackEnabled:(_Bool)arg1 imageVideoSwapBehavior:(unsigned long long)arg2;
 - (void)setControlsVisible:(_Bool)arg1;
 - (void)transitionToForeground:(_Bool)arg1 withPlaybackControls:(_Bool)arg2 fullScreenPlayer:(_Bool)arg3 animated:(_Bool)arg4;
@@ -212,11 +240,13 @@ __attribute__((visibility("hidden")))
 - (void)transitionToForeground:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)showAlphaImage:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)_updateVideoPlayerLegibleContentInsets;
+- (void)_disableSubtitleIfNeeded;
 - (void)stop;
 - (void)pause;
 - (void)play;
 - (void)removeMediaInfoAtIndex:(unsigned long long)arg1;
 - (void)appendMediaInfos:(id)arg1;
+- (void)_configMirroredImageForBackgroundImage:(id)arg1;
 - (id)createTransitionImageViewAtIndex:(unsigned long long)arg1 oldView:(id)arg2;
 - (unsigned long long)_flippedDirection:(unsigned long long)arg1 isRTL:(_Bool)arg2;
 - (void)setMediaInfoIndex:(unsigned long long)arg1 imageVideoSwapBehavior:(unsigned long long)arg2 animated:(_Bool)arg3 forwardAnimation:(_Bool)arg4;
@@ -232,6 +262,7 @@ __attribute__((visibility("hidden")))
 - (void)_constrainToView:(id)arg1;
 - (void)vui_viewDidLayoutSubviews;
 - (void)_handleViewWillDisappear;
+- (void)vui_viewWillAppear:(_Bool)arg1;
 - (void)vui_viewWillDisappear:(_Bool)arg1;
 - (void)vui_viewDidLoad;
 - (void)dealloc;

@@ -15,11 +15,14 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_queue;
     NSXPCListener *_listener;
     _Bool _running;
+    _Atomic _Bool _forManualRebuild;
 }
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (_Bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
+- (_Bool)isForManualRebuild;
+- (void)setBlockingIsForManualRebuild:(_Bool)arg1;
 - (id)getEndpoint;
 - (void)startRunningIfNecessary;
 - (id)_init;

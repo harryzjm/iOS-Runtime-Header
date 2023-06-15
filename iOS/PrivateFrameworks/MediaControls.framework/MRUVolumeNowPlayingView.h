@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
     UIImage *_icon;
     NSString *_title;
+    long long _axis;
     MRUVisualStylingProvider *_stylingProvider;
     UILabel *_titleLabel;
     UIImageView *_imageView;
@@ -22,6 +23,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
 @property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property(retain, nonatomic) MRUVisualStylingProvider *stylingProvider; // @synthesize stylingProvider=_stylingProvider;
+@property(nonatomic) long long axis; // @synthesize axis=_axis;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property(retain, nonatomic) UIImage *icon; // @synthesize icon=_icon;
 - (void)updateContentSizeCategory;

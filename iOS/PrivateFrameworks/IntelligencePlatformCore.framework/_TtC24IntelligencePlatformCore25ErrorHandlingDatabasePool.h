@@ -13,6 +13,7 @@
     MISSING_TYPE *databaseFileURL;
     MISSING_TYPE *pool;
     MISSING_TYPE *configuration;
+    MISSING_TYPE *lockedBox;
 }
 
 @end

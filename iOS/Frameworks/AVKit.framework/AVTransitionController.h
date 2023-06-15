@@ -6,14 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class AVDisplayLink, AVInteractiveTransitionGestureTracker, AVPresentationContext, AVPresentationController, AVTransition, CAMediaTimingFunction, NSString, UIView, UIViewController;
+@class AVDisplayLink, AVInteractiveTransitionGestureTracker, AVPresentationContext, AVPresentationController, AVTransition, CAMediaTimingFunction, NSString, UIView;
 @protocol AVTransitionControllerDelegate, AVTransitionDriver;
 
 __attribute__((visibility("hidden")))
 @interface AVTransitionController : NSObject
 {
-    UIViewController *_presented;
-    UIViewController *_presenting;
     AVPresentationController *_presentationController;
     id <AVTransitionControllerDelegate> _delegate;
     id <AVTransitionDriver> _interactiveGestureTracker;
@@ -56,7 +54,7 @@ __attribute__((visibility("hidden")))
 - (void)animationEnded:(_Bool)arg1;
 - (void)animateTransition:(id)arg1;
 - (double)transitionDuration:(id)arg1;
-- (void)_ensurePresentationControllerWithPresentingViewController:(id)arg1 presentedViewController:(id)arg2;
+- (void)_ensurePresentationControllerWithTransitionContext:(id)arg1;
 - (void)startInteractiveTransition:(id)arg1;
 @property(readonly, nonatomic) _Bool wantsInteractiveStart;
 - (void)_finishTransition;
@@ -67,6 +65,7 @@ __attribute__((visibility("hidden")))
 - (void)transitionDriver:(id)arg1 didBeginTrackingTransitionInteraction:(long long)arg2 readyToProceedHandler:(CDUnknownBlockType)arg3;
 - (_Bool)transitionDriver:(id)arg1 shouldDriveTransitionInteractionOfType:(long long)arg2;
 - (_Bool)transitionDriver:(id)arg1 gestureRecognizer:(id)arg2 shouldReceiveTouch:(id)arg3;
+- (void)ensurePresentationControllerWithPresentingViewController:(id)arg1 presentedViewController:(id)arg2;
 - (void)beginFullScreenDismissalOfViewController:(id)arg1 animated:(_Bool)arg2 isInteractive:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)beginFullScreenPresentationOfViewController:(id)arg1 fromView:(id)arg2 isInteractive:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)addTransitionDriver:(id)arg1 toView:(id)arg2;

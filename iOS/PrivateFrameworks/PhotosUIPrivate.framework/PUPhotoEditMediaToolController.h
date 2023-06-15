@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CEKApertureButton, CEKEdgeGradientView, NSLayoutConstraint, NSMutableArray, NSString, PLRoundProgressView, PTCinematographyScript, PUPhotoEditApertureToolbar, PUTrimToolController, PUVideoEditOverlayViewController, PXCinematicEditController, PXUIButton, UIButton, UILabel, UILayoutGuide, UIView, _UIBackdropView;
+@class CEKApertureButton, CEKEdgeGradientView, NSLayoutConstraint, NSMutableArray, NSString, PLRoundProgressView, PTCinematographyScript, PUPhotoEditApertureToolbar, PUPhotoEditToolActivationButton, PUPhotoEditToolbarButton, PUTrimToolController, PUVideoEditOverlayViewController, PXCinematicEditController, UIButton, UILabel, UILayoutGuide, UIView, _UIBackdropView;
 
 __attribute__((visibility("hidden")))
 @interface PUPhotoEditMediaToolController
@@ -17,15 +17,18 @@ __attribute__((visibility("hidden")))
     NSLayoutConstraint *_trailingWidthConstraint;
     NSMutableArray *_constraints;
     PUTrimToolController *_trimController;
-    PXUIButton *_muteButton;
-    PXUIButton *_livePhotoButton;
+    PUPhotoEditToolbarButton *_muteButton;
+    PUPhotoEditToolActivationButton *_livePhotoButton;
     UILabel *_videoLabelView;
     UIButton *_stabilizeButton;
     PLRoundProgressView *_stabilizeProgressView;
-    PXUIButton *_portraitVideoButton;
+    _Bool _cinematicButtonsNeedDimmingViews;
+    PUPhotoEditToolActivationButton *_portraitVideoButton;
+    UIView *_portraitVideoButtonDimmingView;
     CEKApertureButton *_apertureButton;
+    UIView *_apertureButtonContainerDimmingView;
     UIView *_apertureButtonContainer;
-    PXUIButton *_autoFocusButton;
+    PUPhotoEditToolbarButton *_autoFocusButton;
     PUVideoEditOverlayViewController *_overlayController;
     UIView *_apertureContainer;
     PUPhotoEditApertureToolbar *_apertureToolbar;
@@ -38,7 +41,6 @@ __attribute__((visibility("hidden")))
     _Bool _trimControllerScrubberNeedsVisualUpdate;
     _Bool _stabilizationInProgress;
     CDStruct_1b6d18a9 _originalStillImageTime;
-    _Bool _isActiveTool;
     _Bool _useTranslucentBackground;
     long long _layoutType;
     UIView *_primaryView;
@@ -58,6 +60,8 @@ __attribute__((visibility("hidden")))
 - (void)apertureToolbarDidStartSliding:(id)arg1;
 - (_Bool)apertureToolbarShouldRotateLabelsWithOrientation:(id)arg1;
 - (void)apertureToolbar:(id)arg1 didChangeValue:(double)arg2;
+- (void)addCropToolGainMapIfNeeded;
+- (void)removeCropToolGainMap;
 - (void)trimToolController:(id)arg1 didEndInteractivelyEditingElement:(long long)arg2;
 - (void)trimToolController:(id)arg1 didBeginInteractivelyEditingElement:(long long)arg2;
 - (id)axDescriptionForFocusDecisionAtTime:(CDStruct_1b6d18a9)arg1;
@@ -74,6 +78,7 @@ __attribute__((visibility("hidden")))
 - (void)cinematographyWasEdited;
 - (void)cineScriptCouldNotInitializeWithError:(id)arg1;
 - (void)cineScriptBecameAvailable:(id)arg1;
+- (void)disableCinematicUIForLoadingAsset;
 - (void)_initializeCinematographyScript;
 - (void)_handleAutoFocusButton:(id)arg1;
 - (void)_updateApertureSliderLength;
@@ -120,6 +125,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)wantsSecondaryToolbarVisible;
 - (void)setUseGradientBackground:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)setBackdropViewGroupName:(id)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (id)accessibilityHUDItemForButton:(id)arg1;
 - (void)mediaViewDidScroll:(id)arg1;
 - (void)mediaView:(id)arg1 didZoom:(double)arg2;
@@ -129,7 +135,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)wantsScrubberKeyControl;
 - (_Bool)wantsZoomAndPanEnabled;
 - (void)compositionControllerDidChangeForAdjustments:(id)arg1;
-- (void)setupWithAsset:(id)arg1 compositionController:(id)arg2 editSource:(id)arg3 overcaptureEditSource:(id)arg4 valuesCalculator:(id)arg5;
+- (void)setupWithAsset:(id)arg1 compositionController:(id)arg2 editSource:(id)arg3 valuesCalculator:(id)arg4;
 - (void)willResignActiveTool;
 - (void)reactivate;
 - (void)willBecomeActiveTool;
@@ -140,6 +146,8 @@ __attribute__((visibility("hidden")))
 - (void)setOriginalStillImageTime:(CDStruct_1b6d18a9)arg1;
 - (_Bool)canResetToDefaultValue;
 - (id)toolbarIconAccessibilityLabel;
+- (id)selectedToolbarIconGlyphName;
+- (id)toolbarIconGlyphName;
 - (id)toolbarIcon;
 - (id)localizedName;
 - (void)setLayoutOrientation:(long long)arg1 withTransitionCoordinator:(id)arg2;

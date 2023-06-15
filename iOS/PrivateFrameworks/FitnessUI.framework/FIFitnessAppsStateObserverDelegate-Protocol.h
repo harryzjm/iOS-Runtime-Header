@@ -6,9 +6,12 @@
 
 #import <FitnessUI/NSObject-Protocol.h>
 
-@class FIFitnessAppsStateObserver;
+@class FIFitnessAppsStateObserver, NSArray;
 
 @protocol FIFitnessAppsStateObserverDelegate <NSObject>
-- (void)fitnessAppsStateObserver:(FIFitnessAppsStateObserver *)arg1 stateDidChange:(long long)arg2;
+
+@optional
+- (void)fitnessAppsStateObserver:(FIFitnessAppsStateObserver *)arg1 applicationInstallStateDidChangeForBundleIdentifiers:(NSArray *)arg2;
+- (void)fitnessAppsStateObserver:(FIFitnessAppsStateObserver *)arg1 restrictedStateDidChange:(long long)arg2;
 @end
 

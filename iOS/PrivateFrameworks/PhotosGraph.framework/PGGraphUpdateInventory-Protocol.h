@@ -9,6 +9,7 @@
 @class NSSet;
 
 @protocol PGGraphUpdateInventory <NSObject>
+@property(readonly, nonatomic) NSSet *identifiersForMemoriesRelatedToDeletedMoments;
 @property(readonly, nonatomic) NSSet *identifiersForMomentRelatedToDeletedPersons;
 @property(readonly, nonatomic) NSSet *identifiersForMomentRelatedToUpdatedPersons;
 @property(readonly, nonatomic) NSSet *localIdentifiersOfPersonsToUpdate;

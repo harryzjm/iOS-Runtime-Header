@@ -21,11 +21,11 @@ __attribute__((visibility("hidden")))
 + (double)nativeDisplayWidth;
 + (double)height;
 + (double)referenceScreenScale;
-- (_Bool)supportsCondensedBatteryPercentage;
 - (double)expandedIconScale;
 - (double)bottomLeadingTopOffset;
 - (double)lowerExpandedBaselineOffset;
 - (double)baselineBottomInset;
+- (struct CGSize)expandedPillSize;
 - (double)itemSpacing;
 
 // Remaining properties

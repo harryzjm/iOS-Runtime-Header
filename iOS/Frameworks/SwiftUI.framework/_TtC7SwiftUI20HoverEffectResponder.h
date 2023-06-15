@@ -10,6 +10,7 @@
 {
     MISSING_TYPE *style;
     MISSING_TYPE *id;
+    MISSING_TYPE *isEffectEnabled;
 }
 
 @end

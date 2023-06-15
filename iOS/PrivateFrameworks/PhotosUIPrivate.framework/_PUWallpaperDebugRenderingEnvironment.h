@@ -24,11 +24,15 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic, getter=pu_isPreview) _Bool pu_preview; // @synthesize pu_preview=_pu_preview;
 @property(readonly, nonatomic, getter=pu_isSnapshot) _Bool pu_snapshot; // @synthesize pu_snapshot=_pu_snapshot;
 @property(readonly, nonatomic) PFPosterConfiguration *posterConfiguration; // @synthesize posterConfiguration=_posterConfiguration;
+- (struct CGRect)pu_titleBoundsForLayout:(unsigned long long)arg1;
+@property(readonly, nonatomic) long long pu_deviceOrientation;
+@property(readonly, nonatomic) struct CGRect pu_floatingObscurableBounds;
 @property(readonly, nonatomic) long long pu_contentsType;
+@property(readonly, nonatomic, getter=pu_isCallServices) _Bool pu_callServices;
 @property(readonly, nonatomic, getter=pu_isPlayground) _Bool pu_playground;
 @property(readonly, nonatomic, getter=pu_backlightLuminance) long long pu_backlightLuminance;
 @property(readonly, nonatomic) NSURL *pu_assetDirectory;
-- (id)initWithPosterConfiguration:(id)arg1;
+- (id)initWithPosterConfiguration:(id)arg1 assetDirectory:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -7,8 +7,8 @@
 #import <UIKitCore/NSObject-Protocol.h>
 #import <UIKitCore/_UICollectionLayoutAuxillaryHosting-Protocol.h>
 
-@class NSArray, NSCollectionLayoutSection, NSIndexSet, NSString, NSUUID, UITraitCollection, _UICollectionLayoutFramesQueryResult, _UICollectionLayoutSolveParameters, _UICollectionLayoutSolveResult;
-@protocol NSCollectionLayoutContainer, _UICollectionPreferredSizes;
+@class NSArray, NSCollectionLayoutSection, NSIndexSet, NSString, NSUUID, UITraitCollection, _UICollectionLayoutFramesQueryResult, _UICollectionLayoutSolveParameters, _UICollectionLayoutSolveResult, _UICollectionPreferredSizes;
+@protocol NSCollectionLayoutContainer;
 
 @protocol _UICollectionLayoutSectionSolver <NSObject, _UICollectionLayoutAuxillaryHosting>
 @property(readonly, nonatomic) struct CGVector orthogonalScrollingPrefetchingUnitVector;
@@ -16,17 +16,18 @@
 @property(nonatomic) _Bool shouldAdjustContentSizeForPartialLastGroupSolution;
 @property(readonly, nonatomic) NSString *errorDescription;
 @property(readonly, nonatomic) NSIndexSet *pinnedSupplementaryIndexes;
-@property(readonly, nonatomic) struct CGSize contentSize;
-@property(readonly, nonatomic) struct CGRect effectiveContentFrame;
+@property(readonly, nonatomic) struct CGRect primaryContentFrame;
+@property(readonly, nonatomic) struct CGRect contentFrameIncludingAuxiliaries;
 @property(readonly, nonatomic) long long frameCount;
 @property(readonly, nonatomic) unsigned long long containerSizeDependentAxes;
 @property(readonly, nonatomic) unsigned long long layoutAxis;
 @property(readonly, nonatomic) _Bool layoutRTL;
 @property(readonly, nonatomic) UITraitCollection *traitCollection;
+@property(readonly, nonatomic) id <NSCollectionLayoutContainer> supplementaryContainer;
 @property(readonly, nonatomic) id <NSCollectionLayoutContainer> container;
 @property(readonly, nonatomic) NSCollectionLayoutSection *layoutSection;
 - (double)_dimensionForRootGroupAlongAxis:(unsigned long long)arg1;
-- (void)_setOrthogonalOffset:(struct CGPoint)arg1;
+- (struct _NSRange)preferredSizeGroupingRangeForItemAtIndex:(long long)arg1;
 - (NSString *)visualDescription;
 - (long long)sectionSupplementaryKindIndexForEnrollmentIdentifier:(NSUUID *)arg1;
 - (_UICollectionLayoutFramesQueryResult *)unpinnedSectionSupplementaryFrameForIndex:(long long)arg1;
@@ -38,9 +39,9 @@
 - (NSArray *)queryFramesIntersectingRect:(struct CGRect)arg1;
 - (void)updatePinnedSupplementaryItemsWithVisibleBounds:(struct CGRect)arg1 overrideContentRectForPinning:(struct CGRect)arg2;
 - (void)updatePinnedSupplementaryItemsWithVisibleBounds:(struct CGRect)arg1;
-- (_UICollectionLayoutSolveResult *)resolveWithParameters:(_UICollectionLayoutSolveParameters *)arg1 preferredSizes:(id <_UICollectionPreferredSizes>)arg2;
-- (void)solveForContainer:(id <NSCollectionLayoutContainer>)arg1 supplementaryContainer:(id <NSCollectionLayoutContainer>)arg2 traitCollection:(UITraitCollection *)arg3 layoutAxis:(unsigned long long)arg4 frameCount:(long long)arg5 preferredSizes:(id <_UICollectionPreferredSizes>)arg6 layoutRTL:(_Bool)arg7;
-- (void)solveForContainer:(id <NSCollectionLayoutContainer>)arg1 traitCollection:(UITraitCollection *)arg2 layoutAxis:(unsigned long long)arg3 frameCount:(long long)arg4 preferredSizes:(id <_UICollectionPreferredSizes>)arg5;
+- (_UICollectionLayoutSolveResult *)resolveWithParameters:(_UICollectionLayoutSolveParameters *)arg1 preferredSizes:(_UICollectionPreferredSizes *)arg2;
+- (void)solveForContainer:(id <NSCollectionLayoutContainer>)arg1 supplementaryContainer:(id <NSCollectionLayoutContainer>)arg2 traitCollection:(UITraitCollection *)arg3 layoutAxis:(unsigned long long)arg4 frameCount:(long long)arg5 preferredSizes:(_UICollectionPreferredSizes *)arg6 layoutRTL:(_Bool)arg7;
+- (void)solveForContainer:(id <NSCollectionLayoutContainer>)arg1 traitCollection:(UITraitCollection *)arg2 layoutAxis:(unsigned long long)arg3 frameCount:(long long)arg4 preferredSizes:(_UICollectionPreferredSizes *)arg5;
 - (void)solveForContainer:(id <NSCollectionLayoutContainer>)arg1 traitCollection:(UITraitCollection *)arg2 layoutAxis:(unsigned long long)arg3 frameCount:(long long)arg4;
 @end
 

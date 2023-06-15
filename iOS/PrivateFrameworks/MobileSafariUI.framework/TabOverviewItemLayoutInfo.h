@@ -13,7 +13,6 @@ __attribute__((visibility("hidden")))
 {
     NSArray *_interpolatedValues;
     _Bool _snapshotBlank;
-    _Bool _closeSynchronized;
     _Bool _visibleInTabOverview;
     _Bool _interactivelyInserted;
     TabOverview *_tabOverview;
@@ -25,7 +24,6 @@ __attribute__((visibility("hidden")))
     double _alpha;
     double _snapshotAlpha;
     TabOverviewInterpolatedValue *_interpolatedSnapshotAlpha;
-    TabOverviewInterpolatedValue *_interpolatedTopBackdropHeight;
     TabOverviewInterpolatedValue *_interpolatedCornerRadius;
     TabOverviewInterpolatedValue *_interpolatedHeightTransitionPercent;
     TabOverviewInterpolatedValue *_interpolatedBoundsLogScale;

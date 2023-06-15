@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIView *customView; // @synthesize customView=_customView;
 - (void)viewDidLayoutSubviews;
+- (_Bool)requiresKeyboard;
 @property(readonly, nonatomic) NSArray *displayedCandidates;
 - (double)preferredHeightForTraitCollection:(id)arg1;
 - (_Bool)hidesExpandableButton;

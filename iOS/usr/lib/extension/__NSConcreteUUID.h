@@ -4,24 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import "NSUUID.h"
+@class MISSING_TYPE, NSString;
 
 __attribute__((visibility("hidden")))
-@interface __NSConcreteUUID : NSUUID
+@interface __NSConcreteUUID
 {
-    unsigned char _uuidBytes[16];
+    MISSING_TYPE *_storage;
 }
 
-+ (_Bool)automaticallyNotifiesObserversForKey:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)debugDescription;
-- (id)description;
-- (id)UUIDString;
-- (void)getUUIDBytes:(unsigned char [16])arg1;
-- (long long)compare:(id)arg1;
-- (_Bool)isEqual:(id)arg1;
-- (id)initWithUUIDBytes:(unsigned char [16])arg1;
++ (_Bool)supportsSecureCoding;
+@property(nonatomic, readonly) Class classForCoder;
+@property(nonatomic, readonly) NSString *debugDescription;
+@property(nonatomic, readonly) NSString *description;
+@property(nonatomic, readonly) NSString *UUIDString;
+- (void)getUUIDBytes:(char *)arg1;
+- (id)initWithUUIDBytes:(const char *)arg1;
 - (id)initWithUUIDString:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)init;
 
 @end

@@ -6,7 +6,7 @@
 
 #import <Messages/_MSMessageComposeExtensionProtocol-Protocol.h>
 
-@class BKSAnimationFenceHandle, MSConversation, MSMessage, MSRichLink, NSArray, NSData, NSString, UIViewController, _MSMessageMediaPayload;
+@class BKSAnimationFenceHandle, MSConversation, MSMessage, MSRichLink, NSArray, NSData, NSString, NSUUID, UIViewController, _MSMessageMediaPayload;
 @protocol _MSMessageComposeExtensionImplProtocol, _MSMessageComposeHostImplProtocol;
 
 @protocol _MSMessageComposeExtensionImplProtocol <_MSMessageComposeExtensionProtocol>
@@ -17,6 +17,10 @@
 @property(nonatomic) unsigned long long presentationContext;
 @property(nonatomic) unsigned long long presentationStyle;
 @property(readonly, nonatomic) MSConversation *activeConversation;
+- (void)showBrowserForPluginIdentifier:(NSString *)arg1 style:(unsigned long long)arg2 completion:(void (^)(void))arg3;
+- (void)canShowBrowserForPluginIdentifier:(NSString *)arg1 completion:(void (^)(_Bool))arg2;
+- (void)_requestPresentationWithStickerType:(NSString *)arg1 identifier:(NSUUID *)arg2;
+- (void)_requestStickerExtensionMetadataDictionary:(void (^)(NSDictionary *))arg1;
 - (void)presentAlertWithTitle:(NSString *)arg1 message:(NSString *)arg2 buttonTitle:(NSString *)arg3 destructiveButtonTitle:(NSString *)arg4 completion:(void (^)(_Bool))arg5;
 - (void)presentAlertWithTitle:(NSString *)arg1 message:(NSString *)arg2 buttonTitle:(NSString *)arg3 completion:(void (^)(void))arg4;
 - (void)contentDidLoad;
@@ -27,13 +31,15 @@
 - (void)requestHostSceneIdentifierWithCompletion:(void (^)(NSString *))arg1;
 - (void)requestPresentationStyleExpanded:(_Bool)arg1;
 - (void)requestPresentationStyle:(unsigned long long)arg1;
+- (void)stickerDruidDragEndedWithPayload:(_MSMessageMediaPayload *)arg1;
+- (void)stickerDruidDragStarted;
 - (void)dragMediaItemCanceled;
 - (void)dragMediaItemMoved:(_MSMessageMediaPayload *)arg1 frameInRemoteView:(struct CGRect)arg2 rotation:(double)arg3 scale:(double)arg4 completionHandler:(void (^)(_Bool, NSError *))arg5;
 - (void)startDragMediaItem:(_MSMessageMediaPayload *)arg1 frameInRemoteView:(struct CGRect)arg2 fence:(BKSAnimationFenceHandle *)arg3 completionHandler:(void (^)(_Bool, NSError *))arg4;
 - (void)removeAssetArchiveWithIdentifier:(NSString *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)stageAssetArchive:(NSData *)arg1 skipShelf:(_Bool)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)stageRichLink:(MSRichLink *)arg1 skipShelf:(_Bool)arg2 completionHandler:(void (^)(NSError *))arg3;
-- (void)stageMediaItem:(_MSMessageMediaPayload *)arg1 skipShelf:(_Bool)arg2 completionHandler:(void (^)(NSError *))arg3;
+- (void)stageMediaItem:(_MSMessageMediaPayload *)arg1 skipShelf:(_Bool)arg2 forceStage:(_Bool)arg3 completionHandler:(void (^)(NSError *))arg4;
 - (void)stageAppItem:(MSMessage *)arg1 skipShelf:(_Bool)arg2 completionHandler:(void (^)(NSError *))arg3;
 
 @optional

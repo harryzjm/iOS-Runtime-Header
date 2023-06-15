@@ -7,6 +7,6 @@
 @class WFFocusConfigurationRequest;
 
 @protocol WFFocusConfigurationServiceVendorProtocol
-- (void)startConfigurationWithRequest:(WFFocusConfigurationRequest *)arg1;
+- (void)startConfigurationWithRequest:(WFFocusConfigurationRequest *)arg1 completion:(void (^)(NSError *))arg2;
 @end
 

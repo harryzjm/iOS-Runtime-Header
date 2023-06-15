@@ -13,6 +13,7 @@
 
 @optional
 - (void)readingHistory:(FCReadingHistory *)arg1 didAddHeadline:(id <FCHeadlineProviding>)arg2 fromGroupType:(long long)arg3 swipedToArticle:(_Bool)arg4 withOnScreenChecker:(_Bool (^)(void))arg5;
+- (void)readingHistory:(FCReadingHistory *)arg1 didChangeOffensiveStateForArticlesWithIDs:(NSArray *)arg2;
 - (void)readingHistory:(FCReadingHistory *)arg1 didChangeFeaturesForArticles:(NSDictionary *)arg2;
 - (void)readingHistory:(FCReadingHistory *)arg1 didAddArticlesWithIDs:(NSArray *)arg2;
 - (void)readingHistory:(FCReadingHistory *)arg1 didRemoveArticlesWithIDs:(NSArray *)arg2;

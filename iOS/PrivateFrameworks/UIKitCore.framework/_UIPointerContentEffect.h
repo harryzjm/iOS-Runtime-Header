@@ -19,10 +19,12 @@ __attribute__((visibility("hidden")))
         _Bool sourceViewDidAlignContentsToPixels;
     } _flags;
     _Bool _pressed;
+    _Bool _sourceViewDidAllowEdgeAntialiasing;
     UIPointerRegion *_region;
     UIPointerStyle *_style;
     UIPointerInteractionAnimator *_entranceAnimator;
     UIPointerInteractionAnimator *_exitAnimator;
+    double _liftProgress;
     _UIPointerEffectPlatterView *_platterView;
     UIView *_lumaSamplingBackdrop;
     UIView *_pointerPortal;
@@ -37,6 +39,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool sourceViewDidAllowEdgeAntialiasing; // @synthesize sourceViewDidAllowEdgeAntialiasing=_sourceViewDidAllowEdgeAntialiasing;
 @property(nonatomic) struct CGPoint initialEffectPlatterPosition; // @synthesize initialEffectPlatterPosition=_initialEffectPlatterPosition;
 @property(nonatomic) __weak UIView *boundsObservationView; // @synthesize boundsObservationView=_boundsObservationView;
 @property(nonatomic) __weak UIView *sublayerObservationView; // @synthesize sublayerObservationView=_sublayerObservationView;
@@ -48,6 +51,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak UIView *pointerPortal; // @synthesize pointerPortal=_pointerPortal;
 @property(nonatomic) __weak UIView *lumaSamplingBackdrop; // @synthesize lumaSamplingBackdrop=_lumaSamplingBackdrop;
 @property(retain, nonatomic) _UIPointerEffectPlatterView *platterView; // @synthesize platterView=_platterView;
+@property(nonatomic) double liftProgress; // @synthesize liftProgress=_liftProgress;
 @property(retain, nonatomic) UIPointerInteractionAnimator *exitAnimator; // @synthesize exitAnimator=_exitAnimator;
 @property(retain, nonatomic) UIPointerInteractionAnimator *entranceAnimator; // @synthesize entranceAnimator=_entranceAnimator;
 @property(retain, nonatomic) UIPointerStyle *style; // @synthesize style=_style;

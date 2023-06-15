@@ -11,17 +11,24 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)_iconApplicationIdentifierForApplicationIdentifier:(id)arg1;
++ (id)_systemImageNamed:(id)arg1;
 + (id)_iconForPasswordProviderBundleIdentifier:(id)arg1;
 + (id)_keychainIcon;
 + (id)_providerIconForPasswordLoginChoice:(id)arg1;
 + (id)_imageForIcon:(id)arg1 size:(struct CGSize)arg2;
 + (id)_iconForData:(id)arg1 scale:(double)arg2 size:(struct CGSize)arg3;
-+ (id)_iconForApplicationIdentifier:(id)arg1 size:(struct CGSize)arg2;
 + (id)_iconForPresentationContext:(id)arg1 size:(struct CGSize)arg2;
++ (id)passwordManagerIconWithSize:(struct CGSize)arg1;
++ (id)iconForApplicationIdentifier:(id)arg1 size:(struct CGSize)arg2;
++ (id)_systemBiometricsIconForPresentationContext:(id)arg1;
++ (id)alternativeSecurityKeysIcon;
++ (id)systemSecurityKeysIcon;
++ (id)systemPasswordIcon;
++ (id)systemPasskeyIcon;
 + (id)iconForPublicKeyCredentialLoginChoiceWithPresentationContext:(id)arg1;
 + (id)passwordManagerIcon;
 + (id)iconForPasswordLoginChoice:(id)arg1 presentationContext:(id)arg2;
++ (id)headerIconForPresentationContext:(id)arg1 outIconStyle:(long long *)arg2;
 + (id)headerIconForPresentationContext:(id)arg1;
 
 @end

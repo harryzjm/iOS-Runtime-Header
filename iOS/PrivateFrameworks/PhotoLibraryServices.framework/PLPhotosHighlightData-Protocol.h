@@ -13,6 +13,9 @@
 
 @protocol PLPhotosHighlightData <PLMomentRefreshable, PLHighlightItem, PLSharedAssetsContainer>
 + (NSArray *)sortByTimeSortDescriptors;
+@property(retain, nonatomic) NSSet *adaptiveSummaryAssets;
+@property(retain, nonatomic) NSSet *adaptiveExtendedAssets;
+@property(retain, nonatomic) NSSet *adaptiveAssets;
 @property(retain, nonatomic) NSSet *dayGroupSummaryAssets;
 @property(retain, nonatomic) NSSet *dayGroupExtendedAssets;
 @property(retain, nonatomic) NSSet *dayGroupAssets;
@@ -35,6 +38,7 @@
 @property(readonly, retain, nonatomic) NSSet *dayGroupAssetsPrivate;
 @property(readonly, retain, nonatomic) NSSet *extendedAssetsPrivate;
 @property(readonly, retain, nonatomic) NSSet *summaryAssetsPrivate;
+@property(readonly, retain, nonatomic) NSSet *adaptiveAssetsPrivate;
 @property(readonly, retain, nonatomic) NSSet *assetsPrivate;
 @property(nonatomic) unsigned short mixedSharingCompositionKeyAssetRelationship;
 @property(retain, nonatomic) id <PLMomentAssetData> keyAssetForKindShared;

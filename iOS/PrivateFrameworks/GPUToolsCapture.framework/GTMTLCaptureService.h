@@ -6,26 +6,35 @@
 
 #import <objc/NSObject.h>
 
-@class CaptureMTLCaptureDescriptor, GTCaptureDescriptor, NSURL;
-@protocol GTMTLCaptureServiceDelegate, OS_dispatch_semaphore;
+@class GTCaptureDescriptor, MTLCaptureDescriptorInternal, NSMutableDictionary, NSURL;
+@protocol OS_dispatch_queue, OS_dispatch_semaphore, OS_dispatch_source, OS_os_log;
 
-__attribute__((visibility("hidden")))
 @interface GTMTLCaptureService : NSObject
 {
-    GTCaptureDescriptor *_currentDescriptor;
+    NSObject<OS_os_log> *_log;
     NSURL *_currentCaptureURL;
-    CaptureMTLCaptureDescriptor *_activeCaptureDesc;
+    MTLCaptureDescriptorInternal *_activeCaptureDesc;
     NSObject<OS_dispatch_semaphore> *_interposeSemaphore;
-    struct GTMTLGuestAppClient *_guestApp;
-    id <GTMTLCaptureServiceDelegate> _delegate;
+    NSMutableDictionary *_observerIdToObserver;
+    unsigned long long _nextObserverId;
+    NSObject<OS_dispatch_queue> *_queue;
+    NSObject<OS_dispatch_source> *_timer;
+    GTCaptureDescriptor *_captureRequest;
+    NSObject<OS_dispatch_queue> *_serialQueue;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) __weak id <GTMTLCaptureServiceDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)notifyCaptureRequest:(id)arg1;
+- (void)notifyUnsupportedFenum:(id)arg1;
+- (void)notifyCaptureProgress:(id)arg1;
+- (void)notifyCaptureObjectsChanged:(id)arg1;
+- (id)query:(id)arg1;
+- (id)update:(id)arg1;
+- (id)startWithDescriptor:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)deregisterObserver:(unsigned long long)arg1;
+- (_Bool)hasObservers;
+- (unsigned long long)registerObserver:(id)arg1;
 - (void)stop;
-- (id)allCaptureObjects;
-- (void)startWithCompletedHandler:(CDUnknownBlockType)arg1;
-- (void)setupWithDescriptor:(id)arg1;
 - (void)waitForInterposeSignal;
 - (void)signalInterposeSemaphore;
 - (id)initWithGuestApp:(struct GTMTLGuestAppClient *)arg1;

@@ -15,5 +15,6 @@
 - (id)px_mutatedPhotosGraphPropertiesWithRejectReason:(unsigned long long)arg1;
 - (id)px_photosGraphDataByMutatingPropertiesUsingBlock:(CDUnknownBlockType)arg1 error:(id *)arg2;
 - (_Bool)px_shouldUseFacesRectForSmartCropping;
+- (id)px_navigationURLHost;
 @end
 

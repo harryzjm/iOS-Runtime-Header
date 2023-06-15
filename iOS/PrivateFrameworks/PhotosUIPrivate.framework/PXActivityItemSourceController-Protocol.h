@@ -18,12 +18,14 @@
 @property(readonly, nonatomic) _Bool momentSharePublishAttempted;
 @property(retain, nonatomic) PHPerson *person;
 @property(readonly, copy, nonatomic) NSOrderedSet *assets;
-@property(readonly, nonatomic) _Bool shouldShareAsOriginals;
+@property(readonly, nonatomic) _Bool shouldShareAsAssetBundles;
 @property(readonly, nonatomic) _Bool shouldExcludeAccessibilityDescriptionInAllItemSources;
 @property(readonly, nonatomic) _Bool shouldExcludeCaptionInAllItemSources;
 @property(readonly, nonatomic) _Bool shouldExcludeLocationInAllItemSources;
 @property(readonly, nonatomic) _Bool shouldExcludeLivenessInAllItemSources;
 @property(readonly, nonatomic) _Bool shouldUseMomentShareLinkInMessagesIfThresholdMet;
+@property(readonly, nonatomic) long long preferredExportFormat;
+@property(readonly, nonatomic) _Bool shouldShareAsUnmodifiedOriginals;
 @property(nonatomic) unsigned long long preferredPreparationType;
 @property(readonly, copy, nonatomic) NSOrderedSet *assetItemSources;
 @property(nonatomic) __weak UIActivityViewController<PXActivityViewController> *activityViewController;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class MISSING_TYPE;
 
@@ -18,7 +18,8 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *padding;
     MISSING_TYPE *titleDividerSpacing;
     MISSING_TYPE *$__lazy_storage_$_separatorView;
-    MISSING_TYPE *$__lazy_storage_$_titleVibrancyEffect;
+    MISSING_TYPE *$__lazy_storage_$_backgroundEffectManagerVibrancy;
+    MISSING_TYPE *$__lazy_storage_$_backdropLayerVibrancy;
     MISSING_TYPE *$__lazy_storage_$_titleVibrancyEffectView;
     MISSING_TYPE *titleLabel;
     MISSING_TYPE *subtitleLabel;

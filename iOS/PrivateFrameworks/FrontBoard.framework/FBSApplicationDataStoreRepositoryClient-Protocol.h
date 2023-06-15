@@ -6,12 +6,13 @@
 
 #import <FrontBoard/NSObject-Protocol.h>
 
-@class NSArray, NSString;
+@class NSArray, NSError, NSString;
 @protocol FBSApplicationDataStoreRepositoryClientObserver;
 
 @protocol FBSApplicationDataStoreRepositoryClient <NSObject>
 - (void)removeObserver:(id <FBSApplicationDataStoreRepositoryClientObserver>)arg1;
 - (void)addObserver:(id <FBSApplicationDataStoreRepositoryClientObserver>)arg1;
+- (NSError *)migrateIdentifier:(NSString *)arg1 toIdentifier:(NSString *)arg2;
 - (_Bool)prefetchedObjectIfAvailableForKey:(NSString *)arg1 application:(NSString *)arg2 outObject:(id *)arg3;
 - (void)removeAllObjectsForApplication:(NSString *)arg1 withCompletion:(void (^)(NSError *))arg2;
 - (void)removeObjectForKey:(NSString *)arg1 forApplication:(NSString *)arg2 withCompletion:(void (^)(NSError *))arg3;

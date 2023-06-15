@@ -37,7 +37,7 @@ __attribute__((visibility("hidden")))
 
 @property(nonatomic) _Bool spatialAudioDisabled; // @synthesize spatialAudioDisabled=_spatialAudioDisabled;
 @property(readonly, nonatomic) unsigned long long spatialToken; // @synthesize spatialToken=_spatialToken;
-@property(readonly, nonatomic) unsigned int channelIndex; // @synthesize channelIndex=_channelIndex;
+@property(nonatomic) unsigned int channelIndex; // @synthesize channelIndex=_channelIndex;
 @property(readonly, nonatomic) _Bool isPrewarmingClient; // @synthesize isPrewarmingClient=_isPrewarmingClient;
 @property(readonly, nonatomic) unsigned int audioSessionId; // @synthesize audioSessionId=_audioSessionId;
 @property(nonatomic) unsigned char direction; // @synthesize direction=_direction;
@@ -52,6 +52,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) int operatingMode; // @synthesize operatingMode=_operatingMode;
 @property(nonatomic) _Bool allowAudioRecording; // @synthesize allowAudioRecording=_allowAudioRecording;
 @property(nonatomic) int deviceRole; // @synthesize deviceRole=_deviceRole;
+@property(nonatomic) _Bool isMediaPriorityEnabled;
+@property(nonatomic) _Bool isVoiceActivityEnabled;
 @property(readonly, nonatomic) id <VCAudioIOControllerDelegate> delegate;
 @property(nonatomic) const struct tagVCAudioFrameFormat *controllerFormat;
 @property(readonly, nonatomic) const struct tagVCAudioFrameFormat *clientFormat;
@@ -62,7 +64,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) struct _VCAudioIOControllerClientIO *sourceIO;
 - (id)description;
 - (void)dealloc;
-- (id)initWithDelegate:(id)arg1 audioSessionId:(unsigned int)arg2 channelIndex:(unsigned int)arg3 sourceContext:(void *)arg4 sourceProcess:(CDUnknownFunctionPointerType)arg5 sinkContext:(void *)arg6 sinkProcess:(CDUnknownFunctionPointerType)arg7 clientPid:(int)arg8 isPrewarmingClient:(_Bool)arg9 spatialToken:(unsigned long long)arg10;
+- (id)initWithDelegate:(id)arg1 audioSessionId:(unsigned int)arg2 channelIndex:(unsigned int)arg3 sourceContext:(void *)arg4 sourceProcess:(CDUnknownFunctionPointerType)arg5 sinkContext:(void *)arg6 sinkProcess:(CDUnknownFunctionPointerType)arg7 clientPid:(int)arg8 isPrewarmingClient:(_Bool)arg9 spatialToken:(unsigned long long)arg10 isVoiceActivityEnabled:(_Bool)arg11 isMediaPriorityEnabled:(_Bool)arg12;
 
 @end
 

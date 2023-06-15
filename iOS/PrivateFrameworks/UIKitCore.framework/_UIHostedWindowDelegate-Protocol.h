@@ -4,10 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UICalloutBar, UIResponder, _UIHostedWindow;
+@class UIResponder, _UIHostedWindow;
 
 @protocol _UIHostedWindowDelegate
-- (void)hostedWindow:(_UIHostedWindow *)arg1 didSetResponderTargetForCalloutBar:(UICalloutBar *)arg2;
 - (void)hostedWindow:(_UIHostedWindow *)arg1 didSetFirstResponder:(UIResponder *)arg2;
 @end
 

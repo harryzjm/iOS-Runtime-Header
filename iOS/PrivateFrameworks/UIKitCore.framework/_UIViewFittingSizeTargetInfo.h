@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface _UIViewFittingSizeTargetInfo : NSObject <NSCopying>
+@interface _UIViewFittingSizeTargetInfo : NSObject
 {
     _Bool _dummy;
     float _horizontalPriority;
@@ -17,16 +15,11 @@ __attribute__((visibility("hidden")))
     struct CGSize _targetSize;
 }
 
-@property(nonatomic, getter=isDummy) _Bool dummy; // @synthesize dummy=_dummy;
-@property(readonly, nonatomic) float verticalPriority; // @synthesize verticalPriority=_verticalPriority;
-@property(readonly, nonatomic) float horizontalPriority; // @synthesize horizontalPriority=_horizontalPriority;
-@property(readonly, nonatomic) struct CGSize targetSize; // @synthesize targetSize=_targetSize;
 - (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (_Bool)isEqualToTargetInfo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithTargetSize:(struct CGSize)arg1 horizontalPriority:(float)arg2 verticalPriority:(float)arg3;
 
 @end
 

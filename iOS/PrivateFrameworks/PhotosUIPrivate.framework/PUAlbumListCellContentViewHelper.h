@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, PHImageRequestOptions, PUAlbumListCellContentViewHelperConfiguration, PUFontManager, PXAssetBadgeManager, PXCollectionTileLayoutTemplate, PXExtendedTraitCollection, PXFeatureSpec, PXFeatureSpecManager, PXPhotoKitCollectionsDataSourceManager, PXUIMediaProvider, UIImage;
+@class NSString, PUAlbumListCellContentViewHelperConfiguration, PUFontManager, PXAssetBadgeManager, PXCollectionTileLayoutTemplate, PXExtendedTraitCollection, PXFeatureSpec, PXFeatureSpecManager, PXImageRequestOptions, PXPhotoKitCollectionsDataSourceManager, PXUIMediaProvider, UIImage;
 
 __attribute__((visibility("hidden")))
 @interface PUAlbumListCellContentViewHelper : NSObject
@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
     UIImage *_emptyPeopleAlbumPlaceholderImage;
     UIImage *_emptyAlbumPlaceholderImage;
     UIImage *_emptySharedAlbumPlaceholderImage;
-    PHImageRequestOptions *_imageRequestOptions;
+    PXImageRequestOptions *_imageRequestOptions;
     PXFeatureSpecManager *_featureSpecManager;
     PXFeatureSpec *_featureSpec;
     PXAssetBadgeManager *_badgeManager;
@@ -33,25 +33,25 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) PXAssetBadgeManager *badgeManager; // @synthesize badgeManager=_badgeManager;
 @property(retain, nonatomic) PXFeatureSpec *featureSpec; // @synthesize featureSpec=_featureSpec;
 @property(retain, nonatomic) PXFeatureSpecManager *featureSpecManager; // @synthesize featureSpecManager=_featureSpecManager;
-@property(retain, nonatomic) PHImageRequestOptions *imageRequestOptions; // @synthesize imageRequestOptions=_imageRequestOptions;
+@property(retain, nonatomic) PXImageRequestOptions *imageRequestOptions; // @synthesize imageRequestOptions=_imageRequestOptions;
 @property(retain, nonatomic) UIImage *emptySharedAlbumPlaceholderImage; // @synthesize emptySharedAlbumPlaceholderImage=_emptySharedAlbumPlaceholderImage;
 @property(retain, nonatomic) UIImage *emptyAlbumPlaceholderImage; // @synthesize emptyAlbumPlaceholderImage=_emptyAlbumPlaceholderImage;
 @property(retain, nonatomic) UIImage *emptyPeopleAlbumPlaceholderImage; // @synthesize emptyPeopleAlbumPlaceholderImage=_emptyPeopleAlbumPlaceholderImage;
-@property(nonatomic) struct CGSize albumCellSize; // @synthesize albumCellSize=_albumCellSize;
 @property(retain, nonatomic) PUFontManager *fontManager; // @synthesize fontManager=_fontManager;
 @property(readonly, nonatomic) PXUIMediaProvider *mediaProvider; // @synthesize mediaProvider=_mediaProvider;
 @property(readonly, nonatomic) PXPhotoKitCollectionsDataSourceManager *dataSourceManager; // @synthesize dataSourceManager=_dataSourceManager;
 @property(readonly, nonatomic) PUAlbumListCellContentViewHelperConfiguration *configuration; // @synthesize configuration=_configuration;
 @property(readonly, nonatomic) struct UIEdgeInsets previewInsets; // @synthesize previewInsets=_previewInsets;
+@property(nonatomic) struct CGSize albumCellSize; // @synthesize albumCellSize=_albumCellSize;
 @property(readonly, nonatomic) PXExtendedTraitCollection *traitCollection; // @synthesize traitCollection=_traitCollection;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
-- (id)_getDisplayableAssetsForStandInCollectionList:(id)arg1 maximumCount:(long long)arg2 useCache:(_Bool)arg3 correspondingCollections:(out id *)arg4;
+- (id)_getDisplayableAssetsForFolder:(id)arg1 maximumCount:(long long)arg2 useCache:(_Bool)arg3 correspondingCollections:(out id *)arg4;
 - (void)_getDisplayableAssets:(id *)arg1 indexes:(id *)arg2 forCollection:(id)arg3 maximumCount:(long long)arg4 useCache:(_Bool)arg5;
 - (id)_getDisplayableFacesForCollectionList:(id)arg1 maximumCount:(long long)arg2;
 - (id)subtitleForCollection:(id)arg1;
 - (void)_prepareStackView:(id)arg1 forCollection:(id)arg2 withStackCount:(long long)arg3 withCustomEmptyPlaceHolderImage:(id)arg4;
 - (void)_prepareStackView:(id)arg1 forCollection:(id)arg2 withStackCount:(long long)arg3;
-- (void)_updateAlbumListCellContentViewForPeopleAlbum:(id)arg1;
+- (void)_updateAlbumListCellContentViewForPeopleAlbum:(id)arg1 sharedLibraryStatusProvider:(id)arg2;
 - (void)_updateAlbumListCellContentViewForPlacesAlbum:(id)arg1;
 - (void)_updateStackView:(id)arg1 forAssets:(id)arg2 collection:(id)arg3 withCustomEmptyPlaceholderImage:(id)arg4;
 - (void)_updateStackView:(id)arg1 forFaces:(id)arg2 inCollection:(id)arg3 withCustomEmptyPlaceholderImage:(id)arg4;

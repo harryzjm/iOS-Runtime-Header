@@ -6,13 +6,17 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
+@class MISSING_TYPE;
+
 @interface _TtC9AACClient18AECNoOpPolicyStore : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *hasPersistentData;
 }
 
 - (_Bool)removeAllScratchpadsWithError:(id *)arg1;
 - (id)readOnlyScratchpadForIdentifier:(id)arg1;
 - (id)writeOnlyScratchpadForIdentifier:(id)arg1;
+@property(nonatomic, readonly) _Bool hasPersistentData; // @synthesize hasPersistentData;
 
 @end
 

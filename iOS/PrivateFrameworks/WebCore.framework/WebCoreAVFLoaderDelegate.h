@@ -11,7 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface WebCoreAVFLoaderDelegate : NSObject
 {
-    struct WeakPtr<WebCore::MediaPlayerPrivateAVFoundationObjC, WTF::EmptyCounter> m_player;
+    struct WeakPtr<WebCore::MediaPlayerPrivateAVFoundationObjC, WTF::DefaultWeakPtrImpl> m_player;
 }
 
 - (id).cxx_construct;

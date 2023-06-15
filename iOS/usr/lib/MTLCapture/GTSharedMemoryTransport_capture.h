@@ -6,7 +6,6 @@
 
 @class GTBaseStreamTransport_capture, NSMutableArray, NSURL;
 
-__attribute__((visibility("hidden")))
 @interface GTSharedMemoryTransport_capture
 {
     void *_outgoingShmem;

@@ -24,6 +24,7 @@
 @property(readonly, nonatomic) struct CGSize size;
 - (_Bool)px_isRecommendationSeenForVariationType:(long long)arg1;
 - (_Bool)px_isVariationTypeRecommended:(long long)arg1;
+- (id)px_coreDataBrowserURL;
 - (id)_userFeedbackScoreInfo;
 - (id)_imageProcessingFlags;
 @property(readonly, nonatomic) _Bool px_shotWithNightMode;
@@ -39,11 +40,13 @@
 @property(readonly, nonatomic) NSString *px_exportFilename;
 @property(readonly, nonatomic) NSAttributedString *px_curationDebugString;
 - (id)px_slHighlightWithError:(id *)arg1;
+@property(readonly, nonatomic) _Bool px_canLoadSyndicationAttributionInfo;
 @property(readonly, nonatomic) _Bool px_wasSavedThroughExternalApp;
 @property(readonly, nonatomic) _Bool px_wasSavedThroughSyndication;
 @property(readonly, nonatomic) _Bool px_isUnsavedSyndicatedAsset;
 @property(readonly, nonatomic) _Bool px_isSyndicatedAsset;
 @property(readonly, nonatomic) _Bool px_isSyndicationPhotoLibraryAsset;
+@property(readonly, nonatomic) _Bool px_isMomentSharedAsset;
 @property(readonly, nonatomic) long long px_currentVariationType;
 - (id)px_singleLineMailingAddress;
 @property(readonly, copy, nonatomic) NSString *px_adjustmentUuid;
@@ -54,6 +57,7 @@
 @property(readonly, nonatomic) _Bool isAutoPlaybackEligibilityEstimated;
 @property(readonly, nonatomic) NSDate *importDate;
 - (struct CGRect)bestCropRectForAspectRatioV2:(double)arg1 verticalContentMode:(long long)arg2 cropMode:(long long)arg3;
+- (void)enumerateCropVariantsForTargetSize:(struct CGSize)arg1 UsingBlock:(CDUnknownBlockType)arg2;
 - (struct CGRect)bestCropRectForAspectRatio:(double)arg1 verticalContentMode:(long long)arg2 cropMode:(long long)arg3;
 - (struct CGRect)bestCropRectForAspectRatio:(double)arg1;
 @property(readonly, nonatomic) unsigned long long thumbnailVersion;
@@ -81,6 +85,7 @@
 @property(readonly, nonatomic) _Bool px_isSelfie;
 @property(readonly, nonatomic) _Bool px_isPanorama;
 @property(readonly, nonatomic) _Bool px_representsBurst;
+@property(readonly, nonatomic) _Bool px_isActionModeVideo;
 @property(readonly, nonatomic) _Bool px_isDepthEffect;
 @property(readonly, nonatomic) _Bool px_isLivePhoto;
 - (_Bool)ipx_isRAWOnTop;
@@ -164,7 +169,7 @@
 @property(readonly, nonatomic) unsigned long long pixelHeight;
 @property(readonly, nonatomic) unsigned long long pixelWidth;
 @property(readonly, nonatomic) long long playbackStyle;
-@property(readonly, nonatomic) long long playbackVariation;
+@property(readonly, nonatomic) unsigned short playbackVariation;
 @property(readonly, nonatomic) struct CGRect preferredCropRect;
 @property(readonly, nonatomic) _Bool representsBurst;
 @property(readonly) Class superclass;

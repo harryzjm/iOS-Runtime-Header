@@ -4,21 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, UITraitCollection;
+@class NSNumber, NSString, UITraitCollection;
 
 __attribute__((visibility("hidden")))
 @interface AMSUISystemImageFetchOperation
 {
     NSString *_imageName;
     UITraitCollection *_traitCollection;
+    NSNumber *_variableValue;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSNumber *variableValue; // @synthesize variableValue=_variableValue;
 @property(retain, nonatomic) UITraitCollection *traitCollection; // @synthesize traitCollection=_traitCollection;
 @property(retain, nonatomic) NSString *imageName; // @synthesize imageName=_imageName;
 - (void)main;
 - (_Bool)isLowLatency;
-- (id)initWithSystemImageName:(id)arg1 compatibleWithTraitCollection:(id)arg2;
+- (id)initWithSystemImageName:(id)arg1 variableValue:(id)arg2 compatibleWithTraitCollection:(id)arg3;
 
 @end
 

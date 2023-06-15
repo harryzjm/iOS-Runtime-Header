@@ -66,6 +66,7 @@ __attribute__((visibility("hidden")))
 - (id)defaultActionTargetApplicationBundleIdentifier;
 - (id)localizedDefaultActionDescription;
 - (id)localizedDefaultActionTitle;
+- (_Bool)isAirplayPairingAction;
 - (_Bool)shouldRequireUserToPickTargetApp;
 - (id)url;
 - (id)urlThatCanBeOpened;

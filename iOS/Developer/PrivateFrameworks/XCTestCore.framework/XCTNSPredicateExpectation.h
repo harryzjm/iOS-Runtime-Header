@@ -9,7 +9,6 @@
 
 @interface XCTNSPredicateExpectation
 {
-    _Bool _hasCleanedUp;
     _Bool _isEvaluating;
     _Bool _shouldEvaluate;
     CDUnknownBlockType _handler;
@@ -27,23 +26,21 @@
 @property double pollingInterval; // @synthesize pollingInterval=_pollingInterval;
 @property _Bool shouldEvaluate; // @synthesize shouldEvaluate=_shouldEvaluate;
 @property _Bool isEvaluating; // @synthesize isEvaluating=_isEvaluating;
-@property _Bool hasCleanedUp; // @synthesize hasCleanedUp=_hasCleanedUp;
 @property(retain) NSTimer *timer; // @synthesize timer=_timer;
 @property(retain) NSRunLoop *timerRunLoop; // @synthesize timerRunLoop=_timerRunLoop;
 @property(readonly) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(readonly) id object; // @synthesize object=_object;
 @property(readonly, copy) NSPredicate *predicate; // @synthesize predicate=_predicate;
 @property(copy) NSString *debugDescription; // @synthesize debugDescription=_debugDescription;
-- (void)cleanup;
+- (void)cleanup:(_Bool)arg1;
 - (void)fulfill;
 - (_Bool)_shouldFulfillForObject:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_considerFulfilling;
 @property(copy) CDUnknownBlockType handler; // @synthesize handler=_handler;
 - (void)_scheduleTimer;
 - (void)startPolling;
-- (void)on_queue_setHasBeenWaitedOn:(_Bool)arg1;
+- (void)setHasBeenWaitedOn:(_Bool)arg1;
 - (id)initWithPredicate:(id)arg1 object:(id)arg2;
-- (void)dealloc;
 
 // Remaining properties
 @property(nonatomic) unsigned long long expectedFulfillmentCount; // @dynamic expectedFulfillmentCount;

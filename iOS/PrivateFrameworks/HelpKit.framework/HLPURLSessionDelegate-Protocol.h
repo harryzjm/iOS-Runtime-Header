@@ -6,13 +6,14 @@
 
 #import <HelpKit/NSObject-Protocol.h>
 
-@class HLPURLSessionTask, NSCachedURLResponse, NSError, NSURL, NSURLAuthenticationChallenge, NSURLResponse;
+@class HLPURLSessionTask, NSCachedURLResponse, NSError, NSHTTPURLResponse, NSURL, NSURLAuthenticationChallenge, NSURLRequest, NSURLResponse;
 
 @protocol HLPURLSessionDelegate <NSObject>
 
 @optional
 - (void)sessionTask:(HLPURLSessionTask *)arg1 didReceiveResponse:(NSURLResponse *)arg2 completionHandler:(void (^)(long long, _Bool))arg3;
 - (void)sessionTask:(HLPURLSessionTask *)arg1 didFinishDownloadingToURL:(NSURL *)arg2;
+- (void)sessionTask:(HLPURLSessionTask *)arg1 willPerformHTTPRedirection:(NSHTTPURLResponse *)arg2 newRequest:(NSURLRequest *)arg3 completionHandler:(void (^)(NSURLRequest *))arg4;
 - (void)sessionTask:(HLPURLSessionTask *)arg1 willCacheResponse:(NSCachedURLResponse *)arg2 completionHandler:(void (^)(NSCachedURLResponse *))arg3;
 - (void)sessionTask:(HLPURLSessionTask *)arg1 didCompleteWithError:(NSError *)arg2;
 - (void)sessionTask:(HLPURLSessionTask *)arg1 didReceiveChallenge:(NSURLAuthenticationChallenge *)arg2 completionHandler:(void (^)(long long, NSURLCredential *))arg3;

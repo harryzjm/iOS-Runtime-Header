@@ -35,7 +35,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak UICalendarView *calendarView; // @synthesize calendarView=_calendarView;
 - (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
 - (void)_updateForPreferredContentSizeCategoryChange;
-- (void)traitCollectionDidChange:(id)arg1;
 - (void)_updateFontDesign;
 - (void)_updateBackgroundView;
 - (void)_updateLabelColor;

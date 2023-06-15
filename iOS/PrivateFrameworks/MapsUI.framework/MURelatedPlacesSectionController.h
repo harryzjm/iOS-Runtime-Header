@@ -6,24 +6,31 @@
 
 #import "MUPlaceSectionController.h"
 
-@class GEORelatedPlaceList, GEORelatedPlaceModuleConfiguration, MKUGCCallToActionViewAppearance, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, MUPlaceSectionView, MUPlaceTilesListView, MUPlaceTilesView, MURelatedPlaceSectionControllerConfiguration, NSArray, NSString, UIView, UIViewController;
+@class GEORelatedPlaceList, GEORelatedPlaceModuleConfiguration, MUPlaceCallToActionAppearance, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, MUPlaceSectionView, MUPlaceTilesListView, MUPlaceTilesView, MURelatedPlaceSectionControllerConfiguration, NSArray, NSString, UIView, UIViewController;
 @protocol MKMapServiceTicket, MUInfoCardAnalyticsDelegate, MURelatedPlacesSectionControllerDelegate;
 
 __attribute__((visibility("hidden")))
 @interface MURelatedPlacesSectionController : MUPlaceSectionController
 {
     id <MKMapServiceTicket> _ticket;
+    id <MKMapServiceTicket> _nearbyPlacesTicket;
     NSArray *_mapItemList;
     MUPlaceSectionView *_sectionView;
     MURelatedPlaceSectionControllerConfiguration *_configuration;
     MUPlaceTilesView *_tilesView;
     MUPlaceTilesListView *_listView;
     _Bool _active;
+    _Bool _isFollowUpRequestInProgress;
+    _Bool _hasFetchedFollowUpRequest;
     MUPlaceSectionHeaderViewModel *_sectionHeaderViewModel;
     id <MURelatedPlacesSectionControllerDelegate> _relatedPlacesDelegate;
+    GEORelatedPlaceList *_relatedPlaceListFromFollowUpRequest;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool hasFetchedFollowUpRequest; // @synthesize hasFetchedFollowUpRequest=_hasFetchedFollowUpRequest;
+@property(nonatomic) _Bool isFollowUpRequestInProgress; // @synthesize isFollowUpRequestInProgress=_isFollowUpRequestInProgress;
+@property(retain, nonatomic) GEORelatedPlaceList *relatedPlaceListFromFollowUpRequest; // @synthesize relatedPlaceListFromFollowUpRequest=_relatedPlaceListFromFollowUpRequest;
 @property(nonatomic) __weak id <MURelatedPlacesSectionControllerDelegate> relatedPlacesDelegate; // @synthesize relatedPlacesDelegate=_relatedPlacesDelegate;
 @property(nonatomic, getter=isActive) _Bool active; // @synthesize active=_active;
 - (_Bool)isImpressionable;
@@ -34,24 +41,28 @@ __attribute__((visibility("hidden")))
 - (void)_seeAllTapped;
 @property(readonly, nonatomic) _Bool needsToPerformRefinement;
 @property(readonly, nonatomic) GEORelatedPlaceModuleConfiguration *moduleConfig;
-@property(readonly, nonatomic) GEORelatedPlaceList *relatedPlaceList;
+@property(readonly, nonatomic) GEORelatedPlaceList *effectiveRelatedPlaceList;
 - (void)placeTileCollectionView:(id)arg1 didTapOnAccessoryViewModel:(id)arg2;
+- (void)_cancelFollowUpRequestIfNeeded;
 - (void)_cancelPlaceRefinementIfNeeded;
+- (void)_refineHikingTrailListWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_refineRelatedPlaceListWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_notifyDelegateOfSelectedMapItem:(id)arg1;
 - (void)_refinePlaceAndNotifyDelegate:(id)arg1;
 - (void)_handleViewModel:(id)arg1;
 - (void)placeTilesListView:(id)arg1 didSelectViewModel:(id)arg2;
 - (void)placeTileCollectionView:(id)arg1 didTapOnViewModel:(id)arg2;
-- (void)placeTileCollectionViewDidScroll:(id)arg1;
 @property(readonly, nonatomic) MUPlaceSectionHeaderViewModel *sectionHeaderViewModel; // @synthesize sectionHeaderViewModel=_sectionHeaderViewModel;
 @property(readonly, nonatomic) UIView *sectionView;
 @property(readonly, nonatomic) _Bool hasContent;
+- (void)performNearbyPlacesFollowUpRequest;
 - (void)_displayTilesForViewModels:(id)arg1;
 - (void)_updateSection;
 @property(readonly, nonatomic, getter=isVertical) _Bool vertical;
+- (void)_updateWithListFromFollowUpRequest:(id)arg1;
 - (void)_buildInitialContent;
 - (void)_setupSectionView;
+- (unsigned long long)numInlineItems;
 - (id)initWithMapItem:(id)arg1 configuration:(id)arg2;
 
 // Remaining properties
@@ -62,7 +73,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) MUPlaceSectionFooterViewModel *sectionFooterViewModel;
 @property(readonly, nonatomic) UIViewController *sectionViewController;
 @property(readonly, nonatomic) NSArray *sectionViews;
-@property(retain, nonatomic) MKUGCCallToActionViewAppearance *submissionStatus;
+@property(retain, nonatomic) MUPlaceCallToActionAppearance *submissionStatus;
 @property(readonly) Class superclass;
 
 @end

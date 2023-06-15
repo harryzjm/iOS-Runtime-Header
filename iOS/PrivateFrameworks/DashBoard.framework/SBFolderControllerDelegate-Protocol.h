@@ -5,26 +5,17 @@
 //
 
 #import <DashBoard/NSObject-Protocol.h>
+#import <DashBoard/SBFolderControllerDragDelegate-Protocol.h>
 
-@class SBFolder, SBFolderController, SBFolderControllerConfiguration, SBHomeScreenIconTransitionAnimator, SBIconAnimator, SBIconListView, SBIconView, SBNestingViewController, UIColor, UIDragItem, UIDropProposal, UIPinchGestureRecognizer, UIStatusBar, UIStatusBarStyleRequest, UITargetedDragPreview, UITextField;
-@protocol BSInvalidatable, UIDragAnimating, UIDropSession, UIViewSpringAnimationBehaviorDescribing;
+@class SBFolder, SBFolderController, SBFolderControllerConfiguration, SBHomeScreenIconTransitionAnimator, SBIconAnimator, SBNestingViewController, UIColor, UIPinchGestureRecognizer, UIStatusBar, UIStatusBarStyleRequest, UITextField;
+@protocol BSInvalidatable, SBFolderControllerDragDelegate;
 
-@protocol SBFolderControllerDelegate <NSObject>
-- (id <UIViewSpringAnimationBehaviorDescribing>)folderController:(SBFolderController *)arg1 iconListView:(SBIconListView *)arg2 customSpringAnimationBehaviorForDroppingItem:(UIDragItem *)arg3;
-- (void)folderController:(SBFolderController *)arg1 iconListView:(SBIconListView *)arg2 springLoadedInteractionForIconDragDidCompleteOnIconView:(SBIconView *)arg3;
-- (_Bool)folderController:(SBFolderController *)arg1 iconListView:(SBIconListView *)arg2 shouldAllowSpringLoadedInteractionForIconDropSession:(id <UIDropSession>)arg3 onIconView:(SBIconView *)arg4;
-- (void)folderController:(SBFolderController *)arg1 iconListView:(SBIconListView *)arg2 performIconDrop:(id <UIDropSession>)arg3;
-- (void)folderController:(SBFolderController *)arg1 iconListView:(SBIconListView *)arg2 iconDropSessionDidExit:(id <UIDropSession>)arg3;
-- (void)folderController:(SBFolderController *)arg1 iconListView:(SBIconListView *)arg2 iconDropSession:(id <UIDropSession>)arg3 didPauseAtLocation:(struct CGPoint)arg4;
-- (UIDropProposal *)folderController:(SBFolderController *)arg1 iconListView:(SBIconListView *)arg2 iconDropSessionDidUpdate:(id <UIDropSession>)arg3;
-- (void)folderController:(SBFolderController *)arg1 iconListView:(SBIconListView *)arg2 iconDropSessionDidEnter:(id <UIDropSession>)arg3;
-- (_Bool)folderController:(SBFolderController *)arg1 iconListView:(SBIconListView *)arg2 canHandleIconDropSession:(id <UIDropSession>)arg3;
+@protocol SBFolderControllerDelegate <SBFolderControllerDragDelegate, NSObject>
 - (void)folderControllerDidEndScrolling:(SBFolderController *)arg1;
 - (void)folderControllerWillBeginScrolling:(SBFolderController *)arg1;
 - (void)folderControllerShouldEndEditing:(SBFolderController *)arg1;
 - (void)folderControllerShouldBeginEditing:(SBFolderController *)arg1 withHaptic:(_Bool)arg2;
 - (_Bool)folderControllerShouldClose:(SBFolderController *)arg1 withPinchGesture:(UIPinchGestureRecognizer *)arg2;
-- (void)folderController:(SBFolderController *)arg1 draggedIconShouldDropFromListView:(SBIconListView *)arg2;
 - (_Bool)folderController:(SBFolderController *)arg1 canChangeCurrentPageIndexToIndex:(long long)arg2;
 - (Class)controllerClassForFolder:(SBFolder *)arg1;
 
@@ -46,9 +37,6 @@
 - (void)folderControllerDidOpen:(SBFolderController *)arg1;
 - (void)folderControllerWillOpen:(SBFolderController *)arg1;
 - (double)minimumHomeScreenScaleForFolderController:(SBFolderController *)arg1;
-- (void)folderController:(SBFolderController *)arg1 iconListView:(SBIconListView *)arg2 iconDragItem:(UIDragItem *)arg3 willAnimateDropWithAnimator:(id <UIDragAnimating>)arg4;
-- (UITargetedDragPreview *)folderController:(SBFolderController *)arg1 iconListView:(SBIconListView *)arg2 previewForDroppingIconDragItem:(UIDragItem *)arg3 proposedPreview:(UITargetedDragPreview *)arg4;
-- (void)folderController:(SBFolderController *)arg1 iconListView:(SBIconListView *)arg2 willUseIconView:(SBIconView *)arg3 forDroppingIconDragItem:(UIDragItem *)arg4;
-- (SBIconView *)folderController:(SBFolderController *)arg1 iconListView:(SBIconListView *)arg2 iconViewForDroppingIconDragItem:(UIDragItem *)arg3 proposedIconView:(SBIconView *)arg4;
+- (id <SBFolderControllerDragDelegate>)draggingDelegateForFolderController:(SBFolderController *)arg1;
 @end
 

@@ -17,12 +17,14 @@
     MISSING_TYPE *dateProvider;
     MISSING_TYPE *experienceType;
     MISSING_TYPE *fitnessModeObserver;
+    MISSING_TYPE *legacyWeeklySummaryProvider;
     MISSING_TYPE *localizer;
     MISSING_TYPE *platform;
     MISSING_TYPE *weeklyGoalProvider;
-    MISSING_TYPE *weeklySummaryProvider;
+    MISSING_TYPE *weeklySummaryInfoProvider;
     MISSING_TYPE *wheelchairUse;
     MISSING_TYPE *workoutProvider;
+    MISSING_TYPE *workoutSummationProvider;
 }
 
 @end

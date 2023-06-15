@@ -16,11 +16,11 @@
 - (id)bu_arrayByRemovingNSNulls;
 - (id)bu_arrayByRemovingNSNullsInvokingBlockForNulls:(CDUnknownBlockType)arg1;
 - (CDUnknownBlockType)bu_sortDescriptorComparator;
-- (id)arrayOfObjectsWithOptions:(unsigned long long)arg1 passingTest:(CDUnknownBlockType)arg2;
-- (id)objectsMatching:(CDUnknownBlockType)arg1;
-- (_Bool)containsLocalizedStringCaseInsensitive:(id)arg1;
-- (_Bool)containsStringCaseInsensitive:(id)arg1;
-- (id)imReversedArray;
-- (long long)indexOfObjectWithValue:(id)arg1 forKeyPath:(id)arg2;
+- (id)bu_arrayOfObjectsWithOptions:(unsigned long long)arg1 passingTest:(CDUnknownBlockType)arg2;
+- (id)bu_objectsMatching:(CDUnknownBlockType)arg1;
+- (_Bool)bu_containsLocalizedStringCaseInsensitive:(id)arg1;
+- (_Bool)bu_containsStringCaseInsensitive:(id)arg1;
+- (id)bu_reversedArray;
+- (long long)bu_indexOfObjectWithValue:(id)arg1 forKeyPath:(id)arg2;
 @end
 

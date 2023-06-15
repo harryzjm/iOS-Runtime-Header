@@ -6,7 +6,7 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-@class GEOPDAutocompleteEntry, GEOPDETAFilter, GEOPDRecentRouteInfo, GEOPDResultRefinementQuery, GEOPDRetainedSearchMetadata, GEOPDSInferredSignals, GEOPDSSearchEvChargingParameters, GEOPDSSearchFilter, GEOPDSSearchLocationParameters, GEOPDSSearchStructureIntentRequestType, GEOPDSearchOriginationInfo, GEOPDViewportInfo, NSData, NSString, PBDataReader, PBUnknownFields;
+@class GEOPDAutocompleteEntry, GEOPDETAFilter, GEOPDRecentRouteInfo, GEOPDResultRefinementQuery, GEOPDRetainedSearchMetadata, GEOPDSInferredSignals, GEOPDSSearchEvChargingParameters, GEOPDSSearchFilter, GEOPDSSearchLocationParameters, GEOPDSSearchStructureIntentRequestType, GEOPDSearchOriginationInfo, GEOPDViewportInfo, NSData, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDSearchParameters : PBCodable
@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
     GEOPDRecentRouteInfo *_recentRouteInfo;
     GEOPDResultRefinementQuery *_resultRefinementQuery;
     GEOPDRetainedSearchMetadata *_retainedSearch;
+    NSMutableArray *_searchEnrichmentRevisionMetadatas;
     GEOPDSSearchFilter *_searchFilter;
     GEOPDSSearchLocationParameters *_searchLocationParameters;
     GEOPDSearchOriginationInfo *_searchOriginationInfo;
@@ -77,6 +78,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_recentRouteInfo:1;
         unsigned int read_resultRefinementQuery:1;
         unsigned int read_retainedSearch:1;
+        unsigned int read_searchEnrichmentRevisionMetadatas:1;
         unsigned int read_searchFilter:1;
         unsigned int read_searchLocationParameters:1;
         unsigned int read_searchOriginationInfo:1;
@@ -102,7 +104,10 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)initWithData:(id)arg1;
 - (id)init;
+- (void)addPlaceSummaryRevision:(id)arg1;
+- (void)addSearchImplicitInfo:(id)arg1 idenitfier:(id)arg2 categoryID:(id)arg3;
 - (id)initWithSearchQuery:(id)arg1 entryMetadata:(id)arg2 metadata:(id)arg3 autocompleteEntry:(id)arg4 retainedSearch:(id)arg5 maxResults:(unsigned int)arg6 traits:(id)arg7 routeInfo:(id)arg8;
+- (id)initWithGeoMapItemIdentifier:(id)arg1 categoryID:(id)arg2 maxResults:(unsigned int)arg3 traits:(id)arg4;
 
 @end
 

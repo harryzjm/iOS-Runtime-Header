@@ -6,11 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class MAAutoAssetProgress, MAAutoAssetSelector, MAAutoAssetStatus, MADAutoAssetClientRequest, MADAutoAssetDescriptor, MADAutoAssetJob, MADAutoAssetJobInformation, NSArray, NSDictionary, NSError, NSString, SUCoreConnectClientProxy, SUCoreConnectMessage;
+@class MAAutoAssetProgress, MAAutoAssetSelector, MAAutoAssetStatus, MADAutoAssetClientRequest, MADAutoAssetDescriptor, MADAutoAssetJob, MADAutoAssetJobInformation, MADAutoSetJobInformation, NSArray, NSDictionary, NSError, NSString, SUCoreConnectClientProxy, SUCoreConnectMessage;
 
 __attribute__((visibility("hidden")))
 @interface MADAutoAssetControlManagerParam : NSObject
 {
+    _Bool _schedulerInvolved;
+    _Bool _potentialNetworkFailure;
     NSString *_paramSafeSummary;
     long long _paramType;
     NSString *_clientID;
@@ -39,12 +41,22 @@ __attribute__((visibility("hidden")))
     NSArray *_stagedToDownloaded;
     MADAutoAssetDescriptor *_downloadingDescriptor;
     MADAutoAssetDescriptor *_baseForPatchDescriptor;
+    NSString *_clientDomainName;
+    NSString *_assetSetIdentifier;
+    NSString *_setAtomicInstance;
+    MADAutoSetJobInformation *_setJobInformation;
     CDUnknownBlockType _clientReplyCompletion;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType clientReplyCompletion; // @synthesize clientReplyCompletion=_clientReplyCompletion;
+@property(readonly, retain, nonatomic) MADAutoSetJobInformation *setJobInformation; // @synthesize setJobInformation=_setJobInformation;
+@property(readonly, retain, nonatomic) NSString *setAtomicInstance; // @synthesize setAtomicInstance=_setAtomicInstance;
+@property(readonly, retain, nonatomic) NSString *assetSetIdentifier; // @synthesize assetSetIdentifier=_assetSetIdentifier;
+@property(readonly, retain, nonatomic) NSString *clientDomainName; // @synthesize clientDomainName=_clientDomainName;
+@property(readonly, nonatomic) _Bool potentialNetworkFailure; // @synthesize potentialNetworkFailure=_potentialNetworkFailure;
+@property(readonly, nonatomic) _Bool schedulerInvolved; // @synthesize schedulerInvolved=_schedulerInvolved;
 @property(retain, nonatomic) MADAutoAssetDescriptor *baseForPatchDescriptor; // @synthesize baseForPatchDescriptor=_baseForPatchDescriptor;
 @property(retain, nonatomic) MADAutoAssetDescriptor *downloadingDescriptor; // @synthesize downloadingDescriptor=_downloadingDescriptor;
 @property(retain, nonatomic) NSArray *stagedToDownloaded; // @synthesize stagedToDownloaded=_stagedToDownloaded;
@@ -79,15 +91,21 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithParamType:(long long)arg1 withSafeSummary:(id)arg2 withClientID:(id)arg3 withClientRequestMessage:(id)arg4 withClientProgressProxy:(id)arg5 withClientReplyCompletion:(CDUnknownBlockType)arg6 withResponseMessage:(id)arg7 withResponseError:(id)arg8 withDownloadsInFlight:(id)arg9 withAutoAssetJobID:(id)arg10 withAutoAssetCatalog:(id)arg11 withLockForUseError:(id)arg12 withFinishedError:(id)arg13 withDownloadProgress:(id)arg14 withJobCurrentStatus:(id)arg15 withAutoAssetSelector:(id)arg16 withAutoAssetUUID:(id)arg17 withSetOfAutoAssetSelectors:(id)arg18 withPushNotifications:(id)arg19 withAssetTargetOSVersion:(id)arg20 withAssetTargetBuildVersion:(id)arg21 withStagedToDownloaded:(id)arg22 withDownloadingDescriptor:(id)arg23 withBaseForPatchDescriptor:(id)arg24;
+- (id)initWithParamType:(long long)arg1 withSafeSummary:(id)arg2 withClientID:(id)arg3 withClientRequestMessage:(id)arg4 withClientProgressProxy:(id)arg5 withClientReplyCompletion:(CDUnknownBlockType)arg6 withResponseMessage:(id)arg7 withResponseError:(id)arg8 withDownloadsInFlight:(id)arg9 withAutoAssetJobID:(id)arg10 withAutoAssetCatalog:(id)arg11 withLockForUseError:(id)arg12 withFinishedError:(id)arg13 withDownloadProgress:(id)arg14 withJobCurrentStatus:(id)arg15 withAutoAssetSelector:(id)arg16 withAutoAssetUUID:(id)arg17 withSetOfAutoAssetSelectors:(id)arg18 withPushNotifications:(id)arg19 withAssetTargetOSVersion:(id)arg20 withAssetTargetBuildVersion:(id)arg21 withStagedToDownloaded:(id)arg22 withDownloadingDescriptor:(id)arg23 withBaseForPatchDescriptor:(id)arg24 withSchedulerInvolved:(_Bool)arg25 withPotentialNetworkFailure:(_Bool)arg26 withClientDomainName:(id)arg27 withAssetSetIdentifier:(id)arg28 withSetAtomicInstance:(id)arg29 withSetJobInformation:(id)arg30;
+- (id)initForSetJobClientDomain:(id)arg1 forAssetSetIdentifier:(id)arg2;
+- (id)initForFinishedSetJob:(id)arg1 forAssetSetIdentifier:(id)arg2 withSetAtomicInstance:(id)arg3 withAutoAssetUUID:(id)arg4 withSetJobInformation:(id)arg5 withSchedulerInvolved:(_Bool)arg6 withPotentialNetworkFailure:(_Bool)arg7;
+- (id)initForSetJobIssueProgress:(id)arg1 forDomainName:(id)arg2 forAssetSetIdentifier:(id)arg3 withSetAtomicInstance:(id)arg4 withAutoAssetUUID:(id)arg5 withSetJobInformation:(id)arg6 withLockForUseError:(id)arg7;
+- (id)initForSetJobIssueReply:(CDUnknownBlockType)arg1 forDomainName:(id)arg2 forAssetSetIdentifier:(id)arg3 withSetAtomicInstance:(id)arg4 withAutoAssetUUID:(id)arg5 withSetJobInformation:(id)arg6 withResponseMessage:(id)arg7 withResponseError:(id)arg8;
+- (id)initForSetJobFound:(id)arg1 forAssetSetIdentifier:(id)arg2 withSetAtomicInstance:(id)arg3 withAutoAssetUUID:(id)arg4 withSetJobInformation:(id)arg5;
 - (id)initWithPromoted:(id)arg1;
+- (id)initForTimerFired;
 - (id)initForAssetSelector:(id)arg1;
 - (id)initForStagerJobInformation:(id)arg1;
 - (id)initForStagerJobStart:(id)arg1 withAssetTargetOSVersion:(id)arg2 withAssetTargetBuildVersion:(id)arg3;
 - (id)initForReceivedPushNotifications:(id)arg1;
 - (id)initForTriggeredNoActivity;
 - (id)initForTriggeredSelectors:(id)arg1;
-- (id)initForFinishedJobSelector:(id)arg1 withAutoAssetUUID:(id)arg2;
+- (id)initForFinishedJobSelector:(id)arg1 withAutoAssetUUID:(id)arg2 withSchedulerInvolved:(_Bool)arg3 withPotentialNetworkFailure:(_Bool)arg4;
 - (id)initForJobIssueReply:(CDUnknownBlockType)arg1 forAutoAssetSelector:(id)arg2 withAutoAssetUUID:(id)arg3 withResponseMessage:(id)arg4 withResponseError:(id)arg5;
 - (id)initForJobIssueProgress:(id)arg1 forAutoAssetSelector:(id)arg2 withAutoAssetUUID:(id)arg3 withJobCurrentStatus:(id)arg4 withLockForUseError:(id)arg5;
 - (id)initForJobFoundSelector:(id)arg1 withAutoAssetUUID:(id)arg2;

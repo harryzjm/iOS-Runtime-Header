@@ -10,6 +10,7 @@ __attribute__((visibility("hidden")))
 @interface _UIImageContentRenditionResult : NSObject
 {
     CDUnknownBlockType _imageProvider;
+    CDUnknownBlockType _configProvider;
     CDUnknownBlockType _drawingProvider;
 }
 

@@ -6,24 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, NSXPCListener, SNSystemServiceResourceCoordinator;
+@class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
 @interface SNAnalysisServer : NSObject
 {
-    NSXPCListener *_listener;
-    SNSystemServiceResourceCoordinator *_coordinator;
+    MISSING_TYPE *listener;
+    MISSING_TYPE *coordinatorFactory;
 }
 
 - (void).cxx_destruct;
 - (_Bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (id)init;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

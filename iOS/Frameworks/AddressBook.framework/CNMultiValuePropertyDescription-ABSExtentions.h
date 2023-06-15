@@ -14,6 +14,6 @@
 - (CDUnknownBlockType)ABSMultiValueLabeledValueFromCNLabeledValueTransform;
 - (CDUnknownBlockType)CNLabeledValueFromABSMultiValueTranform;
 - (id)CNValueFromABSValue:(void *)arg1;
-- (const void *)ABSValueFromCNValue:(id)arg1;
+- (void *)ABSValueFromCNValue:(id)arg1;
 @end
 

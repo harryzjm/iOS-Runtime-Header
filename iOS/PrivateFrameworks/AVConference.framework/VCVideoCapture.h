@@ -6,27 +6,29 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMutableArray, NSString, VideoAttributes;
+@class NSString, VideoAttributes;
 @protocol VCVideoCaptureServer;
 
 __attribute__((visibility("hidden")))
 @interface VCVideoCapture : NSObject
 {
     id _captureServer;
-    NSMutableArray *_sinkArray;
+    struct tagVCVideoCaptureServerProtocolRealtimeInstanceVTable _protocolFunctions;
     NSString *_sourceUID;
     VideoAttributes *_localVideoAttributes;
     struct _opaque_pthread_mutex_t _sinkArrayMutex;
+    unsigned int _sinkCount;
+    struct _VCSingleLinkedList _sinkList;
 }
 
-@property(readonly) NSArray *sinkArray; // @synthesize sinkArray=_sinkArray;
-- (void)distributeVideoFrame:(struct opaqueCMSampleBuffer *)arg1 frameTime:(CDStruct_1b6d18a9)arg2 preview:(_Bool)arg3 orientation:(int)arg4 fromCamera:(_Bool)arg5 camera:(int)arg6 switching:(_Bool)arg7 videoMirrored:(_Bool)arg8;
 - (unsigned int)removeSink:(id)arg1;
 - (unsigned int)addSink:(id)arg1;
+- (void)cleanupSinkEntry:(struct tagVCVideoCaptureSinkEntry *)arg1;
 @property(readonly) unsigned int sinkCount;
+@property(readonly) struct tagVCVideoCaptureServerProtocolRealtimeInstanceVTable *protocolFunctions;
 @property(readonly) NSObject<VCVideoCaptureServer> *captureServer;
 - (void)dealloc;
-- (id)initWithCaptureServer:(id)arg1;
+- (id)initWithCaptureServer:(id)arg1 protocolFunctions:(const struct tagVCVideoCaptureServerProtocolRealtimeInstanceVTable *)arg2;
 
 @end
 

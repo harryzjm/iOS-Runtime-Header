@@ -6,9 +6,13 @@
 
 #import <WorkflowKit/NSObject-Protocol.h>
 
-@class INAppDescriptor, NSData, NSNumber, NSSet, NSString, WFContentAttributionSet, WFContentLocation, WFWorkflowCollection, WFWorkflowQuery, WFWorkflowReference;
+@class INAppDescriptor, NSData, NSNumber, NSSet, NSString, WFContentAttributionSet, WFContentLocation, WFWorkflowCollection, WFWorkflowDescriptor, WFWorkflowQuery, WFWorkflowReference, WFWorkflowRunEvent;
 
 @protocol WFDatabaseProxyHost <NSObject>
+- (void)setOutcome:(long long)arg1 forRunEvent:(WFWorkflowRunEvent *)arg2;
+- (void)logRunOfWorkflow:(WFWorkflowReference *)arg1 withSource:(NSString *)arg2 triggerID:(NSString *)arg3 completion:(void (^)(WFWorkflowRunEvent *, NSError *))arg4;
+- (void)storeQuarantineHashForWorkflowWithReference:(WFWorkflowReference *)arg1 quarantineHash:(NSData *)arg2;
+- (void)quarantineWorkflowWithReference:(WFWorkflowReference *)arg1;
 - (void)updateAppDescriptor:(INAppDescriptor *)arg1 atKey:(NSString *)arg2 actionUUID:(NSString *)arg3 actionIndex:(NSNumber *)arg4 actionIdentifier:(NSString *)arg5 workflowID:(NSString *)arg6;
 - (void)saveSmartPromptStateData:(NSData *)arg1 actionUUID:(NSString *)arg2 reference:(WFWorkflowReference *)arg3 completion:(void (^)(_Bool, NSError *))arg4;
 - (void)currentDeletionAuthorizationStatusWithContentItemClassName:(NSString *)arg1 actionUUID:(NSString *)arg2 actionIdentifier:(NSString *)arg3 actionIndex:(unsigned long long)arg4 count:(unsigned long long)arg5 reference:(WFWorkflowReference *)arg6 completion:(void (^)(WFDeletionAuthorizationState *, NSError *))arg7;
@@ -23,7 +27,7 @@
 - (void)getSortedWorkflowsWithQuery:(WFWorkflowQuery *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)getSortedVisibleWorkflowsInCollection:(WFWorkflowCollection *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)getSortedVisibleWorkflowsByNameWithCompletion:(void (^)(NSArray *, NSError *))arg1;
-- (void)getWorkflowRecordDataForWorkflowReference:(WFWorkflowReference *)arg1 completion:(void (^)(NSData *, NSError *))arg2;
+- (void)getWorkflowRecordDataForDescriptor:(WFWorkflowDescriptor *)arg1 completion:(void (^)(NSData *, NSError *))arg2;
 - (void)getUniqueVisibleReferenceForWorkflowName:(NSString *)arg1 completion:(void (^)(WFWorkflowReference *))arg2;
 - (void)getReferenceForWorkflowID:(NSString *)arg1 completion:(void (^)(WFWorkflowReference *))arg2;
 @end

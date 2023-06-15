@@ -4,19 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
 @interface _TtC11WeatherMaps17MapScaleLabelView : UIView
 {
-    MISSING_TYPE *$__lazy_storage_$_blurEffect;
-    MISSING_TYPE *$__lazy_storage_$_vibrancyEffect;
-    MISSING_TYPE *$__lazy_storage_$_vibrancyEffectView;
     MISSING_TYPE *label;
     MISSING_TYPE *maximumWidth;
     MISSING_TYPE *stepHeight;
+    MISSING_TYPE *backgroundEffectManager;
+    MISSING_TYPE *vibrancyEffectView;
     MISSING_TYPE *point;
 }
 

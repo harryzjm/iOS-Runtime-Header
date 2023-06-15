@@ -6,17 +6,22 @@
 
 #import <MobileSafari/NSObject-Protocol.h>
 
-@class NSArray, UIFont, UITraitCollection;
+@class NSArray, SFStartPageViewController, UIColor, UIFont, UINavigationController, UITraitCollection, UIVisualEffect;
 
 @protocol SFStartPageVisualStyleProviding <NSObject>
 @property(readonly, nonatomic) UIFont *sectionHeaderLargeTitleFont;
 @property(readonly, nonatomic) double sectionHeaderBottomGap;
 @property(readonly, nonatomic) double defaultRowSpacing;
+- (UIVisualEffect *)backgroundEffectForSupplementaryActions;
+- (UIColor *)tintColorForSupplementaryActions;
 - (long long)numberOfColumnsForSectionItemType:(long long)arg1 sectionWidth:(double)arg2 traitCollection:(UITraitCollection *)arg3;
 - (struct UIEdgeInsets)collectionViewContentInsetsWithNavigationBarPosition:(long long)arg1;
 - (struct NSDirectionalEdgeInsets)sectionContentInsetsWithViewLayoutMargins:(struct NSDirectionalEdgeInsets)arg1;
 - (double)rowSpacingForSectionItemType:(long long)arg1 containerSize:(struct CGSize)arg2;
 - (double)siteIconSizeForContainerSize:(struct CGSize)arg1;
 - (UITraitCollection *)overrideTraitCollectionFromProposedTraits:(NSArray *)arg1 isShowingWallpaper:(_Bool)arg2;
+
+@optional
+- (void)prepareNavigationController:(UINavigationController *)arg1 forStartPageViewController:(SFStartPageViewController *)arg2;
 @end
 

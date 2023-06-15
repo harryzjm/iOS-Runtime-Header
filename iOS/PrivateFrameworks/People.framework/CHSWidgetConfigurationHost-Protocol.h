@@ -10,8 +10,8 @@
 @class NSArray, NSString;
 
 @protocol CHSWidgetConfigurationHost <NSObject, NSCopying>
+@property(readonly, copy, nonatomic) NSArray *widgetConfigurations;
+@property(readonly, copy, nonatomic) NSString *identifier;
 - (NSArray *)widgetConfigurationsForApplicationContainerBundleIdentifier:(NSString *)arg1;
-@property(nonatomic, readonly) NSArray *widgetConfigurations;
-@property(nonatomic, readonly) NSString *identifier;
 @end
 

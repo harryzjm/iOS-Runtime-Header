@@ -10,5 +10,8 @@
 
 @protocol _PUPickerExtensionContextHostInterface <NSObject>
 - (void)_pickerDidFinishPicking:(NSArray *)arg1;
+- (void)_pickerDidSetModalInPresentation:(_Bool)arg1;
+- (void)_pickerDidSetOnboardingHeaderDismissed:(_Bool)arg1;
+- (void)_pickerDidSetOnboardingOverlayDismissed:(_Bool)arg1;
 @end
 

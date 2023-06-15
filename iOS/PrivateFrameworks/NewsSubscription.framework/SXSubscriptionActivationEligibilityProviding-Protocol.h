@@ -9,8 +9,8 @@
 @protocol SXSubscriptionActivationEligibilityObserving;
 
 @protocol SXSubscriptionActivationEligibilityProviding <NSObject>
+@property(readonly, nonatomic) long long eligibility;
 - (void)removeObserver:(id <SXSubscriptionActivationEligibilityObserving>)arg1;
 - (void)addObserver:(id <SXSubscriptionActivationEligibilityObserving>)arg1;
-@property(nonatomic, readonly) long long eligibility;
 @end
 

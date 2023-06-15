@@ -19,6 +19,7 @@
     MISSING_TYPE *tagReorderService;
     MISSING_TYPE *followingBadgingCoordinator;
     MISSING_TYPE *magazinesBadgingCoordinator;
+    MISSING_TYPE *puzzleBadgingCoordinator;
     MISSING_TYPE *userNotificationCenter;
     MISSING_TYPE *purchaseController;
     MISSING_TYPE *familySharingStatusManager;

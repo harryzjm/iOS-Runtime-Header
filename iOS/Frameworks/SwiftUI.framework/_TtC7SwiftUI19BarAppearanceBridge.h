@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *allowedBars;
     MISSING_TYPE *lastEnvironment;
     MISSING_TYPE *lastBarUpdates;
+    MISSING_TYPE *barBackgroundViewModels;
     MISSING_TYPE *barConfigurations;
     MISSING_TYPE *toUpdateBars;
     MISSING_TYPE *seedTracker;

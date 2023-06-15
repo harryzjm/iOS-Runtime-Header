@@ -7,7 +7,6 @@
 #import <TeaFoundation/NSObject-Protocol.h>
 
 @class NSString, Protocol;
-@protocol TFResolver;
 
 @protocol TFResolver <NSObject>
 - (id)resolveOptionalProtocol:(Protocol *)arg1 name:(NSString *)arg2 contextBlock:(void (^)(id <TFContext>))arg3;
@@ -26,6 +25,5 @@
 - (id)resolveClass:(Class)arg1 name:(NSString *)arg2;
 - (id)resolveClass:(Class)arg1 contextBlock:(void (^)(id <TFContext>))arg2;
 - (id)resolveClass:(Class)arg1;
-- (id <TFResolver>)currentObjectGraphResolver:(unsigned long long)arg1;
 @end
 

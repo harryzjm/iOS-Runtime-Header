@@ -21,7 +21,7 @@
 - (long long)compare:(id)arg1;
 - (_Bool)evaluateInScope:(id)arg1;
 - (_Bool)evaluateForParameterValues:(id)arg1;
-@property(readonly) NSString *valuePattern;
+@property(readonly, copy) NSString *valuePattern;
 @property(readonly) DVTMacroDefinitionConditionParameter *parameter;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;

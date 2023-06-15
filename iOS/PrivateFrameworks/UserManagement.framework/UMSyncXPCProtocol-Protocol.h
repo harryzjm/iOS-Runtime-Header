@@ -15,6 +15,7 @@
 - (void)registerUserPersonaObserverForPID:(int)arg1 withMachServiceName:(NSString *)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)fetchMultiPersonaBundleIdentifiersforPid:(int)arg1 withCompletionHandler:(void (^)(NSArray *, NSError *))arg2;
 - (void)fetchBundleIdentifiersForPersona:(NSDictionary *)arg1 forPid:(int)arg2 completionHandler:(void (^)(NSArray *, NSError *))arg3;
+- (void)fetchPersonaGenerationNumberWithCompletionHandler:(void (^)(unsigned long long, NSError *))arg1;
 - (void)fetchPersona:(NSDictionary *)arg1 forPid:(int)arg2 completionHandler:(void (^)(NSDictionary *, NSError *))arg3;
 - (void)fetchAsidMapforPid:(int)arg1 withCompletionHandler:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)fetchAllUsersPersonaListforPid:(int)arg1 withCompletionHandler:(void (^)(NSArray *, NSError *))arg2;
@@ -42,6 +43,8 @@
 - (void)setUserSessionAttributes:(NSDictionary *)arg1 reply:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)getUserSessionAttributes:(NSDictionary *)arg1 reply:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)deleteUserSessionSecureBlobwithReply:(void (^)(NSError *))arg1;
+- (void)userKeybagOpaqueData:(NSDictionary *)arg1 KeybagBlobwithReply:(void (^)(NSData *, NSError *))arg2;
+- (void)setUserKeybagOpaqueData:(NSDictionary *)arg1 keybagBlob:(NSData *)arg2 withReply:(void (^)(NSError *))arg3;
 - (void)retrieveUserSessionSecureBackupBlobwithReply:(void (^)(NSData *, NSError *))arg1;
 - (void)setUserSessionSecureBackupBlob:(NSData *)arg1 withReply:(void (^)(NSError *))arg2;
 - (void)switchToUserSession:(NSDictionary *)arg1 withOpaqueData:(NSData *)arg2 reply:(void (^)(NSError *))arg3;
@@ -49,6 +52,8 @@
 - (void)retrieveUserSessionBlobwithReply:(void (^)(NSData *, NSError *))arg1;
 - (void)listAllUserSessionIDsWithAReply:(void (^)(NSArray *, NSError *))arg1;
 - (void)removeUserSession:(NSDictionary *)arg1 reply:(void (^)(NSError *))arg2;
+- (void)migrateGuestUserVolume:(NSString *)arg1 withReply:(void (^)(NSError *))arg2;
+- (void)migrateSharedAndPrimaryUserVolumeWithReply:(void (^)(NSError *))arg1;
 - (void)dataMigrationSetup:(NSDictionary *)arg1 withSecret:(NSFileHandle *)arg2 oldSize:(unsigned long long)arg3 reply:(void (^)(NSError *))arg4;
 - (void)createUserSession:(NSDictionary *)arg1 withSecret:(NSFileHandle *)arg2 oldSize:(unsigned long long)arg3 withOpaqueData:(NSData *)arg4 reply:(void (^)(NSDictionary *, NSError *))arg5;
 - (void)unloadUserSession:(NSDictionary *)arg1 reply:(void (^)(NSError *))arg2;

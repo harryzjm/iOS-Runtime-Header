@@ -25,24 +25,7 @@
     MISSING_TYPE *_shift;
 }
 
-@property(nonatomic) MISSING_TYPE *floorCeilingCount; // @synthesize floorCeilingCount=_floorCeilingCount;
-@property(nonatomic) float visualCeilingHeight; // @synthesize visualCeilingHeight=_visualCeilingHeight;
-@property(nonatomic) float visualFloorHeight; // @synthesize visualFloorHeight=_visualFloorHeight;
-@property(nonatomic) int zSlice; // @synthesize zSlice=_zSlice;
-@property(nonatomic) int imageSize; // @synthesize imageSize=_imageSize;
-@property(nonatomic) MISSING_TYPE *shift; // @synthesize shift=_shift;
-@property(nonatomic) MISSING_TYPE *scale; // @synthesize scale=_scale;
-@property(nonatomic) MISSING_TYPE *center; // @synthesize center=_center;
-@property(nonatomic) float supportHeight; // @synthesize supportHeight=_supportHeight;
-@property(nonatomic) float ceilingHeight; // @synthesize ceilingHeight=_ceilingHeight;
-@property(nonatomic) float floorHeight; // @synthesize floorHeight=_floorHeight;
-@property(nonatomic) float pixelSize; // @synthesize pixelSize=_pixelSize;
-@property(nonatomic) _Bool isCenterScaleUpdated; // @synthesize isCenterScaleUpdated=_isCenterScaleUpdated;
 - (_Bool)isEqual:(id)arg1;
-- (_Bool)isEqualToRSGeometryMeta:(id)arg1;
-- (id)dictionaryRepresentation;
-- (id)initWithDictionary:(id)arg1;
-- (void)reset;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 

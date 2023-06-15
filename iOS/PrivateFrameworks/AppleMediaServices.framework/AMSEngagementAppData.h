@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(retain, nonatomic) NSArray *eventFilters; // @synthesize eventFilters=_eventFilters;
 @property(retain, nonatomic) NSArray *cachedResponses; // @synthesize cachedResponses=_cachedResponses;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)exportObject;
 - (id)initWithIdentifier:(id)arg1 cacheObject:(id)arg2;
 

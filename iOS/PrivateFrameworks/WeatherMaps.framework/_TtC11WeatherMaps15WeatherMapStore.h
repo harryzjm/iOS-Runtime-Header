@@ -16,7 +16,7 @@
     MISSING_TYPE *isViewModelSubjectPaused;
     MISSING_TYPE *mapsConfiguration;
     MISSING_TYPE *scaleModelFactory;
-    MISSING_TYPE *localeObserver;
+    MISSING_TYPE *unitObserver;
     MISSING_TYPE *zoomLevelZoomDelta;
     MISSING_TYPE *performanceTestConditions;
 }

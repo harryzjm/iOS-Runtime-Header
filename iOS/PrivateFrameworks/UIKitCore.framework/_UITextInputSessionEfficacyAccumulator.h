@@ -6,26 +6,38 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class NSDictionary, NSMutableDictionary, NSMutableSet, NSString;
 
 __attribute__((visibility("hidden")))
 @interface _UITextInputSessionEfficacyAccumulator : NSObject
 {
-    long long _lengths[8];
-    long long _actions[8];
+    NSMutableDictionary *_entries;
+    NSString *_language;
+    NSString *_region;
+    NSString *_keyboardVariant;
+    NSString *_keyboardLayout;
+    NSString *_keyboardType;
+    _Bool _sessionIsModeless;
+    NSMutableSet *_sessionErrors;
     NSString *_name;
-    CDUnknownBlockType _lengthBlock;
-    CDUnknownBlockType _actionBlock;
+    NSDictionary *_keyboardTrialParameters;
 }
 
-+ (id)accumulatorWithName:(id)arg1 lengthBlock:(CDUnknownBlockType)arg2 actionBlock:(CDUnknownBlockType)arg3;
++ (id)getOrInitializeDictionaryFrom:(id)arg1 forKey:(unsigned long long)arg2 initCapacity:(long long)arg3;
++ (id)getOrInitializeArrayFromArray:(id)arg1 forKey:(unsigned long long)arg2 initCapacity:(unsigned long long)arg3;
++ (id)getOrInitializeArrayFromDictionary:(id)arg1 forKey:(id)arg2 initCapacity:(unsigned long long)arg3;
++ (id)accumulatorWithName:(id)arg1;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) CDUnknownBlockType actionBlock; // @synthesize actionBlock=_actionBlock;
-@property(readonly, nonatomic) CDUnknownBlockType lengthBlock; // @synthesize lengthBlock=_lengthBlock;
+@property(copy, nonatomic) NSDictionary *keyboardTrialParameters; // @synthesize keyboardTrialParameters=_keyboardTrialParameters;
 @property(readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
-- (void)enumerateAnalytics:(CDUnknownBlockType)arg1;
+- (void)enumerateTextInputActionsAnalytics:(CDUnknownBlockType)arg1;
+- (id)generateSessionErrorStringFromSet:(id)arg1;
+- (id)computeSessionActionsStringOnSession:(id)arg1;
 - (void)reset;
 - (void)increaseWithAction:(id)arg1;
+- (void)increaseCountForAppBundleId:(id)arg1 forSource:(long long)arg2 forActionType:(long long)arg3 forFlagOptions:(long long)arg4 forInputModeKey:(id)arg5 byAccumulatorEntry:(id)arg6;
+- (void)logErrorCodeIfNotNil:(id)arg1;
+- (id)init;
 
 @end
 

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CLLocationManager, CLLocationManagerStateTracker, CLSilo, CLTimer, NSMutableSet, NSString;
+@class CLLocationManager, CLLocationManagerStateTracker, CLSilo, CLTimer, NSData, NSMutableSet, NSString;
 @protocol CLLocationManagerDelegate;
 
 @interface CLLocationManagerInternal : NSObject
@@ -28,10 +28,16 @@
     CDUnknownBlockType fPlaceInferenceHandler;
     unsigned long long fFidelityPolicy;
     CLTimer *fPlaceInferenceTimer;
+    _Bool fIsMasquerading;
+    NSMutableSet *fIdentifiableClients;
     CLSilo *fSilo;
+    NSString *_clientKeyForIdentityValidation;
+    NSData *_monitorLedgerAccessKey;
 }
 
 - (void).cxx_destruct;
+@property(retain) NSData *monitorLedgerAccessKey; // @synthesize monitorLedgerAccessKey=_monitorLedgerAccessKey;
+@property(retain) NSString *clientKeyForIdentityValidation; // @synthesize clientKeyForIdentityValidation=_clientKeyForIdentityValidation;
 @property(nonatomic) __weak CLLocationManager *manager; // @synthesize manager=fManager;
 @property(nonatomic) __weak id <CLLocationManagerDelegate> delegate; // @synthesize delegate=fDelegate;
 @property(readonly, nonatomic) NSMutableSet *rangedConstraints; // @synthesize rangedConstraints=fRangedConstraints;

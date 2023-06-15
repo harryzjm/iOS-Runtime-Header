@@ -10,9 +10,11 @@
 @protocol BLSHRenderedFlipbookFrame;
 
 @protocol BLSHFlipbook <BSInvalidatable>
+@property(nonatomic, getter=isPowerSavingEnabled) _Bool powerSavingEnabled;
 @property(readonly, nonatomic) unsigned long long memoryUsage;
 @property(readonly, nonatomic) NSArray *activeFrames;
 @property(readonly, nonatomic) id <BLSHRenderedFlipbookFrame> lastRenderedFrame;
+@property(readonly, nonatomic) id <BLSHRenderedFlipbookFrame> captureFrameOnGlass;
 @property(readonly, nonatomic) id <BLSHRenderedFlipbookFrame> frameOnGlass;
 - (void)purge;
 - (void)collect;

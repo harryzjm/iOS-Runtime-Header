@@ -20,7 +20,6 @@
     MISSING_TYPE *instrumentationKey;
     MISSING_TYPE *emptyStateData;
     MISSING_TYPE *recommendedFriends;
-    MISSING_TYPE *recommendedGroups;
 }
 
 @end

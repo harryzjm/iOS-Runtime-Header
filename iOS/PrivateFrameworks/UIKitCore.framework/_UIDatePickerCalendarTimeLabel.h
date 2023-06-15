@@ -64,7 +64,6 @@ __attribute__((visibility("hidden")))
 - (void)didReceiveUpArrowKey:(id)arg1;
 - (_Bool)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (id)keyCommands;
-- (_Bool)_wantsPriorityOverFocusUpdates;
 - (_Bool)displaysTimeOfDayLabel;
 - (void)_resetTextInput;
 - (void)pushCurrentStateIntoUIAndNotify;
@@ -140,6 +139,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool hasDefaultContents;
 @property(readonly) unsigned long long hash;
 @property(nonatomic) _Bool hidePrediction;
+@property(nonatomic) long long inlineCompletionType;
+@property(nonatomic) long long inlinePredictionType;
 @property(retain, nonatomic) UIInputContextHistory *inputContextHistory;
 @property(retain, nonatomic) UIColor *insertionPointColor;
 @property(nonatomic) unsigned long long insertionPointWidth;

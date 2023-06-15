@@ -12,7 +12,11 @@
 {
     MISSING_TYPE *identifier;
     MISSING_TYPE *name;
+    MISSING_TYPE *taskIdentifier;
+    MISSING_TYPE *rateLimitIdentifiers;
+    MISSING_TYPE *rateLimitedDeviceIdentifiers;
     MISSING_TYPE *duetBudgetIdentity;
+    MISSING_TYPE *budgetedDeviceIdentifiers;
     MISSING_TYPE *containingAppIdentifier;
     MISSING_TYPE *requiredDataProtectionLevel;
     MISSING_TYPE *schedulingConfiguration;

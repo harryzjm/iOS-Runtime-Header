@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
         unsigned int backgroundNeedsUpdate:1;
         unsigned int contentNeedsUpdate:1;
         unsigned int isUpdatingSubviews:1;
+        unsigned int usingPlainViewForBackground:1;
     } _flags;
     NSString *_captureGroupName;
     UIVisualEffect *_visualEffect;

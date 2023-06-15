@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *privateModelHandler;
     MISSING_TYPE *mixingModelHandler;
+    MISSING_TYPE *autoSendPersonalFeatureExtractor;
     MISSING_TYPE *autoSendOuputProvider;
 }
 

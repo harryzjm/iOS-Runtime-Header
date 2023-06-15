@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     _Bool _needsConstraintRebuild;
     _Bool _isEmphasized;
     unsigned long long _options;
+    long long _selectedIconBehavior;
     unsigned long long _preferredLineLimit;
     unsigned long long _overrideNumberOfTitleLines;
     id <_UIContextMenuCellLayout> _layout;
@@ -25,6 +26,7 @@ __attribute__((visibility("hidden")))
     UIImageView *_emphasizediconImageView;
     NSLayoutConstraint *_nonSymbolImageWidth;
     NSLayoutConstraint *_nonSymbolImageHeight;
+    unsigned long long _controlState;
     _UISlotView *_securePasteButtonSlotView;
     UIStackView *_labelStackView;
     UILabel *_titleLabel;
@@ -38,6 +40,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property(readonly, nonatomic) UIStackView *labelStackView; // @synthesize labelStackView=_labelStackView;
 @property(nonatomic) __weak _UISlotView *securePasteButtonSlotView; // @synthesize securePasteButtonSlotView=_securePasteButtonSlotView;
+@property(nonatomic) unsigned long long controlState; // @synthesize controlState=_controlState;
 @property(nonatomic) _Bool isEmphasized; // @synthesize isEmphasized=_isEmphasized;
 @property(nonatomic) _Bool needsConstraintRebuild; // @synthesize needsConstraintRebuild=_needsConstraintRebuild;
 @property(retain, nonatomic) NSLayoutConstraint *nonSymbolImageHeight; // @synthesize nonSymbolImageHeight=_nonSymbolImageHeight;
@@ -50,6 +53,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) id <_UIContextMenuCellLayout> layout; // @synthesize layout=_layout;
 @property(nonatomic) unsigned long long overrideNumberOfTitleLines; // @synthesize overrideNumberOfTitleLines=_overrideNumberOfTitleLines;
 @property(nonatomic) unsigned long long preferredLineLimit; // @synthesize preferredLineLimit=_preferredLineLimit;
+@property(nonatomic) long long selectedIconBehavior; // @synthesize selectedIconBehavior=_selectedIconBehavior;
 @property(nonatomic) unsigned long long options; // @synthesize options=_options;
 - (_Bool)_hasTrailingAccessory;
 - (id)_childIndicatorImage;
@@ -58,13 +62,19 @@ __attribute__((visibility("hidden")))
 - (id)_decorationSymbolImageConfiguration;
 - (struct CGSize)_maxImageSize;
 - (id)_subtitleTextColor;
+- (id)_childIndicatorColorForCurrentState;
 - (id)_primaryContentColorForCurrentState;
 - (id)_iconSymbolConfigurationForCurrentTraitsUsingBoldFont:(_Bool)arg1;
 - (void)_updateSubtitleLabelNumberOfLines;
 - (void)_updateTitleLabelNumberOfLines;
-- (id)_subtitleLabelFilterForCurrentTraits;
-- (void)traitCollectionDidChange:(id)arg1;
+- (long long)_subtitleLabelRenderingMode;
+- (id)_subtitleLabelFilterForCurrentTraitsAndState;
+- (id)_primaryCompositingFilterForCurrentTraitsAndState;
+- (void)_updateLabelsForCurrentState;
+- (void)_updateCompositingFiltersForCurrentState;
+- (void)setControlState:(unsigned long long)arg1 withAnimationCoordinator:(id)arg2;
 - (void)updateConstraints;
+- (void)_updateIconImageAppearanceForStateChange;
 - (void)_updateAppearanceForStateChange;
 - (void)_updateAttachedConstraintsForViewHierarchyChange;
 - (id)_contentImageViewForImage:(id)arg1;
@@ -86,6 +96,8 @@ __attribute__((visibility("hidden")))
 - (void)setSubtitle:(id)arg1;
 - (void)setAttributedTitle:(id)arg1;
 - (void)setTitle:(id)arg1;
+@property(readonly, nonatomic) struct NSDirectionalEdgeInsets backgroundViewInsets;
+@property(readonly, nonatomic) _Bool shouldHighlightOnHover;
 @property(readonly, nonatomic) UIView *iconView;
 @property(readonly, nonatomic) UIView *decorationView;
 - (void)setLayoutClass:(Class)arg1;

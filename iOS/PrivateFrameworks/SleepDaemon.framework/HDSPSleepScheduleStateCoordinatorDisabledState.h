@@ -9,7 +9,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)nextStateWithContext:(id *)arg1 forceUpdate:(_Bool)arg2;
+- (void)updateStateForcibly:(_Bool)arg1;
 - (unsigned long long)scheduleState;
 - (id)stateName;
 

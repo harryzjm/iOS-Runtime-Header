@@ -11,6 +11,7 @@
 @protocol PGGraphIngestProcessor <NSObject>
 - (void)runWithGraphUpdate:(PGGraphUpdate *)arg1 progressBlock:(void (^)(double, _Bool *))arg2;
 - (_Bool)shouldRunWithGraphUpdate:(PGGraphUpdate *)arg1;
-- (void)setGraphBuilder:(PGGraphBuilder *)arg1;
+- (id)init;
+- (id)initWithGraphBuilder:(PGGraphBuilder *)arg1;
 @end
 

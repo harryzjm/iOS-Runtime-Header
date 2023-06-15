@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIResponder.h>
+#import <UIKitCore/UIResponder.h>
 
 @class MISSING_TYPE;
 
@@ -12,7 +12,6 @@ __attribute__((visibility("hidden")))
 @interface _TtC7SwiftUI23UIKitMainMenuController : UIResponder
 {
     MISSING_TYPE *commandsList;
-    MISSING_TYPE *navigationV3Authority;
     MISSING_TYPE *environment;
     MISSING_TYPE *focusedValues;
     MISSING_TYPE *topLevelItemCoordinators;

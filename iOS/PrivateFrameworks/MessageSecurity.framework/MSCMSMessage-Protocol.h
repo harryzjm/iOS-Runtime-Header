@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MessageSecurity/MSMessage-Protocol.h>
+#import <MessageSecurity/MessageSecurityMessage-Protocol.h>
 
 @class MSOID, NSData;
 @protocol MSCMSMessage;
 
-@protocol MSCMSMessage <MSMessage>
+@protocol MSCMSMessage <MessageSecurityMessage>
 @property(retain) MSOID *contentType;
 @property(retain) id <MSCMSMessage> embeddedContent;
 @property(retain, nonatomic) NSData *dataContent;

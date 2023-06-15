@@ -15,7 +15,7 @@
     MISSING_TYPE *catalogClient;
     MISSING_TYPE *eventHub;
     MISSING_TYPE *subscriptionToken;
-    MISSING_TYPE *rootProperty;
+    MISSING_TYPE *filterRoot;
     MISSING_TYPE *lazyLockupFetcher;
     MISSING_TYPE *platform;
     MISSING_TYPE *activeSortMode;

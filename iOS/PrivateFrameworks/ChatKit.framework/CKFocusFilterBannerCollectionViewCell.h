@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UICollectionViewCell.h>
+#import <UIKitCore/UICollectionViewCell.h>
 
 @class NSArray, NSLayoutConstraint, UIButton, UILabel, UIView;
 @protocol CKFocusFilterBannerDelegate;
@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 
 + (id)reuseIdentifier;
 + (id)itemIdentifier;
++ (_Bool)_showsKeyline;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *keylineAlignmentConstraints; // @synthesize keylineAlignmentConstraints=_keylineAlignmentConstraints;
 @property(retain, nonatomic) NSArray *sizeClassDependentConstraints; // @synthesize sizeClassDependentConstraints=_sizeClassDependentConstraints;

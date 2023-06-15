@@ -6,10 +6,16 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
+@class NSNumber, SBWindowScene;
+
 @protocol SBPIPContainerViewControllerAdapterContextProviding <NSObject>
+@property(readonly, nonatomic) struct UIEdgeInsets stashedPadding;
+@property(readonly, nonatomic) struct UIEdgeInsets effectiveEdgeInsets;
 @property(readonly, nonatomic) _Bool shouldSuppressAssociatedElementsInSystemAperture;
+@property(readonly, nonatomic) NSNumber *overrideResourcesUsageReductionTimeout;
 @property(readonly, nonatomic) long long windowInterfaceOrientation;
 @property(readonly, nonatomic) unsigned long long currentCanonicalPosition;
+- (struct UIEdgeInsets)effectiveEdgeInsetsForWindowScene:(SBWindowScene *)arg1;
 - (_Bool)toggleUserPreferredScale;
 - (void)updatePreferredContentSize:(struct CGSize)arg1;
 - (void)rotationAnimationDidCompleteToRotation:(long long)arg1 contentViewFrame:(struct CGRect)arg2;

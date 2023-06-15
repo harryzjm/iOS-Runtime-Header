@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-- (void)backlight:(id)arg1 didCompleteUpdateToState:(long long)arg2 forEvent:(id)arg3;
+- (void)backlight:(id)arg1 didCompleteUpdateToState:(long long)arg2 forEvents:(id)arg3 abortedEvents:(id)arg4;
 - (void)invalidate;
 - (_Bool)reactivateIfPossible;
 - (id)initForAttribute:(id)arg1 fromAssertion:(id)arg2 forService:(id)arg3;

@@ -15,12 +15,14 @@ __attribute__((visibility("hidden")))
     NSSet *_unsupportedProperties;
 }
 
-+ (void)enumerateReceiverCapabilityConfigurationsForState:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
-+ (void)enumerateReceiverCapabilityConfigurationsWithBlock:(CDUnknownBlockType)arg1;
++ (void)fetchReceiverCapabilitiesForDestinations:(id)arg1 completion:(CDUnknownBlockType)arg2;
++ (void)enumerateReceiverCapabilityConfigurations:(id)arg1 forState:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
++ (void)enumerateKnownReceiverCapabilityConfigurationsForState:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 + (id)unrestrictedReceiverCapabilities;
 + (id)legacyReceiverCapabilities;
 + (id)starskyReceiverCapabilities;
 + (id)sydromeReceiverCapabilities;
++ (id)allKnownReceiverCapabilities;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool supportsWaypointRouteSharing;
 @property(readonly, nonatomic) _Bool supportsRoutingPathLeg;
@@ -28,6 +30,8 @@ __attribute__((visibility("hidden")))
 - (id)idsSendMessageOptions;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;
+- (unsigned long long)hash;
+- (id)initWithIDSEndpointCapabilities:(id)arg1;
 - (id)initWithRegistrationPropertiesSupported:(id)arg1 propertiesUnsupported:(id)arg2;
 
 @end

@@ -9,7 +9,5 @@
 @interface NSData (AuthKit)
 + (id)ak_dataWithBase64UrlEncodedString:(id)arg1;
 - (id)ak_SHA256Data;
-- (id)ak_compressedData:(int)arg1;
-- (id)ak_hexString;
 @end
 

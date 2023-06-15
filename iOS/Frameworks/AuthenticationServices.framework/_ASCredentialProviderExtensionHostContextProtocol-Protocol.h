@@ -6,11 +6,13 @@
 
 #import <AuthenticationServices/NSObject-Protocol.h>
 
-@class ASPasswordCredential, NSError;
+@class ASPasskeyAssertionCredential, ASPasskeyRegistrationCredential, ASPasswordCredential, NSError;
 
 @protocol _ASCredentialProviderExtensionHostContextProtocol <NSObject>
 - (void)prepareToCancelRequestWithError:(NSError *)arg1 completion:(void (^)(void))arg2;
 - (void)prepareToCompleteExtensionConfigurationRequestWithCompletion:(void (^)(void))arg1;
+- (void)prepareToCompleteRegistrationRequestWithSelectedPasskeyCredential:(ASPasskeyRegistrationCredential *)arg1 completion:(void (^)(void))arg2;
+- (void)prepareToCompleteAssertionRequestWithSelectedPasskeyCredential:(ASPasskeyAssertionCredential *)arg1 completion:(void (^)(void))arg2;
 - (void)prepareToCompleteRequestWithSelectedCredential:(ASPasswordCredential *)arg1 completion:(void (^)(void))arg2;
 @end
 

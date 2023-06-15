@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *appConfigurationManager;
     MISSING_TYPE *privacySampler;
+    MISSING_TYPE *$__lazy_storage_$_samplingRate;
 }
 
 @end

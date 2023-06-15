@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, UIView, _UIFindNavigatorViewController;
+@class NSString, UIScrollView, UIView, _UIFindNavigatorViewController;
 
 __attribute__((visibility("hidden")))
 @interface _UIFindNavigatorHarness : NSObject
@@ -15,20 +15,25 @@ __attribute__((visibility("hidden")))
     _Bool _interactionViewIsWebView;
     UIView *_interactionView;
     UIView *_hostView;
+    UIScrollView *_hostScrollView;
     _UIFindNavigatorViewController *_findNavigatorViewController;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) _UIFindNavigatorViewController *findNavigatorViewController; // @synthesize findNavigatorViewController=_findNavigatorViewController;
+@property(nonatomic) __weak UIScrollView *hostScrollView; // @synthesize hostScrollView=_hostScrollView;
 @property(nonatomic) __weak UIView *hostView; // @synthesize hostView=_hostView;
 @property(nonatomic) __weak UIView *interactionView; // @synthesize interactionView=_interactionView;
 - (void)findNavigatorViewControllerViewDidChangeIntrinsicContentSize:(id)arg1;
 - (void)findNavigatorViewControllerDidRequestDismissal:(id)arg1;
-- (void)dismissFindNavigator;
+- (_Bool)findNavigatorShouldDismissOnResponderChange:(id)arg1;
+- (void)dismissFindNavigatorEndingActiveSession:(_Bool)arg1;
 - (void)presentFindNavigatorWithFindSession:(id)arg1 showingReplace:(_Bool)arg2;
 @property(readonly, nonatomic, getter=isFindNavigatorVisible) _Bool findNavigatorVisible;
+- (void)_sendPlacementUpdate;
 - (void)_layoutFindNavigator;
-- (void)_geometryChanged:(const CDStruct_f46536fb *)arg1 forAncestor:(id)arg2;
+- (void)_geometryChanged:(const CDStruct_c9afd433 *)arg1 forAncestor:(id)arg2;
+- (void)endHoistingFindNavigator:(_Bool)arg1 endingActiveSession:(_Bool)arg2;
 - (void)endHoistingFindNavigator:(_Bool)arg1;
 - (void)beginHoistingFindNavigator:(_Bool)arg1;
 - (void)_adjustHostViewScrollOffsetToTopIfSupported;

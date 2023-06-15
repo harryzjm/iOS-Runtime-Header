@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UISlider.h>
+#import <UIKitCore/UISlider.h>
 
 @class AVLayoutItemAttributes, NSArray, NSMutableArray, NSString, NSTimer, UIImageView, UIScrollView, UISelectionFeedbackGenerator, UIView;
 @protocol AVScrubberDelegate;
@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
     id <AVScrubberDelegate> _delegate;
     NSArray *_loadedTimeRanges;
     NSArray *_interstitialDisplayTimes;
+    NSArray *_photosensitiveDisplayTimes;
     long long _scrubbingSpeed;
     double _resolution;
     double _scrubberParentHeight;
@@ -47,6 +48,7 @@ __attribute__((visibility("hidden")))
     NSTimer *_updateSlowKnobMovementDetectedTimer;
     double _timestampWhenTrackingEnded;
     NSMutableArray *_interstitialOverlayViews;
+    NSMutableArray *_photosensitiveOverlayViews;
     double _currentScrubberParentHeight;
     double _newScrubberParentHeight;
     struct CGSize _extrinsicContentSize;
@@ -57,6 +59,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(nonatomic) double newScrubberParentHeight; // @synthesize newScrubberParentHeight=_newScrubberParentHeight;
 @property(nonatomic) double currentScrubberParentHeight; // @synthesize currentScrubberParentHeight=_currentScrubberParentHeight;
+@property(retain, nonatomic) NSMutableArray *photosensitiveOverlayViews; // @synthesize photosensitiveOverlayViews=_photosensitiveOverlayViews;
 @property(retain, nonatomic) NSMutableArray *interstitialOverlayViews; // @synthesize interstitialOverlayViews=_interstitialOverlayViews;
 @property(nonatomic) _Bool scrubberEnabledStatus; // @synthesize scrubberEnabledStatus=_scrubberEnabledStatus;
 @property(nonatomic) _Bool hasChangedLocationAtLeastOnce; // @synthesize hasChangedLocationAtLeastOnce=_hasChangedLocationAtLeastOnce;
@@ -76,6 +79,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) float estimatedFrameRate; // @synthesize estimatedFrameRate=_estimatedFrameRate;
 @property(nonatomic) long long scrubbingSpeed; // @synthesize scrubbingSpeed=_scrubbingSpeed;
 @property(nonatomic) _Bool showsTimelineMarkers; // @synthesize showsTimelineMarkers=_showsTimelineMarkers;
+@property(copy, nonatomic) NSArray *photosensitiveDisplayTimes; // @synthesize photosensitiveDisplayTimes=_photosensitiveDisplayTimes;
 @property(copy, nonatomic) NSArray *interstitialDisplayTimes; // @synthesize interstitialDisplayTimes=_interstitialDisplayTimes;
 @property(copy, nonatomic) NSArray *loadedTimeRanges; // @synthesize loadedTimeRanges=_loadedTimeRanges;
 @property(nonatomic) __weak id <AVScrubberDelegate> delegate; // @synthesize delegate=_delegate;
@@ -88,6 +92,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) AVLayoutItemAttributes *layoutAttributes; // @synthesize layoutAttributes=_layoutAttributes;
 @property(retain, nonatomic) NSMutableArray *previousScrubberVelocities; // @synthesize previousScrubberVelocities=_previousScrubberVelocities;
 - (void)_layoutTimeLineMarkerViews:(float)arg1;
+- (void)_layoutPhotosensitiveRegions:(float)arg1;
+- (float)_normalizeSliderValue:(float)arg1;
 - (void)_updateLayoutItem;
 - (void)_updateSlowKnobMovementDetectedForTargetValue:(float)arg1;
 - (void)_updateSlowKnobMovementDetected;

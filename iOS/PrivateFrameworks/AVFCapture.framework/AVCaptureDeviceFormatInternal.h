@@ -19,9 +19,15 @@ __attribute__((visibility("hidden")))
     struct opaqueCMFormatDescription *formatDescription;
     NSArray *supportedDepthDataFormats;
     _Bool backgroundBlurSupported;
+    _Bool backgroundBlurSupportedForContinuityCamera;
     NSArray *supportedMaxPhotoDimensions;
     _Bool studioLightingSupported;
+    _Bool studioLightingSupportedForContinuityCamera;
+    _Bool reactionEffectsSupported;
+    _Bool reactionEffectsSupportedForContinuityCamera;
     _Bool isDepthDataFormat;
+    _Bool centerStageSupported;
+    _Bool centerStageSupportedForContinuityCamera;
 }
 
 @end

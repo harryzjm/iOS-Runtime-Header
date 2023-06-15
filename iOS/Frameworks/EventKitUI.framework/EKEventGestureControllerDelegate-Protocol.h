@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <EventKitUI/EKUIAppReviewPrompter-Protocol.h>
 #import <EventKitUI/NSObject-Protocol.h>
 
 @class EKDayOccurrenceView, EKEvent, EKEventGestureController, UIView, UIViewController;
 @protocol CUIKEditor;
 
-@protocol EKEventGestureControllerDelegate <NSObject>
+@protocol EKEventGestureControllerDelegate <NSObject, EKUIAppReviewPrompter>
 - (id <CUIKEditor>)editorForEventGestureController:(EKEventGestureController *)arg1;
 - (_Bool)didScrollWhenEventGestureController:(EKEventGestureController *)arg1 scrollTimerFiredToMoveLeft:(_Bool)arg2 right:(_Bool)arg3 vertically:(_Bool)arg4 towardPoint:(struct CGPoint)arg5;
 - (void)eventGestureController:(EKEventGestureController *)arg1 didSingleTapOccurrence:(EKEvent *)arg2 shouldExtendSelection:(_Bool)arg3;
@@ -17,7 +18,8 @@
 - (_Bool)eventGestureController:(EKEventGestureController *)arg1 didCommitOccurrence:(EKEvent *)arg2 toDate:(double)arg3 isAllDay:(_Bool)arg4 span:(long long)arg5;
 - (void)eventGestureController:(EKEventGestureController *)arg1 didMoveToDate:(double)arg2 isAllDay:(_Bool)arg3;
 - (void)eventGestureController:(EKEventGestureController *)arg1 didSetUpAtDate:(double)arg2 isAllDay:(_Bool)arg3;
-- (double)eventGestureController:(EKEventGestureController *)arg1 heightForOccurrenceViewOfDuration:(double)arg2 allDay:(_Bool)arg3;
+- (double)eventGestureController:(EKEventGestureController *)arg1 heightForAllDayOccurrenceView:(EKDayOccurrenceView *)arg2;
+- (double)eventGestureController:(EKEventGestureController *)arg1 heightForOccurrenceViewOfDuration:(double)arg2;
 - (double)eventGestureController:(EKEventGestureController *)arg1 widthForOccurrenceViewOfDays:(unsigned long long)arg2;
 - (struct CGPoint)eventGestureController:(EKEventGestureController *)arg1 pointAtDate:(double)arg2 isAllDay:(_Bool)arg3;
 - (double)eventGestureController:(EKEventGestureController *)arg1 dateAtPoint:(struct CGPoint)arg2;

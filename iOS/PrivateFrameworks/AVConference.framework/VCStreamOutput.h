@@ -15,15 +15,14 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_xpcCommandQueue;
     int _clientProcessID;
     struct __CFDictionary *_attributes;
-    id _synchronizationDelegate;
     id _delegate;
     NSObject<OS_dispatch_queue> *_delegateQueue;
     _Bool _isClientInProcess;
     _Bool _useFigRemoteQueue;
-    const struct __CFAllocator *_backingBufferAllocator;
+    struct __CFAllocator *_backingBufferAllocator;
 }
 
-@property(readonly) const struct __CFAllocator *backingBufferAllocator; // @synthesize backingBufferAllocator=_backingBufferAllocator;
+@property(readonly) struct __CFAllocator *backingBufferAllocator; // @synthesize backingBufferAllocator=_backingBufferAllocator;
 @property(readonly) _Bool isClientInProcess; // @synthesize isClientInProcess=_isClientInProcess;
 @property(readonly, nonatomic) long long streamToken; // @synthesize streamToken=_streamToken;
 - (int)processID;
@@ -34,16 +33,12 @@ __attribute__((visibility("hidden")))
 - (void)didInvalidate;
 - (void)didDegrade:(_Bool)arg1;
 - (void)didPause:(_Bool)arg1;
-@property(nonatomic) float synchronizationTimeOffset;
 - (_Bool)initXPCCommandQueue;
-- (_Bool)enqueueAttributes:(struct __CFDictionary *)arg1;
 - (id)copyXpcSenderQueue;
 - (_Bool)createRemoteQueue;
-- (void)setSynchronizationDelegate:(id)arg1;
-- (id)synchronizationDelegate;
 - (void)dealloc;
 - (void)invalidate;
-- (id)initWithStreamToken:(long long)arg1 clientProcessID:(int)arg2 synchronizationDelegate:(id)arg3 delegate:(id)arg4 delegateQueue:(id)arg5;
+- (id)initWithStreamToken:(long long)arg1 clientProcessID:(int)arg2 delegate:(id)arg3 delegateQueue:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

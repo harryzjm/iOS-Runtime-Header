@@ -9,6 +9,7 @@
 @class MPCPlaybackIntent, MPCPlayerCommandRequest, MPCPlayerResponseItem;
 
 @protocol MPCPlayerInsertItemsCommand <MPCPlayerCommand>
+- (MPCPlayerCommandRequest *)insertAtEndOfUpNextWithPlaybackIntent:(MPCPlaybackIntent *)arg1;
 - (MPCPlayerCommandRequest *)insertAtEndOfTracklistWithPlaybackIntent:(MPCPlaybackIntent *)arg1;
 - (MPCPlayerCommandRequest *)insertPlaybackIntent:(MPCPlaybackIntent *)arg1 afterItem:(MPCPlayerResponseItem *)arg2;
 - (MPCPlayerCommandRequest *)insertAfterPlayingItemWithPlaybackIntent:(MPCPlaybackIntent *)arg1;

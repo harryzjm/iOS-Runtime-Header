@@ -34,9 +34,11 @@ __attribute__((visibility("hidden")))
 - (void)virtualGarageGetLatestStateOfVehicleWithIdentifier:(id)arg1 syncAcrossDevices:(_Bool)arg2 withReply:(CDUnknownBlockType)arg3;
 - (void)virtualGarageGetListOfUnpairedVehiclesWithReply:(CDUnknownBlockType)arg1;
 - (void)virtualGarageGetGarageWithReply:(CDUnknownBlockType)arg1;
+- (void)virtualGarageForceFetchAllVehicles;
 - (void)virtualGarageSetAssumesFullCharge:(_Bool)arg1;
 - (void)virtualGarageEndContinuousUpdates;
 - (void)virtualGarageStartContinuousUpdatesIfNeeded;
+- (void)virtualGarageSetShouldUsePreferredNetworks:(_Bool)arg1 forVehicle:(id)arg2;
 - (void)virtualGarageOnboardVehicle:(id)arg1;
 - (void)virtualGarageSelectVehicle:(id)arg1;
 - (void)virtualGarageSaveVehicle:(id)arg1;

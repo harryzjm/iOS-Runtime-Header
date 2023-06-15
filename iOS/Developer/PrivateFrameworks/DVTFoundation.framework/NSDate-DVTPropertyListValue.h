@@ -9,12 +9,12 @@
 @class NSArray, NSData, NSDictionary, NSNumber, NSString;
 
 @interface NSDate (DVTPropertyListValue)
-@property(readonly) NSDictionary *dictionaryValue;
-@property(readonly) NSArray *arrayValue;
-@property(readonly) NSDate *dateValue;
-@property(readonly) NSNumber *numberValue;
-@property(readonly) NSData *dataValue;
-@property(readonly) NSString *stringValue;
+@property(readonly) NSDictionary *dvt_plistDictionaryValue;
+@property(readonly) NSArray *dvt_plistArrayValue;
+@property(readonly) NSDate *dvt_plistDateValue;
+@property(readonly) NSNumber *dvt_plistNumberValue;
+@property(readonly) NSData *dvt_plistDataValue;
+@property(readonly) NSString *dvt_plistStringValue;
 - (_Bool)dvt_isInThePast;
 - (id)dvt_mostSignificantDateComponentStringRelativeToToday;
 - (id)dvt_descriptionWithDateFormat:(id)arg1;

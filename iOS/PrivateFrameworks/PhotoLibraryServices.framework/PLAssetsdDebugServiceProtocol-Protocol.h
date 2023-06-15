@@ -9,10 +9,17 @@
 @class NSArray, NSNumber, NSSet, NSString, NSURL;
 
 @protocol PLAssetsdDebugServiceProtocol <NSObject>
+- (void)runMaintenanceTask:(NSString *)arg1 reply:(void (^)(_Bool, NSError *))arg2;
+- (void)resetMaintenanceTasksWithReply:(void (^)(_Bool, NSError *))arg1;
+- (void)backgroundMigrationWithReply:(void (^)(_Bool, NSError *))arg1;
+- (void)waitForMomentGenerationWithReply:(void (^)(NSError *))arg1;
 - (void)syndicationIngestMutexStateDescriptionWithReply:(void (^)(NSString *, NSError *))arg1;
-- (void)updateSiriVocabulary;
-- (void)coalesceJournalsForPayloadClassIDs:(NSSet *)arg1 withChangeJournalOverThreshold:(float)arg2 reply:(void (^)(void))arg3;
-- (void)snapshotJournalsForPayloadClassIDs:(NSSet *)arg1 reply:(void (^)(NSError *))arg2;
+- (void)computeCacheStatusWithReply:(void (^)(NSDictionary *, NSError *))arg1;
+- (void)resetComputeCacheWithReply:(void (^)(NSError *))arg1;
+- (void)archiveComputeCacheWithReply:(void (^)(NSError *))arg1;
+- (void)restoreComputeCacheWithReply:(void (^)(NSError *))arg1;
+- (void)coalesceJournalsForManagerName:(NSString *)arg1 payloadClassIDs:(NSSet *)arg2 withChangeJournalOverThreshold:(float)arg3 reply:(void (^)(void))arg4;
+- (void)snapshotJournalsForManagerName:(NSString *)arg1 payloadClassIDs:(NSSet *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)privateDownloadCloudPhotoLibraryAsset:(NSURL *)arg1 resourceType:(unsigned long long)arg2 highPriority:(_Bool)arg3 reply:(void (^)(void))arg4;
 - (void)invalidateHighlightSubtitlesAndRegenerateHighlightTitlesWithCompletionBlock:(void (^)(void))arg1;
 - (void)cleanupEmptyHighlightsWithReply:(void (^)(void))arg1;
@@ -31,9 +38,11 @@
 - (void)getTaskConstraintStatusWithReply:(void (^)(NSString *))arg1;
 - (void)getXPCTransactionStatusWithReply:(void (^)(NSString *))arg1;
 - (void)rebuildTableThumbsWithReply:(void (^)(NSString *))arg1;
+- (void)removeAllThumbnailsForDryRun:(_Bool)arg1 reply:(void (^)(NSNumber *, NSNumber *))arg2;
 - (void)rebuildAllThumbnails;
 - (void)resetDupesAnalysis;
 - (void)rebuildCloudFeedWithReply:(void (^)(void))arg1;
+- (void)donateSearchEntitiesToSpotlightWithReply:(void (^)(_Bool, NSError *))arg1;
 - (void)rebuildSearchIndexWithReply:(void (^)(void))arg1;
 - (void)setSearchIndexPaused:(_Bool)arg1 reason:(NSString *)arg2 reply:(void (^)(void))arg3;
 - (void)dropSearchIndexWithReply:(void (^)(void))arg1;

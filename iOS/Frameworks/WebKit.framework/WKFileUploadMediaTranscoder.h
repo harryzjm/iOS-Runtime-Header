@@ -10,7 +10,7 @@ __attribute__((visibility("hidden")))
 @interface WKFileUploadMediaTranscoder : NSObject
 {
     struct RetainPtr<NSTimer> _progressTimer;
-    struct RetainPtr<PUActivityProgressController> _progressController;
+    struct RetainPtr<PXActivityProgressController> _progressController;
     struct RetainPtr<AVAssetExportSession> _exportSession;
     struct RetainPtr<NSArray<_WKFileUploadItem *>> _items;
     struct RetainPtr<NSString> _temporaryDirectoryPath;

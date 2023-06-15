@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIAlertController.h>
+#import <UIKitCore/UIAlertController.h>
 
 @interface UIAlertController (TelephonyUI)
 + (id)telephonyAccountUnavailableAlertControllerWithSenderIdentities:(id)arg1 preferredStyle:(long long)arg2 completion:(CDUnknownBlockType)arg3;

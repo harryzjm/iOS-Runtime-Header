@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class LPSize;
+@class LPSize, UIColor;
 
 __attribute__((visibility("hidden")))
 @interface LPVideoPlayButtonStyle : NSObject
@@ -14,9 +14,11 @@ __attribute__((visibility("hidden")))
     LPSize *_size;
     LPSize *_backgroundSize;
     double _disabledOpacity;
+    UIColor *_color;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) UIColor *color; // @synthesize color=_color;
 @property(nonatomic) double disabledOpacity; // @synthesize disabledOpacity=_disabledOpacity;
 @property(retain, nonatomic) LPSize *backgroundSize; // @synthesize backgroundSize=_backgroundSize;
 @property(retain, nonatomic) LPSize *size; // @synthesize size=_size;

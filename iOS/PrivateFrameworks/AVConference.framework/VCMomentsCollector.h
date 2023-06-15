@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, VCMoments;
+@class NSString, VCMediaRecorder;
 
 __attribute__((visibility("hidden")))
 @interface VCMomentsCollector : NSObject
 {
     long long _streamToken;
-    VCMoments *_moments;
+    VCMediaRecorder *_mediaRecorder;
 }
 
 - (void)cleanupActiveRequests;

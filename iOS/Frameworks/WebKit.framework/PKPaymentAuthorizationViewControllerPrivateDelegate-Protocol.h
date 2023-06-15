@@ -6,12 +6,14 @@
 
 #import <WebKit/NSObject-Protocol.h>
 
-@class NSError, PKPaymentAuthorizationViewController;
+@class NSError, PKAccountServicePaymentMethod, PKApplePayTrustSignature, PKPaymentAuthorizationCoordinator, PKPaymentAuthorizationViewController;
 
 @protocol PKPaymentAuthorizationViewControllerPrivateDelegate <NSObject>
 - (void)paymentAuthorizationViewController:(PKPaymentAuthorizationViewController *)arg1 willFinishWithError:(NSError *)arg2;
 
 @optional
+- (void)paymentAuthorizationCoordinator:(PKPaymentAuthorizationCoordinator *)arg1 didAuthorizeApplePayTrustSignature:(PKApplePayTrustSignature *)arg2 handler:(void (^)(PKPaymentAuthorizationResult *))arg3;
+- (void)paymentAuthorizationCoordinator:(PKPaymentAuthorizationCoordinator *)arg1 didUpdateAccountServicePaymentMethod:(PKAccountServicePaymentMethod *)arg2 handler:(void (^)(PKPaymentRequestPaymentMethodUpdate *, PKApplePayTrustSignatureRequest *))arg3;
 - (void)paymentAuthorizationViewController:(PKPaymentAuthorizationViewController *)arg1 didEncounterAuthorizationEvent:(unsigned long long)arg2;
 - (void)paymentAuthorizationViewController:(PKPaymentAuthorizationViewController *)arg1 didRequestMerchantSession:(void (^)(PKPaymentMerchantSession *, NSError *))arg2;
 @end

@@ -15,12 +15,12 @@ __attribute__((visibility("hidden")))
     _UIMorphingPlatterView *_effectView;
     UIView *_anchorView;
     double _distanceFromPrimaryBody;
-    struct CGPoint _positionInPrimaryContainer;
+    struct CAPoint3D _positionInPrimaryContainer;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) double distanceFromPrimaryBody; // @synthesize distanceFromPrimaryBody=_distanceFromPrimaryBody;
-@property(nonatomic) struct CGPoint positionInPrimaryContainer; // @synthesize positionInPrimaryContainer=_positionInPrimaryContainer;
+@property(nonatomic) struct CAPoint3D positionInPrimaryContainer; // @synthesize positionInPrimaryContainer=_positionInPrimaryContainer;
 @property(retain, nonatomic) UIView *anchorView; // @synthesize anchorView=_anchorView;
 @property(retain, nonatomic) _UIMorphingPlatterView *effectView; // @synthesize effectView=_effectView;
 @property(retain, nonatomic) UITargetedPreview *preview; // @synthesize preview=_preview;

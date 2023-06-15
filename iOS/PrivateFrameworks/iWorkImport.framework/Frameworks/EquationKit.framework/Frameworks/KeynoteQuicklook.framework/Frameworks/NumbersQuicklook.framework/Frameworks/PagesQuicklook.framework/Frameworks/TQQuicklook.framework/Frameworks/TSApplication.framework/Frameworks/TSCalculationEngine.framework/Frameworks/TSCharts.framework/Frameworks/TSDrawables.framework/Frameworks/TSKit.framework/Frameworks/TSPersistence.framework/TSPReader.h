@@ -74,6 +74,7 @@
 @property(readonly, nonatomic) TSPObjectContext *context;
 - (void)processObjectsToModifyWithRootObject:(id)arg1;
 - (void)setObjectDelegatesToContextObjectDelegate;
+- (_Bool)setObject:(id)arg1 forIdentifier:(long long)arg2;
 - (void)resolveReferences;
 - (_Bool)finishUnarchiving;
 - (void)didUnarchiveObject:(id)arg1 withUnarchiver:(id)arg2;

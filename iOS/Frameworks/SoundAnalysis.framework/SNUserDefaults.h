@@ -11,5 +11,50 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (id)microphoneInjectionFilePath;
++ (id)microphoneInjectionFilePathFromUserDefaultsSnapshot:(id)arg1;
++ (id)microphoneArrayChannelMap;
++ (id)microphoneArrayChannelMapFromUserDefaultsSnapshot:(id)arg1;
++ (id)builtInMicrophoneAnalysisChannelNumber;
++ (id)builtInMicrophoneAnalysisChannelNumberFromUserDefaultsSnapshot:(id)arg1;
++ (id)fileServerRootDirectory;
++ (id)fileServerRootDirectoryFromUserDefaultsSnapshot:(id)arg1;
++ (_Bool)enableFileServer;
++ (_Bool)enableFileServerFromUserDefaultsSnapshot:(id)arg1;
++ (_Bool)enableSecondPassRecordingInDaemon;
++ (_Bool)enableSecondPassRecordingInDaemonFromUserDefaultsSnapshot:(id)arg1;
++ (double)firstPassRecordingHistoryDuration;
++ (double)firstPassRecordingHistoryDurationFromUserDefaultsSnapshot:(id)arg1;
++ (id)firstPassRecordingPredicate;
++ (id)firstPassRecordingPredicateFromUserDefaultsSnapshot:(id)arg1;
++ (_Bool)deleteRecordingsWithoutDetection;
++ (_Bool)deleteRecordingsWithoutDetectionFromUserDefaultsSnapshot:(id)arg1;
++ (id)daemonRecordingPath;
++ (id)daemonRecordingPathFromUserDefaultsSnapshot:(id)arg1;
++ (id)defaultDaemonRecordingPath;
++ (double)sysdiagnoseHistoricalResultsDuration;
++ (double)sysdiagnoseHistoricalResultsDurationFromUserDefaultsSnapshot:(id)arg1;
++ (id)stringForKey:(id)arg1 orDefault:(id)arg2 fromUserDefaultsSnapshot:(id)arg3;
++ (long long)integerForKey:(id)arg1 orDefault:(long long)arg2 fromUserDefaultsSnapshot:(id)arg3;
++ (double)doubleForKey:(id)arg1 orDefault:(double)arg2 fromUserDefaultsSnapshot:(id)arg3;
++ (_Bool)boolForKey:(id)arg1 orDefault:(_Bool)arg2 fromUserDefaultsSnapshot:(id)arg3;
++ (id)integerArrayForKey:(id)arg1 fromUserDefaultsSnapshot:(id)arg2;
++ (id)stringForKey:(id)arg1 fromUserDefaultsSnapshot:(id)arg2;
++ (id)integerForKey:(id)arg1 fromUserDefaultsSnapshot:(id)arg2;
++ (id)doubleForKey:(id)arg1 fromUserDefaultsSnapshot:(id)arg2;
++ (id)boolForKey:(id)arg1 fromUserDefaultsSnapshot:(id)arg2;
++ (id)integerArrayForKey:(id)arg1 fromUserDefaultsSnapshot:(id)arg2 error:(id *)arg3;
++ (id)stringForKey:(id)arg1 fromUserDefaultsSnapshot:(id)arg2 error:(id *)arg3;
++ (id)doubleForKey:(id)arg1 fromUserDefaultsSnapshot:(id)arg2 error:(id *)arg3;
++ (id)integerForKey:(id)arg1 fromUserDefaultsSnapshot:(id)arg2 error:(id *)arg3;
++ (id)numberForKey:(id)arg1 fromUserDefaultsSnapshot:(id)arg2 error:(id *)arg3;
++ (id)coerceIntegerArrayFromValue:(id)arg1 error:(id *)arg2;
++ (id)coerceDoubleFromValue:(id)arg1 error:(id *)arg2;
++ (id)coerceIntegerFromValue:(id)arg1 error:(id *)arg2;
++ (id)coerceNumberFromValue:(id)arg1 error:(id *)arg2;
++ (id)coerceStringFromValue:(id)arg1 error:(id *)arg2;
++ (id)userDefaultsSnapshot;
++ (id)userDefaultsSingleton;
+
 @end
 

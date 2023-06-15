@@ -13,15 +13,40 @@ __attribute__((visibility("hidden")))
 {
     CNContactStore *_mainStore;
     NSArray *_contactStores;
+    CNContactStore *_contactStoreForMatchingDictionaryWork;
+    NSArray *_postFetchDecoratorBlocks;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *postFetchDecoratorBlocks; // @synthesize postFetchDecoratorBlocks=_postFetchDecoratorBlocks;
+@property(retain, nonatomic) CNContactStore *contactStoreForMatchingDictionaryWork; // @synthesize contactStoreForMatchingDictionaryWork=_contactStoreForMatchingDictionaryWork;
 @property(copy, nonatomic) NSArray *contactStores; // @synthesize contactStores=_contactStores;
+- (_Bool)verifyChangeHistoryForClientIdentifier:(id)arg1 error:(id *)arg2;
+- (id)latestConsumedChangeHistoryAnchorForClientIdentifier:(id)arg1 error:(id *)arg2;
+- (id)individualContactCountWithError:(id *)arg1;
+- (void)setLegacyTetheredSyncComputerAnchor:(id)arg1;
+- (id)legacyTetheredSyncComputerAnchor;
+- (void)setLegacyTetheredSyncDeviceAnchor:(id)arg1;
+- (id)legacyTetheredSyncDeviceAnchor;
+- (_Bool)setDefaultAccountIdentifier:(id)arg1 error:(id *)arg2;
+- (_Bool)resetSortDataIfNeededWithError:(id *)arg1;
+- (_Bool)moveContacts:(id)arg1 fromContainer:(id)arg2 toContainer:(id)arg3 error:(id *)arg4;
+- (int)saveSequenceCount;
+- (id)identifierWithError:(id *)arg1;
+- (_Bool)setBestMeIfNeededForGivenName:(id)arg1 familyName:(id)arg2 email:(id)arg3 error:(id *)arg4;
+- (id)requestExtensionCommand:(id)arg1 error:(id *)arg2;
+- (void)addPostFetchDecorator:(CDUnknownBlockType)arg1;
+- (id)applyPostFetchDecoratorsToContacts:(id)arg1 keysToFetch:(id)arg2 unifyContactsFromMainStore:(_Bool)arg3;
+- (id)applyPostFetchDecoratorsToContact:(id)arg1 keysToFetch:(id)arg2 unifyContactsFromMainStore:(_Bool)arg3;
 - (_Bool)executeChangeHistoryClearRequest:(id)arg1 error:(id *)arg2;
 - (_Bool)clearChangeHistoryForClientIdentifier:(id)arg1 toChangeAnchor:(id)arg2 error:(id *)arg3;
 - (id)changeHistoryWithFetchRequest:(id)arg1 error:(id *)arg2;
 - (_Bool)unregisterChangeHistoryClientIdentifier:(id)arg1 error:(id *)arg2;
 - (_Bool)registerChangeHistoryClientIdentifier:(id)arg1 error:(id *)arg2;
+- (id)matchingDictionaryForContact:(id)arg1;
+- (id)contactIdentifierWithMatchingDictionary:(id)arg1;
+- (id)descriptorForRequiredKeysForMatchingDictionary;
+- (id)findContactStoreForMatchingDictionaryWork;
 - (id)userActivityUserInfoForContact:(id)arg1;
 - (id)contactWithUserActivityUserInfo:(id)arg1 keysToFetch:(id)arg2;
 - (id)currentHistoryAnchor;
@@ -53,7 +78,6 @@ __attribute__((visibility("hidden")))
 - (id)sectionListOffsetsForSortOrder:(long long)arg1 error:(id *)arg2;
 - (id)_unifiedContactsFromContacts:(id)arg1 unifyContactsFromMainStore:(_Bool)arg2 keysToFetch:(id)arg3 error:(id *)arg4;
 - (void)didFetchContacts:(id)arg1 forPredicate:(id)arg2 fromStore:(id)arg3 unifiedFetch:(_Bool)arg4;
-- (_Bool)resetSortDataIfNeededWithError:(id *)arg1;
 - (void)_enumerateStoresUsingBlock:(CDUnknownBlockType)arg1;
 - (id)_allStoreResultsWithError:(id *)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (id)requestAccessForEntityType:(long long)arg1;
@@ -62,7 +86,13 @@ __attribute__((visibility("hidden")))
 - (_Bool)hasGroups;
 - (_Bool)hasMultipleGroupsOrAccounts;
 - (_Bool)store:(id)arg1 supportsSelector:(SEL)arg2;
+- (id)initWithContactStores:(id)arg1 configuration:(id)arg2;
 - (id)initWithContactStores:(id)arg1;
+- (_Bool)isSpotlightIndexingSupported;
+- (id)firstContactStoreSupportingSpotlightIndexing;
+- (id)contactStoresSupportingSpotlightIndexing;
+- (id)verifyIndexWithError:(id *)arg1;
+- (void)reindexSearchableItemsWithIdentifiers:(id)arg1;
 - (id)iOSMapper;
 - (id)originForSuggestion:(id)arg1 error:(id *)arg2;
 

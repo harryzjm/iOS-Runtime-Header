@@ -6,8 +6,10 @@
 
 #import <HomeUI/NSObject-Protocol.h>
 
+@class HFTriggerBuilder;
+
 @protocol HUTriggerSummaryActionGridViewControllerProtocol <NSObject>
+@property(readonly, nonatomic) HFTriggerBuilder *triggerBuilder;
 - (void)reloadActions;
-@property(nonatomic, readonly) id triggerBuilder;
 @end
 

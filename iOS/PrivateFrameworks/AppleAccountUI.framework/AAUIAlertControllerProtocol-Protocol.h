@@ -10,6 +10,7 @@
 
 @protocol AAUIAlertControllerProtocol <NSObject>
 + (id)alertWithTitle:(NSString *)arg1 message:(NSString *)arg2 cancelButtonTitle:(NSString *)arg3 defaultButtonTitle:(NSString *)arg4;
++ (id)alertWithTitle:(NSString *)arg1 message:(NSString *)arg2 cancelButtonTitle:(NSString *)arg3 destructiveButtonTitle:(NSString *)arg4 actionHandler:(void (^)(_Bool))arg5;
 + (id)alertWithTitle:(NSString *)arg1 message:(NSString *)arg2 cancelButtonTitle:(NSString *)arg3 defaultButtonTitle:(NSString *)arg4 actionHandler:(void (^)(_Bool))arg5;
 + (id)alertWithTitle:(NSString *)arg1 message:(NSString *)arg2 buttonTitle:(NSString *)arg3;
 + (id)alertWithTitle:(NSString *)arg1 message:(NSString *)arg2 buttonTitle:(NSString *)arg3 actionHandler:(void (^)(void))arg4;

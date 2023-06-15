@@ -10,7 +10,7 @@ __attribute__((visibility("hidden")))
 @interface WKInspectorHighlightView : UIView
 {
     struct RetainPtr<NSMutableArray<CAShapeLayer *>> _layers;
-    struct optional<WebCore::InspectorOverlay::Highlight> _highlight;
+    struct optional<WebCore::InspectorOverlayHighlight> _highlight;
 }
 
 - (id).cxx_construct;

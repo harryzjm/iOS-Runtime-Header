@@ -7,12 +7,10 @@
 __attribute__((visibility("hidden")))
 @interface MCMXPCMessageOperationDelete
 {
-    _Bool _traverseLinks;
     _Bool _waitForDiskSpaceReclaim;
 }
 
 @property(readonly, nonatomic) _Bool waitForDiskSpaceReclaim; // @synthesize waitForDiskSpaceReclaim=_waitForDiskSpaceReclaim;
-@property(readonly, nonatomic) _Bool traverseLinks; // @synthesize traverseLinks=_traverseLinks;
 - (id)initWithXPCObject:(id)arg1 context:(id)arg2 error:(unsigned long long *)arg3;
 
 @end

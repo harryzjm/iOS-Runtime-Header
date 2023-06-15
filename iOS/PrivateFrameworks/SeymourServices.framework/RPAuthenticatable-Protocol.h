@@ -4,21 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSString, OS_dispatch_queue;
+@class NSArray, NSData, NSString, OS_dispatch_queue;
 
 @protocol RPAuthenticatable
-- (void)tryPassword:(NSString *)arg1;
-@property(nonatomic, copy) CDUnknownBlockType promptForPasswordHandler;
-@property(nonatomic, copy) CDUnknownBlockType hidePasswordHandler;
-@property(nonatomic, copy) CDUnknownBlockType showPasswordHandler;
-@property(nonatomic, copy) CDUnknownBlockType authCompletionHandler;
-@property(nonatomic, readonly) int passwordTypeActual;
+@property(copy, nonatomic) CDUnknownBlockType promptForPasswordHandler;
+@property(copy, nonatomic) CDUnknownBlockType hidePasswordHandler;
+@property(copy, nonatomic) CDUnknownBlockType showPasswordHandler;
+@property(copy, nonatomic) CDUnknownBlockType authCompletionHandler;
+@property(readonly, nonatomic) int passwordTypeActual;
 @property(nonatomic) int passwordType;
-@property(nonatomic, copy) NSString *password;
+@property(copy, nonatomic) NSString *password;
 @property(nonatomic) unsigned int pairVerifyFlags;
 @property(nonatomic) unsigned int pairSetupFlags;
-@property(nonatomic, copy) NSArray *pairSetupACL;
-@property(nonatomic, readonly) OS_dispatch_queue *dispatchQueue;
-@property(nonatomic, copy) NSArray *allowedMACAddresses;
+@property(retain, nonatomic) NSArray *pairSetupACL;
+@property(copy, nonatomic) NSData *pairingInfo;
+@property(readonly, nonatomic) OS_dispatch_queue *dispatchQueue;
+@property(retain, nonatomic) NSArray *allowedMACAddresses;
+- (void)tryPassword:(NSString *)arg1;
+
+@optional
+- (void)stopPairingServer;
+- (void)startPairingServerWithCompletion:(void (^)(NSData *, NSError *))arg1;
 @end
 

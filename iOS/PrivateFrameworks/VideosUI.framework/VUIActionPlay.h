@@ -4,29 +4,37 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSDate, NSDictionary, VUIActionPlayParams, VUIAppContext;
+@class MPMediaItem, NSArray, NSDate, NSDictionary, NSString, VUIAppContext;
 
 __attribute__((visibility("hidden")))
 @interface VUIActionPlay
 {
     _Bool _upNextPlayback;
+    _Bool _isRentAndWatchNow;
     NSDictionary *_contextData;
     NSArray *_videosPlayables;
     VUIAppContext *_appContext;
     NSDate *_userPlaybackInitiationDate;
     NSDate *_openURLCompletionDate;
-    VUIActionPlayParams *_actionPlayParams;
+    MPMediaItem *_mpMediaItem;
+    NSString *_sidebandLibraryAdamID;
+    long long _watchType;
+    unsigned long long _playbackContext;
 }
 
 + (id)_hlsURLUpdatedWithBingeWatchingParamFromURL:(id)arg1;
-+ (void)_presentPlaybackWithMediaInfo:(id)arg1 extrasInfo:(id)arg2 allowsCellular:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
-+ (void)_playMediaInfo:(id)arg1 watchType:(long long)arg2 extrasInfo:(id)arg3 isRentAndWatchNow:(_Bool)arg4 completion:(CDUnknownBlockType)arg5;
++ (void)_presentPlaybackWithMediaInfo:(id)arg1 extrasInfo:(id)arg2 isCoWatching:(_Bool)arg3 watchType:(long long)arg4 playType:(id)arg5 allowsCellular:(_Bool)arg6 previewMetadata:(id)arg7 completion:(CDUnknownBlockType)arg8;
++ (void)_playMediaInfo:(id)arg1 watchType:(long long)arg2 extrasInfo:(id)arg3 playType:(id)arg4 isRentAndWatchNow:(_Bool)arg5 completion:(CDUnknownBlockType)arg6;
 + (void)playMediaInfo:(id)arg1 watchType:(long long)arg2 isRentAndWatchNow:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 + (void)playMediaInfo:(id)arg1 watchType:(long long)arg2 isRentAndWatchNow:(_Bool)arg3;
-+ (void)_playPlayables:(id)arg1 appContext:(id)arg2 watchType:(long long)arg3 isUpNextPlayback:(_Bool)arg4 userPlaybackInitiationDate:(id)arg5 openURLCompletionDate:(id)arg6;
++ (void)_playPlayables:(id)arg1 appContext:(id)arg2 watchType:(long long)arg3 isUpNextPlayback:(_Bool)arg4 userPlaybackInitiationDate:(id)arg5 openURLCompletionDate:(id)arg6 playType:(id)arg7 playbackContext:(unsigned long long)arg8;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool isRentAndWatchNow; // @synthesize isRentAndWatchNow=_isRentAndWatchNow;
+@property(nonatomic) unsigned long long playbackContext; // @synthesize playbackContext=_playbackContext;
+@property(nonatomic) long long watchType; // @synthesize watchType=_watchType;
+@property(retain, nonatomic) NSString *sidebandLibraryAdamID; // @synthesize sidebandLibraryAdamID=_sidebandLibraryAdamID;
+@property(retain, nonatomic) MPMediaItem *mpMediaItem; // @synthesize mpMediaItem=_mpMediaItem;
 @property(nonatomic, getter=isUpNextPlayback) _Bool upNextPlayback; // @synthesize upNextPlayback=_upNextPlayback;
-@property(retain, nonatomic) VUIActionPlayParams *actionPlayParams; // @synthesize actionPlayParams=_actionPlayParams;
 @property(retain, nonatomic) NSDate *openURLCompletionDate; // @synthesize openURLCompletionDate=_openURLCompletionDate;
 @property(retain, nonatomic) NSDate *userPlaybackInitiationDate; // @synthesize userPlaybackInitiationDate=_userPlaybackInitiationDate;
 @property(nonatomic) __weak VUIAppContext *appContext; // @synthesize appContext=_appContext;
@@ -34,8 +42,11 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSDictionary *contextData; // @synthesize contextData=_contextData;
 - (_Bool)isAccountRequired;
 - (void)performWithTargetResponder:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+@property(readonly, nonatomic) NSString *playType;
+- (id)initWithSidebandAdamID:(id)arg1 watchType:(long long)arg2 playbackContext:(unsigned long long)arg3 isRentAndWatchNow:(_Bool)arg4;
+- (id)initWithMPMediaItem:(id)arg1 watchType:(long long)arg2 playbackContext:(unsigned long long)arg3 isRentAndWatchNow:(_Bool)arg4;
+- (id)initWithVideosPlayables:(id)arg1 watchType:(long long)arg2 playbackContext:(unsigned long long)arg3 isRentAndWatchNow:(_Bool)arg4;
 - (id)initWithContextData:(id)arg1 appContext:(id)arg2;
-- (id)initWithMediaInfo:(id)arg1 watchType:(long long)arg2 isRentAndWatchNow:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 
 @end
 

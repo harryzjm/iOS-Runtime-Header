@@ -27,9 +27,11 @@
 - (id)vk_objectsOfClass:(Class)arg1;
 - (id)vk_objectsPassingTest:(CDUnknownBlockType)arg1;
 - (_Bool)vk_containsObjectPassingTest:(CDUnknownBlockType)arg1;
+- (id)vk_arrayFromReplacingObject:(id)arg1 withObject:(id)arg2;
 - (unsigned long long)vk_countOfObjectsPassingTest:(CDUnknownBlockType)arg1;
 - (id)vk_objectPassingTest:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) NSArray *vk_generateAllPermutations;
+@property(readonly, nonatomic) NSArray *vk_randomizedArray;
 @property(readonly, nonatomic) id vk_randomObject;
 @end
 

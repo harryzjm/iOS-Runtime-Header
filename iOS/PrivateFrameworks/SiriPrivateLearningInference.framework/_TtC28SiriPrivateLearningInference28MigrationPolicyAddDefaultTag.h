@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)init;
-- (id)migrateAndAddDefaultTag:(id)arg1 source:(id)arg2 manager:(id *)arg3;
+- (id)migrateAndAddDefaultTagWithSource:(id)arg1 manager:(id)arg2;
 
 @end
 

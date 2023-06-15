@@ -25,7 +25,6 @@ __attribute__((visibility("hidden")))
 - (void)bundleSubscriptionDidSubscribe:(id)arg1;
 - (void)bundleSubscriptionDidExpire:(id)arg1;
 - (void)bundleSubscriptionDidChange:(id)arg1 previousBundleSubscription:(id)arg2;
-- (void)pushMobileData;
 - (void)pushUserSubscriptionContextData;
 - (void)subscriptionController:(id)arg1 didAddTags:(id)arg2 changeTags:(id)arg3 moveTags:(id)arg4 removeTags:(id)arg5 subscriptionType:(unsigned long long)arg6;
 

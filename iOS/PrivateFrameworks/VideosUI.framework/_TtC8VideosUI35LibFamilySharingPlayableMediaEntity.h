@@ -24,6 +24,7 @@
     MISSING_TYPE *contentRating;
     MISSING_TYPE *offers;
     MISSING_TYPE *personalizedOffers;
+    MISSING_TYPE *isFullyWatched;
 }
 
 @end

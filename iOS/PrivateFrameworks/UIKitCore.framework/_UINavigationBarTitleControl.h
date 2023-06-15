@@ -6,17 +6,20 @@
 
 #import "UIControl.h"
 
-@class NSArray, NSDictionary, NSString, UIDocumentProperties, UIImageView, UILabel, UILayoutGuide, UIView, _UITAMICAdaptorView;
+@class NSArray, NSDictionary, NSLayoutConstraint, NSString, UIDocumentProperties, UIImageView, UILabel, UILayoutGuide, UIView, _UITAMICAdaptorView;
 @protocol _UINavigationBarTitleControlVisualProvider;
 
 __attribute__((visibility("hidden")))
 @interface _UINavigationBarTitleControl : UIControl
 {
+    UIView *_backgroundView;
     UILabel *_inlineTitleView;
     _UITAMICAdaptorView *_wrapperView;
     NSDictionary *_resolvedAttributes;
     UIImageView *_chevron;
     UILayoutGuide *_chevronGuide;
+    NSLayoutConstraint *_sosConstraint;
+    NSArray *_backgroundViewConstraints;
     NSArray *_titleConstraints;
     NSArray *_inlineTitleConstraints;
     NSArray *_chevronConstraints;
@@ -33,7 +36,7 @@ __attribute__((visibility("hidden")))
     struct UIEdgeInsets _menuAlignmentInsets;
 }
 
-+ (id)titleMenuSuggestedActions;
++ (id)titleMenuSuggestedActionsWithDocumentFileURL:(id)arg1;
 - (void).cxx_destruct;
 @property(retain, nonatomic) id <_UINavigationBarTitleControlVisualProvider> visualProvider; // @synthesize visualProvider=_visualProvider;
 @property(retain, nonatomic) UILayoutGuide *titleLayoutGuide; // @synthesize titleLayoutGuide=_titleLayoutGuide;
@@ -46,6 +49,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIView *titleView; // @synthesize titleView=_titleView;
 @property(copy, nonatomic) NSDictionary *titleAttributes; // @synthesize titleAttributes=_titleAttributes;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
+- (void)_invalidateSceneDraggingBehavior;
 - (id)_preferredSender;
 - (id)_preferredPresentationSourceItem;
 - (void)pointerInteraction:(id)arg1 willExitRegion:(id)arg2 animator:(id)arg3;
@@ -53,6 +57,7 @@ __attribute__((visibility("hidden")))
 - (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
 - (id)pointerShapeInContainer:(id)arg1;
 - (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
+- (_Bool)_inactiveForPointer;
 - (id)contextMenuInteraction:(id)arg1 previewForDismissingMenuWithConfiguration:(id)arg2;
 - (id)contextMenuInteraction:(id)arg1 previewForHighlightingMenuWithConfiguration:(id)arg2;
 - (id)_preview;
@@ -65,16 +70,17 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)_controlEventsForActionTriggered;
 - (void)setHighlighted:(_Bool)arg1;
 - (void)didMoveToWindow;
-- (void)traitCollectionDidChange:(id)arg1;
 - (id)viewForLastBaselineLayout;
 - (id)viewForFirstBaselineLayout;
 - (void)updateConstraints;
 - (void)_updateContentAlpha;
 - (void)_updateInlineTitleView;
+- (id)_backgroundViewConstraintsForIdiom:(long long)arg1;
 - (void)_ensureNecessaryViews;
 - (void)_cleanupWrapperView;
 - (void)_resetTitleViewConstraints;
 - (void)_updateInteractions;
+@property(readonly, nonatomic) double trailingPadding;
 @property(readonly, nonatomic) _Bool isInteractive;
 @property(readonly, nonatomic) _Bool hasBaseline;
 - (id)_baselineView;

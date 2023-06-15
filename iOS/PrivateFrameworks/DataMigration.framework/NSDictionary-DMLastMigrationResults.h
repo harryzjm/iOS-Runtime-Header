@@ -10,7 +10,12 @@
 + (id)dmlmr_buildVersionKey;
 + (id)dmlmr_successKey;
 + (id)dmlmr_lastMigrationResultsWithSuccess:(_Bool)arg1 buildVersion:(id)arg2;
++ (id)dm_migrationRebootCountPref_buildVersionKey;
++ (id)dm_migrationRebootCountPref_rebootCountKey;
++ (id)dm_migrationRebootCountPrefWithRebootCount:(unsigned long long)arg1 buildVersion:(id)arg2;
 - (id)dmlmr_buildVersion;
 - (id)dmlmr_success;
+- (id)dm_migrationRebootCountPref_buildVersion;
+- (unsigned long long)dm_migrationRebootCountPref_rebootCount;
 @end
 

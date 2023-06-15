@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
-@class CEKEdgeGradientView, NSArray, NSMutableArray, NSString, NUComposition, NURenderPipelineFilter, PEValuesCalculator, PFSlowMotionTimeRangeMapper, PICompositionController, PLEditSource, PUPhotoEditAggregateSession, PUPhotoEditToolControllerSpec, PUPhotoEditViewControllerSpec, UIButton, UIColor, UIImage, UIView, _PUPhotoEditToolGradientView;
+@class CEKEdgeGradientView, NSArray, NSMutableArray, NSString, NUComposition, NURenderPipelineFilter, PEValuesCalculator, PFSlowMotionTimeRangeMapper, PICompositionController, PLEditSource, PUPhotoEditAggregateSession, PUPhotoEditToolControllerSpec, PUPhotoEditViewControllerSpec, UIColor, UIImage, UIView, _PUPhotoEditToolGradientView;
 @protocol PUEditableAsset, PUPhotoEditToolControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     NSString *_backdropViewGroupName;
     CEKEdgeGradientView *_gradientMask;
     _PUPhotoEditToolGradientView *_gradientView;
+    _Bool _toolbarGlyphUsesHierarchicalColor;
     _Bool _performingLiveInteraction;
     _Bool _hasMediaScrubber;
     _Bool _wantsScrubberKeyControl;
@@ -23,7 +24,6 @@ __attribute__((visibility("hidden")))
     id <PUEditableAsset> _asset;
     PICompositionController *_compositionController;
     PLEditSource *_editSource;
-    PLEditSource *_overcaptureEditSource;
     PEValuesCalculator *_valuesCalculator;
     PUPhotoEditToolControllerSpec *_toolControllerSpec;
     PUPhotoEditViewControllerSpec *_photoEditSpec;
@@ -33,9 +33,10 @@ __attribute__((visibility("hidden")))
     double _toolGradientDistance;
     NSString *_localizedName;
     UIImage *_toolbarIcon;
+    NSString *_toolbarIconGlyphName;
     UIImage *_selectedToolbarIcon;
+    NSString *_selectedToolbarIconGlyphName;
     NSString *_toolbarIconAccessibilityLabel;
-    UIButton *_preferredAlternateToolbarButton;
     UIView *_leftToolbarView;
     NSMutableArray *_mutableEditActionActivites;
     PFSlowMotionTimeRangeMapper *_slowMotionTimeMapper;
@@ -53,11 +54,13 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) PFSlowMotionTimeRangeMapper *slowMotionTimeMapper; // @synthesize slowMotionTimeMapper=_slowMotionTimeMapper;
 @property(retain, nonatomic) NSMutableArray *mutableEditActionActivites; // @synthesize mutableEditActionActivites=_mutableEditActionActivites;
 @property(readonly, nonatomic) UIView *leftToolbarView; // @synthesize leftToolbarView=_leftToolbarView;
-@property(retain, nonatomic) UIButton *preferredAlternateToolbarButton; // @synthesize preferredAlternateToolbarButton=_preferredAlternateToolbarButton;
 @property(nonatomic) _Bool hasMediaScrubber; // @synthesize hasMediaScrubber=_hasMediaScrubber;
 @property(nonatomic, getter=isPerformingLiveInteraction) _Bool performingLiveInteraction; // @synthesize performingLiveInteraction=_performingLiveInteraction;
 @property(readonly, nonatomic) NSString *toolbarIconAccessibilityLabel; // @synthesize toolbarIconAccessibilityLabel=_toolbarIconAccessibilityLabel;
+@property(readonly, nonatomic) _Bool toolbarGlyphUsesHierarchicalColor; // @synthesize toolbarGlyphUsesHierarchicalColor=_toolbarGlyphUsesHierarchicalColor;
+@property(readonly, nonatomic) NSString *selectedToolbarIconGlyphName; // @synthesize selectedToolbarIconGlyphName=_selectedToolbarIconGlyphName;
 @property(readonly, nonatomic) UIImage *selectedToolbarIcon; // @synthesize selectedToolbarIcon=_selectedToolbarIcon;
+@property(readonly, nonatomic) NSString *toolbarIconGlyphName; // @synthesize toolbarIconGlyphName=_toolbarIconGlyphName;
 @property(readonly, nonatomic) UIImage *toolbarIcon; // @synthesize toolbarIcon=_toolbarIcon;
 @property(readonly, nonatomic) NSString *localizedName; // @synthesize localizedName=_localizedName;
 @property(nonatomic) double toolGradientDistance; // @synthesize toolGradientDistance=_toolGradientDistance;
@@ -67,7 +70,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) PUPhotoEditViewControllerSpec *photoEditSpec; // @synthesize photoEditSpec=_photoEditSpec;
 @property(retain, nonatomic) PUPhotoEditToolControllerSpec *toolControllerSpec; // @synthesize toolControllerSpec=_toolControllerSpec;
 @property(readonly, nonatomic) PEValuesCalculator *valuesCalculator; // @synthesize valuesCalculator=_valuesCalculator;
-@property(readonly, nonatomic) PLEditSource *overcaptureEditSource; // @synthesize overcaptureEditSource=_overcaptureEditSource;
 @property(readonly, nonatomic) PLEditSource *editSource; // @synthesize editSource=_editSource;
 @property(readonly, nonatomic) PICompositionController *compositionController; // @synthesize compositionController=_compositionController;
 @property(readonly, nonatomic) id <PUEditableAsset> asset; // @synthesize asset=_asset;
@@ -78,6 +80,8 @@ __attribute__((visibility("hidden")))
 - (CDStruct_1b6d18a9)originalAssetTimeForDisplayedTime:(CDStruct_1b6d18a9)arg1;
 - (id)accessibilityHUDItemForButton:(id)arg1;
 - (struct CGRect)contentRectInCoordinateSpace:(id)arg1;
+- (_Bool)shouldHideMediaView;
+- (void)willFileDiagnostic;
 - (void)didResignActiveTool;
 - (void)willResignActiveTool;
 - (void)didBecomeActiveTool;
@@ -91,8 +95,7 @@ __attribute__((visibility("hidden")))
 - (void)increaseScrubberValue:(_Bool)arg1;
 @property(readonly, nonatomic) long long scrubberOrientation;
 @property(readonly, nonatomic) _Bool supportsPreviewingOriginal;
-- (_Bool)installLivePhotoPlaybackGestureRecognizer:(id)arg1;
-- (_Bool)installTogglePreviewGestureRecognizer:(id)arg1;
+- (_Bool)installGestureRecognizer:(id)arg1 type:(unsigned long long)arg2;
 - (void)_updateTraitCollectionAndLayoutReferenceSize;
 - (void)_updateTraitCollectionAndLayoutReferenceSize:(struct CGSize)arg1;
 - (void)didModifyAdjustmentWithLocalizedName:(id)arg1;
@@ -113,6 +116,7 @@ __attribute__((visibility("hidden")))
 - (void)basePhotoInvalidated;
 - (void)baseMediaInvalidated;
 - (void)resetToDefaultValueAnimated:(_Bool)arg1;
+- (_Bool)isActiveTool;
 - (void)mediaViewDidScroll:(id)arg1;
 - (void)mediaView:(id)arg1 didZoom:(double)arg2;
 - (void)mediaViewDidEndZooming:(id)arg1;
@@ -136,6 +140,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool handlesVideoPlaying;
 @property(readonly, nonatomic) _Bool suppressesEditUpdates;
 @property(readonly, nonatomic) _Bool wantsSecondaryToolbarVisible;
+@property(readonly, nonatomic) _Bool wantsTapToToggleOriginalEnabled;
 @property(readonly, nonatomic) _Bool wantsZoomAndPanEnabled;
 @property(readonly, copy, nonatomic) UIColor *preferredPreviewBackgroundColor;
 @property(readonly, nonatomic) _Bool wantsDefaultPreviewView;
@@ -143,7 +148,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) struct UIEdgeInsets preferredPreviewViewInsets;
 @property(readonly, nonatomic) NSString *localizedResetToolActionTitle;
 @property(readonly, nonatomic) _Bool canResetToDefaultValue;
-- (void)setupWithAsset:(id)arg1 compositionController:(id)arg2 editSource:(id)arg3 overcaptureEditSource:(id)arg4 valuesCalculator:(id)arg5;
+- (void)setupWithAsset:(id)arg1 compositionController:(id)arg2 editSource:(id)arg3 valuesCalculator:(id)arg4;
 - (_Bool)prefersHomeIndicatorAutoHidden;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)traitCollectionDidChange:(id)arg1;

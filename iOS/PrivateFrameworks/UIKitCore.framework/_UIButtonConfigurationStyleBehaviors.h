@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     NSString *_styleDescription;
     CDUnknownBlockType _calculateForegroundColor;
     CDUnknownBlockType _calculateBackgroundColor;
+    CDUnknownBlockType _calculateBackgroundVisualEffect;
     long long _selectionStyle;
     long long _automaticMacIdiomStyle;
     long long _cornerStyle;

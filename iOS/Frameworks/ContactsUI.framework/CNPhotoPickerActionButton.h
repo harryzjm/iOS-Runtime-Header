@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIButton.h>
+#import <UIKitCore/UIButton.h>
 
 @class CNPhotoPickerActionButtonBlockHandler;
 
@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     CNPhotoPickerActionButtonBlockHandler *_blockHandler;
 }
 
++ (id)defaultActionButtonTextColor;
 + (id)destructiveButtonWithTitle:(id)arg1 actionBlock:(CDUnknownBlockType)arg2;
 + (id)defaultButtonWithTitle:(id)arg1 actionBlock:(CDUnknownBlockType)arg2;
 + (id)buttonWithTitle:(id)arg1 actionBlock:(CDUnknownBlockType)arg2;

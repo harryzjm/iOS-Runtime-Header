@@ -9,6 +9,22 @@
 #pragma mark Typedef'd Structures
 
 typedef struct {
+    MISSING_TYPE *_field1[3];
+} CDStruct_d80e62f2;
+
+typedef struct {
     MISSING_TYPE *_field1[4];
 } CDStruct_f1db2b5e;
+
+typedef struct {
+    double _field1;
+    double _field2;
+    double _field3;
+    double _field4;
+    double _field5;
+    double _field6;
+    double _field7;
+    double _field8;
+    double _field9;
+} CDStruct_afa449f9;
 

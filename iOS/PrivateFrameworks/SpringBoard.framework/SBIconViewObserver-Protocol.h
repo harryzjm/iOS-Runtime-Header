@@ -6,13 +6,14 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class SBIconView, UIViewController;
+@class SBIconView, UIDragItem, UIViewController;
 @protocol SBIconViewCustomImageViewControlling;
 
 @protocol SBIconViewObserver <NSObject>
 
 @optional
 - (void)iconViewDidEndDrag:(SBIconView *)arg1;
+- (void)iconView:(SBIconView *)arg1 willCancelDragForItem:(UIDragItem *)arg2;
 - (void)iconViewWillBeginDrag:(SBIconView *)arg1;
 - (void)iconViewDidHandleTap:(SBIconView *)arg1;
 - (void)iconView:(SBIconView *)arg1 didChangeCustomImageViewController:(UIViewController<SBIconViewCustomImageViewControlling> *)arg2;

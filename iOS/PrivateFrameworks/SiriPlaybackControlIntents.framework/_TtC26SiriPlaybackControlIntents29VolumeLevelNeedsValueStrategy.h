@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *deviceState;
     MISSING_TYPE *volumeControlsDialogProvider;
+    MISSING_TYPE *analyticsService;
 }
 
 @end

@@ -12,7 +12,7 @@
 }
 
 - (void).cxx_destruct;
-- (const struct CGPath *)newDragAndDropHighlightPathForSelection:(id)arg1;
+- (struct CGPath *)newDragAndDropHighlightPathForSelection:(id)arg1;
 - (void)iterateHitChartElements:(struct CGPoint)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (struct CGAffineTransform)transformForRenderingLabel:(unsigned long long)arg1 paragraphStyle:(id)arg2 cellType:(int)arg3 range:(struct _NSRange)arg4 outElementSize:(struct CGSize *)arg5 outClipRect:(struct CGRect *)arg6;
 - (struct CGAffineTransform)transformForRenderingLabel:(unsigned long long)arg1 cellType:(int)arg2 range:(struct _NSRange)arg3 outElementSize:(struct CGSize *)arg4 outClipRect:(struct CGRect *)arg5;

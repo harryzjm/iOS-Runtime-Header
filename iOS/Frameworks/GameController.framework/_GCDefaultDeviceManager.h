@@ -38,7 +38,6 @@ __attribute__((visibility("hidden")))
 - (void)refreshPhysicalDeviceConfiguration:(id)arg1;
 - (void)_onqueue_registerDefaultConfigurationForDevice:(id)arg1 replaceExisting:(_Bool)arg2;
 - (id)configurationIdentifierForDevice:(id)arg1;
-- (void)_onqueue_registerDefaultConfigurationForDevice:(id)arg1;
 - (id)makeDeviceWithConfiguration:(id)arg1 dependencies:(id)arg2;
 - (id)initWithIdentifier:(id)arg1 matchingFilter:(id)arg2 probeScore:(id)arg3;
 

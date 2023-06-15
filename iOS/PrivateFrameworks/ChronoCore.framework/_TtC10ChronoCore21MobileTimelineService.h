@@ -11,14 +11,16 @@
 @interface _TtC10ChronoCore21MobileTimelineService : _TtCs12_SwiftObject
 {
     MISSING_TYPE *cacheManager;
-    MISSING_TYPE *configurationService;
+    MISSING_TYPE *$__lazy_storage_$_reloadPublisher;
+    MISSING_TYPE *$__lazy_storage_$_removalPublisher;
+    MISSING_TYPE *$__lazy_storage_$_staleReloadRequestPublisher;
+    MISSING_TYPE *_staleReloadRequestPublisher;
+    MISSING_TYPE *hostService;
     MISSING_TYPE *descriptorProvider;
     MISSING_TYPE *locationService;
     MISSING_TYPE *extensionManager;
     MISSING_TYPE *environmentProvidingFactory;
     MISSING_TYPE *statefulStore;
-    MISSING_TYPE *statefulStoreUI;
-    MISSING_TYPE *placeholderStoreUI;
     MISSING_TYPE *lock;
     MISSING_TYPE *logger;
     MISSING_TYPE *persistentSubscriptions;
@@ -26,8 +28,10 @@
     MISSING_TYPE *configurationLifetimeAssertions;
     MISSING_TYPE *processMonitor;
     MISSING_TYPE *proactiveForwardingQueue;
+    MISSING_TYPE *protectionLevelProvider;
     MISSING_TYPE *widgetEnvironmentModificationContext;
     MISSING_TYPE *reloadFilters;
+    MISSING_TYPE *pairingRelationshipProvider;
 }
 
 @end

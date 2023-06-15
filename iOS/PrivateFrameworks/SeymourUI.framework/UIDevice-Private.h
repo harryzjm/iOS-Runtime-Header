@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIDevice.h>
+#import <UIKitCore/UIDevice.h>
 
 @interface UIDevice (Private)
 @property(readonly) _Bool smu_supportsDeepColor;

@@ -13,21 +13,21 @@ __attribute__((visibility("hidden")))
 {
     void *_plan;
     void *_context;
-    NSString *_modelName;
+    NSString *_modelPath;
     NSString *_networkConfigurationName;
     CDStruct_2bc666a5 _network;
 }
 
 - (void).cxx_destruct;
 @property(readonly) NSString *networkConfigurationName; // @synthesize networkConfigurationName=_networkConfigurationName;
-@property(readonly) NSString *modelName; // @synthesize modelName=_modelName;
+@property(readonly) NSString *modelPath; // @synthesize modelPath=_modelPath;
 @property(readonly) void *context; // @synthesize context=_context;
 @property(readonly) void *plan; // @synthesize plan=_plan;
 @property(readonly) CDStruct_2bc666a5 network; // @synthesize network=_network;
 - (id)description;
 - (void)dealloc;
 - (void)free;
-- (id)initWithModelName:(id)arg1 networkConfigurationName:(id)arg2 network:(CDStruct_2bc666a5)arg3 plan:(void *)arg4 context:(void *)arg5;
+- (id)initWithModelPath:(id)arg1 networkConfigurationName:(id)arg2 network:(CDStruct_2bc666a5)arg3 plan:(void *)arg4 context:(void *)arg5;
 
 @end
 

@@ -6,7 +6,7 @@
 
 #import <SafariServices/NSObject-Protocol.h>
 
-@class NSData, NSError, NSString, NSURL, NSURLAuthenticationChallenge, SFDialog, SFWebViewController, UIViewController, WKBackForwardListItem, WKContextMenuElementInfo, WKNavigation, WKNavigationAction, WKNavigationResponse, WKWebView, WKWebViewConfiguration, _SFDownload, _WKDownload, _WKFrameHandle;
+@class NSData, NSError, NSNumber, NSString, NSURL, NSURLAuthenticationChallenge, SFDialog, SFWebViewController, UIViewController, WKBackForwardListItem, WKContextMenuElementInfo, WKNavigation, WKNavigationAction, WKNavigationResponse, WKSecurityOrigin, WKWebView, WKWebViewConfiguration, _SFDownload, _WKDownload, _WKFrameHandle;
 @protocol UIContextMenuInteractionCommitAnimating;
 
 @protocol SFWebViewControllerDelegate <NSObject>
@@ -50,6 +50,8 @@
 - (void)webViewController:(SFWebViewController *)arg1 didStartProvisionalNavigation:(WKNavigation *)arg2;
 
 @optional
+- (void)webViewController:(SFWebViewController *)arg1 updatedAppBadge:(NSNumber *)arg2 fromSecurityOrigin:(WKSecurityOrigin *)arg3;
+- (void)webViewController:(SFWebViewController *)arg1 requestNotificationPermissionForSecurityOrigin:(WKSecurityOrigin *)arg2 decisionHandler:(void (^)(_Bool))arg3;
 - (_Bool)webViewControllerCanFindNextOrPrevious:(SFWebViewController *)arg1;
 - (_Bool)webViewControllerShouldFillStringForFind:(SFWebViewController *)arg1;
 - (void)webViewControllerDidUpdateThemeColor:(SFWebViewController *)arg1;

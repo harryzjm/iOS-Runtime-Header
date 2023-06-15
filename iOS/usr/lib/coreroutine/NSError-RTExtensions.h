@@ -10,6 +10,7 @@
 - (id)flattenErrors;
 - (id)_detailedErrors;
 - (id)_underlyingErrorsRTMultiError;
+- (_Bool)isOnlyTimeoutError;
 - (_Bool)isOnlyThrottlingError;
 @end
 

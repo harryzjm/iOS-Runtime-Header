@@ -6,11 +6,15 @@
 
 #import <PassKitUI/UICollectionViewDelegateFlowLayout-Protocol.h>
 
-@class NSIndexPath, UICollectionView;
+@class NSIndexPath, UICollectionView, UICollectionViewLayout, UISwipeActionsConfiguration;
 
 @protocol PKDashboardViewControllerDelegateFlowLayout <UICollectionViewDelegateFlowLayout>
 
 @optional
+- (UISwipeActionsConfiguration *)collectionView:(UICollectionView *)arg1 layout:(UICollectionViewLayout *)arg2 trailingSwipeActionsConfigurationForItemAtIndexPath:(NSIndexPath *)arg3;
+- (_Bool)collectionView:(UICollectionView *)arg1 layout:(UICollectionViewLayout *)arg2 hasFooterForSectionAtIndex:(long long)arg3;
+- (_Bool)collectionView:(UICollectionView *)arg1 layout:(UICollectionViewLayout *)arg2 hasHeaderForSectionAtIndex:(long long)arg3;
+- (_Bool)collectionView:(UICollectionView *)arg1 layout:(UICollectionViewLayout *)arg2 isListSectionAtIndex:(long long)arg3;
 - (_Bool)itemIsIndependentInCollectionView:(UICollectionView *)arg1 atIndexPath:(NSIndexPath *)arg2;
 - (_Bool)itemIsStackableInCollectionView:(UICollectionView *)arg1 atIndexPath:(NSIndexPath *)arg2;
 @end

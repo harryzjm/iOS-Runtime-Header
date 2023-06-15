@@ -6,6 +6,10 @@
 
 #import <XCUIAutomation/XCUIApplicationManaging-Protocol.h>
 
+@class NSString, NSURL;
+
 @protocol XCUIApplicationProcessManaging <XCUIApplicationManaging>
+- (void)openURL:(NSURL *)arg1 usingApplication:(NSString *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
+- (void)openDefaultApplicationForURL:(NSURL *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 @end
 

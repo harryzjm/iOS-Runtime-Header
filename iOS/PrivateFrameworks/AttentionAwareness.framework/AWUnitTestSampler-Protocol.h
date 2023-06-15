@@ -4,9 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@protocol AVFoundationUnitTestStreamerCreating;
+
 @protocol AWUnitTestSampler
+- (id <AVFoundationUnitTestStreamerCreating>)AVFoundationSession;
 - (void)setPearlErrorState:(_Bool)arg1 reply:(void (^)(NSError *))arg2;
 - (void)setPearlErrorState:(_Bool)arg1;
+- (void)setCarplayStateChangedCallback:(void (^)(_Bool))arg1;
+- (void)setCarPlayConnected:(_Bool)arg1;
+- (void)setCarPlayConnected:(_Bool)arg1 reply:(void (^)(NSError *))arg2;
 - (void)setSmartCoverCallback:(void (^)(_Bool))arg1;
 - (void)setSmartCoverClosed:(_Bool)arg1 reply:(void (^)(NSError *))arg2;
 - (void)setSmartCoverClosed:(_Bool)arg1;

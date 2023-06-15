@@ -7,14 +7,17 @@
 #import <FrontBoard/FBScene.h>
 
 @interface FBScene (PRRenderingScene)
++ (id)pr_createPosterSceneWithinCurrentProcessForRole:(id)arg1 path:(id)arg2;
 + (id)pr_createPosterSceneWithRole:(id)arg1 path:(id)arg2 provider:(id)arg3;
 + (id)pr_createPosterSceneWithRole:(id)arg1 path:(id)arg2;
+- (void)pr_postUserTapEventWithLocation:(struct CGPoint)arg1;
 - (void)pr_postSignificantEvent:(unsigned long long)arg1;
-- (void)pr_invalidateAndReleaseMediaResourcesWithCompletion:(CDUnknownBlockType)arg1;
+- (id)pr_createSnapshotWithContext:(id)arg1;
+- (_Bool)pr_sceneIsReadyToSnapshot:(out id *)arg1;
+- (id)pr_snapshotContextConfiguredForLevelSet:(id)arg1;
+- (void)pr_executeSnapshotForLevelSets:(id)arg1 determineColorStatistics:(_Bool)arg2 snapshotDefinitionIdentifier:(id)arg3 onQueue:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (id)pr_buildSnapshotBundleForLevelSets:(id)arg1 determineColorStatistics:(_Bool)arg2 snapshotDefinitionIdentifier:(id)arg3 error:(out id *)arg4;
 - (void)pr_invalidateWithCompletion:(CDUnknownBlockType)arg1;
-- (void)pr_invalidateAndFreeMediaResources:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)pr_makePosterSceneTransitionContext;
-- (id)pr_posterSceneSpecification;
 - (_Bool)pr_isLegacyProvider;
 - (void)pr_setShortDescription:(id)arg1;
 - (id)pr_shortDescription;

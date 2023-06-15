@@ -12,7 +12,7 @@
 {
 }
 
-+ (id)observeErrorsInBlock:(CDUnknownBlockType)arg1;
++ (CDUnknownBlockType)observeErrorsInBlock:(CDUnknownBlockType)arg1;
 + (void)installSwiftErrorObserverIfPossible;
 
 @end

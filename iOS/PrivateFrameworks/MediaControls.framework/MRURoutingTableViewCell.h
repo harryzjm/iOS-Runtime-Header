@@ -12,11 +12,14 @@
 __attribute__((visibility("hidden")))
 @interface MRURoutingTableViewCell : UITableViewCell
 {
+    _Bool _isVendorSpecific;
     _Bool _showChevron;
     _Bool _showChevronExpanded;
     id <MRURoutingTableViewCellDelegate> _delegate;
     UIImage *_iconImage;
     NSString *_title;
+    UIImage *_protocolIcon;
+    NSString *_protocolName;
     MRURoutingSubtitleController *_subtitleStateController;
     MRURoutingAccessoryView *_routingAccessoryView;
     MRUVolumeController *_volumeController;
@@ -46,9 +49,12 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak MRUVolumeController *volumeController; // @synthesize volumeController=_volumeController;
 @property(readonly, nonatomic) MRURoutingAccessoryView *routingAccessoryView; // @synthesize routingAccessoryView=_routingAccessoryView;
 @property(readonly, nonatomic) MRURoutingSubtitleController *subtitleStateController; // @synthesize subtitleStateController=_subtitleStateController;
+@property(copy, nonatomic) NSString *protocolName; // @synthesize protocolName=_protocolName;
+@property(retain, nonatomic) UIImage *protocolIcon; // @synthesize protocolIcon=_protocolIcon;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property(retain, nonatomic) UIImage *iconImage; // @synthesize iconImage=_iconImage;
 @property(nonatomic) __weak id <MRURoutingTableViewCellDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) _Bool isVendorSpecific; // @synthesize isVendorSpecific=_isVendorSpecific;
 - (struct CGRect)expandRect;
 - (void)updateVisibility;
 - (void)updateContentSizeCategory;
@@ -57,6 +63,8 @@ __attribute__((visibility("hidden")))
 - (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
 - (_Bool)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (void)visualStylingProviderDidChange:(id)arg1;
+- (void)volumeControllerDidFinishEqualization:(id)arg1;
+- (void)volumeControllerWillBeginEqualization:(id)arg1;
 - (void)volumeController:(id)arg1 volumeControlAvailableDidChange:(_Bool)arg2;
 - (void)volumeController:(id)arg1 volumeValueDidChange:(float)arg2;
 - (void)routingSubtitleStateController:(id)arg1 didUpdateText:(id)arg2 icon:(id)arg3 accessory:(long long)arg4;

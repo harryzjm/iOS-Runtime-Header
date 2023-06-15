@@ -13,12 +13,12 @@
     MISSING_TYPE *aceService;
     MISSING_TYPE *quickNoteActivationProvider;
     MISSING_TYPE *outputPublisher;
-    MISSING_TYPE *appLaunchFeatureFlags;
     MISSING_TYPE *responseGenerator;
     MISSING_TYPE *dialogResponseUtil;
     MISSING_TYPE *deviceState;
     MISSING_TYPE *dialogProvider;
     MISSING_TYPE *appLaunchDialogs;
+    MISSING_TYPE *flowFactory;
     MISSING_TYPE *input;
 }
 

@@ -7,6 +7,8 @@
 #import <PassKitCore/PKPaymentPass.h>
 
 @interface PKPaymentPass (NanoPassKit)
+- (_Bool)npkIsInSuspendedState;
+- (_Bool)npkIsInActivatingState;
 - (_Bool)npkIsInLostMode;
 - (void)npkSetPreferredPaymentApplication:(id)arg1;
 - (id)npkPreferredContactlessPaymentApplication;

@@ -19,6 +19,8 @@ __attribute__((visibility("hidden")))
     _Atomic unsigned int lastKnownShmemState;
     struct os_unfair_lock_s _lock;
     _Bool _isSearchList;
+    double stalenessCheckWindowStart;
+    unsigned short stalenessCheckWindowStaleCount;
 }
 
 - (void)dealloc;

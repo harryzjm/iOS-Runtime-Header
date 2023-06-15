@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 - (long long)overrideUserInterfaceStyle;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)loadView;
+- (_Bool)requiresKeyboard;
 @property(readonly, nonatomic) NSArray *displayedCandidates;
 - (_Bool)hidesExpandableButton;
 - (double)preferredHeightForTraitCollection:(id)arg1;

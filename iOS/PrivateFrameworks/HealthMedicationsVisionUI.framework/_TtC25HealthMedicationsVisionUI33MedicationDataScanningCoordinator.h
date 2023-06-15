@@ -13,7 +13,6 @@
     MISSING_TYPE *scanner;
     MISSING_TYPE *healthStore;
     MISSING_TYPE *dataProvider;
-    MISSING_TYPE *searchEngine;
     MISSING_TYPE *resolutionEngine;
     MISSING_TYPE *ndcParser;
     MISSING_TYPE *lock;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/_UIRemoteViewController.h>
+#import <UIKitCore/_UIRemoteViewController.h>
 
 @class NSString;
 @protocol AMSUIEngagementTaskHostInterface, AMSUIEngagementTaskRemoteInterface;

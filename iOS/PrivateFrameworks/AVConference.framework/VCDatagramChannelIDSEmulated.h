@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     _Bool _isStarted;
 }
 
+- (void)setOneToOneModeEnabled:(_Bool)arg1 isInitiator:(_Bool)arg2;
 - (int)dataPath;
 - (id)destination;
 - (unsigned int)token;

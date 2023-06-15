@@ -10,22 +10,22 @@
 @protocol FCSportsTheming;
 
 @protocol FCSportsProviding <FCTagProviding>
-@property(nonatomic, readonly) NSString *topLevelSportTagIdentifier;
-@property(nonatomic, readonly) NSArray *topLevelGroupsTagIdentifiers;
-@property(nonatomic, readonly) NSString *sportsTypePluralizedDisplayName;
-@property(nonatomic, readonly) NSString *sportsTypeDisplayName;
-@property(nonatomic, readonly) unsigned long long sportsType;
-@property(nonatomic, readonly) id <FCSportsTheming> sportsTheme;
-@property(nonatomic, readonly) unsigned long long sportsLeagueType;
-@property(nonatomic, readonly) NSString *sportsNameAbbreviation;
-@property(nonatomic, readonly) NSString *sportsNickname;
-@property(nonatomic, readonly) NSString *sportsFullName;
-@property(nonatomic, readonly) NSString *sportsSecondaryName;
-@property(nonatomic, readonly) NSString *sportsPrimaryName;
-@property(nonatomic, readonly) _Bool hideLocationInMasthead;
-@property(nonatomic, readonly) NSString *sportsLocation;
-@property(nonatomic, readonly) NSString *sportsData;
-@property(nonatomic, readonly) _Bool isSportsRecommendable;
-@property(nonatomic, readonly) NSString *UMCCanonicalID;
+@property(readonly, copy, nonatomic) NSString *topLevelSportTagIdentifier;
+@property(readonly, copy, nonatomic) NSArray *topLevelGroupsTagIdentifiers;
+@property(readonly, copy, nonatomic) NSString *sportsTypePluralizedDisplayName;
+@property(readonly, copy, nonatomic) NSString *sportsTypeDisplayName;
+@property(readonly, nonatomic) unsigned long long sportsType;
+@property(readonly, copy, nonatomic) id <FCSportsTheming> sportsTheme;
+@property(readonly, nonatomic) unsigned long long sportsLeagueType;
+@property(readonly, copy, nonatomic) NSString *sportsNameAbbreviation;
+@property(readonly, copy, nonatomic) NSString *sportsNickname;
+@property(readonly, copy, nonatomic) NSString *sportsFullName;
+@property(readonly, copy, nonatomic) NSString *sportsSecondaryName;
+@property(readonly, copy, nonatomic) NSString *sportsPrimaryName;
+@property(readonly, nonatomic) _Bool hideLocationInMasthead;
+@property(readonly, copy, nonatomic) NSString *sportsLocation;
+@property(readonly, nonatomic) NSString *sportsData;
+@property(readonly, nonatomic) _Bool isSportsRecommendable;
+@property(readonly, copy, nonatomic) NSString *UMCCanonicalID;
 @end
 

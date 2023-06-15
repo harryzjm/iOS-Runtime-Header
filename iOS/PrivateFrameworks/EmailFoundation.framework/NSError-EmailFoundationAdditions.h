@@ -23,6 +23,7 @@
 @property(readonly, nonatomic) _Bool ef_isNotSupportedError;
 @property(readonly, nonatomic) _Bool ef_isTimeoutError;
 @property(readonly, nonatomic) _Bool ef_isCancelledError;
+- (id)ef_initWithDomain:(id)arg1 code:(long long)arg2 underlyingError:(id)arg3;
 @property(readonly, copy, nonatomic) NSString *ef_publicDescription;
 
 // Remaining properties

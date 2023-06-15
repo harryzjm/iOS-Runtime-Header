@@ -16,6 +16,8 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *captionLabel;
     MISSING_TYPE *titleLabel;
     MISSING_TYPE *subtitleLabel;
+    MISSING_TYPE *artworkWidthConstraint;
+    MISSING_TYPE *artworkHeightConstraint;
 }
 
 - (void).cxx_destruct;

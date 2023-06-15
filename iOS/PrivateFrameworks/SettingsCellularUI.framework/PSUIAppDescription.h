@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, UIImage;
+@class NSString, NSURL, UIImage;
 
 __attribute__((visibility("hidden")))
 @interface PSUIAppDescription : NSObject
@@ -14,17 +14,20 @@ __attribute__((visibility("hidden")))
     NSString *_name;
     NSString *_publisher;
     NSString *_bundleID;
-    NSString *_persistentID;
+    NSURL *_iconURL;
+    NSURL *_installURL;
     UIImage *_icon;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIImage *icon; // @synthesize icon=_icon;
-@property(copy, nonatomic) NSString *persistentID; // @synthesize persistentID=_persistentID;
+@property(copy, nonatomic) NSURL *installURL; // @synthesize installURL=_installURL;
+@property(copy, nonatomic) NSURL *iconURL; // @synthesize iconURL=_iconURL;
 @property(copy, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
 @property(copy, nonatomic) NSString *publisher; // @synthesize publisher=_publisher;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 - (id)description;
+- (id)initWithAMSMediaResponseDictionary:(id)arg1;
 
 @end
 

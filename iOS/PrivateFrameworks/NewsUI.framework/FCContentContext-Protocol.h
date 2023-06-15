@@ -7,7 +7,7 @@
 #import <NewsUI/FCCacheFlushing-Protocol.h>
 #import <NewsUI/NSObject-Protocol.h>
 
-@class FCArticleController, FCAssetManager, FCContentManifest, FCFlintResourceManager, FCInterestToken, FCJSONRecordSourceSchema, FCNetworkBehaviorMonitor, FCTagController, NSArray, NSString, NSURL;
+@class FCArticleController, FCAssetManager, FCContentManifest, FCFlintResourceManager, FCHeldRecords, FCInterestToken, FCJSONRecordSourceSchema, FCNetworkBehaviorMonitor, FCPuzzleController, FCPuzzleTypeController, FCSportsEventController, FCTagController, NSArray, NSString, NSURL;
 @protocol FCAVAssetFactoryType, FCAVAssetPrewarming, FCBackgroundTaskable, FCCacheFlushing, FCContentContextInternal, FCCoreConfigurationManager, FCCoreConfigurationManager><FCNewsAppConfigurationManager, FCFeedDatabaseProtocol, FCJSONRecordSourceType, FCJSONRecordTreeSourceType, FCMagazinesConfigurationManager, FCNewsAppConfigurationManager, FCPPTContext;
 
 @protocol FCContentContext <NSObject, FCCacheFlushing>
@@ -16,10 +16,15 @@
 @property(readonly, nonatomic) id <FCPPTContext> pptContext;
 @property(readonly, nonatomic) __weak id <FCBackgroundTaskable> backgroundTaskable;
 @property(readonly, nonatomic) id <FCContentContextInternal> internalContentContext;
+@property(readonly, copy, nonatomic) NSString *tabiModelsContentDirectory;
+@property(readonly, copy, nonatomic) NSString *tabiResourcesContentDirectory;
 @property(readonly, nonatomic) NSURL *assetCacheDirectoryURL;
 @property(readonly, copy, nonatomic) NSString *contentDirectory;
 @property(readonly, nonatomic) FCNetworkBehaviorMonitor *networkBehaviorMonitor;
 @property(readonly, nonatomic) FCFlintResourceManager *flintResourceManager;
+@property(readonly, nonatomic) FCPuzzleTypeController *puzzleTypeController;
+@property(readonly, nonatomic) FCPuzzleController *puzzleController;
+@property(readonly, nonatomic) FCSportsEventController *sportsEventController;
 @property(readonly, nonatomic) FCTagController *tagController;
 @property(readonly, nonatomic) FCArticleController *articleController;
 @property(readonly, nonatomic) id <FCAVAssetFactoryType> avAssetFactory;
@@ -27,8 +32,10 @@
 @property(readonly, nonatomic) FCAssetManager *assetManager;
 @property(readonly, nonatomic) id <FCNewsAppConfigurationManager> appConfigurationManager;
 @property(readonly, nonatomic) id <FCCoreConfigurationManager> configurationManager;
+@property(readonly, copy, nonatomic) NSString *contentEnvironment;
 @property(readonly, copy, nonatomic) NSString *supportedContentStoreFrontID;
 @property(readonly, copy, nonatomic) NSString *contentStoreFrontID;
+- (FCHeldRecords *)convertRecords:(NSArray *)arg1;
 - (void)enableFlushingWithFlushingThreshold:(unsigned long long)arg1 exceptForFlusher:(id <FCCacheFlushing>)arg2;
 - (FCInterestToken *)interestTokenForContentManifest:(FCContentManifest *)arg1;
 - (id <FCJSONRecordTreeSourceType>)recordTreeSourceWithRecordSources:(NSArray *)arg1;

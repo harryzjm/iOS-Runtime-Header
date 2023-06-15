@@ -7,6 +7,7 @@
 #import <Foundation/NSFileManager.h>
 
 @interface NSFileManager (DVTNSFileManagerAdditions)
++ (unsigned long long)dvt_fileSizeAtPath:(id)arg1;
 + (_Bool)dvt_isEmptyFileAtPath:(id)arg1;
 + (_Bool)dvt_isPathValidForFileManagerOperations:(id)arg1;
 - (id)dvt_availableFilenameInDirectory:(id)arg1 desiredFilename:(id)arg2;

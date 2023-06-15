@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) CDUnknownBlockType stateDidChangeHandler; // @synthesize stateDidChangeHandler=_stateDidChangeHandler;
 @property(retain, nonatomic) VUIUpNextButtonProperties *properties; // @synthesize properties=_properties;
 - (id)largeContentTitle;
+- (void)updateAccessibilityIdentifierAfterStateChanged;
 - (void)upNextStateChangedToRemoved;
 - (void)upNextStateChangedToAdded;
 - (void)setTintColor:(id)arg1;

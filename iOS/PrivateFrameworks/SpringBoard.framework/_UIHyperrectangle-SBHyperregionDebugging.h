@@ -10,8 +10,7 @@
 
 @interface _UIHyperrectangle (SBHyperregionDebugging)
 - (struct CGSize)sb_debugSize;
-- (struct CGRect)sb_debugFrame;
-- (id)sb_debugView;
+@property(readonly, nonatomic) struct CGRect sb_debugFrame;
 
 // Remaining properties
 @property(readonly, nonatomic) unsigned long long _dimensions;

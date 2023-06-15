@@ -50,7 +50,7 @@
 - (void)_suspendObservationForBlock:(CDUnknownBlockType)arg1;
 - (void)_suspendObservation;
 - (void)_resumeObservation;
-- (void)_observeTestExecutionForBlock:(CDUnknownBlockType)arg1;
+- (void)_observeTestExecutionForTestBundle:(id)arg1 inBlock:(CDUnknownBlockType)arg2;
 - (void)removeTestObserver:(id)arg1;
 - (void)addTestObserver:(id)arg1;
 - (id)description;

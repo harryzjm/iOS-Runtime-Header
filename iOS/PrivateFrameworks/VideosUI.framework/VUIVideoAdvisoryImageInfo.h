@@ -11,6 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface VUIVideoAdvisoryImageInfo : NSObject
 {
+    NSString *_imageURL;
     unsigned long long _width;
     unsigned long long _height;
     NSString *_format;
@@ -20,6 +21,7 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSString *format; // @synthesize format=_format;
 @property(nonatomic) unsigned long long height; // @synthesize height=_height;
 @property(nonatomic) unsigned long long width; // @synthesize width=_width;
+@property(retain, nonatomic) NSString *imageURL; // @synthesize imageURL=_imageURL;
 
 @end
 

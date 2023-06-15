@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 - (void)cancelPresentationWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)actionDidReceiveTranscription:(id)arg1;
 - (void)actionDidBeginListening;
+- (void)dismissWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)showWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (_Bool)prefersModalPresentation;
 

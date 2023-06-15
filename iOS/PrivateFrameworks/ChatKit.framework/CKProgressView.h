@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIProgressView.h>
+#import <UIKitCore/UIProgressView.h>
 
 @class UIView;
 

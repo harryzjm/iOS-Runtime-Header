@@ -9,7 +9,10 @@
 @interface NSString (BRCPathAdditions)
 + (id)br_currentHomeDir;
 + (id)_br_containerPathForDataSeparatedPersona;
++ (id)br_accountSessionOpenErrorInfoPath;
++ (id)br_previousDataFromFPFSDomainPath:(id)arg1;
 + (id)br_corruptedDBInfoPath;
++ (id)br_personaGroupDirForFPFS:(_Bool)arg1;
 + (id)br_personaGroupDir;
 + (id)br_currentSupportDir;
 + (id)br_supportDirForPersona:(id)arg1 dataSeparated:(_Bool)arg2;
@@ -46,6 +49,8 @@
 - (id)br_displayFilenameWithExtensionHidden:(_Bool)arg1;
 - (id)brc_stringByDeletingPathExtension;
 - (id)br_pathExtension;
+- (id)br_stringByJSONEscaping;
+- (_Bool)br_isBoostableItemIdentifier;
 - (id)br_decodeIndexStringToIndexSet;
 - (id)br_libnotifyPerUserNotificationName;
 - (id)br_stringByBackslashEscapingCharactersInString:(id)arg1;

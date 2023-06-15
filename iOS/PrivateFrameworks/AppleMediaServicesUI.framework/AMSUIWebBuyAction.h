@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class ACAccount, NSDictionary, NSString;
+@class ACAccount, AMSUIWebClientContext, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
 @interface AMSUIWebBuyAction
@@ -31,10 +31,15 @@ __attribute__((visibility("hidden")))
 - (id)_runLegacyBuy;
 - (id)_runBuyWithContentType:(id)arg1;
 - (id)_runBuy;
+- (id)_presentingSceneIdentifierPromise;
+- (id)_presentingSceneIdentifier;
 - (id)_purchasePluginIdentifierForContentType:(id)arg1;
 - (id)purchaseContentWithType:(id)arg1;
 - (void)_makeCurrentAccountIfNeeded:(id)arg1;
 - (id)_iTunesAccount;
+- (void)purchase:(id)arg1 handleSceneBundleIdentifierRequest:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)purchase:(id)arg1 handleSceneIdentifierRequest:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)purchase:(id)arg1 handleWindowRequest:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)purchase:(id)arg1 handleEngagementRequest:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)purchase:(id)arg1 handleDialogRequest:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)purchase:(id)arg1 handleAuthenticateRequest:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -42,6 +47,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithJSObject:(id)arg1 context:(id)arg2;
 
 // Remaining properties
+@property(readonly, nonatomic) AMSUIWebClientContext *context;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;

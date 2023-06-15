@@ -15,7 +15,10 @@
 - (void)didEngageResult:(id)arg1;
 - (void)didEngageCardSection:(id)arg1;
 - (void)cardViewDidAppear:(id)arg1;
+@property(readonly, copy, nonatomic) NSString *safari_titleForReflection;
 - (void)safari_setCompletionIconForCompactRow:(long long)arg1;
+@property(readonly, nonatomic) NSString *titleForHistoryServiceCompletionList;
+@property(readonly, nonatomic) long long completionCellBackgroundModeInTopSection;
 - (_Bool)isEquivalentTo:(id)arg1;
 @property(nonatomic) long long parsecQueryID;
 @property(retain, nonatomic) id <CompletionItemActionHandler> handlerForActionItem;
@@ -24,6 +27,7 @@
 - (id)completionTableViewCellReuseIdentifier;
 @property(readonly, nonatomic) _Bool restoresSearchState;
 - (void)auditAcceptedCompletionWithRank:(unsigned long long)arg1;
+- (id)originalURLString;
 - (id)userVisibleURLString;
 - (void)punchoutWithHandler:(id)arg1;
 - (void)acceptCompletionWithActionHandler:(id)arg1;
@@ -44,6 +48,8 @@
 @property(readonly, nonatomic) _Bool needsSectionHeader;
 @property(readonly, nonatomic) SFSearchResult *sfSearchResultValue;
 @property(retain, nonatomic) WBSQuerySuggestion *siriSuggestion;
+@property(readonly, copy, nonatomic) NSString *subtextForHistoryServiceCompletionList;
 @property(readonly) Class superclass;
+@property(readonly, nonatomic) NSString *urlStringForHistoryServiceCompletionList;
 @end
 

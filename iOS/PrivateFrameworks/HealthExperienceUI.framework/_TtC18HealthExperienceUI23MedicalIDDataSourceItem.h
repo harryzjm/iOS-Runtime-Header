@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *detailText;
     MISSING_TYPE *showDisclosureIndicator;
     MISSING_TYPE *reuseIdentifier;
+    MISSING_TYPE *baseIdentifier;
     MISSING_TYPE *medicalIDViewController;
     MISSING_TYPE *healthStore;
     MISSING_TYPE *medicalIDCache;

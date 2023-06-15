@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import "FigBaseCALayer.h"
-
 @class FigVideoLayerInternal;
 
 __attribute__((visibility("hidden")))
-@interface FigVideoLayer : FigBaseCALayer
+@interface FigVideoLayer
 {
     FigVideoLayerInternal *_videoLayer;
 }
@@ -23,7 +21,10 @@ __attribute__((visibility("hidden")))
 - (id)actionForKey:(id)arg1;
 - (void)dealloc;
 - (id)initWithLayer:(id)arg1;
-- (id)init;
+- (id)initWithoutDeferredTransaction;
+- (id)initWithDeferredTransaction:(struct OpaqueFigDeferredTransaction *)arg1;
+- (void)_setupTraceLevel;
+- (void)_setupInternalFigVideoLayer;
 
 @end
 

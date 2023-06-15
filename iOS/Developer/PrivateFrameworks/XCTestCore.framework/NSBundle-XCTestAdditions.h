@@ -9,7 +9,7 @@
 @class NSString;
 
 @interface NSBundle (XCTestAdditions)
+@property(readonly, copy) NSString *xct_bundlePathForTestSuite;
 @property(readonly, copy) NSString *xct_bundleLinkageInfo;
-- (id)xct_frameworkBundleVersion;
 @end
 

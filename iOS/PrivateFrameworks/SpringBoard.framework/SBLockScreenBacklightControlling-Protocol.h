@@ -8,6 +8,7 @@
 
 @protocol SBLockScreenBacklightControlling <NSObject>
 @property(nonatomic) double backlightLevel;
+@property(readonly, nonatomic) long long backlightLuminance;
 - (_Bool)shouldDisableALS;
 - (void)startLockScreenFadeInAnimationForSource:(int)arg1;
 - (void)setInScreenOffMode:(_Bool)arg1 preservingCoverSheetPresentationState:(_Bool)arg2;

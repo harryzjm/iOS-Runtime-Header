@@ -13,6 +13,8 @@ __attribute__((visibility("hidden")))
 
 + (id)classAttributesForName:(id)arg1;
 + (id)classAttributesForClass:(Class)arg1;
++ (void)clearCache;
++ (id)cache;
 + (id)_attributesWithClass:(Class)arg1;
 
 @end

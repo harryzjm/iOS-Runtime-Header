@@ -6,10 +6,9 @@
 
 #import <objc/NSObject.h>
 
-@class CaptureMTLCommandBuffer, CaptureMTLDevice, NSMutableArray, NSMutableSet, NSString;
+@class CaptureMTLCommandBuffer, CaptureMTLDevice, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString;
 @protocol MTLAccelerationStructureCommandEncoder, MTLAccelerationStructureCommandEncoderSPI, MTLDevice;
 
-__attribute__((visibility("hidden")))
 @interface CaptureMTLAccelerationStructureCommandEncoder : NSObject
 {
     id <MTLAccelerationStructureCommandEncoderSPI> _baseObject;
@@ -18,7 +17,9 @@ __attribute__((visibility("hidden")))
     struct GTTraceContext *_traceContext;
     struct GTTraceStream *_traceStream;
     NSMutableSet *_retainedObjects;
+    NSMutableDictionary *_retainedDescriptorObjectsByStreamRef;
     NSMutableArray *_blitOperations;
+    unsigned long long _copyEventValue;
 }
 
 - (void).cxx_destruct;
@@ -29,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (void)writeDeserializedAccelerationStructureSize:(id)arg1 serializedOffset:(unsigned long long)arg2 toBuffer:(id)arg3 sizeBufferOffset:(unsigned long long)arg4;
 - (void)writeCompactedAccelerationStructureSize:(id)arg1 toBuffer:(id)arg2 offset:(unsigned long long)arg3 sizeDataType:(unsigned long long)arg4;
 - (void)writeCompactedAccelerationStructureSize:(id)arg1 toBuffer:(id)arg2 offset:(unsigned long long)arg3;
+- (void)writeAccelerationStructureTraversalDepth:(id)arg1 toBuffer:(id)arg2 offset:(unsigned long long)arg3;
 - (void)writeAccelerationStructureSerializationData:(id)arg1 toBuffer:(id)arg2 offset:(unsigned long long)arg3;
 - (void)waitForFence:(id)arg1;
 - (void)useResources:(const id *)arg1 count:(unsigned long long)arg2 usage:(unsigned long long)arg3;
@@ -65,7 +67,7 @@ __attribute__((visibility("hidden")))
 - (void)copyAndCompactAccelerationStructure:(id)arg1 toAccelerationStructure:(id)arg2;
 - (void)copyAccelerationStructure:(id)arg1 toAccelerationStructure:(id)arg2;
 @property(readonly) id <MTLAccelerationStructureCommandEncoder> baseObject;
-- (id)initWithBaseObject:(id)arg1 captureCommandBuffer:(id)arg2;
+- (id)initWithBaseObject:(id)arg1 captureCommandBuffer:(id)arg2 copyEventValue:(unsigned long long)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

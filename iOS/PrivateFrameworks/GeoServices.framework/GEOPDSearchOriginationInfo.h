@@ -6,16 +6,27 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-@class GEOPDSearchOriginationRoutePlanningParameters, PBUnknownFields;
+@class GEOPDSearchOriginationRoutePlanningParameters, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDSearchOriginationInfo : PBCodable
 {
+    PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
+    CDStruct_95bda58d _searchClientContexts;
     GEOPDSearchOriginationRoutePlanningParameters *_routePlanningParameters;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
+    int _clientSoftwarePlatform;
     int _searchOriginationType;
     struct {
+        unsigned int has_clientSoftwarePlatform:1;
         unsigned int has_searchOriginationType:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_searchClientContexts:1;
+        unsigned int read_routePlanningParameters:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -28,6 +39,10 @@ __attribute__((visibility("hidden")))
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (void)dealloc;
+- (id)initWithData:(id)arg1;
+- (id)init;
+- (id)initWithTraits:(id)arg1;
 
 @end
 

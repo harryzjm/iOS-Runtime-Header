@@ -16,7 +16,8 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *fullorhalfSheetPromptedAt;
     MISSING_TYPE *amsURLParser;
     MISSING_TYPE *lastTabIdentifier;
-    MISSING_TYPE *messageViewControllerRegistry;
+    MISSING_TYPE *placementIdMessageMap;
+    MISSING_TYPE *requestIdMessageMap;
 }
 
 - (void).cxx_destruct;

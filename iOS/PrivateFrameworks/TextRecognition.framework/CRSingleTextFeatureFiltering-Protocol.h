@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CRTextFeature, CRTextFeatureGeometryInImageSpace;
+@class CRGroupRegionGeometry, CRRecognizedTextRegion;
 
 @protocol CRSingleTextFeatureFiltering
-- (_Bool)shouldFilterFeatureBasedOnGeometry:(CRTextFeatureGeometryInImageSpace *)arg1;
-- (_Bool)shouldFilterFeature:(CRTextFeature *)arg1;
+- (_Bool)shouldFilterRegionBasedOnGeometry:(CRGroupRegionGeometry *)arg1 closestDistance:(double)arg2;
+- (_Bool)shouldFilterRegion:(CRRecognizedTextRegion *)arg1;
 @end
 

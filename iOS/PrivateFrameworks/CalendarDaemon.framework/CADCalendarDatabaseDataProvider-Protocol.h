@@ -9,11 +9,11 @@
 @protocol CADCalendarDatabaseDataProvider
 - (int)naturalLanguageSuggestionsCalendarRowIDInDatabase:(struct CalDatabase *)arg1;
 - (int)suggestionsCalendarRowIDInDatabase:(struct CalDatabase *)arg1;
-- (void)gatherCalendarRowIDs:(NSMutableSet *)arg1 inStore:(const void *)arg2 inDatabase:(struct CalDatabase *)arg3;
-- (NSString *)storeIDForStore:(const void *)arg1 inDatabase:(struct CalDatabase *)arg2;
-- (NSString *)accountIDForStore:(const void *)arg1 inDatabase:(struct CalDatabase *)arg2;
-- (_Bool)isStoreDelegate:(const void *)arg1 inDatabase:(struct CalDatabase *)arg2;
-- (_Bool)isLocalStore:(const void *)arg1 inDatabase:(struct CalDatabase *)arg2;
+- (void)gatherCalendarRowIDs:(NSMutableSet *)arg1 inStore:(void *)arg2 inDatabase:(struct CalDatabase *)arg3;
+- (NSString *)storeIDForStore:(void *)arg1 inDatabase:(struct CalDatabase *)arg2;
+- (NSString *)accountIDForStore:(void *)arg1 inDatabase:(struct CalDatabase *)arg2;
+- (_Bool)isStoreDelegate:(void *)arg1 inDatabase:(struct CalDatabase *)arg2;
+- (_Bool)isLocalStore:(void *)arg1 inDatabase:(struct CalDatabase *)arg2;
 - (NSArray *)storesInDatabase:(struct CalDatabase *)arg1;
 - (int)databaseID:(struct CalDatabase *)arg1;
 @end

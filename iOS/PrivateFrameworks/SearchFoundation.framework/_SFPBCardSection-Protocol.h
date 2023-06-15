@@ -6,10 +6,21 @@
 
 #import <SearchFoundation/NSObject-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString, _SFPBAbstractCommand, _SFPBButtonItem, _SFPBCard, _SFPBCardSectionValue, _SFPBCommand, _SFPBUserReportRequest;
+@class NSArray, NSData, NSDictionary, NSString, _SFPBAbstractCommand, _SFPBButtonItem, _SFPBCard, _SFPBCardSectionValue, _SFPBColor, _SFPBCommand, _SFPBPunchout, _SFPBUserReportRequest;
 
 @protocol _SFPBCardSection <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
+@property(nonatomic) int separatorStyle;
+@property(nonatomic) _Bool hasBottomPadding;
+@property(nonatomic) _Bool hasTopPadding;
+@property(nonatomic) _Bool canBeHidden;
+@property(copy, nonatomic) NSString *punchoutPickerDismissText;
+@property(copy, nonatomic) NSString *punchoutPickerTitle;
+@property(copy, nonatomic) NSArray *punchoutOptions;
+@property(copy, nonatomic) NSArray *trailingSwipeButtonItems;
+@property(copy, nonatomic) NSArray *leadingSwipeButtonItems;
+@property(nonatomic) _Bool shouldHideInAmbientMode;
+@property(retain, nonatomic) _SFPBColor *backgroundColor;
 @property(copy, nonatomic) NSString *previewButtonItemsTitle;
 @property(copy, nonatomic) NSString *cardSectionDetail;
 @property(copy, nonatomic) NSArray *previewButtonItems;
@@ -25,6 +36,18 @@
 @property(nonatomic) int type;
 - (id)initWithDictionary:(NSDictionary *)arg1;
 - (id)initWithJSON:(NSData *)arg1;
+- (_SFPBPunchout *)punchoutOptionsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)punchoutOptionsCount;
+- (void)addPunchoutOptions:(_SFPBPunchout *)arg1;
+- (void)clearPunchoutOptions;
+- (_SFPBButtonItem *)trailingSwipeButtonItemsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)trailingSwipeButtonItemsCount;
+- (void)addTrailingSwipeButtonItems:(_SFPBButtonItem *)arg1;
+- (void)clearTrailingSwipeButtonItems;
+- (_SFPBButtonItem *)leadingSwipeButtonItemsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)leadingSwipeButtonItemsCount;
+- (void)addLeadingSwipeButtonItems:(_SFPBButtonItem *)arg1;
+- (void)clearLeadingSwipeButtonItems;
 - (_SFPBButtonItem *)previewButtonItemsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)previewButtonItemsCount;
 - (void)addPreviewButtonItems:(_SFPBButtonItem *)arg1;

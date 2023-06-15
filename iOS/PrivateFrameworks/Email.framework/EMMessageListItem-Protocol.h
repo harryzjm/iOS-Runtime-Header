@@ -25,7 +25,6 @@
 @property(readonly) long long conversationID;
 @property(readonly) unsigned long long count;
 @property(readonly, nonatomic) NSURL *brandIndicatorLocation;
-@property(readonly) _Bool hasUnscreenedSender;
 @property(readonly) long long senderBucket;
 @property(readonly) long long conversationNotificationLevel;
 @property(readonly) _Bool hasAttachments;

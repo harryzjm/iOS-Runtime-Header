@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 - (id)_optionWithID:(id)arg1 displaysNonForcedSubtitles:(_Bool)arg2;
 - (id)_optionWithID:(id)arg1 identifier:(id)arg2 source:(id)arg3 displaysNonForcedSubtitles:(_Bool)arg4;
 - (id)defaultOption;
+- (id)_localizedMediaSelectionOptionDisplayNames;
 - (_Bool)_isStreamingGroup;
 - (id)_groupMediaCharacteristics;
 - (id)dictionary;

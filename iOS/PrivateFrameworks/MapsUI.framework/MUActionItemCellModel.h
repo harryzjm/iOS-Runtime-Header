@@ -29,7 +29,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) long long actionStyle;
 @property(readonly, nonatomic, getter=isEnabled) _Bool enabled;
 - (id)accessibilityIdentifierForAction;
-- (void)loadSubtitleWithCompletion:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) NSString *titleString;
 @property(readonly, nonatomic) NSString *symbolName;
 - (id)initWithActionItem:(id)arg1;

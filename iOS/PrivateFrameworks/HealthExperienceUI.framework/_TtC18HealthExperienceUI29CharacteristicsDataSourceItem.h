@@ -15,6 +15,7 @@
     MISSING_TYPE *detailText;
     MISSING_TYPE *showDisclosureIndicator;
     MISSING_TYPE *reuseIdentifier;
+    MISSING_TYPE *baseIdentifier;
     MISSING_TYPE *healthStore;
 }
 

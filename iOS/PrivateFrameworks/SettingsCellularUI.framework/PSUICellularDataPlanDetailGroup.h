@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, PSListController, PSSpecifier;
+@class NSString, PSListController, PSSpecifier, TSSIMSetupFlow;
 
 __attribute__((visibility("hidden")))
 @interface PSUICellularDataPlanDetailGroup : NSObject
 {
+    TSSIMSetupFlow *_flow;
     PSListController *_listController;
     PSSpecifier *_groupSpecifier;
 }
@@ -22,10 +23,14 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak PSSpecifier *groupSpecifier; // @synthesize groupSpecifier=_groupSpecifier;
 @property(nonatomic) __weak PSListController *listController; // @synthesize listController=_listController;
 - (id)getLogger;
+- (void)simSetupFlowCompleted:(unsigned long long)arg1;
+- (void)handleRemovePlanTapped:(id)arg1;
+- (void)handleAccountSettingsTapped:(id)arg1;
 - (void)managePlanPressed:(id)arg1;
 - (id)removeCellularPlanConfirmationTitle:(id)arg1;
 - (id)removeCellularPlanConfirmationMessage:(id)arg1;
 - (id)localizedManageAccountAlertTitle:(id)arg1;
+- (_Bool)isFlowRunning;
 - (id)lastUpdatedText;
 - (id)specifiers;
 - (id)initWithListController:(id)arg1 groupSpecifier:(id)arg2;

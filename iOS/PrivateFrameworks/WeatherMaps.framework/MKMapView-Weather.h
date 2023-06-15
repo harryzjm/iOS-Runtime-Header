@@ -7,6 +7,7 @@
 #import <MapKit/MKMapView.h>
 
 @interface MKMapView (Weather)
+- (void)configureForWeatherWind;
 - (void)configureForMuted;
 - (void)configureForWeather;
 @end

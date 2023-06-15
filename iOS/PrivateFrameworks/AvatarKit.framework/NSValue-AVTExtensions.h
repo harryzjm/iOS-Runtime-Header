@@ -6,10 +6,16 @@
 
 #import <Foundation/NSValue.h>
 
+@class MISSING_TYPE;
+
 @interface NSValue (AVTExtensions)
-+ (id)avt_valueWithSCNVector4AsFloat4: /* Error: Ran out of types for this method. */;
-+ (id)avt_valueWithSCNVector4:(struct SCNVector4)arg1;
-+ (id)avt_valueWithSCNVector3AsFloat3: /* Error: Ran out of types for this method. */;
-+ (id)avt_valueWithSCNVector3:(struct SCNVector3)arg1;
++ (id)avt_valueWithFloat4x4:(CDStruct_14d5dc5e)arg1;
++ (id)avt_valueWithFloat4: /* Error: Ran out of types for this method. */;
++ (id)avt_valueWithFloat3: /* Error: Ran out of types for this method. */;
++ (id)avt_valueWithFloat4_usableWithKVCForSCNVector4: /* Error: Ran out of types for this method. */;
++ (id)avt_valueWithFloat3_usableWithKVCForSCNVector3: /* Error: Ran out of types for this method. */;
+- (CDStruct_14d5dc5e)avt_float4x4Value;
+- (MISSING_TYPE *)avt_float4Value;
+- (MISSING_TYPE *)avt_float3Value;
 @end
 

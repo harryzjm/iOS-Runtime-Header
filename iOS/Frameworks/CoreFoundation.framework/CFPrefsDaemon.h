@@ -25,5 +25,7 @@ __attribute__((visibility("hidden")))
     _Atomic unsigned int *_shmem;
 }
 
+- (_Bool)enterSandbox;
+
 @end
 

@@ -14,7 +14,6 @@
 + (id)sb_legacy_homeButtonDeviceDisplayEdgeInfo;
 + (id)sb_legacy_roundCornerPadDisplayEdgeInfo;
 - (struct UIEdgeInsets)sb_orientedEdgeInsetsForInterfaceOrientation:(long long)arg1 traitCollection:(id)arg2;
-- (void)sb_applyDisplayEdgeInfoToSceneSettings:(id)arg1;
 - (id)sb_displayEdgeInfoWithSafeAreaInsetsForStatusBarHeight:(double)arg1;
 @end
 

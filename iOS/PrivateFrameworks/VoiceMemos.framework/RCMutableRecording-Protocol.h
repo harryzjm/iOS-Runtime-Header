@@ -6,7 +6,7 @@
 
 #import <VoiceMemos/RCRecording-Protocol.h>
 
-@class CLLocation, NSDate, NSString;
+@class NSDate, NSString;
 
 @protocol RCMutableRecording <RCRecording>
 @property(nonatomic) _Bool musicMemo;
@@ -20,9 +20,8 @@
 @property(nonatomic) _Bool pendingRestore;
 @property(copy, nonatomic) NSString *uuid;
 @property(copy, nonatomic) NSString *title;
-@property(copy, nonatomic) CLLocation *location;
 @property(nonatomic) double length;
-@property(copy, nonatomic) NSString *path;
+@property(copy, nonatomic) NSString *fileName;
 @property(copy, nonatomic) NSDate *deletionDate;
 @property(copy, nonatomic) NSDate *creationDate;
 @end

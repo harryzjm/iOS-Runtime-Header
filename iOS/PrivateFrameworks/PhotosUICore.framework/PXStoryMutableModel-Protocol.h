@@ -50,6 +50,7 @@
 @property(nonatomic) CDStruct_3c1748cc thumbnailAutoplayTimeRange;
 @property(nonatomic) _Bool shouldAutoplayThumbnail;
 @property(nonatomic) long long thumbnailStyle;
+@property(nonatomic) long long detailsViewButtonDisplayStyle;
 @property(nonatomic) long long viewMode;
 - (void)removeVideoPresentationController:(id <PXStoryVideoPresentationController>)arg1;
 - (void)addVideoPresentationController:(id <PXStoryVideoPresentationController>)arg1;

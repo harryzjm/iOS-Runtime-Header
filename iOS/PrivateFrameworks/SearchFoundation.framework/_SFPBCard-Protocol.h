@@ -6,10 +6,12 @@
 
 #import <SearchFoundation/NSObject-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString, _SFPBAbstractCommand, _SFPBCardSection, _SFPBImage, _SFPBNamedProtobufMessage, _SFPBURL;
+@class NSArray, NSData, NSDictionary, NSString, _SFPBAbstractCommand, _SFPBCardSection, _SFPBColor, _SFPBDrillDownMetadata, _SFPBImage, _SFPBNamedProtobufMessage, _SFPBURL;
 
 @protocol _SFPBCard <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
+@property(retain, nonatomic) _SFPBDrillDownMetadata *metadata;
+@property(retain, nonatomic) _SFPBColor *backgroundColor;
 @property(retain, nonatomic) _SFPBImage *titleImage;
 @property(copy, nonatomic) NSArray *entityProtobufMessages;
 @property(nonatomic) _Bool flexibleSectionOrder;

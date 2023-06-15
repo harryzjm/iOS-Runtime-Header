@@ -8,7 +8,7 @@
 
 #import <XCTAutomationSupport/XCTRuntimeIssue-Protocol.h>
 
-@class NSDictionary, NSString, XCAccessibilityElement;
+@class NSArray, NSDictionary, NSString, XCAccessibilityElement;
 
 @interface XCTAutomationTypeMismatchIssue : NSObject <XCTRuntimeIssue>
 {
@@ -29,6 +29,7 @@
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long aggregationHash;
 @property(readonly) unsigned long long hash;
+@property(readonly) NSArray *callStackAddresses;
 @property(readonly, copy) NSString *description;
 @property(readonly) NSString *detailedDescription;
 @property(readonly) NSString *shortDescription;

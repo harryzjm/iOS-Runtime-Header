@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIApplication.h>
+#import <UIKitCore/UIApplication.h>
 
 @interface _TtC7SwiftUIP33_ACC2C5639A7D76F611E170E831FCA49118SwiftUIApplication : UIApplication
 {

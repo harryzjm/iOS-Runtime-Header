@@ -6,10 +6,11 @@
 
 #import <ShareSheet/NSObject-Protocol.h>
 
-@class SFCollaborationCloudSharingResult, SHSheetSession, UIActivity;
+@class LPLinkMetadata, SFCollaborationCloudSharingResult, SHSheetSession, UIActivity;
 @protocol SFCollaborationService;
 
 @protocol SHSheetSessionDelegate <NSObject>
+- (void)session:(SHSheetSession *)arg1 didChangeMetadata:(LPLinkMetadata *)arg2;
 - (id <SFCollaborationService>)collaborationServiceForSession:(SHSheetSession *)arg1;
 - (SFCollaborationCloudSharingResult *)collaborationSharingResultForActivity:(UIActivity *)arg1;
 - (void)collaborationFooterViewModelDidChangeForSession:(SHSheetSession *)arg1;

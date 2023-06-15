@@ -9,6 +9,9 @@
 @class NSArray, NSSet;
 
 @protocol HMEPersistentConnectionClientDelegate <HMERouterClientDelegate>
+- (void)finishedWritingToStore:(unsigned long long)arg1;
+- (unsigned long long)willWriteToStore;
+- (_Bool)isActiveForSaving;
 - (NSSet *)forwardingTopicsForTopics:(NSSet *)arg1;
 - (void)sendChangeRegistrationsMessageWithAddedFilters:(NSArray *)arg1 removedFilters:(NSArray *)arg2 completion:(void (^)(NSDictionary *, NSError *))arg3;
 @end

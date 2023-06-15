@@ -20,6 +20,7 @@
     MISSING_TYPE *$__lazy_storage_$_availabilityImageLayout;
     MISSING_TYPE *$__lazy_storage_$_descriptionTextLayout;
     MISSING_TYPE *$__lazy_storage_$_buttonLayout;
+    MISSING_TYPE *$__lazy_storage_$_textualButtonLayout;
     MISSING_TYPE *$__lazy_storage_$_rolesSummaryLayout;
     MISSING_TYPE *$__lazy_storage_$_tagsLayout;
     MISSING_TYPE *$__lazy_storage_$_infoTagsLayout;

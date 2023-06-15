@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 @interface COMessagingClientInfo : NSObject
 {
     NSString *_topic;
-    NSString *_cluster;
+    id _cluster;
     NSSet *_handledClasses;
     CDUnknownBlockType _completionHandler;
     COCoordinationServiceClient *_client;
@@ -24,7 +24,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) __weak COCoordinationServiceClient *client; // @synthesize client=_client;
 @property(copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property(readonly, copy, nonatomic) NSSet *handledClasses; // @synthesize handledClasses=_handledClasses;
-@property(readonly, copy, nonatomic) NSString *cluster; // @synthesize cluster=_cluster;
+@property(readonly, copy, nonatomic) id cluster; // @synthesize cluster=_cluster;
 @property(readonly, copy, nonatomic) NSString *topic; // @synthesize topic=_topic;
 - (id)initWithTopic:(id)arg1 cluster:(id)arg2 handledClasses:(id)arg3 client:(id)arg4 activateCompletionHanlder:(CDUnknownBlockType)arg5;
 

@@ -12,10 +12,12 @@ __attribute__((visibility("hidden")))
 @interface VNImageAnalyzerCompoundRequestGroupingConfigurations : NSObject
 {
     NSMutableDictionary *_groupingConfigurations;
+    unsigned long long _detectorModel;
 }
 
 - (void).cxx_destruct;
-- (id)init;
+- (unsigned long long)detectorModel;
+- (id)initWithDetectorModel:(unsigned long long)arg1;
 
 @end
 

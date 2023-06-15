@@ -4,19 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
+@class MPModelObject, NSString;
 
 __attribute__((visibility("hidden")))
 @interface _MPCPlayerFeedbackCommand
 {
     _Bool _value;
+    _Bool _isDislikingFavoritableModelObject;
     unsigned int _command;
     NSString *_localizedTitle;
     NSString *_localizedShortTitle;
     long long _presentationStyle;
+    MPModelObject *_favoritableModelObject;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) MPModelObject *favoritableModelObject; // @synthesize favoritableModelObject=_favoritableModelObject;
+@property(nonatomic) _Bool isDislikingFavoritableModelObject; // @synthesize isDislikingFavoritableModelObject=_isDislikingFavoritableModelObject;
 @property(nonatomic) _Bool value; // @synthesize value=_value;
 @property(nonatomic) long long presentationStyle; // @synthesize presentationStyle=_presentationStyle;
 @property(copy, nonatomic) NSString *localizedShortTitle; // @synthesize localizedShortTitle=_localizedShortTitle;

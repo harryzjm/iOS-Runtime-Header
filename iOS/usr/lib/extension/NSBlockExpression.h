@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 
 + (_Bool)supportsSecureCoding;
 - (void)acceptVisitor:(id)arg1 flags:(unsigned long long)arg2;
+- (unsigned long long)expressionType;
 - (id)_expressionWithSubstitutionVariables:(id)arg1;
 - (id)predicateFormat;
 - (id)expressionValueWithObject:(id)arg1 context:(id)arg2;

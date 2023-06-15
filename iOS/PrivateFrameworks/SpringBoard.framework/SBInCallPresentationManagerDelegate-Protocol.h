@@ -11,7 +11,7 @@
 @protocol SBInCallPresentationManagerDelegate <NSObject>
 - (void)inCallPresentationManagerRequestsHandlingOfDeferredUILock:(SBInCallPresentationManager *)arg1;
 - (long long)inCallPresentationManager:(SBInCallPresentationManager *)arg1 interfaceOrientationForTransientOverlayPresentationInWindowScene:(SBWindowScene *)arg2;
-- (long long)inCallPresentationManagerInterfaceOrientationForBannerPresentation:(SBInCallPresentationManager *)arg1;
+- (long long)inCallPresentationManager:(SBInCallPresentationManager *)arg1 interfaceOrientationForBannerPresentationInWindowScene:(SBWindowScene *)arg2;
 - (SBInCallPresentationSession *)inCallPresentationManager:(SBInCallPresentationManager *)arg1 createPresentationSessionWithSceneHandle:(SBDeviceApplicationSceneHandle *)arg2;
 @end
 

@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)queryPathsForPersona:(id)arg1 withError:(id *)arg2;
++ (id)sharedHelper;
 - (id)itemIDForURL:(id)arg1 error:(id *)arg2;
 - (unsigned short)br_capabilityToMoveFromURL:(id)arg1 toNewParent:(id)arg2 error:(id *)arg3;
 - (void)_resolveItemIdentifierAtURL:(id)arg1 withHandler:(CDUnknownBlockType)arg2;

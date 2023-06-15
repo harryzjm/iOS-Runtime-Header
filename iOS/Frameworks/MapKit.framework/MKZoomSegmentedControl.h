@@ -25,7 +25,7 @@ __attribute__((visibility("hidden")))
 - (void)plusPressed:(id)arg1;
 - (void)minusPressed:(id)arg1;
 - (void)updateAppearance;
-- (void)traitCollectionDidChange:(id)arg1;
+- (void)traitEnvironment:(id)arg1 didChangeTraitCollection:(id)arg2;
 - (void)_unloadResources;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;

@@ -7,6 +7,7 @@
 @class _EXLaunchConfiguration;
 
 @protocol _EXLaunchServiceProtocol
+- (void)invalidateLaunchAssertionsForExtensionAuditToken:(CDStruct_4c969caf)arg1 reply:(void (^)(void))arg2;
 - (void)prepareWithLaunchConfiguration:(_EXLaunchConfiguration *)arg1 reply:(void (^)(_EXExtensionProcessHandle *, NSError *))arg2;
 @end
 

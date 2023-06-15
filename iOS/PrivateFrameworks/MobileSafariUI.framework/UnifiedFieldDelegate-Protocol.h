@@ -13,6 +13,7 @@
 - (void)unifiedField:(UnifiedField *)arg1 didEngageWithQuerySuggestion:(CKContextResult *)arg2 forQueryString:(NSString *)arg3;
 - (void)unifiedFieldDidUpdateUserTypedText:(UnifiedField *)arg1 forQueryString:(NSString *)arg2 didUpdateSuggestions:(_Bool)arg3;
 - (void)unifiedFieldShouldPasteAndNavigate:(UnifiedField *)arg1;
+- (void)unifiedFieldMakeWindowKey:(UnifiedField *)arg1;
 - (void)unifiedField:(UnifiedField *)arg1 focusNextKeyView:(_Bool)arg2;
 - (void)unifiedFieldSelectCompletionItemIfAvailable:(UnifiedField *)arg1;
 - (void)unifiedField:(UnifiedField *)arg1 moveCompletionSelectionBySectionOffset:(long long)arg2;

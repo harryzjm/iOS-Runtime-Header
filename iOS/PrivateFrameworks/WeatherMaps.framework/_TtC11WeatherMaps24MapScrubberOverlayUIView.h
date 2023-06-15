@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class MISSING_TYPE;
 
@@ -17,7 +17,6 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *playPauseButton;
     MISSING_TYPE *bar;
     MISSING_TYPE *affordanceActionIcon;
-    MISSING_TYPE *affordanceTapGestureRecognizer;
     MISSING_TYPE *titleButton;
     MISSING_TYPE *regularBreakpointWidth;
     MISSING_TYPE *wideBreakpointWidth;
@@ -31,7 +30,6 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *barVerticalSpacing;
     MISSING_TYPE *buttonTouchInsets;
     MISSING_TYPE *calendar;
-    MISSING_TYPE *activeWidthClass;
     MISSING_TYPE *scrubberLayoutStyle;
     MISSING_TYPE *delegate;
     MISSING_TYPE *menuWasOpened;
@@ -43,7 +41,6 @@ __attribute__((visibility("hidden")))
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)didReceiveMenuAction:(id)arg1;
-- (void)didTapAffordance:(id)arg1;
 - (void)playPauseTapped;
 - (void)barTouched:(id)arg1;
 - (void)barValueChanged:(id)arg1;

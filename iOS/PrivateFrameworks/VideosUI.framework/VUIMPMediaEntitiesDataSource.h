@@ -4,23 +4,35 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, VUIMediaEntitiesFetchController, VUIMediaLibrary;
+@class NSArray, NSOrderedSet, NSString, VUIMediaEntitiesFetchController, VUIMediaLibrary;
 
 __attribute__((visibility("hidden")))
 @interface VUIMPMediaEntitiesDataSource
 {
+    _Bool _shouldPauseAutoFetchingArtworkInfoDictionaries;
     VUIMediaLibrary *_mediaLibrary;
     VUIMediaEntitiesFetchController *_fetchController;
+    NSOrderedSet *_mediaEntitiesSet;
+    NSArray *_mediaEntitiesToFetch;
+    unsigned long long _inFlightArtworkRequests;
+    struct _NSRange _requestedRange;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long inFlightArtworkRequests; // @synthesize inFlightArtworkRequests=_inFlightArtworkRequests;
+@property(nonatomic) struct _NSRange requestedRange; // @synthesize requestedRange=_requestedRange;
+@property(retain, nonatomic) NSArray *mediaEntitiesToFetch; // @synthesize mediaEntitiesToFetch=_mediaEntitiesToFetch;
+@property(retain, nonatomic) NSOrderedSet *mediaEntitiesSet; // @synthesize mediaEntitiesSet=_mediaEntitiesSet;
 @property(retain, nonatomic) VUIMediaEntitiesFetchController *fetchController; // @synthesize fetchController=_fetchController;
 @property(retain, nonatomic) VUIMediaLibrary *mediaLibrary; // @synthesize mediaLibrary=_mediaLibrary;
-- (id)_getPurchaseHistoryIdsFromMediaEntities:(id)arg1;
+- (_Bool)shouldPauseAutoFetchingArtworkInfoDictionaries;
+- (id)_getPurchaseHistoryIdsFromMediaEntities:(id)arg1 inRange:(struct _NSRange)arg2;
 - (void)_loadImageUrlsByPurchaseHistoryIds:(id)arg1;
+- (void)_fetchArtworkInfoIfNecessary;
 - (void)controller:(id)arg1 fetchRequests:(id)arg2 didFailWithError:(id)arg3;
 - (void)controller:(id)arg1 fetchRequests:(id)arg2 didCompleteWithResult:(id)arg3;
 - (void)dealloc;
+- (void)setShouldPauseAutoFetchingArtworkInfoDictionaries:(_Bool)arg1;
 - (void)startFetch;
 - (id)initWithMediaLibrary:(id)arg1 fetchRequest:(id)arg2;
 

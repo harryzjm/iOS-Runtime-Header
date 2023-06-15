@@ -21,11 +21,14 @@
 @property(copy, nonatomic) CDUnknownBlockType shareAcceptedBlock; // @synthesize shareAcceptedBlock=_shareAcceptedBlock;
 - (void)requestDidParseNodeFailure:(id)arg1;
 - (id)requestDidParseProtobufObject:(id)arg1;
-- (void)addSignatureForRequestOperation:(id)arg1;
+- (id)returnVerificationKeyAndSignatureForRequestOperation:(id)arg1 dataToBeSigned:(id)arg2 error:(id *)arg3;
 - (id)generateRequestOperations;
 - (_Bool)requiresCKAnonymousUserIDs;
+- (_Bool)requiresCKAnonymousSignature;
 - (_Bool)handlesAnonymousCKUserIDPropagation;
 - (id)requestOperationClasses;
+- (void)fillOutRequestProperties:(id)arg1;
+- (id)equivalencyProperties;
 - (id)zoneIDsToLock;
 - (id)initWithOperation:(id)arg1 shareMetadatasToAccept:(id)arg2;
 

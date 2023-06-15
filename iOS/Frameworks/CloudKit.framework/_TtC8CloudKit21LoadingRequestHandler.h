@@ -13,6 +13,7 @@
     MISSING_TYPE *assetStreamHandle;
     MISSING_TYPE *type;
     MISSING_TYPE *taskByRequest;
+    MISSING_TYPE *activity;
 }
 
 - (void).cxx_destruct;

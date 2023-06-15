@@ -11,5 +11,6 @@
 @protocol _UIFindNavigatorViewControllerDelegate <NSObject>
 - (void)findNavigatorViewControllerViewDidChangeIntrinsicContentSize:(_UIFindNavigatorViewController *)arg1;
 - (void)findNavigatorViewControllerDidRequestDismissal:(_UIFindNavigatorViewController *)arg1;
+- (_Bool)findNavigatorShouldDismissOnResponderChange:(_UIFindNavigatorViewController *)arg1;
 @end
 

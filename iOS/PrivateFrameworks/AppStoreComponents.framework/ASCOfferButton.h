@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIControl.h>
+#import <UIKitCore/UIControl.h>
 
 @class ASCModalViewInteraction, ASCOfferButtonBackgroundImageView, ASCOfferMetadata, ASCOfferTheme, CAAnimation, NSString, UILabel, UIViewPropertyAnimator;
 @protocol ASCOfferButtonDelegate;
@@ -56,7 +56,7 @@ __attribute__((visibility("hidden")))
 - (void)invalidateIntrinsicContentSize;
 - (id)makeLayout;
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1;
-- (void)traitCollectionDidChange:(id)arg1;
+- (void)onTraitCollectionChange;
 - (void)transitionToMetadata:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)transitionToMetadata:(id)arg1 scalingDurationBy:(double)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (id)transitionColorForMetadata:(id)arg1;

@@ -13,6 +13,8 @@
     MISSING_TYPE *connectionBrokerProvider;
     MISSING_TYPE *dataProtectionMonitor;
     MISSING_TYPE *localDeviceProvider;
+    MISSING_TYPE *pairedCompanionConnection;
+    MISSING_TYPE *planCreationNotifier;
     MISSING_TYPE *platform;
     MISSING_TYPE *persistenceStore;
     MISSING_TYPE *remoteBrowsingConfirmationCoordinator;

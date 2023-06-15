@@ -19,6 +19,7 @@
 - (id)fc_actionTypes;
 - (_Bool)fc_localDataHint;
 - (id)fc_transactions;
+- (id)fc_arrayByTransformingWithKeyAndValueBlock:(CDUnknownBlockType)arg1;
 - (id)fc_safeObjectForKey:(id)arg1;
 - (id)fc_dictionaryByMergingDictionary:(id)arg1 withValueCombiner:(CDUnknownBlockType)arg2;
 - (id)fc_jsonString;
@@ -31,6 +32,7 @@
 - (id)fc_deepCopy;
 - (id)fc_subdictionaryWithCopiesForKeys:(id)arg1;
 - (id)fc_subdictionaryForKeys:(id)arg1;
+- (id)nf_mutableObjectsForKeysWithoutMarker:(id)arg1;
 - (id)nf_objectsForKeysWithoutMarker:(id)arg1;
 - (id)fc_dictionaryByRemovingObjectForKey:(id)arg1;
 - (id)fc_dictionaryByTransformingValuesWithBlock:(CDUnknownBlockType)arg1;

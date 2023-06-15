@@ -11,6 +11,7 @@
 @interface _TtC12NewsArticles19ArticleViewerStyler : _TtCs12_SwiftObject
 {
     MISSING_TYPE *colorPaletteProvider;
+    MISSING_TYPE *featureAvailability;
     MISSING_TYPE *immersiveEffectChecker;
 }
 

@@ -6,11 +6,26 @@
 
 #import <CoverSheetKit/CSProminentDisplayViewController.h>
 
+@class NSString;
+
 @interface CSProminentDisplayViewController (PREditing)
+- (void)pr_setDisplayString:(id)arg1;
+- (void)pr_setElements:(unsigned long long)arg1;
+- (void)pr_setUsesEditingLayout:(_Bool)arg1;
+- (void)pr_setDisplayDate:(id)arg1;
+- (id)pr_baseFont;
+- (void)pr_setBackgroundType:(long long)arg1;
 - (void)pr_setSubtitleHidden:(_Bool)arg1;
-- (void)pr_setStylingFromTitleStyleConfiguration:(id)arg1 extensionBundleURL:(id)arg2;
+- (void)pr_setStylingFromTitleStyleConfiguration:(id)arg1 withExtensionBundleURL:(id)arg2 forRole:(id)arg3;
 - (void)pr_setTitleColor:(id)arg1 timeFont:(id)arg2 timeNumberingSystem:(id)arg3 alternateDateEnabled:(_Bool)arg4 groupName:(id)arg5 extensionBundleURL:(id)arg6;
 - (void)_pr_updateAlternateCalendarIdentifier;
 - (void)pr_setAlternateDateEnabled:(_Bool)arg1;
+- (id)pr_beginInteractiveTransitionToBaseFont:(id)arg1 vibrancyConfiguration:(id)arg2 cachingVibrancyTransitionProvider:(id)arg3;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 @end
 

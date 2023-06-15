@@ -4,8 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSData;
+
 @interface (null) (GameCenterFoundation)
-- (void)receiveDataWithData:(id)arg1 fromPlayer:(id)arg2;
-- (void)sendDataWithData:(id)arg1 toPlayers:(id)arg2;
+- (void)preemptRelay:(id)arg1;
+- (void)handleRelayPushData:(id)arg1 onlyIfPreemptive:(_Bool)arg2;
+- (void)acceptRelayResponse:(id)arg1 playerID:(id)arg2;
+- (void)localConnectionDataWithCompletionHandler:(void (^)(NSData *, NSError *))arg1;
+- (id)enrichPeerDictionariesForPlayersConnection:(id)arg1;
+- (void)connectToNearbyPlayer:(id)arg1 withConnectionData:(id)arg2;
+- (_Bool)connectToGuestPlayer:(id)arg1 withHostPlayer:(id)arg2;
+@property(nonatomic, readonly) NSData *nearbyConnectionData;
 @end
 

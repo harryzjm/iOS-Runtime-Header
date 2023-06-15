@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (void)executionDidBegin;
 - (id)imageProxy;
 - (void)addCompletion:(CDUnknownBlockType)arg1;
+- (void)fetchImageWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithMediaInfo:(id)arg1;
 
 @end

@@ -25,6 +25,7 @@
 - (void)deleteCookieWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 cookieName:(NSString *)arg3 url:(NSString *)arg4;
 - (void)setCookieWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 cookie:(RWIProtocolPageCookie *)arg3;
 - (void)getCookiesWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(NSArray *))arg2;
+- (void)overrideUserPreferenceWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 name:(long long)arg3 value:(long long *)arg4;
 - (void)overrideSettingWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 setting:(long long)arg3 value:(_Bool *)arg4;
 - (void)overrideUserAgentWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 value:(id *)arg3;
 - (void)navigateWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 url:(NSString *)arg3;

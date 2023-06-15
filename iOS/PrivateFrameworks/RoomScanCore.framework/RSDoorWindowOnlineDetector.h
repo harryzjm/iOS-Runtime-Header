@@ -19,9 +19,6 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)setBeautificationEnable:(_Bool)arg1;
-- (void)reset;
-- (id)runWithPointCloud:(id)arg1 currentKeyframe:(id)arg2 temporalMeta:(id)arg3 floorPlan:(id)arg4 lcnnOpenings:(id)arg5;
 - (id)init;
 
 @end

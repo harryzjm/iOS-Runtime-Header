@@ -14,6 +14,6 @@
 - (struct CGSize)sizeAtIndexFromFullWidthForBounds:(unsigned long long)arg1;
 - (struct CGSize)maxSize;
 - (struct CGSize)minSize;
-- (struct CGSize)nearestGridSizeForSize:(struct CGSize)arg1;
+- (struct CGSize)nearestGridSizeForSize:(struct CGSize)arg1 countOnStage:(unsigned long long)arg2;
 @end
 

@@ -6,12 +6,13 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-@class NSArray;
+@class NSArray, NSData;
 
 __attribute__((visibility("hidden")))
 @interface VCMediaNegotiationBlobV2VideoPayload : PBCodable
 {
     unsigned int _decodeFormats;
+    NSData *_encodeDecodeFeatures;
     unsigned int _encodeFormats;
     unsigned int _parameterSet;
     unsigned int _videoPayload;
@@ -25,6 +26,7 @@ __attribute__((visibility("hidden")))
 
 + (int)rtpPayloadWithPayload:(int)arg1;
 + (int)payloadWithRTPPayload:(int)arg1;
+@property(retain, nonatomic) NSData *encodeDecodeFeatures; // @synthesize encodeDecodeFeatures=_encodeDecodeFeatures;
 @property(nonatomic) unsigned int decodeFormats; // @synthesize decodeFormats=_decodeFormats;
 @property(nonatomic) unsigned int encodeFormats; // @synthesize encodeFormats=_encodeFormats;
 @property(nonatomic) unsigned int parameterSet; // @synthesize parameterSet=_parameterSet;
@@ -37,11 +39,13 @@ __attribute__((visibility("hidden")))
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasEncodeDecodeFeatures;
 @property(nonatomic) _Bool hasDecodeFormats;
 @property(nonatomic) _Bool hasEncodeFormats;
 @property(nonatomic) _Bool hasParameterSet;
 @property(nonatomic) _Bool hasVideoPayload;
 @property(nonatomic) unsigned int videoPayload; // @synthesize videoPayload=_videoPayload;
+- (void)dealloc;
 - (void)setupVideoParameterSupport:(unsigned int)arg1;
 - (_Bool)setupEncode:(_Bool)arg1 videoRules:(id)arg2;
 - (void)printWithLogFile:(void *)arg1 prefix:(id)arg2;
@@ -50,7 +54,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSArray *decodeVideoRules;
 @property(readonly, nonatomic) NSArray *encodeVideoRules;
 @property(readonly, nonatomic) int payload;
-- (id)initWithPayload:(int)arg1 encodeVideoRules:(id)arg2 decodeVideoRules:(id)arg3 videoParameterSupport:(unsigned int)arg4;
+- (id)initWithPayload:(int)arg1 encodeVideoRules:(id)arg2 decodeVideoRules:(id)arg3 videoParameterSupport:(unsigned int)arg4 encodeDecodeFeatures:(id)arg5;
 
 @end
 

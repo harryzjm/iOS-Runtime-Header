@@ -14,7 +14,6 @@
 - (id)stringByEncodingSlashes;
 - (id)appendSlashIfNeeded;
 - (id)removeSlashIfNeeded;
-- (id)safeFilename;
 - (id)searchAndReplaceString:(id)arg1 withString:(id)arg2;
 - (id)unquote;
 - (id)trimChar:(unsigned short)arg1;

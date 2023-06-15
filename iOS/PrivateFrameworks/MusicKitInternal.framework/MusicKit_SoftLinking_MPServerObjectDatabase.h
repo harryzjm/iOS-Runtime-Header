@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
 
 + (id)sharedServerObjectDatabase;
 - (void).cxx_destruct;
-- (id)payloadDataForIdentifier:(id)arg1 catalogTypes:(id)arg2 error:(id *)arg3;
+- (id)payloadDataForIdentifier:(id)arg1 identifierKinds:(long long)arg2 error:(id *)arg3;
 - (id)importObjectsFromRequest:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
 - (id)_initWithUnderlyingServerObjectDatabase:(id)arg1;
 

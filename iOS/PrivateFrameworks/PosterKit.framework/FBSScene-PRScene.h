@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <FrontBoard/FBSScene.h>
+#import <FrontBoardServices/FBSScene.h>
 
 @interface FBSScene (PRScene)
 - (void)pr_performUpdate:(CDUnknownBlockType)arg1;

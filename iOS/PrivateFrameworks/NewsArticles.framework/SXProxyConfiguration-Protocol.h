@@ -9,7 +9,8 @@
 @class NSString;
 
 @protocol SXProxyConfiguration <NSObject>
-@property(nonatomic, readonly) NSString *proxyAutoConfigScript;
-@property(nonatomic, readonly) NSString *proxyHost;
+@property(readonly, nonatomic) _Bool usePrivateRelay;
+@property(readonly, copy, nonatomic) NSString *proxyAutoConfigScript;
+@property(readonly, copy, nonatomic) NSString *proxyHost;
 @end
 

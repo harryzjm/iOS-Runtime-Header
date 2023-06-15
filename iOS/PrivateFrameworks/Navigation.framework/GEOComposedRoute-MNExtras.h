@@ -30,6 +30,7 @@
 - (id)_navigation_allLeafBoundingSections;
 - (id)_navigation_leafBoundingSectionsIntersectingSection:(id)arg1 paddingMapPoints:(double)arg2;
 - (id)_navigation_leafBoundingSectionsIntersectingSection:(id)arg1;
+- (id)_navigation_leafBoundingSectionContainingCoordinate:(CDStruct_39925896)arg1;
 - (id)_navigation_leafBoundingSectionForRouteCoordinate:(struct PolylineCoordinate)arg1;
 - (id)_navigation_boundingSectionForRange:(struct GEOPolylineCoordinateRange)arg1 leafIndex:(unsigned long long *)arg2;
 - (id)_navigation_rootBoundingSection;

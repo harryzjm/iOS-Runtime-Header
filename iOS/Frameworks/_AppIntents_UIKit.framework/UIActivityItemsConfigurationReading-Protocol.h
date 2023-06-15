@@ -9,10 +9,10 @@
 @class NSArray, NSItemProvider, NSString;
 
 @protocol UIActivityItemsConfigurationReading <NSObject>
-@property(nonatomic, readonly) NSArray *itemProvidersForActivityItemsConfiguration;
+@property(readonly, copy, nonatomic) NSArray *itemProvidersForActivityItemsConfiguration;
 
 @optional
-@property(nonatomic, readonly) NSArray *applicationActivitiesForActivityItemsConfiguration;
+@property(readonly, copy, nonatomic) NSArray *applicationActivitiesForActivityItemsConfiguration;
 - (NSItemProvider *)activityItemsConfigurationPreviewForItemAtIndex:(long long)arg1 intent:(NSString *)arg2 suggestedSize:(struct CGSize)arg3;
 - (id)activityItemsConfigurationMetadataForItemAtIndex:(long long)arg1 key:(NSString *)arg2;
 - (id)activityItemsConfigurationMetadataForKey:(NSString *)arg1;

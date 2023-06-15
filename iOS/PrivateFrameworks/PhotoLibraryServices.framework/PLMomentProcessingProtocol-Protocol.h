@@ -9,6 +9,7 @@
 @class CLLocation, NSDate;
 
 @protocol PLMomentProcessingProtocol <NSObject>
+@property(readonly, nonatomic) unsigned short pl_locationType;
 @property(readonly, nonatomic) short pl_originatorState;
 @property(readonly, nonatomic) struct CLLocationCoordinate2D pl_coordinate;
 @property(readonly, nonatomic) CLLocation *pl_location;

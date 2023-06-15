@@ -4,6 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class TSSPropertyMap;
+
 @interface TSCHChartNonStyle
 {
 }
@@ -18,10 +20,12 @@
 + (id)properties;
 - (id)mixedObjectWithFraction:(double)arg1 ofObject:(id)arg2;
 - (long long)mixingTypeWithObject:(id)arg1 context:(id)arg2;
+- (id)formatObjectPropertySet;
 - (void)loadFromPreUFFArchiveWithUnarchiver:(id)arg1;
 - (void)saveToArchiver:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
 - (id)initWithContext:(id)arg1 name:(id)arg2 overridePropertyMap:(id)arg3 isVariation:(_Bool)arg4;
+@property(copy, nonatomic) TSSPropertyMap *overrideMapForSameAsSource; // @dynamic overrideMapForSameAsSource;
 
 @end
 

@@ -17,12 +17,14 @@ __attribute__((visibility("hidden")))
     NSDictionary *_outputShape;
     NSNumber *_outputWidthDownscale;
     NSNumber *_outputWidthOffset;
+    NSNumber *_outputFormatVersion;
     CRNeuralRecognizerConfiguration *_configuration;
 }
 
 + (id)defaultURLOfModelInThisBundle;
 - (void).cxx_destruct;
 @property(readonly) CRNeuralRecognizerConfiguration *configuration; // @synthesize configuration=_configuration;
+@property(retain, nonatomic) NSNumber *outputFormatVersion; // @synthesize outputFormatVersion=_outputFormatVersion;
 @property(retain, nonatomic) NSNumber *outputWidthOffset; // @synthesize outputWidthOffset=_outputWidthOffset;
 @property(retain, nonatomic) NSNumber *outputWidthDownscale; // @synthesize outputWidthDownscale=_outputWidthDownscale;
 @property(retain, nonatomic) NSDictionary *outputShape; // @synthesize outputShape=_outputShape;
@@ -31,12 +33,14 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) int *codemapArray; // @synthesize codemapArray=_codemapArray;
 - (void)releaseIntermediateBuffers;
 - (_Bool)preheatWithError:(id *)arg1;
-- (id)inputBatchFromTextFeatures:(id)arg1 image:(id)arg2 featureWidth:(double)arg3 configuration:(id)arg4;
+- (id)inputBatchFromLineRegions:(id)arg1 image:(id)arg2 regionWidth:(double)arg3 configuration:(id)arg4 rectifier:(id)arg5;
 - (id)predictFromInputs:(id)arg1 error:(id *)arg2;
 - (id)initWithConfiguration:(id)arg1 error:(id *)arg2;
+- (struct TextBoxesOffsets)wordBoxesOffsets;
+- (struct TextBoxesOffsets)characterBoxesOffsets;
 - (_Bool)supportCharacterBoxes;
 @property(readonly) NSURL *modelURL;
-- (id)populateInputBatchData:(float *)arg1 textFeatures:(id)arg2 image:(id)arg3 batchSize:(long long)arg4 width:(double)arg5 configuration:(id)arg6;
+- (id)populateInputBatchData:(float *)arg1 lineRegions:(id)arg2 image:(id)arg3 batchSize:(long long)arg4 width:(double)arg5 configuration:(id)arg6 rectifier:(id)arg7;
 - (void)dealloc;
 
 // Remaining properties

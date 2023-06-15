@@ -9,11 +9,11 @@
 __attribute__((visibility("hidden")))
 @interface _BRCUploadInfo
 {
-    NSMutableSet *_outOfQuotaDocIDs;
+    NSMutableSet *_outOfQuotaObjIDs;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSMutableSet *outOfQuotaDocIDs; // @synthesize outOfQuotaDocIDs=_outOfQuotaDocIDs;
+@property(readonly, nonatomic) NSMutableSet *outOfQuotaObjIDs; // @synthesize outOfQuotaObjIDs=_outOfQuotaObjIDs;
 - (void)copyProgressInfoToProgress:(id)arg1 options:(BOOL)arg2;
 - (void)updateLocalizedDescriptionWithOptions:(BOOL)arg1;
 - (id)description;

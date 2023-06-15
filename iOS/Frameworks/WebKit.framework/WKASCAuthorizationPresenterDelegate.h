@@ -11,7 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface WKASCAuthorizationPresenterDelegate : NSObject
 {
-    struct WeakPtr<WebKit::AuthenticatorPresenterCoordinator, WTF::EmptyCounter> _coordinator;
+    struct WeakPtr<WebKit::AuthenticatorPresenterCoordinator, WTF::DefaultWeakPtrImpl> _coordinator;
 }
 
 - (id).cxx_construct;

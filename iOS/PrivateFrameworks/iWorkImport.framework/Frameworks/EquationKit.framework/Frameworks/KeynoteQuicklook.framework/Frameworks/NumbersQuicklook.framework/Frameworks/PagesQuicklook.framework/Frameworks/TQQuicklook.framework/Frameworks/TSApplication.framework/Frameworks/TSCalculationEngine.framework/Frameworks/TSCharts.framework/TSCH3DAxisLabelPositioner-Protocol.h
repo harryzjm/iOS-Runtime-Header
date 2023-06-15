@@ -8,7 +8,7 @@
 - (_Bool)isHorizontal;
 - (_Bool)hasOffset;
 - (float)labelGapForCount:(unsigned long long)arg1;
-- (tvec3_17f03ce0)positionForValue:(double)arg1 count:(unsigned long long)arg2 chartDirection:(const void *)arg3;
-- (unsigned int)alignmentForChartDirection:(const void *)arg1;
+- (tvec3_17f03ce0)positionForValue:(double)arg1 count:(unsigned long long)arg2 chartDirection:(void *)arg3;
+- (unsigned int)alignmentForChartDirection:(void *)arg1;
 @end
 

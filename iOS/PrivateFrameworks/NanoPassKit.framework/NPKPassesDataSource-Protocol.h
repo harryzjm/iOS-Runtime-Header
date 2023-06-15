@@ -6,7 +6,7 @@
 
 #import <NanoPassKit/NSObject-Protocol.h>
 
-@class NSArray, NSString, PKPass, PKPaymentPass;
+@class NSArray, NSString, PKPass, PKPaymentPass, PKSecureElementPass;
 @protocol NPKPassesDataSourceObserver;
 
 @protocol NPKPassesDataSource <NSObject>
@@ -19,6 +19,7 @@
 - (void)unarchivePass:(PKPass *)arg1;
 - (void)movePassAtIndex:(unsigned long long)arg1 toIndex:(unsigned long long)arg2;
 - (_Bool)shouldAllowMovingItemAtIndex:(unsigned long long)arg1 toIndex:(unsigned long long)arg2;
+- (PKSecureElementPass *)defaultPaymentPass;
 - (PKPass *)passForUniqueID:(NSString *)arg1;
 - (NSArray *)expiredPasses;
 - (NSArray *)secureElementPasses;

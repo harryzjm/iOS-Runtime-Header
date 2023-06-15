@@ -13,8 +13,8 @@
     NSXPCConnection *_connection;
 }
 
-+ (_Bool)enableDeveloperMode:(id *)arg1;
-+ (id)isDeveloperModeEnabled:(id *)arg1;
++ (void)enableDeveloperModeWithCallback:(CDUnknownBlockType)arg1;
++ (void)isDeveloperModeEnabledWithCallback:(CDUnknownBlockType)arg1;
 + (void)initialize;
 - (void).cxx_destruct;
 @property(retain) NSXPCConnection *connection; // @synthesize connection=_connection;

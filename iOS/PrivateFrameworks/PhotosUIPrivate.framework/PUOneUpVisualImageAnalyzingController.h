@@ -7,16 +7,19 @@
 #import <objc/NSObject.h>
 
 @class NSString, PUBrowsingViewModel, PXVisualIntelligenceManager;
+@protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface PUOneUpVisualImageAnalyzingController : NSObject
 {
     PUBrowsingViewModel *_browsingViewModel;
     PXVisualIntelligenceManager *_visualImageManager;
+    NSObject<OS_dispatch_queue> *_loadVideoFrameQueue;
 }
 
 + (void)_setVisualImageAnalysis:(id)arg1 forAssetViewModel:(id)arg2;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *loadVideoFrameQueue; // @synthesize loadVideoFrameQueue=_loadVideoFrameQueue;
 @property(readonly, nonatomic) PXVisualIntelligenceManager *visualImageManager; // @synthesize visualImageManager=_visualImageManager;
 @property(readonly, nonatomic) PUBrowsingViewModel *browsingViewModel; // @synthesize browsingViewModel=_browsingViewModel;
 - (void)_cancelVKImageAnalysisForAssetViewModel:(id)arg1;

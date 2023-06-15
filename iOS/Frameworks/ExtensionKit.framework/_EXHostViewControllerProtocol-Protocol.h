@@ -7,6 +7,7 @@
 @class UIView, UIViewController;
 
 @protocol _EXHostViewControllerProtocol
+@property(readonly) UIView *placeholderView;
 @property(readonly) UIView *view;
 @property(readonly) id delegate;
 - (void)embedViewController:(UIViewController *)arg1;

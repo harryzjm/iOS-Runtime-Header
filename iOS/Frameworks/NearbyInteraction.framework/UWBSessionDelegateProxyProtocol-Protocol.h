@@ -12,7 +12,6 @@
 - (void)didUpdateHomeDeviceUWBRangingAvailability:(_Bool)arg1;
 - (void)didUpdateAlgorithmState:(NIAlgorithmConvergenceState *)arg1 forObject:(NINearbyObject *)arg2;
 - (void)didReceiveRangingAuthRecommendation:(_Bool)arg1 forObject:(NINearbyObject *)arg2;
-- (void)didGenerateRangingAuthSessionToken:(NIDiscoveryToken *)arg1;
 - (void)didGenerateShareableConfigurationData:(NSData *)arg1 forObject:(NINearbyObject *)arg2;
 - (void)didUpdateHealthStatus:(long long)arg1;
 - (void)relayDCKMessage:(NSData *)arg1;
@@ -23,6 +22,7 @@
 - (void)uwbSessionInterruptedWithReason:(long long)arg1 timestamp:(double)arg2;
 - (void)didRemoveNearbyObjects:(NSArray *)arg1 withReason:(unsigned long long)arg2;
 - (void)didUpdateNearbyObjects:(NSArray *)arg1;
+- (void)didUpdateLocalDiscoveryToken:(NIDiscoveryToken *)arg1;
 - (void)uwbSessionDidInvalidateWithError:(NSError *)arg1;
 - (void)uwbSessionDidFailWithError:(NSError *)arg1;
 @end

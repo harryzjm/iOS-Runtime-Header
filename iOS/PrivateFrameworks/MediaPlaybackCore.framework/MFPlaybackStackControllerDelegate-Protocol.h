@@ -37,10 +37,12 @@
 - (void)playbackWaitingToPlayForItem:(id <MFQueuePlayerItem>)arg1 reason:(NSString *)arg2 timeStamp:(id <MFTimeStamp>)arg3;
 - (void)playbackDidStopForItem:(id <MFQueuePlayerItem>)arg1 source:(NSString *)arg2 reason:(NSString *)arg3 timeStamp:(id <MFTimeStamp>)arg4;
 - (void)playbackDidStartForItem:(id <MFQueuePlayerItem>)arg1 rate:(float)arg2 fromStalling:(_Bool)arg3 timeStamp:(id <MFTimeStamp>)arg4;
+- (void)itemTransitionDidEndFrom:(id <MFQueuePlayerItem>)arg1 to:(id <MFQueuePlayerItem>)arg2 type:(long long)arg3 duration:(double)arg4 timeStamp:(id <MFTimeStamp>)arg5;
+- (void)itemTransitionWillBeginFrom:(id <MFQueuePlayerItem>)arg1 to:(id <MFQueuePlayerItem>)arg2 type:(long long)arg3 duration:(double)arg4 timeStamp:(id <MFTimeStamp>)arg5;
 - (void)itemDidResignCurrent:(id <MFQueuePlayerItem>)arg1 source:(long long)arg2 timeStamp:(id <MFTimeStamp>)arg3;
 - (void)itemDidBecomeCurrent:(id <MFQueuePlayerItem>)arg1 source:(long long)arg2 timeStamp:(id <MFTimeStamp>)arg3;
 - (void)itemDidFailToPlayToEnd:(id <MFQueuePlayerItem>)arg1 error:(NSError *)arg2 timeStamp:(id <MFTimeStamp>)arg3;
-- (void)itemDidFailToLoad:(id <MFQueuePlayerItem>)arg1 error:(NSError *)arg2 timeStamp:(id <MFTimeStamp>)arg3;
+- (void)itemDidFailToLoad:(id <MFQueuePlayerItem>)arg1 silently:(_Bool)arg2 error:(NSError *)arg3 timeStamp:(id <MFTimeStamp>)arg4;
 - (void)itemIsReadyToPlay:(id <MFQueuePlayerItem>)arg1 timeStamp:(id <MFTimeStamp>)arg2;
 - (void)currentItemWillChangeFromItem:(id <MFQueuePlayerItem>)arg1 toItem:(id <MFQueuePlayerItem>)arg2 source:(long long)arg3 timeStamp:(id <MFTimeStamp>)arg4;
 @end

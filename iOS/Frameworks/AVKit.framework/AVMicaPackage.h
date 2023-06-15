@@ -11,11 +11,11 @@
 __attribute__((visibility("hidden")))
 @interface AVMicaPackage : NSObject
 {
+    CALayer *_rootLayer;
     NSString *_state;
     NSString *_packageName;
     CAStateController *_stateController;
     long long _layoutDirection;
-    CALayer *_rootLayer;
     struct CGSize _targetSize;
     struct CGSize _unscaledSize;
 }
@@ -23,13 +23,13 @@ __attribute__((visibility("hidden")))
 + (id)classSubstitions;
 + (void)asynchronouslyPrepareMicaPackageWithName:(id)arg1 layoutDirection:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
-@property(retain, nonatomic) CALayer *rootLayer; // @synthesize rootLayer=_rootLayer;
 @property(nonatomic) long long layoutDirection; // @synthesize layoutDirection=_layoutDirection;
 @property(readonly, nonatomic) CAStateController *stateController; // @synthesize stateController=_stateController;
 @property(readonly, nonatomic) NSString *packageName; // @synthesize packageName=_packageName;
 @property(nonatomic) struct CGSize unscaledSize; // @synthesize unscaledSize=_unscaledSize;
 @property(nonatomic) struct CGSize targetSize; // @synthesize targetSize=_targetSize;
 @property(readonly, copy, nonatomic) NSString *state; // @synthesize state=_state;
+@property(retain, nonatomic) CALayer *rootLayer; // @synthesize rootLayer=_rootLayer;
 - (void)_loadRootLayerIfNeeded;
 - (id)sublayerWithName:(id)arg1;
 - (id)availableStatesOnLayer:(id)arg1;

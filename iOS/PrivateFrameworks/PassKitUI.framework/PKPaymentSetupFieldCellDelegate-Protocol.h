@@ -15,6 +15,8 @@
 - (_Bool)fieldCellEditableTextFieldShouldClear:(PKPaymentSetupFieldCell *)arg1;
 - (_Bool)fieldCellEditableTextFieldShouldReturn:(PKPaymentSetupFieldCell *)arg1;
 - (void)fieldCellEditableTextFieldValueDidChange:(PKPaymentSetupFieldCell *)arg1;
+- (void)fieldCellEditableTextFieldDidEndEditing:(PKPaymentSetupFieldCell *)arg1;
+- (void)fieldCellEditableTextFieldDidBeginEditing:(PKPaymentSetupFieldCell *)arg1;
 - (_Bool)fieldCellEditableTextFieldShouldBeginEditing:(PKPaymentSetupFieldCell *)arg1;
 @end
 

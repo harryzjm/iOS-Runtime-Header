@@ -10,22 +10,22 @@
 @protocol MTLDevice, MTLFunction, MTLFunctionHandle, MTLIntersectionFunctionTable, MTLRenderPipelineState, MTLVisibleFunctionTable;
 
 @protocol MTLRenderPipelineState <NSObject>
+@property(readonly) struct MTLResourceID gpuResourceID;
+@property(readonly) unsigned long long maxTotalThreadgroupsPerMeshGrid;
+@property(readonly) unsigned long long meshThreadExecutionWidth;
+@property(readonly) unsigned long long objectThreadExecutionWidth;
+@property(readonly) unsigned long long maxTotalThreadsPerMeshThreadgroup;
+@property(readonly) unsigned long long maxTotalThreadsPerObjectThreadgroup;
+@property(readonly) _Bool supportIndirectCommandBuffers;
+@property(readonly) unsigned long long imageblockSampleLength;
+@property(readonly) _Bool threadgroupSizeMatchesTileSize;
+@property(readonly) unsigned long long maxTotalThreadsPerThreadgroup;
+@property(readonly) id <MTLDevice> device;
+@property(readonly) NSString *label;
 - (id <MTLRenderPipelineState>)newRenderPipelineStateWithAdditionalBinaryFunctions:(MTLRenderPipelineFunctionsDescriptor *)arg1 error:(id *)arg2;
 - (id <MTLIntersectionFunctionTable>)newIntersectionFunctionTableWithDescriptor:(MTLIntersectionFunctionTableDescriptor *)arg1 stage:(unsigned long long)arg2;
 - (id <MTLVisibleFunctionTable>)newVisibleFunctionTableWithDescriptor:(MTLVisibleFunctionTableDescriptor *)arg1 stage:(unsigned long long)arg2;
 - (id <MTLFunctionHandle>)functionHandleWithFunction:(id <MTLFunction>)arg1 stage:(unsigned long long)arg2;
-@property(nonatomic, readonly) struct MTLResourceID gpuResourceID;
-@property(nonatomic, readonly) long long maxTotalThreadgroupsPerMeshGrid;
-@property(nonatomic, readonly) long long meshThreadExecutionWidth;
-@property(nonatomic, readonly) long long objectThreadExecutionWidth;
-@property(nonatomic, readonly) long long maxTotalThreadsPerMeshThreadgroup;
-@property(nonatomic, readonly) long long maxTotalThreadsPerObjectThreadgroup;
-@property(nonatomic, readonly) _Bool supportIndirectCommandBuffers;
 - (unsigned long long)imageblockMemoryLengthForDimensions:(CDStruct_14f26992)arg1;
-@property(nonatomic, readonly) long long imageblockSampleLength;
-@property(nonatomic, readonly) _Bool threadgroupSizeMatchesTileSize;
-@property(nonatomic, readonly) long long maxTotalThreadsPerThreadgroup;
-@property(nonatomic, readonly) id <MTLDevice> device;
-@property(nonatomic, readonly) NSString *label;
 @end
 

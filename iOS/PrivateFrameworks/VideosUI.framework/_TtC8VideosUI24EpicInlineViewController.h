@@ -24,8 +24,7 @@ __attribute__((visibility("hidden")))
 - (void)handleVPPADismissed:(id)arg1;
 - (void)handleAppDidEnterBackground:(id)arg1;
 - (void)handleAppWillEnterForeground:(id)arg1;
-- (void)handlePlaybackDidEnd:(id)arg1;
-- (void)handlePlaybackWillStart:(id)arg1;
+- (void)handleIsPlaybackUIBeingShownDidChange:(id)arg1;
 - (void)dealloc;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)vui_viewDidLayoutSubviews;

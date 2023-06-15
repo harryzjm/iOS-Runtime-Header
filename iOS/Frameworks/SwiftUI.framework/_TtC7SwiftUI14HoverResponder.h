@@ -13,6 +13,8 @@
     MISSING_TYPE *size;
     MISSING_TYPE *coordinateSpace;
     MISSING_TYPE *helper;
+    MISSING_TYPE *currentPhase;
+    MISSING_TYPE *isEnabled;
 }
 
 @end

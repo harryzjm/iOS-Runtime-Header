@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDate, NSString, RDEstimate;
+@class NSArray, NSDate, NSString, RDEstimate;
 
 @protocol RDXPCProtocol
 - (void)createCacheDirAtPath:(NSString *)arg1;
@@ -14,6 +14,7 @@
 - (void)clearDataCache;
 - (void)updatePeer:(NSString *)arg1 withCountryCode:(NSString *)arg2 priority:(int)arg3 andTimestamp:(NSDate *)arg4;
 - (void)updatePeer:(NSString *)arg1 withEstimate:(RDEstimate *)arg2;
+- (void)update:(long long)arg1 withListOfCountryCodes:(NSArray *)arg2;
 - (void)update:(long long)arg1 withCountryCode:(NSString *)arg2;
 @end
 

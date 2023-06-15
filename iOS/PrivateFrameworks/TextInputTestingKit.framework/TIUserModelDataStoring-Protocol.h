@@ -18,6 +18,7 @@
 @property(readonly) _Bool isValid;
 - (TIUserModelDataStoreDurableEntry *)getDurableValueForKey:(NSString *)arg1;
 - (_Bool)updateDurableValue:(NSNumber *)arg1 forKey:(NSString *)arg2 forDate:(NSDate *)arg3;
+- (_Bool)setDurableValue:(NSNumber *)arg1 forKey:(NSString *)arg2 forDate:(NSDate *)arg3;
 - (NSArray *)getAllKnownInputModesSinceDate:(NSDate *)arg1;
 - (NSArray *)getAllKnownInputModes;
 - (NSArray *)getInputModesForKey:(NSString *)arg1;

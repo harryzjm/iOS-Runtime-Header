@@ -11,7 +11,6 @@
 @protocol PXInternalMutableAudioSession <PXMutableAudioSession>
 @property(retain, nonatomic) NSNumber *contentLoudnessInLKFS;
 @property(retain, nonatomic) NSNumber *contentPeakDecibels;
-@property(nonatomic) _Bool isAtEnd;
 @property(nonatomic) _Bool isReadyToPlay;
 @property(retain, nonatomic) NSError *error;
 @property(nonatomic) CDStruct_198678f7 duration;

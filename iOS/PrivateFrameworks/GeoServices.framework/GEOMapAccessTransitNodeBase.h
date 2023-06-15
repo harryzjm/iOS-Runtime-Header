@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(readonly, nonatomic) long long polygonPointsCount; // @synthesize polygonPointsCount=_polygonPointsCount;
 @property(readonly, nonatomic) CDStruct_c3b9c2ee *polygonPoints; // @synthesize polygonPoints=_polygonPoints;
-@property(readonly, nonatomic) CDStruct_02837cd9 boundingRect; // @synthesize boundingRect=_boundingRect;
+@property(readonly, nonatomic) CDStruct_90e2a262 boundingRect; // @synthesize boundingRect=_boundingRect;
 @property(readonly, nonatomic) double boundingRadius; // @synthesize boundingRadius=_boundingRadius;
 - (id)findAccessPoints:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (double)distanceInMetersFrom:(CDStruct_c3b9c2ee)arg1;

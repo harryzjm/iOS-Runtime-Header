@@ -6,13 +6,14 @@
 
 #import <Photos/PHCollection.h>
 
-@class NSDictionary, NSString, PHCollectionList;
+@class NSDate, NSDictionary, NSString, NSURL, PHCollectionList;
 
 @interface PHCollection (PXDisplayAssetAdoption)
 @property(readonly, nonatomic) id px_cheapLogIdentifier;
 @property(readonly, nonatomic) _Bool px_isTransientPlacesCollection;
 @property(readonly, nonatomic) _Bool px_isImportSessionCollection;
 @property(readonly, nonatomic) _Bool px_isImportHistoryCollection;
+@property(readonly, nonatomic) _Bool px_isMomentShareVirtualCollection;
 @property(readonly, nonatomic) _Bool px_isContentSyndicationAllPhotosAlbum;
 @property(readonly, nonatomic) _Bool px_isContentSyndicationVirtualCollection;
 @property(readonly, nonatomic) _Bool px_isSharedAlbumsVirtualCollection;
@@ -21,6 +22,7 @@
 @property(readonly, nonatomic) _Bool px_isPeopleVirtualCollection;
 @property(readonly, nonatomic) _Bool px_isForYouVirtualCollection;
 @property(readonly, nonatomic) _Bool px_isMemoriesVirtualCollection;
+@property(readonly, nonatomic) _Bool px_isRecentMomentsVirtualCollection;
 @property(readonly, nonatomic) _Bool px_isMomentsVirtualCollection;
 @property(readonly, nonatomic) _Bool px_isPhotosVirtualCollection;
 @property(readonly, nonatomic) _Bool px_isProject;
@@ -41,6 +43,7 @@
 @property(readonly, nonatomic) _Bool px_isContentSyndicationAlbum;
 @property(readonly, nonatomic) _Bool px_isMomentShare;
 @property(readonly, nonatomic) _Bool px_isSuggestion;
+@property(readonly, nonatomic) _Bool px_isDayGroupHighlight;
 @property(readonly, nonatomic) _Bool px_isHighlight;
 @property(readonly, nonatomic) _Bool px_isMemory;
 @property(readonly, nonatomic) _Bool px_isMoment;
@@ -51,11 +54,10 @@
 @property(readonly, nonatomic) _Bool px_containsPrivateContent;
 @property(readonly, nonatomic) _Bool px_isPrivacySensitiveAlbum;
 @property(readonly, nonatomic) _Bool px_isAllLibraryDuplicatesSmartAlbum;
+@property(readonly, nonatomic) _Bool px_isMonoskiSmartAlbum;
 @property(readonly, nonatomic) _Bool px_isPanoramasSmartAlbum;
 @property(readonly, nonatomic) _Bool px_isSharedLibrarySharingSuggestion;
 @property(readonly, nonatomic) _Bool px_isSharedLibrarySharingSuggestionsSmartAlbum;
-@property(readonly, nonatomic) _Bool px_isSharedLibrarySmartAlbum;
-@property(readonly, nonatomic) _Bool px_isNotUploadedSmartAlbum;
 @property(readonly, nonatomic) _Bool px_isUnableToUploadSmartAlbum;
 @property(readonly, nonatomic) _Bool px_isProResSmartAlbum;
 @property(readonly, nonatomic) _Bool px_isCinematicSmartAlbum;
@@ -85,9 +87,10 @@
 @property(readonly, nonatomic) _Bool px_isUserSmartAlbum;
 @property(readonly, nonatomic) _Bool px_isMyPhotoStreamAlbum;
 @property(readonly, nonatomic) _Bool px_isImportedAlbum;
-@property(readonly, nonatomic) _Bool px_isStandInAlbum;
 @property(readonly, nonatomic) _Bool px_isRegularAlbum;
 @property(readonly, nonatomic) _Bool px_isUserCreated;
+@property(readonly, nonatomic) _Bool px_supportsFastCuration;
+@property(readonly, nonatomic) _Bool px_shouldUseFacesRectForSmartCropping;
 @property(readonly, nonatomic) _Bool px_allowsMoveToPersonalLibrary;
 @property(readonly, nonatomic) _Bool px_allowsMoveToSharedLibrary;
 @property(readonly, nonatomic) _Bool px_isDeletable;
@@ -98,8 +101,12 @@
 @property(readonly, nonatomic) _Bool px_canRemoveContent;
 @property(readonly, nonatomic) _Bool px_canDeleteContent;
 @property(readonly, nonatomic) _Bool px_allowsImplicitSelectionForProjectOrSharingAction;
+@property(readonly, nonatomic) NSDate *endDate;
+@property(readonly, nonatomic) NSDate *startDate;
 @property(readonly, nonatomic) _Bool px_isEmpty;
 - (_Bool)px_isTransientCollectionWithIdentifier:(id)arg1;
+@property(readonly, nonatomic) NSURL *px_navigationURL;
+- (id)px_navigationURLHost;
 @property(readonly, nonatomic) NSDictionary *px_debugDictionary;
 - (_Bool)px_fetchIsEmptyWithOptions:(id)arg1;
 - (_Bool)px_fetchIsEmpty;

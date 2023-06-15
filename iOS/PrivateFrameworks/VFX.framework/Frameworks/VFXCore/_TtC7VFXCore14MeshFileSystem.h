@@ -11,6 +11,11 @@
 @interface _TtC7VFXCore14MeshFileSystem : _TtCs12_SwiftObject
 {
     MISSING_TYPE *addFileRuntime;
+    MISSING_TYPE *meshParticleRendererQuery;
+    MISSING_TYPE *modelRenderersQuery;
+    MISSING_TYPE *allMeshParticleRendererWithoutCollectionQuery;
+    MISSING_TYPE *allMaterialsWithoutCollectionQuery;
+    MISSING_TYPE *allMaterialsWithCollectionQuery;
 }
 
 @end

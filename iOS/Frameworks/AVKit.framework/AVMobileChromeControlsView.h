@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 __attribute__((visibility("hidden")))
 @interface AVMobileChromeControlsView : UIView
@@ -14,8 +14,9 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIView *activePlaybackControlsView; // @synthesize activePlaybackControlsView=_activePlaybackControlsView;
-- (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (void)setFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 
 @end
 

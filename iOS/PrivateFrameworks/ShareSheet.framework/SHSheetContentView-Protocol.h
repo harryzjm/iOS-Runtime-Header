@@ -4,19 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ShareSheet/NSObject-Protocol.h>
+#import <ShareSheet/SHSheetTestingContent-Protocol.h>
 
-@class LPLinkMetadata, SFAirDropTransferChange, UIActivity;
+@class LPLinkMetadata, NSString, SFAirDropTransferChange, UIActivity;
 @protocol SHSheetContentPresenter, SHSheetContentViewModel;
 
-@protocol SHSheetContentView <NSObject>
+@protocol SHSheetContentView <SHSheetTestingContent>
 @property(readonly, nonatomic) LPLinkMetadata *headerMetadata;
 @property(nonatomic) __weak id <SHSheetContentPresenter> presenter;
 - (void)reloadActivity:(UIActivity *)arg1;
 - (void)reloadContent;
-- (void)didCancelCollaborationCreationForActivity:(UIActivity *)arg1;
-- (void)didCreateCollaborationForActivity:(UIActivity *)arg1;
-- (void)creatingCollaborationForActivity:(UIActivity *)arg1;
+- (void)reloadMetadata:(LPLinkMetadata *)arg1;
+- (void)stopPulsingActivity:(UIActivity *)arg1;
+- (void)startPulsingActivity:(UIActivity *)arg1 localizedTitle:(NSString *)arg2;
 - (void)didUpdateAirDropTransferWithChange:(SFAirDropTransferChange *)arg1;
 - (void)updateWithViewModel:(id <SHSheetContentViewModel>)arg1;
 @end

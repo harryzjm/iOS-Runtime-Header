@@ -38,7 +38,7 @@ __attribute__((visibility("hidden")))
 
 // Remaining properties
 @property(readonly, nonatomic, getter=isCancelled) _Bool cancelled;
-@property(readonly, nonatomic) CDStruct_d1a7ebee dataRequestKind;
+@property(readonly, nonatomic) CDStruct_026435ec dataRequestKind;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;

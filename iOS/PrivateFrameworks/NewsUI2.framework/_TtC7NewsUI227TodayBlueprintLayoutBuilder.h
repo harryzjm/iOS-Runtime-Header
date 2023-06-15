@@ -13,6 +13,8 @@
     MISSING_TYPE *feedLayoutSolver;
     MISSING_TYPE *decorationProviderFactory;
     MISSING_TYPE *baseStyler;
+    MISSING_TYPE *embeddedSupplementaryBuilder;
+    MISSING_TYPE *tracker;
 }
 
 @end

@@ -18,6 +18,7 @@
     NSArray *_animationInfos;
 }
 
++ (id)preferredCategoryOrder;
 + (id)localizedNameForUnsupportedAnimation:(id)arg1;
 + (id)localizedCategoryNameForCategory:(long long)arg1;
 + (id)categoryNameForPluginClass:(Class)arg1;

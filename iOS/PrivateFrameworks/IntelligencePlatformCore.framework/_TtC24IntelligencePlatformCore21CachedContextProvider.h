@@ -11,12 +11,11 @@
 @interface _TtC24IntelligencePlatformCore21CachedContextProvider : _TtCs12_SwiftObject
 {
     MISSING_TYPE *eventSource;
+    MISSING_TYPE *$__lazy_storage_$_calendar;
     MISSING_TYPE *contextCacheStartDate;
     MISSING_TYPE *contextCacheEndDate;
     MISSING_TYPE *lastBehaviorEventDigested;
     MISSING_TYPE *cachedBehaviorEventsByType;
-    MISSING_TYPE *lastLocationVisitBeforeStartDate;
-    MISSING_TYPE *cachedLocationVisits;
     MISSING_TYPE *lastMotionStateEventBeforeStartDate;
     MISSING_TYPE *cachedMotionStateEvents;
 }

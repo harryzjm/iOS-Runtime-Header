@@ -21,6 +21,7 @@
 - (id)fc_sha256;
 - (id)fc_decryptAESSIVWithKey:(id)arg1 additionalData:(id)arg2;
 - (id)fc_encryptAESSIVWithKey:(id)arg1 additionalData:(id)arg2;
+- (_Bool)fc_isGzipped;
 - (id)fc_gzipDeflate;
 - (id)fc_gzipInflate;
 - (id)fc_zlibDeflate;

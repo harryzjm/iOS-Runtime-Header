@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property(readonly, nonatomic) struct CGPoint startPoint; // @synthesize startPoint=_startPoint;
+- (_Bool)shouldBeRequiredToFailByGestureRecognizer:(id)arg1;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 
 @end

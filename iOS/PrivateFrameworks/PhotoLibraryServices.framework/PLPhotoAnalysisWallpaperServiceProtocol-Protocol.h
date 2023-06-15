@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <PhotoLibraryServices/PLPhotoAnalysisGenericServiceProtocol-Protocol.h>
+
 @class NSDictionary, NSURL;
 
-@protocol PLPhotoAnalysisWallpaperServiceProtocol
-- (void)upgradePosterConfigurationWithAssetDirectory:(NSURL *)arg1 options:(NSDictionary *)arg2 context:(NSDictionary *)arg3 reply:(void (^)(_Bool, NSError *))arg4;
+@protocol PLPhotoAnalysisWallpaperServiceProtocol <PLPhotoAnalysisGenericServiceProtocol>
+- (void)upgradePosterConfigurationWithAssetDirectory:(NSURL *)arg1 options:(NSDictionary *)arg2 reply:(void (^)(_Bool, NSError *))arg3;
 @end
 

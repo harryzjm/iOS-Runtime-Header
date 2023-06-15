@@ -6,7 +6,7 @@
 
 #import <PhotosUICore/PXAsyncOperation.h>
 
-@class NSError, NSString, NSURL, PFParallaxLayerStack, PFPosterEditConfiguration, PFPosterMedia, PIParallaxCompoundLayerStackRequest, PIParallaxStyle;
+@class NSError, NSString, NSURL, PFPosterEditConfiguration, PFPosterMedia, PFWallpaperCompoundLayerStack, PIParallaxCompoundLayerStackRequest, PIParallaxStyle;
 @protocol PISegmentationItem;
 
 __attribute__((visibility("hidden")))
@@ -16,9 +16,10 @@ __attribute__((visibility("hidden")))
     PFPosterMedia *_posterMedia;
     PFPosterEditConfiguration *_editConfiguration;
     PIParallaxStyle *_style;
+    PIParallaxStyle *_persistedStyle;
     NSURL *_assetDirectory;
     id <PISegmentationItem> _segmentationItem;
-    PFParallaxLayerStack *_layerStack;
+    PFWallpaperCompoundLayerStack *_layerStack;
     NSError *_error;
     NSString *_operationType;
     PIParallaxCompoundLayerStackRequest *_layerStackRequest;
@@ -28,10 +29,11 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) PIParallaxCompoundLayerStackRequest *layerStackRequest; // @synthesize layerStackRequest=_layerStackRequest;
 @property(readonly, copy, nonatomic) NSString *operationType; // @synthesize operationType=_operationType;
 @property(retain) NSError *error; // @synthesize error=_error;
-@property(retain) PFParallaxLayerStack *layerStack; // @synthesize layerStack=_layerStack;
+@property(retain) PFWallpaperCompoundLayerStack *layerStack; // @synthesize layerStack=_layerStack;
 @property(retain) id <PISegmentationItem> segmentationItem; // @synthesize segmentationItem=_segmentationItem;
 @property(readonly, nonatomic) _Bool isPreloading; // @synthesize isPreloading=_isPreloading;
 @property(readonly, nonatomic) NSURL *assetDirectory; // @synthesize assetDirectory=_assetDirectory;
+@property(readonly, nonatomic) PIParallaxStyle *persistedStyle; // @synthesize persistedStyle=_persistedStyle;
 @property(readonly, nonatomic) PIParallaxStyle *style; // @synthesize style=_style;
 @property(readonly, nonatomic) PFPosterEditConfiguration *editConfiguration; // @synthesize editConfiguration=_editConfiguration;
 @property(readonly, nonatomic) PFPosterMedia *posterMedia; // @synthesize posterMedia=_posterMedia;
@@ -43,7 +45,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)_canLoadLayerStackFromDirectory;
 - (_Bool)tryLoadLayerStackFromDirectory;
 - (void)px_start;
-- (id)initWithPosterMedia:(id)arg1 editConfiguration:(id)arg2 assetDirectory:(id)arg3 style:(id)arg4 isPreloading:(_Bool)arg5;
+- (id)initWithPosterMedia:(id)arg1 editConfiguration:(id)arg2 assetDirectory:(id)arg3 style:(id)arg4 persistedStyle:(id)arg5 isPreloading:(_Bool)arg6;
 
 @end
 

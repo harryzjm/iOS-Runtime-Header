@@ -16,6 +16,7 @@
     MISSING_TYPE *buttonlayout;
     MISSING_TYPE *textlayout;
     MISSING_TYPE *text1layout;
+    MISSING_TYPE *footerLayout;
 }
 
 @end

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSAttributedString, NSString, UIColor, UITapGestureRecognizer, VUILabel, VUITextLayout, VUITextView;
+@class CAGradientLayer, CALayer, NSAttributedString, NSString, UIColor, UITapGestureRecognizer, VUILabel, VUITextLayout, VUITextView;
 
 __attribute__((visibility("hidden")))
 @interface FocusableTextView
@@ -23,6 +23,8 @@ __attribute__((visibility("hidden")))
     UITapGestureRecognizer *_moreLabelTapGestureRecognizer;
     VUITextLayout *_textLayout;
     VUILabel *_moreLabel;
+    CALayer *_moreButtonMask;
+    CAGradientLayer *_moreButtonMaskFade;
     struct UIEdgeInsets _padding;
 }
 
@@ -31,6 +33,8 @@ __attribute__((visibility("hidden")))
 + (double)cornerRadius;
 + (id)textViewWithAttributedString:(id)arg1 textLayout:(id)arg2 existingTextView:(id)arg3;
 - (void).cxx_destruct;
+@property(retain, nonatomic) CAGradientLayer *moreButtonMaskFade; // @synthesize moreButtonMaskFade=_moreButtonMaskFade;
+@property(retain, nonatomic) CALayer *moreButtonMask; // @synthesize moreButtonMask=_moreButtonMask;
 @property(retain, nonatomic) VUILabel *moreLabel; // @synthesize moreLabel=_moreLabel;
 @property(retain, nonatomic) VUITextLayout *textLayout; // @synthesize textLayout=_textLayout;
 @property(nonatomic) _Bool needsTextSizeComputation; // @synthesize needsTextSizeComputation=_needsTextSizeComputation;
@@ -49,6 +53,11 @@ __attribute__((visibility("hidden")))
 - (void)tintColorDidChange;
 - (struct CGRect)boundingRectForAttributedString:(id)arg1 withWidth:(double)arg2 lines:(unsigned long long)arg3;
 - (struct CGRect)_moreLabelFrame;
+- (struct CGRect)makeLastLineBreakByClipping;
+- (struct CGRect)_getStartAndEndIndexOfLastVisibleLine:(id)arg1 startIndex:(unsigned long long *)arg2 endIndex:(unsigned long long *)arg3;
+- (void)configureMoreButtonMaskWithMaskFrame:(struct CGRect)arg1 moreLabelFrame:(struct CGRect)arg2;
+- (void)_configureGradientLayer:(id)arg1 moreLabelFrame:(struct CGRect)arg2 parentRect:(struct CGRect)arg3;
+- (id)_createMoreButtonMaskFade;
 - (struct CGRect)_moreLabelExclusionPathFrame;
 - (void)_recomputeTextSizeIfNeeded;
 - (void)_setNeedsTextSizeComputation;

@@ -21,6 +21,7 @@
     MISSING_TYPE *annotations;
     MISSING_TYPE *annotatedLocations;
     MISSING_TYPE *preferredTemperatureUnit;
+    MISSING_TYPE *preferredWindSpeedUnit;
     MISSING_TYPE *overlayKind;
     MISSING_TYPE *overlay;
     MISSING_TYPE *userInterfaceStyle;

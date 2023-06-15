@@ -38,7 +38,7 @@ __attribute__((visibility("hidden")))
 - (void)_buildCompleteEdge;
 - (unsigned long long)_maxTileCount;
 - (_Bool)_edgeStart:(const void *)arg1 end:(const void *)arg2 connectsTo:(const void *)arg3;
-- (_Bool)_pointConnects:(const void *)arg1 rect:(const CDStruct_02837cd9 *)arg2 to:(const CDStruct_c3b9c2ee *)arg3;
+- (_Bool)_pointConnects:(const void *)arg1 rect:(const CDStruct_90e2a262 *)arg2 to:(const CDStruct_c3b9c2ee *)arg3;
 - (void)_findTilesAdjacentToTile:(const struct _GEOTileKey *)arg1 containingPoint:(const void *)arg2 findAhead:(_Bool)arg3;
 - (void)buildEdge:(CDUnknownBlockType)arg1;
 - (_Bool)_findNextEdge;

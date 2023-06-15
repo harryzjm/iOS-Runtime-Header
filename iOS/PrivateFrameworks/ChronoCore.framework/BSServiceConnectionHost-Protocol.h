@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class BSProcessHandle;
+@class BSAuditToken, BSProcessHandle;
 
 @protocol BSServiceConnectionHost
-@property(nonatomic, readonly) BSProcessHandle *remoteProcess;
+@property(readonly, nonatomic) BSAuditToken *remoteToken;
+@property(readonly, nonatomic) BSProcessHandle *remoteProcess;
 @end
 

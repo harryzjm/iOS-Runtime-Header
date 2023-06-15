@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/_UIRemoteViewController.h>
+#import <UIKitCore/_UIRemoteViewController.h>
 
 @class NSString;
 @protocol SFAirDropViewServiceHostProtocol;
@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <SFAirDropViewServiceHostProtocol> airDropHost; // @synthesize airDropHost=_airDropHost;
 - (void)airDropViewServiceDidRequestDismissal;
+- (void)airDropViewServiceRequestingSendingAppBundleIdentifierWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)airDropViewServiceRequestingSharedItemsWithDataRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)airDropViewServiceDidFinishTransferWithSuccess:(_Bool)arg1;
 - (void)airDropViewServiceDidStartTransfer;

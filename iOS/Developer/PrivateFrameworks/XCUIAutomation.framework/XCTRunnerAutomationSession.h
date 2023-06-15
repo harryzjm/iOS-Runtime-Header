@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <XCUIAutomation/XCTMessagingChannel_UIProcessToRunner-Protocol.h>
 #import <XCUIAutomation/XCTRunnerAutomationSession-Protocol.h>
 
 @class NSString, NSXPCConnection, XCTCapabilities;
 
-@interface XCTRunnerAutomationSession : NSObject <XCTRunnerAutomationSession>
+@interface XCTRunnerAutomationSession : NSObject <XCTMessagingChannel_UIProcessToRunner, XCTRunnerAutomationSession>
 {
     int _connectionPid;
     NSXPCConnection *_connection;
@@ -24,6 +25,7 @@
 @property(retain) XCTCapabilities *remoteInterfaceCapabilities; // @synthesize remoteInterfaceCapabilities=_remoteInterfaceCapabilities;
 @property(readonly) int connectionPid; // @synthesize connectionPid=_connectionPid;
 @property(readonly) NSXPCConnection *connection; // @synthesize connection=_connection;
+- (void)detectedRuntimeIssue:(id)arg1;
 - (_Bool)isMacCatalystForPID:(int)arg1;
 @property(readonly) _Bool hasBannerNotificationIsStickyAttribute;
 @property(readonly) _Bool usePointTransformationsForFrameConversions;
@@ -36,12 +38,14 @@
 - (void)setMallocStackLoggingWithMode:(int)arg1 reply:(CDUnknownBlockType)arg2;
 @property(readonly) _Bool supportsMallocStackLogging;
 @property(readonly) _Bool isMacCatalyst;
+- (void)detectRuntimeIssues;
 - (void)notifyWhenAnimationsAreIdle:(CDUnknownBlockType)arg1;
 @property(readonly) _Bool supportsAnimationsIdleNotifications;
 - (void)notifyWhenMainRunLoopIsIdle:(CDUnknownBlockType)arg1;
 @property(readonly) _Bool supportsMainRunLoopIdleNotifications;
 @property(readonly) _Bool supportsFetchingAttributesForElement;
 - (id)matchesForQuery:(id)arg1 error:(id *)arg2;
+- (void)connectToAutomationSessionWithConnection:(id)arg1;
 - (id)initWithConnection:(id)arg1 pid:(int)arg2 remoteInterfaceCapabilities:(id)arg3;
 
 // Remaining properties

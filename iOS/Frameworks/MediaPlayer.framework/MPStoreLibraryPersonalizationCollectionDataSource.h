@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MPMediaLibraryEntityTranslationContext, MPMediaLibraryView, MPPropertySet, MPSectionedCollection, NSDictionary, NSMapTable, NSMutableDictionary, NSString;
+@class MPMediaLibraryView, MPPropertySet, MPSectionedCollection, NSDictionary, NSMapTable, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -19,13 +19,11 @@ __attribute__((visibility("hidden")))
     MPPropertySet *_sectionProperties;
     NSDictionary *_itemIndexPathToOverridePropertySet;
     MPMediaLibraryView *_libraryView;
-    MPMediaLibraryEntityTranslationContext *_translatingContext;
     NSMapTable *_relativeModelClassToMappingResponse;
     NSMutableDictionary *_sectionToLibraryAddedOverride;
 }
 
 + (id)_completePersonalizedObjectWithLibraryObject:(id)arg1 personalizationProperties:(id)arg2 overrideLibraryAddedStatus:(long long)arg3;
-+ (id)_requiredLightweightPersonalizationPropertiesForModelClass:(Class)arg1 requestedProperties:(id)arg2;
 + (id)_lightweightPersonalizedObjectWithUnpersonalizedObject:(id)arg1 libraryObject:(id)arg2 personalizationProperties:(id)arg3 overrideLibraryAddedStatus:(long long)arg4;
 + (id)_lightweightPersonalizedStoreAssetWithUnpersonalizedAsset:(id)arg1 libraryAsset:(id)arg2 personalizationProperties:(id)arg3;
 + (id)_lightweightPersonalizedLyricsWithUnpersonalizedLyrics:(id)arg1 libraryLyrics:(id)arg2 identifiers:(id)arg3 personalizationProperties:(id)arg4;
@@ -35,7 +33,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *sectionToLibraryAddedOverride; // @synthesize sectionToLibraryAddedOverride=_sectionToLibraryAddedOverride;
 @property(copy, nonatomic) NSMapTable *relativeModelClassToMappingResponse; // @synthesize relativeModelClassToMappingResponse=_relativeModelClassToMappingResponse;
-@property(retain, nonatomic) MPMediaLibraryEntityTranslationContext *translatingContext; // @synthesize translatingContext=_translatingContext;
 @property(copy, nonatomic) MPMediaLibraryView *libraryView; // @synthesize libraryView=_libraryView;
 @property(copy, nonatomic) NSDictionary *itemIndexPathToOverridePropertySet; // @synthesize itemIndexPathToOverridePropertySet=_itemIndexPathToOverridePropertySet;
 @property(copy, nonatomic) MPPropertySet *sectionProperties; // @synthesize sectionProperties=_sectionProperties;

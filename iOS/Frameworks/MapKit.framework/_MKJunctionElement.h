@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) double angle; // @synthesize angle=_angle;
 @property(nonatomic) struct CGPoint rightBasePoint; // @synthesize rightBasePoint=_rightBasePoint;
 @property(nonatomic) struct CGPoint leftBasePoint; // @synthesize leftBasePoint=_leftBasePoint;
+- (id)description;
 - (struct CGPoint)rightEdgePointAtDistanceFromBase:(double)arg1;
 - (struct CGPoint)leftEdgePointAtDistanceFromBase:(double)arg1;
 

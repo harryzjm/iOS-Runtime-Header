@@ -7,6 +7,8 @@
 #import <SignpostSupport/SignpostSupportObjectExtractor.h>
 
 @interface SignpostSupportObjectExtractor (Notifications)
++ (_Bool)dateRangeOfLogArchiveWithPath:(id)arg1 startDateOut:(id *)arg2 endDateOut:(id *)arg3 errorOut:(id *)arg4;
++ (id)_eventSourceForPath:(id)arg1 errorOut:(id *)arg2;
 - (_Bool)processNotificationsWithIntervalTimeoutInSeconds:(unsigned long long)arg1 shouldCalculateAnimationFramerate:(_Bool)arg2 targetQueue:(id)arg3 errorOut:(id *)arg4;
 - (void)_processStreamedOSLogEventProxy:(id)arg1 shouldCalculateFramerate:(_Bool)arg2;
 - (_Bool)processNotificationsWithIntervalTimeoutInSeconds:(unsigned long long)arg1 errorOut:(id *)arg2;

@@ -7,6 +7,7 @@
 #import <System/OS_os_log.h>
 
 @interface OS_os_log (FeedbackCore)
++ (id)targetedSurveys;
 + (id)el;
 + (id)ded;
 + (id)appHandle;

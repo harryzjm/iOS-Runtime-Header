@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSString;
+@class BSProcessHandle, NSArray, NSString;
 
 @protocol ASDUpdatesServiceProtocol
 - (void)updateAllWithOrder:(NSArray *)arg1 replyHandler:(void (^)(_Bool, NSArray *, NSError *))arg2;
 - (void)setAutoUpdateEnabled:(_Bool)arg1 withReplyHandler:(void (^)(void))arg2;
 - (void)shouldUseModernUpdatesWithReplyHandler:(void (^)(_Bool))arg1;
+- (void)requestAutomaticUpdateAuthorizationIfNecessaryForProcessHandle:(BSProcessHandle *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)reloadManagedUpdatesWithReplyHandler:(void (^)(NSArray *, NSError *))arg1;
 - (void)reloadFromServerInBackgroundWithCompletionBlock:(void (^)(NSArray *, NSError *))arg1;
 - (void)reloadFromServerWithReplyHandler:(void (^)(NSArray *, NSError *))arg1;

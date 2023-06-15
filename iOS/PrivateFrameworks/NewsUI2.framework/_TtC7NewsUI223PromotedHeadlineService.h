@@ -11,6 +11,7 @@
 @interface _TtC7NewsUI223PromotedHeadlineService : _TtCs12_SwiftObject
 {
     MISSING_TYPE *context;
+    MISSING_TYPE *feedPersonalizer;
 }
 
 @end

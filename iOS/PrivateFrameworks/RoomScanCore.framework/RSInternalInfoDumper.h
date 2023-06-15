@@ -31,28 +31,7 @@
     _Bool _enableARFrameDepth;
 }
 
-+ (id)serailizeARFrameMeta:(id)arg1;
 - (void).cxx_destruct;
-@property(nonatomic) _Bool enableARFrameDepth; // @synthesize enableARFrameDepth=_enableARFrameDepth;
-@property(nonatomic) _Bool enableARFrameRGB; // @synthesize enableARFrameRGB=_enableARFrameRGB;
-@property(nonatomic) _Bool enableLiveDump; // @synthesize enableLiveDump=_enableLiveDump;
-@property(nonatomic) _Bool enableARFrameDump; // @synthesize enableARFrameDump=_enableARFrameDump;
-- (void)reset;
-- (id)getDebugInfoWithConfig:(id)arg1 OnlineDebug:(id)arg2;
-- (void)logMemory:(unsigned long long)arg1;
-- (void)dumpARFrame:(id)arg1 withKeyFrames:(id)arg2 withCameraPose:(CDStruct_14d5dc5e)arg3;
-- (void)dumpLastARFrameImage;
-- (id)encodeDepthPng:(struct __CVBuffer *)arg1;
-- (id)encodeRGBPng:(struct __CVBuffer *)arg1 withWidth:(unsigned long long)arg2 Height:(unsigned long long)arg3;
-- (id)encodePng:(struct __CVBuffer *)arg1;
-- (void)setLastARFrame:(id)arg1 withCameraPose:(CDStruct_14d5dc5e)arg2;
-- (void)setFirstARFrame:(id)arg1;
-- (void)logWithFrame:(id)arg1 coaching:(id)arg2;
-- (void)logWithFrame:(id)arg1 drift:(id)arg2;
-- (void)logFinalFloorPlan:(id)arg1;
-- (void)logKeyFrame:(id)arg1 WithSkip:(_Bool)arg2;
-- (void)setUpInternalDumpWithLogDir:(id)arg1 enable:(_Bool)arg2;
-- (void)createDirectory:(id)arg1;
 - (id)init;
 
 @end

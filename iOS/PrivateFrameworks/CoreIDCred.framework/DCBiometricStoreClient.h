@@ -18,15 +18,18 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-@property(retain) DCXPCDisconnectHandler *disconnectionHandler; // @synthesize disconnectionHandler=_disconnectionHandler;
-@property(retain) id <DCBiometricStoreXPCProtocol> remoteObjectProxy; // @synthesize remoteObjectProxy=_remoteObjectProxy;
-@property(retain) NSXPCConnection *serverConnection; // @synthesize serverConnection=_serverConnection;
+@property(retain, nonatomic) DCXPCDisconnectHandler *disconnectionHandler; // @synthesize disconnectionHandler=_disconnectionHandler;
+@property(retain, nonatomic) id <DCBiometricStoreXPCProtocol> remoteObjectProxy; // @synthesize remoteObjectProxy=_remoteObjectProxy;
+@property(retain, nonatomic) NSXPCConnection *serverConnection; // @synthesize serverConnection=_serverConnection;
 - (void)invalidate;
+- (void)getProgenitorKeyAttestation:(CDUnknownBlockType)arg1;
+- (void)getCASDCertificate:(CDUnknownBlockType)arg1;
 - (void)credentialAuthenticationTokenStatus:(CDUnknownBlockType)arg1;
+- (void)migratePrearmTrustBlob:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)generatePrearmTrustCertificateWithNonce:(id)arg1 pairingID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)generatePhoneTokenWithNonce:(id)arg1 keyBlob:(id)arg2 pairingID:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)revokeCredentialAuthorizationToken:(CDUnknownBlockType)arg1;
-- (void)establishPrearmTrust:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)establishPrearmTrustV2:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)prearmCredentialWithAuthorizationToken:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)nonceForAuthorizationTokenWithCompletion:(CDUnknownBlockType)arg1;
 - (void)globalAuthACLTemplateUUIDsWithCompletion:(CDUnknownBlockType)arg1;

@@ -11,6 +11,7 @@
 - (void)getPlaceholdersForRequests:(NSDictionary *)arg1 inEnvironment:(CHKWidgetEnvironment *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)getPlaceholdersWithEnvironment:(CHKWidgetEnvironment *)arg1 for:(NSDictionary *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)getDescriptorsWithCompletion:(void (^)(NSArray *, NSError *))arg1;
+- (void)getAppIntentsXPCListenerEndpointWithCompletion:(void (^)(NSXPCListenerEndpoint *, NSData *, NSError *))arg1;
 - (void)invalidate;
 - (void)getActivitiesWithRequests:(NSArray *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)getTimelinesWithRequests:(NSArray *)arg1 isPreview:(_Bool)arg2 completion:(void (^)(NSError *))arg3;
@@ -19,5 +20,8 @@
 - (void)handleURLSessionEventsFor:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)getAllCurrentDescriptorsWithCompletion:(void (^)(_TtC9WidgetKit21DescriptorFetchResult *, NSError *))arg1;
 - (void)getCurrentDescriptorsWithCompletion:(void (^)(NSArray *, NSError *))arg1;
+
+@optional
+@property(nonatomic, readonly) int pid;
 @end
 

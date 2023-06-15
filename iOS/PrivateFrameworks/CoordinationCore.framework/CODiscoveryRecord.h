@@ -6,39 +6,55 @@
 
 #import <objc/NSObject.h>
 
-@class COConstituent, NSOrderedSet, NSString, RPCompanionLinkDevice;
+@class COConstituent, COOnDemandNodeCreationRequest, CORapportTransport, NSOrderedSet, NSString, NSUUID, RPCompanionLinkDevice;
 
 __attribute__((visibility("hidden")))
 @interface CODiscoveryRecord : NSObject
 {
     RPCompanionLinkDevice *_companionLinkDevice;
+    NSUUID *_HomeKitIdentifier;
+    CDUnknownBlockType _companionLinkProvider;
     COConstituent *_constituent;
     NSString *_rapportIdentifier;
     NSString *_IDSIdentifier;
     NSOrderedSet *_destinations;
+    CORapportTransport *_sourceTransport;
+    COOnDemandNodeCreationRequest *_nodeCreationRequest;
 }
 
 + (id)_destinationForPeerAddress:(id)arg1 listeningPort:(unsigned short)arg2;
 + (_Bool)supportsSecureCoding;
 + (id)discoveryRecordWithElectionRequest:(id)arg1;
 + (id)discoveryRecordWithNode:(id)arg1;
++ (id)discoveryRecordWithNodeController:(id)arg1;
 - (void).cxx_destruct;
+@property(retain, nonatomic) COOnDemandNodeCreationRequest *nodeCreationRequest; // @synthesize nodeCreationRequest=_nodeCreationRequest;
+@property(retain, nonatomic) CORapportTransport *sourceTransport; // @synthesize sourceTransport=_sourceTransport;
 @property(retain, nonatomic) NSOrderedSet *destinations; // @synthesize destinations=_destinations;
-@property(readonly, nonatomic) NSString *IDSIdentifier; // @synthesize IDSIdentifier=_IDSIdentifier;
+@property(readonly, copy, nonatomic) NSString *IDSIdentifier; // @synthesize IDSIdentifier=_IDSIdentifier;
 @property(readonly, nonatomic) NSString *rapportIdentifier; // @synthesize rapportIdentifier=_rapportIdentifier;
 @property(retain, nonatomic) COConstituent *constituent; // @synthesize constituent=_constituent;
 @property(readonly, nonatomic) RPCompanionLinkDevice *companionLinkDevice; // @synthesize companionLinkDevice=_companionLinkDevice;
 - (_Bool)shouldAdvertise;
 - (_Bool)isEqualToDiscoveryRecord:(id)arg1;
+- (id)newTransportWithExecutionContext:(id)arg1;
+- (_Bool)hasSameBackingDeviceAs:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
-- (unsigned long long)hash;
-- (id)description;
+@property(readonly) unsigned long long hash;
+@property(readonly, copy) NSString *description;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (_Bool)producesElectionCapableTransport;
+@property(readonly, nonatomic) NSUUID *HomeKitIdentifier; // @synthesize HomeKitIdentifier=_HomeKitIdentifier;
+@property(copy, nonatomic) CDUnknownBlockType companionLinkProvider; // @synthesize companionLinkProvider=_companionLinkProvider;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDiscoveryRecord:(id)arg1;
 - (id)_initWithConstituent:(id)arg1 rapportIdentifier:(id)arg2 IDSIdentifier:(id)arg3 destinations:(id)arg4;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) Class superclass;
 
 @end
 

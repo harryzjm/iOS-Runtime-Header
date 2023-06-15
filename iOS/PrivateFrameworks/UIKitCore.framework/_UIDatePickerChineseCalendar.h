@@ -9,12 +9,12 @@
 __attribute__((visibility("hidden")))
 @interface _UIDatePickerChineseCalendar : NSCalendar
 {
-    NSCalendar *realCalendar;
+    NSCalendar *_realCalendar;
 }
 
 + (id)cyclicalFromRelated:(id)arg1;
 + (id)relatedFromCyclical:(id)arg1;
-@property NSCalendar *realCalendar; // @synthesize realCalendar;
+@property(retain, nonatomic) NSCalendar *realCalendar; // @synthesize realCalendar=_realCalendar;
 - (struct _NSRange)rangeOfUnit:(unsigned long long)arg1 inUnit:(unsigned long long)arg2 forDate:(id)arg3;
 - (id)dateByAddingComponents:(id)arg1 toDate:(id)arg2 options:(unsigned long long)arg3;
 - (id)calendarIdentifier;

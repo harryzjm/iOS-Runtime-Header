@@ -9,7 +9,8 @@
 __attribute__((visibility("hidden")))
 @interface VUIMediaEntitiesDataSource
 {
-    _Bool _shouldFetchArtworkInfoDictionaries;
+    _Bool _shouldAutoFetchArtworkInfoDictionaries;
+    _Bool _shouldPauseAutoFetchingArtworkInfoDictionaries;
     VUIMediaEntityFetchRequest *_fetchRequest;
     NSArray *_mediaEntities;
     NSArray *_grouping;
@@ -18,7 +19,8 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSDictionary *artworkInfoDictionaryByPurchaseID; // @synthesize artworkInfoDictionaryByPurchaseID=_artworkInfoDictionaryByPurchaseID;
-@property(nonatomic) _Bool shouldFetchArtworkInfoDictionaries; // @synthesize shouldFetchArtworkInfoDictionaries=_shouldFetchArtworkInfoDictionaries;
+@property(nonatomic) _Bool shouldPauseAutoFetchingArtworkInfoDictionaries; // @synthesize shouldPauseAutoFetchingArtworkInfoDictionaries=_shouldPauseAutoFetchingArtworkInfoDictionaries;
+@property(nonatomic) _Bool shouldAutoFetchArtworkInfoDictionaries; // @synthesize shouldAutoFetchArtworkInfoDictionaries=_shouldAutoFetchArtworkInfoDictionaries;
 @property(retain, nonatomic) NSArray *grouping; // @synthesize grouping=_grouping;
 @property(retain, nonatomic) NSArray *mediaEntities; // @synthesize mediaEntities=_mediaEntities;
 @property(retain, nonatomic) VUIMediaEntityFetchRequest *fetchRequest; // @synthesize fetchRequest=_fetchRequest;

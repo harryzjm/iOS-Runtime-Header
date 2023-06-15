@@ -24,13 +24,6 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)dealloc;
-- (void)recycleScanner:(id)arg1 fromList:(id)arg2 sameQueue:(_Bool)arg3;
-- (void)cancelJob:(long long)arg1;
-- (long long)scannerConf:(id)arg1 sync:(_Bool)arg2 shortTask:(_Bool)arg3 runTask:(CDUnknownBlockType)arg4;
-- (long long)emptyIdentifier;
-- (_Bool)reachedMaxSimultaneousTask;
-- (id)scannerListForConfiguration:(id)arg1;
-- (id)reportQueue;
 - (id)init;
 
 @end

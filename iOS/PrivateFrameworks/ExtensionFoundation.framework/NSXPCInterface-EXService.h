@@ -8,6 +8,7 @@
 
 @interface NSXPCInterface (EXService)
 + (id)_EX_queryResultsInterface;
++ (id)_EX_tccProxyServiceInterface;
 + (id)_EX_combinedServiceInterface;
 + (id)_EX_launchServiceInterface;
 + (id)_EX_discoveryServiceInterface;

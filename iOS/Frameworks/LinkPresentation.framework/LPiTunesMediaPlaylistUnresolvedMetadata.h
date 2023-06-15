@@ -15,11 +15,13 @@ __attribute__((visibility("hidden")))
     NSString *_storeIdentifier;
     NSString *_name;
     NSString *_curator;
+    NSString *_curatorID;
     LPiTunesMediaAsset *_artwork;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) LPiTunesMediaAsset *artwork; // @synthesize artwork=_artwork;
+@property(copy, nonatomic) NSString *curatorID; // @synthesize curatorID=_curatorID;
 @property(copy, nonatomic) NSString *curator; // @synthesize curator=_curator;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(copy, nonatomic) NSString *storeIdentifier; // @synthesize storeIdentifier=_storeIdentifier;

@@ -9,6 +9,7 @@
 @class DNDBypassSettings, DNDSGlobalConfigurationManager;
 
 @protocol DNDSGlobalConfigurationManagerDelegate <NSObject>
+- (void)globalConfigurationManager:(DNDSGlobalConfigurationManager *)arg1 didUpdateModesCanImpactAvailabilitySetting:(_Bool)arg2;
 - (void)globalConfigurationManager:(DNDSGlobalConfigurationManager *)arg1 didUpdatePhoneCallBypassSettings:(DNDBypassSettings *)arg2;
 - (void)globalConfigurationManager:(DNDSGlobalConfigurationManager *)arg1 didUpdatePreventAutoReplySetting:(_Bool)arg2;
 @end

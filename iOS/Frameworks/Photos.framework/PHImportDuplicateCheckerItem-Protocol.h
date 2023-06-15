@@ -23,8 +23,8 @@
 @property(readonly) NSDate *fileCreationDate;
 @property(readonly) NSDate *creationDate;
 @property(readonly) NSString *fileName;
+@property(readonly) id fingerprint;
 @property(readonly) id originatingAssetID;
-@property(readonly) id assetId;
 @property(readonly) id avchdAssetId;
 @property(readonly) NSURL *url;
 @property(readonly) id uuid;

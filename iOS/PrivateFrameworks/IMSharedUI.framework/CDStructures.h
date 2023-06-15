@@ -6,11 +6,6 @@
 
 #pragma mark Named Structures
 
-struct CGSize {
-    double _field1;
-    double _field2;
-};
-
 struct IMBalloonDescriptor_t {
     char _field1;
     char _field2;
@@ -19,10 +14,5 @@ struct IMBalloonDescriptor_t {
     unsigned long long _field5;
     char _field6;
     char _field7;
-};
-
-struct IMTextLayoutResults {
-    struct CGSize _field1;
-    _Bool _field2;
 };
 

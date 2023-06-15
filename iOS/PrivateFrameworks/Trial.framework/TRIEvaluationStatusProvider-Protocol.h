@@ -8,6 +8,7 @@
 
 @protocol TRIEvaluationStatusProvider
 - (TRIEvaluationStatusCursor *)enumerateStatusOfEvaluationsForMLRuntimeWithCursor:(TRIEvaluationStatusCursor *)arg1 error:(id *)arg2 block:(void (^)(TRIMLRuntimeEvaluation *, TRIEvaluationStatus *, _Bool *))arg3;
+- (_Bool)enumerateActiveBMLTWithError:(id *)arg1 block:(void (^)(TRIClientBackgroundMLTask *, TRIFactorsState *, _Bool *))arg2;
 - (_Bool)enumerateActiveEvaluationsForMLRuntimeWithError:(id *)arg1 block:(void (^)(TRIMLRuntimeEvaluation *, TRIFactorsState *, _Bool *))arg2;
 @end
 

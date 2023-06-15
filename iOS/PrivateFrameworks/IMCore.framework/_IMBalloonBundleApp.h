@@ -22,6 +22,7 @@
 - (Class)bubbleClass;
 - (void)_loadBundle;
 - (void)_loadAppBundle;
+- (_Bool)isStickerPackOnly;
 - (id)initWithPluginBundle:(id)arg1 appBundle:(id)arg2;
 
 @end

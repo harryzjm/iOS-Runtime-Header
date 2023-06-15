@@ -11,6 +11,7 @@
     MISSING_TYPE *episodeCount;
     MISSING_TYPE *seasons;
     MISSING_TYPE *storeID;
+    MISSING_TYPE *representationEpisode;
 }
 
 @end

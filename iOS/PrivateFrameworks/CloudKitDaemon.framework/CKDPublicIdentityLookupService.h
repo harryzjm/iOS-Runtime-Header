@@ -18,7 +18,7 @@
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) CKDIdentityCache *cache; // @synthesize cache=_cache;
-@property(nonatomic) __weak CKDContainer *container; // @synthesize container=_container;
+@property(readonly, nonatomic) __weak CKDContainer *container; // @synthesize container=_container;
 - (void)removeCacheForLookupInfos:(id)arg1;
 - (void)configureRequest:(id)arg1;
 - (void)scheduleRequest:(id)arg1;

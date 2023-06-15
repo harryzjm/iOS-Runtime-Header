@@ -12,8 +12,6 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
-struct Allocator;
-
 struct DebugLocation {
     unsigned int _field1;
     unsigned int _field2;
@@ -30,18 +28,6 @@ struct DebugSubProgram {
 struct FileIdentifier {
     int dev;
     unsigned long long ino;
-};
-
-struct FlatBufferBuilder {
-    struct vector_downward buf_;
-    unsigned int num_field_loc;
-    unsigned short max_voffset_;
-    _Bool nested;
-    _Bool finished;
-    unsigned long long minalign_;
-    _Bool force_defaults_;
-    _Bool dedup_vtables_;
-    void *string_pool;
 };
 
 struct IndirectArgumentBufferCapabilities {
@@ -101,6 +87,7 @@ struct MTLComputePipelineDescriptorPrivate {
     unsigned short maxTotalThreadsPerThreadgroup;
     MTLStageInputOutputDescriptor *stageInputDescriptor;
     NSDictionary *driverCompilerOptions;
+    NSDictionary *gpuCompilerSPIOptions;
     MTLPipelineBufferDescriptorArrayInternal *buffers;
     NSArray *binaryArchives;
     union {
@@ -122,6 +109,7 @@ struct MTLComputePipelineDescriptorPrivate {
     unsigned long long maxStackCallDepth;
     _Bool supportAddingBinaryFunctions;
     MTLProfileControl *profileControl;
+    unsigned long long maxAccelerationStructureTraversalDepth;
 };
 
 struct MTLDepthStencilDescriptorPrivate {
@@ -149,6 +137,8 @@ struct MTLFunctionData {
     unsigned int patchType:2;
     unsigned int controlPointCount:6;
     NSObject *functionInputs;
+    CDStruct_41a22ec7 baseFunctionHash;
+    NSObject *specializationAirScript;
 };
 
 struct MTLFunctionId {
@@ -167,14 +157,6 @@ struct MTLHeapDescriptorPrivate {
     unsigned long long _field7;
     unsigned long long _field8;
     unsigned long long _field9;
-};
-
-struct MTLIOScratchBufferPrivate {
-    CDStruct_51606cd7 _field1;
-    id _field2;
-    id _field3;
-    unsigned long long _field4;
-    _Bool _field5;
 };
 
 struct MTLIntersectionFunctionTableDescriptorPrivate {
@@ -259,6 +241,7 @@ struct MTLRenderPassDescriptorPrivate {
     id rasterizationRateMap;
     MTLRenderPassSampleBufferAttachmentDescriptorArrayInternal *sampleBufferAttachments;
     _Bool pointCoordYFlipEnabled;
+    NSArray *binaryArchives;
 };
 
 struct MTLRenderPassSampleBufferAttachmentDescriptorPrivate {
@@ -359,6 +342,7 @@ struct MTLRenderPipelineDescriptorPrivate {
     MTLPipelineBufferDescriptorArrayInternal *vertexBuffers;
     MTLPipelineBufferDescriptorArrayInternal *fragmentBuffers;
     NSDictionary *driverCompilerOptions;
+    NSDictionary *gpuCompilerSPIOptions;
     id pipelineLibrary;
     void *pad0;
     void *pad1;
@@ -384,6 +368,7 @@ struct MTLRenderPipelineDescriptorPrivate {
     _Bool supportAddingObjectBinaryFunctions;
     MTLProfileControl *profileControl;
     unsigned int explicitVisibilityGroupID;
+    unsigned long long maxAccelerationStructureTraversalDepth;
 };
 
 struct MTLResourceID {
@@ -515,6 +500,8 @@ struct MTLTileRenderPipelineDescriptorPrivate {
     unsigned long long maxStackCallDepth;
     _Bool supportAddingBinaryFunctions;
     MTLProfileControl *profileControl;
+    unsigned long long maxAccelerationStructureTraversalDepth;
+    NSDictionary *gpuCompilerSPIOptions;
 };
 
 struct MTLVisibleFunctionTableDescriptorPrivate {
@@ -544,17 +531,17 @@ struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<
 };
 
 struct unordered_map<MTLLoadedFile *, id, std::hash<MTLLoadedFile *>, std::equal_to<MTLLoadedFile *>, std::allocator<std::pair<MTLLoadedFile *const, id>>> {
-    struct __hash_table<std::__hash_value_type<MTLLoadedFile *, id>, std::__unordered_map_hasher<MTLLoadedFile *, std::__hash_value_type<MTLLoadedFile *, id>, std::hash<MTLLoadedFile *>, std::equal_to<MTLLoadedFile *>, true>, std::__unordered_map_equal<MTLLoadedFile *, std::__hash_value_type<MTLLoadedFile *, id>, std::equal_to<MTLLoadedFile *>, std::hash<MTLLoadedFile *>, true>, std::allocator<std::__hash_value_type<MTLLoadedFile *, id>>> {
+    struct __hash_table<std::__hash_value_type<MTLLoadedFile *, id>, std::__unordered_map_hasher<MTLLoadedFile *, std::__hash_value_type<MTLLoadedFile *, id>, std::hash<MTLLoadedFile *>, std::equal_to<MTLLoadedFile *>>, std::__unordered_map_equal<MTLLoadedFile *, std::__hash_value_type<MTLLoadedFile *, id>, std::equal_to<MTLLoadedFile *>, std::hash<MTLLoadedFile *>>, std::allocator<std::__hash_value_type<MTLLoadedFile *, id>>> {
         struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<MTLLoadedFile *, id>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<MTLLoadedFile *, id>, void *>*>*>>> __bucket_list_;
         struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<MTLLoadedFile *, id>, void *>*>, std::allocator<std::__hash_node<std::__hash_value_type<MTLLoadedFile *, id>, void *>>> {
             struct __hash_node_base<std::__hash_node<std::__hash_value_type<MTLLoadedFile *, id>, void *>*> {
                 void *__next_;
             } __value_;
         } __p1_;
-        struct __compressed_pair<unsigned long, std::__unordered_map_hasher<MTLLoadedFile *, std::__hash_value_type<MTLLoadedFile *, id>, std::hash<MTLLoadedFile *>, std::equal_to<MTLLoadedFile *>, true>> {
+        struct __compressed_pair<unsigned long, std::__unordered_map_hasher<MTLLoadedFile *, std::__hash_value_type<MTLLoadedFile *, id>, std::hash<MTLLoadedFile *>, std::equal_to<MTLLoadedFile *>>> {
             unsigned long long __value_;
         } __p2_;
-        struct __compressed_pair<float, std::__unordered_map_equal<MTLLoadedFile *, std::__hash_value_type<MTLLoadedFile *, id>, std::equal_to<MTLLoadedFile *>, std::hash<MTLLoadedFile *>, true>> {
+        struct __compressed_pair<float, std::__unordered_map_equal<MTLLoadedFile *, std::__hash_value_type<MTLLoadedFile *, id>, std::equal_to<MTLLoadedFile *>, std::hash<MTLLoadedFile *>>> {
             float __value_;
         } __p3_;
     } __table_;
@@ -566,17 +553,6 @@ struct vector<MTLRasterizationRateLayerDescriptor *, std::allocator<MTLRasteriza
     struct __compressed_pair<MTLRasterizationRateLayerDescriptor **, std::allocator<MTLRasterizationRateLayerDescriptor *>> {
         id *__value_;
     } __end_cap_;
-};
-
-struct vector_downward {
-    struct Allocator *allocator_;
-    _Bool own_allocator_;
-    unsigned long long initial_size_;
-    unsigned long long buffer_minalign_;
-    unsigned long long reserved_;
-    char *buf_;
-    char *cur_;
-    char *scratch_;
 };
 
 #pragma mark Typedef'd Structures
@@ -667,6 +643,12 @@ typedef struct {
 } CDStruct_c0454aff;
 
 typedef struct {
+    unsigned long long _field1;
+    unsigned long long _field2;
+    unsigned int _field3;
+} CDStruct_98a1d94c;
+
+typedef struct {
     unsigned long long width;
     unsigned long long height;
     unsigned long long depth;
@@ -684,10 +666,6 @@ typedef struct {
 typedef struct {
     unsigned char key[32];
 } CDStruct_41a22ec7;
-
-typedef struct {
-    unsigned int _field1[3];
-} CDStruct_22c8f40a;
 
 typedef struct {
     unsigned int fragmentUsesDiscard:1;
@@ -727,11 +705,6 @@ typedef struct {
     unsigned long long _field2;
     struct *_field3;
 } CDStruct_dbc1e4aa;
-
-typedef struct {
-    struct MTLIOScratchBufferPrivate *tqh_first;
-    struct MTLIOScratchBufferPrivate **tqh_last;
-} CDStruct_51606cd7;
 
 typedef struct {
     CDStruct_da2e99ad _field1;

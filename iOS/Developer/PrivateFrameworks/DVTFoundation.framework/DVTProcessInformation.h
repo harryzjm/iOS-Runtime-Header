@@ -22,6 +22,7 @@
 @property(copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property int pid; // @synthesize pid=_pid;
 - (long long)displayNameCompare:(id)arg1;
+- (id)initWithPID:(int)arg1 displayName:(id)arg2 foregroundRunning:(_Bool)arg3;
 - (id)initWithPID:(int)arg1;
 
 @end

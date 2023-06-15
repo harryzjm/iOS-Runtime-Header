@@ -10,11 +10,11 @@
 
 @interface DVTBroadcastSubscription : NSObject
 {
-    struct os_unfair_lock_s _lock;
     DVTBroadcastCenter *_center;
     DVTBroadcastChannel *_channel;
     NSOperationQueue *_queue;
     CDUnknownBlockType _handler;
+    struct os_unfair_lock_s _lock;
     _Bool _startedTeardown;
 }
 

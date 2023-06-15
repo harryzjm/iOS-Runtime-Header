@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UITableViewHeaderFooterView.h>
+#import <UIKitCore/UITableViewHeaderFooterView.h>
 
 @class NSString, UITextView;
 
@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 + (id)reuseIdentifier;
 - (void).cxx_destruct;
 @property(retain, nonatomic) UITextView *sharedWithYouTextView; // @synthesize sharedWithYouTextView=_sharedWithYouTextView;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)layoutSubviews;
 
 // Remaining properties

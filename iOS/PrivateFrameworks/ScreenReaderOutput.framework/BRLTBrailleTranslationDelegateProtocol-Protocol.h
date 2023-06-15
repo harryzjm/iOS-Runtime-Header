@@ -6,10 +6,10 @@
 
 #import <ScreenReaderOutput/NSObject-Protocol.h>
 
-@class NSString;
+@class BRLTTextFormattingRanges, NSString;
 
 @protocol BRLTBrailleTranslationDelegateProtocol <NSObject>
 - (NSString *)textForPrintBraille:(NSString *)arg1 language:(NSString *)arg2 mode:(unsigned long long)arg3 locations:(id *)arg4;
-- (NSString *)printBrailleForText:(NSString *)arg1 language:(NSString *)arg2 mode:(unsigned long long)arg3 textPositionsRange:(struct _NSRange)arg4 locations:(id *)arg5;
+- (NSString *)printBrailleForText:(NSString *)arg1 language:(NSString *)arg2 mode:(unsigned long long)arg3 textPositionsRange:(struct _NSRange)arg4 locations:(id *)arg5 textFormattingRanges:(BRLTTextFormattingRanges *)arg6;
 @end
 

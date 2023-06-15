@@ -29,6 +29,7 @@
 - (void)deselectAllNodes;
 - (void)selectAllNodes;
 - (void)deleteSelectedNodes;
+- (_Bool)shouldChangePathToOpen:(long long)arg1;
 @property(readonly, nonatomic) _Bool canDeleteSelectedNodes;
 @property(readonly, nonatomic) _Bool hasSelectedNode;
 @property(readonly, nonatomic) _Bool allNodesSelected;
@@ -45,6 +46,7 @@
 - (void)reverseDirection;
 - (void)updateReflectedState;
 - (void)appendToBezierPath:(id)arg1;
+- (void)appendToBezierPath:(id)arg1 selectedNodesOnly:(_Bool)arg2 fromIndex:(unsigned long long)arg3 closed:(_Bool)arg4;
 - (void)appendToBezierPath:(id)arg1 selectedNodesOnly:(_Bool)arg2 fromIndex:(unsigned long long)arg3;
 @property(readonly, nonatomic) TSUBezierPath *bezierPath;
 - (_Bool)isCircular;

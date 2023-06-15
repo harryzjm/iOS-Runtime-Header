@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)adjustBoundsForNotificationsWithOwner:(id)arg1;
 - (id)expiringPlacement;
 - (unsigned long long)indexForPurpose:(unsigned long long)arg1;
+- (id)subPlacementsForInputViewSet:(id)arg1;
 - (void)checkSizeForOwner:(id)arg1;
 - (id)applicatorInfoForOwner:(id)arg1;
 - (Class)applicatorClassForKeyboard:(_Bool)arg1;

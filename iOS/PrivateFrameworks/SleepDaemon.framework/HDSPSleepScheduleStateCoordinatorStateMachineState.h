@@ -27,11 +27,11 @@ __attribute__((visibility("hidden")))
 - (id)_timelineForDate:(id)arg1;
 - (_Bool)isAlarmEnabled;
 - (_Bool)isSleepScheduleDisabled;
-- (void)stateDidExpireWithContext:(id)arg1;
+- (void)stateDidExpire;
 - (void)_forceUpdateStateWithChangeReason:(unsigned long long)arg1;
-- (id)nextStateWithContext:(id *)arg1 forceUpdate:(_Bool)arg2;
-- (id)nextStateWithContext:(id *)arg1;
-- (void)didEnterWithPreviousState:(id)arg1 context:(id)arg2;
+- (void)updateStateForcibly:(_Bool)arg1;
+- (void)updateState;
+- (void)didEnter;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

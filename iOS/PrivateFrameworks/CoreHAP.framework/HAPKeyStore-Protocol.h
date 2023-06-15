@@ -6,7 +6,7 @@
 
 #import <CoreHAP/NSObject-Protocol.h>
 
-@class HAPPairingIdentity, HMFPairingIdentity, NSArray, NSData, NSDictionary, NSString, NSUUID;
+@class HAPPairingIdentity, HMFPairingIdentity, NSArray, NSData, NSDictionary, NSNumber, NSString, NSUUID;
 
 @protocol HAPKeyStore <NSObject>
 @property(readonly, nonatomic) NSString *activeControllerPairingIdentifier;
@@ -36,12 +36,17 @@
 - (HAPPairingIdentity *)getLocalPairingIdentity:(id *)arg1;
 
 @optional
+- (NSArray *)allKeysForType:(NSNumber *)arg1 error:(id *)arg2;
 - (HMFPairingIdentity *)pairingIdentityForAppleMediaAccessoryWithUUID:(NSUUID *)arg1;
 - (_Bool)saveAppleMediaAccessoryPairingIdentity:(HMFPairingIdentity *)arg1;
 - (_Bool)saveHH2PairingIdentity:(HAPPairingIdentity *)arg1 syncable:(_Bool)arg2;
 - (_Bool)isHH2KeyType:(NSString *)arg1;
-- (HAPPairingIdentity *)getHH2ControllerKey;
+- (HAPPairingIdentity *)getHH2ControllerKeyWithIdentifier:(NSString *)arg1;
+- (HAPPairingIdentity *)getPreferredHH2ControllerKey;
+- (NSArray *)allHH2PairingKeys;
+- (NSArray *)allLegacyAccessoryPairingKeys;
 - (NSArray *)allAccessoryPairingKeys;
+- (int)createHH2ControllerKey:(id *)arg1 secretKey:(id *)arg2 keyPair:(id *)arg3 username:(id *)arg4;
 - (_Bool)deletePairingKeysForAccessory:(NSString *)arg1 error:(id *)arg2;
 - (_Bool)createAccessoryPairingKey:(HAPPairingIdentity *)arg1 error:(id *)arg2;
 - (_Bool)updateAccessoryPairingKey:(HAPPairingIdentity *)arg1 error:(id *)arg2;

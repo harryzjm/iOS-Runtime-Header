@@ -15,6 +15,9 @@
     MISSING_TYPE *running;
     MISSING_TYPE *timer;
     MISSING_TYPE *didComplete;
+    MISSING_TYPE *didDeferWork;
+    MISSING_TYPE *startDate;
+    MISSING_TYPE *id;
     MISSING_TYPE *queue;
 }
 

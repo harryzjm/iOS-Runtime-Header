@@ -10,7 +10,8 @@
 
 @interface _TtC24IntelligencePlatformCore13EmbedderInput : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *encoderInput;
+    MISSING_TYPE *encoderCharInput;
+    MISSING_TYPE *encoderBPEInput;
 }
 
 - (id)featureValueForName:(id)arg1;

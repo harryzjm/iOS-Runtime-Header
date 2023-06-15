@@ -11,6 +11,7 @@
 @protocol HFExecutionEnvironmentObserver <NSObject>
 
 @optional
+- (void)executionEnvironmentDidBecomeScreenUnlocked:(HFExecutionEnvironment *)arg1;
 - (void)executionEnvironmentDidBecomeScreenLocked:(HFExecutionEnvironment *)arg1;
 - (void)executionEnvironmentDidBecomeOccluded:(HFExecutionEnvironment *)arg1;
 - (void)executionEnvironmentDidBecomeVisible:(HFExecutionEnvironment *)arg1;

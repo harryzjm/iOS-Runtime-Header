@@ -38,7 +38,6 @@ __attribute__((visibility("hidden")))
 - (id)uniqueIdentifier;
 - (_Bool)isPartialObject;
 - (_Bool)isFrozen;
-- (id)initWithObject:(id)arg1;
 - (id)updateParentToCommitSelf:(id)arg1;
 - (_Bool)_applyChangesToSaveRequest:(id)arg1 error:(id *)arg2;
 @property(readonly, nonatomic) EKChangeSet *uncommittedChanges;

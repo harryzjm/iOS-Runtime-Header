@@ -20,6 +20,6 @@
 - (void)transition:(NSString *)arg1 eventStage:(unsigned long long)arg2 withInfo:(NSDictionary *)arg3;
 - (void)setKeyboardTotalDisable:(_Bool)arg1 withFence:(BKSAnimationFenceHandle *)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)setDeactivating:(_Bool)arg1;
-- (void)startArbitrationWithExpectedState:(_UIKeyboardChangedInformation *)arg1 focusContext:(UIKBArbiterClientFocusContext *)arg2 hostingPIDs:(NSArray *)arg3 usingFence:(_Bool)arg4 withSuppression:(int)arg5 onConnected:(void (^)(_UIKeyboardChangedInformation *, long long, _Bool))arg6;
+- (void)startArbitrationWithExpectedState:(_UIKeyboardChangedInformation *)arg1 focusContext:(UIKBArbiterClientFocusContext *)arg2 hostingPIDs:(NSArray *)arg3 usingFence:(_Bool)arg4 withSuppression:(int)arg5 onConnected:(void (^)(_UIKeyboardChangedInformation *, _UIKeyboardUIInformation *, long long, _Bool))arg6;
 @end
 

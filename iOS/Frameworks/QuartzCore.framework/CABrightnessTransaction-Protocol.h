@@ -10,6 +10,7 @@
 - (_Bool)forceCommitBrightness:(id *)arg1 withBlock:(void (^)(NSDictionary *))arg2;
 - (_Bool)commitBrightness:(id *)arg1;
 - (_Bool)commitBrightness:(id *)arg1 withBlock:(void (^)(NSDictionary *))arg2;
+- (void)setHighAmbientAdaptation:(float)arg1;
 - (void)setLowAmbientAdaptation:(float)arg1;
 - (void)setBrightnessControlDisabled:(_Bool)arg1;
 - (void)setBrightnessLimit:(float)arg1;

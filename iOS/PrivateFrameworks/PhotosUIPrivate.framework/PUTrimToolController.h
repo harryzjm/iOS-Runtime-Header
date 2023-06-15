@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
-@class AVPlayerItem, NSArray, NSLayoutConstraint, NSNumber, NSString, PICompositionController, PLEditSource, PLPhotoEditRenderer, PULivePhotoKeyFrameSelectionViewController, PUTimeCodeOverlayView, PXFocusTimelineAction, PXFocusTimelineView, PXLivePhotoTrimScrubber, PXLivePhotoTrimScrubberSnapStripController, PXLivePhotoTrimScrubberSpec, PXSlowMotionEditor, UIButton, UIImage, UILabel, UIView, UIVisualEffectView;
+@class AVAsset, AVVideoComposition, NSArray, NSLayoutConstraint, NSNumber, NSString, NSTimer, PFCoalescer, PICompositionController, PLEditSource, PLPhotoEditRenderer, PULivePhotoKeyFrameSelectionViewController, PULivePhotoTrimScrubberSnapStripControllerSpec, PUTimeCodeOverlayView, PXFocusTimelineAction, PXFocusTimelineView, PXLivePhotoTrimScrubber, PXLivePhotoTrimScrubberSnapStripController, PXLivePhotoTrimScrubberSpec, PXSlowMotionEditor, UIButton, UIImage, UILabel, UIView, UIVisualEffectView;
 @protocol PUTrimToolControllerDelegate, PXTrimToolPlayerWrapper;
 
 __attribute__((visibility("hidden")))
@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     NSLayoutConstraint *_timeCodeHorizontalConstraint;
     PXLivePhotoTrimScrubberSpec *_spec;
     long long _currentlyInteractingElement;
+    PFCoalescer *_updateVideoCoalescer;
     _Bool _disabled;
     _Bool _slomoEnabled;
     _Bool _isPortraitVideo;
@@ -32,15 +33,17 @@ __attribute__((visibility("hidden")))
     PICompositionController *_compositionController;
     unsigned long long _state;
     PLEditSource *_editSource;
-    PLEditSource *_overcaptureEditSource;
     UIVisualEffectView *_auxilaryContainerView;
     UIVisualEffectView *_scrubberPlayButtonContainerView;
     NSLayoutConstraint *_scrubberContainerToAuxiliaryContainerConstraint;
     PULivePhotoKeyFrameSelectionViewController *_livePhotoKeyFramePicker;
+    NSTimer *_livePhotoKeyFramePickerAppearanceTimer;
     PLPhotoEditRenderer *_renderer;
-    AVPlayerItem *_currentVideoPlayerItem;
+    AVAsset *_currentVideoAsset;
+    AVVideoComposition *_currentVideoComposition;
     double _cachedFrameRate;
     PXLivePhotoTrimScrubberSnapStripController *_snapStripController;
+    PULivePhotoTrimScrubberSnapStripControllerSpec *_snapStripSpec;
     unsigned long long _playheadStyle;
     unsigned long long _internalState;
     NSNumber *_slomoTimeForPlayheadUpdate;
@@ -93,16 +96,18 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned long long internalState; // @synthesize internalState=_internalState;
 @property(nonatomic) unsigned long long playheadStyle; // @synthesize playheadStyle=_playheadStyle;
 @property(nonatomic) CDStruct_1b6d18a9 unadjustedAssetDuration; // @synthesize unadjustedAssetDuration=_unadjustedAssetDuration;
+@property(retain, nonatomic) PULivePhotoTrimScrubberSnapStripControllerSpec *snapStripSpec; // @synthesize snapStripSpec=_snapStripSpec;
 @property(retain, nonatomic) PXLivePhotoTrimScrubberSnapStripController *snapStripController; // @synthesize snapStripController=_snapStripController;
 @property(nonatomic) double cachedFrameRate; // @synthesize cachedFrameRate=_cachedFrameRate;
 @property(nonatomic) CDStruct_1b6d18a9 cachedFrameDuration; // @synthesize cachedFrameDuration=_cachedFrameDuration;
-@property(retain, nonatomic) AVPlayerItem *currentVideoPlayerItem; // @synthesize currentVideoPlayerItem=_currentVideoPlayerItem;
+@property(readonly, nonatomic) AVVideoComposition *currentVideoComposition; // @synthesize currentVideoComposition=_currentVideoComposition;
+@property(readonly, nonatomic) AVAsset *currentVideoAsset; // @synthesize currentVideoAsset=_currentVideoAsset;
 @property(retain, nonatomic) PLPhotoEditRenderer *renderer; // @synthesize renderer=_renderer;
+@property(retain, nonatomic) NSTimer *livePhotoKeyFramePickerAppearanceTimer; // @synthesize livePhotoKeyFramePickerAppearanceTimer=_livePhotoKeyFramePickerAppearanceTimer;
 @property(nonatomic) __weak PULivePhotoKeyFrameSelectionViewController *livePhotoKeyFramePicker; // @synthesize livePhotoKeyFramePicker=_livePhotoKeyFramePicker;
 @property(retain, nonatomic) NSLayoutConstraint *scrubberContainerToAuxiliaryContainerConstraint; // @synthesize scrubberContainerToAuxiliaryContainerConstraint=_scrubberContainerToAuxiliaryContainerConstraint;
 @property(retain, nonatomic) UIVisualEffectView *scrubberPlayButtonContainerView; // @synthesize scrubberPlayButtonContainerView=_scrubberPlayButtonContainerView;
 @property(retain, nonatomic) UIVisualEffectView *auxilaryContainerView; // @synthesize auxilaryContainerView=_auxilaryContainerView;
-@property(retain, nonatomic) PLEditSource *overcaptureEditSource; // @synthesize overcaptureEditSource=_overcaptureEditSource;
 @property(retain, nonatomic) PLEditSource *editSource; // @synthesize editSource=_editSource;
 @property(readonly, nonatomic, getter=isPortraitVideo) _Bool isPortraitVideo; // @synthesize isPortraitVideo=_isPortraitVideo;
 @property(readonly, nonatomic, getter=isSlomoEnabled) _Bool slomoEnabled; // @synthesize slomoEnabled=_slomoEnabled;
@@ -135,7 +140,7 @@ __attribute__((visibility("hidden")))
 - (long long)adaptivePresentationStyleForPresentationController:(id)arg1;
 - (void)playerWrapper:(id)arg1 timeChanged:(CDStruct_1b6d18a9)arg2;
 - (void)playerStatusChangedForPlayerWrapper:(id)arg1;
-- (void)compositonDidUpdateForPlayerWrapper:(id)arg1;
+- (void)compositionDidUpdateForPlayerWrapper:(id)arg1;
 - (id)_slomoMapperForCurrentConfiguration;
 - (CDStruct_1b6d18a9)_originalTimeFromCurrentPlayerScaledTime:(CDStruct_1b6d18a9)arg1;
 - (CDStruct_1b6d18a9)_currentPlayerScaledTimeFromOriginalTime:(CDStruct_1b6d18a9)arg1;
@@ -149,8 +154,7 @@ __attribute__((visibility("hidden")))
 - (void)_resetScrubberToStillPhotoFrame;
 - (double)_frameRate;
 - (CDStruct_1b6d18a9)_frameDuration;
-- (id)_currentVideoAsset;
-- (void)_updatePlayerItem;
+- (void)_updateVideo;
 - (void)_updateSnappingDots;
 - (void)_updateScrubberFocusEventTimes;
 - (void)_updateScrubberTimes;
@@ -160,12 +164,14 @@ __attribute__((visibility("hidden")))
 - (void)_updateTimeCodeOverlay;
 - (void)_updateScrubberPresentedPlayhead;
 - (void)_updatePlayerWrapperTimeObserver;
+- (void)_updateSnapStripController;
 - (void)_updatePlayheadStyle;
 - (void)_updatePublicState;
 - (void)_updateDebugPlayheadStyleLabel;
 - (void)_updateDebugTrimToolStateLabel;
 - (void)_updateDebugPlayerTimeLabel;
 - (void)_updateDebugTimeCodeLabel;
+- (void)_setPosterFrameTime:(CDStruct_1b6d18a9)arg1 onCompositionController:(id)arg2;
 - (_Bool)_showKeyFrameSelection;
 - (_Bool)_allowsKeyFrameCreation;
 - (void)_setState:(unsigned long long)arg1;
@@ -181,16 +187,15 @@ __attribute__((visibility("hidden")))
 - (void)resetTimeline;
 - (void)updateFocusTimeline;
 - (void)showFocusTimeline:(_Bool)arg1;
+- (void)enableUIForCinematographyScriptLoad:(_Bool)arg1;
 - (void)enableFocusTimeline:(_Bool)arg1;
 @property(readonly, nonatomic) long long currentlyInteractingElement;
-- (void)setEditSource:(id)arg1 overcaptureEditSource:(id)arg2;
 - (void)releaseAVObjects;
 @property(readonly, nonatomic) double scrubberHeight;
 - (void)trimScrubberDidLayoutSubviews:(id)arg1;
 - (void)trimScrubberPausePlayer:(id)arg1;
 - (void)trimScrubberDidUnzoom:(id)arg1;
 - (void)trimScrubber:(id)arg1 didZoomToMinimumValue:(double)arg2 maximumValue:(double)arg3;
-- (void)trimScrubber:(id)arg1 didChangeLoupeRect:(struct CGRect)arg2;
 - (void)trimScrubberAssetDurationDidChange:(id)arg1;
 - (void)trimScrubber:(id)arg1 didChangeTimeForElement:(long long)arg2;
 - (void)_didCompleteInteractiveEditForElement:(long long)arg1 atTime:(CDStruct_1b6d18a9)arg2 state:(unsigned long long)arg3;
@@ -219,8 +224,6 @@ __attribute__((visibility("hidden")))
 - (void)viewDidLoad;
 - (void)compositionControllerDidChangeForAdjustments:(id)arg1;
 - (id)initWithPlayerWrapper:(id)arg1 playButtonEnabled:(_Bool)arg2 slomoEnabled:(_Bool)arg3 portraitVideoEnabled:(_Bool)arg4;
-- (id)initWithPlayerWrapper:(id)arg1 playButtonEnabled:(_Bool)arg2 slomoEnabled:(_Bool)arg3;
-- (id)initWithPlayerWrapper:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

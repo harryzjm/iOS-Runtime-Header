@@ -11,10 +11,10 @@
 @interface _TtC7NewsUI210TagService : _TtCs12_SwiftObject
 {
     MISSING_TYPE *tagController;
+    MISSING_TYPE *puzzleTypeController;
     MISSING_TYPE *subscriptionController;
     MISSING_TYPE *purchaseController;
     MISSING_TYPE *notificationConfiguration;
-    MISSING_TYPE *suggestedTagScoreProvider;
     MISSING_TYPE *shortcutList;
 }
 

@@ -6,12 +6,12 @@
 
 #import "UIPointerInteraction.h"
 
-@class NSMutableDictionary, NSString, UIView, UIWindow;
+@class NSMutableDictionary, NSString, UIView, UIWindow, _UIPointerInteractionAssistantEffectContainerView;
 
 __attribute__((visibility("hidden")))
 @interface _UIPointerInteractionAssistant : UIPointerInteraction
 {
-    UIView *_previewContainer;
+    _UIPointerInteractionAssistantEffectContainerView *_previewContainer;
     UIWindow *_monitoredWindow;
     NSMutableDictionary *_assistants;
 }

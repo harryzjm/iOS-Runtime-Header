@@ -4,19 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CEKApertureButton, CEKLightingControl, CEKLightingNameBadge, CEKSlider, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSNumber, NSString, PUPhotoEditApertureToolbar, PXUIButton, UIView, _PULightingGradientView;
+@class CEKApertureButton, CEKLightingControl, CEKLightingNameBadge, CEKSlider, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSNumber, NSString, PUPhotoEditApertureToolbar, PUPhotoEditToolActivationButton, PUPhotoEditToolbarButton, UIView, _PULightingGradientView;
 
 __attribute__((visibility("hidden")))
 @interface PUPhotoEditPortraitToolController
 {
     CEKApertureButton *_apertureButton;
-    PXUIButton *_lightingIntensityButton;
+    PUPhotoEditToolbarButton *_lightingIntensityButton;
     UIView *_lightingContainer;
     UIView *_apertureContainer;
     NSMutableArray *_containerConstraints;
     long long _initialLightingType;
     double _initialLightingIntensity;
-    PXUIButton *_depthToolbarButton;
+    PUPhotoEditToolActivationButton *_portraitToolbarButton;
     _PULightingGradientView *_lightingGradient;
     CEKLightingNameBadge *_lightingNameBadge;
     NSArray *_lightingNameBadgeConstraints;
@@ -32,9 +32,11 @@ __attribute__((visibility("hidden")))
     long long _toolSelection;
     unsigned long long _majorVersion;
     unsigned long long _minorVersion;
+    unsigned long long _sDOFRenderingVersion;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long sDOFRenderingVersion; // @synthesize sDOFRenderingVersion=_sDOFRenderingVersion;
 @property(nonatomic) unsigned long long minorVersion; // @synthesize minorVersion=_minorVersion;
 @property(nonatomic) unsigned long long majorVersion; // @synthesize majorVersion=_majorVersion;
 @property(nonatomic) long long toolSelection; // @synthesize toolSelection=_toolSelection;
@@ -49,6 +51,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateCompositionWithLightingIntensity;
 - (void)_updateLightingNameBadgeForOrientation:(long long)arg1 expanded:(_Bool)arg2;
 - (void)_updateLabelOrientation;
+- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)setLayoutOrientation:(long long)arg1 withTransitionCoordinator:(id)arg2;
 - (void)setPhotoEditSpec:(id)arg1;
 - (void)_didModifyLightingIntensity;
@@ -70,8 +73,6 @@ __attribute__((visibility("hidden")))
 - (_Bool)wantsScrubberKeyControl;
 - (_Bool)wantsZoomAndPanEnabled;
 - (long long)toolControllerTag;
-- (_Bool)installLivePhotoPlaybackGestureRecognizer:(id)arg1;
-- (_Bool)installTogglePreviewGestureRecognizer:(id)arg1;
 - (id)centerToolbarView;
 - (id)leadingToolbarViews;
 - (void)compositionControllerDidChangeForAdjustments:(id)arg1;
@@ -82,14 +83,17 @@ __attribute__((visibility("hidden")))
 - (void)willBecomeActiveTool;
 - (_Bool)canResetToDefaultValue;
 - (id)toolbarIconAccessibilityLabel;
+- (id)selectedToolbarIconGlyphName;
+- (id)toolbarIconGlyphName;
 - (id)toolbarIcon;
 - (id)localizedName;
 - (id)_depthButtonTitle;
-- (void)_handleDepthEffectButton:(id)arg1;
+- (void)_handlePortraitEffectButton:(id)arg1;
 - (void)_updateLightingSliderAnimated:(_Bool)arg1;
 - (void)_updateLightingMarkerForType:(long long)arg1;
 - (void)_updateLightingControl;
 - (void)_updateNavigationButtonsAnimated:(_Bool)arg1;
+- (long long)_defaultPortraitTool;
 - (void)_resetDefaultToolMode;
 - (void)_handlePortraitNavigationButtons:(id)arg1;
 - (void)_selectNextEffectType:(_Bool)arg1;
@@ -108,7 +112,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateToolConstraints;
 - (void)_updateToolContainerConstraints;
 - (void)viewDidLoad;
-- (void)setupWithAsset:(id)arg1 compositionController:(id)arg2 editSource:(id)arg3 overcaptureEditSource:(id)arg4 valuesCalculator:(id)arg5;
+- (void)setupWithAsset:(id)arg1 compositionController:(id)arg2 editSource:(id)arg3 valuesCalculator:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

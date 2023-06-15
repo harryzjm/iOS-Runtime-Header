@@ -17,6 +17,8 @@
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)_emphasizedImageNamesForSourceLocationInference;
++ (id)sourceCodeContextWithCallStackAddresses:(id)arg1 emphasizedSymbolName:(id)arg2;
 + (id)sourceCodeFramesFromCallStackReturnAddresses:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly) XCTSourceCodeLocation *location; // @synthesize location=_location;

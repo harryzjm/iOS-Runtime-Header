@@ -60,7 +60,7 @@ __attribute__((visibility("hidden")))
     struct VKEdgeInsets _clientFramingInsets;
     Matrix_8746f91e _puckMovementBoundsMin;
     Matrix_8746f91e _puckMovementBoundsMax;
-    Matrix_8746f91e _puckScreenPosition;
+    Matrix_8746f91e _idealPuckScreenPosition;
     double _minHeightDeltaChangeHorizontal;
     double _maxHeightDeltaChangeHorizontal;
     double _minHeightDeltaChangeVertical;
@@ -105,6 +105,13 @@ __attribute__((visibility("hidden")))
     Matrix_6e1d3589 _lastProjectedPosition;
     double _farClipPlaneFactor;
     struct shared_ptr<gss::StylesheetQuery<gss::ScenePropertyID>> _sceneQuery;
+    unsigned long long _cameraMode;
+    _Bool _didNavCameraTransition;
+    struct Monitorable<md::ConfigValue<GEOConfigKeyBOOL, bool>> _showConsole;
+    struct Monitorable<md::ConfigValue<GEOConfigKeyBOOL, bool>> _showOverlay;
+    struct Monitorable<md::ConfigValue<GEOConfigKeyBOOL, bool>> _showAttributes;
+    struct Monitorable<md::ConfigValue<GEOConfigKeyBOOL, bool>> _showProperties;
+    struct Monitorable<md::ConfigValue<GEOConfigKeyBOOL, bool>> _showLegend;
     VKScreenCanvas<VKInteractiveMap> *_screenCanvas;
     VKSceneConfiguration *_sceneConfiguration;
     long long _baseDisplayRate;
@@ -112,6 +119,7 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+@property(nonatomic) long long defaultMaxDisplayRate; // @synthesize defaultMaxDisplayRate=_defaultMaxDisplayRate;
 @property(nonatomic) long long baseDisplayRate; // @synthesize baseDisplayRate=_baseDisplayRate;
 @property(nonatomic) struct VKEdgeInsets clientFramingInsets; // @synthesize clientFramingInsets=_clientFramingInsets;
 @property(nonatomic) __weak VKSceneConfiguration *sceneConfiguration; // @synthesize sceneConfiguration=_sceneConfiguration;
@@ -128,7 +136,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)snapMapIfNecessary:(_Bool)arg1;
 - (_Bool)usesVKCamera;
 - (float)_currentRoadSignOffset;
-- (void)_setNavCameraAnimationComplete:(_Bool)arg1;
+- (void)_setNavCameraTransitionComplete:(_Bool)arg1;
 - (void)_setNavCameraIsDetached:(_Bool)arg1;
 - (unsigned char)cameraHeadingType;
 - (void)canvasDidLayout;
@@ -149,6 +157,7 @@ __attribute__((visibility("hidden")))
 - (double)minZoomScale;
 - (void)updateState;
 @property(nonatomic) double zoomScale;
+- (void)_updateDidNavCameraTransition;
 - (void)_updateZoomScaleLimts;
 - (void)_setNeedsUpdate;
 - (void)navContextCameraHeadingOverrideDidChange:(id)arg1;
@@ -192,9 +201,9 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) double heading;
 @property(readonly, nonatomic) double altitude;
 @property(nonatomic) double distanceFromCenterCoordinate;
-@property(nonatomic) CDStruct_c3b9c2ee centerCoordinate;
+@property(nonatomic) CDStruct_2c43369c centerCoordinate;
 - (void)_updateStyles;
-- (void)_updateSceneStyles:(_Bool)arg1;
+- (void)_updateSceneStyles:(_Bool)arg1 updatePitchLimitOnly:(_Bool)arg2;
 - (void)_updateSceneQuery;
 - (void)stylesheetDidReload;
 - (void)stylesheetDidChange;
@@ -204,7 +213,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateDebugOverlay;
 - (void)_updateDebugText;
 - (shared_ptr_60abd8cc)_getActiveSceneManager;
-- (id)_debugText:(_Bool)arg1 showNavCameraDebugConsoleAttributes:(_Bool)arg2;
+- (id)_debugText:(_Bool)arg1 showNavCameraDebugConsoleAttributes:(_Bool)arg2 includeSensitiveAttributes:(_Bool)arg3;
 - (id)detailedDescription;
 - (_Bool)_hasRunningAnimation;
 - (double)_calculateMaxPixelChangeAndUpdateCorners;
@@ -215,9 +224,8 @@ __attribute__((visibility("hidden")))
 - (void)resetSpringsToResting;
 - (void)updateCameraState;
 - (_Bool)wantsTimerTick;
-- (void)puckAnimator:(id)arg1 updatedTargetPosition:(const void *)arg2;
 - (void)puckAnimatorDidStop:(id)arg1;
-- (void)projectCoordinate:(CDStruct_c3b9c2ee)arg1 toPoint:(struct CGPoint *)arg2;
+- (void)projectCoordinate:(CDStruct_2c43369c)arg1 toPoint:(struct CGPoint *)arg2;
 - (void)updateLocation:(const void *)arg1 andCourse:(const void *)arg2;
 - (struct optional<double>)puckAnimator:(id)arg1 getElevationWithCoordinate:(const void *)arg2;
 - (void)puckAnimator:(id)arg1 updatedPosition:(const void *)arg2 course:(const void *)arg3;
@@ -244,7 +252,7 @@ __attribute__((visibility("hidden")))
 - (void)zoom:(double)arg1 withFocusPoint:(struct CGPoint)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_setDetached:(_Bool)arg1;
 - (id)_detachedGestureController;
-- (void)startWithPounce:(_Bool)arg1 startLocation:(CDStruct_c3b9c2ee)arg2 startCourse:(double)arg3 pounceCompletionHandler:(CDUnknownBlockType)arg4;
+- (void)startWithPounce:(_Bool)arg1 startLocation:(CDStruct_2c43369c)arg2 startCourse:(double)arg3 pounceCompletionHandler:(CDUnknownBlockType)arg4;
 - (void)dealloc;
 - (id)initWithTaskContext:(shared_ptr_e963992e)arg1 device:(void *)arg2 mapDataAccess:(void *)arg3 animationRunner:(struct AnimationRunner *)arg4 runLoopController:(struct RunLoopController *)arg5 cameraDelegate:(id)arg6;
 - (id)init;

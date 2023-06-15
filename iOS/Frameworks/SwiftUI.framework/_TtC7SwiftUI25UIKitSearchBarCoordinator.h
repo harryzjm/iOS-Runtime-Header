@@ -12,13 +12,18 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *triggerSubmission;
     MISSING_TYPE *configuration;
     MISSING_TYPE *scopes;
+    MISSING_TYPE *tokenScopes;
+    MISSING_TYPE *placement;
     MISSING_TYPE *delegate;
+    MISSING_TYPE *searchBar;
     MISSING_TYPE *isViewUpdating;
     MISSING_TYPE *oldText;
+    MISSING_TYPE *oldTokens;
 }
 
 - (void).cxx_destruct;
 - (id)init;
+- (void)textFieldDidChangeSelection:(id)arg1;
 - (void)searchBar:(id)arg1 selectedScopeButtonIndexDidChange:(long long)arg2;
 - (void)searchBarCancelButtonClicked:(id)arg1;
 - (void)searchBarTextDidEndEditing:(id)arg1;

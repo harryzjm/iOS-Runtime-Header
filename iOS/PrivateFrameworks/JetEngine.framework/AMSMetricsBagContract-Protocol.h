@@ -6,11 +6,13 @@
 
 #import <JetEngine/AMSURLBagContract-Protocol.h>
 
+@class AMSBagValue;
+
 @protocol AMSMetricsBagContract <AMSURLBagContract>
 
 @optional
-@property(nonatomic, readonly) id metricsUrl;
-@property(nonatomic, readonly) id metricsDictionary;
-@property(nonatomic, readonly) id metricsURL;
+@property(readonly, nonatomic) AMSBagValue *metricsUrl;
+@property(readonly, nonatomic) AMSBagValue *metricsDictionary;
+@property(readonly, nonatomic) AMSBagValue *metricsURL;
 @end
 

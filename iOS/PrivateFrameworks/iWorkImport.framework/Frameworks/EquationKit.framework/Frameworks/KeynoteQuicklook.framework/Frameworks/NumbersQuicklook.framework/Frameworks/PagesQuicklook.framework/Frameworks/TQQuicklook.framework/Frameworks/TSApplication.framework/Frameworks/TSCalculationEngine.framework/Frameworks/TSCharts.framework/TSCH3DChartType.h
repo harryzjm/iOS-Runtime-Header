@@ -12,7 +12,7 @@
 }
 
 + (id)allAnimationFilters;
-+ (tvec3_17f03ce0)adjustedScaleForInfoChartScale:(const void *)arg1 chartType:(id)arg2 barShape:(int)arg3;
++ (tvec3_17f03ce0)adjustedScaleForInfoChartScale:(void *)arg1 chartType:(id)arg2 barShape:(int)arg3;
 - (_Bool)layoutFrameShouldEncloseInfoGeometry;
 - (_Bool)supportsCalloutLines;
 - (_Bool)supportsValueLabelSpacing;
@@ -71,7 +71,7 @@
 - (Class)chartLayoutClass;
 - (Class)chartLayoutItemClass;
 - (unsigned long long)presentationDimension;
-- (tvec3_17f03ce0)adjustedScaleForInfoChartScale:(const void *)arg1 barShape:(int)arg2;
+- (tvec3_17f03ce0)adjustedScaleForInfoChartScale:(void *)arg1 barShape:(int)arg2;
 - (int)deprecated3DShadowSpecificProperty;
 - (int)deprecated3DBevelEdgesSpecificProperty;
 

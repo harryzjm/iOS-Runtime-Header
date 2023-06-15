@@ -9,9 +9,9 @@
 @class NSData;
 
 @protocol APKOutputDeviceCommunicationChannel <NSObject>
+@property(copy, nonatomic) CDUnknownBlockType onClose;
+@property(copy, nonatomic) CDUnknownBlockType onData;
 - (void)close;
 - (void)sendData:(NSData *)arg1 completionHandler:(void (^)(NSError *))arg2;
-@property(nonatomic, copy) CDUnknownBlockType onClose;
-@property(nonatomic, copy) CDUnknownBlockType onData;
 @end
 

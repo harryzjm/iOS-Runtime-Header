@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     HDProfile *_profile;
 }
 
++ (id)_medicationCountForUnavailableSchedulesWithProfile:(id)arg1 error:(id *)arg2;
 + (id)_medicationCountForSchedulesWithProfile:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
 - (id)_makeMedicationCountPayloadForSchedulesWithProfile:(id)arg1;

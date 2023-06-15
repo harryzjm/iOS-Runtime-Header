@@ -7,7 +7,7 @@
 #import <SPOwner/NSObject-Protocol.h>
 #import <SPOwner/SPLocalBeaconManagerXPCProtocol-Protocol.h>
 
-@class NSArray, NSDate, NSDateInterval, NSError, NSSet, NSString, NSUUID, SPBeaconUpdates, SPCommandKeysCriteria;
+@class NSArray, NSDate, NSDateInterval, NSError, NSSet, NSString, NSUUID, SPBeaconUpdates, SPCommandKeysCriteria, SPSimpleBeaconContext;
 
 @protocol SPBeaconManagerXPCProtocol <NSObject, SPLocalBeaconManagerXPCProtocol>
 - (void)removeDuplicateBeaconsWithCompletion:(void (^)(NSArray *, NSError *))arg1;
@@ -42,6 +42,7 @@
 - (void)postedLocalNotifyWhenFoundNotificationForUUID:(NSUUID *)arg1 completion:(void (^)(_Bool))arg2;
 - (void)beaconingKeysForUUID:(NSUUID *)arg1 dateInterval:(NSDateInterval *)arg2 completion:(void (^)(NSArray *))arg3;
 - (void)unacceptedBeaconsWithCompletion:(void (^)(NSSet *))arg1;
+- (void)startUpdatingSimpleBeaconsWithContext:(SPSimpleBeaconContext *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (void)allBeaconsOfTypes:(NSSet *)arg1 includeDupes:(_Bool)arg2 includeHidden:(_Bool)arg3 completion:(void (^)(NSSet *))arg4;
 - (void)allBeaconsWithCompletion:(void (^)(NSSet *))arg1;
 - (void)notificationBeaconForSubscriptionId:(NSUUID *)arg1 completion:(void (^)(SPBeacon *, SPBeaconGroup *))arg2;

@@ -9,6 +9,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (_Bool)_isDefunct;
 - (void)transitionToFailedStatusWithError:(id)arg1;
 - (id)initWithConfigurationState:(id)arg1;
 

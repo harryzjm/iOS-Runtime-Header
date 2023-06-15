@@ -6,9 +6,10 @@
 
 #import <HomeKitDaemonLegacy/NSObject-Protocol.h>
 
-@class HMDMediaDestinationManager, HMDMediaGroupsUnconfiguredParticipantOnboardingManager, NSUUID;
+@class HMDMediaGroupsUnconfiguredParticipantOnboardingManager, NSUUID;
+@protocol HMDMediaDestinationManager;
 
 @protocol HMDMediaGroupsUnconfiguredParticipantOnboardingManagerDataSource <NSObject>
-- (HMDMediaDestinationManager *)mediaDestinationManagerWithParticipantAccessoryUUID:(NSUUID *)arg1 forMediaGroupsUnconfiguredParticipantOnboardingManager:(HMDMediaGroupsUnconfiguredParticipantOnboardingManager *)arg2;
+- (id <HMDMediaDestinationManager>)mediaDestinationManagerWithParticipantAccessoryUUID:(NSUUID *)arg1 forMediaGroupsUnconfiguredParticipantOnboardingManager:(HMDMediaGroupsUnconfiguredParticipantOnboardingManager *)arg2;
 @end
 

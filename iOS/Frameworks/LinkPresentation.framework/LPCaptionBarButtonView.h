@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class LPButtonStyle, LPCaptionButtonPresentationProperties, UIButton;
+@class LPButtonStyle, LPCaptionButtonPresentationProperties, LPCircularProgressIndicator, UIButton, UISegmentedControl;
 
 __attribute__((visibility("hidden")))
 @interface LPCaptionBarButtonView
@@ -13,20 +13,31 @@ __attribute__((visibility("hidden")))
     LPButtonStyle *_style;
     UIButton *_button;
     UIButton *_collapsedButton;
+    UISegmentedControl *_segmentedControl;
+    LPCircularProgressIndicator *_progressIndicator;
     _Bool _collapsed;
+    double _progress;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) double progress; // @synthesize progress=_progress;
 @property(nonatomic, getter=isCollapsed) _Bool collapsed; // @synthesize collapsed=_collapsed;
 - (_Bool)_menuButtonShowsSingleImage;
 - (_Bool)_menuButtonShowsChevron;
 - (_Bool)_menuButtonShowsIndicator;
 - (_Bool)_menuButtonShowsImages;
-- (id)_createMenu;
-- (void)_configureMenuButton:(id)arg1;
-- (void)_configurePillButton:(id)arg1;
-- (id)_createCollapsedButton;
-- (id)_createButton;
+- (id)createMenu;
+- (id)createUIActionsFromLPActionsWithHandler:(CDUnknownBlockType)arg1;
+- (void)configureMenuButton:(id)arg1;
+- (void)configureSegmentedControl:(id)arg1;
+- (void)configurePillButton:(id)arg1;
+- (id)createCollapsedButton;
+- (id)createButton;
+- (id)createSegmentedControl;
+- (void)selectAndPerformAction:(id)arg1;
+- (_Bool)isFinished;
+- (_Bool)isUpdating;
+- (void)updateProgressIndicator;
 - (void)removeTarget:(id)arg1 action:(SEL)arg2;
 - (void)addTarget:(id)arg1 action:(SEL)arg2;
 - (struct CGSize)collapsedSizeThatFits:(struct CGSize)arg1;

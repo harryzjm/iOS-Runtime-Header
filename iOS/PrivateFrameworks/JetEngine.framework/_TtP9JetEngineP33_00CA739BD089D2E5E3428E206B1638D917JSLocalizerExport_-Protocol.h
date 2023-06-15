@@ -14,8 +14,10 @@
 - (JSValue *)formattedDateWithContext:(JSValue *)arg1:(JSValue *)arg2:(JSValue *)arg3;
 - (JSValue *)fileSize:(JSValue *)arg1;
 - (JSValue *)formattedCount:(JSValue *)arg1;
-- (JSValue *)stringWithCount:(JSValue *)arg1:(JSValue *)arg2:(JSValue *)arg3;
+- (JSValue *)stringWithCount:(JSValue *)arg1:(JSValue *)arg2:(JSValue *)arg3:(JSValue *)arg4;
+- (JSValue *)integer:(JSValue *)arg1:(JSValue *)arg2;
+- (JSValue *)percentage:(JSValue *)arg1:(JSValue *)arg2:(JSValue *)arg3:(JSValue *)arg4;
 - (JSValue *)decimal:(JSValue *)arg1:(JSValue *)arg2:(JSValue *)arg3:(JSValue *)arg4;
-- (JSValue *)string:(JSValue *)arg1:(JSValue *)arg2;
+- (JSValue *)string:(JSValue *)arg1:(JSValue *)arg2:(JSValue *)arg3;
 @end
 

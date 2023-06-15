@@ -7,7 +7,11 @@
 #import <UIKitCore/NSObject-Protocol.h>
 
 @protocol _UISheetDropShadowState <NSObject>
+@property(readonly, nonatomic, getter=_isHosting) _Bool _hosting;
+@property(readonly, nonatomic, getter=_isEffectivePresented) _Bool _effectivePresented;
+@property(readonly) double _invertedDepthLevel;
 @property(readonly) double _depthLevel;
+@property(readonly) _Bool _hasParentSheet;
 @property(readonly) _Bool _hasChildSheet;
 @end
 

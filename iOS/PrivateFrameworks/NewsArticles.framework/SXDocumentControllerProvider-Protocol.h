@@ -9,6 +9,6 @@
 @class SXDocumentController;
 
 @protocol SXDocumentControllerProvider <NSObject>
-@property(nonatomic, readonly) SXDocumentController *documentController;
+@property(readonly, nonatomic) SXDocumentController *documentController;
 @end
 

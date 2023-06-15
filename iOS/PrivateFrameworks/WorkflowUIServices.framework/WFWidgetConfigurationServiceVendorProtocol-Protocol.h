@@ -4,8 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class WFWidgetConfigurationRequest;
+
 @protocol WFWidgetConfigurationServiceVendorProtocol
 - (void)requestViewControllerDismissal;
 - (void)setConfigurationCardViewFrame:(struct CGRect)arg1;
+- (void)startConfigurationWithRequest:(WFWidgetConfigurationRequest *)arg1 completion:(void (^)(void))arg2;
 @end
 

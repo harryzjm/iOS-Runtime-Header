@@ -23,35 +23,30 @@ __attribute__((visibility("hidden")))
     id <GCBatteryServiceServerInterface> _batteryServiceServer;
     GCDeviceBattery *_battery;
     NSMapTable *_clientBatteryEndpoints;
-    NSArray *_hapticEngines;
-    GCHapticCapabilityGraph *_hapticCapabilityGraph;
     unsigned char _type;
-    unsigned char _inputMode;
     id <NSObject><NSCopying><NSSecureCoding> _identifier;
     _GCDeviceConfiguration *_configuration;
     _GCNintendoFusedJoyConDevice *_fusionDevice;
 }
 
-+ (id)getHapticCapabilityGraph:(_Bool)arg1;
-+ (id)getHapticActuators:(_Bool)arg1;
 - (void).cxx_destruct;
 @property(nonatomic) __weak _GCNintendoFusedJoyConDevice *fusionDevice; // @synthesize fusionDevice=_fusionDevice;
 @property(retain, nonatomic) _GCDeviceConfiguration *configuration; // @synthesize configuration=_configuration;
 @property(readonly, nonatomic) id <_GCDeviceDriverConnection> driverConnection; // @synthesize driverConnection=_driverConnection;
-@property(nonatomic) unsigned char inputMode; // @synthesize inputMode=_inputMode;
 @property(readonly, nonatomic) unsigned char type; // @synthesize type=_type;
 @property(readonly) __weak id <_GCDeviceManager> manager; // @synthesize manager=_manager;
 @property(readonly, copy) id <NSObject><NSCopying><NSSecureCoding> identifier; // @synthesize identifier=_identifier;
+- (void)playerIndicatorXPCProxyServerEndpoint:(id)arg1 didReceivePlayerIndexChange:(long long)arg2;
 - (void)activateLogical;
 @property(readonly) NSSet *underlyingDevices;
 - (id)propertyForKey:(id)arg1;
 @property(readonly) NSSet *components;
-- (void)playerIndicatorXPCProxyServerEndpoint:(id)arg1 didReceivePlayerIndexChange:(long long)arg2;
 @property(readonly, nonatomic) CDStruct_f4b747e6 buttonsColor;
 @property(readonly, nonatomic) CDStruct_f4b747e6 bodyColor;
+@property(nonatomic) unsigned char inputMode;
 - (void)setDriverConnection:(id)arg1;
 - (id)init;
-- (id)initWithHIDDevice:(id)arg1 manager:(id)arg2;
+- (id)initWithHIDDevice:(id)arg1 manager:(id)arg2 type:(unsigned char)arg3;
 - (id)makeControllerForClient:(id)arg1;
 - (void)_removeClient:(id)arg1;
 - (void)_addClient:(id)arg1;

@@ -38,12 +38,13 @@ __attribute__((visibility("hidden")))
     _Bool programmableSamplePositionsSupported;
     _Bool depth24Stencil8PixelFormatSupported;
     unsigned long long currentAllocatedSize;
+    MTLArchitecture *architecture;
 }
 
-+ (void)registerDevices;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(readonly) unsigned long long simulatorHostFeatureProfile; // @synthesize simulatorHostFeatureProfile=_hostFeatureProfile;
+@property(readonly) MTLArchitecture *architecture; // @synthesize architecture;
 @property(readonly, getter=isDepth24Stencil8PixelFormatSupported) _Bool depth24Stencil8PixelFormatSupported; // @synthesize depth24Stencil8PixelFormatSupported;
 @property(readonly) unsigned long long currentAllocatedSize; // @synthesize currentAllocatedSize;
 @property(readonly) unsigned long long registryID; // @synthesize registryID=_registryID;
@@ -63,6 +64,8 @@ __attribute__((visibility("hidden")))
 @property(readonly) CDStruct_da2e99ad maxThreadsPerThreadgroup;
 - (id)newSharedEventWithMachPort:(unsigned int)arg1;
 - (id)newSharedEventWithHandle:(id)arg1;
+- (id)newSharedEventWithOptions:(long long)arg1;
+- (id)newEventWithOptions:(long long)arg1;
 - (id)newSharedEvent;
 - (id)newEvent;
 @property(readonly) _Bool deserializerSupportsSharedEvents;
@@ -112,6 +115,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) _Bool deserializerSupportsSharedTextures;
 - (id)newTextureWithDescriptor:(id)arg1 iosurface:(struct __IOSurface *)arg2 plane:(unsigned long long)arg3;
 - (id)newTextureWithDescriptor:(id)arg1;
+- (id)_fixUpSwizzleForTexture:(id)arg1 key:(unsigned int)arg2;
 - (id)newSamplerStateWithDescriptor:(id)arg1;
 - (void)dispatchNotificationWithReference:(unsigned int)arg1;
 - (void)registerEventNotification:(unsigned int)arg1 listener:(id)arg2 event:(id)arg3 value:(unsigned long long)arg4 block:(CDUnknownBlockType)arg5;
@@ -157,12 +161,12 @@ __attribute__((visibility("hidden")))
 @property(readonly) MTLGPUBVHBuilder *GPUBVHBuilder;
 @property(readonly, getter=isRGB10A2GammaSupported) _Bool RGB10A2GammaSupported;
 @property(readonly, getter=isRTZRoundingSupported) _Bool RTZRoundingSupported;
-@property(readonly) MTLArchitecture *architecture;
 @property(readonly) unsigned long long argumentBuffersSupport;
 @property(readonly, getter=areBarycentricCoordsSupported) _Bool barycentricCoordsSupported;
 @property(readonly) unsigned long long bufferRobustnessSupport;
 @property(nonatomic) unsigned long long commandBufferErrorOptions;
 @property(readonly) NSArray *counterSets;
+@property(readonly, nonatomic) long long currentPerformanceState;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly) long long defaultTextureWriteRoundingMode;
 @property(readonly, copy) NSString *description;
@@ -180,6 +184,8 @@ __attribute__((visibility("hidden")))
 @property(readonly) unsigned long long linearTextureAlignmentBytes;
 @property(readonly) unsigned long long linearTextureArrayAlignmentBytes;
 @property(readonly) unsigned long long linearTextureArrayAlignmentSlice;
+@property(readonly) unsigned long long maxAccelerationStructureLevels;
+@property(readonly) unsigned long long maxAccelerationStructureTraversalDepth;
 @property(readonly) unsigned long long maxArgumentBufferSamplerCount;
 @property(readonly) unsigned long long maxColorAttachments;
 @property(readonly) unsigned long long maxComputeAttributes;
@@ -199,7 +205,6 @@ __attribute__((visibility("hidden")))
 @property(readonly) unsigned long long maxFragmentTextures;
 @property(readonly) unsigned long long maxFramebufferStorageBits;
 @property(readonly) unsigned long long maxFunctionConstantIndices;
-@property(readonly) unsigned long long maxIOCommandsInFlight;
 @property(readonly) unsigned long long maxIndirectBuffers;
 @property(readonly) unsigned long long maxIndirectSamplers;
 @property(readonly) unsigned long long maxIndirectSamplersPerDevice;
@@ -243,6 +248,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, getter=isQuadDataSharingSupported) _Bool quadDataSharingSupported;
 @property(readonly, getter=areRasterOrderGroupsSupported) _Bool rasterOrderGroupsSupported;
 @property(readonly) unsigned long long readWriteTextureSupport;
+@property(readonly) _Bool requiresBFloat16Emulation;
 @property(readonly) _Bool requiresRaytracingEmulation;
 @property _Bool shaderDebugInfoCaching;
 @property(readonly) unsigned long long sparseTexturesSupport;
@@ -261,9 +267,11 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool supportsArgumentBuffersTier2;
 @property(readonly, nonatomic) _Bool supportsArrayOfSamplers;
 @property(readonly, nonatomic) _Bool supportsArrayOfTextures;
+@property(readonly, nonatomic) _Bool supportsAtomicUlongVoidMinMax;
 @property(readonly, nonatomic) _Bool supportsBCTextureCompression;
 @property(readonly, nonatomic) _Bool supportsBGR10A2;
 @property(readonly, nonatomic) _Bool supportsBaseVertexInstanceDrawing;
+@property(readonly, nonatomic) _Bool supportsBfloat16Buffers;
 @property(readonly, nonatomic) _Bool supportsBfloat16Format;
 @property(readonly, nonatomic) _Bool supportsBinaryArchives;
 @property(readonly, nonatomic) _Bool supportsBinaryLibraries;
@@ -285,9 +293,11 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool supportsDepthClipMode;
 @property(readonly, nonatomic) _Bool supportsDepthClipModeClampExtended;
 @property(readonly, nonatomic) _Bool supportsDevicePartitioning;
+@property(readonly, nonatomic) _Bool supportsDynamicAttributeStride;
 @property(readonly, nonatomic) _Bool supportsDynamicControlPointCount;
 @property(readonly, nonatomic) _Bool supportsDynamicLibraries;
 @property(readonly, nonatomic) _Bool supportsExplicitVisibilityGroups;
+@property(readonly, nonatomic) _Bool supportsExtendedVertexFormats;
 @property(readonly, nonatomic) _Bool supportsExtendedXR10Formats;
 @property(readonly, nonatomic) _Bool supportsExtendedYUVFormats;
 @property(readonly, nonatomic) _Bool supportsFP32TessFactors;
@@ -347,6 +357,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool supportsNorm16BCubicFiltering;
 @property(readonly, nonatomic) _Bool supportsOpenCLTextureWriteSwizzles;
 @property(readonly, nonatomic) _Bool supportsPacked32TextureBufferWrites;
+@property(readonly, nonatomic) _Bool supportsPerformanceStateAssertion;
 @property(readonly, nonatomic) _Bool supportsPipelineLibraries;
 @property(readonly, nonatomic) _Bool supportsPlacementHeaps;
 @property(readonly, nonatomic) _Bool supportsPostDepthCoverage;
@@ -366,9 +377,14 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool supportsRasterOrderGroupsColorAttachment;
 @property(readonly, nonatomic) _Bool supportsRayTracingAccelerationStructureCPUDeserialization;
 @property(readonly, nonatomic) _Bool supportsRayTracingBuffersFromTables;
+@property(readonly, nonatomic) _Bool supportsRayTracingCurves;
 @property(readonly, nonatomic) _Bool supportsRayTracingExtendedVertexFormats;
+@property(readonly, nonatomic) _Bool supportsRayTracingGPUTableUpdateBuffers;
 @property(readonly, nonatomic) _Bool supportsRayTracingICBs;
+@property(readonly, nonatomic) _Bool supportsRayTracingIndirectInstanceAccelerationStructureBuild;
+@property(readonly, nonatomic) _Bool supportsRayTracingMultiLevelInstancing;
 @property(readonly, nonatomic) _Bool supportsRayTracingPerPrimitiveData;
+@property(readonly, nonatomic) _Bool supportsRayTracingTraversalMetrics;
 @property(readonly) _Bool supportsRaytracing;
 @property(readonly, nonatomic) _Bool supportsRaytracingFromRender;
 @property(readonly, nonatomic) _Bool supportsReadWriteBufferArguments;

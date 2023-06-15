@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MRNowPlayingPlayerResponse, MRUArtwork, MRUEndpointController, MRUNowPlayingInfo, MRUTimeControls, MRUTransportControls, NSString, UIImage;
+@class MRNowPlayingPlayerResponse, MRUArtwork, MRUEndpointController, MRUNowPlayingInfo, MRUTimeControls, MRUTransportControls, NSString;
 @protocol MRUMetadataDataSourceDelegate;
 
 __attribute__((visibility("hidden")))
@@ -21,13 +21,9 @@ __attribute__((visibility("hidden")))
     MRUEndpointController *_endpointController;
     MRNowPlayingPlayerResponse *_response;
     unsigned long long _stateHandle;
-    NSString *_iconURL;
-    UIImage *_appIcon;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) UIImage *appIcon; // @synthesize appIcon=_appIcon;
-@property(retain, nonatomic) NSString *iconURL; // @synthesize iconURL=_iconURL;
 @property(nonatomic) unsigned long long stateHandle; // @synthesize stateHandle=_stateHandle;
 @property(retain, nonatomic) MRNowPlayingPlayerResponse *response; // @synthesize response=_response;
 @property(readonly, nonatomic) MRUEndpointController *endpointController; // @synthesize endpointController=_endpointController;
@@ -38,8 +34,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) MRUArtwork *artwork; // @synthesize artwork=_artwork;
 @property(readonly, copy, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
 - (id)_stateDumpObject;
-- (void)updateAppIconWithResponse:(id)arg1;
-- (void)updateAppIcon;
 - (id)placeholderSymbolName;
 - (id)placeholder;
 - (void)updateNowPlayingInfoWithResponse:(id)arg1;

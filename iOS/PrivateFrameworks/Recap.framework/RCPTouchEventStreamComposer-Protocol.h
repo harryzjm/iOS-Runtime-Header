@@ -6,13 +6,13 @@
 
 #import <Recap/RCPBaseEventStreamComposer-Protocol.h>
 
-@class NSArray;
+@class CAMediaTimingFunction, NSArray;
 
 @protocol RCPTouchEventStreamComposer <RCPBaseEventStreamComposer>
 @property(readonly, nonatomic) double defaultRadius;
 @property(readonly, nonatomic) double defaultPressure;
+@property(retain, nonatomic) CAMediaTimingFunction *touchCurveFunction;
 @property(nonatomic) long long touchFrequency;
-- (void)stylusBarrelDoubleTap;
 - (void)peekAndPop:(struct CGPoint)arg1 commit:(_Bool)arg2 duration:(double)arg3;
 - (void)rotate:(struct CGPoint)arg1 withRadius:(double)arg2 rotation:(double)arg3 duration:(double)arg4 touchCount:(unsigned long long)arg5;
 - (void)pinchOpenWithStartPoint:(struct CGPoint)arg1 endPoint:(struct CGPoint)arg2 duration:(double)arg3;

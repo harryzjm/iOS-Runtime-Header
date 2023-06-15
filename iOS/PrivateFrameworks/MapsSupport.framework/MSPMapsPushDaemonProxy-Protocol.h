@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class GEOCommuteNotificationDetails, MSPLowFuelDetails, NSData, NSString, NSURL, RTVehicleEvent;
+@class GEOCommuteNotificationDetails, GEOMapRegion, MSPLowFuelDetails, NSData, NSString, NSURL, RTVehicleEvent;
 
 @protocol MSPMapsPushDaemonProxy
 - (void)handleMapsApplicationRemoval:(void (^)(NSError *))arg1;
@@ -19,6 +19,8 @@
 - (void)showTrafficIncidentAlertWithID:(NSData *)arg1 withReroute:(_Bool)arg2 title:(NSString *)arg3 description:(NSString *)arg4;
 - (void)clearVenueBulletin;
 - (void)showVenueBulletinWithTitle:(NSString *)arg1 message:(NSString *)arg2 actionURL:(NSURL *)arg3;
+- (void)clearAirportArrivalBulletin;
+- (void)showAirportArrivalBulletinWithTitle:(NSString *)arg1 message:(NSString *)arg2 mapRegion:(GEOMapRegion *)arg3 regionName:(NSString *)arg4;
 - (void)clearMapsSuggestionsBulletin;
 - (void)showMapsSuggestionsBulletinWithTitle:(NSString *)arg1 message:(NSString *)arg2 actionURL:(NSURL *)arg3;
 - (void)clearBulletinWithRecordID:(NSString *)arg1;
@@ -26,6 +28,7 @@
 - (void)resetAnnouncements;
 - (void)clearCurrentAnnouncement;
 - (void)fetchDevicePushToken:(void (^)(NSData *))arg1;
+- (void)simulateRAPStatusChangeNotification;
 - (void)simulateUGCPhotoAttributionClearedNotification;
 - (void)simulateUGCPhotoSubmissionResolution;
 - (void)simulateProblemResolution;

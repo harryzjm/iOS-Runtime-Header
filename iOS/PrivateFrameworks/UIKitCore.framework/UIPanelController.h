@@ -97,6 +97,7 @@ __attribute__((visibility("hidden")))
 - (void)_adjustForKeyboardInfo:(id)arg1;
 - (void)_stopObservingKeyboardNotifications;
 - (void)_observeKeyboardNotificationsOnScreen:(id)arg1;
+- (id)uncachedPossibleStatesForSize:(struct CGSize)arg1;
 @property(readonly, nonatomic) NSArray *uncachedPossibleStates;
 @property(copy, nonatomic) UISlidingBarStateRequest *interactiveStateRequest;
 - (void)animateToRequest:(id)arg1 forceOverlay:(_Bool)arg2 withVelocity:(double)arg3;

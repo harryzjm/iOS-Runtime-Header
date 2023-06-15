@@ -7,6 +7,7 @@
 #import <AVFoundation/AVPlayerItem.h>
 
 @interface AVPlayerItem (PhotosPlayer)
+- (void)is_setAudioTracksEnabled:(_Bool)arg1;
 - (void)is_enableColorMatching;
 @property(readonly, nonatomic, getter=is_isHighFramerate) _Bool is_highFramerate;
 @end

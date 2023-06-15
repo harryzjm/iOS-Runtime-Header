@@ -6,14 +6,21 @@
 
 #import <TelephonyUtilities/NSObject-Protocol.h>
 
-@class NSDictionary, NSString;
+@class NSDictionary, NSSet, NSString, NSUUID;
 @protocol TUMomentsControllerXPCClient;
 
 @protocol TUMomentsControllerXPCServer <NSObject>
+- (oneway void)resetVideoMessagingWithSessionUUID:(NSUUID *)arg1 completionHandler:(void (^)(NSError *))arg2;
+- (oneway void)saveVideoMessageWithUUID:(NSUUID *)arg1 completion:(void (^)(NSError *))arg2;
+- (oneway void)sendVideoMessageWithUUID:(NSUUID *)arg1 callUUID:(NSUUID *)arg2 toHandles:(NSSet *)arg3 completion:(void (^)(NSError *))arg4;
+- (oneway void)discardVideoMessageWithUUID:(NSUUID *)arg1 completion:(void (^)(NSError *))arg2;
+- (oneway void)endRecordingMessageWithUUID:(NSUUID *)arg1 completion:(void (^)(NSError *))arg2;
+- (oneway void)startRecordingMessageWithMediaType:(int)arg1 completion:(void (^)(NSUUID *, NSError *))arg2;
+- (oneway void)prewarmAudioClientWithCompletion:(void (^)(NSError *))arg1;
 - (void)unregisterClient:(id <TUMomentsControllerXPCClient>)arg1;
 - (void)registerClient:(id <TUMomentsControllerXPCClient>)arg1;
 - (oneway void)endRequestWithTransactionID:(NSString *)arg1 reply:(void (^)(NSError *))arg2;
-- (oneway void)startRequestWithMediaType:(int)arg1 forStreamToken:(long long)arg2 requesteeID:(NSString *)arg3 reply:(void (^)(NSString *, NSError *))arg4;
+- (oneway void)startRequestWithMediaType:(int)arg1 forStreamToken:(long long)arg2 requesteeID:(NSString *)arg3 destinationID:(NSString *)arg4 reply:(void (^)(NSString *, NSError *))arg5;
 - (oneway void)unregisterStreamToken:(long long)arg1 reply:(void (^)(NSError *))arg2;
 - (oneway void)registerStreamToken:(long long)arg1 requesterID:(NSString *)arg2 remoteIDSDestinations:(NSDictionary *)arg3 remoteMomentsAvailable:(_Bool)arg4 reply:(void (^)(TUMomentsCapabilities *, NSError *))arg5;
 - (oneway void)registerXPCClientWithReply:(void (^)(void))arg1;

@@ -8,6 +8,7 @@
 @protocol AEPolicyReadOnlyScratchpad><AERemovable, AEPolicyWriteOnlyScratchpad><AEPersistable;
 
 @protocol AEPolicyStore
+@property(readonly, nonatomic) _Bool hasPersistentData;
 - (_Bool)removeAllScratchpadsWithError:(id *)arg1;
 - (id <AEPolicyReadOnlyScratchpad><AERemovable>)readOnlyScratchpadForIdentifier:(NSString *)arg1;
 - (id <AEPolicyWriteOnlyScratchpad><AEPersistable>)writeOnlyScratchpadForIdentifier:(NSString *)arg1;

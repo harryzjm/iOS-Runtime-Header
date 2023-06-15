@@ -10,7 +10,7 @@
 
 @protocol AFUIViewControllerHosting <NSObject>
 - (void)openURL:(NSURL *)arg1 bundleId:(NSString *)arg2 inPlace:(_Bool)arg3 completion:(void (^)(_Bool))arg4;
-- (void)serviceViewControllerRequestsDismissalWithDismissalReason:(unsigned long long)arg1 completion:(void (^)(_Bool))arg2;
+- (void)serviceViewControllerRequestsDismissalWithDismissalReason:(long long)arg1 completion:(void (^)(_Bool))arg2;
 - (void)serviceViewControllerRequestsPresentation:(void (^)(_Bool))arg1;
 - (void)serviceDidRequestCurrentTextInput:(void (^)(NSString *))arg1;
 - (void)serviceCancelHIDEventDefferal;
@@ -52,14 +52,16 @@
 - (void)serviceStartRequestWithOptions:(SASRequestOptions *)arg1;
 - (void)serviceBulletinWithIdentifier:(NSString *)arg1 replyHandler:(void (^)(AFBulletin *))arg2;
 - (void)serviceStartGuidedAccess;
-- (void)serviceRequestsDismissalWithUserInfo:(NSDictionary *)arg1 withReason:(unsigned long long)arg2;
+- (void)serviceRequestsDismissalWithUserInfo:(NSDictionary *)arg1 withReason:(long long)arg2;
 - (void)serviceRequestsActivationSourceWithReplyHandler:(void (^)(long long))arg1;
 
 @optional
 - (void)presentationDidPresentKeyboard;
 - (void)invalidateSystemApertureAssertion;
 - (void)requestSystemApertureCollapse;
+- (void)reduceOrbOpacity:(_Bool)arg1;
 - (void)requestHostBlurVisible:(_Bool)arg1 reason:(long long)arg2 fence:(BKSAnimationFenceHandle *)arg3;
+- (void)setShouldPassTouchesThroughToSpringBoard:(_Bool)arg1;
 - (void)setShouldDismissForSwipesOutsideContent:(_Bool)arg1;
 - (void)setShouldDismissForTapsOutsideContent:(_Bool)arg1;
 - (void)setShouldDismissForTapOutsideContent:(_Bool)arg1;

@@ -6,13 +6,12 @@
 
 #import <DataDeliveryServices/NSObject-Protocol.h>
 
-@class NSSet, NSString;
+@class NSString;
 @protocol DDSAssetObservingDelegate;
 
 @protocol DDSAssetObserving <NSObject>
+@property __weak id <DDSAssetObservingDelegate> delegate;
 - (void)notifyObserversAssetsUpdatedForType:(NSString *)arg1;
-- (void)observeAssetTypes:(NSSet *)arg1;
-- (id <DDSAssetObservingDelegate>)delegate;
-- (void)setDelegate:(id <DDSAssetObservingDelegate>)arg1;
+- (void)observeAssetType:(NSString *)arg1;
 @end
 

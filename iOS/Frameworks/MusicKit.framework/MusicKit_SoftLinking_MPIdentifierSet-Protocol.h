@@ -7,13 +7,16 @@
 #import <MusicKit/NSObject-Protocol.h>
 
 @class MusicKit_SoftLinking_CatalogID, MusicKit_SoftLinking_DeviceLocalID, NSString;
+@protocol MusicKit_SoftLinking_MPIdentifierSet;
 
 @protocol MusicKit_SoftLinking_MPIdentifierSet <NSObject>
 @property(readonly, nonatomic) _Bool musicKit_hasValidIdentifier;
+@property(readonly, copy, nonatomic) NSString *musicKit_playbackID;
 @property(readonly, copy, nonatomic) MusicKit_SoftLinking_DeviceLocalID *musicKit_deviceLocalID;
 @property(readonly, copy, nonatomic) NSString *musicKit_purchasedAdamID;
 @property(readonly, copy, nonatomic) NSString *musicKit_libraryID;
 @property(readonly, copy, nonatomic) NSString *musicKit_cloudID;
 @property(readonly, copy, nonatomic) MusicKit_SoftLinking_CatalogID *musicKit_catalogID;
+- (_Bool)intersectsSet:(id <MusicKit_SoftLinking_MPIdentifierSet>)arg1;
 @end
 

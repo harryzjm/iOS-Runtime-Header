@@ -9,19 +9,21 @@
 __attribute__((visibility("hidden")))
 @interface _SFSettingsAlertButton
 {
-    NSString *_text;
-    NSAttributedString *_attributedText;
     NSArray *_contentConstraints;
     NSArray *_componentsArrangement;
     UILabel *_detailTextLabel;
     UILayoutGuide *_textGuide;
     UIView *_dotView;
+    _Bool _selected;
     _Bool _enabled;
     _Bool _limitToSingleLine;
     _Bool _showsIndicatorDot;
+    NSString *_text;
+    NSAttributedString *_attributedText;
     NSString *_detailText;
-    NSString *_textStyle;
+    NSAttributedString *_attributedDetailText;
     UIImage *_image;
+    NSString *_textStyle;
     UIImageView *_imageView;
     UIView *_accessoryView;
     UIImageView *_statusImageView;
@@ -35,26 +37,34 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIImageView *statusImageView; // @synthesize statusImageView=_statusImageView;
 @property(retain, nonatomic) UIView *accessoryView; // @synthesize accessoryView=_accessoryView;
 @property(readonly, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
-@property(retain, nonatomic) UIImage *image; // @synthesize image=_image;
 @property(copy, nonatomic) NSString *textStyle; // @synthesize textStyle=_textStyle;
-@property(copy, nonatomic) NSString *detailText; // @synthesize detailText=_detailText;
 @property(nonatomic, getter=isEnabled) _Bool enabled; // @synthesize enabled=_enabled;
+- (_Bool)isSelected;
+- (id)image;
+- (id)detailText;
 - (void)pressesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (_Bool)canBecomeFocused;
 - (void)traitCollectionDidChange:(id)arg1;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)_updateTintColor;
+- (void)setSelected:(_Bool)arg1;
 - (void)endTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (void)_hover:(id)arg1;
 - (id)_arrangedSubviews;
 - (void)updateConstraints;
 @property(readonly, nonatomic) UIView *trailingView;
 @property(copy, nonatomic) NSArray *componentsArrangement;
-@property(copy, nonatomic) NSAttributedString *attributedText;
+- (void)setImage:(id)arg1;
+- (id)attributedDetailText;
+- (void)setAttributedDetailText:(id)arg1;
+@property(copy, nonatomic) NSAttributedString *attributedText; // @synthesize attributedText=_attributedText;
 - (void)_didChangeContents;
 - (void)layoutSubviews;
-@property(copy, nonatomic) NSString *text;
+- (void)_updateHasDetailText;
+- (void)setDetailText:(id)arg1;
+- (id)text;
+- (void)setText:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 // Remaining properties

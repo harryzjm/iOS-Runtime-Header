@@ -11,8 +11,8 @@
 __attribute__((visibility("hidden")))
 @interface _TtC7NewsUI219NotificationService : NSObject
 {
-    MISSING_TYPE *options;
-    MISSING_TYPE *sceneProvider;
+    MISSING_TYPE *warmingSheetPresenter;
+    MISSING_TYPE *authorizationOptions;
     MISSING_TYPE *networkReachability;
     MISSING_TYPE *metricsProvider;
 }

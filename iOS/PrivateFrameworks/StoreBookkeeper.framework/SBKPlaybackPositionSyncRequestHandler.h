@@ -14,17 +14,18 @@ __attribute__((visibility("hidden")))
 {
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_queue> *_syncOperationQueue;
+    struct os_unfair_lock_s _lock;
+    id <SBKUniversalPlaybackPositionTransactionContext> _dataSourceTransactionContext;
+    SBKSyncTransaction *_currentKVSTransaction;
+    NSDictionary *_metadataItemsToCommitToDataSource;
+    NSDictionary *_metadataItemsToCommitToKVSStorage;
+    NSMutableDictionary *_metadataItemsFromDataSource;
+    NSMutableDictionary *_responseMetadataItemsToCommitToDataSource;
+    NSMutableDictionary *_responseMetadataItemsMergedToCommitBackToKVSStorage;
     _Bool _syncInProgress;
     _Bool _canceled;
     id <SBKUniversalPlaybackPositionDataSource> _dataSource;
     SBKTransactionController *_kvsController;
-    id <SBKUniversalPlaybackPositionTransactionContext> _dataSourceTransactionContext;
-    NSMutableDictionary *_metadataItemsFromDataSource;
-    NSDictionary *_metadataItemsToCommitToDataSource;
-    NSDictionary *_metadataItemsToCommitToKVSStorage;
-    NSMutableDictionary *_responseMetadataItemsToCommitToDataSource;
-    NSMutableDictionary *_responseMetadataItemsMergedToCommitBackToKVSStorage;
-    SBKSyncTransaction *_currentKVSTransaction;
     NSError *_fatalSyncError;
     NSString *_overrideSyncAnchor;
 }
@@ -34,13 +35,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSError *fatalSyncError; // @synthesize fatalSyncError=_fatalSyncError;
 @property(nonatomic) _Bool canceled; // @synthesize canceled=_canceled;
 @property(nonatomic) _Bool syncInProgress; // @synthesize syncInProgress=_syncInProgress;
-@property(retain, nonatomic) SBKSyncTransaction *currentKVSTransaction; // @synthesize currentKVSTransaction=_currentKVSTransaction;
-@property(retain, nonatomic) NSMutableDictionary *responseMetadataItemsMergedToCommitBackToKVSStorage; // @synthesize responseMetadataItemsMergedToCommitBackToKVSStorage=_responseMetadataItemsMergedToCommitBackToKVSStorage;
-@property(retain, nonatomic) NSMutableDictionary *responseMetadataItemsToCommitToDataSource; // @synthesize responseMetadataItemsToCommitToDataSource=_responseMetadataItemsToCommitToDataSource;
-@property(retain, nonatomic) NSDictionary *metadataItemsToCommitToKVSStorage; // @synthesize metadataItemsToCommitToKVSStorage=_metadataItemsToCommitToKVSStorage;
-@property(retain, nonatomic) NSDictionary *metadataItemsToCommitToDataSource; // @synthesize metadataItemsToCommitToDataSource=_metadataItemsToCommitToDataSource;
-@property(retain, nonatomic) NSMutableDictionary *metadataItemsFromDataSource; // @synthesize metadataItemsFromDataSource=_metadataItemsFromDataSource;
-@property(retain, nonatomic) id <SBKUniversalPlaybackPositionTransactionContext> dataSourceTransactionContext; // @synthesize dataSourceTransactionContext=_dataSourceTransactionContext;
 @property(retain, nonatomic) SBKTransactionController *kvsController; // @synthesize kvsController=_kvsController;
 @property(retain, nonatomic) id <SBKUniversalPlaybackPositionDataSource> dataSource; // @synthesize dataSource=_dataSource;
 - (id)transaction:(id)arg1 conflictDetectionOrdinalForKey:(id)arg2;
@@ -69,6 +63,14 @@ __attribute__((visibility("hidden")))
 - (void)clearTransactionResponseData;
 - (id)initWithDataSource:(id)arg1 bagContext:(id)arg2 accountIdentifier:(id)arg3;
 - (id)initWithDataSource:(id)arg1 bagContext:(id)arg2;
+- (void)setMetadataItemsToCommitToKVSStorage:(id)arg1;
+- (id)metadataItemsToCommitToKVSStorage;
+- (void)setMetadataItemsToCommitToDataSource:(id)arg1;
+- (id)metadataItemsToCommitToDataSource;
+- (void)setCurrentKVSTransaction:(id)arg1;
+- (id)currentKVSTransaction;
+- (void)setDataSourceTransactionContext:(id)arg1;
+- (id)dataSourceTransactionContext;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

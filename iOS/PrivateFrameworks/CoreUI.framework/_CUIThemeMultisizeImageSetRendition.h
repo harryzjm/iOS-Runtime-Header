@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
 
 - (void)dealloc;
 - (id)sizeIndexes;
-- (id)_initWithCSIHeader:(const struct _csiheader *)arg1;
+- (id)_initWithCSIHeader:(const struct _csiheader *)arg1 version:(unsigned int)arg2;
 
 @end
 

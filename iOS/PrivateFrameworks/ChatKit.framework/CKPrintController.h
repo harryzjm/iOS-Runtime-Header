@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (void)printResolvedColors:(id *)arg1 balloonDescriptor:(struct CKBalloonDescriptor_t *)arg2 coloredBalloonView:(id)arg3;
++ (void)printBalloonDescriptor:(struct CKBalloonDescriptor_t *)arg1;
 + (id)printAttributes:(id)arg1;
 + (id)printBalloonTextColor;
 + (id)printTranscriptTextColor;

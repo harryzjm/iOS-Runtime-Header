@@ -17,5 +17,6 @@
 
 @optional
 @property(readonly, nonatomic) _Bool managesTestStartAndEnd;
+- (void)waitForPostEventStreamDelayWithHandler:(void (^)(void))arg1;
 @end
 

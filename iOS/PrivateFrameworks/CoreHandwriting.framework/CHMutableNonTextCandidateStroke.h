@@ -13,13 +13,14 @@
 }
 
 - (id)description;
-- (_Bool)_adjustSupportForContainerClassificationByAddingStroke:(id)arg1 consistingOfSubstrokes:(id)arg2;
-- (_Bool)_adjustSupportForLineClassificationByAddingStroke:(id)arg1 consistingOfSubstrokes:(id)arg2;
-- (_Bool)adjustSupportByAddingStroke:(id)arg1 consistingOfSubstrokes:(id)arg2;
+- (double)_adjustSupportForContainerClassificationByAddingStroke:(id)arg1 consistingOfSubstrokes:(id)arg2;
+- (double)_adjustSupportForLineClassificationByAddingStroke:(id)arg1 consistingOfSubstrokes:(id)arg2;
+- (_Bool)adjustSupportByAddingStroke:(id)arg1 consistingOfSubstrokes:(id)arg2 strokeClassification:(long long)arg3;
 - (_Bool)adjustSupportByRemovingStrokeIdentifier:(id)arg1;
 - (_Bool)_removeSupportForStrokeIdentifier:(id)arg1;
 - (void)_setSupportForStrokeIdentifier:(id)arg1 support:(double)arg2;
 @property(retain, nonatomic) NSDictionary *supportByStrokeIdentifier; // @dynamic supportByStrokeIdentifier;
+@property(nonatomic) long long fallbackClassification; // @dynamic fallbackClassification;
 
 @end
 

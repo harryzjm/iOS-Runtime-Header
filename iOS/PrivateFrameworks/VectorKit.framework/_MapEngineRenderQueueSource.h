@@ -16,7 +16,6 @@ __attribute__((visibility("hidden")))
 
 - (void *)renderQueueForTimestamp:(double)arg1;
 - (_Bool)isDelayedRenderQueueConsumptionSupported;
-- (void)_forceUpdateSettings;
 - (id)initWithEngine:(void *)arg1;
 
 // Remaining properties

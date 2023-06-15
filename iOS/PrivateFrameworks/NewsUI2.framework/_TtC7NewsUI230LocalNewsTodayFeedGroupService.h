@@ -11,6 +11,7 @@
 @interface _TtC7NewsUI230LocalNewsTodayFeedGroupService : _TtCs12_SwiftObject
 {
     MISSING_TYPE *sectionHeadlinesService;
+    MISSING_TYPE *promotedHeadlineService;
     MISSING_TYPE *personalizer;
     MISSING_TYPE *channelHeroService;
     MISSING_TYPE *weatherService;

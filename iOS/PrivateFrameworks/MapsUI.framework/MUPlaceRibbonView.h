@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
-@class MUHairlineView, MURatingsCallToActionViewModel, MUScrollableStackView, NSArray, NSMutableArray, NSString;
+@class MUHairlineView, MURatingsCallToActionViewModel, MUScrollableStackView, NSArray, NSString;
 @protocol MUPlaceRibbonViewDelegate, MUScrollAnalyticActionObserving;
 
 __attribute__((visibility("hidden")))
@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
 {
     MUScrollableStackView *_contentStackView;
     MURatingsCallToActionViewModel *_callToActionViewModel;
-    NSMutableArray *_focusItems;
     struct CGPoint _beginAnalyticsScrollingPoint;
     MUHairlineView *_topHairline;
     MUHairlineView *_bottomHairline;
@@ -31,7 +30,6 @@ __attribute__((visibility("hidden")))
 - (void)scrollViewWillBeginDragging:(id)arg1;
 - (void)reloadVisibility;
 - (id)_visibleRibbonItemViews;
-@property(readonly, nonatomic) NSArray *focusItems;
 @property(readonly, nonatomic) _Bool hasContent;
 - (void)_updateAppearance;
 @property(readonly, nonatomic) _Bool showTopAndBottomSeparators;

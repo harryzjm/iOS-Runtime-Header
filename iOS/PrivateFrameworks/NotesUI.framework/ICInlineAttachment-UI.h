@@ -11,15 +11,12 @@
 @interface ICInlineAttachment (UI)
 + (_Bool)canInsertInlineAttachmentType:(short)arg1 intoNote:(id)arg2 parentAttachment:(id)arg3;
 + (id)createInlineAttachmentIfApplicableWithTypeUTI:(id)arg1 altText:(id)arg2 tokenContentIdentifier:(id)arg3 note:(id)arg4 parentAttachment:(id)arg5;
++ (id)newLinkAttachmentToNote:(id)arg1 fromNote:(id)arg2 parentAttachment:(id)arg3;
 + (id)createMentionAttachmentIfApplicableWithMentionText:(id)arg1 userRecordName:(id)arg2 note:(id)arg3 parentAttachment:(id)arg4;
 + (id)createHashtagAttachmentIfApplicableWithHashtagText:(id)arg1 forHashtag:(id)arg2 note:(id)arg3 parentAttachment:(id)arg4;
 + (id)createHashtagAttachmentIfApplicableWithHashtagText:(id)arg1 creatingHashtagIfNecessary:(_Bool)arg2 note:(id)arg3 parentAttachment:(id)arg4;
-+ (void)showOneTimeCompatibilityAlertForDevices:(id)arg1 hasNonUpgradableDevice:(_Bool)arg2 accountIdentifier:(id)arg3 parentViewController:(id)arg4 withCompletion:(CDUnknownBlockType)arg5;
-+ (id)incompatibilityAlertMessageForDevices:(id)arg1 hasNonUpgradableDevice:(_Bool)arg2;
-+ (id)incompatibilityAlertTitle;
-+ (void)checkForIncompatibleDevicesForAttachment:(id)arg1 completion:(CDUnknownBlockType)arg2;
-+ (id)prefKeyForKey:(id)arg1 accountIdentifier:(id)arg2;
-+ (id)compatibilityCheckQueue;
++ (void)showCompatibilityAlertWithDeviceMessage:(id)arg1 parentViewController:(id)arg2 completion:(CDUnknownBlockType)arg3;
++ (void)showCompatibilityAlertForAccountIfNeeded:(id)arg1 parentViewController:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_announceAttachmentChangeWithString:(id)arg1;
 - (_Bool)_checkIsVoiceOverRunning;
 - (void)accessibilityAnnounceDeletionWithVoiceOver;

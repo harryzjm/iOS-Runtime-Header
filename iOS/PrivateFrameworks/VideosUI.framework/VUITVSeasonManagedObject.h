@@ -13,14 +13,13 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)fetchRequest;
 
 // Remaining properties
+@property(copy, nonatomic) NSString *adamID; // @dynamic adamID;
 @property(copy, nonatomic) NSString *canonicalID; // @dynamic canonicalID;
 @property(retain, nonatomic) NSSet *episodes; // @dynamic episodes;
 @property(copy, nonatomic) NSNumber *seasonNumber; // @dynamic seasonNumber;
 @property(retain, nonatomic) VUITVSeriesManagedObject *series; // @dynamic series;
 @property(copy, nonatomic) NSString *title; // @dynamic title;
-
 @end
 

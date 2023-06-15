@@ -20,6 +20,10 @@
 - (KGDirectedBinaryAdjacency *)adjacencyWithStartNodeIdentifiers:(KGElementIdentifierSet *)arg1 edgeFilter:(MAEdgeFilter *)arg2 edgeType:(unsigned long long)arg3;
 - (KGDirectedBinaryAdjacency *)sourcesByTargetWithEdgeIdentifiers:(KGElementIdentifierSet *)arg1;
 - (KGDirectedBinaryAdjacency *)targetsBySourceWithEdgeIdentifiers:(KGElementIdentifierSet *)arg1;
+- (void)enumerateNodeIdentifiers:(KGElementIdentifierSet *)arg1 sortedByUnsignedIntegerPropertyForName:(NSString *)arg2 ascending:(_Bool)arg3 usingBlock:(void (^)(unsigned long long, _Bool *))arg4;
+- (void)enumerateNodeIdentifiers:(KGElementIdentifierSet *)arg1 sortedByDoublePropertyForName:(NSString *)arg2 ascending:(_Bool)arg3 usingBlock:(void (^)(unsigned long long, _Bool *))arg4;
+- (void)enumerateNodeIdentifiers:(KGElementIdentifierSet *)arg1 sortedByIntegerPropertyForName:(NSString *)arg2 ascending:(_Bool)arg3 usingBlock:(void (^)(unsigned long long, _Bool *))arg4;
+- (void)enumerateNodeIdentifiers:(KGElementIdentifierSet *)arg1 sortedByStringPropertyForName:(NSString *)arg2 ascending:(_Bool)arg3 usingBlock:(void (^)(unsigned long long, _Bool *))arg4;
 - (void)enumerateUnsignedIntegerPropertyValuesForKey:(NSString *)arg1 ofEdgesWithIdentifiers:(KGElementIdentifierSet *)arg2 usingBlock:(void (^)(unsigned long long, unsigned long long, _Bool *))arg3;
 - (void)enumerateDoublePropertyValuesForKey:(NSString *)arg1 ofEdgesWithIdentifiers:(KGElementIdentifierSet *)arg2 usingBlock:(void (^)(unsigned long long, double, _Bool *))arg3;
 - (void)enumerateStringPropertyValuesForKey:(NSString *)arg1 ofEdgesWithIdentifiers:(KGElementIdentifierSet *)arg2 usingBlock:(void (^)(unsigned long long, NSString *, _Bool *))arg3;

@@ -26,14 +26,17 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *toolbarState;
     MISSING_TYPE *keyboardInputMonitor;
     MISSING_TYPE *lastContentOffset;
-    MISSING_TYPE *focusGuide;
     MISSING_TYPE *appConfigurationManager;
     MISSING_TYPE *quoteAttributionProvider;
     MISSING_TYPE *featureAvailability;
+    MISSING_TYPE *editWatchlistMenuProvider;
+    MISSING_TYPE *contentSizeCategoryObserver;
+    MISSING_TYPE *applicationStateObserver;
 }
 
 - (void).cxx_destruct;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (void)dealloc;
 - (id)contentScrollView;
 - (id)initWithCoder:(id)arg1;
 

@@ -14,18 +14,26 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_results;
     NSMutableDictionary *_existingScenes;
     NSMutableDictionary *_internalFrameScenes;
+    NSMutableDictionary *_thresholdBySceneID;
+    NSMutableArray *_objectsOfInterest;
     NSArray *_sceneResults;
+    NSArray *_qualityResults;
 }
 
 - (void).cxx_destruct;
+@property(retain) NSArray *qualityResults; // @synthesize qualityResults=_qualityResults;
 @property(retain) NSArray *sceneResults; // @synthesize sceneResults=_sceneResults;
 @property(readonly) NSDictionary *frameScenes;
 - (id)results;
 - (int)finishAnalysisPass:(CDStruct_e83c9415)arg1;
+- (void)findObjectsOfInterest:(id)arg1;
+- (id)filteredKeyFrameResults;
 - (void)addAggregatedScenes:(id)arg1 timerange:(CDStruct_e83c9415)arg2;
+- (id)sortScenesWithMaxNumCap:(id)arg1;
 - (int)analyzeFrame:(struct __CVBuffer *)arg1 withTimestamp:(CDStruct_1b6d18a9)arg2 andDuration:(CDStruct_1b6d18a9)arg3 flags:(unsigned long long *)arg4;
 - (void)addResult:(id)arg1 start:(CDStruct_1b6d18a9)arg2 duration:(CDStruct_1b6d18a9)arg3 keyIsName:(_Bool)arg4;
 - (_Bool)compareObjectsOfInterest:(id)arg1 withScenes:(id)arg2;
+- (float)adjustedConfidence:(id)arg1 confidence:(float)arg2;
 - (void)dealloc;
 - (id)init;
 

@@ -18,6 +18,7 @@
 - (void *)identifier;
 - (_Bool)dumpState:(void *)arg1 withSize:(unsigned long long)arg2 hints:(struct os_state_hints_s *)arg3;
 - (void)updateState:(CDUnknownBlockType)arg1;
+@property(nonatomic) _Bool trackRunInfoEnabled;
 @property(nonatomic) _Bool isAuthorizedForWidgetUpdates;
 @property(nonatomic) _Bool courtesyPromptNeeded;
 @property(nonatomic) _Bool fusionInfoEnabled;

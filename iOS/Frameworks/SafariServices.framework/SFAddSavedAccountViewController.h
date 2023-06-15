@@ -6,7 +6,7 @@
 
 #import <UIKit/UITableViewController.h>
 
-@class NSString, SFEditableTableViewCell, UIBarButtonItem;
+@class NSString, SFAccountDetailHeaderViewCell, SFAccountNoteTableViewCell, SFEditableTableViewCell, UIBarButtonItem;
 @protocol SFAddSavedAccountViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -14,21 +14,38 @@ __attribute__((visibility("hidden")))
 {
     UIBarButtonItem *_cancelBarButtonItem;
     UIBarButtonItem *_doneBarButtonItem;
+    SFAccountDetailHeaderViewCell *_titleCell;
     SFEditableTableViewCell *_websiteCell;
     SFEditableTableViewCell *_userCell;
     SFEditableTableViewCell *_passwordCell;
+    SFAccountNoteTableViewCell *_notesCell;
+    NSString *_titleForEditing;
+    NSString *_notesForEditing;
     NSString *_suggestedDomain;
+    NSString *_password;
+    NSString *_groupID;
+    _Bool _didPreFillAndFocusFields;
+    _Bool _shouldPreFillStrongPassword;
     id <SFAddSavedAccountViewControllerDelegate> _delegate;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <SFAddSavedAccountViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void)presentationControllerDidDismiss:(id)arg1;
+@property(nonatomic) _Bool shouldPreFillStrongPassword; // @synthesize shouldPreFillStrongPassword=_shouldPreFillStrongPassword;
+- (void)updatedIconIsAvailableForDomain:(id)arg1;
+- (void)returnKeyActivatedInAccountDetailHeaderViewCell:(id)arg1;
+- (void)accountDetailHeaderViewCell:(id)arg1 titleTextFieldDidChange:(id)arg2;
+- (_Bool)tableView:(id)arg1 shouldIndentWhileEditingRowAtIndexPath:(id)arg2;
+- (long long)tableView:(id)arg1 editingStyleForRowAtIndexPath:(id)arg2;
 - (_Bool)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
+- (void)_updateIconForCell:(id)arg1;
+- (void)_updateIcon;
+- (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
+- (long long)numberOfSectionsInTableView:(id)arg1;
 - (_Bool)textFieldShouldReturn:(id)arg1;
-- (void)_handleCancel;
+- (void)_updateHeaderViewCell;
 - (void)_savePasswordAndDismiss;
 - (void)_updateTextInputSuggestionsForPasswordField;
 - (void)_updateTextInputSuggestionsForUserNameField;
@@ -37,10 +54,13 @@ __attribute__((visibility("hidden")))
 - (void)_textFieldChanged:(id)arg1;
 - (void)_doneBarButtonItemTapped:(id)arg1;
 - (void)_cancelBarButtonItemTapped:(id)arg1;
+- (void)_preFillStrongPasswordIfRequested;
 - (void)viewDidAppear:(_Bool)arg1;
+- (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
+- (id)initWithSuggestedDomain:(id)arg1 password:(id)arg2;
 - (id)initWithSuggestedDomain:(id)arg1;
-- (id)init;
+- (id)initWithGroupID:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

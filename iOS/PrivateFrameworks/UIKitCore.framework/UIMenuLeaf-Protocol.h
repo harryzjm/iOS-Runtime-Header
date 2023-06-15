@@ -15,6 +15,7 @@
 @property(nonatomic) long long state;
 @property(nonatomic) unsigned long long attributes;
 @property(copy, nonatomic) NSString *discoverabilityTitle;
+@property(copy, nonatomic) UIImage *selectedImage;
 @property(copy, nonatomic) UIImage *image;
 @property(copy, nonatomic) NSString *title;
 - (void)performWithSender:(id)arg1 target:(id)arg2;

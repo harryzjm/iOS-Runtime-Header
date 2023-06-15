@@ -11,10 +11,11 @@
 @interface _TtC7NewsUI229FilterableNotificationHandler : _TtCs12_SwiftObject
 {
     MISSING_TYPE *notificationService;
+    MISSING_TYPE *aggregateStoreProvider;
     MISSING_TYPE *assetManager;
     MISSING_TYPE *appConfigManager;
     MISSING_TYPE *tagController;
-    MISSING_TYPE *personalizer;
+    MISSING_TYPE *feedPersonalizer;
     MISSING_TYPE *reporter;
     MISSING_TYPE *sharedDefaults;
 }

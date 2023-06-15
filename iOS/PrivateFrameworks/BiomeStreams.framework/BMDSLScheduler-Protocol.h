@@ -4,10 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <BiomeStreams/BPSCancellable-Protocol.h>
+
 @class BMDSL;
 @protocol BPSSubscriber;
 
-@protocol BMDSLScheduler
+@protocol BMDSLScheduler <BPSCancellable>
+- (void)subscribeWithDSLGraph:(BMDSL *)arg1 publisherBlock:(void (^)(BPSPublisher *))arg2;
 - (void)subscribeWithDSLGraph:(BMDSL *)arg1 forSubscriber:(id <BPSSubscriber>)arg2;
 @end
 

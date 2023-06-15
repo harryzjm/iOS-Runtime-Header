@@ -13,7 +13,9 @@
     MISSING_TYPE *config;
     MISSING_TYPE *knobs;
     MISSING_TYPE *formatService;
-    MISSING_TYPE *readingHistory;
+    MISSING_TYPE *cloudContext;
+    MISSING_TYPE *headlineService;
+    MISSING_TYPE *sharedItemManager;
     MISSING_TYPE *name;
 }
 

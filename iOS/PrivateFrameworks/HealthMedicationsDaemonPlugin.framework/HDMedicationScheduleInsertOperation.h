@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
     NSArray *_schedules;
     long long _syncProvenance;
+    long long _syncIdentity;
 }
 
 + (_Bool)supportsSecureCoding;
@@ -20,7 +21,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (_Bool)performWithProfile:(id)arg1 transaction:(id)arg2 error:(id *)arg3;
-- (id)initWithMedicationSchedules:(id)arg1 syncProvenance:(long long)arg2;
+- (id)initWithMedicationSchedules:(id)arg1 syncProvenance:(long long)arg2 syncIdentity:(long long)arg3;
 
 @end
 

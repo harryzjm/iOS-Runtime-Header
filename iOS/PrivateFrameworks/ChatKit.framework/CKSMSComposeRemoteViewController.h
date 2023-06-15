@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/_UIRemoteViewController.h>
+#import <UIKitCore/_UIRemoteViewController.h>
 
 @class NSString;
 @protocol CKSMSComposeRemoteViewControllerDelegate;
@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)_canShowWhileLocked;
 - (void)smsComposeControllerEntryViewContentInserted;
 - (void)smsComposeControllerCancelled;
-- (void)smsComposeControllerSendStartedWithText:(id)arg1;
+- (void)smsComposeControllerSendStartedWithText:(id)arg1 messageGUID:(id)arg2;
 - (void)smsComposeControllerShouldSendMessageWithText:(id)arg1 toRecipients:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)smsComposeControllerAppeared;
 - (void)smsComposeControllerDataInserted;

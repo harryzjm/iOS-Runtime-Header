@@ -13,11 +13,13 @@
 - (void)volumeControllerDataSource:(id <MPVolumeControllerDataSource>)arg1 didChangeVolumeCapabilities:(unsigned int)arg2;
 - (void)volumeControllerDataSource:(id <MPVolumeControllerDataSource>)arg1 didChangeVolumeControlAvailability:(_Bool)arg2;
 - (void)volumeControllerDataSource:(id <MPVolumeControllerDataSource>)arg1 didChangeVolumeAudioCategory:(NSString *)arg2;
+- (void)volumeControllerDataSource:(id <MPVolumeControllerDataSource>)arg1 didChangeMuted:(_Bool)arg2;
+- (void)volumeControllerDataSource:(id <MPVolumeControllerDataSource>)arg1 didChangeVolume:(float)arg2;
+
+@optional
 - (void)volumeControllerDataSource:(id <MPVolumeControllerDataSource>)arg1 didChangeEUVolumeLimitEnforced:(_Bool)arg2;
 - (void)volumeControllerDataSource:(id <MPVolumeControllerDataSource>)arg1 didChangeEUVolumeLimit:(float)arg2;
 - (void)volumeControllerDataSource:(id <MPVolumeControllerDataSource>)arg1 didChangeVolumeLabel:(NSString *)arg2;
 - (void)volumeControllerDataSource:(id <MPVolumeControllerDataSource>)arg1 didChangeVolumeWarning:(long long)arg2;
-- (void)volumeControllerDataSource:(id <MPVolumeControllerDataSource>)arg1 didChangeMuted:(_Bool)arg2;
-- (void)volumeControllerDataSource:(id <MPVolumeControllerDataSource>)arg1 didChangeVolume:(float)arg2;
 @end
 

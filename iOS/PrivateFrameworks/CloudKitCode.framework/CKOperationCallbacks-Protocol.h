@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CKAssetDownloadStagingInfo, CKFileOpenInfo, CKOperationGroupSystemImposedInfo, CKOperationMetrics, CKRequestInfo, NSError, NSString;
+@class CKAssetDownloadStagingInfo, CKFileOpenInfo, CKOperationGroupSystemImposedInfo, CKOperationMetrics, CKRequestInfo, CKTestRequestProperties, NSError, NSString;
 
 @protocol CKOperationCallbacks
+- (void)handleDaemonRequestWillReceiveWithClassName:(NSString *)arg1 testRequestProperties:(CKTestRequestProperties *)arg2 replyBlock:(void (^)(CKDURLRequestLifecycleAction *, NSError *))arg3;
+- (void)handleDaemonRequestWillSendWithClassName:(NSString *)arg1 testRequestProperties:(CKTestRequestProperties *)arg2 replyBlock:(void (^)(CKDURLRequestLifecycleAction *, NSError *))arg3;
 - (void)handleDaemonOperationWillStartWithClassName:(NSString *)arg1 isTopLevelDaemonOperation:(_Bool)arg2 replyBlock:(void (^)(CKOperationLifecycleAction *, NSError *))arg3;
 - (void)handleDiscretionaryOperationShouldSuspend;
 - (void)handleDiscretionaryOperationShouldStart:(_Bool)arg1 nonDiscretionary:(_Bool)arg2 error:(NSError *)arg3;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIVisualEffectView.h>
+#import <UIKitCore/UIVisualEffectView.h>
 
 @interface UIVisualEffectView (Bridge)
 - (void)ts_setGroupName:(id)arg1;

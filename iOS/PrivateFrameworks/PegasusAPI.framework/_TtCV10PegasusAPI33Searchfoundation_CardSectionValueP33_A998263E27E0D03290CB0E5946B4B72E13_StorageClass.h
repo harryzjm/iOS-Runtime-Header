@@ -68,6 +68,26 @@
     MISSING_TYPE *_strokeAnimationCardSection;
     MISSING_TYPE *_buttonListCardSection;
     MISSING_TYPE *_commandRowCardSection;
+    MISSING_TYPE *_leadingTrailingCardSection;
+    MISSING_TYPE *_heroTitleCardSection;
+    MISSING_TYPE *_archiveViewCardSection;
+    MISSING_TYPE *_appIconCardSection;
+    MISSING_TYPE *_largeTitleDetailedRowCardSection;
+    MISSING_TYPE *_rfSummaryItemShortNumberCardSection;
+    MISSING_TYPE *_rfSummaryItemTextCardSection;
+    MISSING_TYPE *_rfSummaryItemStandardCardSection;
+    MISSING_TYPE *_rfFactItemShortNumberCardSection;
+    MISSING_TYPE *_rfFactItemStandardCardSection;
+    MISSING_TYPE *_rfLongItemStandardCardSection;
+    MISSING_TYPE *_rfPrimaryHeaderRichCardSection;
+    MISSING_TYPE *_rfPrimaryHeaderStandardCardSection;
+    MISSING_TYPE *_rfReferenceFootnoteCardSection;
+    MISSING_TYPE *_rfReferenceRichCardSection;
+    MISSING_TYPE *_rfSimpleItemRichCardSection;
+    MISSING_TYPE *_rfSimpleItemStandardCardSection;
+    MISSING_TYPE *_rfSummaryItemAlignedTextCardSection;
+    MISSING_TYPE *_rfExpandableStandardCardSection;
+    MISSING_TYPE *_rfFactItemButtonCardSection;
 }
 
 @end

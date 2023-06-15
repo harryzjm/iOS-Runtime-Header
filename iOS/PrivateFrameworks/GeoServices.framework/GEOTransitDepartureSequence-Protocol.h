@@ -21,6 +21,7 @@
 @property(readonly, nonatomic) NSString *displayName;
 @property(readonly, nonatomic) NSString *headsign;
 @property(readonly, nonatomic) NSString *direction;
+@property(readonly, nonatomic) unsigned long long departureTimeDisplayStyle;
 @property(readonly, nonatomic) long long displayStyle;
 @property(readonly, nonatomic) _Bool isLowFrequency;
 @property(readonly, nonatomic) id <GEOTransitLine> line;

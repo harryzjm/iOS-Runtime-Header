@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) WFFileRepresentation *richTextFile; // @synthesize richTextFile=_richTextFile;
 - (void)presentationControllerDidDismiss:(id)arg1;
 - (void)webViewControllerDidFinish:(id)arg1;
+- (void)safariViewControllerWillOpenInBrowser:(id)arg1;
 - (void)safariViewControllerDidFinish:(id)arg1;
 - (void)finishWithError:(id)arg1;
 - (void)cancelPresentationWithCompletionHandler:(CDUnknownBlockType)arg1;

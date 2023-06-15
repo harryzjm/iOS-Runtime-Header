@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
     float _opacity;
     UIColor *_color;
+    id _compositingFilter;
     double _radius;
     struct CGSize _offset;
 }
@@ -21,6 +22,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) float opacity; // @synthesize opacity=_opacity;
 @property(nonatomic) double radius; // @synthesize radius=_radius;
 @property(nonatomic) struct CGSize offset; // @synthesize offset=_offset;
+@property(retain, nonatomic) id compositingFilter; // @synthesize compositingFilter=_compositingFilter;
 @property(retain, nonatomic) UIColor *color; // @synthesize color=_color;
 - (_Bool)_shouldAnimatePropertyWithKey:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

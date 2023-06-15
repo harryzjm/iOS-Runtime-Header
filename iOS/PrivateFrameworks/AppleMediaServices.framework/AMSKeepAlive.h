@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, RBSAssertion;
+@class AMSRBSKeepAlive, NSString;
 @protocol OS_os_transaction;
 
 __attribute__((visibility("hidden")))
@@ -14,13 +14,14 @@ __attribute__((visibility("hidden")))
 {
     NSObject<OS_os_transaction> *_transaction;
     NSString *_logKey;
+    AMSRBSKeepAlive *_rbsKeepAlive;
     NSString *_name;
     long long _style;
-    RBSAssertion *_rbsAssertion;
 }
 
 + (void)_handleAssertionExpiration;
 + (void)_accessAssertionCache:(CDUnknownBlockType)arg1;
++ (_Bool)_isRBSAssertionsEnabled;
 + (void)rbs_keepAliveWithName:(id)arg1 style:(long long)arg2 block:(CDUnknownBlockType)arg3;
 + (id)rbs_keepAliveWithName:(id)arg1 style:(long long)arg2;
 + (id)rbs_keepAliveWithName:(id)arg1;
@@ -29,15 +30,11 @@ __attribute__((visibility("hidden")))
 + (id)keepAliveWithName:(id)arg1;
 + (id)keepAliveWithFormat:(id)arg1;
 - (void).cxx_destruct;
-@property(retain, nonatomic) RBSAssertion *rbsAssertion; // @synthesize rbsAssertion=_rbsAssertion;
 @property(readonly, nonatomic) long long style; // @synthesize style=_style;
 @property(readonly, nonatomic) NSString *name; // @synthesize name=_name;
-- (void)_takeRBSAssertion;
 - (void)_takeProcessAssertion;
 - (void)_takeOSTransaction;
-- (void)_startRBSLogTimer;
 - (void)_startLogTimer;
-- (void)_removeRBSAssertion;
 - (void)_removeProcessAssertion;
 - (void)_removeOSTransaction;
 - (id)_cacheKey;

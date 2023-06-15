@@ -37,8 +37,9 @@
 @property(retain, nonatomic) NSData *chainParentPublicKeyID; // @synthesize chainParentPublicKeyID=_chainParentPublicKeyID;
 @property(retain, nonatomic) CKDRecordPCSData *parentPCSData; // @synthesize parentPCSData=_parentPCSData;
 @property(retain, nonatomic) CKRecordID *parentID; // @synthesize parentID=_parentID;
-@property(readonly, nonatomic) NSString *recordType; // @synthesize recordType=_recordType;
+@property(retain, nonatomic) NSString *recordType; // @synthesize recordType=_recordType;
 @property(retain, nonatomic) CKRecordID *recordID; // @synthesize recordID=_recordID;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

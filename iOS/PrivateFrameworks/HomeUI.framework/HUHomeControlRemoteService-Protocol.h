@@ -8,7 +8,6 @@
 
 @protocol HUHomeControlRemoteService
 - (void)getTransitionSubviewFramesWithCompletion:(void (^)(NSDictionary *))arg1;
-- (void)willFinishTransition:(_Bool)arg1 forCompactModule:(_Bool)arg2;
 - (void)willBeginTransition:(_Bool)arg1 forCompactModule:(_Bool)arg2;
 - (void)lockAuthenticationCompleted:(_Bool)arg1;
 - (void)configureHomeControlServiceWithHomeUUID:(NSString *)arg1;

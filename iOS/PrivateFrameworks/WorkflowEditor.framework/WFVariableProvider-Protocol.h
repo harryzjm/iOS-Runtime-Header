@@ -10,17 +10,17 @@
 @protocol WFOutputTraversalContext, WFVariableObserver;
 
 @protocol WFVariableProvider <NSObject>
+@property(readonly, nonatomic) NSArray *workflowInputClasses;
+@property(readonly, nonatomic) NSArray *availableOutputActions;
+@property(readonly, nonatomic) NSArray *availableVariableNames;
 - (void)removeVariableObserver:(id <WFVariableObserver>)arg1;
 - (void)addVariableObserver:(id <WFVariableObserver>)arg1;
-@property(nonatomic, readonly) NSArray *workflowInputClasses;
 - (NSArray *)actionsProvidingVariableName:(NSString *)arg1;
 - (WFAction *)actionProvidingVariableWithOutputUUID:(NSString *)arg1;
 - (_Bool)isVariableWithOutputUUIDAvailable:(NSString *)arg1;
 - (_Bool)hasAvailableActionOutputVariables;
-@property(nonatomic, readonly) NSArray *availableOutputActions;
 - (NSOrderedSet *)possibleContentClassesForVariableNamed:(NSString *)arg1 context:(id <WFOutputTraversalContext>)arg2;
 - (_Bool)isVariableWithNameAvailable:(NSString *)arg1;
 - (_Bool)hasAvailableVariables;
-@property(nonatomic, readonly) NSArray *availableVariableNames;
 @end
 

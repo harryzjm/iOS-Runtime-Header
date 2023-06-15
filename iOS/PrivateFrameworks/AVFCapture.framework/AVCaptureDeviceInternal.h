@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AVCaptureDeviceInput;
+@class AVCaptureDeviceInput, NSMutableArray;
 
 __attribute__((visibility("hidden")))
 @interface AVCaptureDeviceInternal : NSObject
@@ -16,7 +16,11 @@ __attribute__((visibility("hidden")))
     int configLockPid;
     _Bool usingDevice;
     AVCaptureDeviceInput *activeInput;
+    NSMutableArray *activeReactions;
 }
+
+- (void)dealloc;
+- (id)init;
 
 @end
 

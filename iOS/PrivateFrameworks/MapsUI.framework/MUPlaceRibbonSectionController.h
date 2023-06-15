@@ -6,7 +6,7 @@
 
 #import "MUPlaceSectionController.h"
 
-@class GEOPlaceRibbonConfiguration, MKUGCCallToActionViewAppearance, MUPlaceCallToActionRibbonViewModel, MUPlaceDistanceRibbonViewModel, MUPlaceRatingAndSubmissionStatusRibbonViewModel, MUPlaceRibbonSectionControllerConfiguration, MUPlaceRibbonView, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, MUPlaceSectionView, NSArray, NSString, UIView, UIViewController;
+@class GEOPlaceRibbonConfiguration, MUPlaceCallToActionAppearance, MUPlaceCallToActionRibbonViewModel, MUPlaceDistanceRibbonViewModel, MUPlaceRatingAndSubmissionStatusRibbonViewModel, MUPlaceRibbonEVChargingViewModel, MUPlaceRibbonSectionControllerConfiguration, MUPlaceRibbonView, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, MUPlaceSectionView, NSArray, NSString, UIView, UIViewController;
 @protocol MUInfoCardAnalyticsDelegate, MUPlaceRibbonSectionControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -19,10 +19,11 @@ __attribute__((visibility("hidden")))
     MUPlaceRatingAndSubmissionStatusRibbonViewModel *_arpViewModelSydney;
     MUPlaceRatingAndSubmissionStatusRibbonViewModel *_ratingViewModel;
     MUPlaceDistanceRibbonViewModel *_distanceViewModel;
+    MUPlaceRibbonEVChargingViewModel *_evChargingViewModel;
     _Bool _active;
     _Bool _shouldShowARPCallToAction;
     _Bool _isAllowedToShowRatingScoreRibbonItem;
-    MKUGCCallToActionViewAppearance *_submissionStatus;
+    MUPlaceCallToActionAppearance *_submissionStatus;
     id <MUPlaceRibbonSectionControllerDelegate> _ribbonDelegate;
 }
 
@@ -31,7 +32,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool shouldShowARPCallToAction; // @synthesize shouldShowARPCallToAction=_shouldShowARPCallToAction;
 @property(nonatomic) __weak id <MUPlaceRibbonSectionControllerDelegate> ribbonDelegate; // @synthesize ribbonDelegate=_ribbonDelegate;
 @property(nonatomic, getter=isActive) _Bool active; // @synthesize active=_active;
-@property(retain, nonatomic) MKUGCCallToActionViewAppearance *submissionStatus; // @synthesize submissionStatus=_submissionStatus;
+@property(retain, nonatomic) MUPlaceCallToActionAppearance *submissionStatus; // @synthesize submissionStatus=_submissionStatus;
 - (_Bool)isImpressionable;
 - (void)performInstrumentationForScrollRight;
 - (void)performInstrumentationForScrollLeft;

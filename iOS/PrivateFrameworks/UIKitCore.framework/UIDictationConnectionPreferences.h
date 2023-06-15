@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) AFPreferences *afPreferences; // @synthesize afPreferences=_afPreferences;
 - (_Bool)isOnDeviceEmojiRecognitionSupportAvailableForLanguage:(id)arg1;
+- (_Bool)isOnDeviceDictationSupportMissingAssetForLanguage:(id)arg1;
 - (_Bool)isOnDeviceDictationSupportAvailableForLanguage:(id)arg1;
 - (_Bool)isSmartLanguageSelectionEnabled;
 - (id)getOfflineDictationStatusForLanguage:(id)arg1;

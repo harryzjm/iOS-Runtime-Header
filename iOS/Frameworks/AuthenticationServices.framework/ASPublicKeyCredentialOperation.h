@@ -6,8 +6,8 @@
 
 #import <objc/NSObject.h>
 
-@class LAContext, NSDictionary, NSError, NSMutableDictionary, NSString, NSUUID, _WKWebAuthenticationPanel;
-@protocol ASPublicKeyCredentialManagerDelegate, OS_dispatch_semaphore;
+@class ASCPublicKeyCredentialAssertionOptions, LAContext, NSData, NSDictionary, NSError, NSMutableDictionary, NSString, NSUUID, WBSSavedAccountContext, _WKWebAuthenticationPanel;
+@protocol ASPublicKeyCredentialManagerDelegate, OS_dispatch_semaphore, OS_os_activity;
 
 __attribute__((visibility("hidden")))
 @interface ASPublicKeyCredentialOperation : NSObject
@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _selectPlatformAssertionCallback;
     CDUnknownBlockType _selectSecurityKeyAssertionCallback;
     _Bool _hasTornDown;
+    _Bool _shouldRequireUserVerification;
     NSUUID *_uuid;
     id <ASPublicKeyCredentialManagerDelegate> _delegate;
     NSString *_relyingPartyIdentifier;
@@ -24,11 +25,20 @@ __attribute__((visibility("hidden")))
     NSString *_sourceApplicationIdentifier;
     LAContext *_authenticatedLAContext;
     NSError *_overrideError;
+    NSObject<OS_os_activity> *_activity;
+    WBSSavedAccountContext *_savedAccountContext;
+    ASCPublicKeyCredentialAssertionOptions *_assertionOptions;
+    NSData *_clientDataJSONForApps;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSData *clientDataJSONForApps; // @synthesize clientDataJSONForApps=_clientDataJSONForApps;
+@property(copy, nonatomic) ASCPublicKeyCredentialAssertionOptions *assertionOptions; // @synthesize assertionOptions=_assertionOptions;
+@property(retain, nonatomic) WBSSavedAccountContext *savedAccountContext; // @synthesize savedAccountContext=_savedAccountContext;
+@property(readonly, nonatomic) NSObject<OS_os_activity> *activity; // @synthesize activity=_activity;
 @property(copy, nonatomic) NSError *overrideError; // @synthesize overrideError=_overrideError;
 @property(retain, nonatomic) LAContext *authenticatedLAContext; // @synthesize authenticatedLAContext=_authenticatedLAContext;
+@property(nonatomic) _Bool shouldRequireUserVerification; // @synthesize shouldRequireUserVerification=_shouldRequireUserVerification;
 @property(copy, nonatomic) NSString *sourceApplicationIdentifier; // @synthesize sourceApplicationIdentifier=_sourceApplicationIdentifier;
 @property(retain, nonatomic) _WKWebAuthenticationPanel *panel; // @synthesize panel=_panel;
 @property(copy, nonatomic) NSString *relyingPartyIdentifier; // @synthesize relyingPartyIdentifier=_relyingPartyIdentifier;
@@ -42,7 +52,7 @@ __attribute__((visibility("hidden")))
 - (void)setPlatformAssertionSelectionCallback:(CDUnknownBlockType)arg1;
 - (void)mergeIdentifiersToAssertionResponses:(id)arg1;
 @property(readonly, copy, nonatomic) NSDictionary *identifiersToAssertionResponses;
-- (id)initWithRelyingPartyIdentifier:(id)arg1 delegate:(id)arg2;
+- (id)initWithRelyingPartyIdentifier:(id)arg1 delegate:(id)arg2 parentActivity:(id)arg3;
 
 @end
 

@@ -10,7 +10,6 @@
 
 @interface _TtC8StocksUI27StockFeedMastheadViewStyler : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *addButtonStyler;
     MISSING_TYPE *baseStyler;
 }
 

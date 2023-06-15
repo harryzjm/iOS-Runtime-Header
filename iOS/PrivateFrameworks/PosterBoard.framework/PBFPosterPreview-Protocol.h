@@ -10,18 +10,22 @@
 @protocol PBFComplicationLookupInfo, PBFPosterDescriptorLookupInfo;
 
 @protocol PBFPosterPreview <NSObject>
+@property(readonly, nonatomic) unsigned long long galleryDisplayStyle;
+@property(readonly, nonatomic) unsigned long long presentationStyle;
 @property(readonly, copy, nonatomic) PBFGalleryOptions *galleryOptions;
 @property(readonly, copy, nonatomic) PRPosterRenderingConfiguration *renderingConfiguration;
 @property(readonly, copy, nonatomic) PRPosterFocusConfiguration *focusConfiguration;
 @property(readonly, copy, nonatomic) PRPosterHomeScreenConfiguration *homeScreenConfiguration;
+@property(readonly, copy, nonatomic) NSArray *suggestedLandscapeComplications;
 @property(readonly, copy, nonatomic) NSArray *suggestedComplications;
 @property(readonly, copy, nonatomic) NSString *complicationLayoutType;
 @property(readonly, copy, nonatomic) id <PBFComplicationLookupInfo> subtitleComplication;
 @property(readonly, copy, nonatomic) PRPosterTitleStyleConfiguration *titleStyleConfiguration;
 @property(readonly, copy, nonatomic) id <PBFPosterDescriptorLookupInfo> posterDescriptorLookupInfo;
 @property(readonly, copy, nonatomic) NSString *type;
-@property(readonly, copy, nonatomic) NSString *posterLocalizedDescription;
-@property(readonly, copy, nonatomic) NSString *posterLocalizedTitle;
+@property(readonly, copy, nonatomic) NSString *galleryLocalizedDescription;
+@property(readonly, copy, nonatomic) NSString *galleryLocalizedTitle;
+@property(readonly, copy, nonatomic) NSString *displayNameLocalizationKey;
 @property(readonly, copy, nonatomic) NSString *previewUniqueIdentifier;
 @end
 

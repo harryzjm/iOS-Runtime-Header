@@ -7,6 +7,6 @@
 #import <GeoServices/GEODirectionsResponse.h>
 
 @interface GEODirectionsResponse (Testing)
-- (void)addFakeTrafficIncidentAlert:(unsigned long long)arg1;
+- (void)addFakeTrafficIncidentAlert:(unsigned long long)arg1 targetLegIndex:(unsigned long long)arg2 mainRouteInfo:(id)arg3 alternateRouteInfo:(id)arg4 incidentDistance:(unsigned int)arg5;
 @end
 

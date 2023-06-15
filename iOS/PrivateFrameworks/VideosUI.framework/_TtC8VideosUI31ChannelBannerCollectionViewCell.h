@@ -22,7 +22,6 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (struct CGSize)vui_layoutSubviews:(struct CGSize)arg1 computationOnly:(_Bool)arg2;
-- (id)preferredLayoutAttributesFittingAttributes:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 

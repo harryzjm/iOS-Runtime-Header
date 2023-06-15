@@ -10,7 +10,7 @@
 {
 }
 
-+ (void)generateSnapshotForMessageGUID:(id)arg1 payloadURL:(id)arg2 balloonBundleID:(id)arg3 isFromMe:(_Bool)arg4 completionBlock:(CDUnknownBlockType)arg5;
++ (void)generateSnapshotForMessageGUID:(id)arg1 payloadURL:(id)arg2 balloonBundleID:(id)arg3 senderContext:(id)arg4 completionBlock:(CDUnknownBlockType)arg5;
 
 @end
 

@@ -19,7 +19,7 @@
     MISSING_TYPE *state;
     MISSING_TYPE *timer;
     MISSING_TYPE *lastPackPosition;
-    MISSING_TYPE *watchConnection;
+    MISSING_TYPE *workoutDeviceConnection;
     MISSING_TYPE *_cumulativeCommunityScores;
     MISSING_TYPE *_rollingCommunityScores;
     MISSING_TYPE *_userBodyMassMetric;

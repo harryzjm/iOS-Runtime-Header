@@ -10,6 +10,7 @@ __attribute__((visibility("hidden")))
 @interface _TtC8VideosUI40MultiGroupHorizontalCollectionController
 {
     MISSING_TYPE *viewImpressioner;
+    MISSING_TYPE *contextMenuInteractor;
     MISSING_TYPE *cachedCellMetrics;
     MISSING_TYPE *$__lazy_storage_$_cachedHeaderViews;
     MISSING_TYPE *internalCollectionViewModel;

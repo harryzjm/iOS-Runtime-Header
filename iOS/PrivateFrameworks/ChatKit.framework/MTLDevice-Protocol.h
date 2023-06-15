@@ -6,39 +6,60 @@
 
 #import <ChatKit/NSObject-Protocol.h>
 
-@class MTLAccelerationStructureDescriptor, MTLBinaryArchiveDescriptor, MTLCompileOptions, MTLComputePipelineDescriptor, MTLCounterSampleBufferDescriptor, MTLDepthStencilDescriptor, MTLHeapDescriptor, MTLIOCommandQueueDescriptor, MTLIndirectCommandBufferDescriptor, MTLMeshRenderPipelineDescriptor, MTLRasterizationRateMapDescriptor, MTLRenderPipelineDescriptor, MTLSamplerDescriptor, MTLSharedEventHandle, MTLStitchedLibraryDescriptor, MTLTextureDescriptor, MTLTileRenderPipelineDescriptor, NSArray, NSBundle, NSString, NSURL, OS_dispatch_data;
-@protocol MTLAccelerationStructure, MTLArgumentEncoder, MTLBinaryArchive, MTLBuffer, MTLBufferBinding, MTLCommandQueue, MTLComputePipelineState, MTLCounterSampleBuffer, MTLDepthStencilState, MTLDynamicLibrary, MTLEvent, MTLFence, MTLFunction, MTLHeap, MTLIOCommandQueue, MTLIOFileHandle, MTLIndirectCommandBuffer, MTLLibrary, MTLRasterizationRateMap, MTLRenderPipelineState, MTLSamplerState, MTLSharedEvent, MTLTexture;
+@class MTLAccelerationStructureDescriptor, MTLArchitecture, MTLBinaryArchiveDescriptor, MTLCompileOptions, MTLComputePipelineDescriptor, MTLCounterSampleBufferDescriptor, MTLDepthStencilDescriptor, MTLHeapDescriptor, MTLIndirectCommandBufferDescriptor, MTLMeshRenderPipelineDescriptor, MTLRasterizationRateMapDescriptor, MTLRenderPipelineDescriptor, MTLSamplerDescriptor, MTLSharedEventHandle, MTLStitchedLibraryDescriptor, MTLTextureDescriptor, MTLTileRenderPipelineDescriptor, NSArray, NSBundle, NSString, NSURL, OS_dispatch_data;
+@protocol MTLAccelerationStructure, MTLArgumentEncoder, MTLBinaryArchive, MTLBuffer, MTLBufferBinding, MTLCommandQueue, MTLComputePipelineState, MTLCounterSampleBuffer, MTLDepthStencilState, MTLDynamicLibrary, MTLEvent, MTLFence, MTLFunction, MTLHeap, MTLIndirectCommandBuffer, MTLLibrary, MTLRasterizationRateMap, MTLRenderPipelineState, MTLSamplerState, MTLSharedEvent, MTLTexture;
 
 @protocol MTLDevice <NSObject>
-@property(nonatomic, readonly) _Bool supportsPrimitiveMotionBlur;
-@property(nonatomic, readonly) _Bool supportsRaytracingFromRender;
-@property(nonatomic, readonly) _Bool supportsFunctionPointersFromRender;
-@property(nonatomic, readonly) _Bool supportsFunctionPointers;
+@property(readonly) _Bool supportsPrimitiveMotionBlur;
+@property(readonly) _Bool supportsRaytracingFromRender;
+@property(readonly) _Bool supportsFunctionPointersFromRender;
+@property(readonly) _Bool supportsFunctionPointers;
+@property(readonly) _Bool supportsRaytracing;
+@property(readonly) _Bool supportsRenderDynamicLibraries;
+@property(readonly) _Bool supportsDynamicLibraries;
+@property(readonly) NSArray *counterSets;
+@property(readonly) unsigned long long maxBufferLength;
+@property(readonly) unsigned long long sparseTileSizeInBytes;
+@property(readonly, getter=areProgrammableSamplePositionsSupported) _Bool programmableSamplePositionsSupported;
+@property(readonly) unsigned long long maxArgumentBufferSamplerCount;
+@property(readonly) unsigned long long maxThreadgroupMemoryLength;
+@property(readonly) unsigned long long currentAllocatedSize;
+@property(readonly) _Bool supportsShaderBarycentricCoordinates;
+@property(readonly, getter=areBarycentricCoordsSupported) _Bool barycentricCoordsSupported;
+@property(readonly) _Bool supportsPullModelInterpolation;
+@property(readonly) _Bool supportsBCTextureCompression;
+@property(readonly) _Bool supportsQueryTextureLOD;
+@property(readonly) _Bool supports32BitMSAA;
+@property(readonly) _Bool supports32BitFloatFiltering;
+@property(readonly, getter=areRasterOrderGroupsSupported) _Bool rasterOrderGroupsSupported;
+@property(readonly) unsigned long long argumentBuffersSupport;
+@property(readonly) unsigned long long readWriteTextureSupport;
+@property(readonly, getter=isDepth24Stencil8PixelFormatSupported) _Bool depth24Stencil8PixelFormatSupported;
+@property(readonly) unsigned long long recommendedMaxWorkingSetSize;
+@property(readonly) _Bool hasUnifiedMemory;
+@property(readonly, getter=isRemovable) _Bool removable;
+@property(readonly, getter=isHeadless) _Bool headless;
+@property(readonly, getter=isLowPower) _Bool lowPower;
+@property(readonly) CDStruct_aa0b146f maxThreadsPerThreadgroup;
+@property(readonly) MTLArchitecture *architecture;
+@property(readonly) unsigned long long registryID;
+@property(readonly) NSString *name;
 - (CDStruct_4bcfbbae)heapAccelerationStructureSizeAndAlignWithDescriptor:(MTLAccelerationStructureDescriptor *)arg1;
 - (CDStruct_4bcfbbae)heapAccelerationStructureSizeAndAlignWithSize:(unsigned long long)arg1;
 - (id <MTLAccelerationStructure>)newAccelerationStructureWithDescriptor:(MTLAccelerationStructureDescriptor *)arg1;
 - (id <MTLAccelerationStructure>)newAccelerationStructureWithSize:(unsigned long long)arg1;
 - (CDStruct_aa0b146f)accelerationStructureSizesWithDescriptor:(MTLAccelerationStructureDescriptor *)arg1;
-@property(nonatomic, readonly) _Bool supportsRaytracing;
 - (id <MTLBinaryArchive>)newBinaryArchiveWithDescriptor:(MTLBinaryArchiveDescriptor *)arg1 error:(id *)arg2;
 - (id <MTLDynamicLibrary>)newDynamicLibraryWithURL:(NSURL *)arg1 error:(id *)arg2;
 - (id <MTLDynamicLibrary>)newDynamicLibrary:(id <MTLLibrary>)arg1 error:(id *)arg2;
-@property(nonatomic, readonly) _Bool supportsRenderDynamicLibraries;
-@property(nonatomic, readonly) _Bool supportsDynamicLibraries;
 - (_Bool)supportsVertexAmplificationCount:(unsigned long long)arg1;
 - (_Bool)supportsCounterSampling:(unsigned long long)arg1;
 - (id <MTLArgumentEncoder>)newArgumentEncoderWithBufferBinding:(id <MTLBufferBinding>)arg1;
 - (void)sampleTimestamps:(unsigned long long *)arg1 gpuTimestamp:(unsigned long long *)arg2;
 - (id <MTLCounterSampleBuffer>)newCounterSampleBufferWithDescriptor:(MTLCounterSampleBufferDescriptor *)arg1 error:(id *)arg2;
-@property(nonatomic, readonly) NSArray *counterSets;
-@property(nonatomic, readonly) long long maxBufferLength;
 - (CDStruct_aa0b146f)sparseTileSizeWithTextureType:(unsigned long long)arg1 pixelFormat:(unsigned long long)arg2 sampleCount:(unsigned long long)arg3 sparsePageSize:(long long)arg4;
 - (unsigned long long)sparseTileSizeInBytesForSparsePageSize:(long long)arg1;
-@property(nonatomic, readonly) long long sparseTileSizeInBytes;
 - (CDStruct_aa0b146f)sparseTileSizeWithTextureType:(unsigned long long)arg1 pixelFormat:(unsigned long long)arg2 sampleCount:(unsigned long long)arg3;
-- (id <MTLIOFileHandle>)newIOHandleWithURL:(NSURL *)arg1 compressionMethod:(long long)arg2 error:(id *)arg3;
-- (id <MTLIOCommandQueue>)newIOCommandQueueWithDescriptor:(MTLIOCommandQueueDescriptor *)arg1 error:(id *)arg2;
-- (id <MTLIOFileHandle>)newIOHandleWithURL:(NSURL *)arg1 error:(id *)arg2;
 - (id <MTLSharedEvent>)newSharedEventWithHandle:(MTLSharedEventHandle *)arg1;
 - (id <MTLSharedEvent>)newSharedEvent;
 - (id <MTLEvent>)newEvent;
@@ -47,9 +68,6 @@
 - (_Bool)supportsRasterizationRateMapWithLayerCount:(unsigned long long)arg1;
 - (id <MTLArgumentEncoder>)newArgumentEncoderWithArguments:(NSArray *)arg1;
 - (void)getDefaultSamplePositions:(CDStruct_b2fbf00d *)arg1 count:(unsigned long long)arg2;
-- (_Bool)areProgrammableSamplePositionsSupported;
-@property(nonatomic, readonly) long long maxArgumentBufferSamplerCount;
-@property(nonatomic, readonly) long long maxThreadgroupMemoryLength;
 - (void)newRenderPipelineStateWithMeshDescriptor:(MTLMeshRenderPipelineDescriptor *)arg1 options:(unsigned long long)arg2 completionHandler:(void (^)(id <MTLRenderPipelineState>, MTLRenderPipelineReflection *, NSError *))arg3;
 - (id <MTLRenderPipelineState>)newRenderPipelineStateWithMeshDescriptor:(MTLMeshRenderPipelineDescriptor *)arg1 options:(unsigned long long)arg2 reflection:(id *)arg3 error:(id *)arg4;
 - (void)newRenderPipelineStateWithTileDescriptor:(MTLTileRenderPipelineDescriptor *)arg1 options:(unsigned long long)arg2 completionHandler:(void (^)(id <MTLRenderPipelineState>, MTLRenderPipelineReflection *, NSError *))arg3;
@@ -91,38 +109,9 @@
 - (CDStruct_4bcfbbae)heapTextureSizeAndAlignWithDescriptor:(MTLTextureDescriptor *)arg1;
 - (id <MTLCommandQueue>)newCommandQueueWithMaxCommandBufferCount:(unsigned long long)arg1;
 - (id <MTLCommandQueue>)newCommandQueue;
-@property(nonatomic, readonly) long long currentAllocatedSize;
-@property(nonatomic, readonly) _Bool supportsShaderBarycentricCoordinates;
-- (_Bool)areBarycentricCoordsSupported;
-@property(nonatomic, readonly) _Bool supportsPullModelInterpolation;
-@property(nonatomic, readonly) _Bool supportsBCTextureCompression;
-@property(nonatomic, readonly) _Bool supportsQueryTextureLOD;
-@property(nonatomic, readonly) _Bool supports32BitMSAA;
-@property(nonatomic, readonly) _Bool supports32BitFloatFiltering;
-- (_Bool)areRasterOrderGroupsSupported;
-@property(nonatomic, readonly) unsigned long long argumentBuffersSupport;
-@property(nonatomic, readonly) unsigned long long readWriteTextureSupport;
-- (_Bool)isDepth24Stencil8PixelFormatSupported;
-@property(nonatomic, readonly) unsigned long long recommendedMaxWorkingSetSize;
-@property(nonatomic, readonly) _Bool hasUnifiedMemory;
-- (_Bool)isRemovable;
-- (_Bool)isHeadless;
-- (_Bool)isLowPower;
-@property(nonatomic, readonly) CDStruct_aa0b146f maxThreadsPerThreadgroup;
-@property(nonatomic, readonly) unsigned long long registryID;
-@property(nonatomic, readonly) NSString *name;
 
 @optional
 - (void)convertSparseTileRegions:(const CDStruct_4c96eda1 *)arg1 toPixelRegions:(CDStruct_4c96eda1 *)arg2 withTileSize:(CDStruct_aa0b146f)arg3 numRegions:(unsigned long long)arg4;
 - (void)convertSparsePixelRegions:(const CDStruct_4c96eda1 *)arg1 toTileRegions:(CDStruct_4c96eda1 *)arg2 withTileSize:(CDStruct_aa0b146f)arg3 alignmentMode:(unsigned long long)arg4 numRegions:(unsigned long long)arg5;
-
-// Remaining properties
-@property(nonatomic, readonly) _Bool barycentricCoordsSupported;
-@property(nonatomic, readonly) _Bool depth24Stencil8PixelFormatSupported;
-@property(nonatomic, readonly) _Bool headless;
-@property(nonatomic, readonly) _Bool lowPower;
-@property(nonatomic, readonly) _Bool programmableSamplePositionsSupported;
-@property(nonatomic, readonly) _Bool rasterOrderGroupsSupported;
-@property(nonatomic, readonly) _Bool removable;
 @end
 

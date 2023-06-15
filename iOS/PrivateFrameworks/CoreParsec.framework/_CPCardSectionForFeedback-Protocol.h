@@ -10,6 +10,8 @@
 
 @protocol _CPCardSectionForFeedback <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
+@property(copy, nonatomic) NSArray *trailingSwipeButtonItems;
+@property(copy, nonatomic) NSArray *leadingSwipeButtonItems;
 @property(copy, nonatomic) NSArray *buttons;
 @property(copy, nonatomic) NSString *cardSectionDetail;
 @property(nonatomic) int cardSectionType;
@@ -22,6 +24,14 @@
 @property(copy, nonatomic) NSString *cardSectionId;
 - (id)initWithDictionary:(NSDictionary *)arg1;
 - (id)initWithJSON:(NSData *)arg1;
+- (_CPButtonForFeedback *)trailingSwipeButtonItemsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)trailingSwipeButtonItemsCount;
+- (void)addTrailingSwipeButtonItems:(_CPButtonForFeedback *)arg1;
+- (void)clearTrailingSwipeButtonItems;
+- (_CPButtonForFeedback *)leadingSwipeButtonItemsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)leadingSwipeButtonItemsCount;
+- (void)addLeadingSwipeButtonItems:(_CPButtonForFeedback *)arg1;
+- (void)clearLeadingSwipeButtonItems;
 - (_CPButtonForFeedback *)buttonsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)buttonsCount;
 - (void)addButtons:(_CPButtonForFeedback *)arg1;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class FBScene, NSArray, NSString, NSTimer, NSUUID, NSXPCConnection, PGInterruptionAssistant, PGPictureInPictureApplication, PGPictureInPictureViewController, PGPlaybackState, PGProcessAssertion, UIImage;
+@class FBScene, NSArray, NSString, NSTimer, NSUUID, NSXPCConnection, PGInterruptionAssistant, PGPictureInPictureApplication, PGPictureInPictureViewController, PGPlaybackState, PGProcessAssertion;
 @protocol BSInvalidatable, OS_dispatch_queue, PGPictureInPictureAnalyticsDelegate, PGPictureInPictureRemoteObjectDelegate;
 
 __attribute__((visibility("hidden")))
@@ -43,8 +43,6 @@ __attribute__((visibility("hidden")))
     NSTimer *_considerStashedPlaybackAsBackgroundAudioTimer;
     id <BSInvalidatable> _stateCaptureInvalidatable;
     FBScene *_sourceScene;
-    NSString *_screenSharingTitle;
-    UIImage *_screenSharingAvatar;
     NSString *_activitySessionIdentifierForLastActivePIPSession;
     id <PGPictureInPictureRemoteObjectDelegate> _delegate;
     PGPictureInPictureApplication *_pictureInPictureApplication;
@@ -55,7 +53,7 @@ __attribute__((visibility("hidden")))
     NSString *_sourceSceneSessionPersistentIdentifier;
     NSString *_exemptAttribution;
     struct CGSize _preferredContentSize;
-    struct CGRect _initialLayerFrame;
+    struct CGRect _initialLayerFrameForInteractiveTransitionAnimationUponBackgrounding;
 }
 
 + (void)tetherRemoteObject:(id)arg1 toRemoteObject:(id)arg2 mode:(long long)arg3;
@@ -63,7 +61,7 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSString *exemptAttribution; // @synthesize exemptAttribution=_exemptAttribution;
 @property(readonly, nonatomic) NSString *sourceSceneSessionPersistentIdentifier; // @synthesize sourceSceneSessionPersistentIdentifier=_sourceSceneSessionPersistentIdentifier;
 @property(readonly, nonatomic) struct CGSize preferredContentSize; // @synthesize preferredContentSize=_preferredContentSize;
-@property(readonly, nonatomic) struct CGRect initialLayerFrame; // @synthesize initialLayerFrame=_initialLayerFrame;
+@property(readonly, nonatomic) struct CGRect initialLayerFrameForInteractiveTransitionAnimationUponBackgrounding; // @synthesize initialLayerFrameForInteractiveTransitionAnimationUponBackgrounding=_initialLayerFrameForInteractiveTransitionAnimationUponBackgrounding;
 @property(readonly, nonatomic) long long currentState; // @synthesize currentState=_currentState;
 @property(retain, nonatomic) PGPictureInPictureRemoteObject *tetheringRemoteObject; // @synthesize tetheringRemoteObject=_tetheringRemoteObject;
 @property(retain, nonatomic) PGPictureInPictureRemoteObject *tetheredRemoteObject; // @synthesize tetheredRemoteObject=_tetheredRemoteObject;
@@ -90,7 +88,6 @@ __attribute__((visibility("hidden")))
 - (_Bool)_currentStateAllowsProcessAssertion;
 - (void)_updateActiveProxyAndViewControllerOfInterruptionIfNeeded;
 - (oneway void)stopPictureInPictureAndRestoreUserInterface;
-- (oneway void)setScreenSharingTitle:(id)arg1 avatar:(id)arg2;
 - (oneway void)setActivitySessionIdentifier:(id)arg1;
 - (oneway void)updateMenuItems:(id)arg1;
 - (oneway void)updatePlaybackStateWithDiff:(id)arg1;
@@ -157,6 +154,10 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool shouldStartPictureInPictureEnteringBackground;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue;
 @property(readonly, nonatomic) NSXPCConnection *connection;
+- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
+- (id)descriptionWithMultilinePrefix:(id)arg1;
+- (id)succinctDescriptionBuilder;
+- (id)succinctDescription;
 @property(readonly, copy) NSString *description;
 - (void)dealloc;
 - (id)init;

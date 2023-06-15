@@ -11,15 +11,18 @@
 @interface _TtC19SiriExpanseInternal17SharingNLv4Intent : _TtCs12_SwiftObject
 {
     MISSING_TYPE *verb;
+    MISSING_TYPE *type;
     MISSING_TYPE *containsSharingReference;
     MISSING_TYPE *appName;
     MISSING_TYPE *appIdentifier;
-    MISSING_TYPE *containsSharingRecipient;
+    MISSING_TYPE *associatedAppIdentifier;
     MISSING_TYPE *refersToScreen;
     MISSING_TYPE *refersToEverything;
     MISSING_TYPE *recipients;
     MISSING_TYPE *confirmationValue;
-    MISSING_TYPE *isShareViaMessagesIntent;
+    MISSING_TYPE *isSharePlayRequest;
+    MISSING_TYPE *usoEntity;
+    MISSING_TYPE *isReformed;
 }
 
 @end

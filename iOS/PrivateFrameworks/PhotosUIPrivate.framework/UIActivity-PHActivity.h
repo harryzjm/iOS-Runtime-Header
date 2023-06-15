@@ -8,6 +8,6 @@
 
 @interface UIActivity (PHActivity)
 + (id)ph_PhotosApplicationActivityTypeOrder;
-+ (id)ph_PhotosApplicationActivitiesTypePublish;
++ (id)ph_PhotosApplicationActivitiesTypePublish:(_Bool)arg1;
 @end
 

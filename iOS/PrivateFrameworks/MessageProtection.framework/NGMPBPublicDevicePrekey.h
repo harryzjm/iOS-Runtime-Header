@@ -14,9 +14,11 @@ __attribute__((visibility("hidden")))
     double _timestamp;
     NSData *_prekey;
     NSData *_prekeySignature;
+    NSData *_secondaryPrekey;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSData *secondaryPrekey; // @synthesize secondaryPrekey=_secondaryPrekey;
 @property(nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
 @property(retain, nonatomic) NSData *prekeySignature; // @synthesize prekeySignature=_prekeySignature;
 @property(retain, nonatomic) NSData *prekey; // @synthesize prekey=_prekey;
@@ -29,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasSecondaryPrekey;
 
 @end
 

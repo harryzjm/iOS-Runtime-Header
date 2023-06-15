@@ -5,10 +5,11 @@
 //
 
 #import <UIKitCore/UIKeyboardMediaHostProtocol-Protocol.h>
+#import <UIKitCore/_UIStickerPickerHostProtocol-Protocol.h>
 
 @class NSError;
 
-@protocol UIKeyboardMediaServiceRemoteViewControllerDelegate <UIKeyboardMediaHostProtocol>
+@protocol UIKeyboardMediaServiceRemoteViewControllerDelegate <UIKeyboardMediaHostProtocol, _UIStickerPickerHostProtocol>
 - (void)viewServiceDidTerminateWithError:(NSError *)arg1;
 @end
 

@@ -6,11 +6,15 @@
 
 #import <SearchFoundation/NSObject-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString;
+@class NSArray, NSData, NSDictionary, NSString, SFPunchout;
 
 @protocol SFUserReportRequest <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property(copy, nonatomic) NSString *attachmentSectionTitle;
+@property(retain, nonatomic) SFPunchout *disclaimerLearnMorePunchout;
+@property(copy, nonatomic) NSString *disclaimerText;
+@property(copy, nonatomic) NSString *reportOptionsSectionTitle;
 @property(nonatomic) int reportType;
 @property(copy, nonatomic) NSArray *userReportOptions;
 @property(copy, nonatomic) NSString *dismissText;

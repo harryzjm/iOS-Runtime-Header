@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UITextInputSessionAccumulator : NSObject <NSCopying>
+@interface _UITextInputSessionAccumulator : NSObject
 {
     unsigned long long _values[8];
     NSString *_name;

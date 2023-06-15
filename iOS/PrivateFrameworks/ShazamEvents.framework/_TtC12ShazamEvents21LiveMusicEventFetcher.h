@@ -4,27 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
+#import <swiftCore/_TtCs12_SwiftObject.h>
 
 @class MISSING_TYPE;
-@protocol SHWorkerDelegate;
 
-__attribute__((visibility("hidden")))
-@interface _TtC12ShazamEvents21LiveMusicEventFetcher : NSObject
+@interface _TtC12ShazamEvents21LiveMusicEventFetcher : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *workerDelegate;
-    MISSING_TYPE *_isRunning;
+    MISSING_TYPE *$defaultActor;
+    MISSING_TYPE *eventsBundleID;
     MISSING_TYPE *urlSession;
     MISSING_TYPE *$__lazy_storage_$_encoder;
 }
-
-- (void).cxx_destruct;
-- (id)init;
-- (double)timeRequiredToPerformWork;
-- (void)stop;
-@property(nonatomic, readonly) _Bool managesRecordingSession;
-@property(nonatomic) _Bool isRunning;
-@property(nonatomic, retain) id <SHWorkerDelegate> workerDelegate; // @synthesize workerDelegate;
 
 @end
 

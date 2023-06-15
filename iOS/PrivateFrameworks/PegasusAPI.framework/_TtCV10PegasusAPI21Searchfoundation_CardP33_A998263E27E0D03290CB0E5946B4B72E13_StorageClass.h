@@ -29,6 +29,8 @@
     MISSING_TYPE *_flexibleSectionOrder;
     MISSING_TYPE *_entityProtobufMessages;
     MISSING_TYPE *_titleImage;
+    MISSING_TYPE *_backgroundColor;
+    MISSING_TYPE *_metadata;
 }
 
 @end

@@ -9,7 +9,6 @@
 @class GTDownloadContext;
 @protocol MTLCommandQueue, MTLSharedEvent;
 
-__attribute__((visibility("hidden")))
 @interface GTDownloadPoint : NSObject
 {
     GTDownloadContext *_downloadContext;

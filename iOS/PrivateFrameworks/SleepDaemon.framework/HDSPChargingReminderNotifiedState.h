@@ -10,9 +10,9 @@ __attribute__((visibility("hidden")))
 }
 
 - (id)stateName;
-- (void)stateDidExpireWithContext:(id)arg1;
-- (id)nextStateWithContext:(id *)arg1;
-- (void)didEnterWithPreviousState:(id)arg1 context:(id)arg2;
+- (void)stateDidExpire;
+- (void)updateState;
+- (void)didEnter;
 - (id)expirationDate;
 
 @end

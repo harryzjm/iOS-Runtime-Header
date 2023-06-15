@@ -6,10 +6,11 @@
 
 #import <Symbolication/NSObject-Protocol.h>
 
-@class NSString, VMUClassInfoMap, VMUScanOverlay, VMUVMRegion;
+@class NSDictionary, NSString, VMUClassInfoMap, VMUScanOverlay, VMUVMRegion;
 
 @protocol VMUCommonGraphInterface <NSObject>
 @property(readonly, nonatomic) unsigned int idleExitStatus;
+@property(readonly, nonatomic) NSDictionary *ledger;
 @property(readonly, nonatomic) unsigned long long physicalFootprintPeak;
 @property(readonly, nonatomic) unsigned long long physicalFootprint;
 @property(readonly, nonatomic) NSString *binaryImagesDescription;
@@ -27,12 +28,12 @@
 @property(readonly, nonatomic) _Bool isTranslatedByRosetta;
 @property(readonly, nonatomic) _Bool is64bit;
 @property(readonly, nonatomic) int pid;
+- (unsigned long long)ledgerValueForKey:(NSString *)arg1 keyExists:(_Bool *)arg2;
 - (void *)contentForNode:(unsigned int)arg1;
 - (NSString *)shortLabelForNode:(unsigned int)arg1;
 - (NSString *)labelForNode:(unsigned int)arg1;
 - (_Bool)hasLabelsForNodes;
 - (void)refineTypesWithOverlay:(VMUScanOverlay *)arg1;
-- (void)markReachableNodesFromRoots:(void *)arg1 inMap:(void *)arg2;
 - (unsigned int)nodeForAddress:(unsigned long long)arg1;
 - (unsigned int)enumerateReferencesWithBlock:(void (^)(unsigned int, unsigned int, unsigned int, struct, _Bool *))arg1;
 - (unsigned int)enumerateRegionsWithBlock:(void (^)(VMUVMRegion *, _Bool *))arg1;

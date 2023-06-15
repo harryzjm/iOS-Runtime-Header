@@ -10,6 +10,7 @@
 
 @protocol QLItemThumbnailGeneratorProtocol <NSObject>
 - (void)generateThumbnailForItem:(QLItem *)arg1 ofSize:(struct CGSize)arg2 minimumSize:(double)arg3 scale:(double)arg4 badgeType:(unsigned long long)arg5 completionBlock:(void (^)(UIImage *))arg6;
-- (void)generateThumbnailForItem:(QLItem *)arg1 ofSize:(struct CGSize)arg2 minimumSize:(double)arg3 scale:(double)arg4 completionBlock:(void (^)(UIImage *))arg5;
+- (void)generateThumbnailRepresentationForItem:(QLItem *)arg1 ofSize:(struct CGSize)arg2 minimumSize:(double)arg3 scale:(double)arg4 badgeType:(unsigned long long)arg5 completionBlock:(void (^)(QLThumbnailRepresentation *))arg6;
+- (void)generateThumbnailRepresentationForItem:(QLItem *)arg1 ofSize:(struct CGSize)arg2 minimumSize:(double)arg3 scale:(double)arg4 completionBlock:(void (^)(QLThumbnailRepresentation *))arg5;
 @end
 

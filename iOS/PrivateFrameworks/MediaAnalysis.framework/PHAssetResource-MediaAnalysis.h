@@ -11,6 +11,7 @@
 + (CDUnknownBlockType)vcp_ascendingSizeComparator;
 + (id)vcp_allAcceptableResourcesForAsset:(id)arg1;
 + (id)vcp_allResourcesForAsset:(id)arg1;
++ (id)vcp_allowedBundlesForSyndicationLibrary;
 - (struct CGSize)vcp_size;
 - (unsigned long long)vcp_fileSize;
 - (_Bool)vcp_hasExtremeAbnormalDimensionForScene;

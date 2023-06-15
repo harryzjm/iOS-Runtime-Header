@@ -170,6 +170,8 @@
 - (void)addChild:(id)arg1;
 - (void)insertChild:(id)arg1 atIndex:(id)arg2;
 @property(readonly, nonatomic) long long childOrdering;
+- (_Bool)providesBookmarkTitleForChild:(id)arg1;
+- (id)bookmarkTitleProvidingItem;
 - (id)fullyQualifiedRuntimeNameForCARCompiler;
 - (id)fullyQualifiedRuntimeNameProvidingItemForCARCompiler;
 - (id)fullyQualifiedRuntimeName;

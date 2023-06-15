@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface _UIContentUnavailableViewCacheKey : NSObject <NSCopying>
+@interface _UIContentUnavailableViewCacheKey : NSObject
 {
     unsigned long long _style;
     struct CGColor *_color;

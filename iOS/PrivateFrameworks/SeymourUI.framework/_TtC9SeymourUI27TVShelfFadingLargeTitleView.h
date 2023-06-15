@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UICollectionReusableView.h>
+#import <UIKitCore/UICollectionReusableView.h>
 
 @class MISSING_TYPE;
 
@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *indexPath;
     MISSING_TYPE *delegate;
     MISSING_TYPE *shelf;
+    MISSING_TYPE *flipsFading;
     MISSING_TYPE *titleLabel;
     MISSING_TYPE *subtitleLabel;
     MISSING_TYPE *textStackView;

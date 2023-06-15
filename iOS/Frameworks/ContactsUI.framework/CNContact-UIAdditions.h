@@ -9,6 +9,7 @@
 @class NSArray, NSData, NSString;
 
 @interface CNContact (UIAdditions)
++ (long long)rawImageSourceForIdentifier:(id)arg1;
 + (unsigned long long)rawImageTypeForIdentifier:(id)arg1;
 + (id)stringIdentifierForImageType:(unsigned long long)arg1;
 + (id)contactWithStateRestorationCoder:(id)arg1 store:(id)arg2 keys:(id)arg3;
@@ -25,6 +26,7 @@
 - (id)copyWithCuratingBirthdaySuggestion;
 - (id)copyWithCuratingAllSuggestionsAndBirthdaySuggestion;
 - (_Bool)hasImageOfType:(unsigned long long)arg1;
+- (long long)rawImageSource;
 - (unsigned long long)rawImageType;
 @property(readonly, nonatomic) NSData *vCardRepresentation;
 - (id)validPropertiesByEvaluatingPredicate:(id)arg1 onMultiValueProperties:(id)arg2;

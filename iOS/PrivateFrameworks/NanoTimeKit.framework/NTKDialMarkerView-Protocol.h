@@ -9,9 +9,8 @@
 @class UIView;
 
 @protocol NTKDialMarkerView <NSObject>
+@property(nonatomic) double alpha;
 @property(nonatomic) struct CGPoint position;
-- (double)alpha;
-- (void)setAlpha:(double)arg1;
 - (void)setAffineTransform:(struct CGAffineTransform)arg1;
 - (void)removeFromParent;
 - (void)addToParentView:(UIView *)arg1;

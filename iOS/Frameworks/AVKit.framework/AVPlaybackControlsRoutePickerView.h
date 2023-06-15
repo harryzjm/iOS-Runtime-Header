@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface AVPlaybackControlsRoutePickerView : AVRoutePickerView
 {
     AVButton *_customButton;
+    _Bool _secondGenerationButton;
     _Bool _removed;
     _Bool _hasAlternateAppearance;
     _Bool _hasFullScreenAppearance;
@@ -36,6 +37,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, getter=isCollapsed) _Bool collapsed;
 @property(nonatomic, getter=isIncluded) _Bool included;
 @property(readonly, nonatomic, getter=isCollapsedOrExcluded) _Bool collapsedOrExcluded;
+- (id)initWithSecondGenerationButton:(_Bool)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 // Remaining properties

@@ -17,7 +17,8 @@ __attribute__((visibility("hidden")))
     _Bool _disableLabels;
     struct AltitudeDebugSettings _debugSettings;
     struct unique_ptr<md::GlobeAdapter, std::default_delete<md::GlobeAdapter>> _globeAdapter;
-    void *_renderer;
+    void *_globe;
+    void *_engine;
     struct shared_ptr<md::GlobeOverlayContainer> _overlayContainer;
     struct shared_ptr<ggl::FlyoverLibrary> _flyoverLibrary;
     _Bool _initialized;
@@ -52,7 +53,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak id <VKInteractiveMapDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)didBecomeInActive;
 - (void)didBecomeActive;
-- (void)transitionToTracking:(_Bool)arg1 mapMode:(long long)arg2 startLocation:(CDStruct_c3b9c2ee)arg3 startCourse:(double)arg4 cameraController:(id)arg5 pounceCompletionHandler:(CDUnknownBlockType)arg6;
+- (void)transitionToTracking:(_Bool)arg1 mapMode:(long long)arg2 startLocation:(CDStruct_2c43369c)arg3 startCourse:(double)arg4 cameraController:(id)arg5 pounceCompletionHandler:(CDUnknownBlockType)arg6;
 - (struct GlobeOverlayContainer *)overlayContainer;
 - (void)_setDefaultFov:(float)arg1;
 - (void)disableTileAnalytics;
@@ -80,12 +81,12 @@ __attribute__((visibility("hidden")))
 - (void)updateCameraForFrameResize;
 - (void)_update;
 - (void)updateWithTimestamp:(double)arg1 withContext:(void *)arg2;
-- (struct CGPoint)convertCoordinateToCameraModelPoint:(CDStruct_c3b9c2ee)arg1;
-- (struct CGPoint)convertCoordinateToPoint:(CDStruct_c3b9c2ee)arg1;
-- (CDStruct_c3b9c2ee)convertPointToCoordinateOnSphere:(struct CGPoint)arg1;
-- (CDStruct_c3b9c2ee)convertPointToCoordinate:(struct CGPoint)arg1;
-- (struct CGPoint)convertMapPointToPoint:(CDStruct_c3b9c2ee)arg1;
-- (CDStruct_c3b9c2ee)convertPointToMapPoint:(struct CGPoint)arg1;
+- (struct CGPoint)convertCoordinateToCameraModelPoint:(CDStruct_2c43369c)arg1;
+- (struct CGPoint)convertCoordinateToPoint:(CDStruct_2c43369c)arg1;
+- (CDStruct_2c43369c)convertPointToCoordinateOnSphere:(struct CGPoint)arg1;
+- (CDStruct_2c43369c)convertPointToCoordinate:(struct CGPoint)arg1;
+- (struct CGPoint)convertMapPointToPoint:(CDStruct_2c43369c)arg1;
+- (CDStruct_2c43369c)convertPointToMapPoint:(struct CGPoint)arg1;
 - (void)stopAnimations;
 - (void)resumeFlyoverTourAnimation;
 - (void)pauseFlyoverTourAnimation;

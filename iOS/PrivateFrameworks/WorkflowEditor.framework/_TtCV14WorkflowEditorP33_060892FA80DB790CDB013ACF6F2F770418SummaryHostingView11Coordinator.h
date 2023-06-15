@@ -19,6 +19,7 @@
 - (void)showVariableEditorWithOptions:(id)arg1 fromSourceRect:(struct CGRect)arg2;
 - (void)revealAction:(id)arg1 preScrollHandler:(CDUnknownBlockType)arg2 goBackHandler:(CDUnknownBlockType)arg3 scrolledAwayHandler:(CDUnknownBlockType)arg4;
 - (void)showActionOutputPickerAllowingShortcutInput:(_Bool)arg1 variableProvider:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)summaryCoordinator:(id)arg1 outputButtonDidChange:(_Bool)arg2;
 - (void)summaryCoordinator:(id)arg1 disclosureArrowDidChange:(_Bool)arg2;
 - (void)summaryCoordinatorDidInvalidateSize:(id)arg1;
 - (id)viewControllerForCoordinator:(id)arg1;

@@ -17,6 +17,7 @@
 }
 
 - (void)p_renderIntoContext:(struct CGContext *)arg1 visible:(struct CGRect)arg2;
+- (void)p_renderLabelsWithLabelCount:(unsigned long long)arg1 transforms:(struct CGAffineTransform *)arg2 clipRects:(struct CGRect *)arg3 strings:(id)arg4 context:(struct CGContext *)arg5 tLayerRect:(struct CGRect)arg6 groupedShadows:(_Bool)arg7 groupedTransparencyLayerOpened:(_Bool *)arg8 textEngine:(id)arg9 paragraphStyle:(id)arg10 viewScale:(double)arg11;
 - (void)p_drawLabels:(struct CGContext *)arg1 visible:(struct CGRect)arg2;
 - (struct CGPath *)roundedCornerPathForRect:(struct CGRect)arg1 shouldRoundOuterEndOnly:(_Bool)arg2 relativelyPositive:(_Bool)arg3;
 - (id)stackRectsWithContext:(struct CGContext *)arg1;

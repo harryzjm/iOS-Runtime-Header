@@ -39,6 +39,8 @@ __attribute__((visibility("hidden")))
 - (void)_installGhostPortalForPreview:(id)arg1;
 - (id)_primaryPlatterView;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (struct CGPoint)_badgeCenter;
+- (void)updateFlockLocation;
 - (struct CGPoint)badgeLocationInView:(id)arg1;
 - (void)unflock;
 - (void)unflockToDrag:(_Bool)arg1 animated:(_Bool)arg2;

@@ -7,7 +7,9 @@
 #import <HomeKitDaemonLegacy/NSObject-Protocol.h>
 
 @protocol HMDThreadNetworkMetadataStore <NSObject>
+- (void)checkIfThreadNetworkIsRunningWithCompletion:(void (^)(_Bool, NSError *))arg1;
 - (void)removePreferredNetworkWithCompletion:(void (^)(NSError *))arg1;
+- (void)triggerPreferredNetworkUpdateWithCompletion:(void (^)(NSError *))arg1;
 - (void)retrieveMetadataWithCompletion:(void (^)(HMThreadNetworkMetadata *, NSError *))arg1;
 @end
 

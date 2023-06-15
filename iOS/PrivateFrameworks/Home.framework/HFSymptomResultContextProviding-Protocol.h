@@ -14,6 +14,8 @@
 @property(readonly, copy, nonatomic) NSString *accessoryNetworkSSID;
 @property(readonly, copy, nonatomic) NSString *currentDeviceNetworkSSID;
 @property(readonly, copy, nonatomic) NSUUID *accessoryUUID;
+@property(readonly, copy, nonatomic) NSString *detailedErrorDescriptionForiCloudSymptom;
+@property(readonly, copy, nonatomic) NSString *accessoryCategory;
 @property(readonly, copy, nonatomic) NSString *accessoryName;
 @property(readonly, copy, nonatomic) NSString *homeKitObjectName;
 - (long long)fixStateForSymptom:(HMSymptom *)arg1;

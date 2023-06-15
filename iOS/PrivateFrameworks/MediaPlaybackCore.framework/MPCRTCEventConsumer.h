@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MPCPlaybackEngineEvent, NSString, RTCReporting;
+@class MPCPlaybackEngineEvent, NSString;
 @protocol MPCPlaybackEngineEventStreamSubscription, MPCRTCEventConsumerTestingDelegate, OS_dispatch_group, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -17,9 +17,6 @@ __attribute__((visibility("hidden")))
     MPCPlaybackEngineEvent *_cachedFirstItemAssetLoadEvent;
     id <MPCRTCEventConsumerTestingDelegate> _testingDelegate;
     id <MPCPlaybackEngineEventStreamSubscription> _subscription;
-    RTCReporting *_playbackSessionRTCSession;
-    RTCReporting *_playbackQueueRTCSession;
-    RTCReporting *_playbackItemRTCSession;
 }
 
 + (id)identifier;
@@ -30,17 +27,14 @@ __attribute__((visibility("hidden")))
 + (id)playerServiceNameWithPlayerID:(id)arg1;
 + (id)identifierStringFromItemIdentifiers:(id)arg1 radioIdentifiers:(id)arg2;
 - (void).cxx_destruct;
-@property(retain) RTCReporting *playbackItemRTCSession; // @synthesize playbackItemRTCSession=_playbackItemRTCSession;
-@property(retain) RTCReporting *playbackQueueRTCSession; // @synthesize playbackQueueRTCSession=_playbackQueueRTCSession;
-@property(retain) RTCReporting *playbackSessionRTCSession; // @synthesize playbackSessionRTCSession=_playbackSessionRTCSession;
 @property(readonly, nonatomic) id <MPCPlaybackEngineEventStreamSubscription> subscription; // @synthesize subscription=_subscription;
 @property(nonatomic) __weak id <MPCRTCEventConsumerTestingDelegate> testingDelegate; // @synthesize testingDelegate=_testingDelegate;
-- (void)_sendOneMessageWithToken:(id)arg1 serviceName:(id)arg2 category:(long long)arg3 type:(long long)arg4 payload:(id)arg5;
+- (void)_sendOneMessageWithCategory:(long long)arg1 type:(long long)arg2 payload:(id)arg3;
 - (void)_sendReportWithSession:(id)arg1 category:(long long)arg2 type:(long long)arg3 payload:(id)arg4;
 - (id)_rtcUserInfoWithServiceName:(id)arg1;
-- (id)_rtcSessionInfoWithToken:(id)arg1;
-- (void)_generateConfiguredReportingSessionWithToken:(id)arg1 serviceName:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_updateAssetLoadInfoEvent:(id)arg1 fromAssetLoadEndEvent:(id)arg2 cursor:(id)arg3;
+- (id)_rtcSessionInfoWithSamplingUUID:(id)arg1;
+- (void)_generateConfiguredReportingSessionWithSamplingUUID:(id)arg1 serviceName:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_updateAssetLoadInfoEvent:(id)arg1 fromAssetLoadEndEvent:(id)arg2 untilAssetLoadBeginEvent:(id)arg3 cursor:(id)arg4;
 - (void)_performABCSnapshotWithPayloadIfNecessary:(id)arg1;
 - (id)_underlyingErrorFromPayload:(id)arg1;
 - (_Bool)_itemWasPreviouslyLoaded:(id)arg1 cursor:(id)arg2;

@@ -28,7 +28,7 @@
 - (int)geometryCount;
 - (unsigned int)geometryOffset;
 - (void)generateArrays;
-- (void)p_updateNormalizedSpineScaleMappingsUsingTransform:(const void *)arg1 forSpineGenerator:(id)arg2;
+- (void)p_updateNormalizedSpineScaleMappingsUsingTransform:(void *)arg1 forSpineGenerator:(id)arg2;
 - (void)debug_printDataPoints;
 - (void)p_insertCrossPointsIntoVector:(void *)arg1;
 @property(readonly, nonatomic) float size;

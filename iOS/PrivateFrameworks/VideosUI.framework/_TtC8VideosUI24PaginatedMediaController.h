@@ -11,10 +11,15 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *showsGradient;
     MISSING_TYPE *showsPageControl;
+    MISSING_TYPE *shouldUsePageControlProgress;
+    MISSING_TYPE *pageControlBottomMarginConstraint;
+    MISSING_TYPE *pageControlBottomMargin;
     MISSING_TYPE *shouldAdjustCaptionPosition;
     MISSING_TYPE *viewModels;
     MISSING_TYPE *paginationDelegate;
     MISSING_TYPE *lastImpressedIndex;
+    MISSING_TYPE *previousPlaybackEnabled;
+    MISSING_TYPE *hideGradientView;
     MISSING_TYPE *carouselBehaviorEnabled;
     MISSING_TYPE *backgroundMediaInfo;
     MISSING_TYPE *backgroundMediaController;
@@ -25,6 +30,8 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *$__lazy_storage_$_containerView;
     MISSING_TYPE *$__lazy_storage_$_mediaShowcaseConfig;
     MISSING_TYPE *$__lazy_storage_$_pageControl;
+    MISSING_TYPE *$__lazy_storage_$_pageProgress;
+    MISSING_TYPE *playerProgressTimer;
     MISSING_TYPE *enablePageControlTimer;
     MISSING_TYPE *chevronDebounceTimer;
     MISSING_TYPE *swipeController;
@@ -35,6 +42,9 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *$__lazy_storage_$_buttonsView;
     MISSING_TYPE *observers;
     MISSING_TYPE *isAutoAdvanceEnabled;
+    MISSING_TYPE *vuiIsUserInteractionEnabled;
+    MISSING_TYPE *shouldAutoAdvanceLastPage;
+    MISSING_TYPE *autoAdvanceForIdleVideo;
     MISSING_TYPE *autoAdvancePageTimer;
     MISSING_TYPE *showsIndicators;
     MISSING_TYPE *_metadataViewTopOffsetStream;
@@ -42,6 +52,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *$__lazy_storage_$_layout;
     MISSING_TYPE *isCurrentMetadataLoadedObserver;
     MISSING_TYPE *isPlayingVideo;
+    MISSING_TYPE *viewMetricsRecorder;
 }
 
 - (void).cxx_destruct;
@@ -52,6 +63,8 @@ __attribute__((visibility("hidden")))
 - (void)transitionToFullScreenAnimated:(_Bool)arg1;
 - (void)vui_viewDidLayoutSubviews;
 - (void)mediaControllerTapped:(id)arg1;
+- (void)vui_viewWillAppear:(_Bool)arg1;
+- (void)vui_viewWillDisappear:(_Bool)arg1;
 - (void)vui_viewDidLoad;
 - (id)initWithCoder:(id)arg1;
 

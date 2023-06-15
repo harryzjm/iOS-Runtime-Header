@@ -5,6 +5,6 @@
 //
 
 @interface (null) (SessionCore)
-- (_Bool)subscribeToActivityQoSMatching:(id)arg1 error:(id *)arg2;
+- (void)listener:(id)arg1 didReceiveConnection:(id)arg2 withContext:(id)arg3;
 @end
 

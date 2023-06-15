@@ -12,6 +12,7 @@
 - (void)getDataMode:(CTServiceDescriptor *)arg1 completion:(void (^)(NSNumber *, NSError *))arg2;
 - (void)setSupports5GStandalone:(CTServiceDescriptor *)arg1 enabled:(_Bool)arg2 completion:(void (^)(NSError *))arg3;
 - (void)getSupports5GStandalone:(CTServiceDescriptor *)arg1 completion:(void (^)(NSNumber *, NSError *))arg2;
+- (void)getNRStatus:(CTServiceDescriptor *)arg1 completion:(void (^)(CTNRStatus *, NSError *))arg2;
 - (void)getNRDisableStatus:(CTServiceDescriptor *)arg1 completion:(void (^)(CTNRStatus *, NSError *))arg2;
 - (void)getSignalStrengthMeasurementsAsync:(CTServiceDescriptor *)arg1 completion:(void (^)(CTSignalStrengthMeasurements *, NSError *))arg2;
 - (void)getSignalStrengthMeasurements:(CTServiceDescriptor *)arg1 completion:(void (^)(CTSignalStrengthMeasurements *, NSError *))arg2;

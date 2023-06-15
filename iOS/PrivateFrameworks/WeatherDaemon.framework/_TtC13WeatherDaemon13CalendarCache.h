@@ -10,7 +10,7 @@
 
 @interface _TtC13WeatherDaemon13CalendarCache : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *_calendars;
+    MISSING_TYPE *calendars;
 }
 
 @end

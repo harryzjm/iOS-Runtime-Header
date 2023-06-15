@@ -6,9 +6,18 @@
 
 #import <Messages/NSObject-Protocol.h>
 
-@class NSData, NSString, NSURL;
+@class NSArray, NSData, NSDictionary, NSString, NSURL, NSUUID;
 
 @protocol MSStickerPrivate <NSObject>
+@property(readonly, nonatomic) NSURL *animatedImageCacheURL;
+@property(readonly, nonatomic) NSDictionary *attributionInfo;
+@property(readonly, nonatomic) NSData *metadata;
+@property(readonly, nonatomic) NSString *externalURI;
+@property(readonly, nonatomic) NSArray *representations;
+@property(retain, nonatomic) NSString *stickerPackGUID;
+@property(readonly, nonatomic) NSString *stickerName;
+@property(readonly, nonatomic) NSUUID *stickerIdentifier;
+@property(readonly, nonatomic) unsigned long long stickerEffectType;
 @property(readonly, nonatomic) NSData *data;
 @property(readonly, copy, nonatomic) NSString *localizedDescription;
 @property(readonly, nonatomic) NSURL *imageFileURL;

@@ -4,10 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CIImage, NSString, PFParallaxLayer;
+@class CIImage, NSData, NSString, PFParallaxLayer;
 @protocol NUImageBuffer;
 
 @protocol _PIParallaxLayerStackRenderer
+- (PFParallaxLayer *)layerForVideoData:(NSData *)arg1 zPosition:(double)arg2 identifier:(NSString *)arg3;
 - (PFParallaxLayer *)layerForBuffer:(id <NUImageBuffer>)arg1 image:(CIImage *)arg2 zPosition:(double)arg3 identifier:(NSString *)arg4;
 - (id <NUImageBuffer>)newRenderedPixelBufferFromImage:(CIImage *)arg1 hasAlpha:(_Bool)arg2 error:(out id *)arg3;
 @end

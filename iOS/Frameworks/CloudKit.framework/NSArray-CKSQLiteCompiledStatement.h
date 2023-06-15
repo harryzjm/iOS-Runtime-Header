@@ -26,6 +26,9 @@
 - (id)CKMapToDictionary:(CDUnknownBlockType)arg1;
 - (id)CKMapWithIndex:(CDUnknownBlockType)arg1;
 - (id)CKMap:(CDUnknownBlockType)arg1;
+- (id)ckEquivalencyProperties;
+- (id)CKDeepCopyWithLeafNodeCopyBlock:(CDUnknownBlockType)arg1;
+- (id)CKDeepCopy;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

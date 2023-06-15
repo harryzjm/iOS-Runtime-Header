@@ -7,7 +7,7 @@
 @protocol DIPGestaltHlprProtocol
 - (_Bool)isFaceIDDevice;
 - (_Bool)isIPad;
-- (id)copyAnswer:(const struct __CFString *)arg1;
+- (id)copyAnswer:(struct __CFString *)arg1;
 - (long long)sikaVersion;
 - (_Bool)hasPKASupport;
 @end

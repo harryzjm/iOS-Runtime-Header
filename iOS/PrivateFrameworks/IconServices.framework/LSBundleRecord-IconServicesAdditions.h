@@ -7,6 +7,7 @@
 #import <CoreServices/LSBundleRecord.h>
 
 @interface LSBundleRecord (IconServicesAdditions)
+- (unsigned long long)_IS_platformToIFPlatform;
 - (_Bool)_IS_allows1016Sufix;
 - (id)_IS_iconDictionaryForType:(id)arg1;
 - (id)_IS_iconDictionaryForTag:(id)arg1 tagClass:(id)arg2;

@@ -14,6 +14,7 @@
 @optional
 @property(readonly, copy, nonatomic) NSUUID *hmd_parentModelID;
 @property(readonly, copy, nonatomic) NSUUID *hmd_modelID;
+- (NSArray *)hmd_modelsWithChangeType:(unsigned long long)arg1 detached:(_Bool)arg2 createManagedObject:(_Bool)arg3 error:(id *)arg4;
 - (NSArray *)hmd_modelsWithChangeType:(unsigned long long)arg1 detached:(_Bool)arg2 error:(id *)arg3;
 @end
 

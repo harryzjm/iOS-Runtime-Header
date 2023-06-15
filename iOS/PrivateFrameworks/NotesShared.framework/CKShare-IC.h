@@ -9,8 +9,10 @@
 @class NSArray;
 
 @interface CKShare (IC)
++ (id)ic_systemFieldsValueTransformer;
 - (unsigned long long)_nonOwnerParticipantsCountWithAcceptanceStatus:(long long)arg1;
 - (unsigned long long)_nonCurrentUserParticipantsCountWithAcceptanceStatus:(long long)arg1;
+- (id)ic_participantWithHandle:(id)arg1;
 - (id)ic_participantWithUserRecordName:(id)arg1;
 @property(readonly, nonatomic) _Bool ic_isPublicShare;
 @property(readonly, nonatomic) NSArray *ic_nonCurrentUserAcceptedParticipants;

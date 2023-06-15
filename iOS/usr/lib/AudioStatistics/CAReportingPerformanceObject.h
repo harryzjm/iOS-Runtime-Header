@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, NSString;
+@class NSDictionary, NSLock, NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface CAReportingPerformanceObject : NSObject
@@ -14,16 +14,19 @@ __attribute__((visibility("hidden")))
     unsigned short _serviceType;
     NSDictionary *_performanceMetrics;
     NSDictionary *_configuration;
-    NSArray *_processIdentifiers;
+    NSMutableArray *_processIdentifiers;
     NSString *_hostApplicationDisplayID;
+    NSLock *_sessionsLock;
 }
 
 - (void).cxx_destruct;
-@property(retain) NSString *hostApplicationDisplayID; // @synthesize hostApplicationDisplayID=_hostApplicationDisplayID;
-@property(retain) NSArray *processIdentifiers; // @synthesize processIdentifiers=_processIdentifiers;
+@property(retain, nonatomic) NSLock *sessionsLock; // @synthesize sessionsLock=_sessionsLock;
+@property(retain, nonatomic) NSString *hostApplicationDisplayID; // @synthesize hostApplicationDisplayID=_hostApplicationDisplayID;
+@property(retain, nonatomic) NSMutableArray *processIdentifiers; // @synthesize processIdentifiers=_processIdentifiers;
 @property(retain, nonatomic) NSDictionary *configuration; // @synthesize configuration=_configuration;
 @property(nonatomic) unsigned short serviceType; // @synthesize serviceType=_serviceType;
 @property(readonly, nonatomic) NSDictionary *performanceMetrics; // @synthesize performanceMetrics=_performanceMetrics;
+- (void)abandon;
 - (id)endAndReturnPerformanceMetrics;
 - (void)begin;
 - (id)initWithProcessIdentifiers:(id)arg1;

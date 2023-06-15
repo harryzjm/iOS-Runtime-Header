@@ -15,9 +15,11 @@ __attribute__((visibility("hidden")))
     MusicKit_SoftLinking_MPModelObject *_modelObject;
     long long _enableState;
     NSArray *_relatedModelObjects;
+    unsigned long long _constraints;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long constraints; // @synthesize constraints=_constraints;
 @property(copy, nonatomic) NSArray *relatedModelObjects; // @synthesize relatedModelObjects=_relatedModelObjects;
 @property(nonatomic) long long enableState; // @synthesize enableState=_enableState;
 @property(retain, nonatomic) MusicKit_SoftLinking_MPModelObject *modelObject; // @synthesize modelObject=_modelObject;

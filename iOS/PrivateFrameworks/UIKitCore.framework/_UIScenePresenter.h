@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class FBScene, NSString, UIScenePresentationContext, UIView, _UIScenePresentationView, _UIScenePresenterOwner;
+@class FBScene, NSHashTable, NSString, UIScenePresentationContext, UIView, _UIScenePresentationView, _UIScenePresenterOwner;
 @protocol NSCopying, NSCopying><_UIComparable, UIScenePresentation;
 
 __attribute__((visibility("hidden")))
@@ -20,14 +20,13 @@ __attribute__((visibility("hidden")))
     _Bool _invalidated;
     _Bool _visibilityPropagationEnabled;
     _UIScenePresentationView *_view;
-    _Bool _enabled;
+    NSHashTable *_observers;
     _Bool _hosting;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic, getter=isVisibilityPropagationEnabled) _Bool visibilityPropagationEnabled; // @synthesize visibilityPropagationEnabled=_visibilityPropagationEnabled;
-@property(nonatomic, getter=isHosting) _Bool hosting; // @synthesize hosting=_hosting;
-@property(nonatomic, getter=isActive) _Bool enabled; // @synthesize enabled=_enabled;
+@property(readonly, nonatomic, getter=isHosting) _Bool hosting; // @synthesize hosting=_hosting;
 @property(readonly, copy, nonatomic) UIScenePresentationContext *presentationContext; // @synthesize presentationContext=_presentationContext;
 @property(readonly, copy, nonatomic) id <NSCopying> sortContext; // @synthesize sortContext=_sortContext;
 @property(nonatomic) double _initializeTime; // @synthesize _initializeTime;
@@ -41,12 +40,16 @@ __attribute__((visibility("hidden")))
 - (id)newSnapshotContext;
 - (id)newSnapshot;
 - (void)modifyPresentationContext:(CDUnknownBlockType)arg1;
+- (_Bool)_isHosting;
+- (void)updateHostingStateIfNecessary;
 @property(readonly, nonatomic, getter=isActive) _Bool active;
 @property(readonly, copy, nonatomic) NSString *identifier;
 @property(readonly, nonatomic) __weak FBScene *scene;
 - (void)invalidate;
 - (void)deactivate;
 - (void)activate;
+- (void)removeObserver:(id)arg1;
+- (void)addObserver:(id)arg1;
 @property(readonly, nonatomic, getter=isInvalidated) _Bool invalidated;
 - (long long)compare:(id)arg1;
 - (void)dealloc;
@@ -55,6 +58,7 @@ __attribute__((visibility("hidden")))
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
+@property(readonly, nonatomic, getter=isActive) _Bool enabled;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

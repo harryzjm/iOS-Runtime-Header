@@ -13,8 +13,8 @@ __attribute__((visibility("hidden")))
 
 + (double)expandedFontSize;
 + (double)baseFontSize;
-- (unsigned long long)trailingNumberOfItemsForWidth:(double)arg1 includingPrivacyIndicator:(_Bool)arg2;
-- (unsigned long long)leadingNumberOfItemsForWidth:(double)arg1;
+- (id)trailingItemCutoffWidths;
+- (id)leadingItemCutoffWidths;
 - (double)expandedIconScale;
 - (double)normalIconScale;
 - (double)lowerExpandedBaselineOffset;

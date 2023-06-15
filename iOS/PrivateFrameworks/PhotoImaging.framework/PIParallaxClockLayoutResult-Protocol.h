@@ -9,7 +9,7 @@
 @class NSString;
 
 @protocol PIParallaxClockLayoutResult <NURenderResult>
-@property(readonly, nonatomic) _Bool clockIntersectsForeground;
+@property(readonly, nonatomic) unsigned long long clockIntersection;
 @property(readonly, nonatomic) NSString *clockLayerOrder;
 @end
 

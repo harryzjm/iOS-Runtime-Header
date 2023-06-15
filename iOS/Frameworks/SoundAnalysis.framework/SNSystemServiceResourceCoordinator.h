@@ -6,20 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
 @interface SNSystemServiceResourceCoordinator : NSObject
 {
+    MISSING_TYPE *maySuppressMicrophoneUsageIndicator;
 }
 
-- (id)createSystemAudioAnalyzer;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (id)init;
+- (id)createSystemAudioAnalyzerWithError:(id *)arg1;
 
 @end
 

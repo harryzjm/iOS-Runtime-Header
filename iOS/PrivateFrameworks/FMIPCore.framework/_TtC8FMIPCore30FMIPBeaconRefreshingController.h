@@ -13,13 +13,15 @@
     MISSING_TYPE *identifier;
     MISSING_TYPE *refreshQueue;
     MISSING_TYPE *filterQueue;
-    MISSING_TYPE *beacons;
+    MISSING_TYPE *spBeacons;
+    MISSING_TYPE *appBeacons;
     MISSING_TYPE *unknownBeacons;
     MISSING_TYPE *itemGroups;
     MISSING_TYPE *ownerSession;
     MISSING_TYPE *currentlyRefreshing;
     MISSING_TYPE *nextRefreshQueued;
     MISSING_TYPE *lastRefreshTime;
+    MISSING_TYPE *shouldUseBeaconsOptimizationSPI;
     MISSING_TYPE *delegate;
     MISSING_TYPE *lastActiveTimestamp;
     MISSING_TYPE *callbackInterval;
@@ -30,6 +32,7 @@
     MISSING_TYPE *separationMonitoringState;
     MISSING_TYPE *clientConfiguration;
     MISSING_TYPE *refreshingPolicy;
+    MISSING_TYPE *isThrottledOverride;
     MISSING_TYPE *isThrottled;
     MISSING_TYPE *isRefreshing;
 }

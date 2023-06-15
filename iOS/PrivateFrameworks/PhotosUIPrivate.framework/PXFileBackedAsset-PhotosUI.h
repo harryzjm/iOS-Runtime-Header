@@ -43,7 +43,7 @@
 @property(readonly, nonatomic) unsigned long long mediaType;
 @property(readonly, nonatomic) _Bool needsDeferredProcessing;
 @property(readonly, nonatomic) long long playbackStyle;
-@property(readonly, nonatomic) long long playbackVariation;
+@property(readonly, nonatomic) unsigned short playbackVariation;
 @property(readonly) Class superclass;
 @property(readonly, nonatomic) NSString *uniformTypeIdentifier;
 @property(readonly, nonatomic) NSString *uuid;

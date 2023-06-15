@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MISSING_TYPE, NSArray, NSDate, NSMutableArray, RS3DSurface, RSGeometryMeta, RSTextCoachingSignal;
+@class MISSING_TYPE, NSArray, NSDate, NSMutableArray, RS3DSurface, RSSemanticImage, RSTextCoachingSignal;
 
 #pragma mark Named Structures
 
@@ -24,16 +24,6 @@ struct BackBone_Param {
     _Bool filter_line_proposal;
 };
 
-struct Box3d {
-    struct box3d _field1;
-    id _field2;
-    float _field3;
-    id _field4;
-    struct vector<float, std::allocator<float>> _field5;
-    id _field6;
-    short _field7;
-};
-
 struct CGPoint {
     double x;
     double y;
@@ -50,16 +40,10 @@ struct CGSize {
 };
 
 struct CoachingModel {
-    struct DMat _w1;
-    struct DMat _b1;
-    struct DMat _w2;
-    struct DMat _b2;
-};
-
-struct DMat {
-    int rows;
-    int cols;
-    double *data;
+    struct Mat _w1;
+    struct Mat _b1;
+    struct Mat _w2;
+    struct Mat _b2;
 };
 
 struct DRIFT_DETECTION_CONFIG {
@@ -90,6 +74,62 @@ struct DistanceCoaching {
 struct DriftFrameInternalWraper;
 
 struct EdgeRefinement;
+
+struct GeometryMeta {
+    _Bool is_center_scale_updated;
+    float pixel_size;
+    float floor_height;
+    float ceiling_height;
+    float support_height;
+    int center__scale__shift__image_size;
+    int floor_ceiling_count__z_slice;
+    float visual_ceiling_height;
+    float visual_floor_height;
+};
+
+struct GlobalOptimization {
+    CDUnknownFunctionPointerType *_vptr$GlobalOptimization;
+    float small_wall_len_thr;
+    float small_wall_score_thr;
+    float corner_dis_thr;
+    float noise_small_wall_len_thr;
+    float occlusion_thr;
+    float ceiling_visible_thr;
+    float gap_to_ceiling_thr;
+    float window_upper_thr;
+    float window_lower_thr;
+    float window_len_thr;
+    float mirror_thr;
+    float stair_thr;
+    float occlusion_score_thr;
+    float edge_score_thr;
+    float uniform_height_merge_thr;
+    float uniform_and_slanted_height_refine_thr;
+    float neighbor_height_align_thr;
+};
+
+struct HeightCoreEspV1 {
+    CDUnknownFunctionPointerType *_vptr$HeightCoreBase;
+    RSSemanticImage *_height_model_input;
+    struct LineGeneration _line_generator;
+    struct GlobalOptimization _global_optimization;
+    unsigned int flt_type;
+    struct vector<std::string, std::allocator<std::string>> _inputs_name;
+    struct vector<std::string, std::allocator<std::string>> _outputs_name;
+    struct vector<roomscancore::nuh_model::post_type::Path3D, std::allocator<roomscancore::nuh_model::post_type::Path3D>> _path_pool;
+    struct PathFusion _path_fusion;
+    struct Simplification *_simplification_online;
+    struct Simplification *_simplification_offline;
+    struct IEspresso_Interface_v1 _net;
+};
+
+struct HeightLineFit {
+    CDUnknownFunctionPointerType *_vptr$HeightLineFit;
+    float edge_score_thr;
+    int noise_thr;
+    float pixel_sz;
+    float valid_length_thr;
+};
 
 struct HoleOpening;
 
@@ -138,8 +178,8 @@ struct Lcnn_FC2 {
 
 struct Lcnn_Floorplan_Post {
     float *density_buffer;
-    struct willow_lcnn_lines lcnn_lines;
-    struct willow_lcnn_juncs lcnn_juncs;
+    struct lcnn_lines lcnn_lines;
+    struct lcnn_juncs lcnn_juncs;
     struct PostProcess_Param _param;
 };
 
@@ -162,6 +202,84 @@ struct LightCoaching {
     struct CoachingModel _model;
 };
 
+struct Line<float __attribute__((ext_vector_type(2)))> {
+    MISSING_TYPE *corners[2];
+};
+
+struct Line<float __attribute__((ext_vector_type(3)))> {
+    MISSING_TYPE *corners[2];
+};
+
+struct LineGeneration {
+    CDUnknownFunctionPointerType *_vptr$LineGeneration;
+    struct HeightLineFit height_fit;
+    int gt_width;
+};
+
+struct MULTI_ROOM_CONFIG {
+    float dist_thres;
+    float iou_thres;
+    float angle_thres;
+    float angle_thres_for_small_walls;
+    float small_wall_length_thres;
+    float corner_dist_thres;
+    float overlap_angle_thres;
+    float overlap_dist_thres;
+    float overlap_iou_thres;
+    float overlap_min_line_length;
+    float acute_angle_thres;
+    float shorten_len_thr;
+    float one_vs_two_shorten_len_thr;
+    float line_equation_thres;
+    float parallel_angle_thres;
+    float identical_length_eps;
+    float identical_dist_eps;
+    float identical_overlap_iou_thres;
+    float identical_length_eps_door;
+    float identical_dist_eps_door;
+    float identical_overlap_iou_thres_door;
+    float overlap_iou_thres_door;
+    float overlap_dist_thres_door;
+    float identical_length_eps_window;
+    float identical_dist_eps_windor;
+    float identical_overlap_iou_thres_window;
+    float overlap_angle_thres_window;
+    float overlap_iou_thres_window;
+    float overlap_dist_thres_window;
+    float overlap_height_thres_window;
+    float clustering_dist_threshold;
+    float manhattan_wall_diff_threshold;
+    float normal_shift_threshold;
+    float internal_wall_thickness_threshold;
+    float internal_wall_min_thickness_threshold;
+    float z_shape_anchor_wall_threshold;
+    float z_shape_wall_angle_diff_threshold;
+    float merged_normal_angle_difference_threshold;
+    float global_wall_height_ceiling_threshold;
+    float global_wall_height_floor_threshold;
+    float polygon_quads_iou_clear_threshold;
+    float polygon_quads_corner_xy_dist_threshold;
+    float polygon_quads_corner_z_dist_threshold;
+    float polygon_corner_z_diff_threshold;
+    float floor_clustering_update_ratio_threshold;
+    float room_type_polygon_iou_merge_threshold;
+    float max_height_diff_to_upper_level_floor;
+    float height_gap_to_upper_level_floor;
+    float min_length_for_principal_direction;
+    float max_wall_angle_diff_for_principal_direction;
+    float max_room_angle_diff_for_principal_direction;
+    float max_length_for_non_connected_tiny_wall;
+    float max_outlier_room_xy_distance;
+    float max_outlier_room_height_distance;
+    float min_ratio_for_outlier_room;
+    float max_angle_for_rooms_with_overlap;
+    float min_ratio_for_different_angle_in_same_level_room;
+    float min_overlap_threshold_for_different_angle_rooms;
+    float min_room_intersection_ratio_in_same_level;
+    float min_room_polygon_overlap_ratio_in_same_level;
+    float min_room_wall_merge_ratio_in_same_level;
+};
+
 struct MarkerProposal {
     CDUnknownFunctionPointerType *_vptr$MarkerProposal;
     float _extend_length;
@@ -171,6 +289,12 @@ struct MarkerProposal {
     struct Structure_complete _alg_structure_complete;
     struct vector<marker_proposal::ProposalWrapper, std::allocator<marker_proposal::ProposalWrapper>> _pool;
     struct vector<std::vector<float __attribute__((ext_vector_type(3)))>, std::allocator<std::vector<float __attribute__((ext_vector_type(3)))>>> _all_major_convex_hulls;
+};
+
+struct Mat {
+    int rows;
+    int cols;
+    double *data;
 };
 
 struct MergerForDoorWindow {
@@ -184,12 +308,8 @@ struct MergerForDoorWindow {
     NSMutableArray *_prev_instances_to_keep;
 };
 
-struct NonUniformHeightEstimation {
-    double _floor_global_value;
-    double _ceiling_global_value;
-    struct unordered_map<std::string, PointsLine, std::hash<std::string>, std::equal_to<std::string>, std::allocator<std::pair<const std::string, PointsLine>>> _line_points;
-    struct unordered_map<std::string, IndividualWallHeightStruct, std::hash<std::string>, std::equal_to<std::string>, std::allocator<std::pair<const std::string, IndividualWallHeightStruct>>> _individual_wall_height;
-    struct vector<SegmentsInfo, std::allocator<SegmentsInfo>> _valid_line_segments;
+struct OBBDetector {
+    struct optional<float __attribute__((ext_vector_type(2)))> _prev_main_vec;
 };
 
 struct ONLINE_BAY_WINDOW_CONFIG {
@@ -352,6 +472,15 @@ struct OpeningHeightAlignment {
     struct vector<rs_oalign::HoleOpening, std::allocator<rs_oalign::HoleOpening>> _hole_vector;
 };
 
+struct Path3D;
+
+struct PathFusion {
+    CDUnknownFunctionPointerType *_vptr$PathFusion;
+    float height_diff_thr;
+    float slanted_seg_len_thr;
+    struct map<std::string, int, std::less<std::string>, std::allocator<std::pair<const std::string, int>>> _skip_stat_dict;
+};
+
 struct PostProcess_Param {
     unsigned long long image_sz;
     float pixel_m;
@@ -382,8 +511,8 @@ struct ProposalWrapper;
 struct RS3DSurfaceOnline {
     CDUnknownFunctionPointerType *_vptr$RS3DSurfaceOnline;
     RS3DSurface *surface;
-    struct RSLine2D line_2d;
-    struct RSLine3D line_3d;
+    struct Line<float __attribute__((ext_vector_type(2)))> line_2d;
+    struct Line<float __attribute__((ext_vector_type(3)))> line_3d;
     float floor_height;
     float ceiling_height;
     float height;
@@ -399,6 +528,7 @@ struct RS3DSurfaceOnline {
     int debug_idx;
     int wall_type;
     int standalone_opening_count;
+    _Bool is_bay_window_wall;
     struct basic_string<char, std::char_traits<char>, std::allocator<char>> _uuid;
     struct basic_string<char, std::char_traits<char>, std::allocator<char>> _parrent_uuid;
 };
@@ -442,27 +572,16 @@ struct RSFloorPlanOnline {
     struct vector<rs_ol::RS3DSurfaceOnline, std::allocator<rs_ol::RS3DSurfaceOnline>> _empty_lists;
 };
 
-struct RSLine2D {
-    CDUnknownFunctionPointerType *_vptr$RSLine2D;
-    MISSING_TYPE *pt[2];
-};
-
-struct RSLine3D {
-    CDUnknownFunctionPointerType *_vptr$RSLine3D;
-    MISSING_TYPE *pt[2];
-};
-
 struct RSLocalStandardization {
     CDUnknownFunctionPointerType *_vptr$RSLocalStandardization;
     struct ONLINE_STANDARDIZATION_CONFIG _online_std_config;
     struct ONLINE_CONFIG _online_config;
 };
 
-struct RSOnlineCurvedWall;
-
 struct RSOnlineFusion {
     CDUnknownFunctionPointerType *_vptr$RSOnlineFusion;
     struct vector<float __attribute__((ext_vector_type(3))), std::allocator<float __attribute__((ext_vector_type(3)))>> _camera_positions;
+    _Bool _is_curved_wall_enabled;
     struct RSFloorPlanOnline _online_floorplan_last;
     struct ONLINE_CONFIG _online_config;
     struct ONLINE_STRUCTURE_CONFIG _structure_config;
@@ -478,6 +597,7 @@ struct RSOnlineFusion {
 struct RSOnlineOfflineAssociationCore {
     CDUnknownFunctionPointerType *_vptr$RSOnlineOfflineAssociationCore;
     struct ONLINE_CONFIG _offline_config;
+    _Bool _is_curve_enabled;
 };
 
 struct RSOnlineRefinement {
@@ -507,15 +627,35 @@ struct RSTmOnlineTMScoreHelper {
 
 struct RS_Match_Info;
 
-struct Room_Standardization {
-    struct Standard_Room standardizer_;
-    float angle_th;
-    float dis_th;
-    struct unordered_map<std::string, std::vector<wlw::lcnn_flp::ProjectParam>, std::hash<std::string>, std::equal_to<std::string>, std::allocator<std::pair<const std::string, std::vector<wlw::lcnn_flp::ProjectParam>>>> project_map;
-    struct RSLocalStandardization localStandardizer_;
+struct RelationItem;
+
+struct RoomTypeConfig {
+    unsigned long long img_sz;
+    float pixel_sz;
+    unsigned long long input_channel;
+    unsigned long long z_slice;
+    _Bool dynamic_pixel_sz;
+    struct vector<std::string, std::allocator<std::string>> model_input_names;
+    struct vector<roomscancore::roomtype_v4::RoomTypeCategory, std::allocator<roomscancore::roomtype_v4::RoomTypeCategory>> model_output_categories;
+    struct vector<std::string, std::allocator<std::string>> model_output_names;
+    struct basic_string<char, std::char_traits<char>, std::allocator<char>> model_name;
+    struct vector<unsigned long, std::allocator<unsigned long>> model_input_shape;
+    struct vector<unsigned long, std::allocator<unsigned long>> model_output_shape;
+    struct unordered_map<roomscancore::roomtype_v4::RoomTypeCategory, unsigned long, std::hash<roomscancore::roomtype_v4::RoomTypeCategory>, std::equal_to<roomscancore::roomtype_v4::RoomTypeCategory>, std::allocator<std::pair<const roomscancore::roomtype_v4::RoomTypeCategory, unsigned long>>> area_thr;
+    struct unordered_map<roomscancore::roomtype_v4::RoomTypeCategory, float, std::hash<roomscancore::roomtype_v4::RoomTypeCategory>, std::equal_to<roomscancore::roomtype_v4::RoomTypeCategory>, std::allocator<std::pair<const roomscancore::roomtype_v4::RoomTypeCategory, float>>> score_thr;
+    struct unordered_map<roomscancore::roomtype_v4::RoomTypeCategory, roomscancore::roomtype_v4::RoomObjectConstraint, std::hash<roomscancore::roomtype_v4::RoomTypeCategory>, std::equal_to<roomscancore::roomtype_v4::RoomTypeCategory>, std::allocator<std::pair<const roomscancore::roomtype_v4::RoomTypeCategory, roomscancore::roomtype_v4::RoomObjectConstraint>>> obj_config;
 };
 
-struct SegmentsInfo;
+struct RoomTypeDetector {
+    struct IEspresso_Interface_v1 model_;
+    struct RoomTypeConfig cfg_;
+};
+
+struct Room_Standardization {
+    struct StandardFloorPlan standardizer_;
+    struct unordered_map<std::string, std::vector<wlw::lcnn_flp::ProjectParam>, std::hash<std::string>, std::equal_to<std::string>, std::allocator<std::pair<const std::string, std::vector<wlw::lcnn_flp::ProjectParam>>>> project_map_;
+    struct RSLocalStandardization localStandardizer_;
+};
 
 struct Shape<1UL> {
     unsigned long long _sp[6];
@@ -529,6 +669,8 @@ struct Shape<3UL> {
     unsigned long long _sp[6];
 };
 
+struct Simplification;
+
 struct SpeedCoaching {
     float _speed_range;
     float _proj_speed_range;
@@ -538,6 +680,24 @@ struct SpeedCoaching {
     struct deque<float __attribute__((ext_vector_type(2))), std::allocator<float __attribute__((ext_vector_type(2)))>> _smooth_queue;
     NSDate *_latest_v___latest_w___last_vio_lost_time;
     struct CoachingModel _model;
+};
+
+struct StandardFloorPlan {
+    struct Standard_Param param_;
+    struct vector<roomscancore::Line<float __attribute__((ext_vector_type(2)))>, std::allocator<roomscancore::Line<float __attribute__((ext_vector_type(2)))>>> walls;
+    struct vector<float __attribute__((ext_vector_type(2))), std::allocator<float __attribute__((ext_vector_type(2)))>> vertex;
+    struct vector<float, std::allocator<float>> vertex_1d;
+    struct vector<std::vector<unsigned long>, std::allocator<std::vector<unsigned long>>> line_mask;
+    struct vector<std::vector<unsigned long>, std::allocator<std::vector<unsigned long>>> vertex_walls;
+    struct vector<float, std::allocator<float>> vertex_angles;
+    struct vector<float, std::allocator<float>> vertex_angles_180;
+    struct vector<unsigned long, std::allocator<unsigned long>> tiny_sw_vertex;
+    struct vector<unsigned long, std::allocator<unsigned long>> tiny_sw_line_id;
+    struct vector<float, std::allocator<float>> scores;
+    struct Line<float __attribute__((ext_vector_type(2)))> first_wall;
+    struct GeometryMeta geo_meta_;
+    struct Tensor<float, 2UL> density_map_;
+    struct vector<float, std::allocator<float>> before_tm_scores_;
 };
 
 struct Standard_Param {
@@ -574,24 +734,6 @@ struct Standard_Param {
     float add_tiny_opening_dist_th;
     float add_tiny_opening_parallel_angle_th;
     float add_tiny_opening_parallel_dist_th;
-};
-
-struct Standard_Room {
-    struct Standard_Param initparam;
-    struct vector<wlw::lcnn_flp::standard_line2d, std::allocator<wlw::lcnn_flp::standard_line2d>> walls;
-    struct vector<wlw::lcnn_flp::standard_point2d, std::allocator<wlw::lcnn_flp::standard_point2d>> vertex;
-    struct vector<float, std::allocator<float>> vertex_1d;
-    struct vector<std::vector<unsigned long>, std::allocator<std::vector<unsigned long>>> line_mask;
-    struct vector<std::vector<unsigned long>, std::allocator<std::vector<unsigned long>>> vertex_walls;
-    struct vector<float, std::allocator<float>> vertex_angles;
-    struct vector<float, std::allocator<float>> vertex_angles_180;
-    struct vector<unsigned long, std::allocator<unsigned long>> tiny_sw_vertex;
-    struct vector<unsigned long, std::allocator<unsigned long>> tiny_sw_line_id;
-    struct vector<float, std::allocator<float>> scores;
-    struct standard_line2d first_wall;
-    RSGeometryMeta *_geoMeta;
-    struct Tensor<float, 2UL> _density_map;
-    struct vector<float, std::allocator<float>> _before_tm_scores;
 };
 
 struct Structure_complete {
@@ -695,13 +837,14 @@ struct basic_string<char, std::char_traits<char>, std::allocator<char>> {
                 struct __long {
                     char *__data_;
                     unsigned long long __size_;
-                    unsigned long long __cap_;
+                    unsigned int __cap_:63;
+                    unsigned int __is_long_:1;
                 } __l;
                 struct __short {
                     char __data_[23];
-                    struct {
-                        unsigned char __size_;
-                    } ;
+                    unsigned char __padding_[0];
+                    unsigned int __size_:7;
+                    unsigned int __is_long_:1;
                 } __s;
                 struct __raw {
                     unsigned long long __words[3];
@@ -709,10 +852,6 @@ struct basic_string<char, std::char_traits<char>, std::allocator<char>> {
             } ;
         } __value_;
     } __r_;
-};
-
-struct box3d {
-    MISSING_TYPE *_field1[8];
 };
 
 struct deque<float __attribute__((ext_vector_type(2))), std::allocator<float __attribute__((ext_vector_type(2)))>> {
@@ -760,49 +899,73 @@ struct deque<std::tuple<simd_float4x4, double>, std::allocator<std::tuple<simd_f
     } __size_;
 };
 
+struct lcnn_juncs {
+    struct vector<float __attribute__((ext_vector_type(2))), std::allocator<float __attribute__((ext_vector_type(2)))>> juncs;
+    struct vector<float, std::allocator<float>> junc_scores;
+    unsigned long long num_juncs;
+};
+
+struct lcnn_lines {
+    struct vector<roomscancore::Line<float __attribute__((ext_vector_type(2)))>, std::allocator<roomscancore::Line<float __attribute__((ext_vector_type(2)))>>> lines;
+    struct vector<float, std::allocator<float>> scores;
+    unsigned long long num_lines;
+};
+
 struct map<std::string, espresso_buffer_t *, std::less<std::string>, std::allocator<std::pair<const std::string, espresso_buffer_t *>>> {
-    struct __tree<std::__value_type<std::string, espresso_buffer_t *>, std::__map_value_compare<std::string, std::__value_type<std::string, espresso_buffer_t *>, std::less<std::string>, true>, std::allocator<std::__value_type<std::string, espresso_buffer_t *>>> {
+    struct __tree<std::__value_type<std::string, espresso_buffer_t *>, std::__map_value_compare<std::string, std::__value_type<std::string, espresso_buffer_t *>, std::less<std::string>>, std::allocator<std::__value_type<std::string, espresso_buffer_t *>>> {
         void *__begin_node_;
         struct __compressed_pair<std::__tree_end_node<std::__tree_node_base<void *>*>, std::allocator<std::__tree_node<std::__value_type<std::string, espresso_buffer_t *>, void *>>> {
             struct __tree_end_node<std::__tree_node_base<void *>*> __value_;
         } __pair1_;
-        struct __compressed_pair<unsigned long, std::__map_value_compare<std::string, std::__value_type<std::string, espresso_buffer_t *>, std::less<std::string>, true>> {
+        struct __compressed_pair<unsigned long, std::__map_value_compare<std::string, std::__value_type<std::string, espresso_buffer_t *>, std::less<std::string>>> {
+            unsigned long long __value_;
+        } __pair3_;
+    } __tree_;
+};
+
+struct map<std::string, int, std::less<std::string>, std::allocator<std::pair<const std::string, int>>> {
+    struct __tree<std::__value_type<std::string, int>, std::__map_value_compare<std::string, std::__value_type<std::string, int>, std::less<std::string>>, std::allocator<std::__value_type<std::string, int>>> {
+        void *__begin_node_;
+        struct __compressed_pair<std::__tree_end_node<std::__tree_node_base<void *>*>, std::allocator<std::__tree_node<std::__value_type<std::string, int>, void *>>> {
+            struct __tree_end_node<std::__tree_node_base<void *>*> __value_;
+        } __pair1_;
+        struct __compressed_pair<unsigned long, std::__map_value_compare<std::string, std::__value_type<std::string, int>, std::less<std::string>>> {
             unsigned long long __value_;
         } __pair3_;
     } __tree_;
 };
 
 struct map<std::vector<float>, std::vector<std::vector<float>>, std::less<std::vector<float>>, std::allocator<std::pair<const std::vector<float>, std::vector<std::vector<float>>>>> {
-    struct __tree<std::__value_type<std::vector<float>, std::vector<std::vector<float>>>, std::__map_value_compare<std::vector<float>, std::__value_type<std::vector<float>, std::vector<std::vector<float>>>, std::less<std::vector<float>>, true>, std::allocator<std::__value_type<std::vector<float>, std::vector<std::vector<float>>>>> {
+    struct __tree<std::__value_type<std::vector<float>, std::vector<std::vector<float>>>, std::__map_value_compare<std::vector<float>, std::__value_type<std::vector<float>, std::vector<std::vector<float>>>, std::less<std::vector<float>>>, std::allocator<std::__value_type<std::vector<float>, std::vector<std::vector<float>>>>> {
         void *__begin_node_;
         struct __compressed_pair<std::__tree_end_node<std::__tree_node_base<void *>*>, std::allocator<std::__tree_node<std::__value_type<std::vector<float>, std::vector<std::vector<float>>>, void *>>> {
             struct __tree_end_node<std::__tree_node_base<void *>*> __value_;
         } __pair1_;
-        struct __compressed_pair<unsigned long, std::__map_value_compare<std::vector<float>, std::__value_type<std::vector<float>, std::vector<std::vector<float>>>, std::less<std::vector<float>>, true>> {
+        struct __compressed_pair<unsigned long, std::__map_value_compare<std::vector<float>, std::__value_type<std::vector<float>, std::vector<std::vector<float>>>, std::less<std::vector<float>>>> {
             unsigned long long __value_;
         } __pair3_;
     } __tree_;
 };
 
 struct map<std::vector<float>, unsigned long, std::less<std::vector<float>>, std::allocator<std::pair<const std::vector<float>, unsigned long>>> {
-    struct __tree<std::__value_type<std::vector<float>, unsigned long>, std::__map_value_compare<std::vector<float>, std::__value_type<std::vector<float>, unsigned long>, std::less<std::vector<float>>, true>, std::allocator<std::__value_type<std::vector<float>, unsigned long>>> {
+    struct __tree<std::__value_type<std::vector<float>, unsigned long>, std::__map_value_compare<std::vector<float>, std::__value_type<std::vector<float>, unsigned long>, std::less<std::vector<float>>>, std::allocator<std::__value_type<std::vector<float>, unsigned long>>> {
         void *__begin_node_;
         struct __compressed_pair<std::__tree_end_node<std::__tree_node_base<void *>*>, std::allocator<std::__tree_node<std::__value_type<std::vector<float>, unsigned long>, void *>>> {
             struct __tree_end_node<std::__tree_node_base<void *>*> __value_;
         } __pair1_;
-        struct __compressed_pair<unsigned long, std::__map_value_compare<std::vector<float>, std::__value_type<std::vector<float>, unsigned long>, std::less<std::vector<float>>, true>> {
+        struct __compressed_pair<unsigned long, std::__map_value_compare<std::vector<float>, std::__value_type<std::vector<float>, unsigned long>, std::less<std::vector<float>>>> {
             unsigned long long __value_;
         } __pair3_;
     } __tree_;
 };
 
 struct map<std::vector<unsigned long>, std::string, std::less<std::vector<unsigned long>>, std::allocator<std::pair<const std::vector<unsigned long>, std::string>>> {
-    struct __tree<std::__value_type<std::vector<unsigned long>, std::string>, std::__map_value_compare<std::vector<unsigned long>, std::__value_type<std::vector<unsigned long>, std::string>, std::less<std::vector<unsigned long>>, true>, std::allocator<std::__value_type<std::vector<unsigned long>, std::string>>> {
+    struct __tree<std::__value_type<std::vector<unsigned long>, std::string>, std::__map_value_compare<std::vector<unsigned long>, std::__value_type<std::vector<unsigned long>, std::string>, std::less<std::vector<unsigned long>>>, std::allocator<std::__value_type<std::vector<unsigned long>, std::string>>> {
         void *__begin_node_;
         struct __compressed_pair<std::__tree_end_node<std::__tree_node_base<void *>*>, std::allocator<std::__tree_node<std::__value_type<std::vector<unsigned long>, std::string>, void *>>> {
             struct __tree_end_node<std::__tree_node_base<void *>*> __value_;
         } __pair1_;
-        struct __compressed_pair<unsigned long, std::__map_value_compare<std::vector<unsigned long>, std::__value_type<std::vector<unsigned long>, std::string>, std::less<std::vector<unsigned long>>, true>> {
+        struct __compressed_pair<unsigned long, std::__map_value_compare<std::vector<unsigned long>, std::__value_type<std::vector<unsigned long>, std::string>, std::less<std::vector<unsigned long>>>> {
             unsigned long long __value_;
         } __pair3_;
     } __tree_;
@@ -813,6 +976,14 @@ struct mutex {
         long long __sig;
         char __opaque[56];
     } __m_;
+};
+
+struct optional<float __attribute__((ext_vector_type(2)))> {
+    union {
+        char __null_state_;
+        MISSING_TYPE *__val_;
+    } ;
+    _Bool __engaged_;
 };
 
 struct optional<rs_ol::RS3DSurfaceOnline> {
@@ -833,52 +1004,72 @@ struct shared_ptr<wt::Storage<int>> {
     struct __shared_weak_count *__cntrl_;
 };
 
-struct standard_line2d {
-    float pt[4];
-    struct standard_point2d pts0;
-    struct standard_point2d pts1;
-    float theta;
-    float a;
-    float length;
-    float angle;
-    int align_n;
-    float score;
-};
-
-struct standard_point2d {
-    float x;
-    float y;
-};
-
-struct tuple<NSArray<RS3DSurface *>*, NSArray<RS3DSurface *>*> {
-    struct __tuple_impl<std::__tuple_indices<0, 1>, NSArray<RS3DSurface *>*, NSArray<RS3DSurface *>*> {
-        id _field1;
-        id _field2;
-    } _field1;
-};
-
 struct unique_ptr<rs_erf::EdgeRefinement, std::default_delete<rs_erf::EdgeRefinement>> {
     struct __compressed_pair<rs_erf::EdgeRefinement *, std::default_delete<rs_erf::EdgeRefinement>> {
         struct EdgeRefinement *__value_;
     } __ptr_;
 };
 
-struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, IndividualWallHeightStruct>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, IndividualWallHeightStruct>, void *>*>*>>> {
-    struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, IndividualWallHeightStruct>, void *>*>**, std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, IndividualWallHeightStruct>, void *>*>*>>> {
+struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<int, int>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<int, int>, void *>*>*>>> {
+    struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<int, int>, void *>*>**, std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<int, int>, void *>*>*>>> {
         void **__value_;
-        struct __bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, IndividualWallHeightStruct>, void *>*>*>> {
-            struct __compressed_pair<unsigned long, std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, IndividualWallHeightStruct>, void *>*>*>> {
+        struct __bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<int, int>, void *>*>*>> {
+            struct __compressed_pair<unsigned long, std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<int, int>, void *>*>*>> {
                 unsigned long long __value_;
             } __data_;
         } __value_;
     } __ptr_;
 };
 
-struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, PointsLine>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, PointsLine>, void *>*>*>>> {
-    struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, PointsLine>, void *>*>**, std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, PointsLine>, void *>*>*>>> {
+struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<roomscancore::roomtype_v4::RoomTypeCategory, float>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<roomscancore::roomtype_v4::RoomTypeCategory, float>, void *>*>*>>> {
+    struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<roomscancore::roomtype_v4::RoomTypeCategory, float>, void *>*>**, std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<roomscancore::roomtype_v4::RoomTypeCategory, float>, void *>*>*>>> {
         void **__value_;
-        struct __bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, PointsLine>, void *>*>*>> {
-            struct __compressed_pair<unsigned long, std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, PointsLine>, void *>*>*>> {
+        struct __bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<roomscancore::roomtype_v4::RoomTypeCategory, float>, void *>*>*>> {
+            struct __compressed_pair<unsigned long, std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<roomscancore::roomtype_v4::RoomTypeCategory, float>, void *>*>*>> {
+                unsigned long long __value_;
+            } __data_;
+        } __value_;
+    } __ptr_;
+};
+
+struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<roomscancore::roomtype_v4::RoomTypeCategory, roomscancore::roomtype_v4::RoomObjectConstraint>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<roomscancore::roomtype_v4::RoomTypeCategory, roomscancore::roomtype_v4::RoomObjectConstraint>, void *>*>*>>> {
+    struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<roomscancore::roomtype_v4::RoomTypeCategory, roomscancore::roomtype_v4::RoomObjectConstraint>, void *>*>**, std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<roomscancore::roomtype_v4::RoomTypeCategory, roomscancore::roomtype_v4::RoomObjectConstraint>, void *>*>*>>> {
+        void **__value_;
+        struct __bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<roomscancore::roomtype_v4::RoomTypeCategory, roomscancore::roomtype_v4::RoomObjectConstraint>, void *>*>*>> {
+            struct __compressed_pair<unsigned long, std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<roomscancore::roomtype_v4::RoomTypeCategory, roomscancore::roomtype_v4::RoomObjectConstraint>, void *>*>*>> {
+                unsigned long long __value_;
+            } __data_;
+        } __value_;
+    } __ptr_;
+};
+
+struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<roomscancore::roomtype_v4::RoomTypeCategory, unsigned long>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<roomscancore::roomtype_v4::RoomTypeCategory, unsigned long>, void *>*>*>>> {
+    struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<roomscancore::roomtype_v4::RoomTypeCategory, unsigned long>, void *>*>**, std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<roomscancore::roomtype_v4::RoomTypeCategory, unsigned long>, void *>*>*>>> {
+        void **__value_;
+        struct __bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<roomscancore::roomtype_v4::RoomTypeCategory, unsigned long>, void *>*>*>> {
+            struct __compressed_pair<unsigned long, std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<roomscancore::roomtype_v4::RoomTypeCategory, unsigned long>, void *>*>*>> {
+                unsigned long long __value_;
+            } __data_;
+        } __value_;
+    } __ptr_;
+};
+
+struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<rs_ol::Relation_Type, std::vector<std::pair<int, int>>>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<rs_ol::Relation_Type, std::vector<std::pair<int, int>>>, void *>*>*>>> {
+    struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<rs_ol::Relation_Type, std::vector<std::pair<int, int>>>, void *>*>**, std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<rs_ol::Relation_Type, std::vector<std::pair<int, int>>>, void *>*>*>>> {
+        void **__value_;
+        struct __bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<rs_ol::Relation_Type, std::vector<std::pair<int, int>>>, void *>*>*>> {
+            struct __compressed_pair<unsigned long, std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<rs_ol::Relation_Type, std::vector<std::pair<int, int>>>, void *>*>*>> {
+                unsigned long long __value_;
+            } __data_;
+        } __value_;
+    } __ptr_;
+};
+
+struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::pair<int, int>, std::vector<std::pair<int, int>>>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::pair<int, int>, std::vector<std::pair<int, int>>>, void *>*>*>>> {
+    struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::pair<int, int>, std::vector<std::pair<int, int>>>, void *>*>**, std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::pair<int, int>, std::vector<std::pair<int, int>>>, void *>*>*>>> {
+        void **__value_;
+        struct __bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::pair<int, int>, std::vector<std::pair<int, int>>>, void *>*>*>> {
+            struct __compressed_pair<unsigned long, std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::pair<int, int>, std::vector<std::pair<int, int>>>, void *>*>*>> {
                 unsigned long long __value_;
             } __data_;
         } __value_;
@@ -940,6 +1131,17 @@ struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<
     } __ptr_;
 };
 
+struct unique_ptr<std::__hash_node_base<std::__hash_node<std::pair<int, int>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::pair<int, int>, void *>*>*>>> {
+    struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::pair<int, int>, void *>*>**, std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::pair<int, int>, void *>*>*>>> {
+        void **__value_;
+        struct __bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::pair<int, int>, void *>*>*>> {
+            struct __compressed_pair<unsigned long, std::allocator<std::__hash_node_base<std::__hash_node<std::pair<int, int>, void *>*>*>> {
+                unsigned long long __value_;
+            } __data_;
+        } __value_;
+    } __ptr_;
+};
+
 struct unique_ptr<std::__hash_node_base<std::__hash_node<unsigned long long, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<unsigned long long, void *>*>*>>> {
     struct __compressed_pair<std::__hash_node_base<std::__hash_node<unsigned long long, void *>*>**, std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<unsigned long long, void *>*>*>>> {
         void **__value_;
@@ -962,120 +1164,205 @@ struct unique_ptr<std::__hash_node_base<std::__hash_node<unsigned long, void *>*
     } __ptr_;
 };
 
-struct unordered_map<std::string, IndividualWallHeightStruct, std::hash<std::string>, std::equal_to<std::string>, std::allocator<std::pair<const std::string, IndividualWallHeightStruct>>> {
-    struct __hash_table<std::__hash_value_type<std::string, IndividualWallHeightStruct>, std::__unordered_map_hasher<std::string, std::__hash_value_type<std::string, IndividualWallHeightStruct>, std::hash<std::string>, std::equal_to<std::string>, true>, std::__unordered_map_equal<std::string, std::__hash_value_type<std::string, IndividualWallHeightStruct>, std::equal_to<std::string>, std::hash<std::string>, true>, std::allocator<std::__hash_value_type<std::string, IndividualWallHeightStruct>>> {
-        struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, IndividualWallHeightStruct>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, IndividualWallHeightStruct>, void *>*>*>>> __bucket_list_;
-        struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, IndividualWallHeightStruct>, void *>*>, std::allocator<std::__hash_node<std::__hash_value_type<std::string, IndividualWallHeightStruct>, void *>>> {
-            struct __hash_node_base<std::__hash_node<std::__hash_value_type<std::string, IndividualWallHeightStruct>, void *>*> {
+struct unordered_map<int, int, std::hash<int>, std::equal_to<int>, std::allocator<std::pair<const int, int>>> {
+    struct __hash_table<std::__hash_value_type<int, int>, std::__unordered_map_hasher<int, std::__hash_value_type<int, int>, std::hash<int>, std::equal_to<int>>, std::__unordered_map_equal<int, std::__hash_value_type<int, int>, std::equal_to<int>, std::hash<int>>, std::allocator<std::__hash_value_type<int, int>>> {
+        struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<int, int>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<int, int>, void *>*>*>>> __bucket_list_;
+        struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<int, int>, void *>*>, std::allocator<std::__hash_node<std::__hash_value_type<int, int>, void *>>> {
+            struct __hash_node_base<std::__hash_node<std::__hash_value_type<int, int>, void *>*> {
                 void *__next_;
             } __value_;
         } __p1_;
-        struct __compressed_pair<unsigned long, std::__unordered_map_hasher<std::string, std::__hash_value_type<std::string, IndividualWallHeightStruct>, std::hash<std::string>, std::equal_to<std::string>, true>> {
+        struct __compressed_pair<unsigned long, std::__unordered_map_hasher<int, std::__hash_value_type<int, int>, std::hash<int>, std::equal_to<int>>> {
             unsigned long long __value_;
         } __p2_;
-        struct __compressed_pair<float, std::__unordered_map_equal<std::string, std::__hash_value_type<std::string, IndividualWallHeightStruct>, std::equal_to<std::string>, std::hash<std::string>, true>> {
+        struct __compressed_pair<float, std::__unordered_map_equal<int, std::__hash_value_type<int, int>, std::equal_to<int>, std::hash<int>>> {
             float __value_;
         } __p3_;
     } __table_;
 };
 
-struct unordered_map<std::string, PointsLine, std::hash<std::string>, std::equal_to<std::string>, std::allocator<std::pair<const std::string, PointsLine>>> {
-    struct __hash_table<std::__hash_value_type<std::string, PointsLine>, std::__unordered_map_hasher<std::string, std::__hash_value_type<std::string, PointsLine>, std::hash<std::string>, std::equal_to<std::string>, true>, std::__unordered_map_equal<std::string, std::__hash_value_type<std::string, PointsLine>, std::equal_to<std::string>, std::hash<std::string>, true>, std::allocator<std::__hash_value_type<std::string, PointsLine>>> {
-        struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, PointsLine>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, PointsLine>, void *>*>*>>> __bucket_list_;
-        struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, PointsLine>, void *>*>, std::allocator<std::__hash_node<std::__hash_value_type<std::string, PointsLine>, void *>>> {
-            struct __hash_node_base<std::__hash_node<std::__hash_value_type<std::string, PointsLine>, void *>*> {
+struct unordered_map<roomscancore::roomtype_v4::RoomTypeCategory, float, std::hash<roomscancore::roomtype_v4::RoomTypeCategory>, std::equal_to<roomscancore::roomtype_v4::RoomTypeCategory>, std::allocator<std::pair<const roomscancore::roomtype_v4::RoomTypeCategory, float>>> {
+    struct __hash_table<std::__hash_value_type<roomscancore::roomtype_v4::RoomTypeCategory, float>, std::__unordered_map_hasher<roomscancore::roomtype_v4::RoomTypeCategory, std::__hash_value_type<roomscancore::roomtype_v4::RoomTypeCategory, float>, std::hash<roomscancore::roomtype_v4::RoomTypeCategory>, std::equal_to<roomscancore::roomtype_v4::RoomTypeCategory>>, std::__unordered_map_equal<roomscancore::roomtype_v4::RoomTypeCategory, std::__hash_value_type<roomscancore::roomtype_v4::RoomTypeCategory, float>, std::equal_to<roomscancore::roomtype_v4::RoomTypeCategory>, std::hash<roomscancore::roomtype_v4::RoomTypeCategory>>, std::allocator<std::__hash_value_type<roomscancore::roomtype_v4::RoomTypeCategory, float>>> {
+        struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<roomscancore::roomtype_v4::RoomTypeCategory, float>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<roomscancore::roomtype_v4::RoomTypeCategory, float>, void *>*>*>>> __bucket_list_;
+        struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<roomscancore::roomtype_v4::RoomTypeCategory, float>, void *>*>, std::allocator<std::__hash_node<std::__hash_value_type<roomscancore::roomtype_v4::RoomTypeCategory, float>, void *>>> {
+            struct __hash_node_base<std::__hash_node<std::__hash_value_type<roomscancore::roomtype_v4::RoomTypeCategory, float>, void *>*> {
                 void *__next_;
             } __value_;
         } __p1_;
-        struct __compressed_pair<unsigned long, std::__unordered_map_hasher<std::string, std::__hash_value_type<std::string, PointsLine>, std::hash<std::string>, std::equal_to<std::string>, true>> {
+        struct __compressed_pair<unsigned long, std::__unordered_map_hasher<roomscancore::roomtype_v4::RoomTypeCategory, std::__hash_value_type<roomscancore::roomtype_v4::RoomTypeCategory, float>, std::hash<roomscancore::roomtype_v4::RoomTypeCategory>, std::equal_to<roomscancore::roomtype_v4::RoomTypeCategory>>> {
             unsigned long long __value_;
         } __p2_;
-        struct __compressed_pair<float, std::__unordered_map_equal<std::string, std::__hash_value_type<std::string, PointsLine>, std::equal_to<std::string>, std::hash<std::string>, true>> {
+        struct __compressed_pair<float, std::__unordered_map_equal<roomscancore::roomtype_v4::RoomTypeCategory, std::__hash_value_type<roomscancore::roomtype_v4::RoomTypeCategory, float>, std::equal_to<roomscancore::roomtype_v4::RoomTypeCategory>, std::hash<roomscancore::roomtype_v4::RoomTypeCategory>>> {
+            float __value_;
+        } __p3_;
+    } __table_;
+};
+
+struct unordered_map<roomscancore::roomtype_v4::RoomTypeCategory, roomscancore::roomtype_v4::RoomObjectConstraint, std::hash<roomscancore::roomtype_v4::RoomTypeCategory>, std::equal_to<roomscancore::roomtype_v4::RoomTypeCategory>, std::allocator<std::pair<const roomscancore::roomtype_v4::RoomTypeCategory, roomscancore::roomtype_v4::RoomObjectConstraint>>> {
+    struct __hash_table<std::__hash_value_type<roomscancore::roomtype_v4::RoomTypeCategory, roomscancore::roomtype_v4::RoomObjectConstraint>, std::__unordered_map_hasher<roomscancore::roomtype_v4::RoomTypeCategory, std::__hash_value_type<roomscancore::roomtype_v4::RoomTypeCategory, roomscancore::roomtype_v4::RoomObjectConstraint>, std::hash<roomscancore::roomtype_v4::RoomTypeCategory>, std::equal_to<roomscancore::roomtype_v4::RoomTypeCategory>>, std::__unordered_map_equal<roomscancore::roomtype_v4::RoomTypeCategory, std::__hash_value_type<roomscancore::roomtype_v4::RoomTypeCategory, roomscancore::roomtype_v4::RoomObjectConstraint>, std::equal_to<roomscancore::roomtype_v4::RoomTypeCategory>, std::hash<roomscancore::roomtype_v4::RoomTypeCategory>>, std::allocator<std::__hash_value_type<roomscancore::roomtype_v4::RoomTypeCategory, roomscancore::roomtype_v4::RoomObjectConstraint>>> {
+        struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<roomscancore::roomtype_v4::RoomTypeCategory, roomscancore::roomtype_v4::RoomObjectConstraint>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<roomscancore::roomtype_v4::RoomTypeCategory, roomscancore::roomtype_v4::RoomObjectConstraint>, void *>*>*>>> __bucket_list_;
+        struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<roomscancore::roomtype_v4::RoomTypeCategory, roomscancore::roomtype_v4::RoomObjectConstraint>, void *>*>, std::allocator<std::__hash_node<std::__hash_value_type<roomscancore::roomtype_v4::RoomTypeCategory, roomscancore::roomtype_v4::RoomObjectConstraint>, void *>>> {
+            struct __hash_node_base<std::__hash_node<std::__hash_value_type<roomscancore::roomtype_v4::RoomTypeCategory, roomscancore::roomtype_v4::RoomObjectConstraint>, void *>*> {
+                void *__next_;
+            } __value_;
+        } __p1_;
+        struct __compressed_pair<unsigned long, std::__unordered_map_hasher<roomscancore::roomtype_v4::RoomTypeCategory, std::__hash_value_type<roomscancore::roomtype_v4::RoomTypeCategory, roomscancore::roomtype_v4::RoomObjectConstraint>, std::hash<roomscancore::roomtype_v4::RoomTypeCategory>, std::equal_to<roomscancore::roomtype_v4::RoomTypeCategory>>> {
+            unsigned long long __value_;
+        } __p2_;
+        struct __compressed_pair<float, std::__unordered_map_equal<roomscancore::roomtype_v4::RoomTypeCategory, std::__hash_value_type<roomscancore::roomtype_v4::RoomTypeCategory, roomscancore::roomtype_v4::RoomObjectConstraint>, std::equal_to<roomscancore::roomtype_v4::RoomTypeCategory>, std::hash<roomscancore::roomtype_v4::RoomTypeCategory>>> {
+            float __value_;
+        } __p3_;
+    } __table_;
+};
+
+struct unordered_map<roomscancore::roomtype_v4::RoomTypeCategory, unsigned long, std::hash<roomscancore::roomtype_v4::RoomTypeCategory>, std::equal_to<roomscancore::roomtype_v4::RoomTypeCategory>, std::allocator<std::pair<const roomscancore::roomtype_v4::RoomTypeCategory, unsigned long>>> {
+    struct __hash_table<std::__hash_value_type<roomscancore::roomtype_v4::RoomTypeCategory, unsigned long>, std::__unordered_map_hasher<roomscancore::roomtype_v4::RoomTypeCategory, std::__hash_value_type<roomscancore::roomtype_v4::RoomTypeCategory, unsigned long>, std::hash<roomscancore::roomtype_v4::RoomTypeCategory>, std::equal_to<roomscancore::roomtype_v4::RoomTypeCategory>>, std::__unordered_map_equal<roomscancore::roomtype_v4::RoomTypeCategory, std::__hash_value_type<roomscancore::roomtype_v4::RoomTypeCategory, unsigned long>, std::equal_to<roomscancore::roomtype_v4::RoomTypeCategory>, std::hash<roomscancore::roomtype_v4::RoomTypeCategory>>, std::allocator<std::__hash_value_type<roomscancore::roomtype_v4::RoomTypeCategory, unsigned long>>> {
+        struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<roomscancore::roomtype_v4::RoomTypeCategory, unsigned long>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<roomscancore::roomtype_v4::RoomTypeCategory, unsigned long>, void *>*>*>>> __bucket_list_;
+        struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<roomscancore::roomtype_v4::RoomTypeCategory, unsigned long>, void *>*>, std::allocator<std::__hash_node<std::__hash_value_type<roomscancore::roomtype_v4::RoomTypeCategory, unsigned long>, void *>>> {
+            struct __hash_node_base<std::__hash_node<std::__hash_value_type<roomscancore::roomtype_v4::RoomTypeCategory, unsigned long>, void *>*> {
+                void *__next_;
+            } __value_;
+        } __p1_;
+        struct __compressed_pair<unsigned long, std::__unordered_map_hasher<roomscancore::roomtype_v4::RoomTypeCategory, std::__hash_value_type<roomscancore::roomtype_v4::RoomTypeCategory, unsigned long>, std::hash<roomscancore::roomtype_v4::RoomTypeCategory>, std::equal_to<roomscancore::roomtype_v4::RoomTypeCategory>>> {
+            unsigned long long __value_;
+        } __p2_;
+        struct __compressed_pair<float, std::__unordered_map_equal<roomscancore::roomtype_v4::RoomTypeCategory, std::__hash_value_type<roomscancore::roomtype_v4::RoomTypeCategory, unsigned long>, std::equal_to<roomscancore::roomtype_v4::RoomTypeCategory>, std::hash<roomscancore::roomtype_v4::RoomTypeCategory>>> {
+            float __value_;
+        } __p3_;
+    } __table_;
+};
+
+struct unordered_map<rs_ol::Relation_Type, std::vector<std::pair<int, int>>, std::hash<rs_ol::Relation_Type>, std::equal_to<rs_ol::Relation_Type>, std::allocator<std::pair<const rs_ol::Relation_Type, std::vector<std::pair<int, int>>>>> {
+    struct __hash_table<std::__hash_value_type<rs_ol::Relation_Type, std::vector<std::pair<int, int>>>, std::__unordered_map_hasher<rs_ol::Relation_Type, std::__hash_value_type<rs_ol::Relation_Type, std::vector<std::pair<int, int>>>, std::hash<rs_ol::Relation_Type>, std::equal_to<rs_ol::Relation_Type>>, std::__unordered_map_equal<rs_ol::Relation_Type, std::__hash_value_type<rs_ol::Relation_Type, std::vector<std::pair<int, int>>>, std::equal_to<rs_ol::Relation_Type>, std::hash<rs_ol::Relation_Type>>, std::allocator<std::__hash_value_type<rs_ol::Relation_Type, std::vector<std::pair<int, int>>>>> {
+        struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<rs_ol::Relation_Type, std::vector<std::pair<int, int>>>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<rs_ol::Relation_Type, std::vector<std::pair<int, int>>>, void *>*>*>>> __bucket_list_;
+        struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<rs_ol::Relation_Type, std::vector<std::pair<int, int>>>, void *>*>, std::allocator<std::__hash_node<std::__hash_value_type<rs_ol::Relation_Type, std::vector<std::pair<int, int>>>, void *>>> {
+            struct __hash_node_base<std::__hash_node<std::__hash_value_type<rs_ol::Relation_Type, std::vector<std::pair<int, int>>>, void *>*> {
+                void *__next_;
+            } __value_;
+        } __p1_;
+        struct __compressed_pair<unsigned long, std::__unordered_map_hasher<rs_ol::Relation_Type, std::__hash_value_type<rs_ol::Relation_Type, std::vector<std::pair<int, int>>>, std::hash<rs_ol::Relation_Type>, std::equal_to<rs_ol::Relation_Type>>> {
+            unsigned long long __value_;
+        } __p2_;
+        struct __compressed_pair<float, std::__unordered_map_equal<rs_ol::Relation_Type, std::__hash_value_type<rs_ol::Relation_Type, std::vector<std::pair<int, int>>>, std::equal_to<rs_ol::Relation_Type>, std::hash<rs_ol::Relation_Type>>> {
+            float __value_;
+        } __p3_;
+    } __table_;
+};
+
+struct unordered_map<std::pair<int, int>, std::vector<std::pair<int, int>>, (anonymous namespace)::pair_hash, std::equal_to<std::pair<int, int>>, std::allocator<std::pair<const std::pair<int, int>, std::vector<std::pair<int, int>>>>> {
+    struct __hash_table<std::__hash_value_type<std::pair<int, int>, std::vector<std::pair<int, int>>>, std::__unordered_map_hasher<std::pair<int, int>, std::__hash_value_type<std::pair<int, int>, std::vector<std::pair<int, int>>>, (anonymous namespace)::pair_hash, std::equal_to<std::pair<int, int>>>, std::__unordered_map_equal<std::pair<int, int>, std::__hash_value_type<std::pair<int, int>, std::vector<std::pair<int, int>>>, std::equal_to<std::pair<int, int>>, (anonymous namespace)::pair_hash>, std::allocator<std::__hash_value_type<std::pair<int, int>, std::vector<std::pair<int, int>>>>> {
+        struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::pair<int, int>, std::vector<std::pair<int, int>>>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::pair<int, int>, std::vector<std::pair<int, int>>>, void *>*>*>>> __bucket_list_;
+        struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::pair<int, int>, std::vector<std::pair<int, int>>>, void *>*>, std::allocator<std::__hash_node<std::__hash_value_type<std::pair<int, int>, std::vector<std::pair<int, int>>>, void *>>> {
+            struct __hash_node_base<std::__hash_node<std::__hash_value_type<std::pair<int, int>, std::vector<std::pair<int, int>>>, void *>*> {
+                void *__next_;
+            } __value_;
+        } __p1_;
+        struct __compressed_pair<unsigned long, std::__unordered_map_hasher<std::pair<int, int>, std::__hash_value_type<std::pair<int, int>, std::vector<std::pair<int, int>>>, (anonymous namespace)::pair_hash, std::equal_to<std::pair<int, int>>>> {
+            unsigned long long __value_;
+        } __p2_;
+        struct __compressed_pair<float, std::__unordered_map_equal<std::pair<int, int>, std::__hash_value_type<std::pair<int, int>, std::vector<std::pair<int, int>>>, std::equal_to<std::pair<int, int>>, (anonymous namespace)::pair_hash>> {
             float __value_;
         } __p3_;
     } __table_;
 };
 
 struct unordered_map<std::string, rs_oalign::OpeningFixedNode, std::hash<std::string>, std::equal_to<std::string>, std::allocator<std::pair<const std::string, rs_oalign::OpeningFixedNode>>> {
-    struct __hash_table<std::__hash_value_type<std::string, rs_oalign::OpeningFixedNode>, std::__unordered_map_hasher<std::string, std::__hash_value_type<std::string, rs_oalign::OpeningFixedNode>, std::hash<std::string>, std::equal_to<std::string>, true>, std::__unordered_map_equal<std::string, std::__hash_value_type<std::string, rs_oalign::OpeningFixedNode>, std::equal_to<std::string>, std::hash<std::string>, true>, std::allocator<std::__hash_value_type<std::string, rs_oalign::OpeningFixedNode>>> {
+    struct __hash_table<std::__hash_value_type<std::string, rs_oalign::OpeningFixedNode>, std::__unordered_map_hasher<std::string, std::__hash_value_type<std::string, rs_oalign::OpeningFixedNode>, std::hash<std::string>, std::equal_to<std::string>>, std::__unordered_map_equal<std::string, std::__hash_value_type<std::string, rs_oalign::OpeningFixedNode>, std::equal_to<std::string>, std::hash<std::string>>, std::allocator<std::__hash_value_type<std::string, rs_oalign::OpeningFixedNode>>> {
         struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, rs_oalign::OpeningFixedNode>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, rs_oalign::OpeningFixedNode>, void *>*>*>>> __bucket_list_;
         struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, rs_oalign::OpeningFixedNode>, void *>*>, std::allocator<std::__hash_node<std::__hash_value_type<std::string, rs_oalign::OpeningFixedNode>, void *>>> {
             struct __hash_node_base<std::__hash_node<std::__hash_value_type<std::string, rs_oalign::OpeningFixedNode>, void *>*> {
                 void *__next_;
             } __value_;
         } __p1_;
-        struct __compressed_pair<unsigned long, std::__unordered_map_hasher<std::string, std::__hash_value_type<std::string, rs_oalign::OpeningFixedNode>, std::hash<std::string>, std::equal_to<std::string>, true>> {
+        struct __compressed_pair<unsigned long, std::__unordered_map_hasher<std::string, std::__hash_value_type<std::string, rs_oalign::OpeningFixedNode>, std::hash<std::string>, std::equal_to<std::string>>> {
             unsigned long long __value_;
         } __p2_;
-        struct __compressed_pair<float, std::__unordered_map_equal<std::string, std::__hash_value_type<std::string, rs_oalign::OpeningFixedNode>, std::equal_to<std::string>, std::hash<std::string>, true>> {
+        struct __compressed_pair<float, std::__unordered_map_equal<std::string, std::__hash_value_type<std::string, rs_oalign::OpeningFixedNode>, std::equal_to<std::string>, std::hash<std::string>>> {
             float __value_;
         } __p3_;
     } __table_;
 };
 
 struct unordered_map<std::string, std::unordered_set<unsigned long long>, std::hash<std::string>, std::equal_to<std::string>, std::allocator<std::pair<const std::string, std::unordered_set<unsigned long long>>>> {
-    struct __hash_table<std::__hash_value_type<std::string, std::unordered_set<unsigned long long>>, std::__unordered_map_hasher<std::string, std::__hash_value_type<std::string, std::unordered_set<unsigned long long>>, std::hash<std::string>, std::equal_to<std::string>, true>, std::__unordered_map_equal<std::string, std::__hash_value_type<std::string, std::unordered_set<unsigned long long>>, std::equal_to<std::string>, std::hash<std::string>, true>, std::allocator<std::__hash_value_type<std::string, std::unordered_set<unsigned long long>>>> {
+    struct __hash_table<std::__hash_value_type<std::string, std::unordered_set<unsigned long long>>, std::__unordered_map_hasher<std::string, std::__hash_value_type<std::string, std::unordered_set<unsigned long long>>, std::hash<std::string>, std::equal_to<std::string>>, std::__unordered_map_equal<std::string, std::__hash_value_type<std::string, std::unordered_set<unsigned long long>>, std::equal_to<std::string>, std::hash<std::string>>, std::allocator<std::__hash_value_type<std::string, std::unordered_set<unsigned long long>>>> {
         struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::unordered_set<unsigned long long>>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::unordered_set<unsigned long long>>, void *>*>*>>> __bucket_list_;
         struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::unordered_set<unsigned long long>>, void *>*>, std::allocator<std::__hash_node<std::__hash_value_type<std::string, std::unordered_set<unsigned long long>>, void *>>> {
             struct __hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::unordered_set<unsigned long long>>, void *>*> {
                 void *__next_;
             } __value_;
         } __p1_;
-        struct __compressed_pair<unsigned long, std::__unordered_map_hasher<std::string, std::__hash_value_type<std::string, std::unordered_set<unsigned long long>>, std::hash<std::string>, std::equal_to<std::string>, true>> {
+        struct __compressed_pair<unsigned long, std::__unordered_map_hasher<std::string, std::__hash_value_type<std::string, std::unordered_set<unsigned long long>>, std::hash<std::string>, std::equal_to<std::string>>> {
             unsigned long long __value_;
         } __p2_;
-        struct __compressed_pair<float, std::__unordered_map_equal<std::string, std::__hash_value_type<std::string, std::unordered_set<unsigned long long>>, std::equal_to<std::string>, std::hash<std::string>, true>> {
+        struct __compressed_pair<float, std::__unordered_map_equal<std::string, std::__hash_value_type<std::string, std::unordered_set<unsigned long long>>, std::equal_to<std::string>, std::hash<std::string>>> {
             float __value_;
         } __p3_;
     } __table_;
 };
 
 struct unordered_map<std::string, std::vector<wlw::lcnn_flp::ProjectParam>, std::hash<std::string>, std::equal_to<std::string>, std::allocator<std::pair<const std::string, std::vector<wlw::lcnn_flp::ProjectParam>>>> {
-    struct __hash_table<std::__hash_value_type<std::string, std::vector<wlw::lcnn_flp::ProjectParam>>, std::__unordered_map_hasher<std::string, std::__hash_value_type<std::string, std::vector<wlw::lcnn_flp::ProjectParam>>, std::hash<std::string>, std::equal_to<std::string>, true>, std::__unordered_map_equal<std::string, std::__hash_value_type<std::string, std::vector<wlw::lcnn_flp::ProjectParam>>, std::equal_to<std::string>, std::hash<std::string>, true>, std::allocator<std::__hash_value_type<std::string, std::vector<wlw::lcnn_flp::ProjectParam>>>> {
+    struct __hash_table<std::__hash_value_type<std::string, std::vector<wlw::lcnn_flp::ProjectParam>>, std::__unordered_map_hasher<std::string, std::__hash_value_type<std::string, std::vector<wlw::lcnn_flp::ProjectParam>>, std::hash<std::string>, std::equal_to<std::string>>, std::__unordered_map_equal<std::string, std::__hash_value_type<std::string, std::vector<wlw::lcnn_flp::ProjectParam>>, std::equal_to<std::string>, std::hash<std::string>>, std::allocator<std::__hash_value_type<std::string, std::vector<wlw::lcnn_flp::ProjectParam>>>> {
         struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::vector<wlw::lcnn_flp::ProjectParam>>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::vector<wlw::lcnn_flp::ProjectParam>>, void *>*>*>>> __bucket_list_;
         struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::vector<wlw::lcnn_flp::ProjectParam>>, void *>*>, std::allocator<std::__hash_node<std::__hash_value_type<std::string, std::vector<wlw::lcnn_flp::ProjectParam>>, void *>>> {
             struct __hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::vector<wlw::lcnn_flp::ProjectParam>>, void *>*> {
                 void *__next_;
             } __value_;
         } __p1_;
-        struct __compressed_pair<unsigned long, std::__unordered_map_hasher<std::string, std::__hash_value_type<std::string, std::vector<wlw::lcnn_flp::ProjectParam>>, std::hash<std::string>, std::equal_to<std::string>, true>> {
+        struct __compressed_pair<unsigned long, std::__unordered_map_hasher<std::string, std::__hash_value_type<std::string, std::vector<wlw::lcnn_flp::ProjectParam>>, std::hash<std::string>, std::equal_to<std::string>>> {
             unsigned long long __value_;
         } __p2_;
-        struct __compressed_pair<float, std::__unordered_map_equal<std::string, std::__hash_value_type<std::string, std::vector<wlw::lcnn_flp::ProjectParam>>, std::equal_to<std::string>, std::hash<std::string>, true>> {
+        struct __compressed_pair<float, std::__unordered_map_equal<std::string, std::__hash_value_type<std::string, std::vector<wlw::lcnn_flp::ProjectParam>>, std::equal_to<std::string>, std::hash<std::string>>> {
             float __value_;
         } __p3_;
     } __table_;
 };
 
 struct unordered_map<std::string, unsigned int __attribute__((ext_vector_type(2))), std::hash<std::string>, std::equal_to<std::string>, std::allocator<std::pair<const std::string, unsigned int __attribute__((ext_vector_type(2)))>>> {
-    struct __hash_table<std::__hash_value_type<std::string, unsigned int __attribute__((ext_vector_type(2)))>, std::__unordered_map_hasher<std::string, std::__hash_value_type<std::string, unsigned int __attribute__((ext_vector_type(2)))>, std::hash<std::string>, std::equal_to<std::string>, true>, std::__unordered_map_equal<std::string, std::__hash_value_type<std::string, unsigned int __attribute__((ext_vector_type(2)))>, std::equal_to<std::string>, std::hash<std::string>, true>, std::allocator<std::__hash_value_type<std::string, unsigned int __attribute__((ext_vector_type(2)))>>> {
+    struct __hash_table<std::__hash_value_type<std::string, unsigned int __attribute__((ext_vector_type(2)))>, std::__unordered_map_hasher<std::string, std::__hash_value_type<std::string, unsigned int __attribute__((ext_vector_type(2)))>, std::hash<std::string>, std::equal_to<std::string>>, std::__unordered_map_equal<std::string, std::__hash_value_type<std::string, unsigned int __attribute__((ext_vector_type(2)))>, std::equal_to<std::string>, std::hash<std::string>>, std::allocator<std::__hash_value_type<std::string, unsigned int __attribute__((ext_vector_type(2)))>>> {
         struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, unsigned int __attribute__((ext_vector_type(2)))>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, unsigned int __attribute__((ext_vector_type(2)))>, void *>*>*>>> __bucket_list_;
         struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, unsigned int __attribute__((ext_vector_type(2)))>, void *>*>, std::allocator<std::__hash_node<std::__hash_value_type<std::string, unsigned int __attribute__((ext_vector_type(2)))>, void *>>> {
             struct __hash_node_base<std::__hash_node<std::__hash_value_type<std::string, unsigned int __attribute__((ext_vector_type(2)))>, void *>*> {
                 void *__next_;
             } __value_;
         } __p1_;
-        struct __compressed_pair<unsigned long, std::__unordered_map_hasher<std::string, std::__hash_value_type<std::string, unsigned int __attribute__((ext_vector_type(2)))>, std::hash<std::string>, std::equal_to<std::string>, true>> {
+        struct __compressed_pair<unsigned long, std::__unordered_map_hasher<std::string, std::__hash_value_type<std::string, unsigned int __attribute__((ext_vector_type(2)))>, std::hash<std::string>, std::equal_to<std::string>>> {
             unsigned long long __value_;
         } __p2_;
-        struct __compressed_pair<float, std::__unordered_map_equal<std::string, std::__hash_value_type<std::string, unsigned int __attribute__((ext_vector_type(2)))>, std::equal_to<std::string>, std::hash<std::string>, true>> {
+        struct __compressed_pair<float, std::__unordered_map_equal<std::string, std::__hash_value_type<std::string, unsigned int __attribute__((ext_vector_type(2)))>, std::equal_to<std::string>, std::hash<std::string>>> {
             float __value_;
         } __p3_;
     } __table_;
 };
 
 struct unordered_map<unsigned long long, bool, std::hash<unsigned long long>, std::equal_to<unsigned long long>, std::allocator<std::pair<const unsigned long long, bool>>> {
-    struct __hash_table<std::__hash_value_type<unsigned long long, bool>, std::__unordered_map_hasher<unsigned long long, std::__hash_value_type<unsigned long long, bool>, std::hash<unsigned long long>, std::equal_to<unsigned long long>, true>, std::__unordered_map_equal<unsigned long long, std::__hash_value_type<unsigned long long, bool>, std::equal_to<unsigned long long>, std::hash<unsigned long long>, true>, std::allocator<std::__hash_value_type<unsigned long long, bool>>> {
+    struct __hash_table<std::__hash_value_type<unsigned long long, bool>, std::__unordered_map_hasher<unsigned long long, std::__hash_value_type<unsigned long long, bool>, std::hash<unsigned long long>, std::equal_to<unsigned long long>>, std::__unordered_map_equal<unsigned long long, std::__hash_value_type<unsigned long long, bool>, std::equal_to<unsigned long long>, std::hash<unsigned long long>>, std::allocator<std::__hash_value_type<unsigned long long, bool>>> {
         struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<unsigned long long, bool>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<unsigned long long, bool>, void *>*>*>>> __bucket_list_;
         struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<unsigned long long, bool>, void *>*>, std::allocator<std::__hash_node<std::__hash_value_type<unsigned long long, bool>, void *>>> {
             struct __hash_node_base<std::__hash_node<std::__hash_value_type<unsigned long long, bool>, void *>*> {
                 void *__next_;
             } __value_;
         } __p1_;
-        struct __compressed_pair<unsigned long, std::__unordered_map_hasher<unsigned long long, std::__hash_value_type<unsigned long long, bool>, std::hash<unsigned long long>, std::equal_to<unsigned long long>, true>> {
+        struct __compressed_pair<unsigned long, std::__unordered_map_hasher<unsigned long long, std::__hash_value_type<unsigned long long, bool>, std::hash<unsigned long long>, std::equal_to<unsigned long long>>> {
             unsigned long long __value_;
         } __p2_;
-        struct __compressed_pair<float, std::__unordered_map_equal<unsigned long long, std::__hash_value_type<unsigned long long, bool>, std::equal_to<unsigned long long>, std::hash<unsigned long long>, true>> {
+        struct __compressed_pair<float, std::__unordered_map_equal<unsigned long long, std::__hash_value_type<unsigned long long, bool>, std::equal_to<unsigned long long>, std::hash<unsigned long long>>> {
+            float __value_;
+        } __p3_;
+    } __table_;
+};
+
+struct unordered_set<std::pair<int, int>, (anonymous namespace)::pair_hash, std::equal_to<std::pair<int, int>>, std::allocator<std::pair<int, int>>> {
+    struct __hash_table<std::pair<int, int>, (anonymous namespace)::pair_hash, std::equal_to<std::pair<int, int>>, std::allocator<std::pair<int, int>>> {
+        struct unique_ptr<std::__hash_node_base<std::__hash_node<std::pair<int, int>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::pair<int, int>, void *>*>*>>> __bucket_list_;
+        struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::pair<int, int>, void *>*>, std::allocator<std::__hash_node<std::pair<int, int>, void *>>> {
+            struct __hash_node_base<std::__hash_node<std::pair<int, int>, void *>*> {
+                void *__next_;
+            } __value_;
+        } __p1_;
+        struct __compressed_pair<unsigned long, (anonymous namespace)::pair_hash> {
+            unsigned long long __value_;
+        } __p2_;
+        struct __compressed_pair<float, std::equal_to<std::pair<int, int>>> {
             float __value_;
         } __p3_;
     } __table_;
@@ -1115,12 +1402,12 @@ struct unordered_set<unsigned long, std::hash<unsigned long>, std::equal_to<unsi
     } __table_;
 };
 
-struct vector<Box3d, std::allocator<Box3d>> {
-    struct Box3d *_field1;
-    struct Box3d *_field2;
-    struct __compressed_pair<Box3d *, std::allocator<Box3d>> {
-        struct Box3d *_field1;
-    } _field3;
+struct vector<(anonymous namespace)::RelationItem, std::allocator<(anonymous namespace)::RelationItem>> {
+    struct RelationItem *__begin_;
+    struct RelationItem *__end_;
+    struct __compressed_pair<(anonymous namespace)::RelationItem *, std::allocator<(anonymous namespace)::RelationItem>> {
+        struct RelationItem *__value_;
+    } __end_cap_;
 };
 
 struct vector<RS3DCurvedSurface *, std::allocator<RS3DCurvedSurface *>> {
@@ -1131,19 +1418,11 @@ struct vector<RS3DCurvedSurface *, std::allocator<RS3DCurvedSurface *>> {
     } __end_cap_;
 };
 
-struct vector<RSOnlineCurvedWall, std::allocator<RSOnlineCurvedWall>> {
-    struct RSOnlineCurvedWall *__begin_;
-    struct RSOnlineCurvedWall *__end_;
-    struct __compressed_pair<RSOnlineCurvedWall *, std::allocator<RSOnlineCurvedWall>> {
-        struct RSOnlineCurvedWall *__value_;
-    } __end_cap_;
-};
-
-struct vector<SegmentsInfo, std::allocator<SegmentsInfo>> {
-    struct SegmentsInfo *__begin_;
-    struct SegmentsInfo *__end_;
-    struct __compressed_pair<SegmentsInfo *, std::allocator<SegmentsInfo>> {
-        struct SegmentsInfo *__value_;
+struct vector<float __attribute__((ext_vector_type(2))), std::allocator<float __attribute__((ext_vector_type(2)))>> {
+    void *__begin_;
+    void *__end_;
+    struct __compressed_pair<float * __attribute__((ext_vector_type(2))), std::allocator<float __attribute__((ext_vector_type(2)))>> {
+        void *__value_;
     } __end_cap_;
 };
 
@@ -1187,11 +1466,27 @@ struct vector<marker_proposal::Structure_completeOutput, std::allocator<marker_p
     } __end_cap_;
 };
 
-struct vector<quad3dType2, std::allocator<quad3dType2>> {
-    CDStruct_183601bc *__begin_;
-    CDStruct_183601bc *__end_;
-    struct __compressed_pair<quad3dType2 *, std::allocator<quad3dType2>> {
-        CDStruct_183601bc *__value_;
+struct vector<roomscancore::Line<float __attribute__((ext_vector_type(2)))>, std::allocator<roomscancore::Line<float __attribute__((ext_vector_type(2)))>>> {
+    void *__begin_;
+    void *__end_;
+    struct __compressed_pair<roomscancore::Line<float __attribute__((ext_vector_type(2)))>*, std::allocator<roomscancore::Line<float __attribute__((ext_vector_type(2)))>>> {
+        void *__value_;
+    } __end_cap_;
+};
+
+struct vector<roomscancore::nuh_model::post_type::Path3D, std::allocator<roomscancore::nuh_model::post_type::Path3D>> {
+    struct Path3D *__begin_;
+    struct Path3D *__end_;
+    struct __compressed_pair<roomscancore::nuh_model::post_type::Path3D *, std::allocator<roomscancore::nuh_model::post_type::Path3D>> {
+        struct Path3D *__value_;
+    } __end_cap_;
+};
+
+struct vector<roomscancore::roomtype_v4::RoomTypeCategory, std::allocator<roomscancore::roomtype_v4::RoomTypeCategory>> {
+    int *__begin_;
+    int *__end_;
+    struct __compressed_pair<roomscancore::roomtype_v4::RoomTypeCategory *, std::allocator<roomscancore::roomtype_v4::RoomTypeCategory>> {
+        int *__value_;
     } __end_cap_;
 };
 
@@ -1251,10 +1546,34 @@ struct vector<simd_float4x4, std::allocator<simd_float4x4>> {
     } __end_cap_;
 };
 
+struct vector<std::string, std::allocator<std::string>> {
+    void *__begin_;
+    void *__end_;
+    struct __compressed_pair<std::string *, std::allocator<std::string>> {
+        void *__value_;
+    } __end_cap_;
+};
+
 struct vector<std::tuple<float __attribute__((ext_vector_type(3))), float __attribute__((ext_vector_type(3))), RS3DSurfaceQuad>, std::allocator<std::tuple<float __attribute__((ext_vector_type(3))), float __attribute__((ext_vector_type(3))), RS3DSurfaceQuad>>> {
     void *__begin_;
     void *__end_;
     struct __compressed_pair<std::tuple<float __attribute__((ext_vector_type(3))), float __attribute__((ext_vector_type(3))), RS3DSurfaceQuad>*, std::allocator<std::tuple<float __attribute__((ext_vector_type(3))), float __attribute__((ext_vector_type(3))), RS3DSurfaceQuad>>> {
+        void *__value_;
+    } __end_cap_;
+};
+
+struct vector<std::unordered_map<std::pair<int, int>, std::vector<std::pair<int, int>>, (anonymous namespace)::pair_hash>, std::allocator<std::unordered_map<std::pair<int, int>, std::vector<std::pair<int, int>>, (anonymous namespace)::pair_hash>>> {
+    void *__begin_;
+    void *__end_;
+    struct __compressed_pair<std::unordered_map<std::pair<int, int>, std::vector<std::pair<int, int>>, (anonymous namespace)::pair_hash>*, std::allocator<std::unordered_map<std::pair<int, int>, std::vector<std::pair<int, int>>, (anonymous namespace)::pair_hash>>> {
+        void *__value_;
+    } __end_cap_;
+};
+
+struct vector<std::unordered_set<int>, std::allocator<std::unordered_set<int>>> {
+    void *__begin_;
+    void *__end_;
+    struct __compressed_pair<std::unordered_set<int>*, std::allocator<std::unordered_set<int>>> {
         void *__value_;
     } __end_cap_;
 };
@@ -1315,38 +1634,6 @@ struct vector<unsigned short __attribute__((ext_vector_type(4))), std::allocator
     } __end_cap_;
 };
 
-struct vector<wlw::lcnn_flp::standard_line2d, std::allocator<wlw::lcnn_flp::standard_line2d>> {
-    struct standard_line2d *__begin_;
-    struct standard_line2d *__end_;
-    struct __compressed_pair<wlw::lcnn_flp::standard_line2d *, std::allocator<wlw::lcnn_flp::standard_line2d>> {
-        struct standard_line2d *__value_;
-    } __end_cap_;
-};
-
-struct vector<wlw::lcnn_flp::standard_point2d, std::allocator<wlw::lcnn_flp::standard_point2d>> {
-    struct standard_point2d *__begin_;
-    struct standard_point2d *__end_;
-    struct __compressed_pair<wlw::lcnn_flp::standard_point2d *, std::allocator<wlw::lcnn_flp::standard_point2d>> {
-        struct standard_point2d *__value_;
-    } __end_cap_;
-};
-
-struct vector<wlw::lcnn_flp::willow_line2d, std::allocator<wlw::lcnn_flp::willow_line2d>> {
-    struct willow_line2d *__begin_;
-    struct willow_line2d *__end_;
-    struct __compressed_pair<wlw::lcnn_flp::willow_line2d *, std::allocator<wlw::lcnn_flp::willow_line2d>> {
-        struct willow_line2d *__value_;
-    } __end_cap_;
-};
-
-struct vector<wlw::lcnn_flp::willow_point2d, std::allocator<wlw::lcnn_flp::willow_point2d>> {
-    struct willow_point2d *__begin_;
-    struct willow_point2d *__end_;
-    struct __compressed_pair<wlw::lcnn_flp::willow_point2d *, std::allocator<wlw::lcnn_flp::willow_point2d>> {
-        struct willow_point2d *__value_;
-    } __end_cap_;
-};
-
 struct vector<wlw_olp::WallOpeningAttribute, std::allocator<wlw_olp::WallOpeningAttribute>> {
     struct WallOpeningAttribute *__begin_;
     struct WallOpeningAttribute *__end_;
@@ -1355,27 +1642,7 @@ struct vector<wlw_olp::WallOpeningAttribute, std::allocator<wlw_olp::WallOpening
     } __end_cap_;
 };
 
-struct willow_lcnn_juncs {
-    struct vector<wlw::lcnn_flp::willow_point2d, std::allocator<wlw::lcnn_flp::willow_point2d>> juncs;
-    struct vector<float, std::allocator<float>> junc_scores;
-    unsigned long long num_juncs;
-};
-
-struct willow_lcnn_lines {
-    struct vector<wlw::lcnn_flp::willow_line2d, std::allocator<wlw::lcnn_flp::willow_line2d>> lines;
-    struct vector<float, std::allocator<float>> scores;
-    unsigned long long num_lines;
-};
-
-struct willow_line2d;
-
-struct willow_point2d;
-
 #pragma mark Typedef'd Structures
-
-typedef struct {
-    MISSING_TYPE *points[30];
-} CDStruct_b6daec9f;
 
 typedef struct {
     MISSING_TYPE *columns[3];
@@ -1391,20 +1658,4 @@ typedef struct {
 } CDStruct_2bc666a5;
 
 typedef struct CDStruct_183601bc;
-
-// Template types
-typedef struct tuple<NSArray<RS3DSurface *>*, NSArray<RS3DSurface *>*> {
-    struct __tuple_impl<std::__tuple_indices<0, 1>, NSArray<RS3DSurface *>*, NSArray<RS3DSurface *>*> {
-        id _field1;
-        id _field2;
-    } _field1;
-} tuple_fb175dae;
-
-typedef struct vector<Box3d, std::allocator<Box3d>> {
-    struct Box3d *_field1;
-    struct Box3d *_field2;
-    struct __compressed_pair<Box3d *, std::allocator<Box3d>> {
-        struct Box3d *_field1;
-    } _field3;
-} vector_22100960;
 

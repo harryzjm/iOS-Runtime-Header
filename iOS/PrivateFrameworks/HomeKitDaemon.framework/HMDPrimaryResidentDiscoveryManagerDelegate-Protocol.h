@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HomeKitDaemon/NSObject-Protocol.h>
-
-@class HMDResidentDevice;
+@class HMDResidentDevice, NSError, NSUUID;
 @protocol HMDPrimaryResidentDiscoveryManager;
 
-@protocol HMDPrimaryResidentDiscoveryManagerDelegate <NSObject>
-- (void)primaryResidentDiscoveryManager:(id <HMDPrimaryResidentDiscoveryManager>)arg1 didDiscoverPrimaryResident:(HMDResidentDevice *)arg2;
+@protocol HMDPrimaryResidentDiscoveryManagerDelegate
+- (void)discoveryManager:(id <HMDPrimaryResidentDiscoveryManager>)arg1 didCompleteDiscoveryWithPrimaryResidentDevice:(HMDResidentDevice *)arg2 primaryResidentGenerationID:(NSUUID *)arg3 error:(NSError *)arg4;
 @end
 

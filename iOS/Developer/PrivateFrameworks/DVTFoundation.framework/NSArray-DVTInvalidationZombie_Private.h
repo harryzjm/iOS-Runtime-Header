@@ -11,6 +11,7 @@
 @interface NSArray (DVTInvalidationZombie_Private)
 + (id)dvt_arrayWithObjectIfNonNil:(id)arg1;
 + (id)dvt_arrayWithRepetitions:(long long)arg1 ofObject:(id)arg2;
++ (id)dvt_arrayWithEnumeratedObjects:(id)arg1;
 - (void)_dvt_removeObserver:(id)arg1 fromObjectsAtIndexes:(id)arg2 forKeyPath:(id)arg3;
 - (void)_dvt_removeObserver:(id)arg1 fromObjectsAtIndexes:(id)arg2 forKeyPath:(id)arg3 context:(void *)arg4;
 - (void)_dvt_addObserver:(id)arg1 toObjectsAtIndexes:(id)arg2 forKeyPath:(id)arg3 options:(unsigned long long)arg4 context:(void *)arg5;
@@ -22,12 +23,12 @@
 - (id)dvt_evaluateAsStringInScope:(id)arg1 withState:(const struct DVTNestedMacroExpansionState *)arg2;
 - (id)dvt_arrayByExpandingEntriesWithMacroExpansionScope:(id)arg1;
 - (id)dvt_decodeObjectsOfClass:(Class)arg1 error:(id *)arg2;
-@property(readonly) NSDictionary *dictionaryValue;
-@property(readonly) NSArray *arrayValue;
-@property(readonly) NSDate *dateValue;
-@property(readonly) NSNumber *numberValue;
-@property(readonly) NSData *dataValue;
-@property(readonly) NSString *stringValue;
+@property(readonly) NSDictionary *dvt_plistDictionaryValue;
+@property(readonly) NSArray *dvt_plistArrayValue;
+@property(readonly) NSDate *dvt_plistDateValue;
+@property(readonly) NSNumber *dvt_plistNumberValue;
+@property(readonly) NSData *dvt_plistDataValue;
+@property(readonly) NSString *dvt_plistStringValue;
 - (id)dvt_maximumObject:(CDUnknownBlockType)arg1;
 - (id)dvt_minimumObject:(CDUnknownBlockType)arg1;
 - (id)dvt_allIndexes;
@@ -39,6 +40,7 @@
 - (_Bool)dvt_isIndexInBounds:(long long)arg1;
 - (id)dvt_secondToLastObject;
 - (long long)dvt_lastIndex;
+- (id)dvt_shuffledArray;
 - (id)dvt_flatMap:(CDUnknownBlockType)arg1;
 - (id)dvt_firstMap:(CDUnknownBlockType)arg1;
 - (id)dvt_compactMap:(CDUnknownBlockType)arg1;

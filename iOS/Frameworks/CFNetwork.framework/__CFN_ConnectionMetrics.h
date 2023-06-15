@@ -20,6 +20,7 @@
     _Bool _constrained;
     _Bool _multipath;
     _Bool _usedTFO;
+    _Bool _isUnlistedTracker;
     _Bool _usedByTransaction;
     _Bool _coalesced;
     _Bool _discretionary;
@@ -55,6 +56,7 @@
 @property(readonly, nonatomic, getter=_daemon_isDataBudgetingEnabled) _Bool _daemon_dataBudgetingEnabled;
 @property(readonly, nonatomic, getter=_daemon_isDiscretionary) _Bool _daemon_discretionary;
 @property(readonly, copy, nonatomic) NSString *_daemon_interfaceName;
+@property(readonly, nonatomic) double _daemon_establishTime;
 
 @end
 

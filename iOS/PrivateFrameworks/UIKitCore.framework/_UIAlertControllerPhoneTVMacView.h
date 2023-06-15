@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
         unsigned int needsUpdateForPropertyChange:1;
     } _alertControllerViewFlags;
     UIView *_contentView;
+    UIView *_backdropView;
     UIView *_contentViewTopItemsView;
     _UIAlertControllerInterfaceActionGroupView *_mainInterfaceActionsGroupView;
     _UIAlertControllerInterfaceActionGroupView *_discreteCancelActionGroupView;
@@ -81,6 +82,7 @@ __attribute__((visibility("hidden")))
     NSLayoutConstraint *_textFieldViewControllerViewBottomConstraint;
     NSLayoutConstraint *_contentScrollViewBottomConstraint;
     NSLayoutConstraint *_contentScrollViewMaximumWidthConstraint;
+    NSLayoutConstraint *_contentScrollViewMaximumHeightConstraint;
     NSLayoutConstraint *_contentViewControllerContainerViewTopAlignmentConstraint;
     NSLayoutConstraint *_contentViewControllerContainerViewWidthConstraint;
     NSLayoutConstraint *_contentViewControllerContainerViewHeightConstraint;
@@ -129,6 +131,7 @@ __attribute__((visibility("hidden")))
 @property(retain) NSLayoutConstraint *contentViewControllerContainerViewHeightConstraint; // @synthesize contentViewControllerContainerViewHeightConstraint=_contentViewControllerContainerViewHeightConstraint;
 @property(retain) NSLayoutConstraint *contentViewControllerContainerViewWidthConstraint; // @synthesize contentViewControllerContainerViewWidthConstraint=_contentViewControllerContainerViewWidthConstraint;
 @property(retain) NSLayoutConstraint *contentViewControllerContainerViewTopAlignmentConstraint; // @synthesize contentViewControllerContainerViewTopAlignmentConstraint=_contentViewControllerContainerViewTopAlignmentConstraint;
+@property(retain) NSLayoutConstraint *contentScrollViewMaximumHeightConstraint; // @synthesize contentScrollViewMaximumHeightConstraint=_contentScrollViewMaximumHeightConstraint;
 @property(retain) NSLayoutConstraint *contentScrollViewMaximumWidthConstraint; // @synthesize contentScrollViewMaximumWidthConstraint=_contentScrollViewMaximumWidthConstraint;
 @property(retain) NSLayoutConstraint *contentScrollViewBottomConstraint; // @synthesize contentScrollViewBottomConstraint=_contentScrollViewBottomConstraint;
 @property(retain) NSLayoutConstraint *textFieldViewControllerViewBottomConstraint; // @synthesize textFieldViewControllerViewBottomConstraint=_textFieldViewControllerViewBottomConstraint;
@@ -188,6 +191,7 @@ __attribute__((visibility("hidden")))
 - (void)setAlignsToKeyboard:(_Bool)arg1;
 - (_Bool)shouldHaveBackdropView;
 - (void)setShouldHaveBackdropView:(_Bool)arg1;
+- (void)_updateBackdropView:(_Bool)arg1;
 @property _Bool cancelActionIsDiscrete;
 - (void)_updateCancelActionBeingDiscrete;
 - (id)__cancelActionView;
@@ -233,6 +237,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateConstraintConstants;
 - (void)_updateActionViewHeight;
 - (void)_updateActionViewVisualStyle:(id)arg1;
+- (void)_updateMainGroupViewProperties;
 - (void)_updateContentView;
 - (void)_updateInsets;
 - (void)safeAreaInsetsDidChange;
@@ -294,6 +299,7 @@ __attribute__((visibility("hidden")))
 - (double)_layoutWidthForHorizontalLayout:(_Bool)arg1;
 - (struct UIEdgeInsets)_contentInsets;
 - (double)_availableWidthForHorizontalLayout:(_Bool)arg1;
+- (double)_minimumWidthFittingAlertContents;
 - (_Bool)_horizontalLayoutCanUseFullWidth;
 - (double)_verticalLayoutWidth;
 - (struct CGSize)_sizeForLayoutWidthDetermination;

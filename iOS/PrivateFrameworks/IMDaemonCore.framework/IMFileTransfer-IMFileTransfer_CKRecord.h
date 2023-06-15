@@ -15,6 +15,7 @@
 + (long long)sizeOfAssetForRecord:(id)arg1;
 + (id)utiTypeForRecord:(id)arg1;
 + (_Bool)_recordIsInvalid:(id)arg1;
++ (void)cleanUpAssetURL:(id)arg1;
 + (void)cleanUpAsset:(id)arg1;
 + (id)transferMetaDataFromRecord:(id)arg1;
 + (id)_recordType;

@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
-@class MISSING_TYPE, _TtC12CoreAudioKit15CAAUEQGraphView, _TtC12CoreAudioKit16CAAUEQHeaderView;
+@class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
 @interface _TtC12CoreAudioKit14CAAUEQViewBase : UIView
@@ -21,13 +21,10 @@ __attribute__((visibility("hidden")))
 
 + (_Bool)requiresConstraintBasedLayout;
 - (void).cxx_destruct;
-- (void)configureViewFor:(id)arg1;
 - (void)tintColorDidChange;
 - (void)didMoveToSuperview;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-@property(nonatomic, retain) _TtC12CoreAudioKit15CAAUEQGraphView *graphView;
-@property(nonatomic, retain) _TtC12CoreAudioKit16CAAUEQHeaderView *headerView;
 
 @end
 

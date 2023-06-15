@@ -13,6 +13,8 @@
 - (void)remote_interactionResultForMedication:(HKMedicationUserDomainConcept *)arg1 lifestyleFactor:(unsigned long long)arg2 completion:(void (^)(HKMedicationInteractionResult *, NSError *))arg3;
 - (void)remote_interactionResultForFirstMedication:(HKMedicationUserDomainConcept *)arg1 secondMedication:(HKMedicationUserDomainConcept *)arg2 completion:(void (^)(HKMedicationInteractionResult *, NSError *))arg3;
 - (void)remote_interactionResultsForInteractionClasses:(NSSet *)arg1 completion:(void (^)(NSSet *, NSError *))arg2;
+- (void)remote_numberOfInteractionsForMedication:(HKMedicationUserDomainConcept *)arg1 completion:(void (^)(NSNumber *, NSError *))arg2;
+- (void)remote_numberOfInteractionsForConceptWithIdentifier:(HKConceptIdentifier *)arg1 completion:(void (^)(NSNumber *, NSError *))arg2;
 - (void)remote_interactionClassForLifestyleFactor:(unsigned long long)arg1 completion:(void (^)(HKDrugInteractionClass *, NSError *))arg2;
 - (void)remote_interactionClassesForMedication:(HKMedicationUserDomainConcept *)arg1 completion:(void (^)(NSSet *, NSError *))arg2;
 - (void)remote_interactionClassesForConceptWithIdentifier:(HKConceptIdentifier *)arg1 completion:(void (^)(NSSet *, NSError *))arg2;

@@ -33,7 +33,7 @@
 - (void)getKnowledgeUUIDAndSequenceNumberWithCompletionHandler:(void (^)(NSUUID *, NSNumber *))arg1;
 - (void)getDiskUsage:(_LSDiskUsage *)arg1 completionHandler:(void (^)(_LSDiskUsage *, NSError *))arg2;
 - (void)getKernelPackageExtensionsWithCompletionHandler:(void (^)(NSArray *, NSError *))arg1;
-- (void)getServerStoreNonBlockingWithCompletionHandler:(void (^)(id, FSNode *, NSXPCListenerEndpoint *, NSError *))arg1;
+- (void)getServerStoreNonBlockingWithCompletionHandler:(void (^)(id, FSNode *, NSXPCListenerEndpoint *, _Bool, NSError *))arg1;
 - (void)getServerStatusWithCompletionHandler:(void (^)(unsigned int))arg1;
 @end
 

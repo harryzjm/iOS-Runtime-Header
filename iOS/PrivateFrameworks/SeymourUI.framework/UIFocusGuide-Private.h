@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIFocusGuide.h>
+#import <UIKitCore/UIFocusGuide.h>
 
 @interface UIFocusGuide (Private)
 + (id)smu_focusContainerGuide;

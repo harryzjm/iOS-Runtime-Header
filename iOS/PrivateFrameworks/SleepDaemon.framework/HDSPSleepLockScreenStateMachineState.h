@@ -16,12 +16,11 @@ __attribute__((visibility("hidden")))
 - (_Bool)_isSleepLockScreenDisabled;
 @property(readonly, nonatomic) long long sleepLockScreenState;
 - (void)sleepModeDidChange:(long long)arg1 reason:(unsigned long long)arg2;
-- (void)environmentDidBecomeReady;
-- (id)_nextStateForSleepMode:(long long)arg1 reason:(unsigned long long)arg2 context:(id *)arg3;
-- (id)nextStateWithContext:(id *)arg1;
+- (void)_updateStateForSleepMode:(long long)arg1 reason:(unsigned long long)arg2;
+- (void)updateState;
 - (void)dismissAlertForGoodMorning;
 - (void)presentAlertForGoodMorning;
-- (void)didEnterWithPreviousState:(id)arg1 context:(id)arg2;
+- (void)didEnter;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

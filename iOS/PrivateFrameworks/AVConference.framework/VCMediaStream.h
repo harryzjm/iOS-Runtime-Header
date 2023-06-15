@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class AVCBasebandCongestionDetector, AVCRateControlFeedbackController, AVCStatisticsCollector, NSArray, NSError, NSMutableArray, NSObject, NSString, VCCallInfoBlob, VCDatagramChannelIDS, VCMediaKeyIndex, VCMediaStreamConfig, VCMediaStreamTransport, VCNetworkFeedbackController, VCTransportSession, VCWeakObjectHolder;
+@class AVCBasebandCongestionDetector, AVCRateControlFeedbackController, AVCStatisticsCollector, NSArray, NSError, NSMutableArray, NSObject, NSString, VCCallInfoBlob, VCConnection, VCDatagramChannelIDS, VCMediaKeyIndex, VCMediaStreamConfig, VCMediaStreamRateAdaptation, VCMediaStreamTransport, VCNetworkFeedbackController, VCRateSharingGroup, VCTransportSession, VCWeakObjectHolder;
 @protocol OS_dispatch_queue, OS_dispatch_source, RTCPReportProvider, VCMediaStreamDelegate, VCMediaStreamNotification, VCMomentsCollectorDelegate;
 
 __attribute__((visibility("hidden")))
@@ -15,8 +15,11 @@ __attribute__((visibility("hidden")))
     VCDatagramChannelIDS *_datagramChannel;
     NSString *_idsDestination;
     id <VCMediaStreamDelegate> _delegate;
+    struct tagVCMediaStreamDelegateRealtimeInstanceVTable _delegateFunctions;
     id <VCMomentsCollectorDelegate> _momentsCollectorDelegate;
     NSString *_callID;
+    NSString *_clientSessionID;
+    NSString *_clientName;
     _Bool _isSRTPInitialized;
     _Bool _useRandomTS;
     _Bool _isReportingAgentOwner;
@@ -26,6 +29,7 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_source> *_rtcpSendHeartbeat;
     NSObject<OS_dispatch_source> *_timeoutHeartbeat;
     _Bool _rtcpHeartbeatCancelled;
+    _Bool _rtcpDidTimeout;
     double _lastRTPTimeoutReportTime;
     double _lastRTCPTimeoutReportTime;
     double _lastDecryptionTimeoutReportTime;
@@ -33,6 +37,7 @@ __attribute__((visibility("hidden")))
     double _decryptionErrorStartTime;
     unsigned int _localSSRC;
     unsigned int _transportSessionID;
+    int _state;
     int _clientPID;
     VCWeakObjectHolder *_notificationDelegate;
     VCWeakObjectHolder *_rtcpReportProvider;
@@ -59,21 +64,26 @@ __attribute__((visibility("hidden")))
     VCNetworkFeedbackController *_networkFeedbackController;
     _Bool _isWRMinitialized;
     _Bool _isServerPacketRetransmissionEnabled;
+    _Bool _isUplinkRetransmissionEnabled;
     _Bool _isNWMonitorSignalEnabled;
+    VCMediaStreamRateAdaptation *_rateAdaptation;
+    VCConnection *_connection;
+    VCRateSharingGroup *_rateSharingGroup;
     NSArray *_compoundStreamIDs;
     _Bool _isRTTBasedFIRThrottlingEnabled;
     _Bool _areStatisticsRegistered;
     AVCStatisticsCollector *_statisticsCollector;
     int _nwMonitorHandlerIndex;
     int _rttMonitorHandlerIndex;
-    int _state;
     int _channelSequenceCountWithInactiveSlots;
     struct os_unfair_lock_s _nwMonitorLock;
     AVCBasebandCongestionDetector *_basebandCongestionDetector;
 }
 
 + (_Bool)isSameSRTPKey:(id)arg1 newKey:(id)arg2;
+@property(nonatomic) struct tagVCMediaStreamDelegateRealtimeInstanceVTable delegateFunctions; // @synthesize delegateFunctions=_delegateFunctions;
 @property(readonly, nonatomic) int state; // @synthesize state=_state;
+@property(nonatomic, setter=setUplinkRetransmissionEnabled:) _Bool isUplinkRetransmissionEnabled; // @synthesize isUplinkRetransmissionEnabled=_isUplinkRetransmissionEnabled;
 @property(retain, nonatomic) VCNetworkFeedbackController *networkFeedbackController; // @synthesize networkFeedbackController=_networkFeedbackController;
 @property(copy) NSArray *compoundStreamIDs; // @synthesize compoundStreamIDs=_compoundStreamIDs;
 @property(retain, nonatomic) AVCBasebandCongestionDetector *basebandCongestionDetector; // @synthesize basebandCongestionDetector=_basebandCongestionDetector;
@@ -108,9 +118,6 @@ __attribute__((visibility("hidden")))
 - (void)stopTimeoutHeartbeat;
 - (void)startTimeoutHeartbeat;
 - (void)timeoutHeartbeat;
-- (void)checkForDecryptionTimeout;
-- (void)checkDecryptionTimeoutForMKMRecoveryAgainstTime:(double)arg1 decryptionErrorStartTime:(double)arg2;
-- (void)checkDecryptionTimeoutAgainstTime:(double)arg1 decryptionErrorStartTime:(double)arg2;
 - (void)checkRTCPPacketTimeoutAgainstTime:(double)arg1 lastReceivedPacketTime:(double)arg2;
 - (void)checkRTPPacketTimeoutAgainstTime:(double)arg1 lastReceivedPacketTime:(double)arg2;
 - (double)computeNextTimoutWithEnabledTime:(double)arg1 timeoutInterval:(double)arg2 lastReceivedPacketTime:(double)arg3 currentTime:(double)arg4 lastTimeoutReportTime:(double)arg5;
@@ -127,6 +134,7 @@ __attribute__((visibility("hidden")))
 - (unsigned int)getRTCPReportNTPTimeMiddle32ForReportId:(unsigned char)arg1;
 - (_Bool)generateReceptionReportList:(struct _RTCP_RECEPTION_REPORT *)arg1 reportCount:(char *)arg2;
 @property(nonatomic) id <RTCPReportProvider> rtcpReportProvider;
+- (struct __CFDictionary *)composeClientUserInfo:(int)arg1;
 - (void)setRtcpSendInterval:(double)arg1;
 - (void)setDecryptionTimeOutInterval:(double)arg1;
 - (void)setRtcpTimeOutInterval:(double)arg1;
@@ -161,7 +169,11 @@ __attribute__((visibility("hidden")))
 - (void)startWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)start;
 - (_Bool)setStreamConfig:(id)arg1 withError:(id *)arg2;
+- (void)setMediaQueueInStreamConfig:(id)arg1;
+- (void)setMediaQueueInRateControlConfig:(id)arg1;
+- (id)getSharingGroupWithPolicy:(unsigned int)arg1;
 - (_Bool)updateRemoteAddressWithConfig:(id)arg1 error:(id *)arg2;
+- (int)updateConnectionWithConfig:(id)arg1;
 - (void)didEncryptionKeyRollTimeout;
 - (void)resetDecryptionTimeout;
 - (_Bool)handleEncryptionInfoChange:(id)arg1;

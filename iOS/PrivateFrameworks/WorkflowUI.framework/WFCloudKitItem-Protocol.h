@@ -11,12 +11,13 @@
 @protocol WFCloudKitItem <NSObject>
 + (NSDictionary *)properties;
 + (NSString *)recordType;
-@property(nonatomic, readonly) CKRecordID *identifier;
+@property(readonly, nonatomic) CKRecordID *identifier;
+- (id)init;
 
 @optional
-- (void)ensureFileAssets;
+@property(copy, nonatomic) NSData *recordSystemFieldsData;
+- (id)ensureFileAssets;
 - (void)setCreatedAt:(NSDate *)arg1 modifiedAt:(NSDate *)arg2 createdBy:(NSString *)arg3;
 - (unsigned long long)referenceActionForKey:(NSString *)arg1;
-@property(nonatomic, copy) NSData *recordSystemFieldsData;
 @end
 

@@ -6,8 +6,8 @@
 
 #import "UIViewController.h"
 
-@class BLSFrameSpecifierModel, NSArray, NSDate, NSMutableArray, NSString, NSUndoManager, UIPopoverController, _UIAsyncInvocation, _UIHostedTextServiceSession, _UIHostedWindow, _UIQueueingProxy, _UIViewControllerOneToOneTransitionContext, _UIViewServiceDummyPopoverController;
-@protocol _UIViewServiceViewControllerOperatorDelegate;
+@class BLSFrameSpecifierModel, NSArray, NSDate, NSMutableArray, NSString, NSUUID, NSUndoManager, UIPopoverController, UIWindow, _UIAsyncInvocation, _UIHostedTextServiceSession, _UIHostedWindow, _UIQueueingProxy, _UITouchesBeganObserverGestureRecognizer, _UIViewControllerOneToOneTransitionContext, _UIViewServiceDummyPopoverController, _UIViewServiceSessionActivityRecord;
+@protocol BSInvalidatable, _UIViewServiceViewControllerOperatorDelegate;
 
 __attribute__((visibility("hidden")))
 @interface _UIViewServiceViewControllerOperator : UIViewController
@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     int _mediaPID;
     NSString *_hostBundleID;
     CDStruct_4c969caf _hostAuditToken;
+    NSUUID *_sessionIdentifier;
     _Bool _hostCanDynamicallySpecifySupportedInterfaceOrientations;
     id _remoteViewControllerProxyToOperator;
     _UIQueueingProxy *_remoteViewControllerProxyToViewController;
@@ -46,9 +47,15 @@ __attribute__((visibility("hidden")))
     _Bool _sheetPresentationControllerContainsFirstResponder;
     _Bool _sheetPresentationControllerFirstResponderRequiresKeyboard;
     struct CGRect _sheetPresentationControllerKeyboardFrame;
+    double _sheetPresentationControllerProposedDepthLevel;
     _Bool _hasRequestedKeyboardEventEnvironmentDeferring;
     NSDate *_previousPresentationDate;
     BLSFrameSpecifierModel *_blsFrameSpecifierModel;
+    _UIViewServiceSessionActivityRecord *_sessionActivityRecord;
+    _UITouchesBeganObserverGestureRecognizer *_hostedWindowActivityObserverGesture;
+    id <BSInvalidatable> _physicalButtonInteractionArbiterObserverToken;
+    double _systemReferenceAngleFromHost;
+    unsigned long long _systemReferenceAngleModeFromHost;
     id <_UIViewServiceViewControllerOperatorDelegate> _delegate;
     CDUnknownBlockType __traitsWillChangeHandler;
     CDUnknownBlockType __traitsDidChangeHandler;
@@ -56,11 +63,22 @@ __attribute__((visibility("hidden")))
 
 + (id)XPCInterface;
 + (void)initialize;
-+ (id)operatorWithRemoteViewControllerProxy:(id)arg1 hostPID:(int)arg2 hostBundleID:(id)arg3 hostAuditToken:(CDStruct_4c969caf)arg4;
++ (id)operatorWithRemoteViewControllerProxy:(id)arg1 hostPID:(int)arg2 hostBundleID:(id)arg3 hostAuditToken:(CDStruct_4c969caf)arg4 sessionIdentifier:(id)arg5;
 - (void).cxx_destruct;
 @property(copy, nonatomic, setter=_setTraitsDidChangeHandler:) CDUnknownBlockType _traitsDidChangeHandler; // @synthesize _traitsDidChangeHandler=__traitsDidChangeHandler;
 @property(copy, nonatomic, setter=_setTraitsWillChangeHandler:) CDUnknownBlockType _traitsWillChangeHandler; // @synthesize _traitsWillChangeHandler=__traitsWillChangeHandler;
 @property(nonatomic) __weak id <_UIViewServiceViewControllerOperatorDelegate> delegate; // @synthesize delegate=_delegate;
+@property(readonly, nonatomic) unsigned long long _systemReferenceAngleModeFromHost; // @synthesize _systemReferenceAngleModeFromHost;
+@property(readonly, nonatomic) double _systemReferenceAngleFromHost; // @synthesize _systemReferenceAngleFromHost;
+@property(readonly, copy) NSString *debugDescription;
+- (void)__hostDidReceivePhysicalButtonBSAction:(id)arg1;
+- (void)_physicalButtonInteractionArbiter:(id)arg1 didUpdateResolvedConfigurations:(id)arg2 inActiveViewServiceSession:(id)arg3;
+- (void)_handleActivityObserverGesture:(id)arg1;
+- (void)_installActivityObserverGestureIfNeeded;
+@property(readonly, nonatomic) int _effectiveViewControllerAppearState;
+@property(readonly, nonatomic) UIWindow *_primaryHostedWindow;
+@property(readonly, nonatomic) NSUUID *_sessionIdentifier;
+@property(readonly, nonatomic) unsigned long long _providerType;
 - (void)__updateWithFrameSpecifierDate:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)__timelinesForDateInterval:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)pressesEnded:(id)arg1 withEvent:(id)arg2;
@@ -136,6 +154,7 @@ __attribute__((visibility("hidden")))
 - (void)__setSheetConfiguration:(id)arg1;
 - (void)__setServiceInPopover:(_Bool)arg1;
 - (void)__hostViewDidMoveToScreenWithFBSDisplayIdentity:(id)arg1 newHostingHandleReplyHandler:(CDUnknownBlockType)arg2;
+- (void)__hostDidUpdateSceneContext:(id)arg1;
 - (void)__hostDidDetachDisplay:(id)arg1;
 - (void)__hostDidUpdateDisplay:(id)arg1;
 - (void)__hostDidAttachDisplay:(id)arg1;
@@ -151,12 +170,12 @@ __attribute__((visibility("hidden")))
 - (void)_sheetInteractionDraggingDidEnd;
 - (void)_sheetInteractionDraggingDidChangeWithTranslation:(struct CGPoint)arg1 velocity:(struct CGPoint)arg2 animateChange:(_Bool)arg3 dismissible:(_Bool)arg4;
 - (void)_sheetInteractionDraggingDidBeginWithRubberBandCoefficient:(double)arg1 dismissible:(_Bool)arg2 interruptedOffset:(struct CGPoint)arg3;
-- (void)_sheetPresentationControllerDidChangeContainsFirstResponder:(_Bool)arg1 firstResponderRequiresKeyboard:(_Bool)arg2 keyboardFrame:(struct CGRect)arg3;
+- (void)_sheetGrabberDidTriggerPrimaryAction;
+- (void)_sheetPresentationControllerDidChangeContainsFirstResponder:(_Bool)arg1 firstResponderRequiresKeyboard:(_Bool)arg2 keyboardFrame:(struct CGRect)arg3 proposedDepthLevel:(double)arg4;
 - (void)presentationControllerDidAttemptToDismiss:(id)arg1;
 - (_Bool)isModalInPresentation;
 - (void)systemLayoutFittingSizeDidChangeForChildViewController:(id)arg1;
 - (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
-- (struct CGSize)preferredContentSize;
 - (struct CGSize)contentSizeForViewInPopover;
 - (void)_didResignContentViewControllerOfPopover:(id)arg1;
 - (void)_willResignContentViewControllerOfPopover:(id)arg1;
@@ -204,7 +223,6 @@ __attribute__((visibility("hidden")))
 - (id)_queue;
 
 // Remaining properties
-@property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;

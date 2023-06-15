@@ -28,6 +28,7 @@
 + (id)legendTrendLineNameType;
 + (id)legendSeriesNameType;
 + (id)legendType;
++ (id)seriesValueSummaryLabelType;
 + (id)seriesValueLabelType;
 + (id)seriesSymbolType;
 + (id)seriesLabelType;

@@ -28,6 +28,7 @@
 - (id)generateRequestOperations;
 - (id)requestOperationClasses;
 - (_Bool)requiresTokenRegistration;
+- (id)equivalencyProperties;
 - (id)initWithOperation:(id)arg1 apsToken:(id)arg2 apsEnvironmentString:(id)arg3 bundleID:(id)arg4 skipBundleIDCheck:(_Bool)arg5;
 
 @end

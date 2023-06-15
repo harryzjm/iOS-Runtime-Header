@@ -21,7 +21,7 @@
     MISSING_TYPE *_enterReason;
     MISSING_TYPE *_exitReason;
     MISSING_TYPE *_accountURL;
-    MISSING_TYPE *_referrerURLHost;
+    MISSING_TYPE *_referrerURL;
     MISSING_TYPE *_mediaElapsedTime;
     MISSING_TYPE *_mediaDuration;
 }

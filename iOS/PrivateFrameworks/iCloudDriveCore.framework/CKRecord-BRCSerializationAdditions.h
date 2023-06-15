@@ -6,11 +6,9 @@
 
 #import <CloudKit/CKRecord.h>
 
-#import <iCloudDriveCore/PQLValuable-Protocol.h>
-
 @class NSData, NSString;
 
-@interface CKRecord (BRCSerializationAdditions) <PQLValuable>
+@interface CKRecord (BRCSerializationAdditions)
 + (id)newFromSqliteStatement:(struct sqlite3_stmt *)arg1 atIndex:(int)arg2;
 + (id)newFromSqliteValue:(struct sqlite3_value *)arg1;
 + (id)desiredKeysWithMask:(unsigned short)arg1;

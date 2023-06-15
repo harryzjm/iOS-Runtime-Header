@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MPAVRoutingController, MPCMediaFoundationTranslator, MPCModelGenericAVItem, MPCPlaybackEngine, MPCPlayerAudioRoute, MPPlaybackEQSetting, NSString;
+@class MPAVRoutingController, MPCAudioAssetTypeSelector, MPCMediaFoundationTranslator, MPCModelGenericAVItem, MPCPlaybackEngine, MPCPlayerAudioRoute, MPPlaybackEQSetting, NSString;
 @protocol MFPlaybackStackController><MFQueueManagement, OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
@@ -14,28 +14,31 @@ __attribute__((visibility("hidden")))
 {
     MPCPlayerAudioRoute *_currentAudioRoute;
     MPAVRoutingController *_routingController;
+    MPCAudioAssetTypeSelector *_audioAssetTypeSelector;
     MPPlaybackEQSetting *_eqSetting;
     MPCMediaFoundationTranslator *_translator;
     id <MFPlaybackStackController><MFQueueManagement> _stackController;
     MPCPlaybackEngine *_playbackEngine;
     NSObject<OS_dispatch_source> *_userDefaultsDebouncer;
-    MPCModelGenericAVItem *_currenItem;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) __weak MPCModelGenericAVItem *currenItem; // @synthesize currenItem=_currenItem;
 @property(retain, nonatomic) NSObject<OS_dispatch_source> *userDefaultsDebouncer; // @synthesize userDefaultsDebouncer=_userDefaultsDebouncer;
 @property(readonly, nonatomic) __weak MPCPlaybackEngine *playbackEngine; // @synthesize playbackEngine=_playbackEngine;
 @property(readonly, nonatomic) __weak id <MFPlaybackStackController><MFQueueManagement> stackController; // @synthesize stackController=_stackController;
 @property(readonly, nonatomic) __weak MPCMediaFoundationTranslator *translator; // @synthesize translator=_translator;
 @property(retain, nonatomic) MPPlaybackEQSetting *eqSetting; // @synthesize eqSetting=_eqSetting;
+@property(readonly, nonatomic) MPCAudioAssetTypeSelector *audioAssetTypeSelector; // @synthesize audioAssetTypeSelector=_audioAssetTypeSelector;
 @property(readonly, nonatomic) MPAVRoutingController *routingController; // @synthesize routingController=_routingController;
+- (void)_resetBufferedAudio;
+- (void)engineDidChangeVocalAttenuationState:(id)arg1;
+- (void)engineDidChangeVocalAttenuationLevel:(id)arg1;
 - (void)_updatePreferredAudioFormatIfRequiredForItem:(id)arg1 route:(id)arg2;
 - (void)_updateQueueItemsAndPlayerForFormatChangeIfRequired;
 - (_Bool)_shouldReloadEntireQueue;
 - (id)_modeObjectForPlayerItem:(id)arg1;
 - (id)queuedItems;
-- (id)currentItem;
+@property(readonly, nonatomic) __weak MPCModelGenericAVItem *currentItem;
 - (void)updateCurrentAudioRouteWithPickedRoutes:(id)arg1;
 @property(readonly, nonatomic) MPCPlayerAudioRoute *currentAudioRoute; // @synthesize currentAudioRoute=_currentAudioRoute;
 - (void)routingController:(id)arg1 pickedRoutesDidChange:(id)arg2;
@@ -50,7 +53,9 @@ __attribute__((visibility("hidden")))
 - (void)tearDownDefaultsDebouncer;
 - (void)setupDefaultsDebouncer;
 - (void)_preferredResolutionDidChange:(id)arg1;
+- (void)_soundCheckEnabledChangedNotification:(id)arg1;
 - (void)_playbackUserDefaultsEQPresetDidChangeNotification:(id)arg1;
+- (void)_highQualityMusicStreamingOnCellularDidChange:(id)arg1;
 - (void)_setupNotifications;
 - (void)_setupRoutingController;
 - (void)updatePlayerConfiguration;

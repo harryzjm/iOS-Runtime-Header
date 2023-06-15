@@ -18,6 +18,10 @@
 - (void).cxx_destruct;
 @property(readonly) NSDictionary *keyReplacements; // @synthesize keyReplacements=_keyReplacements;
 @property(readonly) id objectToEncode; // @synthesize objectToEncode=_objectToEncode;
+- (_Bool)ibShouldEncodeUniquedByValue;
+- (unsigned long long)hash;
+- (_Bool)isEqual:(id)arg1;
+- (_Bool)isEqualToReplacementEncodedObject:(id)arg1;
 - (Class)classForCoder;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

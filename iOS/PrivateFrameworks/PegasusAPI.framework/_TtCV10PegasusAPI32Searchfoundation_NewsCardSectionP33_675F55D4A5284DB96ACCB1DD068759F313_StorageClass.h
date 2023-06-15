@@ -24,6 +24,7 @@
     MISSING_TYPE *_thumbnail;
     MISSING_TYPE *_providerImage;
     MISSING_TYPE *_providerTitle;
+    MISSING_TYPE *_overlayTextInImage;
 }
 
 @end

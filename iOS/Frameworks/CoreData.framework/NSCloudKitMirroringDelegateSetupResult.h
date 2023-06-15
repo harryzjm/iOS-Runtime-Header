@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)dealloc;
-- (id)initWithRequest:(id)arg1 success:(_Bool)arg2 error:(id)arg3 container:(id)arg4 database:(id)arg5;
+- (id)initWithRequest:(id)arg1 storeIdentifier:(id)arg2 success:(_Bool)arg3 error:(id)arg4 container:(id)arg5 database:(id)arg6;
 
 @end
 

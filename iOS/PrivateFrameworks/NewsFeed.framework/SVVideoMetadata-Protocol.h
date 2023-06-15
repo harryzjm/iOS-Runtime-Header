@@ -6,14 +6,17 @@
 
 #import <NewsFeed/NSObject-Protocol.h>
 
+@class NSURL;
+
 @protocol SVVideoMetadata <NSObject>
-@property(nonatomic, readonly) unsigned long long playbackState;
-@property(nonatomic, readonly) struct CGSize naturalSize;
-@property(nonatomic, readonly) double volume;
-@property(nonatomic, readonly) _Bool muted;
-@property(nonatomic, readonly) double timePlayed;
-@property(nonatomic, readonly) double framerate;
-@property(nonatomic, readonly) double time;
-@property(nonatomic, readonly) double duration;
+@property(readonly, nonatomic) NSURL *videoURL;
+@property(readonly, nonatomic) unsigned long long playbackState;
+@property(readonly, nonatomic) struct CGSize naturalSize;
+@property(readonly, nonatomic) double volume;
+@property(readonly, nonatomic) _Bool muted;
+@property(readonly, nonatomic) double timePlayed;
+@property(readonly, nonatomic) double framerate;
+@property(readonly, nonatomic) double time;
+@property(readonly, nonatomic) double duration;
 @end
 

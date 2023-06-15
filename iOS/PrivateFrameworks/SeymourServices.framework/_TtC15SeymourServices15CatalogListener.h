@@ -13,6 +13,7 @@
     MISSING_TYPE *xpcBroadcastConnection;
     MISSING_TYPE *scriptConnection;
     MISSING_TYPE *catalogSystem;
+    MISSING_TYPE *remoteParticipantBroadcastConnection;
 }
 
 @end

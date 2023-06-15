@@ -7,11 +7,14 @@
 __attribute__((visibility("hidden")))
 @interface UIInputViewSetPlacementInvisibleForFloatingAssistantTransition
 {
+    UIInputViewSetPlacementInvisibleForFloatingAssistantTransition *_cachedSecondaryPlacement;
 }
 
 + (id)placementWithPlacement:(id)arg1;
+- (void).cxx_destruct;
 - (struct CGAffineTransform)transform;
 - (double)alpha;
+- (id)subPlacements;
 - (_Bool)isCompactAssistantView;
 - (_Bool)isFloatingAssistantView;
 

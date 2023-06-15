@@ -5,10 +5,11 @@
 //
 
 @class NSArray;
-@protocol GTRemoteDeviceBrowserDelegate;
+@protocol GTRemoteDeviceBrowserObserver;
 
 @protocol GTRemoteDeviceBrowser
+- (void)deregisterObserver:(unsigned long long)arg1;
+- (unsigned long long)registerObserver:(id <GTRemoteDeviceBrowserObserver>)arg1;
 - (NSArray *)allDevices;
-- (void)setDelegate:(id <GTRemoteDeviceBrowserDelegate>)arg1;
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UISheetPresentationControllerDetent.h>
+#import <UIKitCore/UISheetPresentationControllerDetent.h>
 
 @interface UISheetPresentationControllerDetent (SPI)
 + (id)emp_detentWithIdentifier:(id)arg1 resolutionContextBlock:(CDUnknownBlockType)arg2;

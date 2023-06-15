@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface _UISegmentedControlCacheKey : NSObject <NSCopying>
+@interface _UISegmentedControlCacheKey : NSObject
 {
     struct CGSize _size;
     double _cornerRadius;

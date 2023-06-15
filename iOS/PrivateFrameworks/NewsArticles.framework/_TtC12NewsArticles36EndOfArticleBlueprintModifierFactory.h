@@ -17,6 +17,7 @@
     MISSING_TYPE *nativeAdManager;
     MISSING_TYPE *policyValidator;
     MISSING_TYPE *layoutCollectionProvider;
+    MISSING_TYPE *subscriptionList;
 }
 
 @end

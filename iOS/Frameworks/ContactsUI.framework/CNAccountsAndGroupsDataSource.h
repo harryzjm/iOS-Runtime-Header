@@ -18,8 +18,8 @@ __attribute__((visibility("hidden")))
     CNContactStore *_store;
     NSSet *_targetAccountExternalIdentifiers;
     NSSet *_sourceAccountExternalIdentifiers;
-    CNAccountsAndGroupsItem *_currentlyEditingGroupItem;
     NSArray *_sections;
+    CNAccountsAndGroupsItem *_currentlyEditingGroupItem;
     CNAccountsAndGroupsItem *_rootItem;
     CNUIGroupsAndContainersSaveManager *_groupsAndContainersSaveManager;
     CNManagedConfiguration *_managedConfiguration;
@@ -31,8 +31,8 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) CNManagedConfiguration *managedConfiguration; // @synthesize managedConfiguration=_managedConfiguration;
 @property(retain, nonatomic) CNUIGroupsAndContainersSaveManager *groupsAndContainersSaveManager; // @synthesize groupsAndContainersSaveManager=_groupsAndContainersSaveManager;
 @property(retain, nonatomic) CNAccountsAndGroupsItem *rootItem; // @synthesize rootItem=_rootItem;
-@property(retain, nonatomic) NSArray *sections; // @synthesize sections=_sections;
 @property(retain, nonatomic) CNAccountsAndGroupsItem *currentlyEditingGroupItem; // @synthesize currentlyEditingGroupItem=_currentlyEditingGroupItem;
+@property(retain, nonatomic) NSArray *sections; // @synthesize sections=_sections;
 @property(copy, nonatomic) CNContactStoreFilter *filter; // @synthesize filter=_filter;
 @property(retain, nonatomic) NSSet *sourceAccountExternalIdentifiers; // @synthesize sourceAccountExternalIdentifiers=_sourceAccountExternalIdentifiers;
 @property(retain, nonatomic) NSSet *targetAccountExternalIdentifiers; // @synthesize targetAccountExternalIdentifiers=_targetAccountExternalIdentifiers;

@@ -7,7 +7,9 @@
 #import <Foundation/NSMapTable.h>
 
 @interface NSMapTable (PKAdditions)
-+ (id)pk_strongToWeakPointerPersonalityObjectsMapTable;
++ (id)pk_copiedToWeakObjectsMapTable;
++ (id)pk_strongToWeakObjectsMapTable;
++ (id)pk_strongPointerPersonalityToWeakObjectsMapTable;
 + (id)pk_weakPointerPersonalityToStrongObjectsMapTable;
 @end
 

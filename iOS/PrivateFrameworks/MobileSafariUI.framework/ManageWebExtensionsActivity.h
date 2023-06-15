@@ -7,6 +7,7 @@
 #import <UIKit/UIActivity.h>
 
 @class NSString, UIActivityViewController, UIViewController;
+@protocol _SFBrowserDocument;
 
 __attribute__((visibility("hidden")))
 @interface ManageWebExtensionsActivity : UIActivity
@@ -14,9 +15,11 @@ __attribute__((visibility("hidden")))
     NSString *_numberOfNewlyInstalledExtensions;
     UIViewController *_activityViewController;
     UIActivityViewController *_parentActivityViewController;
+    id <_SFBrowserDocument> _browserDocument;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) id <_SFBrowserDocument> browserDocument; // @synthesize browserDocument=_browserDocument;
 @property(nonatomic) __weak UIActivityViewController *parentActivityViewController; // @synthesize parentActivityViewController=_parentActivityViewController;
 - (void)extensionsControllerExtensionListDidChange:(id)arg1;
 - (void)_reloadBadgeCount;
@@ -29,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (id)activityTitle;
 - (id)activityType;
 - (void)dealloc;
+- (void)_formatBadgeText;
 - (id)init;
 
 @end

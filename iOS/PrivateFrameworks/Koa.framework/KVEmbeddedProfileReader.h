@@ -19,6 +19,7 @@
 @property(readonly, copy) NSString *description;
 - (id)profileInfo;
 - (_Bool)enumerateDatasetsWithError:(id *)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (id)data;
 - (id)initWithData:(id)arg1 profile:(const struct Profile *)arg2 profileInfo:(id)arg3;
 
 // Remaining properties

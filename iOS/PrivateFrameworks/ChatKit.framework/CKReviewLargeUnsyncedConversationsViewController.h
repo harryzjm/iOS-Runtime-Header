@@ -5,15 +5,17 @@
 //
 
 @class NSArray;
+@protocol IMDaemonMultiplexedConnectionManaging;
 
 __attribute__((visibility("hidden")))
 @interface CKReviewLargeUnsyncedConversationsViewController
 {
     NSArray *_conversations;
+    id <IMDaemonMultiplexedConnectionManaging> _daemonConnection;
 }
 
-+ (void)initialize;
 - (void).cxx_destruct;
+@property(retain, nonatomic) id <IMDaemonMultiplexedConnectionManaging> daemonConnection; // @synthesize daemonConnection=_daemonConnection;
 @property(retain, nonatomic) NSArray *conversations; // @synthesize conversations=_conversations;
 - (void)_populateConversationsIfNeeded;
 - (void)didSelectModelObjectAtIndex:(unsigned long long)arg1;
@@ -24,6 +26,7 @@ __attribute__((visibility("hidden")))
 - (Class)tableViewCellClass;
 - (id)tableViewCellReuseIdentifier;
 - (id)navigationBarTitle;
+- (void)dealloc;
 
 @end
 

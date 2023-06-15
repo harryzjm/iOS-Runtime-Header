@@ -6,12 +6,13 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-@class NSString, PBDataReader;
+@class NSMutableArray, NSString, PBDataReader;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDSearchGeoDecoration : PBCodable
 {
     PBDataReader *_reader;
+    NSMutableArray *_alternatives;
     NSString *_canonicalForm;
     NSString *_cardinalWord;
     NSString *_ordinalWord;
@@ -43,6 +44,7 @@ __attribute__((visibility("hidden")))
         unsigned int has_isStopWord:1;
         unsigned int has_isTitle:1;
         unsigned int has_isType:1;
+        unsigned int read_alternatives:1;
         unsigned int read_canonicalForm:1;
         unsigned int read_cardinalWord:1;
         unsigned int read_ordinalWord:1;

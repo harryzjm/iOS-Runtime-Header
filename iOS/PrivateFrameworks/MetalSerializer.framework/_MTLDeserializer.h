@@ -43,6 +43,7 @@ __attribute__((visibility("hidden")))
 - (id)replaceRegion:(const CDStruct_c0454aff *)arg1;
 - (void)newSharedEventWithEventPort:(unsigned int)arg1 label:(id)arg2 serializedData:(const char *)arg3 serializedDataSize:(unsigned long long)arg4 allocator:(id)arg5;
 - (_Bool)didModifyRange:(CDStruct_9835624e *)arg1 serializedDataSize:(unsigned long long)arg2;
+- (_Bool)newSharedEventWithOptions:(CDStruct_d008d4b8 *)arg1 allocator:(id)arg2;
 - (_Bool)newSharedEvent:(CDStruct_6238c8e0 *)arg1 allocator:(id)arg2;
 - (_Bool)newFence:(CDStruct_6238c8e0 *)arg1 allocator:(id)arg2;
 - (_Bool)newFunctionWithSerializedMetallib:(id)arg1 commandData:(const char *)arg2 commandDataSize:(unsigned long long)arg3 overrideTargetTriple:(id)arg4 allocator:(id)arg5;

@@ -18,6 +18,7 @@
 @property(readonly, nonatomic) NSDate *birthdayDate;
 @property(readonly, nonatomic) _Bool isMe;
 @property(readonly, nonatomic) _Bool isUserCreated;
+@property(readonly, nonatomic) _Bool isHidden;
 @property(readonly, nonatomic) _Bool isFavorite;
 @property(readonly, nonatomic) NSString *shareParticipantLocalIdentifier;
 @property(readonly, nonatomic) NSString *contactID;

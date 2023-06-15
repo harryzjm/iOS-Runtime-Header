@@ -6,11 +6,11 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class CADisplay, FBSDisplayIdentity;
+@class FBSDisplayConfiguration;
 @protocol SBWindowingModeResolver;
 
 @protocol SBWindowingModeResolverFactory <NSObject>
 @property(readonly, nonatomic) long long displayWindowingMode;
-- (id <SBWindowingModeResolver>)resolverForPhysicalDisplay:(FBSDisplayIdentity *)arg1 caDisplay:(CADisplay *)arg2;
+- (id <SBWindowingModeResolver>)resolverForPhysicalDisplay:(FBSDisplayConfiguration *)arg1;
 @end
 

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMutableArray, NSMutableIndexSet, UITableView, UITableViewRowData;
+@class NSArray, NSMutableArray, NSMutableIndexSet, NSString, UITableView, UITableViewRowData;
 @protocol _UITableViewIgnoreDragsToken;
 
 __attribute__((visibility("hidden")))
@@ -23,21 +23,15 @@ __attribute__((visibility("hidden")))
     UITableViewRowData *newRowData;
     struct _NSRange oldRowRange;
     struct _NSRange newRowRange;
-    NSMutableIndexSet *rows;
     NSMutableIndexSet *movedRows;
-    NSMutableIndexSet *movedSections;
     struct CGRect oldTableViewVisibleBounds;
     struct CGRect newTableViewVisibleBounds;
     struct CGRect tableViewVisibleBoundsUnion;
     double tableViewVisibleBoundsOffset;
     long long oldSectionCount;
     long long newSectionCount;
-    long long *oldSectionMap;
-    long long *newSectionMap;
     long long oldGlobalRowCount;
     long long newGlobalRowCount;
-    long long *oldGlobalRowMap;
-    long long *newGlobalRowMap;
     id *animatedCells;
     id *animatedHeaders;
     id *animatedFooters;
@@ -48,6 +42,8 @@ __attribute__((visibility("hidden")))
     NSMutableArray *deletedSections;
     NSMutableArray *insertedSections;
     NSMutableArray *gaps;
+    struct _UIDataSourceUpdateMaps _updateMaps;
+    NSString *_invalidUpdatesErrorMessage;
 }
 
 - (void).cxx_destruct;

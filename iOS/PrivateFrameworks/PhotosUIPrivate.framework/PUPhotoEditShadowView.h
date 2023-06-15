@@ -4,17 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
+
+@class CAGradientLayer;
 
 __attribute__((visibility("hidden")))
 @interface PUPhotoEditShadowView : UIView
 {
+    CAGradientLayer *_gradientMaskLayer;
+    _Bool _useVisualEffectView;
     unsigned long long _transparentSide;
 }
 
 + (Class)layerClass;
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long transparentSide; // @synthesize transparentSide=_transparentSide;
 - (id)gradientLayer;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)updateGradient;
+- (void)didMoveToWindow;
+- (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

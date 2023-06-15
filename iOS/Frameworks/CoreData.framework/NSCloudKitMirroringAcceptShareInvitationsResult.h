@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSArray *acceptedShareMetadatas; // @synthesize acceptedShareMetadatas=_acceptedShareMetadatas;
 @property(retain, nonatomic) NSArray *acceptedShares; // @synthesize acceptedShares=_acceptedShares;
 - (void)dealloc;
-- (id)initWithRequest:(id)arg1 acceptedShares:(id)arg2 acceptedShareMetadatas:(id)arg3 error:(id)arg4;
+- (id)initWithRequest:(id)arg1 storeIdentifier:(id)arg2 acceptedShares:(id)arg3 acceptedShareMetadatas:(id)arg4 error:(id)arg5;
 
 @end
 

@@ -7,20 +7,22 @@
 #import <FileProviderDaemon/FPXOperationService-Protocol.h>
 #import <FileProviderDaemon/FPXVendorObservation-Protocol.h>
 
-@class FPCTLTermDumper, FPItem, FPItemID, FPProviderDomain, FPSandboxingURLWrapper, NSArray, NSDate, NSDictionary, NSFileHandle, NSFileProviderDomain, NSFileProviderDomainVersion, NSFileProviderItemVersion, NSFileProviderRequest, NSProgress, NSString, NSURL, NSValue;
-@protocol FPDDomainServicing;
+@class FPCTLTermDumper, FPExtensionEnumerationSettings, FPItem, FPItemID, FPProviderDomain, FPSandboxingURLWrapper, NSArray, NSDate, NSDictionary, NSFileHandle, NSFileProviderDomain, NSFileProviderDomainVersion, NSFileProviderItemVersion, NSFileProviderRequest, NSProgress, NSString, NSURL, NSValue;
+@protocol FPDDomainServicing, FPXEnumeratorObserver;
 
 @protocol FPXVendor <FPXOperationService, FPXVendorObservation>
 - (void)_test_callFileProviderManagerAPIs:(void (^)(NSError *))arg1;
+- (void)forceUpdateBlockedProcessNamesFromDomain:(NSString *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)waitForStabilizationWithCompletionHandler:(void (^)(NSError *))arg1;
+- (void)listRemoteVersionsWithSettings:(FPExtensionEnumerationSettings *)arg1 observer:(id <FPXEnumeratorObserver>)arg2 request:(NSFileProviderRequest *)arg3 completionHandler:(void (^)(id <FPXEnumerator>, NSError *))arg4;
 - (void)importDidFinishWithCompletionHandler:(void (^)(NSError *))arg1;
 - (void)signalEnumeratorForPendingItemsWithCompletionHandler:(void (^)(NSError *))arg1;
 - (void)signalEnumeratorForMaterializedItemsWithCompletionHandler:(void (^)(NSError *))arg1;
 - (NSProgress *)deleteItemWithID:(FPItemID *)arg1 baseVersion:(NSFileProviderItemVersion *)arg2 options:(unsigned long long)arg3 request:(NSFileProviderRequest *)arg4 completionHandler:(void (^)(FPExtensionResponse *, NSError *))arg5;
 - (NSProgress *)createItemBasedOnTemplate:(FPItem *)arg1 fields:(unsigned long long)arg2 contents:(FPSandboxingURLWrapper *)arg3 options:(unsigned long long)arg4 request:(NSFileProviderRequest *)arg5 bounce:(_Bool)arg6 completionHandler:(void (^)(FPItem *, unsigned long long, _Bool, FPExtensionResponse *, NSError *))arg7;
 - (NSProgress *)modifyItem:(FPItem *)arg1 baseVersion:(NSFileProviderItemVersion *)arg2 changedFields:(unsigned long long)arg3 contents:(FPSandboxingURLWrapper *)arg4 options:(unsigned long long)arg5 request:(NSFileProviderRequest *)arg6 completionHandler:(void (^)(FPItem *, unsigned long long, _Bool, FPExtensionResponse *, NSError *))arg7;
-- (NSProgress *)fetchContentsForItemWithID:(FPItemID *)arg1 version:(NSFileProviderItemVersion *)arg2 usingExistingContentsAtURL:(FPSandboxingURLWrapper *)arg3 existingVersion:(NSFileProviderItemVersion *)arg4 request:(NSFileProviderRequest *)arg5 completionHandler:(void (^)(FPSandboxingURLWrapper *, FPItem *, FPExtensionResponse *, NSError *))arg6;
-- (NSProgress *)fetchContentsForItemWithID:(FPItemID *)arg1 version:(NSFileProviderItemVersion *)arg2 request:(NSFileProviderRequest *)arg3 extent:(NSValue *)arg4 alignment:(unsigned long long)arg5 options:(unsigned long long)arg6 shouldForwardVersion:(_Bool)arg7 completionHandler:(void (^)(FPSandboxingURLWrapper *, FPItem *, FPExtensionResponse *, NSValue *, NSError *))arg8;
+- (NSProgress *)fetchContentsForItemWithID:(FPItemID *)arg1 version:(NSFileProviderItemVersion *)arg2 usingExistingContentsAtURL:(FPSandboxingURLWrapper *)arg3 existingVersion:(NSFileProviderItemVersion *)arg4 request:(NSFileProviderRequest *)arg5 estimatedItemSize:(long long)arg6 isSymlink:(_Bool)arg7 completionHandler:(void (^)(FPSandboxingURLWrapper *, FPItem *, FPExtensionResponse *, unsigned long long, NSError *))arg8;
+- (NSProgress *)fetchContentsForItemWithID:(FPItemID *)arg1 version:(NSFileProviderItemVersion *)arg2 request:(NSFileProviderRequest *)arg3 estimatedItemSize:(long long)arg4 isSymlink:(_Bool)arg5 extent:(NSValue *)arg6 alignment:(unsigned long long)arg7 options:(unsigned long long)arg8 completionHandler:(void (^)(FPSandboxingURLWrapper *, FPItem *, FPExtensionResponse *, NSValue *, unsigned long long, NSError *))arg9;
 - (void)movingItemAtURL:(NSURL *)arg1 requiresProvidingWithDestinationURL:(NSURL *)arg2 completionHandler:(void (^)(_Bool, NSError *))arg3;
 - (void)dumpIndexStateForDomain:(NSString *)arg1 toFileHandler:(NSFileHandle *)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)dropIndexForDomain:(NSString *)arg1 completionHandler:(void (^)(NSError *))arg2;
@@ -28,7 +30,7 @@
 - (void)dumpInternalStateToTermDumper:(FPCTLTermDumper *)arg1 domainIdentifier:(NSString *)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)removeTrashedItemsOlderThanDate:(NSDate *)arg1 domainIdentifier:(NSString *)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)deleteSearchableItemsWithSpotlightDomainIdentifiers:(NSArray *)arg1 domainIdentifier:(NSString *)arg2 completionHandler:(void (^)(NSError *))arg3;
-- (void)didUpdateAlternateContentsDocumentForDocumentWithItemID:(FPItemID *)arg1 completionHandler:(void (^)(NSError *))arg2;
+- (void)didUpdateAlternateContentsDocumentForDocumentWithItem:(FPItem *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)setAlternateContentsURL:(FPSandboxingURLWrapper *)arg1 forDocumentWithItemID:(FPItemID *)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)URLForItemID:(FPItemID *)arg1 creatingPlaceholderIfMissing:(_Bool)arg2 ignoreAlternateContentsURL:(_Bool)arg3 completionHandler:(void (^)(FPSandboxingURLWrapper *, FPSandboxingURLWrapper *, NSError *))arg4;
 - (void)didChangeItemID:(FPItemID *)arg1 completionHandler:(void (^)(NSError *))arg2;

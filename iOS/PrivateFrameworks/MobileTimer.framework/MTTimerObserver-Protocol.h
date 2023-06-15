@@ -16,5 +16,8 @@
 - (void)source:(id <MTSource>)arg1 didRemoveTimers:(NSArray *)arg2;
 - (void)source:(id <MTSource>)arg1 didUpdateTimers:(NSArray *)arg2;
 - (void)source:(id <MTSource>)arg1 didAddTimers:(NSArray *)arg2;
+
+@optional
+- (void)source:(id <MTSource>)arg1 didUpdateTimers:(NSArray *)arg2 fromTimers:(NSArray *)arg3;
 @end
 

@@ -31,6 +31,8 @@
 - (void)configureAttributesForImageView:(UIImageView *)arg1 imageProperty:(NSString *)arg2 actionViewState:(UIInterfaceActionViewState *)arg3;
 - (NSArray *)actionPropertiesAffectingLabelStyling;
 - (void)configureAttributesForTitleLabel:(UILabel *)arg1 classificationLabel:(UILabel *)arg2 actionViewState:(UIInterfaceActionViewState *)arg3;
+- (id)actionTitleLabelCompositingFilterForViewState:(UIInterfaceActionViewState *)arg1;
+- (double)actionSpacingForGroupViewState:(UIInterfaceActionGroupViewState *)arg1;
 - (UIColor *)actionImageViewTintColorForImageProperty:(NSString *)arg1 actionViewState:(UIInterfaceActionViewState *)arg2;
 - (UIColor *)actionClassificationLabelColorForViewState:(UIInterfaceActionViewState *)arg1;
 - (UIFont *)actionClassificationLabelFontForViewState:(UIInterfaceActionViewState *)arg1;
@@ -44,5 +46,6 @@
 - (struct CGSize)minimumActionContentSize;
 - (struct UIEdgeInsets)actionSequenceEdgeInsets;
 - (double)actionSectionSpacing;
+- (_Bool)allowsZeroSizedSectionSeparators;
 @end
 

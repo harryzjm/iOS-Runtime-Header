@@ -11,10 +11,14 @@
 __attribute__((visibility("hidden")))
 @interface FPSearchQueryDescriptor : FPSpotlightQueryDescriptor
 {
+    _Bool _thirdPartySearchOnServer;
+    _Bool _avoidCoreSpotlightSearch;
     NSString *_searchQueryString;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool avoidCoreSpotlightSearch; // @synthesize avoidCoreSpotlightSearch=_avoidCoreSpotlightSearch;
+@property(nonatomic, getter=isThirdPartySearchOnServer) _Bool thirdPartySearchOnServer; // @synthesize thirdPartySearchOnServer=_thirdPartySearchOnServer;
 @property(copy) NSString *searchQueryString; // @synthesize searchQueryString=_searchQueryString;
 - (_Bool)keepCollectorsAlive;
 - (unsigned long long)hash;

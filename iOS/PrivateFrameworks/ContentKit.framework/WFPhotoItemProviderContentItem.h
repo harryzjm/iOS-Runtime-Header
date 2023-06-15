@@ -6,7 +6,7 @@
 
 #import "WFNSItemProviderContentItem.h"
 
-@class NSString;
+@class NSDictionary, NSString, WFFileType, WFObjectType;
 
 __attribute__((visibility("hidden")))
 @interface WFPhotoItemProviderContentItem : WFNSItemProviderContentItem
@@ -23,9 +23,16 @@ __attribute__((visibility("hidden")))
 - (id)outputTypes;
 
 // Remaining properties
+@property(readonly, nonatomic) NSDictionary *additionalRepresentationsForSerialization;
+@property(readonly, nonatomic) _Bool cachesSupportedTypes;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) _Bool hasStringOutput;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) _Bool includesFileRepresentationInSerializedItem;
+@property(readonly, nonatomic) NSDictionary *metadataForSerialization;
+@property(readonly, nonatomic) WFFileType *preferredFileType;
+@property(readonly, nonatomic) WFObjectType *preferredObjectType;
 @property(readonly) Class superclass;
 
 @end

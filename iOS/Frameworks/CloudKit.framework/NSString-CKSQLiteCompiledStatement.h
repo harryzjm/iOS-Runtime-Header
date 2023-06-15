@@ -7,8 +7,11 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (CKSQLiteCompiledStatement)
++ (id)CKSuperscriptForLetter:(BOOL)arg1;
++ (id)CKSuperscriptForNumber:(unsigned long long)arg1;
 - (id)cksqlcs_appendSQLConstantValueToString:(id)arg1;
 - (void *)cksqlcs_textBindingValue:(int *)arg1 destructor:(CDUnknownFunctionPointerType *)arg2 error:(id *)arg3;
+- (id)CKIndentedString:(unsigned long long)arg1 skippingFirstLine:(_Bool)arg2;
 - (id)CKStringByReplacingUUIDsWithString:(id)arg1;
 - (id)CKBase64DecodedString;
 - (id)CKBase64EncodedURLSafeString;

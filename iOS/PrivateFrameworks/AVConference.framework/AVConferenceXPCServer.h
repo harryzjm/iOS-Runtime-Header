@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *clientConnectionsQueue;
 }
 
++ (_Bool)clientWithToken:(CDStruct_6ad76789)arg1 hasEntitlement:(id)arg2;
 + (id)AVConferenceXPCServerSingleton;
 @property(readonly) NSMutableDictionary *registeredBlocks; // @synthesize registeredBlocks;
 @property(readonly) NSObject<OS_xpc_object> *listener; // @synthesize listener;
@@ -33,10 +34,10 @@ __attribute__((visibility("hidden")))
 - (id)newNSErrorFromNSDictionary:(id)arg1;
 - (id)newXPCDictionaryFromNSDictionary:(id)arg1 forEvent:(id)arg2;
 - (id)newNSDictionaryFromXPCDictionary:(id)arg1;
-- (void)deregisterFromService:(char *)arg1;
-- (void)registerBlockForService:(char *)arg1 block:(CDUnknownBlockType)arg2 queue:(id)arg3 eventLogLevel:(int)arg4;
-- (void)registerBlockForService:(char *)arg1 block:(CDUnknownBlockType)arg2 queue:(id)arg3;
-- (void)registerBlockForService:(char *)arg1 block:(CDUnknownBlockType)arg2;
+- (void)deregisterFromService:(const char *)arg1;
+- (void)registerBlockForService:(const char *)arg1 block:(CDUnknownBlockType)arg2 queue:(id)arg3 eventLogLevel:(int)arg4;
+- (void)registerBlockForService:(const char *)arg1 block:(CDUnknownBlockType)arg2 queue:(id)arg3;
+- (void)registerBlockForService:(const char *)arg1 block:(CDUnknownBlockType)arg2;
 - (void)sendMessageAsync:(char *)arg1 arguments:(id)arg2 toAllClientsWithContext:(id)arg3;
 - (void)sendMessageAsync:(char *)arg1 arguments:(id)arg2 context:(id)arg3;
 - (void)sendMessageAsync:(char *)arg1 arguments:(id)arg2 xpcArguments:(id)arg3 context:(id)arg4;

@@ -43,6 +43,7 @@ __attribute__((visibility("hidden")))
 - (void)removePageViewForPageAtIndex:(unsigned long long)arg1;
 - (id)createPageViewForPageAtIndex:(unsigned long long)arg1 withFrame:(struct CGRect)arg2;
 - (id)pageViewForPageAtIndex:(unsigned long long)arg1;
+- (void)updateNotificationsForDocument;
 - (id)document;
 - (void)setDocument:(id)arg1;
 - (void)dealloc;

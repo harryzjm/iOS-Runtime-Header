@@ -16,8 +16,6 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (_Bool)shouldClearCache;
-- (void)denyOnlyThisRequest;
 - (void)deny;
 - (void)allow;
 - (id)initWithCompletionHandler:(void *)arg1;

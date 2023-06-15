@@ -6,7 +6,7 @@
 
 #import <PhotosUIPrivate/NSObject-Protocol.h>
 
-@class NSArray, PUOneUpPresentationHelper, PUOneUpViewController, UIScrollView, UIView, UIViewController;
+@class NSArray, PUOneUpPresentationHelper, PUOneUpViewController, PXSearchQueryMatchInfo, UIScrollView, UIView, UIViewController;
 
 @protocol PUOneUpPresentationHelperDelegate <NSObject>
 - (long long)oneUpPresentationOrigin:(PUOneUpPresentationHelper *)arg1;
@@ -14,7 +14,12 @@
 
 @optional
 - (NSArray *)oneUpPresentationHelperAssetUUIDsAllowedToHighlightText:(PUOneUpPresentationHelper *)arg1;
+- (NSArray *)oneUpPresentationHelperMatchedPersonLocalIdentifiers:(PUOneUpPresentationHelper *)arg1;
+- (NSArray *)oneUpPresentationHelperMatchedHumanActionIdentifiers:(PUOneUpPresentationHelper *)arg1;
+- (NSArray *)oneUpPresentationHelperMatchedAudioIdentifiers:(PUOneUpPresentationHelper *)arg1;
+- (NSArray *)oneUpPresentationHelperMatchedSceneIdentifiers:(PUOneUpPresentationHelper *)arg1;
 - (NSArray *)oneUpPresentationHelperTextsToHighlight:(PUOneUpPresentationHelper *)arg1;
+- (PXSearchQueryMatchInfo *)oneUpPresentationHelperSearchQueryMatchInfo:(PUOneUpPresentationHelper *)arg1;
 - (unsigned long long)oneUpPresentationHelperAdditionalOptions:(PUOneUpPresentationHelper *)arg1;
 - (long long)oneUpPresentationHelperPreferredPresentationOrientation:(PUOneUpPresentationHelper *)arg1;
 - (_Bool)oneUpPresentationHelperWantsShowInLibraryButton:(PUOneUpPresentationHelper *)arg1;
@@ -29,6 +34,8 @@
 - (UIScrollView *)oneUpPresentationHelperScrollView:(PUOneUpPresentationHelper *)arg1;
 - (UIView *)oneUpPresentationHelperViewHostingTilingView:(PUOneUpPresentationHelper *)arg1;
 - (UIView *)oneUpPresentationHelperViewHostingGestureRecognizers:(PUOneUpPresentationHelper *)arg1;
+- (UIViewController *)oneUpPresentationHelperOriginalViewController:(PUOneUpPresentationHelper *)arg1;
+- (void)oneUpPresentationHelperStateDidChange:(PUOneUpPresentationHelper *)arg1;
 - (void)oneUpPresentationHelper:(PUOneUpPresentationHelper *)arg1 didDismissOneUpViewController:(PUOneUpViewController *)arg2;
 - (void)oneUpPresentationHelper:(PUOneUpPresentationHelper *)arg1 willPresentOneUpViewController:(PUOneUpViewController *)arg2;
 - (long long)oneUpPresentationHelper:(PUOneUpPresentationHelper *)arg1 transitionTypeWithProposedTransitionType:(long long)arg2;

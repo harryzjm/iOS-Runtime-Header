@@ -22,10 +22,6 @@ __attribute__((visibility("hidden")))
 @property(readonly) int remoteWRMLinkTypeSuggestion; // @synthesize remoteWRMLinkTypeSuggestion=_remoteWRMLinkTypeSuggestion;
 @property(readonly) int localWRMLinkTypeSuggestion; // @synthesize localWRMLinkTypeSuggestion=_localWRMLinkTypeSuggestion;
 - (unsigned char)processRemoteWRMSuggestion:(int)arg1 isRemoteDuplicating:(_Bool)arg2;
-- (unsigned char)processLocalWRMNotification:(CDStruct_cd8cfafa *)arg1 isAudioOnly:(_Bool)arg2;
-- (void)updateWRMNotificationRequestTime:(double)arg1;
-- (_Bool)shouldRequestWRMNotificationWithDuplicationReason:(unsigned char)arg1 isDuplicationEnabled:(_Bool)arg2 isLocalUsingCellular:(_Bool)arg3 atTime:(double)arg4;
-- (_Bool)shouldForceWRMRecommendationUsingUserDefaults;
 - (id)init;
 
 @end

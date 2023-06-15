@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDictionary, NSMutableDictionary, NSString;
+@class NSData, NSDictionary, NSMutableDictionary, NSString;
 @protocol VCMediaStreamSyncSource;
 
 __attribute__((visibility("hidden")))
@@ -27,11 +27,14 @@ __attribute__((visibility("hidden")))
     int _encodingMode;
     int _encoderUsage;
     _Atomic unsigned char *_videoPriorityPointer;
+    long long _captureSourceID;
     unsigned int _screenDisplayID;
     unsigned long long _customWidth;
     unsigned long long _customHeight;
     NSMutableDictionary *_rxCodecFeatureListStrings;
     NSMutableDictionary *_txCodecFeatureListStrings;
+    NSData *_featureBitfieldEncoder;
+    NSData *_featureBitfieldDecoder;
     unsigned long long _tilesPerFrame;
     unsigned int _pixelFormat;
     _Bool _ltrpEnabled;
@@ -46,17 +49,27 @@ __attribute__((visibility("hidden")))
     id <VCMediaStreamSyncSource> _syncSource;
     _Bool _useInBandFEC;
     unsigned int _audioIOSampleRate;
+    _Bool _fecEnabled;
+    _Bool _rtxEnabled;
+    int _transportProtocolType;
+    double _minPlaybackInterval;
     _Bool _useVideoJitterForVideoPlayout;
     _Bool _forceZeroRegionOfInterestOrigin;
+    _Bool _shouldEnableMLEnhance;
     unsigned long long _maxEncoderPixels;
 }
 
 + (id)profileLevelStringForId:(unsigned int)arg1;
 + (unsigned int)profileLevelIdForString:(id)arg1;
 + (_Bool)validateClientDictionary:(id)arg1;
+@property(nonatomic) _Bool shouldEnableMLEnhance; // @synthesize shouldEnableMLEnhance=_shouldEnableMLEnhance;
 @property(nonatomic) _Bool forceZeroRegionOfInterestOrigin; // @synthesize forceZeroRegionOfInterestOrigin=_forceZeroRegionOfInterestOrigin;
 @property(nonatomic) unsigned long long maxEncoderPixels; // @synthesize maxEncoderPixels=_maxEncoderPixels;
 @property(nonatomic) _Bool useVideoJitterForVideoPlayout; // @synthesize useVideoJitterForVideoPlayout=_useVideoJitterForVideoPlayout;
+@property(nonatomic) double minPlaybackInterval; // @synthesize minPlaybackInterval=_minPlaybackInterval;
+@property(nonatomic) int transportProtocolType; // @synthesize transportProtocolType=_transportProtocolType;
+@property(nonatomic) _Bool rtxEnabled; // @synthesize rtxEnabled=_rtxEnabled;
+@property(nonatomic) _Bool fecEnabled; // @synthesize fecEnabled=_fecEnabled;
 @property(nonatomic) unsigned int audioIOSampleRate; // @synthesize audioIOSampleRate=_audioIOSampleRate;
 @property(nonatomic) _Bool useInBandFEC; // @synthesize useInBandFEC=_useInBandFEC;
 @property(nonatomic) int encoderUsage; // @synthesize encoderUsage=_encoderUsage;
@@ -75,6 +88,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned long long customHeight; // @synthesize customHeight=_customHeight;
 @property(nonatomic) unsigned long long customWidth; // @synthesize customWidth=_customWidth;
 @property(nonatomic) unsigned int screenDisplayID; // @synthesize screenDisplayID=_screenDisplayID;
+@property(nonatomic) long long captureSourceID; // @synthesize captureSourceID=_captureSourceID;
 @property(nonatomic) _Atomic unsigned char *videoPriorityPointer; // @synthesize videoPriorityPointer=_videoPriorityPointer;
 @property(nonatomic) int encodingMode; // @synthesize encodingMode=_encodingMode;
 @property(nonatomic) unsigned long long sourceFramerate; // @synthesize sourceFramerate=_sourceFramerate;
@@ -84,6 +98,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool enableCVO; // @synthesize enableCVO=_enableCVO;
 @property(nonatomic) int remoteVideoInitialOrientation; // @synthesize remoteVideoInitialOrientation=_remoteVideoInitialOrientation;
 @property(nonatomic) unsigned long long keyFrameInterval; // @synthesize keyFrameInterval=_keyFrameInterval;
+@property(retain, nonatomic) NSData *featureBitfieldDecoder; // @synthesize featureBitfieldDecoder=_featureBitfieldDecoder;
+@property(retain, nonatomic) NSData *featureBitfieldEncoder; // @synthesize featureBitfieldEncoder=_featureBitfieldEncoder;
 @property(readonly, nonatomic) NSDictionary *txCodecFeatureListStrings; // @synthesize txCodecFeatureListStrings=_txCodecFeatureListStrings;
 @property(readonly, nonatomic) NSDictionary *rxCodecFeatureListStrings; // @synthesize rxCodecFeatureListStrings=_rxCodecFeatureListStrings;
 @property(nonatomic) unsigned long long rxMaxBitrate; // @synthesize rxMaxBitrate=_rxMaxBitrate;

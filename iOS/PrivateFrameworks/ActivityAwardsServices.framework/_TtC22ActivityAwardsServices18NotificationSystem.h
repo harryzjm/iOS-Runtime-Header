@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *achievementStore;
     MISSING_TYPE *bridgeSettings;
     MISSING_TYPE *earnedKeyValueStore;
+    MISSING_TYPE *fitnessAppsStateObserver;
     MISSING_TYPE *healthStore;
     MISSING_TYPE *notificationPostingProvider;
     MISSING_TYPE *notificationSuppresionProvider;

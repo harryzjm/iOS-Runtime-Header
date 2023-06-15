@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 - (void)vui_viewWillLayoutSubviews;
+- (void)vui_viewDidAppear:(_Bool)arg1;
 - (void)vui_viewWillAppear:(_Bool)arg1;
 - (void)vui_viewDidLoad;
 @property(nonatomic, readonly) UINavigationItem *navigationItem;

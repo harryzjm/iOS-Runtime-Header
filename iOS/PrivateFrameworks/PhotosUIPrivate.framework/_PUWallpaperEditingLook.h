@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class NSString, PRPosterColor;
 
 __attribute__((visibility("hidden")))
 @interface _PUWallpaperEditingLook : NSObject
@@ -15,11 +15,11 @@ __attribute__((visibility("hidden")))
     NSString *_identifier;
     unsigned long long _pu_timeAppearance;
     NSString *_pu_timeFontIdentifier;
-    NSObject *_pu_timeFontColor;
+    PRPosterColor *_pu_timeFontColor;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSObject *pu_timeFontColor; // @synthesize pu_timeFontColor=_pu_timeFontColor;
+@property(readonly, nonatomic) PRPosterColor *pu_timeFontColor; // @synthesize pu_timeFontColor=_pu_timeFontColor;
 @property(readonly, nonatomic) NSString *pu_timeFontIdentifier; // @synthesize pu_timeFontIdentifier=_pu_timeFontIdentifier;
 @property(readonly, nonatomic) unsigned long long pu_timeAppearance; // @synthesize pu_timeAppearance=_pu_timeAppearance;
 @property(readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UICollectionViewLayout.h>
+#import <UIKitCore/UICollectionViewLayout.h>
 
 @class MISSING_TYPE;
 
@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *layoutMode;
     MISSING_TYPE *selectedSectionIndex;
     MISSING_TYPE *sectionRevealProgressProvider;
-    MISSING_TYPE *hidesHomeCardsUnlessHomePeeking;
+    MISSING_TYPE *hidesHomeCardsInAlongsideLayout;
     MISSING_TYPE *alongsideCompactLayoutShouldScaleFurtherBack;
     MISSING_TYPE *layoutModeTransitioningTo;
     MISSING_TYPE *itemSize;
@@ -32,14 +32,18 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *selectedFrontBaseOffset;
     MISSING_TYPE *unselectedFrontBaseOffset;
     MISSING_TYPE *unselectedFrontShovedMultiplier;
+    MISSING_TYPE *unselectedFrontShovedMultiplierPad;
     MISSING_TYPE *unselectedFrontParallaxLeadingMultiplier;
     MISSING_TYPE *unselectedFrontParallaxTrailingMultiplier;
     MISSING_TYPE *backBaseOffset;
     MISSING_TYPE *backParallaxMultiplier;
+    MISSING_TYPE *backParallaxMultiplierPad;
+    MISSING_TYPE *coupledContentEdgeMargin;
     MISSING_TYPE *contentBounds;
     MISSING_TYPE *cachedAttributes;
     MISSING_TYPE *cachedSupplementaryHeaderAttributes;
     MISSING_TYPE *cachedSupplementaryFooterAttributes;
+    MISSING_TYPE *cachedSupplementaryDecorationAttributes;
     MISSING_TYPE *sectionRevealProgresses;
     MISSING_TYPE *sectionIndexPathsToDelete;
     MISSING_TYPE *indexPathToMaintainForTransition;
@@ -49,9 +53,12 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (struct CGPoint)targetContentOffsetForProposedContentOffset:(struct CGPoint)arg1;
 - (id)layoutAttributesForElementsInRect:(struct CGRect)arg1;
+- (id)indexPathsToDeleteForDecorationViewOfKind:(id)arg1;
 - (id)indexPathsToDeleteForSupplementaryViewOfKind:(id)arg1;
 - (id)finalLayoutAttributesForDisappearingSupplementaryElementOfKind:(id)arg1 atIndexPath:(id)arg2;
 - (id)finalLayoutAttributesForDisappearingItemAtIndexPath:(id)arg1;
+- (_Bool)_disablesDoubleSidedAnimations;
+- (id)layoutAttributesForDecorationViewOfKind:(id)arg1 atIndexPath:(id)arg2;
 - (id)layoutAttributesForSupplementaryViewOfKind:(id)arg1 atIndexPath:(id)arg2;
 - (id)layoutAttributesForItemAtIndexPath:(id)arg1;
 - (_Bool)shouldInvalidateLayoutForBoundsChange:(struct CGRect)arg1;

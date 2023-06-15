@@ -9,8 +9,8 @@
 @class NSArray, NSString, PKApplicationMessageRequest;
 
 @protocol PKApplicationMessageSink <NSObject>
-@property(nonatomic, readonly) NSArray *registrations;
-@property(nonatomic, readonly) long long source;
+@property(readonly, nonatomic) NSArray *registrations;
+@property(readonly, nonatomic) long long source;
 - (void)didUpdateMessageContentForIdentifier:(NSString *)arg1;
 - (_Bool)hasMessageWithIdentifier:(NSString *)arg1;
 - (void)unregisterMessageForIdentifier:(NSString *)arg1;

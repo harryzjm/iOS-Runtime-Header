@@ -6,11 +6,12 @@
 
 #import <UserNotifications/_UNNotificationServiceExtensionXPCInterface-Protocol.h>
 
-@class UNNotificationRequest;
+@class UNNotificationContent, UNNotificationRequest;
 
 @protocol _UNNotificationServiceExtensionRemoteXPCInterface <_UNNotificationServiceExtensionXPCInterface>
 - (void)serviceExtensionPerformCleanup;
 - (void)serviceExtensionTimeWillExpire;
+- (void)deleteAttachmentFilesInContentIfNecessary:(UNNotificationContent *)arg1;
 - (void)didReceiveNotificationRequest:(UNNotificationRequest *)arg1 withCompletionHandler:(void (^)(UNNotificationContent *))arg2;
 @end
 

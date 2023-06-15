@@ -6,7 +6,7 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class BSAnimationSettings, BSUIAnimationFactory, NSSet, NSString, PRSPosterConfiguration, UIView;
+@class BSAnimationSettings, BSUIAnimationFactory, NSSet, NSString, NSUUID, PRSPosterConfiguration, UIGestureRecognizer, UIView;
 @protocol BSInvalidatable, BSInvalidatable><PBUIWallpaperPositioning, PBUIWallpaperAnimatedInvalidating, PBUIWallpaperObserver, PBUIWallpaperPresentingDelegate;
 
 @protocol PBUIWallpaperPresenting <NSObject>
@@ -31,7 +31,11 @@
 - (_Bool)setWallpaperStyle:(long long)arg1 forPriority:(long long)arg2 forVariant:(long long)arg3 withAnimationFactory:(BSUIAnimationFactory *)arg4;
 
 @optional
+@property(readonly, nonatomic) unsigned long long significantEventsCounter;
+- (void)setWallpaperObscured:(_Bool)arg1;
+- (unsigned long long)significantEventsCounterForPosterWithIdentifier:(NSUUID *)arg1;
 - (void)triggerSceneUpdate;
+- (void)triggerPosterTapEvent:(UIGestureRecognizer *)arg1;
 - (void)triggerPosterSignificantEvent;
 - (void)noteDidRotateFromInterfaceOrientation:(long long)arg1;
 - (void)noteWillAnimateToInterfaceOrientation:(long long)arg1 duration:(double)arg2;

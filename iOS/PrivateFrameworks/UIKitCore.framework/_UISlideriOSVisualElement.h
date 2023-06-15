@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
     struct {
         unsigned int animating:1;
         unsigned int preparingToAnimate:1;
+        unsigned int overridesModifiedTrackRect:1;
     } _sliderFlags;
     double _hitOffset;
     UIView *_thumbViewNeue;
@@ -76,6 +77,7 @@ __attribute__((visibility("hidden")))
 - (void)setValue:(float)arg1 animated:(_Bool)arg2;
 - (void)_updateAppearanceForEnabled:(_Bool)arg1;
 - (void)_layoutSubviewsForBoundsChange:(_Bool)arg1;
+- (struct CGRect)_modifiedTrackRect:(struct CGRect)arg1;
 - (void)_updateMaxTrackColorForInitialization:(_Bool)arg1;
 - (void)_traitCollectionDidChangeInternal:(const struct _UITraitCollectionChangeDescription *)arg1;
 - (void)_setSliderNeedsLayout;
@@ -91,6 +93,7 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)trackRectForBounds:(struct CGRect)arg1;
 - (struct CGRect)maximumValueImageRectForBounds:(struct CGRect)arg1;
 - (struct CGRect)minimumValueImageRectForBounds:(struct CGRect)arg1;
+- (void)didUpdateExpansionFactor;
 - (void)didUpdateTraitCollection;
 - (unsigned long long)state;
 - (id)currentMaximumTrackImage;
@@ -116,6 +119,7 @@ __attribute__((visibility("hidden")))
 - (void)_initSubviews;
 - (void)_initImages;
 - (id)createThumbViewNeue;
+- (void)_bounceMinMaxValueImageViewsIfNeeded;
 - (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
 - (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
 - (void)_setupFeedback;

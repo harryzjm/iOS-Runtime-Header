@@ -6,9 +6,12 @@
 
 #import <MobileTimer/NSObject-Protocol.h>
 
-@class MTTimer, NSArray;
+@class MTTimer, MTTimerDuration, NSArray;
 
 @protocol MTTimerClient <NSObject>
+- (void)latestTimerDurationUpdated:(MTTimerDuration *)arg1;
+- (void)favoriteTimerDurationsUpdated:(NSArray *)arg1;
+- (void)recentTimerDurationsUpdated:(NSArray *)arg1;
 - (void)nextTimerChanged:(MTTimer *)arg1;
 - (void)timerDismissed:(MTTimer *)arg1;
 - (void)timerFired:(MTTimer *)arg1;

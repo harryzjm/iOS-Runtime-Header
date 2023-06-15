@@ -18,10 +18,12 @@ __attribute__((visibility("hidden")))
     VGVehicle *_lastVehicle;
     MNTraceRecorder *_traceRecorder;
     NSTimer *_timer;
+    NSString *_lastVehicleName;
 }
 
 + (id)sharedManager;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *lastVehicleName; // @synthesize lastVehicleName=_lastVehicleName;
 @property(readonly, nonatomic) VGVehicle *lastVehicle; // @synthesize lastVehicle=_lastVehicle;
 - (void)virtualGarageProvider:(id)arg1 didUpdateSelectedVehicle:(id)arg2;
 - (_Bool)_isStandardProvider:(id)arg1;

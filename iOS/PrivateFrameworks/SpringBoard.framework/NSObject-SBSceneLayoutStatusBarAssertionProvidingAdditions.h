@@ -12,7 +12,7 @@
 - (_Bool)SB_conformsToSBApplicationSceneStatusBarDescriberProviding;
 - (_Bool)SB_conformsToSBApplicationSceneStatusBarDescribing;
 - (_Bool)SB_conformsToMainDisplaySceneLayoutElementViewControlling;
+- (id)sb_switcherModifierDebugTimelineDescription;
 - (_Bool)SB_conformsToMedusaDecoratedDeviceApplicationSceneViewControlling;
-- (id)sb_historianDescription;
 @end
 

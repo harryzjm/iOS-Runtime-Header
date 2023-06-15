@@ -8,8 +8,10 @@
 
 @interface NSError (WFUserCancelled)
 + (id)userCancelledError;
++ (id)wfSiriPunchOutError;
 + (id)wfUnsupportedUserInterfaceError;
 - (_Bool)wf_isUserCancelledError;
+- (_Bool)wf_isSiriPunchOutError;
 - (_Bool)wf_isUnsupportedUserInterfaceError;
 @end
 

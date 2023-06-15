@@ -7,6 +7,7 @@
 #import <Foundation/NSUserDefaults.h>
 
 @interface NSUserDefaults (IMSharedUtilities)
++ (id)messagesDomain;
 + (id)messagesAppDomain;
 @property(nonatomic) _Bool conversationListFocusFilterActionEnabled;
 @end

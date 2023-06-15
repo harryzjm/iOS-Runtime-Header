@@ -7,6 +7,7 @@
 #import <ChatKit/NSObject-Protocol.h>
 
 @protocol CKAnimationTimerObserver <NSObject>
-- (void)animationTimerFired:(unsigned long long)arg1;
+- (_Bool)animationExplicitlyResumed;
+- (void)animationTimerFired:(double)arg1;
 @end
 

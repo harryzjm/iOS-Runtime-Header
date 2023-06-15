@@ -6,7 +6,7 @@
 
 #import <EmbeddedAcousticRecognition/NSObject-Protocol.h>
 
-@class NSArray, NSError, _EARSpeechRecognition, _EARSpeechRecognitionResult, _EARSpeechRecognitionResultPackage, _EARSpeechRecognizer;
+@class NSArray, NSDictionary, NSError, _EARSpeechRecognition, _EARSpeechRecognitionResult, _EARSpeechRecognitionResultPackage, _EARSpeechRecognizer;
 
 @protocol _EARSpeechRecognitionResultStream <NSObject>
 - (void)speechRecognizer:(_EARSpeechRecognizer *)arg1 didRecognizeFinalResults:(NSArray *)arg2;
@@ -14,6 +14,9 @@
 - (void)speechRecognizer:(_EARSpeechRecognizer *)arg1 didRecognizePartialResult:(_EARSpeechRecognitionResult *)arg2;
 
 @optional
+- (void)speechRecognizer:(_EARSpeechRecognizer *)arg1 didRecognizePartialResultPackage:(_EARSpeechRecognitionResultPackage *)arg2;
+- (void)speechRecognizer:(_EARSpeechRecognizer *)arg1 didReportStatus:(unsigned long long)arg2 statusContext:(NSDictionary *)arg3;
+- (void)speechRecognizer:(_EARSpeechRecognizer *)arg1 didRecognizeVoiceCommandCandidatePackage:(_EARSpeechRecognitionResultPackage *)arg2;
 - (void)speechRecognizer:(_EARSpeechRecognizer *)arg1 didRecognizeFinalResultCandidatePackage:(_EARSpeechRecognitionResultPackage *)arg2;
 - (void)speechRecognizer:(_EARSpeechRecognizer *)arg1 didProduceLoggablePackage:(_EARSpeechRecognitionResultPackage *)arg2;
 - (void)speechRecognizer:(_EARSpeechRecognizer *)arg1 didRecognizePartialResultNbest:(NSArray *)arg2;

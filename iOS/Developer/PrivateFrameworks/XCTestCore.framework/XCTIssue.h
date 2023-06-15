@@ -25,6 +25,7 @@
     NSError *_associatedError;
     NSArray *_attachments;
     NSDate *_timestamp;
+    long long _runtimeIssueSeverity;
     unsigned long long _threadId;
     NSString *_expectedFailureReason;
 }
@@ -39,6 +40,7 @@
 @property _Bool isExpectedFailure; // @synthesize isExpectedFailure=_isExpectedFailure;
 @property(copy) NSString *expectedFailureReason; // @synthesize expectedFailureReason=_expectedFailureReason;
 @property unsigned long long threadId; // @synthesize threadId=_threadId;
+@property long long runtimeIssueSeverity; // @synthesize runtimeIssueSeverity=_runtimeIssueSeverity;
 @property struct atomic_flag failureBreakPointCalled; // @synthesize failureBreakPointCalled=_failureBreakPointCalled;
 @property(copy) NSDate *timestamp; // @synthesize timestamp=_timestamp;
 @property(copy) NSArray *attachments; // @synthesize attachments=_attachments;
@@ -47,13 +49,14 @@
 @property(copy) NSString *detailedDescription; // @synthesize detailedDescription=_detailedDescription;
 @property(copy) NSString *compactDescription; // @synthesize compactDescription=_compactDescription;
 @property long long type; // @synthesize type=_type;
+- (void)replaceAttachment:(id)arg1 withAttachment:(id)arg2;
 - (_Bool)matchesLegacyPropertiesOfIssue:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 @property(readonly) _Bool isLegacyExpectedFailure;
-@property(readonly) _Bool isFailure;
+- (_Bool)isFailure;
 - (id)description;
 - (void)_updateAttachmentsTimestamps;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;

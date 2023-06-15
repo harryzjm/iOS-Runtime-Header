@@ -6,9 +6,10 @@
 
 #import <HealthDaemon/NSObject-Protocol.h>
 
-@class HKDevice, HKQuantityType, HKWorkoutActivity, NSArray, NSDate, NSDictionary, NSString, NSUUID;
+@class HKDevice, HKQuantityType, HKWorkoutActivity, HKWorkoutZonesType, NSArray, NSDate, NSDictionary, NSString, NSUUID;
 
 @protocol HKWorkoutBuilderServerInterface <NSObject>
+- (void)remote_currentZonesForType:(HKWorkoutZonesType *)arg1 completion:(void (^)(HKWorkoutZonesSample *, NSError *))arg2;
 - (void)remote_setShouldCollectEvents:(_Bool)arg1;
 - (void)remote_setStatisticsComputationMethod:(long long)arg1 forType:(HKQuantityType *)arg2;
 - (void)remote_setStatisticsMergeStrategy:(unsigned long long)arg1 forType:(HKQuantityType *)arg2;

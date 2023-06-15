@@ -13,13 +13,11 @@ __attribute__((visibility("hidden")))
 {
     NSString *_descriptionOfInterval;
     CDUnknownBlockType _dateAfterWhichDataShouldBeClearedBlock;
-    NSString *_aggdIntervalKey;
     long long _clearBrowsingDataInterval;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) long long clearBrowsingDataInterval; // @synthesize clearBrowsingDataInterval=_clearBrowsingDataInterval;
-@property(retain, nonatomic) NSString *aggdIntervalKey; // @synthesize aggdIntervalKey=_aggdIntervalKey;
 @property(copy, nonatomic) CDUnknownBlockType dateAfterWhichDataShouldBeClearedBlock; // @synthesize dateAfterWhichDataShouldBeClearedBlock=_dateAfterWhichDataShouldBeClearedBlock;
 @property(readonly) NSString *descriptionOfInterval; // @synthesize descriptionOfInterval=_descriptionOfInterval;
 - (id)description;

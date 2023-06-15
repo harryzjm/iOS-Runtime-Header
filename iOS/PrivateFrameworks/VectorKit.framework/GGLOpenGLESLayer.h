@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(readonly, nonatomic) struct CGSize backingSize; // @synthesize backingSize=_backingSize;
 @property __weak id <GGLLayerDelegate> renderDelegate; // @synthesize renderDelegate=_delegate;
+- (void)onTimerFired:(double)arg1 presentAtTime:(double)arg2;
 - (void)didEnterBackground;
 - (void)setContentsScale:(double)arg1;
 - (void)onTimerFired:(double)arg1;

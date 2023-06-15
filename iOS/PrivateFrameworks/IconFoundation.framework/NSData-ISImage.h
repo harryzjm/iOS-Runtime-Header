@@ -9,6 +9,6 @@
 @interface NSData (ISImage)
 - (struct CGImageBlockSet *)__IS_copyCGImageBlockSetWithProvider:(struct CGImageProvider *)arg1;
 - (void)__IS_getImageBuffer:(void **)arg1 size:(unsigned long long *)arg2;
-- (CDStruct_0adfc866 *)__IS_imageHeader;
+- (CDStruct_64ffe1fa *)__IS_imageHeader;
 @end
 

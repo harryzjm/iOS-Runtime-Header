@@ -13,6 +13,10 @@
     MISSING_TYPE *_percentage;
     MISSING_TYPE *_scrollViewContentOffset;
     MISSING_TYPE *_height;
+    MISSING_TYPE *_peekingShelfTopPadding;
+    MISSING_TYPE *shouldAlwaysShowTitle;
+    MISSING_TYPE *navBarTransitionDistance;
+    MISSING_TYPE *titleViewTransitionDistance;
 }
 
 @end

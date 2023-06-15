@@ -21,8 +21,8 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (box_c9ef104e)projectBounds:(const void *)arg1 type:(int)arg2;
-- (tvec3_17f03ce0)backProjectModelViewPoint:(const void *)arg1;
+- (box_c9ef104e)projectBounds:(void *)arg1 type:(int)arg2;
+- (tvec3_17f03ce0)backProjectModelViewPoint:(void *)arg1;
 - (void)resetTransformsForRenderBounds;
 - (void)resetTransformsForLayoutBounds;
 - (void)setCamera:(id)arg1 accessor:(id)arg2;

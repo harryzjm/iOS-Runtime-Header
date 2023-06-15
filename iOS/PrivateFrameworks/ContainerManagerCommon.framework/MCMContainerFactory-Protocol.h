@@ -6,13 +6,13 @@
 
 #import <ContainerManagerCommon/NSObject-Protocol.h>
 
-@class MCMContainerIdentity, NSURL;
-@protocol MCMContainerCacheEntry;
+@class MCMContainerIdentity, MCMUserIdentity, NSURL;
+@protocol MCMContainerCacheEntry, MCMMetadata;
 
 @protocol MCMContainerFactory <NSObject>
-- (_Bool)isAppropriatePersonaForContainerClass:(unsigned long long)arg1;
-- (_Bool)deleteURL:(NSURL *)arg1 reclaimSoon:(_Bool)arg2 error:(id *)arg3;
-- (_Bool)deleteURL:(NSURL *)arg1 error:(id *)arg2;
-- (id <MCMContainerCacheEntry>)containerForContainerIdentity:(MCMContainerIdentity *)arg1 createIfNecessary:(_Bool)arg2 updateLinks:(_Bool)arg3 error:(id *)arg4;
+- (_Bool)deleteURL:(NSURL *)arg1 forUserIdentity:(MCMUserIdentity *)arg2 reclaimSoon:(_Bool)arg3 error:(id *)arg4;
+- (_Bool)deleteURL:(NSURL *)arg1 forUserIdentity:(MCMUserIdentity *)arg2 error:(id *)arg3;
+- (id <MCMMetadata>)createStagedContainerForContainerIdentity:(MCMContainerIdentity *)arg1 finalContainerPath:(id *)arg2 dataProtectionClass:(int)arg3 error:(id *)arg4;
+- (id <MCMContainerCacheEntry>)containerForContainerIdentity:(MCMContainerIdentity *)arg1 createIfNecessary:(_Bool)arg2 error:(id *)arg3;
 @end
 

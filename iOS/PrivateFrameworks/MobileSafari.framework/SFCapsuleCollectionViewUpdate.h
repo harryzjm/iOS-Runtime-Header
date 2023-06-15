@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSIndexSet, NSMutableArray, NSMutableSet, SFCapsuleCollectionView;
+@class NSArray, NSIndexSet, NSMutableArray, NSMutableSet, NSSet, SFCapsuleCollectionView;
 
 __attribute__((visibility("hidden")))
 @interface SFCapsuleCollectionViewUpdate : NSObject
@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSSet *deletedItems; // @synthesize deletedItems=_deletedItems;
 @property(readonly, nonatomic, getter=isAnimated) _Bool animated; // @synthesize animated=_animated;
 @property(readonly, nonatomic) long long selectedItemIndexAfterUpdate; // @synthesize selectedItemIndexAfterUpdate=_selectedItemIndexAfterUpdate;
 @property(readonly, nonatomic) NSArray *itemsAfterUpdate; // @synthesize itemsAfterUpdate=_itemsAfterUpdate;

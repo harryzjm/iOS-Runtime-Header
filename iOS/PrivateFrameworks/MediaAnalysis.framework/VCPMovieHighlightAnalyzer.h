@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AVAssetImageGenerator, NSArray, NSMutableArray, VCPColorNormalizationAnalyzer;
+@class AVAssetImageGenerator, NSArray, NSMutableArray, VCPColorNormalizationAnalyzer, VCPMovieHighlight;
 
 __attribute__((visibility("hidden")))
 @interface VCPMovieHighlightAnalyzer : NSObject
@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     NSArray *_junkResults;
     NSArray *_qualityResults;
     NSArray *_faceResults;
+    NSArray *_facePrintResults;
     NSArray *_petsResults;
     NSArray *_saliencyResults;
     NSArray *_actionResults;
@@ -21,6 +22,7 @@ __attribute__((visibility("hidden")))
     NSArray *_voiceResults;
     NSArray *_featureResults;
     NSArray *_humanActionResults;
+    NSArray *_humanActionClassificationResults;
     NSArray *_humanPoseResults;
     NSArray *_cameraMotionResults;
     NSArray *_keyFrameResults;
@@ -28,6 +30,8 @@ __attribute__((visibility("hidden")))
     NSArray *_orientationResults;
     NSArray *_mlHighlightScoreResults;
     NSArray *_mlQualityResults;
+    NSArray *_classificationResults;
+    NSArray *_sceneprintResults;
     NSMutableArray *_expressionSegments;
     NSMutableArray *_internalResults;
     NSMutableArray *_highlightResults;
@@ -49,16 +53,20 @@ __attribute__((visibility("hidden")))
     _Bool _verbose;
     _Bool _hadFlash;
     _Bool _hadZoom;
+    _Bool _settlingHadZoom;
     _Bool _isTimelapse;
     CDStruct_e83c9415 _preferredTimeRange;
     AVAssetImageGenerator *_imageGenerator;
     int _numberOfFrames;
+    VCPMovieHighlight *_animatedStickerGating;
     array_bb4fff4b _prevMotionParamDiff;
     array_bb4fff4b _sumMotionParam;
     array_bb4fff4b _diffFlipCount;
     VCPColorNormalizationAnalyzer *_colorNormalizationAnalyzer;
 }
 
++ (_Bool)isHeuristicStickerScoreEnabled;
++ (_Bool)isPrototypeHighlightEnabled;
 + (float)getMinimumHighlightInSec;
 - (void).cxx_destruct;
 - (float)junkScoreForTimerange:(CDStruct_e83c9415)arg1 lengthScale:(_Bool)arg2;
@@ -68,7 +76,8 @@ __attribute__((visibility("hidden")))
 - (float)voiceScoreForTimerange:(CDStruct_e83c9415)arg1;
 - (float)actionScoreForTimerange:(CDStruct_e83c9415)arg1;
 - (float)qualityScoreForTimerange:(CDStruct_e83c9415)arg1;
-- (float)analyzeOverallQuality:(CDStruct_e83c9415)arg1 isSettlingEffect:(_Bool)arg2;
+- (float)analyzeOverallQuality:(CDStruct_e83c9415)arg1 isSettlingEffect:(_Bool)arg2 isAnimatedSticker:(_Bool)arg3;
+- (float)stickerScaledScore:(float)arg1 highPrecisionThreshold:(float)arg2 highRecallThreshold:(float)arg3;
 - (float)computeMLQualityScoreForTimerange:(CDStruct_e83c9415)arg1;
 - (float)computeMLHighlightScoreForTimerange:(CDStruct_e83c9415)arg1;
 - (int)combineMLHighlightScore;
@@ -100,13 +109,19 @@ __attribute__((visibility("hidden")))
 - (_Bool)updateCropHeatMap:(float *)arg1 withResults:(id)arg2 timeRange:(CDStruct_e83c9415)arg3 resultsKey:(id)arg4;
 - (id)settlingEffects;
 - (int)analyzeMotionStability:(array_bb4fff4b)arg1 motionParamDiff:(array_bb4fff4b)arg2;
+- (float)settlingSharpnessScore:(CDStruct_e83c9415)arg1;
 - (float)settlingExposureChangeScore:(CDStruct_e83c9415)arg1;
 - (float)settlingSubjectScore:(CDStruct_e83c9415)arg1;
 - (float)settlingMotionScore:(CDStruct_e83c9415)arg1;
+- (id)animatedStickerGating;
 - (id)movieSummary;
 - (CDStruct_e83c9415)findBestTrim:(CDStruct_e83c9415)arg1;
 - (id)findBestHighlightSegment:(CDStruct_e83c9415)arg1 targetTrim:(_Bool)arg2;
 - (float)highlightScoreForTimeRange:(CDStruct_e83c9415)arg1 average:(_Bool)arg2;
+- (int)addSceneprintInfo;
+- (int)addClassificationInfo;
+- (int)addActionInfo;
+- (int)addFaceInfo;
 - (int)computeColorNormalization;
 - (int)selectHighlights;
 - (CDStruct_e83c9415)computeTrimWithHighlightScoreFor:(CDStruct_e83c9415)arg1;
@@ -120,10 +135,10 @@ __attribute__((visibility("hidden")))
 - (id)postProcessMovieHighlight:(id)arg1;
 - (_Bool)isGoodQuality:(CDStruct_e83c9415)arg1;
 - (int)generateHighlights;
-- (int)prepareRequiredQualityResult:(id)arg1 junkDetectionResult:(id)arg2 descriptorResult:(id)arg3 faceResult:(id)arg4 petsResult:(id)arg5 saliencyResult:(id)arg6 actionResult:(id)arg7 subtleMotionResult:(id)arg8 voiceResult:(id)arg9 keyFrameResult:(id)arg10 sceneResults:(id)arg11 humanActionResults:(id)arg12 humanPoseResults:(id)arg13 cameraMotionResults:(id)arg14 orientationResults:(id)arg15 mlHighlightScoreResults:(id)arg16 mlQualityResults:(id)arg17 frameSize:(struct CGSize)arg18;
+- (int)prepareRequiredQualityResult:(id)arg1 junkDetectionResult:(id)arg2 descriptorResult:(id)arg3 faceResult:(id)arg4 facePrintResult:(id)arg5 petsResult:(id)arg6 saliencyResult:(id)arg7 actionResult:(id)arg8 subtleMotionResult:(id)arg9 voiceResult:(id)arg10 keyFrameResult:(id)arg11 sceneResults:(id)arg12 humanActionResults:(id)arg13 humanActionClassificationresults:(id)arg14 humanPoseResults:(id)arg15 cameraMotionResults:(id)arg16 orientationResults:(id)arg17 mlHighlightScoreResults:(id)arg18 mlQualityResults:(id)arg19 classificationResults:(id)arg20 sceneprintResults:(id)arg21 frameSize:(struct CGSize)arg22;
 - (void)setMaxHighlightDuration:(float)arg1;
 - (id)initWithPostProcessOptions:(id)arg1;
-- (id)initWithAnalysisType:(unsigned long long)arg1 isLivePhoto:(_Bool)arg2 photoOffset:(float)arg3 hadFlash:(_Bool)arg4 hadZoom:(_Bool)arg5 isTimelapse:(_Bool)arg6 preferredTimeRange:(CDStruct_e83c9415)arg7 asset:(id)arg8;
+- (id)initWithAnalysisType:(unsigned long long)arg1 isLivePhoto:(_Bool)arg2 photoOffset:(float)arg3 hadFlash:(_Bool)arg4 hadZoom:(_Bool)arg5 settlingHadZoom:(_Bool)arg6 isTimelapse:(_Bool)arg7 preferredTimeRange:(CDStruct_e83c9415)arg8 asset:(id)arg9;
 
 @end
 

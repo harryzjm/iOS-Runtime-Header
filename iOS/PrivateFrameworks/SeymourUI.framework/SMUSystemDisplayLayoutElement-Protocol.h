@@ -9,15 +9,19 @@
 @class NSString;
 
 @protocol SMUSystemDisplayLayoutElement <NSObject>
-@property(nonatomic, readonly) _Bool smu_isTVControlCenter;
-@property(nonatomic, readonly) _Bool smu_isTVSystemIndicator;
-@property(nonatomic, readonly) _Bool smu_isTVNotification;
-@property(nonatomic, readonly) _Bool smu_isVolumeHUD;
-@property(nonatomic, readonly) _Bool smu_isPictureInPicture;
-@property(nonatomic, readonly) long long level;
-@property(nonatomic, readonly) struct CGRect referenceFrame;
-@property(nonatomic, readonly) struct CGRect frame;
-@property(nonatomic, readonly) NSString *identifier;
-@property(nonatomic, readonly) NSString *bundleIdentifier;
+@property(readonly, nonatomic) _Bool smu_isVolumeHUD;
+@property(readonly, nonatomic) _Bool smu_isSystemOverlay;
+@property(readonly, nonatomic) _Bool smu_isSystemNotification;
+@property(readonly, nonatomic) _Bool smu_isSystemIndicator;
+@property(readonly, nonatomic) _Bool smu_isPictureInPictureStashed;
+@property(readonly, nonatomic) _Bool smu_isPictureInPicture;
+@property(readonly, nonatomic) _Bool smu_isControlCenter;
+@property(readonly, nonatomic) _Bool smu_isBrightnessControlHUD;
+@property(readonly, nonatomic) long long level;
+@property(readonly, nonatomic) struct CGRect referenceFrame;
+@property(readonly, nonatomic) struct CGRect frame;
+@property(readonly, copy, nonatomic) NSString *identifier;
+@property(readonly, copy, nonatomic) NSString *bundleIdentifier;
+- (NSString *)extendedDescription;
 @end
 

@@ -14,6 +14,6 @@
 @property(nonatomic, readonly) NSString *contentId;
 @property(nonatomic, readonly) NSDate *timestamp;
 @property(nonatomic, readonly) long long metric;
-@property(nonatomic, readonly) long long route;
+@property(nonatomic, readonly) long long purpose;
 @end
 

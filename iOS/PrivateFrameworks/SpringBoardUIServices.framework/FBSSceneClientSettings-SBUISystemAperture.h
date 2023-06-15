@@ -6,32 +6,37 @@
 
 #import <FrontBoardServices/FBSSceneClientSettings.h>
 
-@class NSString, NSURL, UIColor;
+@class BSAction, NSSet, NSString, NSURL, UIColor;
 
 @interface FBSSceneClientSettings (SBUISystemAperture)
 - (id)SBUI_systemApertureDescriptionOfDiffFromSettings:(id)arg1;
 - (id)SBUI_systemApertureDescription;
 @property(readonly, nonatomic) UIColor *SBUISA_keyColor;
+@property(readonly, copy, nonatomic) NSString *SBUISA_detachedMinimalViewAccessibilityLabel;
 @property(readonly, copy, nonatomic) NSString *SBUISA_minimalViewAccessibilityLabel;
 @property(readonly, copy, nonatomic) NSString *SBUISA_trailingViewAccessibilityLabel;
 @property(readonly, copy, nonatomic) NSString *SBUISA_leadingViewAccessibilityLabel;
 @property(readonly, nonatomic) _Bool SBUISA_preventsAutomaticDismissal;
 @property(readonly, nonatomic) _Bool SBUISA_preventsInteractiveDismissal;
 @property(readonly, nonatomic) struct NSDirectionalEdgeInsets SBUISA_preferredPaddingForCompactLayout;
+@property(readonly, nonatomic) _Bool SBUISA_attachedMinimalViewRequiresZeroPadding;
 @property(readonly, nonatomic) _Bool SBUISA_specifiesPreferredPaddingForCompactLayout;
 @property(readonly, nonatomic) unsigned long long SBUISA_presentationBehaviors;
 @property(readonly, nonatomic) _Bool SBUISA_hasMenuPresentation;
 @property(readonly, nonatomic) long long SBUISA_preferredCustomLayout;
 @property(readonly, nonatomic) struct CGSize SBUISA_preferredCustomAspectRatio;
-@property(readonly, nonatomic) unsigned long long SBUISA_statusBarStyleOverridesToSuppress;
+@property(readonly, copy, nonatomic) NSSet *SBUISA_backgroundActivitiesToSuppress;
 @property(readonly, nonatomic) struct NSDirectionalEdgeInsets SBUISA_customLayoutPreferredOutsetsFromUnsafeArea;
 @property(readonly, nonatomic) unsigned int SBUISA_contextId;
+@property(readonly, nonatomic) unsigned long long SBUISA_detachedMinimalViewRenderingId;
 @property(readonly, nonatomic) unsigned long long SBUISA_minimalViewRenderingId;
 @property(readonly, nonatomic) unsigned long long SBUISA_trailingViewRenderingId;
 @property(readonly, nonatomic) unsigned long long SBUISA_leadingViewRenderingId;
+@property(readonly, nonatomic) struct CGSize SBUISA_preferredDetachedMinimalViewSize;
 @property(readonly, nonatomic) struct CGSize SBUISA_preferredMinimalViewSize;
 @property(readonly, nonatomic) struct CGSize SBUISA_preferredTrailingViewSize;
 @property(readonly, nonatomic) struct CGSize SBUISA_preferredLeadingViewSize;
+@property(readonly, nonatomic) BSAction *SBUISA_launchAction;
 @property(readonly, copy, nonatomic) NSURL *SBUISA_launchURL;
 @property(readonly, copy, nonatomic) NSString *SBUISA_associatedAppBundleIdentifier;
 @property(readonly, copy, nonatomic) NSString *SBUISA_associatedScenePersistenceIdentifier;

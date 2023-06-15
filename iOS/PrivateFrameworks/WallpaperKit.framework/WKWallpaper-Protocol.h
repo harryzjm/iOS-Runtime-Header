@@ -9,14 +9,14 @@
 @class NSDictionary, NSString, NSURL;
 
 @protocol WKWallpaper <WKThumbnailRepresentable>
+@property(readonly, nonatomic) _Bool supportsCopying;
+@property(readonly, nonatomic) _Bool supportsSerialization;
+@property(readonly, nonatomic) unsigned long long backingType;
+@property(readonly, nonatomic) unsigned long long representedType;
+@property(readonly, nonatomic) unsigned long long type;
+@property(readonly, copy, nonatomic) NSString *name;
+@property(readonly, nonatomic) long long identifier;
 - (_Bool)copyWallpaperContentsToDestinationDirectoryURL:(NSURL *)arg1 error:(id *)arg2;
 - (NSDictionary *)propertyListRepresentation;
-@property(nonatomic, readonly) _Bool supportsCopying;
-@property(nonatomic, readonly) _Bool supportsSerialization;
-@property(nonatomic, readonly) unsigned long long backingType;
-@property(nonatomic, readonly) unsigned long long representedType;
-@property(nonatomic, readonly) unsigned long long type;
-@property(nonatomic, readonly) NSString *name;
-@property(nonatomic, readonly) long long identifier;
 @end
 

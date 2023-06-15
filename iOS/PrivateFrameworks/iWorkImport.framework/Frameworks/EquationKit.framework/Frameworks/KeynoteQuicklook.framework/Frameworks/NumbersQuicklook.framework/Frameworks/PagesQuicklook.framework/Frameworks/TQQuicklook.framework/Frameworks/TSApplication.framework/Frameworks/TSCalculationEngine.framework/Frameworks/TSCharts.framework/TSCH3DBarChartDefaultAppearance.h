@@ -19,7 +19,7 @@
 - (_Bool)isCircular;
 - (float)depthForScene:(id)arg1;
 - (float)chartMinZForScene:(id)arg1;
-- (float)signedValueForSeries:(id)arg1 index:(const void *)arg2;
+- (float)signedValueForSeries:(id)arg1 index:(void *)arg2;
 - (float)maxValueForSeries:(long long)arg1;
 - (id)initWithProperties:(id)arg1;
 

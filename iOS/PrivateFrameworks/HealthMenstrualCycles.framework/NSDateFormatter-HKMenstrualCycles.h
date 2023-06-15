@@ -7,7 +7,9 @@
 #import <Foundation/NSDateFormatter.h>
 
 @interface NSDateFormatter (HKMenstrualCycles)
-+ (id)hkmc_notificationBodyFromRelativeBodyString:(id)arg1 fullBodyString:(id)arg2 updatedFertileWindowEndDate:(id)arg3;
++ (id)localizedKeyDayNameFromDate:(id)arg1 gregorianCalendar:(id)arg2;
++ (id)hkmc_notificationBodyFromRelativeBodyString:(id)arg1 fullBodyString:(id)arg2 updatedFertileWindowEndDate:(id)arg3 gregorianCalendar:(id)arg4;
++ (id)hkmc_nonRelativeDateWithoutDayFormatter;
 + (id)hkmc_longNonRelativeDateFormatter;
 + (id)hkmc_longRelativeDateFormatter;
 @end

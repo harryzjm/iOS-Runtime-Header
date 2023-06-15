@@ -18,7 +18,6 @@
 - (id)_XCT_testSuiteWithIdentifier:(XCTTestIdentifier *)arg1 didStartAt:(NSString *)arg2;
 - (id)_XCT_didFinishExecutingTestPlan;
 - (id)_XCT_didBeginExecutingTestPlan;
-- (id)_XCT_testBundleReadyWithProtocolVersion:(NSNumber *)arg1 minimumVersion:(NSNumber *)arg2;
 - (id)_XCT_testRunnerReadyWithCapabilities:(XCTCapabilities *)arg1;
 - (id)_XCT_reportTestWithIdentifier:(XCTTestIdentifier *)arg1 didExceedExecutionTimeAllowance:(NSNumber *)arg2;
 - (id)_XCT_didFailToBootstrapWithError:(NSError *)arg1;

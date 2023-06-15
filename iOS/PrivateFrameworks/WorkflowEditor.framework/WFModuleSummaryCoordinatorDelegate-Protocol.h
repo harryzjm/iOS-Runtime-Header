@@ -12,6 +12,7 @@
 - (UIViewController *)viewControllerForCoordinator:(WFModuleSummaryCoordinator *)arg1;
 
 @optional
+- (void)summaryCoordinator:(WFModuleSummaryCoordinator *)arg1 outputButtonDidChange:(_Bool)arg2;
 - (void)summaryCoordinator:(WFModuleSummaryCoordinator *)arg1 disclosureArrowDidChange:(_Bool)arg2;
 - (void)summaryCoordinatorDidInvalidateSize:(WFModuleSummaryCoordinator *)arg1;
 - (void)summaryCoordinatorDidEndEditing:(WFModuleSummaryCoordinator *)arg1;

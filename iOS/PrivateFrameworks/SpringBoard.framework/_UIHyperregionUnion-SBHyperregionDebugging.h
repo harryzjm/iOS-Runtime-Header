@@ -9,8 +9,7 @@
 @class NSString;
 
 @interface _UIHyperregionUnion (SBHyperregionDebugging)
-- (struct CGRect)sb_debugFrameForView:(id)arg1;
-- (id)sb_debugView;
+@property(readonly, nonatomic) struct CGRect sb_debugFrame;
 
 // Remaining properties
 @property(readonly, nonatomic) unsigned long long _dimensions;

@@ -11,5 +11,13 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (void)autoreleasepoolWithError:(id *)arg1 action:(CDUnknownBlockType)arg2;
++ (void)populateClientError:(id *)arg1 withCode:(long long)arg2 underlyingError:(id)arg3 message:(id)arg4;
++ (void)wrapClientError:(id *)arg1 withDomain:(id)arg2 code:(long long)arg3 message:(id)arg4;
++ (void)populateClientError:(id *)arg1 withDomain:(id)arg2 code:(long long)arg3 underlyingError:(id)arg4 message:(id)arg5;
++ (id)errorWithCode:(long long)arg1 underlyingError:(id)arg2 message:(id)arg3;
++ (id)errorWithDomain:(id)arg1 code:(long long)arg2 underlyingError:(id)arg3 message:(id)arg4;
+- (id)init;
+
 @end
 

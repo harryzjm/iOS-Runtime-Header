@@ -10,9 +10,10 @@
 @protocol CLSAssetDownloadProgressNotifiable, CLSAssetUploadProgressNotifiable;
 
 @protocol CLSUtilityServerInterface <NSObject>
+- (oneway void)remote_accountChanged;
 - (oneway void)remote_currentUserContentStoreCacheDirectoryURLWithCompletion:(void (^)(id, NSError *))arg1;
 - (oneway void)remote_topLevelContentStoreCacheDirectoryURLWithCompletion:(void (^)(id, NSError *))arg1;
-- (oneway void)remote_uploadAsset:(CLSAsset *)arg1 uploadObserver:(CLSObject<CLSAssetUploadProgressNotifiable> *)arg2 completion:(void (^)(NSError *))arg3;
+- (oneway void)remote_uploadAsset:(CLSAsset *)arg1 createThumbnailIfNeeded:(_Bool)arg2 uploadObserver:(CLSObject<CLSAssetUploadProgressNotifiable> *)arg3 completion:(void (^)(NSError *))arg4;
 - (oneway void)remote_createShareIfNeededForURL:(NSURL *)arg1 completion:(void (^)(long long, NSString *, CKRecordID *, NSError *))arg2;
 - (oneway void)remote_deleteBackingStoreForAsset:(CLSAsset *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (oneway void)remote_cloudKitUrlSuitableForStreamingAsset:(CLSAbstractAsset *)arg1 downloadObserver:(CLSObject<CLSAssetDownloadProgressNotifiable> *)arg2 completion:(void (^)(id, id, NSError *))arg3;
@@ -40,6 +41,7 @@
 - (oneway void)remote_removeAuthorizationStatus:(unsigned long long)arg1 forContextAtPath:(NSArray *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 - (oneway void)remote_addAuthorizationStatus:(unsigned long long)arg1 forContextAtPath:(NSArray *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 - (oneway void)remote_fetchReportsWithPredicate:(NSPredicate *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
+- (oneway void)remote_syncBootstrapWithCompletion:(void (^)(_Bool, NSError *))arg1;
 - (oneway void)remote_syncFetchWithCompletion:(void (^)(_Bool, NSError *))arg1;
 - (oneway void)remote_syncPushWithCompletion:(void (^)(_Bool, NSError *))arg1;
 - (oneway void)remote_syncStatsWithCompletion:(void (^)(id, NSError *))arg1;

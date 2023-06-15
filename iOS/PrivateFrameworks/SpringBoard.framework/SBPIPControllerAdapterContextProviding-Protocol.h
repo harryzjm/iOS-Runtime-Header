@@ -9,6 +9,7 @@
 @class NSArray, SBDeviceApplicationSceneEntity, SBWindowScene, UIViewController;
 
 @protocol SBPIPControllerAdapterContextProviding <NSObject>
+- (struct UIEdgeInsets)pictureInPictureWindowMarginsOnWindowScene:(SBWindowScene *)arg1;
 - (double)windowLevelForWindowScene:(SBWindowScene *)arg1;
 - (void)invalidateIdleTimerBehaviors;
 - (void)restoreContentViewController:(UIViewController *)arg1 appSceneEntity:(SBDeviceApplicationSceneEntity *)arg2 morphAnimatorConfigurationBlock:(void (^)(SBPIPMorphAnimatorController *))arg3 completion:(void (^)(_Bool))arg4;

@@ -15,20 +15,25 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+- (void)signalNeedsReindexFromScratchWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)hierarchyForURL:(id)arg1 request:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)hasNonUploadedFilesWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)fetchThumbnailsAtURL:(id)arg1 versions:(id)arg2 size:(struct CGSize)arg3 perThumbnailCompletionHandler:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)listRemoteVersionsOfItemAtURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)resolveConflictAtURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)wakeForPushWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)stateWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)workingSetDidChangeWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)movingItemAtURL:(id)arg1 requiresProvidingWithDestinationURL:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)movingItemAtURL:(id)arg1 withInfo:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)trashItemAtURL:(id)arg1 request:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)bulkItemChanges:(id)arg1 changedFields:(unsigned long long)arg2 request:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (_Bool)isAllowedToProvideItemID:(id)arg1 toConsumerWithIdentifier:(id)arg2;
 - (void)fetchVendorEndpointWithRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchServicesForItemID:(id)arg1 allowRestrictedSources:(_Bool)arg2 request:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)forceUpdateBlockedProcessNamesFromDomain:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchOperationServiceOrEndpointWithRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (_Bool)needsRootsCreation;
-- (id)createRootByImportingURL:(id)arg1 error:(id *)arg2;
+- (id)createRootByImportingURL:(id)arg1 knownFolders:(id)arg2 error:(id *)arg3;
 - (id)createIndexerWithExtension:(id)arg1 enabled:(_Bool)arg2 error:(id *)arg3;
 - (void)reimportItemsBelowItemWithID:(id)arg1 removeCachedItems:(_Bool)arg2 markItemDataless:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)valuesForAttributes:(id)arg1 forURL:(id)arg2 request:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
@@ -54,9 +59,11 @@ __attribute__((visibility("hidden")))
 - (void)itemForItemID:(id)arg1 request:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 @property(readonly, nonatomic) NSFileProviderDomainVersion *domainVersion;
 @property(readonly, nonatomic) NSData *backingStoreIdentity;
+@property(readonly, copy) NSArray *checkableURLs;
+@property(readonly, copy) NSArray *coordinationRootURLs;
 @property(readonly, copy) NSArray *rootURLs; // @dynamic rootURLs;
 - (_Bool)isProviderForURL:(id)arg1;
-- (_Bool)start;
+- (_Bool)startWithReason:(id)arg1;
 - (void)invalidate;
 - (id)initWithDomain:(id)arg1;
 

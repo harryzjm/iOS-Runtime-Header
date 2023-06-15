@@ -20,12 +20,14 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *lastRefreshTime;
     MISSING_TYPE *refreshTTL;
     MISSING_TYPE *notificationCenter;
+    MISSING_TYPE *landingPagePerformanceReporter;
 }
 
 - (void).cxx_destruct;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)vui_willMoveToParentViewController:(id)arg1;
 - (void)vui_viewDidLayoutSubviews;
+- (void)vui_viewDidDisappear:(_Bool)arg1;
 - (void)vui_viewWillDisappear:(_Bool)arg1;
 - (void)vui_viewWillAppear:(_Bool)arg1;
 - (id)initWithCoder:(id)arg1;

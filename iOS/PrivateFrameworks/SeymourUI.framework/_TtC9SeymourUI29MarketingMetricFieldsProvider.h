@@ -13,6 +13,10 @@
     MISSING_TYPE *eventHub;
     MISSING_TYPE *subscriptionToken;
     MISSING_TYPE *badgingCounts;
+    MISSING_TYPE *sessionIdentifier;
+    MISSING_TYPE *groupSessionIdentifier;
+    MISSING_TYPE *deviceCount;
+    MISSING_TYPE *maxDeviceCount;
 }
 
 @end

@@ -6,15 +6,19 @@
 
 #import <objc/NSObject.h>
 
+@class MPGreenTeaLoggerWrapper;
+
 __attribute__((visibility("hidden")))
 @interface MPMediaLibraryPrivacyContext : NSObject
 {
+    MPGreenTeaLoggerWrapper *_gtLogger;
 }
 
 + (void)setDefaultClientWithAuditToken:(CDStruct_6ad76789)arg1;
 + (id)contextForDefaultClient;
 + (id)sharedContextForCurrentProcess;
 + (void)initialize;
+- (void).cxx_destruct;
 - (void)endAccessInterval;
 - (void)beginAccessInterval;
 - (void)logPrivacyAccess;

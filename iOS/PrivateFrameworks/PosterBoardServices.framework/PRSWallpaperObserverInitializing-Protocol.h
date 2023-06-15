@@ -6,10 +6,10 @@
 
 #import <PosterBoardServices/NSObject-Protocol.h>
 
-@class NSArray;
-@protocol __PRSWallpaperObserverPathUpdate__;
+@class NSArray, PRSPosterRoleCollectionObserverUpdate;
+@protocol __PRSRoleActivePosterObserverUpdate__, __PRSWallpaperObserverPathUpdate__;
 
 @protocol PRSWallpaperObserverInitializing <NSObject>
-- (oneway void)initializeWithKnownIdentities:(NSArray<__PRSWallpaperObserverPathUpdate__> *)arg1;
+- (oneway void)initializeWithKnownIdentities:(NSArray<__PRSWallpaperObserverPathUpdate__> *)arg1 knownRoles:(NSArray<__PRSRoleActivePosterObserverUpdate__> *)arg2 knownCollection:(PRSPosterRoleCollectionObserverUpdate *)arg3;
 @end
 

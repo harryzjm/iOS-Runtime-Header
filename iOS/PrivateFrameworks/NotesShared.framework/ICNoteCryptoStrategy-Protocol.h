@@ -6,12 +6,9 @@
 
 #import <NotesShared/ICCloudSyncingObjectCryptoStrategy-Protocol.h>
 
-@class CKRecord, NSData, NSMergeConflict, NSString;
+@class CKRecord, NSData, NSMergeConflict;
 
 @protocol ICNoteCryptoStrategy <ICCloudSyncingObjectCryptoStrategy>
-- (void)fixDivergedAttachmentsUsingPassphrase:(NSString *)arg1;
-- (void)alignAccountSaltAndICWithPassphrase:(NSString *)arg1;
-- (void)applyAccountSaltAndICWithPassphrase:(NSString *)arg1;
 - (void)mergeEncryptedData:(NSData *)arg1 mergeConflict:(NSMergeConflict *)arg2;
 - (NSData *)decryptNotePrimitiveData;
 - (NSData *)decryptTextDataOrSaveAsUnappliedRecordIfNotAuthenticated:(CKRecord *)arg1;

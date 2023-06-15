@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class MISSING_TYPE;
 
@@ -13,8 +13,10 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *viewSafeAreaInsets;
     MISSING_TYPE *collectionView;
+    MISSING_TYPE *mainImageView;
     MISSING_TYPE *aboveCollectionComponents;
     MISSING_TYPE *belowCollectionComponents;
+    MISSING_TYPE *footerComponents;
     MISSING_TYPE *debugUIOverlay;
 }
 

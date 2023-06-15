@@ -20,6 +20,7 @@
 - (MCMConcreteContainerIdentityForLibsystem *)containerIdentity;
 - (id <MCMMetadataMinimal>)metadataMinimal;
 - (_Bool)verify;
+- (id)initFromContainerPath:(MCMContainerPath *)arg1 identifier:(NSString *)arg2 uuid:(NSUUID *)arg3 schemaVersion:(NSNumber *)arg4 userIdentityCache:(MCMUserIdentityCache *)arg5;
 - (id)initWithMetadata:(id <MCMMetadataMinimal>)arg1 userIdentityCache:(MCMUserIdentityCache *)arg2;
 - (id)initWithIdentifier:(NSString *)arg1 containerPath:(MCMContainerPath *)arg2 schemaVersion:(NSNumber *)arg3 uuid:(NSUUID *)arg4 metadata:(id <MCMMetadata>)arg5 userIdentityCache:(MCMUserIdentityCache *)arg6;
 @end

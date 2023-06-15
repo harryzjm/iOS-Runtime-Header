@@ -4,20 +4,29 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
+@class MCMContainerIdentity, MCMError, MCMUserIdentity, NSString;
 
 __attribute__((visibility("hidden")))
 @interface MCMCommandCreateOrLookupAppGroupByAppGroupIdentifier
 {
+    _Bool _iOSStyleHandling;
     NSString *_appGroupIdentifier;
+    MCMUserIdentity *_userIdentity;
+    MCMContainerIdentity *_containerIdentity;
+    MCMError *_error;
 }
 
 + (Class)incomingMessageClass;
 + (unsigned long long)command;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) MCMError *error; // @synthesize error=_error;
+@property(readonly, nonatomic) MCMContainerIdentity *containerIdentity; // @synthesize containerIdentity=_containerIdentity;
+@property(readonly, nonatomic) MCMUserIdentity *userIdentity; // @synthesize userIdentity=_userIdentity;
+@property(readonly, nonatomic) _Bool iOSStyleHandling; // @synthesize iOSStyleHandling=_iOSStyleHandling;
 @property(readonly, nonatomic) NSString *appGroupIdentifier; // @synthesize appGroupIdentifier=_appGroupIdentifier;
 - (void)execute;
 - (_Bool)preflightClientAllowed;
+- (void)_commonInit:(id)arg1;
 - (id)initWithMessage:(id)arg1 context:(id)arg2 reply:(id)arg3;
 
 @end

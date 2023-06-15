@@ -33,6 +33,7 @@
 @property(readonly, retain, nonatomic) NSArray *accessories;
 @property(copy, nonatomic) NSDate *writerTimestamp;
 @property(copy, nonatomic) NSNumber *soundCheckEnabled;
+@property(copy, nonatomic) NSNumber *siriPhraseOptions;
 @property(retain, nonatomic) HMFSoftwareVersion *sharedHomeSourceVersion;
 @property(copy, nonatomic) NSNumber *presenceComputeStatus;
 @property(copy, nonatomic) NSNumber *presenceAuthorizationStatus;

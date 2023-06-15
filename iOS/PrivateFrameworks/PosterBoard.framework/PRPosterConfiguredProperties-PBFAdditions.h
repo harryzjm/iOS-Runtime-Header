@@ -7,7 +7,6 @@
 #import <PosterKit/PRPosterConfiguredProperties.h>
 
 @interface PRPosterConfiguredProperties (PBFAdditions)
-+ (id)prb_configuredPropertiesForPreview:(id)arg1;
-- (id)pbf_persistenceIdentifierForDefinition:(id)arg1;
++ (id)pbf_configuredPropertiesForPreview:(id)arg1;
 @end
 

@@ -4,17 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+#import <OnBoardingKit/OBWelcomeController.h>
 
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC7NewsUI233SportsFavoritesSyncViewController : UIViewController
+@interface _TtC7NewsUI233SportsFavoritesSyncViewController : OBWelcomeController
 {
     MISSING_TYPE *styler;
     MISSING_TYPE *eventHandler;
     MISSING_TYPE *app;
-    MISSING_TYPE *$__lazy_storage_$_welcomeController;
     MISSING_TYPE *imageView;
     MISSING_TYPE *confirmationButton;
     MISSING_TYPE *deferButton;
@@ -22,10 +21,10 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-- (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (id)initWithTitle:(id)arg1 detailText:(id)arg2 icon:(id)arg3 contentLayout:(long long)arg4;
+- (id)initWithTitle:(id)arg1 detailText:(id)arg2 symbolName:(id)arg3 contentLayout:(long long)arg4;
 - (void)doDeferAction;
 - (void)doConfirmationAction;
-- (id)initWithCoder:(id)arg1;
 
 @end
 

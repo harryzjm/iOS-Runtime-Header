@@ -26,6 +26,8 @@
 - (id)generateRequestOperations;
 - (_Bool)allowsAnonymousAccount;
 - (id)requestOperationClasses;
+- (void)fillOutRequestProperties:(id)arg1;
+- (id)equivalencyProperties;
 - (id)initWithOperation:(id)arg1 assetTokenRequest:(id)arg2 headers:(id)arg3;
 
 @end

@@ -12,8 +12,6 @@
 {
     MISSING_TYPE *inputStore;
     MISSING_TYPE *outputArtifact;
-    MISSING_TYPE *dependencyTableNames;
-    MISSING_TYPE *model;
 }
 
 @end

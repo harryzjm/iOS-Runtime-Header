@@ -9,6 +9,8 @@
 @class NSString;
 
 @interface NSAttributedString (HFAdditions)
++ (id)hf_attributedStringWithInflectableAccessoryStatus:(id)arg1 accessoryName:(id)arg2 forcePluralAgreement:(_Bool)arg3;
++ (id)hf_attributedStringWithInflectableAccessoryStatus:(id)arg1 accessoryName:(id)arg2;
 + (id)hf_attributedStringWithSystemImageNamed:(id)arg1 title:(id)arg2 isRTL:(_Bool)arg3;
 + (id)hf_safeAttributedStringWithHTML:(id)arg1 attributes:(id)arg2;
 + (id)hf_loadFromHTMLWithString:(id)arg1 options:(id)arg2;

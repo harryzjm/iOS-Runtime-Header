@@ -6,25 +6,29 @@
 
 #import <MapsSuggestions/MapsSuggestionsObject-Protocol.h>
 
-@class GEOAutomobileOptions, GEOComposedWaypoint, GEODirectionsRequestFeedback, GEOLocation, GEORouteAttributes, NSArray, NSData, NSString;
+@class GEOAutomobileOptions, GEOComposedWaypoint, GEODirectionsRequestFeedback, GEOLocation, GEOMapItemIdentifier, GEORouteAttributes, NSArray, NSData, NSString;
 @protocol GEOMapItem, GEOVenueIdentifier, MapsSuggestionsResourceDepot;
 
 @protocol MapsSuggestionsNetworkRequester <MapsSuggestionsObject>
 + (id)new;
-- (_Bool)routeForWaypoints:(NSArray *)arg1 currentLocation:(GEOLocation *)arg2 routeAttributes:(GEORouteAttributes *)arg3 feedback:(GEODirectionsRequestFeedback *)arg4 completion:(void (^)(GEODirectionsRequest *, GEODirectionsResponse *, NSError *, GEODirectionsError *))arg5;
-- (_Bool)ETAFromWaypoint:(GEOComposedWaypoint *)arg1 toWaypoint:(GEOComposedWaypoint *)arg2 transportType:(int)arg3 automobileOptions:(GEOAutomobileOptions *)arg4 completion:(void (^)(MapsSuggestionsTrafficAndETAResult *, NSError *))arg5;
-- (_Bool)composedWaypointForAddressString:(NSString *)arg1 completion:(void (^)(GEOComposedWaypoint *, NSError *))arg2;
-- (_Bool)composedWaypointForCurrentLocation:(GEOLocation *)arg1 completion:(void (^)(GEOComposedWaypoint *, NSError *))arg2;
-- (_Bool)composedWaypointForLocation:(GEOLocation *)arg1 completion:(void (^)(GEOComposedWaypoint *, NSError *))arg2;
-- (_Bool)composedWaypointForMapItem:(id <GEOMapItem>)arg1 completion:(void (^)(GEOComposedWaypoint *, NSError *))arg2;
-- (_Bool)searchWithAirportCode:(NSString *)arg1 terminal:(NSString *)arg2 gate:(NSString *)arg3 completion:(void (^)(NSArray *, NSError *))arg4;
-- (_Bool)searchPOIWithName:(NSString *)arg1 ofPOICategory:(NSString *)arg2 withinVenue:(id <GEOVenueIdentifier>)arg3 maxResults:(unsigned long long)arg4 completion:(void (^)(NSArray *, NSError *))arg5;
-- (_Bool)searchString:(NSString *)arg1 maxResults:(unsigned int)arg2 completion:(void (^)(NSArray *, NSError *))arg3;
-- (_Bool)canonicalLocalSearchPostalAddress:(id)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
-- (_Bool)resolveMapItemHandleData:(NSData *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
-- (_Bool)reverseGeocodeCoordinate:(CDStruct_c3b9c2ee)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
-- (_Bool)forwardGeocodeAddressString:(NSString *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
-- (_Bool)forwardGeocodePostalAddress:(id)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
+- (BOOL)routeForWaypoints:(NSArray *)arg1 currentLocation:(GEOLocation *)arg2 routeAttributes:(GEORouteAttributes *)arg3 feedback:(GEODirectionsRequestFeedback *)arg4 completion:(void (^)(GEODirectionsRequest *, GEODirectionsResponse *, NSError *, GEODirectionsError *))arg5;
+- (BOOL)ETAFromWaypoint:(GEOComposedWaypoint *)arg1 toWaypoint:(GEOComposedWaypoint *)arg2 transportType:(int)arg3 automobileOptions:(GEOAutomobileOptions *)arg4 completion:(void (^)(MapsSuggestionsTrafficAndETAResult *, NSError *))arg5;
+- (BOOL)composedWaypointForAddressString:(NSString *)arg1 completion:(void (^)(GEOComposedWaypoint *, NSError *))arg2;
+- (BOOL)composedWaypointForCurrentLocation:(GEOLocation *)arg1 completion:(void (^)(GEOComposedWaypoint *, NSError *))arg2;
+- (BOOL)composedWaypointForLocation:(GEOLocation *)arg1 mapItem:(id <GEOMapItem>)arg2 completion:(void (^)(GEOComposedWaypoint *, NSError *))arg3;
+- (BOOL)composedWaypointForLocation:(GEOLocation *)arg1 completion:(void (^)(GEOComposedWaypoint *, NSError *))arg2;
+- (BOOL)composedWaypointForMapItem:(id <GEOMapItem>)arg1 completion:(void (^)(GEOComposedWaypoint *, NSError *))arg2;
+- (BOOL)searchWithAirportCode:(NSString *)arg1 terminal:(NSString *)arg2 gate:(NSString *)arg3 completion:(void (^)(NSArray *, NSError *))arg4;
+- (BOOL)searchPOIWithName:(NSString *)arg1 ofPOICategory:(NSString *)arg2 withinVenue:(id <GEOVenueIdentifier>)arg3 maxResults:(unsigned long long)arg4 completion:(void (^)(NSArray *, NSError *))arg5;
+- (BOOL)searchString:(NSString *)arg1 maxResults:(unsigned int)arg2 completion:(void (^)(NSArray *, NSError *))arg3;
+- (BOOL)canonicalLocalSearchPostalAddress:(id)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
+- (BOOL)resolveMapItemHandleData:(NSData *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
+- (BOOL)placeForMuid:(GEOMapItemIdentifier *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
+- (BOOL)placeRefinementForAddress:(NSString *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
+- (BOOL)placeRefinementForCoordinate:(CDStruct_c3b9c2ee)arg1 address:(NSString *)arg2 completion:(void (^)(NSArray *, NSError *))arg3;
+- (BOOL)reverseGeocodeCoordinate:(CDStruct_c3b9c2ee)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
+- (BOOL)forwardGeocodeAddressString:(NSString *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
+- (BOOL)forwardGeocodePostalAddress:(id)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (id)initFromResourceDepot:(id <MapsSuggestionsResourceDepot>)arg1;
 - (id)init;
 @end

@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <CoordinationCore/NSCopying-Protocol.h>
 #import <CoordinationCore/NSObject-Protocol.h>
 
 @class COMeshCommand, COMeshNode, NSError;
 
-@protocol COMeshControllerQueuedElementProtocol <NSObject>
+@protocol COMeshControllerQueuedElementProtocol <NSObject, NSCopying>
 - (void)invokeCallbackWithError:(NSError *)arg1;
 - (COMeshNode *)destination;
 - (COMeshCommand *)command;

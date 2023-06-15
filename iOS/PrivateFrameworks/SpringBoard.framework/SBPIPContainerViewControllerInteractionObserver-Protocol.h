@@ -6,10 +6,10 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class SBPIPContainerViewController;
+@class SBPIPContainerViewController, SBWindowScene;
 
 @protocol SBPIPContainerViewControllerInteractionObserver <NSObject>
-- (void)containerViewControllerDidEndInteraction:(SBPIPContainerViewController *)arg1;
+- (void)containerViewControllerDidEndInteraction:(SBPIPContainerViewController *)arg1 targetWindowScene:(SBWindowScene *)arg2;
 - (void)containerViewControllerDidBeginInteraction:(SBPIPContainerViewController *)arg1;
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class MUPagingScrollContainerView, NSArray, NSString, UICollectionView, UICollectionViewDiffableDataSource;
 @protocol MUPlacePhotoSliderDataSource, MUPlacePhotoSliderDelegate, MUScrollAnalyticActionObserving;
@@ -31,11 +31,9 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)_sizeForAttribution;
 - (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
 - (void)scrollViewWillBeginDragging:(id)arg1;
-- (void)scrollViewDidScroll:(id)arg1;
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 sizeForItemAtIndexPath:(id)arg3;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2 itemIdentifier:(id)arg3;
-@property(readonly, nonatomic) NSArray *focusItems;
 - (void)enumerateImageViewsWithBlock:(CDUnknownBlockType)arg1;
 - (void)scrollToViewAtIndex:(unsigned long long)arg1;
 - (id)attributionViewForAttribution:(id)arg1;

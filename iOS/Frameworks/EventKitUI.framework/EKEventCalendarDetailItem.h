@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class EKCalendar, UIMenu, UITableViewCell;
+@class EKCalendar, EKUIPopupTableViewCell, EKUITableViewCell, UIMenu;
 
 __attribute__((visibility("hidden")))
 @interface EKEventCalendarDetailItem
 {
     EKCalendar *_calendar;
-    UITableViewCell *_cell;
+    EKUIPopupTableViewCell *_popupCell;
+    EKUITableViewCell *_displayCell;
     UIMenu *_popupMenu;
 }
 

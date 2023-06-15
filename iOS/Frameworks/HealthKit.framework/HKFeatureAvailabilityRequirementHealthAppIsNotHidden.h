@@ -13,7 +13,6 @@ __attribute__((visibility("hidden")))
 + (id)requirementIdentifier;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)isSatisfiedWithDataSource:(id)arg1 error:(id *)arg2;

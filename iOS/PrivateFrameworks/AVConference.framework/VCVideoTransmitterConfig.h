@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AVCStatisticsCollector, NSDictionary, NSMutableDictionary, NSString, VCRateControlMediaController;
+@class AVCStatisticsCollector, NSData, NSDictionary, NSMutableDictionary, NSString, VCRateControlMediaController;
 
 __attribute__((visibility("hidden")))
 @interface VCVideoTransmitterConfig : NSObject
@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
     _Bool _useRateControl;
     unsigned int _pixelFormat;
     NSMutableDictionary *_customFeatureListStrings;
+    NSData *_codecFeatureBitfield;
     VCRateControlMediaController *_mediaController;
     void *_mediaControlInfoGenerator;
     unsigned int _rtpTimestampRate;
@@ -47,23 +48,33 @@ __attribute__((visibility("hidden")))
     _Bool _temporalScalingEnabled;
     struct tagVCCryptor *_sframeCryptor;
     unsigned int _encoderBitrateAveragingInterval;
+    _Bool _setupBWEstimationOptionWithFeatureString;
     _Bool _reinitEncoderOnFrameSizeChangeEnabled;
     _Bool _isIPv6;
+    _Bool _rtxEnabled;
     _Bool _isFecGeneratorEnabled;
     _Bool _fecHeaderV1Enabled;
     _Bool _useInBandFec;
+    _Bool _fecEnabled;
     unsigned int _qualityIndex;
     unsigned int _maxSupportedTemporalLayers;
     int _reportingClientType;
+    int _ltrAckFeedbackType;
+    int _accessNetworkType;
     unsigned long long _remoteIDSParticipantID;
     unsigned long long _maxEncoderPixels;
 }
 
+@property(nonatomic) int accessNetworkType; // @synthesize accessNetworkType=_accessNetworkType;
+@property(nonatomic) _Bool fecEnabled; // @synthesize fecEnabled=_fecEnabled;
 @property(nonatomic) unsigned long long maxEncoderPixels; // @synthesize maxEncoderPixels=_maxEncoderPixels;
 @property(nonatomic) _Bool useInBandFec; // @synthesize useInBandFec=_useInBandFec;
 @property(nonatomic) unsigned long long remoteIDSParticipantID; // @synthesize remoteIDSParticipantID=_remoteIDSParticipantID;
 @property(nonatomic) _Bool fecHeaderV1Enabled; // @synthesize fecHeaderV1Enabled=_fecHeaderV1Enabled;
 @property(nonatomic) _Bool isFecGeneratorEnabled; // @synthesize isFecGeneratorEnabled=_isFecGeneratorEnabled;
+@property(nonatomic) _Bool setupBWEstimationOptionWithFeatureString; // @synthesize setupBWEstimationOptionWithFeatureString=_setupBWEstimationOptionWithFeatureString;
+@property(nonatomic) _Bool rtxEnabled; // @synthesize rtxEnabled=_rtxEnabled;
+@property(nonatomic) int ltrAckFeedbackType; // @synthesize ltrAckFeedbackType=_ltrAckFeedbackType;
 @property(nonatomic) unsigned int encoderBitrateAveragingInterval; // @synthesize encoderBitrateAveragingInterval=_encoderBitrateAveragingInterval;
 @property(nonatomic) int encoderUsage; // @synthesize encoderUsage=_encoderUsage;
 @property(nonatomic) int reportingClientType; // @synthesize reportingClientType=_reportingClientType;
@@ -78,6 +89,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) void *mediaControlInfoGenerator; // @synthesize mediaControlInfoGenerator=_mediaControlInfoGenerator;
 @property(retain, nonatomic) VCRateControlMediaController *mediaController; // @synthesize mediaController=_mediaController;
 @property(nonatomic) _Bool reinitEncoderOnFrameSizeChangeEnabled; // @synthesize reinitEncoderOnFrameSizeChangeEnabled=_reinitEncoderOnFrameSizeChangeEnabled;
+@property(retain, nonatomic) NSData *codecFeatureBitfield; // @synthesize codecFeatureBitfield=_codecFeatureBitfield;
 @property(readonly, nonatomic) NSDictionary *customFeatureListStrings; // @synthesize customFeatureListStrings=_customFeatureListStrings;
 @property(nonatomic) unsigned int pixelFormat; // @synthesize pixelFormat=_pixelFormat;
 @property(nonatomic) _Bool useRateControl; // @synthesize useRateControl=_useRateControl;

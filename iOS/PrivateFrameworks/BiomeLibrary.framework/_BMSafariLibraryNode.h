@@ -16,9 +16,21 @@ __attribute__((visibility("hidden")))
 + (id)validKeyPaths;
 + (id)streamNames;
 + (id)identifier;
++ (id)configurationForAutoPlay;
++ (id)syncPolicyForAutoPlay;
++ (id)storeConfigurationForAutoPlay;
++ (id)configurationForWebPagePerformance;
++ (id)syncPolicyForWebPagePerformance;
++ (id)storeConfigurationForWebPagePerformance;
++ (id)configurationForNavigations;
++ (id)syncPolicyForNavigations;
++ (id)storeConfigurationForNavigations;
 + (id)configurationForHistory;
 + (id)syncPolicyForHistory;
 + (id)storeConfigurationForHistory;
++ (id)AutoPlay;
++ (id)WebPagePerformance;
++ (id)Navigations;
 + (id)History;
 
 @end

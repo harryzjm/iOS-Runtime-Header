@@ -6,10 +6,12 @@
 
 #import <ActivityAwardsServices/NSObject-Protocol.h>
 
-@class ACHAchievement, NSDateComponents, NSSet, NSString;
-@protocol ACHAchievementStoreObserving;
+@class ACHAchievement, NSArray, NSDateComponents, NSSet, NSString;
+@protocol ACHAchievementProgressProviding, ACHAchievementStoreObserving;
 
 @protocol ACHAchievementStoring <NSObject>
+- (void)requestUpdateProgressValuesForProgressProvider:(id <ACHAchievementProgressProviding>)arg1;
+- (void)processAchievementProgressUpdates:(NSArray *)arg1;
 - (void)recalculateProgressForAllAchievements;
 - (NSSet *)achievementsForEarnedDateComponents:(NSDateComponents *)arg1;
 - (ACHAchievement *)ephemeralAchievementWithTemplateUniqueName:(NSString *)arg1;

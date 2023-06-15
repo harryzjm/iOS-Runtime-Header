@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class BRCSyncContext, PQLResultSet;
+@class BRCSyncContext, NSMutableSet, PQLResultSet;
 
 __attribute__((visibility("hidden")))
 @interface BRCFSDownloaderBatchEnumerator : NSObject
@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     long long _now;
     long long *_retryQueueKick;
     PQLResultSet *_rs;
+    NSMutableSet *_enumeratedThrottleIds;
     BRCSyncContext *_syncContext;
 }
 

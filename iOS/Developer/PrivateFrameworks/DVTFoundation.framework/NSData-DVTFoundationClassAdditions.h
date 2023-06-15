@@ -20,13 +20,13 @@
 - (id)dvt_dataWithSHA256Digest;
 - (id)dvt_dataWithSHA1Digest;
 - (id)dvt_dataWithInsecureMD5Digest;
-- (struct __sFILE *)openForReading;
-@property(readonly) NSDictionary *dictionaryValue;
-@property(readonly) NSArray *arrayValue;
-@property(readonly) NSDate *dateValue;
-@property(readonly) NSNumber *numberValue;
-@property(readonly) NSData *dataValue;
-@property(readonly) NSString *stringValue;
+- (struct __sFILE *)dvt_openForReading;
+@property(readonly) NSDictionary *dvt_plistDictionaryValue;
+@property(readonly) NSArray *dvt_plistArrayValue;
+@property(readonly) NSDate *dvt_plistDateValue;
+@property(readonly) NSNumber *dvt_plistNumberValue;
+@property(readonly) NSData *dvt_plistDataValue;
+@property(readonly) NSString *dvt_plistStringValue;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

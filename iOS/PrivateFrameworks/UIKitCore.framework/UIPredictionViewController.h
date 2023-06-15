@@ -37,6 +37,7 @@ __attribute__((visibility("hidden")))
 - (void)_registerForNotifications;
 - (void)_clearTextSuggestions;
 - (id)_currentTextSuggestions;
+- (_Bool)requiresKeyboard;
 - (_Bool)hidesExpandableButton;
 - (double)preferredHeightForTraitCollection:(id)arg1;
 - (_Bool)isVisibleForInputDelegate:(id)arg1 inputViews:(id)arg2;

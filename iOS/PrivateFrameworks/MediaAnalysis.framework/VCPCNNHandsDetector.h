@@ -19,9 +19,11 @@ __attribute__((visibility("hidden")))
     float *_inputData;
     NSArray *_outputNames;
     VCPCNNModelEspresso *_modelEspresso;
+    struct Scaler _scaler;
 }
 
 + (id)detector:(int)arg1 forceCPU:(_Bool)arg2 sharedModel:(_Bool)arg3 inputConfig:(id)arg4 revision:(int)arg5;
+- (id).cxx_construct;
 - (void).cxx_destruct;
 - (int)handsDetection:(struct __CVBuffer *)arg1 handsRegions:(id)arg2 cancel:(CDUnknownBlockType)arg3;
 - (int)drawRectangle:(char *)arg1 width:(int)arg2 height:(int)arg3 stride:(int)arg4 keypoints:(struct CGPoint *)arg5;
@@ -30,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (int)retrieveBoxes:(float *)arg1 outHeight:(int)arg2 outWidth:(int)arg3 boxes:(id)arg4 anchorBox:(float [3][2])arg5;
 - (void)nonMaxSuppression:(id)arg1;
 - (int)generateHandsBoxes:(id)arg1;
+- (int)updateMaxNumRegions:(int)arg1;
 - (int)createInput:(float *)arg1 withBuffer:(struct __CVBuffer *)arg2;
 - (int)copyImage:(struct __CVBuffer *)arg1 toData:(float *)arg2;
 - (int)createModelWithResConfig:(id)arg1;

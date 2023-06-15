@@ -6,7 +6,11 @@
 
 #import <Foundation/NSUUID.h>
 
+@class NSData;
+
 @interface NSUUID (JSON)
 - (id)jsonRepresentationWithOptions:(unsigned long long)arg1;
+- (id)appendBytes:(unsigned long long)arg1;
+@property(readonly, nonatomic) NSData *data;
 @end
 

@@ -30,6 +30,8 @@ __attribute__((visibility("hidden")))
 - (void)setThreadgroupMemoryLength:(unsigned long long)arg1;
 - (unsigned long long)imageblockSampleLength;
 - (void)setImageblockSampleLength:(unsigned long long)arg1;
+- (id)binaryArchives;
+- (void)setBinaryArchives:(id)arg1;
 - (_Bool)pointCoordYFlipEnabled;
 - (void)setPointCoordYFlipEnabled:(_Bool)arg1;
 - (_Bool)openGLModeEnabled;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MKETAProvider, MKPlaceHeaderButtonsViewController, MKUGCCallToActionViewAppearance, MUHeaderButtonsView, MUHeaderButtonsViewConfiguration, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, MUPlaceSectionView, NSArray, NSString, UIView, UIViewController, _MKPlaceActionButtonController;
+@class MKETAProvider, MKPlaceHeaderButtonsViewController, MUHeaderButtonsView, MUHeaderButtonsViewConfiguration, MUPlaceCallToActionAppearance, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, MUPlaceSectionView, NSArray, NSString, UIView, UIViewController, _MKPlaceActionButtonController;
 @protocol MUHeaderButtonsSectionControllerDelegate, MUInfoCardAnalyticsDelegate;
 
 __attribute__((visibility("hidden")))
@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
     UIView *_contentView;
     _Bool _active;
     MUPlaceSectionHeaderViewModel *_sectionHeaderViewModel;
-    MKUGCCallToActionViewAppearance *_submissionStatus;
+    MUPlaceCallToActionAppearance *_submissionStatus;
     id <MUInfoCardAnalyticsDelegate> _analyticsDelegate;
     id <MUHeaderButtonsSectionControllerDelegate> _delegate;
 }
@@ -28,7 +28,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <MUHeaderButtonsSectionControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) __weak id <MUInfoCardAnalyticsDelegate> analyticsDelegate; // @synthesize analyticsDelegate=_analyticsDelegate;
-@property(retain, nonatomic) MKUGCCallToActionViewAppearance *submissionStatus; // @synthesize submissionStatus=_submissionStatus;
+@property(retain, nonatomic) MUPlaceCallToActionAppearance *submissionStatus; // @synthesize submissionStatus=_submissionStatus;
 @property(readonly, nonatomic) MUPlaceSectionHeaderViewModel *sectionHeaderViewModel; // @synthesize sectionHeaderViewModel=_sectionHeaderViewModel;
 @property(nonatomic, getter=isActive) _Bool active; // @synthesize active=_active;
 - (id)revealedAnalyticsModule;

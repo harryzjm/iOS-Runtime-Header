@@ -11,6 +11,7 @@
 + (id)nss_NewsURLWithPathComponents:(id)arg1 queryItems:(id)arg2 internal:(_Bool)arg3;
 + (id)nss_NewsURLWithPathComponents:(id)arg1 internal:(_Bool)arg2;
 + (id)nss_NewsURLForArticleID:(id)arg1 internal:(_Bool)arg2 targetIsVideo:(_Bool)arg3 hardPaywall:(_Bool)arg4;
++ (id)nss_NewsURLForPuzzle;
 + (id)nss_NewsURLForManageNotifications;
 + (id)nss_NewsURLForFavoritesPicker;
 + (id)nss_NewsURLForHistory;
@@ -18,13 +19,17 @@
 + (id)nss_NewsURLForMySportsHighlights;
 + (id)nss_NewsURLForMySportsScores;
 + (id)nss_NewsURLForMySports;
++ (id)nss_NewsURLForPuzzleHub;
 + (id)nss_NewsURLForMyMagazines;
 + (id)nss_NewsURLForMagazines;
 + (id)nss_NewsURLForForYou;
 + (id)nss_NewsURLForTagID:(id)arg1 feedConfiguration:(unsigned long long)arg2;
 + (id)nss_NewsURLForTagID:(id)arg1;
++ (id)nss_NewsURLForArticleID:(id)arg1 routeURL:(id)arg2;
 + (id)nss_NewsURLForArticleID:(id)arg1 title:(id)arg2;
 + (id)nss_NewsURLForArticleID:(id)arg1 targetIsVideo:(_Bool)arg2;
++ (id)nss_NewsURLForPuzzleTypeID:(id)arg1;
++ (id)nss_NewsURLForPuzzleID:(id)arg1;
 + (id)nss_NewsURLForIssueID:(id)arg1;
 + (id)nss_NewsURLForArticleID:(id)arg1;
 + (id)nss_NewsURLForWebLinkURL:(id)arg1;
@@ -39,6 +44,7 @@
 - (_Bool)nss_isNewsArticleVideoURL;
 - (_Bool)nss_isNewsArticleURL;
 - (_Bool)nss_isAudioURL;
+- (_Bool)nss_isStocksURL;
 - (_Bool)nss_isNewsURL;
 @end
 

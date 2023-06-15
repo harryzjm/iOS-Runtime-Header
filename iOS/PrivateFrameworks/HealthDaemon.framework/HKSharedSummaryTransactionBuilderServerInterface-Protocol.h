@@ -9,7 +9,6 @@
 @class NSArray, NSDictionary, NSString;
 
 @protocol HKSharedSummaryTransactionBuilderServerInterface <NSObject>
-- (void)remote_allAddedSummariesWithPackage:(NSString *)arg1 resultsHandler:(void (^)(NSArray *, _Bool, NSError *))arg2;
 - (void)remote_addedSummariesWithPackage:(NSString *)arg1 names:(NSArray *)arg2 resultsHandler:(void (^)(NSArray *, _Bool, NSError *))arg3;
 - (void)remote_discardWithCompletion:(void (^)(_Bool, NSError *))arg1;
 - (void)remote_commitAsUrgent:(_Bool)arg1 completion:(void (^)(HKSharedSummaryTransaction *, NSError *))arg2;

@@ -15,6 +15,8 @@
 + (id)dvt_dictionaryWithTuples:(id)arg1;
 + (id)dvt_strictDictionaryWithKeysAndObjects:(id)arg1;
 + (id)dvt_dictionaryWithKeysAndValues:(id)arg1;
+- (_Bool)dvt_validateKey:(id)arg1 expectedArrayOfClass:(Class)arg2 allowNil:(_Bool)arg3 error:(id *)arg4;
+- (_Bool)dvt_validateKey:(id)arg1 expectedClass:(Class)arg2 allowNil:(_Bool)arg3 error:(id *)arg4;
 - (id)dvt_invertedDictionaryOfKeysGroupedByValueUsingMutableDictionaryClass:(Class)arg1;
 - (id)dvt_invertedDictionaryOfKeysGroupedByValue;
 - (id)dvt_invertedBijectiveDictionaryUsingMutableDictionaryClass:(Class)arg1;
@@ -53,12 +55,12 @@
 - (id)dvt_dateForKey:(id)arg1 error:(id *)arg2;
 - (id)dvt_numberForKey:(id)arg1 error:(id *)arg2;
 - (id)dvt_stringForKey:(id)arg1 error:(id *)arg2;
-@property(readonly) NSDictionary *dictionaryValue;
-@property(readonly) NSArray *arrayValue;
-@property(readonly) NSDate *dateValue;
-@property(readonly) NSNumber *numberValue;
-@property(readonly) NSData *dataValue;
-@property(readonly) NSString *stringValue;
+@property(readonly) NSDictionary *dvt_plistDictionaryValue;
+@property(readonly) NSArray *dvt_plistArrayValue;
+@property(readonly) NSDate *dvt_plistDateValue;
+@property(readonly) NSNumber *dvt_plistNumberValue;
+@property(readonly) NSData *dvt_plistDataValue;
+@property(readonly) NSString *dvt_plistStringValue;
 - (void)dvt_getStrongObjects:(id *)arg1 andStrongKeys:(id *)arg2;
 
 // Remaining properties

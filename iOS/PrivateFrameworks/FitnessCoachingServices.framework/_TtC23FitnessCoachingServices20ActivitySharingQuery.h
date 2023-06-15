@@ -10,7 +10,8 @@
 
 @interface _TtC23FitnessCoachingServices20ActivitySharingQuery : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *healthStore;
+    MISSING_TYPE *activitySharingClient;
+    MISSING_TYPE *state;
 }
 
 @end

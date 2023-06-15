@@ -13,9 +13,8 @@
 - (void)commitSharedSummaryTransactionAsUrgent:(_Bool)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (void)updateFavoritesWithFavoriteIdentifiers:(NSArray *)arg1 isFavorite:(_Bool)arg2 replaceExistingFavorites:(_Bool)arg3 completion:(void (^)(_Bool))arg4;
 - (void)deleteFeedWithFeedKinds:(NSArray *)arg1 completion:(void (^)(void))arg2;
-- (void)collectFeedPopulationDiagnosticLogsWithCompletion:(void (^)(NSArray *))arg1;
+- (void)collectFeedItemCacheDiagnosticsWithCompletion:(void (^)(NSArray *))arg1;
 - (void)postNotificationWith:(NSString *)arg1 userInfo:(NSDictionary *)arg2;
-- (void)indicateMajorUserInteractionWithCompletion:(void (^)(_Bool))arg1;
 - (void)submitTrainingFor:(NSArray *)arg1 completion:(void (^)(void))arg2;
 - (void)populateFeedWithFeedKinds:(NSArray *)arg1 for:(NSDateInterval *)arg2 completion:(void (^)(void))arg3;
 - (NSProgress *)startInteractiveFeedItemGenerationWithCompletion:(void (^)(_Bool))arg1;

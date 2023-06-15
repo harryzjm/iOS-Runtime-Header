@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class MISSING_TYPE;
 
@@ -13,14 +13,15 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *startedHandler;
     MISSING_TYPE *completedHandler;
-    MISSING_TYPE *sceneDriver;
     MISSING_TYPE *sceneView;
+    MISSING_TYPE *sceneDriver;
     MISSING_TYPE *configuration;
     MISSING_TYPE *hasSetUpSceneDriver;
 }
 
 - (void).cxx_destruct;
 - (void)willMoveToSuperview:(id)arg1;
+- (void)dealloc;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 

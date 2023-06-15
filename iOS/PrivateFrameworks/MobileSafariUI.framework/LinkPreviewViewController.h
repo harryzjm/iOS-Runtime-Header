@@ -6,12 +6,12 @@
 
 #import <UIKit/UIViewController.h>
 
-@class TabDocument, _SFBrowserView, _SFDigitalHealthViewController, _SFLinkPreviewHeader;
+@class NSString, SFScreenTimeOverlayViewController, TabDocument, _SFBrowserView, _SFLinkPreviewHeader;
 
 __attribute__((visibility("hidden")))
 @interface LinkPreviewViewController : UIViewController
 {
-    _SFDigitalHealthViewController *_digitalHealthViewController;
+    SFScreenTimeOverlayViewController *_screenTimeOverlayViewController;
     TabDocument *_previewTabDocument;
     _SFBrowserView *_browserView;
 }
@@ -19,8 +19,10 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _SFBrowserView *browserView; // @synthesize browserView=_browserView;
 @property(readonly, nonatomic) __weak TabDocument *previewTabDocument; // @synthesize previewTabDocument=_previewTabDocument;
-@property(retain, nonatomic) _SFDigitalHealthViewController *digitalHealthViewController; // @synthesize digitalHealthViewController=_digitalHealthViewController;
-- (void)displayHostedDigitalHealthView;
+@property(retain, nonatomic) SFScreenTimeOverlayViewController *screenTimeOverlayViewController; // @synthesize screenTimeOverlayViewController=_screenTimeOverlayViewController;
+- (void)fluidProgressRocketAnimationDidComplete;
+- (id)currentFluidProgressStateSource;
+- (void)displayHostedScreenTimeView;
 - (void)willCommitPreviewedWebView;
 - (void)updatePreviewLoadingUIWithURLString:(id)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
@@ -28,6 +30,12 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _SFLinkPreviewHeader *previewHeader;
 - (void)loadView;
 - (id)initWithTabDocument:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

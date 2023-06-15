@@ -6,18 +6,23 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class NSArray, NSString, SBPIPContentViewLayoutSettings, SBPIPInteractionController, UIPanGestureRecognizer, _UIHyperInteractor;
+@class NSArray, NSString, SBPIPContentViewLayoutSettings, SBPIPInteractionController, SBSystemGestureManager, SBSystemPointerInteractionManager, SBWindowScene, UIPanGestureRecognizer, _UIHyperInteractor;
 
 @protocol SBPIPInteractionControllerDataSource <NSObject>
+- (_Bool)shouldPointerInteractionBeginForInteractionController:(SBPIPInteractionController *)arg1;
+- (struct UIEdgeInsets)interactionController:(SBPIPInteractionController *)arg1 stashedPaddingForWindowScene:(SBWindowScene *)arg2;
+- (struct UIEdgeInsets)interactionController:(SBPIPInteractionController *)arg1 edgeInsetsForWindowScene:(SBWindowScene *)arg2;
+- (NSArray *)interactionControllerConnectedWindowScenes:(SBPIPInteractionController *)arg1;
 - (void)interactionController:(SBPIPInteractionController *)arg1 updateScaleInteractor:(_UIHyperInteractor *)arg2 pipSize:(struct CGSize)arg3 forPanGesture:(UIPanGestureRecognizer *)arg4;
 - (_Bool)interactionControllerScalesDuringPanGesture:(SBPIPInteractionController *)arg1;
-- (_Bool)interactionControllerUseSystemGesturesForResizing:(SBPIPInteractionController *)arg1;
+- (double)currentCornerRadiusForInteractionController:(SBPIPInteractionController *)arg1;
+- (SBSystemPointerInteractionManager *)systemPointerInteractionManagerForInteractionController:(SBPIPInteractionController *)arg1;
+- (SBSystemGestureManager *)systemGestureManagerForInteractionControllerResizing:(SBPIPInteractionController *)arg1;
 - (NSArray *)defaultPositionHyperregionComposers;
 - (SBPIPContentViewLayoutSettings *)layoutSettings;
 - (NSString *)debugName;
 
 @optional
 - (_Bool)interactionControllerIsExternalPanGestureRecognizing:(SBPIPInteractionController *)arg1;
-- (void)offScreenHyperregionComposersDidChange:(NSArray *)arg1;
 @end
 

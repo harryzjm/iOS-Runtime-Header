@@ -27,8 +27,10 @@ __attribute__((visibility("hidden")))
     float _pixelMean;
     float _pixelVar;
     VCPGaborFilter *_gaborFilter;
+    struct Scaler _scaler;
 }
 
+- (id).cxx_construct;
 - (void).cxx_destruct;
 - (int)generateLineWeightMap:(id)arg1 weightMap:(float *)arg2;
 - (_Bool)isVerticalOrHorizontal:(int)arg1;

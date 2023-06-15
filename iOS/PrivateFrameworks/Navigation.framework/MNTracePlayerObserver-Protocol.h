@@ -6,7 +6,7 @@
 
 #import <Navigation/NSObject-Protocol.h>
 
-@class CLHeading, GEOComposedRoute, GEOComposedWaypoint, GEODirectionsRequest, GEODirectionsResponse, MNLocation, MNTracePlayer, NSArray, NSDate, NSError, VGVehicle;
+@class CLHeading, GEOComposedRoute, GEOComposedWaypoint, GEODirectionsRequest, GEODirectionsResponse, MNLocation, MNTraceNetworkEvent, MNTracePlayer, NSArray, NSDate, NSError, VGVehicle;
 
 @protocol MNTracePlayerObserver <NSObject>
 - (void)tracePlayer:(MNTracePlayer *)arg1 didUpdateVehicleSpeed:(double)arg2 timestamp:(NSDate *)arg3;
@@ -28,6 +28,7 @@
 - (void)tracePlayerDidStart:(MNTracePlayer *)arg1;
 
 @optional
+- (void)tracePlayer:(MNTracePlayer *)arg1 didRecieveNetworkEvent:(MNTraceNetworkEvent *)arg2;
 - (void)tracePlayer:(MNTracePlayer *)arg1 didResumeNavigatingFromWaypoint:(GEOComposedWaypoint *)arg2 endOfLegIndex:(unsigned long long)arg3 reason:(unsigned long long)arg4;
 - (void)tracePlayer:(MNTracePlayer *)arg1 didUpdateCurrentRoute:(GEOComposedRoute *)arg2 reason:(unsigned long long)arg3;
 - (void)tracePlayer:(MNTracePlayer *)arg1 didUpdateEVData:(VGVehicle *)arg2;

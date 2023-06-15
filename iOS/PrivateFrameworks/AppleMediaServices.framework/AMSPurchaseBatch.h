@@ -12,19 +12,21 @@ __attribute__((visibility("hidden")))
 @interface AMSPurchaseBatch : NSObject
 {
     _Bool _isComplete;
-    NSLock *_lock;
     AMSLazyPromise *_promise;
     NSMutableArray *_purchases;
     NSMutableDictionary *_purchaseMap;
     NSMutableArray *_results;
+    NSLock *_lock;
+    NSMutableArray *_returnedPurchaseIDs;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSMutableArray *returnedPurchaseIDs; // @synthesize returnedPurchaseIDs=_returnedPurchaseIDs;
+@property(retain, nonatomic) NSLock *lock; // @synthesize lock=_lock;
 @property(readonly, nonatomic) NSMutableArray *results; // @synthesize results=_results;
 @property(readonly, nonatomic) NSMutableDictionary *purchaseMap; // @synthesize purchaseMap=_purchaseMap;
 @property(readonly, nonatomic) NSMutableArray *purchases; // @synthesize purchases=_purchases;
 @property(readonly, nonatomic) AMSLazyPromise *promise; // @synthesize promise=_promise;
-@property(retain, nonatomic) NSLock *lock; // @synthesize lock=_lock;
 @property(nonatomic) _Bool isComplete; // @synthesize isComplete=_isComplete;
 - (id)nextPurchase;
 - (_Bool)finishPurchase:(id)arg1 withResult:(id)arg2;

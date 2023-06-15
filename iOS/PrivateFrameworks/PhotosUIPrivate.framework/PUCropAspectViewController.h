@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
 @class NSArray, PUCropAspect, PUCropToolControllerSpec, UIScrollView, UIView;
 @protocol PUCropAspectViewControllerDelegate;
@@ -43,6 +43,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak id <PUCropAspectViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) PUCropAspect *currentCropAspect; // @synthesize currentCropAspect=_currentCropAspect;
 @property(nonatomic) struct CGSize currentCropSize; // @synthesize currentCropSize=_currentCropSize;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)aspectButtonPressed:(id)arg1;
 - (void)updateAspectConstraints;
 - (void)updateAspectButtons;

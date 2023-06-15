@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class NSLayoutConstraint, UIButton, UIImageView, UILabel, UILayoutGuide;
 @protocol MUAppLockupViewModel, MUPlaceAppLockupViewDelegate;
@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) id <MUAppLockupViewModel> viewModel; // @synthesize viewModel=_viewModel;
 @property(nonatomic) __weak id <MUPlaceAppLockupViewDelegate> delegate; // @synthesize delegate=_delegate;
-- (void)traitCollectionDidChange:(id)arg1;
+- (void)_updateHeightConstraint;
 - (void)_punchOutButtonSelected;
 @property(readonly, nonatomic) double scaledHeight;
 - (void)_updateAppearance;

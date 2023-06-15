@@ -11,6 +11,7 @@
 @protocol FCNetworkReachabilityType <NSObject>
 @property(nonatomic) long long offlineReason;
 @property(readonly, nonatomic) _Bool isCloudKitReachable;
+@property(readonly, nonatomic) _Bool isNetworkReachable;
 - (void)removeObserver:(id <FCNetworkReachabilityObserving>)arg1;
 - (void)addObserver:(id <FCNetworkReachabilityObserving>)arg1;
 @end

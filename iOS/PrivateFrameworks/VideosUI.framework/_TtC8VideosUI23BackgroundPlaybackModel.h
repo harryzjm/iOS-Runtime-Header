@@ -19,6 +19,7 @@
     MISSING_TYPE *size;
     MISSING_TYPE *playbackDelayInterval;
     MISSING_TYPE *imageSizeMode;
+    MISSING_TYPE *mutePlaybackInBackground;
 }
 
 @end

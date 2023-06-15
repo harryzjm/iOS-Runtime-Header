@@ -9,6 +9,13 @@
 @class NSString;
 
 @interface NSArray (MSVAdditions)
+- (id)msv_subarrayFromIndex:(long long)arg1;
+- (id)msv_subarrayToIndex:(long long)arg1;
+- (long long)msv_lastIndexOfObjectEqualTo:(id)arg1;
+- (long long)msv_lastIndexOfObjectsPassingTest:(CDUnknownBlockType)arg1;
+- (long long)msv_firstIndexOfObjectEqualTo:(id)arg1;
+- (long long)msv_firstIndexOfObjectsPassingTest:(CDUnknownBlockType)arg1;
+- (id)msv_indexesOfObjectsEqualTo:(id)arg1;
 @property(readonly, copy, nonatomic) NSString *msv_compactDescription;
 - (id)msv_reduceIntoObject:(id)arg1 enumeratedBy:(CDUnknownBlockType)arg2;
 - (unsigned long long)msv_reduceIntoUInt64:(unsigned long long)arg1 enumeratedBy:(CDUnknownBlockType)arg2;
@@ -39,5 +46,7 @@
 - (id)msv_compactMap:(CDUnknownBlockType)arg1;
 - (id)msv_enumeratedMap:(CDUnknownBlockType)arg1;
 - (id)msv_map:(CDUnknownBlockType)arg1;
+- (id)msv_suffixFromIndex:(long long)arg1;
+- (id)msv_prefixUpToIndex:(long long)arg1;
 @end
 

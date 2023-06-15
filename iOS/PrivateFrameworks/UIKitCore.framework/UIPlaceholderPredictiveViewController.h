@@ -11,12 +11,16 @@
 __attribute__((visibility("hidden")))
 @interface UIPlaceholderPredictiveViewController : UIViewController
 {
+    _Bool _showsRemoteInputDashViewController;
 }
 
+@property(nonatomic) _Bool showsRemoteInputDashViewController; // @synthesize showsRemoteInputDashViewController=_showsRemoteInputDashViewController;
+- (_Bool)requiresKeyboard;
 @property(readonly, nonatomic) NSArray *displayedCandidates;
 - (_Bool)hidesExpandableButton;
 - (double)preferredHeightForTraitCollection:(id)arg1;
 - (_Bool)isVisibleForInputDelegate:(id)arg1 inputViews:(id)arg2;
+- (id)_currentTextSuggestions;
 - (_Bool)_isVisibleForAutocorrectionType:(long long)arg1;
 - (_Bool)_canShowWhileLocked;
 

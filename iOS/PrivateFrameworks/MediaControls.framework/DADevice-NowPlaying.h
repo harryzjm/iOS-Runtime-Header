@@ -9,9 +9,6 @@
 @class NSString;
 
 @interface DADevice (NowPlaying)
-@property(readonly, copy, nonatomic) NSString *mediaContentArtistNameSafe;
-@property(readonly, copy, nonatomic) NSString *mediaContentTitleSafe;
-@property(readonly, nonatomic) long long mediaPlaybackStateSafe;
 @property(readonly, copy, nonatomic) NSString *nowPlayingSubtitle;
 - (_Bool)isKnown;
 @end

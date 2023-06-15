@@ -6,9 +6,11 @@
 
 #import <RecapPerformanceTesting/RCPBaseEventStreamComposer-Protocol.h>
 
-@class NSSet;
+@class CAMediaTimingFunction, NSSet;
 
 @protocol RCPPointerEventStreamComposer <RCPBaseEventStreamComposer>
+@property(nonatomic) _Bool scalePointerPhaseScrollToPixels;
+@property(retain, nonatomic) CAMediaTimingFunction *pointerCurveFunction;
 @property(nonatomic) double pointerFrequency;
 - (void)pointerEndPressingButton:(long long)arg1;
 - (void)pointerBeginPressingButton:(long long)arg1;
@@ -16,6 +18,8 @@
 - (void)pointerTranslatation:(struct CGPoint)arg1 duration:(double)arg2 frequency:(long long)arg3;
 - (void)pointerRotation:(double)arg1 duration:(double)arg2 frequency:(long long)arg3;
 - (void)pointerDiscreteGesture:(NSSet *)arg1 duration:(double)arg2 frequency:(long long)arg3;
+- (void)pointerPhasedFlick:(struct CGPoint)arg1 duration:(double)arg2;
+- (void)pointerPhasedFlick:(struct CGPoint)arg1 duration:(double)arg2 frequency:(long long)arg3;
 - (void)pointerPhasedScroll:(struct CGPoint)arg1 duration:(double)arg2;
 - (void)pointerPhasedScroll:(struct CGPoint)arg1 duration:(double)arg2 frequency:(long long)arg3;
 - (void)pointerDiscreteScroll:(struct CGPoint)arg1 duration:(double)arg2;

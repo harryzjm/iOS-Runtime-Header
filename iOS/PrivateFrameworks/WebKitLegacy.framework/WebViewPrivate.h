@@ -85,7 +85,7 @@ __attribute__((visibility("hidden")))
     _Bool shouldUpdateWhileOffscreen;
     _Bool needsOneShotDrawingSynchronization;
     _Bool postsAcceleratedCompositingNotifications;
-    struct RefPtr<LayerFlushController, WTF::RawPtrTraits<LayerFlushController>, WTF::DefaultRefDerefTraits<LayerFlushController>> layerFlushController;
+    struct unique_ptr<WebViewRenderingUpdateScheduler, std::default_delete<WebViewRenderingUpdateScheduler>> renderingUpdateScheduler;
     struct CGSize lastLayoutSize;
     struct RetainPtr<WebVideoFullscreenController> fullscreenController;
     struct Vector<WTF::RetainPtr<WebVideoFullscreenController>, 0UL, WTF::CrashOnOverflow, 16UL, WTF::FastMalloc> fullscreenControllersExiting;

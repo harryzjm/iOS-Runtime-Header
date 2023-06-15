@@ -6,11 +6,13 @@
 
 #import <Foundation/NSEnumerator.h>
 
-@class CKSQLiteCompiledStatement, CKSQLiteTable, NSError;
+@class CKSQLiteCompiledStatement, CKSQLiteTable, NSError, NSString;
 
 @interface CKSQLiteTableSearchResultEnumerator : NSEnumerator
 {
     CKSQLiteTable *_table;
+    NSString *_groupName;
+    NSString *_tableName;
     NSError *_error;
     id _entry;
     _Bool _enumerationStarted;
@@ -21,6 +23,7 @@
 @property(retain, nonatomic) CKSQLiteCompiledStatement *statement; // @synthesize statement=_statement;
 @property(readonly, nonatomic) NSError *error; // @synthesize error=_error;
 - (id)nextObject;
+- (id)currentObject;
 - (void)invalidate;
 - (void)dealloc;
 - (id)initWithTable:(id)arg1 statement:(id)arg2;

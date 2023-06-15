@@ -25,6 +25,12 @@
 - (_Bool)__ck_shouldUseBigEmoji;
 - (id)mentionsSafeText;
 - (id)__ck_stringByExpandingTildeInPath;
+- (_Bool)_snippetOptions:(unsigned long long)arg1 hasOption:(unsigned long long)arg2;
+- (id)ck_trimmedStringWithPreferredLength:(unsigned long long)arg1 anchoredAroundSubstring:(id)arg2 options:(unsigned long long)arg3;
+- (id)ck_trimmedStringWithPreferredLength:(unsigned long long)arg1 anchoredAroundSubstring:(id)arg2;
+- (id)__ck_generateImageForFont:(id)arg1 imageGenerationScale:(double)arg2;
+- (id)__ck_generateImageForFontSize:(double)arg1 imageGenerationScale:(double)arg2;
 - (_Bool)isAddressBookLabel;
+- (id)searchSafeText;
 @end
 

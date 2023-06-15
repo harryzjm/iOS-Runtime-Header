@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, copy) NSString *pairedAppIdentifier; // @dynamic pairedAppIdentifier;
 @property(nonatomic) long long positionIndex; // @dynamic positionIndex;
 @property(nonatomic, copy) NSData *powerByConnector; // @dynamic powerByConnector;
+@property(nonatomic, copy) NSData *preferredChargingNetworks; // @dynamic preferredChargingNetworks;
 @property(nonatomic, copy) NSString *siriIntentsIdentifier; // @dynamic siriIntentsIdentifier;
 @property(nonatomic, retain) NSNumber *supportedConnectors; // @dynamic supportedConnectors;
 @property(nonatomic, copy) NSString *vehicleIdentifier; // @dynamic vehicleIdentifier;

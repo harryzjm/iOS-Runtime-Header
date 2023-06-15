@@ -7,6 +7,8 @@
 @class BCSBusinessItem, NSArray, NSString, NSURL;
 
 @protocol BCSXPCDaemonProtocol
+- (void)fetchBusinessCallerMetadataForPhoneNumber:(NSString *)arg1 forClientBundleID:(NSString *)arg2 completion:(void (^)(BCSBusinessCallerItem *, NSError *))arg3;
+- (void)isBusinessCallerRegisteredForPhoneNumber:(NSString *)arg1 forClientBundleID:(NSString *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 - (void)clearCachesForLinkItemsAssociatedWithBundleID:(NSString *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (void)clearExpiredCachesForType:(long long)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (void)clearCachesForType:(long long)arg1 completion:(void (^)(_Bool, NSError *))arg2;

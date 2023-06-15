@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UICollectionViewCell.h>
+#import <UIKitCore/UICollectionViewCell.h>
 
 @class NSString, PUPhotoView, PXImportItemViewModel, UIActivityIndicatorView, UITextField, UIView;
 @protocol PUCameraImportItemCellDelegate;

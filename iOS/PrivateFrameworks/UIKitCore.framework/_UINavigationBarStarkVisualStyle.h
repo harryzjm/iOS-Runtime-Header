@@ -12,7 +12,6 @@ __attribute__((visibility("hidden")))
 - (double)imageButtonMarginInNavigationBar:(id)arg1;
 - (double)textButtonMarginInNavigationBar:(id)arg1;
 - (long long)navigationBar:(id)arg1 metricsForOrientation:(long long)arg2 hasPrompt:(_Bool)arg3;
-- (_Bool)shouldForceLegacyLeftBackTitleMarginForView:(id)arg1 withCustomBackButtonBackground:(id)arg2 useAdditionalLetterpressPadding:(_Bool)arg3;
 - (double)topTitleMargin;
 - (double)horizontalMarginAdjustment;
 - (double)topMargin;

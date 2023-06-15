@@ -10,9 +10,11 @@
 @protocol PXDisplayAsset;
 
 @protocol PUSharingHeaderDataProvider <NSObject>
+@property(readonly, nonatomic) long long preferredExportFormat;
 @property(readonly, nonatomic) _Bool excludeAccessibilityDescription;
 @property(readonly, nonatomic) _Bool excludeCaption;
-@property(readonly, nonatomic) _Bool sendAsOriginals;
+@property(readonly, nonatomic) _Bool sendAsUnmodifiedOriginals;
+@property(readonly, nonatomic) _Bool sendAsAssetBundles;
 @property(readonly, nonatomic) _Bool excludeLocation;
 @property(readonly, nonatomic) _Bool excludeLiveness;
 @property(readonly, nonatomic) _Bool shareAsCMM;

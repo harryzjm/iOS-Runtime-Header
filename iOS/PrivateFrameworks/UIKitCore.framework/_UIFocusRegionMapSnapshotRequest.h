@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 @class UIFocusSystem, UIView;
 
 __attribute__((visibility("hidden")))
-@interface _UIFocusRegionMapSnapshotRequest : NSObject <NSCopying>
+@interface _UIFocusRegionMapSnapshotRequest : NSObject
 {
     _Bool _includeFocusGuides;
     _Bool _includeFocusContainerGuides;

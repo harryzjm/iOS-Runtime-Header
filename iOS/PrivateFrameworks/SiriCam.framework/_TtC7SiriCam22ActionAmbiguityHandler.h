@@ -13,6 +13,7 @@
     MISSING_TYPE *rankedActionFeatureExtractor;
     MISSING_TYPE *camOutputProvider;
     MISSING_TYPE *modelHandler;
+    MISSING_TYPE *actionEnforcer;
 }
 
 @end

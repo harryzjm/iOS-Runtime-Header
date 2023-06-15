@@ -8,12 +8,17 @@
 
 @interface NSAttributedString (ICAXAdditions)
 + (id)icaxAttributedStringForSpeakingStringInLowerPitch:(id)arg1;
++ (id)ic_attributedStringWithString:(id)arg1 font:(id)arg2;
++ (id)ic_blockQuoteMenuItemAttributedString;
 - (_Bool)ic_containsBlockAttachmentsInRange:(struct _NSRange)arg1;
 - (id)ic_attributedStringByCopyingInlineAttachmentsAndUpdatingChangeCountWithContext:(id)arg1;
 - (id)ic_attributedStringByFlatteningInlineAttachmentsWithContext:(id)arg1 formatter:(CDUnknownBlockType)arg2;
 - (id)ic_itemProviderDataForUTI:(id)arg1;
+- (id)ic_attributedStringByHighlightingRegexFinderMatches:(id)arg1 withHighlightColor:(id)arg2 attributeName:(id)arg3;
+- (id)ic_attributedStringByHighlightingRegexFinderMatches:(id)arg1 withHighlightColor:(id)arg2;
 - (id)ic_attributedStringByHighlightingRegex:(id)arg1 withHighlightColor:(id)arg2;
 - (id)ic_attributedStringByHighlightingRegex:(id)arg1 withHighlightColor:(id)arg2 attributeName:(id)arg3;
+- (id)_ic_attributedStringByHighlightingRegexMatches:(id)arg1 withHighlightColor:(id)arg2 attributeName:(id)arg3;
 - (long long)ic_writingDirectionAtIndex:(unsigned long long)arg1;
 - (id)ic_attributesByHighlightingAttributes:(id)arg1 withHighlightColor:(id)arg2 attributeName:(id)arg3;
 - (id)ic_stringWithoutAttachments;

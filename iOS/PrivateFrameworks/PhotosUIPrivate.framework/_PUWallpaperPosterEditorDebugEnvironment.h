@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSString, NSURL, PFPosterConfiguration, PFPosterDescriptor, UIColor;
+@protocol PUMutablePosterConfiguration, PUPosterOverrideConfiguration;
 
 __attribute__((visibility("hidden")))
 @interface _PUWallpaperPosterEditorDebugEnvironment : NSObject
@@ -19,9 +20,11 @@ __attribute__((visibility("hidden")))
     NSURL *_sourceAssetDirectory;
     NSURL *_targetAssetDirectory;
     unsigned long long _legacyConfigurationType;
+    id <PUPosterOverrideConfiguration> _overrideConfiguration;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) id <PUPosterOverrideConfiguration> overrideConfiguration; // @synthesize overrideConfiguration=_overrideConfiguration;
 @property(nonatomic) unsigned long long legacyConfigurationType; // @synthesize legacyConfigurationType=_legacyConfigurationType;
 @property(retain, nonatomic) NSURL *targetAssetDirectory; // @synthesize targetAssetDirectory=_targetAssetDirectory;
 @property(retain, nonatomic) NSURL *sourceAssetDirectory; // @synthesize sourceAssetDirectory=_sourceAssetDirectory;
@@ -30,6 +33,13 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSString *pu_selectedToolbarItemIdentifier; // @synthesize pu_selectedToolbarItemIdentifier=_pu_selectedToolbarItemIdentifier;
 @property(nonatomic) long long pu_userInterfaceStyle; // @synthesize pu_userInterfaceStyle=_pu_userInterfaceStyle;
 @property(retain, nonatomic) UIColor *pu_caseColor; // @synthesize pu_caseColor=_pu_caseColor;
+- (struct CGRect)pu_titleBoundsForLayout:(unsigned long long)arg1;
+@property(readonly, nonatomic) long long pu_deviceOrientation;
+@property(readonly, nonatomic) struct CGRect pu_floatingObscurableBounds;
+@property(readonly, nonatomic, getter=pu_isCallServices) _Bool pu_callServices;
+@property(readonly, nonatomic) unsigned long long pu_significantEventsCounter;
+@property(readonly, nonatomic) id <PUMutablePosterConfiguration> pu_targetConfiguration;
+@property(readonly, nonatomic) id <PUPosterOverrideConfiguration> pu_overrideConfiguration;
 @property(readonly, nonatomic) unsigned long long pu_legacyConfigurationType;
 @property(readonly, nonatomic) NSURL *pu_targetAssetDirectory;
 @property(readonly, nonatomic) NSURL *pu_sourceAssetDirectory;

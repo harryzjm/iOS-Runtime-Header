@@ -28,7 +28,7 @@ __attribute__((visibility("hidden")))
 - (void)_handleAudioControlUpdated:(id)arg1;
 - (void)updateMuted:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateVolume:(float)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (_Bool)_mergeWithNewObject:(id)arg1;
+- (_Bool)mergeFromNewObject:(id)arg1;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 - (id)messageDestination;
 @property(readonly, nonatomic) NSUUID *messageTargetUUID;

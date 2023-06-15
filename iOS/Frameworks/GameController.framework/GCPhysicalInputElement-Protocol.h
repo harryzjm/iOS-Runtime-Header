@@ -9,8 +9,8 @@
 @class NSSet, NSString;
 
 @protocol GCPhysicalInputElement <NSObject>
-@property(nonatomic, readonly) NSSet *aliases;
-@property(nonatomic, readonly) NSString *localizedName;
-@property(nonatomic, readonly) NSString *sfSymbolsName;
+@property(readonly, copy) NSString *sfSymbolsName;
+@property(readonly, copy) NSString *localizedName;
+@property(readonly, copy) NSSet *aliases;
 @end
 

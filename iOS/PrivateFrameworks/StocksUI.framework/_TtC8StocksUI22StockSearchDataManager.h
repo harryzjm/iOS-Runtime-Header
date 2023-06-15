@@ -18,6 +18,7 @@
     MISSING_TYPE *nextVersion;
     MISSING_TYPE *latestReturnedResultsVersion;
     MISSING_TYPE *watchlist;
+    MISSING_TYPE *cancellables;
 }
 
 @end

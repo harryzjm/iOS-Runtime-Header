@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *appConfigurationManager;
     MISSING_TYPE *contentContext;
+    MISSING_TYPE *resourceService;
 }
 
 @end

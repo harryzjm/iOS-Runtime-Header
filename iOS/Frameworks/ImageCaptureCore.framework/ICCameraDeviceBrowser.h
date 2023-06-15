@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_suspensionTimerQueue;
     id _ptpDevManager;
     id _msDevManager;
-    id _rsDevManager;
+    id _pxDevManager;
 }
 
 + (_Bool)exists;
@@ -33,7 +33,7 @@ __attribute__((visibility("hidden")))
 - (void)stop:(id)arg1;
 - (void)notifySuspension:(unsigned long long)arg1;
 - (void)start:(id)arg1;
-- (_Bool)startRSCameraBrowser;
+- (_Bool)startPXCameraBrowser;
 - (_Bool)startMSCameraBrowser;
 - (_Bool)startPTPCameraBrowser;
 - (void)removeBrowser:(id)arg1;

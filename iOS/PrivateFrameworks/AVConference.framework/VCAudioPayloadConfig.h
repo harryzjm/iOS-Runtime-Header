@@ -28,11 +28,13 @@ __attribute__((visibility("hidden")))
     _Bool _isDTXEnabled;
     unsigned int _evsSIDPeriod;
     unsigned short _evsChannelAwareOffset;
+    unsigned short _evsChannelAwareIndicator;
     _Bool _evsHeaderFullOnly;
     _Bool _payloadOctetAligned;
     _Bool _isOpusInBandFecEnabled;
 }
 
+@property(readonly, nonatomic) unsigned short evsChannelAwareIndicator; // @synthesize evsChannelAwareIndicator=_evsChannelAwareIndicator;
 @property(readonly, nonatomic) _Bool isOpusInBandFecEnabled; // @synthesize isOpusInBandFecEnabled=_isOpusInBandFecEnabled;
 @property(readonly, nonatomic) _Bool evsHeaderFullOnly; // @synthesize evsHeaderFullOnly=_evsHeaderFullOnly;
 @property(readonly, nonatomic) unsigned short evsChannelAwareOffset; // @synthesize evsChannelAwareOffset=_evsChannelAwareOffset;
@@ -58,6 +60,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)initWithConfigDict:(id)arg1;
 - (void)setupEncodeProperties:(id)arg1;
+- (void)createSupportedBitratesForANETEC;
 - (void)createSupportedBitratesForEVS;
 - (void)createSupportedBitratesForAMR16k;
 - (void)createSupportedBitratesForAMR8k;
@@ -65,6 +68,7 @@ __attribute__((visibility("hidden")))
 - (void)createSupportedBitratesForAACELD48;
 - (void)createSupportedBitratesForAACELD;
 - (void)createSupportedBitrates;
+- (unsigned int)anetecBitrate;
 - (unsigned int)aacBitrate;
 - (void)setUseSBR:(_Bool)arg1;
 - (_Bool)configure:(id)arg1;

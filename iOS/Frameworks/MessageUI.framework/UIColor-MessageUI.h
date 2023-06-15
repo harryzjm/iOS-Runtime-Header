@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIColor.h>
+#import <UIKitCore/UIColor.h>
 
 @interface UIColor (MessageUI)
 + (id)mailPopoverBackgroundCellColor;
@@ -18,6 +18,7 @@
 + (id)mailQuoteColorLevelTwoCorona;
 + (id)mailQuoteColorLevelOneCorona;
 + (id)mailComposeHeaderBackgroundColor;
++ (id)mailQuickComposeBackgroundColor;
 + (id)mailGeneralBackgroundColor;
 + (id)mailSecureMIMEWarningColor;
 + (id)mailSecureMIMERegularTextColor;
@@ -29,6 +30,7 @@
 + (id)mailModernLabelledAddressAtomDefaultTextColor;
 + (id)mailModernLabelledAtomDefaultTextColor;
 + (id)mailAutoCompleteTableViewCellBackgroundColorForPopoverDisplay;
++ (id)mailComposeTextViewBackgroundColor;
 + (id)mailComposeFormatButtonSelectedBackgroundColor;
 + (id)mailStyleSheetBackground;
 + (id)mailInteractiveColor;

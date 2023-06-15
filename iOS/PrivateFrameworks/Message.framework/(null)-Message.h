@@ -6,6 +6,7 @@
 
 @interface (null) (Message)
 - (void)accountDidChange:(id)arg1;
+- (void)closeAllConnections;
 - (void)stopBackFillingMessageBodyDownload;
 - (void)startBackFillingMessageBodyDownloadWithRequest:(id)arg1;
 - (void)fetchNow:(int)arg1 withMailboxes:(id)arg2 completion:(CDUnknownBlockType)arg3;

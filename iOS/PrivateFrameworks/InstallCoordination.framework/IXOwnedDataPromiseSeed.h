@@ -4,16 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSURL;
+@class NSString, NSURL;
 
 __attribute__((visibility("hidden")))
 @interface IXOwnedDataPromiseSeed
 {
     NSURL *_stagingBaseDir;
+    NSString *_sandboxExtensionToken;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *sandboxExtensionToken; // @synthesize sandboxExtensionToken=_sandboxExtensionToken;
 @property(retain, nonatomic) NSURL *stagingBaseDir; // @synthesize stagingBaseDir=_stagingBaseDir;
 - (Class)clientPromiseClass;
 - (id)copyWithZone:(struct _NSZone *)arg1;

@@ -15,15 +15,14 @@ __attribute__((visibility("hidden")))
     _SFSearchEngineInfo *engineInfo;
 }
 
-+ (id)searchQueryBuilderWithXWebSearchURL:(id)arg1;
-+ (id)searchQueryBuilderWithQuery:(id)arg1;
++ (id)searchQueryBuilderWithXWebSearchURL:(id)arg1 forPrivateBrowsing:(_Bool)arg2;
++ (id)searchQueryBuilderWithQuery:(id)arg1 forPrivateBrowsing:(_Bool)arg2;
 - (void).cxx_destruct;
 - (id)searchEngineInfo;
-- (_Bool)searchEngineIsDefault;
 - (id)queryString;
 - (id)searchURL;
-- (id)initWithXWebSearchURL:(id)arg1;
-- (id)initWithQueryString:(id)arg1;
+- (id)initWithXWebSearchURL:(id)arg1 forPrivateBrowsing:(_Bool)arg2;
+- (id)initWithQueryString:(id)arg1 forPrivateBrowsing:(_Bool)arg2;
 - (id)initWithSearchEngineInfo:(id)arg1 queryString:(id)arg2;
 
 @end

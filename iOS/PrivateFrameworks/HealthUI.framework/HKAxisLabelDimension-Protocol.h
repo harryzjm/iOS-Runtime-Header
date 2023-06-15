@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSNumber, NSString;
+@class NSNumber, NSNumberFormatter, NSString;
 
 @protocol HKAxisLabelDimension
-- (NSString *)stringForLocation:(NSNumber *)arg1;
+- (NSString *)stringForLocation:(NSNumber *)arg1 formatterForStepSize:(NSNumberFormatter *)arg2;
 - (NSNumber *)endingLabelsFactorOverride;
-- (void)setStepSizeForLabels:(double)arg1;
+- (NSNumberFormatter *)formatterForLabelStepSize:(double)arg1;
 - (double)ticksPerStepSize:(double)arg1;
 - (double)niceStepSizeLargerThan:(double)arg1;
 @end

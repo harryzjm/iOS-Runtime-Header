@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 + (id)assetCacheForProgressiveDownloadWithURL:(id)arg1;
 + (id)assetCacheForHTTPLiveStreamingWithURL:(id)arg1;
 + (id)assetCacheWithURL:(id)arg1;
+- (_Bool)isDefunct;
 - (_Bool)isHTTPLiveStreamingCacheEnabled;
 - (_Bool)isProgressiveDownloadCacheEnabled;
 - (_Bool)isPlayableOffline;
@@ -27,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (long long)sizeOfEntryForKey:(id)arg1;
 - (void)removeEntryForKey:(id)arg1;
 - (id)URL;
+- (void)enableAutomaticCacheSizeManagement;
 - (long long)currentSize;
 - (void)setMaxEntrySize:(long long)arg1;
 - (long long)maxEntrySize;

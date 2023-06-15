@@ -24,9 +24,10 @@
 @property(readonly, nonatomic) NSString *username; // @synthesize username=_username;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)description;
 - (void)applyAuthenticationHeadersToRequest:(id)arg1;
-@property(readonly, nonatomic) NSDictionary *authenticationHeaders;
 - (id)authenticationHeadersForRequest:(id)arg1;
+@property(readonly, nonatomic) NSDictionary *authenticationHeaders;
 - (id)_manuallyProvidedAuthenticationHeaders;
 @property(readonly, nonatomic) AKAppleIDSession *appleIDSession;
 - (_Bool)isEqual:(id)arg1;
@@ -34,6 +35,8 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithURLCredential:(id)arg1 username:(id)arg2;
 - (id)initWithURLCredential:(id)arg1;
+@property(nonatomic, readonly) NSString *alternateDSID;
+@property(nonatomic, readonly) NSString *gsToken;
 
 @end
 

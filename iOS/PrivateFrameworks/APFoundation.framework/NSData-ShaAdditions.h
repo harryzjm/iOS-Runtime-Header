@@ -7,10 +7,19 @@
 #import <Foundation/NSData.h>
 
 @interface NSData (ShaAdditions)
++ (id)randomWithBytes:(unsigned long long)arg1;
 - (id)asHexString;
+- (id)sha256;
 - (id)sha1;
 - (id)jsonRepresentationWithOptions:(unsigned long long)arg1;
+- (_Bool)compareDataSizeHelper:(struct z_stream_s)arg1 data:(id)arg2;
+- (int)inflateHelper:(struct z_stream_s *)arg1;
+- (int)inflateEndHelper:(struct z_stream_s *)arg1;
+- (int)inflateInit2Helper:(struct z_stream_s *)arg1;
+- (int)deflateInit2Helper:(struct z_stream_s *)arg1 compressionLevel:(int)arg2;
 - (id)gunzip;
 - (id)gzip:(long long)arg1;
+- (id)base64FilenameSafeEncoded;
+- (id)initWithRandomOfLength:(unsigned long long)arg1;
 @end
 

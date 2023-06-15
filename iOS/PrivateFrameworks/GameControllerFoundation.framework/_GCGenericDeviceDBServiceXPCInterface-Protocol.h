@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class GCHIDDeviceSnapshot, GCHIDUserDeviceSnapshot;
+@class GCHIDDeviceSnapshot;
 
 @protocol _GCGenericDeviceDBServiceXPCInterface
-- (void)preparedModelForDevice:(GCHIDUserDeviceSnapshot *)arg1 reply:(void (^)(GCGenericDeviceModel *, NSError *))arg2;
+- (void)preparedModelForDevice:(GCHIDDeviceSnapshot *)arg1 reply:(void (^)(GCGenericDeviceModel *, NSError *))arg2;
 - (void)hasModelForDevice:(GCHIDDeviceSnapshot *)arg1 reply:(void (^)(_Bool, NSError *))arg2;
 @end
 

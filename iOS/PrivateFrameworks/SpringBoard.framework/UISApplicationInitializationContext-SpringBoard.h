@@ -7,6 +7,7 @@
 #import <UIKitServices/UISApplicationInitializationContext.h>
 
 @interface UISApplicationInitializationContext (SpringBoard)
++ (id)sb_embeddedDisplayDefaultContextForSystemUIScenes;
 + (id)sb_embeddedDisplayDefaultContext;
 @end
 

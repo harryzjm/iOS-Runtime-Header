@@ -7,6 +7,7 @@
 @class PKPaymentPreferenceSectionController;
 
 @protocol PKPaymentPreferenceSectionControllerDelegate
+- (void)presentHideMyEmailAlertController;
 - (void)setEditing:(_Bool)arg1 animated:(_Bool)arg2 forSectionController:(PKPaymentPreferenceSectionController *)arg3;
 - (_Bool)collectionViewIsEditingForSectionController:(PKPaymentPreferenceSectionController *)arg1;
 @end

@@ -17,8 +17,8 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (unsigned long long)writeToData:(id)arg1;
 - (id)modelSubmesh;
-- (id)_initWithCSIHeader:(const struct _csiheader *)arg1;
-- (id)initWithCSIData:(id)arg1 forKey:(const struct _renditionkeytoken *)arg2;
+- (id)_initWithCSIHeader:(const struct _csiheader *)arg1 version:(unsigned int)arg2;
+- (id)initWithCSIData:(id)arg1 forKey:(const struct _renditionkeytoken *)arg2 version:(unsigned int)arg3;
 - (id)initForArchiving:(id)arg1;
 
 @end

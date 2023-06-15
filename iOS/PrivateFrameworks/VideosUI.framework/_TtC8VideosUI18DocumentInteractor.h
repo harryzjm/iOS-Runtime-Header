@@ -14,22 +14,21 @@
     MISSING_TYPE *document;
     MISSING_TYPE *documentId;
     MISSING_TYPE *viewWillAppearAfterTabSwitch;
-    MISSING_TYPE *inAppBannerNotificationPending;
     MISSING_TYPE *paginator;
     MISSING_TYPE *pagePerformanceReporter;
     MISSING_TYPE *_documentViewIsVisible;
     MISSING_TYPE *documentType;
     MISSING_TYPE *initialControllerRef;
     MISSING_TYPE *initialRequestSent;
-    MISSING_TYPE *inAppBannerAllowed;
-    MISSING_TYPE *activeServiceRequest;
-    MISSING_TYPE *activeFragmentServiceRequest;
     MISSING_TYPE *eventMonitorController;
     MISSING_TYPE *supportsAnimatedStateTransitions;
     MISSING_TYPE *performsUpdatesInBackground;
     MISSING_TYPE *paginationSubscriber;
     MISSING_TYPE *hasPendingViewUpdates;
     MISSING_TYPE *initialRequestContext;
+    MISSING_TYPE *activeServiceRequest;
+    MISSING_TYPE *activeFragmentServiceRequest;
+    MISSING_TYPE *pageMetrics;
 }
 
 @end

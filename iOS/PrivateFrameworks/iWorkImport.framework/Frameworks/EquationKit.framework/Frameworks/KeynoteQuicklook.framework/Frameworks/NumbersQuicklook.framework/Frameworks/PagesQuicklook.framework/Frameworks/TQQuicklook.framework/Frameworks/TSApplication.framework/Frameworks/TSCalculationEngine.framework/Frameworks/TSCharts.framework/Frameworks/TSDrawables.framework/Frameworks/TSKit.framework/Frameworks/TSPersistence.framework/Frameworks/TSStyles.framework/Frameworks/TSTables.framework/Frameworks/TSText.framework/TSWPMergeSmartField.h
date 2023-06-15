@@ -28,6 +28,7 @@
 - (void)willBeAddedToDocumentRoot:(id)arg1 dolcContext:(id)arg2;
 - (id)scriptTag;
 - (unsigned short)smartFieldKind;
+- (_Bool)allowsReplacing;
 - (_Bool)allowsPasteAsSmartField;
 - (id)copyWithContext:(id)arg1;
 - (void)saveToArchiver:(id)arg1;

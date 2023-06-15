@@ -34,6 +34,7 @@
     _Bool mWasFastForwardingBeforeChangeToZeroRate;
     NSMutableSet *mObservationTokens;
     _Bool mDidNotifyDelegateOfPlaybackError;
+    CDStruct_1b6d18a9 mTimeAtPlaybackReversal;
     _Bool mPlaying;
     _Bool mFastReversing;
     _Bool mFastForwarding;

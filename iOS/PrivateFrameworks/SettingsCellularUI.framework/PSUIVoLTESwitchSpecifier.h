@@ -13,7 +13,6 @@ __attribute__((visibility("hidden")))
 {
     CTXPCServiceSubscriptionContext *_subscriptionContext;
     PSListController *_listController;
-    PSConfirmationSpecifier *_unsupportedCarrierWarning;
     PSConfirmationSpecifier *_phoneCallWillEndWarning;
     PSUICoreTelephonyCallCache *_callCache;
     PSUICoreTelephonyCapabilitiesCache *_capabilitiesCache;
@@ -31,14 +30,11 @@ __attribute__((visibility("hidden")))
 - (void)showCallCarrierAlert;
 - (void)reloadSelfInListController;
 - (void)setVoLTEOff;
-- (void)setVoLTEOn;
-- (void)setUpVoLTEWarningSpecifier;
-- (void)showVoLTECanCauseIssuesWarning;
 - (void)setVoLTEEnabled:(_Bool)arg1;
 - (void)setUpPhoneCallWillEndWarningSpecifier;
 - (void)showPhoneCallWillEndWarning;
 - (_Bool)shouldShowCallWillEndWarning;
-- (_Bool)shouldShowVoLTECanCauseIssuesWarning;
+- (_Bool)shouldShowVoLTEUnsupportedWarning;
 - (_Bool)shouldShowCallCarrierAlert;
 - (_Bool)showDisableVoLTEWarningsIfNeeded;
 - (_Bool)showEnableVoLTEWarningsIfNeeded;

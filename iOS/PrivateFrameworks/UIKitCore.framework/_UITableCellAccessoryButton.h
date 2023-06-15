@@ -12,17 +12,20 @@ __attribute__((visibility("hidden")))
 @interface _UITableCellAccessoryButton : UIButton
 {
     UIColor *_accessoryTintColor;
+    long long _accessoryType;
     CDUnknownBlockType _backgroundImageProvider;
 }
 
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType backgroundImageProvider; // @synthesize backgroundImageProvider=_backgroundImageProvider;
+@property(readonly, nonatomic) long long accessoryType; // @synthesize accessoryType=_accessoryType;
 @property(retain, nonatomic) UIColor *accessoryTintColor; // @synthesize accessoryTintColor=_accessoryTintColor;
+- (id)_backgroundImageView;
 - (id)viewForLastBaselineLayout;
 - (id)viewForFirstBaselineLayout;
 - (void)_dynamicUserInterfaceTraitDidChange;
 - (void)_reloadBackgroundImage;
-- (id)initWithFrame:(struct CGRect)arg1 backgroundImageProvider:(CDUnknownBlockType)arg2;
+- (id)initWithFrame:(struct CGRect)arg1 backgroundImageProvider:(CDUnknownBlockType)arg2 accessoryType:(long long)arg3;
 
 @end
 

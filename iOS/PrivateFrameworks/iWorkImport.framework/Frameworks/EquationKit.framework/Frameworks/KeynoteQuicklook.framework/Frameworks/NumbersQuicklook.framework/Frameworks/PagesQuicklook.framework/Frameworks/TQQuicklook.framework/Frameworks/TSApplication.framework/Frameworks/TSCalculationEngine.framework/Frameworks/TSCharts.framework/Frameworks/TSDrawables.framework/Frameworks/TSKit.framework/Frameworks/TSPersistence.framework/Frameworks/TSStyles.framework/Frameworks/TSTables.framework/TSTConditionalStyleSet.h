@@ -28,7 +28,7 @@
 - (id)precedentsWithCalcEngine:(id)arg1 hostOwnerUID:(const struct TSKUIDStruct *)arg2 hostCellID:(const struct TSUCellCoord *)arg3;
 - (_Bool)hasBadRefWithUidInfo;
 - (_Bool)containsUidReferences;
-- (id)copyByRepairingBadReferences:(struct TSCEFormulaRewriteContext *)arg1;
+- (id)copyByRepairingBadReferences:(struct TSCEFormulaRewriteContext *)arg1 clearUidHistory:(_Bool)arg2;
 - (id)copyToGeometricFormWithRewriteContext:(struct TSCEFormulaRewriteContext *)arg1;
 - (id)copyToUidFormForTableInfo:(id)arg1 inCellCoordinate:(struct TSUCellCoord)arg2 preserveHostCell:(_Bool)arg3;
 - (id)copyToUidFormForTableInfo:(id)arg1 inCellCoordinate:(struct TSUCellCoord)arg2;
@@ -43,8 +43,8 @@
 - (id)copyByUpgradingToLinkedRefAtHostCellRef:(const struct TSCECellRef *)arg1;
 - (id)copyByOffsettingRelativeReferencesWithOffset:(struct TSUColumnRowOffset)arg1;
 - (id)copyByRewritingWithSpec:(id)arg1 inOwner:(id)arg2 inCellCoordinate:(struct TSUCellCoord)arg3;
-- (id)copyByRemappingHostCellAgnosticOwnerUIDsWithMap:(const void *)arg1 calcEngine:(id)arg2 ownerUID:(const struct TSKUIDStruct *)arg3 error:(_Bool *)arg4;
-- (id)copyByRemappingOwnerUIDsWithMap:(const void *)arg1 calcEngine:(id)arg2 error:(_Bool *)arg3;
+- (id)copyByRemappingHostCellAgnosticOwnerUIDsWithMap:(const void *)arg1 rewriteContext:(struct TSCEFormulaRewriteContext *)arg2 error:(_Bool *)arg3;
+- (id)copyByRemappingOwnerUIDsWithMap:(const void *)arg1 rewriteContext:(struct TSCEFormulaRewriteContext *)arg2 error:(_Bool *)arg3;
 - (id)copyWithContext:(id)arg1;
 - (id)initWithContext:(id)arg1 rules:(id)arg2;
 - (id)initWithConditionalStyleSet:(id)arg1;

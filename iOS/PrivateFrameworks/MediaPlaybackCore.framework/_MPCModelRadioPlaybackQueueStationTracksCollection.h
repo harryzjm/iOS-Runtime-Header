@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class ICMutableRadioPlaybackHistory, MPCModelGenericAVItemUserIdentityPropertySet, MPCPlaybackRequestEnvironment, MPPropertySet, MPSectionedCollection, NSHashTable;
+@class MPCModelGenericAVItemUserIdentityPropertySet, MPCPlaybackRequestEnvironment, MPPropertySet, MPSectionedCollection, NSHashTable;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -15,8 +15,8 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_accessQueue;
     NSHashTable *_activeModelGenericAVItems;
     _Bool _isSiriInitiated;
+    _Bool _prioritizeStartupOverQuality;
     MPPropertySet *_itemProperties;
-    ICMutableRadioPlaybackHistory *_playbackHistory;
     MPCPlaybackRequestEnvironment *_playbackRequestEnvironment;
     MPSectionedCollection *_trackModels;
     MPSectionedCollection *_tracks;
@@ -34,7 +34,6 @@ __attribute__((visibility("hidden")))
 - (_Bool)isExplicitItemAtIndex:(long long)arg1;
 - (id)AVItemAtIndex:(long long)arg1;
 - (void)updateWithPersonalizedResponse:(id)arg1;
-@property(readonly, nonatomic) ICMutableRadioPlaybackHistory *playbackHistory;
 - (id)initWithPlaybackContext:(id)arg1;
 
 @end

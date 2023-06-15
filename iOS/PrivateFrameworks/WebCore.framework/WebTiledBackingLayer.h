@@ -20,8 +20,6 @@ __attribute__((visibility("hidden")))
 - (struct TiledBacking *)tiledBacking;
 - (double)contentsScale;
 - (void)setContentsScale:(double)arg1;
-- (_Bool)supportsSubpixelAntialiasedText;
-- (void)setSupportsSubpixelAntialiasedText:(_Bool)arg1;
 - (_Bool)wantsDeepColorBackingStore;
 - (void)setWantsDeepColorBackingStore:(_Bool)arg1;
 - (_Bool)drawsAsynchronously;

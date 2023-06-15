@@ -45,7 +45,7 @@
 - (id)cacheableGetBoundsPipeline;
 - (void)resetSceneDelegate;
 - (id)init;
-- (id)initWithScene:(id)arg1 containingViewport:(const void *)arg2 originalContainingViewport:(const void *)arg3 layoutSettings:(const CDStruct_c48db077 *)arg4;
+- (id)initWithScene:(id)arg1 containingViewport:(void *)arg2 originalContainingViewport:(void *)arg3 layoutSettings:(const CDStruct_c48db077 *)arg4;
 
 @end
 

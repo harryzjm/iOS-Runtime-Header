@@ -7,8 +7,13 @@
 #import <Foundation/NSMutableArray.h>
 
 @interface NSMutableArray (VK)
+- (void)vk_swapItemAtIndex:(long long)arg1 withItemAtIndex:(long long)arg2;
 - (void)vk_insertNonNilObject:(id)arg1 atIndex:(long long)arg2;
 - (void)vk_addObjectsFromNonNilArray:(id)arg1;
+- (void)vk_randomize;
 - (void)vk_addNonNilObject:(id)arg1;
+- (void)vk_push:(id)arg1;
+- (id)vk_pop;
+- (id)vk_peek;
 @end
 

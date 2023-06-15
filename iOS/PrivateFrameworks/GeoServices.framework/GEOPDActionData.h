@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     NSString *_actionSymbolImageName;
     NSMutableArray *_actionTitles;
     NSString *_categoryId;
+    NSString *_ownerAdamId;
     NSString *_winningAdamId;
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
@@ -27,6 +28,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_actionSymbolImageName:1;
         unsigned int read_actionTitles:1;
         unsigned int read_categoryId:1;
+        unsigned int read_ownerAdamId:1;
         unsigned int read_winningAdamId:1;
         unsigned int wrote_anyField:1;
     } _flags;

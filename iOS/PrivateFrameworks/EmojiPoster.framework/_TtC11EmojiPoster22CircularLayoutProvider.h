@@ -10,9 +10,8 @@
 
 @interface _TtC11EmojiPoster22CircularLayoutProvider : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *deviceType;
     MISSING_TYPE *screenSize;
-    MISSING_TYPE *templateDeviceWidth;
-    MISSING_TYPE *templateScreenScale;
 }
 
 @end

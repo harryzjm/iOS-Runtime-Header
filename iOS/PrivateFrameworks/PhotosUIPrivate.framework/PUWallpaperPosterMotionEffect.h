@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIMotionEffectGroup.h>
+#import <UIKitCore/UIMotionEffectGroup.h>
 
 __attribute__((visibility("hidden")))
 @interface PUWallpaperPosterMotionEffect : UIMotionEffectGroup

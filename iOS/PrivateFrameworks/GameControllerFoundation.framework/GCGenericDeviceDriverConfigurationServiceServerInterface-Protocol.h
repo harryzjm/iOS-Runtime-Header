@@ -8,6 +8,6 @@
 
 @protocol GCGenericDeviceDriverConfigurationServiceServerInterface
 - (void)applyConfiguration:(GCGenericDeviceDriverModel *)arg1 withReply:(void (^)(_Bool, NSError *))arg2;
-- (void)fetchDeviceSnapshotWithReply:(void (^)(GCHIDUserDeviceSnapshot *))arg1;
+- (void)fetchDeviceSnapshotWithReply:(void (^)(GCHIDDeviceSnapshot *))arg1;
 @end
 

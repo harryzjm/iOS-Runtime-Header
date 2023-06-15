@@ -4,16 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableArray, NSString, VCPTransforms, VCPVideoCNNAutoplay, VCPVideoCNNBackbone, VCPVideoCNNCameraMotion, VCPVideoCNNHighlight, VCPVideoCNNQuality, VCPVideoPersonDetector;
+@class NSMutableArray, NSString, VCPTransforms, VCPVideoCNNAutoplay, VCPVideoCNNBackbone, VCPVideoCNNCameraMotion, VCPVideoCNNHighlight, VCPVideoCNNQuality, VCPVideoCaptionEncoder, VCPVideoEmbeddings, VCPVideoPersonDetector;
 
 __attribute__((visibility("hidden")))
 @interface VCPVideoCNNAnalyzer
 {
     VCPVideoCNNBackbone *_backbone;
+    VCPVideoCaptionEncoder *_videoLanguageBackbone;
     VCPTransforms *_transformImage;
     NSMutableArray *_tasks;
     NSMutableArray *_postTasks;
     NSMutableArray *_privateTasks;
+    VCPVideoEmbeddings *_videoEmbeddings;
     float *_inputData;
     int _inputWidth;
     int _inputHeight;
@@ -47,7 +49,7 @@ __attribute__((visibility("hidden")))
 - (int)copyImage:(struct __CVBuffer *)arg1 withChannels:(int)arg2;
 - (int)configForAspectRatio:(float)arg1;
 - (void)dealloc;
-- (id)initWithTimeOfInteret:(id)arg1 frameRate:(float)arg2 isLivePhoto:(_Bool)arg3 phFaces:(id)arg4 timeRange:(CDStruct_e83c9415)arg5 requestedAnalyses:(unsigned long long)arg6;
+- (id)initWithTimeOfInteret:(id)arg1 frameRate:(float)arg2 isLivePhoto:(_Bool)arg3 phFaces:(id)arg4 timeRange:(CDStruct_e83c9415)arg5 withEmbeddings:(id)arg6 requestedAnalyses:(unsigned long long)arg7;
 
 @end
 

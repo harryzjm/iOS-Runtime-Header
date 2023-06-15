@@ -24,15 +24,18 @@
 - (void)setDeviceMotion:(long long)arg1;
 - (void)setUserInitiatedWakeDetected:(_Bool)arg1;
 - (void)setLiftToWakeDetected:(_Bool)arg1;
+- (void)setIsInPocket:(_Bool)arg1;
 - (void)setIsDeviceScreenON:(_Bool)arg1;
 - (void)setModeOverrideValue:(NSString *)arg1;
 - (void)setUserTypedInSiri:(_Bool)arg1;
 - (void)setIsMediaPlaying:(_Bool)arg1;
+- (void)setIsFlexibleFollowup:(_Bool)arg1;
 - (void)setIsSiriAutoPrompt:(_Bool)arg1;
 - (void)setIsRequestMadeWithPhysicalDeviceInteraction:(_Bool)arg1;
 - (void)setIsConnectedToCarPlay:(_Bool)arg1;
 - (void)setIsVoiceTriggerRequest:(_Bool)arg1;
 - (void)setIsMapsNavigationActive:(_Bool)arg1;
+- (void)setIsInAmbient:(_Bool)arg1;
 - (void)setIsForCarDND:(_Bool)arg1;
 - (void)setIsUIFree:(_Bool)arg1;
 - (void)setIsEyesFree:(_Bool)arg1;

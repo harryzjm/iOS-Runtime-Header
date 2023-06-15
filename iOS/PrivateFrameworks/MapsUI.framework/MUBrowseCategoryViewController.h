@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
-@class MKMapItem, MUBrowseCategoryCollectionView, MUFixedToTopCollectionViewFlowLayout, NSArray, NSLayoutConstraint, NSString, UIColor, UIFont;
+@class MKMapItem, MUBrowseCategoryCollectionView, MUFixedToTopCollectionViewFlowLayout, NSArray, NSLayoutConstraint, NSString, UIFont;
 @protocol MUBrowseCategoryViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -19,14 +19,12 @@ __attribute__((visibility("hidden")))
     MUFixedToTopCollectionViewFlowLayout *_collectionViewFlowLayout;
     NSLayoutConstraint *_collectionViewBottomConstraint;
     UIFont *_preferredCellTitleLabelFont;
-    UIColor *_cellTitleLabelTextColor;
     MKMapItem *_mapItem;
     struct CGSize _preferredCellSize;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) MKMapItem *mapItem; // @synthesize mapItem=_mapItem;
-@property(retain, nonatomic) UIColor *cellTitleLabelTextColor; // @synthesize cellTitleLabelTextColor=_cellTitleLabelTextColor;
 @property(retain, nonatomic) UIFont *preferredCellTitleLabelFont; // @synthesize preferredCellTitleLabelFont=_preferredCellTitleLabelFont;
 @property(nonatomic) struct CGSize preferredCellSize; // @synthesize preferredCellSize=_preferredCellSize;
 @property(retain, nonatomic) NSLayoutConstraint *collectionViewBottomConstraint; // @synthesize collectionViewBottomConstraint=_collectionViewBottomConstraint;
@@ -41,10 +39,8 @@ __attribute__((visibility("hidden")))
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
-- (void)traitCollectionDidChange:(id)arg1;
 @property(readonly, nonatomic) NSArray *buttons;
 - (int)placeCardTypeForAnalytics;
-- (void)updateCellTitleLabelTextColor;
 - (void)contentSizeCategoryDidChange:(id)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewWillLayoutSubviews;

@@ -9,7 +9,12 @@
 __attribute__((visibility("hidden")))
 @interface BLSHEnvironmentOperation : NSObject
 {
+    long long _backlightState;
 }
+
+@property(readonly, nonatomic) long long backlightState; // @synthesize backlightState=_backlightState;
+- (id)description;
+- (id)initWithBacklightState:(long long)arg1;
 
 @end
 

@@ -9,6 +9,7 @@
 @class HKGraphSeries, HKGraphView, HKValueRange, NSArray, UIColor;
 
 @protocol HKGraphViewDelegate <NSObject>
+- (void)graphViewRenderedView:(HKGraphView *)arg1;
 - (void)graphViewExternalSelectionEnd:(HKGraphView *)arg1;
 - (void)graphViewDidTapYAxis:(HKGraphView *)arg1;
 - (void)graphView:(HKGraphView *)arg1 didUpdateLegendViewsWithTopLegendFrame:(struct CGRect)arg2;
@@ -27,6 +28,8 @@
 - (_Bool)graphViewPointSelectionDifferentiatesSeriesGroups:(HKGraphView *)arg1;
 
 @optional
+- (NSArray *)stackedSeriesGroupProportionsForGraphView:(HKGraphView *)arg1;
+- (long long)primarySeriesGroupIndexForGraphView:(HKGraphView *)arg1;
 - (long long)defaultAlignmentForTimeScope:(long long)arg1;
 - (void)graphView:(HKGraphView *)arg1 startupTime:(long long)arg2;
 @end

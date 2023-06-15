@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 @class NSCalendar, NSDate, NSDateComponents;
 
 __attribute__((visibility("hidden")))
-@interface _UIDatePickerCalendarDateComponent : NSObject <NSCopying>
+@interface _UIDatePickerCalendarDateComponent : NSObject
 {
     NSDateComponents *_components;
     NSDate *_date;

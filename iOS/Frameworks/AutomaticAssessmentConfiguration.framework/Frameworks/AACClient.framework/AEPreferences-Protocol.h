@@ -7,35 +7,21 @@
 #import <AACClient/NSObject-Protocol.h>
 
 @protocol AEPreferences <NSObject>
-@property(nonatomic) _Bool disableQuickNote;
-- (_Bool)shouldDisableQuickNote;
-@property(nonatomic) _Bool disableDictation;
-- (_Bool)shouldDisableDictation;
-@property(nonatomic) _Bool elevateWindows;
-- (_Bool)shouldElevateWindows;
-@property(nonatomic) _Bool captureDisplays;
-- (_Bool)shouldCaptureDisplays;
-@property(nonatomic) _Bool disableTrackpadLookup;
-- (_Bool)shouldDisableTrackpadLookup;
-@property(nonatomic) _Bool restrictContentCapture;
-- (_Bool)shouldRestrictContentCapture;
-@property(nonatomic) _Bool pauseMedia;
-- (_Bool)shouldPauseMedia;
-@property(nonatomic) _Bool restrictFrontmostApp;
-- (_Bool)shouldRestrictFrontmostApp;
-@property(nonatomic) _Bool stopAirPlayBeforehand;
-- (_Bool)shouldStopAirplayBeforehand;
-@property(nonatomic) _Bool restrictNetworkAccess;
-- (_Bool)shouldRestrictNetworkAccess;
-@property(nonatomic) _Bool scrubPasteboard;
-- (_Bool)shouldScrubPasteboard;
-@property(nonatomic) _Bool disableContinuity;
-- (_Bool)shouldDisableContinuity;
-@property(nonatomic) _Bool disableSiri;
-- (_Bool)shouldDisableSiri;
-@property(nonatomic) _Bool presentShields;
-- (_Bool)shouldPresentShields;
-@property(nonatomic) _Bool enterSandbox;
-- (_Bool)shouldEnterSandbox;
+@property(nonatomic, getter=shouldRestrictMedia) _Bool restrictMedia;
+@property(nonatomic, getter=shouldDisableQuickNote) _Bool disableQuickNote;
+@property(nonatomic, getter=shouldDisableDictation) _Bool disableDictation;
+@property(nonatomic, getter=shouldElevateWindows) _Bool elevateWindows;
+@property(nonatomic, getter=shouldCaptureDisplays) _Bool captureDisplays;
+@property(nonatomic, getter=shouldDisableTrackpadLookup) _Bool disableTrackpadLookup;
+@property(nonatomic, getter=shouldRestrictContentCapture) _Bool restrictContentCapture;
+@property(nonatomic, getter=shouldRestrictFrontmostApp) _Bool restrictFrontmostApp;
+@property(nonatomic, getter=shouldStopAirplayBeforehand) _Bool stopAirPlayBeforehand;
+@property(nonatomic, getter=shouldRestrictNetworkAccess) _Bool restrictNetworkAccess;
+@property(nonatomic, getter=shouldScrubPasteboard) _Bool scrubPasteboard;
+@property(nonatomic, getter=shouldDisableContinuity) _Bool disableContinuity;
+@property(nonatomic, getter=shouldDisableSiri) _Bool disableSiri;
+@property(nonatomic, getter=shouldPresentShields) _Bool presentShields;
+@property(nonatomic, getter=shouldEnterSandbox) _Bool enterSandbox;
+@property(nonatomic, getter=isPortalDemoModeActive) _Bool portalDemoModeActive;
 @end
 

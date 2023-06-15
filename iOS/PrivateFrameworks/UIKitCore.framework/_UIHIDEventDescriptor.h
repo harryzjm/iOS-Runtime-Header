@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface _UIHIDEventDescriptor : NSObject <NSCopying>
+@interface _UIHIDEventDescriptor : NSObject
 {
     unsigned int _eventType;
     unsigned long long _senderID;

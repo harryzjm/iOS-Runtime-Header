@@ -6,9 +6,11 @@
 
 #import <HomeKit/NSObject-Protocol.h>
 
-@class NSUUID;
+@class NSString, NSUUID;
 
 @protocol HMAccessCodeModificationRequestValue <NSObject>
+@property(copy) NSString *guestName;
+@property(copy) NSUUID *userUUID;
 @property(readonly, copy) NSUUID *accessoryUUID;
 @end
 

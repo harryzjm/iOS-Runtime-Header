@@ -25,6 +25,8 @@
     MISSING_TYPE *_suggestionType;
     MISSING_TYPE *_detailText;
     MISSING_TYPE *_thumbnail;
+    MISSING_TYPE *_trailingMiddleText;
+    MISSING_TYPE *_trailingBottomText;
 }
 
 @end

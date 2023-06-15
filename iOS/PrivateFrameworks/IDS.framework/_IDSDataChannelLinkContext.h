@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSData, NSString, NSUUID;
+@class NSData, NSDictionary, NSString, NSUUID, _IDSDataChannelLinkConnections;
 
 @interface _IDSDataChannelLinkContext : NSObject
 {
@@ -31,15 +31,18 @@
     unsigned int _remoteDataSoMask;
     _Bool _isVirtualRelayLink;
     NSString *_localInterfaceName;
+    NSString *_relayProtocolStackDescription;
+    _IDSDataChannelLinkConnections *_connections;
+    NSDictionary *_qrExperiments;
     unsigned short _channelNumber;
     NSData *_hbhEncryptionkey;
     NSData *_hbhDecryptionkey;
-    NSUUID *_childConnectionID;
     unsigned long long _parentUniquePID;
     BOOL _delegatedLinkID;
     unsigned short _localRelayLinkID;
     unsigned short _remoteRelayLinkID;
     _Bool _directConnectionIsReady;
+    unsigned short _estimatedPerPacketConstantOverhead;
 }
 
 - (void).cxx_destruct;

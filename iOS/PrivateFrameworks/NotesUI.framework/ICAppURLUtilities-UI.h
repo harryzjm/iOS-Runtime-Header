@@ -7,8 +7,12 @@
 #import <NotesShared/ICAppURLUtilities.h>
 
 @interface ICAppURLUtilities (UI)
++ (_Bool)isShowNoteInVirtualSmartFolderURL:(id)arg1;
 + (_Bool)isShowVirtualSmartFolderURL:(id)arg1;
++ (id)notePredicateFromNoteInVirtualSmartFolderInURL:(id)arg1;
 + (id)virtualSmartFolderMentionedInURL:(id)arg1 context:(id)arg2;
 + (id)appURLForVirtualSmartFolder:(id)arg1;
++ (id)appURLForNoteIdentifier:(id)arg1 inVirtualSmartFolder:(id)arg2 actionName:(id)arg3;
++ (id)appURLForNote:(id)arg1 inVirtualSmartFolder:(id)arg2;
 @end
 

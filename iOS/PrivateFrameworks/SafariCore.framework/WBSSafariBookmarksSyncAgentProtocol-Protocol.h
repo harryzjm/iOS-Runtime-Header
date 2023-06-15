@@ -10,6 +10,7 @@
 
 @protocol WBSSafariBookmarksSyncAgentProtocol <WBSCyclerCloudBookmarksAssistant>
 - (void)fetchTabGroupEntitiesWithCompletion:(void (^)(NSArray *))arg1;
+- (void)fetchProfileEntitiesWithCompletion:(void (^)(NSArray *))arg1;
 - (void)deleteCloudExtensionStatesDatabaseWithCompletionHandler:(void (^)(void))arg1;
 - (void)deleteCloudExtensionDevicesWithUUIDStrings:(NSArray *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)getCloudExtensionStatesWithCompletionHandler:(void (^)(NSDictionary *, NSArray *, NSError *))arg1;

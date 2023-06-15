@@ -10,6 +10,9 @@
 
 @interface _TtC8RoomPlan8USDModel : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *uuidToNameDict;
+    MISSING_TYPE *internalExtension;
+    MISSING_TYPE *modelPositionAndDimensionsCache;
     MISSING_TYPE *legalCharacters;
 }
 

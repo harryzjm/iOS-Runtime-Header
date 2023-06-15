@@ -4,24 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
+#import <swiftCore/_TtCs12_SwiftObject.h>
 
-__attribute__((visibility("hidden")))
-@interface _TtC8MapsSync12MapsSyncUtil : NSObject
+@interface _TtC8MapsSync12MapsSyncUtil : _TtCs12_SwiftObject
 {
 }
-
-+ (_Bool)isMapsInstalled;
-+ (id)getApplicationIdentifier;
-+ (void)assertNotMainQueueWithDebug:(_Bool)arg1;
-+ (void)assertMainQueueWithDebug:(_Bool)arg1;
-+ (void)assertNotQueue:(id)arg1 debug:(_Bool)arg2;
-+ (void)assertQueue:(id)arg1 debug:(_Bool)arg2;
-+ (id)mapsGroupDirectory;
-+ (id)mapsUserDirectory;
-+ (id)mapsContainerDataDirectory;
-+ (id)userHomeDirectory;
-- (id)init;
 
 @end
 

@@ -6,14 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, _NUIFlowFillEuallyDummyItem;
+@class NSString;
 
 __attribute__((visibility("hidden")))
 @interface _NUIFlowRowContainer : NSObject
 {
     struct _NUIGridArrangement _gridArrangement;
     struct _NSRange _range;
-    _NUIFlowFillEuallyDummyItem *_dummyItem;
     const void *_flowArrangement;
 }
 
@@ -29,7 +28,6 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)layoutFrameForArrangedSubview:(id)arg1 withProposedContentFrame:(struct CGRect)arg2;
 - (struct CGSize)contentLayoutSizeFittingSize:(struct CGSize)arg1 forArrangedSubview:(id)arg2;
 - (void)dealloc;
-- (id)initWithFlowArrangement:(const void *)arg1 cellRange:(struct _NSRange)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

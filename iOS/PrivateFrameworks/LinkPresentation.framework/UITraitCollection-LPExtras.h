@@ -7,6 +7,7 @@
 #import <UIKit/UITraitCollection.h>
 
 @interface UITraitCollection (LPExtras)
+- (_Bool)_lp_prefersHighContrast;
 - (_Bool)_lp_prefersDarkInterface;
 @end
 

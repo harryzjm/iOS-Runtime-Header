@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, NSURL;
+@class IMSenderContext, NSString, NSURL;
 
 @protocol IMPreviewGeneratorProtocol
 + (_Bool)shouldShadePreview;
@@ -15,9 +15,8 @@
 + (double)maxUpScale;
 + (NSString *)metadataExtension;
 + (NSString *)previewExtension;
-+ (struct CGSize)sizePreviewAtSourceURL:(NSURL *)arg1 withPreviewConstraints:(struct IMPreviewConstraints)arg2 error:(id *)arg3;
-+ (NSURL *)generateAndPersistMetadataFromSourceURL:(NSURL *)arg1 withPreviewConstraints:(struct IMPreviewConstraints)arg2 error:(id *)arg3;
-+ (NSURL *)generateAndPersistPreviewFromSourceURL:(NSURL *)arg1 balloonBundleID:(NSString *)arg2 withPreviewConstraints:(struct IMPreviewConstraints)arg3 outSize:(struct CGSize *)arg4 error:(id *)arg5;
-+ (struct CGImage *)newPreviewFromSourceURL:(NSURL *)arg1 withPreviewConstraints:(struct IMPreviewConstraints)arg2 error:(id *)arg3;
++ (NSURL *)generateAndPersistMetadataFromSourceURL:(NSURL *)arg1 senderContext:(IMSenderContext *)arg2 withPreviewConstraints:(struct IMPreviewConstraints)arg3 error:(id *)arg4;
++ (NSURL *)generateAndPersistPreviewFromSourceURL:(NSURL *)arg1 senderContext:(IMSenderContext *)arg2 balloonBundleID:(NSString *)arg3 withPreviewConstraints:(struct IMPreviewConstraints)arg4 outSize:(struct CGSize *)arg5 error:(id *)arg6;
++ (struct CGImage *)newPreviewFromSourceURL:(NSURL *)arg1 senderContext:(IMSenderContext *)arg2 withPreviewConstraints:(struct IMPreviewConstraints)arg3 error:(id *)arg4;
 @end
 

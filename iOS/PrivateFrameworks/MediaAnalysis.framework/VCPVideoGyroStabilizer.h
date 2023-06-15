@@ -14,12 +14,14 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_analysisDict;
     NSArray *_metadata;
     struct CGSize _cropSize;
+    struct CGRect _cropRect;
+    NSArray *_stillImageMetadata;
 }
 
 - (void).cxx_destruct;
 - (void)storeAnalytics:(struct CGAffineTransform)arg1 isLivePhoto:(_Bool)arg2;
 - (int)convertAnalysisResult;
-- (id)initWithMetadata:(id)arg1 sourceSize:(struct CGSize)arg2 cropRect:(struct CGRect)arg3;
+- (id)initWithMetadata:(id)arg1 sourceSize:(struct CGSize)arg2 cropRect:(struct CGRect)arg3 stillImageMetadata:(id)arg4 timeRange:(CDStruct_e83c9415)arg5;
 
 @end
 

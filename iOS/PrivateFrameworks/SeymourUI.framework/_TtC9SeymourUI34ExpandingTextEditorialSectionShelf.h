@@ -13,6 +13,7 @@
     MISSING_TYPE *delegate;
     MISSING_TYPE *identifier;
     MISSING_TYPE *row;
+    MISSING_TYPE *canonicalIdentifier;
     MISSING_TYPE *item;
     MISSING_TYPE *mediaTagStringBuilder;
     MISSING_TYPE *storefrontLocalizer;

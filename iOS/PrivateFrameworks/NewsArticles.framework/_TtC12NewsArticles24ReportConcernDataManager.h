@@ -11,6 +11,8 @@
 @interface _TtC12NewsArticles24ReportConcernDataManager : _TtCs12_SwiftObject
 {
     MISSING_TYPE *headline;
+    MISSING_TYPE *userConcernConfigManager;
+    MISSING_TYPE *userConcernConfig;
 }
 
 @end

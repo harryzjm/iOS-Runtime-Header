@@ -6,29 +6,28 @@
 
 #import "UIView.h"
 
-@class NSArray, NSString, _UIPassthroughScrollInteraction;
+@class NSString, _UIPassthroughScrollInteraction;
 
 __attribute__((visibility("hidden")))
 @interface _UIContextMenuContainerView : UIView
 {
     _Bool _lastHitTestWasPassedThroughToInteraction;
     _Bool _inPassthroughViewHitTest;
+    _Bool _didDismiss;
     _UIPassthroughScrollInteraction *_passthroughInteraction;
-    _Bool _passthroughInteractionTouchEatingDisabledForSearchSuggestions;
-    _Bool _dismissesInstantly;
-    NSArray *_passthroughViews;
+    _Bool _passesBackgroundViewTouchesThrough;
     UIView *_contentWrapperView;
     CDUnknownBlockType _dismissalHandler;
     CDUnknownBlockType _subtreeTraitPropagationHandler;
+    CDUnknownBlockType _sizeChangeHandler;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool passesBackgroundViewTouchesThrough; // @synthesize passesBackgroundViewTouchesThrough=_passesBackgroundViewTouchesThrough;
+@property(copy, nonatomic) CDUnknownBlockType sizeChangeHandler; // @synthesize sizeChangeHandler=_sizeChangeHandler;
 @property(copy, nonatomic) CDUnknownBlockType subtreeTraitPropagationHandler; // @synthesize subtreeTraitPropagationHandler=_subtreeTraitPropagationHandler;
 @property(copy, nonatomic) CDUnknownBlockType dismissalHandler; // @synthesize dismissalHandler=_dismissalHandler;
 @property(nonatomic) __weak UIView *contentWrapperView; // @synthesize contentWrapperView=_contentWrapperView;
-@property(nonatomic) _Bool dismissesInstantly; // @synthesize dismissesInstantly=_dismissesInstantly;
-@property(copy, nonatomic) NSArray *passthroughViews; // @synthesize passthroughViews=_passthroughViews;
-@property(nonatomic) _Bool passthroughInteractionTouchEatingDisabledForSearchSuggestions; // @synthesize passthroughInteractionTouchEatingDisabledForSearchSuggestions=_passthroughInteractionTouchEatingDisabledForSearchSuggestions;
 - (void)_traitCollectionDidChangeOnSubtreeInternal:(const struct _UITraitCollectionChangeDescription *)arg1;
 - (void)_attemptDismiss:(_Bool)arg1;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
@@ -36,7 +35,9 @@ __attribute__((visibility("hidden")))
 - (_Bool)passthroughScrollInteractionDidRecognize:(id)arg1;
 - (void)didMoveToWindow;
 - (void)willMoveToWindow:(id)arg1;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (void)setFrame:(struct CGRect)arg1;
+- (void)setBounds:(struct CGRect)arg1;
+- (id)initWithFrame:(struct CGRect)arg1 allowsBackgroundInteractionAcrossProccesses:(_Bool)arg2;
 - (_Bool)isTransparentFocusItem;
 
 // Remaining properties

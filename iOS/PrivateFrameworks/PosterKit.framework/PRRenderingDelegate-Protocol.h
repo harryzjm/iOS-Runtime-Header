@@ -13,5 +13,8 @@
 - (void)rendererDidInvalidate:(PRRenderer *)arg1;
 - (void)renderer:(PRRenderer *)arg1 didUpdateEnvironment:(id <PRPosterRenderingEnvironment>)arg2 withTransition:(PRPosterTransition *)arg3;
 - (void)renderer:(PRRenderer *)arg1 didInitializeWithEnvironment:(id <PRPosterRenderingEnvironment>)arg2;
+
+@optional
+- (void)renderer:(PRRenderer *)arg1 didReceiveTapAtPoint:(struct CGPoint)arg2;
 @end
 

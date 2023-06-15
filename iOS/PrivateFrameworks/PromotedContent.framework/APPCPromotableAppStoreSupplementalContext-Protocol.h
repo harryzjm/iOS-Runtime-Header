@@ -15,8 +15,8 @@
 @property(nonatomic, readonly) NSString *adamId;
 @property(nonatomic, readonly) NSString *storeFrontLocale;
 @property(nonatomic, readonly) NSString *storeFront;
-@property(nonatomic, readonly) NSDictionary *secondaryClickCap;
-@property(nonatomic, readonly) NSDictionary *secondaryImpressionCap;
+@property(nonatomic, readonly) NSDictionary *additionalClickCaps;
+@property(nonatomic, readonly) NSDictionary *additionalImpressionCaps;
 @property(nonatomic, readonly) NSDictionary *clickCap;
 @property(nonatomic, readonly) NSDictionary *impressionCap;
 @end

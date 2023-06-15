@@ -36,7 +36,7 @@ __attribute__((visibility("hidden")))
 - (void)invalidateAttachmentMeasurements;
 - (void)_invalidateLocations;
 @property struct CGPoint attachmentFrameOrigin; // @dynamic attachmentFrameOrigin;
-@property(readonly) const struct __CTRunDelegate *runDelegate; // @dynamic runDelegate;
+@property(readonly) struct __CTRunDelegate *runDelegate; // @dynamic runDelegate;
 @property(retain) NSTextAttachmentViewProvider *textAttachmentViewProvider; // @dynamic textAttachmentViewProvider;
 - (id)textLayoutFragment;
 @property(readonly) id <NSTextLocation> location; // @dynamic location;

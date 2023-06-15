@@ -9,6 +9,7 @@
 @class TTSAXResource;
 
 @protocol AXResourceDownloadInformationDelegate <NSObject>
+- (void)openVoiceSettingsFor:(TTSAXResource *)arg1;
 - (void)deleteResource:(TTSAXResource *)arg1;
 - (void)startDownloadForResource:(TTSAXResource *)arg1;
 - (void)stopDownloadForResource:(TTSAXResource *)arg1;

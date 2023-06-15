@@ -93,7 +93,6 @@ __attribute__((visibility("hidden")))
 - (void)updateIndicatorDotForState;
 - (struct CGRect)rectForIndicatorDot;
 - (void)_updateLayout;
-- (void)traitCollectionDidChange:(id)arg1;
 - (void)layoutSubviews;
 - (void)deviceOrientationDidChange:(id)arg1;
 @property(nonatomic) long long interfaceOrientation; // @synthesize interfaceOrientation=_interfaceOrientation;

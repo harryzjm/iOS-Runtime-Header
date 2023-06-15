@@ -9,6 +9,7 @@
 @class CKEntity, CKMediaObject, CKMessageEntryRichTextView, NSArray, NSString, UIGestureRecognizer;
 
 @protocol CKMessageEntryRichTextViewDelegate <UITextViewDelegate>
+- (void)didSetAttributedTextOfRichTextEntryView:(CKMessageEntryRichTextView *)arg1;
 - (void)messageEntryRichTextViewCancelShowMentionSuggestions:(CKMessageEntryRichTextView *)arg1;
 - (void)messageEntryRichTextView:(CKMessageEntryRichTextView *)arg1 showMentionSuggestionsForEntities:(NSArray *)arg2 replacementRange:(struct _NSRange)arg3 completionHandler:(void (^)(CKEntity *))arg4;
 - (void)messageEntryRichTextView:(CKMessageEntryRichTextView *)arg1 insertMention:(NSString *)arg2 entity:(CKEntity *)arg3 replacementRange:(struct _NSRange)arg4;
@@ -22,6 +23,7 @@
 - (void)messageEntryRichTextViewWasTapped:(CKMessageEntryRichTextView *)arg1 isLongPress:(_Bool)arg2;
 - (_Bool)messageEntryRichTextView:(CKMessageEntryRichTextView *)arg1 shouldRecognizeGesture:(UIGestureRecognizer *)arg2;
 - (void)messageEntryRichTextView:(CKMessageEntryRichTextView *)arg1 didTapMediaObject:(CKMediaObject *)arg2;
+- (_Bool)messageEntryRichTextViewShouldResignFirstResponder:(CKMessageEntryRichTextView *)arg1;
 - (_Bool)messageEntryRichTextView:(CKMessageEntryRichTextView *)arg1 shouldPasteMediaObjects:(NSArray *)arg2;
 - (double)maxWidthForPreviewImagesInMessageEntryRichTextView:(CKMessageEntryRichTextView *)arg1;
 @end

@@ -103,11 +103,5 @@ __attribute__((visibility("hidden")))
 - (void)terminate;
 - (id)initWithPhotoLibrary:(id)arg1 andContext:(id)arg2;
 
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
-
 @end
 

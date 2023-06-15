@@ -43,10 +43,13 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIPickerView *algorithmVersionPicker; // @synthesize algorithmVersionPicker=_algorithmVersionPicker;
 @property(retain, nonatomic) HKHostingAreaLayoutView *algorithmVersionPickerInputView; // @synthesize algorithmVersionPickerInputView=_algorithmVersionPickerInputView;
 @property(readonly, nonatomic) NSArray *allAlgorithmVersions; // @synthesize allAlgorithmVersions=_allAlgorithmVersions;
+- (void)viewControllerDidLeaveAdaptiveModal;
+- (void)viewControllerDidEnterAdaptiveModal;
 - (void)heartRhythmAvailabilityDidUpdate;
 - (void)didDismissOnboarding;
 - (void)didCompleteOnboarding;
 - (void)didTapOnElectrocardiogram:(id)arg1;
+- (void)_resetOnboarding;
 - (void)_presentOnboardingManagerWithOnboardingType:(long long)arg1;
 - (void)_startUpgrade;
 - (void)_startFullOnboarding;

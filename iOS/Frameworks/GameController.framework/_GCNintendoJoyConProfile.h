@@ -11,13 +11,12 @@
 __attribute__((visibility("hidden")))
 @interface _GCNintendoJoyConProfile : NSObject
 {
-    _Bool _leftJoyCon;
-    _Bool _rightJoyCon;
 }
 
++ (void)physicalDevice:(id)arg1 getBatteryWithReply:(CDUnknownBlockType)arg2;
++ (void)physicalDevice:(id)arg1 setIndicatedPlayerIndex:(long long)arg2;
++ (long long)physicalDeviceGetIndicatedPlayerIndex:(id)arg1;
 + (id)deviceManager;
-@property(readonly, getter=isRightJoyCon) _Bool rightJoyCon; // @synthesize rightJoyCon=_rightJoyCon;
-@property(readonly, getter=isLeftJoyCon) _Bool leftJoyCon; // @synthesize leftJoyCon=_leftJoyCon;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

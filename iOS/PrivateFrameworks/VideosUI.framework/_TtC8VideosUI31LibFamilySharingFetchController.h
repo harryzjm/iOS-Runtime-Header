@@ -11,6 +11,8 @@
 @interface _TtC8VideosUI31LibFamilySharingFetchController : _TtCs12_SwiftObject
 {
     MISSING_TYPE *requestParameter;
+    MISSING_TYPE *nextBatchEndPoint;
+    MISSING_TYPE *collectionViewModel;
     MISSING_TYPE *completionHandler;
 }
 

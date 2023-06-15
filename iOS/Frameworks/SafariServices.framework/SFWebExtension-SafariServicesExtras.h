@@ -8,6 +8,8 @@
 
 @interface SFWebExtension (SafariServicesExtras)
 - (void)_validateToolbarItemInAllWindows;
+- (void)_unloadToolbarItemInPrivateBrowsing;
+- (void)_loadToolbarItemInPrivateBrowsing;
 - (void)_unloadToolbarItem;
 - (void)_loadToolbarItem;
 @end

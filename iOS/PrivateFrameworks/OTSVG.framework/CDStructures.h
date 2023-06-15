@@ -18,17 +18,17 @@ struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<
 };
 
 struct unordered_map<std::string, std::stack<std::string>, std::hash<std::string>, std::equal_to<std::string>, std::allocator<std::pair<const std::string, std::stack<std::string>>>> {
-    struct __hash_table<std::__hash_value_type<std::string, std::stack<std::string>>, std::__unordered_map_hasher<std::string, std::__hash_value_type<std::string, std::stack<std::string>>, std::hash<std::string>, std::equal_to<std::string>, true>, std::__unordered_map_equal<std::string, std::__hash_value_type<std::string, std::stack<std::string>>, std::equal_to<std::string>, std::hash<std::string>, true>, std::allocator<std::__hash_value_type<std::string, std::stack<std::string>>>> {
+    struct __hash_table<std::__hash_value_type<std::string, std::stack<std::string>>, std::__unordered_map_hasher<std::string, std::__hash_value_type<std::string, std::stack<std::string>>, std::hash<std::string>, std::equal_to<std::string>>, std::__unordered_map_equal<std::string, std::__hash_value_type<std::string, std::stack<std::string>>, std::equal_to<std::string>, std::hash<std::string>>, std::allocator<std::__hash_value_type<std::string, std::stack<std::string>>>> {
         struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::stack<std::string>>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::stack<std::string>>, void *>*>*>>> __bucket_list_;
         struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::stack<std::string>>, void *>*>, std::allocator<std::__hash_node<std::__hash_value_type<std::string, std::stack<std::string>>, void *>>> {
             struct __hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::stack<std::string>>, void *>*> {
                 void *__next_;
             } __value_;
         } __p1_;
-        struct __compressed_pair<unsigned long, std::__unordered_map_hasher<std::string, std::__hash_value_type<std::string, std::stack<std::string>>, std::hash<std::string>, std::equal_to<std::string>, true>> {
+        struct __compressed_pair<unsigned long, std::__unordered_map_hasher<std::string, std::__hash_value_type<std::string, std::stack<std::string>>, std::hash<std::string>, std::equal_to<std::string>>> {
             unsigned long long __value_;
         } __p2_;
-        struct __compressed_pair<float, std::__unordered_map_equal<std::string, std::__hash_value_type<std::string, std::stack<std::string>>, std::equal_to<std::string>, std::hash<std::string>, true>> {
+        struct __compressed_pair<float, std::__unordered_map_equal<std::string, std::__hash_value_type<std::string, std::stack<std::string>>, std::equal_to<std::string>, std::hash<std::string>>> {
             float __value_;
         } __p3_;
     } __table_;
@@ -46,21 +46,21 @@ struct vector<std::reference_wrapper<SVG::Element>, std::allocator<std::referenc
 
 // Template types
 typedef struct unordered_map<std::string, std::stack<std::string>, std::hash<std::string>, std::equal_to<std::string>, std::allocator<std::pair<const std::string, std::stack<std::string>>>> {
-    struct __hash_table<std::__hash_value_type<std::string, std::stack<std::string>>, std::__unordered_map_hasher<std::string, std::__hash_value_type<std::string, std::stack<std::string>>, std::hash<std::string>, std::equal_to<std::string>, true>, std::__unordered_map_equal<std::string, std::__hash_value_type<std::string, std::stack<std::string>>, std::equal_to<std::string>, std::hash<std::string>, true>, std::allocator<std::__hash_value_type<std::string, std::stack<std::string>>>> {
+    struct __hash_table<std::__hash_value_type<std::string, std::stack<std::string>>, std::__unordered_map_hasher<std::string, std::__hash_value_type<std::string, std::stack<std::string>>, std::hash<std::string>, std::equal_to<std::string>>, std::__unordered_map_equal<std::string, std::__hash_value_type<std::string, std::stack<std::string>>, std::equal_to<std::string>, std::hash<std::string>>, std::allocator<std::__hash_value_type<std::string, std::stack<std::string>>>> {
         struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::stack<std::string>>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::stack<std::string>>, void *>*>*>>> __bucket_list_;
         struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::stack<std::string>>, void *>*>, std::allocator<std::__hash_node<std::__hash_value_type<std::string, std::stack<std::string>>, void *>>> {
             struct __hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::stack<std::string>>, void *>*> {
                 void *__next_;
             } __value_;
         } __p1_;
-        struct __compressed_pair<unsigned long, std::__unordered_map_hasher<std::string, std::__hash_value_type<std::string, std::stack<std::string>>, std::hash<std::string>, std::equal_to<std::string>, true>> {
+        struct __compressed_pair<unsigned long, std::__unordered_map_hasher<std::string, std::__hash_value_type<std::string, std::stack<std::string>>, std::hash<std::string>, std::equal_to<std::string>>> {
             unsigned long long __value_;
         } __p2_;
-        struct __compressed_pair<float, std::__unordered_map_equal<std::string, std::__hash_value_type<std::string, std::stack<std::string>>, std::equal_to<std::string>, std::hash<std::string>, true>> {
+        struct __compressed_pair<float, std::__unordered_map_equal<std::string, std::__hash_value_type<std::string, std::stack<std::string>>, std::equal_to<std::string>, std::hash<std::string>>> {
             float __value_;
         } __p3_;
     } __table_;
-} unordered_map_823f4523;
+} unordered_map_6e369bb9;
 
 typedef struct vector<std::reference_wrapper<SVG::Element>, std::allocator<std::reference_wrapper<SVG::Element>>> {
     void *__begin_;

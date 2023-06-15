@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 - (void)listController:(id)arg1 didSelectSpecifier:(id)arg2;
 - (void)setUpPendingTransferPlanSpecifiers:(id)arg1;
 - (id)specifiers;
+- (void)turnOnLocationServicesPressed:(id)arg1;
 - (id)initWithListController:(id)arg1 groupSpecifier:(id)arg2;
 
 // Remaining properties

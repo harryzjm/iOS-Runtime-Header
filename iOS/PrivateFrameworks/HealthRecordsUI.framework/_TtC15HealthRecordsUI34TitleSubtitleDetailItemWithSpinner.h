@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *text;
     MISSING_TYPE *detailText;
+    MISSING_TYPE *accessibilityIdentifier;
 }
 
 @end

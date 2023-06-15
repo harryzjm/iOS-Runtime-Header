@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIFont.h>
+#import <UIKitCore/UIFont.h>
 
 @interface UIFont (PhotosUI)
 + (double)pu_scaledValue:(double)arg1 usingFontOfAttributedString:(id)arg2;

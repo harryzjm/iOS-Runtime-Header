@@ -13,16 +13,16 @@ __attribute__((visibility("hidden")))
 {
     _Bool _queryReturned;
     WDProfile *_profile;
-    NSArray *_capturedSampleTypes;
     UIFont *_bodyFont;
+    NSArray *_capturedSampleTypes;
     NSArray *_savedCategories;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool queryReturned; // @synthesize queryReturned=_queryReturned;
 @property(retain) NSArray *savedCategories; // @synthesize savedCategories=_savedCategories;
-@property(retain, nonatomic) UIFont *bodyFont; // @synthesize bodyFont=_bodyFont;
 @property(retain, nonatomic) NSArray *capturedSampleTypes; // @synthesize capturedSampleTypes=_capturedSampleTypes;
+@property(retain, nonatomic) UIFont *bodyFont; // @synthesize bodyFont=_bodyFont;
 @property(retain, nonatomic) WDProfile *profile; // @synthesize profile=_profile;
 - (id)_makeDataListViewControllerForDisplayType:(id)arg1;
 - (void)selectSourceStoredDataTableViewCell:(id)arg1;

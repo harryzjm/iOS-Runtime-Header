@@ -7,9 +7,10 @@
 #import <PhotosUICore/NSObject-Protocol.h>
 
 @class NSObject, NSUndoManager, PXActionPerformer, PXPhotosContentController;
-@protocol PXAnonymousViewController, UIPopoverPresentationControllerSourceItem;
+@protocol PXAnonymousViewController, PXDisplayAsset, PXPresentationEnvironment;
 
 @protocol PXPhotosContentControllerDelegate <NSObject>
+- (struct UIEdgeInsets)maskPaddingForContentController:(PXPhotosContentController *)arg1;
 - (NSUndoManager *)undoManagerForContentController:(PXPhotosContentController *)arg1;
 - (NSObject<PXAnonymousViewController> *)presentingViewControllerForContentController:(PXPhotosContentController *)arg1;
 - (_Bool)photosContentController:(PXPhotosContentController *)arg1 pushViewController:(NSObject<PXAnonymousViewController> *)arg2;
@@ -17,7 +18,10 @@
 - (_Bool)photosContentController:(PXPhotosContentController *)arg1 presentViewController:(NSObject<PXAnonymousViewController> *)arg2;
 
 @optional
-- (id <UIPopoverPresentationControllerSourceItem>)sourceItemForActionPerformer:(PXActionPerformer *)arg1;
+- (unsigned long long)photosContentControllerFilterSortedRecordsStrategy:(PXPhotosContentController *)arg1;
+- (_Bool)photosContentController:(PXPhotosContentController *)arg1 isDisplayAssetEligibleForAutoPlayback:(id <PXDisplayAsset>)arg2;
+- (_Bool)photosContentController:(PXPhotosContentController *)arg1 canPlayAssetInline:(id <PXDisplayAsset>)arg2;
+- (id <PXPresentationEnvironment>)presentationEnvironmentForActionPerformer:(PXActionPerformer *)arg1;
 - (void)needsUpdateForContentController:(PXPhotosContentController *)arg1;
 @end
 

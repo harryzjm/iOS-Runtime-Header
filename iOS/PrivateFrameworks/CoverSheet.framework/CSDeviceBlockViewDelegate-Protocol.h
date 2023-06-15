@@ -8,6 +8,6 @@
 
 @protocol CSDeviceBlockViewDelegate <NSObject>
 - (void)handleEmergencyButtonAction;
-- (void)handleEraseButtonAction;
+- (void)handleUnblockButtonAction;
 @end
 

@@ -10,6 +10,8 @@
 
 @protocol PUTrimToolControllerDelegate <NSObject>
 - (NSString *)axDescriptionForFocusDecisionAtTime:(CDStruct_1b6d18a9)arg1;
+- (void)addCropToolGainMapIfNeeded;
+- (void)removeCropToolGainMap;
 - (void)didModifyAdjustmentWithLocalizedName:(NSString *)arg1;
 - (void)willModifyAdjustment;
 - (void)removeFocusDecisionAtTime:(CDStruct_1b6d18a9)arg1;

@@ -7,7 +7,6 @@
 #import <Contacts/CNContact.h>
 
 @interface CNContact (UI)
-+ (id)_gkContactFromCacheObject:(id)arg1;
 - (id)_gkCompositeName;
 @end
 

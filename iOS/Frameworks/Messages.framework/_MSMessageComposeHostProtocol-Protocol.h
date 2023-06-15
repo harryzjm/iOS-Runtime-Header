@@ -6,9 +6,13 @@
 
 #import <Messages/NSObject-Protocol.h>
 
-@class BKSAnimationFenceHandle, MSMessage, MSRichLink, NSArray, NSData, NSString, NSURL, UIImage, _MSMessageMediaPayload;
+@class BKSAnimationFenceHandle, MSMessage, MSRichLink, NSArray, NSData, NSString, NSURL, NSUUID, UIImage, _MSMessageMediaPayload;
 
 @protocol _MSMessageComposeHostProtocol <NSObject>
+- (void)_canShowBrowserForPluginIdentifier:(NSString *)arg1 completion:(void (^)(_Bool))arg2;
+- (void)_showBrowserForPluginIdentifier:(NSString *)arg1 style:(unsigned long long)arg2 completion:(void (^)(void))arg3;
+- (void)_requestPresentationWithStickerType:(NSString *)arg1 identifier:(NSUUID *)arg2;
+- (void)_requestStickerExtensionMetadataDictionary:(void (^)(NSDictionary *))arg1;
 - (void)_requestHostSceneIdentifierWithCompletion:(void (^)(NSString *))arg1;
 - (void)_openURL:(NSURL *)arg1 completionHandler:(void (^)(_Bool))arg2;
 - (void)_remoteViewDidBecomeReadyForDisplay;
@@ -18,11 +22,13 @@
 - (void)_dismissAndPresentPhotosApp;
 - (void)_dismiss;
 - (void)_requestPresentationStyle:(unsigned long long)arg1;
+- (void)_stickerDruidDragEndedWithPayload:(_MSMessageMediaPayload *)arg1;
+- (void)_stickerDruidDragStarted;
 - (void)_dragMediaItemCanceled;
 - (void)_dragMediaItemMoved:(_MSMessageMediaPayload *)arg1 frameInRemoteView:(struct CGRect)arg2 rotation:(double)arg3 scale:(double)arg4 completionHandler:(void (^)(_Bool, NSError *))arg5;
 - (void)_startDragMediaItem:(_MSMessageMediaPayload *)arg1 frameInRemoteView:(struct CGRect)arg2 fence:(BKSAnimationFenceHandle *)arg3 completionHandler:(void (^)(_Bool, NSError *))arg4;
 - (void)_stageRichLink:(MSRichLink *)arg1 skipShelf:(_Bool)arg2 completionHandler:(void (^)(NSError *))arg3;
-- (void)_stageMediaItem:(_MSMessageMediaPayload *)arg1 skipShelf:(_Bool)arg2 completionHandler:(void (^)(NSError *))arg3;
+- (void)_stageMediaItem:(_MSMessageMediaPayload *)arg1 skipShelf:(_Bool)arg2 forceStage:(_Bool)arg3 completionHandler:(void (^)(NSError *))arg4;
 - (void)_stageAppItem:(MSMessage *)arg1 skipShelf:(_Bool)arg2 completionHandler:(void (^)(NSError *))arg3;
 
 @optional

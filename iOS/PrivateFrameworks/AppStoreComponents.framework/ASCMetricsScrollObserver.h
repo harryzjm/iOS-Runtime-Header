@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)hasModelRendered:(id)arg1;
 - (void)modelDidRender:(id)arg1;
 - (_Bool)hasModelAppeared:(id)arg1;
+- (void)modelDidDisappear:(id)arg1;
 - (void)modelDidAppear:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)removeDelegate:(id)arg1;
@@ -34,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)isDelegateAdded:(id)arg1;
 - (struct CGPoint)centerOfView:(id)arg1;
 @property(readonly, nonatomic) struct CGRect visibleRect;
+@property(readonly, nonatomic) struct CGSize contentSize;
 - (void)dealloc;
 - (id)initWithScrollView:(id)arg1;
 

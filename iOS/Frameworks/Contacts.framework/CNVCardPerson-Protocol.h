@@ -13,6 +13,7 @@
 @property(readonly) NSArray *unknownProperties;
 @property(readonly) NSString *preferredApplePersonaIdentifier;
 @property(readonly) NSString *preferredLikenessSource;
+@property(readonly) int sharedPhotoDisplayPreference;
 @property(readonly) int downtimeWhitelistAuthorization;
 @property(readonly) NSString *phonemeData;
 @property(readonly) NSString *uid;
@@ -23,6 +24,8 @@
 @property(readonly) NSArray *otherDateComponents;
 @property(readonly) NSDateComponents *alternateBirthdayComponents;
 @property(readonly) NSDateComponents *birthdayComponents;
+@property(readonly) NSData *watchWallpaperImageData;
+@property(readonly) NSData *wallpaper;
 @property(readonly) NSData *memojiMetadata;
 @property(readonly) NSData *imageHash;
 @property(readonly) NSString *imageType;
@@ -46,6 +49,7 @@
 @property(readonly) NSString *department;
 @property(readonly) NSString *phoneticOrganization;
 @property(readonly) NSString *organization;
+@property(readonly) NSArray *addressingGrammars;
 @property(readonly) NSString *pronunciationLastName;
 @property(readonly) NSString *pronunciationFirstName;
 @property(readonly) NSString *phoneticLastName;

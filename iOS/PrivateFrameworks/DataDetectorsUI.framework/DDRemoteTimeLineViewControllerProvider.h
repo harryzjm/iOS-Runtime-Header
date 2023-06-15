@@ -20,6 +20,9 @@ __attribute__((visibility("hidden")))
 @property(retain) EKEventStore *store; // @synthesize store=_store;
 @property(retain) EKEvent *event; // @synthesize event=_event;
 @property(retain) NSArray *events; // @synthesize events=_events;
+- (id)selectedEventsForEditMenu;
+- (void)dayViewController:(id)arg1 didSelectEvent:(id)arg2 animated:(_Bool)arg3 userInitiated:(_Bool)arg4;
+- (void)dayOccurrenceViewSelected:(id)arg1 source:(unsigned long long)arg2;
 - (void)dayViewControllerDidRespondToApplicationDidBecomeActiveStateChange:(id)arg1;
 - (void)updateSelectedOccurrenceView;
 - (void)dayViewControllerDidFinishPinchingDayView:(id)arg1;

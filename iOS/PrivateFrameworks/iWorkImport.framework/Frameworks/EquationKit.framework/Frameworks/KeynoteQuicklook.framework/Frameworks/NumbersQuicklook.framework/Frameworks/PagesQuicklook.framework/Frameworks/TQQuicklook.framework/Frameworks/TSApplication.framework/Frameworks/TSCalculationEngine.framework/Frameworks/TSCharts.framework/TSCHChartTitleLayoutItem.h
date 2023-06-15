@@ -17,7 +17,7 @@
 @property(nonatomic) double minHitSize; // @synthesize minHitSize=_minHitSize;
 @property(copy, nonatomic) NSString *editedString; // @synthesize editedString=_editedString;
 @property(nonatomic) double chartBodyWidth; // @synthesize chartBodyWidth=_chartBodyWidth;
-- (const struct CGPath *)newDragAndDropHighlightPathForSelection:(id)arg1;
+- (struct CGPath *)newDragAndDropHighlightPathForSelection:(id)arg1;
 - (id)subselectionHaloPositionsForSelections:(id)arg1;
 - (id)subselectionKnobPositionsForSelection:(id)arg1;
 - (void)iterateHitChartElements:(struct CGPoint)arg1 withBlock:(CDUnknownBlockType)arg2;

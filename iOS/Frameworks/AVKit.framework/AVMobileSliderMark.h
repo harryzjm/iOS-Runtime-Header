@@ -15,14 +15,18 @@ __attribute__((visibility("hidden")))
     float _endValue;
     UIColor *_filledColor;
     UIColor *_unfilledColor;
+    unsigned long long _markType;
 }
 
++ (id)liveEdgeMarkAtValue:(float)arg1;
++ (id)interstitialMarkAtValue:(float)arg1;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) unsigned long long markType; // @synthesize markType=_markType;
 @property(readonly, nonatomic) UIColor *unfilledColor; // @synthesize unfilledColor=_unfilledColor;
 @property(readonly, nonatomic) UIColor *filledColor; // @synthesize filledColor=_filledColor;
 @property(readonly, nonatomic) float endValue; // @synthesize endValue=_endValue;
 @property(readonly, nonatomic) float startValue; // @synthesize startValue=_startValue;
-- (id)initWithStartValue:(float)arg1 endValue:(float)arg2 filledColor:(id)arg3 unfilledColor:(id)arg4;
+- (id)initWithStartValue:(float)arg1 endValue:(float)arg2 filledColor:(id)arg3 unfilledColor:(id)arg4 markWithType:(unsigned long long)arg5;
 
 @end
 

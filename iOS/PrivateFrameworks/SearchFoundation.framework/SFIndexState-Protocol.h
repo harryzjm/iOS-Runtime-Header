@@ -11,6 +11,8 @@
 @protocol SFIndexState <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property(copy, nonatomic) NSNumber *indexedMessageCount;
+@property(copy, nonatomic) NSNumber *totalMessageCount;
 @property(copy, nonatomic) NSNumber *searchIndex;
 @property(copy, nonatomic) NSNumber *percentAttachmentsIndexed;
 @property(copy, nonatomic) NSNumber *percentMessagesIndexed;

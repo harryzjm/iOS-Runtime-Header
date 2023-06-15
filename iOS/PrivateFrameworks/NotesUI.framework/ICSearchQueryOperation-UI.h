@@ -7,9 +7,7 @@
 #import <NotesShared/ICSearchQueryOperation.h>
 
 @interface ICSearchQueryOperation (UI)
-- (id)suggestionsQueryStringFromSuggestions:(id)arg1;
-- (id)initWithUserInput:(id)arg1 performNLSearch:(_Bool)arg2 performTopHitSearch:(_Bool)arg3 modernResultsOnly:(_Bool)arg4;
-- (id)initWithSearchString:(id)arg1 performNLSearch:(_Bool)arg2 performTopHitSearch:(_Bool)arg3 suggestions:(id)arg4;
-- (id)initWithSearchString:(id)arg1 performNLSearch:(_Bool)arg2 performTopHitSearch:(_Bool)arg3 suggestions:(id)arg4 modernResultsOnly:(_Bool)arg5;
+- (id)initWithSearchSuggestionsResponder:(id)arg1 userInput:(id)arg2 performNLSearch:(_Bool)arg3 performTopHitSearch:(_Bool)arg4 modernResultsOnly:(_Bool)arg5;
+- (id)initWithSearchSuggestionsResponder:(id)arg1 searchString:(id)arg2 performNLSearch:(_Bool)arg3 performTopHitSearch:(_Bool)arg4 tokens:(id)arg5;
 @end
 

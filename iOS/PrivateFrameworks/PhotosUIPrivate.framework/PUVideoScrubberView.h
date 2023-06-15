@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class AVTimeFormatter, NSLayoutConstraint, NSObject, UILabel, UISlider;
 @protocol PUVideoScrubberViewDelegate;
@@ -38,7 +38,6 @@ __attribute__((visibility("hidden")))
 - (void)videoScrubberValueChanged:(id)arg1;
 - (void)updateSliderPosition;
 - (void)timesChanged:(CDStruct_1b6d18a9)arg1 endingTime:(CDStruct_1b6d18a9)arg2 currentTime:(CDStruct_1b6d18a9)arg3;
-- (id)hitTest:(struct CGPoint)arg1 forEvent:(struct __GSEvent *)arg2;
 - (void)videoScrubberDoneChanging;
 - (id)initWithStartingTime:(CDStruct_1b6d18a9)arg1 endingTime:(CDStruct_1b6d18a9)arg2 currentTime:(CDStruct_1b6d18a9)arg3;
 

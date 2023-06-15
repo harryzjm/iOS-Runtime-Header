@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HMAccessoryNetworkAccessViolation, NSArray;
+#import "_HMAccessoryProfile.h"
+
+@class HMAccessoryNetworkAccessViolation, NSArray, NSString;
 @protocol _HMNetworkConfigurationProfileDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _HMNetworkConfigurationProfile
+@interface _HMNetworkConfigurationProfile : _HMAccessoryProfile
 {
     _Bool _networkAccessRestricted;
     _Bool _supportsWiFiReconfiguration;
@@ -20,8 +22,10 @@ __attribute__((visibility("hidden")))
     id <_HMNetworkConfigurationProfileDelegate> _delegate;
 }
 
++ (id)logCategory;
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <_HMNetworkConfigurationProfileDelegate> delegate; // @synthesize delegate=_delegate;
+- (id)logIdentifier;
 - (void)_handleWiFiReconfigurationUpdated:(id)arg1;
 - (void)_handleAccessViolationUpdated:(id)arg1;
 - (void)_handleHostsUpdated:(id)arg1;
@@ -33,7 +37,7 @@ __attribute__((visibility("hidden")))
 - (void)_notifyDelegateOfUpdatedProtectionMode;
 - (void)previewAllowedHostsForAutoProtectionModeWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)reconfigureWiFiWithOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (_Bool)_mergeWithNewObject:(id)arg1;
+- (_Bool)mergeFromNewObject:(id)arg1;
 - (id)messageReceiveQueue;
 - (id)messageDestination;
 - (id)messageTargetUUID;
@@ -53,6 +57,12 @@ __attribute__((visibility("hidden")))
 @property(readonly) NSArray *allowedHosts; // @synthesize allowedHosts=_allowedHosts;
 - (void)_registerNotificationHandlers;
 - (id)initWithAccessoryIdentifier:(id)arg1 targetProtection:(long long)arg2 currentProtection:(long long)arg3 networkAccessRestricted:(_Bool)arg4 allowedHosts:(id)arg5 accessViolation:(id)arg6 supportsWiFiReconfiguration:(_Bool)arg7 credentialType:(long long)arg8;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

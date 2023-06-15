@@ -15,7 +15,7 @@
 }
 
 + (id)pipelineWithProcessor:(id)arg1 session:(id)arg2;
-+ (id)clipRectForTargetSize:(const void *)arg1 intermediateSize:(const void *)arg2;
++ (id)clipRectForTargetSize:(void *)arg1 intermediateSize:(void *)arg2;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) TSCH3DSession *session; // @synthesize session=_session;
 @property(retain, nonatomic) TSCH3DRenderProcessor *processor; // @synthesize processor=_processor;

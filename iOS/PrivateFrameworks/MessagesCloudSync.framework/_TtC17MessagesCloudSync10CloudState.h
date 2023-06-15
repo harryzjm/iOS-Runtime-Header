@@ -10,12 +10,10 @@
 
 @interface _TtC17MessagesCloudSync10CloudState : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *messagesDefaults;
     MISSING_TYPE *madridDefaults;
-    MISSING_TYPE *enabledKey;
-    MISSING_TYPE *exitRecordKey;
-    MISSING_TYPE *cachedChangeTokensKey;
-    MISSING_TYPE *singleMessageBatchTestOverrideKey;
-    MISSING_TYPE *useSandboxContainerKey;
+    MISSING_TYPE *syncTokenStore;
+    MISSING_TYPE *syncStateManager;
 }
 
 @end

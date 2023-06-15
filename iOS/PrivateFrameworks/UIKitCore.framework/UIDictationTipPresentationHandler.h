@@ -18,15 +18,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) long long dictationTipSignaled; // @synthesize dictationTipSignaled=_dictationTipSignaled;
 @property(nonatomic) _Bool isShowingTip; // @synthesize isShowingTip=_isShowingTip;
 - (long long)dictationTipDisplayCount:(long long)arg1;
-- (_Bool)dictationModelessInputTipShown;
-- (_Bool)dictationStopTipShown;
-- (_Bool)dictationSelectionTipShown;
-- (_Bool)dictationEmojiTipShown;
-- (_Bool)dictationInsertionTipShown;
-- (_Bool)dictationDeletionTipShown;
-- (_Bool)dictationReplacementTipShown;
 - (_Bool)dictationCommandTipsEnabled;
-- (_Bool)tipShownLastDay;
+- (_Bool)tipShownLastWeek;
 - (void)resetDictationTipSignal;
 - (void)resetHandler;
 - (void)signalTipPresentedInCurrentDictationSession;

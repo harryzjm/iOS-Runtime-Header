@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 + (id)randomDelayEndValueSettingsValue;
 + (id)randomDelayStartValueSettingsValue;
 + (id)addRandomArtificalAnalysisDelaySettingsValue;
++ (id)isOpticalFlowForTextEnabledSettingsValue;
 + (id)isCGImageForMadEnabledSettingsValue;
 + (id)blurBlurRadiusSettingsValue;
 + (id)blurMaxThicknessSettingsValue;
@@ -35,6 +36,7 @@ __attribute__((visibility("hidden")))
 + (id)sharpMaxThicknessSettingsValue;
 + (id)sharpMinOpacitySettingsValue;
 + (id)scaleMultiplierSettingsValue;
++ (_Bool)isOpticalFlowForTextEnabled;
 + (_Bool)addSubjectCropRectToPasteboard;
 + (double)subjectAutomaticAnalysisDelay;
 + (double)subjectDragCancellationDelay;

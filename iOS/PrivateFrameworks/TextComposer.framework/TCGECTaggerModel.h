@@ -13,6 +13,7 @@
     NSString *_modelPath;
     void *_embeddings;
     struct MontrealNeuralNetwork *_gecClassifier;
+    struct MontrealNeuralNetwork *_vscClassifier;
     NSArray *_gecClassifierLabels;
     NSDictionary *_labelsToIssueType;
     NSDictionary *_indicationThresholds;
@@ -22,13 +23,14 @@
 }
 
 - (void).cxx_destruct;
-- (void)enumerateIssuesForSentence:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
+- (void)enumerateIssuesForSentence:(id)arg1 checkTermination:(_Bool)arg2 withBlock:(CDUnknownBlockType)arg3;
 - (_Bool)loadDetailedIssueTypesFromURL:(id)arg1;
 - (_Bool)loadAutocorrectionThresholdsFromURL:(id)arg1;
 - (_Bool)loadIndicationThresholdsFromURL:(id)arg1;
 - (_Bool)loadErrorClassesFromURL:(id)arg1;
 - (id)correctionForPredictedClass:(unsigned long long)arg1 withProbability:(float)arg2;
 - (id)classifierPrediction:(struct MontrealNeuralNetwork *)arg1 labelCount:(unsigned long long)arg2 input:(id)arg3 tokenCount:(unsigned long long)arg4;
+- (_Bool)isTerminatedSentence:(id)arg1 embeddings:(id)arg2;
 - (id)classifierPredictions:(id)arg1 tokenCount:(unsigned long long)arg2;
 @property(readonly, nonatomic) unsigned long long embeddingDimension;
 - (id)embeddingsForTokenizedSentence:(id)arg1;

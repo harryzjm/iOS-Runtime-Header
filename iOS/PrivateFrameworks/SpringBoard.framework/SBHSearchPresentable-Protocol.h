@@ -7,7 +7,7 @@
 @protocol SBHSearchPresentable
 @property(nonatomic) double maxPresentationOffset;
 @property(nonatomic) double topOffset;
-- (void (^)(void))willBeginAnimatingPresentationProgressForState:(long long)arg1 needsInitialLayout:(_Bool *)arg2;
+- (void (^)(void))willBeginModifyingPresentationProgressForState:(long long)arg1 animated:(_Bool)arg2 needsInitialLayout:(_Bool *)arg3;
 - (void)updatePresentationProgress:(double)arg1 withOffset:(double)arg2 presentationState:(long long)arg3;
 @end
 

@@ -6,10 +6,12 @@
 
 #import <UIKit/UIScrollView.h>
 
+#import <PDFKit/UIScrollViewDelegate-Protocol.h>
+
 @class NSString, PDFScrollViewPrivate;
 
 __attribute__((visibility("hidden")))
-@interface PDFScrollView : UIScrollView
+@interface PDFScrollView : UIScrollView <UIScrollViewDelegate>
 {
     PDFScrollViewPrivate *_private;
 }

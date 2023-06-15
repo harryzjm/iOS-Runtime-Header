@@ -6,10 +6,10 @@
 
 #import <PassKitUI/NSObject-Protocol.h>
 
-@class NSDate, NSString, PKPayLaterFinancingPlan, PKPayLaterProgressRow;
+@class NSDate, NSString, PKPayLaterProgressRow;
 
 @protocol PKPayLaterFinancingPlanPaymentScheduleComposerItem <NSObject>
-- (void)populateRow:(PKPayLaterProgressRow *)arg1 financingPlan:(PKPayLaterFinancingPlan *)arg2;
+- (void)populateRow:(PKPayLaterProgressRow *)arg1;
 - (NSDate *)date;
 - (NSString *)paymentIdentifier;
 - (NSString *)installmentIdentifier;

@@ -57,6 +57,7 @@ __attribute__((visibility("hidden")))
 - (void)collectionView:(id)arg1 dropSessionDidEnter:(id)arg2;
 - (_Bool)collectionView:(id)arg1 canHandleDropSession:(id)arg2;
 - (void)collectionView:(id)arg1 performDropWithCoordinator:(id)arg2;
+- (id)_collectionView:(id)arg1 dragSessionPropertiesForSession:(id)arg2;
 - (_Bool)_collectionView:(id)arg1 dragSessionSupportsSystemDrag:(id)arg2;
 - (long long)_collectionView:(id)arg1 dataOwnerForDragSession:(id)arg2 atIndexPath:(id)arg3;
 - (_Bool)_collectionView:(id)arg1 prefersFullSizePreviewsForDragSession:(id)arg2;

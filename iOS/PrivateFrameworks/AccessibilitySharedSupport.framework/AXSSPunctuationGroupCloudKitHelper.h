@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+- (void)processRecordDeletionsFromServer:(id)arg1;
 - (void)processServerUpdateChanges:(id)arg1 moc:(id)arg2 recordNameToManagedObject:(id)arg3;
 - (void)punctuationGroupsChanged:(id)arg1;
 - (void)beginWatchingForChanges;

@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface PSUIVPNStateSnapshot : NSObject
 {
     _Bool _loading;
+    _Bool __hasRelayConfigurations;
     NSString *_primaryText;
     NSString *_secondaryText;
     unsigned long long __vpnSettingsVisibilityStyle;
@@ -20,6 +21,7 @@ __attribute__((visibility("hidden")))
 
 + (id)na_identity;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool _hasRelayConfigurations; // @synthesize _hasRelayConfigurations=__hasRelayConfigurations;
 @property(nonatomic) unsigned long long _vpnConnectivityState; // @synthesize _vpnConnectivityState=__vpnConnectivityState;
 @property(nonatomic) unsigned long long _vpnSettingsVisibilityStyle; // @synthesize _vpnSettingsVisibilityStyle=__vpnSettingsVisibilityStyle;
 @property(readonly, copy, nonatomic) NSString *secondaryText; // @synthesize secondaryText=_secondaryText;
@@ -27,7 +29,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic, getter=isLoading) _Bool loading; // @synthesize loading=_loading;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-- (id)initWithVisibilityStyle:(unsigned long long)arg1 connectivityState:(unsigned long long)arg2;
+- (id)initWithVisibilityStyle:(unsigned long long)arg1 connectivityState:(unsigned long long)arg2 hasRelayConfigurations:(_Bool)arg3;
 
 @end
 

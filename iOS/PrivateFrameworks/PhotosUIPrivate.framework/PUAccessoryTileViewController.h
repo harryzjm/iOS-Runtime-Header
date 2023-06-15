@@ -21,7 +21,13 @@ __attribute__((visibility("hidden")))
         _Bool respondsToWillHideNavigationBarWhenShowingAccessoryView;
         _Bool respondsToShouldUseSquareImageWhenShowingAccessoryView;
     } _delegateFlags;
-    CDStruct_516723a0 _needsUpdateFlags;
+    struct {
+        _Bool contentViewController;
+        _Bool loadedContentViewController;
+        _Bool contentViewMetrics;
+        _Bool contentBounds;
+        _Bool masterContentOffset;
+    } _needsUpdateFlags;
     _Bool __wasActiveOnLastMasterContentOffsetChange;
     id <PUAccessoryTileViewControllerDelegate> _delegate;
     PUAssetViewModel *_assetViewModel;

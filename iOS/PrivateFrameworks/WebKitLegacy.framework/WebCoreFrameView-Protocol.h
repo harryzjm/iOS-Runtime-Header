@@ -5,6 +5,6 @@
 //
 
 @protocol WebCoreFrameView
-- (NakedPtr_4ac97545)_web_frame;
+- (NakedPtr_9be60511)_web_frame;
 @end
 

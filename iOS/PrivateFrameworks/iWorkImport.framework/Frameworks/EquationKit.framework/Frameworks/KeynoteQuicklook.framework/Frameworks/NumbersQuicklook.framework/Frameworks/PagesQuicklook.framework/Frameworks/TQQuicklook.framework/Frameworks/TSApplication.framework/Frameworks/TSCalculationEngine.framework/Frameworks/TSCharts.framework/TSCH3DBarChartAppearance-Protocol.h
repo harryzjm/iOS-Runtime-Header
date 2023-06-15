@@ -8,7 +8,7 @@
 
 @protocol TSCH3DBarChartAppearance
 - (_Bool)isCircular;
-- (float)signedValueForSeries:(TSCHChartSeries *)arg1 index:(const void *)arg2;
+- (float)signedValueForSeries:(TSCHChartSeries *)arg1 index:(void *)arg2;
 - (float)maxValueForSeries:(long long)arg1;
 - (float)depthForScene:(TSCH3DScene *)arg1;
 - (float)chartMinZForScene:(TSCH3DScene *)arg1;

@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIApplication.h>
+#import <UIKitCore/UIApplication.h>
 
 @class UIWindow;
 
 @interface UIApplication (Bridge)
+- (void)ts_setApplicationBadgeString:(id)arg1;
 - (void)ts_performBlockAfterCATransactionCommits:(CDUnknownBlockType)arg1;
 - (void)ts_installCACommitCompletionBlock:(CDUnknownBlockType)arg1;
 - (id)ts_statusBarWindow;

@@ -9,6 +9,7 @@
 @interface NSDictionary (GC)
 - (id)gc_dictionaryByRemovingObjectsForKeys:(id)arg1;
 - (void)gc_enumerateKeysAndObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (void)gc_makeValuesPerformSelector:(SEL)arg1 withObject:(id)arg2;
 - (id)gc_requiredObjectForKey:(id)arg1 ofClass:(Class)arg2 error:(out id *)arg3;
 - (id)gc_requiredObjectForKey:(id)arg1 ofClass:(Class)arg2;
 - (id)gc_objectForKey:(id)arg1 ofClass:(Class)arg2 error:(out id *)arg3;

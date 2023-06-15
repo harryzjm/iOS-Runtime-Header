@@ -6,10 +6,10 @@
 
 #import <MobileSafariUI/NSObject-Protocol.h>
 
-@class LoadingController, NSURLRequest;
+@class LoadingController, NSURLRequest, WKWebView;
 
 @protocol LoadingControllerDelegate <NSObject>
 - (void)loadingControllerWillStartUserDrivenLoad:(LoadingController *)arg1;
-- (void)loadingController:(LoadingController *)arg1 willLoadRequest:(NSURLRequest *)arg2 userDriven:(_Bool)arg3;
+- (void)loadingController:(LoadingController *)arg1 willLoadRequest:(NSURLRequest *)arg2 webView:(WKWebView *)arg3 userDriven:(_Bool)arg4;
 @end
 

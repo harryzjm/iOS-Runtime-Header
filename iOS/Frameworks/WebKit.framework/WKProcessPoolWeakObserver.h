@@ -9,7 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface WKProcessPoolWeakObserver : NSObject
 {
-    struct WeakPtr<WebKit::WebProcessPool, WTF::EmptyCounter> m_weakPtr;
+    struct WeakPtr<WebKit::WebProcessPool, WTF::DefaultWeakPtrImpl> m_weakPtr;
 }
 
 - (id).cxx_construct;

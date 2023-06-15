@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 - (id)debugDescription;
 - (id)description;
 - (id)containerIdentity;
+- (id)identityByChangingUserIdentity:(id)arg1;
 - (id)identityByChangingTransient:(_Bool)arg1;
 - (id)nontransientContainerIdentity;
 - (id)transientContainerIdentity;

@@ -15,10 +15,13 @@ __attribute__((visibility("hidden")))
     int _error;
     NSObject<OS_dispatch_io> *_io;
     NSObject<OS_dispatch_queue> *_queue;
+    long long _bytesSent;
 }
 
 - (void).cxx_destruct;
+- (void)close;
 - (void)readMinimumIncompleteLength:(unsigned long long)arg1 maximumLength:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
+@property(readonly, nonatomic) long long countOfBytesSent;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

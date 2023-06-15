@@ -16,6 +16,7 @@
     MISSING_TYPE *paidAccessChecker;
     MISSING_TYPE *personalizationService;
     MISSING_TYPE *headlineService;
+    MISSING_TYPE *feedPersonalizer;
     MISSING_TYPE *name;
 }
 

@@ -32,7 +32,7 @@ __attribute__((visibility("hidden")))
 - (id)itemForIdentifier:(id)arg1 request:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)fetchContentsForItemWithIdentifier:(id)arg1 version:(id)arg2 usingExistingContentsAtURL:(id)arg3 existingVersion:(id)arg4 request:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (id)fetchContentsForItemWithIdentifier:(id)arg1 version:(id)arg2 request:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (id)enumeratorForSearchQuery:(id)arg1 request:(id)arg2 error:(id *)arg3;
+- (id)enumeratorForSearch:(id)arg1 request:(id)arg2 error:(id *)arg3;
 - (id)enumeratorForContainerItemIdentifier:(id)arg1 request:(id)arg2 error:(id *)arg3;
 - (id)deleteItemWithIdentifier:(id)arg1 baseVersion:(id)arg2 options:(unsigned long long)arg3 request:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (id)createItemBasedOnTemplate:(id)arg1 fields:(unsigned long long)arg2 contents:(id)arg3 options:(unsigned long long)arg4 request:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;

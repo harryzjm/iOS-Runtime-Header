@@ -55,6 +55,7 @@ __attribute__((visibility("hidden")))
 - (id)_seasonViewModelIdentifiers;
 - (id)_createDiffableDataSourceSnapshot;
 - (id)_createDiffableDataSourceForCollectionView:(id)arg1;
+- (void)showItemNotAvailableDialog;
 - (void)titleButtonPressedForStoreId:(id)arg1;
 - (void)libraryEpisodesShelfViewController:(id)arg1 didRemoveDownloadForAssetController:(id)arg2;
 - (void)contentDescriptionExpanded;

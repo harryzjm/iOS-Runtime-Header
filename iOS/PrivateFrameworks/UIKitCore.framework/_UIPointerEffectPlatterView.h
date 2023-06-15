@@ -18,6 +18,8 @@ __attribute__((visibility("hidden")))
     UITargetedPreview *_targetedPreview;
     double _shadowAlpha;
     long long _tintMode;
+    double _tintViewScale;
+    UIPointerShape *_tintViewShape;
     UIView *_specularHighlight;
     unsigned long long _specularOptions;
     CDUnknownBlockType _tintColorMatrixProvider;
@@ -28,11 +30,9 @@ __attribute__((visibility("hidden")))
     _UILumaTrackingBackdropView *_lumaTrackingView;
     UIView *_specularOverlayView;
     NSMutableArray *_accessoryPortals;
-    UIPointerShape *_tintViewShape;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) UIPointerShape *tintViewShape; // @synthesize tintViewShape=_tintViewShape;
 @property(retain, nonatomic) NSMutableArray *accessoryPortals; // @synthesize accessoryPortals=_accessoryPortals;
 @property(retain, nonatomic) UIView *specularOverlayView; // @synthesize specularOverlayView=_specularOverlayView;
 @property(retain, nonatomic) _UILumaTrackingBackdropView *lumaTrackingView; // @synthesize lumaTrackingView=_lumaTrackingView;
@@ -46,6 +46,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool useSoftShadow; // @synthesize useSoftShadow=_useSoftShadow;
 @property(nonatomic) unsigned long long specularOptions; // @synthesize specularOptions=_specularOptions;
 @property(retain, nonatomic) UIView *specularHighlight; // @synthesize specularHighlight=_specularHighlight;
+@property(retain, nonatomic) UIPointerShape *tintViewShape; // @synthesize tintViewShape=_tintViewShape;
+@property(nonatomic) double tintViewScale; // @synthesize tintViewScale=_tintViewScale;
 @property(nonatomic) long long tintMode; // @synthesize tintMode=_tintMode;
 @property(nonatomic, getter=isTintDisabled) _Bool tintDisabled; // @synthesize tintDisabled=_tintDisabled;
 @property(nonatomic) double shadowAlpha; // @synthesize shadowAlpha=_shadowAlpha;
@@ -64,7 +66,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateContentMask;
 - (_Bool)_ignoreRemoveAllAnimations;
 - (void)_installAccessoryView:(id)arg1;
-- (id)initWithTargetedPreview:(id)arg1 tintViewShape:(id)arg2;
+- (id)initWithTargetedPreview:(id)arg1;
 
 @end
 

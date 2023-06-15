@@ -6,16 +6,13 @@
 
 #import <AirPlayKit/NSObject-Protocol.h>
 
-@class APKKeyValueObserver, NSString;
+@class APKKeyValueObserver, NSArray;
 
 @protocol APKPlayerProtocol <NSObject>
+@property(readonly, nonatomic, getter=isExternalPlaybackActive) _Bool externalPlaybackActive;
+@property(readonly, nonatomic) long long playerTimeControlStatus;
+@property(readonly) NSArray *outputDevices;
 - (APKKeyValueObserver *)beginObserveringTimeControlStatusWithChangeHandler:(void (^)(void))arg1;
 - (APKKeyValueObserver *)beginObserveringExternalPlaybackChangeWithChangeHandler:(void (^)(void))arg1;
-- (_Bool)isExternalPlaybackActive;
-@property(nonatomic, readonly) long long playerTimeControlStatus;
-@property(nonatomic, readonly) NSString *outputDeviceID;
-
-// Remaining properties
-@property(nonatomic, readonly) _Bool externalPlaybackActive;
 @end
 

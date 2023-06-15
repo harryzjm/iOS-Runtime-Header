@@ -6,22 +6,22 @@
 
 #import <objc/NSObject.h>
 
-@class NSURL, SKCloudServiceController;
+@class NSURL, SHStorefront;
 
 __attribute__((visibility("hidden")))
 @interface SHClusterLoaderRequest : NSObject
 {
-    SKCloudServiceController *_cloudServiceController;
     NSURL *_sourceURL;
     NSURL *_outputURL;
     long long _type;
+    SHStorefront *_storefront;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) SHStorefront *storefront; // @synthesize storefront=_storefront;
 @property(readonly, nonatomic) long long type; // @synthesize type=_type;
 @property(readonly, nonatomic) NSURL *outputURL; // @synthesize outputURL=_outputURL;
 @property(readonly, nonatomic) NSURL *sourceURL; // @synthesize sourceURL=_sourceURL;
-@property(readonly, nonatomic) SKCloudServiceController *cloudServiceController; // @synthesize cloudServiceController=_cloudServiceController;
 - (void)clusterConfiguration:(CDUnknownBlockType)arg1;
 - (void)sourceURLWithCompletion:(CDUnknownBlockType)arg1;
 - (void)URLForRequestForStorefront:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;

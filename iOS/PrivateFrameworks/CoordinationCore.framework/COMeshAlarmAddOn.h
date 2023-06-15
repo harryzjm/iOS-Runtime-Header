@@ -6,15 +6,22 @@
 
 #import "COMeshAddOn.h"
 
-@class COAlarmReadRequest, COHomeHubAdapter, COHomeKitAdapter, MTAlarmManager, NSArray, NSDictionary;
-@protocol COMeshAlarmAddOnDelegate;
+@class COAlarmReadRequest, COClusterRoleMonitor, COHomeHubAdapter, COHomeKitAdapter, COMTAlarmChunkingEngine, COMessageChannel, MTAlarmManager, NSArray, NSDictionary, NSSet;
+@protocol COMeshAlarmAddOnDelegate, NSObject;
 
 __attribute__((visibility("hidden")))
 @interface COMeshAlarmAddOn : COMeshAddOn
 {
     struct os_unfair_lock_s _lock;
     id <COMeshAlarmAddOnDelegate> _delegate;
+    COMessageChannel *_messageChannel;
+    COClusterRoleMonitor *_monitor;
     MTAlarmManager *_alarmManager;
+    id _mediaSystemUpdateRegistration;
+    id <NSObject> _monitorObserver;
+    NSSet *_members;
+    NSDictionary *_interests;
+    COMTAlarmChunkingEngine *_chunkingEngine;
     COHomeKitAdapter *_homekit;
     COHomeHubAdapter *_homehub;
     NSArray *_deletes;
@@ -36,14 +43,27 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSArray *deletes; // @synthesize deletes=_deletes;
 @property(readonly, nonatomic) COHomeHubAdapter *homehub; // @synthesize homehub=_homehub;
 @property(readonly, nonatomic) COHomeKitAdapter *homekit; // @synthesize homekit=_homekit;
+@property(retain, nonatomic) COMTAlarmChunkingEngine *chunkingEngine; // @synthesize chunkingEngine=_chunkingEngine;
+@property(retain, nonatomic) NSDictionary *interests; // @synthesize interests=_interests;
+@property(retain, nonatomic) NSSet *members; // @synthesize members=_members;
+@property(retain, nonatomic) id <NSObject> monitorObserver; // @synthesize monitorObserver=_monitorObserver;
+@property(readonly, nonatomic) id mediaSystemUpdateRegistration; // @synthesize mediaSystemUpdateRegistration=_mediaSystemUpdateRegistration;
 @property(readonly, nonatomic) MTAlarmManager *alarmManager; // @synthesize alarmManager=_alarmManager;
-- (void)canDispatchForAccessoryUniqueIdentifier:(id)arg1 categoryType:(id)arg2 asInstance:(id)arg3 cluster:(id)arg4 reply:(CDUnknownBlockType)arg5;
-- (void)dismissAlarmWithIdentifier:(id)arg1 cluster:(id)arg2 withCallback:(CDUnknownBlockType)arg3;
-- (void)snoozeAlarmWithIdentifier:(id)arg1 cluster:(id)arg2 withCallback:(CDUnknownBlockType)arg3;
-- (void)removeAlarm:(id)arg1 forAccessoryUniqueIdentifier:(id)arg2 categoryType:(id)arg3 fromConnection:(id)arg4 cluster:(id)arg5 withCallback:(CDUnknownBlockType)arg6;
-- (void)updateAlarm:(id)arg1 forAccessoryUniqueIdentifier:(id)arg2 categoryType:(id)arg3 fromConnection:(id)arg4 cluster:(id)arg5 withCallback:(CDUnknownBlockType)arg6;
-- (void)addAlarm:(id)arg1 forAccessoryUniqueIdentifier:(id)arg2 categoryType:(id)arg3 fromConnection:(id)arg4 cluster:(id)arg5 withCallback:(CDUnknownBlockType)arg6;
-- (void)alarmsforAccessoryUniqueIdentifier:(id)arg1 categoryType:(id)arg2 fromConnection:(id)arg3 cluster:(id)arg4 withCallback:(CDUnknownBlockType)arg5;
+@property(readonly, nonatomic) COClusterRoleMonitor *monitor; // @synthesize monitor=_monitor;
+- (void)setInterests:(id)arg1 asAccessory:(id)arg2;
+- (void)handlePerformActionRequest:(id)arg1 from:(id)arg2 callback:(CDUnknownBlockType)arg3;
+- (id)secondaryClusterMemberIfRequiredForAccessory:(id)arg1;
+- (id)secondaryClusterMemberForAccessory:(id)arg1;
+- (void)establishSecondaryClusterForAccessory:(id)arg1;
+- (void)mediaSystemCompanionTransitionedFrom:(id)arg1 to:(id)arg2;
+- (void)canDispatchAsAccessory:(id)arg1 asInstance:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)dismissAlarmWithIdentifier:(id)arg1 fromClient:(id)arg2 withCallback:(CDUnknownBlockType)arg3;
+- (void)snoozeAlarmWithIdentifier:(id)arg1 fromClient:(id)arg2 withCallback:(CDUnknownBlockType)arg3;
+- (void)removeAlarm:(id)arg1 asAccessory:(id)arg2 fromClient:(id)arg3 withCallback:(CDUnknownBlockType)arg4;
+- (void)updateAlarm:(id)arg1 asAccessory:(id)arg2 fromClient:(id)arg3 withCallback:(CDUnknownBlockType)arg4;
+- (void)addAlarm:(id)arg1 asAccessory:(id)arg2 fromClient:(id)arg3 withCallback:(CDUnknownBlockType)arg4;
+- (void)alarmsForAccessories:(id)arg1 fromClient:(id)arg2 callback:(CDUnknownBlockType)arg3;
+- (void)alarmsAsAccessory:(id)arg1 fromClient:(id)arg2 withCallback:(CDUnknownBlockType)arg3;
 - (void)handleAlarmManagerStateResetNotification:(id)arg1;
 - (void)handleAlarmSnoozeNotification:(id)arg1;
 - (void)handleAlarmsChangedNotification:(id)arg1;
@@ -59,15 +79,20 @@ __attribute__((visibility("hidden")))
 - (void)handleAlarmCreateRequest:(id)arg1 callback:(CDUnknownBlockType)arg2;
 - (void)handleAlarmReadRequest:(id)arg1 callback:(CDUnknownBlockType)arg2;
 - (_Bool)_isAlarm:(id)arg1 targetingAccessory:(id)arg2;
+- (id)dismissAlarmWithIdentifier:(id)arg1 client:(id)arg2;
 - (id)dismissAlarmWithIdentifier:(id)arg1;
+- (id)snoozeAlarmWithIdentifier:(id)arg1 client:(id)arg2;
 - (id)snoozeAlarmWithIdentifier:(id)arg1;
+- (id)removeAlarm:(id)arg1 member:(id)arg2 client:(id)arg3;
 - (id)removeAlarm:(id)arg1;
+- (id)updateAlarm:(id)arg1 member:(id)arg2 client:(id)arg3;
 - (id)updateAlarm:(id)arg1;
+- (id)addAlarm:(id)arg1 member:(id)arg2 client:(id)arg3;
 - (id)addAlarm:(id)arg1;
 - (id)alarmsForAccessory:(id)arg1;
 - (id)alarms;
 - (_Bool)_isAlarm:(id)arg1 targetingAccessoryIdentifiers:(id)arg2;
-- (id)_alarmsForAccessoryIdentifier:(id)arg1 allowLocalStorage:(_Bool)arg2 usingLeader:(_Bool)arg3;
+- (id)_alarmsForAccessoryIdentifier:(id)arg1 allowLocalStorage:(_Bool)arg2 usingLeader:(_Bool)arg3 member:(id)arg4 client:(id)arg5;
 - (id)_filteredAlarmsList:(id)arg1 forAccessory:(id)arg2;
 - (void)_replicateToMobileTimerFromHomeKit;
 - (id)_currentAccessoryForConnection:(id)arg1;
@@ -91,9 +116,10 @@ __attribute__((visibility("hidden")))
 - (void)_alarmManagerAlarmsAdded:(id)arg1;
 - (void)_significantHomeChange:(id)arg1;
 - (void)_addCompletionsToFuture:(id)arg1 withXPCCallback:(CDUnknownBlockType)arg2 transactionDescription:(const char *)arg3;
-- (id)_sendRequest:(id)arg1;
+- (id)_sendRequest:(id)arg1 client:(id)arg2;
 - (void)_withLock:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) _Bool performsLocalActions;
+@property(readonly, nonatomic) COMessageChannel *messageChannel; // @synthesize messageChannel=_messageChannel;
 @property(nonatomic) __weak id <COMeshAlarmAddOnDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)didChangeNodesForMeshController:(id)arg1;
 - (void)meshController:(id)arg1 didTransitionToState:(unsigned long long)arg2;
@@ -101,6 +127,7 @@ __attribute__((visibility("hidden")))
 - (void)willStartMeshController:(id)arg1;
 - (void)willRemoveFromMeshController:(id)arg1;
 - (void)didAddToMeshController:(id)arg1;
+- (void)dealloc;
 - (id)init;
 - (id)initWithAlarmManager:(id)arg1;
 - (id)initWithAlarmManager:(id)arg1 homekitAdapter:(id)arg2 hubAdapter:(id)arg3;

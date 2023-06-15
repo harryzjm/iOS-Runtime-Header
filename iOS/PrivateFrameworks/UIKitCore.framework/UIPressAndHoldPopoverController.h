@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIKeyboardPopoverController.h"
+
 @class NSString, TUIPressAndHoldView;
 
 __attribute__((visibility("hidden")))
-@interface UIPressAndHoldPopoverController
+@interface UIPressAndHoldPopoverController : UIKeyboardPopoverController
 {
     TUIPressAndHoldView *_pressAndHoldView;
 }

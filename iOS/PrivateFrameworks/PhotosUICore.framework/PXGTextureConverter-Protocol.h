@@ -15,12 +15,12 @@
 @property(readonly, nonatomic) PXGImageTexture *transparentTexture;
 @property(nonatomic) _Bool lowMemoryMode;
 @property(readonly, nonatomic) unsigned long long supportedContentTypes;
-@property(readonly, nonatomic) int presentationType;
+@property(readonly, nonatomic) unsigned char presentationType;
 - (PXGImageTexture *)createAtlasForTextureAtlasManager:(id <PXGTextureAtlasManager>)arg1;
-- (id <PXGTextureAtlasManager>)createTextureAtlasManagerForImageDataSpec:(CDStruct_8c2b7bb0)arg1;
+- (id <PXGTextureAtlasManager>)createTextureAtlasManagerForImageDataSpec:(CDStruct_8c2b7bb0)arg1 mipmapped:(_Bool)arg2;
 - (PXGPayloadTexture *)createPayloadTextureFromPayload:(id <NSCopying>)arg1;
-- (PXGImageTexture *)applyAdjustment:(id <PXGDisplayAssetAdjustment>)arg1 toTexture:(PXGImageTexture *)arg2 options:(CDStruct_6238c8e0)arg3;
-- (PXGImageTexture *)createTextureFromCVPixelBuffer:(struct __CVBuffer *)arg1 transform:(CDStruct_6238c8e0)arg2 options:(id *)arg3 error: /* Error: Ran out of types for this method. */;
-- (PXGImageTexture *)createTextureFromCGImage:(struct CGImage *)arg1 transform:(CDStruct_6238c8e0)arg2 options: /* Error: Ran out of types for this method. */;
+- (PXGImageTexture *)applyAdjustment:(id <PXGDisplayAssetAdjustment>)arg1 toTexture:(PXGImageTexture *)arg2 options:(CDStruct_0dd72924)arg3;
+- (PXGImageTexture *)createTextureFromCVPixelBuffer:(struct __CVBuffer *)arg1 transform:(float)arg2 alpha:(CDStruct_0dd72924)arg3 options:(id *)arg4 error: /* Error: Ran out of types for this method. */;
+- (PXGImageTexture *)createTextureFromCGImage:(struct CGImage *)arg1 transform:(float)arg2 alpha:(CDStruct_0dd72924)arg3 options: /* Error: Ran out of types for this method. */;
 @end
 

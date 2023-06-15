@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 @interface NWConcrete_nw_authentication_credential : NSObject
 {
     int type;
+    int persistence;
     char *username;
     char *password;
     NSObject<OS_sec_identity> *identity;

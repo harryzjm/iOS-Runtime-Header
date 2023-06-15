@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 @class NSBundle, NSString, UIImageConfiguration;
 
 __attribute__((visibility("hidden")))
-@interface _UIImageCacheKey : NSObject <NSCopying>
+@interface _UIImageCacheKey : NSObject
 {
     NSString *_name;
     UIImageConfiguration *_configuration;

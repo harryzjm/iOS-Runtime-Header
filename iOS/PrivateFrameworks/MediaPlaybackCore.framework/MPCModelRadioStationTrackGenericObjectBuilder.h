@@ -32,7 +32,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) MPPropertySet *requestedProperties; // @synthesize requestedProperties=_requestedProperties;
-- (id)genericObjectForRadioStationTrack:(id)arg1 containerUniqueID:(id)arg2 userIdentity:(id)arg3;
+- (id)genericObjectForRadioStationTrack:(id)arg1 radioStationContainsVideo:(_Bool)arg2 containerUniqueID:(id)arg3 userIdentity:(id)arg4;
 - (id)initWithRequestedProperties:(id)arg1;
 
 @end

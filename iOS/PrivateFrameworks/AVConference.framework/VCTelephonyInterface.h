@@ -23,6 +23,9 @@ __attribute__((visibility("hidden")))
 @property id <VCTelephonyInterfaceDelegate> delegate;
 - (void)unregisterForNotifications;
 - (_Bool)registerForNotifications;
+- (void)setupVCMediaStreamRateAdaptationConfig:(struct tagVCMediaStreamRateAdaptationConfig *)arg1;
+- (unsigned int)validateCarrierBundleConfigParameters:(id)arg1 forKey:(id)arg2 defaultValue:(unsigned int)arg3 minValue:(unsigned int)arg4 maxValue:(unsigned int)arg5;
+- (_Bool)getCarrierBundleValue:(id *)arg1 forKey:(id)arg2;
 - (void)dealloc;
 - (id)initWithTelephonySubscriptionSlot:(long long)arg1;
 - (id)init;

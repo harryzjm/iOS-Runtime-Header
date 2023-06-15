@@ -11,11 +11,8 @@
 @interface _TtC9SeymourUI20RemoteBrowsingSource : _TtCs12_SwiftObject
 {
     MISSING_TYPE *activeIdentity;
-    MISSING_TYPE *remoteBrowsingClient;
     MISSING_TYPE *localJournal;
     MISSING_TYPE *eventHub;
-    MISSING_TYPE *subscriptionToken;
-    MISSING_TYPE *state;
 }
 
 @end

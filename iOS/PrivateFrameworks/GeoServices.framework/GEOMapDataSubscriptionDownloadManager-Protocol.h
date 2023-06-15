@@ -6,18 +6,24 @@
 
 #import <GeoServices/NSObject-Protocol.h>
 
-@class GEOMapDataSubscription, GEOMapDataSubscriptionDownloader, NSArray, NSError, NSObject, NSString;
+@class GEOMapDataSubscription, GEOMapDataSubscriptionDownloader, GEOMapRegion, NSArray, NSError, NSObject, NSString;
 @protocol GEOMapDataSubscriptionDownloadManagerDelegate, OS_dispatch_queue;
 
 @protocol GEOMapDataSubscriptionDownloadManager <NSObject>
 @property(nonatomic) __weak id <GEOMapDataSubscriptionDownloadManagerDelegate> delegate;
+- (void)determineEstimatedSizeForSubscriptionWithRegion:(GEOMapRegion *)arg1 dataTypes:(unsigned long long)arg2 queue:(NSObject<OS_dispatch_queue> *)arg3 completionHandler:(void (^)(long long, NSError *))arg4;
+- (void)fetchLastUpdatedDateForOfflineSubscriptionsWithQueue:(NSObject<OS_dispatch_queue> *)arg1 completionHandler:(void (^)(NSDate *, NSError *))arg2;
 - (void)fetchStateForSubscriptionWithIdentifier:(NSString *)arg1 callbackQueue:(NSObject<OS_dispatch_queue> *)arg2 completionHandler:(void (^)(GEOMapDataSubscriptionState *, NSError *))arg3;
+- (void)forceUpdateForUserInitiatedSubscriptionsForDataType:(unsigned long long)arg1 mode:(long long)arg2;
 - (void)cancelDownloadForSubscriptionIdentifiers:(NSArray *)arg1;
-- (void)startDownloadForSubscriptionIdentifiers:(NSArray *)arg1;
+- (void)startDownloadForSubscriptionIdentifiers:(NSArray *)arg1 mode:(long long)arg2;
 
 @optional
+- (void)runRetryOfflineDownloadXPCActivity:(_Bool)arg1;
+- (void)runAutomaticOfflineDataXPCActivity;
 - (void)externallyManagedDownloaderDidFinish:(GEOMapDataSubscriptionDownloader *)arg1 withError:(NSError *)arg2;
 - (void)registerExternallyManagedDownloader:(GEOMapDataSubscriptionDownloader *)arg1;
+- (void)didRemoveSubscriptionWithIdentifier:(NSString *)arg1;
 - (void)didAddSubscription:(GEOMapDataSubscription *)arg1;
 @end
 

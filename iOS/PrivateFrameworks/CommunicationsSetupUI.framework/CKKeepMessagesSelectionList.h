@@ -4,15 +4,37 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Preferences/PSListItemsController.h>
+#import <Preferences/PSListController.h>
+
+@class CKKeepMessagesPreferenceManager, NSArray;
 
 __attribute__((visibility("hidden")))
-@interface CKKeepMessagesSelectionList : PSListItemsController
+@interface CKKeepMessagesSelectionList : PSListController
 {
+    NSArray *_durationPreferenceTitles;
+    NSArray *_durationPreferenceValues;
+    long long _selectedKeepMessagesPreferenceIndex;
+    CKKeepMessagesPreferenceManager *_keepMessagesPreferenceManager;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) CKKeepMessagesPreferenceManager *keepMessagesPreferenceManager; // @synthesize keepMessagesPreferenceManager=_keepMessagesPreferenceManager;
+@property(nonatomic) long long selectedKeepMessagesPreferenceIndex; // @synthesize selectedKeepMessagesPreferenceIndex=_selectedKeepMessagesPreferenceIndex;
+@property(retain, nonatomic) NSArray *durationPreferenceValues; // @synthesize durationPreferenceValues=_durationPreferenceValues;
+@property(retain, nonatomic) NSArray *durationPreferenceTitles; // @synthesize durationPreferenceTitles=_durationPreferenceTitles;
+- (void)updateKeepMessagesPreference:(id)arg1;
+- (void)_warnForFinalConfirmationForUpdatingIndexPath:(id)arg1;
 - (void)_warnAboutDeletingMessagesForSelectedListItem:(id)arg1;
-- (void)listItemSelected:(id)arg1;
+- (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
+- (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
+- (void)_updatePreferenceAtIndexPath:(id)arg1;
+- (void)_selectionListDidSelectIndexPath:(id)arg1;
+- (void)_configureInitialSelectedIndexes;
+- (id)specifiers;
+- (void)_syncedSettingsDidChange:(id)arg1;
+- (void)dealloc;
+- (void)_internalInit;
+- (id)init;
 
 @end
 

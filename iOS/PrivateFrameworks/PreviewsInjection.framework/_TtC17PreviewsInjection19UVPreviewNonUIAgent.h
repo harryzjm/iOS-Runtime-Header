@@ -10,7 +10,6 @@ __attribute__((visibility("hidden")))
 @interface _TtC17PreviewsInjection19UVPreviewNonUIAgent
 {
     MISSING_TYPE *serviceConnection;
-    MISSING_TYPE *entryPoints;
 }
 
 - (void).cxx_destruct;

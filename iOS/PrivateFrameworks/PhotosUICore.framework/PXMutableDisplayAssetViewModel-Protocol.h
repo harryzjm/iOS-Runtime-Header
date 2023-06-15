@@ -10,6 +10,11 @@
 @protocol PXMutableDisplayAssetViewModel
 @property(copy, nonatomic) NSError *loadingError;
 @property(nonatomic) float loadingProgress;
+@property(copy, nonatomic) NSArray *timeRangesToHighlight;
+@property(copy, nonatomic) NSArray *personLocalIdentifiersToHighlight;
+@property(copy, nonatomic) NSArray *humanActionIdentifiersToHighlight;
+@property(copy, nonatomic) NSArray *audioIdentifiersToHighlight;
+@property(copy, nonatomic) NSArray *sceneIdentifiersToHighlight;
 @property(copy, nonatomic) NSArray *stringsToHighlight;
 @property(nonatomic) _Bool allowsTextSelection;
 @property(nonatomic) _Bool isDisplayingFullQualityContent;

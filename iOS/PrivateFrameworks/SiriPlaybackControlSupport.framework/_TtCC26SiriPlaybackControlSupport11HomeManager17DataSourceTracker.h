@@ -13,6 +13,7 @@
     MISSING_TYPE *queue;
     MISSING_TYPE *readyGroup;
     MISSING_TYPE *loadState;
+    MISSING_TYPE *caller;
 }
 
 @end

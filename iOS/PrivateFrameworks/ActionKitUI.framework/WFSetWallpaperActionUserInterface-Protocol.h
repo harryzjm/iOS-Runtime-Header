@@ -6,9 +6,10 @@
 
 #import <ActionKitUI/WFActionRemoteUserInterface-Protocol.h>
 
-@class NSData, NSString;
+@class NSData, NSString, WFPosterRepresentation, WFWallpaperConfiguration;
 
 @protocol WFSetWallpaperActionUserInterface <WFActionRemoteUserInterface>
+- (void)showPreviewForConfiguration:(WFWallpaperConfiguration *)arg1 selectedPoster:(WFPosterRepresentation *)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)showPreviewWithInput:(NSData *)arg1 key:(NSString *)arg2 wallpaperLocation:(long long)arg3 completionHandler:(void (^)(NSError *))arg4;
 @end
 

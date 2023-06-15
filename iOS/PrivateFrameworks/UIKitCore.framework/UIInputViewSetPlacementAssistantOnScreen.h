@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (id)verticalConstraintForInputViewSet:(id)arg1 hostView:(id)arg2 containerView:(id)arg3;
 - (Class)applicatorClassForKeyboard:(_Bool)arg1;
 - (unsigned long long)indexForPurpose:(unsigned long long)arg1;
+- (id)subPlacementsForInputViewSet:(id)arg1;
 - (id)subPlacements;
 
 @end

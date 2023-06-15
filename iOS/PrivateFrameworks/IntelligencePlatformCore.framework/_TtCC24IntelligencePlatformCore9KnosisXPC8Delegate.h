@@ -6,7 +6,6 @@
 
 #import <objc/NSObject.h>
 
-__attribute__((visibility("hidden")))
 @interface _TtCC24IntelligencePlatformCore9KnosisXPC8Delegate : NSObject
 {
 }

@@ -9,27 +9,27 @@
 @class NSArray, NSString, PGFlexMusicCuration, PGMoodVector, PGMusicCuration;
 
 @protocol PGEnrichedMemoryProtocol <PGTriggeredMemoryProtocol>
-- (NSString *)enrichedDescription;
-@property(nonatomic, retain) PGMusicCuration *musicCuration;
-@property(nonatomic, retain) PGFlexMusicCuration *flexMusicCuration;
-@property(nonatomic, readonly) _Bool failedEnrichment;
+@property(retain, nonatomic) PGMusicCuration *musicCuration;
+@property(retain, nonatomic) PGFlexMusicCuration *flexMusicCuration;
+@property(readonly, nonatomic) _Bool failedEnrichment;
 @property(nonatomic) unsigned long long failureReason;
 @property(nonatomic) long long titleCategory;
-@property(nonatomic) long long numberOfRelevantAssets;
+@property(nonatomic) unsigned long long numberOfRelevantAssets;
 @property(nonatomic) _Bool featuresGuestAssets;
 @property(nonatomic) double score;
 @property(nonatomic) long long notificationLevel;
-@property(nonatomic, copy) NSArray *legacyMoodKeywords;
-@property(nonatomic, retain) PGMoodVector *positiveMoodVector;
+@property(copy, nonatomic) NSArray *legacyMoodKeywords;
+@property(retain, nonatomic) PGMoodVector *positiveMoodVector;
 @property(nonatomic) unsigned long long forbiddenMoods;
 @property(nonatomic) unsigned long long recommendedMoods;
 @property(nonatomic) unsigned long long suggestedMood;
-@property(nonatomic, copy) NSArray *extendedCuratedAssetUUIDs;
-@property(nonatomic, copy) NSArray *representativeAssetUUIDs;
-@property(nonatomic, copy) NSArray *curatedAssetUUIDs;
-@property(nonatomic, copy) NSString *keyAssetUUID;
-@property(nonatomic, copy) NSString *subtitle;
-@property(nonatomic, copy) NSString *title;
+@property(copy, nonatomic) NSArray *extendedCuratedAssetUUIDs;
+@property(copy, nonatomic) NSArray *representativeAssetUUIDs;
+@property(copy, nonatomic) NSArray *curatedAssetUUIDs;
+@property(copy, nonatomic) NSString *keyAssetUUID;
 @property(copy, nonatomic) NSArray *chapterTitles;
+@property(copy, nonatomic) NSString *subtitle;
+@property(copy, nonatomic) NSString *title;
+- (NSString *)enrichedDescription;
 @end
 

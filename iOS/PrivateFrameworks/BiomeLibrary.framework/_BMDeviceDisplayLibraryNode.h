@@ -16,6 +16,9 @@ __attribute__((visibility("hidden")))
 + (id)validKeyPaths;
 + (id)streamNames;
 + (id)identifier;
++ (id)configurationForAlwaysOn;
++ (id)syncPolicyForAlwaysOn;
++ (id)storeConfigurationForAlwaysOn;
 + (id)configurationForInterfaceOrientation;
 + (id)syncPolicyForInterfaceOrientation;
 + (id)storeConfigurationForInterfaceOrientation;
@@ -25,9 +28,18 @@ __attribute__((visibility("hidden")))
 + (id)configurationForAppearance;
 + (id)syncPolicyForAppearance;
 + (id)storeConfigurationForAppearance;
++ (id)configurationForNightShift;
++ (id)syncPolicyForNightShift;
++ (id)storeConfigurationForNightShift;
++ (id)configurationForTrueTone;
++ (id)syncPolicyForTrueTone;
++ (id)storeConfigurationForTrueTone;
++ (id)AlwaysOn;
 + (id)InterfaceOrientation;
 + (id)Backlight;
 + (id)Appearance;
++ (id)NightShift;
++ (id)TrueTone;
 
 @end
 

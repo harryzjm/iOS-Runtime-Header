@@ -50,7 +50,7 @@ __attribute__((visibility("hidden")))
 - (void)_initRegionAlertsForRoute:(id)arg1;
 - (void)reroute:(id)arg1 reason:(unsigned long long)arg2;
 - (void)stopTracking;
-- (void)startTrackingWithInitialLocation:(id)arg1;
+- (void)startTrackingWithInitialLocation:(id)arg1 targetLegIndex:(unsigned long long)arg2;
 - (int)transportType;
 - (id)initWithNavigationSession:(id)arg1;
 

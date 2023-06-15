@@ -14,12 +14,17 @@ __attribute__((visibility("hidden")))
     MPCloudController *_underlyingCloudController;
 }
 
++ (id)isUpdateInProgressDidChangeNotificationName;
 + (id)canShowCloudDownloadButtonsDidChangeNotificationName;
 + (id)sharedCloudController;
 - (void).cxx_destruct;
+- (void)_handleIsUpdateInProgressDidChangeNotificationName:(id)arg1;
 - (void)_handleCanShowCloudDownloadButtonsDidChangeNotification:(id)arg1;
+- (void)resignActive;
+- (void)becomeActive;
 - (long long)cloudAddToPlaylistBehavior;
 - (void)setCloudAddToPlaylistBehavior:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
+@property(readonly, nonatomic, getter=isUpdateInProgress) _Bool updateInProgress;
 @property(readonly, nonatomic) _Bool canShowCloudDownloadButtons;
 - (void)dealloc;
 - (id)_initWithUnderlyingCloudController:(id)arg1;

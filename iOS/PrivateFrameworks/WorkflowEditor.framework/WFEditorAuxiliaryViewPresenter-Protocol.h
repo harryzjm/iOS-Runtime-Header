@@ -9,10 +9,10 @@
 @class UIViewController;
 
 @protocol WFEditorAuxiliaryViewPresenter <NSObject>
+@property(readonly, nonatomic) _Bool canExpandDrawerAsAuxiliaryViewPresenter;
 - (void)presentDrawerViewControllerAsAuxiliaryViewPresenter:(UIViewController *)arg1 inPopover:(_Bool)arg2 sourceRect:(struct CGRect)arg3;
 - (void)collapseDrawerAsAuxiliaryViewPresenter;
 - (void)expandDrawerAsAuxiliaryViewPresenter;
-@property(nonatomic, readonly) _Bool canExpandDrawerAsAuxiliaryViewPresenter;
 - (void)presentShortcutDetailsAsAuxiliaryViewPresenter;
 @end
 

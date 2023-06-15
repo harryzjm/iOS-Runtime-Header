@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *environment;
     MISSING_TYPE *scheduler;
+    MISSING_TYPE *daiManager;
     MISSING_TYPE *logPrefix;
     MISSING_TYPE *syncStateSubject;
     MISSING_TYPE *syncTaskQueue;

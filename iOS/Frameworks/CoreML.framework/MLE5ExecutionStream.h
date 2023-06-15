@@ -11,16 +11,22 @@
 __attribute__((visibility("hidden")))
 @interface MLE5ExecutionStream : NSObject
 {
+    _Bool _preparedForAsyncSubmission;
     NSArray *_operations;
     struct e5rt_execution_stream *_streamHandle;
 }
 
 - (void).cxx_destruct;
-@property struct e5rt_execution_stream *streamHandle; // @synthesize streamHandle=_streamHandle;
-@property(copy) NSArray *operations; // @synthesize operations=_operations;
+@property(nonatomic) _Bool preparedForAsyncSubmission; // @synthesize preparedForAsyncSubmission=_preparedForAsyncSubmission;
+@property(nonatomic) struct e5rt_execution_stream *streamHandle; // @synthesize streamHandle=_streamHandle;
+@property(copy, nonatomic) NSArray *operations; // @synthesize operations=_operations;
+@property(readonly, nonatomic) unsigned long long streamId;
 - (void)reset;
+- (void)submitWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (_Bool)_executeStream:(struct e5rt_execution_stream *)arg1 error:(id *)arg2;
-- (_Bool)executeAndReturnError:(id *)arg1;
+- (_Bool)executeWithOptions:(id)arg1 error:(id *)arg2;
+- (_Bool)prepareAndEncodeOperationsForAsyncSubmission:(id)arg1 error:(id *)arg2;
+- (_Bool)_prepareAndEncodeOperationsWithOptions:(id)arg1 error:(id *)arg2;
 - (void)dealloc;
 - (id)init;
 

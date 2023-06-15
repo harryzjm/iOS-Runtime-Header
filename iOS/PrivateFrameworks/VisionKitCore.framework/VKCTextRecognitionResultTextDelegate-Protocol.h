@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class VKCTextRecognitionResult;
+#import <VisionKitCore/NSObject-Protocol.h>
 
-@protocol VKCTextRecognitionResultTextDelegate
+@class VKCTextRecognitionResult, VKTextRange;
+
+@protocol VKCTextRecognitionResultTextDelegate <NSObject>
 - (unsigned long long)draggedRectEdgeForTextRecognitionResult:(VKCTextRecognitionResult *)arg1;
-- (struct _NSRange)preSelectionChangeSelectedRangeForTextRecognitionResult:(VKCTextRecognitionResult *)arg1;
-- (struct _NSRange)selectedRangeForTextRecognitionResult:(VKCTextRecognitionResult *)arg1;
+- (VKTextRange *)preSelectionChangeSelectedRangeForTextRecognitionResult:(VKCTextRecognitionResult *)arg1;
+- (VKTextRange *)selectedRangeForTextRecognitionResult:(VKCTextRecognitionResult *)arg1;
 @end
 

@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (id)logicalDevice:(id)arg1 makeControllerInputDescriptionWithIdentifier:(id)arg2 bindings:(id)arg3;
 + (id)logicalDevice:(id)arg1 makeControllerPhysicalInputProfileWithIdentifier:(id)arg2;
 + (id)logicalDeviceControllerProductCategory:(id)arg1;
 + (void)deviceManager:(id)arg1 prepareLogicalDevice:(id)arg2;

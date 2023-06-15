@@ -10,12 +10,13 @@
 @protocol RPTComposer;
 
 @protocol RPTTestParameters <NSObject>
+@property(copy, nonatomic) NSString *testName;
+@property(readonly, copy, nonatomic) CDUnknownBlockType completionHandler;
 - (void)prepareWithComposer:(id <RPTComposer>)arg1;
-@property(nonatomic, copy) NSString *testName;
-@property(nonatomic, readonly) CDUnknownBlockType completionHandler;
 - (void (^)(id <RPTComposer>))composerBlock;
 
 @optional
-@property(nonatomic, readonly) _Bool managesTestStartAndEnd;
+@property(readonly, nonatomic) _Bool managesTestStartAndEnd;
+- (void)waitForPostEventStreamDelayWithHandler:(void (^)(void))arg1;
 @end
 

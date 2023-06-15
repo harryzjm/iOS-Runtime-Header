@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MDNotificationCenter, MSPSharedTripBlocklist, MSPSharedTripRelay, NSArray, NSMutableDictionary, NSString, NSTimer;
+@class MDNotificationCenter, MSPSharedTripBlocklist, MSPSharedTripRelay, NSArray, NSMutableDictionary, NSMutableOrderedSet, NSString, NSTimer;
 @protocol MSPReceiverETAControllerDelegate, OS_os_transaction;
 
 __attribute__((visibility("hidden")))
@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_sharedSessions;
     NSMutableDictionary *_sharedNavStates;
     NSMutableDictionary *_waitingNavStates;
+    NSMutableOrderedSet *_orderedNavStateIdentifiers;
     MDNotificationCenter *_mapsNotificationCenter;
     MSPSharedTripRelay *_idsRelay;
     MSPSharedTripBlocklist *_blockedList;
@@ -40,6 +41,8 @@ __attribute__((visibility("hidden")))
 - (void)updateContacts;
 - (void)_resolveContactIfNeeded:(id)arg1 fromId:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_showOrUpdateNotificationIfNeeded:(id)arg1;
+- (void)purgeExpiredBlockedTripIdentifiers;
+- (void)clearBlockedTripIdentifiers;
 - (void)blockSharedTrip:(id)arg1;
 - (_Bool)unsubscribeFromUpdatesToSharedTrip:(id)arg1 error:(id *)arg2;
 - (_Bool)subscribeToUpdatesToSharedTrip:(id)arg1 error:(id *)arg2;

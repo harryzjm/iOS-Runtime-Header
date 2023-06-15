@@ -7,6 +7,8 @@
 #import <Foundation/NSURL.h>
 
 @interface NSURL (IconFoundationAdditions)
++ (id)coreGlyphsPrivateBundleURL;
++ (id)coreGlyphsBundleURL;
 - (_Bool)_IF_isDirectory;
 - (_Bool)_IF_conformsToUTI:(id)arg1;
 - (id)_IF_typeIdentifier;

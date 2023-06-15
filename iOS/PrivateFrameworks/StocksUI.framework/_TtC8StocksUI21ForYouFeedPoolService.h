@@ -15,6 +15,8 @@
     MISSING_TYPE *headlineScorerFactory;
     MISSING_TYPE *topStoriesService;
     MISSING_TYPE *watchlistManager;
+    MISSING_TYPE *watchlistSortingService;
+    MISSING_TYPE *priceDataManager;
 }
 
 @end

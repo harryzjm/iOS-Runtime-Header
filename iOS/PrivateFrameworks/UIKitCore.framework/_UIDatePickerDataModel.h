@@ -13,7 +13,6 @@ __attribute__((visibility("hidden")))
 {
     NSLocale *_effectiveLocale;
     NSCalendar *_effectiveCalendar;
-    _Bool _usingLocaleCalendar;
     _UIDatePickerChineseCalendar *_chineseWrapperCalendar;
     _Bool _roundsToMinuteInterval;
     long long _datePickerStyle;

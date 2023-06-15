@@ -12,6 +12,7 @@
 {
     SFCertificateData *_certificateData;
     NSNumber *_isSelfSigned;
+    NSNumber *_isWWDRIssued;
     NSNumber *_isExpired;
     NSNumber *_isSubmissionCertificate;
     NSNumber *_isManaged;
@@ -26,11 +27,12 @@
     NSDate *_issueDate;
     NSDate *_expirationDate;
     NSString *_sha1Hash;
+    NSString *_sha256Hash;
     DVTSigningCertificateSerialNumber *_serialNumber;
     NSDictionary *_certificateValues;
     DVTSigningCertificateValidity *_validity;
-    id _underlyingType;
     NSArray *_keychainSearchList;
+    id _underlyingType;
 }
 
 + (id)createCSR:(id)arg1 email:(id)arg2 error:(id *)arg3;
@@ -42,8 +44,8 @@
 + (id)certificateKindsFromCertificateValues:(id)arg1;
 + (id)certificateKindsFromCertificate:(struct __SecCertificate *)arg1;
 - (void).cxx_destruct;
-@property(readonly) NSArray *keychainSearchList; // @synthesize keychainSearchList=_keychainSearchList;
 @property(readonly) id underlyingType; // @synthesize underlyingType=_underlyingType;
+@property(readonly) NSArray *keychainSearchList; // @synthesize keychainSearchList=_keychainSearchList;
 @property(readonly) DVTSigningCertificateValidity *validity; // @synthesize validity=_validity;
 @property(readonly) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
 @property(readonly) DVTLogAspect *logAspect; // @synthesize logAspect=_logAspect;
@@ -53,12 +55,13 @@
 - (id)p12DataWithPassword:(id)arg1 error:(id *)arg2;
 - (id)_valueInSubjectNameSectionForOID:(id)arg1;
 @property(readonly) NSDictionary *certificateValues; // @synthesize certificateValues=_certificateValues;
-@property(readonly) _Bool isSelfSigned;
+@property(readonly) _Bool isWWDRIssued;
+@property(readonly) NSNumber *isSelfSigned;
 - (id)defaultDesignatedRequirementsForIdentifier:(id)arg1;
 - (id)defaultDesignatedRequirements;
 @property(readonly) DVTSigningCertificateSerialNumber *serialNumber; // @synthesize serialNumber=_serialNumber;
+@property(readonly) NSString *sha256Hash; // @synthesize sha256Hash=_sha256Hash;
 @property(readonly) NSString *sha1Hash; // @synthesize sha1Hash=_sha1Hash;
-@property(readonly, getter=isForServer) _Bool forServer;
 @property(readonly, getter=isExpired) _Bool expired;
 @property(readonly) NSDate *issueDate; // @synthesize issueDate=_issueDate;
 @property(readonly, getter=isIdentity) _Bool identity;
@@ -74,12 +77,16 @@
 @property(readonly) NSSet *certificateKinds; // @synthesize certificateKinds=_certificateKinds;
 - (id)copyWithClearedCaches;
 - (long long)compare:(id)arg1;
-- (unsigned long long)hash;
+@property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (struct __SecCertificate *)certificateRef;
-- (id)description;
+@property(readonly, copy) NSString *description;
 - (id)initWithUnderlyingType:(id)arg1 logAspect:(id)arg2;
 - (id)initWithUnderlyingType:(id)arg1 keychainSearchList:(id)arg2 logAspect:(id)arg3;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) Class superclass;
 
 @end
 

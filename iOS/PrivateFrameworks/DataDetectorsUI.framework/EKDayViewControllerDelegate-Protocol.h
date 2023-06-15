@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <DataDetectorsUI/EKUIAppReviewPrompter-Protocol.h>
 #import <DataDetectorsUI/NSObject-Protocol.h>
 
 @class EKCalendarDate, EKDayOccurrenceView, EKDayViewController, EKEvent, NSArray, NSDate, NSDateComponents, NSString, UIView, UIViewController;
 
-@protocol EKDayViewControllerDelegate <NSObject>
+@protocol EKDayViewControllerDelegate <NSObject, EKUIAppReviewPrompter>
 - (void)dayOccurrenceViewSelected:(EKDayOccurrenceView *)arg1 source:(unsigned long long)arg2;
 - (NSArray *)selectedEventsForEditMenu;
 - (void)dayViewController:(EKDayViewController *)arg1 didChangeDisplayDate:(NSDateComponents *)arg2;

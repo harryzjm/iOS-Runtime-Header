@@ -7,6 +7,7 @@
 #import <ShazamKit/SHMediaItem.h>
 
 @interface SHMediaItem (Presentation)
++ (void)presentMediaItem:(id)arg1 presentationSettings:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (void)presentMediaItem:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (id)sh_uiServerConnection;
 @end

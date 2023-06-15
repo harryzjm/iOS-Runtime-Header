@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSDictionary *queries; // @synthesize queries=_queries;
 @property(readonly, retain, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 - (void)enumerateQueriesUsingBlock:(CDUnknownBlockType)arg1;
-- (void)removeQueryForIdentifier:(id)arg1;
+- (id)outstandingQueryForIdentifier:(id)arg1;
 - (void)removeQuery:(id)arg1;
 - (void)addQuery:(id)arg1;
 - (id)description;

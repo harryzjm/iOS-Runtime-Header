@@ -8,7 +8,6 @@
 
 @interface NSItemProvider (SafariServicesExtras)
 + (void)_sf_loadObjectsFromItemProviders:(id)arg1 usingLoader:(CDUnknownFunctionPointerType)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)_sf_registerFileRepresentationForQuickLookDocument:(id)arg1;
 - (void)_sf_loadObjectOfClasses:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 @end
 

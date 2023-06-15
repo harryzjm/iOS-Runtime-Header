@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class GEOResourceManifestManager, GEOTileDB, GEOTileKeyList, GEOTileKeyMap;
+@class GEOResourceManifestManager, GEOTileDB, GEOTileKeyList;
 
 __attribute__((visibility("hidden")))
 @interface GEOStaleTileUpdater
@@ -13,13 +13,10 @@ __attribute__((visibility("hidden")))
     GEOResourceManifestManager *_manifestManager;
     GEOTileKeyList *_keysRemaining;
     unsigned long long _numberOfTilesOriginallyConsidered;
-    GEOTileKeyMap *_cacheMissType;
     unsigned long long _batchSize;
 }
 
 - (void).cxx_destruct;
-- (void)downloadDidFailForTile:(struct _GEOTileKey *)arg1 error:(id)arg2;
-- (void)downloadDidSucceedForTile:(struct _GEOTileKey *)arg1 downloadSize:(unsigned long long)arg2 httpStatus:(unsigned int)arg3;
 - (void)_addMoreKeysToListIfNeeded:(id)arg1 staleCachedETags:(id)arg2 staleCachedData:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)determineNextBatchWithQueue:(id)arg1 callback:(CDUnknownBlockType)arg2;
 - (unsigned long long)numberOfTilesConsidered;

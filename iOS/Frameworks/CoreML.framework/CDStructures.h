@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#pragma mark Function Pointers
+#pragma mark Function Pointers and Blocks
 
 typedef void (*CDUnknownFunctionPointerType)(void); // return type and parameters are unknown
+
+typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
 
 #pragma mark Named Structures
 
@@ -32,11 +34,41 @@ struct _KDBoundingBox {
 
 struct _KDInterval;
 
+struct atomic<bool> {
+    struct __cxx_atomic_impl<bool, std::__cxx_atomic_base_impl<bool>> {
+        _Atomic _Bool __a_value;
+    } __a_;
+};
+
+struct e5rt_async_event;
+
+struct mach_timebase_info {
+    unsigned int numer;
+    unsigned int denom;
+};
+
+struct mutex {
+    struct _opaque_pthread_mutex_t {
+        long long __sig;
+        char __opaque[56];
+    } __m_;
+};
+
 struct net;
+
+struct os_unfair_lock_s {
+    unsigned int _os_unfair_lock_opaque;
+};
 
 struct shared_ptr<Espresso::net> {
     struct net *__ptr_;
     struct __shared_weak_count *__cntrl_;
+};
+
+struct unique_ptr<e5rt_async_event, MLE5ObjectDeleter<e5rt_async_event>> {
+    struct __compressed_pair<e5rt_async_event *, MLE5ObjectDeleter<e5rt_async_event>> {
+        struct e5rt_async_event *__value_;
+    } __ptr_;
 };
 
 struct vector<_KDInterval, std::allocator<_KDInterval>> {

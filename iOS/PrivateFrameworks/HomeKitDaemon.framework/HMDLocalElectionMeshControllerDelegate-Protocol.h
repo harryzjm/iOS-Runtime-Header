@@ -6,10 +6,11 @@
 
 #import <HomeKitDaemon/NSObject-Protocol.h>
 
+@class NSUUID;
 @protocol HMDLocalElectionMeshController;
 
 @protocol HMDLocalElectionMeshControllerDelegate <NSObject>
-- (void)meshControllerDidReceivePingFromLeader:(id <HMDLocalElectionMeshController>)arg1;
+- (void)meshController:(id <HMDLocalElectionMeshController>)arg1 didReceivePingFromLeaderWithPrimaryResidentUUID:(NSUUID *)arg2;
 - (void)meshControllerDidUpdatesNodes:(id <HMDLocalElectionMeshController>)arg1;
 - (void)meshControllerDidElectLeader:(id <HMDLocalElectionMeshController>)arg1;
 - (void)meshControllerDidStartElection:(id <HMDLocalElectionMeshController>)arg1;

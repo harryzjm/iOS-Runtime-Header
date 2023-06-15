@@ -4,15 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <swiftCore/_TtCs12_SwiftObject.h>
+#import ".h"
 
 @class MISSING_TYPE;
 
-@interface _TtC18VisualIntelligence25DomainAssignmentProcessor : _TtCs12_SwiftObject
+@interface _TtC18VisualIntelligence25DomainAssignmentProcessor : 
 {
-    MISSING_TYPE *ontologyGraph;
     MISSING_TYPE *assignmentRules;
-    MISSING_TYPE *config;
 }
 
 @end

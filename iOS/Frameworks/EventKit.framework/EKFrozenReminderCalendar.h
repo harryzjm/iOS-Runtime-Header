@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 
 + (Class)meltedClass;
 - (void).cxx_destruct;
+- (id)image;
 - (id)syncError;
 - (id)sharedOwnerName;
 - (_Bool)isColorDisplayOnly;

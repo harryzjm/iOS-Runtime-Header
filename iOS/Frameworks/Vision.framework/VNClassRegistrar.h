@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 + (_Bool)getClassCode:(unsigned int *)arg1 forClass:(Class)arg2 error:(id *)arg3;
 + (id)classNameForClassCode:(unsigned int)arg1 error:(id *)arg2;
 + (Class)classForClassCode:(unsigned int)arg1 error:(id *)arg2;
++ (void)enumerateEntriesUsingBlock:(CDUnknownBlockType)arg1;
 + (_Bool)observationBoundsAreNormalizedToROIForRequestClassCode:(unsigned int)arg1 revision:(unsigned long long)arg2;
 
 @end

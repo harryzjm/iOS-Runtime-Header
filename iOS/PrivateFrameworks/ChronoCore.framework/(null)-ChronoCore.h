@@ -5,11 +5,6 @@
 //
 
 @interface (null) (ChronoCore)
-- (_Bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
-- (void)_reloadAllTimelines:(CDUnknownBlockType)arg1;
-- (void)_reloadTimelinesOfKind:(id)arg1 inBundle:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_reloadTimelinesOfKind:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_loadCurrentConfigurations:(CDUnknownBlockType)arg1;
-- (void)invalidateConfigurationRecommendationsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)listener:(id)arg1 didReceiveConnection:(id)arg2 withContext:(id)arg3;
 @end
 

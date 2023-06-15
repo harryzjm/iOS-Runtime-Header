@@ -13,6 +13,8 @@
 @property(readonly, copy, nonatomic) NSUUID *uniqueElementIdentifier;
 - (void)uniquelyIdentifyElement;
 @property(readonly, nonatomic) id <SAUILayoutSpecifyingOverriding> systemApertureLayoutSpecifyingOverrider;
+- (void)setPerformingSystemApertureInertTransition:(_Bool)arg1;
+- (_Bool)isPerformingSystemApertureInertTransition;
 - (void)setSettlingFromSystemApertureOvershootingTransition:(_Bool)arg1;
 - (_Bool)isSettlingFromSystemApertureOvershootingTransition;
 - (void)setPerformingSystemApertureCustomContentTransition:(_Bool)arg1;

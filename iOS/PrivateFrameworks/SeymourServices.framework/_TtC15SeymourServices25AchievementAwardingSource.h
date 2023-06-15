@@ -10,8 +10,11 @@
 
 @interface _TtC15SeymourServices25AchievementAwardingSource : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *healthStore;
     MISSING_TYPE *achievementDataStore;
-    MISSING_TYPE *workoutDataSource;
+    MISSING_TYPE *catalogDataStore;
+    MISSING_TYPE *workoutPlanDataStore;
+    MISSING_TYPE *configurationDataStore;
     MISSING_TYPE *persistenceStore;
 }
 

@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     NSDictionary *_policies;
     double _expectedProcessEndTime;
     unsigned int _packetCountInNetworkQueue;
+    int _packetCountBytesInNetworkQueue;
     unsigned int _networkQueueServiceRate;
     unsigned int _networkQueueServiceRateMean;
     unsigned int _networkQueueServiceRateStdDev;
@@ -30,6 +31,7 @@ __attribute__((visibility("hidden")))
     int _budgetBufferSize;
 }
 
+@property int packetCountBytesInNetworkQueue; // @synthesize packetCountBytesInNetworkQueue=_packetCountBytesInNetworkQueue;
 @property unsigned int packetCountInNetworkQueue; // @synthesize packetCountInNetworkQueue=_packetCountInNetworkQueue;
 @property(readonly, nonatomic) double expectedProcessEndTime; // @synthesize expectedProcessEndTime=_expectedProcessEndTime;
 - (int)getRemainingAQMBudgetWithPacket:(id)arg1;

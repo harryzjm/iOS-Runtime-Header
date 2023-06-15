@@ -6,12 +6,14 @@
 
 #import <PhotosGraph/NSObject-Protocol.h>
 
-@class NSSet, NSString;
+@class NSString, PGGraphMomentNodeCollection, PGGraphPersonNodeCollection;
 
 @protocol PGGraphIngestPet <NSObject>
-@property(readonly, nonatomic) NSSet *ownerNodes;
-@property(readonly, nonatomic) NSSet *momentNodes;
+@property(readonly, nonatomic) PGGraphPersonNodeCollection *ownerNodes;
+@property(readonly, nonatomic) PGGraphMomentNodeCollection *momentNodes;
 @property(readonly, nonatomic) unsigned long long species;
 @property(readonly, nonatomic) NSString *localIdentifier;
+@property(readonly, nonatomic) NSString *name;
+- (void)addOwnerNodes:(PGGraphPersonNodeCollection *)arg1;
 @end
 

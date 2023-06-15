@@ -9,6 +9,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (struct CGColor *)listeningButtonBackgroundTransparentColor;
 - (struct CGColor *)listeningCircleColor;
 - (struct CGColor *)listeningButtonBackgroundColor;
 

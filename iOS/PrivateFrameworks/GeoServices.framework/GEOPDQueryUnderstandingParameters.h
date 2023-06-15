@@ -6,7 +6,7 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-@class GEOPDViewportInfo, NSString, PBDataReader, PBUnknownFields;
+@class GEOPDQueryUnderstandingTaxonomyLookupParameters, GEOPDQueryUnderstandingTaxonomySearchParameters, GEOPDViewportInfo, NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDQueryUnderstandingParameters : PBCodable
@@ -14,6 +14,8 @@ __attribute__((visibility("hidden")))
     PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
     NSString *_searchString;
+    GEOPDQueryUnderstandingTaxonomyLookupParameters *_taxonomyLookupParameters;
+    GEOPDQueryUnderstandingTaxonomySearchParameters *_taxonomySearchParameters;
     GEOPDViewportInfo *_viewportInfo;
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
@@ -25,6 +27,8 @@ __attribute__((visibility("hidden")))
         unsigned int has_workflow:1;
         unsigned int read_unknownFields:1;
         unsigned int read_searchString:1;
+        unsigned int read_taxonomyLookupParameters:1;
+        unsigned int read_taxonomySearchParameters:1;
         unsigned int read_viewportInfo:1;
         unsigned int wrote_anyField:1;
     } _flags;

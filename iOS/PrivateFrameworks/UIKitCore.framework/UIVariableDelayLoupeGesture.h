@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property __weak UIResponder<UITextInput> *textView; // @synthesize textView=_textView;
 - (_Bool)_isGestureType:(long long)arg1;
-- (void)startTimer;
+- (void)_startEnoughTimeElapsedTimer;
 @property(readonly, nonatomic) _Bool isLongPress;
 - (_Bool)shouldUseLegacyBehavior;
 - (_Bool)isWithinRecentTap;

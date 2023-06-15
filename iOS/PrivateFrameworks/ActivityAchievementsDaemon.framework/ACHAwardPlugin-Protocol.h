@@ -7,7 +7,7 @@
 #import <ActivityAchievementsDaemon/NSObject-Protocol.h>
 
 @class NSString;
-@protocol ACHTemplateAssetSource;
+@protocol ACHAchievementProgressProviding, ACHTemplateAssetSource;
 
 @protocol ACHAwardPlugin <NSObject>
 @property(readonly, copy, nonatomic) NSString *pluginIdentifier;
@@ -15,5 +15,6 @@
 
 @optional
 + (_Bool)shouldLoadPlugin;
+- (id <ACHAchievementProgressProviding>)progressProvider;
 @end
 

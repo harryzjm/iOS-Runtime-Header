@@ -11,6 +11,8 @@
 @interface _TtC16SiriVideoIntents19SiriSignalsRecorder : _TtCs12_SwiftObject
 {
     MISSING_TYPE *handlers;
+    MISSING_TYPE *selfMessageStream;
+    MISSING_TYPE *createTriggerMessageSender;
 }
 
 @end

@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     struct CGRect _formerTextEffectsContentFrame;
     _Bool _observingTextEffectsWindowRotation;
     long long _interfaceOrientation;
+    UIView *_viewForRemoteTextEffectsWindowMatchAnimation;
     struct {
         unsigned int hasIntrinsicContentSize:1;
         unsigned int observingBoundingPathChanges:1;
@@ -32,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (id)focusItemsInRect:(struct CGRect)arg1;
 - (id)_childFocusRegionsInRect:(struct CGRect)arg1 inCoordinateSpace:(id)arg2;
 - (_Bool)canBecomeFocused;
+- (id)nextResponder;
 @property(readonly, nonatomic) _UIRemoteViewController *remoteViewController;
 - (void)_prepareForWindowDealloc;
 - (void)_prepareForWindowHostingSceneRemoval;
@@ -48,7 +50,9 @@ __attribute__((visibility("hidden")))
 - (void)_boundingPathMayHaveChangedForView:(id)arg1 relativeToBoundsOriginOnly:(_Bool)arg2;
 - (id)_boundingPathForRemoteViewService;
 - (_Bool)_canSendViewServiceActualBoundingPath;
-- (void)_geometryChanged:(const CDStruct_f46536fb *)arg1 forAncestor:(id)arg2;
+- (struct CGRect)_boundsForRemoteViewService;
+- (struct CGSize)_sizeForRemoteViewService;
+- (void)_geometryChanged:(const CDStruct_c9afd433 *)arg1 forAncestor:(id)arg2;
 - (_Bool)_fencingEffectsAreVisible;
 - (long long)_interfaceOrientationForScene:(id)arg1;
 - (void)_updateSceneGeometries:(id)arg1 forOrientation:(long long)arg2;
@@ -57,7 +61,7 @@ __attribute__((visibility("hidden")))
 - (void)_textEffectsWindowDidRotate:(id)arg1;
 - (void)_updateTextEffectsGeometriesImmediately;
 - (void)_updateTextEffectsWindowSafeAreaInsets;
-- (void)_updateTextEffectsWindowSceneSize;
+- (void)_updateTextEffectsWindowHostedViewSize;
 - (_Bool)_needsTextEffectsUpdateToFrame:(struct CGRect)arg1;
 - (void)updateIntrinsicContentSize:(struct CGSize)arg1;
 - (struct CGSize)_intrinsicSizeWithinSize:(struct CGSize)arg1;

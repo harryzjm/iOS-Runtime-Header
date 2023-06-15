@@ -15,8 +15,8 @@
 }
 
 - (void).cxx_destruct;
-@property(copy, nonatomic) CKPublicKey *publicKey; // @synthesize publicKey=_publicKey;
-@property(copy, nonatomic) NSData *wrappedKey; // @synthesize wrappedKey=_wrappedKey;
+@property(readonly, nonatomic) CKPublicKey *publicKey; // @synthesize publicKey=_publicKey;
+@property(readonly, copy, nonatomic) NSData *wrappedKey; // @synthesize wrappedKey=_wrappedKey;
 - (id)initWithWrappedKey:(id)arg1 publicKey:(id)arg2;
 
 @end

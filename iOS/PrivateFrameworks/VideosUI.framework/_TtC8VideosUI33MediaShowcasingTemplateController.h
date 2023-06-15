@@ -10,7 +10,9 @@ __attribute__((visibility("hidden")))
 @interface _TtC8VideosUI33MediaShowcasingTemplateController
 {
     MISSING_TYPE *titleView;
-    MISSING_TYPE *shouldSetupTitleView;
+    MISSING_TYPE *$__lazy_storage_$_inlinePrototypeTitleView;
+    MISSING_TYPE *toolbarLayout;
+    MISSING_TYPE *previousSizeClass;
 }
 
 - (void).cxx_destruct;

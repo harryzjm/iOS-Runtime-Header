@@ -8,6 +8,7 @@
 {
 }
 
+- (unsigned long long)countOfSummaryLabelsForGroups:(id)arg1 forBodyLayout:(id)arg2 outNewTransforms:(struct CGAffineTransform **)arg3 outNewElementSizes:(struct CGSize **)arg4 outNewClipRects:(struct CGRect **)arg5 outNewStrings:(id *)arg6;
 - (struct CGPath *)newRoundedRectPathWithRect:(struct CGRect)arg1 chartInfo:(id)arg2 series:(id)arg3 groupIndex:(unsigned long long)arg4 isVertical:(_Bool)arg5 forGroups:(id)arg6 forBodyLayout:(id)arg7;
 - (id)p_stackedRectsWithChartInfo:(id)arg1 forGroups:(id)arg2 forBodyLayout:(id)arg3;
 - (unsigned long long)p_logicalSeriesIndexForSeries:(id)arg1;

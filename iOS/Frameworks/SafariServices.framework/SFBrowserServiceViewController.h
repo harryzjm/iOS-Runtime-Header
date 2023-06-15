@@ -6,7 +6,7 @@
 
 #import "_SFBrowserContentViewController.h"
 
-@class NSDate, NSString, NSTimer, SFBrowserPersonaAnalyticsHelper, SFSystemAlert, WKProcessPool, _SFSafariViewControllerPrewarmingRequestThrottler, _SFWebViewUsageMonitor;
+@class NSDate, NSString, NSTimer, SFSystemAlert, WKProcessPool, WKWebsiteDataStore, _SFSafariViewControllerPrewarmingRequestThrottler, _SFWebViewUsageMonitor;
 
 __attribute__((visibility("hidden")))
 @interface SFBrowserServiceViewController : _SFBrowserContentViewController
@@ -15,12 +15,12 @@ __attribute__((visibility("hidden")))
     _SFWebViewUsageMonitor *_usageMonitor;
     NSDate *_lastHostApplicationSuspendDate;
     WKProcessPool *_processPool;
+    WKWebsiteDataStore *_persistentDataStore;
     _Bool _canNotifyHostApplicationOfRedirects;
     _Bool _touchEventsShouldStopRedirectNotifications;
     _Bool _isExpectingClientRedirect;
     _Bool _hasBegunFirstNavigation;
     _Bool _hasConnectedToHostApplication;
-    SFBrowserPersonaAnalyticsHelper *_cachedAnalyticsHelper;
     NSTimer *_redirectNotificationTimer;
     _Bool _hostApplicationIsForeground;
     _SFSafariViewControllerPrewarmingRequestThrottler *_prewarmingRequestThrottler;
@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSString *hostApplicationCallbackURLScheme; // @synthesize hostApplicationCallbackURLScheme=_hostApplicationCallbackURLScheme;
 @property(retain, nonatomic) SFSystemAlert *webAuthenticationDataSharingConfirmation; // @synthesize webAuthenticationDataSharingConfirmation=_webAuthenticationDataSharingConfirmation;
 @property(nonatomic) _Bool _isUsedForAuthentication; // @synthesize _isUsedForAuthentication;
+- (void)activityViewController:(id)arg1 didCompleteActivity:(id)arg2 success:(_Bool)arg3;
 - (void)_updateMaxVisibleHeightPercentageUserDriven:(_Bool)arg1;
 - (void)linkPreviewHeader:(id)arg1 didEnableLinkPreview:(_Bool)arg2;
 - (void)browserViewDidReceiveTouchEvent:(id)arg1;
@@ -49,7 +50,6 @@ __attribute__((visibility("hidden")))
 - (_Bool)_shouldReloadImmediatelyAfterPageLoadError;
 - (id)_hostAppBundleId;
 - (long long)_persona;
-- (id)_analyticsHelper;
 - (id)bundleIdentifierForProfileInstallation;
 - (id)_applicationPayloadForOpeningInSafari;
 - (void)closeDatabasesOnBackgroundingOrDismissal;
@@ -70,10 +70,14 @@ __attribute__((visibility("hidden")))
 - (void)_fetchActivityViewControllerInfoForURL:(id)arg1 title:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)didFetchCustomActivities:(id)arg1 excludedActivityTypes:(id)arg2;
 - (void)_getSafariDataSharingModeWithCompletion:(CDUnknownBlockType)arg1;
+- (id)_createPersistentDataStoreWithConfiguration:(id)arg1;
 - (id)websiteDataStoreConfiguration;
 - (_Bool)_ensureWebsiteDataStoreURL:(id)arg1 cookieStoreURL:(id)arg2;
+- (id)_cookieStoreURL;
 - (id)_websiteDataStoreURL;
 - (id)_webDataStoreRootURL;
+- (id)_sharedWebDataStoreRootURL;
+- (id)_safariWebDataStoreRootURL;
 - (void)_openCurrentURLInSafari;
 - (void)openCurrentURLInSafariFromPreviewAction;
 - (void)_didResolveDestinationURL:(id)arg1 pendingAppLinkCheck:(_Bool)arg2;

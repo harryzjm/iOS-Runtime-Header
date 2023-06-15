@@ -8,6 +8,7 @@
 
 @interface SFMiniCardSection (SearchUIViewClass)
 - (Class)_searchUIViewClass;
+- (_Bool)_wantsHeaderSeparator;
 - (double)searchUIHorizontallyScrollingSectionModel_widthDimensionMultiplier;
 @end
 

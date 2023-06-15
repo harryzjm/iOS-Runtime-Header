@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)maximumCountOfValuesForContactProperty:(id)arg1 label:(id)arg2;
 - (id)supportedLabelsForContactProperty:(id)arg1;
 - (unsigned long long)maximumCountOfValuesForContactProperty:(id)arg1;
-- (id)unsupportedAttributesForLableledContactProperty:(id)arg1;
+- (id)unsupportedAttributesForLabeledContactProperty:(id)arg1;
 - (id)contactRestrictionsForLabeledProperty:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
 

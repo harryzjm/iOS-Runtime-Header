@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CKTestDeviceReference;
+@protocol CKTestDeviceReferenceProtocol;
 
 @protocol CKXPCConnectionMuxer
 - (void)getProcessScopedClientProxyCreatorWithCompletionHandler:(void (^)(id <CKXPCProcessScopedClient>))arg1;
-- (void)getLogicalDeviceScopedClientProxyCreatorForTestDeviceReference:(CKTestDeviceReference *)arg1 completionHandler:(void (^)(id <CKXPCLogicalDeviceScopedClient>))arg2;
+- (void)getLogicalDeviceScopedClientProxyCreatorForTestDeviceReferenceProtocol:(id <CKTestDeviceReferenceProtocol>)arg1 completionHandler:(void (^)(id <CKXPCLogicalDeviceScopedClient>))arg2;
 @end
 

@@ -12,7 +12,7 @@
 {
     MISSING_TYPE *coreDataStore;
     MISSING_TYPE *coreDataStoreServer;
-    MISSING_TYPE *orderMirroringCoordinator;
+    MISSING_TYPE *storeMappingCoordinator;
     MISSING_TYPE *coreDataSpotlightIndexer;
 }
 

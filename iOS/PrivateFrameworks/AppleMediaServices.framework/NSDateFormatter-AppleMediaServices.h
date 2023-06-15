@@ -7,6 +7,9 @@
 #import <Foundation/NSDateFormatter.h>
 
 @interface NSDateFormatter (AppleMediaServices)
-+ (id)serverFriendlyFormatter;
++ (id)_ams_serverFriendlyLocalTimeZoneFormatter;
++ (id)_ams_serverFriendlyFormatter;
++ (id)ams_serverFriendlyLocalTimeZoneFormatter;
++ (id)ams_serverFriendlyFormatter;
 @end
 

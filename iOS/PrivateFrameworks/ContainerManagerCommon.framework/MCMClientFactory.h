@@ -23,9 +23,9 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) MCMUserIdentityCache *userIdentityCache; // @synthesize userIdentityCache=_userIdentityCache;
 - (id)initWithUserIdentityCache:(id)arg1 clientCodeSignInfoCache:(id)arg2 clientIdentityCache:(id)arg3;
 - (id)_codeSignInfoWithClient:(struct container_client *)arg1 CDHash:(id)arg2 identifier:(id)arg3 error:(id *)arg4;
-- (id)_clientIdentityWithClient:(struct container_client *)arg1 realAuditToken:(CDStruct_4c969caf)arg2 error:(id *)arg3;
-- (id)_clientIdentityWithClientConnectionContext:(id)arg1 error:(id *)arg2;
-- (id)clientIdentityWithClientConnectionContext:(id)arg1 clientMessageContext:(id)arg2 xpcMessage:(id)arg3 error:(id *)arg4;
+- (id)_clientIdentityWithClient:(struct container_client *)arg1 realAuditToken:(CDStruct_4c969caf)arg2 extension:(_Bool)arg3 error:(id *)arg4;
+- (id)_clientIdentityWithClientMessageContext:(id)arg1 error:(id *)arg2;
+- (id)clientIdentityWithClientMessageContext:(id)arg1 xpcMessage:(id)arg2 error:(id *)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

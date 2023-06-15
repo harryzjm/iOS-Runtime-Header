@@ -21,6 +21,7 @@
 - (void)catalystFiltersNavigationBackButtonTapped:(id)arg1;
 - (CKConversation *)currentlyShownConversation;
 - (void)conversationListDidBeginMultipleSelectionWithInitialSelectedCount:(long long)arg1;
+- (void)updateForNoConversationSelected;
 - (void)conversationListFailedToSelectShownConversation;
 - (void)dismissConversationListAnimated:(_Bool)arg1;
 - (void)updatedFilterMode:(unsigned long long)arg1 previousFilterMode:(unsigned long long)arg2;

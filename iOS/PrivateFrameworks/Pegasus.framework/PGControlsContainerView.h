@@ -54,6 +54,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1;
 - (void)controlsViewModel:(id)arg1 valuesChangedFromOldValue:(id)arg2;
 - (void)controlsViewModel:(id)arg1 didIssueCommand:(id)arg2;
+- (void)setHoverGestureDisbaled:(_Bool)arg1;
 - (id)viewModel;
 - (void)setControlsContainerHidden:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)_setContinuousCornerRadius:(double)arg1;

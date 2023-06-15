@@ -8,8 +8,8 @@
 
 @protocol BSSharedMemoryStoreData <NSCopying>
 + (id)deserializeFromReader:(_Bool (^)(void *, unsigned long long))arg1;
+@property(readonly, nonatomic) unsigned long long serializedDataLength;
 - (_Bool)isEqual:(id)arg1;
 - (_Bool)serializeToWriter:(_Bool (^)(void *, unsigned long long))arg1;
-@property(nonatomic, readonly) long long serializedDataLength;
 @end
 

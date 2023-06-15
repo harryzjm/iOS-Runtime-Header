@@ -9,7 +9,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (_Bool)wantsKeyboardFocusGuides;
+- (_Bool)collapesKeyboardWhenNotFocused;
 - (void)willFocusOffscreenViewForController:(id)arg1 withHeading:(unsigned long long)arg2;
 - (void)didUnfocusSearchBarForController:(id)arg1;
 - (void)didFocusSearchBarForController:(id)arg1;

@@ -11,7 +11,8 @@
 __attribute__((visibility("hidden")))
 @interface VCRateControlAlgorithmBase : NSObject
 {
-    struct VCRateControlAlgorithmConfig _config;
+    struct tagVCRateControlAlgorithmVTable _vTable;
+    struct tagVCRateControlAlgorithmConfig _config;
     VCRateControlMediaController *_mediaController;
     _Atomic _Bool _paused;
     double _pauseStartTime;
@@ -37,13 +38,24 @@ __attribute__((visibility("hidden")))
     double _lastCongestionTime;
     double _lastRampDownTimeDueToFeedback;
     double _lastRampDownTimeDueToBaseband;
+    double _stabilizationTime;
     unsigned int _remoteBandwidthEstimation;
     unsigned int _localBandwidthEstimation;
     double _lastNoOvershootBWEstimationTime;
     double _firstBelowNoRampUpBandwidthTime;
     _Bool _belowNoRampUpBandwidth;
     _Bool _isOvershoot;
-    CDStruct_55dce769 _owrdList;
+    struct {
+        double time[100];
+        double owrd[100];
+        int frontIndex;
+        int rearIndex;
+        unsigned int size;
+        double nowrd;
+        double nowrdShort;
+        double nowrdAcc;
+        _Bool isOWRDListTooShortDuringInitialRampUp;
+    } _owrdList;
     _Bool _isOWRDListReady;
     _Bool _isOWRDConstant;
     double _owrd;
@@ -51,18 +63,14 @@ __attribute__((visibility("hidden")))
     double _nowrdShort;
     double _nowrdAcc;
     double _lastOWRDChangeTime;
-    struct {
-        double time;
-        double packetLossRate;
-        double packetLossRateVideo;
-        _Bool isLossIncreasing;
-    } _lossEventBuffer[64];
+    struct tagVCRateControlLossEvent _lossEventBuffer[64];
     unsigned int _lossEventBufferIndex;
     double _lastLossEventRampDownTime;
     double _firstLossEventRampDownTime;
     int _packetLossRateBadTrendCount;
     unsigned int _lossEventBandwidthLimit;
     unsigned int _lossEventBandwidthConfidence;
+    struct tagVCStatisticsECNStats _currentECNStats;
     unsigned int _mostBurstLoss;
     double _packetLossRate;
     double _previousPacketLossRate;
@@ -83,8 +91,10 @@ __attribute__((visibility("hidden")))
     void *_logBasebandDump;
     _Bool _isPeriodicLoggingEnabled;
     _Bool _didMBLRampDown;
+    struct tagVCRateControlAlgorithmReportStats _reportStatistics;
 }
 
+@property(readonly, nonatomic) struct tagVCRateControlAlgorithmReportStats reportStatistics; // @synthesize reportStatistics=_reportStatistics;
 @property(nonatomic) _Bool isFirstTimestampArrived; // @synthesize isFirstTimestampArrived=_isFirstTimestampArrived;
 @property(nonatomic) unsigned int rateSharingCount; // @synthesize rateSharingCount=_rateSharingCount;
 @property(readonly, nonatomic) _Bool isFirstInitialRampUpDone; // @synthesize isFirstInitialRampUpDone=_isFirstInitialRampUpDone;
@@ -107,39 +117,10 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) unsigned int rateChangeCounter; // @synthesize rateChangeCounter=_rateChangeCounter;
 @property(readonly, nonatomic) unsigned int targetBitrate; // @synthesize targetBitrate=_targetBitrate;
 @property(readonly, nonatomic) _Bool isCongested; // @synthesize isCongested=_isCongested;
-@property(readonly, nonatomic) struct VCRateControlAlgorithmConfig config; // @synthesize config=_config;
-- (void)updateCongestionStatusWhenRampDown:(double)arg1;
-- (void)updateCongestionStatusWhenRampUp;
-- (_Bool)shouldRampDownDueToLossThreshold;
-- (_Bool)shouldRampDownDueToConsecutiveLoss;
-- (_Bool)shouldRampDownDueToLossEvent;
-- (_Bool)shouldBlockRampUpDueToLossEventThreshold;
-- (_Bool)allowRampUpWithContinuousTargetBitrate;
-- (double)rampUpTargetBitrateContinuousWithBandwidthDiff:(int)arg1;
-- (void)resetLossEventBandwidthLimit;
-- (void)updateLossEventBandwidthLimit:(unsigned int)arg1;
-- (void)resetLossEventBuffer;
-- (double)lossEventOverThresholdRatio;
-- (int)lossEventIncreasingCount;
-- (void)updateLossEvent;
+@property(readonly, nonatomic) struct tagVCRateControlAlgorithmConfig config; // @synthesize config=_config;
 @property(readonly, nonatomic) _Bool isLossBasedAdaptationOn;
-- (_Bool)recentlyGoAboveRampUpBandwidth;
-- (_Bool)keepOvershootingRampDownBandwidth;
-- (void)checkBandwidthOvershootWithRemoteBandwidthEstimation:(unsigned int)arg1;
-- (void)stateEnter;
-- (void)stateExit;
-- (void)stateChangeTo:(int)arg1;
-- (void)calculateCongestionMetricsFromOWRD:(double)arg1 time:(double)arg2;
-- (unsigned short)getTimestampFromMicroTime:(double)arg1;
-- (double)getDoubleTimeFromTimestamp:(unsigned int)arg1 timestampTick:(unsigned int)arg2 wrapAroundCounter:(unsigned int)arg3;
-- (void)logToDumpFilesWithString:(id)arg1;
-- (void)enableBasebandDump:(void *)arg1;
-- (void)enableLogDump:(void *)arg1 enablePeriodicLogging:(_Bool)arg2;
-- (_Bool)doRateControlWithStatistics:(CDStruct_7df19fcb)arg1;
-- (void)configure:(struct VCRateControlAlgorithmConfig)arg1 restartRequired:(_Bool)arg2;
-- (void)checkPaused;
-@property(nonatomic, getter=isPaused) _Bool paused;
 - (void)dealloc;
+- (_Bool)setUpVTable;
 - (id)init;
 
 // Remaining properties

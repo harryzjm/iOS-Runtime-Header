@@ -6,15 +6,33 @@
 
 #import <MIME/MFMimePart.h>
 
-@class MFError;
+@class ECSignatureInfo, MFError;
 
 @interface MFMimePart (FormatFlowedSupportInternal)
 - (unsigned int)formatFlowedOptions;
 - (id)copySigners;
 @property(readonly, nonatomic) MFError *SMIMEError;
+@property(readonly, nonatomic) ECSignatureInfo *signatureInfo;
+@property(readonly, nonatomic) _Bool isEncrypted;
+@property(readonly, nonatomic) _Bool isSigned;
+- (id)_decodeApplicationPkcs7MimeWithSecCMS;
+- (id)_decodeMultipartSignedWithSecCMS;
+- (id)_associateAttachmentsFrom:(id)arg1 to:(id)arg2;
+- (id)_messageBodyFromData:(id)arg1 outUnwrappedMessage:(id *)arg2;
+- (id)_signingErrorWithStatus:(int)arg1 localizedDescription:(id)arg2;
+- (struct __SecTrust *)_signingTrustForAddress:(id)arg1 signatureInfo:(id)arg2 encryptionTrust:(struct __SecTrust **)arg3 error:(id *)arg4;
+- (id)_verifySignatureWithDecoder:(id)arg1 signedData:(id *)arg2 error:(id *)arg3;
+- (id)_decodeEncodedData:(id)arg1 detachedContentData:(id)arg2 isEncrypted:(_Bool *)arg3 isSigned:(_Bool *)arg4 signers:(id)arg5 error:(id *)arg6;
+- (id)_decodeWithBlock:(CDUnknownBlockType)arg1;
 - (id)decodeApplicationPkcs7_mime;
 - (id)decodeMultipartSigned;
+- (id)_encryptedDataUsingMessageSecurity:(id)arg1 compositionSpecification:(id)arg2 contentType:(id *)arg3 error:(id *)arg4;
+- (id)_encryptedDataUsingSecCMS:(id)arg1 compositionSpecification:(id)arg2 error:(id *)arg3;
+- (id)_encryptedDataForContentData:(id)arg1 compositionSpecification:(id)arg2 contentType:(id *)arg3 error:(id *)arg4;
 - (id)newEncryptedPartWithData:(id)arg1 compositionSpecification:(id)arg2 encryptedData:(id *)arg3;
+- (id)_signatureDataUsingSecCMSWithData:(id)arg1 forSender:(id)arg2 compositionSpecification:(id)arg3 outError:(id *)arg4;
+- (id)_signatureDataUsingMessageSecurity:(id)arg1 forSender:(id)arg2 compositionSpecification:(id)arg3 outError:(id *)arg4;
+- (id)_signatureDataForContentData:(id)arg1 forSender:(id)arg2 compositionSpecification:(id)arg3 outError:(id *)arg4;
 - (id)newSignedPartWithData:(id)arg1 sender:(id)arg2 compositionSpecification:(id)arg3 signatureData:(id *)arg4;
 @end
 

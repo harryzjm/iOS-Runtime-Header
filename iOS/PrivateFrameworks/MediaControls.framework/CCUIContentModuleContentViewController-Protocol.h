@@ -26,6 +26,7 @@
 - (struct CCUIModuleLayoutSize)moduleLayoutSizeForOrientation:(long long)arg1;
 - (void)didTransitionToExpandedContentMode:(_Bool)arg1;
 - (void)willTransitionToExpandedContentMode:(_Bool)arg1;
+- (_Bool)shouldUseCompactContentFrameForExpandedContent;
 - (_Bool)shouldExpandModuleOnTouch:(UITouch *)arg1;
 - (_Bool)shouldFinishTransitionToExpandedContentModule;
 - (_Bool)shouldBeginTransitionToExpandedContentModule;

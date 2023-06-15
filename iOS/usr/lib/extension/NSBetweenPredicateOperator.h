@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 
 - (void)_setOptions:(unsigned long long)arg1;
 - (_Bool)performPrimitiveOperationUsingObject:(id)arg1 andObject:(id)arg2;
+- (unsigned long long)operatorType;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 
 @end

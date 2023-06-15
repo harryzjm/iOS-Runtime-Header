@@ -7,8 +7,8 @@
 @class NSData, NSString;
 
 @protocol FCAssetDataProvider
-@property(nonatomic, readonly) _Bool isRawFileConsumable;
-@property(nonatomic, readonly) NSString *filePath;
-@property(nonatomic, readonly) NSData *data;
+@property(readonly, nonatomic) _Bool isRawFileConsumable;
+@property(readonly, nonatomic) NSString *filePath;
+@property(readonly, nonatomic) NSData *data;
 @end
 

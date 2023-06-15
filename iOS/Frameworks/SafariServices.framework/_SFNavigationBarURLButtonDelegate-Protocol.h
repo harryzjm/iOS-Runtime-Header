@@ -9,6 +9,7 @@
 @class NSString, UIGestureRecognizer, UITextField, _SFNavigationBarURLButton;
 
 @protocol _SFNavigationBarURLButtonDelegate <NSObject>
+- (_Bool)navigationBarURLButton:(_SFNavigationBarURLButton *)arg1 shouldAllowLongPressAtPoint:(struct CGPoint)arg2;
 - (_Bool)navigationBarURLButtonIsUsingNarrowLayout:(_SFNavigationBarURLButton *)arg1;
 - (_Bool)navigationBarURLButton:(_SFNavigationBarURLButton *)arg1 canWriteAtLocation:(struct CGPoint)arg2;
 - (_Bool)textFieldIsEditableForNavigationBarURLButton:(_SFNavigationBarURLButton *)arg1;
@@ -16,7 +17,6 @@
 - (void)navigationBarURLButtonBeginSuppressingPlaceholder:(_SFNavigationBarURLButton *)arg1;
 - (void)navigationBarURLButtonDidRequestFocusForPencilInput:(_SFNavigationBarURLButton *)arg1 completionHandler:(void (^)(void))arg2;
 - (UITextField *)textFieldForNavigationBarURLButton:(_SFNavigationBarURLButton *)arg1;
-- (_Bool)navigationBarURLButton:(_SFNavigationBarURLButton *)arg1 shouldAllowLongPressAtPoint:(struct CGPoint)arg2;
 - (_Bool)navigationBarURLButtonShouldPaste:(_SFNavigationBarURLButton *)arg1;
 - (_Bool)navigationBarURLButtonShouldCopy:(_SFNavigationBarURLButton *)arg1;
 - (void)navigationBarURLButtonDidReceivePasteCommand:(_SFNavigationBarURLButton *)arg1;

@@ -12,8 +12,11 @@ __attribute__((visibility("hidden")))
     int _minSize;
     int _transformedImageWidth;
     int _transformedImageHeight;
+    struct Scaler _scaler;
 }
 
+- (id).cxx_construct;
+- (void).cxx_destruct;
 - (struct __CVBuffer *)cropAndScale:(struct __CVBuffer *)arg1 regionCrop:(struct CGRect)arg2;
 - (id)initImageTransform:(int)arg1 transformedImageWidth:(int)arg2 transformedImageHeight:(int)arg3;
 

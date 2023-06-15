@@ -49,7 +49,7 @@
 - (void)waitForAccessibilityActive;
 - (_Bool)currentProcessAccessibilityActive;
 - (void)_waitForValidPID;
-- (void)_launchUsingPlatformWithArguments:(id)arg1 environment:(id)arg2;
+- (void)_launchUsingPlatformWithArguments:(id)arg1 environment:(id)arg2 launchURL:(id)arg3;
 - (void)_launchUsingXcodeWithArguments:(id)arg1 environment:(id)arg2;
 - (void)_waitForLaunchProgressWithToken:(id)arg1;
 - (void)_launchWithRequest:(id)arg1;

@@ -7,7 +7,7 @@
 #import <PhotosUICore/NSObject-Protocol.h>
 
 @class NSIndexSet, NSString, PXStoryResourcesDataSource;
-@protocol PXStoryClip, PXStoryTimeline;
+@protocol PXDisplayAsset, PXStoryClip, PXStoryTimeline;
 
 @protocol PXStoryTimeline <NSObject>
 @property(readonly, nonatomic) NSString *objectiveCCode;
@@ -24,6 +24,7 @@
 - (NSIndexSet *)indexesOfResourcesWithKind:(long long)arg1 inResourcesDataSource:(PXStoryResourcesDataSource *)arg2 forClipsInSegmentWithIdentifier:(long long)arg3;
 - (NSIndexSet *)segmentIdentifiersInTimeRange:(CDStruct_3c1748cc)arg1 rect:(struct CGRect)arg2;
 - (struct CGRect)frameForSegmentWithIdentifier:(long long)arg1;
+- (long long)identifierOfFirstSegmentContainingAsset:(id <PXDisplayAsset>)arg1;
 - (long long)identifierForSegmentWithOffset:(CDStruct_198678f7)arg1 fromEndOfSegmentWithIdentifier:(long long)arg2 timeIntoSegment:(out CDStruct_198678f7 *)arg3;
 - (NSIndexSet *)identifiersOfSegmentsMatchingSegmentWithIdentifier:(long long)arg1 inTimeline:(id <PXStoryTimeline>)arg2;
 - (long long)identifierOfSegmentClosestToSegmentWithIdentifier:(long long)arg1 inTimeline:(id <PXStoryTimeline>)arg2;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIButton.h>
+#import <UIKitCore/UIButton.h>
 
 @class AVLayoutItemAttributes, AVMicaPackage, AVUserInteractionObserverGestureRecognizer, NSNumber, NSString, NSTimer, UIFont, UIViewPropertyAnimator, UIVisualEffectView;
 
@@ -24,8 +24,8 @@ __attribute__((visibility("hidden")))
     _Bool _appliesTransformToImageViewWhenHighlighted;
     _Bool _disablesHighlightWhenLongPressed;
     _Bool _clampsHitRectInsetsWhenContainedInScrollableView;
-    _Bool _secondGeneration;
     _Bool _wasForcePressTriggered;
+    _Bool _secondGeneration;
     AVLayoutItemAttributes *_layoutAttributes;
     long long _tintEffectStyle;
     double _forceThreshold;
@@ -56,6 +56,7 @@ __attribute__((visibility("hidden")))
 + (id)buttonWithAccessibilityIdentifier:(id)arg1 accessibilityLabel:(id)arg2 isSecondGeneration:(_Bool)arg3;
 + (id)buttonWithAccessibilityIdentifier:(id)arg1 isSecondGeneration:(_Bool)arg2;
 - (void).cxx_destruct;
+@property(nonatomic, getter=isSecondGeneration) _Bool secondGeneration; // @synthesize secondGeneration=_secondGeneration;
 @property(retain, nonatomic) UIFont *activeFont; // @synthesize activeFont=_activeFont;
 @property(retain, nonatomic) UIVisualEffectView *backgroundEffectView; // @synthesize backgroundEffectView=_backgroundEffectView;
 @property(retain, nonatomic) AVUserInteractionObserverGestureRecognizer *userInteractionGestureRecognizer; // @synthesize userInteractionGestureRecognizer=_userInteractionGestureRecognizer;
@@ -64,7 +65,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) double horizontalTranslationOfLongPress; // @synthesize horizontalTranslationOfLongPress=_horizontalTranslationOfLongPress;
 @property(nonatomic) _Bool wasForcePressTriggered; // @synthesize wasForcePressTriggered=_wasForcePressTriggered;
 @property(nonatomic) double trackingStartTime; // @synthesize trackingStartTime=_trackingStartTime;
-@property(nonatomic, getter=isSecondGeneration) _Bool secondGeneration; // @synthesize secondGeneration=_secondGeneration;
 @property(nonatomic) __weak UIViewPropertyAnimator *highlightAnimator; // @synthesize highlightAnimator=_highlightAnimator;
 @property(nonatomic) _Bool clampsHitRectInsetsWhenContainedInScrollableView; // @synthesize clampsHitRectInsetsWhenContainedInScrollableView=_clampsHitRectInsetsWhenContainedInScrollableView;
 @property(nonatomic) struct NSDirectionalEdgeInsets hitRectInsets; // @synthesize hitRectInsets=_hitRectInsets;

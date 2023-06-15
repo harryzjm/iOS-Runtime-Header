@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
+#import "MPSGraphObject.h"
 
 @class NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSString;
 
-@interface MPSGraphCaptureContext : NSObject
+@interface MPSGraphCaptureContext : MPSGraphObject
 {
     NSDictionary *_jsonData;
     NSMutableArray *_nodes;
@@ -26,6 +26,7 @@
     NSMutableDictionary *_lastNodeWrittingToBuffer;
     NSString *_outputFolderPath;
     NSString *_graphName;
+    _Bool _doNotWriteJsonFile;
 }
 
 - (void).cxx_destruct;

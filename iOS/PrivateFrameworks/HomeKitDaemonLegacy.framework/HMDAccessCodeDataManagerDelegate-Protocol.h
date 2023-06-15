@@ -9,6 +9,7 @@
 @class HMDAccessCodeDataManager, NSArray, NSUUID;
 
 @protocol HMDAccessCodeDataManagerDelegate <NSObject>
+- (NSUUID *)messageTargetUUID;
 - (void)accessCodeDataManager:(HMDAccessCodeDataManager *)arg1 didRemoveAccessoryAccessCodes:(NSArray *)arg2;
 - (void)accessCodeDataManager:(HMDAccessCodeDataManager *)arg1 didUpdateAccessoryAccessCodes:(NSArray *)arg2;
 - (void)accessCodeDataManager:(HMDAccessCodeDataManager *)arg1 didAddAccessoryAccessCodes:(NSArray *)arg2;

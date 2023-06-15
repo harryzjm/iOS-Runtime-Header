@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (void)allowEvaluation;
+- (unsigned long long)expressionType;
 - (id)initWithAssignmentExpression:(id)arg1 expression:(id)arg2;
 - (id)initWithAssignmentVariable:(id)arg1 expression:(id)arg2;
 - (void)dealloc;

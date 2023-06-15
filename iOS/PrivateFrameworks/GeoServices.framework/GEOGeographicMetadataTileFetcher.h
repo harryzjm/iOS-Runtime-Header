@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class GEOLocation, NSArray, NSDictionary, NSString;
+@class GEOLocation, NSArray, NSMapTable, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -14,15 +14,18 @@ __attribute__((visibility("hidden")))
 {
     NSObject<OS_dispatch_queue> *_workQueue;
     int _tileStyle;
+    unsigned short _mcc;
+    unsigned short _mnc;
     GEOLocation *_location;
     unsigned long long _options;
     NSArray *_tileDatas;
-    NSDictionary *_resultURLs;
+    NSMapTable *_resultItems;
 }
 
 - (void).cxx_destruct;
 - (void)fetchMetadataWithResponseQueue:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)reportCorrupt:(id)arg1;
+- (id)initForTileStyle:(int)arg1 mcc:(unsigned short)arg2 mnc:(unsigned short)arg3 location:(id)arg4 options:(unsigned long long)arg5;
 - (id)initForTileStyle:(int)arg1 location:(id)arg2 options:(unsigned long long)arg3;
 
 // Remaining properties

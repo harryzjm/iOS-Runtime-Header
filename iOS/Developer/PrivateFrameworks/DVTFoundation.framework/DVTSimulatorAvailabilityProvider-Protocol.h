@@ -8,9 +8,10 @@
 @protocol DVTInvalidation, OS_dispatch_queue;
 
 @protocol DVTSimulatorAvailabilityProvider
++ (NSArray *)runtimeMatchPoliciesWithTimeout:(double)arg1 error:(id *)arg2;
 + (id <DVTInvalidation>)observeSimulatorUpdatesWithInitialCallback:(_Bool)arg1 usingBlock:(void (^)(void))arg2;
 + (void)removeRuntimeWithIdentifier:(id)arg1 completionQueue:(NSObject<OS_dispatch_queue> *)arg2 completionHandler:(void (^)(NSError *))arg3;
-+ (void)addDiskImageRuntimeAtPath:(DVTFilePath *)arg1 expandPartition:(_Bool)arg2 userInfo:(NSDictionary *)arg3 completionQueue:(NSObject<OS_dispatch_queue> *)arg4 completionHandler:(void (^)(id, NSError *))arg5;
++ (void)addDiskImageRuntimeAtPath:(DVTFilePath *)arg1 expandPartition:(_Bool)arg2 mountInPlace:(_Bool)arg3 userInfo:(NSDictionary *)arg4 completionQueue:(NSObject<OS_dispatch_queue> *)arg5 completionHandler:(void (^)(id, NSError *))arg6;
 + (NSArray *)infoForAllSimulatorsWithTimeout:(double)arg1 error:(id *)arg2;
 + (NSArray *)infoForAllSimulatorsWithError:(id *)arg1;
 @end

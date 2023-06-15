@@ -6,10 +6,11 @@
 
 #import <FrontBoardServices/FBSSceneSettings.h>
 
-@class FBSDisplayIdentity;
+@class FBSDisplayConfiguration, FBSDisplayIdentity;
 
 @interface FBSSceneSettings (SBTransientLocal)
 @property(readonly, nonatomic) FBSDisplayIdentity *sb_displayIdentityForSceneManagers;
+@property(readonly, nonatomic) FBSDisplayConfiguration *sb_displayConfigurationForSceneManagers;
 - (_Bool)sb_isEligbleForDeviceOrientationUpdates;
 @end
 

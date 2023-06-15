@@ -6,14 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class EFCancelationToken, EFPair, EFQuery, EMMailboxScope, EMMessageRepository, NSString;
+@class EFCancelationToken, EFPair, EMMailboxScope, EMMessageRepository, EMQuery, NSString;
 @protocol EMMessageRepositoryCountQueryObserver;
 
 __attribute__((visibility("hidden")))
 @interface _EMMessageRepositoryCountingQueryObserver : NSObject
 {
     EMMessageRepository *_repository;
-    EFQuery *_query;
+    EMQuery *_query;
     EMMailboxScope *_serverCountMailboxScope;
     id <EMMessageRepositoryCountQueryObserver> _observer;
     EFCancelationToken *_token;
@@ -24,8 +24,8 @@ __attribute__((visibility("hidden")))
 @property(readonly) EFPair *queryIdentifier; // @synthesize queryIdentifier=_queryIdentifier;
 - (void)countDidChange:(long long)arg1 acknowledgementToken:(id)arg2;
 - (void)_performQueryWithRemoteConnection:(id)arg1 forRecovery:(_Bool)arg2;
-- (void)recoverQueryWithRemoteConnection:(id)arg1;
-- (void)performQueryWithRemoteConnection:(id)arg1;
+- (void)recoverWithRemoteConnection:(id)arg1;
+- (void)performWithRemoteConnection:(id)arg1;
 - (void)cancel;
 - (void)dealloc;
 - (id)initWithRepository:(id)arg1 queryIdentifier:(id)arg2 includingServerCountsForMailboxScope:(id)arg3 observer:(id)arg4;

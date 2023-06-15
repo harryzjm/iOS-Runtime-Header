@@ -6,10 +6,12 @@
 
 #import <SearchFoundation/NSObject-Protocol.h>
 
-@class NSData, NSDictionary, NSString;
+@class NSData, NSDictionary, NSString, _SFPBPerson;
 
 @protocol _SFPBContactButtonItem <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
+@property(nonatomic) unsigned long long uniqueId;
+@property(retain, nonatomic) _SFPBPerson *person;
 @property(copy, nonatomic) NSString *contactIdentifier;
 - (id)initWithDictionary:(NSDictionary *)arg1;
 - (id)initWithJSON:(NSData *)arg1;

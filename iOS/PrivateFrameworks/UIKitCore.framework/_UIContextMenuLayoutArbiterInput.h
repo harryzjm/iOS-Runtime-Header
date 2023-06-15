@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
     _Bool _shouldUpdateAttachment;
     _Bool _shouldAvoidInputViews;
+    _Bool _shouldConcealMenu;
     double _preferredContentSpacing;
     unsigned long long _preferredPreviewFittingStrategy;
     UITargetedPreview *_sourcePreview;
@@ -34,6 +35,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) struct CGPoint preferredMenuAttachmentPoint; // @synthesize preferredMenuAttachmentPoint=_preferredMenuAttachmentPoint;
 @property(nonatomic) struct CGSize preferredMenuSize; // @synthesize preferredMenuSize=_preferredMenuSize;
 @property(nonatomic) struct CGSize preferredPreviewSize; // @synthesize preferredPreviewSize=_preferredPreviewSize;
+@property(nonatomic) _Bool shouldConcealMenu; // @synthesize shouldConcealMenu=_shouldConcealMenu;
 @property(nonatomic) _Bool shouldAvoidInputViews; // @synthesize shouldAvoidInputViews=_shouldAvoidInputViews;
 @property(nonatomic) _Bool shouldUpdateAttachment; // @synthesize shouldUpdateAttachment=_shouldUpdateAttachment;
 - (_Bool)_hasVisibleMenu;

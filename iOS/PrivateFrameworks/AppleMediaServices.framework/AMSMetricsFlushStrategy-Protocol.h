@@ -7,8 +7,8 @@
 @class AMSPromise;
 
 @protocol AMSMetricsFlushStrategy
-@property(readonly, nonatomic) _Bool cancelled;
+@property(readonly, nonatomic, getter=isCancelled) _Bool cancelled;
 - (AMSPromise *)performFlush;
-- (void)cancel;
+- (_Bool)cancel;
 @end
 

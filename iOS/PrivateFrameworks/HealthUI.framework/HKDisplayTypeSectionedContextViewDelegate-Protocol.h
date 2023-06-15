@@ -15,6 +15,5 @@
 @optional
 - (void)contextView:(HKDisplayTypeSectionedContextView *)arg1 didTapOnInfoButtonAtIndex:(long long)arg2;
 - (_Bool)contextView:(HKDisplayTypeSectionedContextView *)arg1 canSelectItemAtIndexPath:(NSIndexPath *)arg2;
-- (void)contextViewDidInvalidateLayout:(HKDisplayTypeSectionedContextView *)arg1;
 @end
 

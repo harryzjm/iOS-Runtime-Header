@@ -6,28 +6,50 @@
 
 #import <UIKit/UITableViewCell.h>
 
-@class NSString, UIImageView, UILabel, UIStackView, UIView;
+@class NSString, SFAccountIconSharingBadgeImageCoordinator, UIImageView, UILabel, UIStackView, UITextField, UIView, WBSSavedAccount;
+@protocol SFAccountDetailHeaderViewCellDelegate;
 
 __attribute__((visibility("hidden")))
 @interface SFAccountDetailHeaderViewCell : UITableViewCell
 {
     UIImageView *_iconImageView;
     UILabel *_monogramLabel;
+    UIImageView *_keyIconImageView;
     UIView *_monogramBackgroundView;
     UIStackView *_labelStackView;
-    UILabel *_domainLabel;
+    NSString *_customTitle;
     UILabel *_lastModifiedDateLabel;
     NSString *_highLevelDomain;
+    SFAccountIconSharingBadgeImageCoordinator *_badgeImageCoordinator;
+    id <SFAccountDetailHeaderViewCellDelegate> _delegate;
+    UITextField *_titleTextField;
+    WBSSavedAccount *_savedAccount;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) WBSSavedAccount *savedAccount; // @synthesize savedAccount=_savedAccount;
+@property(retain, nonatomic) UITextField *titleTextField; // @synthesize titleTextField=_titleTextField;
+@property(nonatomic) __weak id <SFAccountDetailHeaderViewCellDelegate> delegate; // @synthesize delegate=_delegate;
+- (_Bool)textFieldShouldReturn:(id)arg1;
+- (_Bool)textField:(id)arg1 shouldChangeCharactersInRange:(struct _NSRange)arg2 replacementString:(id)arg3;
+- (void)_textFieldChanged:(id)arg1;
+- (void)_updateSharedAccountBadgeImageViewIfNecessary;
 - (void)_hideMonogramIcon;
 - (void)_showMonogramIconWithBackgroundColor:(id)arg1;
 - (void)setLastModifiedDateString:(id)arg1;
-- (void)setHighLevelDomain:(id)arg1;
+- (void)setEditing:(_Bool)arg1 animated:(_Bool)arg2;
+- (void)commitCustomTitle;
+- (void)setHeaderTitleForHighLevelDomain:(id)arg1 customTitle:(id)arg2;
 - (void)setMonogramBackgroundColor:(id)arg1;
 - (void)setIcon:(id)arg1;
+- (void)layoutSubviews;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

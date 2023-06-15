@@ -15,6 +15,9 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)clearConfigurationInfoCache;
+- (void)writeConfigurationInfoToCache:(id)arg1 configurationInfo:(id)arg2;
+- (void)copyConfigurationInfoFromCache:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)getInterAppIcon:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)getExtensionIcon:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (_Bool)isGenericAppIcon:(id)arg1 size:(struct CGSize)arg2 scale:(double)arg3;

@@ -9,7 +9,7 @@
 @class NSArray, NSString, UNNotificationRequest;
 
 @protocol WiFiP2PUIAgentXPCDelegate <NSObject>
-- (void)showInfrastructureDisconnectOnRetroModeNotificationForService:(NSString *)arg1 completionHandler:(void (^)(NSError *))arg2;
+- (void)showInfrastructureDisconnectOnRetroModeNotificationForService:(NSString *)arg1 localization:(NSString *)arg2 phoneDisconnected:(_Bool)arg3 completionHandler:(void (^)(NSError *))arg4;
 - (void)removeNotificationsWithIdentifiers:(NSArray *)arg1;
 - (void)addNotificationRequest:(UNNotificationRequest *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)configureNotificationsWithBundleIdentifier:(NSString *)arg1;

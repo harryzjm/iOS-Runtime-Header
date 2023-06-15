@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 {
     id <SKUIComposeReviewHeaderDelegate> _delegate;
     SKStarRatingControl *_ratingControl;
+    UIView *_ratingControlBackground;
     SKUIReviewMetadata *_review;
     long long _style;
     SKUIComposeTextFieldListView *_textFieldListView;
@@ -25,6 +26,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) long long composeReviewStyle; // @synthesize composeReviewStyle=_style;
 - (void)textFieldListValuesDidChange:(id)arg1;
 - (void)textFieldListValidityDidChange:(id)arg1;
+- (void)starRatingControlDidUpdateValues:(id)arg1;
 - (id)textFieldList:(id)arg1 configurationForFieldAtIndex:(unsigned long long)arg2;
 - (long long)numberOfFieldsInTextFieldList:(id)arg1;
 - (long long)numberOfColumnsInTextFieldList:(id)arg1;

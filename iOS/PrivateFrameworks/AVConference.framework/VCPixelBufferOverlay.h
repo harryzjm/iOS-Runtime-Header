@@ -4,17 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSObject;
+@protocol OS_dispatch_queue;
+
 __attribute__((visibility("hidden")))
 @interface VCPixelBufferOverlay
 {
-    struct CGContext *_bitmapContext;
-    struct VCInfoDetails _currentDetails;
+    NSObject<OS_dispatch_queue> *_stateQueue;
+    long long _videoActivationTimestamp;
+    struct tagVCOverlaySource *_audioInfo;
+    struct tagVCOverlaySource *_videoInfo;
+    struct tagVCOverlaySource *_networkInfo;
+    struct CGAffineTransform _transform;
+    struct CGRect _textFrame;
+    struct __CFDictionary *_stringAttributes;
+    struct __CFString *_mutableDisplayText;
+    struct tagVCPixelBufferOverlayConfig _currentDetails;
 }
 
-@property struct VCInfoDetails currentDetails; // @synthesize currentDetails=_currentDetails;
-- (id)reverseString:(id)arg1;
-- (void)drawOverlayMessage:(id)arg1 onPixelBuffer:(struct __CVBuffer *)arg2 attributes:(struct __CFDictionary *)arg3;
-- (void)updateOverlayWithPixelBuffer:(struct __CVBuffer *)arg1;
+@property struct tagVCPixelBufferOverlayConfig currentDetails; // @synthesize currentDetails=_currentDetails;
 - (void)dealloc;
 - (id)init;
 

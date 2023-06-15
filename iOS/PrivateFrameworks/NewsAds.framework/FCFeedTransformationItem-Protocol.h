@@ -11,27 +11,26 @@
 @protocol FCChannelProviding;
 
 @protocol FCFeedTransformationItem <NSObject, FCFeedPersonalizingItem>
-@property(nonatomic, readonly) _Bool canBePurchased;
-@property(nonatomic, readonly) long long publisherArticleVersion;
-@property(nonatomic, readonly) long long minimumNewsVersion;
-- (_Bool)isExplicitContent;
-- (_Bool)isFromBlockedStorefront;
-@property(nonatomic, readonly) double globalUserFeedback;
-@property(nonatomic, readonly) unsigned long long feedHalfLifeMilliseconds;
-@property(nonatomic, readonly) unsigned long long publishDateMilliseconds;
-@property(nonatomic, readonly) NSString *sourceChannelID;
-@property(nonatomic, readonly) unsigned long long order;
-@property(nonatomic, readonly) unsigned long long contentType;
-@property(nonatomic, readonly) NSString *clusterID;
-@property(nonatomic, readonly) NSString *articleID;
-@property(nonatomic, readonly) NSString *feedID;
+@property(readonly, nonatomic) _Bool hasVideoStillImage;
+@property(readonly, nonatomic) _Bool canBePurchased;
+@property(readonly, nonatomic) long long publisherArticleVersion;
+@property(readonly, nonatomic) long long minimumNewsVersion;
+@property(readonly, nonatomic, getter=isSponsored) _Bool sponsored;
+@property(readonly, nonatomic, getter=isExplicitContent) _Bool explicitContent;
+@property(readonly, nonatomic, getter=isFromBlockedStorefront) _Bool fromBlockedStorefront;
+@property(readonly, nonatomic) double globalUserFeedback;
+@property(readonly, nonatomic) unsigned long long feedHalfLifeMilliseconds;
+@property(readonly, nonatomic) unsigned long long publishDateMilliseconds;
+@property(readonly, copy, nonatomic) NSString *sourceChannelID;
+@property(readonly, nonatomic) unsigned long long order;
+@property(readonly, nonatomic) unsigned long long contentType;
+@property(readonly, copy, nonatomic) NSString *clusterID;
+@property(readonly, copy, nonatomic) NSString *articleID;
+@property(readonly, copy, nonatomic) NSString *feedID;
 
 @optional
-@property(nonatomic, readonly) unsigned long long role;
-@property(nonatomic, readonly) id <FCChannelProviding> sourceChannel;
-
-// Remaining properties
-@property(nonatomic, readonly) _Bool explicitContent;
-@property(nonatomic, readonly) _Bool fromBlockedStorefront;
+@property(readonly, nonatomic) unsigned long long storyType;
+@property(readonly, nonatomic) unsigned long long role;
+@property(readonly, copy, nonatomic) id <FCChannelProviding> sourceChannel;
 @end
 

@@ -10,6 +10,7 @@
 
 @protocol VSLogoImageViewModel <NSObject>
 @property(copy, nonatomic) NSString *logoAccessibilityLabel;
+@property(nonatomic) _Bool logoFinishedLoading;
 @property(retain, nonatomic) UIImage *logo;
 @property(retain, nonatomic) NSItemProvider *logoProvider;
 @end

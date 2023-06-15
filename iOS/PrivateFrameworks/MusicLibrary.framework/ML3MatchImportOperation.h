@@ -10,6 +10,10 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)updateImportProgress:(float)arg1;
+- (shared_ptr_55dea43e)albumItemFromDeletedDAAPAlbumEntity:(const void *)arg1;
+- (shared_ptr_55dea43e)albumArtistItemFromDeletedDAAPArtistEntity:(const void *)arg1;
+- (shared_ptr_9dbb0ac9)albumArtistImportItemFromDAAPElement:(shared_ptr_37fa1f3d)arg1;
+- (shared_ptr_9dbb0ac9)albumImportItemFromDAAPElement:(shared_ptr_37fa1f3d)arg1;
 - (shared_ptr_9dbb0ac9)containerImportItemFromDAAPElement:(shared_ptr_37fa1f3d)arg1 withTrackIds:(vector_1ee95920)arg2 trackPersonIdentifiers:(vector_c589d274)arg3;
 - (shared_ptr_9dbb0ac9)importItemFromDAAPElement:(shared_ptr_37fa1f3d)arg1;
 - (_Bool)_performMatchImportWithTransaction:(id)arg1;

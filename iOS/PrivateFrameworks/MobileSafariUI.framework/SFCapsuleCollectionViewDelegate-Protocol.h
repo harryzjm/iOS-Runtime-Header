@@ -6,7 +6,7 @@
 
 #import <MobileSafariUI/NSObject-Protocol.h>
 
-@class SFCapsuleCollectionView, UIAction, UIToolbar;
+@class SFCapsuleCollectionView, UIAction, UIView;
 @protocol SFTransitionCoordinating;
 
 @protocol SFCapsuleCollectionViewDelegate <NSObject>
@@ -14,7 +14,7 @@
 @optional
 - (_Bool)capsuleCollectionView:(SFCapsuleCollectionView *)arg1 shouldHideShadowForItemAtIndex:(long long)arg2;
 - (_Bool)capsuleCollectionViewShouldDelayToolbarPresentation:(SFCapsuleCollectionView *)arg1;
-- (UIToolbar *)createToolbarForCapsuleCollectionView:(SFCapsuleCollectionView *)arg1;
+- (UIView *)createToolbarForCapsuleCollectionView:(SFCapsuleCollectionView *)arg1;
 - (void)capsuleCollectionViewLayoutStyleDidChange:(SFCapsuleCollectionView *)arg1;
 - (void)capsuleCollectionView:(SFCapsuleCollectionView *)arg1 willChangeToLayoutStyle:(long long)arg2;
 - (void)capsuleCollectionViewWillHideKeyboard:(SFCapsuleCollectionView *)arg1;
@@ -26,6 +26,7 @@
 - (unsigned long long)capsuleCollectionViewBoundaryEdgesForScrollableContent:(SFCapsuleCollectionView *)arg1;
 - (void)capsuleCollectionView:(SFCapsuleCollectionView *)arg1 selectedItemWillChangeToState:(long long)arg2 options:(long long)arg3 coordinator:(id <SFTransitionCoordinating>)arg4;
 - (_Bool)capsuleCollectionViewAllowsMinimizationGesture:(SFCapsuleCollectionView *)arg1;
+- (_Bool)capsuleCollectionViewShouldFocusSelectedItem:(SFCapsuleCollectionView *)arg1;
 - (void)capsuleCollectionView:(SFCapsuleCollectionView *)arg1 didSelectItemAtIndex:(long long)arg2;
 - (void)capsuleCollectionView:(SFCapsuleCollectionView *)arg1 willPerformUpdateWithCoordinator:(id <SFTransitionCoordinating>)arg2;
 - (void)capsuleCollectionViewWillReloadData:(SFCapsuleCollectionView *)arg1;

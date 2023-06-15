@@ -7,10 +7,13 @@
 #import <UIKit/UINavigationBar.h>
 
 @interface UINavigationBar (IBCocoaTouchToolIntegration)
+- (void)ibWillCompileForObjectPackage:(id)arg1;
 - (void)setIbShadowedLargeTitleTextAttributes:(id)arg1;
 - (id)ibShadowedLargeTitleTextAttributes;
 - (_Bool)ibPrefersLargeTitles;
 - (void)setIbPrefersLargeTitles:(_Bool)arg1;
+- (_Bool)isInNavigationController;
+- (void)setInNavigationController:(_Bool)arg1;
 - (id)ibCompactScrollEdgeAppearance;
 - (void)setIbCompactScrollEdgeAppearance:(id)arg1;
 @end

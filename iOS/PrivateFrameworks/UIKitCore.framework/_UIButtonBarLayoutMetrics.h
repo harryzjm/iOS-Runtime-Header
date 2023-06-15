@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 @class NSLayoutDimension, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UIButtonBarLayoutMetrics : NSObject <NSCopying>
+@interface _UIButtonBarLayoutMetrics : NSObject
 {
     _Bool _locked;
     _Bool _allowsViewWrappers;

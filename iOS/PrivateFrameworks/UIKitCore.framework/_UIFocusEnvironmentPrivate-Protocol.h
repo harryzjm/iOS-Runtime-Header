@@ -16,6 +16,7 @@
 @property(readonly, nonatomic, getter=_isEligibleForFocusOcclusion) _Bool eligibleForFocusOcclusion;
 @property(readonly, nonatomic, getter=_isEligibleForFocusInteraction) _Bool eligibleForFocusInteraction;
 @property(nonatomic) _Bool areChildrenFocused;
+- (long long)_rotaryFocusMovementAxis;
 - (void)_setNeedsNonDeferredFocusUpdate;
 - (_Bool)_allowsFocusToLeaveViaHeading:(unsigned long long)arg1;
 @end

@@ -9,11 +9,16 @@
 __attribute__((visibility("hidden")))
 @interface CIImageProcessorInput
 {
+    unsigned long long _roiTileIndex;
+    unsigned long long _roiTileCount;
 }
 
+@property(readonly, nonatomic) unsigned long long roiTileCount; // @synthesize roiTileCount=_roiTileCount;
+@property(readonly, nonatomic) unsigned long long roiTileIndex; // @synthesize roiTileIndex=_roiTileIndex;
 @property(readonly, nonatomic) id <MTLTexture> metalTexture;
 @property(readonly, nonatomic) const void *baseAddress;
 - (void)dealloc;
+- (id)initWithSurface:(struct __IOSurface *)arg1 texture:(struct Texture)arg2 digest:(unsigned long long)arg3 allowSRGB:(_Bool)arg4 bounds:(struct CGRect)arg5 roiTileIndex:(unsigned long long)arg6 roiTileCount:(unsigned long long)arg7 context:(void *)arg8;
 - (id)initWithSurface:(struct __IOSurface *)arg1 texture:(struct Texture)arg2 digest:(unsigned long long)arg3 allowSRGB:(_Bool)arg4 bounds:(struct CGRect)arg5 context:(void *)arg6;
 
 // Remaining properties

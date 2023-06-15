@@ -20,11 +20,14 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSMutableDictionary *data; // @synthesize data=_data;
 - (void)addEnvironmentInfoWithCursor:(id)arg1;
 - (void)addAssetLoadInfoWithCursor:(id)arg1 itemIDPayload:(id)arg2;
+- (void)addSessionActivationTimesWithScopedCursor:(id)arg1;
+- (void)addNetworkTimesWithScopedCursor:(id)arg1;
 - (void)addSharePlayWithCursor:(id)arg1;
 - (void)addPlaybackBehaviorWithCursor:(id)arg1;
 - (void)addQueueMetadata:(id)arg1;
-- (id)humanDescription;
+- (id)jsonObject;
 - (id)description;
+- (id)dictionaryRepresentation;
 @property(readonly, nonatomic) NSNumber *avTime;
 @property(readonly, nonatomic) NSNumber *networkTime;
 @property(readonly, nonatomic) NSNumber *mediaPlayerTime;
@@ -35,8 +38,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic, setter=set_checkpointRateOne:) NSNumber *checkpointRateOne; // @dynamic checkpointRateOne;
 @property(retain, nonatomic, setter=set_checkpointReadyToPlay:) NSNumber *checkpointReadyToPlay; // @dynamic checkpointReadyToPlay;
 @property(retain, nonatomic, setter=set_checkpointLikelyToKeepUp:) NSNumber *checkpointLikelyToKeepUp; // @dynamic checkpointLikelyToKeepUp;
-@property(retain, nonatomic, setter=set_checkpointItemBegin:) NSNumber *checkpointItemBegin; // @dynamic checkpointItemBegin;
-@property(retain, nonatomic, setter=set_checkpointItemConfigBegin:) NSNumber *checkpointItemConfigBegin; // @dynamic checkpointItemConfigBegin;
+@property(retain, nonatomic, setter=set_checkpointAssetLoadEnd:) NSNumber *checkpointAssetLoadEnd; // @dynamic checkpointAssetLoadEnd;
 @property(retain, nonatomic, setter=set_checkpointAssetLoadBegin:) NSNumber *checkpointAssetLoadBegin; // @dynamic checkpointAssetLoadBegin;
 @property(retain, nonatomic, setter=set_checkpointPlay:) NSNumber *checkpointPlay; // @dynamic checkpointPlay;
 @property(retain, nonatomic, setter=set_checkpointMRPlay:) NSNumber *checkpointMRPlay; // @dynamic checkpointMRPlay;
@@ -44,6 +46,8 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic, setter=set_checkpointRateZero:) NSNumber *checkpointRateZero; // @dynamic checkpointRateZero;
 @property(retain, nonatomic, setter=set_checkpointSetQueueBegin:) NSNumber *checkpointSetQueueBegin; // @dynamic checkpointSetQueueBegin;
 @property(retain, nonatomic, setter=set_checkpointMRSetQueueBegin:) NSNumber *checkpointMRSetQueueBegin; // @dynamic checkpointMRSetQueueBegin;
+@property(retain, nonatomic, setter=set_sessionActivationClientTime:) NSNumber *sessionActivationClientTime; // @dynamic sessionActivationClientTime;
+@property(retain, nonatomic, setter=set_sessionActivationAVTime:) NSNumber *sessionActivationAVTime; // @dynamic sessionActivationAVTime;
 @property(retain, nonatomic, setter=set_sessionActivationWaitTime:) NSNumber *sessionActivationWaitTime; // @dynamic sessionActivationWaitTime;
 @property(retain, nonatomic, setter=set_hlsMetadataWaitTime:) NSNumber *hlsMetadataWaitTime; // @dynamic hlsMetadataWaitTime;
 @property(retain, nonatomic, setter=set_mediaRedownloadWaitTime:) NSNumber *mediaRedownloadWaitTime; // @dynamic mediaRedownloadWaitTime;
@@ -51,7 +55,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic, setter=set_suzeLeaseWaitTime:) NSNumber *suzeLeaseWaitTime; // @dynamic suzeLeaseWaitTime;
 @property(retain, nonatomic, setter=set_leaseWaitTime:) NSNumber *leaseWaitTime; // @dynamic leaseWaitTime;
 @property(retain, nonatomic, setter=set_bagWaitTime:) NSNumber *bagWaitTime; // @dynamic bagWaitTime;
-@property(retain, nonatomic, setter=set_getTracksWaitTime:) NSNumber *getTracksWaitTime; // @dynamic getTracksWaitTime;
 @property(retain, nonatomic, setter=set_lookupWaitTime:) NSNumber *lookupWaitTime; // @dynamic lookupWaitTime;
 @property(retain, nonatomic, setter=set_nextItemWaitTime:) NSNumber *nextItemWaitTime; // @dynamic nextItemWaitTime;
 @property(retain, nonatomic, setter=set_firstAudioFrameWaitTime:) NSNumber *firstAudioFrameWaitTime; // @dynamic firstAudioFrameWaitTime;
@@ -62,6 +65,13 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic, setter=set_queueLoadWaitTime:) NSNumber *queueLoadWaitTime; // @dynamic queueLoadWaitTime;
 @property(retain, nonatomic, setter=set_playCommandSendTime:) NSNumber *playCommandSendTime; // @dynamic playCommandSendTime;
 @property(retain, nonatomic, setter=set_setQueueCommandSendTime:) NSNumber *setQueueCommandSendTime; // @dynamic setQueueCommandSendTime;
+@property(retain, nonatomic, setter=set_assetProtectionType:) NSNumber *assetProtectionType; // @dynamic assetProtectionType;
+@property(retain, nonatomic, setter=set_vocalsControlActive:) NSNumber *vocalsControlActive; // @dynamic vocalsControlActive;
+@property(retain, nonatomic, setter=set_treatmentID:) NSString *treatmentID; // @dynamic treatmentID;
+@property(retain, nonatomic, setter=set_experimentID:) NSString *experimentID; // @dynamic experimentID;
+@property(retain, nonatomic, setter=set_storefront:) NSString *storefront; // @dynamic storefront;
+@property(retain, nonatomic, setter=set_queueCommandType:) NSNumber *queueCommandType; // @dynamic queueCommandType;
+@property(retain, nonatomic, setter=set_seekBeforePlaying:) NSNumber *seekBeforePlaying; // @dynamic seekBeforePlaying;
 @property(retain, nonatomic, setter=set_isActiveAccount:) NSNumber *isActiveAccount; // @dynamic isActiveAccount;
 @property(retain, nonatomic, setter=set_hasAccountInfo:) NSNumber *hasAccountInfo; // @dynamic hasAccountInfo;
 @property(retain, nonatomic, setter=set_errorSignature:) NSString *errorSignature; // @dynamic errorSignature;
@@ -77,7 +87,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic, setter=set_subscriptionType:) NSNumber *subscriptionType; // @dynamic subscriptionType;
 @property(retain, nonatomic, setter=set_endpointType:) NSNumber *endpointType; // @dynamic endpointType;
 @property(retain, nonatomic, setter=set_assetCacheAge:) NSNumber *assetCacheAge; // @dynamic assetCacheAge;
-@property(retain, nonatomic, setter=set_assetLocation:) NSString *assetLocation; // @dynamic assetLocation;
+@property(retain, nonatomic, setter=set_assetLocation:) NSNumber *assetLocation; // @dynamic assetLocation;
 @property(retain, nonatomic, setter=set_assetSource:) NSNumber *assetSource; // @dynamic assetSource;
 @property(retain, nonatomic, setter=set_assetType:) NSNumber *assetType; // @dynamic assetType;
 @property(retain, nonatomic, setter=set_isSharePlay:) NSNumber *isSharePlay; // @dynamic isSharePlay;

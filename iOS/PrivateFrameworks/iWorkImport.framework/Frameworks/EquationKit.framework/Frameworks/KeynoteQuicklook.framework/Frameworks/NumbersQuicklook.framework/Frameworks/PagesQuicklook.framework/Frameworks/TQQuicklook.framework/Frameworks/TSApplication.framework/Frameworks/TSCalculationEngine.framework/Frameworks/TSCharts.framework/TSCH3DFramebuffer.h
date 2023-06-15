@@ -17,7 +17,7 @@
 + (id)framebufferWithFramebufferAttributes:(const struct FramebufferAttributes *)arg1;
 - (id).cxx_construct;
 @property(readonly, nonatomic) unsigned long long uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
-- (id)pixelBufferFromViewport:(const void *)arg1 components:(unsigned long long)arg2 flipped:(_Bool)arg3 forProcessor:(id)arg4 session:(id)arg5;
+- (id)pixelBufferFromViewport:(void *)arg1 components:(unsigned long long)arg2 flipped:(_Bool)arg3 forProcessor:(id)arg4 session:(id)arg5;
 - (id)output;
 - (id)resolvingFramebuffer;
 - (const struct FramebufferAttributes *)framebufferAttributes;

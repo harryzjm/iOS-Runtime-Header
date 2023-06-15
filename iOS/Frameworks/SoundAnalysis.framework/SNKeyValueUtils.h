@@ -11,5 +11,43 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (id)addObserverWithBlock:(CDUnknownBlockType)arg1 forKeyPaths:(id)arg2 ofObject:(id)arg3 options:(unsigned long long)arg4 context:(void *)arg5;
++ (void)removeObserver:(id)arg1 forKeyPaths:(id)arg2 ofObject:(id)arg3 context:(void *)arg4;
++ (void)addObserver:(id)arg1 forKeyPaths:(id)arg2 ofObject:(id)arg3 options:(unsigned long long)arg4 context:(void *)arg5;
++ (id)planToTransformInitialDictionary:(id)arg1 intoFinalDictionary:(id)arg2 usingOnlyAddAndRemoveMutations:(_Bool)arg3;
++ (id)planToTransformInitialDictionary:(id)arg1 intoFinalDictionary:(id)arg2;
++ (id)transformedObjectForOptionalKey:(id)arg1 fromDictionary:(id)arg2 transform:(CDUnknownBlockType)arg3;
++ (id)transformedObjectForOptionalKey:(id)arg1 fromDictionary:(id)arg2 fallableTransform:(CDUnknownBlockType)arg3 error:(id *)arg4;
++ (id)keyForRequiredObject:(id)arg1 inDictionary:(id)arg2 error:(id *)arg3;
++ (id)keyForOptionalObject:(id)arg1 inDictionary:(id)arg2 error:(id *)arg3;
++ (id)objectForOptionalKey:(id)arg1 defaultValue:(id)arg2 fromDictionary:(id)arg3;
++ (id)objectForOptionalKey:(id)arg1 fromDictionary:(id)arg2;
++ (id)objectForRequiredKey:(id)arg1 fromDictionary:(id)arg2 error:(id *)arg3;
++ (id)requiredObjectOfClass:(Class)arg1 forKey:(id)arg2 fromDictionary:(id)arg3 error:(id *)arg4;
++ (id)objectOfClass:(Class)arg1 forKey:(id)arg2 fromDictionary:(id)arg3;
++ (id)requiredObjectOfClasses:(id)arg1 forKey:(id)arg2 fromDictionary:(id)arg3 error:(id *)arg4;
++ (id)objectOfClasses:(id)arg1 forKey:(id)arg2 fromDictionary:(id)arg3;
++ (id)requiredObjectForKey:(id)arg1 satisfyingPredicate:(CDUnknownBlockType)arg2 fromDictionary:(id)arg3 error:(id *)arg4;
++ (id)objectForKey:(id)arg1 satisfyingPredicate:(CDUnknownBlockType)arg2 fromDictionary:(id)arg3;
++ (_Bool)overrideValuesInObject:(id)arg1 withValuesInDictionary:(id)arg2 dictionaryToObjectKeyMappings:(id)arg3 error:(id *)arg4;
++ (void)overrideValuesInObject:(id)arg1 withValuesInDictionary:(id)arg2;
++ (id)usingAddAndRemoveOnlyRepresentMutations:(id)arg1 error:(id *)arg2;
++ (id)usingAddAndRemoveOnlyRepresentMutation:(id)arg1 error:(id *)arg2;
++ (_Bool)applyMutations:(id)arg1 toObject:(id)arg2 error:(id *)arg3;
++ (_Bool)applyMutation:(id)arg1 toObject:(id)arg2 error:(id *)arg3;
++ (id)mutationOfType:(long long)arg1 keyPath:(id)arg2 value:(id)arg3 error:(id *)arg4;
++ (id)dictionaryAssigningKey:(id)arg1 value:(id)arg2 inDictionary:(id)arg3;
++ (id)dictionaryUpdatingKey:(id)arg1 value:(id)arg2 inDictionary:(id)arg3 error:(id *)arg4;
++ (id)dictionaryRemovingKey:(id)arg1 fromDictionary:(id)arg2 error:(id *)arg3;
++ (id)dictionaryAddingKeyIfAbsent:(id)arg1 value:(id)arg2 toDictionary:(id)arg3;
++ (id)dictionaryAddingKey:(id)arg1 value:(id)arg2 toDictionary:(id)arg3 error:(id *)arg4;
++ (_Bool)updateKey:(id)arg1 value:(id)arg2 inDictionary:(id)arg3 error:(id *)arg4;
++ (_Bool)addKey:(id)arg1 value:(id)arg2 toDictionary:(id)arg3 error:(id *)arg4;
++ (_Bool)removeKey:(id)arg1 fromDictionary:(id)arg2 error:(id *)arg3;
++ (_Bool)updateKeyPath:(id)arg1 value:(id)arg2 inObject:(id)arg3 error:(id *)arg4;
++ (_Bool)addKeyPath:(id)arg1 value:(id)arg2 toObject:(id)arg3 error:(id *)arg4;
++ (_Bool)removeKeyPath:(id)arg1 fromObject:(id)arg2 error:(id *)arg3;
+- (id)init;
+
 @end
 

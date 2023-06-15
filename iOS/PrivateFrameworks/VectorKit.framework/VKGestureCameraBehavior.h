@@ -26,9 +26,11 @@ __attribute__((visibility("hidden")))
     struct CGPoint _pitchStartScreenPoint;
     _Bool _notifyCameraStateChanges;
     VKCameraController *_cameraController;
+    _Bool _allowsZoomRubberbanding;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool allowsZoomRubberbanding; // @synthesize allowsZoomRubberbanding=_allowsZoomRubberbanding;
 - (void)updateWithTimestamp:(double)arg1 withContext:(void *)arg2;
 - (_Bool)isRotating;
 - (_Bool)isPanning;

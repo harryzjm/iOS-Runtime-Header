@@ -6,14 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSLayoutConstraint, NSString, UIBarButtonItem, UIBarButtonItemGroup, UIDeferredMenuElement, UIDocumentProperties, UILayoutGuide, UITextField, UITraitCollection, UIView, _UIBarButtonItemData, _UIBarButtonItemSearchBarGroup, _UIButtonBar, _UIButtonBarButton, _UINavigationBarContentView, _UINavigationBarTitleControl, _UINavigationBarTitleRenamerSession, _UINavigationItemRenameHandler;
-@protocol _UINavigationBarAugmentedTitleView;
+@class NSArray, NSLayoutConstraint, NSString, UIBarButtonItem, UIBarButtonItemGroup, UIDeferredMenuElement, UIDocumentProperties, UILayoutGuide, UITraitCollection, UIView, _UIBarButtonItemData, _UIBarButtonItemSearchBarGroup, _UIButtonBar, _UIButtonBarButton, _UINavigationBarContentView, _UINavigationBarTitleControl, _UINavigationBarTitleRenamerSession, _UINavigationItemRenameHandler;
+@protocol _UINavigationBarAugmentedTitleView, _UINavigationBarTitleRenamerContentView;
 
 __attribute__((visibility("hidden")))
 @interface _UINavigationBarContentViewLayout : NSObject
 {
     _UINavigationBarContentView *_contentView;
-    UITextField *_renamingContentView;
+    UIView<_UINavigationBarTitleRenamerContentView> *_renamingContentView;
     UIView *_titleIconView;
     NSLayoutConstraint *_leadingMarginConstraint;
     NSLayoutConstraint *_trailingMarginConstraint;
@@ -31,19 +31,25 @@ __attribute__((visibility("hidden")))
     NSArray *_leadingBarConstraints;
     NSArray *_titleViewConstraints;
     NSArray *_renamingContentViewConstraints;
+    NSLayoutConstraint *_renamingContentViewInsetConstraint;
     NSArray *_augmentedTitleViewConstraints;
     NSArray *_centerBarConstraints;
     NSArray *_trailingBarConstraints;
     UIBarButtonItemGroup *_overflowGroup;
     UIBarButtonItem *_overflowItem;
     _UIBarButtonItemSearchBarGroup *_inlineSearchBarGroup;
+    UIBarButtonItemGroup *_alternatePopGroup;
     UIView *_leadingBarSnapshot;
+    NSLayoutConstraint *_leadingBarSnapshotWidthConstraint;
     UIView *_titleViewSnapshot;
     UIView *_trailingBarSnapshot;
+    NSLayoutConstraint *_trailingBarSnapshotWidthConstraint;
+    _Bool _isDeferringSearchSuggestionsMenuRefreshForGeometryChange;
     _Bool _titleEnabled;
+    _Bool _hasFreshlyCreatedOverflowGroupItemView;
     _Bool _hasFakedBackButton;
     _Bool _useLeadingAlignedTitle;
-    _Bool _leadingGroupsEnabled;
+    _Bool _enableAlternatePopItem;
     _Bool _trailingGroupsEnabled;
     _Bool _active;
     _Bool _keepsSnapshotsInHierarchy;
@@ -72,6 +78,7 @@ __attribute__((visibility("hidden")))
     UIView<_UINavigationBarAugmentedTitleView> *_augmentedTitleView;
     double _largeTitleHeight;
     UITraitCollection *_augmentedTitleNavigationBarTraits;
+    long long _leadingGroupsMode;
     long long _centerGroupsMode;
     UIBarButtonItemGroup *_fixedTrailingGroup;
     NSString *_customizationIdentifier;
@@ -99,7 +106,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool trailingGroupsEnabled; // @synthesize trailingGroupsEnabled=_trailingGroupsEnabled;
 @property(retain, nonatomic) UIBarButtonItemGroup *fixedTrailingGroup; // @synthesize fixedTrailingGroup=_fixedTrailingGroup;
 @property(nonatomic) long long centerGroupsMode; // @synthesize centerGroupsMode=_centerGroupsMode;
-@property(nonatomic) _Bool leadingGroupsEnabled; // @synthesize leadingGroupsEnabled=_leadingGroupsEnabled;
+@property(nonatomic) long long leadingGroupsMode; // @synthesize leadingGroupsMode=_leadingGroupsMode;
+@property(nonatomic) _Bool enableAlternatePopItem; // @synthesize enableAlternatePopItem=_enableAlternatePopItem;
 @property(readonly, nonatomic) CDStruct_e617d9e5 currentButtonBarLayoutInfo; // @synthesize currentButtonBarLayoutInfo=_currentButtonBarLayoutInfo;
 @property(retain, nonatomic) UITraitCollection *augmentedTitleNavigationBarTraits; // @synthesize augmentedTitleNavigationBarTraits=_augmentedTitleNavigationBarTraits;
 @property(nonatomic) CDStruct_c3b9c2ee largeTitleHeightRange; // @synthesize largeTitleHeightRange=_largeTitleHeightRange;
@@ -127,6 +135,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) UILayoutGuide *titleViewGuide; // @synthesize titleViewGuide=_titleViewGuide;
 @property(readonly, nonatomic) UILayoutGuide *leadingBarGuide; // @synthesize leadingBarGuide=_leadingBarGuide;
 @property(readonly, nonatomic) UILayoutGuide *backButtonGuide; // @synthesize backButtonGuide=_backButtonGuide;
+- (void)refreshSearchSuggestionsMenuAfterGeometryChange;
+- (void)deferSearchSuggestionsMenuRefreshForGeometryChange;
 - (void)buttonBarDidLayout:(id)arg1;
 - (void)updateLayoutData:(id)arg1 layoutWidth:(double)arg2;
 - (void)removeContent;
@@ -149,6 +159,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSArray *trailingGroups;
 - (void)_setOverflowGroupHidden:(_Bool)arg1;
 - (void)_prepareOverflowItem;
+- (void)updateOverflowItemImage;
 @property(readonly, nonatomic) _UIButtonBar *trailingBar; // @synthesize trailingBar=_trailingBar;
 @property(readonly, nonatomic) UIBarButtonItem *overflowItem;
 @property(readonly, nonatomic) _UIButtonBarButton *overflowButton;
@@ -201,6 +212,7 @@ __attribute__((visibility("hidden")))
 - (void)freeze;
 - (void)_disableLayoutFlushing:(_Bool)arg1;
 - (void)_updateTitleViewConstraints;
+- (_Bool)_wantsBaselineAlignedTitle;
 - (double)_inlineTitleBaselineOffset;
 - (void)_updateBackButtonWidthConstraintsAndActivateIfNecessary;
 - (void)_updateBackButtonConstraints;

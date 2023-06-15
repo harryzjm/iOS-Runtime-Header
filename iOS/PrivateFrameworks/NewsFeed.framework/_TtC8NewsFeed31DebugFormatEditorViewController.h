@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
 @class MISSING_TYPE;
 
@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *formatManager;
     MISSING_TYPE *packages;
     MISSING_TYPE *errorViewController;
+    MISSING_TYPE *$__lazy_storage_$_errorContainerController;
     MISSING_TYPE *groupViewController;
     MISSING_TYPE *canvasViewController;
     MISSING_TYPE *scrollView;
@@ -34,7 +35,6 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
-- (id)overrideTraitCollectionForChildViewController:(id)arg1;
 - (void)viewLayoutMarginsDidChange;
 - (void)viewDidLayoutSubviews;
 - (void)viewWillLayoutSubviews;

@@ -62,6 +62,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) unsigned long long draggingSourceOperationMask;
 - (struct CGPoint)draggingLocationInCoordinateSpace:(id)arg1;
 - (void)enumerateItemsUsingBlock:(CDUnknownBlockType)arg1;
+- (struct CGPoint)previewCenterForVisibleItem:(id)arg1 inCoordinateSpace:(id)arg2;
 - (void)requestVisibleItems:(CDUnknownBlockType)arg1;
 - (unsigned long long)actualDragOperationForProposedDragOperation:(unsigned long long)arg1 destinationDataOwner:(long long)arg2 forbidden:(_Bool *)arg3;
 - (void)handOffDroppedItems:(id)arg1;

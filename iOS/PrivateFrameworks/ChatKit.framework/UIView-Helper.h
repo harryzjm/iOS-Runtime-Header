@@ -4,14 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @interface UIView (Helper)
 - (void)ck_recursivelySetContentScaleFactor:(double)arg1;
+- (void)__ck_ensureMinimumTouchInsets;
 - (void)__ck_makeEdgesEqualTo:(id)arg1;
 - (struct CGSize)__ck_frameSizeForAlignmentRectSize:(struct CGSize)arg1;
 - (struct CGSize)__ck_alignmentRectSizeForFrameSize:(struct CGSize)arg1;
 - (_Bool)__ck_containsFirstResponder;
+@property(nonatomic, setter=ck_setScaleY:) double ck_scaleY;
+@property(nonatomic, setter=ck_setScaleX:) double ck_scaleX;
+@property(nonatomic, setter=ck_setPositionY:) double ck_positionY;
+@property(nonatomic, setter=ck_setPositionX:) double ck_positionX;
+@property(nonatomic, setter=ck_setBoundsHeight:) double ck_boundsHeight;
+@property(nonatomic, setter=ck_setBoundsWidth:) double ck_boundsWidth;
 - (_Bool)pointMostlyInside:(struct CGPoint)arg1 threshold:(double)arg2 velocity:(struct CGPoint)arg3;
 - (void)layoutGradientViewsIfNeeded;
 - (void)setGradientViewsNeedLayout;

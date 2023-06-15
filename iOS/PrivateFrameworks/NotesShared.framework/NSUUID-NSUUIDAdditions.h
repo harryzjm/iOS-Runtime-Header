@@ -17,9 +17,9 @@
 + (id)CR_repeatedCharUUID:(unsigned char)arg1;
 - (id)TTShortDescription;
 - (long long)TTCompare:(id)arg1;
-- (basic_string_05660eb3)CR_toStdString;
-- (void)encodeWithCRCoder:(id)arg1;
-- (id)initWithCRCoder:(id)arg1;
+- (basic_string_b963e3c0)CR_toStdString;
+- (void)encodeWithICCRCoder:(id)arg1;
+- (id)initWithICCRCoder:(id)arg1;
 @property(readonly, copy, nonatomic) NSString *CR_shortDescription;
 - (long long)CR_compare:(id)arg1;
 - (id)tombstone;

@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <EventKitUI/EKUIAppReviewPrompter-Protocol.h>
 #import <EventKitUI/NSObject-Protocol.h>
 
 @class EKDayOccurrenceView, EKDayViewContent, EKEvent, NSArray, UIView, UIViewController;
 
-@protocol EKDayViewContentDelegate <NSObject>
+@protocol EKDayViewContentDelegate <NSObject, EKUIAppReviewPrompter>
 - (NSArray *)selectedEventsForEditMenu;
 - (UIViewController *)presentationControllerForEditMenu;
 - (void)dayViewContent:(EKDayViewContent *)arg1 didTapInEmptySpaceOnDay:(double)arg2;

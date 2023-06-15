@@ -4,14 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Sleep/NAScheduler-Protocol.h>
+#import <Sleep/HKSPScheduler-Protocol.h>
 
 @class NSObject;
 @protocol OS_dispatch_queue;
 
-@protocol HKSPQueueBackedScheduler <NAScheduler>
+@protocol HKSPQueueBackedScheduler <HKSPScheduler>
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue;
-- (void)resume;
-- (void)suspend;
 @end
 

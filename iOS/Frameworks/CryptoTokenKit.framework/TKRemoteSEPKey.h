@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     _Bool _systemKey;
     NSData *_publicKey;
     id _accessControl;
+    _Bool _forceSystemSession;
     id _keyID;
 }
 
@@ -33,8 +34,8 @@ __attribute__((visibility("hidden")))
 - (long long)keySize;
 - (id)keyType;
 - (id)objectID;
-- (id)_initWithKeyType:(id)arg1 keySize:(long long)arg2 accessControl:(struct __SecAccessControl *)arg3 options:(id)arg4 authContext:(id)arg5 error:(id *)arg6;
-- (id)_initWithObjectID:(id)arg1 authContext:(id)arg2 error:(id *)arg3;
+- (id)_initWithKeyType:(id)arg1 keySize:(long long)arg2 accessControl:(struct __SecAccessControl *)arg3 options:(id)arg4 authContext:(id)arg5 forceSystemSession:(_Bool)arg6 error:(id *)arg7;
+- (id)_initWithObjectID:(id)arg1 authContext:(id)arg2 forceSystemSession:(_Bool)arg3 error:(id *)arg4;
 - (id)withError:(id *)arg1 invoke:(CDUnknownBlockType)arg2;
 - (_Bool)processServerAtributes:(id)arg1 error:(id *)arg2;
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
 @class CNAutocompleteFetchContext, CNAutocompleteResultsTableViewController, CNAutocompleteSearchManager, CNComposeRecipient, CNComposeRecipientTextView, EKEvent, NSArray, NSDate, NSMutableArray, NSMutableDictionary, NSNumber, NSOperationQueue, NSString, UIKeyboard, UIScrollView, UITableView;
 @protocol EKEventAttendeePickerDelegate;
@@ -89,6 +89,7 @@ __attribute__((visibility("hidden")))
 - (void)_hideSearchResultsViewAndCancelOutstandingSearches:(_Bool)arg1;
 - (id)_searchResultsView;
 - (void)_copyRecipientsFromComposeView;
+- (void)_invalidateAtomPresentationOptionsForAllRecipients;
 - (void)_setAtomPresentationOption:(unsigned long long)arg1 forRecipient:(id)arg2;
 - (void)_requestAvailabilityForRecipients:(id)arg1;
 - (id)_lookUpRecipientForAddress:(id)arg1;

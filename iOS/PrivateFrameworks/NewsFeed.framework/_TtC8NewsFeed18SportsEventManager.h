@@ -12,13 +12,12 @@
 {
     MISSING_TYPE *dataService;
     MISSING_TYPE *observers;
-    MISSING_TYPE *staticDataCache;
-    MISSING_TYPE *liveDataCache;
+    MISSING_TYPE *dataCache;
+    MISSING_TYPE *workItems;
     MISSING_TYPE *staticDataWorkItems;
     MISSING_TYPE *liveDataWorkItems;
     MISSING_TYPE *sportsRecordFactory;
     MISSING_TYPE *pollingQueue;
-    MISSING_TYPE *callbackQueue;
 }
 
 @end

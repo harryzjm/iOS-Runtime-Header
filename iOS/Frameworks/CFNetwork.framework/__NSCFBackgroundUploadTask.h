@@ -4,11 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSURL;
+
 @interface __NSCFBackgroundUploadTask
 {
+    NSURL *_uploadFile;
 }
 
+- (void)_onqueue_didFinishWithError:(id)arg1;
+- (void)cancelByProducingResumeData:(CDUnknownBlockType)arg1;
 - (_Bool)isKindOfClass:(Class)arg1;
+- (void)dealloc;
 
 @end
 

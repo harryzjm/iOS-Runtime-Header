@@ -6,11 +6,13 @@
 
 #import <Trial/NSObject-Protocol.h>
 
-@class CTDataConnectionStatus, CTDataSettings, CTDataStatus, CTDataStatusBasic, CTServiceDescriptor, CTServiceDisconnectionStatus, CTTetheringStatus, CTXPCServiceSubscriptionContext, NSArray, NSNumber;
+@class CTDataConnectionStatus, CTDataSettings, CTDataStatus, CTDataStatusBasic, CTServiceDescriptor, CTServiceDisconnectionStatus, CTSlicedRunningAppInfoContainer, CTTetheringStatus, CTTrafficDescriptorsContainer, CTXPCServiceSubscriptionContext, NSArray, NSNumber, NSString;
 
 @protocol CoreTelephonyClientDataDelegate <NSObject>
 
 @optional
+- (void)nrSlicedRunningAppStateChanged:(CTSlicedRunningAppInfoContainer *)arg1;
+- (void)nrSliceAppStateChanged:(NSString *)arg1 status:(_Bool)arg2 trafficDescriptors:(CTTrafficDescriptorsContainer *)arg3;
 - (void)dataRoamingSettingsChanged:(CTServiceDescriptor *)arg1 status:(_Bool)arg2;
 - (void)serviceDisconnection:(CTXPCServiceSubscriptionContext *)arg1 status:(CTServiceDisconnectionStatus *)arg2;
 - (void)tetheringStatus:(CTTetheringStatus *)arg1 connectionType:(int)arg2;

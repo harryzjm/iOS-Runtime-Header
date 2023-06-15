@@ -6,11 +6,12 @@
 
 #import <TelephonyUtilities/TUConversationMediaControllerXPCClient-Protocol.h>
 #import <TelephonyUtilities/TUConversationMessagesGroupProviderXPCClient-Protocol.h>
+#import <TelephonyUtilities/TUConversationReactionsControllerXPCClient-Protocol.h>
 
 @class NSArray, NSDictionary, NSError, NSSet, TUConversation, TUConversationActivityEvent, TUConversationActivitySession, TUConversationLink, TUConversationMember, TUConversationNotice, TUConversationParticipant;
 @protocol TUScreenShareAttributes;
 
-@protocol TUConversationManagerXPCClient <TUConversationMediaControllerXPCClient, TUConversationMessagesGroupProviderXPCClient>
+@protocol TUConversationManagerXPCClient <TUConversationMediaControllerXPCClient, TUConversationMessagesGroupProviderXPCClient, TUConversationReactionsControllerXPCClient>
 - (oneway void)screenSharingAvailableChanged:(_Bool)arg1;
 - (oneway void)sharePlayAvailableChanged:(_Bool)arg1;
 - (oneway void)remoteScreenShareEndedWithReason:(NSError *)arg1;
@@ -26,8 +27,6 @@
 - (oneway void)conversation:(TUConversation *)arg1 buzzedMember:(TUConversationMember *)arg2;
 - (oneway void)conversation:(TUConversation *)arg1 addedMembersLocally:(NSSet *)arg2;
 - (oneway void)conversation:(TUConversation *)arg1 participant:(TUConversationParticipant *)arg2 addedNotice:(TUConversationNotice *)arg3;
-- (oneway void)conversation:(TUConversation *)arg1 remoteParticipantWithIdentifier:(unsigned long long)arg2 updatedVideoEnabled:(_Bool)arg3;
-- (oneway void)conversation:(TUConversation *)arg1 remoteParticipantWithIdentifier:(unsigned long long)arg2 updatedAudioEnabled:(_Bool)arg3;
 - (oneway void)conversation:(TUConversation *)arg1 receivedActivitySessionEvent:(TUConversationActivityEvent *)arg2;
 - (oneway void)updateActivatedConversationLinks:(NSArray *)arg1;
 - (oneway void)updateConversationsByGroupUUID:(NSDictionary *)arg1;

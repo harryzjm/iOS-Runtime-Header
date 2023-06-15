@@ -11,9 +11,9 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)_collaborationItemFromItemProvider:(id)arg1 forActivityItem:(id)arg2 service:(id)arg3;
-+ (id)_collaborationItemForFileURL:(id)arg1 itemProvider:(id)arg2 activityItem:(id)arg3 service:(id)arg4;
-+ (id)inspectActivityItemValue:(id)arg1 activityItem:(id)arg2 service:(id)arg3;
++ (id)_collaborationItemFromItemProvider:(id)arg1 forActivityItem:(id)arg2 service:(id)arg3 shouldInspectFiles:(_Bool)arg4 managedFileURL:(id)arg5 isURLProviderSupported:(_Bool)arg6;
++ (id)_collaborationItemForFileURL:(id)arg1 itemProvider:(id)arg2 activityItem:(id)arg3 service:(id)arg4 managedFileURL:(id)arg5;
++ (id)inspectActivityItemValue:(id)arg1 activityItem:(id)arg2 service:(id)arg3 shouldInspectFiles:(_Bool)arg4 managedFileURL:(id)arg5 isURLProviderSupported:(_Bool)arg6;
 
 @end
 

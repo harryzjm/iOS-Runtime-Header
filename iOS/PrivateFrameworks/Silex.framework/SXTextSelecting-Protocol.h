@@ -6,7 +6,10 @@
 
 #import <Silex/NSObject-Protocol.h>
 
+@class NSString;
+
 @protocol SXTextSelecting <NSObject>
+@property(readonly, copy, nonatomic) NSString *selectedText;
 - (void)endSelection;
 @end
 

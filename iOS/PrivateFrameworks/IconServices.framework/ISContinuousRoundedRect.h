@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (id)imageForSize:(struct CGSize)arg1 scale:(double)arg2;
+- (double)_cornerRadiusForSize:(struct CGSize)arg1;
 - (id)init;
 
 @end

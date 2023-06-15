@@ -11,19 +11,19 @@
 __attribute__((visibility("hidden")))
 @interface AVMobileImageConfiguration : NSObject
 {
-    _Bool _prefersWesternLatinDigits;
+    _Bool _imageContainedInBundle;
     NSString *_string;
     UIFont *_font;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) _Bool prefersWesternLatinDigits; // @synthesize prefersWesternLatinDigits=_prefersWesternLatinDigits;
+@property(readonly, nonatomic) _Bool imageContainedInBundle; // @synthesize imageContainedInBundle=_imageContainedInBundle;
 @property(readonly, nonatomic) UIFont *font; // @synthesize font=_font;
 @property(readonly, copy, nonatomic) NSString *string; // @synthesize string=_string;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)imageName;
-- (id)initWithImageName:(id)arg1 font:(id)arg2 prefersWesternLatinDigits:(_Bool)arg3;
+- (id)initWithImageName:(id)arg1 font:(id)arg2 imageContainedInBundle:(_Bool)arg3;
 - (id)initWithString:(id)arg1 font:(id)arg2;
 
 @end

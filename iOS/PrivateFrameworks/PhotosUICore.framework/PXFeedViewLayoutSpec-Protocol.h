@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSShadow, PXLayoutGenerator, UIColor, UIFont;
+@class NSShadow, PXLayoutGenerator, UIColor, UIFont, _TtC12PhotosUICore16PXScrollBehavior;
 
 @protocol PXFeedViewLayoutSpec
+@property(readonly, nonatomic) _Bool allowsAutoplayContent;
 @property(readonly, nonatomic) long long rootLayoutOrientation;
 @property(readonly, nonatomic) struct UIEdgeInsets placeholderMargins;
 @property(readonly, nonatomic) UIColor *subtitleColor;
@@ -22,7 +23,7 @@
 @property(readonly, nonatomic) _Bool wantsFirstItemFullscreen;
 @property(readonly, nonatomic) _Bool wantsSafeAreaInsets;
 @property(readonly, nonatomic) _Bool wantsScrollIndicators;
-@property(readonly, nonatomic) CDStruct_b72cf85b scrollBehavior;
+@property(readonly, nonatomic) _TtC12PhotosUICore16PXScrollBehavior *scrollBehavior;
 - (PXLayoutGenerator *)layoutGeneratorWithReferenceSize:(struct CGSize)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)gadgetSizeThatFits:(struct CGSize)arg1;

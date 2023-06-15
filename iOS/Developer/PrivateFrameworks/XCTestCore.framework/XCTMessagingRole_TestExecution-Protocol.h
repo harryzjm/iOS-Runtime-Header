@@ -9,6 +9,7 @@
 @protocol XCTMessagingRole_TestExecution
 - (id)_IDE_shutdown;
 - (id)_IDE_executeTestsWithIdentifiersToRun:(XCTTestIdentifierSet *)arg1 identifiersToSkip:(XCTTestIdentifierSet *)arg2;
+- (id)_IDE_fetchAllTestIdentifiers;
 - (id)_IDE_fetchParallelizableTestIdentifiers;
 - (id)_IDE_startExecutingTestPlanWithProtocolVersion:(NSNumber *)arg1;
 @end

@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class GEOTileLoader, NSString, _GEOMapFeatureAccessRequest;
+@class GEOTileLoader, NSString, _GEOMapFeatureAccessRequest, _GEOMapFeatureAccessRequestParameters;
 
 __attribute__((visibility("hidden")))
 @interface GEOMapFeatureTileFinder : NSObject
 {
-    _Bool _allowStaleData;
+    _GEOMapFeatureAccessRequestParameters *_requestParameters;
     unsigned long long _zoomLevel;
     int _tileSize;
     int _tileScale;
@@ -22,16 +22,16 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) _Bool allowStaleData; // @synthesize allowStaleData=_allowStaleData;
 - (id)_tileLoaderClientIdentifier;
-- (id)_findTilesInList:(id)arg1 allowNetwork:(_Bool)arg2 preloadToDiskOnly:(_Bool)arg3 queue:(id)arg4 handler:(CDUnknownBlockType)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (id)_findTilesInList:(id)arg1 preloadToDiskOnly:(_Bool)arg2 tileDecoder:(CDUnknownBlockType)arg3 handler:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (id)_tileFinderRequest;
-- (id)preloadTilesAround:(CDStruct_c3b9c2ee)arg1 radius:(double)arg2 preloadToDiskOnly:(_Bool)arg3 queue:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
-- (id)findTilesAround:(CDStruct_c3b9c2ee)arg1 radius:(double)arg2 allowNetwork:(_Bool)arg3 queue:(id)arg4 handler:(CDUnknownBlockType)arg5 completionHandler:(CDUnknownBlockType)arg6;
-- (id)findTileWithKey:(struct _GEOTileKey)arg1 allowNetwork:(_Bool)arg2 queue:(id)arg3 handler:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (id)preloadTilesAround:(CDStruct_c3b9c2ee)arg1 radius:(double)arg2 preloadToDiskOnly:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (id)findTileDataAround:(CDStruct_c3b9c2ee)arg1 radius:(double)arg2 handler:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (id)findTilesAround:(CDStruct_c3b9c2ee)arg1 radius:(double)arg2 handler:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (id)findTileWithKey:(struct _GEOTileKey)arg1 handler:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (struct _GEOTileKey)tileKeyWithX:(unsigned int)arg1 y:(unsigned int)arg2;
 - (void)setExistingRequest:(id)arg1;
-- (id)initWithZoomLevel:(unsigned long long)arg1 tileSize:(int)arg2 tileScale:(int)arg3 tileSetStyle:(int)arg4 tileLoader:(id)arg5;
+- (id)initWithZoomLevel:(unsigned long long)arg1 tileSize:(int)arg2 tileScale:(int)arg3 tileSetStyle:(int)arg4 requestParameters:(id)arg5;
 
 @end
 

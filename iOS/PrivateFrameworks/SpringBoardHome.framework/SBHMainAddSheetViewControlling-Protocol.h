@@ -13,6 +13,8 @@
 @protocol SBHMainAddSheetViewControlling <SBHWidgetSheetViewControlling, NSObject>
 @property(nonatomic) unsigned long long galleryLayoutSize;
 @property(nonatomic) __weak id <SBHWidgetSheetViewControllerPresenter> presenter;
+@property(retain, nonatomic) NSArray *disfavoredApplicationWidgetCollections;
+@property(retain, nonatomic) NSArray *favoredApplicationWidgetCollections;
 @property(retain, nonatomic) NSArray *applicationWidgetCollections;
 - (NSArray *)suggestedItemsForGalleryLayoutSize:(unsigned long long)arg1;
 - (void)setSuggestedItems:(NSArray *)arg1 forGalleryLayoutSize:(unsigned long long)arg2;

@@ -45,7 +45,7 @@ __attribute__((visibility("hidden")))
 - (void)transitRouteUpdater:(id)arg1 willUpdateTransitForRouteIDs:(id)arg2;
 - (void)transitRouteUpdater:(id)arg1 didReceiveResponse:(id)arg2;
 - (void)transitRouteUpdater:(id)arg1 willSendRequests:(id)arg2;
-- (id)_serverDisplayETAForResponseInfo:(id)arg1;
+- (void)_updateForETARoute:(id)arg1;
 - (void)_handleETAResponse:(id)arg1 forRouteInfo:(id)arg2 etaRoute:(id)arg3;
 - (id)_updateWaypointsForRequest:(id)arg1 routeInfo:(id)arg2 userLocation:(id)arg3 etaRoute:(id)arg4;
 - (id)_updateETARequest:(id)arg1 withRouteInfo:(id)arg2 andUserLocation:(id)arg3;

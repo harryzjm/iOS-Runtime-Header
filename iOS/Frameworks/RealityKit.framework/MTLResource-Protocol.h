@@ -10,17 +10,17 @@
 @protocol MTLDevice, MTLHeap;
 
 @protocol MTLResource <NSObject>
+@property(readonly) unsigned long long allocatedSize;
+@property(readonly) unsigned long long heapOffset;
+@property(readonly) id <MTLHeap> heap;
+@property(readonly) unsigned long long resourceOptions;
+@property(readonly) unsigned long long hazardTrackingMode;
+@property(readonly) unsigned long long storageMode;
+@property(readonly) unsigned long long cpuCacheMode;
+@property(readonly) id <MTLDevice> device;
+@property(copy) NSString *label;
 - (_Bool)isAliasable;
 - (void)makeAliasable;
-@property(nonatomic, readonly) long long allocatedSize;
-@property(nonatomic, readonly) long long heapOffset;
-@property(nonatomic, readonly) id <MTLHeap> heap;
 - (unsigned long long)setPurgeableState:(unsigned long long)arg1;
-@property(nonatomic, readonly) unsigned long long resourceOptions;
-@property(nonatomic, readonly) unsigned long long hazardTrackingMode;
-@property(nonatomic, readonly) unsigned long long storageMode;
-@property(nonatomic, readonly) unsigned long long cpuCacheMode;
-@property(nonatomic, readonly) id <MTLDevice> device;
-@property(nonatomic, copy) NSString *label;
 @end
 

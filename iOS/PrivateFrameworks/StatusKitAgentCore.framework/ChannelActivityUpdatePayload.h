@@ -6,22 +6,23 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-@class ChannelActivityParticipantPayload, NSData;
+@class NSData, NSMutableArray;
 
 __attribute__((visibility("hidden")))
 @interface ChannelActivityUpdatePayload : PBCodable
 {
     NSData *_padding;
-    ChannelActivityParticipantPayload *_participantPayload;
+    NSMutableArray *_participantPayloads;
     int _updateType;
     struct {
         unsigned int updateType:1;
     } _has;
 }
 
++ (Class)participantPayloadType;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSData *padding; // @synthesize padding=_padding;
-@property(retain, nonatomic) ChannelActivityParticipantPayload *participantPayload; // @synthesize participantPayload=_participantPayload;
+@property(retain, nonatomic) NSMutableArray *participantPayloads; // @synthesize participantPayloads=_participantPayloads;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -32,7 +33,10 @@ __attribute__((visibility("hidden")))
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(readonly, nonatomic) _Bool hasPadding;
-@property(readonly, nonatomic) _Bool hasParticipantPayload;
+- (id)participantPayloadAtIndex:(unsigned long long)arg1;
+- (unsigned long long)participantPayloadsCount;
+- (void)addParticipantPayload:(id)arg1;
+- (void)clearParticipantPayloads;
 - (int)StringAsUpdateType:(id)arg1;
 - (id)updateTypeAsString:(int)arg1;
 @property(nonatomic) _Bool hasUpdateType;

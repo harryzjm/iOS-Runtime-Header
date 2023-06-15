@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-- (void)setKeyboardAlpha:(id)arg1;
+- (void)setKeyboardAlpha:(id)arg1 force:(id)arg2 sessionID:(id)arg3;
 - (id)snapshotForOptions:(id)arg1;
 - (id)snapshotForView:(id)arg1;
 - (id)initWithService:(id)arg1 connection:(id)arg2;

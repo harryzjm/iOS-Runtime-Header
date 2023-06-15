@@ -12,10 +12,12 @@ __attribute__((visibility("hidden")))
 @interface _TtC9SiriSetup22VoiceTrainingPresenter : NSObject
 {
     MISSING_TYPE *dataSource;
+    MISSING_TYPE *dataSourceWriter;
     MISSING_TYPE *delegate;
     MISSING_TYPE *presentingViewController;
     MISSING_TYPE *viewStyle;
     MISSING_TYPE *viewModel;
+    MISSING_TYPE *page;
     MISSING_TYPE *AVVCRetryCount;
     MISSING_TYPE *badMicRetryCount;
     MISSING_TYPE *trainingInstructions;

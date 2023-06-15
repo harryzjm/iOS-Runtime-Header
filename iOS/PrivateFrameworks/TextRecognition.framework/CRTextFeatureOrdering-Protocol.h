@@ -5,8 +5,14 @@
 //
 
 @class NSArray;
+@protocol CRCTLDDelegate;
 
 @protocol CRTextFeatureOrdering
-- (NSArray *)orderAndGroupFeatures:(NSArray *)arg1 imageSize:(struct CGSize)arg2;
+- (NSArray *)orderAndGroupRegions:(NSArray *)arg1;
+
+@optional
+- (NSArray *)orderAndGroupRegions:(NSArray *)arg1 coarseDelegate:(id <CRCTLDDelegate>)arg2 fineDelegate:(id <CRCTLDDelegate>)arg3;
+- (NSArray *)orderAndGroupRegions:(NSArray *)arg1 coarseDelegate:(id <CRCTLDDelegate>)arg2 fineDelegate:(id <CRCTLDDelegate>)arg3 coarseOnly:(_Bool)arg4;
+- (NSArray *)orderAndGroupRegions:(NSArray *)arg1 tableGroups:(NSArray *)arg2;
 @end
 

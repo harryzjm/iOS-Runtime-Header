@@ -17,7 +17,6 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) const MISSING_TYPE **points;
 @property(readonly, nonatomic) unsigned long long count;
-- (id)initWithPoints:(const MISSING_TYPE **)arg1 count:(unsigned long long)arg2;
 
 @end
 

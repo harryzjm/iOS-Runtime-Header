@@ -9,6 +9,7 @@
 @class NSString;
 
 @protocol CRKASMNameComponents <NSObject>
+@property(readonly, copy, nonatomic) NSString *givenNameFamilyInitial;
 @property(readonly, copy, nonatomic) NSString *monogram;
 @property(readonly, copy, nonatomic) NSString *phoneticFullName;
 @property(readonly, copy, nonatomic) NSString *fullName;

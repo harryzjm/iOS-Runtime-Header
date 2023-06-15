@@ -11,7 +11,6 @@ __attribute__((visibility("hidden")))
 {
     unsigned long long _luminance;
     CDUnknownBlockType _tintColorMatrixProvider;
-    _Bool _shouldAdjustIntensityOnPress;
     _Bool _disabled;
     _Bool _pressed;
 }

@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 + (id)finalStepWorkaroundOperationWithFigAssetWriter:(struct OpaqueFigAssetWriter *)arg1;
 + (id)finishWritingDelegateOperationWithAssetWriter:(id)arg1 andFigAssetWriter:(struct OpaqueFigAssetWriter *)arg2 andDelegate:(id)arg3;
 + (id)prepareInputsOperationsWithInputs:(id)arg1;
+- (_Bool)_isDefunct;
 - (void)flushSegment;
 - (void)flush;
 - (void)transitionToFailedStatusWithError:(id)arg1;

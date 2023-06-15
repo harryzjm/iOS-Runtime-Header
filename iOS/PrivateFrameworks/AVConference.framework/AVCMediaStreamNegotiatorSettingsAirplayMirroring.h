@@ -7,10 +7,10 @@
 __attribute__((visibility("hidden")))
 @interface AVCMediaStreamNegotiatorSettingsAirplayMirroring
 {
-    long long _tilesPerFrame;
 }
 
-- (long long)tilesPerFrame;
+- (unsigned char)featureListStringType;
+- (unsigned long long)maxBandwidth;
 - (int)operatingMode;
 - (long long)captureSource;
 - (long long)videoStreamMode;

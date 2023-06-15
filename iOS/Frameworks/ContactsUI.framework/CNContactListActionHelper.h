@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CNContactListActionConfiguration, CNContactListActionExecutor, CNContactOrbActionsController, NSArray, NSString;
+@class CNActionMenuHelper, CNContactListActionConfiguration, CNContactListActionExecutor, CNContactOrbActionsController, NSArray, NSString;
 @protocol CNContactListActionHelperDelegate;
 
 __attribute__((visibility("hidden")))
@@ -19,10 +19,12 @@ __attribute__((visibility("hidden")))
     NSArray *_contacts;
     CNContactListActionExecutor *_actionExecutor;
     CNContactOrbActionsController *_contactActionsController;
+    CNActionMenuHelper *_actionMenuHelper;
 }
 
 + (id)descriptorForRequiredKeysForMultiSelectAction:(_Bool)arg1;
 - (void).cxx_destruct;
+@property(retain, nonatomic) CNActionMenuHelper *actionMenuHelper; // @synthesize actionMenuHelper=_actionMenuHelper;
 @property(retain, nonatomic) CNContactOrbActionsController *contactActionsController; // @synthesize contactActionsController=_contactActionsController;
 @property(retain, nonatomic) CNContactListActionExecutor *actionExecutor; // @synthesize actionExecutor=_actionExecutor;
 @property(retain, nonatomic) NSArray *contacts; // @synthesize contacts=_contacts;
@@ -50,7 +52,9 @@ __attribute__((visibility("hidden")))
 - (void)removeContactsFromGroup:(id)arg1 withConfirmation:(_Bool)arg2;
 - (id)trailingSwipeActionsForContact:(id)arg1 dataSourceFilter:(id)arg2;
 - (id)actionsForContacts:(id)arg1 dataSourceFilter:(id)arg2 sourceView:(id)arg3;
-- (id)searchActionsForContacts:(id)arg1;
+- (void)willDisplayMenuWithContextMenuInteraction:(id)arg1;
+- (void)willDismissMenu;
+- (CDUnknownBlockType)searchMenuActionProviderForContacts:(id)arg1;
 - (id)initWithContactStore:(id)arg1 environment:(id)arg2 contactFormatter:(id)arg3 undoManager:(id)arg4;
 
 // Remaining properties

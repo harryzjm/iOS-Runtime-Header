@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDictionary, PASFlowResult;
+@class NSDictionary, PASTargetFlowResult;
 
 @protocol PASUIDependentViewPresenterDelegate
-- (void)proximitySetupCompletedWithResult:(PASFlowResult *)arg1;
+- (void)proximitySetupCompletedWithResult:(PASTargetFlowResult *)arg1;
 - (void)setupPerformAIDASignInWith:(NSDictionary *)arg1 completion:(void (^)(_Bool))arg2;
 - (void)setupPasscodeAndBiometricWithCompletion:(void (^)(_Bool))arg1;
 - (void)proximitySetupSelectedAccountType:(long long)arg1;
+- (void)proximitySetupSelectedAccount:(long long)arg1 completion:(void (^)(_Bool))arg2;
 @end
 

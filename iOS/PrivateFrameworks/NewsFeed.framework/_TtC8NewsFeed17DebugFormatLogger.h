@@ -11,6 +11,8 @@
 @interface _TtC8NewsFeed17DebugFormatLogger : _TtCs12_SwiftObject
 {
     MISSING_TYPE *_entries;
+    MISSING_TYPE *timers;
+    MISSING_TYPE *timerLock;
     MISSING_TYPE *queue;
 }
 

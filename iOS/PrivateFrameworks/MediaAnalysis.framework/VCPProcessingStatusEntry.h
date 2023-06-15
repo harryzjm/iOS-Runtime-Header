@@ -15,17 +15,19 @@ __attribute__((visibility("hidden")))
     NSString *_localIdentifier;
     unsigned long long _status;
     unsigned long long _attempts;
-    NSDate *_lastRetryDate;
+    NSDate *_lastAttemptDate;
+    NSDate *_nextAttemptDate;
 }
 
-+ (id)entryWithLocalIdentifier:(id)arg1 andTaskID:(unsigned long long)arg2 andStatus:(unsigned long long)arg3 andAttempts:(unsigned long long)arg4 andLastRetryDate:(id)arg5;
++ (id)entryWithLocalIdentifier:(id)arg1 taskID:(unsigned long long)arg2 status:(unsigned long long)arg3 attempts:(unsigned long long)arg4 lastAttemptDate:(id)arg5 andNextAttemptDate:(id)arg6;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSDate *lastRetryDate; // @synthesize lastRetryDate=_lastRetryDate;
+@property(readonly, nonatomic) NSDate *nextAttemptDate; // @synthesize nextAttemptDate=_nextAttemptDate;
+@property(readonly, nonatomic) NSDate *lastAttemptDate; // @synthesize lastAttemptDate=_lastAttemptDate;
 @property(readonly, nonatomic) unsigned long long attempts; // @synthesize attempts=_attempts;
 @property(readonly, nonatomic) unsigned long long status; // @synthesize status=_status;
 @property(readonly, nonatomic) NSString *localIdentifier; // @synthesize localIdentifier=_localIdentifier;
 @property(readonly, nonatomic) unsigned long long taskID; // @synthesize taskID=_taskID;
-- (id)initWithLocalIdentifier:(id)arg1 andTaskID:(unsigned long long)arg2 andStatus:(unsigned long long)arg3 andAttempts:(unsigned long long)arg4 andLastRetryDate:(id)arg5;
+- (id)initWithLocalIdentifier:(id)arg1 taskID:(unsigned long long)arg2 status:(unsigned long long)arg3 attempts:(unsigned long long)arg4 lastAttemptDate:(id)arg5 andNextAttemptDate:(id)arg6;
 
 @end
 

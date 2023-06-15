@@ -6,9 +6,10 @@
 
 #import <PassKitCore/PDXPCServiceExportedInterface-Protocol.h>
 
-@class NSNumber, NSString, NSXPCListenerEndpoint, PKPaymentMerchantSession, PKPaymentRequest;
+@class NSNumber, NSString, NSXPCListenerEndpoint, PKPayLaterMerchandisingConfiguration, PKPaymentMerchantSession, PKPaymentRequest;
 
 @protocol PDInAppPaymentServiceExportedInterface <PDXPCServiceExportedInterface>
+- (void)validatePayLaterMerchandisingConfiguration:(PKPayLaterMerchandisingConfiguration *)arg1 type:(unsigned long long)arg2 completion:(void (^)(NSError *, NSSet *))arg3;
 - (void)enrollPaymentPassWithUniqueIdentifier:(NSString *)arg1 merchantSession:(PKPaymentMerchantSession *)arg2 completion:(void (^)(_Bool, PKPayment *))arg3;
 - (void)cardDataForMerchantIdentifier:(NSString *)arg1 countryCode:(NSString *)arg2 completion:(void (^)(PKAMPCardRegistrationResponse *))arg3;
 - (void)cardsAvailableForAMPWithCountryCode:(NSString *)arg1 completion:(void (^)(long long))arg2;
@@ -18,6 +19,6 @@
 - (void)merchantStatusCheck:(NSString *)arg1 merchantDomain:(NSString *)arg2 sourceApplicationSecondaryIdentifier:(NSString *)arg3 handler:(void (^)(_Bool, NSError *))arg4;
 - (void)retrievePaymentListenerEndpointForHostIdentifier:(NSString *)arg1 handler:(void (^)(_Bool, NSXPCListenerEndpoint *))arg2;
 - (void)registerPaymentListenerEndpoint:(NSXPCListenerEndpoint *)arg1 forHostIdentifier:(NSString *)arg2 handler:(void (^)(_Bool))arg3;
-- (void)presentInAppPaymentInterfaceWithPaymentRequest:(PKPaymentRequest *)arg1 forHostIdentifier:(NSString *)arg2 hostSceneIdentifier:(NSString *)arg3 orientation:(NSNumber *)arg4 handler:(void (^)(_Bool, NSError *))arg5;
+- (void)presentInAppPaymentInterfaceWithPaymentRequest:(PKPaymentRequest *)arg1 forHostIdentifier:(NSString *)arg2 hostSceneIdentifier:(NSString *)arg3 hostSceneBundleIdentifier:(NSString *)arg4 orientation:(NSNumber *)arg5 intentTriggered:(_Bool)arg6 handler:(void (^)(_Bool, NSError *))arg7;
 @end
 

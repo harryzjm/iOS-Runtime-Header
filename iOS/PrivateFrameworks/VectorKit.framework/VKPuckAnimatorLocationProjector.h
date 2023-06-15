@@ -34,7 +34,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) GEORouteMatch *routeMatch; // @synthesize routeMatch=_routeMatch;
 - (id)detailedDescription;
 @property(readonly, nonatomic) _Bool projectedLocationOnRoute;
-@property(readonly, nonatomic) CDStruct_c3b9c2ee projectedLocation;
+@property(readonly, nonatomic) CDStruct_2c43369c projectedLocation;
 - (void)projectFromLocation:(id)arg1 routeMatch:(id)arg2 speedMultiplier:(double)arg3 routeLine:(id)arg4;
 - (void)_updateCourseAndPositionFromRouteMatch:(id)arg1;
 - (void)reset;

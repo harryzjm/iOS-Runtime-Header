@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, UIColor, UIPanGestureRecognizer, UIView, _UIDynamicAnimationGroup;
+@class NSString, UIColor, UIKBResizingKeyplanePanGestureRecognizer, UIView, _UIDynamicAnimationGroup;
 @protocol UIKBResizingKeyplaneCoordinatorCoordinatorDelegate;
 
 __attribute__((visibility("hidden")))
@@ -20,14 +20,15 @@ __attribute__((visibility("hidden")))
     UIColor *_grabberColor;
     _Bool _isResizing;
     id <UIKBResizingKeyplaneCoordinatorCoordinatorDelegate> _delegate;
-    UIPanGestureRecognizer *_gestureRecognizer;
+    UIKBResizingKeyplanePanGestureRecognizer *_gestureRecognizer;
 }
 
 + (double)savedResizingOffset;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) UIPanGestureRecognizer *gestureRecognizer; // @synthesize gestureRecognizer=_gestureRecognizer;
+@property(readonly, nonatomic) UIKBResizingKeyplanePanGestureRecognizer *gestureRecognizer; // @synthesize gestureRecognizer=_gestureRecognizer;
 @property(readonly, nonatomic) double resizingOffset; // @synthesize resizingOffset=_resizingOffset;
 @property(nonatomic) __weak id <UIKBResizingKeyplaneCoordinatorCoordinatorDelegate> delegate; // @synthesize delegate=_delegate;
+- (_Bool)shouldStartResizeForTranslationY:(double)arg1;
 - (void)resizeKeyplaneWithOffset:(double)arg1 andRedraw:(_Bool)arg2;
 - (void)handleResizeGesture:(id)arg1;
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1;

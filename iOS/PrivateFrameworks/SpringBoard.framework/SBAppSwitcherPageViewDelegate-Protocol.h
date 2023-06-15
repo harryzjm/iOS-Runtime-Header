@@ -10,7 +10,7 @@
 
 @protocol SBAppSwitcherPageViewDelegate <NSObject>
 - (_Bool)appSwitcherPageView:(SBAppSwitcherPageView *)arg1 shouldBeginPointerInteractionAtLocation:(struct CGPoint)arg2 window:(UIWindow *)arg3;
-- (void)pointerIsHoveringOverEdge:(unsigned long long)arg1;
+- (void)appSwitcherPageView:(SBAppSwitcherPageView *)arg1 pointerIsHoveringOverEdge:(unsigned long long)arg2;
 - (double)currentStatusBarHeight;
 @end
 

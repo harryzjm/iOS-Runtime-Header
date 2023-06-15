@@ -17,8 +17,8 @@ __attribute__((visibility("hidden")))
 + (unsigned int)getUIntParameter:(unsigned short)arg1 fromPairs:(const CDStruct_c0dd2249 *)arg2 numPairs:(unsigned int)arg3 didFindValue:(_Bool *)arg4;
 + (float)getFloatParameter:(unsigned short)arg1 fromPairs:(const CDStruct_c0dd2249 *)arg2 numPairs:(unsigned int)arg3 withDefault:(float)arg4;
 + (float)getFloatParameter:(unsigned short)arg1 fromPairs:(const CDStruct_c0dd2249 *)arg2 numPairs:(unsigned int)arg3;
-+ (void)appendCMTimeParameter:(unsigned short)arg1 value:(CDStruct_1b6d18a9)arg2 scale:(int)arg3 toOutput:(struct **)arg4;
 + (float)getFloatParameter:(unsigned short)arg1 fromPairs:(const CDStruct_c0dd2249 *)arg2 numPairs:(unsigned int)arg3 didFindValue:(_Bool *)arg4;
++ (void)appendCMTimeParameter:(unsigned short)arg1 value:(CDStruct_1b6d18a9)arg2 scale:(int)arg3 toOutput:(struct **)arg4;
 + (void)appendUIntParameter:(unsigned short)arg1 value:(unsigned int)arg2 toOutput:(struct **)arg3;
 + (void)appendFloatParameter:(unsigned short)arg1 value:(float)arg2 toOutput:(struct **)arg3;
 

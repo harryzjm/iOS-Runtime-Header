@@ -15,6 +15,7 @@
 - (id)contactForDestinationId:(id)arg1 keysToFetch:(id)arg2;
 - (id)contactForDestinationId:(id)arg1;
 - (id)contactForIdentifier:(id)arg1 keysToFetch:(id)arg2;
+- (id)contactForIdentifier:(id)arg1 keysToFetch:(id)arg2 usingCache:(id)arg3;
 - (id)contactForIdentifier:(id)arg1;
 - (id)tu_enumeratorForChangeHistoryFetchRequest:(id)arg1 error:(id *)arg2;
 - (id)tu_contactsForHandles:(id)arg1 keyDescriptors:(id)arg2 error:(id *)arg3;

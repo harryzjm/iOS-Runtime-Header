@@ -9,6 +9,7 @@
 @class AVDepthData, AVPortraitEffectsMatte, AVSemanticSegmentationMatte, NSDictionary;
 
 @protocol NUAuxiliaryImage <NSObject>
+@property(readonly, nonatomic) struct CGImageMetadata *metadata;
 @property(readonly) long long auxiliaryImageType;
 - (struct CGImage *)cgImageRef;
 - (struct __CVBuffer *)cvPixelBufferRef;

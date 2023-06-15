@@ -13,7 +13,7 @@
 @property(readonly, nonatomic) _Bool isOpaque;
 @property(readonly, nonatomic) struct CGSize pixelSize;
 @property(readonly, nonatomic) struct CGImage *imageRepresentation;
-@property(readonly, nonatomic) int presentationType;
+@property(readonly, nonatomic) unsigned char presentationType;
 @property(readonly, nonatomic) long long estimatedByteSize;
 @property(readonly, nonatomic) _Bool hasSprites;
 @property(readonly, nonatomic) NSIndexSet *spriteIndexes;

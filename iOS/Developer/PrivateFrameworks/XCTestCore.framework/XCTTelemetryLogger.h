@@ -16,13 +16,14 @@
 }
 
 + (double)defaultFlushTimeout;
++ (id)defaultLoggersWithRunnerDaemonSession:(id)arg1;
 + (id)sharedLoggerIfInitiated;
 + (void)setSharedLogger:(id)arg1;
 + (id)sharedLogger;
-+ (id)defaultLoggersWithRunnerDaemonSession:(id)arg1;
 + (void)initialize;
 - (void).cxx_destruct;
 @property(readonly, copy) NSArray *loggers; // @synthesize loggers=_loggers;
+- (void)logCompletionOfTestIdentifier:(id)arg1;
 - (void)flushWithCompletion:(CDUnknownBlockType)arg1;
 - (void)logUsageOfFunction:(id)arg1;
 - (void)logUsageOfClass:(id)arg1 method:(id)arg2;

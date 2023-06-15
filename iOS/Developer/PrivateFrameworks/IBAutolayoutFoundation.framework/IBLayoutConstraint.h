@@ -24,10 +24,10 @@
     IBLayoutConstant *_constant;
     double _priority;
     NSObject<IBAutolayoutItem> *_containingView;
+    long long _contentType;
     long long _scoringClass;
     double _scoringType;
     NSString *_identifier;
-    long long _contentType;
 }
 
 + (Class)archivableRepresentationClass;
@@ -47,11 +47,11 @@
 + (id)systemRequiredLayoutConstraintWithFirstItem:(id)arg1 firstAttribute:(unsigned long long)arg2 relation:(long long)arg3 secondItem:(id)arg4 secondAttribute:(unsigned long long)arg5 constant:(id)arg6;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool isUsingLayoutAnchorEngineVariables; // @synthesize isUsingLayoutAnchorEngineVariables=_isUsingLayoutAnchorEngineVariables;
-@property(nonatomic) long long contentType; // @synthesize contentType=_contentType;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(nonatomic, getter=isPlaceholder) _Bool placeholder; // @synthesize placeholder=_placeholder;
 @property(nonatomic) double scoringType; // @synthesize scoringType=_scoringType;
 @property(nonatomic) long long scoringClass; // @synthesize scoringClass=_scoringClass;
+@property(nonatomic) long long contentType; // @synthesize contentType=_contentType;
 @property(nonatomic) NSObject<IBAutolayoutItem> *containingView; // @synthesize containingView=_containingView;
 @property(nonatomic) double priority; // @synthesize priority=_priority;
 @property(retain, nonatomic) IBLayoutConstant *constant; // @synthesize constant=_constant;
@@ -104,6 +104,7 @@
 - (id)descriptionOfComponents;
 - (CDStruct_60a219bf)scoreVector;
 @property(readonly, nonatomic) double inferredScoringType;
+- (void)updateInferredContentAndScoringType;
 - (long long)inferredContentType;
 - (id)initWithNSLayoutConstraint:(id)arg1 layoutInfo:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;

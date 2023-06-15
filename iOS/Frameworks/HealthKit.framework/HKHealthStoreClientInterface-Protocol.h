@@ -6,9 +6,10 @@
 
 #import <HealthKit/NSObject-Protocol.h>
 
-@class HKAuthorizationRequestRecord, HKObjectAuthorizationPromptSession, HKRecalibrateEstimatesRequestRecord;
+@class HKAuthorizationRequestRecord, HKObjectAuthorizationPromptSession, HKRecalibrateEstimatesRequestRecord, HKWorkoutSessionTaskConfiguration;
 
 @protocol HKHealthStoreClientInterface <NSObject>
+- (void)clientRemote_didCreateRemoteSessionWithConfiguration:(HKWorkoutSessionTaskConfiguration *)arg1;
 - (void)clientRemote_conceptIndexManagerDidBecomeQuiescentWithSamplesProcessedCount:(long long)arg1;
 - (void)clientRemote_unitPreferencesDidUpdate;
 - (void)clientRemote_presentAuthorizationWithSession:(HKObjectAuthorizationPromptSession *)arg1 completion:(void (^)(_Bool, NSError *))arg2;

@@ -7,12 +7,14 @@
 #import <Recap/RCPButtonEventStreamComposer-Protocol.h>
 #import <Recap/RCPFluidSwipeGesturesEventStreamComposer-Protocol.h>
 #import <Recap/RCPGameControllerEventStreamComposer-Protocol.h>
+#import <Recap/RCPPencilEventStreamComposer-Protocol.h>
 #import <Recap/RCPPointerEventStreamComposer-Protocol.h>
 #import <Recap/RCPTouchEventStreamComposer-Protocol.h>
+#import <Recap/RCPVendorEventStreamComposer-Protocol.h>
 
 @class RCPEventSenderProperties;
 
-@protocol RCPEventStreamComposer <RCPTouchEventStreamComposer, RCPButtonEventStreamComposer, RCPPointerEventStreamComposer, RCPFluidSwipeGesturesEventStreamComposer, RCPGameControllerEventStreamComposer>
+@protocol RCPEventStreamComposer <RCPTouchEventStreamComposer, RCPButtonEventStreamComposer, RCPFluidSwipeGesturesEventStreamComposer, RCPPencilEventStreamComposer, RCPVendorEventStreamComposer, RCPPointerEventStreamComposer, RCPGameControllerEventStreamComposer>
 - (void)composeWithSender:(RCPEventSenderProperties *)arg1 actionBlock:(void (^)(id <RCPEventStreamComposer>))arg2;
 @end
 

@@ -11,7 +11,11 @@
 __attribute__((visibility("hidden")))
 @interface BREvictItemOperation : BROperation
 {
-    unsigned long long _section;
+    struct {
+        unsigned long long sectionID;
+        char *function;
+        int line;
+    } _section;
     NSURL *_url;
     CDUnknownBlockType _evictionCompletionBlock;
 }

@@ -17,21 +17,21 @@ __attribute__((visibility("hidden")))
     NSString *_placeholder;
     long long _keyboardType;
     NSString *_text;
+    NSString *_recentsTitle;
+    NSString *_recentsMessage;
     long long _autocapitalizationType;
     long long _autocorrectionType;
     long long _returnKeyType;
     NSString *_identifier;
-    NSString *_recentsTitle;
-    NSString *_recentsMessage;
 }
 
 - (void).cxx_destruct;
-@property(copy, nonatomic) NSString *recentsMessage; // @synthesize recentsMessage=_recentsMessage;
-@property(copy, nonatomic) NSString *recentsTitle; // @synthesize recentsTitle=_recentsTitle;
 @property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(nonatomic) long long returnKeyType; // @synthesize returnKeyType=_returnKeyType;
 @property(nonatomic) long long autocorrectionType; // @synthesize autocorrectionType=_autocorrectionType;
 @property(nonatomic) long long autocapitalizationType; // @synthesize autocapitalizationType=_autocapitalizationType;
+@property(copy, nonatomic) NSString *recentsMessage; // @synthesize recentsMessage=_recentsMessage;
+@property(copy, nonatomic) NSString *recentsTitle; // @synthesize recentsTitle=_recentsTitle;
 @property(nonatomic, getter=isRequired) _Bool required; // @synthesize required=_required;
 @property(copy, nonatomic) NSString *text; // @synthesize text=_text;
 @property(nonatomic, getter=isSecure) _Bool secure; // @synthesize secure=_secure;

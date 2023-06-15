@@ -10,11 +10,11 @@
 + (id)distributionDictionary:(id)arg1;
 + (id)getSiriLanguageWithEndpointId:(id)arg1 fallbackLanguage:(id)arg2;
 + (id)getSiriLanguageWithFallback:(id)arg1;
++ (id)_readValuesInNestedDictionary:(id)arg1 keyword:(id)arg2 depth:(long long)arg3 limitedDepth:(long long)arg4;
++ (id)readValuesFromJsonFile:(id)arg1 keyword:(id)arg2;
 + (_Bool)isRemoteDarwinWithDeviceId:(id)arg1;
 + (_Bool)hasRemoteBuiltInMic;
 + (_Bool)readAudioChunksFrom:(id)arg1 block:(CDUnknownBlockType)arg2;
-+ (void)iterateBitset:(unsigned long long)arg1 block:(CDUnknownBlockType)arg2;
-+ (unsigned int)getNumElementInBitset:(unsigned long long)arg1;
 + (_Bool)xpcConnection:(id)arg1 hasEntitlement:(id)arg2;
 + (void)getTrialIdsForAssetType:(unsigned long long)arg1 withCompletion:(CDUnknownBlockType)arg2;
 + (unsigned long long)getAssetTypeForNamespace:(id)arg1;

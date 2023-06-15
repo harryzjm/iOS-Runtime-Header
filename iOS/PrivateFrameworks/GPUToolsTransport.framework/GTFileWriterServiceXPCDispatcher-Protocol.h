@@ -10,10 +10,8 @@
 @protocol GTXPCConnection, OS_xpc_object;
 
 @protocol GTFileWriterServiceXPCDispatcher <GTXPCDispatcher>
-- (void)abortSession_:(NSObject<OS_xpc_object> *)arg1 replyConnection:(id <GTXPCConnection>)arg2;
-- (void)finishSession_:(NSObject<OS_xpc_object> *)arg1 replyConnection:(id <GTXPCConnection>)arg2;
-- (void)writeFileChunks_withData_session_completionHandler_:(NSObject<OS_xpc_object> *)arg1 replyConnection:(id <GTXPCConnection>)arg2;
-- (void)beginTransferSessionWithFileEntries_basePath_device_config_sessionID_completionHandler_:(NSObject<OS_xpc_object> *)arg1 replyConnection:(id <GTXPCConnection>)arg2;
-- (void)initiateTransfer_basePath_device_config_completionHandler_:(NSObject<OS_xpc_object> *)arg1 replyConnection:(id <GTXPCConnection>)arg2;
+- (void)writeFileData_sessionID_completionHandler_:(NSObject<OS_xpc_object> *)arg1 replyConnection:(id <GTXPCConnection>)arg2;
+- (void)beginTransferSessionWithFileEntries_basePath_toDevice_options_sessionID_completionHandler_:(NSObject<OS_xpc_object> *)arg1 replyConnection:(id <GTXPCConnection>)arg2;
+- (void)initiateTransfer_basePath_fromDevice_options_completionHandler_:(NSObject<OS_xpc_object> *)arg1 replyConnection:(id <GTXPCConnection>)arg2;
 @end
 

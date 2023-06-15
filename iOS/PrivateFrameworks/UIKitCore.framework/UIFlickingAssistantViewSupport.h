@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIInputViewSetPlacement, UIPanGestureRecognizer;
+@class NSString, UIInputViewSetPlacement, UIPanGestureRecognizer;
 
 __attribute__((visibility("hidden")))
 @interface UIFlickingAssistantViewSupport
@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) long long draggingState; // @synthesize draggingState=_draggingState;
 @property(retain, nonatomic) UIInputViewSetPlacement *remotePlacement; // @synthesize remotePlacement=_remotePlacement;
 @property(nonatomic, setter=setCompact:) _Bool isCompact; // @synthesize isCompact=_isCompact;
+- (void)_geometryChanged:(const CDStruct_c9afd433 *)arg1 forAncestor:(id)arg2;
 - (void)_updateKeyboardLayoutGuideForAssistantFrame:(struct CGRect)arg1;
 - (void)didUpdateTransition;
 - (struct CGRect)assistantFrame;
@@ -31,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (struct CGPoint)keyboardOriginFromAssistantViewPosition:(long long)arg1;
 - (void)updateTransition:(struct CGPoint)arg1 animated:(_Bool)arg2;
 - (struct CGPoint)barOriginFromTouchPoint:(struct CGPoint)arg1;
+- (_Bool)isRTL;
 - (struct CGPoint)projectedLandingPointForGestureRecognizerEnd:(id)arg1;
 - (void)transitToDraggingVisualState:(long long)arg1 withTouchLocation:(struct CGPoint)arg2;
 - (_Bool)isInputAssistantItemHidden;
@@ -40,6 +42,12 @@ __attribute__((visibility("hidden")))
 - (void)_updatedController;
 - (void)_connectController:(id)arg1;
 - (void)_disconnectingController:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

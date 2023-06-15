@@ -6,26 +6,30 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class NSString, SKPresencePayload;
 @protocol OS_os_activity;
 
 __attribute__((visibility("hidden")))
 @interface SKAPresenceAssertion : NSObject
 {
+    _Bool _isPersonal;
     NSString *_presenceIdentifier;
+    SKPresencePayload *_payload;
     NSObject<OS_os_activity> *_osActivity;
 }
 
 + (id)logger;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSObject<OS_os_activity> *osActivity; // @synthesize osActivity=_osActivity;
+@property(copy, nonatomic) SKPresencePayload *payload; // @synthesize payload=_payload;
+@property(readonly, nonatomic) _Bool isPersonal; // @synthesize isPersonal=_isPersonal;
 @property(readonly, copy, nonatomic) NSString *presenceIdentifier; // @synthesize presenceIdentifier=_presenceIdentifier;
 - (void)dealloc;
 - (unsigned long long)hash;
 - (_Bool)isEqualToPresenceAssertion:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (id)description;
-- (id)initWithPresenceIdentifier:(id)arg1;
+- (id)initWithPresenceIdentifier:(id)arg1 isPersonal:(_Bool)arg2 payload:(id)arg3;
 
 @end
 

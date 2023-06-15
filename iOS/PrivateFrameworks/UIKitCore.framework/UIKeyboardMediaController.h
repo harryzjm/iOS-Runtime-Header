@@ -30,7 +30,13 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak id <UIKeyboardMediaControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)draggedStickerToPoint:(struct CGPoint)arg1;
 - (void)requestInsertionPointCompletion:(CDUnknownBlockType)arg1;
+- (void)stickerPickerCardDidLoad;
+- (_Bool)_stickerIsSupportedPayload;
+- (_Bool)remoteHandlesRecentsStickerDonation;
+- (void)remoteHandlesRecentsStickerDonationWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_didInsertMedia;
+- (void)stageStickerWithIdentifier:(id)arg1 representations:(id)arg2 name:(id)arg3 externalURI:(id)arg4 accessibilityLabel:(id)arg5;
+- (void)stageSticker:(id)arg1;
 - (void)stageStickerWithFileHandle:(id)arg1 url:(id)arg2 accessibilityLabel:(id)arg3;
 - (void)pasteImageAtFileHandle:(id)arg1;
 - (void)dismissCard;
@@ -50,6 +56,7 @@ __attribute__((visibility("hidden")))
 - (void)_embedRecentlyUsedMediaViewInView:(id)arg1 animated:(_Bool)arg2;
 - (_Bool)recentsViewWillBeVisible;
 - (_Bool)shouldPrefetchRemoteView;
+- (void)handleStickerSuggestionWithTISticker:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -4,18 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CPActivitySessionEvent, NSArray, NSString, TUConversationActivity;
+@class CPActivitySessionEvent, NSArray, NSData, NSNumber, NSSet, NSString, TUConversationActivity, TUSandboxExtendedURL;
 
 @protocol CPActivitySessionXPCHost
+- (void)updateCapabilitiesWithCapabilities:(long long)arg1;
+- (void)requestEndpointWith:(NSString *)arg1 completion:(void (^)(NSXPCListenerEndpoint *))arg2;
+- (void)sendResourceAtURL:(TUSandboxExtendedURL *)arg1 to:(NSSet *)arg2 metadata:(NSData *)arg3 completion:(void (^)(NSError *))arg4;
 - (void)disassociateScene;
 - (void)associateSceneWithSceneID:(NSString *)arg1;
 - (void)requestForegroundPresentation;
 - (void)presentSessionDismissalAlertWithAllowingCancellation:(_Bool)arg1 completion:(void (^)(_Bool))arg2;
 - (void)updateActivityWithActivity:(TUConversationActivity *)arg1;
+- (void)requestParticipantsFor:(NSSet *)arg1 completion:(void (^)(NSSet *))arg2;
 - (void)requestEncryptionKeysFor:(NSArray *)arg1;
 - (void)postEventWithEvent:(CPActivitySessionEvent *)arg1;
 - (void)end;
 - (void)leaveWithCompletion:(void (^)(NSError *))arg1;
-- (void)joinWithCompletion:(void (^)(id <CPDataCryptor>, NSError *))arg1;
+- (void)joinWithAudioSessionID:(NSNumber *)arg1 completion:(void (^)(id <CPDataCryptor>, NSError *))arg2;
 @end
 

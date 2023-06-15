@@ -17,7 +17,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (_Bool)checkNeedsUpdateForiTunesMetadata:(id)arg1 SINFo:(id)arg2 placeholderMetadata:(id)arg3;
 - (_Bool)updateBundleRecord:(id *)arg1;
-- (_Bool)parsePersonas:(id)arg1 error:(id *)arg2;
 - (void)parsePlaceholderMetadata:(id)arg1;
 - (void)parseSINFDictionary:(id)arg1;
 - (void)parseiTunesMetadata:(id)arg1;

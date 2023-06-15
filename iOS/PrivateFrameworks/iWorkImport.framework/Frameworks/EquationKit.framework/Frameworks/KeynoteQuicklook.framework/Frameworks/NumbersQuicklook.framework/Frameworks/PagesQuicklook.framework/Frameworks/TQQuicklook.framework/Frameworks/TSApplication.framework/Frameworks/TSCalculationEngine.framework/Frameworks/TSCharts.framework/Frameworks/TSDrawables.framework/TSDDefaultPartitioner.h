@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <TSDrawables/TSDCanvasDelegate-Protocol.h>
+
 @class NSString, TSDCanvas, TSDDefaultPartitionerPrintingSettings, TSDDrawableInfo, TSDLayout, TSUPointerKeyDictionary;
 @protocol TSDCanvasProxyDelegate;
 
-@interface TSDDefaultPartitioner
+@interface TSDDefaultPartitioner <TSDCanvasDelegate>
 {
     TSDDrawableInfo *_info;
     TSDCanvas *_canvas;

@@ -47,6 +47,7 @@ __attribute__((visibility("hidden")))
 - (void)applicationInstallsDidStart:(id)arg1;
 - (_Bool)messageObserversWithSelector:(SEL)arg1;
 - (_Bool)messageObserversWithSelector:(SEL)arg1 andApps:(id)arg2;
+- (_Bool)messageObserversWithSelector:(SEL)arg1 andApps:(id)arg2 filterLaunchProhibited:(_Bool)arg3;
 - (unsigned long long)currentObserverCount;
 - (id)localObservers;
 - (void)removeLocalObserver:(id)arg1;

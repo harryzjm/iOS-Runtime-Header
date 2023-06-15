@@ -9,11 +9,15 @@
 @class NSString;
 
 @interface FBSDisplayLayoutElement (SMUSystemDisplayLayoutElement)
-@property(readonly, nonatomic) _Bool smu_isTVNotification;
+@property(readonly, nonatomic) _Bool smu_isBrightnessControlHUD;
+@property(readonly, nonatomic) _Bool smu_isSystemNotification;
 @property(readonly, nonatomic) _Bool smu_isVolumeHUD;
-@property(readonly, nonatomic) _Bool smu_isTVControlCenter;
-@property(readonly, nonatomic) _Bool smu_isTVSystemIndicator;
+@property(readonly, nonatomic) _Bool smu_isControlCenter;
+@property(readonly, nonatomic) _Bool smu_isSystemIndicator;
+@property(readonly, nonatomic) _Bool smu_isSystemOverlay;
+@property(readonly, nonatomic) _Bool smu_isPictureInPictureStashed;
 @property(readonly, nonatomic) _Bool smu_isPictureInPicture;
+- (id)extendedDescription;
 
 // Remaining properties
 @property(readonly, copy, nonatomic) NSString *bundleIdentifier;

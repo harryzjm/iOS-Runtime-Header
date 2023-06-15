@@ -40,6 +40,13 @@ struct UIEdgeInsets {
 #pragma mark Typedef'd Structures
 
 typedef struct {
+    long long _field1;
+    int _field2;
+    unsigned int _field3;
+    long long _field4;
+} CDStruct_198678f7;
+
+typedef struct {
     struct {
         unsigned short _field1;
         unsigned short _field2;

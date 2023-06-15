@@ -6,9 +6,10 @@
 
 #import <Photos/PHChangeRequest-Protocol.h>
 
-@class NSManagedObject, PLPhotoLibrary;
+@class NSManagedObject, NSString, PLPhotoLibrary;
 
 @protocol PHDeleteChangeRequest <PHChangeRequest>
+@property(readonly, nonatomic) NSString *clientBundleID;
 - (void)deleteManagedObject:(NSManagedObject *)arg1 photoLibrary:(PLPhotoLibrary *)arg2;
 - (_Bool)validateForDeleteManagedObject:(NSManagedObject *)arg1 error:(id *)arg2;
 @end

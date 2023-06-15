@@ -7,14 +7,13 @@
 #import <HomeKitDaemon/NSObject-Protocol.h>
 
 @class HMCameraClipSignificantEvent, HMDCameraClipManager, NSUUID;
-@protocol HMDHomePresenceCheck;
 
 @protocol HMDCameraClipManagerDelegate <NSObject>
 
 @optional
 - (void)clipManagerDidDisableCloudStorage:(HMDCameraClipManager *)arg1;
 - (void)clipManager:(HMDCameraClipManager *)arg1 didDeleteClipWithUUID:(NSUUID *)arg2;
-- (void)clipManager:(HMDCameraClipManager *)arg1 didUpdateSignificantEvent:(HMCameraClipSignificantEvent *)arg2 withHomePresence:(id <HMDHomePresenceCheck>)arg3;
+- (void)clipManager:(HMDCameraClipManager *)arg1 didUpdateSignificantEvent:(HMCameraClipSignificantEvent *)arg2;
 - (void)clipManagerDidStop:(HMDCameraClipManager *)arg1;
 - (void)clipManagerDidStartUpCloudZone:(HMDCameraClipManager *)arg1;
 - (void)clipManagerDidStart:(HMDCameraClipManager *)arg1;

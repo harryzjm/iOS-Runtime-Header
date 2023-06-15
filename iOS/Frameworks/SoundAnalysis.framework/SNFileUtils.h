@@ -11,5 +11,30 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (id)readJSONFromURL:(id)arg1 jsonReadingOptions:(unsigned long long)arg2 error:(id *)arg3;
++ (_Bool)writeJSONToURL:(id)arg1 object:(id)arg2 jsonWritingOptions:(unsigned long long)arg3 createIntermediateDirectories:(_Bool)arg4 overwrite:(_Bool)arg5 error:(id *)arg6;
++ (_Bool)writeToFileAtURL:(id)arg1 createIntermediateDirectories:(_Bool)arg2 overwrite:(_Bool)arg3 data:(id)arg4 error:(id *)arg5;
++ (id)prefixLastOfPathComponentsForURL:(id)arg1 withString:(id)arg2 error:(id *)arg3;
++ (id)prefixLastOfPathComponents:(id)arg1 withString:(id)arg2 error:(id *)arg3;
++ (id)contentsOfDirectoryAtURL:(id)arg1 error:(id *)arg2;
++ (id)fileSizeBytesForURL:(id)arg1 error:(id *)arg2;
++ (id)fileSizeBytesForPath:(id)arg1 error:(id *)arg2;
++ (id)fileResourceIdentifierForURL:(id)arg1 error:(id *)arg2;
++ (id)fileResourceIdentifierForPath:(id)arg1 error:(id *)arg2;
++ (id)fileCreationDateForURL:(id)arg1 error:(id *)arg2;
++ (id)fileCreationDateForPath:(id)arg1 error:(id *)arg2;
++ (id)fileAttributesForURL:(id)arg1 attributeKey:(id)arg2 error:(id *)arg3;
++ (id)fileAttributesForPath:(id)arg1 attributeKey:(id)arg2 error:(id *)arg3;
++ (id)fileAttributesForURL:(id)arg1 error:(id *)arg2;
++ (id)fileAttributesForPath:(id)arg1 error:(id *)arg2;
++ (_Bool)validateURLIsFileURL:(id)arg1 error:(id *)arg2;
++ (id)toSetCollectFileResourceIdentifiersForURLs:(id)arg1 error:(id *)arg2;
++ (id)expandURLsForRelativePaths:(id)arg1 fromURL:(id)arg2;
++ (id)resourceURLAtPath:(id)arg1 inBundleContainingClass:(Class)arg2;
++ (id)resourcesURLForBundleContainingClass:(Class)arg1;
++ (id)urlInTemporaryDirectoryToPath:(id)arg1;
++ (id)temporaryDirectoryURL;
+- (id)init;
+
 @end
 

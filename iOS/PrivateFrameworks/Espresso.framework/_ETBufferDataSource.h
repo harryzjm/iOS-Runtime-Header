@@ -14,8 +14,8 @@ __attribute__((visibility("hidden")))
     unsigned long long _number_of_data_points;
     unsigned long long _batchSize;
     vector_bfe5b09a _nonBatchBlobNames;
-    unordered_map_157ff32a _dataStorage;
-    unordered_map_19365264 _blobShapes;
+    unordered_map_1368fecc _dataStorage;
+    unordered_map_4a701e3f _blobShapes;
 }
 
 - (id).cxx_construct;
@@ -23,8 +23,8 @@ __attribute__((visibility("hidden")))
 @property vector_bfe5b09a nonBatchBlobNames; // @synthesize nonBatchBlobNames=_nonBatchBlobNames;
 @property unsigned long long batchSize; // @synthesize batchSize=_batchSize;
 @property unsigned long long number_of_data_points; // @synthesize number_of_data_points=_number_of_data_points;
-@property unordered_map_19365264 blobShapes; // @synthesize blobShapes=_blobShapes;
-@property unordered_map_157ff32a dataStorage; // @synthesize dataStorage=_dataStorage;
+@property unordered_map_4a701e3f blobShapes; // @synthesize blobShapes=_blobShapes;
+@property unordered_map_1368fecc dataStorage; // @synthesize dataStorage=_dataStorage;
 - (float *)dataAtIndex:(unsigned long long)arg1 key:(const void *)arg2;
 - (id)initWithBlobShapes:(const void *)arg1 numberOfDataPoints:(unsigned long long)arg2 batchSize:(unsigned long long)arg3 error:(id *)arg4;
 - (id)dataPointAtIndex:(unsigned long long)arg1 error:(id *)arg2;

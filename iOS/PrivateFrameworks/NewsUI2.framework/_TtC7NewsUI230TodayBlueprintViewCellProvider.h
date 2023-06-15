@@ -13,6 +13,9 @@
     MISSING_TYPE *delegate;
     MISSING_TYPE *baseStyler;
     MISSING_TYPE *feedItemRenderer;
+    MISSING_TYPE *offlineIssueManager;
+    MISSING_TYPE *commandCenter;
+    MISSING_TYPE *tracker;
 }
 
 @end

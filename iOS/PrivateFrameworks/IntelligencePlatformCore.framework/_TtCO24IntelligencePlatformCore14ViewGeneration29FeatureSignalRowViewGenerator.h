@@ -15,7 +15,6 @@
     MISSING_TYPE *inputStore;
     MISSING_TYPE *featureLoader;
     MISSING_TYPE *outputArtifact;
-    MISSING_TYPE *dependencyTableNames;
 }
 
 @end

@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)_createAccountSettingsRouterDataSourceWith:(id)arg1;
-+ (void)_handleAccountSettingButtonSelected;
++ (void)handleAccountSettingButtonSelected;
 + (id)createAccountSettingButtonWith:(id)arg1;
 
 @end

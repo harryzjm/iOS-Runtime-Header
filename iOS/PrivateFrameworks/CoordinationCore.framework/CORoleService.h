@@ -49,7 +49,7 @@ __attribute__((visibility("hidden")))
 - (void)registerForMemberChangesWithRole:(id)arg1 inCluster:(id)arg2;
 - (void)unregisterForRoleChangesOfMember:(id)arg1 inCluster:(id)arg2;
 - (void)registerForRoleChangesOfMember:(id)arg1 inCluster:(id)arg2;
-- (_Bool)_canRequestCreationOfCluster:(id)arg1;
+- (_Bool)_applicableToCluster:(id)arg1;
 - (void)_addOnRemoved:(id)arg1;
 - (void)_addOnAdded:(id)arg1;
 - (void)_clientLost:(id)arg1;

@@ -7,7 +7,7 @@
 #import <VectorKit/NSObject-Protocol.h>
 
 @protocol VKAnnotation <NSObject>
-@property(nonatomic) CDStruct_c3b9c2ee coordinate;
+@property(nonatomic) CDStruct_2c43369c coordinate;
 
 @optional
 @property(nonatomic) double course;

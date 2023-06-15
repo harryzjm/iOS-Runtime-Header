@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSString;
-@protocol OS_dispatch_queue, OS_dispatch_workloop, OS_nw_resolver_config;
+@protocol OS_dispatch_queue, OS_dispatch_workloop, OS_nw_array, OS_nw_resolver_config;
 
 __attribute__((visibility("hidden")))
 @interface NWConcrete_nw_context : NSObject
@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     struct nw_context_globals *globals;
     NWConcrete_nw_context *isolated_context;
     NSObject<OS_nw_resolver_config> *fallback_resolver_config;
+    NSObject<OS_nw_array> *proxy_configs;
     NSObject<OS_dispatch_queue> *idle_block_queue;
     CDUnknownBlockType idle_block;
     struct os_unfair_lock_s activate_lock;
@@ -29,6 +30,7 @@ __attribute__((visibility("hidden")))
     _Atomic unsigned long long inline_tid;
     int scheduling_mode;
     int privacy_level;
+    CDUnknownBlockType tracker_lookup_callback;
     unsigned int isolate_protocol_stack:1;
     unsigned int isolate_protocol_cache:1;
     unsigned int is_implicit:1;

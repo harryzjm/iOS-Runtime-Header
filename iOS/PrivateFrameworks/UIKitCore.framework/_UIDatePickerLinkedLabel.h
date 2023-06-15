@@ -49,7 +49,7 @@ __attribute__((visibility("hidden")))
 - (void)_storageSyncIfNecessaryWithContainerSize:(struct CGSize)arg1;
 - (void)_setNeedsStorageSync;
 - (void)_updateAlignmentConstraint;
-- (void)traitCollectionDidChange:(id)arg1;
+- (void)_preferredContentSizeCategoryDidChange;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;

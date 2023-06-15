@@ -12,7 +12,6 @@
 {
     MISSING_TYPE *sectionFactory;
     MISSING_TYPE *subscriptionService;
-    MISSING_TYPE *tagReorderService;
     MISSING_TYPE *tagService;
 }
 

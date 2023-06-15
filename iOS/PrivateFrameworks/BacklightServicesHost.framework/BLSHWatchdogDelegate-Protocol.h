@@ -4,10 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
-@protocol BLSHWatchdogAbortContext;
+#import <BacklightServicesHost/NSObject-Protocol.h>
 
-@protocol BLSHWatchdogDelegate
+@class NSString;
+@protocol BLSHOSInterfaceProviding, BLSHWatchdogAbortContext;
+
+@protocol BLSHWatchdogDelegate <NSObject>
+- (id <BLSHOSInterfaceProviding>)osInterfaceProvider;
 - (NSString *)identifier;
 - (id <BLSHWatchdogAbortContext>)abortContext;
 @end

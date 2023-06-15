@@ -17,5 +17,8 @@
 - (void)source:(id <MTSource>)arg1 didRemoveAlarms:(NSArray *)arg2;
 - (void)source:(id <MTSource>)arg1 didUpdateAlarms:(NSArray *)arg2;
 - (void)source:(id <MTSource>)arg1 didAddAlarms:(NSArray *)arg2;
+
+@optional
+- (void)source:(id <MTSource>)arg1 didUpdateAlarms:(NSArray *)arg2 previousAlarms:(NSArray *)arg3;
 @end
 

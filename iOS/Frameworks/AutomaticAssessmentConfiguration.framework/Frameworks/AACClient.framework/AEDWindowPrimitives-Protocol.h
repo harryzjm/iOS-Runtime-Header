@@ -5,12 +5,11 @@
 //
 
 @class NSArray;
-@protocol AEDObservation, AEDScreen, AEDWindow;
+@protocol AEDObservation, AEDWindow;
 
 @protocol AEDWindowPrimitives
+@property(readonly, copy, nonatomic) NSArray *currentWindows;
 - (id <AEDObservation>)observeWindowLifecycleChangesWithHandler:(void (^)(void))arg1;
-- (id <AEDWindow>)makeShieldWindowForScreen:(id <AEDScreen>)arg1;
 - (id <AEDWindow>)windowForWindowNumber:(long long)arg1;
-@property(nonatomic, readonly) NSArray *currentWindows;
 @end
 

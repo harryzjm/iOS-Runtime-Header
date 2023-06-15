@@ -6,21 +6,20 @@
 
 #import <WorkflowKit/WFActionParameterInputProvider-Protocol.h>
 
-@class NSString, NSXPCListenerEndpoint, WFAction, WFContentItemCache, WFControlFlowAttributionTracker, WFSmartPromptsExfiltrationLogger, WFWorkflowRunningContext;
-@protocol WFActionReversalState, WFActionSandboxExtensionProvider;
+@class NSXPCListenerEndpoint, WFAction, WFActionTestingEvent, WFContentItemCache, WFControlFlowAttributionTracker, WFSmartPromptsExfiltrationLogger, WFWorkflowRunningContext;
+@protocol WFActionReversalState;
 
 @protocol WFActionRunningDelegate <WFActionParameterInputProvider>
 
 @optional
+- (void)action:(WFAction *)arg1 handleTestingEvent:(WFActionTestingEvent *)arg2 completionHandler:(void (^)(_Bool, NSError *))arg3;
 - (_Bool)shouldDisablePrivacyPrompts;
 - (WFSmartPromptsExfiltrationLogger *)exfiltrationLogger;
 - (WFControlFlowAttributionTracker *)flowTracker;
 - (WFContentItemCache *)contentItemCache;
 - (void)action:(WFAction *)arg1 didGenerateReversalState:(id <WFActionReversalState>)arg2;
 - (id <WFActionReversalState>)actionReversalStateForAction:(WFAction *)arg1;
-- (void)action:(WFAction *)arg1 wantsToToastSessionKitSessionWithIdentifier:(NSString *)arg2 completionHandler:(void (^)(_Bool))arg3;
 - (void)action:(WFAction *)arg1 didDecideRunningProgressIsAllowed:(_Bool)arg2;
-- (id <WFActionSandboxExtensionProvider>)actionSandboxExtensionProviderForAction:(WFAction *)arg1;
 - (NSXPCListenerEndpoint *)remoteDialogPresenterEndpointForRunWorkflowAction:(WFAction *)arg1;
 - (WFWorkflowRunningContext *)currentRunningContextForAction:(WFAction *)arg1;
 @end

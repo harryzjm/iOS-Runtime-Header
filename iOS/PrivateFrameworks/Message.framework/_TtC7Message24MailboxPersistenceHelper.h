@@ -16,6 +16,7 @@
     MISSING_TYPE *store;
     MISSING_TYPE *serverMessagePersistence;
     MISSING_TYPE *messageChangeManager;
+    MISSING_TYPE *logger;
 }
 
 @end

@@ -56,8 +56,13 @@
 - (void)didSetMaximumValueImage;
 - (void)didSetMinimumValueImage;
 - (void)setValue:(float)arg1 animated:(_Bool)arg2;
+- (void)didUpdateConfiguration;
 - (void)didSetValues;
 - (void)didUpdateTraitCollection;
 - (struct CGSize)_intrinsicSizeWithinSize:(struct CGSize)arg1;
+
+@optional
+- (_Bool)overriddenTrackingState;
+- (void)didSetUserInteractionEnabled;
 @end
 

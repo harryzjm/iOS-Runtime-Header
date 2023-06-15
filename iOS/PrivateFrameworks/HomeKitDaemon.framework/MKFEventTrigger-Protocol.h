@@ -7,7 +7,7 @@
 #import <HomeKitDaemon/MKFEventTriggerPublicExtensions-Protocol.h>
 #import <HomeKitDaemon/MKFTrigger-Protocol.h>
 
-@class MKFEventTriggerDatabaseID, NSArray, NSData, NSNumber, NSUUID, Protocol;
+@class MKFEventTriggerDatabaseID, NSArray, NSNumber, NSPredicate, NSUUID, Protocol;
 @protocol MKFCalendarEvent, MKFCharacteristicRangeEvent, MKFCharacteristicValueEvent, MKFDurationEvent, MKFEvent, MKFLocationEvent, MKFPresenceEvent, MKFSignificantTimeEvent;
 
 @protocol MKFEventTrigger <MKFTrigger, MKFEventTriggerPublicExtensions>
@@ -15,7 +15,7 @@
 @property(readonly, retain, nonatomic) NSArray *events;
 @property(copy, nonatomic) NSNumber *recurrenceDays;
 @property(copy, nonatomic) NSNumber *executeOnce;
-@property(retain, nonatomic) NSData *evaluationCondition;
+@property(retain, nonatomic) NSPredicate *evaluationCondition;
 - (id <MKFSignificantTimeEvent>)findEventsRelationOfTypeSignificantTimeEventWithModelID:(NSUUID *)arg1;
 - (id <MKFSignificantTimeEvent>)createEventsRelationOfTypeSignificantTimeEventWithModelID:(NSUUID *)arg1;
 - (id <MKFSignificantTimeEvent>)materializeOrCreateEventsRelationOfTypeSignificantTimeEventWithModelID:(NSUUID *)arg1 createdNew:(_Bool *)arg2;

@@ -7,10 +7,11 @@
 #import <MapsSuggestions/MapsSuggestionsObject-Protocol.h>
 
 @class GEOMapItemStorage, MapsSuggestionsEntry, MapsSuggestionsSignalPack, NSArray;
-@protocol MapsSuggestionsResourceDepot;
+@protocol MapsSuggestionsInsightsUpdates, MapsSuggestionsResourceDepot;
 
 @protocol MapsSuggestionsInsights <MapsSuggestionsObject>
 + (id)new;
+@property(nonatomic) __weak id <MapsSuggestionsInsightsUpdates> insightUpdatesDelegate;
 - (MapsSuggestionsSignalPack *)signalPackForHere;
 - (MapsSuggestionsSignalPack *)signalPackForDestinationEntry:(MapsSuggestionsEntry *)arg1 originCoordinate:(struct CLLocationCoordinate2D)arg2;
 - (MapsSuggestionsSignalPack *)signalPackForDestinationMapItem:(GEOMapItemStorage *)arg1 originCoordinate:(struct CLLocationCoordinate2D)arg2;
@@ -20,6 +21,10 @@
 - (void)preload;
 - (NSArray *)confidenceScoresForContacts:(NSArray *)arg1 addresses:(NSArray *)arg2;
 - (NSArray *)confidenceScoresForMapItems:(NSArray *)arg1;
+- (BOOL)currentTripWithHandler:(void (^)(NSArray *, NSError *))arg1;
+- (BOOL)futureTripsWithHandler:(void (^)(NSArray *, NSError *))arg1;
+- (_Bool)userIsCurrentlyInATrip;
+- (_Bool)userHasAnUpcomingTrip;
 - (_Bool)userHasATransitCard;
 - (_Bool)userHasAPaymentCard;
 - (_Bool)userHasAnExpressPaymentCard;

@@ -6,7 +6,7 @@
 
 #import <HealthDaemon/NSObject-Protocol.h>
 
-@class HKDataFlowLink, HKWorkoutActivity, HKWorkoutConfiguration, NSArray, NSDictionary, NSUUID;
+@class HKDataFlowLink, HKWorkoutActivity, HKWorkoutConfiguration, NSArray, NSData, NSDate, NSDictionary, NSError, NSUUID;
 @protocol HDWorkoutDataAccumulator, HDWorkoutDataSource;
 
 @protocol HDWorkoutDataDestination <NSObject>
@@ -22,5 +22,12 @@
 - (void)addWorkoutEvents:(NSArray *)arg1 dataSource:(id <HDWorkoutDataSource>)arg2;
 - (void)addOtherSamples:(NSArray *)arg1 dataSource:(id <HDWorkoutDataSource>)arg2;
 - (void)addQuantities:(NSArray *)arg1 dataSource:(id <HDWorkoutDataSource>)arg2;
+
+@optional
+- (void)didSyncCurrentActivity:(HKWorkoutActivity *)arg1;
+- (void)didSyncTransitionToNewState:(long long)arg1 date:(NSDate *)arg2;
+- (void)didSyncStateEvent:(long long)arg1 date:(NSDate *)arg2;
+- (void)didReceiveDataFromRemoteDevice:(NSData *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
+- (void)didDisconnectFromRemoteWithError:(NSError *)arg1;
 @end
 

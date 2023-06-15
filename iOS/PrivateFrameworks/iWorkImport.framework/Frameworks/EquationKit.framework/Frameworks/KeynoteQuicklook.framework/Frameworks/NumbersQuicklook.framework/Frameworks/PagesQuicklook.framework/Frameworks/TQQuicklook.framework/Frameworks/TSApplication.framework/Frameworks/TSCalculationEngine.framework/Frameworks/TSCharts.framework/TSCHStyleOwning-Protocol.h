@@ -7,9 +7,10 @@
 #import <TSCharts/NSObject-Protocol.h>
 #import <TSCharts/TSCHStyleVending-Protocol.h>
 
-@class NSArray, NSDictionary, NSString, TSCHChartInfo, TSCHChartModel, TSPObjectContext, TSSPropertySet, TSSStyle;
+@class NSArray, NSDictionary, NSString, TSCHChartInfo, TSCHChartModel, TSCHPropertyMutationTuple, TSPObjectContext, TSSPropertySet, TSSStyle;
 
 @protocol TSCHStyleOwning <NSObject, TSCHStyleVending>
+- (NSArray *)transformedTuplesWithTuple:(TSCHPropertyMutationTuple *)arg1;
 - (NSArray *)defaultProperties;
 - (NSArray *)swapTuplesForParagraphStyleMutations:(NSDictionary *)arg1 forReferencingProperty:(int)arg2;
 - (NSArray *)swapTuplesForMutations:(NSDictionary *)arg1 forImport:(_Bool)arg2;

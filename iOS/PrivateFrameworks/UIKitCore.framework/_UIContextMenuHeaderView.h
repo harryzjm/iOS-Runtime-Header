@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface _UIContextMenuHeaderView : UICollectionReusableView
 {
     _Bool _needsConstraintRebuild;
+    _Bool _isMenuTitle;
     unsigned long long _separatorStyle;
     NSString *_title;
     UIView *_contentView;
@@ -24,14 +25,17 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIView *separator; // @synthesize separator=_separator;
 @property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property(retain, nonatomic) UIVisualEffectView *bgView; // @synthesize bgView=_bgView;
+@property(nonatomic) _Bool isMenuTitle; // @synthesize isMenuTitle=_isMenuTitle;
 @property(retain, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property(nonatomic) unsigned long long separatorStyle; // @synthesize separatorStyle=_separatorStyle;
+- (long long)_labelRenderingMode;
 - (double)_separatorHeight;
 - (struct UIEdgeInsets)layoutMargins;
 - (void)updateConstraints;
 - (void)_setNeedsConstraintRebuild;
-- (void)traitCollectionDidChange:(id)arg1;
+- (id)_titleLabelFilterForCurrentTraits;
+- (void)_updateCompositingFilterForCurrentState;
 - (unsigned long long)_titleLabelNumberOfLines;
 - (id)_titleFont;
 - (void)setBackgroundMaterialGroupName:(id)arg1;

@@ -8,9 +8,8 @@
 {
 }
 
+- (void)drawPolyPageBodyInContext:(struct CGContext *)arg1 scaledClipRect:(struct CGRect)arg2;
 - (_Bool)drawCurrentPageInContext:(struct CGContext *)arg1 viewScale:(double)arg2 unscaledClipRect:(struct CGRect)arg3 createPage:(_Bool)arg4;
-- (struct CGRect)rectBySubtractingPageMarginsFromRect:(struct CGRect)arg1;
-- (void)createPage:(_Bool)arg1 inContext:(struct CGContext *)arg2 withRect:(struct CGRect)arg3;
 - (_Bool)incrementPage;
 - (id)initWithDocumentRoot:(id)arg1;
 

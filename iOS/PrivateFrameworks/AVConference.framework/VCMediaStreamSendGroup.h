@@ -4,7 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableArray, VCSessionUplinkBandwidthAllocator;
+@class NSMutableArray, NSMutableDictionary;
+@protocol VCRedundancyControllerProtocol;
 
 __attribute__((visibility("hidden")))
 @interface VCMediaStreamSendGroup
@@ -12,10 +13,12 @@ __attribute__((visibility("hidden")))
     _Bool _isRedundancyEnabled;
     unsigned int _uplinkBitrateCapWifi;
     unsigned int _uplinkBitrateCapCell;
-    VCSessionUplinkBandwidthAllocator *_uplinkBandwidthAllocator;
     unsigned int _currentUplinkTargetBitrate;
     NSMutableArray *_peerSubscribedStreams;
     _Bool _isRemoteOnPeace;
+    NSMutableDictionary *_sendGroupConfigForMode;
+    unsigned int _streamGroupMode;
+    id <VCRedundancyControllerProtocol> _redundancyController;
     unsigned int _currentUplinkTotalBitrate;
     _Bool _shouldSynchronizeWithSourceRTPTimestamps;
     struct _opaque_pthread_rwlock_t _sourceTimestampRWLock;
@@ -23,32 +26,48 @@ __attribute__((visibility("hidden")))
     double _lastSentSourceHostTime;
     _Bool _isSourceTimestampInfoAvailable;
     double _sourceSampleRate;
+    _Bool _isRetransmissionEnabled;
     _Bool _isSuspended;
 }
 
+@property(nonatomic, setter=setRetransmissionEnabled:) _Bool isRetransmissionEnabled; // @synthesize isRetransmissionEnabled=_isRetransmissionEnabled;
+@property(retain, nonatomic) id <VCRedundancyControllerProtocol> redundancyController; // @synthesize redundancyController=_redundancyController;
 @property(nonatomic) _Bool isSuspended; // @synthesize isSuspended=_isSuspended;
 @property(nonatomic) unsigned int uplinkBitrateCapWifi; // @synthesize uplinkBitrateCapWifi=_uplinkBitrateCapWifi;
 @property(nonatomic) unsigned int uplinkBitrateCapCell; // @synthesize uplinkBitrateCapCell=_uplinkBitrateCapCell;
 @property(nonatomic) unsigned int currentUplinkTargetBitrate; // @synthesize currentUplinkTargetBitrate=_currentUplinkTargetBitrate;
 @property(nonatomic) unsigned int currentUplinkTotalBitrate; // @synthesize currentUplinkTotalBitrate=_currentUplinkTotalBitrate;
+- (void)didReceiveRTCPPackets:(struct _RTCPPacketList *)arg1;
+- (void)didReceiveCustomReportPacket:(struct tagRTCPPACKET *)arg1 arrivalNTPTime:(union tagNTP)arg2;
+- (void)didReceiveReportPacket:(struct tagRTCPPACKET *)arg1 arrivalNTPTime:(union tagNTP)arg2;
+- (void)setStatisticsCollector:(id)arg1;
 - (void)didPause:(_Bool)arg1;
 - (void)didStop;
 - (void)didStart;
-- (void)updateBandwidthAllocatorStreamTokenState;
+- (void)updateEnabledState;
 - (void)updateActiveStreamsCount:(unsigned int)arg1;
 - (unsigned int)calculateUplinkTotalBitrateForMediaStreams:(id)arg1;
 - (id)activeStreamKeys;
-- (void)setActiveConnection:(id)arg1 uplinkBitrateCap:(unsigned int)arg2;
-- (void)setPeerSubscribedStreams:(id)arg1;
+- (void)setActiveConnection:(id)arg1 uplinkBitrateCap:(unsigned int)arg2 activeMediaStreamIDs:(id)arg3 mediaBitrates:(id)arg4 rateChangeCounter:(unsigned int)arg5;
+- (id)checkStreamsForAdditionalOptIn:(id)arg1;
+- (_Bool)updatePeerSubscribedStreams:(id)arg1 containsRepairStreams:(_Bool)arg2;
+- (id)peerSubscribedStreams;
+- (void)updateUplinkBitrateCapWifi:(unsigned int)arg1 activeStreamIDs:(id)arg2;
+- (void)updateUplinkBitrateCapCell:(unsigned int)arg1 activeStreamIDs:(id)arg2;
 - (_Bool)enableRedundancy:(_Bool)arg1;
-- (void)updateActiveStreamsWithTargetBitrate:(unsigned int)arg1;
-- (void)updateActiveMediaStreamIDs:(id)arg1 withTargetBitrate:(unsigned int)arg2 mediaBitrates:(id)arg3;
+- (void)dispatchedUpdateActiveMediaStreamIDs:(id)arg1 withTargetBitrate:(unsigned int)arg2 mediaBitrates:(id)arg3 rateChangeCounter:(unsigned int)arg4;
+- (void)updateActiveMediaStreamIDs:(id)arg1 withTargetBitrate:(unsigned int)arg2 mediaBitrates:(id)arg3 rateChangeCounter:(unsigned int)arg4;
 - (_Bool)updateUplinkStreamsForPeerSubscribedStreams:(id)arg1;
-- (void)isStreamActive:(_Bool *)arg1 isDesiredActive:(_Bool *)arg2 peerSubscribedStreams:(id)arg3 configStreams:(id)arg4;
 - (_Bool)shouldSubscribeToStreamID:(id)arg1 peerSubscribedStreams:(id)arg2;
 - (id)streamDescriptionForMediaStreamConfig:(id)arg1;
 - (void)updateStreamIDCompoundingWithBlock:(CDUnknownBlockType)arg1 activeStreamIds:(id)arg2;
 - (_Bool)shouldCompoundListIgnoreStream:(id)arg1 streamConfig:(id)arg2 activeStreamIds:(id)arg3;
+- (_Bool)updateConfig:(id)arg1 forMode:(unsigned int)arg2;
+- (_Bool)setupStreamGroupWithConfig:(id)arg1;
+- (void)updateEncryptionInformationWithConfig:(id)arg1;
+- (unsigned int)streamGroupMode;
+- (_Bool)setStreamGroupMode:(unsigned int)arg1;
+- (id)streamGroupConfigForMode:(unsigned int)arg1;
 - (void)dealloc;
 - (id)initWithConfig:(id)arg1;
 

@@ -21,15 +21,15 @@ __attribute__((visibility("hidden")))
 }
 
 + (unsigned int)audioIOTypeFromTapType:(unsigned int)arg1;
-@property(nonatomic) id <VCServerDelegate> delegate; // @synthesize delegate=_delegate;
+@property(retain, nonatomic) id <VCServerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
-- (struct _VCAudioIOInitConfiguration)audioIOConfigWithAudioType:(unsigned int)arg1 realtimeContext:(void *)arg2;
+- (struct tagVCAudioIOConfiguration)audioIOConfigWithAudioType:(unsigned int)arg1 realtimeContext:(void *)arg2;
 - (void)unregisterAudioTapForStreamToken:(long long)arg1;
 - (int)registerAudioTapForStreamToken:(long long)arg1 tapType:(unsigned int)arg2;
 - (void)audioPowerSpectrumSinkDidUnregister;
 - (void)audioPowerSpectrumSinkDidRegister;
 - (void)didUpdateBasebandCodec:(const struct _VCRemoteCodecInfo *)arg1;
-- (void)didServerDie;
+- (void)serverDidDie;
 - (void)didResumeAudioIO:(id)arg1;
 - (void)didSuspendAudioIO:(id)arg1;
 - (void)didResume;
@@ -40,6 +40,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)removeAudioTapForStreamToken:(long long)arg1 error:(id *)arg2;
 - (_Bool)addAudioTapForStreamToken:(long long)arg1 tapType:(unsigned int)arg2 error:(id *)arg3;
 - (void)dealloc;
+- (void)invalidate;
 - (id)initWithProcessId:(int)arg1 delegate:(id)arg2 delegateQueue:(id)arg3;
 
 // Remaining properties

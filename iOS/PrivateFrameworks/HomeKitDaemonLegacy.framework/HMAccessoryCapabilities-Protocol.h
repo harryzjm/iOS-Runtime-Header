@@ -7,16 +7,21 @@
 #import <HomeKitDaemonLegacy/NSObject-Protocol.h>
 
 @protocol HMAccessoryCapabilities <NSObject>
+@property(readonly, nonatomic) _Bool supportsJustSiri;
+@property(readonly, nonatomic) _Bool supportsRMVonAppleTV;
+@property(readonly, nonatomic) _Bool supportsDropIn;
 @property(readonly, nonatomic) _Bool supportsMediaActions;
 @property(readonly, nonatomic) _Bool supportsMessagedHomePodSettings;
 @property(readonly, nonatomic) _Bool supportsCaptiveNetworks;
 @property(readonly, nonatomic) _Bool supportsManagedConfigurationProfile;
+@property(readonly, nonatomic) _Bool supportsAudioReturnChannel;
 @property(readonly, nonatomic) _Bool supportsHomeHub;
 @property(readonly, nonatomic) _Bool supportsCoordinationDoorbellChime;
 @property(readonly, nonatomic) _Bool supportsDoorbellChime;
 @property(readonly, nonatomic) _Bool supportsThreadBorderRouter;
 @property(readonly, nonatomic) _Bool supportsPreferredMediaUser;
 @property(readonly, nonatomic) _Bool supportsThirdPartyMusic;
+@property(readonly, nonatomic) _Bool supportsAudioAnalysis;
 @property(readonly, nonatomic) _Bool supportsAnnounce;
 @property(readonly, nonatomic) _Bool supportsMusicAlarm;
 @property(readonly, nonatomic) _Bool supportsCompanionInitiatedRestart;

@@ -18,5 +18,6 @@
 - (_Bool)sheetInteraction:(_UISheetInteraction *)arg1 shouldBeginHorizontalRubberBandingWithGestureRecognizer:(UIGestureRecognizer *)arg2;
 - (struct CGPoint)offsetForInterruptedAnimationInSheetInteraction:(_UISheetInteraction *)arg1;
 - (void)sheetInteraction:(_UISheetInteraction *)arg1 didChangeOffset:(struct CGPoint)arg2;
+- (_Bool)sheetInteractionShouldInteractWithQuicklyScrollingDescendentScrollView:(_UISheetInteraction *)arg1;
 @end
 

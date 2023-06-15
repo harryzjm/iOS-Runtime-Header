@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class EKEvent, EKEventStore, EKUIRecurrenceAlertController, NSString, UIViewController;
-@protocol EKEditItemViewControllerProtocol, EKEventDetailItemDelegate;
+@protocol EKEditItemViewControllerProtocol, EKEventDetailItemDelegate, EKUINavigationDelegateProvider;
 
 __attribute__((visibility("hidden")))
 @interface EKEventDetailItem : NSObject
@@ -21,11 +21,11 @@ __attribute__((visibility("hidden")))
     _Bool _shouldIndent;
     int _cellPosition;
     id <EKEventDetailItemDelegate> _delegate;
-    UIViewController *_viewControllerToPresentFrom;
+    UIViewController<EKUINavigationDelegateProvider> *_viewControllerToPresentFrom;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) __weak UIViewController *viewControllerToPresentFrom; // @synthesize viewControllerToPresentFrom=_viewControllerToPresentFrom;
+@property(nonatomic) __weak UIViewController<EKUINavigationDelegateProvider> *viewControllerToPresentFrom; // @synthesize viewControllerToPresentFrom=_viewControllerToPresentFrom;
 @property(retain, nonatomic) UIViewController *viewController; // @synthesize viewController=_viewController;
 @property(nonatomic) _Bool shouldIndent; // @synthesize shouldIndent=_shouldIndent;
 @property(nonatomic) int cellPosition; // @synthesize cellPosition=_cellPosition;

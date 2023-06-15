@@ -9,6 +9,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (id)supportedComputeStageDevicesForOptions:(id)arg1 error:(id *)arg2;
 + (const void *)allLandmarksPointsIndexes;
 - (_Bool)_buildCalibrationMatrix:(id)arg1 calibrationMatrix:(float *)arg2 error:(id *)arg3;
 - (id)processRegionOfInterest:(struct CGRect)arg1 croppedPixelBuffer:(const struct __CVBuffer *)arg2 options:(id)arg3 qosClass:(unsigned int)arg4 warningRecorder:(id)arg5 error:(id *)arg6 progressHandler:(CDUnknownBlockType)arg7;

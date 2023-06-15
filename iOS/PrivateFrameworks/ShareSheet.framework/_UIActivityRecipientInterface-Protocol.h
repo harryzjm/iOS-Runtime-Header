@@ -10,6 +10,6 @@
 
 @protocol _UIActivityRecipientInterface <NSObject>
 - (void)requestRecipientsForSessionID:(NSString *)arg1 completionHandler:(void (^)(NSArray *))arg2;
-- (void)requestMessagesRecipientInfoForSessionID:(NSString *)arg1 completionHandler:(void (^)(NSString *, NSString *, NSArray *))arg2;
+- (void)requestMessagesRecipientInfoForSessionID:(NSString *)arg1 completionHandler:(void (^)(SFShareSheetRecipient *))arg2;
 @end
 

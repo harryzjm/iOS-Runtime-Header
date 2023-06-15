@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CDPCustodianRecoveryInfo, NSArray, NSError, NSString;
+@class CDPCustodianRecoveryInfo, CDPLocalSecret, NSArray, NSError, NSString;
 
 @protocol CDPRemoteDeviceSecretValidatorProtocol
 @property(nonatomic) unsigned long long supportedEscapeOfferMask;
 - (void)validateCustodianRecoveryInfo:(CDPCustodianRecoveryInfo *)arg1 withCompletion:(void (^)(_Bool, NSError *))arg2;
 - (void)supportedEscapeOfferMaskCompletion:(void (^)(unsigned long long))arg1;
+- (void)resetAccountCDPStateAndSetSecret:(CDPLocalSecret *)arg1;
 - (void)resetAccountCDPState;
 - (void)cancelApproveFromAnotherDevice;
 - (void)approveFromAnotherDeviceWithCompletion:(void (^)(_Bool, NSError *))arg1;

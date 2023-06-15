@@ -9,6 +9,7 @@
 @protocol PFParallaxSegmentationResourceCaching
 @property(readonly, nonatomic) NSURL *segmentationResourceURL;
 @property(readonly, nonatomic) _Bool supportsSegmentationResourceCaching;
+- (_Bool)clearSegmentationResourceCacheWithError:(id *)arg1;
 - (void)updateSegmentationResource:(_Bool (^)(NSURL *))arg1;
 @end
 

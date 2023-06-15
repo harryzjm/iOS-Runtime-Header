@@ -9,6 +9,7 @@
 @interface NSMutableArray (DVTFoundationClassAdditions)
 - (id)dvt_uniqueStringToAddToArray:(id)arg1;
 - (void)dvt_reverseObjects;
+- (void)dvt_shuffle;
 - (void)dvt_recursivelyRemoveAllObjects;
 - (_Bool)dvt_uniqueSortedInsert:(id)arg1 withComparator:(CDUnknownBlockType)arg2;
 - (_Bool)dvt_uniqueSortedInsert:(id)arg1;

@@ -14,37 +14,18 @@ __attribute__((visibility("hidden")))
     _Bool _moreThanOneConnectionAvailable;
     CDStruct_634abacb _localAlertInfo;
     CDStruct_634abacb _remoteAlertInfo;
+    _Bool _isUserMoving;
     _Bool _allowDuplication;
     _Bool _forceDisableDuplication;
     _Bool _isRemotePreAzul;
     _Bool _iRATDuplicationEnabled;
 }
 
+@property _Bool isUserMoving; // @synthesize isUserMoving=_isUserMoving;
 @property _Bool allowDuplication; // @synthesize allowDuplication=_allowDuplication;
 @property _Bool iRATDuplicationEnabled; // @synthesize iRATDuplicationEnabled=_iRATDuplicationEnabled;
 @property _Bool isRemotePreAzul; // @synthesize isRemotePreAzul=_isRemotePreAzul;
-@property(readonly) unsigned char duplicationReason; // @synthesize duplicationReason=_duplicationReason;
-- (_Bool)isDuplicationDueToWRMSuggestion;
-- (void)shareLocalInterfacePreferenceWithPeerDuringActiveDuplicationForEvent:(CDStruct_9629e118)arg1 updateResult:(CDStruct_7641bd18 *)arg2;
-- (void)updateDuplicationStateForRemoteDuplicationChanged:(CDStruct_9629e118)arg1 updateResult:(CDStruct_7641bd18 *)arg2 updateAlertState:(_Bool)arg3;
-- (void)updateDuplicationStateForMediaHealthRecovered:(CDStruct_9629e118)arg1 updateResult:(CDStruct_7641bd18 *)arg2;
-- (void)updateDuplicationStateForMediaHealthUnrecoverable:(CDStruct_9629e118)arg1 updateResult:(CDStruct_7641bd18 *)arg2;
-- (_Bool)updateDuplicationStateWithAlertInfo:(_Bool)arg1;
-- (void)updateDuplicationStateForConnectionArrayUpdatedEvent:(CDStruct_9629e118)arg1 updateResult:(CDStruct_7641bd18 *)arg2;
-- (void)updateDuplicationStateForAlertStateUpdatedEvent:(CDStruct_9629e118)arg1 updateResult:(CDStruct_7641bd18 *)arg2;
-- (void)updateDuplicationStateForTurnOnDuplicationForHandoverEvent:(CDStruct_9629e118)arg1 updateResult:(CDStruct_7641bd18 *)arg2;
-- (void)updateDuplicationStateForTurnOffDuplicationForHandoverEvent:(CDStruct_9629e118)arg1 updateResult:(CDStruct_7641bd18 *)arg2;
-- (void)stopRemoteDuplicationAndUpdateResult:(CDStruct_7641bd18 *)arg1 updateAlertState:(_Bool)arg2;
-- (void)updateDuplicationStateForRemoteWRMSuggestingWiFiEvent:(CDStruct_9629e118)arg1 updateResult:(CDStruct_7641bd18 *)arg2;
-- (void)updateDuplicationStateForLocalWRMSuggestingWiFiEvent:(CDStruct_9629e118)arg1 updateResult:(CDStruct_7641bd18 *)arg2;
-- (void)updateDuplicationStateForLocalWRMSuggestingCellularEvent:(CDStruct_9629e118)arg1 updateResult:(CDStruct_7641bd18 *)arg2;
-- (void)updateDuplicationStateForReceivingPacketsUpdateEvent:(CDStruct_9629e118)arg1 updateResult:(CDStruct_7641bd18 *)arg2;
-- (void)updateDuplicationStateForMissingPacketsUpdateEvent:(CDStruct_9629e118)arg1 updateResult:(CDStruct_7641bd18 *)arg2;
-- (void)disableDuplication;
-- (void)enableDuplication;
-- (CDStruct_7641bd18)handleDuplicationStateUpdateEvent:(CDStruct_9629e118)arg1;
 @property(readonly) _Bool isDuplicationPending;
-@property(readonly) _Bool isDuplicationEnabled;
 - (id)init;
 
 @end

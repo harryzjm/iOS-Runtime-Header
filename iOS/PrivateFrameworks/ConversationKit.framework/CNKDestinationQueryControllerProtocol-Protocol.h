@@ -8,6 +8,7 @@
 @protocol CNKDestinationQueryControllerDelegate, CNKDestinationVendingProtocol;
 
 @protocol CNKDestinationQueryControllerProtocol
+@property(retain, nonatomic) id <CNKDestinationQueryControllerDelegate> delegate;
 - (long long)presentationStyleFor:(id <CNKDestinationVendingProtocol>)arg1;
 - (long long)isWebCapableFor:(id <CNKDestinationVendingProtocol>)arg1;
 - (long long)isVideoAllowedFor:(id <CNKDestinationVendingProtocol>)arg1;
@@ -18,6 +19,5 @@
 - (void)reset;
 - (void)removeRecipient:(id <CNKDestinationVendingProtocol>)arg1;
 - (void)addRecipient:(id <CNKDestinationVendingProtocol>)arg1;
-@property(nonatomic, readonly) id <CNKDestinationQueryControllerDelegate> delegate;
 @end
 

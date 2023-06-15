@@ -10,6 +10,8 @@
 
 @interface _TtC19HealthRecordsDaemon26ClinicalSharingSyncContext : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *gateway;
+    MISSING_TYPE *patientID;
     MISSING_TYPE *healthInstitutionID;
     MISSING_TYPE *accountID;
     MISSING_TYPE *accountStore;

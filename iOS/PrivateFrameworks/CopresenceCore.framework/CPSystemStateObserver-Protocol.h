@@ -10,8 +10,8 @@
 @protocol CPSystemStateObserverObserver;
 
 @protocol CPSystemStateObserver <NSObject>
+@property(readonly, nonatomic) _Bool allowScreenSharing;
+@property(readonly, nonatomic) _Bool allowSharePlay;
 - (void)addObserver:(id <CPSystemStateObserverObserver>)arg1 withQueue:(OS_dispatch_queue *)arg2;
-@property(nonatomic, readonly) _Bool allowScreenSharing;
-@property(nonatomic, readonly) _Bool allowSharePlay;
 @end
 

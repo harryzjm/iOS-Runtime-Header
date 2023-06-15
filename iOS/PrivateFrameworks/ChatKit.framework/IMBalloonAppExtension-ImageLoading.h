@@ -9,9 +9,11 @@
 @class NSString;
 
 @interface IMBalloonAppExtension (ImageLoading)
+- (id)__ck_tapToRadarBalloonPluginImage;
 - (id)__ck_breadcrumbImage;
+- (void)__ck_generateStatusImage:(CDUnknownBlockType)arg1;
 - (id)__ck_statusImage;
-- (id)__ck_browserImageGenerateSynchronously:(_Bool)arg1 interfaceStyle:(long long)arg2;
+- (id)__ck_browserImageGenerateSynchronously:(_Bool)arg1 interfaceStyle:(long long)arg2 allowPlaceholder:(_Bool)arg3;
 - (id)__ck_browserImageForInterfaceStyle:(long long)arg1;
 - (id)_generatePlaceholderImageForInterfaceStyle:(long long)arg1;
 - (id)_validProxy;

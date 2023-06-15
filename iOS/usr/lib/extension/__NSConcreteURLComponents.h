@@ -58,6 +58,7 @@ __attribute__((visibility("hidden")))
 - (id)string;
 - (id)URLRelativeToURL:(id)arg1;
 - (id)URL;
+- (id)initWithString:(id)arg1 encodingInvalidCharacters:(_Bool)arg2;
 - (id)initWithString:(id)arg1;
 - (id)initWithURL:(id)arg1 resolvingAgainstBaseURL:(_Bool)arg2;
 - (id)init;

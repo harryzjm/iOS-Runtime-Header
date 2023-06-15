@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MNActiveRouteInfo, MNLocation, NSArray, NSTimer;
+@class MNActiveRouteInfo, MNLocation, MNNavigationSessionState, NSArray, NSString, NSTimer;
 @protocol MNTimeAndDistanceUpdaterDelegate;
 
 __attribute__((visibility("hidden")))
@@ -18,21 +18,29 @@ __attribute__((visibility("hidden")))
     NSTimer *_minuteTimer;
     MNActiveRouteInfo *_mainRoute;
     unsigned long long _currentLogType;
+    MNNavigationSessionState *_navigationSessionState;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) MNNavigationSessionState *navigationSessionState; // @synthesize navigationSessionState=_navigationSessionState;
 @property(nonatomic) __weak id <MNTimeAndDistanceUpdaterDelegate> delegate; // @synthesize delegate=_delegate;
-- (void)_logDisplayETAInfo:(id)arg1 logType:(unsigned long long)arg2;
+- (void)_logDisplayETAInfo:(id)arg1;
 - (void)_startTimerToNextMinute;
 - (id)_batteryChargeInfoForRoute:(id)arg1 routeCoordinate:(CDStruct_3f2a7a20)arg2;
 - (id)_routeDistanceInfoForRoute:(id)arg1 routeCoordinate:(CDStruct_3f2a7a20)arg2;
-- (id)_displayETAInfoForRoute:(id)arg1 routeCoordinate:(CDStruct_3f2a7a20)arg2;
 - (void)updateDisplayETAForRoute:(id)arg1 notificationType:(unsigned long long)arg2;
 - (void)setRoutes:(id)arg1 mainRoute:(id)arg2 location:(id)arg3 notificationType:(unsigned long long)arg4;
 - (void)setLocation:(id)arg1 notificationType:(unsigned long long)arg2;
 - (void)stopUpdating;
 - (void)startUpdating;
 - (void)dealloc;
+- (id)initWithNavigationSessionState:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

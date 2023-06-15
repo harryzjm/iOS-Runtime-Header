@@ -6,7 +6,7 @@
 
 #import <MediaPlayer/MPQueueFeeder.h>
 
-@class ICPlayActivityController, ICStoreRequestContext, ICUserIdentityStore, MPAVItem, MPCModelRadioPersonalizationResponse, MPCModelRadioPlaybackContext, MPCModelRadioPlaybackQueue, MPCPlaybackRequestEnvironment, NSDictionary, NSString;
+@class ICStoreRequestContext, ICUserIdentityStore, MPAVItem, MPCModelRadioPersonalizationResponse, MPCModelRadioPlaybackContext, MPCModelRadioPlaybackQueue, MPCPlaybackRequestEnvironment, NSDictionary, NSString;
 @protocol MPMutableIdentifierListSection;
 
 __attribute__((visibility("hidden")))
@@ -30,14 +30,11 @@ __attribute__((visibility("hidden")))
     NSString *_siriAssetInfo;
     ICUserIdentityStore *_observedIdentityStore;
     ICStoreRequestContext *_storeRequestContext;
-    ICPlayActivityController *_playActivityController;
-    CDUnknownBlockType _finalTracklistLoadingCompletionHandler;
     _Bool _hasSignedOut;
 }
 
 + (id)sharedQueue;
 - (void).cxx_destruct;
-- (void)_savePlaybackHistoryWithCurrentIndex:(long long)arg1;
 - (void)_repersonalizeCurrentTracks;
 - (void)_responseDidInvalidate;
 - (void)_removeRestrictedTracks;
@@ -67,16 +64,16 @@ __attribute__((visibility("hidden")))
 - (_Bool)section:(id)arg1 supportsShuffleType:(long long)arg2;
 - (id)updatedPlaybackContext;
 - (id)placeholderItemForLoadingAdditionalItemsInSection:(id)arg1;
-- (void)loadAdditionalItemsWithRequest:(id)arg1 forSection:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)loadAdditionalItemsWithCount:(long long)arg1 forSection:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (long long)prefetchThresholdForSection:(id)arg1;
 - (_Bool)shouldRequestAdditionalItemsWhenReachingTailOfSection:(id)arg1;
 - (id)itemForItem:(id)arg1 inSection:(id)arg2;
 - (id)identifiersForItem:(id)arg1 inSection:(id)arg2;
 - (void)loadPlaybackContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (_Bool)supportsAutoPlayForItem:(id)arg1 inSection:(id)arg2;
-@property(readonly, nonatomic) _Bool containsTransportableContent;
+- (_Bool)containsTransportableContentWithReason:(id *)arg1;
+@property(readonly, nonatomic) _Bool containsRadioContent;
 @property(readonly, nonatomic) _Bool containsLiveStream;
-- (void)didSignificantlyChangeItem:(id)arg1;
 - (id)supplementalPlaybackContextWithReason:(long long)arg1;
 - (long long)supplementalPlaybackContextBehavior;
 - (_Bool)canSkipItem:(id)arg1 reason:(id *)arg2;

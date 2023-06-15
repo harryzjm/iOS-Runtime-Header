@@ -55,9 +55,18 @@ __attribute__((visibility("hidden")))
         unsigned int disable_listener_datapath:1;
         unsigned int requires_dnssec_validation:1;
         unsigned int parent_is_known_tracker:1;
+        unsigned int prohibit_encrypted_dns:1;
+        unsigned int block_trackers:1;
+        unsigned int fail_if_svcb_received:1;
+        unsigned int include_ble:1;
+        unsigned int screen_off:1;
+        unsigned int internet_fallback:1;
+        unsigned int minimize_logging:1;
+        unsigned int skip_stack_trace_capture:1;
+        unsigned int stricter_path_scoping:1;
         unsigned int tls_should_trust_invalid_certificates:1;
         unsigned int skip_probe_sampling:1;
-        unsigned int __pad_bits:30;
+        unsigned int __pad_bits:21;
     } value;
     NWConcrete_nw_path_parameters *path_parameters;
     char *e_bundle_id;
@@ -70,7 +79,9 @@ __attribute__((visibility("hidden")))
     NSObject<OS_nw_array> *proxy_options;
     NSObject<OS_nw_array> *custom_proxy_configs;
     NSObject<OS_nw_proxy_config> *effective_proxy_config;
+    NSObject<OS_nw_proxy_config> *raced_proxy_config;
     NSObject<OS_nw_endpoint> *url_endpoint;
+    NSObject<OS_nw_endpoint> *main_document_url_endpoint;
     NSObject<OS_xpc_object> *metadata;
 }
 

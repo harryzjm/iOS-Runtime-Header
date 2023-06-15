@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
     struct _NSRange _queryStringRange;
     RVQuery *_query;
     CDUnknownBlockType _reportAnIssueBlock;
+    CDUnknownBlockType _reportAnIssueMetadataFetchingBlock;
 }
 
 - (void).cxx_destruct;
@@ -20,6 +21,7 @@ __attribute__((visibility("hidden")))
 - (id)menuActions;
 - (id)createViewController;
 - (void)adaptForPresentationInPopover:(_Bool)arg1;
+- (id)initWithRVQuery:(id)arg1 reportAnIssueBlock:(CDUnknownBlockType)arg2 metadataFetchingBlock:(CDUnknownBlockType)arg3 context:(id)arg4;
 - (id)initWithRVQuery:(id)arg1 reportAnIssueBlock:(CDUnknownBlockType)arg2 context:(id)arg3;
 - (id)initWithQueryString:(id)arg1 range:(struct _NSRange)arg2 context:(id)arg3;
 - (id)initWithRVQuery:(id)arg1 context:(id)arg2;

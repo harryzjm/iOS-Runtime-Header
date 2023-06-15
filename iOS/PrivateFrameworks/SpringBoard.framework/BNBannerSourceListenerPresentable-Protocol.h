@@ -19,11 +19,13 @@
 @property(readonly, nonatomic) id <BNPresentable> presentable;
 - (void)handleTemplateContentEvent:(long long)arg1;
 - (void)makeReadyIfPossible;
-- (id)initWithWithPresentable:(id <BNPresentable>)arg1;
-- (id)initWithWithSpecification:(id <BNPresentableSpecifying>)arg1 serviceDomain:(NSString *)arg2 readyCompletion:(void (^)(id <BNBannerSourceListenerPresentable>, NSError *))arg3;
+- (id)initWithPresentable:(id <BNPresentable>)arg1;
+- (id)initWithSpecification:(id <BNPresentableSpecifying>)arg1 serviceDomain:(NSString *)arg2 readyCompletion:(void (^)(id <BNBannerSourceListenerPresentable>, NSError *))arg3;
 
 @optional
 @property(readonly, nonatomic) FBScene *scene;
 @property(readonly, nonatomic, getter=isContentHosted) _Bool contentHosted;
+- (id)initWithWithPresentable:(id <BNPresentable>)arg1;
+- (id)initWithWithSpecification:(id <BNPresentableSpecifying>)arg1 serviceDomain:(NSString *)arg2 readyCompletion:(void (^)(id <BNBannerSourceListenerPresentable>, NSError *))arg3;
 @end
 

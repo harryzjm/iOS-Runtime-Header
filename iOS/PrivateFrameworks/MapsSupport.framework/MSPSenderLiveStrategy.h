@@ -4,19 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSMutableSet;
+
 __attribute__((visibility("hidden")))
 @interface MSPSenderLiveStrategy
 {
-    _Bool _needToSendRoute;
+    NSMutableSet *_participantsNeedingRoute;
 }
 
+- (void).cxx_destruct;
 - (void)trafficUpdated:(id)arg1;
 - (void)routeUpdated:(id)arg1;
 - (void)waypointsUpdated:(id)arg1;
 - (void)etaUpdated:(id)arg1;
+- (void)didFetchCapabilitiesForParticipants:(id)arg1;
+- (void)_sendInitialRouteIfNeeded;
 - (void)setState:(id)arg1;
 - (void)addParticipants:(id)arg1;
 - (_Bool)_needToSendEtaRefreshFor:(id)arg1;
+- (id)initWithGroupSession:(id)arg1;
 
 @end
 

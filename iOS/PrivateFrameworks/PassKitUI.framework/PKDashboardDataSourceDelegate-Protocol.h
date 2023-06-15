@@ -6,7 +6,7 @@
 
 #import <PassKitUI/NSObject-Protocol.h>
 
-@class NSIndexPath, NSIndexSet;
+@class NSArray, NSIndexPath, NSIndexSet;
 @protocol PKDashboardItem;
 
 @protocol PKDashboardDataSourceDelegate <NSObject>
@@ -15,6 +15,8 @@
 - (void)reloadSections:(NSIndexSet *)arg1;
 - (void)deleteSections:(NSIndexSet *)arg1;
 - (void)insertSections:(NSIndexSet *)arg1;
+- (void)deleteItemsAtIndexPaths:(NSArray *)arg1;
+- (void)insertItemsAtIndexPaths:(NSArray *)arg1;
 - (void)performBatchUpdates:(void (^)(void))arg1 completion:(void (^)(_Bool))arg2;
 - (void)itemChanged:(id <PKDashboardItem>)arg1 atIndexPath:(NSIndexPath *)arg2;
 - (void)contentIsLoaded;

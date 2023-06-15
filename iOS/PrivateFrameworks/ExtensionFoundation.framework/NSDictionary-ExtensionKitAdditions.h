@@ -16,6 +16,7 @@
 - (long long)_EX_integerForKey:(id)arg1;
 - (id)_EX_stringForKeys:(id)arg1;
 - (id)_EX_stringForKey:(id)arg1;
+- (id)_EX_arrayForKeys:(id)arg1;
 - (id)_EX_arrayForKey:(id)arg1;
 - (id)_EX_dictionaryForKeys:(id)arg1;
 - (id)_EX_dictionaryForKey:(id)arg1;

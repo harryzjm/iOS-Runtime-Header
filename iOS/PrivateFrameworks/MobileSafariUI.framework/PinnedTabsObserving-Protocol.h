@@ -6,11 +6,12 @@
 
 #import <MobileSafariUI/NSObject-Protocol.h>
 
-@class NSArray, PinnedTabsManager;
+@class NSArray, NSString, PinnedTabsManager;
 
 @protocol PinnedTabsObserving <NSObject>
 
 @optional
+- (void)pinnedTabsManager:(PinnedTabsManager *)arg1 didUpdatePinnedTabs:(NSArray *)arg2 inProfileWithUUID:(NSString *)arg3;
 - (void)pinnedTabsManager:(PinnedTabsManager *)arg1 didUpdatePinnedTabs:(NSArray *)arg2 isPrivate:(_Bool)arg3;
 @end
 

@@ -6,29 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableIndexSet, TSPObjectContext, TSPTemporaryObjectContextDelegate;
+@class TSPObjectContext, TSPTemporaryObjectContextDelegate;
 
 @interface TSTCellDictionary : NSObject
 {
-    struct os_unfair_lock_s _lock;
-    struct unordered_map<TSUCellCoord, TSTCell *, std::hash<TSUCellCoord>, std::equal_to<TSUCellCoord>, std::allocator<std::pair<const TSUCellCoord, TSTCell *>>> _cellsByCoord;
-    struct TSCECellCoordSet _cellCoordsToStyleUpgradeForFormulatext;
+    struct os_unfair_lock_s _lock[20];
+    struct unordered_map<TSUCellCoord, TSTCell *, std::hash<TSUCellCoord>, std::equal_to<TSUCellCoord>, std::allocator<std::pair<const TSUCellCoord, TSTCell *>>> _cellsByCoord[20];
+    struct TSCECellCoordSet _cellCoordsToStyleUpgradeForFormulatext[20];
+    struct os_unfair_lock_s _hasRichTextLock;
     _Bool _hasAnyRichTextCells;
-    unsigned short _minColumn;
-    unsigned short _maxColumn;
     TSPTemporaryObjectContextDelegate *_temporaryObjectContextDelegate;
     TSPObjectContext *_temporaryContext;
-    NSMutableIndexSet *_rowIndexes;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(nonatomic) unsigned short maxColumn; // @synthesize maxColumn=_maxColumn;
-@property(nonatomic) unsigned short minColumn; // @synthesize minColumn=_minColumn;
-@property(retain, nonatomic) NSMutableIndexSet *rowIndexes; // @synthesize rowIndexes=_rowIndexes;
 @property(readonly, nonatomic) TSPObjectContext *temporaryContext; // @synthesize temporaryContext=_temporaryContext;
 @property(readonly, nonatomic) TSPTemporaryObjectContextDelegate *temporaryObjectContextDelegate; // @synthesize temporaryObjectContextDelegate=_temporaryObjectContextDelegate;
-@property(nonatomic) _Bool hasAnyRichTextCells; // @synthesize hasAnyRichTextCells=_hasAnyRichTextCells;
+@property(readonly, nonatomic) _Bool hasAnyRichTextCells; // @synthesize hasAnyRichTextCells=_hasAnyRichTextCells;
 - (_Bool)noLockShouldUpgradeStyleForFormulatextForCellCoord:(const struct TSUCellCoord *)arg1;
 - (_Bool)shouldUpgradeStyleForFormulatextForCellCoord:(const struct TSUCellCoord *)arg1;
 - (void)upgradeStyleForFormulatextForCellCoord:(const struct TSUCellCoord *)arg1;

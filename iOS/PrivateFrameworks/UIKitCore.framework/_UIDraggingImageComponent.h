@@ -6,34 +6,26 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 @class UIImage, UIView;
 
 __attribute__((visibility("hidden")))
-@interface _UIDraggingImageComponent : NSObject <NSCopying>
+@interface _UIDraggingImageComponent : NSObject
 {
-    struct CAPoint3D _origin;
-    struct {
-        double width;
-        double height;
-        double depth;
-    } _size;
     _Bool _ignoresAccessibilityFilters;
     _Bool _hidesImage;
     UIView *_view;
     UIImage *_image;
+    struct CGRect _frame;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool hidesImage; // @synthesize hidesImage=_hidesImage;
 @property(readonly, nonatomic) _Bool ignoresAccessibilityFilters; // @synthesize ignoresAccessibilityFilters=_ignoresAccessibilityFilters;
+@property(readonly, nonatomic) struct CGRect frame; // @synthesize frame=_frame;
 @property(readonly, nonatomic) UIImage *image; // @synthesize image=_image;
 @property(readonly, nonatomic) UIView *view; // @synthesize view=_view;
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)setFrame:(struct CGRect)arg1;
-@property(readonly, nonatomic) struct CGRect frame;
 - (id)_initWithNoImageAndFrame:(struct CGRect)arg1;
 - (id)initHidingDragImage;
 - (id)initWithView:(id)arg1;

@@ -6,7 +6,7 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-@class CKDPAnonymousShareAddResponse, CKDPAnonymousShareRemoveResponse, CKDPArchiveRecordsResponse, CKDPAssetUploadTokenRetrieveResponse, CKDPBundlesForContainerResponse, CKDPCodeFunctionInvokeResponse, CKDPDeleteContainerResponse, CKDPFetchArchivedRecordsResponse, CKDPMarkAssetBrokenResponse, CKDPMergeableDeltaMetadataRetrieveResponse, CKDPMergeableDeltaReplaceResponse, CKDPMergeableDeltaRetrieveResponse, CKDPMergeableDeltaSaveResponse, CKDPNotificationMarkReadResponse, CKDPNotificationSyncResponse, CKDPOperation, CKDPQueryRetrieveResponse, CKDPRecordDeleteResponse, CKDPRecordMoveResponse, CKDPRecordResolveTokenResponse, CKDPRecordRetrieveChangesResponse, CKDPRecordRetrieveResponse, CKDPRecordRetrieveVersionsResponse, CKDPRecordSaveResponse, CKDPResponseOperationHeader, CKDPResponseOperationResult, CKDPSetBadgeCountResponse, CKDPShareAcceptResponse, CKDPShareVettingInitiateResponse, CKDPSubscriptionCreateResponse, CKDPSubscriptionDeleteResponse, CKDPSubscriptionRetrieveResponse, CKDPTokenRegistrationResponse, CKDPTokenUnregistrationResponse, CKDPUpdateMissingAssetStatusResponse, CKDPUserAvailableQuotaResponse, CKDPUserPrivacySettingsBatchLookupResponse, CKDPUserPrivacySettingsResetResponse, CKDPUserPrivacySettingsRetrieveResponse, CKDPUserPrivacySettingsUpdateResponse, CKDPUserQueryResponse, CKDPUserRetrieveResponse, CKDPWebAuthTokenRetrieveResponse, CKDPZoneDeleteResponse, CKDPZoneRetrieveChangesResponse, CKDPZoneRetrieveResponse, CKDPZoneSaveResponse;
+@class CKDPAnonymousShareAddResponse, CKDPAnonymousShareRemoveResponse, CKDPArchiveRecordsResponse, CKDPAssetUploadTokenRetrieveResponse, CKDPBundlesForContainerResponse, CKDPCodeFunctionInvokeResponse, CKDPDeleteContainerResponse, CKDPFetchArchivedRecordsResponse, CKDPMarkAssetBrokenResponse, CKDPMergeableDeltaMetadataRetrieveResponse, CKDPMergeableDeltaReplaceResponse, CKDPMergeableDeltaRetrieveResponse, CKDPMergeableDeltaSaveResponse, CKDPNotificationMarkReadResponse, CKDPNotificationSyncResponse, CKDPOperation, CKDPQueryRetrieveResponse, CKDPRecordDeleteResponse, CKDPRecordMoveResponse, CKDPRecordResolveTokenResponse, CKDPRecordRetrieveChangesResponse, CKDPRecordRetrieveResponse, CKDPRecordRetrieveVersionsResponse, CKDPRecordSaveResponse, CKDPResponseOperationHeader, CKDPResponseOperationResult, CKDPSetBadgeCountResponse, CKDPShareAcceptResponse, CKDPShareAccessResponse, CKDPShareDeclineResponse, CKDPShareVettingInitiateResponse, CKDPSubscriptionCreateResponse, CKDPSubscriptionDeleteResponse, CKDPSubscriptionRetrieveResponse, CKDPTokenRegistrationResponse, CKDPTokenUnregistrationResponse, CKDPUpdateMissingAssetStatusResponse, CKDPUserAvailableQuotaResponse, CKDPUserPrivacySettingsBatchLookupResponse, CKDPUserPrivacySettingsResetResponse, CKDPUserPrivacySettingsRetrieveResponse, CKDPUserPrivacySettingsUpdateResponse, CKDPUserQueryResponse, CKDPUserRetrieveResponse, CKDPWebAuthTokenRetrieveResponse, CKDPZoneDeleteResponse, CKDPZoneRetrieveChangesResponse, CKDPZoneRetrieveResponse, CKDPZoneSaveResponse;
 
 @interface CKDPResponseOperation : PBCodable
 {
@@ -38,6 +38,8 @@
     CKDPResponseOperationResult *_result;
     CKDPSetBadgeCountResponse *_setBadgeCountResponse;
     CKDPShareAcceptResponse *_shareAcceptResponse;
+    CKDPShareAccessResponse *_shareAccessResponse;
+    CKDPShareDeclineResponse *_shareDeclineResponse;
     CKDPShareVettingInitiateResponse *_shareVettingInitiateResponse;
     CKDPSubscriptionCreateResponse *_subscriptionCreateResponse;
     CKDPSubscriptionDeleteResponse *_subscriptionDeleteResponse;
@@ -107,6 +109,8 @@
 @property(readonly, nonatomic) _Bool hasRecordDeleteResponse;
 @property(retain, nonatomic) CKDPRecordResolveTokenResponse *recordResolveTokenResponse;
 @property(readonly, nonatomic) _Bool hasRecordResolveTokenResponse;
+@property(retain, nonatomic) CKDPShareAccessResponse *shareAccessResponse;
+@property(readonly, nonatomic) _Bool hasShareAccessResponse;
 @property(retain, nonatomic) CKDPRecordMoveResponse *recordMoveResponse;
 @property(readonly, nonatomic) _Bool hasRecordMoveResponse;
 @property(retain, nonatomic) CKDPFetchArchivedRecordsResponse *fetchArchivedRecordsResponse;
@@ -129,6 +133,8 @@
 @property(readonly, nonatomic) _Bool hasUpdateMissingAssetStatusResponse;
 @property(retain, nonatomic) CKDPShareAcceptResponse *shareAcceptResponse;
 @property(readonly, nonatomic) _Bool hasShareAcceptResponse;
+@property(retain, nonatomic) CKDPShareDeclineResponse *shareDeclineResponse;
+@property(readonly, nonatomic) _Bool hasShareDeclineResponse;
 @property(retain, nonatomic) CKDPAnonymousShareAddResponse *anonymousShareAddResponse;
 @property(readonly, nonatomic) _Bool hasAnonymousShareAddResponse;
 @property(retain, nonatomic) CKDPAnonymousShareRemoveResponse *anonymousShareRemoveResponse;

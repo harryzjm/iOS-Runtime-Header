@@ -11,9 +11,14 @@
 @interface _TtC13WeatherDaemon18WeatherDataManager : _TtCs12_SwiftObject
 {
     MISSING_TYPE *service;
-    MISSING_TYPE *lazyStore;
-    MISSING_TYPE *logger;
+    MISSING_TYPE *interpolator;
     MISSING_TYPE *storeFactoryBlock;
+    MISSING_TYPE *lazyStore;
+    MISSING_TYPE *lastFetched;
+    MISSING_TYPE *lock;
+    MISSING_TYPE *logger;
+    MISSING_TYPE *$__lazy_storage_$_overriddenProviderName;
+    MISSING_TYPE *fetchQueue;
 }
 
 @end

@@ -19,6 +19,6 @@
 - (void)setStillImageTime:(CDStruct_1b6d18a9)arg1;
 - (void)appendAudioSampleBuffer:(struct opaqueCMSampleBuffer *)arg1 mediaType:(unsigned char)arg2;
 - (void)appendVideoSampleBuffer:(struct opaqueCMSampleBuffer *)arg1 cameraStatus:(unsigned char)arg2 mediaType:(unsigned char)arg3;
-- (id)initWithOutputURL:(NSURL *)arg1 transactionID:(NSString *)arg2 videoCodec:(unsigned int)arg3;
+- (id)initWithOutputURL:(NSURL *)arg1 transactionID:(NSString *)arg2 videoCodec:(unsigned int)arg3 keyFrameIntervalDuration:(double)arg4;
 @end
 

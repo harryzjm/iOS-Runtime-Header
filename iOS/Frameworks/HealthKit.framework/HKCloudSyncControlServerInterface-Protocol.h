@@ -6,7 +6,7 @@
 
 #import <HealthKit/NSObject-Protocol.h>
 
-@class NSProgress;
+@class HKCloudSyncRequest, NSProgress, NSString;
 
 @protocol HKCloudSyncControlServerInterface <NSObject>
 - (void)remote_requestDataRefreshWithCompletion:(void (^)(_Bool, NSError *))arg1;
@@ -21,5 +21,6 @@
 - (NSProgress *)remote_forceCloudSyncDataUploadForProfileWithCompletion:(void (^)(_Bool, NSError *))arg1;
 - (NSProgress *)remote_forceCloudResetWithCompletion:(void (^)(_Bool, NSError *))arg1;
 - (NSProgress *)remote_forceCloudSyncWithOptions:(unsigned long long)arg1 reason:(long long)arg2 completion:(void (^)(_Bool, NSError *))arg3;
+- (void)remote_syncWithRequest:(HKCloudSyncRequest *)arg1 reason:(NSString *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 @end
 

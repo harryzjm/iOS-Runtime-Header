@@ -10,6 +10,7 @@
 @interface CKDUploadAssetsOperation
 {
     _Bool _atomic;
+    _Bool _shouldCloneFileInAssetCache;
     _Bool _temporary;
     CDUnknownBlockType _uploadPreparationBlock;
     CDUnknownBlockType _uploadProgressBlock;
@@ -39,6 +40,7 @@
 @property(retain, nonatomic) NSMapTable *uploadTasksByPackages; // @synthesize uploadTasksByPackages=_uploadTasksByPackages;
 @property(retain, nonatomic) NSArray *assetsToUpload; // @synthesize assetsToUpload=_assetsToUpload;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property(nonatomic) _Bool shouldCloneFileInAssetCache; // @synthesize shouldCloneFileInAssetCache=_shouldCloneFileInAssetCache;
 @property(nonatomic) _Bool atomic; // @synthesize atomic=_atomic;
 @property(copy, nonatomic) CDUnknownBlockType uploadCompletionBlock; // @synthesize uploadCompletionBlock=_uploadCompletionBlock;
 @property(copy, nonatomic) CDUnknownBlockType uploadProgressBlock; // @synthesize uploadProgressBlock=_uploadProgressBlock;
@@ -50,6 +52,7 @@
 - (void)cancel;
 - (void)_removePackageManifests;
 - (_Bool)_upload;
+- (void)_didUploadClonedPackageWithTask:(id)arg1;
 - (void)_didUploadPackageWithTask:(id)arg1;
 - (void)_didMakeProgressForMMCSItem:(id)arg1;
 - (void)_didUploadMMCSItems:(id)arg1 error:(id)arg2;
@@ -69,7 +72,6 @@
 - (void)_failAllItemsInAssetBatch:(id)arg1 error:(id)arg2;
 - (_Bool)_prepareForUpload;
 - (_Bool)_fetchConfiguration;
-- (_Bool)_fetchAssetRereferenceRecords;
 - (void)_didPrepareAssetBatch:(id)arg1 error:(id)arg2;
 - (void)_didPutChunkKeysForAssetBatch:(id)arg1 error:(id)arg2;
 - (void)_didGetChunkKeysForAssetBatch:(id)arg1 error:(id)arg2;
@@ -83,6 +85,7 @@
 - (id)nameForState:(unsigned long long)arg1;
 - (_Bool)makeStateTransition;
 - (id)CKStatusReportLogGroups;
+- (int)operationType;
 - (id)initWithOperationInfo:(id)arg1 container:(id)arg2;
 
 // Remaining properties

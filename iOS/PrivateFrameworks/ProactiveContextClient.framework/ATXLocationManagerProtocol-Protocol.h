@@ -16,9 +16,7 @@
 - (long long)stateForRegion:(CLRegion *)arg1 withTimeout:(double)arg2;
 - (void)stopMonitoringRegionWithIdentifier:(NSString *)arg1;
 - (void)beginMonitoringRegion:(CLRegion *)arg1;
-- (CLLocation *)getCurrentPreciseLocationWithShiftInChina;
 - (CLLocation *)getCurrentPreciseLocation;
-- (CLLocation *)getCurrentLocationWithShiftInChina;
 - (CLLocation *)getCurrentLocation;
 - (void)invalidateLocationOfInterestCache;
 - (void)clearLocationOfInterest;

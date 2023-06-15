@@ -13,10 +13,9 @@
 - (NSString *)backItemTitleForOneUpBarsController:(PUOneUpBarsController *)arg1;
 - (PUMenuActionController *)oneUpBarsController:(PUOneUpBarsController *)arg1 createMenuActionControllerForManagerIfNeeded:(PXActionManager *)arg2;
 - (_Bool)oneUpBarsControllerWantsActionsMenu:(PUOneUpBarsController *)arg1;
-- (_Bool)oneUpBarsControllerWantsDocumentMenu:(PUOneUpBarsController *)arg1;
 
 @optional
-- (void)oneUpBarsControllerWillPresentActionsMenu:(PUOneUpBarsController *)arg1;
+- (void)oneUpBarsControllerWillPresentActionsMenu:(PUOneUpBarsController *)arg1 completionHandler:(void (^)(void))arg2;
 - (_Bool)oneUpBarsControllerDismissPresentedViewController:(PUOneUpBarsController *)arg1;
 - (_Bool)oneUpBarsControllerShouldAnimateViewControllerPresentation:(PUOneUpBarsController *)arg1;
 - (void)oneUpBarsController:(PUOneUpBarsController *)arg1 willExecuteActionPerformer:(PUAssetActionPerformer *)arg2;

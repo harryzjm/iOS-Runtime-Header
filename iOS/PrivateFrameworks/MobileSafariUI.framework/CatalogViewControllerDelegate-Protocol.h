@@ -10,6 +10,8 @@
 @protocol CompletionItem, SFStartPageVisualStyleProviding;
 
 @protocol CatalogViewControllerDelegate <NSObject>
+- (_Bool)catalogViewControllerShouldUsePopoverForCompletions:(CatalogViewController *)arg1;
+- (void)catalogViewControllerDidAppear:(CatalogViewController *)arg1;
 - (void)catalogViewController:(CatalogViewController *)arg1 didFinishVoiceSearchWithNavigation:(_Bool)arg2;
 - (void)catalogViewController:(CatalogViewController *)arg1 willPresentCustomizationViewController:(SFStartPageCustomizationViewController *)arg2;
 - (void)catalogViewController:(CatalogViewController *)arg1 willPresentDetailViewController:(UIViewController *)arg2;
@@ -21,11 +23,12 @@
 - (void)catalogViewController:(CatalogViewController *)arg1 didPasteText:(NSString *)arg2;
 - (_Bool)catalogViewControllerShouldSuppressPopover:(CatalogViewController *)arg1;
 - (double)catalogViewControllerPopoverWidth:(CatalogViewController *)arg1;
-- (_Bool)catalogViewControllerShouldRequestSuggestions:(CatalogViewController *)arg1;
+- (_Bool)catalogViewControllerShouldRequestNetworkedSuggestions:(CatalogViewController *)arg1;
 - (void)catalogViewController:(CatalogViewController *)arg1 presentViewControllerWithinPopover:(UIViewController *)arg2 completionHandler:(void (^)(void))arg3;
 - (void)catalogViewController:(CatalogViewController *)arg1 willRepositionPopoverToRect:(inout struct CGRect *)arg2 inView:(inout id *)arg3;
 - (void)catalogViewControllerPopoverWillDismiss:(CatalogViewController *)arg1 dismissalReason:(long long)arg2;
 - (void)catalogViewControllerDidSelectFindOnPage:(CatalogViewController *)arg1;
+- (void)catalogViewControllerMakeWindowKey:(CatalogViewController *)arg1;
 - (void)catalogViewController:(CatalogViewController *)arg1 focusNextKeyView:(_Bool)arg2;
 - (void)catalogViewControllerDidEndEditing:(CatalogViewController *)arg1;
 - (void)catalogViewControllerDidBeginEditing:(CatalogViewController *)arg1;

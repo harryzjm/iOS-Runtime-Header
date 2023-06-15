@@ -6,12 +6,15 @@
 
 #import <MapsSuggestions/MapsSuggestionsResourceDepot-Protocol.h>
 
-@protocol MapsSuggestionsContactsConnector, MapsSuggestionsEventKitConnector, MapsSuggestionsFlightRequester, MapsSuggestionsMapsSyncConnector, MapsSuggestionsPortraitConnector, MapsSuggestionsRoutineConnector, MapsSuggestionsShortcutStorage, MapsSuggestionsShortcutSuggestor, MapsSuggestionsVirtualGarageConnector;
+@protocol MapsSuggestionsBiomeConnector, MapsSuggestionsContactsConnector, MapsSuggestionsEventKitConnector, MapsSuggestionsFinanceKitConnector, MapsSuggestionsFindMyConnector, MapsSuggestionsFlightRequester, MapsSuggestionsMapsSyncConnector, MapsSuggestionsPortraitConnector, MapsSuggestionsRoutineConnector, MapsSuggestionsShortcutStorage, MapsSuggestionsShortcutSuggestor, MapsSuggestionsVirtualGarageConnector;
 
 @protocol MapsSuggestionsInternalResourceDepot <MapsSuggestionsResourceDepot>
 - (id <MapsSuggestionsShortcutSuggestor>)oneFavoritesSuggestor;
 - (id <MapsSuggestionsShortcutStorage>)oneFavoritesStorage;
+- (id <MapsSuggestionsFinanceKitConnector>)oneFinanceKitConnector;
 - (id <MapsSuggestionsFlightRequester>)oneFlightRequester;
+- (id <MapsSuggestionsFindMyConnector>)oneFindMyConnector;
+- (id <MapsSuggestionsBiomeConnector>)oneBiomeConnector;
 - (id <MapsSuggestionsVirtualGarageConnector>)oneVirtualGarageConnector;
 - (id <MapsSuggestionsPortraitConnector>)onePortraitConnector;
 - (id <MapsSuggestionsContactsConnector>)oneContactsConnector;

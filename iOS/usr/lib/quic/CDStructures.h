@@ -76,17 +76,19 @@ struct quic_packet {
     unsigned long long _field22;
     unsigned long long _field23;
     struct quic_packet_pool *_field24;
+    struct quic_path *_field25;
     struct {
         struct quic_frame *_field1;
         struct quic_frame **_field2;
         struct qm_trace _field3;
-    } _field25;
-    CDStruct_41d4c459 _field26;
+    } _field26;
     CDStruct_41d4c459 _field27;
     CDStruct_41d4c459 _field28;
+    CDStruct_41d4c459 _field29;
     struct {
         struct quic_packet *_field1;
-    } _field29;
+    } _field30;
+    unsigned long long _field31;
     unsigned int :1;
     unsigned int :1;
     unsigned int :1;
@@ -101,11 +103,14 @@ struct quic_packet {
     unsigned int :1;
     unsigned int :1;
     unsigned int :1;
-    unsigned int :18;
-    unsigned char _field30[4];
+    unsigned int :1;
+    unsigned int :17;
+    unsigned char _field32[4];
 };
 
 struct quic_packet_pool;
+
+struct quic_path;
 
 struct quic_preferred_address {
     struct in_addr _field1;

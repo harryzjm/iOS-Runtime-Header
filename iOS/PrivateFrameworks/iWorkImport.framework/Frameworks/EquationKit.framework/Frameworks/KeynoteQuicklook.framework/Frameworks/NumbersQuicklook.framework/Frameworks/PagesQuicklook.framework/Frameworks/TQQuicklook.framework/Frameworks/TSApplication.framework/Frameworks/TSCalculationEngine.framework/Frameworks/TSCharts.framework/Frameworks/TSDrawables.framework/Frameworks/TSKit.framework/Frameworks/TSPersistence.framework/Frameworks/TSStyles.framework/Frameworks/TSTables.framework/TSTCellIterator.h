@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, TSTCell, TSTCellRegion, TSTMutableCellIteratorData, TSTTableInfo, TSTTableModel;
+@class NSString, TSTCellRegion, TSTMutableCellIteratorData, TSTTableInfo, TSTTableModel;
 @protocol TSTCellRegionIterating, TSTCellRegionIterating><TSTMutableCellIteratorDataUpdating;
 
 @interface TSTCellIterator : NSObject
@@ -22,7 +22,6 @@
     TSTTableInfo *_tableInfo;
     TSTTableModel *_tableModel;
     TSTCellRegion *_region;
-    TSTCell *_cell;
     TSTMutableCellIteratorData *_cellData;
     id <TSTCellRegionIterating><TSTMutableCellIteratorDataUpdating> _contentIterator;
     id <TSTCellRegionIterating><TSTMutableCellIteratorDataUpdating> _strokeIterator;
@@ -43,7 +42,6 @@
 @property(nonatomic) _Bool returnOneEmptyCell; // @synthesize returnOneEmptyCell=_returnOneEmptyCell;
 @property(nonatomic) _Bool returnEmptyCells; // @synthesize returnEmptyCells=_returnEmptyCells;
 @property(retain, nonatomic) TSTMutableCellIteratorData *cellData; // @synthesize cellData=_cellData;
-@property(retain, nonatomic) TSTCell *cell; // @synthesize cell=_cell;
 @property(readonly, nonatomic) TSTCellRegion *region; // @synthesize region=_region;
 @property(retain, nonatomic) TSTTableModel *tableModel; // @synthesize tableModel=_tableModel;
 @property(retain, nonatomic) TSTTableInfo *tableInfo; // @synthesize tableInfo=_tableInfo;

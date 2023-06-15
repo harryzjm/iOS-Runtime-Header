@@ -22,7 +22,7 @@
 - (id)volumeUUIDWithVolumeIndex:(id)arg1;
 - (id)volumeIndexForVolumeUUID:(id)arg1;
 - (void)_lockedSetVolumeIndex:(id)arg1 forVolumeUUID:(id)arg2;
-- (id)finishInitializing:(_Bool)arg1;
+- (id)wakeFromDatabase;
 - (id)initWithLogicalTableName:(id)arg1;
 
 @end

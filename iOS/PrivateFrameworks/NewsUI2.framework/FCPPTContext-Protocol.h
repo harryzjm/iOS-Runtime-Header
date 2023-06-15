@@ -9,11 +9,9 @@
 @class NSString;
 
 @protocol FCPPTContext <NSObject>
+@property(nonatomic, getter=isPrefetchDisabled) _Bool prefetchDisabled;
+@property(nonatomic, getter=isRunningPPT) _Bool runningPPT;
+@property(retain, nonatomic) NSString *testName;
 - (void)d_logState;
-@property(nonatomic) _Bool prefetchDisabled;
-- (_Bool)isPrefetchDisabled;
-@property(nonatomic) _Bool runningPPT;
-- (_Bool)isRunningPPT;
-@property(nonatomic, copy) NSString *testName;
 @end
 

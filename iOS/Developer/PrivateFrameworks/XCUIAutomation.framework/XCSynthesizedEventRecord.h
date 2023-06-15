@@ -8,26 +8,30 @@
 
 #import <XCUIAutomation/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString;
+@class NSArray, NSDictionary, NSMutableArray, NSString;
 
 @interface XCSynthesizedEventRecord : NSObject <NSSecureCoding>
 {
     NSMutableArray *_eventPaths;
     _Bool _beginsPersistentState;
     _Bool _endsPersistentState;
-    unsigned int _windowContextID;
     NSString *_name;
     long long _interfaceOrientation;
     long long _targetProcessID;
     unsigned long long _displayID;
+    NSDictionary *_systemAutomationProperties;
+    struct CGVector _originalOffset;
+    struct CGSize _parentWindowSize;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property struct CGSize parentWindowSize; // @synthesize parentWindowSize=_parentWindowSize;
+@property(copy) NSDictionary *systemAutomationProperties; // @synthesize systemAutomationProperties=_systemAutomationProperties;
+@property(nonatomic) struct CGVector originalOffset; // @synthesize originalOffset=_originalOffset;
 @property _Bool endsPersistentState; // @synthesize endsPersistentState=_endsPersistentState;
 @property _Bool beginsPersistentState; // @synthesize beginsPersistentState=_beginsPersistentState;
 @property(readonly) unsigned long long displayID; // @synthesize displayID=_displayID;
-@property unsigned int windowContextID; // @synthesize windowContextID=_windowContextID;
 @property long long targetProcessID; // @synthesize targetProcessID=_targetProcessID;
 @property(readonly) long long interfaceOrientation; // @synthesize interfaceOrientation=_interfaceOrientation;
 @property(readonly, copy) NSString *name; // @synthesize name=_name;

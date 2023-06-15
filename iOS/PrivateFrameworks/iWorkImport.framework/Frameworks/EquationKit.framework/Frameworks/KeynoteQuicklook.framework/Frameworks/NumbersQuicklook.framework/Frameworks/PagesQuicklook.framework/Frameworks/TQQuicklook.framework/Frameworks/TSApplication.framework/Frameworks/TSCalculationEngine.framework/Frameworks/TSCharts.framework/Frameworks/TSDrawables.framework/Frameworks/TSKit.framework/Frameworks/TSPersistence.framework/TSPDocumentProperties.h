@@ -27,10 +27,10 @@
 + (id)documentRevisionAtURL:(id)arg1;
 + (id)documentUUIDAtURL:(id)arg1;
 - (void).cxx_destruct;
-@property(copy, nonatomic) NSUUID *documentUUID; // @synthesize documentUUID=_documentUUID;
 @property(copy, nonatomic) NSDictionary *additionalProperties; // @synthesize additionalProperties=_additionalProperties;
 @property(copy, nonatomic) TSPDocumentRevision *revision; // @synthesize revision=_revision;
 @property(nonatomic) unsigned long long fileFormatVersion; // @synthesize fileFormatVersion=_fileFormatVersion;
+@property(copy, nonatomic) NSUUID *documentUUID; // @synthesize documentUUID=_documentUUID;
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)hashPrivateUUIDWithDigest:(id)arg1;

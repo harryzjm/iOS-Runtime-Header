@@ -6,7 +6,7 @@
 
 #import <PassKitCore/NSObject-Protocol.h>
 
-@class NSError, PKAccountServicePaymentMethod, PKApplePayTrustSignature, PKAuthorizedPeerPaymentQuote, PKDisbursementVoucher, PKPaymentAuthorizationCoordinator, PKServiceProviderPurchase;
+@class NSError, PKAccountServicePaymentMethod, PKApplePayTrustSignature, PKAuthorizedPeerPaymentQuote, PKPaymentAuthorizationCoordinator, PKServiceProviderPurchase;
 
 @protocol PKPaymentAuthorizationCoordinatorPrivateDelegate <NSObject>
 
@@ -14,7 +14,6 @@
 - (void)paymentAuthorizationCoordinator:(PKPaymentAuthorizationCoordinator *)arg1 didEncounterAuthorizationEvent:(unsigned long long)arg2;
 - (void)paymentAuthorizationCoordinator:(PKPaymentAuthorizationCoordinator *)arg1 didUpdateAccountServicePaymentMethod:(PKAccountServicePaymentMethod *)arg2 handler:(void (^)(PKPaymentRequestPaymentMethodUpdate *, PKApplePayTrustSignatureRequest *))arg3;
 - (void)paymentAuthorizationCoordinator:(PKPaymentAuthorizationCoordinator *)arg1 didAuthorizeApplePayTrustSignature:(PKApplePayTrustSignature *)arg2 handler:(void (^)(PKPaymentAuthorizationResult *))arg3;
-- (void)paymentAuthorizationCoordinator:(PKPaymentAuthorizationCoordinator *)arg1 didAuthorizeDisbursementVoucher:(PKDisbursementVoucher *)arg2 handler:(void (^)(PKPaymentAuthorizationResult *))arg3;
 - (void)paymentAuthorizationCoordinator:(PKPaymentAuthorizationCoordinator *)arg1 didAuthorizePeerPaymentQuote:(PKAuthorizedPeerPaymentQuote *)arg2 handler:(void (^)(PKPaymentAuthorizationResult *))arg3;
 - (void)paymentAuthorizationCoordinator:(PKPaymentAuthorizationCoordinator *)arg1 didAuthorizePurchase:(PKServiceProviderPurchase *)arg2 completion:(void (^)(long long))arg3;
 - (void)paymentAuthorizationCoordinator:(PKPaymentAuthorizationCoordinator *)arg1 didAuthorizeContextWithHandler:(void (^)(PKPaymentAuthorizationResult *))arg2;

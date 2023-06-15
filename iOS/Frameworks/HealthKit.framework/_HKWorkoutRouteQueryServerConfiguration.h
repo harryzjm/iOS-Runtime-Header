@@ -18,8 +18,8 @@ __attribute__((visibility("hidden")))
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSDateInterval *dateInterval; // @synthesize dateInterval=_dateInterval;
-@property(retain, nonatomic) NSUUID *workoutUUID; // @synthesize workoutUUID=_workoutUUID;
+@property(copy, nonatomic) NSDateInterval *dateInterval; // @synthesize dateInterval=_dateInterval;
+@property(copy, nonatomic) NSUUID *workoutUUID; // @synthesize workoutUUID=_workoutUUID;
 @property(retain, nonatomic) HKWorkoutRoute *workoutRoute; // @synthesize workoutRoute=_workoutRoute;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

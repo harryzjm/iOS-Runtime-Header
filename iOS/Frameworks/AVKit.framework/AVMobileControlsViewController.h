@@ -4,20 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
-@class AVControlEventManager, AVMobileFullscreenController, AVPictureInPictureController, AVPlaybackSpeedCollection, AVPlayerController, AVRoutingConfiguration, NSArray, NSString;
+@class AVEventManager, AVMobileFullscreenController, AVPictureInPictureController, AVPlaybackSpeedCollection, AVPlayerController, AVRoutingConfiguration, NSArray, NSString;
 @protocol AVKitLayoutItem, AVMobileControlsViewControllerDelegate, AVVolumeController;
 
 __attribute__((visibility("hidden")))
 @interface AVMobileControlsViewController : UIViewController
 {
-    AVControlEventManager *_eventManager;
+    AVEventManager *_eventManager;
     _Bool _optimizeForPerformance;
     _Bool _requiresLinearPlayback;
     _Bool _showsFullScreenControl;
     id <AVMobileControlsViewControllerDelegate> _delegate;
     AVMobileFullscreenController *_fullscreenController;
+    unsigned long long _excludedControls;
     unsigned long long _includedControls;
     AVPlaybackSpeedCollection *_playbackSpeedCollection;
     AVPlayerController *_playerController;
@@ -34,6 +35,7 @@ __attribute__((visibility("hidden")))
     id <AVKitLayoutItem> _displayModeControlsLayoutItem;
 }
 
++ (double)autoHideInterval;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) id <AVKitLayoutItem> displayModeControlsLayoutItem; // @synthesize displayModeControlsLayoutItem=_displayModeControlsLayoutItem;
 @property(readonly, nonatomic) id <AVKitLayoutItem> volumeControlsLayoutItem; // @synthesize volumeControlsLayoutItem=_volumeControlsLayoutItem;
@@ -52,14 +54,19 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) AVPlaybackSpeedCollection *playbackSpeedCollection; // @synthesize playbackSpeedCollection=_playbackSpeedCollection;
 @property(nonatomic) _Bool optimizeForPerformance; // @synthesize optimizeForPerformance=_optimizeForPerformance;
 @property(nonatomic) unsigned long long includedControls; // @synthesize includedControls=_includedControls;
+@property(nonatomic) unsigned long long excludedControls; // @synthesize excludedControls=_excludedControls;
 @property(retain, nonatomic) AVMobileFullscreenController *fullscreenController; // @synthesize fullscreenController=_fullscreenController;
 @property(nonatomic) __weak id <AVMobileControlsViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void)addAction:(SEL)arg1 withTarget:(id)arg2 forControlEvent:(id)arg3;
+- (void)removeAction:(SEL)arg1 withTarget:(id)arg2 forEvent:(id)arg3;
+- (void)addAction:(SEL)arg1 withTarget:(id)arg2 forEvent:(id)arg3;
+- (void)addAction:(CDUnknownBlockType)arg1 forEvent:(id)arg2;
 - (void)flashControlsWithDuration:(double)arg1;
 - (void)updateVisibilityPolicy:(unsigned long long)arg1 animated:(_Bool)arg2;
 - (void)toggleVisibility:(id)arg1;
 - (id)eventManager;
 - (id)init;
+- (id)controlsViewControllerIfChromeless;
+- (id)controlsViewControllerIfChromed;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -9,6 +9,7 @@
 @interface _TtC9Coherence18CRAssetProviderUrl
 {
     MISSING_TYPE *fileUrl;
+    MISSING_TYPE *watcher;
 }
 
 @end

@@ -11,6 +11,8 @@
     MISSING_TYPE *action;
     MISSING_TYPE *menuAttribute;
     MISSING_TYPE *menuTitle;
+    MISSING_TYPE *onMenuPresentationChanged;
+    MISSING_TYPE *menuControlGroupSize;
     MISSING_TYPE *menuChangeDetector;
     MISSING_TYPE *token;
 }

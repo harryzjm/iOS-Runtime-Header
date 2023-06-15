@@ -6,18 +6,22 @@
 
 #import <objc/NSObject.h>
 
-@class MISSING_TYPE;
+@class MISSING_TYPE, NSString;
 
 __attribute__((visibility("hidden")))
 @interface _TtCC7Message28BackFillMessageBodyScheduler7Request : NSObject
 {
     MISSING_TYPE *activity;
+    MISSING_TYPE *activityID;
+    MISSING_TYPE *id;
 }
 
 - (void).cxx_destruct;
 - (id)init;
 - (void)completeWithStatus:(int)arg1;
+@property(nonatomic, readonly) NSString *description;
 - (void)dealloc;
+@property(nonatomic, readonly) _Bool shouldDefer;
 
 @end
 

@@ -7,6 +7,7 @@
 #import <UIKit/UIImage.h>
 
 @interface UIImage (MessagesAdditions)
+- (id)__ms_HEICData;
 - (id)__ms_PNGData;
 @end
 

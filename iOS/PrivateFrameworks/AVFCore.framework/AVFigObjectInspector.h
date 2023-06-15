@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 - (unsigned char)_booleanForProperty:(struct __CFString *)arg1;
 - (long long)_longLongForProperty:(struct __CFString *)arg1;
 - (int)_SInt32ForProperty:(struct __CFString *)arg1;
+- (int)_SInt32ForProperty:(struct __CFString *)arg1 defaultValue:(int)arg2;
 - (short)_SInt16ForProperty:(struct __CFString *)arg1;
 - (float)_floatForProperty:(struct __CFString *)arg1;
 - (float)_floatForProperty:(struct __CFString *)arg1 defaultValue:(float)arg2;

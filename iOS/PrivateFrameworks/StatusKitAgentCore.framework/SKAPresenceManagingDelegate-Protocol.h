@@ -6,10 +6,12 @@
 
 #import <StatusKitAgentCore/NSObject-Protocol.h>
 
-@class NSString;
+@class NSString, SKADatabaseChannel;
 @protocol SKAPresenceManaging;
 
 @protocol SKAPresenceManagingDelegate <NSObject>
+- (void)presenceManager:(id <SKAPresenceManaging>)arg1 didRequestToRollChannel:(SKADatabaseChannel *)arg2;
+- (void)presenceManager:(id <SKAPresenceManaging>)arg1 didCreateChannel:(SKADatabaseChannel *)arg2;
 - (void)presenceManager:(id <SKAPresenceManaging>)arg1 didReceivePresentDevicesUpdateForPresenceIdentifier:(NSString *)arg2;
 @end
 

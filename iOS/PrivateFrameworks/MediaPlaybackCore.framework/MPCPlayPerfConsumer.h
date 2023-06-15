@@ -18,12 +18,15 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)coreAnalyticsEventNameWithEventType:(id)arg1;
++ (id)analyticsFormat:(id)arg1;
++ (id)analyticsContentType:(long long)arg1;
 + (id)identifier;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) id <MPCPlaybackEngineEventStreamSubscription> subscription; // @synthesize subscription=_subscription;
 @property(readonly, nonatomic) __weak MPCPlaybackEngine *playbackEngine; // @synthesize playbackEngine=_playbackEngine;
 - (void)sendMetricsToSiriSelfLogger:(id)arg1;
 - (void)sendMetricsToCoreAnalytics:(id)arg1;
+- (void)generatePlayPerfSignposts:(id)arg1;
 - (void)handleMetrics:(id)arg1;
 - (void)setupErrorHandlerForEventType:(id)arg1 errorKey:(id)arg2 prefix:(id)arg3;
 - (void)unsubscribeFromEventStream:(id)arg1;

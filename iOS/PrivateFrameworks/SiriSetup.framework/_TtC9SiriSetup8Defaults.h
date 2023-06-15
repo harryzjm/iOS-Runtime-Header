@@ -20,8 +20,6 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *setupDismissed;
     MISSING_TYPE *enablementFlowConfigurationProvider;
     MISSING_TYPE *enablementConfiguration;
-    MISSING_TYPE *isEnablementConfigurationLoading;
-    MISSING_TYPE *presenterShowingConfigurationLoading;
     MISSING_TYPE *internalSiriDataSharingStatus;
 }
 

@@ -24,6 +24,8 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *hasItunesPurchases;
     MISSING_TYPE *hasItunesDownloads;
     MISSING_TYPE *hasSubscriptionDownloads;
+    MISSING_TYPE *hasFavoriteTeamsAdded;
+    MISSING_TYPE *hasFavoriteTeamsRemoved;
 }
 
 - (void).cxx_destruct;

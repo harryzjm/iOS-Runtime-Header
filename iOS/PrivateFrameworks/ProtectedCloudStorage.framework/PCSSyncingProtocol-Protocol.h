@@ -7,6 +7,7 @@
 @class NSDictionary, NSString;
 
 @protocol PCSSyncingProtocol
+- (void)getHealthSummary:(void (^)(NSDictionary *, NSError *))arg1;
 - (_Bool)shouldRoll;
 - (void)checkForBackupStateChange;
 - (void)triggerKeyRolling;
@@ -20,9 +21,11 @@
 - (void)keyRollPending:(NSString *)arg1 complete:(void (^)(_Bool, NSError *))arg2;
 - (void)manateeStatus:(NSString *)arg1 complete:(void (^)(unsigned int))arg2;
 - (void)createIdentity:(NSString *)arg1 dsid:(NSString *)arg2 roll:(_Bool)arg3 sync:(_Bool)arg4 complete:(void (^)(NSData *, PCSMTT *, NSError *))arg5;
+- (void)disableWalrusForAccount:(NSString *)arg1 withParameters:(NSDictionary *)arg2 complete:(void (^)(_Bool, NSError *))arg3;
+- (void)enableWalrusForAccount:(NSString *)arg1 withParameters:(NSDictionary *)arg2 complete:(void (^)(_Bool, NSError *))arg3;
 - (void)migrateToiCDPForAccount:(NSString *)arg1 withParameters:(NSDictionary *)arg2 complete:(void (^)(_Bool, NSError *))arg3;
 - (void)setupIdentitiesForAccount:(NSString *)arg1 withParameters:(NSDictionary *)arg2 optional:(_Bool)arg3;
-- (void)triggerSyncingWithEscrowProxy:(NSString *)arg1 dsid:(NSString *)arg2 accountIdentifier:(NSString *)arg3 accountLastError:(NSString *)arg4 settingsKeyExpirationDate:(NSString *)arg5 settingsKeyIdentifier:(NSString *)arg6 complete:(void (^)(_Bool, PCSMTT *, NSError *))arg7;
+- (void)triggerSyncingWithEscrowProxy:(NSString *)arg1 dsid:(NSString *)arg2 accountIdentifier:(NSString *)arg3 settingsKeyExpirationDate:(NSString *)arg4 settingsKeyIdentifier:(NSString *)arg5 complete:(void (^)(_Bool, PCSMTT *, NSError *))arg6;
 - (void)triggerWatchSyncing:(void (^)(void))arg1;
 - (void)triggerDaily:(NSDictionary *)arg1 withReply:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)requestKeys:(NSDictionary *)arg1 withReply:(void (^)(NSDictionary *, NSError *))arg2;

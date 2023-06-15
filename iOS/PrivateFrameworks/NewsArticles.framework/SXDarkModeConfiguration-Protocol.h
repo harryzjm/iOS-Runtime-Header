@@ -9,12 +9,9 @@
 @class NSDictionary;
 
 @protocol SXDarkModeConfiguration <NSObject>
-@property(nonatomic, readonly) double saturationThreshold;
-@property(nonatomic, readonly) unsigned long long inversionBehavior;
-@property(nonatomic, readonly) NSDictionary *colors;
-- (_Bool)isAutoDarkModeEnabled;
-
-// Remaining properties
-@property(nonatomic, readonly) _Bool autoDarkModeEnabled;
+@property(readonly, nonatomic) double saturationThreshold;
+@property(readonly, nonatomic) unsigned long long inversionBehavior;
+@property(readonly, copy, nonatomic) NSDictionary *colors;
+@property(readonly, nonatomic, getter=isAutoDarkModeEnabled) _Bool autoDarkModeEnabled;
 @end
 

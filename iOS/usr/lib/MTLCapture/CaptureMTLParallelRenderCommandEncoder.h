@@ -9,7 +9,6 @@
 @class CaptureMTLCommandBuffer, CaptureMTLDevice, NSString;
 @protocol MTLDevice, MTLParallelRenderCommandEncoder, MTLParallelRenderCommandEncoderSPI;
 
-__attribute__((visibility("hidden")))
 @interface CaptureMTLParallelRenderCommandEncoder : NSObject
 {
     id <MTLParallelRenderCommandEncoderSPI> _baseObject;

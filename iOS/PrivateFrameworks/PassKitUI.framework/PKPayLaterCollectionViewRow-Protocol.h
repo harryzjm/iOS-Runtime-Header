@@ -6,10 +6,10 @@
 
 #import <PassKitUI/PKIdentifiable-Protocol.h>
 
-@class UICollectionViewListCell;
+@class UICollectionViewCell;
 
 @protocol PKPayLaterCollectionViewRow <PKIdentifiable>
-- (void)configureCell:(UICollectionViewListCell *)arg1;
+- (void)configureCell:(UICollectionViewCell *)arg1;
 - (Class)cellClass;
 
 @optional

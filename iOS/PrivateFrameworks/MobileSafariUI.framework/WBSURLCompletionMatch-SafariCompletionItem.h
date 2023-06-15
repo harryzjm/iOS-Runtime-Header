@@ -10,7 +10,11 @@
 @protocol CompletionItemActionHandler;
 
 @interface WBSURLCompletionMatch (SafariCompletionItem)
++ (id)_relativeDateTimeFormatter;
 - (_Bool)isEquivalentTo:(id)arg1;
+@property(readonly, copy, nonatomic) NSString *subtextForHistoryServiceCompletionList;
+@property(readonly, nonatomic) NSString *urlStringForHistoryServiceCompletionList;
+@property(readonly, nonatomic) NSString *titleForHistoryServiceCompletionList;
 - (id)reflectedStringForUserTypedString:(id)arg1;
 - (void)auditAcceptedCompletionWithRank:(unsigned long long)arg1;
 - (double)completionTableViewCellCustomHeightForCompletionList:(id)arg1;
@@ -18,9 +22,12 @@
 - (id)completionTableViewCellReuseIdentifier;
 - (void)acceptCompletionWithActionHandler:(id)arg1;
 - (long long)_completionIcon;
+- (id)_promptString;
+- (id)_addressString;
 - (void)configureCompletionTableViewCell:(id)arg1 forCompletionList:(id)arg2;
 
 // Remaining properties
+@property(readonly, nonatomic) long long completionCellBackgroundModeInTopSection;
 @property(readonly, nonatomic) NSString *completionTableHeaderViewReuseIdentifier;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;

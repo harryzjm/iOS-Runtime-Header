@@ -15,6 +15,7 @@
 @property(readonly, nonatomic) MTLDebugInstrumentationData *debugInstrumentationData;
 @property(readonly) NSArray *importedLibraries;
 @property(readonly) NSArray *importedSymbols;
+@property(readonly) NSArray *bindings;
 @property(readonly) NSArray *arguments;
 @property(readonly) MTLType *returnType;
 @property(readonly) unsigned long long renderTargetArrayIndexType;

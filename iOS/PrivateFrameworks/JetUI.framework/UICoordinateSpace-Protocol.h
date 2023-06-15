@@ -9,7 +9,7 @@
 @protocol UICoordinateSpace;
 
 @protocol UICoordinateSpace <NSObject>
-@property(nonatomic, readonly) struct CGRect bounds;
+@property(readonly, nonatomic) struct CGRect bounds;
 - (struct CGRect)convertRect:(struct CGRect)arg1 fromCoordinateSpace:(id <UICoordinateSpace>)arg2;
 - (struct CGRect)convertRect:(struct CGRect)arg1 toCoordinateSpace:(id <UICoordinateSpace>)arg2;
 - (struct CGPoint)convertPoint:(struct CGPoint)arg1 fromCoordinateSpace:(id <UICoordinateSpace>)arg2;

@@ -9,6 +9,7 @@
 @class NSDate, NSDateInterval;
 
 @protocol ACHAwardsWorkoutServerInterface <NSObject>
+- (void)remote_mindfulMinutesForForDateInterval:(NSDateInterval *)arg1 completion:(void (^)(HKQuantity *, NSError *))arg2;
 - (void)remote_bestDistanceForFirstPartyWorkoutsWithType:(unsigned long long)arg1 endingBeforeDate:(NSDate *)arg2 completion:(void (^)(HKQuantity *, NSError *))arg3;
 - (void)remote_bestEnergyBurnedForFirstPartyWorkoutsWithType:(unsigned long long)arg1 endingBeforeDate:(NSDate *)arg2 completion:(void (^)(HKQuantity *, NSError *))arg3;
 - (void)remote_numberOfFirstPartyWorkoutsWithDuration:(double)arg1 type:(unsigned long long)arg2 andLocation:(unsigned long long)arg3 containedInInterval:(NSDateInterval *)arg4 completion:(void (^)(unsigned long long, NSError *))arg5;

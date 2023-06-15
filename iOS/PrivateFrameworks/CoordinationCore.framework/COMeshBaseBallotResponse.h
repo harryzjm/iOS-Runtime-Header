@@ -6,25 +6,31 @@
 
 #import "COMeshResponse.h"
 
-@class COBallot;
+@class COBallot, NSString;
 
 __attribute__((visibility("hidden")))
 @interface COMeshBaseBallotResponse : COMeshResponse
 {
     COBallot *_ballot;
-    long long _variant;
     unsigned long long _generation;
+    long long _variant;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) unsigned long long generation; // @synthesize generation=_generation;
 @property(readonly, nonatomic) long long variant; // @synthesize variant=_variant;
+@property(readonly, nonatomic) unsigned long long generation; // @synthesize generation=_generation;
 @property(copy, nonatomic) COBallot *ballot; // @synthesize ballot=_ballot;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithBallot:(id)arg1 generation:(unsigned long long)arg2 variant:(long long)arg3;
 - (id)initWithBallot:(id)arg1 generation:(unsigned long long)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

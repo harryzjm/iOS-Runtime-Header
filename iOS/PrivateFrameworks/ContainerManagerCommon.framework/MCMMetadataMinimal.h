@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSString *shortDescription;
 @property(readonly, copy) NSString *debugDescription;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)metadataByChangingContainerIdentity:(id)arg1;
 - (id)metadataByChangingSchemaVersion:(id)arg1;
 - (id)metadataByChangingUUID:(id)arg1;
 - (id)metadataByChangingContainerPath:(id)arg1;

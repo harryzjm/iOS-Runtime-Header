@@ -6,7 +6,7 @@
 
 #import "MUPlaceSectionController.h"
 
-@class MKUGCCallToActionViewAppearance, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, MUPlaceSectionView, MUPlaceVerticalCardContainerView, NSArray, NSDictionary, NSString, UIView, UIViewController;
+@class MUPlaceCallToActionAppearance, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, MUPlaceSectionView, MUPlaceVerticalCardContainerView, NSArray, NSDictionary, NSString, UIView, UIViewController;
 @protocol MUInfoCardAnalyticsDelegate, MUPersonalGuidesViewProvider;
 
 __attribute__((visibility("hidden")))
@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, getter=isActive) _Bool active; // @synthesize active=_active;
 - (_Bool)isImpressionable;
 - (int)analyticsModuleType;
+- (_Bool)verticalCardContainerView:(id)arg1 shouldHighlightRowAtIndex:(unsigned long long)arg2;
 - (void)verticalCardContainerView:(id)arg1 didSelectRow:(id)arg2 atIndex:(unsigned long long)arg3;
 @property(readonly, nonatomic) _Bool hasContent;
 @property(readonly, nonatomic) UIView *sectionView;
@@ -41,7 +42,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) MUPlaceSectionFooterViewModel *sectionFooterViewModel;
 @property(readonly, nonatomic) UIViewController *sectionViewController;
 @property(readonly, nonatomic) NSArray *sectionViews;
-@property(retain, nonatomic) MKUGCCallToActionViewAppearance *submissionStatus;
+@property(retain, nonatomic) MUPlaceCallToActionAppearance *submissionStatus;
 @property(readonly) Class superclass;
 
 @end

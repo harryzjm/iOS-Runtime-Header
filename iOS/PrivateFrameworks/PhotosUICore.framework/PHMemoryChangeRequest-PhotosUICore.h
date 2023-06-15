@@ -7,6 +7,7 @@
 #import <Photos/PHMemoryChangeRequest.h>
 
 @interface PHMemoryChangeRequest (PhotosUICore)
++ (_Bool)_shouldSetCustomUserAssetsForAssetCollection:(id)arg1;
 + (id)px_creationRequestForAssetCollection:(id)arg1 displayTitleInfo:(id)arg2 people:(id)arg3 ignoreCuration:(_Bool)arg4;
 + (id)px_creationRequestForAssetCollection:(id)arg1 displayTitleInfo:(id)arg2 people:(id)arg3;
 + (id)px_creationRequestForAssetCollection:(id)arg1;

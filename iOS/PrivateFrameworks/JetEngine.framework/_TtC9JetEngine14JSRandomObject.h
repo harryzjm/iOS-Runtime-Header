@@ -11,10 +11,10 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)init;
 - (id)nextUUID;
 - (id)nextNumber;
 - (id)nextBoolean;
+- (id)init;
 
 @end
 

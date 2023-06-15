@@ -6,10 +6,16 @@
 
 #import <GeoServices/NSObject-Protocol.h>
 
-@class GEOAddress, GEOAddressObject, GEOAppleRating, GEOAssociatedApp, GEOBusinessAssets, GEOEnclosingPlace, GEOEnhancedPlacement, GEOEnrichmentData, GEOEnrichmentInfo, GEOExploreGuides, GEOFeatureStyleAttributes, GEOLabelGeometry, GEOMapItemAdditionalPlaceInfo, GEOMapItemClientAttributes, GEOMapItemContainedPlace, GEOMapItemDetourInfo, GEOMapItemIdentifier, GEOMapItemPhotosAttribution, GEOMapItemPlaceAttribution, GEOMapItemReviewsAttribution, GEOMapRegion, GEOMessageLink, GEOMiniBrowseCategories, GEOMuninViewState, GEOPDFlyover, GEOPDPlace, GEOPOIClaim, GEOPlace, GEOPlaceQuestionnaire, GEOPlaceResult, GEOPlacecardLayoutData, GEOPriceDescription, GEORelatedPlaceList, GEORestaurantFeaturesLink, GEOStorefrontInfo, GEOStorefrontPresentationInfo, GEOStyleAttributes, GEOViewportFrame, NSArray, NSData, NSDate, NSDictionary, NSString, NSTimeZone, NSURL;
+@class GEOAddress, GEOAddressObject, GEOAppleRating, GEOAssociatedApp, GEOBusinessAssets, GEOEVCharger, GEOEnclosingPlace, GEOEnhancedPlacement, GEOEnrichmentData, GEOEnrichmentInfo, GEOExploreGuides, GEOFeatureStyleAttributes, GEOLabelGeometry, GEOMapItemAdditionalPlaceInfo, GEOMapItemClientAttributes, GEOMapItemContainedPlace, GEOMapItemDetourInfo, GEOMapItemIdentifier, GEOMapItemPhotosAttribution, GEOMapItemPlaceAttribution, GEOMapItemReviewsAttribution, GEOMapRegion, GEOMessageLink, GEOMiniBrowseCategories, GEOMuninViewState, GEOPDFlyover, GEOPDPlace, GEOPOIClaim, GEOPlace, GEOPlaceQuestionnaire, GEOPlaceResult, GEOPlacecardLayoutData, GEOPriceDescription, GEORelatedPlaceList, GEORestaurantFeaturesLink, GEOStorefrontInfo, GEOStorefrontPresentationInfo, GEOStyleAttributes, GEOTooltip, GEOTrailHead, GEOViewportFrame, NSArray, NSData, NSDate, NSDictionary, NSString, NSTimeZone, NSURL;
 @protocol GEOAnnotatedItemList, GEOEncyclopedicInfo, GEOMapItem, GEOMapItemTransitInfo, GEOMapItemVenueInfo, GEOTransitAttribution, GEOTransitVehiclePosition;
 
 @protocol GEOMapItem <NSObject>
+@property(readonly, nonatomic, getter=_photosMemoryScore) float photosMemoryScore;
+@property(readonly, nonatomic, getter=_areaHighlightId) unsigned long long areaHighlightId;
+@property(readonly, nonatomic, getter=_hasAreaHighlightId) _Bool hasAreaHighlightId;
+@property(readonly, nonatomic, getter=_bestAvailableCountryCode) NSString *bestAvailableCountryCode;
+@property(readonly, nonatomic, getter=_iso3166SubdivisionCode) NSString *iso3166SubdivisionCode;
+@property(readonly, nonatomic, getter=_iso3166CountryCode) NSString *iso3166CountryCode;
 @property(readonly, nonatomic, getter=_alternateSearchableNames) NSArray *alternateSearchableNames;
 @property(readonly, nonatomic, getter=_captionedPhotoAlbums) NSArray *captionedPhotoAlbums;
 @property(readonly, nonatomic, getter=_hasCaptionedPhotoAlbum) _Bool hasCaptionedPhotoAlbum;
@@ -45,6 +51,9 @@
 @property(readonly, nonatomic) NSArray *transitPaymentMethodSuggestions;
 @property(readonly, nonatomic) NSArray *supportedTransitPaymentMethods;
 @property(readonly, nonatomic) NSData *externalTransitStationCode;
+@property(readonly, nonatomic, getter=_placeCategoryType) int placeCategoryType;
+@property(readonly, nonatomic, getter=_tooltip) GEOTooltip *tooltip;
+@property(readonly, nonatomic, getter=_trailHead) GEOTrailHead *trailHead;
 @property(readonly, nonatomic, getter=_enrichmentData) GEOEnrichmentData *enrichmentData;
 @property(readonly, nonatomic, getter=_enrichmentInfo) GEOEnrichmentInfo *enrichmentInfo;
 @property(readonly, nonatomic, getter=_viewportFrame) GEOViewportFrame *viewportFrame;
@@ -68,6 +77,8 @@
 @property(readonly, nonatomic) _Bool hasExpiredComponents;
 @property(readonly, nonatomic) GEOMapItemDetourInfo *detourInfo;
 @property(readonly, nonatomic, getter=_placecardLayoutData) GEOPlacecardLayoutData *placecardLayoutData;
+@property(readonly, nonatomic, getter=_evCharger) GEOEVCharger *evCharger;
+@property(readonly, nonatomic, getter=_hasEVCharger) _Bool hasEVCharger;
 @property(readonly, nonatomic, getter=_relatedPlaceLists) NSArray *relatedPlaceLists;
 @property(readonly, nonatomic, getter=_brandMUID) unsigned long long brandMUID;
 @property(readonly, nonatomic, getter=_hasBrandMUID) _Bool hasBrandMUID;
@@ -131,6 +142,7 @@
 @property(readonly, nonatomic, getter=_areaInMeters) double areaInMeters;
 @property(readonly, nonatomic, getter=_hasAreaInMeters) _Bool hasAreaInMeters;
 @property(readonly, nonatomic, getter=_placeDisplayType) int placeDisplayType;
+@property(readonly, nonatomic) GEOMapItemIdentifier *transitStationIdentifier;
 @property(readonly, nonatomic, getter=_identifier) GEOMapItemIdentifier *identifier;
 @property(readonly, nonatomic, getter=_muid) unsigned long long muid;
 @property(readonly, nonatomic, getter=_hasMUID) _Bool hasMUID;
@@ -168,6 +180,7 @@
 @property(readonly, nonatomic) NSString *contactSpokenName;
 @property(readonly, nonatomic) NSString *contactName;
 @property(readonly, nonatomic) int contactAddressType;
+@property(readonly, nonatomic) GEOMapRegion *offlineDownloadRegion;
 @property(readonly, nonatomic) GEOMapRegion *geoFenceMapRegionOrNil;
 @property(readonly, nonatomic) GEOMapRegion *displayMapRegionOrNil;
 @property(readonly, nonatomic) NSTimeZone *timezone;
@@ -181,6 +194,7 @@
 @property(readonly, nonatomic) _Bool hasDisplayMinZoom;
 @property(readonly, nonatomic) GEOMapRegion *displayMapRegion;
 @property(readonly, nonatomic) int referenceFrame;
+@property(readonly, nonatomic) CDStruct_c3b9c2ee labelCoordinate;
 @property(readonly, nonatomic) CDStruct_c3b9c2ee centerCoordinate;
 @property(readonly, nonatomic) CDStruct_c3b9c2ee coordinate;
 @property(readonly, nonatomic, getter=isValid) _Bool valid;
@@ -208,11 +222,6 @@
 - (NSString *)spokenNameForLocale:(NSString *)arg1;
 
 @optional
-@property(readonly, nonatomic, getter=_areaHighlightId) unsigned long long areaHighlightId;
-@property(readonly, nonatomic, getter=_hasAreaHighlightId) _Bool hasAreaHighlightId;
-@property(readonly, nonatomic, getter=_bestAvailableCountryCode) NSString *bestAvailableCountryCode;
-@property(readonly, nonatomic, getter=_iso3166SubdivisionCode) NSString *iso3166SubdivisionCode;
-@property(readonly, nonatomic, getter=_iso3166CountryCode) NSString *iso3166CountryCode;
 - (id <GEOMapItem>)_mapItemBySettingIsTransitDisplayFeature:(_Bool)arg1;
 @end
 

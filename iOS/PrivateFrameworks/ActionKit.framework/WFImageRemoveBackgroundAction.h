@@ -14,7 +14,6 @@
 
 - (id)init;
 - (void)runWithInput:(WFContentCollection *)arg1 completionHandler:(void (^)(NSError *))arg2;
-- (id)initWithCoder:(id)arg1;
 - (id)initWithIdentifier:(id)arg1 definition:(id)arg2 serializedParameters:(id)arg3;
 
 @end

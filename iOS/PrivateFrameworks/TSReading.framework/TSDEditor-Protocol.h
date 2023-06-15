@@ -30,6 +30,7 @@
 - (NSSet *)canvasCoachingTips;
 - (void)addContextualMenuItemsToArray:(NSMutableArray *)arg1;
 - (struct CGRect)targetRectForEditMenu;
+- (void)clearSelection;
 - (_Bool)allowAutomaticTextEditingToBeginWithDifferentEditor;
 - (void)beginAutomaticTextEditingIfNeededForPoint:(struct CGPoint)arg1;
 - (void)reverseDirection:(id)arg1;

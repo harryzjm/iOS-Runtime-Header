@@ -9,7 +9,7 @@
 @class NAFuture, NSString;
 
 @protocol HFTileResizable <NSObject>
+@property(readonly, nonatomic) NSString *hf_tileSize;
 - (NAFuture *)hf_setTileSize:(NSString *)arg1;
-@property(nonatomic, readonly) NSString *hf_tileSize;
 @end
 

@@ -4,13 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIImage.h>
+#import <UIKitCore/UIImage.h>
 
 @interface UIImage (AppleAccountUI)
++ (id)addBackgroundForImage:(id)arg1 withBackgroundColor:(id)arg2;
 + (id)circularImageFromCGImage:(struct CGImage *)arg1 size:(struct CGSize)arg2 scale:(double)arg3;
 + (id)_circularImageFromIcon:(id)arg1 size:(double)arg2 scale:(double)arg3;
 + (id)circularImageForBundleID:(id)arg1 size:(double)arg2 scale:(double)arg3;
 + (id)aaui_imageFromColor:(id)arg1;
++ (id)descriptorForDataclassWithSize:(double)arg1;
++ (id)imageForDataclassWithBundleID:(id)arg1;
++ (id)imageForDataclassWithType:(id)arg1;
 - (id)_imageByCroppingCIImageToRect:(struct CGRect)arg1;
 - (id)_imageByCroppingCGImageToRect:(struct CGRect)arg1;
 - (id)imageByCroppingToRect:(struct CGRect)arg1;

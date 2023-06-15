@@ -11,6 +11,7 @@
 @protocol PKTextFieldCollectionViewListCellDelegate <NSObject>
 
 @optional
+- (void)textFieldDidChangeSelection:(UITextField *)arg1 forListCell:(PKTextFieldCollectionViewListCell *)arg2;
 - (void)textFieldDidEndEditing:(UITextField *)arg1 forListCell:(PKTextFieldCollectionViewListCell *)arg2;
 - (void)textFieldDidBeginEditing:(UITextField *)arg1 forListCell:(PKTextFieldCollectionViewListCell *)arg2;
 - (_Bool)textFieldShouldReturn:(UITextField *)arg1 forListCell:(PKTextFieldCollectionViewListCell *)arg2;

@@ -7,29 +7,30 @@
 @class FMSongAsset, FMSongRendition, FlexTestingContext, NSArray, NSDictionary, NSSet, NSString;
 
 @protocol FlexSongProtocol
-@property(readonly, nonatomic) NSDictionary *customOptions;
+@property(readonly, nonatomic) CDStruct_198678f7 minimumDuration;
+@property(readonly, nonatomic) CDStruct_198678f7 naturalDuration;
+@property(readonly, nonatomic) _Bool isLoaded;
+@property(readonly, nonatomic) _Bool canPlay;
+@property(readonly, copy, nonatomic) NSDictionary *customOptions;
 @property(readonly, nonatomic) long long metadataVersion;
 @property(readonly, nonatomic) _Bool recalled;
 @property(readonly, nonatomic) _Bool hidden;
 @property(readonly, nonatomic) long long sampleRate;
-@property(readonly, nonatomic) NSString *songFormat;
-@property(readonly, nonatomic) NSArray *assets;
-@property(readonly, nonatomic) NSSet *keywords;
-@property(readonly, nonatomic) NSSet *tagIDs;
-@property(readonly, nonatomic) NSString *artistName;
-@property(readonly, nonatomic) NSString *songName;
-@property(readonly, nonatomic) NSString *audioEncoderPresetName;
-@property(readonly, nonatomic) NSString *uid;
-- (_Bool)verifyRendition:(FMSongRendition *)arg1 forDuration:(CDStruct_1b6d18a9)arg2 failureReason:(id *)arg3;
+@property(readonly, copy, nonatomic) NSString *songFormat;
+@property(readonly, copy, nonatomic) NSArray *assets;
+@property(readonly, copy, nonatomic) NSDictionary *weightedKeywords;
+@property(readonly, copy, nonatomic) NSSet *keywords;
+@property(readonly, copy, nonatomic) NSSet *tagIDs;
+@property(readonly, copy, nonatomic) NSString *artistName;
+@property(readonly, copy, nonatomic) NSString *songName;
+@property(readonly, copy, nonatomic) NSString *audioEncoderPresetName;
+@property(readonly, copy, nonatomic) NSString *uid;
+- (_Bool)verifyRendition:(FMSongRendition *)arg1 forDuration:(CDStruct_198678f7)arg2 failureReason:(id *)arg3;
 - (NSArray *)timedMetadataItemsWithIdentifier:(NSString *)arg1 forRendition:(FMSongRendition *)arg2;
 - (NSArray *)idealDurations;
-- (CDStruct_1b6d18a9)minimumDuration;
-- (CDStruct_1b6d18a9)naturalDuration;
-- (FMSongRendition *)renditionForDuration:(CDStruct_1b6d18a9)arg1 withOptions:(NSDictionary *)arg2 testingContext:(FlexTestingContext *)arg3;
+- (FMSongRendition *)renditionForDuration:(CDStruct_198678f7)arg1 withOptions:(NSDictionary *)arg2 testingContext:(FlexTestingContext *)arg3;
 - (FMSongAsset *)existingAssetWithID:(NSString *)arg1;
 - (FMSongAsset *)assetWithID:(NSString *)arg1;
 - (void)updateAssets:(NSArray *)arg1;
-- (_Bool)isLoaded;
-- (_Bool)canPlay;
 @end
 

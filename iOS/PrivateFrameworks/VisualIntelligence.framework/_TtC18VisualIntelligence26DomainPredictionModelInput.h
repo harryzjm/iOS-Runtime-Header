@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <swiftCore/_TtCs12_SwiftObject.h>
+#import ".h"
 
 @class MISSING_TYPE, NSSet;
 
-@interface _TtC18VisualIntelligence26DomainPredictionModelInput : _TtCs12_SwiftObject
+@interface _TtC18VisualIntelligence26DomainPredictionModelInput : 
 {
     MISSING_TYPE *featureMap;
 }

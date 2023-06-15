@@ -44,6 +44,7 @@ __attribute__((visibility("hidden")))
 - (id)bundleIdentifier;
 - (id)extensionPointIdentifier;
 - (id)initWithCoder:(id)arg1;
+- (id)applicationExtensionRecord;
 - (id)entitlementNamed:(id)arg1 ofClass:(Class)arg2;
 
 @end

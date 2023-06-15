@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 + (id)rpnTrackerInitModelName;
 + (id)rpnTrackerTrackProcessingQueueName;
 + (id)rpnTrackerInitProcessingQueueName;
++ (id)supportedComputeDevicesForOptions:(id)arg1 error:(id *)arg2;
 - (id)initWithOptions:(id)arg1 error:(id *)arg2;
 
 @end

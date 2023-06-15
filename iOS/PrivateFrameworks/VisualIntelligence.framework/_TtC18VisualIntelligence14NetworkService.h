@@ -4,14 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <swiftCore/_TtCs12_SwiftObject.h>
+#import ".h"
 
 @class MISSING_TYPE;
 
-@interface _TtC18VisualIntelligence14NetworkService : _TtCs12_SwiftObject
+@interface _TtC18VisualIntelligence14NetworkService : 
 {
     MISSING_TYPE *searchQueue;
-    MISSING_TYPE *tasksByIdentifier;
     MISSING_TYPE *requestTimeoutSeconds;
     MISSING_TYPE *searchClient;
     MISSING_TYPE *searchFetches;

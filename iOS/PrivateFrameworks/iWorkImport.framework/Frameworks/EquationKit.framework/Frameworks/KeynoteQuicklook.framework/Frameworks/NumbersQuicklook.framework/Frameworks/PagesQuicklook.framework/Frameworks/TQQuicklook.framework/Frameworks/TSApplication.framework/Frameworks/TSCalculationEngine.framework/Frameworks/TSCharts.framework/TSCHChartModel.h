@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, TSCHChartGrid, TSCHChartInfo;
+@protocol TSCHDataFormatterPersistableStyleObject;
 
 @interface TSCHChartModel : NSObject
 {
@@ -21,6 +22,7 @@
     _Bool _isTransient;
     NSDictionary *_axisIDToDataFormatterPersistableStyleObjectsMap;
     NSDictionary *_seriesIndexToDataFormatterPersistableStyleObjectsMap;
+    id <TSCHDataFormatterPersistableStyleObject> _summaryLabelDataFormatterPersistableStyleObject;
     _Bool _disableCachingMediatorData;
     int _cachedChartMediatorGridDirection;
     NSMutableDictionary *_modelManagedCaches;
@@ -82,6 +84,7 @@
 - (id)noSyncSeriesList;
 @property(readonly, copy, nonatomic) NSDictionary *referenceLinesMap; // @synthesize referenceLinesMap=_referenceLinesMap;
 - (int)cachedChartMediatorGridDirection;
+- (id)cachedDataFormatterPersistableStyleObjectSummaryLabels;
 - (id)cachedDataFormatterPersistableStyleObjectAtSeriesIndex:(unsigned long long)arg1;
 - (id)cachedDataFormatterPersistableStyleObjectForID:(id)arg1;
 - (void)disableCachingMediatorDataDuringBlock:(CDUnknownBlockType)arg1;
@@ -103,6 +106,7 @@
 - (void)p_synchronizeModel;
 - (void)p_synchronizeReferenceLines;
 - (void)p_cacheMediatorChartGridDirection;
+- (void)p_cacheSummaryLabelDataFormatter;
 - (void)p_cacheSeriesDataFormatters;
 - (void)p_cacheAxisDataFormatters;
 - (_Bool)p_disableCachingMediatorData;
@@ -113,6 +117,7 @@
 - (id)p_axisForID:(id)arg1;
 - (unsigned long long)defaultOrdinalForAxisType:(int)arg1 seriesIndex:(unsigned long long)arg2;
 - (void)updateTransientModelFromInfoModel;
+- (id)firstValueAxis;
 @property(nonatomic) unsigned long long multiDataSetIndex; // @synthesize multiDataSetIndex=_multiDataSetIndex;
 - (unsigned long long)archivedMultiDataSetIndex;
 - (unsigned long long)p_lastMultiDataSetIndex;

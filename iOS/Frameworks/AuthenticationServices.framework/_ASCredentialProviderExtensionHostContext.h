@@ -21,6 +21,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak id <_ASCredentialProviderExtensionHostContextDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)prepareToCompleteExtensionConfigurationRequestWithCompletion:(CDUnknownBlockType)arg1;
 - (void)prepareToCancelRequestWithError:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)prepareToCompleteRegistrationRequestWithSelectedPasskeyCredential:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)prepareToCompleteAssertionRequestWithSelectedPasskeyCredential:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)prepareToCompleteRequestWithSelectedCredential:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 // Remaining properties

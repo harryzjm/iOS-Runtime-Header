@@ -10,6 +10,7 @@
 
 @interface _TtC11WeatherMaps36OverlayImmutableTileResourceProvider : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *tilePath;
     MISSING_TYPE *resourceType;
     MISSING_TYPE *resources;
 }

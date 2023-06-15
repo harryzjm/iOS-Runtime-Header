@@ -6,9 +6,10 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class SBPIPInteractionController, UIGestureRecognizer;
+@class SBPIPInteractionController, SBWindowScene, UIGestureRecognizer;
 
 @protocol SBPIPInteractionControllerDelegate <NSObject>
+- (void)interactionControllerDidEndAllInteractions:(SBPIPInteractionController *)arg1 targetWindowScene:(SBWindowScene *)arg2;
 - (void)interactionController:(SBPIPInteractionController *)arg1 didSettleOnStashState:(_Bool)arg2;
 - (void)interactionController:(SBPIPInteractionController *)arg1 wantsStashTabHidden:(_Bool)arg2 left:(_Bool)arg3;
 - (void)interactionController:(SBPIPInteractionController *)arg1 didUpdateStashProgress:(double)arg2;
@@ -17,9 +18,10 @@
 - (void)setNeedsLayoutForInteractionController:(SBPIPInteractionController *)arg1 traits:(unsigned long long)arg2 withReason:(unsigned long long)arg3 behavior:(int)arg4 completion:(void (^)(_Bool, _Bool))arg5;
 
 @optional
+- (void)interactionControllerDidEndEdgeResizing:(SBPIPInteractionController *)arg1;
+- (void)interactionControllerDidBeginEdgeResizing:(SBPIPInteractionController *)arg1;
 - (void)interactionControllerPanGestureDidEnd:(SBPIPInteractionController *)arg1;
 - (void)interactionControllerDidUpdateEdgeInsets:(SBPIPInteractionController *)arg1;
-- (void)interactionControllerDidEndAllInteractions:(SBPIPInteractionController *)arg1;
 - (void)interactionControllerDidBeginInteraction:(SBPIPInteractionController *)arg1 forGestureRecognizer:(UIGestureRecognizer *)arg2;
 @end
 

@@ -6,13 +6,13 @@
 
 #import <AppSSO/SOExtensionContextProtocol-Protocol.h>
 
-@class NSDictionary, NSError, NSURL, SOAuthorizationCredential;
+@class NSDictionary, NSError, NSString, NSURL, SOAuthorizationCredential;
 
 @protocol SOHostExtensionContextProtocol <SOExtensionContextProtocol>
-- (void)requestReauthenticationWithCompletion:(void (^)(unsigned long long))arg1;
+- (void)requestReauthenticationWithRequestIdentifier:(NSString *)arg1 completion:(void (^)(unsigned long long))arg2;
 - (void)canOpenURL:(NSURL *)arg1 completionHandler:(void (^)(_Bool))arg2;
 - (void)openURL:(NSURL *)arg1 completionHandler:(void (^)(_Bool))arg2;
-- (void)authorizationDidCompleteWithCredential:(SOAuthorizationCredential *)arg1 error:(NSError *)arg2;
-- (void)presentAuthorizationViewControllerWithHints:(NSDictionary *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
+- (void)authorization:(NSString *)arg1 didCompleteWithCredential:(SOAuthorizationCredential *)arg2 error:(NSError *)arg3;
+- (void)presentAuthorizationViewControllerWithHints:(NSDictionary *)arg1 requestIdentifier:(NSString *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 @end
 

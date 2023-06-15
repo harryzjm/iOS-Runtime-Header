@@ -6,16 +6,22 @@
 
 #import <objc/NSObject.h>
 
-@class CNPropertyGroupItem;
+@class CNPropertyGroupItem, NSString;
 
 __attribute__((visibility("hidden")))
 @interface CNContactCardFieldItem : NSObject
 {
     CNPropertyGroupItem *_groupItem;
+    NSString *_displayLabel;
+    NSString *_displayValue;
 }
 
++ (id)photoItem;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *displayValue; // @synthesize displayValue=_displayValue;
+@property(readonly, nonatomic) NSString *displayLabel; // @synthesize displayLabel=_displayLabel;
 @property(readonly, nonatomic) CNPropertyGroupItem *groupItem; // @synthesize groupItem=_groupItem;
+- (id)initWithDisplayLabel:(id)arg1;
 - (id)initWithGroupItem:(id)arg1;
 
 @end

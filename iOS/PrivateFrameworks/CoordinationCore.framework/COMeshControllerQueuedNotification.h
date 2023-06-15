@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(readonly, nonatomic) COMeshNode *destination; // @synthesize destination=_destination;
 @property(readonly, nonatomic) COMeshNotification *notification; // @synthesize notification=_notification;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)invokeCallbackWithError:(id)arg1;
 - (id)command;
 - (id)initWithNotification:(id)arg1 destination:(id)arg2;

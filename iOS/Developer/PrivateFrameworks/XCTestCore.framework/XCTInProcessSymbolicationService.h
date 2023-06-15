@@ -19,6 +19,8 @@
 }
 
 + (void)registerSharedServiceWithConfiguration:(id)arg1;
++ (id)imageNamesFromTestConfiguration:(id)arg1 environmentVariables:(id)arg2;
++ (id)imageNamesFromTestConfiguration:(id)arg1;
 + (id)imageNamesFromEnvironmentVariables:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly) CDStruct_37ea9563 symbolicationFunctions; // @synthesize symbolicationFunctions=_symbolicationFunctions;
@@ -26,6 +28,7 @@
 @property(readonly) struct _CSTypeRef symbolicator; // @synthesize symbolicator=_symbolicator;
 @property(readonly, copy) NSSet *imageNames; // @synthesize imageNames=_imageNames;
 - (void)_prepareForSymbolication;
+@property(readonly) NSSet *symbolInfoImageNames;
 - (id)symbolInfoForImageOffset:(unsigned long long)arg1 inImageWithUUID:(id)arg2 error:(id *)arg3;
 - (id)symbolInfoForImageOffset:(unsigned long long)arg1 forImageWithPath:(id)arg2 andArch:(id)arg3 error:(id *)arg4;
 - (id)symbolInfoForAddressInCurrentProcess:(unsigned long long)arg1 error:(id *)arg2;

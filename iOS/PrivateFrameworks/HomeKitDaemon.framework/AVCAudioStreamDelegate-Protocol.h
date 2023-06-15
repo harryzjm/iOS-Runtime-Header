@@ -17,6 +17,7 @@
 - (void)streamDidServerDie:(AVCAudioStream *)arg1;
 - (void)stream:(AVCAudioStream *)arg1 didReceiveRTCPPackets:(NSArray *)arg2;
 - (void)stream:(AVCAudioStream *)arg1 didReceiveDTMFEventWithDigit:(BOOL)arg2;
+- (void)streamDidRecoverFromRTCPTimeOut:(AVCAudioStream *)arg1;
 - (void)streamDidRTCPTimeOut:(AVCAudioStream *)arg1;
 - (void)streamDidRTPTimeOut:(AVCAudioStream *)arg1;
 - (void)stream:(AVCAudioStream *)arg1 didStartSynchronizer:(_Bool)arg2 error:(NSError *)arg3;

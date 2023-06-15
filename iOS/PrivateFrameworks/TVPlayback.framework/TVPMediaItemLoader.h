@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AVURLAsset, NSError, NSNotification, NSString, NSTimer, TVPContentKeySession, TVPMediaItemTimingData, TVPStateMachine;
+@class AVURLAsset, NSError, NSString, NSTimer, TVPContentKeySession, TVPMediaItemTimingData, TVPStateMachine;
 @protocol OS_dispatch_queue, TVPMediaItem;
 
 __attribute__((visibility("hidden")))
@@ -15,24 +15,21 @@ __attribute__((visibility("hidden")))
     _Bool _allowsCellularUsage;
     _Bool _allowsConstrainedNetworkUsage;
     _Bool _cleanedUp;
-    _Bool _AVAudioSessionConfiguredAfterMediaServicesReset;
     NSObject<TVPMediaItem> *_mediaItem;
     NSString *_state;
     NSError *_error;
     TVPMediaItemTimingData *_timingData;
-    AVURLAsset *_existingAVAsset;
-    id _reportingHierarchyToken;
     AVURLAsset *_AVAsset;
+    AVURLAsset *_existingAVAsset;
+    TVPContentKeySession *_contentKeySession;
     TVPStateMachine *_stateMachine;
     AVURLAsset *_AVAssetInternal;
-    TVPContentKeySession *_contentKeySession;
     NSObject<OS_dispatch_queue> *_assetInternalAccessQueue;
     NSObject<OS_dispatch_queue> *_assetLoadContextAccessQueue;
     unsigned long long _assetLoadContext;
     unsigned long long _refCount;
     NSString *_mediaItemLoaderGUID;
     NSTimer *_diskSpaceMonitorTimer;
-    NSNotification *_savedMediaServerResetUserNotification;
 }
 
 + (id)tempDirURL;
@@ -40,8 +37,6 @@ __attribute__((visibility("hidden")))
 + (id)loaderForMediaItem:(id)arg1;
 + (void)initialize;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSNotification *savedMediaServerResetUserNotification; // @synthesize savedMediaServerResetUserNotification=_savedMediaServerResetUserNotification;
-@property(nonatomic) _Bool AVAudioSessionConfiguredAfterMediaServicesReset; // @synthesize AVAudioSessionConfiguredAfterMediaServicesReset=_AVAudioSessionConfiguredAfterMediaServicesReset;
 @property(nonatomic) _Bool cleanedUp; // @synthesize cleanedUp=_cleanedUp;
 @property(retain, nonatomic) NSTimer *diskSpaceMonitorTimer; // @synthesize diskSpaceMonitorTimer=_diskSpaceMonitorTimer;
 @property(copy, nonatomic) NSString *mediaItemLoaderGUID; // @synthesize mediaItemLoaderGUID=_mediaItemLoaderGUID;
@@ -49,14 +44,13 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned long long assetLoadContext; // @synthesize assetLoadContext=_assetLoadContext;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *assetLoadContextAccessQueue; // @synthesize assetLoadContextAccessQueue=_assetLoadContextAccessQueue;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *assetInternalAccessQueue; // @synthesize assetInternalAccessQueue=_assetInternalAccessQueue;
-@property(retain, nonatomic) TVPContentKeySession *contentKeySession; // @synthesize contentKeySession=_contentKeySession;
 @property(retain, nonatomic) AVURLAsset *AVAssetInternal; // @synthesize AVAssetInternal=_AVAssetInternal;
 @property(retain, nonatomic) TVPStateMachine *stateMachine; // @synthesize stateMachine=_stateMachine;
-@property(retain, nonatomic) AVURLAsset *AVAsset; // @synthesize AVAsset=_AVAsset;
 @property(nonatomic) _Bool allowsConstrainedNetworkUsage; // @synthesize allowsConstrainedNetworkUsage=_allowsConstrainedNetworkUsage;
 @property(nonatomic) _Bool allowsCellularUsage; // @synthesize allowsCellularUsage=_allowsCellularUsage;
-@property(retain, nonatomic) id reportingHierarchyToken; // @synthesize reportingHierarchyToken=_reportingHierarchyToken;
+@property(retain, nonatomic) TVPContentKeySession *contentKeySession; // @synthesize contentKeySession=_contentKeySession;
 @property(retain, nonatomic) AVURLAsset *existingAVAsset; // @synthesize existingAVAsset=_existingAVAsset;
+@property(retain, nonatomic) AVURLAsset *AVAsset; // @synthesize AVAsset=_AVAsset;
 @property(retain, nonatomic) TVPMediaItemTimingData *timingData; // @synthesize timingData=_timingData;
 @property(retain, nonatomic) NSError *error; // @synthesize error=_error;
 @property(retain, nonatomic) NSString *state; // @synthesize state=_state;
@@ -85,11 +79,10 @@ __attribute__((visibility("hidden")))
 - (id)_rollKeyNamesForType:(unsigned long long)arg1 withCount:(unsigned long long)arg2;
 - (_Bool)_needToLoadBlockingMetadataKeys;
 - (id)_metadataKeysToLoad;
-- (void)_postMediaServicesResetFailureWithNotification:(id)arg1;
-- (void)_avAudioSessionConfiguredAfterMediaServicesReset;
-- (void)_avAudioSessionMediaServicesReset:(id)arg1;
-- (void)_avAssetMediaServicesReset:(id)arg1;
+- (void)_avAudioSessionMediaServicesWereReset:(id)arg1;
 - (id)_avAssetOptions;
+- (void)_onAssetInternalAccessQueue_updateContentKeySessionWithContentKeyLoader:(id)arg1;
+- (id)_contentKeyLoader;
 - (void)_registerStateMachineHandlers;
 - (void)loadSHA1DigestWithCompletion:(CDUnknownBlockType)arg1;
 - (id)newPlayerItem;

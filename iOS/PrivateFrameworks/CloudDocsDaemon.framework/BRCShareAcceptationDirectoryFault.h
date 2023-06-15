@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
 - (void)markLiveFromStageAsShareAcceptationFault;
 - (id)asShareAcceptationFault;
 - (_Bool)isShareAcceptationFault;
-- (id)initWithFilename:(id)arg1 itemID:(id)arg2 parentID:(id)arg3 appLibrary:(id)arg4 clientZone:(id)arg5 sharingOptions:(unsigned long long)arg6;
+- (id)initWithFilename:(id)arg1 itemID:(id)arg2 parentIDWhenSubitem:(id)arg3 appLibrary:(id)arg4 clientZone:(id)arg5 sharingOptions:(unsigned long long)arg6;
 
 @end
 

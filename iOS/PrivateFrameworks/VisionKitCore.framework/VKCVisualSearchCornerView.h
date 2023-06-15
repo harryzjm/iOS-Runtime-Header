@@ -28,13 +28,14 @@ __attribute__((visibility("hidden")))
 - (void)sendDismissedAnalyticsEventEventWithItem:(id)arg1;
 - (void)sendProcessingAnalyticsEventEventWithItem:(id)arg1 duration:(double)arg2;
 - (void)lookupButton:(id)arg1 didTapVisualSearchIndicatorWithNormalizedBoundingBox:(struct CGRect)arg2;
+- (void)addMetadataToVSFeedbackItem:(id)arg1;
 - (void)lookupButtonDidDismissController:(id)arg1;
 - (void)lookupButton:(id)arg1 didProcessResultWithDuration:(double)arg2;
+- (void)submitVisualSearchUserFeedbackForReportIdentifier:(id)arg1 userFeedbackPayload:(id)arg2 sfReportData:(id)arg3;
 - (void)generateVisualSearchResultForItems:(id)arg1 queryID:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_updateButtonFramesWithScale:(double)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (_Bool)_itemObscuredByViewport:(id)arg1;
-- (void)traitCollectionDidChange:(id)arg1;
 - (void)_contentSizeChanged:(id)arg1;
 - (void)invalidateButtonsForResults;
 @property(readonly, nonatomic) double buttonSpacing;
@@ -44,6 +45,12 @@ __attribute__((visibility("hidden")))
 - (id)_resultItems;
 @property(readonly, nonatomic) double windowScale;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

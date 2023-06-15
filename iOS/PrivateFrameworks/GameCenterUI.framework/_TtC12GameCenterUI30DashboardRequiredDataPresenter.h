@@ -17,10 +17,10 @@
     MISSING_TYPE *totalAchievementsCount;
     MISSING_TYPE *completedAchievementsCount;
     MISSING_TYPE *continuePlaying;
-    MISSING_TYPE *achievementHighlights;
-    MISSING_TYPE *leaderboardHighlights;
+    MISSING_TYPE *achievementHighlight;
+    MISSING_TYPE *leaderboardHighlight;
     MISSING_TYPE *arcadeHighlights;
-    MISSING_TYPE *challengesHighlights;
+    MISSING_TYPE *challengesHighlight;
     MISSING_TYPE *supportsChallenges;
     MISSING_TYPE *leaderboardCaption;
     MISSING_TYPE *leaderboardFriends;
@@ -31,7 +31,6 @@
     MISSING_TYPE *recommendedFriends;
     MISSING_TYPE *friendRequests;
     MISSING_TYPE *bidirectionalFriends;
-    MISSING_TYPE *recommendedGroups;
     MISSING_TYPE *gameCenterDataUpdatePresenter;
     MISSING_TYPE *onRequiredDataFetched;
     MISSING_TYPE *onRequiredDataError;

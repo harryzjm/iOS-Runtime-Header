@@ -12,34 +12,34 @@
 __attribute__((visibility("hidden")))
 @interface AMSMetricsFigaroFlushTask : AMSTask
 {
-    _Bool _cancelled;
-    int _requestCount;
+    AMSPromise *_currentCancellableDataTaskPromise;
+    struct os_unfair_lock_s _currentCancellableDataTaskPromiseLock;
     AMSURLSession *_URLSession;
+    long long _maxBatchSize;
+    long long _maxRequestCount;
+    NSString *_topic;
     id <AMSBagProtocol> _bag;
     id <AMSMetricsDataSource> _dataSource;
-    long long _maxRequestCount;
-    long long _maxBatchSize;
-    NSString *_topic;
-    AMSPromise *_currentCancellablePromise;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) int requestCount; // @synthesize requestCount=_requestCount;
-@property(retain, nonatomic) AMSPromise *currentCancellablePromise; // @synthesize currentCancellablePromise=_currentCancellablePromise;
-@property(retain, nonatomic) NSString *topic; // @synthesize topic=_topic;
-@property(nonatomic) long long maxBatchSize; // @synthesize maxBatchSize=_maxBatchSize;
+@property(readonly, nonatomic) id <AMSMetricsDataSource> dataSource; // @synthesize dataSource=_dataSource;
+@property(readonly, nonatomic) id <AMSBagProtocol> bag; // @synthesize bag=_bag;
+@property(copy, nonatomic) NSString *topic; // @synthesize topic=_topic;
 @property(nonatomic) long long maxRequestCount; // @synthesize maxRequestCount=_maxRequestCount;
-@property(retain, nonatomic) id <AMSMetricsDataSource> dataSource; // @synthesize dataSource=_dataSource;
-@property(retain, nonatomic) id <AMSBagProtocol> bag; // @synthesize bag=_bag;
-@property(readonly, nonatomic) _Bool cancelled; // @synthesize cancelled=_cancelled;
+@property(nonatomic) long long maxBatchSize; // @synthesize maxBatchSize=_maxBatchSize;
 - (_Bool)_shouldClearEventsDespiteError:(id)arg1 result:(id)arg2;
-- (id)_postBatch:(id)arg1 error:(id *)arg2;
-- (id)_nextBatchWithConfig:(id)arg1 error:(id *)arg2;
+- (id)_postBatch:(id)arg1;
+- (id)_nextBatchWithConfig:(id)arg1 topic:(id)arg2 maxBatchSize:(long long)arg3;
 - (id)_mescalSignatureWithBodyData:(id)arg1 error:(id *)arg2;
+- (id)_flushNextBatchWithMaxRequestCount:(unsigned long long)arg1 topic:(id)arg2 maxBatchSize:(long long)arg3 requestCount:(unsigned long long)arg4 flushedEventCount:(unsigned long long)arg5 config:(id)arg6;
 - (id)performFlush;
-- (void)cancel;
+- (_Bool)cancel;
 @property(readonly, nonatomic) AMSURLSession *URLSession; // @synthesize URLSession=_URLSession;
 - (id)initWithDataSource:(id)arg1 bag:(id)arg2;
+
+// Remaining properties
+@property(readonly, nonatomic, getter=isCancelled) _Bool cancelled;
 
 @end
 

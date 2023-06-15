@@ -14,6 +14,8 @@
     MISSING_TYPE *authTokenManager;
     MISSING_TYPE *defaultMaxAge;
     MISSING_TYPE *networkQueue;
+    MISSING_TYPE *lastFailedResponses;
+    MISSING_TYPE *lock;
 }
 
 @end

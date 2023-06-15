@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned long long mapType; // @synthesize mapType=_mapType;
 - (void)drawRect:(struct CGRect)arg1;
 - (void)sizeToFit;
-- (void)traitCollectionDidChange:(id)arg1;
+- (void)traitEnvironment:(id)arg1 didChangeTraitCollection:(id)arg2;
 - (void)_updateTextColor;
 - (id)_labelTitle;
 - (void)_prepareLabel;

@@ -6,15 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSString, STAllowance, STDeviceBedtime;
+@class NSDictionary, NSNumber, NSString, STAllowance, STDeviceBedtime;
 
 __attribute__((visibility("hidden")))
 @interface STIntroductionViewModel : NSObject
 {
     _Bool _deviceForChild;
-    _Bool _communicationSafetyEnabled;
+    _Bool _appAndWebsiteActivityEnabled;
     STDeviceBedtime *_bedtime;
     STAllowance *_allowance;
+    NSNumber *_communicationSafetyEnabled;
+    NSNumber *_screenDistanceEnabled;
     NSString *_parentalControlsPasscode;
     NSString *_recoveryAltDSID;
     NSDictionary *_restrictions;
@@ -24,9 +26,11 @@ __attribute__((visibility("hidden")))
 @property(copy) NSDictionary *restrictions; // @synthesize restrictions=_restrictions;
 @property(copy) NSString *recoveryAltDSID; // @synthesize recoveryAltDSID=_recoveryAltDSID;
 @property(retain) NSString *parentalControlsPasscode; // @synthesize parentalControlsPasscode=_parentalControlsPasscode;
-@property _Bool communicationSafetyEnabled; // @synthesize communicationSafetyEnabled=_communicationSafetyEnabled;
+@property(retain) NSNumber *screenDistanceEnabled; // @synthesize screenDistanceEnabled=_screenDistanceEnabled;
+@property(retain) NSNumber *communicationSafetyEnabled; // @synthesize communicationSafetyEnabled=_communicationSafetyEnabled;
 @property(retain) STAllowance *allowance; // @synthesize allowance=_allowance;
 @property(retain) STDeviceBedtime *bedtime; // @synthesize bedtime=_bedtime;
+@property _Bool appAndWebsiteActivityEnabled; // @synthesize appAndWebsiteActivityEnabled=_appAndWebsiteActivityEnabled;
 @property _Bool deviceForChild; // @synthesize deviceForChild=_deviceForChild;
 
 @end

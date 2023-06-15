@@ -6,12 +6,11 @@
 
 #import <VoiceMemos/NSFetchRequestResult-Protocol.h>
 
-@class AVAsset, CLLocation, NSDate, NSString, NSURL;
+@class AVAsset, NSDate, NSString, NSURL;
 
 @protocol RCRecording <NSFetchRequestResult>
-@property(readonly, nonatomic) _Bool isEncrypted;
 @property(readonly, nonatomic) AVAsset *avAsset;
-@property(readonly, nonatomic) _Bool uploaded;
+@property(readonly, nonatomic) _Bool audioFutureNeedsExport;
 @property(readonly, nonatomic) _Bool musicMemo;
 @property(readonly, nonatomic) _Bool watchOS;
 @property(readonly, nonatomic) _Bool enhanced;
@@ -24,11 +23,10 @@
 @property(readonly, copy, nonatomic) NSString *uuid;
 @property(readonly, copy, nonatomic) NSString *titleDisallowingEmptyString;
 @property(readonly, copy, nonatomic) NSString *title;
-@property(readonly, copy, nonatomic) CLLocation *location;
 @property(readonly, nonatomic) double length;
 @property(readonly, copy, nonatomic) NSURL *URIRepresentation;
 @property(readonly, copy, nonatomic) NSURL *url;
-@property(readonly, copy, nonatomic) NSString *path;
+@property(readonly, copy, nonatomic) NSString *fileName;
 @property(readonly, copy, nonatomic) NSDate *deletionDate;
 @property(readonly, copy, nonatomic) NSDate *creationDate;
 @property(readonly, nonatomic) _Bool isContentBeingModified;

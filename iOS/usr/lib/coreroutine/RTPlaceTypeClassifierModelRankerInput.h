@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <coreroutine/MLFeatureProvider-Protocol.h>
-
 @class NSSet;
 
 __attribute__((visibility("hidden")))
-@interface RTPlaceTypeClassifierModelRankerInput : NSObject <MLFeatureProvider>
+@interface RTPlaceTypeClassifierModelRankerInput : NSObject
 {
     double _mean_daily_longest_charging_duration_bucketed;
     double _mean_daily_longest_screen_lock_duration_bucketed;

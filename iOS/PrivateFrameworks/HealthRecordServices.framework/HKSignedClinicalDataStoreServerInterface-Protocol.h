@@ -24,7 +24,7 @@
 - (void)remote_reverifySignatureForRecord:(HKSignedClinicalDataRecord *)arg1 completion:(void (^)(_Bool, long long, NSError *))arg2;
 - (void)remote_deleteSignedClinicalDataRecord:(HKSignedClinicalDataRecord *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (void)remote_fetchSignedClinicalDataGroupBackingMedicalRecord:(HKMedicalRecord *)arg1 options:(unsigned long long)arg2 completion:(void (^)(HKSignedClinicalDataGroup *, NSError *))arg3;
-- (void)remote_storeSignedClinicalData:(HKSignedClinicalDataSource *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
-- (void)remote_parseSignedClinicalData:(HKSignedClinicalDataSource *)arg1 options:(long long)arg2 completion:(void (^)(NSArray *, NSError *))arg3;
+- (void)remote_storeSignedClinicalData:(HKSignedClinicalDataSource *)arg1 completion:(void (^)(HKSignedClinicalDataParsingResult *, NSError *))arg2;
+- (void)remote_parseSignedClinicalData:(HKSignedClinicalDataSource *)arg1 options:(long long)arg2 completion:(void (^)(HKSignedClinicalDataParsingResult *, NSError *))arg3;
 @end
 

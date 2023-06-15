@@ -6,7 +6,10 @@
 
 #import <GameController/NSObject-Protocol.h>
 
+@class NSSet;
+
 @protocol GCRelativeInput <NSObject>
+@property(readonly, copy) NSSet *sources;
 @property(readonly) double lastDeltaLatency;
 @property(readonly) double lastDeltaTimestamp;
 @property(readonly, getter=isAnalog) _Bool analog;

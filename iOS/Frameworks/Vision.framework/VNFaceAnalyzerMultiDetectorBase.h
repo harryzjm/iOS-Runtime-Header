@@ -11,6 +11,8 @@ __attribute__((visibility("hidden")))
 }
 
 + (Class)detectorClassForConfigurationOptions:(id)arg1 error:(id *)arg2;
++ (unsigned int)networkRequiredInputImagePixelFormatForConfigurationOptions:(id)arg1;
++ (id)espressoModelInputImageDimensionsBlobNameForConfigurationOptions:(id)arg1;
 + (const void *)modelVersionForOptions:(id)arg1;
 + (unsigned long long)numberOfImageChannels;
 + (id)keyForDetectorWithConfigurationOptions:(id)arg1;
@@ -21,6 +23,8 @@ __attribute__((visibility("hidden")))
 - (_Bool)_isFaceprintJunk:(shared_ptr_0a6daad2)arg1;
 - (_Bool)_saveFaceprint:(shared_ptr_0a6daad2)arg1 toFaceObservation:(id)arg2 options:(id)arg3 error:(id *)arg4;
 - (void)_addFaceAnalysisResultsFromMap:(void *)arg1 toFaceAttributeObject:(id)arg2 forOriginatingRequestSpecifier:(id)arg3;
+- (id)processRegionOfInterest:(struct CGRect)arg1 croppedPixelBuffer:(const struct __CVBuffer *)arg2 options:(id)arg3 qosClass:(unsigned int)arg4 warningRecorder:(id)arg5 error:(id *)arg6 progressHandler:(CDUnknownBlockType)arg7;
+- (_Bool)createRegionOfInterestCrop:(struct CGRect)arg1 options:(id)arg2 warningRecorder:(id)arg3 pixelBuffer:(struct __CVBuffer **)arg4 error:(id *)arg5 progressHandler:(CDUnknownBlockType)arg6;
 - (id)internalProcessUsingQualityOfServiceClass:(unsigned int)arg1 options:(id)arg2 regionOfInterest:(struct CGRect)arg3 warningRecorder:(id)arg4 error:(id *)arg5 progressHandler:(CDUnknownBlockType)arg6;
 - (_Bool)completeInitializationForSession:(id)arg1 error:(id *)arg2;
 

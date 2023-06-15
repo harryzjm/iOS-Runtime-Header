@@ -5,9 +5,9 @@
 //
 
 @protocol CNKCallDetailsDeferredPresentationManager
-@property(nonatomic, readonly) _Bool isReadyToShowCallDetails;
+@property(readonly, nonatomic) _Bool isReadyToShowCallDetails;
 
 @optional
-@property(nonatomic, readonly) _Bool isCaptioningEnabled;
+@property(readonly, nonatomic) _Bool isCaptioningEnabled;
 @end
 

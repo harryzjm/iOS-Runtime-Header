@@ -29,6 +29,8 @@
 - (id)requestOperationClasses;
 - (id)zoneIDsToLock;
 - (_Bool)allowsAnonymousAccount;
+- (void)fillOutRequestProperties:(id)arg1;
+- (id)equivalencyProperties;
 - (id)initWithOperation:(id)arg1 mergeableValueIDs:(id)arg2 previousContinuationTokens:(id)arg3;
 
 @end

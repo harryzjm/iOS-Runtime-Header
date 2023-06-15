@@ -26,6 +26,7 @@
 @property(retain, nonatomic) NSString *ibFontName;
 - (void)encodeWithBinaryArchiver:(id)arg1;
 - (const char *)cStringClassNameForBinaryArchiver:(id)arg1;
+- (_Bool)ibShouldEncodeUniquedByValue;
 - (id)ib_URL;
 
 // Remaining properties

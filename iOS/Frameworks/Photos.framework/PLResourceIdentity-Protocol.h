@@ -9,6 +9,7 @@
 @class PLUniformTypeIdentifier;
 
 @protocol PLResourceIdentity <NSObject>
+@property(readonly, nonatomic) _Bool isOriginalResource;
 @property(readonly, nonatomic) PLUniformTypeIdentifier *uniformTypeIdentifier;
 @property(readonly, nonatomic) unsigned int recipeID;
 @property(readonly, nonatomic) unsigned int version;

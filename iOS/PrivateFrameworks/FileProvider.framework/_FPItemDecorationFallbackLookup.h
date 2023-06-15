@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-- (id)valueForKeyPath:(id)arg1;
+- (id)fp_valueForKeyPath:(id)arg1;
 - (id)initWithItems:(id)arg1;
 
 @end

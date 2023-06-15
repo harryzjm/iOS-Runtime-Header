@@ -10,6 +10,7 @@
 
 @interface NSIndexSet (EDServerMessagePersistence)
 @property(readonly, nonatomic) NSString *ed_logDescription;
+- (id)ed_uidQueryExpressionWithTableName:(id)arg1;
 @property(readonly, nonatomic) NSString *ed_uidQueryExpression;
 - (id)ed_nextRangesWithRangeCountLimit:(unsigned long long)arg1 reverseEnumeration:(_Bool)arg2;
 - (void)ed_enumerateUIDsWithLimit:(unsigned long long)arg1 reverseEnumeration:(_Bool)arg2 queryRangeCountLimit:(unsigned long long)arg3 batchLimit:(unsigned long long)arg4 usingBlock:(CDUnknownBlockType)arg5;

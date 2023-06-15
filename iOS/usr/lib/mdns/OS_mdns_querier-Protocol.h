@@ -4,8 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <mdns/OS_mdns_object-Protocol.h>
+#import <mdns/OS_mdns_client-Protocol.h>
 
-@protocol OS_mdns_querier <OS_mdns_object>
+@protocol OS_mdns_querier <OS_mdns_client>
 @end
 

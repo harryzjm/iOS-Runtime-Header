@@ -6,19 +6,22 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray, NSXPCConnection;
-@protocol OS_dispatch_queue;
+@class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
 @interface SNAnalysisClient : NSObject
 {
-    CDUnknownBlockType _connectionToServerGenerator;
-    NSXPCConnection *_xpcConnectionToServer;
-    NSObject<OS_dispatch_queue> *_queue;
-    NSMutableArray *_pendingInvalidationHandlers;
+    MISSING_TYPE *connectionToServerGenerator;
+    MISSING_TYPE *xpcConnectionToServer;
+    MISSING_TYPE *queue;
+    MISSING_TYPE *pendingInvalidationHandlers;
 }
 
++ (id)defaultClient;
 - (void).cxx_destruct;
+- (id)createRemoteSystemAudioAnalyzerWithInvalidationHandler:(CDUnknownBlockType)arg1 queue:(id)arg2 error:(id *)arg3;
+- (id)initToConnectToMachServiceWithName:(id)arg1 queue:(id)arg2;
+- (id)initWithConnectionGenerator:(CDUnknownBlockType)arg1 queue:(id)arg2;
 - (id)init;
 
 @end

@@ -15,13 +15,13 @@ __attribute__((visibility("hidden")))
     Class _relationshipModelClass;
     void *_foreignPropertyBase;
     CDUnknownBlockType _validRelationshipHandler;
-    shared_ptr_a9db792c _relationshipValidationProperties;
+    shared_ptr_66289562 _relationshipValidationProperties;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType validRelationshipHandler; // @synthesize validRelationshipHandler=_validRelationshipHandler;
-@property(nonatomic) shared_ptr_a9db792c relationshipValidationProperties; // @synthesize relationshipValidationProperties=_relationshipValidationProperties;
+@property(nonatomic) shared_ptr_66289562 relationshipValidationProperties; // @synthesize relationshipValidationProperties=_relationshipValidationProperties;
 @property(nonatomic) void *foreignPropertyBase; // @synthesize foreignPropertyBase=_foreignPropertyBase;
 @property(nonatomic) _Bool transient; // @synthesize transient=_transient;
 @property(nonatomic) Class relationshipModelClass; // @synthesize relationshipModelClass=_relationshipModelClass;

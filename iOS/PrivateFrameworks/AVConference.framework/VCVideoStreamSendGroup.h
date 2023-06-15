@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, VCMoments, VCRedundancyControllerVideo, VCSessionUplinkVideoStreamController, VCVideoRule;
+@class NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, VCSessionUplinkVideoStreamController, VCVideoRule;
 
 __attribute__((visibility("hidden")))
 @interface VCVideoStreamSendGroup
@@ -21,8 +21,6 @@ __attribute__((visibility("hidden")))
     VCSessionUplinkVideoStreamController *_uplinkVideoStreamController;
     struct tagVCMemoryPool *_videoRedundancyPool;
     struct opaqueCMSimpleQueue *_videoRedundancyChangeEventQueue;
-    VCRedundancyControllerVideo *_redundancyController;
-    VCMoments *_moments;
     double _fecRatio;
     VCVideoRule *_captureVideoRule;
     NSMutableDictionary *_pendingActiveUplinkStreams;
@@ -35,9 +33,11 @@ __attribute__((visibility("hidden")))
     _Bool _allowSuspendProvisionedStreams;
     unsigned int _totalNumFramesReceived;
     unsigned int _totalNumFramesProcessed;
+    unsigned int _mediaQueueSize;
     _Bool _initTime;
 }
 
+@property(nonatomic) unsigned int mediaQueueSize; // @synthesize mediaQueueSize=_mediaQueueSize;
 @property(nonatomic) int captureFrameRate; // @synthesize captureFrameRate=_captureFrameRate;
 - (void)collectAndLogChannelMetrics:(CDStruct_b671a7c4 *)arg1;
 - (unsigned long long)maxStreamFrameRate;
@@ -50,10 +50,12 @@ __attribute__((visibility("hidden")))
 - (void)redundancyController:(id)arg1 redundancyIntervalDidChange:(double)arg2;
 - (void)redundancyController:(id)arg1 redundancyPercentageDidChange:(unsigned int)arg2;
 - (void)frameRateIsBeingThrottled:(int)arg1 thermalLevelDidChange:(_Bool)arg2 powerLevelDidChange:(_Bool)arg3;
+- (void)reactionDidStart:(id)arg1;
 - (void)cameraAvailabilityDidChange:(_Bool)arg1;
 - (void)thermalLevelDidChange:(int)arg1;
 - (id)clientCaptureRule;
 - (void)avConferencePreviewError:(id)arg1;
+- (CDUnknownBlockType)copyOnVideoFrameBlock;
 - (_Bool)onVideoFrame:(struct opaqueCMSampleBuffer *)arg1 frameTime:(CDStruct_1b6d18a9)arg2 attribute:(CDStruct_51555cf6)arg3;
 - (void)sourceFrameRateDidChange:(unsigned int)arg1;
 - (void)controller:(id)arg1 didChangeActiveVideoStreams:(id)arg2;
@@ -67,36 +69,35 @@ __attribute__((visibility("hidden")))
 - (_Bool)shouldCompoundListIgnoreStream:(id)arg1 streamConfig:(id)arg2 activeStreamIds:(id)arg3;
 - (_Bool)shouldSubscribeToStreamID:(id)arg1 peerSubscribedStreams:(id)arg2;
 - (id)streamDescriptionForMediaStreamConfig:(id)arg1;
-- (void)setActiveConnection:(id)arg1 uplinkBitrateCap:(unsigned int)arg2;
-- (void)setUplinkBitrateCapWifi:(unsigned int)arg1;
-- (void)setUplinkBitrateCapCell:(unsigned int)arg1;
+- (void)setActiveConnection:(id)arg1 uplinkBitrateCap:(unsigned int)arg2 activeMediaStreamIDs:(id)arg3 mediaBitrates:(id)arg4 rateChangeCounter:(unsigned int)arg5;
+- (void)updateUplinkBitrateCapWifi:(unsigned int)arg1 activeStreamIDs:(id)arg2;
+- (void)updateUplinkBitrateCapCell:(unsigned int)arg1 activeStreamIDs:(id)arg2;
 - (_Bool)updateUplinkStreamsForPeerSubscribedStreams:(id)arg1;
 - (id)activeStreamKeys;
-- (void)updateActiveMediaStreamIDs:(id)arg1 withTargetBitrate:(unsigned int)arg2 mediaBitrates:(id)arg3;
+- (void)dispatchedUpdateActiveMediaStreamIDs:(id)arg1 withTargetBitrate:(unsigned int)arg2 mediaBitrates:(id)arg3 rateChangeCounter:(unsigned int)arg4;
 - (void)updateSuspendedState;
 - (void)deregisterForScreenCapture;
 - (id)registerForScreenCapture;
 - (unsigned int)getPixelFormat;
 - (void)deregisterForVideoCapture;
 - (void)registerForVideoCapture:(int)arg1;
+- (void)dispatchedSetCaptureVideoRule:(id)arg1;
 - (struct CGSize)getCaptureEncodingSize;
 - (void)flushVideoRedundancyEventQueue;
-- (void)processVideoEventQueue;
-- (void)processVideoPriority;
 - (void)setupVideoPriority;
-- (void)didStart;
-- (void)updateBandwidthAllocatorStreamTokenState;
+- (void)updateEnabledState;
 - (id)willStart;
-- (void)updateVideoStreamAndProcessFrame:(id)arg1 sampleBuffer:(struct opaqueCMSampleBuffer *)arg2 lastSentAudioHostTime:(double)arg3 lastSentAudioSampleTime:(unsigned int)arg4 frameTime:(CDStruct_1b6d18a9)arg5 attribute:(CDStruct_51555cf6)arg6;
-- (_Bool)generateKeyFrameWithStreamID:(id)arg1;
-- (_Bool)setupUplinkVideoStreamController;
-- (int)maxCaptureCameraFrameRate;
-- (int)maxCaptureFrameRate;
+- (_Bool)generateKeyFrameWithStreamID:(id)arg1 firType:(int)arg2;
+- (id)uplinkVideoStreamControllerForMode:(unsigned int)arg1;
+- (int)maxCaptureCameraFrameRateForMode:(unsigned int)arg1;
+- (int)maxCaptureFrameRateForMode:(unsigned int)arg1;
 - (long long)maxCaptureResolution;
 - (void)cleanupRedundancySettings;
 - (void)setupPayloadTypes;
-- (id)setupRedundancyController;
+- (id)setupRedundancyControllerForMode:(unsigned int)arg1;
 - (_Bool)setupRedundancySettings;
+- (_Bool)shouldUseInternalRedundancyController;
+- (_Bool)setupStreamGroupWithConfig:(id)arg1;
 - (void)dealloc;
 - (id)initWithConfig:(id)arg1;
 

@@ -7,6 +7,7 @@
 @class NSDate;
 
 @protocol APPCLifecycleMetricsHelping
+- (void)manuallyDiscardWithReason:(long long)arg1;
 - (void)trackImpressionWithStartDate:(NSDate *)arg1 endDate:(NSDate *)arg2;
 - (void)contentLoadFailure;
 - (void)discarded;

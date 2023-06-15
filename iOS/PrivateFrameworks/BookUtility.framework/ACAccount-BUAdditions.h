@@ -6,20 +6,9 @@
 
 #import <Accounts/ACAccount.h>
 
-@class NSNumber, NSString;
-
 @interface ACAccount (BUAdditions)
-+ (id)bu_currentStorefront;
-+ (id)bu_localStoreAccount;
-+ (id)bu_activeStoreAccount;
 + (id)bu_storeAccountWithDSID:(id)arg1;
 - (id)bu_signOut;
 - (void)bu_removeWithCompletion:(CDUnknownBlockType)arg1;
-@property(readonly, nonatomic) _Bool bu_isManagedAppleID;
-@property(readonly, nonatomic) NSString *bu_storefront;
-@property(readonly, nonatomic) NSString *bu_fullName;
-@property(readonly, nonatomic) NSString *bu_lastName;
-@property(readonly, nonatomic) NSString *bu_firstName;
-@property(readonly, nonatomic) NSNumber *bu_DSID;
 @end
 

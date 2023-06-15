@@ -7,6 +7,6 @@
 #import <Foundation/NSMutableArray.h>
 
 @interface NSMutableArray (BUAdditions)
-- (void)updateToMatchArray:(id)arg1 removalBlock:(CDUnknownBlockType)arg2 insertionBlock:(CDUnknownBlockType)arg3;
+- (void)bu_updateToMatchArray:(id)arg1 removalBlock:(CDUnknownBlockType)arg2 insertionBlock:(CDUnknownBlockType)arg3;
 @end
 

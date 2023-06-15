@@ -6,16 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMutableArray;
+@class NSArray, NSMutableArray, NSURL;
 @protocol _SFCollaborationItemsRequestDelegate;
 
 __attribute__((visibility("hidden")))
 @interface _SFCollaborationItemsRequest : NSObject
 {
     _Bool _supportsMultipleCollaboration;
+    _Bool _isURLProviderSupported;
     id <_SFCollaborationItemsRequestDelegate> _delegate;
     NSArray *_activityItems;
     CDUnknownBlockType _completionHandler;
+    NSURL *_managedFileURL;
     NSMutableArray *_remainingActivityItems;
     NSMutableArray *_collaborationItems;
 }
@@ -23,6 +25,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableArray *collaborationItems; // @synthesize collaborationItems=_collaborationItems;
 @property(retain, nonatomic) NSMutableArray *remainingActivityItems; // @synthesize remainingActivityItems=_remainingActivityItems;
+@property(nonatomic) _Bool isURLProviderSupported; // @synthesize isURLProviderSupported=_isURLProviderSupported;
+@property(copy, nonatomic) NSURL *managedFileURL; // @synthesize managedFileURL=_managedFileURL;
 @property(nonatomic) _Bool supportsMultipleCollaboration; // @synthesize supportsMultipleCollaboration=_supportsMultipleCollaboration;
 @property(copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property(copy, nonatomic) NSArray *activityItems; // @synthesize activityItems=_activityItems;

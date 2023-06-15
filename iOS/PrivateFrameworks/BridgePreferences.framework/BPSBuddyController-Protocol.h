@@ -21,6 +21,7 @@
 + (_Bool)skipControllerForExpressMode:(NRDevice *)arg1;
 + (_Bool)controllerNeedsToRun;
 - (_Bool)holdBeforeDisplaying;
+- (_Bool)controllerBlocksRunningBeforeSignIn;
 - (_Bool)controllerAllowsNavigatingBackFrom;
 - (_Bool)controllerAllowsNavigatingBackTo;
 - (UIViewController *)viewController;

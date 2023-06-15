@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     id <BLSBacklightSceneEnvironment_Private> _clientEnvironment;
     BLSBacklightSceneVisualState *_lock_visualState;
     NSDate *_lock_presentationDate;
+    NSDate *_lock_visualStateMismatchStartTime;
     struct os_unfair_lock_s _lock;
 }
 
@@ -33,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (id)visualState;
 - (_Bool)isClientActive;
 - (_Bool)clientHasDelegate;
+- (_Bool)hasVisualStateMistmach;
 - (id)initWithBacklightSceneEnvironment:(id)arg1;
 
 @end

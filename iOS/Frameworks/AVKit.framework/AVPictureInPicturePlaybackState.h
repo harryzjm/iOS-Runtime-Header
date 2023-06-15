@@ -10,17 +10,17 @@ __attribute__((visibility("hidden")))
 @interface AVPictureInPicturePlaybackState : NSObject
 {
     _Bool _paused;
-    double _initializationTimestamp;
-    double _initializedElapsedTime;
     double _timelineRate;
     double _timelineDuration;
+    double _initializationTimestamp;
+    double _initializedElapsedTime;
 }
 
+@property(readonly, nonatomic) double initializedElapsedTime; // @synthesize initializedElapsedTime=_initializedElapsedTime;
+@property(readonly, nonatomic) double initializationTimestamp; // @synthesize initializationTimestamp=_initializationTimestamp;
 @property(readonly, nonatomic, getter=isPaused) _Bool paused; // @synthesize paused=_paused;
 @property(readonly, nonatomic) double timelineDuration; // @synthesize timelineDuration=_timelineDuration;
 @property(readonly, nonatomic) double timelineRate; // @synthesize timelineRate=_timelineRate;
-@property(readonly, nonatomic) double initializedElapsedTime; // @synthesize initializedElapsedTime=_initializedElapsedTime;
-@property(readonly, nonatomic) double initializationTimestamp; // @synthesize initializationTimestamp=_initializationTimestamp;
 @property(readonly, nonatomic) double currentElapsedTime;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

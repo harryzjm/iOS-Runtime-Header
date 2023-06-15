@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
     unsigned long long _disclosedSubitem;
     NSArray *_alarms;
-    NSMutableArray *_alarmPopupCells;
+    NSMutableArray *_alarmPopupMenus;
     EKUIRecurrenceAlertController *_recurrenceAlertController;
     EKAlarmsViewModel *_alarmsViewModel;
 }

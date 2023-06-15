@@ -11,7 +11,6 @@
 @interface _TtC19HealthMedicationsUI28MedicationsInteractionEngine : _TtCs12_SwiftObject
 {
     MISSING_TYPE *settingsManager;
-    MISSING_TYPE *userDefaultObservers;
     MISSING_TYPE *$__lazy_storage_$_lifestyleFactorPublisher;
     MISSING_TYPE *cancellable;
 }

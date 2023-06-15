@@ -7,7 +7,7 @@
 @class NSArray, NSData, NSString, SYDStoreConfiguration;
 
 @protocol SYDDaemonProtocol
-- (void)allStoreIdentifiersWithCompletionHandler:(void (^)(NSArray *, NSError *))arg1;
+- (void)allStoreIdentifiersWithCompletionHandler:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)setCloudSyncUserDefaultEnabled:(_Bool)arg1 storeIdentifier:(NSString *)arg2;
 - (void)isCloudSyncUserDefaultEnabledForStoreIdentifier:(NSString *)arg1 completionHandler:(void (^)(_Bool))arg2;
 - (void)processAccountChangesWithCompletionHandler:(void (^)(NSError *))arg1;

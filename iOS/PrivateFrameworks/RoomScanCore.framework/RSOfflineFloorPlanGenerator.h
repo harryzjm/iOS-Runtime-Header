@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableDictionary, RSBayWindowFPRemoval, RSCurvedWallDetection, RSDeduplicateOpeningOpenDoor, RSDoorWindowOfflineDetector, RSDoorWindowPostProcessor, RSNonUniformHeightEstimation, RSOfflineGeometryCalculation, RSOfflineKeyframeAccumulation, RSOfflineProjection2DZNode, RSOnlineOfflineAssociation, RSOpeningHeightAlignment, RSOutsideObjectRemoval, RSStructurePostProcess, RSWallOpeningOfflineDetector;
+@class NSMutableDictionary, RSBayWindowFPRemoval, RSCurvedWallDetection, RSDeduplicateOpeningOpenDoor, RSDoorWindowOfflineDetector, RSDoorWindowPostProcessor, RSFloorEstimation, RSNonUniformHeightEstimation, RSOfflineGeometryCalculation, RSOfflineKeyframeAccumulation, RSOfflineProjection2DZNode, RSOnlineOfflineAssociation, RSOpeningHeightAlignment, RSOutsideObjectRemoval, RSRoomTypeGenerator, RSStructurePostProcess, RSWallOpeningOfflineDetector;
 
 @interface RSOfflineFloorPlanGenerator
 {
@@ -19,31 +19,23 @@
     RSDeduplicateOpeningOpenDoor *_deduplicateOpeningOpenDoor;
     RSOnlineOfflineAssociation *_onlineOfflineAssociation;
     RSNonUniformHeightEstimation *_heightEstimator;
+    RSFloorEstimation *_floorEstimator;
+    RSRoomTypeGenerator *_roomNodeGenerator;
     RSOpeningHeightAlignment *_openingHeightAlignment;
     RSOutsideObjectRemoval *_removeOutsideObject;
     RSDoorWindowPostProcessor *_doorWindowPostProcessor;
     _Bool _wallOpeningMergeEnabled;
     _Bool _openingReplaceOpendoorEnabled;
     _Bool _opendoorReplaceOpeningEnabled;
+    _Bool _roomTypeEnabled;
     NSMutableDictionary *_debugInfo;
-    _Bool _enableLiveDump;
+    _Bool _enableOfflineDump;
 }
 
 - (void).cxx_destruct;
-- (void)setDoorWindowBeautificationEnable:(_Bool)arg1;
 - (void)clear;
-- (id)beautifyObjects:(id)arg1 withFloorPlan:(id)arg2;
-- (id)generateFloorPlanWithKeyframes:(id)arg1 initialAsset:(id)arg2 error:(id *)arg3;
-- (id)generateFloorPlanWithKeyframes:(id)arg1 initialAsset:(id)arg2;
-- (void)setNonUniformHeightEnable:(_Bool)arg1;
-- (void)setOpendoorReplaceOpeningEnable:(_Bool)arg1;
-- (void)setOpeningReplaceOpendoorEnable:(_Bool)arg1;
-- (void)setWallOpeningMergeEnable:(_Bool)arg1;
 - (id)init;
-- (id)getDebugInfo;
-- (void)setLiveDumpEnable:(_Bool)arg1;
-- (id)geometryMeta;
-- (const void *)lmapOfWall;
+- (void)generateFloorPlanWithInputPath:(id)arg1 outputPath:(id)arg2 debug:(_Bool)arg3;
 
 @end
 

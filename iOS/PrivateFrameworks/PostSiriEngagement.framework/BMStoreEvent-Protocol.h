@@ -9,8 +9,8 @@
 @protocol BMStoreData;
 
 @protocol BMStoreEvent <NSObject>
-@property(nonatomic, readonly) unsigned char error;
-@property(nonatomic, readonly) id <BMStoreData> eventBody;
-@property(nonatomic, readonly) double timestamp;
+@property(readonly, nonatomic) unsigned char error;
+@property(readonly, nonatomic) id <BMStoreData> eventBody;
+@property(readonly, nonatomic) double timestamp;
 @end
 

@@ -10,6 +10,8 @@
 
 @interface OBHeaderView (SSHelper)
 - (double)_labelToDetailPadding;
+- (void)addDetailLabel:(id)arg1 withErrorCodeSubstr:(id)arg2;
+- (double)_labelToDetailPadding;
 - (void)addDetailLabel:(id)arg1 withPhoneNumber:(id)arg2;
 - (double)_labelToDetailPadding;
 - (void)addDetailLabel:(id)arg1 withPhoneNumber:(id)arg2;

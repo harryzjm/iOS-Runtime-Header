@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *layout;
     MISSING_TYPE *titleLabel;
     MISSING_TYPE *indicatorView;
+    MISSING_TYPE *monogramButtonContentView;
     MISSING_TYPE *monogramButton;
     MISSING_TYPE *imageViewEdgeFillConstraints;
     MISSING_TYPE *type;
@@ -22,6 +23,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, readonly) _TtC9SeymourUI15DeviceBadgeView *accessibilityDeviceBadgeView;
 @property(nonatomic, readonly) UILabel *accessibilityTitleLabel;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
+- (void)prepareForReuse;
 - (void)layoutSubviews;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

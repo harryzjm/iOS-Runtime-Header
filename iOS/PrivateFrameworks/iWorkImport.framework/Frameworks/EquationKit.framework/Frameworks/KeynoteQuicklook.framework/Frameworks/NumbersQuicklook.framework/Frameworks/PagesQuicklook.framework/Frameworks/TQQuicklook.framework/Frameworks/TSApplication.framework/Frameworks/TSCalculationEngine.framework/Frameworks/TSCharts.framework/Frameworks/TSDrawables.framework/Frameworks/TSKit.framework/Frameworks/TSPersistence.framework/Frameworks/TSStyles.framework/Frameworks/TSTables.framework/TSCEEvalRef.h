@@ -32,7 +32,7 @@
 - (struct TSCERangeCoordinate)bodyRangeOfTable;
 @property(readonly, nonatomic) struct TSCERangeRef rangeRef;
 @property(readonly, nonatomic) struct TSCERangeCoordinate rangeCoord;
-- (void)clearResolver;
+- (void)resetResolver:(void *)arg1;
 @property(readonly, nonatomic) struct TSUCellCoord bottomRight;
 @property(readonly, nonatomic) struct TSUCellCoord topLeft;
 @property(readonly, nonatomic) void *calcEngine;
@@ -40,7 +40,6 @@
 @property(readonly, nonatomic) struct TSCETableResolver *tableResolver;
 @property(readonly, nonatomic) struct TSKUIDStruct tableUID;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithCalcEngine:(void *)arg1 tableUID:(const struct TSKUIDStruct *)arg2 topLeft:(const struct TSUCellCoord *)arg3 bottomRight:(const struct TSUCellCoord *)arg4 preserveFlags:(const struct TSUPreserveFlags *)arg5;
 - (id)initWithTableResolver:(struct TSCETableResolver *)arg1 tractRefCore:(const struct TSCECellTractRefCore *)arg2;
 - (id)initWithTableResolver:(struct TSCETableResolver *)arg1 topLeft:(const struct TSUCellCoord *)arg2 bottomRight:(const struct TSUCellCoord *)arg3 preserveFlags:(const struct TSUPreserveFlags *)arg4;
 - (id)init;

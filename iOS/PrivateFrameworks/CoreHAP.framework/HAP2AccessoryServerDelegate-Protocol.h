@@ -19,9 +19,12 @@
 - (void)initializeKeyBagIfNecessary;
 
 @optional
+- (void)setSessionInfoWithNumIPsResolved:(unsigned long long)arg1 numIPsTried:(unsigned long long)arg2 numBonjourNames:(unsigned long long)arg3;
 - (void)accessoryServerDidUpdateCategory:(id <HAP2AccessoryServer>)arg1;
 - (void)accessoryServerDidUpdateName:(id <HAP2AccessoryServer>)arg1;
 - (void)accessoryServerDidUpdateHasPairings:(id <HAP2AccessoryServer>)arg1;
+- (void)accessoryServerConnectionFailureReportWithError:(NSError *)arg1;
+- (void)accessoryServerConnectedWithSecureSession;
 - (void)accessoryServerDidUpdateConnectionState:(id <HAP2AccessoryServer>)arg1;
 @end
 

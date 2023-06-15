@@ -25,6 +25,7 @@
 - (void)persistenceWillUpdateDisplayDateForMessages:(NSArray *)arg1;
 - (void)persistenceDidUpdateFollowUpForMessages:(NSArray *)arg1 generationWindow:(EDPersistenceDatabaseGenerationWindow *)arg2;
 - (void)persistenceDidUpdateSendLaterDate:(NSDate *)arg1 messages:(NSArray *)arg2 generationWindow:(EDPersistenceDatabaseGenerationWindow *)arg3;
+- (void)persistenceDidUpdateDisplayDateForReadLaterDateMessages:(NSArray *)arg1 generationWindow:(EDPersistenceDatabaseGenerationWindow *)arg2;
 - (void)persistenceDidChangeReadLaterDate:(NSDate *)arg1 messages:(NSArray *)arg2 changeIsRemote:(_Bool)arg3 generationWindow:(EDPersistenceDatabaseGenerationWindow *)arg4;
 - (void)persistenceWillChangeReadLaterDate:(NSDate *)arg1 messages:(NSArray *)arg2;
 - (void)persistenceDidChangeFlags:(ECMessageFlagChange *)arg1 messages:(NSArray *)arg2 generationWindow:(EDPersistenceDatabaseGenerationWindow *)arg3;
@@ -40,6 +41,7 @@
 - (void)persistenceDidReconcileJournaledMessages:(NSArray *)arg1 generationWindow:(EDPersistenceDatabaseGenerationWindow *)arg2;
 - (void)persistenceDidAddMessages:(NSArray *)arg1 generationWindow:(EDPersistenceDatabaseGenerationWindow *)arg2;
 - (void)persistenceIsAddingMessages:(NSArray *)arg1 journaled:(_Bool)arg2 generationWindow:(EDPersistenceDatabaseGenerationWindow *)arg3;
+- (void)persistenceWillAddNewMessages:(NSArray *)arg1;
 - (void)persistenceWillAddMessage:(id <ECMessage>)arg1 fromExistingMessage:(_Bool)arg2;
 - (void)persistenceDidFinishUpdates;
 - (void)persistenceWillBeginUpdates;

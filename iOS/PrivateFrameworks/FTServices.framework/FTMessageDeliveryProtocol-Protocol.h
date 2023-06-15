@@ -25,6 +25,6 @@
 - (void)cancelMessage:(IDSBaseMessage *)arg1;
 - (void)networkStateChanged;
 - (void)invalidate;
-- (_Bool)sendMessage:(IDSBaseMessage *)arg1;
+- (void)sendMessage:(IDSBaseMessage *)arg1;
 @end
 

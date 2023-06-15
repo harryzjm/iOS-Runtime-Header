@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
     NSDictionary *_results;
 }
 
-+ (id)faceDetectorWithTransform:(struct CGAffineTransform)arg1 withExistingFaceprints:(id)arg2 frameStats:(id)arg3 tracking:(_Bool)arg4 faceDominated:(_Bool)arg5 cancel:(CDUnknownBlockType)arg6;
++ (id)faceDetectorWithTransform:(struct CGAffineTransform)arg1 vipModelFilepath:(id)arg2 withExistingFaceprints:(id)arg3 frameStats:(id)arg4 tracking:(_Bool)arg5 faceDominated:(_Bool)arg6 cancel:(CDUnknownBlockType)arg7;
 - (void).cxx_destruct;
 - (id)faceRanges;
 - (id)results;

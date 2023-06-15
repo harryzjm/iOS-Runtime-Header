@@ -30,12 +30,6 @@
 }
 
 - (void).cxx_destruct;
-- (id)doorImage;
-- (id)heightImage;
-- (float)maxDensity2d;
-- (id)semanticImage;
-- (void)reset;
-- (void)runWithPointCloud:(id)arg1 temporalMeta:(id)arg2 geometryMeta:(id)arg3;
 - (id)init;
 
 @end

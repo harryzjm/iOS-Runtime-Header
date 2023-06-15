@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/_UIBackdropViewSettings.h>
+#import <UIKitCore/_UIBackdropViewSettings.h>
 
 @interface _UIBackdropViewSettings (PKUIUtilities)
 + (id)pkui_createTransparentSettingsFromSettings:(id)arg1;

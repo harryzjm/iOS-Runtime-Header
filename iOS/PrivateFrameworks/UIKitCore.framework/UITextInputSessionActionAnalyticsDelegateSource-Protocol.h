@@ -13,6 +13,7 @@
 - (UIResponder *)_delegateAsResponder;
 
 @optional
+- (void)_didEndEnumerateTextInputActions;
 - (void)_didEndEnumeratingAnalytics;
 - (void)_didFinishInit;
 - (long long)_overrideTextInputSource;

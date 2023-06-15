@@ -10,7 +10,6 @@
 
 @protocol CNAccountsAndGroupsActionsProviderDelegate <CNContactListActionDelegate>
 - (void)expandSectionForAccountWithIdentifier:(NSString *)arg1;
-- (void)contextMenuDidSelectRenameAction;
 - (void)reloadCollectionViewAddingPlaceholderItem:(CNAccountsAndGroupsItem *)arg1 inSectionWithIdentifier:(NSString *)arg2;
 - (void)reloadCollectionViewForSectionWithIdentifier:(NSString *)arg1 settingFilterForEditingItem:(_Bool)arg2 allowsReloadWhenEditing:(_Bool)arg3;
 - (void)reloadCollectionViewDeletingItem:(CNAccountsAndGroupsItem *)arg1;

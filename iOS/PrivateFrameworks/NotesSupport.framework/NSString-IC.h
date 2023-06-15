@@ -10,6 +10,7 @@
 + (id)ic_shortNameFromGivenName:(id)arg1 familyName:(id)arg2;
 + (id)ic_newURLForContentID:(id)arg1 percentEscaped:(_Bool)arg2;
 + (_Bool)ic_isCharacterInlineAttachmentPrefix:(unsigned short)arg1;
++ (id)ic_halfWidthHashSign;
 + (id)ic_NSAttachmentCharacterString;
 - (_Bool)ic_isCaseInsensitiveEqualToString:(id)arg1;
 - (id)ic_dataValue;
@@ -45,6 +46,7 @@
 @property(readonly, nonatomic) _Bool ic_containsNonWhitespaceCharacters;
 - (id)ic_uniqueWordsWithMinLength:(unsigned long long)arg1;
 @property(readonly, nonatomic) unsigned long long ic_numberOfLines;
+@property(readonly, nonatomic) _Bool ic_canConvertToTag;
 @property(readonly, nonatomic) _Bool ic_isLastCharacterANewline;
 @property(readonly, nonatomic) NSString *ic_stringByRemovingAttachmentCharacters;
 @property(readonly, nonatomic) NSString *ic_stringReplacingUnsafeXMLCharacters;

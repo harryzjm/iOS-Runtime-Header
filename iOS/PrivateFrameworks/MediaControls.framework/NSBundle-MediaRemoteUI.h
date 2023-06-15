@@ -8,6 +8,7 @@
 
 @interface NSBundle (MediaRemoteUI)
 + (_Bool)mru_isFaceTimeBundleIdentifier:(id)arg1;
++ (_Bool)mru_isPodcastsBundleIdentifier:(id)arg1;
 + (_Bool)mru_isMusicBundleIdentifier:(id)arg1;
 + (_Bool)mru_isSoundScapesIdentifier:(id)arg1;
 + (_Bool)mru_isSiriBundleIdentifier:(id)arg1;

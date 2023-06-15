@@ -6,17 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@class NSCloudKitMirroringDelegateOptions;
+@class NSCloudKitMirroringDelegateOptions, PFCloudKitStoreMonitor, _NSDataFileBackedFuture;
 
 __attribute__((visibility("hidden")))
 @interface PFCloudKitSchemaGenerator : NSObject
 {
     NSCloudKitMirroringDelegateOptions *_mirroringOptions;
+    PFCloudKitStoreMonitor *_storeMonitor;
+    _NSDataFileBackedFuture *_representativeFuture;
 }
 
-+ (id)representativeValueForAttributeType:(unsigned long long)arg1 defaultValue:(id)arg2;
+@property(readonly, nonatomic) _NSDataFileBackedFuture *representativeFuture; // @synthesize representativeFuture=_representativeFuture;
 - (void)dealloc;
-- (id)initWithMirroringOptions:(id)arg1;
+- (id)initWithMirroringOptions:(id)arg1 forStoreInMonitor:(id)arg2;
 
 @end
 

@@ -19,6 +19,7 @@
 - (void)iconView:(SBIconView *)arg1 configurationDidUpdateWithInteraction:(id <SBHIconViewConfigurationInteraction>)arg2;
 - (UIView *)iconView:(SBIconView *)arg1 homeScreenContentViewForConfigurationInteraction:(id <SBHIconViewConfigurationInteraction>)arg2;
 - (struct CGRect)iconView:(SBIconView *)arg1 contentBoundingRectForConfigurationInteraction:(id <SBHIconViewConfigurationInteraction>)arg2;
+- (UIView *)iconView:(SBIconView *)arg1 containerViewForConfigurationInteraction:(id <SBHIconViewConfigurationInteraction>)arg2;
 - (UIViewController *)iconView:(SBIconView *)arg1 containerViewControllerForConfigurationInteraction:(id <SBHIconViewConfigurationInteraction>)arg2;
 - (id <SBHIconViewConfigurationInteraction>)stackConfigurationInteractionForIconView:(SBIconView *)arg1;
 - (id <SBHIconViewConfigurationInteraction>)iconView:(SBIconView *)arg1 configurationInteractionForDataSource:(id <SBLeafIconDataSource>)arg2;

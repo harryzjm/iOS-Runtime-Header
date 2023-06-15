@@ -11,6 +11,9 @@
 @interface NSObject (AXUISettingsWelcomeControllerCommon)
 @property(retain, nonatomic, setter=ax_setBuddyDynamicHeightConstraints:) NSMutableArray *ax_buddyDynamicHeightConstraints;
 @property(retain, nonatomic, setter=ax_setBuddyObservedTableViews:) NSMutableArray *ax_buddyObservedTableViews;
+- (id)_accessibilityUIFindSubviewDescendant:(CDUnknownBlockType)arg1;
+- (id)_accessibilityUIFindAXDescendants:(CDUnknownBlockType)arg1 byAddingElements:(CDUnknownBlockType)arg2;
+- (id)_accessibilityUIFindAnyAXDescendant:(CDUnknownBlockType)arg1 byAddingElements:(CDUnknownBlockType)arg2;
 - (id)_accessibilityBadgeTextForTextElement:(id)arg1;
 - (id)_atvaccessibilityITMLClass;
 @property(readonly, nonatomic) NSString *_atvaccessibilityITMLAccessibilityContent;

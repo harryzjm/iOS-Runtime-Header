@@ -4,18 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <FrontBoard/FBSMutableSceneClientSettings.h>
+#import <FrontBoardServices/FBSMutableSceneClientSettings.h>
 
-@class BSColor, BSUIVibrancyConfiguration, PRTimeDescriptor, UIColor;
+@class BSColor, BSUIVibrancyConfiguration, PRPosterLegibilitySettings, PRTimeDescriptor;
 
 @interface FBSMutableSceneClientSettings (PREditingScene)
 @property(nonatomic, setter=pr_setHasBackgroundTasks:) _Bool pr_hasBackgroundTasks;
 @property(nonatomic, getter=pr_areContentsCoveredByModalPresentation, setter=pr_setContentsCoveredByModalPresentation:) _Bool pr_contentsCoveredByModalPresentation;
 @property(nonatomic, getter=pr_isEditingFocusActive, setter=pr_setEditingFocusActive:) _Bool pr_editingFocusActive;
+@property(nonatomic, setter=pr_setHideChrome:) _Bool pr_hideChrome;
 @property(nonatomic, setter=pr_setContentSize:) struct CGSize pr_contentSize;
+@property(nonatomic, setter=pr_setHandlesWakeAnimation:) _Bool pr_handlesWakeAnimation;
+@property(nonatomic, setter=pr_setUserTapEventsRequested:) _Bool pr_userTapEventsRequested;
 @property(nonatomic, setter=pr_setSignificantEventOptions:) unsigned long long pr_significantEventOptions;
 @property(nonatomic, setter=pr_setSignificantEventTime:) unsigned long long pr_significantEventTime;
-@property(retain, nonatomic, setter=pr_setAverageColor:) UIColor *pr_averageColor;
+@property(retain, nonatomic, setter=pr_setDesiredLegibilitySettings:) PRPosterLegibilitySettings *pr_desiredLegibilitySettings;
+@property(retain, nonatomic, setter=pr_setAverageColor:) BSColor *pr_averageColor;
 @property(nonatomic, setter=pr_setInExtendedRenderSession:) _Bool pr_inExtendedRenderSession;
 @property(nonatomic, setter=pr_setDidFinishInitialization:) _Bool pr_didFinishInitialization;
 @property(retain, nonatomic, setter=pr_setVibrancyConfiguration:) BSUIVibrancyConfiguration *pr_vibrancyConfiguration;

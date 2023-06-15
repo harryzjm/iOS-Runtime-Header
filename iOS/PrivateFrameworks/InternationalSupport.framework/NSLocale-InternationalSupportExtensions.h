@@ -19,9 +19,10 @@
 + (id)_normalizedLanguageIdentifierFromString:(id)arg1;
 + (id)_minimizeSubtagsForLocaleIdentifier:(id)arg1;
 + (id)_addLikelySubtagsForLocaleIdentifier:(id)arg1;
-+ (id)_displayNameForNormalizedLanguage:(id)arg1 context:(long long)arg2 displayLanguage:(id)arg3;
++ (id)_displayNameForNormalizedLanguage:(id)arg1 context:(long long)arg2 displayLanguage:(id)arg3 length:(unsigned long long)arg4;
 + (id)displayNameForRegion:(id)arg1 displayLanguage:(id)arg2 context:(long long)arg3 short:(_Bool)arg4;
 + (id)displayNameForLanguage:(id)arg1 displayLanguage:(id)arg2 context:(long long)arg3;
++ (id)abbreviationsForLanguages:(id)arg1 minimizeVariants:(_Bool)arg2;
 + (id)spokenLanguagesForLanguages:(id)arg1 includeLanguagesForRegion:(_Bool)arg2;
 + (id)spokenLanguagesForLanguage:(id)arg1;
 + (id)availableSpokenLanguages;
@@ -29,7 +30,7 @@
 + (id)relatedLanguagesForLanguage:(id)arg1;
 + (id)matchedLanguagesFromAvailableLanguages:(id)arg1 forPreferredLanguages:(id)arg2;
 + (id)_displayNameForRegion:(id)arg1 displayLanguage:(id)arg2 context:(long long)arg3 short:(_Bool)arg4;
-+ (id)_displayNameForLanguage:(id)arg1 displayLanguage:(id)arg2 context:(long long)arg3;
++ (id)_displayNameForLanguage:(id)arg1 displayLanguage:(id)arg2 context:(long long)arg3 length:(unsigned long long)arg4;
 + (id)minimizedLanguagesFromLanguages:(id)arg1;
 + (id)languageFromLanguage:(id)arg1 byReplacingRegion:(id)arg2;
 + (id)scriptCodeFromLanguage:(id)arg1;
@@ -58,7 +59,7 @@
 @property(readonly, copy) NSString *numberingSystem;
 - (_Bool)isEquivalentTo:(id)arg1;
 - (id)localizedStringForRegion:(id)arg1 context:(long long)arg2 short:(_Bool)arg3;
+- (id)localizedStringForLanguage:(id)arg1 context:(long long)arg2 length:(unsigned long long)arg3;
 - (id)localizedStringForLanguage:(id)arg1 context:(long long)arg2;
-@property(readonly) NSString *languageIdentifier;
 @end
 

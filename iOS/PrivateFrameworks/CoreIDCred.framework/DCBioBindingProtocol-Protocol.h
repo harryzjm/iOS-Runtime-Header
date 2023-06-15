@@ -10,7 +10,7 @@
 
 @protocol DCBioBindingProtocol <NSObject>
 - (void)deleteGlobalAuthACLWithCompletion:(void (^)(NSError *))arg1;
-- (void)establishPrearmTrust:(DCCredentialTrust *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)establishPrearmTrustV2:(DCCredentialTrust *)arg1 completion:(void (^)(DCCredentialAttestation *, NSError *))arg2;
 - (void)prearmCredentialWithAuthorizationToken:(DCCredentialAuthorizationToken *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)nonceForAuthorizationTokenWithCompletion:(void (^)(DCCredentialNonce *, NSError *))arg1;
 @end

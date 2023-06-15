@@ -4,10 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
+@class NSString, UIViewController;
 @protocol CKEffectPickerViewControllerProtocol;
 
 @protocol CKEffectPickerViewControllerDelegate
+- (UIViewController *)presenterAsViewController;
+- (void)presentEffectsHintAsAlert;
+- (void)presentEffectPreviewOverlay:(id <CKEffectPickerViewControllerProtocol>)arg1;
+- (void)effectPickerViewControllerClose:(id <CKEffectPickerViewControllerProtocol>)arg1 keepingSideMountContainer:(_Bool)arg2;
 - (void)effectPickerViewControllerClose:(id <CKEffectPickerViewControllerProtocol>)arg1;
 - (void)effectPickerViewController:(id <CKEffectPickerViewControllerProtocol>)arg1 effectWithIdentifierSelected:(NSString *)arg2;
 @end

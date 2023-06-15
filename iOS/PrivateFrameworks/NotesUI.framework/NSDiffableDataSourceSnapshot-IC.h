@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/NSDiffableDataSourceSnapshot.h>
+#import <UIKitCore/NSDiffableDataSourceSnapshot.h>
 
 @interface NSDiffableDataSourceSnapshot (IC)
 - (void)ic_updateWithSectionIdentifiers:(id)arg1;

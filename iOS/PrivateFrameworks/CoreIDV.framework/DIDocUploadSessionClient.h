@@ -18,11 +18,12 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-@property(retain) DIXPCDisconnectHandler *disconnectHandler; // @synthesize disconnectHandler=_disconnectHandler;
-@property(retain) id <DIDocUploadSessionXPCProtocol> remoteObjectProxy; // @synthesize remoteObjectProxy=_remoteObjectProxy;
-@property(retain) NSXPCConnection *serverConnection; // @synthesize serverConnection=_serverConnection;
+@property(retain, nonatomic) DIXPCDisconnectHandler *disconnectHandler; // @synthesize disconnectHandler=_disconnectHandler;
+@property(retain, nonatomic) id <DIDocUploadSessionXPCProtocol> remoteObjectProxy; // @synthesize remoteObjectProxy=_remoteObjectProxy;
+@property(retain, nonatomic) NSXPCConnection *serverConnection; // @synthesize serverConnection=_serverConnection;
 - (void)cancelUploads;
 - (void)uploadDocData:(id)arg1 uploadSettings:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)dealloc;
 - (id)init;
 
 // Remaining properties

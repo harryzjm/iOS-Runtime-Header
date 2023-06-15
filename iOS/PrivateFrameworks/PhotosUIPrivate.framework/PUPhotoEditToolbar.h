@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class CAGradientLayer, NSArray, NSString, PUPhotoEditViewControllerSpec, UIButton, UILongPressGestureRecognizer;
 @protocol PUPhotoEditToolbarDelegate;
@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
 {
     UIView *_gradientBackgroundView;
     CAGradientLayer *_gradientLayer;
-    UIView *_underlineView;
     NSArray *_basicViewsConstraints;
     NSArray *_mainActionButtonConstraints;
     NSArray *_secondaryActionButtonConstraints;
@@ -22,7 +21,6 @@ __attribute__((visibility("hidden")))
     NSArray *_toolButtonLayoutGuides;
     UILongPressGestureRecognizer *_accessibilityLongPressGestureRecognizer;
     _Bool _useLargeShortSideHeight;
-    _Bool _useTabBarHeight;
     long long _layoutOrientation;
     NSArray *_toolButtons;
     long long _buttonSpacing;
@@ -32,6 +30,7 @@ __attribute__((visibility("hidden")))
     long long _backgroundStyle;
     long long _layoutDirection;
     double _longSideMargin;
+    double _topActionButtonPadding;
     id <PUPhotoEditToolbarDelegate> _delegate;
     PUPhotoEditViewControllerSpec *_photoEditSpec;
     UIView *_mainToolbarContainer;
@@ -42,6 +41,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIView *mainToolbarContainer; // @synthesize mainToolbarContainer=_mainToolbarContainer;
 @property(retain, nonatomic) PUPhotoEditViewControllerSpec *photoEditSpec; // @synthesize photoEditSpec=_photoEditSpec;
 @property(nonatomic) __weak id <PUPhotoEditToolbarDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) double topActionButtonPadding; // @synthesize topActionButtonPadding=_topActionButtonPadding;
 @property(nonatomic) double longSideMargin; // @synthesize longSideMargin=_longSideMargin;
 @property(nonatomic) long long layoutDirection; // @synthesize layoutDirection=_layoutDirection;
 @property(nonatomic) long long backgroundStyle; // @synthesize backgroundStyle=_backgroundStyle;
@@ -51,7 +51,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) long long buttonSpacing; // @synthesize buttonSpacing=_buttonSpacing;
 @property(readonly, copy, nonatomic) NSArray *toolButtons; // @synthesize toolButtons=_toolButtons;
 @property(nonatomic) struct UIEdgeInsets contentPadding; // @synthesize contentPadding=_contentPadding;
-@property(nonatomic) _Bool useTabBarHeight; // @synthesize useTabBarHeight=_useTabBarHeight;
 @property(nonatomic) _Bool useLargeShortSideHeight; // @synthesize useLargeShortSideHeight=_useLargeShortSideHeight;
 @property(readonly, nonatomic) long long layoutOrientation; // @synthesize layoutOrientation=_layoutOrientation;
 - (void)accessibilityLongPressChanged:(id)arg1;

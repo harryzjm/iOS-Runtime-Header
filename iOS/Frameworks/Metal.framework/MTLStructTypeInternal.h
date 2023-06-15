@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) NSString *typeName; // @synthesize typeName=_typeName;
 @property _Bool isIndirectArgumentBuffer; // @synthesize isIndirectArgumentBuffer=_isIndirectArgumentBuffer;
 - (unsigned long long)dataType;
+- (_Bool)isEqual:(id)arg1;
 - (_Bool)isStructLayoutThreadSafeWith:(id)arg1;
 - (id)members;
 - (id)description;

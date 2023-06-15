@@ -6,33 +6,41 @@
 
 #import <objc/NSObject.h>
 
-@class NSNumber, NSString;
+@class NSArray, NSNumber, NSString;
 
 __attribute__((visibility("hidden")))
 @interface VCScreenShare : NSObject
 {
     _Bool _isWindowed;
+    _Bool _isCursorCaptured;
+    _Bool _privateContentCaptureAllowed;
     unsigned int _height;
     unsigned int _width;
     unsigned int _frameRate;
     unsigned int _screenCaptureDisplayID;
     unsigned int _selectiveSharingPort;
     NSNumber *_clientPID;
+    NSArray *_excludedApplicationBundleIDs;
     NSString *_selectiveScreenUUID;
+    long long _captureSourceID;
 }
 
+@property(readonly, nonatomic) long long captureSourceID; // @synthesize captureSourceID=_captureSourceID;
 @property(retain, nonatomic) NSString *selectiveScreenUUID; // @synthesize selectiveScreenUUID=_selectiveScreenUUID;
 @property(readonly, nonatomic) unsigned int selectiveSharingPort; // @synthesize selectiveSharingPort=_selectiveSharingPort;
+@property(retain, nonatomic) NSArray *excludedApplicationBundleIDs; // @synthesize excludedApplicationBundleIDs=_excludedApplicationBundleIDs;
+@property(nonatomic) _Bool privateContentCaptureAllowed; // @synthesize privateContentCaptureAllowed=_privateContentCaptureAllowed;
+@property(nonatomic) _Bool isCursorCaptured; // @synthesize isCursorCaptured=_isCursorCaptured;
 @property(readonly, nonatomic) _Bool isWindowed; // @synthesize isWindowed=_isWindowed;
 @property(retain, nonatomic) NSNumber *clientPID; // @synthesize clientPID=_clientPID;
 @property(readonly, nonatomic) unsigned int screenCaptureDisplayID; // @synthesize screenCaptureDisplayID=_screenCaptureDisplayID;
 @property(readonly, nonatomic) unsigned int frameRate; // @synthesize frameRate=_frameRate;
 @property(readonly, nonatomic) unsigned int width; // @synthesize width=_width;
 @property(readonly, nonatomic) unsigned int height; // @synthesize height=_height;
-- (void)setConfig:(id)arg1 pid:(id)arg2;
-- (void)updateScreenShareWith:(id)arg1 pid:(id)arg2;
+- (void)setConfig:(id)arg1 pid:(id)arg2 captureSourceID:(id)arg3;
+- (void)updateScreenShareWith:(id)arg1 pid:(id)arg2 captureSourceID:(id)arg3;
 - (void)dealloc;
-- (id)initWithConfig:(id)arg1 pid:(id)arg2;
+- (id)initWithConfig:(id)arg1 pid:(id)arg2 captureSourceID:(id)arg3;
 
 @end
 

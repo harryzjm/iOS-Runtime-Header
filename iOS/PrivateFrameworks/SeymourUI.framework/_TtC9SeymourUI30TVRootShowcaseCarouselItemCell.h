@@ -11,10 +11,6 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *delegate;
     MISSING_TYPE *itemInfo;
-    MISSING_TYPE *onElementAppearance;
-    MISSING_TYPE *onElementDisappearance;
-    MISSING_TYPE *onVisibleBoundsChange;
-    MISSING_TYPE *onImpressionableBoundsChange;
     MISSING_TYPE *layout;
     MISSING_TYPE *carouselItemDelegate;
     MISSING_TYPE *artworkView;
@@ -38,7 +34,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, readonly) UILabel *accessibilityCaptionLabel;
 - (void)restartVideo;
 - (void)handleTappedButton:(id)arg1;
-- (void)layoutSubviews;
 - (void)didMoveToWindow;
 - (void)prepareForReuse;
 - (id)initWithCoder:(id)arg1;

@@ -10,7 +10,7 @@
 
 @interface _TtC8VideosUI26LibDownloadButtonViewModel : _$s8VideosUI9ViewModelCN
 {
-    MISSING_TYPE *data;
+    MISSING_TYPE *downloadViewModel;
 }
 
 @end

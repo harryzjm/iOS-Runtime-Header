@@ -14,6 +14,7 @@
     MISSING_TYPE *watchlistManager;
     MISSING_TYPE *priceDataManager;
     MISSING_TYPE *cacheQueue;
+    MISSING_TYPE *cancellables;
 }
 
 @end

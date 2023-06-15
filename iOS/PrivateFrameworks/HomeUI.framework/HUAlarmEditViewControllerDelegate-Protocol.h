@@ -6,11 +6,10 @@
 
 #import <HomeUI/NSObject-Protocol.h>
 
-@class HMMediaProfile, HUAlarmEditViewController, MTAlarm;
+@class HUAlarmEditViewController, MTAlarm;
 
 @protocol HUAlarmEditViewControllerDelegate <NSObject>
 - (void)alarmEditController:(HUAlarmEditViewController *)arg1 didDeleteAlarm:(MTAlarm *)arg2;
-- (void)alarmEditController:(HUAlarmEditViewController *)arg1 didMoveAlarm:(MTAlarm *)arg2 fromProfile:(HMMediaProfile *)arg3 toProfile:(HMMediaProfile *)arg4;
 - (void)alarmEditController:(HUAlarmEditViewController *)arg1 didEditAlarm:(MTAlarm *)arg2;
 - (void)alarmEditController:(HUAlarmEditViewController *)arg1 didAddAlarm:(MTAlarm *)arg2;
 - (void)alarmEditControllerDidCancel:(HUAlarmEditViewController *)arg1;

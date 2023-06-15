@@ -12,11 +12,11 @@
 {
     MISSING_TYPE *appsDisambiguationSnippetProvider;
     MISSING_TYPE *deviceState;
+    MISSING_TYPE *referenceResolver;
     MISSING_TYPE *dialogProvider;
     MISSING_TYPE *appLaunchFeatureFlags;
     MISSING_TYPE *responseGenerator;
     MISSING_TYPE *dialogResponseUtil;
-    MISSING_TYPE *referenceResolver;
 }
 
 @end

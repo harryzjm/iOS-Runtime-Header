@@ -30,7 +30,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)shouldSkipEvent:(id)arg1;
 - (_Bool)shouldDropEvent:(id)arg1;
 - (id)reportingURLForEvent:(id)arg1;
-- (id)prepareEvent:(id)arg1;
+- (id)preparedEventPromiseWithEvent:(id)arg1;
 @property(readonly, nonatomic) double flushInterval;
 - (_Bool)fieldFiltersMatchEvent:(id)arg1;
 - (id)initWithMetricsDictionary:(id)arg1 overrideDictionary:(id)arg2;

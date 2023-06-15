@@ -8,6 +8,7 @@
 
 @interface UIWindowScene (UIAccessibilityElementTraversal)
 - (id)_accessibilityViewChildrenWithOptions:(id)arg1;
+- (id)_accessibilityTraversalWindowsWithOptions:(id)arg1;
 - (id)_accessibilityTraversalWindows;
 @end
 

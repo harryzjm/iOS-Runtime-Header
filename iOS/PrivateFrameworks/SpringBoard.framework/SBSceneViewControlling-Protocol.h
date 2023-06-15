@@ -10,7 +10,8 @@
 @protocol OS_dispatch_queue, SBScenePlaceholderContentContext;
 
 @protocol SBSceneViewControlling <NSObject>
-@property(readonly, nonatomic) long long contentInterfaceOrientation;
+@property(readonly, nonatomic) long long containerOrientation;
+@property(readonly, nonatomic) long long contentOrientation;
 @property(readonly, nonatomic) struct CGSize contentReferenceSize;
 @property(retain, nonatomic) UIView *customContentView;
 @property(retain, nonatomic) id <SBScenePlaceholderContentContext> placeholderContentContext;
@@ -18,7 +19,7 @@
 @property(readonly, nonatomic) SBSceneHandle *sceneHandle;
 - (void)invalidate;
 - (void)containerContentWrapperInterfaceOrientationChangedTo:(long long)arg1;
-- (void)setContentReferenceSize:(struct CGSize)arg1 withInterfaceOrientation:(long long)arg2;
+- (void)setContentReferenceSize:(struct CGSize)arg1 withContentOrientation:(long long)arg2 andContainerOrientation:(long long)arg3;
 - (void)setDisplayMode:(long long)arg1 animationFactory:(BSUIAnimationFactory *)arg2 completion:(void (^)(void))arg3;
 - (void)newSnapshotViewOnQueue:(NSObject<OS_dispatch_queue> *)arg1 withCompletion:(void (^)(UIView *))arg2;
 - (UIView *)newSnapshotView;

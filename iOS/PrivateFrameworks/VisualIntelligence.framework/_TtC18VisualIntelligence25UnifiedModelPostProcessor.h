@@ -4,15 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <swiftCore/_TtCs12_SwiftObject.h>
+#import ".h"
 
 @class MISSING_TYPE;
 
-@interface _TtC18VisualIntelligence25UnifiedModelPostProcessor : _TtCs12_SwiftObject
+@interface _TtC18VisualIntelligence25UnifiedModelPostProcessor : 
 {
-    MISSING_TYPE *argos2DLabelFileMapper;
-    MISSING_TYPE *landmarkLabelFileMapper;
-    MISSING_TYPE *skylineLabelFileMapper;
+    MISSING_TYPE *labelFileMapper;
     MISSING_TYPE *modelInfo;
 }
 

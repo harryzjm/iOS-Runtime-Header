@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *flipsContentForRightToLeftDirection;
     MISSING_TYPE *iconConstraints;
     MISSING_TYPE *recencyIconView;
+    MISSING_TYPE *stackIconView;
     MISSING_TYPE *artwork;
     MISSING_TYPE *layoutHandler;
     MISSING_TYPE *shelfArtworkIconSafeAreaInsets;

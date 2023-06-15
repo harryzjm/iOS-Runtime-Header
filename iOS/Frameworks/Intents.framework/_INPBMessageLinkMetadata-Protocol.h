@@ -6,7 +6,7 @@
 
 #import <Intents/NSObject-Protocol.h>
 
-@class NSArray, NSString, _INPBDateTime;
+@class NSArray, NSString, _INPBDateTime, _INPBURLValue;
 
 @protocol _INPBMessageLinkMetadata <NSObject>
 @property(readonly, nonatomic) _Bool hasTvShowName;
@@ -61,6 +61,8 @@
 @property(copy, nonatomic) NSString *playlistCurator;
 @property(readonly, nonatomic) _Bool hasOriginalURL;
 @property(copy, nonatomic) NSString *originalURL;
+@property(readonly, nonatomic) _Bool hasOpenGraphType;
+@property(copy, nonatomic) NSString *openGraphType;
 @property(readonly, nonatomic) _Bool hasMusicVideoName;
 @property(copy, nonatomic) NSString *musicVideoName;
 @property(readonly, nonatomic) _Bool hasMusicVideoArtist;
@@ -73,6 +75,8 @@
 @property(copy, nonatomic) NSString *movieBundleName;
 @property(readonly, nonatomic) _Bool hasMovieBundleGenre;
 @property(copy, nonatomic) NSString *movieBundleGenre;
+@property(readonly, nonatomic) _Bool hasLinkURL;
+@property(retain, nonatomic) _INPBURLValue *linkURL;
 @property(nonatomic) _Bool hasLinkMediaType;
 @property(nonatomic) int linkMediaType;
 @property(readonly, nonatomic) _Bool hasItemType;

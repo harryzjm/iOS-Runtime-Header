@@ -16,15 +16,15 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)_gradientImageName:(long long)arg1;
-+ (const struct CGPath *)_pathForBaseImageType:(long long)arg1 radius:(double)arg2 tailLength:(double)arg3;
++ (struct CGPath *)_pathForBaseImageType:(long long)arg1 radius:(double)arg2 tailLength:(double)arg3;
 - (void).cxx_destruct;
 @property(retain, nonatomic, getter=_baseImageContent, setter=_setBaseImageContent:) _MKMarkerAnnotationBaseImageContent *baseImageContent; // @synthesize baseImageContent=_baseImageContent;
 - (_Bool)_isFillColorClear;
 - (void)_renderGradientForRectaloon;
 - (id)_renderBaseImage:(struct CGContext *)arg1 inRect:(struct CGRect)arg2 scale:(double)arg3;
-- (void)_strokePath:(const struct CGPath *)arg1 inContext:(struct CGContext *)arg2 scale:(double)arg3;
-- (void)_fillPath:(const struct CGPath *)arg1 inContext:(struct CGContext *)arg2 inRect:(struct CGRect)arg3 scale:(double)arg4;
-- (void)_renderContentUsingGraphicsPath:(const struct CGPath *)arg1;
+- (void)_strokePath:(struct CGPath *)arg1 inContext:(struct CGContext *)arg2 scale:(double)arg3;
+- (void)_fillPath:(struct CGPath *)arg1 inContext:(struct CGContext *)arg2 inRect:(struct CGRect)arg3 scale:(double)arg4;
+- (void)_renderContentUsingGraphicsPath:(struct CGPath *)arg1;
 - (void)_renderBaseContent;
 - (void)_dynamicUserInterfaceTraitDidChange;
 - (id)initWithOvalInSize:(struct CGSize)arg1;

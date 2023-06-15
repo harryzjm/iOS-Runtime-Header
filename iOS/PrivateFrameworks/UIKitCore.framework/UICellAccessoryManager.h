@@ -23,12 +23,14 @@ __attribute__((visibility("hidden")))
     UIView *_containerView;
     UICellAccessoryConfiguration *_previousConfiguration;
     NSMutableDictionary *_accessoryViews;
+    long long _animatedLayoutUpdatesCount;
     struct CGSize _previousContainerSize;
     struct UIEdgeInsets _safeAreaInsets;
     struct UIEdgeInsets _contentInset;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) long long animatedLayoutUpdatesCount; // @synthesize animatedLayoutUpdatesCount=_animatedLayoutUpdatesCount;
 @property(retain, nonatomic) NSMutableDictionary *accessoryViews; // @synthesize accessoryViews=_accessoryViews;
 @property(retain, nonatomic) UICellAccessoryConfiguration *previousConfiguration; // @synthesize previousConfiguration=_previousConfiguration;
 @property(nonatomic) struct CGSize previousContainerSize; // @synthesize previousContainerSize=_previousContainerSize;

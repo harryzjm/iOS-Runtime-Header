@@ -9,7 +9,6 @@
 @class CaptureMTLCommandBuffer, CaptureMTLDevice, NSMutableSet, NSString;
 @protocol MTLDebugCommandEncoder, MTLDevice;
 
-__attribute__((visibility("hidden")))
 @interface CaptureMTLDebugCommandEncoder : NSObject
 {
     id <MTLDebugCommandEncoder> _baseObject;

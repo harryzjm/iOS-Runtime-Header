@@ -10,7 +10,7 @@
 @protocol SBAppSwitcherReusableSnapshotViewDelegate;
 
 @protocol SBFluidSwitcherPageContentViewProviderDelegate <NSObject>
-- (id <SBAppSwitcherReusableSnapshotViewDelegate>)delegateForForSnapshotPageViewFromProvider:(SBFluidSwitcherPageContentViewProvider *)arg1;
+- (id <SBAppSwitcherReusableSnapshotViewDelegate>)delegateForSnapshotPageViewFromProvider:(SBFluidSwitcherPageContentViewProvider *)arg1;
 - (SBTransientOverlayViewController *)viewControllerForTransientOverlayAppLayout:(SBAppLayout *)arg1 fromProvider:(SBFluidSwitcherPageContentViewProvider *)arg2;
 - (UIViewController *)containerViewControllerForPageViewFromProvider:(SBFluidSwitcherPageContentViewProvider *)arg1;
 - (struct CGSize)sizeForAppLayout:(SBAppLayout *)arg1 fromProvider:(SBFluidSwitcherPageContentViewProvider *)arg2;

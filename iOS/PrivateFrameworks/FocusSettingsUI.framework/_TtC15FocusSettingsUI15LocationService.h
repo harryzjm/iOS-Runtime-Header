@@ -14,14 +14,20 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *_queryFragment;
     MISSING_TYPE *_status;
     MISSING_TYPE *_searchResults;
+    MISSING_TYPE *completionCancellable;
     MISSING_TYPE *queryCancellable;
     MISSING_TYPE *locationManager;
+    MISSING_TYPE *completer;
+    MISSING_TYPE *_completions;
+    MISSING_TYPE *_searchCompletion;
     MISSING_TYPE *locationQueue;
     MISSING_TYPE *localRegion;
     MISSING_TYPE *searchNearCurrentLocation;
 }
 
 - (void).cxx_destruct;
+- (void)completerDidUpdateResults:(id)arg1;
+- (void)locationManager:(id)arg1 didFailWithError:(id)arg2;
 - (void)locationManager:(id)arg1 didUpdateLocations:(id)arg2;
 - (id)init;
 

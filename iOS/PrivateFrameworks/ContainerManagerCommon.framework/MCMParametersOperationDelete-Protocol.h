@@ -6,6 +6,5 @@
 
 @protocol MCMParametersOperationDelete
 @property(readonly, nonatomic) _Bool waitForDiskSpaceReclaim;
-@property(readonly, nonatomic) _Bool traverseLinks;
 @end
 

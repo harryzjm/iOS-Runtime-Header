@@ -7,8 +7,7 @@
 #import <ContentKit/WFContentItem.h>
 
 @interface WFContentItem (WorkflowUI)
-- (id)generateListPreviewUIView;
 - (id)generatePagePreviewUIView;
-@property(nonatomic, readonly) _Bool conformsToContentItemViewProviding;
+@property(nonatomic, readonly) _Bool conformsToContentItemPreviewProviding;
 @end
 

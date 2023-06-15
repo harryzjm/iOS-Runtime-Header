@@ -10,6 +10,7 @@
 @protocol GEOMapItem;
 
 @protocol GEOCompletionItem <NSObject>
+@property(readonly, nonatomic) _Bool supportsOfflineDownload;
 @property(readonly, nonatomic) GEOStyleAttributes *iconStyleAttributes;
 @property(readonly, nonatomic) NSArray *resultRefinements;
 @property(readonly, nonatomic) GEOPublisherResult *publisherResult;

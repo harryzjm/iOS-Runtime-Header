@@ -7,15 +7,21 @@
 #import <WorkflowKit/WFTrigger.h>
 
 @interface WFTrigger (BiomeContext)
++ (_Bool)unregisterContextSyncClient;
 + (id)powerLogEventKindForTrigger:(id)arg1;
-- (_Bool)shouldFireInResponseToEvent:(id)arg1;
+- (id)eventInfoForEvent:(id)arg1;
+- (_Bool)shouldFireInResponseToEvent:(id)arg1 triggerIdentifier:(id)arg2;
+- (id)remotePublisherWithScheduler:(id)arg1;
+- (_Bool)hasRemotePublisher;
 - (id)publisherWithScheduler:(id)arg1;
 - (_Bool)needsRegistrationAfterFiring;
-- (_Bool)requiresEventInfoAsInput;
 - (_Bool)shouldFireTriggerWithEventInfo:(id)arg1 error:(out id *)arg2;
 - (_Bool)contextStoreRegistrationIsForWatch;
 - (unsigned int)contextStoreQualityOfService;
 - (id)contextStorePredicate;
 - (id)contextStoreKeyPathForCurrentState;
+- (id)eventInfoForEvent:(id)arg1;
+- (_Bool)requiresEventInfoAsInput;
+- (id)contentCollectionWithEventInfo:(id)arg1;
 @end
 

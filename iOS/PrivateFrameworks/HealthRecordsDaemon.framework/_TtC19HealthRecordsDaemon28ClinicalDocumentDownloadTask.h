@@ -10,7 +10,9 @@
 
 @interface _TtC19HealthRecordsDaemon28ClinicalDocumentDownloadTask : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *logPrefix;
     MISSING_TYPE *downloadableAttachment;
+    MISSING_TYPE *handler;
 }
 
 @end

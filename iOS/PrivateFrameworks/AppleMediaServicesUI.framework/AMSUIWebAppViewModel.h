@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSString *accessibilityLabel; // @synthesize accessibilityLabel=_accessibilityLabel;
 @property(readonly, copy) NSString *description;
 - (id)iconWithSize:(struct CGSize)arg1 scale:(double)arg2;
+- (id)createBarButtonItem;
 - (id)initWithJSObject:(id)arg1 context:(id)arg2;
 
 // Remaining properties

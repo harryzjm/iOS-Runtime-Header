@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
     _EARSpeechRecognitionResultPackage *_prevPackageWithoutPersonalization;
     unsigned long long _partialResultIndexOffset;
     shared_ptr_9d440e49 _continuousListeningResultHelper;
-    basic_string_0ec669f3 _prevBestRecogText;
+    basic_string_5909a4e2 _prevBestRecogText;
     vector_daa4424d _partialResults;
     vector_daa4424d _loggableConcatResult;
     vector_0e047154 _loggableConcatCosts;
@@ -36,7 +36,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSDictionary *prevMuxPackages; // @synthesize prevMuxPackages=_prevMuxPackages;
 @property(retain, nonatomic) _EARSpeechRecognitionResultPackage *prevPackage; // @synthesize prevPackage=_prevPackage;
 @property(nonatomic) unsigned long long countOfIsFinalFalseAlreadyWritten; // @synthesize countOfIsFinalFalseAlreadyWritten=_countOfIsFinalFalseAlreadyWritten;
-@property(nonatomic) basic_string_0ec669f3 prevBestRecogText; // @synthesize prevBestRecogText=_prevBestRecogText;
+@property(nonatomic) basic_string_5909a4e2 prevBestRecogText; // @synthesize prevBestRecogText=_prevBestRecogText;
 - (void)updateLoggableResultWithCurrentResult:(const void *)arg1 currentCosts:(const void *)arg2 startMilliseconds:(unsigned int)arg3;
 - (id)description;
 - (void)resetPartialResultContext;

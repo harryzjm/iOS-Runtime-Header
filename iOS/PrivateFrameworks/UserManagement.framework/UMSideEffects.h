@@ -7,14 +7,16 @@
 #import <objc/NSObject.h>
 
 @class NSString;
-@protocol UMLibInfoProviding;
+@protocol UMLibInfoProviding, UMLibNotifyProviding;
 
 @interface UMSideEffects : NSObject
 {
     NSObject<UMLibInfoProviding> *_libInfo;
+    NSObject<UMLibNotifyProviding> *_libNotify;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSObject<UMLibNotifyProviding> *libNotify; // @synthesize libNotify=_libNotify;
 @property(retain, nonatomic) NSObject<UMLibInfoProviding> *libInfo; // @synthesize libInfo=_libInfo;
 
 // Remaining properties

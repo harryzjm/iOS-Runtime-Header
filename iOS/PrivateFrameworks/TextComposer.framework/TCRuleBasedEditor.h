@@ -16,6 +16,8 @@
 - (void).cxx_destruct;
 - (void)checkString:(id)arg1 range:(struct _NSRange)arg2 tagger:(id)arg3 offset:(unsigned long long)arg4 options:(id)arg5 mutableResults:(id)arg6;
 - (void)addGrammarDetailsForSentenceRange:(struct _NSRange)arg1 sentence:(id)arg2 result:(id)arg3 mutableDetails:(id)arg4;
+- (void)resetModels;
+- (void)loadModelsInBackground:(_Bool)arg1;
 - (id)initWithOptions:(id)arg1;
 
 @end

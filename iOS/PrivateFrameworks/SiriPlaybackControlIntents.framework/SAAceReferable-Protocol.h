@@ -9,6 +9,6 @@
 @class NSString;
 
 @protocol SAAceReferable <SAAceSerializable>
-@property(nonatomic, copy) NSString *aceId;
+@property(copy, nonatomic) NSString *aceId;
 @end
 

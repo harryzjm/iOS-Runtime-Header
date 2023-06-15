@@ -7,10 +7,13 @@
 #import <IBCocoaTouchToolFoundation/NSObject-Protocol.h>
 
 @class NSArray, NSString, UIMenu, UITextField;
+@protocol UIEditMenuInteractionAnimating;
 
 @protocol UITextFieldDelegate <NSObject>
 
 @optional
+- (void)textField:(UITextField *)arg1 willDismissEditMenuWithAnimator:(id <UIEditMenuInteractionAnimating>)arg2;
+- (void)textField:(UITextField *)arg1 willPresentEditMenuWithAnimator:(id <UIEditMenuInteractionAnimating>)arg2;
 - (UIMenu *)textField:(UITextField *)arg1 editMenuForCharactersInRange:(struct _NSRange)arg2 suggestedActions:(NSArray *)arg3;
 - (_Bool)textFieldShouldReturn:(UITextField *)arg1;
 - (_Bool)textFieldShouldClear:(UITextField *)arg1;

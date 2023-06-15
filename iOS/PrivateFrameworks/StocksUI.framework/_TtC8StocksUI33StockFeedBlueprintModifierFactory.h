@@ -19,7 +19,7 @@
     MISSING_TYPE *sectionFactory;
     MISSING_TYPE *newsSource;
     MISSING_TYPE *featureAvailability;
-    MISSING_TYPE *stockChartDataManager;
+    MISSING_TYPE *chartManager;
 }
 
 @end

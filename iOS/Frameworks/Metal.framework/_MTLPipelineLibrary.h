@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 @property _Bool disableRunTimeCompilation; // @synthesize disableRunTimeCompilation=_disableRunTimeCompilation;
 @property(readonly) NSArray *pipelineNames; // @synthesize pipelineNames=_pipelineNames;
 @property(readonly) id <MTLDevice> device; // @synthesize device=_device;
+@property(readonly) NSArray *metallibPaths;
 - (id)newRenderPipelineDescriptorWithName:(id)arg1 error:(id *)arg2;
 - (id)newComputePipelineDescriptorWithName:(id)arg1 error:(id *)arg2;
 - (id)newRenderPipelineStateWithName:(id)arg1 options:(unsigned long long)arg2 reflection:(id *)arg3 error:(id *)arg4;

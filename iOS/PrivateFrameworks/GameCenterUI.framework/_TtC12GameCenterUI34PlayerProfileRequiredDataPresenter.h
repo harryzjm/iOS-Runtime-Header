@@ -18,7 +18,6 @@
     MISSING_TYPE *bidirectionalFriends;
     MISSING_TYPE *recentlyPlayedWithFriends;
     MISSING_TYPE *recommendedFriends;
-    MISSING_TYPE *recommendedGroups;
     MISSING_TYPE *friendRequests;
     MISSING_TYPE *recentlyPlayedGames;
     MISSING_TYPE *activityFeedData;

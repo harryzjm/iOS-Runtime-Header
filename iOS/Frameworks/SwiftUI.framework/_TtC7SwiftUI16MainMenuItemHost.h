@@ -13,7 +13,7 @@
     MISSING_TYPE *viewGraph;
     MISSING_TYPE *eventBindingManager;
     MISSING_TYPE *propertiesNeedingUpdate;
-    MISSING_TYPE *isRendering;
+    MISSING_TYPE *renderingPhase;
     MISSING_TYPE *accessibilityVersion;
     MISSING_TYPE *currentTimestamp;
     MISSING_TYPE *externalUpdateCount;

@@ -19,7 +19,19 @@ __attribute__((visibility("hidden")))
 + (id)configurationForLOI;
 + (id)syncPolicyForLOI;
 + (id)storeConfigurationForLOI;
++ (id)configurationForWalletTransaction;
++ (id)syncPolicyForWalletTransaction;
++ (id)storeConfigurationForWalletTransaction;
++ (id)configurationForCellularAvailabilityStatus;
++ (id)syncPolicyForCellularAvailabilityStatus;
++ (id)storeConfigurationForCellularAvailabilityStatus;
++ (id)configurationForDeviceActivityLevel;
++ (id)syncPolicyForDeviceActivityLevel;
++ (id)storeConfigurationForDeviceActivityLevel;
 + (id)LOI;
++ (id)WalletTransaction;
++ (id)CellularAvailabilityStatus;
++ (id)DeviceActivityLevel;
 
 @end
 

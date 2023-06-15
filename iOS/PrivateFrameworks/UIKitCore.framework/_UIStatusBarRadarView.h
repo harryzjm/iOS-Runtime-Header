@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
 - (id)_tintColor;
 - (struct CGSize)intrinsicContentSize;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
-- (void)traitCollectionDidChange:(id)arg1;
+- (void)_updateTintColor;
 - (void)applyStyleAttributes:(id)arg1;
 - (_Bool)canBecomeFocused;
 - (_Bool)isUserInteractionEnabled;

@@ -14,9 +14,13 @@ __attribute__((visibility("hidden")))
     _UILabelContentLayer *_contentLayer;
     _Bool _contentInsetsValid;
     struct UIEdgeInsets _contentInsets;
+    unsigned long long _oversizeEdgesIncludedInLabelLayer;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long oversizeEdgesIncludedInLabelLayer; // @synthesize oversizeEdgesIncludedInLabelLayer=_oversizeEdgesIncludedInLabelLayer;
+@property(readonly, nonatomic) struct UIEdgeInsets letterformAwareInsets; // @synthesize letterformAwareInsets=_contentInsets;
+@property(readonly, nonatomic) _Bool letterformAwareInsetsAreValid; // @synthesize letterformAwareInsetsAreValid=_contentInsetsValid;
 - (void)setContentsScale:(double)arg1;
 - (void)setContentsMultiplyColor:(struct CGColor *)arg1;
 - (void)setContentsFormat:(id)arg1;
@@ -26,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (void)_setLabelMasksToBoundsForAnimation:(_Bool)arg1;
 - (void)setMasksToBounds:(_Bool)arg1;
 - (void)_clearContents;
+- (_Bool)_glyphPathBoundsExcedesLayers:(struct CGRect)arg1 drawableGlyphPathBounds:(struct CGRect *)arg2 edgesClipped:(unsigned long long *)arg3;
 - (void)_updateContentLayer;
 - (void)invalidateContentInsets;
 - (void)setNeedsDisplayInRect:(struct CGRect)arg1;

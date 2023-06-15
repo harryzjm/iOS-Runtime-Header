@@ -9,6 +9,7 @@
 @class NSString;
 
 @protocol TPSValidatable <NSObject>
+- (void)getCurrentStateWithCompletion:(void (^)(id, NSError *))arg1;
 - (void)validateWithCompletion:(void (^)(_Bool, NSError *))arg1;
 - (NSString *)identifier;
 

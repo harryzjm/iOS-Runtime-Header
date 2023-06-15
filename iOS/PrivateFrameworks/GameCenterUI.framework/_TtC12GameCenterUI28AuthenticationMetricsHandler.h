@@ -12,7 +12,7 @@
 {
     MISSING_TYPE *onboardingMetricsHandler;
     MISSING_TYPE *reporter;
-    MISSING_TYPE *authStartTimeStamp;
+    MISSING_TYPE *authStartDate;
     MISSING_TYPE *refApp;
 }
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class NSString, UICollectionView;
 @protocol PUAssetPickerSearchSuggestionsSelectionDelegate;
@@ -19,7 +19,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(readonly, nonatomic) UICollectionView *collectionView; // @synthesize collectionView=_collectionView;
 @property(nonatomic) __weak id <PUAssetPickerSearchSuggestionsSelectionDelegate> suggestionsSelectionDelegate; // @synthesize suggestionsSelectionDelegate=_suggestionsSelectionDelegate;
-- (void)didInvalidateLayout:(id)arg1;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (id)initWithCollectionView:(id)arg1 dataSource:(id)arg2;

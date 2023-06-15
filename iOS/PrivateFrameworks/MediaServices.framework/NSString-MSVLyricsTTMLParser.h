@@ -9,6 +9,7 @@
 @interface NSString (MSVLyricsTTMLParser)
 - (_Bool)msvl_isElementType:(id)arg1;
 @property(readonly, nonatomic) double msvl_timeValue;
+- (id)msv_stringByResolvingRealPath;
 - (unsigned long long)msv_unsignedLongLongValue;
 @end
 

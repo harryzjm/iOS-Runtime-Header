@@ -4,16 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <SpringBoardFoundation/SBFTouchPassThroughView.h>
 
 @class MRUContinuousSliderView, MRUVisualStylingProvider, MRUVolumeStepperView, NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface MRUVolumeView : UIView
+@interface MRUVolumeView : SBFTouchPassThroughView
 {
     _Bool _expanded;
     _Bool _showSecondarySlider;
     _Bool _showStepper;
+    _Bool _showSpatialAudioModeButton;
     _Bool _primaryInteractionEnabled;
     _Bool _secondaryInteractionEnabled;
     MRUContinuousSliderView *_primarySlider;
@@ -25,6 +26,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(nonatomic) _Bool secondaryInteractionEnabled; // @synthesize secondaryInteractionEnabled=_secondaryInteractionEnabled;
 @property(nonatomic) _Bool primaryInteractionEnabled; // @synthesize primaryInteractionEnabled=_primaryInteractionEnabled;
+@property(nonatomic) _Bool showSpatialAudioModeButton; // @synthesize showSpatialAudioModeButton=_showSpatialAudioModeButton;
 @property(nonatomic) _Bool showStepper; // @synthesize showStepper=_showStepper;
 @property(nonatomic) _Bool showSecondarySlider; // @synthesize showSecondarySlider=_showSecondarySlider;
 @property(nonatomic, getter=isExpanded) _Bool expanded; // @synthesize expanded=_expanded;

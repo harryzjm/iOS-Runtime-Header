@@ -22,9 +22,9 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy, nonatomic) NSString *sectionIdentifier; // @synthesize sectionIdentifier=_sectionIdentifier;
 - (void)applyChanges:(id)arg1 itemLookupBlock:(CDUnknownBlockType)arg2;
 @property(readonly, copy, nonatomic) NSArray *itemIdentifiers;
-- (void)updateItem:(id)arg1;
+- (void)updateItems:(id)arg1;
 - (void)updateSection;
-- (void)removeItem:(id)arg1;
+- (void)removeItems:(id)arg1;
 - (void)moveItemToTail:(id)arg1;
 - (void)moveItem:(id)arg1 afterItem:(id)arg2;
 - (void)moveItemToHead:(id)arg1;

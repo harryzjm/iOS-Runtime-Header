@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray;
+@class CRLayoutInput;
 
 @protocol CRLineWrapping
-- (void)computeLineWrappingForFeatures:(NSArray *)arg1 imageSize:(struct CGSize)arg2;
+- (void)computeLineWrappingForInput:(CRLayoutInput *)arg1;
 @end
 

@@ -16,9 +16,13 @@ __attribute__((visibility("hidden")))
     NSDictionary *_SDKDictionary;
     unsigned long long _variant;
     NSURL *_url;
+    NSString *_name;
+    NSString *_domain;
 }
 
 - (void).cxx_destruct;
+@property(retain) NSString *domain; // @synthesize domain=_domain;
+@property(retain) NSString *name; // @synthesize name=_name;
 @property(retain) NSURL *url; // @synthesize url=_url;
 @property unsigned long long variant; // @synthesize variant=_variant;
 @property unsigned int platform; // @synthesize platform=_platform;

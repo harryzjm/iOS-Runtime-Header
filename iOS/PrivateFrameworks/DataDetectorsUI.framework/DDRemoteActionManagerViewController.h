@@ -49,7 +49,7 @@ __attribute__((visibility("hidden")))
 - (void)addHitOverlay;
 - (void)presentRemoteViewController;
 - (void)showRemoteController;
-- (void)loadRemoteAction:(id)arg1;
+- (void)loadRemoteAction;
 - (void)loadTitleBarIfNeeded;
 - (void)dismissViewController;
 - (void)loadNavigationControllerIfNeeded;

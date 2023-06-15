@@ -9,7 +9,6 @@
 @class NSString;
 @protocol MTLDrawable;
 
-__attribute__((visibility("hidden")))
 @interface CaptureMTLDrawable : NSObject
 {
     id <MTLDrawable> _baseObject;
@@ -20,7 +19,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)presentAtTime:(double)arg1;
 - (void)present;
-- (void)trackPresent:(const struct GTTraceEncoder *)arg1;
+- (void)addPresentedHandler:(CDUnknownBlockType)arg1;
 - (id)texture;
 - (id)layer;
 - (void)dealloc;

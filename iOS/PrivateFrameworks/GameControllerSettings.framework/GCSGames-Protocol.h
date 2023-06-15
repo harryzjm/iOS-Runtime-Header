@@ -13,7 +13,7 @@
 - (void)removeObserver:(NSObject *)arg1 forKeyPath:(NSString *)arg2;
 - (void)removeObserver:(NSObject *)arg1 forKeyPath:(NSString *)arg2 context:(void *)arg3;
 - (void)addObserver:(NSObject *)arg1 forKeyPath:(NSString *)arg2 options:(unsigned long long)arg3 context:(void *)arg4;
-- (GCSGame *)gameForPersistentControllerIdentifier:(NSString *)arg1 appBundleIdentifier:(NSString *)arg2;
+- (GCSGame *)gameWithBundleIdentifier:(NSString *)arg1;
 - (_Bool)storeVersionIsCompatible;
 @end
 

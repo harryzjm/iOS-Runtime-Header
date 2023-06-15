@@ -22,7 +22,9 @@ __attribute__((visibility("hidden")))
     _Bool _requiresHighResolution;
     _Bool _fakingRequiresHighResolution;
     _Bool _supportsMultiwindow;
+    _Bool _supportsSceneItemProviders;
     _Bool _supportedOnLockScreen;
+    _Bool _hasSupportsIndirectInputEventsKey;
     _Bool _supportsIndirectInputEvents;
     _Bool _requiresGameControllerBasedFocus;
     _Bool _focusEnabledInLimitedControls;
@@ -42,13 +44,16 @@ __attribute__((visibility("hidden")))
     NSString *_launchImageFile;
     NSString *_keyColorAssetName;
     NSArray *_canvasDefinitions;
+    NSString *_preferredDefaultSceneSessionRole;
     NSDictionary *_sceneConfigurations;
     long long _supportedUserInterfaceStyle;
     NSArray *_deviceFamilies;
+    NSDictionary *_utTypeToDocumentClassMap;
 }
 
 + (id)mainBundleInfoParser;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSDictionary *utTypeToDocumentClassMap; // @synthesize utTypeToDocumentClassMap=_utTypeToDocumentClassMap;
 @property(readonly, nonatomic) _Bool supportsBacklightEnvironment; // @synthesize supportsBacklightEnvironment=_supportsBacklightEnvironment;
 @property(readonly, nonatomic) _Bool supportsAlwaysOnDisplay; // @synthesize supportsAlwaysOnDisplay=_supportsAlwaysOnDisplay;
 @property(readonly, nonatomic) _Bool supportsPrintCommand; // @synthesize supportsPrintCommand=_supportsPrintCommand;
@@ -58,10 +63,13 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool requiresGameControllerBasedFocus; // @synthesize requiresGameControllerBasedFocus=_requiresGameControllerBasedFocus;
 @property(readonly, copy, nonatomic) NSArray *deviceFamilies; // @synthesize deviceFamilies=_deviceFamilies;
 @property(readonly, nonatomic) _Bool supportsIndirectInputEvents; // @synthesize supportsIndirectInputEvents=_supportsIndirectInputEvents;
+@property(readonly, nonatomic) _Bool hasSupportsIndirectInputEventsKey; // @synthesize hasSupportsIndirectInputEventsKey=_hasSupportsIndirectInputEventsKey;
 @property(readonly, nonatomic) long long supportedUserInterfaceStyle; // @synthesize supportedUserInterfaceStyle=_supportedUserInterfaceStyle;
 @property(readonly, nonatomic) _Bool supportedOnLockScreen; // @synthesize supportedOnLockScreen=_supportedOnLockScreen;
 @property(readonly, copy, nonatomic) NSDictionary *sceneConfigurations; // @synthesize sceneConfigurations=_sceneConfigurations;
+@property(readonly, copy, nonatomic) NSString *preferredDefaultSceneSessionRole; // @synthesize preferredDefaultSceneSessionRole=_preferredDefaultSceneSessionRole;
 @property(readonly, copy, nonatomic) NSArray *canvasDefinitions; // @synthesize canvasDefinitions=_canvasDefinitions;
+@property(readonly, nonatomic) _Bool supportsSceneItemProviders; // @synthesize supportsSceneItemProviders=_supportsSceneItemProviders;
 @property(readonly, nonatomic) _Bool supportsMultiwindow; // @synthesize supportsMultiwindow=_supportsMultiwindow;
 @property(readonly, nonatomic) _Bool fakingRequiresHighResolution; // @synthesize fakingRequiresHighResolution=_fakingRequiresHighResolution;
 @property(readonly, nonatomic) _Bool requiresHighResolution; // @synthesize requiresHighResolution=_requiresHighResolution;

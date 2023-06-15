@@ -9,6 +9,5 @@
 @interface SFSearchResult (VisualCat)
 - (void)processVisualCATResultSynchronouslyUsingPatternClass:(Class)arg1;
 - (void)processVisualCATResultSynchronously;
-- (id)visualCATLog;
 @end
 

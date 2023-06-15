@@ -5,7 +5,7 @@
 //
 
 @class NSDictionary, NSObject, NSString, VCAudioIOControllerClient, VCAudioRelay, VCAudioRelayIO, VCStreamInputAudio, VCStreamOutput;
-@protocol OS_dispatch_queue, VCStreamSychronizationDelegate;
+@protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface VCStreamIOAudioController
@@ -37,11 +37,11 @@ __attribute__((visibility("hidden")))
 @property(retain) VCAudioIOControllerClient *runningClient; // @synthesize runningClient=_runningClient;
 - (void)didUpdateBasebandCodec:(const struct _VCRemoteCodecInfo *)arg1;
 @property(retain) VCStreamOutput *streamOutput;
-@property(nonatomic) id <VCStreamSychronizationDelegate> synchronizationDelegate;
 @property(readonly, nonatomic) NSDictionary *reportingStats;
 - (void)invalidate;
 - (_Bool)canSetDirection:(unsigned char)arg1;
-- (void)updateClient:(id)arg1 direction:(unsigned char)arg2;
+- (void)updateClient:(id)arg1 settings:(const struct tagVCAudioIOControllerClientSettings *)arg2;
+- (void)dispatchedUpdateClient:(id)arg1 settings:(const struct tagVCAudioIOControllerClientSettings *)arg2;
 - (void)dispatchedStopClient;
 - (_Bool)dispatchedStartClient:(id)arg1 error:(id *)arg2;
 - (void)stopClient:(id)arg1;

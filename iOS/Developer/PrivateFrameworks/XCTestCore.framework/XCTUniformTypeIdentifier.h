@@ -10,6 +10,8 @@
 {
 }
 
++ (id)synthesizedEventRecord;
++ (id)elementSnapshot;
 + (id)testIssue;
 + (_Bool)isImageUniformTypeIdentifier:(id)arg1;
 + (id)inferredFileExtensionForUniformTypeIdentifier:(id)arg1;

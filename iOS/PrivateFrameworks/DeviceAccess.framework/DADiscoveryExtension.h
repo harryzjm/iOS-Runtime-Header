@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
 @property(retain, nonatomic) _EXExtensionIdentity *ekExtension; // @synthesize ekExtension=_ekExtension;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
+- (void)reportEventToExtension:(id)arg1;
 - (void)reportEvent:(id)arg1;
 - (void)_invalidated;
 - (void)_invalidate;

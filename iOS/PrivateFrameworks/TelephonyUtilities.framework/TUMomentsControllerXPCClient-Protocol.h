@@ -7,9 +7,11 @@
 #import <TelephonyUtilities/NSObject-Protocol.h>
 #import <TelephonyUtilities/TUMomentsSandboxingDataSource-Protocol.h>
 
-@class NSString, TUMomentDescriptor, TUMomentsCapabilities;
+@class NSError, NSString, TUMomentDescriptor, TUMomentsCapabilities, TUMomentsRawVideoMessageDescriptor;
 
 @protocol TUMomentsControllerXPCClient <NSObject, TUMomentsSandboxingDataSource>
+- (oneway void)didReceiveMessageRecordingError:(NSError *)arg1;
+- (oneway void)didFinishProcessingRawVideoMessage:(TUMomentsRawVideoMessageDescriptor *)arg1;
 - (oneway void)didReceiveLocallyRequestedMomentDescriptor:(TUMomentDescriptor *)arg1;
 - (oneway void)willCaptureRemoteRequestFromRequesterID:(NSString *)arg1;
 - (oneway void)didUpdateCapabilities:(TUMomentsCapabilities *)arg1 forVideoStreamToken:(long long)arg2;

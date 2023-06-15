@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIImage.h>
+#import <UIKitCore/UIImage.h>
 
 @interface UIImage (DOCTagSystemImage)
++ (id)_doc_tagImageForRenderingVariant:(unsigned long long)arg1 differentiateWithShapes:(_Bool)arg2 tagColorType:(long long)arg3 renderedColor:(id)arg4;
++ (id)_doc_tagImageForRenderingVariant:(unsigned long long)arg1 differentiateWithShapes:(_Bool)arg2 tagColorType:(long long)arg3;
 + (id)_doc_imageOutlineNameForColorType:(long long)arg1 differentiateWithShapes:(_Bool)arg2;
 + (id)_doc_imageFillNameForColorType:(long long)arg1 differentiateWithShapes:(_Bool)arg2;
 @end

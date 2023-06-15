@@ -9,7 +9,6 @@
 @class NSString;
 @protocol MTLDeadlineProfile;
 
-__attribute__((visibility("hidden")))
 @interface CaptureMTLDeadlineProfile : NSObject
 {
     id <MTLDeadlineProfile> _baseObject;

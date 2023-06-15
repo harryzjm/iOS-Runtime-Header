@@ -24,6 +24,7 @@
 @property(retain, nonatomic) NSNumber *displayScale;
 @property(nonatomic) long long style;
 @property(nonatomic) long long deviceFamily;
+- (id)initWithAttributes:(id <TUScreenShareAttributes>)arg1;
 - (_Bool)isSignificantChangeFromAttributes:(id <TUScreenShareAttributes>)arg1;
 @end
 

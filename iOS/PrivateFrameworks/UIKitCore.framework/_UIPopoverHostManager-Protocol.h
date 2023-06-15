@@ -6,7 +6,7 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class NSString, _UIPopoverHostManagerPopoverCloseConfiguration, _UIPopoverHostManagerPopoverCreationConfiguration, _UIPopoverHostManagerPopoverUpdateConfiguration;
+@class NSString, UIWindowScene, _UIPopoverHostManagerPopoverCloseConfiguration, _UIPopoverHostManagerPopoverCreationConfiguration, _UIPopoverHostManagerPopoverUpdateConfiguration;
 
 @protocol _UIPopoverHostManager <NSObject>
 - (_Bool)useDefaultPreferredAnimationControllerForDismissalWithPopoverWithIdentifier:(NSString *)arg1;
@@ -18,6 +18,8 @@
 - (NSString *)createPopoverWithConfiguration:(_UIPopoverHostManagerPopoverCreationConfiguration *)arg1;
 
 @optional
+- (_Bool)popoverWithIdentifier:(NSString *)arg1 shouldAttemptDismissWhenWindowSceneUpdatesEffectiveGeometry:(UIWindowScene *)arg2;
+- (unsigned long long)arrowDirectionForPopoverWithIdentifier:(NSString *)arg1;
 - (void)detachPopoverWithIdentifier:(NSString *)arg1 fromPoint:(struct CGPoint)arg2 withCompletionCallback:(void (^)(void))arg3;
 - (void)updateSupportsDetach:(_Bool)arg1 forPopoverWithIdentifier:(NSString *)arg2;
 - (void)updateUserInterfaceStyle:(long long)arg1 forPopoverWithIdentifier:(NSString *)arg2;

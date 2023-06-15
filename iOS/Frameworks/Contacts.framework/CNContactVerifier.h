@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 
 + (_Bool)arePropertiesOfContact:(id)arg1 authorizedForSavingWithContext:(id)arg2 error:(id *)arg3;
 + (_Bool)isValidContact:(id)arg1 error:(id *)arg2;
++ (id)os_log;
 
 @end
 

@@ -8,9 +8,10 @@
 #import <GameController/NSObject-Protocol.h>
 
 @protocol _GCKeyboardEvent <NSCopying, NSObject>
-@property(readonly) long long down;
-@property(readonly) long long usage;
-@property(readonly) long long usagePage;
-@property(readonly) unsigned long long timestamp;
+@property(readonly, nonatomic) unsigned long long sender;
+@property(readonly, nonatomic) long long down;
+@property(readonly, nonatomic) long long usage;
+@property(readonly, nonatomic) long long usagePage;
+@property(readonly, nonatomic) unsigned long long timestamp;
 @end
 

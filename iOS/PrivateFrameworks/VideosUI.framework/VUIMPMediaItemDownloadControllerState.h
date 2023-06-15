@@ -6,19 +6,24 @@
 
 #import <objc/NSObject.h>
 
+@class NSError;
+
 __attribute__((visibility("hidden")))
 @interface VUIMPMediaItemDownloadControllerState : NSObject
 {
-    _Bool _downloadSucceeded;
     _Bool _downloadInProgress;
+    _Bool _downloadSucceeded;
     unsigned long long _status;
     double _downloadProgress;
     unsigned long long _bytesToDownload;
     unsigned long long _bytesDownloaded;
+    NSError *_error;
 }
 
-@property(nonatomic, getter=isDownloadInProgress) _Bool downloadInProgress; // @synthesize downloadInProgress=_downloadInProgress;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSError *error; // @synthesize error=_error;
 @property(nonatomic) _Bool downloadSucceeded; // @synthesize downloadSucceeded=_downloadSucceeded;
+@property(nonatomic, getter=isDownloadInProgress) _Bool downloadInProgress; // @synthesize downloadInProgress=_downloadInProgress;
 @property(nonatomic) unsigned long long bytesDownloaded; // @synthesize bytesDownloaded=_bytesDownloaded;
 @property(nonatomic) unsigned long long bytesToDownload; // @synthesize bytesToDownload=_bytesToDownload;
 @property(nonatomic) double downloadProgress; // @synthesize downloadProgress=_downloadProgress;

@@ -11,6 +11,7 @@
 @interface _TtC7NewsUI217FeedMastheadModel : _TtCs12_SwiftObject
 {
     MISSING_TYPE *bundleSubscriptionManager;
+    MISSING_TYPE *feedDescriptor;
 }
 
 @end

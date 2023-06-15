@@ -5,6 +5,7 @@
 //
 
 @class NSString, PXPhotoKitAssetActionPerformer;
+@protocol PXMemoryAssetsActionFactory;
 
 __attribute__((visibility("hidden")))
 @interface PUPXPhotoKitActionPerformerAdapter
@@ -28,6 +29,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) id <PXMemoryAssetsActionFactory> memoryAssetsActionFactory;
 @property(readonly) Class superclass;
 
 @end

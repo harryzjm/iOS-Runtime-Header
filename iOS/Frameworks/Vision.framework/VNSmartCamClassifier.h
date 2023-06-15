@@ -10,6 +10,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (void)initDumpDebugIntermediates:(id *)arg1 debugInfo:(id *)arg2;
++ (id)supportedComputeStageDevicesForOptions:(id)arg1 error:(id *)arg2;
 + (id)createObservationWithDescriptors:(id)arg1 forOriginatingRequestSpecifier:(id)arg2;
 + (id)returnAllResultsOptionKey;
 + (Class)espressoModelImageprintClass;

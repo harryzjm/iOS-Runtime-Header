@@ -13,6 +13,10 @@
 #import <IMDPersistence/IMDNotificationQueries-Protocol.h>
 #import <IMDPersistence/NSObject-Protocol.h>
 
+@class IMXPCDictionary;
+
 @protocol IMDRemoteDatabaseProtocol <IMDChatQueries, IMDMessageQueries, IMDHandleQueries, IMDAttachmentQueries, IMDNotificationQueries, IMDDatabaseQueries, IMDKeyValueQueries, NSObject>
+- (void)notifyFirstUnlockComplete;
+- (void)sendLegacyXPCCommandWithObject:(IMXPCDictionary *)arg1 reply:(void (^)(IMXPCDictionary *))arg2;
 @end
 

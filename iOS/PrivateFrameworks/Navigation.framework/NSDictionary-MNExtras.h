@@ -8,6 +8,8 @@
 
 @interface NSDictionary (MNExtras)
 + (id)_navigation_serverStringDictionaryForMapItem:(id)arg1;
++ (id)_navigation_stringTokensForGenericCombinationsToken:(id)arg1 waypoints:(id)arg2 isSpokenString:(_Bool)arg3;
++ (id)_navigation_stringTokensForDirectionsError:(id)arg1 waypoints:(id)arg2;
 + (id)_navigation_serverStringDictionaryForDistance:(double)arg1 validDistance:(double)arg2 waypoints:(id)arg3 currentDestination:(id)arg4 legIndex:(unsigned long long)arg5 spoken:(_Bool)arg6 useDisplayName:(_Bool)arg7;
 + (id)_navigation_serverStringDictionaryForDistance:(double)arg1 validDistance:(double)arg2 destination:(id)arg3 spoken:(_Bool)arg4 useDisplayName:(_Bool)arg5;
 @end

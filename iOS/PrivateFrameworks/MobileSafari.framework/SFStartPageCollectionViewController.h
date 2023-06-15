@@ -6,19 +6,20 @@
 
 #import <UIKit/UIViewController.h>
 
-@class NSMapTable, NSString, SFSectionModel, UICollectionView, UICollectionViewDiffableDataSource, UIScrollView, UITapGestureRecognizer, UIView, UIVisualEffectView;
-@protocol SFStartPageCollectionDataSource, SFStartPageCollectionDelegate><SFStartPagePreviewProviding, SFStartPageVisualStyleProviding;
+@class NSMapTable, NSString, UICollectionView, UICollectionViewDiffableDataSource, UIScrollView, UITapGestureRecognizer, UIView, UIVisualEffectView, WBSStartPageSection;
+@protocol SFStartPageCollectionDataSource, SFStartPageCollectionDelegate><WBSStartPagePreviewProviding, SFStartPageVisualStyleProviding;
 
 __attribute__((visibility("hidden")))
 @interface SFStartPageCollectionViewController : UIViewController
 {
-    SFSectionModel *_cachedCustomizationSection;
+    WBSStartPageSection *_cachedCustomizationSection;
     UICollectionViewDiffableDataSource *_collectionDataSource;
     UICollectionView *_collectionView;
     _Bool _hasActiveDrag;
     _Bool _hasAppliedInitialSnapshot;
     _Bool _hasDeferredUpdates;
     _Bool _hasMadeFirstCommit;
+    _Bool _isPresentingContextMenu;
     double _keyboardBottomInset;
     long long _lastLayoutOrientation;
     double _lastLayoutWidth;
@@ -33,14 +34,14 @@ __attribute__((visibility("hidden")))
     _Bool _wantsWallpaperHiddenForCurrentBackgroundStyle;
     id <SFStartPageCollectionDataSource> _dataSource;
     id <SFStartPageCollectionDataSource> _strongDataSource;
-    id <SFStartPageCollectionDelegate><SFStartPagePreviewProviding> _delegate;
+    id <SFStartPageCollectionDelegate><WBSStartPagePreviewProviding> _delegate;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool wantsWallpaperHiddenForCurrentBackgroundStyle; // @synthesize wantsWallpaperHiddenForCurrentBackgroundStyle=_wantsWallpaperHiddenForCurrentBackgroundStyle;
 @property(nonatomic) _Bool hidesEmptyNavigationBar; // @synthesize hidesEmptyNavigationBar=_hidesEmptyNavigationBar;
 @property(nonatomic) _Bool displaysSectionHeaders; // @synthesize displaysSectionHeaders=_displaysSectionHeaders;
-@property(nonatomic) __weak id <SFStartPageCollectionDelegate><SFStartPagePreviewProviding> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) __weak id <SFStartPageCollectionDelegate><WBSStartPagePreviewProviding> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) id <SFStartPageCollectionDataSource> strongDataSource; // @synthesize strongDataSource=_strongDataSource;
 @property(nonatomic) __weak id <SFStartPageCollectionDataSource> dataSource; // @synthesize dataSource=_dataSource;
 - (_Bool)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
@@ -72,6 +73,7 @@ __attribute__((visibility("hidden")))
 - (id)_siteIconSectionLayoutForEnvironment:(id)arg1;
 - (CDStruct_4eba780f)_siteIconLayoutForEnvironment:(id)arg1 sectionInsets:(struct NSDirectionalEdgeInsets)arg2;
 - (id)_bannerSectionLayoutForEnvironment:(id)arg1 includingHeader:(_Bool)arg2;
+- (double)_effectiveLayoutWidth;
 - (struct NSDirectionalEdgeInsets)_sectionContentInsets;
 - (id)_toggleExpandedActionForSectionIdentifier:(id)arg1;
 - (unsigned long long)_collapsedCapacityForSection:(id)arg1;
@@ -91,6 +93,8 @@ __attribute__((visibility("hidden")))
 - (_Bool)collectionView:(id)arg1 canFocusItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (_Bool)collectionView:(id)arg1 shouldHighlightItemAtIndexPath:(id)arg2;
+- (void)collectionView:(id)arg1 willEndContextMenuInteractionWithConfiguration:(id)arg2 animator:(id)arg3;
+- (void)collectionView:(id)arg1 willDisplayContextMenuWithConfiguration:(id)arg2 animator:(id)arg3;
 - (id)collectionView:(id)arg1 previewForDismissingContextMenuWithConfiguration:(id)arg2;
 - (id)collectionView:(id)arg1 previewForHighlightingContextMenuWithConfiguration:(id)arg2;
 - (void)collectionView:(id)arg1 willPerformPreviewActionForMenuWithConfiguration:(id)arg2 animator:(id)arg3;

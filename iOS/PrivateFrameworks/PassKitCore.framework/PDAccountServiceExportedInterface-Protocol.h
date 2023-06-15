@@ -6,20 +6,20 @@
 
 #import <PassKitCore/PDXPCServiceExportedInterface-Protocol.h>
 
-@class CNContact, NSArray, NSData, NSDate, NSSet, NSString, NSTimeZone, PKAccount, PKAccountAction, PKAccountEnhancedMerchant, PKAccountPromotion, PKAccountUserNotificationSettings, PKAccountUserPreferences, PKAccountWebServicePhysicalCardActionRequest, PKAccountWebServiceRequestPhysicalCardRequest, PKApplePayTrustSignature, PKPaymentDeviceMetadata, PKPhysicalCardAction, PKPhysicalCardOrder, PKVirtualCard;
+@class CNContact, NSArray, NSData, NSDate, NSSet, NSString, NSTimeZone, PKAccount, PKAccountAction, PKAccountEnhancedMerchant, PKAccountPromotion, PKAccountUserNotificationSettings, PKAccountUserPreferences, PKAccountWebServicePhysicalCardActionRequest, PKAccountWebServiceRequestPhysicalCardRequest, PKAppleBalanceInStoreTopUpToken, PKApplePayTrustSignature, PKPaymentDeviceMetadata, PKPhysicalCardAction, PKPhysicalCardOrder, PKVirtualCard;
 
 @protocol PDAccountServiceExportedInterface <PDXPCServiceExportedInterface>
 - (void)updateWalletBadgeCountWithCompletion:(void (^)(_Bool))arg1;
 - (void)accountEntityOrderingsForAccountWithIdentifier:(NSString *)arg1 entityType:(unsigned long long)arg2 completion:(void (^)(NSArray *))arg3;
 - (void)accountEnhancedMerchantBehaviorForAccountWithIdentifier:(NSString *)arg1 completion:(void (^)(PKAccountEnhancedMerchantBehavior *))arg2;
-- (void)updateAccountEnhancedMerchantsForAccountWithIdentifier:(NSString *)arg1 forceUpdate:(_Bool)arg2 observeCooldownPeriod:(_Bool)arg3 completion:(void (^)(NSArray *, NSError *))arg4;
 - (void)deleteAccountEnhancedMerchant:(PKAccountEnhancedMerchant *)arg1 forAccountWithIdentifier:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)accountEnhancedMerchantsForAccountWithIdentifier:(NSString *)arg1 completion:(void (^)(NSArray *))arg2;
 - (void)insertOrUpdateAccountEnhancedMerchants:(NSArray *)arg1 accountIdentifier:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
+- (void)updateAccountEnhancedMerchantsForAccountWithIdentifier:(NSString *)arg1 ignoreErrorBackoff:(_Bool)arg2 cooldownLevel:(unsigned long long)arg3 completion:(void (^)(NSArray *, NSError *, NSDate *))arg4;
 - (void)updateAccountEnhancedMerchantsForAccountWithIdentifier:(NSString *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
-- (void)updateAccountEnhancedMerchantsForAccountWithIdentifier:(NSString *)arg1 observeCooldownPeriod:(_Bool)arg2 completion:(void (^)(NSArray *, NSError *))arg3;
+- (void)updateAccountEnhancedMerchantsForAccountWithIdentifier:(NSString *)arg1 cooldownLevel:(unsigned long long)arg2 completion:(void (^)(NSArray *, NSError *))arg3;
 - (void)accountPromotionBehaviorForAccountWithIdentifier:(NSString *)arg1 completion:(void (^)(PKAccountPromotionBehavior *))arg2;
-- (void)updateAccountPromotionsForAccountWithIdentifier:(NSString *)arg1 forceUpdate:(_Bool)arg2 observeCooldownPeriod:(_Bool)arg3 completion:(void (^)(NSArray *, NSError *))arg4;
+- (void)updateAccountPromotionsForAccountWithIdentifier:(NSString *)arg1 ignoreErrorBackoff:(_Bool)arg2 observeCooldownPeriod:(_Bool)arg3 completion:(void (^)(NSArray *, NSError *))arg4;
 - (void)updateImpressionCount:(long long)arg1 promotionProgramIdentifier:(NSString *)arg2 accountIdentifier:(NSString *)arg3 completion:(void (^)(NSError *))arg4;
 - (void)updateImpressionCountsForPromotions:(NSArray *)arg1 accountIdentifier:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)deleteAccountPromotion:(PKAccountPromotion *)arg1 forAccountWithIdentifier:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
@@ -28,6 +28,14 @@
 - (void)updateAccountPromotionsForAccountWithIdentifier:(NSString *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)updateAccountPromotionsForAccountWithIdentifier:(NSString *)arg1 observeCooldownPeriod:(_Bool)arg2 completion:(void (^)(NSArray *, NSError *))arg3;
 - (void)rewardsTierSummaryForTransactionSourceIdentifiers:(NSSet *)arg1 currencyCode:(NSString *)arg2 startDate:(NSDate *)arg3 endDate:(NSDate *)arg4 completion:(void (^)(PKAccountRewardsTierSummary *))arg5;
+- (void)accountHoldsForAccountIdentifier:(NSString *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
+- (void)dailyCashEligibleDestinationsForAccountWithIdentifier:(NSString *)arg1 completion:(void (^)(PKAccountDailyCashDestinationsSummary *, NSError *))arg2;
+- (void)deleteInStoreTopUpTokenForAccountWithIdentifier:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)insertOrUpdateInStoreTopUpToken:(PKAppleBalanceInStoreTopUpToken *)arg1 accountIdentifier:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
+- (void)inStoreTopUpTokenForAccountWithIdentifier:(NSString *)arg1 completion:(void (^)(PKAppleBalanceInStoreTopUpToken *))arg2;
+- (void)invalidateTopUpTokenWithIdentifier:(NSString *)arg1 forAccountWithIdentifier:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
+- (void)deleteAppleBalancePromotionForAccountWithIdentifier:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)appleBalancePromotionForAccountWithIdentifier:(NSString *)arg1 completion:(void (^)(PKAppleBalancePromotionConfiguration *))arg2;
 - (void)backgroundProvisionInProgressForFeature:(unsigned long long)arg1 withCompletion:(void (^)(_Bool))arg2;
 - (void)triggerCloudStoreZoneCreationForAccount:(PKAccount *)arg1 withCompletion:(void (^)(_Bool))arg2;
 - (void)validateAppleBalanceSecurityRequirementsWithCompletion:(void (^)(_Bool, NSError *))arg1;
@@ -37,12 +45,10 @@
 - (void)deleteFinancingPlansForAccountIdentifier:(NSString *)arg1 completion:(void (^)(void))arg2;
 - (void)deleteFinancingPlansForAllAccountsWithCompletion:(void (^)(void))arg1;
 - (void)financingPlanForPlanIdentifier:(NSString *)arg1 completion:(void (^)(PKPayLaterFinancingPlan *))arg2;
-- (void)countOfFinancingPlansForAccountIdentifier:(NSString *)arg1 financingPlanStates:(NSArray *)arg2 completion:(void (^)(long long))arg3;
-- (void)financingPlansForAccountIdentifier:(NSString *)arg1 withInstallmentsDueDateStart:(NSDate *)arg2 endDueDate:(NSDate *)arg3 financingPlanStates:(NSArray *)arg4 completion:(void (^)(NSArray *))arg5;
 - (void)financingPlanInstallmentsDueDateRangeForAccountIdentifier:(NSString *)arg1 financingPlanStates:(NSArray *)arg2 completion:(void (^)(NSDate *, NSDate *))arg3;
-- (void)financingPlansForAccountIdentifier:(NSString *)arg1 states:(NSArray *)arg2 transactionStartDate:(NSDate *)arg3 transactionEndDate:(NSDate *)arg4 limit:(long long)arg5 completion:(void (^)(NSArray *))arg6;
-- (void)financingPlansForAccountIdentifier:(NSString *)arg1 completion:(void (^)(NSArray *))arg2;
+- (void)financingPlansWithQueries:(NSArray *)arg1 completion:(void (^)(NSDictionary *))arg2;
 - (void)financingPlansForAllAccountsWithCompletion:(void (^)(NSArray *))arg1;
+- (void)cancelFinancingPlanWithIdentifier:(NSString *)arg1 accountIdentifier:(NSString *)arg2 cancellationReasonIdentifier:(NSString *)arg3 cancellationReasonDescription:(NSString *)arg4 completion:(void (^)(NSError *))arg5;
 - (void)updateFinancingPlansForAccountWithIdentifier:(NSString *)arg1 pageOffset:(unsigned long long)arg2 limit:(unsigned long long)arg3 ignoreLastUpdatedDate:(_Bool)arg4 forceFetch:(_Bool)arg5 completion:(void (^)(NSArray *, NSError *))arg6;
 - (void)resetAccountBalancesForAccountIdentifier:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)updateAccountBalancesForAccountIdentifier:(NSString *)arg1 startDate:(NSDate *)arg2 endDate:(NSDate *)arg3 type:(unsigned long long)arg4 completion:(void (^)(NSArray *, NSError *))arg5;
@@ -51,7 +57,7 @@
 - (void)didAddAccountPendingFamilyMembers:(NSArray *)arg1;
 - (void)updateSharedAccountCloudStoreWithAccountIdentifier:(NSString *)arg1 completion:(void (^)(PKSharedAccountCloudStore *, NSError *))arg2;
 - (void)sharedAccountCloudStoreWithAccountIdentifier:(NSString *)arg1 completion:(void (^)(PKSharedAccountCloudStore *))arg2;
-- (void)exportTransactionDataForAccountIdentifier:(NSString *)arg1 withFileFormat:(NSString *)arg2 beginDate:(NSDate *)arg3 endDate:(NSDate *)arg4 productTimeZone:(NSTimeZone *)arg5 completion:(void (^)(PKAccountWebServiceExportTransactionDataResponse *, NSError *))arg6;
+- (void)exportTransactionDataForAccountIdentifier:(NSString *)arg1 withFileFormat:(NSString *)arg2 beginDate:(NSDate *)arg3 endDate:(NSDate *)arg4 productTimeZone:(NSTimeZone *)arg5 completion:(void (^)(PKAccountExportedTransactionInfo *, NSError *))arg6;
 - (void)markUserViewedIntroduction:(_Bool)arg1 forInstallmentIdentifiers:(NSSet *)arg2 accountIdentifier:(NSString *)arg3 completion:(void (^)(NSError *))arg4;
 - (void)scheduledPaymentsWithAccountIdentifier:(NSString *)arg1 includeFailedRecurringPayments:(_Bool)arg2 allowFetchFromServer:(_Bool)arg3 completion:(void (^)(NSArray *, NSError *))arg4;
 - (void)updateScheduledPaymentsWithAccount:(PKAccount *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
@@ -66,8 +72,19 @@
 - (void)updateVirtualCardsWithAccountIdentifier:(NSString *)arg1 completion:(void (^)(NSSet *, PKAccount *, NSError *))arg2;
 - (void)performVirtualCardAction:(long long)arg1 forVirtualCardIdentifier:(NSString *)arg2 forAccountIdentifier:(NSString *)arg3 completion:(void (^)(PKVirtualCard *, PKAccount *, NSError *))arg4;
 - (void)createVirtualCard:(long long)arg1 forAccountIdentifier:(NSString *)arg2 completion:(void (^)(PKVirtualCard *, PKAccount *, NSError *))arg3;
+- (void)taxFormsForAccountIdentifier:(NSString *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
+- (void)updateTaxFormsForAccountIdentifier:(NSString *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
+- (void)triggerStatementMetadataProcessingForAccountIdentifier:(NSString *)arg1 statementIdentifier:(NSString *)arg2 completion:(void (^)(PKAccountStatementMetadata *, NSError *))arg3;
+- (void)deleteAccountStatementMetadataForStatementIdentifier:(NSString *)arg1 accountIdentifier:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
+- (void)updateAccountStatementMetadataForStatementIdentifier:(NSString *)arg1 accountIdentifier:(NSString *)arg2 completion:(void (^)(PKAccountStatementMetadata *, NSError *))arg3;
+- (void)accountStatementMetadataForStatementIdentifier:(NSString *)arg1 accountIdentifier:(NSString *)arg2 completion:(void (^)(PKAccountStatementMetadata *, NSError *))arg3;
+- (void)accountStatementMetadataForAllAccountsWithCompletion:(void (^)(NSDictionary *, NSError *))arg1;
+- (void)savingsStatementsForAccountIdentifier:(NSString *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
+- (void)updateSavingsStatementsForAccountIdentifier:(NSString *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
+- (void)creditStatementsForStatementIdentifiers:(NSSet *)arg1 accountIdentifier:(NSString *)arg2 completion:(void (^)(NSSet *, NSError *))arg3;
 - (void)creditStatementsForAccountIdentifier:(NSString *)arg1 completion:(void (^)(NSSet *, NSError *))arg2;
-- (void)lastRedemptionEventToPeerPaymentForAccountIdentifier:(NSString *)arg1 altDSID:(NSString *)arg2 completion:(void (^)(PKAccountEvent *, NSError *))arg3;
+- (void)updateCreditStatementsForAccountIdentifier:(NSString *)arg1 completion:(void (^)(NSSet *, NSError *))arg2;
+- (void)lastRedemptionEventToDestination:(unsigned long long)arg1 forAccountIdentifier:(NSString *)arg2 altDSID:(NSString *)arg3 completion:(void (^)(PKAccountEvent *, NSError *))arg4;
 - (void)insertEvents:(NSSet *)arg1 withAccountidentifier:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)deleteEventsWithAccountIdentifier:(NSString *)arg1 excludingTypes:(NSSet *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)deleteEventWithIdentifier:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
@@ -94,7 +111,7 @@
 - (void)paymentFundingSourceForIdentifier:(NSString *)arg1 accountIdentifier:(NSString *)arg2 completion:(void (^)(PKAccountPaymentFundingSource *))arg3;
 - (void)paymentFundingSourcesForAccountIdentifier:(NSString *)arg1 completion:(void (^)(NSArray *))arg2;
 - (void)updateUserInfoForAccountIdentifier:(NSString *)arg1 contact:(CNContact *)arg2 completion:(void (^)(CNContact *, NSError *))arg3;
-- (void)userInfoForAccountIdentifier:(NSString *)arg1 forceFetch:(_Bool)arg2 completion:(void (^)(CNContact *, NSError *))arg3;
+- (void)userInfoForAccountIdentifier:(NSString *)arg1 forceFetch:(_Bool)arg2 completion:(void (^)(PKAccountUserInfo *, NSError *))arg3;
 - (void)termsWithIdentifier:(NSString *)arg1 accepted:(_Bool)arg2 withAccountIdentifier:(NSString *)arg3 completion:(void (^)(NSError *))arg4;
 - (void)performAccountAction:(PKAccountAction *)arg1 withAccountIdentifier:(NSString *)arg2 accountUserAltDSID:(NSString *)arg3 completion:(void (^)(PKAccount *, NSError *))arg4;
 - (void)defaultAccountForFeature:(unsigned long long)arg1 completion:(void (^)(PKAccount *, NSError *))arg2;

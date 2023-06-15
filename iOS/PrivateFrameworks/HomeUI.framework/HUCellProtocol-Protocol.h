@@ -10,8 +10,8 @@
 @protocol HUResizableCellDelegate;
 
 @protocol HUCellProtocol <NSObject>
+@property(retain, nonatomic) HFItem *item;
 - (void)updateUIWithAnimation:(_Bool)arg1;
-@property(nonatomic, retain) HFItem *item;
 
 @optional
 @property(nonatomic) __weak id <HUResizableCellDelegate> resizingDelegate;

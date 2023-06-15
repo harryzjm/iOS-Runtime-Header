@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AMSUIWebActivityIndicatorModel, AMSUIWebAppViewModel, NSDictionary, NSString;
+@class AMSUIWebActivityIndicatorModel, NSDictionary, NSString;
 @protocol AMSUIWebActionRunnable;
 
 __attribute__((visibility("hidden")))
@@ -16,11 +16,9 @@ __attribute__((visibility("hidden")))
     _Bool _enabled;
     NSString *_accessibilityLabel;
     id <AMSUIWebActionRunnable> _action;
-    SEL _actionSelector;
+    CDUnknownBlockType _actionBlock;
     AMSUIWebActivityIndicatorModel *_activityIndicator;
-    AMSUIWebAppViewModel *_appView;
     NSString *_keyEquivalent;
-    id _target;
     NSString *_title;
     long long _style;
     NSString *_systemImageName;
@@ -32,25 +30,21 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSString *systemImageName; // @synthesize systemImageName=_systemImageName;
 @property(nonatomic) long long style; // @synthesize style=_style;
 @property(retain, nonatomic) NSString *title; // @synthesize title=_title;
-@property(retain, nonatomic) id target; // @synthesize target=_target;
 @property(retain, nonatomic) NSString *keyEquivalent; // @synthesize keyEquivalent=_keyEquivalent;
 @property(nonatomic) _Bool enabled; // @synthesize enabled=_enabled;
 @property(nonatomic) _Bool bold; // @synthesize bold=_bold;
-@property(retain, nonatomic) AMSUIWebAppViewModel *appView; // @synthesize appView=_appView;
 @property(retain, nonatomic) AMSUIWebActivityIndicatorModel *activityIndicator; // @synthesize activityIndicator=_activityIndicator;
-@property(nonatomic) SEL actionSelector; // @synthesize actionSelector=_actionSelector;
+@property(copy, nonatomic) CDUnknownBlockType actionBlock; // @synthesize actionBlock=_actionBlock;
 @property(retain, nonatomic) id <AMSUIWebActionRunnable> action; // @synthesize action=_action;
 @property(retain, nonatomic) NSString *accessibilityLabel; // @synthesize accessibilityLabel=_accessibilityLabel;
 - (id)_imageForButtonWithNavStyle:(long long)arg1;
 @property(readonly, copy) NSString *description;
 - (id)createDialogAction;
-- (id)_createProxCardItemWithTarget:(id)arg1 selector:(SEL)arg2;
+- (id)_createProxCardItemWithActionBlock:(CDUnknownBlockType)arg1;
 - (id)_createSpinnerItem;
-- (id)_createAppViewItemWithModel:(id)arg1;
 - (long long)_barButtonItemStyle;
-- (id)createBarButtonItemWithTarget:(id)arg1 selector:(SEL)arg2 navBar:(id)arg3;
+- (id)createBarButtonItemWithNavigationBarModel:(id)arg1 actionBlock:(CDUnknownBlockType)arg2;
 - (id)initWithJSObject:(id)arg1 context:(id)arg2;
-- (id)initWithAppViewObject:(id)arg1 context:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

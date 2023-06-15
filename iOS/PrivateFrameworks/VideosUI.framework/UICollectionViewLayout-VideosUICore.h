@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UICollectionViewLayout.h>
+#import <UIKitCore/UICollectionViewLayout.h>
 
 @interface UICollectionViewLayout (VideosUICore)
+- (struct CGRect)vui_layoutFrameForSection:(long long)arg1;
 - (void)vui_registerClass:(Class)arg1 forDecorationViewOfKind:(id)arg2;
 @end
 

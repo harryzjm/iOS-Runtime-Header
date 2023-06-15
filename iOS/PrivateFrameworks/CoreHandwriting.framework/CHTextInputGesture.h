@@ -27,7 +27,7 @@
 + (_Bool)shouldReclassifyGestureType:(long long)arg1;
 + (_Bool)isEditGestureForDrawing:(id)arg1 targetContentInfo:(id)arg2 tentativeResultType:(long long)arg3;
 + (id)verticalBarGestureFromLineResult:(id)arg1 currentGesture:(id)arg2;
-+ (long long)_cursorPositionForPoint:(struct CGPoint)arg1 referenceString:(id)arg2 referenceCharRects:(struct CGRect *)arg3 searchingRange:(struct _NSRange)arg4;
++ (long long)_cursorPositionForPoint:(struct CGPoint)arg1 referenceString:(id)arg2 baseDirection:(int)arg3 referenceCharRects:(struct CGRect *)arg4 searchingRange:(struct _NSRange)arg5;
 + (struct _NSRange)rangeOfTokenAtCharacterIndex:(long long)arg1 inString:(id)arg2 locale:(id)arg3;
 + (void)_shouldExpandToFullTokensForScriptInString:(id)arg1 withRange:(struct _NSRange)arg2 shouldExpandStart:(_Bool *)arg3 shouldExpandEnd:(_Bool *)arg4;
 + (struct _NSRange)_affectedRangeByRefiningShapeBasedGesture:(struct _NSRange)arg1 resultType:(long long)arg2 drawing:(id)arg3 targetContentInfo:(id)arg4;
@@ -45,6 +45,7 @@
 - (struct _NSRange)_affectedRangeByAdjustingToTokensIfNeeded:(struct _NSRange)arg1 allowSubtoken:(_Bool)arg2 didExpand:(_Bool *)arg3;
 - (struct _NSRange)_affectedRangeByAdjustingForProtectedCharacters:(struct _NSRange)arg1;
 - (struct _NSRange)_affectedRangeByRemovingTerminatingNewLines:(struct _NSRange)arg1;
+- (struct _NSRange)_affectedRangeByExpandingToComposedCharacterSequences:(struct _NSRange)arg1;
 - (struct _NSRange)_affectedRangeByTrimmingSpaces:(struct _NSRange)arg1;
 - (void)getAffectedRange:(struct _NSRange *)arg1 expandedToFullTokens:(_Bool *)arg2;
 - (id)textResult;

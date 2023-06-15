@@ -16,11 +16,12 @@
     MISSING_TYPE *storefrontLocalizer;
     MISSING_TYPE *mediaTagStringBuilder;
     MISSING_TYPE *subscriptionToken;
-    MISSING_TYPE *rootProperty;
+    MISSING_TYPE *filterRoot;
     MISSING_TYPE *filter;
     MISSING_TYPE *title;
     MISSING_TYPE *row;
     MISSING_TYPE *filterResult;
+    MISSING_TYPE *isFilteringEnabled;
 }
 
 @end

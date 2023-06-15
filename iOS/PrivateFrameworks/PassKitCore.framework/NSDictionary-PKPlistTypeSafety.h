@@ -12,6 +12,7 @@
 - (id)PKSetForKey:(id)arg1;
 - (id)PKArrayContaining:(Class)arg1 forKey:(id)arg2;
 - (id)PKArrayForKey:(id)arg1;
+- (id)PKDictionaryOfKeyClass:(Class)arg1 valueClass:(Class)arg2 ForKey:(id)arg3;
 - (id)PKDictionaryForKey:(id)arg1;
 - (id)PKDataForKey:(id)arg1;
 - (_Bool)PKBoolForKey:(id)arg1;
@@ -21,6 +22,7 @@
 - (id)PKUUIDForKey:(id)arg1;
 - (id)PKURLForKey:(id)arg1;
 - (id)PKStringForKey:(id)arg1;
+- (id)PKDateComponentsForKey:(id)arg1;
 - (id)PKDateForKey:(id)arg1;
 - (id)PKDecimalNumberForKey:(id)arg1;
 - (id)PKDecimalNumberFromStringForKey:(id)arg1;

@@ -15,8 +15,6 @@ __attribute__((visibility("hidden")))
     id <MTLFunction> _computeFunction;
 }
 
-@property(retain, nonatomic) id <MTLFunction> computeFunction; // @synthesize computeFunction=_computeFunction;
-@property(retain, nonatomic) id <MTLComputePipelineState> state; // @synthesize state=_state;
 - (id)description;
 - (void)dealloc;
 - (id)init;

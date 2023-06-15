@@ -12,6 +12,7 @@
 __attribute__((visibility("hidden")))
 @interface UIKeyboardCandidateController : NSObject
 {
+    _Bool _isExtended;
     _Bool _inlineRectIsVertical;
     _Bool _adjustForLeftHandBias;
     _Bool _reuseArrowButtonToExpandAssistantBarItems;
@@ -141,7 +142,8 @@ __attribute__((visibility("hidden")))
 - (void)toggleBarExtended;
 - (void)extendKeyboardBackdropHeight:(double)arg1;
 - (void)setupAnimatorWithCurve:(long long)arg1;
-@property(readonly, nonatomic) _Bool isExtended;
+@property(nonatomic) _Bool isExtended;
+- (void)syncIsExtended;
 - (_Bool)isKeyExtended;
 @property(readonly, nonatomic) _Bool inlineViewIsExtended;
 @property(readonly, nonatomic) _Bool barIsExtended;
@@ -151,6 +153,7 @@ __attribute__((visibility("hidden")))
 - (double)candidateBarHeight;
 - (double)candidateBarWidth;
 - (double)rowHeightForBarForOrientation:(long long)arg1;
+- (_Bool)currentLanguageHasExuberatedLineHeight;
 - (void)updateOpacitiesToState:(id)arg1;
 - (void)updateStatesForKey;
 - (void)updateStatesForInlineView;

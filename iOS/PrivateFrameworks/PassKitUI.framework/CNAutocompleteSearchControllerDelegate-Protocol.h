@@ -22,6 +22,7 @@
 - (UIColor *)searchController:(CNAutocompleteSearchController *)arg1 tintColorForRecipient:(CNComposeRecipient *)arg2;
 - (CNComposeRecipient *)searchController:(CNAutocompleteSearchController *)arg1 preferredRecipientForRecipient:(CNComposeRecipient *)arg2;
 - (unsigned long long)searchController:(CNAutocompleteSearchController *)arg1 presentationOptionsForRecipient:(CNComposeRecipient *)arg2;
+- (void)searchController:(CNAutocompleteSearchController *)arg1 textViewTextDidChange:(NSString *)arg2;
 - (void)searchController:(CNAutocompleteSearchController *)arg1 didRemoveRecipient:(CNComposeRecipient *)arg2;
 - (void)searchController:(CNAutocompleteSearchController *)arg1 didAddRecipient:(CNComposeRecipient *)arg2;
 @end

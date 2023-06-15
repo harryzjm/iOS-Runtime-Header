@@ -11,6 +11,7 @@
 @interface _TtC12NewsArticles24ArticleViewerAudioStyler : _TtCs12_SwiftObject
 {
     MISSING_TYPE *navigationItemStyler;
+    MISSING_TYPE *newsPlusLabelStyler;
 }
 
 @end

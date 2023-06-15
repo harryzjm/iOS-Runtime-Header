@@ -10,8 +10,8 @@
 @protocol MTLDevice;
 
 @protocol MTLSamplerState <NSObject>
-@property(nonatomic, readonly) struct MTLResourceID gpuResourceID;
-@property(nonatomic, readonly) id <MTLDevice> device;
-@property(nonatomic, readonly) NSString *label;
+@property(readonly) struct MTLResourceID gpuResourceID;
+@property(readonly) id <MTLDevice> device;
+@property(readonly) NSString *label;
 @end
 

@@ -15,13 +15,13 @@ __attribute__((visibility("hidden")))
     int _healthNotificationToken;
     _Bool _needsFetching;
     _Bool _isListeningToChanges;
+    HKHealthStore *_healthStore;
+    HKMedicalIDStore *_medicalIDStore;
     CNUIContactsEnvironment *_environment;
     _HKMedicalIDData *_medicalIDData;
     id <CNScheduler> _workQueue;
     NSMutableDictionary *_medicalIDDataHandlers;
     id <CNScheduler> _stateLock;
-    HKHealthStore *_healthStore;
-    HKMedicalIDStore *_medicalIDStore;
 }
 
 + (id)identifiersForContactMatchingEmergencyContacts:(id)arg1 contactStore:(id)arg2;
@@ -30,8 +30,6 @@ __attribute__((visibility("hidden")))
 + (id)descriptorForRequiredKeys;
 + (id)log;
 - (void).cxx_destruct;
-@property(retain, nonatomic) HKMedicalIDStore *medicalIDStore; // @synthesize medicalIDStore=_medicalIDStore;
-@property(retain, nonatomic) HKHealthStore *healthStore; // @synthesize healthStore=_healthStore;
 @property(readonly, nonatomic) id <CNScheduler> stateLock; // @synthesize stateLock=_stateLock;
 @property(readonly, nonatomic) NSMutableDictionary *medicalIDDataHandlers; // @synthesize medicalIDDataHandlers=_medicalIDDataHandlers;
 @property(nonatomic) _Bool isListeningToChanges; // @synthesize isListeningToChanges=_isListeningToChanges;
@@ -39,6 +37,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) id <CNScheduler> workQueue; // @synthesize workQueue=_workQueue;
 @property(retain, nonatomic) _HKMedicalIDData *medicalIDData; // @synthesize medicalIDData=_medicalIDData;
 @property(retain, nonatomic) CNUIContactsEnvironment *environment; // @synthesize environment=_environment;
+@property(retain, nonatomic) HKMedicalIDStore *medicalIDStore; // @synthesize medicalIDStore=_medicalIDStore;
+@property(retain, nonatomic) HKHealthStore *healthStore; // @synthesize healthStore=_healthStore;
 - (id)createMedicalIDFromContact:(id)arg1;
 - (void)startListeningForChanges;
 - (void)notifyHandlersWithMedicalIDData:(id)arg1;

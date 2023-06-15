@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class AVCapturePhotoSettings, AVMomentCaptureSettings, AVWeakReference, NSArray, NSDictionary, NSMutableArray, NSString;
-@protocol OS_dispatch_group, OS_dispatch_queue;
+@protocol AVCapturePhotoCaptureDelegate, OS_dispatch_group, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface AVCapturePhotoOutputInternal : NSObject
@@ -88,12 +88,24 @@ __attribute__((visibility("hidden")))
     _Bool spatialOverCaptureSupported;
     _Bool spatialOverCaptureEnabled;
     AVMomentCaptureSettings *momentCaptureInFlight;
+    id <AVCapturePhotoCaptureDelegate> momentPhotoCaptureDelegateInFlight;
+    NSString *momentCaptureRequestIdentifierInFlight;
     long long lastMomentSettingsUniqueID;
-    _Bool deferredProcessingSupported;
-    _Bool deferredProcessingEnabled;
+    _Bool autoDeferredPhotoDeliverySupported;
+    _Bool autoDeferredPhotoDeliveryEnabled;
     _Bool processedPhotoZoomWithoutUpscalingSupported;
+    _Bool focusPixelFocusBlurScoreSupported;
+    _Bool focusPixelFocusBlurScoreEnabled;
     _Bool contentAwareDistortionCorrectionSupported;
     _Bool contentAwareDistortionCorrectionEnabled;
+    _Bool responsiveCaptureSupported;
+    _Bool responsiveCaptureEnabled;
+    _Bool zeroShutterLagSupported;
+    _Bool zeroShutterLagEnabled;
+    _Bool zeroShutterLagAutomaticallyEnabled;
+    long long captureReadiness;
+    struct AVCapturePhotoOutputCaptureReadinessState readinessState;
+    NSMutableArray *readinessCoordinators;
     _Bool previewQualityAdjustedPhotoFilterRenderingSupported;
     _Bool previewQualityAdjustedPhotoFilterRenderingEnabled;
     _Bool fastCapturePrioritizationSupported;

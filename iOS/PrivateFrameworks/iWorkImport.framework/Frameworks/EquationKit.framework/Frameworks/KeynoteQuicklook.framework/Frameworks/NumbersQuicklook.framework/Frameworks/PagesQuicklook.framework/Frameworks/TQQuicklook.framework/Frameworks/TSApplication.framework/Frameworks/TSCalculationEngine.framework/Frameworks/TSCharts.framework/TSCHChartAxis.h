@@ -41,6 +41,7 @@
 @property(nonatomic) __weak TSCHChartAxis *nonTransientCounterpart; // @synthesize nonTransientCounterpart=_nonTransientCounterpart;
 @property(nonatomic) __weak TSCHChartModel *model; // @synthesize model=_model;
 @property(retain, nonatomic) TSCHChartAxisID *axisID; // @synthesize axisID=_axisID;
+- (id)transformedTuplesWithTuple:(id)arg1;
 - (id)nonstyle;
 - (void)propertiesWereMutated:(id)arg1;
 - (id)swapTuplesForParagraphStyleMutations:(id)arg1 forReferencingProperty:(int)arg2;
@@ -139,6 +140,7 @@
 - (id)referenceLineWithUUID:(id)arg1;
 - (id)referenceLineAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSArray *referenceLines;
+@property(readonly) _Bool supportsSummaryValueLabels;
 @property(readonly) _Bool supportsReferenceLines;
 @property(readonly, nonatomic) TSULocale *locale;
 @property(readonly) _Bool isRangeContinuous;

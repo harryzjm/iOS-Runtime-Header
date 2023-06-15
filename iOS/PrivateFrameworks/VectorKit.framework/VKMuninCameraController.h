@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     shared_ptr_e963992e _taskContext;
     struct optional<(anonymous namespace)::PointSegment> _currentPointSegment;
     struct shared_ptr<(anonymous namespace)::PathAnimator> _pathAnimator;
+    struct mutex _pathAnimatorMutex;
     struct unique_ptr<(anonymous namespace)::BumpAnimator, std::default_delete<(anonymous namespace)::BumpAnimator>> _bumpAnimator;
     _Bool _panning;
     _Bool _panStopping;
@@ -39,6 +40,7 @@ __attribute__((visibility("hidden")))
     struct shared_ptr<geo::Task> _preparePath;
     struct unique_ptr<(anonymous namespace)::PathAnimationDescription, std::default_delete<(anonymous namespace)::PathAnimationDescription>> _currentPathAnimation;
     struct unique_ptr<(anonymous namespace)::PendingPathAnimation, std::default_delete<(anonymous namespace)::PendingPathAnimation>> _pendingPathAnimation;
+    unsigned char _desiredLOD;
 }
 
 - (id).cxx_construct;
@@ -76,10 +78,10 @@ __attribute__((visibility("hidden")))
 - (Unit_5669e52e)_horizontalFieldOfView:(Unit_5669e52e)arg1;
 - (void)startPanningAtPoint:(struct CGPoint)arg1 panAtStartPoint:(_Bool)arg2;
 - (_Bool)tapAtPoint:(struct CGPoint)arg1;
-- (void)moveAlongPath:(struct PathAnimationDescription)arg1 tap:(struct TapDescription)arg2 preloadedViews:(unordered_map_eabd84a1)arg3 continued:(_Bool)arg4;
+- (void)moveAlongPath:(struct PathAnimationDescription)arg1 tap:(struct TapDescription)arg2 preloadedViews:(unordered_map_94bc209d)arg3 continued:(_Bool)arg4;
 - (void)resetPathAnimation;
 - (void)pathAnimationComplete:(unsigned long long)arg1;
-- (void)pathAnimationPrepared:(struct PathAnimationDescription)arg1 tap:(struct TapDescription)arg2 preloadedViews:(unordered_map_eabd84a1)arg3;
+- (void)pathAnimationPrepared:(struct PathAnimationDescription)arg1 tap:(struct TapDescription)arg2 preloadedViews:(unordered_map_94bc209d)arg3;
 - (void)runBumpAnimation:(const void *)arg1 targetPoint:(const void *)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)animatePath:(void *)arg1 withTarget:(const void *)arg2 lookAtTarget:(_Bool)arg3 constantLod:(_Bool)arg4 prePruneData:(_Bool)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)animatePath:(void *)arg1 animator:(const void *)arg2 preloadedRequiredViews:(void *)arg3 prePruneData:(_Bool)arg4 completionHandler:(CDUnknownBlockType)arg5;
@@ -99,14 +101,15 @@ __attribute__((visibility("hidden")))
 - (const void *)currentPoint;
 - (void)setCurrentPoint:(const void *)arg1 secondaryPoint:(optional_89838882)arg2;
 - (void)setCurrentPoint:(const void *)arg1;
-- (void)setCenterCoordinate:(CDStruct_c3b9c2ee)arg1 altitude:(double)arg2 yaw:(double)arg3 pitch:(double)arg4 duration:(double)arg5 animationStyle:(long long)arg6 timingCurve:(CDUnknownBlockType)arg7 completion:(CDUnknownBlockType)arg8;
+- (void)setCenterCoordinate:(CDStruct_2c43369c)arg1 altitude:(double)arg2 yaw:(double)arg3 pitch:(double)arg4 duration:(double)arg5 animationStyle:(long long)arg6 timingCurve:(CDUnknownBlockType)arg7 completion:(CDUnknownBlockType)arg8;
 - (void)setCameraFrame:(CameraFrame_b765d6d7)arg1;
 - (void)setVkCamera:(id)arg1;
 - (double)altitude;
 - (double)pitch;
 - (void)_setHeading:(Unit_5669e52e)arg1;
 - (double)heading;
-- (CDStruct_c3b9c2ee)centerCoordinate;
+- (CDStruct_2c43369c)centerCoordinate;
+- (void)_updateDebugOverlay:(void *)arg1;
 - (void)updateWithTimestamp:(double)arg1 withContext:(void *)arg2;
 - (id)initWithTaskContext:(shared_ptr_e963992e)arg1 mapDataAccess:(void *)arg2 animationRunner:(struct AnimationRunner *)arg3 runLoopController:(struct RunLoopController *)arg4 cameraDelegate:(id)arg5 muninSceneLogic:(void *)arg6 elevationLogic:(void *)arg7;
 

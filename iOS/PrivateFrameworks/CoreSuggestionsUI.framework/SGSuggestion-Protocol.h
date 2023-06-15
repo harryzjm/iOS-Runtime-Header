@@ -10,10 +10,10 @@
 @protocol SGSuggestionCategory, SGSuggestionDelegate, SGSuggestionList;
 
 @protocol SGSuggestion <NSObject>
+@property(nonatomic) __weak id <SGSuggestionDelegate> suggestionDelegate;
 - (SGSuggestionAction *)suggestionPrimaryAction;
 - (NSString *)suggestionTitle;
 - (id <SGSuggestionCategory>)suggestionCategory;
-@property(nonatomic) __weak id <SGSuggestionDelegate> suggestionDelegate;
 
 @optional
 - (SGBannerDividerParameter *)suggestionDivider;

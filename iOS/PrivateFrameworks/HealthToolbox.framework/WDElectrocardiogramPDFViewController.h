@@ -25,9 +25,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSDate *sampleDate; // @synthesize sampleDate=_sampleDate;
 @property(readonly, nonatomic) NSData *pdfData; // @synthesize pdfData=_pdfData;
 - (unsigned long long)overrideMask;
-- (void)didTapShare;
+- (void)didTapShare:(id)arg1;
 - (void)didTapDone;
-- (void)viewWillAppear:(_Bool)arg1;
 - (void)loadView;
 @property(readonly, nonatomic) PDFView *pdfView;
 - (id)initWithPDFData:(id)arg1 sampleDate:(id)arg2 firstName:(id)arg3 lastName:(id)arg4;

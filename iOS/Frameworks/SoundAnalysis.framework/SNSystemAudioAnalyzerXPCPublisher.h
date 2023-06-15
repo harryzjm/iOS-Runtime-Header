@@ -6,20 +6,20 @@
 
 #import <objc/NSObject.h>
 
-@protocol SNSystemAudioAnalyzerXPCProtocol><NSXPCProxyCreating;
+@class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
 @interface SNSystemAudioAnalyzerXPCPublisher : NSObject
 {
-    id <SNSystemAudioAnalyzerXPCProtocol><NSXPCProxyCreating> _subscriber;
+    MISSING_TYPE *subscriber;
 }
 
 - (void).cxx_destruct;
+- (id)init;
 - (void)setAudioConfiguration:(id)arg1;
 - (void)removeAllRequests;
 - (void)removeRequest:(id)arg1;
 - (_Bool)addRequest:(id)arg1 withObserver:(id)arg2 error:(id *)arg3;
-- (id)init;
 
 @end
 

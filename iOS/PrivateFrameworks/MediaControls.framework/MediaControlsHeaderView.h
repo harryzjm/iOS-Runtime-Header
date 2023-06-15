@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class MPButton, MPCPlayerPath, MPRouteLabel, MPUMarqueeView, MTMaterialView, MTVisualStylingProvider, MediaControlsRoutingButtonView, NSString, UIButton, UIImageView, UILabel, _UICursorInteraction;
+@class MPButton, MPCPlayerPath, MPRouteLabel, MPUMarqueeView, MTMaterialView, MTVisualStylingProvider, MediaControlsRoutingButtonView, NSString, UIButton, UIImageView, UILabel, UIPointerInteraction;
 
 __attribute__((visibility("hidden")))
 @interface MediaControlsHeaderView : UIView
@@ -30,7 +30,7 @@ __attribute__((visibility("hidden")))
     UIButton *_launchNowPlayingAppButton;
     long long _buttonType;
     MTVisualStylingProvider *_visualStylingProvider;
-    _UICursorInteraction *_cursorInteraction;
+    UIPointerInteraction *_pointerInteraction;
     MTMaterialView *_artworkBackground;
     UIView *_shadow;
     MPUMarqueeView *_primaryMarqueeView;
@@ -52,7 +52,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) MPUMarqueeView *primaryMarqueeView; // @synthesize primaryMarqueeView=_primaryMarqueeView;
 @property(retain, nonatomic) UIView *shadow; // @synthesize shadow=_shadow;
 @property(retain, nonatomic) MTMaterialView *artworkBackground; // @synthesize artworkBackground=_artworkBackground;
-@property(retain, nonatomic) _UICursorInteraction *cursorInteraction; // @synthesize cursorInteraction=_cursorInteraction;
+@property(retain, nonatomic) UIPointerInteraction *pointerInteraction; // @synthesize pointerInteraction=_pointerInteraction;
 @property(nonatomic) struct CGSize overrideSize; // @synthesize overrideSize=_overrideSize;
 @property(retain, nonatomic) MTVisualStylingProvider *visualStylingProvider; // @synthesize visualStylingProvider=_visualStylingProvider;
 @property(nonatomic) _Bool scalePlaceholderImage; // @synthesize scalePlaceholderImage=_scalePlaceholderImage;
@@ -72,8 +72,8 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIImageView *placeholderArtworkView; // @synthesize placeholderArtworkView=_placeholderArtworkView;
 @property(retain, nonatomic) UIImageView *artworkView; // @synthesize artworkView=_artworkView;
 @property(copy, nonatomic) MPCPlayerPath *playerPath; // @synthesize playerPath=_playerPath;
-- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2 modifiers:(long long)arg3;
-- (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
+- (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
 - (void)launchNowPlayingAppButtonPressed;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)_handleContentSizeCategoryDidChangeNotification:(id)arg1;

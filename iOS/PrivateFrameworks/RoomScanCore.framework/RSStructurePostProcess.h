@@ -10,7 +10,5 @@
 {
 }
 
-- (id)runWithLcnnFloorPlan:(id)arg1 onlineFloorPlan:(id)arg2 objects:(id)arg3 mirrorPoints:(id)arg4 keyframes:(id)arg5 pointCloud:(id)arg6;
-
 @end
 

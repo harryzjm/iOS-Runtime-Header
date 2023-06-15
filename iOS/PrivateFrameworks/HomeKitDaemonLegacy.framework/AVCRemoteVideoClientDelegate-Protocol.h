@@ -6,7 +6,7 @@
 
 #import <HomeKitDaemonLegacy/NSObject-Protocol.h>
 
-@class AVCRemoteVideoClient, VideoAttributes;
+@class AVCRemoteVideoClient, NSDictionary, VideoAttributes;
 
 @protocol AVCRemoteVideoClientDelegate <NSObject>
 
@@ -16,6 +16,7 @@
 - (void)remoteVideoServerDidDie:(AVCRemoteVideoClient *)arg1;
 - (void)remoteVideoClientDidReceiveLastFrame:(AVCRemoteVideoClient *)arg1;
 - (void)remoteVideoClient:(AVCRemoteVideoClient *)arg1 videoDidSuspend:(_Bool)arg2;
+- (void)remoteVideoClient:(AVCRemoteVideoClient *)arg1 networkQualityDidDegrade:(_Bool)arg2 info:(NSDictionary *)arg3;
 - (void)remoteVideoClient:(AVCRemoteVideoClient *)arg1 videoDidDegrade:(_Bool)arg2;
 - (void)remoteVideoClient:(AVCRemoteVideoClient *)arg1 remoteMediaDidStall:(_Bool)arg2;
 - (void)remoteVideoClient:(AVCRemoteVideoClient *)arg1 remoteVideoDidPause:(_Bool)arg2;

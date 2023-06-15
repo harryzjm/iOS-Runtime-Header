@@ -12,19 +12,19 @@ __attribute__((visibility("hidden")))
 @interface CNContainerDataSource : NSObject
 {
     _Bool _ignoresExchangeContainers;
-    CNContactStore *_store;
     NSArray *_containerPickerItems;
     NSArray *_containers;
+    CNContactStore *_store;
     CNContactViewCache *_contactViewCache;
 }
 
 + (id)os_log;
 - (void).cxx_destruct;
 @property(retain, nonatomic) CNContactViewCache *contactViewCache; // @synthesize contactViewCache=_contactViewCache;
-@property(retain, nonatomic) NSArray *containers; // @synthesize containers=_containers;
-@property(retain, nonatomic) NSArray *containerPickerItems; // @synthesize containerPickerItems=_containerPickerItems;
 @property(retain, nonatomic) CNContactStore *store; // @synthesize store=_store;
 @property(nonatomic) _Bool ignoresExchangeContainers; // @synthesize ignoresExchangeContainers=_ignoresExchangeContainers;
+@property(retain, nonatomic) NSArray *containers; // @synthesize containers=_containers;
+@property(retain, nonatomic) NSArray *containerPickerItems; // @synthesize containerPickerItems=_containerPickerItems;
 - (id)writableContainersForAccount:(id)arg1;
 - (id)allAccounts;
 - (void)discoverContainers;

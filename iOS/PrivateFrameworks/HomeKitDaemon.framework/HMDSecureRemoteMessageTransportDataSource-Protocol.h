@@ -7,9 +7,10 @@
 #import <HomeKitDaemon/NSObject-Protocol.h>
 
 @class HMDAccountRegistry, HMDDevice, HMDModernTransportDeviceReachabilityObserver, HMDRemoteDeviceMonitor, NSArray;
-@protocol HMDSecureRemoteSession;
+@protocol HMDRemoteHomeMessagingManager, HMDSecureRemoteSession;
 
 @protocol HMDSecureRemoteMessageTransportDataSource <NSObject>
+@property(readonly, nonatomic) id <HMDRemoteHomeMessagingManager> homeMessagingManager;
 @property(readonly, nonatomic) HMDModernTransportDeviceReachabilityObserver *reachabilityObserver;
 @property(readonly, nonatomic) HMDRemoteDeviceMonitor *deviceMonitor;
 @property(readonly, nonatomic) HMDAccountRegistry *accountRegistry;

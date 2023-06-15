@@ -9,6 +9,8 @@
 @class CKComposition, CKConversation, CKCoreChatController;
 
 @protocol CKCoreChatControllerDelegate <NSObject>
+- (void)chatController:(CKCoreChatController *)arg1 requestRecoverJunkConversation:(CKConversation *)arg2;
+- (void)chatController:(CKCoreChatController *)arg1 requestDeleteJunkConversation:(CKConversation *)arg2;
 - (void)chatController:(CKCoreChatController *)arg1 didReportSpamForConversation:(CKConversation *)arg2;
 - (void)chatController:(CKCoreChatController *)arg1 didSendCompositionInConversation:(CKConversation *)arg2;
 - (void)chatController:(CKCoreChatController *)arg1 willSendComposition:(CKComposition *)arg2 inConversation:(CKConversation *)arg3;

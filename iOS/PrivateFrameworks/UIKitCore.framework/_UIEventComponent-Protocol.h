@@ -7,5 +7,6 @@
 #import <UIKitCore/NSObject-Protocol.h>
 
 @protocol _UIEventComponent <NSObject>
+@property(readonly, nonatomic) unsigned long long _eventComponentType;
 @end
 

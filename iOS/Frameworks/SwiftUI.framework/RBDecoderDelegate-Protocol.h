@@ -6,13 +6,14 @@
 
 #import <SwiftUI/NSObject-Protocol.h>
 
-@class NSData;
+@class NSData, RBShaderLibrary;
 
 @protocol RBDecoderDelegate <NSObject>
 
 @optional
+- (RBShaderLibrary *)decodedShaderLibraryWithData:(NSData *)arg1 error:(id *)arg2;
 - (struct CGFont *)decodedCGFontWithData:(NSData *)arg1 error:(id *)arg2;
-- (const void *)decodedImageContentsWithData:(NSData *)arg1 type:(int *)arg2 error:(id *)arg3;
+- (void *)decodedImageContentsWithData:(NSData *)arg1 type:(int *)arg2 error:(id *)arg3;
 - (void)decodedMetadata:(NSData *)arg1;
 @end
 

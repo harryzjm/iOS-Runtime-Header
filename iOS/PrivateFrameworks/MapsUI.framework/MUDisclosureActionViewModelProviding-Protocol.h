@@ -6,10 +6,11 @@
 
 #import <MapsUI/NSObject-Protocol.h>
 
-@class NSString, UIImage;
+@class NSString, UIColor, UIImage;
 
 @protocol MUDisclosureActionViewModelProviding <NSObject>
 @property(copy, nonatomic) CDUnknownBlockType actionBlock;
+@property(retain, nonatomic) UIColor *imageTintColor;
 @property(retain, nonatomic) UIImage *image;
 @property(retain, nonatomic) NSString *titleString;
 @end

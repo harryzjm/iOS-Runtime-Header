@@ -6,7 +6,7 @@
 
 #import <SpringBoardHome/SBHWidgetDragHandlerPassing-Protocol.h>
 
-@class SBIconView, UIView, UIViewController;
+@class SBHApplicationWidgetCollection, SBIconView, UIView, UIViewController;
 @protocol SBHWidgetSheetViewControlling;
 
 @protocol SBHAddWidgetSheetViewControllerDelegate <SBHWidgetDragHandlerPassing>
@@ -20,5 +20,7 @@
 @optional
 - (void)configureBackgroundView:(UIView *)arg1 matchingMaterialBeneathAddWidgetSheetViewController:(UIViewController<SBHWidgetSheetViewControlling> *)arg2;
 - (UIView *)backgroundViewMatchingMaterialBeneathAddWidgetSheetViewController:(UIViewController<SBHWidgetSheetViewControlling> *)arg1;
+- (UIViewController *)galleryViewControllerForAddWidgetSheetViewController:(UIViewController<SBHWidgetSheetViewControlling> *)arg1;
+- (UIViewController *)addWidgetSheetViewController:(UIViewController<SBHWidgetSheetViewControlling> *)arg1 detailViewControllerForWidgetCollection:(SBHApplicationWidgetCollection *)arg2;
 @end
 

@@ -12,7 +12,8 @@
 {
     MISSING_TYPE *storage;
     MISSING_TYPE *options;
-    MISSING_TYPE *codingPath;
+    MISSING_TYPE *encoderCodingPathNode;
+    MISSING_TYPE *codingPathDepth;
 }
 
 @end

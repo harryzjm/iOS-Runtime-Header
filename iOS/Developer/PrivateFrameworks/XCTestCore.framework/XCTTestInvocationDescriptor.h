@@ -21,7 +21,6 @@
 @property(readonly) NSInvocation *invocation; // @synthesize invocation=_invocation;
 @property(readonly) NSNumber *convention; // @synthesize convention=_convention;
 @property(readonly, copy) NSString *selectorString; // @synthesize selectorString=_selectorString;
-@property(readonly, getter=isAvailable) _Bool available;
 - (id)initWithSelectorString:(id)arg1 convention:(long long)arg2 invocation:(id)arg3 customErrorMessage:(id)arg4;
 - (id)initWithSelectorString:(id)arg1 invocation:(id)arg2 customErrorMessage:(id)arg3;
 - (id)initWithSelectorString:(id)arg1 conventionNumber:(id)arg2 invocation:(id)arg3 customErrorMessage:(id)arg4;

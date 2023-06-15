@@ -6,17 +6,20 @@
 
 #import <Navigation/NSObject-Protocol.h>
 
-@class GEOComposedGuidanceEvent, GEOComposedRouteETAUPosition, GEOComposedWaypoint, GEONameInfo, GEONavigationGuidanceState, GEOStep, MNActiveRouteInfo, MNBatteryChargeInfo, MNDisplayETAInfo, MNGuidanceEventFeedback, MNGuidanceJunctionViewInfo, MNGuidanceLaneInfo, MNGuidanceSignInfo, MNLocation, MNNavigationSession, MNRouteDistanceInfo, MNTrafficIncidentAlert, MNTransitAlert, NSArray, NSError, NSString, NSUUID;
+@class GEOComposedGuidanceEvent, GEOComposedRouteETAUPosition, GEOComposedWaypoint, GEONameInfo, GEONavigationGuidanceState, GEOResumeRouteHandle, GEOStep, MNActiveRouteInfo, MNArrivalInfo, MNBatteryChargeInfo, MNDisplayETAInfo, MNGuidanceEventFeedback, MNGuidanceJunctionViewInfo, MNGuidanceLaneInfo, MNGuidanceSignInfo, MNLocation, MNNavigationServiceCallbackParameters, MNNavigationSession, MNRouteDistanceInfo, MNTrafficIncidentAlert, MNTransitAlert, MNVehicleParkingInfo, NSArray, NSError, NSString, NSUUID;
 
 @protocol MNNavigationSessionObserver <NSObject>
 
 @optional
+- (void)navigationSession:(MNNavigationSession *)arg1 didSendNavigationServiceCallback:(MNNavigationServiceCallbackParameters *)arg2;
 - (void)navigationSession:(MNNavigationSession *)arg1 didReceiveTransitAlert:(MNTransitAlert *)arg2;
 - (void)navigationSession:(MNNavigationSession *)arg1 didStartSpeakingPrompt:(NSString *)arg2;
 - (void)navigationSession:(MNNavigationSession *)arg1 didActivateAudioSession:(_Bool)arg2;
 - (void)navigationSession:(MNNavigationSession *)arg1 didInvalidateTrafficIncidentAlert:(MNTrafficIncidentAlert *)arg2;
 - (void)navigationSession:(MNNavigationSession *)arg1 didUpdateTrafficIncidentAlert:(MNTrafficIncidentAlert *)arg2;
 - (void)navigationSession:(MNNavigationSession *)arg1 didReceiveTrafficIncidentAlert:(MNTrafficIncidentAlert *)arg2 responseCallback:(void (^)(_Bool))arg3;
+- (void)navigationSession:(MNNavigationSession *)arg1 didUpdateVehicleParkingInfo:(MNVehicleParkingInfo *)arg2;
+- (void)navigationSession:(MNNavigationSession *)arg1 didUpdateBackgroundWalkingRoute:(MNActiveRouteInfo *)arg2;
 - (void)navigationSession:(MNNavigationSession *)arg1 updatedGuidanceEventFeedback:(MNGuidanceEventFeedback *)arg2;
 - (void)navigationSession:(MNNavigationSession *)arg1 newGuidanceEventFeedback:(MNGuidanceEventFeedback *)arg2;
 - (void)navigationSession:(MNNavigationSession *)arg1 didEnableGuidancePrompts:(_Bool)arg2;
@@ -62,13 +65,18 @@
 - (void)navigationSessionWillPause:(MNNavigationSession *)arg1;
 - (void)navigationSessionDidArrive:(MNNavigationSession *)arg1;
 - (void)navigationSessionDidEnterPreArrivalState:(MNNavigationSession *)arg1;
-- (void)navigationSession:(MNNavigationSession *)arg1 didResumeNavigatingFromWaypoint:(GEOComposedWaypoint *)arg2 endOfLegIndex:(unsigned long long)arg3 reason:(unsigned long long)arg4;
 - (void)navigationSession:(MNNavigationSession *)arg1 didArriveAtWaypoint:(GEOComposedWaypoint *)arg2 endOfLegIndex:(unsigned long long)arg3;
 - (void)navigationSession:(MNNavigationSession *)arg1 didEnterPreArrivalStateForWaypoint:(GEOComposedWaypoint *)arg2 endOfLegIndex:(unsigned long long)arg3;
+- (void)navigationSession:(MNNavigationSession *)arg1 isApproachingEndOfLeg:(unsigned long long)arg2;
+- (void)navigationSession:(MNNavigationSession *)arg1 didUpdateTargetLegIndex:(unsigned long long)arg2;
+- (void)navigationSession:(MNNavigationSession *)arg1 didResumeNavigatingFromWaypoint:(GEOComposedWaypoint *)arg2 endOfLegIndex:(unsigned long long)arg3 reason:(unsigned long long)arg4;
+- (void)navigationSession:(MNNavigationSession *)arg1 didUpdateArrivalInfo:(MNArrivalInfo *)arg2;
 - (void)navigationSession:(MNNavigationSession *)arg1 didUpdateStepNameInfo:(GEONameInfo *)arg2;
+- (void)navigationSessionDidFinishLocationUpdate:(MNNavigationSession *)arg1;
 - (void)navigationSession:(MNNavigationSession *)arg1 currentStepIndex:(unsigned long long)arg2 didUpdateDistanceUntilManeuver:(double)arg3 timeUntilManeuver:(double)arg4;
 - (void)navigationSession:(MNNavigationSession *)arg1 matchedToStepIndex:(unsigned long long)arg2 segmentIndex:(unsigned long long)arg3;
 - (void)navigationSession:(MNNavigationSession *)arg1 didUpdateMatchedLocation:(MNLocation *)arg2;
+- (void)navigationSession:(MNNavigationSession *)arg1 didUpdateResumeRouteHandle:(GEOResumeRouteHandle *)arg2;
 - (void)navigationSession:(MNNavigationSession *)arg1 shouldEndWithReason:(unsigned long long)arg2;
 - (void)navigationSession:(MNNavigationSession *)arg1 didStopWithReason:(unsigned long long)arg2;
 - (void)navigationSession:(MNNavigationSession *)arg1 willStopWithReason:(unsigned long long)arg2;

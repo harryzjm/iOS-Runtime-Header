@@ -4,18 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import "HMDDeviceController.h"
-
 __attribute__((visibility("hidden")))
-@interface __HMDCurrentDeviceController : HMDDeviceController
+@interface __HMDCurrentDeviceController
 {
 }
 
 - (void)__handleDeviceUpdated:(id)arg1;
 - (void)updateWithDevice:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)init;
-- (id)initWithDevice:(id)arg1;
-- (id)initWithIdentifier:(id)arg1;
 
 @end
 

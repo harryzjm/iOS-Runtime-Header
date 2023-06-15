@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 @class NSMutableDictionary, NSString, UIKBAutoFillTestExpectedResult, UINavigationItem, UIView;
 
 __attribute__((visibility("hidden")))
-@interface UIKBAutoFillTestArchive : NSObject <NSCopying>
+@interface UIKBAutoFillTestArchive : NSObject
 {
     NSMutableDictionary *_tableViewTagToDataSource;
     _Bool _requiresNavigationControllerNesting;

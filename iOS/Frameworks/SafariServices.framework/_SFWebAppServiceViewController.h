@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class BKSApplicationStateMonitor, NSMutableArray, NSString, SFApplicationManifestFetcher, UIColor, UIView, UIWebClip, WKProcessPool, WKWebsiteDataStore, _SFInjectedJavaScriptController, _SFWebClipMetadataFetcher;
+@class BKSApplicationStateMonitor, NSMutableArray, NSString, UIColor, UIView, UIWebClip, WBSApplicationManifestFetcher, WKProcessPool, WKWebsiteDataStore, _SFInjectedJavaScriptController, _SFWebClipMetadataFetcher;
 
 __attribute__((visibility("hidden")))
 @interface _SFWebAppServiceViewController
@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
     BKSApplicationStateMonitor *_stateMonitor;
     unsigned int _hostState;
     unsigned long long _mediaStateIconBeforeSuspension;
-    SFApplicationManifestFetcher *_applicationManifestFetcher;
+    WBSApplicationManifestFetcher *_applicationManifestFetcher;
     _SFInjectedJavaScriptController *_activityJSController;
     _SFWebClipMetadataFetcher *_webClipMetadataFetcher;
     UIColor *_themeColor;
@@ -26,20 +26,27 @@ __attribute__((visibility("hidden")))
 
 + (id)_exportedInterface;
 + (id)_remoteViewControllerInterface;
++ (id)serviceViewControllers;
 - (void).cxx_destruct;
 - (void)_updateThemeColor;
 - (void)_fetchApplicationManifestIfNeeded;
 - (void)statusBarIndicatorTappedWithCompletionHandler:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) _Bool audioOnly;
 - (void)muteMediaCapture;
-@property(readonly, nonatomic) NSString *URLString;
+@property(readonly, copy, nonatomic) NSString *URLString;
 - (void)setMediaStateIcon:(unsigned long long)arg1;
 @property(readonly, nonatomic) _Bool canOverrideStatusBar;
 - (void)_loadNextFallbackURL;
 - (void)_loadWebClipPageURL:(id)arg1;
 - (id)_canonicalPageURL;
 - (void)_handleHostStateUpdate:(id)arg1;
+- (void)handlePushNotificationActivation:(id)arg1;
 - (void)processWebPushForWebAppWithIdentifier:(id)arg1;
+- (void)websiteDataStore:(id)arg1 workerOrigin:(id)arg2 updatedAppBadge:(id)arg3;
+- (void)websiteDataStore:(id)arg1 openWindow:(id)arg2 fromServiceWorkerOrigin:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)websiteDataStore:(id)arg1 showNotification:(id)arg2;
+- (id)notificationPermissionsForWebsiteDataStore:(id)arg1;
+- (id)placeholderBundleIdentifierForDataStore:(id)arg1;
 - (void)loadWebAppWithIdentifier:(id)arg1;
 - (void)navigationBarDoneButtonWasTapped:(id)arg1;
 - (long long)_persona;
@@ -48,8 +55,10 @@ __attribute__((visibility("hidden")))
 - (_Bool)_usesScrollToTopView;
 - (void)_setCurrentWebViewController:(id)arg1;
 - (id)webViewConfiguration;
+- (void)setupPreferences:(id)arg1;
 - (void)_setUpCookieStoragePolicyForDataStore:(id)arg1;
 - (id)websiteDataStore;
+- (id)createWebsiteDataStoreForWebClipIdentifier:(id)arg1;
 - (id)websiteDataStoreConfigurationWithWebClipIdentifier:(id)arg1;
 - (_Bool)canPrint;
 - (void)webViewControllerDidUpdateThemeColor:(id)arg1;
@@ -63,12 +72,16 @@ __attribute__((visibility("hidden")))
 - (void)webViewController:(id)arg1 decidePolicyForNavigationAction:(id)arg2 decisionHandler:(CDUnknownBlockType)arg3;
 - (void)webViewControllerDidFirstVisuallyNonEmptyLayout:(id)arg1;
 - (void)webViewControllerDidChangeLoadingState:(id)arg1;
+- (void)webViewController:(id)arg1 updatedAppBadge:(id)arg2 fromSecurityOrigin:(id)arg3;
+- (void)webViewController:(id)arg1 requestNotificationPermissionForSecurityOrigin:(id)arg2 decisionHandler:(CDUnknownBlockType)arg3;
 - (void)webAppWillResignActive;
 - (void)webAppDidBecomeActive;
 - (void)_hostApplicationDidEnterBackground;
 - (void)setNeedsStatusBarAppearanceUpdate;
 - (long long)preferredStatusBarStyle;
 - (void)viewDidLoad;
+- (void)clearWebsiteDataWithWebClipIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)clearWebViewAndWebsiteDataWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (_Bool)_clientIsWebApp;
 

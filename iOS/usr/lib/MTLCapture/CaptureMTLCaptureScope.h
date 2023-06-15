@@ -6,7 +6,6 @@
 
 #import <Metal/MTLCaptureScope.h>
 
-__attribute__((visibility("hidden")))
 @interface CaptureMTLCaptureScope : MTLCaptureScope
 {
     struct GTTraceContext *_traceContext;

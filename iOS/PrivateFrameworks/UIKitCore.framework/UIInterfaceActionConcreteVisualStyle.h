@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface UIInterfaceActionConcreteVisualStyle : NSObject <NSCopying>
+@interface UIInterfaceActionConcreteVisualStyle : NSObject
 {
 }
 
@@ -26,9 +24,11 @@ __attribute__((visibility("hidden")))
 - (id)actionPropertiesAffectingImageViewStyling;
 - (void)configureAttributesForTitleLabel:(id)arg1 classificationLabel:(id)arg2 actionViewState:(id)arg3;
 - (id)actionPropertiesAffectingLabelStyling;
+- (double)actionSpacingForGroupViewState:(id)arg1;
 - (id)actionImageViewTintColorForImageProperty:(id)arg1 actionViewState:(id)arg2;
 - (id)actionClassificationLabelColorForViewState:(id)arg1;
 - (id)actionClassificationLabelFontForViewState:(id)arg1;
+- (id)actionTitleLabelCompositingFilterForViewState:(id)arg1;
 - (id)actionTitleLabelColorForViewState:(id)arg1;
 - (id)actionTitleLabelFontForViewState:(id)arg1;
 - (id)newActionBackgroundViewForViewState:(id)arg1;
@@ -42,6 +42,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)selectByPressGestureRequired;
 - (struct UIEdgeInsets)actionSequenceEdgeInsets;
 - (double)actionSectionSpacing;
+- (_Bool)allowsZeroSizedSectionSeparators;
 - (double)verticalImageContentSpacing;
 - (double)horizontalImageContentSpacing;
 - (struct CGSize)minimumActionContentSize;

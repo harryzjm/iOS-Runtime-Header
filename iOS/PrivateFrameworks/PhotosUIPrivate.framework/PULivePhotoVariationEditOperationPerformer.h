@@ -6,14 +6,14 @@
 
 #import <PhotosUICore/PXAssetEditOperationPerformer.h>
 
-@class NSString, PHAsset, PUPhotoKitPhotoEditMediaDestination;
+@class NSString, PEPhotoKitMediaDestination, PHAsset;
 
 __attribute__((visibility("hidden")))
 @interface PULivePhotoVariationEditOperationPerformer : PXAssetEditOperationPerformer
 {
     CDUnknownBlockType _completionHandler;
     _Bool _didSave;
-    PUPhotoKitPhotoEditMediaDestination *_mediaDestination;
+    PEPhotoKitMediaDestination *_mediaDestination;
     NSString *_sourceEditOperationType;
 }
 
@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 - (void)_resourceLoadedWithResult:(id)arg1 editOperationType:(id)arg2;
 - (void)_handleDidFinishSavingEditsForAsset:(id)arg1 error:(id)arg2;
 - (void)_handleLoadResult:(id)arg1 analysisResult:(id)arg2 editOperationType:(id)arg3;
+- (void)_saveAssetEditsWithContentEditingInput:(id)arg1 compositionController:(id)arg2 imageVersion:(long long)arg3 editOperationType:(id)arg4;
 - (void)_completeWithSuccess:(_Bool)arg1 error:(id)arg2;
 - (void)_performEditOperation:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)performUndo:(CDUnknownBlockType)arg1;

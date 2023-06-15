@@ -10,7 +10,8 @@
 
 @interface _TtC24IntelligencePlatformCore12encoderInput : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *tensor_1;
+    MISSING_TYPE *input0;
+    MISSING_TYPE *input1;
 }
 
 - (id)featureValueForName:(id)arg1;

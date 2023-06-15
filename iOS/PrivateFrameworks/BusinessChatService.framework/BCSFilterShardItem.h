@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *description;
 - (id)initWithBloomFilter:(id)arg1 bloomFilterString:(id)arg2 startIndex:(long long)arg3 shardCount:(long long)arg4 type:(long long)arg5 expirationDate:(id)arg6;
 - (id)initWithBloomFilterString:(id)arg1 startIndex:(long long)arg2 shardCount:(long long)arg3 type:(long long)arg4 expirationDate:(id)arg5;
+- (id)initWithBusinessCallerShardItem:(id)arg1;
 - (id)initWithChatSuggestShardItem:(id)arg1;
 - (id)initWithBusinessLinkShardItem:(id)arg1;
 - (id)initWithURL:(id)arg1 type:(long long)arg2;

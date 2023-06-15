@@ -7,7 +7,8 @@
 #import <LinkMetadata/LNLinkEnumerationValueType.h>
 
 @interface LNLinkEnumerationValueType (ContentItem)
-- (id)wf_contentItemFromLinkValue:(id)arg1 metadata:(id)arg2 valueNamespace:(id)arg3;
-- (Class)wf_contentItemClassWithMetadata:(id)arg1 valueNamespace:(id)arg2;
+- (id)wf_contentItemFromLinkValue:(id)arg1 appBundleIdentifier:(id)arg2 displayedBundleIdentifier:(id)arg3;
+- (Class)wf_contentItemClassWithAppBundleIdentifier:(id)arg1;
+- (Class)wf_objectClass;
 @end
 

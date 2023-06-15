@@ -7,9 +7,9 @@
 #import <HealthKit/HKWorkout.h>
 
 @interface HKWorkout (ActivityAchievementsDaemon)
-- (_Bool)_isHalfMarathon;
-- (_Bool)_isMarathon;
-- (double)_bestDurationForKilometerCount:(unsigned long long)arg1;
+- (_Bool)_isHalfMarathonDistance;
+- (_Bool)_isMarathonDistance;
+- (double)_bestDurationForKilometerCount:(unsigned long long)arg1 activityType:(unsigned long long)arg2;
 - (double)aad_bestWheelchairMarathonDuration;
 - (double)aad_bestWheelchairHalfMarathonDuration;
 - (double)aad_bestMarathonDuration;

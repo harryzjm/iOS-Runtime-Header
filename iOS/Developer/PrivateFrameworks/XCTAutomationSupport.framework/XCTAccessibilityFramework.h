@@ -24,10 +24,12 @@
 - (id)attributes:(id)arg1 forElement:(struct __AXUIElement *)arg2 error:(id *)arg3;
 - (long long)appOrientationForElement:(struct __AXUIElement *)arg1 error:(id *)arg2;
 - (struct CGRect)frameForElement:(struct __AXUIElement *)arg1 error:(id *)arg2;
-- (const struct __AXUIElement *)mainWindowForElement:(struct __AXUIElement *)arg1 error:(id *)arg2;
+- (struct __AXUIElement *)mainWindowForElement:(struct __AXUIElement *)arg1 error:(id *)arg2;
 - (id)userTestingSnapshotForElement:(struct __AXUIElement *)arg1 options:(id)arg2 error:(id *)arg3;
 - (void)_setAXRequestingClient;
+- (id)_displayStringForAXUIElementProcess:(struct __AXUIElement *)arg1;
 - (id)attributesForElement:(id)arg1 attributes:(id)arg2 error:(id *)arg3;
+- (_Bool)PIDForAXUIElement:(struct __AXUIElement *)arg1 PID:(int *)arg2 error:(id *)arg3;
 - (_Bool)_canAccessElement:(struct __AXUIElement *)arg1 withError:(id *)arg2;
 - (void)dealloc;
 - (id)initForLocalAccess;

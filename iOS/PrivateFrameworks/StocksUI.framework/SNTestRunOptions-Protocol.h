@@ -7,7 +7,7 @@
 #import <StocksUI/NSObject-Protocol.h>
 
 @protocol SNTestRunOptions <NSObject>
-@property(nonatomic, readonly) _Bool waitForCommitToFinish;
-@property(nonatomic, readonly) long long orientation;
+@property(readonly, nonatomic) _Bool waitForCommitToFinish;
+@property(readonly, nonatomic) long long orientation;
 @end
 

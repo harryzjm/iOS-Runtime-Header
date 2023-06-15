@@ -13,10 +13,13 @@
 
 @optional
 - (void)submitExternalActivationRequest:(AFRequestInfo *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
+- (void)notifySpeechDetectedIsUndirected;
 - (void)handleSpeechRecognized:(SASSpeechRecognized *)arg1 completion:(void (^)(SABaseCommand *, NSError *))arg2;
 - (void)handleSpeechServerEndpointIdentified:(SASSpeechServerEndpointIdentified *)arg1 completion:(void (^)(SABaseCommand *, NSError *))arg2;
 - (void)selectResultWithResultCandidate:(SASResultCandidate *)arg1 completion:(void (^)(SABaseCommand *, NSError *))arg2;
+- (void)didRecognizeVoiceCommandCandidatePackage:(AFSpeechPackage *)arg1 nluResult:(AFDictationNLUResult *)arg2 sessionUUID:(NSString *)arg3;
 - (void)didRecognizePackage:(AFSpeechPackage *)arg1 nluResult:(AFDictationNLUResult *)arg2 sessionUUID:(NSString *)arg3;
+- (void)didRecognizePartialPackage:(AFSpeechPackage *)arg1 nluResult:(AFDictationNLUResult *)arg2 sessionUUID:(NSString *)arg3;
 - (void)didRecognizeTokens:(NSArray *)arg1 nluResult:(AFDictationNLUResult *)arg2 sessionUUID:(NSString *)arg3;
 - (void)didCompleteRecognitionWithError:(NSError *)arg1 secureOfflineOnlyRecognition:(_Bool)arg2 sessionUUID:(NSString *)arg3 statistics:(NSDictionary *)arg4;
 - (void)didRecognizePackage:(AFSpeechPackage *)arg1 sessionUUID:(NSString *)arg2;

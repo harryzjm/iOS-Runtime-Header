@@ -8,6 +8,6 @@
 
 @protocol CLKWatchFaceLibraryServerInterface
 - (void)openWatchFaceURLWithBookmarkData:(NSData *)arg1 sourceApplicationBundleIdentifier:(NSString *)arg2 completionHandler:(void (^)(NSError *))arg3;
-- (void)validateFaceType:(NSString *)arg1 faceBundleId:(NSString *)arg2 completionHandler:(void (^)(_Bool))arg3;
+- (void)validateFaceType:(NSString *)arg1 faceBundleId:(NSString *)arg2 completionHandler:(void (^)(NSError *))arg3;
 @end
 

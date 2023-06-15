@@ -9,6 +9,7 @@
 @class NSDictionary, NSTextStorage;
 
 @protocol AKTextAnnotationProtocol <NSObject>
+@property unsigned long long formContentType;
 @property(getter=isHighlighted) _Bool highlighted;
 @property _Bool shouldUsePlaceholderText;
 @property _Bool textIsClipped;

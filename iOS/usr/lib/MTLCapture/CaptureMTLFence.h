@@ -9,7 +9,6 @@
 @class CaptureMTLDevice, NSString;
 @protocol MTLDevice, MTLFence;
 
-__attribute__((visibility("hidden")))
 @interface CaptureMTLFence : NSObject
 {
     id <MTLFence> _baseObject;

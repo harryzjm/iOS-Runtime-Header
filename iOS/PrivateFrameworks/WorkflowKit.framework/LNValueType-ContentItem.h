@@ -9,14 +9,15 @@
 @class LNEntityValueType, LNLinkEnumerationValueType;
 
 @interface LNValueType (ContentItem)
-- (id)wf_contentCollectionFromLinkValue:(id)arg1 metadata:(id)arg2 valueNamespace:(id)arg3;
-- (id)wf_contentItemFromLinkValue:(id)arg1 metadata:(id)arg2 valueNamespace:(id)arg3;
-- (Class)wf_contentItemClassWithMetadata:(id)arg1 valueNamespace:(id)arg2;
+- (id)wf_contentCollectionFromLinkValue:(id)arg1 appBundleIdentifier:(id)arg2 displayedBundleIdentifier:(id)arg3;
+- (id)wf_contentItemFromLinkValue:(id)arg1 appBundleIdentifier:(id)arg2 displayedBundleIdentifier:(id)arg3;
+- (Class)wf_contentItemClassWithAppBundleIdentifier:(id)arg1;
 - (id)wf_valueTypeOfClass:(Class)arg1;
 - (id)wf_parameterDefinitionWithParameterMetadata:(id)arg1 dynamicOptionsSupport:(_Bool)arg2;
 - (id)wf_parameterDefinitionWithParameterMetadata:(id)arg1;
 @property(readonly, nonatomic) LNEntityValueType *wf_entityValueType;
 @property(readonly, nonatomic) LNLinkEnumerationValueType *wf_enumValueType;
+@property(readonly, nonatomic) LNValueType *wf_objectValueType;
 @property(readonly, nonatomic) Class wf_objectClass;
 @end
 

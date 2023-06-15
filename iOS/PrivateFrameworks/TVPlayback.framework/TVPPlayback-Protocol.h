@@ -11,6 +11,7 @@
 
 @protocol TVPPlayback <NSObject>
 @property(nonatomic) _Bool limitReadAhead;
+@property(nonatomic) _Bool respondsToRemoteControlEvents;
 @property(nonatomic) _Bool updatesMediaRemoteInfoAutomatically;
 @property(nonatomic) _Bool preventsSleepDuringVideoPlayback;
 @property(nonatomic) double maximumBitRate;

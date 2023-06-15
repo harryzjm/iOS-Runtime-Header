@@ -8,11 +8,9 @@
 
 @interface NSBundle (GKVersioning)
 + (_Bool)_gkMainBundleIsGameCenterSystemProcess;
-+ (id)_gkLocalizedMessageFromPushDictionary:(id)arg1 forBundleID:(id)arg2;
-+ (id)_gkLocalizedMessageFromDictionary:(id)arg1 forBundleID:(id)arg2;
-+ (id)_gkLocalizedMessageFromDictionary:(id)arg1;
++ (_Bool)_gkBundleIdentifierIsRelatedToContactsUI:(id)arg1;
++ (id)_gkPreferredUserLanguage;
 + (id)_gkPreferredSystemLanguage;
-+ (id)_gkBundleWithIdentifier:(id)arg1;
 - (id)_gkFrameworkVersionDescription;
 - (_Bool)_gkIsPurpleBuddy;
 - (_Bool)_gkIsDaemon;
@@ -22,7 +20,6 @@
 - (_Bool)_gkIsGameCenterExtension;
 - (_Bool)_gkIsGameCenter;
 - (id)_gkLocalizedStringForKey:(id)arg1 defaultValue:(id)arg2 arguments:(id)arg3;
-- (id)_gkLocalizedStringForKey:(id)arg1 value:(id)arg2 table:(id)arg3 language:(id)arg4;
 - (id)_gkSystemLocalizedStringForKey:(id)arg1 value:(id)arg2 table:(id)arg3;
 - (id)_gkLocalizedName;
 - (id)_gkBundleShortVersion;
@@ -32,6 +29,5 @@
 - (id)_gkPathForMessageImage;
 - (id)_gkPathForImageWithName:(id)arg1;
 - (id)_gkPathForSoundWithName:(id)arg1;
-- (_Bool)_gkIsBadgingEnabled;
 @end
 

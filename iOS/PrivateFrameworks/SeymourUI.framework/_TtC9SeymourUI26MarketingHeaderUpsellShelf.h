@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *delegate;
     MISSING_TYPE *identifier;
     MISSING_TYPE *row;
+    MISSING_TYPE *canonicalIdentifier;
     MISSING_TYPE *bag;
     MISSING_TYPE *eventHub;
     MISSING_TYPE *marketingItemProvider;

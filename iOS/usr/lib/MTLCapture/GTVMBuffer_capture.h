@@ -8,7 +8,6 @@
 
 @class NSString;
 
-__attribute__((visibility("hidden")))
 @interface GTVMBuffer_capture : NSObject
 {
     struct VMBuffer *_vmBuffer;

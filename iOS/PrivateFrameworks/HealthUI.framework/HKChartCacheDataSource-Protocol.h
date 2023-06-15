@@ -10,7 +10,7 @@
 @protocol HKChartCachePriorityDelegate, NSCopying;
 
 @protocol HKChartCacheDataSource <NSObject>
-- (NSDateComponents *)statisticsIntervalForTimeScope:(long long)arg1 displayType:(HKDisplayType *)arg2;
+- (NSDateComponents *)statisticsIntervalForTimeScope:(long long)arg1 resolution:(long long)arg2 displayType:(HKDisplayType *)arg3;
 - (unsigned long long)calendarUnitForTimeScope:(long long)arg1 displayType:(HKDisplayType *)arg2;
 - (HKGraphSeriesDataBlock * (^)(id))mappingFunctionForContext:(id)arg1;
 - (HKChartCacheFetchOperation *)operationForIdentifier:(id <NSCopying>)arg1 priorityDelegate:(id <HKChartCachePriorityDelegate>)arg2 completion:(void (^)(HKChartCacheFetchOperation *, id, NSError *))arg3;

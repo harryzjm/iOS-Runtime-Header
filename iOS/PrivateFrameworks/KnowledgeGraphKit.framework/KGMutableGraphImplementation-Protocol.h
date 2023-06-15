@@ -9,9 +9,9 @@
 @class KGElementIdentifierSet, NSArray, NSDictionary;
 
 @protocol KGMutableGraphImplementation <KGGraphImplementation>
-- (void)rollbackTransaction;
-- (void)commitTransaction;
-- (void)beginTransaction;
+- (_Bool)rollbackTransactionWithError:(id *)arg1;
+- (_Bool)commitTransactionWithError:(id *)arg1;
+- (_Bool)beginTransactionWithError:(id *)arg1;
 - (_Bool)updateEdgeForIdentifier:(unsigned long long)arg1 withProperties:(NSDictionary *)arg2 error:(id *)arg3;
 - (_Bool)updateNodeForIdentifier:(unsigned long long)arg1 withProperties:(NSDictionary *)arg2 error:(id *)arg3;
 - (_Bool)removeEdgesForIdentifiers:(KGElementIdentifierSet *)arg1 error:(id *)arg2;

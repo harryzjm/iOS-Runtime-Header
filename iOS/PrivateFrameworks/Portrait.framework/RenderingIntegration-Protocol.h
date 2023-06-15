@@ -6,7 +6,7 @@
 
 #import <Portrait/NSObject-Protocol.h>
 
-@class NSDictionary, PTRenderRequest;
+@class NSDictionary, PTRenderEffectManager, PTRenderRequest;
 @protocol MTLCommandBuffer, MTLDeviceSPI, MTLHeap, MTLLibrary, MTLPipelineLibrary;
 
 @protocol RenderingIntegration <NSObject>
@@ -14,6 +14,6 @@
 - (unsigned long long)minimumResourceHeapSize;
 - (int)prewarm;
 - (int)renderContinuousWithSource:(id <MTLCommandBuffer>)arg1 renderRequest:(PTRenderRequest *)arg2;
-- (id)initWithDevice:(id <MTLDeviceSPI>)arg1 library:(id <MTLLibrary>)arg2 pipelineLibrary:(id <MTLPipelineLibrary>)arg3 colorSize:(struct CGSize)arg4 disparitySize:(struct CGSize)arg5 debugRendering:(long long)arg6 verbose:(_Bool)arg7 gpuProfiling:(_Bool)arg8 config:(NSDictionary *)arg9 quality:(int)arg10;
+- (id)initWithDevice:(id <MTLDeviceSPI>)arg1 library:(id <MTLLibrary>)arg2 pipelineLibrary:(id <MTLPipelineLibrary>)arg3 renderEffects:(PTRenderEffectManager *)arg4 colorSize:(struct CGSize)arg5 disparitySize:(struct CGSize)arg6 debugRendering:(long long)arg7 verbose:(_Bool)arg8 config:(NSDictionary *)arg9 quality:(int)arg10;
 @end
 

@@ -18,11 +18,6 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)reset;
-- (id)runWithFloorPlan:(id)arg1 majorViewInfo:(id)arg2;
-- (void)updateFloorPlan:(id)arg1 withRecessedAreas:(id)arg2;
-- (void)updateFloorPlan:(id)arg1 withRecessedArea:(id)arg2;
-- (tuple_fb175dae)updateRecessedAreaPoolAndCurrentFrameWithWalls:(id)arg1 windows:(id)arg2 openings:(id)arg3 doors:(id)arg4 opendoors:(id)arg5;
 - (id)init;
 
 @end

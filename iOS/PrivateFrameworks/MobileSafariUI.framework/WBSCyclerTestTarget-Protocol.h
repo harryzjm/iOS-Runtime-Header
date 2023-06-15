@@ -18,5 +18,9 @@
 - (void)createBookmarkWithTitle:(NSString *)arg1 url:(NSURL *)arg2 inListWithIdentifier:(NSString *)arg3 atIndex:(unsigned long long)arg4 reply:(void (^)(_Bool))arg5;
 - (void)clearBookmarksWithOptions:(unsigned long long)arg1 completionHandler:(void (^)(_Bool))arg2;
 - (void)fetchTopLevelBookmarkList:(void (^)(WBSCyclerItemListRepresentation *))arg1;
+
+@optional
+- (void)setSymbolImageName:(NSString *)arg1 forBookmarkWithIdentifier:(NSString *)arg2 reply:(void (^)(_Bool))arg3;
+- (void)createProfileWithTitle:(NSString *)arg1 symbolName:(NSString *)arg2 inListWithIdentifier:(NSString *)arg3 reply:(void (^)(_Bool, NSString *))arg4;
 @end
 

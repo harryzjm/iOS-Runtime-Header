@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 + (id)_convertOptionsToFaceCoreDetectOptions:(id)arg1;
 + (id)_convertOptionsToFaceCoreSetupOptions:(id)arg1;
 + (Class)trackerObservationClass;
++ (id)supportedComputeDevicesForOptions:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
 - (id)_detectFacesInImage:(id)arg1 error:(id *)arg2;
 - (_Bool)reset:(id *)arg1;

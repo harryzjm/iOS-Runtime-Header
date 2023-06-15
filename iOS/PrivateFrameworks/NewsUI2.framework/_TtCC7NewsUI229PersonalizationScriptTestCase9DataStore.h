@@ -10,7 +10,7 @@
 
 @interface _TtCC7NewsUI229PersonalizationScriptTestCase9DataStore : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *personalizationData;
+    MISSING_TYPE *aggregateStore;
     MISSING_TYPE *start;
     MISSING_TYPE *capturedData;
     MISSING_TYPE *end;

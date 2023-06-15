@@ -30,10 +30,10 @@ __attribute__((visibility("hidden")))
 + (id)genresRequestWithOwnerIdentifier:(id)arg1;
 + (id)genresRequestForVUIFamilySharingGenreIDsFilter:(id)arg1 withOwnerIdentifier:(id)arg2;
 + (id)genresRequestForVUIFamilySharingGenre:(id)arg1 withOwnerIdentifier:(id)arg2;
-+ (id)showsPurchasesRequestWithOwnerIdentifier:(id)arg1;
++ (id)showsPurchasesRequestWithOwnerIdentifier:(id)arg1 sortType:(unsigned long long)arg2;
 + (id)episodesRequestWithShowIdentifier:(id)arg1 withOwnerIdentifier:(id)arg2;
 + (id)seasonsRequestWithShowIdentifier:(id)arg1 withOwnerIdentifier:(id)arg2;
-+ (id)moviesPurchasesRequestWithOwnerIdentifier:(id)arg1;
++ (id)moviesPurchasesRequestWithOwnerIdentifier:(id)arg1 sortType:(unsigned long long)arg2;
 + (id)recentPurchasesRequestWithOwnerIdentifier:(id)arg1;
 + (id)familyMembersRequest;
 

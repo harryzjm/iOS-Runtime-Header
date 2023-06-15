@@ -38,6 +38,14 @@
     NSString *_widgetBackgroundColorName;
     NSString *_minimumDeploymentTarget;
     NSString *_exportDependencyInfoPath;
+    NSString *_bundleIdentifier;
+    NSString *_generateSwiftAssetSymbols;
+    NSString *_generateObjCAssetSymbols;
+    NSString *_generateSwiftAssetSymbolExtensions;
+    NSArray *_generateAssetSymbolFrameworkSupportStrings;
+    NSString *_generateAssetSymbolWarnings;
+    NSString *_generateAssetSymbolErrors;
+    NSString *_generateAssetSymbolBackwardsDeploymentSupport;
     NSString *_commonAssetRepositoryFileName;
     NSString *_filterForDeviceModel;
     NSString *_filterForThinningDeviceConfiguration;
@@ -51,6 +59,8 @@
     NSMutableDictionary *_additionalEnvironment;
     NSString *_waitDuration;
     NSString *_agentWaitDuration;
+    NSString *_lightweightAssetRuntimeMode;
+    NSString *_lightweightAssetRuntimeTraceFile;
     NSDictionary *_assetPackOutputSpecifications;
     NSString *_productType;
 }
@@ -58,6 +68,8 @@
 - (void).cxx_destruct;
 @property(copy) NSString *productType; // @synthesize productType=_productType;
 @property(copy) NSDictionary *assetPackOutputSpecifications; // @synthesize assetPackOutputSpecifications=_assetPackOutputSpecifications;
+@property(copy) NSString *lightweightAssetRuntimeTraceFile; // @synthesize lightweightAssetRuntimeTraceFile=_lightweightAssetRuntimeTraceFile;
+@property(copy) NSString *lightweightAssetRuntimeMode; // @synthesize lightweightAssetRuntimeMode=_lightweightAssetRuntimeMode;
 @property(copy) NSString *agentWaitDuration; // @synthesize agentWaitDuration=_agentWaitDuration;
 @property(copy) NSString *waitDuration; // @synthesize waitDuration=_waitDuration;
 @property(retain, nonatomic) NSMutableDictionary *additionalEnvironment; // @synthesize additionalEnvironment=_additionalEnvironment;
@@ -73,6 +85,14 @@
 @property(copy) NSString *filterForThinningDeviceConfiguration; // @synthesize filterForThinningDeviceConfiguration=_filterForThinningDeviceConfiguration;
 @property(copy) NSString *filterForDeviceModel; // @synthesize filterForDeviceModel=_filterForDeviceModel;
 @property(copy) NSString *commonAssetRepositoryFileName; // @synthesize commonAssetRepositoryFileName=_commonAssetRepositoryFileName;
+@property(copy) NSString *generateAssetSymbolBackwardsDeploymentSupport; // @synthesize generateAssetSymbolBackwardsDeploymentSupport=_generateAssetSymbolBackwardsDeploymentSupport;
+@property(copy) NSString *generateAssetSymbolErrors; // @synthesize generateAssetSymbolErrors=_generateAssetSymbolErrors;
+@property(copy) NSString *generateAssetSymbolWarnings; // @synthesize generateAssetSymbolWarnings=_generateAssetSymbolWarnings;
+@property(copy) NSArray *generateAssetSymbolFrameworkSupportStrings; // @synthesize generateAssetSymbolFrameworkSupportStrings=_generateAssetSymbolFrameworkSupportStrings;
+@property(copy) NSString *generateSwiftAssetSymbolExtensions; // @synthesize generateSwiftAssetSymbolExtensions=_generateSwiftAssetSymbolExtensions;
+@property(copy) NSString *generateObjCAssetSymbols; // @synthesize generateObjCAssetSymbols=_generateObjCAssetSymbols;
+@property(copy) NSString *generateSwiftAssetSymbols; // @synthesize generateSwiftAssetSymbols=_generateSwiftAssetSymbols;
+@property(copy) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property(copy) NSString *exportDependencyInfoPath; // @synthesize exportDependencyInfoPath=_exportDependencyInfoPath;
 @property(copy) NSString *minimumDeploymentTarget; // @synthesize minimumDeploymentTarget=_minimumDeploymentTarget;
 @property(copy) NSString *widgetBackgroundColorName; // @synthesize widgetBackgroundColorName=_widgetBackgroundColorName;

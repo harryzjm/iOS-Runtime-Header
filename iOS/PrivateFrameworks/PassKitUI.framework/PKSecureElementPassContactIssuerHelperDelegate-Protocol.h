@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <PassKitUI/NSObject-Protocol.h>
+
 @class PKSecureElementPassContactIssuerHelper, UIViewController;
 
-@protocol PKSecureElementPassContactIssuerHelperDelegate
+@protocol PKSecureElementPassContactIssuerHelperDelegate <NSObject>
 - (void)contactIssuerHelper:(PKSecureElementPassContactIssuerHelper *)arg1 didRequestDismissViewControllerAnimated:(_Bool)arg2 completion:(void (^)(void))arg3;
 - (void)contactIssuerHelper:(PKSecureElementPassContactIssuerHelper *)arg1 didRequestPresentViewController:(UIViewController *)arg2 animated:(_Bool)arg3 completion:(void (^)(void))arg4;
 @end

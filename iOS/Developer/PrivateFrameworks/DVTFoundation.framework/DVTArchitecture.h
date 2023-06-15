@@ -17,6 +17,9 @@
     NSString *_displayName;
 }
 
++ (id)allowableArchitecturesOnMacOSForNativeArchitecture:(id)arg1;
++ (id)allowableArchitecturesOnEmbeddedOSForNativeArchitecture:(id)arg1;
++ (id)architectureForLocalHost;
 + (id)architectureWithCPUType:(int)arg1 subType:(int)arg2;
 + (id)architectureWithCanonicalName:(id)arg1;
 + (id)allArchitectures;

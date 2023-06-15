@@ -11,6 +11,7 @@
 @interface _TtC11WeatherMaps30LocationPickerViewModelFactory : _TtCs12_SwiftObject
 {
     MISSING_TYPE *locationMetadataManager;
+    MISSING_TYPE *measurements;
 }
 
 @end

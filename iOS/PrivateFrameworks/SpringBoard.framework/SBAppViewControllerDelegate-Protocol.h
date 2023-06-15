@@ -11,10 +11,12 @@
 @protocol SBAppViewControllerDelegate <NSObject>
 
 @optional
+- (_Bool)appViewControllerIsInNonRotatingWindow:(SBAppViewController *)arg1;
 - (_Bool)appViewControllerShouldHideHomeGrabberView:(SBAppViewController *)arg1;
 - (_Bool)appViewControllerShouldReactivateApplicationOnDestruction:(SBAppViewController *)arg1;
 - (_Bool)appViewControllerShouldBackgroundApplicationOnDeactivate:(SBAppViewController *)arg1;
 - (void)appViewControllerDidBecomeReady:(SBAppViewController *)arg1;
+- (void)appViewControllerDidFailToActivateApplication:(SBAppViewController *)arg1;
 - (void)appViewControllerDidDeactivateApplication:(SBAppViewController *)arg1;
 - (void)appViewControllerWillActivateApplication:(SBAppViewController *)arg1;
 - (void)appViewController:(SBAppViewController *)arg1 didTransitionFromMode:(long long)arg2 toMode:(long long)arg3;

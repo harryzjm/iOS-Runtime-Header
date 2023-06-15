@@ -10,8 +10,8 @@
 @protocol TRINotificationToken;
 
 @protocol TRINamespaceUpdateProtocol <NSObject>
-@property(nonatomic, readonly) id <TRINotificationToken> token;
-@property(nonatomic, readonly) NSString *namespaceName;
-@property(nonatomic, readonly) unsigned int namespaceId;
+@property(readonly, nonatomic) id <TRINotificationToken> token;
+@property(readonly, nonatomic) NSString *namespaceName;
+@property(readonly, nonatomic) unsigned int namespaceId;
 @end
 

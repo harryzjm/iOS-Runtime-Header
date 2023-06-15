@@ -18,6 +18,7 @@
 @optional
 + (void)setContextDataFromCallingHost:(id)arg1;
 + (id)contextDataForRemoteTool;
++ (_Bool)supportsLARToolsTargetingPlatformNamed:(NSString *)arg1;
 + (_Bool)supportsRemoteToolsTargetingPlatformNamed:(NSString *)arg1;
 - (void)registerSystemCatalogColors:(IBICSchema *)arg1;
 - (void)registerSuggestionSets:(IBICSchema *)arg1;

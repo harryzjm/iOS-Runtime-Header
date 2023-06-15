@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 + (id)generateMonogramItemForVisualIdentity:(id)arg1 size:(struct CGSize)arg2 scale:(double)arg3 RTL:(_Bool)arg4 isVariantOptionItem:(_Bool)arg5 backgroundColor:(id)arg6;
 + (id)monogramProviderItemForVisualIdentity:(id)arg1 size:(struct CGSize)arg2 scale:(double)arg3 RTL:(_Bool)arg4 isVariantOptionItem:(_Bool)arg5 backgroundColor:(id)arg6;
 + (id)providerItemForVisualIdentity:(id)arg1 size:(struct CGSize)arg2 scale:(double)arg3 RTL:(_Bool)arg4 backgroundColor:(id)arg5;
++ (id)providerItemWithRandomBackgroundColorForVisualIdentity:(id)arg1 size:(struct CGSize)arg2 RTL:(_Bool)arg3;
 + (id)providerItemForVisualIdentity:(id)arg1 size:(struct CGSize)arg2 RTL:(_Bool)arg3;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) CNVisualIdentity *visualIdentity; // @synthesize visualIdentity=_visualIdentity;

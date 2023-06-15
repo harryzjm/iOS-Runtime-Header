@@ -36,8 +36,8 @@
 @property(retain, nonatomic) TSCH3DLabelResource *label; // @synthesize label=_label;
 @property(nonatomic) _Bool useLabelBounds; // @synthesize useLabelBounds=_useLabelBounds;
 - (void)delegateDidSubmitLabel;
-- (void)renderAtPosition:(const void *)arg1 offset:(const void *)arg2 alignment:(unsigned int)arg3 offset2D:(const void *)arg4 rotation:(float)arg5 externalAttribute:(id)arg6;
-- (void)prepareCachedIndex:(const void *)arg1 string:(id)arg2 alignmentPadding:(const void *)arg3 width:(double)arg4 bitmapContextInfo:(id)arg5;
+- (void)renderAtPosition:(void *)arg1 offset:(void *)arg2 alignment:(unsigned int)arg3 offset2D:(void *)arg4 rotation:(float)arg5 externalAttribute:(id)arg6;
+- (void)prepareCachedIndex:(void *)arg1 string:(id)arg2 alignmentPadding:(void *)arg3 width:(double)arg4 bitmapContextInfo:(id)arg5;
 - (void)endResources;
 - (_Bool)beginResources:(id)arg1 expectedSize:(void *)arg2;
 - (void)postrender:(id)arg1;
@@ -50,8 +50,8 @@
 - (id)p_renderCacheFromScene:(id)arg1 created:(_Bool *)arg2 createIfAbsent:(_Bool)arg3;
 - (id)p_renderCacheID;
 - (id)p_renderCacheKey;
-- (const void *)unitToWorld;
-- (const void *)worldToStage;
+- (void *)unitToWorld;
+- (void *)worldToStage;
 - (void)dealloc;
 - (id)init;
 

@@ -17,6 +17,7 @@
 - (_Bool)_bcs_isDataDetectorURL;
 - (id)_bcs_fullURLDisplayString;
 - (id)_bcs_displayString;
+- (_Bool)_bcs_isOtpauthMigrationURL;
 - (_Bool)_bcs_isOtpauthURL;
 - (_Bool)_bcs_isUPIURL;
 - (_Bool)_bcs_isRedirectedSHCURL;

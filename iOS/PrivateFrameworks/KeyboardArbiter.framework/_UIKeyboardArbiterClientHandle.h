@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class BKSProcessAssertion, BSServiceConnectionEndpointInjector, FBSCAContextSceneLayer, NSArray, NSMutableSet, NSString, NSXPCConnection, UIKBArbiterClientFocusContext, _UIKeyboardArbiter;
+@class BKSProcessAssertion, BSAbsoluteMachTimer, BSServiceConnectionEndpointInjector, FBSCAContextSceneLayer, NSArray, NSMutableSet, NSString, NSXPCConnection, UIKBArbiterClientFocusContext, _UIKeyboardArbiter;
 
 __attribute__((visibility("hidden")))
 @interface _UIKeyboardArbiterClientHandle : NSObject
@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
     _Bool _deactivating;
     _Bool _keyboardOnScreen;
     _Bool _multipleScenes;
+    BSAbsoluteMachTimer *_acquiringFocusTimer;
     BKSProcessAssertion *_remoteKeepAliveAssertion;
     unsigned long long _remoteKeepAliveAssertionCount;
     unsigned long long _remoteKeepAliveTimerCount;
@@ -40,12 +41,14 @@ __attribute__((visibility("hidden")))
     int _prevActiveIdentifier;
     NSXPCConnection *_connection;
     double _iavHeight;
+    CDUnknownBlockType _pendingNotifyKeyboardChanged;
 }
 
 + (id)handlerWithArbiter:(id)arg1 forConnection:(id)arg2;
 - (void).cxx_destruct;
+@property(copy, nonatomic) CDUnknownBlockType pendingNotifyKeyboardChanged; // @synthesize pendingNotifyKeyboardChanged=_pendingNotifyKeyboardChanged;
 @property(nonatomic) _Bool requestedCorrectionOfClientSceneIdentityWhileAcquiringFocus; // @synthesize requestedCorrectionOfClientSceneIdentityWhileAcquiringFocus=_requestedCorrectionOfClientSceneIdentityWhileAcquiringFocus;
-@property(nonatomic, getter=isAcquiringFocus) _Bool acquiringFocus; // @synthesize acquiringFocus=_acquiringFocus;
+@property(readonly, nonatomic, getter=isAcquiringFocus) _Bool acquiringFocus; // @synthesize acquiringFocus=_acquiringFocus;
 @property(nonatomic) _Bool hasDebugInformationEntitlement; // @synthesize hasDebugInformationEntitlement=_hasDebugInformationEntitlement;
 @property(nonatomic) _Bool inputUIHost; // @synthesize inputUIHost=_inputUIHost;
 @property int suppressionCount; // @synthesize suppressionCount=_suppressionCount;
@@ -94,8 +97,9 @@ __attribute__((visibility("hidden")))
 - (void)_reevaluateRemoteFocusContext:(id)arg1;
 - (void)setClientFocusContext:(id)arg1;
 - (void)setWindowContextID:(unsigned int)arg1 focusContext:(id)arg2 windowState:(unsigned long long)arg3 withLevel:(double)arg4;
-- (void)clearAcquiringFocusFlags;
+- (void)clearAcquiringFocus;
 - (_Bool)_shouldRejectSceneIdentityUpdateCorrectingClientIfNeeded:(id)arg1 fromSelector:(SEL)arg2;
+- (void)beginAcquiringFocusOnQueue:(id)arg1;
 @property(readonly) _Bool isKeyboardOnScreen;
 - (_Bool)_isKeyboardOnScreen:(id)arg1;
 - (void)_deactivateScene;

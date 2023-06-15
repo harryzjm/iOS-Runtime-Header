@@ -4,37 +4,45 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSData, NSDictionary, NSError, NSString, NSUUID, OTAccountSettingsX, OTControlArguments, OTCustodianRecoveryKey, OTInheritanceKey, OTJoiningConfiguration, OTOperationConfiguration, OTSecureElementPeerIdentity;
+@class NSArray, NSData, NSDictionary, NSError, NSString, NSUUID, OTAccountSettings, OTControlArguments, OTCustodianRecoveryKey, OTInheritanceKey, OTJoiningConfiguration, OTOperationConfiguration, OTSecureElementPeerIdentity;
 
 @protocol OTControlProtocol
+- (void)resetAcountData:(OTControlArguments *)arg1 resetReason:(long long)arg2 reply:(void (^)(NSError *))arg3;
+- (void)getAccountMetadata:(OTControlArguments *)arg1 reply:(void (^)(OTAccountMetadataClassC *, NSError *))arg2;
+- (void)preflightRecoverOctagonUsingRecoveryKey:(OTControlArguments *)arg1 recoveryKey:(NSString *)arg2 reply:(void (^)(_Bool, NSError *))arg3;
+- (void)removeRecoveryKey:(OTControlArguments *)arg1 reply:(void (^)(NSError *))arg2;
+- (void)recoverWithRecoveryKey:(OTControlArguments *)arg1 recoveryKey:(NSString *)arg2 reply:(void (^)(NSError *))arg3;
+- (void)isRecoveryKeySet:(OTControlArguments *)arg1 reply:(void (^)(_Bool, NSError *))arg2;
 - (void)setMachineIDOverride:(OTControlArguments *)arg1 machineID:(NSString *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)deliverAKDeviceListDelta:(NSDictionary *)arg1 reply:(void (^)(NSError *))arg2;
-- (void)tlkRecoverabilityForEscrowRecordData:(OTControlArguments *)arg1 recordData:(NSData *)arg2 reply:(void (^)(NSArray *, NSError *))arg3;
+- (void)tlkRecoverabilityForEscrowRecordData:(OTControlArguments *)arg1 recordData:(NSData *)arg2 source:(long long)arg3 reply:(void (^)(NSArray *, NSError *))arg4;
 - (void)waitForPriorityViewKeychainDataRecovery:(OTControlArguments *)arg1 reply:(void (^)(NSError *))arg2;
-- (void)persistAccountSettings:(OTControlArguments *)arg1 setting:(OTAccountSettingsX *)arg2 reply:(void (^)(NSError *))arg3;
-- (void)fetchAccountWideSettings:(OTControlArguments *)arg1 reply:(void (^)(OTAccountSettingsX *, NSError *))arg2;
-- (void)fetchAccountSettings:(OTControlArguments *)arg1 reply:(void (^)(OTAccountSettingsX *, NSError *))arg2;
+- (void)fetchAccountWideSettingsWithForceFetch:(_Bool)arg1 arguments:(OTControlArguments *)arg2 reply:(void (^)(OTAccountSettings *, NSError *))arg3;
+- (void)fetchAccountSettings:(OTControlArguments *)arg1 reply:(void (^)(OTAccountSettings *, NSError *))arg2;
+- (void)setAccountSetting:(OTControlArguments *)arg1 setting:(OTAccountSettings *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)fetchTrustedSecureElementIdentities:(OTControlArguments *)arg1 reply:(void (^)(OTCurrentSecureElementIdentities *, NSError *))arg2;
 - (void)removeLocalSecureElementIdentityPeerID:(OTControlArguments *)arg1 secureElementIdentityPeerID:(NSData *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)setLocalSecureElementIdentity:(OTControlArguments *)arg1 secureElementIdentity:(OTSecureElementPeerIdentity *)arg2 reply:(void (^)(NSError *))arg3;
-- (void)resetAccountCDPContents:(OTControlArguments *)arg1 reply:(void (^)(NSError *))arg2;
+- (void)resetAccountCDPContents:(OTControlArguments *)arg1 idmsTargetContext:(NSString *)arg2 idmsCuttlefishPassword:(NSString *)arg3 notifyIdMS:(_Bool)arg4 reply:(void (^)(NSError *))arg5;
 - (void)fetchUserControllableViewsSyncStatus:(OTControlArguments *)arg1 reply:(void (^)(_Bool, NSError *))arg2;
 - (void)setUserControllableViewsSyncStatus:(OTControlArguments *)arg1 enabled:(_Bool)arg2 reply:(void (^)(_Bool, NSError *))arg3;
 - (void)invalidateEscrowCache:(OTControlArguments *)arg1 reply:(void (^)(NSError *))arg2;
-- (void)fetchEscrowRecords:(OTControlArguments *)arg1 forceFetch:(_Bool)arg2 reply:(void (^)(NSArray *, NSError *))arg3;
+- (void)fetchEscrowRecords:(OTControlArguments *)arg1 source:(long long)arg2 reply:(void (^)(NSArray *, NSError *))arg3;
 - (void)getCDPStatus:(OTControlArguments *)arg1 reply:(void (^)(long long, NSError *))arg2;
 - (void)setCDPEnabled:(OTControlArguments *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)refetchCKKSPolicy:(OTControlArguments *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)tapToRadar:(NSString *)arg1 description:(NSString *)arg2 radar:(NSString *)arg3 reply:(void (^)(NSError *))arg4;
 - (void)postCDPFollowupResult:(OTControlArguments *)arg1 success:(_Bool)arg2 type:(NSString *)arg3 error:(NSError *)arg4 reply:(void (^)(NSError *))arg5;
 - (void)waitForOctagonUpgrade:(OTControlArguments *)arg1 reply:(void (^)(NSError *))arg2;
-- (void)healthCheck:(OTControlArguments *)arg1 skipRateLimitingCheck:(_Bool)arg2 reply:(void (^)(NSError *))arg3;
+- (void)healthCheck:(OTControlArguments *)arg1 skipRateLimitingCheck:(_Bool)arg2 repair:(_Bool)arg3 reply:(void (^)(NSError *))arg4;
+- (void)checkInheritanceKey:(OTControlArguments *)arg1 uuid:(NSUUID *)arg2 reply:(void (^)(_Bool, NSError *))arg3;
 - (void)removeInheritanceKey:(OTControlArguments *)arg1 uuid:(NSUUID *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)preflightJoinWithInheritanceKey:(OTControlArguments *)arg1 inheritanceKey:(OTInheritanceKey *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)joinWithInheritanceKey:(OTControlArguments *)arg1 inheritanceKey:(OTInheritanceKey *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)storeInheritanceKey:(OTControlArguments *)arg1 ik:(OTInheritanceKey *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)generateInheritanceKey:(OTControlArguments *)arg1 uuid:(NSUUID *)arg2 reply:(void (^)(OTInheritanceKey *, NSError *))arg3;
 - (void)createInheritanceKey:(OTControlArguments *)arg1 uuid:(NSUUID *)arg2 reply:(void (^)(OTInheritanceKey *, NSError *))arg3;
+- (void)checkCustodianRecoveryKey:(OTControlArguments *)arg1 uuid:(NSUUID *)arg2 reply:(void (^)(_Bool, NSError *))arg3;
 - (void)removeCustodianRecoveryKey:(OTControlArguments *)arg1 uuid:(NSUUID *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)preflightJoinWithCustodianRecoveryKey:(OTControlArguments *)arg1 custodianRecoveryKey:(OTCustodianRecoveryKey *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)joinWithCustodianRecoveryKey:(OTControlArguments *)arg1 custodianRecoveryKey:(OTCustodianRecoveryKey *)arg2 reply:(void (^)(NSError *))arg3;
@@ -48,6 +56,7 @@
 - (void)removeFriendsInClique:(OTControlArguments *)arg1 peerIDs:(NSArray *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)leaveClique:(OTControlArguments *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)establish:(OTControlArguments *)arg1 reply:(void (^)(NSError *))arg2;
+- (void)resetAndEstablish:(OTControlArguments *)arg1 resetReason:(long long)arg2 idmsTargetContext:(NSString *)arg3 idmsCuttlefishPassword:(NSString *)arg4 notifyIdMS:(_Bool)arg5 accountSettings:(OTAccountSettings *)arg6 reply:(void (^)(NSError *))arg7;
 - (void)resetAndEstablish:(OTControlArguments *)arg1 resetReason:(long long)arg2 reply:(void (^)(NSError *))arg3;
 - (void)startOctagonStateMachine:(OTControlArguments *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)fetchTrustStatus:(OTControlArguments *)arg1 configuration:(OTOperationConfiguration *)arg2 reply:(void (^)(long long, NSString *, NSNumber *, _Bool, NSError *))arg3;

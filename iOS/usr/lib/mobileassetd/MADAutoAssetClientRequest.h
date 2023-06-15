@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _clientReplyCompletion;
 }
 
++ (id)responseErrorSummary:(id)arg1;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType clientReplyCompletion; // @synthesize clientReplyCompletion=_clientReplyCompletion;
@@ -37,6 +38,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, retain, nonatomic) SUCoreConnectMessage *clientRequestMessage; // @synthesize clientRequestMessage=_clientRequestMessage;
 @property(retain, nonatomic) NSString *clientRequestUUID; // @synthesize clientRequestUUID=_clientRequestUUID;
 @property(readonly, retain, nonatomic) NSString *clientID; // @synthesize clientID=_clientID;
+- (id)summaryWithResponseMessage:(_Bool)arg1;
 - (id)summary;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

@@ -13,22 +13,16 @@ __attribute__((visibility("hidden")))
     _Bool _supportsDirectionMeasurement;
     _Bool _supportsCameraAssistance;
     _Bool _supportsCoarseDistanceMeasurement;
-    _Bool _supportsFineRanging;
-    _Bool _supportsCoarseRanging;
-    _Bool _supportsAoA;
-    _Bool _supportsSyntheticAperture;
 }
 
 + (id)new;
-@property(readonly) _Bool supportsSyntheticAperture; // @synthesize supportsSyntheticAperture=_supportsSyntheticAperture;
-@property(readonly) _Bool supportsAoA; // @synthesize supportsAoA=_supportsAoA;
-@property(readonly) _Bool supportsCoarseRanging; // @synthesize supportsCoarseRanging=_supportsCoarseRanging;
-@property(readonly) _Bool supportsFineRanging; // @synthesize supportsFineRanging=_supportsFineRanging;
 @property(readonly, nonatomic) _Bool supportsCoarseDistanceMeasurement; // @synthesize supportsCoarseDistanceMeasurement=_supportsCoarseDistanceMeasurement;
 @property(readonly, nonatomic) _Bool supportsCameraAssistance; // @synthesize supportsCameraAssistance=_supportsCameraAssistance;
 @property(readonly, nonatomic) _Bool supportsDirectionMeasurement; // @synthesize supportsDirectionMeasurement=_supportsDirectionMeasurement;
 @property(readonly, nonatomic) _Bool supportsPreciseDistanceMeasurement; // @synthesize supportsPreciseDistanceMeasurement=_supportsPreciseDistanceMeasurement;
 - (id)init;
+- (unsigned char)toBitmap;
+- (id)initWithBitmap:(unsigned char)arg1;
 - (id)initWithFineRangingSupport:(_Bool)arg1 coarseRangingSupport:(_Bool)arg2 aoaSupport:(_Bool)arg3 syntheticApertureSupport:(_Bool)arg4;
 - (id)initWithFineRangingSupport:(_Bool)arg1 aoaSupport:(_Bool)arg2 syntheticApertureSupport:(_Bool)arg3;
 

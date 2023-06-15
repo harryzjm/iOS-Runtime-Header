@@ -55,6 +55,7 @@ __attribute__((visibility("hidden")))
     struct PolylineCoordinate _routeSubrangeEnd;
     void *_artworkCache;
     struct shared_ptr<md::NavCurrentRoadSign> _currentRoadSign;
+    _Bool _isCurrentRoadSignVisible;
     _Bool _debugDisableRoadSignLimit;
     unsigned long long _debugCachedMaxVisibleOffRouteRoadSigns;
     unsigned long long _debugCachedMaxVisibleOnRouteRoadSigns;

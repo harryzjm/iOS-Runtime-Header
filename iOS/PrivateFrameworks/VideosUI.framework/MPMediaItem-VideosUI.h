@@ -27,6 +27,7 @@
 - (id)vui_imageIdentifierWithImageType:(unsigned long long)arg1;
 @property(readonly, nonatomic) HSHomeSharingLibrary *vui_homeSharingLibrary;
 @property(readonly, nonatomic) _Bool vui_isHomeSharingMediaItem;
+@property(readonly, nonatomic) NSString *vui_adamIDString;
 - (id)vui_assetTypeIgnoringLocalAsset:(_Bool)arg1;
 @property(readonly, nonatomic) NSNumber *vui_assetType;
 @property(readonly, nonatomic) NSDate *vui_rentalExpirationDate;
@@ -34,7 +35,7 @@
 @property(readonly, nonatomic) NSDate *vui_rentalEndDate;
 @property(readonly, nonatomic) NSNumber *vui_playedState;
 @property(readonly, nonatomic) NSURL *vui_extrasURL;
-@property(readonly, nonatomic) NSNumber *vui_isLocal;
+- (id)vui_isLocalCheckingSidebandLibrary:(_Bool)arg1;
 @property(readonly, nonatomic) NSNumber *vui_isPlayable;
 @property(readonly, nonatomic) VUIContentRating *vui_contentRating;
 @property(readonly, nonatomic) VUIMediaItemCredits *vui_credits;

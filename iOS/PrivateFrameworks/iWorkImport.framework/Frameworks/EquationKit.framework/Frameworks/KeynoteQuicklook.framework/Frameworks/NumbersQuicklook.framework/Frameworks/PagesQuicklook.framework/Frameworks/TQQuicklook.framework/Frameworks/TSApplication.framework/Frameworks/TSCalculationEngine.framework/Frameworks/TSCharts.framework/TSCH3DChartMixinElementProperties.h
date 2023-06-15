@@ -13,10 +13,10 @@
 
 + (id)propertiesWithProperties:(id)arg1;
 - (void).cxx_destruct;
-- (id)texcoordsForSeries:(id)arg1 index:(const void *)arg2;
-- (id)normalsForSeries:(id)arg1 index:(const void *)arg2;
-- (id)boundsGeometryForSeries:(id)arg1 index:(const void *)arg2;
-- (id)geometryForSeries:(id)arg1 index:(const void *)arg2;
+- (id)texcoordsForSeries:(id)arg1 index:(void *)arg2;
+- (id)normalsForSeries:(id)arg1 index:(void *)arg2;
+- (id)boundsGeometryForSeries:(id)arg1 index:(void *)arg2;
+- (id)geometryForSeries:(id)arg1 index:(void *)arg2;
 - (id)renderingLightingModelForSeries:(id)arg1;
 - (_Bool)applyElementTransform:(void *)arg1 series:(id)arg2 index:(tvec2_3b141483)arg3 propertyAccessor:(id)arg4;
 - (float)elementTransformDepthFromPropertyAccessor:(id)arg1;

@@ -6,7 +6,7 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-@class ModelKeyServerAPIFetchKeyResult, ModelKeyServerAPIResultError, NSString;
+@class ModelKeyServerAPIFetchKeyResult, ModelKeyServerAPIResultError;
 
 __attribute__((visibility("hidden")))
 @interface ModelKeyServerAPIFetchKeyResponse : PBCodable
@@ -23,14 +23,14 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) ModelKeyServerAPIResultError *error; // @synthesize error=_error;
 @property(retain, nonatomic) ModelKeyServerAPIFetchKeyResult *success; // @synthesize success=_success;
 - (void)mergeFrom:(id)arg1;
-@property(readonly) unsigned long long hash;
+- (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
-@property(readonly, copy) NSString *description;
+- (id)description;
 - (void)clearOneofValuesForResult;
 - (int)StringAsResult:(id)arg1;
 - (id)resultAsString:(int)arg1;
@@ -38,10 +38,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) int result; // @synthesize result=_result;
 @property(readonly, nonatomic) _Bool hasError;
 @property(readonly, nonatomic) _Bool hasSuccess;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly) Class superclass;
 
 @end
 

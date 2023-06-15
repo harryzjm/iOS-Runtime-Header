@@ -6,7 +6,7 @@
 
 #import <FileProviderDaemon/NSObject-Protocol.h>
 
-@class NSFileProviderPresenterInfo, NSFileProvidingInfo, NSOperationQueue, NSString, NSURL;
+@class NSFileProviderMovingInfo, NSFileProviderPresenterInfo, NSFileProvidingInfo, NSOperationQueue, NSString, NSURL;
 
 @protocol NSFileProvider <NSObject>
 @property(readonly) NSOperationQueue *_providedItemsOperationQueue;
@@ -15,6 +15,7 @@
 
 @optional
 @property(readonly, copy) NSString *_fileReactorID;
+- (void)_movingItemAtURL:(NSURL *)arg1 withInfo:(NSFileProviderMovingInfo *)arg2 completionHandler:(void (^)(NSFileProviderMovingResponse *))arg3;
 - (void)_movingItemAtURL:(NSURL *)arg1 requiresProvidingWithDestinationURL:(NSURL *)arg2 completionHandler:(void (^)(_Bool))arg3;
 - (void)_providedItemAtURL:(NSURL *)arg1 didGainPresenterWithID:(id)arg2;
 - (void)_providedItemAtURL:(NSURL *)arg1 withPresenterWithID:(id)arg2 didMoveToURL:(NSURL *)arg3;

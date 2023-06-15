@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIBezierPath.h>
+#import <UIKitCore/UIBezierPath.h>
 
 @interface UIBezierPath (PK_CGPath)
-- (const struct CGPath *)PK_CGPath;
+- (struct CGPath *)PK_CGPath;
 @end
 

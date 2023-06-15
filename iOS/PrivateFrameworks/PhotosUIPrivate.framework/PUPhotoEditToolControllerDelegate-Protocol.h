@@ -6,13 +6,15 @@
 
 #import <PhotosUIPrivate/PXTrimToolPlayerWrapperNUMediaViewPlayerItemSource-Protocol.h>
 
-@class NSArray, NSString, NUMediaView, PHLivePhoto, PHLivePhotoView, PICompositionController, PLPhotoEditRenderer, PUPhotoEditToolController, UIButton, UIFont, UIImage, UIView;
+@class NSArray, NSObject, NSString, NUMediaView, PHLivePhoto, PHLivePhotoView, PICompositionController, PLPhotoEditRenderer, PUPhotoEditToolController, UIFont, UIImage, UIView;
 @protocol NUImageProperties;
 
 @protocol PUPhotoEditToolControllerDelegate <PXTrimToolPlayerWrapperNUMediaViewPlayerItemSource>
+- (void)addCropToolGainMapIfNeeded;
+- (void)removeCropToolGainMap;
 - (_Bool)isImageZooming;
 - (_Bool)hasLoopingVideoAdjustment;
-- (void)configureEnablenessOfControlButton:(UIButton *)arg1 animated:(_Bool)arg2 canVisuallyDisable:(_Bool)arg3;
+- (void)configureEnablenessOfControlButton:(NSObject *)arg1 animated:(_Bool)arg2 canVisuallyDisable:(_Bool)arg3;
 - (void)toggleLivePhotoActive;
 - (void)dismissLivePhotoRevertConfirmationAlert;
 - (id <NUImageProperties>)imageProperties;
@@ -24,6 +26,7 @@
 - (_Bool)isStandardVideo;
 - (_Bool)isLoopingVideo;
 - (UIView *)toolControllerHitEventForwardView:(PUPhotoEditToolController *)arg1;
+- (PUPhotoEditToolController *)currentTool;
 - (NUMediaView *)mediaView;
 - (PHLivePhotoView *)mainLivePhotoView;
 - (void)flashTransientBadgeWithText:(NSString *)arg1;
@@ -44,11 +47,8 @@
 - (CDStruct_910f5d27)toolControllerImageModulationOptions:(PUPhotoEditToolController *)arg1;
 - (PICompositionController *)toolControllerOriginalCompositionController:(PUPhotoEditToolController *)arg1;
 - (PICompositionController *)toolControllerUneditedCompositionController:(PUPhotoEditToolController *)arg1;
-- (void)toolController:(PUPhotoEditToolController *)arg1 switchEditSource:(long long)arg2;
-- (long long)overcaptureType;
-- (long long)sourceSelection;
 - (void)toolControllerDidUpdateToolbar:(PUPhotoEditToolController *)arg1;
-- (void)toolControllerDidChangePreferredAlternateToolbarButton:(PUPhotoEditToolController *)arg1;
+- (void)toolControllerDidChangeWantsTapToToggleOriginalEnabled:(PUPhotoEditToolController *)arg1 enabled:(_Bool)arg2;
 - (void)toolControllerDidChangeWantsDefaultPreviewView:(PUPhotoEditToolController *)arg1;
 - (void)toolController:(PUPhotoEditToolController *)arg1 didChangePreferredPreviewViewInsetsAnimated:(_Bool)arg2;
 - (void)toolControllerDidChangeIsPerformingLiveInteraction:(PUPhotoEditToolController *)arg1;

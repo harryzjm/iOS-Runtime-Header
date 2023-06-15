@@ -6,10 +6,13 @@
 
 #import <CopresenceCore/NSObject-Protocol.h>
 
-@class NSArray, NSDate, NSString, TUConversationActivityEvent, TUConversationActivitySession, TUConversationParticipant;
+@class NSArray, NSData, NSDate, NSSet, NSString, NSUUID, TUConversationActivityEvent, TUConversationActivitySession, TUConversationParticipant, TUSandboxExtendedURL;
 @protocol CPActivitySessionManager;
 
 @protocol CPActivitySessionManagerDelegate <NSObject>
+- (void)activitySessionManager:(id <CPActivitySessionManager>)arg1 shouldRegisterPlugin:(NSString *)arg2;
+- (void)activitySessionManager:(id <CPActivitySessionManager>)arg1 requestedEndpointWithIdentifier:(NSString *)arg2 activitySession:(TUConversationActivitySession *)arg3 completion:(void (^)(NSXPCListenerEndpoint *))arg4;
+- (void)activitySessionManager:(id <CPActivitySessionManager>)arg1 sendResourceAtURL:(TUSandboxExtendedURL *)arg2 toParticipants:(NSSet *)arg3 metadata:(NSData *)arg4 activitySessionUUID:(NSUUID *)arg5 completion:(void (^)(NSError *))arg6;
 - (void)activitySessionManager:(id <CPActivitySessionManager>)arg1 activitySessionAssociatedSceneChanged:(TUConversationActivitySession *)arg2;
 - (void)activitySessionManager:(id <CPActivitySessionManager>)arg1 activitySessionStateChanged:(TUConversationActivitySession *)arg2 oldState:(unsigned long long)arg3;
 - (void)activitySessionManager:(id <CPActivitySessionManager>)arg1 activitySessionRemoved:(TUConversationActivitySession *)arg2 userOriginated:(_Bool)arg3;

@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
     id <MCMManagedPath> _library;
 }
 
-+ (id)_moveDBIfNeededFromURL:(id)arg1 error:(id *)arg2;
++ (id)_moveDBIfNeededFromURL:(id)arg1 queue:(id)arg2 error:(id *)arg3;
 + (id)codeSignMappingWithError:(id *)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) id <MCMManagedPath> library; // @synthesize library=_library;
@@ -33,8 +33,8 @@ __attribute__((visibility("hidden")))
 - (_Bool)addGroupIdentifier:(id)arg1 forIdentifier:(id)arg2 containerClass:(unsigned long long)arg3 error:(id *)arg4 reconcileHandler:(CDUnknownBlockType)arg5;
 - (_Bool)_onqueue_enumerateOwnersAndGroupsWithGroupClass:(unsigned long long)arg1 error:(id *)arg2 block:(CDUnknownBlockType)arg3;
 - (_Bool)enumerateOwnersAndGroupsWithGroupClass:(unsigned long long)arg1 error:(id *)arg2 block:(CDUnknownBlockType)arg3;
-- (_Bool)_onQueue_registerKernelProvidedReferencesForIdentifier:(id)arg1 withAppGroupContainers:(id)arg2 systemGroupContainers:(id)arg3 error:(unsigned long long *)arg4;
-- (_Bool)registerKernelProvidedReferencesForIdentifier:(id)arg1 withAppGroupContainers:(id)arg2 systemGroupContainers:(id)arg3 error:(unsigned long long *)arg4;
+- (_Bool)_onQueue_removeAllInvalidPluginCodeSigningEntriesWithNumRemoved:(int *)arg1 error:(id *)arg2;
+- (_Bool)removeAllInvalidPluginCodeSigningEntriesWithNumRemoved:(int *)arg1 error:(id *)arg2;
 - (_Bool)_onQueue_removeAllAdvanceCopiesWithError:(id *)arg1;
 - (_Bool)removeAllAdvanceCopiesWithError:(id *)arg1;
 - (id)_onQueue_removeReferenceForGroupIdentifiers:(id)arg1 containerClass:(unsigned long long)arg2;
@@ -56,7 +56,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)identifierHasSystemContainer:(id)arg1;
 - (_Bool)identifierHasCallerRegisteredEntitlements:(id)arg1;
 - (id)codeSigningEntryForIdentifier:(id)arg1 withError:(id *)arg2;
-- (id)removeCodeSigningDictionaryForIdentifier:(id)arg1;
+- (id)removeCodeSigningDictionaryForIdentifiers:(id)arg1;
 - (id)groupContainerIdentifiersAssociatedWithIdentifier:(id)arg1 containerClass:(unsigned long long)arg2;
 - (void)_onQueue_iterateGroupIdsWithKey:(id)arg1 fallBackKey:(id)arg2 forAllIdentifiersUsingBlock:(CDUnknownBlockType)arg3;
 - (_Bool)_onQueue_invalidateCodeSigningInfoForIdentifier:(id)arg1 error:(id *)arg2;

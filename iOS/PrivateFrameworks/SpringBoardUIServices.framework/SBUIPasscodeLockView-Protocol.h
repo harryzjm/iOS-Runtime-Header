@@ -10,6 +10,11 @@
 @protocol SBFLegibilitySettingsProvider, SBUIPasscodeLockViewDelegate;
 
 @protocol SBUIPasscodeLockView <NSObject>
+@property(nonatomic) _Bool alwaysShowPasscodeButtonForFaceIDMatchFailure;
+@property(readonly, nonatomic) _Bool canPeformBiometricAuthentication;
+@property(copy, nonatomic) NSString *overridePasscodeButtonTitle;
+@property(copy, nonatomic) NSString *overrideFaceIDReason;
+@property(nonatomic) _Bool showsLockIconForFaceID;
 @property(copy, nonatomic) NSString *unlockDestination;
 @property(nonatomic, getter=isScreenOn) _Bool screenOn;
 @property(retain, nonatomic) id <SBFLegibilitySettingsProvider> backgroundLegibilitySettingsProvider;

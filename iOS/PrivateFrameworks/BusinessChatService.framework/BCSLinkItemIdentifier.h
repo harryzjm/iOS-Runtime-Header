@@ -11,10 +11,10 @@
 __attribute__((visibility("hidden")))
 @interface BCSLinkItemIdentifier : NSObject
 {
-    NSURL *_url;
     NSString *_fullHash;
-    long long _computedTruncatedHash;
+    NSURL *_url;
     long long _truncatedDomainHash;
+    long long _computedTruncatedHash;
 }
 
 - (void).cxx_destruct;

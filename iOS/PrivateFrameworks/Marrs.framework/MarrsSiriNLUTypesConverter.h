@@ -30,9 +30,9 @@ __attribute__((visibility("hidden")))
 + (int)fromPluginRewriteType:(int)arg1;
 + (int)fromPluginRepetitionType:(int)arg1;
 + (id)StdVectorStdString2NSMutableArrayNSString:(vector_74824a0a)arg1;
-+ (id)stdString2NSString:(basic_string_05660eb3)arg1;
++ (id)stdString2NSString:(basic_string_b963e3c0)arg1;
 + (vector_74824a0a)NSMutableArrayNSString2StdVectorStdString:(id)arg1;
-+ (basic_string_05660eb3)NSString2StdString:(id)arg1;
++ (basic_string_b963e3c0)NSString2StdString:(id)arg1;
 
 @end
 

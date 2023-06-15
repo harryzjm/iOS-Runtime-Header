@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class ASCMetrics, ASCMetricsActivity, ASCMetricsScrollObserver, NSString, UIView;
+@class ASCMetrics, ASCMetricsActivity, ASCMetricsScrollObserver, NSNotificationCenter, NSString, UIView;
 @protocol ASCViewModel;
 
 __attribute__((visibility("hidden")))
@@ -15,15 +15,21 @@ __attribute__((visibility("hidden")))
     _Bool _enabled;
     _Bool _appeared;
     _Bool _settingModel;
+    _Bool _enteringBackground;
+    _Bool _enteringForeground;
     UIView *_view;
     ASCMetricsActivity *_activity;
     id <ASCViewModel> _model;
     ASCMetrics *_metrics;
     ASCMetricsScrollObserver *_scrollObserver;
+    NSNotificationCenter *_notificationCenter;
 }
 
 + (id)log;
 - (void).cxx_destruct;
+@property(nonatomic, getter=isEnteringForeground) _Bool enteringForeground; // @synthesize enteringForeground=_enteringForeground;
+@property(nonatomic, getter=isEnteringBackground) _Bool enteringBackground; // @synthesize enteringBackground=_enteringBackground;
+@property(readonly, nonatomic) NSNotificationCenter *notificationCenter; // @synthesize notificationCenter=_notificationCenter;
 @property(retain, nonatomic) ASCMetricsScrollObserver *scrollObserver; // @synthesize scrollObserver=_scrollObserver;
 @property(nonatomic, getter=isSettingModel) _Bool settingModel; // @synthesize settingModel=_settingModel;
 @property(nonatomic, getter=isAppeared) _Bool appeared; // @synthesize appeared=_appeared;
@@ -43,9 +49,12 @@ __attribute__((visibility("hidden")))
 - (void)viewDidAction;
 - (void)viewDidSetHidden;
 - (void)viewDidMoveToWindow;
+- (void)hostWillEnterForeground;
+- (void)hostDidEnterBackground;
 @property(readonly, copy) NSString *description;
+- (void)dealloc;
 - (id)initWithView:(id)arg1;
-- (id)initWithView:(id)arg1 metrics:(id)arg2;
+- (id)initWithView:(id)arg1 metrics:(id)arg2 notificationCenter:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

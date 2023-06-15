@@ -22,10 +22,11 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (struct CGSize)sizeInPixels;
-- (_Bool)canEmitDrawingCommands;
 - (struct CGImage *)CGImage;
+- (_Bool)hasExtendedDynamicRange;
 - (_Bool)hasCGImage;
 - (_Bool)isCGImage;
+- (id)typeName;
 - (void)dealloc;
 - (id)initWithCGImageSource:(struct CGImageSource *)arg1 scale:(double)arg2;
 - (id)initWithCGImage:(struct CGImage *)arg1 scale:(double)arg2;

@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface _UIBarAppearanceData : NSObject <NSCopying>
+@interface _UIBarAppearanceData : NSObject
 {
     _Bool _immutable;
 }

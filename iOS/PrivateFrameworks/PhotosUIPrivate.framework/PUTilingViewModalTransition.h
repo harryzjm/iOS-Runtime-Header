@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
 - (void)animateDismissTransition;
 - (void)animatePresentTransition;
 - (_Bool)isInteractive;
-- (id)init;
+- (id)initWithEndPoint:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

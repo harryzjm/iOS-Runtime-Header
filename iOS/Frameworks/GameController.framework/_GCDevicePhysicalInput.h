@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableArray, NSObject, _GCDevicePhysicalInputTransaction;
-@protocol OS_dispatch_queue;
+@class NSMutableArray, _GCDevicePhysicalInputTransaction;
 
 __attribute__((visibility("hidden")))
 @interface _GCDevicePhysicalInput
 {
-    NSObject<OS_dispatch_queue> *_clientQueue;
     CDUnknownBlockType _elementValueDidChangeHandler;
     CDUnknownBlockType _inputStateAvailableHandler;
     NSMutableArray *_allTransactions;
@@ -18,14 +16,20 @@ __attribute__((visibility("hidden")))
     _GCDevicePhysicalInputTransaction *_pendingTransaction;
     NSMutableArray *_bufferedTransactions;
     unsigned long long _bufferedTransactionsQueueDepth;
+    _Atomic _Bool _isHandlingEvent;
 }
 
 - (double)lastEventTimestamp;
 - (_Bool)isSnapshot;
+- (void)updateViewStateIfNeeded;
 - (id)popTransaction;
+- (id)physicalInput;
+- (void)setDataSource:(id)arg1;
 - (void)setDevice:(id)arg1;
 - (void)dealloc;
 - (id)initWithFacade:(id)arg1 elements:(id)arg2;
+- (id)initWithFacade:(id)arg1 elements:(id)arg2 attributes:(id)arg3;
+- (void)_handleEventTransaction:(CDUnknownBlockType)arg1;
 
 @end
 

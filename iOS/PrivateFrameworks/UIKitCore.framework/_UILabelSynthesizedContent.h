@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 @class NSTextEncapsulation, UIColor, _UILabelContent;
 
 __attribute__((visibility("hidden")))
-@interface _UILabelSynthesizedContent : NSObject <NSCopying>
+@interface _UILabelSynthesizedContent : NSObject
 {
     _UILabelContent *_content;
     UIColor *_overrideTextColor;

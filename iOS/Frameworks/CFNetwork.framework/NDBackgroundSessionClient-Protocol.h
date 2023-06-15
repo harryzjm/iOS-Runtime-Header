@@ -38,6 +38,7 @@
 - (void)backgroundTask:(unsigned long long)arg1 didSendBodyData:(long long)arg2 totalBytesSent:(long long)arg3 totalBytesExpectedToSend:(long long)arg4;
 - (void)backgroundTask:(unsigned long long)arg1 didReceiveResponse:(NSURLResponse *)arg2 transactionMetrics:(__CFN_TransactionMetrics *)arg3 reply:(void (^)(long long))arg4;
 - (void)backgroundTask:(unsigned long long)arg1 didReceiveResponse:(NSURLResponse *)arg2 transactionMetrics:(__CFN_TransactionMetrics *)arg3;
+- (void)backgroundTask:(unsigned long long)arg1 didReceiveInformationalResponse:(NSHTTPURLResponse *)arg2;
 - (void)backgroundTask:(unsigned long long)arg1 hasConnectionWaitingWithError:(NSError *)arg2;
 - (void)backgroundTask:(unsigned long long)arg1 hasConnectionWaitingWithReason:(long long)arg2;
 - (void)backgroundTaskHasConnectionWaiting:(unsigned long long)arg1;

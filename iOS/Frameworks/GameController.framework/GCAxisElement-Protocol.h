@@ -9,7 +9,7 @@
 @protocol GCAxisInput, GCRelativeInput;
 
 @protocol GCAxisElement <GCPhysicalInputElement>
-@property(nonatomic, readonly) id <GCRelativeInput> relativeInput;
-@property(nonatomic, readonly) id <GCAxisInput> absoluteInput;
+@property(readonly) id <GCRelativeInput> relativeInput;
+@property(readonly) id <GCAxisInput> absoluteInput;
 @end
 

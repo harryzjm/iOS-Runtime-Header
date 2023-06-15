@@ -11,15 +11,15 @@ __attribute__((visibility("hidden")))
 {
     _Bool _childrenCreated;
     NSArray *_components;
-    NSArray *__children;
     NSArray *_candidates;
+    NSArray *__children;
 }
 
 + (id)textElementFromCROutputRegion:(id)arg1 parentDocument:(id)arg2;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool childrenCreated; // @synthesize childrenCreated=_childrenCreated;
-@property(copy, nonatomic) NSArray *candidates; // @synthesize candidates=_candidates;
 @property(copy, nonatomic) NSArray *_children; // @synthesize _children=__children;
+@property(copy, nonatomic) NSArray *candidates; // @synthesize candidates=_candidates;
 @property(copy, nonatomic) NSArray *components; // @synthesize components=_components;
 - (id)elementCollectionForQuad:(id)arg1;
 - (id)crOutputRegionTypeString;

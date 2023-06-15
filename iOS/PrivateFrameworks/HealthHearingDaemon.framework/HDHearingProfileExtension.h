@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) HDHeadphoneDoseManager *headphoneDoseManager; // @synthesize headphoneDoseManager=_headphoneDoseManager;
+- (id)featureAvailabilityExtensionForFeatureIdentifier:(id)arg1;
 - (id)initWithProfile:(id)arg1;
 
 // Remaining properties

@@ -22,8 +22,8 @@
 + (id)horizontal;
 - (id).cxx_construct;
 - (float)labelGapForCount:(unsigned long long)arg1;
-- (tvec3_17f03ce0)positionForValue:(double)arg1 count:(unsigned long long)arg2 chartDirection:(const void *)arg3;
-- (unsigned int)alignmentForChartDirection:(const void *)arg1;
+- (tvec3_17f03ce0)positionForValue:(double)arg1 count:(unsigned long long)arg2 chartDirection:(void *)arg3;
+- (unsigned int)alignmentForChartDirection:(void *)arg1;
 - (id)initWithAxis:(long long)arg1 alignment:(unsigned int)arg2 offset:(float)arg3 range:(void *)arg4;
 - (_Bool)isHorizontal;
 - (_Bool)hasOffset;

@@ -19,7 +19,7 @@
 - (_Bool)shouldRetractedMessageForBalloonBundleID:(id)arg1;
 - (_Bool)canPopulateUserInfoForMessageBalloonBundleID:(id)arg1;
 - (id)notificationCategories;
-- (void)populateUserInfoForNotificationContent:(id)arg1 messageBalloonBundleID:(id)arg2 payloadData:(id)arg3;
+- (void)populateUserInfoForNotificationContent:(id)arg1 messageBalloonBundleID:(id)arg2 payloadData:(id)arg3 chatIdentifier:(id)arg4 isUrgentMessageTrigger:(_Bool *)arg5 shouldSuppressNotification:(_Bool *)arg6;
 - (id)init;
 
 @end

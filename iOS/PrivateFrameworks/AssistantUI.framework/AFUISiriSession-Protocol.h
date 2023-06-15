@@ -10,6 +10,9 @@
 @protocol SAAceCommand;
 
 @protocol AFUISiriSession <NSObject>
+- (_Bool)attendingState;
+- (void)fetchAttendingState:(void (^)(_Bool))arg1;
+- (void)promptedUserForInput;
 - (void)notifyStateManagerTransactionEnded;
 - (void)notifyStateManagerTransactionBegan;
 - (void)notifyStateManagerSpeakingEnded;
@@ -18,6 +21,10 @@
 - (void)notifyStateManagerPresentationTransitionBegan;
 - (void)didLoseAttentionWithEvent:(long long)arg1;
 - (void)didGainAttentionWithEvent:(long long)arg1;
+- (void)duckTTSToVolume:(float)arg1 rampTime:(double)arg2 completion:(void (^)(NSError *))arg3;
+- (void)idleAndQuietStatusDidChange:(_Bool)arg1;
+- (void)showAssetsDownloadNotificationPrompt;
+- (void)stopAttending;
 - (void)speechSynthesisDidUpdatePowerLevelTo:(float)arg1;
 - (void)speechSynthesisDidFinish:(AFSpeechSynthesisRecord *)arg1;
 - (void)audioRoutePickerWillDismiss;

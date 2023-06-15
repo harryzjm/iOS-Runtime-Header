@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 
 - (id)entityNameToRelationshipsToUpdate;
 - (id)entityNameToAttributesToUpdate;
-- (id)createMirroringResultForRequest:(id)arg1 success:(_Bool)arg2 madeChanges:(_Bool)arg3 error:(id)arg4;
+- (id)createMirroringResultForRequest:(id)arg1 storeIdentifier:(id)arg2 success:(_Bool)arg3 madeChanges:(_Bool)arg4 error:(id)arg5;
 - (void)executeImportOperationsAndAccumulateRecordsWithManagedObjectContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)description;
 - (void)dealloc;

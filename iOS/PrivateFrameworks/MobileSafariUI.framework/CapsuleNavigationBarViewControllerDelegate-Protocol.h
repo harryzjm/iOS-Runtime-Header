@@ -7,13 +7,13 @@
 #import <MobileSafariUI/NSObject-Protocol.h>
 
 @class CapsuleNavigationBarViewController, SFCapsuleNavigationBar, UIScrollView, UIToolbar;
-@protocol SFTransitionCoordinating;
+@protocol SFTransitionCoordinating, _SFBarCommon;
 
 @protocol CapsuleNavigationBarViewControllerDelegate <NSObject>
 
 @optional
 - (_Bool)capsuleNavigationBarViewController:(CapsuleNavigationBarViewController *)arg1 shouldUnminimizeOnScrollForScrollView:(UIScrollView *)arg2;
-- (UIToolbar *)createToolbarForCapsuleNavigationBarViewController:(CapsuleNavigationBarViewController *)arg1;
+- (UIToolbar<_SFBarCommon> *)createToolbarForCapsuleNavigationBarViewController:(CapsuleNavigationBarViewController *)arg1;
 - (void)capsuleNavigationBarViewControllerWillHideKeyboard:(CapsuleNavigationBarViewController *)arg1;
 - (_Bool)capsuleNavigationBarViewControllerIsTrackingDropSession:(CapsuleNavigationBarViewController *)arg1;
 - (_Bool)capsuleNavigationBarViewControllerIsShowingFindOnPage:(CapsuleNavigationBarViewController *)arg1;

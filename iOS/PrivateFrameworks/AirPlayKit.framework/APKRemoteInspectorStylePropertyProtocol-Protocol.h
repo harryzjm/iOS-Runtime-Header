@@ -9,7 +9,7 @@
 @class NSString;
 
 @protocol APKRemoteInspectorStylePropertyProtocol <NSObject>
-@property(nonatomic, readonly) NSString *value;
-@property(nonatomic, readonly) NSString *name;
+@property(readonly, copy, nonatomic) NSString *value;
+@property(readonly, copy, nonatomic) NSString *name;
 @end
 

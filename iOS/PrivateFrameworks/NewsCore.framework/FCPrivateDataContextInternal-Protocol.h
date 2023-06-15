@@ -10,6 +10,7 @@
 @protocol FCAppActivityMonitor;
 
 @protocol FCPrivateDataContextInternal <NSObject>
+@property(readonly, nonatomic) FCCKRecordZone *puzzleHistoryRecordZone;
 @property(readonly, nonatomic) FCCKRecordZone *userInfoRecordZone;
 @property(readonly, nonatomic) FCCKRecordZone *channelMembershipsRecordZone;
 @property(readonly, nonatomic) FCCKRecordZone *readingHistoryRecordZone;

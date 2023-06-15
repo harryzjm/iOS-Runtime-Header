@@ -6,7 +6,7 @@
 
 #import <SilexVideo/NSObject-Protocol.h>
 
-@class NSError;
+@class NSError, NSURL;
 
 @protocol SVVideoEventTracker <NSObject>
 
@@ -27,6 +27,8 @@
 - (void)playbackPaused;
 - (void)playbackStarted;
 - (void)playbackReadyToStart;
+- (void)finishedLoadingVideoWithURL:(NSURL *)arg1;
+- (void)startedLoadingVideo;
 - (void)playbackInitiatedWithButtonTapped:(_Bool)arg1;
 @end
 

@@ -6,9 +6,15 @@
 
 #import <MobileTimer/MTXPCServer-Protocol.h>
 
-@class MTTimer, NSString;
+@class MTTimer, MTTimerDuration, NSString;
 
 @protocol MTTimerServer <MTXPCServer>
+- (void)saveLatestDuration:(MTTimerDuration *)arg1 withCompletion:(void (^)(NSError *))arg2;
+- (void)removeFavoriteDuration:(MTTimerDuration *)arg1 withCompletion:(void (^)(NSError *))arg2;
+- (void)addFavoriteDuration:(MTTimerDuration *)arg1 withCompletion:(void (^)(NSError *))arg2;
+- (void)removeRecentDuration:(MTTimerDuration *)arg1 withCompletion:(void (^)(NSError *))arg2;
+- (void)addRecentDuration:(MTTimerDuration *)arg1 withCompletion:(void (^)(NSError *))arg2;
+- (void)getTimerDurationsWithCompletion:(void (^)(NSArray *, NSArray *, NSArray *, MTTimerDuration *, NSError *))arg1;
 - (void)repeatTimerWithIdentifier:(NSString *)arg1 withCompletion:(void (^)(NSError *))arg2;
 - (void)dismissTimerWithIdentifier:(NSString *)arg1 withCompletion:(void (^)(NSError *))arg2;
 - (void)removeTimer:(MTTimer *)arg1 withCompletion:(void (^)(NSError *))arg2;

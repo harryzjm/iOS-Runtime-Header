@@ -35,7 +35,7 @@
 @property(readonly, nonatomic) CLLocation *location;
 @property(readonly, nonatomic) unsigned long long pixelHeight;
 @property(readonly, nonatomic) unsigned long long pixelWidth;
-@property(readonly, nonatomic) long long playbackVariation;
+@property(readonly, nonatomic) unsigned short playbackVariation;
 @property(readonly, nonatomic) long long playbackStyle;
 @property(readonly, nonatomic) unsigned long long mediaSubtypes;
 @property(readonly, nonatomic) unsigned long long mediaType;

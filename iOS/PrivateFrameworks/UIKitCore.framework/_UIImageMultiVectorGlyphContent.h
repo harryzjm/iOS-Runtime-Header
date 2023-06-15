@@ -28,10 +28,10 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)sizeInPixels;
 - (_Bool)containsNamedColorStyles;
 - (_Bool)isVectorGlyph;
-- (_Bool)canEmitDrawingCommands;
+- (_Bool)canEmitVectorDrawingCommands;
 - (_Bool)canScaleImageToTargetResolution;
-- (_Bool)canDrawImage;
 - (_Bool)isCGImage;
+- (id)typeName;
 - (void)dealloc;
 - (id)initWithScale:(double)arg1;
 - (id)initWithSize:(struct CGSize)arg1 glyphs:(id)arg2 colors:(id)arg3 offsets:(id)arg4 scaleFactors:(id)arg5 anchorPoint:(struct CGPoint)arg6;

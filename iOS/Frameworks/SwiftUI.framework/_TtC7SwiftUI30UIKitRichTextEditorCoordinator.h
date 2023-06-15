@@ -13,6 +13,8 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *textStorage;
     MISSING_TYPE *textContentStorage;
     MISSING_TYPE *attributeResolver;
+    MISSING_TYPE *helper;
+    MISSING_TYPE *textView;
 }
 
 - (void).cxx_destruct;

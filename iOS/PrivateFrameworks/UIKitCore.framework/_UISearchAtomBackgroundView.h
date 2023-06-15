@@ -6,14 +6,21 @@
 
 #import "UIView.h"
 
+@class UIBlurEffect, UIVisualEffectView;
+
 __attribute__((visibility("hidden")))
 @interface _UISearchAtomBackgroundView : UIView
 {
+    UIVisualEffectView *_visualEffectView;
     long long _selectionStyle;
+    UIBlurEffect *_blurEffect;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) UIBlurEffect *blurEffect; // @synthesize blurEffect=_blurEffect;
 @property(nonatomic) long long selectionStyle; // @synthesize selectionStyle=_selectionStyle;
 - (void)_updateSelectionStyleMask;
+- (void)_transitionFromBlurEffect:(id)arg1 toBlurEffect:(id)arg2;
 - (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1;
 

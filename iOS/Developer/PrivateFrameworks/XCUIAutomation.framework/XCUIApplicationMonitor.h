@@ -46,6 +46,8 @@
 @property(retain) XCUIApplicationRegistry *applicationRegistry; // @synthesize applicationRegistry=_applicationRegistry;
 @property(readonly) NSSet *unsupportedBundleIdentifiersForAutomationSessions; // @synthesize unsupportedBundleIdentifiersForAutomationSessions=_unsupportedBundleIdentifiersForAutomationSessions;
 - (void)acquireBackgroundAssertionForPID:(int)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)updatedInterfaceOrientation:(long long)arg1;
+- (void)updatedDeviceOrientation:(long long)arg1;
 - (void)updatedApplicationStateSnapshot:(id)arg1;
 - (void)_setIsTrackingForBundleID:(id)arg1;
 - (_Bool)_isTrackingBundleID:(id)arg1;

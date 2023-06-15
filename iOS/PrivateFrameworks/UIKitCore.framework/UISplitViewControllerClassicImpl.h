@@ -122,6 +122,7 @@ __attribute__((visibility("hidden")))
 - (long long)_medusaState;
 - (void)_getRotationContentSettings:(CDStruct_8bdd0ba6 *)arg1;
 - (void)viewDidLayoutSubviews;
+- (void)viewWillLayoutSubviews;
 - (void)__viewWillLayoutSubviews;
 - (void)_setDetailViewFrame:(struct CGRect)arg1;
 - (void)_updateLayoutForStatusBarAndInterfaceOrientation;
@@ -145,11 +146,13 @@ __attribute__((visibility("hidden")))
 - (_Bool)_hasPreferredInterfaceOrientationForPresentation;
 - (unsigned long long)supportedInterfaceOrientations;
 - (_Bool)shouldAutorotateToInterfaceOrientation:(long long)arg1;
+- (unsigned long long)preferredScreenEdgesDeferringSystemGestures;
 - (long long)preferredCenterStatusBarStyle;
 - (long long)preferredTrailingStatusBarStyle;
 - (long long)preferredLeadingStatusBarStyle;
 - (id)childViewControllerForStatusBarStyle;
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1;
+@property(nonatomic, setter=_setPrimaryOffscreenGestureMode:) long long _primaryOffscreenGestureMode;
 - (id)_multitaskingDragExclusionRects;
 - (void)_didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (_Bool)shouldUpdateFocusInContext:(id)arg1;

@@ -11,5 +11,9 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (id)queryIsInternalBuildWithError:(id *)arg1;
++ (id)queryBuildVersionWithError:(id *)arg1;
+- (id)init;
+
 @end
 

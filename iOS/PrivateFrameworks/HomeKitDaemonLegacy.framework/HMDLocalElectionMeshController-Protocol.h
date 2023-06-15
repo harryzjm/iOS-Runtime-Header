@@ -6,7 +6,7 @@
 
 #import <HomeKitDaemonLegacy/NSObject-Protocol.h>
 
-@class NSArray, NSString;
+@class NSArray, NSString, NSUUID;
 @protocol HMDLocalElectionMeshControllerDelegate, HMDLocalElectionMeshNode;
 
 @protocol HMDLocalElectionMeshController <NSObject>
@@ -18,7 +18,7 @@
 - (NSString *)debugDescriptionForMeshState;
 - (NSString *)debugDescriptionForControllerType;
 - (void)sendPingRequestToNode:(id <HMDLocalElectionMeshNode>)arg1 withCompletion:(void (^)(NSError *))arg2;
-- (void)sendPingNotificationToFollowers;
+- (void)sendPingNotificationToFollowersWithPrimaryResident:(NSUUID *)arg1;
 - (void)sendPingCommandToLeaderWithCompletion:(void (^)(NSError *))arg1;
 - (void)stop;
 - (void)startMeshWithName:(NSString *)arg1;

@@ -10,7 +10,6 @@
 
 @interface _TtCV10PegasusAPI48Apple_Parsec_Visualsearch_V2_VisualSearchRequestP33_1F725EDDD41BCD9020B948B0391513F513_StorageClass : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *_visualQuery;
     MISSING_TYPE *_visualQueryLite;
     MISSING_TYPE *_includeDomains;
     MISSING_TYPE *_queryContext;
@@ -18,6 +17,8 @@
     MISSING_TYPE *_thirdPartyTeamID;
     MISSING_TYPE *_thirdPartyCatalogIds;
     MISSING_TYPE *_queryID;
+    MISSING_TYPE *_field9;
+    MISSING_TYPE *_field10;
 }
 
 @end

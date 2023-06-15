@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, UIContextMenuInteraction, UISearchBar, UISearchTextField, UITapGestureRecognizer;
+@class NSString, UIContextMenuInteraction, UITapGestureRecognizer;
 
 __attribute__((visibility("hidden")))
 @interface _UISearchSuggestionControllerIOS
 {
-    UISearchTextField *_searchTextField;
-    UISearchBar *_searchBar;
     UIContextMenuInteraction *_menuInteraction;
     UITapGestureRecognizer *_suggestionsRecoveryGesture;
 }
@@ -18,18 +16,16 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) UITapGestureRecognizer *suggestionsRecoveryGesture; // @synthesize suggestionsRecoveryGesture=_suggestionsRecoveryGesture;
 @property(retain, nonatomic) UIContextMenuInteraction *menuInteraction; // @synthesize menuInteraction=_menuInteraction;
-@property(readonly, nonatomic) __weak UISearchBar *searchBar; // @synthesize searchBar=_searchBar;
-@property(readonly, nonatomic) __weak UISearchTextField *searchTextField; // @synthesize searchTextField=_searchTextField;
 - (void)_suggestionsRecoveryGestureRecognized;
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1;
 - (void)contextMenuInteraction:(id)arg1 willEndForConfiguration:(id)arg2 animator:(id)arg3;
 - (id)_contextMenuInteraction:(id)arg1 styleForMenuWithConfiguration:(id)arg2;
 - (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint)arg2;
-- (void)updateSuggestions:(id)arg1 userInitiated:(_Bool)arg2;
-- (void)updateMenuWithSuggestions:(id)arg1;
-@property(readonly, nonatomic) _Bool hasVisibleMenu;
+- (void)updateSuggestionGroups:(id)arg1 userInitiated:(_Bool)arg2;
+- (void)_updateMenuWithSuggestionGroups:(id)arg1;
+- (void)_dismissMenuWithoutAnimation;
+- (_Bool)_hasVisibleMenu;
 - (id)_suggestionsMenu;
-- (void)searchTextFieldDidGainSearchBar:(id)arg1;
 - (id)initWithSearchTextField:(id)arg1;
 
 // Remaining properties

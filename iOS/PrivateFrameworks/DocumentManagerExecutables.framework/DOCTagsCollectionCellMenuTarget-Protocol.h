@@ -6,12 +6,9 @@
 
 #import <DocumentManagerExecutables/NSObject-Protocol.h>
 
-@class NSArray, UIMenu;
+@class UIMenu;
 
 @protocol DOCTagsCollectionCellMenuTarget <NSObject>
 @property(readonly, nonatomic) UIMenu *menuForContextMenuPresentation;
-@property(readonly, nonatomic) NSArray *menuItemsForCalloutBarPresentation;
-@property(readonly, nonatomic) id menuPresentationIdentity;
-- (_Bool)canPerformCalloutBarAction:(SEL)arg1;
 @end
 

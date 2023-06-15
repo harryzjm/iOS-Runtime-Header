@@ -33,8 +33,10 @@ __attribute__((visibility("hidden")))
     _Bool _tracking;
     NSNumber *_timeOfInterest;
     NSMutableArray *_phFaces;
+    struct Scaler _scaler;
 }
 
+- (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)privateResults;
 - (id)results;

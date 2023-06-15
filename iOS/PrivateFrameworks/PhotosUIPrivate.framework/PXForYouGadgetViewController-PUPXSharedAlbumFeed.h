@@ -7,6 +7,6 @@
 #import <PhotosUICore/PXForYouGadgetViewController.h>
 
 @interface PXForYouGadgetViewController (PUPXSharedAlbumFeed)
-- (id)px_sharedAlbumFeedViewControllerWithTraitCollection:(id)arg1;
++ (id)px_sharedAlbumFeedViewControllerWithTraitCollection:(id)arg1;
 @end
 

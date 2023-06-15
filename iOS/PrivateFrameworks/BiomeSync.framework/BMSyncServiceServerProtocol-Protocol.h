@@ -4,11 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSSet;
+
 @protocol BMSyncServiceServerProtocol
 - (void)peerInformationWithReply:(void (^)(NSArray *, NSError *))arg1;
 - (void)cloudKitSyncWithReply:(void (^)(NSArray *, NSArray *))arg1;
 - (void)rapportSyncWithReply:(void (^)(NSArray *, NSArray *))arg1;
 - (void)triggerCloudKitSyncWithReply:(void (^)(NSError *))arg1;
+- (void)triggerRapportSyncDeviceIdentifiers:(NSSet *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)triggerRapportSyncWithReply:(void (^)(NSError *))arg1;
+- (void)remoteDevicesWithReply:(void (^)(NSArray *, NSError *))arg1;
 @end
 

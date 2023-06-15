@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class TTTextStorage;
+@class ICTTTextStorage;
 
 @protocol ICNoteMergeObserver
-- (void)textStorageWillPerformMerge:(TTTextStorage *)arg1;
-- (void)textStorageDidPerformMerge:(TTTextStorage *)arg1;
+- (void)textStorageWillPerformMerge:(ICTTTextStorage *)arg1;
+- (void)textStorageDidPerformMerge:(ICTTTextStorage *)arg1;
 @end
 

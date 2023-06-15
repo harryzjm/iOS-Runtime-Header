@@ -15,10 +15,12 @@ __attribute__((visibility("hidden")))
     CDStruct_1b6d18a9 _start;
     CDStruct_1b6d18a9 _last;
     struct CGRect _bounds;
+    struct CGRect _torsoBounds;
 }
 
 @property unsigned long long faceID; // @synthesize faceID=_faceID;
 @property unsigned long long position; // @synthesize position=_position;
+@property struct CGRect torsoBounds; // @synthesize torsoBounds=_torsoBounds;
 @property struct CGRect bounds; // @synthesize bounds=_bounds;
 @property unsigned long long flags; // @synthesize flags=_flags;
 @property CDStruct_1b6d18a9 last; // @synthesize last=_last;

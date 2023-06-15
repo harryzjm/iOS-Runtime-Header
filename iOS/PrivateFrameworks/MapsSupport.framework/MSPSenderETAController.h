@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MSPGroupSessionStorage, MSPNavigationListener, MSPSenderLiveStrategy, MSPSenderMessageStrategy, MSPSenderMinimalStrategy, MSPSharedTripGroupSession, MSPSharedTripRelay, MSPSharedTripStorageController, MSPSharingRestorationStorage, NSArray, NSMutableSet, NSString;
+@class MSPGroupSessionStorage, MSPNavigationListener, MSPSenderLiveStrategy, MSPSenderMessageStrategy, MSPSenderMinimalStrategy, MSPSharedTripGroupSession, MSPSharedTripRelay, MSPSharedTripStorageController, NSArray, NSMutableSet, NSString;
 @protocol MSPSenderETAControllerDelegate, OS_os_transaction;
 
 __attribute__((visibility("hidden")))
@@ -58,7 +58,6 @@ __attribute__((visibility("hidden")))
 - (void)_createGroupSessionIfNeededWithIdentifier:(id)arg1;
 - (void)_restoreLastSession;
 - (void)_updateStorage;
-@property(readonly, copy, nonatomic) MSPSharingRestorationStorage *archivedSharingState;
 - (void)dealloc;
 - (id)initWithRelay:(id)arg1;
 

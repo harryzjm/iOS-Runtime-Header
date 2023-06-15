@@ -7,6 +7,7 @@
 @class CSEndpointerMetrics;
 
 @protocol CSEndpointerXPCServiceDelegate
+- (void)didDetectTwoShotAtTime:(double)arg1;
 - (void)didDetectHardEndpointAtTime:(double)arg1 withMetrics:(CSEndpointerMetrics *)arg2;
 - (void)didDetectStartpointAtTime:(double)arg1;
 @end

@@ -10,17 +10,29 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
+struct AWDigitizerButtonKeyboardMetadata {
+    unsigned long long _field1;
+    struct __CFString *_field2;
+};
+
 struct AWFaceDetectMetadata {
     _Bool _field1;
     double _field2;
     double _field3;
     double _field4;
     unsigned long long _field5;
+    double _field6;
+    unsigned long long _field7;
+    double _field8;
+    unsigned long long _field9;
+    float _field10[16];
 };
 
 struct AWRemoteMetadata {
     long long _field1;
     long long _field2;
+    unsigned long long _field3;
+    _Bool _field4;
 };
 
 struct mach_timebase_info {
@@ -63,10 +75,24 @@ typedef struct {
     } _field5[0];
 } CDStruct_89f0e72b;
 
+// Ambiguous groups
+typedef struct {
+    _Bool _field1;
+    _Bool _field2;
+} CDStruct_3d581f42;
+
 #pragma mark Typedef'd Unions
 
 typedef union {
     struct AWFaceDetectMetadata _field1;
+    int _field2;
+    int _field3;
+    int _field4;
+} CDUnion_0e6d45a1;
+
+typedef union {
+    struct AWFaceDetectMetadata _field1;
     struct AWRemoteMetadata _field2;
-} CDUnion_4b9e79fd;
+    struct AWDigitizerButtonKeyboardMetadata _field3;
+} CDUnion_8fa1bcb8;
 

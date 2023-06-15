@@ -4,18 +4,27 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSSet;
+@class COHomeKitAccessoryMemento, NSObject, NSSet;
+@protocol OS_nw_activity;
 
 __attribute__((visibility("hidden")))
 @interface COMeshAlarmAddOnClientObserver
 {
+    _Bool _canDispatch;
+    COHomeKitAccessoryMemento *_accessory;
     NSSet *_constraints;
+    NSObject<OS_nw_activity> *_dispatchabilityStallActivity;
+    unsigned long long _dispatchabilityStallCount;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long dispatchabilityStallCount; // @synthesize dispatchabilityStallCount=_dispatchabilityStallCount;
+@property(retain, nonatomic) NSObject<OS_nw_activity> *dispatchabilityStallActivity; // @synthesize dispatchabilityStallActivity=_dispatchabilityStallActivity;
+@property(nonatomic) _Bool canDispatch; // @synthesize canDispatch=_canDispatch;
 @property(readonly, copy, nonatomic) NSSet *constraints; // @synthesize constraints=_constraints;
+@property(readonly, copy, nonatomic) COHomeKitAccessoryMemento *accessory; // @synthesize accessory=_accessory;
 - (_Bool)isEqual:(id)arg1;
-- (id)initWithConnection:(id)arg1 constraints:(id)arg2;
+- (id)initWithConnection:(id)arg1 asAccessory:(id)arg2 constraints:(id)arg3 cluster:(id)arg4;
 
 @end
 

@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (id)detailedDescription;
 @property(readonly, nonatomic) double clientSampleRate;
 - (long long)clientSampleTimeFromSampleTime:(long long)arg1 fromBox:(void *)arg2;
 - (void)dealloc;

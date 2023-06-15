@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSMapTable;
+@class NSMapTable, NSMutableArray;
 
 @interface TSTTableDataListItemCache : NSObject
 {
     NSMapTable *_data;
+    NSMutableArray *_strongRefs;
 }
 
 + (id)cache;

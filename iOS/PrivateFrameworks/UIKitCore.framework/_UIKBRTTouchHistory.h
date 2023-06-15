@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 @class NSMutableArray;
 
 __attribute__((visibility("hidden")))
-@interface _UIKBRTTouchHistory : NSObject <NSCopying>
+@interface _UIKBRTTouchHistory : NSObject
 {
     NSMutableArray *_history;
     struct CGPoint _historyOffset;

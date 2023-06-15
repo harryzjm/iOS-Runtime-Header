@@ -68,6 +68,15 @@ typedef struct {
 } CDStruct_4686af4b;
 
 typedef struct {
+    unsigned char _field1[2];
+    CDStruct_f6a177db _field2;
+    CDStruct_6238c8e0 _field3;
+    CDStruct_6238c8e0 _field4;
+    CDStruct_f6a177db _field5;
+    CDStruct_f6a177db _field6;
+} CDStruct_388cbe1a;
+
+typedef struct {
     int hashType;
     union {
         struct CC_MD5state_st md5;

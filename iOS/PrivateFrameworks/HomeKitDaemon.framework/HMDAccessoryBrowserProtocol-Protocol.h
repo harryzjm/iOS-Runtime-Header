@@ -6,33 +6,33 @@
 
 #import <HomeKitDaemon/NSObject-Protocol.h>
 
-@class HAPAccessoryServer, HMDMediaBrowser, HMDUnassociatedAccessory, HMDUnpairedHAPAccessory, HMDUnpairedHAPAccessoryConfiguration, HMFMessageTransport, HMSetupAccessoryDescription, NSArray, NSData, NSDictionary, NSError, NSObject, NSSet, NSString, NSUUID;
-@protocol HMDAccessoryBrowserDelegate, HMDAccessoryBrowserHapProtocol, NSObject, OS_dispatch_queue;
+@class HAPAccessoryServer, HMDMediaBrowser, HMDUnassociatedAccessory, HMDUnpairedHAPAccessory, HMDUnpairedHAPAccessoryConfiguration, HMMTRAccessoryServerBrowser, HMSetupAccessoryDescription, NSArray, NSData, NSDictionary, NSError, NSSet, NSString, NSUUID;
+@protocol HMDAccessoryBrowserDelegate, HMDAccessoryBrowserHapProtocol, NSObject;
 
 @protocol HMDAccessoryBrowserProtocol <NSObject>
 @property(readonly, nonatomic) HMDMediaBrowser *mediaBrowser;
+@property(readonly) HMMTRAccessoryServerBrowser *chipAccessoryServerBrowser;
 @property(readonly, nonatomic) _Bool active;
 @property(readonly, copy) NSArray *unassociatedAccessories;
+- (void)updatePairingWithProgress:(long long)arg1 accessoryServer:(HAPAccessoryServer *)arg2;
 - (void)setBrowseableLinkTypes:(NSArray *)arg1;
 - (void)removePairingInformationForAccessoryServer:(HAPAccessoryServer *)arg1;
 - (HMDUnpairedHAPAccessory *)unpairedHAPAccessoryWithAccessoryDescription:(HMSetupAccessoryDescription *)arg1;
 - (void)removeUnassociatedAccessoryWithIdentifier:(NSString *)arg1;
 - (void)removeUnassociatedAccessory:(HMDUnassociatedAccessory *)arg1;
 - (void)addUnassociatedAccessory:(HMDUnassociatedAccessory *)arg1 forDeviceSetup:(_Bool)arg2;
-- (id <HMDAccessoryBrowserHapProtocol>)acessoryBrowserHapProtocol;
-- (void)handleStartDiscoveringAssociatedMediaAccessories:(_Bool)arg1 forTransport:(HMFMessageTransport *)arg2 completionHandler:(void (^)(NSError *, NSDictionary *))arg3;
+- (id <HMDAccessoryBrowserHapProtocol>)accessoryBrowserHapProtocol;
 - (void)currentlyFoundHAPAccessoryServerWithIdentifier:(NSString *)arg1 linkType:(long long)arg2 completion:(void (^)(HAPAccessoryServer *))arg3;
 - (void)handleNewlyPairedAccessory:(NSString *)arg1 linkType:(long long)arg2;
 - (_Bool)isBrowsingAllowed;
 - (void)discoverAccessoryServer:(NSString *)arg1 linkType:(long long)arg2 errorHandler:(void (^)(NSError *))arg3;
 - (void)discoverAccessories:(HAPAccessoryServer *)arg1;
-- (_Bool)hasClientRequestedMediaAccessoryControl:(HMFMessageTransport *)arg1;
 - (NSString *)dumpBrowsingConnections;
 - (NSString *)dumpRegisteredPairedAccessories;
 - (NSDictionary *)dumpUnassociatedAccessories;
 - (NSSet *)discoveredAccessoryServers;
 - (void)reprovisionAccessoryWithIdentifier:(NSString *)arg1 wiFiPSK:(NSData *)arg2 countryCode:(NSString *)arg3 withCompletion:(void (^)(NSError *))arg4;
-- (void)probeReachabilityForBTLEAccessoryServersWithIdentifiers:(NSArray *)arg1 onQueue:(NSObject<OS_dispatch_queue> *)arg2 withCompletion:(void (^)(NSString *, _Bool))arg3;
+- (void)probeReachabilityForBTLEAccessoryServersWithIdentifiers:(NSArray *)arg1 forceScan:(_Bool)arg2 withCompletion:(void (^)(NSString *, _Bool))arg3;
 - (void)addUnpairedAccessoryServer:(HAPAccessoryServer *)arg1 identifier:(NSString *)arg2;
 - (void)resurrectAccessoryServer:(HAPAccessoryServer *)arg1;
 - (void)tombstoneAccessoryServer:(HAPAccessoryServer *)arg1;
@@ -40,6 +40,7 @@
 - (void)btleAccessoryReachabilityProbeTimer:(_Bool)arg1;
 - (void)deregisterPairedAccessory:(NSString *)arg1;
 - (void)registerPairedAccessory:(NSString *)arg1 transports:(unsigned long long)arg2 setupHash:(NSData *)arg3 delegate:(id <HMDAccessoryBrowserDelegate>)arg4;
+- (void)resetUnassociatedCurrentAccessory;
 - (void)resetConfiguration;
 - (void)cancelPairingWithAccessoryDescription:(HMSetupAccessoryDescription *)arg1 error:(NSError *)arg2;
 - (void)cancelPairingWithAccessory:(HMDUnpairedHAPAccessory *)arg1 error:(NSError *)arg2;

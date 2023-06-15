@@ -4,7 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@protocol IXCoordinatorWithImportance
+#import <InstallCoordination/NSObject-Protocol.h>
+
+@protocol IXCoordinatorWithImportance <NSObject>
 - (unsigned long long)importanceWithError:(id *)arg1;
 - (_Bool)setImportance:(unsigned long long)arg1 error:(id *)arg2;
 @end

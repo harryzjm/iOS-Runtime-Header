@@ -6,13 +6,20 @@
 
 #import <ChatKit/NSObject-Protocol.h>
 
-@class UIViewController;
+@class CKComposition, CKDetailsController, NSArray, UIViewController;
 
 @protocol CKDetailsControllerDelegate <NSObject>
 - (UIViewController *)detailsControllerBusinessPrivacyInfoPresentingViewController:(UIViewController *)arg1;
 - (_Bool)isDetailsNavigationControllerDetached;
+- (void)dismissDetailsViewAndShowConversationList;
 - (void)dismissDetailsNavigationController;
 - (void)detailsControllerDidDismiss:(UIViewController *)arg1;
 - (void)detailsControllerWillDismiss:(UIViewController *)arg1;
+
+@optional
+- (UIViewController *)presentingViewControllerForGroupAlertsFromDetailsController:(CKDetailsController *)arg1;
+- (void)detailsController:(UIViewController *)arg1 shouldComposeConversationWithRecipientAddresses:(NSArray *)arg2;
+- (void)detailsControllerDidSelectStopSharingLocation:(UIViewController *)arg1;
+- (void)detailsController:(UIViewController *)arg1 wantsToStageComposition:(CKComposition *)arg2;
 @end
 

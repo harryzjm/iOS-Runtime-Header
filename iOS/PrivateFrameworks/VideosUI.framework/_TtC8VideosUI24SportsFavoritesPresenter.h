@@ -10,6 +10,7 @@
 
 @interface _TtC8VideosUI24SportsFavoritesPresenter : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *_isShowingOnboardingSheet;
     MISSING_TYPE *sportsFavoritesTemplateViewModel;
     MISSING_TYPE *collections;
     MISSING_TYPE *descriptionViewModel;

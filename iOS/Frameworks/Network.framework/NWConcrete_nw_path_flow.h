@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSString;
-@protocol OS_nw_array, OS_nw_endpoint, OS_nw_interface, OS_nw_protocol_options, OS_xpc_object;
+@protocol OS_nw_array, OS_nw_endpoint, OS_nw_error, OS_nw_interface, OS_nw_protocol_options, OS_xpc_object;
 
 __attribute__((visibility("hidden")))
 @interface NWConcrete_nw_path_flow : NSObject
@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     NSObject<OS_nw_endpoint> *remote_endpoint;
     NSObject<OS_nw_array> *discovered_endpoints;
     NSObject<OS_nw_array> *resolved_endpoints;
+    NSObject<OS_nw_error> *error;
     NSObject<OS_nw_protocol_options> *assigned_protocol;
     struct necp_client_result_netagent nexus_agent_struct;
     struct necp_client_result_interface interface_struct;

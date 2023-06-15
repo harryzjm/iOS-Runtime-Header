@@ -13,8 +13,10 @@ __attribute__((visibility("hidden")))
 @interface CNPhotoPickerProviderItem : NSObject
 {
     _Bool _allowsEditing;
+    NSData *_imageData;
     NSData *_thumbnailImageData;
     NSString *_recentsIdentifier;
+    NSString *_assetIdentifier;
     NSString *_localizedVariantDisplayName;
     id <CNScheduler> _renderingQueue;
     id <CNScheduler> _callbackQueue;
@@ -24,7 +26,6 @@ __attribute__((visibility("hidden")))
     UIImage *_croppedFullSizeImage;
     UIImage *_thumbnailImage;
     UIImage *_loadingPlaceholderImage;
-    NSData *_imageData;
     NSData *_fullscreenImageData;
     NSData *_filteredImageData;
     NSString *_imageFilterName;
@@ -32,11 +33,11 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)thumbnailViewForImage:(id)arg1;
++ (id)generateThumbnailImageDataWithData:(id)arg1 cropRect:(struct CGRect)arg2;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSString *imageFilterName; // @synthesize imageFilterName=_imageFilterName;
 @property(retain, nonatomic) NSData *filteredImageData; // @synthesize filteredImageData=_filteredImageData;
 @property(retain, nonatomic) NSData *fullscreenImageData; // @synthesize fullscreenImageData=_fullscreenImageData;
-@property(retain, nonatomic) NSData *imageData; // @synthesize imageData=_imageData;
 @property(retain, nonatomic) UIImage *loadingPlaceholderImage; // @synthesize loadingPlaceholderImage=_loadingPlaceholderImage;
 @property(retain, nonatomic) UIImage *thumbnailImage; // @synthesize thumbnailImage=_thumbnailImage;
 @property(retain, nonatomic) UIImage *croppedFullSizeImage; // @synthesize croppedFullSizeImage=_croppedFullSizeImage;
@@ -48,8 +49,10 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSString *localizedVariantDisplayName; // @synthesize localizedVariantDisplayName=_localizedVariantDisplayName;
 @property(nonatomic) _Bool allowsEditing; // @synthesize allowsEditing=_allowsEditing;
 @property(readonly, nonatomic) struct CGRect cropRect; // @synthesize cropRect=_cropRect;
+@property(retain, nonatomic) NSString *assetIdentifier; // @synthesize assetIdentifier=_assetIdentifier;
 @property(retain, nonatomic) NSString *recentsIdentifier; // @synthesize recentsIdentifier=_recentsIdentifier;
 @property(retain, nonatomic) NSData *thumbnailImageData; // @synthesize thumbnailImageData=_thumbnailImageData;
+@property(retain, nonatomic) NSData *imageData; // @synthesize imageData=_imageData;
 - (void)updateTintColorIfNeeded:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;

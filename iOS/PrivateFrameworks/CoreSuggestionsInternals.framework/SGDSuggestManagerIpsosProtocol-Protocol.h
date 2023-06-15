@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray;
+@class NSArray, SGIPMessage;
 
 @protocol SGDSuggestManagerIpsosProtocol
+- (void)titleSuggestionForMessage:(SGIPMessage *)arg1 withCompletion:(void (^)(SGXPCResponse1 *))arg2;
 - (void)ipsosMessagesFromSearchableItems:(NSArray *)arg1 withCompletion:(void (^)(SGXPCResponse1 *))arg2;
 @end
 

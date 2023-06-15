@@ -12,42 +12,29 @@ __attribute__((visibility("hidden")))
 @interface _TtC7SwiftUI17HostingScrollView : UIKitScrollViewBase
 {
     MISSING_TYPE *viewType;
-    MISSING_TYPE *layoutState;
-    MISSING_TYPE *eventState;
-    MISSING_TYPE *prefetchState;
     MISSING_TYPE *host;
     MISSING_TYPE *responder;
-    MISSING_TYPE *focusableBorder;
     MISSING_TYPE *layoutDirection;
-    MISSING_TYPE *ignoreUpdates;
-    MISSING_TYPE *pendingUpdate;
+    MISSING_TYPE *onScrollToTopGesture;
+    MISSING_TYPE *helper;
     MISSING_TYPE *lastContentInset;
     MISSING_TYPE *uiLastSafeAreaInset;
     MISSING_TYPE *lastAdditionalInset;
     MISSING_TYPE *animationTarget;
     MISSING_TYPE *animationOffset;
-    MISSING_TYPE *isAnimationCompletionCheckPending;
     MISSING_TYPE *safeAreaTransitionState;
-    MISSING_TYPE *beginDraggingOffset;
-    MISSING_TYPE *onScrollToTopGesture;
     MISSING_TYPE *configuration;
 }
 
 - (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)_swiftui_focusedItem:(id)arg1 isMinX:(_Bool *)arg2 isMaxX:(_Bool *)arg3 isMinY:(_Bool *)arg4 isMaxY:(_Bool *)arg5;
-- (void)_updateCycleIdleUntil:(unsigned long long)arg1;
-- (_Bool)scrollViewShouldScrollToTop:(id)arg1;
-- (void)scrollViewDidEndDecelerating:(id)arg1;
-- (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(_Bool)arg2;
-- (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(struct CGPoint *)arg3;
-- (void)scrollViewWillBeginDragging:(id)arg1;
+- (id)_focusScrollBoundaryMetricsForItem:(id)arg1;
 - (void)setContentOffset:(struct CGPoint)arg1 animated:(_Bool)arg2;
-- (void)scrollViewDidEndScrollingAnimation:(id)arg1;
 @property(nonatomic, readonly) _Bool _shouldScrollToContentBeginningInRightToLeft;
 - (void)adjustedContentInsetDidChange;
 - (void)safeAreaInsetsDidChange;
 @property(nonatomic, readonly) struct UIEdgeInsets safeAreaInsets;
+@property(nonatomic) struct CGRect frame;
 @property(nonatomic) struct CGRect bounds;
 - (void)didMoveToWindow;
 - (id)initWithCoder:(id)arg1;

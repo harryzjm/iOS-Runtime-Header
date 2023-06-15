@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class MPModelLibrarySearchRequest, NSArray, NSString;
+@class MPLibraryObjectDatabase, MPModelLibrarySearchRequest, NSArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface MPModelLibrarySearchSectionedCollectionDataSource : NSObject
 {
+    MPLibraryObjectDatabase *_lod;
     NSArray *_resultContainers;
     MPModelLibrarySearchRequest *_request;
 }
@@ -25,7 +26,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)numberOfItemsInSection:(unsigned long long)arg1;
 - (id)sectionAtIndex:(unsigned long long)arg1;
 - (unsigned long long)numberOfSections;
-- (id)initWithEntitiesQueryResultContainers:(id)arg1;
+- (id)initWithEntitiesQueryResultContainers:(id)arg1 libraryObjectDatabase:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

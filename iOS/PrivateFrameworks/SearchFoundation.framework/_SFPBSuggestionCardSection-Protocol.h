@@ -6,10 +6,12 @@
 
 #import <SearchFoundation/NSObject-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString, _SFPBColor, _SFPBImage, _SFPBPunchout, _SFPBRichText;
+@class NSArray, NSData, NSDictionary, NSString, _SFPBColor, _SFPBFormattedText, _SFPBImage, _SFPBPunchout, _SFPBRichText;
 
 @protocol _SFPBSuggestionCardSection <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
+@property(retain, nonatomic) _SFPBFormattedText *trailingBottomText;
+@property(retain, nonatomic) _SFPBFormattedText *trailingMiddleText;
 @property(retain, nonatomic) _SFPBImage *thumbnail;
 @property(retain, nonatomic) _SFPBRichText *detailText;
 @property(nonatomic) int suggestionType;

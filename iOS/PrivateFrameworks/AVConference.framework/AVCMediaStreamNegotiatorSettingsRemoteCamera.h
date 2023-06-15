@@ -8,11 +8,13 @@ __attribute__((visibility("hidden")))
 @interface AVCMediaStreamNegotiatorSettingsRemoteCamera
 {
     long long _captureSource;
+    _Bool _isDisparityPixelFormat;
 }
 
 + (_Bool)isOfferSupported;
+- (unsigned char)featureListStringType;
+- (unsigned long long)maxBandwidth;
 - (unsigned long long)minBandwidth;
-- (long long)tilesPerFrame;
 - (int)operatingMode;
 - (long long)captureSource;
 - (long long)videoStreamMode;

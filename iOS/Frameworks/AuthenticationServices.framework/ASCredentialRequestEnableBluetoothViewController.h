@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class ASCAuthorizationPresentationContext;
+@class ASCAuthorizationPresentationContext, NSObject;
+@protocol OS_os_activity;
 
 __attribute__((visibility("hidden")))
 @interface ASCredentialRequestEnableBluetoothViewController
 {
+    NSObject<OS_os_activity> *_authorizationActivity;
     ASCAuthorizationPresentationContext *_presentationContext;
     CDUnknownBlockType _enableBluetoothHandler;
 }
@@ -22,7 +24,7 @@ __attribute__((visibility("hidden")))
 - (void)_setUpMessagePane;
 - (void)_setUpTitlePane;
 - (void)viewDidLoad;
-- (id)initWithPresentationContext:(id)arg1;
+- (id)initWithPresentationContext:(id)arg1 activity:(id)arg2;
 
 @end
 

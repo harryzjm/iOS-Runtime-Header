@@ -6,12 +6,13 @@
 
 #import <UIKit/UIView.h>
 
-@class MRUButton, MRUVisualStylingProvider, NSString, UIImage, UIImageSymbolConfiguration;
+@class MRUTransportButton, MRUVisualStylingProvider, NSString, UIImage, UIImageSymbolConfiguration;
 @protocol MRUStepperDelegate;
 
 __attribute__((visibility("hidden")))
 @interface MRUStepper : UIView
 {
+    _Bool _dimmed;
     id <MRUStepperDelegate> _delegate;
     UIImage *_decrementImage;
     UIImage *_incrementImage;
@@ -19,15 +20,16 @@ __attribute__((visibility("hidden")))
     UIImageSymbolConfiguration *_preferredSymbolConfiguration;
     UIView *_decrementBackground;
     UIView *_incrementBackground;
-    MRUButton *_decrementButton;
-    MRUButton *_incrementButton;
+    MRUTransportButton *_decrementButton;
+    MRUTransportButton *_incrementButton;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) MRUButton *incrementButton; // @synthesize incrementButton=_incrementButton;
-@property(retain, nonatomic) MRUButton *decrementButton; // @synthesize decrementButton=_decrementButton;
+@property(retain, nonatomic) MRUTransportButton *incrementButton; // @synthesize incrementButton=_incrementButton;
+@property(retain, nonatomic) MRUTransportButton *decrementButton; // @synthesize decrementButton=_decrementButton;
 @property(retain, nonatomic) UIView *incrementBackground; // @synthesize incrementBackground=_incrementBackground;
 @property(retain, nonatomic) UIView *decrementBackground; // @synthesize decrementBackground=_decrementBackground;
+@property(nonatomic, getter=isDimmed) _Bool dimmed; // @synthesize dimmed=_dimmed;
 @property(retain, nonatomic) UIImageSymbolConfiguration *preferredSymbolConfiguration; // @synthesize preferredSymbolConfiguration=_preferredSymbolConfiguration;
 @property(retain, nonatomic) MRUVisualStylingProvider *stylingProvider; // @synthesize stylingProvider=_stylingProvider;
 @property(retain, nonatomic) UIImage *incrementImage; // @synthesize incrementImage=_incrementImage;

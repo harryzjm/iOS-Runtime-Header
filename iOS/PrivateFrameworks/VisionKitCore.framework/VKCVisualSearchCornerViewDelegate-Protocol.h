@@ -4,9 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, VKAnalyticsEvent, VKCVisualSearchCornerView;
+#import <VisionKitCore/NSObject-Protocol.h>
 
-@protocol VKCVisualSearchCornerViewDelegate
+@class NSArray, NSData, NSString, RVItem, VKAnalyticsEvent, VKCVisualSearchCornerView;
+
+@protocol VKCVisualSearchCornerViewDelegate <NSObject>
+- (void)addMetadataToVSFeedbackItem:(RVItem *)arg1;
+- (void)submitVisualSearchUserFeedbackForReportIdentifier:(NSString *)arg1 userFeedbackPayload:(NSData *)arg2 sfReportData:(NSData *)arg3;
 - (void)visualSearchCornerView:(VKCVisualSearchCornerView *)arg1 analyticsEventDidOccur:(VKAnalyticsEvent *)arg2;
 - (void)visualSearchCornerViewDidDismissVisualSearchController:(VKCVisualSearchCornerView *)arg1;
 - (void)visualSearchCornerView:(VKCVisualSearchCornerView *)arg1 didTapVisualSearchIndicatorWithNormalizedBoundingBox:(struct CGRect)arg2;

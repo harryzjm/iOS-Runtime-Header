@@ -11,8 +11,12 @@
 @protocol BLSHWatchdogAbortContext <NSObject>
 @property(readonly, copy, nonatomic) NSString *abortReasonString;
 @property(readonly, nonatomic) unsigned long long abortReason;
+- (void)setSleepImminentAbortReason;
 
 @optional
+@property(readonly, nonatomic, getter=isWaitingPastFireForCompletionAndTailspin) _Bool waitingPastFireForCompletionAndTailspin;
+@property(readonly, nonatomic) _Bool wantsPanic;
+@property(readonly, nonatomic) _Bool hasEnsureFlipbookCurrent;
 @property(readonly, nonatomic) unsigned int payloadSize;
 @property(readonly, nonatomic) const void *payload;
 @end

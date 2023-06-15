@@ -7,6 +7,7 @@
 #import <Foundation/NSDictionary.h>
 
 @interface NSDictionary (AVTSecureDecoding)
-- (id)avt_objectForKey:(id)arg1 ofClass:(Class)arg2;
+- (id)avt_objectForKey:(id)arg1 ofClasses:(id)arg2 didFail:(_Bool *)arg3 error:(id *)arg4;
+- (id)avt_objectForKey:(id)arg1 ofClass:(Class)arg2 didFail:(_Bool *)arg3 error:(id *)arg4;
 @end
 

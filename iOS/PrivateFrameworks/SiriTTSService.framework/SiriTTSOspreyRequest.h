@@ -23,9 +23,11 @@ __attribute__((visibility("hidden")))
     NSString *_language;
     NSString *_text;
     NSString *_voiceName;
+    NSString *_preferredType;
     NSString *_speechId;
     NSString *_appId;
     NSString *_experimentId;
+    unsigned long long _requestCreatedTime;
 }
 
 - (void).cxx_destruct;
@@ -38,9 +40,11 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) float volume; // @synthesize volume=_volume;
 @property(nonatomic) float rate; // @synthesize rate=_rate;
 @property(nonatomic) float pitch; // @synthesize pitch=_pitch;
+@property(nonatomic) unsigned long long requestCreatedTime; // @synthesize requestCreatedTime=_requestCreatedTime;
 @property(copy, nonatomic) NSString *experimentId; // @synthesize experimentId=_experimentId;
 @property(copy, nonatomic) NSString *appId; // @synthesize appId=_appId;
 @property(copy, nonatomic) NSString *speechId; // @synthesize speechId=_speechId;
+@property(copy, nonatomic) NSString *preferredType; // @synthesize preferredType=_preferredType;
 @property(copy, nonatomic) NSString *voiceName; // @synthesize voiceName=_voiceName;
 @property(copy, nonatomic) NSString *text; // @synthesize text=_text;
 @property(copy, nonatomic) NSString *language; // @synthesize language=_language;

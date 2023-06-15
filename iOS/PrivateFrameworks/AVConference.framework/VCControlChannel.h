@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) unsigned int reliableMessageResendInterval; // @synthesize reliableMessageResendInterval=_reliableMessageResendInterval;
 - (void)setEncryptionWithEncryptionMaterial:(CDStruct_791df8ea *)arg1;
 - (void)sendUnreliableMessage:(id)arg1 withTopic:(id)arg2 participantID:(unsigned long long)arg3;
+- (_Bool)sendReliableMessage:(id)arg1 withTopic:(id)arg2 participantID:(unsigned long long)arg3 timeout:(unsigned int)arg4 withOptions:(id)arg5 completion:(CDUnknownBlockType)arg6;
 - (_Bool)sendReliableMessage:(id)arg1 withTopic:(id)arg2 participantID:(unsigned long long)arg3 timeout:(unsigned int)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)sendReliableMessage:(id)arg1 withTopic:(id)arg2 participantID:(unsigned long long)arg3;
 - (_Bool)sendReliableMessageAndWait:(id)arg1 withTopic:(id)arg2 participantID:(unsigned long long)arg3;

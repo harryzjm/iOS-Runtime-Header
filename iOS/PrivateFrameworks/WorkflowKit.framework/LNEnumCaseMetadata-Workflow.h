@@ -7,6 +7,8 @@
 #import <LinkMetadata/LNEnumCaseMetadata.h>
 
 @interface LNEnumCaseMetadata (Workflow)
+- (id)wf_symbolName;
+- (id)wf_localizedSubtitle;
 - (id)wf_localizedDisplayName;
 @end
 

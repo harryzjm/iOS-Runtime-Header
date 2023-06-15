@@ -13,6 +13,10 @@
     MISSING_TYPE *seriesDescriptor;
     MISSING_TYPE *seriesType;
     MISSING_TYPE *dataElements;
+    MISSING_TYPE *isOnlySeries;
+    MISSING_TYPE *isXCategorical;
+    MISSING_TYPE *_isSelected;
+    MISSING_TYPE *yAxisTitle;
 }
 
 @end

@@ -31,7 +31,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) AVSecondScreenViewController *secondScreenViewController; // @synthesize secondScreenViewController=_secondScreenViewController;
 @property(retain, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
-@property(readonly, nonatomic) AVObservationController *observationController; // @synthesize observationController=_observationController;
+@property(retain, nonatomic) AVObservationController *observationController; // @synthesize observationController=_observationController;
 @property(nonatomic, getter=isReady) _Bool ready; // @synthesize ready=_ready;
 @property(nonatomic) struct CGSize maximumVideoResolution; // @synthesize maximumVideoResolution=_maximumVideoResolution;
 @property(retain, nonatomic) AVPlayer *debugInfoPlayer; // @synthesize debugInfoPlayer=_debugInfoPlayer;
@@ -42,7 +42,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak AVSecondScreen *connectedSecondScreen; // @synthesize connectedSecondScreen=_connectedSecondScreen;
 @property(readonly, nonatomic, getter=isReadyToConnect) _Bool readyToConnect; // @synthesize readyToConnect=_readyToConnect;
 @property(readonly, nonatomic) __weak AVPlayerLayer *playerLayer; // @synthesize playerLayer=_playerLayer;
-@property(readonly, nonatomic) AVPlayer *player; // @synthesize player=_player;
+@property(retain, nonatomic) AVPlayer *player; // @synthesize player=_player;
 - (_Bool)_currentItemIsReadyToPlayVideoOrLoadingWhileActive;
 - (_Bool)_allowsNonAirPlayExternalPlayback;
 - (_Bool)_determineIsReadyToConnect;

@@ -9,14 +9,11 @@
 @class NSArray, UIView;
 
 @protocol UIDragDropSession <NSObject>
+@property(readonly, nonatomic, getter=isRestrictedToDraggingApplication) _Bool restrictedToDraggingApplication;
+@property(readonly, nonatomic) _Bool allowsMoveOperation;
+@property(readonly, nonatomic) NSArray *items;
 - (_Bool)canLoadObjectsOfClass:(Class)arg1;
 - (_Bool)hasItemsConformingToTypeIdentifiers:(NSArray *)arg1;
-- (_Bool)isRestrictedToDraggingApplication;
-@property(nonatomic, readonly) _Bool allowsMoveOperation;
 - (struct CGPoint)locationInView:(UIView *)arg1;
-@property(nonatomic, readonly) NSArray *items;
-
-// Remaining properties
-@property(nonatomic, readonly) _Bool restrictedToDraggingApplication;
 @end
 

@@ -15,6 +15,7 @@
 - (void)dmc_removeAccountsWithAltDSID:(id)arg1 asynchronous:(_Bool)arg2;
 - (void)dmc_removeMAIDRelatedAccountsWithAltDSID:(id)arg1 asynchronous:(_Bool)arg2;
 - (_Bool)_dmc_updateAccount:(id)arg1 error:(id *)arg2 updateBlock:(CDUnknownBlockType)arg3;
+- (_Bool)dmc_updateAppleAccountWithPersonaID:(id)arg1 error:(id *)arg2 updateBlock:(CDUnknownBlockType)arg3;
 - (_Bool)dmc_updateAccountWithIdentifier:(id)arg1 error:(id *)arg2 updateBlock:(CDUnknownBlockType)arg3;
 - (_Bool)dmc_updateAccountWithTypeIdentifier:(id)arg1 altDSID:(id)arg2 error:(id *)arg3 updateBlock:(CDUnknownBlockType)arg4;
 - (id)_dmc_accountWithType:(id)arg1 criteria:(CDUnknownBlockType)arg2;

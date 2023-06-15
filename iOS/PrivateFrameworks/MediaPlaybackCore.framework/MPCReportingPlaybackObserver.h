@@ -6,22 +6,28 @@
 
 #import <objc/NSObject.h>
 
-@class ICPlayActivityController, NSOperationQueue;
+@class NSOperationQueue, NSString;
 
 __attribute__((visibility("hidden")))
 @interface MPCReportingPlaybackObserver : NSObject
 {
     NSOperationQueue *_recordEventOperationQueue;
-    ICPlayActivityController *_reportingController;
     _Bool _offline;
 }
 
++ (id)sharedReportingPlaybackObserver;
 - (void).cxx_destruct;
-@property(nonatomic, getter=isOffline) _Bool offline; // @synthesize offline=_offline;
 - (id)_newReportingPlaybackActivityEventForPlayActivityEvent:(id)arg1 eventSource:(id)arg2;
 - (void)recordPlayActivityEvents:(id)arg1 forEventSource:(id)arg2;
 - (id)newPlayActivityEvent;
-- (id)init;
+- (void)environmentMonitorDidChangeNetworkType:(id)arg1;
+- (id)_init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

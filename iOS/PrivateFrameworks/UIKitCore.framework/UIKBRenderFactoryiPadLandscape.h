@@ -9,6 +9,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (double)dynamicBottomRowMultiplier;
 - (struct UIEdgeInsets)dynamicInsets;
 - (double)defaultVariantSizeThreshold;
 - (double)skinnyKeyThreshold;

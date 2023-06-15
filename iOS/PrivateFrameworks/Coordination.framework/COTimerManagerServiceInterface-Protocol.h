@@ -6,16 +6,17 @@
 
 #import <Coordination/NSObject-Protocol.h>
 
-@class MTTimer, NSSet, NSString, NSUUID;
+@class COCluster, COHomeKitAccessoryMemento, MTTimer, NSArray, NSSet, NSString, NSUUID;
 
 @protocol COTimerManagerServiceInterface <NSObject>
-- (void)canDispatchForAccessoryUniqueIdentifier:(NSUUID *)arg1 categoryType:(NSString *)arg2 asInstance:(NSUUID *)arg3 cluster:(NSString *)arg4 reply:(void (^)(_Bool))arg5;
-- (void)removeObserverForNotificationName:(NSString *)arg1 cluster:(NSString *)arg2 withCallback:(void (^)(NSError *))arg3;
-- (void)addObserverForNotificationName:(NSString *)arg1 constraints:(NSSet *)arg2 asInstance:(NSUUID *)arg3 cluster:(NSString *)arg4 withCallback:(void (^)(NSError *))arg5;
-- (void)dismissTimerWithIdentifier:(NSString *)arg1 cluster:(NSString *)arg2 withCallback:(void (^)(NSError *))arg3;
-- (void)removeTimer:(MTTimer *)arg1 cluster:(NSString *)arg2 withCallback:(void (^)(NSError *))arg3;
-- (void)updateTimer:(MTTimer *)arg1 cluster:(NSString *)arg2 withCallback:(void (^)(NSError *))arg3;
-- (void)addTimer:(MTTimer *)arg1 asInstance:(NSUUID *)arg2 cluster:(NSString *)arg3 withCallback:(void (^)(NSError *))arg4;
-- (void)timersforAccessoryUniqueIdentifier:(NSUUID *)arg1 asInstance:(NSUUID *)arg2 cluster:(NSString *)arg3 withCallback:(void (^)(NSArray *, NSError *))arg4;
+- (void)canDispatchAsAccessory:(COHomeKitAccessoryMemento *)arg1 asInstance:(NSUUID *)arg2 reply:(void (^)(_Bool))arg3;
+- (void)removeObserverForNotificationName:(NSString *)arg1 cluster:(COCluster *)arg2 withCallback:(void (^)(NSError *))arg3;
+- (void)addObserverForNotificationName:(NSString *)arg1 asAccessory:(COHomeKitAccessoryMemento *)arg2 asInstance:(NSUUID *)arg3 constraints:(NSSet *)arg4 cluster:(COCluster *)arg5 withCallback:(void (^)(NSError *))arg6;
+- (void)dismissTimerWithIdentifier:(NSString *)arg1 cluster:(COCluster *)arg2 withCallback:(void (^)(NSError *))arg3;
+- (void)removeTimer:(MTTimer *)arg1 cluster:(COCluster *)arg2 withCallback:(void (^)(NSError *))arg3;
+- (void)updateTimer:(MTTimer *)arg1 cluster:(COCluster *)arg2 withCallback:(void (^)(NSError *))arg3;
+- (void)addTimer:(MTTimer *)arg1 asInstance:(NSUUID *)arg2 cluster:(COCluster *)arg3 withCallback:(void (^)(NSError *))arg4;
+- (void)timersForAccessories:(NSArray *)arg1 cluster:(COCluster *)arg2 callback:(void (^)(NSDictionary *, NSError *))arg3;
+- (void)timersforAccessoryUniqueIdentifier:(NSUUID *)arg1 asInstance:(NSUUID *)arg2 cluster:(COCluster *)arg3 withCallback:(void (^)(NSArray *, NSError *))arg4;
 @end
 

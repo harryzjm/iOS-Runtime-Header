@@ -4,14 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSDate, NSDictionary, NSUUID;
+@class NSArray, NSDate, NSUUID;
 
 @protocol HMDHouseholdMetricsLogEventFactory
 - (void)deleteCountersAfterDate:(NSDate *)arg1;
 - (void)deleteCountersBeforeDate:(NSDate *)arg1;
-- (NSArray *)coalescedLogEventsFromLogEvents:(NSArray *)arg1 homeUUID:(NSUUID *)arg2;
-- (NSArray *)logEventsFromDictionary:(NSDictionary *)arg1;
-- (NSDictionary *)serializeLogEvents:(NSArray *)arg1;
 - (NSArray *)logEventsPopulatedForHomeWithUUID:(NSUUID *)arg1 associatedWithDate:(NSDate *)arg2;
 @end
 

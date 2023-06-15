@@ -23,6 +23,7 @@
 @property(readonly, nonatomic) NSArray *representativeAssets;
 @property(readonly, nonatomic) NSArray *keyAssets;
 @property(readonly, nonatomic) long long version;
+@property(readonly, nonatomic) unsigned long long availableFeatures;
 @property(readonly, nonatomic) unsigned short notificationState;
 @property(readonly, nonatomic) unsigned short state;
 @property(readonly, nonatomic) unsigned short subtype;

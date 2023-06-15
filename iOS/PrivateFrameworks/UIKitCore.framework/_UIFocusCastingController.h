@@ -45,6 +45,8 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)_axisForHeading:(unsigned long long)arg1;
 - (void)_updateFocusItemFromNormalizedFrame:(struct CGRect)arg1 toNormalizedFrame:(struct CGRect)arg2 withHeading:(unsigned long long)arg3;
 - (struct CGRect)_castingFrameForFocusedNormalizedFrame:(struct CGRect)arg1 heading:(unsigned long long)arg2;
+- (id)_normalizedCoordinateSpace;
+- (void)forceUpdateFocusCastingFocusedRect:(struct CGRect)arg1 coordinateSpace:(id)arg2 heading:(unsigned long long)arg3;
 - (struct CGRect)castingFrameForFocusedItem:(id)arg1 heading:(unsigned long long)arg2 inCoordinateSpace:(id)arg3;
 - (void)updateFocusCastingWithContext:(id)arg1;
 - (void)teardown;

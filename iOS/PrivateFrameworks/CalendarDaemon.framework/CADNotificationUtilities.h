@@ -12,13 +12,13 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)_stringForNotificationType:(int)arg1;
-+ (_Bool)_storeIsDelegate:(const void *)arg1;
++ (_Bool)_storeIsDelegate:(void *)arg1;
 + (void)_logNotificationCountsForNotifications:(id)arg1;
 + (id)flattenedNotificationsFromNotifications:(id)arg1 expanded:(_Bool)arg2;
-+ (_Bool)storeIsReadOnlyDelegate:(const void *)arg1;
-+ (int)_gatherSuggestionResourceChangeNotification:(const void *)arg1 withContext:(id)arg2 database:(struct CalDatabase *)arg3 databaseID:(int)arg4;
-+ (int)_gatherSharedCalendarResourceChangeNotification:(const void *)arg1 withContext:(id)arg2 database:(struct CalDatabase *)arg3 databaseID:(int)arg4;
-+ (int)_gatherSharedCalendarInviteReplyNotification:(const void *)arg1 withContext:(id)arg2 database:(struct CalDatabase *)arg3 databaseID:(int)arg4;
++ (_Bool)storeIsReadOnlyDelegate:(void *)arg1;
++ (int)_gatherSuggestionResourceChangeNotification:(void *)arg1 withContext:(id)arg2 database:(struct CalDatabase *)arg3 databaseID:(int)arg4;
++ (int)_gatherSharedCalendarResourceChangeNotification:(void *)arg1 withContext:(id)arg2 database:(struct CalDatabase *)arg3 databaseID:(int)arg4;
++ (int)_gatherSharedCalendarInviteReplyNotification:(void *)arg1 withContext:(id)arg2 database:(struct CalDatabase *)arg3 databaseID:(int)arg4;
 + (int)_gatherSharedCalendarResponsesAndResourceChangesWithContext:(id)arg1;
 + (int)_gatherSharedCalendarInvitationsWithContext:(id)arg1;
 + (int)_gatherEventInvitationsAndRepliesWithContext:(id)arg1;

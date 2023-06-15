@@ -7,13 +7,43 @@
 #import <Foundation/NSURL.h>
 
 @interface NSURL (PBFAdditions)
++ (id)pbf_URLsMatchingFileName:(id)arg1 beneathURL:(id)arg2 error:(out id *)arg3;
++ (id)pbf_switcherSelectedConfigurationURLForDataStoreURL:(id)arg1;
++ (id)pbf_switcherSelectedConfigurationURLForBaseURL:(id)arg1 version:(unsigned long long)arg2;
++ (id)pbf_switcherConfigurationOrderingURLForDataStoreURL:(id)arg1;
++ (id)pbf_switcherConfigurationOrderingURLForBaseURL:(id)arg1 version:(unsigned long long)arg2;
++ (id)pbf_dataStoreSQLiteDatabaseURLForDataStoreURL:(id)arg1;
++ (id)pbf_dataStoreSQLiteDatabaseURLForBaseURL:(id)arg1 version:(unsigned long long)arg2;
++ (id)pbf_archivedDataStoreBaseURL;
++ (id)pbf_galleryCacheURLForBaseURL:(id)arg1 version:(unsigned long long)arg2;
++ (id)pbf_dataStoreExtensionPurgatoryURLForBaseURL:(id)arg1 version:(unsigned long long)arg2;
++ (id)pbf_dataStoreExtensionContainerURLForVersionDataStoreURL:(id)arg1;
++ (id)pbf_dataStoreExtensionContainerURLForBaseURL:(id)arg1 version:(unsigned long long)arg2;
++ (id)pbf_dataStoreVersionContainingURLForBaseURL:(id)arg1;
++ (id)pbf_dataStoreURLForBaseURL:(id)arg1 version:(unsigned long long)arg2;
++ (id)pbf_snapshotURLForPath:(id)arg1 definition:(id)arg2 configuredProperties:(id)arg3 context:(id)arg4;
++ (id)pbf_temporaryDirectoryURL;
 + (id)pbf_versionsURLForIdentifierURL:(id)arg1;
 + (id)pbf_providerInfoFileURLForIdentifierURL:(id)arg1;
++ (id)pbf_roleIdentifierURLForType:(long long)arg1 identifierURL:(id)arg2;
 + (id)pbf_descriptorIdentifierURLForType:(long long)arg1 identifierURL:(id)arg2;
 + (id)pbf_manifestURLInContainerURL:(id)arg1;
-- (id)pbf_extensionIdentifierForSnapshotURL;
+- (_Bool)pbf_updateResourceValues:(id)arg1 error:(out id *)arg2;
+- (_Bool)pbf_recursivelyUpdateResourceValues:(id)arg1 error:(out id *)arg2;
+- (_Bool)pbf_recursivelyValidateContentsAreReachableAndConformToResourceValues:(id)arg1 URLsNotConformingToAttributes:(out id *)arg2 error:(out id *)arg3;
+- (_Bool)pbf_URLIsReachableAndConformToResourceValues:(id)arg1 error:(out id *)arg2;
+- (_Bool)pbf_updateFileAttributes:(id)arg1 error:(out id *)arg2;
+- (_Bool)pbf_recursivelyUpdateFileAttributes:(id)arg1 error:(out id *)arg2;
+- (_Bool)pbf_recursivelyValidateContentsAreReachableAndConformToAttributeValues:(id)arg1 URLsNotConformingToAttributes:(out id *)arg2 error:(out id *)arg3;
+- (_Bool)pbf_URLIsReachableAndConformsToAttributeValues:(id)arg1 error:(out id *)arg2;
+- (id)pbf_displayContextForPosterSnapshotURL;
+- (id)pbf_snapshotDefinitionForPosterSnapshotURL;
+- (_Bool)pbf_isPosterSnapshot;
 - (_Bool)pbf_isConfigurationSnapshotURL;
 - (_Bool)pbf_isGallerySnapshotURL;
+- (_Bool)pbf_unarchiveToURL:(id)arg1 error:(out id *)arg2;
+- (void)pbf_setPurgable:(_Bool)arg1 error:(out id *)arg2;
+- (_Bool)pbf_isPurgable;
 - (void)pbf_setExcludedFromBackup:(_Bool)arg1 error:(out id *)arg2;
 @end
 

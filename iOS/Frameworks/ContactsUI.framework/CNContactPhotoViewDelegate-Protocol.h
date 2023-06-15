@@ -13,5 +13,8 @@
 - (void)photoView:(CNContactPhotoView *)arg1 didAcceptDropOfImageData:(NSData *)arg2;
 - (UIViewController *)viewControllerForPhotoView:(CNContactPhotoView *)arg1;
 - (void)photoViewDidUpdate:(CNContactPhotoView *)arg1;
+
+@optional
+- (void)didTapPhotoView;
 @end
 

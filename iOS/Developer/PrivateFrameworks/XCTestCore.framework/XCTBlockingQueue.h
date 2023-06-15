@@ -7,12 +7,12 @@
 #import <objc/NSObject.h>
 
 @class NSMutableArray;
-@protocol OS_dispatch_queue, OS_dispatch_semaphore;
+@protocol OS_dispatch_semaphore;
 
 @interface XCTBlockingQueue : NSObject
 {
+    struct os_unfair_lock_s _lock;
     _Bool _finalized;
-    NSObject<OS_dispatch_queue> *_mutex;
     NSObject<OS_dispatch_semaphore> *_sema;
     NSMutableArray *_objects;
 }
@@ -21,7 +21,6 @@
 @property _Bool finalized; // @synthesize finalized=_finalized;
 @property(readonly) NSMutableArray *objects; // @synthesize objects=_objects;
 @property(readonly) NSObject<OS_dispatch_semaphore> *sema; // @synthesize sema=_sema;
-@property(readonly) NSObject<OS_dispatch_queue> *mutex; // @synthesize mutex=_mutex;
 - (void)finalize;
 - (id)dequeueObject;
 - (void)enqueueObject:(id)arg1;

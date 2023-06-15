@@ -10,6 +10,7 @@
 
 @interface XCTFuture : NSObject
 {
+    struct __CFRunLoop *_runLoopUsedWhenWaiting;
     _Bool _canceled;
     _Bool _hasWaited;
     _Bool _hasFinished;

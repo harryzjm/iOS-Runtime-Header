@@ -12,6 +12,7 @@
 @property(nonatomic) long long inspectorPaneViewMode; // @dynamic inspectorPaneViewMode;
 @property(nonatomic) long long inspectorPaneHiddenState; // @dynamic inspectorPaneHiddenState;
 @property(nonatomic, getter=isShowingLightTable) _Bool showingLightTable; // @dynamic showingLightTable;
+@property(nonatomic) _Bool activityStreamWasShown; // @dynamic activityStreamWasShown;
 @property(nonatomic, getter=isShowingActivityStream) _Bool showingActivityStream; // @dynamic showingActivityStream;
 @property(nonatomic, getter=isShowingElementList) _Bool showingElementList; // @dynamic showingElementList;
 @property(nonatomic, getter=isShowingPresenterNotes) _Bool showingPresenterNotes; // @dynamic showingPresenterNotes;

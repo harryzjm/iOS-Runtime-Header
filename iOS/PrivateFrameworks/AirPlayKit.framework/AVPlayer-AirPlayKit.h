@@ -6,12 +6,12 @@
 
 #import <AVFoundation/AVPlayer.h>
 
-@class NSString;
+@class NSArray, NSString;
 
 @interface AVPlayer (AirPlayKit)
 - (id)beginObserveringTimeControlStatusWithChangeHandler:(CDUnknownBlockType)arg1;
 - (id)beginObserveringExternalPlaybackChangeWithChangeHandler:(CDUnknownBlockType)arg1;
-@property(readonly, nonatomic) NSString *outputDeviceID;
+@property(readonly) NSArray *outputDevices;
 @property(readonly, nonatomic) long long playerTimeControlStatus;
 
 // Remaining properties

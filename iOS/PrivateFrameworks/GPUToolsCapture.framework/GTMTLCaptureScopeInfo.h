@@ -6,7 +6,6 @@
 
 #import <objc/NSObject.h>
 
-__attribute__((visibility("hidden")))
 @interface GTMTLCaptureScopeInfo : NSObject
 {
 }
@@ -16,7 +15,7 @@ __attribute__((visibility("hidden")))
 + (void)updateAll;
 + (void)removeScope:(id)arg1;
 + (void)addScope:(id)arg1;
-+ (void)sendAll;
++ (void)sendAll:(struct os_unfair_lock_s *)arg1;
 + (id)allCaptureScopes;
 + (void)initialize;
 

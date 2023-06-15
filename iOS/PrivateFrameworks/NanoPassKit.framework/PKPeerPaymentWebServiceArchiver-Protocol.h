@@ -6,6 +6,9 @@
 
 #import <NanoPassKit/PKWebServiceArchiver-Protocol.h>
 
+@class PKPeerPaymentWebServiceContext;
+
 @protocol PKPeerPaymentWebServiceArchiver <PKWebServiceArchiver>
+- (void)archiveContext:(PKPeerPaymentWebServiceContext *)arg1;
 @end
 

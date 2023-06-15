@@ -8,16 +8,16 @@
 
 @interface UIImage (HKMenstrualCyclesUI)
 + (id)hkmc_ovulationEstimateImage;
-+ (id)hkmc_ovulationDayReversedImageHighContrast;
++ (id)hkmc_ovulationDayImageHighContrast;
 + (id)hkmc_ovulationDayReversedImage;
 + (id)hkmc_ovulationDayImage;
-+ (id)hkmc_menstruationProjectionLowReversedImageHighContrast;
++ (id)hkmc_menstruationProjectionLowImageHighContrast;
 + (id)hkmc_menstruationProjectionLowReversedImage;
 + (id)hkmc_menstruationProjectionLowImage;
-+ (id)hkmc_menstruationProjectionHighReversedImageHighContrast;
++ (id)hkmc_menstruationProjectionHighImageHighContrast;
 + (id)hkmc_menstruationProjectionHighReversedImage;
 + (id)hkmc_menstruationProjectionHighImage;
-+ (id)hkmc_fertilityProjectionReversedImageHighContrast;
++ (id)hkmc_fertilityProjectionImageHighContrast;
 + (id)hkmc_fertilityProjectionReversedImage;
 + (id)hkmc_fertilityProjectionImage;
 + (id)_hkmcui_imageWithAssetName:(id)arg1;

@@ -18,8 +18,10 @@
     MISSING_TYPE *commandCenter;
     MISSING_TYPE *commandSource;
     MISSING_TYPE *resizingProvider;
+    MISSING_TYPE *cacheManager;
     MISSING_TYPE *_bindings;
     MISSING_TYPE *_statusMessage;
+    MISSING_TYPE *_statusProgress;
     MISSING_TYPE *_canvasDevice;
     MISSING_TYPE *_layoutOrder;
     MISSING_TYPE *_showMissingOptionBindings;
@@ -40,12 +42,15 @@
     MISSING_TYPE *_showLayoutMargins;
     MISSING_TYPE *_showLayoutPaneOnSnapshot;
     MISSING_TYPE *_userInterfaceStyle;
+    MISSING_TYPE *_interfaceLayoutDirection;
     MISSING_TYPE *_showRulers;
+    MISSING_TYPE *_showToolbar;
     MISSING_TYPE *_inventorySearchTerm;
     MISSING_TYPE *_history;
     MISSING_TYPE *_isCompiling;
     MISSING_TYPE *_isSnapshotDebugging;
     MISSING_TYPE *_compilerResult;
+    MISSING_TYPE *_compilerProgress;
     MISSING_TYPE *_themeIdentifiers;
     MISSING_TYPE *_pinnedIdentifiers;
     MISSING_TYPE *_hiddenInventoryIdentifiers;
@@ -78,14 +83,16 @@
     MISSING_TYPE *_weather;
     MISSING_TYPE *_historyGraphRelativeTimeInMilliseconds;
     MISSING_TYPE *_validiatedGroupsOnly;
-    MISSING_TYPE *_compileSelectedPackagesOnly;
     MISSING_TYPE *_themeIdentifier;
     MISSING_TYPE *_pinnedIdentifier;
     MISSING_TYPE *_hiddenInventoryIdentifier;
     MISSING_TYPE *_feedKind;
     MISSING_TYPE *_overrideFeedKind;
     MISSING_TYPE *_compilerSettings;
+    MISSING_TYPE *_versioningMode;
     MISSING_TYPE *compiler;
+    MISSING_TYPE *compileQueue;
+    MISSING_TYPE *compilerOperationQueue;
     MISSING_TYPE *defaultSystemFactory;
     MISSING_TYPE *$__lazy_storage_$_fonts;
 }

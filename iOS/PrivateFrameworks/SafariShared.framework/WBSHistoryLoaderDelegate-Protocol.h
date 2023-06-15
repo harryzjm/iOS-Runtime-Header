@@ -11,6 +11,6 @@
 
 @protocol WBSHistoryLoaderDelegate <NSObject>
 - (void)historyLoaderDidFinishLoading:(id <WBSHistoryLoader>)arg1;
-- (void)historyLoader:(id <WBSHistoryLoader>)arg1 didLoadItems:(NSArray *)arg2 discardedItems:(NSArray *)arg3 stringsForUserTypeDomainExpansion:(NSCountedSet *)arg4;
+- (void)historyLoader:(id <WBSHistoryLoader>)arg1 didLoadItems:(NSArray *)arg2 stringsForUserTypeDomainExpansion:(NSCountedSet *)arg3;
 @end
 

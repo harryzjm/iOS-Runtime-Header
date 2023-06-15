@@ -13,23 +13,25 @@ __attribute__((visibility("hidden")))
 @interface LAAuthorizationViewController : UIViewController
 {
     _AuthorizationRemoteViewControllerHost *_remoteVC;
+    CDUnknownBlockType _completion;
     LAAuthenticatorServiceConfiguration *_configuration;
     id <LAAuthorizationViewControllerDelegate> _delegate;
 }
 
 - (void).cxx_destruct;
-@property __weak id <LAAuthorizationViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void)applicationWillResignActive:(id)arg1;
-- (id)configuration;
-- (void)dismiss;
+@property(nonatomic) __weak id <LAAuthorizationViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)_applicationDidEnterBackground:(id)arg1;
 - (void)didProvideAuthorizationRequirementWithReply:(CDUnknownBlockType)arg1;
 - (void)sheetDidFinishWithError:(id)arg1;
+- (void)presentInContainerViewController:(id)arg1;
+@property(readonly, nonatomic) _Bool active;
+- (void)dismiss;
 - (void)loadView;
 - (long long)preferredStatusBarStyle;
 - (long long)modalTransitionStyle;
 - (long long)modalPresentationStyle;
-- (id)initWithConfiguration:(id)arg1 delegate:(id)arg2;
-- (id)initWithConfiguration:(id)arg1;
+- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
+- (id)initWithConfiguration:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

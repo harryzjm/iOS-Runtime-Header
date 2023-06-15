@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIColor.h>
+#import <UIKitCore/UIColor.h>
 
 @interface UIColor (Bridge)
 + (id)ts_dynamicColor:(id)arg1 withDarkStyleVariant:(id)arg2;
@@ -12,7 +12,5 @@
 + (id)ts_tableCellDefaultSelectionTintColor;
 + (id)ts_systemDarkTealColor;
 - (double)ts_luminance;
-@property(nonatomic, readonly) UIColor *tu_dynamicLegibleForeground;
-@property(nonatomic, readonly) UIColor *tu_legibleForeground;
 @end
 

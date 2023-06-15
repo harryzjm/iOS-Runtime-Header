@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class NSArray, NSString;
 @protocol OS_dispatch_data, OS_nw_array, OS_nw_context, OS_nw_interface, OS_nw_protocol_instance_registrar, OS_nw_txt_record, OS_xpc_object;
 
 __attribute__((visibility("hidden")))
@@ -16,13 +16,16 @@ __attribute__((visibility("hidden")))
     NSObject<OS_nw_interface> *interface;
     int interface_type;
     unsigned char agent_identifier[16];
+    NSArray *public_keys;
     NSString *ns_description;
     char *description;
     NSString *ns_redacted_description;
     char *redacted_description;
     char *known_tracker_name;
     char *tracker_owner;
+    char *device_id;
     NWConcrete_nw_endpoint *parent_endpoint;
+    NSObject<OS_nw_array> *cname_array;
     struct nw_endpoint_alterative_s first_alternative;
     struct {
         struct nw_endpoint_alterative_s *tqh_first;
@@ -36,6 +39,7 @@ __attribute__((visibility("hidden")))
     NSObject<OS_nw_protocol_instance_registrar> *registrar;
     NSObject<OS_nw_array> *endpoint_edges;
     unsigned short alternate_port;
+    unsigned char selected_key;
     unsigned int is_local_domain:1;
     unsigned int parent_is_proxy:1;
     unsigned int is_registered:1;
@@ -43,6 +47,7 @@ __attribute__((visibility("hidden")))
     unsigned int redacted_description_used:1;
     unsigned int do_not_redact_description:1;
     unsigned int approved_app_domain:1;
+    unsigned int can_block_request:1;
 }
 
 - (void).cxx_destruct;

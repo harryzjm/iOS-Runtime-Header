@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSString;
+@class NSArray, NSString, _UISheetPresentationControllerAppearance;
 
 __attribute__((visibility("hidden")))
 @interface _UISheetPresentationControllerConfiguration : NSObject
@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     _Bool __wantsEdgeAttachedInCompactHeight;
     _Bool __widthFollowsPreferredContentSizeWhenEdgeAttached;
     _Bool __prefersGrabberVisible;
+    _Bool __insetsPresentedViewForGrabber;
     _Bool __prefersScrollingResizesWhenDetentDirectionIsDown;
     _Bool __prefersScrollingExpandsToLargerDetentWhenScrolledToEdge;
     long long __mode;
@@ -23,31 +24,51 @@ __attribute__((visibility("hidden")))
     double __preferredCornerRadius;
     NSArray *__detents;
     NSString *__selectedDetentIdentifier;
-    NSString *__largestUndimmedDetentIdentifier;
+    _UISheetPresentationControllerAppearance *__standardAppearance;
+    _UISheetPresentationControllerAppearance *__edgeAttachedCompactHeightAppearance;
+    _UISheetPresentationControllerAppearance *__floatingAppearance;
     long long __detentDirectionWhenFloating;
+    double __hostParentDepthLevel;
+    struct CGRect __hostParentStackAlignmentFrame;
+    struct CGRect __hostParentFullHeightUntransformedFrameForDepthLevel;
 }
 
++ (_Bool)supportsBSXPCSecureCoding;
 + (_Bool)supportsSecureCoding;
 + (id)_fullScreenConfiguration;
 - (void).cxx_destruct;
+@property(nonatomic, setter=_setHostParentFullHeightUntransformedFrameForDepthLevel:) struct CGRect _hostParentFullHeightUntransformedFrameForDepthLevel; // @synthesize _hostParentFullHeightUntransformedFrameForDepthLevel=__hostParentFullHeightUntransformedFrameForDepthLevel;
+@property(nonatomic, setter=_setHostParentStackAlignmentFrame:) struct CGRect _hostParentStackAlignmentFrame; // @synthesize _hostParentStackAlignmentFrame=__hostParentStackAlignmentFrame;
+@property(nonatomic, setter=_setHostParentDepthLevel:) double _hostParentDepthLevel; // @synthesize _hostParentDepthLevel=__hostParentDepthLevel;
 @property(nonatomic, setter=_setPrefersScrollingExpandsToLargerDetentWhenScrolledToEdge:) _Bool _prefersScrollingExpandsToLargerDetentWhenScrolledToEdge; // @synthesize _prefersScrollingExpandsToLargerDetentWhenScrolledToEdge=__prefersScrollingExpandsToLargerDetentWhenScrolledToEdge;
 @property(nonatomic, setter=_setPrefersScrollingResizesWhenDetentDirectionIsDown:) _Bool _prefersScrollingResizesWhenDetentDirectionIsDown; // @synthesize _prefersScrollingResizesWhenDetentDirectionIsDown=__prefersScrollingResizesWhenDetentDirectionIsDown;
 @property(nonatomic, setter=_setDetentDirectionWhenFloating:) long long _detentDirectionWhenFloating; // @synthesize _detentDirectionWhenFloating=__detentDirectionWhenFloating;
-@property(copy, nonatomic, setter=_setLargestUndimmedDetentIdentifier:) NSString *_largestUndimmedDetentIdentifier; // @synthesize _largestUndimmedDetentIdentifier=__largestUndimmedDetentIdentifier;
+@property(retain, nonatomic, setter=_setFloatingAppearance:) _UISheetPresentationControllerAppearance *_floatingAppearance; // @synthesize _floatingAppearance=__floatingAppearance;
+@property(retain, nonatomic, setter=_setEdgeAttachedCompactHeightAppearance:) _UISheetPresentationControllerAppearance *_edgeAttachedCompactHeightAppearance; // @synthesize _edgeAttachedCompactHeightAppearance=__edgeAttachedCompactHeightAppearance;
+@property(retain, nonatomic, setter=_setStandardAppearance:) _UISheetPresentationControllerAppearance *_standardAppearance; // @synthesize _standardAppearance=__standardAppearance;
 @property(copy, nonatomic, setter=_setSelectedDetentIdentifier:) NSString *_selectedDetentIdentifier; // @synthesize _selectedDetentIdentifier=__selectedDetentIdentifier;
 @property(copy, nonatomic, setter=_setDetents:) NSArray *_detents; // @synthesize _detents=__detents;
 @property(nonatomic, setter=_setPreferredCornerRadius:) double _preferredCornerRadius; // @synthesize _preferredCornerRadius=__preferredCornerRadius;
 @property(nonatomic, setter=_setCornerRadiusForPresentationAndDismissal:) double _cornerRadiusForPresentationAndDismissal; // @synthesize _cornerRadiusForPresentationAndDismissal=__cornerRadiusForPresentationAndDismissal;
 @property(nonatomic, setter=_setMode:) long long _mode; // @synthesize _mode=__mode;
+@property(nonatomic, setter=_setInsetsPresentedViewForGrabber:) _Bool _insetsPresentedViewForGrabber; // @synthesize _insetsPresentedViewForGrabber=__insetsPresentedViewForGrabber;
 @property(nonatomic, setter=_prefersGrabberVisible:) _Bool _prefersGrabberVisible; // @synthesize _prefersGrabberVisible=__prefersGrabberVisible;
 @property(nonatomic, setter=_setWidthFollowsPreferredContentSizeWhenEdgeAttached:) _Bool _widthFollowsPreferredContentSizeWhenEdgeAttached; // @synthesize _widthFollowsPreferredContentSizeWhenEdgeAttached=__widthFollowsPreferredContentSizeWhenEdgeAttached;
 @property(nonatomic, setter=_setWantsEdgeAttachedInCompactHeight:) _Bool _wantsEdgeAttachedInCompactHeight; // @synthesize _wantsEdgeAttachedInCompactHeight=__wantsEdgeAttachedInCompactHeight;
 @property(nonatomic, setter=_setWantsFullScreen:) _Bool _wantsFullScreen; // @synthesize _wantsFullScreen=__wantsFullScreen;
 @property(nonatomic, setter=_setPeeksWhenFloating:) _Bool _peeksWhenFloating; // @synthesize _peeksWhenFloating=__peeksWhenFloating;
+- (void)encodeWithBSXPCCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)initWithBSXPCCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+@property(readonly, copy) NSString *description;
 - (_Bool)isEqual:(id)arg1;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

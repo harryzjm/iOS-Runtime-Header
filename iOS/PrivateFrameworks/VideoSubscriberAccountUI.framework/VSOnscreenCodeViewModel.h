@@ -10,6 +10,7 @@
 __attribute__((visibility("hidden")))
 @interface VSOnscreenCodeViewModel
 {
+    _Bool logoFinishedLoading;
     _Bool _showButtonLockup;
     NSItemProvider *_logoProvider;
     UIImage *_logo;
@@ -31,6 +32,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIImage *qrCode; // @synthesize qrCode=_qrCode;
 @property(nonatomic) __weak id <VSOnscreenCodeViewModelDelegate> delegate; // @synthesize delegate=_delegate;
 @property(copy, nonatomic) NSString *logoAccessibilityLabel; // @synthesize logoAccessibilityLabel=_logoAccessibilityLabel;
+@property(nonatomic) _Bool logoFinishedLoading; // @synthesize logoFinishedLoading;
 @property(retain, nonatomic) UIImage *logo; // @synthesize logo=_logo;
 @property(retain, nonatomic) NSItemProvider *logoProvider; // @synthesize logoProvider=_logoProvider;
 - (id)formattedWebsiteURL;

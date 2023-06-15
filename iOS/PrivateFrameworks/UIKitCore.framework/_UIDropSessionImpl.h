@@ -31,6 +31,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic, getter=_drivenByPointer) _Bool drivenByPointer;
 - (void)requestVisibleItems:(CDUnknownBlockType)arg1;
 - (id)loadObjectsOfClass:(Class)arg1 completion:(CDUnknownBlockType)arg2;
+- (struct CGPoint)_previewCenterForVisibleItem:(id)arg1 inView:(id)arg2;
+- (struct CGSize)_previewSizeForVisibleItem:(id)arg1;
 - (_Bool)canLoadObjectsOfClass:(Class)arg1;
 - (_Bool)hasItemsConformingToTypeIdentifiers:(id)arg1;
 @property(readonly, nonatomic, getter=isRestrictedToDraggingApplication) _Bool restrictedToDraggingApplication;

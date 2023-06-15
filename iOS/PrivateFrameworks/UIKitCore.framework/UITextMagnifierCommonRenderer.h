@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)visualsForMagnifier;
-- (void)_geometryChanged:(const CDStruct_f46536fb *)arg1 forAncestor:(id)arg2;
+- (void)_geometryChanged:(const CDStruct_c9afd433 *)arg1 forAncestor:(id)arg2;
 - (void)update;
 - (id)backgroundColourIfNecessary;
 - (id)magnifier;

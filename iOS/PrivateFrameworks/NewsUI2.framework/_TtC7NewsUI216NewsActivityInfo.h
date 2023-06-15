@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *activityTraits;
     MISSING_TYPE *bookmark;
     MISSING_TYPE *scrollPosition;
+    MISSING_TYPE *feedConfigurationRawValue;
 }
 
 - (void).cxx_destruct;

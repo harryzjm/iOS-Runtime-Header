@@ -45,6 +45,7 @@ __attribute__((visibility("hidden")))
 - (void)updatePreferencesForAutomation:(id)arg1;
 @property(readonly, nonatomic) _Bool canCreateNewAutomationTabs;
 - (id)_browserControllerForAutomation;
+- (id)processPool;
 - (void)dealloc;
 - (id)init;
 

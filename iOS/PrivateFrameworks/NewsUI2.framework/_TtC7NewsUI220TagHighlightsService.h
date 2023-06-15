@@ -12,6 +12,9 @@
 {
     MISSING_TYPE *headlineService;
     MISSING_TYPE *tagService;
+    MISSING_TYPE *sportsEventController;
+    MISSING_TYPE *subscriptionsController;
+    MISSING_TYPE *sportsHeadlinesSorter;
     MISSING_TYPE *personalizationService;
     MISSING_TYPE *cloudContext;
 }

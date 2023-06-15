@@ -13,8 +13,6 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)reset;
-- (id)runWithFloorPlan:(id)arg1 pointCloud:(id)arg2 temporalMeta:(id)arg3;
 - (id)init;
 
 @end

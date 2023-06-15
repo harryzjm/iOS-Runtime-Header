@@ -9,16 +9,13 @@
 @class UITraitCollection;
 
 @protocol _UISheetPresentationControllerDetentResolutionContext <UISheetPresentationControllerDetentResolutionContext>
-@property(nonatomic, readonly) double _maximumDetentValue;
-@property(nonatomic, readonly) struct CGRect _fullHeightPresentedViewFrame;
-- (_Bool)_isInverted;
-- (_Bool)_isEdgeAttached;
-@property(nonatomic, readonly) UITraitCollection *_containerTraitCollection;
-@property(nonatomic, readonly) struct UIEdgeInsets _containerSafeAreaInsets;
-@property(nonatomic, readonly) struct CGRect _containerBounds;
-
-// Remaining properties
-@property(nonatomic, readonly) _Bool _edgeAttached;
-@property(nonatomic, readonly) _Bool _inverted;
+@property(readonly, nonatomic) double _maximumDetentValue;
+@property(readonly, nonatomic) struct CGRect _fullHeightPresentedViewFrame;
+@property(readonly, nonatomic) struct CGRect _effectiveKeyboardFrame;
+@property(readonly, nonatomic, getter=_isInverted) _Bool _inverted;
+@property(readonly, nonatomic, getter=_isEdgeAttached) _Bool _edgeAttached;
+@property(readonly, nonatomic) UITraitCollection *_containerTraitCollection;
+@property(readonly, nonatomic) struct UIEdgeInsets _containerSafeAreaInsets;
+@property(readonly, nonatomic) struct CGRect _containerBounds;
 @end
 

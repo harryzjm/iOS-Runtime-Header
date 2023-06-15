@@ -13,8 +13,7 @@
     MISSING_TYPE *delegate;
     MISSING_TYPE *identifier;
     MISSING_TYPE *row;
-    MISSING_TYPE *errorMessage;
-    MISSING_TYPE *errorTitle;
+    MISSING_TYPE *kind;
     MISSING_TYPE *platform;
     MISSING_TYPE *storefrontLocalizer;
     MISSING_TYPE *retryAction;

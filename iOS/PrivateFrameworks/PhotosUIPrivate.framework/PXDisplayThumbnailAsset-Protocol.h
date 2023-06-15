@@ -8,6 +8,6 @@
 #import <PhotosUIPrivate/NSObject-Protocol.h>
 
 @protocol PXDisplayThumbnailAsset <NSObject, NSCopying>
-@property(nonatomic, readonly) long long thumbnailIndex;
+@property(readonly, nonatomic) unsigned long long thumbnailIndex;
 @end
 

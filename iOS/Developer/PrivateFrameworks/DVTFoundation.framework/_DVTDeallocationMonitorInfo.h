@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class DVTWeakInterposer, NSString;
+@class NSString;
 
 @interface _DVTDeallocationMonitorInfo : NSObject
 {
-    DVTWeakInterposer *_uncollectedObject_dvtWeakInterposer;
+    id _uncollectedObject;
     NSString *_hierarchyIdentifier;
     NSString *_hierarchyClassNameIdentifier;
     unsigned long long _hierarchyTag;
@@ -24,10 +24,9 @@
 @property unsigned long long survivedCount; // @synthesize survivedCount=_survivedCount;
 @property(readonly) unsigned long long invalidationDepth; // @synthesize invalidationDepth=_invalidationDepth;
 @property(readonly, copy) NSString *name; // @synthesize name=_name;
+@property(readonly) __weak id uncollectedObject; // @synthesize uncollectedObject=_uncollectedObject;
 @property(readonly, copy) NSString *hierarchyIdentifier;
 - (id)initWithUncollectedObject:(id)arg1;
-- (void)setUncollectedObject:(id)arg1;
-@property(readonly) __weak id uncollectedObject;
 
 @end
 

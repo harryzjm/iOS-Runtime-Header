@@ -14,6 +14,7 @@
     MISSING_TYPE *detailText;
     MISSING_TYPE *detailAttributedText;
     MISSING_TYPE *accessories;
+    MISSING_TYPE *accessibilityIdentifier;
 }
 
 @end

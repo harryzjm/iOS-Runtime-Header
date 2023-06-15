@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
+@class NSString, _TtC13DVTFoundation27DVTTeamCredentialComponents;
 
 @protocol _TtP13DVTFoundation17DVTTeamCredential_
 - (NSString *)tokenAndReturnError:(id *)arg1;
-@property(nonatomic, readonly) NSString *issuerID;
+@property(nonatomic, readonly) _TtC13DVTFoundation27DVTTeamCredentialComponents *credentialComponents;
 @end
 

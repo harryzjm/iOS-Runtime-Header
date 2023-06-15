@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
-@class NSAttributedString, NSNumber, NSString, UIColor, UIImage, UIImageSymbolConfiguration, _UIGraphicsLetterpressStyle;
+@class NSAttributedString, NSNumber, NSString, UIColor, UIImage, UIImageSymbolConfiguration;
 
 __attribute__((visibility("hidden")))
-@interface UIButtonContent : NSObject <NSCopying>
+@interface UIButtonContent : NSObject
 {
     NSString *title;
     NSAttributedString *attributedTitle;
@@ -37,7 +35,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSString *title; // @synthesize title;
 - (_Bool)updateVariableLengthStringForView:(id)arg1;
 - (id)description;
-@property(retain, nonatomic) _UIGraphicsLetterpressStyle *letterpressStyle;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

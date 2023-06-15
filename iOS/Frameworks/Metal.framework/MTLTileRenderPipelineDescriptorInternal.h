@@ -10,12 +10,11 @@ __attribute__((visibility("hidden")))
 @interface MTLTileRenderPipelineDescriptorInternal : MTLTileRenderPipelineDescriptor
 {
     struct MTLTileRenderPipelineDescriptorPrivate _private;
-    struct FlatBufferBuilder _builder;
 }
 
-- (id).cxx_construct;
-- (void).cxx_destruct;
-- (const void *)getPipelineScript;
+- (id)gpuCompilerSPIOptions;
+- (void)setGpuCompilerSPIOptions:(id)arg1;
+- (id)newPipelineScript;
 - (id)newSerializedTileDataWithFlags:(unsigned long long)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
 - (void)validateWithDevice:(id)arg1;
 - (_Bool)validateWithDevice:(id)arg1 error:(id *)arg2;
@@ -46,6 +45,8 @@ __attribute__((visibility("hidden")))
 - (void)setLabel:(id)arg1;
 - (id)label;
 - (void)reset;
+- (void)setMaxAccelerationStructureTraversalDepth:(unsigned long long)arg1;
+- (unsigned long long)maxAccelerationStructureTraversalDepth;
 - (void)setProfileControl:(id)arg1;
 - (id)profileControl;
 - (id)tileBuffers;

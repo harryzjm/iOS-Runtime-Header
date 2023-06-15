@@ -27,6 +27,7 @@
 - (XCTestExpectation *)viewDidAppearExpectationForElement:(XCAccessibilityElement *)arg1 viewControllerName:(NSString *)arg2;
 - (void)notifyWhenNoAnimationsAreActiveForApplication:(XCUIApplicationProcess *)arg1 reply:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)notifyOnNextOccurrenceOfUserTestingEvent:(NSString *)arg1 handler:(void (^)(NSDictionary *, NSError *))arg2;
+- (_Bool)cachedSystemAppIsLoaded;
 - (_Bool)cachedAccessibilityLoadedValueForPID:(int)arg1;
 - (id)parameterizedAttribute:(NSString *)arg1 forElement:(XCAccessibilityElement *)arg2 parameter:(id)arg3 error:(id *)arg4;
 - (_Bool)setAttribute:(NSString *)arg1 value:(id)arg2 element:(XCAccessibilityElement *)arg3 outError:(id *)arg4;

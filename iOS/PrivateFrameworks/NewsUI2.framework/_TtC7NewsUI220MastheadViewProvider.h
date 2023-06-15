@@ -18,6 +18,9 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *model;
     MISSING_TYPE *animationManager;
     MISSING_TYPE *engagementBanner;
+    MISSING_TYPE *bundleSubscriptionManager;
+    MISSING_TYPE *eventManager;
+    MISSING_TYPE *lastLayoutOptions;
 }
 
 - (void).cxx_destruct;

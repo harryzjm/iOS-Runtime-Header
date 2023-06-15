@@ -6,16 +6,18 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class AFDictationOptions, NSArray, NSError, NSString, UIDictationConnection, UIDictationConnectionOptions, UIDictationSerializableResults;
+@class AFDictationNLUResult, AFDictationOptions, AFSpeechPackage, NSArray, NSError, NSString, UIDictationConnection, UIDictationConnectionOptions, UIDictationSerializableResults;
 
 @protocol UIDictationConnectionDelegate <NSObject>
+- (void)dictationConnection:(UIDictationConnection *)arg1 didReceiveVoiceCommandCandidatePackage:(AFSpeechPackage *)arg2 nluResult:(AFDictationNLUResult *)arg3;
+- (void)dictationConnection:(UIDictationConnection *)arg1 didReceivePartialPackage:(AFSpeechPackage *)arg2 nluResult:(AFDictationNLUResult *)arg3 languageModel:(NSString *)arg4;
 - (void)dictationConnection:(UIDictationConnection *)arg1 didReceiveCandidateDictationSerializableResults:(UIDictationSerializableResults *)arg2;
 - (void)dictationConnection:(UIDictationConnection *)arg1 didDetectLanguage:(NSString *)arg2;
 - (void)dictationConnection:(UIDictationConnection *)arg1 didReceiveSearchResults:(NSArray *)arg2 recognizedText:(NSString *)arg3 stable:(_Bool)arg4 final:(_Bool)arg5;
 - (void)dictationConnnectionDidChangeAvailability:(UIDictationConnection *)arg1;
 - (void)dictationConnectionDidCancel:(UIDictationConnection *)arg1;
 - (void)dictationConnectionDidFinish:(UIDictationConnection *)arg1;
-- (void)dictationConnection:(UIDictationConnection *)arg1 finalizePhrases:(UIDictationSerializableResults *)arg2 languageModel:(NSString *)arg3 correctionIdentifier:(id)arg4 secureInput:(_Bool)arg5;
+- (void)dictationConnection:(UIDictationConnection *)arg1 finalizePhrases:(UIDictationSerializableResults *)arg2 languageModel:(NSString *)arg3 correctionIdentifier:(id)arg4 secureInput:(_Bool)arg5 finalResult:(_Bool)arg6;
 - (void)dictationConnection:(UIDictationConnection *)arg1 receivedInterpretation:(NSString *)arg2 languageModel:(NSString *)arg3 secureInput:(_Bool)arg4;
 - (void)dictationConnection:(UIDictationConnection *)arg1 didFailRecognitionWithError:(NSError *)arg2;
 - (void)dictationConnection:(UIDictationConnection *)arg1 didFailRecordingWithError:(NSError *)arg2;

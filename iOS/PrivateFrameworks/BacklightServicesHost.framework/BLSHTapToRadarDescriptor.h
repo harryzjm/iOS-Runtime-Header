@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class NSDate, NSString;
 
 __attribute__((visibility("hidden")))
 @interface BLSHTapToRadarDescriptor : NSObject
@@ -19,15 +19,23 @@ __attribute__((visibility("hidden")))
     NSString *_reproducibility;
     NSString *_keywordIDs;
     NSString *_attachments;
+    long long _componentID;
     NSString *_componentName;
     NSString *_componentVersion;
-    NSString *_componentID;
+    NSString *_ttrPromptHeader;
+    NSString *_ttrPromptMessage;
+    NSString *_ttrDisplayReason;
+    NSDate *_timeOfIssue;
 }
 
 - (void).cxx_destruct;
-@property(copy, nonatomic) NSString *componentID; // @synthesize componentID=_componentID;
+@property(copy, nonatomic) NSDate *timeOfIssue; // @synthesize timeOfIssue=_timeOfIssue;
+@property(copy, nonatomic) NSString *ttrDisplayReason; // @synthesize ttrDisplayReason=_ttrDisplayReason;
+@property(copy, nonatomic) NSString *ttrPromptMessage; // @synthesize ttrPromptMessage=_ttrPromptMessage;
+@property(copy, nonatomic) NSString *ttrPromptHeader; // @synthesize ttrPromptHeader=_ttrPromptHeader;
 @property(copy, nonatomic) NSString *componentVersion; // @synthesize componentVersion=_componentVersion;
 @property(copy, nonatomic) NSString *componentName; // @synthesize componentName=_componentName;
+@property(nonatomic) long long componentID; // @synthesize componentID=_componentID;
 @property(copy, nonatomic) NSString *attachments; // @synthesize attachments=_attachments;
 @property(copy, nonatomic) NSString *keywordIDs; // @synthesize keywordIDs=_keywordIDs;
 @property(copy, nonatomic) NSString *reproducibility; // @synthesize reproducibility=_reproducibility;

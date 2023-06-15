@@ -12,7 +12,7 @@
 + (Class)propertiesClass;
 - (void)sortElements:(id *)arg1 pipeline:(id)arg2;
 - (tvec3_17f03ce0)sortingPositionForElement:(id)arg1;
-- (tvec3_17f03ce0)adjustedScaleForInfoChartScale:(const void *)arg1 scene:(id)arg2;
+- (tvec3_17f03ce0)adjustedScaleForInfoChartScale:(void *)arg1 scene:(id)arg2;
 - (float)chartMinZForScene:(id)arg1;
 - (float)depthForScene:(id)arg1;
 - (void)updateElementEffectsStates:(id)arg1 depthToWidthRatio:(float)arg2;

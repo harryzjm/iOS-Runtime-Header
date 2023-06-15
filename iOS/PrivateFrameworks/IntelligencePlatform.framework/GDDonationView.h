@@ -9,7 +9,6 @@
 @class _PASSqliteDatabase;
 @protocol GDViewAccessAssertion;
 
-__attribute__((visibility("hidden")))
 @interface GDDonationView : NSObject
 {
     id <GDViewAccessAssertion> _accessAssertion;

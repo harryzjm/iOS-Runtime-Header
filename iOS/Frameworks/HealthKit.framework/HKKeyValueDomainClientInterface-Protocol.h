@@ -7,5 +7,6 @@
 #import <HealthKit/NSObject-Protocol.h>
 
 @protocol HKKeyValueDomainClientInterface <NSObject>
+- (void)clientRemote_didUpdate;
 @end
 

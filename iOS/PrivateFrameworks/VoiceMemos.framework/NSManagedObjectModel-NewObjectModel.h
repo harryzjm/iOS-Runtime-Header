@@ -7,7 +7,6 @@
 #import <CoreData/NSManagedObjectModel.h>
 
 @interface NSManagedObjectModel (NewObjectModel)
-+ (id)modelCandidatesForEncryptedCloudRecordings;
 + (id)modelCandidatesForCloudRecordings;
 + (id)mutableModelForModelFileName:(id)arg1;
 + (id)modelCompatibleWithStoreMetadata:(id)arg1 forStoreURL:(id)arg2;
@@ -18,6 +17,9 @@
 + (id)rc_v7bObjectModel;
 + (id)rc_v8ObjectModel;
 + (id)rc_v9ObjectModel;
++ (id)rc_v10ObjectModel;
++ (id)rc_v11ObjectModel;
++ (id)rc_currentObjectModel;
 + (id)rc_newObjectModel;
 @end
 

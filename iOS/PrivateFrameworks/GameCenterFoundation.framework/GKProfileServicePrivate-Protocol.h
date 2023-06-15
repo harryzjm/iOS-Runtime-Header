@@ -6,12 +6,15 @@
 
 #import <GameCenterFoundation/GKProfileService-Protocol.h>
 
-@class CNContact, NSArray, NSData, NSDate, NSDictionary, NSNumber, NSString;
+@class CNContact, NSArray, NSData, NSDate, NSDictionary, NSNumber, NSSet, NSString;
 
 @protocol GKProfileServicePrivate <GKProfileService>
+- (oneway void)cacheScopedIds:(NSArray *)arg1 forPlayerId:(NSString *)arg2;
+- (oneway void)clearScopedIdsCacheWithHandler:(void (^)(NSError *))arg1;
 - (oneway void)getProfilesForPlayerIDs:(NSArray *)arg1 fetchOptions:(unsigned long long)arg2 handler:(void (^)(NSArray *, NSError *))arg3;
-- (oneway void)beginContactsIntegrationCacheUpdates:(void (^)(NSError *))arg1;
-- (oneway void)clearContactsIntegrationCachesAndRefreshImmediately:(_Bool)arg1 withCompletionHandler:(void (^)(NSError *))arg2;
+- (oneway void)startContactsIntegrationIDSSyncForHandles:(NSSet *)arg1 completionHandler:(void (^)(NSError *))arg2;
+- (oneway void)startContactsIntegrationSyncWithOptions:(unsigned long long)arg1 completionHandler:(void (^)(NSError *))arg2;
+- (oneway void)clearContactsIntegrationCachesWithCompletionHandler:(void (^)(NSError *))arg1;
 - (oneway void)getGameCenterRelationshipsForContact:(CNContact *)arg1 shouldRefresh:(_Bool)arg2 completionHandler:(void (^)(NSArray *, NSError *))arg3;
 - (oneway void)setContactsIntegrationConsent:(int)arg1 handler:(void (^)(NSError *))arg2;
 - (oneway void)getContactsIntegrationConsentWithHandler:(void (^)(int))arg1;

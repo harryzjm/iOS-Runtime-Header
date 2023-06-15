@@ -11,7 +11,7 @@
 @protocol _UIFindNavigatorHosting <NSObject>
 @property(readonly, nonatomic, getter=isFindNavigatorVisible) _Bool findNavigatorVisible;
 @property(readonly, nonatomic) _UIFindNavigatorViewController *findNavigatorViewController;
-- (void)dismissFindNavigator;
+- (void)dismissFindNavigatorEndingActiveSession:(_Bool)arg1;
 - (void)presentFindNavigatorWithFindSession:(UIFindSession *)arg1 showingReplace:(_Bool)arg2;
 @end
 

@@ -10,7 +10,6 @@
 
 @interface HKConcept (Medications)
 @property(readonly, nonatomic) NSString *meds_englishUSName;
-- (id)meds_allObjectsWithRelationshipType:(long long)arg1;
 - (id)meds_preferredNameForFirstObjectOfRelationshipType:(long long)arg1;
 @property(readonly, nonatomic) _Bool meds_isTradeNameProduct;
 @property(readonly, nonatomic) _Bool meds_isRoutedDoseFormProduct;

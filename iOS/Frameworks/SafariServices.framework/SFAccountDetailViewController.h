@@ -6,7 +6,7 @@
 
 #import <UIKit/UITableViewController.h>
 
-@class ASAccountAuthenticationModificationController, NSArray, NSExtension, NSObject, NSString, NSTimer, SFAccountDetailHeaderViewCell, SFAccountNoteTableViewCell, SFEditableTableViewCell, SFSafariViewController, SFSecurityRecommendationInfoCell, UIAlertController, UIBarButtonItem, UIEditMenuInteraction, UINavigationController, UITableViewCell, UITableViewHeaderFooterView, WBSPasswordWarning, WBSSavedAccount, WBSSavedAccountChangeRequest, _SFTableLinkableFooterView, _SFTableViewDiffableDataSource;
+@class ASAccountAuthenticationModificationController, NSArray, NSExtension, NSObject, NSString, NSTimer, PMTOTPMigrationController, SFAccountDetailHeaderViewCell, SFAccountNoteTableViewCell, SFEditableTableViewCell, SFSafariViewController, SFSecurityRecommendationInfoCell, SFTableViewDiffableDataSource, UIAlertController, UIBarButtonItem, UIEditMenuInteraction, UINavigationController, UITableViewCell, UITableViewHeaderFooterView, UIViewController, WBSPasswordWarning, WBSSavedAccount, WBSSavedAccountChangeRequest, _SFTableLinkableFooterView;
 @protocol OS_dispatch_queue, SFAccountDetailViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     SFAccountDetailHeaderViewCell *_headerCell;
     SFEditableTableViewCell *_userCell;
     SFEditableTableViewCell *_passwordCell;
+    NSString *_titleForEditing;
     NSString *_userForEditing;
     NSString *_passwordForEditing;
     UITableViewCell *_changePasswordOnWebsiteCell;
@@ -32,7 +33,7 @@ __attribute__((visibility("hidden")))
     SFAccountNoteTableViewCell *_notesCell;
     _Bool _shouldDiffableDataSourceShowEditingState;
     NSString *_notesForEditing;
-    _SFTableViewDiffableDataSource *_tableViewDiffableDataSource;
+    SFTableViewDiffableDataSource *_tableViewDiffableDataSource;
     NSObject<OS_dispatch_queue> *_diffableDataSourceQueue;
     SFSecurityRecommendationInfoCell *_securityRecommendationInfoCell;
     WBSPasswordWarning *_passwordWarning;
@@ -56,24 +57,52 @@ __attribute__((visibility("hidden")))
     UITableViewCell *_visitWebsiteCell;
     UINavigationController *_addPasswordNavigationController;
     _SFTableLinkableFooterView *_passkeyFooterView;
-    _Bool _isAuthenticatingForOneTimeSharing;
+    _Bool _isOneTimeSharingAccount;
     UIEditMenuInteraction *_editMenuInteraction;
+    UIViewController *_sharingViewController;
+    UINavigationController *_totpMigrationNavigationController;
+    PMTOTPMigrationController *_totpMigrationController;
+    _Bool _showingAccountManagerLockedView;
     _Bool _showsChangePasswordControllerOnAppearance;
+    _Bool _isForFillingIndividualAccountFields;
     id <SFAccountDetailViewControllerDelegate> _delegate;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool isForFillingIndividualAccountFields; // @synthesize isForFillingIndividualAccountFields=_isForFillingIndividualAccountFields;
 @property(nonatomic) _Bool showsChangePasswordControllerOnAppearance; // @synthesize showsChangePasswordControllerOnAppearance=_showsChangePasswordControllerOnAppearance;
 @property(nonatomic) __weak id <SFAccountDetailViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic, getter=isShowingAccountManagerLockedView) _Bool showingAccountManagerLockedView; // @synthesize showingAccountManagerLockedView=_showingAccountManagerLockedView;
+- (void)totpMigrationController:(id)arg1 presentPickerForGenerator:(id)arg2;
+- (void)totpMigrationController:(id)arg1 presentDetailsForSavedAccount:(id)arg2;
+- (void)totpMigrationControllerFinishedImport:(id)arg1;
+- (void)updatedIconIsAvailableForDomain:(id)arg1;
+- (void)groupCreationFlowNavigationController:(id)arg1 finishedWithGroup:(id)arg2 error:(id)arg3;
+- (void)returnKeyActivatedInAccountDetailHeaderViewCell:(id)arg1;
+- (void)accountDetailHeaderViewCell:(id)arg1 titleTextFieldDidChange:(id)arg2;
 - (void)noteTableViewCellTextViewTapped:(id)arg1;
+- (void)updateUserAuthenticationState:(_Bool)arg1;
 @property(readonly, nonatomic) _Bool shouldSuppressAccountManagerLockedView;
 - (void)securityRecommendationInfoCellHideButtonPressed:(id)arg1;
 - (void)_hideSecurityRecommendation;
 - (void)_presentHideSecurityRecommendationConfirmationAlert;
 - (void)QRCodeScannerViewController:(id)arg1 didScanQRCodeWithURLValue:(id)arg2;
 - (_Bool)_shouldShowAccountOptionsHeader;
-- (void)_deletePassword;
+- (void)_presentErrorAlertForFailingToRecoverRecentlyDeletedSavedAccount;
+- (void)_moveSavedAccountToMyPasswords;
+- (void)_presentMoveRecentlyDeletedSavedAccountToMyPasswordsConfirmationAlert;
+- (void)_recoverSavedAccount;
+- (void)_presentSoftDeleteErrorAlertForCredentialTypes:(long long)arg1;
+- (_Bool)_softDeletePasskey;
+- (_Bool)_softDeletePassword;
+- (void)_showConfirmationToSoftDeleteCredentialTypes:(long long)arg1;
+- (void)_permanentlyDeleteAllCredentials;
+- (void)_permanentlyDeletePasskey;
+- (void)_permanentlyDeletePassword;
+- (void)_showConfirmationToPermanentlyDeleteCredentialTypes:(long long)arg1;
 - (void)_showConfirmationToDeleteCredentialTypes:(long long)arg1;
+- (void)_showConfirmationToSoftDeletePasswordAndTOTPGenerator;
+- (void)_showConfirmationToPermanentlyDeletePasswordAndTOTPGenerator;
 - (void)_showConfirmationToDeletePasswordAndTOTPGenerator;
 - (void)accountModificationExtensionManagerExtensionListDidChange:(id)arg1;
 - (id)presentationAnchorForAccountAuthenticationModificationController:(id)arg1;
@@ -91,10 +120,11 @@ __attribute__((visibility("hidden")))
 - (id)dataSource:(id)arg1 headerTextForSection:(long long)arg2;
 - (void)_sharePasswordWithAuthenticationContext:(id)arg1 popoverPresentationControllerConfiguration:(CDUnknownBlockType)arg2;
 - (void)_sharePasswordWithPopoverPresentationControllerConfiguration:(CDUnknownBlockType)arg1;
-- (void)safari_sharePassword:(id)arg1;
-- (_Bool)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (_Bool)canBecomeFirstResponder;
 - (void)linkableFooterViewDidInteractWithLink:(id)arg1;
+- (void)_fillVerificationCode;
+- (void)_fillPassword;
+- (void)_fillUsername;
 - (id)_passkeyFooterView;
 - (id)_passkeySectionFooterView;
 - (id)_accountHeaderSectionFooterView;
@@ -115,29 +145,36 @@ __attribute__((visibility("hidden")))
 - (long long)_sectionTypeForSection:(long long)arg1;
 - (id)_passkeyCreationDateString;
 - (id)_lastModifiedDateString;
-- (void)safari_copyOneTimeCode:(id)arg1;
-- (void)safari_copyWebsite:(id)arg1;
-- (void)safari_copyPassword:(id)arg1;
-- (void)safari_copyUserName:(id)arg1;
 - (void)_textFieldChanged:(id)arg1;
 - (void)_updatePasswordFieldTextSuggestions:(id)arg1;
 - (_Bool)textFieldShouldReturn:(id)arg1;
 - (void)textFieldDidEndEditing:(id)arg1;
+- (void)_updateHeaderViewCell;
+- (id)_indexPathForEditMenuInteraction:(id)arg1 withConfiguration:(id)arg2;
 - (void)editMenuInteraction:(id)arg1 willDismissMenuForConfiguration:(id)arg2 animator:(id)arg3;
+- (void)editMenuInteraction:(id)arg1 willPresentMenuForConfiguration:(id)arg2 animator:(id)arg3;
 - (struct CGRect)editMenuInteraction:(id)arg1 targetRectForConfiguration:(id)arg2;
 - (id)editMenuInteraction:(id)arg1 menuForConfiguration:(id)arg2 suggestedActions:(id)arg3;
 - (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
+- (_Bool)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
 - (_Bool)tableView:(id)arg1 shouldIndentWhileEditingRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 editingStyleForRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 estimatedHeightForRowAtIndexPath:(id)arg2;
-- (void)tableView:(id)arg1 performAction:(SEL)arg2 forRowAtIndexPath:(id)arg3 withSender:(id)arg4;
 - (void)_revealPasswordIfNecessary;
 - (_Bool)_shouldShowMenuForItemIdentifier:(long long)arg1;
 - (void)_replaceAddPasswordButtonWithPasswordCell;
+- (id)tableView:(id)arg1 contextMenuConfigurationForRowAtIndexPath:(id)arg2 point:(struct CGPoint)arg3;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
-- (_Bool)tableView:(id)arg1 shouldShowMenuForRowAtIndexPath:(id)arg2;
+- (id)_cellsThatChangeAppearanceOnEdit;
+- (long long)_textAlignmentOfCellsInDeleteAccountSection;
+- (long long)_listContentTextAlignmentOfCellsInDeleteAccountSection;
+- (id)_moveRecentlyDeletedAccountToMyPasswordsCell;
+- (id)_recoverRecentlyDeletedAccountCell;
+- (id)_originalContributorCell;
+- (id)_groupPickerTableViewCell;
 - (id)_deletePasskeyCellForTableView:(id)arg1;
 - (id)_deletePasswordCellForTableView:(id)arg1 shouldRemoveTOTPGenerator:(_Bool)arg2;
+- (void)_updateIconForCell:(id)arg1;
 - (void)_configureHeaderViewCell:(id)arg1;
 - (id)_deleteCellForTableView:(id)arg1;
 - (id)_savedAccountWebsiteCellForTableView:(id)arg1 atIndexPath:(id)arg2;
@@ -155,6 +192,8 @@ __attribute__((visibility("hidden")))
 - (void)_updateAddButtonsInAccountOptionsSectionForSnapshot:(id)arg1;
 - (void)_addAccountUpgradeItemsForSectionType:(long long)arg1 toSnapshot:(id)arg2;
 - (_Bool)_shouldShowSecurityRecommendationSection;
+- (id)_groupSectionValueStyleTableViewCellWithText:(id)arg1 secondaryText:(id)arg2;
+- (void)_configureDeleteSectionInSnapshot:(id)arg1;
 - (void)_reloadDiffableDataSourceAnimated:(_Bool)arg1;
 - (void)_reloadDiffableDataSourceOnInternalQueueAnimated:(_Bool)arg1;
 - (id)_cellForIdentifier:(id)arg1 indexPath:(id)arg2;
@@ -162,8 +201,15 @@ __attribute__((visibility("hidden")))
 - (id)_createShareBarButtonItem;
 - (void)_updateAddPasswordButton:(_Bool)arg1 forSnapshot:(id)arg2;
 - (void)_setEditing:(_Bool)arg1 animated:(_Bool)arg2;
+- (void)_shareSavedAccountToSharedCredentialsGroup;
+- (void)_presentErrorAlertForFailingToMoveAccountToGroup:(id)arg1;
+- (void)_presentConfirmationAlertToShareSavedAccountToGroup:(id)arg1;
+- (id)_airDropMenu;
+- (id)_allSharedCredentialGroupsMenu;
+- (id)_groupSharingMenu;
 - (void)_shareBarButtonItemTapped:(id)arg1;
 - (void)_doneBarButtonItemTapped:(id)arg1;
+- (void)_presentDialogToConfirmCancelEditing;
 - (void)_cancelBarButtonItemTapped:(id)arg1;
 - (void)_cancelChangesAndFinishEditing;
 - (void)_editBarButtonItemTapped:(id)arg1;
@@ -189,7 +235,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
-@property(nonatomic, getter=isShowingAccountManagerLockedView) _Bool showingAccountManagerLockedView;
 @property(readonly) Class superclass;
 
 @end

@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     NSDictionary *_clientOptions;
     AMSUIWebJSDataProvider *_dataProvider;
     AMSUIWebFlowController *_flowController;
+    NSString *_versionNumber;
     NSString *_logKey;
     AMSMetrics *_metrics;
     NSDictionary *_metricsOverlay;
@@ -48,6 +49,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) AMSMetrics *metrics; // @synthesize metrics=_metrics;
 @property(retain, nonatomic) NSString *logKey; // @synthesize logKey=_logKey;
 @property(nonatomic) _Bool loadUsingWebKit; // @synthesize loadUsingWebKit=_loadUsingWebKit;
+@property(retain, nonatomic) NSString *versionNumber; // @synthesize versionNumber=_versionNumber;
 @property(retain, nonatomic) AMSUIWebFlowController *flowController; // @synthesize flowController=_flowController;
 @property(retain, nonatomic) AMSUIWebJSDataProvider *dataProvider; // @synthesize dataProvider=_dataProvider;
 @property(retain, nonatomic) NSDictionary *clientOptions; // @synthesize clientOptions=_clientOptions;

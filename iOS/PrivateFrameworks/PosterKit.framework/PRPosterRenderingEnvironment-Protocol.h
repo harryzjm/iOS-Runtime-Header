@@ -6,14 +6,15 @@
 
 #import <PosterKit/PRPosterEnvironment-Protocol.h>
 
-@protocol PRPosterContents;
+@protocol PRPosterAmbientEnvironment, PRPosterContents;
 
 @protocol PRPosterRenderingEnvironment <PRPosterEnvironment>
+@property(readonly, nonatomic) id <PRPosterAmbientEnvironment> ambientEnvironment;
+@property(readonly, nonatomic) unsigned long long titleAlignment;
 @property(readonly, nonatomic) struct CGSize desiredContentSize;
 @property(readonly, nonatomic) struct CGSize minimumContentSize;
 @property(readonly, nonatomic, getter=isParallaxEnabled) _Bool parallaxEnabled;
 @property(readonly, nonatomic) id <PRPosterContents> contents;
-@property(readonly, nonatomic) unsigned long long significantEventsCounter;
 @property(readonly, nonatomic) _Bool andromeda;
 @property(readonly, nonatomic, getter=isLowLuminance) _Bool lowLuminance;
 @property(readonly, nonatomic) _Bool wakeSourceIsSwipeToUnlock;

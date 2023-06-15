@@ -9,7 +9,6 @@
 @class CaptureMTLDevice, NSArray, NSString;
 @protocol MTLDevice, MTLPipelineCache, MTLPipelineLibrary, MTLPipelineLibrarySPI;
 
-__attribute__((visibility("hidden")))
 @interface CaptureMTLPipelineLibrary : NSObject
 {
     id <MTLPipelineLibrarySPI> _baseObject;
@@ -23,6 +22,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 @property(readonly) NSArray *pipelineNames;
 @property(readonly, nonatomic) id <MTLPipelineCache> pipelineCache;
+@property(readonly) NSArray *metallibPaths;
 @property(copy) NSString *label;
 @property(readonly, nonatomic) id <MTLPipelineCache> functionCache;
 @property _Bool disableRunTimeCompilation;

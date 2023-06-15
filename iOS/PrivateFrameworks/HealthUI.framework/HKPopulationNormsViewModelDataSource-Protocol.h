@@ -29,6 +29,7 @@
 - (NSString *)currentLocalizedClassificationTitle;
 - (NSString *)localizedClassificationDescriptionForIndex:(unsigned long long)arg1;
 - (NSString *)localizedClassificationNameForIndex:(unsigned long long)arg1;
+- (NSString *)classificationIdentifierForIndex:(unsigned long long)arg1;
 - (NSString *)localizedClassificationTitleForIndex:(unsigned long long)arg1;
 - (_Bool)shouldShowClassificationTitle;
 - (unsigned long long)numberOfClassifications;

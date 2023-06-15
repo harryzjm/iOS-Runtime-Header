@@ -45,6 +45,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)hasHighlightableSelectionForAnnotationController:(id)arg1;
 - (id)controller:(id)arg1 willSetToolbarItems:(id)arg2;
 - (void)positionSketchOverlay:(id)arg1 forAnnotationController:(id)arg2;
+- (void)handleTextSuggestion:(id)arg1 forAnnotationController:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (_Bool)handleBackTabInTextEditorForAnnotation:(id)arg1 forAnnotationController:(id)arg2;
 - (_Bool)handleTabInTextEditorForAnnotation:(id)arg1 forAnnotationController:(id)arg2;
 - (_Bool)shouldAddTabControlsToTextEditorForAnnotation:(id)arg1 forAnnotationController:(id)arg2;

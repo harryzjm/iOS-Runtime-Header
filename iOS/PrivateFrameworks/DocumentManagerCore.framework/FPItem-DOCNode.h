@@ -6,9 +6,13 @@
 
 #import <FileProvider/FPItem.h>
 
-@class FPProviderDomain, NSArray, NSDate, NSError, NSNumber, NSPersonNameComponents, NSProgress, NSString, NSURL, UTType;
+@class FPProviderDomain, NSArray, NSDate, NSError, NSNumber, NSObject, NSPersonNameComponents, NSProgress, NSString, NSURL, UTType;
 
 @interface FPItem (DOCNode)
+- (void)fetchFPItem:(CDUnknownBlockType)arg1;
+- (void)fetchURL:(CDUnknownBlockType)arg1;
+- (void)fetchParents:(CDUnknownBlockType)arg1;
+- (void)fetchParent:(CDUnknownBlockType)arg1;
 - (void)encodeNodeWithCoder:(id)arg1;
 - (long long)localizedStandardTagsCompareNode:(id)arg1;
 - (long long)_doc_fileTypeCompare:(id)arg1;
@@ -16,13 +20,20 @@
 @property(readonly, nonatomic) NSDate *doc_lastUsedDate;
 @property(readonly, nonatomic) NSDate *doc_creationDate;
 @property(readonly, nonatomic) NSDate *modificationDate;
+@property(readonly, nonatomic) unsigned long long doc_folderIconType;
+@property(readonly, nonatomic) _Bool doc_isSMBSharepoint;
+@property(readonly, nonatomic) NSNumber *deepItemCount;
 @property(readonly, nonatomic) NSNumber *fileSize;
 @property(readonly, nonatomic) NSURL *nodeURL;
+@property(readonly, nonatomic) NSObject *contentVersion;
+@property(readonly, nonatomic, getter=isAnyParentTrashed) _Bool anyParentTrashed;
 @property(readonly, nonatomic) _Bool isRootItem;
 @property(readonly, nonatomic) _Bool supportsFileSystemEnumeration;
+@property(readonly, nonatomic) _Bool doc_isCollaborationInvitation;
 @property(readonly, nonatomic) NSString *domainDisplayName;
 @property(readonly, nonatomic) FPProviderDomain *cachedDomain;
 @property(readonly, nonatomic) FPItem *fpfs_fpItem;
+@property(readonly, nonatomic) NSString *thumbnailIdentifier;
 @property(readonly, nonatomic) id identifier;
 @property(readonly, nonatomic) _Bool doc_isAppContainerRoot;
 
@@ -54,6 +65,7 @@
 @property(readonly, nonatomic) NSPersonNameComponents *ownerNameComponents;
 @property(readonly, nonatomic) NSString *providerDomainID;
 @property(readonly, nonatomic) NSString *providerID;
+@property(readonly, nonatomic, getter=isRecursivelyDownloaded) _Bool recursivelyDownloaded;
 @property(readonly, nonatomic, getter=isShared) _Bool shared;
 @property(readonly, nonatomic, getter=isSharedByCurrentUser) _Bool sharedByCurrentUser;
 @property(readonly) Class superclass;

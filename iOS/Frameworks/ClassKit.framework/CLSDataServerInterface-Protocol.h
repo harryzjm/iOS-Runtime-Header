@@ -6,8 +6,8 @@
 
 #import <ClassKit/NSObject-Protocol.h>
 
-@class CLSAdminRequestor, CLSObject, CLSQuerySpecification, CLSSearchSpecification, CLSSurvey, FPSandboxingURLWrapper, NSArray, NSData, NSDate, NSDictionary, NSFileHandle, NSObject, NSPredicate, NSString, NSURL;
-@protocol CLSChangeNotifiable, CLSQuery, CLSSaveResponse;
+@class CLSAdminRequestor, CLSObject, CLSQuerySpecification, CLSSearchSpecification, CLSSurvey, FPSandboxingURLWrapper, NSArray, NSData, NSDate, NSDictionary, NSFileHandle, NSObject, NSString, NSURL;
+@protocol CLSEntityChangeNotifiable, CLSQuery, CLSSaveResponse;
 
 @protocol CLSDataServerInterface <NSObject>
 - (oneway void)remote_saveInsightEvents:(NSArray *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
@@ -50,7 +50,7 @@
 - (oneway void)remote_fetchTransparencyMessageInfoForAttachmentID:(NSString *)arg1 withCompletion:(void (^)(id, NSError *))arg2;
 - (oneway void)remote_fetchTransparencyMessageInfoWithCompletion:(void (^)(id, NSError *))arg1;
 - (oneway void)remote_deregisterDataObserverWithID:(NSString *)arg1 completion:(void (^)(void))arg2;
-- (oneway void)remote_registerDataObserver:(NSObject<CLSChangeNotifiable> *)arg1 withID:(NSString *)arg2 forClassNamed:(NSString *)arg3 predicate:(NSPredicate *)arg4 sortDescriptors:(NSArray *)arg5 oldChangeTag:(unsigned long long)arg6 completion:(void (^)(NSError *))arg7;
+- (oneway void)remote_registerDataObserver:(NSObject<CLSEntityChangeNotifiable> *)arg1 withID:(NSString *)arg2 querySpecification:(CLSQuerySpecification *)arg3 oldChangeTag:(unsigned long long)arg4 completion:(void (^)(NSError *))arg5;
 - (oneway void)remote_getCurrentUseriCloudQuotaInfoWithCompletion:(void (^)(unsigned long long, unsigned long long, unsigned long long, NSError *))arg1;
 - (oneway void)remote_currentUserWithCompletion:(void (^)(CLSCurrentUser *, NSError *))arg1;
 - (oneway void)remote_canSearchRostersWithCompletion:(void (^)(id, NSError *))arg1;

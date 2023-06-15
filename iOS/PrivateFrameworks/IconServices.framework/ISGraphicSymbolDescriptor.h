@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     ISResourceProvider *__resourceProvider;
 }
 
++ (id)descriptorFromGraphicIconConfiguration:(id)arg1;
 + (id)descriptorFromGraphicSymbolRecipe:(id)arg1;
 - (void).cxx_destruct;
 @property(retain) ISResourceProvider *_resourceProvider; // @synthesize _resourceProvider=__resourceProvider;

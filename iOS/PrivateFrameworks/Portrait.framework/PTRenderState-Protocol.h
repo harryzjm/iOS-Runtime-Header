@@ -7,12 +7,11 @@
 #import <Portrait/NSObject-Protocol.h>
 
 @class MISSING_TYPE;
+@protocol PTRenderEffect;
 
 @protocol PTRenderState <NSObject>
-@property(nonatomic) int hwModelID;
+@property(readonly) CDStruct_d80e62f2 cameraIntrinsicMatrix;
 @property(nonatomic) float networkBias;
-@property(nonatomic) unsigned long long renderingVersion;
-@property(nonatomic) int sourceColorBitDepth;
 @property(nonatomic) struct CGRect totalSensorCrop;
 @property(nonatomic) int sensorID;
 @property(nonatomic) MISSING_TYPE *visCropFactor;
@@ -23,8 +22,12 @@
 @property(nonatomic) int readNoise_1x;
 @property(nonatomic) int conversionGain;
 @property(nonatomic) float focalLenIn35mmFilm;
+@property(nonatomic) int hwModelID;
+@property(nonatomic) unsigned long long renderingVersion;
+@property(nonatomic) int sourceColorBitDepth;
 @property(readonly) int quality;
 - (_Bool)prepareForRendering;
+- (void)addRenderEffect:(id <PTRenderEffect>)arg1;
 - (_Bool)prepareForRendering:(_Bool)arg1;
 @end
 

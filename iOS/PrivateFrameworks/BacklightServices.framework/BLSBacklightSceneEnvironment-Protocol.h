@@ -14,6 +14,7 @@
 @property(readonly, getter=hasUnrestrictedFramerateUpdates) _Bool unrestrictedFramerateUpdates;
 @property(readonly, getter=isLiveUpdating) _Bool liveUpdating;
 @property(readonly) BLSAlwaysOnSession *alwaysOnSession;
+@property(readonly, getter=isAnimatingVisualState) _Bool animatingVisualState;
 @property(readonly) BLSAlwaysOnFrameSpecifier *frameSpecifier;
 @property(readonly) BLSBacklightSceneVisualState *visualState;
 @property(readonly, getter=isDisplayBlanked) _Bool displayBlanked;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MPCFuture, MPCMediaRemoteController, MPSectionedCollection, NSArray, NSIndexPath, NSString;
+@class MPCFuture, MPCMediaRemoteController, MPSectionedCollection, NSArray, NSDictionary, NSIndexPath, NSString;
 @protocol MPCSupportedCommands;
 
 __attribute__((visibility("hidden")))
@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     MPCFuture *_controllerFuture;
     MPCMediaRemoteController *_controller;
     MPSectionedCollection *_queueContentItems;
+    NSDictionary *_queueParticipantItems;
     MPSectionedCollection *_queueModelObjects;
     id <MPCSupportedCommands> _supportedCommands;
     NSIndexPath *_playingIndexPath;
@@ -31,26 +32,33 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSIndexPath *playingIndexPath; // @synthesize playingIndexPath=_playingIndexPath;
 @property(retain, nonatomic) id <MPCSupportedCommands> supportedCommands; // @synthesize supportedCommands=_supportedCommands;
 @property(retain, nonatomic) MPSectionedCollection *queueModelObjects; // @synthesize queueModelObjects=_queueModelObjects;
+@property(retain, nonatomic) NSDictionary *queueParticipantItems; // @synthesize queueParticipantItems=_queueParticipantItems;
 @property(retain, nonatomic) MPSectionedCollection *queueContentItems; // @synthesize queueContentItems=_queueContentItems;
 @property(retain, nonatomic) MPCMediaRemoteController *controller; // @synthesize controller=_controller;
 @property(retain, nonatomic) MPCFuture *controllerFuture; // @synthesize controllerFuture=_controllerFuture;
 @property(retain, nonatomic) NSArray *invalidationObservers; // @synthesize invalidationObservers=_invalidationObservers;
 - (id)_stateDumpObject;
-- (id)operationsForSessionRequest:(id)arg1;
 - (id)operationsForPlayerRequest:(id)arg1;
 - (id)operationsForRequest:(id)arg1;
 - (id)controller:(id)arg1 chain:(id)arg2;
 - (float)_playbackRateForContentItem:(id)arg1;
 - (id)_supportedCommands:(unsigned int)arg1 infoValueForKey:(id)arg2;
+- (_Bool)playerVocalsControlContinuous:(_Bool)arg1 chain:(id)arg2;
+- (float)playerMaxVocalsLevel:(float)arg1 chain:(id)arg2;
+- (float)playerMinVocalsLevel:(float)arg1 chain:(id)arg2;
+- (float)playerVocalsLevel:(float)arg1 chain:(id)arg2;
+- (_Bool)playerVocalsControlActive:(_Bool)arg1 chain:(id)arg2;
 - (id)audioRoute:(id)arg1 chain:(id)arg2;
 - (id)alternateAudioFormats:(id)arg1 chain:(id)arg2;
 - (unsigned long long)audioFormatPreference:(unsigned long long)arg1 chain:(id)arg2;
 - (long long)activeAudioFormatJustification:(long long)arg1 chain:(id)arg2;
 - (id)activeAudioFormat:(id)arg1 chain:(id)arg2;
 - (id)preferredAudioFormat:(id)arg1 chain:(id)arg2;
+- (id)participant:(id)arg1 atIndexPath:(id)arg2 chain:(id)arg3;
 - (_Bool)playerIsSharedListeningSession:(_Bool)arg1 chain:(id)arg2;
 - (_Bool)sectionIsAutoPlaySection:(_Bool)arg1 atIndex:(long long)arg2 chain:(id)arg3;
 - (id)tracklistUniqueIdentifier:(id)arg1 chain:(id)arg2;
+- (long long)playerCommandDisabledReason:(long long)arg1 command:(unsigned int)arg2 chain:(id)arg3;
 - (id)playerCommandOptionValue:(id)arg1 forKey:(id)arg2 command:(unsigned int)arg3 chain:(id)arg4;
 - (_Bool)playerCommandEnabled:(_Bool)arg1 command:(unsigned int)arg2 chain:(id)arg3;
 - (_Bool)playerCommandSupported:(_Bool)arg1 command:(unsigned int)arg2 chain:(id)arg3;
@@ -75,10 +83,6 @@ __attribute__((visibility("hidden")))
 - (long long)playerShuffleType:(long long)arg1 chain:(id)arg2;
 - (long long)playerRepeatType:(long long)arg1 chain:(id)arg2;
 - (long long)playerState:(long long)arg1 chain:(id)arg2;
-- (id)sessionMetadataObject:(id)arg1 atIndexPath:(id)arg2 chain:(id)arg3;
-- (id)sessionPlayerPath:(id)arg1 atIndex:(long long)arg2 chain:(id)arg3;
-- (long long)sessionNumberOfSessions:(long long)arg1 forPlayerPathAtIndex:(long long)arg2 chain:(id)arg3;
-- (long long)sessionNumberOfPlayerPaths:(long long)arg1 chain:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

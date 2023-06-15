@@ -14,6 +14,7 @@
     MISSING_TYPE *publisher;
     MISSING_TYPE *serialQueue;
     MISSING_TYPE *subscriptions;
+    MISSING_TYPE *rateLimited;
 }
 
 @end

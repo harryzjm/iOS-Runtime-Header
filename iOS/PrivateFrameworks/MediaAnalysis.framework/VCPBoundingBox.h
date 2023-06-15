@@ -16,8 +16,12 @@ __attribute__((visibility("hidden")))
     float _confidence;
     float _flag;
     int _classIndex;
+    int _trackID;
+    int _groupID;
 }
 
+@property int groupID; // @synthesize groupID=_groupID;
+@property int trackID; // @synthesize trackID=_trackID;
 @property int classIndex; // @synthesize classIndex=_classIndex;
 @property float flag; // @synthesize flag=_flag;
 @property float confidence; // @synthesize confidence=_confidence;
@@ -25,6 +29,7 @@ __attribute__((visibility("hidden")))
 @property float minY; // @synthesize minY=_minY;
 @property float maxX; // @synthesize maxX=_maxX;
 @property float minX; // @synthesize minX=_minX;
+- (int)extendBoxBy:(float)arg1 scaleX:(float)arg2 scaleY:(float)arg3;
 - (struct CGRect)getCGRectWithClipWidth:(float)arg1 height:(float)arg2;
 - (float)computeIntersectionOverUnion:(id)arg1;
 - (id)union:(id)arg1;

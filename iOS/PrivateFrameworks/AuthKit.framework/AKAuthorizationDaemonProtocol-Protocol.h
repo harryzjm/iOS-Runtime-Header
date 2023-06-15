@@ -16,6 +16,7 @@
 - (void)fetchAppleIDAuthorizeHTMLResponseTemplateWithCompletion:(void (^)(NSString *, NSError *))arg1;
 - (void)revokeUpgradeWithContext:(AKAuthorizationRevokeUpgradeContext *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (void)fetchAppleOwnedDomainSetWithCompletion:(void (^)(NSSet *, NSError *))arg1;
+- (void)fetchNativeTakeoverURLSetWithCompletion:(void (^)(NSSet *, NSError *))arg1;
 - (void)fetchAppleIDAuthorizationURLSetWithCompletion:(void (^)(NSSet *, NSError *))arg1;
 - (void)getPresentationContextForRequestContext:(AKCredentialRequestContext *)arg1 completion:(void (^)(AKAuthorizationPresentationContext *, NSError *))arg2;
 - (void)getCredentialStateForClientID:(NSString *)arg1 completion:(void (^)(long long, NSError *))arg2;

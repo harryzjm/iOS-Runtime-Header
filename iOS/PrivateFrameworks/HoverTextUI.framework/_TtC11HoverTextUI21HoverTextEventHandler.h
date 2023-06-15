@@ -11,16 +11,20 @@
 __attribute__((visibility("hidden")))
 @interface _TtC11HoverTextUI21HoverTextEventHandler : NSObject
 {
-    MISSING_TYPE *focusChange;
+    MISSING_TYPE *elementAtPointerDidChange;
+    MISSING_TYPE *azimuthDidChange;
+    MISSING_TYPE *stylusMoved;
     MISSING_TYPE *activationLockSequenceOccurred;
     MISSING_TYPE *activationButtonPressed;
     MISSING_TYPE *activationButtonReleased;
+    MISSING_TYPE *axHandlerQueue;
     MISSING_TYPE *previousHoverElement;
-    MISSING_TYPE *lastEventTime;
-    MISSING_TYPE *mouseStream;
-    MISSING_TYPE *passiveSystemWindow;
-    MISSING_TYPE *keyboardEventProcessor;
+    MISSING_TYPE *lastMouseEventTime;
+    MISSING_TYPE *pointerEventStreams;
+    MISSING_TYPE *currentStylusAzimuthForElement;
     MISSING_TYPE *activationKey;
+    MISSING_TYPE *lastStylusEventTime;
+    MISSING_TYPE *$__lazy_storage_$_eventProcessor;
     MISSING_TYPE *previousKeyModifierState;
     MISSING_TYPE *activationKeyPressCount;
     MISSING_TYPE *activationKeyPressIsActive;
@@ -28,8 +32,8 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-- (_Bool)handlePointerEvent:(id)arg1;
 - (id)init;
+- (_Bool)handlePointerEvent:(id)arg1;
 
 @end
 

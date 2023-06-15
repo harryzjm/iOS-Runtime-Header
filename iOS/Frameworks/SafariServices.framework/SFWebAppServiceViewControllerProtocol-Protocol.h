@@ -6,11 +6,13 @@
 
 #import <SafariServices/SFServiceViewControllerProtocol-Protocol.h>
 
-@class NSString;
+@class NSDictionary, NSString;
 
 @protocol SFWebAppServiceViewControllerProtocol <SFServiceViewControllerProtocol>
+- (void)clearWebsiteDataWithWebClipIdentifier:(NSString *)arg1 completion:(void (^)(void))arg2;
 - (void)webAppWillResignActive;
 - (void)webAppDidBecomeActive;
+- (void)handlePushNotificationActivation:(NSDictionary *)arg1;
 - (void)processWebPushForWebAppWithIdentifier:(NSString *)arg1;
 - (void)loadWebAppWithIdentifier:(NSString *)arg1;
 @end

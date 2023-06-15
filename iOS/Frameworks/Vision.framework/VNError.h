@@ -11,15 +11,20 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (void)VNAssertClass:(Class)arg1 needsToOverrideMethod:(SEL)arg2;
 + (void)VNAssert:(_Bool)arg1 log:(id)arg2;
 + (void)logInternalError:(id)arg1;
 + (id)errorForOSStatus:(int)arg1 localizedDescription:(id)arg2;
++ (id)errorForCVReturnCode:(int)arg1 width:(unsigned long long)arg2 height:(unsigned long long)arg3 pixelFormat:(unsigned int)arg4 localizedDescription:(id)arg5;
 + (id)errorForCVReturnCode:(int)arg1 localizedDescription:(id)arg2;
 + (id)errorForVImageError:(long long)arg1 localizedDescription:(id)arg2;
 + (id)errorForFailedEspressoPlan:(void *)arg1 localizedDescription:(id)arg2;
 + (id)errorForEspressoErrorInfo:(CDStruct_3553761d)arg1 localizedDescription:(id)arg2;
 + (id)errorForEspressoReturnStatus:(int)arg1 localizedDescription:(id)arg2;
 + (id)errorForUnavailableSession;
++ (id)errorForUnsupportedComputeDeviceWithLocalizedDescription:(id)arg1;
++ (id)errorForUnsupportedComputeDevice:(id)arg1;
++ (id)errorForUnsupportedComputeStage:(id)arg1;
 + (id)errorForDataUnavailableWithLocalizedDescription:(id)arg1 underlyingError:(id)arg2;
 + (id)errorForDataUnavailableWithLocalizedDescription:(id)arg1;
 + (id)errorForUnsupportedRequestSpecifier:(id)arg1;
@@ -30,6 +35,7 @@ __attribute__((visibility("hidden")))
 + (id)errorForUnsupportedProcessingDevice:(id)arg1;
 + (id)errorForGPURequiredByRequest:(id)arg1;
 + (id)errorForUnknownErrorWithLocalizedDescription:(id)arg1;
++ (id)errorForOperationFailedErrorWithLocalizedDescription:(id)arg1 underlyingError:(id)arg2;
 + (id)errorForOperationFailedErrorWithLocalizedDescription:(id)arg1;
 + (id)errorForInvalidModelWithLocalizedDescription:(id)arg1 underlyingError:(id)arg2;
 + (id)errorForInvalidModelWithLocalizedDescription:(id)arg1;

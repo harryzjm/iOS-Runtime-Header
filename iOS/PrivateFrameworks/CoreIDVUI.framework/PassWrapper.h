@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) PKPass *pass; // @synthesize pass=_pass;
 - (id)getPassName;
 - (id)getPassImageWithSize:(struct CGSize)arg1;
+- (id)croppedImageToAlignmentRectInsets:(id)arg1;
 - (id)initWithUniquePassID:(id)arg1;
 
 @end

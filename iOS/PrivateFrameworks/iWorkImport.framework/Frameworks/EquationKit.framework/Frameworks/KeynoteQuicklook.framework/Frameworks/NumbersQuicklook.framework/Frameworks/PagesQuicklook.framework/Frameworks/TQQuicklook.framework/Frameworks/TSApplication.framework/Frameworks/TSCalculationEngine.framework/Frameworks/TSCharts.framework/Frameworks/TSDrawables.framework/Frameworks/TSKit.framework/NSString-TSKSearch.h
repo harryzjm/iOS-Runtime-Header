@@ -10,6 +10,7 @@
 + (id)tsk_regexStringForSearchString:(id)arg1 options:(unsigned long long)arg2;
 + (id)tsk_normalizedDisplayName:(id)arg1;
 - (id)tsk_stringByReplacingOccurrencesOfString:(id)arg1 withString:(id)arg2 searchOptions:(unsigned long long)arg3 range:(struct _NSRange)arg4 replacementCount:(unsigned long long *)arg5;
+- (id)tsk_stringByReplacingOccurrencesOfString:(id)arg1 withString:(id)arg2 searchOptions:(unsigned long long)arg3 replacementCount:(unsigned long long *)arg4;
 - (id)tsk_stringByCapitalizingToMatchString:(id)arg1 range:(struct _NSRange)arg2 searchOptions:(unsigned long long)arg3;
 - (struct _NSRange)tsk_rangeOfString:(id)arg1 searchOptions:(unsigned long long)arg2 updatingSearchRange:(struct _NSRange *)arg3;
 - (id)tsk_URLByPercentEncoding;

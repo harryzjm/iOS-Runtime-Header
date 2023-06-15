@@ -17,6 +17,10 @@ __attribute__((visibility("hidden")))
     unsigned long long _dataCount;
     unsigned long long _dataSize;
     NSProgress *_pendingProgress;
+    long long _downloadMode;
+    long long _downloadReason;
+    long long _downloadUpdateType;
+    long long _dbDownloadState;
     NSError *_lastError;
     GEOMapDataSubscriptionDownloader *_downloader;
     GEOMapDataSubscriptionState *_externalState;

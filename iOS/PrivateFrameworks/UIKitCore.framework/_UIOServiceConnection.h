@@ -27,8 +27,8 @@ __attribute__((visibility("hidden")))
 - (void)removeAllObservers;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;
-- (void)sendResponse:(id)arg1;
-- (oneway void)performOverlayAction:(id)arg1;
+- (void)sendAction:(id)arg1;
+- (oneway void)performOverlayServerAction:(id)arg1;
 @property(readonly, nonatomic) NSString *bundleIdentifier;
 @property(readonly, nonatomic) long long pid;
 

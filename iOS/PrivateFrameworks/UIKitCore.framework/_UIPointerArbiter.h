@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 
 + (id)sharedArbiter;
 - (void).cxx_destruct;
+- (id)obtainPointerUpdatePauseAssertion;
 - (void)endScrollingWithRegion:(id)arg1;
 - (void)beginScrollingWithRegion:(id)arg1;
 @property(readonly, nonatomic) long long pointerState;

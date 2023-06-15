@@ -6,11 +6,11 @@
 
 #import <PhotoLibraryServices/NSObject-Protocol.h>
 
-@class CSSearchableItem, NSString, PLPhotoLibrary;
+@class CSSearchableItem, NSDate, NSString, PLPhotoLibrary;
 @protocol PLCreateFromSearchableItem;
 
 @protocol PLCreateFromSearchableItem <NSObject>
-+ (id <PLCreateFromSearchableItem>)createOrUpdateObjectFromSearchableItem:(CSSearchableItem *)arg1 library:(PLPhotoLibrary *)arg2 createIfNeeded:(_Bool)arg3 didCreate:(_Bool *)arg4 isSyndicatable:(_Bool *)arg5 error:(id *)arg6;
++ (id <PLCreateFromSearchableItem>)createOrUpdateObjectFromSearchableItem:(CSSearchableItem *)arg1 library:(PLPhotoLibrary *)arg2 fullIndexSyncStartDate:(NSDate *)arg3 createIfNeeded:(_Bool)arg4 didCreate:(_Bool *)arg5 isSyndicatable:(_Bool *)arg6 error:(id *)arg7;
 - (NSString *)uuid;
 @end
 

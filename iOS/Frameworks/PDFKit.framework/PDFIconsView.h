@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-- (void)_updateScrubberForPageIndex:(int)arg1;
+- (void)_updateScrubberForPageIndex:(int)arg1 goToPage:(_Bool)arg2;
 - (void)_updateScrubberAtViewLocation:(struct CGPoint)arg1;
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;

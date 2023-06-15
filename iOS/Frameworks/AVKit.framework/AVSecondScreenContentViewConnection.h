@@ -4,18 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class AVDisplayCriteria;
+@class AVDisplayCriteria, AVPlayer;
 
 __attribute__((visibility("hidden")))
 @interface AVSecondScreenContentViewConnection
 {
 }
 
+- (void)startUpdates;
 - (void)_updateReadyToConnect;
 - (void)enablePlayerDebugInformation:(id)arg1;
+- (void)dealloc;
 - (id)initWithContentView:(id)arg1;
 
 // Remaining properties
+@property(retain, nonatomic) AVPlayer *player; // @dynamic player;
 @property(nonatomic, getter=isPlaying) _Bool playing; // @dynamic playing;
 @property(retain, nonatomic) AVDisplayCriteria *preferredDisplayCriteria; // @dynamic preferredDisplayCriteria;
 @property(nonatomic, getter=isReadyToConnect) _Bool readyToConnect; // @dynamic readyToConnect;

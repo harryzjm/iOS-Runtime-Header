@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class BLSBacklightChangeEvent, BLSBacklightSceneUpdate, BLSHBacklightEnvironmentPresentation, BLSHBacklightEnvironmentStateMachine, BLSHBacklightInactiveEnvironmentSession, NSMutableSet, NSString;
+@class BLSBacklightChangeEvent, BLSBacklightSceneUpdate, BLSHBacklightEnvironmentPresentation, BLSHBacklightEnvironmentStateMachine, BLSHBacklightInactiveEnvironmentSession, BLSHCriticalAssertTester, NSMutableSet, NSString;
 @protocol BLSBacklightSceneEnvironment_Private, BLSHBacklightEnvironmentSessionProviding, BLSHOSTimerProviding;
 
 __attribute__((visibility("hidden")))
@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
     NSMutableSet *_lock_timelinesCalculators;
     BLSBacklightSceneUpdate *_lock_sceneUpdateForPerformingEvent;
     BLSBacklightChangeEvent *_lock_localTriggerEventForPerformingEvent;
+    BLSHCriticalAssertTester *_criticalAssertTester;
     unsigned long long _lock_nextEventID;
     long long _backlightState;
 }

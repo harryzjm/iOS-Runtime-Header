@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 - (id)symbol;
 - (_Bool)isEqual:(id)arg1;
 - (SEL)selector;
+- (unsigned long long)operatorType;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

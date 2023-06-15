@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     unsigned int _value1;
     unsigned int _value2;
     float _percentageValue;
+    int _waypointIndex;
     long long _type;
     NSString *_token;
     NSArray *_value3s;
@@ -32,6 +33,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) int waypointIndex; // @synthesize waypointIndex=_waypointIndex;
 @property(retain, nonatomic) GEOGenericCombinations *genericCombinations; // @synthesize genericCombinations=_genericCombinations;
 @property(retain, nonatomic) id <GEOServerFormatTokenNumberData> numberData; // @synthesize numberData=_numberData;
 @property(retain, nonatomic) id <GEOServerFormatTokenManeuverValue> maneuverValue; // @synthesize maneuverValue=_maneuverValue;

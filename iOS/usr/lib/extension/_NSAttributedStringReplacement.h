@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) struct _NSRange specifierRangeInFormatString; // @synthesize specifierRangeInFormatString=_specifierRangeInFormatString;
 @property(readonly) long long index; // @synthesize index=_index;
 - (void)dealloc;
+- (id)initWithIndex:(long long)arg1 specifierRangeInFormatString:(struct _NSRange)arg2 replacementRangeInResult:(struct _NSRange)arg3 replacementKind:(long long)arg4 argument:(id)arg5;
 - (id)_initWithMetadata:(id)arg1;
 
 @end

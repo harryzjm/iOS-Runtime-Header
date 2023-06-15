@@ -67,7 +67,7 @@
 @property(nonatomic) _Bool isLocalApplicationResult;
 @property(copy, nonatomic) NSString *sectionBundleIdentifier;
 @property(copy, nonatomic) NSString *applicationBundleIdentifier;
-@property(retain, nonatomic) SFTopic *requestedTopic;
+@property(copy, nonatomic) SFTopic *requestedTopic;
 @property(retain, nonatomic) SFTopic *normalizedTopic;
 @property(retain, nonatomic) SFPunchout *moreResultsPunchout;
 @property(retain, nonatomic) SFMoreResults *moreResults;

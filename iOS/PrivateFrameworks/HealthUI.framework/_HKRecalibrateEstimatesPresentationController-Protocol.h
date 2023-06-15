@@ -9,6 +9,6 @@
 @class HKRecalibrateEstimatesRequestRecord;
 
 @protocol _HKRecalibrateEstimatesPresentationController <NSObject>
-- (void)presentWithRequestRecord:(HKRecalibrateEstimatesRequestRecord *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
+- (void)presentWithRequestRecord:(HKRecalibrateEstimatesRequestRecord *)arg1 authorizationViewControllerPresenter:(id)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 @end
 

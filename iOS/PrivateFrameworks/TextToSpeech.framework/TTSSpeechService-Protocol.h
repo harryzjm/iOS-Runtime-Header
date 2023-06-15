@@ -14,7 +14,6 @@
 - (NSString *)speechMarkupStringForType:(long long)arg1 voice:(TTSSpeechVoice *)arg2 string:(NSString *)arg3;
 - (NSSet *)supportedIPAPhonemeLanguages;
 - (oneway void)getSpeechIsActiveForRequest:(TTSSpeechRequest *)arg1 reply:(void (^)(_Bool))arg2;
-- (oneway void)getVoicesForLanguage:(NSString *)arg1 queryingMobileAssets:(_Bool)arg2 reply:(void (^)(NSArray *))arg3;
 - (oneway void)stopSpeechRequest:(TTSSpeechRequest *)arg1 atMark:(long long)arg2;
 - (oneway void)continueSpeechRequest:(TTSSpeechRequest *)arg1;
 - (oneway void)pauseSpeechRequest:(TTSSpeechRequest *)arg1 atMark:(long long)arg2;
@@ -29,13 +28,12 @@
 - (_Bool)isSiriService;
 - (NSString *)serviceIdentifier;
 - (NSDictionary *)audioFileSettingsForVoice:(TTSSpeechVoice *)arg1;
+- (NSString *)genericMarkerMarkupForVoice:(TTSSpeechVoice *)arg1 name:(NSString *)arg2;
 - (NSString *)combinedProsodyMarkupForVoice:(TTSSpeechVoice *)arg1 string:(NSString *)arg2 rate:(NSNumber *)arg3 pitch:(NSNumber *)arg4 volume:(NSNumber *)arg5;
 - (NSString *)embeddedVolumeMarkupForVoice:(TTSSpeechVoice *)arg1 string:(NSString *)arg2 volume:(double)arg3;
 - (NSString *)embeddedPitchMarkupForVoice:(TTSSpeechVoice *)arg1 string:(NSString *)arg2 pitch:(double)arg3;
 - (NSString *)embeddedRateMarkupForVoice:(TTSSpeechVoice *)arg1 string:(NSString *)arg2 rate:(double)arg3;
-- (NSString *)nashvilleVoiceName:(NSString *)arg1 footprint:(long long)arg2 voiceType:(long long)arg3 gender:(long long)arg4 assetVoiceName:(NSString *)arg5;
-- (NSString *)nashvilleVoiceIdentifier:(NSString *)arg1 footprint:(long long)arg2 voiceType:(long long)arg3 gender:(long long)arg4 assetVoiceName:(NSString *)arg5;
-- (NSString *)enclosedStringWithPhonemes:(NSString *)arg1;
+- (NSString *)enclosedStringWithPhonemes:(NSString *)arg1 originalString:(NSString *)arg2;
 - (NSString *)phonemesFromLHPhonemes:(NSString *)arg1 language:(NSString *)arg2;
 - (NSString *)phonemesFromIPA:(NSString *)arg1 language:(NSString *)arg2;
 - (NSString *)lhPhonemesFromIPA:(NSString *)arg1 language:(NSString *)arg2;

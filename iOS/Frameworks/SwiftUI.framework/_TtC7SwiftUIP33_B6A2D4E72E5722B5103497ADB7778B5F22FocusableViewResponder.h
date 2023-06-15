@@ -9,8 +9,11 @@
 @interface _TtC7SwiftUIP33_B6A2D4E72E5722B5103497ADB7778B5F22FocusableViewResponder
 {
     MISSING_TYPE *focusAccessibilityNode;
+    MISSING_TYPE *keyPressHandlers;
     MISSING_TYPE *baseItem;
-    MISSING_TYPE *_baseItemFrame;
+    MISSING_TYPE *frame;
+    MISSING_TYPE *geometry;
+    MISSING_TYPE *isFocused;
     MISSING_TYPE *isPlatformFocusSystemEnabled;
     MISSING_TYPE *groupID;
     MISSING_TYPE *_uikitFocusItem;

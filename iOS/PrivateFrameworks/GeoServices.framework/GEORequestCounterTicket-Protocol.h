@@ -10,8 +10,9 @@
 @protocol GEORequestCounterTicket;
 
 @protocol GEORequestCounterTicket <NSObject>
-- (void)requestCompletedWithError:(NSError *)arg1;
-- (void)requestCompletedWithResult:(unsigned char)arg1;
+- (void)explicitInterfaceRequestCompleted:(NSError *)arg1 xmitBytes:(unsigned long long)arg2 recvBytes:(unsigned long long)arg3;
+- (void)startingRequestWithExplicitInterfaces:(unsigned long long)arg1;
+- (void)requestCompleted:(NSError *)arg1;
 - (void)startingRequestWithTask:(NSURLSessionTask *)arg1;
 - (id <GEORequestCounterTicket>)createSubtask:(_Bool)arg1;
 @end

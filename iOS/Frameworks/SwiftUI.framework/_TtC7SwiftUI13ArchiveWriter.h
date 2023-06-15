@@ -16,6 +16,7 @@
     MISSING_TYPE *currentOffset;
     MISSING_TYPE *currentHasher;
     MISSING_TYPE *cache;
+    MISSING_TYPE *signposter;
 }
 
 @end

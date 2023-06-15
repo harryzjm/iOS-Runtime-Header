@@ -8,9 +8,9 @@
 @protocol CNKFaceTimePiPSourceProviding;
 
 @protocol CNKFaceTimeMultiwayConversationViewControllerDelegate
+@property(readonly, nonatomic) UIImage *audioRouteGlyphForDevice;
 - (UIView *)bottomControlsViewForViewController:(UIViewController *)arg1;
 - (UIView *)callParticipantLabelsViewForViewController:(UIViewController *)arg1;
-@property(nonatomic, readonly) UIImage *audioRouteGlyphForDevice;
 - (UIImage *)audioRouteGlyphFor:(TURoute *)arg1 buttonStyle:(long long)arg2;
 - (UIImage *)audioRouteGlyphFor:(TURoute *)arg1;
 - (UIMenu *)audioRouteMenu;
@@ -21,6 +21,11 @@
 - (void)viewControllerDidRequestAddParticipants:(UIViewController *)arg1;
 
 @optional
+- (void)endedRecordingVideoMessage;
+- (void)beganRecordingVideoMessage;
+- (void)didExitVideoMessagingFlow;
+- (void)didEnterVideoMessagingFlow;
+- (void)didTapScreenShareButton;
 - (void)didTapDeskViewButton;
 - (void)didChangeCaptionsLayout;
 - (void)viewController:(UIViewController *)arg1 localParticipantAspectRatioChanged:(struct CGSize)arg2;

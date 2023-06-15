@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 @class NSDictionary;
 
 __attribute__((visibility("hidden")))
-@interface _UILabelContent : NSObject <NSCopying>
+@interface _UILabelContent : NSObject
 {
     NSDictionary *_defaultAttributes;
 }

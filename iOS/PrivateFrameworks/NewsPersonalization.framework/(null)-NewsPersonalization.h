@@ -5,17 +5,6 @@
 //
 
 @interface (null) (NewsPersonalization)
-- (id)scoresForTagIDs:(id)arg1;
-- (id)rankTagIDsDescending:(id)arg1;
-- (double)decayedPublisherDiversificationPenalty;
-- (void)prepareForUseWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (id)limitItemsByFlowRate:(id)arg1 timeInterval:(double)arg2 publisherCount:(unsigned long long)arg3;
-- (id)limitItemsByMinimumItemQuality:(id)arg1;
-- (id)sortItems:(id)arg1 options:(long long)arg2;
-- (id)sortItems:(id)arg1;
-- (void)fetchAggregateMapForPersonalizingItem:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)sortItems:(id)arg1 options:(long long)arg2 configurationSet:(long long)arg3;
-- (id)sortItems:(id)arg1 configurationSet:(long long)arg2;
-- (void)configurationManager:(id)arg1 appConfigurationDidChange:(id)arg2;
+- (void)generateUserEmbeddingIfNeededWithCompletion:(CDUnknownBlockType)arg1;
 @end
 

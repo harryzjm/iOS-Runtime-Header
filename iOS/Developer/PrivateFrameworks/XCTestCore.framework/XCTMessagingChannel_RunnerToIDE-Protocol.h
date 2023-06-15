@@ -5,17 +5,14 @@
 //
 
 #import <XCTestCore/XCTMessagingRole_ActivityReporting-Protocol.h>
-#import <XCTestCore/XCTMessagingRole_ActivityReporting_Legacy-Protocol.h>
 #import <XCTestCore/XCTMessagingRole_DebugLogging-Protocol.h>
 #import <XCTestCore/XCTMessagingRole_PerformanceMeasurementReporting-Protocol.h>
-#import <XCTestCore/XCTMessagingRole_PerformanceMeasurementReporting_Legacy-Protocol.h>
 #import <XCTestCore/XCTMessagingRole_SelfDiagnosisIssueReporting-Protocol.h>
 #import <XCTestCore/XCTMessagingRole_TestReporting-Protocol.h>
-#import <XCTestCore/XCTMessagingRole_TestReporting_Legacy-Protocol.h>
 #import <XCTestCore/XCTMessagingRole_UIAutomation-Protocol.h>
 #import <XCTestCore/_XCTMessaging_VoidProtocol-Protocol.h>
 
-@protocol XCTMessagingChannel_RunnerToIDE <XCTMessagingRole_DebugLogging, XCTMessagingRole_TestReporting, XCTMessagingRole_TestReporting_Legacy, XCTMessagingRole_SelfDiagnosisIssueReporting, XCTMessagingRole_UIAutomation, XCTMessagingRole_ActivityReporting, XCTMessagingRole_ActivityReporting_Legacy, XCTMessagingRole_PerformanceMeasurementReporting, XCTMessagingRole_PerformanceMeasurementReporting_Legacy, _XCTMessaging_VoidProtocol>
+@protocol XCTMessagingChannel_RunnerToIDE <XCTMessagingRole_DebugLogging, XCTMessagingRole_TestReporting, XCTMessagingRole_SelfDiagnosisIssueReporting, XCTMessagingRole_UIAutomation, XCTMessagingRole_ActivityReporting, XCTMessagingRole_PerformanceMeasurementReporting, _XCTMessaging_VoidProtocol>
 
 @optional
 - (void)__dummy_method_to_work_around_68987191;

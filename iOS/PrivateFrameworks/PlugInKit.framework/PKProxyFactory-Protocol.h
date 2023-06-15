@@ -7,10 +7,12 @@
 #import <PlugInKit/NSObject-Protocol.h>
 
 @class NSNumber, NSString, NSURL, NSUUID, PKEnumerator;
-@protocol PKApplicationProxy, PKApplicationWorkspaceProxy, PKExtensionPointProxy, PKPlugInProxy, PKPlugInRecordProxy;
+@protocol PKApplicationProxy, PKApplicationWorkspaceProxy, PKExtensionPointProxy, PKExtensionPointRecordProxy, PKPlugInProxy, PKPlugInRecordProxy;
 
 @protocol PKProxyFactory <NSObject>
 @property(readonly) _Bool hasLSDatabaseAccess;
+- (PKEnumerator *)plugInRecordEnumeratorForExtensionPointRecord:(id <PKExtensionPointRecordProxy>)arg1;
+- (PKEnumerator *)extensionPointRecordEnumeratorForExtensionPointIdentifier:(NSString *)arg1;
 - (PKEnumerator *)plugInRecordEnumeratorWithExtensionPointName:(NSString *)arg1 platform:(unsigned int)arg2;
 - (PKEnumerator *)plugInRecordEnumerator;
 - (id <PKPlugInRecordProxy>)plugInRecordForIdentifier:(NSString *)arg1;

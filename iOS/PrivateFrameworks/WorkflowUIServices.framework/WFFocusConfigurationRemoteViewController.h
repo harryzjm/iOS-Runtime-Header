@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/_UIRemoteViewController.h>
+#import <UIKitCore/_UIRemoteViewController.h>
 
 @class NSString, WFFocusConfigurationHostContext;
 @protocol WFFocusConfigurationRemoteViewControllerDelegate;
@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (void)notifyDelegateWithPressedButtonIdentifier:(id)arg1 cellFrame:(struct CGRect)arg2;
 - (void)notifyDelegateWithConfigurationUIState:(id)arg1;
 - (void)viewServiceDidTerminateWithError:(id)arg1;
+- (void)startConfigurationWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

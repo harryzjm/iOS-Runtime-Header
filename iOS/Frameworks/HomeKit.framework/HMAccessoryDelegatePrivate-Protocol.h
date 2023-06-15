@@ -11,12 +11,15 @@
 @protocol HMAccessoryDelegatePrivate <HMAccessoryDelegate>
 
 @optional
+- (void)accessoryDidUpdateSupportsJustSiri:(HMAccessory *)arg1;
+- (void)accessoryDidUpdateSupportsRMVonAppleTV:(HMAccessory *)arg1;
 - (void)accessory:(HMAccessory *)arg1 didUpdateWifiNetworkInfo:(HMFWiFiNetworkInfo *)arg2;
 - (void)accessoryDidUpdatePendingConfigurationIdentifier:(HMAccessory *)arg1;
 - (void)accessory:(HMAccessory *)arg1 didUpdateSupportsWalletKey:(_Bool)arg2;
 - (void)accessoryDidUpdatePreferredMediaUser:(HMAccessory *)arg1;
 - (void)accessoryDidUpdateSupportsPreferredMediaUser:(HMAccessory *)arg1;
 - (void)accessoryDidSetHasOnboardedForNaturalLighting:(HMAccessory *)arg1;
+- (void)accessoryDidUpdateServiceImpactZones:(HMAccessory *)arg1;
 - (void)accessoryDidUpdateDiagnosticsTransferSupport:(HMAccessory *)arg1;
 - (void)accessoryDidUpdateAudioDestination:(HMAccessory *)arg1;
 - (void)accessoryDidUpdateAudioDestinationController:(HMAccessory *)arg1;
@@ -25,12 +28,15 @@
 - (void)accessoryDidUpdateReachableTransports:(HMAccessory *)arg1;
 - (void)accessory:(HMAccessory *)arg1 didUpdateLastKnownOperatingStateResponseForService:(HMService *)arg2;
 - (void)accessory:(HMAccessory *)arg1 didUpdateLastKnownSleepDiscoveryModeForService:(HMService *)arg2;
+- (void)accessoryDidUpdateSupportsDropIn:(HMAccessory *)arg1;
+- (void)accessoryDidUpdateSupportsAudioAnalysis:(HMAccessory *)arg1;
 - (void)accessoryDidUpdateSupportsDoorbellChime:(HMAccessory *)arg1;
 - (void)accessoryDidUpdateSupportsThirdPartyMusic:(HMAccessory *)arg1;
 - (void)accessoryDidUpdateSupportsMediaActions:(HMAccessory *)arg1;
 - (void)accessoryDidUpdateSupportsAnnounce:(HMAccessory *)arg1;
 - (void)accessoryDidUpdateSupportsMusicAlarm:(HMAccessory *)arg1;
 - (void)accessoryDidUpdateSupportsCompanionInitiatedRestart:(HMAccessory *)arg1;
+- (void)accessoryDidUpdateAudioReturnChannelSupport:(HMAccessory *)arg1;
 - (void)accessoryDidUpdateMultiUserSupport:(HMAccessory *)arg1;
 - (void)accessoryDidRemoveSymptomsHandler:(HMAccessory *)arg1;
 - (void)accessory:(HMAccessory *)arg1 didAddSymptomsHandler:(HMSymptomsHandler *)arg2;
@@ -53,6 +59,7 @@
 - (void)accessory:(HMAccessory *)arg1 didUpdateBulletinBoardNotificationServiceGroupForService:(HMService *)arg2;
 - (void)accessory:(HMAccessory *)arg1 didUpdateBulletinBoardNotificationForService:(HMService *)arg2;
 - (void)accessory:(HMAccessory *)arg1 didUpdateApplicationDataForService:(HMService *)arg2;
+- (void)accessoryDidUpdateCalibrationStatus:(HMAccessory *)arg1;
 - (void)accessoryDidUpdateAdditionalSetupRequired:(HMAccessory *)arg1;
 - (void)accessoryDidUpdateApplicationData:(HMAccessory *)arg1;
 @end

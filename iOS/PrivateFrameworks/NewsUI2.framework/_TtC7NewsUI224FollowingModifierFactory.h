@@ -12,14 +12,15 @@
 {
     MISSING_TYPE *featureAvailability;
     MISSING_TYPE *tagService;
+    MISSING_TYPE *tagRanker;
     MISSING_TYPE *shortcutService;
     MISSING_TYPE *subscriptionService;
     MISSING_TYPE *editorialService;
     MISSING_TYPE *appConfigurationManager;
     MISSING_TYPE *followingBadgingCoordinator;
     MISSING_TYPE *magazinesBadgingCoordinator;
+    MISSING_TYPE *puzzleBadgingCoordinator;
     MISSING_TYPE *notificationConfiguration;
-    MISSING_TYPE *tagReorderService;
     MISSING_TYPE *suggestionStatusProvider;
     MISSING_TYPE *purchaseController;
     MISSING_TYPE *bundleSubscriptionManager;

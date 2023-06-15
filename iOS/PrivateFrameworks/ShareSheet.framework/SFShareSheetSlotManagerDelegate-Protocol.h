@@ -6,7 +6,7 @@
 
 #import <ShareSheet/NSObject-Protocol.h>
 
-@class NSArray, NSString, NSUUID, SFAirDropTransferChange, UISDShareSheetSessionConfiguration, UISUIActivityExtensionItemDataRequest;
+@class NSArray, NSError, NSString, NSUUID, SFAirDropTransferChange, UISDShareSheetSessionConfiguration, UISUIActivityExtensionItemDataRequest;
 
 @protocol SFShareSheetSlotManagerDelegate <NSObject>
 - (void)dataSourceUpdatedWithSessionConfiguration:(UISDShareSheetSessionConfiguration *)arg1;
@@ -15,6 +15,7 @@
 @optional
 - (void)didUpdateAirDropTransferWithChange:(SFAirDropTransferChange *)arg1;
 - (void)performUserDefaultsWithFavoritesProxies:(NSArray *)arg1 suggestionProxies:(NSArray *)arg2 orderedUUIDs:(NSArray *)arg3 activityCategory:(long long)arg4;
+- (void)didPerformInServiceActivityWithIdentifier:(NSUUID *)arg1 completed:(_Bool)arg2 items:(NSArray *)arg3 error:(NSError *)arg4;
 - (void)willPerformInServiceActivityWithRequest:(UISUIActivityExtensionItemDataRequest *)arg1 completion:(void (^)(NSArray *, UISDActivityItemData *))arg2;
 - (void)performShortcutActivityInHostWithBundleID:(NSString *)arg1 singleUseToken:(NSString *)arg2;
 - (void)performAirDropActivityInHostWithNoContentView:(_Bool)arg1;

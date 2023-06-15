@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIKeyboardInputModeIndicatorController;
+@class NSString, UIKeyboardInputModeIndicatorController;
 
 @protocol UIKeyboardInputModeIndicatorControllerDelegate
 - (void)keyboardInputModeIndicatorControllerDismissIndicator:(UIKeyboardInputModeIndicatorController *)arg1;
-- (void)keyboardInputModeIndicatorControllerPresentIndicator:(UIKeyboardInputModeIndicatorController *)arg1;
+- (void)keyboardInputModeIndicatorControllerPresentIndicator:(UIKeyboardInputModeIndicatorController *)arg1 reason:(NSString *)arg2;
 - (_Bool)keyboardInputModeIndicatorControllerShouldPresentIndicator:(UIKeyboardInputModeIndicatorController *)arg1;
 @end
 

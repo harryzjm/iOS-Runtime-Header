@@ -17,17 +17,17 @@
 - (void)updateValues;
 - (_Bool)applyElementTransform:(void *)arg1 series:(id)arg2 index:(tvec2_3b141483)arg3 propertyAccessor:(id)arg4;
 - (float)elementTransformDepthFromPropertyAccessor:(id)arg1;
-- (float)explosionAtElementIndex:(const void *)arg1 propertyAccessor:(id)arg2;
+- (float)explosionAtElementIndex:(void *)arg1 propertyAccessor:(id)arg2;
 - (_Bool)anyHasExplosion;
-- (void)setRotation:(float)arg1 atElementIndex:(const void *)arg2;
-- (float)rotationAtElementIndex:(const void *)arg1;
-- (void)setExplosion:(float)arg1 atElementIndex:(const void *)arg2;
-- (float)explosionAtElementIndex:(const void *)arg1;
-- (void)setPercentOfTotal:(float)arg1 atElementIndex:(const void *)arg2;
-- (float)percentOfTotalAtElementIndex:(const void *)arg1;
-- (long long)flatIndex:(const void *)arg1;
+- (void)setRotation:(float)arg1 atElementIndex:(void *)arg2;
+- (float)rotationAtElementIndex:(void *)arg1;
+- (void)setExplosion:(float)arg1 atElementIndex:(void *)arg2;
+- (float)explosionAtElementIndex:(void *)arg1;
+- (void)setPercentOfTotal:(float)arg1 atElementIndex:(void *)arg2;
+- (float)percentOfTotalAtElementIndex:(void *)arg1;
+- (long long)flatIndex:(void *)arg1;
 - (void)updateLabels;
-- (id)boundsGeometryForSeries:(id)arg1 index:(const void *)arg2;
+- (id)boundsGeometryForSeries:(id)arg1 index:(void *)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 
 @end

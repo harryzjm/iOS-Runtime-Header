@@ -11,7 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface WebAVPlayerViewControllerDelegate : NSObject
 {
-    struct WeakPtr<WebCore::VideoFullscreenInterfaceAVKit, WTF::EmptyCounter> _fullscreenInterface;
+    struct ThreadSafeWeakPtr<WebCore::VideoFullscreenInterfaceAVKit> _fullscreenInterface;
 }
 
 - (id).cxx_construct;
@@ -25,7 +25,7 @@ __attribute__((visibility("hidden")))
 - (void)playerViewController:(id)arg1 failedToStartPictureInPictureWithError:(id)arg2;
 - (void)playerViewControllerDidStartPictureInPicture:(id)arg1;
 - (void)playerViewControllerWillStartPictureInPicture:(id)arg1;
-@property void *fullscreenInterface;
+@property(nonatomic) RefPtr_58c95501 fullscreenInterface;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

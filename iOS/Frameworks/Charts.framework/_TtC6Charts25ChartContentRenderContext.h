@@ -11,24 +11,25 @@
 @interface _TtC6Charts25ChartContentRenderContext : _TtCs12_SwiftObject
 {
     MISSING_TYPE *idContext;
-    MISSING_TYPE *plotWidth;
-    MISSING_TYPE *plotHeight;
+    MISSING_TYPE *coordinateSystem;
+    MISSING_TYPE *xRange;
+    MISSING_TYPE *yRange;
+    MISSING_TYPE *measurements;
+    MISSING_TYPE *stackContext;
+    MISSING_TYPE *subPositionContext;
     MISSING_TYPE *rasterizationScale;
+    MISSING_TYPE *markInsets;
     MISSING_TYPE *environment;
-    MISSING_TYPE *textMeasurements;
+    MISSING_TYPE *seriesContext;
     MISSING_TYPE *xScale;
     MISSING_TYPE *yScale;
     MISSING_TYPE *xOffsetScale;
     MISSING_TYPE *yOffsetScale;
-    MISSING_TYPE *foregroundStyleScale;
-    MISSING_TYPE *symbolScale;
     MISSING_TYPE *symbolSizeScale;
+    MISSING_TYPE *symbolScale;
     MISSING_TYPE *lineStyleScale;
-    MISSING_TYPE *stackContext;
-    MISSING_TYPE *subPositionContext;
-    MISSING_TYPE *seriesContext;
-    MISSING_TYPE *markInsets;
-    MISSING_TYPE *bins;
+    MISSING_TYPE *foregroundStyleScale;
+    MISSING_TYPE *accessibilityElementBins;
 }
 
 @end

@@ -6,10 +6,11 @@
 
 #import <MapsSupport/NSObject-Protocol.h>
 
-@class MSPSenderETAController, NSError;
+@class MSPSenderETAController, NSError, NSString;
 
 @protocol MSPSenderETAControllerDelegate <NSObject>
 - (void)invalidateActiveHandlesForSenderController:(MSPSenderETAController *)arg1;
 - (void)senderController:(MSPSenderETAController *)arg1 didInvalidateSharedTripWithError:(NSError *)arg2;
+- (void)senderController:(MSPSenderETAController *)arg1 didStartSharingWithGroupIdentifier:(NSString *)arg2;
 @end
 

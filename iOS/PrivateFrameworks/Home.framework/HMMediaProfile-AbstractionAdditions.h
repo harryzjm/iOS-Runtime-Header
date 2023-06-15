@@ -21,6 +21,7 @@
 - (_Bool)hf_shouldBeOnForContextType:(unsigned long long)arg1;
 - (_Bool)hf_hasSetForContextType:(unsigned long long)arg1;
 - (_Bool)hf_isOnForContextType:(unsigned long long)arg1;
+- (id)hf_identify;
 - (unsigned long long)hf_preferredUserSelectionType;
 - (id)hf_preferredMediaUser;
 @property(readonly, nonatomic) _Bool hf_supportsPreferredMediaUser;
@@ -71,8 +72,6 @@
 @property(readonly, nonatomic) _Bool hf_isAppleMusicReachable;
 @property(readonly, nonatomic) _Bool hf_supportsSoftwareUpdate;
 @property(readonly, nonatomic) _Bool hf_showsAudioSettings;
-@property(readonly, nonatomic) _Bool hf_isSpeakerGrouped;
-@property(readonly, nonatomic) _Bool hf_supportsSpeakerGrouping;
 @property(readonly, nonatomic) _Bool hf_supportsMusicAlarm;
 @property(readonly, nonatomic) _Bool hf_supportsStereoPairing;
 @property(readonly, nonatomic) _Bool hf_isReachable;

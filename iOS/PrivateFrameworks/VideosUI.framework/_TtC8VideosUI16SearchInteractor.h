@@ -32,6 +32,8 @@
     MISSING_TYPE *_overlayMode;
     MISSING_TYPE *_hasSearchBoxBeenInteractedWith;
     MISSING_TYPE *_hasQueryBeenSubmitted;
+    MISSING_TYPE *_landingPageMetrics;
+    MISSING_TYPE *viewMetricsRecorder;
 }
 
 @end

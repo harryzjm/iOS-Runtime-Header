@@ -9,7 +9,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (void)stateDidExpireWithContext:(id)arg1;
+- (void)stateDidExpire;
 - (_Bool)reloadsWidgetOnTimeChange;
 - (_Bool)reloadsWidgetOnModelChange;
 - (_Bool)schedulesExpiration;

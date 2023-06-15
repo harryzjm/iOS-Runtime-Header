@@ -11,9 +11,11 @@
 __attribute__((visibility("hidden")))
 @interface VCPVideoMetaAnalyzer : NSObject
 {
+    float _photoOffset;
 }
 
 + (id)analyzerForTrackType:(id)arg1 withTransform:(struct CGAffineTransform)arg2 requestAnalyses:(unsigned long long)arg3 formatDescription:(struct opaqueCMFormatDescription *)arg4;
+@property(nonatomic) float photoOffset; // @synthesize photoOffset=_photoOffset;
 @property(readonly, retain, nonatomic) NSDictionary *privateResults;
 @property(readonly, retain, nonatomic) NSDictionary *publicResults;
 - (int)finalizeAnalysis;

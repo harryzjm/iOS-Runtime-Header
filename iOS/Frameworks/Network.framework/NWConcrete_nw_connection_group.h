@@ -23,7 +23,9 @@ __attribute__((visibility("hidden")))
     NSObject<OS_nw_path_evaluator> *group_evaluator;
     CDUnknownBlockType membership_change_handler;
     NSObject<OS_nw_listener> *listener;
+    NSObject<OS_nw_listener> *unicast_listener;
     NSObject<OS_nw_array> *connections;
+    NSObject<OS_nw_array> *send_requests;
     unsigned char group_uuid[16];
     CDUnknownBlockType receive_handler;
     CDUnknownBlockType new_connection_handler;
@@ -40,6 +42,7 @@ __attribute__((visibility("hidden")))
     unsigned int is_server:1;
     unsigned int has_listener_started:1;
     unsigned int is_listener_ready:1;
+    unsigned int is_unicast_listener_ready:1;
     unsigned int is_first_connection_ready:1;
     unsigned int has_user_cancelled:1;
 }

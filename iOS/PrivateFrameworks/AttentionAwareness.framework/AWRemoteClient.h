@@ -23,7 +23,9 @@ __attribute__((visibility("hidden")))
     _Bool _sampleWhileAbsent;
     _Bool _retroactiveTimeoutMode;
     _Bool _continuousFaceDetectMode;
-    _Bool _samplingSuppressedNotificationSent;
+    NSSet *_digitizerDisplayUUIDs;
+    NSSet *_keyboardDisplayUUIDs;
+    NSSet *_buttonDisplayUUIDs;
     NSArray *_attentionLostTimeoutsSec;
     NSSet *_allowedHIDEventsForRemoteEvent;
     int _clientIndex;
@@ -31,6 +33,9 @@ __attribute__((visibility("hidden")))
     AWAttentionEvent *_lastEvent;
     AWAttentionAwarenessConfiguration *_lastConfig;
     _Bool _invalid;
+    _Bool _activateAttentionDetection;
+    _Bool _activateMotionDetect;
+    _Bool _activateEyeRelief;
     NSString *_identifier;
     unsigned long long _samplingInterval;
     unsigned long long _samplingDelay;
@@ -39,6 +44,9 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool activateEyeRelief; // @synthesize activateEyeRelief=_activateEyeRelief;
+@property(readonly, nonatomic) _Bool activateMotionDetect; // @synthesize activateMotionDetect=_activateMotionDetect;
+@property(readonly, nonatomic) _Bool activateAttentionDetection; // @synthesize activateAttentionDetection=_activateAttentionDetection;
 @property(nonatomic) double streamingDuration; // @synthesize streamingDuration=_streamingDuration;
 @property(nonatomic) unsigned long long streamingStartTime; // @synthesize streamingStartTime=_streamingStartTime;
 @property(readonly, nonatomic) int clientIndex; // @synthesize clientIndex=_clientIndex;
@@ -54,16 +62,17 @@ __attribute__((visibility("hidden")))
 - (void)pingWithReply:(CDUnknownBlockType)arg1;
 - (unsigned long long)nextTimerForTime:(unsigned long long)arg1;
 - (void)updateDeadlinesForTime:(unsigned long long)arg1;
+- (_Bool)shouldInitBeSent;
 - (unsigned long long)nextSampleTime;
 - (unsigned long long)nextAttentionLostTime:(_Bool *)arg1;
 - (void)pollWithTimeout:(unsigned long long)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)resetAttentionLostTimerWithReply:(CDUnknownBlockType)arg1;
 - (void)_resetAttentionLostTimer;
 - (void)getLastEvent:(CDUnknownBlockType)arg1;
-- (_Bool)_interestedInHIDEvent:(struct __IOHIDEvent *)arg1 mask:(unsigned long long)arg2 metadata:(CDUnion_4b9e79fd *)arg3;
-- (void)notifyHIDEvent:(struct __IOHIDEvent *)arg1 mask:(unsigned long long)arg2 timestamp:(unsigned long long)arg3;
+- (_Bool)_interestedInHIDEvent:(struct __IOHIDEvent *)arg1 mask:(unsigned long long)arg2 metadata:(CDUnion_8fa1bcb8 *)arg3 senderID:(unsigned long long)arg4 displayUUID:(id)arg5;
+- (void)notifyHIDEvent:(struct __IOHIDEvent *)arg1 mask:(unsigned long long)arg2 timestamp:(unsigned long long)arg3 senderID:(unsigned long long)arg4 displayUUID:(id)arg5;
 - (void)notifyEvent:(unsigned long long)arg1 timestamp:(unsigned long long)arg2;
-- (void)notifyEvent:(unsigned long long)arg1 timestamp:(unsigned long long)arg2 metadata:(CDUnion_4b9e79fd *)arg3;
+- (void)notifyEvent:(unsigned long long)arg1 timestamp:(unsigned long long)arg2 metadata:(CDUnion_8fa1bcb8 *)arg3;
 - (void)updateEventTimesForMask:(unsigned long long)arg1 timestamp:(unsigned long long)arg2;
 - (void)deliverPollEventType:(unsigned long long)arg1 event:(id)arg2;
 - (void)deliverEvent:(id)arg1;

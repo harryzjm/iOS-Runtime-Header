@@ -6,8 +6,8 @@
 
 #import <SpringBoardHome/NSObject-Protocol.h>
 
-@class NSString, SBHStackConfigurationInteraction, SBIcon, SBIconView, SBWidgetIcon, UIView, UIViewController, UIWindow, UIWindowScene;
-@protocol SBHWidgetSheetViewControllerPresenter, SBIconDragPreview, SBIconDragPreviewContaining, SBLeafIconDataSource, UIDropSession;
+@class NSString, SBHStackConfigurationInteraction, SBIcon, SBIconView, SBWidgetIcon, UIDragItem, UIDragPreviewParameters, UITargetedDragPreview, UIView, UIViewController, UIWindow, UIWindowScene;
+@protocol SBHWidgetSheetViewControllerPresenter, SBIconDragPreview, SBIconDragPreviewContaining, SBLeafIconDataSource, UIDragAnimating, UIDragSession, UIDropSession;
 
 @protocol SBHStackConfigurationInteractionDelegate <NSObject>
 - (id <SBLeafIconDataSource>)stackConfigurationInteraction:(SBHStackConfigurationInteraction *)arg1 promoteSuggestedWidget:(id <SBLeafIconDataSource>)arg2 withinStack:(SBWidgetIcon *)arg3;
@@ -18,5 +18,14 @@
 - (void)stackConfigurationInteraction:(SBHStackConfigurationInteraction *)arg1 isConsumingDropSession:(id <UIDropSession>)arg2;
 - (SBIcon *)stackConfigurationInteraction:(SBHStackConfigurationInteraction *)arg1 draggedIconForIdentifier:(NSString *)arg2;
 - (void)stackConfigurationInteraction:(SBHStackConfigurationInteraction *)arg1 requestsPresentAddWidgetSheetFromPresenter:(UIViewController<SBHWidgetSheetViewControllerPresenter> *)arg2;
+
+@optional
+- (long long)stackConfigurationInteractionIconViewComponentBackgroundViewType:(SBHStackConfigurationInteraction *)arg1;
+- (void)stackConfigurationInteraction:(SBHStackConfigurationInteraction *)arg1 iconView:(SBIconView *)arg2 dragLiftAnimationDidChangeDirection:(long long)arg3;
+- (void)stackConfigurationInteraction:(SBHStackConfigurationInteraction *)arg1 iconView:(SBIconView *)arg2 willAnimateDragLiftWithAnimator:(id <UIDragAnimating>)arg3 session:(id <UIDragSession>)arg4;
+- (UITargetedDragPreview *)stackConfigurationInteraction:(SBHStackConfigurationInteraction *)arg1 targetedDragPreviewForIconView:(SBIconView *)arg2 item:(UIDragItem *)arg3 session:(id <UIDragSession>)arg4 previewParameters:(UIDragPreviewParameters *)arg5;
+- (_Bool)stackConfigurationInteraction:(SBHStackConfigurationInteraction *)arg1 dragsSupportSystemDragsForIconView:(SBIconView *)arg2;
+- (void)stackConfigurationDoneButtonTapped:(SBHStackConfigurationInteraction *)arg1;
+- (double)stackConfigurationInteraction:(SBHStackConfigurationInteraction *)arg1 iconContentScaleForGridSizeClass:(unsigned long long)arg2;
 @end
 

@@ -13,10 +13,11 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *observers;
     MISSING_TYPE *tagService;
-    MISSING_TYPE *notificationController;
+    MISSING_TYPE *pushNotificationDataManager;
     MISSING_TYPE *notificationService;
     MISSING_TYPE *subscriptionController;
     MISSING_TYPE *purchaseController;
+    MISSING_TYPE *bundleSubscriptionManager;
 }
 
 - (void).cxx_destruct;

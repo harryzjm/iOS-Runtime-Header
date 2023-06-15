@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     NSArray *_debuggers;
     NSNumber *_pageId;
     NSString *_applicationIdentifier;
+    int _applicationPID;
     unsigned long long _currentDebuggerIndex;
 }
 
@@ -25,7 +26,7 @@ __attribute__((visibility("hidden")))
 - (void)_sendQuery;
 - (_Bool)receivedRejectResponse;
 - (void)start;
-- (id)initWithPageId:(id)arg1 applicationIdentifier:(id)arg2 debuggers:(id)arg3;
+- (id)initWithPageId:(id)arg1 applicationIdentifier:(id)arg2 applicationPID:(int)arg3 debuggers:(id)arg4;
 
 @end
 

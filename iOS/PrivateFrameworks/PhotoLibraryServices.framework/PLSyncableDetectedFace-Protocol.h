@@ -24,7 +24,7 @@
 @property(nonatomic) long long sourceWidth;
 @property(retain, nonatomic) id <PLSyncablePerson> personBeingKeyFace;
 @property(retain, nonatomic) NSSet *rejectedPersons;
-@property(retain, nonatomic) id <PLSyncablePerson> person;
+@property(retain, nonatomic) id <PLSyncablePerson> personForFace;
 @property(copy, nonatomic) NSDate *adjustmentVersion;
 @property(nonatomic) int faceAlgorithmVersion;
 @property(nonatomic) double size;
@@ -32,5 +32,6 @@
 @property(nonatomic) double centerX;
 - (NSString *)syncDescription;
 - (NSString *)pointerDescription;
+- (void)setAssociatedPerson:(id <PLSyncablePerson>)arg1;
 @end
 

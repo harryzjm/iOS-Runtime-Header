@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (void)_setCapabilities:(unsigned long long)arg1;
 @property(readonly) unsigned long long capabilities;
 - (unsigned long long)userStateForMediaStorefrontIdentifier:(id)arg1;
+- (void)_setupCloudServiceController;
 - (id)init;
 
 @end

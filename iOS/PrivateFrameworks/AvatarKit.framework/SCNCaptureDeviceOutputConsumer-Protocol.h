@@ -9,6 +9,8 @@
 @class AVCaptureDevice;
 
 @protocol SCNCaptureDeviceOutputConsumer <NSObject>
+@property(nonatomic, getter=isVideoMirrored) _Bool videoMirrored;
+@property(nonatomic) _Bool automaticallyAdjustsVideoMirroring;
 - (void)setPixelBuffer:(struct __CVBuffer *)arg1 fromDevice:(AVCaptureDevice *)arg2;
 - (void)setSampleBuffer:(struct opaqueCMSampleBuffer *)arg1 fromDevice:(AVCaptureDevice *)arg2;
 - (void)setPixelBuffer:(struct __CVBuffer *)arg1;

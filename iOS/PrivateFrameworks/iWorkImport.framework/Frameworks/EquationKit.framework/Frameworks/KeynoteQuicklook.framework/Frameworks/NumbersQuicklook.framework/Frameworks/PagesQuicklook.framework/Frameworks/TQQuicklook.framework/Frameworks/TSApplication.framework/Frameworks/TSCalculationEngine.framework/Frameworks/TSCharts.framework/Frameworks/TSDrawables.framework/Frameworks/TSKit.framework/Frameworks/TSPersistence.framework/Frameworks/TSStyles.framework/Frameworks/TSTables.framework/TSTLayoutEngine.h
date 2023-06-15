@@ -11,11 +11,16 @@
 
 @interface TSTLayoutEngine : NSObject
 {
+    struct vector<TSTStrokeLayerStack *, std::allocator<TSTStrokeLayerStack *>> _topRowStrokes;
+    struct vector<TSTStrokeLayerStack *, std::allocator<TSTStrokeLayerStack *>> _bottomRowStrokes;
+    struct vector<TSTStrokeLayerStack *, std::allocator<TSTStrokeLayerStack *>> _leftColumnStrokes;
+    struct vector<TSTStrokeLayerStack *, std::allocator<TSTStrokeLayerStack *>> _rightColumnStrokes;
     struct vector<double, std::allocator<double>> _tableDefaultFontHeightForArea;
     NSObject<OS_dispatch_group> *_layoutInFlight;
     struct _opaque_pthread_rwlock_t _strokesRWLock;
     struct _opaque_pthread_rwlock_t _contentRWLock;
     struct os_unfair_lock_s _dynamicModeUnfairLock;
+    _Bool _useBandedFill;
     _Bool _inDynamicLayoutMode;
     _Bool _dynamicBandedFill;
     _Bool _dynamicBandedFillSetting;
@@ -23,6 +28,8 @@
     _Bool _dynamicRepResizeSessionInProgress;
     _Bool _dynamicResizingColumns;
     _Bool _dynamicResizingRows;
+    _Bool _emptyFilteredTable;
+    _Bool _isGrouped;
     _Bool _processHiddenRowsForExport;
     _Bool _tableNameEnabled;
     _Bool _headerColumnsFrozen;
@@ -31,10 +38,7 @@
     _Bool _headerRowsRepeat;
     _Bool _tableNameHeightValid;
     _Bool _bandedFillIsValid;
-    _Bool _useBandedFill;
     _Bool _tableDefaultFontHeightsAreValid;
-    _Bool _emptyFilteredTable;
-    _Bool _isGrouped;
     _Bool _dynamicRepressFrozenHeaderRows;
     _Bool _dynamicRepressFrozenHeaderColumns;
     unsigned int _maxConcurrentTasks;
@@ -59,9 +63,11 @@
     TSTWidthHeightCache *_widthHeightCache;
     TSTHiddenRowsColumnsCache *_hiddenRowsColumnsCache;
     TSDFill *_bandedFillObject;
+    TSTLayout *_dynamicLayout;
     double _dynamicAddOrRemoveColumnElementSize;
     double _dynamicAddOrRemoveRowElementSize;
     double _dynamicColumnTabSize;
+    id <TSTLayoutDynamicContentProtocol> _dynamicContentDelegate;
     TSUColor *_dynamicFontColor;
     TSDInfoGeometry *_dynamicInfoGeometry;
     double _dynamicWidthResize;
@@ -73,6 +79,7 @@
     TSTCellSelection *_dynamicSelection;
     double _dynamicTableNameResize;
     struct TSUCellCoord _dynamicSuppressingConditionalStylesCellID;
+    id <TSTLayoutDynamicCellFillProtocol> _dynamicCellFillDelegate;
     double _dynamicFooterHeight;
     NSMutableArray *_changeDescriptors;
     TSTMergeRangeSortedSet *_mergeRangesForLayoutPass;
@@ -81,10 +88,6 @@
     TSUWidthLimitedQueue *_layoutValidateQueue;
     TSUWidthLimitedQueue *_layoutMeasureQueue;
     NSObject<OS_dispatch_queue> *_layoutConcurrentQueue;
-    NSPointerArray *_topRowStrokes;
-    NSPointerArray *_bottomRowStrokes;
-    NSPointerArray *_leftColumnStrokes;
-    NSPointerArray *_rightColumnStrokes;
     TSTConcurrentMutableIndexSet *_spillStrokeColumns;
     TSTCellRegion *_cellRegionForClearedMergeStrokes;
     TSTStrokeWidthCache *_columnToStrokeWidthCache;
@@ -96,12 +99,9 @@
     unsigned long long _cachedMaxNumberOfRows;
     NSMutableSet *_contentReadingThreads;
     NSCountedSet *_dynamicLayoutParticipants;
-    TSTLayout *_dynamicLayout;
-    id <TSTLayoutDynamicContentProtocol> _dynamicContentDelegate;
     long long _dynamicHidingRowsColsDirection;
     TSTLayoutDynamicResizeInfo *_dynamicResizeInfo;
     long long _dynamicRevealingRowsColsDirection;
-    id <TSTLayoutDynamicCellFillProtocol> _dynamicCellFillDelegate;
     TSWPColumnStyle *_defaultColumnStyle;
     TSTTextEngineDelegate *_tableNameTextEngineDelegate;
     NSPointerArray *_styleProviderStack;
@@ -125,7 +125,6 @@
 @property(retain, nonatomic) NSPointerArray *styleProviderStack; // @synthesize styleProviderStack=_styleProviderStack;
 @property(retain, nonatomic) TSTTextEngineDelegate *tableNameTextEngineDelegate; // @synthesize tableNameTextEngineDelegate=_tableNameTextEngineDelegate;
 @property(readonly, nonatomic) TSWPColumnStyle *defaultColumnStyle; // @synthesize defaultColumnStyle=_defaultColumnStyle;
-@property(retain, nonatomic) id <TSTLayoutDynamicCellFillProtocol> dynamicCellFillDelegate; // @synthesize dynamicCellFillDelegate=_dynamicCellFillDelegate;
 @property(nonatomic) long long dynamicRevealingRowsColsDirection; // @synthesize dynamicRevealingRowsColsDirection=_dynamicRevealingRowsColsDirection;
 @property(nonatomic) struct TSUCellRect dynamicRevealingRowsCols; // @synthesize dynamicRevealingRowsCols=_dynamicRevealingRowsCols;
 @property(retain, nonatomic) TSTLayoutDynamicResizeInfo *dynamicResizeInfo; // @synthesize dynamicResizeInfo=_dynamicResizeInfo;
@@ -136,14 +135,9 @@
 @property(nonatomic) long long dynamicHidingRowsColsDirection; // @synthesize dynamicHidingRowsColsDirection=_dynamicHidingRowsColsDirection;
 @property(nonatomic) struct TSUCellRect dynamicHidingRowsCols; // @synthesize dynamicHidingRowsCols=_dynamicHidingRowsCols;
 @property(nonatomic) struct TSUCellRect dynamicHidingContent; // @synthesize dynamicHidingContent=_dynamicHidingContent;
-@property(retain, nonatomic) id <TSTLayoutDynamicContentProtocol> dynamicContentDelegate; // @synthesize dynamicContentDelegate=_dynamicContentDelegate;
-@property(retain, nonatomic) TSTLayout *dynamicLayout; // @synthesize dynamicLayout=_dynamicLayout;
 @property(retain, nonatomic) NSCountedSet *dynamicLayoutParticipants; // @synthesize dynamicLayoutParticipants=_dynamicLayoutParticipants;
-@property(nonatomic) _Bool isGrouped; // @synthesize isGrouped=_isGrouped;
-@property(nonatomic) _Bool emptyFilteredTable; // @synthesize emptyFilteredTable=_emptyFilteredTable;
 @property(retain, nonatomic) NSMutableSet *contentReadingThreads; // @synthesize contentReadingThreads=_contentReadingThreads;
 @property(nonatomic) _Bool tableDefaultFontHeightsAreValid; // @synthesize tableDefaultFontHeightsAreValid=_tableDefaultFontHeightsAreValid;
-@property(nonatomic) _Bool useBandedFill; // @synthesize useBandedFill=_useBandedFill;
 @property(nonatomic) _Bool bandedFillIsValid; // @synthesize bandedFillIsValid=_bandedFillIsValid;
 @property(nonatomic) unsigned long long cachedMaxNumberOfRows; // @synthesize cachedMaxNumberOfRows=_cachedMaxNumberOfRows;
 @property(nonatomic) unsigned long long cachedMaxNumberOfColumns; // @synthesize cachedMaxNumberOfColumns=_cachedMaxNumberOfColumns;
@@ -167,10 +161,6 @@
 @property(retain, nonatomic) TSTStrokeWidthCache *columnToStrokeWidthCache; // @synthesize columnToStrokeWidthCache=_columnToStrokeWidthCache;
 @property(retain, nonatomic) TSTCellRegion *cellRegionForClearedMergeStrokes; // @synthesize cellRegionForClearedMergeStrokes=_cellRegionForClearedMergeStrokes;
 @property(retain, nonatomic) TSTConcurrentMutableIndexSet *spillStrokeColumns; // @synthesize spillStrokeColumns=_spillStrokeColumns;
-@property(retain, nonatomic) NSPointerArray *rightColumnStrokes; // @synthesize rightColumnStrokes=_rightColumnStrokes;
-@property(retain, nonatomic) NSPointerArray *leftColumnStrokes; // @synthesize leftColumnStrokes=_leftColumnStrokes;
-@property(retain, nonatomic) NSPointerArray *bottomRowStrokes; // @synthesize bottomRowStrokes=_bottomRowStrokes;
-@property(retain, nonatomic) NSPointerArray *topRowStrokes; // @synthesize topRowStrokes=_topRowStrokes;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *layoutConcurrentQueue; // @synthesize layoutConcurrentQueue=_layoutConcurrentQueue;
 @property(retain, nonatomic) TSUWidthLimitedQueue *layoutMeasureQueue; // @synthesize layoutMeasureQueue=_layoutMeasureQueue;
 @property(retain, nonatomic) TSUWidthLimitedQueue *layoutValidateQueue; // @synthesize layoutValidateQueue=_layoutValidateQueue;
@@ -179,8 +169,11 @@
 @property(nonatomic) _Bool tableNameEnabled; // @synthesize tableNameEnabled=_tableNameEnabled;
 @property(nonatomic) _Bool processHiddenRowsForExport; // @synthesize processHiddenRowsForExport=_processHiddenRowsForExport;
 @property(retain, nonatomic) TSTMergeRangeSortedSet *mergeRangesForLayoutPass; // @synthesize mergeRangesForLayoutPass=_mergeRangesForLayoutPass;
+@property(nonatomic) _Bool isGrouped; // @synthesize isGrouped=_isGrouped;
 @property(retain, nonatomic) NSMutableArray *changeDescriptors; // @synthesize changeDescriptors=_changeDescriptors;
+@property(nonatomic) _Bool emptyFilteredTable; // @synthesize emptyFilteredTable=_emptyFilteredTable;
 @property(readonly, nonatomic) double dynamicFooterHeight; // @synthesize dynamicFooterHeight=_dynamicFooterHeight;
+@property(retain, nonatomic) id <TSTLayoutDynamicCellFillProtocol> dynamicCellFillDelegate; // @synthesize dynamicCellFillDelegate=_dynamicCellFillDelegate;
 @property(nonatomic) struct TSUCellCoord dynamicSuppressingConditionalStylesCellID; // @synthesize dynamicSuppressingConditionalStylesCellID=_dynamicSuppressingConditionalStylesCellID;
 @property(nonatomic) double dynamicTableNameResize; // @synthesize dynamicTableNameResize=_dynamicTableNameResize;
 @property(retain, nonatomic) TSTCellSelection *dynamicSelection; // @synthesize dynamicSelection=_dynamicSelection;
@@ -200,16 +193,19 @@
 @property(nonatomic) _Bool dynamicRepResize; // @synthesize dynamicRepResize=_dynamicRepResize;
 @property(nonatomic) struct TSUCellRect dynamicFontColorCellRange; // @synthesize dynamicFontColorCellRange=_dynamicFontColorCellRange;
 @property(retain, nonatomic) TSUColor *dynamicFontColor; // @synthesize dynamicFontColor=_dynamicFontColor;
+@property(retain, nonatomic) id <TSTLayoutDynamicContentProtocol> dynamicContentDelegate; // @synthesize dynamicContentDelegate=_dynamicContentDelegate;
 @property(nonatomic) double dynamicColumnTabSize; // @synthesize dynamicColumnTabSize=_dynamicColumnTabSize;
 @property(nonatomic) int dynamicColumnAdjustment; // @synthesize dynamicColumnAdjustment=_dynamicColumnAdjustment;
 @property(nonatomic) _Bool dynamicBandedFillSetting; // @synthesize dynamicBandedFillSetting=_dynamicBandedFillSetting;
 @property(nonatomic) _Bool dynamicBandedFill; // @synthesize dynamicBandedFill=_dynamicBandedFill;
 @property(nonatomic) double dynamicAddOrRemoveRowElementSize; // @synthesize dynamicAddOrRemoveRowElementSize=_dynamicAddOrRemoveRowElementSize;
 @property(nonatomic) double dynamicAddOrRemoveColumnElementSize; // @synthesize dynamicAddOrRemoveColumnElementSize=_dynamicAddOrRemoveColumnElementSize;
+@property(retain, nonatomic) TSTLayout *dynamicLayout; // @synthesize dynamicLayout=_dynamicLayout;
 @property(nonatomic, getter=isInDynamicLayoutMode) _Bool inDynamicLayoutMode; // @synthesize inDynamicLayoutMode=_inDynamicLayoutMode;
 @property(nonatomic) int tableRowsBehavior; // @synthesize tableRowsBehavior=_tableRowsBehavior;
 @property(nonatomic) int tableEnvironment; // @synthesize tableEnvironment=_tableEnvironment;
 @property(retain, nonatomic) TSDFill *bandedFillObject; // @synthesize bandedFillObject=_bandedFillObject;
+@property(nonatomic) _Bool useBandedFill; // @synthesize useBandedFill=_useBandedFill;
 @property(nonatomic) unsigned int numCellsPerTask; // @synthesize numCellsPerTask=_numCellsPerTask;
 @property(nonatomic) unsigned int maxConcurrentTasks; // @synthesize maxConcurrentTasks=_maxConcurrentTasks;
 @property(retain, nonatomic) TSTHiddenRowsColumnsCache *hiddenRowsColumnsCache; // @synthesize hiddenRowsColumnsCache=_hiddenRowsColumnsCache;
@@ -267,7 +263,7 @@
 - (void)waitForLayoutToComplete:(id)arg1;
 - (void)processLayoutTask:(id)arg1 validationBundle:(id)arg2;
 - (void)measureWithLayoutState:(id)arg1;
-- (void)queueCellForValidation:(struct TSUCellRect)arg1 cell:(id)arg2 textStyle:(id)arg3 modelMergeRange:(struct TSUCellRect)arg4 wrap:(_Bool)arg5 verticalAlignment:(int)arg6 padding:(id)arg7 prop:(_Bool)arg8 layoutCacheFlags:(int)arg9 validationBundle:(id)arg10 layoutTask:(id)arg11;
+- (void)queueCellForValidation:(struct TSUCellRect)arg1 cell:(id)arg2 textStyleHandle:(id)arg3 modelMergeRange:(struct TSUCellRect)arg4 wrap:(_Bool)arg5 verticalAlignment:(int)arg6 padding:(id)arg7 prop:(_Bool)arg8 layoutCacheFlags:(int)arg9 validationBundle:(id)arg10 layoutTask:(id)arg11;
 - (id)validateCellForDrawing:(struct TSUCellCoord)arg1 cell:(id)arg2 contents:(id)arg3 wrap:(_Bool)arg4 verticalAlignment:(int)arg5 padding:(id)arg6 layoutCacheFlags:(int)arg7 pageNumber:(unsigned long long)arg8 pageCount:(unsigned long long)arg9;
 - (id)fittingWidthsMapForColumns:(id)arg1 includeStrokes:(_Bool)arg2;
 - (id)validateFittingInfoForValidationRegion:(id)arg1 rowsNeedingFittingInfo:(id)arg2;
@@ -289,7 +285,7 @@
 - (void)p_validateFittingInfoForEmptyCellsOnSingleRowBetween:(struct TSUCellCoord)arg1 andEndCellID:(struct TSUCellCoord)arg2 widthHeightCollection:(id)arg3;
 - (void)validateFittingInfoWithCellRange:(struct TSUCellRect)arg1 validationBundle:(id)arg2;
 - (void)p_validateFittingInfoWithCellRangeWorker:(struct TSUCellRect)arg1 widthHeightCollection:(id)arg2 containsMerges:(_Bool)arg3 validationBundle:(id)arg4;
-- (void)validateFittingInfoForCell:(id)arg1 cellID:(struct TSUCellCoord)arg2 mergeRange:(struct TSUCellRect)arg3 setFitting:(_Bool)arg4 layoutTask:(id)arg5 widthHeightCollection:(id)arg6 validationBundle:(id)arg7;
+- (void)validateFittingInfoForCell:(id)arg1 cellID:(struct TSUCellCoord)arg2 mergeRange:(struct TSUCellRect)arg3 setFitting:(_Bool)arg4 layoutTask:(id)arg5 widthHeightCollection:(id)arg6 validationBundle:(id)arg7 styleDefaultsCache:(id)arg8;
 - (void)validateRowVisibility:(id)arg1;
 - (void)finalizeLayoutPassWithRowsNeedingFittingInfo:(id)arg1;
 - (void)p_validateCellIDToWPColumnCacheForChangeDescriptors:(id)arg1;

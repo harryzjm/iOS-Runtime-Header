@@ -29,8 +29,6 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (const char *)MKI;
 - (void)setMapKey:(unsigned char)arg1;
-@property(readonly) unsigned char mapKey;
-@property(readonly) _Bool isMapped;
 - (void)setActiveSize:(unsigned int)arg1;
 @property(readonly) unsigned int activeSize;
 - (void)dealloc;

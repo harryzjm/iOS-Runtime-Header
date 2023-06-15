@@ -20,6 +20,7 @@
     MISSING_TYPE *completedListeningProcessor;
     MISSING_TYPE *itemSession;
     MISSING_TYPE *onNextTrack;
+    MISSING_TYPE *widgetUpdater;
 }
 
 @end

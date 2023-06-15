@@ -6,9 +6,15 @@
 
 #import <ShazamEvents/NSObject-Protocol.h>
 
+@class NSArray, NSUUID;
 @protocol SHService, SHWorker;
 
 @protocol SHServiceDelegate <NSObject>
-- (void)service:(id <SHService>)arg1 updatedWorker:(id <SHWorker>)arg2;
+@property(readonly, nonatomic) _Bool hasRegisteredWorkers;
+- (id <SHWorker>)registeredWorkerForWorkerID:(NSUUID *)arg1;
+- (void)unregisterAllWorkersForService:(id <SHService>)arg1;
+- (NSArray *)allWorkersForService:(id <SHService>)arg1;
+- (void)service:(id <SHService>)arg1 unregisterWorker:(id <SHWorker>)arg2;
+- (_Bool)service:(id <SHService>)arg1 registerWorker:(id <SHWorker>)arg2 watchdogTimeout:(double)arg3 error:(id *)arg4;
 @end
 

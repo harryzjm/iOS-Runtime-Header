@@ -7,11 +7,9 @@
 __attribute__((visibility("hidden")))
 @interface VNGenerateSkySegmentationRequestConfiguration
 {
-    unsigned int _outputPixelFormat;
     long long _qualityLevel;
 }
 
-@property(nonatomic) unsigned int outputPixelFormat; // @synthesize outputPixelFormat=_outputPixelFormat;
 @property(nonatomic) long long qualityLevel; // @synthesize qualityLevel=_qualityLevel;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithRequestClass:(Class)arg1;

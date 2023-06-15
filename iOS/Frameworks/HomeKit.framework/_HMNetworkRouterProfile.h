@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_HMAccessoryProfile.h"
+
 @class NSSet;
 @protocol _HMNetworkRouterProfileDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _HMNetworkRouterProfile
+@interface _HMNetworkRouterProfile : _HMAccessoryProfile
 {
     _Bool _satellite;
     unsigned long long _networkStatus;

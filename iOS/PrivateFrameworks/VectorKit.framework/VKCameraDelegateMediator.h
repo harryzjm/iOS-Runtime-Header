@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool isChangingMapType; // @synthesize isChangingMapType=_isChangingMapType;
 @property(nonatomic) __weak id <VKMapViewCameraDelegate> cameraDelegate; // @synthesize cameraDelegate=_cameraDelegate;
 - (void)mapLayerWasUnableToAnimate;
-- (void)mapLayerWillAnimateToLocation:(CDStruct_c3b9c2ee)arg1;
+- (void)mapLayerWillAnimateToLocation:(CDStruct_2c43369c)arg1;
 - (void)mapLayerNavigationCameraDidReturnToDefaultZoom;
 - (void)mapLayerNavigationCameraDidLeaveDefaultZoom;
 - (void)mapLayerNavigationCameraHasStoppedPanning;
@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (void)mapLayerDidBecomePitched:(_Bool)arg1;
 - (id)mapLayerPresentationForAnnotation:(id)arg1;
 - (void)mapLayerDidFinishInitialTrackingAnimation;
+- (void)mapLayerWillPerformZoomBounceAnimation;
 - (void)mapLayerDidChangeRegionAnimated:(_Bool)arg1;
 - (void)mapLayerWillChangeRegionAnimated:(_Bool)arg1;
 - (void)mapLayerDidChangeVisibleRegion;

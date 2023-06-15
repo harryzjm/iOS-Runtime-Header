@@ -8,6 +8,8 @@
 - (void)wantsDismissal;
 
 @optional
-@property(nonatomic, readonly) _Bool isCaptioningEnabled;
+@property(readonly, nonatomic) _Bool isCaptioningEnabled;
+- (void)conversationHUDRequestedAddParticipant;
+- (void)conversationHUDDetailsViewControllerDidLayoutWithContentSize:(struct CGSize)arg1;
 @end
 

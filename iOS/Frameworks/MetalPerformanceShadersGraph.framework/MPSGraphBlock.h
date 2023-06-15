@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
+#import "MPSGraphObject.h"
 
 @class MPSGraphOperation, MPSGraphRegion, NSMutableArray;
 
-@interface MPSGraphBlock : NSObject
+@interface MPSGraphBlock : MPSGraphObject
 {
     MPSGraphOperation *_terminator;
     NSMutableArray *_blockOperations;

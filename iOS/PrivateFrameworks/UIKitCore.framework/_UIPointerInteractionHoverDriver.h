@@ -25,16 +25,19 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak UIView *view; // @synthesize view=_view;
+- (_Bool)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (void)_installToView:(id)arg1;
 - (void)_uninstallFromView:(id)arg1;
 - (void)_pointerStateDidChange:(id)arg1;
+- (_Bool)allowsUpdatesWhilePrimaryButtonIsPressed;
 - (long long)_currentButtonMask;
 - (void)_handlePressGesture:(id)arg1;
 - (void)_updateHover:(id)arg1 forced:(_Bool)arg2;
 - (void)_handleHoverGesture:(id)arg1;
+- (long long)type;
 - (void)invalidate;
 - (_Bool)isActive;
-- (struct CGPoint)locationInView:(id)arg1;
+- (struct CAPoint3D)locationInView:(id)arg1;
 - (id)initWithSink:(id)arg1;
 
 // Remaining properties

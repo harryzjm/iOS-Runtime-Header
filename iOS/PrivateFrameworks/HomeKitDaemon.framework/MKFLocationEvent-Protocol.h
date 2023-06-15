@@ -7,12 +7,16 @@
 #import <HomeKitDaemon/MKFEvent-Protocol.h>
 #import <HomeKitDaemon/MKFLocationEventPublicExtensions-Protocol.h>
 
-@class MKFLocationEventDatabaseID, NSData;
-@protocol MKFHome;
+@class CLRegion, MKFLocationEventDatabaseID, NSArray;
+@protocol MKFHome, MKFUser;
 
 @protocol MKFLocationEvent <MKFEvent, MKFLocationEventPublicExtensions>
 @property(readonly) id <MKFHome> home;
 @property(readonly, copy, nonatomic) MKFLocationEventDatabaseID *databaseID;
-@property(retain, nonatomic) NSData *region;
+@property(retain, nonatomic) id <MKFUser> user;
+@property(retain, nonatomic) CLRegion *region;
+- (void)removeUserObject:(id <MKFUser>)arg1;
+- (void)addUserObject:(id <MKFUser>)arg1;
+- (_Bool)synchronizeUserRelationWith:(NSArray *)arg1;
 @end
 

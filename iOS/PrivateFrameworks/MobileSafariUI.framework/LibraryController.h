@@ -6,7 +6,8 @@
 
 #import <objc/NSObject.h>
 
-@class BrowserRootViewController, LibraryConfiguration, LibraryItemController, LibraryViewController, MainLibrarySectionController, NSMutableDictionary, NSString, UIViewController;
+@class LibraryConfiguration, LibraryItemController, LibraryViewController, MainLibrarySectionController, NSMutableDictionary, NSString, UIViewController;
+@protocol SidebarUIProxy;
 
 __attribute__((visibility("hidden")))
 @interface LibraryController : NSObject
@@ -16,13 +17,13 @@ __attribute__((visibility("hidden")))
     UIViewController *_viewControllerForLastSelectedItemController;
     MainLibrarySectionController *_mainLibrarySectionController;
     LibraryConfiguration *_configuration;
-    BrowserRootViewController *_rootViewController;
+    id <SidebarUIProxy> _sidebarUIProxy;
     LibraryViewController *_sidebarViewController;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) LibraryViewController *sidebarViewController; // @synthesize sidebarViewController=_sidebarViewController;
-@property(retain, nonatomic) BrowserRootViewController *rootViewController; // @synthesize rootViewController=_rootViewController;
+@property(retain, nonatomic) id <SidebarUIProxy> sidebarUIProxy; // @synthesize sidebarUIProxy=_sidebarUIProxy;
 @property(readonly, nonatomic) LibraryConfiguration *configuration; // @synthesize configuration=_configuration;
 - (_Bool)libraryViewController:(id)arg1 shouldPersistSelectionForItem:(id)arg2;
 - (void)libraryViewControllerDidClearSelection:(id)arg1;
@@ -33,6 +34,7 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSString *currentCollection;
 - (void)_updateSidebarButton;
 - (void)browserViewControllerDidChangeSidebarStyle;
+- (void)reloadExpansionStateForTabGroup:(id)arg1;
 - (id)initWithConfiguration:(id)arg1;
 
 // Remaining properties

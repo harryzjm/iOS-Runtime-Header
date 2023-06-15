@@ -10,5 +10,6 @@
 + (id)_mapkit_descriptionForTimeSinceDate:(id)arg1;
 + (id)_mapkit_descriptionForTimeSinceDate:(id)arg1 referenceDate:(id)arg2;
 + (id)_mapkit_descriptionForTimeSinceDate:(id)arg1 referenceDate:(id)arg2 smallestUnit:(unsigned long long)arg3;
++ (id)_mapkit_descriptionForTimeSinceDate:(id)arg1 referenceDate:(id)arg2 smallestUnit:(unsigned long long)arg3 timeUntilNextUpdate:(double *)arg4;
 @end
 

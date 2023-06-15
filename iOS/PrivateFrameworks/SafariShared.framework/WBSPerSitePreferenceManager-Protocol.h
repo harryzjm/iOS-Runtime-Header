@@ -22,9 +22,12 @@
 - (NSArray *)preferences;
 
 @optional
+@property(readonly, nonatomic) _Bool hasDynamicPreferenceValues;
+@property(readonly, nonatomic) _Bool shouldDeleteUnrecognizedPreference;
 - (void)getDomainsAllowedToRemoveForPreference:(WBSPerSitePreference *)arg1 usingBlock:(void (^)(NSSet *))arg2;
 - (NSString *)localizedWarningTextForPreference:(WBSPerSitePreference *)arg1;
 - (_Bool)preferenceDoesNotHaveForOtherWebsitesDefault:(WBSPerSitePreference *)arg1;
+- (_Bool)preferenceShowsTabsInPrivateBrowsing:(WBSPerSitePreference *)arg1;
 - (_Bool)preferenceOnlyShowsConfiguredSites:(WBSPerSitePreference *)arg1;
 - (_Bool)preferenceAppliesToHighLevelDomains:(WBSPerSitePreference *)arg1;
 @end

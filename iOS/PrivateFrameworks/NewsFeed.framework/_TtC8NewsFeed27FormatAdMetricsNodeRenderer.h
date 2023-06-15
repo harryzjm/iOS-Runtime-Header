@@ -10,6 +10,7 @@
 
 @interface _TtC8NewsFeed27FormatAdMetricsNodeRenderer : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *adIntegrating;
     MISSING_TYPE *presentingViewController;
     MISSING_TYPE *presentationDelegateProvider;
 }

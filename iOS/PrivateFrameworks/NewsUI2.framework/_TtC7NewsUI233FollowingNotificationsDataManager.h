@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *userNotificationCenter;
     MISSING_TYPE *configurationManager;
     MISSING_TYPE *newsletterManager;
+    MISSING_TYPE *sportsOnboardingManager;
 }
 
 - (void).cxx_destruct;

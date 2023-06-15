@@ -18,6 +18,8 @@ __attribute__((visibility("hidden")))
     unsigned int redMaxDelay20ms;
     VCAudioPayloadConfig *payloadConfig;
     _Bool _bundlingAppliedByCodec;
+    unsigned int _payloadSize;
+    unsigned int _headerSize;
 }
 
 + (_Bool)bundlingAppliedByCodecForPayload:(int)arg1 mode:(int)arg2;
@@ -28,10 +30,11 @@ __attribute__((visibility("hidden")))
 @property(readonly) unsigned int packetsPerBundle; // @synthesize packetsPerBundle;
 @property(readonly) unsigned int audioCodecBitrate; // @synthesize audioCodecBitrate;
 @property(readonly) unsigned int networkBitrate; // @synthesize networkBitrate;
-- (_Bool)isEqualTo:(id)arg1;
+@property(readonly) unsigned int redPayloadSize;
+- (_Bool)isEqual:(id)arg1;
 - (id)dictionary;
 - (id)description;
-- (id)initWithNetworkBitrate:(unsigned int)arg1 bundlingAppliedByCodec:(_Bool)arg2 audioCodecBitrate:(unsigned int)arg3 packetsPerBundle:(unsigned int)arg4 redNumPayloads:(unsigned int)arg5 payloadConfig:(id)arg6;
+- (id)initWithNetworkBitrate:(unsigned int)arg1 bundlingAppliedByCodec:(_Bool)arg2 audioCodecBitrate:(unsigned int)arg3 packetsPerBundle:(unsigned int)arg4 redNumPayloads:(unsigned int)arg5 payloadSize:(unsigned int)arg6 headerSize:(unsigned int)arg7 payloadConfig:(id)arg8;
 
 @end
 

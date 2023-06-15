@@ -6,30 +6,32 @@
 
 #import <MobileSafariUI/NSObject-Protocol.h>
 
-@class BrowserController, CatalogViewController, SFPinnableBanner, SFStartPageCustomizationViewController, SFWebExtensionPermissionBanner, TabBarManager, TabDocument, TabDocumentView, TabHoverPreview, TabOverview, UIResponder, UISceneConnectionOptions, UISceneSession, UIView, UIViewController, UIWindowScene, WBSWebExtensionData;
-@protocol SFStartPageVisualStyleProviding, TabDocumentViewGeometryProviding, TabSnapshotContentProvider, _SFNavigationBarCommon;
+@class BannerController, BrowserController, CatalogViewController, SFStartPageCustomizationViewController, TabBarManager, TabDocument, TabDocumentView, TabHoverPreview, TabOverview, UIResponder, UISceneConnectionOptions, UISceneSession, UIScrollView, UIView, UIViewController, UIWindowScene, WBSWebExtensionData, _SFDownload;
+@protocol BannerControllerDelegate, SFStartPageVisualStyleProviding, SidebarUIProxy, TabDocumentViewGeometryProviding, TabSnapshotContentProvider, UIDragSession, UIDropSession, _SFNavigationBarCommon;
 
 @protocol BrowserControllerUIDelegate <NSObject>
 - (TabHoverPreview *)browserControllerTabHoverPreview:(BrowserController *)arg1;
 - (TabBarManager *)browserControllerTabBarManager:(BrowserController *)arg1;
 - (void)browserController:(BrowserController *)arg1 updateViewForActiveTabDocument:(TabDocument *)arg2;
-- (void)browserController:(BrowserController *)arg1 showWebExtensionBanner:(SFWebExtensionPermissionBanner *)arg2;
-- (void)browserController:(BrowserController *)arg1 setCrashBanner:(SFPinnableBanner *)arg2 animated:(_Bool)arg3;
-- (SFPinnableBanner *)crashBannerForBrowserController:(BrowserController *)arg1;
-- (void)browserController:(BrowserController *)arg1 setAppBanner:(SFPinnableBanner *)arg2 animated:(_Bool)arg3;
-- (SFPinnableBanner *)appBannerForBrowserController:(BrowserController *)arg1;
+- (id <BannerControllerDelegate>)browserController:(BrowserController *)arg1 delegateForBannerController:(BannerController *)arg2;
 - (id <_SFNavigationBarCommon>)browserControllerNavigationBar:(BrowserController *)arg1;
 - (double)browserControllerCatalogViewPopoverWidth:(BrowserController *)arg1;
 - (void)browserControllerLayOutCatalogView:(BrowserController *)arg1;
 - (void)browserController:(BrowserController *)arg1 setCatalogViewController:(CatalogViewController *)arg2;
 - (CatalogViewController *)browserControllerCatalogViewController:(BrowserController *)arg1;
+- (void)browserController:(BrowserController *)arg1 scrollViewDidScroll:(UIScrollView *)arg2;
+- (_Bool)browserControllerShouldUpdateWebViewGeometryOnScroll:(BrowserController *)arg1;
 - (id <TabDocumentViewGeometryProviding>)browserController:(BrowserController *)arg1 tabDocumentViewGeometryProviderForTabDocumentView:(TabDocumentView *)arg2;
 - (id <TabSnapshotContentProvider>)browserController:(BrowserController *)arg1 tabSnapshotContentProviderForTabDocument:(TabDocument *)arg2;
 - (_Bool)browserControllerShouldUpdateSnapshotForActiveTab:(BrowserController *)arg1;
 - (double)browserControllerStatusBarWidth:(BrowserController *)arg1;
 - (struct CGRect)browserControllerWindowFrame:(BrowserController *)arg1;
+- (void)updateTabViewPinchRecognizerForBrowserController:(BrowserController *)arg1;
 - (void)handleTabViewPinchForBrowserController:(BrowserController *)arg1;
+- (UIView *)browserControllerTabContentContainerView:(BrowserController *)arg1;
 - (UIView *)browserControllerContentContainerView:(BrowserController *)arg1;
+- (id <SidebarUIProxy>)sidebarUIProxyForBrowserController:(BrowserController *)arg1;
+- (void)browserController:(BrowserController *)arg1 openDownload:(_SFDownload *)arg2;
 - (void)browserControllerDidEndNavigationGesture:(BrowserController *)arg1;
 - (void)browserControllerWillBeginNavigationGesture:(BrowserController *)arg1;
 - (void)browserControllerDidEndObfuscating:(BrowserController *)arg1;
@@ -42,9 +44,18 @@
 - (void)browserController:(BrowserController *)arg1 willConnectToScene:(UIWindowScene *)arg2 session:(UISceneSession *)arg3 options:(UISceneConnectionOptions *)arg4;
 
 @optional
+- (void)browserController:(BrowserController *)arg1 tabBarExpansionViewDidEndTrackingDropSession:(id <UIDropSession>)arg2;
+- (void)browserController:(BrowserController *)arg1 tabBarExpansionViewDidBeginTrackingDropSession:(id <UIDropSession>)arg2;
+- (void)browserController:(BrowserController *)arg1 tabDocumentWillEndDragSession:(id <UIDragSession>)arg2;
+- (void)browserController:(BrowserController *)arg1 tabDocumentWillBeginDragSession:(id <UIDragSession>)arg2;
+- (void)browserControllerShouldUpdateUnifiedBarVisibility:(BrowserController *)arg1;
+- (void)browserController:(BrowserController *)arg1 animateLinkImage:(struct CGImage *)arg2 fromRect:(struct CGRect)arg3 inView:(UIView *)arg4 toBarItem:(long long)arg5;
+- (void)browserController:(BrowserController *)arg1 animateSafariIconLinkFromPoint:(struct CGPoint)arg2 inView:(UIView *)arg3;
 - (TabOverview *)createTabOverviewForBrowserController:(BrowserController *)arg1;
 - (void)browserController:(BrowserController *)arg1 didChangeReaderVisibilityForTabDocument:(TabDocument *)arg2;
 - (void)browserController:(BrowserController *)arg1 tabDocumentDidStartLoading:(TabDocument *)arg2;
+- (void)browserController:(BrowserController *)arg1 catalogViewController:(CatalogViewController *)arg2 willDismissPopoverWithReason:(long long)arg3;
+- (void)browserController:(BrowserController *)arg1 catalogViewController:(CatalogViewController *)arg2 willPresentViewControllerWithinPopover:(UIViewController *)arg3;
 - (void)browserController:(BrowserController *)arg1 webExtensionWasRemotelyEnabled:(WBSWebExtensionData *)arg2;
 - (void)browserController:(BrowserController *)arg1 didFinishVoiceSearchWithNavigation:(_Bool)arg2;
 - (void)browserController:(BrowserController *)arg1 willPresentStartPageCustomizationViewController:(SFStartPageCustomizationViewController *)arg2;

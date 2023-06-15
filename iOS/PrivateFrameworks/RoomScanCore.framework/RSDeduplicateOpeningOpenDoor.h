@@ -13,8 +13,6 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)reset;
-- (id)runWithFloorplan:(id)arg1 geoMetryMeta:(id)arg2;
 - (id)init;
 
 @end

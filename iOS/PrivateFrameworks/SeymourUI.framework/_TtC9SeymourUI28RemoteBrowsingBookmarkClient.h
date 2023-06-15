@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *remoteBrowsingClient;
     MISSING_TYPE *remoteBrowsingSource;
+    MISSING_TYPE *catalogClient;
 }
 
 @end

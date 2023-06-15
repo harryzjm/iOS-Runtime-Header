@@ -15,14 +15,17 @@
     _Bool _updating;
     NSXPCConnection *_connection;
     id _delegate;
+    id _inertialDelegate;
     CLLocationManagerRoutine *_locationManagerRoutine;
 }
 
 @property(nonatomic) _Bool updating; // @synthesize updating=_updating;
 @property(nonatomic) CLLocationManagerRoutine *locationManagerRoutine; // @synthesize locationManagerRoutine=_locationManagerRoutine;
+@property(nonatomic) id inertialDelegate; // @synthesize inertialDelegate=_inertialDelegate;
 @property(nonatomic) id delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 - (void)createConnection;
+- (void)didUpdateInertialData:(id)arg1;
 - (void)didUpdateLocations:(id)arg1 withReply:(CDUnknownBlockType)arg2;
 - (void)didUpdateLocations:(id)arg1;
 - (void)dealloc;

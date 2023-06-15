@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import "CKTipKitCollectionViewCell.h"
+#import <UIKitCore/UICollectionViewCell.h>
 
 @class CALayer, CAPackage, CAStateController, NSArray, NSMutableArray, NSString, UIView;
 
 __attribute__((visibility("hidden")))
-@interface CKTipKitOnboardingCollectionViewCell : CKTipKitCollectionViewCell
+@interface CKTipKitOnboardingCollectionViewCell : UICollectionViewCell
 {
+    UIView *_tipUIView;
     NSArray *_recommendedPinningConversations;
     CAPackage *_package;
     CALayer *_packageLayer;
@@ -31,11 +32,13 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) CALayer *packageLayer; // @synthesize packageLayer=_packageLayer;
 @property(retain, nonatomic) CAPackage *package; // @synthesize package=_package;
 @property(retain, nonatomic) NSArray *recommendedPinningConversations; // @synthesize recommendedPinningConversations=_recommendedPinningConversations;
+@property(retain, nonatomic) UIView *tipUIView; // @synthesize tipUIView=_tipUIView;
 - (void)didUpdateContentForAvatarView:(id)arg1;
 - (id)presentingViewControllerForAvatarView:(id)arg1;
 - (void)stepThroughOnboardingTipAnimationForLayer:(id)arg1;
+- (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1 withHorizontalFittingPriority:(float)arg2 verticalFittingPriority:(float)arg3;
 - (void)updateTipAnimationIfNeeded;
-- (void)setTipContentView:(id)arg1 withRecommenedPinningConversations:(id)arg2;
+- (void)setTipUIView:(id)arg1 withRecommendedPinningConversations:(id)arg2;
 - (void)resetViews;
 - (void)stopAnimations;
 - (void)startAnimations;

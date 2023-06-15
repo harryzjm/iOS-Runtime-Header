@@ -12,13 +12,13 @@
 {
     MISSING_TYPE *config;
     MISSING_TYPE *knobs;
+    MISSING_TYPE *featureAvailability;
     MISSING_TYPE *formatService;
     MISSING_TYPE *sportsTopicClusteringService;
     MISSING_TYPE *sportsDataService;
     MISSING_TYPE *sportsFavoritesService;
     MISSING_TYPE *tagHighlightsService;
     MISSING_TYPE *recommendationService;
-    MISSING_TYPE *sportsEventManager;
     MISSING_TYPE *sportsSectionService;
     MISSING_TYPE *sportsScoreSorter;
     MISSING_TYPE *sportsOnboardingManager;

@@ -9,6 +9,8 @@
 @class NSPersonNameComponents, NSString;
 
 @interface NSURL (BRCPathAdditions)
++ (id)brc_ciconiaDumpDirForCurrentPersona;
++ (id)brc_ciconiaWorkDirForCurrentPersona;
 + (id)brc_fileURLWithVolumeDeviceID:(id)arg1 fileID:(id)arg2 isDirectory:(_Bool)arg3;
 + (id)brc_fileURLWithFileDescriptor:(int)arg1;
 + (void)br_containerIDsWithExternalReferencesTo:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -74,6 +76,7 @@
 - (_Bool)br_isParentOfURL:(id)arg1;
 - (_Bool)br_isParentOfURL:(id)arg1 strictly:(_Bool)arg2;
 - (_Bool)br_isInLocalHomeDirectory;
+- (id)br_realpathURLWithIsDirectory:(_Bool)arg1;
 - (id)br_realpathURL;
 - (id)_br_getAttributeValue:(id)arg1 withSecondaryConnection:(_Bool)arg2 withError:(id *)arg3;
 - (_Bool)br_mightBeOnDataSeparatedVolume;

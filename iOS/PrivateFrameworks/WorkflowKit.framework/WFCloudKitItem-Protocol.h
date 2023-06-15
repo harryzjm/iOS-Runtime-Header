@@ -12,10 +12,11 @@
 + (NSDictionary *)properties;
 + (NSString *)recordType;
 @property(readonly, nonatomic) CKRecordID *identifier;
+- (id)init;
 
 @optional
 @property(copy, nonatomic) NSData *recordSystemFieldsData;
-- (void)ensureFileAssets;
+- (id)ensureFileAssets;
 - (void)setCreatedAt:(NSDate *)arg1 modifiedAt:(NSDate *)arg2 createdBy:(NSString *)arg3;
 - (unsigned long long)referenceActionForKey:(NSString *)arg1;
 @end

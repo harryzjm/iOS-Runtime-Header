@@ -4,17 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIInteraction-Protocol.h>
+#import <UIKitCore/UIInteraction_Private-Protocol.h>
 
-@class NSArray, UIDragEvent, UITargetedPreview, UITraitCollection, UIWindow;
+@class NSArray, UIDragEvent, UITargetedPreview, UITraitCollection;
 
-@protocol UIInteraction_Internal <UIInteraction>
+@protocol UIInteraction_Internal <UIInteraction_Private>
 
 @optional
 - (_Bool)_supportsAssociation;
 - (UITargetedPreview *)_targetedPreviewForContinuingEffectWithPreview:(UITargetedPreview *)arg1;
+- (void)_viewVisibilityDidChange;
 - (void)_viewTraitCollectionDidChange:(UITraitCollection *)arg1;
-- (void)_didMoveFromWindow:(UIWindow *)arg1 toWindow:(UIWindow *)arg2;
 - (NSArray *)_dynamicGestureRecognizersForEvent:(UIDragEvent *)arg1;
 @end
 

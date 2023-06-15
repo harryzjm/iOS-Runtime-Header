@@ -11,6 +11,7 @@
 @protocol SBDashBoardHostedAppViewControllerDelegate <NSObject>
 
 @optional
+- (void)dashBoardHostedAppViewControllerDidFailToActivateApplication:(SBDashBoardHostedAppViewController *)arg1;
 - (_Bool)dashBoardHostedAppViewController:(SBDashBoardHostedAppViewController *)arg1 shouldTransitionToMode:(long long)arg2;
 @end
 

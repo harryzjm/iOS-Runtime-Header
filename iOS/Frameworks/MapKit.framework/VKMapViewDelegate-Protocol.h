@@ -16,6 +16,7 @@
 - (void)mapLayer:(VKMapView *)arg1 activeARWalkingFeatureDidUpdate:(VKARWalkingFeatureDidUpdateInfo *)arg2;
 - (void)mapLayer:(VKMapView *)arg1 arWalkingFeatureSetStateDidUpdate:(VKARWalkingFeatureSet *)arg2;
 - (void)mapLayer:(VKMapView *)arg1 nearestJunctionDidChange:(VKMuninJunction *)arg2 currentRoad:(VKMuninRoad *)arg3;
+- (void)mapLayer:(VKMapView *)arg1 locationInHikingToolTipRegion:(unsigned long long)arg2;
 - (void)mapLayer:(VKMapView *)arg1 venueWithFocusDidChange:(VKVenueFeatureMarker *)arg2 building:(VKVenueBuildingFeatureMarker *)arg3;
 - (void)mapLayer:(VKMapView *)arg1 didUpdateVerticalYawTo:(double)arg2;
 - (void)mapLayer:(VKMapView *)arg1 willTransitionTo:(long long)arg2;

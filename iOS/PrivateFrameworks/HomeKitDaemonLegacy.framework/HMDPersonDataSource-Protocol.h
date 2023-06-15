@@ -13,8 +13,6 @@
 @property(readonly, copy) id <HMDPersonManagerSettings> settings;
 @property(readonly, getter=isCurrentDeviceAvailableResident) _Bool currentDeviceAvailableResident;
 @property(readonly, getter=isDataAvailable) _Bool dataAvailable;
-- (NAFuture *)removePersonZones;
-- (NAFuture *)removeAllAssociatedData;
 - (void)handleFaceMisclassificationForFaceCropData:(NSData *)arg1 personUUID:(NSUUID *)arg2;
 - (HMDPersonDataBatchChange *)createBatchChange;
 - (NAFuture *)removeFaceprintsWithUUIDs:(NSSet *)arg1;
@@ -24,6 +22,7 @@
 - (NAFuture *)associateFaceCropsWithUUIDs:(NSSet *)arg1 toPersonWithUUID:(NSUUID *)arg2 forSource:(long long)arg3;
 - (NAFuture *)addOrUpdateFaceprints:(NSSet *)arg1;
 - (NAFuture *)addOrUpdateFaceCrops:(NSSet *)arg1;
+- (NAFuture *)addOrUpdatePersons:(NSSet *)arg1 andRemovePersonsWithUUIDs:(NSSet *)arg2;
 - (NAFuture *)addOrUpdatePersons:(NSSet *)arg1;
 - (NSSet *)faceprintsForFaceCropsWithUUIDs:(NSSet *)arg1;
 - (NSSet *)faceCropsForPersonsWithUUIDs:(NSSet *)arg1;

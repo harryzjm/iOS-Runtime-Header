@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MapKit/MKVibrantHairlineView.h>
+#import <MapKit/MKHairlineView.h>
 
 @class NSLayoutConstraint;
 
 __attribute__((visibility("hidden")))
-@interface MUHairlineView : MKVibrantHairlineView
+@interface MUHairlineView : MKHairlineView
 {
     double _intrinsicThickness;
     _Bool _vertical;
@@ -23,11 +23,10 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool vertical; // @synthesize vertical=_vertical;
 @property(nonatomic) double trailingMargin;
 @property(nonatomic) double leadingMargin;
-- (void)traitCollectionDidChange:(id)arg1;
+- (void)_updateIntrinsicThicknessForDisplayScale;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (void)didMoveToWindow;
-- (void)setBackgroundColor:(id)arg1;
 - (void)customInit;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

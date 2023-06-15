@@ -9,6 +9,7 @@
 @interface _TtC12GameCenterUI17NowPlayingSection
 {
     MISSING_TYPE *game;
+    MISSING_TYPE *shelfImpressionIndex;
 }
 
 @end

@@ -10,6 +10,8 @@
 + (void)safari_dateFromNTPServerWithTimeout:(double)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (id)safari_dateOfMidnightNumberOfDaysAgo:(long long)arg1;
 + (double)safari_timeIntervalSinceSystemStart;
+- (_Bool)safari_isLaterThanDate:(id)arg1;
+- (_Bool)safari_isEarlierThanDate:(id)arg1;
 - (id)safari_stringsFromDateForLocaleIdentifiers:(id)arg1;
 - (id)_safari_stringWithDashSeparatorWithDateFormatter:(id)arg1;
 @property(readonly, nonatomic) double safari_timeIntervalUntilNow;
@@ -18,6 +20,7 @@
 @property(readonly, nonatomic) NSDate *safari_startOfDay;
 - (_Bool)safari_isInSameDayAsDate:(id)arg1;
 @property(readonly, nonatomic) _Bool safari_isInToday;
+- (long long)safari_numberOfDaysUntilDate:(id)arg1;
 - (long long)safari_numberOfWeeksUntilDate:(id)arg1;
 @end
 

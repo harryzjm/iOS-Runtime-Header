@@ -12,8 +12,8 @@
 @protocol HFIconDescriptor;
 
 @protocol HFIconDescriptor <NSObject, NAEquatable, NAHashable>
-@property(nonatomic, readonly) _Bool shouldForceLTR;
-@property(nonatomic, readonly) NSString *identifier;
+@property(readonly, nonatomic) _Bool shouldForceLTR;
+@property(readonly, nonatomic) NSString *identifier;
 
 @optional
 - (long long)compare:(id <HFIconDescriptor>)arg1;

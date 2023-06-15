@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     unsigned int _maxIDSStreamIdCount;
     unsigned short _repairedStreamID;
     unsigned int _repairedMaxNetworkBitrate;
+    int _repairedFECLevel;
     _Bool _startOnDemand;
     _Bool _isOneToOne;
     _Bool _shouldIgnoreRTPHeaderExtensions;
@@ -40,6 +41,7 @@ __attribute__((visibility("hidden")))
     unsigned int _negotiationProtocolMask;
 }
 
+@property(nonatomic) int repairedFECLevel; // @synthesize repairedFECLevel=_repairedFECLevel;
 @property(nonatomic) unsigned int negotiationProtocolMask; // @synthesize negotiationProtocolMask=_negotiationProtocolMask;
 @property(nonatomic) unsigned int streamGroupID; // @synthesize streamGroupID=_streamGroupID;
 @property(nonatomic) _Bool shouldIgnoreRTPHeaderExtensions; // @synthesize shouldIgnoreRTPHeaderExtensions=_shouldIgnoreRTPHeaderExtensions;

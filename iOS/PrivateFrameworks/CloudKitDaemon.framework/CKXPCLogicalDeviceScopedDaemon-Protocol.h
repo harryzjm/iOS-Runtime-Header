@@ -7,6 +7,7 @@
 @class CKThrottle;
 
 @protocol CKXPCLogicalDeviceScopedDaemon
+- (void)postClouddWalrusUpdateNotification;
 - (void)addClouddThrottle:(CKThrottle *)arg1;
 - (void)allClouddThrottlesWithCompletionHandler:(void (^)(NSArray *))arg1;
 - (void)clearAllClouddThrottles;

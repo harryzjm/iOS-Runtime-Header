@@ -7,6 +7,7 @@
 #import <Foundation/NSError.h>
 
 @interface NSError (XCUIApplicationProcess)
++ (id)_xcui_errorWithError:(id)arg1 prependingActivityTitle:(id)arg2;
 + (id)_xcui_errorWithDomain:(id)arg1 code:(long long)arg2 userInfo:(id)arg3 description:(id)arg4 arguments:(char *)arg5;
 + (id)_xcui_errorWithDomain:(id)arg1 code:(long long)arg2 description:(id)arg3;
 + (id)_xcui_error:(long long)arg1 userInfo:(id)arg2 description:(id)arg3;

@@ -7,6 +7,7 @@
 #import <MobileAsset/MAAsset.h>
 
 @interface MAAsset (MAAssetAdditions)
+- (_Bool)isEqualToSongAsset:(id)arg1;
 - (_Bool)isPresent;
 @end
 

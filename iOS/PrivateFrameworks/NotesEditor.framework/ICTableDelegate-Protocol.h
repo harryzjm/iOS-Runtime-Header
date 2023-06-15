@@ -4,16 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <NotesEditor/CRUndoDelegate-Protocol.h>
+#import <NotesEditor/ICCRUndoDelegate-Protocol.h>
 
-@class NSUUID, TTTextStorage;
+@class ICTTTextStorage, NSUUID;
 
-@protocol ICTableDelegate <CRUndoDelegate>
+@protocol ICTableDelegate <ICCRUndoDelegate>
 
 @optional
 - (void)tableDidInsertColumnID:(NSUUID *)arg1;
 - (void)tableWillRemoveColumnID:(NSUUID *)arg1;
 - (void)tableDidPopulateCellAtColumnIndex:(unsigned long long)arg1 rowIndex:(unsigned long long)arg2;
-- (void)tableDidCreateColumnTextStorage:(TTTextStorage *)arg1;
+- (void)tableDidCreateColumnTextStorage:(ICTTTextStorage *)arg1;
 @end
 

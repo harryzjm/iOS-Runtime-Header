@@ -9,6 +9,7 @@
 @class NSArray, NSData, NSDictionary, NSNumber, NSString;
 
 @protocol DTProcessControlServiceAuthorizedMethods <DTXAllowedRPC>
+- (id)insertViewDebuggingLibrariesForPid:(int)arg1;
 - (NSNumber *)requestDisableMemoryLimitsForPid:(int)arg1;
 - (void)sendProcessControlEvent:(NSData *)arg1 toPid:(NSNumber *)arg2;
 - (void)sendSignal:(NSNumber *)arg1 toPid:(NSNumber *)arg2;

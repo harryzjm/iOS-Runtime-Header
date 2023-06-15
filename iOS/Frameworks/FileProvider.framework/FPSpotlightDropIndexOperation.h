@@ -14,14 +14,14 @@ __attribute__((visibility("hidden")))
     FPSpotlightIndexer *_indexer;
     CSSearchableIndex *_index;
     NSString *_reason;
-    NSString *_domainID;
+    NSString *_spotlightDomainIdentifier;
 }
 
 + (void)deleteSearchableItemsAndClearClientStateWithDomainIdentifier:(id)arg1 index:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
 - (void)main;
 - (id)operationDescription;
-- (id)initWithIndexer:(id)arg1 index:(id)arg2 domainID:(id)arg3 reason:(id)arg4;
+- (id)initWithIndexer:(id)arg1 index:(id)arg2 spotlightDomainIdentifier:(id)arg3 reason:(id)arg4;
 
 @end
 

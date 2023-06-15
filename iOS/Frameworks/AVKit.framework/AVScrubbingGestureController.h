@@ -17,6 +17,8 @@ __attribute__((visibility("hidden")))
     AVScrubbingGestureConfiguration *_gestureConfiguration;
     float _currentScrubRate;
     float _startingMomentumRate;
+    float _initialNormalizedTouchTranslation;
+    float _initialNormalizedTimelinePosition;
     NSTimer *_scrubMomentumIncrementTimer;
     float _preScrubbingRate;
     _Bool _scrubsHaveMomentum;
@@ -38,6 +40,7 @@ __attribute__((visibility("hidden")))
 - (id)configurationForScrubbingGesturePlatformAdapter:(id)arg1;
 - (_Bool)scrubbingGesturePlatformAdapterIsActivelyScrubbing:(id)arg1;
 - (void)reset;
+@property(readonly, nonatomic) AVScrubbingGesturePlatformAdapter *platformAdapter;
 - (void)dealloc;
 - (id)initWithPlatformAdapter:(id)arg1;
 

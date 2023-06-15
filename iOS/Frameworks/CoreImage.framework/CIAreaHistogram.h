@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 - (id)outputData;
 - (_Bool)_inputsAreOK;
 - (struct IRect)_netExtent;
+- (id)outputImageMPS;
 
 @end
 

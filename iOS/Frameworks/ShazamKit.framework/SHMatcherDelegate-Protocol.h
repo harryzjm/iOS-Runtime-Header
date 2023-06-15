@@ -5,11 +5,12 @@
 //
 
 #import <ShazamKit/NSObject-Protocol.h>
+#import <ShazamKit/SHSpectralOutputDelegate-Protocol.h>
 
 @class SHMatcherResponse;
 @protocol SHMatcher;
 
-@protocol SHMatcherDelegate <NSObject>
+@protocol SHMatcherDelegate <NSObject, SHSpectralOutputDelegate>
 - (void)matcher:(id <SHMatcher>)arg1 didProduceResponse:(SHMatcherResponse *)arg2;
 @end
 

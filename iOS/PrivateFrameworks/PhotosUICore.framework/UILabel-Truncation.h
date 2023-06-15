@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UILabel.h>
+#import <UIKitCore/UILabel.h>
 
 @interface UILabel (Truncation)
 + (_Bool)px_isTruncatedForAttributedString:(id)arg1 forWidth:(double)arg2 lines:(long long)arg3;

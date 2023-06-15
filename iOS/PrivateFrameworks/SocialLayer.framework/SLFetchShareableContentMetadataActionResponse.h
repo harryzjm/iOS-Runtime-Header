@@ -4,18 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class SLShareableContentMetadata;
+@class SLShareableContentInitiatorRequest, SLShareableContentMetadata;
 
 __attribute__((visibility("hidden")))
 @interface SLFetchShareableContentMetadataActionResponse
 {
     SLShareableContentMetadata *_metadata;
+    SLShareableContentInitiatorRequest *_initiatorRequest;
 }
 
 + (_Bool)supportsSecureCoding;
 + (_Bool)supportsBSXPCSecureCoding;
-+ (id)responseWithMetadata:(id)arg1;
++ (id)responseWithMetadata:(id)arg1 initiatorRequest:(id)arg2;
 - (void).cxx_destruct;
+@property(retain, nonatomic) SLShareableContentInitiatorRequest *initiatorRequest; // @synthesize initiatorRequest=_initiatorRequest;
 @property(retain, nonatomic) SLShareableContentMetadata *metadata; // @synthesize metadata=_metadata;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

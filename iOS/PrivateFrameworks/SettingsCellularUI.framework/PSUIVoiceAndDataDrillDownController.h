@@ -6,13 +6,15 @@
 
 #import <Preferences/PSListItemsController.h>
 
-@class CTServiceDescriptor, CTXPCServiceSubscriptionContext, CoreTelephonyClient, NSString, PSUIVoiceAndDataDrillDownSwitchSpecifiersFactory;
+@class CTServiceDescriptor, CTXPCServiceSubscriptionContext, CoreTelephonyClient, NSString, PSUI5GStandaloneCache, PSUICoreTelephonyCarrierBundleCache, PSUIVoiceAndDataDrillDownSwitchSpecifiersFactory;
 
 __attribute__((visibility("hidden")))
 @interface PSUIVoiceAndDataDrillDownController : PSListItemsController
 {
     CTXPCServiceSubscriptionContext *_subscriptionContext;
     PSUIVoiceAndDataDrillDownSwitchSpecifiersFactory *_switchFactory;
+    PSUICoreTelephonyCarrierBundleCache *_cbCache;
+    PSUI5GStandaloneCache *_saCache;
     int _currentRATMode;
     CoreTelephonyClient *_ctClient;
     CTServiceDescriptor *_serviceDescriptor;
@@ -32,6 +34,8 @@ __attribute__((visibility("hidden")))
 - (_Bool)shouldShowFooterTextWithVoiceExplanation;
 - (_Bool)shouldShowVoNRSwitch;
 - (_Bool)shouldShowVoLTESwitch;
+- (_Bool)shouldShow5GReliabilityWarning;
+- (_Bool)shouldShow5GSABatteryLifeReliabilityWarning;
 - (id)getSwitchSpecifiers;
 - (void)updateCurrentRATModeFromSpecifier:(id)arg1;
 - (void)set5GRATModeSpecifierEnabledState:(id)arg1;
@@ -46,7 +50,7 @@ __attribute__((visibility("hidden")))
 - (void)setSpecifier:(id)arg1;
 - (void)startObservingNotifications;
 - (id)init;
-- (id)initWithCTClient:(id)arg1 switchFactory:(id)arg2;
+- (id)initWithCTClient:(id)arg1 switchFactory:(id)arg2 carrierBundleCache:(id)arg3 standaloneCache:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

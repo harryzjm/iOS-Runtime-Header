@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class VCDisplayLink, VCVideoStreamRateAdaptationFeedbackOnly, VideoAttributes;
+@class VCCannedVideoPacketSource, VCDisplayLink, VCVideoStreamRateAdaptationFeedbackOnly, VideoAttributes;
 
 __attribute__((visibility("hidden")))
 @interface VCVideoReceiverDefault
@@ -14,10 +14,9 @@ __attribute__((visibility("hidden")))
     struct tagHANDLE *_videoTransmitterHandle;
     long long _streamToken;
     void *_controlInfoGenerator;
-    VideoAttributes *remoteVideoAttributes;
-    _Bool receivedFirstRemoteFrame;
+    VideoAttributes *_remoteVideoAttributes;
+    _Bool _receivedFirstRemoteFrame;
     _Bool _shouldEnableFaceZoom;
-    _Bool _shouldEnableMLEnhance;
     _Bool _shouldUpdateRemoteScreenAttributes;
     double _lastKeyFrameRequestTime;
     unsigned short _lastKeyFrameRequestStreamID;
@@ -35,21 +34,23 @@ __attribute__((visibility("hidden")))
     _Bool _canRemoteResizePIP;
     unsigned long long _cvoExtensionID;
     _Bool _forceZeroRegionOfInterestOrigin;
+    _Bool _pendingVideoAttributesUpdateOnModeChange;
+    VCCannedVideoPacketSource *_cannedPacketSource;
 }
 
+@property _Bool receivedFirstRemoteFrame; // @synthesize receivedFirstRemoteFrame=_receivedFirstRemoteFrame;
 @property struct tagVCVideoReceiverConfig videoReceiverConfig; // @synthesize videoReceiverConfig=_videoReceiverConfig;
 @property(nonatomic) _Bool shouldUpdateRemoteScreenAttributes; // @synthesize shouldUpdateRemoteScreenAttributes=_shouldUpdateRemoteScreenAttributes;
-@property(nonatomic) _Bool shouldEnableMLEnhance; // @synthesize shouldEnableMLEnhance=_shouldEnableMLEnhance;
 @property(nonatomic) _Bool shouldEnableFaceZoom; // @synthesize shouldEnableFaceZoom=_shouldEnableFaceZoom;
-@property(retain) VideoAttributes *remoteVideoAttributes; // @synthesize remoteVideoAttributes;
+@property(retain) VideoAttributes *remoteVideoAttributes; // @synthesize remoteVideoAttributes=_remoteVideoAttributes;
+- (void)setJitterBufferMode:(int)arg1;
+- (void)setShouldEnableMLEnhance:(_Bool)arg1 streamID:(unsigned short)arg2;
 - (void)handleActiveConnectionChange:(id)arg1;
 - (void)setSynchronizer:(id)arg1;
 - (void)collectChannelMetrics:(CDStruct_b671a7c4 *)arg1 interval:(float)arg2;
 - (void)didSwitchFromStreamID:(unsigned short)arg1 toStreamID:(unsigned short)arg2;
 - (void)handleKeyFrameRequestWithSizeAndFistMBs:(unsigned short *)arg1 count:(int)arg2 didReceiveRTCPFB:(_Bool)arg3 didReceiveFIR:(_Bool)arg4;
 - (void)handleRequestingKeyFrameGenerationWithStreamID:(unsigned short)arg1 firType:(int)arg2;
-- (void)handleSampleBuffer:(struct opaqueCMSampleBuffer *)arg1;
-- (void)handleRemoteFrame:(struct __CVBuffer *)arg1 timestamp:(CDStruct_1b6d18a9)arg2 cameraStatusBits:(unsigned char)arg3;
 - (void)updateSourcePlayoutTimestamp:(CDStruct_1b6d18a9 *)arg1;
 - (void)setEnableRateAdaptation:(_Bool)arg1 maxBitrate:(unsigned int)arg2 minBitrate:(unsigned int)arg3 adaptationInterval:(double)arg4;
 - (double)roundTripTime;
@@ -72,7 +73,8 @@ __attribute__((visibility("hidden")))
 - (int)oneToOneStreamIndex;
 - (void)setFeedbackDelegate:(id)arg1;
 @property(nonatomic) int mode;
-- (id)initWithConfig:(struct tagVCVideoReceiverConfig *)arg1 delegate:(id)arg2 reportingAgent:(struct opaqueRTCReporting *)arg3 statisticsCollector:(id)arg4 transmitterHandle:(struct tagHANDLE *)arg5;
+- (void)setUpCannedInjector:(struct tagVCVideoReceiverConfig *)arg1;
+- (id)initWithConfig:(struct tagVCVideoReceiverConfig *)arg1 delegate:(id)arg2 delegateFunctions:(const struct tagVCVideoReceiverDelegateRealtimeInstanceVTable *)arg3 reportingAgent:(struct opaqueRTCReporting *)arg4 statisticsCollector:(id)arg5 transmitterHandle:(struct tagHANDLE *)arg6;
 
 @end
 

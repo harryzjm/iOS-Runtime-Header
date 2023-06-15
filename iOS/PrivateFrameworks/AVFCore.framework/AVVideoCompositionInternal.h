@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
     NSString *colorPrimaries;
     NSString *colorYCbCrMatrix;
     NSString *colorTransferFunction;
+    NSString *perFrameHDRDisplayMetadataPolicy;
     NSArray *instructions;
     _Bool auxiliaryTrackLayerSetLast;
     AVVideoCompositionCoreAnimationTool *animationTool;

@@ -18,6 +18,7 @@
     MISSING_TYPE *$__lazy_storage_$_liveBadgeLayout;
     MISSING_TYPE *$__lazy_storage_$_timeBadgeLayout;
     MISSING_TYPE *appearanceType;
+    MISSING_TYPE *$__lazy_storage_$_mediaTagsLayout;
 }
 
 @end

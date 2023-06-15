@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SoundAnalysis/NSObject-Protocol.h>
-
 @protocol SNSystemAudioAnalyzerProtocol;
 
-@protocol SNResourceCoordinatorProtocol <NSObject>
-- (id <SNSystemAudioAnalyzerProtocol>)createSystemAudioAnalyzer;
+@protocol SNResourceCoordinatorProtocol
+- (id <SNSystemAudioAnalyzerProtocol>)createSystemAudioAnalyzerWithError:(id *)arg1;
 @end
 

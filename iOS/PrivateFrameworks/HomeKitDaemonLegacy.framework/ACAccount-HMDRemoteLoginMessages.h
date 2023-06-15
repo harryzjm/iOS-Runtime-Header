@@ -6,10 +6,20 @@
 
 #import <Accounts/ACAccount.h>
 
-@class NSDictionary;
+@class NSDictionary, NSString;
 
 @interface ACAccount (HMDRemoteLoginMessages)
 @property(readonly, nonatomic) NSDictionary *messagePayload;
-- (id)description;
+@property(readonly, copy) NSString *hmd_ams_altDSID;
+@property(readonly, copy) NSString *hmd_aa_altDSID;
+@property(readonly, copy) NSString *description;
+
+// Remaining properties
+@property(readonly) NSString *aa_altDSID;
+@property(readonly) NSString *aa_personID;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
+@property(readonly) NSString *username;
 @end
 

@@ -7,7 +7,8 @@
 @class NSArray, NSString;
 
 @protocol GDViewXPCProtocol
-- (void)featureKeys:(void (^)(NSArray *, NSError *))arg1;
+- (void)reportSQLiteErrorForViewName:(NSString *)arg1 sqliteErrorCode:(long long)arg2 completion:(void (^)(_Bool, NSError *))arg3;
+- (void)reportUnknownErrorForViewName:(NSString *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (void)accessTokenForFeaturesWithIsSandboxed:(_Bool)arg1 completion:(void (^)(GDViewAccessToken *, NSError *))arg2;
 - (void)accessTokenForViewName:(NSString *)arg1 isSandboxed:(_Bool)arg2 completion:(void (^)(GDViewAccessToken *, NSError *))arg3;
 - (void)performUpdateForViewNames:(NSArray *)arg1 includeDependencies:(_Bool)arg2 completion:(void (^)(_Bool, NSError *))arg3;

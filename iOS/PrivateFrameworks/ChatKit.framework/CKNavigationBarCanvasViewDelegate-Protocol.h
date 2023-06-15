@@ -9,6 +9,7 @@
 @class UIView;
 
 @protocol CKNavigationBarCanvasViewDelegate <NSObject>
+- (_Bool)shouldConfigureForJunkModal;
 - (struct NSDirectionalEdgeInsets)systemMinimumLayoutMarginsForView:(UIView *)arg1;
 - (_Bool)shouldShowAvatarView;
 @end

@@ -11,6 +11,11 @@
 @interface _TtC7NewsUI236TagFeedViewerBarCompressionAnimating : _TtCs12_SwiftObject
 {
     MISSING_TYPE *viewController;
+    MISSING_TYPE *scrollView;
+    MISSING_TYPE *scrollPosition;
+    MISSING_TYPE *sectionModel;
+    MISSING_TYPE *percentage;
+    MISSING_TYPE *mastheadModel;
 }
 
 - (void)reloadWithTraitCollection:(id)arg1;

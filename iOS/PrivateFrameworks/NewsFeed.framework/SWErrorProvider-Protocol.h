@@ -9,8 +9,7 @@
 @class NSError;
 
 @protocol SWErrorProvider <NSObject>
-- (void)onError:(void (^)(NSError *))arg1;
-@property(nonatomic, copy) CDUnknownBlockType block;
-@property(nonatomic, readonly) NSError *error;
+@property(copy, nonatomic, setter=onError:) CDUnknownBlockType block;
+@property(readonly, nonatomic) NSError *error;
 @end
 

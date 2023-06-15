@@ -9,7 +9,6 @@
 @class NSString;
 @protocol MTLFunctionPointerHandleSPI;
 
-__attribute__((visibility("hidden")))
 @interface CaptureMTLFunctionPointerHandle : NSObject
 {
     id <MTLFunctionPointerHandleSPI> _baseObject;

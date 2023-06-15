@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface GEOPDSearchBusinessIntent : PBCodable
 {
     PBDataReader *_reader;
+    CDStruct_62a50c50 _keywordMuids;
     unsigned long long _businessId;
     GEOLatLng *_center;
     NSString *_name;
@@ -23,6 +24,7 @@ __attribute__((visibility("hidden")))
     struct {
         unsigned int has_businessId:1;
         unsigned int has_businessType:1;
+        unsigned int read_keywordMuids:1;
         unsigned int read_center:1;
         unsigned int read_name:1;
         unsigned int read_tokenSet:1;
@@ -39,6 +41,7 @@ __attribute__((visibility("hidden")))
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (void)dealloc;
 - (id)initWithData:(id)arg1;
 - (id)init;
 

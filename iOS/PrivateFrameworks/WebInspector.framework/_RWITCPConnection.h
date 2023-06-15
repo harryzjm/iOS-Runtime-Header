@@ -27,9 +27,7 @@ __attribute__((visibility("hidden")))
     id <_RWITCPConnectionDelegate> _delegate;
 }
 
-+ (id)TCPConnectionWithResolvedNetService:(id)arg1;
 + (id)TCPConnectionWithSocketPath:(id)arg1;
-+ (id)TCPConnectionWithPort:(unsigned short)arg1;
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <_RWITCPConnectionDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_processIncomingBytes:(const char *)arg1 length:(long long)arg2;

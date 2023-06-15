@@ -4,30 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <swiftCore/_TtCs12_SwiftObject.h>
-
-@class MISSING_TYPE;
-
-@interface _TtC7VFXCore20RenderCommandEncoder : _TtCs12_SwiftObject
+@interface _TtC7VFXCore20RenderCommandEncoder
 {
-    MISSING_TYPE *encoder;
-    MISSING_TYPE *renderPassFormat;
-    MISSING_TYPE *bufferPool;
-    MISSING_TYPE *workerIndex;
-    MISSING_TYPE *supportVertexAmplification;
-    MISSING_TYPE *counterRecorder;
-    MISSING_TYPE *cache;
-    MISSING_TYPE *lockCullMode;
-    MISSING_TYPE *lockFillMode;
-    MISSING_TYPE *vertexBuffers;
-    MISSING_TYPE *vertexTextures;
-    MISSING_TYPE *vertexSamplers;
-    MISSING_TYPE *fragmentBuffers;
-    MISSING_TYPE *fragmentTextures;
-    MISSING_TYPE *fragmentSamplers;
-    MISSING_TYPE *depthStencilStates;
-    MISSING_TYPE *renderPipelineState;
 }
+
+- (id)init;
+- (id)init:(id)arg1;
+- (void)drawIndexedPrimitives:(unsigned long long)arg1 indexType:(unsigned long long)arg2 indexBuffer:(id)arg3 indexBufferOffset:(unsigned long long)arg4 indirectBuffer:(id)arg5 indirectBufferOffset:(unsigned long long)arg6;
+- (void)drawIndexedPrimitives:(unsigned long long)arg1 indexCount:(unsigned long long)arg2 indexType:(unsigned long long)arg3 indexBuffer:(id)arg4 indexBufferOffset:(unsigned long long)arg5 instanceCount:(unsigned long long)arg6 baseVertex:(long long)arg7 baseInstance:(unsigned long long)arg8;
+- (void)drawIndexedPrimitives:(unsigned long long)arg1 indexCount:(unsigned long long)arg2 indexType:(unsigned long long)arg3 indexBuffer:(id)arg4 indexBufferOffset:(unsigned long long)arg5 instanceCount:(unsigned long long)arg6;
+- (void)drawIndexedPrimitives:(unsigned long long)arg1 indexCount:(unsigned long long)arg2 indexType:(unsigned long long)arg3 indexBuffer:(id)arg4 indexBufferOffset:(unsigned long long)arg5;
+- (void)drawPrimitives:(unsigned long long)arg1 indirectBuffer:(id)arg2 indirectBufferOffset:(unsigned long long)arg3;
+- (void)drawPrimitives:(unsigned long long)arg1 vertexStart:(unsigned long long)arg2 vertexCount:(unsigned long long)arg3 instanceCount:(unsigned long long)arg4 baseInstance:(unsigned long long)arg5;
+- (void)drawPrimitives:(unsigned long long)arg1 vertexStart:(unsigned long long)arg2 vertexCount:(unsigned long long)arg3 instanceCount:(unsigned long long)arg4;
+- (void)drawPrimitives:(unsigned long long)arg1 vertexStart:(unsigned long long)arg2 vertexCount:(unsigned long long)arg3;
 
 @end
 

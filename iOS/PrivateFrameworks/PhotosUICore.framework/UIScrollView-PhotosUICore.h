@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIScrollView.h>
+#import <UIKitCore/UIScrollView.h>
 
 @interface UIScrollView (PhotosUICore)
 @property(readonly, nonatomic) _Bool px_isPerformingScrollTest;
 - (void)px_cancelScrollAnimation;
 - (void)px_cancelScrollGesture;
+- (double)px_scrollDistanceFromEdge:(unsigned int)arg1;
 - (_Bool)_px_isScrolledAtEdge:(unsigned int)arg1 tolerance:(double)arg2;
 - (struct CGSize)_px_currentContentSize;
 @property(readonly, nonatomic) unsigned long long px_scrollableAxis;

@@ -10,10 +10,16 @@ __attribute__((visibility("hidden")))
 @interface VCPVideoMetaLensSwitchAnalyzer : NSObject
 {
     _Bool _hadZoom;
+    _Bool _settlingHadZoom;
     float _minZoom;
     float _maxZoom;
+    float _settlingMinZoom;
+    float _settlingMaxZoom;
 }
 
+@property(nonatomic) float settlingMaxZoom; // @synthesize settlingMaxZoom=_settlingMaxZoom;
+@property(nonatomic) float settlingMinZoom; // @synthesize settlingMinZoom=_settlingMinZoom;
+@property(nonatomic) _Bool settlingHadZoom; // @synthesize settlingHadZoom=_settlingHadZoom;
 @property(nonatomic) float maxZoom; // @synthesize maxZoom=_maxZoom;
 @property(nonatomic) float minZoom; // @synthesize minZoom=_minZoom;
 @property(nonatomic) _Bool hadZoom; // @synthesize hadZoom=_hadZoom;

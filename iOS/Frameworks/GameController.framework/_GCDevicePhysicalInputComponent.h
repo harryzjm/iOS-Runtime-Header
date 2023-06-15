@@ -6,26 +6,31 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, _GCDevicePhysicalInputBase;
+@class NSString, _GCDevicePhysicalInputGroup;
 @protocol GCDevice, NSObject><NSCopying><NSSecureCoding;
 
 __attribute__((visibility("hidden")))
 @interface _GCDevicePhysicalInputComponent : NSObject
 {
+    _GCDevicePhysicalInputGroup *_defaultPhysicalInputGroup;
     id _gamepadEventObservation;
     id <NSObject><NSCopying><NSSecureCoding> _identifier;
     id <GCDevice> _device;
-    _GCDevicePhysicalInputBase *_physicalInput;
 }
 
 - (void).cxx_destruct;
 @property(readonly) id <NSObject><NSCopying><NSSecureCoding> identifier; // @synthesize identifier=_identifier;
+- (void)physicalInputGroupPoll:(id)arg1 forLatest:(_Bool)arg2;
+- (void)physicalInputGroupPreferredTransactionQueueDepthDidChange:(id)arg1;
+- (void)physicalInputGroupQueueDidChange:(id)arg1;
 - (id)capture;
 - (void)setDispatchQueue:(id)arg1;
 - (void)setDevice:(id)arg1;
 - (id)init;
 - (id)initWithIdentifier:(id)arg1 defaultPhysicalInput:(id)arg2;
+- (id)initWithIdentifier:(id)arg1 physicalInputs:(id)arg2;
 - (void)setGamepadEventSource:(id)arg1;
+- (void)handleGamepadEvent:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

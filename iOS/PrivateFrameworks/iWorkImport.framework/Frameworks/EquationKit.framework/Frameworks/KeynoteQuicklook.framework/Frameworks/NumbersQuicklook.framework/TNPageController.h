@@ -23,6 +23,7 @@
     NSObject<TNPageControllerDelegate> *_delegate;
     TNDocumentRoot *_documentRoot;
     NSObject<TNPrintableInfoProviding> *_infoProvider;
+    TNPrintProperties *_printProperties;
     double _userViewScale;
     double _headerTextHeight;
     double _footerTextHeight;
@@ -36,7 +37,6 @@
     long long _priorPageCount;
     long long _subsequentPageCount;
     struct TSUCellCoord _maxPageCoordinate;
-    TNPrintProperties *_printProperties;
 }
 
 + (double)autoFitContentScaleForInfoProvider:(id)arg1;
@@ -48,7 +48,6 @@
 @property(nonatomic) _Bool postAutoFitContentScaleDidChangeNotificationAfterProcessingChanges; // @synthesize postAutoFitContentScaleDidChangeNotificationAfterProcessingChanges=_postAutoFitContentScaleDidChangeNotificationAfterProcessingChanges;
 @property(nonatomic) _Bool updateViewScaleForDrawablesChangeAfterProcessingChanges; // @synthesize updateViewScaleForDrawablesChangeAfterProcessingChanges=_updateViewScaleForDrawablesChangeAfterProcessingChanges;
 @property(nonatomic, getter=isProcessingChanges) _Bool processingChanges; // @synthesize processingChanges=_processingChanges;
-@property(retain, nonatomic) TNPrintProperties *printProperties; // @synthesize printProperties=_printProperties;
 @property(nonatomic) _Bool maxPageCoordinateValid; // @synthesize maxPageCoordinateValid=_maxPageCoordinateValid;
 @property(nonatomic) struct TSUCellCoord maxPageCoordinate; // @synthesize maxPageCoordinate=_maxPageCoordinate;
 @property(nonatomic) _Bool computingPageCounts; // @synthesize computingPageCounts=_computingPageCounts;
@@ -65,6 +64,7 @@
 @property(nonatomic) double footerTextHeight; // @synthesize footerTextHeight=_footerTextHeight;
 @property(nonatomic) double headerTextHeight; // @synthesize headerTextHeight=_headerTextHeight;
 @property(nonatomic) double userViewScale; // @synthesize userViewScale=_userViewScale;
+@property(retain, nonatomic) TNPrintProperties *printProperties; // @synthesize printProperties=_printProperties;
 @property(nonatomic) __weak NSObject<TNPrintableInfoProviding> *infoProvider; // @synthesize infoProvider=_infoProvider;
 @property(nonatomic) __weak TNDocumentRoot *documentRoot; // @synthesize documentRoot=_documentRoot;
 @property(nonatomic) __weak NSObject<TNPageControllerDelegate> *delegate; // @synthesize delegate=_delegate;

@@ -12,10 +12,14 @@ __attribute__((visibility("hidden")))
 @interface GEOPDSearchCategoryIntent : PBCodable
 {
     PBDataReader *_reader;
+    CDStruct_62a50c50 _keywordMuids;
     NSMutableArray *_canonicalNames;
     NSMutableArray *_categoryIds;
+    NSMutableArray *_categoryMappings;
     NSMutableArray *_expandedCategoryIds;
     NSMutableArray *_featureMaps;
+    NSMutableArray *_legacyCategoryIds;
+    NSMutableArray *_modernToLegacyIdMappings;
     NSMutableArray *_negativeCategorys;
     GEOPDSearchTokenSet *_tokenSet;
     NSString *_trigger;
@@ -23,10 +27,14 @@ __attribute__((visibility("hidden")))
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
     struct {
+        unsigned int read_keywordMuids:1;
         unsigned int read_canonicalNames:1;
         unsigned int read_categoryIds:1;
+        unsigned int read_categoryMappings:1;
         unsigned int read_expandedCategoryIds:1;
         unsigned int read_featureMaps:1;
+        unsigned int read_legacyCategoryIds:1;
+        unsigned int read_modernToLegacyIdMappings:1;
         unsigned int read_negativeCategorys:1;
         unsigned int read_tokenSet:1;
         unsigned int read_trigger:1;
@@ -43,6 +51,7 @@ __attribute__((visibility("hidden")))
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (void)dealloc;
 - (id)initWithData:(id)arg1;
 - (id)init;
 

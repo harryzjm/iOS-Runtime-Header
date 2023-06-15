@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
 @class CNPhotoPickerProviderItem, CNPhotoPickerVariantsManager, CNVisualIdentityEditablePrimaryAvatarViewController, NSArray, NSLayoutConstraint, NSString, UICollectionView;
 @protocol CNVisualIdentityAvatarStyleEditorViewControllerDelegate;
@@ -33,28 +33,25 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) CNPhotoPickerProviderItem *providerItem; // @synthesize providerItem=_providerItem;
 - (_Bool)editableAvatarViewControllerShouldBecomeFirstResponder:(id)arg1;
 - (void)editableAvatarViewController:(id)arg1 didUpdateWithProviderItem:(id)arg2;
-- (struct UIEdgeInsets)collectionView:(id)arg1 layout:(id)arg2 insetForSectionAtIndex:(long long)arg3;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 referenceSizeForHeaderInSection:(long long)arg3;
 - (id)collectionView:(id)arg1 viewForSupplementaryElementOfKind:(id)arg2 atIndexPath:(id)arg3;
+- (double)calculateSectionSideInset;
+- (struct UIEdgeInsets)collectionView:(id)arg1 layout:(id)arg2 insetForSectionAtIndex:(long long)arg3;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
+- (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 sizeForItemAtIndexPath:(id)arg3;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
 - (_Bool)isEmojiProviderItemType;
-- (double)fontSizeForContainerSize:(double)arg1;
-- (double)textFieldFontSize;
-- (double)editableAvatarViewEdgeLength;
 - (_Bool)shouldBeginEditing;
 - (void)beginEditingAvatar;
 - (void)dismissEmojiKeyboardIfNeeded;
 - (void)dismissTextKeyboardIfNeeded;
 - (void)didTapEditableAvatar:(id)arg1;
 - (id)updatedProviderItem;
-- (void)viewDidLayoutSubviews;
-- (long long)numberOfItemsPerRow;
-- (void)updateFlowLayoutItemSize;
 - (void)generateProviderItems;
 - (void)setupStyleCollectionView;
+- (void)viewDidLayoutSubviews;
 - (void)setupEditableAvatarViewController;
 - (void)viewDidLoad;
 - (id)initWithProviderItem:(id)arg1 variantsManager:(id)arg2;

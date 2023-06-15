@@ -21,28 +21,9 @@
     unsigned long long _backingType;
 }
 
-@property(readonly, nonatomic) unsigned int dataType; // @synthesize dataType=_dataType;
-@property(readonly, nonatomic) unsigned long long backingType; // @synthesize backingType=_backingType;
-@property(readonly, nonatomic) unsigned long long channel; // @synthesize channel=_channel;
-@property(readonly, nonatomic) unsigned long long width; // @synthesize width=_width;
-@property(readonly, nonatomic) unsigned long long height; // @synthesize height=_height;
-@property(readonly, nonatomic) unsigned long long size; // @synthesize size=_size;
-@property(readonly, nonatomic) unsigned long long bytesPerRow; // @synthesize bytesPerRow=_bytesPerRow;
 - (_Bool)isEqual:(id)arg1;
-- (_Bool)isEqualToRSSemanticImage:(id)arg1;
-- (void)_deallocateBacking;
-- (void)_allocateBacking;
-- (void)resizeToHeight:(unsigned long long)arg1 width:(unsigned long long)arg2 channel:(unsigned long long)arg3;
-- (void *)imageOfChannel:(unsigned long long)arg1;
-- (void *)data;
-- (void)reset;
 - (void)dealloc;
-- (id)initWithHeight:(unsigned long long)arg1 width:(unsigned long long)arg2 channel:(unsigned long long)arg3 backingType:(unsigned long long)arg4;
-- (id)initWithHeight:(unsigned long long)arg1 width:(unsigned long long)arg2 channel:(unsigned long long)arg3 backingType:(unsigned long long)arg4 dataType:(unsigned int)arg5;
-- (id)initWithHeight:(unsigned long long)arg1 width:(unsigned long long)arg2 channel:(unsigned long long)arg3;
 - (id)init;
-@property(readonly, nonatomic) struct __IOSurface *IOSurface;
-@property(readonly, nonatomic) struct __CVBuffer *pixelBuffer;
 
 @end
 

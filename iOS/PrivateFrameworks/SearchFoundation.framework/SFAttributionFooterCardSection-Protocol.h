@@ -6,7 +6,7 @@
 
 #import <SearchFoundation/SFCardSection-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString, SFColor, SFPunchout, SFRichText;
+@class NSData, NSDictionary, NSString, SFPunchout, SFRichText;
 
 @protocol SFAttributionFooterCardSection <SFCardSection>
 @property(readonly, nonatomic) NSData *jsonData;
@@ -15,14 +15,6 @@
 @property(retain, nonatomic) SFRichText *trailingAttribution;
 @property(retain, nonatomic) SFPunchout *leadingAttributionPunchout;
 @property(retain, nonatomic) SFRichText *leadingAttribution;
-@property(retain, nonatomic) SFColor *backgroundColor;
-@property(nonatomic) int separatorStyle;
 @property(copy, nonatomic) NSString *type;
-@property(nonatomic) _Bool hasBottomPadding;
-@property(nonatomic) _Bool hasTopPadding;
-@property(nonatomic) _Bool canBeHidden;
-@property(copy, nonatomic) NSString *punchoutPickerDismissText;
-@property(copy, nonatomic) NSString *punchoutPickerTitle;
-@property(copy, nonatomic) NSArray *punchoutOptions;
 @end
 

@@ -4,24 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UITextView.h>
+#import <UIKitCore/UITextView.h>
 
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
 @interface _TtC7SwiftUI13UIKitTextView : UITextView
 {
-    MISSING_TYPE *upperLimit;
-    MISSING_TYPE *lowerLimit;
-    MISSING_TYPE *uiDelegate;
-    MISSING_TYPE *uiDefaultTextAttributes;
+    MISSING_TYPE *didShowObserver;
+    MISSING_TYPE *willHideObserver;
 }
 
 - (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 textContainer:(id)arg2;
-- (void)pressesEnded:(id)arg1 withEvent:(id)arg2;
-- (void)pressesBegan:(id)arg1 withEvent:(id)arg2;
+- (_Bool)becomeFirstResponder;
 
 @end
 

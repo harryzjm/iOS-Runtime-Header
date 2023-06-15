@@ -6,12 +6,13 @@
 
 #import <AVKit/NSObject-Protocol.h>
 
-@class AVMobileControlsViewController;
+@class AVMediaSelectionOption, AVMobileControlsViewController, NSString;
 @protocol AVPlayerViewControllerAnimationCoordinator;
 
 @protocol AVMobileControlsViewControllerDelegate <NSObject>
 
 @optional
+- (NSString *)controlsViewController:(AVMobileControlsViewController *)arg1 displayNameForMediaSelectionOption:(AVMediaSelectionOption *)arg2;
 - (void)controlsViewControllerDidUpdateLayoutGuides:(AVMobileControlsViewController *)arg1;
 - (void)controlsViewController:(AVMobileControlsViewController *)arg1 didBeginUpdatingVisibleControlsTo:(unsigned long long)arg2 withAnimationCoordinator:(id <AVPlayerViewControllerAnimationCoordinator>)arg3;
 - (void)controlsViewController:(AVMobileControlsViewController *)arg1 willBeginUpdatingVisibleControlsTo:(unsigned long long)arg2 withAnimationCoordinator:(id <AVPlayerViewControllerAnimationCoordinator>)arg3;

@@ -54,7 +54,7 @@ __attribute__((visibility("hidden")))
 - (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
 - (void)_clearAssistants;
 - (void)_setAssistants;
-- (void)traitCollectionDidChange:(id)arg1;
+- (void)_contentSizeCategoryDidChange;
 - (void)updateContent;
 - (void)_updateContentAndInvalidate:(_Bool)arg1;
 - (void)safeAreaInsetsDidChange;

@@ -9,12 +9,12 @@
 @class NSAttributedString, NSString, UIImage;
 
 @protocol UISearchSuggestion <NSObject>
-@property(nonatomic, copy) id representedObject;
-@property(nonatomic, readonly) NSAttributedString *localizedAttributedSuggestion;
-@property(nonatomic, readonly) NSString *localizedSuggestion;
+@property(retain, nonatomic) id representedObject;
+@property(readonly, nonatomic) NSAttributedString *localizedAttributedSuggestion;
+@property(readonly, nonatomic) NSString *localizedSuggestion;
 
 @optional
-@property(nonatomic, readonly) UIImage *iconImage;
-@property(nonatomic, readonly) NSString *localizedDescription;
+@property(readonly, nonatomic) UIImage *iconImage;
+@property(readonly, nonatomic) NSString *localizedDescription;
 @end
 

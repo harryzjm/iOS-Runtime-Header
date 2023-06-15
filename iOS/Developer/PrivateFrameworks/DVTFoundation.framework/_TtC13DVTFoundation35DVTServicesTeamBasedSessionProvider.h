@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class MISSING_TYPE, NSString;
+@class MISSING_TYPE, NSString, _TtC13DVTFoundation36DVTServicesSessionProviderCredential;
 
 @interface _TtC13DVTFoundation35DVTServicesTeamBasedSessionProvider : NSObject
 {
     MISSING_TYPE *credential;
-    MISSING_TYPE *userDescription;
+    MISSING_TYPE *$__lazy_storage_$_serializableCredential;
 }
 
 - (void).cxx_destruct;
@@ -19,6 +19,7 @@
 - (id)servicesSessionWithError:(id *)arg1;
 - (id)initWithCredential:(id)arg1;
 @property(nonatomic, readonly) NSString *userDescription;
+@property(nonatomic, retain) _TtC13DVTFoundation36DVTServicesSessionProviderCredential *serializableCredential;
 
 @end
 

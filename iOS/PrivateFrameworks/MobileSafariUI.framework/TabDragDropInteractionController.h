@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMapTable, NSString, TabDocumentDropHandler;
+@class NSMapTable, NSMutableSet, NSString, TabDocumentDropHandler;
 @protocol TabDocumentDragDropDataSource, UIDragSession;
 
 __attribute__((visibility("hidden")))
@@ -17,10 +17,12 @@ __attribute__((visibility("hidden")))
     unsigned long long _dropAnimationCount;
     NSMapTable *_hasHiddenDocumentsForDragSessions;
     id <UIDragSession> _pendingDragSession;
+    NSMutableSet *_tabViewsPendingActivation;
     id <TabDocumentDragDropDataSource> _dataSource;
     TabDocumentDropHandler *_dropHandler;
 }
 
++ (_Bool)canDelegateDragDropForTabCollectionView:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) TabDocumentDropHandler *dropHandler; // @synthesize dropHandler=_dropHandler;
 @property(readonly, nonatomic) __weak id <TabDocumentDragDropDataSource> dataSource; // @synthesize dataSource=_dataSource;
@@ -36,7 +38,7 @@ __attribute__((visibility("hidden")))
 - (id)_viewForTransitionToItem:(id)arg1 withTabCollectionView:(id)arg2;
 - (void)_unhideTabDocumentsForLocalDragSession:(id)arg1;
 - (id)_tabCollectionItemAtPoint:(struct CGPoint)arg1 interaction:(id)arg2;
-- (id)_newDragItemsAtPoint:(struct CGPoint)arg1 excludingTabDocuments:(id)arg2 interaction:(id)arg3;
+- (id)_newDragItemsAtPoint:(struct CGPoint)arg1 excludingTabDocuments:(id)arg2 interaction:(id)arg3 session:(id)arg4;
 - (long long)_dragInteraction:(id)arg1 dataOwnerForAddingToSession:(id)arg2 withTouchAtPoint:(struct CGPoint)arg3;
 - (long long)_dragInteraction:(id)arg1 dataOwnerForSession:(id)arg2;
 - (void)_cleanUpDragPreviewForSesssion:(id)arg1;

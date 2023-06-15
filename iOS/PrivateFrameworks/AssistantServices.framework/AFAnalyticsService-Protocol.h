@@ -9,7 +9,7 @@
 @class NSArray, NSData, NSString, NSUUID;
 
 @protocol AFAnalyticsService <NSObject>
-- (oneway void)stageUEIEventData:(NSData *)arg1 timestamp:(unsigned long long)arg2;
+- (oneway void)stageUEIEventData:(NSData *)arg1 timestamp:(unsigned long long)arg2 completion:(void (^)(void))arg3;
 - (oneway void)logInstrumentationOfType:(NSString *)arg1 machAbsoluteTime:(unsigned long long)arg2 turnIdentifier:(NSUUID *)arg3;
 - (oneway void)endEventsGrouping;
 - (oneway void)beginEventsGrouping;

@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class XCTWaiterWait;
 @protocol XCTWaiterManagement;
 
 @protocol XCTWaiterManager
-- (void)waiterDidFinishWaiting:(id <XCTWaiterManagement>)arg1;
-- (void)waiterTimedOutWhileWaiting:(id <XCTWaiterManagement>)arg1 withCompletion:(void (^)(void))arg2;
-- (void)waiterWillBeginWaiting:(id <XCTWaiterManagement>)arg1;
+- (void)waiter:(id <XCTWaiterManagement>)arg1 didFinishWaitingForWait:(XCTWaiterWait *)arg2;
+- (void)waiter:(id <XCTWaiterManagement>)arg1 timedOutWhileWaitingForWait:(XCTWaiterWait *)arg2;
+- (void)waiter:(id <XCTWaiterManagement>)arg1 willBeginWaitingForWait:(XCTWaiterWait *)arg2;
 @end
 

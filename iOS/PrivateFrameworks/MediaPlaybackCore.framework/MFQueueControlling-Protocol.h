@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class AVPlayerPlaybackCoordinator;
+@class AVPlayerPlaybackCoordinator, NSArray, NSString;
 @protocol MFPlayerItem, MFQueuePlayerItem;
 
 @protocol MFQueueControlling
@@ -12,5 +12,10 @@
 - (id <MFQueuePlayerItem>)queueItemForPlayerItem:(id <MFPlayerItem>)arg1 allowReuse:(_Bool)arg2;
 - (id <MFQueuePlayerItem>)itemToFollowItem:(id <MFQueuePlayerItem>)arg1 direction:(long long)arg2 distance:(long long)arg3 reason:(long long)arg4;
 - (void)updatePlayerPlaybackCoordinator:(AVPlayerPlaybackCoordinator *)arg1;
+- (void)invalidateCache;
+- (void)invalidateCacheWithContentItemID:(NSString *)arg1;
+- (id <MFQueuePlayerItem>)queueItemForContentItemID:(NSString *)arg1 allowReuse:(_Bool)arg2 error:(id *)arg3;
+- (NSArray *)contentItemIDsFromOffset:(long long)arg1 toOffset:(long long)arg2 nowPlayingIndex:(long long *)arg3;
+@property(nonatomic, readonly) NSString *targetContentItemID;
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIDatePicker.h>
+#import <UIKitCore/UIDatePicker.h>
 
 @interface UIDatePicker (PKAppearanceObject)
 - (void)pk_applyAppearance:(id)arg1;

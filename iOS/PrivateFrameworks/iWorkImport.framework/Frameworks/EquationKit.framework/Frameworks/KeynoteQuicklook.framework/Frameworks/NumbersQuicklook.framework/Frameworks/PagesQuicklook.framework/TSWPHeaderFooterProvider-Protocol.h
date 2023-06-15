@@ -7,7 +7,6 @@
 #import <PagesQuicklook/NSObject-Protocol.h>
 
 @class NSEnumerator, TSKDocumentRoot, TSWPStorage;
-@protocol TSKModel;
 
 @protocol TSWPHeaderFooterProvider <NSObject>
 @property(readonly, nonatomic) double bodyWidth;
@@ -16,8 +15,8 @@
 @property(readonly, nonatomic) _Bool usesSingleHeaderFooter;
 - (_Bool)isHeaderFooterEmpty:(long long)arg1 fragmentAtIndex:(long long)arg2;
 - (_Bool)isHeaderFooterEmpty:(long long)arg1;
-- (long long)headerFragmentIndexForModel:(id <TSKModel>)arg1;
-- (long long)headerFooterTypeForModel:(id <TSKModel>)arg1;
+- (long long)headerFragmentIndexForStorage:(TSWPStorage *)arg1;
+- (long long)headerFooterTypeForStorage:(TSWPStorage *)arg1;
 - (TSWPStorage *)headerFooter:(long long)arg1 fragmentAtIndex:(long long)arg2;
 @end
 

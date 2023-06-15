@@ -6,10 +6,13 @@
 
 #import <AvatarUI/NSObject-Protocol.h>
 
-@class AVTStickerCollectionViewCell;
+@class AVTStickerCollectionViewCell, UIView;
 
 @protocol AVTStickerCollectionViewCellDelegate <NSObject>
 - (void)stickerCellDidPeelSticker:(AVTStickerCollectionViewCell *)arg1;
 - (void)stickerCellDidTapSticker:(AVTStickerCollectionViewCell *)arg1;
+
+@optional
+- (UIView *)dragPreviewContainerForLiftingStickerInStickerCell:(AVTStickerCollectionViewCell *)arg1;
 @end
 

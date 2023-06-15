@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSString;
+@class NSArray, NSString, NSURL;
 @protocol _TtP8Settings27SettingsHostServiceProvider_;
 
 @protocol _TtP8Settings23SettingsServiceProtocol_
 @property(nonatomic, retain) id <_TtP8Settings27SettingsHostServiceProvider_> serviceHost;
 
 @optional
+- (void)openURL:(NSURL *)arg1;
 - (void)getSidebarSections:(void (^)(NSArray *))arg1;
 - (void)filterSearchAnchorsForSidebarItem:(NSString *)arg1 suggestedAnchors:(NSArray *)arg2 reply:(void (^)(NSArray *))arg3;
 - (void)isAvailable:(void (^)(long long))arg1;

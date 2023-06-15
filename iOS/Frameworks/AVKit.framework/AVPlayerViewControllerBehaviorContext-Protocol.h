@@ -12,6 +12,8 @@
 @protocol AVPlayerViewControllerBehaviorContext <NSObject>
 
 @optional
+- (void)willEnterFullScreen;
+- (void)willExitFullScreen;
 - (void)playerControllerDidChange;
 - (UIView<AVPlaybackContentContainer> *)makePlaybackContentContainerWithFrame:(struct CGRect)arg1 activeContentView:(AVPlaybackContentContainerView *)arg2;
 - (void)didStopPictureInPicture;

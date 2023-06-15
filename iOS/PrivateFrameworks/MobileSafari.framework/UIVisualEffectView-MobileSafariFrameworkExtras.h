@@ -8,6 +8,7 @@
 
 @interface UIVisualEffectView (MobileSafariFrameworkExtras)
 + (id)sf_startPageCellBackgroundEffectViewWithShadow:(_Bool)arg1;
++ (id)safari_statusBarGradientBlurEffectView;
 - (void)sf_setHighlighted:(_Bool)arg1 cellState:(id)arg2 nonVibrantBackgroundColor:(id)arg3;
 - (void)sf_setHighlighted:(_Bool)arg1 cellState:(id)arg2;
 - (void)sf_configureAsStartPageForegroundWithEffectStyle:(long long)arg1;

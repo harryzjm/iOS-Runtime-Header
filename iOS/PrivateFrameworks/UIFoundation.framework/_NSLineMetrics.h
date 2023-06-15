@@ -27,8 +27,8 @@ __attribute__((visibility("hidden")))
 - (double)widthOfSubstringWithRange:(struct _NSRange)arg1;
 - (void)_ensureGlyphCapacity:(unsigned long long)arg1;
 - (void)dealloc;
-- (void)setAttributedString:(id)arg1 range:(struct _NSRange)arg2 line:(const struct __CTLine *)arg3;
-- (id)initWithAttributedString:(id)arg1 range:(struct _NSRange)arg2 line:(const struct __CTLine *)arg3;
+- (void)setAttributedString:(id)arg1 range:(struct _NSRange)arg2 line:(struct __CTLine *)arg3;
+- (id)initWithAttributedString:(id)arg1 range:(struct _NSRange)arg2 line:(struct __CTLine *)arg3;
 - (id)initWithAttributedString:(id)arg1 range:(struct _NSRange)arg2;
 - (void)_calculatePositions;
 

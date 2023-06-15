@@ -6,7 +6,7 @@
 
 #import <UIKit/UITableViewCell.h>
 
-@class NSArray, NSLayoutConstraint, NSString, UIButton, UIImage, UIImageView, UILabel, UIView, WBSSavedAccount;
+@class NSArray, NSLayoutConstraint, NSString, SFAccountIconSharingBadgeImageCoordinator, UIButton, UIImage, UIImageView, UILabel, UIView, WBSSavedAccount;
 @protocol SFSecurityRecommendationInfoCellDelegate;
 
 __attribute__((visibility("hidden")))
@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     NSLayoutConstraint *_standardTitleTrailingConstraint;
     UIButton *_hideButton;
     NSArray *_hideButtonConstraints;
+    SFAccountIconSharingBadgeImageCoordinator *_badgeImageCoordinator;
     WBSSavedAccount *_savedAccount;
     id <SFSecurityRecommendationInfoCellDelegate> _delegate;
 }
@@ -32,6 +33,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) WBSSavedAccount *savedAccount; // @synthesize savedAccount=_savedAccount;
 @property(retain, nonatomic) UILabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
 @property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
+- (void)_updateSharedAccountBadgeImageViewIfNecessary;
 - (double)_iconWidth;
 - (void)showPlaceholderImageForDomain:(id)arg1 backgroundColor:(id)arg2;
 - (void)setSavedAccount:(id)arg1;
@@ -43,6 +45,7 @@ __attribute__((visibility("hidden")))
 - (void)setShowsUpgradeCompletionCheckmark:(_Bool)arg1;
 - (void)showCheckmarkForDetailView;
 @property(retain, nonatomic) UIImage *icon;
+- (void)layoutSubviews;
 - (id)initWithConfiguration:(unsigned long long)arg1 reuseIdentifier:(id)arg2;
 
 // Remaining properties

@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)_prepareViewForTransition;
+- (id)toViewController;
 - (void)_animateTransitionWithOperation:(long long)arg1;
 - (void)animatePopTransition;
 - (void)animatePushTransition;

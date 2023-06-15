@@ -13,20 +13,24 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *_queue;
     MISSING_TYPE *_calloutQueue;
-    MISSING_TYPE *_configurationService;
+    MISSING_TYPE *_hostService;
     MISSING_TYPE *_extensionManager;
     MISSING_TYPE *_subscriptions;
+    MISSING_TYPE *_keepAliveAssertionProvider;
     MISSING_TYPE *_lock;
     MISSING_TYPE *_lock_processMonitor;
     MISSING_TYPE *_lock_knownExtensionBundleIdentifiers;
     MISSING_TYPE *_lock_knownApplicationBundleIdentifiers;
     MISSING_TYPE *_lock_runningBundleIdentifiersToPIDs;
+    MISSING_TYPE *_lock_processHandlesToObserve;
     MISSING_TYPE *_lock_runningBundleIdentifiersWithVisibleScenes;
     MISSING_TYPE *_lock_runningBundleIdentifiersWithExemptions;
-    MISSING_TYPE *_lock_formerlyVisibleBundleIdentifiers;
     MISSING_TYPE *_lock_bundleIdentifiersToSuspensionObservers;
-    MISSING_TYPE *_lock_graceExpirationTimer;
     MISSING_TYPE *_lock_observers;
+    MISSING_TYPE *_lock_formerlyVisibleApplicationBundleIdentifiers;
+    MISSING_TYPE *_lock_formerlyVisibleApplicationsGraceExpirationTimer;
+    MISSING_TYPE *_lock_formerlyActiveSessionBundleIdentifiers;
+    MISSING_TYPE *_lock_formerlyActiveSessionsGraceExpirationTimer;
 }
 
 - (void).cxx_destruct;

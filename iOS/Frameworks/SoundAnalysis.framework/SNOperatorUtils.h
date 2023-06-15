@@ -11,5 +11,13 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (_Bool)sendEventToDownstreamHandler:(CDUnknownBlockType)arg1 toPortID:(id)arg2 input:(id)arg3 terminationError:(id)arg4 throughOptionalOperator:(id)arg5 operatorPortID:(id)arg6 error:(id *)arg7;
++ (CDUnknownBlockType)downstreamHandlerForwardingToOther:(CDUnknownBlockType)arg1 portID:(id)arg2;
++ (_Bool)sendEventToOperator:(id)arg1 portID:(id)arg2 input:(id)arg3 terminationError:(id)arg4 downstreamHandler:(CDUnknownBlockType)arg5 error:(id *)arg6;
++ (_Bool)validateOperatorEventIsValidGivenInput:(id)arg1 terminationError:(id)arg2 error:(id *)arg3;
++ (_Bool)checkOperatorEventIsValidGivenInput:(id)arg1 terminationError:(id)arg2;
++ (CDUnknownBlockType)ignoreDownstreamHandler;
+- (id)init;
+
 @end
 

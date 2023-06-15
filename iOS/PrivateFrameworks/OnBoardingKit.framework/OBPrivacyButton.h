@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
     _Bool _underlineLinks;
 }
 
++ (id)buttonWithType:(long long)arg1;
 @property(nonatomic) _Bool underlineLinks; // @synthesize underlineLinks=_underlineLinks;
 - (void)tintColorDidChange;
 

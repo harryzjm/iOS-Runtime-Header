@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class LPPadding, LPPointUnit, LPTextViewStyle;
+@class LPPadding, LPPointUnit, LPTextViewStyle, UIColor;
 
 __attribute__((visibility("hidden")))
 @interface LPCollaborationFooterStyle : NSObject
@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     _Bool _useFullWidth;
     _Bool _useInlineIndicator;
     _Bool _useFullWidthDuringSizing;
+    _Bool _ignoreSafeAreaInset;
     LPPadding *_margin;
     LPPadding *_separatorMargin;
     LPPadding *_padding;
@@ -22,13 +23,16 @@ __attribute__((visibility("hidden")))
     LPPointUnit *_cornerRadius;
     LPTextViewStyle *_options;
     LPTextViewStyle *_handle;
+    UIColor *_backgroundColor;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool ignoreSafeAreaInset; // @synthesize ignoreSafeAreaInset=_ignoreSafeAreaInset;
 @property(nonatomic) _Bool useFullWidthDuringSizing; // @synthesize useFullWidthDuringSizing=_useFullWidthDuringSizing;
 @property(nonatomic) _Bool useInlineIndicator; // @synthesize useInlineIndicator=_useInlineIndicator;
 @property(nonatomic) _Bool useFullWidth; // @synthesize useFullWidth=_useFullWidth;
 @property(nonatomic) _Bool showSeparator; // @synthesize showSeparator=_showSeparator;
+@property(retain, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property(readonly, nonatomic) LPTextViewStyle *handle; // @synthesize handle=_handle;
 @property(readonly, nonatomic) LPTextViewStyle *options; // @synthesize options=_options;
 @property(retain, nonatomic) LPPointUnit *cornerRadius; // @synthesize cornerRadius=_cornerRadius;

@@ -9,7 +9,7 @@
 @class NSData, NSString, OS_dispatch_queue;
 
 @protocol FCMagazinesConfigurationManager <NSObject>
+@property(readonly, nonatomic) NSData *magazinesConfigurationData;
 - (void)fetchMagazinesConfigurationIfNeededWithCompletionQueue:(OS_dispatch_queue *)arg1 formatVersion:(NSString *)arg2 completion:(void (^)(NSData *, NSError *))arg3;
-@property(nonatomic, readonly) NSData *magazinesConfigurationData;
 @end
 

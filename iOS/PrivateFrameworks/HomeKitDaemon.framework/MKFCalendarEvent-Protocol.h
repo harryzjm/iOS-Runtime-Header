@@ -7,12 +7,12 @@
 #import <HomeKitDaemon/MKFCalendarEventPublicExtensions-Protocol.h>
 #import <HomeKitDaemon/MKFEvent-Protocol.h>
 
-@class MKFCalendarEventDatabaseID, NSData;
+@class MKFCalendarEventDatabaseID, NSDateComponents;
 @protocol MKFHome;
 
 @protocol MKFCalendarEvent <MKFEvent, MKFCalendarEventPublicExtensions>
 @property(readonly) id <MKFHome> home;
 @property(readonly, copy, nonatomic) MKFCalendarEventDatabaseID *databaseID;
-@property(retain, nonatomic) NSData *fireDateComponents;
+@property(retain, nonatomic) NSDateComponents *fireDateComponents;
 @end
 

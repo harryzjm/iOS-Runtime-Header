@@ -38,7 +38,7 @@
     MISSING_TYPE *displayPreferences;
     MISSING_TYPE *activityTypeBehavior;
     MISSING_TYPE *activityRings;
-    MISSING_TYPE *watchConnectionState;
+    MISSING_TYPE *workoutDeviceConnection;
     MISSING_TYPE *supportedElements;
     MISSING_TYPE *currentElements;
 }

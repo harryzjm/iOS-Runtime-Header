@@ -12,13 +12,10 @@
 {
     MISSING_TYPE *locale;
     MISSING_TYPE *baseStyler;
-    MISSING_TYPE *cachedPositiveLineStyle;
-    MISSING_TYPE *cachedNegativeLineStyle;
-    MISSING_TYPE *cachedPlaceholderLineStyle;
+    MISSING_TYPE *sparklineStyleCache;
     MISSING_TYPE *baselineIndicatorWidth;
+    MISSING_TYPE *currentTraitCollection;
 }
-
-- (void)accessibilityContrastDidChange;
 
 @end
 

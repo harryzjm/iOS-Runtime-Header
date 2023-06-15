@@ -11,12 +11,14 @@
 @interface _TtC24IntelligencePlatformCore22BehaviorHistoryUtility : _TtCs12_SwiftObject
 {
     MISSING_TYPE *graphStore;
+    MISSING_TYPE *config;
+    MISSING_TYPE *handleView;
+    MISSING_TYPE *phPersonIdentifierMapView;
     MISSING_TYPE *$__lazy_storage_$_biomeLibrary;
-    MISSING_TYPE *$__lazy_storage_$_appLaunchStream;
-    MISSING_TYPE *$__lazy_storage_$_appIntentStream;
+    MISSING_TYPE *$__lazy_storage_$_appInFocusStream;
     MISSING_TYPE *$__lazy_storage_$_poiCategoryStream;
-    MISSING_TYPE *$__lazy_storage_$_semanticLocationStream;
     MISSING_TYPE *$__lazy_storage_$_focusModeStream;
+    MISSING_TYPE *$__lazy_storage_$_appIntentStream;
     MISSING_TYPE *$__lazy_storage_$_carPlayStream;
     MISSING_TYPE *$__lazy_storage_$_homeKitAccessoryStream;
     MISSING_TYPE *$__lazy_storage_$_deviceLockedStream;
@@ -25,6 +27,9 @@
     MISSING_TYPE *$__lazy_storage_$_wifiEventStream;
     MISSING_TYPE *$__lazy_storage_$_bluetoothEventStream;
     MISSING_TYPE *$__lazy_storage_$_chargingEventStream;
+    MISSING_TYPE *$__lazy_storage_$_semanticLocationStream;
+    MISSING_TYPE *$__lazy_storage_$_geoHashStream;
+    MISSING_TYPE *$__lazy_storage_$_calendar;
 }
 
 @end

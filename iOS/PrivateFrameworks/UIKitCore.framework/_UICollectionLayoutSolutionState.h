@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     NSArray *_bookmarks;
     _UIRTree *_geometricIndexer;
     _UIOrderedRangeIndexer *_itemRangeIndexer;
+    _UIOrderedRangeIndexer *_preferredSizeGroupingIndexer;
     NSDictionary *_auxillaryRangeIndexerKindDict;
 }
 

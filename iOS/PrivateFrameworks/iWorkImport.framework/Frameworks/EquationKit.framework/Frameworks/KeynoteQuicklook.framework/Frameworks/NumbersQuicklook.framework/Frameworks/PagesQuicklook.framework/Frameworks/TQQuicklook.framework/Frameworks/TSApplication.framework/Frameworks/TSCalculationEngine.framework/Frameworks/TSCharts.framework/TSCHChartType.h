@@ -143,6 +143,7 @@
 @property(readonly, nonatomic) _Bool requiresStagesBuildingInReverse;
 @property(readonly, nonatomic) _Bool supportsBackgroundFill;
 @property(readonly, nonatomic) _Bool supportsEditing;
+@property(readonly, nonatomic) _Bool supportsSummaryValueLabels;
 @property(readonly, nonatomic) _Bool supportsValueLabels;
 @property(readonly, nonatomic) _Bool isPseudoType;
 @property(readonly, nonatomic) _Bool supportsSeriesStroke;

@@ -20,6 +20,7 @@
 - (void)pauseApp:(ASDApp *)arg1 withReplyHandler:(void (^)(NSError *))arg2;
 - (void)cancelApp:(ASDApp *)arg1 withReplyHandler:(void (^)(NSError *))arg2;
 - (void)cancelApp:(ASDApp *)arg1 onPairedDevice:(NSUUID *)arg2 withReplyHandler:(void (^)(NSError *))arg3;
+- (void)executeQueryForUpdatesReloadingFromServer:(_Bool)arg1 withReplyHandler:(void (^)(NSArray *, NSError *))arg2;
 - (void)executeQueryWithPredicate:(NSPredicate *)arg1 onPairedDevice:(NSUUID *)arg2 withReplyHandler:(void (^)(NSArray *, NSError *))arg3;
 - (void)executeQueryWithPredicate:(NSPredicate *)arg1 withReplyHandler:(void (^)(NSArray *, NSError *))arg2;
 @end

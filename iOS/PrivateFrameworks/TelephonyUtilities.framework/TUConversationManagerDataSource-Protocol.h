@@ -6,10 +6,11 @@
 
 #import <TelephonyUtilities/NSObject-Protocol.h>
 
-@class NSArray, NSDate, NSDictionary, NSSet, NSString, NSURL, NSUUID, TUConversation, TUConversationActivity, TUConversationActivitySession, TUConversationLink, TUConversationMember, TUJoinConversationRequest, TUScreenShareAttributes;
-@protocol TUConversationManagerDataSourceDelegate, TUConversationMediaControllerDataSourceDelegate;
+@class NSArray, NSDate, NSDictionary, NSSet, NSString, NSURL, NSUUID, TUConversation, TUConversationActivity, TUConversationActivitySession, TUConversationHandoffContext, TUConversationLink, TUConversationMember, TUJoinConversationRequest, TUScreenShareAttributes;
+@protocol TUConversationManagerDataSourceDelegate, TUConversationMediaControllerDataSourceDelegate, TUConversationReactionsControllerDataSourceDelegate;
 
 @protocol TUConversationManagerDataSource <NSObject>
+@property(nonatomic) __weak id <TUConversationReactionsControllerDataSourceDelegate> reactionsDelegate;
 @property(nonatomic) __weak id <TUConversationMediaControllerDataSourceDelegate> mediaDelegate;
 @property(nonatomic) __weak id <TUConversationManagerDataSourceDelegate> delegate;
 @property(readonly, nonatomic) _Bool isScreenSharingAvailable;
@@ -53,19 +54,17 @@
 - (void)refreshActiveConversations;
 - (void)registerMessagesGroupUUIDForConversationUUID:(NSUUID *)arg1;
 - (void)setLocalParticipantAudioVideoMode:(unsigned long long)arg1 forConversationUUID:(NSUUID *)arg2;
-- (void)setVideoEnabled:(_Bool)arg1 forRemoteParticipantWithIdentifier:(unsigned long long)arg2 conversation:(TUConversation *)arg3;
-- (void)setAudioEnabled:(_Bool)arg1 forRemoteParticipantWithIdentifier:(unsigned long long)arg2 conversation:(TUConversation *)arg3;
 - (void)setDownlinkMuted:(_Bool)arg1 forRemoteParticipantsInConversation:(TUConversation *)arg2;
 - (void)kickMember:(TUConversationMember *)arg1 conversation:(TUConversation *)arg2;
 - (void)buzzMember:(TUConversationMember *)arg1 conversation:(TUConversation *)arg2;
 - (void)setUsingAirplay:(_Bool)arg1 onActivitySession:(TUConversationActivitySession *)arg2 onConversationWithUUID:(NSUUID *)arg3;
-- (void)launchApplicationForActivitySessionUUID:(NSUUID *)arg1 forceBackground:(_Bool)arg2 completionHandler:(void (^)(NSError *))arg3;
-- (void)launchApplicationForActivitySessionUUID:(NSUUID *)arg1 completionHandler:(void (^)(NSError *))arg2;
+- (void)launchApplicationForActivitySessionUUID:(NSUUID *)arg1 authorizedExternally:(_Bool)arg2 forceBackground:(_Bool)arg3 completionHandler:(void (^)(NSError *))arg4;
 - (void)setActivityAuthorization:(_Bool)arg1 forBundleIdentifier:(NSString *)arg2;
 - (void)presentDismissalAlertForActivitySession:(TUConversationActivitySession *)arg1 onConversation:(TUConversation *)arg2;
 - (void)endActivitySession:(TUConversationActivitySession *)arg1 onConversation:(TUConversation *)arg2;
 - (void)leaveActivitySession:(TUConversationActivitySession *)arg1 onConversation:(TUConversation *)arg2;
 - (void)createActivitySession:(TUConversationActivity *)arg1 onConversation:(TUConversation *)arg2;
+- (void)prepareConversationWithUUID:(NSUUID *)arg1 withHandoffContext:(TUConversationHandoffContext *)arg2;
 - (void)addRemoteMembers:(NSSet *)arg1 otherInvitedHandles:(NSSet *)arg2 toConversation:(TUConversation *)arg3;
 - (void)addRemoteMembers:(NSSet *)arg1 toConversation:(TUConversation *)arg2;
 @end

@@ -6,7 +6,7 @@
 
 #import <CoreSpeech/NSObject-Protocol.h>
 
-@class CSAudioChunk, CSAudioDeviceInfo, CSAudioRecordContext, CSAudioRecordDeviceInfo, CSAudioStartStreamOption, CSAudioStopStreamOption, CSAudioStream, CSAudioStreamHolding, CSAudioStreamRequest, NSDictionary, NSString, NSURL;
+@class CSAudioChunk, CSAudioDeviceInfo, CSAudioRecordContext, CSAudioRecordDeviceInfo, CSAudioStartStreamOption, CSAudioStopStreamOption, CSAudioStream, CSAudioStreamHoldRequestOption, CSAudioStreamHolding, CSAudioStreamRequest, NSDictionary, NSString, NSURL;
 
 @protocol CSAudioStreamProviding <NSObject>
 - (NSString *)playbackRoute;
@@ -19,7 +19,7 @@
 - (_Bool)supportsDuckingOnCurrentRouteWithError:(id *)arg1;
 - (void)setAnnounceCallsEnabled:(_Bool)arg1 withStreamHandleID:(unsigned long long)arg2;
 - (void)cancelAudioStreamHold:(CSAudioStreamHolding *)arg1;
-- (CSAudioStreamHolding *)holdAudioStreamWithDescription:(NSString *)arg1 timeout:(double)arg2;
+- (CSAudioStreamHolding *)holdAudioStreamWithDescription:(NSString *)arg1 option:(CSAudioStreamHoldRequestOption *)arg2;
 - (void)saveRecordingBufferToEndFrom:(unsigned long long)arg1 toURL:(NSURL *)arg2;
 - (void)saveRecordingBufferFrom:(unsigned long long)arg1 to:(unsigned long long)arg2 toURL:(NSURL *)arg3;
 - (CSAudioChunk *)audioChunkToEndFrom:(unsigned long long)arg1 channelIdx:(unsigned long long)arg2;

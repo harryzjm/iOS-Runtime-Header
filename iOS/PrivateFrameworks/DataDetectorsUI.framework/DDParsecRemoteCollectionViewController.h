@@ -28,7 +28,8 @@ __attribute__((visibility("hidden")))
 - (void)openParsecURL:(id)arg1;
 - (void)showingFTE:(_Bool)arg1;
 - (void)showingErrorView:(_Bool)arg1;
-- (void)reportAnIssueWithReportIdentifier:(id)arg1;
+- (void)loadReportAnIssueImage:(CDUnknownBlockType)arg1;
+- (void)reportAnIssueWithReportIdentifier:(id)arg1 sfReportData:(id)arg2;
 - (void)interactionEndedWithPunchout:(_Bool)arg1;
 - (void)interactionEnded;
 - (void)viewServiceDidTerminateWithError:(id)arg1;

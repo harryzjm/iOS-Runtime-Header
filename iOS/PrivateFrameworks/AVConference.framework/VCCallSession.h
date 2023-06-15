@@ -507,7 +507,7 @@ __attribute__((visibility("hidden")))
 - (void)getAllPayloadsForAudio:(int **)arg1 count:(int *)arg2 secondaryPayloads:(int **)arg3 secondaryCount:(int *)arg4;
 - (int)handleIncomingWithCallID:(unsigned int)arg1 msgIn:(const char *)arg2 msgOut:(char *)arg3 optional:(void *)arg4 confIndex:(int *)arg5 error:(id *)arg6;
 - (_Bool)startMediaWithPreNegotiatedSettings:(id *)arg1;
-- (void)applyNegotiatedMomentsSettings;
+- (void)applyNegotiatedMediaRecorderSettings;
 - (void)applyNegotiatedCaptionsSettings;
 - (_Bool)applyNegotiatedVideoSettings:(id *)arg1;
 - (_Bool)applyNegotiatedAudioSettings:(id *)arg1;
@@ -569,7 +569,7 @@ __attribute__((visibility("hidden")))
 - (void)rateController:(id)arg1 targetBitrateDidChange:(unsigned int)arg2 rateChangeCounter:(unsigned int)arg3;
 - (void)mediaController:(void *)arg1 mediaSuggestionDidChange:(struct VCRateControlMediaSuggestion)arg2;
 - (void)packMeters:(char *)arg1 withLength:(char *)arg2;
-- (void)updateStatistics:(CDStruct_7df19fcb)arg1;
+- (void)updateStatistics:(struct tagVCStatisticsMessage)arg1;
 - (void)callAlarmsWithRTPTimeStamp:(CDStruct_1b6d18a9 *)arg1;
 - (void)processResolutionChangeToVideoRule:(id)arg1 captureRule:(id)arg2 featureListString:(id)arg3;
 - (id)newRemoteScreenAttributesForOrientation:(int)arg1;

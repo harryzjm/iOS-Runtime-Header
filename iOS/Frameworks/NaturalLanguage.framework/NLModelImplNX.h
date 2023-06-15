@@ -15,6 +15,8 @@ __attribute__((visibility("hidden")))
     NSDictionary *_labelMap;
     unsigned long long _numberOfTrainingInstances;
     NSString *_trainingLanguage;
+    NSString *_trainingEmbeddingType;
+    NSString *_embeddingModelIdentifier;
 }
 
 - (void).cxx_destruct;

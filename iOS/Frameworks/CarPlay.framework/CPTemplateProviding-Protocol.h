@@ -10,6 +10,7 @@
 @protocol CPAlertDelegate, CPEntityClientTemplateDelegate, CPEntityProviding, CPGridTemplateClientDelegate, CPListClientTemplateDelegate, CPMapClientTemplateDelegate, CPNowPlayingClientTemplateDelegate, CPSearchClientTemplateDelegate, CPTabBarClientTemplateDelegate, CPTemplateDelegate, CPVoiceControlTemplateDelegate;
 
 @protocol CPTemplateProviding <NSObject>
+- (void)selectTabBarTemplateAtIndex:(long long)arg1;
 - (void)updateTabBarTemplate:(CPTabBarTemplate *)arg1;
 - (void)setTabBarTemplate:(CPTabBarTemplate *)arg1 withProxyDelegate:(id <CPTabBarClientTemplateDelegate>)arg2 reply:(void (^)(id <CPTabBarTemplateProviding>))arg3 animated:(NSNumber *)arg4;
 - (void)pushTabBarTemplate:(CPTabBarTemplate *)arg1 animated:(NSNumber *)arg2;

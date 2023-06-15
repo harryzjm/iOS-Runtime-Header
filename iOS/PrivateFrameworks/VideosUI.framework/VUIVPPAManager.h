@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)_isVPPAPromptDueForConfig:(id)arg1;
 - (_Bool)_isChannelVPPAPromptEligible:(id)arg1;
 - (void)_fetchConfigurationAndPresentVPPAIfRequired:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (_Bool)lightweightCheckToSeeIfChannelRequiresConsent:(id)arg1;
 - (void)reloadConfigurationAfterVPPAChange;
 - (void)startVPPAConsentFlowForDeeplink:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)startVPPAConsentFlow:(id)arg1 completion:(CDUnknownBlockType)arg2;

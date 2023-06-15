@@ -7,12 +7,10 @@
 #import <NewsFeed/NSObject-Protocol.h>
 
 @protocol SWPresentationManager <NSObject>
-- (void)refresh;
-- (void)onPresentable:(void (^)(double))arg1;
-@property(nonatomic, copy) CDUnknownBlockType presentableBlock;
-- (void)onLoad:(void (^)(void))arg1;
-@property(nonatomic, copy) CDUnknownBlockType loadBlock;
-@property(nonatomic, readonly) double height;
+@property(copy, nonatomic, setter=onPresentable:) CDUnknownBlockType presentableBlock;
+@property(copy, nonatomic, setter=onLoad:) CDUnknownBlockType loadBlock;
+@property(readonly, nonatomic) double height;
 @property(nonatomic) unsigned long long presentationState;
+- (void)refresh;
 @end
 

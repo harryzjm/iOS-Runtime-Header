@@ -81,11 +81,6 @@ struct _ftsent {
     char _field20[1];
 };
 
-struct _opaque_pthread_mutex_t {
-    long long __sig;
-    char __opaque[56];
-};
-
 struct addrinfo {
     int _field1;
     int _field2;
@@ -239,6 +234,31 @@ typedef struct {
     long long _field1;
     int _field2;
 } CDStruct_87dc826d;
+
+typedef struct {
+    long long _field1;
+    long long _field2;
+    long long _field3;
+    long long _field4;
+    unsigned long long _field5;
+    long long _field6;
+    long long _field7;
+    long long _field8;
+    long long _field9;
+    long long _field10;
+    long long _field11;
+    long long _field12;
+    long long _field13;
+    long long _field14;
+    long long _field15;
+    long long _field16;
+    long long _field17;
+    long long _field18;
+    long long _field19;
+    _Bool _field20;
+    _Bool _field21;
+    _Bool _field22;
+} CDStruct_87bb3e60;
 
 typedef struct {
     _Bool extensionHidden;

@@ -9,13 +9,9 @@
 @class NSString;
 
 @interface NSURL (WFOAuth2)
-+ (id)URLWithUnicodeString:(id)arg1;
 - (_Bool)wfo_isEqualToRedirectURI:(id)arg1;
 - (id)wfo_normalizedURLComponents;
 - (id)wfo_URLByAppendingQueryItems:(id)arg1;
-- (id)unicodeHost;
-- (id)unicodeAbsoluteString;
-- (id)initWithUnicodeString:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

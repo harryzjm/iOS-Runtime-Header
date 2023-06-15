@@ -14,10 +14,12 @@
     MISSING_TYPE *payloadPublisher;
     MISSING_TYPE *_payloadPublisher;
     MISSING_TYPE *activityIdentifier;
-    MISSING_TYPE *subscription;
+    MISSING_TYPE *payloadSubscription;
+    MISSING_TYPE *descriptorSubscription;
     MISSING_TYPE *activityCenter;
     MISSING_TYPE *lock;
     MISSING_TYPE *_lock_contentAssertions;
+    MISSING_TYPE *state;
 }
 
 @end

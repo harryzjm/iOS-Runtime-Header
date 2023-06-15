@@ -11,6 +11,7 @@
 @interface _TtC9StocksKit29StaticAppConfigurationManager : _TtCs12_SwiftObject
 {
     MISSING_TYPE *observableAppConfiguration;
+    MISSING_TYPE *asyncObservableAppConfiguration;
 }
 
 @end

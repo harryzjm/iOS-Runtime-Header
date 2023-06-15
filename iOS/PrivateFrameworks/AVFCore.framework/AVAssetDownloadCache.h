@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     AVAssetDownloadCacheInternal *_internal;
 }
 
+- (_Bool)isDefunct;
 - (void)dealloc;
 - (_Bool)isPlayableOffline;
 - (id)mediaSelectionOptionsInMediaSelectionGroup:(id)arg1;

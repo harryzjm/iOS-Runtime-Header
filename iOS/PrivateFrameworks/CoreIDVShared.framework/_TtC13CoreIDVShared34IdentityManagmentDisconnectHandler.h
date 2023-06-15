@@ -17,6 +17,7 @@
     MISSING_TYPE *disconnectionProofingDisplayInfoCompletions;
     MISSING_TYPE *disconnectionIdentityImageQualityCompletions;
     MISSING_TYPE *disconnectionIdentityLivenessConfigCompletions;
+    MISSING_TYPE *disconnectionIdentityBiomeFedStatsCompletions;
     MISSING_TYPE *disconnectionIdentityProofingTermsAndConditionsCompletions;
     MISSING_TYPE *disconnectionIdentityBindingDetailsCompletions;
     MISSING_TYPE *disconnectionErrorCompletions;

@@ -9,6 +9,7 @@
 @interface NSString (HAPTLVHelpers)
 + (id)parsedFromData:(id)arg1 error:(id *)arg2;
 - (id)serializeWithError:(id *)arg1;
+@property(readonly) NSString *hap_validatedAndNormalizedUUIDString;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

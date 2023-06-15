@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) PHPhotosHighlight *tripHighlight; // @synthesize tripHighlight=_tripHighlight;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
+- (id)iconicSceneScores:(id)arg1;
 - (void)_update;
 - (_Bool)updateSpec;
 - (void)viewDidLoad;

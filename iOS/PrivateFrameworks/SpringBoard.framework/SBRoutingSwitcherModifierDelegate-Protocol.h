@@ -6,10 +6,11 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class NSArray, SBAppLayout, SBRoutingSwitcherModifier, SBSwitcherModifier, SBSwitcherModifierEvent, SBSwitcherShelf;
+@class NSArray, NSMapTable, SBAppLayout, SBRoutingSwitcherModifier, SBSwitcherModifier, SBSwitcherModifierEvent, SBSwitcherShelf;
 @protocol SBSwitcherLayoutElementProviding;
 
 @protocol SBRoutingSwitcherModifierDelegate <NSObject>
+- (SBSwitcherModifier *)fallbackModifierForRoutingModifier:(SBRoutingSwitcherModifier *)arg1;
 - (SBSwitcherModifier *)routingModifier:(SBRoutingSwitcherModifier *)arg1 animationAttributesModifierForLayoutElement:(id <SBSwitcherLayoutElementProviding>)arg2;
 - (SBSwitcherModifier *)transactionCompletionOptionsModifierForRoutingModifier:(SBRoutingSwitcherModifier *)arg1;
 - (SBSwitcherModifier *)homeScreenModifierForRoutingModifier:(SBRoutingSwitcherModifier *)arg1;
@@ -24,5 +25,6 @@
 @optional
 - (SBSwitcherShelf *)adjustedShelfForShelf:(SBSwitcherShelf *)arg1 fromModifier:(SBSwitcherModifier *)arg2;
 - (SBSwitcherShelf *)adjustedShelfForShelf:(SBSwitcherShelf *)arg1 forModifier:(SBSwitcherModifier *)arg2;
+- (NSArray *)routingModifier:(SBRoutingSwitcherModifier *)arg1 topMostLayoutElementsByModifier:(NSMapTable *)arg2;
 @end
 

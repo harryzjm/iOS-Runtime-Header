@@ -7,13 +7,20 @@
 #import <IMSharedUtilities/IMNickname.h>
 
 @interface IMNickname (IMNickname_CKRecord)
++ (id)allKeys;
++ (id)allKeysExceptHighResWallpaper;
++ (id)_languageStringForEnumCase:(long long)arg1;
++ (Class)_NSMorphologyCustomPronounClass;
++ (_Bool)_isObjectBlastDoorCustomPronounPair:(id)arg1;
++ (_Bool)_isObjectBlastDoorMorphology:(id)arg1;
 + (id)_assetTargetURLForRecordName:(id)arg1 fieldName:(id)arg2 error:(id *)arg3;
-+ (id)_blastdoorNicknameFromPublicRecord:(id)arg1 preKey:(id)arg2 error:(id *)arg3;
-+ (id)nicknameFromPublicRecord:(id)arg1 preKey:(id)arg2 error:(id *)arg3;
++ (id)_blastdoorNicknameFromPublicRecord:(id)arg1 wallpaperRecord:(id)arg2 preKey:(id)arg3 wallpaperDataTag:(id)arg4 wallpaperLowResDataTag:(id)arg5 wallpaperMetadataTag:(id)arg6 knownSender:(_Bool)arg7 error:(id *)arg8;
++ (id)nicknameFromPublicRecord:(id)arg1 wallpaperRecord:(id)arg2 preKey:(id)arg3 wallpaperDataTag:(id)arg4 wallpaperLowResDataTag:(id)arg5 wallpaperMetadataTag:(id)arg6 knownSender:(_Bool)arg7 error:(id *)arg8;
 + (id)dataFromCKRecord:(id)arg1 forKey:(id)arg2 error:(id *)arg3;
+- (id)_wallpaperRecordFromDictionary:(id)arg1 owningRecord:(id)arg2 recordName:(id)arg3 error:(id *)arg4;
 - (id)_CKRecordFromDictionary:(id)arg1 recordName:(id)arg2 assetFieldNames:(id)arg3 error:(id *)arg4;
-- (_Bool)_moveAvatarImage:(id)arg1 newURL:(id)arg2 error:(id *)arg3;
+- (_Bool)_moveFile:(id)arg1 newURL:(id)arg2 error:(id *)arg3;
 - (_Bool)updateNicknameWithRecordID:(id)arg1 error:(id *)arg2;
-- (id)publicRecordForNicknameWithPreKey:(id)arg1 error:(id *)arg2;
+- (id)publicRecordsForNicknameWithPreKey:(id)arg1 wallpaperDataTag:(id *)arg2 lowResWallpaperDataTag:(id *)arg3 wallpaperMetadataTag:(id *)arg4 error:(id *)arg5;
 @end
 

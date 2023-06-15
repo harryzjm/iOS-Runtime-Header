@@ -12,6 +12,9 @@
 {
     MISSING_TYPE *documentsRepository;
     MISSING_TYPE *proofingFlowManager;
+    MISSING_TYPE *detectCornersFlags;
+    MISSING_TYPE *blurWindow;
+    MISSING_TYPE *previousBlurs;
     MISSING_TYPE *selfieConfidences;
 }
 

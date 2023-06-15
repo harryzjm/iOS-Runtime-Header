@@ -7,6 +7,6 @@
 @class CKEffectSelectionViewController, NSString;
 
 @protocol CKEffectSelectionViewControllerDelegate
-- (void)effectSelectionViewController:(CKEffectSelectionViewController *)arg1 didSelectEffectWithIdentifier:(NSString *)arg2;
+- (_Bool)effectSelectionViewController:(CKEffectSelectionViewController *)arg1 didSelectEffectWithIdentifier:(NSString *)arg2;
 @end
 

@@ -6,19 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDateInterval, NSMutableSet, NSString;
+@class BLSAssertion, NSArray, NSDate, NSDateInterval, NSMutableSet, NSString;
 @protocol BLSHEngineRequestDatesOperationDelegate, BLSHOSTimerProviding, BSTimerScheduleQuerying><BSCancellable><BSInvalidatable;
 
 __attribute__((visibility("hidden")))
 @interface BLSHEngineRequestDatesOperation : NSObject
 {
     struct os_unfair_lock_s _lock;
+    BLSAssertion *_lock_flipbookPowerSavingAssertion;
     NSMutableSet *_lock_pendingEnvironments;
     id <BSTimerScheduleQuerying><BSCancellable><BSInvalidatable> _lock_timeoutTimer;
     id <BLSHEngineRequestDatesOperationDelegate> _lock_delegate;
     id <BLSHOSTimerProviding> _osTimerProvider;
     NSArray *_lock_environmentIdentifiers;
     unsigned int _lock_environmentCount;
+    NSDate *_lock_beginDate;
     double _lock_beginTime;
     double _lock_shortestInterval;
     double _lock_averageInterval;
@@ -36,6 +38,7 @@ __attribute__((visibility("hidden")))
 - (id)telemetryDataWithEndTime:(double)arg1;
 - (void)beginOperationWithIntervals:(id)arg1 shouldReset:(_Bool)arg2;
 @property(readonly, nonatomic) double beginTimestamp;
+@property(readonly, nonatomic) NSDate *beginDate;
 @property(readonly, nonatomic) _Bool didReset;
 @property(readonly, nonatomic) double longestInterval;
 @property(readonly, nonatomic) double averageInterval;

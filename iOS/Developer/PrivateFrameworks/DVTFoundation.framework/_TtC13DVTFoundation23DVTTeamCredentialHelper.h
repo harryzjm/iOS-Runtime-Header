@@ -10,8 +10,9 @@
 {
 }
 
++ (id)credentialWithComponents:(id)arg1 type:(long long)arg2 error:(id *)arg3;
 + (id)credentialWithIssuerID:(id)arg1 keyID:(id)arg2 keyPath:(id)arg3 type:(long long)arg4 error:(id *)arg5;
-+ (id)credentialWithType:(long long)arg1 error:(id *)arg2;
++ (id)credentialFromDefaultsWithType:(long long)arg1 error:(id *)arg2;
 - (id)init;
 
 @end

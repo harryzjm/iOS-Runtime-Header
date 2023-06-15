@@ -9,7 +9,6 @@
 @class CaptureMTLDevice, NSString;
 @protocol MTLDevice, MTLRasterizationRateMap, MTLRasterizationRateMapSPI;
 
-__attribute__((visibility("hidden")))
 @interface CaptureMTLRasterizationRateMap : NSObject
 {
     id <MTLRasterizationRateMapSPI> _baseObject;

@@ -9,6 +9,7 @@
 @class NSString, PGPictureInPictureRemoteObject, PGPictureInPictureViewController;
 
 @protocol PGPictureInPictureRemoteObjectDelegate <NSObject>
+- (void)pictureInPictureRemoteObject:(PGPictureInPictureRemoteObject *)arg1 requestActivationOfSceneWithPersistenceIdentier:(NSString *)arg2 completion:(void (^)(_Bool))arg3;
 - (_Bool)pictureInPictureRemoteObjectHasBackgroundPIPAuthorization:(PGPictureInPictureRemoteObject *)arg1;
 - (void)pictureInPictureRemoteObjectNeedsActivationAndInterruptionPolicyUpdate:(PGPictureInPictureRemoteObject *)arg1;
 - (void)pictureInPictureRemoteObject:(PGPictureInPictureRemoteObject *)arg1 willDestroyPictureInPictureViewController:(PGPictureInPictureViewController *)arg2;

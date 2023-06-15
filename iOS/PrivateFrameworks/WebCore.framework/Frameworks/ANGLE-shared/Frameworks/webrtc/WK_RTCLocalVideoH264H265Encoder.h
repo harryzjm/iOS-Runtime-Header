@@ -16,6 +16,9 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+- (void)flush;
+- (void)setDescriptionCallback:(CDUnknownBlockType)arg1;
+- (void)setUseAnnexB:(_Bool)arg1;
 - (void)setLowLatency:(_Bool)arg1;
 - (int)setBitrate:(unsigned int)arg1 framerate:(unsigned int)arg2;
 - (long long)encode:(id)arg1 codecSpecificInfo:(id)arg2 frameTypes:(id)arg3;

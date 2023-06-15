@@ -186,7 +186,6 @@
 - (_Bool)isEditable;
 - (id)content;
 - (void)updateSelection;
-- (id)selectionView;
 @property(readonly, nonatomic) UITextInteractionAssistant *interactionAssistant;
 - (_Bool)isAutoFillMode;
 - (void)acceptedAutoFillWord:(id)arg1;
@@ -256,6 +255,7 @@
 // Remaining properties
 @property(copy, nonatomic) NSIndexSet *PINEntrySeparatorIndexes;
 @property(readonly, nonatomic) RTIInputSystemSourceSession *_rtiSourceSession;
+@property(nonatomic) _Bool _systemCursorAccessoriesDisabled;
 @property(nonatomic) _Bool acceptsDictationSearchResults;
 @property(nonatomic) _Bool acceptsEmoji;
 @property(nonatomic) _Bool acceptsFloatingKeyboard;
@@ -288,6 +288,8 @@
 @property(nonatomic) _Bool hasDefaultContents;
 @property(readonly) unsigned long long hash;
 @property(nonatomic) _Bool hidePrediction;
+@property(nonatomic) long long inlineCompletionType;
+@property(nonatomic) long long inlinePredictionType;
 @property(retain, nonatomic) UIInputContextHistory *inputContextHistory;
 @property(retain, nonatomic) UIColor *insertionPointColor;
 @property(nonatomic) unsigned long long insertionPointWidth;

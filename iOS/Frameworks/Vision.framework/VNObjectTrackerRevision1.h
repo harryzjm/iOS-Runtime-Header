@@ -9,6 +9,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (id)supportedComputeDevicesForOptions:(id)arg1 error:(id *)arg2;
 - (id)initWithOptions:(id)arg1 error:(id *)arg2;
 
 @end

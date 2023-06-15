@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSString, VUIAction;
+@class NSDictionary, NSString, UIImage, VUIAction;
 
 __attribute__((visibility("hidden")))
 @interface VUIActionAlertActionItem : NSObject
 {
     NSString *_title;
+    UIImage *_titleImage;
     VUIAction *_action;
     NSDictionary *_metrics;
 }
@@ -19,8 +20,9 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSDictionary *metrics; // @synthesize metrics=_metrics;
 @property(retain, nonatomic) VUIAction *action; // @synthesize action=_action;
+@property(retain, nonatomic) UIImage *titleImage; // @synthesize titleImage=_titleImage;
 @property(retain, nonatomic) NSString *title; // @synthesize title=_title;
-- (id)initWithTitle:(id)arg1 action:(id)arg2 metrics:(id)arg3;
+- (id)initWithTitle:(id)arg1 titleImage:(id)arg2 action:(id)arg3 metrics:(id)arg4;
 
 @end
 

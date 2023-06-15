@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (_Bool)autoinvalidates;
++ (_Bool)autoInvalidates;
 + (_Bool)shouldAllowComponents;
 + (_Bool)alwaysKeepContexts;
 - (_Bool)_permitContextCreationForBindingDescription:(CDStruct_b73e569c)arg1;

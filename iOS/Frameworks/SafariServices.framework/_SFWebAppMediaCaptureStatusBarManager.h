@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import "_SFMediaCaptureStatusBarManager.h"
+#import <MobileSafari/SFMediaCaptureStatusBarManager.h>
 
 __attribute__((visibility("hidden")))
-@interface _SFWebAppMediaCaptureStatusBarManager : _SFMediaCaptureStatusBarManager
+@interface _SFWebAppMediaCaptureStatusBarManager : SFMediaCaptureStatusBarManager
 {
 }
 
++ (id)sharedManager;
 - (unsigned long long)overrideStyleForAudioOnly:(_Bool)arg1;
 - (id)statusString;
 

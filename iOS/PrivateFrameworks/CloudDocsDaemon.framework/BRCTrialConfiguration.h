@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface BRCTrialConfiguration : NSObject
 {
     _Bool ignorePercentsOnInternal;
+    _Bool enabledForFPFSMigration;
     NSString *factorPackId;
     NSString *rolloutId;
     NSString *rampId;
@@ -24,6 +25,7 @@ __attribute__((visibility("hidden")))
 
 + (id)defaultConfiguration;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool enabledForFPFSMigration; // @synthesize enabledForFPFSMigration;
 @property(readonly, nonatomic) _Bool ignorePercentsOnInternal; // @synthesize ignorePercentsOnInternal;
 @property(readonly, nonatomic) long long percent100kAndAbove; // @synthesize percent100kAndAbove;
 @property(readonly, nonatomic) long long percentBelow100k; // @synthesize percentBelow100k;

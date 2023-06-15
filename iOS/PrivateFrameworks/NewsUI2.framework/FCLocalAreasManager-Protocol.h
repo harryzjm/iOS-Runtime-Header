@@ -4,10 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@protocol FCLocalAreasProvider;
-
 @protocol FCLocalAreasManager
 - (void)fetchLocalAreasProvider:(void (^)(id <FCLocalAreasProvider>, NSError *))arg1;
-@property(nonatomic, readonly) id <FCLocalAreasProvider> possiblyUnfetchedLocalAreasProvider;
 @end
 

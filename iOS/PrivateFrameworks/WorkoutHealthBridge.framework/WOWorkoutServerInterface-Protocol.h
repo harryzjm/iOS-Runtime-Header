@@ -6,9 +6,16 @@
 
 #import <WorkoutHealthBridge/NSObject-Protocol.h>
 
-@class NSUUID, WOPersistence;
+@class NSArray, NSString, NSUUID, WOPersistence;
 
 @protocol WOWorkoutServerInterface <NSObject>
+- (void)remote_deleteExternalProvider:(NSString *)arg1 withCompletion:(void (^)(_Bool, NSError *))arg2;
+- (void)remote_fetchAllExternalProvidersWithCompletion:(void (^)(NSArray *, NSError *))arg1;
+- (void)remote_fetchExternalProviderForIdentifier:(NSString *)arg1 withCompletion:(void (^)(WOPersistence *, NSError *))arg2;
+- (void)remote_deleteManagedConfigurations:(NSString *)arg1 withCompletion:(void (^)(_Bool, NSError *))arg2;
+- (void)remote_setManagedConfigurations:(NSArray *)arg1 withCompletion:(void (^)(_Bool, NSError *))arg2;
+- (void)remote_fetchManagedConfigurationsByProviderWithCompletion:(void (^)(NSDictionary *, NSError *))arg1;
+- (void)remote_fetchManagedConfigurations:(NSString *)arg1 withCompletion:(void (^)(NSArray *, NSError *))arg2;
 - (void)remote_deleteConfiguration:(NSUUID *)arg1 withCompletion:(void (^)(_Bool, NSError *))arg2;
 - (void)remote_fetchAllConfigurationsWithCompletion:(void (^)(NSArray *, NSError *))arg1;
 - (void)remote_fetchConfiguration:(NSUUID *)arg1 withCompletion:(void (^)(WOPersistence *, NSError *))arg2;

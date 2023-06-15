@@ -6,14 +6,18 @@
 
 #import <BookFoundation/BFMResource-Protocol.h>
 
-@class NSArray, NSString, NSURL;
+@class NSArray, NSNumber, NSString, NSURL;
 
 @protocol BFMSeries <BFMResource>
-@property(nonatomic, readonly) NSArray *assets;
-@property(nonatomic, readonly) NSURL *url;
-@property(nonatomic, readonly) _Bool isOrdered;
-@property(nonatomic, readonly) NSString *name;
-@property(nonatomic, readonly) _Bool isAudiobookSeries;
-@property(nonatomic, readonly) _Bool isBookSeries;
+@property(readonly, nonatomic) NSArray *genres;
+@property(readonly, nonatomic) NSArray *assets;
+@property(readonly, nonatomic) NSURL *url;
+@property(readonly, nonatomic) NSString *name;
+@property(readonly, nonatomic) _Bool isOrdered;
+@property(readonly, nonatomic) _Bool hasUniqueAuthors;
+@property(readonly, nonatomic) NSNumber *authorCount;
+@property(readonly, nonatomic) NSArray *authorNames;
+@property(readonly, nonatomic) _Bool isAudiobookSeries;
+@property(readonly, nonatomic) _Bool isBookSeries;
 @end
 

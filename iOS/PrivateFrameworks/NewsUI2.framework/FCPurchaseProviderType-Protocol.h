@@ -9,6 +9,6 @@
 @class NSSet;
 
 @protocol FCPurchaseProviderType <NSObject>
-@property(nonatomic, readonly) NSSet *purchasedTagIDs;
+@property(readonly, copy, nonatomic) NSSet *purchasedTagIDs;
 @end
 

@@ -22,10 +22,13 @@
 - (id)newDateFromString:(id)arg1 successfulFormatString:(id *)arg2;
 - (id)newDateFromString:(id)arg1 preferredFormatString:(id)arg2 successfulFormatString:(id *)arg3 tryAggressiveFormats:(_Bool)arg4;
 - (id)p_newDateFromStringTryingFormats:(id)arg1 locale:(id)arg2 formats:(id)arg3 outSuccessfulFormatString:(id *)arg4 perfect:(_Bool *)arg5;
+- (id)allFormats;
 - (struct __CFDateFormatter *)specialCaseDateFormatterForLocale:(id)arg1;
 - (void)dealloc;
+- (id)initWithLocale:(id)arg1 usingLimitedFormats:(id)arg2;
 - (id)formatStringsDictionary;
 - (id)initWithLocale:(id)arg1;
+- (void)_commonInitWithLocale:(id)arg1;
 
 @end
 

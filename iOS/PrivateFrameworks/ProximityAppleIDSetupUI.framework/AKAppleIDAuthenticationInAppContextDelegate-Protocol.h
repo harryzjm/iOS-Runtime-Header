@@ -6,15 +6,17 @@
 
 #import <ProximityAppleIDSetupUI/NSObject-Protocol.h>
 
-@class AKAppleIDAuthenticationInAppContext, NSMutableURLRequest, RUIStyle, UINavigationController;
+@class AKAppleIDAuthenticationInAppContext, NSMutableURLRequest, RUIStyle, UINavigationController, UIViewController;
 
 @protocol AKAppleIDAuthenticationInAppContextDelegate <NSObject>
 
 @optional
 - (void)signAdditionalHeadersWithRequest:(NSMutableURLRequest *)arg1 withCompletion:(void (^)(NSMutableURLRequest *))arg2;
+- (void)willShowViewController:(UIViewController *)arg1;
 - (void)willPresentModalNavigationController:(UINavigationController *)arg1;
 - (RUIStyle *)remoteUIStyle;
 - (void)contextDidEndPresentingSecondaryUI:(AKAppleIDAuthenticationInAppContext *)arg1;
+- (void)contextWillBeginPresentingSecondaryUI:(AKAppleIDAuthenticationInAppContext *)arg1 completion:(void (^)(void))arg2;
 - (void)contextWillBeginPresentingSecondaryUI:(AKAppleIDAuthenticationInAppContext *)arg1;
 - (void)contextDidDismissLoginAlertController:(AKAppleIDAuthenticationInAppContext *)arg1;
 - (void)contextWillDismissLoginAlertController:(AKAppleIDAuthenticationInAppContext *)arg1;

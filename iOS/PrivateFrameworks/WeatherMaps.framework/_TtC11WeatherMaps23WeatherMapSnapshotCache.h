@@ -13,6 +13,7 @@
     MISSING_TYPE *lock;
     MISSING_TYPE *cache;
     MISSING_TYPE *memoryWarningsObserver;
+    MISSING_TYPE *mostRecentSnapshotConfigByLocationID;
 }
 
 @end

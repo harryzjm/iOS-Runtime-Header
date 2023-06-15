@@ -6,36 +6,36 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, NSXPCConnection, SHShazamKitServiceConnectionProvider;
+@class NSString, NSXPCConnection, SHShazamKitServiceConnectionClient, SHShazamKitServiceConnectionProvider;
 
 __attribute__((visibility("hidden")))
 @interface SHShazamKitServiceConnection : NSObject
 {
     struct os_unfair_lock_s _connectionLock;
-    id _delegate;
     NSXPCConnection *_connection;
     SHShazamKitServiceConnectionProvider *_connectionProvider;
+    SHShazamKitServiceConnectionClient *_shazamKitClient;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) struct os_unfair_lock_s connectionLock; // @synthesize connectionLock=_connectionLock;
+@property(readonly, nonatomic) SHShazamKitServiceConnectionClient *shazamKitClient; // @synthesize shazamKitClient=_shazamKitClient;
 @property(readonly, nonatomic) SHShazamKitServiceConnectionProvider *connectionProvider; // @synthesize connectionProvider=_connectionProvider;
-@property(nonatomic) __weak id delegate; // @synthesize delegate=_delegate;
-- (void)_libraryDidCompleteSync:(id)arg1;
-- (void)_library:(id)arg1 didProduceError:(id)arg2 failedItemIdentifiers:(id)arg3;
-- (void)_library:(id)arg1 didChangeWithSnapshot:(id)arg2;
-- (void)_libraryWillBeginSync:(id)arg1;
-- (void)matcher:(id)arg1 didProduceResponse:(id)arg2;
-- (oneway void)sendEventSignal:(id)arg1;
-- (void)mediaItemForShazamID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)sendEventSignal:(id)arg1;
+- (void)mediaItemsForShazamIDs:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_queryLibraryWithParameters:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_libraryInfoWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_synchronizeSnapshot:(id)arg1 startCondition:(id)arg2;
-- (void)stop;
+- (void)stopRecognitionForRequestID:(id)arg1;
+- (void)stopRecognition;
+- (void)matcher:(id)arg1 didProduceResponse:(id)arg2;
 - (void)startRecognitionForRequest:(id)arg1;
+- (void)prepareMatcherForRequestID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (CDUnknownBlockType)matcherDelegateErrorHandlerForSignature:(id)arg1;
 - (void)tearDownConnection;
 - (void)attachDefaultConnectionHandlers;
 @property(readonly, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
+@property(nonatomic) __weak id delegate;
 - (id)initWithConnectionProvider:(id)arg1;
 - (void)dealloc;
 

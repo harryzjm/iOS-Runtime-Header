@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
 @class MISSING_TYPE;
 
@@ -31,7 +31,8 @@ __attribute__((visibility("hidden")))
 - (void)bodyButtonClicked;
 - (void)secondaryButtonClicked;
 - (void)primaryButtonClicked;
-- (void)traitCollectionDidChange:(id)arg1;
+- (void)configureFonts;
+@property(nonatomic, readonly) _Bool inWatchModeOnly;
 - (void)viewDidLoad;
 - (id)initWithCoder:(id)arg1;
 

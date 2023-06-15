@@ -10,8 +10,8 @@
 @protocol HMMediaObjectDelegate;
 
 @protocol HMMediaObject <NSObject>
-@property(nonatomic, readonly) HMAccessorySettings *settings;
-@property(nonatomic, readonly) HMMediaSession *mediaSession;
-@property(nonatomic) __weak id <HMMediaObjectDelegate> delegate;
+@property(readonly) HMAccessorySettings *settings;
+@property(readonly, copy) HMMediaSession *mediaSession;
+@property __weak id <HMMediaObjectDelegate> delegate;
 @end
 

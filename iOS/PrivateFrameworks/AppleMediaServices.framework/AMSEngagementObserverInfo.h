@@ -24,7 +24,7 @@ __attribute__((visibility("hidden")))
 - (void)removeServiceType:(id)arg1;
 - (void)addServiceType:(id)arg1;
 - (void)removePlacement:(id)arg1;
-- (void)addPlacement:(id)arg1;
+- (void)addPlacements:(id)arg1;
 @property(readonly, nonatomic) NSSet *serviceTypes;
 @property(readonly, nonatomic) NSSet *placements;
 - (id)initWithQueue:(id)arg1;

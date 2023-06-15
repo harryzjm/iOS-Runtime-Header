@@ -8,6 +8,7 @@
 
 @interface NSArray (AAAFoundation)
 + (id)aaf_empty;
+- (id)aaf_arrayAsCommaSeperatedString;
 - (_Bool)aaf_isSubsetOfArray:(id)arg1;
 - (id)aaf_firstObjectPassingTest:(CDUnknownBlockType)arg1;
 - (id)aaf_arrayByRemovingObject:(id)arg1;

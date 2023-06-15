@@ -4,9 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSString;
 @protocol HKDataMetadataDetailSectionDataReceiver;
 
 @protocol HKDataMetadataProvider
 - (void)addDetailValuesToSection:(id <HKDataMetadataDetailSectionDataReceiver>)arg1;
+
+@optional
+- (NSString *)detailFooter;
 @end
 

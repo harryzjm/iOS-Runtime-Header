@@ -7,7 +7,7 @@
 @class NSString;
 
 @protocol AEPolicyAction
-@property(nonatomic, readonly) long long event;
-@property(nonatomic, readonly) NSString *identifier;
+@property(readonly, nonatomic) long long event;
+@property(readonly, copy, nonatomic) NSString *identifier;
 @end
 

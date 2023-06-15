@@ -19,6 +19,7 @@
 - (id)dateByAddingUnit:(unsigned long long)arg1 value:(long long)arg2;
 - (id)dateReducedToResolution:(unsigned long long)arg1 calendar:(id)arg2;
 - (id)dateReducedToResolution:(unsigned long long)arg1;
+- (id)getFormattedDateString;
 - (id)stringFromDate;
 - (id)weekdayStringFromDate;
 - (unsigned long long)weekday;
@@ -26,8 +27,6 @@
 - (unsigned long long)hour;
 - (id)endOfDay;
 - (id)startOfDay;
-- (id)dateOfTimestampForCurrentCalendar;
-- (id)dateOfTimestampForCalendar:(id)arg1;
 - (_Bool)isOnOrAfter:(id)arg1;
 - (_Bool)isAfterDate:(id)arg1;
 - (_Bool)isOnOrBefore:(id)arg1;

@@ -6,8 +6,8 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
-@protocol OS_dispatch_queue, OS_nw_connection, OS_nw_error, OS_nw_path_evaluator, OS_nw_socks5_server;
+@class NSString, NWConcrete_nw_connection;
+@protocol OS_dispatch_queue, OS_nw_error, OS_nw_establishment_report, OS_nw_path_evaluator, OS_nw_socks5_server;
 
 __attribute__((visibility("hidden")))
 @interface NWConcrete_nw_socks5_connection : NSObject
@@ -15,13 +15,15 @@ __attribute__((visibility("hidden")))
     unsigned long long sc_id;
     NWConcrete_nw_socks5_connection *sc_internally_retained_object;
     NSObject<OS_nw_socks5_server> *sc_parent;
-    NSObject<OS_nw_connection> *sc_in_connection;
+    NWConcrete_nw_connection *sc_in_connection;
     NSObject<OS_dispatch_queue> *sc_queue;
     CDUnknownBlockType sc_cancel;
     unsigned char sc_state;
     unsigned char sc_out_address_type;
     NSObject<OS_nw_path_evaluator> *sc_prefer_wifi_path_evaluator;
     int sc_prefer_wifi_previous_path_status;
+    void *sc_udp_associate_verification_source;
+    unsigned int sc_udp_associate_verification_count;
     union {
         char *byte_pointer;
         struct in_addr *ipv4_addr;
@@ -34,7 +36,7 @@ __attribute__((visibility("hidden")))
     unsigned long long sc_busy_start_time_nanos;
     unsigned long long sc_total_busy_time_nanos;
     unsigned long long sc_start_time_nanos;
-    NSObject<OS_nw_connection> *sc_out_connection;
+    NWConcrete_nw_connection *sc_out_connection;
     NSObject<OS_nw_error> *sc_error;
     unsigned int sc_out_connection_failed_or_sent_write_close:1;
     unsigned int sc_in_connection_failed_or_sent_write_close:1;
@@ -43,6 +45,12 @@ __attribute__((visibility("hidden")))
     unsigned int sc_has_read_from_in_connection:1;
     unsigned int sc_out_udp:1;
     unsigned int sc_should_prefer_wifi:1;
+    unsigned int sc_is_udp_associate:1;
+    unsigned int sc_processed_udp_associate_request:1;
+    unsigned int sc_in_connection_send_connected_endpoint:1;
+    unsigned int sc_in_connection_send_resolved_endpoint:1;
+    NWConcrete_nw_connection *sc_in_udp_associated_tcp_connection;
+    NSObject<OS_nw_establishment_report> *sc_out_establishment_report;
     unsigned long long sc_out_connection_bytes_read;
     unsigned long long sc_out_connection_bytes_written;
     unsigned long long sc_in_connection_bytes_read;

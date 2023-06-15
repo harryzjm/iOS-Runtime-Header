@@ -35,6 +35,8 @@ __attribute__((visibility("hidden")))
     struct LogCategory *_ucat;
     unsigned int _xidLast;
     _Bool _clientMode;
+    _Bool _persistentPairing;
+    _Bool _reversePairing;
     int _passwordType;
     unsigned int _bluetoothUseCase;
     int _state;
@@ -50,6 +52,7 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _errorHandler;
     NSData *_pskData;
     CDUnknownBlockType _invalidationHandler;
+    CDUnknownBlockType _pairSetupConfigHandler;
     CDUnknownBlockType _receivedEventHandler;
     CDUnknownBlockType _receivedRequestHandler;
     CDUnknownBlockType _sendDataHandler;
@@ -60,8 +63,11 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) CDUnknownBlockType stateChangedHandler; // @synthesize stateChangedHandler=_stateChangedHandler;
 @property(nonatomic) int state; // @synthesize state=_state;
 @property(copy, nonatomic) CDUnknownBlockType sendDataHandler; // @synthesize sendDataHandler=_sendDataHandler;
+@property(nonatomic) _Bool reversePairing; // @synthesize reversePairing=_reversePairing;
 @property(copy, nonatomic) CDUnknownBlockType receivedRequestHandler; // @synthesize receivedRequestHandler=_receivedRequestHandler;
 @property(copy, nonatomic) CDUnknownBlockType receivedEventHandler; // @synthesize receivedEventHandler=_receivedEventHandler;
+@property(nonatomic) _Bool persistentPairing; // @synthesize persistentPairing=_persistentPairing;
+@property(copy, nonatomic) CDUnknownBlockType pairSetupConfigHandler; // @synthesize pairSetupConfigHandler=_pairSetupConfigHandler;
 @property(copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
 @property(copy, nonatomic) NSData *pskData; // @synthesize pskData=_pskData;
 @property(copy, nonatomic) CDUnknownBlockType errorHandler; // @synthesize errorHandler=_errorHandler;
@@ -81,6 +87,7 @@ __attribute__((visibility("hidden")))
 - (void)_receivedRequest:(id)arg1;
 - (void)_receivedEvent:(id)arg1;
 - (void)_receivedObject:(id)arg1;
+- (void)_receivedHeader:(const CDStruct_798ebea5 *)arg1 unencryptedObjectData:(id)arg2;
 - (void)_receivedHeader:(const CDStruct_798ebea5 *)arg1 encryptedObjectData:(id)arg2;
 - (void)_receivedHeader:(const CDStruct_798ebea5 *)arg1 body:(id)arg2;
 - (void)_receiveCompletion:(id)arg1;
@@ -114,12 +121,14 @@ __attribute__((visibility("hidden")))
 - (void)_clientPairSetupCompleted:(id)arg1;
 - (void)_clientPairSetupPromptWithFlags:(unsigned int)arg1 passwordType:(int)arg2 throttleSeconds:(int)arg3;
 - (void)_clientPairSetupContinueWithData:(id)arg1;
+- (void)_clientPairSetupStartReverse;
 - (void)_clientPairSetupStart;
 - (void)_clientConnectCompleted:(id)arg1;
 - (void)_clientConnectStartBLE;
 - (void)_clientConnectStart;
 - (void)_clientRun;
 - (void)_updateExternalState;
+- (void)updatePasswordType:(int)arg1;
 - (void)tryPassword:(id)arg1;
 - (void)_run;
 - (void)_pskPrepareClientMode:(_Bool)arg1;

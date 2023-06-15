@@ -11,5 +11,12 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (id)tuningPathForTuningPrefix:(id)arg1 error:(id *)arg2;
++ (id)tuningPrefixForLocalHost;
++ (id)acousticIDForLocalHost;
++ (id)tuningPrefixForProductType:(int)arg1 acousticID:(id)arg2;
+- (void).cxx_destruct;
+- (id)init;
+
 @end
 

@@ -9,6 +9,7 @@
 @class NSArray;
 
 @protocol CRTextRecognizerModelOutput <NSObject>
+@property unsigned long long batchSize;
 @property(retain) NSArray *textFeatureInfo;
 @end
 

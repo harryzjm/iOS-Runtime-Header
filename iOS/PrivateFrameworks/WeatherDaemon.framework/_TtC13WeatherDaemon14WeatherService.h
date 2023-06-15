@@ -11,6 +11,7 @@
 @interface _TtC13WeatherDaemon14WeatherService : _TtCs12_SwiftObject
 {
     MISSING_TYPE *client;
+    MISSING_TYPE *geoClientMetadata;
 }
 
 @end

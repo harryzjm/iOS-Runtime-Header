@@ -9,6 +9,6 @@
 @class NSString;
 
 @protocol FBKSearchableDocument <NSObject>
-@property(retain) NSString *searchText;
+@property(copy, nonatomic) NSString *searchText;
 @end
 

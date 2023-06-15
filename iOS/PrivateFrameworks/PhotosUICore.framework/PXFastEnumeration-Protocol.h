@@ -4,14 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <PhotosUICore/NSCopying-Protocol.h>
 #import <PhotosUICore/NSFastEnumeration-Protocol.h>
 #import <PhotosUICore/NSObject-Protocol.h>
 
-@protocol PXFastEnumeration <NSFastEnumeration, NSObject>
+@protocol PXFastEnumeration <NSFastEnumeration, NSCopying, NSObject>
 @property(readonly, nonatomic) id firstObject;
 @property(readonly) unsigned long long count;
-
-@optional
 - (id)copy;
 @end
 

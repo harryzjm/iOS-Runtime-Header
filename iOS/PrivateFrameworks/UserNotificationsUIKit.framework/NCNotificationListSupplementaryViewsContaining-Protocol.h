@@ -6,19 +6,24 @@
 
 #import <UserNotificationsUIKit/NSObject-Protocol.h>
 
-@class NCNotificationListSupplementaryViewConfiguration, NSArray, NSDictionary, PLPlatterView, UIViewController;
+@class NCNotificationListSupplementaryViewConfiguration, NSArray, NSDictionary, NSString, PLPlatterView, UIViewController;
+@protocol NCNotificationListSupplementaryViewsContainingDelegate;
 
 @protocol NCNotificationListSupplementaryViewsContaining <NSObject>
-@property(nonatomic) _Bool supportsCollapsing;
-@property(nonatomic) _Bool supportsSideSwiping;
 @property(nonatomic) _Bool supportsViewGrouping;
+@property(copy, nonatomic) CDUnknownBlockType viewControllerSortComparator;
+@property(copy, nonatomic) CDUnknownBlockType groupSortComparator;
 @property(readonly, nonatomic) struct CGSize allowedSupplementaryViewSize;
 @property(readonly, nonatomic) NSArray *supplementaryViewControllers;
 @property(readonly, nonatomic) NSDictionary *supplementaryViewControllersByGroupingIdentifiers;
+@property(readonly, nonatomic) NSArray *groupingIdentifiers;
 @property(readonly, nonatomic) unsigned long long supplementaryViewControllersCount;
+@property(readonly, nonatomic) NSString *identifier;
+@property(nonatomic) __weak id <NCNotificationListSupplementaryViewsContainingDelegate> supplementaryContainerDelegate;
 - (PLPlatterView *)hostingPlatterViewForSupplementaryViewController:(UIViewController *)arg1;
 - (void)presentViewControllerModally:(UIViewController *)arg1 fromSupplementaryViewController:(UIViewController *)arg2 animated:(_Bool)arg3 completion:(void (^)(_Bool))arg4;
 - (void)removeSupplementaryViewController:(UIViewController *)arg1;
+- (void)updatePositionIfNeededForSupplementaryViewController:(UIViewController *)arg1;
 - (void)updateSupplementaryViewController:(UIViewController *)arg1 withConfiguration:(NCNotificationListSupplementaryViewConfiguration *)arg2;
 - (void)insertSupplementaryViewController:(UIViewController *)arg1 withConfiguration:(NCNotificationListSupplementaryViewConfiguration *)arg2;
 @end

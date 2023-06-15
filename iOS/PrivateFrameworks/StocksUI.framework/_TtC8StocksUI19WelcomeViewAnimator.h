@@ -12,7 +12,7 @@
 {
     MISSING_TYPE *view;
     MISSING_TYPE *keyFrame;
-    MISSING_TYPE *model;
+    MISSING_TYPE *modelProvider;
     MISSING_TYPE *renderer;
     MISSING_TYPE *layoutAttributesFactory;
     MISSING_TYPE *startupTaskManager;

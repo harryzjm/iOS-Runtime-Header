@@ -12,6 +12,8 @@
 @protocol PBFBehaviorAssertionObserver <NSObject>
 
 @optional
+- (void)assertionProviderDidRelinquishInUseAssertion:(id <PBFBehaviorAssertionProviding>)arg1;
+- (void)assertionProviderDidAcquireInUseAssertion:(id <PBFBehaviorAssertionProviding>)arg1;
 - (void)assertionProviderDidRelinquishEditingSessionAssertion:(id <PBFBehaviorAssertionProviding>)arg1 forExtensionIdentifier:(NSString *)arg2;
 - (void)assertionProviderDidAcquireEditingSessionAssertion:(id <PBFBehaviorAssertionProviding>)arg1 forExtensionIdentifier:(NSString *)arg2;
 @end

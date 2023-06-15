@@ -95,6 +95,7 @@
 @property(readonly, copy) NSString *canonicalNameForBuildSettings; // @synthesize canonicalNameForBuildSettings=_canonicalNameForBuildSettings;
 @property(readonly) DVTBuildVersion *productBuildVersion;
 @property(readonly) NSDictionary *versionInfo; // @synthesize versionInfo=_versionInfo;
+@property(readonly) _Bool versionInfoIsRequired;
 - (id)_canonicalNameForLookupIncludingCohortInfix:(_Bool)arg1;
 @property(readonly) NSString *canonicalNameForLookup;
 @property(readonly) _Bool isLatestCanonicalSDKForPlatform;

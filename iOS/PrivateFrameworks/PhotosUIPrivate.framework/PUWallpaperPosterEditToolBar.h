@@ -4,28 +4,36 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
-@class UIAction, UIButton, UIMenu;
+@class NSArray, UIButton;
 @protocol PUWallpaperPosterEditToolbarDelegate;
 
 __attribute__((visibility("hidden")))
 @interface PUWallpaperPosterEditToolBar : UIView
 {
-    UIAction *_primaryAction;
-    UIMenu *_actionsMenu;
+    NSArray *_leadingMenuElements;
+    NSArray *_trailingMenuElements;
     id <PUWallpaperPosterEditToolbarDelegate> _delegate;
-    UIButton *_primaryActionButton;
-    UIButton *_actionsMenuButton;
+    UIButton *_firstActionButton;
+    UIButton *_secondActionButton;
+    UIButton *_thirdActionButton;
+    UIButton *_fourthActionButton;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) UIButton *actionsMenuButton; // @synthesize actionsMenuButton=_actionsMenuButton;
-@property(retain, nonatomic) UIButton *primaryActionButton; // @synthesize primaryActionButton=_primaryActionButton;
+@property(retain, nonatomic) UIButton *fourthActionButton; // @synthesize fourthActionButton=_fourthActionButton;
+@property(retain, nonatomic) UIButton *thirdActionButton; // @synthesize thirdActionButton=_thirdActionButton;
+@property(retain, nonatomic) UIButton *secondActionButton; // @synthesize secondActionButton=_secondActionButton;
+@property(retain, nonatomic) UIButton *firstActionButton; // @synthesize firstActionButton=_firstActionButton;
 @property(nonatomic) __weak id <PUWallpaperPosterEditToolbarDelegate> delegate; // @synthesize delegate=_delegate;
-@property(retain, nonatomic) UIMenu *actionsMenu; // @synthesize actionsMenu=_actionsMenu;
-@property(retain, nonatomic) UIAction *primaryAction; // @synthesize primaryAction=_primaryAction;
+@property(retain, nonatomic) NSArray *trailingMenuElements; // @synthesize trailingMenuElements=_trailingMenuElements;
+@property(retain, nonatomic) NSArray *leadingMenuElements; // @synthesize leadingMenuElements=_leadingMenuElements;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (void)_removeMenuElement:(id)arg1 fromButton:(id)arg2;
+- (void)_setMenuElement:(id)arg1 onButton:(id)arg2;
+- (void)_setMenuElements:(id)arg1 oldMenuElements:(id)arg2 onButtonOne:(id)arg3 onButtonTwo:(id)arg4;
+- (id)_createActionButton;
 - (void)_setupView;
 - (id)initWithFrame:(struct CGRect)arg1;
 

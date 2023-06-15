@@ -6,12 +6,12 @@
 
 #import "UICollectionViewCell.h"
 
-@class UIKeyboardEmoji, UILabel, UIView;
+@class UIKeyboardEmoji, UIKeyboardEmojiDraggableView, UILabel, UIView;
 
 __attribute__((visibility("hidden")))
 @interface UIKeyboardEmojiCollectionViewCell : UICollectionViewCell
 {
-    UILabel *_emojiLabel;
+    UIKeyboardEmojiDraggableView *_emojiLabel;
     _Bool _unreleasedHighlight;
     _Bool _noResultsCell;
     UILabel *_unreleasedBanner;

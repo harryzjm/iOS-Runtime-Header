@@ -6,13 +6,24 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-@class NSMutableArray, PBUnknownFields;
+@class GEOPDQueryUnderstandingTaxonomyResult, NSMutableArray, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDQueryUnderstandingResult : PBCodable
 {
+    PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_queryIntents;
+    GEOPDQueryUnderstandingTaxonomyResult *_taxonomyResult;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
+    struct {
+        unsigned int read_unknownFields:1;
+        unsigned int read_queryIntents:1;
+        unsigned int read_taxonomyResult:1;
+        unsigned int wrote_anyField:1;
+    } _flags;
 }
 
 - (void).cxx_destruct;
@@ -24,6 +35,8 @@ __attribute__((visibility("hidden")))
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

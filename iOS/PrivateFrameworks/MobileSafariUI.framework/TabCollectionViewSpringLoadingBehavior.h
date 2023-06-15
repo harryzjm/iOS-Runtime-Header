@@ -7,17 +7,19 @@
 #import <objc/NSObject.h>
 
 @class NSString;
-@protocol UISpringLoadedInteractionBehavior, UISpringLoadedInteractionEffect;
+@protocol TabCollectionView><TabCollectionViewDragDropSupport, UISpringLoadedInteractionBehavior, UISpringLoadedInteractionEffect;
 
 __attribute__((visibility("hidden")))
 @interface TabCollectionViewSpringLoadingBehavior : NSObject
 {
     id <UISpringLoadedInteractionBehavior> _behavior;
     id <UISpringLoadedInteractionEffect> _effect;
+    id <TabCollectionView><TabCollectionViewDragDropSupport> _tabView;
 }
 
 + (void)addSpringLoadedInteractionToTabView:(id)arg1;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <TabCollectionView><TabCollectionViewDragDropSupport> tabView; // @synthesize tabView=_tabView;
 - (void)interaction:(id)arg1 didChangeWithContext:(id)arg2;
 - (void)interactionDidFinish:(id)arg1;
 - (_Bool)shouldAllowInteraction:(id)arg1 withContext:(id)arg2;

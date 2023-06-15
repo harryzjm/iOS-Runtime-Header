@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 + (double)convertMachTimeToMilliseconds:(unsigned long long)arg1;
 + (double)convertMachTimeToSeconds:(unsigned long long)arg1;
 + (_Bool)isAudioFormatSupported:(id)arg1;
++ (_Bool)willAudioFormatCauseBufferMutation:(id)arg1;
 + (id)splitBuffer:(id)arg1 atPosition:(unsigned int)arg2;
 + (id)splitBuffer:(id)arg1 fromStartPosition:(unsigned int)arg2 intoDurationsOfSize:(double)arg3;
 + (id)extractFromBuffer:(id)arg1 atPosition:(unsigned int)arg2 length:(unsigned int)arg3;

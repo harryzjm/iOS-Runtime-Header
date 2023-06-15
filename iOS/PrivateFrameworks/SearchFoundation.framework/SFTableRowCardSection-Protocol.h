@@ -6,7 +6,7 @@
 
 #import <SearchFoundation/SFCardSection-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString, SFColor, SFTableAlignmentSchema;
+@class NSArray, NSData, NSDictionary, NSString, SFTableAlignmentSchema;
 
 @protocol SFTableRowCardSection <SFCardSection>
 @property(readonly, nonatomic) NSData *jsonData;
@@ -20,14 +20,6 @@
 @property(retain, nonatomic) SFTableAlignmentSchema *alignmentSchema;
 @property(copy, nonatomic) NSString *tableIdentifier;
 @property(copy, nonatomic) NSArray *richData;
-@property(retain, nonatomic) SFColor *backgroundColor;
-@property(nonatomic) int separatorStyle;
 @property(copy, nonatomic) NSString *type;
-@property(nonatomic) _Bool hasBottomPadding;
-@property(nonatomic) _Bool hasTopPadding;
-@property(nonatomic) _Bool canBeHidden;
-@property(copy, nonatomic) NSString *punchoutPickerDismissText;
-@property(copy, nonatomic) NSString *punchoutPickerTitle;
-@property(copy, nonatomic) NSArray *punchoutOptions;
 @end
 

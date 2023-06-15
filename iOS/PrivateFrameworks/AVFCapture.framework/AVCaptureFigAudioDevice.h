@@ -17,9 +17,11 @@ __attribute__((visibility("hidden")))
     NSDictionary *_attributes;
     _Bool _levelMeteringEnabled;
     _Bool _isConnected;
+    _Bool _isSoonToBeDisconnected;
     NSString *_localizedName;
     AVWeakReference *_weakReference;
     NSString *_clientAudioClockDeviceUID;
+    struct OpaqueCMClock *_sharedAVAudioSessionClock;
 }
 
 + (void)_reconnectDevices:(id)arg1;
@@ -36,7 +38,9 @@ __attribute__((visibility("hidden")))
 - (_Bool)supportsAVCaptureSessionPreset:(id)arg1;
 - (void)stopUsingDevice;
 - (_Bool)startUsingDevice:(id *)arg1;
+- (_Bool)isSoonToBeDisconnected;
 - (_Bool)isConnected;
+- (_Bool)isAudioCaptureModeSupported:(long long)arg1;
 - (_Bool)isBuiltInStereoAudioCaptureSupported;
 - (_Bool)hasMediaType:(id)arg1;
 - (id)figCaptureSourceAudioSettingsForSessionPreset:(id)arg1;

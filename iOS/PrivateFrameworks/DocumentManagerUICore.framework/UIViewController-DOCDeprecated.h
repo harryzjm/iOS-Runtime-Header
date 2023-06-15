@@ -7,7 +7,10 @@
 #import <UIKit/UIViewController.h>
 
 @interface UIViewController (DOCDeprecated)
-@property(readonly, nonatomic) long long doc_interfaceOrientation;
+@property(readonly, nonatomic) long long doc_deprecated_interfaceOrientation;
+@property(readonly, nonatomic) _Bool doc_hasDisappearedOrIsDisappearing;
+@property(readonly, nonatomic) _Bool doc_isDisappearing;
+@property(readonly, nonatomic) _Bool doc_hasDisappeared;
 @property(readonly, nonatomic) _Bool doc_hasAppearedOrIsAppearing;
 @property(readonly, nonatomic) _Bool doc_isAppearing;
 @property(readonly, nonatomic) _Bool doc_hasAppeared;

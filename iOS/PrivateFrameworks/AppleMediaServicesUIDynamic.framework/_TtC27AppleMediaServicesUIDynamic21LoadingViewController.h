@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 @interface _TtC27AppleMediaServicesUIDynamic21LoadingViewController : AMSUICommonViewController
 {
     MISSING_TYPE *activityIndicator;
-    MISSING_TYPE *dimmingView;
+    MISSING_TYPE *loadingView;
     MISSING_TYPE *style;
 }
 

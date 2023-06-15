@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <PhotosUIPrivate/PEAsset-Protocol.h>
 #import <PhotosUIPrivate/PUDisplayAsset-Protocol.h>
 
 @class NSDictionary, NSString, PFVideoAVObjectBuilder, PHContentEditingInputRequestOptions;
 
-@protocol PUEditableAsset <PUDisplayAsset>
+@protocol PUEditableAsset <PUDisplayAsset, PEAsset>
 @property(readonly, copy, nonatomic) NSString *accessibilityDescription;
 @property(readonly, copy, nonatomic) NSString *pathForTrimmedVideoFile;
 @property(readonly, copy, nonatomic) NSString *pathForOriginalVideoFile;
@@ -18,7 +19,6 @@
 @property(readonly, nonatomic) _Bool containsAllMetadata;
 @property(readonly, nonatomic) int originalEXIFOrientation;
 @property(readonly, nonatomic) NSDictionary *imageProperties;
-@property(readonly, nonatomic) unsigned long long reframeVariation;
 @property(readonly, nonatomic) PFVideoAVObjectBuilder *videoObjectBuilder;
 @property(readonly, nonatomic) unsigned long long livePhotoVisibilityState;
 @property(readonly, nonatomic, getter=isTrimmableType) _Bool trimmableType;

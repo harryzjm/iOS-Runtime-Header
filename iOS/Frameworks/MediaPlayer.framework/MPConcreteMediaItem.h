@@ -23,14 +23,6 @@ __attribute__((visibility("hidden")))
 + (id)concreteMediaItemWithPersistentID:(unsigned long long)arg1 library:(id)arg2;
 + (id)concreteMediaItemWithPersistentID:(unsigned long long)arg1;
 - (void).cxx_destruct;
-- (void)updateDateAccessedToCurrentDateWithWriteCompletionBlock:(CDUnknownBlockType)arg1;
-- (_Bool)incrementPlayCountForStopTime:(double)arg1;
-- (void)incrementPlayCountForPlayingToEnd;
-- (void)incrementSkipCount;
-- (void)noteWasPlayedToTime:(double)arg1 skipped:(_Bool)arg2;
-- (_Bool)didSkipWithPlayedToTime:(double)arg1;
-- (double)nominalHasBeenPlayedThreshold;
-- (void)markNominalAmountHasBeenPlayed;
 - (void)incrementPlayCount;
 - (void)enumerateValuesForProperties:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)setValue:(id)arg1 forProperty:(id)arg2 withCompletionBlock:(CDUnknownBlockType)arg3;

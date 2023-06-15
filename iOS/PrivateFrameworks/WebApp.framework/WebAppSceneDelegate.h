@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 - (void)sceneDidDisconnect:(id)arg1;
 - (void)scene:(id)arg1 openURLContexts:(id)arg2;
 - (void)scene:(id)arg1 willConnectToSession:(id)arg2 options:(id)arg3;
+- (void)connectWebClipIdentifier:(id)arg1 toScene:(id)arg2 forWebPush:(_Bool)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

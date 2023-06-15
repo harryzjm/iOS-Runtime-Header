@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
 @class NSMutableDictionary, NSMutableOrderedSet;
 
 __attribute__((visibility("hidden")))
-@interface _UIHIDEventOrderedDescriptorSet : NSObject <NSCopying>
+@interface _UIHIDEventOrderedDescriptorSet : NSObject
 {
     NSMutableOrderedSet *_orderedDescriptors;
     NSMutableDictionary *_eventsByDescriptor;

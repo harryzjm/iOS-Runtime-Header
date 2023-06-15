@@ -7,8 +7,8 @@
 #import <WeatherMaps/MKAnnotation-Protocol.h>
 
 @protocol MKOverlay <MKAnnotation>
-@property(nonatomic, readonly) CDStruct_90e2a262 boundingMapRect;
-@property(nonatomic, readonly) struct CLLocationCoordinate2D coordinate;
+@property(readonly, nonatomic) CDStruct_90e2a262 boundingMapRect;
+@property(readonly, nonatomic) struct CLLocationCoordinate2D coordinate;
 
 @optional
 - (_Bool)canReplaceMapContent;

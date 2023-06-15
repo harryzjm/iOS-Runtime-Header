@@ -12,6 +12,8 @@
 - (NSDictionary *)powerState;
 - (void)deleteCloudKitZoneWithCompletion:(void (^)(NSError *))arg1;
 - (void)suggestionsFromEmailContent:(NSString *)arg1 headers:(NSData *)arg2 source:(NSString *)arg3 options:(unsigned long long)arg4 withCompletion:(void (^)(NSArray *, NSError *))arg5;
+- (_Bool)ping:(id *)arg1;
+- (void)pingWithCompletion:(void (^)(NSError *))arg1;
 - (_Bool)sleep:(id *)arg1;
 - (void)sleepWithCompletion:(void (^)(NSError *))arg1;
 - (_Bool)daemonExit:(id *)arg1;

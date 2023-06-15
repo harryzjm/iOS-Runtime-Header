@@ -16,20 +16,30 @@
     MISSING_TYPE *signals;
     MISSING_TYPE *scaleSignals;
     MISSING_TYPE *idContext;
-    MISSING_TYPE *scenegraph;
+    MISSING_TYPE *plotAreaContents;
+    MISSING_TYPE *xAxis;
+    MISSING_TYPE *yAxis;
+    MISSING_TYPE *selectionSignal;
     MISSING_TYPE *legendContext;
     MISSING_TYPE *accessibilityElements;
     MISSING_TYPE *accessibilityAudioGraph;
-    MISSING_TYPE *padding;
-    MISSING_TYPE *plotWidth;
-    MISSING_TYPE *plotHeight;
-    MISSING_TYPE *actualPlotWidth;
-    MISSING_TYPE *actualPlotHeight;
-    MISSING_TYPE *textMeasurements;
-    MISSING_TYPE *environment;
-    MISSING_TYPE *frameWidth;
-    MISSING_TYPE *frameHeight;
-    MISSING_TYPE *hasInteraction;
+    MISSING_TYPE *paddingAroundPlotArea;
+    MISSING_TYPE *safeMarginAroundPlotArea;
+    MISSING_TYPE *plotAreaSize;
+    MISSING_TYPE *viewportSize;
+    MISSING_TYPE *coordinateSystem;
+    MISSING_TYPE *isCanvasAccelerated;
+    MISSING_TYPE *scaleAdjustments;
+    MISSING_TYPE *measurements;
+    MISSING_TYPE *viewEnvironment;
+    MISSING_TYPE *gAxesX;
+    MISSING_TYPE *gAxesY;
+    MISSING_TYPE *axisTickValues;
+    MISSING_TYPE *axisPaddingExtents;
+    MISSING_TYPE *axisMarkInsetsArray;
+    MISSING_TYPE *gMarks;
+    MISSING_TYPE *gAXMarks;
+    MISSING_TYPE *gSelection;
 }
 
 @end

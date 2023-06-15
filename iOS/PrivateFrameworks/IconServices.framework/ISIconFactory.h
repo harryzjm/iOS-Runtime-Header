@@ -13,6 +13,8 @@ __attribute__((visibility("hidden")))
 
 + (id)_iconForURL:(id)arg1 options:(unsigned long long)arg2;
 + (id)_iconForURL:(id)arg1;
+- (id)initWithSymbolName:(id)arg1 configuration:(id)arg2;
+- (id)initWithSymbolName:(id)arg1;
 - (id)initWithMIMEType:(id)arg1;
 - (id)initWithModelCode:(id)arg1;
 - (id)initWithFileExtension:(id)arg1;
@@ -24,6 +26,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithApplicationExtensionBundleIdentifier:(id)arg1;
 - (id)initWithApplicationBundleIdentifier:(id)arg1;
 - (id)initWithBundleIdentifier:(id)arg1;
+- (id)initWithApplicationIdentity:(id)arg1;
 - (id)initWithURL:(id)arg1;
 - (id)initWithURL:(id)arg1 options:(unsigned long long)arg2;
 - (id)_init;

@@ -6,9 +6,10 @@
 
 #import <CloudSharingUI/NSObject-Protocol.h>
 
-@class CKShare, NSError, NSURL;
+@class CKShare, NSError, NSURL, NSValue;
 
 @protocol CSAddParticipantsViewControllerHost <NSObject>
 - (void)dismissViewControllerWithError:(NSError *)arg1 shareURL:(NSURL *)arg2 ckShare:(CKShare *)arg3;
+- (void)showContactPickerFromSourceRect:(NSValue *)arg1;
 @end
 

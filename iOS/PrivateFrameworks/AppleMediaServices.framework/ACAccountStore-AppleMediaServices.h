@@ -9,11 +9,14 @@
 @class ACAccount, NSArray, NSString;
 
 @interface ACAccountStore (AppleMediaServices)
++ (_Bool)_isAccountsCachingEnabled;
 + (id)_secureTokenForIdentifier:(id)arg1;
 + (id)ams_accountTypeIdentifierForMediaType:(id)arg1;
 + (id)ams_sharedAccountStoreForMediaType:(id)arg1;
 + (id)ams_sharedAccountStoreForClient:(id)arg1;
 + (id)ams_sharedAccountStore;
++ (id)_ams_newAccountStore;
++ (id)_ams_defaultAccountStore;
 + (id)ams_sharedAccountStoreForProcessInfo:(id)arg1;
 - (id)ams_iTunesSandboxAccounts;
 - (id)ams_iTunesAccountWithHomeUserIdentifier:(id)arg1;
@@ -25,10 +28,11 @@
 - (id)ams_iTunesAccountForHomeWithIdentifier:(id)arg1;
 - (id)_saveAccount:(id)arg1 verifyCredentials:(_Bool)arg2;
 - (id)_iTunesAccountsForAccountType:(id)arg1;
-- (void)_updateStorefrontInLocalAccount:(id)arg1;
+- (id)_updateStorefrontInLocalAccount:(id)arg1;
 - (id)_fetchLocaliTunesAccountForAccountType:(id)arg1 shouldUpdateStorefront:(_Bool)arg2;
 - (id)_createLocaliTunesAccountForAccountType:(id)arg1;
 - (id)_correspondingAccountWithAccountTypeIdentifier:(id)arg1 forAccount:(id)arg2;
+- (void)_checkErrorForUnitTestAccess:(id)arg1;
 - (_Bool)_addUserCookiesForResponse:(id)arg1 account:(id)arg2 error:(id *)arg3;
 - (_Bool)_addGlobalCookiesForResponse:(id)arg1 error:(id *)arg2;
 - (id)_accountTypeForMediaType:(id)arg1;
@@ -41,7 +45,6 @@
 - (id)ams_secureTokenForAccount:(id)arg1;
 - (id)ams_saveAccount:(id)arg1 verifyCredentials:(_Bool)arg2;
 - (id)ams_saveAccount:(id)arg1;
-- (id)ams_localiTunesAccountForAccountMediaType:(id)arg1 updateStorefront:(_Bool)arg2;
 - (id)ams_localiTunesAccountForAccountMediaType:(id)arg1;
 - (id)ams_mediaAccountForHomeWithIdentifier:(id)arg1;
 - (id)ams_localiTunesAccountForAccountType:(id)arg1;
@@ -55,6 +58,7 @@
 - (id)ams_iTunesAccountWithAltDSID:(id)arg1 DSID:(id)arg2 username:(id)arg3;
 - (id)ams_iTunesAccountWithAltDSID:(id)arg1 forMediaType:(id)arg2;
 - (id)ams_iTunesAccountWithAltDSID:(id)arg1;
+- (id)ams_iTunesAccountForAccount:(id)arg1 forMediaType:(id)arg2 createIfNeeded:(_Bool)arg3;
 - (id)ams_iTunesAccountForAccount:(id)arg1;
 - (id)ams_IDSAccountForAccount:(id)arg1;
 - (id)ams_IDMSAccountForAccount:(id)arg1;
@@ -84,6 +88,7 @@
 - (id)ams_saveAccount:(id)arg1 withOptions:(long long)arg2;
 - (_Bool)ams_isAccountNew:(id)arg1;
 - (id)ams_demoAccount;
+- (id)_ams_localiTunesAccountForAccountMediaType:(id)arg1 updateStorefront:(_Bool)arg2;
 - (id)_ams_localiTunesAccountAfterUpdatingStorefront:(_Bool)arg1;
 @property(readonly, nonatomic) ACAccount *_ams_localiTunesAccount;
 @end

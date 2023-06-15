@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-- (struct CGImageSource *)_obtainCreatedCGImageSourceRefAtAddress:(struct CGImageSource **)arg1 forSubSampleFactor:(unsigned int)arg2 protectedWithUnfairLock:(struct os_unfair_lock_s *)arg3 operatingInLowPriority:(_Bool)arg4;
+- (struct CGImageSource *)_cgImageSourceAtAddress:(struct CGImageSource **)arg1 forSubSampleFactor:(unsigned int)arg2 protectedWithUnfairLock:(struct os_unfair_lock_s *)arg3 operatingInLowPriority:(_Bool)arg4 error:(id *)arg5;
 - (void)dealloc;
 
 @end
